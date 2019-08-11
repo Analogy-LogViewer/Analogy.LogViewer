@@ -1,0 +1,3 @@
+..\LogViewer.csproj
+..\..\ZIPLib\ZIPLib.csproj
+..\..\LogViewerInstaller\LogViewerInstaller.vdproj

@@ -1,0 +1,876 @@
+﻿namespace Philips.Analogy
+{
+    partial class MainForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
+            this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.bbtnItemSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
+            this.btnItemRealTime = new DevExpress.XtraBars.BarButtonItem();
+            this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
+            this.btnItemOTA = new DevExpress.XtraBars.BarButtonItem();
+            this.bItemProcess = new DevExpress.XtraBars.BarButtonItem();
+            this.btnItemLogConfigurator = new DevExpress.XtraBars.BarButtonItem();
+            this.btnItemDark = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonGalleryBarItem1 = new DevExpress.XtraBars.RibbonGalleryBarItem();
+            this.ribbonGalleryBarItem2 = new DevExpress.XtraBars.RibbonGalleryBarItem();
+            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
+            this.btnItemSearch = new DevExpress.XtraBars.BarButtonItem();
+            this.btnItemCombineFiles = new DevExpress.XtraBars.BarButtonItem();
+            this.btnItemConvert = new DevExpress.XtraBars.BarButtonItem();
+            this.bbItemOpenFiles = new DevExpress.XtraBars.BarButtonItem();
+            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.bsiRecent = new DevExpress.XtraBars.BarSubItem();
+            this.skinRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.skinPaletteRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbitemHelp = new DevExpress.XtraBars.BarButtonItem();
+            this.bbsItem = new DevExpress.XtraBars.BarSubItem();
+            this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
+            this.bBtnBookmarked = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnClientServer = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnStatisticsFiltering = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnStatisticsHistory = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnStatisticsLookAndFeel = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnStatisticsUserStatistics = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnExtensionSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnCompareLogs = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnWindowsEventLogs = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnOnlineEventLogs = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExtensions = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnShortcuts = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnMRUSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiWindowsEventLogs = new DevExpress.XtraBars.BarSubItem();
+            this.bbtnFixCorruptedXMLFile = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barToggleDebug = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.btnItemLogConfiguratorOnline = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
+            this.barStaticItemDefaultLevel = new DevExpress.XtraBars.BarStaticItem();
+            this.bBtnOpenAnalogyLog = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.xtcLogs = new DevExpress.XtraTab.XtraTabControl();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "pause.png");
+            this.imageList1.Images.SetKeyName(1, "play.jpg");
+            this.imageList1.Images.SetKeyName(2, "54834.png");
+            this.imageList1.Images.SetKeyName(3, "json.png");
+            // 
+            // TmrAutoConnect
+            // 
+            this.TmrAutoConnect.Interval = 1000;
+            this.TmrAutoConnect.Tick += new System.EventHandler(this.TmrAutoConnect_Tick);
+            // 
+            // ribbonControlMain
+            // 
+            this.ribbonControlMain.AllowKeyTips = false;
+            this.ribbonControlMain.ApplicationButtonDropDownControl = this.applicationMenu1;
+            this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
+            this.ribbonControlMain.ExpandCollapseItem.Id = 0;
+            this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControlMain.ExpandCollapseItem,
+            this.btnItemRealTime,
+            this.btnItemLocalLogs,
+            this.btnItemOTA,
+            this.bItemProcess,
+            this.btnItemLogConfigurator,
+            this.btnItemDark,
+            this.ribbonGalleryBarItem1,
+            this.ribbonGalleryBarItem2,
+            this.skinPaletteRibbonGalleryBarItem1,
+            this.btnItemSearch,
+            this.btnItemCombineFiles,
+            this.btnItemConvert,
+            this.bbItemOpenFiles,
+            this.skinRibbonGalleryBarItem1,
+            this.bsiRecent,
+            this.skinRibbonGalleryBarItem2,
+            this.skinPaletteRibbonGalleryBarItem2,
+            this.barButtonItem1,
+            this.barSubItem1,
+            this.barButtonItem2,
+            this.bbitemHelp,
+            this.bbsItem,
+            this.bbtnItemHelp,
+            this.barButtonItem3,
+            this.bbtnItemChangeLog,
+            this.bbtnItemSettings,
+            this.bbtnItemExit,
+            this.barButtonItem4,
+            this.barWorkspaceMenuItem1,
+            this.bBtnBookmarked,
+            this.bBtnClientServer,
+            this.bBtnStatisticsFiltering,
+            this.bBtnStatisticsHistory,
+            this.bBtnStatisticsLookAndFeel,
+            this.bBtnStatisticsUserStatistics,
+            this.bBtnExtensionSettings,
+            this.bBtnCompareLogs,
+            this.bBtnWindowsEventLogs,
+            this.bBtnOnlineEventLogs,
+            this.bbiExtensions,
+            this.bBtnShortcuts,
+            this.bBtnMRUSettings,
+            this.bsiWindowsEventLogs,
+            this.bbtnFixCorruptedXMLFile,
+            this.barButtonItem5,
+            this.barToggleDebug,
+            this.btnItemLogConfiguratorOnline,
+            this.barEditItem1,
+            this.barEditItem2,
+            this.barStaticItemDefaultLevel,
+            this.bBtnOpenAnalogyLog});
+            this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ribbonControlMain.MaxItemId = 61;
+            this.ribbonControlMain.Name = "ribbonControlMain";
+            this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
+            this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPageThemes,
+            this.ribbonPage4,
+            this.ribbonPage1});
+            this.ribbonControlMain.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemHypertextLabel1});
+            this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
+            this.ribbonControlMain.ShowToolbarCustomizeItem = false;
+            this.ribbonControlMain.Size = new System.Drawing.Size(1300, 143);
+            this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
+            // 
+            // applicationMenu1
+            // 
+            this.applicationMenu1.ItemLinks.Add(this.bbtnItemSettings);
+            this.applicationMenu1.ItemLinks.Add(this.bbtnItemExit);
+            this.applicationMenu1.Name = "applicationMenu1";
+            this.applicationMenu1.Ribbon = this.ribbonControlMain;
+            // 
+            // bbtnItemSettings
+            // 
+            this.bbtnItemSettings.Caption = "Settings";
+            this.bbtnItemSettings.Id = 30;
+            this.bbtnItemSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemSettings.ImageOptions.Image")));
+            this.bbtnItemSettings.Name = "bbtnItemSettings";
+            this.bbtnItemSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemSettings_ItemClick);
+            // 
+            // bbtnItemExit
+            // 
+            this.bbtnItemExit.Caption = "Exit";
+            this.bbtnItemExit.Id = 31;
+            this.bbtnItemExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemExit.ImageOptions.Image")));
+            this.bbtnItemExit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnItemExit.ImageOptions.LargeImage")));
+            this.bbtnItemExit.Name = "bbtnItemExit";
+            this.bbtnItemExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemExit_ItemClick);
+            // 
+            // btnItemRealTime
+            // 
+            this.btnItemRealTime.Caption = "Real Time logs";
+            this.btnItemRealTime.Id = 1;
+            this.btnItemRealTime.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.Database_off;
+            this.btnItemRealTime.LargeWidth = 80;
+            this.btnItemRealTime.Name = "btnItemRealTime";
+            this.btnItemRealTime.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnItemRealTime.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemRealTime_ItemClick);
+            // 
+            // btnItemLocalLogs
+            // 
+            this.btnItemLocalLogs.Caption = "Local Logs";
+            this.btnItemLocalLogs.Id = 2;
+            this.btnItemLocalLogs.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.Open2_32x32;
+            this.btnItemLocalLogs.LargeWidth = 80;
+            this.btnItemLocalLogs.Name = "btnItemLocalLogs";
+            this.btnItemLocalLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnItemLocalLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemLocalLogs_ItemClick);
+            // 
+            // btnItemOTA
+            // 
+            this.btnItemOTA.Caption = "Analogy";
+            this.btnItemOTA.Enabled = false;
+            this.btnItemOTA.Id = 3;
+            this.btnItemOTA.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.logIcon;
+            this.btnItemOTA.Name = "btnItemOTA";
+            this.btnItemOTA.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnItemOTA.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.btnItemOTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemOTA_ItemClick);
+            // 
+            // bItemProcess
+            // 
+            this.bItemProcess.Caption = "Process Identifier";
+            this.bItemProcess.Id = 4;
+            this.bItemProcess.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.ChartsShowLegend_16x16;
+            this.bItemProcess.ImageOptions.LargeImage = global::Philips.Analogy.Properties.Resources.ChartsShowLegend_32x32;
+            this.bItemProcess.LargeWidth = 100;
+            this.bItemProcess.Name = "bItemProcess";
+            this.bItemProcess.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bItemProcess.SmallWithTextWidth = 5;
+            this.bItemProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bItemProcess_ItemClick);
+            // 
+            // btnItemLogConfigurator
+            // 
+            this.btnItemLogConfigurator.Caption = "Log Configurator";
+            this.btnItemLogConfigurator.Id = 5;
+            this.btnItemLogConfigurator.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.PageSetup_16x16;
+            this.btnItemLogConfigurator.ImageOptions.LargeImage = global::Philips.Analogy.Properties.Resources.PageSetup_32x32;
+            this.btnItemLogConfigurator.Name = "btnItemLogConfigurator";
+            this.btnItemLogConfigurator.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnItemLogConfigurator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemLogConfigurator_ItemClick);
+            // 
+            // btnItemDark
+            // 
+            this.btnItemDark.Caption = "Dark";
+            this.btnItemDark.Id = 6;
+            this.btnItemDark.Name = "btnItemDark";
+            // 
+            // ribbonGalleryBarItem1
+            // 
+            this.ribbonGalleryBarItem1.Caption = "InplaceGallery1";
+            // 
+            // 
+            // 
+            galleryItemGroup1.Caption = "Group2";
+            this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            galleryItemGroup1});
+            this.ribbonGalleryBarItem1.Id = 8;
+            this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
+            // 
+            // ribbonGalleryBarItem2
+            // 
+            this.ribbonGalleryBarItem2.Caption = "InplaceGallery2";
+            // 
+            // 
+            // 
+            galleryItemGroup2.Caption = "Group3";
+            this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            galleryItemGroup2});
+            this.ribbonGalleryBarItem2.Id = 9;
+            this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
+            // 
+            // skinPaletteRibbonGalleryBarItem1
+            // 
+            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            this.skinPaletteRibbonGalleryBarItem1.Id = 10;
+            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
+            // 
+            // btnItemSearch
+            // 
+            this.btnItemSearch.Caption = "Search In Files";
+            this.btnItemSearch.Id = 11;
+            this.btnItemSearch.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.Lookup_Reference_32x32;
+            this.btnItemSearch.LargeWidth = 90;
+            this.btnItemSearch.Name = "btnItemSearch";
+            this.btnItemSearch.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnItemSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemSearch_ItemClick);
+            // 
+            // btnItemCombineFiles
+            // 
+            this.btnItemCombineFiles.Caption = "Combines Files";
+            this.btnItemCombineFiles.Id = 12;
+            this.btnItemCombineFiles.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.Sutotal_32x32;
+            this.btnItemCombineFiles.LargeWidth = 90;
+            this.btnItemCombineFiles.Name = "btnItemCombineFiles";
+            this.btnItemCombineFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // btnItemConvert
+            // 
+            this.btnItemConvert.Caption = "Convert Files";
+            this.btnItemConvert.Enabled = false;
+            this.btnItemConvert.Id = 13;
+            this.btnItemConvert.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.ArrangeGroups_32x32;
+            this.btnItemConvert.LargeWidth = 90;
+            this.btnItemConvert.Name = "btnItemConvert";
+            this.btnItemConvert.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // bbItemOpenFiles
+            // 
+            this.bbItemOpenFiles.Caption = "Open Files";
+            this.bbItemOpenFiles.Id = 17;
+            this.bbItemOpenFiles.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.Article_16x16;
+            this.bbItemOpenFiles.ImageOptions.LargeImage = global::Philips.Analogy.Properties.Resources.Article_32x32;
+            this.bbItemOpenFiles.Name = "bbItemOpenFiles";
+            this.bbItemOpenFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bbItemOpenFiles.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbItemOpenFiles_ItemClick);
+            // 
+            // skinRibbonGalleryBarItem1
+            // 
+            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            this.skinRibbonGalleryBarItem1.Id = 18;
+            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            // 
+            // bsiRecent
+            // 
+            this.bsiRecent.Caption = "Recent";
+            this.bsiRecent.Id = 19;
+            this.bsiRecent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiRecent.ImageOptions.Image")));
+            this.bsiRecent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiRecent.ImageOptions.LargeImage")));
+            this.bsiRecent.Name = "bsiRecent";
+            this.bsiRecent.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // skinRibbonGalleryBarItem2
+            // 
+            this.skinRibbonGalleryBarItem2.Caption = "skinRibbonGalleryBarItem2";
+            // 
+            // 
+            // 
+            this.skinRibbonGalleryBarItem2.Gallery.ShowItemText = true;
+            this.skinRibbonGalleryBarItem2.Id = 20;
+            this.skinRibbonGalleryBarItem2.Name = "skinRibbonGalleryBarItem2";
+            // 
+            // skinPaletteRibbonGalleryBarItem2
+            // 
+            this.skinPaletteRibbonGalleryBarItem2.Caption = "skinPaletteRibbonGalleryBarItem2";
+            this.skinPaletteRibbonGalleryBarItem2.Id = 21;
+            this.skinPaletteRibbonGalleryBarItem2.Name = "skinPaletteRibbonGalleryBarItem2";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "File";
+            this.barButtonItem1.Id = 22;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "barSubItem1";
+            this.barSubItem1.Id = 23;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Id = 24;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // bbitemHelp
+            // 
+            this.bbitemHelp.Caption = "barButtonItem3";
+            this.bbitemHelp.Id = 25;
+            this.bbitemHelp.Name = "bbitemHelp";
+            // 
+            // bbsItem
+            // 
+            this.bbsItem.Caption = "Help";
+            this.bbsItem.Id = 26;
+            this.bbsItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbsItem.ImageOptions.Image")));
+            this.bbsItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbsItem.ImageOptions.LargeImage")));
+            this.bbsItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
+            this.bbsItem.Name = "bbsItem";
+            // 
+            // bbtnItemChangeLog
+            // 
+            this.bbtnItemChangeLog.Caption = "Change Log";
+            this.bbtnItemChangeLog.Id = 29;
+            this.bbtnItemChangeLog.Name = "bbtnItemChangeLog";
+            this.bbtnItemChangeLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemChangeLog_ItemClick);
+            // 
+            // bbtnItemHelp
+            // 
+            this.bbtnItemHelp.Caption = "About";
+            this.bbtnItemHelp.Id = 27;
+            this.bbtnItemHelp.Name = "bbtnItemHelp";
+            this.bbtnItemHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemHelp_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Change Log";
+            this.barButtonItem3.Id = 28;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Id = 32;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barWorkspaceMenuItem1
+            // 
+            this.barWorkspaceMenuItem1.Caption = "barWorkspaceMenuItem1";
+            this.barWorkspaceMenuItem1.Id = 33;
+            this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
+            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
+            // 
+            // workspaceManager1
+            // 
+            this.workspaceManager1.TargetControl = this;
+            this.workspaceManager1.TransitionType = pushTransition1;
+            // 
+            // bBtnBookmarked
+            // 
+            this.bBtnBookmarked.Caption = "Bookmarked";
+            this.bBtnBookmarked.Id = 34;
+            this.bBtnBookmarked.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnBookmarked.ImageOptions.Image")));
+            this.bBtnBookmarked.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnBookmarked.ImageOptions.LargeImage")));
+            this.bBtnBookmarked.Name = "bBtnBookmarked";
+            this.bBtnBookmarked.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnBookmarked.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnBookmarked_ItemClick);
+            // 
+            // bBtnClientServer
+            // 
+            this.bBtnClientServer.Caption = "Client/Server";
+            this.bBtnClientServer.Id = 35;
+            this.bBtnClientServer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnClientServer.ImageOptions.Image")));
+            this.bBtnClientServer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnClientServer.ImageOptions.LargeImage")));
+            this.bBtnClientServer.Name = "bBtnClientServer";
+            this.bBtnClientServer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnClientServer_ItemClick);
+            // 
+            // bBtnStatisticsFiltering
+            // 
+            this.bBtnStatisticsFiltering.Caption = "Filtering";
+            this.bBtnStatisticsFiltering.Id = 36;
+            this.bBtnStatisticsFiltering.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsFiltering.ImageOptions.Image")));
+            this.bBtnStatisticsFiltering.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsFiltering.ImageOptions.LargeImage")));
+            this.bBtnStatisticsFiltering.LargeWidth = 80;
+            this.bBtnStatisticsFiltering.Name = "bBtnStatisticsFiltering";
+            this.bBtnStatisticsFiltering.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnStatisticsFiltering.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsFiltering_ItemClick);
+            // 
+            // bBtnStatisticsHistory
+            // 
+            this.bBtnStatisticsHistory.Caption = "History";
+            this.bBtnStatisticsHistory.Id = 37;
+            this.bBtnStatisticsHistory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.Image")));
+            this.bBtnStatisticsHistory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.LargeImage")));
+            this.bBtnStatisticsHistory.LargeWidth = 80;
+            this.bBtnStatisticsHistory.Name = "bBtnStatisticsHistory";
+            this.bBtnStatisticsHistory.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnStatisticsHistory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsHistory_ItemClick);
+            // 
+            // bBtnStatisticsLookAndFeel
+            // 
+            this.bBtnStatisticsLookAndFeel.Caption = "Look and Feel";
+            this.bBtnStatisticsLookAndFeel.Id = 38;
+            this.bBtnStatisticsLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsLookAndFeel.ImageOptions.Image")));
+            this.bBtnStatisticsLookAndFeel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsLookAndFeel.ImageOptions.LargeImage")));
+            this.bBtnStatisticsLookAndFeel.LargeWidth = 100;
+            this.bBtnStatisticsLookAndFeel.Name = "bBtnStatisticsLookAndFeel";
+            this.bBtnStatisticsLookAndFeel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsLookAndFeel_ItemClick);
+            // 
+            // bBtnStatisticsUserStatistics
+            // 
+            this.bBtnStatisticsUserStatistics.Caption = "User Statistics";
+            this.bBtnStatisticsUserStatistics.Id = 39;
+            this.bBtnStatisticsUserStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsUserStatistics.ImageOptions.Image")));
+            this.bBtnStatisticsUserStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsUserStatistics.ImageOptions.LargeImage")));
+            this.bBtnStatisticsUserStatistics.LargeWidth = 100;
+            this.bBtnStatisticsUserStatistics.Name = "bBtnStatisticsUserStatistics";
+            this.bBtnStatisticsUserStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsUserStatistics_ItemClick);
+            // 
+            // bBtnExtensionSettings
+            // 
+            this.bBtnExtensionSettings.Caption = "Extensions setting";
+            this.bBtnExtensionSettings.Id = 40;
+            this.bBtnExtensionSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExtensionSettings.ImageOptions.Image")));
+            this.bBtnExtensionSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExtensionSettings.ImageOptions.LargeImage")));
+            this.bBtnExtensionSettings.LargeWidth = 80;
+            this.bBtnExtensionSettings.Name = "bBtnExtensionSettings";
+            this.bBtnExtensionSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnExtensionSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExtensionSettings_ItemClick);
+            // 
+            // bBtnCompareLogs
+            // 
+            this.bBtnCompareLogs.Caption = "Compare Logs";
+            this.bBtnCompareLogs.Id = 45;
+            this.bBtnCompareLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnCompareLogs.ImageOptions.Image")));
+            this.bBtnCompareLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnCompareLogs.ImageOptions.LargeImage")));
+            this.bBtnCompareLogs.Name = "bBtnCompareLogs";
+            this.bBtnCompareLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnCompareLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCompareLogs_ItemClick);
+            // 
+            // bBtnWindowsEventLogs
+            // 
+            this.bBtnWindowsEventLogs.ActAsDropDown = true;
+            this.bBtnWindowsEventLogs.Caption = "Windows Event Logs";
+            this.bBtnWindowsEventLogs.Id = 46;
+            this.bBtnWindowsEventLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnWindowsEventLogs.ImageOptions.Image")));
+            this.bBtnWindowsEventLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnWindowsEventLogs.ImageOptions.LargeImage")));
+            this.bBtnWindowsEventLogs.Name = "bBtnWindowsEventLogs";
+            this.bBtnWindowsEventLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnWindowsEventLogs_ItemClick);
+            // 
+            // bBtnOnlineEventLogs
+            // 
+            this.bBtnOnlineEventLogs.Caption = "Real Time Windows Event Logs";
+            this.bBtnOnlineEventLogs.Id = 47;
+            this.bBtnOnlineEventLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnOnlineEventLogs.ImageOptions.Image")));
+            this.bBtnOnlineEventLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnOnlineEventLogs.ImageOptions.LargeImage")));
+            this.bBtnOnlineEventLogs.Name = "bBtnOnlineEventLogs";
+            this.bBtnOnlineEventLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnOnlineEventLogs_ItemClick);
+            // 
+            // bbiExtensions
+            // 
+            this.bbiExtensions.Caption = "Extensions List";
+            this.bbiExtensions.Id = 48;
+            this.bbiExtensions.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExtensions.ImageOptions.Image")));
+            this.bbiExtensions.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExtensions.ImageOptions.LargeImage")));
+            this.bbiExtensions.LargeWidth = 140;
+            this.bbiExtensions.Name = "bbiExtensions";
+            this.bbiExtensions.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bbiExtensions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExtensions_ItemClick);
+            // 
+            // bBtnShortcuts
+            // 
+            this.bBtnShortcuts.Caption = "Shortcuts";
+            this.bBtnShortcuts.Id = 49;
+            this.bBtnShortcuts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnShortcuts.ImageOptions.Image")));
+            this.bBtnShortcuts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnShortcuts.ImageOptions.LargeImage")));
+            this.bBtnShortcuts.Name = "bBtnShortcuts";
+            this.bBtnShortcuts.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnShortcuts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnShortcuts_ItemClick);
+            // 
+            // bBtnMRUSettings
+            // 
+            this.bBtnMRUSettings.Caption = "MRU";
+            this.bBtnMRUSettings.Id = 51;
+            this.bBtnMRUSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnMRUSettings.ImageOptions.Image")));
+            this.bBtnMRUSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnMRUSettings.ImageOptions.LargeImage")));
+            this.bBtnMRUSettings.LargeWidth = 80;
+            this.bBtnMRUSettings.Name = "bBtnMRUSettings";
+            this.bBtnMRUSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnMRUSettings_ItemClick);
+            // 
+            // bsiWindowsEventLogs
+            // 
+            this.bsiWindowsEventLogs.Caption = "Windows Event Logs";
+            this.bsiWindowsEventLogs.Id = 52;
+            this.bsiWindowsEventLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiWindowsEventLogs.ImageOptions.Image")));
+            this.bsiWindowsEventLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiWindowsEventLogs.ImageOptions.LargeImage")));
+            this.bsiWindowsEventLogs.Name = "bsiWindowsEventLogs";
+            this.bsiWindowsEventLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // bbtnFixCorruptedXMLFile
+            // 
+            this.bbtnFixCorruptedXMLFile.Caption = "Fix corrupted File";
+            this.bbtnFixCorruptedXMLFile.Id = 53;
+            this.bbtnFixCorruptedXMLFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFixCorruptedXMLFile.ImageOptions.Image")));
+            this.bbtnFixCorruptedXMLFile.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFixCorruptedXMLFile.ImageOptions.LargeImage")));
+            this.bbtnFixCorruptedXMLFile.Name = "bbtnFixCorruptedXMLFile";
+            this.bbtnFixCorruptedXMLFile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnFixCorruptedXMLFile_ItemClick);
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Switch to Debug";
+            this.barButtonItem5.Hint = "Change default log level to Debug";
+            this.barButtonItem5.Id = 54;
+            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // barToggleDebug
+            // 
+            this.barToggleDebug.Caption = "Switch to debug";
+            this.barToggleDebug.Hint = "Change default log level to Debug";
+            this.barToggleDebug.Id = 55;
+            this.barToggleDebug.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barToggleDebug.ImageOptions.Image")));
+            this.barToggleDebug.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barToggleDebug.ImageOptions.LargeImage")));
+            this.barToggleDebug.Name = "barToggleDebug";
+            this.barToggleDebug.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barToggleDebug.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.barToggleDebug.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleDebug_CheckedChanged);
+            // 
+            // btnItemLogConfiguratorOnline
+            // 
+            this.btnItemLogConfiguratorOnline.Caption = "Log Configurator";
+            this.btnItemLogConfiguratorOnline.Id = 56;
+            this.btnItemLogConfiguratorOnline.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnItemLogConfiguratorOnline.ImageOptions.Image")));
+            this.btnItemLogConfiguratorOnline.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnItemLogConfiguratorOnline.ImageOptions.LargeImage")));
+            this.btnItemLogConfiguratorOnline.Name = "btnItemLogConfiguratorOnline";
+            this.btnItemLogConfiguratorOnline.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnItemLogConfiguratorOnline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemLogConfiguratorOnline_ItemClick);
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemLookUpEdit1;
+            this.barEditItem1.Id = 57;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Caption = "barEditItem2";
+            this.barEditItem2.Edit = this.repositoryItemHypertextLabel1;
+            this.barEditItem2.Id = 58;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemHypertextLabel1
+            // 
+            this.repositoryItemHypertextLabel1.Name = "repositoryItemHypertextLabel1";
+            // 
+            // barStaticItemDefaultLevel
+            // 
+            this.barStaticItemDefaultLevel.Caption = "Default Level: n/a";
+            this.barStaticItemDefaultLevel.Id = 59;
+            this.barStaticItemDefaultLevel.Name = "barStaticItemDefaultLevel";
+            // 
+            // bBtnOpenAnalogyLog
+            // 
+            this.bBtnOpenAnalogyLog.Caption = "Open Analogy Xml File";
+            this.bBtnOpenAnalogyLog.Id = 60;
+            this.bBtnOpenAnalogyLog.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.logIcon;
+            this.bBtnOpenAnalogyLog.LargeWidth = 100;
+            this.bBtnOpenAnalogyLog.Name = "bBtnOpenAnalogyLog";
+            this.bBtnOpenAnalogyLog.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // ribbonPageThemes
+            // 
+            this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup3});
+            this.ribbonPageThemes.Name = "ribbonPageThemes";
+            this.ribbonPageThemes.Text = "Themes";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.skinRibbonGalleryBarItem2);
+            this.ribbonPageGroup3.ItemLinks.Add(this.skinPaletteRibbonGalleryBarItem2);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Options";
+            // 
+            // ribbonPage4
+            // 
+            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup10});
+            this.ribbonPage4.Name = "ribbonPage4";
+            this.ribbonPage4.Text = "Extensions";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.bbiExtensions);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "Extensions Selection";
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroupSettings});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Settings";
+            // 
+            // ribbonPageGroupSettings
+            // 
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsFiltering);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsHistory);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsLookAndFeel);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsUserStatistics);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnExtensionSettings);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnShortcuts);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnMRUSettings);
+            this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
+            this.ribbonPageGroupSettings.Text = "Settings";
+            // 
+            // xtcLogs
+            // 
+            this.xtcLogs.AllowDrop = true;
+            this.xtcLogs.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
+            this.xtcLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtcLogs.Location = new System.Drawing.Point(0, 143);
+            this.xtcLogs.Name = "xtcLogs";
+            this.xtcLogs.Size = new System.Drawing.Size(1300, 311);
+            this.xtcLogs.TabIndex = 4;
+            this.xtcLogs.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtcLogs_SelectedPageChanged);
+            this.xtcLogs.CloseButtonClick += new System.EventHandler(this.xtcLogs_CloseButtonClick);
+            this.xtcLogs.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragDrop);
+            this.xtcLogs.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragEnter);
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Switch to Debug";
+            this.barButtonItem6.Hint = "Change default log level to Debug";
+            this.barButtonItem6.Id = 54;
+            this.barButtonItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
+            this.barButtonItem6.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Log Configurator";
+            this.barButtonItem7.Id = 5;
+            this.barButtonItem7.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.PageSetup_16x16;
+            this.barButtonItem7.ImageOptions.LargeImage = global::Philips.Analogy.Properties.Resources.PageSetup_32x32;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // MainForm
+            // 
+            this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1300, 454);
+            this.Controls.Add(this.xtcLogs);
+            this.Controls.Add(this.ribbonControlMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "MainForm";
+            this.Ribbon = this.ribbonControlMain;
+            this.Text = "Analogy";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnalogyMainForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AnalogyMainForm_FormClosed);
+            this.Load += new System.EventHandler(this.AnalogyMainForm_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragEnter);
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Timer TmrAutoConnect;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControlMain;
+        private DevExpress.XtraBars.BarButtonItem btnItemRealTime;
+        private DevExpress.XtraBars.BarButtonItem btnItemLocalLogs;
+        private DevExpress.XtraBars.BarButtonItem btnItemOTA;
+        private DevExpress.XtraBars.BarButtonItem bItemProcess;
+        private DevExpress.XtraBars.BarButtonItem btnItemLogConfigurator;
+        private DevExpress.XtraBars.BarButtonItem btnItemDark;
+        private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem1;
+        private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem2;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageThemes;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem btnItemSearch;
+        private DevExpress.XtraBars.BarButtonItem btnItemCombineFiles;
+        private DevExpress.XtraBars.BarButtonItem btnItemConvert;
+        private DevExpress.XtraTab.XtraTabControl xtcLogs;
+        private DevExpress.XtraBars.BarButtonItem bbItemOpenFiles;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.BarSubItem bsiRecent;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem2;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem2;
+        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem bbitemHelp;
+        private DevExpress.XtraBars.BarSubItem bbsItem;
+        private DevExpress.XtraBars.BarButtonItem bbtnItemChangeLog;
+        private DevExpress.XtraBars.BarButtonItem bbtnItemHelp;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem bbtnItemSettings;
+        private DevExpress.XtraBars.BarButtonItem bbtnItemExit;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarWorkspaceMenuItem barWorkspaceMenuItem1;
+        private DevExpress.Utils.WorkspaceManager workspaceManager1;
+        private DevExpress.XtraBars.BarButtonItem bBtnBookmarked;
+        private DevExpress.XtraBars.BarButtonItem bBtnClientServer;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
+        private DevExpress.XtraBars.BarButtonItem bBtnStatisticsFiltering;
+        private DevExpress.XtraBars.BarButtonItem bBtnStatisticsHistory;
+        private DevExpress.XtraBars.BarButtonItem bBtnStatisticsLookAndFeel;
+        private DevExpress.XtraBars.BarButtonItem bBtnStatisticsUserStatistics;
+        private DevExpress.XtraBars.BarButtonItem bBtnExtensionSettings;
+        private DevExpress.XtraBars.BarButtonItem bBtnCompareLogs;
+        private DevExpress.XtraBars.BarButtonItem bBtnWindowsEventLogs;
+        private DevExpress.XtraBars.BarButtonItem bBtnOnlineEventLogs;
+        private DevExpress.XtraBars.BarButtonItem bbiExtensions;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.BarButtonItem bBtnShortcuts;
+        private DevExpress.XtraBars.BarButtonItem bBtnMRUSettings;
+        private DevExpress.XtraBars.BarSubItem bsiWindowsEventLogs;
+        private DevExpress.XtraBars.BarButtonItem bbtnFixCorruptedXMLFile;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarToggleSwitchItem barToggleDebug;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem btnItemLogConfiguratorOnline;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemDefaultLevel;
+        private DevExpress.XtraBars.BarButtonItem bBtnOpenAnalogyLog;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+    }
+}
