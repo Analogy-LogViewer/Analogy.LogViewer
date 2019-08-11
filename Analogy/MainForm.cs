@@ -956,6 +956,7 @@ namespace Philips.Analogy
                             }
                         }
                     };
+                    realTimeBtn.Enabled = true;
                     return true;
                 }
 
@@ -966,7 +967,16 @@ namespace Philips.Analogy
             realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
             if (realTime.AutoStartAtLaunch)
             {
-                OnlineSources.Add(OpenRealTime());
+                async Task<bool> AutoOpenRealTime()
+                {
+                    while (!await OpenRealTime())
+                    {
+                        await Task.Delay(1000);
+                    }
+
+                    return true;
+                }
+                OnlineSources.Add(AutoOpenRealTime());
 
             }
 
