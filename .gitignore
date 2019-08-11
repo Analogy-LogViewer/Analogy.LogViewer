@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Analogy/.vs/Analogy/v15
+/Analogy/bin/Debug
+/Analogy/obj/Debug
+/Analogy/Analogy.sln.DotSettings.user
+/.vs/Analogy/v15
+/Analogy.Interfaces/obj/Debug
+/Analogy.Interfaces/bin/Debug
+/Analogy.sln.DotSettings.user
