@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="rtxtbChangeLog.Text" xml:space="preserve">
-    <value>2019.07.09 - Added: take screenshot of the messages control.
+    <value>2019.08.19 - First release as open source tool.
+2019.07.09 - Added: take screenshot of the messages control.
 2019.07.09 - Added: more information to log data source.
 2019.07.03 - Added: Real time event viewer: add Philips specific logs to list.
 2019.06.24 - Change: Splunk export datetime normalization.
