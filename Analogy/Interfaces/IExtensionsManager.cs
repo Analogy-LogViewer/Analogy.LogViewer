@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Philips.Analogy.Interfaces.Interfaces;
 
 namespace Philips.Analogy.Interfaces
 {

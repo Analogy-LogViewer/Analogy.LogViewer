@@ -19,11 +19,14 @@ namespace Philips.Analogy.DataSources
         public IAnalogyDataSourceFactory DataSources { get; }
         public IAnalogyCustomActionFactory Actions { get; }
         public IAnalogyUserControlFactory UserControls { get; }
+        public IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
+        public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
 
         public AnalogyOfflineFactory()
         {
             DataSources = new AnalogyOfflineDataSourceFactory();
-            Actions=new AnalogyCustomActionFactory();
+            Actions = new AnalogyCustomActionFactory();
+            ChangeLog = new List<IAnalogyChangeLog>();
         }
     }
 
@@ -160,7 +163,7 @@ namespace Philips.Analogy.DataSources
         public Guid ID { get; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
         public Image Image { get; } = Resources.ChartsShowLegend_32x32;
         public string Title { get; } = "Process Identifier";
-       
+
     }
 }
 

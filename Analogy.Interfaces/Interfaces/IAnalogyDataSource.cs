@@ -7,14 +7,6 @@ using System.Threading.Tasks;
 
 namespace Philips.Analogy.Interfaces.Interfaces
 {
-    public interface IAnalogyFactories
-    {
-        Guid FactoryID { get; }
-        string Title { get; }
-        IAnalogyDataSourceFactory DataSources { get; }
-        IAnalogyCustomActionFactory Actions { get; }
-        IAnalogyUserControlFactory UserControls { get; }
-    }
     public interface IAnalogyDataSourceFactory
     {
         string Title { get; }

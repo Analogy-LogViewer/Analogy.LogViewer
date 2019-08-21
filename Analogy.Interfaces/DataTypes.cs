@@ -202,5 +202,11 @@ namespace Philips.Analogy.Interfaces
         AnalogyInformation
     }
 
-
+    public enum AnalogChangeLogType
+    {
+        None,
+        Defect,
+        Refactoring,
+        Feature,
+    }
 }

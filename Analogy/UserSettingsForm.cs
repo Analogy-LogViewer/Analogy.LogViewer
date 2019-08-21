@@ -3,6 +3,7 @@ using Philips.Analogy.Interfaces;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.Interfaces;
 
 namespace Philips.Analogy
 {

@@ -1,5 +1,7 @@
-﻿using Philips.Analogy.Interfaces.Interfaces;
+﻿using Philips.Analogy.Interfaces;
+using Philips.Analogy.Interfaces.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace Analogy.Implementation.Example
 {
@@ -14,5 +16,12 @@ namespace Analogy.Implementation.Example
         public IAnalogyCustomActionFactory Actions => null;
 
         public IAnalogyUserControlFactory UserControls => null;
+
+        public IEnumerable<IAnalogyChangeLog> ChangeLog { get; } = new List<AnalogyChangeLog>
+        {
+            new AnalogyChangeLog("Create example implementation",
+                AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 08, 15))
+        };
+        public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
     }
 }
