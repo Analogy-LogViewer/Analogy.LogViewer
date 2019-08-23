@@ -11,12 +11,12 @@
     <iconUrl>https://github.com/philips-software/logviewer/Analogy/Icons/Pelfusion-Flat-File-Type-Log.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>
-    <releaseNotes>Initial Package</releaseNotes>
+    <releaseNotes>Initial Release Of Analogy Open Source Log Viewer</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
 	<dependencies>
     <group targetFramework="net471">
-        <dependency id="Analogy.Interfaces.LiorBanai" version="4.0.0" />
+        <dependency id="Analogy.Interfaces.LiorBanai" version=1.0.0" />
     </group>
 </dependencies>
   </metadata>

@@ -9,10 +9,10 @@ using System.Reflection;
 [assembly: AssemblyTitle("Analogy Log Viewer")]
 [assembly: AssemblyDescription("Modern Log Viewer and analyzer.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Lior Banai (liorbanai@gmail.com)")]
-[assembly: AssemblyTrademark("Lior Banai")]
+[assembly: AssemblyCompany("Lior Banai")]
+[assembly: AssemblyProduct("Analogy Log Viewer")]
+[assembly: AssemblyCopyright("Copyright © Lior Banai 2019")]
+[assembly: AssemblyTrademark("Lior Banai (liorbanai@gmail.com)")]
 [assembly: AssemblyCulture("")]
 
 //

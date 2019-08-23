@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AnalogyExtension")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Analogy.Interfaces")]
+[assembly: AssemblyDescription("Interfaces for extending Analogy Log Viewer functionality")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Philips")]
-[assembly: AssemblyProduct("AnalogyExtension")]
-[assembly: AssemblyCopyright("Copyright © Philips 2019")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Lior Banai")]
+[assembly: AssemblyProduct("Analogy Log Viewer")]
+[assembly: AssemblyCopyright("Copyright © Lior Banai 2019")]
+[assembly: AssemblyTrademark("Lior Banai (liorbanai@gmail.com)")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
