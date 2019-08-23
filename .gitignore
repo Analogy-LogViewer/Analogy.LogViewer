@@ -15,3 +15,9 @@
 /Analogy.Implementation.Example/bin/Debug
 /.vs/Analogy/v16/Server/sqlite3
 /.vs/Analogy/v16/.suo
+/Analogy/bin/Release
+/Analogy/obj/Release
+/Analogy.Implementation.Example/obj/Release
+/Analogy.Interfaces/bin/Release
+/Analogy.Interfaces/obj/Release
+/Analogy.Interfaces/nuget.exe

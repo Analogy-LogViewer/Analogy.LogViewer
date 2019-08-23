@@ -11,7 +11,7 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Created by Lior Banai (liorbanai@gmail.com)")]
+[assembly: AssemblyCopyright("Lior Banai (liorbanai@gmail.com)")]
 [assembly: AssemblyTrademark("Lior Banai")]
 [assembly: AssemblyCulture("")]
 
