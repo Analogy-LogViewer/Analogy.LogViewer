@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Analogy.Lior.Banai</id>
+    <id>Analogy.LiorBanai</id>
     <version>4.0.0</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/philips-software/logviewer/</projectUrl>
-    <iconUrl>https://github.com/philips-software/logviewer/blob/master/Analogy/Icons/Pelfusion-Flat-File-Type-Log.ico</iconUrl>
+    <iconUrl>https://github.com/philips-software/logviewer/Analogy/Icons/Pelfusion-Flat-File-Type-Log.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>
     <releaseNotes>Initial Package</releaseNotes>
