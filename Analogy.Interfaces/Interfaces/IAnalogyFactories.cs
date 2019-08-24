@@ -15,6 +15,7 @@ namespace Philips.Analogy.Interfaces.Interfaces
         IAnalogyUserControlFactory UserControls { get; }
         IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
         IEnumerable<string> Contributors { get; }
+        string About { get; }
     }
 
 }

@@ -31,8 +31,11 @@ namespace Analogy.Implementation.Example
             {
                 if (OnMessageReady == null)
                     return;
-                AnalogyLogMessage m = new AnalogyLogMessage($"Generated message #{messageCount++}", AnalogyLogLevel.Event, AnalogyLogClass.General, "Example");
-                OnMessageReady(this, new AnalogyLogMessageArgs(m, Environment.MachineName, "Example", ID));
+                unchecked
+                {
+                    AnalogyLogMessage m = new AnalogyLogMessage($"Generated message #{messageCount++}", AnalogyLogLevel.Event, AnalogyLogClass.General, "Example");
+                    OnMessageReady(this, new AnalogyLogMessageArgs(m, Environment.MachineName, "Example", ID));
+                }
             };
         }
 

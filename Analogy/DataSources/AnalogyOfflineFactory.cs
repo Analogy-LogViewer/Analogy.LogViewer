@@ -21,7 +21,7 @@ namespace Philips.Analogy.DataSources
         public IAnalogyUserControlFactory UserControls { get; }
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
         public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
-
+        public string About { get; } = "Analogy Built-in Data Source";
         public AnalogyOfflineFactory()
         {
             DataSources = new AnalogyOfflineDataSourceFactory();

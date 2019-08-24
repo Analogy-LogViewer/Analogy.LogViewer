@@ -152,7 +152,7 @@ namespace Philips.Analogy.Interfaces
             Parameters = parameters ?? new string[0];
             User = user ?? string.Empty;
             AuditLogType = auditLogType ?? string.Empty;
-            Thread = threadID;
+            Thread = threadID!= 0 ? Thread: System.Threading.Thread.CurrentThread.ManagedThreadId;
         }
     }
 

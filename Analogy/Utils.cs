@@ -138,7 +138,8 @@ namespace Philips.Analogy
 
             dtc = new DataColumn("ProcessID", typeof(int));
             dtb.Columns.Add(dtc);
-
+            dtc = new DataColumn("ThreadID", typeof(int));
+            dtb.Columns.Add(dtc);
             dtc = new DataColumn("DataSource", typeof(string));
             dtb.Columns.Add(dtc);
             var manager = ExtensionsManager.Instance;

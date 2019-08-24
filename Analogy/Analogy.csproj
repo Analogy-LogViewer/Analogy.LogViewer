@@ -228,6 +228,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutDataSourceBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDataSourceBox.Designer.cs">
+      <DependentUpon>AboutDataSourceBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="AnalogyAboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -499,6 +505,8 @@
     <Compile Include="XtraUCFileSystem.Designer.cs">
       <DependentUpon>XtraUCFileSystem.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\About_32x32.png" />
+    <None Include="Resources\About_16x16.png" />
     <None Include="Resources\TwoColumns.png" />
     <None Include="Resources\ServerMode_32x32.png" />
     <None Include="Resources\ServerMode_16x16.png" />
@@ -516,6 +524,9 @@
     <None Include="Resources\Iqon_Spectral.jpg" />
     <None Include="Resources\Miradaa_Icon.jpg" />
     <None Include="Resources\iqon.png" />
+    <EmbeddedResource Include="AboutDataSourceBox.resx">
+      <DependentUpon>AboutDataSourceBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataVisualizerUC.resx">
       <DependentUpon>DataVisualizerUC.cs</DependentUpon>
     </EmbeddedResource>

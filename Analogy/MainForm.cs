@@ -725,6 +725,7 @@ namespace Philips.Analogy
         private void CreateDataSource(IAnalogyFactories factory, int position)
         {
             if (factory.Title == null) return;
+            
             RibbonPage ribbonPage = new RibbonPage(factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(factory.FactoryID, ribbonPage);
@@ -772,6 +773,17 @@ namespace Philips.Analogy
                     actionBtn.ItemClick += (sender, e) => { action.Action(); };
                 }
             }
+
+            RibbonPageGroup groupInfoSource = new RibbonPageGroup("About");
+            groupInfoSource.Alignment = RibbonPageGroupAlignment.Far;
+            BarButtonItem aboutBtn = new BarButtonItem();
+            aboutBtn.Caption = "Data Source Information";
+            aboutBtn.RibbonStyle = RibbonItemStyles.All;
+            groupInfoSource.ItemLinks.Add(aboutBtn);
+            aboutBtn.ImageOptions.Image =  Resources.About_32x32;
+            aboutBtn.ImageOptions.LargeImage = Resources.About_16x16;
+            aboutBtn.ItemClick += (sender, e) => { new AboutDataSourceBox(factory).ShowDialog(this);};
+            ribbonPage.Groups.Add(groupInfoSource);
         }
         private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataSource offlineAnalogy, string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {

@@ -1,6 +1,6 @@
 ﻿namespace Philips.Analogy
 {
-    partial class AnalogyAboutBox
+    partial class AboutDataSourceBox
     {
         /// <summary>
         /// Required designer variable.
@@ -27,9 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnalogyAboutBox));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
@@ -38,22 +36,23 @@
             this.okButton = new System.Windows.Forms.Button();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtxtContributions = new System.Windows.Forms.RichTextBox();
+            this.rtxtChangeLog = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
             // 
-            this.tableLayoutPanel.ColumnCount = 2;
+            this.tableLayoutPanel.ColumnCount = 1;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.84242F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.15758F));
-            this.tableLayoutPanel.Controls.Add(this.logoPictureBox, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
@@ -74,27 +73,14 @@
             this.tableLayoutPanel.Size = new System.Drawing.Size(1042, 409);
             this.tableLayoutPanel.TabIndex = 0;
             // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-            this.logoPictureBox.Location = new System.Drawing.Point(3, 4);
-            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
-            this.logoPictureBox.Size = new System.Drawing.Size(523, 401);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logoPictureBox.TabIndex = 12;
-            this.logoPictureBox.TabStop = false;
-            // 
             // labelProductName
             // 
             this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProductName.Location = new System.Drawing.Point(536, 0);
+            this.labelProductName.Location = new System.Drawing.Point(7, 0);
             this.labelProductName.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(503, 21);
+            this.labelProductName.Size = new System.Drawing.Size(1032, 21);
             this.labelProductName.TabIndex = 19;
             this.labelProductName.Text = "Product Name";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,11 +88,11 @@
             // labelVersion
             // 
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelVersion.Location = new System.Drawing.Point(536, 40);
+            this.labelVersion.Location = new System.Drawing.Point(7, 40);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(503, 21);
+            this.labelVersion.Size = new System.Drawing.Size(1032, 21);
             this.labelVersion.TabIndex = 0;
             this.labelVersion.Text = "Version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,11 +100,11 @@
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCopyright.Location = new System.Drawing.Point(536, 80);
+            this.labelCopyright.Location = new System.Drawing.Point(7, 80);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(503, 21);
+            this.labelCopyright.Size = new System.Drawing.Size(1032, 21);
             this.labelCopyright.TabIndex = 21;
             this.labelCopyright.Text = "Copyright";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,11 +112,11 @@
             // labelCompanyName
             // 
             this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCompanyName.Location = new System.Drawing.Point(536, 120);
+            this.labelCompanyName.Location = new System.Drawing.Point(7, 120);
             this.labelCompanyName.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelCompanyName.Name = "labelCompanyName";
-            this.labelCompanyName.Size = new System.Drawing.Size(503, 21);
+            this.labelCompanyName.Size = new System.Drawing.Size(1032, 21);
             this.labelCompanyName.TabIndex = 22;
             this.labelCompanyName.Text = "Company Name";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,13 +124,13 @@
             // textBoxDescription
             // 
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Location = new System.Drawing.Point(536, 164);
+            this.textBoxDescription.Location = new System.Drawing.Point(7, 164);
             this.textBoxDescription.Margin = new System.Windows.Forms.Padding(7, 4, 3, 4);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDescription.Size = new System.Drawing.Size(503, 196);
+            this.textBoxDescription.Size = new System.Drawing.Size(1032, 196);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail:  Lior.Banai@philips.com\r\nmail:" +
@@ -172,6 +158,7 @@
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
+            this.xtraTabPage3,
             this.xtraTabPage2});
             // 
             // xtraTabPage1
@@ -182,25 +169,42 @@
             this.xtraTabPage1.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPage1.Text = "About";
             // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.rtxtChangeLog);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPage3.Text = "Change Log";
+            // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Controls.Add(this.richTextBox1);
+            this.xtraTabPage2.Controls.Add(this.rtxtContributions);
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1041, 409);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPage2.Text = "Contributions";
             // 
-            // richTextBox1
+            // rtxtContributions
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1041, 409);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "Log Icon:  http://www.pelfusion.com";
+            this.rtxtContributions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtContributions.Location = new System.Drawing.Point(0, 0);
+            this.rtxtContributions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rtxtContributions.Name = "rtxtContributions";
+            this.rtxtContributions.Size = new System.Drawing.Size(1042, 409);
+            this.rtxtContributions.TabIndex = 0;
+            this.rtxtContributions.Text = "";
             // 
-            // AnalogyAboutBox
+            // rtxtChangeLog
+            // 
+            this.rtxtChangeLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtChangeLog.Location = new System.Drawing.Point(0, 0);
+            this.rtxtChangeLog.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rtxtChangeLog.Name = "rtxtChangeLog";
+            this.rtxtChangeLog.Size = new System.Drawing.Size(1042, 409);
+            this.rtxtChangeLog.TabIndex = 1;
+            this.rtxtChangeLog.Text = "";
+            // 
+            // AboutDataSourceBox
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -211,18 +215,19 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AnalogyAboutBox";
+            this.Name = "AboutDataSourceBox";
             this.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Analogy";
+            this.Load += new System.EventHandler(this.AboutDataSourceBox_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -231,7 +236,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private System.Windows.Forms.PictureBox logoPictureBox;
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelCopyright;
@@ -241,6 +245,8 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtxtContributions;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private System.Windows.Forms.RichTextBox rtxtChangeLog;
     }
 }

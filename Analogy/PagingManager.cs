@@ -111,6 +111,7 @@ namespace Philips.Analogy
                 dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
+                dtr["ThreadID"] = message.Thread;
                 dtr["DataSource"] = dataSource ?? string.Empty;
                 table.Rows.Add(dtr);
                 return dtr;
@@ -150,6 +151,7 @@ namespace Philips.Analogy
                     dtr["Audit"] = message.AuditLogType;
                     dtr["Object"] = message;
                     dtr["ProcessID"] = message.ProcessID;
+                    dtr["ThreadID"] = message.Thread;
                     dtr["DataSource"] = dataSource ?? string.Empty;
                     table.Rows.Add(dtr);
                     yield return (dtr, message);

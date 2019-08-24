@@ -202,7 +202,7 @@ namespace Philips.Analogy
             logGrid.RowCountChanged += (s, arg) =>
             {
                 if (autoScrollToLastMessage && !IsDisposed)
-                    logGrid.MoveLastVisible();
+                    logGrid.MoveLast();
             };
 
             gridControl.DataSource = _messageData.DefaultView;
@@ -747,7 +747,6 @@ namespace Philips.Analogy
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
             if (diffStartTime > DateTime.MinValue)
             {
-                dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
             }
 

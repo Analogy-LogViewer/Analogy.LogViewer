@@ -12,19 +12,21 @@ namespace Philips.Analogy
         private static Lazy<AnalogyFactoriesManager>
             _instance = new Lazy<AnalogyFactoriesManager>(() => new AnalogyFactoriesManager());
         public static AnalogyFactoriesManager AnalogyFactories { get; } = _instance.Value;
+        public List<(IAnalogyFactories Factory, Assembly Assembly)> Assemblies { get; private set; }
 
         private List<IAnalogyFactories> Factories { get; }
         public AnalogyFactoriesManager()
         {
             Factories = new List<IAnalogyFactories>();
+            Assemblies = new List<(IAnalogyFactories Facotry, Assembly Assembly)>();
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)
             {
                 try
                 {
-                    Assembly anAssembly = Assembly.LoadFile(Path.GetFullPath(aFile));
-                    Type[] types = anAssembly.GetTypes();
+                    Assembly assembly = Assembly.LoadFile(Path.GetFullPath(aFile));
+                    Type[] types = assembly.GetTypes();
                     foreach (Type aType in types)
                     {
                         try
@@ -33,6 +35,7 @@ namespace Philips.Analogy
                             {
                                 IAnalogyFactories factory = Activator.CreateInstance(aType) as IAnalogyFactories;
                                 Factories.Add(factory);
+                                Assemblies.Add((factory,assembly));
                             }
                         }
                         catch (Exception)
@@ -90,5 +93,7 @@ namespace Philips.Analogy
                 }
             }
         }
+
+        public Assembly GetAssemblyOfFactory(IAnalogyFactories factory) => Assemblies.Single(f => f.Factory == factory).Assembly;
     }
 }
