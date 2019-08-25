@@ -32,8 +32,6 @@
             this.lblPath = new DevExpress.XtraEditors.LabelControl();
             this.txtbPath = new System.Windows.Forms.TextBox();
             this.sBtnTest = new DevExpress.XtraEditors.SimpleButton();
-            this.rbtnClient = new System.Windows.Forms.RadioButton();
-            this.rBtnserver = new System.Windows.Forms.RadioButton();
             this.rBtnNetwork = new System.Windows.Forms.RadioButton();
             this.rBtnLocal = new System.Windows.Forms.RadioButton();
             this.txtDisplayName = new System.Windows.Forms.TextBox();
@@ -73,34 +71,10 @@
             this.sBtnTest.Text = "Test";
             this.sBtnTest.Click += new System.EventHandler(this.sBtnTest_Click);
             // 
-            // rbtnClient
-            // 
-            this.rbtnClient.AutoSize = true;
-            this.rbtnClient.Checked = true;
-            this.rbtnClient.Location = new System.Drawing.Point(12, 17);
-            this.rbtnClient.Name = "rbtnClient";
-            this.rbtnClient.Size = new System.Drawing.Size(62, 21);
-            this.rbtnClient.TabIndex = 7;
-            this.rbtnClient.TabStop = true;
-            this.rbtnClient.Text = "Client";
-            this.rbtnClient.UseVisualStyleBackColor = true;
-            this.rbtnClient.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
-            // 
-            // rBtnserver
-            // 
-            this.rBtnserver.AutoSize = true;
-            this.rBtnserver.Location = new System.Drawing.Point(118, 17);
-            this.rBtnserver.Name = "rBtnserver";
-            this.rBtnserver.Size = new System.Drawing.Size(69, 21);
-            this.rBtnserver.TabIndex = 8;
-            this.rBtnserver.Text = "Server";
-            this.rBtnserver.UseVisualStyleBackColor = true;
-            this.rBtnserver.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
-            // 
             // rBtnNetwork
             // 
             this.rBtnNetwork.AutoSize = true;
-            this.rBtnNetwork.Location = new System.Drawing.Point(211, 17);
+            this.rBtnNetwork.Location = new System.Drawing.Point(12, 12);
             this.rBtnNetwork.Name = "rBtnNetwork";
             this.rBtnNetwork.Size = new System.Drawing.Size(112, 21);
             this.rBtnNetwork.TabIndex = 9;
@@ -111,7 +85,7 @@
             // rBtnLocal
             // 
             this.rBtnLocal.AutoSize = true;
-            this.rBtnLocal.Location = new System.Drawing.Point(342, 17);
+            this.rBtnLocal.Location = new System.Drawing.Point(143, 12);
             this.rBtnLocal.Name = "rBtnLocal";
             this.rBtnLocal.Size = new System.Drawing.Size(101, 21);
             this.rBtnLocal.TabIndex = 10;
@@ -143,8 +117,6 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.rBtnLocal);
             this.Controls.Add(this.rBtnNetwork);
-            this.Controls.Add(this.rBtnserver);
-            this.Controls.Add(this.rbtnClient);
             this.Controls.Add(this.sBtnTest);
             this.Controls.Add(this.txtbPath);
             this.Controls.Add(this.lblPath);
@@ -152,7 +124,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "XtraFormClientServer";
-            this.Text = "XtraFormClientServer";
+            this.Text = "Other File Locations";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,8 +136,6 @@
         private DevExpress.XtraEditors.LabelControl lblPath;
         private System.Windows.Forms.TextBox txtbPath;
         private DevExpress.XtraEditors.SimpleButton sBtnTest;
-        private System.Windows.Forms.RadioButton rbtnClient;
-        private System.Windows.Forms.RadioButton rBtnserver;
         private System.Windows.Forms.RadioButton rBtnNetwork;
         private System.Windows.Forms.RadioButton rBtnLocal;
         private System.Windows.Forms.TextBox txtDisplayName;

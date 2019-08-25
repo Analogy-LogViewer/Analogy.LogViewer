@@ -863,7 +863,7 @@ namespace Philips.Analogy
 
             //add client/server  button:
             BarButtonItem externalSources = new BarButtonItem();
-            externalSources.Caption = "External Sources";
+            externalSources.Caption = "Known Locations";
             externalSources.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(externalSources);
             externalSources.ImageOptions.Image = Resources.ServerMode_16x16;
