@@ -40,7 +40,12 @@ namespace Philips.Analogy
             this.spltMain = new System.Windows.Forms.SplitContainer();
             this.splcLeft = new System.Windows.Forms.SplitContainer();
             this.folderTreeViewUC1 = new Philips.Analogy.FolderTreeViewUC();
-            this.lBoxFiles = new DevExpress.XtraEditors.ListBoxControl();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colChanged = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colFullPath = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -61,7 +66,6 @@ namespace Philips.Analogy
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bBtnOpenFolder = new DevExpress.XtraBars.BarButtonItem();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.spltMain)).BeginInit();
             this.spltMain.Panel1.SuspendLayout();
             this.spltMain.Panel2.SuspendLayout();
@@ -70,19 +74,19 @@ namespace Philips.Analogy
             this.splcLeft.Panel1.SuspendLayout();
             this.splcLeft.Panel2.SuspendLayout();
             this.splcLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lBoxFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkbSelectionMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRecursiveLoad.Properties)).BeginInit();
             this.tsPrimary.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // spltMain
             // 
             this.spltMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spltMain.Location = new System.Drawing.Point(0, 0);
-            this.spltMain.Margin = new System.Windows.Forms.Padding(2);
+            this.spltMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spltMain.Name = "spltMain";
             // 
             // spltMain.Panel1
@@ -92,16 +96,15 @@ namespace Philips.Analogy
             // spltMain.Panel2
             // 
             this.spltMain.Panel2.Controls.Add(this.ucLogs1);
-            this.spltMain.Size = new System.Drawing.Size(1040, 569);
-            this.spltMain.SplitterDistance = 294;
-            this.spltMain.SplitterWidth = 3;
+            this.spltMain.Size = new System.Drawing.Size(1387, 700);
+            this.spltMain.SplitterDistance = 392;
             this.spltMain.TabIndex = 5;
             // 
             // splcLeft
             // 
             this.splcLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splcLeft.Location = new System.Drawing.Point(0, 0);
-            this.splcLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.splcLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splcLeft.Name = "splcLeft";
             this.splcLeft.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -111,13 +114,12 @@ namespace Philips.Analogy
             // 
             // splcLeft.Panel2
             // 
-            this.splcLeft.Panel2.Controls.Add(this.lBoxFiles);
+            this.splcLeft.Panel2.Controls.Add(this.treeList1);
             this.splcLeft.Panel2.Controls.Add(this.standaloneBarDockControl1);
             this.splcLeft.Panel2.Controls.Add(this.chkbSelectionMode);
             this.splcLeft.Panel2.Controls.Add(this.checkEditRecursiveLoad);
-            this.splcLeft.Size = new System.Drawing.Size(294, 569);
-            this.splcLeft.SplitterDistance = 183;
-            this.splcLeft.SplitterWidth = 3;
+            this.splcLeft.Size = new System.Drawing.Size(392, 700);
+            this.splcLeft.SplitterDistance = 225;
             this.splcLeft.TabIndex = 4;
             // 
             // folderTreeViewUC1
@@ -125,30 +127,97 @@ namespace Philips.Analogy
             this.folderTreeViewUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderTreeViewUC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.folderTreeViewUC1.Location = new System.Drawing.Point(0, 0);
+            this.folderTreeViewUC1.Margin = new System.Windows.Forms.Padding(4);
             this.folderTreeViewUC1.Name = "folderTreeViewUC1";
-            this.folderTreeViewUC1.Size = new System.Drawing.Size(294, 183);
+            this.folderTreeViewUC1.Size = new System.Drawing.Size(392, 225);
             this.folderTreeViewUC1.TabIndex = 0;
             // 
-            // lBoxFiles
+            // treeList1
             // 
-            this.lBoxFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lBoxFiles.HorizontalScrollbar = true;
-            this.lBoxFiles.Location = new System.Drawing.Point(0, 62);
-            this.lBoxFiles.Margin = new System.Windows.Forms.Padding(2);
-            this.lBoxFiles.Name = "lBoxFiles";
-            this.lBoxFiles.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lBoxFiles.Size = new System.Drawing.Size(294, 321);
-            this.lBoxFiles.TabIndex = 5;
+            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.colName,
+            this.colChanged,
+            this.colSize,
+            this.colFullPath});
+            this.treeList1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeList1.FixedLineWidth = 3;
+            this.treeList1.Location = new System.Drawing.Point(0, 70);
+            this.treeList1.Margin = new System.Windows.Forms.Padding(4);
+            this.treeList1.MinWidth = 27;
+            this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.Editable = false;
+            this.treeList1.OptionsFind.AlwaysVisible = true;
+            this.treeList1.OptionsSelection.MultiSelect = true;
+            this.treeList1.OptionsView.AutoWidth = false;
+            this.treeList1.OptionsView.BestFitMode = DevExpress.XtraTreeList.TreeListBestFitMode.Fast;
+            this.treeList1.OptionsView.BestFitNodes = DevExpress.XtraTreeList.TreeListBestFitNodes.All;
+            this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
+            this.treeList1.OptionsView.ShowIndicator = false;
+            this.treeList1.Size = new System.Drawing.Size(392, 401);
+            this.treeList1.StateImageList = this.imageCollection1;
+            this.treeList1.TabIndex = 8;
+            this.treeList1.TreeLevelWidth = 24;
+            this.treeList1.SelectionChanged += new System.EventHandler(this.TreeList1_SelectionChanged);
+            // 
+            // colName
+            // 
+            this.colName.Caption = "Name";
+            this.colName.FieldName = "Name";
+            this.colName.MinWidth = 44;
+            this.colName.Name = "colName";
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 0;
+            this.colName.Width = 140;
+            // 
+            // colChanged
+            // 
+            this.colChanged.Caption = "Last changed";
+            this.colChanged.FieldName = "colChanged";
+            this.colChanged.MinWidth = 140;
+            this.colChanged.Name = "colChanged";
+            this.colChanged.OptionsColumn.AllowEdit = false;
+            this.colChanged.Visible = true;
+            this.colChanged.VisibleIndex = 1;
+            this.colChanged.Width = 141;
+            // 
+            // colSize
+            // 
+            this.colSize.Caption = "Size(Bytes)";
+            this.colSize.FieldName = "Size";
+            this.colSize.MinWidth = 27;
+            this.colSize.Name = "colSize";
+            this.colSize.Visible = true;
+            this.colSize.VisibleIndex = 2;
+            this.colSize.Width = 117;
+            // 
+            // colFullPath
+            // 
+            this.colFullPath.Caption = "Path";
+            this.colFullPath.FieldName = "Path";
+            this.colFullPath.MinWidth = 27;
+            this.colFullPath.Name = "colFullPath";
+            this.colFullPath.Visible = true;
+            this.colFullPath.VisibleIndex = 3;
+            this.colFullPath.Width = 116;
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.Images.SetKeyName(0, "Folder_Closed.png");
+            this.imageCollection1.Images.SetKeyName(1, "Folder_Opened.png");
+            this.imageCollection1.Images.SetKeyName(2, "File.png");
+            this.imageCollection1.Images.SetKeyName(3, "Local_Disk.png");
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 38);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 40);
             this.standaloneBarDockControl1.Manager = this.barManager1;
-            this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(294, 24);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(392, 30);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
@@ -232,17 +301,17 @@ namespace Philips.Analogy
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1040, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(1387, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 569);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 700);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1040, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1387, 0);
             // 
             // barDockControlLeft
             // 
@@ -250,29 +319,29 @@ namespace Philips.Analogy
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 569);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 700);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1040, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1387, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 569);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 700);
             // 
             // chkbSelectionMode
             // 
             this.chkbSelectionMode.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkbSelectionMode.EditValue = true;
-            this.chkbSelectionMode.Location = new System.Drawing.Point(0, 19);
-            this.chkbSelectionMode.Margin = new System.Windows.Forms.Padding(2);
+            this.chkbSelectionMode.Location = new System.Drawing.Point(0, 20);
+            this.chkbSelectionMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkbSelectionMode.Name = "chkbSelectionMode";
             this.chkbSelectionMode.Properties.Caption = "Clear log between selection";
             this.chkbSelectionMode.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("chkbSelectionMode.Properties.ImageOptions.ImageChecked")));
             this.chkbSelectionMode.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("chkbSelectionMode.Properties.ImageOptions.ImageUnchecked")));
-            this.chkbSelectionMode.Size = new System.Drawing.Size(294, 19);
+            this.chkbSelectionMode.Size = new System.Drawing.Size(392, 20);
             this.chkbSelectionMode.TabIndex = 6;
             // 
             // checkEditRecursiveLoad
@@ -280,22 +349,22 @@ namespace Philips.Analogy
             this.checkEditRecursiveLoad.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkEditRecursiveLoad.EditValue = true;
             this.checkEditRecursiveLoad.Location = new System.Drawing.Point(0, 0);
-            this.checkEditRecursiveLoad.Margin = new System.Windows.Forms.Padding(2);
+            this.checkEditRecursiveLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkEditRecursiveLoad.Name = "checkEditRecursiveLoad";
             this.checkEditRecursiveLoad.Properties.Caption = "Load Recursive Files";
             this.checkEditRecursiveLoad.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("checkEditRecursiveLoad.Properties.ImageOptions.ImageChecked")));
             this.checkEditRecursiveLoad.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("checkEditRecursiveLoad.Properties.ImageOptions.ImageUnchecked")));
-            this.checkEditRecursiveLoad.Size = new System.Drawing.Size(294, 19);
+            this.checkEditRecursiveLoad.Size = new System.Drawing.Size(392, 20);
             this.checkEditRecursiveLoad.TabIndex = 7;
             // 
             // ucLogs1
             // 
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
-            this.ucLogs1.Margin = new System.Windows.Forms.Padding(2);
+            this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
             this.ucLogs1.OnlineMode = false;
-            this.ucLogs1.Size = new System.Drawing.Size(743, 569);
+            this.ucLogs1.Size = new System.Drawing.Size(991, 700);
             this.ucLogs1.TabIndex = 0;
             // 
             // imageList
@@ -325,14 +394,14 @@ namespace Philips.Analogy
             this.toolStripSeparator1});
             this.tsPrimary.Location = new System.Drawing.Point(0, 0);
             this.tsPrimary.Name = "tsPrimary";
-            this.tsPrimary.Size = new System.Drawing.Size(1040, 37);
+            this.tsPrimary.Size = new System.Drawing.Size(1387, 46);
             this.tsPrimary.TabIndex = 6;
             this.tsPrimary.Visible = false;
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 46);
             // 
             // bar2
             // 
@@ -354,17 +423,9 @@ namespace Philips.Analogy
             this.bBtnOpenFolder.Name = "bBtnOpenFolder";
             this.bBtnOpenFolder.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.Images.SetKeyName(0, "Folder_Closed.png");
-            this.imageCollection1.Images.SetKeyName(1, "Folder_Opened.png");
-            this.imageCollection1.Images.SetKeyName(2, "File.png");
-            this.imageCollection1.Images.SetKeyName(3, "Local_Disk.png");
-            // 
             // OfflineUCLogs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.spltMain);
             this.Controls.Add(this.tsPrimary);
@@ -372,9 +433,9 @@ namespace Philips.Analogy
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "OfflineUCLogs";
-            this.Size = new System.Drawing.Size(1040, 569);
+            this.Size = new System.Drawing.Size(1387, 700);
             this.Load += new System.EventHandler(this.OfflineUCLogs_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragEnter);
@@ -386,13 +447,13 @@ namespace Philips.Analogy
             this.splcLeft.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splcLeft)).EndInit();
             this.splcLeft.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lBoxFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkbSelectionMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRecursiveLoad.Properties)).EndInit();
             this.tsPrimary.ResumeLayout(false);
             this.tsPrimary.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,7 +467,6 @@ namespace Philips.Analogy
         private System.Windows.Forms.SplitContainer splcLeft;
         private System.Windows.Forms.ImageList imageListBottom;
         private UCLogs ucLogs1;
-        private DevExpress.XtraEditors.ListBoxControl lBoxFiles;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
@@ -424,5 +484,10 @@ namespace Philips.Analogy
         private FolderTreeViewUC folderTreeViewUC1;
         private DevExpress.XtraBars.BarButtonItem bBtnSelectAll;
         private DevExpress.XtraEditors.CheckEdit checkEditRecursiveLoad;
+        private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colName;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colChanged;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colSize;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colFullPath;
     }
 }

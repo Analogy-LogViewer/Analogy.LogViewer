@@ -14,19 +14,30 @@ namespace Philips.Analogy.DataSources
 {
     public class AnalogyOfflineFactory : IAnalogyFactories
     {
-        public Guid FactoryID { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
+        public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
+        public Guid FactoryID { get; } = AnalogyGuid;
         public string Title { get; } = "Analogy Built-in Logs Features";
         public IAnalogyDataSourceFactory DataSources { get; }
         public IAnalogyCustomActionFactory Actions { get; }
         public IAnalogyUserControlFactory UserControls { get; }
-        public IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
+        public IEnumerable<IAnalogyChangeLog> ChangeLog => GetChangeLog();
         public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
         public string About { get; } = "Analogy Built-in Data Source";
         public AnalogyOfflineFactory()
         {
             DataSources = new AnalogyOfflineDataSourceFactory();
             Actions = new AnalogyCustomActionFactory();
-            ChangeLog = new List<IAnalogyChangeLog>();
+         
+        }
+
+        private IEnumerable<AnalogyChangeLog> GetChangeLog()
+        {
+            yield return new AnalogyChangeLog("Add more information in the offline files listing.", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 08, 31));
+            yield return new AnalogyChangeLog("Fix about Page loading.", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 08, 30));
+            yield return new AnalogyChangeLog("First release as open source tool.", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2019, 08, 19));
+            
+            
+
         }
     }
 

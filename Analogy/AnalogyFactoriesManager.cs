@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Philips.Analogy.DataSources;
 
 namespace Philips.Analogy
 {
@@ -18,7 +19,8 @@ namespace Philips.Analogy
         public AnalogyFactoriesManager()
         {
             Factories = new List<IAnalogyFactories>();
-            Assemblies = new List<(IAnalogyFactories Facotry, Assembly Assembly)>();
+            Assemblies = new List<(IAnalogyFactories Factory, Assembly Assembly)>();
+            Assemblies.Add((new AnalogyOfflineFactory(),Assembly.GetExecutingAssembly()));
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)
@@ -95,5 +97,7 @@ namespace Philips.Analogy
         }
 
         public Assembly GetAssemblyOfFactory(IAnalogyFactories factory) => Assemblies.Single(f => f.Factory == factory).Assembly;
+
+        public IAnalogyFactories Get(Guid Id) => Assemblies.Single(a => a.Factory.FactoryID == Id).Factory;
     }
 }

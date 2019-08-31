@@ -37,9 +37,9 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.rtxtChangeLog = new System.Windows.Forms.RichTextBox();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.rtxtContributions = new System.Windows.Forms.RichTextBox();
-            this.rtxtChangeLog = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -176,6 +176,16 @@
             this.xtraTabPage3.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPage3.Text = "Change Log";
             // 
+            // rtxtChangeLog
+            // 
+            this.rtxtChangeLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtChangeLog.Location = new System.Drawing.Point(0, 0);
+            this.rtxtChangeLog.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rtxtChangeLog.Name = "rtxtChangeLog";
+            this.rtxtChangeLog.Size = new System.Drawing.Size(1042, 409);
+            this.rtxtChangeLog.TabIndex = 1;
+            this.rtxtChangeLog.Text = "";
+            // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.rtxtContributions);
@@ -193,16 +203,6 @@
             this.rtxtContributions.Size = new System.Drawing.Size(1042, 409);
             this.rtxtContributions.TabIndex = 0;
             this.rtxtContributions.Text = "";
-            // 
-            // rtxtChangeLog
-            // 
-            this.rtxtChangeLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtChangeLog.Location = new System.Drawing.Point(0, 0);
-            this.rtxtChangeLog.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rtxtChangeLog.Name = "rtxtChangeLog";
-            this.rtxtChangeLog.Size = new System.Drawing.Size(1042, 409);
-            this.rtxtChangeLog.TabIndex = 1;
-            this.rtxtChangeLog.Text = "";
             // 
             // AboutDataSourceBox
             // 

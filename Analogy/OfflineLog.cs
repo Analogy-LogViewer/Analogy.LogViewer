@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraTreeList.Nodes;
 
 namespace Philips.Analogy
 {
@@ -22,7 +23,7 @@ namespace Philips.Analogy
             InitializeComponent();
         }
 
-        public OfflineUCLogs(IAnalogyOfflineDataSource dataSource, string[] fileNames=null, string initialSelectedPath = null) : this(initialSelectedPath)
+        public OfflineUCLogs(IAnalogyOfflineDataSource dataSource, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
         {
             DataSource = dataSource;
             if (fileNames != null)
@@ -72,29 +73,32 @@ namespace Philips.Analogy
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             await LoadFilesAsync(files.ToList(), chkbSelectionMode.Checked);
         }
-
-        private async void lBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            await LoadFilesAsync(lBoxFiles.SelectedItems.Cast<FileInfo>().Select(f => f.FullName).ToList(), chkbSelectionMode.Checked);
-
-
-        }
-
+        
         private void PopulateFiles(string folder)
         {
             if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
             SelectedPath = folder;
-            lBoxFiles.SelectedIndexChanged -= lBoxFiles_SelectedIndexChanged;
+            treeList1.FocusedNodeChanged -= TreeList1_FocusedNodeChanged;
+            treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
             List<FileInfo> fileInfos = DataSource.GetSupportedFiles(dirInfo, recursiveLoad).ToList();
-            //Utils.GetSupportedFiles(dirInfo, recursiveLoad);
-            lBoxFiles.DisplayMember = recursiveLoad ? "FullName" : "Name";
-            lBoxFiles.DataSource = fileInfos;
-            lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;
+            treeList1.Nodes.Clear();
+            foreach (FileInfo fi in fileInfos)
+            {
+                treeList1.Nodes.Add(fi.Name, fi.LastWriteTime, fi.Length, fi.FullName);
+            }
+
+            treeList1.BestFitColumns();
+            treeList1.ClearSelection();
+            treeList1.FocusedNodeChanged += TreeList1_FocusedNodeChanged;
+            treeList1.SelectionChanged += TreeList1_SelectionChanged;
+        }
+        private async void TreeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+          
 
         }
-
         private async Task LoadFilesAsync(List<string> fileNames, bool clearLog)
         {
             await ucLogs1.LoadFilesAsync(fileNames, clearLog);
@@ -103,9 +107,9 @@ namespace Philips.Analogy
 
         private void bBtnOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (lBoxFiles.SelectedItem != null)
+            if (treeList1.Selection.Any())
             {
-                var filename = (lBoxFiles.SelectedItem as FileInfo)?.FullName;
+                var filename = (string) treeList1.Selection.First().GetValue(colFullPath);
                 if (filename == null || !File.Exists(filename)) return;
                 Process.Start("explorer.exe", "/select, \"" + filename + "\"");
             }
@@ -113,9 +117,9 @@ namespace Philips.Analogy
 
         private void bBtnDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (lBoxFiles.SelectedItem != null)
+            if (treeList1.Selection.Any())
             {
-                var filename = (lBoxFiles.SelectedItem as FileInfo)?.FullName;
+                var filename = (string)treeList1.Selection.First().GetValue(colFullPath);
                 if (filename == null || !File.Exists(filename)) return;
                 var result = MessageBox.Show($"Are you sure you want to delete {filename}?", "Delete confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
@@ -140,10 +144,15 @@ namespace Philips.Analogy
             PopulateFiles(SelectedPath);
         }
 
-        private async void bBtnSelectAll_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bBtnSelectAll_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (lBoxFiles.DataSource is List<FileInfo> items)
-                await LoadFilesAsync(items.Select(f => f.FullName).ToList(), chkbSelectionMode.Checked);
+            treeList1.SelectAll();
+        }
+
+        private async void TreeList1_SelectionChanged(object sender, EventArgs e)
+        {
+            List<string> files = treeList1.Selection.Select(node => (string)node.GetValue(colFullPath)).ToList();
+            await LoadFilesAsync(files, chkbSelectionMode.Checked);
         }
     }
 

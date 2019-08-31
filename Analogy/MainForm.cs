@@ -76,7 +76,7 @@ namespace Philips.Analogy
 
         private void CreateAnalogyDataSource()
         {
-            IAnalogyFactories analogy = new AnalogyOfflineFactory();
+            IAnalogyFactories analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyOfflineFactory.AnalogyGuid);
             CreateDataSource(analogy, 0);
         }
 
@@ -780,8 +780,8 @@ namespace Philips.Analogy
             aboutBtn.Caption = "Data Source Information";
             aboutBtn.RibbonStyle = RibbonItemStyles.All;
             groupInfoSource.ItemLinks.Add(aboutBtn);
-            aboutBtn.ImageOptions.Image =  Resources.About_32x32;
-            aboutBtn.ImageOptions.LargeImage = Resources.About_16x16;
+            aboutBtn.ImageOptions.Image =  Resources.About_16x16;
+            aboutBtn.ImageOptions.LargeImage = Resources.About_32x32;
             aboutBtn.ItemClick += (sender, e) => { new AboutDataSourceBox(factory).ShowDialog(this);};
             ribbonPage.Groups.Add(groupInfoSource);
         }

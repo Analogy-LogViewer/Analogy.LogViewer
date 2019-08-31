@@ -102,7 +102,7 @@ namespace Philips.Analogy
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = $"{AssemblyDescription}{Environment.NewLine}{Factory.About}";
             rtxtChangeLog.Text = string.Join(Environment.NewLine,
-                Factory.ChangeLog.Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
+                Factory.ChangeLog.OrderByDescending(c=>c.Date).Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
             rtxtContributions.Text = string.Join(Environment.NewLine, Factory.Contributors);
         }
     }

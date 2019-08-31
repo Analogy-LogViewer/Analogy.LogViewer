@@ -208,5 +208,6 @@ namespace Philips.Analogy.Interfaces
         Defect,
         Refactoring,
         Feature,
+        Improvement
     }
 }
