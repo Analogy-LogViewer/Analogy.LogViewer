@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTypes.cs" />
+    <Compile Include="EmptyActionsFactory.cs" />
+    <Compile Include="EmptyUserControlsFactory.cs" />
     <Compile Include="EventArgs.cs" />
     <Compile Include="Interfaces\IAnalogyChangeLog.cs" />
     <Compile Include="Interfaces\IAnalogyExtension.cs" />
