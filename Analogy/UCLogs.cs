@@ -88,6 +88,7 @@ namespace Philips.Analogy
         private int pageNumber = 1;
         private int TotalPages => PagingManager.TotalPages;
         private IAnalogyOfflineDataSource FileDataSource { get; set; }
+        private IAnalogyOfflineDataSource AnalogyOfflineDataSource { get; } = new AnalogyOfflineDataSource();
         public UCLogs()
         {
             InitializeComponent();
@@ -103,6 +104,12 @@ namespace Philips.Analogy
             FileDataSource = fileDataSource;
             if (FileDataSource is EventLogDataSource eventDataSource)
                 eventDataSource.LogWindow = this;
+            if (FileDataSource == null)
+            {
+                //disable specific saving
+                bBtnSaveLog.Visibility = BarItemVisibility.Never;
+                bBtnSaveEntireLog.Visibility = BarItemVisibility.Never;
+            }
         }
         //public UCLogs(bool bookmarkView) : this()
         //{
@@ -1361,22 +1368,22 @@ namespace Philips.Analogy
         private void bBtnSaveLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = Messages;
-            SaveMessagesToLog(messages);
+            SaveMessagesToLog(FileDataSource, messages);
         }
 
-        private async void SaveMessagesToLog(List<AnalogyLogMessage> messages)
+        private async void SaveMessagesToLog(IAnalogyOfflineDataSource fileHandler, List<AnalogyLogMessage> messages)
         {
 
-            if (FileDataSource.CanSaveToLogFile)
+            if (fileHandler != null && fileHandler.CanSaveToLogFile)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = FileDataSource.FileSaveDialogFilters;
+                saveFileDialog.Filter = fileHandler.FileSaveDialogFilters;
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     try
                     {
-                        await FileDataSource.SaveAsync(messages, saveFileDialog.FileName);
+                        await fileHandler.SaveAsync(messages, saveFileDialog.FileName);
                     }
                     catch (Exception e)
                     {
@@ -1389,22 +1396,23 @@ namespace Philips.Analogy
             {
                 if (XtraMessageBox.Show("Current Data Source does not support Save Operation" + Environment.NewLine + "Do you want to Save in Analogy XML Format?", @"Save not Supported", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.Filter = "Plain XML log file - Analogy Data format (*.xml)| *.xml";
+                    SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+                    //SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    //saveFileDialog.Filter = "Plain XML log file - Analogy Data format (*.xml)| *.xml";
 
-                    if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-                    {
-                        try
-                        {
-                            AnalogyXmlLogFile save = new AnalogyXmlLogFile();
-                            save.Save(Messages, saveFileDialog.FileName);
-                            XtraMessageBox.Show("Operation Completed", $"Messages were saved to {saveFileDialog.FileName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception e)
-                        {
-                            XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    //if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                    //{
+                    //    try
+                    //    {
+                    //        AnalogyXmlLogFile save = new AnalogyXmlLogFile();
+                    //        save.Save(Messages, saveFileDialog.FileName);
+                    //        XtraMessageBox.Show("Operation Completed", $"Messages were saved to {saveFileDialog.FileName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    }
+                    //    catch (Exception e)
+                    //    {
+                    //        XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    }
+                    //}
                 }
                 else
                 {
@@ -1837,7 +1845,7 @@ namespace Philips.Analogy
         private void bBtnSaveEntireLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = PagingManager.GetAllMessages();
-            SaveMessagesToLog(messages);
+            SaveMessagesToLog(FileDataSource, messages);
         }
 
         private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
@@ -1919,6 +1927,18 @@ namespace Philips.Analogy
             g.CopyFromScreen(rect.Left, rect.Top, 0, 0, bmp.Size, CopyPixelOperation.SourceCopy);
 
             return bmp;
+        }
+
+        private void BbtnSaveViewAgnostic_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var messages = Messages;
+            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+        }
+
+        private void BarButtonItemSaveEntireInAnalogy_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var messages = PagingManager.GetAllMessages();
+            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
         }
     }
 }

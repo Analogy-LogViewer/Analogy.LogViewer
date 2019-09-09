@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.Interfaces;
 using Message = System.Windows.Forms.Message;
 
 namespace Philips.Analogy
@@ -16,11 +17,11 @@ namespace Philips.Analogy
         private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private bool _sendLogs;
         private static int clearHistoryCounter;
-        public OnlineUCLogs()
+        public OnlineUCLogs(IAnalogyRealTimeDataSource realTime )
         {
             InitializeComponent();
             ucLogs1.OnlineMode = true;
-            
+            ucLogs1.SetFileDataSource(realTime.FileOperationsHandler);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

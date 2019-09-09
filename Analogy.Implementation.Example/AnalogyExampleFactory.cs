@@ -20,7 +20,8 @@ namespace Analogy.Implementation.Example
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; } = new List<AnalogyChangeLog>
         {
             new AnalogyChangeLog("Create example implementation",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 08, 15)),
-            new AnalogyChangeLog("Add Thread ID",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 08, 20))
+            new AnalogyChangeLog("Add Thread ID",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 08, 20)),
+            new AnalogyChangeLog("Add File handler for online data source (aligned with new interface)",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 09, 09))
         };
         public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
         public string About { get; } = "Analogy Example Data Source";

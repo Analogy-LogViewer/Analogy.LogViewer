@@ -925,7 +925,7 @@ namespace Philips.Analogy
                 {
                     online++;
                     realTimeBtn.ImageOptions.Image = realTime.OptionalConnectedImage ?? Resources.Database_on;
-                    var onlineUC = new OnlineUCLogs();
+                    var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) => onlineUC.AppendMessage(e.Message, Environment.MachineName);
 

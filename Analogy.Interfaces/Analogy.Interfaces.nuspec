@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Analogy.Interfaces.LiorBanai</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Analogy.Interfaces</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/philips-software/logviewer/blob/master/Analogy/Icons/Pelfusion-Flat-File-Type-Log.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer (Interfaces)</description>
-    <releaseNotes>Small API change - Add About string to display in the About Form</releaseNotes>
+    <releaseNotes>Add File save handler for real time data source (fix issue #5 in github)</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
   </metadata>

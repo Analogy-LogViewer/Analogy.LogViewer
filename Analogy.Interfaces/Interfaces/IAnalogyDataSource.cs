@@ -34,6 +34,10 @@ namespace Philips.Analogy.Interfaces.Interfaces
         event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
+        /// <summary>
+        /// Handler for save/read logs for the online source.
+        /// </summary>
+        IAnalogyOfflineDataSource FileOperationsHandler { get; set; }
         bool AutoStartAtLaunch { get; }
         Task<bool> CanStartReceiving();
         void StartReceiving();

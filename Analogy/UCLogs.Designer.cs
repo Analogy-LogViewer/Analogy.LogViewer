@@ -119,8 +119,12 @@ namespace Philips.Analogy
             this.btswitchExpand = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.barSubItemSaveEntireLog = new DevExpress.XtraBars.BarSubItem();
             this.bBtnSaveEntireLog = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemSaveEntireInAnalogy = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItemSaveView = new DevExpress.XtraBars.BarSubItem();
             this.bBtnSaveLog = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnSaveViewAgnostic = new DevExpress.XtraBars.BarButtonItem();
             this.bbiScreenshot = new DevExpress.XtraBars.BarButtonItem();
             this.bSMExports = new DevExpress.XtraBars.BarSubItem();
             this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
@@ -288,7 +292,7 @@ namespace Philips.Analogy
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(2014, 309);
+            this.gridControl.Size = new System.Drawing.Size(2124, 309);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -786,7 +790,7 @@ namespace Philips.Analogy
             this.panel1.Location = new System.Drawing.Point(0, 401);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2014, 26);
+            this.panel1.Size = new System.Drawing.Size(2124, 26);
             this.panel1.TabIndex = 4;
             // 
             // txtbHighlight
@@ -795,7 +799,7 @@ namespace Philips.Analogy
             this.txtbHighlight.Location = new System.Drawing.Point(200, 0);
             this.txtbHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1294, 23);
+            this.txtbHighlight.Size = new System.Drawing.Size(1404, 23);
             this.txtbHighlight.TabIndex = 10;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
             // 
@@ -809,7 +813,7 @@ namespace Philips.Analogy
             this.pnlButtonsHighlight.Controls.Add(this.btnUp);
             this.pnlButtonsHighlight.Controls.Add(this.btnDown);
             this.pnlButtonsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1494, 0);
+            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1604, 0);
             this.pnlButtonsHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlButtonsHighlight.Name = "pnlButtonsHighlight";
             this.pnlButtonsHighlight.Size = new System.Drawing.Size(520, 26);
@@ -913,7 +917,7 @@ namespace Philips.Analogy
             this.pnlTopFiltering.Location = new System.Drawing.Point(0, 0);
             this.pnlTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTopFiltering.Name = "pnlTopFiltering";
-            this.pnlTopFiltering.Size = new System.Drawing.Size(2014, 92);
+            this.pnlTopFiltering.Size = new System.Drawing.Size(2124, 92);
             this.pnlTopFiltering.TabIndex = 3;
             // 
             // spltFilteringBoth
@@ -931,8 +935,8 @@ namespace Philips.Analogy
             // 
             this.spltFilteringBoth.Panel2.Controls.Add(this.chkLstLogLevel);
             this.spltFilteringBoth.Panel2MinSize = 150;
-            this.spltFilteringBoth.Size = new System.Drawing.Size(2014, 92);
-            this.spltFilteringBoth.SplitterDistance = 1551;
+            this.spltFilteringBoth.Size = new System.Drawing.Size(2124, 92);
+            this.spltFilteringBoth.SplitterDistance = 1635;
             this.spltFilteringBoth.SplitterWidth = 3;
             this.spltFilteringBoth.TabIndex = 19;
             // 
@@ -1124,7 +1128,7 @@ namespace Philips.Analogy
             this.chkLstLogLevel.Location = new System.Drawing.Point(0, 0);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
-            this.chkLstLogLevel.Size = new System.Drawing.Size(460, 92);
+            this.chkLstLogLevel.Size = new System.Drawing.Size(486, 92);
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
@@ -1137,7 +1141,7 @@ namespace Philips.Analogy
             this.tcBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tcBottom.Name = "tcBottom";
             this.tcBottom.SelectedTabPage = this.xtpMessageInfo;
-            this.tcBottom.Size = new System.Drawing.Size(2014, 204);
+            this.tcBottom.Size = new System.Drawing.Size(2124, 204);
             this.tcBottom.TabIndex = 6;
             this.tcBottom.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpMessageInfo,
@@ -1149,7 +1153,7 @@ namespace Philips.Analogy
             this.xtpMessageInfo.Controls.Add(this.bdcMessageBottom);
             this.xtpMessageInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpMessageInfo.Name = "xtpMessageInfo";
-            this.xtpMessageInfo.Size = new System.Drawing.Size(2007, 170);
+            this.xtpMessageInfo.Size = new System.Drawing.Size(2117, 170);
             this.xtpMessageInfo.Text = "Message Info";
             // 
             // rtxtContent
@@ -1158,7 +1162,7 @@ namespace Philips.Analogy
             this.rtxtContent.Location = new System.Drawing.Point(0, 37);
             this.rtxtContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtxtContent.Name = "rtxtContent";
-            this.rtxtContent.Size = new System.Drawing.Size(2007, 133);
+            this.rtxtContent.Size = new System.Drawing.Size(2117, 133);
             this.rtxtContent.TabIndex = 0;
             this.rtxtContent.Text = "";
             // 
@@ -1171,7 +1175,7 @@ namespace Philips.Analogy
             this.bdcMessageBottom.Manager = this.barManager1;
             this.bdcMessageBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcMessageBottom.Name = "bdcMessageBottom";
-            this.bdcMessageBottom.Size = new System.Drawing.Size(2007, 37);
+            this.bdcMessageBottom.Size = new System.Drawing.Size(2117, 37);
             this.bdcMessageBottom.Text = "standaloneBarDockControl2";
             // 
             // barManager1
@@ -1215,9 +1219,13 @@ namespace Philips.Analogy
             this.bBtnUndockView,
             this.bBtnSaveEntireLog,
             this.bBtnDataVisualizer,
-            this.bbiScreenshot});
+            this.bbiScreenshot,
+            this.barSubItemSaveView,
+            this.bbtnSaveViewAgnostic,
+            this.barSubItemSaveEntireLog,
+            this.barButtonItemSaveEntireInAnalogy});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 28;
+            this.barManager1.MaxItemId = 33;
             // 
             // barTopFiltering
             // 
@@ -1232,8 +1240,8 @@ namespace Philips.Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchExpand),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveEntireLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveEntireLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveView),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
             new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
@@ -1289,9 +1297,21 @@ namespace Philips.Analogy
             this.btsAutoScrollToBottom.Name = "btsAutoScrollToBottom";
             this.btsAutoScrollToBottom.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btsAutoScrollToBottom_CheckedChanged);
             // 
+            // barSubItemSaveEntireLog
+            // 
+            this.barSubItemSaveEntireLog.Caption = "Save Entire Log";
+            this.barSubItemSaveEntireLog.Id = 31;
+            this.barSubItemSaveEntireLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveEntireLog.ImageOptions.Image")));
+            this.barSubItemSaveEntireLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveEntireLog.ImageOptions.LargeImage")));
+            this.barSubItemSaveEntireLog.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveEntireLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSaveEntireInAnalogy)});
+            this.barSubItemSaveEntireLog.Name = "barSubItemSaveEntireLog";
+            this.barSubItemSaveEntireLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // bBtnSaveEntireLog
             // 
-            this.bBtnSaveEntireLog.Caption = "Save Entire Log";
+            this.bBtnSaveEntireLog.Caption = "Save Entire Log (custom Format)";
             this.bBtnSaveEntireLog.Id = 25;
             this.bBtnSaveEntireLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.Image")));
             this.bBtnSaveEntireLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.LargeImage")));
@@ -1299,15 +1319,45 @@ namespace Philips.Analogy
             this.bBtnSaveEntireLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnSaveEntireLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveEntireLog_ItemClick);
             // 
+            // barButtonItemSaveEntireInAnalogy
+            // 
+            this.barButtonItemSaveEntireInAnalogy.Caption = "Save Entire Log in Analogy Format (agnostic to Specific implementation)";
+            this.barButtonItemSaveEntireInAnalogy.Id = 32;
+            this.barButtonItemSaveEntireInAnalogy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.Image")));
+            this.barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage")));
+            this.barButtonItemSaveEntireInAnalogy.Name = "barButtonItemSaveEntireInAnalogy";
+            this.barButtonItemSaveEntireInAnalogy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItemSaveEntireInAnalogy_ItemClick);
+            // 
+            // barSubItemSaveView
+            // 
+            this.barSubItemSaveView.Caption = "Save Current View";
+            this.barSubItemSaveView.Id = 29;
+            this.barSubItemSaveView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveView.ImageOptions.Image")));
+            this.barSubItemSaveView.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveView.ImageOptions.LargeImage")));
+            this.barSubItemSaveView.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSaveViewAgnostic)});
+            this.barSubItemSaveView.Name = "barSubItemSaveView";
+            this.barSubItemSaveView.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // bBtnSaveLog
             // 
-            this.bBtnSaveLog.Caption = "Save Current View";
+            this.bBtnSaveLog.Caption = "Save Current View (custom Format)";
             this.bBtnSaveLog.Id = 4;
             this.bBtnSaveLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.Image")));
             this.bBtnSaveLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.LargeImage")));
             this.bBtnSaveLog.Name = "bBtnSaveLog";
             this.bBtnSaveLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnSaveLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveLog_ItemClick);
+            // 
+            // bbtnSaveViewAgnostic
+            // 
+            this.bbtnSaveViewAgnostic.Caption = "Save Current View in Analogy Format (agnostic to Specific implementation)";
+            this.bbtnSaveViewAgnostic.Id = 30;
+            this.bbtnSaveViewAgnostic.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.Image")));
+            this.bbtnSaveViewAgnostic.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.LargeImage")));
+            this.bbtnSaveViewAgnostic.Name = "bbtnSaveViewAgnostic";
+            this.bbtnSaveViewAgnostic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSaveViewAgnostic_ItemClick);
             // 
             // bbiScreenshot
             // 
@@ -1370,6 +1420,7 @@ namespace Philips.Analogy
             this.bBtnImport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnImport.ImageOptions.LargeImage")));
             this.bBtnImport.Name = "bBtnImport";
             this.bBtnImport.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnImport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnImport_ItemClick);
             // 
             // bBtnUndockView
@@ -1400,7 +1451,7 @@ namespace Philips.Analogy
             this.bdcTopFiltering.Manager = this.barManager1;
             this.bdcTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcTopFiltering.Name = "bdcTopFiltering";
-            this.bdcTopFiltering.Size = new System.Drawing.Size(2014, 38);
+            this.bdcTopFiltering.Size = new System.Drawing.Size(2124, 38);
             this.bdcTopFiltering.Text = "standaloneBarDockControl1";
             // 
             // BbarMainMenu
@@ -1515,7 +1566,7 @@ namespace Philips.Analogy
             this.bdcBookmarks.Manager = this.barManager1;
             this.bdcBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcBookmarks.Name = "bdcBookmarks";
-            this.bdcBookmarks.Size = new System.Drawing.Size(2007, 32);
+            this.bdcBookmarks.Size = new System.Drawing.Size(2117, 32);
             this.bdcBookmarks.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -1525,7 +1576,7 @@ namespace Philips.Analogy
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(2021, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(2131, 20);
             // 
             // barDockControlBottom
             // 
@@ -1534,7 +1585,7 @@ namespace Philips.Analogy
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 759);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(2021, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(2131, 0);
             // 
             // barDockControlLeft
             // 
@@ -1549,7 +1600,7 @@ namespace Philips.Analogy
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(2021, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(2131, 20);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 739);
@@ -1607,7 +1658,7 @@ namespace Philips.Analogy
             this.xtpBookmarks.Controls.Add(this.bdcBookmarks);
             this.xtpBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpBookmarks.Name = "xtpBookmarks";
-            this.xtpBookmarks.Size = new System.Drawing.Size(2007, 170);
+            this.xtpBookmarks.Size = new System.Drawing.Size(2117, 170);
             this.xtpBookmarks.Text = "Bookmarks";
             // 
             // gridControlBookmarkedMessages
@@ -1618,7 +1669,7 @@ namespace Philips.Analogy
             this.gridControlBookmarkedMessages.MainView = this.gridViewBookmarkedMessages;
             this.gridControlBookmarkedMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlBookmarkedMessages.Name = "gridControlBookmarkedMessages";
-            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(2007, 138);
+            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(2117, 138);
             this.gridControlBookmarkedMessages.TabIndex = 3;
             this.gridControlBookmarkedMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBookmarkedMessages});
@@ -1918,7 +1969,7 @@ namespace Philips.Analogy
             this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar1.MarqueeAnimationSpeed = 1;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1642, 30);
+            this.progressBar1.Size = new System.Drawing.Size(1752, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
@@ -1942,7 +1993,7 @@ namespace Philips.Analogy
             this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtpMain;
-            this.xtraTabControl1.Size = new System.Drawing.Size(2021, 739);
+            this.xtraTabControl1.Size = new System.Drawing.Size(2131, 739);
             this.xtraTabControl1.TabIndex = 7;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpMain,
@@ -1955,7 +2006,7 @@ namespace Philips.Analogy
             this.xtpMain.Controls.Add(this.pnlBottom);
             this.xtpMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpMain.Name = "xtpMain";
-            this.xtpMain.Size = new System.Drawing.Size(2014, 705);
+            this.xtpMain.Size = new System.Drawing.Size(2124, 705);
             this.xtpMain.Text = "Logs";
             // 
             // splitContainerMain
@@ -1973,7 +2024,7 @@ namespace Philips.Analogy
             this.splitContainerMain.Panel1.Text = "Panel1";
             this.splitContainerMain.Panel2.Controls.Add(this.tcBottom);
             this.splitContainerMain.Panel2.Text = "Panel2";
-            this.splitContainerMain.Size = new System.Drawing.Size(2014, 637);
+            this.splitContainerMain.Size = new System.Drawing.Size(2124, 637);
             this.splitContainerMain.SplitterPosition = 204;
             this.splitContainerMain.TabIndex = 21;
             this.splitContainerMain.Text = "splitContainerControl1";
@@ -1987,7 +2038,7 @@ namespace Philips.Analogy
             this.pnlBottom.Location = new System.Drawing.Point(0, 675);
             this.pnlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(2014, 30);
+            this.pnlBottom.Size = new System.Drawing.Size(2124, 30);
             this.pnlBottom.TabIndex = 3;
             // 
             // sBtnCancel
@@ -1996,7 +2047,7 @@ namespace Philips.Analogy
             this.sBtnCancel.Appearance.Options.UseFont = true;
             this.sBtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.sBtnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnCancel.ImageOptions.Image")));
-            this.sBtnCancel.Location = new System.Drawing.Point(1815, 0);
+            this.sBtnCancel.Location = new System.Drawing.Point(1925, 0);
             this.sBtnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnCancel.Name = "sBtnCancel";
             this.sBtnCancel.Size = new System.Drawing.Size(199, 30);
@@ -2031,7 +2082,7 @@ namespace Philips.Analogy
             this.xtCounts.Controls.Add(this.nudGroupBychars);
             this.xtCounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtCounts.Name = "xtCounts";
-            this.xtCounts.Size = new System.Drawing.Size(2014, 705);
+            this.xtCounts.Size = new System.Drawing.Size(2124, 705);
             this.xtCounts.Text = "Messages Grouping";
             // 
             // sBtnGroup
@@ -2612,7 +2663,7 @@ namespace Philips.Analogy
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UCLogs";
-            this.Size = new System.Drawing.Size(2021, 759);
+            this.Size = new System.Drawing.Size(2131, 759);
             this.Load += new System.EventHandler(this.UCLogs_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragEnter);
@@ -2851,5 +2902,9 @@ namespace Philips.Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnDataVisualizer;
         private DevExpress.XtraBars.BarButtonItem bbiScreenshot;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnThread;
+        private DevExpress.XtraBars.BarSubItem barSubItemSaveView;
+        private DevExpress.XtraBars.BarButtonItem bbtnSaveViewAgnostic;
+        private DevExpress.XtraBars.BarSubItem barSubItemSaveEntireLog;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSaveEntireInAnalogy;
     }
 }
