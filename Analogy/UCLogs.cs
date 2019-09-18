@@ -428,6 +428,9 @@ namespace Philips.Analogy
                     break;
                 case AnalogyLogLevel.Disabled:
                     break;
+                case AnalogyLogLevel.AnalogyInformation:
+                    img = imageList.Images[8];
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

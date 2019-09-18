@@ -66,7 +66,7 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
-            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
             this.bBtnBookmarked = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnClientServer = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnStatisticsFiltering = new DevExpress.XtraBars.BarButtonItem();
@@ -100,11 +100,16 @@
             this.xtcLogs = new DevExpress.XtraTab.XtraTabControl();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbtnCloseCurrentTabPage = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnCloseOtherTabPages = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnCloseAllTabPage = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuTabPages)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -179,10 +184,14 @@
             this.barEditItem1,
             this.barEditItem2,
             this.barStaticItemDefaultLevel,
-            this.bBtnOpenAnalogyLog});
+            this.bBtnOpenAnalogyLog,
+            this.ribbonControlMain.SearchEditItem,
+            this.bbtnCloseCurrentTabPage,
+            this.bbtnCloseOtherTabPages,
+            this.bbtnCloseAllTabPage});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 61;
+            this.ribbonControlMain.MaxItemId = 64;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -194,7 +203,7 @@
             this.repositoryItemHypertextLabel1});
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1300, 143);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1517, 178);
             this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
             // 
             // applicationMenu1
@@ -747,14 +756,16 @@
             this.xtcLogs.AllowDrop = true;
             this.xtcLogs.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.xtcLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtcLogs.Location = new System.Drawing.Point(0, 143);
+            this.xtcLogs.Location = new System.Drawing.Point(0, 178);
+            this.xtcLogs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtcLogs.Name = "xtcLogs";
-            this.xtcLogs.Size = new System.Drawing.Size(1300, 311);
+            this.xtcLogs.Size = new System.Drawing.Size(1517, 381);
             this.xtcLogs.TabIndex = 4;
             this.xtcLogs.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtcLogs_SelectedPageChanged);
             this.xtcLogs.CloseButtonClick += new System.EventHandler(this.xtcLogs_CloseButtonClick);
             this.xtcLogs.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragDrop);
             this.xtcLogs.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragEnter);
+            this.xtcLogs.MouseUp += new System.Windows.Forms.MouseEventHandler(this.XtcLogs_MouseUp);
             // 
             // barButtonItem6
             // 
@@ -775,12 +786,38 @@
             this.barButtonItem7.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
+            // popupMenuTabPages
+            // 
+            this.popupMenuTabPages.ItemLinks.Add(this.bbtnCloseCurrentTabPage, true);
+            this.popupMenuTabPages.ItemLinks.Add(this.bbtnCloseOtherTabPages);
+            this.popupMenuTabPages.ItemLinks.Add(this.bbtnCloseAllTabPage);
+            this.popupMenuTabPages.Name = "popupMenuTabPages";
+            this.popupMenuTabPages.Ribbon = this.ribbonControlMain;
+            // 
+            // bbtnCloseCurrentTabPage
+            // 
+            this.bbtnCloseCurrentTabPage.Caption = "Close this tab";
+            this.bbtnCloseCurrentTabPage.Id = 61;
+            this.bbtnCloseCurrentTabPage.Name = "bbtnCloseCurrentTabPage";
+            // 
+            // bbtnCloseOtherTabPages
+            // 
+            this.bbtnCloseOtherTabPages.Caption = "Close all other tabs";
+            this.bbtnCloseOtherTabPages.Id = 62;
+            this.bbtnCloseOtherTabPages.Name = "bbtnCloseOtherTabPages";
+            // 
+            // bbtnCloseAllTabPage
+            // 
+            this.bbtnCloseAllTabPage.Caption = "close all tabs";
+            this.bbtnCloseAllTabPage.Id = 63;
+            this.bbtnCloseAllTabPage.Name = "bbtnCloseAllTabPage";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 454);
+            this.ClientSize = new System.Drawing.Size(1517, 559);
             this.Controls.Add(this.xtcLogs);
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -799,6 +836,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuTabPages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -872,5 +910,9 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItemDefaultLevel;
         private DevExpress.XtraBars.BarButtonItem bBtnOpenAnalogyLog;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.PopupMenu popupMenuTabPages;
+        private DevExpress.XtraBars.BarButtonItem bbtnCloseCurrentTabPage;
+        private DevExpress.XtraBars.BarButtonItem bbtnCloseOtherTabPages;
+        private DevExpress.XtraBars.BarButtonItem bbtnCloseAllTabPage;
     }
 }

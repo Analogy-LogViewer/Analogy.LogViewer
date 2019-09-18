@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABc
-        HAAAAk1TRnQBSQFMAgEBBAEAAdgBAwHYAQMBKAEAASgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HAAAAk1TRnQBSQFMAgEBBAEAAeABAwHgAQMBKAEAASgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABoAMAAVADAAEBAQABCAYAATIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -3425,7 +3425,7 @@
   <data name="bBtnStatisticsFiltering.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABt0RVh0VGl0bGUAUmVhcHBseUZpbHRlcjtGaWx0ZXI72iUd5gAAA41JREFUOE91
+        vwAADr8BOAVTJAAAABt0RVh0VGl0bGUAUmVhcHBseUZpbHRlcjtGaWx0ZXI72iUd5gAAA41JREFUOE91
         kH1Q03Ucx7+gq7uSvLxgIl50CHoYJuks0l1XclpwpwZcnGEJ8qA89ACUJEnWKGYqnTQehPLIpfIQDAZn
         CMPHYAJDhFFb4QXjcQw29sRkzLG9+/5+x/Vf77v3/e77ud/r9fn+fmQ5nudTQp69eXpXQsdZvrjzDL+/
         Q7hzpLMgDL8LXsGtPN5I2+cvK5szt1ypPhqcnPq6rzdlVtJ6sLAsP+xwX1mkebqrGDZtF5y2SSzZdXAv
@@ -3447,7 +3447,7 @@
   <data name="bBtnStatisticsFiltering.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABt0RVh0VGl0bGUAUmVhcHBseUZpbHRlcjtGaWx0ZXI72iUd5gAAChpJREFUWEeN
+        vwAADr8BOAVTJAAAABt0RVh0VGl0bGUAUmVhcHBseUZpbHRlcjtGaWx0ZXI72iUd5gAAChpJREFUWEeN
         lwlYlNUax3HJNm+bSuU1FYVEcGuRSFMSUQyRBBFZKhVX8OKWhBlquJRys8xMJNkEBAQSBVEYNGQTAmFg
         BmaGAYYZZodhYNiGAeN/z/kSsmDqvs/zf858Z858/9/3nvec74wJAEb/R4z6i0Yb0eNjjMaQ7z8APG42
         hugJonGP9CTRU38R7aOi48YSPQ71pzAKMPBbP20GTelNxiWF2E8ri1i7pTLGNYoT45bFjXFjc6Jca2pi
@@ -4552,4 +4552,7 @@
         RK5CYII=
 </value>
   </data>
+  <metadata name="popupMenuTabPages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>981, 17</value>
+  </metadata>
 </root>
