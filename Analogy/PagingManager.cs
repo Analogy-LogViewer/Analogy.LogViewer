@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading;
 
 namespace Philips.Analogy
 {
@@ -20,6 +21,8 @@ namespace Philips.Analogy
         private int currentPageNumber;
         private object lockObject;
         private DataTable currentTable;
+        private static int _totalMissedMessages;
+
         public int TotalPages
         {
             get
@@ -29,6 +32,7 @@ namespace Philips.Analogy
             }
         }
 
+        public static int TotalMissedMessages => _totalMissedMessages;
 
         public PagingManager(UCLogs owner)
         {
@@ -226,6 +230,11 @@ namespace Philips.Analogy
         {
             lock (lockObject)
                 return currentTable == currentView;
+        }
+
+        public void IncrementTotalMissedMessages()
+        {
+            Interlocked.Increment(ref _totalMissedMessages);
         }
     }
 

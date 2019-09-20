@@ -28,6 +28,7 @@ namespace Philips.Analogy
         private int online;
         private bool DebugOn { get; set; }
         private XtraTabPage currentContextPage;
+        private UserSettingsManager settings;
         public MainForm()
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace Philips.Analogy
         private void AnalogyMainForm_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
+            settings = UserSettingsManager.UserSettings;
             bbtnCloseCurrentTabPage.ItemClick += (object s, ItemClickEventArgs ea) =>
             {
                 if (currentContextPage!=null)
@@ -88,10 +90,10 @@ namespace Philips.Analogy
             CreateDataSources();
 
             //set Default page:
-            Guid defaultIcap = new Guid(UserSettingsManager.UserSettings.StartUpDataSource);
-            if (Mapping.ContainsKey(defaultIcap))
+            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.StartUpDataSource);
+            if (Mapping.ContainsKey(defaultPage))
             {
-                ribbonControlMain.SelectedPage = Mapping[defaultIcap];
+                ribbonControlMain.SelectedPage = Mapping[defaultPage];
             }
 
             if (OnlineSources.Any())
@@ -102,7 +104,7 @@ namespace Philips.Analogy
 
         private void CreateAnalogyDataSource()
         {
-            IAnalogyFactories analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyOfflineFactory.AnalogyGuid);
+            IAnalogyFactories analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyBuiltInFactory.AnalogyGuid);
             CreateDataSource(analogy, 0);
         }
 
@@ -1100,6 +1102,25 @@ namespace Philips.Analogy
             //        popupMenuTabPages.ShowPopup(pt);
             //    }
             //}
+        }
+
+        private void TmrStatusUpdates_Tick(object sender, EventArgs e)
+        {
+            tmrStatusUpdates.Stop();
+            bsiMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [mb] used";
+            if (settings.IdleMode)
+            {
+                bsiIdleMessage.Caption = $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}";
+            }
+            else
+                bsiIdleMessage.Caption = "Idle mode is off";
+            tmrStatusUpdates.Start();
+        }
+
+        private void BbtnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(7);
+            user.ShowDialog(this);
         }
     }
 }

@@ -45,7 +45,10 @@ namespace Philips.Analogy
             }
 
             checkEditSearchAlsoInSourceAndModule.Checked = Settings.SearchAlsoInSourceAndModule;
+            toggleSwitchIdleMode.IsOn = Settings.IdleMode;
+            nudIdleTime.Value = Settings.IdleTimeMinutes;
         }
+        
 
         private void tsFilteringExclude_Toggled(object sender, EventArgs e)
         {
@@ -163,6 +166,18 @@ namespace Philips.Analogy
         private void checkEditSearchAlsoInSourceAndModule_CheckedChanged(object sender, EventArgs e)
         {
             Settings.SearchAlsoInSourceAndModule = checkEditSearchAlsoInSourceAndModule.Checked;
+        }
+
+        private void ToggleSwitchIdleMode_Toggled(object sender, EventArgs e)
+        {
+            Settings.IdleMode = toggleSwitchIdleMode.IsOn;
+
+        }
+
+        private void NudIdleTime_ValueChanged(object sender, EventArgs e)
+        {
+            Settings.IdleTimeMinutes=(int)nudIdleTime.Value;
+
         }
     }
 }

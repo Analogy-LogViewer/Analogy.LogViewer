@@ -20,7 +20,7 @@ namespace Philips.Analogy
         {
             Factories = new List<IAnalogyFactories>();
             Assemblies = new List<(IAnalogyFactories Factory, Assembly Assembly)>();
-            Assemblies.Add((new AnalogyOfflineFactory(),Assembly.GetExecutingAssembly()));
+            Assemblies.Add((new AnalogyBuiltInFactory(),Assembly.GetExecutingAssembly()));
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)

@@ -38,6 +38,9 @@ namespace Philips.Analogy
         public float FontSize { get; set; }
         public bool SearchAlsoInSourceAndModule { get; set; }
         public string StartUpDataSource { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
+        public bool IdleMode { get; set; }
+        public int IdleTimeMinutes { get; set; }
+
         public UserSettingsManager()
         {
             Load();
@@ -80,6 +83,8 @@ namespace Philips.Analogy
             FontSize = Settings.Default.FontSize;
             IncludeText = Settings.Default.IncludeText;
             SearchAlsoInSourceAndModule = Settings.Default.SearchAlsoInSourceAndModule;
+            IdleMode = Settings.Default.IdleMode;
+            IdleTimeMinutes= Settings.Default.IdleTimeMinutes;
         }
 
 
@@ -109,6 +114,8 @@ namespace Philips.Analogy
             Settings.Default.FontSize = FontSize;
             Settings.Default.IncludeText = IncludeText;
             Settings.Default.SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule;
+            Settings.Default.IdleMode = IdleMode;
+            Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
             Settings.Default.Save();
 
         }

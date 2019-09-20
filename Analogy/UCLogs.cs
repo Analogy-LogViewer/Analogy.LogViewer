@@ -752,6 +752,10 @@ namespace Philips.Analogy
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+            if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
+            {
+                PagingManager.IncrementTotalMissedMessages();
+            }
             lockSlim.EnterWriteLock();
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
@@ -786,7 +790,10 @@ namespace Philips.Analogy
 
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
-
+            if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
+            {
+                PagingManager.IncrementTotalMissedMessages();
+            }
             lockSlim.EnterWriteLock();
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
             {
@@ -914,7 +921,7 @@ namespace Philips.Analogy
             lock (LockObject)
             {
                 _messageData.BeginLoadData();
-                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSQLExpression();
+                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression();
                 _messageData.EndLoadData();
             }
 
