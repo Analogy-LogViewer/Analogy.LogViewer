@@ -40,11 +40,11 @@ namespace Philips.Analogy
             this.spltMain = new System.Windows.Forms.SplitContainer();
             this.splcLeft = new System.Windows.Forms.SplitContainer();
             this.lBoxSources = new DevExpress.XtraEditors.ListBoxControl();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.bBtnAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnManage = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnRemove = new DevExpress.XtraBars.BarButtonItem();
-            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -71,7 +71,7 @@ namespace Philips.Analogy
             // 
             this.spltMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spltMain.Location = new System.Drawing.Point(0, 0);
-            this.spltMain.Margin = new System.Windows.Forms.Padding(2);
+            this.spltMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spltMain.Name = "spltMain";
             // 
             // spltMain.Panel1
@@ -81,16 +81,15 @@ namespace Philips.Analogy
             // spltMain.Panel2
             // 
             this.spltMain.Panel2.Controls.Add(this.ucLogs1);
-            this.spltMain.Size = new System.Drawing.Size(1040, 546);
-            this.spltMain.SplitterDistance = 282;
-            this.spltMain.SplitterWidth = 3;
+            this.spltMain.Size = new System.Drawing.Size(1387, 676);
+            this.spltMain.SplitterDistance = 376;
             this.spltMain.TabIndex = 5;
             // 
             // splcLeft
             // 
             this.splcLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splcLeft.Location = new System.Drawing.Point(0, 0);
-            this.splcLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.splcLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splcLeft.Name = "splcLeft";
             this.splcLeft.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -99,20 +98,31 @@ namespace Philips.Analogy
             this.splcLeft.Panel1.Controls.Add(this.lBoxSources);
             this.splcLeft.Panel1.Controls.Add(this.standaloneBarDockControl1);
             this.splcLeft.Panel2Collapsed = true;
-            this.splcLeft.Size = new System.Drawing.Size(282, 546);
+            this.splcLeft.Size = new System.Drawing.Size(376, 676);
             this.splcLeft.SplitterDistance = 191;
-            this.splcLeft.SplitterWidth = 3;
             this.splcLeft.TabIndex = 4;
             // 
             // lBoxSources
             // 
             this.lBoxSources.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lBoxSources.Location = new System.Drawing.Point(0, 31);
-            this.lBoxSources.Margin = new System.Windows.Forms.Padding(2);
+            this.lBoxSources.Location = new System.Drawing.Point(0, 37);
+            this.lBoxSources.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lBoxSources.Name = "lBoxSources";
-            this.lBoxSources.Size = new System.Drawing.Size(282, 515);
+            this.lBoxSources.Size = new System.Drawing.Size(376, 639);
             this.lBoxSources.TabIndex = 1;
             this.lBoxSources.SelectedIndexChanged += new System.EventHandler(this.lBoxSources_SelectedIndexChanged);
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(376, 37);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
             // 
@@ -126,7 +136,7 @@ namespace Philips.Analogy
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.bBtnAdd,
+            this.bBtnManage,
             this.bBtnRemove});
             this.barManager1.MaxItemId = 5;
             this.barManager1.StatusBar = this.bar3;
@@ -139,23 +149,22 @@ namespace Philips.Analogy
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(87, 205);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnAdd),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnManage),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemove)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "ExcludedSources";
             // 
-            // bBtnAdd
+            // bBtnManage
             // 
-            this.bBtnAdd.Caption = "Add";
-            this.bBtnAdd.Enabled = false;
-            this.bBtnAdd.Id = 0;
-            this.bBtnAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnAdd.ImageOptions.Image")));
-            this.bBtnAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnAdd.ImageOptions.LargeImage")));
-            this.bBtnAdd.Name = "bBtnAdd";
-            this.bBtnAdd.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnAdd_ItemClick);
+            this.bBtnManage.Caption = "Manage list";
+            this.bBtnManage.Id = 0;
+            this.bBtnManage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnAdd.ImageOptions.Image")));
+            this.bBtnManage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnAdd.ImageOptions.LargeImage")));
+            this.bBtnManage.Name = "bBtnManage";
+            this.bBtnManage.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnManage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnAdd_ItemClick);
             // 
             // bBtnRemove
             // 
@@ -166,19 +175,8 @@ namespace Philips.Analogy
             this.bBtnRemove.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnRemove.ImageOptions.LargeImage")));
             this.bBtnRemove.Name = "bBtnRemove";
             this.bBtnRemove.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnRemove.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnRemove.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnRemove_ItemClick);
-            // 
-            // standaloneBarDockControl1
-            // 
-            this.standaloneBarDockControl1.AutoSize = true;
-            this.standaloneBarDockControl1.CausesValidation = false;
-            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
-            this.standaloneBarDockControl1.Manager = this.barManager1;
-            this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(282, 31);
-            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // bar3
             // 
@@ -199,17 +197,17 @@ namespace Philips.Analogy
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1040, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(1387, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 546);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 676);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1040, 23);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1387, 24);
             // 
             // barDockControlLeft
             // 
@@ -217,26 +215,26 @@ namespace Philips.Analogy
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 546);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 676);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1040, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1387, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 546);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 676);
             // 
             // ucLogs1
             // 
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
-            this.ucLogs1.Margin = new System.Windows.Forms.Padding(2);
+            this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
             this.ucLogs1.OnlineMode = false;
-            this.ucLogs1.Size = new System.Drawing.Size(755, 546);
+            this.ucLogs1.Size = new System.Drawing.Size(1007, 676);
             this.ucLogs1.TabIndex = 0;
             // 
             // imageList
@@ -266,18 +264,18 @@ namespace Philips.Analogy
             this.toolStripSeparator1});
             this.tsPrimary.Location = new System.Drawing.Point(0, 0);
             this.tsPrimary.Name = "tsPrimary";
-            this.tsPrimary.Size = new System.Drawing.Size(1040, 37);
+            this.tsPrimary.Size = new System.Drawing.Size(1387, 46);
             this.tsPrimary.TabIndex = 6;
             this.tsPrimary.Visible = false;
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 46);
             // 
             // WindowsEventLog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.spltMain);
             this.Controls.Add(this.tsPrimary);
@@ -285,9 +283,9 @@ namespace Philips.Analogy
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "WindowsEventLog";
-            this.Size = new System.Drawing.Size(1040, 569);
+            this.Size = new System.Drawing.Size(1387, 700);
             this.Load += new System.EventHandler(this.WindowsEventLog_Load);
             this.spltMain.Panel1.ResumeLayout(false);
             this.spltMain.Panel2.ResumeLayout(false);
@@ -322,7 +320,7 @@ namespace Philips.Analogy
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
-        private DevExpress.XtraBars.BarButtonItem bBtnAdd;
+        private DevExpress.XtraBars.BarButtonItem bBtnManage;
         private DevExpress.XtraBars.BarButtonItem bBtnRemove;
         private DevExpress.XtraEditors.ListBoxControl lBoxSources;
     }

@@ -41,12 +41,19 @@ namespace Philips.Analogy
         public bool IdleMode { get; set; }
         public int IdleTimeMinutes { get; set; }
 
+        public List<string > EventLogs { get; set; }
         public UserSettingsManager()
         {
             Load();
         }
         public void Load()
         {
+            if (Settings.Default.UpgradeRequired)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.UpgradeRequired = false;
+                Settings.Default.Save();
+            }
             ApplicationSkinName = Settings.Default.ApplicationSkinName;
             EnableUserStatistics = Settings.Default.EnableUserStatistics;
             AnalogyRunningTime = Settings.Default.AnalogyRunningTime;
@@ -85,6 +92,7 @@ namespace Philips.Analogy
             SearchAlsoInSourceAndModule = Settings.Default.SearchAlsoInSourceAndModule;
             IdleMode = Settings.Default.IdleMode;
             IdleTimeMinutes= Settings.Default.IdleTimeMinutes;
+            EventLogs = Settings.Default.WindowsEventLogs.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
 
 
@@ -116,6 +124,7 @@ namespace Philips.Analogy
             Settings.Default.SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule;
             Settings.Default.IdleMode = IdleMode;
             Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
+            Settings.Default.WindowsEventLogs = string.Join(",", EventLogs);
             Settings.Default.Save();
 
         }
