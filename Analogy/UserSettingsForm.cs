@@ -7,8 +7,23 @@ using Philips.Analogy.Interfaces.Interfaces;
 
 namespace Philips.Analogy
 {
+   
     public partial class UserSettingsForm : XtraForm
     {
+        private struct RealTimeCheckItem
+        {
+            public string Name;
+            public Guid ID;
+
+            public RealTimeCheckItem(string name, Guid id)
+            {
+                Name = name;
+                ID = id;
+            }
+
+            public override string ToString() => $"{Name} ({ID})";
+        }
+
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private int InitialSelection = -1;
 
@@ -77,6 +92,13 @@ namespace Philips.Analogy
 
             }
 
+            var startup = Settings.AutoStartDataSources;
+            var loaded = AnalogyFactoriesManager.AnalogyFactories.GetRealTimeDataSourcesNamesAndIds();
+            foreach (var realTime in loaded)
+            {
+                RealTimeCheckItem itm = new RealTimeCheckItem(realTime.Name, realTime.ID);
+                chkLstItemRealTimeDataSources.Items.Add(itm, startup.Contains(itm.ID));
+            }
         }
 
         private void nudRecent_ValueChanged(object sender, EventArgs e)
@@ -178,6 +200,12 @@ namespace Philips.Analogy
         {
             Settings.IdleTimeMinutes=(int)nudIdleTime.Value;
 
+        }
+
+        private void ChkLstItemRealTimeDataSources_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.AutoStartDataSources =
+                chkLstItemRealTimeDataSources.CheckedItems.Cast<RealTimeCheckItem>().Select(r => r.ID).ToList();
         }
     }
 }

@@ -358,5 +358,17 @@ namespace Philips.Analogy.Properties {
                 this["UpgradeRequired"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AutoStartDataSources {
+            get {
+                return ((string)(this["AutoStartDataSources"]));
+            }
+            set {
+                this["AutoStartDataSources"] = value;
+            }
+        }
     }
 }

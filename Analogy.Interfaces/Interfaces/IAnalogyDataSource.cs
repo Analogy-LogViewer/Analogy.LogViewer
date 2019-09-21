@@ -37,8 +37,7 @@ namespace Philips.Analogy.Interfaces.Interfaces
         /// <summary>
         /// Handler for save/read logs for the online source.
         /// </summary>
-        IAnalogyOfflineDataSource FileOperationsHandler { get; set; }
-        bool AutoStartAtLaunch { get; }
+        IAnalogyOfflineDataSource FileOperationsHandler { get; }
         Task<bool> CanStartReceiving();
         void StartReceiving();
         void StopReceiving();

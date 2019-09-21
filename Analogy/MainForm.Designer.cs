@@ -95,6 +95,8 @@
             this.bbtnCloseOtherTabPages = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCloseAllTabPage = new DevExpress.XtraBars.BarButtonItem();
             this.bsiMemoryUsage = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiIdleMessage = new DevExpress.XtraBars.BarStaticItem();
+            this.bbtnUserSettingsResourceUsage = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -107,8 +109,7 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.bsiIdleMessage = new DevExpress.XtraBars.BarStaticItem();
-            this.bbtnUserSettingsResourceUsage = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnSettingsStartupDataSources = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -196,10 +197,11 @@
             this.bbtnCloseAllTabPage,
             this.bsiMemoryUsage,
             this.bsiIdleMessage,
-            this.bbtnUserSettingsResourceUsage});
+            this.bbtnUserSettingsResourceUsage,
+            this.bbtnSettingsStartupDataSources});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 67;
+            this.ribbonControlMain.MaxItemId = 68;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -739,6 +741,24 @@
             this.bsiMemoryUsage.Id = 64;
             this.bsiMemoryUsage.Name = "bsiMemoryUsage";
             // 
+            // bsiIdleMessage
+            // 
+            this.bsiIdleMessage.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiIdleMessage.Caption = "N/A";
+            this.bsiIdleMessage.Id = 65;
+            this.bsiIdleMessage.Name = "bsiIdleMessage";
+            // 
+            // bbtnUserSettingsResourceUsage
+            // 
+            this.bbtnUserSettingsResourceUsage.Caption = "Resource Usage";
+            this.bbtnUserSettingsResourceUsage.Id = 66;
+            this.bbtnUserSettingsResourceUsage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnUserSettingsResourceUsage.ImageOptions.Image")));
+            this.bbtnUserSettingsResourceUsage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnUserSettingsResourceUsage.ImageOptions.LargeImage")));
+            this.bbtnUserSettingsResourceUsage.Name = "bbtnUserSettingsResourceUsage";
+            this.bbtnUserSettingsResourceUsage.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bbtnUserSettingsResourceUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnUserSettingsResourceUsage_ItemClick);
+            // 
             // ribbonPageThemes
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -783,6 +803,7 @@
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnShortcuts);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnMRUSettings);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bbtnUserSettingsResourceUsage);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bbtnSettingsStartupDataSources);
             this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
             this.ribbonPageGroupSettings.Text = "Settings";
             // 
@@ -844,23 +865,16 @@
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
             // 
-            // bsiIdleMessage
+            // bbtnSettingsStartupDataSources
             // 
-            this.bsiIdleMessage.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiIdleMessage.Caption = "N/A";
-            this.bsiIdleMessage.Id = 65;
-            this.bsiIdleMessage.Name = "bsiIdleMessage";
-            // 
-            // bbtnUserSettingsResourceUsage
-            // 
-            this.bbtnUserSettingsResourceUsage.Caption = "Resource Usage";
-            this.bbtnUserSettingsResourceUsage.Id = 66;
-            this.bbtnUserSettingsResourceUsage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnUserSettingsResourceUsage.ImageOptions.Image")));
-            this.bbtnUserSettingsResourceUsage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnUserSettingsResourceUsage.ImageOptions.LargeImage")));
-            this.bbtnUserSettingsResourceUsage.Name = "bbtnUserSettingsResourceUsage";
-            this.bbtnUserSettingsResourceUsage.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.bbtnSettingsStartupDataSources.Caption = "Startup Data sources";
+            this.bbtnSettingsStartupDataSources.Id = 67;
+            this.bbtnSettingsStartupDataSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSettingsStartupDataSources.ImageOptions.Image")));
+            this.bbtnSettingsStartupDataSources.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSettingsStartupDataSources.ImageOptions.LargeImage")));
+            this.bbtnSettingsStartupDataSources.Name = "bbtnSettingsStartupDataSources";
+            this.bbtnSettingsStartupDataSources.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bbtnUserSettingsResourceUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnUserSettingsResourceUsage_ItemClick);
+            this.bbtnSettingsStartupDataSources.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSettingsStartupDataSources_ItemClick);
             // 
             // MainForm
             // 
@@ -971,5 +985,6 @@
         private System.Windows.Forms.Timer tmrStatusUpdates;
         private DevExpress.XtraBars.BarStaticItem bsiIdleMessage;
         private DevExpress.XtraBars.BarButtonItem bbtnUserSettingsResourceUsage;
+        private DevExpress.XtraBars.BarButtonItem bbtnSettingsStartupDataSources;
     }
 }

@@ -68,6 +68,8 @@
             this.nudIdleTime = new System.Windows.Forms.NumericUpDown();
             this.toggleSwitchIdleMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtraTabPageRealTimeDataSources = new DevExpress.XtraTab.XtraTabPage();
+            this.chkLstItemRealTimeDataSources = new System.Windows.Forms.CheckedListBox();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -99,6 +101,7 @@
             this.xtraTabPageResources.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIdleMode.Properties)).BeginInit();
+            this.xtraTabPageRealTimeDataSources.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -575,11 +578,35 @@
             // 
             // xtraTabPageRealTimeDataSources
             // 
+            this.xtraTabPageRealTimeDataSources.Controls.Add(this.labelControl6);
+            this.xtraTabPageRealTimeDataSources.Controls.Add(this.chkLstItemRealTimeDataSources);
             this.xtraTabPageRealTimeDataSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageRealTimeDataSources.ImageOptions.Image")));
             this.xtraTabPageRealTimeDataSources.Name = "xtraTabPageRealTimeDataSources";
-            this.xtraTabPageRealTimeDataSources.PageVisible = false;
             this.xtraTabPageRealTimeDataSources.Size = new System.Drawing.Size(770, 562);
             this.xtraTabPageRealTimeDataSources.Text = "Startup Data Source";
+            // 
+            // chkLstItemRealTimeDataSources
+            // 
+            this.chkLstItemRealTimeDataSources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLstItemRealTimeDataSources.CheckOnClick = true;
+            this.chkLstItemRealTimeDataSources.FormattingEnabled = true;
+            this.chkLstItemRealTimeDataSources.Location = new System.Drawing.Point(17, 46);
+            this.chkLstItemRealTimeDataSources.Margin = new System.Windows.Forms.Padding(6);
+            this.chkLstItemRealTimeDataSources.Name = "chkLstItemRealTimeDataSources";
+            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(736, 508);
+            this.chkLstItemRealTimeDataSources.TabIndex = 8;
+            this.chkLstItemRealTimeDataSources.SelectedIndexChanged += new System.EventHandler(this.ChkLstItemRealTimeDataSources_SelectedIndexChanged);
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(17, 10);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(300, 16);
+            this.labelControl6.TabIndex = 9;
+            this.labelControl6.Text = "Load the following real time data sources at startup:";
             // 
             // UserSettingsForm
             // 
@@ -628,6 +655,8 @@
             this.xtraTabPageResources.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIdleMode.Properties)).EndInit();
+            this.xtraTabPageRealTimeDataSources.ResumeLayout(false);
+            this.xtraTabPageRealTimeDataSources.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -673,5 +702,7 @@
         private System.Windows.Forms.NumericUpDown nudIdleTime;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitchIdleMode;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageRealTimeDataSources;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private System.Windows.Forms.CheckedListBox chkLstItemRealTimeDataSources;
     }
 }

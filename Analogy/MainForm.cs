@@ -90,7 +90,7 @@ namespace Philips.Analogy
             CreateDataSources();
 
             //set Default page:
-            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.StartUpDataSource);
+            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitilaSelectedDataSource);
             if (Mapping.ContainsKey(defaultPage))
             {
                 ribbonControlMain.SelectedPage = Mapping[defaultPage];
@@ -1044,7 +1044,7 @@ namespace Philips.Analogy
             }
 
             realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
-            if (realTime.AutoStartAtLaunch)
+            if (settings.AutoStartDataSources.Contains(realTime.ID))
             {
                 async Task<bool> AutoOpenRealTime()
                 {
@@ -1120,6 +1120,12 @@ namespace Philips.Analogy
         private void BbtnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(7);
+            user.ShowDialog(this);
+        }
+
+        private void BbtnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(8);
             user.ShowDialog(this);
         }
     }
