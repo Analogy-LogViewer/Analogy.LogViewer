@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Analogy.Log.Viewer</id>
+    <id>Analogy.LogViewer</id>
     <version>4.0.3</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
