@@ -97,6 +97,8 @@ namespace Philips.Analogy
             //splitContainerMain.FixedPanel = SplitFixedPanel.None;
             //ClientSizeChanged += (s, e) => { splitContainerMain.SplitterPosition = (int)0.8 * splitContainerMain.Height; };
             LayoutFileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "layout.xml");
+            PagingManager = new PagingManager(this);
+            _messageData = PagingManager.CurrentPage();
         }
 
         public void SetFileDataSource(IAnalogyOfflineDataSource fileDataSource)
@@ -179,8 +181,7 @@ namespace Philips.Analogy
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-            PagingManager = new PagingManager(this);
-            _messageData = PagingManager.CurrentPage();
+  
             PagingManager.OnPageChanged += (s, arg) =>
             {
                 if (IsDisposed) return;

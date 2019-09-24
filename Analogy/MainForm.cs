@@ -23,12 +23,17 @@ namespace Philips.Analogy
         private string offlineTitle = "Offline log";
         private string onlineTitle = "Online log";
         private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
+
+        private Dictionary<XtraTabPage, IAnalogyRealTimeDataSource> onlineDataSourcesMapping =
+            new Dictionary<XtraTabPage, IAnalogyRealTimeDataSource>();
+
         private List<Task<bool>> OnlineSources = new List<Task<bool>>();
         private int offline;
         private int online;
         private bool DebugOn { get; set; }
         private XtraTabPage currentContextPage;
         private UserSettingsManager settings;
+
         public MainForm()
         {
             InitializeComponent();
@@ -44,27 +49,37 @@ namespace Philips.Analogy
         {
             if (DesignMode) return;
             settings = UserSettingsManager.UserSettings;
-            bbtnCloseCurrentTabPage.ItemClick += (object s, ItemClickEventArgs ea) =>
+            bbtnCloseCurrentTabPage.ItemClick += (object s, ItemClickEventArgs ea) => { CloseCurrentTabPage(); };
+            bbtnCloseAllTabPage.ItemClick += (object s, ItemClickEventArgs ea) =>
             {
-                if (currentContextPage!=null)
+                var pages = xtcLogs.TabPages.ToList();
+                foreach (var page in pages)
                 {
-                    //currentContextPage.Hide();
-                    //ribbonControlMain.SelectedPage = null;
-                    xtcLogs.TabPages.Remove(currentContextPage);
-                    currentContextPage = null;
+                    if (onlineDataSourcesMapping.ContainsKey(page))
+                    {
+                        onlineDataSourcesMapping[page].StopReceiving();
+                        onlineDataSourcesMapping.Remove(page);
+                    }
 
-                    
+                    xtcLogs.TabPages.Remove(page);
+
                 }
             };
-            bbtnCloseAllTabPage.ItemClick += (object s, ItemClickEventArgs ea) => { xtcLogs.TabPages.Clear(); };
             bbtnCloseOtherTabPages.ItemClick += (object s, ItemClickEventArgs ea) =>
             {
                 var pages = xtcLogs.TabPages.Where(p => p != currentContextPage).ToList();
                 foreach (var page in pages)
                 {
+                    if (onlineDataSourcesMapping.ContainsKey(page))
+                    {
+                        onlineDataSourcesMapping[page].StopReceiving();
+                        onlineDataSourcesMapping.Remove(page);
+                    }
+
                     xtcLogs.TabPages.Remove(page);
+
                 }
-                
+
             };
             ribbonControlMain.Minimized = UserSettingsManager.UserSettings.StartupRibbonMinimized;
 
@@ -100,7 +115,7 @@ namespace Philips.Analogy
                 TmrAutoConnect.Start();
         }
 
-        
+
 
         private void CreateAnalogyDataSource()
         {
@@ -227,9 +242,6 @@ namespace Philips.Analogy
             group.ItemLinks.Add(btnFolder);
             CreateEventLogsMenu(ribbonPage);
         }
-
-
-
 
         private void CreateEventLogsMenu(RibbonPage ribbonPage)
         {
@@ -973,7 +985,17 @@ namespace Philips.Analogy
             async Task<bool> OpenRealTime()
             {
                 realTimeBtn.Enabled = false;
-                if (await realTime.CanStartReceiving()) //connected
+                bool canStartReceiving = false;
+                try
+                {
+                    canStartReceiving = await realTime.CanStartReceiving();
+                }
+                catch (Exception e)
+                {
+                    //todo/ log to ui/analogy errors
+                }
+
+                if (canStartReceiving) //connected
                 {
                     online++;
                     realTimeBtn.ImageOptions.Image = realTime.OptionalConnectedImage ?? Resources.Database_on;
@@ -1006,26 +1028,25 @@ namespace Philips.Analogy
                     realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                     realTime.OnDisconnected += OnRealTimeDisconnected;
                     realTime.StartReceiving();
+                    onlineDataSourcesMapping.Add(page, realTime);
                     xtcLogs.SelectedTabPage = page;
 
                     void OnXtcLogsOnControlRemoved(object sender, ControlEventArgs arg)
                     {
                         if (arg.Control == page)
                         {
-                            page.Controls.Remove(onlineUC);
-                            onlineUC.Dispose();
-                            realTime.OnMessageReady -= OnRealTimeOnMessageReady;
-                            realTime.OnManyMessagesReady -= OnRealTimeOnOnManyMessagesReady;
-                            realTime.OnDisconnected -= OnRealTimeDisconnected;
                             try
                             {
+                                onlineUC.Enable = false;
                                 realTime.StopReceiving();
-                                onlineUC.Dispose();
+                                realTime.OnMessageReady -= OnRealTimeOnMessageReady;
+                                realTime.OnManyMessagesReady -= OnRealTimeOnOnManyMessagesReady;
+                                realTime.OnDisconnected -= OnRealTimeDisconnected;
+                                //page.Controls.Remove(onlineUC);
                             }
                             catch (Exception)
                             {
-
-                                //do nothing
+                                //doto: nothing //log..
                             }
                             finally
                             {
@@ -1091,17 +1112,17 @@ namespace Philips.Analogy
         private void XtcLogs_MouseUp(object sender, MouseEventArgs e)
         {
             //disable for now  until the devexpress issue is resolved
-            //if (e.Button == MouseButtons.Right)
-            //{
-            //    XtraTabControl tabCtrl = sender as XtraTabControl;
-            //    Point pt = MousePosition;
-            //    XtraTabHitInfo info = tabCtrl.CalcHitInfo(tabCtrl.PointToClient(pt));
-            //    if (info.HitTest == XtraTabHitTest.PageHeader)
-            //    {
-            //        currentContextPage = info.Page;
-            //        popupMenuTabPages.ShowPopup(pt);
-            //    }
-            //}
+            if (e.Button == MouseButtons.Right)
+            {
+                XtraTabControl tabCtrl = sender as XtraTabControl;
+                Point pt = MousePosition;
+                XtraTabHitInfo info = tabCtrl.CalcHitInfo(tabCtrl.PointToClient(pt));
+                if (info.HitTest == XtraTabHitTest.PageHeader)
+                {
+                    currentContextPage = info.Page;
+                    popupMenuTabPages.ShowPopup(pt);
+                }
+            }
         }
 
         private void TmrStatusUpdates_Tick(object sender, EventArgs e)
@@ -1110,10 +1131,12 @@ namespace Philips.Analogy
             bsiMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [mb] used";
             if (settings.IdleMode)
             {
-                bsiIdleMessage.Caption = $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}";
+                bsiIdleMessage.Caption =
+                    $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}";
             }
             else
                 bsiIdleMessage.Caption = "Idle mode is off";
+
             tmrStatusUpdates.Start();
         }
 
@@ -1127,6 +1150,24 @@ namespace Philips.Analogy
         {
             UserSettingsForm user = new UserSettingsForm(8);
             user.ShowDialog(this);
+        }
+
+
+        private void CloseCurrentTabPage()
+        {
+            if (currentContextPage != null)
+            {
+                if (onlineDataSourcesMapping.ContainsKey(currentContextPage))
+                {
+                    onlineDataSourcesMapping[currentContextPage].StopReceiving();
+                    onlineDataSourcesMapping.Remove(currentContextPage);
+                }
+
+                xtcLogs.TabPages.Remove(currentContextPage);
+                currentContextPage = null;
+
+
+            }
         }
     }
 }
