@@ -51,23 +51,24 @@ namespace Philips.Analogy
         private bool _realtimeUpdate = true;
 
         private object LockObject => _messageData.Rows.SyncRoot;
-        private ReaderWriterLockSlim  lockExternalWindowsObject =new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+        private ReaderWriterLockSlim lockExternalWindowsObject = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
         private ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
-
+        private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
         private List<XtraFormLogGrid> ExternalWindows
         {
             get
             {
                 lockExternalWindowsObject.EnterReadLock();
-                var items= _externalWindows.ToList();
+                var items = _externalWindows.ToList();
                 lockExternalWindowsObject.ExitReadLock();
                 return items;
             }
         }
 
+        private int ExternalWindowsCount;
         private List<AnalogyLogMessage> Messages
         {
             get
@@ -97,7 +98,7 @@ namespace Philips.Analogy
         private string LayoutFileName;
         private bool BookmarkView;
         private int pageNumber = 1;
-        private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
+
         private int TotalPages => PagingManager.TotalPages;
         private IAnalogyOfflineDataSource FileDataSource { get; set; }
         private IAnalogyOfflineDataSource AnalogyOfflineDataSource { get; } = new AnalogyOfflineDataSource();
@@ -193,7 +194,7 @@ namespace Philips.Analogy
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-  
+
             PagingManager.OnPageChanged += (s, arg) =>
             {
                 if (IsDisposed) return;
@@ -769,11 +770,15 @@ namespace Philips.Analogy
             {
                 PagingManager.IncrementTotalMissedMessages();
             }
-            foreach (XtraFormLogGrid grid in ExternalWindows)
-            {
-                grid.AppendMessage(message, dataSource);
-            }
             lockSlim.EnterWriteLock();
+            if (ExternalWindowsCount > 0)
+            {
+                foreach (XtraFormLogGrid grid in ExternalWindows)
+                {
+                    grid.AppendMessage(message, dataSource);
+                }
+            }
+           
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
             if (diffStartTime > DateTime.MinValue)
@@ -812,12 +817,15 @@ namespace Philips.Analogy
             {
                 PagingManager.IncrementTotalMissedMessages();
             }
-
-            foreach (XtraFormLogGrid grid in ExternalWindows)
-            {
-                grid.AppendMessages(messages,dataSource);
-            }
             lockSlim.EnterWriteLock();
+            if (ExternalWindowsCount > 0)
+            {
+                foreach (XtraFormLogGrid grid in ExternalWindows)
+                {
+                    grid.AppendMessages(messages, dataSource);
+                }
+            }
+
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
             {
                 if (diffStartTime > DateTime.MinValue)
@@ -1874,9 +1882,12 @@ namespace Philips.Analogy
             XtraFormLogGrid grid = new XtraFormLogGrid(msg, source);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
+            Interlocked.Increment(ref ExternalWindowsCount);
             lockExternalWindowsObject.ExitWriteLock();
-            grid.FormClosing += (s, arg) => {
+            grid.FormClosing += (s, arg) =>
+            {
                 lockExternalWindowsObject.EnterWriteLock();
+                Interlocked.Decrement(ref ExternalWindowsCount);
                 _externalWindows.Remove(grid);
                 lockExternalWindowsObject.ExitWriteLock();
             };
