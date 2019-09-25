@@ -1296,6 +1296,7 @@ namespace Philips.Analogy
             this.btsAutoScrollToBottom.Caption = "Auto Scroll to bottom:";
             this.btsAutoScrollToBottom.Id = 18;
             this.btsAutoScrollToBottom.Name = "btsAutoScrollToBottom";
+            this.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btsAutoScrollToBottom.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btsAutoScrollToBottom_CheckedChanged);
             // 
             // barSubItemSaveEntireLog
@@ -1426,7 +1427,7 @@ namespace Philips.Analogy
             // 
             // bBtnUndockView
             // 
-            this.bBtnUndockView.Caption = "Undock Current View";
+            this.bBtnUndockView.Caption = "Undock View";
             this.bBtnUndockView.Id = 24;
             this.bBtnUndockView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.Image")));
             this.bBtnUndockView.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.LargeImage")));
@@ -1442,6 +1443,7 @@ namespace Philips.Analogy
             this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
             this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
             this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnDataVisualizer.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
             // 
             // bdcTopFiltering

@@ -1,4 +1,5 @@
-﻿using Philips.Analogy.Interfaces;
+﻿using System;
+using Philips.Analogy.Interfaces;
 using System.Collections.Generic;
 
 namespace Philips.Analogy
@@ -7,7 +8,6 @@ namespace Philips.Analogy
     {
         private readonly List<AnalogyLogMessage> _messages;
         private readonly string _dataSource;
-
         public XtraFormLogGrid()
         {
             InitializeComponent();
@@ -23,5 +23,11 @@ namespace Philips.Analogy
         {
             ucLogs1.AppendMessages(_messages, _dataSource);
         }
+
+        public void AppendMessage(AnalogyLogMessage message, string dataSource) =>
+            ucLogs1.AppendMessage(message, dataSource);
+        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource) =>
+            ucLogs1.AppendMessages(messages, dataSource);
+
     }
 }

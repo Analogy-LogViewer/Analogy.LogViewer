@@ -12,7 +12,6 @@ using DevExpress.XtraTab;
 using Philips.Analogy.DataSources;
 using Philips.Analogy.Interfaces;
 using Philips.Analogy.Interfaces.Interfaces;
-using Philips.Analogy.LogLoaders;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -52,10 +51,22 @@ namespace Philips.Analogy
         private bool _realtimeUpdate = true;
 
         private object LockObject => _messageData.Rows.SyncRoot;
+        private ReaderWriterLockSlim  lockExternalWindowsObject =new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
         private ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
+
+        private List<XtraFormLogGrid> ExternalWindows
+        {
+            get
+            {
+                lockExternalWindowsObject.EnterReadLock();
+                var items= _externalWindows.ToList();
+                lockExternalWindowsObject.ExitReadLock();
+                return items;
+            }
+        }
 
         private List<AnalogyLogMessage> Messages
         {
@@ -86,6 +97,7 @@ namespace Philips.Analogy
         private string LayoutFileName;
         private bool BookmarkView;
         private int pageNumber = 1;
+        private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
         private int TotalPages => PagingManager.TotalPages;
         private IAnalogyOfflineDataSource FileDataSource { get; set; }
         private IAnalogyOfflineDataSource AnalogyOfflineDataSource { get; } = new AnalogyOfflineDataSource();
@@ -757,6 +769,10 @@ namespace Philips.Analogy
             {
                 PagingManager.IncrementTotalMissedMessages();
             }
+            foreach (XtraFormLogGrid grid in ExternalWindows)
+            {
+                grid.AppendMessage(message, dataSource);
+            }
             lockSlim.EnterWriteLock();
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
@@ -791,9 +807,15 @@ namespace Philips.Analogy
 
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
+
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();
+            }
+
+            foreach (XtraFormLogGrid grid in ExternalWindows)
+            {
+                grid.AppendMessages(messages,dataSource);
             }
             lockSlim.EnterWriteLock();
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
@@ -1850,6 +1872,14 @@ namespace Philips.Analogy
             var source = GetFilteredDataTable().Rows[0]?["DataSource"]?.ToString();
             if (source == null) return;
             XtraFormLogGrid grid = new XtraFormLogGrid(msg, source);
+            lockExternalWindowsObject.EnterWriteLock();
+            _externalWindows.Add(grid);
+            lockExternalWindowsObject.ExitWriteLock();
+            grid.FormClosing += (s, arg) => {
+                lockExternalWindowsObject.EnterWriteLock();
+                _externalWindows.Remove(grid);
+                lockExternalWindowsObject.ExitWriteLock();
+            };
             grid.Show(this);
         }
 
