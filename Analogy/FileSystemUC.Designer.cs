@@ -235,7 +235,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FileSystemUC";
             this.Size = new System.Drawing.Size(392, 366);
-            this.Load += new System.EventHandler(this.FileSystemUC_Load);
             this.splcLeft.Panel1.ResumeLayout(false);
             this.splcLeft.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splcLeft)).EndInit();
