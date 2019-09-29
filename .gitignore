@@ -40,3 +40,5 @@
 /Analogy.Implementation.Example/bin/Release
 /Analogy/.vs/Analogy/v16/Server/sqlite3
 /Analogy/.vs/Analogy/v16/.suo
+/nuget.exe
+*.nupkg

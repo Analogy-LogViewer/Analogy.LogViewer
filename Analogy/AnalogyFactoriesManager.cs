@@ -20,7 +20,7 @@ namespace Philips.Analogy
         {
             Factories = new List<IAnalogyFactories>();
             Assemblies = new List<(IAnalogyFactories Factory, Assembly Assembly)>();
-            Assemblies.Add((new AnalogyOfflineFactory(),Assembly.GetExecutingAssembly()));
+            Assemblies.Add((new AnalogyBuiltInFactory(),Assembly.GetExecutingAssembly()));
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)
@@ -95,9 +95,21 @@ namespace Philips.Analogy
                 }
             }
         }
+        public IEnumerable<(string Name, Guid ID)> GetRealTimeDataSourcesNamesAndIds()
+        {
+            foreach (var factory in Factories)
+            {
+                IEnumerable<IAnalogyDataSource> supported = factory.DataSources.Items.Where(i => i is IAnalogyRealTimeDataSource);
+                foreach (var analogyDataSource in supported)
+                {
+                    var dataSource = (IAnalogyRealTimeDataSource) analogyDataSource;
+                    yield return (factory.Title,dataSource.ID);
+                }
+            }
+        }
 
         public Assembly GetAssemblyOfFactory(IAnalogyFactories factory) => Assemblies.Single(f => f.Factory == factory).Assembly;
 
-        public IAnalogyFactories Get(Guid Id) => Assemblies.Single(a => a.Factory.FactoryID == Id).Factory;
+        public IAnalogyFactories Get(Guid id) => Assemblies.Single(a => a.Factory.FactoryID == id).Factory;
     }
 }

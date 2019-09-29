@@ -23,7 +23,7 @@ namespace Philips.Analogy
                 _dataSource = value;
                 if (value != null)
                 {
-                    tvFolderUC.SetFolder(value.InitialFolderFullPath);
+                    tvFolderUC.SetFolder(value.InitialFolderFullPath, _dataSource);
                 }
             }
         }
@@ -58,11 +58,6 @@ namespace Philips.Analogy
         }
         public List<string> GetSelectedFileNames() =>
             lBoxFiles.SelectedItems.Cast<FileInfo>().Select(f => f.FullName).ToList();
-
-        private void FileSystemUC_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void bBtnOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.Interfaces;
 
 namespace Philips.Analogy
 {
@@ -15,6 +16,7 @@ namespace Philips.Analogy
         private string startupDrive;
         private bool ListFolders;
         private bool ListFiles;
+        private IAnalogyOfflineDataSource DataSource { get; set; }
 
         public XtraUCFileSystem() : this(false, false)
         {
@@ -31,9 +33,9 @@ namespace Philips.Analogy
         }
 
 
-        private void treeList1_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
+        private void treeList1_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
-            if (e.Column == this.colSize)
+            if (e.Column == colSize)
             {
                 if (e.Node.GetDisplayText("Type") == "File")
                 {
@@ -47,7 +49,7 @@ namespace Philips.Analogy
                 else e.CellText = String.Format("<{0}>", e.Node.GetDisplayText("Type"));
             }
 
-            if (e.Column == this.colName)
+            if (e.Column == colName)
             {
                 if (e.Node.GetDisplayText("Type") == "File")
                 {
@@ -56,7 +58,7 @@ namespace Philips.Analogy
             }
         }
 
-        private void treeList1_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
+        private void treeList1_GetStateImage(object sender, GetStateImageEventArgs e)
         {
             if (e.Node.GetDisplayText("Type") == "Folder")
                 e.NodeImageIndex = e.Node.Expanded ? 1 : 0;
@@ -65,7 +67,7 @@ namespace Philips.Analogy
 
         }
 
-        private void treeList1_VirtualTreeGetCellValue(object sender, DevExpress.XtraTreeList.VirtualTreeGetCellValueInfo e)
+        private void treeList1_VirtualTreeGetCellValue(object sender, VirtualTreeGetCellValueInfo e)
         {
             DirectoryInfo di = new DirectoryInfo((string)e.Node);
             if (e.Column == colName)
@@ -123,7 +125,7 @@ namespace Philips.Analogy
             return false;
         }
 
-        private void treeList1_VirtualTreeGetChildNodes(object sender, DevExpress.XtraTreeList.VirtualTreeGetChildNodesInfo e)
+        private void treeList1_VirtualTreeGetChildNodes(object sender, VirtualTreeGetChildNodesInfo e)
         {
             Cursor current = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
@@ -151,7 +153,7 @@ namespace Philips.Analogy
                             {
                                 dirs = new string[0];
                             }
-                        string[] files = ListFiles ? Utils.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).ToArray() : new string[0];
+                        string[] files = ListFiles ? DataSource.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).ToArray() : new string[0];
                         string[] arr = new string[dirs.Length + files.Length];
                         if (ListFolders)
                             dirs.CopyTo(arr, 0);
@@ -166,15 +168,16 @@ namespace Philips.Analogy
             Cursor.Current = current;
 
         }
-        
-        public void SetPath(string path)
+
+        public void SetPath(string path, IAnalogyOfflineDataSource dataSource)
         {
+            DataSource = dataSource;
             startupDrive = path;
             treeList1.ClearNodes();
             treeList1.DataSource = new object();
         }
 
-        private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        private void treeList1_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             if (e.Node == null) return;
             FolderChanged?.Invoke(this, new FolderSelectionEventArgs(e.Node.GetDisplayText("Path")));

@@ -25,7 +25,6 @@ namespace Philips.Analogy
         public TimeSpan AnalogyRunningTime { get; set; }
         public uint AnalogyLaunches { get; set; }
         public uint AnalogyOpenedFiles { get; set; }
-        //public bool SimpleMode { get; set; }
         public bool EnableFileCaching { get; set; }
         public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
         public bool LoadExtensionsOnStartup { get; set; }
@@ -37,13 +36,25 @@ namespace Philips.Analogy
         public bool ShowChangeLogAtStartUp { get; set; }
         public float FontSize { get; set; }
         public bool SearchAlsoInSourceAndModule { get; set; }
-        public string StartUpDataSource { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
+        public string InitilaSelectedDataSource { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
+        public bool IdleMode { get; set; }
+        public int IdleTimeMinutes { get; set; }
+
+        public List<string> EventLogs { get; set; }
+
+        public List<Guid> AutoStartDataSources { get; set; }
         public UserSettingsManager()
         {
             Load();
         }
         public void Load()
         {
+            if (Settings.Default.UpgradeRequired)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.UpgradeRequired = false;
+                Settings.Default.Save();
+            }
             ApplicationSkinName = Settings.Default.ApplicationSkinName;
             EnableUserStatistics = Settings.Default.EnableUserStatistics;
             AnalogyRunningTime = Settings.Default.AnalogyRunningTime;
@@ -57,10 +68,10 @@ namespace Philips.Analogy
             //SimpleMode = Properties.Settings.Default.SimpleMode;
             RecentFiles =
                 Settings.Default.RecentFiles
-                    .Split(new[] {"##"}, StringSplitOptions.RemoveEmptyEntries)
+                    .Split(new[] { "##" }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(itm =>
                     {
-                        var items = itm.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries);
+                        var items = itm.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                         if (Guid.TryParse(items[0], out Guid id))
                         {
                             return (id, items.Last());
@@ -80,6 +91,10 @@ namespace Philips.Analogy
             FontSize = Settings.Default.FontSize;
             IncludeText = Settings.Default.IncludeText;
             SearchAlsoInSourceAndModule = Settings.Default.SearchAlsoInSourceAndModule;
+            IdleMode = Settings.Default.IdleMode;
+            IdleTimeMinutes = Settings.Default.IdleTimeMinutes;
+            EventLogs = Settings.Default.WindowsEventLogs.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            AutoStartDataSources = Settings.Default.AutoStartDataSources.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
         }
 
 
@@ -96,7 +111,7 @@ namespace Philips.Analogy
             Settings.Default.ShowHistoryClearedMessages = ShowHistoryOfClearedMessages;
             Settings.Default.SaveExcludeTexts = SaveExcludeTexts;
             Settings.Default.RecentFilesCount = RecentFilesCount;
-            Settings.Default.RecentFiles = string.Join("##", RecentFiles.Take(RecentFilesCount).Select(i=> $"{i.ID},{i.FileName}"));
+            Settings.Default.RecentFiles = string.Join("##", RecentFiles.Take(RecentFilesCount).Select(i => $"{i.ID},{i.FileName}"));
             //Properties.Settings.Default.SimpleMode = SimpleMode;
             Settings.Default.EnableFileCaching = EnableFileCaching;
             Settings.Default.LoadExtensionsOnStartup = LoadExtensionsOnStartup;
@@ -109,6 +124,10 @@ namespace Philips.Analogy
             Settings.Default.FontSize = FontSize;
             Settings.Default.IncludeText = IncludeText;
             Settings.Default.SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule;
+            Settings.Default.IdleMode = IdleMode;
+            Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
+            Settings.Default.WindowsEventLogs = string.Join(",", EventLogs);
+            Settings.Default.AutoStartDataSources = string.Join(",", AutoStartDataSources);
             Settings.Default.Save();
 
         }
@@ -122,8 +141,8 @@ namespace Philips.Analogy
         public void AddToRecentFiles(Guid iD, string file)
         {
             AnalogyOpenedFiles += 1;
-            if (!RecentFiles.Contains((iD,file)))
-                RecentFiles.Insert(0, (iD,file));
+            if (!RecentFiles.Contains((iD, file)))
+                RecentFiles.Insert(0, (iD, file));
         }
         public void ClearStatistics()
         {

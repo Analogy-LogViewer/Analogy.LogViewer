@@ -13,7 +13,6 @@ namespace Philips.Analogy
     {
         private List<EventLog> Custom = new List<EventLog>();
         public string SelectedPath { get; set; }
-        private List<string> portalLogs { get; } = new List<string>() {};
 
         public WindowsEventLog()
         {
@@ -31,31 +30,24 @@ namespace Philips.Analogy
             if (DesignMode) return;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            //lBoxSources.SelectedIndex = -1;
-            //lBoxSources.SelectedValueChanged += lBoxSources_SelectedValueChanged;
+            SetupLogs();
+        }
+
+        private void SetupLogs()
+        {
+            foreach (EventLog eventLog in Custom)
+            {
+                eventLog.EnableRaisingEvents = false;
+                eventLog.Dispose();
+            }
+            Custom.Clear();
+            lBoxSources.Items.Clear();
             Counter alllogs = new Counter("All");
             lBoxSources.Items.Add(alllogs);
-            SetUpLog(alllogs, "Application");
-            SetUpLog(alllogs, "Security");
-            SetUpLog(alllogs, "Setup");
-            SetUpLog(alllogs, "System");
-            try
+            foreach (string eventLog in UserSettingsManager.UserSettings.EventLogs)
             {
-                var all = System.Diagnostics.Eventing.Reader.EventLogSession.GlobalSession.GetLogNames().ToList();
-                foreach (string portalLog in portalLogs)
-                {
-                    var has = all.Any(log => log.Equals(portalLog));
-                    if (has)
-                        SetUpLog(alllogs, portalLog);
-                }
+                SetUpLog(alllogs, eventLog);
             }
-            catch (Exception ex)
-            {
-                AnalogyLogMessage m = new AnalogyLogMessage("Error adding log: " + ex.Message, AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy","None");
-                ucLogs1.AppendMessage(m, Environment.MachineName);
-            }
-
-
         }
 
         private void SetUpLog(Counter all, string logName)
@@ -105,9 +97,9 @@ namespace Philips.Analogy
 
         private void bBtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraFormClientServer f = new XtraFormClientServer();
+            XtraFormWindowsEventlogsManage f = new XtraFormWindowsEventlogsManage();
             f.ShowDialog(this);
-            lBoxSources.DataSource = ClientServerDataSourceManager.Instance.DataSources;
+            SetupLogs();
         }
 
         private void bBtnRemove_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

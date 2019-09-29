@@ -7,8 +7,23 @@ using Philips.Analogy.Interfaces.Interfaces;
 
 namespace Philips.Analogy
 {
+   
     public partial class UserSettingsForm : XtraForm
     {
+        private struct RealTimeCheckItem
+        {
+            public string Name;
+            public Guid ID;
+
+            public RealTimeCheckItem(string name, Guid id)
+            {
+                Name = name;
+                ID = id;
+            }
+
+            public override string ToString() => $"{Name} ({ID})";
+        }
+
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private int InitialSelection = -1;
 
@@ -45,7 +60,10 @@ namespace Philips.Analogy
             }
 
             checkEditSearchAlsoInSourceAndModule.Checked = Settings.SearchAlsoInSourceAndModule;
+            toggleSwitchIdleMode.IsOn = Settings.IdleMode;
+            nudIdleTime.Value = Settings.IdleTimeMinutes;
         }
+        
 
         private void tsFilteringExclude_Toggled(object sender, EventArgs e)
         {
@@ -74,6 +92,13 @@ namespace Philips.Analogy
 
             }
 
+            var startup = Settings.AutoStartDataSources;
+            var loaded = AnalogyFactoriesManager.AnalogyFactories.GetRealTimeDataSourcesNamesAndIds();
+            foreach (var realTime in loaded)
+            {
+                RealTimeCheckItem itm = new RealTimeCheckItem(realTime.Name, realTime.ID);
+                chkLstItemRealTimeDataSources.Items.Add(itm, startup.Contains(itm.ID));
+            }
         }
 
         private void nudRecent_ValueChanged(object sender, EventArgs e)
@@ -163,6 +188,24 @@ namespace Philips.Analogy
         private void checkEditSearchAlsoInSourceAndModule_CheckedChanged(object sender, EventArgs e)
         {
             Settings.SearchAlsoInSourceAndModule = checkEditSearchAlsoInSourceAndModule.Checked;
+        }
+
+        private void ToggleSwitchIdleMode_Toggled(object sender, EventArgs e)
+        {
+            Settings.IdleMode = toggleSwitchIdleMode.IsOn;
+
+        }
+
+        private void NudIdleTime_ValueChanged(object sender, EventArgs e)
+        {
+            Settings.IdleTimeMinutes=(int)nudIdleTime.Value;
+
+        }
+
+        private void ChkLstItemRealTimeDataSources_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.AutoStartDataSources =
+                chkLstItemRealTimeDataSources.CheckedItems.Cast<RealTimeCheckItem>().Select(r => r.ID).ToList();
         }
     }
 }

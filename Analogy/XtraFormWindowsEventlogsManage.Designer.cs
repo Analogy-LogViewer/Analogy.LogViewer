@@ -1,6 +1,6 @@
 ﻿namespace Philips.Analogy
 {
-    partial class XtraFormLogGrid
+    partial class XtraFormWindowsEventlogsManage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormLogGrid));
-            this.ucLogs1 = new Philips.Analogy.UCLogs();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormWindowsEventlogsManage));
+            this.xtraUCWindowsEventLogs1 = new Philips.Analogy.XtraUCWindowsEventLogs();
             this.SuspendLayout();
             // 
-            // ucLogs1
+            // xtraUCWindowsEventLogs1
             // 
-            this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucLogs1.Location = new System.Drawing.Point(0, 0);
-            this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ucLogs1.Name = "ucLogs1";
-            this.ucLogs1.OnlineMode = false;
-            this.ucLogs1.Size = new System.Drawing.Size(1200, 711);
-            this.ucLogs1.TabIndex = 0;
+            this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 0);
+            this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
+            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(739, 466);
+            this.xtraUCWindowsEventLogs1.TabIndex = 0;
             // 
-            // XtraFormLogGrid
+            // XtraFormWindowsEventlogsManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 711);
-            this.Controls.Add(this.ucLogs1);
+            this.ClientSize = new System.Drawing.Size(739, 466);
+            this.Controls.Add(this.xtraUCWindowsEventLogs1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "XtraFormLogGrid";
+            this.Name = "XtraFormWindowsEventlogsManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Analogy";
-            this.Load += new System.EventHandler(this.XtraFormLogGrid_Load);
+            this.Text = "Windows event logs";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UCLogs ucLogs1;
+        private XtraUCWindowsEventLogs xtraUCWindowsEventLogs1;
     }
 }

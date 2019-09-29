@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Analogy.Interfaces.LiorBanai</id>
-    <version>1.0.0</version>
-    <title>Analogy.Interfaces</title>
+    <id>Analogy.LogViewer.Interfaces</id>
+    <version>1.0.3</version>
+    <title>Analogy Log Viewer - Interfaces</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
     <license type="expression">MIT</license>
@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/philips-software/logviewer/blob/master/Analogy/Icons/Pelfusion-Flat-File-Type-Log.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer (Interfaces)</description>
-    <releaseNotes>Initial Release Of Analogy Open Source Log Viewer Interfaces</releaseNotes>
+    <releaseNotes>Add new features. See github page</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
   </metadata>

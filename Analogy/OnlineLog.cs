@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.Interfaces;
 using Message = System.Windows.Forms.Message;
 
 namespace Philips.Analogy
@@ -16,18 +17,19 @@ namespace Philips.Analogy
         private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private bool _sendLogs;
         private static int clearHistoryCounter;
-        public OnlineUCLogs()
+        public bool Enable { get; set; } = true;
+        public OnlineUCLogs(IAnalogyRealTimeDataSource realTime)
         {
             InitializeComponent();
             ucLogs1.OnlineMode = true;
-            
+            ucLogs1.SetFileDataSource(realTime.FileOperationsHandler);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             ucLogs1.ProcessCmdKeyFromParent(keyData);
             return base.ProcessCmdKey(ref msg, keyData);
         }
-        private async void OnlineUCLogs_Load(object sender, EventArgs e)
+        private void OnlineUCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
             ucLogs1.OnHistoryCleared += UcLogs1_OnHistoryCleared;
@@ -52,28 +54,6 @@ namespace Philips.Analogy
 
         }
 
-        
-        #region Messages logic
-
-
-
-        private bool ContainsGuid(string message)
-        {
-            if (string.IsNullOrEmpty(message))
-                return false;
-
-            string[] spliter = { Environment.NewLine };
-            string[] logData = message.Split(spliter, StringSplitOptions.None);
-            if (Guid.TryParse(logData[0], out _))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-      
-        #endregion
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetAuditColumnVisibility(bool value)
         {
@@ -87,12 +67,14 @@ namespace Philips.Analogy
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
-            ucLogs1.AppendMessage(message, dataSource);
+            if (Enable && !IsDisposed)
+                ucLogs1.AppendMessage(message, dataSource);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
-            ucLogs1.AppendMessages(messages, dataSource);
+            if (Enable && !IsDisposed)
+                ucLogs1.AppendMessages(messages, dataSource);
         }
 
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
@@ -102,6 +84,7 @@ namespace Philips.Analogy
 
         private void tsbtnHide_Click(object sender, EventArgs e)
         {
+            if (IsDisposed) return;
             showHistory = false;
             spltMain.Panel1Collapsed = true;
         }

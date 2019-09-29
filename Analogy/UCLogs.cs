@@ -12,7 +12,6 @@ using DevExpress.XtraTab;
 using Philips.Analogy.DataSources;
 using Philips.Analogy.Interfaces;
 using Philips.Analogy.Interfaces.Interfaces;
-using Philips.Analogy.LogLoaders;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -52,11 +51,24 @@ namespace Philips.Analogy
         private bool _realtimeUpdate = true;
 
         private object LockObject => _messageData.Rows.SyncRoot;
+        private ReaderWriterLockSlim lockExternalWindowsObject = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
         private ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
+        private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
+        private List<XtraFormLogGrid> ExternalWindows
+        {
+            get
+            {
+                lockExternalWindowsObject.EnterReadLock();
+                var items = _externalWindows.ToList();
+                lockExternalWindowsObject.ExitReadLock();
+                return items;
+            }
+        }
 
+        private int ExternalWindowsCount;
         private List<AnalogyLogMessage> Messages
         {
             get
@@ -86,8 +98,10 @@ namespace Philips.Analogy
         private string LayoutFileName;
         private bool BookmarkView;
         private int pageNumber = 1;
+
         private int TotalPages => PagingManager.TotalPages;
         private IAnalogyOfflineDataSource FileDataSource { get; set; }
+        private IAnalogyOfflineDataSource AnalogyOfflineDataSource { get; } = new AnalogyOfflineDataSource();
         public UCLogs()
         {
             InitializeComponent();
@@ -96,6 +110,8 @@ namespace Philips.Analogy
             //splitContainerMain.FixedPanel = SplitFixedPanel.None;
             //ClientSizeChanged += (s, e) => { splitContainerMain.SplitterPosition = (int)0.8 * splitContainerMain.Height; };
             LayoutFileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "layout.xml");
+            PagingManager = new PagingManager(this);
+            _messageData = PagingManager.CurrentPage();
         }
 
         public void SetFileDataSource(IAnalogyOfflineDataSource fileDataSource)
@@ -103,6 +119,12 @@ namespace Philips.Analogy
             FileDataSource = fileDataSource;
             if (FileDataSource is EventLogDataSource eventDataSource)
                 eventDataSource.LogWindow = this;
+            if (FileDataSource == null)
+            {
+                //disable specific saving
+                bBtnSaveLog.Visibility = BarItemVisibility.Never;
+                bBtnSaveEntireLog.Visibility = BarItemVisibility.Never;
+            }
         }
         //public UCLogs(bool bookmarkView) : this()
         //{
@@ -172,8 +194,7 @@ namespace Philips.Analogy
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-            PagingManager = new PagingManager(this);
-            _messageData = PagingManager.CurrentPage();
+
             PagingManager.OnPageChanged += (s, arg) =>
             {
                 if (IsDisposed) return;
@@ -420,6 +441,9 @@ namespace Philips.Analogy
                     img = imageList.Images[6];
                     break;
                 case AnalogyLogLevel.Disabled:
+                    break;
+                case AnalogyLogLevel.AnalogyInformation:
+                    img = imageList.Images[8];
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -742,7 +766,19 @@ namespace Philips.Analogy
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+            if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
+            {
+                PagingManager.IncrementTotalMissedMessages();
+            }
             lockSlim.EnterWriteLock();
+            if (ExternalWindowsCount > 0)
+            {
+                foreach (XtraFormLogGrid grid in ExternalWindows)
+                {
+                    grid.AppendMessage(message, dataSource);
+                }
+            }
+           
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
             if (diffStartTime > DateTime.MinValue)
@@ -777,7 +813,19 @@ namespace Philips.Analogy
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
 
+            if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
+            {
+                PagingManager.IncrementTotalMissedMessages();
+            }
             lockSlim.EnterWriteLock();
+            if (ExternalWindowsCount > 0)
+            {
+                foreach (XtraFormLogGrid grid in ExternalWindows)
+                {
+                    grid.AppendMessages(messages, dataSource);
+                }
+            }
+
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
             {
                 if (diffStartTime > DateTime.MinValue)
@@ -904,7 +952,7 @@ namespace Philips.Analogy
             lock (LockObject)
             {
                 _messageData.BeginLoadData();
-                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSQLExpression();
+                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression();
                 _messageData.EndLoadData();
             }
 
@@ -1361,22 +1409,22 @@ namespace Philips.Analogy
         private void bBtnSaveLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = Messages;
-            SaveMessagesToLog(messages);
+            SaveMessagesToLog(FileDataSource, messages);
         }
 
-        private async void SaveMessagesToLog(List<AnalogyLogMessage> messages)
+        private async void SaveMessagesToLog(IAnalogyOfflineDataSource fileHandler, List<AnalogyLogMessage> messages)
         {
 
-            if (FileDataSource.CanSaveToLogFile)
+            if (fileHandler != null && fileHandler.CanSaveToLogFile)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = FileDataSource.FileSaveDialogFilters;
+                saveFileDialog.Filter = fileHandler.FileSaveDialogFilters;
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     try
                     {
-                        await FileDataSource.SaveAsync(messages, saveFileDialog.FileName);
+                        await fileHandler.SaveAsync(messages, saveFileDialog.FileName);
                     }
                     catch (Exception e)
                     {
@@ -1389,22 +1437,23 @@ namespace Philips.Analogy
             {
                 if (XtraMessageBox.Show("Current Data Source does not support Save Operation" + Environment.NewLine + "Do you want to Save in Analogy XML Format?", @"Save not Supported", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.Filter = "Plain XML log file - Analogy Data format (*.xml)| *.xml";
+                    SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+                    //SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    //saveFileDialog.Filter = "Plain XML log file - Analogy Data format (*.xml)| *.xml";
 
-                    if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-                    {
-                        try
-                        {
-                            AnalogyXmlLogFile save = new AnalogyXmlLogFile();
-                            save.Save(Messages, saveFileDialog.FileName);
-                            XtraMessageBox.Show("Operation Completed", $"Messages were saved to {saveFileDialog.FileName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception e)
-                        {
-                            XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    //if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                    //{
+                    //    try
+                    //    {
+                    //        AnalogyXmlLogFile save = new AnalogyXmlLogFile();
+                    //        save.Save(Messages, saveFileDialog.FileName);
+                    //        XtraMessageBox.Show("Operation Completed", $"Messages were saved to {saveFileDialog.FileName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    }
+                    //    catch (Exception e)
+                    //    {
+                    //        XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    }
+                    //}
                 }
                 else
                 {
@@ -1831,13 +1880,24 @@ namespace Philips.Analogy
             var source = GetFilteredDataTable().Rows[0]?["DataSource"]?.ToString();
             if (source == null) return;
             XtraFormLogGrid grid = new XtraFormLogGrid(msg, source);
+            lockExternalWindowsObject.EnterWriteLock();
+            _externalWindows.Add(grid);
+            Interlocked.Increment(ref ExternalWindowsCount);
+            lockExternalWindowsObject.ExitWriteLock();
+            grid.FormClosing += (s, arg) =>
+            {
+                lockExternalWindowsObject.EnterWriteLock();
+                Interlocked.Decrement(ref ExternalWindowsCount);
+                _externalWindows.Remove(grid);
+                lockExternalWindowsObject.ExitWriteLock();
+            };
             grid.Show(this);
         }
 
         private void bBtnSaveEntireLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = PagingManager.GetAllMessages();
-            SaveMessagesToLog(messages);
+            SaveMessagesToLog(FileDataSource, messages);
         }
 
         private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
@@ -1919,6 +1979,18 @@ namespace Philips.Analogy
             g.CopyFromScreen(rect.Left, rect.Top, 0, 0, bmp.Size, CopyPixelOperation.SourceCopy);
 
             return bmp;
+        }
+
+        private void BbtnSaveViewAgnostic_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var messages = Messages;
+            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+        }
+
+        private void BarButtonItemSaveEntireInAnalogy_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var messages = PagingManager.GetAllMessages();
+            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
         }
     }
 }

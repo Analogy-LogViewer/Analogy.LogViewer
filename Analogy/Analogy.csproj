@@ -262,7 +262,7 @@
     <Compile Include="BookmarkPersistManager.cs" />
     <Compile Include="ClientServerDataSourceManager.cs" />
     <Compile Include="AnalogyFactoriesManager.cs" />
-    <Compile Include="DataSources\AnalogyOfflineFactory.cs" />
+    <Compile Include="DataSources\AnalogyBuiltInFactory.cs" />
     <Compile Include="DataSources\EventLogDataSource.cs" />
     <Compile Include="LogLoaders\AnalogyJSonLoader.cs" />
     <Compile Include="DataVisualizerUC.cs">
@@ -493,6 +493,12 @@
     <Compile Include="XtraFormLogGrid.Designer.cs">
       <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="XtraFormWindowsEventlogsManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XtraFormWindowsEventlogsManage.Designer.cs">
+      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="XtraUCDirectoryListing.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -505,6 +511,18 @@
     <Compile Include="XtraUCFileSystem.Designer.cs">
       <DependentUpon>XtraUCFileSystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="XtraUCWindowsEventLogs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XtraUCWindowsEventLogs.Designer.cs">
+      <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="XtraFormWindowsEventlogsManage.resx">
+      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraUCWindowsEventLogs.resx">
+      <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\About_32x32.png" />
     <None Include="Resources\About_16x16.png" />
     <None Include="Resources\TwoColumns.png" />

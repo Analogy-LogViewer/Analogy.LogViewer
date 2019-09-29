@@ -22,6 +22,7 @@ namespace Analogy.Implementation.Example
 
         public async Task<bool> CanStartReceiving() => await Task.FromResult(true);
 
+        public IAnalogyOfflineDataSource FileOperationsHandler { get; }
         private Timer SimulateOnlineMessages;
         private int messageCount = 0;
         public void InitDataSource()

@@ -49,7 +49,7 @@ namespace Philips.Analogy
                     SelectedPath = Path.GetDirectoryName(extrenalFiles.First());
             }
 
-            folderTreeViewUC1.SetFolder(SelectedPath);
+            folderTreeViewUC1.SetFolder(SelectedPath, DataSource);
             PopulateFiles(SelectedPath);
 
             if (extrenalFiles.Any())
