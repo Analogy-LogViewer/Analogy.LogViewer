@@ -2,28 +2,30 @@
 <package >
   <metadata>
     <id>Analogy.LogViewer</id>
-    <version>4.0.3</version>
+    <version>4.0.4</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/philips-software/logviewer/</projectUrl>
-    <iconUrl>https://github.com/philips-software/logviewer/Analogy/Icons/Pelfusion-Flat-File-Type-Log.ico</iconUrl>
+    <icon>icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>
     <releaseNotes>Add new features. See github page</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
 	<dependencies>
-    <group targetFramework="net471">
-        <dependency id="Analogy.Log.Viewer.Interfaces" version="1.0.3" />
+    <group targetFramework="net471">    
     </group>
+	 <group>
+	<dependency id="Analogy.LogViewer.Interfaces" version="2.0.0" />
+	</group>
 </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\Analogy.exe" target="lib\net471\Analogy.exe" />
     <file src="bin\Release\Analogy.xml" target="lib\net471\Analogy.xml" />
 	<file src="bin\Release\Analogy.exe.config" target="lib\net471\Analogy.exe.config" />
-	
+	<file src="icon.png" target="" />
 </files>
 </package>
