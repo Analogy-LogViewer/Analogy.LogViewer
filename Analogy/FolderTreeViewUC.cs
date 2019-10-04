@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces;
 using Philips.Analogy.Types;
 
 namespace Philips.Analogy
@@ -11,7 +11,7 @@ namespace Philips.Analogy
     {
         public event EventHandler<FolderSelectionEventArgs> FolderChanged;
         private string SelectedPath { get; set; } = string.Empty;
-        private IAnalogyOfflineDataSource DataSource { get; set; }
+        private IAnalogyOfflineDataProvider DataProvider { get; set; }
         public FolderTreeViewUC()
         {
             InitializeComponent();
@@ -25,16 +25,16 @@ namespace Philips.Analogy
             {
                 if (Directory.Exists(txtbFolder.Text))
                 {
-                    await PopulateFolders(txtbFolder.Text, DataSource);
+                    await PopulateFolders(txtbFolder.Text, DataProvider);
                 }
 
             }
         }
-        private async Task PopulateFolders(string folderText, IAnalogyOfflineDataSource dataSource)
+        private async Task PopulateFolders(string folderText, IAnalogyOfflineDataProvider dataProvider)
         {
             if (Directory.Exists(folderText))
             {
-                xtraUCFileSystem1.SetPath(folderText, dataSource);
+                xtraUCFileSystem1.SetPath(folderText, dataProvider);
                 txtbFolder.Text = folderText;
                 FolderChanged?.Invoke(this, new FolderSelectionEventArgs(folderText));
             }
@@ -69,7 +69,7 @@ namespace Philips.Analogy
             txtbFolder.Text = SelectedPath;
             if (Directory.Exists(txtbFolder.Text))
             {
-                await PopulateFolders(txtbFolder.Text, DataSource);
+                await PopulateFolders(txtbFolder.Text, DataProvider);
             }
         }
 
@@ -80,18 +80,18 @@ namespace Philips.Analogy
             if (DialogResult.OK == folderBrowserDialog1.ShowDialog(this))
             {
                 SelectedPath = folderBrowserDialog1.SelectedPath;
-                await PopulateFolders(SelectedPath, DataSource);
+                await PopulateFolders(SelectedPath, DataProvider);
             }
 
         }
 
-        public void SetFolder(string folder, IAnalogyOfflineDataSource dataSource)
+        public void SetFolder(string folder, IAnalogyOfflineDataProvider dataProvider)
         {
-            this.DataSource = dataSource;
+            this.DataProvider = dataProvider;
             if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
             SelectedPath = folder;
             txtbFolder.Text = folder;
-            xtraUCFileSystem1.SetPath(folder, dataSource);
+            xtraUCFileSystem1.SetPath(folder, dataProvider);
         }
     }
 

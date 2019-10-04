@@ -1,6 +1,7 @@
 ﻿using System;
+using Philips.Analogy.Interfaces.DataTypes;
 
-namespace Philips.Analogy.Interfaces.Interfaces
+namespace Philips.Analogy.Interfaces
 {
     public interface IAnalogyChangeLog
     {

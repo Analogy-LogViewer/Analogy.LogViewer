@@ -11,7 +11,6 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraTab;
 using Philips.Analogy.DataSources;
 using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +24,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.DataTypes;
 using Message = System.Windows.Forms.Message;
 
 namespace Philips.Analogy
@@ -100,8 +100,8 @@ namespace Philips.Analogy
         private int pageNumber = 1;
 
         private int TotalPages => PagingManager.TotalPages;
-        private IAnalogyOfflineDataSource FileDataSource { get; set; }
-        private IAnalogyOfflineDataSource AnalogyOfflineDataSource { get; } = new AnalogyOfflineDataSource();
+        private IAnalogyOfflineDataProvider FileDataProvider { get; set; }
+        private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         public UCLogs()
         {
             InitializeComponent();
@@ -114,12 +114,12 @@ namespace Philips.Analogy
             _messageData = PagingManager.CurrentPage();
         }
 
-        public void SetFileDataSource(IAnalogyOfflineDataSource fileDataSource)
+        public void SetFileDataSource(IAnalogyOfflineDataProvider fileDataProvider)
         {
-            FileDataSource = fileDataSource;
-            if (FileDataSource is EventLogDataSource eventDataSource)
+            FileDataProvider = fileDataProvider;
+            if (FileDataProvider is EventLogDataProvider eventDataSource)
                 eventDataSource.LogWindow = this;
-            if (FileDataSource == null)
+            if (FileDataProvider == null)
             {
                 //disable specific saving
                 bBtnSaveLog.Visibility = BarItemVisibility.Never;
@@ -1040,7 +1040,7 @@ namespace Philips.Analogy
 
                 Text = @"File: " + filename;
                 FileProcessor fp = new FileProcessor(this);
-                await fp.Process(FileDataSource, filename, cancellationTokenSource.Token);
+                await fp.Process(FileDataProvider, filename, cancellationTokenSource.Token);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -1219,8 +1219,8 @@ namespace Philips.Analogy
             dtr["Audit"] = message.AuditLogType ?? string.Empty;
             dtr["Object"] = message;
             dtr["ProcessID"] = message.ProcessID;
-            string dataSource = (string)logGrid.GetRowCellValue(selRows.First(), "DataSource");
-            dtr["DataSource"] = dataSource;
+            string dataSource = (string)logGrid.GetRowCellValue(selRows.First(), "DataProvider");
+            dtr["DataProvider"] = dataSource;
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1409,10 +1409,10 @@ namespace Philips.Analogy
         private void bBtnSaveLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = Messages;
-            SaveMessagesToLog(FileDataSource, messages);
+            SaveMessagesToLog(FileDataProvider, messages);
         }
 
-        private async void SaveMessagesToLog(IAnalogyOfflineDataSource fileHandler, List<AnalogyLogMessage> messages)
+        private async void SaveMessagesToLog(IAnalogyOfflineDataProvider fileHandler, List<AnalogyLogMessage> messages)
         {
 
             if (fileHandler != null && fileHandler.CanSaveToLogFile)
@@ -1437,7 +1437,7 @@ namespace Philips.Analogy
             {
                 if (XtraMessageBox.Show("Current Data Source does not support Save Operation" + Environment.NewLine + "Do you want to Save in Analogy XML Format?", @"Save not Supported", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+                    SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
                     //SaveFileDialog saveFileDialog = new SaveFileDialog();
                     //saveFileDialog.Filter = "Plain XML log file - Analogy Data format (*.xml)| *.xml";
 
@@ -1686,7 +1686,7 @@ namespace Philips.Analogy
             int[] selRows = logGrid.GetSelectedRows();
             if (selRows == null || !selRows.Any()) return (null, string.Empty);
             var row = selRows.First();
-            string datasource = (string)logGrid.GetRowCellValue(row, "DataSource");
+            string datasource = (string)logGrid.GetRowCellValue(row, "DataProvider");
             AnalogyLogMessage message = (AnalogyLogMessage)logGrid.GetRowCellValue(selRows.First(), "Object");
             return (message, datasource);
 
@@ -1725,7 +1725,7 @@ namespace Philips.Analogy
                 dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
-                dtr["DataSource"] = "";
+                dtr["DataProvider"] = "";
                 if (diffStartTime > DateTime.MinValue)
                 {
                     dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1877,7 +1877,7 @@ namespace Philips.Analogy
         {
             var msg = Messages;
             if (!msg.Any()) return;
-            var source = GetFilteredDataTable().Rows[0]?["DataSource"]?.ToString();
+            var source = GetFilteredDataTable().Rows[0]?["DataProvider"]?.ToString();
             if (source == null) return;
             XtraFormLogGrid grid = new XtraFormLogGrid(msg, source);
             lockExternalWindowsObject.EnterWriteLock();
@@ -1897,7 +1897,7 @@ namespace Philips.Analogy
         private void bBtnSaveEntireLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = PagingManager.GetAllMessages();
-            SaveMessagesToLog(FileDataSource, messages);
+            SaveMessagesToLog(FileDataProvider, messages);
         }
 
         private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
@@ -1984,13 +1984,13 @@ namespace Philips.Analogy
         private void BbtnSaveViewAgnostic_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = Messages;
-            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+            SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
         }
 
         private void BarButtonItemSaveEntireInAnalogy_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = PagingManager.GetAllMessages();
-            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+            SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
         }
     }
 }

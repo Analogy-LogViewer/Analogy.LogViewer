@@ -1,10 +1,10 @@
 ﻿using DevExpress.XtraCharts;
 using DevExpress.XtraEditors.Controls;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {

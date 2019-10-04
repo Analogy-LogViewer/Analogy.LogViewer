@@ -362,12 +362,12 @@ namespace Philips.Analogy.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AutoStartDataSources {
+        public string AutoStartDataProviders {
             get {
-                return ((string)(this["AutoStartDataSources"]));
+                return ((string)(this["AutoStartDataProviders"]));
             }
             set {
-                this["AutoStartDataSources"] = value;
+                this["AutoStartDataProviders"] = value;
             }
         }
     }

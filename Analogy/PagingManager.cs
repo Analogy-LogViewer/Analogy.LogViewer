@@ -1,9 +1,9 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {
@@ -116,7 +116,7 @@ namespace Philips.Analogy
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["ThreadID"] = message.Thread;
-                dtr["DataSource"] = dataSource ?? string.Empty;
+                dtr["DataProvider"] = dataSource ?? string.Empty;
                 table.Rows.Add(dtr);
                 return dtr;
             }
@@ -156,7 +156,7 @@ namespace Philips.Analogy
                     dtr["Object"] = message;
                     dtr["ProcessID"] = message.ProcessID;
                     dtr["ThreadID"] = message.Thread;
-                    dtr["DataSource"] = dataSource ?? string.Empty;
+                    dtr["DataProvider"] = dataSource ?? string.Empty;
                     table.Rows.Add(dtr);
                     yield return (dtr, message);
                 }

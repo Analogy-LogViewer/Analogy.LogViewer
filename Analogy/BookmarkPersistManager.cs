@@ -1,6 +1,5 @@
 ﻿using DevExpress.XtraEditors;
 using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
 using Philips.Analogy.LogLoaders;
 using System;
 using System.Collections.Generic;
@@ -9,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {

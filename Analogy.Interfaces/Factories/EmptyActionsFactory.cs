@@ -1,9 +1,8 @@
-﻿using Philips.Analogy.Interfaces.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Philips.Analogy.Interfaces
+namespace Philips.Analogy.Interfaces.Factories
 {
-    public class EmptyActionsFactory : IAnalogyCustomActionFactory
+    public class EmptyActionsFactory : IAnalogyCustomActionsFactory
     {
         public string Title => "Empty Actions";
         /// <summary>

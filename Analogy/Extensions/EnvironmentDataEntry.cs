@@ -1,6 +1,6 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Linq;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy.Extensions
 {

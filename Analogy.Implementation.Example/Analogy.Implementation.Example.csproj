@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="AnalogyDataSourceFactory.cs" />
     <Compile Include="AnalogyExampleFactory.cs" />
-    <Compile Include="AnalogyOnlineExampleDataSource.cs" />
+    <Compile Include="AnalogyOnlineExampleDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

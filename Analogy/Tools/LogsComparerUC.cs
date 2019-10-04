@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces;
 
 namespace Philips.Analogy.Tools
 {
@@ -13,7 +13,7 @@ namespace Philips.Analogy.Tools
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private FileComparerProcessor LeftFile;
         private FileComparerProcessor RightFile;
-        private IAnalogyOfflineDataSource OfflineAnalogy { get; set; }
+        private IAnalogyOfflineDataProvider OfflineAnalogy { get; set; }
         public LogsComparerUC()
         {
             InitializeComponent();
@@ -141,7 +141,7 @@ namespace Philips.Analogy.Tools
             }
         }
 
-        public void SetDataSource(IAnalogyOfflineDataSource offlineAnalogy)
+        public void SetDataSource(IAnalogyOfflineDataProvider offlineAnalogy)
         {
             OfflineAnalogy = offlineAnalogy;
         }

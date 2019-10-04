@@ -1,7 +1,7 @@
 ﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {

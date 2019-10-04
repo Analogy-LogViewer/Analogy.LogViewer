@@ -533,7 +533,7 @@ namespace Philips.Analogy
             this.gridColumnDataSource.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnDataSource.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnDataSource.Caption = "Data Source/File Name";
-            this.gridColumnDataSource.FieldName = "DataSource";
+            this.gridColumnDataSource.FieldName = "DataProvider";
             this.gridColumnDataSource.MinWidth = 24;
             this.gridColumnDataSource.Name = "gridColumnDataSource";
             this.gridColumnDataSource.OptionsColumn.AllowEdit = false;
@@ -1726,7 +1726,7 @@ namespace Philips.Analogy
             this.gridColumn1.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumn1.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumn1.Caption = "Data Source";
-            this.gridColumn1.FieldName = "DataSource";
+            this.gridColumn1.FieldName = "DataProvider";
             this.gridColumn1.MinWidth = 24;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
@@ -2242,7 +2242,7 @@ namespace Philips.Analogy
             this.gridColumn13.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumn13.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumn13.Caption = "Data Source";
-            this.gridColumn13.FieldName = "DataSource";
+            this.gridColumn13.FieldName = "DataProvider";
             this.gridColumn13.MinWidth = 24;
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;

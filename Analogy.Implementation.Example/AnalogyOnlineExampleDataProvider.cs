@@ -1,12 +1,12 @@
 ﻿using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.Timers;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Implementation.Example
 {
-    class AnalogyOnlineExampleDataSource : IAnalogyRealTimeDataSource
+    class AnalogyOnlineExampleDataProvider : IAnalogyRealTimeDataProvider
     {
         public Guid ID => new Guid("6642B160-F992-4120-B688-B02DE2E83256");
 
@@ -22,10 +22,10 @@ namespace Analogy.Implementation.Example
 
         public async Task<bool> CanStartReceiving() => await Task.FromResult(true);
 
-        public IAnalogyOfflineDataSource FileOperationsHandler { get; }
+        public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         private Timer SimulateOnlineMessages;
         private int messageCount = 0;
-        public void InitDataSource()
+        public void InitDataProvider()
         {
             SimulateOnlineMessages = new Timer(1000);
             SimulateOnlineMessages.Elapsed += (s, e) =>
@@ -42,7 +42,7 @@ namespace Analogy.Implementation.Example
 
         public void StartReceiving()
         {
-            InitDataSource();
+            InitDataProvider();
             SimulateOnlineMessages?.Start();
         }
 

@@ -1,5 +1,3 @@
-using Philips.Analogy.Interfaces.Interfaces;
-using Philips.Analogy.LogLoaders;
 using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,8 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {
@@ -24,7 +22,7 @@ namespace Philips.Analogy
         {
             DataWindow = dataWindow;
         }
-        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataSource fileDataSource, string filename, CancellationToken token)
+        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider, string filename, CancellationToken token)
         {
             FileName = filename;
             if (string.IsNullOrEmpty(FileName)) return new List<AnalogyLogMessage>();
@@ -49,8 +47,8 @@ namespace Philips.Analogy
             }
             //otherwise read file:
             FileProcessingManager.Instance.AddProcessingFile(FileName);
-            Settings.AddToRecentFiles(fileDataSource.ID, FileName);
-            var messages = await fileDataSource.Process(filename, token, DataWindow).ConfigureAwait(false);
+            Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
+            var messages = await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false);
             FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
             return messages;
 

@@ -6,7 +6,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {

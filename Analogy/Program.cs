@@ -1,6 +1,5 @@
 ﻿using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces;
 using System;
 using System.IO;
 using System.Linq;

@@ -1,5 +1,4 @@
 ﻿using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
 using Philips.Analogy.LogLoaders;
 using Philips.Analogy.Properties;
 using System;
@@ -9,23 +8,25 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Philips.Analogy.Interfaces.DataTypes;
+using Philips.Analogy.Interfaces.Factories;
 
 namespace Philips.Analogy.DataSources
 {
-    public class AnalogyBuiltInFactory : IAnalogyFactories
+    public class AnalogyBuiltInFactory : IAnalogyFactory
     {
         public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
         public Guid FactoryID { get; } = AnalogyGuid;
         public string Title { get; } = "Analogy Built-in Logs Features";
-        public IAnalogyDataSourceFactory DataSources { get; }
-        public IAnalogyCustomActionFactory Actions { get; }
-        public IAnalogyUserControlFactory UserControls { get; }
+        public IAnalogyDataProvidersFactory DataProviders { get; }
+        public IAnalogyCustomActionsFactory Actions { get; }
+        public IAnalogyUserControlsFactory UserControls { get; }
         public IEnumerable<IAnalogyChangeLog> ChangeLog => GetChangeLog();
         public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
         public string About { get; } = "Analogy Built-in Data Source";
         public AnalogyBuiltInFactory()
         {
-            DataSources = new AnalogyOfflineDataSourceFactory();
+            DataProviders = new AnalogyOfflineDataProviderFactory();
             Actions = new AnalogyCustomActionFactory();
 
         }
@@ -50,18 +51,18 @@ namespace Philips.Analogy.DataSources
         }
     }
 
-    public class AnalogyOfflineDataSourceFactory : IAnalogyDataSourceFactory
+    public class AnalogyOfflineDataProviderFactory : IAnalogyDataProvidersFactory
     {
         public string Title { get; } = "Analogy Built-In Data Sources";
-        public IEnumerable<IAnalogyDataSource> Items { get; }
+        public IEnumerable<IAnalogyDataProvider> Items { get; }
 
-        public AnalogyOfflineDataSourceFactory()
+        public AnalogyOfflineDataProviderFactory()
         {
-            Items = new List<IAnalogyDataSource> { new AnalogyOfflineDataSource() };
+            Items = new List<IAnalogyDataProvider> { new AnalogyOfflineDataProvider() };
         }
     }
 
-    public class AnalogyOfflineDataSource : IAnalogyOfflineDataSource
+    public class AnalogyOfflineDataProvider : IAnalogyOfflineDataProvider
     {
         public Guid ID { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
 
@@ -72,7 +73,7 @@ namespace Philips.Analogy.DataSources
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
         public Image OptionalOpenFolderImage { get; }
         public Image OptionalOpenFilesImage { get; }
-        public void InitDataSource()
+        public void InitDataProvider()
         {
 
         }
@@ -162,7 +163,7 @@ namespace Philips.Analogy.DataSources
 
 
 
-    public class AnalogyCustomActionFactory : IAnalogyCustomActionFactory
+    public class AnalogyCustomActionFactory : IAnalogyCustomActionsFactory
     {
         public string Title { get; } = "Analogy Built-In tools";
         public IEnumerable<IAnalogyCustomAction> Items { get; }

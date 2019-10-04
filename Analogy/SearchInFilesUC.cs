@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces;
 
 namespace Philips.Analogy
 {
     public partial class SearchInFilesUC : UserControl
     {
-        private IAnalogyOfflineDataSource offlineAnalogy;
+        private IAnalogyOfflineDataProvider offlineAnalogy;
 
         public SearchInFilesUC()
         {
@@ -23,11 +23,11 @@ namespace Philips.Analogy
             sBtnSearch.Enabled = true;
         }
 
-        public void SetDataSource(IAnalogyOfflineDataSource offlineAnalogy)
+        public void SetDataSource(IAnalogyOfflineDataProvider offlineAnalogy)
         {
 
             this.offlineAnalogy = offlineAnalogy;
-            fileSystemUC1.DataSource = offlineAnalogy;
+            fileSystemUC1.DataProvider = offlineAnalogy;
         }
     }
 }

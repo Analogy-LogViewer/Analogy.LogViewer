@@ -1,7 +1,7 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {

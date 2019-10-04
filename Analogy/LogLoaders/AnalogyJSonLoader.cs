@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy.LogLoaders
 {

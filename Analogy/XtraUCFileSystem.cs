@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces;
 
 namespace Philips.Analogy
 {
@@ -16,7 +16,7 @@ namespace Philips.Analogy
         private string startupDrive;
         private bool ListFolders;
         private bool ListFiles;
-        private IAnalogyOfflineDataSource DataSource { get; set; }
+        private IAnalogyOfflineDataProvider DataProvider { get; set; }
 
         public XtraUCFileSystem() : this(false, false)
         {
@@ -153,7 +153,7 @@ namespace Philips.Analogy
                             {
                                 dirs = new string[0];
                             }
-                        string[] files = ListFiles ? DataSource.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).ToArray() : new string[0];
+                        string[] files = ListFiles ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).ToArray() : new string[0];
                         string[] arr = new string[dirs.Length + files.Length];
                         if (ListFolders)
                             dirs.CopyTo(arr, 0);
@@ -169,9 +169,9 @@ namespace Philips.Analogy
 
         }
 
-        public void SetPath(string path, IAnalogyOfflineDataSource dataSource)
+        public void SetPath(string path, IAnalogyOfflineDataProvider dataProvider)
         {
-            DataSource = dataSource;
+            DataProvider = dataProvider;
             startupDrive = path;
             treeList1.ClearNodes();
             treeList1.DataSource = new object();

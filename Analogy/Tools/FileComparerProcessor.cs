@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using Philips.Analogy.Interfaces.Interfaces;
 using Philips.Analogy.Interfaces;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy.Tools
 {

@@ -14,7 +14,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {
@@ -151,7 +151,7 @@ namespace Philips.Analogy
             dtb.Columns.Add(dtc);
             dtc = new DataColumn("ThreadID", typeof(int));
             dtb.Columns.Add(dtc);
-            dtc = new DataColumn("DataSource", typeof(string));
+            dtc = new DataColumn("DataProvider", typeof(string));
             dtb.Columns.Add(dtc);
             var manager = ExtensionsManager.Instance;
             foreach (IAnalogyExtension extension in manager.InPlaceRegisteredExtensions)

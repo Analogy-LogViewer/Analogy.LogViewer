@@ -76,7 +76,7 @@ namespace Philips.Analogy
                 //receiver.Subscription += (s, message) =>
                 //{
                 //    message.Message.Text = $"{message.Message.Text }. Received from Analogy hostname: {message.HostName}";
-                //    Logs.AppendMessage(message.Message, message.DataSource);
+                //    Logs.AppendMessage(message.Message, message.DataProvider);
                 //};
             }
             //StartStopHost(receiver);

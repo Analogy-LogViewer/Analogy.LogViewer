@@ -1,6 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces.Interfaces;
-using Philips.Analogy.Tools;
 using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,6 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
 {
@@ -19,7 +18,7 @@ namespace Philips.Analogy
         private string sourcePath;
         private int refreshDelay = 100;
         private DateTime LastReportUpdate = DateTime.Now;
-        public IAnalogyOfflineDataSource DataSource { get; set; }
+        public IAnalogyOfflineDataProvider DataProvider { get; set; }
 
         private FileProcessingManager Manager { get; } = new FileProcessingManager();
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
@@ -83,9 +82,9 @@ namespace Philips.Analogy
             FileNames = filenames;
         }
 
-        public async Task ProcessFilesAndSearch(IAnalogyOfflineDataSource dataSource, string txtToSearch)
+        public async Task ProcessFilesAndSearch(IAnalogyOfflineDataProvider dataProvider, string txtToSearch)
         {
-            DataSource = dataSource;
+            DataProvider = dataProvider;
             Aborted = false;
             sBtnAbort.Enabled = true;
             int processed = 0;
@@ -93,7 +92,7 @@ namespace Philips.Analogy
             {
                 if (Manager.AlreadyProcessed(Path.GetFileName(filename))) continue;
                 FileProcessor fp = new FileProcessor(this);
-                await fp.Process(DataSource,filename, cancellationTokenSource.Token);
+                await fp.Process(DataProvider,filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));
                 if (Aborted)
@@ -114,9 +113,9 @@ namespace Philips.Analogy
         }
 
 
-        public async Task ProcessFilesAndCombine(IAnalogyOfflineDataSource dataSource)
+        public async Task ProcessFilesAndCombine(IAnalogyOfflineDataProvider dataProvider)
         {
-            DataSource = dataSource;
+            DataProvider = dataProvider;
             Aborted = false;
             sBtnAbort.Enabled = true;
             int processed = 0;
@@ -130,7 +129,7 @@ namespace Philips.Analogy
                 }
 
                 FileProcessor fp = new FileProcessor(this);
-                await fp.Process(DataSource, filename, cancellationTokenSource.Token);
+                await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));
                 if (Aborted)

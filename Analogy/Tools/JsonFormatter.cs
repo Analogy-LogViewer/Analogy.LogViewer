@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Philips.Analogy.Interfaces;
 using System;
 using System.IO;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy.Tools
 {

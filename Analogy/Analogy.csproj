@@ -262,8 +262,8 @@
     <Compile Include="BookmarkPersistManager.cs" />
     <Compile Include="ClientServerDataSourceManager.cs" />
     <Compile Include="AnalogyFactoriesManager.cs" />
-    <Compile Include="DataSources\AnalogyBuiltInFactory.cs" />
-    <Compile Include="DataSources\EventLogDataSource.cs" />
+    <Compile Include="DataProviders\AnalogyBuiltInFactory.cs" />
+    <Compile Include="DataProviders\EventLogDataProvider.cs" />
     <Compile Include="LogLoaders\AnalogyJSonLoader.cs" />
     <Compile Include="DataVisualizerUC.cs">
       <SubType>UserControl</SubType>

@@ -3,20 +3,20 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces.Factories;
 
 namespace Philips.Analogy
 {
     partial class AboutDataSourceBox : XtraForm
     {
-        private IAnalogyFactories Factory;
+        private IAnalogyFactory Factory;
         private Assembly FactoryAssemblly;
         public AboutDataSourceBox()
         {
             InitializeComponent();
         }
 
-        public AboutDataSourceBox(IAnalogyFactories factory) : this()
+        public AboutDataSourceBox(IAnalogyFactory factory) : this()
         {
             Factory = factory;
             FactoryAssemblly = AnalogyFactoriesManager.AnalogyFactories.GetAssemblyOfFactory(factory);

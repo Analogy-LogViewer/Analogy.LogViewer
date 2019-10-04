@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces.DataTypes;
 using Message = System.Windows.Forms.Message;
 
 namespace Philips.Analogy
@@ -18,7 +18,7 @@ namespace Philips.Analogy
         private bool _sendLogs;
         private static int clearHistoryCounter;
         public bool Enable { get; set; } = true;
-        public OnlineUCLogs(IAnalogyRealTimeDataSource realTime)
+        public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime)
         {
             InitializeComponent();
             ucLogs1.OnlineMode = true;
@@ -36,7 +36,7 @@ namespace Philips.Analogy
             spltMain.Panel1Collapsed = true;
         }
 
-        private void UcLogs1_OnHistoryCleared(object sender, Interfaces.AnalogyClearedHistoryEventArgs e)
+        private void UcLogs1_OnHistoryCleared(object sender, AnalogyClearedHistoryEventArgs e)
         {
             Interlocked.Increment(ref clearHistoryCounter);
             spltMain.Panel1Collapsed = !showHistory;

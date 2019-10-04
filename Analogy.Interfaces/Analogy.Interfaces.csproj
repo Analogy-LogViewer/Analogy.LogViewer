@@ -50,19 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTypes.cs" />
-    <Compile Include="EmptyActionsFactory.cs" />
-    <Compile Include="EmptyUserControlsFactory.cs" />
-    <Compile Include="EventArgs.cs" />
-    <Compile Include="Interfaces\IAnalogyChangeLog.cs" />
-    <Compile Include="Interfaces\IAnalogyExtension.cs" />
-    <Compile Include="Interfaces\IAnalogyCustomAction.cs" />
-    <Compile Include="Interfaces\IAnalogyDataSource.cs" />
-    <Compile Include="Interfaces\IAnalogyFactories.cs" />
-    <Compile Include="Interfaces\IAnalogyUserControl.cs" />
-    <Compile Include="Interfaces\ILogMessageCreatedHandler.cs" />
+    <Compile Include="DataTypes\DataTypes.cs" />
+    <Compile Include="Factories\EmptyActionsFactory.cs" />
+    <Compile Include="Factories\EmptyUserControlsFactory.cs" />
+    <Compile Include="DataTypes\EventArgs.cs" />
+    <Compile Include="Factories\IAnalogyCustomActionsFactory.cs" />
+    <Compile Include="Factories\IAnalogyDataProvidersFactory.cs" />
+    <Compile Include="IAnalogyDataProvider.cs" />
+    <Compile Include="IAnalogyChangeLog.cs" />
+    <Compile Include="IAnalogyExtension.cs" />
+    <Compile Include="IAnalogyCustomAction.cs" />
+    <Compile Include="Factories\IAnalogyUserControlsFactory.cs" />
+    <Compile Include="Factories\IAnalogyFactory.cs" />
+    <Compile Include="IAnalogyUserControl.cs" />
+    <Compile Include="ILogMessageCreatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

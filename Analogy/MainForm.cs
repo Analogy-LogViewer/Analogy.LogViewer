@@ -4,7 +4,6 @@ using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
 using Philips.Analogy.DataSources;
 using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
 using Philips.Analogy.Properties;
 using Philips.Analogy.Tools;
 using System;
@@ -15,6 +14,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Philips.Analogy.Interfaces.DataTypes;
+using Philips.Analogy.Interfaces.Factories;
 
 namespace Philips.Analogy
 {
@@ -24,8 +25,8 @@ namespace Philips.Analogy
         private string onlineTitle = "Online log";
         private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
 
-        private Dictionary<XtraTabPage, IAnalogyRealTimeDataSource> onlineDataSourcesMapping =
-            new Dictionary<XtraTabPage, IAnalogyRealTimeDataSource>();
+        private Dictionary<XtraTabPage, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
+            new Dictionary<XtraTabPage, IAnalogyRealTimeDataProvider>();
 
         private List<Task<bool>> OnlineSources = new List<Task<bool>>();
         private int offline;
@@ -105,7 +106,7 @@ namespace Philips.Analogy
             CreateDataSources();
 
             //set Default page:
-            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitilaSelectedDataSource);
+            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitialSelectedDataProvider);
             if (Mapping.ContainsKey(defaultPage))
             {
                 ribbonControlMain.SelectedPage = Mapping[defaultPage];
@@ -119,7 +120,7 @@ namespace Philips.Analogy
 
         private void CreateAnalogyDataSource()
         {
-            IAnalogyFactories analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyBuiltInFactory.AnalogyGuid);
+            IAnalogyFactory analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyBuiltInFactory.AnalogyGuid);
             CreateDataSource(analogy, 0);
         }
 
@@ -131,7 +132,7 @@ namespace Philips.Analogy
             RibbonPageGroup group = new RibbonPageGroup("Windows Event logs Data Sources");
             ribbonPage.Groups.Add(group);
 
-            EventLogDataSource elds = new EventLogDataSource();
+            EventLogDataProvider elds = new EventLogDataProvider();
             BarButtonItem evtxRealTime = new BarButtonItem();
             evtxRealTime.Caption = "Real Time Windows Event Logs";
             evtxRealTime.RibbonStyle = RibbonItemStyles.All;
@@ -227,7 +228,7 @@ namespace Philips.Analogy
             btnFolder.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
             btnFolder.ItemClick += (s, be) =>
             {
-                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataSource());
+                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
                 offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
                     "System32", "Winevt", "Logs");
                 XtraTabPage page = new XtraTabPage();
@@ -245,7 +246,7 @@ namespace Philips.Analogy
 
         private void CreateEventLogsMenu(RibbonPage ribbonPage)
         {
-            EventLogDataSource elds = new EventLogDataSource();
+            EventLogDataProvider elds = new EventLogDataProvider();
             BarButtonItem evtxRealTime = new BarButtonItem();
             evtxRealTime.Caption = "Real Time Windows Event Logs";
             evtxRealTime.ItemClick += (s, be) =>
@@ -324,7 +325,7 @@ namespace Philips.Analogy
             btnFolder.Caption = $"Local Machine logs - {Environment.MachineName}";
             btnFolder.ItemClick += (s, be) =>
             {
-                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataSource());
+                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
                 offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
                     "System32", "Winevt", "Logs");
                 XtraTabPage page = new XtraTabPage();
@@ -338,11 +339,11 @@ namespace Philips.Analogy
             bsiWindowsEventLogs.AddItem(btnFolder);
         }
 
-        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames, IAnalogyOfflineDataSource dataSource,
+        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames, IAnalogyOfflineDataProvider dataProvider,
             string title = null)
         {
             offline++;
-            UserControl offlineUC = new OfflineUCLogs(dataSource, filenames);
+            UserControl offlineUC = new OfflineUCLogs(dataProvider, filenames);
             XtraTabPage page = new XtraTabPage();
             page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
             page.Tag = ribbonPage;
@@ -497,7 +498,7 @@ namespace Philips.Analogy
             //}
         }
 
-        private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataSource offlineAnalogy,
+        private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataProvider offlineAnalogy,
             string title, List<string> files)
         {
 
@@ -769,21 +770,21 @@ namespace Philips.Analogy
 
         private void CreateDataSources()
         {
-            foreach (IAnalogyFactories factory in AnalogyFactoriesManager.AnalogyFactories.GetFactories())
+            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.AnalogyFactories.GetFactories())
             {
                 CreateDataSource(factory, 1);
             }
 
         }
 
-        private void CreateDataSource(IAnalogyFactories factory, int position)
+        private void CreateDataSource(IAnalogyFactory factory, int position)
         {
             if (factory.Title == null) return;
 
             RibbonPage ribbonPage = new RibbonPage(factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(factory.FactoryID, ribbonPage);
-            var dataSourceFactory = factory.DataSources;
+            var dataSourceFactory = factory.DataProviders;
             if (dataSourceFactory?.Items != null && dataSourceFactory.Items.Any() &&
                 !string.IsNullOrEmpty(dataSourceFactory.Title))
             {
@@ -791,13 +792,13 @@ namespace Philips.Analogy
                 ribbonPage.Groups.Add(groupDataSource);
                 RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup("Offline File Tools");
                 ribbonPage.Groups.Add(groupOfflineFileTools);
-                foreach (IAnalogyDataSource dataSource in dataSourceFactory.Items)
+                foreach (IAnalogyDataProvider dataSource in dataSourceFactory.Items)
                 {
-                    if (dataSource is IAnalogyRealTimeDataSource realTime)
+                    if (dataSource is IAnalogyRealTimeDataProvider realTime)
                     {
                         AddRealTimeDataSource(ribbonPage, realTime, dataSourceFactory.Title, groupDataSource);
                     }
-                    else if (dataSource is IAnalogyOfflineDataSource offlineAnalogy)
+                    else if (dataSource is IAnalogyOfflineDataProvider offlineAnalogy)
                     {
                         AddOfflineDataSource(ribbonPage, offlineAnalogy, dataSourceFactory.Title, groupDataSource,
                             groupOfflineFileTools);
@@ -843,7 +844,7 @@ namespace Philips.Analogy
             ribbonPage.Groups.Add(groupInfoSource);
         }
 
-        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataSource offlineAnalogy, string title,
+        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy, string title,
             RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
@@ -860,7 +861,7 @@ namespace Philips.Analogy
                 xtcLogs.SelectedTabPage = page;
             }
 
-            void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataSource analogy)
+            void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
                 offline++;
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
@@ -973,7 +974,7 @@ namespace Philips.Analogy
             };
         }
 
-        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataSource realTime, string title,
+        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataProvider realTime, string title,
             RibbonPageGroup group)
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
@@ -1065,7 +1066,7 @@ namespace Philips.Analogy
             }
 
             realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
-            if (settings.AutoStartDataSources.Contains(realTime.ID))
+            if (settings.AutoStartDataProviders.Contains(realTime.ID))
             {
                 async Task<bool> AutoOpenRealTime()
                 {

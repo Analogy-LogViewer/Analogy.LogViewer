@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Philips.Analogy.Interfaces.Interfaces
+
+namespace Philips.Analogy.Interfaces.Factories
 {
-    public interface IAnalogyFactories
+    public interface IAnalogyFactory
     {
         /// <summary>
         /// Fixed Unique Guid that will be used as The Id of the Factory 
@@ -13,15 +14,15 @@ namespace Philips.Analogy.Interfaces.Interfaces
         /// <summary>
         /// Factory to Generate offline and real time data sources
         /// </summary>
-        IAnalogyDataSourceFactory DataSources { get; }
+        IAnalogyDataProvidersFactory DataProviders { get; }
         /// <summary>
         /// Actions factory (non UI). Use EmptyActionsFactory if not needed 
         /// </summary>
-        IAnalogyCustomActionFactory Actions { get; }
+        IAnalogyCustomActionsFactory Actions { get; }
         /// <summary>
         /// Actions factory (user controls).  
         /// </summary>
-        IAnalogyUserControlFactory UserControls { get; }
+        IAnalogyUserControlsFactory UserControls { get; }
         IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
         IEnumerable<string> Contributors { get; }
         string About { get; }

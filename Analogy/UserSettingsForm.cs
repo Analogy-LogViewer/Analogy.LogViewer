@@ -3,7 +3,6 @@ using Philips.Analogy.Interfaces;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
 
 namespace Philips.Analogy
 {
@@ -92,7 +91,7 @@ namespace Philips.Analogy
 
             }
 
-            var startup = Settings.AutoStartDataSources;
+            var startup = Settings.AutoStartDataProviders;
             var loaded = AnalogyFactoriesManager.AnalogyFactories.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
@@ -204,7 +203,7 @@ namespace Philips.Analogy
 
         private void ChkLstItemRealTimeDataSources_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.AutoStartDataSources =
+            Settings.AutoStartDataProviders =
                 chkLstItemRealTimeDataSources.CheckedItems.Cast<RealTimeCheckItem>().Select(r => r.ID).ToList();
         }
     }

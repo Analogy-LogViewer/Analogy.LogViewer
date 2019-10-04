@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
+using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy.LogLoaders
 {
