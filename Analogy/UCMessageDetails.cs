@@ -17,7 +17,7 @@ namespace Philips.Analogy
             InitializeComponent();
         }
 
-        public UCMessageDetails(AnalogyLogMessage msg, List<AnalogyLogMessage> messages,string dataSource) : this()
+        public UCMessageDetails(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
         {
             Message = msg;
             Messages = messages;
@@ -32,6 +32,7 @@ namespace Philips.Analogy
         private void LoadMessage()
         {
             rtxtbText.Text = Message.Text;
+            txtID.Text = Message.ID.ToString();
             rtxtbDataSource.Text = DataSource;
             txtbDateValue.Text = Message.Date.ToString("MM/dd/yyyy hh:mm:ss.fff tt", DateTimeFormatInfo.InvariantInfo);
             txtbLevelValue.Text = Message.Level.ToString();

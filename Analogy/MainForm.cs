@@ -88,7 +88,7 @@ namespace Philips.Analogy
             //todo: fine handler for file
             if (arguments.Length == 2)
             {
-                string[] fileNames = {arguments[1]};
+                string[] fileNames = { arguments[1] };
                 OpenOfflineLogs(fileNames);
 
             }
@@ -182,8 +182,8 @@ namespace Philips.Analogy
                     "Logs", "System.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(systemLog);
@@ -199,8 +199,8 @@ namespace Philips.Analogy
                     "Logs", "Application.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(appLog);
@@ -216,8 +216,8 @@ namespace Philips.Analogy
                     "Logs", "Security.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(secLog);
@@ -288,8 +288,8 @@ namespace Philips.Analogy
                     "Logs", "System.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(systemLog);
@@ -302,8 +302,8 @@ namespace Philips.Analogy
                     "Logs", "Application.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(appLog);
@@ -316,8 +316,8 @@ namespace Philips.Analogy
                     "Logs", "Security.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(secLog);
@@ -369,7 +369,7 @@ namespace Philips.Analogy
             {
                 // Assign the file names to a string array, in 
                 // case the user has selected multiple files.
-                string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 OpenOfflineLogs(files);
             }
         }
@@ -511,7 +511,7 @@ namespace Philips.Analogy
                     btn.Caption = file;
                     btn.ItemClick += (s, be) =>
                     {
-                        OpenOfflineLogs(ribbonPage, new[] {be.Item.Caption}, offlineAnalogy, title);
+                        OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
                     };
                     bar.AddItem(btn);
                 }
@@ -520,6 +520,7 @@ namespace Philips.Analogy
 
         private void AnalogyMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            xtcLogs.TabPages.Clear(true);
             RestoreDefaultLogLevel();
         }
 
@@ -635,31 +636,6 @@ namespace Philips.Analogy
             //}
         }
 
-        private void bBtnCTOnline_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //todo:
-            //online++;
-            //var onlineUC = new OnlineUCLogs();
-            //XtraTabPage page = new XtraTabPage();
-            //page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            //page.Controls.Add(onlineUC);
-            //onlineUC.Dock = DockStyle.Fill;
-            //page.Text = $"Online CT log #{online}";
-            //xtcLogs.TabPages.Add(page);
-            //CTOnlineLogReader reader = new CTOnlineLogReader();
-            //reader.Handler += (source, arg) => onlineUC.AppendMessage(arg.Message, Environment.MachineName);
-            //xtcLogs.SelectedTabPage = page;
-            //Application.ApplicationExit += (controlSender, arg) => reader.Dispose();
-            //xtcLogs.ControlRemoved += (controlSender, arg) =>
-            //{
-            //    if (arg.Control == page)
-            //    {
-            //        onlineUC.Dispose();
-            //        reader.Dispose();
-            //    }
-            //};
-
-        }
 
         private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1088,7 +1064,7 @@ namespace Philips.Analogy
         {
             if (e.Page?.Tag == null)
                 return;
-            ribbonControlMain.SelectedPage = (RibbonPage) e.Page.Tag;
+            ribbonControlMain.SelectedPage = (RibbonPage)e.Page.Tag;
         }
 
         private async void TmrAutoConnect_Tick(object sender, EventArgs e)
