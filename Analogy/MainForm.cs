@@ -50,6 +50,7 @@ namespace Philips.Analogy
         {
             if (DesignMode) return;
             settings = UserSettingsManager.UserSettings;
+            bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             bbtnCloseCurrentTabPage.ItemClick += (object s, ItemClickEventArgs ea) => { CloseCurrentTabPage(); };
             bbtnCloseAllTabPage.ItemClick += (object s, ItemClickEventArgs ea) =>
             {
@@ -1105,7 +1106,7 @@ namespace Philips.Analogy
         private void TmrStatusUpdates_Tick(object sender, EventArgs e)
         {
             tmrStatusUpdates.Stop();
-            bsiMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [mb] used";
+            bsiMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [MB]";
             if (settings.IdleMode)
             {
                 bsiIdleMessage.Caption =
@@ -1145,6 +1146,12 @@ namespace Philips.Analogy
 
 
             }
+        }
+
+        private void bbiFileCaching_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            settings.EnableFileCaching = !settings.EnableFileCaching;
+            bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
         }
     }
 }

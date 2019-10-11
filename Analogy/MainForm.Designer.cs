@@ -110,6 +110,7 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -198,10 +199,11 @@
             this.bsiMemoryUsage,
             this.bsiIdleMessage,
             this.bbtnUserSettingsResourceUsage,
-            this.bbtnSettingsStartupDataSources});
+            this.bbtnSettingsStartupDataSources,
+            this.bbiFileCaching});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 68;
+            this.ribbonControlMain.MaxItemId = 69;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -820,6 +822,7 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.bbiFileCaching);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiIdleMessage);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiMemoryUsage);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
@@ -875,6 +878,14 @@
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
+            // 
+            // bbiFileCaching
+            // 
+            this.bbiFileCaching.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbiFileCaching.Caption = "File caching is off";
+            this.bbiFileCaching.Id = 68;
+            this.bbiFileCaching.Name = "bbiFileCaching";
+            this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
             // 
             // MainForm
             // 
@@ -986,5 +997,6 @@
         private DevExpress.XtraBars.BarStaticItem bsiIdleMessage;
         private DevExpress.XtraBars.BarButtonItem bbtnUserSettingsResourceUsage;
         private DevExpress.XtraBars.BarButtonItem bbtnSettingsStartupDataSources;
+        private DevExpress.XtraBars.BarButtonItem bbiFileCaching;
     }
 }
