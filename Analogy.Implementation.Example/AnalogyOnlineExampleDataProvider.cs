@@ -27,7 +27,7 @@ namespace Analogy.Implementation.Example
         private int messageCount = 0;
         public void InitDataProvider()
         {
-            SimulateOnlineMessages = new Timer(1000);
+            SimulateOnlineMessages = new Timer(100);
             SimulateOnlineMessages.Elapsed += (s, e) =>
             {
                 if (OnMessageReady == null)

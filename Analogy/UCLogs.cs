@@ -50,9 +50,8 @@ namespace Philips.Analogy
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
 
-        private object LockObject => _messageData.Rows.SyncRoot;
         private ReaderWriterLockSlim lockExternalWindowsObject = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
-        private ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+        private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
@@ -111,6 +110,7 @@ namespace Philips.Analogy
             //ClientSizeChanged += (s, e) => { splitContainerMain.SplitterPosition = (int)0.8 * splitContainerMain.Height; };
             LayoutFileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "layout.xml");
             PagingManager = new PagingManager(this);
+            lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
         }
 
@@ -884,13 +884,19 @@ namespace Philips.Analogy
 
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    lock (LockObject)
-                    {
-                        logGrid.BeginDataUpdate();
-                        _messageData.AcceptChanges();
-                        logGrid.EndDataUpdate();
-                        RefreshUIMessagesCount();
-                    }
+                   lockSlim.EnterWriteLock();
+                   try
+                   {
+                       logGrid.BeginDataUpdate();
+                       _messageData.AcceptChanges();
+                       logGrid.EndDataUpdate();
+                       RefreshUIMessagesCount();
+                   }
+                   finally
+                   {
+                       lockSlim.ExitWriteLock();
+                   }
+
                 }));
         }
 
@@ -898,7 +904,8 @@ namespace Philips.Analogy
         {
 
             _messageData = page;
-            lock (LockObject)
+            lockSlim.EnterWriteLock();
+            try
             {
                 gridControl.DataSource = _messageData.DefaultView;
                 //NewDataExist = true;
@@ -907,7 +914,10 @@ namespace Philips.Analogy
                 NewDataExist = true;
                 FilterResults();
             }
-
+            finally
+            {
+                lockSlim.ExitWriteLock();
+            }
         }
 
         public void FilterResults(string module)
@@ -949,11 +959,16 @@ namespace Philips.Analogy
             }
 
 
-            lock (LockObject)
+            lockSlim.EnterWriteLock();
+            try
             {
                 _messageData.BeginLoadData();
                 _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression();
                 _messageData.EndLoadData();
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
 
             var location = LocateByValue(0, gridColumnObject, _currentMassage);
@@ -963,8 +978,8 @@ namespace Philips.Analogy
             RefreshUIMessagesCount();
 
         }
-        public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val, params OperationCompleted[] completed)
-        {
+        public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val)
+        { 
             if (!logGrid.DataController.IsReady || val == null)
                 return int.MinValue;
             startRowHandle = Math.Max(0, startRowHandle);
@@ -976,7 +991,7 @@ namespace Philips.Analogy
             try
             {
                 if (logGrid.IsServerMode)
-                    return logGrid.DataController.FindRowByValue(column.FieldName, val, completed);
+                    return logGrid.DataController.FindRowByValue(column.FieldName, val, null);
                 for (int rowHandle = startRowHandle; rowHandle < logGrid.DataController.VisibleListSourceRowCount; ++rowHandle)
                 {
                     object rowCellValue = logGrid.GetRowCellValue(rowHandle, column.Caption);

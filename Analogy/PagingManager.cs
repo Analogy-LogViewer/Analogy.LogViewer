@@ -12,6 +12,7 @@ namespace Philips.Analogy
         private UCLogs owner;
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
+        public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private UserSettingsManager Settings { get; }
         private List<DataTable> pages;
         private List<AnalogyLogMessage> allMessages;
@@ -19,7 +20,7 @@ namespace Philips.Analogy
         private int currentPageStartRowIndex;
         private int currentPageLength;
         private int currentPageNumber;
-        private object lockObject;
+
         private DataTable currentTable;
         private static int _totalMissedMessages;
 
@@ -27,8 +28,11 @@ namespace Philips.Analogy
         {
             get
             {
-                lock (lockObject)
-                    return pages.Count;
+                lockSlim.EnterReadLock();
+                var count = pages.Count;
+                lockSlim.ExitReadLock();
+                return count;
+
             }
         }
 
@@ -37,7 +41,6 @@ namespace Philips.Analogy
         public PagingManager(UCLogs owner)
         {
             this.owner = owner;
-            lockObject = new object();
             Settings = UserSettingsManager.UserSettings;
             pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
@@ -60,7 +63,8 @@ namespace Philips.Analogy
         public void ClearLogs()
         {
             AnalogyPageInformation analogyPage;
-            lock (lockObject)
+            lockSlim.EnterWriteLock();
+            try
             {
                 var oldMessages = allMessages.ToList();
                 pages = new List<DataTable>();
@@ -72,6 +76,10 @@ namespace Philips.Analogy
                 pages.Add(first);
                 OnHistoryCleared?.Invoke(this, new AnalogyClearedHistoryEventArgs(oldMessages));
                 analogyPage = new AnalogyPageInformation(currentTable, 1, currentPageStartRowIndex);
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
 
             OnPageChanged?.Invoke(this, new AnalogyPagingChanged(analogyPage));
@@ -168,68 +176,75 @@ namespace Philips.Analogy
 
         public AnalogyPageInformation NextPage()
         {
-            lock (lockObject)
+            lockSlim.EnterReadLock();
+
+            if (pages.Last() != currentTable)
             {
-                if (pages.Last() != currentTable)
-                {
-                    currentPageNumber++;
-                    currentTable = pages[currentPageNumber - 1];
-                    currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
-                }
-                return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+                currentPageNumber++;
+                currentTable = pages[currentPageNumber - 1];
+                currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
             }
+            lockSlim.ExitReadLock();
+            return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+
         }
 
         public AnalogyPageInformation PrevPage()
         {
-            lock (lockObject)
+            lockSlim.EnterReadLock();
+            if (pages.First() != currentTable)
             {
-                if (pages.First() != currentTable)
-                {
-                    currentPageNumber--;
-                    currentTable = pages[currentPageNumber - 1];
-                    currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
-                }
-
-                return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+                currentPageNumber--;
+                currentTable = pages[currentPageNumber - 1];
+                currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
             }
+            lockSlim.ExitReadLock();
+            return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+
         }
 
         public DataTable FirstPage()
         {
-            lock (lockObject)
-            {
-                currentTable = pages.First();
-                currentPageNumber = 1;
-                return currentTable;
-            }
+            lockSlim.EnterReadLock();
+            currentTable = pages.First();
+            currentPageNumber = 1;
+            lockSlim.ExitReadLock();
+            return currentTable;
+
         }
         public DataTable LastPage()
         {
-            lock (lockObject)
-            {
-                currentTable = pages.Last();
-                currentPageNumber = pages.Count;
-                return currentTable;
-            }
+            lockSlim.EnterReadLock();
+            currentTable = pages.Last();
+            currentPageNumber = pages.Count;
+            lockSlim.ExitReadLock();
+            return currentTable;
+
         }
 
         public List<AnalogyLogMessage> GetAllMessages()
         {
-            lock (lockObject)
-                return allMessages.ToList();
+            lockSlim.EnterReadLock();
+            var items=allMessages.ToList();
+            lockSlim.ExitReadLock();
+            return items;
         }
 
         public DataTable CurrentPage()
         {
-            lock (lockObject)
-                return currentTable;
+            lockSlim.EnterReadLock();
+            var table= currentTable;
+            lockSlim.ExitReadLock();
+            return table;
         }
 
         public bool IsCurrentPageInView(DataTable currentView)
         {
-            lock (lockObject)
-                return currentTable == currentView;
+            lockSlim.EnterReadLock();
+            var current= currentTable == currentView;
+            lockSlim.ExitReadLock();
+            return current;
+
         }
 
         public void IncrementTotalMissedMessages()

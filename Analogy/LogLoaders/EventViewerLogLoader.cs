@@ -54,7 +54,7 @@ namespace Philips.Analogy.LogLoaders
                                 string properties = string.Join(Environment.NewLine, record.Properties.Select(p => p.Value));
                                 try
                                 {
-                                    m.Text = $"{record.MachineName} :({record.LogName}) - {record.FormatDescription()}{properties}{(record.ThreadId.HasValue ? " Thread id:" + record.ThreadId.Value : string.Empty)}";
+                                    m.Text = $"{record.MachineName} :({record.LogName}) - {record.FormatDescription()}{properties}{(record.ThreadId !=null ? " Thread id:" + record.ThreadId.Value : string.Empty)}";
                                     if (record.LevelDisplayName != null)
                                     {
                                         switch (record.LevelDisplayName)
