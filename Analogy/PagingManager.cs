@@ -18,7 +18,6 @@ namespace Philips.Analogy
         private List<AnalogyLogMessage> allMessages;
         private int pageSize;
         private int currentPageStartRowIndex;
-        private int currentPageLength;
         private int currentPageNumber;
 
         private DataTable currentTable;
@@ -68,7 +67,6 @@ namespace Philips.Analogy
             {
                 var oldMessages = allMessages.ToList();
                 pages = new List<DataTable>();
-                currentPageLength = 0;
                 currentPageStartRowIndex = 0;
                 currentPageNumber = 1;
                 var first = Utils.DataTableConstructor();
@@ -84,19 +82,10 @@ namespace Philips.Analogy
 
             OnPageChanged?.Invoke(this, new AnalogyPagingChanged(analogyPage));
         }
-
-        public void SetAuditColumnVisibility(bool value)
-        {
-            owner.SetAuditColumnVisibility(value);
-        }
-
-        public void SetCategoryColumnVisibility(bool value)
-        {
-            owner.SetCategoryColumnVisibility(value);
-        }
-
+        
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+
             var table = pages.Last();
             allMessages.Add(message);
             if (table.Rows.Count + 1 > pageSize)
@@ -109,14 +98,15 @@ namespace Philips.Analogy
                 var pageStartRowIndex = (pages.Count - 1) * pageSize;
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
-            lock (table.Rows.SyncRoot)
+            lockSlim.EnterWriteLock();
+            try
             {
                 DataRow dtr = table.NewRow();
                 dtr["Date"] = message.Date;
                 dtr["Text"] = message.Text ?? "";
                 dtr["Source"] = message.Source ?? "";
-                dtr["Level"] = message.Level.ToString();
-                dtr["Class"] = message.Class.ToString();
+                dtr["Level"] = string.Intern(message.Level.ToString());
+                dtr["Class"] = string.Intern( message.Class.ToString());
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
@@ -127,6 +117,11 @@ namespace Philips.Analogy
                 dtr["DataProvider"] = dataSource ?? string.Empty;
                 table.Rows.Add(dtr);
                 return dtr;
+
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
         }
 
@@ -134,29 +129,31 @@ namespace Philips.Analogy
         {
             var table = pages.Last();
             var countInsideTable = table.Rows.Count;
-            foreach (var message in messages)
+            lockSlim.EnterWriteLock();
+            try
             {
-                allMessages.Add(message);
-                if (countInsideTable + 1 > pageSize)
+                foreach (var message in messages)
                 {
-                    var isTableInView = currentTable == table;
-                    if (!isTableInView)
-                        owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessages)}");
-                    table = Utils.DataTableConstructor();
-                    pages.Add(table);
-                    countInsideTable = 0;
-                    var pageStartRowIndex = (pages.Count - 1) * pageSize;
-                    OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
-                }
-                lock (table.Rows.SyncRoot)
-                {
+                    allMessages.Add(message);
+                    if (countInsideTable + 1 > pageSize)
+                    {
+                        var isTableInView = currentTable == table;
+                        if (!isTableInView)
+                            owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessages)}");
+                        table = Utils.DataTableConstructor();
+                        pages.Add(table);
+                        countInsideTable = 0;
+                        var pageStartRowIndex = (pages.Count - 1) * pageSize;
+                        OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
+                    }
+
                     countInsideTable++;
                     DataRow dtr = table.NewRow();
                     dtr["Date"] = message.Date;
                     dtr["Text"] = message.Text ?? "";
                     dtr["Source"] = message.Source ?? "";
-                    dtr["Level"] = message.Level.ToString();
-                    dtr["Class"] = message.Class.ToString();
+                    dtr["Level"] = string.Intern(message.Level.ToString());
+                    dtr["Class"] = string.Intern(message.Class.ToString());
                     dtr["Category"] = message.Category ?? "";
                     dtr["User"] = message.User ?? "";
                     dtr["Module"] = message.Module ?? "";
@@ -168,6 +165,11 @@ namespace Philips.Analogy
                     table.Rows.Add(dtr);
                     yield return (dtr, message);
                 }
+
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
             //if (currentTable != table)
             //    owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessage)}(2)");
@@ -225,7 +227,7 @@ namespace Philips.Analogy
         public List<AnalogyLogMessage> GetAllMessages()
         {
             lockSlim.EnterReadLock();
-            var items=allMessages.ToList();
+            var items = allMessages.ToList();
             lockSlim.ExitReadLock();
             return items;
         }
@@ -233,7 +235,7 @@ namespace Philips.Analogy
         public DataTable CurrentPage()
         {
             lockSlim.EnterReadLock();
-            var table= currentTable;
+            var table = currentTable;
             lockSlim.ExitReadLock();
             return table;
         }
@@ -241,7 +243,7 @@ namespace Philips.Analogy
         public bool IsCurrentPageInView(DataTable currentView)
         {
             lockSlim.EnterReadLock();
-            var current= currentTable == currentView;
+            var current = currentTable == currentView;
             lockSlim.ExitReadLock();
             return current;
 

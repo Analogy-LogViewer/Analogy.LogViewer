@@ -206,5 +206,6 @@ namespace Philips.Analogy
             Settings.AutoStartDataProviders =
                 chkLstItemRealTimeDataSources.CheckedItems.Cast<RealTimeCheckItem>().Select(r => r.ID).ToList();
         }
+        
     }
 }

@@ -114,8 +114,6 @@ namespace Philips.Analogy.Interfaces.DataTypes
         public int Thread { get; set; }
         public string AuditLogType { get; set; }
 
-        public string atnaMessage { get; set; }
-
         /// <summary>
         /// Gets or sets LogMessage parameter array that will be inserted into message text
         /// </summary>
@@ -129,7 +127,6 @@ namespace Philips.Analogy.Interfaces.DataTypes
             Date = DateTime.Now;
             Parameters = new string[0];
             AuditLogType = string.Empty;
-            atnaMessage = string.Empty;
             Source = string.Empty;
             MethodName = string.Empty;
             FileName = string.Empty;

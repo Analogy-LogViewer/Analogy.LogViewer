@@ -39,11 +39,9 @@
             this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.bbtnItemSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
-            this.btnItemRealTime = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemOTA = new DevExpress.XtraBars.BarButtonItem();
             this.bItemProcess = new DevExpress.XtraBars.BarButtonItem();
-            this.btnItemLogConfigurator = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemDark = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonGalleryBarItem1 = new DevExpress.XtraBars.RibbonGalleryBarItem();
             this.ribbonGalleryBarItem2 = new DevExpress.XtraBars.RibbonGalleryBarItem();
@@ -98,6 +96,7 @@
             this.bsiIdleMessage = new DevExpress.XtraBars.BarStaticItem();
             this.bbtnUserSettingsResourceUsage = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSettingsStartupDataSources = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -110,7 +109,6 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -142,11 +140,9 @@
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControlMain.ExpandCollapseItem,
             this.ribbonControlMain.SearchEditItem,
-            this.btnItemRealTime,
             this.btnItemLocalLogs,
             this.btnItemOTA,
             this.bItemProcess,
-            this.btnItemLogConfigurator,
             this.btnItemDark,
             this.ribbonGalleryBarItem1,
             this.ribbonGalleryBarItem2,
@@ -245,15 +241,7 @@
             // 
             // btnItemRealTime
             // 
-            this.btnItemRealTime.Caption = "Real Time logs";
-            this.btnItemRealTime.Id = 1;
-            this.btnItemRealTime.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.Database_off;
-            this.btnItemRealTime.LargeWidth = 80;
-            this.btnItemRealTime.Name = "btnItemRealTime";
-            this.btnItemRealTime.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnItemRealTime.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemRealTime_ItemClick);
-            // 
+             // 
             // btnItemLocalLogs
             // 
             this.btnItemLocalLogs.Caption = "Local Logs";
@@ -263,7 +251,7 @@
             this.btnItemLocalLogs.Name = "btnItemLocalLogs";
             this.btnItemLocalLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnItemLocalLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemLocalLogs_ItemClick);
+            
             // 
             // btnItemOTA
             // 
@@ -289,17 +277,6 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bItemProcess.SmallWithTextWidth = 5;
             this.bItemProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bItemProcess_ItemClick);
-            // 
-            // btnItemLogConfigurator
-            // 
-            this.btnItemLogConfigurator.Caption = "Log Configurator";
-            this.btnItemLogConfigurator.Id = 5;
-            this.btnItemLogConfigurator.ImageOptions.Image = global::Philips.Analogy.Properties.Resources.PageSetup_16x16;
-            this.btnItemLogConfigurator.ImageOptions.LargeImage = global::Philips.Analogy.Properties.Resources.PageSetup_32x32;
-            this.btnItemLogConfigurator.Name = "btnItemLogConfigurator";
-            this.btnItemLogConfigurator.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnItemLogConfigurator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemLogConfigurator_ItemClick);
             // 
             // btnItemDark
             // 
@@ -346,7 +323,6 @@
             this.btnItemSearch.Name = "btnItemSearch";
             this.btnItemSearch.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnItemSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemSearch_ItemClick);
             // 
             // btnItemCombineFiles
             // 
@@ -772,6 +748,14 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bbtnSettingsStartupDataSources.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSettingsStartupDataSources_ItemClick);
             // 
+            // bbiFileCaching
+            // 
+            this.bbiFileCaching.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbiFileCaching.Caption = "File caching is";
+            this.bbiFileCaching.Id = 68;
+            this.bbiFileCaching.Name = "bbiFileCaching";
+            this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
+            // 
             // ribbonPageThemes
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -879,14 +863,6 @@
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
             // 
-            // bbiFileCaching
-            // 
-            this.bbiFileCaching.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bbiFileCaching.Caption = "File caching is off";
-            this.bbiFileCaching.Id = 68;
-            this.bbiFileCaching.Name = "bbiFileCaching";
-            this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -923,11 +899,9 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Timer TmrAutoConnect;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControlMain;
-        private DevExpress.XtraBars.BarButtonItem btnItemRealTime;
         private DevExpress.XtraBars.BarButtonItem btnItemLocalLogs;
         private DevExpress.XtraBars.BarButtonItem btnItemOTA;
         private DevExpress.XtraBars.BarButtonItem bItemProcess;
-        private DevExpress.XtraBars.BarButtonItem btnItemLogConfigurator;
         private DevExpress.XtraBars.BarButtonItem btnItemDark;
         private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem1;
         private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem2;

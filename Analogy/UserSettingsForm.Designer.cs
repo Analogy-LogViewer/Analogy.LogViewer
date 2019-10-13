@@ -68,8 +68,8 @@
             this.nudIdleTime = new System.Windows.Forms.NumericUpDown();
             this.toggleSwitchIdleMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtraTabPageRealTimeDataSources = new DevExpress.XtraTab.XtraTabPage();
-            this.chkLstItemRealTimeDataSources = new System.Windows.Forms.CheckedListBox();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.chkLstItemRealTimeDataSources = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -134,8 +134,8 @@
             this.xtraTabPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
             this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(770, 562);
-            this.xtraTabPage1.Text = "Filtering and Files";
+            this.xtraTabPage1.Size = new System.Drawing.Size(744, 562);
+            this.xtraTabPage1.Text = "Filtering and Interactions";
             // 
             // gcFiles
             // 
@@ -145,7 +145,7 @@
             this.gcFiles.Location = new System.Drawing.Point(3, 308);
             this.gcFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcFiles.Name = "gcFiles";
-            this.gcFiles.Size = new System.Drawing.Size(763, 247);
+            this.gcFiles.Size = new System.Drawing.Size(737, 247);
             this.gcFiles.TabIndex = 4;
             this.gcFiles.Text = "Files";
             // 
@@ -159,7 +159,7 @@
             this.tsFileCaching.Name = "tsFileCaching";
             this.tsFileCaching.Properties.OffText = "Don\'t use Caching of loaded Files";
             this.tsFileCaching.Properties.OnText = "Use Caching of loaded Files";
-            this.tsFileCaching.Size = new System.Drawing.Size(740, 28);
+            this.tsFileCaching.Size = new System.Drawing.Size(714, 28);
             this.tsFileCaching.TabIndex = 1;
             this.tsFileCaching.Toggled += new System.EventHandler(this.tsFileCaching_Toggled);
             // 
@@ -176,13 +176,13 @@
             this.gcFiltering.Location = new System.Drawing.Point(3, 2);
             this.gcFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcFiltering.Name = "gcFiltering";
-            this.gcFiltering.Size = new System.Drawing.Size(763, 302);
+            this.gcFiltering.Size = new System.Drawing.Size(737, 302);
             this.gcFiltering.TabIndex = 3;
-            this.gcFiltering.Text = "Filtering and Search";
+            this.gcFiltering.Text = "Filtering, search and interaction of messages area";
             // 
             // checkEditSearchAlsoInSourceAndModule
             // 
-            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 202);
+            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 187);
             this.checkEditSearchAlsoInSourceAndModule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkEditSearchAlsoInSourceAndModule.Name = "checkEditSearchAlsoInSourceAndModule";
             this.checkEditSearchAlsoInSourceAndModule.Properties.Caption = "Search text also in Source and Module/Process columns";
@@ -192,7 +192,7 @@
             // 
             // chkEditPaging
             // 
-            this.chkEditPaging.Location = new System.Drawing.Point(6, 161);
+            this.chkEditPaging.Location = new System.Drawing.Point(6, 146);
             this.chkEditPaging.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkEditPaging.Name = "chkEditPaging";
             this.chkEditPaging.Properties.Caption = "Enable Paging (number of row per page):";
@@ -202,7 +202,7 @@
             // 
             // nudPageLength
             // 
-            this.nudPageLength.Location = new System.Drawing.Point(461, 162);
+            this.nudPageLength.Location = new System.Drawing.Point(461, 147);
             this.nudPageLength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudPageLength.Maximum = new decimal(new int[] {
             1874919424,
@@ -228,12 +228,12 @@
             // 
             this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 71);
+            this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 67);
             this.tsErrorLevelAsDefault.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsErrorLevelAsDefault.Name = "tsErrorLevelAsDefault";
             this.tsErrorLevelAsDefault.Properties.OffText = "Don\'t filter logs on Load";
             this.tsErrorLevelAsDefault.Properties.OnText = "Start logs with Error and Critical  level as default filtering";
-            this.tsErrorLevelAsDefault.Size = new System.Drawing.Size(740, 28);
+            this.tsErrorLevelAsDefault.Size = new System.Drawing.Size(714, 28);
             this.tsErrorLevelAsDefault.TabIndex = 3;
             this.tsErrorLevelAsDefault.Toggled += new System.EventHandler(this.tsErrorLevelAsDefault_Toggled);
             // 
@@ -241,12 +241,12 @@
             // 
             this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsFilteringExclude.Location = new System.Drawing.Point(5, 37);
+            this.tsFilteringExclude.Location = new System.Drawing.Point(5, 33);
             this.tsFilteringExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsFilteringExclude.Name = "tsFilteringExclude";
             this.tsFilteringExclude.Properties.OffText = "Don\'t save excluded filtering text upon exit";
             this.tsFilteringExclude.Properties.OnText = "Save excluded filtering text for next startup";
-            this.tsFilteringExclude.Size = new System.Drawing.Size(740, 28);
+            this.tsFilteringExclude.Size = new System.Drawing.Size(714, 28);
             this.tsFilteringExclude.TabIndex = 1;
             this.tsFilteringExclude.Toggled += new System.EventHandler(this.tsFilteringExclude_Toggled);
             // 
@@ -255,12 +255,12 @@
             this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsAutoComplete.Enabled = false;
-            this.tsAutoComplete.Location = new System.Drawing.Point(5, 105);
+            this.tsAutoComplete.Location = new System.Drawing.Point(5, 101);
             this.tsAutoComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsAutoComplete.Name = "tsAutoComplete";
             this.tsAutoComplete.Properties.OffText = "Don\'t save auto completion List";
             this.tsAutoComplete.Properties.OnText = "Save excluded filtering text for next startup";
-            this.tsAutoComplete.Size = new System.Drawing.Size(740, 28);
+            this.tsAutoComplete.Size = new System.Drawing.Size(714, 28);
             this.tsAutoComplete.TabIndex = 2;
             // 
             // xtraTabPage2
@@ -585,6 +585,15 @@
             this.xtraTabPageRealTimeDataSources.Size = new System.Drawing.Size(770, 562);
             this.xtraTabPageRealTimeDataSources.Text = "Startup Data Source";
             // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(17, 10);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(300, 16);
+            this.labelControl6.TabIndex = 9;
+            this.labelControl6.Text = "Load the following real time data sources at startup:";
+            // 
             // chkLstItemRealTimeDataSources
             // 
             this.chkLstItemRealTimeDataSources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -598,15 +607,6 @@
             this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(736, 508);
             this.chkLstItemRealTimeDataSources.TabIndex = 8;
             this.chkLstItemRealTimeDataSources.SelectedIndexChanged += new System.EventHandler(this.ChkLstItemRealTimeDataSources_SelectedIndexChanged);
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(17, 10);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(300, 16);
-            this.labelControl6.TabIndex = 9;
-            this.labelControl6.Text = "Load the following real time data sources at startup:";
             // 
             // UserSettingsForm
             // 

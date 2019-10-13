@@ -68,13 +68,20 @@ namespace Philips.Analogy
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
             if (Enable && !IsDisposed)
-                ucLogs1.AppendMessage(message, dataSource);
+            {
+                string interned = string.Intern(dataSource);
+                ucLogs1.AppendMessage(message, interned);
+            }
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)
-                ucLogs1.AppendMessages(messages, dataSource);
+            {
+                string interned = string.Intern(dataSource);
+                ucLogs1.AppendMessages(messages, interned);
+            }
         }
 
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)

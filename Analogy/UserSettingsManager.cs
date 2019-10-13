@@ -43,6 +43,7 @@ namespace Philips.Analogy
         public List<string> EventLogs { get; set; }
 
         public List<Guid> AutoStartDataProviders { get; set; }
+        public bool AutoScrollToLastMessage { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -95,6 +96,7 @@ namespace Philips.Analogy
             IdleTimeMinutes = Settings.Default.IdleTimeMinutes;
             EventLogs = Settings.Default.WindowsEventLogs.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
             AutoStartDataProviders = Settings.Default.AutoStartDataProviders.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
+            AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
         }
 
 
@@ -128,6 +130,7 @@ namespace Philips.Analogy
             Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
             Settings.Default.WindowsEventLogs = string.Join(",", EventLogs);
             Settings.Default.AutoStartDataProviders = string.Join(",", AutoStartDataProviders);
+            Settings.Default.AutoScrollToLastMessage=AutoScrollToLastMessage;
             Settings.Default.Save();
 
         }

@@ -1296,7 +1296,6 @@ namespace Philips.Analogy
             this.btsAutoScrollToBottom.Caption = "Auto Scroll to bottom:";
             this.btsAutoScrollToBottom.Id = 18;
             this.btsAutoScrollToBottom.Name = "btsAutoScrollToBottom";
-            this.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btsAutoScrollToBottom.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btsAutoScrollToBottom_CheckedChanged);
             // 
             // barSubItemSaveEntireLog

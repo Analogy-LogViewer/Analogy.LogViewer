@@ -25,6 +25,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Philips.Analogy.Interfaces.DataTypes;
+using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
 namespace Philips.Analogy
@@ -32,7 +33,6 @@ namespace Philips.Analogy
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
     {
-        private bool autoScrollToLastMessage;
         private PagingManager PagingManager { get; set; }
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
@@ -114,6 +114,55 @@ namespace Philips.Analogy
             _messageData = PagingManager.CurrentPage();
         }
 
+        private void UCLogs_Load(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            PagingManager.OnPageChanged += (s, arg) =>
+            {
+                if (IsDisposed) return;
+                BeginInvoke(new MethodInvoker(() =>
+                    lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
+
+            };
+            LoadUISettings();
+            BookmarkModeUI();
+
+            hasAnyInPlaceExtensions = ExtensionManager.HasAnyInPlace;
+            hasAnyUserControlExtensions = ExtensionManager.HasAnyInPlace;
+            InPlaceRegisteredExtensions = ExtensionManager.InPlaceRegisteredExtensions.ToList();
+            UserControlRegisteredExtensions = ExtensionManager.UserControlRegisteredExtensions.ToList();
+            InitializeExtensionsColumns();
+            InitializeExtensionsUserControls();
+            ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
+            {
+                progressBar1.Maximum = value.Total;
+                if (value.Processed < progressBar1.Maximum && value.Total > 1)
+                    progressBar1.Value = value.Processed;
+                if (value.Processed == value.Total)
+                    progressBar1.Visible = false;
+            });
+
+            logGrid.RowCountChanged += (s, arg) =>
+            {
+                if (Settings.AutoScrollToLastMessage && !IsDisposed)
+                {
+                    BeginInvoke(new MethodInvoker(() =>
+                    {
+                        logGrid.MoveLast();
+                        logGrid.MakeRowVisible(logGrid.FocusedRowHandle);
+                    }));
+
+                }
+            };
+
+            gridControl.DataSource = _messageData.DefaultView;
+            _bookmarkedMessages = Utils.DataTableConstructor();
+            gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
+
+            gridControl.Focus();
+        }
+
         public void SetFileDataSource(IAnalogyOfflineDataProvider fileDataProvider)
         {
             FileDataProvider = fileDataProvider;
@@ -191,47 +240,6 @@ namespace Philips.Analogy
             return base.ProcessCmdKey(ref msg, keyData);
 
         }
-        private void UCLogs_Load(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-
-            PagingManager.OnPageChanged += (s, arg) =>
-            {
-                if (IsDisposed) return;
-                BeginInvoke(new MethodInvoker(() =>
-                    lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
-
-            };
-            LoadUISettings();
-            BookmarkModeUI();
-
-            hasAnyInPlaceExtensions = ExtensionManager.HasAnyInPlace;
-            hasAnyUserControlExtensions = ExtensionManager.HasAnyInPlace;
-            InPlaceRegisteredExtensions = ExtensionManager.InPlaceRegisteredExtensions.ToList();
-            UserControlRegisteredExtensions = ExtensionManager.UserControlRegisteredExtensions.ToList();
-            InitializeExtensionsColumns();
-            InitializeExtensionsUserControls();
-            ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
-            {
-                progressBar1.Maximum = value.Total;
-                if (value.Processed < progressBar1.Maximum && value.Total > 1)
-                    progressBar1.Value = value.Processed;
-                if (value.Processed == value.Total)
-                    progressBar1.Visible = false;
-            });
-
-            logGrid.RowCountChanged += (s, arg) =>
-            {
-                if (autoScrollToLastMessage && !IsDisposed)
-                    logGrid.MoveLast();
-            };
-
-            gridControl.DataSource = _messageData.DefaultView;
-            _bookmarkedMessages = Utils.DataTableConstructor();
-            gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
-
-            gridControl.Focus();
-        }
 
         private void LoadUISettings()
         {
@@ -266,7 +274,7 @@ namespace Philips.Analogy
             if (Settings.StartupErrorLogLevel)
                 chkLstLogLevel.Items[0].CheckState = CheckState.Checked;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
-
+            btsAutoScrollToBottom.Checked = Settings.AutoScrollToLastMessage;
         }
 
         private void BookmarkModeUI()
@@ -388,23 +396,39 @@ namespace Philips.Analogy
             if (sender is GridView view && e.RowHandle >= 0)
             {
                 string level = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Level"]);
-                if (level == AnalogyLogLevel.Critical.ToString())
+                var parsed = TryParse(level, true, out AnalogyLogLevel enumLevel);
+                if (parsed)
                 {
-                    e.Appearance.BackColor = Color.Red;
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
-                }
-                else if (level == AnalogyLogLevel.Error.ToString())
-                {
-                    e.Appearance.BackColor = Color.Pink;
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
-                }
-                else if (level == AnalogyLogLevel.Warning.ToString())
-                {
-                    e.Appearance.BackColor = Color.Yellow;
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
+                    switch (enumLevel)
+                    {
+                        case AnalogyLogLevel.Critical:
+                            e.Appearance.BackColor = Color.Red;
+                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                                e.Appearance.ForeColor = Color.Black;
+                            break;
+                        case AnalogyLogLevel.Error:
+                            e.Appearance.BackColor = Color.Pink;
+                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                                e.Appearance.ForeColor = Color.Black;
+                            break;
+                        case AnalogyLogLevel.Warning:
+                            e.Appearance.BackColor = Color.Yellow;
+                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                                e.Appearance.ForeColor = Color.Black;
+                            break;
+                        case AnalogyLogLevel.Event:
+                            break;
+                        case AnalogyLogLevel.Verbose:
+                            break;
+                        case AnalogyLogLevel.Debug:
+                            break;
+                        case AnalogyLogLevel.Disabled:
+                            break;
+                        case AnalogyLogLevel.AnalogyInformation:
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
 
                 string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
@@ -778,7 +802,7 @@ namespace Philips.Analogy
                     grid.AppendMessage(message, dataSource);
                 }
             }
-           
+
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
             if (diffStartTime > DateTime.MinValue)
@@ -884,18 +908,18 @@ namespace Philips.Analogy
 
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                   lockSlim.EnterWriteLock();
-                   try
-                   {
-                       logGrid.BeginDataUpdate();
-                       _messageData.AcceptChanges();
-                       logGrid.EndDataUpdate();
-                       RefreshUIMessagesCount();
-                   }
-                   finally
-                   {
-                       lockSlim.ExitWriteLock();
-                   }
+                    lockSlim.EnterWriteLock();
+                    try
+                    {
+                        logGrid.BeginDataUpdate();
+                        _messageData.AcceptChanges();
+                        logGrid.EndDataUpdate();
+                        RefreshUIMessagesCount();
+                    }
+                    finally
+                    {
+                        lockSlim.ExitWriteLock();
+                    }
 
                 }));
         }
@@ -933,13 +957,13 @@ namespace Philips.Analogy
                 chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
             _filterCriteriaInline.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error.ToString(), AnalogyLogLevel.Critical.ToString(), AnalogyLogLevel.Disabled.ToString() };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning.ToString(), AnalogyLogLevel.Disabled.ToString() };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug.ToString(), AnalogyLogLevel.Disabled.ToString() };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose.ToString(), AnalogyLogLevel.Disabled.ToString() };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled };
 
             if (chkbExcludeSourceAndModule.Checked)
             {
@@ -979,7 +1003,7 @@ namespace Philips.Analogy
 
         }
         public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val)
-        { 
+        {
             if (!logGrid.DataController.IsReady || val == null)
                 return int.MinValue;
             startRowHandle = Math.Max(0, startRowHandle);
@@ -1380,11 +1404,6 @@ namespace Philips.Analogy
 
         }
 
-        private void btnGroupByChars_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnUp_Click(object sender, EventArgs e)
         {
             if (HighlightRows.Any() && logGrid.GetSelectedRows().Any())
@@ -1732,8 +1751,8 @@ namespace Philips.Analogy
                 dtr["Date"] = message.Date;
                 dtr["Text"] = message.Text ?? "";
                 dtr["Source"] = message.Source ?? "";
-                dtr["Level"] = message.Level.ToString();
-                dtr["Class"] = message.Class.ToString();
+                dtr["Level"] = message.Level;
+                dtr["Class"] = message.Class;
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
@@ -1778,7 +1797,7 @@ namespace Philips.Analogy
 
         private void btsAutoScrollToBottom_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            autoScrollToLastMessage = btsAutoScrollToBottom.Checked;
+            Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
         }
 
         private void pmsGrid_Click(object sender, EventArgs e)

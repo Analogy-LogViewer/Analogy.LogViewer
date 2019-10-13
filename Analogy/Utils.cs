@@ -14,6 +14,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.Utils.Extensions;
 using Philips.Analogy.Interfaces.DataTypes;
 
 namespace Philips.Analogy
@@ -277,7 +278,7 @@ namespace Philips.Analogy
 
     public class FilterCriteriaObject
     {
-        private readonly string[] _allLevels = Enum.GetNames(typeof(AnalogyLogLevel));
+        private readonly AnalogyLogLevel[] _allLevels = Enum.GetValues(typeof(AnalogyLogLevel)) as AnalogyLogLevel[];
         public string[] ExcludedSources;
         public string[] Modules;
         public string[] ExcludedModules;
@@ -285,8 +286,8 @@ namespace Philips.Analogy
         public string TextInclude { get; set; }
 
         public string TextExclude { get; set; }
-        private string[] _arrLevels;
-        public string[] Levels
+        private AnalogyLogLevel[] _arrLevels;
+        public AnalogyLogLevel[] Levels
         {
             get => _arrLevels ?? _allLevels;
             set => _arrLevels = value;

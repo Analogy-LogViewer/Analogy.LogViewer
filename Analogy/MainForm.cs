@@ -424,17 +424,6 @@ namespace Philips.Analogy
             change.ShowDialog(this);
         }
 
-
-        private async void btnItemRealTime_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //await OpenOnlineLog();
-        }
-
-        private void btnItemLocalLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            // OpenOfflineLogs(new string[0]);
-        }
-
         private void btnItemOTA_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenOTALogs();
@@ -444,16 +433,7 @@ namespace Philips.Analogy
         {
             OpenProcessForm();
         }
-
-        private void btnItemLogConfigurator_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
-
-        private void btnItemSearch_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
-
-
+        
         private void bbiExtensions_ItemClick(object sender, ItemClickEventArgs e)
         {
             var ex = new ExtensionsForm();
