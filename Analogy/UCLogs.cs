@@ -249,12 +249,13 @@ namespace Philips.Analogy
 
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
             pnlFilteringLeft.Dock = DockStyle.Fill;
-            txtbInclude.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbInclude.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtbInclude.AutoCompleteCustomSource = autoCompleteInclude;
-            txtbExclude.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbExclude.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtbExclude.AutoCompleteCustomSource = autoCompleteExclude;
+            txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtbInclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtbInclude.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
+
+            txtbExclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtbExclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtbExclude.MaskBox.AutoCompleteCustomSource = autoCompleteExclude;
 
             gridControl.ForceInitialize();
             if (File.Exists(LayoutFileName))
@@ -965,12 +966,19 @@ namespace Philips.Analogy
             else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled };
 
-            if (chkbExcludeSourceAndModule.Checked)
+            if (chkbExcludeSources.Checked)
             {
                 _filterCriteriaInline.ExcludedSources = string.IsNullOrEmpty(txtbExcludeSource.Text)
                     ? null
                     : txtbExcludeSource.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(val => val.Trim()).ToArray();
+            }
+            else
+            {
+                _filterCriteriaInline.ExcludedSources = null;
+            }
+            if (chkbExcludeModules.Checked)
+            {
                 _filterCriteriaInline.ExcludedModules = string.IsNullOrEmpty(txtbExcludeModule.Text)
                     ? null
                     : txtbExcludeModule.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
@@ -978,7 +986,6 @@ namespace Philips.Analogy
             }
             else
             {
-                _filterCriteriaInline.ExcludedSources = null;
                 _filterCriteriaInline.ExcludedModules = null;
             }
 
@@ -1177,30 +1184,34 @@ namespace Philips.Analogy
 
         private void txtbExcludeSource_TextChanged(object sender, EventArgs e)
         {
-            EnableDisableSourceAndModule();
+            if (string.IsNullOrEmpty(txtbExcludeSource.Text))
+            {
+                chkbExcludeSources.Checked = false;
+            }
+            else
+            {
+                if (!chkbExcludeSources.Checked)
+                    chkbExcludeSources.Checked = true;
+            }
+
+            RefreshUserFilter();
             Settings.ExcludedSource = txtbExcludeSource.Text;
 
         }
 
         private void txtbExcludeModule_TextChanged(object sender, EventArgs e)
         {
-            EnableDisableSourceAndModule();
-            Settings.ExcludedModules = txtbExcludeModule.Text;
-        }
-
-        private void EnableDisableSourceAndModule()
-        {
-            if (string.IsNullOrEmpty(txtbExcludeModule.Text) && string.IsNullOrEmpty(txtbExcludeSource.Text))
+            if (string.IsNullOrEmpty(txtbExcludeModule.Text))
             {
-                chkbExcludeSourceAndModule.Checked = false;
+                chkbExcludeModules.Checked = false;
             }
             else
             {
-                if (!chkbExcludeSourceAndModule.Checked)
-                    chkbExcludeSourceAndModule.Checked = true;
+                if (!chkbExcludeModules.Checked)
+                    chkbExcludeModules.Checked = true;
             }
-
             RefreshUserFilter();
+            Settings.ExcludedModules = txtbExcludeModule.Text;
         }
 
         private void chkbExcludeSourceAndModule_CheckedChanged(object sender, EventArgs e)
@@ -1571,20 +1582,24 @@ namespace Philips.Analogy
 
         private void sBtnLength_Click(object sender, EventArgs e)
         {
-            nudGroupBychars.Value = Math.Max(txtbGroupByCharsLimit.Text.Length, nudGroupBychars.Minimum);
+            nudGroupBychars.Value = Math.Max(txtbGroupByCharsLimit.Text.Length, nudGroupBychars.Value);
+            ApplyGrouping();
         }
 
         private void sBtnGroup_Click(object sender, EventArgs e)
         {
+            ApplyGrouping();
 
+        }
+
+        private void ApplyGrouping()
+        {
             List<IGrouping<string, AnalogyLogMessage>> grouped = Messages
                 .GroupBy(s => s.Text.Substring(0, Math.Min(s.Text.Length, (int)nudGroupBychars.Value)))
                 .OrderByDescending(i => i.Count()).ToList();
             groupingByChars = grouped.ToDictionary(g => g.Key, g => g.ToList());
             gCtrlGrouping.DataSource = groupingByChars.Keys;
-
         }
-
         private void bBtnCopyButtom_ItemClick(object sender, ItemClickEventArgs e)
         {
             Clipboard.SetText(rtxtContent.Text);
@@ -2026,6 +2041,8 @@ namespace Philips.Analogy
             var messages = PagingManager.GetAllMessages();
             SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
         }
+
+
     }
 }
 
