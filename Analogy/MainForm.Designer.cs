@@ -239,9 +239,6 @@
             this.bbtnItemExit.Name = "bbtnItemExit";
             this.bbtnItemExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemExit_ItemClick);
             // 
-            // btnItemRealTime
-            // 
-             // 
             // btnItemLocalLogs
             // 
             this.btnItemLocalLogs.Caption = "Local Logs";
@@ -251,7 +248,6 @@
             this.btnItemLocalLogs.Name = "btnItemLocalLogs";
             this.btnItemLocalLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            
             // 
             // btnItemOTA
             // 
@@ -497,7 +493,7 @@
             // 
             // bBtnStatisticsHistory
             // 
-            this.bBtnStatisticsHistory.Caption = "History";
+            this.bBtnStatisticsHistory.Caption = "Pre Defined Queries";
             this.bBtnStatisticsHistory.Id = 37;
             this.bBtnStatisticsHistory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.Image")));
             this.bBtnStatisticsHistory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.LargeImage")));

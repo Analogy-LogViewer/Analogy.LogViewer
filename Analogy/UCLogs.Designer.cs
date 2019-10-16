@@ -177,6 +177,8 @@ namespace Philips.Analogy
             this.sBtnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.lblTotalMessages = new DevExpress.XtraEditors.LabelControl();
             this.xtCounts = new DevExpress.XtraTab.XtraTabPage();
+            this.nudGroupBychars = new DevExpress.XtraEditors.SpinEdit();
+            this.txtbGroupByCharsLimit = new DevExpress.XtraEditors.TextEdit();
             this.sBtnGroup = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnLength = new DevExpress.XtraEditors.SimpleButton();
             this.lblGroupByCharsLimit = new System.Windows.Forms.Label();
@@ -217,8 +219,7 @@ namespace Philips.Analogy
             this.tsmiSaveLayoutBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIncreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtbGroupByCharsLimit = new DevExpress.XtraEditors.TextEdit();
-            this.nudGroupBychars = new DevExpress.XtraEditors.SpinEdit();
+            this.spltCSources = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -253,6 +254,8 @@ namespace Philips.Analogy
             this.splitContainerMain.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.xtCounts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).BeginInit();
             this.spltGroupByChars.Panel1.SuspendLayout();
             this.spltGroupByChars.Panel2.SuspendLayout();
@@ -263,8 +266,8 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.cmsBookmarked.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).BeginInit();
+            this.spltCSources.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList
@@ -1412,6 +1415,7 @@ namespace Philips.Analogy
             // 
             // spltFilteringBoth.Panel1
             // 
+            this.spltFilteringBoth.Panel1.Controls.Add(this.spltCSources);
             this.spltFilteringBoth.Panel1.Controls.Add(this.pnlFilteringLeft);
             // 
             // spltFilteringBoth.Panel2
@@ -2049,6 +2053,41 @@ namespace Philips.Analogy
             this.xtCounts.Size = new System.Drawing.Size(2124, 705);
             this.xtCounts.Text = "Messages Grouping";
             // 
+            // nudGroupBychars
+            // 
+            this.nudGroupBychars.EditValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Location = new System.Drawing.Point(756, 18);
+            this.nudGroupBychars.MenuManager = this.barManager1;
+            this.nudGroupBychars.Name = "nudGroupBychars";
+            this.nudGroupBychars.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nudGroupBychars.Properties.IsFloatValue = false;
+            this.nudGroupBychars.Properties.Mask.EditMask = "N00";
+            this.nudGroupBychars.Properties.MaxValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Properties.MinValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Size = new System.Drawing.Size(98, 22);
+            this.nudGroupBychars.TabIndex = 15;
+            // 
+            // txtbGroupByCharsLimit
+            // 
+            this.txtbGroupByCharsLimit.Location = new System.Drawing.Point(157, 18);
+            this.txtbGroupByCharsLimit.MenuManager = this.barManager1;
+            this.txtbGroupByCharsLimit.Name = "txtbGroupByCharsLimit";
+            this.txtbGroupByCharsLimit.Size = new System.Drawing.Size(250, 22);
+            this.txtbGroupByCharsLimit.TabIndex = 14;
+            // 
             // sBtnGroup
             // 
             this.sBtnGroup.Location = new System.Drawing.Point(860, 16);
@@ -2572,40 +2611,13 @@ namespace Philips.Analogy
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
             this.tsmiDecreaseFontBookmark.Click += new System.EventHandler(this.tsmiDecreaseFont_Click);
             // 
-            // txtbGroupByCharsLimit
+            // spltCSources
             // 
-            this.txtbGroupByCharsLimit.Location = new System.Drawing.Point(157, 18);
-            this.txtbGroupByCharsLimit.MenuManager = this.barManager1;
-            this.txtbGroupByCharsLimit.Name = "txtbGroupByCharsLimit";
-            this.txtbGroupByCharsLimit.Size = new System.Drawing.Size(250, 22);
-            this.txtbGroupByCharsLimit.TabIndex = 14;
-            // 
-            // nudGroupBychars
-            // 
-            this.nudGroupBychars.EditValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Location = new System.Drawing.Point(756, 18);
-            this.nudGroupBychars.MenuManager = this.barManager1;
-            this.nudGroupBychars.Name = "nudGroupBychars";
-            this.nudGroupBychars.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nudGroupBychars.Properties.IsFloatValue = false;
-            this.nudGroupBychars.Properties.Mask.EditMask = "N00";
-            this.nudGroupBychars.Properties.MaxValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Properties.MinValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Size = new System.Drawing.Size(98, 22);
-            this.nudGroupBychars.TabIndex = 15;
+            this.spltCSources.Location = new System.Drawing.Point(874, 46);
+            this.spltCSources.Name = "spltCSources";
+            this.spltCSources.Size = new System.Drawing.Size(550, 40);
+            this.spltCSources.SplitterDistance = 336;
+            this.spltCSources.TabIndex = 21;
             // 
             // UCLogs
             // 
@@ -2661,6 +2673,8 @@ namespace Philips.Analogy
             this.pnlBottom.PerformLayout();
             this.xtCounts.ResumeLayout(false);
             this.xtCounts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).EndInit();
             this.spltGroupByChars.Panel1.ResumeLayout(false);
             this.spltGroupByChars.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).EndInit();
@@ -2671,8 +2685,8 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.cmsBookmarked.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).EndInit();
+            this.spltCSources.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2856,5 +2870,6 @@ namespace Philips.Analogy
         private DevExpress.XtraEditors.MemoEdit rtxtContent;
         private DevExpress.XtraEditors.TextEdit txtbGroupByCharsLimit;
         private DevExpress.XtraEditors.SpinEdit nudGroupBychars;
+        private System.Windows.Forms.SplitContainer spltCSources;
     }
 }

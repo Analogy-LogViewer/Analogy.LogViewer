@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPageFilter = new DevExpress.XtraTab.XtraTabPage();
             this.gcFiles = new DevExpress.XtraEditors.GroupControl();
             this.tsFileCaching = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcFiltering = new DevExpress.XtraEditors.GroupControl();
@@ -40,7 +40,7 @@
             this.tsErrorLevelAsDefault = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsFilteringExclude = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsAutoComplete = new DevExpress.XtraEditors.ToggleSwitch();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPagePreDefined = new DevExpress.XtraTab.XtraTabPage();
             this.tsHistory = new DevExpress.XtraEditors.ToggleSwitch();
             this.tpLookAndFeel = new DevExpress.XtraTab.XtraTabPage();
             this.tsStartupRibbonMinimized = new DevExpress.XtraEditors.ToggleSwitch();
@@ -72,7 +72,7 @@
             this.chkLstItemRealTimeDataSources = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPageFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiles)).BeginInit();
             this.gcFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).BeginInit();
@@ -84,7 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsErrorLevelAsDefault.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsFilteringExclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).BeginInit();
-            this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).BeginInit();
             this.tpLookAndFeel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).BeginInit();
@@ -113,12 +112,12 @@
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedTabPage = this.xtraTabPage1;
+            this.tabControlMain.SelectedTabPage = this.xtraTabPageFilter;
             this.tabControlMain.Size = new System.Drawing.Size(945, 569);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
-            this.xtraTabPage2,
+            this.xtraTabPageFilter,
+            this.xtraTabPagePreDefined,
             this.tpLookAndFeel,
             this.tpStatistics,
             this.xtraTabPage3,
@@ -127,15 +126,15 @@
             this.xtraTabPageResources,
             this.xtraTabPageRealTimeDataSources});
             // 
-            // xtraTabPage1
+            // xtraTabPageFilter
             // 
-            this.xtraTabPage1.Controls.Add(this.gcFiles);
-            this.xtraTabPage1.Controls.Add(this.gcFiltering);
-            this.xtraTabPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
-            this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(744, 562);
-            this.xtraTabPage1.Text = "Filtering and Interactions";
+            this.xtraTabPageFilter.Controls.Add(this.gcFiles);
+            this.xtraTabPageFilter.Controls.Add(this.gcFiltering);
+            this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
+            this.xtraTabPageFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.xtraTabPageFilter.Name = "xtraTabPageFilter";
+            this.xtraTabPageFilter.Size = new System.Drawing.Size(744, 562);
+            this.xtraTabPageFilter.Text = "Filtering and Interactions";
             // 
             // gcFiles
             // 
@@ -167,6 +166,7 @@
             // 
             this.gcFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gcFiltering.Controls.Add(this.tsHistory);
             this.gcFiltering.Controls.Add(this.checkEditSearchAlsoInSourceAndModule);
             this.gcFiltering.Controls.Add(this.chkEditPaging);
             this.gcFiltering.Controls.Add(this.nudPageLength);
@@ -182,7 +182,7 @@
             // 
             // checkEditSearchAlsoInSourceAndModule
             // 
-            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 187);
+            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 211);
             this.checkEditSearchAlsoInSourceAndModule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkEditSearchAlsoInSourceAndModule.Name = "checkEditSearchAlsoInSourceAndModule";
             this.checkEditSearchAlsoInSourceAndModule.Properties.Caption = "Search text also in Source and Module/Process columns";
@@ -192,7 +192,7 @@
             // 
             // chkEditPaging
             // 
-            this.chkEditPaging.Location = new System.Drawing.Point(6, 146);
+            this.chkEditPaging.Location = new System.Drawing.Point(6, 170);
             this.chkEditPaging.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkEditPaging.Name = "chkEditPaging";
             this.chkEditPaging.Properties.Caption = "Enable Paging (number of row per page):";
@@ -202,7 +202,7 @@
             // 
             // nudPageLength
             // 
-            this.nudPageLength.Location = new System.Drawing.Point(461, 147);
+            this.nudPageLength.Location = new System.Drawing.Point(461, 171);
             this.nudPageLength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudPageLength.Maximum = new decimal(new int[] {
             1874919424,
@@ -263,20 +263,19 @@
             this.tsAutoComplete.Size = new System.Drawing.Size(714, 28);
             this.tsAutoComplete.TabIndex = 2;
             // 
-            // xtraTabPage2
+            // xtraTabPagePreDefined
             // 
-            this.xtraTabPage2.Controls.Add(this.tsHistory);
-            this.xtraTabPage2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage2.ImageOptions.Image")));
-            this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(770, 562);
-            this.xtraTabPage2.Text = "History";
+            this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage2.ImageOptions.Image")));
+            this.xtraTabPagePreDefined.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.xtraTabPagePreDefined.Name = "xtraTabPagePreDefined";
+            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(744, 562);
+            this.xtraTabPagePreDefined.Text = "Pre defined queries";
             // 
             // tsHistory
             // 
             this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsHistory.Location = new System.Drawing.Point(29, 11);
+            this.tsHistory.Location = new System.Drawing.Point(5, 133);
             this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsHistory.Name = "tsHistory";
             this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
@@ -292,7 +291,7 @@
             this.tpLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpLookAndFeel.ImageOptions.Image")));
             this.tpLookAndFeel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpLookAndFeel.Name = "tpLookAndFeel";
-            this.tpLookAndFeel.Size = new System.Drawing.Size(770, 562);
+            this.tpLookAndFeel.Size = new System.Drawing.Size(744, 562);
             this.tpLookAndFeel.Text = "Look And Feel";
             // 
             // tsStartupRibbonMinimized
@@ -331,7 +330,7 @@
             this.tpStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpStatistics.ImageOptions.Image")));
             this.tpStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Size = new System.Drawing.Size(770, 562);
+            this.tpStatistics.Size = new System.Drawing.Size(744, 562);
             this.tpStatistics.Text = "User Statistics";
             // 
             // groupControl1
@@ -408,7 +407,7 @@
             this.xtraTabPage3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage3.ImageOptions.Image")));
             this.xtraTabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(770, 562);
+            this.xtraTabPage3.Size = new System.Drawing.Size(744, 562);
             this.xtraTabPage3.Text = "Extensions";
             // 
             // tswitchExtensionsStartup
@@ -447,7 +446,7 @@
             this.xtPage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtPage.ImageOptions.Image")));
             this.xtPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtPage.Name = "xtPage";
-            this.xtPage.Size = new System.Drawing.Size(770, 562);
+            this.xtPage.Size = new System.Drawing.Size(744, 562);
             this.xtPage.Text = "Shortcuts";
             // 
             // labelControl3
@@ -493,7 +492,7 @@
             this.xTabMRU.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xTabMRU.ImageOptions.Image")));
             this.xTabMRU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xTabMRU.Name = "xTabMRU";
-            this.xTabMRU.Size = new System.Drawing.Size(770, 562);
+            this.xTabMRU.Size = new System.Drawing.Size(744, 562);
             this.xTabMRU.Text = "Most Recently Used";
             // 
             // lblRecent
@@ -527,7 +526,7 @@
             this.xtraTabPageResources.Controls.Add(this.toggleSwitchIdleMode);
             this.xtraTabPageResources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageResources.ImageOptions.Image")));
             this.xtraTabPageResources.Name = "xtraTabPageResources";
-            this.xtraTabPageResources.Size = new System.Drawing.Size(770, 562);
+            this.xtraTabPageResources.Size = new System.Drawing.Size(744, 562);
             this.xtraTabPageResources.Text = "Resources Usage";
             // 
             // labelControl5
@@ -582,7 +581,7 @@
             this.xtraTabPageRealTimeDataSources.Controls.Add(this.chkLstItemRealTimeDataSources);
             this.xtraTabPageRealTimeDataSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageRealTimeDataSources.ImageOptions.Image")));
             this.xtraTabPageRealTimeDataSources.Name = "xtraTabPageRealTimeDataSources";
-            this.xtraTabPageRealTimeDataSources.Size = new System.Drawing.Size(770, 562);
+            this.xtraTabPageRealTimeDataSources.Size = new System.Drawing.Size(744, 562);
             this.xtraTabPageRealTimeDataSources.Text = "Startup Data Source";
             // 
             // labelControl6
@@ -622,7 +621,7 @@
             this.Load += new System.EventHandler(this.UserSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPageFilter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcFiles)).EndInit();
             this.gcFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).EndInit();
@@ -634,7 +633,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsErrorLevelAsDefault.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsFilteringExclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).EndInit();
-            this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).EndInit();
             this.tpLookAndFeel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).EndInit();
@@ -664,8 +662,8 @@
         #endregion
 
         private DevExpress.XtraTab.XtraTabControl tabControlMain;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageFilter;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPagePreDefined;
         private DevExpress.XtraEditors.ToggleSwitch tsFilteringExclude;
         private DevExpress.XtraEditors.ToggleSwitch tsHistory;
         private DevExpress.XtraEditors.ToggleSwitch tsAutoComplete;
