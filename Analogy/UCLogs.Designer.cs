@@ -135,6 +135,7 @@ namespace Philips.Analogy
             this.chkbHighlight = new System.Windows.Forms.CheckBox();
             this.pnlTopFiltering = new System.Windows.Forms.Panel();
             this.spltFilteringBoth = new System.Windows.Forms.SplitContainer();
+            this.spltCSources = new System.Windows.Forms.SplitContainer();
             this.pnlFilteringLeft = new System.Windows.Forms.Panel();
             this.txtbExcludeModule = new DevExpress.XtraEditors.TextEdit();
             this.txtbExcludeSource = new DevExpress.XtraEditors.TextEdit();
@@ -219,7 +220,6 @@ namespace Philips.Analogy
             this.tsmiSaveLayoutBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIncreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.spltCSources = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -232,6 +232,8 @@ namespace Philips.Analogy
             this.spltFilteringBoth.Panel1.SuspendLayout();
             this.spltFilteringBoth.Panel2.SuspendLayout();
             this.spltFilteringBoth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).BeginInit();
+            this.spltCSources.SuspendLayout();
             this.pnlFilteringLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeModule.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeSource.Properties)).BeginInit();
@@ -266,8 +268,6 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.cmsBookmarked.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).BeginInit();
-            this.spltCSources.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList
@@ -1426,6 +1426,15 @@ namespace Philips.Analogy
             this.spltFilteringBoth.SplitterDistance = 1635;
             this.spltFilteringBoth.SplitterWidth = 3;
             this.spltFilteringBoth.TabIndex = 19;
+            // 
+            // spltCSources
+            // 
+            this.spltCSources.Location = new System.Drawing.Point(874, 46);
+            this.spltCSources.Name = "spltCSources";
+            this.spltCSources.Size = new System.Drawing.Size(550, 40);
+            this.spltCSources.SplitterDistance = 336;
+            this.spltCSources.TabIndex = 21;
+            this.spltCSources.Visible = false;
             // 
             // pnlFilteringLeft
             // 
@@ -2611,14 +2620,6 @@ namespace Philips.Analogy
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
             this.tsmiDecreaseFontBookmark.Click += new System.EventHandler(this.tsmiDecreaseFont_Click);
             // 
-            // spltCSources
-            // 
-            this.spltCSources.Location = new System.Drawing.Point(874, 46);
-            this.spltCSources.Name = "spltCSources";
-            this.spltCSources.Size = new System.Drawing.Size(550, 40);
-            this.spltCSources.SplitterDistance = 336;
-            this.spltCSources.TabIndex = 21;
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -2647,6 +2648,8 @@ namespace Philips.Analogy
             this.spltFilteringBoth.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltFilteringBoth)).EndInit();
             this.spltFilteringBoth.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).EndInit();
+            this.spltCSources.ResumeLayout(false);
             this.pnlFilteringLeft.ResumeLayout(false);
             this.pnlFilteringLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeModule.Properties)).EndInit();
@@ -2685,8 +2688,6 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.cmsBookmarked.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).EndInit();
-            this.spltCSources.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
