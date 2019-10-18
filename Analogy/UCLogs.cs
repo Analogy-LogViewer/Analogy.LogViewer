@@ -925,12 +925,14 @@ namespace Analogy
                 chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
             _filterCriteriaInline.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace,AnalogyLogLevel.Disabled};
+            if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled };
-            else if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
+            else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled };
 
             if (chkbExcludeSources.Checked)
@@ -1605,6 +1607,11 @@ namespace Analogy
 
         private void tsmiSaveLayout_Click(object sender, EventArgs e)
         {
+            SaveGridLayout();
+        }
+
+        private void SaveGridLayout()
+        {
             try
             {
                 gridControl.MainView.SaveLayoutToXml(LayoutFileName);
@@ -1615,7 +1622,6 @@ namespace Analogy
                 throw;
             }
         }
-
         private void tsmiBookmarkPersist_Click(object sender, EventArgs e)
         {
             CreateBookmark(true);
@@ -1925,6 +1931,7 @@ namespace Analogy
         {
             Settings.FontSize = logGrid.Appearance.Row.Font.Size + 2;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+            SaveGridLayout();
         }
 
         private void tsmiDecreaseFont_Click(object sender, EventArgs e)
@@ -1933,6 +1940,7 @@ namespace Analogy
             {
                 Settings.FontSize = logGrid.Appearance.Row.Font.Size - 2;
                 logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+                SaveGridLayout();
             }
         }
 
