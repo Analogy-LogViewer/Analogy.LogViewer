@@ -16,16 +16,14 @@
     <tags></tags>
 	<dependencies>
     <group targetFramework="net472">    
+		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.0" />
     </group>
-	 <group>
-	<dependency id="Analogy.LogViewer.Interfaces" version="2.1.0" />
-	</group>
 </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Analogy.exe" target="lib\net471\Analogy.exe" />
-    <file src="bin\Release\Analogy.xml" target="lib\net471\Analogy.xml" />
-	<file src="bin\Release\Analogy.exe.config" target="lib\net471\Analogy.exe.config" />
+    <file src="bin\Release\Analogy.exe" target="lib\net472\Analogy.exe" />
+    <file src="bin\Release\Analogy.xml" target="lib\net472\Analogy.xml" />
+	<file src="bin\Release\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
 	<file src="icon.png" target="" />
 </files>
 </package>
