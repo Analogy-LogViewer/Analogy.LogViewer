@@ -60,7 +60,7 @@
             this.btnClose.Size = new System.Drawing.Size(103, 33);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FormMessageDetails
             // 
@@ -74,7 +74,7 @@
             this.Name = "FormMessageDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Details";
-            this.Load += new System.EventHandler(this.FormMessageDetails_Load);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.spltCMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltCMain)).EndInit();
             this.spltCMain.ResumeLayout(false);

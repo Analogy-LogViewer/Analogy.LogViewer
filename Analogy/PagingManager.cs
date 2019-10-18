@@ -110,7 +110,6 @@ namespace Analogy
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
-                dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["ThreadID"] = message.Thread;
@@ -157,7 +156,6 @@ namespace Analogy
                     dtr["Category"] = message.Category ?? "";
                     dtr["User"] = message.User ?? "";
                     dtr["Module"] = message.Module ?? "";
-                    dtr["Audit"] = message.AuditLogType;
                     dtr["Object"] = message;
                     dtr["ProcessID"] = message.ProcessID;
                     dtr["ThreadID"] = message.Thread;

@@ -76,7 +76,6 @@ namespace Analogy
             this.gridColumnCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnModule = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnAudit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnObject = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -499,7 +498,6 @@ namespace Analogy
             this.gridColumnCategory,
             this.gridColumnUser,
             this.gridColumnModule,
-            this.gridColumnAudit,
             this.gridColumnObject,
             this.gridColumnProcessID,
             this.gridColumnThread});
@@ -672,7 +670,7 @@ namespace Analogy
             this.gridColumnCategory.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnCategory.OptionsColumn.ReadOnly = true;
             this.gridColumnCategory.Visible = true;
-            this.gridColumnCategory.VisibleIndex = 8;
+            this.gridColumnCategory.VisibleIndex = 7;
             this.gridColumnCategory.Width = 115;
             // 
             // gridColumnUser
@@ -691,7 +689,7 @@ namespace Analogy
             this.gridColumnUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnUser.OptionsColumn.ReadOnly = true;
             this.gridColumnUser.Visible = true;
-            this.gridColumnUser.VisibleIndex = 9;
+            this.gridColumnUser.VisibleIndex = 8;
             this.gridColumnUser.Width = 115;
             // 
             // gridColumnModule
@@ -712,25 +710,6 @@ namespace Analogy
             this.gridColumnModule.Visible = true;
             this.gridColumnModule.VisibleIndex = 5;
             this.gridColumnModule.Width = 115;
-            // 
-            // gridColumnAudit
-            // 
-            this.gridColumnAudit.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnAudit.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnAudit.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnAudit.Caption = "Audit";
-            this.gridColumnAudit.FieldName = "Audit";
-            this.gridColumnAudit.MinWidth = 24;
-            this.gridColumnAudit.Name = "gridColumnAudit";
-            this.gridColumnAudit.OptionsColumn.AllowEdit = false;
-            this.gridColumnAudit.OptionsColumn.AllowFocus = false;
-            this.gridColumnAudit.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnAudit.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnAudit.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnAudit.OptionsColumn.ReadOnly = true;
-            this.gridColumnAudit.Visible = true;
-            this.gridColumnAudit.VisibleIndex = 7;
-            this.gridColumnAudit.Width = 115;
             // 
             // gridColumnObject
             // 
@@ -767,7 +746,7 @@ namespace Analogy
             this.gridColumnProcessID.OptionsColumn.ReadOnly = true;
             this.gridColumnProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.gridColumnProcessID.Visible = true;
-            this.gridColumnProcessID.VisibleIndex = 10;
+            this.gridColumnProcessID.VisibleIndex = 9;
             this.gridColumnProcessID.Width = 115;
             // 
             // gridColumnThread
@@ -777,7 +756,7 @@ namespace Analogy
             this.gridColumnThread.MinWidth = 25;
             this.gridColumnThread.Name = "gridColumnThread";
             this.gridColumnThread.Visible = true;
-            this.gridColumnThread.VisibleIndex = 11;
+            this.gridColumnThread.VisibleIndex = 10;
             this.gridColumnThread.Width = 109;
             // 
             // panel1
@@ -1307,7 +1286,7 @@ namespace Analogy
             // 
             // lblPageNumber
             // 
-            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPageNumber.Appearance.Options.UseTextOptions = true;
             this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -1457,7 +1436,7 @@ namespace Analogy
             // 
             // txtbExcludeModule
             // 
-            this.txtbExcludeModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbExcludeModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbExcludeModule.Location = new System.Drawing.Point(206, 92);
             this.txtbExcludeModule.MenuManager = this.barManager1;
@@ -1468,7 +1447,7 @@ namespace Analogy
             // 
             // txtbExcludeSource
             // 
-            this.txtbExcludeSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbExcludeSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbExcludeSource.Location = new System.Drawing.Point(206, 64);
             this.txtbExcludeSource.MenuManager = this.barManager1;
@@ -1489,7 +1468,7 @@ namespace Analogy
             // 
             // txtbExclude
             // 
-            this.txtbExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbExclude.Location = new System.Drawing.Point(109, 35);
             this.txtbExclude.MenuManager = this.barManager1;
@@ -1511,7 +1490,7 @@ namespace Analogy
             // 
             // txtbInclude
             // 
-            this.txtbInclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbInclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbInclude.Location = new System.Drawing.Point(109, 4);
             this.txtbInclude.MenuManager = this.barManager1;
@@ -2128,8 +2107,8 @@ namespace Analogy
             // 
             // spltGroupByChars
             // 
-            this.spltGroupByChars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.spltGroupByChars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltGroupByChars.Location = new System.Drawing.Point(12, 52);
             this.spltGroupByChars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2705,7 +2684,6 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCategory;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnUser;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnModule;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnAudit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnObject;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private System.Windows.Forms.ImageList imageList;

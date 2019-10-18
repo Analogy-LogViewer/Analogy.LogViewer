@@ -268,7 +268,6 @@ namespace Analogy
             logGrid.BestFitColumns();
             btswitchExpand.Checked = true;
             splitContainerMain.Collapsed = true;
-            gridColumnAudit.Visible = false;
             if (Settings.StartupErrorLogLevel)
                 chkLstLogLevel.Items[0].CheckState = CheckState.Checked;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
@@ -403,13 +402,10 @@ namespace Analogy
                                 e.Appearance.ForeColor = Color.Black;
                             break;
                         case AnalogyLogLevel.Event:
-                            break;
                         case AnalogyLogLevel.Verbose:
-                            break;
                         case AnalogyLogLevel.Debug:
-                            break;
                         case AnalogyLogLevel.Disabled:
-                            break;
+                        case AnalogyLogLevel.Trace:
                         case AnalogyLogLevel.AnalogyInformation:
                             break;
                         default:
@@ -667,20 +663,6 @@ namespace Analogy
             {
                 lockSlim.ExitReadLock();
             }
-        }
-
-        public void SetAuditColumnVisibility(bool flag)
-        {
-            gridColumnAudit.Visible = flag;
-        }
-
-        /// <summary>
-        /// This method is to set the Category column visibility based on user requirement
-        /// </summary>
-        /// <param name="flag">true for visibility else false</param>
-        public void SetCategoryColumnVisibility(bool flag)
-        {
-            gridColumnCategory.Visible = flag;
         }
 
         private string GetFilterDisplayText(DateRangeFilter filterType)
@@ -1251,7 +1233,6 @@ namespace Analogy
             dtr["Category"] = message.Category ?? "";
             dtr["User"] = message.User ?? "";
             dtr["Module"] = message.Module ?? "";
-            dtr["Audit"] = message.AuditLogType ?? string.Empty;
             dtr["Object"] = message;
             dtr["ProcessID"] = message.ProcessID;
             string dataSource = (string)logGrid.GetRowCellValue(selRows.First(), "DataProvider");
@@ -1756,7 +1737,6 @@ namespace Analogy
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
-                dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["DataProvider"] = "";

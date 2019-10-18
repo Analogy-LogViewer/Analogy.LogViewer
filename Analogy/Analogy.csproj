@@ -497,11 +497,11 @@
     <Compile Include="XtraFormLogGrid.Designer.cs">
       <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraFormWindowsEventlogsManage.cs">
+    <Compile Include="XtraFormWindowsEventlogsManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XtraFormWindowsEventlogsManage.Designer.cs">
-      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    <Compile Include="XtraFormWindowsEventlogsManager.Designer.cs">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
     </Compile>
     <Compile Include="XtraUCDirectoryListing.cs">
       <SubType>UserControl</SubType>
@@ -521,8 +521,8 @@
     <Compile Include="XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="XtraFormWindowsEventlogsManage.resx">
-      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    <EmbeddedResource Include="XtraFormWindowsEventlogsManager.resx">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraUCWindowsEventLogs.resx">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>

@@ -96,7 +96,7 @@ namespace Analogy
 
         private void bBtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraFormWindowsEventlogsManage f = new XtraFormWindowsEventlogsManage();
+            XtraFormWindowsEventlogsManager f = new XtraFormWindowsEventlogsManager();
             f.ShowDialog(this);
             SetupLogs();
         }

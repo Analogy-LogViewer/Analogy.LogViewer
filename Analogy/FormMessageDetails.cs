@@ -20,16 +20,7 @@ namespace Analogy
             uc.Dock = DockStyle.Fill;
         }
 
-        private void FormMessageDetails_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnClose_Click_1(object sender, EventArgs e)
         {
             Close();
         }

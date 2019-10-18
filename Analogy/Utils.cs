@@ -140,9 +140,6 @@ namespace Analogy
             dtc = new DataColumn("Module", typeof(string));
             dtb.Columns.Add(dtc);
 
-            dtc = new DataColumn("Audit", typeof(string));
-            dtb.Columns.Add(dtc);
-
             dtc = new DataColumn("Object", typeof(object));
             dtb.Columns.Add(dtc);
 
