@@ -8,9 +8,6 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
-using DevExpress.XtraTab;
-using Philips.Analogy.DataSources;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,11 +21,12 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.DataSources;
+using Analogy.Interfaces;
 using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
@@ -306,7 +304,7 @@ namespace Philips.Analogy
             }
         }
 
-      
+
 
         private void UCLogs_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;

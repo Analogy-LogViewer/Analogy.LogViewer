@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class DataVisualizerUC
     {
@@ -91,7 +91,7 @@
             // 
             // listBoxControl1
             // 
-            this.listBoxControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBoxControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxControl1.HorizontalScrollbar = true;
             this.listBoxControl1.Location = new System.Drawing.Point(719, 60);
@@ -140,8 +140,8 @@
             // 
             // chklistItems
             // 
-            this.chklistItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.chklistItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chklistItems.Location = new System.Drawing.Point(16, 36);
             this.chklistItems.Name = "chklistItems";
@@ -151,7 +151,7 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit1.Location = new System.Drawing.Point(154, 8);
             this.textEdit1.Name = "textEdit1";

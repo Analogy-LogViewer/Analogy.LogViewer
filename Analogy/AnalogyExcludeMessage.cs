@@ -1,9 +1,9 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class AnalogyExcludeMessage : XtraForm
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Philips.Analogy.Properties {
+namespace Analogy.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

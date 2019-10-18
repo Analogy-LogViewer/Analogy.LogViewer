@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class XtraFormWindowsEventlogsManage
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormWindowsEventlogsManage));
-            this.xtraUCWindowsEventLogs1 = new Philips.Analogy.XtraUCWindowsEventLogs();
+            this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
             this.SuspendLayout();
             // 
             // xtraUCWindowsEventLogs1

@@ -2,10 +2,10 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.Types;
+using Analogy.Interfaces;
+using Analogy.Types;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class FolderTreeViewUC : UserControl
     {

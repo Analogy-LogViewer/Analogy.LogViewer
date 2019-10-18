@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
-      <Project>{9baf7eca-7305-4f7c-91e3-27e31d75f156}</Project>
+      <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
       <Name>Analogy.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>

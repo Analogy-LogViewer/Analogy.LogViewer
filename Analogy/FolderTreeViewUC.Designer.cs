@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class FolderTreeViewUC
     {
@@ -34,7 +34,7 @@
             this.txtbFolder = new System.Windows.Forms.TextBox();
             this.btnOpenFile = new DevExpress.XtraEditors.SimpleButton();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.xtraUCFileSystem1 = new Philips.Analogy.XtraUCFileSystem();
+            this.xtraUCFileSystem1 = new Analogy.XtraUCFileSystem();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 

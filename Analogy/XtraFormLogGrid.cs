@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class XtraFormLogGrid : DevExpress.XtraEditors.XtraForm
     {

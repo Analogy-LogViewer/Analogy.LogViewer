@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class UCMessageDetails
     {
@@ -61,7 +61,7 @@
             // 
             // txtbUser
             // 
-            this.txtbUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbUser.Location = new System.Drawing.Point(226, 550);
             this.txtbUser.Name = "txtbUser";
@@ -71,7 +71,7 @@
             // 
             // txtbFileName
             // 
-            this.txtbFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbFileName.Location = new System.Drawing.Point(226, 481);
             this.txtbFileName.Name = "txtbFileName";
@@ -81,7 +81,7 @@
             // 
             // txtbMethod
             // 
-            this.txtbMethod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbMethod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbMethod.Location = new System.Drawing.Point(226, 449);
             this.txtbMethod.Name = "txtbMethod";
@@ -127,7 +127,7 @@
             // 
             // txtbLevelValue
             // 
-            this.txtbLevelValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbLevelValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbLevelValue.Location = new System.Drawing.Point(228, 418);
             this.txtbLevelValue.Name = "txtbLevelValue";
@@ -137,7 +137,7 @@
             // 
             // txtbProcessValue
             // 
-            this.txtbProcessValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbProcessValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbProcessValue.Location = new System.Drawing.Point(228, 386);
             this.txtbProcessValue.Name = "txtbProcessValue";
@@ -147,7 +147,7 @@
             // 
             // txtSourceValue
             // 
-            this.txtSourceValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSourceValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSourceValue.Location = new System.Drawing.Point(228, 354);
             this.txtSourceValue.Name = "txtSourceValue";
@@ -157,7 +157,7 @@
             // 
             // txtbDateValue
             // 
-            this.txtbDateValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbDateValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbDateValue.Location = new System.Drawing.Point(228, 322);
             this.txtbDateValue.Name = "txtbDateValue";
@@ -215,8 +215,8 @@
             // 
             // rtxtbText
             // 
-            this.rtxtbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtbText.Location = new System.Drawing.Point(228, 74);
             this.rtxtbText.Name = "rtxtbText";
@@ -247,7 +247,7 @@
             // 
             // rtxtbIndex
             // 
-            this.rtxtbIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtbIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtbIndex.Location = new System.Drawing.Point(226, 4);
             this.rtxtbIndex.Name = "rtxtbIndex";
@@ -277,7 +277,7 @@
             // 
             // txtbLineNumber
             // 
-            this.txtbLineNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbLineNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbLineNumber.Location = new System.Drawing.Point(226, 516);
             this.txtbLineNumber.Name = "txtbLineNumber";
@@ -299,7 +299,7 @@
             // 
             // rtxtbDataSource
             // 
-            this.rtxtbDataSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtbDataSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtbDataSource.Location = new System.Drawing.Point(227, 287);
             this.rtxtbDataSource.Name = "rtxtbDataSource";
@@ -338,7 +338,7 @@
             // 
             // txtID
             // 
-            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtID.Location = new System.Drawing.Point(228, 39);
             this.txtID.Name = "txtID";

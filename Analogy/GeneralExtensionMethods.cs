@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public static class GeneralExtensionMethods
     {

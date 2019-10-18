@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     public partial class ToolbarFormMain : DevExpress.XtraEditors.XtraForm
     {

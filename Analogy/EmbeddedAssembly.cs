@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class EmbeddedAssembly
     {

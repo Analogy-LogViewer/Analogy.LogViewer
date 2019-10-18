@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
-namespace Philips.Analogy.Interfaces.DataTypes
+namespace Analogy.Interfaces
 {
     public class AnalogyProgressReport
     {

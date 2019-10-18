@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class FileSystemUC
     {
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileSystemUC));
             this.splcLeft = new System.Windows.Forms.SplitContainer();
-            this.tvFolderUC = new Philips.Analogy.FolderTreeViewUC();
+            this.tvFolderUC = new Analogy.FolderTreeViewUC();
             this.lBoxFiles = new DevExpress.XtraEditors.ListBoxControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);

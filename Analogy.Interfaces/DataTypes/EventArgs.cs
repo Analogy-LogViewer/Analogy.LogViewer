@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 
-namespace Philips.Analogy.Interfaces.DataTypes
+namespace Analogy.Interfaces
 {
     public class LogMessageArgs : EventArgs
     {

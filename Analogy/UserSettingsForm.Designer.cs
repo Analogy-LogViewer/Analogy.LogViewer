@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class UserSettingsForm
     {
@@ -138,7 +138,7 @@
             // 
             // gcFiles
             // 
-            this.gcFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gcFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gcFiles.Controls.Add(this.tsFileCaching);
             this.gcFiles.Location = new System.Drawing.Point(3, 308);
@@ -150,7 +150,7 @@
             // 
             // tsFileCaching
             // 
-            this.tsFileCaching.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsFileCaching.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsFileCaching.EditValue = true;
             this.tsFileCaching.Location = new System.Drawing.Point(5, 37);
@@ -164,7 +164,7 @@
             // 
             // gcFiltering
             // 
-            this.gcFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gcFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gcFiltering.Controls.Add(this.tsHistory);
             this.gcFiltering.Controls.Add(this.checkEditSearchAlsoInSourceAndModule);
@@ -226,7 +226,7 @@
             // 
             // tsErrorLevelAsDefault
             // 
-            this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 67);
             this.tsErrorLevelAsDefault.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -239,7 +239,7 @@
             // 
             // tsFilteringExclude
             // 
-            this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsFilteringExclude.Location = new System.Drawing.Point(5, 33);
             this.tsFilteringExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -252,7 +252,7 @@
             // 
             // tsAutoComplete
             // 
-            this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsAutoComplete.Enabled = false;
             this.tsAutoComplete.Location = new System.Drawing.Point(5, 101);
@@ -273,7 +273,7 @@
             // 
             // tsHistory
             // 
-            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsHistory.Location = new System.Drawing.Point(5, 133);
             this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -296,7 +296,7 @@
             // 
             // tsStartupRibbonMinimized
             // 
-            this.tsStartupRibbonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsStartupRibbonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsStartupRibbonMinimized.EditValue = true;
             this.tsStartupRibbonMinimized.Location = new System.Drawing.Point(14, 6);
@@ -310,7 +310,7 @@
             // 
             // tsSimpleMode
             // 
-            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsSimpleMode.Enabled = false;
             this.tsSimpleMode.Location = new System.Drawing.Point(14, 41);
@@ -335,8 +335,8 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.lblOpenedFiles);
             this.groupControl1.Controls.Add(this.lblRunningTime);
@@ -389,7 +389,7 @@
             // 
             // tsUserStatistics
             // 
-            this.tsUserStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tsUserStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsUserStatistics.Location = new System.Drawing.Point(29, 11);
             this.tsUserStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -412,7 +412,7 @@
             // 
             // tswitchExtensionsStartup
             // 
-            this.tswitchExtensionsStartup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tswitchExtensionsStartup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tswitchExtensionsStartup.Location = new System.Drawing.Point(17, 11);
             this.tswitchExtensionsStartup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -425,8 +425,8 @@
             // 
             // chklItems
             // 
-            this.chklItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.chklItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chklItems.CheckOnClick = true;
             this.chklItems.FormattingEnabled = true;
@@ -564,7 +564,7 @@
             // 
             // toggleSwitchIdleMode
             // 
-            this.toggleSwitchIdleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.toggleSwitchIdleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.toggleSwitchIdleMode.Location = new System.Drawing.Point(16, 10);
             this.toggleSwitchIdleMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -595,8 +595,8 @@
             // 
             // chkLstItemRealTimeDataSources
             // 
-            this.chkLstItemRealTimeDataSources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.chkLstItemRealTimeDataSources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chkLstItemRealTimeDataSources.CheckOnClick = true;
             this.chkLstItemRealTimeDataSources.FormattingEnabled = true;

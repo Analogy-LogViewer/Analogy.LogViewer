@@ -2,10 +2,6 @@
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
-using Philips.Analogy.DataSources;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.Properties;
-using Philips.Analogy.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,10 +10,13 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
-using Philips.Analogy.Interfaces.Factories;
+using Analogy.DataSources;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using Analogy.Properties;
+using Analogy.Tools;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class MainForm : RibbonForm
     {
@@ -433,7 +432,7 @@ namespace Philips.Analogy
         {
             OpenProcessForm();
         }
-        
+
         private void bbiExtensions_ItemClick(object sender, ItemClickEventArgs e)
         {
             var ex = new ExtensionsForm();
@@ -936,7 +935,7 @@ namespace Philips.Analogy
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            realTimeBtn.ImageOptions.Image =  Resources.Database_off;
+            realTimeBtn.ImageOptions.Image = Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs";
 

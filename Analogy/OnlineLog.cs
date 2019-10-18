@@ -1,15 +1,14 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 using Message = System.Windows.Forms.Message;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class OnlineUCLogs : UserControl
@@ -58,7 +57,7 @@ namespace Philips.Analogy
 
         }
 
-       
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {

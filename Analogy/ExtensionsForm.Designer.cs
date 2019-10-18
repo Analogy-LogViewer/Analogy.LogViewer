@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class ExtensionsForm
     {
@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtensionsForm));
             this.rtxtbMessages = new System.Windows.Forms.RichTextBox();
             this.BtnLoad = new System.Windows.Forms.Button();
-            this.extensionsUC1 = new Philips.Analogy.ExtensionsUC();
+            this.extensionsUC1 = new Analogy.ExtensionsUC();
             this.SuspendLayout();
             // 
             // rtxtbMessages
             // 
-            this.rtxtbMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtbMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtbMessages.Location = new System.Drawing.Point(12, 459);
             this.rtxtbMessages.Name = "rtxtbMessages";

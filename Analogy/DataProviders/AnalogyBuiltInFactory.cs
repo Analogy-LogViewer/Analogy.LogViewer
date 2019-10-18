@@ -1,17 +1,16 @@
-﻿using Philips.Analogy.Interfaces;
-using Philips.Analogy.LogLoaders;
-using Philips.Analogy.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Philips.Analogy.Interfaces.DataTypes;
-using Philips.Analogy.Interfaces.Factories;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using Analogy.LogLoaders;
+using Analogy.Properties;
 
-namespace Philips.Analogy.DataSources
+namespace Analogy.DataSources
 {
     public class AnalogyBuiltInFactory : IAnalogyFactory
     {
@@ -32,7 +31,7 @@ namespace Philips.Analogy.DataSources
 
         private IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
-            
+
 
             yield return new AnalogyChangeLog("UI: not all UI elements support themes (issue #28)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 10, 14));
             yield return new AnalogyChangeLog("UI: Add an option (user setting) to auto scroll to last message (Issue #26)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 10, 13));

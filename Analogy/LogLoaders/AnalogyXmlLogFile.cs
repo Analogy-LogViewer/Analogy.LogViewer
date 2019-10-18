@@ -5,25 +5,25 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy.LogLoaders
+namespace Analogy.LogLoaders
 {
     public class AnalogyXmlLogFile
     {
 
-        public Task Save(List<AnalogyLogMessage> messages, string filename)       
-            => Task.Factory.StartNew(() => {
+        public Task Save(List<AnalogyLogMessage> messages, string filename)
+            => Task.Factory.StartNew(() =>
+            {
                 XmlSerializer ser = new XmlSerializer(typeof(List<AnalogyLogMessage>));
                 using (FileStream fs = new FileStream(filename, FileMode.Create))
                 {
                     ser.Serialize(fs, messages);
                 }
             });
-         
 
-        
+
+
 
         public Task<List<AnalogyLogMessage>> ReadFromFile(string filename) =>
             Task.Factory.StartNew(() =>
@@ -33,7 +33,7 @@ namespace Philips.Analogy.LogLoaders
                 {
                     try
                     {
-                        return (List<AnalogyLogMessage>) ser.Deserialize(fs);
+                        return (List<AnalogyLogMessage>)ser.Deserialize(fs);
                     }
                     catch (Exception e)
                     {
@@ -42,7 +42,7 @@ namespace Philips.Analogy.LogLoaders
                             AnalogyLogClass.General, "Analogy", "None");
                         errMessage.Source = "Analogy";
                         errMessage.Module = Process.GetCurrentProcess().ProcessName;
-                        return new List<AnalogyLogMessage>() {errMessage};
+                        return new List<AnalogyLogMessage>() { errMessage };
                     }
 
                 }
@@ -66,7 +66,7 @@ namespace Philips.Analogy.LogLoaders
                         AnalogyLogMessage errMessage = new AnalogyLogMessage($"Error reading file {fileName}: {e.Message}", AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None");
                         errMessage.Source = "Analogy";
                         errMessage.Module = Process.GetCurrentProcess().ProcessName;
-                        messagesHandler.AppendMessage(errMessage,fileName);
+                        messagesHandler.AppendMessage(errMessage, fileName);
                         return new List<AnalogyLogMessage>() { errMessage };
                     }
                 }

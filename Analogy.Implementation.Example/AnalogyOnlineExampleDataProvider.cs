@@ -1,8 +1,7 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Timers;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.Implementation.Example
 {

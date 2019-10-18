@@ -3,11 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Description>Analogy.Interfaces dll compiledin .net Standard</Description>
-    <PackageReleaseNotes>Analogy.Interfaces dll compiledin .net Standard</PackageReleaseNotes>
+    <Description>Analogy.Interfaces dll compiled in .net Standard</Description>
+    <PackageReleaseNotes>Analogy.Interfaces dll compiled in .net Standard</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/philips-software/logviewer</PackageProjectUrl>
-    <AssemblyName>Analogy.Interfaces.Standard</AssemblyName>
-    <RootNamespace>Analogy.Interfaces.</RootNamespace>
+    <AssemblyName>Analogy.Interfaces</AssemblyName>
+    <RootNamespace>Analogy.Interfaces</RootNamespace>
+    <PackageId>Analogy.LogViewer.Interfaces</PackageId>
+    <Version>2.1.0</Version>
+    <Authors>Lior Banai</Authors>
+    <Product>Analogy.LogViewer.Interfaces</Product>
   </PropertyGroup>
 
 </Project>

@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class OfflineUCLogs : UserControl
@@ -72,7 +72,7 @@ namespace Philips.Analogy
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             await LoadFilesAsync(files.ToList(), chkbSelectionMode.Checked);
         }
-        
+
         private void PopulateFiles(string folder)
         {
             if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
@@ -95,7 +95,7 @@ namespace Philips.Analogy
         }
         private async void TreeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-          
+
 
         }
         private async Task LoadFilesAsync(List<string> fileNames, bool clearLog)
@@ -108,7 +108,7 @@ namespace Philips.Analogy
         {
             if (treeList1.Selection.Any())
             {
-                var filename = (string) treeList1.Selection.First().GetValue(colFullPath);
+                var filename = (string)treeList1.Selection.First().GetValue(colFullPath);
                 if (filename == null || !File.Exists(filename)) return;
                 Process.Start("explorer.exe", "/select, \"" + filename + "\"");
             }

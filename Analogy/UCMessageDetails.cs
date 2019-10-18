@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class UCMessageDetails : UserControl
     {

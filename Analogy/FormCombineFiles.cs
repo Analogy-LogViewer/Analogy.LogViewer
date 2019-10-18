@@ -1,7 +1,7 @@
-﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class FormCombineFiles : XtraForm
     {
@@ -12,7 +12,7 @@ namespace Philips.Analogy
             InitializeComponent();
         }
 
-        public FormCombineFiles(IAnalogyOfflineDataProvider offlineAnalogy):this()
+        public FormCombineFiles(IAnalogyOfflineDataProvider offlineAnalogy) : this()
         {
             this.offlineAnalogy = offlineAnalogy;
             combineFilesUC1.SetDataSource(offlineAnalogy);

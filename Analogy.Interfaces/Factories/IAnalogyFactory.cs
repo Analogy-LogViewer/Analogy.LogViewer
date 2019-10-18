@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
-namespace Philips.Analogy.Interfaces.Factories
+namespace Analogy.Interfaces.Factories
 {
     public interface IAnalogyFactory
     {

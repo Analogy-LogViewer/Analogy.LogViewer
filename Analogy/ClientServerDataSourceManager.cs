@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class ClientServerDataSourceManager
     {

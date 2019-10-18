@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class SearchInFilesUC : UserControl
     {

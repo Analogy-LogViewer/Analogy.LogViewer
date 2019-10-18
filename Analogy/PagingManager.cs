@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class PagingManager
     {
@@ -82,7 +82,7 @@ namespace Philips.Analogy
 
             OnPageChanged?.Invoke(this, new AnalogyPagingChanged(analogyPage));
         }
-        
+
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
 
@@ -106,7 +106,7 @@ namespace Philips.Analogy
                 dtr["Text"] = message.Text ?? "";
                 dtr["Source"] = message.Source ?? "";
                 dtr["Level"] = string.Intern(message.Level.ToString());
-                dtr["Class"] = string.Intern( message.Class.ToString());
+                dtr["Class"] = string.Intern(message.Class.ToString());
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";

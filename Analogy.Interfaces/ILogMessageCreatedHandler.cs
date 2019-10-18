@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Philips.Analogy.Interfaces.DataTypes;
 
-namespace Philips.Analogy.Interfaces
+namespace Analogy.Interfaces
 {
     public interface ILogMessageCreatedHandler
     {

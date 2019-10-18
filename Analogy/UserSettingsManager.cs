@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Philips.Analogy.Properties;
+using Analogy.Properties;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class UserSettingsManager
     {
@@ -130,7 +130,7 @@ namespace Philips.Analogy
             Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
             Settings.Default.WindowsEventLogs = string.Join(",", EventLogs);
             Settings.Default.AutoStartDataProviders = string.Join(",", AutoStartDataProviders);
-            Settings.Default.AutoScrollToLastMessage=AutoScrollToLastMessage;
+            Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             Settings.Default.Save();
 
         }

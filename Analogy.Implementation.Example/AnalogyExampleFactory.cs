@@ -1,9 +1,7 @@
-﻿using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Factories;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Philips.Analogy.Interfaces.DataTypes;
-using Philips.Analogy.Interfaces.Factories;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 
 namespace Analogy.Implementation.Example
 {

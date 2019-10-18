@@ -1,6 +1,6 @@
-﻿using Philips.Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 
-namespace Philips.Analogy.Tools
+namespace Analogy.Tools
 {
     public partial class FileComparerForm : DevExpress.XtraEditors.XtraForm
     {
@@ -11,7 +11,7 @@ namespace Philips.Analogy.Tools
             InitializeComponent();
         }
 
-        public FileComparerForm(IAnalogyOfflineDataProvider offlineAnalogy):this()
+        public FileComparerForm(IAnalogyOfflineDataProvider offlineAnalogy) : this()
         {
             this.offlineAnalogy = offlineAnalogy;
             logsComparerUC1.SetDataSource(offlineAnalogy);

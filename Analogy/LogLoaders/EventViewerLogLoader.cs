@@ -1,20 +1,19 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy.LogLoaders
+namespace Analogy.LogLoaders
 {
     public class EventViewerLogLoader
     {
         private string[] seperators = new[] { "Severity: ", ", Category: ", ", MessageID: ", ", Message: " };
         private CancellationToken Token { get; }
-        
+
         public EventViewerLogLoader(CancellationToken token)
         {
             Token = token;
@@ -54,7 +53,7 @@ namespace Philips.Analogy.LogLoaders
                                 string properties = string.Join(Environment.NewLine, record.Properties.Select(p => p.Value));
                                 try
                                 {
-                                    m.Text = $"{record.MachineName} :({record.LogName}) - {record.FormatDescription()}{properties}{(record.ThreadId !=null ? " Thread id:" + record.ThreadId.Value : string.Empty)}";
+                                    m.Text = $"{record.MachineName} :({record.LogName}) - {record.FormatDescription()}{properties}{(record.ThreadId != null ? " Thread id:" + record.ThreadId.Value : string.Empty)}";
                                     if (record.LevelDisplayName != null)
                                     {
                                         switch (record.LevelDisplayName)
@@ -157,7 +156,7 @@ namespace Philips.Analogy.LogLoaders
 
                 if (!messages.Any())
                 {
-                    AnalogyLogMessage empty = new AnalogyLogMessage($"File {fileName} is empty or corrupted", AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy","None");
+                    AnalogyLogMessage empty = new AnalogyLogMessage($"File {fileName} is empty or corrupted", AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None");
                     messages.Add(empty);
                     logWindow.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                 }

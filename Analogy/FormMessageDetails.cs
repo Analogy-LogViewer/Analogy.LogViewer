@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class FormMessageDetails : XtraForm
     {
@@ -13,7 +13,7 @@ namespace Philips.Analogy
             InitializeComponent();
         }
 
-        public FormMessageDetails(AnalogyLogMessage msg, List<AnalogyLogMessage> messages,string dataSource) : this()
+        public FormMessageDetails(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
         {
             UCMessageDetails uc = new UCMessageDetails(msg, messages, dataSource);
             spltCMain.Panel1.Controls.Add(uc);

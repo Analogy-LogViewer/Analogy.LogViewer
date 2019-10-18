@@ -1,14 +1,14 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
-using Philips.Analogy.Types;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces;
+using Analogy.Interfaces;
+using Analogy.Types;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class XtraUCFileSystem : XtraUserControl
     {

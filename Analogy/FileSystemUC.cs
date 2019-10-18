@@ -1,13 +1,13 @@
-﻿using Philips.Analogy.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces;
+using Analogy.Interfaces;
+using Analogy.Types;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class FileSystemUC : UserControl
     {

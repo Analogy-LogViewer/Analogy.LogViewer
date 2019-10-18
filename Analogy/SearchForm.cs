@@ -1,7 +1,7 @@
-﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class SearchForm : XtraForm
     {
@@ -12,7 +12,7 @@ namespace Philips.Analogy
             InitializeComponent();
         }
 
-        public SearchForm(IAnalogyOfflineDataProvider offlineAnalogy):this()
+        public SearchForm(IAnalogyOfflineDataProvider offlineAnalogy) : this()
         {
             this.offlineAnalogy = offlineAnalogy;
             searchInFilesUC1.SetDataSource(offlineAnalogy);

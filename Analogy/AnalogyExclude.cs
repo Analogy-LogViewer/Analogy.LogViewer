@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class AnalogyExclude : XtraForm
