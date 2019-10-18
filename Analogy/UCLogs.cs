@@ -437,6 +437,7 @@ namespace Analogy
                 case AnalogyLogLevel.Warning:
                     img = imageList.Images[1];
                     break;
+                case AnalogyLogLevel.Trace:
                 case AnalogyLogLevel.Event:
                     img = imageList.Images[7];
                     break;
@@ -758,6 +759,9 @@ namespace Analogy
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+            if (message.Level==AnalogyLogLevel.Disabled)
+                return; //ignore those messages
+            
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();

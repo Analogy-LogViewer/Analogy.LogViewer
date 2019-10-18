@@ -133,6 +133,8 @@ namespace Analogy
             {
                 foreach (var message in messages)
                 {
+                    if (message.Level == AnalogyLogLevel.Disabled)
+                        continue; //ignore those messages
                     allMessages.Add(message);
                     if (countInsideTable + 1 > pageSize)
                     {
