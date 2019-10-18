@@ -45,3 +45,4 @@
 /.vs/Analogy/DesignTimeBuild
 /Analogy.Interfaces.Standard/bin/Debug
 /Analogy.Interfaces.Standard/obj
+/Analogy.Interfaces.Standard/bin/Release/netstandard2.0
