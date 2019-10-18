@@ -34,6 +34,7 @@
             this.gcFiles = new DevExpress.XtraEditors.GroupControl();
             this.tsFileCaching = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcFiltering = new DevExpress.XtraEditors.GroupControl();
+            this.tsHistory = new DevExpress.XtraEditors.ToggleSwitch();
             this.checkEditSearchAlsoInSourceAndModule = new DevExpress.XtraEditors.CheckEdit();
             this.chkEditPaging = new DevExpress.XtraEditors.CheckEdit();
             this.nudPageLength = new System.Windows.Forms.NumericUpDown();
@@ -41,7 +42,6 @@
             this.tsFilteringExclude = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsAutoComplete = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtraTabPagePreDefined = new DevExpress.XtraTab.XtraTabPage();
-            this.tsHistory = new DevExpress.XtraEditors.ToggleSwitch();
             this.tpLookAndFeel = new DevExpress.XtraTab.XtraTabPage();
             this.tsStartupRibbonMinimized = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsSimpleMode = new DevExpress.XtraEditors.ToggleSwitch();
@@ -78,13 +78,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).BeginInit();
             this.gcFiltering.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEditPaging.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPageLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsErrorLevelAsDefault.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsFilteringExclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).BeginInit();
             this.tpLookAndFeel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).BeginInit();
@@ -130,7 +130,7 @@
             // 
             this.xtraTabPageFilter.Controls.Add(this.gcFiles);
             this.xtraTabPageFilter.Controls.Add(this.gcFiltering);
-            this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
+            this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageFilter.ImageOptions.Image")));
             this.xtraTabPageFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPageFilter.Name = "xtraTabPageFilter";
             this.xtraTabPageFilter.Size = new System.Drawing.Size(744, 562);
@@ -138,7 +138,7 @@
             // 
             // gcFiles
             // 
-            this.gcFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.gcFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gcFiles.Controls.Add(this.tsFileCaching);
             this.gcFiles.Location = new System.Drawing.Point(3, 308);
@@ -150,7 +150,7 @@
             // 
             // tsFileCaching
             // 
-            this.tsFileCaching.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsFileCaching.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsFileCaching.EditValue = true;
             this.tsFileCaching.Location = new System.Drawing.Point(5, 37);
@@ -164,7 +164,7 @@
             // 
             // gcFiltering
             // 
-            this.gcFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.gcFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gcFiltering.Controls.Add(this.tsHistory);
             this.gcFiltering.Controls.Add(this.checkEditSearchAlsoInSourceAndModule);
@@ -179,6 +179,19 @@
             this.gcFiltering.Size = new System.Drawing.Size(737, 302);
             this.gcFiltering.TabIndex = 3;
             this.gcFiltering.Text = "Filtering, search and interaction of messages area";
+            // 
+            // tsHistory
+            // 
+            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsHistory.Location = new System.Drawing.Point(5, 133);
+            this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsHistory.Name = "tsHistory";
+            this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
+            this.tsHistory.Properties.OnText = "Show history of cleared Messages";
+            this.tsHistory.Size = new System.Drawing.Size(672, 28);
+            this.tsHistory.TabIndex = 0;
+            this.tsHistory.Toggled += new System.EventHandler(this.tsHistory_Toggled);
             // 
             // checkEditSearchAlsoInSourceAndModule
             // 
@@ -226,7 +239,7 @@
             // 
             // tsErrorLevelAsDefault
             // 
-            this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 67);
             this.tsErrorLevelAsDefault.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -239,7 +252,7 @@
             // 
             // tsFilteringExclude
             // 
-            this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsFilteringExclude.Location = new System.Drawing.Point(5, 33);
             this.tsFilteringExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -252,7 +265,7 @@
             // 
             // tsAutoComplete
             // 
-            this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsAutoComplete.Enabled = false;
             this.tsAutoComplete.Location = new System.Drawing.Point(5, 101);
@@ -265,24 +278,12 @@
             // 
             // xtraTabPagePreDefined
             // 
-            this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage2.ImageOptions.Image")));
+            this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPagePreDefined.ImageOptions.Image")));
             this.xtraTabPagePreDefined.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPagePreDefined.Name = "xtraTabPagePreDefined";
+            this.xtraTabPagePreDefined.PageVisible = false;
             this.xtraTabPagePreDefined.Size = new System.Drawing.Size(744, 562);
             this.xtraTabPagePreDefined.Text = "Pre defined queries";
-            // 
-            // tsHistory
-            // 
-            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsHistory.Location = new System.Drawing.Point(5, 133);
-            this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsHistory.Name = "tsHistory";
-            this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
-            this.tsHistory.Properties.OnText = "Show history of cleared Messages";
-            this.tsHistory.Size = new System.Drawing.Size(672, 28);
-            this.tsHistory.TabIndex = 0;
-            this.tsHistory.Toggled += new System.EventHandler(this.tsHistory_Toggled);
             // 
             // tpLookAndFeel
             // 
@@ -296,7 +297,7 @@
             // 
             // tsStartupRibbonMinimized
             // 
-            this.tsStartupRibbonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsStartupRibbonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsStartupRibbonMinimized.EditValue = true;
             this.tsStartupRibbonMinimized.Location = new System.Drawing.Point(14, 6);
@@ -310,7 +311,7 @@
             // 
             // tsSimpleMode
             // 
-            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsSimpleMode.Enabled = false;
             this.tsSimpleMode.Location = new System.Drawing.Point(14, 41);
@@ -335,8 +336,8 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.lblOpenedFiles);
             this.groupControl1.Controls.Add(this.lblRunningTime);
@@ -389,7 +390,7 @@
             // 
             // tsUserStatistics
             // 
-            this.tsUserStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsUserStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsUserStatistics.Location = new System.Drawing.Point(29, 11);
             this.tsUserStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -412,7 +413,7 @@
             // 
             // tswitchExtensionsStartup
             // 
-            this.tswitchExtensionsStartup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tswitchExtensionsStartup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tswitchExtensionsStartup.Location = new System.Drawing.Point(17, 11);
             this.tswitchExtensionsStartup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -425,8 +426,8 @@
             // 
             // chklItems
             // 
-            this.chklItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.chklItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chklItems.CheckOnClick = true;
             this.chklItems.FormattingEnabled = true;
@@ -564,7 +565,7 @@
             // 
             // toggleSwitchIdleMode
             // 
-            this.toggleSwitchIdleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.toggleSwitchIdleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.toggleSwitchIdleMode.Location = new System.Drawing.Point(16, 10);
             this.toggleSwitchIdleMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -595,8 +596,8 @@
             // 
             // chkLstItemRealTimeDataSources
             // 
-            this.chkLstItemRealTimeDataSources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.chkLstItemRealTimeDataSources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chkLstItemRealTimeDataSources.CheckOnClick = true;
             this.chkLstItemRealTimeDataSources.FormattingEnabled = true;
@@ -627,13 +628,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).EndInit();
             this.gcFiltering.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEditPaging.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPageLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsErrorLevelAsDefault.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsFilteringExclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).EndInit();
             this.tpLookAndFeel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).EndInit();

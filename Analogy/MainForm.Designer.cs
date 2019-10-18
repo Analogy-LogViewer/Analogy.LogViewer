@@ -236,7 +236,7 @@
             this.btnItemLocalLogs.ImageOptions.Image = global::Analogy.Properties.Resources.Open2_32x32;
             this.btnItemLocalLogs.LargeWidth = 80;
             this.btnItemLocalLogs.Name = "btnItemLocalLogs";
-            this.btnItemLocalLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.btnItemLocalLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // btnItemOTA
@@ -246,7 +246,7 @@
             this.btnItemOTA.Id = 3;
             this.btnItemOTA.ImageOptions.Image = global::Analogy.Properties.Resources.logIcon;
             this.btnItemOTA.Name = "btnItemOTA";
-            this.btnItemOTA.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.btnItemOTA.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.btnItemOTA.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnItemOTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemOTA_ItemClick);
@@ -259,7 +259,7 @@
             this.bItemProcess.ImageOptions.LargeImage = global::Analogy.Properties.Resources.ChartsShowLegend_32x32;
             this.bItemProcess.LargeWidth = 100;
             this.bItemProcess.Name = "bItemProcess";
-            this.bItemProcess.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bItemProcess.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bItemProcess.SmallWithTextWidth = 5;
             this.bItemProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bItemProcess_ItemClick);
@@ -307,7 +307,7 @@
             this.btnItemSearch.ImageOptions.Image = global::Analogy.Properties.Resources.Lookup_Reference_32x32;
             this.btnItemSearch.LargeWidth = 90;
             this.btnItemSearch.Name = "btnItemSearch";
-            this.btnItemSearch.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.btnItemSearch.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // btnItemCombineFiles
@@ -317,7 +317,7 @@
             this.btnItemCombineFiles.ImageOptions.Image = global::Analogy.Properties.Resources.Sutotal_32x32;
             this.btnItemCombineFiles.LargeWidth = 90;
             this.btnItemCombineFiles.Name = "btnItemCombineFiles";
-            this.btnItemCombineFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.btnItemCombineFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // btnItemConvert
@@ -328,7 +328,7 @@
             this.btnItemConvert.ImageOptions.Image = global::Analogy.Properties.Resources.ArrangeGroups_32x32;
             this.btnItemConvert.LargeWidth = 90;
             this.btnItemConvert.Name = "btnItemConvert";
-            this.btnItemConvert.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.btnItemConvert.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // bbItemOpenFiles
@@ -338,7 +338,7 @@
             this.bbItemOpenFiles.ImageOptions.Image = global::Analogy.Properties.Resources.Article_16x16;
             this.bbItemOpenFiles.ImageOptions.LargeImage = global::Analogy.Properties.Resources.Article_32x32;
             this.bbItemOpenFiles.Name = "bbItemOpenFiles";
-            this.bbItemOpenFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bbItemOpenFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bbItemOpenFiles.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbItemOpenFiles_ItemClick);
             // 
@@ -355,7 +355,7 @@
             this.bsiRecent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiRecent.ImageOptions.Image")));
             this.bsiRecent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiRecent.ImageOptions.LargeImage")));
             this.bsiRecent.Name = "bsiRecent";
-            this.bsiRecent.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bsiRecent.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // skinRibbonGalleryBarItem2
@@ -456,7 +456,7 @@
             this.bBtnBookmarked.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnBookmarked.ImageOptions.Image")));
             this.bBtnBookmarked.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnBookmarked.ImageOptions.LargeImage")));
             this.bBtnBookmarked.Name = "bBtnBookmarked";
-            this.bBtnBookmarked.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bBtnBookmarked.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnBookmarked.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnBookmarked_ItemClick);
             // 
@@ -477,7 +477,7 @@
             this.bBtnStatisticsFiltering.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsFiltering.ImageOptions.LargeImage")));
             this.bBtnStatisticsFiltering.LargeWidth = 80;
             this.bBtnStatisticsFiltering.Name = "bBtnStatisticsFiltering";
-            this.bBtnStatisticsFiltering.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bBtnStatisticsFiltering.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnStatisticsFiltering.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsFiltering_ItemClick);
             // 
@@ -489,8 +489,9 @@
             this.bBtnStatisticsHistory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.LargeImage")));
             this.bBtnStatisticsHistory.LargeWidth = 80;
             this.bBtnStatisticsHistory.Name = "bBtnStatisticsHistory";
-            this.bBtnStatisticsHistory.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bBtnStatisticsHistory.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnStatisticsHistory.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnStatisticsHistory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsHistory_ItemClick);
             // 
             // bBtnStatisticsLookAndFeel
@@ -521,7 +522,7 @@
             this.bBtnExtensionSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExtensionSettings.ImageOptions.LargeImage")));
             this.bBtnExtensionSettings.LargeWidth = 80;
             this.bBtnExtensionSettings.Name = "bBtnExtensionSettings";
-            this.bBtnExtensionSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bBtnExtensionSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnExtensionSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExtensionSettings_ItemClick);
             // 
@@ -532,7 +533,7 @@
             this.bBtnCompareLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnCompareLogs.ImageOptions.Image")));
             this.bBtnCompareLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnCompareLogs.ImageOptions.LargeImage")));
             this.bBtnCompareLogs.Name = "bBtnCompareLogs";
-            this.bBtnCompareLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bBtnCompareLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnCompareLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCompareLogs_ItemClick);
             // 
@@ -563,7 +564,7 @@
             this.bbiExtensions.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExtensions.ImageOptions.LargeImage")));
             this.bbiExtensions.LargeWidth = 140;
             this.bbiExtensions.Name = "bbiExtensions";
-            this.bbiExtensions.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bbiExtensions.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bbiExtensions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExtensions_ItemClick);
             // 
@@ -574,7 +575,7 @@
             this.bBtnShortcuts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnShortcuts.ImageOptions.Image")));
             this.bBtnShortcuts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnShortcuts.ImageOptions.LargeImage")));
             this.bBtnShortcuts.Name = "bBtnShortcuts";
-            this.bBtnShortcuts.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bBtnShortcuts.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnShortcuts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnShortcuts_ItemClick);
             // 
@@ -595,7 +596,7 @@
             this.bsiWindowsEventLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiWindowsEventLogs.ImageOptions.Image")));
             this.bsiWindowsEventLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiWindowsEventLogs.ImageOptions.LargeImage")));
             this.bsiWindowsEventLogs.Name = "bsiWindowsEventLogs";
-            this.bsiWindowsEventLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bsiWindowsEventLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // barEditItem1
@@ -636,7 +637,7 @@
             this.bBtnOpenAnalogyLog.ImageOptions.Image = global::Analogy.Properties.Resources.logIcon;
             this.bBtnOpenAnalogyLog.LargeWidth = 100;
             this.bBtnOpenAnalogyLog.Name = "bBtnOpenAnalogyLog";
-            this.bBtnOpenAnalogyLog.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bBtnOpenAnalogyLog.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // bbtnCloseCurrentTabPage
@@ -678,7 +679,7 @@
             this.bbtnUserSettingsResourceUsage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnUserSettingsResourceUsage.ImageOptions.Image")));
             this.bbtnUserSettingsResourceUsage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnUserSettingsResourceUsage.ImageOptions.LargeImage")));
             this.bbtnUserSettingsResourceUsage.Name = "bbtnUserSettingsResourceUsage";
-            this.bbtnUserSettingsResourceUsage.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bbtnUserSettingsResourceUsage.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bbtnUserSettingsResourceUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnUserSettingsResourceUsage_ItemClick);
             // 
@@ -689,7 +690,7 @@
             this.bbtnSettingsStartupDataSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSettingsStartupDataSources.ImageOptions.Image")));
             this.bbtnSettingsStartupDataSources.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSettingsStartupDataSources.ImageOptions.LargeImage")));
             this.bbtnSettingsStartupDataSources.Name = "bbtnSettingsStartupDataSources";
-            this.bbtnSettingsStartupDataSources.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)
+            this.bbtnSettingsStartupDataSources.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bbtnSettingsStartupDataSources.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSettingsStartupDataSources_ItemClick);
             // 
