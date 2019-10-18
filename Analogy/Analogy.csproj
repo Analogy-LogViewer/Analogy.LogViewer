@@ -786,9 +786,9 @@
     <Folder Include="DevExpress\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analogy.Interfaces.Standard\Analogy.Interfaces.Standard.csproj">
-      <Project>{3433eb41-be17-44c0-94a1-19a922027037}</Project>
-      <Name>Analogy.Interfaces.Standard</Name>
+    <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
+      <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
+      <Name>Analogy.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
