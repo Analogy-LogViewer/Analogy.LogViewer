@@ -20,6 +20,7 @@ namespace Analogy.Implementation.Example
         public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         private Timer SimulateOnlineMessages;
         private int messageCount = 0;
+        Random random = new Random();
         Array values = Enum.GetValues(typeof(AnalogyLogLevel));
         public void InitDataProvider()
         {
@@ -31,7 +32,6 @@ namespace Analogy.Implementation.Example
                 unchecked
                 {
                     
-                    Random random = new Random();
                     AnalogyLogLevel randomLevel = (AnalogyLogLevel)values.GetValue(random.Next(values.Length));
                     AnalogyLogMessage m = new AnalogyLogMessage($"Generated message #{messageCount++}", randomLevel, AnalogyLogClass.General, "Example");
                     OnMessageReady(this, new AnalogyLogMessageArgs(m, Environment.MachineName, "Example", ID));

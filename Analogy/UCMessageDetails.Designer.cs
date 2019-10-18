@@ -223,7 +223,6 @@
             this.rtxtbText.Size = new System.Drawing.Size(644, 208);
             this.rtxtbText.TabIndex = 21;
             this.rtxtbText.Text = "";
-            this.rtxtbText.TextChanged += new System.EventHandler(this.rtxtbText_TextChanged);
             // 
             // lbID
             // 
