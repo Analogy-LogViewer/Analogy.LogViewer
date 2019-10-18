@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Analogy.LogViewer</id>
-    <version>4.1.0</version>
+    <version>4.1.1</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
@@ -16,7 +16,7 @@
     <tags></tags>
 	<dependencies>
     <group targetFramework="net472">    
-		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.0" />
+		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.1" />
     </group>
 </dependencies>
   </metadata>
