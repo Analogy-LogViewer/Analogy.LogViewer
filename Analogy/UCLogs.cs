@@ -133,7 +133,6 @@ namespace Philips.Analogy
             InPlaceRegisteredExtensions = ExtensionManager.InPlaceRegisteredExtensions.ToList();
             UserControlRegisteredExtensions = ExtensionManager.UserControlRegisteredExtensions.ToList();
             InitializeExtensionsColumns();
-            InitializeExtensionsUserControls();
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
                 progressBar1.Maximum = value.Total;
@@ -307,19 +306,7 @@ namespace Philips.Analogy
             }
         }
 
-        private void InitializeExtensionsUserControls()
-        {
-            foreach (IAnalogyExtension extension in UserControlRegisteredExtensions)
-            {
-                UserControl uc = extension.GetUserControl();
-                XtraTabPage page = new XtraTabPage();
-                page.ShowCloseButton = DefaultBoolean.True;
-                page.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-                page.Text = extension.DisplayName;
-                xtraTabControl1.TabPages.Add(page);
-            }
-        }
+      
 
         private void UCLogs_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;

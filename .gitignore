@@ -42,3 +42,6 @@
 /Analogy/.vs/Analogy/v16/.suo
 /nuget.exe
 *.nupkg
+/.vs/Analogy/DesignTimeBuild
+/Analogy.Interfaces.Standard/bin/Debug
+/Analogy.Interfaces.Standard/obj

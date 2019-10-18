@@ -17,8 +17,6 @@ namespace Analogy.Implementation.Example
 
         public IAnalogyCustomActionsFactory Actions => null;
 
-        public IAnalogyUserControlsFactory UserControls => null;
-
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; } = new List<AnalogyChangeLog>
         {
             new AnalogyChangeLog("Create example implementation",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 08, 15)),

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Description>Analogy.Interfaces dll compiledin .net Standard</Description>
+    <PackageReleaseNotes>Analogy.Interfaces dll compiledin .net Standard</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/philips-software/logviewer</PackageProjectUrl>
+    <AssemblyName>Analogy.Interfaces.Standard</AssemblyName>
+    <RootNamespace>Analogy.Interfaces.</RootNamespace>
+  </PropertyGroup>
+
+</Project>

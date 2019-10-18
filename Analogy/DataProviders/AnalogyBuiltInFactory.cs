@@ -20,7 +20,6 @@ namespace Philips.Analogy.DataSources
         public string Title { get; } = "Analogy Built-in Logs";
         public IAnalogyDataProvidersFactory DataProviders { get; }
         public IAnalogyCustomActionsFactory Actions { get; }
-        public IAnalogyUserControlsFactory UserControls { get; }
         public IEnumerable<IAnalogyChangeLog> ChangeLog => GetChangeLog();
         public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
         public string About { get; } = "Analogy Built-in Data Source";

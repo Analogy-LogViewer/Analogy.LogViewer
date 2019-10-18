@@ -783,8 +783,8 @@ namespace Philips.Analogy
                     actionBtn.Caption = action.Title;
                     actionBtn.RibbonStyle = RibbonItemStyles.All;
                     groupActionSource.ItemLinks.Add(actionBtn);
-                    actionBtn.ImageOptions.Image = action.Image ?? Resources.PageSetup_32x32;
-                    actionBtn.ImageOptions.LargeImage = action.Image ?? Resources.PageSetup_32x32;
+                    actionBtn.ImageOptions.Image = Resources.PageSetup_32x32;
+                    actionBtn.ImageOptions.LargeImage = Resources.PageSetup_32x32;
                     actionBtn.ItemClick += (sender, e) => { action.Action(); };
                 }
             }
@@ -840,7 +840,7 @@ namespace Philips.Analogy
                 localfolder.Caption = "Open Folder";
                 localfolder.RibbonStyle = RibbonItemStyles.All;
                 group.ItemLinks.Add(localfolder);
-                localfolder.ImageOptions.Image = offlineAnalogy.OptionalOpenFolderImage ?? Resources.Open2_32x32;
+                localfolder.ImageOptions.Image = Resources.Open2_32x32;
                 localfolder.ItemClick += (sender, e) => { OpenOffline(title, offlineAnalogy.InitialFolderFullPath); };
             }
 
@@ -857,8 +857,8 @@ namespace Philips.Analogy
                 BarButtonItem openfiles = new BarButtonItem();
                 openfiles.Caption = "Open Files";
                 group.ItemLinks.Add(openfiles);
-                openfiles.ImageOptions.Image = offlineAnalogy.OptionalOpenFilesImage ?? Resources.Article_16x16;
-                openfiles.ImageOptions.LargeImage = offlineAnalogy.OptionalOpenFilesImage ?? Resources.Article_32x32;
+                openfiles.ImageOptions.Image = Resources.Article_16x16;
+                openfiles.ImageOptions.LargeImage = Resources.Article_32x32;
                 openfiles.RibbonStyle = RibbonItemStyles.All;
                 openfiles.ItemClick += (sender, e) =>
                 {
@@ -936,7 +936,7 @@ namespace Philips.Analogy
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            realTimeBtn.ImageOptions.Image = realTime.OptionalDisconnectedImage ?? Resources.Database_off;
+            realTimeBtn.ImageOptions.Image =  Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs";
 
@@ -956,7 +956,7 @@ namespace Philips.Analogy
                 if (canStartReceiving) //connected
                 {
                     online++;
-                    realTimeBtn.ImageOptions.Image = realTime.OptionalConnectedImage ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.Image = Resources.Database_on;
                     var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -971,7 +971,7 @@ namespace Philips.Analogy
                             $"Source {title} Disconnected. Reason: {e.DisconnectedReason}",
                             AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                        realTimeBtn.ImageOptions.Image = realTime.OptionalDisconnectedImage ?? Resources.Database_off;
+                        realTimeBtn.ImageOptions.Image = Resources.Database_off;
                     }
 
                     XtraTabPage page = new XtraTabPage();

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Philips.Analogy.Interfaces
+namespace Philips.Analogy.Interfaces.Factories
 {
-    public interface IAnalogyCustomAction
+    public interface IAnalogyCustomActionsFactory
     {
-        Action Action { get; }
-        Guid ID { get; }
         string Title { get; }
+        IEnumerable<IAnalogyCustomAction> Items { get; }
     }
 }

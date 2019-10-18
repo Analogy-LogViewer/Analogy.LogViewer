@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Analogy.Implementation.Example</RootNamespace>
     <AssemblyName>Analogy.Implementation.Example</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,9 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
-      <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
-      <Name>Analogy.Interfaces</Name>
+    <ProjectReference Include="..\Analogy.Interfaces.Standard\Analogy.Interfaces.Standard.csproj">
+      <Project>{3433eb41-be17-44c0-94a1-19a922027037}</Project>
+      <Name>Analogy.Interfaces.Standard</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

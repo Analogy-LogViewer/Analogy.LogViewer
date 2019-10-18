@@ -11,11 +11,7 @@ namespace Analogy.Implementation.Example
         public Guid ID => new Guid("6642B160-F992-4120-B688-B02DE2E83256");
 
         public bool AutoStartAtLaunch => true;
-
-        public System.Drawing.Image OptionalDisconnectedImage => null;//throw new NotImplementedException();
-
-        public System.Drawing.Image OptionalConnectedImage => null;//throw new NotImplementedException();
-
+        public bool IsConnected => true;
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         public event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;

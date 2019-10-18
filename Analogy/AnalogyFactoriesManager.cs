@@ -73,16 +73,7 @@ namespace Philips.Analogy
                 yield return (factory.Title, (title, items));
             }
         }
-        public IEnumerable<(string Title, (string Title, IEnumerable<IAnalogyUserControl> Items) UserControls)> GetUserControls()
-        {
-            foreach (var factory in Factories)
-            {
-                var title = factory.UserControls != null ? factory.UserControls.Title : "None";
-                var items = factory.UserControls?.Items ?? new List<IAnalogyUserControl>();
-                yield return (factory.Title, (title, items));
-            }
-        }
-
+   
         public List<IAnalogyFactory> GetFactories() => Factories.ToList();
 
         public IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSources(string[] fileNames)
