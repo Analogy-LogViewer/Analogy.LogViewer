@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Analogy.LogViewer.Interfaces</id>
+    <version>2.0.2</version>
+    <title>Analogy Log Viewer - Interfaces</title>
+    <authors>Lior Banai</authors>
+    <owners>Lior Banai</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/philips-software/logviewer/</projectUrl>
+    <icon>icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Analogy Log Viewer (Interfaces)</description>
+    <releaseNotes>Refactoring of Interfaces. See github page</releaseNotes>
+    <copyright>Copyright 2019 Lior Banai</copyright>
+    <tags></tags>
+		<dependencies>
+    <group targetFramework="net471">    
+    </group>
+</dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Analogy.Interfaces.dll" target="lib\net471\Analogy.Interfaces.dll" />
+    <file src="bin\Release\Analogy.Interfaces.xml" target="lib\net471\Analogy.Interfaces.xml" />
+	<file src="icon.png" target="" />
+</files>
+</package>

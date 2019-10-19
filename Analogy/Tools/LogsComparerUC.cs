@@ -4,16 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy.Tools
+namespace Analogy.Tools
 {
     public partial class LogsComparerUC : DevExpress.XtraEditors.XtraUserControl
     {
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private FileComparerProcessor LeftFile;
         private FileComparerProcessor RightFile;
-        private IAnalogyOfflineDataSource OfflineAnalogy { get; set; }
+        private IAnalogyOfflineDataProvider OfflineAnalogy { get; set; }
         public LogsComparerUC()
         {
             InitializeComponent();
@@ -106,14 +106,14 @@ namespace Philips.Analogy.Tools
         private async void sBtnLeft_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = OfflineAnalogy.FileOpenDialogFilters;              
+            openFileDialog1.Filter = OfflineAnalogy.FileOpenDialogFilters;
             openFileDialog1.Title = @"Open Files";
             openFileDialog1.Multiselect = false;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 LeftFile = new FileComparerProcessor(openFileDialog1.FileName);
                 FileProcessor fp = new FileProcessor(LeftFile);
-                await fp.Process(OfflineAnalogy,openFileDialog1.FileName, cancellationTokenSource.Token);
+                await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }
         }
@@ -127,21 +127,21 @@ namespace Philips.Analogy.Tools
             {
                 RightFile = new FileComparerProcessor(openFileDialog1.FileName);
                 FileProcessor fp = new FileProcessor(RightFile);
-                await fp.Process(OfflineAnalogy,openFileDialog1.FileName, cancellationTokenSource.Token);
+                await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }
         }
 
         private void CompareIfBothSideAreLoaded()
         {
-            if (LeftFile==null | RightFile==null) return;
+            if (LeftFile == null | RightFile == null) return;
             if (LeftFile.IsLoaded && RightFile.IsLoaded)
             {
                 Compare();
             }
         }
 
-        public void SetDataSource(IAnalogyOfflineDataSource offlineAnalogy)
+        public void SetDataSource(IAnalogyOfflineDataProvider offlineAnalogy)
         {
             OfflineAnalogy = offlineAnalogy;
         }

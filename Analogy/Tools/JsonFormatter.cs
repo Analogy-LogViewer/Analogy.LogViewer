@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Philips.Analogy.Interfaces;
 using System;
 using System.IO;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy.Tools
+namespace Analogy.Tools
 {
     internal class JsonFormatter
     {

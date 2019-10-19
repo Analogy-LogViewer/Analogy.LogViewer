@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy.Tools
+﻿namespace Analogy.Tools
 {
     partial class LogsComparerUC
     {

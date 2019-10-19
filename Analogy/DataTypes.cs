@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
 
@@ -18,7 +18,7 @@ namespace Philips.Analogy
         public string Path { get; set; }
         public DataSourceType Type { get; set; }
         public string DisplayName { get; set; }
-        public DataSource(string hostNameOrIp, string path,string displayName,DataSourceType type)
+        public DataSource(string hostNameOrIp, string path, string displayName, DataSourceType type)
         {
             HostNameOrIP = hostNameOrIp ?? throw new ArgumentNullException(nameof(hostNameOrIp));
             Path = path ?? throw new ArgumentNullException(nameof(path));

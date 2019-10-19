@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class ProcessNameAndID : XtraForm
     {
@@ -12,12 +12,12 @@ namespace Philips.Analogy
         public ProcessNameAndID()
         {
             InitializeComponent();
-            
+
         }
 
         private void ProcessNameAndID_Load(object sender, EventArgs e)
         {
-            processes = Process.GetProcesses().Select(p=> new ProcessName(p.ProcessName,p.Id)).OrderByDescending(p => p.ID);
+            processes = Process.GetProcesses().Select(p => new ProcessName(p.ProcessName, p.Id)).OrderByDescending(p => p.ID);
             gridControl1.DataSource = processes;
         }
 

@@ -1,26 +1,27 @@
-﻿using Philips.Analogy.Interfaces.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Philips.Analogy.DataSources;
+using Analogy.DataSources;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class AnalogyFactoriesManager
     {
         private static Lazy<AnalogyFactoriesManager>
             _instance = new Lazy<AnalogyFactoriesManager>(() => new AnalogyFactoriesManager());
         public static AnalogyFactoriesManager AnalogyFactories { get; } = _instance.Value;
-        public List<(IAnalogyFactories Factory, Assembly Assembly)> Assemblies { get; private set; }
+        public List<(IAnalogyFactory Factory, Assembly Assembly)> Assemblies { get; private set; }
 
-        private List<IAnalogyFactories> Factories { get; }
+        private List<IAnalogyFactory> Factories { get; }
         public AnalogyFactoriesManager()
         {
-            Factories = new List<IAnalogyFactories>();
-            Assemblies = new List<(IAnalogyFactories Factory, Assembly Assembly)>();
-            Assemblies.Add((new AnalogyBuiltInFactory(),Assembly.GetExecutingAssembly()));
+            Factories = new List<IAnalogyFactory>();
+            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>();
+            Assemblies.Add((new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()));
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)
@@ -33,11 +34,17 @@ namespace Philips.Analogy
                     {
                         try
                         {
-                            if (aType.GetInterface(nameof(IAnalogyFactories)) != null)
+                            if (aType.GetInterface(nameof(IAnalogyFactory)) != null)
                             {
-                                IAnalogyFactories factory = Activator.CreateInstance(aType) as IAnalogyFactories;
+                                IAnalogyFactory factory = Activator.CreateInstance(aType) as IAnalogyFactory;
+                                if (factory == null) continue;
                                 Factories.Add(factory);
-                                Assemblies.Add((factory,assembly));
+                                foreach (var provider in factory.DataProviders.Items)
+                                {
+                                    provider.InitDataProvider();
+                                }
+                                Assemblies.Add((factory, assembly));
+
                             }
                         }
                         catch (Exception)
@@ -54,12 +61,12 @@ namespace Philips.Analogy
             }
         }
 
-        public IEnumerable<(string Title, (string Title, IEnumerable<IAnalogyDataSource> Items) DataSources)> GetDataSource()
+        public IEnumerable<(string Title, (string Title, IEnumerable<IAnalogyDataProvider> Items) DataSources)> GetDataSource()
         {
             foreach (var factory in Factories)
             {
-                var title = factory.DataSources != null ? factory.DataSources.Title : "None";
-                var items = factory.DataSources?.Items ?? new List<IAnalogyDataSource>();
+                var title = factory.DataProviders != null ? factory.DataProviders.Title : "None";
+                var items = factory.DataProviders?.Items ?? new List<IAnalogyDataProvider>();
                 yield return (factory.Title, (title, items));
             }
         }
@@ -72,26 +79,17 @@ namespace Philips.Analogy
                 yield return (factory.Title, (title, items));
             }
         }
-        public IEnumerable<(string Title, (string Title, IEnumerable<IAnalogyUserControl> Items) UserControls)> GetUserControls()
+
+        public List<IAnalogyFactory> GetFactories() => Factories.ToList();
+
+        public IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSources(string[] fileNames)
         {
             foreach (var factory in Factories)
             {
-                var title = factory.UserControls != null ? factory.UserControls.Title : "None";
-                var items = factory.UserControls?.Items ?? new List<IAnalogyUserControl>();
-                yield return (factory.Title, (title, items));
-            }
-        }
-
-        public List<IAnalogyFactories> GetFactories() => Factories.ToList();
-
-        public IEnumerable<IAnalogyOfflineDataSource> GetSupportedOfflineDataSources(string[] fileNames)
-        {
-            foreach (var factory in Factories)
-            {
-                var supported = factory.DataSources.Items.Where(i => i is IAnalogyOfflineDataSource offline && offline.CanOpenAllFiles(fileNames));
-                foreach (IAnalogyDataSource dataSource in supported)
+                var supported = factory.DataProviders.Items.Where(i => i is IAnalogyOfflineDataProvider offline && offline.CanOpenAllFiles(fileNames));
+                foreach (IAnalogyDataProvider dataSource in supported)
                 {
-                    yield return dataSource as IAnalogyOfflineDataSource;
+                    yield return dataSource as IAnalogyOfflineDataProvider;
                 }
             }
         }
@@ -99,17 +97,17 @@ namespace Philips.Analogy
         {
             foreach (var factory in Factories)
             {
-                IEnumerable<IAnalogyDataSource> supported = factory.DataSources.Items.Where(i => i is IAnalogyRealTimeDataSource);
+                IEnumerable<IAnalogyDataProvider> supported = factory.DataProviders.Items.Where(i => i is IAnalogyRealTimeDataProvider);
                 foreach (var analogyDataSource in supported)
                 {
-                    var dataSource = (IAnalogyRealTimeDataSource) analogyDataSource;
-                    yield return (factory.Title,dataSource.ID);
+                    var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
+                    yield return (factory.Title, dataSource.ID);
                 }
             }
         }
 
-        public Assembly GetAssemblyOfFactory(IAnalogyFactories factory) => Assemblies.Single(f => f.Factory == factory).Assembly;
+        public Assembly GetAssemblyOfFactory(IAnalogyFactory factory) => Assemblies.Single(f => f.Factory == factory).Assembly;
 
-        public IAnalogyFactories Get(Guid id) => Assemblies.Single(a => a.Factory.FactoryID == id).Factory;
+        public IAnalogyFactory Get(Guid id) => Assemblies.Single(a => a.Factory.FactoryID == id).Factory;
     }
 }

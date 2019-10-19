@@ -42,3 +42,17 @@
 /Analogy/.vs/Analogy/v16/.suo
 /nuget.exe
 *.nupkg
+/.vs/Analogy/DesignTimeBuild
+/Analogy.Interfaces.Standard/bin/Debug
+/Analogy.Interfaces.Standard/obj
+/Analogy.Interfaces.Standard/bin/Release/netstandard2.0
+/Analogy.Interfaces/obj
+/Analogy.Interfaces.Net471/bin
+/Analogy.Interfaces.Net471/obj
+/Analogy.Interfaces.Net471/nuget.exe
+/Analogy.Implementation.KafkaProvider/obj
+/Analogy.Implementation.KafkaProvider/bin/Debug/netstandard2.0
+/.vs/Analogy/v16/TestStore/0
+/Analogy.Implementation.KafkaProvider/Properties/PublishProfiles
+/Analogy.Implementation.KafkaProvider/Analogy.Implementation.KafkaProvider.csproj.user
+/packages

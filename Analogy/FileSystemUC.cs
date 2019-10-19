@@ -1,29 +1,29 @@
-﻿using Philips.Analogy.Interfaces.Interfaces;
-using Philips.Analogy.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.Interfaces;
+using Analogy.Types;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class FileSystemUC : UserControl
     {
-        private IAnalogyOfflineDataSource _dataSource;
+        private IAnalogyOfflineDataProvider _dataProvider;
         public event EventHandler<SelectionEventArgs> SelectionChanged;
         public bool ZipFilesOnly { get; set; }
 
-        public IAnalogyOfflineDataSource DataSource
+        public IAnalogyOfflineDataProvider DataProvider
         {
-            get => _dataSource;
+            get => _dataProvider;
             set
             {
-                _dataSource = value;
+                _dataProvider = value;
                 if (value != null)
                 {
-                    tvFolderUC.SetFolder(value.InitialFolderFullPath, _dataSource);
+                    tvFolderUC.SetFolder(value.InitialFolderFullPath, _dataProvider);
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace Philips.Analogy
             lBoxFiles.SelectedIndexChanged -= lBoxFiles_SelectedIndexChanged;
             DirectoryInfo dirInfo = new DirectoryInfo(e.SelectedFolderPath);
             bool recursive = checkEditRecursiveLoad.Checked;
-            List<FileInfo> fileInfos = (ZipFilesOnly ? dirInfo.GetFiles("*.zip").ToList() : DataSource.GetSupportedFiles(dirInfo, recursive)).OrderByDescending(f => f.LastWriteTime).ToList();
+            List<FileInfo> fileInfos = (ZipFilesOnly ? dirInfo.GetFiles("*.zip").ToList() : DataProvider.GetSupportedFiles(dirInfo, recursive)).OrderByDescending(f => f.LastWriteTime).ToList();
             lBoxFiles.DisplayMember = recursive ? "FullName" : "Name";
             lBoxFiles.DataSource = fileInfos;
             lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;

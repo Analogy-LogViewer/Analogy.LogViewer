@@ -1,13 +1,12 @@
 ﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
-   
+
     public partial class UserSettingsForm : XtraForm
     {
         private struct RealTimeCheckItem
@@ -63,7 +62,7 @@ namespace Philips.Analogy
             toggleSwitchIdleMode.IsOn = Settings.IdleMode;
             nudIdleTime.Value = Settings.IdleTimeMinutes;
         }
-        
+
 
         private void tsFilteringExclude_Toggled(object sender, EventArgs e)
         {
@@ -92,7 +91,7 @@ namespace Philips.Analogy
 
             }
 
-            var startup = Settings.AutoStartDataSources;
+            var startup = Settings.AutoStartDataProviders;
             var loaded = AnalogyFactoriesManager.AnalogyFactories.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
@@ -198,14 +197,15 @@ namespace Philips.Analogy
 
         private void NudIdleTime_ValueChanged(object sender, EventArgs e)
         {
-            Settings.IdleTimeMinutes=(int)nudIdleTime.Value;
+            Settings.IdleTimeMinutes = (int)nudIdleTime.Value;
 
         }
 
         private void ChkLstItemRealTimeDataSources_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.AutoStartDataSources =
+            Settings.AutoStartDataProviders =
                 chkLstItemRealTimeDataSources.CheckedItems.Cast<RealTimeCheckItem>().Select(r => r.ID).ToList();
         }
+
     }
 }

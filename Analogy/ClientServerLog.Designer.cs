@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class ClientServerUCLog
     {
@@ -58,7 +58,7 @@ namespace Philips.Analogy
             this.lBoxFiles = new DevExpress.XtraEditors.ListBoxControl();
             this.chkbSelectionMode = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditRecursiveLoad = new DevExpress.XtraEditors.CheckEdit();
-            this.ucLogs1 = new Philips.Analogy.UCLogs();
+            this.ucLogs1 = new Analogy.UCLogs();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tsPrimary = new System.Windows.Forms.ToolStrip();

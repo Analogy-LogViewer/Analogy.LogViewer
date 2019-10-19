@@ -22,13 +22,15 @@ Main interaction UI:
 ![Main screen](Assets/AnalogyMainUI.jpg)
 
 # Dependencies & Build
-- .Net Framework 4.7.1:
-The projects targets .Net Framework 4.7.1. The supported version of Visual studio for this framework is Visual studio 2017 (or above).
+- Main Application UI is complied to .Net Framework 4.7.2.
+The projects targets .Net Framework 4.7.2. The supported version of Visual studio for this framework is Visual studio 2017 (or above).
 After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.Implementation.*.dll
+- Analogy Interfaces assembly is complied to .Net Standard 2.0.
+
 Detailed Documentation will be added to the Wiki page.
 
 - DevExpress User Controls:
-in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required.
+in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
 
 # Usage
 

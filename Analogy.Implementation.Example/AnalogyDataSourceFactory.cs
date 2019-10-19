@@ -1,12 +1,13 @@
-﻿using Philips.Analogy.Interfaces.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 
 namespace Analogy.Implementation.Example
 {
-    public class AnalogyDataSourceFactory : IAnalogyDataSourceFactory
+    public class AnalogyDataProviderFactory : IAnalogyDataProvidersFactory
     {
         public string Title => "Analogy Online example";
 
-        public IEnumerable<IAnalogyDataSource> Items => new List<IAnalogyDataSource> { new AnalogyOnlineExampleDataSource() };
+        public IEnumerable<IAnalogyDataProvider> Items => new List<IAnalogyDataProvider> { new AnalogyOnlineExampleDataProvider() };
     }
 }

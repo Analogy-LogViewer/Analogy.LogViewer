@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class ExtensionsUC
     {
@@ -42,7 +42,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Philips.Analogy.Properties.Resources.logIcon;
+            this.pictureBox1.Image = global::Analogy.Properties.Resources.logIcon;
             this.pictureBox1.Location = new System.Drawing.Point(11, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
@@ -53,7 +53,7 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Location = new System.Drawing.Point(152, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -64,7 +64,7 @@
             // 
             // chklItems
             // 
-            this.chklItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chklItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.chklItems.CheckOnClick = true;
             this.chklItems.FormattingEnabled = true;
@@ -77,7 +77,7 @@
             // 
             // rtxtbMessages
             // 
-            this.rtxtbMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtbMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtbMessages.Location = new System.Drawing.Point(11, 368);
             this.rtxtbMessages.Name = "rtxtbMessages";
@@ -87,7 +87,7 @@
             // 
             // lblAuthor
             // 
-            this.lblAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAuthor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblAuthor.Location = new System.Drawing.Point(395, 326);
@@ -98,8 +98,8 @@
             // 
             // lblDescription
             // 
-            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDescription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDescription.Location = new System.Drawing.Point(395, 140);
@@ -110,7 +110,7 @@
             // 
             // lblExtension
             // 
-            this.lblExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExtension.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblExtension.Location = new System.Drawing.Point(395, 105);
@@ -121,7 +121,7 @@
             // 
             // lblType
             // 
-            this.lblType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblType.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblType.Location = new System.Drawing.Point(395, 288);

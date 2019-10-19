@@ -1,11 +1,11 @@
 ﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Types;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Analogy.Types;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class XtraUCDirectoryListing : XtraUserControl
     {

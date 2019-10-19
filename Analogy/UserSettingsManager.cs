@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Philips.Analogy.Properties;
+using Analogy.Properties;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class UserSettingsManager
     {
@@ -36,13 +36,14 @@ namespace Philips.Analogy
         public bool ShowChangeLogAtStartUp { get; set; }
         public float FontSize { get; set; }
         public bool SearchAlsoInSourceAndModule { get; set; }
-        public string InitilaSelectedDataSource { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
+        public string InitialSelectedDataProvider { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
         public bool IdleMode { get; set; }
         public int IdleTimeMinutes { get; set; }
 
         public List<string> EventLogs { get; set; }
 
-        public List<Guid> AutoStartDataSources { get; set; }
+        public List<Guid> AutoStartDataProviders { get; set; }
+        public bool AutoScrollToLastMessage { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -94,7 +95,8 @@ namespace Philips.Analogy
             IdleMode = Settings.Default.IdleMode;
             IdleTimeMinutes = Settings.Default.IdleTimeMinutes;
             EventLogs = Settings.Default.WindowsEventLogs.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            AutoStartDataSources = Settings.Default.AutoStartDataSources.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
+            AutoStartDataProviders = Settings.Default.AutoStartDataProviders.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
+            AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
         }
 
 
@@ -127,7 +129,8 @@ namespace Philips.Analogy
             Settings.Default.IdleMode = IdleMode;
             Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
             Settings.Default.WindowsEventLogs = string.Join(",", EventLogs);
-            Settings.Default.AutoStartDataSources = string.Join(",", AutoStartDataSources);
+            Settings.Default.AutoStartDataProviders = string.Join(",", AutoStartDataProviders);
+            Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             Settings.Default.Save();
 
         }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using DevExpress.XtraCharts.Native;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class ClientServerDataSourceManager
     {

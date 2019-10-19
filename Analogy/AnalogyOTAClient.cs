@@ -1,12 +1,12 @@
 ﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class AnalogyOTAClient : XtraForm
     {
@@ -58,7 +58,7 @@ namespace Philips.Analogy
                 {
                     try
                     {
-                        
+
                         SendLogs(txtbIP.Text);
                         MessageBox.Show(@"Finished", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Philips.Analogy.Types
+namespace Analogy.Types
 {
     public class FolderSelectionEventArgs : EventArgs
     {

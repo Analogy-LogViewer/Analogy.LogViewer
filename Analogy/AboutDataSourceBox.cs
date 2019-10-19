@@ -2,21 +2,21 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using Analogy.Interfaces.Factories;
 using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class AboutDataSourceBox : XtraForm
     {
-        private IAnalogyFactories Factory;
+        private IAnalogyFactory Factory;
         private Assembly FactoryAssemblly;
         public AboutDataSourceBox()
         {
             InitializeComponent();
         }
 
-        public AboutDataSourceBox(IAnalogyFactories factory) : this()
+        public AboutDataSourceBox(IAnalogyFactory factory) : this()
         {
             Factory = factory;
             FactoryAssemblly = AnalogyFactoriesManager.AnalogyFactories.GetAssemblyOfFactory(factory);
@@ -92,7 +92,7 @@ namespace Philips.Analogy
                 return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
         }
-        
+
         private void AboutDataSourceBox_Load(object sender, EventArgs e)
         {
             this.Text = string.Format("About {0}", AssemblyTitle);
@@ -102,7 +102,7 @@ namespace Philips.Analogy
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = $"{AssemblyDescription}{Environment.NewLine}{Factory.About}";
             rtxtChangeLog.Text = string.Join(Environment.NewLine,
-                Factory.ChangeLog.OrderByDescending(c=>c.Date).Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
+                Factory.ChangeLog.OrderByDescending(c => c.Date).Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
             rtxtContributions.Text = string.Join(Environment.NewLine, Factory.Contributors);
         }
     }

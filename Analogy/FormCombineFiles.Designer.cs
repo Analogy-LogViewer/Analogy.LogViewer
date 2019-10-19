@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class FormCombineFiles
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.combineFilesUC1 = new Philips.Analogy.CombineFilesUC();
+            this.combineFilesUC1 = new Analogy.CombineFilesUC();
             this.SuspendLayout();
             // 
             // combineFilesUC1

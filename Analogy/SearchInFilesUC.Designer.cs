@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class SearchInFilesUC
     {
@@ -31,8 +31,8 @@
             this.txtbSearch = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.fileSystemUC1 = new Philips.Analogy.FileSystemUC();
-            this.processFilesUC1 = new Philips.Analogy.FilesOperationsUC();
+            this.fileSystemUC1 = new Analogy.FileSystemUC();
+            this.processFilesUC1 = new Analogy.FilesOperationsUC();
             this.sBtnSearch = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -43,7 +43,7 @@
             // 
             // txtbSearch
             // 
-            this.txtbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbSearch.Location = new System.Drawing.Point(3, 5);
             this.txtbSearch.Name = "txtbSearch";

@@ -2,11 +2,6 @@
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
-using Philips.Analogy.DataSources;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
-using Philips.Analogy.Properties;
-using Philips.Analogy.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,8 +10,13 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataSources;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using Analogy.Properties;
+using Analogy.Tools;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class MainForm : RibbonForm
     {
@@ -24,8 +24,8 @@ namespace Philips.Analogy
         private string onlineTitle = "Online log";
         private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
 
-        private Dictionary<XtraTabPage, IAnalogyRealTimeDataSource> onlineDataSourcesMapping =
-            new Dictionary<XtraTabPage, IAnalogyRealTimeDataSource>();
+        private Dictionary<XtraTabPage, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
+            new Dictionary<XtraTabPage, IAnalogyRealTimeDataProvider>();
 
         private List<Task<bool>> OnlineSources = new List<Task<bool>>();
         private int offline;
@@ -49,6 +49,7 @@ namespace Philips.Analogy
         {
             if (DesignMode) return;
             settings = UserSettingsManager.UserSettings;
+            bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             bbtnCloseCurrentTabPage.ItemClick += (object s, ItemClickEventArgs ea) => { CloseCurrentTabPage(); };
             bbtnCloseAllTabPage.ItemClick += (object s, ItemClickEventArgs ea) =>
             {
@@ -87,7 +88,7 @@ namespace Philips.Analogy
             //todo: fine handler for file
             if (arguments.Length == 2)
             {
-                string[] fileNames = {arguments[1]};
+                string[] fileNames = { arguments[1] };
                 OpenOfflineLogs(fileNames);
 
             }
@@ -105,7 +106,7 @@ namespace Philips.Analogy
             CreateDataSources();
 
             //set Default page:
-            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitilaSelectedDataSource);
+            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitialSelectedDataProvider);
             if (Mapping.ContainsKey(defaultPage))
             {
                 ribbonControlMain.SelectedPage = Mapping[defaultPage];
@@ -119,7 +120,7 @@ namespace Philips.Analogy
 
         private void CreateAnalogyDataSource()
         {
-            IAnalogyFactories analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyBuiltInFactory.AnalogyGuid);
+            IAnalogyFactory analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyBuiltInFactory.AnalogyGuid);
             CreateDataSource(analogy, 0);
         }
 
@@ -131,7 +132,7 @@ namespace Philips.Analogy
             RibbonPageGroup group = new RibbonPageGroup("Windows Event logs Data Sources");
             ribbonPage.Groups.Add(group);
 
-            EventLogDataSource elds = new EventLogDataSource();
+            EventLogDataProvider elds = new EventLogDataProvider();
             BarButtonItem evtxRealTime = new BarButtonItem();
             evtxRealTime.Caption = "Real Time Windows Event Logs";
             evtxRealTime.RibbonStyle = RibbonItemStyles.All;
@@ -181,8 +182,8 @@ namespace Philips.Analogy
                     "Logs", "System.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(systemLog);
@@ -198,8 +199,8 @@ namespace Philips.Analogy
                     "Logs", "Application.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(appLog);
@@ -215,8 +216,8 @@ namespace Philips.Analogy
                     "Logs", "Security.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(secLog);
@@ -227,7 +228,7 @@ namespace Philips.Analogy
             btnFolder.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
             btnFolder.ItemClick += (s, be) =>
             {
-                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataSource());
+                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
                 offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
                     "System32", "Winevt", "Logs");
                 XtraTabPage page = new XtraTabPage();
@@ -245,7 +246,7 @@ namespace Philips.Analogy
 
         private void CreateEventLogsMenu(RibbonPage ribbonPage)
         {
-            EventLogDataSource elds = new EventLogDataSource();
+            EventLogDataProvider elds = new EventLogDataProvider();
             BarButtonItem evtxRealTime = new BarButtonItem();
             evtxRealTime.Caption = "Real Time Windows Event Logs";
             evtxRealTime.ItemClick += (s, be) =>
@@ -287,8 +288,8 @@ namespace Philips.Analogy
                     "Logs", "System.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(systemLog);
@@ -301,8 +302,8 @@ namespace Philips.Analogy
                     "Logs", "Application.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(appLog);
@@ -315,8 +316,8 @@ namespace Philips.Analogy
                     "Logs", "Security.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() {file});
+                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
+                    AddRecentFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(secLog);
@@ -324,7 +325,7 @@ namespace Philips.Analogy
             btnFolder.Caption = $"Local Machine logs - {Environment.MachineName}";
             btnFolder.ItemClick += (s, be) =>
             {
-                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataSource());
+                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
                 offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
                     "System32", "Winevt", "Logs");
                 XtraTabPage page = new XtraTabPage();
@@ -338,11 +339,11 @@ namespace Philips.Analogy
             bsiWindowsEventLogs.AddItem(btnFolder);
         }
 
-        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames, IAnalogyOfflineDataSource dataSource,
+        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames, IAnalogyOfflineDataProvider dataProvider,
             string title = null)
         {
             offline++;
-            UserControl offlineUC = new OfflineUCLogs(dataSource, filenames);
+            UserControl offlineUC = new OfflineUCLogs(dataProvider, filenames);
             XtraTabPage page = new XtraTabPage();
             page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
             page.Tag = ribbonPage;
@@ -368,7 +369,7 @@ namespace Philips.Analogy
             {
                 // Assign the file names to a string array, in 
                 // case the user has selected multiple files.
-                string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 OpenOfflineLogs(files);
             }
         }
@@ -422,17 +423,6 @@ namespace Philips.Analogy
             change.ShowDialog(this);
         }
 
-
-        private async void btnItemRealTime_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //await OpenOnlineLog();
-        }
-
-        private void btnItemLocalLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            // OpenOfflineLogs(new string[0]);
-        }
-
         private void btnItemOTA_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenOTALogs();
@@ -442,15 +432,6 @@ namespace Philips.Analogy
         {
             OpenProcessForm();
         }
-
-        private void btnItemLogConfigurator_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
-
-        private void btnItemSearch_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
-
 
         private void bbiExtensions_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -497,7 +478,7 @@ namespace Philips.Analogy
             //}
         }
 
-        private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataSource offlineAnalogy,
+        private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataProvider offlineAnalogy,
             string title, List<string> files)
         {
 
@@ -510,7 +491,7 @@ namespace Philips.Analogy
                     btn.Caption = file;
                     btn.ItemClick += (s, be) =>
                     {
-                        OpenOfflineLogs(ribbonPage, new[] {be.Item.Caption}, offlineAnalogy, title);
+                        OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
                     };
                     bar.AddItem(btn);
                 }
@@ -519,6 +500,7 @@ namespace Philips.Analogy
 
         private void AnalogyMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            xtcLogs.TabPages.Clear(true);
             RestoreDefaultLogLevel();
         }
 
@@ -634,31 +616,6 @@ namespace Philips.Analogy
             //}
         }
 
-        private void bBtnCTOnline_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //todo:
-            //online++;
-            //var onlineUC = new OnlineUCLogs();
-            //XtraTabPage page = new XtraTabPage();
-            //page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            //page.Controls.Add(onlineUC);
-            //onlineUC.Dock = DockStyle.Fill;
-            //page.Text = $"Online CT log #{online}";
-            //xtcLogs.TabPages.Add(page);
-            //CTOnlineLogReader reader = new CTOnlineLogReader();
-            //reader.Handler += (source, arg) => onlineUC.AppendMessage(arg.Message, Environment.MachineName);
-            //xtcLogs.SelectedTabPage = page;
-            //Application.ApplicationExit += (controlSender, arg) => reader.Dispose();
-            //xtcLogs.ControlRemoved += (controlSender, arg) =>
-            //{
-            //    if (arg.Control == page)
-            //    {
-            //        onlineUC.Dispose();
-            //        reader.Dispose();
-            //    }
-            //};
-
-        }
 
         private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -769,21 +726,21 @@ namespace Philips.Analogy
 
         private void CreateDataSources()
         {
-            foreach (IAnalogyFactories factory in AnalogyFactoriesManager.AnalogyFactories.GetFactories())
+            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.AnalogyFactories.GetFactories())
             {
                 CreateDataSource(factory, 1);
             }
 
         }
 
-        private void CreateDataSource(IAnalogyFactories factory, int position)
+        private void CreateDataSource(IAnalogyFactory factory, int position)
         {
             if (factory.Title == null) return;
 
             RibbonPage ribbonPage = new RibbonPage(factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(factory.FactoryID, ribbonPage);
-            var dataSourceFactory = factory.DataSources;
+            var dataSourceFactory = factory.DataProviders;
             if (dataSourceFactory?.Items != null && dataSourceFactory.Items.Any() &&
                 !string.IsNullOrEmpty(dataSourceFactory.Title))
             {
@@ -791,13 +748,13 @@ namespace Philips.Analogy
                 ribbonPage.Groups.Add(groupDataSource);
                 RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup("Offline File Tools");
                 ribbonPage.Groups.Add(groupOfflineFileTools);
-                foreach (IAnalogyDataSource dataSource in dataSourceFactory.Items)
+                foreach (IAnalogyDataProvider dataSource in dataSourceFactory.Items)
                 {
-                    if (dataSource is IAnalogyRealTimeDataSource realTime)
+                    if (dataSource is IAnalogyRealTimeDataProvider realTime)
                     {
                         AddRealTimeDataSource(ribbonPage, realTime, dataSourceFactory.Title, groupDataSource);
                     }
-                    else if (dataSource is IAnalogyOfflineDataSource offlineAnalogy)
+                    else if (dataSource is IAnalogyOfflineDataProvider offlineAnalogy)
                     {
                         AddOfflineDataSource(ribbonPage, offlineAnalogy, dataSourceFactory.Title, groupDataSource,
                             groupOfflineFileTools);
@@ -825,8 +782,8 @@ namespace Philips.Analogy
                     actionBtn.Caption = action.Title;
                     actionBtn.RibbonStyle = RibbonItemStyles.All;
                     groupActionSource.ItemLinks.Add(actionBtn);
-                    actionBtn.ImageOptions.Image = action.Image ?? Resources.PageSetup_32x32;
-                    actionBtn.ImageOptions.LargeImage = action.Image ?? Resources.PageSetup_32x32;
+                    actionBtn.ImageOptions.Image = Resources.PageSetup_32x32;
+                    actionBtn.ImageOptions.LargeImage = Resources.PageSetup_32x32;
                     actionBtn.ItemClick += (sender, e) => { action.Action(); };
                 }
             }
@@ -843,7 +800,7 @@ namespace Philips.Analogy
             ribbonPage.Groups.Add(groupInfoSource);
         }
 
-        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataSource offlineAnalogy, string title,
+        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy, string title,
             RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
@@ -860,7 +817,7 @@ namespace Philips.Analogy
                 xtcLogs.SelectedTabPage = page;
             }
 
-            void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataSource analogy)
+            void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
                 offline++;
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
@@ -882,7 +839,7 @@ namespace Philips.Analogy
                 localfolder.Caption = "Open Folder";
                 localfolder.RibbonStyle = RibbonItemStyles.All;
                 group.ItemLinks.Add(localfolder);
-                localfolder.ImageOptions.Image = offlineAnalogy.OptionalOpenFolderImage ?? Resources.Open2_32x32;
+                localfolder.ImageOptions.Image = Resources.Open2_32x32;
                 localfolder.ItemClick += (sender, e) => { OpenOffline(title, offlineAnalogy.InitialFolderFullPath); };
             }
 
@@ -899,8 +856,8 @@ namespace Philips.Analogy
                 BarButtonItem openfiles = new BarButtonItem();
                 openfiles.Caption = "Open Files";
                 group.ItemLinks.Add(openfiles);
-                openfiles.ImageOptions.Image = offlineAnalogy.OptionalOpenFilesImage ?? Resources.Article_16x16;
-                openfiles.ImageOptions.LargeImage = offlineAnalogy.OptionalOpenFilesImage ?? Resources.Article_32x32;
+                openfiles.ImageOptions.Image = Resources.Article_16x16;
+                openfiles.ImageOptions.LargeImage = Resources.Article_32x32;
                 openfiles.RibbonStyle = RibbonItemStyles.All;
                 openfiles.ItemClick += (sender, e) =>
                 {
@@ -973,12 +930,12 @@ namespace Philips.Analogy
             };
         }
 
-        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataSource realTime, string title,
+        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataProvider realTime, string title,
             RibbonPageGroup group)
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            realTimeBtn.ImageOptions.Image = realTime.OptionalDisconnectedImage ?? Resources.Database_off;
+            realTimeBtn.ImageOptions.Image = Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs";
 
@@ -998,7 +955,7 @@ namespace Philips.Analogy
                 if (canStartReceiving) //connected
                 {
                     online++;
-                    realTimeBtn.ImageOptions.Image = realTime.OptionalConnectedImage ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.Image = Resources.Database_on;
                     var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1013,7 +970,7 @@ namespace Philips.Analogy
                             $"Source {title} Disconnected. Reason: {e.DisconnectedReason}",
                             AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                        realTimeBtn.ImageOptions.Image = realTime.OptionalDisconnectedImage ?? Resources.Database_off;
+                        realTimeBtn.ImageOptions.Image = Resources.Database_off;
                     }
 
                     XtraTabPage page = new XtraTabPage();
@@ -1065,7 +1022,7 @@ namespace Philips.Analogy
             }
 
             realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
-            if (settings.AutoStartDataSources.Contains(realTime.ID))
+            if (settings.AutoStartDataProviders.Contains(realTime.ID))
             {
                 async Task<bool> AutoOpenRealTime()
                 {
@@ -1087,7 +1044,7 @@ namespace Philips.Analogy
         {
             if (e.Page?.Tag == null)
                 return;
-            ribbonControlMain.SelectedPage = (RibbonPage) e.Page.Tag;
+            ribbonControlMain.SelectedPage = (RibbonPage)e.Page.Tag;
         }
 
         private async void TmrAutoConnect_Tick(object sender, EventArgs e)
@@ -1128,7 +1085,7 @@ namespace Philips.Analogy
         private void TmrStatusUpdates_Tick(object sender, EventArgs e)
         {
             tmrStatusUpdates.Stop();
-            bsiMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [mb] used";
+            bsiMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [MB]";
             if (settings.IdleMode)
             {
                 bsiIdleMessage.Caption =
@@ -1168,6 +1125,12 @@ namespace Philips.Analogy
 
 
             }
+        }
+
+        private void bbiFileCaching_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            settings.EnableFileCaching = !settings.EnableFileCaching;
+            bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
         }
     }
 }

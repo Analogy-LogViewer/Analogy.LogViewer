@@ -1,9 +1,9 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class BookmarkLog : UserControl
@@ -21,7 +21,7 @@ namespace Philips.Analogy
         {
             if (DesignMode) return;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            ucLogs1.btsAutoScrollToBottom.Visibility= DevExpress.XtraBars.BarItemVisibility.Never;
+            ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.SetBookmarkMode();
             var messages = await BookmarkPersistManager.Instance.GetMessages();
             AppendMessages(messages, "Analogy bookmarks");

@@ -1,8 +1,8 @@
-﻿using Philips.Analogy.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class LogStatistics
     {

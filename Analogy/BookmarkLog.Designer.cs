@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class BookmarkLog
     {
@@ -39,7 +39,7 @@ namespace Philips.Analogy
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookmarkLog));
             this.spltMain = new System.Windows.Forms.SplitContainer();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.ucLogs1 = new Philips.Analogy.UCLogs();
+            this.ucLogs1 = new Analogy.UCLogs();
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tsPrimary = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();

@@ -1,15 +1,14 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 using Message = System.Windows.Forms.Message;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class OnlineUCLogs : UserControl
@@ -18,7 +17,7 @@ namespace Philips.Analogy
         private bool _sendLogs;
         private static int clearHistoryCounter;
         public bool Enable { get; set; } = true;
-        public OnlineUCLogs(IAnalogyRealTimeDataSource realTime)
+        public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime)
         {
             InitializeComponent();
             ucLogs1.OnlineMode = true;
@@ -36,13 +35,17 @@ namespace Philips.Analogy
             spltMain.Panel1Collapsed = true;
         }
 
-        private void UcLogs1_OnHistoryCleared(object sender, Interfaces.AnalogyClearedHistoryEventArgs e)
+        private void UcLogs1_OnHistoryCleared(object sender, AnalogyClearedHistoryEventArgs e)
         {
             Interlocked.Increment(ref clearHistoryCounter);
+            listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
             spltMain.Panel1Collapsed = !showHistory;
             string entry = $"History #{clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
             FileProcessingManager.Instance.DoneProcessingFile(e.ClearedMessages, entry);
             listBoxClearHistory.Items.Add(entry);
+            listBoxClearHistory.SelectedItem = null;
+            listBoxClearHistory.SelectedIndex = -1;
+            listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
         }
 
         private void AnalogyUCLogs_DragEnter(object sender, DragEventArgs e) =>
@@ -54,27 +57,25 @@ namespace Philips.Analogy
 
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetAuditColumnVisibility(bool value)
-        {
-            ucLogs1.SetAuditColumnVisibility(value);
-        }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetCategoryColumnVisibility(bool value)
-        {
-            ucLogs1.SetAuditColumnVisibility(value);
-        }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
             if (Enable && !IsDisposed)
-                ucLogs1.AppendMessage(message, dataSource);
+            {
+                string interned = string.Intern(dataSource);
+                ucLogs1.AppendMessage(message, interned);
+            }
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)
-                ucLogs1.AppendMessages(messages, dataSource);
+            {
+                string interned = string.Intern(dataSource);
+                ucLogs1.AppendMessages(messages, interned);
+            }
         }
 
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
@@ -82,24 +83,24 @@ namespace Philips.Analogy
             await ucLogs1.LoadFilesAsync(fileNames, clearLogBeforeLoading);
         }
 
-        private void tsbtnHide_Click(object sender, EventArgs e)
+        private void bbtnClear_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            listBoxClearHistory.Items.Clear();
+        }
+
+        private void bbtnHide_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (IsDisposed) return;
             showHistory = false;
             spltMain.Panel1Collapsed = true;
         }
 
-        private void listBoxClearHistory_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBoxClearHistoryIndexChanged(object sender, EventArgs e)
         {
             if (listBoxClearHistory.SelectedItem == null) return;
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(messages, Environment.MachineName);
-            grid.ShowDialog(this);
-        }
-
-        private void tsBtnClearHistory_Click(object sender, EventArgs e)
-        {
-            listBoxClearHistory.Items.Clear();
+            grid.Show(this);
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class UCLogs
     {
@@ -76,42 +76,11 @@ namespace Philips.Analogy
             this.gridColumnCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnModule = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnAudit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnObject = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtbHighlight = new System.Windows.Forms.TextBox();
-            this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
-            this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
-            this.sBtnPageNext = new DevExpress.XtraEditors.SimpleButton();
-            this.sBtnLastPage = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnPagePrevious = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnPageFirst = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUp = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDown = new DevExpress.XtraEditors.SimpleButton();
-            this.chkbHighlight = new System.Windows.Forms.CheckBox();
-            this.pnlTopFiltering = new System.Windows.Forms.Panel();
-            this.spltFilteringBoth = new System.Windows.Forms.SplitContainer();
-            this.pnlFilteringLeft = new System.Windows.Forms.Panel();
-            this.sBtnMostCommon = new DevExpress.XtraEditors.SimpleButton();
-            this.chkbInclude = new System.Windows.Forms.CheckBox();
-            this.spltExcludes = new System.Windows.Forms.SplitContainer();
-            this.txtbExcludeSource = new System.Windows.Forms.TextBox();
-            this.spltFilteringTop = new System.Windows.Forms.SplitContainer();
-            this.pboxInfoExclude = new System.Windows.Forms.PictureBox();
-            this.chkbExcludeSourceAndModule = new System.Windows.Forms.CheckBox();
-            this.txtbExcludeModule = new System.Windows.Forms.TextBox();
-            this.lblExcludeModule = new System.Windows.Forms.Label();
-            this.txtbExclude = new System.Windows.Forms.TextBox();
-            this.chkExclude = new System.Windows.Forms.CheckBox();
-            this.pboxInfo = new System.Windows.Forms.PictureBox();
-            this.txtbInclude = new System.Windows.Forms.TextBox();
-            this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.tcBottom = new DevExpress.XtraTab.XtraTabControl();
-            this.xtpMessageInfo = new DevExpress.XtraTab.XtraTabPage();
-            this.rtxtContent = new System.Windows.Forms.RichTextBox();
-            this.bdcMessageBottom = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barTopFiltering = new DevExpress.XtraBars.Bar();
             this.bBtnClearLog = new DevExpress.XtraBars.BarButtonItem();
@@ -137,6 +106,7 @@ namespace Philips.Analogy
             this.BbarMainMenu = new DevExpress.XtraBars.Bar();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
+            this.bdcMessageBottom = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barBookmark = new DevExpress.XtraBars.Bar();
             this.bBtnopyBookmarked = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnCopyAllBookmarks = new DevExpress.XtraBars.BarButtonItem();
@@ -153,6 +123,34 @@ namespace Philips.Analogy
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnButtomExpand = new DevExpress.XtraBars.BarButtonItem();
             this.btSwitchExpandButtomMessage = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
+            this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
+            this.sBtnPageNext = new DevExpress.XtraEditors.SimpleButton();
+            this.sBtnLastPage = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnPagePrevious = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnPageFirst = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUp = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDown = new DevExpress.XtraEditors.SimpleButton();
+            this.chkbHighlight = new System.Windows.Forms.CheckBox();
+            this.pnlTopFiltering = new System.Windows.Forms.Panel();
+            this.spltFilteringBoth = new System.Windows.Forms.SplitContainer();
+            this.spltCSources = new System.Windows.Forms.SplitContainer();
+            this.pnlFilteringLeft = new System.Windows.Forms.Panel();
+            this.txtbExcludeModule = new DevExpress.XtraEditors.TextEdit();
+            this.txtbExcludeSource = new DevExpress.XtraEditors.TextEdit();
+            this.chkbExcludeModules = new System.Windows.Forms.CheckBox();
+            this.txtbExclude = new DevExpress.XtraEditors.TextEdit();
+            this.pboxInfoExclude = new System.Windows.Forms.PictureBox();
+            this.txtbInclude = new DevExpress.XtraEditors.TextEdit();
+            this.chkbExcludeSources = new System.Windows.Forms.CheckBox();
+            this.sBtnMostCommon = new DevExpress.XtraEditors.SimpleButton();
+            this.chkbInclude = new System.Windows.Forms.CheckBox();
+            this.chkExclude = new System.Windows.Forms.CheckBox();
+            this.pboxInfo = new System.Windows.Forms.PictureBox();
+            this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.tcBottom = new DevExpress.XtraTab.XtraTabControl();
+            this.xtpMessageInfo = new DevExpress.XtraTab.XtraTabPage();
+            this.rtxtContent = new DevExpress.XtraEditors.MemoEdit();
             this.xtpBookmarks = new DevExpress.XtraTab.XtraTabPage();
             this.gridControlBookmarkedMessages = new DevExpress.XtraGrid.GridControl();
             this.gridViewBookmarkedMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -179,11 +177,11 @@ namespace Philips.Analogy
             this.sBtnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.lblTotalMessages = new DevExpress.XtraEditors.LabelControl();
             this.xtCounts = new DevExpress.XtraTab.XtraTabPage();
+            this.nudGroupBychars = new DevExpress.XtraEditors.SpinEdit();
+            this.txtbGroupByCharsLimit = new DevExpress.XtraEditors.TextEdit();
             this.sBtnGroup = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnLength = new DevExpress.XtraEditors.SimpleButton();
-            this.pbGrouping = new System.Windows.Forms.PictureBox();
             this.lblGroupByCharsLimit = new System.Windows.Forms.Label();
-            this.txtbGroupByCharsLimit = new System.Windows.Forms.TextBox();
             this.spltGroupByChars = new System.Windows.Forms.SplitContainer();
             this.gCtrlGrouping = new DevExpress.XtraGrid.GridControl();
             this.gridViewGrouping = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -202,7 +200,6 @@ namespace Philips.Analogy
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblGroupByChars = new System.Windows.Forms.Label();
-            this.nudGroupBychars = new System.Windows.Forms.NumericUpDown();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.cmsBookmarked = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCalcDiffBookmark = new System.Windows.Forms.ToolStripMenuItem();
@@ -226,26 +223,28 @@ namespace Philips.Analogy
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.pnlButtonsHighlight.SuspendLayout();
             this.pnlTopFiltering.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltFilteringBoth)).BeginInit();
             this.spltFilteringBoth.Panel1.SuspendLayout();
             this.spltFilteringBoth.Panel2.SuspendLayout();
             this.spltFilteringBoth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).BeginInit();
+            this.spltCSources.SuspendLayout();
             this.pnlFilteringLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spltExcludes)).BeginInit();
-            this.spltExcludes.Panel1.SuspendLayout();
-            this.spltExcludes.Panel2.SuspendLayout();
-            this.spltExcludes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spltFilteringTop)).BeginInit();
-            this.spltFilteringTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeModule.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeSource.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfoExclude)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).BeginInit();
             this.tcBottom.SuspendLayout();
             this.xtpMessageInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rtxtContent.Properties)).BeginInit();
             this.xtpBookmarks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).BeginInit();
@@ -256,7 +255,8 @@ namespace Philips.Analogy
             this.splitContainerMain.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.xtCounts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGrouping)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).BeginInit();
             this.spltGroupByChars.Panel1.SuspendLayout();
             this.spltGroupByChars.Panel2.SuspendLayout();
@@ -265,7 +265,6 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMessageGrouping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.cmsBookmarked.SuspendLayout();
             this.SuspendLayout();
@@ -289,11 +288,11 @@ namespace Philips.Analogy
             this.gridControl.ContextMenuStrip = this.cmsMessageOperation;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl.Location = new System.Drawing.Point(0, 92);
+            this.gridControl.Location = new System.Drawing.Point(0, 124);
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(2124, 309);
+            this.gridControl.Size = new System.Drawing.Size(2124, 277);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -331,7 +330,7 @@ namespace Philips.Analogy
             // 
             // tsmiClearLog
             // 
-            this.tsmiClearLog.Image = global::Philips.Analogy.Properties.Resources.Delete_16x16;
+            this.tsmiClearLog.Image = global::Analogy.Properties.Resources.Delete_16x16;
             this.tsmiClearLog.Name = "tsmiClearLog";
             this.tsmiClearLog.Size = new System.Drawing.Size(415, 26);
             this.tsmiClearLog.Text = "Clear Log";
@@ -339,7 +338,7 @@ namespace Philips.Analogy
             // 
             // tsmiREmoveAllPreviousMessages
             // 
-            this.tsmiREmoveAllPreviousMessages.Image = global::Philips.Analogy.Properties.Resources.FitNone_16x16;
+            this.tsmiREmoveAllPreviousMessages.Image = global::Analogy.Properties.Resources.FitNone_16x16;
             this.tsmiREmoveAllPreviousMessages.Name = "tsmiREmoveAllPreviousMessages";
             this.tsmiREmoveAllPreviousMessages.Size = new System.Drawing.Size(415, 26);
             this.tsmiREmoveAllPreviousMessages.Text = "Remove all messages before selected message";
@@ -347,7 +346,7 @@ namespace Philips.Analogy
             // 
             // tsmiTimeDiff
             // 
-            this.tsmiTimeDiff.Image = global::Philips.Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiTimeDiff.Image = global::Analogy.Properties.Resources.Time2_16x16;
             this.tsmiTimeDiff.Name = "tsmiTimeDiff";
             this.tsmiTimeDiff.Size = new System.Drawing.Size(415, 26);
             this.tsmiTimeDiff.Text = "Calculate Time Difference from this entry";
@@ -360,7 +359,7 @@ namespace Philips.Analogy
             // 
             // tsmiBookmark
             // 
-            this.tsmiBookmark.Image = global::Philips.Analogy.Properties.Resources.RichEditBookmark_16x16;
+            this.tsmiBookmark.Image = global::Analogy.Properties.Resources.RichEditBookmark_16x16;
             this.tsmiBookmark.Name = "tsmiBookmark";
             this.tsmiBookmark.Size = new System.Drawing.Size(415, 26);
             this.tsmiBookmark.Text = "Bookmark this message (current Analogy instance)";
@@ -368,7 +367,7 @@ namespace Philips.Analogy
             // 
             // tsmiBookmarkPersist
             // 
-            this.tsmiBookmarkPersist.Image = global::Philips.Analogy.Properties.Resources.RichEditBookmark_16x16;
+            this.tsmiBookmarkPersist.Image = global::Analogy.Properties.Resources.RichEditBookmark_16x16;
             this.tsmiBookmarkPersist.Name = "tsmiBookmarkPersist";
             this.tsmiBookmarkPersist.Size = new System.Drawing.Size(415, 26);
             this.tsmiBookmarkPersist.Text = "Bookmark this message for later use (persistent)";
@@ -376,7 +375,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopy
             // 
-            this.tsmiCopy.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopy.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopy.Name = "tsmiCopy";
             this.tsmiCopy.Size = new System.Drawing.Size(415, 26);
             this.tsmiCopy.Text = "Copy selected message to clipboard";
@@ -384,7 +383,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopyMessages
             // 
-            this.tsmiCopyMessages.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopyMessages.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopyMessages.Name = "tsmiCopyMessages";
             this.tsmiCopyMessages.Size = new System.Drawing.Size(415, 26);
             this.tsmiCopyMessages.Text = "Copy all messages in view to clipboard";
@@ -393,7 +392,7 @@ namespace Philips.Analogy
             // tsmiAddCommentToMessage
             // 
             this.tsmiAddCommentToMessage.Enabled = false;
-            this.tsmiAddCommentToMessage.Image = global::Philips.Analogy.Properties.Resources.EditComment_16x16;
+            this.tsmiAddCommentToMessage.Image = global::Analogy.Properties.Resources.EditComment_16x16;
             this.tsmiAddCommentToMessage.Name = "tsmiAddCommentToMessage";
             this.tsmiAddCommentToMessage.Size = new System.Drawing.Size(415, 26);
             this.tsmiAddCommentToMessage.Text = "Add message/comment at this timestamp";
@@ -406,7 +405,7 @@ namespace Philips.Analogy
             // 
             // tsmiExclude
             // 
-            this.tsmiExclude.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExclude.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExclude.Name = "tsmiExclude";
             this.tsmiExclude.Size = new System.Drawing.Size(415, 26);
             this.tsmiExclude.Text = "Exclude selected message ";
@@ -414,7 +413,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeSource
             // 
-            this.tsmiExcludeSource.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeSource.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeSource.Name = "tsmiExcludeSource";
             this.tsmiExcludeSource.Size = new System.Drawing.Size(415, 26);
             this.tsmiExcludeSource.Text = "Exclude Source";
@@ -422,7 +421,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeModule
             // 
-            this.tsmiExcludeModule.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeModule.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeModule.Name = "tsmiExcludeModule";
             this.tsmiExcludeModule.Size = new System.Drawing.Size(415, 26);
             this.tsmiExcludeModule.Text = "Exclude Process";
@@ -435,7 +434,7 @@ namespace Philips.Analogy
             // 
             // tsmiEmail
             // 
-            this.tsmiEmail.Image = global::Philips.Analogy.Properties.Resources.Send_16x16;
+            this.tsmiEmail.Image = global::Analogy.Properties.Resources.Send_16x16;
             this.tsmiEmail.Name = "tsmiEmail";
             this.tsmiEmail.Size = new System.Drawing.Size(415, 26);
             this.tsmiEmail.Text = "Send selected message by mail";
@@ -444,7 +443,7 @@ namespace Philips.Analogy
             // tsmiOTAFull
             // 
             this.tsmiOTAFull.Enabled = false;
-            this.tsmiOTAFull.Image = global::Philips.Analogy.Properties.Resources.logIcon;
+            this.tsmiOTAFull.Image = global::Analogy.Properties.Resources.logIcon;
             this.tsmiOTAFull.Name = "tsmiOTAFull";
             this.tsmiOTAFull.Size = new System.Drawing.Size(415, 26);
             this.tsmiOTAFull.Text = "Send Log to another Analogy";
@@ -458,7 +457,7 @@ namespace Philips.Analogy
             // 
             // tsmiSaveLayout
             // 
-            this.tsmiSaveLayout.Image = global::Philips.Analogy.Properties.Resources.Save_16x16;
+            this.tsmiSaveLayout.Image = global::Analogy.Properties.Resources.Save_16x16;
             this.tsmiSaveLayout.Name = "tsmiSaveLayout";
             this.tsmiSaveLayout.Size = new System.Drawing.Size(415, 26);
             this.tsmiSaveLayout.Text = "Save columns layout";
@@ -466,7 +465,7 @@ namespace Philips.Analogy
             // 
             // tsmiIncreaseFont
             // 
-            this.tsmiIncreaseFont.Image = global::Philips.Analogy.Properties.Resources.IncreaseFontSize_16x16;
+            this.tsmiIncreaseFont.Image = global::Analogy.Properties.Resources.IncreaseFontSize_16x16;
             this.tsmiIncreaseFont.Name = "tsmiIncreaseFont";
             this.tsmiIncreaseFont.Size = new System.Drawing.Size(415, 26);
             this.tsmiIncreaseFont.Text = "Increase Font Size";
@@ -474,7 +473,7 @@ namespace Philips.Analogy
             // 
             // tsmiDecreaseFont
             // 
-            this.tsmiDecreaseFont.Image = global::Philips.Analogy.Properties.Resources.DecreaseFontSize_16x16;
+            this.tsmiDecreaseFont.Image = global::Analogy.Properties.Resources.DecreaseFontSize_16x16;
             this.tsmiDecreaseFont.Name = "tsmiDecreaseFont";
             this.tsmiDecreaseFont.Size = new System.Drawing.Size(415, 26);
             this.tsmiDecreaseFont.Text = "Decrease Font Size";
@@ -499,7 +498,6 @@ namespace Philips.Analogy
             this.gridColumnCategory,
             this.gridColumnUser,
             this.gridColumnModule,
-            this.gridColumnAudit,
             this.gridColumnObject,
             this.gridColumnProcessID,
             this.gridColumnThread});
@@ -510,7 +508,6 @@ namespace Philips.Analogy
             this.logGrid.IndicatorWidth = 24;
             this.logGrid.Name = "logGrid";
             this.logGrid.OptionsBehavior.Editable = false;
-            this.logGrid.OptionsCustomization.AllowGroup = false;
             this.logGrid.OptionsFilter.AllowColumnMRUFilterList = false;
             this.logGrid.OptionsFilter.AllowMRUFilterList = false;
             this.logGrid.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -533,7 +530,7 @@ namespace Philips.Analogy
             this.gridColumnDataSource.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnDataSource.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnDataSource.Caption = "Data Source/File Name";
-            this.gridColumnDataSource.FieldName = "DataSource";
+            this.gridColumnDataSource.FieldName = "DataProvider";
             this.gridColumnDataSource.MinWidth = 24;
             this.gridColumnDataSource.Name = "gridColumnDataSource";
             this.gridColumnDataSource.OptionsColumn.AllowEdit = false;
@@ -673,7 +670,7 @@ namespace Philips.Analogy
             this.gridColumnCategory.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnCategory.OptionsColumn.ReadOnly = true;
             this.gridColumnCategory.Visible = true;
-            this.gridColumnCategory.VisibleIndex = 8;
+            this.gridColumnCategory.VisibleIndex = 7;
             this.gridColumnCategory.Width = 115;
             // 
             // gridColumnUser
@@ -692,7 +689,7 @@ namespace Philips.Analogy
             this.gridColumnUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnUser.OptionsColumn.ReadOnly = true;
             this.gridColumnUser.Visible = true;
-            this.gridColumnUser.VisibleIndex = 9;
+            this.gridColumnUser.VisibleIndex = 8;
             this.gridColumnUser.Width = 115;
             // 
             // gridColumnModule
@@ -706,7 +703,6 @@ namespace Philips.Analogy
             this.gridColumnModule.Name = "gridColumnModule";
             this.gridColumnModule.OptionsColumn.AllowEdit = false;
             this.gridColumnModule.OptionsColumn.AllowFocus = false;
-            this.gridColumnModule.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumnModule.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumnModule.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnModule.OptionsColumn.ReadOnly = true;
@@ -714,25 +710,6 @@ namespace Philips.Analogy
             this.gridColumnModule.Visible = true;
             this.gridColumnModule.VisibleIndex = 5;
             this.gridColumnModule.Width = 115;
-            // 
-            // gridColumnAudit
-            // 
-            this.gridColumnAudit.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnAudit.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnAudit.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnAudit.Caption = "Audit";
-            this.gridColumnAudit.FieldName = "Audit";
-            this.gridColumnAudit.MinWidth = 24;
-            this.gridColumnAudit.Name = "gridColumnAudit";
-            this.gridColumnAudit.OptionsColumn.AllowEdit = false;
-            this.gridColumnAudit.OptionsColumn.AllowFocus = false;
-            this.gridColumnAudit.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnAudit.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnAudit.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnAudit.OptionsColumn.ReadOnly = true;
-            this.gridColumnAudit.Visible = true;
-            this.gridColumnAudit.VisibleIndex = 7;
-            this.gridColumnAudit.Width = 115;
             // 
             // gridColumnObject
             // 
@@ -769,7 +746,7 @@ namespace Philips.Analogy
             this.gridColumnProcessID.OptionsColumn.ReadOnly = true;
             this.gridColumnProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.gridColumnProcessID.Visible = true;
-            this.gridColumnProcessID.VisibleIndex = 10;
+            this.gridColumnProcessID.VisibleIndex = 9;
             this.gridColumnProcessID.Width = 115;
             // 
             // gridColumnThread
@@ -779,7 +756,7 @@ namespace Philips.Analogy
             this.gridColumnThread.MinWidth = 25;
             this.gridColumnThread.Name = "gridColumnThread";
             this.gridColumnThread.Visible = true;
-            this.gridColumnThread.VisibleIndex = 11;
+            this.gridColumnThread.VisibleIndex = 10;
             this.gridColumnThread.Width = 109;
             // 
             // panel1
@@ -798,386 +775,11 @@ namespace Philips.Analogy
             // 
             this.txtbHighlight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtbHighlight.Location = new System.Drawing.Point(200, 0);
-            this.txtbHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1404, 23);
-            this.txtbHighlight.TabIndex = 10;
+            this.txtbHighlight.Size = new System.Drawing.Size(1404, 22);
+            this.txtbHighlight.TabIndex = 23;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
-            // 
-            // pnlButtonsHighlight
-            // 
-            this.pnlButtonsHighlight.Controls.Add(this.lblPageNumber);
-            this.pnlButtonsHighlight.Controls.Add(this.sBtnPageNext);
-            this.pnlButtonsHighlight.Controls.Add(this.sBtnLastPage);
-            this.pnlButtonsHighlight.Controls.Add(this.sbtnPagePrevious);
-            this.pnlButtonsHighlight.Controls.Add(this.sbtnPageFirst);
-            this.pnlButtonsHighlight.Controls.Add(this.btnUp);
-            this.pnlButtonsHighlight.Controls.Add(this.btnDown);
-            this.pnlButtonsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1604, 0);
-            this.pnlButtonsHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlButtonsHighlight.Name = "pnlButtonsHighlight";
-            this.pnlButtonsHighlight.Size = new System.Drawing.Size(520, 26);
-            this.pnlButtonsHighlight.TabIndex = 12;
-            // 
-            // lblPageNumber
-            // 
-            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPageNumber.Appearance.Options.UseTextOptions = true;
-            this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lblPageNumber.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblPageNumber.Location = new System.Drawing.Point(232, 4);
-            this.lblPageNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lblPageNumber.Name = "lblPageNumber";
-            this.lblPageNumber.Size = new System.Drawing.Size(113, 18);
-            this.lblPageNumber.TabIndex = 46;
-            this.lblPageNumber.Text = "Page 1 / 1";
-            // 
-            // sBtnPageNext
-            // 
-            this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(355, 0);
-            this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sBtnPageNext.Name = "sBtnPageNext";
-            this.sBtnPageNext.Size = new System.Drawing.Size(87, 25);
-            this.sBtnPageNext.TabIndex = 45;
-            this.sBtnPageNext.Text = "Next Page";
-            this.sBtnPageNext.Click += new System.EventHandler(this.sBtnPageNext_Click);
-            // 
-            // sBtnLastPage
-            // 
-            this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(444, 0);
-            this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sBtnLastPage.Name = "sBtnLastPage";
-            this.sBtnLastPage.Size = new System.Drawing.Size(73, 25);
-            this.sBtnLastPage.TabIndex = 44;
-            this.sBtnLastPage.Text = "Last Page";
-            this.sBtnLastPage.Click += new System.EventHandler(this.sBtnLastPage_Click);
-            // 
-            // sbtnPagePrevious
-            // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(138, 0);
-            this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sbtnPagePrevious.Name = "sbtnPagePrevious";
-            this.sbtnPagePrevious.Size = new System.Drawing.Size(87, 25);
-            this.sbtnPagePrevious.TabIndex = 43;
-            this.sbtnPagePrevious.Text = "Previous Page";
-            this.sbtnPagePrevious.Click += new System.EventHandler(this.sbtnPagePrevious_Click);
-            // 
-            // sbtnPageFirst
-            // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(61, 0);
-            this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sbtnPageFirst.Name = "sbtnPageFirst";
-            this.sbtnPageFirst.Size = new System.Drawing.Size(73, 25);
-            this.sbtnPageFirst.TabIndex = 42;
-            this.sbtnPageFirst.Text = "first Page";
-            this.sbtnPageFirst.Click += new System.EventHandler(this.sbtnPageFirst_Click);
-            // 
-            // btnUp
-            // 
-            this.btnUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUp.ImageOptions.Image")));
-            this.btnUp.Location = new System.Drawing.Point(7, 0);
-            this.btnUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(21, 26);
-            this.btnUp.TabIndex = 41;
-            this.btnUp.Visible = false;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-            // 
-            // btnDown
-            // 
-            this.btnDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.ImageOptions.Image")));
-            this.btnDown.Location = new System.Drawing.Point(33, 0);
-            this.btnDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(21, 26);
-            this.btnDown.TabIndex = 40;
-            this.btnDown.Visible = false;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            // 
-            // chkbHighlight
-            // 
-            this.chkbHighlight.AutoSize = true;
-            this.chkbHighlight.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkbHighlight.Location = new System.Drawing.Point(0, 0);
-            this.chkbHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkbHighlight.Name = "chkbHighlight";
-            this.chkbHighlight.Size = new System.Drawing.Size(200, 26);
-            this.chkbHighlight.TabIndex = 11;
-            this.chkbHighlight.Text = "Highlight lines that contains:";
-            this.chkbHighlight.UseVisualStyleBackColor = true;
-            this.chkbHighlight.CheckedChanged += new System.EventHandler(this.chkbHighlight_CheckedChanged);
-            // 
-            // pnlTopFiltering
-            // 
-            this.pnlTopFiltering.Controls.Add(this.spltFilteringBoth);
-            this.pnlTopFiltering.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTopFiltering.Location = new System.Drawing.Point(0, 0);
-            this.pnlTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlTopFiltering.Name = "pnlTopFiltering";
-            this.pnlTopFiltering.Size = new System.Drawing.Size(2124, 92);
-            this.pnlTopFiltering.TabIndex = 3;
-            // 
-            // spltFilteringBoth
-            // 
-            this.spltFilteringBoth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spltFilteringBoth.Location = new System.Drawing.Point(0, 0);
-            this.spltFilteringBoth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.spltFilteringBoth.Name = "spltFilteringBoth";
-            // 
-            // spltFilteringBoth.Panel1
-            // 
-            this.spltFilteringBoth.Panel1.Controls.Add(this.pnlFilteringLeft);
-            // 
-            // spltFilteringBoth.Panel2
-            // 
-            this.spltFilteringBoth.Panel2.Controls.Add(this.chkLstLogLevel);
-            this.spltFilteringBoth.Panel2MinSize = 150;
-            this.spltFilteringBoth.Size = new System.Drawing.Size(2124, 92);
-            this.spltFilteringBoth.SplitterDistance = 1635;
-            this.spltFilteringBoth.SplitterWidth = 3;
-            this.spltFilteringBoth.TabIndex = 19;
-            // 
-            // pnlFilteringLeft
-            // 
-            this.pnlFilteringLeft.Controls.Add(this.sBtnMostCommon);
-            this.pnlFilteringLeft.Controls.Add(this.chkbInclude);
-            this.pnlFilteringLeft.Controls.Add(this.spltExcludes);
-            this.pnlFilteringLeft.Controls.Add(this.txtbExclude);
-            this.pnlFilteringLeft.Controls.Add(this.chkExclude);
-            this.pnlFilteringLeft.Controls.Add(this.pboxInfo);
-            this.pnlFilteringLeft.Controls.Add(this.txtbInclude);
-            this.pnlFilteringLeft.Location = new System.Drawing.Point(0, 1);
-            this.pnlFilteringLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlFilteringLeft.Name = "pnlFilteringLeft";
-            this.pnlFilteringLeft.Size = new System.Drawing.Size(509, 89);
-            this.pnlFilteringLeft.TabIndex = 20;
-            // 
-            // sBtnMostCommon
-            // 
-            this.sBtnMostCommon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnMostCommon.Location = new System.Drawing.Point(385, 34);
-            this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnMostCommon.Name = "sBtnMostCommon";
-            this.sBtnMostCommon.Size = new System.Drawing.Size(120, 25);
-            this.sBtnMostCommon.TabIndex = 8;
-            this.sBtnMostCommon.Text = "Most Common";
-            this.sBtnMostCommon.Click += new System.EventHandler(this.sBtnMostCommon_Click);
-            // 
-            // chkbInclude
-            // 
-            this.chkbInclude.AutoSize = true;
-            this.chkbInclude.Location = new System.Drawing.Point(3, 2);
-            this.chkbInclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkbInclude.Name = "chkbInclude";
-            this.chkbInclude.Size = new System.Drawing.Size(79, 21);
-            this.chkbInclude.TabIndex = 9;
-            this.chkbInclude.Text = "Include:";
-            this.chkbInclude.UseVisualStyleBackColor = true;
-            this.chkbInclude.CheckedChanged += new System.EventHandler(this.chkbInclude_CheckedChanged);
-            // 
-            // spltExcludes
-            // 
-            this.spltExcludes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.spltExcludes.Location = new System.Drawing.Point(0, 63);
-            this.spltExcludes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.spltExcludes.Name = "spltExcludes";
-            // 
-            // spltExcludes.Panel1
-            // 
-            this.spltExcludes.Panel1.Controls.Add(this.txtbExcludeSource);
-            this.spltExcludes.Panel1.Controls.Add(this.spltFilteringTop);
-            this.spltExcludes.Panel1.Controls.Add(this.pboxInfoExclude);
-            this.spltExcludes.Panel1.Controls.Add(this.chkbExcludeSourceAndModule);
-            // 
-            // spltExcludes.Panel2
-            // 
-            this.spltExcludes.Panel2.Controls.Add(this.txtbExcludeModule);
-            this.spltExcludes.Panel2.Controls.Add(this.lblExcludeModule);
-            this.spltExcludes.Size = new System.Drawing.Size(509, 26);
-            this.spltExcludes.SplitterDistance = 241;
-            this.spltExcludes.SplitterWidth = 3;
-            this.spltExcludes.TabIndex = 18;
-            // 
-            // txtbExcludeSource
-            // 
-            this.txtbExcludeSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtbExcludeSource.Location = new System.Drawing.Point(157, 0);
-            this.txtbExcludeSource.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtbExcludeSource.Name = "txtbExcludeSource";
-            this.txtbExcludeSource.Size = new System.Drawing.Size(84, 23);
-            this.txtbExcludeSource.TabIndex = 13;
-            this.txtbExcludeSource.TextChanged += new System.EventHandler(this.txtbExcludeSource_TextChanged);
-            // 
-            // spltFilteringTop
-            // 
-            this.spltFilteringTop.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.spltFilteringTop.Location = new System.Drawing.Point(113, 27);
-            this.spltFilteringTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.spltFilteringTop.Name = "spltFilteringTop";
-            this.spltFilteringTop.Panel2Collapsed = true;
-            this.spltFilteringTop.Size = new System.Drawing.Size(1207, 55);
-            this.spltFilteringTop.SplitterDistance = 1009;
-            this.spltFilteringTop.SplitterWidth = 3;
-            this.spltFilteringTop.TabIndex = 0;
-            // 
-            // pboxInfoExclude
-            // 
-            this.pboxInfoExclude.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pboxInfoExclude.Image = global::Philips.Analogy.Properties.Resources.Info_16x16;
-            this.pboxInfoExclude.Location = new System.Drawing.Point(136, 0);
-            this.pboxInfoExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pboxInfoExclude.Name = "pboxInfoExclude";
-            this.pboxInfoExclude.Size = new System.Drawing.Size(21, 26);
-            this.pboxInfoExclude.TabIndex = 15;
-            this.pboxInfoExclude.TabStop = false;
-            // 
-            // chkbExcludeSourceAndModule
-            // 
-            this.chkbExcludeSourceAndModule.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkbExcludeSourceAndModule.Location = new System.Drawing.Point(0, 0);
-            this.chkbExcludeSourceAndModule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkbExcludeSourceAndModule.Name = "chkbExcludeSourceAndModule";
-            this.chkbExcludeSourceAndModule.Size = new System.Drawing.Size(136, 26);
-            this.chkbExcludeSourceAndModule.TabIndex = 14;
-            this.chkbExcludeSourceAndModule.Text = "Exclude: Sources:";
-            this.chkbExcludeSourceAndModule.UseVisualStyleBackColor = true;
-            this.chkbExcludeSourceAndModule.CheckedChanged += new System.EventHandler(this.chkbExcludeSourceAndModule_CheckedChanged);
-            // 
-            // txtbExcludeModule
-            // 
-            this.txtbExcludeModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtbExcludeModule.Location = new System.Drawing.Point(59, 0);
-            this.txtbExcludeModule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtbExcludeModule.Name = "txtbExcludeModule";
-            this.txtbExcludeModule.Size = new System.Drawing.Size(206, 23);
-            this.txtbExcludeModule.TabIndex = 16;
-            this.txtbExcludeModule.TextChanged += new System.EventHandler(this.txtbExcludeModule_TextChanged);
-            // 
-            // lblExcludeModule
-            // 
-            this.lblExcludeModule.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblExcludeModule.Location = new System.Drawing.Point(0, 0);
-            this.lblExcludeModule.Name = "lblExcludeModule";
-            this.lblExcludeModule.Size = new System.Drawing.Size(59, 26);
-            this.lblExcludeModule.TabIndex = 17;
-            this.lblExcludeModule.Text = "Modules:";
-            this.lblExcludeModule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtbExclude
-            // 
-            this.txtbExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbExclude.Location = new System.Drawing.Point(98, 34);
-            this.txtbExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtbExclude.Name = "txtbExclude";
-            this.txtbExclude.Size = new System.Drawing.Size(282, 23);
-            this.txtbExclude.TabIndex = 1;
-            this.txtbExclude.TextChanged += new System.EventHandler(this.txtbExclude_TextChanged);
-            this.txtbExclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbExclude_KeyDown);
-            // 
-            // chkExclude
-            // 
-            this.chkExclude.AutoSize = true;
-            this.chkExclude.Location = new System.Drawing.Point(3, 36);
-            this.chkExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkExclude.Name = "chkExclude";
-            this.chkExclude.Size = new System.Drawing.Size(83, 21);
-            this.chkExclude.TabIndex = 10;
-            this.chkExclude.Text = "Exclude:";
-            this.chkExclude.UseVisualStyleBackColor = true;
-            this.chkExclude.CheckedChanged += new System.EventHandler(this.chkbExclude_CheckedChanged);
-            // 
-            // pboxInfo
-            // 
-            this.pboxInfo.Image = global::Philips.Analogy.Properties.Resources.Info_16x16;
-            this.pboxInfo.Location = new System.Drawing.Point(77, 6);
-            this.pboxInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pboxInfo.Name = "pboxInfo";
-            this.pboxInfo.Size = new System.Drawing.Size(16, 18);
-            this.pboxInfo.TabIndex = 12;
-            this.pboxInfo.TabStop = false;
-            // 
-            // txtbInclude
-            // 
-            this.txtbInclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbInclude.Location = new System.Drawing.Point(98, 2);
-            this.txtbInclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtbInclude.Name = "txtbInclude";
-            this.txtbInclude.Size = new System.Drawing.Size(406, 23);
-            this.txtbInclude.TabIndex = 0;
-            this.txtbInclude.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
-            this.txtbInclude.Enter += new System.EventHandler(this.txtbInclude_Enter);
-            this.txtbInclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
-            this.txtbInclude.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
-            // 
-            // chkLstLogLevel
-            // 
-            this.chkLstLogLevel.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
-            this.chkLstLogLevel.CheckOnClick = true;
-            this.chkLstLogLevel.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.chkLstLogLevel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkLstLogLevel.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Error + Critical"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Warning"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Debug"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Verbose")});
-            this.chkLstLogLevel.Location = new System.Drawing.Point(0, 0);
-            this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkLstLogLevel.Name = "chkLstLogLevel";
-            this.chkLstLogLevel.Size = new System.Drawing.Size(486, 92);
-            this.chkLstLogLevel.TabIndex = 22;
-            this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
-            this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
-            this.chkLstLogLevel.DrawItem += new DevExpress.XtraEditors.ListBoxDrawItemEventHandler(this.chkLstLogLevel_DrawItem);
-            // 
-            // tcBottom
-            // 
-            this.tcBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcBottom.Location = new System.Drawing.Point(0, 0);
-            this.tcBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tcBottom.Name = "tcBottom";
-            this.tcBottom.SelectedTabPage = this.xtpMessageInfo;
-            this.tcBottom.Size = new System.Drawing.Size(2124, 204);
-            this.tcBottom.TabIndex = 6;
-            this.tcBottom.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtpMessageInfo,
-            this.xtpBookmarks});
-            // 
-            // xtpMessageInfo
-            // 
-            this.xtpMessageInfo.Controls.Add(this.rtxtContent);
-            this.xtpMessageInfo.Controls.Add(this.bdcMessageBottom);
-            this.xtpMessageInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.xtpMessageInfo.Name = "xtpMessageInfo";
-            this.xtpMessageInfo.Size = new System.Drawing.Size(2117, 170);
-            this.xtpMessageInfo.Text = "Message Info";
-            // 
-            // rtxtContent
-            // 
-            this.rtxtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtContent.Location = new System.Drawing.Point(0, 37);
-            this.rtxtContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rtxtContent.Name = "rtxtContent";
-            this.rtxtContent.Size = new System.Drawing.Size(2117, 133);
-            this.rtxtContent.TabIndex = 0;
-            this.rtxtContent.Text = "";
-            // 
-            // bdcMessageBottom
-            // 
-            this.bdcMessageBottom.AutoSize = true;
-            this.bdcMessageBottom.CausesValidation = false;
-            this.bdcMessageBottom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bdcMessageBottom.Location = new System.Drawing.Point(0, 0);
-            this.bdcMessageBottom.Manager = this.barManager1;
-            this.bdcMessageBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bdcMessageBottom.Name = "bdcMessageBottom";
-            this.bdcMessageBottom.Size = new System.Drawing.Size(2117, 37);
-            this.bdcMessageBottom.Text = "standaloneBarDockControl2";
             // 
             // barManager1
             // 
@@ -1296,7 +898,6 @@ namespace Philips.Analogy
             this.btsAutoScrollToBottom.Caption = "Auto Scroll to bottom:";
             this.btsAutoScrollToBottom.Id = 18;
             this.btsAutoScrollToBottom.Name = "btsAutoScrollToBottom";
-            this.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btsAutoScrollToBottom.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btsAutoScrollToBottom_CheckedChanged);
             // 
             // barSubItemSaveEntireLog
@@ -1323,7 +924,7 @@ namespace Philips.Analogy
             // 
             // barButtonItemSaveEntireInAnalogy
             // 
-            this.barButtonItemSaveEntireInAnalogy.Caption = "Save Entire Log in Analogy Format (agnostic to Specific implementation)";
+            this.barButtonItemSaveEntireInAnalogy.Caption = "Save Entire Log in Analogy Format (agnostic to specific implementation)";
             this.barButtonItemSaveEntireInAnalogy.Id = 32;
             this.barButtonItemSaveEntireInAnalogy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.Image")));
             this.barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage")));
@@ -1499,6 +1100,18 @@ namespace Philips.Analogy
             this.bBtnCopyButtom.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnCopyButtom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyButtom_ItemClick);
             // 
+            // bdcMessageBottom
+            // 
+            this.bdcMessageBottom.AutoSize = true;
+            this.bdcMessageBottom.CausesValidation = false;
+            this.bdcMessageBottom.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bdcMessageBottom.Location = new System.Drawing.Point(0, 0);
+            this.bdcMessageBottom.Manager = this.barManager1;
+            this.bdcMessageBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bdcMessageBottom.Name = "bdcMessageBottom";
+            this.bdcMessageBottom.Size = new System.Drawing.Size(2117, 37);
+            this.bdcMessageBottom.Text = "standaloneBarDockControl2";
+            // 
             // barBookmark
             // 
             this.barBookmark.BarName = "Boommarks";
@@ -1655,6 +1268,348 @@ namespace Philips.Analogy
             this.btSwitchExpandButtomMessage.Name = "btSwitchExpandButtomMessage";
             this.btSwitchExpandButtomMessage.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem1_CheckedChanged);
             // 
+            // pnlButtonsHighlight
+            // 
+            this.pnlButtonsHighlight.Controls.Add(this.lblPageNumber);
+            this.pnlButtonsHighlight.Controls.Add(this.sBtnPageNext);
+            this.pnlButtonsHighlight.Controls.Add(this.sBtnLastPage);
+            this.pnlButtonsHighlight.Controls.Add(this.sbtnPagePrevious);
+            this.pnlButtonsHighlight.Controls.Add(this.sbtnPageFirst);
+            this.pnlButtonsHighlight.Controls.Add(this.btnUp);
+            this.pnlButtonsHighlight.Controls.Add(this.btnDown);
+            this.pnlButtonsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1604, 0);
+            this.pnlButtonsHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlButtonsHighlight.Name = "pnlButtonsHighlight";
+            this.pnlButtonsHighlight.Size = new System.Drawing.Size(520, 26);
+            this.pnlButtonsHighlight.TabIndex = 12;
+            // 
+            // lblPageNumber
+            // 
+            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageNumber.Appearance.Options.UseTextOptions = true;
+            this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lblPageNumber.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblPageNumber.Location = new System.Drawing.Point(232, 4);
+            this.lblPageNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lblPageNumber.Name = "lblPageNumber";
+            this.lblPageNumber.Size = new System.Drawing.Size(113, 18);
+            this.lblPageNumber.TabIndex = 46;
+            this.lblPageNumber.Text = "Page 1 / 1";
+            // 
+            // sBtnPageNext
+            // 
+            this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnPageNext.Location = new System.Drawing.Point(355, 0);
+            this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sBtnPageNext.Name = "sBtnPageNext";
+            this.sBtnPageNext.Size = new System.Drawing.Size(87, 25);
+            this.sBtnPageNext.TabIndex = 45;
+            this.sBtnPageNext.Text = "Next Page";
+            this.sBtnPageNext.Click += new System.EventHandler(this.sBtnPageNext_Click);
+            // 
+            // sBtnLastPage
+            // 
+            this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnLastPage.Location = new System.Drawing.Point(444, 0);
+            this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sBtnLastPage.Name = "sBtnLastPage";
+            this.sBtnLastPage.Size = new System.Drawing.Size(73, 25);
+            this.sBtnLastPage.TabIndex = 44;
+            this.sBtnLastPage.Text = "Last Page";
+            this.sBtnLastPage.Click += new System.EventHandler(this.sBtnLastPage_Click);
+            // 
+            // sbtnPagePrevious
+            // 
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(138, 0);
+            this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sbtnPagePrevious.Name = "sbtnPagePrevious";
+            this.sbtnPagePrevious.Size = new System.Drawing.Size(87, 25);
+            this.sbtnPagePrevious.TabIndex = 43;
+            this.sbtnPagePrevious.Text = "Previous Page";
+            this.sbtnPagePrevious.Click += new System.EventHandler(this.sbtnPagePrevious_Click);
+            // 
+            // sbtnPageFirst
+            // 
+            this.sbtnPageFirst.Location = new System.Drawing.Point(61, 0);
+            this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sbtnPageFirst.Name = "sbtnPageFirst";
+            this.sbtnPageFirst.Size = new System.Drawing.Size(73, 25);
+            this.sbtnPageFirst.TabIndex = 42;
+            this.sbtnPageFirst.Text = "first Page";
+            this.sbtnPageFirst.Click += new System.EventHandler(this.sbtnPageFirst_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUp.ImageOptions.Image")));
+            this.btnUp.Location = new System.Drawing.Point(7, 0);
+            this.btnUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(21, 26);
+            this.btnUp.TabIndex = 41;
+            this.btnUp.Visible = false;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.ImageOptions.Image")));
+            this.btnDown.Location = new System.Drawing.Point(33, 0);
+            this.btnDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(21, 26);
+            this.btnDown.TabIndex = 40;
+            this.btnDown.Visible = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // chkbHighlight
+            // 
+            this.chkbHighlight.AutoSize = true;
+            this.chkbHighlight.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkbHighlight.Location = new System.Drawing.Point(0, 0);
+            this.chkbHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkbHighlight.Name = "chkbHighlight";
+            this.chkbHighlight.Size = new System.Drawing.Size(200, 26);
+            this.chkbHighlight.TabIndex = 11;
+            this.chkbHighlight.Text = "Highlight lines that contains:";
+            this.chkbHighlight.UseVisualStyleBackColor = true;
+            this.chkbHighlight.CheckedChanged += new System.EventHandler(this.chkbHighlight_CheckedChanged);
+            // 
+            // pnlTopFiltering
+            // 
+            this.pnlTopFiltering.Controls.Add(this.spltFilteringBoth);
+            this.pnlTopFiltering.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTopFiltering.Location = new System.Drawing.Point(0, 0);
+            this.pnlTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTopFiltering.Name = "pnlTopFiltering";
+            this.pnlTopFiltering.Size = new System.Drawing.Size(2124, 124);
+            this.pnlTopFiltering.TabIndex = 3;
+            // 
+            // spltFilteringBoth
+            // 
+            this.spltFilteringBoth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spltFilteringBoth.Location = new System.Drawing.Point(0, 0);
+            this.spltFilteringBoth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.spltFilteringBoth.Name = "spltFilteringBoth";
+            // 
+            // spltFilteringBoth.Panel1
+            // 
+            this.spltFilteringBoth.Panel1.Controls.Add(this.spltCSources);
+            this.spltFilteringBoth.Panel1.Controls.Add(this.pnlFilteringLeft);
+            // 
+            // spltFilteringBoth.Panel2
+            // 
+            this.spltFilteringBoth.Panel2.Controls.Add(this.chkLstLogLevel);
+            this.spltFilteringBoth.Panel2MinSize = 150;
+            this.spltFilteringBoth.Size = new System.Drawing.Size(2124, 124);
+            this.spltFilteringBoth.SplitterDistance = 1635;
+            this.spltFilteringBoth.SplitterWidth = 3;
+            this.spltFilteringBoth.TabIndex = 19;
+            // 
+            // spltCSources
+            // 
+            this.spltCSources.Location = new System.Drawing.Point(874, 46);
+            this.spltCSources.Name = "spltCSources";
+            this.spltCSources.Size = new System.Drawing.Size(550, 40);
+            this.spltCSources.SplitterDistance = 336;
+            this.spltCSources.TabIndex = 21;
+            this.spltCSources.Visible = false;
+            // 
+            // pnlFilteringLeft
+            // 
+            this.pnlFilteringLeft.Controls.Add(this.txtbExcludeModule);
+            this.pnlFilteringLeft.Controls.Add(this.txtbExcludeSource);
+            this.pnlFilteringLeft.Controls.Add(this.chkbExcludeModules);
+            this.pnlFilteringLeft.Controls.Add(this.txtbExclude);
+            this.pnlFilteringLeft.Controls.Add(this.pboxInfoExclude);
+            this.pnlFilteringLeft.Controls.Add(this.txtbInclude);
+            this.pnlFilteringLeft.Controls.Add(this.chkbExcludeSources);
+            this.pnlFilteringLeft.Controls.Add(this.sBtnMostCommon);
+            this.pnlFilteringLeft.Controls.Add(this.chkbInclude);
+            this.pnlFilteringLeft.Controls.Add(this.chkExclude);
+            this.pnlFilteringLeft.Controls.Add(this.pboxInfo);
+            this.pnlFilteringLeft.Location = new System.Drawing.Point(0, 1);
+            this.pnlFilteringLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlFilteringLeft.Name = "pnlFilteringLeft";
+            this.pnlFilteringLeft.Size = new System.Drawing.Size(1241, 119);
+            this.pnlFilteringLeft.TabIndex = 20;
+            // 
+            // txtbExcludeModule
+            // 
+            this.txtbExcludeModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtbExcludeModule.Location = new System.Drawing.Point(206, 92);
+            this.txtbExcludeModule.MenuManager = this.barManager1;
+            this.txtbExcludeModule.Name = "txtbExcludeModule";
+            this.txtbExcludeModule.Size = new System.Drawing.Size(1031, 22);
+            this.txtbExcludeModule.TabIndex = 23;
+            this.txtbExcludeModule.TextChanged += new System.EventHandler(this.txtbExcludeModule_TextChanged);
+            // 
+            // txtbExcludeSource
+            // 
+            this.txtbExcludeSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtbExcludeSource.Location = new System.Drawing.Point(206, 64);
+            this.txtbExcludeSource.MenuManager = this.barManager1;
+            this.txtbExcludeSource.Name = "txtbExcludeSource";
+            this.txtbExcludeSource.Size = new System.Drawing.Size(1031, 22);
+            this.txtbExcludeSource.TabIndex = 22;
+            this.txtbExcludeSource.TextChanged += new System.EventHandler(this.txtbExcludeSource_TextChanged);
+            // 
+            // chkbExcludeModules
+            // 
+            this.chkbExcludeModules.Location = new System.Drawing.Point(3, 91);
+            this.chkbExcludeModules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkbExcludeModules.Name = "chkbExcludeModules";
+            this.chkbExcludeModules.Size = new System.Drawing.Size(228, 24);
+            this.chkbExcludeModules.TabIndex = 21;
+            this.chkbExcludeModules.Text = "Exclude Processes/Modules:";
+            this.chkbExcludeModules.UseVisualStyleBackColor = true;
+            // 
+            // txtbExclude
+            // 
+            this.txtbExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtbExclude.Location = new System.Drawing.Point(109, 35);
+            this.txtbExclude.MenuManager = this.barManager1;
+            this.txtbExclude.Name = "txtbExclude";
+            this.txtbExclude.Size = new System.Drawing.Size(1002, 22);
+            this.txtbExclude.TabIndex = 20;
+            this.txtbExclude.TextChanged += new System.EventHandler(this.txtbExclude_TextChanged);
+            this.txtbExclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbExclude_KeyDown);
+            // 
+            // pboxInfoExclude
+            // 
+            this.pboxInfoExclude.Image = global::Analogy.Properties.Resources.Info_16x16;
+            this.pboxInfoExclude.Location = new System.Drawing.Point(145, 62);
+            this.pboxInfoExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pboxInfoExclude.Name = "pboxInfoExclude";
+            this.pboxInfoExclude.Size = new System.Drawing.Size(19, 23);
+            this.pboxInfoExclude.TabIndex = 15;
+            this.pboxInfoExclude.TabStop = false;
+            // 
+            // txtbInclude
+            // 
+            this.txtbInclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtbInclude.Location = new System.Drawing.Point(109, 4);
+            this.txtbInclude.MenuManager = this.barManager1;
+            this.txtbInclude.Name = "txtbInclude";
+            this.txtbInclude.Size = new System.Drawing.Size(1128, 22);
+            this.txtbInclude.TabIndex = 19;
+            this.txtbInclude.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
+            this.txtbInclude.Enter += new System.EventHandler(this.txtbInclude_Enter);
+            this.txtbInclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
+            this.txtbInclude.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
+            // 
+            // chkbExcludeSources
+            // 
+            this.chkbExcludeSources.Location = new System.Drawing.Point(3, 61);
+            this.chkbExcludeSources.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkbExcludeSources.Name = "chkbExcludeSources";
+            this.chkbExcludeSources.Size = new System.Drawing.Size(161, 24);
+            this.chkbExcludeSources.TabIndex = 14;
+            this.chkbExcludeSources.Text = "Exclude Sources:";
+            this.chkbExcludeSources.UseVisualStyleBackColor = true;
+            this.chkbExcludeSources.CheckedChanged += new System.EventHandler(this.chkbExcludeSourceAndModule_CheckedChanged);
+            // 
+            // sBtnMostCommon
+            // 
+            this.sBtnMostCommon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnMostCommon.Location = new System.Drawing.Point(1117, 34);
+            this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnMostCommon.Name = "sBtnMostCommon";
+            this.sBtnMostCommon.Size = new System.Drawing.Size(120, 25);
+            this.sBtnMostCommon.TabIndex = 8;
+            this.sBtnMostCommon.Text = "Most Common";
+            this.sBtnMostCommon.Click += new System.EventHandler(this.sBtnMostCommon_Click);
+            // 
+            // chkbInclude
+            // 
+            this.chkbInclude.AutoSize = true;
+            this.chkbInclude.Location = new System.Drawing.Point(3, 2);
+            this.chkbInclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkbInclude.Name = "chkbInclude";
+            this.chkbInclude.Size = new System.Drawing.Size(79, 21);
+            this.chkbInclude.TabIndex = 9;
+            this.chkbInclude.Text = "Include:";
+            this.chkbInclude.UseVisualStyleBackColor = true;
+            this.chkbInclude.CheckedChanged += new System.EventHandler(this.chkbInclude_CheckedChanged);
+            // 
+            // chkExclude
+            // 
+            this.chkExclude.AutoSize = true;
+            this.chkExclude.Location = new System.Drawing.Point(3, 36);
+            this.chkExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkExclude.Name = "chkExclude";
+            this.chkExclude.Size = new System.Drawing.Size(83, 21);
+            this.chkExclude.TabIndex = 10;
+            this.chkExclude.Text = "Exclude:";
+            this.chkExclude.UseVisualStyleBackColor = true;
+            this.chkExclude.CheckedChanged += new System.EventHandler(this.chkbExclude_CheckedChanged);
+            // 
+            // pboxInfo
+            // 
+            this.pboxInfo.Image = global::Analogy.Properties.Resources.Info_16x16;
+            this.pboxInfo.Location = new System.Drawing.Point(87, 6);
+            this.pboxInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pboxInfo.Name = "pboxInfo";
+            this.pboxInfo.Size = new System.Drawing.Size(16, 18);
+            this.pboxInfo.TabIndex = 12;
+            this.pboxInfo.TabStop = false;
+            // 
+            // chkLstLogLevel
+            // 
+            this.chkLstLogLevel.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
+            this.chkLstLogLevel.CheckOnClick = true;
+            this.chkLstLogLevel.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.chkLstLogLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkLstLogLevel.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Trace"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Error + Critical"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Warning"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Debug"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Verbose")});
+            this.chkLstLogLevel.Location = new System.Drawing.Point(0, 0);
+            this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkLstLogLevel.Name = "chkLstLogLevel";
+            this.chkLstLogLevel.Size = new System.Drawing.Size(486, 124);
+            this.chkLstLogLevel.TabIndex = 22;
+            this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
+            this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
+            this.chkLstLogLevel.DrawItem += new DevExpress.XtraEditors.ListBoxDrawItemEventHandler(this.chkLstLogLevel_DrawItem);
+            // 
+            // tcBottom
+            // 
+            this.tcBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcBottom.Location = new System.Drawing.Point(0, 0);
+            this.tcBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tcBottom.Name = "tcBottom";
+            this.tcBottom.SelectedTabPage = this.xtpMessageInfo;
+            this.tcBottom.Size = new System.Drawing.Size(2124, 204);
+            this.tcBottom.TabIndex = 6;
+            this.tcBottom.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtpMessageInfo,
+            this.xtpBookmarks});
+            // 
+            // xtpMessageInfo
+            // 
+            this.xtpMessageInfo.Controls.Add(this.rtxtContent);
+            this.xtpMessageInfo.Controls.Add(this.bdcMessageBottom);
+            this.xtpMessageInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.xtpMessageInfo.Name = "xtpMessageInfo";
+            this.xtpMessageInfo.Size = new System.Drawing.Size(2117, 170);
+            this.xtpMessageInfo.Text = "Message Info";
+            // 
+            // rtxtContent
+            // 
+            this.rtxtContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtContent.Location = new System.Drawing.Point(0, 37);
+            this.rtxtContent.MenuManager = this.barManager1;
+            this.rtxtContent.Name = "rtxtContent";
+            this.rtxtContent.Size = new System.Drawing.Size(2117, 133);
+            this.rtxtContent.TabIndex = 2;
+            // 
             // xtpBookmarks
             // 
             this.xtpBookmarks.Controls.Add(this.gridControlBookmarkedMessages);
@@ -1726,7 +1681,7 @@ namespace Philips.Analogy
             this.gridColumn1.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumn1.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumn1.Caption = "Data Source";
-            this.gridColumn1.FieldName = "DataSource";
+            this.gridColumn1.FieldName = "DataProvider";
             this.gridColumn1.MinWidth = 24;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
@@ -2075,22 +2030,56 @@ namespace Philips.Analogy
             // 
             // xtCounts
             // 
+            this.xtCounts.Controls.Add(this.nudGroupBychars);
+            this.xtCounts.Controls.Add(this.txtbGroupByCharsLimit);
             this.xtCounts.Controls.Add(this.sBtnGroup);
             this.xtCounts.Controls.Add(this.sBtnLength);
-            this.xtCounts.Controls.Add(this.pbGrouping);
             this.xtCounts.Controls.Add(this.lblGroupByCharsLimit);
-            this.xtCounts.Controls.Add(this.txtbGroupByCharsLimit);
             this.xtCounts.Controls.Add(this.spltGroupByChars);
             this.xtCounts.Controls.Add(this.lblGroupByChars);
-            this.xtCounts.Controls.Add(this.nudGroupBychars);
             this.xtCounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtCounts.Name = "xtCounts";
             this.xtCounts.Size = new System.Drawing.Size(2124, 705);
             this.xtCounts.Text = "Messages Grouping";
             // 
+            // nudGroupBychars
+            // 
+            this.nudGroupBychars.EditValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Location = new System.Drawing.Point(756, 18);
+            this.nudGroupBychars.MenuManager = this.barManager1;
+            this.nudGroupBychars.Name = "nudGroupBychars";
+            this.nudGroupBychars.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nudGroupBychars.Properties.IsFloatValue = false;
+            this.nudGroupBychars.Properties.Mask.EditMask = "N00";
+            this.nudGroupBychars.Properties.MaxValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Properties.MinValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Size = new System.Drawing.Size(98, 22);
+            this.nudGroupBychars.TabIndex = 15;
+            // 
+            // txtbGroupByCharsLimit
+            // 
+            this.txtbGroupByCharsLimit.Location = new System.Drawing.Point(157, 18);
+            this.txtbGroupByCharsLimit.MenuManager = this.barManager1;
+            this.txtbGroupByCharsLimit.Name = "txtbGroupByCharsLimit";
+            this.txtbGroupByCharsLimit.Size = new System.Drawing.Size(250, 22);
+            this.txtbGroupByCharsLimit.TabIndex = 14;
+            // 
             // sBtnGroup
             // 
-            this.sBtnGroup.Location = new System.Drawing.Point(413, 59);
+            this.sBtnGroup.Location = new System.Drawing.Point(860, 16);
             this.sBtnGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnGroup.Name = "sBtnGroup";
             this.sBtnGroup.Size = new System.Drawing.Size(83, 25);
@@ -2100,7 +2089,7 @@ namespace Philips.Analogy
             // 
             // sBtnLength
             // 
-            this.sBtnLength.Location = new System.Drawing.Point(413, 18);
+            this.sBtnLength.Location = new System.Drawing.Point(413, 16);
             this.sBtnLength.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnLength.Name = "sBtnLength";
             this.sBtnLength.Size = new System.Drawing.Size(83, 25);
@@ -2108,41 +2097,21 @@ namespace Philips.Analogy
             this.sBtnLength.Text = "Set Length";
             this.sBtnLength.Click += new System.EventHandler(this.sBtnLength_Click);
             // 
-            // pbGrouping
-            // 
-            this.pbGrouping.Image = global::Philips.Analogy.Properties.Resources.working;
-            this.pbGrouping.Location = new System.Drawing.Point(524, 5);
-            this.pbGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbGrouping.Name = "pbGrouping";
-            this.pbGrouping.Size = new System.Drawing.Size(79, 90);
-            this.pbGrouping.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbGrouping.TabIndex = 8;
-            this.pbGrouping.TabStop = false;
-            this.pbGrouping.Visible = false;
-            // 
             // lblGroupByCharsLimit
             // 
             this.lblGroupByCharsLimit.AutoSize = true;
             this.lblGroupByCharsLimit.Location = new System.Drawing.Point(10, 23);
             this.lblGroupByCharsLimit.Name = "lblGroupByCharsLimit";
-            this.lblGroupByCharsLimit.Size = new System.Drawing.Size(107, 17);
+            this.lblGroupByCharsLimit.Size = new System.Drawing.Size(141, 17);
             this.lblGroupByCharsLimit.TabIndex = 7;
-            this.lblGroupByCharsLimit.Text = "text length limit:";
-            // 
-            // txtbGroupByCharsLimit
-            // 
-            this.txtbGroupByCharsLimit.Location = new System.Drawing.Point(150, 20);
-            this.txtbGroupByCharsLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtbGroupByCharsLimit.Name = "txtbGroupByCharsLimit";
-            this.txtbGroupByCharsLimit.Size = new System.Drawing.Size(257, 23);
-            this.txtbGroupByCharsLimit.TabIndex = 6;
+            this.lblGroupByCharsLimit.Text = "group by text length:";
             // 
             // spltGroupByChars
             // 
             this.spltGroupByChars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spltGroupByChars.Location = new System.Drawing.Point(12, 101);
+            this.spltGroupByChars.Location = new System.Drawing.Point(12, 52);
             this.spltGroupByChars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spltGroupByChars.Name = "spltGroupByChars";
             this.spltGroupByChars.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -2154,8 +2123,8 @@ namespace Philips.Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(2004, 597);
-            this.spltGroupByChars.SplitterDistance = 306;
+            this.spltGroupByChars.Size = new System.Drawing.Size(2004, 633);
+            this.spltGroupByChars.SplitterDistance = 324;
             this.spltGroupByChars.TabIndex = 4;
             // 
             // gCtrlGrouping
@@ -2167,7 +2136,7 @@ namespace Philips.Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(2004, 306);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(2004, 324);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2190,7 +2159,7 @@ namespace Philips.Analogy
             this.gridControlMessageGrouping.MainView = this.gridView1;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2004, 287);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2004, 305);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2232,7 +2201,6 @@ namespace Philips.Analogy
             this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.PaintStyleName = "PMS Harmonize";
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
             // 
@@ -2242,7 +2210,7 @@ namespace Philips.Analogy
             this.gridColumn13.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumn13.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumn13.Caption = "Data Source";
-            this.gridColumn13.FieldName = "DataSource";
+            this.gridColumn13.FieldName = "DataProvider";
             this.gridColumn13.MinWidth = 24;
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
@@ -2476,34 +2444,11 @@ namespace Philips.Analogy
             // lblGroupByChars
             // 
             this.lblGroupByChars.AutoSize = true;
-            this.lblGroupByChars.Location = new System.Drawing.Point(10, 59);
+            this.lblGroupByChars.Location = new System.Drawing.Point(525, 23);
             this.lblGroupByChars.Name = "lblGroupByChars";
-            this.lblGroupByChars.Size = new System.Drawing.Size(207, 17);
+            this.lblGroupByChars.Size = new System.Drawing.Size(225, 17);
             this.lblGroupByChars.TabIndex = 2;
-            this.lblGroupByChars.Text = "Group by number of characters:";
-            // 
-            // nudGroupBychars
-            // 
-            this.nudGroupBychars.Location = new System.Drawing.Point(320, 59);
-            this.nudGroupBychars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudGroupBychars.Maximum = new decimal(new int[] {
-            -1530494977,
-            232830,
-            0,
-            0});
-            this.nudGroupBychars.Minimum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Name = "nudGroupBychars";
-            this.nudGroupBychars.Size = new System.Drawing.Size(87, 23);
-            this.nudGroupBychars.TabIndex = 0;
-            this.nudGroupBychars.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
+            this.lblGroupByChars.Text = "Or group by number of characters:";
             // 
             // cmsBookmarked
             // 
@@ -2532,7 +2477,7 @@ namespace Philips.Analogy
             // 
             // tsmiCalcDiffBookmark
             // 
-            this.tsmiCalcDiffBookmark.Image = global::Philips.Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiCalcDiffBookmark.Image = global::Analogy.Properties.Resources.Time2_16x16;
             this.tsmiCalcDiffBookmark.Name = "tsmiCalcDiffBookmark";
             this.tsmiCalcDiffBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiCalcDiffBookmark.Text = "Calculate Time Difference from this entry";
@@ -2545,7 +2490,7 @@ namespace Philips.Analogy
             // 
             // tsmiRemoveBookmark
             // 
-            this.tsmiRemoveBookmark.Image = global::Philips.Analogy.Properties.Resources.Clear_16x16;
+            this.tsmiRemoveBookmark.Image = global::Analogy.Properties.Resources.Clear_16x16;
             this.tsmiRemoveBookmark.Name = "tsmiRemoveBookmark";
             this.tsmiRemoveBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiRemoveBookmark.Text = "Remove this message";
@@ -2553,7 +2498,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopyBookmark
             // 
-            this.tsmiCopyBookmark.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopyBookmark.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopyBookmark.Name = "tsmiCopyBookmark";
             this.tsmiCopyBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiCopyBookmark.Text = "Copy selected message to clipboard";
@@ -2561,7 +2506,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopyMessagesBookmark
             // 
-            this.tsmiCopyMessagesBookmark.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopyMessagesBookmark.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopyMessagesBookmark.Name = "tsmiCopyMessagesBookmark";
             this.tsmiCopyMessagesBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiCopyMessagesBookmark.Text = "Copy all messages in view to clipboard";
@@ -2570,7 +2515,7 @@ namespace Philips.Analogy
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Enabled = false;
-            this.toolStripMenuItem5.Image = global::Philips.Analogy.Properties.Resources.EditComment_16x16;
+            this.toolStripMenuItem5.Image = global::Analogy.Properties.Resources.EditComment_16x16;
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(360, 26);
             this.toolStripMenuItem5.Text = "Add message/comment at this timestamp";
@@ -2583,7 +2528,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeBookmark
             // 
-            this.tsmiExcludeBookmark.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeBookmark.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeBookmark.Name = "tsmiExcludeBookmark";
             this.tsmiExcludeBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiExcludeBookmark.Text = "Exclude selected message ";
@@ -2591,7 +2536,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeSourceBookmark
             // 
-            this.tsmiExcludeSourceBookmark.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeSourceBookmark.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeSourceBookmark.Name = "tsmiExcludeSourceBookmark";
             this.tsmiExcludeSourceBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiExcludeSourceBookmark.Text = "Exclude Source";
@@ -2599,7 +2544,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeModuleBookmark
             // 
-            this.tsmiExcludeModuleBookmark.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeModuleBookmark.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeModuleBookmark.Name = "tsmiExcludeModuleBookmark";
             this.tsmiExcludeModuleBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiExcludeModuleBookmark.Text = "Exclude Module";
@@ -2612,7 +2557,7 @@ namespace Philips.Analogy
             // 
             // tsmiEmailBookmark
             // 
-            this.tsmiEmailBookmark.Image = global::Philips.Analogy.Properties.Resources.Send_16x16;
+            this.tsmiEmailBookmark.Image = global::Analogy.Properties.Resources.Send_16x16;
             this.tsmiEmailBookmark.Name = "tsmiEmailBookmark";
             this.tsmiEmailBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiEmailBookmark.Text = "Send selected message by mail";
@@ -2620,7 +2565,7 @@ namespace Philips.Analogy
             // 
             // tsmiOTAFullBookmark
             // 
-            this.tsmiOTAFullBookmark.Image = global::Philips.Analogy.Properties.Resources.logIcon;
+            this.tsmiOTAFullBookmark.Image = global::Analogy.Properties.Resources.logIcon;
             this.tsmiOTAFullBookmark.Name = "tsmiOTAFullBookmark";
             this.tsmiOTAFullBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiOTAFullBookmark.Text = "Send Log to another Analogy";
@@ -2633,7 +2578,7 @@ namespace Philips.Analogy
             // 
             // tsmiSaveLayoutBookmark
             // 
-            this.tsmiSaveLayoutBookmark.Image = global::Philips.Analogy.Properties.Resources.Save_16x16;
+            this.tsmiSaveLayoutBookmark.Image = global::Analogy.Properties.Resources.Save_16x16;
             this.tsmiSaveLayoutBookmark.Name = "tsmiSaveLayoutBookmark";
             this.tsmiSaveLayoutBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiSaveLayoutBookmark.Text = "Save columns layout";
@@ -2641,7 +2586,7 @@ namespace Philips.Analogy
             // 
             // tsmiIncreaseFontBookmark
             // 
-            this.tsmiIncreaseFontBookmark.Image = global::Philips.Analogy.Properties.Resources.IncreaseFontSize_16x16;
+            this.tsmiIncreaseFontBookmark.Image = global::Analogy.Properties.Resources.IncreaseFontSize_16x16;
             this.tsmiIncreaseFontBookmark.Name = "tsmiIncreaseFontBookmark";
             this.tsmiIncreaseFontBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiIncreaseFontBookmark.Text = "Increase Font Size";
@@ -2649,7 +2594,7 @@ namespace Philips.Analogy
             // 
             // tsmiDecreaseFontBookmark
             // 
-            this.tsmiDecreaseFontBookmark.Image = global::Philips.Analogy.Properties.Resources.DecreaseFontSize_16x16;
+            this.tsmiDecreaseFontBookmark.Image = global::Analogy.Properties.Resources.DecreaseFontSize_16x16;
             this.tsmiDecreaseFontBookmark.Name = "tsmiDecreaseFontBookmark";
             this.tsmiDecreaseFontBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
@@ -2675,30 +2620,30 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.pnlButtonsHighlight.ResumeLayout(false);
             this.pnlTopFiltering.ResumeLayout(false);
             this.spltFilteringBoth.Panel1.ResumeLayout(false);
             this.spltFilteringBoth.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltFilteringBoth)).EndInit();
             this.spltFilteringBoth.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).EndInit();
+            this.spltCSources.ResumeLayout(false);
             this.pnlFilteringLeft.ResumeLayout(false);
             this.pnlFilteringLeft.PerformLayout();
-            this.spltExcludes.Panel1.ResumeLayout(false);
-            this.spltExcludes.Panel1.PerformLayout();
-            this.spltExcludes.Panel2.ResumeLayout(false);
-            this.spltExcludes.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spltExcludes)).EndInit();
-            this.spltExcludes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.spltFilteringTop)).EndInit();
-            this.spltFilteringTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeModule.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeSource.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfoExclude)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).EndInit();
             this.tcBottom.ResumeLayout(false);
             this.xtpMessageInfo.ResumeLayout(false);
             this.xtpMessageInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rtxtContent.Properties)).EndInit();
             this.xtpBookmarks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).EndInit();
@@ -2711,7 +2656,8 @@ namespace Philips.Analogy
             this.pnlBottom.PerformLayout();
             this.xtCounts.ResumeLayout(false);
             this.xtCounts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGrouping)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).EndInit();
             this.spltGroupByChars.Panel1.ResumeLayout(false);
             this.spltGroupByChars.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).EndInit();
@@ -2720,7 +2666,6 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMessageGrouping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.cmsBookmarked.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -2740,16 +2685,12 @@ namespace Philips.Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCategory;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnUser;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnModule;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnAudit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnObject;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel pnlTopFiltering;
-        private System.Windows.Forms.TextBox txtbInclude;
         private System.Windows.Forms.CheckBox chkbInclude;
         private System.Windows.Forms.CheckBox chkExclude;
-        private System.Windows.Forms.TextBox txtbExclude;
-        private System.Windows.Forms.RichTextBox rtxtContent;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer tmrRefreshFilter;
         private System.Windows.Forms.ContextMenuStrip cmsMessageOperation;
@@ -2760,12 +2701,7 @@ namespace Philips.Analogy
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem tsmiOTAFull;
         private System.Windows.Forms.Timer tmrNewData;
-        private System.Windows.Forms.Label lblExcludeModule;
-        private System.Windows.Forms.TextBox txtbExcludeModule;
-        private System.Windows.Forms.CheckBox chkbExcludeSourceAndModule;
-        private System.Windows.Forms.TextBox txtbExcludeSource;
-        private System.Windows.Forms.SplitContainer spltExcludes;
-        private System.Windows.Forms.SplitContainer spltFilteringTop;
+        private System.Windows.Forms.CheckBox chkbExcludeSources;
         private System.Windows.Forms.PictureBox pboxInfo;
         private System.Windows.Forms.PictureBox pboxInfoExclude;
         private DevExpress.XtraGrid.GridControl gridControlBookmarkedMessages;
@@ -2786,7 +2722,6 @@ namespace Philips.Analogy
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmark;
         private System.Windows.Forms.ToolStripMenuItem tsmiAddCommentToMessage;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtbHighlight;
         private System.Windows.Forms.CheckBox chkbHighlight;
         private System.Windows.Forms.ToolStripMenuItem tsmiExcludeSource;
         private System.Windows.Forms.ToolStripMenuItem tsmiExcludeModule;
@@ -2800,7 +2735,6 @@ namespace Philips.Analogy
         private System.Windows.Forms.SplitContainer spltFilteringBoth;
         private System.Windows.Forms.Panel pnlFilteringLeft;
         private DevExpress.XtraTab.XtraTabPage xtCounts;
-        private System.Windows.Forms.NumericUpDown nudGroupBychars;
         private System.Windows.Forms.Label lblGroupByChars;
         private System.Windows.Forms.SplitContainer spltGroupByChars;
         private DevExpress.XtraGrid.GridControl gridControlMessageGrouping;
@@ -2818,8 +2752,6 @@ namespace Philips.Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private System.Windows.Forms.Label lblGroupByCharsLimit;
-        private System.Windows.Forms.TextBox txtbGroupByCharsLimit;
-        private System.Windows.Forms.PictureBox pbGrouping;
         private DevExpress.XtraEditors.SimpleButton btnUp;
         private DevExpress.XtraEditors.SimpleButton btnDown;
         private DevExpress.XtraEditors.LabelControl lblTotalMessages;
@@ -2909,5 +2841,15 @@ namespace Philips.Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnSaveViewAgnostic;
         private DevExpress.XtraBars.BarSubItem barSubItemSaveEntireLog;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSaveEntireInAnalogy;
+        private DevExpress.XtraEditors.TextEdit txtbInclude;
+        private DevExpress.XtraEditors.TextEdit txtbExclude;
+        private System.Windows.Forms.CheckBox chkbExcludeModules;
+        private DevExpress.XtraEditors.TextEdit txtbExcludeModule;
+        private DevExpress.XtraEditors.TextEdit txtbExcludeSource;
+        private DevExpress.XtraEditors.TextEdit txtbHighlight;
+        private DevExpress.XtraEditors.MemoEdit rtxtContent;
+        private DevExpress.XtraEditors.TextEdit txtbGroupByCharsLimit;
+        private DevExpress.XtraEditors.SpinEdit nudGroupBychars;
+        private System.Windows.Forms.SplitContainer spltCSources;
     }
 }

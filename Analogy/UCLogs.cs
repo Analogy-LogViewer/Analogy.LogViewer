@@ -8,10 +8,6 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
-using DevExpress.XtraTab;
-using Philips.Analogy.DataSources;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,14 +21,16 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataSources;
+using Analogy.Interfaces;
+using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
     {
-        private bool autoScrollToLastMessage;
         private PagingManager PagingManager { get; set; }
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
@@ -50,9 +48,8 @@ namespace Philips.Analogy
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
 
-        private object LockObject => _messageData.Rows.SyncRoot;
         private ReaderWriterLockSlim lockExternalWindowsObject = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
-        private ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+        private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
@@ -100,8 +97,8 @@ namespace Philips.Analogy
         private int pageNumber = 1;
 
         private int TotalPages => PagingManager.TotalPages;
-        private IAnalogyOfflineDataSource FileDataSource { get; set; }
-        private IAnalogyOfflineDataSource AnalogyOfflineDataSource { get; } = new AnalogyOfflineDataSource();
+        private IAnalogyOfflineDataProvider FileDataProvider { get; set; }
+        private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         public UCLogs()
         {
             InitializeComponent();
@@ -111,15 +108,64 @@ namespace Philips.Analogy
             //ClientSizeChanged += (s, e) => { splitContainerMain.SplitterPosition = (int)0.8 * splitContainerMain.Height; };
             LayoutFileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "layout.xml");
             PagingManager = new PagingManager(this);
+            lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
         }
 
-        public void SetFileDataSource(IAnalogyOfflineDataSource fileDataSource)
+        private void UCLogs_Load(object sender, EventArgs e)
         {
-            FileDataSource = fileDataSource;
-            if (FileDataSource is EventLogDataSource eventDataSource)
+            if (DesignMode) return;
+
+            PagingManager.OnPageChanged += (s, arg) =>
+            {
+                if (IsDisposed) return;
+                BeginInvoke(new MethodInvoker(() =>
+                    lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
+
+            };
+            LoadUISettings();
+            BookmarkModeUI();
+
+            hasAnyInPlaceExtensions = ExtensionManager.HasAnyInPlace;
+            hasAnyUserControlExtensions = ExtensionManager.HasAnyInPlace;
+            InPlaceRegisteredExtensions = ExtensionManager.InPlaceRegisteredExtensions.ToList();
+            UserControlRegisteredExtensions = ExtensionManager.UserControlRegisteredExtensions.ToList();
+            InitializeExtensionsColumns();
+            ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
+            {
+                progressBar1.Maximum = value.Total;
+                if (value.Processed < progressBar1.Maximum && value.Total > 1)
+                    progressBar1.Value = value.Processed;
+                if (value.Processed == value.Total)
+                    progressBar1.Visible = false;
+            });
+
+            logGrid.RowCountChanged += (s, arg) =>
+            {
+                if (Settings.AutoScrollToLastMessage && !IsDisposed)
+                {
+                    BeginInvoke(new MethodInvoker(() =>
+                    {
+                        logGrid.MoveLast();
+                        logGrid.MakeRowVisible(logGrid.FocusedRowHandle);
+                    }));
+
+                }
+            };
+
+            gridControl.DataSource = _messageData.DefaultView;
+            _bookmarkedMessages = Utils.DataTableConstructor();
+            gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
+
+            gridControl.Focus();
+        }
+
+        public void SetFileDataSource(IAnalogyOfflineDataProvider fileDataProvider)
+        {
+            FileDataProvider = fileDataProvider;
+            if (FileDataProvider is EventLogDataProvider eventDataSource)
                 eventDataSource.LogWindow = this;
-            if (FileDataSource == null)
+            if (FileDataProvider == null)
             {
                 //disable specific saving
                 bBtnSaveLog.Visibility = BarItemVisibility.Never;
@@ -191,47 +237,6 @@ namespace Philips.Analogy
             return base.ProcessCmdKey(ref msg, keyData);
 
         }
-        private void UCLogs_Load(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-
-            PagingManager.OnPageChanged += (s, arg) =>
-            {
-                if (IsDisposed) return;
-                BeginInvoke(new MethodInvoker(() =>
-                    lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
-
-            };
-            LoadUISettings();
-            BookmarkModeUI();
-
-            hasAnyInPlaceExtensions = ExtensionManager.HasAnyInPlace;
-            hasAnyUserControlExtensions = ExtensionManager.HasAnyInPlace;
-            InPlaceRegisteredExtensions = ExtensionManager.InPlaceRegisteredExtensions.ToList();
-            UserControlRegisteredExtensions = ExtensionManager.UserControlRegisteredExtensions.ToList();
-            InitializeExtensionsColumns();
-            InitializeExtensionsUserControls();
-            ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
-            {
-                progressBar1.Maximum = value.Total;
-                if (value.Processed < progressBar1.Maximum && value.Total > 1)
-                    progressBar1.Value = value.Processed;
-                if (value.Processed == value.Total)
-                    progressBar1.Visible = false;
-            });
-
-            logGrid.RowCountChanged += (s, arg) =>
-            {
-                if (autoScrollToLastMessage && !IsDisposed)
-                    logGrid.MoveLast();
-            };
-
-            gridControl.DataSource = _messageData.DefaultView;
-            _bookmarkedMessages = Utils.DataTableConstructor();
-            gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
-
-            gridControl.Focus();
-        }
 
         private void LoadUISettings()
         {
@@ -241,12 +246,13 @@ namespace Philips.Analogy
 
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
             pnlFilteringLeft.Dock = DockStyle.Fill;
-            txtbInclude.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbInclude.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtbInclude.AutoCompleteCustomSource = autoCompleteInclude;
-            txtbExclude.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbExclude.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtbExclude.AutoCompleteCustomSource = autoCompleteExclude;
+            txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtbInclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtbInclude.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
+
+            txtbExclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtbExclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtbExclude.MaskBox.AutoCompleteCustomSource = autoCompleteExclude;
 
             gridControl.ForceInitialize();
             if (File.Exists(LayoutFileName))
@@ -262,11 +268,10 @@ namespace Philips.Analogy
             logGrid.BestFitColumns();
             btswitchExpand.Checked = true;
             splitContainerMain.Collapsed = true;
-            gridColumnAudit.Visible = false;
             if (Settings.StartupErrorLogLevel)
                 chkLstLogLevel.Items[0].CheckState = CheckState.Checked;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
-
+            btsAutoScrollToBottom.Checked = Settings.AutoScrollToLastMessage;
         }
 
         private void BookmarkModeUI()
@@ -298,19 +303,7 @@ namespace Philips.Analogy
             }
         }
 
-        private void InitializeExtensionsUserControls()
-        {
-            foreach (IAnalogyExtension extension in UserControlRegisteredExtensions)
-            {
-                UserControl uc = extension.GetUserControl();
-                XtraTabPage page = new XtraTabPage();
-                page.ShowCloseButton = DefaultBoolean.True;
-                page.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-                page.Text = extension.DisplayName;
-                xtraTabControl1.TabPages.Add(page);
-            }
-        }
+
 
         private void UCLogs_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
@@ -388,23 +381,36 @@ namespace Philips.Analogy
             if (sender is GridView view && e.RowHandle >= 0)
             {
                 string level = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Level"]);
-                if (level == AnalogyLogLevel.Critical.ToString())
+                var parsed = TryParse(level, true, out AnalogyLogLevel enumLevel);
+                if (parsed)
                 {
-                    e.Appearance.BackColor = Color.Red;
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
-                }
-                else if (level == AnalogyLogLevel.Error.ToString())
-                {
-                    e.Appearance.BackColor = Color.Pink;
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
-                }
-                else if (level == AnalogyLogLevel.Warning.ToString())
-                {
-                    e.Appearance.BackColor = Color.Yellow;
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
+                    switch (enumLevel)
+                    {
+                        case AnalogyLogLevel.Critical:
+                            e.Appearance.BackColor = Color.Red;
+                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                                e.Appearance.ForeColor = Color.Black;
+                            break;
+                        case AnalogyLogLevel.Error:
+                            e.Appearance.BackColor = Color.Pink;
+                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                                e.Appearance.ForeColor = Color.Black;
+                            break;
+                        case AnalogyLogLevel.Warning:
+                            e.Appearance.BackColor = Color.Yellow;
+                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                                e.Appearance.ForeColor = Color.Black;
+                            break;
+                        case AnalogyLogLevel.Event:
+                        case AnalogyLogLevel.Verbose:
+                        case AnalogyLogLevel.Debug:
+                        case AnalogyLogLevel.Disabled:
+                        case AnalogyLogLevel.Trace:
+                        case AnalogyLogLevel.AnalogyInformation:
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
 
                 string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
@@ -431,6 +437,7 @@ namespace Philips.Analogy
                 case AnalogyLogLevel.Warning:
                     img = imageList.Images[1];
                     break;
+                case AnalogyLogLevel.Trace:
                 case AnalogyLogLevel.Event:
                     img = imageList.Images[7];
                     break;
@@ -659,20 +666,6 @@ namespace Philips.Analogy
             }
         }
 
-        public void SetAuditColumnVisibility(bool flag)
-        {
-            gridColumnAudit.Visible = flag;
-        }
-
-        /// <summary>
-        /// This method is to set the Category column visibility based on user requirement
-        /// </summary>
-        /// <param name="flag">true for visibility else false</param>
-        public void SetCategoryColumnVisibility(bool flag)
-        {
-            gridColumnCategory.Visible = flag;
-        }
-
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
             string displayText = string.Empty;
@@ -766,6 +759,9 @@ namespace Philips.Analogy
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+            if (message.Level==AnalogyLogLevel.Disabled)
+                return; //ignore those messages
+            
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();
@@ -778,7 +774,7 @@ namespace Philips.Analogy
                     grid.AppendMessage(message, dataSource);
                 }
             }
-           
+
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
             if (diffStartTime > DateTime.MinValue)
@@ -884,13 +880,19 @@ namespace Philips.Analogy
 
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    lock (LockObject)
+                    lockSlim.EnterWriteLock();
+                    try
                     {
                         logGrid.BeginDataUpdate();
                         _messageData.AcceptChanges();
                         logGrid.EndDataUpdate();
                         RefreshUIMessagesCount();
                     }
+                    finally
+                    {
+                        lockSlim.ExitWriteLock();
+                    }
+
                 }));
         }
 
@@ -898,7 +900,8 @@ namespace Philips.Analogy
         {
 
             _messageData = page;
-            lock (LockObject)
+            lockSlim.EnterWriteLock();
+            try
             {
                 gridControl.DataSource = _messageData.DefaultView;
                 //NewDataExist = true;
@@ -907,7 +910,10 @@ namespace Philips.Analogy
                 NewDataExist = true;
                 FilterResults();
             }
-
+            finally
+            {
+                lockSlim.ExitWriteLock();
+            }
         }
 
         public void FilterResults(string module)
@@ -923,20 +929,29 @@ namespace Philips.Analogy
                 chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
             _filterCriteriaInline.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error.ToString(), AnalogyLogLevel.Critical.ToString(), AnalogyLogLevel.Disabled.ToString() };
-            else if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning.ToString(), AnalogyLogLevel.Disabled.ToString() };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace,AnalogyLogLevel.Disabled};
+            if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug.ToString(), AnalogyLogLevel.Disabled.ToString() };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose.ToString(), AnalogyLogLevel.Disabled.ToString() };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
+            else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled };
 
-            if (chkbExcludeSourceAndModule.Checked)
+            if (chkbExcludeSources.Checked)
             {
                 _filterCriteriaInline.ExcludedSources = string.IsNullOrEmpty(txtbExcludeSource.Text)
                     ? null
                     : txtbExcludeSource.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(val => val.Trim()).ToArray();
+            }
+            else
+            {
+                _filterCriteriaInline.ExcludedSources = null;
+            }
+            if (chkbExcludeModules.Checked)
+            {
                 _filterCriteriaInline.ExcludedModules = string.IsNullOrEmpty(txtbExcludeModule.Text)
                     ? null
                     : txtbExcludeModule.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
@@ -944,16 +959,20 @@ namespace Philips.Analogy
             }
             else
             {
-                _filterCriteriaInline.ExcludedSources = null;
                 _filterCriteriaInline.ExcludedModules = null;
             }
 
 
-            lock (LockObject)
+            lockSlim.EnterWriteLock();
+            try
             {
                 _messageData.BeginLoadData();
                 _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression();
                 _messageData.EndLoadData();
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
 
             var location = LocateByValue(0, gridColumnObject, _currentMassage);
@@ -963,7 +982,7 @@ namespace Philips.Analogy
             RefreshUIMessagesCount();
 
         }
-        public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val, params OperationCompleted[] completed)
+        public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val)
         {
             if (!logGrid.DataController.IsReady || val == null)
                 return int.MinValue;
@@ -976,7 +995,7 @@ namespace Philips.Analogy
             try
             {
                 if (logGrid.IsServerMode)
-                    return logGrid.DataController.FindRowByValue(column.FieldName, val, completed);
+                    return logGrid.DataController.FindRowByValue(column.FieldName, val, null);
                 for (int rowHandle = startRowHandle; rowHandle < logGrid.DataController.VisibleListSourceRowCount; ++rowHandle)
                 {
                     object rowCellValue = logGrid.GetRowCellValue(rowHandle, column.Caption);
@@ -1040,7 +1059,7 @@ namespace Philips.Analogy
 
                 Text = @"File: " + filename;
                 FileProcessor fp = new FileProcessor(this);
-                await fp.Process(FileDataSource, filename, cancellationTokenSource.Token);
+                await fp.Process(FileDataProvider, filename, cancellationTokenSource.Token);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -1138,30 +1157,34 @@ namespace Philips.Analogy
 
         private void txtbExcludeSource_TextChanged(object sender, EventArgs e)
         {
-            EnableDisableSourceAndModule();
+            if (string.IsNullOrEmpty(txtbExcludeSource.Text))
+            {
+                chkbExcludeSources.Checked = false;
+            }
+            else
+            {
+                if (!chkbExcludeSources.Checked)
+                    chkbExcludeSources.Checked = true;
+            }
+
+            RefreshUserFilter();
             Settings.ExcludedSource = txtbExcludeSource.Text;
 
         }
 
         private void txtbExcludeModule_TextChanged(object sender, EventArgs e)
         {
-            EnableDisableSourceAndModule();
-            Settings.ExcludedModules = txtbExcludeModule.Text;
-        }
-
-        private void EnableDisableSourceAndModule()
-        {
-            if (string.IsNullOrEmpty(txtbExcludeModule.Text) && string.IsNullOrEmpty(txtbExcludeSource.Text))
+            if (string.IsNullOrEmpty(txtbExcludeModule.Text))
             {
-                chkbExcludeSourceAndModule.Checked = false;
+                chkbExcludeModules.Checked = false;
             }
             else
             {
-                if (!chkbExcludeSourceAndModule.Checked)
-                    chkbExcludeSourceAndModule.Checked = true;
+                if (!chkbExcludeModules.Checked)
+                    chkbExcludeModules.Checked = true;
             }
-
             RefreshUserFilter();
+            Settings.ExcludedModules = txtbExcludeModule.Text;
         }
 
         private void chkbExcludeSourceAndModule_CheckedChanged(object sender, EventArgs e)
@@ -1216,11 +1239,10 @@ namespace Philips.Analogy
             dtr["Category"] = message.Category ?? "";
             dtr["User"] = message.User ?? "";
             dtr["Module"] = message.Module ?? "";
-            dtr["Audit"] = message.AuditLogType ?? string.Empty;
             dtr["Object"] = message;
             dtr["ProcessID"] = message.ProcessID;
-            string dataSource = (string)logGrid.GetRowCellValue(selRows.First(), "DataSource");
-            dtr["DataSource"] = dataSource;
+            string dataSource = (string)logGrid.GetRowCellValue(selRows.First(), "DataProvider");
+            dtr["DataProvider"] = dataSource;
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1365,11 +1387,6 @@ namespace Philips.Analogy
 
         }
 
-        private void btnGroupByChars_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnUp_Click(object sender, EventArgs e)
         {
             if (HighlightRows.Any() && logGrid.GetSelectedRows().Any())
@@ -1409,10 +1426,10 @@ namespace Philips.Analogy
         private void bBtnSaveLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = Messages;
-            SaveMessagesToLog(FileDataSource, messages);
+            SaveMessagesToLog(FileDataProvider, messages);
         }
 
-        private async void SaveMessagesToLog(IAnalogyOfflineDataSource fileHandler, List<AnalogyLogMessage> messages)
+        private async void SaveMessagesToLog(IAnalogyOfflineDataProvider fileHandler, List<AnalogyLogMessage> messages)
         {
 
             if (fileHandler != null && fileHandler.CanSaveToLogFile)
@@ -1437,7 +1454,7 @@ namespace Philips.Analogy
             {
                 if (XtraMessageBox.Show("Current Data Source does not support Save Operation" + Environment.NewLine + "Do you want to Save in Analogy XML Format?", @"Save not Supported", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+                    SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
                     //SaveFileDialog saveFileDialog = new SaveFileDialog();
                     //saveFileDialog.Filter = "Plain XML log file - Analogy Data format (*.xml)| *.xml";
 
@@ -1537,20 +1554,24 @@ namespace Philips.Analogy
 
         private void sBtnLength_Click(object sender, EventArgs e)
         {
-            nudGroupBychars.Value = Math.Max(txtbGroupByCharsLimit.Text.Length, nudGroupBychars.Minimum);
+            nudGroupBychars.Value = Math.Max(txtbGroupByCharsLimit.Text.Length, nudGroupBychars.Value);
+            ApplyGrouping();
         }
 
         private void sBtnGroup_Click(object sender, EventArgs e)
         {
+            ApplyGrouping();
 
+        }
+
+        private void ApplyGrouping()
+        {
             List<IGrouping<string, AnalogyLogMessage>> grouped = Messages
                 .GroupBy(s => s.Text.Substring(0, Math.Min(s.Text.Length, (int)nudGroupBychars.Value)))
                 .OrderByDescending(i => i.Count()).ToList();
             groupingByChars = grouped.ToDictionary(g => g.Key, g => g.ToList());
             gCtrlGrouping.DataSource = groupingByChars.Keys;
-
         }
-
         private void bBtnCopyButtom_ItemClick(object sender, ItemClickEventArgs e)
         {
             Clipboard.SetText(rtxtContent.Text);
@@ -1590,6 +1611,11 @@ namespace Philips.Analogy
 
         private void tsmiSaveLayout_Click(object sender, EventArgs e)
         {
+            SaveGridLayout();
+        }
+
+        private void SaveGridLayout()
+        {
             try
             {
                 gridControl.MainView.SaveLayoutToXml(LayoutFileName);
@@ -1600,7 +1626,6 @@ namespace Philips.Analogy
                 throw;
             }
         }
-
         private void tsmiBookmarkPersist_Click(object sender, EventArgs e)
         {
             CreateBookmark(true);
@@ -1686,7 +1711,7 @@ namespace Philips.Analogy
             int[] selRows = logGrid.GetSelectedRows();
             if (selRows == null || !selRows.Any()) return (null, string.Empty);
             var row = selRows.First();
-            string datasource = (string)logGrid.GetRowCellValue(row, "DataSource");
+            string datasource = (string)logGrid.GetRowCellValue(row, "DataProvider");
             AnalogyLogMessage message = (AnalogyLogMessage)logGrid.GetRowCellValue(selRows.First(), "Object");
             return (message, datasource);
 
@@ -1717,15 +1742,14 @@ namespace Philips.Analogy
                 dtr["Date"] = message.Date;
                 dtr["Text"] = message.Text ?? "";
                 dtr["Source"] = message.Source ?? "";
-                dtr["Level"] = message.Level.ToString();
-                dtr["Class"] = message.Class.ToString();
+                dtr["Level"] = message.Level;
+                dtr["Class"] = message.Class;
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
-                dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
-                dtr["DataSource"] = "";
+                dtr["DataProvider"] = "";
                 if (diffStartTime > DateTime.MinValue)
                 {
                     dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1763,7 +1787,7 @@ namespace Philips.Analogy
 
         private void btsAutoScrollToBottom_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            autoScrollToLastMessage = btsAutoScrollToBottom.Checked;
+            Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
         }
 
         private void pmsGrid_Click(object sender, EventArgs e)
@@ -1877,7 +1901,7 @@ namespace Philips.Analogy
         {
             var msg = Messages;
             if (!msg.Any()) return;
-            var source = GetFilteredDataTable().Rows[0]?["DataSource"]?.ToString();
+            var source = GetFilteredDataTable().Rows[0]?["DataProvider"]?.ToString();
             if (source == null) return;
             XtraFormLogGrid grid = new XtraFormLogGrid(msg, source);
             lockExternalWindowsObject.EnterWriteLock();
@@ -1897,7 +1921,7 @@ namespace Philips.Analogy
         private void bBtnSaveEntireLog_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = PagingManager.GetAllMessages();
-            SaveMessagesToLog(FileDataSource, messages);
+            SaveMessagesToLog(FileDataProvider, messages);
         }
 
         private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
@@ -1911,6 +1935,7 @@ namespace Philips.Analogy
         {
             Settings.FontSize = logGrid.Appearance.Row.Font.Size + 2;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+            SaveGridLayout();
         }
 
         private void tsmiDecreaseFont_Click(object sender, EventArgs e)
@@ -1919,6 +1944,7 @@ namespace Philips.Analogy
             {
                 Settings.FontSize = logGrid.Appearance.Row.Font.Size - 2;
                 logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+                SaveGridLayout();
             }
         }
 
@@ -1984,14 +2010,16 @@ namespace Philips.Analogy
         private void BbtnSaveViewAgnostic_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = Messages;
-            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+            SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
         }
 
         private void BarButtonItemSaveEntireInAnalogy_ItemClick(object sender, ItemClickEventArgs e)
         {
             var messages = PagingManager.GetAllMessages();
-            SaveMessagesToLog(AnalogyOfflineDataSource, messages);
+            SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
         }
+
+
     }
 }
 

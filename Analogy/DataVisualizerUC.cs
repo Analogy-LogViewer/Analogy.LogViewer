@@ -1,12 +1,12 @@
 ﻿using DevExpress.XtraCharts;
 using DevExpress.XtraEditors.Controls;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class DataVisualizerUC : DevExpress.XtraEditors.XtraUserControl
     {

@@ -1,11 +1,10 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class ExtensionsUC : UserControl
     {

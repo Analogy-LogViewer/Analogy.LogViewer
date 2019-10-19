@@ -1,25 +1,25 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class PagingManager
     {
         private UCLogs owner;
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
+        public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private UserSettingsManager Settings { get; }
         private List<DataTable> pages;
         private List<AnalogyLogMessage> allMessages;
         private int pageSize;
         private int currentPageStartRowIndex;
-        private int currentPageLength;
         private int currentPageNumber;
-        private object lockObject;
+
         private DataTable currentTable;
         private static int _totalMissedMessages;
 
@@ -27,8 +27,11 @@ namespace Philips.Analogy
         {
             get
             {
-                lock (lockObject)
-                    return pages.Count;
+                lockSlim.EnterReadLock();
+                var count = pages.Count;
+                lockSlim.ExitReadLock();
+                return count;
+
             }
         }
 
@@ -37,7 +40,6 @@ namespace Philips.Analogy
         public PagingManager(UCLogs owner)
         {
             this.owner = owner;
-            lockObject = new object();
             Settings = UserSettingsManager.UserSettings;
             pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
@@ -60,11 +62,11 @@ namespace Philips.Analogy
         public void ClearLogs()
         {
             AnalogyPageInformation analogyPage;
-            lock (lockObject)
+            lockSlim.EnterWriteLock();
+            try
             {
                 var oldMessages = allMessages.ToList();
                 pages = new List<DataTable>();
-                currentPageLength = 0;
                 currentPageStartRowIndex = 0;
                 currentPageNumber = 1;
                 var first = Utils.DataTableConstructor();
@@ -73,22 +75,17 @@ namespace Philips.Analogy
                 OnHistoryCleared?.Invoke(this, new AnalogyClearedHistoryEventArgs(oldMessages));
                 analogyPage = new AnalogyPageInformation(currentTable, 1, currentPageStartRowIndex);
             }
+            finally
+            {
+                lockSlim.ExitWriteLock();
+            }
 
             OnPageChanged?.Invoke(this, new AnalogyPagingChanged(analogyPage));
         }
 
-        public void SetAuditColumnVisibility(bool value)
-        {
-            owner.SetAuditColumnVisibility(value);
-        }
-
-        public void SetCategoryColumnVisibility(bool value)
-        {
-            owner.SetCategoryColumnVisibility(value);
-        }
-
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+
             var table = pages.Last();
             allMessages.Add(message);
             if (table.Rows.Count + 1 > pageSize)
@@ -101,24 +98,29 @@ namespace Philips.Analogy
                 var pageStartRowIndex = (pages.Count - 1) * pageSize;
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
-            lock (table.Rows.SyncRoot)
+            lockSlim.EnterWriteLock();
+            try
             {
                 DataRow dtr = table.NewRow();
                 dtr["Date"] = message.Date;
                 dtr["Text"] = message.Text ?? "";
                 dtr["Source"] = message.Source ?? "";
-                dtr["Level"] = message.Level.ToString();
-                dtr["Class"] = message.Class.ToString();
+                dtr["Level"] = string.Intern(message.Level.ToString());
+                dtr["Class"] = string.Intern(message.Class.ToString());
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
-                dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["ThreadID"] = message.Thread;
-                dtr["DataSource"] = dataSource ?? string.Empty;
+                dtr["DataProvider"] = dataSource ?? string.Empty;
                 table.Rows.Add(dtr);
                 return dtr;
+
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
         }
 
@@ -126,40 +128,48 @@ namespace Philips.Analogy
         {
             var table = pages.Last();
             var countInsideTable = table.Rows.Count;
-            foreach (var message in messages)
+            lockSlim.EnterWriteLock();
+            try
             {
-                allMessages.Add(message);
-                if (countInsideTable + 1 > pageSize)
+                foreach (var message in messages)
                 {
-                    var isTableInView = currentTable == table;
-                    if (!isTableInView)
-                        owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessages)}");
-                    table = Utils.DataTableConstructor();
-                    pages.Add(table);
-                    countInsideTable = 0;
-                    var pageStartRowIndex = (pages.Count - 1) * pageSize;
-                    OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
-                }
-                lock (table.Rows.SyncRoot)
-                {
+                    if (message.Level == AnalogyLogLevel.Disabled)
+                        continue; //ignore those messages
+                    allMessages.Add(message);
+                    if (countInsideTable + 1 > pageSize)
+                    {
+                        var isTableInView = currentTable == table;
+                        if (!isTableInView)
+                            owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessages)}");
+                        table = Utils.DataTableConstructor();
+                        pages.Add(table);
+                        countInsideTable = 0;
+                        var pageStartRowIndex = (pages.Count - 1) * pageSize;
+                        OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
+                    }
+
                     countInsideTable++;
                     DataRow dtr = table.NewRow();
                     dtr["Date"] = message.Date;
                     dtr["Text"] = message.Text ?? "";
                     dtr["Source"] = message.Source ?? "";
-                    dtr["Level"] = message.Level.ToString();
-                    dtr["Class"] = message.Class.ToString();
+                    dtr["Level"] = string.Intern(message.Level.ToString());
+                    dtr["Class"] = string.Intern(message.Class.ToString());
                     dtr["Category"] = message.Category ?? "";
                     dtr["User"] = message.User ?? "";
                     dtr["Module"] = message.Module ?? "";
-                    dtr["Audit"] = message.AuditLogType;
                     dtr["Object"] = message;
                     dtr["ProcessID"] = message.ProcessID;
                     dtr["ThreadID"] = message.Thread;
-                    dtr["DataSource"] = dataSource ?? string.Empty;
+                    dtr["DataProvider"] = dataSource ?? string.Empty;
                     table.Rows.Add(dtr);
                     yield return (dtr, message);
                 }
+
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
             //if (currentTable != table)
             //    owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessage)}(2)");
@@ -168,68 +178,75 @@ namespace Philips.Analogy
 
         public AnalogyPageInformation NextPage()
         {
-            lock (lockObject)
+            lockSlim.EnterReadLock();
+
+            if (pages.Last() != currentTable)
             {
-                if (pages.Last() != currentTable)
-                {
-                    currentPageNumber++;
-                    currentTable = pages[currentPageNumber - 1];
-                    currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
-                }
-                return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+                currentPageNumber++;
+                currentTable = pages[currentPageNumber - 1];
+                currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
             }
+            lockSlim.ExitReadLock();
+            return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+
         }
 
         public AnalogyPageInformation PrevPage()
         {
-            lock (lockObject)
+            lockSlim.EnterReadLock();
+            if (pages.First() != currentTable)
             {
-                if (pages.First() != currentTable)
-                {
-                    currentPageNumber--;
-                    currentTable = pages[currentPageNumber - 1];
-                    currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
-                }
-
-                return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+                currentPageNumber--;
+                currentTable = pages[currentPageNumber - 1];
+                currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
             }
+            lockSlim.ExitReadLock();
+            return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+
         }
 
         public DataTable FirstPage()
         {
-            lock (lockObject)
-            {
-                currentTable = pages.First();
-                currentPageNumber = 1;
-                return currentTable;
-            }
+            lockSlim.EnterReadLock();
+            currentTable = pages.First();
+            currentPageNumber = 1;
+            lockSlim.ExitReadLock();
+            return currentTable;
+
         }
         public DataTable LastPage()
         {
-            lock (lockObject)
-            {
-                currentTable = pages.Last();
-                currentPageNumber = pages.Count;
-                return currentTable;
-            }
+            lockSlim.EnterReadLock();
+            currentTable = pages.Last();
+            currentPageNumber = pages.Count;
+            lockSlim.ExitReadLock();
+            return currentTable;
+
         }
 
         public List<AnalogyLogMessage> GetAllMessages()
         {
-            lock (lockObject)
-                return allMessages.ToList();
+            lockSlim.EnterReadLock();
+            var items = allMessages.ToList();
+            lockSlim.ExitReadLock();
+            return items;
         }
 
         public DataTable CurrentPage()
         {
-            lock (lockObject)
-                return currentTable;
+            lockSlim.EnterReadLock();
+            var table = currentTable;
+            lockSlim.ExitReadLock();
+            return table;
         }
 
         public bool IsCurrentPageInView(DataTable currentView)
         {
-            lock (lockObject)
-                return currentTable == currentView;
+            lockSlim.EnterReadLock();
+            var current = currentTable == currentView;
+            lockSlim.ExitReadLock();
+            return current;
+
         }
 
         public void IncrementTotalMissedMessages()

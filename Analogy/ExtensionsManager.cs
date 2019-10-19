@@ -1,18 +1,17 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class ExtensionsManager : IExtensionsManager
     {
-        private static Lazy<ExtensionsManager> _instance => new Lazy<ExtensionsManager>(()=>new ExtensionsManager());
+        private static Lazy<ExtensionsManager> _instance => new Lazy<ExtensionsManager>(() => new ExtensionsManager());
         public static ExtensionsManager Instance => _instance.Value;
         private AnalogyLogger Log { get; } = new AnalogyLogger();
         private List<IAnalogyExtension> LoadedExtensions { get; } = new List<IAnalogyExtension>();

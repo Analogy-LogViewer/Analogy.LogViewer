@@ -1,7 +1,6 @@
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using Newtonsoft.Json;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,9 +13,9 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public static class Utils
     {
@@ -141,9 +140,6 @@ namespace Philips.Analogy
             dtc = new DataColumn("Module", typeof(string));
             dtb.Columns.Add(dtc);
 
-            dtc = new DataColumn("Audit", typeof(string));
-            dtb.Columns.Add(dtc);
-
             dtc = new DataColumn("Object", typeof(object));
             dtb.Columns.Add(dtc);
 
@@ -151,7 +147,7 @@ namespace Philips.Analogy
             dtb.Columns.Add(dtc);
             dtc = new DataColumn("ThreadID", typeof(int));
             dtb.Columns.Add(dtc);
-            dtc = new DataColumn("DataSource", typeof(string));
+            dtc = new DataColumn("DataProvider", typeof(string));
             dtb.Columns.Add(dtc);
             var manager = ExtensionsManager.Instance;
             foreach (IAnalogyExtension extension in manager.InPlaceRegisteredExtensions)
@@ -277,7 +273,7 @@ namespace Philips.Analogy
 
     public class FilterCriteriaObject
     {
-        private readonly string[] _allLevels = Enum.GetNames(typeof(AnalogyLogLevel));
+        private readonly AnalogyLogLevel[] _allLevels = Enum.GetValues(typeof(AnalogyLogLevel)) as AnalogyLogLevel[];
         public string[] ExcludedSources;
         public string[] Modules;
         public string[] ExcludedModules;
@@ -285,8 +281,8 @@ namespace Philips.Analogy
         public string TextInclude { get; set; }
 
         public string TextExclude { get; set; }
-        private string[] _arrLevels;
-        public string[] Levels
+        private AnalogyLogLevel[] _arrLevels;
+        public AnalogyLogLevel[] Levels
         {
             get => _arrLevels ?? _allLevels;
             set => _arrLevels = value;

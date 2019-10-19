@@ -1,19 +1,18 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class CombineFilesUC : UserControl
     {
-        private IAnalogyOfflineDataSource offlineAnalogy;
+        private IAnalogyOfflineDataProvider offlineAnalogy;
         public CombineFilesUC()
         {
             InitializeComponent();
         }
 
-       
+
 
         private async void sBtnCombined_Click(object sender, EventArgs e)
         {
@@ -115,14 +114,14 @@ namespace Philips.Analogy
 
             //    }
         }
-    
 
-        public void SetDataSource(IAnalogyOfflineDataSource analogyOfflineDataSource)
+
+        public void SetDataSource(IAnalogyOfflineDataProvider analogyOfflineDataProvider)
         {
-            offlineAnalogy = analogyOfflineDataSource;
-            this.fileSystemUC1.DataSource = offlineAnalogy;
+            offlineAnalogy = analogyOfflineDataProvider;
+            this.fileSystemUC1.DataProvider = offlineAnalogy;
         }
 
-        
+
     }
 }

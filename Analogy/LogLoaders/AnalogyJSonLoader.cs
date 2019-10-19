@@ -4,19 +4,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Interfaces;
 using Newtonsoft.Json;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Interfaces;
 
-namespace Philips.Analogy.LogLoaders
+namespace Analogy.LogLoaders
 {
- 
-    public class AnalogyJsonLogFile 
+
+    public class AnalogyJsonLogFile
     {
 
         public async Task<IEnumerable<AnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messageHandler)
         {
-            
+
             if (string.IsNullOrEmpty(fileName))
             {
                 AnalogyLogMessage empty = new AnalogyLogMessage($"File is null or empty. Aborting.", AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None");
@@ -45,7 +44,7 @@ namespace Philips.Analogy.LogLoaders
                     messageHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                     return new List<AnalogyLogMessage>() { empty };
                 }
-            },token);
+            }, token);
 
         }
 
@@ -56,7 +55,7 @@ namespace Philips.Analogy.LogLoaders
 
                 //write string to file
                 File.WriteAllText(fileName, json);
-               
+
             });
 
 

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Interface Name="Analogy.Interfaces.Factories.IAnalogyFactory">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAJAAAIAAAAEEAIAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Factories\IAnalogyFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Analogy.Interfaces.Factories.IAnalogyDataProvidersFactory">
+    <Position X="4" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\IAnalogyDataProvidersFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Analogy.Interfaces.Factories.IAnalogyCustomActionsFactory">
+    <Position X="4" Y="2" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\IAnalogyCustomActionsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Analogy.Interfaces.IAnalogyDataProvider">
+    <Position X="3" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>IAnalogyDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Analogy.Interfaces.IAnalogyRealTimeDataProvider">
+    <Position X="4.25" Y="6.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAABAABAAAAAAAACCCAAAAAAAAAAgAAA=</HashCode>
+      <FileName>IAnalogyDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Analogy.Interfaces.IAnalogyOfflineDataProvider">
+    <Position X="0.75" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACBAAAAAQAAgAAQBAAAqAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>IAnalogyDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

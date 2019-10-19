@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class OfflineUCLogs
     {
@@ -39,7 +39,7 @@ namespace Philips.Analogy
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OfflineUCLogs));
             this.spltMain = new System.Windows.Forms.SplitContainer();
             this.splcLeft = new System.Windows.Forms.SplitContainer();
-            this.folderTreeViewUC1 = new Philips.Analogy.FolderTreeViewUC();
+            this.folderTreeViewUC1 = new Analogy.FolderTreeViewUC();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colChanged = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -59,7 +59,7 @@ namespace Philips.Analogy
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.chkbSelectionMode = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditRecursiveLoad = new DevExpress.XtraEditors.CheckEdit();
-            this.ucLogs1 = new Philips.Analogy.UCLogs();
+            this.ucLogs1 = new Analogy.UCLogs();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tsPrimary = new System.Windows.Forms.ToolStrip();

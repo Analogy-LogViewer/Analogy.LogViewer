@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class SearchForm
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchForm));
-            this.searchInFilesUC1 = new Philips.Analogy.SearchInFilesUC();
+            this.searchInFilesUC1 = new Analogy.SearchInFilesUC();
             this.SuspendLayout();
             // 
             // searchInFilesUC1

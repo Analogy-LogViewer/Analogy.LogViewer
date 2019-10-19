@@ -1,14 +1,13 @@
-﻿using Philips.Analogy.Interfaces.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraTreeList.Nodes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class OfflineUCLogs : UserControl
@@ -16,19 +15,19 @@ namespace Philips.Analogy
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; }
-        private IAnalogyOfflineDataSource DataSource { get; }
+        private IAnalogyOfflineDataProvider DataProvider { get; }
         public OfflineUCLogs(string initSelectedPath)
         {
             SelectedPath = initSelectedPath;
             InitializeComponent();
         }
 
-        public OfflineUCLogs(IAnalogyOfflineDataSource dataSource, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
+        public OfflineUCLogs(IAnalogyOfflineDataProvider dataProvider, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
         {
-            DataSource = dataSource;
+            DataProvider = dataProvider;
             if (fileNames != null)
                 extrenalFiles.AddRange(fileNames);
-            ucLogs1.SetFileDataSource(dataSource);
+            ucLogs1.SetFileDataSource(dataProvider);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -49,7 +48,7 @@ namespace Philips.Analogy
                     SelectedPath = Path.GetDirectoryName(extrenalFiles.First());
             }
 
-            folderTreeViewUC1.SetFolder(SelectedPath, DataSource);
+            folderTreeViewUC1.SetFolder(SelectedPath, DataProvider);
             PopulateFiles(SelectedPath);
 
             if (extrenalFiles.Any())
@@ -73,7 +72,7 @@ namespace Philips.Analogy
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             await LoadFilesAsync(files.ToList(), chkbSelectionMode.Checked);
         }
-        
+
         private void PopulateFiles(string folder)
         {
             if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
@@ -82,7 +81,7 @@ namespace Philips.Analogy
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
-            List<FileInfo> fileInfos = DataSource.GetSupportedFiles(dirInfo, recursiveLoad).ToList();
+            List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).ToList();
             treeList1.Nodes.Clear();
             foreach (FileInfo fi in fileInfos)
             {
@@ -96,7 +95,7 @@ namespace Philips.Analogy
         }
         private async void TreeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-          
+
 
         }
         private async Task LoadFilesAsync(List<string> fileNames, bool clearLog)
@@ -109,7 +108,7 @@ namespace Philips.Analogy
         {
             if (treeList1.Selection.Any())
             {
-                var filename = (string) treeList1.Selection.First().GetValue(colFullPath);
+                var filename = (string)treeList1.Selection.First().GetValue(colFullPath);
                 if (filename == null || !File.Exists(filename)) return;
                 Process.Start("explorer.exe", "/select, \"" + filename + "\"");
             }

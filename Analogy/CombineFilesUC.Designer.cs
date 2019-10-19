@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class CombineFilesUC
     {
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fileSystemUC1 = new Philips.Analogy.FileSystemUC();
-            this.processFilesUC1 = new Philips.Analogy.FilesOperationsUC();
+            this.fileSystemUC1 = new Analogy.FileSystemUC();
+            this.processFilesUC1 = new Analogy.FilesOperationsUC();
             this.panel3 = new System.Windows.Forms.Panel();
             this.sBtnSave = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnCombined = new DevExpress.XtraEditors.SimpleButton();

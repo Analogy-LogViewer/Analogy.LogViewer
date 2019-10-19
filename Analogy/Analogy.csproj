@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -23,9 +23,9 @@
     <DelaySign>false</DelaySign>
     <OutputType>WinExe</OutputType>
     <PlatformTarget>x86</PlatformTarget>
-    <RootNamespace>Philips.Analogy</RootNamespace>
+    <RootNamespace>Analogy</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>Philips.Analogy.Program</StartupObject>
+    <StartupObject>Analogy.Program</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -146,10 +146,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.Images.v19.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.Printing.v19.1.Core.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.Utils.v19.1.dll</HintPath>
@@ -190,6 +193,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.XtraPrinting.v19.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.XtraTreeList.v19.1.dll</HintPath>
@@ -262,8 +266,8 @@
     <Compile Include="BookmarkPersistManager.cs" />
     <Compile Include="ClientServerDataSourceManager.cs" />
     <Compile Include="AnalogyFactoriesManager.cs" />
-    <Compile Include="DataSources\AnalogyBuiltInFactory.cs" />
-    <Compile Include="DataSources\EventLogDataSource.cs" />
+    <Compile Include="DataProviders\AnalogyBuiltInFactory.cs" />
+    <Compile Include="DataProviders\EventLogDataProvider.cs" />
     <Compile Include="LogLoaders\AnalogyJSonLoader.cs" />
     <Compile Include="DataVisualizerUC.cs">
       <SubType>UserControl</SubType>
@@ -493,11 +497,11 @@
     <Compile Include="XtraFormLogGrid.Designer.cs">
       <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraFormWindowsEventlogsManage.cs">
+    <Compile Include="XtraFormWindowsEventlogsManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XtraFormWindowsEventlogsManage.Designer.cs">
-      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    <Compile Include="XtraFormWindowsEventlogsManager.Designer.cs">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
     </Compile>
     <Compile Include="XtraUCDirectoryListing.cs">
       <SubType>UserControl</SubType>
@@ -517,8 +521,8 @@
     <Compile Include="XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="XtraFormWindowsEventlogsManage.resx">
-      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    <EmbeddedResource Include="XtraFormWindowsEventlogsManager.resx">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraUCWindowsEventLogs.resx">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
@@ -779,13 +783,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DevExpress\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
       <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
       <Name>Analogy.Interfaces</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DevExpress\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

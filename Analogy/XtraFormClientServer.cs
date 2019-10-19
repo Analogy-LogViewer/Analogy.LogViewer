@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class XtraFormClientServer : DevExpress.XtraEditors.XtraForm
     {
@@ -12,10 +12,10 @@ namespace Philips.Analogy
 
         public void UpdateUI()
         {
-             if (rBtnNetwork.Checked)
+            if (rBtnNetwork.Checked)
                 lblPath.Text = "Network Path:";
-             else if (rBtnLocal.Checked)
-                 lblPath.Text = "Local Path:";
+            else if (rBtnLocal.Checked)
+                lblPath.Text = "Local Path:";
         }
 
         private void radioButtons_CheckedChanged(object sender, EventArgs e)

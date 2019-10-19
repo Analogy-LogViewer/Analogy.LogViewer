@@ -6,24 +6,24 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class ClientServerUCLog : UserControl
     {
         public string SelectedPath { get; set; }
-        private IAnalogyOfflineDataSource DataSource { get; }
+        private IAnalogyOfflineDataProvider DataProvider { get; }
         public ClientServerUCLog()
         {
             InitializeComponent();
         }
 
-        public ClientServerUCLog(IAnalogyOfflineDataSource dataSource) :this()
+        public ClientServerUCLog(IAnalogyOfflineDataProvider dataProvider) : this()
         {
-            DataSource = dataSource;
-            ucLogs1.SetFileDataSource(DataSource);
+            DataProvider = dataProvider;
+            ucLogs1.SetFileDataSource(DataProvider);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -52,13 +52,13 @@ namespace Philips.Analogy
             lBoxFiles.SelectedIndexChanged -= lBoxFiles_SelectedIndexChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
-            var fileInfos =DataSource.GetSupportedFiles(dirInfo, recursiveLoad).OrderByDescending(f => f.LastWriteTime);
+            var fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).OrderByDescending(f => f.LastWriteTime);
             lBoxFiles.DisplayMember = recursiveLoad ? "FullName" : "Name";
             lBoxFiles.DataSource = fileInfos;
             lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;
 
         }
-       
+
 
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLog)
         {
@@ -74,7 +74,7 @@ namespace Philips.Analogy
                 PopulateFiles(data.Path);
             }
         }
-        
+
 
         private void bBtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
