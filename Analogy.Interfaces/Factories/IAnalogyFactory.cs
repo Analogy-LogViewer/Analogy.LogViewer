@@ -15,7 +15,7 @@ namespace Analogy.Interfaces.Factories
         /// </summary>
         IAnalogyDataProvidersFactory DataProviders { get; }
         /// <summary>
-        /// Actions factory (non UI). Use EmptyActionsFactory if not needed 
+        /// Actions factory. Use EmptyActionsFactory if not needed 
         /// </summary>
         IAnalogyCustomActionsFactory Actions { get; }
         IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
