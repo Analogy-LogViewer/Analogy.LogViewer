@@ -52,3 +52,7 @@
 /Analogy.Interfaces.Net471/nuget.exe
 /Analogy.Implementation.KafkaProvider/obj
 /Analogy.Implementation.KafkaProvider/bin/Debug/netstandard2.0
+/.vs/Analogy/v16/TestStore/0
+/Analogy.Implementation.KafkaProvider/Properties/PublishProfiles
+/Analogy.Implementation.KafkaProvider/Analogy.Implementation.KafkaProvider.csproj.user
+/packages

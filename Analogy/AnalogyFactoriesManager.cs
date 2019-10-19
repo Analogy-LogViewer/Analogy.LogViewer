@@ -37,8 +37,14 @@ namespace Analogy
                             if (aType.GetInterface(nameof(IAnalogyFactory)) != null)
                             {
                                 IAnalogyFactory factory = Activator.CreateInstance(aType) as IAnalogyFactory;
+                                if (factory == null) continue;
                                 Factories.Add(factory);
+                                foreach (var provider in factory.DataProviders.Items)
+                                {
+                                    provider.InitDataProvider();
+                                }
                                 Assemblies.Add((factory, assembly));
+
                             }
                         }
                         catch (Exception)
