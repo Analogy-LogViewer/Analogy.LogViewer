@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class UtilityUC : UserControl
     {

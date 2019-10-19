@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -23,9 +23,9 @@
     <DelaySign>false</DelaySign>
     <OutputType>WinExe</OutputType>
     <PlatformTarget>x86</PlatformTarget>
-    <RootNamespace>Philips.Analogy</RootNamespace>
+    <RootNamespace>Analogy</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>Philips.Analogy.Program</StartupObject>
+    <StartupObject>Analogy.Program</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -497,11 +497,11 @@
     <Compile Include="XtraFormLogGrid.Designer.cs">
       <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraFormWindowsEventlogsManage.cs">
+    <Compile Include="XtraFormWindowsEventlogsManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XtraFormWindowsEventlogsManage.Designer.cs">
-      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    <Compile Include="XtraFormWindowsEventlogsManager.Designer.cs">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
     </Compile>
     <Compile Include="XtraUCDirectoryListing.cs">
       <SubType>UserControl</SubType>
@@ -521,8 +521,8 @@
     <Compile Include="XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="XtraFormWindowsEventlogsManage.resx">
-      <DependentUpon>XtraFormWindowsEventlogsManage.cs</DependentUpon>
+    <EmbeddedResource Include="XtraFormWindowsEventlogsManager.resx">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraUCWindowsEventLogs.resx">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>

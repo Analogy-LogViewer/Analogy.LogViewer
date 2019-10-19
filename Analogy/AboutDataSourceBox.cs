@@ -2,10 +2,10 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using Analogy.Interfaces.Factories;
 using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces.Factories;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class AboutDataSourceBox : XtraForm
     {
@@ -92,7 +92,7 @@ namespace Philips.Analogy
                 return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
         }
-        
+
         private void AboutDataSourceBox_Load(object sender, EventArgs e)
         {
             this.Text = string.Format("About {0}", AssemblyTitle);
@@ -102,7 +102,7 @@ namespace Philips.Analogy
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = $"{AssemblyDescription}{Environment.NewLine}{Factory.About}";
             rtxtChangeLog.Text = string.Join(Environment.NewLine,
-                Factory.ChangeLog.OrderByDescending(c=>c.Date).Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
+                Factory.ChangeLog.OrderByDescending(c => c.Date).Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
             rtxtContributions.Text = string.Join(Environment.NewLine, Factory.Contributors);
         }
     }

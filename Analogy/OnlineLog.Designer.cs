@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class OnlineUCLogs
     {
@@ -43,7 +43,7 @@ namespace Philips.Analogy
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.ucLogs1 = new Philips.Analogy.UCLogs();
+            this.ucLogs1 = new Analogy.UCLogs();
             this.tsPrimary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltMain)).BeginInit();
             this.spltMain.Panel1.SuspendLayout();

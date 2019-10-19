@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Analogy.LogViewer</id>
-    <version>4.0.6</version>
+    <version>4.1.1</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
@@ -11,21 +11,19 @@
     <icon>icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>
-    <releaseNotes>See github page</releaseNotes>
+    <releaseNotes>Target .net framework 4.7.2. See github page</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
 	<dependencies>
-    <group targetFramework="net471">    
+    <group targetFramework="net472">    
+		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.1" />
     </group>
-	 <group>
-	<dependency id="Analogy.LogViewer.Interfaces" version="2.0.2" />
-	</group>
 </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Analogy.exe" target="lib\net471\Analogy.exe" />
-    <file src="bin\Release\Analogy.xml" target="lib\net471\Analogy.xml" />
-	<file src="bin\Release\Analogy.exe.config" target="lib\net471\Analogy.exe.config" />
+    <file src="bin\Release\Analogy.exe" target="lib\net472\Analogy.exe" />
+    <file src="bin\Release\Analogy.xml" target="lib\net472\Analogy.xml" />
+	<file src="bin\Release\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
 	<file src="icon.png" target="" />
 </files>
 </package>

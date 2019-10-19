@@ -46,3 +46,7 @@
 /Analogy.Interfaces.Standard/bin/Debug
 /Analogy.Interfaces.Standard/obj
 /Analogy.Interfaces.Standard/bin/Release/netstandard2.0
+/Analogy.Interfaces/obj
+/Analogy.Interfaces.Net471/bin
+/Analogy.Interfaces.Net471/obj
+/Analogy.Interfaces.Net471/nuget.exe

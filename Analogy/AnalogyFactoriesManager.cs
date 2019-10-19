@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Philips.Analogy.DataSources;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.Interfaces.Factories;
+using Analogy.DataSources;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class AnalogyFactoriesManager
     {
@@ -21,7 +21,7 @@ namespace Philips.Analogy
         {
             Factories = new List<IAnalogyFactory>();
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>();
-            Assemblies.Add((new AnalogyBuiltInFactory(),Assembly.GetExecutingAssembly()));
+            Assemblies.Add((new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()));
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)
@@ -38,7 +38,7 @@ namespace Philips.Analogy
                             {
                                 IAnalogyFactory factory = Activator.CreateInstance(aType) as IAnalogyFactory;
                                 Factories.Add(factory);
-                                Assemblies.Add((factory,assembly));
+                                Assemblies.Add((factory, assembly));
                             }
                         }
                         catch (Exception)
@@ -73,7 +73,7 @@ namespace Philips.Analogy
                 yield return (factory.Title, (title, items));
             }
         }
-   
+
         public List<IAnalogyFactory> GetFactories() => Factories.ToList();
 
         public IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSources(string[] fileNames)
@@ -94,8 +94,8 @@ namespace Philips.Analogy
                 IEnumerable<IAnalogyDataProvider> supported = factory.DataProviders.Items.Where(i => i is IAnalogyRealTimeDataProvider);
                 foreach (var analogyDataSource in supported)
                 {
-                    var dataSource = (IAnalogyRealTimeDataProvider) analogyDataSource;
-                    yield return (factory.Title,dataSource.ID);
+                    var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
+                    yield return (factory.Title, dataSource.ID);
                 }
             }
         }

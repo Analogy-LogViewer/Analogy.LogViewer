@@ -1,6 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using Philips.Analogy.Interfaces;
-using Philips.Analogy.LogLoaders;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,9 +6,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
+using Analogy.LogLoaders;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class BookmarkPersistManager : ILogMessageCreatedHandler
     {

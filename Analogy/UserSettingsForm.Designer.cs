@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class UserSettingsForm
     {
@@ -34,6 +34,7 @@
             this.gcFiles = new DevExpress.XtraEditors.GroupControl();
             this.tsFileCaching = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcFiltering = new DevExpress.XtraEditors.GroupControl();
+            this.tsHistory = new DevExpress.XtraEditors.ToggleSwitch();
             this.checkEditSearchAlsoInSourceAndModule = new DevExpress.XtraEditors.CheckEdit();
             this.chkEditPaging = new DevExpress.XtraEditors.CheckEdit();
             this.nudPageLength = new System.Windows.Forms.NumericUpDown();
@@ -41,7 +42,6 @@
             this.tsFilteringExclude = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsAutoComplete = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtraTabPagePreDefined = new DevExpress.XtraTab.XtraTabPage();
-            this.tsHistory = new DevExpress.XtraEditors.ToggleSwitch();
             this.tpLookAndFeel = new DevExpress.XtraTab.XtraTabPage();
             this.tsStartupRibbonMinimized = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsSimpleMode = new DevExpress.XtraEditors.ToggleSwitch();
@@ -78,13 +78,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).BeginInit();
             this.gcFiltering.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEditPaging.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPageLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsErrorLevelAsDefault.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsFilteringExclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).BeginInit();
             this.tpLookAndFeel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).BeginInit();
@@ -130,7 +130,7 @@
             // 
             this.xtraTabPageFilter.Controls.Add(this.gcFiles);
             this.xtraTabPageFilter.Controls.Add(this.gcFiltering);
-            this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
+            this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageFilter.ImageOptions.Image")));
             this.xtraTabPageFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPageFilter.Name = "xtraTabPageFilter";
             this.xtraTabPageFilter.Size = new System.Drawing.Size(744, 562);
@@ -179,6 +179,19 @@
             this.gcFiltering.Size = new System.Drawing.Size(737, 302);
             this.gcFiltering.TabIndex = 3;
             this.gcFiltering.Text = "Filtering, search and interaction of messages area";
+            // 
+            // tsHistory
+            // 
+            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsHistory.Location = new System.Drawing.Point(5, 133);
+            this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsHistory.Name = "tsHistory";
+            this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
+            this.tsHistory.Properties.OnText = "Show history of cleared Messages";
+            this.tsHistory.Size = new System.Drawing.Size(672, 28);
+            this.tsHistory.TabIndex = 0;
+            this.tsHistory.Toggled += new System.EventHandler(this.tsHistory_Toggled);
             // 
             // checkEditSearchAlsoInSourceAndModule
             // 
@@ -265,24 +278,12 @@
             // 
             // xtraTabPagePreDefined
             // 
-            this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage2.ImageOptions.Image")));
+            this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPagePreDefined.ImageOptions.Image")));
             this.xtraTabPagePreDefined.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPagePreDefined.Name = "xtraTabPagePreDefined";
+            this.xtraTabPagePreDefined.PageVisible = false;
             this.xtraTabPagePreDefined.Size = new System.Drawing.Size(744, 562);
             this.xtraTabPagePreDefined.Text = "Pre defined queries";
-            // 
-            // tsHistory
-            // 
-            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsHistory.Location = new System.Drawing.Point(5, 133);
-            this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsHistory.Name = "tsHistory";
-            this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
-            this.tsHistory.Properties.OnText = "Show history of cleared Messages";
-            this.tsHistory.Size = new System.Drawing.Size(672, 28);
-            this.tsHistory.TabIndex = 0;
-            this.tsHistory.Toggled += new System.EventHandler(this.tsHistory_Toggled);
             // 
             // tpLookAndFeel
             // 
@@ -627,13 +628,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).EndInit();
             this.gcFiltering.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEditPaging.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPageLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsErrorLevelAsDefault.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsFilteringExclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).EndInit();
             this.tpLookAndFeel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).EndInit();

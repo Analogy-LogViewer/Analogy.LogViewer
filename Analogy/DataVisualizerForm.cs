@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class DataVisualizerForm : DevExpress.XtraEditors.XtraForm
     {
@@ -11,9 +11,9 @@ namespace Philips.Analogy
         {
             InitializeComponent();
         }
-        public DataVisualizerForm(List<AnalogyLogMessage> messages):this()
+        public DataVisualizerForm(List<AnalogyLogMessage> messages) : this()
         {
-            DataVisualizerUC uc=new DataVisualizerUC(messages);
+            DataVisualizerUC uc = new DataVisualizerUC(messages);
             this.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
         }

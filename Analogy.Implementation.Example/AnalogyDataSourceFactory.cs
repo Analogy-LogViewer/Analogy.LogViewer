@@ -1,6 +1,6 @@
-﻿using Philips.Analogy.Interfaces.Factories;
-using System.Collections.Generic;
-using Philips.Analogy.Interfaces;
+﻿using System.Collections.Generic;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 
 namespace Analogy.Implementation.Example
 {

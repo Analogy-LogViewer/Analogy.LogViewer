@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class UCMessageDetails : UserControl
     {
@@ -28,7 +28,23 @@ namespace Philips.Analogy
         {
             LoadMessage();
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Left)
+            {
+                LoadPreviousMessage();
+                return true;
+            }
 
+            if (keyData == Keys.Right)
+            {
+                LoadNextMessage();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+
+        }
         private void LoadMessage()
         {
             rtxtbText.Text = Message.Text;
@@ -47,28 +63,31 @@ namespace Philips.Analogy
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (Messages.Last() == Message) return;
-            Message = Messages[Messages.IndexOf(Message) + 1];
-            LoadMessage();
-
+            LoadNextMessage();
         }
 
-        private void btnPrev_Click(object sender, EventArgs e)
+        private void LoadPreviousMessage()
         {
             if (Messages.First() == Message) return;
             Message = Messages[Messages.IndexOf(Message) - 1];
             LoadMessage();
-
         }
-
-        private void rtxtbText_TextChanged(object sender, EventArgs e)
+        private void LoadNextMessage()
         {
-
+            if (Messages.Last() == Message) return;
+            Message = Messages[Messages.IndexOf(Message) + 1];
+            LoadMessage();
+        }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            LoadPreviousMessage();
         }
 
         private void sBtnCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(rtxtbText.Text);
         }
+
+
     }
 }

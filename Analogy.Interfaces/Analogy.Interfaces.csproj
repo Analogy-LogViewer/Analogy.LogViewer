@@ -1,74 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8A3534CD-E618-4946-A364-FA0826F31AB5}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Philips.Analogy.Interfaces</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Description>Analogy.Interfaces dll compiled in .net Standard</Description>
+    <PackageReleaseNotes>Analogy.Interfaces dll compiled in .net Standard</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/philips-software/logviewer</PackageProjectUrl>
     <AssemblyName>Analogy.Interfaces</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <TargetFrameworkProfile />
+    <RootNamespace>Analogy.Interfaces</RootNamespace>
+    <PackageId>Analogy.LogViewer.Interfaces</PackageId>
+    <Version>2.1.1</Version>
+    <Authors>Lior Banai</Authors>
+    <Product>Analogy.LogViewer.Interfaces</Product>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
-    <DocumentationFile>bin\Release\Analogy.Interfaces.xml</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="DataTypes\DataTypes.cs" />
-    <Compile Include="Factories\EmptyActionsFactory.cs" />
-    <Compile Include="Factories\EmptyUserControlsFactory.cs" />
-    <Compile Include="DataTypes\EventArgs.cs" />
-    <Compile Include="Factories\IAnalogyCustomActionsFactory.cs" />
-    <Compile Include="Factories\IAnalogyDataProvidersFactory.cs" />
-    <Compile Include="IAnalogyDataProvider.cs" />
-    <Compile Include="IAnalogyChangeLog.cs" />
-    <Compile Include="IAnalogyExtension.cs" />
-    <Compile Include="IAnalogyCustomAction.cs" />
-    <Compile Include="Factories\IAnalogyUserControlsFactory.cs" />
-    <Compile Include="Factories\IAnalogyFactory.cs" />
-    <Compile Include="IAnalogyUserControl.cs" />
-    <Compile Include="ILogMessageCreatedHandler.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+
 </Project>

@@ -4,9 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class AnalogyOTAClient : XtraForm
     {
@@ -58,7 +58,7 @@ namespace Philips.Analogy
                 {
                     try
                     {
-                        
+
                         SendLogs(txtbIP.Text);
                         MessageBox.Show(@"Finished", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

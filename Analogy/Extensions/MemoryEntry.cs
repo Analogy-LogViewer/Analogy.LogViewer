@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy.Extensions
+﻿namespace Analogy.Extensions
 {
     public class MemoryEntry
     {

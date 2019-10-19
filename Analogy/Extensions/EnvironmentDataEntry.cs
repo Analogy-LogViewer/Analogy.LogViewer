@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy.Extensions
+namespace Analogy.Extensions
 {
     public class EnvironmentDataEntry
     {
@@ -45,7 +45,7 @@ namespace Philips.Analogy.Extensions
                 else if (item.StartsWith("avgCPUUsage"))
                     AvgCPUUsage = float.Parse(item.Substring(item.IndexOf("=") + 1).Trim('%'));
                 else if (item.StartsWith("AvailableMemory"))
-                    AvailableMemoryGB = int.Parse(item.Substring(item.IndexOf("=") + 1).Trim('M', 'B', ' ')) /1024;
+                    AvailableMemoryGB = int.Parse(item.Substring(item.IndexOf("=") + 1).Trim('M', 'B', ' ')) / 1024;
                 else if (item.StartsWith("maxTotalWeightUsage"))
                     TotalWeightUsage = float.Parse(item.Substring(item.IndexOf("=") + 1));
                 else if (item.StartsWith("maxAvgCPUUsage"))

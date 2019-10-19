@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class Program
     {
@@ -34,7 +34,7 @@ namespace Philips.Analogy
             {
                 Settings.ApplicationSkinName = ((UserLookAndFeel)s).ActiveSkinName;
             };
-            
+
             Loader = new EmbeddedAssembly();
             Loader.Load();
             Application.ApplicationExit += (s, e) =>

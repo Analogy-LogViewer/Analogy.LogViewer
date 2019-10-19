@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class AnalogyLogger
     {
@@ -35,7 +35,7 @@ namespace Philips.Analogy
 
         }
 
-        
+
         public bool LogExceptionAndSkipCatchBlock(Exception ex, string source, string message,
             [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0,
             [CallerFilePath] string filePath = "")

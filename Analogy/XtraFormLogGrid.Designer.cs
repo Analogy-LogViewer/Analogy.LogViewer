@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class XtraFormLogGrid
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormLogGrid));
-            this.ucLogs1 = new Philips.Analogy.UCLogs();
+            this.ucLogs1 = new Analogy.UCLogs();
             this.SuspendLayout();
             // 
             // ucLogs1

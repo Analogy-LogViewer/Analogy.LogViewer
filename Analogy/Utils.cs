@@ -1,7 +1,6 @@
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using Newtonsoft.Json;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,10 +13,9 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
-using DevExpress.Utils.Extensions;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public static class Utils
     {
@@ -140,9 +138,6 @@ namespace Philips.Analogy
             dtb.Columns.Add(dtc);
 
             dtc = new DataColumn("Module", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Audit", typeof(string));
             dtb.Columns.Add(dtc);
 
             dtc = new DataColumn("Object", typeof(object));

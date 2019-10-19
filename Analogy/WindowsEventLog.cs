@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class WindowsEventLog : UserControl
@@ -77,7 +77,7 @@ namespace Philips.Analogy
             {
                 string m = "Error Opening log. Please make sure you are running as Administrator." + Environment.NewLine + "Error:" + e.Message;
                 XtraMessageBox.Show(m, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                AnalogyLogMessage l = new AnalogyLogMessage( m, AnalogyLogLevel.Error,AnalogyLogClass.General, "Analogy","None");
+                AnalogyLogMessage l = new AnalogyLogMessage(m, AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None");
                 ucLogs1.AppendMessage(l, Environment.MachineName);
             }
         }
@@ -96,7 +96,7 @@ namespace Philips.Analogy
 
         private void bBtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraFormWindowsEventlogsManage f = new XtraFormWindowsEventlogsManage();
+            XtraFormWindowsEventlogsManager f = new XtraFormWindowsEventlogsManager();
             f.ShowDialog(this);
             SetupLogs();
         }

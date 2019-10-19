@@ -5,12 +5,12 @@ using System.Drawing;
 using System.ServiceModel;
 using System.Windows.Forms;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class AnalogyOTAForm : XtraForm
     {
         private ServiceHost _mSvcHost;
-       // private AnalogyReceiverServer receiver;
+        // private AnalogyReceiverServer receiver;
         private UCLogs Logs;
         private bool EnableOTA { get; } = false;
         private bool ReceiveingInProgress;

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Philips.Analogy.Interfaces.Factories
+﻿namespace Analogy.Interfaces.Factories
 {
     //public class EmptyUserControlsFactory : IAnalogyUserControlsFactory
     //{

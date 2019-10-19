@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     partial class UCLogs
     {
@@ -76,7 +76,6 @@ namespace Philips.Analogy
             this.gridColumnCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnModule = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnAudit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnObject = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -331,7 +330,7 @@ namespace Philips.Analogy
             // 
             // tsmiClearLog
             // 
-            this.tsmiClearLog.Image = global::Philips.Analogy.Properties.Resources.Delete_16x16;
+            this.tsmiClearLog.Image = global::Analogy.Properties.Resources.Delete_16x16;
             this.tsmiClearLog.Name = "tsmiClearLog";
             this.tsmiClearLog.Size = new System.Drawing.Size(415, 26);
             this.tsmiClearLog.Text = "Clear Log";
@@ -339,7 +338,7 @@ namespace Philips.Analogy
             // 
             // tsmiREmoveAllPreviousMessages
             // 
-            this.tsmiREmoveAllPreviousMessages.Image = global::Philips.Analogy.Properties.Resources.FitNone_16x16;
+            this.tsmiREmoveAllPreviousMessages.Image = global::Analogy.Properties.Resources.FitNone_16x16;
             this.tsmiREmoveAllPreviousMessages.Name = "tsmiREmoveAllPreviousMessages";
             this.tsmiREmoveAllPreviousMessages.Size = new System.Drawing.Size(415, 26);
             this.tsmiREmoveAllPreviousMessages.Text = "Remove all messages before selected message";
@@ -347,7 +346,7 @@ namespace Philips.Analogy
             // 
             // tsmiTimeDiff
             // 
-            this.tsmiTimeDiff.Image = global::Philips.Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiTimeDiff.Image = global::Analogy.Properties.Resources.Time2_16x16;
             this.tsmiTimeDiff.Name = "tsmiTimeDiff";
             this.tsmiTimeDiff.Size = new System.Drawing.Size(415, 26);
             this.tsmiTimeDiff.Text = "Calculate Time Difference from this entry";
@@ -360,7 +359,7 @@ namespace Philips.Analogy
             // 
             // tsmiBookmark
             // 
-            this.tsmiBookmark.Image = global::Philips.Analogy.Properties.Resources.RichEditBookmark_16x16;
+            this.tsmiBookmark.Image = global::Analogy.Properties.Resources.RichEditBookmark_16x16;
             this.tsmiBookmark.Name = "tsmiBookmark";
             this.tsmiBookmark.Size = new System.Drawing.Size(415, 26);
             this.tsmiBookmark.Text = "Bookmark this message (current Analogy instance)";
@@ -368,7 +367,7 @@ namespace Philips.Analogy
             // 
             // tsmiBookmarkPersist
             // 
-            this.tsmiBookmarkPersist.Image = global::Philips.Analogy.Properties.Resources.RichEditBookmark_16x16;
+            this.tsmiBookmarkPersist.Image = global::Analogy.Properties.Resources.RichEditBookmark_16x16;
             this.tsmiBookmarkPersist.Name = "tsmiBookmarkPersist";
             this.tsmiBookmarkPersist.Size = new System.Drawing.Size(415, 26);
             this.tsmiBookmarkPersist.Text = "Bookmark this message for later use (persistent)";
@@ -376,7 +375,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopy
             // 
-            this.tsmiCopy.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopy.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopy.Name = "tsmiCopy";
             this.tsmiCopy.Size = new System.Drawing.Size(415, 26);
             this.tsmiCopy.Text = "Copy selected message to clipboard";
@@ -384,7 +383,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopyMessages
             // 
-            this.tsmiCopyMessages.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopyMessages.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopyMessages.Name = "tsmiCopyMessages";
             this.tsmiCopyMessages.Size = new System.Drawing.Size(415, 26);
             this.tsmiCopyMessages.Text = "Copy all messages in view to clipboard";
@@ -393,7 +392,7 @@ namespace Philips.Analogy
             // tsmiAddCommentToMessage
             // 
             this.tsmiAddCommentToMessage.Enabled = false;
-            this.tsmiAddCommentToMessage.Image = global::Philips.Analogy.Properties.Resources.EditComment_16x16;
+            this.tsmiAddCommentToMessage.Image = global::Analogy.Properties.Resources.EditComment_16x16;
             this.tsmiAddCommentToMessage.Name = "tsmiAddCommentToMessage";
             this.tsmiAddCommentToMessage.Size = new System.Drawing.Size(415, 26);
             this.tsmiAddCommentToMessage.Text = "Add message/comment at this timestamp";
@@ -406,7 +405,7 @@ namespace Philips.Analogy
             // 
             // tsmiExclude
             // 
-            this.tsmiExclude.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExclude.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExclude.Name = "tsmiExclude";
             this.tsmiExclude.Size = new System.Drawing.Size(415, 26);
             this.tsmiExclude.Text = "Exclude selected message ";
@@ -414,7 +413,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeSource
             // 
-            this.tsmiExcludeSource.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeSource.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeSource.Name = "tsmiExcludeSource";
             this.tsmiExcludeSource.Size = new System.Drawing.Size(415, 26);
             this.tsmiExcludeSource.Text = "Exclude Source";
@@ -422,7 +421,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeModule
             // 
-            this.tsmiExcludeModule.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeModule.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeModule.Name = "tsmiExcludeModule";
             this.tsmiExcludeModule.Size = new System.Drawing.Size(415, 26);
             this.tsmiExcludeModule.Text = "Exclude Process";
@@ -435,7 +434,7 @@ namespace Philips.Analogy
             // 
             // tsmiEmail
             // 
-            this.tsmiEmail.Image = global::Philips.Analogy.Properties.Resources.Send_16x16;
+            this.tsmiEmail.Image = global::Analogy.Properties.Resources.Send_16x16;
             this.tsmiEmail.Name = "tsmiEmail";
             this.tsmiEmail.Size = new System.Drawing.Size(415, 26);
             this.tsmiEmail.Text = "Send selected message by mail";
@@ -444,7 +443,7 @@ namespace Philips.Analogy
             // tsmiOTAFull
             // 
             this.tsmiOTAFull.Enabled = false;
-            this.tsmiOTAFull.Image = global::Philips.Analogy.Properties.Resources.logIcon;
+            this.tsmiOTAFull.Image = global::Analogy.Properties.Resources.logIcon;
             this.tsmiOTAFull.Name = "tsmiOTAFull";
             this.tsmiOTAFull.Size = new System.Drawing.Size(415, 26);
             this.tsmiOTAFull.Text = "Send Log to another Analogy";
@@ -458,7 +457,7 @@ namespace Philips.Analogy
             // 
             // tsmiSaveLayout
             // 
-            this.tsmiSaveLayout.Image = global::Philips.Analogy.Properties.Resources.Save_16x16;
+            this.tsmiSaveLayout.Image = global::Analogy.Properties.Resources.Save_16x16;
             this.tsmiSaveLayout.Name = "tsmiSaveLayout";
             this.tsmiSaveLayout.Size = new System.Drawing.Size(415, 26);
             this.tsmiSaveLayout.Text = "Save columns layout";
@@ -466,7 +465,7 @@ namespace Philips.Analogy
             // 
             // tsmiIncreaseFont
             // 
-            this.tsmiIncreaseFont.Image = global::Philips.Analogy.Properties.Resources.IncreaseFontSize_16x16;
+            this.tsmiIncreaseFont.Image = global::Analogy.Properties.Resources.IncreaseFontSize_16x16;
             this.tsmiIncreaseFont.Name = "tsmiIncreaseFont";
             this.tsmiIncreaseFont.Size = new System.Drawing.Size(415, 26);
             this.tsmiIncreaseFont.Text = "Increase Font Size";
@@ -474,7 +473,7 @@ namespace Philips.Analogy
             // 
             // tsmiDecreaseFont
             // 
-            this.tsmiDecreaseFont.Image = global::Philips.Analogy.Properties.Resources.DecreaseFontSize_16x16;
+            this.tsmiDecreaseFont.Image = global::Analogy.Properties.Resources.DecreaseFontSize_16x16;
             this.tsmiDecreaseFont.Name = "tsmiDecreaseFont";
             this.tsmiDecreaseFont.Size = new System.Drawing.Size(415, 26);
             this.tsmiDecreaseFont.Text = "Decrease Font Size";
@@ -499,7 +498,6 @@ namespace Philips.Analogy
             this.gridColumnCategory,
             this.gridColumnUser,
             this.gridColumnModule,
-            this.gridColumnAudit,
             this.gridColumnObject,
             this.gridColumnProcessID,
             this.gridColumnThread});
@@ -672,7 +670,7 @@ namespace Philips.Analogy
             this.gridColumnCategory.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnCategory.OptionsColumn.ReadOnly = true;
             this.gridColumnCategory.Visible = true;
-            this.gridColumnCategory.VisibleIndex = 8;
+            this.gridColumnCategory.VisibleIndex = 7;
             this.gridColumnCategory.Width = 115;
             // 
             // gridColumnUser
@@ -691,7 +689,7 @@ namespace Philips.Analogy
             this.gridColumnUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnUser.OptionsColumn.ReadOnly = true;
             this.gridColumnUser.Visible = true;
-            this.gridColumnUser.VisibleIndex = 9;
+            this.gridColumnUser.VisibleIndex = 8;
             this.gridColumnUser.Width = 115;
             // 
             // gridColumnModule
@@ -712,25 +710,6 @@ namespace Philips.Analogy
             this.gridColumnModule.Visible = true;
             this.gridColumnModule.VisibleIndex = 5;
             this.gridColumnModule.Width = 115;
-            // 
-            // gridColumnAudit
-            // 
-            this.gridColumnAudit.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnAudit.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnAudit.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnAudit.Caption = "Audit";
-            this.gridColumnAudit.FieldName = "Audit";
-            this.gridColumnAudit.MinWidth = 24;
-            this.gridColumnAudit.Name = "gridColumnAudit";
-            this.gridColumnAudit.OptionsColumn.AllowEdit = false;
-            this.gridColumnAudit.OptionsColumn.AllowFocus = false;
-            this.gridColumnAudit.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnAudit.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnAudit.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnAudit.OptionsColumn.ReadOnly = true;
-            this.gridColumnAudit.Visible = true;
-            this.gridColumnAudit.VisibleIndex = 7;
-            this.gridColumnAudit.Width = 115;
             // 
             // gridColumnObject
             // 
@@ -767,7 +746,7 @@ namespace Philips.Analogy
             this.gridColumnProcessID.OptionsColumn.ReadOnly = true;
             this.gridColumnProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.gridColumnProcessID.Visible = true;
-            this.gridColumnProcessID.VisibleIndex = 10;
+            this.gridColumnProcessID.VisibleIndex = 9;
             this.gridColumnProcessID.Width = 115;
             // 
             // gridColumnThread
@@ -777,7 +756,7 @@ namespace Philips.Analogy
             this.gridColumnThread.MinWidth = 25;
             this.gridColumnThread.Name = "gridColumnThread";
             this.gridColumnThread.Visible = true;
-            this.gridColumnThread.VisibleIndex = 11;
+            this.gridColumnThread.VisibleIndex = 10;
             this.gridColumnThread.Width = 109;
             // 
             // panel1
@@ -945,7 +924,7 @@ namespace Philips.Analogy
             // 
             // barButtonItemSaveEntireInAnalogy
             // 
-            this.barButtonItemSaveEntireInAnalogy.Caption = "Save Entire Log in Analogy Format (agnostic to Specific implementation)";
+            this.barButtonItemSaveEntireInAnalogy.Caption = "Save Entire Log in Analogy Format (agnostic to specific implementation)";
             this.barButtonItemSaveEntireInAnalogy.Id = 32;
             this.barButtonItemSaveEntireInAnalogy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.Image")));
             this.barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage")));
@@ -1501,7 +1480,7 @@ namespace Philips.Analogy
             // 
             // pboxInfoExclude
             // 
-            this.pboxInfoExclude.Image = global::Philips.Analogy.Properties.Resources.Info_16x16;
+            this.pboxInfoExclude.Image = global::Analogy.Properties.Resources.Info_16x16;
             this.pboxInfoExclude.Location = new System.Drawing.Point(145, 62);
             this.pboxInfoExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pboxInfoExclude.Name = "pboxInfoExclude";
@@ -1571,7 +1550,7 @@ namespace Philips.Analogy
             // 
             // pboxInfo
             // 
-            this.pboxInfo.Image = global::Philips.Analogy.Properties.Resources.Info_16x16;
+            this.pboxInfo.Image = global::Analogy.Properties.Resources.Info_16x16;
             this.pboxInfo.Location = new System.Drawing.Point(87, 6);
             this.pboxInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pboxInfo.Name = "pboxInfo";
@@ -1586,6 +1565,7 @@ namespace Philips.Analogy
             this.chkLstLogLevel.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.chkLstLogLevel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkLstLogLevel.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Trace"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Error + Critical"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Warning"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Debug"),
@@ -2497,7 +2477,7 @@ namespace Philips.Analogy
             // 
             // tsmiCalcDiffBookmark
             // 
-            this.tsmiCalcDiffBookmark.Image = global::Philips.Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiCalcDiffBookmark.Image = global::Analogy.Properties.Resources.Time2_16x16;
             this.tsmiCalcDiffBookmark.Name = "tsmiCalcDiffBookmark";
             this.tsmiCalcDiffBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiCalcDiffBookmark.Text = "Calculate Time Difference from this entry";
@@ -2510,7 +2490,7 @@ namespace Philips.Analogy
             // 
             // tsmiRemoveBookmark
             // 
-            this.tsmiRemoveBookmark.Image = global::Philips.Analogy.Properties.Resources.Clear_16x16;
+            this.tsmiRemoveBookmark.Image = global::Analogy.Properties.Resources.Clear_16x16;
             this.tsmiRemoveBookmark.Name = "tsmiRemoveBookmark";
             this.tsmiRemoveBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiRemoveBookmark.Text = "Remove this message";
@@ -2518,7 +2498,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopyBookmark
             // 
-            this.tsmiCopyBookmark.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopyBookmark.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopyBookmark.Name = "tsmiCopyBookmark";
             this.tsmiCopyBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiCopyBookmark.Text = "Copy selected message to clipboard";
@@ -2526,7 +2506,7 @@ namespace Philips.Analogy
             // 
             // tsmiCopyMessagesBookmark
             // 
-            this.tsmiCopyMessagesBookmark.Image = global::Philips.Analogy.Properties.Resources.Copy_16x16;
+            this.tsmiCopyMessagesBookmark.Image = global::Analogy.Properties.Resources.Copy_16x16;
             this.tsmiCopyMessagesBookmark.Name = "tsmiCopyMessagesBookmark";
             this.tsmiCopyMessagesBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiCopyMessagesBookmark.Text = "Copy all messages in view to clipboard";
@@ -2535,7 +2515,7 @@ namespace Philips.Analogy
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Enabled = false;
-            this.toolStripMenuItem5.Image = global::Philips.Analogy.Properties.Resources.EditComment_16x16;
+            this.toolStripMenuItem5.Image = global::Analogy.Properties.Resources.EditComment_16x16;
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(360, 26);
             this.toolStripMenuItem5.Text = "Add message/comment at this timestamp";
@@ -2548,7 +2528,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeBookmark
             // 
-            this.tsmiExcludeBookmark.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeBookmark.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeBookmark.Name = "tsmiExcludeBookmark";
             this.tsmiExcludeBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiExcludeBookmark.Text = "Exclude selected message ";
@@ -2556,7 +2536,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeSourceBookmark
             // 
-            this.tsmiExcludeSourceBookmark.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeSourceBookmark.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeSourceBookmark.Name = "tsmiExcludeSourceBookmark";
             this.tsmiExcludeSourceBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiExcludeSourceBookmark.Text = "Exclude Source";
@@ -2564,7 +2544,7 @@ namespace Philips.Analogy
             // 
             // tsmiExcludeModuleBookmark
             // 
-            this.tsmiExcludeModuleBookmark.Image = global::Philips.Analogy.Properties.Resources.ClearFilter_16x16;
+            this.tsmiExcludeModuleBookmark.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
             this.tsmiExcludeModuleBookmark.Name = "tsmiExcludeModuleBookmark";
             this.tsmiExcludeModuleBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiExcludeModuleBookmark.Text = "Exclude Module";
@@ -2577,7 +2557,7 @@ namespace Philips.Analogy
             // 
             // tsmiEmailBookmark
             // 
-            this.tsmiEmailBookmark.Image = global::Philips.Analogy.Properties.Resources.Send_16x16;
+            this.tsmiEmailBookmark.Image = global::Analogy.Properties.Resources.Send_16x16;
             this.tsmiEmailBookmark.Name = "tsmiEmailBookmark";
             this.tsmiEmailBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiEmailBookmark.Text = "Send selected message by mail";
@@ -2585,7 +2565,7 @@ namespace Philips.Analogy
             // 
             // tsmiOTAFullBookmark
             // 
-            this.tsmiOTAFullBookmark.Image = global::Philips.Analogy.Properties.Resources.logIcon;
+            this.tsmiOTAFullBookmark.Image = global::Analogy.Properties.Resources.logIcon;
             this.tsmiOTAFullBookmark.Name = "tsmiOTAFullBookmark";
             this.tsmiOTAFullBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiOTAFullBookmark.Text = "Send Log to another Analogy";
@@ -2598,7 +2578,7 @@ namespace Philips.Analogy
             // 
             // tsmiSaveLayoutBookmark
             // 
-            this.tsmiSaveLayoutBookmark.Image = global::Philips.Analogy.Properties.Resources.Save_16x16;
+            this.tsmiSaveLayoutBookmark.Image = global::Analogy.Properties.Resources.Save_16x16;
             this.tsmiSaveLayoutBookmark.Name = "tsmiSaveLayoutBookmark";
             this.tsmiSaveLayoutBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiSaveLayoutBookmark.Text = "Save columns layout";
@@ -2606,7 +2586,7 @@ namespace Philips.Analogy
             // 
             // tsmiIncreaseFontBookmark
             // 
-            this.tsmiIncreaseFontBookmark.Image = global::Philips.Analogy.Properties.Resources.IncreaseFontSize_16x16;
+            this.tsmiIncreaseFontBookmark.Image = global::Analogy.Properties.Resources.IncreaseFontSize_16x16;
             this.tsmiIncreaseFontBookmark.Name = "tsmiIncreaseFontBookmark";
             this.tsmiIncreaseFontBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiIncreaseFontBookmark.Text = "Increase Font Size";
@@ -2614,7 +2594,7 @@ namespace Philips.Analogy
             // 
             // tsmiDecreaseFontBookmark
             // 
-            this.tsmiDecreaseFontBookmark.Image = global::Philips.Analogy.Properties.Resources.DecreaseFontSize_16x16;
+            this.tsmiDecreaseFontBookmark.Image = global::Analogy.Properties.Resources.DecreaseFontSize_16x16;
             this.tsmiDecreaseFontBookmark.Name = "tsmiDecreaseFontBookmark";
             this.tsmiDecreaseFontBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
@@ -2705,7 +2685,6 @@ namespace Philips.Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCategory;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnUser;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnModule;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnAudit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnObject;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private System.Windows.Forms.ImageList imageList;

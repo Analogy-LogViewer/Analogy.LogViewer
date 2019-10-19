@@ -1,8 +1,7 @@
-﻿using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Timers;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.Implementation.Example
 {
@@ -21,6 +20,8 @@ namespace Analogy.Implementation.Example
         public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         private Timer SimulateOnlineMessages;
         private int messageCount = 0;
+        Random random = new Random();
+        Array values = Enum.GetValues(typeof(AnalogyLogLevel));
         public void InitDataProvider()
         {
             SimulateOnlineMessages = new Timer(100);
@@ -30,7 +31,9 @@ namespace Analogy.Implementation.Example
                     return;
                 unchecked
                 {
-                    AnalogyLogMessage m = new AnalogyLogMessage($"Generated message #{messageCount++}", AnalogyLogLevel.Event, AnalogyLogClass.General, "Example");
+                    
+                    AnalogyLogLevel randomLevel = (AnalogyLogLevel)values.GetValue(random.Next(values.Length));
+                    AnalogyLogMessage m = new AnalogyLogMessage($"Generated message #{messageCount++}", randomLevel, AnalogyLogClass.General, "Example");
                     OnMessageReady(this, new AnalogyLogMessageArgs(m, Environment.MachineName, "Example", ID));
                 }
             };

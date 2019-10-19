@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy
+﻿namespace Analogy
 {
     partial class XtraUCWindowsEventLogs
     {
@@ -51,6 +51,7 @@
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl1.Name = "groupControl1";
+            this.groupControl1.ShowCaption = false;
             this.groupControl1.Size = new System.Drawing.Size(742, 486);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Windows Event logs";
@@ -58,7 +59,7 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(2, 61);
+            this.splitContainerControl1.Location = new System.Drawing.Point(2, 38);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.lstSelected);
             this.splitContainerControl1.Panel1.Controls.Add(this.btnRemove);
@@ -66,7 +67,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.lstAvailable);
             this.splitContainerControl1.Panel2.Controls.Add(this.btnAdd);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(738, 423);
+            this.splitContainerControl1.Size = new System.Drawing.Size(738, 446);
             this.splitContainerControl1.SplitterPosition = 351;
             this.splitContainerControl1.TabIndex = 4;
             // 
@@ -75,7 +76,7 @@
             this.lstSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstSelected.Location = new System.Drawing.Point(0, 30);
             this.lstSelected.Name = "lstSelected";
-            this.lstSelected.Size = new System.Drawing.Size(351, 393);
+            this.lstSelected.Size = new System.Drawing.Size(351, 416);
             this.lstSelected.TabIndex = 2;
             // 
             // btnRemove
@@ -93,7 +94,7 @@
             this.lstAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstAvailable.Location = new System.Drawing.Point(0, 30);
             this.lstAvailable.Name = "lstAvailable";
-            this.lstAvailable.Size = new System.Drawing.Size(381, 393);
+            this.lstAvailable.Size = new System.Drawing.Size(381, 416);
             this.lstAvailable.TabIndex = 0;
             // 
             // btnAdd
@@ -110,7 +111,7 @@
             // 
             this.lblLaunchCount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblLaunchCount.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblLaunchCount.Location = new System.Drawing.Point(2, 25);
+            this.lblLaunchCount.Location = new System.Drawing.Point(2, 2);
             this.lblLaunchCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblLaunchCount.Name = "lblLaunchCount";
             this.lblLaunchCount.Size = new System.Drawing.Size(738, 36);

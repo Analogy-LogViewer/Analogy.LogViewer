@@ -8,9 +8,6 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
-using DevExpress.XtraTab;
-using Philips.Analogy.DataSources;
-using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,11 +21,12 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.DataSources;
+using Analogy.Interfaces;
 using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
@@ -270,7 +268,6 @@ namespace Philips.Analogy
             logGrid.BestFitColumns();
             btswitchExpand.Checked = true;
             splitContainerMain.Collapsed = true;
-            gridColumnAudit.Visible = false;
             if (Settings.StartupErrorLogLevel)
                 chkLstLogLevel.Items[0].CheckState = CheckState.Checked;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
@@ -306,7 +303,7 @@ namespace Philips.Analogy
             }
         }
 
-      
+
 
         private void UCLogs_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
@@ -405,13 +402,10 @@ namespace Philips.Analogy
                                 e.Appearance.ForeColor = Color.Black;
                             break;
                         case AnalogyLogLevel.Event:
-                            break;
                         case AnalogyLogLevel.Verbose:
-                            break;
                         case AnalogyLogLevel.Debug:
-                            break;
                         case AnalogyLogLevel.Disabled:
-                            break;
+                        case AnalogyLogLevel.Trace:
                         case AnalogyLogLevel.AnalogyInformation:
                             break;
                         default:
@@ -443,6 +437,7 @@ namespace Philips.Analogy
                 case AnalogyLogLevel.Warning:
                     img = imageList.Images[1];
                     break;
+                case AnalogyLogLevel.Trace:
                 case AnalogyLogLevel.Event:
                     img = imageList.Images[7];
                     break;
@@ -671,20 +666,6 @@ namespace Philips.Analogy
             }
         }
 
-        public void SetAuditColumnVisibility(bool flag)
-        {
-            gridColumnAudit.Visible = flag;
-        }
-
-        /// <summary>
-        /// This method is to set the Category column visibility based on user requirement
-        /// </summary>
-        /// <param name="flag">true for visibility else false</param>
-        public void SetCategoryColumnVisibility(bool flag)
-        {
-            gridColumnCategory.Visible = flag;
-        }
-
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
             string displayText = string.Empty;
@@ -778,6 +759,9 @@ namespace Philips.Analogy
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+            if (message.Level==AnalogyLogLevel.Disabled)
+                return; //ignore those messages
+            
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();
@@ -945,12 +929,14 @@ namespace Philips.Analogy
                 chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
             _filterCriteriaInline.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace,AnalogyLogLevel.Disabled};
+            if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled };
-            else if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
+            else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled };
 
             if (chkbExcludeSources.Checked)
@@ -1253,7 +1239,6 @@ namespace Philips.Analogy
             dtr["Category"] = message.Category ?? "";
             dtr["User"] = message.User ?? "";
             dtr["Module"] = message.Module ?? "";
-            dtr["Audit"] = message.AuditLogType ?? string.Empty;
             dtr["Object"] = message;
             dtr["ProcessID"] = message.ProcessID;
             string dataSource = (string)logGrid.GetRowCellValue(selRows.First(), "DataProvider");
@@ -1626,6 +1611,11 @@ namespace Philips.Analogy
 
         private void tsmiSaveLayout_Click(object sender, EventArgs e)
         {
+            SaveGridLayout();
+        }
+
+        private void SaveGridLayout()
+        {
             try
             {
                 gridControl.MainView.SaveLayoutToXml(LayoutFileName);
@@ -1636,7 +1626,6 @@ namespace Philips.Analogy
                 throw;
             }
         }
-
         private void tsmiBookmarkPersist_Click(object sender, EventArgs e)
         {
             CreateBookmark(true);
@@ -1758,7 +1747,6 @@ namespace Philips.Analogy
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
-                dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["DataProvider"] = "";
@@ -1947,6 +1935,7 @@ namespace Philips.Analogy
         {
             Settings.FontSize = logGrid.Appearance.Row.Font.Size + 2;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+            SaveGridLayout();
         }
 
         private void tsmiDecreaseFont_Click(object sender, EventArgs e)
@@ -1955,6 +1944,7 @@ namespace Philips.Analogy
             {
                 Settings.FontSize = logGrid.Appearance.Row.Font.Size - 2;
                 logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+                SaveGridLayout();
             }
         }
 

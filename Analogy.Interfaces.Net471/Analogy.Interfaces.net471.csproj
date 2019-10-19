@@ -4,14 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{69EF9461-D518-457B-A354-B8A4407F80FF}</ProjectGuid>
+    <ProjectGuid>{8A3534CD-E618-4946-A364-FA0826F31AB5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Analogy.Implementation.Example</RootNamespace>
-    <AssemblyName>Analogy.Implementation.Example</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>Philips.Analogy.Interfaces</RootNamespace>
+    <AssemblyName>Analogy.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -22,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,11 +35,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+    <DocumentationFile>bin\Release\Analogy.Interfaces.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,16 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalogyDataSourceFactory.cs" />
-    <Compile Include="AnalogyExampleFactory.cs" />
-    <Compile Include="AnalogyOnlineExampleDataProvider.cs" />
+    <Compile Include="DataTypes\DataTypes.cs" />
+    <Compile Include="Factories\EmptyActionsFactory.cs" />
+    <Compile Include="Factories\EmptyUserControlsFactory.cs" />
+    <Compile Include="DataTypes\EventArgs.cs" />
+    <Compile Include="Factories\IAnalogyCustomActionsFactory.cs" />
+    <Compile Include="Factories\IAnalogyDataProvidersFactory.cs" />
+    <Compile Include="IAnalogyDataProvider.cs" />
+    <Compile Include="IAnalogyChangeLog.cs" />
+    <Compile Include="IAnalogyExtension.cs" />
+    <Compile Include="IAnalogyCustomAction.cs" />
+    <Compile Include="Factories\IAnalogyUserControlsFactory.cs" />
+    <Compile Include="Factories\IAnalogyFactory.cs" />
+    <Compile Include="IAnalogyUserControl.cs" />
+    <Compile Include="ILogMessageCreatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
-      <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
-      <Name>Analogy.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

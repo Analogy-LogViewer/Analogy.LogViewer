@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class PagingManager
     {
@@ -82,7 +82,7 @@ namespace Philips.Analogy
 
             OnPageChanged?.Invoke(this, new AnalogyPagingChanged(analogyPage));
         }
-        
+
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
 
@@ -106,11 +106,10 @@ namespace Philips.Analogy
                 dtr["Text"] = message.Text ?? "";
                 dtr["Source"] = message.Source ?? "";
                 dtr["Level"] = string.Intern(message.Level.ToString());
-                dtr["Class"] = string.Intern( message.Class.ToString());
+                dtr["Class"] = string.Intern(message.Class.ToString());
                 dtr["Category"] = message.Category ?? "";
                 dtr["User"] = message.User ?? "";
                 dtr["Module"] = message.Module ?? "";
-                dtr["Audit"] = message.AuditLogType;
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["ThreadID"] = message.Thread;
@@ -134,6 +133,8 @@ namespace Philips.Analogy
             {
                 foreach (var message in messages)
                 {
+                    if (message.Level == AnalogyLogLevel.Disabled)
+                        continue; //ignore those messages
                     allMessages.Add(message);
                     if (countInsideTable + 1 > pageSize)
                     {
@@ -157,7 +158,6 @@ namespace Philips.Analogy
                     dtr["Category"] = message.Category ?? "";
                     dtr["User"] = message.User ?? "";
                     dtr["Module"] = message.Module ?? "";
-                    dtr["Audit"] = message.AuditLogType;
                     dtr["Object"] = message;
                     dtr["ProcessID"] = message.ProcessID;
                     dtr["ThreadID"] = message.Thread;

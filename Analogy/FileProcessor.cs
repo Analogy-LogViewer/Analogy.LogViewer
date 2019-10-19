@@ -1,4 +1,3 @@
-using Philips.Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,9 +5,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
-using Philips.Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public class FileProcessor
     {

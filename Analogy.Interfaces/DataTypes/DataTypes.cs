@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
-namespace Philips.Analogy.Interfaces.DataTypes
+namespace Analogy.Interfaces
 {
     public class AnalogyProgressReport
     {
@@ -112,7 +112,6 @@ namespace Philips.Analogy.Interfaces.DataTypes
         public int ProcessID { get; set; }
 
         public int Thread { get; set; }
-        public string AuditLogType { get; set; }
 
         /// <summary>
         /// Gets or sets LogMessage parameter array that will be inserted into message text
@@ -126,14 +125,13 @@ namespace Philips.Analogy.Interfaces.DataTypes
             ID = Guid.NewGuid();
             Date = DateTime.Now;
             Parameters = new string[0];
-            AuditLogType = string.Empty;
             Source = string.Empty;
             MethodName = string.Empty;
             FileName = string.Empty;
-            Parameters=new string[0];
+            Parameters = new string[0];
             User = string.Empty;
         }
-        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category=null, string auditLogType = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName]string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName]string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
             Text = text;
             Category = category ?? string.Empty;
@@ -147,8 +145,7 @@ namespace Philips.Analogy.Interfaces.DataTypes
             ProcessID = processId != 0 ? processId : Process.GetCurrentProcess().Id;
             Parameters = parameters ?? new string[0];
             User = user ?? string.Empty;
-            AuditLogType = auditLogType ?? string.Empty;
-            Thread = threadID!= 0 ? Thread: System.Threading.Thread.CurrentThread.ManagedThreadId;
+            Thread = threadID != 0 ? Thread : System.Threading.Thread.CurrentThread.ManagedThreadId;
         }
     }
 
@@ -181,20 +178,14 @@ namespace Philips.Analogy.Interfaces.DataTypes
     /// </summary>
     public enum AnalogyLogLevel
     {
-
-        Critical,
-
-        Error,
-
-        Warning,
-
-        Event,
-
-        Verbose,
-
-        Debug,
-
         Disabled,
+        Trace,
+        Verbose,
+        Debug,
+        Event,
+        Warning,
+        Error,
+        Critical,
         AnalogyInformation
     }
 

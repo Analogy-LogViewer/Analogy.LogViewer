@@ -6,9 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Philips.Analogy.Interfaces;
+using Analogy.Interfaces;
 
-namespace Philips.Analogy
+namespace Analogy
 {
 
     public partial class ClientServerUCLog : UserControl
@@ -20,7 +20,7 @@ namespace Philips.Analogy
             InitializeComponent();
         }
 
-        public ClientServerUCLog(IAnalogyOfflineDataProvider dataProvider) :this()
+        public ClientServerUCLog(IAnalogyOfflineDataProvider dataProvider) : this()
         {
             DataProvider = dataProvider;
             ucLogs1.SetFileDataSource(DataProvider);
@@ -52,13 +52,13 @@ namespace Philips.Analogy
             lBoxFiles.SelectedIndexChanged -= lBoxFiles_SelectedIndexChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
-            var fileInfos =DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).OrderByDescending(f => f.LastWriteTime);
+            var fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).OrderByDescending(f => f.LastWriteTime);
             lBoxFiles.DisplayMember = recursiveLoad ? "FullName" : "Name";
             lBoxFiles.DataSource = fileInfos;
             lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;
 
         }
-       
+
 
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLog)
         {
@@ -74,7 +74,7 @@ namespace Philips.Analogy
                 PopulateFiles(data.Path);
             }
         }
-        
+
 
         private void bBtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

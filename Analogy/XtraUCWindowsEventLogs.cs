@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class XtraUCWindowsEventLogs : DevExpress.XtraEditors.XtraUserControl
     {

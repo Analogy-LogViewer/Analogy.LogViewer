@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Philips.Analogy.Interfaces
+namespace Analogy.Interfaces
 {
     interface IExtensionsManager
     {

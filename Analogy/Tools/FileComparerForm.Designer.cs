@@ -1,4 +1,4 @@
-﻿namespace Philips.Analogy.Tools
+﻿namespace Analogy.Tools
 {
     partial class FileComparerForm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.logsComparerUC1 = new Philips.Analogy.Tools.LogsComparerUC();
+            this.logsComparerUC1 = new Analogy.Tools.LogsComparerUC();
             this.SuspendLayout();
             // 
             // logsComparerUC1

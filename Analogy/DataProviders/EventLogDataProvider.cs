@@ -1,16 +1,16 @@
-﻿using Philips.Analogy.LogLoaders;
-using Philips.Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Philips.Analogy.Interfaces.DataTypes;
-using Philips.Analogy.Properties;
+using Analogy.Interfaces;
+using Analogy.LogLoaders;
+using Analogy.Properties;
 
-namespace Philips.Analogy.DataSources
+
+namespace Analogy.DataSources
 {
     public class EventLogDataProvider : IAnalogyOfflineDataProvider
     {
@@ -62,7 +62,7 @@ namespace Philips.Analogy.DataSources
             throw new NotSupportedException("Saving is not supported for evtx files");
         }
 
-        public bool CanOpenFile(string fileName)=> fileName.EndsWith(".evtx", StringComparison.InvariantCultureIgnoreCase);
+        public bool CanOpenFile(string fileName) => fileName.EndsWith(".evtx", StringComparison.InvariantCultureIgnoreCase);
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
         public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)

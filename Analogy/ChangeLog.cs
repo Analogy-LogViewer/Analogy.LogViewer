@@ -1,7 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 
-namespace Philips.Analogy
+namespace Analogy
 {
     public partial class ChangeLog : XtraForm
     {
