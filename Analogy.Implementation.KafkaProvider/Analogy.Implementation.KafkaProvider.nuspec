@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Analogy.LogViewer.KafkaProvider</id>
+    <version>0.1.0</version>
+    <title>Analogy Log Viewer Kafka Provider</title>
+    <authors>Lior Banai</authors>
+    <owners>Lior Banai</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/philips-software/logviewer/</projectUrl>
+    <icon>icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Analogy Log Viewer Kafka Provider</description>
+    <releaseNotes>Initial Proof of concept for creating Kafka data provider (both producer and consumer) For Analogy. See github page</releaseNotes>
+    <copyright>Copyright 2019 Lior Banai</copyright>
+    <tags></tags>
+	<dependencies>
+    <group targetFramework="netstandard2.0">    
+		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.1" />
+		<dependency id="Confluent.Kafka" version="1.2.1" />
+    </group>
+</dependencies>
+  </metadata>
+  <files>
+   <file src="bin\Release\netstandard2.0\Analogy.Implementation.KafkaProvider.dll" target="lib\netstandard2.0\Analogy.Implementation.KafkaProvider.dll" />
+    <file src="bin\Release\netstandard2.0\Analogy.Implementation.KafkaProvider.deps.json" target="lib\netstandard2.0\Analogy.Implementation.KafkaProvider.deps.json" />
+	<file src="icon.png" target="" />
+</files>
+</package>
