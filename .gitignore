@@ -56,3 +56,5 @@
 /Analogy.Implementation.KafkaProvider/Properties/PublishProfiles
 /Analogy.Implementation.KafkaProvider/Analogy.Implementation.KafkaProvider.csproj.user
 /packages
+/Analogy.Implementation.KafkaProvider/bin/Release/netstandard2.0
+/Analogy.Implementation.KafkaProvider/nuget.exe
