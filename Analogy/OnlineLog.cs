@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using DevExpress.XtraBars;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy
@@ -21,6 +22,7 @@ namespace Analogy
         {
             InitializeComponent();
             ucLogs1.OnlineMode = true;
+
             ucLogs1.SetFileDataSource(realTime.FileOperationsHandler);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -32,6 +34,7 @@ namespace Analogy
         {
             if (DesignMode) return;
             ucLogs1.OnHistoryCleared += UcLogs1_OnHistoryCleared;
+            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Never;
             spltMain.Panel1Collapsed = true;
         }
 

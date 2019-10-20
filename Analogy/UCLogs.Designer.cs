@@ -87,6 +87,7 @@ namespace Analogy
             this.bBtnRemoveBoomark = new DevExpress.XtraBars.BarButtonItem();
             this.btswitchExpand = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.btsFilePooling = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.barSubItemSaveEntireLog = new DevExpress.XtraBars.BarSubItem();
             this.bBtnSaveEntireLog = new DevExpress.XtraBars.BarButtonItem();
@@ -826,9 +827,10 @@ namespace Analogy
             this.barSubItemSaveView,
             this.bbtnSaveViewAgnostic,
             this.barSubItemSaveEntireLog,
-            this.barButtonItemSaveEntireInAnalogy});
+            this.barButtonItemSaveEntireInAnalogy,
+            this.btsFilePooling});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 33;
+            this.barManager1.MaxItemId = 34;
             // 
             // barTopFiltering
             // 
@@ -842,6 +844,7 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemoveBoomark),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchExpand),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btsFilePooling),
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveEntireLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveView),
@@ -892,6 +895,14 @@ namespace Analogy
             this.btswitchRefreshLog.Id = 3;
             this.btswitchRefreshLog.Name = "btswitchRefreshLog";
             this.btswitchRefreshLog.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btswitchRefreshLog_CheckedChanged);
+            // 
+            // btsFilePooling
+            // 
+            this.btsFilePooling.Caption = "File Pooling";
+            this.btsFilePooling.Enabled = false;
+            this.btsFilePooling.Id = 33;
+            this.btsFilePooling.Name = "btsFilePooling";
+            this.btsFilePooling.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // btsAutoScrollToBottom
             // 
@@ -2851,5 +2862,6 @@ namespace Analogy
         private DevExpress.XtraEditors.TextEdit txtbGroupByCharsLimit;
         private DevExpress.XtraEditors.SpinEdit nudGroupBychars;
         private System.Windows.Forms.SplitContainer spltCSources;
+        public DevExpress.XtraBars.BarToggleSwitchItem btsFilePooling;
     }
 }

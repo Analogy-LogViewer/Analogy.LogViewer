@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using DevExpress.XtraBars;
 
 namespace Analogy
 {
@@ -24,9 +25,11 @@ namespace Analogy
 
         public OfflineUCLogs(IAnalogyOfflineDataProvider dataProvider, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
         {
+
             DataProvider = dataProvider;
             if (fileNames != null)
                 extrenalFiles.AddRange(fileNames);
+            ucLogs1.OnlineMode = false;
             ucLogs1.SetFileDataSource(dataProvider);
         }
 
@@ -42,6 +45,7 @@ namespace Analogy
             spltMain.Panel1Collapsed = false;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Always;
             if (extrenalFiles.Any())
             {
                 if (File.Exists(extrenalFiles.First()))

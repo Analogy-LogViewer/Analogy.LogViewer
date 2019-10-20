@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using DevExpress.XtraBars;
 
 namespace Analogy
 {
@@ -37,6 +38,7 @@ namespace Analogy
             lBoxSources.DataSource = ClientServerDataSourceManager.Instance.DataSources;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Always;
             lBoxSources.SelectedIndex = -1;
             lBoxSources.SelectedValueChanged += lBoxSources_SelectedValueChanged;
         }

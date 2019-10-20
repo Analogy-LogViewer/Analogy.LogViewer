@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using DevExpress.XtraBars;
 
 namespace Analogy
 {
@@ -29,6 +30,7 @@ namespace Analogy
             if (DesignMode) return;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Always;
             SetupLogs();
         }
 
