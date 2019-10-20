@@ -6,26 +6,30 @@ using Analogy.Interfaces;
 
 namespace Analogy.Implementation.KafkaProvider
 {
-    public class AnalogyKafkaDataProvider : IAnalogyRealTimeDataProvider
+    public class AnalogyKafkaExampleDataProvider : IAnalogyRealTimeDataProvider
     {
-        public Guid ID { get; } = Guid.Parse("350A2268-DAB2-4991-A29F-F597DD6E52FA");
+        public Guid ID { get; } = Guid.Parse("F1283D38-01B9-4753-996B-3CEF4312D7E2");
+
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         public event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
         public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         public bool IsConnected { get; private set; }
         public KafkaConsumer Consumer { get; set; }
+        public KafkaProducer Producer { get; set; }
         public string topic = "KafkaLog";
         public string kafkaUrl = "localhost:9092";
         public Task<bool> CanStartReceiving() => Task.FromResult(IsConnected);
+        private TimerMessagesSimulator sim;
         private Task Consuming;
         private Task Reading;
-        public AnalogyKafkaDataProvider()
+        public AnalogyKafkaExampleDataProvider()
         {
 
         }
         public void StartReceiving()
         {
+            sim.Start();
             Consuming = Consumer.StartConsuming();
             Reading = Consumer.ReadMessages();
 
@@ -39,8 +43,10 @@ namespace Analogy.Implementation.KafkaProvider
         public void InitDataProvider()
         {
 
+            Producer = new KafkaProducer(kafkaUrl, topic);
             Consumer = new KafkaConsumer(kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;
+            sim = new TimerMessagesSimulator(async m => { await Producer.PublishAsync(m); });
             IsConnected = true;
 
         }

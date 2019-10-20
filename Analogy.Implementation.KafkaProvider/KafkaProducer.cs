@@ -11,8 +11,10 @@ namespace Analogy.Implementation.KafkaProvider
         private string Topic { get; set; }
         private ProducerConfig Config { get; set; }
         public Action<DeliveryReport<Null, AnalogyLogMessage>> ReportHandler;
+        private AnalogyKafkaSerializer serializer;
         public KafkaProducer(string kafkaServerURL, string topic)
         {
+            serializer = new AnalogyKafkaSerializer();
             KafkaServerURL = kafkaServerURL;
             Topic = topic;
             Config = new ProducerConfig
@@ -27,7 +29,7 @@ namespace Analogy.Implementation.KafkaProvider
 
         public async Task<DeliveryResult<Null, AnalogyLogMessage>> PublishAsync(AnalogyLogMessage message)
         {
-            using (var p = new ProducerBuilder<Null, AnalogyLogMessage>(Config).Build())
+            using (var p = new ProducerBuilder<Null, AnalogyLogMessage>(Config).SetValueSerializer(serializer).Build())
             {
                 DeliveryResult<Null, AnalogyLogMessage> dr = await p.ProduceAsync(Topic, new Message<Null, AnalogyLogMessage> { Value = message });
                 return dr;

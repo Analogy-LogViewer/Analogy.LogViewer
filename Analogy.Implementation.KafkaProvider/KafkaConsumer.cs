@@ -15,9 +15,11 @@ namespace Analogy.Implementation.KafkaProvider
         private ConsumerConfig Config { get; set; }
         public event EventHandler<AnalogyKafkaLogMessageArgs> OnMessageReady;
         public BlockingCollectionQueue<AnalogyLogMessage> Queue;
+        private AnalogyKafkaSerializer serializer;
         private CancellationTokenSource cts;
         public KafkaConsumer(string kafkaServerURL, string topic)
         {
+            serializer = new AnalogyKafkaSerializer();
             cts = new CancellationTokenSource();
             Queue = new BlockingCollectionQueue<AnalogyLogMessage>();
             KafkaServerURL = kafkaServerURL;
@@ -36,7 +38,7 @@ namespace Analogy.Implementation.KafkaProvider
         {
             return Task.Factory.StartNew(() =>
              {
-                 using (var c = new ConsumerBuilder<Ignore, AnalogyLogMessage>(Config).Build())
+                 using (var c = new ConsumerBuilder<Ignore, AnalogyLogMessage>(Config).SetValueDeserializer(serializer).Build())
                  {
                      c.Subscribe(Topic);
                      try
@@ -75,12 +77,15 @@ namespace Analogy.Implementation.KafkaProvider
             cts.Cancel();
         }
 
-        public void ReadMessages()
+        public Task ReadMessages()
         {
-            foreach (var item in Queue.GetConsumingEnumerable(cts.Token))
+            return Task.Factory.StartNew(() =>
             {
-                OnMessageReady?.Invoke(this, new AnalogyKafkaLogMessageArgs(item));
-            }
+                foreach (var item in Queue.GetConsumingEnumerable(cts.Token))
+                {
+                    OnMessageReady?.Invoke(this, new AnalogyKafkaLogMessageArgs(item));
+                }
+            });
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Analogy.Implementation.KafkaProvider
         public void CompleteAdding() => items.CompleteAdding();
         public IEnumerable<T> GetConsumingEnumerable(CancellationToken cancellationToken)
         {
+
             foreach (var item in items.GetConsumingEnumerable(cancellationToken))
             {
                 yield return item;
