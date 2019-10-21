@@ -45,7 +45,6 @@ namespace Analogy
             spltMain.Panel1Collapsed = false;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Always;
             if (extrenalFiles.Any())
             {
                 if (File.Exists(extrenalFiles.First()))

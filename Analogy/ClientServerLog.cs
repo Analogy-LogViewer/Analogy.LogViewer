@@ -38,7 +38,6 @@ namespace Analogy
             lBoxSources.DataSource = ClientServerDataSourceManager.Instance.DataSources;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Always;
             lBoxSources.SelectedIndex = -1;
             lBoxSources.SelectedValueChanged += lBoxSources_SelectedValueChanged;
         }

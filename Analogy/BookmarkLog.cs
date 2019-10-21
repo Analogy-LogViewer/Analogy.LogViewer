@@ -23,7 +23,6 @@ namespace Analogy
             if (DesignMode) return;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Always;
             ucLogs1.SetBookmarkMode();
             var messages = await BookmarkPersistManager.Instance.GetMessages();
             AppendMessages(messages, "Analogy bookmarks");

@@ -34,7 +34,6 @@ namespace Analogy
         {
             if (DesignMode) return;
             ucLogs1.OnHistoryCleared += UcLogs1_OnHistoryCleared;
-            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Never;
             spltMain.Panel1Collapsed = true;
         }
 

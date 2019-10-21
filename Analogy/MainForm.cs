@@ -20,6 +20,7 @@ namespace Analogy
 {
     public partial class MainForm : RibbonForm
     {
+        private string filePoolingTitle = "File Pooling";
         private string offlineTitle = "Offline log";
         private string onlineTitle = "Online log";
         private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
@@ -30,6 +31,7 @@ namespace Analogy
         private List<Task<bool>> OnlineSources = new List<Task<bool>>();
         private int offline;
         private int online;
+        private int filePooling;
         private bool DebugOn { get; set; }
         private XtraTabPage currentContextPage;
         private UserSettingsManager settings;
@@ -831,6 +833,18 @@ namespace Analogy
                 xtcLogs.SelectedTabPage = page;
             }
 
+            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file ){
+                offline++;
+                UserControl offlineUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
+                XtraTabPage page = new XtraTabPage();
+                page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
+                page.Tag = ribbonPage;
+                page.Controls.Add(offlineUC);
+                offlineUC.Dock = DockStyle.Fill;
+                page.Text = $"{filePoolingTitle} #{filePooling} ({titleOfDataSource})";
+                xtcLogs.TabPages.Add(page);
+                xtcLogs.SelectedTabPage = page;
+            }
             //add local folder button:
             if (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
                 Directory.Exists(offlineAnalogy.InitialFolderFullPath))
@@ -850,26 +864,53 @@ namespace Analogy
             recentBar.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
             recentBar.RibbonStyle = RibbonItemStyles.Large | RibbonItemStyles.SmallWithText |
                                     RibbonItemStyles.SmallWithoutText;
-            //add Files open button
+            //add Files open buttons
             if (!string.IsNullOrEmpty(offlineAnalogy.FileOpenDialogFilters))
             {
-                BarButtonItem openfiles = new BarButtonItem();
-                openfiles.Caption = "Open Files";
-                group.ItemLinks.Add(openfiles);
-                openfiles.ImageOptions.Image = Resources.Article_16x16;
-                openfiles.ImageOptions.LargeImage = Resources.Article_32x32;
-                openfiles.RibbonStyle = RibbonItemStyles.All;
-                openfiles.ItemClick += (sender, e) =>
+                //add Open files entry
+                BarButtonItem openFiles = new BarButtonItem();
+                openFiles.Caption = "Open Files";
+                group.ItemLinks.Add(openFiles);
+                openFiles.ImageOptions.Image = Resources.Article_16x16;
+                openFiles.ImageOptions.LargeImage = Resources.Article_32x32;
+                openFiles.RibbonStyle = RibbonItemStyles.All;
+                openFiles.ItemClick += (sender, e) =>
                 {
-                    OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                    openFileDialog1.Filter = offlineAnalogy.FileOpenDialogFilters;
-                    openFileDialog1.Title = @"Open Files";
-                    openFileDialog1.Multiselect = true;
+                    OpenFileDialog openFileDialog1 = new OpenFileDialog
+                    {
+                        Filter = offlineAnalogy.FileOpenDialogFilters,
+                        Title = @"Open Files",
+                        Multiselect = true
+                    };
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
                         OpenOffline(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileNames);
                         AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
                             openFileDialog1.FileNames.ToList());
+                    }
+                };
+
+                //add Open Pooled file entry
+                BarButtonItem filePoolingBtn = new BarButtonItem();
+                filePoolingBtn.Enabled = false;
+                filePoolingBtn.Caption = "File Pooling";
+                group.ItemLinks.Add(filePoolingBtn);
+                filePoolingBtn.ImageOptions.Image = Resources.FilePooling_16x16;
+                filePoolingBtn.ImageOptions.LargeImage = Resources.FilePooling_32x32;
+                filePoolingBtn.RibbonStyle = RibbonItemStyles.All;
+                filePoolingBtn.ItemClick += (sender, e) =>
+                {
+                    OpenFileDialog openFileDialog1 = new OpenFileDialog
+                    {
+                        Filter = offlineAnalogy.FileOpenDialogFilters,
+                        Title = @"Open File for pooling",
+                        Multiselect = false
+                    };
+                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
+                        AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
+                            new List<string>{openFileDialog1.FileName});
                     }
 
                 };

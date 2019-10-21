@@ -30,7 +30,6 @@ namespace Analogy
             if (DesignMode) return;
             ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            ucLogs1.btsFilePooling.Visibility = BarItemVisibility.Always;
             SetupLogs();
         }
 
