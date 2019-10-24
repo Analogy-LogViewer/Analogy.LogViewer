@@ -37,12 +37,12 @@ namespace Analogy
             ucLogs1.ProcessCmdKeyFromParent(keyData);
             return base.ProcessCmdKey(ref msg, keyData);
         }
-        private void OnlineUCLogs_Load(object sender, EventArgs e)
+        private async void OnlineUCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-            PoolingManager.Init();
             ucLogs1.OnHistoryCleared += UcLogs1_OnHistoryCleared;
             spltMain.Panel1Collapsed = true;
+            await PoolingManager.Init();
         }
 
         private void UcLogs1_OnHistoryCleared(object sender, AnalogyClearedHistoryEventArgs e)

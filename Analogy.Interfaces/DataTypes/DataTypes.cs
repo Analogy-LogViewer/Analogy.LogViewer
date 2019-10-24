@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
@@ -152,11 +153,17 @@ namespace Analogy.Interfaces
         {
             if (other is null) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text && Category == other.Category &&
+            bool areEqual= Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text && Category == other.Category &&
                    Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
                    LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
                    Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
-                   Equals(Parameters, other.Parameters) && User == other.User;
+                   User == other.User;
+            if ((!areEqual) || 
+                (Parameters is null && other.Parameters != null) ||
+                (Parameters != null && other.Parameters is null))
+                return false;
+            return (Parameters is null && other.Parameters is null) ||
+                Parameters.SequenceEqual(other.Parameters);
         }
 
         public override bool Equals(object obj)
@@ -184,7 +191,14 @@ namespace Analogy.Interfaces
                 hashCode = (hashCode * 397) ^ (Module != null ? Module.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ ProcessID;
                 hashCode = (hashCode * 397) ^ Thread;
-                hashCode = (hashCode * 397) ^ (Parameters != null ? Parameters.GetHashCode() : 0);
+                if (Parameters != null && Parameters.Any())
+                {
+                    foreach (string parameter in Parameters)
+                    {
+                        if (!string.IsNullOrEmpty(parameter))
+                            hashCode = (hashCode * 397) ^ parameter.GetHashCode();
+                    }
+                }
                 hashCode = (hashCode * 397) ^ (User != null ? User.GetHashCode() : 0);
                 return hashCode;
             }

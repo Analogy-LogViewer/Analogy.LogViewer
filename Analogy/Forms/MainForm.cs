@@ -892,7 +892,6 @@ namespace Analogy
 
                 //add Open Pooled file entry
                 BarButtonItem filePoolingBtn = new BarButtonItem();
-                filePoolingBtn.Enabled = false;
                 filePoolingBtn.Caption = "File Pooling";
                 group.ItemLinks.Add(filePoolingBtn);
                 filePoolingBtn.ImageOptions.Image = Resources.FilePooling_16x16;

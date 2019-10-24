@@ -31,6 +31,7 @@ namespace Analogy
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
     {
+        public bool ForceNoFileCaching { get; } = false;
         private PagingManager PagingManager { get; set; }
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
