@@ -8,8 +8,8 @@ namespace Analogy
 {
     public class UserSettingsManager
     {
-        private string splitter = "*#*#*#";
-        private static Lazy<UserSettingsManager> _instance =
+        private readonly string splitter = "*#*#*#";
+        private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
         public string ApplicationSkinName { get; set; }
         public static UserSettingsManager UserSettings { get; } = _instance.Value;

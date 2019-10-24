@@ -7,12 +7,12 @@ namespace Analogy
 {
     public class FileProcessingManager
     {
-        private static Lazy<FileProcessingManager> _instance = new Lazy<FileProcessingManager>(() => new FileProcessingManager());
+        private static readonly Lazy<FileProcessingManager> _instance = new Lazy<FileProcessingManager>(() => new FileProcessingManager());
         public static FileProcessingManager Instance { get; } = _instance.Value;
 
         private List<string> ProcessedFileNames { get; set; } = new List<string>();
         private List<string> Processing { get; set; } = new List<string>();
-        private object lockObject = new object();
+        private readonly object lockObject = new object();
 
         private Dictionary<string, List<AnalogyLogMessage>> Messages { get; } = new Dictionary<string, List<AnalogyLogMessage>>(StringComparer.OrdinalIgnoreCase);
         public bool AlreadyProcessed(string filename) => ProcessedFileNames.Contains(filename, StringComparer.OrdinalIgnoreCase);

@@ -11,7 +11,7 @@ namespace Analogy
 {
     public class AnalogyFactoriesManager
     {
-        private static Lazy<AnalogyFactoriesManager>
+        private static readonly Lazy<AnalogyFactoriesManager>
             _instance = new Lazy<AnalogyFactoriesManager>(() => new AnalogyFactoriesManager());
         public static AnalogyFactoriesManager AnalogyFactories { get; } = _instance.Value;
         public List<(IAnalogyFactory Factory, Assembly Assembly)> Assemblies { get; private set; }
@@ -20,8 +20,10 @@ namespace Analogy
         public AnalogyFactoriesManager()
         {
             Factories = new List<IAnalogyFactory>();
-            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>();
-            Assemblies.Add((new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()));
+            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
+            {
+                (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly())
+            };
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)
@@ -36,8 +38,7 @@ namespace Analogy
                         {
                             if (aType.GetInterface(nameof(IAnalogyFactory)) != null)
                             {
-                                IAnalogyFactory factory = Activator.CreateInstance(aType) as IAnalogyFactory;
-                                if (factory == null) continue;
+                                if (!(Activator.CreateInstance(aType) is IAnalogyFactory factory)) continue;
                                 Factories.Add(factory);
                                 foreach (var provider in factory.DataProviders.Items)
                                 {

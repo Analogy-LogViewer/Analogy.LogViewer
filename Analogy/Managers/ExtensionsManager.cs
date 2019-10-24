@@ -11,11 +11,11 @@ namespace Analogy
 {
     public class ExtensionsManager : IExtensionsManager
     {
-        private static Lazy<ExtensionsManager> _instance => new Lazy<ExtensionsManager>(() => new ExtensionsManager());
-        public static ExtensionsManager Instance => _instance.Value;
+        private static readonly Lazy<ExtensionsManager> instance = new Lazy<ExtensionsManager>(() => new ExtensionsManager());
+        public static ExtensionsManager Instance => instance.Value;
         private AnalogyLogger Log { get; } = new AnalogyLogger();
         private List<IAnalogyExtension> LoadedExtensions { get; } = new List<IAnalogyExtension>();
-        private List<IAnalogyExtension> registeredExtensions = new List<IAnalogyExtension>();
+        private readonly List<IAnalogyExtension> registeredExtensions = new List<IAnalogyExtension>();
         public bool HasAny => RegisteredExtensions.Any();
         public IEnumerable<IAnalogyExtension> RegisteredExtensions => registeredExtensions.ToList();
         public bool HasAnyInPlace => InPlaceRegisteredExtensions.Any();
@@ -26,7 +26,7 @@ namespace Analogy
         public IEnumerable<IAnalogyExtension> UserControlRegisteredExtensions =>
             registeredExtensions.Where(e => e.AnalogyExtensionType == AnalogyExtensionType.UserControl).ToList();
         private int ColumnIndexes { get; set; } = 12;
-        private List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
+        private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();
 
         private ExtensionsManager()

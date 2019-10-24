@@ -7,7 +7,7 @@ namespace Analogy
     public class ClientServerDataSourceManager
     {
         private string FileName { get; } = "ExternalLocations.dat";
-        private static Lazy<ClientServerDataSourceManager> _instance = new Lazy<ClientServerDataSourceManager>(() => new ClientServerDataSourceManager());
+        private static readonly Lazy<ClientServerDataSourceManager> _instance = new Lazy<ClientServerDataSourceManager>(() => new ClientServerDataSourceManager());
         public static ClientServerDataSourceManager Instance { get; } = _instance.Value;
         public List<DataSource> DataSources { get; } = new List<DataSource>();
 

@@ -9,14 +9,14 @@ namespace Analogy
 {
     public class PagingManager
     {
-        private UCLogs owner;
+        private readonly UCLogs owner;
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private UserSettingsManager Settings { get; }
         private List<DataTable> pages;
-        private List<AnalogyLogMessage> allMessages;
-        private int pageSize;
+        private readonly List<AnalogyLogMessage> allMessages;
+        private readonly int pageSize;
         private int currentPageStartRowIndex;
         private int currentPageNumber;
 

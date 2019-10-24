@@ -13,7 +13,7 @@ namespace Analogy
 {
     public class BookmarkPersistManager : ILogMessageCreatedHandler
     {
-        private static Lazy<BookmarkPersistManager> _instance =
+        private static readonly Lazy<BookmarkPersistManager> _instance =
             new Lazy<BookmarkPersistManager>(() => new BookmarkPersistManager());
         public EventHandler<LogMessageArgs> MessageReceived;
         public EventHandler<LogMessageArgs> MessageRemoved;
@@ -21,7 +21,7 @@ namespace Analogy
         private bool ContentChanged;
         private bool fileLoaded;
         private List<AnalogyLogMessage> Messages { get; set; }
-        private string bookmarkFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
+        private readonly string bookmarkFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
 
         public BookmarkPersistManager()
         {

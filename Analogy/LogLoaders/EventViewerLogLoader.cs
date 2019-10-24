@@ -11,7 +11,7 @@ namespace Analogy.LogLoaders
 {
     public class EventViewerLogLoader
     {
-        private string[] seperators = new[] { "Severity: ", ", Category: ", ", MessageID: ", ", Message: " };
+        private readonly string[] _separators = { "Severity: ", ", Category: ", ", MessageID: ", ", Message: " };
         private CancellationToken Token { get; }
 
         public EventViewerLogLoader(CancellationToken token)
@@ -41,15 +41,17 @@ namespace Analogy.LogLoaders
                                 break;
                             using (record)
                             {
-                                AnalogyLogMessage m = new AnalogyLogMessage();
-                                m.Date = record.TimeCreated ?? DateTime.MinValue;
-                                m.Source = record.ProviderName;
-                                m.Module = record.ProviderName;
-                                m.Level = AnalogyLogLevel.Event;
-                                m.ID = record.ActivityId ?? Guid.Empty;
-                                m.ProcessID = record.ProcessId ?? 0;
-                                m.FileName = fileName;
-                                m.User = record.UserId?.Value;
+                                AnalogyLogMessage m = new AnalogyLogMessage
+                                {
+                                    Date = record.TimeCreated ?? DateTime.MinValue,
+                                    Source = record.ProviderName,
+                                    Module = record.ProviderName,
+                                    Level = AnalogyLogLevel.Event,
+                                    ID = record.ActivityId ?? Guid.Empty,
+                                    ProcessID = record.ProcessId ?? 0,
+                                    FileName = fileName,
+                                    User = record.UserId?.Value
+                                };
                                 string properties = string.Join(Environment.NewLine, record.Properties.Select(p => p.Value));
                                 try
                                 {
@@ -78,7 +80,7 @@ namespace Analogy.LogLoaders
                                 }
                                 catch (Exception)
                                 {
-                                    var items = record.Properties[0].Value.ToString().Split(seperators, StringSplitOptions.RemoveEmptyEntries);
+                                    var items = record.Properties[0].Value.ToString().Split(_separators, StringSplitOptions.RemoveEmptyEntries);
                                     if (items.Any() && items.Length == 4)
                                     {
                                         m.Text = $"{record.MachineName} :({record.LogName}) - {items[3]} . Message ID: {items[2]}";
@@ -145,11 +147,13 @@ namespace Analogy.LogLoaders
                 catch (Exception e)
                 {
                     string fail = "Failed To parse: " + fileName + " Error:" + e;
-                    AnalogyLogMessage m = new AnalogyLogMessage();
-                    m.Text = fail;
-                    m.Level = AnalogyLogLevel.Critical;
-                    m.Class = AnalogyLogClass.General;
-                    m.Source = "Analogy";
+                    AnalogyLogMessage m = new AnalogyLogMessage
+                    {
+                        Text = fail,
+                        Level = AnalogyLogLevel.Critical,
+                        Class = AnalogyLogClass.General,
+                        Source = "Analogy"
+                    };
                     messages.Add(m);
                     logWindow.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                 }
