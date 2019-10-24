@@ -15,8 +15,8 @@ namespace Analogy.Implementation.KafkaProvider
         private ConsumerConfig Config { get; set; }
         public event EventHandler<AnalogyKafkaLogMessageArgs> OnMessageReady;
         public BlockingCollectionQueue<AnalogyLogMessage> Queue;
-        private AnalogyKafkaSerializer serializer;
-        private CancellationTokenSource cts;
+        private readonly AnalogyKafkaSerializer serializer;
+        private readonly CancellationTokenSource cts;
         public KafkaConsumer(string kafkaServerURL, string topic)
         {
             serializer = new AnalogyKafkaSerializer();

@@ -10,7 +10,7 @@ namespace Analogy.Implementation.KafkaProvider
 {
     public class AnalogyKafkaSerializer : ISerializer<AnalogyLogMessage>, IDeserializer<AnalogyLogMessage>
     {
-        private BinaryFormatter _bFormatter;
+        private readonly BinaryFormatter _bFormatter;
         public AnalogyKafkaSerializer()
         {
             _bFormatter = new BinaryFormatter();

@@ -32,7 +32,12 @@ namespace Analogy.LogLoaders
             {
                 try
                 {
-                    string data = File.ReadAllText(fileName);
+                    string data = string.Empty;
+                    using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    using (var textReader = new StreamReader(fileStream))
+                    {
+                        data = textReader.ReadToEnd();
+                    }
                     List<AnalogyLogMessage> messages = JsonConvert.DeserializeObject<List<AnalogyLogMessage>>(data);
                     messageHandler.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                     return messages;

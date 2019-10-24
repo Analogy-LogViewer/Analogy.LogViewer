@@ -80,7 +80,6 @@ namespace Analogy
         {
             if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
             SelectedPath = folder;
-            treeList1.FocusedNodeChanged -= TreeList1_FocusedNodeChanged;
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
@@ -93,14 +92,9 @@ namespace Analogy
 
             treeList1.BestFitColumns();
             treeList1.ClearSelection();
-            treeList1.FocusedNodeChanged += TreeList1_FocusedNodeChanged;
             treeList1.SelectionChanged += TreeList1_SelectionChanged;
         }
-        private async void TreeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
-        {
 
-
-        }
         private async Task LoadFilesAsync(List<string> fileNames, bool clearLog)
         {
             await ucLogs1.LoadFilesAsync(fileNames, clearLog);

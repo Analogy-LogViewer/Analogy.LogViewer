@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using Analogy.Managers;
 using DevExpress.XtraBars;
 using Message = System.Windows.Forms.Message;
 
@@ -19,14 +20,17 @@ namespace Analogy
         private string FileName { get; set; }
         private string InitialFolder { get; set; }
         public bool Enable { get; set; } = true;
-        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string fileName,string initialFolder)
+        private FilePoolingManager PoolingManager { get; }
+        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string fileName, string initialFolder)
         {
             InitializeComponent();
             InitialFolder = initialFolder;
             FileName = fileName;
             ucLogs1.OnlineMode = false;
-
+            PoolingManager = new FilePoolingManager(FileName, offlineDataProvider);
             ucLogs1.SetFileDataSource(offlineDataProvider);
+            PoolingManager.OnNewMessages += (s, data) => AppendMessages(data.messages, data.dataSource);
+
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -36,6 +40,7 @@ namespace Analogy
         private void OnlineUCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
+            PoolingManager.Init();
             ucLogs1.OnHistoryCleared += UcLogs1_OnHistoryCleared;
             spltMain.Panel1Collapsed = true;
         }
@@ -62,22 +67,12 @@ namespace Analogy
 
         }
 
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
-        {
-            if (Enable && !IsDisposed)
-            {
-                string interned = string.Intern(dataSource);
-                ucLogs1.AppendMessage(message, interned);
-            }
-        }
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)
             {
+
                 string interned = string.Intern(dataSource);
                 ucLogs1.AppendMessages(messages, interned);
             }

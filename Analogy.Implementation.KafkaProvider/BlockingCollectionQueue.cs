@@ -8,16 +8,16 @@ namespace Analogy.Implementation.KafkaProvider
 {
     public class BlockingCollectionQueue<T>
     {
-        private BlockingCollection<T> items = new BlockingCollection<T>(new ConcurrentQueue<T>());
+        private readonly BlockingCollection<T> _items = new BlockingCollection<T>(new ConcurrentQueue<T>());
 
-        public void Enqueue(T item) => items.Add(item);
-        public int Count => items.Count;
+        public void Enqueue(T item) => _items.Add(item);
+        public int Count => _items.Count;
 
-        public void CompleteAdding() => items.CompleteAdding();
+        public void CompleteAdding() => _items.CompleteAdding();
         public IEnumerable<T> GetConsumingEnumerable(CancellationToken cancellationToken)
         {
 
-            foreach (var item in items.GetConsumingEnumerable(cancellationToken))
+            foreach (var item in _items.GetConsumingEnumerable(cancellationToken))
             {
                 yield return item;
             }

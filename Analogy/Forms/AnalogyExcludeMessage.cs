@@ -17,21 +17,6 @@ namespace Analogy
         {
             txtbMessage.Text = m.Text;
         }
-
-        private void BtnOK_Click(object sender, EventArgs e)
-        {
-            Exclude = FilterCriteriaObject.EscapeLikeValue(txtbMessage.Text);
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-
-        }
-
         private void sBtnOk_Click(object sender, EventArgs e)
         {
             Exclude = FilterCriteriaObject.EscapeLikeValue(txtbMessage.Text);

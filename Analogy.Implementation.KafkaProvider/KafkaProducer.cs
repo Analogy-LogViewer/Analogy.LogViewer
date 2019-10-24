@@ -11,7 +11,7 @@ namespace Analogy.Implementation.KafkaProvider
         private string Topic { get; set; }
         private ProducerConfig Config { get; set; }
         public Action<DeliveryReport<Null, AnalogyLogMessage>> ReportHandler;
-        private AnalogyKafkaSerializer serializer;
+        private readonly AnalogyKafkaSerializer serializer;
         public KafkaProducer(string kafkaServerURL, string topic)
         {
             serializer = new AnalogyKafkaSerializer();

@@ -9,9 +9,9 @@ namespace Analogy.Implementation.KafkaProvider
     public class TimerMessagesSimulator
     {
         private int messageCount = 0;
-        private Timer SimulateOnlineMessages;
-        Random random = new Random();
-        Array values = Enum.GetValues(typeof(AnalogyLogLevel));
+        private readonly Timer SimulateOnlineMessages;
+        readonly Random random = new Random();
+        readonly Array values = Enum.GetValues(typeof(AnalogyLogLevel));
         private Action<AnalogyLogMessage> ActionPerTick { get; }
         public TimerMessagesSimulator(Action<AnalogyLogMessage> action)
         {
