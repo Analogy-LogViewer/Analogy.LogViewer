@@ -47,7 +47,7 @@ namespace Analogy.Interfaces
     [Serializable]
     [XmlRoot("AnalogyLogMessage")]
 
-    public class AnalogyLogMessage
+    public class AnalogyLogMessage : IEquatable<AnalogyLogMessage>
     {
 
         /// <summary>
@@ -146,6 +146,48 @@ namespace Analogy.Interfaces
             Parameters = parameters ?? new string[0];
             User = user ?? string.Empty;
             Thread = threadID != 0 ? Thread : System.Threading.Thread.CurrentThread.ManagedThreadId;
+        }
+
+        public bool Equals(AnalogyLogMessage other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text && Category == other.Category &&
+                   Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
+                   LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
+                   Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
+                   Equals(Parameters, other.Parameters) && User == other.User;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((AnalogyLogMessage)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = Date.GetHashCode();
+                hashCode = (hashCode * 397) ^ ID.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Text != null ? Text.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Category != null ? Category.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Source != null ? Source.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (MethodName != null ? MethodName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (FileName != null ? FileName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ LineNumber;
+                hashCode = (hashCode * 397) ^ (int)Class;
+                hashCode = (hashCode * 397) ^ (int)Level;
+                hashCode = (hashCode * 397) ^ (Module != null ? Module.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ ProcessID;
+                hashCode = (hashCode * 397) ^ Thread;
+                hashCode = (hashCode * 397) ^ (Parameters != null ? Parameters.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (User != null ? User.GetHashCode() : 0);
+                return hashCode;
+            }
         }
     }
 
