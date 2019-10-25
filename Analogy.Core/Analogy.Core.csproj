@@ -5,6 +5,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>Analogy</AssemblyName>
+    <RootNamespace>Analogy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

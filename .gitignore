@@ -62,3 +62,4 @@
 /Analogy.Core/bin/Debug/netcoreapp3.0
 /Analogy.Core/obj
 *.user
+/.vs/Analogy.Core/DesignTimeBuild

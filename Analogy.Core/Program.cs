@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
 
-namespace Analogy.Core
+namespace Analogy
 {
     static class Program
     {
