@@ -58,3 +58,7 @@
 /packages
 /Analogy.Implementation.KafkaProvider/bin/Release/netstandard2.0
 /Analogy.Implementation.KafkaProvider/nuget.exe
+/.vs/Analogy.Core/v16
+/Analogy.Core/bin/Debug/netcoreapp3.0
+/Analogy.Core/obj
+*.user
