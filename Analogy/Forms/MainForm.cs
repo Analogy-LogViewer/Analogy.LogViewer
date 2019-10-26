@@ -404,7 +404,7 @@ namespace Analogy
         {
             try
             {
-                Process.Start($"mailto:lior.banai@Philips.com?Subject=Analogy App");
+                Process.Start($"mailto:liorbanai@gmail.com?Subject=Analogy App");
             }
             catch (Exception ex)
             {

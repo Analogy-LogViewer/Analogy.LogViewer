@@ -130,8 +130,7 @@
             this.textBoxDescription.Size = new System.Drawing.Size(1032, 196);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail:  Lior.Banai@philips.com\r\nmail:" +
-    "  Liorbanai@gmail.com";
+            this.textBoxDescription.Text = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail:  Liorbanai@gmail.com";
             // 
             // okButton
             // 

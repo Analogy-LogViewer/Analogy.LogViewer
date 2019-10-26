@@ -15,7 +15,7 @@ namespace Analogy
             this.labelVersion.Text = string.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2017){Environment.NewLine}Contact info:{Environment.NewLine}mail: Lior.Banai @philips.com{Environment.NewLine}mail: Liorbanai @gmail.com";
+            this.textBoxDescription.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2017){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai @gmail.com";
         }
 
         #region Assembly Attribute Accessors
