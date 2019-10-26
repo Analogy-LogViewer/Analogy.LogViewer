@@ -18,6 +18,8 @@ namespace Analogy
         public string ExcludedText { get; set; }
         public string ExcludedModules { get; set; }
         public string ExcludedSource { get; set; }
+        public string IncludedModule { get; set; }
+        public string IncludedSource { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
         public bool ShowHistoryOfClearedMessages { get; set; }
         public int RecentFilesCount { get; set; }

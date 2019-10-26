@@ -274,6 +274,7 @@ namespace Analogy
     public class FilterCriteriaObject
     {
         private readonly AnalogyLogLevel[] _allLevels = Enum.GetValues(typeof(AnalogyLogLevel)) as AnalogyLogLevel[];
+        public string[] Sources;
         public string[] ExcludedSources;
         public string[] Modules;
         public string[] ExcludedModules;
@@ -393,6 +394,12 @@ namespace Analogy
                 sqlString.Append(")");
             }
 
+            if (Sources != null && Sources.Any())
+            {
+                sqlString.Append(" and (");
+                sqlString.Append(string.Join(" Or ", Sources.Select(l => $" Source like '%{EscapeLikeValue(l)}%'")));
+                sqlString.Append(")");
+            }
             if (ExcludedSources != null && ExcludedSources.Any())
             {
                 sqlString.Append(" and (");
@@ -409,7 +416,7 @@ namespace Analogy
             if (Modules != null && Modules.Any())
             {
                 sqlString.Append(" and (");
-                sqlString.Append(string.Join(" and ", Modules.Select(l => $" Module like '%{EscapeLikeValue(l)}%'")));
+                sqlString.Append(string.Join(" Or ", Modules.Select(l => $" Module like '%{EscapeLikeValue(l)}%'")));
                 sqlString.Append(")");
             }
             string sTemp = string.Join(",", Levels.Select(l => $"'{l}'"));
