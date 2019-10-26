@@ -805,6 +805,7 @@ namespace Analogy
         private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy, string title,
             RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
+       
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
                 offline++;
@@ -834,16 +835,37 @@ namespace Analogy
             }
 
             void OpenFilePooling(string titleOfDataSource, string initialFolder, string file ){
+
                 offline++;
-                UserControl offlineUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
+                UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                 XtraTabPage page = new XtraTabPage();
+                void OnXtcLogsOnControlRemoved(object sender, ControlEventArgs arg)
+                {
+                    if (arg.Control == page)
+                    {
+                        try
+                        {
+                            filepoolingUC.Dispose();
+                        }
+                        catch (Exception)
+                        {
+                            //doto: nothing //log..
+                        }
+                        finally
+                        {
+                            xtcLogs.ControlRemoved -= OnXtcLogsOnControlRemoved;
+                        }
+                    }
+                }
+               
                 page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
                 page.Tag = ribbonPage;
-                page.Controls.Add(offlineUC);
-                offlineUC.Dock = DockStyle.Fill;
+                page.Controls.Add(filepoolingUC);
+                filepoolingUC.Dock = DockStyle.Fill;
                 page.Text = $"{filePoolingTitle} #{filePooling} ({titleOfDataSource})";
                 xtcLogs.TabPages.Add(page);
                 xtcLogs.SelectedTabPage = page;
+                xtcLogs.ControlRemoved += OnXtcLogsOnControlRemoved;
             }
             //add local folder button:
             if (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&

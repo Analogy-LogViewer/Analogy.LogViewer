@@ -47,6 +47,16 @@ namespace Analogy.Managers
             return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
         }
 
+        public void StopMonitoring()
+        {
+          
+            _watchFile.EnableRaisingEvents = false;
+            _watchFile.Changed -= WatchFile_Changed;
+            _watchFile.Deleted -= WatchFile_Deleted;
+            _watchFile.Renamed -= WatchFile_Renamed;
+            _watchFile.Error -= WatchFile_Error;
+            _watchFile.Dispose();
+        }
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
             lock (_sync)

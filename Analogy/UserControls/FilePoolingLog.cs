@@ -18,20 +18,25 @@ namespace Analogy
         private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private static int clearHistoryCounter;
         private string FileName { get; set; }
-        private string InitialFolder { get; set; }
         public bool Enable { get; set; } = true;
         private FilePoolingManager PoolingManager { get; }
-        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string fileName, string initialFolder)
+        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string fileName,string initialFolder)
         {
             InitializeComponent();
-            InitialFolder = initialFolder;
             FileName = fileName;
             ucLogs1.OnlineMode = false;
             PoolingManager = new FilePoolingManager(FileName, offlineDataProvider);
             ucLogs1.SetFileDataSource(offlineDataProvider);
             PoolingManager.OnNewMessages += (s, data) => AppendMessages(data.messages, data.dataSource);
+            this.Disposed += FilePoolingUCLogs_Disposed;
 
         }
+
+        private void FilePoolingUCLogs_Disposed(object sender, EventArgs e)
+        {
+            PoolingManager.StopMonitoring();
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             ucLogs1.ProcessCmdKeyFromParent(keyData);
