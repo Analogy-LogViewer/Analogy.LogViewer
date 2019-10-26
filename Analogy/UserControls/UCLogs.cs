@@ -917,12 +917,6 @@ namespace Analogy
             }
         }
 
-        public void SetProcessOrModuleFilter(string processOrModuleFilter)
-        {
-            _filterCriteriaInline.Modules = new[] { processOrModuleFilter };
-            FilterResults();
-
-        }
         public void FilterResults(string module)
         {
             txtbIncludeModule.Text = module;
@@ -2052,15 +2046,20 @@ namespace Analogy
 
         private void bBtnUndockViewPerProcess_ItemClick(object sender, ItemClickEventArgs e)
         {
+            UndockViewPerProcess();
+        }
+
+        private void UndockViewPerProcess()
+        {
             var msg = Messages;
             if (!msg.Any()) return;
             var source = GetFilteredDataTable().Rows[0]?["DataProvider"]?.ToString();
             if (source == null) return;
-         
+
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source,process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -2074,7 +2073,6 @@ namespace Analogy
                 };
                 grid.Show(this);
             }
-        
         }
 
         private void sbtnTextInclude_Click(object sender, EventArgs e)
@@ -2137,6 +2135,11 @@ namespace Analogy
 
             RefreshUserFilter();
             Settings.IncludedModule= chkbIncludeModules.Text;
+        }
+
+        private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
+        {
+            UndockViewPerProcess();
         }
     }
 }
