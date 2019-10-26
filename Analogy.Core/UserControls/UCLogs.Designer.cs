@@ -94,13 +94,15 @@ namespace Analogy
             this.barSubItemSaveView = new DevExpress.XtraBars.BarSubItem();
             this.bBtnSaveLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSaveViewAgnostic = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
             this.bbiScreenshot = new DevExpress.XtraBars.BarButtonItem();
             this.bSMExports = new DevExpress.XtraBars.BarSubItem();
             this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnExportCSV = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnExportHtml = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnImport = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
             this.bdcTopFiltering = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BbarMainMenu = new DevExpress.XtraBars.Bar();
@@ -134,18 +136,32 @@ namespace Analogy
             this.chkbHighlight = new System.Windows.Forms.CheckBox();
             this.pnlTopFiltering = new System.Windows.Forms.Panel();
             this.spltFilteringBoth = new System.Windows.Forms.SplitContainer();
-            this.spltCSources = new System.Windows.Forms.SplitContainer();
             this.pnlFilteringLeft = new System.Windows.Forms.Panel();
+            this.spltcProcessesModule = new System.Windows.Forms.SplitContainer();
+            this.txtbIncludeModule = new DevExpress.XtraEditors.TextEdit();
+            this.chkbIncludeModules = new System.Windows.Forms.CheckBox();
+            this.sbtnIncludeModules = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnExcludeModules = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnUndockPerProcess = new DevExpress.XtraEditors.SimpleButton();
             this.txtbExcludeModule = new DevExpress.XtraEditors.TextEdit();
-            this.txtbExcludeSource = new DevExpress.XtraEditors.TextEdit();
             this.chkbExcludeModules = new System.Windows.Forms.CheckBox();
-            this.txtbExclude = new DevExpress.XtraEditors.TextEdit();
+            this.spltcSources = new System.Windows.Forms.SplitContainer();
+            this.txtbIncludeSource = new DevExpress.XtraEditors.TextEdit();
+            this.sbtnIncludeSources = new DevExpress.XtraEditors.SimpleButton();
+            this.chkbIncludeSources = new System.Windows.Forms.CheckBox();
             this.pboxInfoExclude = new System.Windows.Forms.PictureBox();
-            this.txtbInclude = new DevExpress.XtraEditors.TextEdit();
+            this.txtbExcludeSource = new DevExpress.XtraEditors.TextEdit();
+            this.sbtnExcludeSources = new DevExpress.XtraEditors.SimpleButton();
             this.chkbExcludeSources = new System.Windows.Forms.CheckBox();
+            this.spltTextExclude = new System.Windows.Forms.SplitContainer();
+            this.txtbExclude = new DevExpress.XtraEditors.TextEdit();
+            this.sbtnTextExclude = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnMostCommon = new DevExpress.XtraEditors.SimpleButton();
-            this.chkbInclude = new System.Windows.Forms.CheckBox();
             this.chkExclude = new System.Windows.Forms.CheckBox();
+            this.spltText = new System.Windows.Forms.SplitContainer();
+            this.txtbIncludeText = new DevExpress.XtraEditors.TextEdit();
+            this.sbtnTextInclude = new DevExpress.XtraEditors.SimpleButton();
+            this.chkbIncludeText = new System.Windows.Forms.CheckBox();
             this.pboxInfo = new System.Windows.Forms.PictureBox();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.tcBottom = new DevExpress.XtraTab.XtraTabControl();
@@ -231,14 +247,28 @@ namespace Analogy
             this.spltFilteringBoth.Panel1.SuspendLayout();
             this.spltFilteringBoth.Panel2.SuspendLayout();
             this.spltFilteringBoth.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).BeginInit();
-            this.spltCSources.SuspendLayout();
             this.pnlFilteringLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltcProcessesModule)).BeginInit();
+            this.spltcProcessesModule.Panel1.SuspendLayout();
+            this.spltcProcessesModule.Panel2.SuspendLayout();
+            this.spltcProcessesModule.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeModule.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeModule.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeSource.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbExclude.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltcSources)).BeginInit();
+            this.spltcSources.Panel1.SuspendLayout();
+            this.spltcSources.Panel2.SuspendLayout();
+            this.spltcSources.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfoExclude)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeSource.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltTextExclude)).BeginInit();
+            this.spltTextExclude.Panel1.SuspendLayout();
+            this.spltTextExclude.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExclude.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltText)).BeginInit();
+            this.spltText.Panel1.SuspendLayout();
+            this.spltText.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).BeginInit();
@@ -826,9 +856,11 @@ namespace Analogy
             this.barSubItemSaveView,
             this.bbtnSaveViewAgnostic,
             this.barSubItemSaveEntireLog,
-            this.barButtonItemSaveEntireInAnalogy});
+            this.barButtonItemSaveEntireInAnalogy,
+            this.barSubItem1,
+            this.bBtnUndockViewPerProcess});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 34;
+            this.barManager1.MaxItemId = 36;
             // 
             // barTopFiltering
             // 
@@ -845,10 +877,10 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveEntireLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveView),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
             new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockView),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnDataVisualizer)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -962,6 +994,37 @@ namespace Analogy
             this.bbtnSaveViewAgnostic.Name = "bbtnSaveViewAgnostic";
             this.bbtnSaveViewAgnostic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSaveViewAgnostic_ItemClick);
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Undock View";
+            this.barSubItem1.Id = 34;
+            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
+            this.barSubItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockView),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockViewPerProcess)});
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bBtnUndockView
+            // 
+            this.bBtnUndockView.Caption = "Undock View (No Filtering)";
+            this.bBtnUndockView.Id = 24;
+            this.bBtnUndockView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.Image")));
+            this.bBtnUndockView.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.LargeImage")));
+            this.bBtnUndockView.Name = "bBtnUndockView";
+            this.bBtnUndockView.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnUndockView.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockView_ItemClick);
+            // 
+            // bBtnUndockViewPerProcess
+            // 
+            this.bBtnUndockViewPerProcess.Caption = "Undock View per process/Module";
+            this.bBtnUndockViewPerProcess.Id = 35;
+            this.bBtnUndockViewPerProcess.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockViewPerProcess.ImageOptions.Image")));
+            this.bBtnUndockViewPerProcess.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockViewPerProcess.ImageOptions.LargeImage")));
+            this.bBtnUndockViewPerProcess.Name = "bBtnUndockViewPerProcess";
+            this.bBtnUndockViewPerProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockViewPerProcess_ItemClick);
+            // 
             // bbiScreenshot
             // 
             this.bbiScreenshot.Caption = "Take screenshot";
@@ -975,7 +1038,7 @@ namespace Analogy
             // 
             // bSMExports
             // 
-            this.bSMExports.Caption = "Export to other formats";
+            this.bSMExports.Caption = "Export";
             this.bSMExports.Id = 20;
             this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
             this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
@@ -1025,16 +1088,6 @@ namespace Analogy
             this.bBtnImport.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnImport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnImport_ItemClick);
-            // 
-            // bBtnUndockView
-            // 
-            this.bBtnUndockView.Caption = "Undock View";
-            this.bBtnUndockView.Id = 24;
-            this.bBtnUndockView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.Image")));
-            this.bBtnUndockView.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.LargeImage")));
-            this.bBtnUndockView.Name = "bBtnUndockView";
-            this.bBtnUndockView.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnUndockView.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockView_ItemClick);
             // 
             // bBtnDataVisualizer
             // 
@@ -1394,7 +1447,6 @@ namespace Analogy
             // 
             // spltFilteringBoth.Panel1
             // 
-            this.spltFilteringBoth.Panel1.Controls.Add(this.spltCSources);
             this.spltFilteringBoth.Panel1.Controls.Add(this.pnlFilteringLeft);
             // 
             // spltFilteringBoth.Panel2
@@ -1406,59 +1458,109 @@ namespace Analogy
             this.spltFilteringBoth.SplitterWidth = 3;
             this.spltFilteringBoth.TabIndex = 19;
             // 
-            // spltCSources
-            // 
-            this.spltCSources.Location = new System.Drawing.Point(874, 46);
-            this.spltCSources.Name = "spltCSources";
-            this.spltCSources.Size = new System.Drawing.Size(550, 40);
-            this.spltCSources.SplitterDistance = 336;
-            this.spltCSources.TabIndex = 21;
-            this.spltCSources.Visible = false;
-            // 
             // pnlFilteringLeft
             // 
-            this.pnlFilteringLeft.Controls.Add(this.txtbExcludeModule);
-            this.pnlFilteringLeft.Controls.Add(this.txtbExcludeSource);
-            this.pnlFilteringLeft.Controls.Add(this.chkbExcludeModules);
-            this.pnlFilteringLeft.Controls.Add(this.txtbExclude);
-            this.pnlFilteringLeft.Controls.Add(this.pboxInfoExclude);
-            this.pnlFilteringLeft.Controls.Add(this.txtbInclude);
-            this.pnlFilteringLeft.Controls.Add(this.chkbExcludeSources);
-            this.pnlFilteringLeft.Controls.Add(this.sBtnMostCommon);
-            this.pnlFilteringLeft.Controls.Add(this.chkbInclude);
-            this.pnlFilteringLeft.Controls.Add(this.chkExclude);
-            this.pnlFilteringLeft.Controls.Add(this.pboxInfo);
+            this.pnlFilteringLeft.Controls.Add(this.spltcProcessesModule);
+            this.pnlFilteringLeft.Controls.Add(this.spltcSources);
+            this.pnlFilteringLeft.Controls.Add(this.spltTextExclude);
+            this.pnlFilteringLeft.Controls.Add(this.spltText);
             this.pnlFilteringLeft.Location = new System.Drawing.Point(0, 1);
             this.pnlFilteringLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFilteringLeft.Name = "pnlFilteringLeft";
             this.pnlFilteringLeft.Size = new System.Drawing.Size(1241, 119);
             this.pnlFilteringLeft.TabIndex = 20;
             // 
+            // spltcProcessesModule
+            // 
+            this.spltcProcessesModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spltcProcessesModule.Location = new System.Drawing.Point(7, 94);
+            this.spltcProcessesModule.Name = "spltcProcessesModule";
+            // 
+            // spltcProcessesModule.Panel1
+            // 
+            this.spltcProcessesModule.Panel1.Controls.Add(this.txtbIncludeModule);
+            this.spltcProcessesModule.Panel1.Controls.Add(this.chkbIncludeModules);
+            this.spltcProcessesModule.Panel1.Controls.Add(this.sbtnIncludeModules);
+            // 
+            // spltcProcessesModule.Panel2
+            // 
+            this.spltcProcessesModule.Panel2.Controls.Add(this.sbtnExcludeModules);
+            this.spltcProcessesModule.Panel2.Controls.Add(this.sbtnUndockPerProcess);
+            this.spltcProcessesModule.Panel2.Controls.Add(this.txtbExcludeModule);
+            this.spltcProcessesModule.Panel2.Controls.Add(this.chkbExcludeModules);
+            this.spltcProcessesModule.Size = new System.Drawing.Size(1230, 24);
+            this.spltcProcessesModule.SplitterDistance = 574;
+            this.spltcProcessesModule.TabIndex = 26;
+            // 
+            // txtbIncludeModule
+            // 
+            this.txtbIncludeModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbIncludeModule.Location = new System.Drawing.Point(228, 0);
+            this.txtbIncludeModule.MenuManager = this.barManager1;
+            this.txtbIncludeModule.Name = "txtbIncludeModule";
+            this.txtbIncludeModule.Size = new System.Drawing.Size(323, 22);
+            this.txtbIncludeModule.TabIndex = 26;
+            this.txtbIncludeModule.TextChanged += new System.EventHandler(this.txtbIncludeModule_TextChanged);
+            // 
+            // chkbIncludeModules
+            // 
+            this.chkbIncludeModules.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkbIncludeModules.Location = new System.Drawing.Point(0, 0);
+            this.chkbIncludeModules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkbIncludeModules.Name = "chkbIncludeModules";
+            this.chkbIncludeModules.Size = new System.Drawing.Size(228, 24);
+            this.chkbIncludeModules.TabIndex = 25;
+            this.chkbIncludeModules.Text = "Include Processes/Modules:";
+            this.chkbIncludeModules.UseVisualStyleBackColor = true;
+            // 
+            // sbtnIncludeModules
+            // 
+            this.sbtnIncludeModules.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnIncludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeModules.ImageOptions.Image")));
+            this.sbtnIncludeModules.Location = new System.Drawing.Point(551, 0);
+            this.sbtnIncludeModules.Name = "sbtnIncludeModules";
+            this.sbtnIncludeModules.Size = new System.Drawing.Size(23, 24);
+            this.sbtnIncludeModules.TabIndex = 24;
+            this.sbtnIncludeModules.ToolTip = "Clear the text";
+            this.sbtnIncludeModules.Click += new System.EventHandler(this.sbtnIncludeModules_Click);
+            // 
+            // sbtnExcludeModules
+            // 
+            this.sbtnExcludeModules.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnExcludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnExcludeModules.ImageOptions.Image")));
+            this.sbtnExcludeModules.Location = new System.Drawing.Point(448, 0);
+            this.sbtnExcludeModules.Name = "sbtnExcludeModules";
+            this.sbtnExcludeModules.Size = new System.Drawing.Size(23, 24);
+            this.sbtnExcludeModules.TabIndex = 20;
+            this.sbtnExcludeModules.ToolTip = "Clear the text";
+            this.sbtnExcludeModules.Click += new System.EventHandler(this.sbtnExcludeModules_Click);
+            // 
+            // sbtnUndockPerProcess
+            // 
+            this.sbtnUndockPerProcess.AutoSize = true;
+            this.sbtnUndockPerProcess.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(471, 0);
+            this.sbtnUndockPerProcess.Name = "sbtnUndockPerProcess";
+            this.sbtnUndockPerProcess.Size = new System.Drawing.Size(181, 24);
+            this.sbtnUndockPerProcess.TabIndex = 24;
+            this.sbtnUndockPerProcess.Text = "Split view per Process/Module";
+            this.sbtnUndockPerProcess.Click += new System.EventHandler(this.sbtnUndockPerProcess_Click);
+            // 
             // txtbExcludeModule
             // 
-            this.txtbExcludeModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbExcludeModule.Location = new System.Drawing.Point(206, 92);
+            this.txtbExcludeModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbExcludeModule.Location = new System.Drawing.Point(228, 0);
             this.txtbExcludeModule.MenuManager = this.barManager1;
             this.txtbExcludeModule.Name = "txtbExcludeModule";
-            this.txtbExcludeModule.Size = new System.Drawing.Size(1031, 22);
+            this.txtbExcludeModule.Size = new System.Drawing.Size(424, 22);
             this.txtbExcludeModule.TabIndex = 23;
             this.txtbExcludeModule.TextChanged += new System.EventHandler(this.txtbExcludeModule_TextChanged);
             // 
-            // txtbExcludeSource
-            // 
-            this.txtbExcludeSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbExcludeSource.Location = new System.Drawing.Point(206, 64);
-            this.txtbExcludeSource.MenuManager = this.barManager1;
-            this.txtbExcludeSource.Name = "txtbExcludeSource";
-            this.txtbExcludeSource.Size = new System.Drawing.Size(1031, 22);
-            this.txtbExcludeSource.TabIndex = 22;
-            this.txtbExcludeSource.TextChanged += new System.EventHandler(this.txtbExcludeSource_TextChanged);
-            // 
             // chkbExcludeModules
             // 
-            this.chkbExcludeModules.Location = new System.Drawing.Point(3, 91);
+            this.chkbExcludeModules.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkbExcludeModules.Location = new System.Drawing.Point(0, 0);
             this.chkbExcludeModules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkbExcludeModules.Name = "chkbExcludeModules";
             this.chkbExcludeModules.Size = new System.Drawing.Size(228, 24);
@@ -1466,45 +1568,97 @@ namespace Analogy
             this.chkbExcludeModules.Text = "Exclude Processes/Modules:";
             this.chkbExcludeModules.UseVisualStyleBackColor = true;
             // 
-            // txtbExclude
+            // spltcSources
             // 
-            this.txtbExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbExclude.Location = new System.Drawing.Point(109, 35);
-            this.txtbExclude.MenuManager = this.barManager1;
-            this.txtbExclude.Name = "txtbExclude";
-            this.txtbExclude.Size = new System.Drawing.Size(1002, 22);
-            this.txtbExclude.TabIndex = 20;
-            this.txtbExclude.TextChanged += new System.EventHandler(this.txtbExclude_TextChanged);
-            this.txtbExclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbExclude_KeyDown);
+            this.spltcSources.Location = new System.Drawing.Point(7, 65);
+            this.spltcSources.Name = "spltcSources";
+            // 
+            // spltcSources.Panel1
+            // 
+            this.spltcSources.Panel1.Controls.Add(this.txtbIncludeSource);
+            this.spltcSources.Panel1.Controls.Add(this.sbtnIncludeSources);
+            this.spltcSources.Panel1.Controls.Add(this.chkbIncludeSources);
+            this.spltcSources.Panel1.Controls.Add(this.pboxInfoExclude);
+            // 
+            // spltcSources.Panel2
+            // 
+            this.spltcSources.Panel2.Controls.Add(this.txtbExcludeSource);
+            this.spltcSources.Panel2.Controls.Add(this.sbtnExcludeSources);
+            this.spltcSources.Panel2.Controls.Add(this.chkbExcludeSources);
+            this.spltcSources.Size = new System.Drawing.Size(1230, 24);
+            this.spltcSources.SplitterDistance = 683;
+            this.spltcSources.TabIndex = 25;
+            // 
+            // txtbIncludeSource
+            // 
+            this.txtbIncludeSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbIncludeSource.Location = new System.Drawing.Point(180, 0);
+            this.txtbIncludeSource.MenuManager = this.barManager1;
+            this.txtbIncludeSource.Name = "txtbIncludeSource";
+            this.txtbIncludeSource.Size = new System.Drawing.Size(480, 22);
+            this.txtbIncludeSource.TabIndex = 25;
+            this.txtbIncludeSource.TextChanged += new System.EventHandler(this.txtbIncludeSource_TextChanged);
+            // 
+            // sbtnIncludeSources
+            // 
+            this.sbtnIncludeSources.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnIncludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeSources.ImageOptions.Image")));
+            this.sbtnIncludeSources.Location = new System.Drawing.Point(660, 0);
+            this.sbtnIncludeSources.Name = "sbtnIncludeSources";
+            this.sbtnIncludeSources.Size = new System.Drawing.Size(23, 24);
+            this.sbtnIncludeSources.TabIndex = 24;
+            this.sbtnIncludeSources.ToolTip = "Clear the text";
+            this.sbtnIncludeSources.Click += new System.EventHandler(this.sbtnIncludeSources_Click);
+            // 
+            // chkbIncludeSources
+            // 
+            this.chkbIncludeSources.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkbIncludeSources.Location = new System.Drawing.Point(19, 0);
+            this.chkbIncludeSources.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkbIncludeSources.Name = "chkbIncludeSources";
+            this.chkbIncludeSources.Size = new System.Drawing.Size(161, 24);
+            this.chkbIncludeSources.TabIndex = 23;
+            this.chkbIncludeSources.Text = "Include Sources:";
+            this.chkbIncludeSources.UseVisualStyleBackColor = true;
             // 
             // pboxInfoExclude
             // 
+            this.pboxInfoExclude.Dock = System.Windows.Forms.DockStyle.Left;
             this.pboxInfoExclude.Image = global::Analogy.Properties.Resources.Info_16x16;
-            this.pboxInfoExclude.Location = new System.Drawing.Point(145, 62);
+            this.pboxInfoExclude.Location = new System.Drawing.Point(0, 0);
             this.pboxInfoExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pboxInfoExclude.Name = "pboxInfoExclude";
-            this.pboxInfoExclude.Size = new System.Drawing.Size(19, 23);
+            this.pboxInfoExclude.Size = new System.Drawing.Size(19, 24);
             this.pboxInfoExclude.TabIndex = 15;
             this.pboxInfoExclude.TabStop = false;
             // 
-            // txtbInclude
+            // txtbExcludeSource
             // 
-            this.txtbInclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbInclude.Location = new System.Drawing.Point(109, 4);
-            this.txtbInclude.MenuManager = this.barManager1;
-            this.txtbInclude.Name = "txtbInclude";
-            this.txtbInclude.Size = new System.Drawing.Size(1128, 22);
-            this.txtbInclude.TabIndex = 19;
-            this.txtbInclude.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
-            this.txtbInclude.Enter += new System.EventHandler(this.txtbInclude_Enter);
-            this.txtbInclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
-            this.txtbInclude.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
+            this.txtbExcludeSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbExcludeSource.Location = new System.Drawing.Point(161, 0);
+            this.txtbExcludeSource.MenuManager = this.barManager1;
+            this.txtbExcludeSource.Name = "txtbExcludeSource";
+            this.txtbExcludeSource.Size = new System.Drawing.Size(359, 22);
+            this.txtbExcludeSource.TabIndex = 22;
+            this.txtbExcludeSource.TextChanged += new System.EventHandler(this.txtbExcludeSource_TextChanged);
+            // 
+            // sbtnExcludeSources
+            // 
+            this.sbtnExcludeSources.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnExcludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnExcludeSources.ImageOptions.Image")));
+            this.sbtnExcludeSources.Location = new System.Drawing.Point(520, 0);
+            this.sbtnExcludeSources.Name = "sbtnExcludeSources";
+            this.sbtnExcludeSources.Size = new System.Drawing.Size(23, 24);
+            this.sbtnExcludeSources.TabIndex = 20;
+            this.sbtnExcludeSources.ToolTip = "Clear the text";
+            this.sbtnExcludeSources.Click += new System.EventHandler(this.sbtnExcludeSources_Click);
             // 
             // chkbExcludeSources
             // 
-            this.chkbExcludeSources.Location = new System.Drawing.Point(3, 61);
+            this.chkbExcludeSources.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkbExcludeSources.Location = new System.Drawing.Point(0, 0);
             this.chkbExcludeSources.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkbExcludeSources.Name = "chkbExcludeSources";
             this.chkbExcludeSources.Size = new System.Drawing.Size(161, 24);
@@ -1513,48 +1667,134 @@ namespace Analogy
             this.chkbExcludeSources.UseVisualStyleBackColor = true;
             this.chkbExcludeSources.CheckedChanged += new System.EventHandler(this.chkbExcludeSourceAndModule_CheckedChanged);
             // 
+            // spltTextExclude
+            // 
+            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spltTextExclude.Location = new System.Drawing.Point(7, 37);
+            this.spltTextExclude.Name = "spltTextExclude";
+            // 
+            // spltTextExclude.Panel1
+            // 
+            this.spltTextExclude.Panel1.Controls.Add(this.txtbExclude);
+            this.spltTextExclude.Panel1.Controls.Add(this.sbtnTextExclude);
+            this.spltTextExclude.Panel1.Controls.Add(this.sBtnMostCommon);
+            this.spltTextExclude.Panel1.Controls.Add(this.chkExclude);
+            this.spltTextExclude.Panel2Collapsed = true;
+            this.spltTextExclude.Size = new System.Drawing.Size(1230, 24);
+            this.spltTextExclude.SplitterDistance = 998;
+            this.spltTextExclude.TabIndex = 24;
+            // 
+            // txtbExclude
+            // 
+            this.txtbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbExclude.Location = new System.Drawing.Point(127, 0);
+            this.txtbExclude.MenuManager = this.barManager1;
+            this.txtbExclude.Name = "txtbExclude";
+            this.txtbExclude.Size = new System.Drawing.Size(960, 22);
+            this.txtbExclude.TabIndex = 20;
+            this.txtbExclude.TextChanged += new System.EventHandler(this.txtbExclude_TextChanged);
+            this.txtbExclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbExclude_KeyDown);
+            // 
+            // sbtnTextExclude
+            // 
+            this.sbtnTextExclude.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
+            this.sbtnTextExclude.Location = new System.Drawing.Point(1087, 0);
+            this.sbtnTextExclude.Name = "sbtnTextExclude";
+            this.sbtnTextExclude.Size = new System.Drawing.Size(23, 24);
+            this.sbtnTextExclude.TabIndex = 20;
+            this.sbtnTextExclude.ToolTip = "Clear the text";
+            this.sbtnTextExclude.Click += new System.EventHandler(this.sbtnTextExclude_Click);
+            // 
             // sBtnMostCommon
             // 
-            this.sBtnMostCommon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnMostCommon.Location = new System.Drawing.Point(1117, 34);
+            this.sBtnMostCommon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sBtnMostCommon.Location = new System.Drawing.Point(1110, 0);
             this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMostCommon.Name = "sBtnMostCommon";
-            this.sBtnMostCommon.Size = new System.Drawing.Size(120, 25);
+            this.sBtnMostCommon.Size = new System.Drawing.Size(120, 24);
             this.sBtnMostCommon.TabIndex = 8;
             this.sBtnMostCommon.Text = "Most Common";
             this.sBtnMostCommon.Click += new System.EventHandler(this.sBtnMostCommon_Click);
             // 
-            // chkbInclude
-            // 
-            this.chkbInclude.AutoSize = true;
-            this.chkbInclude.Location = new System.Drawing.Point(3, 2);
-            this.chkbInclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkbInclude.Name = "chkbInclude";
-            this.chkbInclude.Size = new System.Drawing.Size(79, 21);
-            this.chkbInclude.TabIndex = 9;
-            this.chkbInclude.Text = "Include:";
-            this.chkbInclude.UseVisualStyleBackColor = true;
-            this.chkbInclude.CheckedChanged += new System.EventHandler(this.chkbInclude_CheckedChanged);
-            // 
             // chkExclude
             // 
             this.chkExclude.AutoSize = true;
-            this.chkExclude.Location = new System.Drawing.Point(3, 36);
+            this.chkExclude.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkExclude.Location = new System.Drawing.Point(0, 0);
             this.chkExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkExclude.Name = "chkExclude";
-            this.chkExclude.Size = new System.Drawing.Size(83, 21);
+            this.chkExclude.Size = new System.Drawing.Size(127, 24);
             this.chkExclude.TabIndex = 10;
-            this.chkExclude.Text = "Exclude:";
+            this.chkExclude.Text = "Exclude Text:   ";
             this.chkExclude.UseVisualStyleBackColor = true;
             this.chkExclude.CheckedChanged += new System.EventHandler(this.chkbExclude_CheckedChanged);
             // 
+            // spltText
+            // 
+            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spltText.Location = new System.Drawing.Point(7, 7);
+            this.spltText.Name = "spltText";
+            // 
+            // spltText.Panel1
+            // 
+            this.spltText.Panel1.Controls.Add(this.txtbIncludeText);
+            this.spltText.Panel1.Controls.Add(this.sbtnTextInclude);
+            this.spltText.Panel1.Controls.Add(this.chkbIncludeText);
+            this.spltText.Panel1.Controls.Add(this.pboxInfo);
+            this.spltText.Panel2Collapsed = true;
+            this.spltText.Size = new System.Drawing.Size(1230, 24);
+            this.spltText.SplitterDistance = 998;
+            this.spltText.TabIndex = 22;
+            // 
+            // txtbIncludeText
+            // 
+            this.txtbIncludeText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbIncludeText.Location = new System.Drawing.Point(127, 0);
+            this.txtbIncludeText.MenuManager = this.barManager1;
+            this.txtbIncludeText.Name = "txtbIncludeText";
+            this.txtbIncludeText.Size = new System.Drawing.Size(1080, 22);
+            this.txtbIncludeText.TabIndex = 19;
+            this.txtbIncludeText.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
+            this.txtbIncludeText.Enter += new System.EventHandler(this.txtbInclude_Enter);
+            this.txtbIncludeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
+            this.txtbIncludeText.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
+            // 
+            // sbtnTextInclude
+            // 
+            this.sbtnTextInclude.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1207, 0);
+            this.sbtnTextInclude.Name = "sbtnTextInclude";
+            this.sbtnTextInclude.Size = new System.Drawing.Size(23, 24);
+            this.sbtnTextInclude.TabIndex = 20;
+            this.sbtnTextInclude.ToolTip = "Clear the text";
+            this.sbtnTextInclude.Click += new System.EventHandler(this.sbtnTextInclude_Click);
+            // 
+            // chkbIncludeText
+            // 
+            this.chkbIncludeText.AutoSize = true;
+            this.chkbIncludeText.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkbIncludeText.Location = new System.Drawing.Point(16, 0);
+            this.chkbIncludeText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkbIncludeText.Name = "chkbIncludeText";
+            this.chkbIncludeText.Size = new System.Drawing.Size(111, 24);
+            this.chkbIncludeText.TabIndex = 9;
+            this.chkbIncludeText.Text = "Include Text:";
+            this.chkbIncludeText.UseVisualStyleBackColor = true;
+            this.chkbIncludeText.CheckedChanged += new System.EventHandler(this.chkbInclude_CheckedChanged);
+            // 
             // pboxInfo
             // 
+            this.pboxInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pboxInfo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pboxInfo.Image = global::Analogy.Properties.Resources.Info_16x16;
-            this.pboxInfo.Location = new System.Drawing.Point(87, 6);
+            this.pboxInfo.Location = new System.Drawing.Point(0, 0);
             this.pboxInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pboxInfo.Name = "pboxInfo";
-            this.pboxInfo.Size = new System.Drawing.Size(16, 18);
+            this.pboxInfo.Size = new System.Drawing.Size(16, 24);
             this.pboxInfo.TabIndex = 12;
             this.pboxInfo.TabStop = false;
             // 
@@ -2628,15 +2868,31 @@ namespace Analogy
             this.spltFilteringBoth.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltFilteringBoth)).EndInit();
             this.spltFilteringBoth.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.spltCSources)).EndInit();
-            this.spltCSources.ResumeLayout(false);
             this.pnlFilteringLeft.ResumeLayout(false);
-            this.pnlFilteringLeft.PerformLayout();
+            this.spltcProcessesModule.Panel1.ResumeLayout(false);
+            this.spltcProcessesModule.Panel2.ResumeLayout(false);
+            this.spltcProcessesModule.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltcProcessesModule)).EndInit();
+            this.spltcProcessesModule.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeModule.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeModule.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeSource.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbExclude.Properties)).EndInit();
+            this.spltcSources.Panel1.ResumeLayout(false);
+            this.spltcSources.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltcSources)).EndInit();
+            this.spltcSources.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeSource.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfoExclude)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeSource.Properties)).EndInit();
+            this.spltTextExclude.Panel1.ResumeLayout(false);
+            this.spltTextExclude.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltTextExclude)).EndInit();
+            this.spltTextExclude.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtbExclude.Properties)).EndInit();
+            this.spltText.Panel1.ResumeLayout(false);
+            this.spltText.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltText)).EndInit();
+            this.spltText.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).EndInit();
@@ -2689,7 +2945,7 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel pnlTopFiltering;
-        private System.Windows.Forms.CheckBox chkbInclude;
+        private System.Windows.Forms.CheckBox chkbIncludeText;
         private System.Windows.Forms.CheckBox chkExclude;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer tmrRefreshFilter;
@@ -2841,7 +3097,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnSaveViewAgnostic;
         private DevExpress.XtraBars.BarSubItem barSubItemSaveEntireLog;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSaveEntireInAnalogy;
-        private DevExpress.XtraEditors.TextEdit txtbInclude;
+        private DevExpress.XtraEditors.TextEdit txtbIncludeText;
         private DevExpress.XtraEditors.TextEdit txtbExclude;
         private System.Windows.Forms.CheckBox chkbExcludeModules;
         private DevExpress.XtraEditors.TextEdit txtbExcludeModule;
@@ -2850,6 +3106,22 @@ namespace Analogy
         private DevExpress.XtraEditors.MemoEdit rtxtContent;
         private DevExpress.XtraEditors.TextEdit txtbGroupByCharsLimit;
         private DevExpress.XtraEditors.SpinEdit nudGroupBychars;
-        private System.Windows.Forms.SplitContainer spltCSources;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem bBtnUndockViewPerProcess;
+        private System.Windows.Forms.SplitContainer spltText;
+        private DevExpress.XtraEditors.SimpleButton sbtnTextInclude;
+        private System.Windows.Forms.SplitContainer spltTextExclude;
+        private DevExpress.XtraEditors.SimpleButton sbtnTextExclude;
+        private System.Windows.Forms.SplitContainer spltcSources;
+        private DevExpress.XtraEditors.SimpleButton sbtnExcludeSources;
+        private DevExpress.XtraEditors.TextEdit txtbIncludeSource;
+        private DevExpress.XtraEditors.SimpleButton sbtnIncludeSources;
+        private System.Windows.Forms.CheckBox chkbIncludeSources;
+        private System.Windows.Forms.SplitContainer spltcProcessesModule;
+        private DevExpress.XtraEditors.TextEdit txtbIncludeModule;
+        private System.Windows.Forms.CheckBox chkbIncludeModules;
+        private DevExpress.XtraEditors.SimpleButton sbtnIncludeModules;
+        private DevExpress.XtraEditors.SimpleButton sbtnExcludeModules;
+        private DevExpress.XtraEditors.SimpleButton sbtnUndockPerProcess;
     }
 }

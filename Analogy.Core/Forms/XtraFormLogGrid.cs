@@ -12,10 +12,12 @@ namespace Analogy
             InitializeComponent();
         }
 
-        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource) : this()
+        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource,string processOrModule=null) : this()
         {
             _messages = messages;
             _dataSource = dataSource;
+            if (!string.IsNullOrEmpty(processOrModule))
+                ucLogs1.FilterResults(processOrModule);
         }
 
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)

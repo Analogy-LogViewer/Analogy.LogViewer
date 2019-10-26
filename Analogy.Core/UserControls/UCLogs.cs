@@ -183,7 +183,7 @@ namespace Analogy
             KeyEventArgs e = new KeyEventArgs(keyData);
             if (e.Control && e.KeyCode == Keys.F)
             {
-                txtbInclude.Focus();
+                txtbIncludeText.Focus();
             }
             if (e.Shift && e.KeyCode == Keys.F)
 
@@ -211,7 +211,7 @@ namespace Analogy
             if (e.Control && e.KeyCode == Keys.F)
 
             {
-                txtbInclude.Focus();
+                txtbIncludeText.Focus();
                 return true;
             }
             if (e.Shift && e.KeyCode == Keys.F)
@@ -247,9 +247,9 @@ namespace Analogy
 
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
             pnlFilteringLeft.Dock = DockStyle.Fill;
-            txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbInclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtbInclude.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
+            txtbIncludeText.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtbIncludeText.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtbIncludeText.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
 
             txtbExclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtbExclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -513,7 +513,7 @@ namespace Analogy
 
         private void chkbInclude_CheckedChanged(object sender, EventArgs e)
         {
-            if (!chkbInclude.Checked && !chkExclude.Checked)
+            if (!chkbIncludeText.Checked && !chkExclude.Checked)
             {
                 logGrid.ClearColumnsFilter();
                 gridColumnText.FilterInfo = null;
@@ -524,7 +524,7 @@ namespace Analogy
 
         private void chkbExclude_CheckedChanged(object sender, EventArgs e)
         {
-            if (!chkbInclude.Checked && !chkExclude.Checked)
+            if (!chkbIncludeText.Checked && !chkExclude.Checked)
             {
                 logGrid.ClearColumnsFilter();
                 gridColumnText.FilterInfo = null;
@@ -534,17 +534,17 @@ namespace Analogy
         }
         private void txtbInclude_TextChanged(object sender, EventArgs e)
         {
-            if (OldTextInclude.Equals(txtbInclude.Text)) return;
-            OldTextInclude = txtbInclude.Text;
-            txtbHighlight.Text = txtbInclude.Text;
-            if (string.IsNullOrEmpty(txtbInclude.Text))
+            if (OldTextInclude.Equals(txtbIncludeText.Text)) return;
+            OldTextInclude = txtbIncludeText.Text;
+            txtbHighlight.Text = txtbIncludeText.Text;
+            if (string.IsNullOrEmpty(txtbIncludeText.Text))
             {
-                chkbInclude.Checked = false;
+                chkbIncludeText.Checked = false;
                 return;
             }
 
             chkbHighlight.Checked = false;
-            chkbInclude.Checked = true;
+            chkbIncludeText.Checked = true;
             RefreshUserFilter();
         }
 
@@ -575,7 +575,7 @@ namespace Analogy
 
         private void RadioButtons_clicked(object sender, EventArgs e)
         {
-            chkbInclude.Checked = true;
+            chkbIncludeText.Checked = true;
             chkExclude.Checked = true;
             FilterHasChanged = true;
         }
@@ -919,13 +919,12 @@ namespace Analogy
 
         public void FilterResults(string module)
         {
-            _filterCriteriaInline.Modules = new[] { module };
+            txtbIncludeModule.Text = module;
             FilterResults();
         }
         private void FilterResults()
         {
-
-            _filterCriteriaInline.TextInclude = chkbInclude.Checked ? txtbInclude.Text : string.Empty;
+            _filterCriteriaInline.TextInclude = chkbIncludeText.Checked ? txtbIncludeText.Text : string.Empty;
             _filterCriteriaInline.TextExclude =
                 chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
             _filterCriteriaInline.Levels = null;
@@ -939,6 +938,31 @@ namespace Analogy
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
             else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled };
+
+
+            if (chkbIncludeModules.Checked)
+            {
+                _filterCriteriaInline.Modules = string.IsNullOrEmpty(txtbIncludeModule.Text)
+                    ? null
+                    : txtbIncludeModule.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(val => val.Trim()).ToArray();
+            }
+            else
+            {
+                _filterCriteriaInline.Modules = null;
+            }
+
+            if (chkbIncludeSources.Checked)
+            {
+                _filterCriteriaInline.Sources = string.IsNullOrEmpty(txtbIncludeSource.Text)
+                    ? null
+                    : txtbIncludeSource.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(val => val.Trim()).ToArray();
+            }
+            else
+            {
+                _filterCriteriaInline.Sources = null;
+            }
 
             if (chkbExcludeSources.Checked)
             {
@@ -1147,13 +1171,13 @@ namespace Analogy
 
         private void txtbInclude_MouseEnter(object sender, EventArgs e)
         {
-            txtbInclude.Focus();
-            txtbInclude.SelectAll();
+            txtbIncludeText.Focus();
+            txtbIncludeText.SelectAll();
         }
 
         private void txtbInclude_Enter(object sender, EventArgs e)
         {
-            txtbInclude.SelectAll();
+            txtbIncludeText.SelectAll();
         }
 
         private void txtbExcludeSource_TextChanged(object sender, EventArgs e)
@@ -1322,7 +1346,7 @@ namespace Analogy
         {
             if (e.KeyCode == Keys.Enter)
             {
-                autoCompleteInclude.Add(txtbInclude.Text);
+                autoCompleteInclude.Add(txtbIncludeText.Text);
             }
         }
 
@@ -1527,7 +1551,7 @@ namespace Analogy
 
         private void chkLstLogLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkbInclude.Checked = true;
+            chkbIncludeText.Checked = true;
             chkExclude.Checked = true;
             FilterHasChanged = true;
         }
@@ -1548,7 +1572,7 @@ namespace Analogy
 
         private void chkLstLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
-            chkbInclude.Checked = true;
+            chkbIncludeText.Checked = true;
             chkExclude.Checked = true;
             FilterHasChanged = true;
         }
@@ -2020,7 +2044,103 @@ namespace Analogy
             SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
         }
 
+        private void bBtnUndockViewPerProcess_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UndockViewPerProcess();
+        }
 
+        private void UndockViewPerProcess()
+        {
+            var msg = Messages;
+            if (!msg.Any()) return;
+            var source = GetFilteredDataTable().Rows[0]?["DataProvider"]?.ToString();
+            if (source == null) return;
+
+            var processes = msg.Select(m => m.Module).Distinct().ToList();
+            foreach (string process in processes)
+            {
+                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, process);
+                lockExternalWindowsObject.EnterWriteLock();
+                _externalWindows.Add(grid);
+                Interlocked.Increment(ref ExternalWindowsCount);
+                lockExternalWindowsObject.ExitWriteLock();
+                grid.FormClosing += (s, arg) =>
+                {
+                    lockExternalWindowsObject.EnterWriteLock();
+                    Interlocked.Decrement(ref ExternalWindowsCount);
+                    _externalWindows.Remove(grid);
+                    lockExternalWindowsObject.ExitWriteLock();
+                };
+                grid.Show(this);
+            }
+        }
+
+        private void sbtnTextInclude_Click(object sender, EventArgs e)
+        {
+            txtbIncludeText.Text = "";
+        }
+
+        private void sbtnTextExclude_Click(object sender, EventArgs e)
+        {
+            txtbExclude.Text = "";
+        }
+
+        private void sbtnExcludeSources_Click(object sender, EventArgs e)
+        {
+            txtbExcludeSource.Text = "";
+        }
+
+        private void sbtnIncludeSources_Click(object sender, EventArgs e)
+        {
+            txtbIncludeSource.Text = "";
+        }
+
+        private void txtbIncludeSource_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtbIncludeSource.Text))
+            {
+                chkbIncludeSources.Checked = false;
+            }
+            else
+            {
+                if (!chkbIncludeSources.Checked)
+                    chkbIncludeSources.Checked = true;
+            }
+
+            RefreshUserFilter();
+            Settings.IncludedSource = chkbIncludeSources.Text;
+        }
+
+        private void sbtnExcludeModules_Click(object sender, EventArgs e)
+        {
+            txtbExcludeModule.Text = "";
+        }
+
+        private void sbtnIncludeModules_Click(object sender, EventArgs e)
+        {
+            txtbIncludeModule.Text = "";
+        }
+
+        private void txtbIncludeModule_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtbIncludeModule.Text))
+            {
+                chkbIncludeModules.Checked = false;
+            }
+            else
+            {
+                if (!chkbIncludeModules.Checked)
+                    chkbIncludeModules.Checked = true;
+            }
+
+            RefreshUserFilter();
+            Settings.IncludedModules= chkbIncludeModules.Text;
+        }
+
+        private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
+        {
+            UndockViewPerProcess();
+        }
     }
 }
 

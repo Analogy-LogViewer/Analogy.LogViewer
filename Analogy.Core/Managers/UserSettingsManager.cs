@@ -16,7 +16,9 @@ namespace Analogy
         public bool SaveExcludeTexts { get; set; }
         public string IncludeText { get; set; }
         public string ExcludedText { get; set; }
+        public string IncludedModules { get; set; }
         public string ExcludedModules { get; set; }
+        public string IncludedSource { get; set; }
         public string ExcludedSource { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
         public bool ShowHistoryOfClearedMessages { get; set; }
