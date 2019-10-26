@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using Analogy.Interfaces;
@@ -22,9 +25,11 @@ namespace Analogy.Implementation.Example
         private int messageCount = 0;
         readonly Random random = new Random();
         readonly Array values = Enum.GetValues(typeof(AnalogyLogLevel));
+        private readonly List<string> processes = Process.GetProcesses().Select(p => p.ProcessName).ToList();
         public void InitDataProvider()
         {
             SimulateOnlineMessages = new Timer(100);
+
             SimulateOnlineMessages.Elapsed += (s, e) =>
             {
                 if (OnMessageReady == null)
@@ -33,7 +38,16 @@ namespace Analogy.Implementation.Example
                 {
 
                     AnalogyLogLevel randomLevel = (AnalogyLogLevel)values.GetValue(random.Next(values.Length));
-                    AnalogyLogMessage m = new AnalogyLogMessage($"Generated message #{messageCount++}", randomLevel, AnalogyLogClass.General, "Example");
+                    string randomProcess = processes[random.Next(processes.Count)];
+                    AnalogyLogMessage m = new AnalogyLogMessage
+                    {
+                        Text = $"Generated message #{messageCount++}",
+                        Level = randomLevel,
+                        Class = AnalogyLogClass.General,
+                        Source = "Example",
+                        Module = randomProcess
+                    };
+
                     OnMessageReady(this, new AnalogyLogMessageArgs(m, Environment.MachineName, "Example", ID));
                 }
             };
