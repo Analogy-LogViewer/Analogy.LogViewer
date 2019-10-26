@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Analogy.LogViewer.Core</id>
-    <version>4.1.2</version>
+    <version>4.1.2.1</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
@@ -21,7 +21,8 @@
 </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\netcoreapp3.0\Analogy.exe" target="lib\netcoreapp3.0\Analogy.exe" />
+    <file src="bin\Release\netcoreapp3.0\Analogy.dll" target="lib\netcoreapp3.0\Analogy.dll" />
+	<file src="bin\Release\netcoreapp3.0\Analogy.exe" target="lib\netcoreapp3.0\Analogy.exe" />
     <file src="bin\Release\netcoreapp3.0\Analogy.runtimeconfig.json" target="lib\netcoreapp3.0\Analogy.runtimeconfig.json" />
 	<file src="bin\Release\netcoreapp3.0\Analogy.deps.json" target="lib\netcoreapp3.0\Analogy.deps.json" />
 	<file src="icon.png" target="" />
