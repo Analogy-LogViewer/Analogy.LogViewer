@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Philips.Analogy.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Analogy.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="ExcludedText" Type="System.String" Scope="User">
@@ -75,10 +75,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="IdleMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="IdleTimeMinutes" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">30</Value>
+      <Value Profile="(Default)">600</Value>
     </Setting>
     <Setting Name="WindowsEventLogs" Type="System.String" Scope="User">
       <Value Profile="(Default)">Application,Security,Setup,System</Value>

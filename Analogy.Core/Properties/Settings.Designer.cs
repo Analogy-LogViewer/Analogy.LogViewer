@@ -313,7 +313,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IdleMode {
             get {
                 return ((bool)(this["IdleMode"]));
@@ -325,7 +325,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("600")]
         public int IdleTimeMinutes {
             get {
                 return ((int)(this["IdleTimeMinutes"]));
