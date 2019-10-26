@@ -63,3 +63,17 @@
 /Analogy.Core/obj
 *.user
 /.vs/Analogy.Core/DesignTimeBuild
+/Analogy.Core/DevExpress/DevExpress.XtraTreeList.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.XtraPrinting.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.XtraLayout.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.XtraGrid.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.XtraEditors.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.XtraCharts.v19.1.Wizard.dll
+/Analogy.Core/DevExpress/DevExpress.XtraCharts.v19.1.UI.dll
+/Analogy.Core/DevExpress/DevExpress.XtraCharts.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.XtraBars.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.Utils.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.Printing.v19.1.Core.dll
+/Analogy.Core/DevExpress/DevExpress.Images.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.Data.v19.1.dll
+/Analogy.Core/DevExpress/DevExpress.Charts.v19.1.Core.dll
