@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Analogy.LogViewer</id>
+    <id>Analogy.LogViewer.Core</id>
     <version>4.1.2</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
@@ -11,19 +11,19 @@
     <icon>icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>
-    <releaseNotes>Target .net framework 4.7.2. See github page</releaseNotes>
+    <releaseNotes>Adding .net Core 3.0 Target. See github page</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
 	<dependencies>
-    <group targetFramework="net472">    
+    <group targetFramework="netcoreapp3.0">    
 		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.2" />
     </group>
 </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Analogy.exe" target="lib\net472\Analogy.exe" />
-    <file src="bin\Release\Analogy.xml" target="lib\net472\Analogy.xml" />
-	<file src="bin\Release\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
+    <file src="bin\Release\netcoreapp3.0\Analogy.exe" target="lib\netcoreapp3.0\Analogy.exe" />
+    <file src="bin\Release\netcoreapp3.0\Analogy.runtimeconfig.json" target="lib\netcoreapp3.0\Analogy.runtimeconfig.json" />
+	<file src="bin\Release\netcoreapp3.0\Analogy.deps.json" target="lib\netcoreapp3.0\Analogy.deps.json" />
 	<file src="icon.png" target="" />
 </files>
 </package>

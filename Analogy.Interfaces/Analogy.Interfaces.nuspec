@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Analogy.LogViewer.Interfaces</id>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
     <title>Analogy Log Viewer - Interfaces</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
