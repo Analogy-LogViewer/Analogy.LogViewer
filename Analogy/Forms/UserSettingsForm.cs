@@ -75,7 +75,7 @@ namespace Analogy
             Settings.ShowHistoryOfClearedMessages = tsHistory.IsOn;
         }
 
-        private void UserSettingsForm_Load(object sender, EventArgs e)
+        private async void UserSettingsForm_Load(object sender, EventArgs e)
         {
             LoadSettings();
             if (InitialSelection >= 0)
@@ -92,7 +92,7 @@ namespace Analogy
             }
 
             var startup = Settings.AutoStartDataProviders;
-            var loaded = AnalogyFactoriesManager.AnalogyFactories.GetRealTimeDataSourcesNamesAndIds();
+            var loaded = AnalogyFactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
                 RealTimeCheckItem itm = new RealTimeCheckItem(realTime.Name, realTime.ID);

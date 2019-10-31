@@ -47,9 +47,10 @@ namespace Analogy
             //todo: end onlines;
         }
 
-        private void AnalogyMainForm_Load(object sender, EventArgs e)
+        private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
+
             settings = UserSettingsManager.UserSettings;
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             bbtnCloseCurrentTabPage.ItemClick += (object s, ItemClickEventArgs ea) => { CloseCurrentTabPage(); };
@@ -104,6 +105,7 @@ namespace Analogy
             }
 
             CreateAnalogyDataSource();
+            await AnalogyFactoriesManager.Instance.AddExternalDataSources();
             CreateEventLogsGroup();
             CreateDataSources();
 
@@ -122,8 +124,9 @@ namespace Analogy
 
         private void CreateAnalogyDataSource()
         {
-            IAnalogyFactory analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyBuiltInFactory.AnalogyGuid);
+            IAnalogyFactory analogy = AnalogyFactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
             CreateDataSource(analogy, 0);
+            ribbonControlMain.SelectedPage=ribbonControlMain.Pages.First();
         }
 
 
@@ -358,7 +361,7 @@ namespace Analogy
 
         private void OpenOfflineLogs(string[] files)
         {
-            var supported = AnalogyFactoriesManager.AnalogyFactories.GetSupportedOfflineDataSources(files).ToList();
+            var supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
                 OpenOfflineLogs(null, files, supported.First());
 
@@ -719,16 +722,10 @@ namespace Analogy
             //}
         }
 
-        private void btnItemLogConfiguratorOnline_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //todo:
-            //LogConfiguratorForm config = new LogConfiguratorForm();
-            //config.Show(this);
-        }
 
         private void CreateDataSources()
         {
-            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.AnalogyFactories.GetFactories())
+            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories())
             {
                 CreateDataSource(factory, 1);
             }
@@ -805,7 +802,7 @@ namespace Analogy
         private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy, string title,
             RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
-       
+
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
                 offline++;
@@ -834,7 +831,8 @@ namespace Analogy
                 xtcLogs.SelectedTabPage = page;
             }
 
-            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file ){
+            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
+            {
 
                 offline++;
                 UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
@@ -857,7 +855,7 @@ namespace Analogy
                         }
                     }
                 }
-               
+
                 page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
                 page.Tag = ribbonPage;
                 page.Controls.Add(filepoolingUC);
@@ -931,7 +929,7 @@ namespace Analogy
                     {
                         OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
                         AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
-                            new List<string>{openFileDialog1.FileName});
+                            new List<string> { openFileDialog1.FileName });
                     }
 
                 };

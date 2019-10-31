@@ -92,7 +92,7 @@ namespace Analogy
             }
 
             var startup = Settings.AutoStartDataProviders;
-            var loaded = AnalogyFactoriesManager.AnalogyFactories.GetRealTimeDataSourcesNamesAndIds();
+            var loaded = AnalogyFactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
                 RealTimeCheckItem itm = new RealTimeCheckItem(realTime.Name, realTime.ID);

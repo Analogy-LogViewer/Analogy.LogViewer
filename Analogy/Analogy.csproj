@@ -269,6 +269,7 @@
     <Compile Include="DataProviders\AnalogyBuiltInFactory.cs" />
     <Compile Include="DataProviders\EventLogDataProvider.cs" />
     <Compile Include="Managers\FilePoolingManager.cs" />
+    <Compile Include="Types\AsyncLazy.cs" />
     <Compile Include="UserControls\FilePoolingLog.cs">
       <SubType>UserControl</SubType>
     </Compile>

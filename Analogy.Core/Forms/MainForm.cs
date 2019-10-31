@@ -47,7 +47,7 @@ namespace Analogy
             //todo: end onlines;
         }
 
-        private void AnalogyMainForm_Load(object sender, EventArgs e)
+        private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
             settings = UserSettingsManager.UserSettings;
@@ -104,6 +104,7 @@ namespace Analogy
             }
 
             CreateAnalogyDataSource();
+            await AnalogyFactoriesManager.Instance.AddExternalDataSources();
             CreateEventLogsGroup();
             CreateDataSources();
 
@@ -122,8 +123,10 @@ namespace Analogy
 
         private void CreateAnalogyDataSource()
         {
-            IAnalogyFactory analogy = AnalogyFactoriesManager.AnalogyFactories.Get(AnalogyBuiltInFactory.AnalogyGuid);
+            IAnalogyFactory analogy = AnalogyFactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
             CreateDataSource(analogy, 0);
+            ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
+
         }
 
 
@@ -358,7 +361,7 @@ namespace Analogy
 
         private void OpenOfflineLogs(string[] files)
         {
-            var supported = AnalogyFactoriesManager.AnalogyFactories.GetSupportedOfflineDataSources(files).ToList();
+            var supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
                 OpenOfflineLogs(null, files, supported.First());
 
@@ -378,7 +381,7 @@ namespace Analogy
 
         private void AnalogyMainForm_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
-        
+
         private void tsmiAbout_Click(object sender, EventArgs e)
         {
             AnalogyAboutBox ab = new AnalogyAboutBox();
@@ -410,7 +413,7 @@ namespace Analogy
             var change = new ChangeLog();
             change.ShowDialog(this);
         }
-        
+
         private void bItemProcess_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenProcessForm();
@@ -709,7 +712,7 @@ namespace Analogy
 
         private void CreateDataSources()
         {
-            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.AnalogyFactories.GetFactories())
+            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories())
             {
                 CreateDataSource(factory, 1);
             }
@@ -814,7 +817,8 @@ namespace Analogy
                 xtcLogs.SelectedTabPage = page;
             }
 
-            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file ){
+            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
+            {
                 offline++;
                 UserControl offlineUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                 XtraTabPage page = new XtraTabPage();
@@ -890,7 +894,7 @@ namespace Analogy
                     {
                         OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
                         AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
-                            new List<string>{openFileDialog1.FileName});
+                            new List<string> { openFileDialog1.FileName });
                     }
 
                 };
