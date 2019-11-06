@@ -17,6 +17,7 @@
 	<dependencies>
     <group targetFramework="net472">    
 		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.2" />
+    <dependency id="Newtonsoft.Json" version="12.0.2" />
     </group>
 </dependencies>
   </metadata>

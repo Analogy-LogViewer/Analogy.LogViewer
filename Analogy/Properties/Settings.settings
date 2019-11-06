@@ -92,7 +92,7 @@
     <Setting Name="AutoScrollToLastMessage" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Setting" Type="System.String" Scope="User">
+    <Setting Name="NlogSettings" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

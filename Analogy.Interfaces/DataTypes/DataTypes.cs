@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -153,12 +154,12 @@ namespace Analogy.Interfaces
         {
             if (other is null) return false;
             if (ReferenceEquals(this, other)) return true;
-            bool areEqual= Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text && Category == other.Category &&
+            bool areEqual = Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text && Category == other.Category &&
                    Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
                    LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
                    Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
                    User == other.User;
-            if ((!areEqual) || 
+            if ((!areEqual) ||
                 (Parameters is null && other.Parameters != null) ||
                 (Parameters != null && other.Parameters is null))
                 return false;
@@ -202,6 +203,85 @@ namespace Analogy.Interfaces
                 hashCode = (hashCode * 397) ^ (User != null ? User.GetHashCode() : 0);
                 return hashCode;
             }
+        }
+
+        public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string propertyValue)> data)
+        {
+            AnalogyLogMessage m = new AnalogyLogMessage();
+            foreach (var (propertyName, propertyValue) in data)
+            {
+                switch (propertyName)
+                {
+                    case AnalogyLogMessagePropertyName.Date:
+                        {
+                            if (DateTime.TryParse(propertyValue, out DateTime time))
+                                m.Date = time;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.ID:
+                        {
+                            if (Guid.TryParse(propertyValue, out Guid id))
+                                m.ID = id;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.Text:
+                        m.Text = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.Category:
+                        m.Category = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.Source:
+                        m.Source = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.MethodName:
+                        m.MethodName = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.FileName:
+                        m.FileName = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.Module:
+                        m.Module = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.User:
+                        m.User = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.LineNumber:
+                        {
+                            if (int.TryParse(propertyValue, out int num))
+                                m.LineNumber = num;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.ProcessID:
+                        {
+                            if (int.TryParse(propertyValue, out int num))
+                                m.ProcessID = num;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.Thread:
+                        {
+                            if (int.TryParse(propertyValue, out int num))
+                                m.Thread = num;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.Level:
+                        {
+                            m.Level = Enum.TryParse(propertyValue, true, out AnalogyLogLevel level)
+                                ? level
+                                : AnalogyLogLevel.Event;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.Class:
+                        {
+                            m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls)
+                                ? cls
+                                : AnalogyLogClass.General;
+                        }
+                        continue;
+                    default: continue;
+                }
+            }
+
+            return m;
         }
     }
 
@@ -252,5 +332,23 @@ namespace Analogy.Interfaces
         Refactoring,
         Feature,
         Improvement
+    }
+
+    public enum AnalogyLogMessagePropertyName
+    {
+        Date,
+        ID,
+        Text,
+        Category,
+        Source,
+        Module,
+        MethodName,
+        FileName,
+        User,
+        LineNumber,
+        ProcessID,
+        Thread,
+        Level,
+        Class
     }
 }

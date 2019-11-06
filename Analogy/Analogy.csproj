@@ -528,6 +528,7 @@
     <Compile Include="UserControls\XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\nlog.png" />
     <None Include="Resources\FilePooling_32x32.png" />
     <None Include="Resources\FilePooling_16x16.png" />
     <EmbeddedResource Include="UserControls\FilePoolingLog.resx">
@@ -802,6 +803,11 @@
       <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
       <Name>Analogy.Interfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
