@@ -406,6 +406,7 @@ namespace Analogy
                         case AnalogyLogLevel.Verbose:
                         case AnalogyLogLevel.Debug:
                         case AnalogyLogLevel.Disabled:
+                        case AnalogyLogLevel.Unknown:
                         case AnalogyLogLevel.Trace:
                         case AnalogyLogLevel.AnalogyInformation:
                             break;
@@ -452,6 +453,9 @@ namespace Analogy
                     break;
                 case AnalogyLogLevel.AnalogyInformation:
                     img = imageList.Images[8];
+                    break;
+                case AnalogyLogLevel.Unknown:
+                    img = imageList.Images[9];
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -929,15 +933,15 @@ namespace Analogy
                 chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
             _filterCriteriaInline.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace,AnalogyLogLevel.Disabled};
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace,AnalogyLogLevel.Disabled,AnalogyLogLevel.Unknown};
             if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
 
 
             if (chkbIncludeModules.Checked)

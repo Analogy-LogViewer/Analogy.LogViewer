@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataProviders;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
@@ -35,7 +36,7 @@ namespace Analogy
         private bool DebugOn { get; set; }
         private XtraTabPage currentContextPage;
         private UserSettingsManager settings;
-
+        private bool Initialized { get; set; }
         public MainForm()
         {
             InitializeComponent();
@@ -87,24 +88,8 @@ namespace Analogy
             };
             ribbonControlMain.Minimized = UserSettingsManager.UserSettings.StartupRibbonMinimized;
 
-            string[] arguments = Environment.GetCommandLineArgs();
-            //todo: fine handler for file
-            if (arguments.Length == 2)
-            {
-                string[] fileNames = { arguments[1] };
-                OpenOfflineLogs(fileNames);
 
-            }
-            else
-                TmrAutoConnect.Enabled = true;
-
-            if (UserSettingsManager.UserSettings.ShowChangeLogAtStartUp)
-            {
-                var change = new ChangeLog();
-                change.ShowDialog(this);
-            }
-
-            CreateAnalogyDataSource();
+            CreateAnalogyBuiltinDataProviders();
             await AnalogyFactoriesManager.Instance.AddExternalDataSources();
             CreateEventLogsGroup();
             CreateDataSources();
@@ -118,22 +103,41 @@ namespace Analogy
 
             if (OnlineSources.Any())
                 TmrAutoConnect.Start();
+            string[] arguments = Environment.GetCommandLineArgs();
+            //todo: fine handler for file
+            if (arguments.Length == 2)
+            {
+                string[] fileNames = { arguments[1] };
+                await OpenOfflineLogs(fileNames);
+
+            }
+            else
+                TmrAutoConnect.Enabled = true;
+
+            if (UserSettingsManager.UserSettings.ShowChangeLogAtStartUp)
+            {
+                var change = new ChangeLog();
+                change.ShowDialog(this);
+            }
         }
 
 
 
-        private void CreateAnalogyDataSource()
+        private void CreateAnalogyBuiltinDataProviders()
         {
             IAnalogyFactory analogy = AnalogyFactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
             CreateDataSource(analogy, 0);
-            ribbonControlMain.SelectedPage=ribbonControlMain.Pages.First();
+            ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
+            IAnalogyFactory analogyNLog = AnalogyFactoriesManager.Instance.Get(NLogBuiltInFactory.AnalogyNLogGuid);
+            CreateDataSource(analogyNLog, 1);
+
         }
 
 
         private void CreateEventLogsGroup()
         {
             RibbonPage ribbonPage = new RibbonPage("Windows Event logs");
-            ribbonControlMain.Pages.Insert(1, ribbonPage);
+            ribbonControlMain.Pages.Insert(2, ribbonPage);
             RibbonPageGroup group = new RibbonPageGroup("Windows Event logs Data Sources");
             ribbonPage.Groups.Add(group);
 
@@ -359,11 +363,15 @@ namespace Analogy
             xtcLogs.SelectedTabPage = page;
         }
 
-        private void OpenOfflineLogs(string[] files)
+        private async Task OpenOfflineLogs(string[] files)
         {
             var supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
+            {
+                while (!Initialized)
+                    await Task.Delay(250);
                 OpenOfflineLogs(null, files, supported.First());
+            }
 
         }
 
@@ -727,7 +735,7 @@ namespace Analogy
         {
             foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories())
             {
-                CreateDataSource(factory, 1);
+                CreateDataSource(factory, 3);
             }
 
         }
@@ -774,6 +782,7 @@ namespace Analogy
             if (actionFactory?.Items != null && actionFactory.Items.Any() && !string.IsNullOrEmpty(actionFactory.Title))
             {
                 RibbonPageGroup groupActionSource = new RibbonPageGroup(actionFactory.Title);
+                groupActionSource.AllowTextClipping = false;
                 ribbonPage.Groups.Add(groupActionSource);
                 foreach (IAnalogyCustomAction action in actionFactory.Items)
                 {

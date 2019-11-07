@@ -205,6 +205,7 @@ namespace Analogy.Interfaces
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string propertyValue)> data)
         {
             AnalogyLogMessage m = new AnalogyLogMessage();
@@ -264,12 +265,42 @@ namespace Analogy.Interfaces
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Level:
+                    {
+                        if (Enum.TryParse(propertyValue, true, out AnalogyLogLevel level))
                         {
-                            m.Level = Enum.TryParse(propertyValue, true, out AnalogyLogLevel level)
-                                ? level
-                                : AnalogyLogLevel.Event;
+                            m.Level = level;
                         }
+                        else
+                        {
+                            switch (propertyValue)
+                            {
+                                case "TRACE":
+                                    m.Level = AnalogyLogLevel.Debug;
+                                    break;
+                                case "DEBUG":
+                                    m.Level = AnalogyLogLevel.Debug;
+                                    break;
+                                case "INFO":
+                                    m.Level = AnalogyLogLevel.Event;
+                                    break;
+                                case "WARN":
+                                    m.Level = AnalogyLogLevel.Warning;
+                                    break;
+                                case "ERROR":
+                                    m.Level = AnalogyLogLevel.Error;
+                                    break;
+                                case "FATAL":
+                                    m.Level = AnalogyLogLevel.Critical;
+                                    break;
+                                default:
+                                    m.Level = AnalogyLogLevel.Event;
+                                    break;
+                            }
+
+                        }
+
                         continue;
+                    }
                     case AnalogyLogMessagePropertyName.Class:
                         {
                             m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls)
@@ -314,6 +345,7 @@ namespace Analogy.Interfaces
     /// </summary>
     public enum AnalogyLogLevel
     {
+        Unknown,
         Disabled,
         Trace,
         Verbose,

@@ -232,6 +232,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProviders\CommonChangeLog.cs" />
+    <Compile Include="DataProviders\NLogBuiltInFactory.cs" />
+    <Compile Include="DataProviders\NLogDataProvider.cs" />
     <Compile Include="Forms\AboutDataSourceBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +266,8 @@
     <Compile Include="Forms\AnalogyOTAClient.Designer.cs">
       <DependentUpon>AnalogyOTAClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogLoaders\GeneralFileParser.cs" />
+    <Compile Include="LogLoaders\NLogFileLoader.cs" />
     <Compile Include="Managers\BookmarkPersistManager.cs" />
     <Compile Include="Managers\ClientServerDataSourceManager.cs" />
     <Compile Include="Managers\AnalogyFactoriesManager.cs" />

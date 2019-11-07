@@ -71,20 +71,20 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.chkLstItemRealTimeDataSources = new System.Windows.Forms.CheckedListBox();
             this.xtraTabPageNLog = new DevExpress.XtraTab.XtraTabPage();
-            this.sbtnCheckLayout = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.txtLayout = new DevExpress.XtraEditors.TextEdit();
-            this.txtSeperator = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.sBtnSaveNlogMapping = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.lstBAnalogyColumns = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.sBtnMoveUp = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnMoveDown = new DevExpress.XtraEditors.SimpleButton();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.lstBoxItems = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.sBtnSaveNlogMapping = new DevExpress.XtraEditors.SimpleButton();
+            this.txtSeperator = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.txtLayout = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.sbtnCheckLayout = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageFilter.SuspendLayout();
@@ -117,14 +117,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIdleMode.Properties)).BeginInit();
             this.xtraTabPageRealTimeDataSources.SuspendLayout();
             this.xtraTabPageNLog.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLayout.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSeperator.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstBoxItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSeperator.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLayout.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -647,65 +647,6 @@
             this.xtraTabPageNLog.Size = new System.Drawing.Size(744, 562);
             this.xtraTabPageNLog.Text = "NLog Parser";
             // 
-            // sbtnCheckLayout
-            // 
-            this.sbtnCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnCheckLayout.Location = new System.Drawing.Point(642, 14);
-            this.sbtnCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sbtnCheckLayout.Name = "sbtnCheckLayout";
-            this.sbtnCheckLayout.Size = new System.Drawing.Size(96, 37);
-            this.sbtnCheckLayout.TabIndex = 1;
-            this.sbtnCheckLayout.Text = "Load layout";
-            this.sbtnCheckLayout.Click += new System.EventHandler(this.sbtnCheckLayout_Click);
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(3, 14);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(104, 16);
-            this.labelControl7.TabIndex = 4;
-            this.labelControl7.Text = "NLog Layout/Row:";
-            // 
-            // txtLayout
-            // 
-            this.txtLayout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLayout.Location = new System.Drawing.Point(145, 11);
-            this.txtLayout.Name = "txtLayout";
-            this.txtLayout.Size = new System.Drawing.Size(475, 22);
-            this.txtLayout.TabIndex = 5;
-            // 
-            // txtSeperator
-            // 
-            this.txtSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSeperator.EditValue = "|";
-            this.txtSeperator.Location = new System.Drawing.Point(145, 39);
-            this.txtSeperator.Name = "txtSeperator";
-            this.txtSeperator.Size = new System.Drawing.Size(475, 22);
-            this.txtSeperator.TabIndex = 7;
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(3, 42);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(120, 16);
-            this.labelControl8.TabIndex = 6;
-            this.labelControl8.Text = "Seperator character:";
-            // 
-            // sBtnSaveNlogMapping
-            // 
-            this.sBtnSaveNlogMapping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(627, 520);
-            this.sBtnSaveNlogMapping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnSaveNlogMapping.Name = "sBtnSaveNlogMapping";
-            this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
-            this.sBtnSaveNlogMapping.TabIndex = 8;
-            this.sBtnSaveNlogMapping.Text = "Save Mapping";
-            this.sBtnSaveNlogMapping.Click += new System.EventHandler(this.sBtnSaveNlogMapping_Click);
-            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -759,6 +700,20 @@
             this.labelControl9.TabIndex = 7;
             this.labelControl9.Text = "Log message Column";
             // 
+            // splitContainerControl2
+            // 
+            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.splitContainerControl2.Horizontal = false;
+            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl2.Name = "splitContainerControl2";
+            this.splitContainerControl2.Panel1.Controls.Add(this.sBtnMoveUp);
+            this.splitContainerControl2.Panel1.Text = "Panel1";
+            this.splitContainerControl2.Panel2.Controls.Add(this.sBtnMoveDown);
+            this.splitContainerControl2.Panel2.Text = "Panel2";
+            this.splitContainerControl2.Size = new System.Drawing.Size(44, 425);
+            this.splitContainerControl2.SplitterPosition = 184;
+            this.splitContainerControl2.TabIndex = 1;
+            // 
             // sBtnMoveUp
             // 
             this.sBtnMoveUp.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -785,20 +740,6 @@
             this.sBtnMoveDown.Text = "Down";
             this.sBtnMoveDown.Click += new System.EventHandler(this.sBtnMoveDown_Click);
             // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.sBtnMoveUp);
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.sBtnMoveDown);
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(44, 425);
-            this.splitContainerControl2.SplitterPosition = 184;
-            this.splitContainerControl2.TabIndex = 1;
-            // 
             // lstBoxItems
             // 
             this.lstBoxItems.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -816,6 +757,65 @@
             this.labelControl10.Size = new System.Drawing.Size(94, 16);
             this.labelControl10.TabIndex = 8;
             this.labelControl10.Text = "Parsed columns.";
+            // 
+            // sBtnSaveNlogMapping
+            // 
+            this.sBtnSaveNlogMapping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(627, 520);
+            this.sBtnSaveNlogMapping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnSaveNlogMapping.Name = "sBtnSaveNlogMapping";
+            this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
+            this.sBtnSaveNlogMapping.TabIndex = 8;
+            this.sBtnSaveNlogMapping.Text = "Save Mapping";
+            this.sBtnSaveNlogMapping.Click += new System.EventHandler(this.sBtnSaveNlogMapping_Click);
+            // 
+            // txtSeperator
+            // 
+            this.txtSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSeperator.EditValue = "|";
+            this.txtSeperator.Location = new System.Drawing.Point(145, 39);
+            this.txtSeperator.Name = "txtSeperator";
+            this.txtSeperator.Size = new System.Drawing.Size(475, 22);
+            this.txtSeperator.TabIndex = 7;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(3, 42);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(120, 16);
+            this.labelControl8.TabIndex = 6;
+            this.labelControl8.Text = "Seperator character:";
+            // 
+            // txtLayout
+            // 
+            this.txtLayout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLayout.Location = new System.Drawing.Point(145, 11);
+            this.txtLayout.Name = "txtLayout";
+            this.txtLayout.Size = new System.Drawing.Size(475, 22);
+            this.txtLayout.TabIndex = 5;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(3, 14);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(104, 16);
+            this.labelControl7.TabIndex = 4;
+            this.labelControl7.Text = "NLog Layout/Row:";
+            // 
+            // sbtnCheckLayout
+            // 
+            this.sbtnCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnCheckLayout.Location = new System.Drawing.Point(642, 14);
+            this.sbtnCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sbtnCheckLayout.Name = "sbtnCheckLayout";
+            this.sbtnCheckLayout.Size = new System.Drawing.Size(96, 37);
+            this.sbtnCheckLayout.TabIndex = 1;
+            this.sbtnCheckLayout.Text = "Load layout";
+            this.sbtnCheckLayout.Click += new System.EventHandler(this.sbtnCheckLayout_Click);
             // 
             // UserSettingsForm
             // 
@@ -867,14 +867,14 @@
             this.xtraTabPageRealTimeDataSources.PerformLayout();
             this.xtraTabPageNLog.ResumeLayout(false);
             this.xtraTabPageNLog.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLayout.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSeperator.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumns)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstBoxItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSeperator.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLayout.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

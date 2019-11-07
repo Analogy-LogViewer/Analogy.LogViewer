@@ -37,7 +37,12 @@ namespace Analogy
         {
             InitialSelection = tabIndex;
         }
-
+        public UserSettingsForm(string tabName) : this()
+        {
+            var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
+            if (tab != null)
+                InitialSelection = tab.TabIndex;
+        }
         private void LoadSettings()
         {
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;

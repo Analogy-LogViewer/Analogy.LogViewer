@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Analogy.DataProviders;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
@@ -48,7 +49,8 @@ namespace Analogy
             Factories = new List<IAnalogyFactory>();
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
             {
-                (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly())
+                (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
+                (new NLogBuiltInFactory(), Assembly.GetExecutingAssembly())
             };
         }
 
