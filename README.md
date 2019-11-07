@@ -38,7 +38,7 @@ The following  custom data providers exists:
 - Built in NLog Parser with layout customization
 # Usage
 
-The primary usage of this application is to implement your own data source of logs of your own business domain by implementing small Interface.
+The primary usage of this application is to implement your own data source of logs of your own business domain by implementing small Interface but there are built in data providers (like NLog parser) that can be used without and additional coding.
 
 <a name="contact"></a>
 ## Contact
