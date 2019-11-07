@@ -293,7 +293,7 @@ namespace Analogy.Interfaces
                                     m.Level = AnalogyLogLevel.Critical;
                                     break;
                                 default:
-                                    m.Level = AnalogyLogLevel.Event;
+                                    m.Level = AnalogyLogLevel.Unknown;
                                     break;
                             }
 
