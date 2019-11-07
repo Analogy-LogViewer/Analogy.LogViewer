@@ -215,6 +215,7 @@ namespace Analogy
         {
             IsConfigured = false;
             Layout = string.Empty;
+            Splitter=string.Empty;
             Maps = new Dictionary<int, AnalogyLogMessagePropertyName>();
         }
 
