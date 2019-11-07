@@ -266,7 +266,8 @@ namespace Analogy.Interfaces
                         continue;
                     case AnalogyLogMessagePropertyName.Level:
                     {
-                        if (Enum.TryParse(propertyValue, true, out AnalogyLogLevel level))
+                        if (Enum.TryParse(propertyValue, true, out AnalogyLogLevel level) &&
+                            Enum.IsDefined(typeof(AnalogyLogLevel), level))
                         {
                             m.Level = level;
                         }
@@ -303,7 +304,8 @@ namespace Analogy.Interfaces
                     }
                     case AnalogyLogMessagePropertyName.Class:
                         {
-                            m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls)
+                            m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls) &&
+                                      Enum.IsDefined(typeof(AnalogyLogClass), cls)
                                 ? cls
                                 : AnalogyLogClass.General;
                         }
