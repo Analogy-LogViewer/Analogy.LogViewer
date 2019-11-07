@@ -93,7 +93,7 @@ namespace Analogy
             await AnalogyFactoriesManager.Instance.AddExternalDataSources();
             CreateEventLogsGroup();
             CreateDataSources();
-
+            Initialized = true;
             //set Default page:
             Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitialSelectedDataProvider);
             if (Mapping.ContainsKey(defaultPage))
