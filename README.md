@@ -35,7 +35,7 @@ in order to compile this code [DevExpress](https://www.devexpress.com/) assembli
 # Data Providers
 The following  custom data providers exists:
 - [Confluent's Apache Kafka .NET client Producer and consumer to Analogy](https://github.com/LiorBanai/Analogy.LogViewer.KafkaProvider)
-
+- Built in NLog Parser with layout customization
 # Usage
 
 The primary usage of this application is to implement your own data source of logs of your own business domain by implementing small Interface.
