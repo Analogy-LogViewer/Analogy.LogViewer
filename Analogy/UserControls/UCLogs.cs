@@ -1134,34 +1134,9 @@ namespace Analogy
 
         }
 
-        private void tsmiOTAFull_Click(object sender, EventArgs e)
-        {
-            if (EnableOTA)
-            {
-                AnalogyOTAClient client = new AnalogyOTAClient(GetFilteredDataTable());
-                client.Show(this);
-            }
-            else
-            {
-                MessageBox.Show("Sending logs feature has been disabled", "Operation Is Not allowed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+  
 
-        private void tsBtnShare_Click(object sender, EventArgs e)
-        {
-            if (EnableOTA)
-            {
-                AnalogyOTAClient client = new AnalogyOTAClient(GetFilteredDataTable());
-                client.Show(this);
-            }
-            else
-            {
-                XtraMessageBox.Show("Sharing logs feature has been disabled", "Operation Is Not allowed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
+       
 
         private void tmrNewData_Tick(object sender, EventArgs e)
         {

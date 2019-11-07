@@ -40,7 +40,6 @@
             this.bbtnItemSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
-            this.btnItemOTA = new DevExpress.XtraBars.BarButtonItem();
             this.bItemProcess = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemDark = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonGalleryBarItem1 = new DevExpress.XtraBars.RibbonGalleryBarItem();
@@ -135,7 +134,6 @@
             this.ribbonControlMain.ExpandCollapseItem,
             this.ribbonControlMain.SearchEditItem,
             this.btnItemLocalLogs,
-            this.btnItemOTA,
             this.bItemProcess,
             this.btnItemDark,
             this.ribbonGalleryBarItem1,
@@ -238,18 +236,7 @@
             this.btnItemLocalLogs.Name = "btnItemLocalLogs";
             this.btnItemLocalLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
-            // btnItemOTA
-            // 
-            this.btnItemOTA.Caption = "Analogy";
-            this.btnItemOTA.Enabled = false;
-            this.btnItemOTA.Id = 3;
-            this.btnItemOTA.ImageOptions.Image = global::Analogy.Properties.Resources.logIcon;
-            this.btnItemOTA.Name = "btnItemOTA";
-            this.btnItemOTA.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnItemOTA.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.btnItemOTA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnItemOTA_ItemClick);
+       
             // 
             // bItemProcess
             // 
@@ -827,7 +814,6 @@
         private System.Windows.Forms.Timer TmrAutoConnect;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControlMain;
         private DevExpress.XtraBars.BarButtonItem btnItemLocalLogs;
-        private DevExpress.XtraBars.BarButtonItem btnItemOTA;
         private DevExpress.XtraBars.BarButtonItem bItemProcess;
         private DevExpress.XtraBars.BarButtonItem btnItemDark;
         private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem1;

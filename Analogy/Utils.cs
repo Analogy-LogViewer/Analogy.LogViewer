@@ -1,6 +1,5 @@
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -99,7 +98,7 @@ namespace Analogy
                 {
                     using (Stream myReader = File.Open(filename, FileMode.Open, FileAccess.Read))
                     {
-                        return (T)formatter.Deserialize(myReader, null);
+                        return (T)formatter.Deserialize(myReader);
                     }
                 }
                 catch (Exception ex)
@@ -480,12 +479,12 @@ namespace Analogy
                 messages.Add(log);
             }
 
-            string json = JsonConvert.SerializeObject(messages);
+            string json = System.Text.Json.JsonSerializer.Serialize(messages);
             File.WriteAllText(filename, json);
         }
         public static void ExportToJson(List<AnalogyLogMessage> messages, string filename)
         {
-            string json = JsonConvert.SerializeObject(messages);
+            string json = System.Text.Json.JsonSerializer.Serialize(messages);
             File.WriteAllText(filename, json);
         }
 

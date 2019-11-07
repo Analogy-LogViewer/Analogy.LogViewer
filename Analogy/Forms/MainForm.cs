@@ -103,6 +103,8 @@ namespace Analogy
 
             if (OnlineSources.Any())
                 TmrAutoConnect.Start();
+
+            Initialized = true;
             string[] arguments = Environment.GetCommandLineArgs();
             //todo: fine handler for file
             if (arguments.Length == 2)
@@ -390,19 +392,6 @@ namespace Analogy
         private void AnalogyMainForm_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
 
-        private void OpenOTALogs()
-        {
-            var OTAUC = new OTALogs();
-            XtraTabPage page = new XtraTabPage();
-            page.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            page.Controls.Add(OTAUC);
-            OTAUC.Dock = DockStyle.Fill;
-            page.Text = $"Over the air log";
-            xtcLogs.TabPages.Add(page);
-            xtcLogs.SelectedTabPage = page;
-        }
-
-
 
         private void tsmiAbout_Click(object sender, EventArgs e)
         {
@@ -434,11 +423,6 @@ namespace Analogy
         {
             var change = new ChangeLog();
             change.ShowDialog(this);
-        }
-
-        private void btnItemOTA_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenOTALogs();
         }
 
         private void bItemProcess_ItemClick(object sender, ItemClickEventArgs e)

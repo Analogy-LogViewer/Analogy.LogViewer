@@ -1,80 +1,17 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.7.2": {
+    ".NETCoreApp,Version=v3.0": {
       "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
-          "lib/net45/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/net45/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Analogy.LogViewer.Interfaces/2.1.2": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Analogy.LogViewer.Interfaces.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Analogy.LogViewer.Interfaces.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.7.2/win": {
-      "Newtonsoft.Json/12.0.2": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Analogy.LogViewer.Interfaces/2.1.2": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Analogy.LogViewer.Interfaces.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Analogy.LogViewer.Interfaces.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.7.2/win-x64": {
-      "Newtonsoft.Json/12.0.2": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Analogy.LogViewer.Interfaces/2.1.2": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Analogy.LogViewer.Interfaces.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Analogy.LogViewer.Interfaces.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.7.2/win-x86": {
-      "Newtonsoft.Json/12.0.2": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Analogy.LogViewer.Interfaces/2.1.2": {
+      "Analogy.LogViewer.Interfaces/2.1.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "compile": {
@@ -117,20 +54,21 @@
         "newtonsoft.json.nuspec"
       ]
     },
-    "Analogy.LogViewer.Interfaces/2.1.2": {
+    "Analogy.LogViewer.Interfaces/2.1.3": {
       "type": "project",
       "path": "../Analogy.Interfaces/Analogy.Interfaces.csproj",
       "msbuildProject": "../Analogy.Interfaces/Analogy.Interfaces.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.7.2": [
-      "Analogy.LogViewer.Interfaces >= 2.1.2",
+    ".NETCoreApp,Version=v3.0": [
+      "Analogy.LogViewer.Interfaces >= 2.1.3",
       "Newtonsoft.Json >= 12.0.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lior\\.nuget\\packages\\": {}
+    "C:\\Users\\Lior\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -141,7 +79,9 @@
       "packagesPath": "C:\\Users\\Lior\\.nuget\\packages\\",
       "outputPath": "E:\\files\\Programming\\Philips-Analogy-Log-Viewer\\Analogy\\obj\\",
       "projectStyle": "PackageReference",
-      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\Lior\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
@@ -149,7 +89,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net472"
+        "netcoreapp3.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -159,34 +99,47 @@
         "https://nuget.devexpress.com/R7rFT6XCBtcByRyrxrg9Oiid6wgThPssXGJPjcKpVOPHBcmxGa/api": {}
       },
       "frameworks": {
-        "net472": {
+        "netcoreapp3.0": {
           "projectReferences": {
             "E:\\files\\Programming\\Philips-Analogy-Log-Viewer\\Analogy.Interfaces\\Analogy.Interfaces.csproj": {
               "projectPath": "E:\\files\\Programming\\Philips-Analogy-Log-Viewer\\Analogy.Interfaces\\Analogy.Interfaces.csproj"
             }
           }
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
-      "net472": {
+      "netcoreapp3.0": {
         "dependencies": {
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[12.0.2, )"
           }
-        }
-      }
-    },
-    "runtimes": {
-      "win": {
-        "#import": []
-      },
-      "win-x64": {
-        "#import": []
-      },
-      "win-x86": {
-        "#import": []
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
