@@ -93,7 +93,7 @@ namespace Analogy
             await AnalogyFactoriesManager.Instance.AddExternalDataSources();
             CreateEventLogsGroup();
             CreateDataSources();
-            Initialized = true;
+        
             //set Default page:
             Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitialSelectedDataProvider);
             if (Mapping.ContainsKey(defaultPage))
@@ -103,6 +103,8 @@ namespace Analogy
 
             if (OnlineSources.Any())
                 TmrAutoConnect.Start();
+
+            Initialized = true;
             string[] arguments = Environment.GetCommandLineArgs();
             //todo: fine handler for file
             if (arguments.Length == 2)

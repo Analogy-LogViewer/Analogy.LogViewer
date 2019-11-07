@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analogy.Implementation.Exam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.Interfaces", "Analogy.Interfaces\Analogy.Interfaces.csproj", "{9BAF7ECA-7305-4F7C-91E3-27E31D75F156}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.Core", "Analogy.Core\Analogy.Core.csproj", "{899EF9E1-9A62-474C-A539-A070FDD43546}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,14 +40,6 @@ Global
 		{9BAF7ECA-7305-4F7C-91E3-27E31D75F156}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BAF7ECA-7305-4F7C-91E3-27E31D75F156}.Release|x86.ActiveCfg = Release|Any CPU
 		{9BAF7ECA-7305-4F7C-91E3-27E31D75F156}.Release|x86.Build.0 = Release|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Debug|x86.Build.0 = Debug|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Release|Any CPU.Build.0 = Release|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Release|x86.ActiveCfg = Release|Any CPU
-		{899EF9E1-9A62-474C-A539-A070FDD43546}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

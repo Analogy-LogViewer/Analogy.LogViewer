@@ -13,10 +13,10 @@ namespace Analogy.LogLoaders
     {
         private LogParserSettings _logFileSettings;
         private GeneralFileParser _parser;
-        public NLogFileLoader( LogParserSettings logFileSettings)
+        public NLogFileLoader(LogParserSettings logFileSettings)
         {
             _logFileSettings = logFileSettings;
-            _parser=new GeneralFileParser(_logFileSettings);
+            _parser = new GeneralFileParser(_logFileSettings);
         }
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
@@ -53,13 +53,13 @@ namespace Analogy.LogLoaders
                         {
                             var line = await reader.ReadLineAsync();
                             var entry = _parser.Parse(line);
-                           messages.Add(entry);
+                            messages.Add(entry);
 
                         }
                     }
 
                 }
-                messagesHandler.AppendMessages(messages,fileName);
+                messagesHandler.AppendMessages(messages, fileName);
                 return messages;
             }
             catch (Exception e)
