@@ -1,6 +1,6 @@
 # Analogy Log Viewer
 
-Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems.
+Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems (with built-in NLog Parser and others).
 
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
 This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
