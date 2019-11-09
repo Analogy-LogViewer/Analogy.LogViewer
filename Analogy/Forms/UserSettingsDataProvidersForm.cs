@@ -28,7 +28,7 @@ namespace Analogy
         }
 
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
-        private int InitialSelection = -1;
+        private readonly int _initialSelection = -1;
 
         public UserSettingsDataProvidersForm()
         {
@@ -38,13 +38,13 @@ namespace Analogy
 
         public UserSettingsDataProvidersForm(int tabIndex) : this()
         {
-            InitialSelection = tabIndex;
+            _initialSelection = tabIndex;
         }
         public UserSettingsDataProvidersForm(string tabName) : this()
         {
             var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
             if (tab != null)
-                InitialSelection = tab.TabIndex;
+                _initialSelection = tab.TabIndex;
         }
         private void LoadSettings()
         {
@@ -63,14 +63,14 @@ namespace Analogy
         private async void UserSettingsForm_Load(object sender, EventArgs e)
         {
             LoadSettings();
-            if (InitialSelection >= 0)
-                tabControlMain.SelectedTabPageIndex = InitialSelection;
+            if (_initialSelection >= 0)
+                tabControlMain.SelectedTabPageIndex = _initialSelection;
      
             
         }
 
        
-        private void sbtnCheckLayout_Click(object sender, EventArgs e)
+        private void SbtnCheckLayout_Click(object sender, EventArgs e)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace Analogy
             }
         }
 
-        private void sBtnMoveUp_Click(object sender, EventArgs e)
+        private void SBtnMoveUp_Click(object sender, EventArgs e)
         {
             if (lstBAnalogyColumnsNlog.SelectedIndex <= 0) return;
             var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
@@ -97,7 +97,7 @@ namespace Analogy
             lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex - 1;
         }
 
-        private void sBtnMoveDown_Click(object sender, EventArgs e)
+        private void SBtnMoveDown_Click(object sender, EventArgs e)
         {
             if (lstBAnalogyColumnsNlog.SelectedIndex == lstBAnalogyColumnsNlog.ItemCount - 1) return;
             var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
@@ -107,7 +107,7 @@ namespace Analogy
             lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex + 1;
         }
 
-        private void sBtnSaveNlogMapping_Click(object sender, EventArgs e)
+        private void SBtnSaveNlogMapping_Click(object sender, EventArgs e)
         {
             Dictionary<int, AnalogyLogMessagePropertyName> maps=new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
             for (int i = 0; i < lstBAnalogyColumnsNlog.ItemCount; i++)
@@ -124,29 +124,31 @@ namespace Analogy
             Settings.NLogSettings.SupportedFilesExtensions = new List<string> {textEditNLogExtension.Text};
         }
 
-        private void lstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
+        private void LstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount) return;
             lstBoxItemsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
         }
 
-        private void sBtnLoadXMLFile_Click(object sender, EventArgs e)
+        private void SBtnLoadXMLFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Json File (*.json)|*.json";
-            openFileDialog1.Title = @"Load File";
-            openFileDialog1.Multiselect = false;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
             {
-                textEditJsonFile.Text = openFileDialog1.FileName;
-                ParseJsonFile(openFileDialog1.FileName);
+                openFileDialog1.Filter = "Json File (*.json)|*.json";
+                openFileDialog1.Title = @"Load File";
+                openFileDialog1.Multiselect = false;
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    textEditJsonFile.Text = openFileDialog1.FileName;
+                    ParseJsonFile(openFileDialog1.FileName);
+                }
             }
         }
 
         private void ParseJsonFile(string fileName)
         {
-            string json = File.ReadAllText(fileName);
-            var items = JsonConvert.DeserializeObject(json);
+           // string json = File.ReadAllText(fileName);
+           // var items = JsonConvert.DeserializeObject(json);
         }
     }
 }

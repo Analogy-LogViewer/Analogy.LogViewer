@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -92,6 +92,7 @@
             this.bbtnUserSettingsResourceUsage = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSettingsStartupDataSources = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnDataProviderSettings = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -102,7 +103,8 @@
             this.xtcLogs = new DevExpress.XtraTab.XtraTabControl();
             this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.bBtnDataProviderSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -186,10 +188,12 @@
             this.bbtnUserSettingsResourceUsage,
             this.bbtnSettingsStartupDataSources,
             this.bbiFileCaching,
-            this.bBtnDataProviderSettings});
+            this.bBtnDataProviderSettings,
+            this.bBtnItemExportSettings,
+            this.bBtnItemImportSettings});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 70;
+            this.ribbonControlMain.MaxItemId = 72;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -208,6 +212,8 @@
             // applicationMenu1
             // 
             this.applicationMenu1.ItemLinks.Add(this.bbtnItemSettings);
+            this.applicationMenu1.ItemLinks.Add(this.bBtnItemExportSettings);
+            this.applicationMenu1.ItemLinks.Add(this.bBtnItemImportSettings);
             this.applicationMenu1.ItemLinks.Add(this.bbtnItemExit);
             this.applicationMenu1.Name = "applicationMenu1";
             this.applicationMenu1.Ribbon = this.ribbonControlMain;
@@ -216,7 +222,7 @@
             // 
             this.bbtnItemSettings.Caption = "Settings";
             this.bbtnItemSettings.Id = 30;
-            this.bbtnItemSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemSettings.ImageOptions.Image")));
+            this.bbtnItemSettings.ImageOptions.Image = global::Analogy.Properties.Resources.PageSetup_32x32;
             this.bbtnItemSettings.Name = "bbtnItemSettings";
             this.bbtnItemSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemSettings_ItemClick);
             // 
@@ -276,9 +282,9 @@
             // 
             // 
             // 
-            galleryItemGroup3.Caption = "Group2";
+            galleryItemGroup1.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup3});
+            galleryItemGroup1});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -288,9 +294,9 @@
             // 
             // 
             // 
-            galleryItemGroup4.Caption = "Group3";
+            galleryItemGroup2.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup4});
+            galleryItemGroup2});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -436,7 +442,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition2;
+            this.workspaceManager1.TransitionType = pushTransition1;
             // 
             // bBtnBookmarked
             // 
@@ -691,6 +697,16 @@
             this.bbiFileCaching.Name = "bbiFileCaching";
             this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
             // 
+            // bBtnDataProviderSettings
+            // 
+            this.bBtnDataProviderSettings.Caption = "Data Providers Settings";
+            this.bBtnDataProviderSettings.Id = 69;
+            this.bBtnDataProviderSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Database_on;
+            this.bBtnDataProviderSettings.Name = "bBtnDataProviderSettings";
+            this.bBtnDataProviderSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnDataProviderSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataProviderSettings_ItemClick);
+            // 
             // ribbonPageThemes
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -780,15 +796,19 @@
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
             // 
-            // bBtnDataProviderSettings
+            // bBtnItemExportSettings
             // 
-            this.bBtnDataProviderSettings.Caption = "Data Providers Settings";
-            this.bBtnDataProviderSettings.Id = 69;
-            this.bBtnDataProviderSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Database_on;
-            this.bBtnDataProviderSettings.Name = "bBtnDataProviderSettings";
-            this.bBtnDataProviderSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bBtnDataProviderSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataProviderSettings_ItemClick);
+            this.bBtnItemExportSettings.Caption = "Export Settings";
+            this.bBtnItemExportSettings.Id = 70;
+            this.bBtnItemExportSettings.Name = "bBtnItemExportSettings";
+            this.bBtnItemExportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // bBtnItemImportSettings
+            // 
+            this.bBtnItemImportSettings.Caption = "Import Settings";
+            this.bBtnItemImportSettings.Id = 71;
+            this.bBtnItemImportSettings.Name = "bBtnItemImportSettings";
+            this.bBtnItemImportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // MainForm
             // 
@@ -893,5 +913,7 @@
         private DevExpress.XtraBars.BarButtonItem bbtnSettingsStartupDataSources;
         private DevExpress.XtraBars.BarButtonItem bbiFileCaching;
         private DevExpress.XtraBars.BarButtonItem bBtnDataProviderSettings;
+        private DevExpress.XtraBars.BarButtonItem bBtnItemExportSettings;
+        private DevExpress.XtraBars.BarButtonItem bBtnItemImportSettings;
     }
 }

@@ -202,7 +202,7 @@
             this.lstBAnalogyColumnsNlog.Name = "lstBAnalogyColumnsNlog";
             this.lstBAnalogyColumnsNlog.Size = new System.Drawing.Size(131, 349);
             this.lstBAnalogyColumnsNlog.TabIndex = 0;
-            this.lstBAnalogyColumnsNlog.SelectedIndexChanged += new System.EventHandler(this.lstBAnalogyColumns_SelectedIndexChanged);
+            this.lstBAnalogyColumnsNlog.SelectedIndexChanged += new System.EventHandler(this.LstBAnalogyColumns_SelectedIndexChanged);
             // 
             // labelControl9
             // 
@@ -239,7 +239,7 @@
             this.sBtnMoveUpNlog.Size = new System.Drawing.Size(44, 184);
             this.sBtnMoveUpNlog.TabIndex = 2;
             this.sBtnMoveUpNlog.Text = "Up";
-            this.sBtnMoveUpNlog.Click += new System.EventHandler(this.sBtnMoveUp_Click);
+            this.sBtnMoveUpNlog.Click += new System.EventHandler(this.SBtnMoveUp_Click);
             // 
             // sBtnMoveDownNlog
             // 
@@ -252,7 +252,7 @@
             this.sBtnMoveDownNlog.Size = new System.Drawing.Size(44, 175);
             this.sBtnMoveDownNlog.TabIndex = 3;
             this.sBtnMoveDownNlog.Text = "Down";
-            this.sBtnMoveDownNlog.Click += new System.EventHandler(this.sBtnMoveDown_Click);
+            this.sBtnMoveDownNlog.Click += new System.EventHandler(this.SBtnMoveDown_Click);
             // 
             // lstBoxItemsNlog
             // 
@@ -281,7 +281,7 @@
             this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
             this.sBtnSaveNlogMapping.TabIndex = 8;
             this.sBtnSaveNlogMapping.Text = "Save Mapping";
-            this.sBtnSaveNlogMapping.Click += new System.EventHandler(this.sBtnSaveNlogMapping_Click);
+            this.sBtnSaveNlogMapping.Click += new System.EventHandler(this.SBtnSaveNlogMapping_Click);
             // 
             // txtNLogSeperator
             // 
@@ -329,14 +329,14 @@
             this.sbtnCheckLayout.Size = new System.Drawing.Size(96, 37);
             this.sbtnCheckLayout.TabIndex = 1;
             this.sbtnCheckLayout.Text = "Load layout";
-            this.sbtnCheckLayout.Click += new System.EventHandler(this.sbtnCheckLayout_Click);
+            this.sbtnCheckLayout.Click += new System.EventHandler(this.SbtnCheckLayout_Click);
             // 
             // xtraTabPageSerilog
             // 
             this.xtraTabPageSerilog.Controls.Add(this.labelControl6);
             this.xtraTabPageSerilog.ImageOptions.Image = global::Analogy.Properties.Resources.serilog32x32;
             this.xtraTabPageSerilog.Name = "xtraTabPageSerilog";
-            this.xtraTabPageSerilog.Size = new System.Drawing.Size(799, 562);
+            this.xtraTabPageSerilog.Size = new System.Drawing.Size(772, 562);
             this.xtraTabPageSerilog.Text = "Serilog parser";
             // 
             // labelControl6
@@ -353,7 +353,7 @@
             this.xtraTabPageLog4Net.Controls.Add(this.labelControl11);
             this.xtraTabPageLog4Net.ImageOptions.Image = global::Analogy.Properties.Resources.log4net32x32;
             this.xtraTabPageLog4Net.Name = "xtraTabPageLog4Net";
-            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(799, 562);
+            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(772, 562);
             this.xtraTabPageLog4Net.Text = "Log4Net Parser";
             // 
             // labelControl11
@@ -374,7 +374,7 @@
             this.xtraTabPageJson.Controls.Add(this.sBtnLoadXMLFile);
             this.xtraTabPageJson.ImageOptions.Image = global::Analogy.Properties.Resources.jsonfile32x32;
             this.xtraTabPageJson.Name = "xtraTabPageJson";
-            this.xtraTabPageJson.Size = new System.Drawing.Size(799, 562);
+            this.xtraTabPageJson.Size = new System.Drawing.Size(772, 562);
             this.xtraTabPageJson.Text = "Json Parser";
             // 
             // labelControl12
@@ -526,14 +526,14 @@
             this.sBtnLoadXMLFile.TabIndex = 6;
             this.sBtnLoadXMLFile.Text = "...";
             this.sBtnLoadXMLFile.Visible = false;
-            this.sBtnLoadXMLFile.Click += new System.EventHandler(this.sBtnLoadXMLFile_Click);
+            this.sBtnLoadXMLFile.Click += new System.EventHandler(this.SBtnLoadXMLFile_Click);
             // 
             // xtraTabPageXML
             // 
             this.xtraTabPageXML.Controls.Add(this.labelControl13);
             this.xtraTabPageXML.ImageOptions.Image = global::Analogy.Properties.Resources.xml32x32;
             this.xtraTabPageXML.Name = "xtraTabPageXML";
-            this.xtraTabPageXML.Size = new System.Drawing.Size(799, 562);
+            this.xtraTabPageXML.Size = new System.Drawing.Size(772, 562);
             this.xtraTabPageXML.Text = "XML Parser";
             // 
             // labelControl13
