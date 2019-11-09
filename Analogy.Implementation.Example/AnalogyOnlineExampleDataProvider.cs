@@ -10,6 +10,7 @@ namespace Analogy.Implementation.Example
 {
     class AnalogyOnlineExampleDataProvider : IAnalogyRealTimeDataProvider
     {
+        public string OptionalTitle { get; } = "Analogy Example: Real time Data Provider";
         public Guid ID => new Guid("6642B160-F992-4120-B688-B02DE2E83256");
 
         public bool AutoStartAtLaunch => true;

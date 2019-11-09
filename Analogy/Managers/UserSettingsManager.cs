@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Analogy.Interfaces;
 using Analogy.Properties;
 using Newtonsoft.Json;
@@ -52,6 +54,7 @@ namespace Analogy
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
         public LogParserSettings NLogSettings { get; set; }
+        public ColorSettings ColorSettings { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -114,6 +117,17 @@ namespace Analogy
             try
             {
 
+                ColorSettings = string.IsNullOrEmpty(Settings.Default.ColorSettings) ?
+                    new ColorSettings() : 
+                    JsonConvert.DeserializeObject<ColorSettings>(Settings.Default.ColorSettings);
+            }
+            catch
+            {
+                ColorSettings = new ColorSettings();
+            }
+            try
+            {
+
                 NLogSettings = string.IsNullOrEmpty(Settings.Default.NlogSettings) ?
                     new LogParserSettings() :
                     JsonConvert.DeserializeObject<LogParserSettings>(Settings.Default.NlogSettings);
@@ -122,7 +136,6 @@ namespace Analogy
             {
                 NLogSettings = new LogParserSettings();
             }
-
 
         }
 
@@ -166,6 +179,14 @@ namespace Analogy
             catch
             {
                 Settings.Default.NlogSettings = string.Empty;
+            }
+            try
+            {
+                Settings.Default.ColorSettings = JsonConvert.SerializeObject(ColorSettings);
+            }
+            catch
+            {
+                Settings.Default.ColorSettings = string.Empty;
             }
             Settings.Default.Save();
 
@@ -238,6 +259,67 @@ namespace Analogy
             return SupportedFilesExtensions.Any(s =>s.EndsWith(Path.GetExtension(filename),StringComparison.InvariantCultureIgnoreCase));
         }
 
+    }
+
+    public class ColorSettings
+    {
+        public Dictionary<AnalogyLogLevel, Color> LogLevelColors { get; set; }
+
+        public Color HighlightColor { get; set; }
+        public ColorSettings()
+        {
+            HighlightColor = Color.Aqua;
+            var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
+            LogLevelColors =new Dictionary<AnalogyLogLevel, Color>(logLevelValues.Length);
+
+            foreach (AnalogyLogLevel level in logLevelValues)
+                
+            {
+                switch (level)
+                {
+                    case AnalogyLogLevel.Unknown:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Disabled:
+                        LogLevelColors.Add(level, Color.LightGray);
+                        break;
+                    case AnalogyLogLevel.Trace:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Verbose:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Debug:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Event:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Warning:
+                        LogLevelColors.Add(level, Color.Yellow);
+                        break;
+                    case AnalogyLogLevel.Error:
+                        LogLevelColors.Add(level, Color.Pink);
+                        break;
+                    case AnalogyLogLevel.Critical:
+                        LogLevelColors.Add(level, Color.Red);
+                        break;
+                    case AnalogyLogLevel.AnalogyInformation:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public Color GetColorForLogLevel(AnalogyLogLevel level) => LogLevelColors[level];
+
+        public Color GetHighlightColor() => HighlightColor;
+
+        public void SetColorForLogLevel(AnalogyLogLevel level, Color value) => LogLevelColors[level] = value;
+        public void SetHighlightColor(Color value) => HighlightColor=value;
     }
 }
 

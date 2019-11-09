@@ -385,20 +385,12 @@ namespace Analogy
                 var parsed = TryParse(level, true, out AnalogyLogLevel enumLevel);
                 if (parsed)
                 {
+                    e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(enumLevel);
                     switch (enumLevel)
                     {
-                        case AnalogyLogLevel.Critical:
-                            e.Appearance.BackColor = Color.Red;
-                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                                e.Appearance.ForeColor = Color.Black;
-                            break;
-                        case AnalogyLogLevel.Error:
-                            e.Appearance.BackColor = Color.Pink;
-                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                                e.Appearance.ForeColor = Color.Black;
-                            break;
                         case AnalogyLogLevel.Warning:
-                            e.Appearance.BackColor = Color.Yellow;
+                        case AnalogyLogLevel.Error:
+                        case AnalogyLogLevel.Critical:
                             if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
                                 e.Appearance.ForeColor = Color.Black;
                             break;
@@ -418,7 +410,7 @@ namespace Analogy
                 string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
                 if (chkbHighlight.Checked && _filterCriteriaInline.Match(text, txtbHighlight.Text))
                 {
-                    e.Appearance.BackColor = Color.Aqua;
+                    e.Appearance.BackColor = Settings.ColorSettings.GetHighlightColor();
                 }
 
 
@@ -1562,15 +1554,15 @@ namespace Analogy
 
         private void chkLstLogLevel_DrawItem(object sender, ListBoxDrawItemEventArgs e)
         {
-            switch (e.Index)
-            {
-                case 1:
-                    e.Appearance.BackColor = Color.Red;
-                    break;
-                case 2:
-                    e.Appearance.BackColor = Color.Yellow;
-                    break;
-            }
+            //switch (e.Index)
+            //{
+            //    case 1:
+            //        e.Appearance.BackColor = Color.Red;
+            //        break;
+            //    case 2:
+            //        e.Appearance.BackColor = Color.Yellow;
+            //        break;
+            //}
 
         }
 

@@ -394,5 +394,17 @@ namespace Analogy.Properties {
                 this["NlogSettings"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ColorSettings {
+            get {
+                return ((string)(this["ColorSettings"]));
+            }
+            set {
+                this["ColorSettings"] = value;
+            }
+        }
     }
 }

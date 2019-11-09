@@ -14,6 +14,7 @@ namespace Analogy.DataSources
 {
     public class EventLogDataProvider : IAnalogyOfflineDataProvider
     {
+        public string OptionalTitle { get; } = "Analogy Built-In Windows Event Log Data Provider";
         public UCLogs LogWindow { get; set; }
         public Guid ID { get; } = new Guid("465F4963-71F3-4E50-8253-FA286BF5692B");
         public void InitDataProvider()
