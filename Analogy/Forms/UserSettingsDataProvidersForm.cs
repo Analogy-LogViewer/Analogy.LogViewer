@@ -62,6 +62,7 @@ namespace Analogy
                     else
                         lstBAnalogyColumnsNlog.Items.Add("__ignore__");
                 }
+                CheckNLogLayout();
             }
         }
 
@@ -76,7 +77,12 @@ namespace Analogy
         }
 
 
-        private void SbtnCheckLayout_Click(object sender, EventArgs e)
+        private void btnNlogCheckLayout_Click(object sender, EventArgs e)
+        {
+         CheckNLogLayout();
+        }
+
+        private void CheckNLogLayout()
         {
             try
             {
@@ -92,7 +98,6 @@ namespace Analogy
                     MessageBoxIcon.Error);
             }
         }
-
         private void SBtnMoveUp_Click(object sender, EventArgs e)
         {
             if (lstBAnalogyColumnsNlog.SelectedIndex <= 0) return;

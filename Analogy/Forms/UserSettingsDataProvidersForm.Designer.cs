@@ -47,7 +47,7 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtNLogLayout = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.sbtnCheckLayout = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnNLogCheckLayout = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageSerilog = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageLog4Net = new DevExpress.XtraTab.XtraTabPage();
@@ -127,7 +127,7 @@
             this.xtraTabPageNLog.Controls.Add(this.labelControl8);
             this.xtraTabPageNLog.Controls.Add(this.txtNLogLayout);
             this.xtraTabPageNLog.Controls.Add(this.labelControl7);
-            this.xtraTabPageNLog.Controls.Add(this.sbtnCheckLayout);
+            this.xtraTabPageNLog.Controls.Add(this.sbtnNLogCheckLayout);
             this.xtraTabPageNLog.ImageOptions.Image = global::Analogy.Properties.Resources.nlog;
             this.xtraTabPageNLog.Name = "xtraTabPageNLog";
             this.xtraTabPageNLog.Size = new System.Drawing.Size(772, 562);
@@ -327,16 +327,16 @@
             this.labelControl7.TabIndex = 4;
             this.labelControl7.Text = "NLog Layout/Row:";
             // 
-            // sbtnCheckLayout
+            // sbtnNLogCheckLayout
             // 
-            this.sbtnCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnCheckLayout.Location = new System.Drawing.Point(670, 3);
-            this.sbtnCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sbtnCheckLayout.Name = "sbtnCheckLayout";
-            this.sbtnCheckLayout.Size = new System.Drawing.Size(96, 37);
-            this.sbtnCheckLayout.TabIndex = 1;
-            this.sbtnCheckLayout.Text = "Load layout";
-            this.sbtnCheckLayout.Click += new System.EventHandler(this.SbtnCheckLayout_Click);
+            this.sbtnNLogCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnNLogCheckLayout.Location = new System.Drawing.Point(670, 3);
+            this.sbtnNLogCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sbtnNLogCheckLayout.Name = "sbtnNLogCheckLayout";
+            this.sbtnNLogCheckLayout.Size = new System.Drawing.Size(96, 37);
+            this.sbtnNLogCheckLayout.TabIndex = 1;
+            this.sbtnNLogCheckLayout.Text = "Load layout";
+            this.sbtnNLogCheckLayout.Click += new System.EventHandler(this.btnNlogCheckLayout_Click);
             // 
             // xtraTabPageSerilog
             // 
@@ -633,7 +633,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.TextEdit txtNLogLayout;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.SimpleButton sbtnCheckLayout;
+        private DevExpress.XtraEditors.SimpleButton sbtnNLogCheckLayout;
         private DevExpress.XtraEditors.SplitContainerControl spltNlogParser;
         private DevExpress.XtraEditors.SimpleButton sBtnSaveNlogMapping;
         private DevExpress.XtraEditors.LabelControl labelControl9;
