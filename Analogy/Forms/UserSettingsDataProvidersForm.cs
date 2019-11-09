@@ -1,9 +1,12 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 using DevExpress.Utils;
+using Newtonsoft.Json;
 
 namespace Analogy
 {
@@ -48,10 +51,11 @@ namespace Analogy
             
             if (Settings.NLogSettings.IsConfigured)
             {
-                txtSeperator.Text = Settings.NLogSettings.Splitter;
-                txtLayout.Text = Settings.NLogSettings.Layout;
-                lstBAnalogyColumns.Items.Clear();
-                lstBAnalogyColumns.Items.AddRange(Settings.NLogSettings.Maps.Values.Select(i => i.ToString()).ToArray());
+                txtNLogSeperator.Text = Settings.NLogSettings.Splitter;
+                txtNLogLayout.Text = Settings.NLogSettings.Layout;
+                textEditNLogExtension.Text = string.Join(";", Settings.NLogSettings.SupportedFilesExtensions);
+                lstBAnalogyColumnsNlog.Items.Clear();
+                lstBAnalogyColumnsNlog.Items.AddRange(Settings.NLogSettings.Maps.Values.Select(i => i.ToString()).ToArray());
             }
         }
 
@@ -70,11 +74,11 @@ namespace Analogy
         {
             try
             {
-                if (string.IsNullOrEmpty(txtSeperator.Text)) return;
-                var items = txtLayout.Text.Split(txtSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                if (string.IsNullOrEmpty(txtNLogSeperator.Text)) return;
+                var items = txtNLogLayout.Text.Split(txtNLogSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                     .ToArray();
-                lstBoxItems.Items.Clear();
-                lstBoxItems.Items.AddRange(items);
+                lstBoxItemsNlog.Items.Clear();
+                lstBoxItemsNlog.Items.AddRange(items);
             }
             catch (Exception exception)
             {
@@ -85,42 +89,64 @@ namespace Analogy
 
         private void sBtnMoveUp_Click(object sender, EventArgs e)
         {
-            if (lstBAnalogyColumns.SelectedIndex <= 0) return;
-            var selectedIndex = lstBAnalogyColumns.SelectedIndex;
-            var currentValue = lstBAnalogyColumns.Items[selectedIndex];
-            lstBAnalogyColumns.Items[selectedIndex] = lstBAnalogyColumns.Items[selectedIndex - 1];
-            lstBAnalogyColumns.Items[selectedIndex - 1] = currentValue;
-            lstBAnalogyColumns.SelectedIndex = lstBAnalogyColumns.SelectedIndex - 1;
+            if (lstBAnalogyColumnsNlog.SelectedIndex <= 0) return;
+            var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
+            var currentValue = lstBAnalogyColumnsNlog.Items[selectedIndex];
+            lstBAnalogyColumnsNlog.Items[selectedIndex] = lstBAnalogyColumnsNlog.Items[selectedIndex - 1];
+            lstBAnalogyColumnsNlog.Items[selectedIndex - 1] = currentValue;
+            lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex - 1;
         }
 
         private void sBtnMoveDown_Click(object sender, EventArgs e)
         {
-            if (lstBAnalogyColumns.SelectedIndex == lstBAnalogyColumns.ItemCount - 1) return;
-            var selectedIndex = lstBAnalogyColumns.SelectedIndex;
-            var currentValue = lstBAnalogyColumns.Items[selectedIndex + 1];
-            lstBAnalogyColumns.Items[selectedIndex + 1] = lstBAnalogyColumns.Items[selectedIndex];
-            lstBAnalogyColumns.Items[selectedIndex] = currentValue;
-            lstBAnalogyColumns.SelectedIndex = lstBAnalogyColumns.SelectedIndex + 1;
+            if (lstBAnalogyColumnsNlog.SelectedIndex == lstBAnalogyColumnsNlog.ItemCount - 1) return;
+            var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
+            var currentValue = lstBAnalogyColumnsNlog.Items[selectedIndex + 1];
+            lstBAnalogyColumnsNlog.Items[selectedIndex + 1] = lstBAnalogyColumnsNlog.Items[selectedIndex];
+            lstBAnalogyColumnsNlog.Items[selectedIndex] = currentValue;
+            lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex + 1;
         }
 
         private void sBtnSaveNlogMapping_Click(object sender, EventArgs e)
         {
-            LogParserSettings parser = new LogParserSettings {Layout = txtLayout.Text, Splitter = txtSeperator.Text};
-            for (int i = 0; i < lstBAnalogyColumns.ItemCount; i++)
+            Dictionary<int, AnalogyLogMessagePropertyName> maps=new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
+            for (int i = 0; i < lstBAnalogyColumnsNlog.ItemCount; i++)
             {
-                parser.AddMap(i,
+                maps.Add(i,
                     (AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
-                        lstBAnalogyColumns.Items[i].ToString()));
+                        lstBAnalogyColumnsNlog.Items[i].ToString()));
             }
 
-            parser.IsConfigured = true;
-            Settings.NLogSettings = parser;
+            Settings.NLogSettings.IsConfigured = true;
+            Settings.NLogSettings.Maps = maps;
+            Settings.NLogSettings.Layout = txtNLogLayout.Text;
+            Settings.NLogSettings.Splitter = txtNLogSeperator.Text;
+            Settings.NLogSettings.SupportedFilesExtensions = new List<string> {textEditNLogExtension.Text};
         }
 
         private void lstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstBAnalogyColumns.SelectedIndex > lstBoxItems.ItemCount) return;
-            lstBoxItems.SelectedIndex = lstBAnalogyColumns.SelectedIndex;
+            if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount) return;
+            lstBoxItemsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
+        }
+
+        private void sBtnLoadXMLFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Json File (*.json)|*.json";
+            openFileDialog1.Title = @"Load File";
+            openFileDialog1.Multiselect = false;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textEditJsonFile.Text = openFileDialog1.FileName;
+                ParseJsonFile(openFileDialog1.FileName);
+            }
+        }
+
+        private void ParseJsonFile(string fileName)
+        {
+            string json = File.ReadAllText(fileName);
+            var items = JsonConvert.DeserializeObject(json);
         }
     }
 }

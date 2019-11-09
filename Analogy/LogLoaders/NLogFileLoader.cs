@@ -42,6 +42,17 @@ namespace Analogy.LogLoaders
                 messagesHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                 return new List<AnalogyLogMessage> { empty };
             }
+            if (!_logFileSettings.CanOpenFile(fileName))
+            {
+                AnalogyLogMessage empty = new AnalogyLogMessage($"File {fileName} Is not supported or not configured correctly in the windows settings",
+                    AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None")
+                {
+                    Source = "Analogy",
+                    Module = System.Diagnostics.Process.GetCurrentProcess().ProcessName
+                };
+                messagesHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
+                return new List<AnalogyLogMessage> { empty };
+            }
             List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
             try
             {

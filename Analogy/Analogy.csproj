@@ -539,6 +539,9 @@
     <Compile Include="UserControls\XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\log4net32x32.png" />
+    <None Include="Resources\xml32x32.png" />
+    <None Include="Resources\jsonfile32x32.png" />
     <None Include="Resources\serilog32x32.png" />
     <None Include="Resources\serilog.png" />
     <None Include="Resources\nlog.png" />

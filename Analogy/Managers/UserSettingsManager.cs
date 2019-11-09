@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using Analogy.Interfaces;
 using Analogy.Properties;
@@ -78,10 +79,10 @@ namespace Analogy
             //SimpleMode = Properties.Settings.Default.SimpleMode;
             RecentFiles =
                 Settings.Default.RecentFiles
-                    .Split(new[] {"##"}, StringSplitOptions.RemoveEmptyEntries)
+                    .Split(new[] { "##" }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(itm =>
                     {
-                        var items = itm.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries);
+                        var items = itm.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                         if (Guid.TryParse(items[0], out Guid id))
                         {
                             return (id, items.Last());
@@ -93,7 +94,7 @@ namespace Analogy
             EnableFileCaching = Settings.Default.EnableFileCaching;
             LoadExtensionsOnStartup = Settings.Default.LoadExtensionsOnStartup;
             StartupExtensions = Settings.Default.StartupExtensions
-                .Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
+                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
             StartupRibbonMinimized = Settings.Default.StartupRibbonMinimized;
             StartupErrorLogLevel = Settings.Default.StartupErrorLogLevel;
             PagingEnabled = Settings.Default.PagingEnabled;
@@ -104,25 +105,25 @@ namespace Analogy
             SearchAlsoInSourceAndModule = Settings.Default.SearchAlsoInSourceAndModule;
             IdleMode = Settings.Default.IdleMode;
             IdleTimeMinutes = Settings.Default.IdleTimeMinutes;
-            EventLogs = Settings.Default.WindowsEventLogs.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries)
+            EventLogs = Settings.Default.WindowsEventLogs.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
             AutoStartDataProviders = Settings.Default.AutoStartDataProviders
-                .Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
+                .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
             AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
 
             try
             {
 
-                NLogSettings =string.IsNullOrEmpty(Settings.Default.NlogSettings) ?
-                    new LogParserSettings():
+                NLogSettings = string.IsNullOrEmpty(Settings.Default.NlogSettings) ?
+                    new LogParserSettings() :
                     JsonConvert.DeserializeObject<LogParserSettings>(Settings.Default.NlogSettings);
             }
-            catch 
+            catch
             {
-                NLogSettings=new LogParserSettings();
+                NLogSettings = new LogParserSettings();
             }
 
-            
+
         }
 
 
@@ -160,7 +161,7 @@ namespace Analogy
             Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             try
             {
-                Settings.Default.NlogSettings =JsonConvert.SerializeObject(NLogSettings);
+                Settings.Default.NlogSettings = JsonConvert.SerializeObject(NLogSettings);
             }
             catch
             {
@@ -196,15 +197,16 @@ namespace Analogy
         public void IncreaseNumberOfLaunches() => AnalogyLaunches++;
 
         public List<string> ExcludedEntries =>
-            ExcludedText.Split(new[] {splitter}, StringSplitOptions.RemoveEmptyEntries).Take(10).ToList();
+            ExcludedText.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries).Take(10).ToList();
 
-        public List<string> IncludeEntries => IncludeText.Split(new[] {splitter}, StringSplitOptions.RemoveEmptyEntries)
+        public List<string> IncludeEntries => IncludeText.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries)
             .Take(10).ToList();
 
     }
 
     public class LogParserSettings
     {
+        public List<string> SupportedFilesExtensions { get; set; }
         public bool IsConfigured { get; set; }
         public string Splitter { get; set; }
         public string Layout { get; set; }
@@ -215,11 +217,27 @@ namespace Analogy
         {
             IsConfigured = false;
             Layout = string.Empty;
-            Splitter=string.Empty;
+            Splitter = string.Empty;
             Maps = new Dictionary<int, AnalogyLogMessagePropertyName>();
+            SupportedFilesExtensions = new List<string>();
         }
 
+        public void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<int, AnalogyLogMessagePropertyName> maps)
+        {
+            Layout = layout;
+            Splitter = splitter;
+            SupportedFilesExtensions = supportedFilesExtension;
+            Maps = maps ?? new Dictionary<int, AnalogyLogMessagePropertyName>();
+            IsConfigured = true;
+        }
         public void AddMap(int index, AnalogyLogMessagePropertyName name) => Maps.Add(index, name);
+
+        public bool CanOpenFile(string filename)
+        {
+            if (string.IsNullOrEmpty(filename)) return false;
+            return SupportedFilesExtensions.Any(s =>s.EndsWith(Path.GetExtension(filename),StringComparison.InvariantCultureIgnoreCase));
+        }
+
     }
 }
 

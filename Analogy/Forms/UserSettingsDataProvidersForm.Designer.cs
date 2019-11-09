@@ -31,33 +31,65 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsDataProvidersForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageNLog = new DevExpress.XtraTab.XtraTabPage();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.lstBAnalogyColumns = new DevExpress.XtraEditors.ListBoxControl();
+            this.spltNlogParser = new DevExpress.XtraEditors.SplitContainerControl();
+            this.lstBAnalogyColumnsNlog = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.sBtnMoveUp = new DevExpress.XtraEditors.SimpleButton();
-            this.sBtnMoveDown = new DevExpress.XtraEditors.SimpleButton();
-            this.lstBoxItems = new DevExpress.XtraEditors.ListBoxControl();
+            this.sBtnMoveUpNlog = new DevExpress.XtraEditors.SimpleButton();
+            this.sBtnMoveDownNlog = new DevExpress.XtraEditors.SimpleButton();
+            this.lstBoxItemsNlog = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.sBtnSaveNlogMapping = new DevExpress.XtraEditors.SimpleButton();
-            this.txtSeperator = new DevExpress.XtraEditors.TextEdit();
+            this.txtNLogSeperator = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.txtLayout = new DevExpress.XtraEditors.TextEdit();
+            this.txtNLogLayout = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnCheckLayout = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageSerilog = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPageLog4Net = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPageJson = new DevExpress.XtraTab.XtraTabPage();
+            this.spltJSonParser = new DevExpress.XtraEditors.SplitContainerControl();
+            this.listBoxControlAnalogyJson = new DevExpress.XtraEditors.ListBoxControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.sBtnMoveUpJson = new DevExpress.XtraEditors.SimpleButton();
+            this.sBtnMoveDownJson = new DevExpress.XtraEditors.SimpleButton();
+            this.listBoxControlJson = new DevExpress.XtraEditors.ListBoxControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditJsonFile = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.sBtnLoadXMLFile = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPageXML = new DevExpress.XtraTab.XtraTabPage();
+            this.textEditNLogExtension = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageNLog.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumns)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltNlogParser)).BeginInit();
+            this.spltNlogParser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumnsNlog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstBoxItems)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSeperator.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLayout.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstBoxItemsNlog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).BeginInit();
+            this.xtraTabPageSerilog.SuspendLayout();
+            this.xtraTabPageLog4Net.SuspendLayout();
+            this.xtraTabPageJson.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltJSonParser)).BeginInit();
+            this.spltJSonParser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlAnalogyJson)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
+            this.splitContainerControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlJson)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).BeginInit();
+            this.xtraTabPageXML.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -75,45 +107,50 @@
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageNLog,
             this.xtraTabPageSerilog,
-            this.xtraTabPageLog4Net});
+            this.xtraTabPageLog4Net,
+            this.xtraTabPageJson,
+            this.xtraTabPageXML});
             // 
             // xtraTabPageNLog
             // 
-            this.xtraTabPageNLog.Controls.Add(this.splitContainerControl1);
+            this.xtraTabPageNLog.Controls.Add(this.labelControl5);
+            this.xtraTabPageNLog.Controls.Add(this.textEditNLogExtension);
+            this.xtraTabPageNLog.Controls.Add(this.labelControl4);
+            this.xtraTabPageNLog.Controls.Add(this.spltNlogParser);
             this.xtraTabPageNLog.Controls.Add(this.sBtnSaveNlogMapping);
-            this.xtraTabPageNLog.Controls.Add(this.txtSeperator);
+            this.xtraTabPageNLog.Controls.Add(this.txtNLogSeperator);
             this.xtraTabPageNLog.Controls.Add(this.labelControl8);
-            this.xtraTabPageNLog.Controls.Add(this.txtLayout);
+            this.xtraTabPageNLog.Controls.Add(this.txtNLogLayout);
             this.xtraTabPageNLog.Controls.Add(this.labelControl7);
             this.xtraTabPageNLog.Controls.Add(this.sbtnCheckLayout);
             this.xtraTabPageNLog.ImageOptions.Image = global::Analogy.Properties.Resources.nlog;
             this.xtraTabPageNLog.Name = "xtraTabPageNLog";
-            this.xtraTabPageNLog.Size = new System.Drawing.Size(805, 562);
+            this.xtraTabPageNLog.Size = new System.Drawing.Size(799, 562);
             this.xtraTabPageNLog.Text = "NLog Parser";
             // 
-            // splitContainerControl1
+            // spltNlogParser
             // 
-            this.splitContainerControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.spltNlogParser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.splitContainerControl1.Location = new System.Drawing.Point(13, 86);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.lstBAnalogyColumns);
-            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl9);
-            this.splitContainerControl1.Panel1.Controls.Add(this.splitContainerControl2);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.lstBoxItems);
-            this.splitContainerControl1.Panel2.Controls.Add(this.labelControl10);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(777, 429);
-            this.splitContainerControl1.SplitterPosition = 175;
-            this.splitContainerControl1.TabIndex = 9;
+            this.spltNlogParser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.spltNlogParser.Location = new System.Drawing.Point(13, 146);
+            this.spltNlogParser.Name = "spltNlogParser";
+            this.spltNlogParser.Panel1.Controls.Add(this.lstBAnalogyColumnsNlog);
+            this.spltNlogParser.Panel1.Controls.Add(this.labelControl9);
+            this.spltNlogParser.Panel1.Controls.Add(this.splitContainerControl2);
+            this.spltNlogParser.Panel1.Text = "Panel1";
+            this.spltNlogParser.Panel2.Controls.Add(this.lstBoxItemsNlog);
+            this.spltNlogParser.Panel2.Controls.Add(this.labelControl10);
+            this.spltNlogParser.Panel2.Text = "Panel2";
+            this.spltNlogParser.Size = new System.Drawing.Size(771, 369);
+            this.spltNlogParser.SplitterPosition = 175;
+            this.spltNlogParser.TabIndex = 9;
             // 
-            // lstBAnalogyColumns
+            // lstBAnalogyColumnsNlog
             // 
-            this.lstBAnalogyColumns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstBAnalogyColumns.Items.AddRange(new object[] {
+            this.lstBAnalogyColumnsNlog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstBAnalogyColumnsNlog.Items.AddRange(new object[] {
             "Date",
             "Text",
             "Source",
@@ -128,11 +165,11 @@
             "Class",
             "Category",
             "ID"});
-            this.lstBAnalogyColumns.Location = new System.Drawing.Point(44, 16);
-            this.lstBAnalogyColumns.Name = "lstBAnalogyColumns";
-            this.lstBAnalogyColumns.Size = new System.Drawing.Size(131, 409);
-            this.lstBAnalogyColumns.TabIndex = 0;
-            this.lstBAnalogyColumns.SelectedIndexChanged += new System.EventHandler(this.lstBAnalogyColumns_SelectedIndexChanged);
+            this.lstBAnalogyColumnsNlog.Location = new System.Drawing.Point(44, 16);
+            this.lstBAnalogyColumnsNlog.Name = "lstBAnalogyColumnsNlog";
+            this.lstBAnalogyColumnsNlog.Size = new System.Drawing.Size(131, 349);
+            this.lstBAnalogyColumnsNlog.TabIndex = 0;
+            this.lstBAnalogyColumnsNlog.SelectedIndexChanged += new System.EventHandler(this.lstBAnalogyColumns_SelectedIndexChanged);
             // 
             // labelControl9
             // 
@@ -150,47 +187,47 @@
             this.splitContainerControl2.Horizontal = false;
             this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.sBtnMoveUp);
+            this.splitContainerControl2.Panel1.Controls.Add(this.sBtnMoveUpNlog);
             this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.sBtnMoveDown);
+            this.splitContainerControl2.Panel2.Controls.Add(this.sBtnMoveDownNlog);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(44, 425);
+            this.splitContainerControl2.Size = new System.Drawing.Size(44, 365);
             this.splitContainerControl2.SplitterPosition = 184;
             this.splitContainerControl2.TabIndex = 1;
             // 
-            // sBtnMoveUp
+            // sBtnMoveUpNlog
             // 
-            this.sBtnMoveUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sBtnMoveUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveUp.ImageOptions.Image")));
-            this.sBtnMoveUp.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.sBtnMoveUp.Location = new System.Drawing.Point(0, 0);
-            this.sBtnMoveUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnMoveUp.Name = "sBtnMoveUp";
-            this.sBtnMoveUp.Size = new System.Drawing.Size(44, 184);
-            this.sBtnMoveUp.TabIndex = 2;
-            this.sBtnMoveUp.Text = "Up";
-            this.sBtnMoveUp.Click += new System.EventHandler(this.sBtnMoveUp_Click);
+            this.sBtnMoveUpNlog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sBtnMoveUpNlog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveUpNlog.ImageOptions.Image")));
+            this.sBtnMoveUpNlog.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.sBtnMoveUpNlog.Location = new System.Drawing.Point(0, 0);
+            this.sBtnMoveUpNlog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnMoveUpNlog.Name = "sBtnMoveUpNlog";
+            this.sBtnMoveUpNlog.Size = new System.Drawing.Size(44, 184);
+            this.sBtnMoveUpNlog.TabIndex = 2;
+            this.sBtnMoveUpNlog.Text = "Up";
+            this.sBtnMoveUpNlog.Click += new System.EventHandler(this.sBtnMoveUp_Click);
             // 
-            // sBtnMoveDown
+            // sBtnMoveDownNlog
             // 
-            this.sBtnMoveDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sBtnMoveDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveDown.ImageOptions.Image")));
-            this.sBtnMoveDown.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.BottomLeft;
-            this.sBtnMoveDown.Location = new System.Drawing.Point(0, 0);
-            this.sBtnMoveDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnMoveDown.Name = "sBtnMoveDown";
-            this.sBtnMoveDown.Size = new System.Drawing.Size(44, 235);
-            this.sBtnMoveDown.TabIndex = 3;
-            this.sBtnMoveDown.Text = "Down";
-            this.sBtnMoveDown.Click += new System.EventHandler(this.sBtnMoveDown_Click);
+            this.sBtnMoveDownNlog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sBtnMoveDownNlog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveDownNlog.ImageOptions.Image")));
+            this.sBtnMoveDownNlog.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.BottomLeft;
+            this.sBtnMoveDownNlog.Location = new System.Drawing.Point(0, 0);
+            this.sBtnMoveDownNlog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnMoveDownNlog.Name = "sBtnMoveDownNlog";
+            this.sBtnMoveDownNlog.Size = new System.Drawing.Size(44, 175);
+            this.sBtnMoveDownNlog.TabIndex = 3;
+            this.sBtnMoveDownNlog.Text = "Down";
+            this.sBtnMoveDownNlog.Click += new System.EventHandler(this.sBtnMoveDown_Click);
             // 
-            // lstBoxItems
+            // lstBoxItemsNlog
             // 
-            this.lstBoxItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstBoxItems.Location = new System.Drawing.Point(0, 16);
-            this.lstBoxItems.Name = "lstBoxItems";
-            this.lstBoxItems.Size = new System.Drawing.Size(592, 409);
-            this.lstBoxItems.TabIndex = 2;
+            this.lstBoxItemsNlog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstBoxItemsNlog.Location = new System.Drawing.Point(0, 16);
+            this.lstBoxItemsNlog.Name = "lstBoxItemsNlog";
+            this.lstBoxItemsNlog.Size = new System.Drawing.Size(586, 349);
+            this.lstBoxItemsNlog.TabIndex = 2;
             // 
             // labelControl10
             // 
@@ -205,7 +242,7 @@
             // sBtnSaveNlogMapping
             // 
             this.sBtnSaveNlogMapping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(688, 520);
+            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(682, 520);
             this.sBtnSaveNlogMapping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnSaveNlogMapping.Name = "sBtnSaveNlogMapping";
             this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
@@ -213,15 +250,15 @@
             this.sBtnSaveNlogMapping.Text = "Save Mapping";
             this.sBtnSaveNlogMapping.Click += new System.EventHandler(this.sBtnSaveNlogMapping_Click);
             // 
-            // txtSeperator
+            // txtNLogSeperator
             // 
-            this.txtSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNLogSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSeperator.EditValue = "|";
-            this.txtSeperator.Location = new System.Drawing.Point(145, 39);
-            this.txtSeperator.Name = "txtSeperator";
-            this.txtSeperator.Size = new System.Drawing.Size(536, 22);
-            this.txtSeperator.TabIndex = 7;
+            this.txtNLogSeperator.EditValue = "|";
+            this.txtNLogSeperator.Location = new System.Drawing.Point(145, 39);
+            this.txtNLogSeperator.Name = "txtNLogSeperator";
+            this.txtNLogSeperator.Size = new System.Drawing.Size(530, 22);
+            this.txtNLogSeperator.TabIndex = 7;
             // 
             // labelControl8
             // 
@@ -232,14 +269,14 @@
             this.labelControl8.TabIndex = 6;
             this.labelControl8.Text = "Seperator character:";
             // 
-            // txtLayout
+            // txtNLogLayout
             // 
-            this.txtLayout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNLogLayout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLayout.Location = new System.Drawing.Point(145, 11);
-            this.txtLayout.Name = "txtLayout";
-            this.txtLayout.Size = new System.Drawing.Size(536, 22);
-            this.txtLayout.TabIndex = 5;
+            this.txtNLogLayout.Location = new System.Drawing.Point(145, 11);
+            this.txtNLogLayout.Name = "txtNLogLayout";
+            this.txtNLogLayout.Size = new System.Drawing.Size(530, 22);
+            this.txtNLogLayout.TabIndex = 5;
             // 
             // labelControl7
             // 
@@ -253,7 +290,7 @@
             // sbtnCheckLayout
             // 
             this.sbtnCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnCheckLayout.Location = new System.Drawing.Point(703, 14);
+            this.sbtnCheckLayout.Location = new System.Drawing.Point(697, 3);
             this.sbtnCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtnCheckLayout.Name = "sbtnCheckLayout";
             this.sbtnCheckLayout.Size = new System.Drawing.Size(96, 37);
@@ -263,16 +300,245 @@
             // 
             // xtraTabPageSerilog
             // 
+            this.xtraTabPageSerilog.Controls.Add(this.labelControl6);
             this.xtraTabPageSerilog.ImageOptions.Image = global::Analogy.Properties.Resources.serilog32x32;
             this.xtraTabPageSerilog.Name = "xtraTabPageSerilog";
-            this.xtraTabPageSerilog.Size = new System.Drawing.Size(805, 562);
+            this.xtraTabPageSerilog.Size = new System.Drawing.Size(799, 562);
             this.xtraTabPageSerilog.Text = "Serilog parser";
             // 
             // xtraTabPageLog4Net
             // 
+            this.xtraTabPageLog4Net.Controls.Add(this.labelControl11);
+            this.xtraTabPageLog4Net.ImageOptions.Image = global::Analogy.Properties.Resources.log4net32x32;
             this.xtraTabPageLog4Net.Name = "xtraTabPageLog4Net";
-            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(0, 0);
+            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(799, 562);
             this.xtraTabPageLog4Net.Text = "Log4Net Parser";
+            // 
+            // xtraTabPageJson
+            // 
+            this.xtraTabPageJson.Controls.Add(this.labelControl12);
+            this.xtraTabPageJson.Controls.Add(this.spltJSonParser);
+            this.xtraTabPageJson.Controls.Add(this.textEditJsonFile);
+            this.xtraTabPageJson.Controls.Add(this.labelControl1);
+            this.xtraTabPageJson.Controls.Add(this.sBtnLoadXMLFile);
+            this.xtraTabPageJson.ImageOptions.Image = global::Analogy.Properties.Resources.jsonfile32x32;
+            this.xtraTabPageJson.Name = "xtraTabPageJson";
+            this.xtraTabPageJson.Size = new System.Drawing.Size(799, 562);
+            this.xtraTabPageJson.Text = "Json Parser";
+            // 
+            // spltJSonParser
+            // 
+            this.spltJSonParser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spltJSonParser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.spltJSonParser.Location = new System.Drawing.Point(14, 69);
+            this.spltJSonParser.Name = "spltJSonParser";
+            this.spltJSonParser.Panel1.Controls.Add(this.listBoxControlAnalogyJson);
+            this.spltJSonParser.Panel1.Controls.Add(this.labelControl2);
+            this.spltJSonParser.Panel1.Controls.Add(this.splitContainerControl3);
+            this.spltJSonParser.Panel1.Text = "Panel1";
+            this.spltJSonParser.Panel2.Controls.Add(this.listBoxControlJson);
+            this.spltJSonParser.Panel2.Controls.Add(this.labelControl3);
+            this.spltJSonParser.Panel2.Text = "Panel2";
+            this.spltJSonParser.Size = new System.Drawing.Size(771, 429);
+            this.spltJSonParser.SplitterPosition = 175;
+            this.spltJSonParser.TabIndex = 10;
+            this.spltJSonParser.Visible = false;
+            // 
+            // listBoxControlAnalogyJson
+            // 
+            this.listBoxControlAnalogyJson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxControlAnalogyJson.Items.AddRange(new object[] {
+            "Date",
+            "Text",
+            "Source",
+            "Module",
+            "MethodName",
+            "FileName",
+            "User",
+            "LineNumber",
+            "ProcessID",
+            "Thread",
+            "Level",
+            "Class",
+            "Category",
+            "ID"});
+            this.listBoxControlAnalogyJson.Location = new System.Drawing.Point(44, 16);
+            this.listBoxControlAnalogyJson.Name = "listBoxControlAnalogyJson";
+            this.listBoxControlAnalogyJson.Size = new System.Drawing.Size(131, 409);
+            this.listBoxControlAnalogyJson.TabIndex = 0;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl2.Location = new System.Drawing.Point(44, 0);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(122, 16);
+            this.labelControl2.TabIndex = 7;
+            this.labelControl2.Text = "Log message Column";
+            // 
+            // splitContainerControl3
+            // 
+            this.splitContainerControl3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.splitContainerControl3.Horizontal = false;
+            this.splitContainerControl3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl3.Name = "splitContainerControl3";
+            this.splitContainerControl3.Panel1.Controls.Add(this.sBtnMoveUpJson);
+            this.splitContainerControl3.Panel1.Text = "Panel1";
+            this.splitContainerControl3.Panel2.Controls.Add(this.sBtnMoveDownJson);
+            this.splitContainerControl3.Panel2.Text = "Panel2";
+            this.splitContainerControl3.Size = new System.Drawing.Size(44, 425);
+            this.splitContainerControl3.SplitterPosition = 184;
+            this.splitContainerControl3.TabIndex = 1;
+            // 
+            // sBtnMoveUpJson
+            // 
+            this.sBtnMoveUpJson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sBtnMoveUpJson.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveUpJson.ImageOptions.Image")));
+            this.sBtnMoveUpJson.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.sBtnMoveUpJson.Location = new System.Drawing.Point(0, 0);
+            this.sBtnMoveUpJson.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnMoveUpJson.Name = "sBtnMoveUpJson";
+            this.sBtnMoveUpJson.Size = new System.Drawing.Size(44, 184);
+            this.sBtnMoveUpJson.TabIndex = 2;
+            this.sBtnMoveUpJson.Text = "Up";
+            // 
+            // sBtnMoveDownJson
+            // 
+            this.sBtnMoveDownJson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sBtnMoveDownJson.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveDownJson.ImageOptions.Image")));
+            this.sBtnMoveDownJson.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.BottomLeft;
+            this.sBtnMoveDownJson.Location = new System.Drawing.Point(0, 0);
+            this.sBtnMoveDownJson.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnMoveDownJson.Name = "sBtnMoveDownJson";
+            this.sBtnMoveDownJson.Size = new System.Drawing.Size(44, 235);
+            this.sBtnMoveDownJson.TabIndex = 3;
+            this.sBtnMoveDownJson.Text = "Down";
+            // 
+            // listBoxControlJson
+            // 
+            this.listBoxControlJson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxControlJson.Location = new System.Drawing.Point(0, 16);
+            this.listBoxControlJson.Name = "listBoxControlJson";
+            this.listBoxControlJson.Size = new System.Drawing.Size(586, 409);
+            this.listBoxControlJson.TabIndex = 2;
+            this.listBoxControlJson.Visible = false;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl3.Location = new System.Drawing.Point(0, 0);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(94, 16);
+            this.labelControl3.TabIndex = 8;
+            this.labelControl3.Text = "Parsed columns.";
+            // 
+            // textEditJsonFile
+            // 
+            this.textEditJsonFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditJsonFile.Location = new System.Drawing.Point(85, 11);
+            this.textEditJsonFile.Name = "textEditJsonFile";
+            this.textEditJsonFile.Size = new System.Drawing.Size(630, 22);
+            this.textEditJsonFile.TabIndex = 8;
+            this.textEditJsonFile.Visible = false;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(4, 14);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(54, 16);
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.Text = "Json File:";
+            this.labelControl1.Visible = false;
+            // 
+            // sBtnLoadXMLFile
+            // 
+            this.sBtnLoadXMLFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnLoadXMLFile.Location = new System.Drawing.Point(721, 10);
+            this.sBtnLoadXMLFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnLoadXMLFile.Name = "sBtnLoadXMLFile";
+            this.sBtnLoadXMLFile.Size = new System.Drawing.Size(73, 23);
+            this.sBtnLoadXMLFile.TabIndex = 6;
+            this.sBtnLoadXMLFile.Text = "...";
+            this.sBtnLoadXMLFile.Visible = false;
+            this.sBtnLoadXMLFile.Click += new System.EventHandler(this.sBtnLoadXMLFile_Click);
+            // 
+            // xtraTabPageXML
+            // 
+            this.xtraTabPageXML.Controls.Add(this.labelControl13);
+            this.xtraTabPageXML.ImageOptions.Image = global::Analogy.Properties.Resources.xml32x32;
+            this.xtraTabPageXML.Name = "xtraTabPageXML";
+            this.xtraTabPageXML.Size = new System.Drawing.Size(799, 562);
+            this.xtraTabPageXML.Text = "XML Parser";
+            // 
+            // textEditNLogExtension
+            // 
+            this.textEditNLogExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditNLogExtension.EditValue = "*.nlog";
+            this.textEditNLogExtension.Location = new System.Drawing.Point(145, 68);
+            this.textEditNLogExtension.Name = "textEditNLogExtension";
+            this.textEditNLogExtension.Size = new System.Drawing.Size(530, 22);
+            this.textEditNLogExtension.TabIndex = 11;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(3, 71);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(110, 16);
+            this.labelControl4.TabIndex = 10;
+            this.labelControl4.Text = "NLog File Extension";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(145, 95);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(217, 16);
+            this.labelControl5.TabIndex = 12;
+            this.labelControl5.Text = "Use ; as seperator (e.g: *.nlog;*.log)";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(10, 10);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(78, 16);
+            this.labelControl6.TabIndex = 13;
+            this.labelControl6.Text = "Coming soon.";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(10, 10);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(78, 16);
+            this.labelControl11.TabIndex = 14;
+            this.labelControl11.Text = "Coming soon.";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(10, 10);
+            this.labelControl12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(78, 16);
+            this.labelControl12.TabIndex = 14;
+            this.labelControl12.Text = "Coming soon.";
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(10, 10);
+            this.labelControl13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(78, 16);
+            this.labelControl13.TabIndex = 14;
+            this.labelControl13.Text = "Coming soon.";
             // 
             // UserSettingsDataProvidersForm
             // 
@@ -284,20 +550,36 @@
             this.Name = "UserSettingsDataProvidersForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "User Settings";
+            this.Text = "Built-In Data Providers Settings";
             this.Load += new System.EventHandler(this.UserSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
             this.xtraTabPageNLog.ResumeLayout(false);
             this.xtraTabPageNLog.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumns)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltNlogParser)).EndInit();
+            this.spltNlogParser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumnsNlog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstBoxItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSeperator.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLayout.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstBoxItemsNlog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).EndInit();
+            this.xtraTabPageSerilog.ResumeLayout(false);
+            this.xtraTabPageSerilog.PerformLayout();
+            this.xtraTabPageLog4Net.ResumeLayout(false);
+            this.xtraTabPageLog4Net.PerformLayout();
+            this.xtraTabPageJson.ResumeLayout(false);
+            this.xtraTabPageJson.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltJSonParser)).EndInit();
+            this.spltJSonParser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlAnalogyJson)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
+            this.splitContainerControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlJson)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).EndInit();
+            this.xtraTabPageXML.ResumeLayout(false);
+            this.xtraTabPageXML.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -306,21 +588,41 @@
 
         private DevExpress.XtraTab.XtraTabControl tabControlMain;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageNLog;
-        private DevExpress.XtraEditors.TextEdit txtSeperator;
+        private DevExpress.XtraEditors.TextEdit txtNLogSeperator;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.TextEdit txtLayout;
+        private DevExpress.XtraEditors.TextEdit txtNLogLayout;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton sbtnCheckLayout;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraEditors.SplitContainerControl spltNlogParser;
         private DevExpress.XtraEditors.SimpleButton sBtnSaveNlogMapping;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.ListBoxControl lstBAnalogyColumns;
+        private DevExpress.XtraEditors.ListBoxControl lstBAnalogyColumnsNlog;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        private DevExpress.XtraEditors.SimpleButton sBtnMoveUp;
-        private DevExpress.XtraEditors.SimpleButton sBtnMoveDown;
-        private DevExpress.XtraEditors.ListBoxControl lstBoxItems;
+        private DevExpress.XtraEditors.SimpleButton sBtnMoveUpNlog;
+        private DevExpress.XtraEditors.SimpleButton sBtnMoveDownNlog;
+        private DevExpress.XtraEditors.ListBoxControl lstBoxItemsNlog;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageSerilog;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageLog4Net;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageJson;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageXML;
+        private DevExpress.XtraEditors.TextEdit textEditJsonFile;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton sBtnLoadXMLFile;
+        private DevExpress.XtraEditors.SplitContainerControl spltJSonParser;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControlAnalogyJson;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl3;
+        private DevExpress.XtraEditors.SimpleButton sBtnMoveUpJson;
+        private DevExpress.XtraEditors.SimpleButton sBtnMoveDownJson;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControlJson;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit textEditNLogExtension;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
     }
 }

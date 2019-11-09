@@ -492,9 +492,29 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jsonfile32x32 {
+            get {
+                object obj = ResourceManager.GetObject("jsonfile32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LocalColorScheme_32x32 {
             get {
                 object obj = ResourceManager.GetObject("LocalColorScheme_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log4net32x32 {
+            get {
+                object obj = ResourceManager.GetObject("log4net32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -965,6 +985,16 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap working {
             get {
                 object obj = ResourceManager.GetObject("working", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xml32x32 {
+            get {
+                object obj = ResourceManager.GetObject("xml32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

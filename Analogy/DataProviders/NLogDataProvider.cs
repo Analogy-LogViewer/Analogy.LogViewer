@@ -45,10 +45,7 @@ namespace Analogy.DataProviders
             throw new NotSupportedException("Saving is not supported for nlog");
         }
 
-        public bool CanOpenFile(string fileName) =>
-            fileName.EndsWith(".nlog", StringComparison.InvariantCultureIgnoreCase) ||
-            fileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase);
-
+        public bool CanOpenFile(string fileName) => LogParserSettings.CanOpenFile(fileName);
 
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 

@@ -62,7 +62,7 @@ namespace Analogy.DataProviders
     {
         public Action Action => () =>
         {
-            UserSettingsForm user = new UserSettingsForm("xtraTabPageNLog");
+            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm("xtraTabPageNLog");
             user.ShowDialog(Application.OpenForms[0]);
         };
         public Guid ID { get; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
