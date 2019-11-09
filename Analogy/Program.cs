@@ -8,7 +8,7 @@ namespace Analogy
 {
     public class Program
     {
-        private static UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private static UserSettingsManager Settings => UserSettingsManager.UserSettings;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

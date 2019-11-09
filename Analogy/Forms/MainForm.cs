@@ -16,6 +16,8 @@ using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Properties;
 using Analogy.Tools;
+using DevExpress.XtraEditors;
+using Newtonsoft.Json;
 
 namespace Analogy
 {
@@ -35,8 +37,9 @@ namespace Analogy
         private int filePooling;
         private bool DebugOn { get; set; }
         private XtraTabPage currentContextPage;
-        private UserSettingsManager settings;
+        private UserSettingsManager settings => UserSettingsManager.UserSettings;
         private bool Initialized { get; set; }
+
         public MainForm()
         {
             InitializeComponent();
@@ -52,7 +55,6 @@ namespace Analogy
         {
             if (DesignMode) return;
 
-            settings = UserSettingsManager.UserSettings;
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             bbtnCloseCurrentTabPage.ItemClick += (object s, ItemClickEventArgs ea) => { CloseCurrentTabPage(); };
             bbtnCloseAllTabPage.ItemClick += (object s, ItemClickEventArgs ea) =>
@@ -93,7 +95,7 @@ namespace Analogy
             await AnalogyFactoriesManager.Instance.AddExternalDataSources();
             CreateEventLogsGroup();
             CreateDataSources();
-        
+
             //set Default page:
             Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitialSelectedDataProvider);
             if (Mapping.ContainsKey(defaultPage))
@@ -350,7 +352,8 @@ namespace Analogy
             bsiWindowsEventLogs.AddItem(btnFolder);
         }
 
-        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames, IAnalogyOfflineDataProvider dataProvider,
+        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
+            IAnalogyOfflineDataProvider dataProvider,
             string title = null)
         {
             offline++;
@@ -796,7 +799,8 @@ namespace Analogy
             ribbonPage.Groups.Add(groupInfoSource);
         }
 
-        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy, string title,
+        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
+            string title,
             RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
 
@@ -834,6 +838,7 @@ namespace Analogy
                 offline++;
                 UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                 XtraTabPage page = new XtraTabPage();
+
                 void OnXtcLogsOnControlRemoved(object sender, ControlEventArgs arg)
                 {
                     if (arg.Control == page)
@@ -862,6 +867,7 @@ namespace Analogy
                 xtcLogs.SelectedTabPage = page;
                 xtcLogs.ControlRemoved += OnXtcLogsOnControlRemoved;
             }
+
             //add local folder button:
             if (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
                 Directory.Exists(offlineAnalogy.InitialFolderFullPath))
@@ -1194,6 +1200,53 @@ namespace Analogy
         {
             UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
             user.ShowDialog(this);
+        }
+
+        private void bBtnItemExportSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Json Settings|*.json";
+                saveFileDialog.Title = "Export settings";
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    try
+                    {
+                        string data = JsonConvert.SerializeObject(settings);
+                        File.WriteAllText(saveFileDialog.FileName, data);
+                        XtraMessageBox.Show("settings saved", "Analogy",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exception)
+                    {
+                        XtraMessageBox.Show("Error exporting settings: " + exception.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+        }
+
+        private void bBtnItemImportSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
+            {
+                openFileDialog1.Filter = "Json Settings|*.json";
+                openFileDialog1.Title = @"Import Settings";
+                openFileDialog1.Multiselect = false;
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if (XtraMessageBox.Show("Are you sure you want to override existing settings?", "Analogy",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string data = File.ReadAllText(openFileDialog1.FileName);
+                        UserSettingsManager newSettings = JsonConvert.DeserializeObject<UserSettingsManager>(data);
+
+                        UserSettingsManager.UserSettings = newSettings;
+                    }
+                }
+
+            }
         }
     }
 }

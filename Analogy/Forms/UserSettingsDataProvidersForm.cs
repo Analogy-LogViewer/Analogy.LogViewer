@@ -27,7 +27,7 @@ namespace Analogy
             public override string ToString() => $"{Name} ({ID})";
         }
 
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private readonly int _initialSelection = -1;
 
         public UserSettingsDataProvidersForm()
@@ -48,7 +48,7 @@ namespace Analogy
         }
         private void LoadSettings()
         {
-            
+
             if (Settings.NLogSettings.IsConfigured)
             {
                 txtNLogSeperator.Text = Settings.NLogSettings.Splitter;
@@ -59,17 +59,17 @@ namespace Analogy
             }
         }
 
-        
+
         private async void UserSettingsForm_Load(object sender, EventArgs e)
         {
             LoadSettings();
             if (_initialSelection >= 0)
                 tabControlMain.SelectedTabPageIndex = _initialSelection;
-     
-            
+
+
         }
 
-       
+
         private void SbtnCheckLayout_Click(object sender, EventArgs e)
         {
             try
@@ -109,7 +109,7 @@ namespace Analogy
 
         private void SBtnSaveNlogMapping_Click(object sender, EventArgs e)
         {
-            Dictionary<int, AnalogyLogMessagePropertyName> maps=new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
+            Dictionary<int, AnalogyLogMessagePropertyName> maps = new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
             for (int i = 0; i < lstBAnalogyColumnsNlog.ItemCount; i++)
             {
                 maps.Add(i,
@@ -121,7 +121,7 @@ namespace Analogy
             Settings.NLogSettings.Maps = maps;
             Settings.NLogSettings.Layout = txtNLogLayout.Text;
             Settings.NLogSettings.Splitter = txtNLogSeperator.Text;
-            Settings.NLogSettings.SupportedFilesExtensions = new List<string> {textEditNLogExtension.Text};
+            Settings.NLogSettings.SupportedFilesExtensions = new List<string> { textEditNLogExtension.Text };
         }
 
         private void LstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,8 +147,8 @@ namespace Analogy
 
         private void ParseJsonFile(string fileName)
         {
-           // string json = File.ReadAllText(fileName);
-           // var items = JsonConvert.DeserializeObject(json);
+            // string json = File.ReadAllText(fileName);
+            // var items = JsonConvert.DeserializeObject(json);
         }
     }
 }

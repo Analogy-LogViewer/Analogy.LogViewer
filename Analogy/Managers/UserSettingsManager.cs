@@ -13,13 +13,13 @@ namespace Analogy
 {
     public class UserSettingsManager
     {
-        private readonly string splitter = "*#*#*#";
+        private static readonly string splitter = "*#*#*#";
 
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
 
         public string ApplicationSkinName { get; set; }
-        public static UserSettingsManager UserSettings { get; } = _instance.Value;
+        public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
         public bool SaveExcludeTexts { get; set; }
         public string IncludeText { get; set; }
         public string ExcludedText { get; set; }

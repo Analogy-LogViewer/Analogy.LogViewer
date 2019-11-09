@@ -13,7 +13,7 @@ namespace Analogy
 
     public partial class OfflineUCLogs : UserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }

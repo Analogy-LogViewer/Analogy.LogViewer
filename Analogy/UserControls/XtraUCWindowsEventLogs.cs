@@ -7,7 +7,7 @@ namespace Analogy
 {
     public partial class XtraUCWindowsEventLogs : DevExpress.XtraEditors.XtraUserControl
     {
-        private readonly UserSettingsManager _settings = UserSettingsManager.UserSettings;
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         public XtraUCWindowsEventLogs()
         {
             InitializeComponent();
@@ -15,8 +15,8 @@ namespace Analogy
 
         private void XtraUCWindowsEventLogs_Load(object sender, EventArgs e)
         {
-            lstSelected.Items.AddRange(_settings.EventLogs.ToArray());
-            var all = System.Diagnostics.Eventing.Reader.EventLogSession.GlobalSession.GetLogNames().Where(EventLog.Exists).ToList().Except(_settings.EventLogs).ToArray();
+            lstSelected.Items.AddRange(Settings.EventLogs.ToArray());
+            var all = System.Diagnostics.Eventing.Reader.EventLogSession.GlobalSession.GetLogNames().Where(EventLog.Exists).ToList().Except(Settings.EventLogs).ToArray();
             lstAvailable.Items.AddRange(all);
 
         }
@@ -47,7 +47,7 @@ namespace Analogy
 
         private void UpdateUserSettingList()
         {
-            _settings.EventLogs = lstSelected.Items.OfType<string>().ToList();
+            Settings.EventLogs = lstSelected.Items.OfType<string>().ToList();
         }
     }
 }

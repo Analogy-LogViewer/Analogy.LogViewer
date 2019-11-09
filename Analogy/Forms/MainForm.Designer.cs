@@ -38,6 +38,8 @@
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.bbtnItemSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemOTA = new DevExpress.XtraBars.BarButtonItem();
@@ -103,8 +105,6 @@
             this.xtcLogs = new DevExpress.XtraTab.XtraTabControl();
             this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -225,6 +225,24 @@
             this.bbtnItemSettings.ImageOptions.Image = global::Analogy.Properties.Resources.PageSetup_32x32;
             this.bbtnItemSettings.Name = "bbtnItemSettings";
             this.bbtnItemSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemSettings_ItemClick);
+            // 
+            // bBtnItemExportSettings
+            // 
+            this.bBtnItemExportSettings.Caption = "Export Settings";
+            this.bBtnItemExportSettings.Id = 70;
+            this.bBtnItemExportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemExportSettings.ImageOptions.Image")));
+            this.bBtnItemExportSettings.Name = "bBtnItemExportSettings";
+            this.bBtnItemExportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bBtnItemExportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemExportSettings_ItemClick);
+            // 
+            // bBtnItemImportSettings
+            // 
+            this.bBtnItemImportSettings.Caption = "Import Settings";
+            this.bBtnItemImportSettings.Id = 71;
+            this.bBtnItemImportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemImportSettings.ImageOptions.Image")));
+            this.bBtnItemImportSettings.Name = "bBtnItemImportSettings";
+            this.bBtnItemImportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bBtnItemImportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemImportSettings_ItemClick);
             // 
             // bbtnItemExit
             // 
@@ -795,20 +813,6 @@
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
-            // 
-            // bBtnItemExportSettings
-            // 
-            this.bBtnItemExportSettings.Caption = "Export Settings";
-            this.bBtnItemExportSettings.Id = 70;
-            this.bBtnItemExportSettings.Name = "bBtnItemExportSettings";
-            this.bBtnItemExportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            // 
-            // bBtnItemImportSettings
-            // 
-            this.bBtnItemImportSettings.Caption = "Import Settings";
-            this.bBtnItemImportSettings.Id = 71;
-            this.bBtnItemImportSettings.Name = "bBtnItemImportSettings";
-            this.bBtnItemImportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // MainForm
             // 

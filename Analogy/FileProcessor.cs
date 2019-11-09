@@ -11,7 +11,7 @@ namespace Analogy
 {
     public class FileProcessor
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
         private ILogMessageCreatedHandler DataWindow { get; set; }
