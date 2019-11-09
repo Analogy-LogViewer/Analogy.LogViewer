@@ -177,7 +177,7 @@
             this.spltNlogParser.Panel2.Controls.Add(this.labelControl10);
             this.spltNlogParser.Panel2.Text = "Panel2";
             this.spltNlogParser.Size = new System.Drawing.Size(744, 369);
-            this.spltNlogParser.SplitterPosition = 175;
+            this.spltNlogParser.SplitterPosition = 191;
             this.spltNlogParser.TabIndex = 9;
             // 
             // lstBAnalogyColumnsNlog
@@ -197,10 +197,17 @@
             "Level",
             "Class",
             "Category",
-            "ID"});
+            "ID",
+            "__ignore__",
+            "__ignore__",
+            "__ignore__",
+            "__ignore__",
+            "__ignore__",
+            "__ignore__",
+            "__ignore__"});
             this.lstBAnalogyColumnsNlog.Location = new System.Drawing.Point(44, 16);
             this.lstBAnalogyColumnsNlog.Name = "lstBAnalogyColumnsNlog";
-            this.lstBAnalogyColumnsNlog.Size = new System.Drawing.Size(131, 349);
+            this.lstBAnalogyColumnsNlog.Size = new System.Drawing.Size(147, 349);
             this.lstBAnalogyColumnsNlog.TabIndex = 0;
             this.lstBAnalogyColumnsNlog.SelectedIndexChanged += new System.EventHandler(this.LstBAnalogyColumns_SelectedIndexChanged);
             // 
@@ -210,9 +217,9 @@
             this.labelControl9.Location = new System.Drawing.Point(44, 0);
             this.labelControl9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(122, 16);
+            this.labelControl9.Size = new System.Drawing.Size(128, 16);
             this.labelControl9.TabIndex = 7;
-            this.labelControl9.Text = "Log message Column";
+            this.labelControl9.Text = "Log message Columns";
             // 
             // splitContainerControl2
             // 
@@ -259,7 +266,7 @@
             this.lstBoxItemsNlog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstBoxItemsNlog.Location = new System.Drawing.Point(0, 16);
             this.lstBoxItemsNlog.Name = "lstBoxItemsNlog";
-            this.lstBoxItemsNlog.Size = new System.Drawing.Size(559, 349);
+            this.lstBoxItemsNlog.Size = new System.Drawing.Size(543, 349);
             this.lstBoxItemsNlog.TabIndex = 2;
             // 
             // labelControl10

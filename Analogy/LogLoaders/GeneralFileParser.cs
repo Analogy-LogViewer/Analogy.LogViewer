@@ -10,8 +10,8 @@ namespace Analogy.LogLoaders
 {
     public class GeneralFileParser
     {
-        private LogParserSettings _logFileSettings;
-        private string[] splitters;
+        private readonly LogParserSettings _logFileSettings;
+        private readonly string[] splitters;
 
         public GeneralFileParser(LogParserSettings logFileSettings)
         {
@@ -22,9 +22,16 @@ namespace Analogy.LogLoaders
         public AnalogyLogMessage Parse(string line)
         {
             var items = line.Split(splitters, StringSplitOptions.RemoveEmptyEntries).ToList();
-            var sameSize = items.Take(_logFileSettings.Maps.Values.Count);
-            var data = _logFileSettings.Maps.Values.Zip(sameSize,(name,value)=> (name,value));
-            return AnalogyLogMessage.Parse(data);
+            List< (AnalogyLogMessagePropertyName , string ) > map = new List<(AnalogyLogMessagePropertyName, string)>();
+            for (int i = 0; i < items.Count; i++)
+            {
+                var item = items[i];
+                if (_logFileSettings.Maps.ContainsKey(i))
+                {
+                    map.Add((_logFileSettings.Maps[i],items[i]));
+                }
+            }
+            return AnalogyLogMessage.Parse(map);
         }
     }
 }
