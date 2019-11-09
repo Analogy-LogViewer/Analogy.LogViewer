@@ -37,15 +37,18 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPageAbout = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPageCredit = new DevExpress.XtraTab.XtraTabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.xtraTabPageUsers = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
-            this.xtraTabPage2.SuspendLayout();
+            this.xtraTabPageAbout.SuspendLayout();
+            this.xtraTabPageCredit.SuspendLayout();
+            this.xtraTabPageUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -147,7 +150,7 @@
             this.textBoxDescription.Size = new System.Drawing.Size(503, 196);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail:" + " Liorbanai@gmail.com";
+            this.textBoxDescription.Text = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail: Liorbanai@gmail.com";
             // 
             // okButton
             // 
@@ -166,28 +169,29 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(10, 11);
             this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPageAbout;
             this.xtraTabControl1.Size = new System.Drawing.Size(1049, 443);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPageAbout,
+            this.xtraTabPageCredit,
+            this.xtraTabPageUsers});
             // 
-            // xtraTabPage1
+            // xtraTabPageAbout
             // 
-            this.xtraTabPage1.Controls.Add(this.tableLayoutPanel);
-            this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1042, 409);
-            this.xtraTabPage1.Text = "About";
+            this.xtraTabPageAbout.Controls.Add(this.tableLayoutPanel);
+            this.xtraTabPageAbout.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.xtraTabPageAbout.Name = "xtraTabPageAbout";
+            this.xtraTabPageAbout.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPageAbout.Text = "About";
             // 
-            // xtraTabPage2
+            // xtraTabPageCredit
             // 
-            this.xtraTabPage2.Controls.Add(this.richTextBox1);
-            this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1041, 409);
-            this.xtraTabPage2.Text = "Contributions";
+            this.xtraTabPageCredit.Controls.Add(this.richTextBox1);
+            this.xtraTabPageCredit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.xtraTabPageCredit.Name = "xtraTabPageCredit";
+            this.xtraTabPageCredit.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPageCredit.Text = "Contributors and Credits";
             // 
             // richTextBox1
             // 
@@ -195,9 +199,25 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1041, 409);
+            this.richTextBox1.Size = new System.Drawing.Size(1042, 409);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "Log Icon:  http://www.pelfusion.com";
+            // 
+            // xtraTabPageUsers
+            // 
+            this.xtraTabPageUsers.Controls.Add(this.labelControl1);
+            this.xtraTabPageUsers.Name = "xtraTabPageUsers";
+            this.xtraTabPageUsers.PageVisible = false;
+            this.xtraTabPageUsers.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPageUsers.Text = "Users";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(6, 5);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(345, 16);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Analogy Log Viewer is used by The following Origanizations:";
             // 
             // AnalogyAboutBox
             // 
@@ -221,8 +241,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
-            this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPageAbout.ResumeLayout(false);
+            this.xtraTabPageCredit.ResumeLayout(false);
+            this.xtraTabPageUsers.ResumeLayout(false);
+            this.xtraTabPageUsers.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,8 +260,10 @@
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button okButton;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageAbout;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageCredit;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageUsers;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

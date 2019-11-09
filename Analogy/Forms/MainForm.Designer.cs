@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -102,6 +102,7 @@
             this.xtcLogs = new DevExpress.XtraTab.XtraTabControl();
             this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.bBtnDataProviderSettings = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -184,10 +185,11 @@
             this.bsiIdleMessage,
             this.bbtnUserSettingsResourceUsage,
             this.bbtnSettingsStartupDataSources,
-            this.bbiFileCaching});
+            this.bbiFileCaching,
+            this.bBtnDataProviderSettings});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 69;
+            this.ribbonControlMain.MaxItemId = 70;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -274,9 +276,9 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group2";
+            galleryItemGroup3.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup3});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -286,9 +288,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Group3";
+            galleryItemGroup4.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup4});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -328,7 +330,6 @@
             this.btnItemConvert.Name = "btnItemConvert";
             this.btnItemConvert.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -435,7 +436,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // bBtnBookmarked
             // 
@@ -735,6 +736,7 @@
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnMRUSettings);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bbtnUserSettingsResourceUsage);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bbtnSettingsStartupDataSources);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnDataProviderSettings);
             this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
             this.ribbonPageGroupSettings.Text = "Settings";
             // 
@@ -777,6 +779,16 @@
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
+            // 
+            // bBtnDataProviderSettings
+            // 
+            this.bBtnDataProviderSettings.Caption = "Data Providers Settings";
+            this.bBtnDataProviderSettings.Id = 69;
+            this.bBtnDataProviderSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Database_on;
+            this.bBtnDataProviderSettings.Name = "bBtnDataProviderSettings";
+            this.bBtnDataProviderSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnDataProviderSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataProviderSettings_ItemClick);
             // 
             // MainForm
             // 
@@ -880,5 +892,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnUserSettingsResourceUsage;
         private DevExpress.XtraBars.BarButtonItem bbtnSettingsStartupDataSources;
         private DevExpress.XtraBars.BarButtonItem bbiFileCaching;
+        private DevExpress.XtraBars.BarButtonItem bBtnDataProviderSettings;
     }
 }

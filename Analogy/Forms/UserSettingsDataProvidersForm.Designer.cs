@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsDataProvidersForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageNLog = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditNLogExtension = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.spltNlogParser = new DevExpress.XtraEditors.SplitContainerControl();
             this.lstBAnalogyColumnsNlog = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -46,8 +49,11 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnCheckLayout = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageSerilog = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageLog4Net = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageJson = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.spltJSonParser = new DevExpress.XtraEditors.SplitContainerControl();
             this.listBoxControlAnalogyJson = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -60,16 +66,14 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.sBtnLoadXMLFile = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageXML = new DevExpress.XtraTab.XtraTabPage();
-            this.textEditNLogExtension = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageWindowsEventLogs = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
+            this.lblWindowsEventLogs = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageNLog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltNlogParser)).BeginInit();
             this.spltNlogParser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumnsNlog)).BeginInit();
@@ -89,7 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlJson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).BeginInit();
             this.xtraTabPageXML.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).BeginInit();
+            this.xtraTabPageWindowsEventLogs.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -109,7 +113,8 @@
             this.xtraTabPageSerilog,
             this.xtraTabPageLog4Net,
             this.xtraTabPageJson,
-            this.xtraTabPageXML});
+            this.xtraTabPageXML,
+            this.xtraTabPageWindowsEventLogs});
             // 
             // xtraTabPageNLog
             // 
@@ -125,8 +130,36 @@
             this.xtraTabPageNLog.Controls.Add(this.sbtnCheckLayout);
             this.xtraTabPageNLog.ImageOptions.Image = global::Analogy.Properties.Resources.nlog;
             this.xtraTabPageNLog.Name = "xtraTabPageNLog";
-            this.xtraTabPageNLog.Size = new System.Drawing.Size(799, 562);
+            this.xtraTabPageNLog.Size = new System.Drawing.Size(772, 562);
             this.xtraTabPageNLog.Text = "NLog Parser";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(145, 95);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(217, 16);
+            this.labelControl5.TabIndex = 12;
+            this.labelControl5.Text = "Use ; as seperator (e.g: *.nlog;*.log)";
+            // 
+            // textEditNLogExtension
+            // 
+            this.textEditNLogExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditNLogExtension.EditValue = "*.nlog";
+            this.textEditNLogExtension.Location = new System.Drawing.Point(145, 68);
+            this.textEditNLogExtension.Name = "textEditNLogExtension";
+            this.textEditNLogExtension.Size = new System.Drawing.Size(503, 22);
+            this.textEditNLogExtension.TabIndex = 11;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(3, 71);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(110, 16);
+            this.labelControl4.TabIndex = 10;
+            this.labelControl4.Text = "NLog File Extension";
             // 
             // spltNlogParser
             // 
@@ -143,7 +176,7 @@
             this.spltNlogParser.Panel2.Controls.Add(this.lstBoxItemsNlog);
             this.spltNlogParser.Panel2.Controls.Add(this.labelControl10);
             this.spltNlogParser.Panel2.Text = "Panel2";
-            this.spltNlogParser.Size = new System.Drawing.Size(771, 369);
+            this.spltNlogParser.Size = new System.Drawing.Size(744, 369);
             this.spltNlogParser.SplitterPosition = 175;
             this.spltNlogParser.TabIndex = 9;
             // 
@@ -226,7 +259,7 @@
             this.lstBoxItemsNlog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstBoxItemsNlog.Location = new System.Drawing.Point(0, 16);
             this.lstBoxItemsNlog.Name = "lstBoxItemsNlog";
-            this.lstBoxItemsNlog.Size = new System.Drawing.Size(586, 349);
+            this.lstBoxItemsNlog.Size = new System.Drawing.Size(559, 349);
             this.lstBoxItemsNlog.TabIndex = 2;
             // 
             // labelControl10
@@ -242,7 +275,7 @@
             // sBtnSaveNlogMapping
             // 
             this.sBtnSaveNlogMapping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(682, 520);
+            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(655, 520);
             this.sBtnSaveNlogMapping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnSaveNlogMapping.Name = "sBtnSaveNlogMapping";
             this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
@@ -257,7 +290,7 @@
             this.txtNLogSeperator.EditValue = "|";
             this.txtNLogSeperator.Location = new System.Drawing.Point(145, 39);
             this.txtNLogSeperator.Name = "txtNLogSeperator";
-            this.txtNLogSeperator.Size = new System.Drawing.Size(530, 22);
+            this.txtNLogSeperator.Size = new System.Drawing.Size(503, 22);
             this.txtNLogSeperator.TabIndex = 7;
             // 
             // labelControl8
@@ -275,7 +308,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNLogLayout.Location = new System.Drawing.Point(145, 11);
             this.txtNLogLayout.Name = "txtNLogLayout";
-            this.txtNLogLayout.Size = new System.Drawing.Size(530, 22);
+            this.txtNLogLayout.Size = new System.Drawing.Size(503, 22);
             this.txtNLogLayout.TabIndex = 5;
             // 
             // labelControl7
@@ -290,7 +323,7 @@
             // sbtnCheckLayout
             // 
             this.sbtnCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnCheckLayout.Location = new System.Drawing.Point(697, 3);
+            this.sbtnCheckLayout.Location = new System.Drawing.Point(670, 3);
             this.sbtnCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtnCheckLayout.Name = "sbtnCheckLayout";
             this.sbtnCheckLayout.Size = new System.Drawing.Size(96, 37);
@@ -306,6 +339,15 @@
             this.xtraTabPageSerilog.Size = new System.Drawing.Size(799, 562);
             this.xtraTabPageSerilog.Text = "Serilog parser";
             // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(10, 10);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(78, 16);
+            this.labelControl6.TabIndex = 13;
+            this.labelControl6.Text = "Coming soon.";
+            // 
             // xtraTabPageLog4Net
             // 
             this.xtraTabPageLog4Net.Controls.Add(this.labelControl11);
@@ -313,6 +355,15 @@
             this.xtraTabPageLog4Net.Name = "xtraTabPageLog4Net";
             this.xtraTabPageLog4Net.Size = new System.Drawing.Size(799, 562);
             this.xtraTabPageLog4Net.Text = "Log4Net Parser";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(10, 10);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(78, 16);
+            this.labelControl11.TabIndex = 14;
+            this.labelControl11.Text = "Coming soon.";
             // 
             // xtraTabPageJson
             // 
@@ -325,6 +376,15 @@
             this.xtraTabPageJson.Name = "xtraTabPageJson";
             this.xtraTabPageJson.Size = new System.Drawing.Size(799, 562);
             this.xtraTabPageJson.Text = "Json Parser";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(10, 10);
+            this.labelControl12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(78, 16);
+            this.labelControl12.TabIndex = 14;
+            this.labelControl12.Text = "Coming soon.";
             // 
             // spltJSonParser
             // 
@@ -476,61 +536,6 @@
             this.xtraTabPageXML.Size = new System.Drawing.Size(799, 562);
             this.xtraTabPageXML.Text = "XML Parser";
             // 
-            // textEditNLogExtension
-            // 
-            this.textEditNLogExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditNLogExtension.EditValue = "*.nlog";
-            this.textEditNLogExtension.Location = new System.Drawing.Point(145, 68);
-            this.textEditNLogExtension.Name = "textEditNLogExtension";
-            this.textEditNLogExtension.Size = new System.Drawing.Size(530, 22);
-            this.textEditNLogExtension.TabIndex = 11;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(3, 71);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(110, 16);
-            this.labelControl4.TabIndex = 10;
-            this.labelControl4.Text = "NLog File Extension";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(145, 95);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(217, 16);
-            this.labelControl5.TabIndex = 12;
-            this.labelControl5.Text = "Use ; as seperator (e.g: *.nlog;*.log)";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(10, 10);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(78, 16);
-            this.labelControl6.TabIndex = 13;
-            this.labelControl6.Text = "Coming soon.";
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(10, 10);
-            this.labelControl11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(78, 16);
-            this.labelControl11.TabIndex = 14;
-            this.labelControl11.Text = "Coming soon.";
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Location = new System.Drawing.Point(10, 10);
-            this.labelControl12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(78, 16);
-            this.labelControl12.TabIndex = 14;
-            this.labelControl12.Text = "Coming soon.";
-            // 
             // labelControl13
             // 
             this.labelControl13.Location = new System.Drawing.Point(10, 10);
@@ -539,6 +544,33 @@
             this.labelControl13.Size = new System.Drawing.Size(78, 16);
             this.labelControl13.TabIndex = 14;
             this.labelControl13.Text = "Coming soon.";
+            // 
+            // xtraTabPageWindowsEventLogs
+            // 
+            this.xtraTabPageWindowsEventLogs.Controls.Add(this.xtraUCWindowsEventLogs1);
+            this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
+            this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
+            this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
+            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(772, 562);
+            this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
+            // 
+            // xtraUCWindowsEventLogs1
+            // 
+            this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
+            this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
+            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(772, 540);
+            this.xtraUCWindowsEventLogs1.TabIndex = 0;
+            // 
+            // lblWindowsEventLogs
+            // 
+            this.lblWindowsEventLogs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblWindowsEventLogs.Location = new System.Drawing.Point(0, 0);
+            this.lblWindowsEventLogs.Name = "lblWindowsEventLogs";
+            this.lblWindowsEventLogs.Padding = new System.Windows.Forms.Padding(3);
+            this.lblWindowsEventLogs.Size = new System.Drawing.Size(233, 22);
+            this.lblWindowsEventLogs.TabIndex = 1;
+            this.lblWindowsEventLogs.Text = "Windows Event logs: real time settings:";
             // 
             // UserSettingsDataProvidersForm
             // 
@@ -556,6 +588,7 @@
             this.tabControlMain.ResumeLayout(false);
             this.xtraTabPageNLog.ResumeLayout(false);
             this.xtraTabPageNLog.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltNlogParser)).EndInit();
             this.spltNlogParser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumnsNlog)).EndInit();
@@ -579,7 +612,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).EndInit();
             this.xtraTabPageXML.ResumeLayout(false);
             this.xtraTabPageXML.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).EndInit();
+            this.xtraTabPageWindowsEventLogs.ResumeLayout(false);
+            this.xtraTabPageWindowsEventLogs.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -624,5 +658,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageWindowsEventLogs;
+        private DevExpress.XtraEditors.LabelControl lblWindowsEventLogs;
+        private XtraUCWindowsEventLogs xtraUCWindowsEventLogs1;
     }
 }

@@ -1189,6 +1189,12 @@ namespace Analogy
             settings.EnableFileCaching = !settings.EnableFileCaching;
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
         }
+
+        private void bBtnDataProviderSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
+            user.ShowDialog(this);
+        }
     }
 }
 
