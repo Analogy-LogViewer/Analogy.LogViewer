@@ -265,45 +265,50 @@ namespace Analogy.Interfaces
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Level:
-                    {
-                        if (Enum.TryParse(propertyValue, true, out AnalogyLogLevel level))
                         {
-                            m.Level = level;
-                        }
-                        else
-                        {
-                            switch (propertyValue)
+                            if (Enum.TryParse(propertyValue, true, out AnalogyLogLevel level) &&
+                                Enum.IsDefined(typeof(AnalogyLogLevel), level))
                             {
-                                case "TRACE":
-                                    m.Level = AnalogyLogLevel.Debug;
-                                    break;
-                                case "DEBUG":
-                                    m.Level = AnalogyLogLevel.Debug;
-                                    break;
-                                case "INFO":
-                                    m.Level = AnalogyLogLevel.Event;
-                                    break;
-                                case "WARN":
-                                    m.Level = AnalogyLogLevel.Warning;
-                                    break;
-                                case "ERROR":
-                                    m.Level = AnalogyLogLevel.Error;
-                                    break;
-                                case "FATAL":
-                                    m.Level = AnalogyLogLevel.Critical;
-                                    break;
-                                default:
-                                    m.Level = AnalogyLogLevel.Event;
-                                    break;
+                                m.Level = level;
+                            }
+                            else
+                            {
+                                switch (propertyValue)
+                                {
+                                    case "OFF":
+                                        m.Level = AnalogyLogLevel.Disabled;
+                                        break;
+                                    case "TRACE":
+                                        m.Level = AnalogyLogLevel.Trace;
+                                        break;
+                                    case "DEBUG":
+                                        m.Level = AnalogyLogLevel.Debug;
+                                        break;
+                                    case "INFO":
+                                        m.Level = AnalogyLogLevel.Event;
+                                        break;
+                                    case "WARN":
+                                        m.Level = AnalogyLogLevel.Warning;
+                                        break;
+                                    case "ERROR":
+                                        m.Level = AnalogyLogLevel.Error;
+                                        break;
+                                    case "FATAL":
+                                        m.Level = AnalogyLogLevel.Critical;
+                                        break;
+                                    default:
+                                        m.Level = AnalogyLogLevel.Unknown;
+                                        break;
+                                }
+
                             }
 
+                            continue;
                         }
-
-                        continue;
-                    }
                     case AnalogyLogMessagePropertyName.Class:
                         {
-                            m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls)
+                            m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls) &&
+                                      Enum.IsDefined(typeof(AnalogyLogClass), cls)
                                 ? cls
                                 : AnalogyLogClass.General;
                         }

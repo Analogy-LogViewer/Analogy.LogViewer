@@ -48,7 +48,6 @@
             this.btnItemSearch = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemCombineFiles = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemConvert = new DevExpress.XtraBars.BarButtonItem();
-            this.bbItemOpenFiles = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bsiRecent = new DevExpress.XtraBars.BarSubItem();
             this.skinRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
@@ -142,7 +141,6 @@
             this.btnItemSearch,
             this.btnItemCombineFiles,
             this.btnItemConvert,
-            this.bbItemOpenFiles,
             this.skinRibbonGalleryBarItem1,
             this.bsiRecent,
             this.skinRibbonGalleryBarItem2,
@@ -317,17 +315,7 @@
             this.btnItemConvert.Name = "btnItemConvert";
             this.btnItemConvert.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
-            // bbItemOpenFiles
-            // 
-            this.bbItemOpenFiles.Caption = "Open Files";
-            this.bbItemOpenFiles.Id = 17;
-            this.bbItemOpenFiles.ImageOptions.Image = global::Analogy.Properties.Resources.Article_16x16;
-            this.bbItemOpenFiles.ImageOptions.LargeImage = global::Analogy.Properties.Resources.Article_32x32;
-            this.bbItemOpenFiles.Name = "bbItemOpenFiles";
-            this.bbItemOpenFiles.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bbItemOpenFiles.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbItemOpenFiles_ItemClick);
+
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -825,7 +813,6 @@
         private DevExpress.XtraBars.BarButtonItem btnItemCombineFiles;
         private DevExpress.XtraBars.BarButtonItem btnItemConvert;
         private DevExpress.XtraTab.XtraTabControl xtcLogs;
-        private DevExpress.XtraBars.BarButtonItem bbItemOpenFiles;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarSubItem bsiRecent;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem2;

@@ -67,13 +67,7 @@ namespace Analogy
             checkEditSearchAlsoInSourceAndModule.Checked = Settings.SearchAlsoInSourceAndModule;
             toggleSwitchIdleMode.IsOn = Settings.IdleMode;
             nudIdleTime.Value = Settings.IdleTimeMinutes;
-            if (Settings.NLogSettings.IsConfigured)
-            {
-                txtSeperator.Text = Settings.NLogSettings.Splitter;
-                txtLayout.Text = Settings.NLogSettings.Layout;
-                lstBAnalogyColumns.Items.Clear();
-                lstBAnalogyColumns.Items.AddRange(Settings.NLogSettings.Maps.Values.Select(i => i.ToString()).ToArray());
-            }
+         
         }
 
 
@@ -218,63 +212,6 @@ namespace Analogy
         {
             Settings.AutoStartDataProviders =
                 chkLstItemRealTimeDataSources.CheckedItems.Cast<RealTimeCheckItem>().Select(r => r.ID).ToList();
-        }
-
-        private void sbtnCheckLayout_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(txtSeperator.Text)) return;
-                var items = txtLayout.Text.Split(txtSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
-                    .ToArray();
-                lstBoxItems.Items.Clear();
-                lstBoxItems.Items.AddRange(items);
-            }
-            catch (Exception exception)
-            {
-                XtraMessageBox.Show("Error parsing input: " + exception.Message, "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
-        private void sBtnMoveUp_Click(object sender, EventArgs e)
-        {
-            if (lstBAnalogyColumns.SelectedIndex <= 0) return;
-            var selectedIndex = lstBAnalogyColumns.SelectedIndex;
-            var currentValue = lstBAnalogyColumns.Items[selectedIndex];
-            lstBAnalogyColumns.Items[selectedIndex] = lstBAnalogyColumns.Items[selectedIndex - 1];
-            lstBAnalogyColumns.Items[selectedIndex - 1] = currentValue;
-            lstBAnalogyColumns.SelectedIndex = lstBAnalogyColumns.SelectedIndex - 1;
-        }
-
-        private void sBtnMoveDown_Click(object sender, EventArgs e)
-        {
-            if (lstBAnalogyColumns.SelectedIndex == lstBAnalogyColumns.ItemCount - 1) return;
-            var selectedIndex = lstBAnalogyColumns.SelectedIndex;
-            var currentValue = lstBAnalogyColumns.Items[selectedIndex + 1];
-            lstBAnalogyColumns.Items[selectedIndex + 1] = lstBAnalogyColumns.Items[selectedIndex];
-            lstBAnalogyColumns.Items[selectedIndex] = currentValue;
-            lstBAnalogyColumns.SelectedIndex = lstBAnalogyColumns.SelectedIndex + 1;
-        }
-
-        private void sBtnSaveNlogMapping_Click(object sender, EventArgs e)
-        {
-            LogParserSettings parser = new LogParserSettings {Layout = txtLayout.Text, Splitter = txtSeperator.Text};
-            for (int i = 0; i < lstBAnalogyColumns.ItemCount; i++)
-            {
-                parser.AddMap(i,
-                    (AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
-                        lstBAnalogyColumns.Items[i].ToString()));
-            }
-
-            parser.IsConfigured = true;
-            Settings.NLogSettings = parser;
-        }
-
-        private void lstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstBAnalogyColumns.SelectedIndex > lstBoxItems.ItemCount) return;
-            lstBoxItems.SelectedIndex = lstBAnalogyColumns.SelectedIndex;
         }
     }
 }

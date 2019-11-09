@@ -157,7 +157,7 @@ namespace Analogy.DataSources
 
         public AnalogyCustomActionFactory()
         {
-            Items = new List<IAnalogyCustomAction>() { new AnalogyCustomAction() };
+            Items = new List<IAnalogyCustomAction>() { new AnalogyCustomAction()/*,new AnalogyDataProvidersCustomAction()*/ };
         }
     }
 
@@ -171,6 +171,18 @@ namespace Analogy.DataSources
         public Guid ID { get; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
         public Image Image { get; } = Resources.ChartsShowLegend_32x32;
         public string Title { get; } = "Process Identifier";
+
+    }
+    public class AnalogyDataProvidersCustomAction : IAnalogyCustomAction
+    {
+        public Action Action => () =>
+        {
+            var p = new UserSettingsDataProvidersForm();
+            p.Show();
+        };
+        public Guid ID { get; } = new Guid("8398FD33-78D0-4F07-B50C-13B922DC64B4");
+        public Image Image { get; } = Resources.ChartsShowLegend_32x32;
+        public string Title { get; } = "data providers settings";
 
     }
 }

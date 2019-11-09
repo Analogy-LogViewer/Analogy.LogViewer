@@ -93,7 +93,7 @@ namespace Analogy
             await AnalogyFactoriesManager.Instance.AddExternalDataSources();
             CreateEventLogsGroup();
             CreateDataSources();
-
+        
             //set Default page:
             Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitialSelectedDataProvider);
             if (Mapping.ContainsKey(defaultPage))
@@ -110,7 +110,7 @@ namespace Analogy
             if (arguments.Length == 2)
             {
                 string[] fileNames = { arguments[1] };
-                await OpenOfflineLogs(fileNames);
+                await OpenOfflineFileWithSpecificDataProvider(fileNames);
 
             }
             else
@@ -177,7 +177,7 @@ namespace Analogy
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     OpenOfflineLogs(ribbonPage, openFileDialog1.FileNames, elds, "Windows Event log");
-                    AddRecentFiles(openFileDialog1.FileNames.ToList());
+                    AddRecentWindowsEventLogFiles(openFileDialog1.FileNames.ToList());
                 }
             };
             group.ItemLinks.Add(evtxFile);
@@ -194,7 +194,7 @@ namespace Analogy
                 if (File.Exists(file))
                 {
                     OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() { file });
+                    AddRecentWindowsEventLogFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(systemLog);
@@ -211,7 +211,7 @@ namespace Analogy
                 if (File.Exists(file))
                 {
                     OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() { file });
+                    AddRecentWindowsEventLogFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(appLog);
@@ -228,7 +228,7 @@ namespace Analogy
                 if (File.Exists(file))
                 {
                     OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() { file });
+                    AddRecentWindowsEventLogFiles(new List<string>() { file });
                 }
             };
             group.ItemLinks.Add(secLog);
@@ -286,7 +286,7 @@ namespace Analogy
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     OpenOfflineLogs(ribbonPage, openFileDialog1.FileNames, elds, "Windows Event log");
-                    AddRecentFiles(openFileDialog1.FileNames.ToList());
+                    AddRecentWindowsEventLogFiles(openFileDialog1.FileNames.ToList());
                 }
             };
             bsiWindowsEventLogs.AddItem(evtxFile);
@@ -300,7 +300,7 @@ namespace Analogy
                 if (File.Exists(file))
                 {
                     OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() { file });
+                    AddRecentWindowsEventLogFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(systemLog);
@@ -314,7 +314,7 @@ namespace Analogy
                 if (File.Exists(file))
                 {
                     OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() { file });
+                    AddRecentWindowsEventLogFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(appLog);
@@ -328,7 +328,7 @@ namespace Analogy
                 if (File.Exists(file))
                 {
                     OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentFiles(new List<string>() { file });
+                    AddRecentWindowsEventLogFiles(new List<string>() { file });
                 }
             };
             bsiWindowsEventLogs.AddItem(secLog);
@@ -365,7 +365,7 @@ namespace Analogy
             xtcLogs.SelectedTabPage = page;
         }
 
-        private async Task OpenOfflineLogs(string[] files)
+        private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
         {
             var supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
@@ -385,7 +385,7 @@ namespace Analogy
                 // Assign the file names to a string array, in 
                 // case the user has selected multiple files.
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                OpenOfflineLogs(files);
+                OpenOfflineFileWithSpecificDataProvider(files);
             }
         }
 
@@ -443,21 +443,7 @@ namespace Analogy
 
         }
 
-        private void bbItemOpenFiles_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Filter =
-            //    "All supported log file types|*.log;*.etl;*.nlog;*.json;*.evtx;*.xml|Plain ICAP XML log file (*.log)|*.log|JSON file (*.json)|*.json|NLOG file (*.nlog)|*.nlog|ETW log file (*.etl)|*.etl|Windows Event log files (*.evtx)|*.evtx|CT Logs files (*.xml)|*.xml|All Files (*.*)|*.*";
-            //openFileDialog1.Title = @"Open Files";
-            //openFileDialog1.Multiselect = true;
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    OpenOfflineLogs(openFileDialog1.FileNames);
-            //    AddRecentFiles(openFileDialog1.FileNames.ToList());
-            //}
-        }
-
-        private void AddRecentFiles(List<string> files)
+        private void AddRecentWindowsEventLogFiles(List<string> files)
         {
             //if (files.Any())
             //{

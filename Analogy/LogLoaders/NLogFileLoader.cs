@@ -13,10 +13,10 @@ namespace Analogy.LogLoaders
     {
         private LogParserSettings _logFileSettings;
         private GeneralFileParser _parser;
-        public NLogFileLoader( LogParserSettings logFileSettings)
+        public NLogFileLoader(LogParserSettings logFileSettings)
         {
             _logFileSettings = logFileSettings;
-            _parser=new GeneralFileParser(_logFileSettings);
+            _parser = new GeneralFileParser(_logFileSettings);
         }
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
@@ -42,6 +42,17 @@ namespace Analogy.LogLoaders
                 messagesHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                 return new List<AnalogyLogMessage> { empty };
             }
+            if (!_logFileSettings.CanOpenFile(fileName))
+            {
+                AnalogyLogMessage empty = new AnalogyLogMessage($"File {fileName} Is not supported or not configured correctly in the windows settings",
+                    AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None")
+                {
+                    Source = "Analogy",
+                    Module = System.Diagnostics.Process.GetCurrentProcess().ProcessName
+                };
+                messagesHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
+                return new List<AnalogyLogMessage> { empty };
+            }
             List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
             try
             {
@@ -53,13 +64,13 @@ namespace Analogy.LogLoaders
                         {
                             var line = await reader.ReadLineAsync();
                             var entry = _parser.Parse(line);
-                           messages.Add(entry);
+                            messages.Add(entry);
 
                         }
                     }
 
                 }
-                messagesHandler.AppendMessages(messages,fileName);
+                messagesHandler.AppendMessages(messages, fileName);
                 return messages;
             }
             catch (Exception e)
