@@ -55,7 +55,14 @@ namespace Analogy
                 txtNLogLayout.Text = Settings.NLogSettings.Layout;
                 textEditNLogExtension.Text = string.Join(";", Settings.NLogSettings.SupportedFilesExtensions);
                 lstBAnalogyColumnsNlog.Items.Clear();
-                lstBAnalogyColumnsNlog.Items.AddRange(Settings.NLogSettings.Maps.Values.Select(i => i.ToString()).ToArray());
+                for (int i = 0; i < 21; i++)
+                {
+                    if (Settings.NLogSettings.Maps.ContainsKey(i))
+                        lstBAnalogyColumnsNlog.Items.Add(Settings.NLogSettings.Maps[i]);
+                    else
+                        lstBAnalogyColumnsNlog.Items.Add("__ignore__");
+                }
+                CheckNLogLayout();
             }
         }
 
@@ -70,7 +77,12 @@ namespace Analogy
         }
 
 
-        private void SbtnCheckLayout_Click(object sender, EventArgs e)
+        private void btnNlogCheckLayout_Click(object sender, EventArgs e)
+        {
+         CheckNLogLayout();
+        }
+
+        private void CheckNLogLayout()
         {
             try
             {
@@ -86,7 +98,6 @@ namespace Analogy
                     MessageBoxIcon.Error);
             }
         }
-
         private void SBtnMoveUp_Click(object sender, EventArgs e)
         {
             if (lstBAnalogyColumnsNlog.SelectedIndex <= 0) return;
@@ -112,8 +123,9 @@ namespace Analogy
             Dictionary<int, AnalogyLogMessagePropertyName> maps = new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
             for (int i = 0; i < lstBAnalogyColumnsNlog.ItemCount; i++)
             {
-                maps.Add(i,
-                    (AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
+                if (lstBAnalogyColumnsNlog.Items[i].ToString()
+                    .Contains("ignore", StringComparison.InvariantCultureIgnoreCase)) continue;
+                maps.Add(i,(AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
                         lstBAnalogyColumnsNlog.Items[i].ToString()));
             }
 
@@ -126,7 +138,7 @@ namespace Analogy
 
         private void LstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount) return;
+            if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount-1) return;
             lstBoxItemsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
         }
 

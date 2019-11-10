@@ -118,7 +118,7 @@ namespace Analogy
             {
 
                 ColorSettings = string.IsNullOrEmpty(Settings.Default.ColorSettings) ?
-                    new ColorSettings() : 
+                    new ColorSettings() :
                     JsonConvert.DeserializeObject<ColorSettings>(Settings.Default.ColorSettings);
             }
             catch
@@ -256,7 +256,7 @@ namespace Analogy
         public bool CanOpenFile(string filename)
         {
             if (string.IsNullOrEmpty(filename)) return false;
-            return SupportedFilesExtensions.Any(s =>s.EndsWith(Path.GetExtension(filename),StringComparison.InvariantCultureIgnoreCase));
+            return SupportedFilesExtensions.Any(s => s.EndsWith(Path.GetExtension(filename), StringComparison.InvariantCultureIgnoreCase));
         }
 
     }
@@ -270,10 +270,10 @@ namespace Analogy
         {
             HighlightColor = Color.Aqua;
             var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
-            LogLevelColors =new Dictionary<AnalogyLogLevel, Color>(logLevelValues.Length);
+            LogLevelColors = new Dictionary<AnalogyLogLevel, Color>(logLevelValues.Length);
 
             foreach (AnalogyLogLevel level in logLevelValues)
-                
+
             {
                 switch (level)
                 {
@@ -319,7 +319,7 @@ namespace Analogy
         public Color GetHighlightColor() => HighlightColor;
 
         public void SetColorForLogLevel(AnalogyLogLevel level, Color value) => LogLevelColors[level] = value;
-        public void SetHighlightColor(Color value) => HighlightColor=value;
+        public void SetHighlightColor(Color value) => HighlightColor = value;
     }
 }
 
