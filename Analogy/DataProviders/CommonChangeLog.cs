@@ -12,7 +12,8 @@ namespace Analogy.DataProviders
 
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
-
+            yield return new AnalogyChangeLog("Built-in Data providers are ignored when double clicking and log file. (issue #50)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 11, 10));
+            yield return new AnalogyChangeLog("File pooling: duplicate entries are added (issue #49)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 11, 10));
             yield return new AnalogyChangeLog("Coloring: Add user settings for log level colors (issue #48)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 09));
             yield return new AnalogyChangeLog("Data Providers: Add NLog data Provider (issue #19)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 07));
             yield return new AnalogyChangeLog("Performance: Load data providers asynchronously during startup (issue #40)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 10, 21));

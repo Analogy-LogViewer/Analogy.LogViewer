@@ -121,7 +121,8 @@ namespace Analogy.Interfaces
         public string[] Parameters { get; set; }
 
         public string User { get; set; }
-
+        private static string _currentProcessName = Process.GetCurrentProcess().ProcessName;
+        private static int _currentProcessId = Process.GetCurrentProcess().Id;
         public AnalogyLogMessage()
         {
             ID = Guid.NewGuid();
@@ -132,6 +133,7 @@ namespace Analogy.Interfaces
             FileName = string.Empty;
             Parameters = new string[0];
             User = string.Empty;
+
         }
         public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName]string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
@@ -143,8 +145,8 @@ namespace Analogy.Interfaces
             LineNumber = lineNumber;
             Class = logClass;
             Level = level;
-            Module = moduleOrProcessName ?? Process.GetCurrentProcess().ProcessName;
-            ProcessID = processId != 0 ? processId : Process.GetCurrentProcess().Id;
+            Module = moduleOrProcessName ?? _currentProcessName;
+            ProcessID = processId != 0 ? processId : _currentProcessId;
             Parameters = parameters ?? new string[0];
             User = user ?? string.Empty;
             Thread = threadID != 0 ? Thread : System.Threading.Thread.CurrentThread.ManagedThreadId;
@@ -209,6 +211,11 @@ namespace Analogy.Interfaces
         public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string propertyValue)> data)
         {
             AnalogyLogMessage m = new AnalogyLogMessage();
+            m.Date = DateTime.MinValue;
+            m.ID = Guid.Empty;
+            m.Module = "Unknown";
+            m.Thread = -1;
+            m.ProcessID = -1;
             foreach (var (propertyName, propertyValue) in data)
             {
                 switch (propertyName)

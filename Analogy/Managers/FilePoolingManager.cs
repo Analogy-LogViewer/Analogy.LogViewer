@@ -24,7 +24,8 @@ namespace Analogy.Managers
         public FilePoolingManager(string fileName, IAnalogyOfflineDataProvider offlineDataProvider)
         {
             _sync = new object();
-            _customEqualityComparer=new AnalogyLogMessageCustomEqualityComparer();
+            _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer();
+            _customEqualityComparer.CompareID = false;
             _cancellationTokenSource = new CancellationTokenSource();
             OfflineDataProvider = offlineDataProvider;
             _messages = new List<AnalogyLogMessage>();
@@ -32,7 +33,8 @@ namespace Analogy.Managers
             FileProcessor = new FileProcessor(this);
             _watchFile = new FileSystemWatcher
             {
-                Path = Path.GetDirectoryName(fileName), Filter = Path.GetFileName(fileName)
+                Path = Path.GetDirectoryName(fileName),
+                Filter = Path.GetFileName(fileName)
             };
             _watchFile.Changed += WatchFile_Changed;
             _watchFile.Deleted += WatchFile_Deleted;
@@ -49,7 +51,7 @@ namespace Analogy.Managers
 
         public void StopMonitoring()
         {
-          
+
             _watchFile.EnableRaisingEvents = false;
             _watchFile.Changed -= WatchFile_Changed;
             _watchFile.Deleted -= WatchFile_Deleted;
@@ -158,11 +160,11 @@ namespace Analogy.Managers
                 };
                 OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
             }
-            
+
             _readingInprogress = false;
             _watchFile.EnableRaisingEvents = true;
         }
-    
+
     }
 }
 

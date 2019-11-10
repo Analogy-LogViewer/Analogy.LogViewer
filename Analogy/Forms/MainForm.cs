@@ -724,7 +724,8 @@ namespace Analogy
 
         private void CreateDataSources()
         {
-            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories())
+            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories()
+                .Where(factory => !AnalogyFactoriesManager.Instance.IsBuiltInFactory(factory)))
             {
                 CreateDataSource(factory, 3);
             }
