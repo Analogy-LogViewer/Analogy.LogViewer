@@ -232,7 +232,7 @@ namespace Analogy
         public string Splitter { get; set; }
         public string Layout { get; set; }
         public Dictionary<int, AnalogyLogMessagePropertyName> Maps { get; set; }
-
+        public int ValidItemsCount { get; set; }
 
         public LogParserSettings()
         {
@@ -250,6 +250,7 @@ namespace Analogy
             SupportedFilesExtensions = supportedFilesExtension;
             Maps = maps ?? new Dictionary<int, AnalogyLogMessagePropertyName>();
             IsConfigured = true;
+            ValidItemsCount = Layout.Split(splitter.Split(), StringSplitOptions.RemoveEmptyEntries).Length;
         }
         public void AddMap(int index, AnalogyLogMessagePropertyName name) => Maps.Add(index, name);
 

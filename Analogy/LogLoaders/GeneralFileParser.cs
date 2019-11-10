@@ -11,7 +11,7 @@ namespace Analogy.LogLoaders
     public class GeneralFileParser
     {
         private readonly LogParserSettings _logFileSettings;
-        private readonly string[] splitters;
+        public readonly string[] splitters;
 
         public GeneralFileParser(LogParserSettings logFileSettings)
         {

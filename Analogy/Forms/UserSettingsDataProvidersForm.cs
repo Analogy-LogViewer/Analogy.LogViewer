@@ -129,11 +129,9 @@ namespace Analogy
                         lstBAnalogyColumnsNlog.Items[i].ToString()));
             }
 
-            Settings.NLogSettings.IsConfigured = true;
-            Settings.NLogSettings.Maps = maps;
-            Settings.NLogSettings.Layout = txtNLogLayout.Text;
-            Settings.NLogSettings.Splitter = txtNLogSeperator.Text;
-            Settings.NLogSettings.SupportedFilesExtensions = new List<string> { textEditNLogExtension.Text };
+            Settings.NLogSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
+                new List<string> {textEditNLogExtension.Text}, maps);
+
         }
 
         private void LstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)

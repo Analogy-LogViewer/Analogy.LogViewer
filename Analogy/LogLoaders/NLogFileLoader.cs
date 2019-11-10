@@ -63,12 +63,16 @@ namespace Analogy.LogLoaders
                         while (!reader.EndOfStream)
                         {
                             var line = await reader.ReadLineAsync();
+                            var items = line.Split(_parser.splitters, StringSplitOptions.RemoveEmptyEntries);
+                            while (items.Length < _logFileSettings.ValidItemsCount)
+                            {
+                                line = line + await reader.ReadLineAsync();
+                                items = line.Split(_parser.splitters, StringSplitOptions.RemoveEmptyEntries);
+                            }
                             var entry = _parser.Parse(line);
                             messages.Add(entry);
-
                         }
                     }
-
                 }
                 messagesHandler.AppendMessages(messages, fileName);
                 return messages;
