@@ -66,7 +66,7 @@ namespace Analogy.LogLoaders
                             var items = line.Split(_parser.splitters, StringSplitOptions.RemoveEmptyEntries);
                             while (items.Length < _logFileSettings.ValidItemsCount)
                             {
-                                line = line + await reader.ReadLineAsync();
+                                line = line + Environment.NewLine + await reader.ReadLineAsync();
                                 items = line.Split(_parser.splitters, StringSplitOptions.RemoveEmptyEntries);
                             }
                             var entry = _parser.Parse(line);
