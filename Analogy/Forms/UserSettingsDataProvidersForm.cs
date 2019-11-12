@@ -40,28 +40,36 @@ namespace Analogy
         {
             _initialSelection = tabIndex;
         }
+
         public UserSettingsDataProvidersForm(string tabName) : this()
         {
             var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
             if (tab != null)
                 _initialSelection = tab.TabIndex;
         }
+
         private void LoadSettings()
         {
+            LoadNLogSettings(Settings.LogParsersSettings.NLogParserSettings);
+           
+        }
 
-            if (Settings.NLogSettings.IsConfigured)
+        private void LoadNLogSettings(LogParserSettings nLogParserSettings)
+        {
+            if (nLogParserSettings.IsConfigured)
             {
-                txtNLogSeperator.Text = Settings.NLogSettings.Splitter;
-                txtNLogLayout.Text = Settings.NLogSettings.Layout;
-                textEditNLogExtension.Text = string.Join(";", Settings.NLogSettings.SupportedFilesExtensions);
+                txtNLogSeperator.Text = nLogParserSettings.Splitter;
+                txtNLogLayout.Text = nLogParserSettings.Layout;
+                textEditNLogExtension.Text = string.Join(";",nLogParserSettings.SupportedFilesExtensions);
                 lstBAnalogyColumnsNlog.Items.Clear();
                 for (int i = 0; i < 21; i++)
                 {
-                    if (Settings.NLogSettings.Maps.ContainsKey(i))
-                        lstBAnalogyColumnsNlog.Items.Add(Settings.NLogSettings.Maps[i]);
+                    if (nLogParserSettings.Maps.ContainsKey(i))
+                        lstBAnalogyColumnsNlog.Items.Add(nLogParserSettings.Maps[i]);
                     else
                         lstBAnalogyColumnsNlog.Items.Add("__ignore__");
                 }
+
                 CheckNLogLayout();
             }
         }
@@ -79,7 +87,7 @@ namespace Analogy
 
         private void btnNlogCheckLayout_Click(object sender, EventArgs e)
         {
-         CheckNLogLayout();
+            CheckNLogLayout();
         }
 
         private void CheckNLogLayout()
@@ -87,7 +95,8 @@ namespace Analogy
             try
             {
                 if (string.IsNullOrEmpty(txtNLogSeperator.Text)) return;
-                var items = txtNLogLayout.Text.Split(txtNLogSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                var items = txtNLogLayout.Text
+                    .Split(txtNLogSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                     .ToArray();
                 lstBoxItemsNlog.Items.Clear();
                 lstBoxItemsNlog.Items.AddRange(items);
@@ -98,6 +107,7 @@ namespace Analogy
                     MessageBoxIcon.Error);
             }
         }
+
         private void SBtnMoveUp_Click(object sender, EventArgs e)
         {
             if (lstBAnalogyColumnsNlog.SelectedIndex <= 0) return;
@@ -120,23 +130,24 @@ namespace Analogy
 
         private void SBtnSaveNlogMapping_Click(object sender, EventArgs e)
         {
-            Dictionary<int, AnalogyLogMessagePropertyName> maps = new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
+            Dictionary<int, AnalogyLogMessagePropertyName> maps =
+                new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
             for (int i = 0; i < lstBAnalogyColumnsNlog.ItemCount; i++)
             {
                 if (lstBAnalogyColumnsNlog.Items[i].ToString()
                     .Contains("ignore", StringComparison.InvariantCultureIgnoreCase)) continue;
-                maps.Add(i,(AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
-                        lstBAnalogyColumnsNlog.Items[i].ToString()));
+                maps.Add(i, (AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
+                    lstBAnalogyColumnsNlog.Items[i].ToString()));
             }
 
-            Settings.NLogSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
-                new List<string> {textEditNLogExtension.Text}, maps);
+            Settings.LogParsersSettings.NLogParserSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
+                new List<string> { textEditNLogExtension.Text }, maps);
 
         }
 
         private void LstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount-1) return;
+            if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount - 1) return;
             lstBoxItemsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
         }
 
@@ -159,6 +170,55 @@ namespace Analogy
         {
             // string json = File.ReadAllText(fileName);
             // var items = JsonConvert.DeserializeObject(json);
+        }
+
+        private void btnImportNLogSettings_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Analogy NLog Settings (*.nlogsettings)|*.nlogsettings";
+            openFileDialog1.Title = @"Import NLog settings";
+            openFileDialog1.Multiselect = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var json = File.ReadAllText(openFileDialog1.FileName);
+                    LogParserSettings nlog = LogParserSettings.FromJson(json);
+                    LoadNLogSettings(nlog);
+                    XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings", MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Error Import: " + ex.Message, @"Error Import file", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnExportNLogSettings_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Analogy NLog Settings (*.nlogsettings)|*.nlogsettings";
+            saveFileDialog.Title = @"Export NLog settings";
+
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    File.WriteAllText(Settings.LogParsersSettings.NLogParserSettings.AsJson(), saveFileDialog.FileName);
+                    XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+            }
         }
     }
 }

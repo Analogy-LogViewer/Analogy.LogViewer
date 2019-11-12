@@ -53,7 +53,7 @@ namespace Analogy
 
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
-        public LogParserSettings NLogSettings { get; set; }
+        public LogParserSettingsContainer LogParsersSettings { get; set; }
         public ColorSettings ColorSettings { get; set; }
         public UserSettingsManager()
         {
@@ -128,13 +128,13 @@ namespace Analogy
             try
             {
 
-                NLogSettings = string.IsNullOrEmpty(Settings.Default.NlogSettings) ?
-                    new LogParserSettings() :
-                    JsonConvert.DeserializeObject<LogParserSettings>(Settings.Default.NlogSettings);
+                LogParsersSettings = string.IsNullOrEmpty(Settings.Default.LogParsersSettings) ?
+                    new LogParserSettingsContainer() :
+                    JsonConvert.DeserializeObject<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
             }
             catch
             {
-                NLogSettings = new LogParserSettings();
+                LogParsersSettings = new LogParserSettingsContainer();
             }
 
         }
@@ -174,11 +174,11 @@ namespace Analogy
             Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             try
             {
-                Settings.Default.NlogSettings = JsonConvert.SerializeObject(NLogSettings);
+                Settings.Default.LogParsersSettings = JsonConvert.SerializeObject(LogParsersSettings);
             }
             catch
             {
-                Settings.Default.NlogSettings = string.Empty;
+                Settings.Default.LogParsersSettings = string.Empty;
             }
             try
             {
@@ -224,7 +224,20 @@ namespace Analogy
             .Take(10).ToList();
 
     }
+    [Serializable]
+    public class LogParserSettingsContainer
+    {
+        public LogParserSettings NLogParserSettings { get; set; }
 
+        public LogParserSettingsContainer()
+        {
+            NLogParserSettings=new LogParserSettings();
+            NLogParserSettings.Splitter = "|";
+            
+        }
+
+    }
+    [Serializable]
     public class LogParserSettings
     {
         public List<string> SupportedFilesExtensions { get; set; }
@@ -234,6 +247,8 @@ namespace Analogy
         public Dictionary<int, AnalogyLogMessagePropertyName> Maps { get; set; }
         public int ValidItemsCount { get; set; }
 
+        public string AsJson() => JsonConvert.SerializeObject(this);
+        public static LogParserSettings FromJson(string json) => JsonConvert.DeserializeObject<LogParserSettings>(json);
         public LogParserSettings()
         {
             IsConfigured = false;
@@ -261,7 +276,7 @@ namespace Analogy
         }
 
     }
-
+    [Serializable]
     public class ColorSettings
     {
         public Dictionary<AnalogyLogLevel, Color> LogLevelColors { get; set; }

@@ -386,12 +386,12 @@ namespace Analogy.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string NlogSettings {
+        public string LogParsersSettings {
             get {
-                return ((string)(this["NlogSettings"]));
+                return ((string)(this["LogParsersSettings"]));
             }
             set {
-                this["NlogSettings"] = value;
+                this["LogParsersSettings"] = value;
             }
         }
         

@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsDataProvidersForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageNLog = new DevExpress.XtraTab.XtraTabPage();
+            this.btnExportNLogSettings = new DevExpress.XtraEditors.SimpleButton();
+            this.btnImportNLogSettings = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.textEditNLogExtension = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -118,6 +120,8 @@
             // 
             // xtraTabPageNLog
             // 
+            this.xtraTabPageNLog.Controls.Add(this.btnExportNLogSettings);
+            this.xtraTabPageNLog.Controls.Add(this.btnImportNLogSettings);
             this.xtraTabPageNLog.Controls.Add(this.labelControl5);
             this.xtraTabPageNLog.Controls.Add(this.textEditNLogExtension);
             this.xtraTabPageNLog.Controls.Add(this.labelControl4);
@@ -132,6 +136,28 @@
             this.xtraTabPageNLog.Name = "xtraTabPageNLog";
             this.xtraTabPageNLog.Size = new System.Drawing.Size(772, 562);
             this.xtraTabPageNLog.Text = "NLog Parser";
+            // 
+            // btnExportNLogSettings
+            // 
+            this.btnExportNLogSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportNLogSettings.Location = new System.Drawing.Point(538, 520);
+            this.btnExportNLogSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExportNLogSettings.Name = "btnExportNLogSettings";
+            this.btnExportNLogSettings.Size = new System.Drawing.Size(111, 37);
+            this.btnExportNLogSettings.TabIndex = 14;
+            this.btnExportNLogSettings.Text = "Export Settings";
+            this.btnExportNLogSettings.Click += new System.EventHandler(this.btnExportNLogSettings_Click);
+            // 
+            // btnImportNLogSettings
+            // 
+            this.btnImportNLogSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportNLogSettings.Location = new System.Drawing.Point(658, 53);
+            this.btnImportNLogSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnImportNLogSettings.Name = "btnImportNLogSettings";
+            this.btnImportNLogSettings.Size = new System.Drawing.Size(111, 37);
+            this.btnImportNLogSettings.TabIndex = 13;
+            this.btnImportNLogSettings.Text = "Import settings";
+            this.btnImportNLogSettings.Click += new System.EventHandler(this.btnImportNLogSettings_Click);
             // 
             // labelControl5
             // 
@@ -330,10 +356,10 @@
             // sbtnNLogCheckLayout
             // 
             this.sbtnNLogCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnNLogCheckLayout.Location = new System.Drawing.Point(670, 3);
+            this.sbtnNLogCheckLayout.Location = new System.Drawing.Point(658, 3);
             this.sbtnNLogCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtnNLogCheckLayout.Name = "sbtnNLogCheckLayout";
-            this.sbtnNLogCheckLayout.Size = new System.Drawing.Size(96, 37);
+            this.sbtnNLogCheckLayout.Size = new System.Drawing.Size(111, 37);
             this.sbtnNLogCheckLayout.TabIndex = 1;
             this.sbtnNLogCheckLayout.Text = "Load layout";
             this.sbtnNLogCheckLayout.Click += new System.EventHandler(this.btnNlogCheckLayout_Click);
@@ -668,5 +694,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageWindowsEventLogs;
         private DevExpress.XtraEditors.LabelControl lblWindowsEventLogs;
         private XtraUCWindowsEventLogs xtraUCWindowsEventLogs1;
+        private DevExpress.XtraEditors.SimpleButton btnExportNLogSettings;
+        private DevExpress.XtraEditors.SimpleButton btnImportNLogSettings;
     }
 }

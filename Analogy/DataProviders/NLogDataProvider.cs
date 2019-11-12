@@ -26,7 +26,7 @@ namespace Analogy.DataProviders
 
         public void InitDataProvider()
         {
-            LogParserSettings = UserSettingsManager.UserSettings.NLogSettings;
+            LogParserSettings = UserSettingsManager.UserSettings.LogParsersSettings.NLogParserSettings;
             nLogFileParser = new NLogFileLoader(LogParserSettings);
         }
 
