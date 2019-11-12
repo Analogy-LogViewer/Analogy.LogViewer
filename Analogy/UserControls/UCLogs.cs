@@ -243,7 +243,7 @@ namespace Analogy
         {
             Tip = new ToolTip();
             Tip.SetToolTip(pboxInfo, "Use & or + for AND operations. Use | for OR operations");
-            Tip.SetToolTip(pboxInfoExclude, "Use , to separate values");
+            Tip.SetToolTip(pboxInfoExclude, "Use , to separate values. to exclude source or module prefix it with -");
 
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
             pnlFilteringLeft.Dock = DockStyle.Fill;
@@ -258,11 +258,12 @@ namespace Analogy
             gridControl.ForceInitialize();
             if (File.Exists(LayoutFileName))
                 gridControl.MainView.RestoreLayoutFromXml(LayoutFileName);
-            if (Settings.SaveExcludeTexts)
+            if (Settings.SaveSearchFilters)
             {
+                txtbIncludeText.Text = Settings.IncludeText;
                 txtbExclude.Text = Settings.ExcludedText;
-                txtbExcludeSource.Text = Settings.ExcludedSource;
-                txtbExcludeModule.Text = Settings.ExcludedModules;
+                txtbSource.Text = Settings.SourceText;
+                txtbModule.Text = Settings.ModuleText;
             }
             btswitchRefreshLog.Checked = true;
             gridColumnCategory.Visible = false;
@@ -756,9 +757,9 @@ namespace Analogy
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
-            if (message.Level==AnalogyLogLevel.Disabled)
+            if (message.Level == AnalogyLogLevel.Disabled)
                 return; //ignore those messages
-            
+
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();
@@ -915,17 +916,24 @@ namespace Analogy
 
         public void FilterResults(string module)
         {
-            txtbIncludeModule.Text = module;
+            txtbModule.Text = module;
             FilterResults();
         }
         private void FilterResults()
         {
             _filterCriteriaInline.TextInclude = chkbIncludeText.Checked ? txtbIncludeText.Text : string.Empty;
-            _filterCriteriaInline.TextExclude =
-                chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
+            _filterCriteriaInline.TextExclude = chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
+
+
+            Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteriaInline.TextInclude : string.Empty;
+            Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteriaInline.TextExclude : string.Empty;
+
+
+
+
             _filterCriteriaInline.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace,AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
+                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
@@ -936,52 +944,44 @@ namespace Analogy
                 _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
 
 
-            if (chkbIncludeModules.Checked)
-            {
-                _filterCriteriaInline.Modules = string.IsNullOrEmpty(txtbIncludeModule.Text)
-                    ? null
-                    : txtbIncludeModule.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(val => val.Trim()).ToArray();
-            }
-            else
-            {
-                _filterCriteriaInline.Modules = null;
-            }
 
-            if (chkbIncludeSources.Checked)
+            if (chkbSources.Checked && !string.IsNullOrEmpty(txtbSource.Text))
             {
-                _filterCriteriaInline.Sources = string.IsNullOrEmpty(txtbIncludeSource.Text)
-                    ? null
-                    : txtbIncludeSource.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(val => val.Trim()).ToArray();
+                var items = txtbSource.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var includeItems = items.Where(i => !i.StartsWith("-"));
+                var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
+                    .Select(i => i.Substring(1, i.Length - 1));
+
+                _filterCriteriaInline.Sources = includeItems.Select(val => val.Trim()).ToArray();
+                _filterCriteriaInline.ExcludedSources = excludeItems.Select(val => val.Trim()).ToArray();
             }
             else
             {
                 _filterCriteriaInline.Sources = null;
-            }
-
-            if (chkbExcludeSources.Checked)
-            {
-                _filterCriteriaInline.ExcludedSources = string.IsNullOrEmpty(txtbExcludeSource.Text)
-                    ? null
-                    : txtbExcludeSource.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(val => val.Trim()).ToArray();
-            }
-            else
-            {
                 _filterCriteriaInline.ExcludedSources = null;
             }
-            if (chkbExcludeModules.Checked)
+
+            Settings.SourceText = Settings.SaveSearchFilters ? txtbSource.Text : string.Empty;
+
+            if (chkbModules.Checked && !string.IsNullOrEmpty(txtbModule.Text))
             {
-                _filterCriteriaInline.ExcludedModules = string.IsNullOrEmpty(txtbExcludeModule.Text)
-                    ? null
-                    : txtbExcludeModule.Text.Split(new[] { ',', '|' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(val => val.Trim()).ToArray();
+
+                var items = txtbModule.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var includeItems = items.Where(i => !i.StartsWith("-"));
+                var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
+                      .Select(i => i.Substring(1, i.Length - 1));
+
+                _filterCriteriaInline.Modules = includeItems.Select(val => val.Trim()).ToArray();
+                _filterCriteriaInline.ExcludedModules = excludeItems.Select(val => val.Trim()).ToArray();
+
+
             }
             else
             {
+                _filterCriteriaInline.Modules = null;
                 _filterCriteriaInline.ExcludedModules = null;
             }
+            Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
 
 
             lockSlim.EnterWriteLock();
@@ -1178,34 +1178,34 @@ namespace Analogy
 
         private void txtbExcludeSource_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbExcludeSource.Text))
-            {
-                chkbExcludeSources.Checked = false;
-            }
-            else
-            {
-                if (!chkbExcludeSources.Checked)
-                    chkbExcludeSources.Checked = true;
-            }
+            //if (string.IsNullOrEmpty(txtbExcludeSource.Text))
+            //{
+            //    chkbExcludeSources.Checked = false;
+            //}
+            //else
+            //{
+            //    if (!chkbExcludeSources.Checked)
+            //        chkbExcludeSources.Checked = true;
+            //}
 
-            RefreshUserFilter();
-            Settings.ExcludedSource = txtbExcludeSource.Text;
+            //RefreshUserFilter();
+            //Settings.ExcludedSource = txtbExcludeSource.Text;
 
         }
 
         private void txtbExcludeModule_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbExcludeModule.Text))
-            {
-                chkbExcludeModules.Checked = false;
-            }
-            else
-            {
-                if (!chkbExcludeModules.Checked)
-                    chkbExcludeModules.Checked = true;
-            }
-            RefreshUserFilter();
-            Settings.ExcludedModules = txtbExcludeModule.Text;
+            //if (string.IsNullOrEmpty(txtbExcludeModule.Text))
+            //{
+            //    chkbExcludeModules.Checked = false;
+            //}
+            //else
+            //{
+            //    if (!chkbExcludeModules.Checked)
+            //        chkbExcludeModules.Checked = true;
+            //}
+            //RefreshUserFilter();
+            //Settings.ExcludedModules = txtbExcludeModule.Text;
         }
 
         private void chkbExcludeSourceAndModule_CheckedChanged(object sender, EventArgs e)
@@ -1303,15 +1303,7 @@ namespace Analogy
             }
         }
 
-        private void tsBtnopyBookmark_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tsbtnClearBookmarks_Click(object sender, EventArgs e)
-        {
-            _bookmarkedMessages.Clear();
-        }
 
         private void chkbHighlight_CheckedChanged(object sender, EventArgs e)
         {
@@ -1329,13 +1321,15 @@ namespace Analogy
         {
 
             (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
-            txtbExcludeSource.Text = txtbExcludeSource.Text + "," + message?.Source;
+            if (!string.IsNullOrEmpty(message?.Source))
+                txtbSource.Text = txtbSource.Text + ",-" + message.Source;
         }
 
         private void tsmiExcludeModule_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
-            txtbExcludeModule.Text = txtbExcludeModule.Text + "," + message?.Module;
+            if (!string.IsNullOrEmpty(message?.Module))
+                txtbModule.Text = txtbModule.Text + ",-" + message.Module;
         }
 
         private void txtbInclude_KeyDown(object sender, KeyEventArgs e)
@@ -2081,56 +2075,47 @@ namespace Analogy
             txtbExclude.Text = "";
         }
 
-        private void sbtnExcludeSources_Click(object sender, EventArgs e)
-        {
-            txtbExcludeSource.Text = "";
-        }
-
         private void sbtnIncludeSources_Click(object sender, EventArgs e)
         {
-            txtbIncludeSource.Text = "";
+            txtbSource.Text = "";
         }
 
         private void txtbIncludeSource_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbIncludeSource.Text))
+            if (string.IsNullOrEmpty(txtbSource.Text))
             {
-                chkbIncludeSources.Checked = false;
+                chkbSources.Checked = false;
             }
             else
             {
-                if (!chkbIncludeSources.Checked)
-                    chkbIncludeSources.Checked = true;
+                if (!chkbSources.Checked)
+                    chkbSources.Checked = true;
             }
 
             RefreshUserFilter();
-            Settings.IncludedSource = chkbIncludeSources.Text;
+            Settings.SourceText = chkbSources.Text;
         }
 
-        private void sbtnExcludeModules_Click(object sender, EventArgs e)
-        {
-            txtbExcludeModule.Text = "";
-        }
 
         private void sbtnIncludeModules_Click(object sender, EventArgs e)
         {
-            txtbIncludeModule.Text = "";
+            txtbModule.Text = "";
         }
 
         private void txtbIncludeModule_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbIncludeModule.Text))
+            if (string.IsNullOrEmpty(txtbModule.Text))
             {
-                chkbIncludeModules.Checked = false;
+                chkbModules.Checked = false;
             }
             else
             {
-                if (!chkbIncludeModules.Checked)
-                    chkbIncludeModules.Checked = true;
+                if (!chkbModules.Checked)
+                    chkbModules.Checked = true;
             }
 
             RefreshUserFilter();
-            Settings.IncludedModule= chkbIncludeModules.Text;
+            Settings.ModuleText = chkbModules.Text;
         }
 
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)

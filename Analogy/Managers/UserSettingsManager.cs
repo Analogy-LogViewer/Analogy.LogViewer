@@ -20,13 +20,12 @@ namespace Analogy
 
         public string ApplicationSkinName { get; set; }
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
-        public bool SaveExcludeTexts { get; set; }
+        public bool SaveSearchFilters { get; set; }
         public string IncludeText { get; set; }
         public string ExcludedText { get; set; }
-        public string ExcludedModules { get; set; }
-        public string ExcludedSource { get; set; }
-        public string IncludedModule { get; set; }
-        public string IncludedSource { get; set; }
+    
+        public string SourceText { get; set; }
+        public string ModuleText { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
         public bool ShowHistoryOfClearedMessages { get; set; }
         public int RecentFilesCount { get; set; }
@@ -74,11 +73,11 @@ namespace Analogy
             AnalogyRunningTime = Settings.Default.AnalogyRunningTime;
             AnalogyLaunches = Settings.Default.AnalogyLaunchesCount;
             AnalogyOpenedFiles = Settings.Default.OpenFilesCount;
-            ExcludedText = Settings.Default.ExcludedText;
-            ExcludedSource = Settings.Default.ExcludedSource;
-            ExcludedModules = Settings.Default.ExcludedModules;
+            ExcludedText = Settings.Default.ModuleText;
+            SourceText = Settings.Default.SourceText;
+            ModuleText = Settings.Default.ModuleText;
             ShowHistoryOfClearedMessages = Settings.Default.ShowHistoryClearedMessages;
-            SaveExcludeTexts = Settings.Default.SaveExcludeTexts;
+            SaveSearchFilters = Settings.Default.SaveSearchFilters;
             //SimpleMode = Properties.Settings.Default.SimpleMode;
             RecentFiles =
                 Settings.Default.RecentFiles
@@ -147,11 +146,10 @@ namespace Analogy
             Settings.Default.AnalogyRunningTime = AnalogyRunningTime;
             Settings.Default.AnalogyLaunchesCount = AnalogyLaunches;
             Settings.Default.OpenFilesCount = AnalogyOpenedFiles;
-            Settings.Default.ExcludedText = ExcludedText;
-            Settings.Default.ExcludedSource = ExcludedSource;
-            Settings.Default.ExcludedModules = ExcludedModules;
+            Settings.Default.ModuleText = ModuleText;
+            Settings.Default.SourceText = SourceText;
             Settings.Default.ShowHistoryClearedMessages = ShowHistoryOfClearedMessages;
-            Settings.Default.SaveExcludeTexts = SaveExcludeTexts;
+            Settings.Default.SaveSearchFilters = SaveSearchFilters;
             Settings.Default.RecentFilesCount = RecentFilesCount;
             Settings.Default.RecentFiles = string.Join("##",
                 RecentFiles.Take(RecentFilesCount).Select(i => $"{i.ID},{i.FileName}"));

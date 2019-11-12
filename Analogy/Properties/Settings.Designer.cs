@@ -26,36 +26,24 @@ namespace Analogy.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ExcludedText {
+        public string ModuleText {
             get {
-                return ((string)(this["ExcludedText"]));
+                return ((string)(this["ModuleText"]));
             }
             set {
-                this["ExcludedText"] = value;
+                this["ModuleText"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ExcludedModules {
+        public string SourceText {
             get {
-                return ((string)(this["ExcludedModules"]));
+                return ((string)(this["SourceText"]));
             }
             set {
-                this["ExcludedModules"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ExcludedSource {
-            get {
-                return ((string)(this["ExcludedSource"]));
-            }
-            set {
-                this["ExcludedSource"] = value;
+                this["SourceText"] = value;
             }
         }
         
@@ -74,12 +62,12 @@ namespace Analogy.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SaveExcludeTexts {
+        public bool SaveSearchFilters {
             get {
-                return ((bool)(this["SaveExcludeTexts"]));
+                return ((bool)(this["SaveSearchFilters"]));
             }
             set {
-                this["SaveExcludeTexts"] = value;
+                this["SaveSearchFilters"] = value;
             }
         }
         

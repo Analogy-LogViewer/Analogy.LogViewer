@@ -46,7 +46,7 @@ namespace Analogy
         private void LoadSettings()
         {
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
-            tsFilteringExclude.IsOn = Settings.SaveExcludeTexts;
+            tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             nudRecent.Value = Settings.RecentFilesCount;
             tsUserStatistics.IsOn = Settings.EnableUserStatistics;
             //tsSimpleMode.IsOn = Settings.SimpleMode;
@@ -83,7 +83,7 @@ namespace Analogy
 
         private void tsFilteringExclude_Toggled(object sender, EventArgs e)
         {
-            Settings.SaveExcludeTexts = tsFilteringExclude.IsOn;
+            Settings.SaveSearchFilters = tsFilteringExclude.IsOn;
 
         }
 
