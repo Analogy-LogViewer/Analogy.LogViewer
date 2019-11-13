@@ -198,10 +198,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.XtraTreeList.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>redist\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -233,8 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProviders\CommonChangeLog.cs" />
-    <Compile Include="DataProviders\NLogBuiltInFactory.cs" />
-    <Compile Include="DataProviders\NLogDataProvider.cs" />
     <Compile Include="Forms\AboutDataSourceBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,8 +266,6 @@
     <Compile Include="Forms\UserSettingsDataProvidersForm.Designer.cs">
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogLoaders\GeneralFileParser.cs" />
-    <Compile Include="LogLoaders\NLogFileLoader.cs" />
     <Compile Include="Managers\BookmarkPersistManager.cs" />
     <Compile Include="Managers\ClientServerDataSourceManager.cs" />
     <Compile Include="Managers\AnalogyFactoriesManager.cs" />
@@ -824,6 +816,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Analogy.DataProviders.Extensions">
+      <Version>1.0.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.NLogProvider">
+      <Version>1.0.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
     </PackageReference>

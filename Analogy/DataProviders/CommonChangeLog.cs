@@ -9,7 +9,6 @@ namespace Analogy.DataProviders
 {
     public static class CommonChangeLog
     {
-
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             yield return new AnalogyChangeLog("NLog Data Provider: Add import/export of settings. (issue #52)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 12));

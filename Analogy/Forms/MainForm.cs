@@ -14,6 +14,7 @@ using Analogy.DataProviders;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.LogViewer.NLogProvider;
 using Analogy.Properties;
 using Analogy.Tools;
 using DevExpress.XtraEditors;

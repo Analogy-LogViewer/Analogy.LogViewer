@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces;
 using DevExpress.Utils;
 using Newtonsoft.Json;
@@ -54,7 +55,7 @@ namespace Analogy
            
         }
 
-        private void LoadNLogSettings(LogParserSettings nLogParserSettings)
+        private void LoadNLogSettings(ILogParserSettings nLogParserSettings)
         {
             if (nLogParserSettings.IsConfigured)
             {
