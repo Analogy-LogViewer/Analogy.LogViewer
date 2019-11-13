@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Analogy.DataProviders;
+using Analogy.DataProviders.Extensions;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
@@ -22,6 +23,7 @@ namespace Analogy
         private bool ExternalDataSourcesAdded { get; set; }
         public static AnalogyFactoriesManager Instance = _instance.Value;
         private List<IAnalogyFactory> builtInFactories { get; }
+        private List<(Guid FacyoryID, IAnalogyDataProviderSetting Settings)> Settings { get;  set; }
         public async Task AddExternalDataSources()
         {
             if (ExternalDataSourcesAdded)
@@ -48,6 +50,8 @@ namespace Analogy
 
         public AnalogyFactoriesManager()
         {
+            Settings=new List<(Guid FacyoryID, IAnalogyDataProviderSetting Settings)>();
+            Settings.Add((NLogBuiltInFactory.AnalogyNLogGuid,new AnalogyNLogSettings()));
             Factories = new List<IAnalogyFactory>();
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
             {
