@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
     public partial class XtraUCWindowsEventLogs : DevExpress.XtraEditors.XtraUserControl
     {
-        private readonly UserSettingsManager _settings = UserSettingsManager.UserSettings;
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         public XtraUCWindowsEventLogs()
         {
             InitializeComponent();
@@ -15,9 +16,18 @@ namespace Analogy
 
         private void XtraUCWindowsEventLogs_Load(object sender, EventArgs e)
         {
-            lstSelected.Items.AddRange(_settings.EventLogs.ToArray());
-            var all = System.Diagnostics.Eventing.Reader.EventLogSession.GlobalSession.GetLogNames().Where(EventLog.Exists).ToList().Except(_settings.EventLogs).ToArray();
-            lstAvailable.Items.AddRange(all);
+            lstSelected.Items.AddRange(Settings.EventLogs.ToArray());
+            try
+            {
+                var all = System.Diagnostics.Eventing.Reader.EventLogSession.GlobalSession.GetLogNames().Where(EventLog.Exists).ToList().Except(Settings.EventLogs).ToArray();
+                lstAvailable.Items.AddRange(all);
+            }
+            catch (Exception exception)
+            {
+                XtraMessageBox.Show("Error loading all logs. Make sure you are running as administrator. Error:" + exception.Message, "Error",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
 
         }
 
@@ -47,7 +57,7 @@ namespace Analogy
 
         private void UpdateUserSettingList()
         {
-            _settings.EventLogs = lstSelected.Items.OfType<string>().ToList();
+            Settings.EventLogs = lstSelected.Items.OfType<string>().ToList();
         }
     }
 }

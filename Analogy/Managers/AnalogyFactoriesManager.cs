@@ -20,6 +20,7 @@ namespace Analogy
         private static object sync = new object();
         private bool ExternalDataSourcesAdded { get; set; }
         public static AnalogyFactoriesManager Instance = _instance.Value;
+        private List<IAnalogyFactory> builtInFactories { get; }
         public async Task AddExternalDataSources()
         {
             if (ExternalDataSourcesAdded)
@@ -52,6 +53,26 @@ namespace Analogy
                 (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
                 (new NLogBuiltInFactory(), Assembly.GetExecutingAssembly())
             };
+            builtInFactories=new List<IAnalogyFactory>();
+            try
+            {
+                foreach ((IAnalogyFactory factory, _) in Assemblies)
+                {
+                    foreach (var provider in factory.DataProviders.Items)
+                    {
+                        provider.InitDataProvider();
+                    }
+                    //if no exception in init then add to list
+                    Factories.Add(factory);
+                    builtInFactories .Add(factory);
+
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
         }
 
         public IEnumerable<(string Title, (string Title, IEnumerable<IAnalogyDataProvider> Items) DataSources)>
@@ -110,6 +131,10 @@ namespace Analogy
 
         public IAnalogyFactory Get(Guid id) => Assemblies.Single(a => a.Factory.FactoryID == id).Factory;
 
+        public bool IsBuiltInFactory(IAnalogyFactory factory)
+        {
+            return builtInFactories.Exists(f => f.FactoryID.Equals(factory.FactoryID));
+        }
     }
 
     public class ExternalDataProviders
@@ -126,10 +151,8 @@ namespace Analogy
         public ExternalDataProviders()
         {
             Factories = new List<IAnalogyFactory>();
-            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
-            {
-                (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly())
-            };
+            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>();
+
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
             foreach (string aFile in moduleIdFiles)

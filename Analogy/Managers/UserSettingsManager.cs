@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Analogy.Interfaces;
 using Analogy.Properties;
 using Newtonsoft.Json;
@@ -11,20 +13,19 @@ namespace Analogy
 {
     public class UserSettingsManager
     {
-        private readonly string splitter = "*#*#*#";
+        private static readonly string splitter = "*#*#*#";
 
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
 
         public string ApplicationSkinName { get; set; }
-        public static UserSettingsManager UserSettings { get; } = _instance.Value;
-        public bool SaveExcludeTexts { get; set; }
+        public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
+        public bool SaveSearchFilters { get; set; }
         public string IncludeText { get; set; }
         public string ExcludedText { get; set; }
-        public string ExcludedModules { get; set; }
-        public string ExcludedSource { get; set; }
-        public string IncludedModule { get; set; }
-        public string IncludedSource { get; set; }
+    
+        public string SourceText { get; set; }
+        public string ModuleText { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
         public bool ShowHistoryOfClearedMessages { get; set; }
         public int RecentFilesCount { get; set; }
@@ -51,7 +52,8 @@ namespace Analogy
 
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
-        public LogParserSettings NLogSettings { get; set; }
+        public LogParserSettingsContainer LogParsersSettings { get; set; }
+        public ColorSettings ColorSettings { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -71,11 +73,11 @@ namespace Analogy
             AnalogyRunningTime = Settings.Default.AnalogyRunningTime;
             AnalogyLaunches = Settings.Default.AnalogyLaunchesCount;
             AnalogyOpenedFiles = Settings.Default.OpenFilesCount;
-            ExcludedText = Settings.Default.ExcludedText;
-            ExcludedSource = Settings.Default.ExcludedSource;
-            ExcludedModules = Settings.Default.ExcludedModules;
+            ExcludedText = Settings.Default.ModuleText;
+            SourceText = Settings.Default.SourceText;
+            ModuleText = Settings.Default.ModuleText;
             ShowHistoryOfClearedMessages = Settings.Default.ShowHistoryClearedMessages;
-            SaveExcludeTexts = Settings.Default.SaveExcludeTexts;
+            SaveSearchFilters = Settings.Default.SaveSearchFilters;
             //SimpleMode = Properties.Settings.Default.SimpleMode;
             RecentFiles =
                 Settings.Default.RecentFiles
@@ -114,15 +116,25 @@ namespace Analogy
             try
             {
 
-                NLogSettings = string.IsNullOrEmpty(Settings.Default.NlogSettings) ?
-                    new LogParserSettings() :
-                    JsonConvert.DeserializeObject<LogParserSettings>(Settings.Default.NlogSettings);
+                ColorSettings = string.IsNullOrEmpty(Settings.Default.ColorSettings) ?
+                    new ColorSettings() :
+                    JsonConvert.DeserializeObject<ColorSettings>(Settings.Default.ColorSettings);
             }
             catch
             {
-                NLogSettings = new LogParserSettings();
+                ColorSettings = new ColorSettings();
             }
+            try
+            {
 
+                LogParsersSettings = string.IsNullOrEmpty(Settings.Default.LogParsersSettings) ?
+                    new LogParserSettingsContainer() :
+                    JsonConvert.DeserializeObject<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
+            }
+            catch
+            {
+                LogParsersSettings = new LogParserSettingsContainer();
+            }
 
         }
 
@@ -134,11 +146,10 @@ namespace Analogy
             Settings.Default.AnalogyRunningTime = AnalogyRunningTime;
             Settings.Default.AnalogyLaunchesCount = AnalogyLaunches;
             Settings.Default.OpenFilesCount = AnalogyOpenedFiles;
-            Settings.Default.ExcludedText = ExcludedText;
-            Settings.Default.ExcludedSource = ExcludedSource;
-            Settings.Default.ExcludedModules = ExcludedModules;
+            Settings.Default.ModuleText = ModuleText;
+            Settings.Default.SourceText = SourceText;
             Settings.Default.ShowHistoryClearedMessages = ShowHistoryOfClearedMessages;
-            Settings.Default.SaveExcludeTexts = SaveExcludeTexts;
+            Settings.Default.SaveSearchFilters = SaveSearchFilters;
             Settings.Default.RecentFilesCount = RecentFilesCount;
             Settings.Default.RecentFiles = string.Join("##",
                 RecentFiles.Take(RecentFilesCount).Select(i => $"{i.ID},{i.FileName}"));
@@ -161,11 +172,19 @@ namespace Analogy
             Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             try
             {
-                Settings.Default.NlogSettings = JsonConvert.SerializeObject(NLogSettings);
+                Settings.Default.LogParsersSettings = JsonConvert.SerializeObject(LogParsersSettings);
             }
             catch
             {
-                Settings.Default.NlogSettings = string.Empty;
+                Settings.Default.LogParsersSettings = string.Empty;
+            }
+            try
+            {
+                Settings.Default.ColorSettings = JsonConvert.SerializeObject(ColorSettings);
+            }
+            catch
+            {
+                Settings.Default.ColorSettings = string.Empty;
             }
             Settings.Default.Save();
 
@@ -203,7 +222,20 @@ namespace Analogy
             .Take(10).ToList();
 
     }
+    [Serializable]
+    public class LogParserSettingsContainer
+    {
+        public LogParserSettings NLogParserSettings { get; set; }
 
+        public LogParserSettingsContainer()
+        {
+            NLogParserSettings=new LogParserSettings();
+            NLogParserSettings.Splitter = "|";
+            
+        }
+
+    }
+    [Serializable]
     public class LogParserSettings
     {
         public List<string> SupportedFilesExtensions { get; set; }
@@ -211,8 +243,10 @@ namespace Analogy
         public string Splitter { get; set; }
         public string Layout { get; set; }
         public Dictionary<int, AnalogyLogMessagePropertyName> Maps { get; set; }
+        public int ValidItemsCount { get; set; }
 
-
+        public string AsJson() => JsonConvert.SerializeObject(this);
+        public static LogParserSettings FromJson(string json) => JsonConvert.DeserializeObject<LogParserSettings>(json);
         public LogParserSettings()
         {
             IsConfigured = false;
@@ -229,15 +263,77 @@ namespace Analogy
             SupportedFilesExtensions = supportedFilesExtension;
             Maps = maps ?? new Dictionary<int, AnalogyLogMessagePropertyName>();
             IsConfigured = true;
+            ValidItemsCount = Layout.Split(splitter.Split(), StringSplitOptions.RemoveEmptyEntries).Length;
         }
         public void AddMap(int index, AnalogyLogMessagePropertyName name) => Maps.Add(index, name);
 
         public bool CanOpenFile(string filename)
         {
             if (string.IsNullOrEmpty(filename)) return false;
-            return SupportedFilesExtensions.Any(s =>s.EndsWith(Path.GetExtension(filename),StringComparison.InvariantCultureIgnoreCase));
+            return SupportedFilesExtensions.Any(s => s.EndsWith(Path.GetExtension(filename), StringComparison.InvariantCultureIgnoreCase));
         }
 
+    }
+    [Serializable]
+    public class ColorSettings
+    {
+        public Dictionary<AnalogyLogLevel, Color> LogLevelColors { get; set; }
+
+        public Color HighlightColor { get; set; }
+        public ColorSettings()
+        {
+            HighlightColor = Color.Aqua;
+            var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
+            LogLevelColors = new Dictionary<AnalogyLogLevel, Color>(logLevelValues.Length);
+
+            foreach (AnalogyLogLevel level in logLevelValues)
+
+            {
+                switch (level)
+                {
+                    case AnalogyLogLevel.Unknown:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Disabled:
+                        LogLevelColors.Add(level, Color.LightGray);
+                        break;
+                    case AnalogyLogLevel.Trace:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Verbose:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Debug:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Event:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    case AnalogyLogLevel.Warning:
+                        LogLevelColors.Add(level, Color.Yellow);
+                        break;
+                    case AnalogyLogLevel.Error:
+                        LogLevelColors.Add(level, Color.Pink);
+                        break;
+                    case AnalogyLogLevel.Critical:
+                        LogLevelColors.Add(level, Color.Red);
+                        break;
+                    case AnalogyLogLevel.AnalogyInformation:
+                        LogLevelColors.Add(level, Color.White);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public Color GetColorForLogLevel(AnalogyLogLevel level) => LogLevelColors[level];
+
+        public Color GetHighlightColor() => HighlightColor;
+
+        public void SetColorForLogLevel(AnalogyLogLevel level, Color value) => LogLevelColors[level] = value;
+        public void SetHighlightColor(Color value) => HighlightColor = value;
     }
 }
 

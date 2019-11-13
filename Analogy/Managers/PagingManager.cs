@@ -13,7 +13,7 @@ namespace Analogy
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
-        private UserSettingsManager Settings { get; }
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<DataTable> pages;
         private readonly List<AnalogyLogMessage> allMessages;
         private readonly int pageSize;
@@ -40,7 +40,6 @@ namespace Analogy
         public PagingManager(UCLogs owner)
         {
             this.owner = owner;
-            Settings = UserSettingsManager.UserSettings;
             pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
             currentTable = Utils.DataTableConstructor();

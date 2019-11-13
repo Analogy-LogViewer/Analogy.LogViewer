@@ -38,6 +38,8 @@
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.bbtnItemSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bItemProcess = new DevExpress.XtraBars.BarButtonItem();
@@ -91,6 +93,7 @@
             this.bbtnUserSettingsResourceUsage = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSettingsStartupDataSources = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnDataProviderSettings = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -182,10 +185,13 @@
             this.bsiIdleMessage,
             this.bbtnUserSettingsResourceUsage,
             this.bbtnSettingsStartupDataSources,
-            this.bbiFileCaching});
+            this.bbiFileCaching,
+            this.bBtnDataProviderSettings,
+            this.bBtnItemExportSettings,
+            this.bBtnItemImportSettings});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 69;
+            this.ribbonControlMain.MaxItemId = 72;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -204,6 +210,8 @@
             // applicationMenu1
             // 
             this.applicationMenu1.ItemLinks.Add(this.bbtnItemSettings);
+            this.applicationMenu1.ItemLinks.Add(this.bBtnItemExportSettings);
+            this.applicationMenu1.ItemLinks.Add(this.bBtnItemImportSettings);
             this.applicationMenu1.ItemLinks.Add(this.bbtnItemExit);
             this.applicationMenu1.Name = "applicationMenu1";
             this.applicationMenu1.Ribbon = this.ribbonControlMain;
@@ -212,9 +220,27 @@
             // 
             this.bbtnItemSettings.Caption = "Settings";
             this.bbtnItemSettings.Id = 30;
-            this.bbtnItemSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemSettings.ImageOptions.Image")));
+            this.bbtnItemSettings.ImageOptions.Image = global::Analogy.Properties.Resources.PageSetup_32x32;
             this.bbtnItemSettings.Name = "bbtnItemSettings";
             this.bbtnItemSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemSettings_ItemClick);
+            // 
+            // bBtnItemExportSettings
+            // 
+            this.bBtnItemExportSettings.Caption = "Export Settings";
+            this.bBtnItemExportSettings.Id = 70;
+            this.bBtnItemExportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemExportSettings.ImageOptions.Image")));
+            this.bBtnItemExportSettings.Name = "bBtnItemExportSettings";
+            this.bBtnItemExportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bBtnItemExportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemExportSettings_ItemClick);
+            // 
+            // bBtnItemImportSettings
+            // 
+            this.bBtnItemImportSettings.Caption = "Import Settings";
+            this.bBtnItemImportSettings.Id = 71;
+            this.bBtnItemImportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemImportSettings.ImageOptions.Image")));
+            this.bBtnItemImportSettings.Name = "bBtnItemImportSettings";
+            this.bBtnItemImportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bBtnItemImportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemImportSettings_ItemClick);
             // 
             // bbtnItemExit
             // 
@@ -315,7 +341,6 @@
             this.btnItemConvert.Name = "btnItemConvert";
             this.btnItemConvert.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -677,6 +702,16 @@
             this.bbiFileCaching.Name = "bbiFileCaching";
             this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
             // 
+            // bBtnDataProviderSettings
+            // 
+            this.bBtnDataProviderSettings.Caption = "Data Providers Settings";
+            this.bBtnDataProviderSettings.Id = 69;
+            this.bBtnDataProviderSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Database_on;
+            this.bBtnDataProviderSettings.Name = "bBtnDataProviderSettings";
+            this.bBtnDataProviderSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.bBtnDataProviderSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataProviderSettings_ItemClick);
+            // 
             // ribbonPageThemes
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -722,6 +757,7 @@
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnMRUSettings);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bbtnUserSettingsResourceUsage);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bbtnSettingsStartupDataSources);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnDataProviderSettings);
             this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
             this.ribbonPageGroupSettings.Text = "Settings";
             // 
@@ -866,5 +902,8 @@
         private DevExpress.XtraBars.BarButtonItem bbtnUserSettingsResourceUsage;
         private DevExpress.XtraBars.BarButtonItem bbtnSettingsStartupDataSources;
         private DevExpress.XtraBars.BarButtonItem bbiFileCaching;
+        private DevExpress.XtraBars.BarButtonItem bBtnDataProviderSettings;
+        private DevExpress.XtraBars.BarButtonItem bBtnItemExportSettings;
+        private DevExpress.XtraBars.BarButtonItem bBtnItemImportSettings;
     }
 }

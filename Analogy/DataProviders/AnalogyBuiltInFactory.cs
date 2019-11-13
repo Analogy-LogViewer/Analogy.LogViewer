@@ -56,6 +56,7 @@ namespace Analogy.DataSources
         public string FileSaveDialogFilters { get; } = "Plain Analogy XML log file (*.log)|*.log|Analogy JSON file (*.json)|*.json";
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.log", "*.json" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
+        public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
         public Image OptionalOpenFolderImage { get; }
         public Image OptionalOpenFilesImage { get; }
         public void InitDataProvider()

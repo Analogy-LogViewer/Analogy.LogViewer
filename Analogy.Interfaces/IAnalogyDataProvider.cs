@@ -11,6 +11,8 @@ namespace Analogy.Interfaces
         Guid ID { get; }
         void InitDataProvider();
 
+        string OptionalTitle { get; }
+
     }
     
     public interface IAnalogyRealTimeDataProvider : IAnalogyDataProvider
