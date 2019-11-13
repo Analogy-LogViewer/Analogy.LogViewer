@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
@@ -47,7 +49,7 @@ namespace Analogy.Interfaces
     [Serializable]
     [XmlRoot("AnalogyLogMessage")]
 
-    public class AnalogyLogMessage
+    public class AnalogyLogMessage : IEquatable<AnalogyLogMessage>
     {
 
         /// <summary>
@@ -119,7 +121,8 @@ namespace Analogy.Interfaces
         public string[] Parameters { get; set; }
 
         public string User { get; set; }
-
+        private static string _currentProcessName = Process.GetCurrentProcess().ProcessName;
+        private static int _currentProcessId = Process.GetCurrentProcess().Id;
         public AnalogyLogMessage()
         {
             ID = Guid.NewGuid();
@@ -130,6 +133,7 @@ namespace Analogy.Interfaces
             FileName = string.Empty;
             Parameters = new string[0];
             User = string.Empty;
+
         }
         public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName]string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
@@ -141,11 +145,186 @@ namespace Analogy.Interfaces
             LineNumber = lineNumber;
             Class = logClass;
             Level = level;
-            Module = moduleOrProcessName ?? Process.GetCurrentProcess().ProcessName;
-            ProcessID = processId != 0 ? processId : Process.GetCurrentProcess().Id;
+            Module = moduleOrProcessName ?? _currentProcessName;
+            ProcessID = processId != 0 ? processId : _currentProcessId;
             Parameters = parameters ?? new string[0];
             User = user ?? string.Empty;
             Thread = threadID != 0 ? Thread : System.Threading.Thread.CurrentThread.ManagedThreadId;
+        }
+
+        public bool Equals(AnalogyLogMessage other)
+        {
+            if (other is null) return false;
+            if (ReferenceEquals(this, other)) return true;
+            bool areEqual = Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text && Category == other.Category &&
+                   Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
+                   LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
+                   Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
+                   User == other.User;
+            if ((!areEqual) ||
+                (Parameters is null && other.Parameters != null) ||
+                (Parameters != null && other.Parameters is null))
+                return false;
+            return (Parameters is null && other.Parameters is null) ||
+                Parameters.SequenceEqual(other.Parameters);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((AnalogyLogMessage)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = Date.GetHashCode();
+                hashCode = (hashCode * 397) ^ ID.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Text != null ? Text.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Category != null ? Category.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Source != null ? Source.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (MethodName != null ? MethodName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (FileName != null ? FileName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ LineNumber;
+                hashCode = (hashCode * 397) ^ (int)Class;
+                hashCode = (hashCode * 397) ^ (int)Level;
+                hashCode = (hashCode * 397) ^ (Module != null ? Module.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ ProcessID;
+                hashCode = (hashCode * 397) ^ Thread;
+                if (Parameters != null && Parameters.Any())
+                {
+                    foreach (string parameter in Parameters)
+                    {
+                        if (!string.IsNullOrEmpty(parameter))
+                            hashCode = (hashCode * 397) ^ parameter.GetHashCode();
+                    }
+                }
+                hashCode = (hashCode * 397) ^ (User != null ? User.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string propertyValue)> data)
+        {
+            AnalogyLogMessage m = new AnalogyLogMessage();
+            m.Date = DateTime.MinValue;
+            m.ID = Guid.Empty;
+            m.Module = "Unknown";
+            m.Thread = -1;
+            m.ProcessID = -1;
+            foreach (var (propertyName, propertyValue) in data)
+            {
+                switch (propertyName)
+                {
+                    case AnalogyLogMessagePropertyName.Date:
+                        {
+                            if (DateTime.TryParse(propertyValue, out DateTime time))
+                                m.Date = time;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.ID:
+                        {
+                            if (Guid.TryParse(propertyValue, out Guid id))
+                                m.ID = id;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.Text:
+                        m.Text = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.Category:
+                        m.Category = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.Source:
+                        m.Source = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.MethodName:
+                        m.MethodName = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.FileName:
+                        m.FileName = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.Module:
+                        m.Module = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.User:
+                        m.User = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.LineNumber:
+                        {
+                            if (int.TryParse(propertyValue, out int num))
+                                m.LineNumber = num;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.ProcessID:
+                        {
+                            if (int.TryParse(propertyValue, out int num))
+                                m.ProcessID = num;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.Thread:
+                        {
+                            if (int.TryParse(propertyValue, out int num))
+                                m.Thread = num;
+                        }
+                        continue;
+                    case AnalogyLogMessagePropertyName.Level:
+                        {
+                            if (Enum.TryParse(propertyValue, true, out AnalogyLogLevel level) &&
+                                Enum.IsDefined(typeof(AnalogyLogLevel), level))
+                            {
+                                m.Level = level;
+                            }
+                            else
+                            {
+                                switch (propertyValue)
+                                {
+                                    case "OFF":
+                                        m.Level = AnalogyLogLevel.Disabled;
+                                        break;
+                                    case "TRACE":
+                                        m.Level = AnalogyLogLevel.Trace;
+                                        break;
+                                    case "DEBUG":
+                                        m.Level = AnalogyLogLevel.Debug;
+                                        break;
+                                    case "INFO":
+                                        m.Level = AnalogyLogLevel.Event;
+                                        break;
+                                    case "WARN":
+                                        m.Level = AnalogyLogLevel.Warning;
+                                        break;
+                                    case "ERROR":
+                                        m.Level = AnalogyLogLevel.Error;
+                                        break;
+                                    case "FATAL":
+                                        m.Level = AnalogyLogLevel.Critical;
+                                        break;
+                                    default:
+                                        m.Level = AnalogyLogLevel.Unknown;
+                                        break;
+                                }
+
+                            }
+
+                            continue;
+                        }
+                    case AnalogyLogMessagePropertyName.Class:
+                        {
+                            m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls) &&
+                                      Enum.IsDefined(typeof(AnalogyLogClass), cls)
+                                ? cls
+                                : AnalogyLogClass.General;
+                        }
+                        continue;
+                    default: continue;
+                }
+            }
+
+            return m;
         }
     }
 
@@ -178,6 +357,7 @@ namespace Analogy.Interfaces
     /// </summary>
     public enum AnalogyLogLevel
     {
+        Unknown,
         Disabled,
         Trace,
         Verbose,
@@ -196,5 +376,23 @@ namespace Analogy.Interfaces
         Refactoring,
         Feature,
         Improvement
+    }
+
+    public enum AnalogyLogMessagePropertyName
+    {
+        Date,
+        ID,
+        Text,
+        Category,
+        Source,
+        Module,
+        MethodName,
+        FileName,
+        User,
+        LineNumber,
+        ProcessID,
+        Thread,
+        Level,
+        Class
     }
 }

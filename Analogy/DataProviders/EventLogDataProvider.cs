@@ -14,6 +14,7 @@ namespace Analogy.DataSources
 {
     public class EventLogDataProvider : IAnalogyOfflineDataProvider
     {
+        public string OptionalTitle { get; } = "Analogy Built-In Windows Event Log Data Provider";
         public UCLogs LogWindow { get; set; }
         public Guid ID { get; } = new Guid("465F4963-71F3-4E50-8253-FA286BF5692B");
         public void InitDataProvider()
@@ -39,15 +40,18 @@ namespace Analogy.DataSources
                 var messages = await logLoader.ReadFromFile(fileName, messagesHandler).ConfigureAwait(false);
                 return messages;
             }
-            AnalogyLogMessage m = new AnalogyLogMessage();
-            m.Text = $"Unsupported file: {fileName}. Skipping file";
-            m.Level = AnalogyLogLevel.Critical;
-            m.Source = "Analogy";
-            m.Module = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
-            m.ProcessID = System.Diagnostics.Process.GetCurrentProcess().Id;
-            m.Class = AnalogyLogClass.General;
-            m.User = Environment.UserName;
-            m.Date = DateTime.Now;
+
+            AnalogyLogMessage m = new AnalogyLogMessage
+            {
+                Text = $"Unsupported file: {fileName}. Skipping file",
+                Level = AnalogyLogLevel.Critical,
+                Source = "Analogy",
+                Module = System.Diagnostics.Process.GetCurrentProcess().ProcessName,
+                ProcessID = System.Diagnostics.Process.GetCurrentProcess().Id,
+                Class = AnalogyLogClass.General,
+                User = Environment.UserName,
+                Date = DateTime.Now
+            };
             messagesHandler.AppendMessage(m, Environment.MachineName);
             return new List<AnalogyLogMessage>() { m };
         }

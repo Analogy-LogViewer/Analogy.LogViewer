@@ -9,6 +9,7 @@ namespace Analogy.Tools
 
     public class FileComparerProcessor : ILogMessageCreatedHandler
     {
+        public bool ForceNoFileCaching { get; } = false;
         private List<AnalogyLogMessage> messages;
         public string FileName { get; }
         public FileComparerProcessor(string filename)

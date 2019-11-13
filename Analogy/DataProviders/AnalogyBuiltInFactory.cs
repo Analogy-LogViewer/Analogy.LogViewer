@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.LogLoaders;
@@ -16,10 +17,10 @@ namespace Analogy.DataSources
     {
         public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
         public Guid FactoryID { get; } = AnalogyGuid;
-        public string Title { get; } = "Analogy Built-in Logs";
+        public string Title { get; } = "Analogy Logs Formats";
         public IAnalogyDataProvidersFactory DataProviders { get; }
         public IAnalogyCustomActionsFactory Actions { get; }
-        public IEnumerable<IAnalogyChangeLog> ChangeLog => GetChangeLog();
+        public IEnumerable<IAnalogyChangeLog> ChangeLog => CommonChangeLog.GetChangeLog();
         public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
         public string About { get; } = "Analogy Built-in Data Source";
         public AnalogyBuiltInFactory()
@@ -29,39 +30,20 @@ namespace Analogy.DataSources
 
         }
 
-        private IEnumerable<AnalogyChangeLog> GetChangeLog()
-        {
-            yield return new AnalogyChangeLog("cleanup old namespaces (issue #34)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 10, 18));
-            yield return new AnalogyChangeLog("frameworks update: interface dll is not target .net standard 2.0 and Analogy UI is .net framework 4.7.2 (issues #32,#33)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 10, 18));
-            yield return new AnalogyChangeLog("UI: not all UI elements support themes (issue #28)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 10, 14));
-            yield return new AnalogyChangeLog("UI: Add an option (user setting) to auto scroll to last message (Issue #26)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 10, 13));
-            yield return new AnalogyChangeLog("Fix: DevExpress Control: Sometimes an error occurs and the grid displays a big red X (Issue #4)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 10, 11));
-            yield return new AnalogyChangeLog("UI: Add fast file caching switching (Issue #23)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 10, 11));
-            yield return new AnalogyChangeLog("UI: Add more information about messages in the Message's detail window (Issue #22)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 10, 09));
-            yield return new AnalogyChangeLog("Fix: Online Data Providers are not disposed during shutdown of Analogy (Issue #21)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 10, 09));
-            yield return new AnalogyChangeLog("Fix: Folder loading is ignoring data source supported files (Issue #18)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 09, 26));
-            yield return new AnalogyChangeLog("Add an option to un-dock current view and keep receiving new messages (Issue #16)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 09, 25));
-            yield return new AnalogyChangeLog("duplicate chrome tab behavior (close tab keyboard shortcut, close all other tabs, etc) (Issue #8)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 09, 24));
-            yield return new AnalogyChangeLog("remove Auto Start value form the interface and make it UI option", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 09, 21));
-            yield return new AnalogyChangeLog("Startup data sources: add a user setting to define list of startup data sources (Issue #10)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 09, 21));
-            yield return new AnalogyChangeLog("Windows Event logs: add support for custom logs in addition to Windows logs (Issue #7)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 09, 20));
-            yield return new AnalogyChangeLog("user settings are not saved between different versions (Issue #13)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 09, 20));
-            yield return new AnalogyChangeLog("Add resource usage indication and idle mode (Issue #6)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 09, 20));
-            yield return new AnalogyChangeLog("Fix unable to save logs for real time Data sources", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 09, 09));
-            yield return new AnalogyChangeLog("Add more information in the offline files listing.", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 08, 31));
-            yield return new AnalogyChangeLog("Fix about Page loading.", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 08, 30));
-            yield return new AnalogyChangeLog("First release as open source tool.", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2019, 08, 19));
-        }
     }
 
     public class AnalogyOfflineDataProviderFactory : IAnalogyDataProvidersFactory
     {
-        public string Title { get; } = "Analogy Built-In Data Sources";
+        public string Title { get; } = "Analogy Built-In Data Provider";
         public IEnumerable<IAnalogyDataProvider> Items { get; }
 
         public AnalogyOfflineDataProviderFactory()
         {
-            Items = new List<IAnalogyDataProvider> { new AnalogyOfflineDataProvider() };
+            var builtInItems = new List<IAnalogyDataProvider>();
+            var adp = new AnalogyOfflineDataProvider();
+            builtInItems.Add(adp);
+            adp.InitDataProvider();
+            Items = builtInItems;
         }
     }
 
@@ -74,6 +56,7 @@ namespace Analogy.DataSources
         public string FileSaveDialogFilters { get; } = "Plain Analogy XML log file (*.log)|*.log|Analogy JSON file (*.json)|*.json";
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.log", "*.json" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
+        public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
         public Image OptionalOpenFolderImage { get; }
         public Image OptionalOpenFilesImage { get; }
         public void InitDataProvider()
@@ -97,15 +80,17 @@ namespace Analogy.DataSources
             }
             else
             {
-                AnalogyLogMessage m = new AnalogyLogMessage();
-                m.Text = $"Unsupported file: {fileName}. Skipping file";
-                m.Level = AnalogyLogLevel.Critical;
-                m.Source = "Analogy";
-                m.Module = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
-                m.ProcessID = System.Diagnostics.Process.GetCurrentProcess().Id;
-                m.Class = AnalogyLogClass.General;
-                m.User = Environment.UserName;
-                m.Date = DateTime.Now;
+                AnalogyLogMessage m = new AnalogyLogMessage
+                {
+                    Text = $"Unsupported file: {fileName}. Skipping file",
+                    Level = AnalogyLogLevel.Critical,
+                    Source = "Analogy",
+                    Module = System.Diagnostics.Process.GetCurrentProcess().ProcessName,
+                    ProcessID = System.Diagnostics.Process.GetCurrentProcess().Id,
+                    Class = AnalogyLogClass.General,
+                    User = Environment.UserName,
+                    Date = DateTime.Now
+                };
                 messagesHandler.AppendMessage(m, Environment.MachineName);
                 return new List<AnalogyLogMessage>() { m };
             }
@@ -173,7 +158,7 @@ namespace Analogy.DataSources
 
         public AnalogyCustomActionFactory()
         {
-            Items = new List<IAnalogyCustomAction>() { new AnalogyCustomAction() };
+            Items = new List<IAnalogyCustomAction>() { new AnalogyCustomAction()/*,new AnalogyDataProvidersCustomAction()*/ };
         }
     }
 
@@ -187,6 +172,18 @@ namespace Analogy.DataSources
         public Guid ID { get; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
         public Image Image { get; } = Resources.ChartsShowLegend_32x32;
         public string Title { get; } = "Process Identifier";
+
+    }
+    public class AnalogyDataProvidersCustomAction : IAnalogyCustomAction
+    {
+        public Action Action => () =>
+        {
+            var p = new UserSettingsDataProvidersForm();
+            p.Show();
+        };
+        public Guid ID { get; } = new Guid("8398FD33-78D0-4F07-B50C-13B922DC64B4");
+        public Image Image { get; } = Resources.ChartsShowLegend_32x32;
+        public string Title { get; } = "data providers settings";
 
     }
 }

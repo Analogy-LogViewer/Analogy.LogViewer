@@ -39,9 +39,11 @@ namespace Analogy.LogLoaders
                     {
                         AnalogyLogMessage errMessage = new AnalogyLogMessage(
                             $"Error reading file {filename}: {e.Message}", AnalogyLogLevel.Critical,
-                            AnalogyLogClass.General, "Analogy", "None");
-                        errMessage.Source = "Analogy";
-                        errMessage.Module = Process.GetCurrentProcess().ProcessName;
+                            AnalogyLogClass.General, "Analogy", "None")
+                        {
+                            Source = "Analogy",
+                            Module = Process.GetCurrentProcess().ProcessName
+                        };
                         return new List<AnalogyLogMessage>() { errMessage };
                     }
 
@@ -53,7 +55,7 @@ namespace Analogy.LogLoaders
             return Task.Factory.StartNew(() =>
             {
                 XmlSerializer ser = new XmlSerializer(typeof(List<AnalogyLogMessage>));
-                using (FileStream fs = new FileStream(fileName, FileMode.Open))
+                using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     try
                     {
@@ -63,9 +65,13 @@ namespace Analogy.LogLoaders
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogMessage errMessage = new AnalogyLogMessage($"Error reading file {fileName}: {e.Message}", AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None");
-                        errMessage.Source = "Analogy";
-                        errMessage.Module = Process.GetCurrentProcess().ProcessName;
+                        AnalogyLogMessage errMessage = new AnalogyLogMessage(
+                            $"Error reading file {fileName}: {e.Message}", AnalogyLogLevel.Critical,
+                            AnalogyLogClass.General, "Analogy", "None")
+                        {
+                            Source = "Analogy",
+                            Module = Process.GetCurrentProcess().ProcessName
+                        };
                         messagesHandler.AppendMessage(errMessage, fileName);
                         return new List<AnalogyLogMessage>() { errMessage };
                     }

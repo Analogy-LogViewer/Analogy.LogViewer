@@ -7,7 +7,7 @@ namespace Analogy
     public class EmbeddedAssembly
     {
         private Dictionary<string, string> EmbeddedAssemblies;
-        private Dictionary<string, Assembly> assemblies;
+        private readonly Dictionary<string, Assembly> assemblies;
 
         public EmbeddedAssembly()
         {

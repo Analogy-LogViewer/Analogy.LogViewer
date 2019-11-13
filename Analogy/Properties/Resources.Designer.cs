@@ -362,6 +362,26 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FilePooling_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("FilePooling_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FilePooling_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("FilePooling_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap First_16x16 {
             get {
                 object obj = ResourceManager.GetObject("First_16x16", resourceCulture);
@@ -472,9 +492,29 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jsonfile32x32 {
+            get {
+                object obj = ResourceManager.GetObject("jsonfile32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LocalColorScheme_32x32 {
             get {
                 object obj = ResourceManager.GetObject("LocalColorScheme_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log4net32x32 {
+            get {
+                object obj = ResourceManager.GetObject("log4net32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -525,6 +565,16 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap Media_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Media_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nlog {
+            get {
+                object obj = ResourceManager.GetObject("nlog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -792,6 +842,26 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap serilog {
+            get {
+                object obj = ResourceManager.GetObject("serilog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap serilog32x32 {
+            get {
+                object obj = ResourceManager.GetObject("serilog32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ServerMode_16x16 {
             get {
                 object obj = ResourceManager.GetObject("ServerMode_16x16", resourceCulture);
@@ -915,6 +985,16 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap working {
             get {
                 object obj = ResourceManager.GetObject("working", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xml32x32 {
+            get {
+                object obj = ResourceManager.GetObject("xml32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
