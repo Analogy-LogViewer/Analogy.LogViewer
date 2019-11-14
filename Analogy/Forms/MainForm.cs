@@ -744,31 +744,7 @@ namespace Analogy
             if (dataSourceFactory?.Items != null && dataSourceFactory.Items.Any() &&
                 !string.IsNullOrEmpty(dataSourceFactory.Title))
             {
-                RibbonPageGroup groupDataSource = new RibbonPageGroup(dataSourceFactory.Title);
-                ribbonPage.Groups.Add(groupDataSource);
-                RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup("Offline File Tools");
-                ribbonPage.Groups.Add(groupOfflineFileTools);
-                foreach (IAnalogyDataProvider dataSource in dataSourceFactory.Items)
-                {
-                    if (dataSource is IAnalogyRealTimeDataProvider realTime)
-                    {
-                        AddRealTimeDataSource(ribbonPage, realTime, dataSourceFactory.Title, groupDataSource);
-                    }
-                    else if (dataSource is IAnalogyOfflineDataProvider offlineAnalogy)
-                    {
-                        AddOfflineDataSource(ribbonPage, offlineAnalogy, dataSourceFactory.Title, groupDataSource,
-                            groupOfflineFileTools);
-                    }
-                }
-
-                //add bookmark
-                BarButtonItem bookmarkBtn = new BarButtonItem();
-                bookmarkBtn.Caption = "Bookmarks";
-                bookmarkBtn.RibbonStyle = RibbonItemStyles.All;
-                groupDataSource.ItemLinks.Add(bookmarkBtn);
-                bookmarkBtn.ImageOptions.Image = Resources.RichEditBookmark_16x16;
-                bookmarkBtn.ImageOptions.LargeImage = Resources.RichEditBookmark_32x32;
-                bookmarkBtn.ItemClick += (sender, e) => { OpenBookmarkLog(); };
+                CreateDataSourceRibbonGroup(dataSourceFactory, ribbonPage);
             }
 
             var actionFactory = factory.Actions;
@@ -799,6 +775,39 @@ namespace Analogy
             aboutBtn.ImageOptions.LargeImage = Resources.About_32x32;
             aboutBtn.ItemClick += (sender, e) => { new AboutDataSourceBox(factory).ShowDialog(this); };
             ribbonPage.Groups.Add(groupInfoSource);
+        }
+
+        private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
+        {
+            RibbonPageGroup groupDataSource = new RibbonPageGroup(dataSourceFactory.Title);
+            groupDataSource.AllowTextClipping = false;
+            ribbonPage.Groups.Add(groupDataSource);
+            var po = new ParallelOptions {MaxDegreeOfParallelism = -1};
+            Parallel.ForEach(dataSourceFactory.Items,po,
+                dataSource =>
+            {
+                if (dataSource is IAnalogyRealTimeDataProvider realTime)
+                {
+                    AddRealTimeDataSource(ribbonPage, realTime, dataSourceFactory.Title, groupDataSource);
+                }
+                else if (dataSource is IAnalogyOfflineDataProvider offlineAnalogy)
+                {
+                    RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup("Offline File Tools");
+                    ribbonPage.Groups.Add(groupOfflineFileTools);
+                    AddOfflineDataSource(ribbonPage, offlineAnalogy, dataSourceFactory.Title, groupDataSource,
+                        groupOfflineFileTools);
+                }
+            });
+           
+
+            //add bookmark
+            BarButtonItem bookmarkBtn = new BarButtonItem();
+            bookmarkBtn.Caption = "Bookmarks";
+            bookmarkBtn.RibbonStyle = RibbonItemStyles.All;
+            groupDataSource.ItemLinks.Add(bookmarkBtn);
+            bookmarkBtn.ImageOptions.Image = Resources.RichEditBookmark_16x16;
+            bookmarkBtn.ImageOptions.LargeImage = Resources.RichEditBookmark_32x32;
+            bookmarkBtn.ItemClick += (sender, e) => { OpenBookmarkLog(); };
         }
 
         private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
