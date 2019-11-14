@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.DataSources;
 using Analogy.Interfaces;
+using Analogy.Types;
 using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
