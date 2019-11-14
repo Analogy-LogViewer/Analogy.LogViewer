@@ -378,6 +378,13 @@ namespace Analogy
                     await Task.Delay(250);
                 OpenOfflineLogs(null, files, supported.First());
             }
+            else
+            {
+                XtraMessageBox.Show(
+                    "Zero or more than one data provider detected for this file." + Environment.NewLine +
+                    "Please open it directly from the data provider menu", "Unable to open file", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
 
         }
 
