@@ -41,13 +41,14 @@ namespace Analogy
                 }
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
-                
+
                 return cachedMessages;
 
             }
             //otherwise read file:
             FileProcessingManager.Instance.AddProcessingFile(FileName);
-            Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
+            if (!DataWindow.DoNotAddToRecentHistory)
+                Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
             var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false)).ToList();
             FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
             return messages;

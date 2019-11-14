@@ -792,7 +792,11 @@ namespace Analogy
                 }
                 else if (dataSource is IAnalogyOfflineDataProvider offlineAnalogy)
                 {
-                    RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup("Offline File Tools");
+                    string optionalText = !string.IsNullOrEmpty(dataSource.OptionalTitle)
+                        ? " for" + dataSource.OptionalTitle
+                        : string.Empty;
+                    RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools{optionalText}");
+                    groupOfflineFileTools.AllowTextClipping = false;
                     ribbonPage.Groups.Add(groupOfflineFileTools);
                     AddOfflineDataSource(ribbonPage, offlineAnalogy, dataSourceFactory.Title, groupDataSource,
                         groupOfflineFileTools);
@@ -1011,7 +1015,7 @@ namespace Analogy
             group.ItemLinks.Add(realTimeBtn);
             realTimeBtn.ImageOptions.Image = Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
-            realTimeBtn.Caption = "Real Time Logs";
+            realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ?$" - {realTime.OptionalTitle}": string.Empty);
 
             async Task<bool> OpenRealTime()
             {

@@ -16,10 +16,13 @@ namespace Analogy.Managers
         private readonly CancellationTokenSource _cancellationTokenSource;
         private readonly List<AnalogyLogMessage> _messages;
         public EventHandler<(List<AnalogyLogMessage> messages, string dataSource)> OnNewMessages;
-        public bool ForceNoFileCaching { get; } = true;
+        public bool ForceNoFileCaching { get; set; } = true; 
+
+        public bool DoNotAddToRecentHistory { get; set; } = true;
         private readonly object _sync;
         private readonly FileSystemWatcher _watchFile;
         private bool _readingInprogress;
+        private DateTime lastWriteTime = DateTime.MinValue;
         private readonly AnalogyLogMessageCustomEqualityComparer _customEqualityComparer;
         public FilePoolingManager(string fileName, IAnalogyOfflineDataProvider offlineDataProvider)
         {
@@ -136,6 +139,9 @@ namespace Analogy.Managers
         private async void WatchFile_Changed(object sender, FileSystemEventArgs e)
         {
             if (_readingInprogress) return;
+            FileInfo f = new FileInfo(e.FullPath);
+            if (lastWriteTime == f.LastWriteTime) return;
+            lastWriteTime = f.LastWriteTime;
             lock (_sync)
             {
                 if (_readingInprogress) return;
@@ -145,7 +151,10 @@ namespace Analogy.Managers
 
             try
             {
-                await FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
+                if (e.ChangeType == WatcherChangeTypes.Changed)
+                {
+                    await FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
+                }
             }
             catch (Exception exception)
             {
@@ -160,9 +169,11 @@ namespace Analogy.Managers
                 };
                 OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
             }
-
-            _readingInprogress = false;
-            _watchFile.EnableRaisingEvents = true;
+            finally
+            {
+                _readingInprogress = false;
+                _watchFile.EnableRaisingEvents = true;
+            }
         }
 
     }
