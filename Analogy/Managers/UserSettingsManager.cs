@@ -131,6 +131,9 @@ namespace Analogy
                 LogParsersSettings = string.IsNullOrEmpty(Settings.Default.LogParsersSettings) ?
                     new LogParserSettingsContainer() :
                     JsonConvert.DeserializeObject<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
+                //todo: temp
+                Analogy.LogViewer.NLogProvider.UserSettingsManager.UserSettings.LogParserSettings =
+                    LogParsersSettings.NLogParserSettings;
             }
             catch
             {

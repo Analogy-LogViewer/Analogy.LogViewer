@@ -43,6 +43,10 @@
             this.txtNLogLayout = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnNLogCheckLayout = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPageWindowsEventLogs = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
+            this.lblWindowsEventLogs = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageIIS = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPageSerilog = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageLog4Net = new DevExpress.XtraTab.XtraTabPage();
@@ -62,20 +66,20 @@
             this.sBtnLoadXMLFile = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageXML = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.xtraTabPageWindowsEventLogs = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
-            this.lblWindowsEventLogs = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageRSS = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPageRSS = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPageIIS = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageNLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).BeginInit();
+            this.xtraTabPageWindowsEventLogs.SuspendLayout();
+            this.xtraTabPageIIS.SuspendLayout();
             this.xtraTabPageSerilog.SuspendLayout();
             this.xtraTabPageLog4Net.SuspendLayout();
             this.xtraTabPageJson.SuspendLayout();
@@ -87,7 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlJson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).BeginInit();
             this.xtraTabPageXML.SuspendLayout();
-            this.xtraTabPageWindowsEventLogs.SuspendLayout();
+            this.xtraTabPageRSS.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -104,13 +108,13 @@
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageNLog,
+            this.xtraTabPageWindowsEventLogs,
+            this.xtraTabPageIIS,
             this.xtraTabPageSerilog,
             this.xtraTabPageLog4Net,
             this.xtraTabPageJson,
             this.xtraTabPageXML,
-            this.xtraTabPageWindowsEventLogs,
             this.xtraTabPageRSS,
-            this.xtraTabPageIIS,
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3});
@@ -252,6 +256,41 @@
             this.sbtnNLogCheckLayout.TabIndex = 1;
             this.sbtnNLogCheckLayout.Text = "Load layout";
             this.sbtnNLogCheckLayout.Click += new System.EventHandler(this.btnNlogCheckLayout_Click);
+            // 
+            // xtraTabPageWindowsEventLogs
+            // 
+            this.xtraTabPageWindowsEventLogs.Controls.Add(this.xtraUCWindowsEventLogs1);
+            this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
+            this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
+            this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
+            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(740, 612);
+            this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
+            // 
+            // xtraUCWindowsEventLogs1
+            // 
+            this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
+            this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
+            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(740, 590);
+            this.xtraUCWindowsEventLogs1.TabIndex = 0;
+            // 
+            // lblWindowsEventLogs
+            // 
+            this.lblWindowsEventLogs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblWindowsEventLogs.Location = new System.Drawing.Point(0, 0);
+            this.lblWindowsEventLogs.Name = "lblWindowsEventLogs";
+            this.lblWindowsEventLogs.Padding = new System.Windows.Forms.Padding(3);
+            this.lblWindowsEventLogs.Size = new System.Drawing.Size(233, 22);
+            this.lblWindowsEventLogs.TabIndex = 1;
+            this.lblWindowsEventLogs.Text = "Windows Event logs: real time settings:";
+            // 
+            // xtraTabPageIIS
+            // 
+            this.xtraTabPageIIS.Controls.Add(this.labelControl10);
+            this.xtraTabPageIIS.ImageOptions.Image = global::Analogy.Properties.Resources.iis;
+            this.xtraTabPageIIS.Name = "xtraTabPageIIS";
+            this.xtraTabPageIIS.Size = new System.Drawing.Size(740, 612);
+            this.xtraTabPageIIS.Text = "IIS Logs";
             // 
             // xtraTabPageSerilog
             // 
@@ -467,32 +506,22 @@
             this.labelControl13.TabIndex = 14;
             this.labelControl13.Text = "Coming soon.";
             // 
-            // xtraTabPageWindowsEventLogs
+            // xtraTabPageRSS
             // 
-            this.xtraTabPageWindowsEventLogs.Controls.Add(this.xtraUCWindowsEventLogs1);
-            this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
-            this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
-            this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
-            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(740, 612);
-            this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
+            this.xtraTabPageRSS.Controls.Add(this.labelControl9);
+            this.xtraTabPageRSS.ImageOptions.Image = global::Analogy.Properties.Resources.rss;
+            this.xtraTabPageRSS.Name = "xtraTabPageRSS";
+            this.xtraTabPageRSS.Size = new System.Drawing.Size(740, 612);
+            this.xtraTabPageRSS.Text = "RSS Parser";
             // 
-            // xtraUCWindowsEventLogs1
+            // labelControl9
             // 
-            this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
-            this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
-            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(740, 590);
-            this.xtraUCWindowsEventLogs1.TabIndex = 0;
-            // 
-            // lblWindowsEventLogs
-            // 
-            this.lblWindowsEventLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWindowsEventLogs.Location = new System.Drawing.Point(0, 0);
-            this.lblWindowsEventLogs.Name = "lblWindowsEventLogs";
-            this.lblWindowsEventLogs.Padding = new System.Windows.Forms.Padding(3);
-            this.lblWindowsEventLogs.Size = new System.Drawing.Size(233, 22);
-            this.lblWindowsEventLogs.TabIndex = 1;
-            this.lblWindowsEventLogs.Text = "Windows Event logs: real time settings:";
+            this.labelControl9.Location = new System.Drawing.Point(10, 10);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(78, 16);
+            this.labelControl9.TabIndex = 15;
+            this.labelControl9.Text = "Coming soon.";
             // 
             // xtraTabPage1
             // 
@@ -518,19 +547,14 @@
             this.xtraTabPage3.Size = new System.Drawing.Size(740, 612);
             this.xtraTabPage3.Text = "Kama Research";
             // 
-            // xtraTabPageRSS
+            // labelControl10
             // 
-            this.xtraTabPageRSS.ImageOptions.Image = global::Analogy.Properties.Resources.rss;
-            this.xtraTabPageRSS.Name = "xtraTabPageRSS";
-            this.xtraTabPageRSS.Size = new System.Drawing.Size(740, 612);
-            this.xtraTabPageRSS.Text = "RSS Parser";
-            // 
-            // xtraTabPageIIS
-            // 
-            this.xtraTabPageIIS.ImageOptions.Image = global::Analogy.Properties.Resources.iis;
-            this.xtraTabPageIIS.Name = "xtraTabPageIIS";
-            this.xtraTabPageIIS.Size = new System.Drawing.Size(740, 612);
-            this.xtraTabPageIIS.Text = "IIS Logs";
+            this.labelControl10.Location = new System.Drawing.Point(21, 10);
+            this.labelControl10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(136, 16);
+            this.labelControl10.TabIndex = 5;
+            this.labelControl10.Text = "No special settings exist";
             // 
             // UserSettingsDataProvidersForm
             // 
@@ -551,6 +575,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).EndInit();
+            this.xtraTabPageWindowsEventLogs.ResumeLayout(false);
+            this.xtraTabPageWindowsEventLogs.PerformLayout();
+            this.xtraTabPageIIS.ResumeLayout(false);
+            this.xtraTabPageIIS.PerformLayout();
             this.xtraTabPageSerilog.ResumeLayout(false);
             this.xtraTabPageSerilog.PerformLayout();
             this.xtraTabPageLog4Net.ResumeLayout(false);
@@ -566,8 +594,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).EndInit();
             this.xtraTabPageXML.ResumeLayout(false);
             this.xtraTabPageXML.PerformLayout();
-            this.xtraTabPageWindowsEventLogs.ResumeLayout(false);
-            this.xtraTabPageWindowsEventLogs.PerformLayout();
+            this.xtraTabPageRSS.ResumeLayout(false);
+            this.xtraTabPageRSS.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -615,5 +643,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageRSS;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageIIS;
         private UserControls.AnalogyColumnsMatcherUC analogyColumnsMatcherUC1;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }
