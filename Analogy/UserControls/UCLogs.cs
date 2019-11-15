@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.DataSources;
 using Analogy.Interfaces;
+using Analogy.Types;
 using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
@@ -31,7 +32,8 @@ namespace Analogy
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
     {
-        public bool ForceNoFileCaching { get; } = false;
+        public bool ForceNoFileCaching { get; set; } = false;
+        public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;

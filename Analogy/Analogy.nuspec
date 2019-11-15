@@ -14,17 +14,19 @@
     <releaseNotes>Add Nlog Parser and color selection. See github page for more info</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
-	<dependencies>
-    <group targetFramework="net472">    
-		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.4" />
-        <dependency id="Newtonsoft.Json" version="12.0.2" />
-    </group>
-</dependencies>
+    <dependencies>
+      <group targetFramework="net472">
+        <dependency id="Analogy.LogViewer.NLogProvider" version="1.0.0.3"/>
+        <dependency id="Analogy.LogViewer.Interfaces" version="2.1.5" />
+        <dependency id="Analogy.DataProviders.Extensions" version="1.0.0.4"/>
+        <dependency id="Newtonsoft.Json" version="12.0.3" />
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\Analogy.exe" target="lib\net472\Analogy.exe" />
     <file src="bin\Release\Analogy.xml" target="lib\net472\Analogy.xml" />
-	<file src="bin\Release\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
-	<file src="icon.png" target="" />
-</files>
+    <file src="bin\Release\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
+    <file src="icon.png" target="" />
+  </files>
 </package>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces;
 using DevExpress.Utils;
 using Newtonsoft.Json;
@@ -54,22 +55,15 @@ namespace Analogy
            
         }
 
-        private void LoadNLogSettings(LogParserSettings nLogParserSettings)
+        private void LoadNLogSettings(ILogParserSettings nLogParserSettings)
         {
             if (nLogParserSettings.IsConfigured)
             {
                 txtNLogSeperator.Text = nLogParserSettings.Splitter;
                 txtNLogLayout.Text = nLogParserSettings.Layout;
                 textEditNLogExtension.Text = string.Join(";",nLogParserSettings.SupportedFilesExtensions);
-                lstBAnalogyColumnsNlog.Items.Clear();
-                for (int i = 0; i < 21; i++)
-                {
-                    if (nLogParserSettings.Maps.ContainsKey(i))
-                        lstBAnalogyColumnsNlog.Items.Add(nLogParserSettings.Maps[i]);
-                    else
-                        lstBAnalogyColumnsNlog.Items.Add("__ignore__");
-                }
-
+                
+                analogyColumnsMatcherUC1.LoadMapping(nLogParserSettings);
                 CheckNLogLayout();
             }
         }
@@ -98,59 +92,27 @@ namespace Analogy
                 var items = txtNLogLayout.Text
                     .Split(txtNLogSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                     .ToArray();
-                lstBoxItemsNlog.Items.Clear();
-                lstBoxItemsNlog.Items.AddRange(items);
-            }
+                analogyColumnsMatcherUC1.SetColumns(items);
+             }
             catch (Exception exception)
             {
                 XtraMessageBox.Show("Error parsing input: " + exception.Message, "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
-
-        private void SBtnMoveUp_Click(object sender, EventArgs e)
-        {
-            if (lstBAnalogyColumnsNlog.SelectedIndex <= 0) return;
-            var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
-            var currentValue = lstBAnalogyColumnsNlog.Items[selectedIndex];
-            lstBAnalogyColumnsNlog.Items[selectedIndex] = lstBAnalogyColumnsNlog.Items[selectedIndex - 1];
-            lstBAnalogyColumnsNlog.Items[selectedIndex - 1] = currentValue;
-            lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex - 1;
-        }
-
-        private void SBtnMoveDown_Click(object sender, EventArgs e)
-        {
-            if (lstBAnalogyColumnsNlog.SelectedIndex == lstBAnalogyColumnsNlog.ItemCount - 1) return;
-            var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
-            var currentValue = lstBAnalogyColumnsNlog.Items[selectedIndex + 1];
-            lstBAnalogyColumnsNlog.Items[selectedIndex + 1] = lstBAnalogyColumnsNlog.Items[selectedIndex];
-            lstBAnalogyColumnsNlog.Items[selectedIndex] = currentValue;
-            lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex + 1;
-        }
-
+    
         private void SBtnSaveNlogMapping_Click(object sender, EventArgs e)
         {
-            Dictionary<int, AnalogyLogMessagePropertyName> maps =
-                new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
-            for (int i = 0; i < lstBAnalogyColumnsNlog.ItemCount; i++)
-            {
-                if (lstBAnalogyColumnsNlog.Items[i].ToString()
-                    .Contains("ignore", StringComparison.InvariantCultureIgnoreCase)) continue;
-                maps.Add(i, (AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
-                    lstBAnalogyColumnsNlog.Items[i].ToString()));
-            }
 
-            Settings.LogParsersSettings.NLogParserSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
-                new List<string> { textEditNLogExtension.Text }, maps);
+            SaveMapping();
 
         }
 
-        private void LstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
+        private void SaveMapping()
         {
-            if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount - 1) return;
-            lstBoxItemsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
+            Settings.LogParsersSettings.NLogParserSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
+                new List<string> { textEditNLogExtension.Text }, analogyColumnsMatcherUC1.Mapping);
         }
-
         private void SBtnLoadXMLFile_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
@@ -205,6 +167,7 @@ namespace Analogy
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                SaveMapping();
                 try
                 {
                     File.WriteAllText(Settings.LogParsersSettings.NLogParserSettings.AsJson(), saveFileDialog.FileName);

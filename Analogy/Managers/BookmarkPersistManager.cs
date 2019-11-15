@@ -22,8 +22,8 @@ namespace Analogy
         private bool fileLoaded;
         private List<AnalogyLogMessage> Messages { get; set; }
         private readonly string bookmarkFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
-        public bool ForceNoFileCaching { get; } = false;
-
+        public bool ForceNoFileCaching { get; set; } = false;
+        public bool DoNotAddToRecentHistory { get; set; } = false;
         public BookmarkPersistManager()
         {
             Messages = new List<AnalogyLogMessage>();

@@ -32,6 +32,9 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <SccAuxPath>SAK</SccAuxPath>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PlatformToolset>v120</PlatformToolset>
     <PublishUrl>http://localhost/LogViewer/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -44,11 +47,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -198,10 +198,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.XtraTreeList.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>redist\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -233,8 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProviders\CommonChangeLog.cs" />
-    <Compile Include="DataProviders\NLogBuiltInFactory.cs" />
-    <Compile Include="DataProviders\NLogDataProvider.cs" />
     <Compile Include="Forms\AboutDataSourceBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,8 +266,6 @@
     <Compile Include="Forms\UserSettingsDataProvidersForm.Designer.cs">
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogLoaders\GeneralFileParser.cs" />
-    <Compile Include="LogLoaders\NLogFileLoader.cs" />
     <Compile Include="Managers\BookmarkPersistManager.cs" />
     <Compile Include="Managers\ClientServerDataSourceManager.cs" />
     <Compile Include="Managers\AnalogyFactoriesManager.cs" />
@@ -281,6 +273,12 @@
     <Compile Include="DataProviders\EventLogDataProvider.cs" />
     <Compile Include="Managers\FilePoolingManager.cs" />
     <Compile Include="Types\AsyncLazy.cs" />
+    <Compile Include="UserControls\AnalogyColumnsMatcherUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AnalogyColumnsMatcherUC.Designer.cs">
+      <DependentUpon>AnalogyColumnsMatcherUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FilePoolingLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -539,6 +537,11 @@
     <Compile Include="UserControls\XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\iis.jpg" />
+    <None Include="Resources\rss.jpg" />
+    <None Include="Resources\kama.jpg" />
+    <None Include="Resources\iqon.jpg" />
+    <None Include="Resources\Mirada_Icon.jpg" />
     <None Include="Resources\log4net32x32.png" />
     <None Include="Resources\xml32x32.png" />
     <None Include="Resources\jsonfile32x32.png" />
@@ -549,6 +552,9 @@
     <None Include="Resources\FilePooling_16x16.png" />
     <EmbeddedResource Include="Forms\UserSettingsDataProvidersForm.resx">
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AnalogyColumnsMatcherUC.resx">
+      <DependentUpon>AnalogyColumnsMatcherUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FilePoolingLog.resx">
       <DependentUpon>FilePoolingLog.cs</DependentUpon>
@@ -804,6 +810,11 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -824,8 +835,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Analogy.DataProviders.Extensions">
+      <Version>1.0.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.NLogProvider">
+      <Version>1.0.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.2</Version>
+      <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

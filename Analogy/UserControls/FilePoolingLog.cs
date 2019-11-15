@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.Managers;
+using Analogy.Types;
 using DevExpress.XtraBars;
 using Message = System.Windows.Forms.Message;
 
@@ -27,7 +28,11 @@ namespace Analogy
             ucLogs1.OnlineMode = false;
             PoolingManager = new FilePoolingManager(FileName, offlineDataProvider);
             ucLogs1.SetFileDataSource(offlineDataProvider);
-            PoolingManager.OnNewMessages += (s, data) => AppendMessages(data.messages, data.dataSource);
+            PoolingManager.OnNewMessages += (s, data) =>
+            {
+                AppendMessages(data.messages, data.dataSource);
+                OnNewMessages(data.messages);
+            };
             this.Disposed += FilePoolingUCLogs_Disposed;
 
         }
@@ -55,14 +60,30 @@ namespace Analogy
             Interlocked.Increment(ref clearHistoryCounter);
             listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
             spltMain.Panel1Collapsed = !showHistory;
-            string entry = $"History #{clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
+            string entry = $"cleared #{clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
             FileProcessingManager.Instance.DoneProcessingFile(e.ClearedMessages, entry);
             listBoxClearHistory.Items.Add(entry);
             listBoxClearHistory.SelectedItem = null;
             listBoxClearHistory.SelectedIndex = -1;
             listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
         }
-
+        private void OnNewMessages(List<AnalogyLogMessage> messages)
+        {
+            if (IsDisposed || !IsHandleCreated) return;
+            BeginInvoke(new MethodInvoker(() =>
+            {
+                Interlocked.Increment(ref clearHistoryCounter);
+                listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
+                spltMain.Panel1Collapsed = !showHistory;
+                string entry = $"New #{clearHistoryCounter} ({messages.Count} messages)";
+                FileProcessingManager.Instance.DoneProcessingFile(messages, entry);
+                listBoxClearHistory.Items.Add(entry);
+                listBoxClearHistory.SelectedItem = null;
+                listBoxClearHistory.SelectedIndex = -1;
+                listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
+            }));
+            
+        }
         private void AnalogyUCLogs_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         private async void AnalogyUCLogs_DragDrop(object sender, DragEventArgs e)
@@ -80,6 +101,7 @@ namespace Analogy
 
                 string interned = string.Intern(dataSource);
                 ucLogs1.AppendMessages(messages, interned);
+                
             }
         }
 

@@ -5,9 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Analogy.DataProviders;
+using Analogy.DataProviders.Extensions;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.LogViewer.NLogProvider;
 using Analogy.Types;
 
 namespace Analogy
@@ -21,6 +23,7 @@ namespace Analogy
         private bool ExternalDataSourcesAdded { get; set; }
         public static AnalogyFactoriesManager Instance = _instance.Value;
         private List<IAnalogyFactory> builtInFactories { get; }
+        private List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)> Settings { get;  set; }
         public async Task AddExternalDataSources()
         {
             if (ExternalDataSourcesAdded)
@@ -47,11 +50,13 @@ namespace Analogy
 
         public AnalogyFactoriesManager()
         {
+            Settings=new List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)>();
+            Settings.Add((NLogBuiltInFactory.AnalogyNLogGuid,new AnalogyNLogSettings()));
             Factories = new List<IAnalogyFactory>();
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
             {
                 (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
-                (new NLogBuiltInFactory(), Assembly.GetExecutingAssembly())
+                (new NLogBuiltInFactory(), Assembly.GetAssembly(typeof(NLogBuiltInFactory)))
             };
             builtInFactories=new List<IAnalogyFactory>();
             try
