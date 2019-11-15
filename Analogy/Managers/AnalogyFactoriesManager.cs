@@ -23,7 +23,7 @@ namespace Analogy
         private bool ExternalDataSourcesAdded { get; set; }
         public static AnalogyFactoriesManager Instance = _instance.Value;
         private List<IAnalogyFactory> builtInFactories { get; }
-        private List<(Guid FacyoryID, IAnalogyDataProviderSetting Settings)> Settings { get;  set; }
+        private List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)> Settings { get;  set; }
         public async Task AddExternalDataSources()
         {
             if (ExternalDataSourcesAdded)
@@ -50,7 +50,7 @@ namespace Analogy
 
         public AnalogyFactoriesManager()
         {
-            Settings=new List<(Guid FacyoryID, IAnalogyDataProviderSetting Settings)>();
+            Settings=new List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)>();
             Settings.Add((NLogBuiltInFactory.AnalogyNLogGuid,new AnalogyNLogSettings()));
             Factories = new List<IAnalogyFactory>();
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
