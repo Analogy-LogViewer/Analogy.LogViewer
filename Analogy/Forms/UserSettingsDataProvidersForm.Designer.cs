@@ -104,7 +104,7 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageNLog;
-            this.tabControlMain.Size = new System.Drawing.Size(913, 619);
+            this.tabControlMain.Size = new System.Drawing.Size(913, 620);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageNLog,
@@ -135,7 +135,7 @@
             this.xtraTabPageNLog.Controls.Add(this.sbtnNLogCheckLayout);
             this.xtraTabPageNLog.ImageOptions.Image = global::Analogy.Properties.Resources.nlog;
             this.xtraTabPageNLog.Name = "xtraTabPageNLog";
-            this.xtraTabPageNLog.Size = new System.Drawing.Size(740, 612);
+            this.xtraTabPageNLog.Size = new System.Drawing.Size(740, 613);
             this.xtraTabPageNLog.Text = "NLog Parser";
             // 
             // analogyColumnsMatcherUC1
@@ -145,13 +145,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.analogyColumnsMatcherUC1.Location = new System.Drawing.Point(12, 116);
             this.analogyColumnsMatcherUC1.Name = "analogyColumnsMatcherUC1";
-            this.analogyColumnsMatcherUC1.Size = new System.Drawing.Size(722, 449);
+            this.analogyColumnsMatcherUC1.Size = new System.Drawing.Size(722, 450);
             this.analogyColumnsMatcherUC1.TabIndex = 15;
             // 
             // btnExportNLogSettings
             // 
             this.btnExportNLogSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportNLogSettings.Location = new System.Drawing.Point(506, 570);
+            this.btnExportNLogSettings.Location = new System.Drawing.Point(506, 571);
             this.btnExportNLogSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExportNLogSettings.Name = "btnExportNLogSettings";
             this.btnExportNLogSettings.Size = new System.Drawing.Size(111, 37);
@@ -201,7 +201,7 @@
             // sBtnSaveNlogMapping
             // 
             this.sBtnSaveNlogMapping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(623, 570);
+            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(623, 571);
             this.sBtnSaveNlogMapping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnSaveNlogMapping.Name = "sBtnSaveNlogMapping";
             this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
@@ -560,7 +560,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 619);
+            this.ClientSize = new System.Drawing.Size(913, 620);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -568,6 +568,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Built-In Data Providers Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserSettingsDataProvidersForm_FormClosing);
             this.Load += new System.EventHandler(this.UserSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);

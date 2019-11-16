@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces;
 using DevExpress.Utils;
+using DevExpress.XtraTab;
 using Newtonsoft.Json;
 
 namespace Analogy
@@ -51,8 +52,24 @@ namespace Analogy
 
         private void LoadSettings()
         {
+
             LoadNLogSettings(Settings.LogParsersSettings.NLogParserSettings);
-           
+           // AddExtrenalUserControlSettings();
+        }
+
+        private void AddExtrenalUserControlSettings()
+        {
+            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            {
+                XtraTabPage tab = new XtraTabPage();
+                tab.Text = settings.Title;
+                UserControl uc = settings.DataProviderSettings;
+                tab.Controls.Add(uc);
+                tab.Image = settings.Icon;
+                //ab.
+                uc.Dock = DockStyle.Fill;
+                tabControlMain.TabPages.Add(tab);
+            }
         }
 
         private void LoadNLogSettings(ILogParserSettings nLogParserSettings)
@@ -61,8 +78,8 @@ namespace Analogy
             {
                 txtNLogSeperator.Text = nLogParserSettings.Splitter;
                 txtNLogLayout.Text = nLogParserSettings.Layout;
-                textEditNLogExtension.Text = string.Join(";",nLogParserSettings.SupportedFilesExtensions);
-                
+                textEditNLogExtension.Text = string.Join(";", nLogParserSettings.SupportedFilesExtensions);
+
                 analogyColumnsMatcherUC1.LoadMapping(nLogParserSettings);
                 CheckNLogLayout();
             }
@@ -72,6 +89,7 @@ namespace Analogy
         private async void UserSettingsForm_Load(object sender, EventArgs e)
         {
             LoadSettings();
+
             if (_initialSelection >= 0)
                 tabControlMain.SelectedTabPageIndex = _initialSelection;
 
@@ -93,14 +111,14 @@ namespace Analogy
                     .Split(txtNLogSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                     .ToArray();
                 analogyColumnsMatcherUC1.SetColumns(items);
-             }
+            }
             catch (Exception exception)
             {
                 XtraMessageBox.Show("Error parsing input: " + exception.Message, "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
-    
+
         private void SBtnSaveNlogMapping_Click(object sender, EventArgs e)
         {
 
@@ -111,8 +129,9 @@ namespace Analogy
         private void SaveMapping()
         {
             Settings.LogParsersSettings.NLogParserSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
-                new List<string> { textEditNLogExtension.Text }, analogyColumnsMatcherUC1.Mapping);
+                new List<string> {textEditNLogExtension.Text}, analogyColumnsMatcherUC1.Mapping);
         }
+
         private void SBtnLoadXMLFile_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
@@ -147,8 +166,9 @@ namespace Analogy
                     var json = File.ReadAllText(openFileDialog1.FileName);
                     LogParserSettings nlog = LogParserSettings.FromJson(json);
                     LoadNLogSettings(nlog);
-                    XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings", MessageBoxButtons.OK,
-                           MessageBoxIcon.Information);
+                    XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
                 }
                 catch (Exception ex)
@@ -181,6 +201,27 @@ namespace Analogy
                         MessageBoxIcon.Error);
                 }
 
+            }
+        }
+
+        private void UserSettingsDataProvidersForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSetting();
+        }
+
+        public async void SaveSetting()
+        {
+            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            {
+                try
+                {
+                    await settings.SaveSettingsAsync();
+                }
+                catch (Exception e)
+                {
+                    //ingnore errors in data providers
+                }
+                
             }
         }
     }

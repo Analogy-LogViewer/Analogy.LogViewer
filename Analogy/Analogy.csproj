@@ -537,6 +537,7 @@
     <Compile Include="UserControls\XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
+    <None Include="Analogy.nuspec" />
     <None Include="Resources\iis.jpg" />
     <None Include="Resources\rss.jpg" />
     <None Include="Resources\kama.jpg" />
@@ -833,10 +834,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Analogy.DataProviders.Extensions">
-      <Version>1.0.0.4</Version>
+      <Version>1.0.0.6</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider">
-      <Version>1.0.0.3</Version>
+      <Version>1.0.0.4</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>

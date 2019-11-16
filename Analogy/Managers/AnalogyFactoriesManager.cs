@@ -23,7 +23,46 @@ namespace Analogy
         private bool ExternalDataSourcesAdded { get; set; }
         public static AnalogyFactoriesManager Instance = _instance.Value;
         private List<IAnalogyFactory> builtInFactories { get; }
-        private List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)> Settings { get;  set; }
+        private List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)> Settings { get; set; }
+        private List<IAnalogyDataProviderSettings> DataProvidersSettings { get; set; }
+
+        public List<(IAnalogyFactory Factory, Assembly Assembly)> Assemblies { get; private set; }
+
+        private List<IAnalogyFactory> Factories { get; }
+
+        public AnalogyFactoriesManager()
+        {
+            DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
+            Settings = new List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)>();
+            Settings.Add((NLogBuiltInFactory.AnalogyNLogGuid, new AnalogyNLogSettings()));
+            Factories = new List<IAnalogyFactory>();
+            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
+            {
+                (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
+                (new NLogBuiltInFactory(), Assembly.GetAssembly(typeof(NLogBuiltInFactory)))
+            };
+            builtInFactories = new List<IAnalogyFactory>();
+            try
+            {
+                foreach ((IAnalogyFactory factory, _) in Assemblies)
+                {
+                    foreach (var provider in factory.DataProviders.Items)
+                    {
+                        provider.InitDataProvider();
+                    }
+                    //if no exception in init then add to list
+                    Factories.Add(factory);
+                    builtInFactories.Add(factory);
+
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+
         public async Task AddExternalDataSources()
         {
             if (ExternalDataSourcesAdded)
@@ -35,51 +74,14 @@ namespace Analogy
             {
                 if (ExternalDataSourcesAdded)
                     return;
-                var distinctFactory = result.Factories.Where(f => !Instance.Factories.Contains(f)).ToList();
-                Instance.Factories.AddRange(distinctFactory);
-                var distinctAssemblies = result.Assemblies.Where(a => !Instance.Assemblies.Contains(a)).ToList();
-                Instance.Assemblies.AddRange(distinctAssemblies);
+                var distinctFactory = result.Factories.Where(f => !Factories.Contains(f)).ToList();
+                Factories.AddRange(distinctFactory);
+                var distinctAssemblies = result.Assemblies.Where(a => !Assemblies.Contains(a)).ToList();
+                Assemblies.AddRange(distinctAssemblies);
                 ExternalDataSourcesAdded = true;
+                DataProvidersSettings.AddRange(result.DataProviderSettings);
             }
         }
-
-
-        public List<(IAnalogyFactory Factory, Assembly Assembly)> Assemblies { get; private set; }
-
-        private List<IAnalogyFactory> Factories { get; }
-
-        public AnalogyFactoriesManager()
-        {
-            Settings=new List<(Guid FacyoryID, IAnalogyDataProviderSettings Settings)>();
-            Settings.Add((NLogBuiltInFactory.AnalogyNLogGuid,new AnalogyNLogSettings()));
-            Factories = new List<IAnalogyFactory>();
-            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
-            {
-                (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
-                (new NLogBuiltInFactory(), Assembly.GetAssembly(typeof(NLogBuiltInFactory)))
-            };
-            builtInFactories=new List<IAnalogyFactory>();
-            try
-            {
-                foreach ((IAnalogyFactory factory, _) in Assemblies)
-                {
-                    foreach (var provider in factory.DataProviders.Items)
-                    {
-                        provider.InitDataProvider();
-                    }
-                    //if no exception in init then add to list
-                    Factories.Add(factory);
-                    builtInFactories .Add(factory);
-
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
-
-        }
-
         public IEnumerable<(string Title, (string Title, IEnumerable<IAnalogyDataProvider> Items) DataSources)>
             GetDataSource()
         {
@@ -140,6 +142,10 @@ namespace Analogy
         {
             return builtInFactories.Exists(f => f.FactoryID.Equals(factory.FactoryID));
         }
+
+        public List<IAnalogyDataProviderSettings> GetProvidersSettings() => DataProvidersSettings.ToList();
+
+
     }
 
     public class ExternalDataProviders
@@ -152,14 +158,18 @@ namespace Analogy
         public List<(IAnalogyFactory Factory, Assembly Assembly)> Assemblies { get; private set; }
 
         public List<IAnalogyFactory> Factories { get; }
+        public List<IAnalogyDataProviderSettings> DataProviderSettings { get; private set; }
 
         public ExternalDataProviders()
         {
             Factories = new List<IAnalogyFactory>();
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>();
+            DataProviderSettings = new List<IAnalogyDataProviderSettings>();
 
             string[] moduleIdFiles = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
-                @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly);
+                @"*Analogy.Implementation.*.dll", SearchOption.TopDirectoryOnly).Union(
+                Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory,
+                    @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly)).ToArray();
             foreach (string aFile in moduleIdFiles)
             {
                 try
@@ -183,6 +193,11 @@ namespace Analogy
                                 Factories.Add(factory);
                                 Assemblies.Add((factory, assembly));
 
+                            }
+                            if (aType.GetInterface(nameof(IAnalogyDataProviderSettings)) != null)
+                            {
+                                if (!(Activator.CreateInstance(aType) is IAnalogyDataProviderSettings setting)) continue;
+                                DataProviderSettings.Add(setting);
                             }
                         }
                         catch (Exception)
