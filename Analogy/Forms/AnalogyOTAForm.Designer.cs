@@ -38,29 +38,29 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnStartServer);
-            this.groupBox1.Location = new System.Drawing.Point(15, 16);
+            this.groupBox1.Location = new System.Drawing.Point(13, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(971, 77);
+            this.groupBox1.Size = new System.Drawing.Size(850, 77);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Collector mode (logs will sent here)";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(370, 27);
+            this.label1.Location = new System.Drawing.Point(324, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(583, 30);
+            this.label1.Size = new System.Drawing.Size(510, 30);
             this.label1.TabIndex = 1;
             // 
             // btnStartServer
             // 
-            this.btnStartServer.Location = new System.Drawing.Point(6, 21);
+            this.btnStartServer.Location = new System.Drawing.Point(5, 21);
             this.btnStartServer.Name = "btnStartServer";
-            this.btnStartServer.Size = new System.Drawing.Size(348, 37);
+            this.btnStartServer.Size = new System.Drawing.Size(304, 37);
             this.btnStartServer.TabIndex = 0;
             this.btnStartServer.Text = "Start Receiving Messages";
             this.btnStartServer.UseVisualStyleBackColor = true;
@@ -68,21 +68,21 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 99);
+            this.groupBox2.Location = new System.Drawing.Point(11, 99);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(973, 344);
+            this.groupBox2.Size = new System.Drawing.Size(851, 344);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Incomings Logs:";
             // 
             // AnalogyOTAForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 455);
+            this.ClientSize = new System.Drawing.Size(872, 455);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;

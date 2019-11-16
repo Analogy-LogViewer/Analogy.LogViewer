@@ -47,6 +47,7 @@
             this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
             this.lblWindowsEventLogs = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageIIS = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageSerilog = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageLog4Net = new DevExpress.XtraTab.XtraTabPage();
@@ -71,7 +72,6 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageNLog.SuspendLayout();
@@ -291,6 +291,15 @@
             this.xtraTabPageIIS.Name = "xtraTabPageIIS";
             this.xtraTabPageIIS.Size = new System.Drawing.Size(740, 612);
             this.xtraTabPageIIS.Text = "IIS Logs";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(21, 10);
+            this.labelControl10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(136, 16);
+            this.labelControl10.TabIndex = 5;
+            this.labelControl10.Text = "No special settings exist";
             // 
             // xtraTabPageSerilog
             // 
@@ -547,21 +556,13 @@
             this.xtraTabPage3.Size = new System.Drawing.Size(740, 612);
             this.xtraTabPage3.Text = "Kama Research";
             // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(21, 10);
-            this.labelControl10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(136, 16);
-            this.labelControl10.TabIndex = 5;
-            this.labelControl10.Text = "No special settings exist";
-            // 
             // UserSettingsDataProvidersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 619);
             this.Controls.Add(this.tabControlMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserSettingsDataProvidersForm";
             this.ShowIcon = false;

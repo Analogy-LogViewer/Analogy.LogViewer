@@ -11,7 +11,7 @@
     <SccProvider>SAK</SccProvider>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>Icons\Pelfusion-Flat-File-Type-Log.ico</ApplicationIcon>
+    <ApplicationIcon>Analogy_logo1.ico</ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>Analogy</AssemblyName>
@@ -736,7 +736,6 @@
     <None Include="Resources\Clear_32x32.png" />
     <None Include="Resources\Clear_16x16.png" />
     <None Include="Resources\openFile.png" />
-    <Content Include="Icons\Pelfusion-Flat-File-Type-Log.ico" />
     <None Include="Resources\FullscreenBlue16.png" />
     <None Include="Resources\crossMark.png" />
     <None Include="Resources\checkOK.png" />
@@ -775,8 +774,6 @@
     <EmbeddedResource Include="Forms\ChangeLog.resx">
       <DependentUpon>ChangeLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Icons\server_off.ico" />
-    <EmbeddedResource Include="Icons\server_on.ico" />
     <EmbeddedResource Include="Forms\ProcessNameAndID.resx">
       <DependentUpon>ProcessNameAndID.cs</DependentUpon>
     </EmbeddedResource>
@@ -844,6 +841,14 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Analogy_icon1_16x16.ico" />
+    <Content Include="Analogy_logo1.ico" />
+    <Content Include="Icons\Analogy_icon1.ico" />
+    <Content Include="Icons\Analogy_icon1_16x16.ico" />
+    <Content Include="Icons\Analogy_Icon2.ico" />
+    <Content Include="Icons\Analogy_Icon2_16x16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

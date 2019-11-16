@@ -43,6 +43,9 @@
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -160,7 +163,6 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.tableLayoutPanel);
-            this.xtraTabPage1.Enabled = true;
             this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1042, 409);
@@ -169,7 +171,6 @@
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.rtxtChangeLog);
-            this.xtraTabPage3.Enabled = true;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPage3.Text = "Change Log";
@@ -187,7 +188,6 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.rtxtContributions);
-            this.xtraTabPage2.Enabled = true;
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1042, 409);
@@ -225,6 +225,9 @@
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
