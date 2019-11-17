@@ -24,7 +24,7 @@ namespace Analogy
         public bool SaveSearchFilters { get; set; }
         public string IncludeText { get; set; }
         public string ExcludedText { get; set; }
-    
+
         public string SourceText { get; set; }
         public string ModuleText { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
@@ -53,6 +53,7 @@ namespace Analogy
 
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
+        public bool DefaultDescendOrder { get; set; }
         public LogParserSettingsContainer LogParsersSettings { get; set; }
         public ColorSettings ColorSettings { get; set; }
         public UserSettingsManager()
@@ -140,6 +141,8 @@ namespace Analogy
                 LogParsersSettings = new LogParserSettingsContainer();
             }
 
+            DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
+
         }
 
 
@@ -190,6 +193,8 @@ namespace Analogy
             {
                 Settings.Default.ColorSettings = string.Empty;
             }
+
+            Settings.Default.DefaultDescendOrder = DefaultDescendOrder;
             Settings.Default.Save();
 
         }
@@ -233,9 +238,9 @@ namespace Analogy
 
         public LogParserSettingsContainer()
         {
-            NLogParserSettings=new LogParserSettings();
+            NLogParserSettings = new LogParserSettings();
             NLogParserSettings.Splitter = "|";
-            
+
         }
 
     }

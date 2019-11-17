@@ -273,7 +273,7 @@ namespace Analogy
             btswitchExpand.Checked = true;
             splitContainerMain.Collapsed = true;
             if (Settings.StartupErrorLogLevel)
-                chkLstLogLevel.Items[0].CheckState = CheckState.Checked;
+                chkLstLogLevel.Items[1].CheckState = CheckState.Checked;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
             btsAutoScrollToBottom.Checked = Settings.AutoScrollToLastMessage;
         }

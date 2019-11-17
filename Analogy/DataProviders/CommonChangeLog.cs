@@ -11,6 +11,7 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
+            yield return new AnalogyChangeLog("user settings: Add option to set default date sort option (ascend/descend) (issue #55)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 17));
             yield return new AnalogyChangeLog("File Pooling: add indication of number of new messages per update (issue #51)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 14));
             yield return new AnalogyChangeLog("File Pooling: Add an option to ignore global caching settings or adding to recent files history. (issue #54)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 14));
             yield return new AnalogyChangeLog("NLog Data Provider: Add import/export of settings. (issue #52)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 12));

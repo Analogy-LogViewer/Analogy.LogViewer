@@ -394,5 +394,17 @@ namespace Analogy.Properties {
                 this["ColorSettings"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DefaultDescendOrder {
+            get {
+                return ((bool)(this["DefaultDescendOrder"]));
+            }
+            set {
+                this["DefaultDescendOrder"] = value;
+            }
+        }
     }
 }

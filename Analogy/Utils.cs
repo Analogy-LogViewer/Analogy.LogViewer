@@ -161,7 +161,8 @@ namespace Analogy
             }
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
-            dtb.DefaultView.Sort = "Date ASC";
+            dtb.DefaultView.Sort =UserSettingsManager.UserSettings.DefaultDescendOrder ?
+                "Date DESC" : "Date ASC";
 
             return dtb;
         }

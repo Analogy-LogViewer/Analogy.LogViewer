@@ -78,6 +78,7 @@ namespace Analogy
             cpeLogLevelCritical.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Critical);
             cpeLogLevelAnalogyInformation.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.AnalogyInformation);
             cpeHighlightColor.Color = Settings.ColorSettings.GetHighlightColor();
+            tsDataTimeAscendDescend.IsOn = Settings.DefaultDescendOrder;
         }
 
 
@@ -242,6 +243,12 @@ namespace Analogy
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Critical, cpeLogLevelCritical.Color);
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.AnalogyInformation, cpeLogLevelAnalogyInformation.Color);
             Settings.ColorSettings.SetHighlightColor(cpeHighlightColor.Color);
+        }
+
+        private void tsDataTimeAscendDescend_Toggled(object sender, EventArgs e)
+        {
+            Settings.DefaultDescendOrder = tsDataTimeAscendDescend.IsOn;
+
         }
     }
 }
