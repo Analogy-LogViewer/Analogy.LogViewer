@@ -190,7 +190,7 @@ namespace Analogy
                 SaveMapping();
                 try
                 {
-                    File.WriteAllText(Settings.LogParsersSettings.NLogParserSettings.AsJson(), saveFileDialog.FileName);
+                File.WriteAllText( saveFileDialog.FileName, Settings.LogParsersSettings.NLogParserSettings.AsJson());
                     XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 

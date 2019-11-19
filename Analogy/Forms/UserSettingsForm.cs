@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.Interfaces;
@@ -67,6 +68,12 @@ namespace Analogy
             checkEditSearchAlsoInSourceAndModule.Checked = Settings.SearchAlsoInSourceAndModule;
             toggleSwitchIdleMode.IsOn = Settings.IdleMode;
             nudIdleTime.Value = Settings.IdleTimeMinutes;
+            tsDataTimeAscendDescend.IsOn = Settings.DefaultDescendOrder;
+            LoadColorSettings();
+        }
+
+        private void LoadColorSettings()
+        {
             cpeLogLevelUnknown.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Unknown);
             cpeLogLevelDisabled.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Disabled);
             cpeLogLevelTrace.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Trace);
@@ -76,9 +83,9 @@ namespace Analogy
             cpeLogLevelWarning.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Warning);
             cpeLogLevelError.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Error);
             cpeLogLevelCritical.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Critical);
-            cpeLogLevelAnalogyInformation.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.AnalogyInformation);
+            cpeLogLevelAnalogyInformation.Color =
+                Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.AnalogyInformation);
             cpeHighlightColor.Color = Settings.ColorSettings.GetHighlightColor();
-            tsDataTimeAscendDescend.IsOn = Settings.DefaultDescendOrder;
         }
 
 
@@ -249,6 +256,59 @@ namespace Analogy
         {
             Settings.DefaultDescendOrder = tsDataTimeAscendDescend.IsOn;
 
+        }
+
+        private void sBtnExportColors_Click(object sender, EventArgs e)
+        {
+            SaveSetting();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Analogy Color Settings (*.json)|*.json";
+            saveFileDialog.Title = @"Export Analogy Color settings";
+
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+
+                try
+                {
+                    File.WriteAllText(saveFileDialog.FileName,Settings.ColorSettings.AsJson());
+                    XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void sBtnImportColors_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Analogy Color Settings (*.json)|*.json";
+            openFileDialog1.Title = @"Import NLog settings";
+            openFileDialog1.Multiselect = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var json = File.ReadAllText(openFileDialog1.FileName);
+                    ColorSettings color = ColorSettings.FromJson(json);
+                    Settings.ColorSettings = color;
+                    LoadColorSettings();
+                    XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Error Import: " + ex.Message, @"Error Import file", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

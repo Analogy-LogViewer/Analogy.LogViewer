@@ -512,8 +512,9 @@ namespace Analogy
 
         private void AnalogyMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            xtcLogs.TabPages.Clear(true);
-            RestoreDefaultLogLevel();
+            settings.UpdateRunningTime();
+            settings.Save();
+            BookmarkPersistManager.Instance.SaveFile();
         }
 
         private void bbtnItemChangeLog_ItemClick(object sender, ItemClickEventArgs e)
@@ -710,25 +711,6 @@ namespace Analogy
             //}
         }
 
-        private void RestoreDefaultLogLevel()
-        {
-            //todo:
-            //if (DebugOn)
-            //{
-            //    var (client, resultOK) = LogConfigUtils.LoadClientConfig();
-            //    if (resultOK)
-            //    {
-            //        client.Levels.DefaultLevel = DefaultValue;
-            //        if (LogConfigUtils.SaveClientConfig(client))
-            //        {
-            //            DebugOn = true;
-            //            XtraMessageBox.Show($"default log level restored to {DefaultValue}.", "Analogy",
-            //                MessageBoxButtons.OK);
-            //        }
-            //    }
-            //}
-        }
-
 
         private void CreateDataSources()
         {
@@ -789,8 +771,8 @@ namespace Analogy
             RibbonPageGroup groupDataSource = new RibbonPageGroup(dataSourceFactory.Title);
             groupDataSource.AllowTextClipping = false;
             ribbonPage.Groups.Add(groupDataSource);
-            var po = new ParallelOptions {MaxDegreeOfParallelism = -1};
-            Parallel.ForEach(dataSourceFactory.Items,po,
+            var po = new ParallelOptions { MaxDegreeOfParallelism = -1 };
+            Parallel.ForEach(dataSourceFactory.Items, po,
                 dataSource =>
             {
                 if (dataSource is IAnalogyRealTimeDataProvider realTime)
@@ -809,7 +791,7 @@ namespace Analogy
                         groupOfflineFileTools);
                 }
             });
-           
+
 
             //add bookmark
             BarButtonItem bookmarkBtn = new BarButtonItem();
@@ -1022,7 +1004,7 @@ namespace Analogy
             group.ItemLinks.Add(realTimeBtn);
             realTimeBtn.ImageOptions.Image = Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
-            realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ?$" - {realTime.OptionalTitle}": string.Empty);
+            realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ? $" - {realTime.OptionalTitle}" : string.Empty);
 
             async Task<bool> OpenRealTime()
             {

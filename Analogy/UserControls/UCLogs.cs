@@ -266,7 +266,10 @@ namespace Analogy
 
             gridControl.ForceInitialize();
             if (File.Exists(LayoutFileName))
+            {
                 gridControl.MainView.RestoreLayoutFromXml(LayoutFileName);
+                gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(LayoutFileName);
+            }
             if (Settings.SaveSearchFilters)
             {
                 txtbIncludeText.Text = Settings.IncludeText;
@@ -1095,7 +1098,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename,  cancellationTokenSource.Token);
+                await fileProcessor.Process(FileDataProvider, filename, cancellationTokenSource.Token);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -1973,6 +1976,7 @@ namespace Analogy
         {
             Settings.FontSize = logGrid.Appearance.Row.Font.Size + 2;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+            gridViewBookmarkedMessages.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
             SaveGridLayout();
         }
 
@@ -1982,6 +1986,7 @@ namespace Analogy
             {
                 Settings.FontSize = logGrid.Appearance.Row.Font.Size - 2;
                 logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+                gridViewBookmarkedMessages.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
                 SaveGridLayout();
             }
         }

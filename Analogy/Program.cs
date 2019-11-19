@@ -30,12 +30,6 @@ namespace Analogy
                 Settings.ApplicationSkinName = ((UserLookAndFeel)s).ActiveSkinName;
             };
 
-            Application.ApplicationExit += (s, e) =>
-            {
-                Settings.UpdateRunningTime();
-                Settings.Save();
-                BookmarkPersistManager.Instance.SaveFile();
-            };
             LoadStartupExtensions();
             Application.Run(new MainForm());
 

@@ -304,6 +304,8 @@ namespace Analogy
 
         public void SetColorForLogLevel(AnalogyLogLevel level, Color value) => LogLevelColors[level] = value;
         public void SetHighlightColor(Color value) => HighlightColor = value;
+        public string AsJson() => JsonConvert.SerializeObject(this);
+        public static ColorSettings FromJson(string fileName) => JsonConvert.DeserializeObject<ColorSettings>(fileName);
     }
 }
 
