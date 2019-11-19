@@ -879,7 +879,9 @@ namespace Analogy
             if (!IsHandleCreated) return;
             BeginInvoke(new MethodInvoker(() =>
             {
-                lock (table.Rows.SyncRoot)
+                lockSlim.EnterWriteLock();
+                try
+
                 {
 #if DEBUG
                     Console.WriteLine(source);
@@ -888,6 +890,11 @@ namespace Analogy
                     table.AcceptChanges();
                     logGrid.EndDataUpdate();
                 }
+                finally
+                {
+                    lockSlim.ExitWriteLock();
+                }
+
             }));
         }
         public void AcceptChanges(bool forceRefresh)
