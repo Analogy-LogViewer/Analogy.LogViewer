@@ -42,6 +42,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.xtraTabPageUsers = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -49,6 +50,7 @@
             this.xtraTabPageAbout.SuspendLayout();
             this.xtraTabPageCredit.SuspendLayout();
             this.xtraTabPageUsers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -201,10 +203,11 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(1042, 409);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "Log Icon:  http://www.pelfusion.com";
+            this.richTextBox1.Text = "";
             // 
             // xtraTabPageUsers
             // 
+            this.xtraTabPageUsers.Controls.Add(this.pictureBox1);
             this.xtraTabPageUsers.Controls.Add(this.labelControl1);
             this.xtraTabPageUsers.Name = "xtraTabPageUsers";
             this.xtraTabPageUsers.PageVisible = false;
@@ -218,6 +221,14 @@
             this.labelControl1.Size = new System.Drawing.Size(345, 16);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Analogy Log Viewer is used by The following Origanizations:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(414, 175);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // AnalogyAboutBox
             // 
@@ -245,6 +256,7 @@
             this.xtraTabPageCredit.ResumeLayout(false);
             this.xtraTabPageUsers.ResumeLayout(false);
             this.xtraTabPageUsers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,5 +277,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageUsers;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

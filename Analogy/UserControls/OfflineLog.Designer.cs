@@ -134,6 +134,10 @@ namespace Analogy
             // 
             // treeList1
             // 
+            this.treeList1.Appearance.FocusedRow.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.treeList1.Appearance.FocusedRow.Options.UseFont = true;
+            this.treeList1.Appearance.SelectedRow.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.treeList1.Appearance.SelectedRow.Options.UseFont = true;
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colName,
             this.colChanged,
@@ -148,11 +152,14 @@ namespace Analogy
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.Editable = false;
             this.treeList1.OptionsFind.AlwaysVisible = true;
+            this.treeList1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.treeList1.OptionsSelection.MultiSelect = true;
+            this.treeList1.OptionsSelection.UseIndicatorForSelection = true;
             this.treeList1.OptionsView.AutoWidth = false;
             this.treeList1.OptionsView.BestFitMode = DevExpress.XtraTreeList.TreeListBestFitMode.Fast;
             this.treeList1.OptionsView.BestFitNodes = DevExpress.XtraTreeList.TreeListBestFitNodes.All;
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
+            this.treeList1.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus;
             this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.Size = new System.Drawing.Size(392, 401);
             this.treeList1.StateImageList = this.imageCollection1;
@@ -360,6 +367,8 @@ namespace Analogy
             // ucLogs1
             // 
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucLogs1.DoNotAddToRecentHistory = false;
+            this.ucLogs1.ForceNoFileCaching = false;
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";

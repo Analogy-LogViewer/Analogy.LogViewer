@@ -35,11 +35,16 @@ namespace Analogy
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
+        private FileProcessor fileProcessor { get; set; }
+
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
+        public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         private string OldTextInclude = string.Empty;
         private string OldTextExclude = string.Empty;
+        public int fileLoadingCount;
+        private bool LoadingInProgress => fileLoadingCount > 0;
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
         private IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions { get; set; }
@@ -105,6 +110,7 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
+            fileProcessor = new FileProcessor(this);
             if (DesignMode) return;
             //splitContainerMain.IsSplitterFixed = false;
             //splitContainerMain.FixedPanel = SplitFixedPanel.None;
@@ -1068,7 +1074,7 @@ namespace Analogy
             progressBar1.Value = 0;
             progressBar1.Maximum = fileNames.Count;
             progressBar1.Style = fileNames.Count > 1 ? ProgressBarStyle.Continuous : ProgressBarStyle.Marquee;
-
+            fileLoadingCount = +fileNames.Count;
             progressBar1.Visible = true;
             int processed = 0;
             foreach (string filename in fileNames)
@@ -1081,8 +1087,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                FileProcessor fp = new FileProcessor(this);
-                await fp.Process(FileDataProvider, filename, cancellationTokenSource.Token);
+                await fileProcessor.Process(FileDataProvider, filename,  cancellationTokenSource.Token);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -1783,6 +1788,8 @@ namespace Analogy
         private void sBtnCancel_Click(object sender, EventArgs e)
         {
             cancellationTokenSource.Cancel(false);
+            Interlocked.Exchange(ref fileLoadingCount, 0);
+
             cancellationTokenSource = new CancellationTokenSource();
             sBtnCancel.Visible = false;
         }
@@ -1945,7 +1952,13 @@ namespace Analogy
         {
             int row = e.FocusedRowHandle;
             if (row < 0) return;
-            LoadTextBoxes((AnalogyLogMessage)logGrid.GetRowCellValue(e.FocusedRowHandle, "Object"));
+            AnalogyLogMessage m = (AnalogyLogMessage)logGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
+            LoadTextBoxes(m);
+            string dataProvider = (string)logGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
+            if (File.Exists(dataProvider) && !LoadingInProgress)
+            {
+                OnFocusedRowChanged?.Invoke(this, (dataProvider, m));
+            }
         }
 
         private void tsmiIncreaseFont_Click(object sender, EventArgs e)
