@@ -24,6 +24,7 @@ using System.Windows.Forms;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Types;
+using DevExpress.Data.Filtering;
 using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
@@ -663,7 +664,14 @@ namespace Analogy
             try
             {
                 lockSlim.EnterReadLock();
-                return new DataView(_messageData, _messageData.DefaultView.RowFilter, null,
+                string filter = _messageData.DefaultView.RowFilter;
+                if (logGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(logGrid.ActiveFilterString))
+                {
+                    CriteriaOperator op = logGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
+                    string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
+                    filter = $"{filter} and {filterString}";
+                }
+                return new DataView(_messageData, filter, null,
                     DataViewRowState.CurrentRows).ToTable();
             }
             finally
