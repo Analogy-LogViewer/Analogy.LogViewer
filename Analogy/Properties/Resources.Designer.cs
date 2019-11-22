@@ -123,6 +123,26 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Analogy_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Analogy_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Analogy_Icon2 {
+            get {
+                object obj = ResourceManager.GetObject("Analogy_Icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ArrangeGroups_32x32 {
             get {
                 object obj = ResourceManager.GetObject("ArrangeGroups_32x32", resourceCulture);

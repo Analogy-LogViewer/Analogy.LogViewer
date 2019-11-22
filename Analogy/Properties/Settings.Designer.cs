@@ -406,5 +406,29 @@ namespace Analogy.Properties {
                 this["DefaultDescendOrder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FactoriesOrder {
+            get {
+                return ((string)(this["FactoriesOrder"]));
+            }
+            set {
+                this["FactoriesOrder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FactoriesSettings {
+            get {
+                return ((string)(this["FactoriesSettings"]));
+            }
+            set {
+                this["FactoriesSettings"] = value;
+            }
+        }
     }
 }

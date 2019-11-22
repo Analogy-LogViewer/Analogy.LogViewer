@@ -182,10 +182,7 @@ namespace Analogy
                 bBtnSaveEntireLog.Visibility = BarItemVisibility.Never;
             }
         }
-        //public UCLogs(bool bookmarkView) : this()
-        //{
-        //    BookmarkView = bookmarkView;
-        //}
+
 
         public void ProcessCmdKeyFromParent(Keys keyData)
         {

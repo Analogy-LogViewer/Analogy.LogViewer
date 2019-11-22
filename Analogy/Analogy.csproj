@@ -274,6 +274,7 @@
     <Compile Include="DataProviders\EventLogDataProvider.cs" />
     <Compile Include="Managers\FilePoolingManager.cs" />
     <Compile Include="Types\AsyncLazy.cs" />
+    <Compile Include="Types\DataProviders.cs" />
     <Compile Include="UserControls\AnalogyColumnsMatcherUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -851,6 +852,8 @@
     <Content Include="Icons\Analogy_icon1_16x16.ico" />
     <Content Include="Icons\Analogy_Icon2.ico" />
     <Content Include="Icons\Analogy_Icon2_16x16.ico" />
+    <None Include="Resources\Analogy_Icon2.ico" />
+    <None Include="Resources\Analogy_icon1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -11,7 +11,7 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
-            
+            yield return new AnalogyChangeLog("Allows disabling of data providers (issue #60)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 22));
             yield return new AnalogyChangeLog("User Settings: Add Export/Import of messages' color settings (Issue #56)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 19));
             yield return new AnalogyChangeLog("Bookmarks window is not customizable (font size). (issue #59)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 11, 19));
             yield return new AnalogyChangeLog("Detailed message window is ignoring in-place filtering (in the grid control) and shows incorrect number of messages (issue #58)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 11, 19));

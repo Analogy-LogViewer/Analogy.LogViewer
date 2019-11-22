@@ -698,10 +698,10 @@
             // 
             // bbtnSettingsStartupDataSources
             // 
-            this.bbtnSettingsStartupDataSources.Caption = "Startup Data sources";
+            this.bbtnSettingsStartupDataSources.Caption = "Data providers Settings ";
             this.bbtnSettingsStartupDataSources.Id = 67;
-            this.bbtnSettingsStartupDataSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSettingsStartupDataSources.ImageOptions.Image")));
-            this.bbtnSettingsStartupDataSources.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSettingsStartupDataSources.ImageOptions.LargeImage")));
+            this.bbtnSettingsStartupDataSources.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_Icon2;
+            this.bbtnSettingsStartupDataSources.ImageOptions.LargeImage = global::Analogy.Properties.Resources.Analogy_Icon2;
             this.bbtnSettingsStartupDataSources.Name = "bbtnSettingsStartupDataSources";
             this.bbtnSettingsStartupDataSources.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -717,7 +717,7 @@
             // 
             // bBtnDataProviderSettings
             // 
-            this.bBtnDataProviderSettings.Caption = "Data Providers Settings";
+            this.bBtnDataProviderSettings.Caption = "Custom Data Providers Settings";
             this.bBtnDataProviderSettings.Id = 69;
             this.bBtnDataProviderSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Database_on;
             this.bBtnDataProviderSettings.Name = "bBtnDataProviderSettings";

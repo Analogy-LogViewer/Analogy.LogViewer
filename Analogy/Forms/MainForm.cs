@@ -17,6 +17,7 @@ using Analogy.Interfaces.Factories;
 using Analogy.LogViewer.NLogProvider;
 using Analogy.Properties;
 using Analogy.Tools;
+using Analogy.Types;
 using DevExpress.XtraEditors;
 using Newtonsoft.Json;
 
@@ -94,7 +95,7 @@ namespace Analogy
 
             CreateAnalogyBuiltinDataProviders();
             await AnalogyFactoriesManager.Instance.AddExternalDataSources();
-            CreateEventLogsGroup();
+
             CreateDataSources();
 
             //set Default page:
@@ -131,22 +132,23 @@ namespace Analogy
         private void CreateAnalogyBuiltinDataProviders()
         {
             IAnalogyFactory analogy = AnalogyFactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
-            CreateDataSource(analogy, 0);
+            if (settings.GetFactorySetting(analogy.FactoryID).Status != DataProviderFactoryStatus.Disabled)
+                CreateDataSource(analogy, 0);
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
             IAnalogyFactory analogyNLog = AnalogyFactoriesManager.Instance.Get(NLogBuiltInFactory.AnalogyNLogGuid);
-            CreateDataSource(analogyNLog, 1);
-
-        }
-
-
-        private void CreateEventLogsGroup()
-        {
-            RibbonPage ribbonPage = new RibbonPage("Windows Event logs");
+            if (settings.GetFactorySetting(analogyNLog.FactoryID).Status != DataProviderFactoryStatus.Disabled)
+                CreateDataSource(analogyNLog, 1);
+            IAnalogyFactory eventLogDataFactory = AnalogyFactoriesManager.Instance.Get(EventLogDataFactory.ID);
+            if (settings.GetFactorySetting(eventLogDataFactory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
+                return;
+            //CreateEventLogsGroup
+            RibbonPage ribbonPage = new RibbonPage(eventLogDataFactory.Title);
+            EventLogDataProvider elds = eventLogDataFactory.DataProviders.Items.First() as EventLogDataProvider;
             ribbonControlMain.Pages.Insert(2, ribbonPage);
-            RibbonPageGroup group = new RibbonPageGroup("Windows Event logs Data Sources");
+            RibbonPageGroup group = new RibbonPageGroup(eventLogDataFactory.DataProviders.Title);
             ribbonPage.Groups.Add(group);
 
-            EventLogDataProvider elds = new EventLogDataProvider();
+
             BarButtonItem evtxRealTime = new BarButtonItem();
             evtxRealTime.Caption = "Real Time Windows Event Logs";
             evtxRealTime.RibbonStyle = RibbonItemStyles.All;
@@ -371,15 +373,17 @@ namespace Analogy
 
         private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
         {
+            while (!Initialized)
+                await Task.Delay(250);
             var supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
             {
-                while (!Initialized)
-                    await Task.Delay(250);
+
                 OpenOfflineLogs(null, files, supported.First());
             }
             else
             {
+
                 XtraMessageBox.Show(
                     "Zero or more than one data provider detected for this file." + Environment.NewLine +
                     "Please open it directly from the data provider menu", "Unable to open file", MessageBoxButtons.OK,
@@ -715,7 +719,8 @@ namespace Analogy
         private void CreateDataSources()
         {
             foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories()
-                .Where(factory => !AnalogyFactoriesManager.Instance.IsBuiltInFactory(factory)))
+                .Where(factory => !AnalogyFactoriesManager.Instance.IsBuiltInFactory(factory) &&
+                                  settings.GetFactorySetting(factory.FactoryID).Status != DataProviderFactoryStatus.Disabled))
             {
                 CreateDataSource(factory, 3);
             }

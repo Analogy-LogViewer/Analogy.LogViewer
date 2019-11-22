@@ -39,13 +39,17 @@ namespace Analogy
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
             {
                 (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
-                (new NLogBuiltInFactory(), Assembly.GetAssembly(typeof(NLogBuiltInFactory)))
+                (new NLogBuiltInFactory(), Assembly.GetAssembly(typeof(NLogBuiltInFactory))),
+                (new EventLogDataFactory(), Assembly.GetAssembly(typeof(EventLogDataFactory)))
             };
             builtInFactories = new List<IAnalogyFactory>();
             try
             {
                 foreach ((IAnalogyFactory factory, _) in Assemblies)
                 {
+                    FactorySettings setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
+                    setting.FactoryName = factory.Title;
+                    if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
                     foreach (var provider in factory.DataProviders.Items)
                     {
                         provider.InitDataProvider();
@@ -183,7 +187,9 @@ namespace Analogy
                             if (aType.GetInterface(nameof(IAnalogyFactory)) != null)
                             {
                                 if (!(Activator.CreateInstance(aType) is IAnalogyFactory factory)) continue;
-
+                                FactorySettings setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
+                                setting.FactoryName = factory.Title;
+                                if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
                                 foreach (var provider in factory.DataProviders.Items)
                                 {
                                     provider.InitDataProvider();
