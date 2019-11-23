@@ -107,6 +107,7 @@ namespace Analogy
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }
 
+            //file associations:
             LoadColorSettings();
         }
         private void SaveSetting()

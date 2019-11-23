@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsDataProvidersForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageNLog = new DevExpress.XtraTab.XtraTabPage();
+            this.sBtnNLogOpenFolder = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditNLogDirectory = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.analogyColumnsMatcherUC1 = new Analogy.UserControls.AnalogyColumnsMatcherUC();
             this.btnExportNLogSettings = new DevExpress.XtraEditors.SimpleButton();
             this.btnImportNLogSettings = new DevExpress.XtraEditors.SimpleButton();
@@ -75,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageNLog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogDirectory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).BeginInit();
@@ -104,7 +108,7 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageNLog;
-            this.tabControlMain.Size = new System.Drawing.Size(904, 621);
+            this.tabControlMain.Size = new System.Drawing.Size(904, 623);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageNLog,
@@ -121,6 +125,9 @@
             // 
             // xtraTabPageNLog
             // 
+            this.xtraTabPageNLog.Controls.Add(this.sBtnNLogOpenFolder);
+            this.xtraTabPageNLog.Controls.Add(this.textEditNLogDirectory);
+            this.xtraTabPageNLog.Controls.Add(this.labelControl14);
             this.xtraTabPageNLog.Controls.Add(this.analogyColumnsMatcherUC1);
             this.xtraTabPageNLog.Controls.Add(this.btnExportNLogSettings);
             this.xtraTabPageNLog.Controls.Add(this.btnImportNLogSettings);
@@ -135,23 +142,52 @@
             this.xtraTabPageNLog.Controls.Add(this.sbtnNLogCheckLayout);
             this.xtraTabPageNLog.ImageOptions.Image = global::Analogy.Properties.Resources.nlog;
             this.xtraTabPageNLog.Name = "xtraTabPageNLog";
-            this.xtraTabPageNLog.Size = new System.Drawing.Size(731, 614);
+            this.xtraTabPageNLog.Size = new System.Drawing.Size(731, 616);
             this.xtraTabPageNLog.Text = "NLog Parser";
+            // 
+            // sBtnNLogOpenFolder
+            // 
+            this.sBtnNLogOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnNLogOpenFolder.Location = new System.Drawing.Point(576, 74);
+            this.sBtnNLogOpenFolder.Name = "sBtnNLogOpenFolder";
+            this.sBtnNLogOpenFolder.Size = new System.Drawing.Size(30, 18);
+            this.sBtnNLogOpenFolder.TabIndex = 18;
+            this.sBtnNLogOpenFolder.Text = "..";
+            this.sBtnNLogOpenFolder.Click += new System.EventHandler(this.sBtnNLogOpenFolder_Click);
+            // 
+            // textEditNLogDirectory
+            // 
+            this.textEditNLogDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditNLogDirectory.EditValue = "";
+            this.textEditNLogDirectory.Location = new System.Drawing.Point(146, 71);
+            this.textEditNLogDirectory.Name = "textEditNLogDirectory";
+            this.textEditNLogDirectory.Size = new System.Drawing.Size(416, 22);
+            this.textEditNLogDirectory.TabIndex = 17;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(4, 74);
+            this.labelControl14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(127, 16);
+            this.labelControl14.TabIndex = 16;
+            this.labelControl14.Text = "NLog Default Directory";
             // 
             // analogyColumnsMatcherUC1
             // 
             this.analogyColumnsMatcherUC1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.analogyColumnsMatcherUC1.Location = new System.Drawing.Point(12, 116);
+            this.analogyColumnsMatcherUC1.Location = new System.Drawing.Point(12, 155);
             this.analogyColumnsMatcherUC1.Name = "analogyColumnsMatcherUC1";
-            this.analogyColumnsMatcherUC1.Size = new System.Drawing.Size(713, 451);
+            this.analogyColumnsMatcherUC1.Size = new System.Drawing.Size(713, 414);
             this.analogyColumnsMatcherUC1.TabIndex = 15;
             // 
             // btnExportNLogSettings
             // 
             this.btnExportNLogSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportNLogSettings.Location = new System.Drawing.Point(497, 572);
+            this.btnExportNLogSettings.Location = new System.Drawing.Point(497, 574);
             this.btnExportNLogSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExportNLogSettings.Name = "btnExportNLogSettings";
             this.btnExportNLogSettings.Size = new System.Drawing.Size(111, 37);
@@ -172,7 +208,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(145, 95);
+            this.labelControl5.Location = new System.Drawing.Point(145, 129);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(217, 16);
@@ -184,14 +220,14 @@
             this.textEditNLogExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEditNLogExtension.EditValue = "*.nlog";
-            this.textEditNLogExtension.Location = new System.Drawing.Point(145, 68);
+            this.textEditNLogExtension.Location = new System.Drawing.Point(145, 102);
             this.textEditNLogExtension.Name = "textEditNLogExtension";
             this.textEditNLogExtension.Size = new System.Drawing.Size(462, 22);
             this.textEditNLogExtension.TabIndex = 11;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(3, 71);
+            this.labelControl4.Location = new System.Drawing.Point(3, 105);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(110, 16);
@@ -201,7 +237,7 @@
             // sBtnSaveNlogMapping
             // 
             this.sBtnSaveNlogMapping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(614, 572);
+            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(614, 574);
             this.sBtnSaveNlogMapping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnSaveNlogMapping.Name = "sBtnSaveNlogMapping";
             this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
@@ -263,7 +299,7 @@
             this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
             this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
             this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
-            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
             // 
             // xtraUCWindowsEventLogs1
@@ -271,7 +307,7 @@
             this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
             this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
-            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(740, 591);
+            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(731, 593);
             this.xtraUCWindowsEventLogs1.TabIndex = 0;
             // 
             // lblWindowsEventLogs
@@ -289,7 +325,7 @@
             this.xtraTabPageIIS.Controls.Add(this.labelControl10);
             this.xtraTabPageIIS.ImageOptions.Image = global::Analogy.Properties.Resources.iis;
             this.xtraTabPageIIS.Name = "xtraTabPageIIS";
-            this.xtraTabPageIIS.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPageIIS.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageIIS.Text = "IIS Logs";
             // 
             // labelControl10
@@ -306,7 +342,7 @@
             this.xtraTabPageSerilog.Controls.Add(this.labelControl6);
             this.xtraTabPageSerilog.ImageOptions.Image = global::Analogy.Properties.Resources.serilog32x32;
             this.xtraTabPageSerilog.Name = "xtraTabPageSerilog";
-            this.xtraTabPageSerilog.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPageSerilog.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageSerilog.Text = "Serilog parser";
             // 
             // labelControl6
@@ -323,7 +359,7 @@
             this.xtraTabPageLog4Net.Controls.Add(this.labelControl11);
             this.xtraTabPageLog4Net.ImageOptions.Image = global::Analogy.Properties.Resources.log4net32x32;
             this.xtraTabPageLog4Net.Name = "xtraTabPageLog4Net";
-            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageLog4Net.Text = "Log4Net Parser";
             // 
             // labelControl11
@@ -344,7 +380,7 @@
             this.xtraTabPageJson.Controls.Add(this.sBtnLoadXMLFile);
             this.xtraTabPageJson.ImageOptions.Image = global::Analogy.Properties.Resources.jsonfile32x32;
             this.xtraTabPageJson.Name = "xtraTabPageJson";
-            this.xtraTabPageJson.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPageJson.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageJson.Text = "Json Parser";
             // 
             // labelControl12
@@ -503,7 +539,7 @@
             this.xtraTabPageXML.Controls.Add(this.labelControl13);
             this.xtraTabPageXML.ImageOptions.Image = global::Analogy.Properties.Resources.xml32x32;
             this.xtraTabPageXML.Name = "xtraTabPageXML";
-            this.xtraTabPageXML.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPageXML.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageXML.Text = "XML Parser";
             // 
             // labelControl13
@@ -520,7 +556,7 @@
             this.xtraTabPageRSS.Controls.Add(this.labelControl9);
             this.xtraTabPageRSS.ImageOptions.Image = global::Analogy.Properties.Resources.rss;
             this.xtraTabPageRSS.Name = "xtraTabPageRSS";
-            this.xtraTabPageRSS.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPageRSS.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageRSS.Text = "RSS Parser";
             // 
             // labelControl9
@@ -537,7 +573,7 @@
             this.xtraTabPage1.ImageOptions.Image = global::Analogy.Properties.Resources.Mirada_Icon;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.PageVisible = false;
-            this.xtraTabPage1.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPage1.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPage1.Text = "Mirada logs Parser";
             // 
             // xtraTabPage2
@@ -545,7 +581,7 @@
             this.xtraTabPage2.ImageOptions.Image = global::Analogy.Properties.Resources.iqon;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.PageVisible = false;
-            this.xtraTabPage2.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPage2.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPage2.Text = "ICAP BU Logs";
             // 
             // xtraTabPage3
@@ -553,14 +589,14 @@
             this.xtraTabPage3.ImageOptions.Image = global::Analogy.Properties.Resources.kama;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.PageVisible = false;
-            this.xtraTabPage3.Size = new System.Drawing.Size(740, 613);
+            this.xtraTabPage3.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPage3.Text = "Kama Research";
             // 
             // UserSettingsDataProvidersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 621);
+            this.ClientSize = new System.Drawing.Size(904, 623);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -574,6 +610,7 @@
             this.tabControlMain.ResumeLayout(false);
             this.xtraTabPageNLog.ResumeLayout(false);
             this.xtraTabPageNLog.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogDirectory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).EndInit();
@@ -647,5 +684,8 @@
         private UserControls.AnalogyColumnsMatcherUC analogyColumnsMatcherUC1;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.TextEdit textEditNLogDirectory;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.SimpleButton sBtnNLogOpenFolder;
     }
 }

@@ -54,7 +54,7 @@ namespace Analogy
         {
 
             LoadNLogSettings(Settings.LogParsersSettings.NLogParserSettings);
-           // AddExtrenalUserControlSettings();
+            // AddExtrenalUserControlSettings();
         }
 
         private void AddExtrenalUserControlSettings()
@@ -130,6 +130,7 @@ namespace Analogy
         {
             Settings.LogParsersSettings.NLogParserSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
                 new List<string> {textEditNLogExtension.Text}, analogyColumnsMatcherUC1.Mapping);
+            Settings.LogParsersSettings.NLogParserSettings.Directory = textEditNLogDirectory.Text;
         }
 
         private void SBtnLoadXMLFile_Click(object sender, EventArgs e)
@@ -190,7 +191,7 @@ namespace Analogy
                 SaveMapping();
                 try
                 {
-                File.WriteAllText( saveFileDialog.FileName, Settings.LogParsersSettings.NLogParserSettings.AsJson());
+                    File.WriteAllText(saveFileDialog.FileName, Settings.LogParsersSettings.NLogParserSettings.AsJson());
                     XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
@@ -221,7 +222,21 @@ namespace Analogy
                 {
                     //ingnore errors in data providers
                 }
-                
+
+            }
+        }
+
+        private void sBtnNLogOpenFolder_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    textEditNLogDirectory.Text = fbd.SelectedPath;
+
+                }
             }
         }
     }

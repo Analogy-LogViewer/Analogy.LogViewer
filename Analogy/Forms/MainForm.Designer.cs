@@ -694,7 +694,7 @@
             this.bbtnUserSettingsResourceUsage.Name = "bbtnUserSettingsResourceUsage";
             this.bbtnUserSettingsResourceUsage.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bbtnUserSettingsResourceUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnUserSettingsResourceUsage_ItemClick);
+            this.bbtnUserSettingsResourceUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserSettingsResourceUsage_ItemClick);
             // 
             // bbtnSettingsStartupDataSources
             // 
@@ -705,7 +705,7 @@
             this.bbtnSettingsStartupDataSources.Name = "bbtnSettingsStartupDataSources";
             this.bbtnSettingsStartupDataSources.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bbtnSettingsStartupDataSources.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSettingsStartupDataSources_ItemClick);
+            this.bbtnSettingsStartupDataSources.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSettingsStartupDataSources_ItemClick);
             // 
             // bbiFileCaching
             // 

@@ -353,5 +353,10 @@ namespace Analogy
         public List<string> UserSettingFileAssociations { get; set; }
         public DataProviderFactoryStatus Status { get; set; }
     }
+
+    public class PreDefinedQuery
+    {
+
+    }
 }
 

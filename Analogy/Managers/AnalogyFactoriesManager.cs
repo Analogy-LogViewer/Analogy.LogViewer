@@ -110,7 +110,7 @@ namespace Analogy
 
         public List<IAnalogyFactory> GetFactories() => Factories.ToList();
 
-        public IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSources(string[] fileNames)
+        public IEnumerable<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
         {
             foreach (var factory in Factories)
             {
@@ -118,7 +118,7 @@ namespace Analogy
                     i is IAnalogyOfflineDataProvider offline && offline.CanOpenAllFiles(fileNames));
                 foreach (IAnalogyDataProvider dataSource in supported)
                 {
-                    yield return dataSource as IAnalogyOfflineDataProvider;
+                    yield return (dataSource as IAnalogyOfflineDataProvider, factory.FactoryID);
                 }
             }
         }
@@ -142,11 +142,9 @@ namespace Analogy
 
         public IAnalogyFactory Get(Guid id) => Assemblies.Single(a => a.Factory.FactoryID == id).Factory;
 
-        public bool IsBuiltInFactory(IAnalogyFactory factory)
-        {
-            return builtInFactories.Exists(f => f.FactoryID.Equals(factory.FactoryID));
-        }
+        public bool IsBuiltInFactory(IAnalogyFactory factory) => IsBuiltInFactory(factory.FactoryID);
 
+        public bool IsBuiltInFactory(Guid factoryId) => builtInFactories.Exists(f => f.FactoryID.Equals(factoryId));
         public List<IAnalogyDataProviderSettings> GetProvidersSettings() => DataProvidersSettings.ToList();
 
 
