@@ -108,6 +108,8 @@ namespace Analogy
             }
 
             //file associations:
+            cbDataProviderAssociation.DataSource = Settings.FactoriesSettings;
+            cbDataProviderAssociation.DisplayMember = "FactoryName";
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -374,5 +376,20 @@ namespace Analogy
             chkLstDataProviderStatus.SelectedIndex = chkLstDataProviderStatus.SelectedIndex + 1;
         }
 
+        private void cbDataProviderAssociation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDataProviderAssociation.SelectedItem is FactorySettings setting && setting.UserSettingFileAssociations.Any())
+                txtbDataProviderAssociation.Text = string.Join(",", setting.UserSettingFileAssociations);
+            else
+                txtbDataProviderAssociation.Text = string.Empty;
+
+        }
+
+        private void btnSetFileAssociation_Click(object sender, EventArgs e)
+        {
+            if (cbDataProviderAssociation.SelectedItem is FactorySettings setting)
+                setting.UserSettingFileAssociations = txtbDataProviderAssociation.Text
+                    .Split(new[]{","}, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
     }
 }

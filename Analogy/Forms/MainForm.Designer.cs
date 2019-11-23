@@ -232,7 +232,6 @@
             this.bBtnItemExportSettings.Id = 70;
             this.bBtnItemExportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemExportSettings.ImageOptions.Image")));
             this.bBtnItemExportSettings.Name = "bBtnItemExportSettings";
-            this.bBtnItemExportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnItemExportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemExportSettings_ItemClick);
             // 
             // bBtnItemImportSettings
@@ -241,7 +240,6 @@
             this.bBtnItemImportSettings.Id = 71;
             this.bBtnItemImportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemImportSettings.ImageOptions.Image")));
             this.bBtnItemImportSettings.Name = "bBtnItemImportSettings";
-            this.bBtnItemImportSettings.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnItemImportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemImportSettings_ItemClick);
             // 
             // bbtnItemExit

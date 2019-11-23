@@ -17,10 +17,10 @@ namespace Analogy
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }
-        private List<string> TreeListFileNodes { get; set; }
+        //private List<string> TreeListFileNodes { get; set; }
         public OfflineUCLogs(string initSelectedPath)
         {
-            TreeListFileNodes = new List<string>();
+            //TreeListFileNodes = new List<string>();
             SelectedPath = initSelectedPath;
             InitializeComponent();
             treeList1.Appearance.HideSelectionRow.Assign(treeList1.ViewInfo.PaintAppearance.FocusedRow);
@@ -66,23 +66,23 @@ namespace Analogy
 
         private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
         {
-    
-            if (TreeListFileNodes.Contains(data.file))
-            {
-                var t = treeList1.Nodes.FirstOrDefault(n => n["Path"].Equals(data.file));
-                if (t != null && treeList1.FocusedNode != t)
-                {
-                    treeList1.SelectionChanged -= TreeList1_SelectionChanged;
-                    treeList1.Selection.Clear();
-                    t.Selected = true;
-                    treeList1.SetFocusedNode(t);
-                    treeList1.Selection.Add(t);
-                    treeList1.SelectionChanged += TreeList1_SelectionChanged;
-                }
 
+
+            var t = treeList1.Nodes.FirstOrDefault(n => data.file.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
+            if (t != null && treeList1.FocusedNode != t)
+            {
+                treeList1.SelectionChanged -= TreeList1_SelectionChanged;
+                treeList1.Selection.Clear();
+                treeList1.FocusedNode = null;
+                t.Selected = true;
+                treeList1.SetFocusedNode(t);
+                treeList1.Selection.Add(t);
+                treeList1.SelectionChanged += TreeList1_SelectionChanged;
             }
 
-       
+
+
+
         }
 
         private async void FolderTreeViewUC1_FolderChanged(object sender, Types.FolderSelectionEventArgs e)
@@ -110,11 +110,11 @@ namespace Analogy
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
             List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).ToList();
             treeList1.Nodes.Clear();
-            TreeListFileNodes.Clear();
+            // TreeListFileNodes.Clear();
             foreach (FileInfo fi in fileInfos)
             {
                 treeList1.Nodes.Add(fi.Name, fi.LastWriteTime, fi.Length, fi.FullName);
-                TreeListFileNodes.Add(fi.FullName);
+                // TreeListFileNodes.Add(fi.FullName);
             }
 
             treeList1.BestFitColumns();

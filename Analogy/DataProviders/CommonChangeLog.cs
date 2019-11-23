@@ -11,6 +11,8 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
+            yield return new AnalogyChangeLog("Add default file-data provider associations (issue #47)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 23));
+            yield return new AnalogyChangeLog("Add default file-data provider associations (issue #45)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 23));
             yield return new AnalogyChangeLog("Allows disabling of data providers (issue #60)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 22));
             yield return new AnalogyChangeLog("User Settings: Add Export/Import of messages' color settings (Issue #56)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 19));
             yield return new AnalogyChangeLog("Bookmarks window is not customizable (font size). (issue #59)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 11, 19));

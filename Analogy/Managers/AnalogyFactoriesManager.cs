@@ -123,6 +123,24 @@ namespace Analogy
             }
         }
 
+        public IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSourcesFromFactory(Guid factoryID,
+            string[] fileNames)
+        {
+            if (Factories.Exists(f => f.FactoryID == factoryID))
+            {
+                var factory = Factories.First(f => f.FactoryID == factoryID);
+                var supported = factory.DataProviders.Items.Where(i =>
+                    i is IAnalogyOfflineDataProvider offline && offline.CanOpenAllFiles(fileNames));
+
+
+                foreach (IAnalogyDataProvider dataSource in supported)
+                {
+                    yield return dataSource as IAnalogyOfflineDataProvider;
+                }
+            }
+            
+        }
+        
         public IEnumerable<(string Name, Guid ID)> GetRealTimeDataSourcesNamesAndIds()
         {
             foreach (var factory in Factories)

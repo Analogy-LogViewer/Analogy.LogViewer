@@ -61,6 +61,7 @@ namespace Analogy
         private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
+        private char[] DataSourceSplitter = { ' ', '(', ')' };
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
         private List<XtraFormLogGrid> ExternalWindows
@@ -1970,7 +1971,7 @@ namespace Analogy
             AnalogyLogMessage m = (AnalogyLogMessage)logGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
             LoadTextBoxes(m);
             string dataProvider = (string)logGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
-            if (File.Exists(dataProvider) && !LoadingInProgress)
+            if (!LoadingInProgress)
             {
                 OnFocusedRowChanged?.Invoke(this, (dataProvider, m));
             }

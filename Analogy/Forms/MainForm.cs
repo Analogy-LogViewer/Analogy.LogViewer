@@ -395,12 +395,37 @@ namespace Analogy
                     OpenOfflineLogs(page, files, parser.DataProvider);
                 }
                 else
-                    XtraMessageBox.Show(
-                        "Zero or more than one data provider detected for this file." + Environment.NewLine +
-                        "Please open it directly from the data provider menu", "Unable to open file", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-            }
+                {
+                    //try  from file association:
+                    var supportedAssociation = settings.GetFactoriesThatHasFileAssociation(files).ToList();
+                    if (supportedAssociation.Count == 1)
+                    {
+                        var factory = supportedAssociation.First();
+                        var parser = AnalogyFactoriesManager.Instance
+                            .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryGuid, files).ToList();
+                        RibbonPage page = (Mapping.ContainsKey(factory.FactoryGuid)) ? Mapping[factory.FactoryGuid] : null;
+                        if (parser.Count == 1)
+                            OpenOfflineLogs(page, files, parser.First());
+                        else
+                        {
+                            XtraMessageBox.Show(
+                                $@"More than one data provider detected for this file for {factory.FactoryName}." + Environment.NewLine +
+                                "Please open it directly from the data provider menu", "Unable to open file",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
 
+                    }
+                    else
+
+                        XtraMessageBox.Show(
+                            "Zero or more than one data provider detected for this file." + Environment.NewLine +
+                            "Please open it directly from the data provider menu", "Unable to open file",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                }
+
+            }
         }
 
         private void AnalogyMainForm_DragDrop(object sender, DragEventArgs e)

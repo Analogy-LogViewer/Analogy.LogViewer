@@ -54,7 +54,7 @@ using System.Reflection;
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
-[assembly: AssemblyVersion("4.1.5.1")]
-[assembly: AssemblyFileVersion("4.1.5.1")]
+[assembly: AssemblyVersion("4.1.6.0")]
+[assembly: AssemblyFileVersion("4.1.6.0")]
 [assembly: ComVisible(false)]
 

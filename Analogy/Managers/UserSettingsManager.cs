@@ -251,9 +251,10 @@ namespace Analogy
             {
                 FactoryGuid = factory.FactoryID,
                 Status = DataProviderFactoryStatus.NotSet,
-                UserSettingFileAssociations = factory.DataProviders.Items
-                    .Where(itm => itm is IAnalogyOfflineDataProvider)
-                    .SelectMany(itm => ((IAnalogyOfflineDataProvider)itm).SupportFormats).ToList()
+                UserSettingFileAssociations =new List<string>()
+                    //factory.DataProviders.Items
+                    //.Where(itm => itm is IAnalogyOfflineDataProvider)
+                    //.SelectMany(itm => ((IAnalogyOfflineDataProvider)itm).SupportFormats).ToList()
             };
             FactoriesSettings.Add(createNew);
             return createNew;
@@ -267,6 +268,13 @@ namespace Analogy
             FactoriesOrder = order;
             OnFactoyOrderChanged?.Invoke(this, new EventArgs());
         }
+
+        public IEnumerable<FactorySettings> GetFactoriesThatHasFileAssociation(string[] files) =>
+            FactoriesSettings.Where(factory => factory.Status != DataProviderFactoryStatus.Disabled &&
+                                               factory.UserSettingFileAssociations != null &&
+                                               factory.UserSettingFileAssociations.Any(i =>
+                                                   Utils.MatchedAll(i, files)));
+
     }
     [Serializable]
     public class LogParserSettingsContainer
@@ -352,6 +360,11 @@ namespace Analogy
         public Guid FactoryGuid { get; set; }
         public List<string> UserSettingFileAssociations { get; set; }
         public DataProviderFactoryStatus Status { get; set; }
+
+        public FactorySettings()
+        {
+            UserSettingFileAssociations = new List<string>();
+        }
     }
 
     public class PreDefinedQuery
