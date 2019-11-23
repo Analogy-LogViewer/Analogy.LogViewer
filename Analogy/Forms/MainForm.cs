@@ -394,10 +394,11 @@ namespace Analogy
                     RibbonPage page = (Mapping.ContainsKey(parser.FactoryID)) ? Mapping[parser.FactoryID] : null;
                     OpenOfflineLogs(page, files, parser.DataProvider);
                 }
-                XtraMessageBox.Show(
-                    "Zero or more than one data provider detected for this file." + Environment.NewLine +
-                    "Please open it directly from the data provider menu", "Unable to open file", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                else
+                    XtraMessageBox.Show(
+                        "Zero or more than one data provider detected for this file." + Environment.NewLine +
+                        "Please open it directly from the data provider menu", "Unable to open file", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
             }
 
         }
