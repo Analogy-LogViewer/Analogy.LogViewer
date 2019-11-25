@@ -22,6 +22,7 @@ namespace Analogy
 
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
+            if (DesignMode) return;
             ucLogs1.AppendMessages(_messages, _dataSource);
         }
 

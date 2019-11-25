@@ -81,3 +81,6 @@
 /Analogy/bin/Config
 /Analogy/obj
 /Analogy/DevExpress/.net framework
+/Analogy.UnitTests/bin/Debug
+/Analogy.UnitTests/obj/Debug/Analogy.UnitTests.csproj.CopyComplete
+/Analogy.UnitTests/obj

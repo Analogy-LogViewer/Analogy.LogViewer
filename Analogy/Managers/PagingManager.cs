@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using Analogy.Interfaces;
+using Analogy.Types;
 
 namespace Analogy
 {

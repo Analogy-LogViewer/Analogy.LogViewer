@@ -31,25 +31,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsDataProvidersForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageNLog = new DevExpress.XtraTab.XtraTabPage();
+            this.sBtnNLogOpenFolder = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditNLogDirectory = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.analogyColumnsMatcherUC1 = new Analogy.UserControls.AnalogyColumnsMatcherUC();
             this.btnExportNLogSettings = new DevExpress.XtraEditors.SimpleButton();
             this.btnImportNLogSettings = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.textEditNLogExtension = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.spltNlogParser = new DevExpress.XtraEditors.SplitContainerControl();
-            this.lstBAnalogyColumnsNlog = new DevExpress.XtraEditors.ListBoxControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.sBtnMoveUpNlog = new DevExpress.XtraEditors.SimpleButton();
-            this.sBtnMoveDownNlog = new DevExpress.XtraEditors.SimpleButton();
-            this.lstBoxItemsNlog = new DevExpress.XtraEditors.ListBoxControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.sBtnSaveNlogMapping = new DevExpress.XtraEditors.SimpleButton();
             this.txtNLogSeperator = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtNLogLayout = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnNLogCheckLayout = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPageWindowsEventLogs = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
+            this.lblWindowsEventLogs = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageIIS = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageSerilog = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageLog4Net = new DevExpress.XtraTab.XtraTabPage();
@@ -69,21 +70,20 @@
             this.sBtnLoadXMLFile = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPageXML = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.xtraTabPageWindowsEventLogs = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
-            this.lblWindowsEventLogs = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageRSS = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageNLog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogDirectory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spltNlogParser)).BeginInit();
-            this.spltNlogParser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumnsNlog)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstBoxItemsNlog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).BeginInit();
+            this.xtraTabPageWindowsEventLogs.SuspendLayout();
+            this.xtraTabPageIIS.SuspendLayout();
             this.xtraTabPageSerilog.SuspendLayout();
             this.xtraTabPageLog4Net.SuspendLayout();
             this.xtraTabPageJson.SuspendLayout();
@@ -95,7 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlJson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).BeginInit();
             this.xtraTabPageXML.SuspendLayout();
-            this.xtraTabPageWindowsEventLogs.SuspendLayout();
+            this.xtraTabPageRSS.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -108,24 +108,32 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageNLog;
-            this.tabControlMain.Size = new System.Drawing.Size(945, 569);
+            this.tabControlMain.Size = new System.Drawing.Size(904, 623);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageNLog,
+            this.xtraTabPageWindowsEventLogs,
+            this.xtraTabPageIIS,
             this.xtraTabPageSerilog,
             this.xtraTabPageLog4Net,
             this.xtraTabPageJson,
             this.xtraTabPageXML,
-            this.xtraTabPageWindowsEventLogs});
+            this.xtraTabPageRSS,
+            this.xtraTabPage1,
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPageNLog
             // 
+            this.xtraTabPageNLog.Controls.Add(this.sBtnNLogOpenFolder);
+            this.xtraTabPageNLog.Controls.Add(this.textEditNLogDirectory);
+            this.xtraTabPageNLog.Controls.Add(this.labelControl14);
+            this.xtraTabPageNLog.Controls.Add(this.analogyColumnsMatcherUC1);
             this.xtraTabPageNLog.Controls.Add(this.btnExportNLogSettings);
             this.xtraTabPageNLog.Controls.Add(this.btnImportNLogSettings);
             this.xtraTabPageNLog.Controls.Add(this.labelControl5);
             this.xtraTabPageNLog.Controls.Add(this.textEditNLogExtension);
             this.xtraTabPageNLog.Controls.Add(this.labelControl4);
-            this.xtraTabPageNLog.Controls.Add(this.spltNlogParser);
             this.xtraTabPageNLog.Controls.Add(this.sBtnSaveNlogMapping);
             this.xtraTabPageNLog.Controls.Add(this.txtNLogSeperator);
             this.xtraTabPageNLog.Controls.Add(this.labelControl8);
@@ -134,13 +142,52 @@
             this.xtraTabPageNLog.Controls.Add(this.sbtnNLogCheckLayout);
             this.xtraTabPageNLog.ImageOptions.Image = global::Analogy.Properties.Resources.nlog;
             this.xtraTabPageNLog.Name = "xtraTabPageNLog";
-            this.xtraTabPageNLog.Size = new System.Drawing.Size(772, 562);
+            this.xtraTabPageNLog.Size = new System.Drawing.Size(731, 616);
             this.xtraTabPageNLog.Text = "NLog Parser";
+            // 
+            // sBtnNLogOpenFolder
+            // 
+            this.sBtnNLogOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnNLogOpenFolder.Location = new System.Drawing.Point(576, 74);
+            this.sBtnNLogOpenFolder.Name = "sBtnNLogOpenFolder";
+            this.sBtnNLogOpenFolder.Size = new System.Drawing.Size(30, 18);
+            this.sBtnNLogOpenFolder.TabIndex = 18;
+            this.sBtnNLogOpenFolder.Text = "..";
+            this.sBtnNLogOpenFolder.Click += new System.EventHandler(this.sBtnNLogOpenFolder_Click);
+            // 
+            // textEditNLogDirectory
+            // 
+            this.textEditNLogDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditNLogDirectory.EditValue = "";
+            this.textEditNLogDirectory.Location = new System.Drawing.Point(146, 71);
+            this.textEditNLogDirectory.Name = "textEditNLogDirectory";
+            this.textEditNLogDirectory.Size = new System.Drawing.Size(416, 22);
+            this.textEditNLogDirectory.TabIndex = 17;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(4, 74);
+            this.labelControl14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(127, 16);
+            this.labelControl14.TabIndex = 16;
+            this.labelControl14.Text = "NLog Default Directory";
+            // 
+            // analogyColumnsMatcherUC1
+            // 
+            this.analogyColumnsMatcherUC1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.analogyColumnsMatcherUC1.Location = new System.Drawing.Point(12, 155);
+            this.analogyColumnsMatcherUC1.Name = "analogyColumnsMatcherUC1";
+            this.analogyColumnsMatcherUC1.Size = new System.Drawing.Size(713, 414);
+            this.analogyColumnsMatcherUC1.TabIndex = 15;
             // 
             // btnExportNLogSettings
             // 
             this.btnExportNLogSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportNLogSettings.Location = new System.Drawing.Point(538, 520);
+            this.btnExportNLogSettings.Location = new System.Drawing.Point(497, 574);
             this.btnExportNLogSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExportNLogSettings.Name = "btnExportNLogSettings";
             this.btnExportNLogSettings.Size = new System.Drawing.Size(111, 37);
@@ -151,7 +198,7 @@
             // btnImportNLogSettings
             // 
             this.btnImportNLogSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportNLogSettings.Location = new System.Drawing.Point(658, 53);
+            this.btnImportNLogSettings.Location = new System.Drawing.Point(617, 53);
             this.btnImportNLogSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnImportNLogSettings.Name = "btnImportNLogSettings";
             this.btnImportNLogSettings.Size = new System.Drawing.Size(111, 37);
@@ -161,7 +208,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(145, 95);
+            this.labelControl5.Location = new System.Drawing.Point(145, 129);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(217, 16);
@@ -173,142 +220,24 @@
             this.textEditNLogExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEditNLogExtension.EditValue = "*.nlog";
-            this.textEditNLogExtension.Location = new System.Drawing.Point(145, 68);
+            this.textEditNLogExtension.Location = new System.Drawing.Point(145, 102);
             this.textEditNLogExtension.Name = "textEditNLogExtension";
-            this.textEditNLogExtension.Size = new System.Drawing.Size(503, 22);
+            this.textEditNLogExtension.Size = new System.Drawing.Size(462, 22);
             this.textEditNLogExtension.TabIndex = 11;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(3, 71);
+            this.labelControl4.Location = new System.Drawing.Point(3, 105);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(110, 16);
             this.labelControl4.TabIndex = 10;
             this.labelControl4.Text = "NLog File Extension";
             // 
-            // spltNlogParser
-            // 
-            this.spltNlogParser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.spltNlogParser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.spltNlogParser.Location = new System.Drawing.Point(13, 146);
-            this.spltNlogParser.Name = "spltNlogParser";
-            this.spltNlogParser.Panel1.Controls.Add(this.lstBAnalogyColumnsNlog);
-            this.spltNlogParser.Panel1.Controls.Add(this.labelControl9);
-            this.spltNlogParser.Panel1.Controls.Add(this.splitContainerControl2);
-            this.spltNlogParser.Panel1.Text = "Panel1";
-            this.spltNlogParser.Panel2.Controls.Add(this.lstBoxItemsNlog);
-            this.spltNlogParser.Panel2.Controls.Add(this.labelControl10);
-            this.spltNlogParser.Panel2.Text = "Panel2";
-            this.spltNlogParser.Size = new System.Drawing.Size(744, 369);
-            this.spltNlogParser.SplitterPosition = 191;
-            this.spltNlogParser.TabIndex = 9;
-            // 
-            // lstBAnalogyColumnsNlog
-            // 
-            this.lstBAnalogyColumnsNlog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstBAnalogyColumnsNlog.Items.AddRange(new object[] {
-            "Date",
-            "Text",
-            "Source",
-            "Module",
-            "MethodName",
-            "FileName",
-            "User",
-            "LineNumber",
-            "ProcessID",
-            "Thread",
-            "Level",
-            "Class",
-            "Category",
-            "ID",
-            "__ignore__",
-            "__ignore__",
-            "__ignore__",
-            "__ignore__",
-            "__ignore__",
-            "__ignore__",
-            "__ignore__"});
-            this.lstBAnalogyColumnsNlog.Location = new System.Drawing.Point(44, 16);
-            this.lstBAnalogyColumnsNlog.Name = "lstBAnalogyColumnsNlog";
-            this.lstBAnalogyColumnsNlog.Size = new System.Drawing.Size(147, 349);
-            this.lstBAnalogyColumnsNlog.TabIndex = 0;
-            this.lstBAnalogyColumnsNlog.SelectedIndexChanged += new System.EventHandler(this.LstBAnalogyColumns_SelectedIndexChanged);
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl9.Location = new System.Drawing.Point(44, 0);
-            this.labelControl9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(128, 16);
-            this.labelControl9.TabIndex = 7;
-            this.labelControl9.Text = "Log message Columns";
-            // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.sBtnMoveUpNlog);
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.sBtnMoveDownNlog);
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(44, 365);
-            this.splitContainerControl2.SplitterPosition = 184;
-            this.splitContainerControl2.TabIndex = 1;
-            // 
-            // sBtnMoveUpNlog
-            // 
-            this.sBtnMoveUpNlog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sBtnMoveUpNlog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveUpNlog.ImageOptions.Image")));
-            this.sBtnMoveUpNlog.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.sBtnMoveUpNlog.Location = new System.Drawing.Point(0, 0);
-            this.sBtnMoveUpNlog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnMoveUpNlog.Name = "sBtnMoveUpNlog";
-            this.sBtnMoveUpNlog.Size = new System.Drawing.Size(44, 184);
-            this.sBtnMoveUpNlog.TabIndex = 2;
-            this.sBtnMoveUpNlog.Text = "Up";
-            this.sBtnMoveUpNlog.Click += new System.EventHandler(this.SBtnMoveUp_Click);
-            // 
-            // sBtnMoveDownNlog
-            // 
-            this.sBtnMoveDownNlog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sBtnMoveDownNlog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveDownNlog.ImageOptions.Image")));
-            this.sBtnMoveDownNlog.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.BottomLeft;
-            this.sBtnMoveDownNlog.Location = new System.Drawing.Point(0, 0);
-            this.sBtnMoveDownNlog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnMoveDownNlog.Name = "sBtnMoveDownNlog";
-            this.sBtnMoveDownNlog.Size = new System.Drawing.Size(44, 175);
-            this.sBtnMoveDownNlog.TabIndex = 3;
-            this.sBtnMoveDownNlog.Text = "Down";
-            this.sBtnMoveDownNlog.Click += new System.EventHandler(this.SBtnMoveDown_Click);
-            // 
-            // lstBoxItemsNlog
-            // 
-            this.lstBoxItemsNlog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstBoxItemsNlog.Location = new System.Drawing.Point(0, 16);
-            this.lstBoxItemsNlog.Name = "lstBoxItemsNlog";
-            this.lstBoxItemsNlog.Size = new System.Drawing.Size(543, 349);
-            this.lstBoxItemsNlog.TabIndex = 2;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl10.Location = new System.Drawing.Point(0, 0);
-            this.labelControl10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(94, 16);
-            this.labelControl10.TabIndex = 8;
-            this.labelControl10.Text = "Parsed columns.";
-            // 
             // sBtnSaveNlogMapping
             // 
             this.sBtnSaveNlogMapping.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(655, 520);
+            this.sBtnSaveNlogMapping.Location = new System.Drawing.Point(614, 574);
             this.sBtnSaveNlogMapping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnSaveNlogMapping.Name = "sBtnSaveNlogMapping";
             this.sBtnSaveNlogMapping.Size = new System.Drawing.Size(111, 37);
@@ -323,7 +252,7 @@
             this.txtNLogSeperator.EditValue = "|";
             this.txtNLogSeperator.Location = new System.Drawing.Point(145, 39);
             this.txtNLogSeperator.Name = "txtNLogSeperator";
-            this.txtNLogSeperator.Size = new System.Drawing.Size(503, 22);
+            this.txtNLogSeperator.Size = new System.Drawing.Size(462, 22);
             this.txtNLogSeperator.TabIndex = 7;
             // 
             // labelControl8
@@ -341,7 +270,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNLogLayout.Location = new System.Drawing.Point(145, 11);
             this.txtNLogLayout.Name = "txtNLogLayout";
-            this.txtNLogLayout.Size = new System.Drawing.Size(503, 22);
+            this.txtNLogLayout.Size = new System.Drawing.Size(462, 22);
             this.txtNLogLayout.TabIndex = 5;
             // 
             // labelControl7
@@ -356,7 +285,7 @@
             // sbtnNLogCheckLayout
             // 
             this.sbtnNLogCheckLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnNLogCheckLayout.Location = new System.Drawing.Point(658, 3);
+            this.sbtnNLogCheckLayout.Location = new System.Drawing.Point(617, 3);
             this.sbtnNLogCheckLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtnNLogCheckLayout.Name = "sbtnNLogCheckLayout";
             this.sbtnNLogCheckLayout.Size = new System.Drawing.Size(111, 37);
@@ -364,12 +293,56 @@
             this.sbtnNLogCheckLayout.Text = "Load layout";
             this.sbtnNLogCheckLayout.Click += new System.EventHandler(this.btnNlogCheckLayout_Click);
             // 
+            // xtraTabPageWindowsEventLogs
+            // 
+            this.xtraTabPageWindowsEventLogs.Controls.Add(this.xtraUCWindowsEventLogs1);
+            this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
+            this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
+            this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
+            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(731, 615);
+            this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
+            // 
+            // xtraUCWindowsEventLogs1
+            // 
+            this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
+            this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
+            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(731, 593);
+            this.xtraUCWindowsEventLogs1.TabIndex = 0;
+            // 
+            // lblWindowsEventLogs
+            // 
+            this.lblWindowsEventLogs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblWindowsEventLogs.Location = new System.Drawing.Point(0, 0);
+            this.lblWindowsEventLogs.Name = "lblWindowsEventLogs";
+            this.lblWindowsEventLogs.Padding = new System.Windows.Forms.Padding(3);
+            this.lblWindowsEventLogs.Size = new System.Drawing.Size(233, 22);
+            this.lblWindowsEventLogs.TabIndex = 1;
+            this.lblWindowsEventLogs.Text = "Windows Event logs: real time settings:";
+            // 
+            // xtraTabPageIIS
+            // 
+            this.xtraTabPageIIS.Controls.Add(this.labelControl10);
+            this.xtraTabPageIIS.ImageOptions.Image = global::Analogy.Properties.Resources.iis;
+            this.xtraTabPageIIS.Name = "xtraTabPageIIS";
+            this.xtraTabPageIIS.Size = new System.Drawing.Size(731, 615);
+            this.xtraTabPageIIS.Text = "IIS Logs";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(21, 10);
+            this.labelControl10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(136, 16);
+            this.labelControl10.TabIndex = 5;
+            this.labelControl10.Text = "No special settings exist";
+            // 
             // xtraTabPageSerilog
             // 
             this.xtraTabPageSerilog.Controls.Add(this.labelControl6);
             this.xtraTabPageSerilog.ImageOptions.Image = global::Analogy.Properties.Resources.serilog32x32;
             this.xtraTabPageSerilog.Name = "xtraTabPageSerilog";
-            this.xtraTabPageSerilog.Size = new System.Drawing.Size(772, 562);
+            this.xtraTabPageSerilog.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageSerilog.Text = "Serilog parser";
             // 
             // labelControl6
@@ -386,7 +359,7 @@
             this.xtraTabPageLog4Net.Controls.Add(this.labelControl11);
             this.xtraTabPageLog4Net.ImageOptions.Image = global::Analogy.Properties.Resources.log4net32x32;
             this.xtraTabPageLog4Net.Name = "xtraTabPageLog4Net";
-            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(772, 562);
+            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageLog4Net.Text = "Log4Net Parser";
             // 
             // labelControl11
@@ -407,7 +380,7 @@
             this.xtraTabPageJson.Controls.Add(this.sBtnLoadXMLFile);
             this.xtraTabPageJson.ImageOptions.Image = global::Analogy.Properties.Resources.jsonfile32x32;
             this.xtraTabPageJson.Name = "xtraTabPageJson";
-            this.xtraTabPageJson.Size = new System.Drawing.Size(772, 562);
+            this.xtraTabPageJson.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageJson.Text = "Json Parser";
             // 
             // labelControl12
@@ -566,7 +539,7 @@
             this.xtraTabPageXML.Controls.Add(this.labelControl13);
             this.xtraTabPageXML.ImageOptions.Image = global::Analogy.Properties.Resources.xml32x32;
             this.xtraTabPageXML.Name = "xtraTabPageXML";
-            this.xtraTabPageXML.Size = new System.Drawing.Size(772, 562);
+            this.xtraTabPageXML.Size = new System.Drawing.Size(731, 615);
             this.xtraTabPageXML.Text = "XML Parser";
             // 
             // labelControl13
@@ -578,58 +551,73 @@
             this.labelControl13.TabIndex = 14;
             this.labelControl13.Text = "Coming soon.";
             // 
-            // xtraTabPageWindowsEventLogs
+            // xtraTabPageRSS
             // 
-            this.xtraTabPageWindowsEventLogs.Controls.Add(this.xtraUCWindowsEventLogs1);
-            this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
-            this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
-            this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
-            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(772, 562);
-            this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
+            this.xtraTabPageRSS.Controls.Add(this.labelControl9);
+            this.xtraTabPageRSS.ImageOptions.Image = global::Analogy.Properties.Resources.rss;
+            this.xtraTabPageRSS.Name = "xtraTabPageRSS";
+            this.xtraTabPageRSS.Size = new System.Drawing.Size(731, 615);
+            this.xtraTabPageRSS.Text = "RSS Parser";
             // 
-            // xtraUCWindowsEventLogs1
+            // labelControl9
             // 
-            this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
-            this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
-            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(772, 540);
-            this.xtraUCWindowsEventLogs1.TabIndex = 0;
+            this.labelControl9.Location = new System.Drawing.Point(10, 10);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(78, 16);
+            this.labelControl9.TabIndex = 15;
+            this.labelControl9.Text = "Coming soon.";
             // 
-            // lblWindowsEventLogs
+            // xtraTabPage1
             // 
-            this.lblWindowsEventLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWindowsEventLogs.Location = new System.Drawing.Point(0, 0);
-            this.lblWindowsEventLogs.Name = "lblWindowsEventLogs";
-            this.lblWindowsEventLogs.Padding = new System.Windows.Forms.Padding(3);
-            this.lblWindowsEventLogs.Size = new System.Drawing.Size(233, 22);
-            this.lblWindowsEventLogs.TabIndex = 1;
-            this.lblWindowsEventLogs.Text = "Windows Event logs: real time settings:";
+            this.xtraTabPage1.ImageOptions.Image = global::Analogy.Properties.Resources.Mirada_Icon;
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.PageVisible = false;
+            this.xtraTabPage1.Size = new System.Drawing.Size(731, 615);
+            this.xtraTabPage1.Text = "Mirada logs Parser";
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.ImageOptions.Image = global::Analogy.Properties.Resources.iqon;
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.PageVisible = false;
+            this.xtraTabPage2.Size = new System.Drawing.Size(731, 615);
+            this.xtraTabPage2.Text = "ICAP BU Logs";
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.ImageOptions.Image = global::Analogy.Properties.Resources.kama;
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.PageVisible = false;
+            this.xtraTabPage3.Size = new System.Drawing.Size(731, 615);
+            this.xtraTabPage3.Text = "Kama Research";
             // 
             // UserSettingsDataProvidersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 569);
+            this.ClientSize = new System.Drawing.Size(904, 623);
             this.Controls.Add(this.tabControlMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserSettingsDataProvidersForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Built-In Data Providers Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserSettingsDataProvidersForm_FormClosing);
             this.Load += new System.EventHandler(this.UserSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
             this.xtraTabPageNLog.ResumeLayout(false);
             this.xtraTabPageNLog.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNLogDirectory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditNLogExtension.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spltNlogParser)).EndInit();
-            this.spltNlogParser.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstBAnalogyColumnsNlog)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstBoxItemsNlog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogSeperator.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNLogLayout.Properties)).EndInit();
+            this.xtraTabPageWindowsEventLogs.ResumeLayout(false);
+            this.xtraTabPageWindowsEventLogs.PerformLayout();
+            this.xtraTabPageIIS.ResumeLayout(false);
+            this.xtraTabPageIIS.PerformLayout();
             this.xtraTabPageSerilog.ResumeLayout(false);
             this.xtraTabPageSerilog.PerformLayout();
             this.xtraTabPageLog4Net.ResumeLayout(false);
@@ -645,8 +633,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditJsonFile.Properties)).EndInit();
             this.xtraTabPageXML.ResumeLayout(false);
             this.xtraTabPageXML.PerformLayout();
-            this.xtraTabPageWindowsEventLogs.ResumeLayout(false);
-            this.xtraTabPageWindowsEventLogs.PerformLayout();
+            this.xtraTabPageRSS.ResumeLayout(false);
+            this.xtraTabPageRSS.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -660,15 +648,7 @@
         private DevExpress.XtraEditors.TextEdit txtNLogLayout;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton sbtnNLogCheckLayout;
-        private DevExpress.XtraEditors.SplitContainerControl spltNlogParser;
         private DevExpress.XtraEditors.SimpleButton sBtnSaveNlogMapping;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.ListBoxControl lstBAnalogyColumnsNlog;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        private DevExpress.XtraEditors.SimpleButton sBtnMoveUpNlog;
-        private DevExpress.XtraEditors.SimpleButton sBtnMoveDownNlog;
-        private DevExpress.XtraEditors.ListBoxControl lstBoxItemsNlog;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageSerilog;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageLog4Net;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageJson;
@@ -696,5 +676,16 @@
         private XtraUCWindowsEventLogs xtraUCWindowsEventLogs1;
         private DevExpress.XtraEditors.SimpleButton btnExportNLogSettings;
         private DevExpress.XtraEditors.SimpleButton btnImportNLogSettings;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageRSS;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageIIS;
+        private UserControls.AnalogyColumnsMatcherUC analogyColumnsMatcherUC1;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.TextEdit textEditNLogDirectory;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.SimpleButton sBtnNLogOpenFolder;
     }
 }

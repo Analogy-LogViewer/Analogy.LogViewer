@@ -34,6 +34,7 @@
             this.gcFiles = new DevExpress.XtraEditors.GroupControl();
             this.tsFileCaching = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcFiltering = new DevExpress.XtraEditors.GroupControl();
+            this.tsDataTimeAscendDescend = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsHistory = new DevExpress.XtraEditors.ToggleSwitch();
             this.checkEditSearchAlsoInSourceAndModule = new DevExpress.XtraEditors.CheckEdit();
             this.chkEditPaging = new DevExpress.XtraEditors.CheckEdit();
@@ -43,6 +44,31 @@
             this.tsAutoComplete = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtraTabPagePreDefined = new DevExpress.XtraTab.XtraTabPage();
             this.tpLookAndFeel = new DevExpress.XtraTab.XtraTabPage();
+            this.sBtnImportColors = new DevExpress.XtraEditors.SimpleButton();
+            this.sBtnExportColors = new DevExpress.XtraEditors.SimpleButton();
+            this.lblHighlightColor = new DevExpress.XtraEditors.LabelControl();
+            this.cpeHighlightColor = new DevExpress.XtraEditors.ColorPickEdit();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.lblLogLevelAnalogyInformation = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelAnalogyInformation = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelCritical = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelCritical = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelError = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelError = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelWarning = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelWarning = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelEvent = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelEvent = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelDebug = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelDebug = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelVerbose = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelVerbose = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelTrace = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelTrace = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelDisabled = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelDisabled = new DevExpress.XtraEditors.ColorPickEdit();
+            this.lblLogLevelUnknown = new DevExpress.XtraEditors.LabelControl();
+            this.cpeLogLevelUnknown = new DevExpress.XtraEditors.ColorPickEdit();
             this.tsStartupRibbonMinimized = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsSimpleMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.tpStatistics = new DevExpress.XtraTab.XtraTabPage();
@@ -67,32 +93,25 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.nudIdleTime = new System.Windows.Forms.NumericUpDown();
             this.toggleSwitchIdleMode = new DevExpress.XtraEditors.ToggleSwitch();
-            this.xtraTabPageRealTimeDataSources = new DevExpress.XtraTab.XtraTabPage();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageDataProviders = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControlDataProviderSettings = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPageDataProvidersOrder = new DevExpress.XtraTab.XtraTabPage();
+            this.splitContainerControlDataProviders = new DevExpress.XtraEditors.SplitContainerControl();
+            this.splitContainerControlDataProvidersButtons = new DevExpress.XtraEditors.SplitContainerControl();
+            this.sBtnMoveUp = new DevExpress.XtraEditors.SimpleButton();
+            this.sBtnMoveDown = new DevExpress.XtraEditors.SimpleButton();
+            this.chkLstDataProviderStatus = new System.Windows.Forms.CheckedListBox();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageDataProvidersRealTime = new DevExpress.XtraTab.XtraTabPage();
             this.chkLstItemRealTimeDataSources = new System.Windows.Forms.CheckedListBox();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.cpeLogLevelUnknown = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelUnknown = new DevExpress.XtraEditors.LabelControl();
-            this.lblLogLevelDisabled = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelDisabled = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelVerbose = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelVerbose = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelTrace = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelTrace = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelError = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelError = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelWarning = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelWarning = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelEvent = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelEvent = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelDebug = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelDebug = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelAnalogyInformation = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelAnalogyInformation = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblLogLevelCritical = new DevExpress.XtraEditors.LabelControl();
-            this.cpeLogLevelCritical = new DevExpress.XtraEditors.ColorPickEdit();
-            this.lblHighlightColor = new DevExpress.XtraEditors.LabelControl();
-            this.cpeHighlightColor = new DevExpress.XtraEditors.ColorPickEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageDataProviderAssociation = new DevExpress.XtraTab.XtraTabPage();
+            this.btnSetFileAssociation = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.txtbDataProviderAssociation = new System.Windows.Forms.TextBox();
+            this.xtraTabPageDataProvidersCustom = new DevExpress.XtraTab.XtraTabPage();
+            this.btnDataProviderCustomSettings = new DevExpress.XtraEditors.SimpleButton();
+            this.cbDataProviderAssociation = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageFilter.SuspendLayout();
@@ -101,6 +120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).BeginInit();
             this.gcFiltering.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsDataTimeAscendDescend.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEditPaging.Properties)).BeginInit();
@@ -109,6 +129,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsFilteringExclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).BeginInit();
             this.tpLookAndFeel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeHighlightColor.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelAnalogyInformation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelCritical.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelError.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelWarning.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelEvent.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDebug.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelVerbose.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelTrace.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDisabled.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelUnknown.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).BeginInit();
             this.tpStatistics.SuspendLayout();
@@ -123,20 +156,17 @@
             this.xtraTabPageResources.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIdleMode.Properties)).BeginInit();
-            this.xtraTabPageRealTimeDataSources.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelUnknown.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDisabled.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelVerbose.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelTrace.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelError.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelWarning.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelEvent.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDebug.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelAnalogyInformation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelCritical.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeHighlightColor.Properties)).BeginInit();
+            this.xtraTabPageDataProviders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlDataProviderSettings)).BeginInit();
+            this.xtraTabControlDataProviderSettings.SuspendLayout();
+            this.xtraTabPageDataProvidersOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlDataProviders)).BeginInit();
+            this.splitContainerControlDataProviders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlDataProvidersButtons)).BeginInit();
+            this.splitContainerControlDataProvidersButtons.SuspendLayout();
+            this.xtraTabPageDataProvidersRealTime.SuspendLayout();
+            this.xtraTabPageDataProviderAssociation.SuspendLayout();
+            this.xtraTabPageDataProvidersCustom.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -149,7 +179,7 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageFilter;
-            this.tabControlMain.Size = new System.Drawing.Size(945, 569);
+            this.tabControlMain.Size = new System.Drawing.Size(919, 581);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageFilter,
@@ -160,7 +190,7 @@
             this.xtPage,
             this.xTabMRU,
             this.xtraTabPageResources,
-            this.xtraTabPageRealTimeDataSources});
+            this.xtraTabPageDataProviders});
             // 
             // xtraTabPageFilter
             // 
@@ -169,7 +199,7 @@
             this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageFilter.ImageOptions.Image")));
             this.xtraTabPageFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPageFilter.Name = "xtraTabPageFilter";
-            this.xtraTabPageFilter.Size = new System.Drawing.Size(744, 562);
+            this.xtraTabPageFilter.Size = new System.Drawing.Size(718, 574);
             this.xtraTabPageFilter.Text = "Filtering and Interactions";
             // 
             // gcFiles
@@ -180,7 +210,7 @@
             this.gcFiles.Location = new System.Drawing.Point(3, 308);
             this.gcFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcFiles.Name = "gcFiles";
-            this.gcFiles.Size = new System.Drawing.Size(737, 247);
+            this.gcFiles.Size = new System.Drawing.Size(709, 247);
             this.gcFiles.TabIndex = 4;
             this.gcFiles.Text = "Files";
             // 
@@ -194,7 +224,7 @@
             this.tsFileCaching.Name = "tsFileCaching";
             this.tsFileCaching.Properties.OffText = "Don\'t use Caching of loaded Files";
             this.tsFileCaching.Properties.OnText = "Use Caching of loaded Files";
-            this.tsFileCaching.Size = new System.Drawing.Size(714, 28);
+            this.tsFileCaching.Size = new System.Drawing.Size(686, 28);
             this.tsFileCaching.TabIndex = 1;
             this.tsFileCaching.Toggled += new System.EventHandler(this.tsFileCaching_Toggled);
             // 
@@ -202,6 +232,7 @@
             // 
             this.gcFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gcFiltering.Controls.Add(this.tsDataTimeAscendDescend);
             this.gcFiltering.Controls.Add(this.tsHistory);
             this.gcFiltering.Controls.Add(this.checkEditSearchAlsoInSourceAndModule);
             this.gcFiltering.Controls.Add(this.chkEditPaging);
@@ -212,26 +243,39 @@
             this.gcFiltering.Location = new System.Drawing.Point(3, 2);
             this.gcFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcFiltering.Name = "gcFiltering";
-            this.gcFiltering.Size = new System.Drawing.Size(737, 302);
+            this.gcFiltering.Size = new System.Drawing.Size(709, 302);
             this.gcFiltering.TabIndex = 3;
             this.gcFiltering.Text = "Filtering, search and interaction of messages area";
+            // 
+            // tsDataTimeAscendDescend
+            // 
+            this.tsDataTimeAscendDescend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsDataTimeAscendDescend.Location = new System.Drawing.Point(6, 64);
+            this.tsDataTimeAscendDescend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsDataTimeAscendDescend.Name = "tsDataTimeAscendDescend";
+            this.tsDataTimeAscendDescend.Properties.OffText = "Default sort is by ascending date (new messages are at the bottom)";
+            this.tsDataTimeAscendDescend.Properties.OnText = "Default sort is by descending date (new messages are at the top)";
+            this.tsDataTimeAscendDescend.Size = new System.Drawing.Size(686, 28);
+            this.tsDataTimeAscendDescend.TabIndex = 7;
+            this.tsDataTimeAscendDescend.Toggled += new System.EventHandler(this.tsDataTimeAscendDescend_Toggled);
             // 
             // tsHistory
             // 
             this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsHistory.Location = new System.Drawing.Point(5, 133);
+            this.tsHistory.Location = new System.Drawing.Point(5, 162);
             this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsHistory.Name = "tsHistory";
             this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
             this.tsHistory.Properties.OnText = "Show history of cleared Messages";
-            this.tsHistory.Size = new System.Drawing.Size(672, 28);
+            this.tsHistory.Size = new System.Drawing.Size(644, 28);
             this.tsHistory.TabIndex = 0;
             this.tsHistory.Toggled += new System.EventHandler(this.tsHistory_Toggled);
             // 
             // checkEditSearchAlsoInSourceAndModule
             // 
-            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 211);
+            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 250);
             this.checkEditSearchAlsoInSourceAndModule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkEditSearchAlsoInSourceAndModule.Name = "checkEditSearchAlsoInSourceAndModule";
             this.checkEditSearchAlsoInSourceAndModule.Properties.Caption = "Search text also in Source and Module/Process columns";
@@ -241,17 +285,17 @@
             // 
             // chkEditPaging
             // 
-            this.chkEditPaging.Location = new System.Drawing.Point(6, 170);
+            this.chkEditPaging.Location = new System.Drawing.Point(6, 209);
             this.chkEditPaging.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkEditPaging.Name = "chkEditPaging";
-            this.chkEditPaging.Properties.Caption = "Enable Paging (number of row per page):";
+            this.chkEditPaging.Properties.Caption = "Enable Paging (number of rows per page):";
             this.chkEditPaging.Size = new System.Drawing.Size(336, 20);
             this.chkEditPaging.TabIndex = 5;
             this.chkEditPaging.CheckedChanged += new System.EventHandler(this.chkEditPaging_CheckedChanged);
             // 
             // nudPageLength
             // 
-            this.nudPageLength.Location = new System.Drawing.Point(461, 171);
+            this.nudPageLength.Location = new System.Drawing.Point(461, 210);
             this.nudPageLength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudPageLength.Maximum = new decimal(new int[] {
             1874919424,
@@ -277,12 +321,12 @@
             // 
             this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 67);
+            this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 96);
             this.tsErrorLevelAsDefault.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsErrorLevelAsDefault.Name = "tsErrorLevelAsDefault";
             this.tsErrorLevelAsDefault.Properties.OffText = "Don\'t filter logs on Load";
             this.tsErrorLevelAsDefault.Properties.OnText = "Start logs with Error and Critical  level as default filtering";
-            this.tsErrorLevelAsDefault.Size = new System.Drawing.Size(714, 28);
+            this.tsErrorLevelAsDefault.Size = new System.Drawing.Size(686, 28);
             this.tsErrorLevelAsDefault.TabIndex = 3;
             this.tsErrorLevelAsDefault.Toggled += new System.EventHandler(this.tsErrorLevelAsDefault_Toggled);
             // 
@@ -295,7 +339,7 @@
             this.tsFilteringExclude.Name = "tsFilteringExclude";
             this.tsFilteringExclude.Properties.OffText = "Don\'t save excluded filtering text upon exit";
             this.tsFilteringExclude.Properties.OnText = "Save excluded filtering text for next startup";
-            this.tsFilteringExclude.Size = new System.Drawing.Size(714, 28);
+            this.tsFilteringExclude.Size = new System.Drawing.Size(686, 28);
             this.tsFilteringExclude.TabIndex = 1;
             this.tsFilteringExclude.Toggled += new System.EventHandler(this.tsFilteringExclude_Toggled);
             // 
@@ -304,12 +348,12 @@
             this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsAutoComplete.Enabled = false;
-            this.tsAutoComplete.Location = new System.Drawing.Point(5, 101);
+            this.tsAutoComplete.Location = new System.Drawing.Point(5, 130);
             this.tsAutoComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsAutoComplete.Name = "tsAutoComplete";
             this.tsAutoComplete.Properties.OffText = "Don\'t save auto completion List";
             this.tsAutoComplete.Properties.OnText = "Save excluded filtering text for next startup";
-            this.tsAutoComplete.Size = new System.Drawing.Size(714, 28);
+            this.tsAutoComplete.Size = new System.Drawing.Size(686, 28);
             this.tsAutoComplete.TabIndex = 2;
             // 
             // xtraTabPagePreDefined
@@ -318,11 +362,13 @@
             this.xtraTabPagePreDefined.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPagePreDefined.Name = "xtraTabPagePreDefined";
             this.xtraTabPagePreDefined.PageVisible = false;
-            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(744, 562);
+            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(718, 573);
             this.xtraTabPagePreDefined.Text = "Pre defined queries";
             // 
             // tpLookAndFeel
             // 
+            this.tpLookAndFeel.Controls.Add(this.sBtnImportColors);
+            this.tpLookAndFeel.Controls.Add(this.sBtnExportColors);
             this.tpLookAndFeel.Controls.Add(this.lblHighlightColor);
             this.tpLookAndFeel.Controls.Add(this.cpeHighlightColor);
             this.tpLookAndFeel.Controls.Add(this.groupControl2);
@@ -331,8 +377,290 @@
             this.tpLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpLookAndFeel.ImageOptions.Image")));
             this.tpLookAndFeel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpLookAndFeel.Name = "tpLookAndFeel";
-            this.tpLookAndFeel.Size = new System.Drawing.Size(744, 562);
+            this.tpLookAndFeel.Size = new System.Drawing.Size(718, 573);
             this.tpLookAndFeel.Text = "Look And Feel";
+            // 
+            // sBtnImportColors
+            // 
+            this.sBtnImportColors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sBtnImportColors.Location = new System.Drawing.Point(154, 531);
+            this.sBtnImportColors.Name = "sBtnImportColors";
+            this.sBtnImportColors.Size = new System.Drawing.Size(134, 32);
+            this.sBtnImportColors.TabIndex = 23;
+            this.sBtnImportColors.Text = "Import Colors";
+            this.sBtnImportColors.Click += new System.EventHandler(this.sBtnImportColors_Click);
+            // 
+            // sBtnExportColors
+            // 
+            this.sBtnExportColors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sBtnExportColors.Location = new System.Drawing.Point(14, 531);
+            this.sBtnExportColors.Name = "sBtnExportColors";
+            this.sBtnExportColors.Size = new System.Drawing.Size(134, 32);
+            this.sBtnExportColors.TabIndex = 22;
+            this.sBtnExportColors.Text = "Export Colors";
+            this.sBtnExportColors.Click += new System.EventHandler(this.sBtnExportColors_Click);
+            // 
+            // lblHighlightColor
+            // 
+            this.lblHighlightColor.Location = new System.Drawing.Point(32, 420);
+            this.lblHighlightColor.Name = "lblHighlightColor";
+            this.lblHighlightColor.Size = new System.Drawing.Size(88, 16);
+            this.lblHighlightColor.TabIndex = 21;
+            this.lblHighlightColor.Text = "Highlight Color:";
+            // 
+            // cpeHighlightColor
+            // 
+            this.cpeHighlightColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeHighlightColor.EditValue = System.Drawing.Color.Empty;
+            this.cpeHighlightColor.Location = new System.Drawing.Point(154, 417);
+            this.cpeHighlightColor.Name = "cpeHighlightColor";
+            this.cpeHighlightColor.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeHighlightColor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeHighlightColor.Size = new System.Drawing.Size(551, 22);
+            this.cpeHighlightColor.TabIndex = 20;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl2.Controls.Add(this.lblLogLevelAnalogyInformation);
+            this.groupControl2.Controls.Add(this.cpeLogLevelAnalogyInformation);
+            this.groupControl2.Controls.Add(this.lblLogLevelCritical);
+            this.groupControl2.Controls.Add(this.cpeLogLevelCritical);
+            this.groupControl2.Controls.Add(this.lblLogLevelError);
+            this.groupControl2.Controls.Add(this.cpeLogLevelError);
+            this.groupControl2.Controls.Add(this.lblLogLevelWarning);
+            this.groupControl2.Controls.Add(this.cpeLogLevelWarning);
+            this.groupControl2.Controls.Add(this.lblLogLevelEvent);
+            this.groupControl2.Controls.Add(this.cpeLogLevelEvent);
+            this.groupControl2.Controls.Add(this.lblLogLevelDebug);
+            this.groupControl2.Controls.Add(this.cpeLogLevelDebug);
+            this.groupControl2.Controls.Add(this.lblLogLevelVerbose);
+            this.groupControl2.Controls.Add(this.cpeLogLevelVerbose);
+            this.groupControl2.Controls.Add(this.lblLogLevelTrace);
+            this.groupControl2.Controls.Add(this.cpeLogLevelTrace);
+            this.groupControl2.Controls.Add(this.lblLogLevelDisabled);
+            this.groupControl2.Controls.Add(this.cpeLogLevelDisabled);
+            this.groupControl2.Controls.Add(this.lblLogLevelUnknown);
+            this.groupControl2.Controls.Add(this.cpeLogLevelUnknown);
+            this.groupControl2.Location = new System.Drawing.Point(14, 74);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(691, 338);
+            this.groupControl2.TabIndex = 4;
+            this.groupControl2.Text = "Log Level Colors Settings";
+            // 
+            // lblLogLevelAnalogyInformation
+            // 
+            this.lblLogLevelAnalogyInformation.Location = new System.Drawing.Point(18, 310);
+            this.lblLogLevelAnalogyInformation.Name = "lblLogLevelAnalogyInformation";
+            this.lblLogLevelAnalogyInformation.Size = new System.Drawing.Size(116, 16);
+            this.lblLogLevelAnalogyInformation.TabIndex = 19;
+            this.lblLogLevelAnalogyInformation.Text = "AnalogyInformation:";
+            // 
+            // cpeLogLevelAnalogyInformation
+            // 
+            this.cpeLogLevelAnalogyInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelAnalogyInformation.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelAnalogyInformation.Location = new System.Drawing.Point(140, 307);
+            this.cpeLogLevelAnalogyInformation.Name = "cpeLogLevelAnalogyInformation";
+            this.cpeLogLevelAnalogyInformation.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelAnalogyInformation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelAnalogyInformation.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelAnalogyInformation.TabIndex = 18;
+            // 
+            // lblLogLevelCritical
+            // 
+            this.lblLogLevelCritical.Location = new System.Drawing.Point(19, 282);
+            this.lblLogLevelCritical.Name = "lblLogLevelCritical";
+            this.lblLogLevelCritical.Size = new System.Drawing.Size(44, 16);
+            this.lblLogLevelCritical.TabIndex = 17;
+            this.lblLogLevelCritical.Text = "Critical:";
+            // 
+            // cpeLogLevelCritical
+            // 
+            this.cpeLogLevelCritical.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelCritical.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelCritical.Location = new System.Drawing.Point(140, 279);
+            this.cpeLogLevelCritical.Name = "cpeLogLevelCritical";
+            this.cpeLogLevelCritical.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelCritical.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelCritical.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelCritical.TabIndex = 16;
+            // 
+            // lblLogLevelError
+            // 
+            this.lblLogLevelError.Location = new System.Drawing.Point(19, 254);
+            this.lblLogLevelError.Name = "lblLogLevelError";
+            this.lblLogLevelError.Size = new System.Drawing.Size(34, 16);
+            this.lblLogLevelError.TabIndex = 15;
+            this.lblLogLevelError.Text = "Error:";
+            // 
+            // cpeLogLevelError
+            // 
+            this.cpeLogLevelError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelError.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelError.Location = new System.Drawing.Point(140, 251);
+            this.cpeLogLevelError.Name = "cpeLogLevelError";
+            this.cpeLogLevelError.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelError.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelError.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelError.TabIndex = 14;
+            // 
+            // lblLogLevelWarning
+            // 
+            this.lblLogLevelWarning.Location = new System.Drawing.Point(19, 226);
+            this.lblLogLevelWarning.Name = "lblLogLevelWarning";
+            this.lblLogLevelWarning.Size = new System.Drawing.Size(53, 16);
+            this.lblLogLevelWarning.TabIndex = 13;
+            this.lblLogLevelWarning.Text = "Warning:";
+            // 
+            // cpeLogLevelWarning
+            // 
+            this.cpeLogLevelWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelWarning.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelWarning.Location = new System.Drawing.Point(140, 223);
+            this.cpeLogLevelWarning.Name = "cpeLogLevelWarning";
+            this.cpeLogLevelWarning.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelWarning.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelWarning.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelWarning.TabIndex = 12;
+            // 
+            // lblLogLevelEvent
+            // 
+            this.lblLogLevelEvent.Location = new System.Drawing.Point(19, 198);
+            this.lblLogLevelEvent.Name = "lblLogLevelEvent";
+            this.lblLogLevelEvent.Size = new System.Drawing.Size(36, 16);
+            this.lblLogLevelEvent.TabIndex = 11;
+            this.lblLogLevelEvent.Text = "Event:";
+            // 
+            // cpeLogLevelEvent
+            // 
+            this.cpeLogLevelEvent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelEvent.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelEvent.Location = new System.Drawing.Point(140, 195);
+            this.cpeLogLevelEvent.Name = "cpeLogLevelEvent";
+            this.cpeLogLevelEvent.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelEvent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelEvent.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelEvent.TabIndex = 10;
+            // 
+            // lblLogLevelDebug
+            // 
+            this.lblLogLevelDebug.Location = new System.Drawing.Point(19, 170);
+            this.lblLogLevelDebug.Name = "lblLogLevelDebug";
+            this.lblLogLevelDebug.Size = new System.Drawing.Size(41, 16);
+            this.lblLogLevelDebug.TabIndex = 9;
+            this.lblLogLevelDebug.Text = "Debug:";
+            // 
+            // cpeLogLevelDebug
+            // 
+            this.cpeLogLevelDebug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelDebug.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelDebug.Location = new System.Drawing.Point(140, 167);
+            this.cpeLogLevelDebug.Name = "cpeLogLevelDebug";
+            this.cpeLogLevelDebug.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelDebug.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelDebug.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelDebug.TabIndex = 8;
+            // 
+            // lblLogLevelVerbose
+            // 
+            this.lblLogLevelVerbose.Location = new System.Drawing.Point(19, 142);
+            this.lblLogLevelVerbose.Name = "lblLogLevelVerbose";
+            this.lblLogLevelVerbose.Size = new System.Drawing.Size(52, 16);
+            this.lblLogLevelVerbose.TabIndex = 7;
+            this.lblLogLevelVerbose.Text = "Verbose:";
+            // 
+            // cpeLogLevelVerbose
+            // 
+            this.cpeLogLevelVerbose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelVerbose.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelVerbose.Location = new System.Drawing.Point(140, 139);
+            this.cpeLogLevelVerbose.Name = "cpeLogLevelVerbose";
+            this.cpeLogLevelVerbose.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelVerbose.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelVerbose.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelVerbose.TabIndex = 6;
+            // 
+            // lblLogLevelTrace
+            // 
+            this.lblLogLevelTrace.Location = new System.Drawing.Point(19, 114);
+            this.lblLogLevelTrace.Name = "lblLogLevelTrace";
+            this.lblLogLevelTrace.Size = new System.Drawing.Size(38, 16);
+            this.lblLogLevelTrace.TabIndex = 5;
+            this.lblLogLevelTrace.Text = "Trace:";
+            // 
+            // cpeLogLevelTrace
+            // 
+            this.cpeLogLevelTrace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelTrace.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelTrace.Location = new System.Drawing.Point(140, 111);
+            this.cpeLogLevelTrace.Name = "cpeLogLevelTrace";
+            this.cpeLogLevelTrace.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelTrace.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelTrace.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelTrace.TabIndex = 4;
+            // 
+            // lblLogLevelDisabled
+            // 
+            this.lblLogLevelDisabled.Location = new System.Drawing.Point(19, 86);
+            this.lblLogLevelDisabled.Name = "lblLogLevelDisabled";
+            this.lblLogLevelDisabled.Size = new System.Drawing.Size(53, 16);
+            this.lblLogLevelDisabled.TabIndex = 3;
+            this.lblLogLevelDisabled.Text = "Disabled:";
+            // 
+            // cpeLogLevelDisabled
+            // 
+            this.cpeLogLevelDisabled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelDisabled.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelDisabled.Location = new System.Drawing.Point(140, 83);
+            this.cpeLogLevelDisabled.Name = "cpeLogLevelDisabled";
+            this.cpeLogLevelDisabled.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelDisabled.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelDisabled.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelDisabled.TabIndex = 2;
+            // 
+            // lblLogLevelUnknown
+            // 
+            this.lblLogLevelUnknown.Location = new System.Drawing.Point(19, 58);
+            this.lblLogLevelUnknown.Name = "lblLogLevelUnknown";
+            this.lblLogLevelUnknown.Size = new System.Drawing.Size(57, 16);
+            this.lblLogLevelUnknown.TabIndex = 1;
+            this.lblLogLevelUnknown.Text = "Unknown:";
+            // 
+            // cpeLogLevelUnknown
+            // 
+            this.cpeLogLevelUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpeLogLevelUnknown.EditValue = System.Drawing.Color.Empty;
+            this.cpeLogLevelUnknown.Location = new System.Drawing.Point(140, 55);
+            this.cpeLogLevelUnknown.Name = "cpeLogLevelUnknown";
+            this.cpeLogLevelUnknown.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.cpeLogLevelUnknown.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cpeLogLevelUnknown.Size = new System.Drawing.Size(536, 22);
+            this.cpeLogLevelUnknown.TabIndex = 0;
             // 
             // tsStartupRibbonMinimized
             // 
@@ -370,7 +698,7 @@
             this.tpStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpStatistics.ImageOptions.Image")));
             this.tpStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Size = new System.Drawing.Size(744, 562);
+            this.tpStatistics.Size = new System.Drawing.Size(718, 573);
             this.tpStatistics.Text = "User Statistics";
             // 
             // groupControl1
@@ -385,7 +713,7 @@
             this.groupControl1.Location = new System.Drawing.Point(5, 50);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(733, 504);
+            this.groupControl1.Size = new System.Drawing.Size(707, 505);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Statistics";
             // 
@@ -419,7 +747,7 @@
             // btnClearStatistics
             // 
             this.btnClearStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearStatistics.Location = new System.Drawing.Point(617, 27);
+            this.btnClearStatistics.Location = new System.Drawing.Point(591, 27);
             this.btnClearStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClearStatistics.Name = "btnClearStatistics";
             this.btnClearStatistics.Size = new System.Drawing.Size(96, 33);
@@ -447,7 +775,7 @@
             this.xtraTabPage3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage3.ImageOptions.Image")));
             this.xtraTabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(744, 562);
+            this.xtraTabPage3.Size = new System.Drawing.Size(718, 573);
             this.xtraTabPage3.Text = "Extensions";
             // 
             // tswitchExtensionsStartup
@@ -473,7 +801,7 @@
             this.chklItems.Location = new System.Drawing.Point(17, 48);
             this.chklItems.Margin = new System.Windows.Forms.Padding(6);
             this.chklItems.Name = "chklItems";
-            this.chklItems.Size = new System.Drawing.Size(736, 508);
+            this.chklItems.Size = new System.Drawing.Size(692, 508);
             this.chklItems.TabIndex = 6;
             this.chklItems.SelectedIndexChanged += new System.EventHandler(this.chklItems_SelectedIndexChanged);
             // 
@@ -486,7 +814,7 @@
             this.xtPage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtPage.ImageOptions.Image")));
             this.xtPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtPage.Name = "xtPage";
-            this.xtPage.Size = new System.Drawing.Size(744, 562);
+            this.xtPage.Size = new System.Drawing.Size(718, 573);
             this.xtPage.Text = "Shortcuts";
             // 
             // labelControl3
@@ -532,7 +860,7 @@
             this.xTabMRU.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xTabMRU.ImageOptions.Image")));
             this.xTabMRU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xTabMRU.Name = "xTabMRU";
-            this.xTabMRU.Size = new System.Drawing.Size(744, 562);
+            this.xTabMRU.Size = new System.Drawing.Size(718, 573);
             this.xTabMRU.Text = "Most Recently Used";
             // 
             // lblRecent
@@ -566,7 +894,7 @@
             this.xtraTabPageResources.Controls.Add(this.toggleSwitchIdleMode);
             this.xtraTabPageResources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageResources.ImageOptions.Image")));
             this.xtraTabPageResources.Name = "xtraTabPageResources";
-            this.xtraTabPageResources.Size = new System.Drawing.Size(744, 562);
+            this.xtraTabPageResources.Size = new System.Drawing.Size(718, 573);
             this.xtraTabPageResources.Text = "Resources Usage";
             // 
             // labelControl5
@@ -580,7 +908,8 @@
             // 
             // nudIdleTime
             // 
-            this.nudIdleTime.Location = new System.Drawing.Point(485, 52);
+            this.nudIdleTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudIdleTime.Location = new System.Drawing.Point(441, 52);
             this.nudIdleTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudIdleTime.Maximum = new decimal(new int[] {
             100000000,
@@ -615,284 +944,220 @@
             this.toggleSwitchIdleMode.TabIndex = 6;
             this.toggleSwitchIdleMode.Toggled += new System.EventHandler(this.ToggleSwitchIdleMode_Toggled);
             // 
-            // xtraTabPageRealTimeDataSources
+            // xtraTabPageDataProviders
             // 
-            this.xtraTabPageRealTimeDataSources.Controls.Add(this.labelControl6);
-            this.xtraTabPageRealTimeDataSources.Controls.Add(this.chkLstItemRealTimeDataSources);
-            this.xtraTabPageRealTimeDataSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageRealTimeDataSources.ImageOptions.Image")));
-            this.xtraTabPageRealTimeDataSources.Name = "xtraTabPageRealTimeDataSources";
-            this.xtraTabPageRealTimeDataSources.Size = new System.Drawing.Size(744, 562);
-            this.xtraTabPageRealTimeDataSources.Text = "Startup Data Source";
+            this.xtraTabPageDataProviders.Controls.Add(this.xtraTabControlDataProviderSettings);
+            this.xtraTabPageDataProviders.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_Icon2;
+            this.xtraTabPageDataProviders.Name = "xtraTabPageDataProviders";
+            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(718, 574);
+            this.xtraTabPageDataProviders.Text = "Data Providers";
             // 
-            // labelControl6
+            // xtraTabControlDataProviderSettings
             // 
-            this.labelControl6.Location = new System.Drawing.Point(17, 10);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(300, 16);
-            this.labelControl6.TabIndex = 9;
-            this.labelControl6.Text = "Load the following real time data sources at startup:";
+            this.xtraTabControlDataProviderSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControlDataProviderSettings.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControlDataProviderSettings.Name = "xtraTabControlDataProviderSettings";
+            this.xtraTabControlDataProviderSettings.SelectedTabPage = this.xtraTabPageDataProvidersOrder;
+            this.xtraTabControlDataProviderSettings.Size = new System.Drawing.Size(718, 574);
+            this.xtraTabControlDataProviderSettings.TabIndex = 10;
+            this.xtraTabControlDataProviderSettings.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPageDataProvidersOrder,
+            this.xtraTabPageDataProvidersRealTime,
+            this.xtraTabPageDataProviderAssociation,
+            this.xtraTabPageDataProvidersCustom});
+            // 
+            // xtraTabPageDataProvidersOrder
+            // 
+            this.xtraTabPageDataProvidersOrder.Controls.Add(this.splitContainerControlDataProviders);
+            this.xtraTabPageDataProvidersOrder.Controls.Add(this.labelControl7);
+            this.xtraTabPageDataProvidersOrder.Name = "xtraTabPageDataProvidersOrder";
+            this.xtraTabPageDataProvidersOrder.Size = new System.Drawing.Size(711, 540);
+            this.xtraTabPageDataProvidersOrder.Text = "Data Providers Enable/Disable";
+            // 
+            // splitContainerControlDataProviders
+            // 
+            this.splitContainerControlDataProviders.Collapsed = true;
+            this.splitContainerControlDataProviders.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel1;
+            this.splitContainerControlDataProviders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControlDataProviders.Location = new System.Drawing.Point(0, 36);
+            this.splitContainerControlDataProviders.Name = "splitContainerControlDataProviders";
+            this.splitContainerControlDataProviders.Panel1.Controls.Add(this.splitContainerControlDataProvidersButtons);
+            this.splitContainerControlDataProviders.Panel1.Text = "Panel1";
+            this.splitContainerControlDataProviders.Panel2.Controls.Add(this.chkLstDataProviderStatus);
+            this.splitContainerControlDataProviders.Panel2.Text = "Panel2";
+            this.splitContainerControlDataProviders.Size = new System.Drawing.Size(711, 504);
+            this.splitContainerControlDataProviders.SplitterPosition = 46;
+            this.splitContainerControlDataProviders.TabIndex = 14;
+            // 
+            // splitContainerControlDataProvidersButtons
+            // 
+            this.splitContainerControlDataProvidersButtons.Dock = System.Windows.Forms.DockStyle.Left;
+            this.splitContainerControlDataProvidersButtons.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None;
+            this.splitContainerControlDataProvidersButtons.Horizontal = false;
+            this.splitContainerControlDataProvidersButtons.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControlDataProvidersButtons.Name = "splitContainerControlDataProvidersButtons";
+            this.splitContainerControlDataProvidersButtons.Panel1.Controls.Add(this.sBtnMoveUp);
+            this.splitContainerControlDataProvidersButtons.Panel1.Text = "Panel1";
+            this.splitContainerControlDataProvidersButtons.Panel2.Controls.Add(this.sBtnMoveDown);
+            this.splitContainerControlDataProvidersButtons.Panel2.Text = "Panel2";
+            this.splitContainerControlDataProvidersButtons.Size = new System.Drawing.Size(44, 0);
+            this.splitContainerControlDataProvidersButtons.SplitterPosition = 0;
+            this.splitContainerControlDataProvidersButtons.TabIndex = 2;
+            // 
+            // sBtnMoveUp
+            // 
+            this.sBtnMoveUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sBtnMoveUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveUp.ImageOptions.Image")));
+            this.sBtnMoveUp.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.sBtnMoveUp.Location = new System.Drawing.Point(0, 0);
+            this.sBtnMoveUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnMoveUp.Name = "sBtnMoveUp";
+            this.sBtnMoveUp.Size = new System.Drawing.Size(0, 0);
+            this.sBtnMoveUp.TabIndex = 2;
+            this.sBtnMoveUp.Text = "Up";
+            this.sBtnMoveUp.Click += new System.EventHandler(this.sBtnMoveUp_Click);
+            // 
+            // sBtnMoveDown
+            // 
+            this.sBtnMoveDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sBtnMoveDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveDown.ImageOptions.Image")));
+            this.sBtnMoveDown.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.BottomLeft;
+            this.sBtnMoveDown.Location = new System.Drawing.Point(0, 0);
+            this.sBtnMoveDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnMoveDown.Name = "sBtnMoveDown";
+            this.sBtnMoveDown.Size = new System.Drawing.Size(0, 0);
+            this.sBtnMoveDown.TabIndex = 3;
+            this.sBtnMoveDown.Text = "Down";
+            this.sBtnMoveDown.Click += new System.EventHandler(this.sBtnMoveDown_Click);
+            // 
+            // chkLstDataProviderStatus
+            // 
+            this.chkLstDataProviderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkLstDataProviderStatus.FormattingEnabled = true;
+            this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 0);
+            this.chkLstDataProviderStatus.Margin = new System.Windows.Forms.Padding(6);
+            this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(705, 504);
+            this.chkLstDataProviderStatus.TabIndex = 10;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.AutoEllipsis = true;
+            this.labelControl7.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl7.Location = new System.Drawing.Point(0, 0);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Padding = new System.Windows.Forms.Padding(10);
+            this.labelControl7.Size = new System.Drawing.Size(711, 36);
+            this.labelControl7.TabIndex = 11;
+            this.labelControl7.Text = "Status (enable/ disabled) of data providers. Re-enabling  a provider will take af" +
+    "fect after restarting of the application";
+            // 
+            // xtraTabPageDataProvidersRealTime
+            // 
+            this.xtraTabPageDataProvidersRealTime.Controls.Add(this.chkLstItemRealTimeDataSources);
+            this.xtraTabPageDataProvidersRealTime.Controls.Add(this.labelControl6);
+            this.xtraTabPageDataProvidersRealTime.Name = "xtraTabPageDataProvidersRealTime";
+            this.xtraTabPageDataProvidersRealTime.Size = new System.Drawing.Size(711, 539);
+            this.xtraTabPageDataProvidersRealTime.Text = "Real time Auto-Startup";
             // 
             // chkLstItemRealTimeDataSources
             // 
-            this.chkLstItemRealTimeDataSources.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.chkLstItemRealTimeDataSources.CheckOnClick = true;
+            this.chkLstItemRealTimeDataSources.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkLstItemRealTimeDataSources.FormattingEnabled = true;
-            this.chkLstItemRealTimeDataSources.Location = new System.Drawing.Point(17, 46);
+            this.chkLstItemRealTimeDataSources.Location = new System.Drawing.Point(0, 36);
             this.chkLstItemRealTimeDataSources.Margin = new System.Windows.Forms.Padding(6);
             this.chkLstItemRealTimeDataSources.Name = "chkLstItemRealTimeDataSources";
-            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(736, 508);
+            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(711, 503);
             this.chkLstItemRealTimeDataSources.TabIndex = 8;
             this.chkLstItemRealTimeDataSources.SelectedIndexChanged += new System.EventHandler(this.ChkLstItemRealTimeDataSources_SelectedIndexChanged);
             // 
-            // groupControl2
+            // labelControl6
             // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelControl6.AutoEllipsis = true;
+            this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl6.Location = new System.Drawing.Point(0, 0);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Padding = new System.Windows.Forms.Padding(10);
+            this.labelControl6.Size = new System.Drawing.Size(711, 36);
+            this.labelControl6.TabIndex = 9;
+            this.labelControl6.Text = "Load the following real time data sources at startup:";
+            // 
+            // xtraTabPageDataProviderAssociation
+            // 
+            this.xtraTabPageDataProviderAssociation.Controls.Add(this.cbDataProviderAssociation);
+            this.xtraTabPageDataProviderAssociation.Controls.Add(this.btnSetFileAssociation);
+            this.xtraTabPageDataProviderAssociation.Controls.Add(this.labelControl8);
+            this.xtraTabPageDataProviderAssociation.Controls.Add(this.txtbDataProviderAssociation);
+            this.xtraTabPageDataProviderAssociation.Name = "xtraTabPageDataProviderAssociation";
+            this.xtraTabPageDataProviderAssociation.Size = new System.Drawing.Size(711, 540);
+            this.xtraTabPageDataProviderAssociation.Text = "Default File Associations";
+            // 
+            // btnSetFileAssociation
+            // 
+            this.btnSetFileAssociation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetFileAssociation.Location = new System.Drawing.Point(654, 53);
+            this.btnSetFileAssociation.Name = "btnSetFileAssociation";
+            this.btnSetFileAssociation.Size = new System.Drawing.Size(47, 23);
+            this.btnSetFileAssociation.TabIndex = 3;
+            this.btnSetFileAssociation.Text = "set";
+            this.btnSetFileAssociation.Click += new System.EventHandler(this.btnSetFileAssociation_Click);
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(15, 57);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(181, 16);
+            this.labelControl8.TabIndex = 2;
+            this.labelControl8.Text = "File Types (use , as seperator):";
+            // 
+            // txtbDataProviderAssociation
+            // 
+            this.txtbDataProviderAssociation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl2.Controls.Add(this.lblLogLevelAnalogyInformation);
-            this.groupControl2.Controls.Add(this.cpeLogLevelAnalogyInformation);
-            this.groupControl2.Controls.Add(this.lblLogLevelCritical);
-            this.groupControl2.Controls.Add(this.cpeLogLevelCritical);
-            this.groupControl2.Controls.Add(this.lblLogLevelError);
-            this.groupControl2.Controls.Add(this.cpeLogLevelError);
-            this.groupControl2.Controls.Add(this.lblLogLevelWarning);
-            this.groupControl2.Controls.Add(this.cpeLogLevelWarning);
-            this.groupControl2.Controls.Add(this.lblLogLevelEvent);
-            this.groupControl2.Controls.Add(this.cpeLogLevelEvent);
-            this.groupControl2.Controls.Add(this.lblLogLevelDebug);
-            this.groupControl2.Controls.Add(this.cpeLogLevelDebug);
-            this.groupControl2.Controls.Add(this.lblLogLevelVerbose);
-            this.groupControl2.Controls.Add(this.cpeLogLevelVerbose);
-            this.groupControl2.Controls.Add(this.lblLogLevelTrace);
-            this.groupControl2.Controls.Add(this.cpeLogLevelTrace);
-            this.groupControl2.Controls.Add(this.lblLogLevelDisabled);
-            this.groupControl2.Controls.Add(this.cpeLogLevelDisabled);
-            this.groupControl2.Controls.Add(this.lblLogLevelUnknown);
-            this.groupControl2.Controls.Add(this.cpeLogLevelUnknown);
-            this.groupControl2.Location = new System.Drawing.Point(14, 74);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(713, 336);
-            this.groupControl2.TabIndex = 4;
-            this.groupControl2.Text = "Log Level Colors Settings";
+            this.txtbDataProviderAssociation.Location = new System.Drawing.Point(224, 54);
+            this.txtbDataProviderAssociation.Name = "txtbDataProviderAssociation";
+            this.txtbDataProviderAssociation.Size = new System.Drawing.Size(419, 23);
+            this.txtbDataProviderAssociation.TabIndex = 1;
             // 
-            // cpeLogLevelUnknown
+            // xtraTabPageDataProvidersCustom
             // 
-            this.cpeLogLevelUnknown.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelUnknown.Location = new System.Drawing.Point(140, 55);
-            this.cpeLogLevelUnknown.Name = "cpeLogLevelUnknown";
-            this.cpeLogLevelUnknown.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelUnknown.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelUnknown.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelUnknown.TabIndex = 0;
+            this.xtraTabPageDataProvidersCustom.Controls.Add(this.btnDataProviderCustomSettings);
+            this.xtraTabPageDataProvidersCustom.Name = "xtraTabPageDataProvidersCustom";
+            this.xtraTabPageDataProvidersCustom.Size = new System.Drawing.Size(711, 539);
+            this.xtraTabPageDataProvidersCustom.Text = "Custom Settings";
             // 
-            // lblLogLevelUnknown
+            // btnDataProviderCustomSettings
             // 
-            this.lblLogLevelUnknown.Location = new System.Drawing.Point(19, 58);
-            this.lblLogLevelUnknown.Name = "lblLogLevelUnknown";
-            this.lblLogLevelUnknown.Size = new System.Drawing.Size(57, 16);
-            this.lblLogLevelUnknown.TabIndex = 1;
-            this.lblLogLevelUnknown.Text = "Unknown:";
+            this.btnDataProviderCustomSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnDataProviderCustomSettings.Location = new System.Drawing.Point(182, 3);
+            this.btnDataProviderCustomSettings.Name = "btnDataProviderCustomSettings";
+            this.btnDataProviderCustomSettings.Size = new System.Drawing.Size(304, 29);
+            this.btnDataProviderCustomSettings.TabIndex = 0;
+            this.btnDataProviderCustomSettings.Text = "Open Data Providers custom settings";
+            this.btnDataProviderCustomSettings.Click += new System.EventHandler(this.btnDataProviderCustomSettings_Click);
             // 
-            // lblLogLevelDisabled
+            // cbDataProviderAssociation
             // 
-            this.lblLogLevelDisabled.Location = new System.Drawing.Point(19, 86);
-            this.lblLogLevelDisabled.Name = "lblLogLevelDisabled";
-            this.lblLogLevelDisabled.Size = new System.Drawing.Size(53, 16);
-            this.lblLogLevelDisabled.TabIndex = 3;
-            this.lblLogLevelDisabled.Text = "Disabled:";
-            // 
-            // cpeLogLevelDisabled
-            // 
-            this.cpeLogLevelDisabled.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelDisabled.Location = new System.Drawing.Point(140, 83);
-            this.cpeLogLevelDisabled.Name = "cpeLogLevelDisabled";
-            this.cpeLogLevelDisabled.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelDisabled.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelDisabled.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelDisabled.TabIndex = 2;
-            // 
-            // lblLogLevelVerbose
-            // 
-            this.lblLogLevelVerbose.Location = new System.Drawing.Point(19, 142);
-            this.lblLogLevelVerbose.Name = "lblLogLevelVerbose";
-            this.lblLogLevelVerbose.Size = new System.Drawing.Size(52, 16);
-            this.lblLogLevelVerbose.TabIndex = 7;
-            this.lblLogLevelVerbose.Text = "Verbose:";
-            // 
-            // cpeLogLevelVerbose
-            // 
-            this.cpeLogLevelVerbose.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelVerbose.Location = new System.Drawing.Point(140, 139);
-            this.cpeLogLevelVerbose.Name = "cpeLogLevelVerbose";
-            this.cpeLogLevelVerbose.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelVerbose.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelVerbose.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelVerbose.TabIndex = 6;
-            // 
-            // lblLogLevelTrace
-            // 
-            this.lblLogLevelTrace.Location = new System.Drawing.Point(19, 114);
-            this.lblLogLevelTrace.Name = "lblLogLevelTrace";
-            this.lblLogLevelTrace.Size = new System.Drawing.Size(38, 16);
-            this.lblLogLevelTrace.TabIndex = 5;
-            this.lblLogLevelTrace.Text = "Trace:";
-            // 
-            // cpeLogLevelTrace
-            // 
-            this.cpeLogLevelTrace.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelTrace.Location = new System.Drawing.Point(140, 111);
-            this.cpeLogLevelTrace.Name = "cpeLogLevelTrace";
-            this.cpeLogLevelTrace.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelTrace.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelTrace.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelTrace.TabIndex = 4;
-            // 
-            // lblLogLevelError
-            // 
-            this.lblLogLevelError.Location = new System.Drawing.Point(19, 254);
-            this.lblLogLevelError.Name = "lblLogLevelError";
-            this.lblLogLevelError.Size = new System.Drawing.Size(34, 16);
-            this.lblLogLevelError.TabIndex = 15;
-            this.lblLogLevelError.Text = "Error:";
-            // 
-            // cpeLogLevelError
-            // 
-            this.cpeLogLevelError.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelError.Location = new System.Drawing.Point(140, 251);
-            this.cpeLogLevelError.Name = "cpeLogLevelError";
-            this.cpeLogLevelError.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelError.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelError.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelError.TabIndex = 14;
-            // 
-            // lblLogLevelWarning
-            // 
-            this.lblLogLevelWarning.Location = new System.Drawing.Point(19, 226);
-            this.lblLogLevelWarning.Name = "lblLogLevelWarning";
-            this.lblLogLevelWarning.Size = new System.Drawing.Size(53, 16);
-            this.lblLogLevelWarning.TabIndex = 13;
-            this.lblLogLevelWarning.Text = "Warning:";
-            // 
-            // cpeLogLevelWarning
-            // 
-            this.cpeLogLevelWarning.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelWarning.Location = new System.Drawing.Point(140, 223);
-            this.cpeLogLevelWarning.Name = "cpeLogLevelWarning";
-            this.cpeLogLevelWarning.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelWarning.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelWarning.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelWarning.TabIndex = 12;
-            // 
-            // lblLogLevelEvent
-            // 
-            this.lblLogLevelEvent.Location = new System.Drawing.Point(19, 198);
-            this.lblLogLevelEvent.Name = "lblLogLevelEvent";
-            this.lblLogLevelEvent.Size = new System.Drawing.Size(36, 16);
-            this.lblLogLevelEvent.TabIndex = 11;
-            this.lblLogLevelEvent.Text = "Event:";
-            // 
-            // cpeLogLevelEvent
-            // 
-            this.cpeLogLevelEvent.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelEvent.Location = new System.Drawing.Point(140, 195);
-            this.cpeLogLevelEvent.Name = "cpeLogLevelEvent";
-            this.cpeLogLevelEvent.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelEvent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelEvent.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelEvent.TabIndex = 10;
-            // 
-            // lblLogLevelDebug
-            // 
-            this.lblLogLevelDebug.Location = new System.Drawing.Point(19, 170);
-            this.lblLogLevelDebug.Name = "lblLogLevelDebug";
-            this.lblLogLevelDebug.Size = new System.Drawing.Size(41, 16);
-            this.lblLogLevelDebug.TabIndex = 9;
-            this.lblLogLevelDebug.Text = "Debug:";
-            // 
-            // cpeLogLevelDebug
-            // 
-            this.cpeLogLevelDebug.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelDebug.Location = new System.Drawing.Point(140, 167);
-            this.cpeLogLevelDebug.Name = "cpeLogLevelDebug";
-            this.cpeLogLevelDebug.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelDebug.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelDebug.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelDebug.TabIndex = 8;
-            // 
-            // lblLogLevelAnalogyInformation
-            // 
-            this.lblLogLevelAnalogyInformation.Location = new System.Drawing.Point(18, 310);
-            this.lblLogLevelAnalogyInformation.Name = "lblLogLevelAnalogyInformation";
-            this.lblLogLevelAnalogyInformation.Size = new System.Drawing.Size(116, 16);
-            this.lblLogLevelAnalogyInformation.TabIndex = 19;
-            this.lblLogLevelAnalogyInformation.Text = "AnalogyInformation:";
-            // 
-            // cpeLogLevelAnalogyInformation
-            // 
-            this.cpeLogLevelAnalogyInformation.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelAnalogyInformation.Location = new System.Drawing.Point(140, 307);
-            this.cpeLogLevelAnalogyInformation.Name = "cpeLogLevelAnalogyInformation";
-            this.cpeLogLevelAnalogyInformation.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelAnalogyInformation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelAnalogyInformation.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelAnalogyInformation.TabIndex = 18;
-            // 
-            // lblLogLevelCritical
-            // 
-            this.lblLogLevelCritical.Location = new System.Drawing.Point(19, 282);
-            this.lblLogLevelCritical.Name = "lblLogLevelCritical";
-            this.lblLogLevelCritical.Size = new System.Drawing.Size(44, 16);
-            this.lblLogLevelCritical.TabIndex = 17;
-            this.lblLogLevelCritical.Text = "Critical:";
-            // 
-            // cpeLogLevelCritical
-            // 
-            this.cpeLogLevelCritical.EditValue = System.Drawing.Color.Empty;
-            this.cpeLogLevelCritical.Location = new System.Drawing.Point(140, 279);
-            this.cpeLogLevelCritical.Name = "cpeLogLevelCritical";
-            this.cpeLogLevelCritical.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeLogLevelCritical.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeLogLevelCritical.Size = new System.Drawing.Size(559, 22);
-            this.cpeLogLevelCritical.TabIndex = 16;
-            // 
-            // lblHighlightColor
-            // 
-            this.lblHighlightColor.Location = new System.Drawing.Point(32, 416);
-            this.lblHighlightColor.Name = "lblHighlightColor";
-            this.lblHighlightColor.Size = new System.Drawing.Size(88, 16);
-            this.lblHighlightColor.TabIndex = 21;
-            this.lblHighlightColor.Text = "Highlight Color:";
-            // 
-            // cpeHighlightColor
-            // 
-            this.cpeHighlightColor.EditValue = System.Drawing.Color.Empty;
-            this.cpeHighlightColor.Location = new System.Drawing.Point(154, 413);
-            this.cpeHighlightColor.Name = "cpeHighlightColor";
-            this.cpeHighlightColor.Properties.AutomaticColor = System.Drawing.Color.Black;
-            this.cpeHighlightColor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cpeHighlightColor.Size = new System.Drawing.Size(559, 22);
-            this.cpeHighlightColor.TabIndex = 20;
+            this.cbDataProviderAssociation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDataProviderAssociation.FormattingEnabled = true;
+            this.cbDataProviderAssociation.Location = new System.Drawing.Point(15, 15);
+            this.cbDataProviderAssociation.Name = "cbDataProviderAssociation";
+            this.cbDataProviderAssociation.Size = new System.Drawing.Size(686, 24);
+            this.cbDataProviderAssociation.TabIndex = 4;
+            this.cbDataProviderAssociation.SelectedIndexChanged += new System.EventHandler(this.cbDataProviderAssociation_SelectedIndexChanged);
             // 
             // UserSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 569);
+            this.ClientSize = new System.Drawing.Size(919, 581);
             this.Controls.Add(this.tabControlMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserSettingsForm";
             this.ShowIcon = false;
@@ -908,6 +1173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsFileCaching.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).EndInit();
             this.gcFiltering.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsDataTimeAscendDescend.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEditPaging.Properties)).EndInit();
@@ -917,6 +1183,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsAutoComplete.Properties)).EndInit();
             this.tpLookAndFeel.ResumeLayout(false);
             this.tpLookAndFeel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeHighlightColor.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelAnalogyInformation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelCritical.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelError.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelWarning.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelEvent.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDebug.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelVerbose.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelTrace.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDisabled.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelUnknown.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsStartupRibbonMinimized.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).EndInit();
             this.tpStatistics.ResumeLayout(false);
@@ -935,22 +1215,18 @@
             this.xtraTabPageResources.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIdleMode.Properties)).EndInit();
-            this.xtraTabPageRealTimeDataSources.ResumeLayout(false);
-            this.xtraTabPageRealTimeDataSources.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelUnknown.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDisabled.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelVerbose.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelTrace.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelError.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelWarning.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelEvent.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDebug.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelAnalogyInformation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelCritical.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpeHighlightColor.Properties)).EndInit();
+            this.xtraTabPageDataProviders.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlDataProviderSettings)).EndInit();
+            this.xtraTabControlDataProviderSettings.ResumeLayout(false);
+            this.xtraTabPageDataProvidersOrder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlDataProviders)).EndInit();
+            this.splitContainerControlDataProviders.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlDataProvidersButtons)).EndInit();
+            this.splitContainerControlDataProvidersButtons.ResumeLayout(false);
+            this.xtraTabPageDataProvidersRealTime.ResumeLayout(false);
+            this.xtraTabPageDataProviderAssociation.ResumeLayout(false);
+            this.xtraTabPageDataProviderAssociation.PerformLayout();
+            this.xtraTabPageDataProvidersCustom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -995,7 +1271,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private System.Windows.Forms.NumericUpDown nudIdleTime;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitchIdleMode;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPageRealTimeDataSources;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProviders;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private System.Windows.Forms.CheckedListBox chkLstItemRealTimeDataSources;
         private DevExpress.XtraEditors.GroupControl groupControl2;
@@ -1021,5 +1297,24 @@
         private DevExpress.XtraEditors.ColorPickEdit cpeLogLevelDisabled;
         private DevExpress.XtraEditors.LabelControl lblHighlightColor;
         private DevExpress.XtraEditors.ColorPickEdit cpeHighlightColor;
+        private DevExpress.XtraEditors.ToggleSwitch tsDataTimeAscendDescend;
+        private DevExpress.XtraEditors.SimpleButton sBtnImportColors;
+        private DevExpress.XtraEditors.SimpleButton sBtnExportColors;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControlDataProviderSettings;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProvidersRealTime;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProvidersOrder;
+        private System.Windows.Forms.CheckedListBox chkLstDataProviderStatus;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControlDataProviders;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControlDataProvidersButtons;
+        private DevExpress.XtraEditors.SimpleButton sBtnMoveUp;
+        private DevExpress.XtraEditors.SimpleButton sBtnMoveDown;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProvidersCustom;
+        private DevExpress.XtraEditors.SimpleButton btnDataProviderCustomSettings;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProviderAssociation;
+        private DevExpress.XtraEditors.SimpleButton btnSetFileAssociation;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private System.Windows.Forms.TextBox txtbDataProviderAssociation;
+        private System.Windows.Forms.ComboBox cbDataProviderAssociation;
     }
 }

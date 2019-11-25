@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces;
 using DevExpress.Utils;
+using DevExpress.XtraTab;
 using Newtonsoft.Json;
 
 namespace Analogy
@@ -50,26 +52,35 @@ namespace Analogy
 
         private void LoadSettings()
         {
+
             LoadNLogSettings(Settings.LogParsersSettings.NLogParserSettings);
-           
+            // AddExtrenalUserControlSettings();
         }
 
-        private void LoadNLogSettings(LogParserSettings nLogParserSettings)
+        private void AddExtrenalUserControlSettings()
+        {
+            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            {
+                XtraTabPage tab = new XtraTabPage();
+                tab.Text = settings.Title;
+                UserControl uc = settings.DataProviderSettings;
+                tab.Controls.Add(uc);
+                tab.Image = settings.Icon;
+                //ab.
+                uc.Dock = DockStyle.Fill;
+                tabControlMain.TabPages.Add(tab);
+            }
+        }
+
+        private void LoadNLogSettings(ILogParserSettings nLogParserSettings)
         {
             if (nLogParserSettings.IsConfigured)
             {
                 txtNLogSeperator.Text = nLogParserSettings.Splitter;
                 txtNLogLayout.Text = nLogParserSettings.Layout;
-                textEditNLogExtension.Text = string.Join(";",nLogParserSettings.SupportedFilesExtensions);
-                lstBAnalogyColumnsNlog.Items.Clear();
-                for (int i = 0; i < 21; i++)
-                {
-                    if (nLogParserSettings.Maps.ContainsKey(i))
-                        lstBAnalogyColumnsNlog.Items.Add(nLogParserSettings.Maps[i]);
-                    else
-                        lstBAnalogyColumnsNlog.Items.Add("__ignore__");
-                }
+                textEditNLogExtension.Text = string.Join(";", nLogParserSettings.SupportedFilesExtensions);
 
+                analogyColumnsMatcherUC1.LoadMapping(nLogParserSettings);
                 CheckNLogLayout();
             }
         }
@@ -78,6 +89,7 @@ namespace Analogy
         private async void UserSettingsForm_Load(object sender, EventArgs e)
         {
             LoadSettings();
+
             if (_initialSelection >= 0)
                 tabControlMain.SelectedTabPageIndex = _initialSelection;
 
@@ -98,8 +110,7 @@ namespace Analogy
                 var items = txtNLogLayout.Text
                     .Split(txtNLogSeperator.Text.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                     .ToArray();
-                lstBoxItemsNlog.Items.Clear();
-                lstBoxItemsNlog.Items.AddRange(items);
+                analogyColumnsMatcherUC1.SetColumns(items);
             }
             catch (Exception exception)
             {
@@ -108,47 +119,18 @@ namespace Analogy
             }
         }
 
-        private void SBtnMoveUp_Click(object sender, EventArgs e)
-        {
-            if (lstBAnalogyColumnsNlog.SelectedIndex <= 0) return;
-            var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
-            var currentValue = lstBAnalogyColumnsNlog.Items[selectedIndex];
-            lstBAnalogyColumnsNlog.Items[selectedIndex] = lstBAnalogyColumnsNlog.Items[selectedIndex - 1];
-            lstBAnalogyColumnsNlog.Items[selectedIndex - 1] = currentValue;
-            lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex - 1;
-        }
-
-        private void SBtnMoveDown_Click(object sender, EventArgs e)
-        {
-            if (lstBAnalogyColumnsNlog.SelectedIndex == lstBAnalogyColumnsNlog.ItemCount - 1) return;
-            var selectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
-            var currentValue = lstBAnalogyColumnsNlog.Items[selectedIndex + 1];
-            lstBAnalogyColumnsNlog.Items[selectedIndex + 1] = lstBAnalogyColumnsNlog.Items[selectedIndex];
-            lstBAnalogyColumnsNlog.Items[selectedIndex] = currentValue;
-            lstBAnalogyColumnsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex + 1;
-        }
-
         private void SBtnSaveNlogMapping_Click(object sender, EventArgs e)
         {
-            Dictionary<int, AnalogyLogMessagePropertyName> maps =
-                new Dictionary<int, AnalogyLogMessagePropertyName>(lstBAnalogyColumnsNlog.ItemCount);
-            for (int i = 0; i < lstBAnalogyColumnsNlog.ItemCount; i++)
-            {
-                if (lstBAnalogyColumnsNlog.Items[i].ToString()
-                    .Contains("ignore", StringComparison.InvariantCultureIgnoreCase)) continue;
-                maps.Add(i, (AnalogyLogMessagePropertyName)Enum.Parse(typeof(AnalogyLogMessagePropertyName),
-                    lstBAnalogyColumnsNlog.Items[i].ToString()));
-            }
 
-            Settings.LogParsersSettings.NLogParserSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
-                new List<string> { textEditNLogExtension.Text }, maps);
+            SaveMapping();
 
         }
 
-        private void LstBAnalogyColumns_SelectedIndexChanged(object sender, EventArgs e)
+        private void SaveMapping()
         {
-            if (lstBAnalogyColumnsNlog.SelectedIndex > lstBoxItemsNlog.ItemCount - 1) return;
-            lstBoxItemsNlog.SelectedIndex = lstBAnalogyColumnsNlog.SelectedIndex;
+            Settings.LogParsersSettings.NLogParserSettings.Configure(txtNLogLayout.Text, txtNLogSeperator.Text,
+                new List<string> {textEditNLogExtension.Text}, analogyColumnsMatcherUC1.Mapping);
+            Settings.LogParsersSettings.NLogParserSettings.Directory = textEditNLogDirectory.Text;
         }
 
         private void SBtnLoadXMLFile_Click(object sender, EventArgs e)
@@ -185,8 +167,9 @@ namespace Analogy
                     var json = File.ReadAllText(openFileDialog1.FileName);
                     LogParserSettings nlog = LogParserSettings.FromJson(json);
                     LoadNLogSettings(nlog);
-                    XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings", MessageBoxButtons.OK,
-                           MessageBoxIcon.Information);
+                    XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
                 }
                 catch (Exception ex)
@@ -205,9 +188,10 @@ namespace Analogy
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                SaveMapping();
                 try
                 {
-                    File.WriteAllText(Settings.LogParsersSettings.NLogParserSettings.AsJson(), saveFileDialog.FileName);
+                    File.WriteAllText(saveFileDialog.FileName, Settings.LogParsersSettings.NLogParserSettings.AsJson());
                     XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
@@ -218,6 +202,41 @@ namespace Analogy
                         MessageBoxIcon.Error);
                 }
 
+            }
+        }
+
+        private void UserSettingsDataProvidersForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSetting();
+        }
+
+        public async void SaveSetting()
+        {
+            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            {
+                try
+                {
+                    await settings.SaveSettingsAsync();
+                }
+                catch (Exception e)
+                {
+                    //ingnore errors in data providers
+                }
+
+            }
+        }
+
+        private void sBtnNLogOpenFolder_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    textEditNLogDirectory.Text = fbd.SelectedPath;
+
+                }
             }
         }
     }

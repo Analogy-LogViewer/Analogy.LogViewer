@@ -5,13 +5,34 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.DataProviders;
 using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 using Analogy.LogLoaders;
 using Analogy.Properties;
 
 
 namespace Analogy.DataSources
 {
+
+    public class EventLogDataFactory : IAnalogyFactory
+    {
+        public static Guid ID { get; } = new Guid("3949DB4C-0E22-4795-92C1-61B05EDB3F6C");
+
+        public Guid FactoryID { get; } = ID;
+        public string Title { get; } = "Windows Event logs";
+        public IAnalogyDataProvidersFactory DataProviders { get; }=new EventLogDataProviders();
+        public IAnalogyCustomActionsFactory Actions { get; } = new EmptyActionsFactory();
+        public IEnumerable<IAnalogyChangeLog> ChangeLog { get; } = CommonChangeLog.GetChangeLog();
+        public IEnumerable<string> Contributors { get; } = new List<string>() { "Lior Banai" };
+        public string About { get; } = "Analogy Built-In Windows Event Log Data Provider";
+
+        public class EventLogDataProviders : IAnalogyDataProvidersFactory
+        {
+            public string Title { get; } = "Analogy Built-In Windows Event Log Data Provider";
+            public IEnumerable<IAnalogyDataProvider> Items { get; } = new List<IAnalogyDataProvider> { new EventLogDataProvider() };
+        }
+    }
     public class EventLogDataProvider : IAnalogyOfflineDataProvider
     {
         public string OptionalTitle { get; } = "Analogy Built-In Windows Event Log Data Provider";
@@ -22,9 +43,9 @@ namespace Analogy.DataSources
 
         }
 
-        public bool CanSaveToLogFile { get; }
+        public bool CanSaveToLogFile { get; } = false;
         public string FileOpenDialogFilters { get; } = "Windows Event log files (*.evtx)|*.evtx";
-        public string FileSaveDialogFilters { get; }
+        public string FileSaveDialogFilters { get; } = "";
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.evtx" };
 
         public string InitialFolderFullPath { get; } =
@@ -69,7 +90,7 @@ namespace Analogy.DataSources
         public bool CanOpenFile(string fileName) => fileName.EndsWith(".evtx", StringComparison.InvariantCultureIgnoreCase);
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
-        public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
+        private static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
             List<FileInfo> files = dirInfo.GetFiles("*.evtx").ToList();
             if (!recursive)

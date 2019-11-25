@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 
@@ -58,6 +59,11 @@ namespace Analogy
         /// From last month
         /// </summary>
         internal const string DateFilterLastMonth = "Last one month";
+
+        private static Regex HasQuestionMarkRegEx = new Regex(@"\?", RegexOptions.Compiled);
+        private static Regex IllegalCharactersRegex = new Regex("[" + @"\/:<>|" + "\"]", RegexOptions.Compiled);
+        private static Regex CatchExtentionRegex = new Regex(@"^\s*.+\.([^\.]+)\s*$", RegexOptions.Compiled);
+        private static string NonDotCharacters = @"[^.]*";
         //
         /// <summary>
         /// 
@@ -160,7 +166,8 @@ namespace Analogy
             }
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
-            dtb.DefaultView.Sort = "Date ASC";
+            dtb.DefaultView.Sort =UserSettingsManager.UserSettings.DefaultDescendOrder ?
+                "Date DESC" : "Date ASC";
 
             return dtb;
         }
@@ -268,6 +275,52 @@ namespace Analogy
             return ((idleTime > 0) ? (idleTime / 1000) : 0);
         }
         public static TimeSpan IdleTime() => TimeSpan.FromSeconds(GetLastInputTime());
+
+        
+         
+
+            public static bool MatchedAll(string pattern, IEnumerable<string> files)
+            {
+                Regex reg = Convert(pattern);
+                return files.All(f => reg.IsMatch(f));
+            }
+            public static Regex Convert(string pattern)
+            {
+                if (pattern == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                pattern = pattern.Trim();
+                if (pattern.Length == 0)
+                {
+                    throw new ArgumentException("Pattern is empty.");
+                }
+                if (IllegalCharactersRegex.IsMatch(pattern))
+                {
+                    throw new ArgumentException("Pattern contains illegal characters.");
+                }
+                bool hasExtension = CatchExtentionRegex.IsMatch(pattern);
+                bool matchExact = false;
+                if (HasQuestionMarkRegEx.IsMatch(pattern))
+                {
+                    matchExact = true;
+                }
+                else if (hasExtension)
+                {
+                    matchExact = CatchExtentionRegex.Match(pattern).Groups[1].Length != 3;
+                }
+                string regexString = Regex.Escape(pattern);
+                regexString = "^" + Regex.Replace(regexString, @"\\\*", ".*");
+                regexString = Regex.Replace(regexString, @"\\\?", ".");
+                if (!matchExact && hasExtension)
+                {
+                    regexString += NonDotCharacters;
+                }
+                regexString += "$";
+                Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                return regex;
+            }
+        
     }
 
     public class FilterCriteriaObject

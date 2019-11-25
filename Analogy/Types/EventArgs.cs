@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Analogy.Interfaces;
 
 namespace Analogy.Types
 {
@@ -21,6 +22,25 @@ namespace Analogy.Types
         {
             SelectedFileNames = files;
 
+        }
+    }
+
+    public class AnalogyClearedHistoryEventArgs : EventArgs
+    {
+        public List<AnalogyLogMessage> ClearedMessages { get; }
+
+        public AnalogyClearedHistoryEventArgs(List<AnalogyLogMessage> clearedMessages)
+        {
+            ClearedMessages = clearedMessages;
+        }
+    }
+    public class AnalogyNewMessagesEventArgs : EventArgs
+    {
+        public List<AnalogyLogMessage> NewMessages { get; }
+
+        public AnalogyNewMessagesEventArgs(List<AnalogyLogMessage> newMessages)
+        {
+            NewMessages = NewMessages;
         }
     }
 }

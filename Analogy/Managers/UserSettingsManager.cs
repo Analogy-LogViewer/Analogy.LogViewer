@@ -5,14 +5,19 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 using Analogy.Properties;
+using Analogy.Types;
 using Newtonsoft.Json;
 
 namespace Analogy
 {
     public class UserSettingsManager
     {
+        public event EventHandler OnFactoyOrderChanged;
+
         private static readonly string splitter = "*#*#*#";
 
         private static readonly Lazy<UserSettingsManager> _instance =
@@ -23,7 +28,7 @@ namespace Analogy
         public bool SaveSearchFilters { get; set; }
         public string IncludeText { get; set; }
         public string ExcludedText { get; set; }
-    
+
         public string SourceText { get; set; }
         public string ModuleText { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
@@ -52,8 +57,11 @@ namespace Analogy
 
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
+        public bool DefaultDescendOrder { get; set; }
         public LogParserSettingsContainer LogParsersSettings { get; set; }
         public ColorSettings ColorSettings { get; set; }
+        public List<Guid> FactoriesOrder { get; set; }
+        public List<FactorySettings> FactoriesSettings { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -112,33 +120,29 @@ namespace Analogy
             AutoStartDataProviders = Settings.Default.AutoStartDataProviders
                 .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
             AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
-
-            try
-            {
-
-                ColorSettings = string.IsNullOrEmpty(Settings.Default.ColorSettings) ?
-                    new ColorSettings() :
-                    JsonConvert.DeserializeObject<ColorSettings>(Settings.Default.ColorSettings);
-            }
-            catch
-            {
-                ColorSettings = new ColorSettings();
-            }
-            try
-            {
-
-                LogParsersSettings = string.IsNullOrEmpty(Settings.Default.LogParsersSettings) ?
-                    new LogParserSettingsContainer() :
-                    JsonConvert.DeserializeObject<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
-            }
-            catch
-            {
-                LogParsersSettings = new LogParserSettingsContainer();
-            }
+            ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
+            LogParsersSettings = ParseSettings<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
+            DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
+            FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
+            FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
 
         }
 
+        private T ParseSettings<T>(string data) where T : new()
+        {
+            try
+            {
+                return string.IsNullOrEmpty(data) ?
+                    new T() :
+                    JsonConvert.DeserializeObject<T>(data);
+            }
+            catch (Exception)
+            {
+                return new T();
+            }
 
+
+        }
         public void Save()
         {
             Settings.Default.ApplicationSkinName = ApplicationSkinName;
@@ -186,6 +190,10 @@ namespace Analogy
             {
                 Settings.Default.ColorSettings = string.Empty;
             }
+
+            Settings.Default.DefaultDescendOrder = DefaultDescendOrder;
+            Settings.Default.FactoriesOrder = JsonConvert.SerializeObject(FactoriesOrder);
+            Settings.Default.FactoriesSettings = JsonConvert.SerializeObject(FactoriesSettings);
             Settings.Default.Save();
 
         }
@@ -221,56 +229,63 @@ namespace Analogy
         public List<string> IncludeEntries => IncludeText.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries)
             .Take(10).ToList();
 
+        public FactorySettings GetFactorySetting(Guid factoryID)
+        {
+            Predicate<Guid> exist = (guid) => guid == factoryID;
+            if (FactoriesSettings.Exists(f => exist(f.FactoryGuid)))
+            {
+                return FactoriesSettings.Single(f => exist(f.FactoryGuid));
+            }
+
+            return null;
+        }
+        public FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory)
+        {
+            Predicate<Guid> exist = (guid) => guid == factory.FactoryID;
+            if (FactoriesSettings.Exists(f => exist(f.FactoryGuid)))
+            {
+                return FactoriesSettings.Single(f => exist(f.FactoryGuid));
+            }
+
+            var createNew = new FactorySettings
+            {
+                FactoryGuid = factory.FactoryID,
+                Status = DataProviderFactoryStatus.NotSet,
+                UserSettingFileAssociations =new List<string>()
+                    //factory.DataProviders.Items
+                    //.Where(itm => itm is IAnalogyOfflineDataProvider)
+                    //.SelectMany(itm => ((IAnalogyOfflineDataProvider)itm).SupportFormats).ToList()
+            };
+            FactoriesSettings.Add(createNew);
+            return createNew;
+
+        }
+
+        public void UpdateOrder(List<Guid> order)
+        {
+            if (FactoriesOrder.SequenceEqual(order))
+                return;
+            FactoriesOrder = order;
+            OnFactoyOrderChanged?.Invoke(this, new EventArgs());
+        }
+
+        public IEnumerable<FactorySettings> GetFactoriesThatHasFileAssociation(string[] files) =>
+            FactoriesSettings.Where(factory => factory.Status != DataProviderFactoryStatus.Disabled &&
+                                               factory.UserSettingFileAssociations != null &&
+                                               factory.UserSettingFileAssociations.Any(i =>
+                                                   Utils.MatchedAll(i, files)));
+
     }
     [Serializable]
     public class LogParserSettingsContainer
     {
-        public LogParserSettings NLogParserSettings { get; set; }
+        public ILogParserSettings NLogParserSettings { get; set; }
 
         public LogParserSettingsContainer()
         {
-            NLogParserSettings=new LogParserSettings();
+            NLogParserSettings = new LogParserSettings();
             NLogParserSettings.Splitter = "|";
-            
-        }
 
-    }
-    [Serializable]
-    public class LogParserSettings
-    {
-        public List<string> SupportedFilesExtensions { get; set; }
-        public bool IsConfigured { get; set; }
-        public string Splitter { get; set; }
-        public string Layout { get; set; }
-        public Dictionary<int, AnalogyLogMessagePropertyName> Maps { get; set; }
-        public int ValidItemsCount { get; set; }
-
-        public string AsJson() => JsonConvert.SerializeObject(this);
-        public static LogParserSettings FromJson(string json) => JsonConvert.DeserializeObject<LogParserSettings>(json);
-        public LogParserSettings()
-        {
-            IsConfigured = false;
-            Layout = string.Empty;
-            Splitter = string.Empty;
-            Maps = new Dictionary<int, AnalogyLogMessagePropertyName>();
-            SupportedFilesExtensions = new List<string>();
-        }
-
-        public void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<int, AnalogyLogMessagePropertyName> maps)
-        {
-            Layout = layout;
-            Splitter = splitter;
-            SupportedFilesExtensions = supportedFilesExtension;
-            Maps = maps ?? new Dictionary<int, AnalogyLogMessagePropertyName>();
-            IsConfigured = true;
-            ValidItemsCount = Layout.Split(splitter.Split(), StringSplitOptions.RemoveEmptyEntries).Length;
-        }
-        public void AddMap(int index, AnalogyLogMessagePropertyName name) => Maps.Add(index, name);
-
-        public bool CanOpenFile(string filename)
-        {
-            if (string.IsNullOrEmpty(filename)) return false;
-            return SupportedFilesExtensions.Any(s => s.EndsWith(Path.GetExtension(filename), StringComparison.InvariantCultureIgnoreCase));
         }
 
     }
@@ -334,6 +349,27 @@ namespace Analogy
 
         public void SetColorForLogLevel(AnalogyLogLevel level, Color value) => LogLevelColors[level] = value;
         public void SetHighlightColor(Color value) => HighlightColor = value;
+        public string AsJson() => JsonConvert.SerializeObject(this);
+        public static ColorSettings FromJson(string fileName) => JsonConvert.DeserializeObject<ColorSettings>(fileName);
+    }
+
+    [Serializable]
+    public class FactorySettings
+    {
+        public string FactoryName { get; set; }
+        public Guid FactoryGuid { get; set; }
+        public List<string> UserSettingFileAssociations { get; set; }
+        public DataProviderFactoryStatus Status { get; set; }
+
+        public FactorySettings()
+        {
+            UserSettingFileAssociations = new List<string>();
+        }
+    }
+
+    public class PreDefinedQuery
+    {
+
     }
 }
 
