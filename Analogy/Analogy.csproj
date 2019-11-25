@@ -7,11 +7,13 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>Analogy</AssemblyName>
     <RootNamespace>Analogy</RootNamespace>
-    <ApplicationIcon>Icons\Pelfusion-Flat-File-Type-Log.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.0.0.7" />
+    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>

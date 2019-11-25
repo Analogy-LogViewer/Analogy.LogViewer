@@ -46,14 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MSTest.TestAdapter">
-      <Version>1.3.2</Version>
-    </PackageReference>
-    <PackageReference Include="MSTest.TestFramework">
-      <Version>1.3.2</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
       <Project>{9baf7eca-7305-4f7c-91e3-27e31d75f156}</Project>
       <Name>Analogy.Interfaces</Name>
