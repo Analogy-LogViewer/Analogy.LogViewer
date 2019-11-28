@@ -57,7 +57,7 @@ namespace Analogy
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
         public bool DefaultDescendOrder { get; set; }
-        public LogParserSettingsContainer LogParsersSettings { get; set; }
+        //public LogParserSettingsContainer LogParsersSettings { get; set; }
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
@@ -120,7 +120,7 @@ namespace Analogy
                 .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
             AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
             ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
-            LogParsersSettings = ParseSettings<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
+           // LogParsersSettings = ParseSettings<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
             FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
@@ -175,7 +175,7 @@ namespace Analogy
             Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             try
             {
-                Settings.Default.LogParsersSettings = JsonConvert.SerializeObject(LogParsersSettings);
+              //  Settings.Default.LogParsersSettings = JsonConvert.SerializeObject(LogParsersSettings);
             }
             catch
             {

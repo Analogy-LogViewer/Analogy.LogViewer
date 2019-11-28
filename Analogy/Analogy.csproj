@@ -839,7 +839,7 @@
       <Version>1.0.0.7</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider">
-      <Version>1.0.0.4</Version>
+      <Version>1.0.0.6</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
