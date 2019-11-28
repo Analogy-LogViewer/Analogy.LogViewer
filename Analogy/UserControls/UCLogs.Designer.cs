@@ -346,7 +346,7 @@ namespace Analogy
             this.tsmiIncreaseFont,
             this.tsmiDecreaseFont});
             this.cmsMessageOperation.Name = "cmsMessageOperation";
-            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 472);
+            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 444);
             this.cmsMessageOperation.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMessageOperation_Opening);
             // 
             // tsmiClearLog

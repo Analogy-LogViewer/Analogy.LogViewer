@@ -41,8 +41,12 @@
             this.xtraTabPageCredit = new DevExpress.XtraTab.XtraTabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.xtraTabPageUsers = new DevExpress.XtraTab.XtraTabPage();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPageDataProviders = new DevExpress.XtraTab.XtraTabPage();
+            this.lblIIS = new System.Windows.Forms.LinkLabel();
+            this.lblRSS = new System.Windows.Forms.LinkLabel();
+            this.lblNlog = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -51,6 +55,7 @@
             this.xtraTabPageCredit.SuspendLayout();
             this.xtraTabPageUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.xtraTabPageDataProviders.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -177,7 +182,8 @@
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageAbout,
             this.xtraTabPageCredit,
-            this.xtraTabPageUsers});
+            this.xtraTabPageUsers,
+            this.xtraTabPageDataProviders});
             // 
             // xtraTabPageAbout
             // 
@@ -214,6 +220,14 @@
             this.xtraTabPageUsers.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPageUsers.Text = "Users";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(414, 175);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(6, 5);
@@ -222,13 +236,53 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Analogy Log Viewer is used by The following Origanizations:";
             // 
-            // pictureBox1
+            // xtraTabPageDataProviders
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(414, 175);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.xtraTabPageDataProviders.Controls.Add(this.lblIIS);
+            this.xtraTabPageDataProviders.Controls.Add(this.lblRSS);
+            this.xtraTabPageDataProviders.Controls.Add(this.lblNlog);
+            this.xtraTabPageDataProviders.Name = "xtraTabPageDataProviders";
+            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPageDataProviders.Text = "Data Providers";
+            // 
+            // lblIIS
+            // 
+            this.lblIIS.Image = global::Analogy.Properties.Resources.AnalogyIIS128x128;
+            this.lblIIS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIIS.Location = new System.Drawing.Point(13, 276);
+            this.lblIIS.Name = "lblIIS";
+            this.lblIIS.Size = new System.Drawing.Size(260, 132);
+            this.lblIIS.TabIndex = 2;
+            this.lblIIS.TabStop = true;
+            this.lblIIS.Text = "IIS Logs parser";
+            this.lblIIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblIIS.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblIIS_LinkClicked);
+            // 
+            // lblRSS
+            // 
+            this.lblRSS.Image = global::Analogy.Properties.Resources.AnalogyRSS;
+            this.lblRSS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRSS.Location = new System.Drawing.Point(13, 138);
+            this.lblRSS.Name = "lblRSS";
+            this.lblRSS.Size = new System.Drawing.Size(260, 132);
+            this.lblRSS.TabIndex = 1;
+            this.lblRSS.TabStop = true;
+            this.lblRSS.Text = "RSS Parser";
+            this.lblRSS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblRSS.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRSS_LinkClicked);
+            // 
+            // lblNlog
+            // 
+            this.lblNlog.Image = global::Analogy.Properties.Resources.AnalogyNlog;
+            this.lblNlog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNlog.Location = new System.Drawing.Point(13, 2);
+            this.lblNlog.Name = "lblNlog";
+            this.lblNlog.Size = new System.Drawing.Size(260, 132);
+            this.lblNlog.TabIndex = 0;
+            this.lblNlog.TabStop = true;
+            this.lblNlog.Text = "NLog Data Provider";
+            this.lblNlog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNlog.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNlog_LinkClicked);
             // 
             // AnalogyAboutBox
             // 
@@ -257,6 +311,7 @@
             this.xtraTabPageUsers.ResumeLayout(false);
             this.xtraTabPageUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.xtraTabPageDataProviders.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -278,5 +333,9 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageUsers;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProviders;
+        private System.Windows.Forms.LinkLabel lblNlog;
+        private System.Windows.Forms.LinkLabel lblRSS;
+        private System.Windows.Forms.LinkLabel lblIIS;
     }
 }

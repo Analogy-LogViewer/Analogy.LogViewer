@@ -852,6 +852,9 @@
     <Content Include="Icons\Analogy_icon1_16x16.ico" />
     <Content Include="Icons\Analogy_Icon2.ico" />
     <Content Include="Icons\Analogy_Icon2_16x16.ico" />
+    <None Include="Resources\AnalogyIIS128x128.jpg" />
+    <None Include="Resources\AnalogyRSS.jpg" />
+    <None Include="Resources\AnalogyNlog.jpg" />
     <None Include="Resources\Analogy_Icon2.ico" />
     <None Include="Resources\Analogy_icon1.ico" />
   </ItemGroup>
