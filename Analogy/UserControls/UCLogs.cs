@@ -945,6 +945,8 @@ namespace Analogy
         }
         private void FilterResults()
         {
+            _filterCriteriaInline.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
+            _filterCriteriaInline.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
             _filterCriteriaInline.TextInclude = chkbIncludeText.Checked ? txtbIncludeText.Text : string.Empty;
             _filterCriteriaInline.TextExclude = chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
 
@@ -1741,6 +1743,16 @@ namespace Analogy
             {
                 tsmiExcludeModule.Text = $"Exclude Process: {message.Module}";
                 tsmiExcludeSource.Text = $"Exclude Source: {message.Source}";
+                tsmiDateFilterNewer.Text = $"Show all messages after {message.Date}";
+                tsmiDateFilterOlder.Text = $"Show all messages Before {message.Date}";
+                tsmiDateFilterNewer.Visible = true;
+                tsmiDateFilterOlder.Visible = true;
+            }
+            else
+            {
+                tsmiDateFilterNewer.Visible = false;
+                tsmiDateFilterOlder.Visible = false;
+
             }
         }
 
@@ -1762,6 +1774,16 @@ namespace Analogy
             {
                 tsmiExcludeModuleBookmark.Text = $"Exclude Process: {message.Module}";
                 tsmiExcludeSourceBookmark.Text = $"Exclude Source: {message.Source}";
+                tsmiBookmarkDateFilterNewer.Text = $"Show all messages after {message.Date}";
+                tsmiBookmarkDateFilterOlder.Text = $"Show all messages Before {message.Date}";
+                tsmiBookmarkDateFilterNewer.Visible = true;
+                tsmiBookmarkDateFilterOlder.Visible = true;
+            }
+            else
+            {
+                tsmiDateFilterNewer.Visible = false;
+                tsmiBookmarkDateFilterOlder.Visible = false;
+
             }
         }
 
@@ -2154,6 +2176,67 @@ namespace Analogy
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
         {
             UndockViewPerProcess();
+        }
+
+        private void deNewerThanFilter_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateNewerThan.Checked = true;
+            FilterHasChanged = true;
+        }
+        private void deNewerThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateNewerThan.Checked = true;
+            FilterHasChanged = true;
+        }
+
+        private void deOlderThanFilter_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateOlderThan.Checked = true;
+            FilterHasChanged = true;
+        }
+
+        private void deOlderThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateOlderThan.Checked = true;
+            FilterHasChanged = true;
+        }
+
+        private void chkDateOlderThan_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterHasChanged = true;
+        }
+
+        private void chkDateNewerThan_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterHasChanged = true;
+        }
+
+        private void tsmiDateFilterNewer_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deNewerThanFilter.DateTime = message.Date;
+            chkDateNewerThan.Checked = true;
+        }
+
+        private void tsmiDateFilterOlder_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deOlderThanFilter.DateTime = message.Date;
+            chkDateOlderThan.Checked = true;
+        }
+
+        private void tsmiBookmarkDateFilterNewer_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deNewerThanFilter.DateTime = message.Date;
+            chkDateNewerThan.Checked = true;
+        }
+
+        private void tsmiBookmarkDateFilterOlder_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deOlderThanFilter.DateTime = message.Date;
+            chkDateOlderThan.Checked = true;
         }
     }
 }
