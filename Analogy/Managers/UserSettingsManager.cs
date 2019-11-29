@@ -16,9 +16,8 @@ namespace Analogy
 {
     public class UserSettingsManager
     {
-        public event EventHandler OnFactoyOrderChanged;
+        public event EventHandler OnFactoryOrderChanged;
 
-        private static readonly string splitter = "*#*#*#";
 
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
@@ -58,7 +57,7 @@ namespace Analogy
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
         public bool DefaultDescendOrder { get; set; }
-        public LogParserSettingsContainer LogParsersSettings { get; set; }
+        //public LogParserSettingsContainer LogParsersSettings { get; set; }
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
@@ -121,7 +120,7 @@ namespace Analogy
                 .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
             AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
             ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
-            LogParsersSettings = ParseSettings<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
+           // LogParsersSettings = ParseSettings<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
             FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
@@ -176,7 +175,7 @@ namespace Analogy
             Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             try
             {
-                Settings.Default.LogParsersSettings = JsonConvert.SerializeObject(LogParsersSettings);
+              //  Settings.Default.LogParsersSettings = JsonConvert.SerializeObject(LogParsersSettings);
             }
             catch
             {
@@ -198,13 +197,7 @@ namespace Analogy
 
         }
 
-        public void AddIncludeEntry(string text)
-        {
-            if (!IncludeText.Contains(text))
-                IncludeText += splitter + text;
-        }
-
-        public void AddToRecentFiles(Guid iD, string file)
+    public void AddToRecentFiles(Guid iD, string file)
         {
             AnalogyOpenedFiles += 1;
             if (!RecentFiles.Contains((iD, file)))
@@ -223,28 +216,22 @@ namespace Analogy
 
         public void IncreaseNumberOfLaunches() => AnalogyLaunches++;
 
-        public List<string> ExcludedEntries =>
-            ExcludedText.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries).Take(10).ToList();
-
-        public List<string> IncludeEntries => IncludeText.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries)
-            .Take(10).ToList();
-
         public FactorySettings GetFactorySetting(Guid factoryID)
         {
-            Predicate<Guid> exist = (guid) => guid == factoryID;
-            if (FactoriesSettings.Exists(f => exist(f.FactoryGuid)))
+            bool Exists(Guid guid) => guid == factoryID;
+            if (FactoriesSettings.Exists(f => Exists(f.FactoryGuid)))
             {
-                return FactoriesSettings.Single(f => exist(f.FactoryGuid));
+                return FactoriesSettings.Single(f => Exists(f.FactoryGuid));
             }
 
             return null;
         }
         public FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory)
         {
-            Predicate<Guid> exist = (guid) => guid == factory.FactoryID;
-            if (FactoriesSettings.Exists(f => exist(f.FactoryGuid)))
+            bool Exists(Guid guid) => guid == factory.FactoryID;
+            if (FactoriesSettings.Exists(f => Exists(f.FactoryGuid)))
             {
-                return FactoriesSettings.Single(f => exist(f.FactoryGuid));
+                return FactoriesSettings.Single(f => Exists(f.FactoryGuid));
             }
 
             var createNew = new FactorySettings
@@ -266,7 +253,7 @@ namespace Analogy
             if (FactoriesOrder.SequenceEqual(order))
                 return;
             FactoriesOrder = order;
-            OnFactoyOrderChanged?.Invoke(this, new EventArgs());
+            OnFactoryOrderChanged?.Invoke(this, new EventArgs());
         }
 
         public IEnumerable<FactorySettings> GetFactoriesThatHasFileAssociation(string[] files) =>

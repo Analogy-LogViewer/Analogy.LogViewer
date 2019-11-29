@@ -7,6 +7,9 @@ namespace Analogy
 {
     partial class AnalogyAboutBox : XtraForm
     {
+        private string nlog = "https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog";
+        private string rss = "https://github.com/Analogy-LogViewer/Analogy.LogViewer.RSSReader";
+        private string iis = "https://github.com/Analogy-LogViewer/Analogy.LogViewer.IISLogParser";
         public AnalogyAboutBox()
         {
             InitializeComponent();
@@ -16,6 +19,8 @@ namespace Analogy
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2017){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
+
+           
         }
 
         #region Assembly Attribute Accessors
@@ -91,5 +96,21 @@ namespace Analogy
             }
         }
         #endregion
+
+        private void lblNlog_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(nlog);
+        }
+
+        private void lblRSS_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(rss);
+
+        }
+
+        private void lblIIS_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(iis);
+        }
     }
 }
