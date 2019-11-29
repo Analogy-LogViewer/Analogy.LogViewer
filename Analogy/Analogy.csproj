@@ -14,6 +14,7 @@
     <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.0.0.8" />
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.5.2" />
     <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="0.1.4" />
+    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.0.7" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

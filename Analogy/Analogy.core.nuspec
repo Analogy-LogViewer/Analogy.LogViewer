@@ -14,17 +14,21 @@
     <releaseNotes>Adding .net Core 3.0 Target. See github page</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
-	<dependencies>
-    <group targetFramework="netcoreapp3.0">    
-		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.2" />
-    </group>
-</dependencies>
+    <dependencies>
+      <group targetFramework="netcoreapp3.0">
+        <dependency id="Analogy.LogViewer.Interfaces" version="2.1.5.2" />
+        <dependency id="Analogy.DataProviders.Extensions" version="1.0.0.8" />
+        <dependency id="Analogy.LogViewer.KafkaProvider" version="0.1.4" />
+        <dependency id="Analogy.DataProviders.Extensions" version="1.0.0.8" />
+        <dependency id="Newtonsoft.Json" version="12.0.3" />
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\netcoreapp3.0\Analogy.dll" target="lib\netcoreapp3.0\Analogy.dll" />
-	<file src="bin\Release\netcoreapp3.0\Analogy.exe" target="lib\netcoreapp3.0\Analogy.exe" />
+    <file src="bin\Release\netcoreapp3.0\Analogy.exe" target="lib\netcoreapp3.0\Analogy.exe" />
     <file src="bin\Release\netcoreapp3.0\Analogy.runtimeconfig.json" target="lib\netcoreapp3.0\Analogy.runtimeconfig.json" />
-	<file src="bin\Release\netcoreapp3.0\Analogy.deps.json" target="lib\netcoreapp3.0\Analogy.deps.json" />
-	<file src="icon.png" target="" />
-</files>
+    <file src="bin\Release\netcoreapp3.0\Analogy.deps.json" target="lib\netcoreapp3.0\Analogy.deps.json" />
+    <file src="icon.png" target="" />
+  </files>
 </package>
