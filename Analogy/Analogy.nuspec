@@ -16,9 +16,9 @@
     <tags></tags>
     <dependencies>
       <group targetFramework="net472">
-        <dependency id="Analogy.LogViewer.NLogProvider" version="1.0.0.6"/>
-        <dependency id="Analogy.LogViewer.Interfaces" version="2.1.5.1" />
-        <dependency id="Analogy.DataProviders.Extensions" version="1.0.0.7"/>
+        <dependency id="Analogy.LogViewer.NLogProvider" version="1.0.0.7"/>
+        <dependency id="Analogy.LogViewer.Interfaces" version="2.1.5.2" />
+        <dependency id="Analogy.DataProviders.Extensions" version="1.0.0.8"/>
         <dependency id="Analogy.LogViewer.IISLogsProvider" version="1.0.0.2"/>
         <dependency id="Analogy.LogViewer.KafkaProvider" version="0.1.4"/>
         <dependency id="Analogy.LogViewer.RSSReader" version="1.0.0.0"/>
