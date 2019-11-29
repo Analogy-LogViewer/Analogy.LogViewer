@@ -10,11 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataProviders;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
-using Analogy.LogViewer.NLogProvider;
 using Analogy.Properties;
 using Analogy.Tools;
 using Analogy.Types;
@@ -137,9 +135,6 @@ namespace Analogy
             if (settings.GetFactorySetting(analogy.FactoryID).Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-            IAnalogyFactory analogyNLog = AnalogyFactoriesManager.Instance.Get(NLogBuiltInFactory.AnalogyNLogGuid);
-            if (settings.GetFactorySetting(analogyNLog.FactoryID).Status != DataProviderFactoryStatus.Disabled)
-                CreateDataSource(analogyNLog, 1);
             IAnalogyFactory eventLogDataFactory = AnalogyFactoriesManager.Instance.Get(EventLogDataFactory.ID);
             if (settings.GetFactorySetting(eventLogDataFactory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
                 return;
