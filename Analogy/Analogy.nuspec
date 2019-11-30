@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Analogy.LogViewer</id>
-    <version>4.1.6</version>
+    <version>4.1.7</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
@@ -11,7 +11,7 @@
     <icon>Analogy_logo1.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>
-    <releaseNotes>Add Nlog Parser and color selection. See github page for more info</releaseNotes>
+    <releaseNotes>See github page for more info</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
     <dependencies>
