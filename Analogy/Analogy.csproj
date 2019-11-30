@@ -858,6 +858,14 @@
     <Content Include="Icons\Analogy_icon1_16x16.ico" />
     <Content Include="Icons\Analogy_Icon2.ico" />
     <Content Include="Icons\Analogy_Icon2_16x16.ico" />
+    <None Include="Resources\KamaMedical.jpg" />
+    <None Include="Resources\Philips.png" />
+    <None Include="Resources\AnalogyPhilips.png" />
+    <None Include="Resources\AnalogyWindows128x128.png" />
+    <None Include="Resources\Analogy_With_kafka.png" />
+    <None Include="Resources\AnalogyNlog128x1281.jpg" />
+    <None Include="Resources\AnalogyNlog128x128.jpg" />
+    <None Include="Resources\AnalogyNlog.png" />
     <None Include="Resources\AnalogyIIS128x128.jpg" />
     <None Include="Resources\AnalogyRSS.jpg" />
     <None Include="Resources\AnalogyNlog.jpg" />
