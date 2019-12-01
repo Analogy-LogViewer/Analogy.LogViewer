@@ -2,23 +2,26 @@
 <package >
   <metadata>
     <id>Analogy.LogViewer</id>
-    <version>4.1.5</version>
+    <version>4.1.7</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/philips-software/logviewer/</projectUrl>
-    <icon>icon.png</icon>
+    <icon>Analogy_logo1.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>
-    <releaseNotes>Add Nlog Parser and color selection. See github page for more info</releaseNotes>
+    <releaseNotes>See github page for more info</releaseNotes>
     <copyright>Copyright 2019 Lior Banai</copyright>
     <tags></tags>
     <dependencies>
       <group targetFramework="net472">
-        <dependency id="Analogy.LogViewer.NLogProvider" version="1.0.0.3"/>
-        <dependency id="Analogy.LogViewer.Interfaces" version="2.1.5" />
-        <dependency id="Analogy.DataProviders.Extensions" version="1.0.0.4"/>
+        <dependency id="Analogy.LogViewer.NLogProvider" version="1.0.0.8"/>
+        <dependency id="Analogy.LogViewer.Interfaces" version="2.1.6.1" />
+        <dependency id="Analogy.DataProviders.Extensions" version="1.0.1"/>
+        <dependency id="Analogy.LogViewer.IISLogsProvider" version="1.0.0.3"/>
+        <dependency id="Analogy.LogViewer.KafkaProvider" version="0.1.5"/>
+        <dependency id="Analogy.LogViewer.RSSReader" version="1.0.0.1"/>
         <dependency id="Newtonsoft.Json" version="12.0.3" />
       </group>
     </dependencies>
@@ -27,6 +30,6 @@
     <file src="bin\Release\Analogy.exe" target="lib\net472\Analogy.exe" />
     <file src="bin\Release\Analogy.xml" target="lib\net472\Analogy.xml" />
     <file src="bin\Release\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
-    <file src="icon.png" target="" />
+    <file src="Analogy_logo1.png" target="" />
   </files>
 </package>

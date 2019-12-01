@@ -829,17 +829,23 @@
     <Folder Include="DevExpress\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
-      <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
-      <Name>Analogy.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Analogy.DataProviders.Extensions">
-      <Version>1.0.0.7</Version>
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.IISLogsProvider">
+      <Version>1.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.Interfaces">
+      <Version>2.1.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.KafkaProvider">
+      <Version>0.1.5</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider">
-      <Version>1.0.0.4</Version>
+      <Version>1.0.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.RSSReader">
+      <Version>1.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
@@ -852,6 +858,17 @@
     <Content Include="Icons\Analogy_icon1_16x16.ico" />
     <Content Include="Icons\Analogy_Icon2.ico" />
     <Content Include="Icons\Analogy_Icon2_16x16.ico" />
+    <None Include="Resources\KamaMedical.jpg" />
+    <None Include="Resources\Philips.png" />
+    <None Include="Resources\AnalogyPhilips.png" />
+    <None Include="Resources\AnalogyWindows128x128.png" />
+    <None Include="Resources\Analogy_With_kafka.png" />
+    <None Include="Resources\AnalogyNlog128x1281.jpg" />
+    <None Include="Resources\AnalogyNlog128x128.jpg" />
+    <None Include="Resources\AnalogyNlog.png" />
+    <None Include="Resources\AnalogyIIS128x128.jpg" />
+    <None Include="Resources\AnalogyRSS.jpg" />
+    <None Include="Resources\AnalogyNlog.jpg" />
     <None Include="Resources\Analogy_Icon2.ico" />
     <None Include="Resources\Analogy_icon1.ico" />
   </ItemGroup>

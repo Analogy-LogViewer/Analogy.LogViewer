@@ -333,7 +333,8 @@ namespace Analogy
         public string[] ExcludedModules;
 
         public string TextInclude { get; set; }
-
+        public DateTime NewerThan { get; set; }
+        public DateTime OlderThan { get; set; }
         public string TextExclude { get; set; }
         private AnalogyLogLevel[] _arrLevels;
         public AnalogyLogLevel[] Levels
@@ -375,6 +376,7 @@ namespace Analogy
         }
         public string GetSqlExpression()
         {
+             
             StringBuilder sqlString = new StringBuilder();
             List<string> includeTexts = new List<string> { EscapeLikeValue(TextInclude.Trim()) };
 
@@ -474,6 +476,10 @@ namespace Analogy
             }
             string sTemp = string.Join(",", Levels.Select(l => $"'{l}'"));
             sqlString.Append(" and Level in (" + sTemp + ")");
+
+            string dateFilter = $" AND (Date >= '{NewerThan}' and Date <= '{OlderThan}')";
+            
+            sqlString.Append(dateFilter);
             return sqlString.ToString();
         }
 

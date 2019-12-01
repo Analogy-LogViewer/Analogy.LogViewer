@@ -54,10 +54,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
-      <Project>{9baf7eca-7305-4f7c-91e3-27e31d75f156}</Project>
-      <Name>Analogy.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Analogy\Analogy.csproj">
       <Project>{f2b3cf44-653a-4fd6-8b79-8d1dec605b1e}</Project>
       <Name>Analogy</Name>
