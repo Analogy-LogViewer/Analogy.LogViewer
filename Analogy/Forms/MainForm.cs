@@ -663,7 +663,7 @@ namespace Analogy
             RibbonPage ribbonPage = new RibbonPage(factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(factory.FactoryID, ribbonPage);
-            
+
             //todo:move logic to factory manager
             var dataSourceFactory = factory.DataProviders;
             if (dataSourceFactory?.Items != null && dataSourceFactory.Items.Any() &&
@@ -704,47 +704,58 @@ namespace Analogy
 
         private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
-            RibbonPageGroup groupDataSource = new RibbonPageGroup(dataSourceFactory.Title);
-            groupDataSource.AllowTextClipping = false;
-            ribbonPage.Groups.Add(groupDataSource);
-            //var po = new 3llelOptions { MaxDegreeOfParallelism = -1 };
-            //Parallel.ForEach(dataSourceFactory.Items, po,
-            //    dataSource =>
-            //{
+            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup(dataSourceFactory.Title);
+            ribbonPageGroup.AllowTextClipping = false;
+            ribbonPage.Groups.Add(ribbonPageGroup);
 
-            foreach (var dataSource in dataSourceFactory.Items)
+
+            foreach (var onlineAnalogy in dataSourceFactory.Items.Where(f => f is IAnalogyRealTimeDataProvider)
+                .Cast<IAnalogyRealTimeDataProvider>())
             {
-                if (dataSource is IAnalogyRealTimeDataProvider realTime)
-                {
-                    AddRealTimeDataSource(ribbonPage, realTime, dataSourceFactory.Title, groupDataSource);
-                }
-                else if (dataSource is IAnalogyOfflineDataProvider offlineAnalogy)
-                {
-                    string optionalText = !string.IsNullOrEmpty(dataSource.OptionalTitle)
-                        ? " for" + dataSource.OptionalTitle
-                        : string.Empty;
-                    RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools{optionalText}");
-                    groupOfflineFileTools.AllowTextClipping = false;
-                    ribbonPage.Groups.Add(groupOfflineFileTools);
-                    AddOfflineDataSource(ribbonPage, offlineAnalogy, dataSourceFactory.Title, groupDataSource,
-                        groupOfflineFileTools);
-                }
+                AddRealTimeDataSource(ribbonPage, onlineAnalogy, dataSourceFactory.Title, ribbonPageGroup);
             }
+
+            AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
 
 
             //add bookmark
             BarButtonItem bookmarkBtn = new BarButtonItem();
             bookmarkBtn.Caption = "Bookmarks";
             bookmarkBtn.RibbonStyle = RibbonItemStyles.All;
-            groupDataSource.ItemLinks.Add(bookmarkBtn);
+            ribbonPageGroup.ItemLinks.Add(bookmarkBtn);
             bookmarkBtn.ImageOptions.Image = Resources.RichEditBookmark_16x16;
             bookmarkBtn.ImageOptions.LargeImage = Resources.RichEditBookmark_32x32;
             bookmarkBtn.ItemClick += (sender, e) => { OpenBookmarkLog(); };
         }
 
-        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
-            string title,
-            RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
+        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
+        {
+
+            var offlineProviders = factory.Items.Where(f => f is IAnalogyOfflineDataProvider)
+                .Cast<IAnalogyOfflineDataProvider>().ToList();
+
+            if (!offlineProviders.Any()) return;
+            if (offlineProviders.Count == 1)
+            {
+                var offlineAnalogy = offlineProviders.First();
+                string optionalText = !string.IsNullOrEmpty(offlineAnalogy.OptionalTitle)
+                    ? " for" + offlineAnalogy.OptionalTitle
+                    : string.Empty;
+                RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools{optionalText}");
+                groupOfflineFileTools.AllowTextClipping = false;
+                ribbonPage.Groups.Add(groupOfflineFileTools);
+                AddSingleOfflineDataSource(ribbonPage, offlineAnalogy, factory.Title, group, groupOfflineFileTools);
+            }
+
+            else
+            {
+                //todo multiple
+            }
+
+        }
+
+        private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
+           string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
 
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
@@ -935,7 +946,6 @@ namespace Analogy
                 compare.ShowDialog(this);
             };
         }
-
         private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataProvider realTime, string title,
             RibbonPageGroup group)
         {
