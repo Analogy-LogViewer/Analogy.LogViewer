@@ -53,7 +53,7 @@ namespace Analogy
 
         private void AddExternalUserControlSettings()
         {
-            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.Instance.GetProvidersSettings())
             {
                 XtraTabPage tab = new XtraTabPage();
                 tab.Text = settings.Title;
@@ -83,7 +83,7 @@ namespace Analogy
 
         public async void SaveSetting()
         {
-            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.Instance.GetProvidersSettings())
             {
                 try
                 {

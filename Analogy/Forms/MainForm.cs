@@ -36,7 +36,6 @@ namespace Analogy
         private int online;
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
-        private bool DebugOn { get; set; }
         private XtraTabPage currentContextPage;
         private UserSettingsManager settings => UserSettingsManager.UserSettings;
         private bool Initialized { get; set; }
@@ -95,7 +94,7 @@ namespace Analogy
 
 
             CreateAnalogyBuiltinDataProviders();
-            await AnalogyFactoriesManager.Instance.AddExternalDataSources();
+            await FactoriesManager.Instance.AddExternalDataSources();
 
             CreateDataSources();
 
@@ -131,11 +130,11 @@ namespace Analogy
 
         private void CreateAnalogyBuiltinDataProviders()
         {
-            IAnalogyFactory analogy = AnalogyFactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
+            IAnalogyFactory analogy = FactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
             if (settings.GetFactorySetting(analogy.FactoryID).Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-            IAnalogyFactory eventLogDataFactory = AnalogyFactoriesManager.Instance.Get(EventLogDataFactory.ID);
+            IAnalogyFactory eventLogDataFactory = FactoriesManager.Instance.Get(EventLogDataFactory.ID);
             if (settings.GetFactorySetting(eventLogDataFactory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
                 return;
             //CreateEventLogsGroup
@@ -372,7 +371,7 @@ namespace Analogy
         {
             while (!Initialized)
                 await Task.Delay(250);
-            var supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
+            var supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
             {
                 var parser = supported.First();
@@ -381,8 +380,8 @@ namespace Analogy
             }
             else
             {
-                supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
-                    !AnalogyFactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
+                supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
+                    !FactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
                 if (supported.Count == 1)
                 {
                     var parser = supported.First();
@@ -396,7 +395,7 @@ namespace Analogy
                     if (supportedAssociation.Count == 1)
                     {
                         var factory = supportedAssociation.First();
-                        var parser = AnalogyFactoriesManager.Instance
+                        var parser = FactoriesManager.Instance
                             .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryGuid, files).ToList();
                         RibbonPage page = (Mapping.ContainsKey(factory.FactoryGuid)) ? Mapping[factory.FactoryGuid] : null;
                         if (parser.Count == 1)
@@ -648,8 +647,8 @@ namespace Analogy
 
         private void CreateDataSources()
         {
-            foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories()
-                .Where(factory => !AnalogyFactoriesManager.Instance.IsBuiltInFactory(factory) &&
+            foreach (IAnalogyFactory factory in FactoriesManager.Instance.GetFactories()
+                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory) &&
                                   settings.GetFactorySetting(factory.FactoryID).Status != DataProviderFactoryStatus.Disabled))
             {
                 CreateDataSource(factory, 3);
@@ -664,6 +663,8 @@ namespace Analogy
             RibbonPage ribbonPage = new RibbonPage(factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(factory.FactoryID, ribbonPage);
+            
+            //todo:move logic to factory manager
             var dataSourceFactory = factory.DataProviders;
             if (dataSourceFactory?.Items != null && dataSourceFactory.Items.Any() &&
                 !string.IsNullOrEmpty(dataSourceFactory.Title))
@@ -706,7 +707,7 @@ namespace Analogy
             RibbonPageGroup groupDataSource = new RibbonPageGroup(dataSourceFactory.Title);
             groupDataSource.AllowTextClipping = false;
             ribbonPage.Groups.Add(groupDataSource);
-            //var po = new ParallelOptions { MaxDegreeOfParallelism = -1 };
+            //var po = new 3llelOptions { MaxDegreeOfParallelism = -1 };
             //Parallel.ForEach(dataSourceFactory.Items, po,
             //    dataSource =>
             //{

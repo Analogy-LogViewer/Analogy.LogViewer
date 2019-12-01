@@ -83,7 +83,7 @@ namespace Analogy
             }
 
             var startup = Settings.AutoStartDataProviders;
-            var loaded = AnalogyFactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
+            var loaded = FactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
                 FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID);
