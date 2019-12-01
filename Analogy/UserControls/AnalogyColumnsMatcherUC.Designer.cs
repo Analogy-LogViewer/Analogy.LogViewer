@@ -106,6 +106,7 @@
             // splitContainerControl2
             // 
             this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None;
             this.splitContainerControl2.Horizontal = false;
             this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl2.Name = "splitContainerControl2";
@@ -114,18 +115,18 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.sBtnMoveDown);
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.Size = new System.Drawing.Size(44, 479);
-            this.splitContainerControl2.SplitterPosition = 184;
+            this.splitContainerControl2.SplitterPosition = 237;
             this.splitContainerControl2.TabIndex = 1;
             // 
             // sBtnMoveUp
             // 
             this.sBtnMoveUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sBtnMoveUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveUpNlog.ImageOptions.Image")));
+            this.sBtnMoveUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveUp.ImageOptions.Image")));
             this.sBtnMoveUp.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.sBtnMoveUp.Location = new System.Drawing.Point(0, 0);
             this.sBtnMoveUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMoveUp.Name = "sBtnMoveUp";
-            this.sBtnMoveUp.Size = new System.Drawing.Size(44, 184);
+            this.sBtnMoveUp.Size = new System.Drawing.Size(44, 237);
             this.sBtnMoveUp.TabIndex = 2;
             this.sBtnMoveUp.Text = "Up";
             this.sBtnMoveUp.Click += new System.EventHandler(this.SBtnMoveUp_Click);
@@ -133,12 +134,12 @@
             // sBtnMoveDown
             // 
             this.sBtnMoveDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sBtnMoveDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveDownNlog.ImageOptions.Image")));
+            this.sBtnMoveDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnMoveDown.ImageOptions.Image")));
             this.sBtnMoveDown.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.BottomLeft;
             this.sBtnMoveDown.Location = new System.Drawing.Point(0, 0);
             this.sBtnMoveDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMoveDown.Name = "sBtnMoveDown";
-            this.sBtnMoveDown.Size = new System.Drawing.Size(44, 289);
+            this.sBtnMoveDown.Size = new System.Drawing.Size(44, 236);
             this.sBtnMoveDown.TabIndex = 3;
             this.sBtnMoveDown.Text = "Down";
             this.sBtnMoveDown.Click += new System.EventHandler(this.SBtnMoveDown_Click);

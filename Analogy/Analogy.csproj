@@ -11,7 +11,7 @@
     <SccProvider>SAK</SccProvider>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>Icons\Pelfusion-Flat-File-Type-Log.ico</ApplicationIcon>
+    <ApplicationIcon>Analogy_logo1.ico</ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>Analogy</AssemblyName>
@@ -263,6 +263,7 @@
     <Compile Include="Forms\UserSettingsDataProvidersForm.Designer.cs">
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InterpreterParser.cs" />
     <Compile Include="Managers\BookmarkPersistManager.cs" />
     <Compile Include="Managers\ClientServerDataSourceManager.cs" />
     <Compile Include="Managers\AnalogyFactoriesManager.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="DataProviders\EventLogDataProvider.cs" />
     <Compile Include="Managers\FilePoolingManager.cs" />
     <Compile Include="Types\AsyncLazy.cs" />
+    <Compile Include="Types\DataProviders.cs" />
     <Compile Include="UserControls\AnalogyColumnsMatcherUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -534,6 +536,7 @@
     <Compile Include="UserControls\XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
+    <None Include="Analogy.nuspec" />
     <None Include="Resources\iis.jpg" />
     <None Include="Resources\rss.jpg" />
     <None Include="Resources\kama.jpg" />
@@ -733,7 +736,6 @@
     <None Include="Resources\Clear_32x32.png" />
     <None Include="Resources\Clear_16x16.png" />
     <None Include="Resources\openFile.png" />
-    <Content Include="Icons\Pelfusion-Flat-File-Type-Log.ico" />
     <None Include="Resources\FullscreenBlue16.png" />
     <None Include="Resources\crossMark.png" />
     <None Include="Resources\checkOK.png" />
@@ -772,8 +774,6 @@
     <EmbeddedResource Include="Forms\ChangeLog.resx">
       <DependentUpon>ChangeLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Icons\server_off.ico" />
-    <EmbeddedResource Include="Icons\server_on.ico" />
     <EmbeddedResource Include="Forms\ProcessNameAndID.resx">
       <DependentUpon>ProcessNameAndID.cs</DependentUpon>
     </EmbeddedResource>
@@ -826,21 +826,48 @@
     <Folder Include="DevExpress\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj">
-      <Project>{8a3534cd-e618-4946-a364-fa0826f31ab5}</Project>
-      <Name>Analogy.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Analogy.DataProviders.Extensions">
-      <Version>1.0.0.4</Version>
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.IISLogsProvider">
+      <Version>1.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.Interfaces">
+      <Version>2.1.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.KafkaProvider">
+      <Version>0.1.5</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider">
-      <Version>1.0.0.3</Version>
+      <Version>1.0.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.RSSReader">
+      <Version>1.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Analogy_icon1_16x16.ico" />
+    <Content Include="Analogy_logo1.ico" />
+    <Content Include="Icons\Analogy_icon1.ico" />
+    <Content Include="Icons\Analogy_icon1_16x16.ico" />
+    <Content Include="Icons\Analogy_Icon2.ico" />
+    <Content Include="Icons\Analogy_Icon2_16x16.ico" />
+    <None Include="Resources\KamaMedical.jpg" />
+    <None Include="Resources\Philips.png" />
+    <None Include="Resources\AnalogyPhilips.png" />
+    <None Include="Resources\AnalogyWindows128x128.png" />
+    <None Include="Resources\Analogy_With_kafka.png" />
+    <None Include="Resources\AnalogyNlog128x1281.jpg" />
+    <None Include="Resources\AnalogyNlog128x128.jpg" />
+    <None Include="Resources\AnalogyNlog.png" />
+    <None Include="Resources\AnalogyIIS128x128.jpg" />
+    <None Include="Resources\AnalogyRSS.jpg" />
+    <None Include="Resources\AnalogyNlog.jpg" />
+    <None Include="Resources\Analogy_Icon2.ico" />
+    <None Include="Resources\Analogy_icon1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

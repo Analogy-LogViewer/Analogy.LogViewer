@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCombineFiles));
             this.combineFilesUC1 = new Analogy.CombineFilesUC();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             this.ClientSize = new System.Drawing.Size(1160, 619);
             this.Controls.Add(this.combineFilesUC1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FormCombineFiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

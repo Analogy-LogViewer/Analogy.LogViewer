@@ -42,7 +42,7 @@ namespace Analogy.DataSources
             var builtInItems = new List<IAnalogyDataProvider>();
             var adp = new AnalogyOfflineDataProvider();
             builtInItems.Add(adp);
-            adp.InitDataProvider();
+            adp.InitializeDataProviderAsync();
             Items = builtInItems;
         }
     }
@@ -59,9 +59,15 @@ namespace Analogy.DataSources
         public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
         public Image OptionalOpenFolderImage { get; }
         public Image OptionalOpenFilesImage { get; }
-        public void InitDataProvider()
-        {
 
+        public Task InitializeDataProviderAsync()
+        {
+            return Task.CompletedTask;
+        }
+
+        public void MessageOpened(AnalogyLogMessage message)
+        {
+            //nop
         }
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {

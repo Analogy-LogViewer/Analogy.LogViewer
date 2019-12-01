@@ -10,13 +10,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataProviders;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
-using Analogy.LogViewer.NLogProvider;
 using Analogy.Properties;
 using Analogy.Tools;
+using Analogy.Types;
 using DevExpress.XtraEditors;
 using Newtonsoft.Json;
 
@@ -36,6 +35,7 @@ namespace Analogy
         private int offline;
         private int online;
         private int filePooling;
+        private bool disableOnlineDueToFileOpen;
         private bool DebugOn { get; set; }
         private XtraTabPage currentContextPage;
         private UserSettingsManager settings => UserSettingsManager.UserSettings;
@@ -54,6 +54,8 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
+            string[] arguments = Environment.GetCommandLineArgs();
+            disableOnlineDueToFileOpen = arguments.Length == 2;
             if (DesignMode) return;
 
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
@@ -94,7 +96,7 @@ namespace Analogy
 
             CreateAnalogyBuiltinDataProviders();
             await AnalogyFactoriesManager.Instance.AddExternalDataSources();
-            CreateEventLogsGroup();
+
             CreateDataSources();
 
             //set Default page:
@@ -108,7 +110,6 @@ namespace Analogy
                 TmrAutoConnect.Start();
 
             Initialized = true;
-            string[] arguments = Environment.GetCommandLineArgs();
             //todo: fine handler for file
             if (arguments.Length == 2)
             {
@@ -131,22 +132,20 @@ namespace Analogy
         private void CreateAnalogyBuiltinDataProviders()
         {
             IAnalogyFactory analogy = AnalogyFactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
-            CreateDataSource(analogy, 0);
+            if (settings.GetFactorySetting(analogy.FactoryID).Status != DataProviderFactoryStatus.Disabled)
+                CreateDataSource(analogy, 0);
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-            IAnalogyFactory analogyNLog = AnalogyFactoriesManager.Instance.Get(NLogBuiltInFactory.AnalogyNLogGuid);
-            CreateDataSource(analogyNLog, 1);
-
-        }
-
-
-        private void CreateEventLogsGroup()
-        {
-            RibbonPage ribbonPage = new RibbonPage("Windows Event logs");
+            IAnalogyFactory eventLogDataFactory = AnalogyFactoriesManager.Instance.Get(EventLogDataFactory.ID);
+            if (settings.GetFactorySetting(eventLogDataFactory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
+                return;
+            //CreateEventLogsGroup
+            RibbonPage ribbonPage = new RibbonPage(eventLogDataFactory.Title);
+            EventLogDataProvider elds = eventLogDataFactory.DataProviders.Items.First() as EventLogDataProvider;
             ribbonControlMain.Pages.Insert(2, ribbonPage);
-            RibbonPageGroup group = new RibbonPageGroup("Windows Event logs Data Sources");
+            RibbonPageGroup group = new RibbonPageGroup(eventLogDataFactory.DataProviders.Title);
             ribbonPage.Groups.Add(group);
 
-            EventLogDataProvider elds = new EventLogDataProvider();
+
             BarButtonItem evtxRealTime = new BarButtonItem();
             evtxRealTime.Caption = "Real Time Windows Event Logs";
             evtxRealTime.RibbonStyle = RibbonItemStyles.All;
@@ -371,21 +370,57 @@ namespace Analogy
 
         private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
         {
+            while (!Initialized)
+                await Task.Delay(250);
             var supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
             {
-                while (!Initialized)
-                    await Task.Delay(250);
-                OpenOfflineLogs(null, files, supported.First());
+                var parser = supported.First();
+                RibbonPage page = (Mapping.ContainsKey(parser.FactoryID)) ? Mapping[parser.FactoryID] : null;
+                OpenOfflineLogs(page, files, parser.DataProvider);
             }
             else
             {
-                XtraMessageBox.Show(
-                    "Zero or more than one data provider detected for this file." + Environment.NewLine +
-                    "Please open it directly from the data provider menu", "Unable to open file", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+                supported = AnalogyFactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
+                    !AnalogyFactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
+                if (supported.Count == 1)
+                {
+                    var parser = supported.First();
+                    RibbonPage page = (Mapping.ContainsKey(parser.FactoryID)) ? Mapping[parser.FactoryID] : null;
+                    OpenOfflineLogs(page, files, parser.DataProvider);
+                }
+                else
+                {
+                    //try  from file association:
+                    var supportedAssociation = settings.GetFactoriesThatHasFileAssociation(files).ToList();
+                    if (supportedAssociation.Count == 1)
+                    {
+                        var factory = supportedAssociation.First();
+                        var parser = AnalogyFactoriesManager.Instance
+                            .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryGuid, files).ToList();
+                        RibbonPage page = (Mapping.ContainsKey(factory.FactoryGuid)) ? Mapping[factory.FactoryGuid] : null;
+                        if (parser.Count == 1)
+                            OpenOfflineLogs(page, files, parser.First());
+                        else
+                        {
+                            XtraMessageBox.Show(
+                                $@"More than one data provider detected for this file for {factory.FactoryName}." + Environment.NewLine +
+                                "Please open it directly from the data provider menu", "Unable to open file",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
 
+                    }
+                    else
+
+                        XtraMessageBox.Show(
+                            "Zero or more than one data provider detected for this file." + Environment.NewLine +
+                            "Please open it directly from the data provider menu", "Unable to open file",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                }
+
+            }
         }
 
         private void AnalogyMainForm_DragDrop(object sender, DragEventArgs e)
@@ -415,39 +450,12 @@ namespace Analogy
             xtcLogs.SelectedTabPage = page;
         }
 
-
-
-        private void tsmiAbout_Click(object sender, EventArgs e)
-        {
-            AnalogyAboutBox ab = new AnalogyAboutBox();
-            ab.ShowDialog(this);
-        }
-
-
-        private void tsBtnMail_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Process.Start($"mailto:liorbanai@gmail.com?Subject=Analogy App");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, @"Error opening mail client", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
         private void OpenProcessForm()
         {
             var p = new ProcessNameAndID();
             p.Show(this);
         }
 
-        private void tsmiChangeLog_Click(object sender, EventArgs e)
-        {
-            var change = new ChangeLog();
-            change.ShowDialog(this);
-        }
 
         private void btnItemOTA_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -512,8 +520,9 @@ namespace Analogy
 
         private void AnalogyMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            xtcLogs.TabPages.Clear(true);
-            RestoreDefaultLogLevel();
+            settings.UpdateRunningTime();
+            settings.Save();
+            BookmarkPersistManager.Instance.SaveFile();
         }
 
         private void bbtnItemChangeLog_ItemClick(object sender, ItemClickEventArgs e)
@@ -593,42 +602,6 @@ namespace Analogy
             user.ShowDialog(this);
         }
 
-        private void bBtnSplunkExtractor_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //todo
-            //XtraFormSplunkExtractor splunk = new XtraFormSplunkExtractor();
-            //splunk.Show(this);
-        }
-
-        private void bBtnMiradaLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //todo:
-            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Filter = "Mirada XD log|XD.log|Mirada XD Debug file|XDDebug.log";
-            //openFileDialog1.Title = @"Open Files";
-            //openFileDialog1.Multiselect = true;
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    OpenOfflineLogs(openFileDialog1.FileNames);
-            //    AddRecentFiles(openFileDialog1.FileNames.ToList());
-            //}
-        }
-
-        private void bBarCTlogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //todo:
-            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Filter = "Philips CT BU log file|*.xml";
-            //openFileDialog1.Title = @"Open Files";
-            //openFileDialog1.Multiselect = true;
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    OpenOfflineLogs(openFileDialog1.FileNames);
-            //    AddRecentFiles(openFileDialog1.FileNames.ToList());
-            //}
-        }
-
-
         private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
         }
@@ -653,12 +626,6 @@ namespace Analogy
             user.ShowDialog(this);
         }
 
-        private void bBtnCTLogsSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(7);
-            user.ShowDialog(this);
-        }
-
         private void bBtnMRUSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(6);
@@ -679,61 +646,11 @@ namespace Analogy
 
         }
 
-        private void bbtnFixCorruptedXMLFile_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //todo
-            //FixFileForm f = new FixFileForm();
-            //f.Show(this);
-        }
-
-        private void barToggleDebug_CheckedChanged(object sender, ItemClickEventArgs e)
-        {
-            //todo:
-            //if (barToggleDebug.Checked)
-            //{
-            //    var (client, resultOK) = LogConfigUtils.LoadClientConfig();
-            //    if (resultOK)
-            //        if (client.Levels.DefaultLevel != System.LogLevel.Debug)
-            //        {
-            //            DefaultValue = client.Levels.DefaultLevel;
-            //            client.Levels.DefaultLevel = System.LogLevel.Debug;
-            //            if (LogConfigUtils.SaveClientConfig(client))
-            //            {
-            //                DebugOn = true;
-            //                XtraMessageBox.Show("default log level changed to debug.", "Analogy", MessageBoxButtons.OK);
-            //            }
-            //        }
-            //}
-            //else // uncheck
-            //{
-            //    RestoreDefaultLogLevel();
-            //}
-        }
-
-        private void RestoreDefaultLogLevel()
-        {
-            //todo:
-            //if (DebugOn)
-            //{
-            //    var (client, resultOK) = LogConfigUtils.LoadClientConfig();
-            //    if (resultOK)
-            //    {
-            //        client.Levels.DefaultLevel = DefaultValue;
-            //        if (LogConfigUtils.SaveClientConfig(client))
-            //        {
-            //            DebugOn = true;
-            //            XtraMessageBox.Show($"default log level restored to {DefaultValue}.", "Analogy",
-            //                MessageBoxButtons.OK);
-            //        }
-            //    }
-            //}
-        }
-
-
         private void CreateDataSources()
         {
             foreach (IAnalogyFactory factory in AnalogyFactoriesManager.Instance.GetFactories()
-                .Where(factory => !AnalogyFactoriesManager.Instance.IsBuiltInFactory(factory)))
+                .Where(factory => !AnalogyFactoriesManager.Instance.IsBuiltInFactory(factory) &&
+                                  settings.GetFactorySetting(factory.FactoryID).Status != DataProviderFactoryStatus.Disabled))
             {
                 CreateDataSource(factory, 3);
             }
@@ -789,9 +706,12 @@ namespace Analogy
             RibbonPageGroup groupDataSource = new RibbonPageGroup(dataSourceFactory.Title);
             groupDataSource.AllowTextClipping = false;
             ribbonPage.Groups.Add(groupDataSource);
-            var po = new ParallelOptions {MaxDegreeOfParallelism = -1};
-            Parallel.ForEach(dataSourceFactory.Items,po,
-                dataSource =>
+            //var po = new ParallelOptions { MaxDegreeOfParallelism = -1 };
+            //Parallel.ForEach(dataSourceFactory.Items, po,
+            //    dataSource =>
+            //{
+
+            foreach (var dataSource in dataSourceFactory.Items)
             {
                 if (dataSource is IAnalogyRealTimeDataProvider realTime)
                 {
@@ -808,8 +728,8 @@ namespace Analogy
                     AddOfflineDataSource(ribbonPage, offlineAnalogy, dataSourceFactory.Title, groupDataSource,
                         groupOfflineFileTools);
                 }
-            });
-           
+            }
+
 
             //add bookmark
             BarButtonItem bookmarkBtn = new BarButtonItem();
@@ -1022,7 +942,7 @@ namespace Analogy
             group.ItemLinks.Add(realTimeBtn);
             realTimeBtn.ImageOptions.Image = Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
-            realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ?$" - {realTime.OptionalTitle}": string.Empty);
+            realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ? $" - {realTime.OptionalTitle}" : string.Empty);
 
             async Task<bool> OpenRealTime()
             {
@@ -1107,7 +1027,8 @@ namespace Analogy
             }
 
             realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
-            if (settings.AutoStartDataProviders.Contains(realTime.ID))
+            if (settings.AutoStartDataProviders.Contains(realTime.ID)
+            && !disableOnlineDueToFileOpen)
             {
                 async Task<bool> AutoOpenRealTime()
                 {
@@ -1182,13 +1103,13 @@ namespace Analogy
             tmrStatusUpdates.Start();
         }
 
-        private void BbtnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(7);
             user.ShowDialog(this);
         }
 
-        private void BbtnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(8);
             user.ShowDialog(this);

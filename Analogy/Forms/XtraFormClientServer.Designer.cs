@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormClientServer));
             this.sBtnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.lblPath = new DevExpress.XtraEditors.LabelControl();
             this.txtbPath = new System.Windows.Forms.TextBox();
@@ -121,9 +122,11 @@
             this.Controls.Add(this.txtbPath);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.sBtnAdd);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "XtraFormClientServer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Other File Locations";
             this.ResumeLayout(false);
             this.PerformLayout();

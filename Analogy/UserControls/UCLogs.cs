@@ -24,6 +24,7 @@ using System.Windows.Forms;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Types;
+using DevExpress.Data.Filtering;
 using static System.Enum;
 using Message = System.Windows.Forms.Message;
 
@@ -35,11 +36,16 @@ namespace Analogy
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
+        private FileProcessor fileProcessor { get; set; }
+
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
+        public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         private string OldTextInclude = string.Empty;
         private string OldTextExclude = string.Empty;
+        public int fileLoadingCount;
+        private bool LoadingInProgress => fileLoadingCount > 0;
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
         private IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions { get; set; }
@@ -55,6 +61,7 @@ namespace Analogy
         private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
+        private char[] DataSourceSplitter = { ' ', '(', ')' };
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
         private List<XtraFormLogGrid> ExternalWindows
@@ -105,6 +112,7 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
+            fileProcessor = new FileProcessor(this);
             if (DesignMode) return;
             //splitContainerMain.IsSplitterFixed = false;
             //splitContainerMain.FixedPanel = SplitFixedPanel.None;
@@ -175,10 +183,7 @@ namespace Analogy
                 bBtnSaveEntireLog.Visibility = BarItemVisibility.Never;
             }
         }
-        //public UCLogs(bool bookmarkView) : this()
-        //{
-        //    BookmarkView = bookmarkView;
-        //}
+
 
         public void ProcessCmdKeyFromParent(Keys keyData)
         {
@@ -259,7 +264,10 @@ namespace Analogy
 
             gridControl.ForceInitialize();
             if (File.Exists(LayoutFileName))
+            {
                 gridControl.MainView.RestoreLayoutFromXml(LayoutFileName);
+                gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(LayoutFileName);
+            }
             if (Settings.SaveSearchFilters)
             {
                 txtbIncludeText.Text = Settings.IncludeText;
@@ -273,7 +281,7 @@ namespace Analogy
             btswitchExpand.Checked = true;
             splitContainerMain.Collapsed = true;
             if (Settings.StartupErrorLogLevel)
-                chkLstLogLevel.Items[0].CheckState = CheckState.Checked;
+                chkLstLogLevel.Items[1].CheckState = CheckState.Checked;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
             btsAutoScrollToBottom.Checked = Settings.AutoScrollToLastMessage;
         }
@@ -657,7 +665,14 @@ namespace Analogy
             try
             {
                 lockSlim.EnterReadLock();
-                return new DataView(_messageData, _messageData.DefaultView.RowFilter, null,
+                string filter = _messageData.DefaultView.RowFilter;
+                if (logGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(logGrid.ActiveFilterString))
+                {
+                    CriteriaOperator op = logGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
+                    string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
+                    filter = $"{filter} and {filterString}";
+                }
+                return new DataView(_messageData, filter, null,
                     DataViewRowState.CurrentRows).ToTable();
             }
             finally
@@ -862,7 +877,9 @@ namespace Analogy
             if (!IsHandleCreated) return;
             BeginInvoke(new MethodInvoker(() =>
             {
-                lock (table.Rows.SyncRoot)
+                lockSlim.EnterWriteLock();
+                try
+
                 {
 #if DEBUG
                     Console.WriteLine(source);
@@ -871,6 +888,11 @@ namespace Analogy
                     table.AcceptChanges();
                     logGrid.EndDataUpdate();
                 }
+                finally
+                {
+                    lockSlim.ExitWriteLock();
+                }
+
             }));
         }
         public void AcceptChanges(bool forceRefresh)
@@ -923,6 +945,8 @@ namespace Analogy
         }
         private void FilterResults()
         {
+            _filterCriteriaInline.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
+            _filterCriteriaInline.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
             _filterCriteriaInline.TextInclude = chkbIncludeText.Checked ? txtbIncludeText.Text : string.Empty;
             _filterCriteriaInline.TextExclude = chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
 
@@ -1068,7 +1092,7 @@ namespace Analogy
             progressBar1.Value = 0;
             progressBar1.Maximum = fileNames.Count;
             progressBar1.Style = fileNames.Count > 1 ? ProgressBarStyle.Continuous : ProgressBarStyle.Marquee;
-
+            fileLoadingCount = +fileNames.Count;
             progressBar1.Visible = true;
             int processed = 0;
             foreach (string filename in fileNames)
@@ -1081,8 +1105,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                FileProcessor fp = new FileProcessor(this);
-                await fp.Process(FileDataProvider, filename, cancellationTokenSource.Token);
+                await fileProcessor.Process(FileDataProvider, filename, cancellationTokenSource.Token);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -1720,6 +1743,16 @@ namespace Analogy
             {
                 tsmiExcludeModule.Text = $"Exclude Process: {message.Module}";
                 tsmiExcludeSource.Text = $"Exclude Source: {message.Source}";
+                tsmiDateFilterNewer.Text = $"Show all messages after {message.Date}";
+                tsmiDateFilterOlder.Text = $"Show all messages Before {message.Date}";
+                tsmiDateFilterNewer.Visible = true;
+                tsmiDateFilterOlder.Visible = true;
+            }
+            else
+            {
+                tsmiDateFilterNewer.Visible = false;
+                tsmiDateFilterOlder.Visible = false;
+
             }
         }
 
@@ -1741,6 +1774,16 @@ namespace Analogy
             {
                 tsmiExcludeModuleBookmark.Text = $"Exclude Process: {message.Module}";
                 tsmiExcludeSourceBookmark.Text = $"Exclude Source: {message.Source}";
+                tsmiBookmarkDateFilterNewer.Text = $"Show all messages after {message.Date}";
+                tsmiBookmarkDateFilterOlder.Text = $"Show all messages Before {message.Date}";
+                tsmiBookmarkDateFilterNewer.Visible = true;
+                tsmiBookmarkDateFilterOlder.Visible = true;
+            }
+            else
+            {
+                tsmiDateFilterNewer.Visible = false;
+                tsmiBookmarkDateFilterOlder.Visible = false;
+
             }
         }
 
@@ -1783,6 +1826,8 @@ namespace Analogy
         private void sBtnCancel_Click(object sender, EventArgs e)
         {
             cancellationTokenSource.Cancel(false);
+            Interlocked.Exchange(ref fileLoadingCount, 0);
+
             cancellationTokenSource = new CancellationTokenSource();
             sBtnCancel.Visible = false;
         }
@@ -1945,13 +1990,20 @@ namespace Analogy
         {
             int row = e.FocusedRowHandle;
             if (row < 0) return;
-            LoadTextBoxes((AnalogyLogMessage)logGrid.GetRowCellValue(e.FocusedRowHandle, "Object"));
+            AnalogyLogMessage m = (AnalogyLogMessage)logGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
+            LoadTextBoxes(m);
+            string dataProvider = (string)logGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
+            if (!LoadingInProgress)
+            {
+                OnFocusedRowChanged?.Invoke(this, (dataProvider, m));
+            }
         }
 
         private void tsmiIncreaseFont_Click(object sender, EventArgs e)
         {
             Settings.FontSize = logGrid.Appearance.Row.Font.Size + 2;
             logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+            gridViewBookmarkedMessages.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
             SaveGridLayout();
         }
 
@@ -1961,6 +2013,7 @@ namespace Analogy
             {
                 Settings.FontSize = logGrid.Appearance.Row.Font.Size - 2;
                 logGrid.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
+                gridViewBookmarkedMessages.Appearance.Row.Font = new Font(logGrid.Appearance.Row.Font.Name, Settings.FontSize);
                 SaveGridLayout();
             }
         }
@@ -2123,6 +2176,67 @@ namespace Analogy
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
         {
             UndockViewPerProcess();
+        }
+
+        private void deNewerThanFilter_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateNewerThan.Checked = true;
+            FilterHasChanged = true;
+        }
+        private void deNewerThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateNewerThan.Checked = true;
+            FilterHasChanged = true;
+        }
+
+        private void deOlderThanFilter_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateOlderThan.Checked = true;
+            FilterHasChanged = true;
+        }
+
+        private void deOlderThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+            chkDateOlderThan.Checked = true;
+            FilterHasChanged = true;
+        }
+
+        private void chkDateOlderThan_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterHasChanged = true;
+        }
+
+        private void chkDateNewerThan_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterHasChanged = true;
+        }
+
+        private void tsmiDateFilterNewer_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deNewerThanFilter.DateTime = message.Date;
+            chkDateNewerThan.Checked = true;
+        }
+
+        private void tsmiDateFilterOlder_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deOlderThanFilter.DateTime = message.Date;
+            chkDateOlderThan.Checked = true;
+        }
+
+        private void tsmiBookmarkDateFilterNewer_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deNewerThanFilter.DateTime = message.Date;
+            chkDateNewerThan.Checked = true;
+        }
+
+        private void tsmiBookmarkDateFilterOlder_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
+            deOlderThanFilter.DateTime = message.Date;
+            chkDateOlderThan.Checked = true;
         }
     }
 }
