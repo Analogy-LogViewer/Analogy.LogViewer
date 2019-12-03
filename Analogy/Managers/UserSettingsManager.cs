@@ -62,6 +62,8 @@ namespace Analogy
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
+        public Guid LastOpenedDataProvider { get; set; }
+        public bool RememberLastOpenedDataProvider { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -125,7 +127,8 @@ namespace Analogy
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
             FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
-
+            LastOpenedDataProvider = Settings.Default.LastOpenedDataProvider;
+            RememberLastOpenedDataProvider = Settings.Default.RememberLastOpenedDataProvider;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -195,6 +198,8 @@ namespace Analogy
             Settings.Default.DefaultDescendOrder = DefaultDescendOrder;
             Settings.Default.FactoriesOrder = JsonConvert.SerializeObject(FactoriesOrder);
             Settings.Default.FactoriesSettings = JsonConvert.SerializeObject(FactoriesSettings);
+             Settings.Default.LastOpenedDataProvider= LastOpenedDataProvider;
+            Settings.Default.RememberLastOpenedDataProvider = RememberLastOpenedDataProvider;
             Settings.Default.Save();
 
         }

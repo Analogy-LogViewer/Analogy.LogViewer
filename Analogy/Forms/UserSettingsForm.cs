@@ -111,6 +111,7 @@ namespace Analogy
             //file associations:
             cbDataProviderAssociation.DataSource = Settings.FactoriesSettings;
             cbDataProviderAssociation.DisplayMember = "FactoryName";
+            tsRememberLastOpenedDataProvider.IsOn = Settings.RememberLastOpenedDataProvider;
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -134,11 +135,12 @@ namespace Analogy
                 var factory = Settings.FactoriesSettings.SingleOrDefault(f => f.FactoryGuid == guid);
                 if (factory != null)
                 {
-                    factory.Status = checkedItem.Exists(f =>f.ID == guid)
+                    factory.Status = checkedItem.Exists(f => f.ID == guid)
                         ? DataProviderFactoryStatus.Enabled
                         : DataProviderFactoryStatus.Disabled;
                 }
             }
+            Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
             Settings.UpdateOrder(order);
         }
 
@@ -392,7 +394,7 @@ namespace Analogy
         {
             if (cbDataProviderAssociation.SelectedItem is FactorySettings setting)
                 setting.UserSettingFileAssociations = txtbDataProviderAssociation.Text
-                    .Split(new[]{","}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
     }
 }

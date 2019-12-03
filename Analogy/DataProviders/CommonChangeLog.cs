@@ -11,6 +11,7 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
+            yield return new AnalogyChangeLog("Add an option to remember last opened data provider (issue #65)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 03));
             yield return new AnalogyChangeLog("Add logging of errors during startup for better debugging (issue #66)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 03));
             yield return new AnalogyChangeLog("Add Date/time option to filter the messages (issue #62)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 29));
             yield return new AnalogyChangeLog("Add export/import settings (issue #47)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 11, 23));

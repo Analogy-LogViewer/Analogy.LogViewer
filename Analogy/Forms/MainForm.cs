@@ -126,6 +126,11 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
+            if (UserSettingsManager.UserSettings.RememberLastOpenedDataProvider && Mapping.ContainsKey(UserSettingsManager.UserSettings.LastOpenedDataProvider))
+            {
+                ribbonControlMain.SelectPage(Mapping[UserSettingsManager.UserSettings.LastOpenedDataProvider]);
+            }
+            ribbonControlMain.SelectedPageChanging += ribbonControlMain_SelectedPageChanging;
         }
 
 
@@ -1209,6 +1214,15 @@ namespace Analogy
         private void btnErrors_ItemClick(object sender, ItemClickEventArgs e)
         {
             AnalogyLogManager.Instance.Show(this);
+        }
+
+        private void ribbonControlMain_SelectedPageChanging(object sender, RibbonPageChangingEventArgs e)
+        {
+            if (Mapping.ContainsValue(e.Page))
+            {
+                Guid id = Mapping.Single(kv => kv.Value == e.Page).Key;
+                UserSettingsManager.UserSettings.LastOpenedDataProvider = id;
+            }
         }
     }
 }
