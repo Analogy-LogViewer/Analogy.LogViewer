@@ -105,6 +105,7 @@
             this.xtcLogs = new DevExpress.XtraTab.XtraTabControl();
             this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.btnErrors = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -131,7 +132,7 @@
             // 
             this.ribbonControlMain.AllowKeyTips = false;
             this.ribbonControlMain.ApplicationButtonDropDownControl = this.applicationMenu1;
-            this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
+            this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControlMain.ExpandCollapseItem,
@@ -190,10 +191,11 @@
             this.bbiFileCaching,
             this.bBtnDataProviderSettings,
             this.bBtnItemExportSettings,
-            this.bBtnItemImportSettings});
+            this.bBtnItemImportSettings,
+            this.btnErrors});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 72;
+            this.ribbonControlMain.MaxItemId = 73;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -777,6 +779,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbiFileCaching);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiIdleMessage);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiMemoryUsage);
+            this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
@@ -811,6 +814,17 @@
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
+            // 
+            // btnErrors
+            // 
+            this.btnErrors.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.btnErrors.Caption = "Errors";
+            this.btnErrors.Id = 72;
+            this.btnErrors.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnErrors.ImageOptions.Image")));
+            this.btnErrors.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnErrors.ImageOptions.LargeImage")));
+            this.btnErrors.Name = "btnErrors";
+            this.btnErrors.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.btnErrors.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnErrors_ItemClick);
             // 
             // MainForm
             // 
@@ -917,5 +931,6 @@
         private DevExpress.XtraBars.BarButtonItem bBtnDataProviderSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnItemExportSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnItemImportSettings;
+        private DevExpress.XtraBars.BarButtonItem btnErrors;
     }
 }

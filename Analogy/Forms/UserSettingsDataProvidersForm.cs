@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.DataProviders.Extensions;
+using Analogy.Managers;
 using DevExpress.XtraTab;
 
 namespace Analogy
@@ -91,7 +92,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    //ingnore errors in data providers
+                    AnalogyLogManager.Instance.LogError("Error during call for SaveSetting for data provider: " + e);
                 }
 
             }

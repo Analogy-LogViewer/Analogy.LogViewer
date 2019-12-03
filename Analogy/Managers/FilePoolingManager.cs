@@ -168,6 +168,7 @@ namespace Analogy.Managers
                     Date = DateTime.Now
                 };
                 OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
+                AnalogyLogManager.Instance.LogErrorMessage(m);
             }
             finally
             {

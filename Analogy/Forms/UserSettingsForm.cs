@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Analogy.DataSources;
 using Analogy.Interfaces;
+using Analogy.Managers;
 using Analogy.Types;
 using DevExpress.Utils;
 
@@ -316,6 +317,7 @@ namespace Analogy
                 }
                 catch (Exception ex)
                 {
+                    AnalogyLogManager.Instance.LogError("Error during save to file: " + e);
                     XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
@@ -344,6 +346,7 @@ namespace Analogy
                 }
                 catch (Exception ex)
                 {
+                    AnalogyLogManager.Instance.LogError("Error during import data: " + e);
                     XtraMessageBox.Show("Error Import: " + ex.Message, @"Error Import file", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }

@@ -8,6 +8,7 @@ using Analogy.DataProviders.Extensions;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.Managers;
 using Analogy.Types;
 
 namespace Analogy
@@ -56,7 +57,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-
+                AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
             }
 
         }
@@ -216,16 +217,16 @@ namespace Analogy
                                 DataProviderSettings.Add(setting);
                             }
                         }
-                        catch (Exception)
+                        catch (Exception e)
                         {
-                            //nothing
+                            AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
                         }
 
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    //nothing
+                    AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
                 }
             }
         }

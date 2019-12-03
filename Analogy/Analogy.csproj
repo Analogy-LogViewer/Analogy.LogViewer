@@ -267,6 +267,7 @@
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InterpreterParser.cs" />
+    <Compile Include="Managers\AnalogyLogManager.cs" />
     <Compile Include="Managers\BookmarkPersistManager.cs" />
     <Compile Include="Managers\ClientServerDataSourceManager.cs" />
     <Compile Include="Managers\FactoriesManager.cs" />

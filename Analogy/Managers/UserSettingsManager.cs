@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
 using Newtonsoft.Json;
@@ -135,8 +136,9 @@ namespace Analogy
                     new T() :
                     JsonConvert.DeserializeObject<T>(data);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                AnalogyLogManager.Instance.LogError("Error during parsing: " + e);
                 return new T();
             }
 

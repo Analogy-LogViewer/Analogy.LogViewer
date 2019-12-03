@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Tools;
 using Analogy.Types;
@@ -43,6 +44,7 @@ namespace Analogy
         public MainForm()
         {
             InitializeComponent();
+            AnalogyLogManager.Instance.OnNewError += (s, e) => btnErrors.Visibility = BarItemVisibility.Always;
         }
 
 
@@ -801,9 +803,9 @@ namespace Analogy
                         {
                             filepoolingUC.Dispose();
                         }
-                        catch (Exception)
+                        catch (Exception e)
                         {
-                            //doto: nothing //log..
+                            AnalogyLogManager.Instance.LogError("Error during dispose: " + e);
                         }
                         finally
                         {
@@ -965,7 +967,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    //todo/ log to ui/analogy errors
+                    AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e);
                 }
 
                 if (canStartReceiving) //connected
@@ -1017,9 +1019,9 @@ namespace Analogy
                                 realTime.OnDisconnected -= OnRealTimeDisconnected;
                                 //page.Controls.Remove(onlineUC);
                             }
-                            catch (Exception)
+                            catch (Exception e)
                             {
-                                //doto: nothing //log..
+                                AnalogyLogManager.Instance.LogError("Error during call to Stop receiving: " + e);
                             }
                             finally
                             {
@@ -1173,6 +1175,7 @@ namespace Analogy
                     }
                     catch (Exception exception)
                     {
+                        AnalogyLogManager.Instance.LogError("Error during export settings: " + e);
                         XtraMessageBox.Show("Error exporting settings: " + exception.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -1201,6 +1204,11 @@ namespace Analogy
                 }
 
             }
+        }
+
+        private void btnErrors_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AnalogyLogManager.Instance.Show(this);
         }
     }
 }
