@@ -79,7 +79,6 @@
             this.bBtnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnMRUSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bsiWindowsEventLogs = new DevExpress.XtraBars.BarSubItem();
-            this.repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
             this.barStaticItemDefaultLevel = new DevExpress.XtraBars.BarStaticItem();
             this.bBtnOpenAnalogyLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCloseCurrentTabPage = new DevExpress.XtraBars.BarButtonItem();
@@ -104,7 +103,6 @@
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTabPages)).BeginInit();
             this.SuspendLayout();
@@ -194,8 +192,6 @@
             this.ribbonPageThemes,
             this.ribbonPage4,
             this.ribbonPage1});
-            this.ribbonControlMain.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemHypertextLabel1});
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
             this.ribbonControlMain.Size = new System.Drawing.Size(1517, 178);
@@ -592,10 +588,6 @@
             this.bsiWindowsEventLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
-            // repositoryItemHypertextLabel1
-            // 
-            this.repositoryItemHypertextLabel1.Name = "repositoryItemHypertextLabel1";
-            // 
             // barStaticItemDefaultLevel
             // 
             this.barStaticItemDefaultLevel.Caption = "Default Level: n/a";
@@ -808,7 +800,6 @@
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTabPages)).EndInit();
             this.ResumeLayout(false);
@@ -867,7 +858,6 @@
         private DevExpress.XtraBars.BarButtonItem bBtnShortcuts;
         private DevExpress.XtraBars.BarButtonItem bBtnMRUSettings;
         private DevExpress.XtraBars.BarSubItem bsiWindowsEventLogs;
-        private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel1;
         private DevExpress.XtraBars.BarStaticItem barStaticItemDefaultLevel;
         private DevExpress.XtraBars.BarButtonItem bBtnOpenAnalogyLog;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
