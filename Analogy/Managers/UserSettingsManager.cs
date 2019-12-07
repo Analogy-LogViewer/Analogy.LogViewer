@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
 using Newtonsoft.Json;
@@ -61,6 +62,8 @@ namespace Analogy
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
+        public Guid LastOpenedDataProvider { get; set; }
+        public bool RememberLastOpenedDataProvider { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -124,7 +127,8 @@ namespace Analogy
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
             FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
-
+            LastOpenedDataProvider = Settings.Default.LastOpenedDataProvider;
+            RememberLastOpenedDataProvider = Settings.Default.RememberLastOpenedDataProvider;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -135,8 +139,9 @@ namespace Analogy
                     new T() :
                     JsonConvert.DeserializeObject<T>(data);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                AnalogyLogManager.Instance.LogError("Error during parsing: " + e);
                 return new T();
             }
 
@@ -193,6 +198,8 @@ namespace Analogy
             Settings.Default.DefaultDescendOrder = DefaultDescendOrder;
             Settings.Default.FactoriesOrder = JsonConvert.SerializeObject(FactoriesOrder);
             Settings.Default.FactoriesSettings = JsonConvert.SerializeObject(FactoriesSettings);
+             Settings.Default.LastOpenedDataProvider= LastOpenedDataProvider;
+            Settings.Default.RememberLastOpenedDataProvider = RememberLastOpenedDataProvider;
             Settings.Default.Save();
 
         }

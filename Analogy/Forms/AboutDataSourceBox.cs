@@ -19,7 +19,7 @@ namespace Analogy
         public AboutDataSourceBox(IAnalogyFactory factory) : this()
         {
             _factory = factory;
-            _factoryAssembly = AnalogyFactoriesManager.Instance.GetAssemblyOfFactory(factory);
+            _factoryAssembly = FactoriesManager.Instance.GetAssemblyOfFactory(factory);
         }
 
         private string AssemblyTitle

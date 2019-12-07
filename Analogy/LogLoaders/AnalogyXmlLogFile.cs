@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Analogy.Interfaces;
+using Analogy.Managers;
 
 namespace Analogy.LogLoaders
 {
@@ -44,6 +45,7 @@ namespace Analogy.LogLoaders
                             Source = "Analogy",
                             Module = Process.GetCurrentProcess().ProcessName
                         };
+                        AnalogyLogManager.Instance.LogErrorMessage(errMessage);
                         return new List<AnalogyLogMessage>() { errMessage };
                     }
 
@@ -72,6 +74,7 @@ namespace Analogy.LogLoaders
                             Source = "Analogy",
                             Module = Process.GetCurrentProcess().ProcessName
                         };
+                        AnalogyLogManager.Instance.LogErrorMessage(errMessage);
                         messagesHandler.AppendMessage(errMessage, fileName);
                         return new List<AnalogyLogMessage>() { errMessage };
                     }

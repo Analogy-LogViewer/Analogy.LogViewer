@@ -8,18 +8,19 @@ using Analogy.DataProviders.Extensions;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.Managers;
 using Analogy.Types;
 
 namespace Analogy
 {
-    public class AnalogyFactoriesManager
+    public class FactoriesManager
     {
 
-        private static readonly Lazy<AnalogyFactoriesManager>
-            _instance = new Lazy<AnalogyFactoriesManager>(() => new AnalogyFactoriesManager());
+        private static readonly Lazy<FactoriesManager>
+            _instance = new Lazy<FactoriesManager>(() => new FactoriesManager());
         private static object sync = new object();
         private bool ExternalDataSourcesAdded { get; set; }
-        public static AnalogyFactoriesManager Instance = _instance.Value;
+        public static FactoriesManager Instance = _instance.Value;
         private List<IAnalogyFactory> builtInFactories { get; }
         private List<IAnalogyDataProviderSettings> DataProvidersSettings { get; set; }
 
@@ -27,7 +28,7 @@ namespace Analogy
 
         private List<IAnalogyFactory> Factories { get; }
 
-        public AnalogyFactoriesManager()
+        public FactoriesManager()
         {
             DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
             Factories = new List<IAnalogyFactory>();
@@ -56,7 +57,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-
+                AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
             }
 
         }
@@ -216,16 +217,16 @@ namespace Analogy
                                 DataProviderSettings.Add(setting);
                             }
                         }
-                        catch (Exception)
+                        catch (Exception e)
                         {
-                            //nothing
+                            AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
                         }
 
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    //nothing
+                    AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
                 }
             }
         }

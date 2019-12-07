@@ -84,7 +84,6 @@ namespace Analogy
                 return filterDatatable.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList();
             }
         }
-
         private List<AnalogyLogMessage> BookmarkedMessages
         {
             get { return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList(); }
@@ -672,8 +671,13 @@ namespace Analogy
                     string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
                     filter = $"{filter} and {filterString}";
                 }
-                return new DataView(_messageData, filter, null,
-                    DataViewRowState.CurrentRows).ToTable();
+                //todo
+                //todo:replace for performance
+                //var rows = _messageData.Select(filter);
+                //var filteredDataTable = _messageData.Clone();
+                //filteredDataTable.Rows.Add(rows);
+                //return filteredDataTable;
+                return new DataView(_messageData, filter, null, DataViewRowState.CurrentRows).ToTable();
             }
             finally
             {
@@ -681,6 +685,34 @@ namespace Analogy
             }
         }
 
+        private (int total, int error, int warning, int critical) GetRowsCount()
+        {
+
+            // Create a data view by applying the grid view row filter
+            try
+            {
+                lockSlim.EnterReadLock();
+
+                string filter = _messageData.DefaultView.RowFilter;
+                if (logGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(logGrid.ActiveFilterString))
+                {
+                    CriteriaOperator op = logGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
+                    string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
+                    filter = $"{filter} and {filterString}";
+                }
+
+                var rows = _messageData.Select(filter);
+                var total = rows.Length;
+                var error = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Error.ToString());
+                var warning = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Warning.ToString());
+                var critical = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Critical.ToString());
+                return (total, error, warning, critical);
+            }
+            finally
+            {
+                lockSlim.ExitReadLock();
+            }
+        }
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
             string displayText = string.Empty;
@@ -1008,13 +1040,20 @@ namespace Analogy
                 _filterCriteriaInline.ExcludedModules = null;
             }
             Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
-
-
+            string filter = _filterCriteriaInline.GetSqlExpression();
+            if (logGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(logGrid.ActiveFilterString))
+            {
+                CriteriaOperator op = logGrid.ActiveFilterCriteria; 
+                string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
+                filter = $"{filter} and {filterString}";
+            }
             lockSlim.EnterWriteLock();
             try
             {
                 _messageData.BeginLoadData();
-                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression();
+                //todo:replace for performance
+                //gridControl.MainView= new DataView(_messageData, filter, null, DataViewRowState.CurrentRows);
+                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression(); ;
                 _messageData.EndLoadData();
             }
             finally
@@ -1060,9 +1099,10 @@ namespace Analogy
             if (!IsHandleCreated) return;
             BeginInvoke(new MethodInvoker(() =>
             {
-                var msgs = Messages.ToList();
+                var result = GetRowsCount();
+
                 lblTotalMessages.Text =
-                    $"Total messages:{msgs.Count}. Errors:{msgs.Count(m => m.Level == AnalogyLogLevel.Error)}. Warnings:{msgs.Count(m => m.Level == AnalogyLogLevel.Warning)}. Criticals:{msgs.Count(m => m.Level == AnalogyLogLevel.Critical)}";
+                    $"Total messages:{result.total}. Errors:{result.error}. Warnings:{result.warning}. Criticals:{result.critical}";
             }));
         }
 

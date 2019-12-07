@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using Analogy.Managers;
 using DevExpress.XtraBars;
 
 namespace Analogy
@@ -80,6 +81,7 @@ namespace Analogy
                 XtraMessageBox.Show(m, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AnalogyLogMessage l = new AnalogyLogMessage(m, AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None");
                 ucLogs1.AppendMessage(l, Environment.MachineName);
+                AnalogyLogManager.Instance.LogErrorMessage(l);
             }
         }
 

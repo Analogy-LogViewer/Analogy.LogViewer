@@ -264,9 +264,10 @@
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InterpreterParser.cs" />
+    <Compile Include="Managers\AnalogyLogManager.cs" />
     <Compile Include="Managers\BookmarkPersistManager.cs" />
     <Compile Include="Managers\ClientServerDataSourceManager.cs" />
-    <Compile Include="Managers\AnalogyFactoriesManager.cs" />
+    <Compile Include="Managers\FactoriesManager.cs" />
     <Compile Include="DataProviders\AnalogyBuiltInFactory.cs" />
     <Compile Include="DataProviders\EventLogDataProvider.cs" />
     <Compile Include="Managers\FilePoolingManager.cs" />
@@ -536,7 +537,6 @@
     <Compile Include="UserControls\XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
-    <None Include="Analogy.nuspec" />
     <None Include="Resources\iis.jpg" />
     <None Include="Resources\rss.jpg" />
     <None Include="Resources\kama.jpg" />
@@ -828,6 +828,9 @@
   <ItemGroup>
     <PackageReference Include="Analogy.DataProviders.Extensions">
       <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.Example">
+      <Version>1.0.7</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.IISLogsProvider">
       <Version>1.0.0.3</Version>
