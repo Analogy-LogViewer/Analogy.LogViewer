@@ -9,6 +9,7 @@ namespace Analogy
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+
         /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
@@ -42,7 +43,6 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.cmsMessageOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiClearLog = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +68,7 @@ namespace Analogy
             this.tsmiIncreaseFont = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFont = new System.Windows.Forms.ToolStripMenuItem();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.logGridFiltered=new GridView();
             this.gridColumnDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnTimeDiff = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -81,6 +82,7 @@ namespace Analogy
             this.gridColumnObject = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -243,6 +245,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logGridFiltered)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -308,21 +311,6 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             this.SuspendLayout();
             // 
-            // imageList
-            // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "Error_16x16.png");
-            this.imageList.Images.SetKeyName(1, "Warning_16x16.png");
-            this.imageList.Images.SetKeyName(2, "");
-            this.imageList.Images.SetKeyName(3, "folder32x32.gif");
-            this.imageList.Images.SetKeyName(4, "Error_32x32.png");
-            this.imageList.Images.SetKeyName(5, "Warning_32x32.png");
-            this.imageList.Images.SetKeyName(6, "debug.gif");
-            this.imageList.Images.SetKeyName(7, "New_16x16.png");
-            this.imageList.Images.SetKeyName(8, "log16x16.ico");
-            this.imageList.Images.SetKeyName(9, "Question_16x16.png");
-            // 
             // gridControl
             // 
             this.gridControl.ContextMenuStrip = this.cmsMessageOperation;
@@ -335,7 +323,7 @@ namespace Analogy
             this.gridControl.Size = new System.Drawing.Size(2124, 248);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.logGrid});
+            this.logGrid,this.logGridFiltered});
             this.gridControl.Click += new System.EventHandler(this.pmsGrid_Click);
             this.gridControl.DoubleClick += new System.EventHandler(this.pmsGrid_DoubleClick);
             this.gridControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LogGrid_KeyPress);
@@ -581,6 +569,56 @@ namespace Analogy
             this.logGrid.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
             this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.GridViewCustomColumnDisplayText);
             this.logGrid.Click += new System.EventHandler(this.logGrid_Click);
+
+
+
+
+            // 
+            // logGridFiltered
+            // 
+            this.logGridFiltered.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.logGridFiltered.Appearance.OddRow.Options.UseBackColor = true;
+            this.logGridFiltered.Appearance.Row.Options.UseTextOptions = true;
+            this.logGridFiltered.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.logGridFiltered.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.logGridFiltered.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.logGridFiltered.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumnDataSource,
+            this.gridColumnDate,
+            this.gridColumnTimeDiff,
+            this.gridColumnText,
+            this.gridColumnSource,
+            this.gridColumnLevel,
+            this.gridColumnClass,
+            this.gridColumnCategory,
+            this.gridColumnUser,
+            this.gridColumnModule,
+            this.gridColumnObject,
+            this.gridColumnProcessID,
+            this.gridColumnThread});
+            this.logGridFiltered.DetailHeight = 431;
+            this.logGridFiltered.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.logGridFiltered.GridControl = this.gridControl;
+            this.logGridFiltered.Images = this.imageList;
+            this.logGridFiltered.IndicatorWidth = 24;
+            this.logGridFiltered.Name = "logGrid";
+            this.logGridFiltered.OptionsBehavior.Editable = false;
+            this.logGridFiltered.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.logGridFiltered.OptionsFilter.AllowMRUFilterList = false;
+            this.logGridFiltered.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.logGridFiltered.OptionsView.AutoCalcPreviewLineCount = true;
+            this.logGridFiltered.OptionsView.ColumnAutoWidth = false;
+            this.logGridFiltered.OptionsView.RowAutoHeight = true;
+            this.logGridFiltered.OptionsView.ShowAutoFilterRow = true;
+            this.logGridFiltered.OptionsView.ShowGroupPanel = false;
+            this.logGridFiltered.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
+            this.logGridFiltered.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
+            this.logGridFiltered.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.PmsGridView_SelectionChanged);
+            this.logGridFiltered.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGrid_FocusedRowChanged);
+            this.logGridFiltered.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
+            this.logGridFiltered.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.GridViewCustomColumnDisplayText);
+            this.logGridFiltered.Click += new System.EventHandler(this.logGrid_Click);
+
             // 
             // gridColumnDataSource
             // 
@@ -816,6 +854,21 @@ namespace Analogy
             this.gridColumnThread.Visible = true;
             this.gridColumnThread.VisibleIndex = 10;
             this.gridColumnThread.Width = 109;
+            // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "Error_16x16.png");
+            this.imageList.Images.SetKeyName(1, "Warning_16x16.png");
+            this.imageList.Images.SetKeyName(2, "");
+            this.imageList.Images.SetKeyName(3, "folder32x32.gif");
+            this.imageList.Images.SetKeyName(4, "Error_32x32.png");
+            this.imageList.Images.SetKeyName(5, "Warning_32x32.png");
+            this.imageList.Images.SetKeyName(6, "debug.gif");
+            this.imageList.Images.SetKeyName(7, "New_16x16.png");
+            this.imageList.Images.SetKeyName(8, "log16x16.ico");
+            this.imageList.Images.SetKeyName(9, "Question_16x16.png");
             // 
             // panel1
             // 
@@ -3024,6 +3077,7 @@ namespace Analogy
         #endregion
         private DevExpress.XtraGrid.GridControl gridControl;
         private GridView logGrid;
+        private GridView logGridFiltered;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDate;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDataSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnText;
