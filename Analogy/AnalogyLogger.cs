@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using Analogy.Managers;
 
 namespace Analogy
 {
@@ -22,7 +23,7 @@ namespace Analogy
 
         public virtual void LogError(string source, string message, string memberName = "", int lineNumber = 0, string filePath = "")
         {
-
+            AnalogyLogManager.Instance.LogError("Error " + message);
         }
 
         public virtual void LogCritical(string source, string message, string memberName = "", int lineNumber = 0, string filePath = "")

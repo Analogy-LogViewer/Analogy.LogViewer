@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.LogLoaders;
+using Analogy.Managers;
 
 namespace Analogy
 {
@@ -59,6 +60,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
+                AnalogyLogManager.Instance.LogError("Error Saving file: " + e);
                 XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -95,9 +97,9 @@ namespace Analogy
                     {
                         File.Delete(bookmarkFileName);
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
-                        //log 
+                        AnalogyLogManager.Instance.LogError("Error deleting file: " + e);
                     }
             }
             else
@@ -110,6 +112,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
+                    AnalogyLogManager.Instance.LogError("Error saving file: " + e);
                     XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

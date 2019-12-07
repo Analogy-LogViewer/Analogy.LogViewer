@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Analogy.Managers;
 
 namespace Analogy.LogLoaders
 {
@@ -154,6 +155,7 @@ namespace Analogy.LogLoaders
                         Class = AnalogyLogClass.General,
                         Source = "Analogy"
                     };
+                    AnalogyLogManager.Instance.LogErrorMessage(m);
                     messages.Add(m);
                     logWindow.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                 }

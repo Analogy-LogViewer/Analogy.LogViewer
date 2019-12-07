@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup5 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup6 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
@@ -94,6 +94,7 @@
             this.bbtnSettingsStartupDataSources = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnDataProviderSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnErrors = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -130,7 +131,7 @@
             // 
             this.ribbonControlMain.AllowKeyTips = false;
             this.ribbonControlMain.ApplicationButtonDropDownControl = this.applicationMenu1;
-            this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
+            this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControlMain.ExpandCollapseItem,
@@ -188,10 +189,11 @@
             this.bbiFileCaching,
             this.bBtnDataProviderSettings,
             this.bBtnItemExportSettings,
-            this.bBtnItemImportSettings});
+            this.bBtnItemImportSettings,
+            this.btnErrors});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 72;
+            this.ribbonControlMain.MaxItemId = 73;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -285,9 +287,9 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group2";
+            galleryItemGroup5.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup5});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -297,9 +299,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Group3";
+            galleryItemGroup6.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup6});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -710,6 +712,17 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnDataProviderSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataProviderSettings_ItemClick);
             // 
+            // btnErrors
+            // 
+            this.btnErrors.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.btnErrors.Caption = "Errors";
+            this.btnErrors.Id = 72;
+            this.btnErrors.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnErrors.ImageOptions.Image")));
+            this.btnErrors.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnErrors.ImageOptions.LargeImage")));
+            this.btnErrors.Name = "btnErrors";
+            this.btnErrors.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.btnErrors.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnErrors_ItemClick);
+            // 
             // ribbonPageThemes
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -764,6 +777,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbiFileCaching);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiIdleMessage);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiMemoryUsage);
+            this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
@@ -903,5 +917,6 @@
         private DevExpress.XtraBars.BarButtonItem bBtnDataProviderSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnItemExportSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnItemImportSettings;
+        private DevExpress.XtraBars.BarButtonItem btnErrors;
     }
 }

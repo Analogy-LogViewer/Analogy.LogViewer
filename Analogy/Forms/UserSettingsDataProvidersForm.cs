@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.DataProviders.Extensions;
+using Analogy.Managers;
 using DevExpress.XtraTab;
 
 namespace Analogy
@@ -53,7 +54,7 @@ namespace Analogy
 
         private void AddExternalUserControlSettings()
         {
-            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.Instance.GetProvidersSettings())
             {
                 XtraTabPage tab = new XtraTabPage();
                 tab.Text = settings.Title;
@@ -83,7 +84,7 @@ namespace Analogy
 
         public async void SaveSetting()
         {
-            foreach (IAnalogyDataProviderSettings settings in AnalogyFactoriesManager.Instance.GetProvidersSettings())
+            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.Instance.GetProvidersSettings())
             {
                 try
                 {
@@ -91,7 +92,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    //ingnore errors in data providers
+                    AnalogyLogManager.Instance.LogError("Error during call for SaveSetting for data provider: " + e);
                 }
 
             }

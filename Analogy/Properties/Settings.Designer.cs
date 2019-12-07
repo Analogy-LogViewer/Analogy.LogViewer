@@ -430,5 +430,29 @@ namespace Analogy.Properties {
                 this["FactoriesSettings"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")]
+        public global::System.Guid LastOpenedDataProvider {
+            get {
+                return ((global::System.Guid)(this["LastOpenedDataProvider"]));
+            }
+            set {
+                this["LastOpenedDataProvider"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RememberLastOpenedDataProvider {
+            get {
+                return ((bool)(this["RememberLastOpenedDataProvider"]));
+            }
+            set {
+                this["RememberLastOpenedDataProvider"] = value;
+            }
+        }
     }
 }

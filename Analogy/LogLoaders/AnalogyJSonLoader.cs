@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Analogy.Managers;
 using Newtonsoft.Json;
 
 namespace Analogy.LogLoaders
@@ -44,7 +45,7 @@ namespace Analogy.LogLoaders
                 }
                 catch (Exception ex)
                 {
-
+                   
                     AnalogyLogMessage empty =
                         new AnalogyLogMessage($"File {fileName} is empty or corrupted. Error: {ex.Message}",
                             AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None")
@@ -52,7 +53,7 @@ namespace Analogy.LogLoaders
                             Source = "Analogy",
                             Module = Process.GetCurrentProcess().ProcessName
                         };
-
+                    AnalogyLogManager.Instance.LogErrorMessage(empty);
                     messageHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                     return new List<AnalogyLogMessage>() { empty };
                 }

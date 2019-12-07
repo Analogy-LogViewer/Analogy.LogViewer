@@ -48,6 +48,8 @@ namespace Analogy
             this.tsmiClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiREmoveAllPreviousMessages = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTimeDiff = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDateFilterNewer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDateFilterOlder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBookmarkPersist = new System.Windows.Forms.ToolStripMenuItem();
@@ -219,6 +221,8 @@ namespace Analogy
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.cmsBookmarked = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCalcDiffBookmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBookmarkDateFilterNewer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBookmarkDateFilterOlder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiRemoveBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCopyBookmark = new System.Windows.Forms.ToolStripMenuItem();
@@ -235,10 +239,6 @@ namespace Analogy
             this.tsmiSaveLayoutBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIncreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDateFilterNewer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDateFilterOlder = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBookmarkDateFilterNewer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBookmarkDateFilterOlder = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -391,6 +391,22 @@ namespace Analogy
             this.tsmiTimeDiff.Size = new System.Drawing.Size(415, 26);
             this.tsmiTimeDiff.Text = "Calculate Time Difference from this entry";
             this.tsmiTimeDiff.Click += new System.EventHandler(this.tsmiTimeDiff_Click);
+            // 
+            // tsmiDateFilterNewer
+            // 
+            this.tsmiDateFilterNewer.Image = global::Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiDateFilterNewer.Name = "tsmiDateFilterNewer";
+            this.tsmiDateFilterNewer.Size = new System.Drawing.Size(415, 26);
+            this.tsmiDateFilterNewer.Text = "DateTime filter: After";
+            this.tsmiDateFilterNewer.Click += new System.EventHandler(this.tsmiDateFilterNewer_Click);
+            // 
+            // tsmiDateFilterOlder
+            // 
+            this.tsmiDateFilterOlder.Image = global::Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiDateFilterOlder.Name = "tsmiDateFilterOlder";
+            this.tsmiDateFilterOlder.Size = new System.Drawing.Size(415, 26);
+            this.tsmiDateFilterOlder.Text = "DateTime filter: before ";
+            this.tsmiDateFilterOlder.Click += new System.EventHandler(this.tsmiDateFilterOlder_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1496,7 +1512,7 @@ namespace Analogy
             // 
             this.deOlderThanFilter.Dock = System.Windows.Forms.DockStyle.Left;
             this.deOlderThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deOlderThanFilter.Location = new System.Drawing.Point(450, 0);
+            this.deOlderThanFilter.Location = new System.Drawing.Point(551, 0);
             this.deOlderThanFilter.MenuManager = this.barManager1;
             this.deOlderThanFilter.Name = "deOlderThanFilter";
             this.deOlderThanFilter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1520,7 +1536,7 @@ namespace Analogy
             // chkDateOlderThan
             // 
             this.chkDateOlderThan.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkDateOlderThan.Location = new System.Drawing.Point(338, 0);
+            this.chkDateOlderThan.Location = new System.Drawing.Point(439, 0);
             this.chkDateOlderThan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkDateOlderThan.Name = "chkDateOlderThan";
             this.chkDateOlderThan.Size = new System.Drawing.Size(112, 24);
@@ -1533,7 +1549,7 @@ namespace Analogy
             // 
             this.deNewerThanFilter.Dock = System.Windows.Forms.DockStyle.Left;
             this.deNewerThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deNewerThanFilter.Location = new System.Drawing.Point(131, 0);
+            this.deNewerThanFilter.Location = new System.Drawing.Point(232, 0);
             this.deNewerThanFilter.MenuManager = this.barManager1;
             this.deNewerThanFilter.Name = "deNewerThanFilter";
             this.deNewerThanFilter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1570,7 +1586,7 @@ namespace Analogy
             this.chkDateNewerThan.Location = new System.Drawing.Point(19, 0);
             this.chkDateNewerThan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkDateNewerThan.Name = "chkDateNewerThan";
-            this.chkDateNewerThan.Size = new System.Drawing.Size(112, 24);
+            this.chkDateNewerThan.Size = new System.Drawing.Size(213, 24);
             this.chkDateNewerThan.TabIndex = 23;
             this.chkDateNewerThan.Text = "Time between:";
             this.chkDateNewerThan.UseVisualStyleBackColor = true;
@@ -2756,7 +2772,7 @@ namespace Analogy
             this.tsmiIncreaseFontBookmark,
             this.tsmiDecreaseFontBookmark});
             this.cmsBookmarked.Name = "cmsMessageOperation";
-            this.cmsBookmarked.Size = new System.Drawing.Size(361, 446);
+            this.cmsBookmarked.Size = new System.Drawing.Size(361, 418);
             this.cmsBookmarked.Opening += new System.ComponentModel.CancelEventHandler(this.cmsBookmarked_Opening);
             // 
             // tsmiCalcDiffBookmark
@@ -2766,6 +2782,22 @@ namespace Analogy
             this.tsmiCalcDiffBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiCalcDiffBookmark.Text = "Calculate Time Difference from this entry";
             this.tsmiCalcDiffBookmark.Click += new System.EventHandler(this.tsmiTimeDiff_Click);
+            // 
+            // tsmiBookmarkDateFilterNewer
+            // 
+            this.tsmiBookmarkDateFilterNewer.Image = global::Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiBookmarkDateFilterNewer.Name = "tsmiBookmarkDateFilterNewer";
+            this.tsmiBookmarkDateFilterNewer.Size = new System.Drawing.Size(360, 26);
+            this.tsmiBookmarkDateFilterNewer.Text = "dateTime filtering:after";
+            this.tsmiBookmarkDateFilterNewer.Click += new System.EventHandler(this.tsmiBookmarkDateFilterNewer_Click);
+            // 
+            // tsmiBookmarkDateFilterOlder
+            // 
+            this.tsmiBookmarkDateFilterOlder.Image = global::Analogy.Properties.Resources.Time2_16x16;
+            this.tsmiBookmarkDateFilterOlder.Name = "tsmiBookmarkDateFilterOlder";
+            this.tsmiBookmarkDateFilterOlder.Size = new System.Drawing.Size(360, 26);
+            this.tsmiBookmarkDateFilterOlder.Text = "dateTime filtering:before";
+            this.tsmiBookmarkDateFilterOlder.Click += new System.EventHandler(this.tsmiBookmarkDateFilterOlder_Click);
             // 
             // toolStripSeparator5
             // 
@@ -2883,38 +2915,6 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark.Size = new System.Drawing.Size(360, 26);
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
             this.tsmiDecreaseFontBookmark.Click += new System.EventHandler(this.tsmiDecreaseFont_Click);
-            // 
-            // tsmiDateFilterNewer
-            // 
-            this.tsmiDateFilterNewer.Image = global::Analogy.Properties.Resources.Time2_16x16;
-            this.tsmiDateFilterNewer.Name = "tsmiDateFilterNewer";
-            this.tsmiDateFilterNewer.Size = new System.Drawing.Size(415, 26);
-            this.tsmiDateFilterNewer.Text = "DateTime filter: After";
-            this.tsmiDateFilterNewer.Click += new System.EventHandler(this.tsmiDateFilterNewer_Click);
-            // 
-            // tsmiDateFilterOlder
-            // 
-            this.tsmiDateFilterOlder.Image = global::Analogy.Properties.Resources.Time2_16x16;
-            this.tsmiDateFilterOlder.Name = "tsmiDateFilterOlder";
-            this.tsmiDateFilterOlder.Size = new System.Drawing.Size(415, 26);
-            this.tsmiDateFilterOlder.Text = "DateTime filter: before ";
-            this.tsmiDateFilterOlder.Click += new System.EventHandler(this.tsmiDateFilterOlder_Click);
-            // 
-            // tsmiBookmarkDateFilterNewer
-            // 
-            this.tsmiBookmarkDateFilterNewer.Image = global::Analogy.Properties.Resources.Time2_16x16;
-            this.tsmiBookmarkDateFilterNewer.Name = "tsmiBookmarkDateFilterNewer";
-            this.tsmiBookmarkDateFilterNewer.Size = new System.Drawing.Size(360, 26);
-            this.tsmiBookmarkDateFilterNewer.Text = "dateTime filtering:after";
-            this.tsmiBookmarkDateFilterNewer.Click += new System.EventHandler(this.tsmiBookmarkDateFilterNewer_Click);
-            // 
-            // tsmiBookmarkDateFilterOlder
-            // 
-            this.tsmiBookmarkDateFilterOlder.Image = global::Analogy.Properties.Resources.Time2_16x16;
-            this.tsmiBookmarkDateFilterOlder.Name = "tsmiBookmarkDateFilterOlder";
-            this.tsmiBookmarkDateFilterOlder.Size = new System.Drawing.Size(360, 26);
-            this.tsmiBookmarkDateFilterOlder.Text = "dateTime filtering:before";
-            this.tsmiBookmarkDateFilterOlder.Click += new System.EventHandler(this.tsmiBookmarkDateFilterOlder_Click);
             // 
             // UCLogs
             // 
