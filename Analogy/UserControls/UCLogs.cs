@@ -1612,8 +1612,8 @@ namespace Analogy
 
         private void chkLstLogLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkbIncludeText.Checked = true;
-            chkExclude.Checked = true;
+            //chkbIncludeText.Checked = true;
+            //chkExclude.Checked = true;
             FilterHasChanged = true;
         }
 
@@ -1633,8 +1633,8 @@ namespace Analogy
 
         private void chkLstLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
-            chkbIncludeText.Checked = true;
-            chkExclude.Checked = true;
+            //chkbIncludeText.Checked = true;
+            //chkExclude.Checked = true;
             FilterHasChanged = true;
         }
 
