@@ -832,9 +832,6 @@
     <PackageReference Include="Analogy.DataProviders.Extensions">
       <Version>1.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Example">
-      <Version>1.0.7</Version>
-    </PackageReference>
     <PackageReference Include="Analogy.LogViewer.IISLogsProvider">
       <Version>1.0.0.3</Version>
     </PackageReference>
@@ -845,7 +842,7 @@
       <Version>0.1.5</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider">
-      <Version>1.0.0.8</Version>
+      <Version>1.0.0.9</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.RSSReader">
       <Version>1.0.0.1</Version>
