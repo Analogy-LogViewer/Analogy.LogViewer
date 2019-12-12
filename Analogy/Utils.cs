@@ -482,8 +482,8 @@ namespace Analogy
             sqlString.Append(dateFilter);
             return sqlString.ToString();
         }
-
-        public bool Match(string rowLine, string criteria)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool Match(string rowLine, string criteria,PreDefinedQueryType type)
         {
             if (string.IsNullOrEmpty(criteria)) return false;
             List<string> includeTexts = new List<string>(1) { criteria.Trim() };
@@ -501,27 +501,35 @@ namespace Analogy
                 var split = criteria.Split(new[] { '&', '+' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 includeTexts = split.Select(itm => itm.Trim()).ToList();
             }
-            //List<string> excludedTexts = new List<string>(0);
-            //if (!string.IsNullOrEmpty(TextExclude))
-            //    excludedTexts.Add(EscapeLikeValue(TextExclude.Trim()));
-            //text = TextExclude.Trim();
-            //if (text.Contains("|"))
-            //{
-            //    orOperationInexclude = true;
-            //    var split = text.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            //    excludedTexts = split.Select(itm => itm.Trim()).Where(w => !string.IsNullOrEmpty(w)).ToList();
-            //}
-
-            //if (text.Contains("&") || text.Contains("+"))
-            //{
-            //    var split = text.Split(new[] { '&', '+' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            //    excludedTexts = split.Select(itm => itm.Trim()).ToList();
-            //}
 
             if (orOperationInInclude)
-                return includeTexts.Any(t => rowLine.Contains(t, StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(t));
+            {
+                switch (type)
+                {
+                    case PreDefinedQueryType.Contains:
+                        return includeTexts.Any(t =>
+                            rowLine.Contains(t, StringComparison.InvariantCultureIgnoreCase) &&
+                            !string.IsNullOrEmpty(t));
+                    case PreDefinedQueryType.Equals:
+                        return includeTexts.Any(t =>
+                            rowLine.Equals(t, StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(t));
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                }
+            }
             else
-                return includeTexts.All(t => rowLine.Contains(t, StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(t));
+                switch (type)
+                {
+                    case PreDefinedQueryType.Contains:
+                        return includeTexts.All(t => rowLine.Contains(t, StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(t));
+                    case PreDefinedQueryType.Equals:
+                        return includeTexts.All(t => rowLine.Equals(t, StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(t));
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                }
+
+
+            
 
         }
     }

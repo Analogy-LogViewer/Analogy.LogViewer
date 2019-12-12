@@ -1940,7 +1940,7 @@ namespace Analogy
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
-            this.chkLstLogLevel.DrawItem += new DevExpress.XtraEditors.ListBoxDrawItemEventHandler(this.chkLstLogLevel_DrawItem);
+            
             // 
             // tcBottom
             // 

@@ -422,12 +422,18 @@ namespace Analogy
                 }
 
                 string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
-                if (chkbHighlight.Checked && _filterCriteriaInline.Match(text, txtbHighlight.Text))
+                if (chkbHighlight.Checked && FilterCriteriaObject.Match(text, txtbHighlight.Text,PreDefinedQueryType.Contains))
                 {
                     e.Appearance.BackColor = Settings.ColorSettings.GetHighlightColor();
                 }
 
-
+                foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
+                {
+                    if (FilterCriteriaObject.Match(text, preDefineHighlight.Text, preDefineHighlight.PreDefinedQueryType))
+                    {
+                        e.Appearance.BackColor = preDefineHighlight.Color;
+                    }
+                }
             }
         }
 
@@ -1616,20 +1622,7 @@ namespace Analogy
             //chkExclude.Checked = true;
             FilterHasChanged = true;
         }
-
-        private void chkLstLogLevel_DrawItem(object sender, ListBoxDrawItemEventArgs e)
-        {
-            //switch (e.Index)
-            //{
-            //    case 1:
-            //        e.Appearance.BackColor = Color.Red;
-            //        break;
-            //    case 2:
-            //        e.Appearance.BackColor = Color.Yellow;
-            //        break;
-            //}
-
-        }
+        
 
         private void chkLstLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {

@@ -131,6 +131,8 @@ namespace Analogy
                 ribbonControlMain.SelectPage(Mapping[UserSettingsManager.UserSettings.LastOpenedDataProvider]);
             }
             ribbonControlMain.SelectedPageChanging += ribbonControlMain_SelectedPageChanging;
+            if (AnalogyLogManager.Instance.HasMessages)
+                btnErrors.Visibility = BarItemVisibility.Always;
         }
 
 

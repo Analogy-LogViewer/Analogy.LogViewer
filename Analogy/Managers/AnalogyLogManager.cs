@@ -12,7 +12,7 @@ namespace Analogy.Managers
     {
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
         public static AnalogyLogManager Instance => _instance.Value;
-
+        public bool HasMessages => messages.Any();
         private List<AnalogyLogMessage> messages;
         public event EventHandler OnNewError;
 

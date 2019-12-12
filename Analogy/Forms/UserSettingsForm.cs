@@ -112,6 +112,7 @@ namespace Analogy
             cbDataProviderAssociation.DataSource = Settings.FactoriesSettings;
             cbDataProviderAssociation.DisplayMember = "FactoryName";
             tsRememberLastOpenedDataProvider.IsOn = Settings.RememberLastOpenedDataProvider;
+            lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -395,6 +396,45 @@ namespace Analogy
             if (cbDataProviderAssociation.SelectedItem is FactorySettings setting)
                 setting.UserSettingFileAssociations = txtbDataProviderAssociation.Text
                     .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
+
+        private void rbtnHighlightContains_CheckedChanged(object sender, EventArgs e)
+        {
+            teHighlightContains.Enabled = rbtnHighlightContains.Checked;
+            teHighlightEquals.Enabled = rbtnHighlightEquals.Checked;
+        }
+
+        private void rbtnHighlightEquals_CheckedChanged(object sender, EventArgs e)
+        {
+            teHighlightContains.Enabled = rbtnHighlightContains.Checked;
+            teHighlightEquals.Enabled = rbtnHighlightEquals.Checked;
+        }
+
+        private void sbtnAddHighlight_Click(object sender, EventArgs e)
+        {
+            if (rbtnHighlightContains.Checked)
+            {
+                Settings.PreDefinedQueries.AddHighlight(teHighlightContains.Text,PreDefinedQueryType.Contains,cpeHighlightPreDefined.Color);
+                lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
+                lboxHighlightItems.Refresh();
+            }
+
+            if (rbtnHighlightEquals.Checked)
+            {
+                Settings.PreDefinedQueries.AddHighlight(teHighlightEquals.Text, PreDefinedQueryType.Equals, cpeHighlightPreDefined.Color);
+                lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
+                lboxHighlightItems.Refresh();
+            }
+        }
+
+        private void sbtnDeleteHighlight_Click(object sender, EventArgs e)
+        {
+            if (lboxHighlightItems.SelectedItem is PreDefineHighlight highlight)
+            {
+                Settings.PreDefinedQueries.RemoveHighlight(highlight);
+                lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
+                lboxHighlightItems.Refresh();
+            }
         }
     }
 }
