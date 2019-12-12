@@ -1941,6 +1941,7 @@ namespace Analogy
             this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(23, 24);
             this.sbtnPreDefinedFilters.TabIndex = 21;
             this.sbtnPreDefinedFilters.ToolTip = "Pre-defined filters";
+            this.sbtnPreDefinedFilters.Click += new System.EventHandler(this.sbtnPreDefinedFilters_Click);
             // 
             // chkLstLogLevel
             // 

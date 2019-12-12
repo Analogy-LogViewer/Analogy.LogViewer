@@ -2283,6 +2283,11 @@ namespace Analogy
             UserSettingsForm user = new UserSettingsForm(1);
             user.ShowDialog(this);
         }
+
+        private void sbtnPreDefinedFilters_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
