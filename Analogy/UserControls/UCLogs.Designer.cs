@@ -129,6 +129,7 @@ namespace Analogy
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnButtomExpand = new DevExpress.XtraBars.BarButtonItem();
             this.btSwitchExpandButtomMessage = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
             this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
             this.sBtnPageNext = new DevExpress.XtraEditors.SimpleButton();
@@ -168,6 +169,7 @@ namespace Analogy
             this.sbtnTextInclude = new DevExpress.XtraEditors.SimpleButton();
             this.chkbIncludeText = new System.Windows.Forms.CheckBox();
             this.pboxInfo = new System.Windows.Forms.PictureBox();
+            this.sbtnPreDefinedFilters = new DevExpress.XtraEditors.SimpleButton();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.tcBottom = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMessageInfo = new DevExpress.XtraTab.XtraTabPage();
@@ -242,7 +244,6 @@ namespace Analogy
             this.tsmiSaveLayoutBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIncreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -1400,6 +1401,17 @@ namespace Analogy
             this.btSwitchExpandButtomMessage.Name = "btSwitchExpandButtomMessage";
             this.btSwitchExpandButtomMessage.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem1_CheckedChanged);
             // 
+            // sbtnMoreHighlight
+            // 
+            this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1533, 0);
+            this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
+            this.sbtnMoreHighlight.Size = new System.Drawing.Size(71, 26);
+            this.sbtnMoreHighlight.TabIndex = 43;
+            this.sbtnMoreHighlight.Text = "More ...";
+            this.sbtnMoreHighlight.Click += new System.EventHandler(this.sbtnMoreHighlight_Click);
+            // 
             // pnlButtonsHighlight
             // 
             this.pnlButtonsHighlight.Controls.Add(this.lblPageNumber);
@@ -1865,6 +1877,7 @@ namespace Analogy
             this.spltText.Panel1.Controls.Add(this.sbtnTextInclude);
             this.spltText.Panel1.Controls.Add(this.chkbIncludeText);
             this.spltText.Panel1.Controls.Add(this.pboxInfo);
+            this.spltText.Panel1.Controls.Add(this.sbtnPreDefinedFilters);
             this.spltText.Panel2Collapsed = true;
             this.spltText.Size = new System.Drawing.Size(1624, 24);
             this.spltText.SplitterDistance = 998;
@@ -1876,7 +1889,7 @@ namespace Analogy
             this.txtbIncludeText.Location = new System.Drawing.Point(127, 0);
             this.txtbIncludeText.MenuManager = this.barManager1;
             this.txtbIncludeText.Name = "txtbIncludeText";
-            this.txtbIncludeText.Size = new System.Drawing.Size(1474, 22);
+            this.txtbIncludeText.Size = new System.Drawing.Size(1451, 22);
             this.txtbIncludeText.TabIndex = 19;
             this.txtbIncludeText.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
             this.txtbIncludeText.Enter += new System.EventHandler(this.txtbInclude_Enter);
@@ -1887,7 +1900,7 @@ namespace Analogy
             // 
             this.sbtnTextInclude.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1601, 0);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1578, 0);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(23, 24);
             this.sbtnTextInclude.TabIndex = 20;
@@ -1918,6 +1931,16 @@ namespace Analogy
             this.pboxInfo.Size = new System.Drawing.Size(16, 24);
             this.pboxInfo.TabIndex = 12;
             this.pboxInfo.TabStop = false;
+            // 
+            // sbtnPreDefinedFilters
+            // 
+            this.sbtnPreDefinedFilters.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.Properties.Resources.SingleMasterFilter_16x16;
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1601, 0);
+            this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
+            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(23, 24);
+            this.sbtnPreDefinedFilters.TabIndex = 21;
+            this.sbtnPreDefinedFilters.ToolTip = "Pre-defined filters";
             // 
             // chkLstLogLevel
             // 
@@ -2978,17 +3001,6 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
             this.tsmiDecreaseFontBookmark.Click += new System.EventHandler(this.tsmiDecreaseFont_Click);
             // 
-            // sbtnMoreHighlight
-            // 
-            this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1533, 0);
-            this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
-            this.sbtnMoreHighlight.Size = new System.Drawing.Size(71, 26);
-            this.sbtnMoreHighlight.TabIndex = 43;
-            this.sbtnMoreHighlight.Text = "More ...";
-            this.sbtnMoreHighlight.Click += new System.EventHandler(this.sbtnMoreHighlight_Click);
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3284,5 +3296,6 @@ namespace Analogy
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterNewer;
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterOlder;
         private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
+        private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
     }
 }

@@ -858,6 +858,8 @@
     <Content Include="Icons\Analogy_icon1_16x16.ico" />
     <Content Include="Icons\Analogy_Icon2.ico" />
     <Content Include="Icons\Analogy_Icon2_16x16.ico" />
+    <None Include="Resources\SingleMasterFilter_32x32.png" />
+    <None Include="Resources\SingleMasterFilter_16x16.png" />
     <None Include="Resources\KamaMedical.jpg" />
     <None Include="Resources\Philips.png" />
     <None Include="Resources\AnalogyPhilips.png" />
