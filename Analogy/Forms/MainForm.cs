@@ -586,7 +586,7 @@ namespace Analogy
             user.ShowDialog(this);
         }
 
-        private void bBtnStatisticsHistory_ItemClick(object sender, ItemClickEventArgs e)
+        private void bBtnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(1);
             user.ShowDialog(this);

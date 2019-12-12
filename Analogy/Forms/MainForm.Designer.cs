@@ -69,7 +69,7 @@
             this.bBtnBookmarked = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnClientServer = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnStatisticsFiltering = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnStatisticsHistory = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnPreDefinedQueries = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnStatisticsLookAndFeel = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnStatisticsUserStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnExtensionSettings = new DevExpress.XtraBars.BarButtonItem();
@@ -160,7 +160,7 @@
             this.bBtnBookmarked,
             this.bBtnClientServer,
             this.bBtnStatisticsFiltering,
-            this.bBtnStatisticsHistory,
+            this.bBtnPreDefinedQueries,
             this.bBtnStatisticsLookAndFeel,
             this.bBtnStatisticsUserStatistics,
             this.bBtnExtensionSettings,
@@ -483,17 +483,17 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnStatisticsFiltering.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsFiltering_ItemClick);
             // 
-            // bBtnStatisticsHistory
+            // bBtnPreDefinedQueries
             // 
-            this.bBtnStatisticsHistory.Caption = "Pre-Defined Queries";
-            this.bBtnStatisticsHistory.Id = 37;
-            this.bBtnStatisticsHistory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.Image")));
-            this.bBtnStatisticsHistory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.LargeImage")));
-            this.bBtnStatisticsHistory.LargeWidth = 80;
-            this.bBtnStatisticsHistory.Name = "bBtnStatisticsHistory";
-            this.bBtnStatisticsHistory.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.bBtnPreDefinedQueries.Caption = "Pre-Defined Queries";
+            this.bBtnPreDefinedQueries.Id = 37;
+            this.bBtnPreDefinedQueries.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.Image")));
+            this.bBtnPreDefinedQueries.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsHistory.ImageOptions.LargeImage")));
+            this.bBtnPreDefinedQueries.LargeWidth = 80;
+            this.bBtnPreDefinedQueries.Name = "bBtnPreDefinedQueries";
+            this.bBtnPreDefinedQueries.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bBtnStatisticsHistory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsHistory_ItemClick);
+            this.bBtnPreDefinedQueries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnPreDefinedQueries_ItemClick);
             // 
             // bBtnStatisticsLookAndFeel
             // 
@@ -736,7 +736,7 @@
             // ribbonPageGroupSettings
             // 
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsFiltering);
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsHistory);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnPreDefinedQueries);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsLookAndFeel);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsUserStatistics);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnExtensionSettings);
@@ -858,7 +858,7 @@
         private DevExpress.XtraBars.BarButtonItem bBtnClientServer;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnStatisticsFiltering;
-        private DevExpress.XtraBars.BarButtonItem bBtnStatisticsHistory;
+        private DevExpress.XtraBars.BarButtonItem bBtnPreDefinedQueries;
         private DevExpress.XtraBars.BarButtonItem bBtnStatisticsLookAndFeel;
         private DevExpress.XtraBars.BarButtonItem bBtnStatisticsUserStatistics;
         private DevExpress.XtraBars.BarButtonItem bBtnExtensionSettings;

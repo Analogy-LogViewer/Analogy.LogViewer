@@ -2277,6 +2277,12 @@ namespace Analogy
             deOlderThanFilter.DateTime = message.Date;
             chkDateOlderThan.Checked = true;
         }
+
+        private void sbtnMoreHighlight_Click(object sender, EventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(1);
+            user.ShowDialog(this);
+        }
     }
 }
 
