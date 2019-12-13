@@ -351,13 +351,24 @@ namespace Analogy
         }
 
         public void AddHighlight(string text, PreDefinedQueryType type, Color color) => Highlights.Add(new PreDefineHighlight(type, text, color));
-        public void AddFilter(string text, PreDefinedQueryType type) => Filters.Add(new PreDefineFilter(type, text));
-        public void AddAlert(string text, PreDefinedQueryType type) => Alerts.Add(new PreDefineAlert(type, text));
+        public void AddFilter(string includeText, string excludeText, string sources, string modules) => Filters.Add(new PreDefineFilter(includeText,excludeText,sources,modules));
+        public void AddAlert(string includeText, string excludeText, string sources, string modules) => Alerts.Add(new PreDefineAlert(includeText, excludeText, sources, modules));
 
         public void RemoveHighlight(PreDefineHighlight highlight)
         {
             if (Highlights.Contains(highlight))
                 Highlights.Remove(highlight);
+        }
+
+        public void RemoveFilter(PreDefineFilter filter)
+        {
+            if (Filters.Contains(filter))
+                Filters.Remove(filter);
+        }
+        public void RemoveAlert(PreDefineAlert alert)
+        {
+            if (Alerts.Contains(alert))
+                Alerts.Remove(alert);
         }
     }
     [Serializable]
@@ -382,37 +393,44 @@ namespace Analogy
     [Serializable]
     public class PreDefineFilter
     {
-        public PreDefinedQueryType PreDefinedQueryType { get; set; }
-        public string Text { get; set; }
+        public string IncludeText { get; }
+        public string ExcludeText { get; }
+        public string Sources { get; }
+        public string Modules { get; }
 
-        public PreDefineFilter(PreDefinedQueryType preDefinedQueryType, string text)
+
+        public PreDefineFilter(string includeText, string excludeText, string sources, string modules)
         {
-            PreDefinedQueryType = preDefinedQueryType;
-            Text = text;
-
+            IncludeText = includeText;
+            ExcludeText = excludeText;
+            Sources = sources;
+            Modules = modules;
         }
         public override string ToString()
         {
-            return $"Filter: {Text}. Type:{PreDefinedQueryType}";
+            return $"Filter: Message Text:{IncludeText}. Exclude:{ExcludeText}. Sources:{Sources}. Modules:{Modules}";
         }
     }
 
     [Serializable]
     public class PreDefineAlert
     {
-        public PreDefinedQueryType PreDefinedQueryType { get; set; }
-        public string Text { get; set; }
+        public string IncludeText { get; }
+        public string ExcludeText { get; }
+        public string Sources { get; }
+        public string Modules { get; }
 
-        public PreDefineAlert(PreDefinedQueryType preDefinedQueryType, string text)
+
+        public PreDefineAlert(string includeText, string excludeText, string sources, string modules)
         {
-            PreDefinedQueryType = preDefinedQueryType;
-            Text = text;
-
+            IncludeText = includeText;
+            ExcludeText = excludeText;
+            Sources = sources;
+            Modules = modules;
         }
-
         public override string ToString()
         {
-            return $"Alert: {Text}. Type:{PreDefinedQueryType}";
+            return $"Alert: Message Text:{IncludeText}. Exclude:{ExcludeText}. Sources:{Sources}. Modules:{Modules}";
         }
     }
 }
