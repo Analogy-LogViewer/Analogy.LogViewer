@@ -836,7 +836,7 @@
       <Version>1.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.Interfaces">
-      <Version>2.1.6.1</Version>
+      <Version>2.1.7</Version>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.KafkaProvider">
       <Version>0.1.5</Version>
