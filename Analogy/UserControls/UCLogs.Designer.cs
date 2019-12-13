@@ -165,7 +165,7 @@ namespace Analogy
             this.sBtnMostCommon = new DevExpress.XtraEditors.SimpleButton();
             this.chkExclude = new System.Windows.Forms.CheckBox();
             this.spltText = new System.Windows.Forms.SplitContainer();
-            this.txtbIncludeText = new DevExpress.XtraEditors.TextEdit();
+            this.txtbInclude = new DevExpress.XtraEditors.TextEdit();
             this.sbtnTextInclude = new DevExpress.XtraEditors.SimpleButton();
             this.chkbIncludeText = new System.Windows.Forms.CheckBox();
             this.pboxInfo = new System.Windows.Forms.PictureBox();
@@ -244,6 +244,8 @@ namespace Analogy
             this.tsmiSaveLayoutBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIncreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -282,7 +284,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.spltText)).BeginInit();
             this.spltText.Panel1.SuspendLayout();
             this.spltText.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeText.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).BeginInit();
@@ -1873,7 +1875,7 @@ namespace Analogy
             // 
             // spltText.Panel1
             // 
-            this.spltText.Panel1.Controls.Add(this.txtbIncludeText);
+            this.spltText.Panel1.Controls.Add(this.txtbInclude);
             this.spltText.Panel1.Controls.Add(this.sbtnTextInclude);
             this.spltText.Panel1.Controls.Add(this.chkbIncludeText);
             this.spltText.Panel1.Controls.Add(this.pboxInfo);
@@ -1883,18 +1885,18 @@ namespace Analogy
             this.spltText.SplitterDistance = 998;
             this.spltText.TabIndex = 22;
             // 
-            // txtbIncludeText
+            // txtbInclude
             // 
-            this.txtbIncludeText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtbIncludeText.Location = new System.Drawing.Point(127, 0);
-            this.txtbIncludeText.MenuManager = this.barManager1;
-            this.txtbIncludeText.Name = "txtbIncludeText";
-            this.txtbIncludeText.Size = new System.Drawing.Size(1451, 22);
-            this.txtbIncludeText.TabIndex = 19;
-            this.txtbIncludeText.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
-            this.txtbIncludeText.Enter += new System.EventHandler(this.txtbInclude_Enter);
-            this.txtbIncludeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
-            this.txtbIncludeText.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
+            this.txtbInclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbInclude.Location = new System.Drawing.Point(127, 0);
+            this.txtbInclude.MenuManager = this.barManager1;
+            this.txtbInclude.Name = "txtbInclude";
+            this.txtbInclude.Size = new System.Drawing.Size(1451, 22);
+            this.txtbInclude.TabIndex = 19;
+            this.txtbInclude.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
+            this.txtbInclude.Enter += new System.EventHandler(this.txtbInclude_Enter);
+            this.txtbInclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
+            this.txtbInclude.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
             // 
             // sbtnTextInclude
             // 
@@ -3002,6 +3004,18 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
             this.tsmiDecreaseFontBookmark.Click += new System.EventHandler(this.tsmiDecreaseFont_Click);
             // 
+            // contextMenuStripFilters
+            // 
+            this.contextMenuStripFilters.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripFilters.Name = "contextMenuStripFilters";
+            this.contextMenuStripFilters.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3059,7 +3073,7 @@ namespace Analogy
             this.spltText.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltText)).EndInit();
             this.spltText.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeText.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).EndInit();
@@ -3264,7 +3278,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnSaveViewAgnostic;
         private DevExpress.XtraBars.BarSubItem barSubItemSaveEntireLog;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSaveEntireInAnalogy;
-        private DevExpress.XtraEditors.TextEdit txtbIncludeText;
+        private DevExpress.XtraEditors.TextEdit txtbInclude;
         private DevExpress.XtraEditors.TextEdit txtbExclude;
         private DevExpress.XtraEditors.TextEdit txtbHighlight;
         private DevExpress.XtraEditors.MemoEdit rtxtContent;
@@ -3298,5 +3312,7 @@ namespace Analogy
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterOlder;
         private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
         private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

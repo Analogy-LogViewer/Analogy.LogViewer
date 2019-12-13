@@ -470,6 +470,11 @@ For source/modules use , as seperator and - for exclusion. for example: "test, -
         wVuvgLcZeIbF/cb+A1eugfS5pzkpAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="lblExplaination.Text" xml:space="preserve">
+    <value>All texts are using the same rules are the search window:
+For text (include/exclue) use + for "and" and | for "Or" operations.
+For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
+  </data>
   <data name="sBtnMoveUp.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -541,11 +546,6 @@ For source/modules use , as seperator and - for exclusion. for example: "test, -
         DfSPx/TPh/+Go+n5a6XkMVMVvJ0IQqZmo1lz08l+o5Q8ZqqCd5MJ+lZgk5Q8ABB/AcOOsaZ5zpgXAAAA
         AElFTkSuQmCC
 </value>
-  </data>
-  <data name="lblExplaination.Text" xml:space="preserve">
-    <value>All texts are using the same rules are the search window:
-For text (include/exclue) use + for "and" and | for "Or" operations.
-For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

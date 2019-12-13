@@ -145,6 +145,7 @@ namespace Analogy
             }
             Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
             Settings.UpdateOrder(order);
+            Settings.Save();
         }
 
         private void LoadColorSettings()
@@ -451,7 +452,7 @@ namespace Analogy
             if (lboxFilters.SelectedItem is PreDefineFilter filter)
             {
                 Settings.PreDefinedQueries.RemoveFilter(filter);
-                lboxFilters.DataSource = Settings.PreDefinedQueries.Highlights;
+                lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
                 lboxFilters.Refresh();
             }
         }
@@ -461,6 +462,16 @@ namespace Analogy
             Settings.PreDefinedQueries.AddAlert(txtbIncludeTextAlert.Text, txtbExcludeAlert.Text, txtbSourcesAlert.Text, txtbModulesAlert.Text);
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
             lboxAlerts.Refresh();
+        }
+
+        private void sbtnDeleteAlerts_Click(object sender, EventArgs e)
+        {
+            if (lboxAlerts.SelectedItem is PreDefineAlert alert)
+            {
+                Settings.PreDefinedQueries.RemoveAlert(alert);
+                lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
+                lboxAlerts.Refresh();
+            }
         }
     }
 }

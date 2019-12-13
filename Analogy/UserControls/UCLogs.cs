@@ -61,7 +61,7 @@ namespace Analogy
         private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
- private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
+        private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
         private List<XtraFormLogGrid> ExternalWindows
         {
@@ -193,7 +193,7 @@ namespace Analogy
             KeyEventArgs e = new KeyEventArgs(keyData);
             if (e.Control && e.KeyCode == Keys.F)
             {
-                txtbIncludeText.Focus();
+                txtbInclude.Focus();
             }
             if (e.Shift && e.KeyCode == Keys.F)
 
@@ -221,7 +221,7 @@ namespace Analogy
             if (e.Control && e.KeyCode == Keys.F)
 
             {
-                txtbIncludeText.Focus();
+                txtbInclude.Focus();
                 return true;
             }
             if (e.Shift && e.KeyCode == Keys.F)
@@ -257,9 +257,9 @@ namespace Analogy
 
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
             pnlFilteringLeft.Dock = DockStyle.Fill;
-            txtbIncludeText.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbIncludeText.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtbIncludeText.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
+            txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtbInclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtbInclude.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
 
             txtbExclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtbExclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -273,7 +273,7 @@ namespace Analogy
             }
             if (Settings.SaveSearchFilters)
             {
-                txtbIncludeText.Text = Settings.IncludeText;
+                txtbInclude.Text = Settings.IncludeText;
                 txtbExclude.Text = Settings.ExcludedText;
                 txtbSource.Text = Settings.SourceText;
                 txtbModule.Text = Settings.ModuleText;
@@ -422,7 +422,7 @@ namespace Analogy
                 }
 
                 string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
-                if (chkbHighlight.Checked && FilterCriteriaObject.Match(text, txtbHighlight.Text,PreDefinedQueryType.Contains))
+                if (chkbHighlight.Checked && FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
                 {
                     e.Appearance.BackColor = Settings.ColorSettings.GetHighlightColor();
                 }
@@ -550,10 +550,10 @@ namespace Analogy
         }
         private void txtbInclude_TextChanged(object sender, EventArgs e)
         {
-            if (OldTextInclude.Equals(txtbIncludeText.Text)) return;
-            OldTextInclude = txtbIncludeText.Text;
-            txtbHighlight.Text = txtbIncludeText.Text;
-            if (string.IsNullOrEmpty(txtbIncludeText.Text))
+            if (OldTextInclude.Equals(txtbInclude.Text)) return;
+            OldTextInclude = txtbInclude.Text;
+            txtbHighlight.Text = txtbInclude.Text;
+            if (string.IsNullOrEmpty(txtbInclude.Text))
             {
                 chkbIncludeText.Checked = false;
                 return;
@@ -989,7 +989,7 @@ namespace Analogy
         {
             _filterCriteriaInline.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteriaInline.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
-            _filterCriteriaInline.TextInclude = chkbIncludeText.Checked ? txtbIncludeText.Text : string.Empty;
+            _filterCriteriaInline.TextInclude = chkbIncludeText.Checked ? txtbInclude.Text : string.Empty;
             _filterCriteriaInline.TextExclude = chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
 
 
@@ -1053,7 +1053,7 @@ namespace Analogy
             string filter = _filterCriteriaInline.GetSqlExpression();
             if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
             {
-                CriteriaOperator op = LogGrid.ActiveFilterCriteria; 
+                CriteriaOperator op = LogGrid.ActiveFilterCriteria;
                 string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
                 filter = $"{filter} and {filterString}";
             }
@@ -1062,8 +1062,8 @@ namespace Analogy
             {
                 _messageData.BeginLoadData();
                 //todo:replace for performance
-                logGridFiltered.ActiveFilterString = _filterCriteriaInline.GetSqlExpression(); 
-                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression(); 
+                logGridFiltered.ActiveFilterString = _filterCriteriaInline.GetSqlExpression();
+                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression();
                 //gridControl.MainView = logGridFiltered;
                 //LogGrid = logGridFiltered;
                 _messageData.EndLoadData();
@@ -1244,13 +1244,13 @@ namespace Analogy
 
         private void txtbInclude_MouseEnter(object sender, EventArgs e)
         {
-            txtbIncludeText.Focus();
-            txtbIncludeText.SelectAll();
+            txtbInclude.Focus();
+            txtbInclude.SelectAll();
         }
 
         private void txtbInclude_Enter(object sender, EventArgs e)
         {
-            txtbIncludeText.SelectAll();
+            txtbInclude.SelectAll();
         }
 
         private void txtbExcludeSource_TextChanged(object sender, EventArgs e)
@@ -1413,7 +1413,7 @@ namespace Analogy
         {
             if (e.KeyCode == Keys.Enter)
             {
-                autoCompleteInclude.Add(txtbIncludeText.Text);
+                autoCompleteInclude.Add(txtbInclude.Text);
             }
         }
 
@@ -1622,7 +1622,7 @@ namespace Analogy
             //chkExclude.Checked = true;
             FilterHasChanged = true;
         }
-        
+
 
         private void chkLstLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
@@ -2161,7 +2161,7 @@ namespace Analogy
 
         private void sbtnTextInclude_Click(object sender, EventArgs e)
         {
-            txtbIncludeText.Text = "";
+            txtbInclude.Text = "";
         }
 
         private void sbtnTextExclude_Click(object sender, EventArgs e)
@@ -2286,7 +2286,23 @@ namespace Analogy
 
         private void sbtnPreDefinedFilters_Click(object sender, EventArgs e)
         {
+            if (!Settings.PreDefinedQueries.Filters.Any()) return;
+            contextMenuStripFilters.ContextMenu=new ContextMenu();
+            foreach (PreDefineFilter filter in Settings.PreDefinedQueries.Filters)
+            {
+           
+                MenuItem item = new MenuItem(filter.ToString());
+                item.Click += (s, arg) =>
+                {
+                    txtbInclude.Text = filter.IncludeText;
+                    txtbExclude.Text = filter.ExcludeText;
+                    txtbSource.Text = filter.Sources;
+                    txtbModule.Text = filter.Modules;
+                };
+                contextMenuStripFilters.ContextMenu.MenuItems.Add(item);
+            }
 
+            contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
         }
     }
 }

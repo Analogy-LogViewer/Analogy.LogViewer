@@ -381,7 +381,7 @@ namespace Analogy
         public PreDefineHighlight(PreDefinedQueryType preDefinedQueryType, string text, Color color)
         {
             PreDefinedQueryType = preDefinedQueryType;
-            Text = text;
+            Text = text ?? string.Empty;
             Color = color;
         }
         public override string ToString()
@@ -401,10 +401,10 @@ namespace Analogy
 
         public PreDefineFilter(string includeText, string excludeText, string sources, string modules)
         {
-            IncludeText = includeText;
-            ExcludeText = excludeText;
-            Sources = sources;
-            Modules = modules;
+            IncludeText = includeText ?? string.Empty;
+            ExcludeText = excludeText ?? string.Empty;
+            Sources = sources ?? string.Empty;
+            Modules = modules ?? string.Empty;
         }
         public override string ToString()
         {
@@ -423,10 +423,10 @@ namespace Analogy
 
         public PreDefineAlert(string includeText, string excludeText, string sources, string modules)
         {
-            IncludeText = includeText;
-            ExcludeText = excludeText;
-            Sources = sources;
-            Modules = modules;
+            IncludeText = includeText ?? string.Empty;
+            ExcludeText = excludeText ?? string.Empty;
+            Sources = sources ?? string.Empty;
+            Modules = modules ?? string.Empty;
         }
         public override string ToString()
         {
