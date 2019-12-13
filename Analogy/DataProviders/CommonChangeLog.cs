@@ -11,6 +11,8 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
+            
+            yield return new AnalogyChangeLog("Search filtering: Add user predefined search queries (issue #11)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 13));
             yield return new AnalogyChangeLog("Add individual colors rules (issue #03)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 12));
             yield return new AnalogyChangeLog("File listing should be sorted from newest to oldest and customizable by the user (issue #69)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 09));
             yield return new AnalogyChangeLog("Consolidate all data providers (per factory) under the ribbon UI (issue #63)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 09));

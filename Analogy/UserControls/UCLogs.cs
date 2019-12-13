@@ -2287,11 +2287,11 @@ namespace Analogy
         private void sbtnPreDefinedFilters_Click(object sender, EventArgs e)
         {
             if (!Settings.PreDefinedQueries.Filters.Any()) return;
-            contextMenuStripFilters.ContextMenu=new ContextMenu();
+            contextMenuStripFilters.Items.Clear();
             foreach (PreDefineFilter filter in Settings.PreDefinedQueries.Filters)
             {
-           
-                MenuItem item = new MenuItem(filter.ToString());
+
+                ToolStripMenuItem item = new ToolStripMenuItem(filter.ToString());
                 item.Click += (s, arg) =>
                 {
                     txtbInclude.Text = filter.IncludeText;
@@ -2299,7 +2299,7 @@ namespace Analogy
                     txtbSource.Text = filter.Sources;
                     txtbModule.Text = filter.Modules;
                 };
-                contextMenuStripFilters.ContextMenu.MenuItems.Add(item);
+                contextMenuStripFilters.Items.Add(item);
             }
 
             contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
