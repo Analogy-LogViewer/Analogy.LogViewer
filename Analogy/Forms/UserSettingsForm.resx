@@ -163,6 +163,11 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>All texts are using the same rules are the search window:
+For text (include/exclue) use + for "and" and | for "Or" operations.
+For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
+  </data>
   <data name="xtraTabPagePreDefined.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -464,6 +469,11 @@
         JY+CgM2MTXxNNx+jlRyBFWG5CqFHKXAjcIQCuf0LR8GGI7QcWJ8j+Ck49Txry9cQ/5rjpxHuJKoSgLNX
         wVuvgLcZeIbF/cb+A1eugfS5pzkpAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="lblExplaination.Text" xml:space="preserve">
+    <value>All texts are using the same rules are the search window:
+For text (include/exclue) use + for "and" and | for "Or" operations.
+For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
   </data>
   <data name="sBtnMoveUp.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -21,7 +21,7 @@ namespace Analogy
         private static object sync = new object();
         private bool ExternalDataSourcesAdded { get; set; }
         public static FactoriesManager Instance = _instance.Value;
-        private List<IAnalogyFactory> builtInFactories { get; }
+        private List<IAnalogyFactory> BuiltInFactories { get; }
         private List<IAnalogyDataProviderSettings> DataProvidersSettings { get; set; }
 
         public List<(IAnalogyFactory Factory, Assembly Assembly)> Assemblies { get; private set; }
@@ -37,7 +37,7 @@ namespace Analogy
                 (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
                 (new EventLogDataFactory(), Assembly.GetAssembly(typeof(EventLogDataFactory)))
             };
-            builtInFactories = new List<IAnalogyFactory>();
+            BuiltInFactories = new List<IAnalogyFactory>();
             try
             {
                 foreach ((IAnalogyFactory factory, _) in Assemblies)
@@ -47,11 +47,11 @@ namespace Analogy
                     if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
                     foreach (var provider in factory.DataProviders.Items)
                     {
-                        provider.InitializeDataProviderAsync();
+                        provider.InitializeDataProviderAsync(AnalogyLogger.Intance);
                     }
                     //if no exception in init then add to list
                     Factories.Add(factory);
-                    builtInFactories.Add(factory);
+                    BuiltInFactories.Add(factory);
 
                 }
             }
@@ -157,7 +157,7 @@ namespace Analogy
 
         public bool IsBuiltInFactory(IAnalogyFactory factory) => IsBuiltInFactory(factory.FactoryID);
 
-        public bool IsBuiltInFactory(Guid factoryId) => builtInFactories.Exists(f => f.FactoryID.Equals(factoryId));
+        public bool IsBuiltInFactory(Guid factoryId) => BuiltInFactories.Exists(f => f.FactoryID.Equals(factoryId));
         public List<IAnalogyDataProviderSettings> GetProvidersSettings() => DataProvidersSettings.ToList();
 
 
@@ -177,6 +177,7 @@ namespace Analogy
 
         public ExternalDataProviders()
         {
+
             Factories = new List<IAnalogyFactory>();
             Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>();
             DataProviderSettings = new List<IAnalogyDataProviderSettings>();
@@ -203,7 +204,7 @@ namespace Analogy
                                 if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
                                 foreach (var provider in factory.DataProviders.Items)
                                 {
-                                    provider.InitializeDataProviderAsync();
+                                    provider.InitializeDataProviderAsync(AnalogyLogger.Intance);
                                 }
 
                                 //if no exception in init then add to list

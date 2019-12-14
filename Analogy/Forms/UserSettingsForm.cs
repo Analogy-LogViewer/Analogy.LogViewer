@@ -112,6 +112,9 @@ namespace Analogy
             cbDataProviderAssociation.DataSource = Settings.FactoriesSettings;
             cbDataProviderAssociation.DisplayMember = "FactoryName";
             tsRememberLastOpenedDataProvider.IsOn = Settings.RememberLastOpenedDataProvider;
+            lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
+            lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
+            lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -142,6 +145,7 @@ namespace Analogy
             }
             Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
             Settings.UpdateOrder(order);
+            Settings.Save();
         }
 
         private void LoadColorSettings()
@@ -395,6 +399,79 @@ namespace Analogy
             if (cbDataProviderAssociation.SelectedItem is FactorySettings setting)
                 setting.UserSettingFileAssociations = txtbDataProviderAssociation.Text
                     .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
+
+        private void rbtnHighlightContains_CheckedChanged(object sender, EventArgs e)
+        {
+            teHighlightContains.Enabled = rbtnHighlightContains.Checked;
+            teHighlightEquals.Enabled = rbtnHighlightEquals.Checked;
+        }
+
+        private void rbtnHighlightEquals_CheckedChanged(object sender, EventArgs e)
+        {
+            teHighlightContains.Enabled = rbtnHighlightContains.Checked;
+            teHighlightEquals.Enabled = rbtnHighlightEquals.Checked;
+        }
+
+        private void sbtnAddHighlight_Click(object sender, EventArgs e)
+        {
+            if (rbtnHighlightContains.Checked)
+            {
+                Settings.PreDefinedQueries.AddHighlight(teHighlightContains.Text,PreDefinedQueryType.Contains,cpeHighlightPreDefined.Color);
+                lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
+                lboxHighlightItems.Refresh();
+            }
+
+            if (rbtnHighlightEquals.Checked)
+            {
+                Settings.PreDefinedQueries.AddHighlight(teHighlightEquals.Text, PreDefinedQueryType.Equals, cpeHighlightPreDefined.Color);
+                lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
+                lboxHighlightItems.Refresh();
+            }
+        }
+
+        private void sbtnDeleteHighlight_Click(object sender, EventArgs e)
+        {
+            if (lboxHighlightItems.SelectedItem is PreDefineHighlight highlight)
+            {
+                Settings.PreDefinedQueries.RemoveHighlight(highlight);
+                lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
+                lboxHighlightItems.Refresh();
+            }
+        }
+
+        private void sbtnAddFilter_Click(object sender, EventArgs e)
+        {
+            Settings.PreDefinedQueries.AddFilter(txtbIncludeTextFilter.Text, txtbExcludeFilter.Text, txtbSourcesFilter.Text, txtbModulesFilter.Text);
+            lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
+            lboxFilters.Refresh();
+        }
+
+        private void sbtnDeleteFilter_Click(object sender, EventArgs e)
+        {
+            if (lboxFilters.SelectedItem is PreDefineFilter filter)
+            {
+                Settings.PreDefinedQueries.RemoveFilter(filter);
+                lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
+                lboxFilters.Refresh();
+            }
+        }
+
+        private void sbtnAddAlerts_Click(object sender, EventArgs e)
+        {
+            Settings.PreDefinedQueries.AddAlert(txtbIncludeTextAlert.Text, txtbExcludeAlert.Text, txtbSourcesAlert.Text, txtbModulesAlert.Text);
+            lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
+            lboxAlerts.Refresh();
+        }
+
+        private void sbtnDeleteAlerts_Click(object sender, EventArgs e)
+        {
+            if (lboxAlerts.SelectedItem is PreDefineAlert alert)
+            {
+                Settings.PreDefinedQueries.RemoveAlert(alert);
+                lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
+                lboxAlerts.Refresh();
+            }
         }
     }
 }

@@ -67,7 +67,6 @@ namespace Analogy
             this.tsmiIncreaseFont = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFont = new System.Windows.Forms.ToolStripMenuItem();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.logGridFiltered=new GridView();
             this.gridColumnDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnTimeDiff = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -82,6 +81,7 @@ namespace Analogy
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.logGridFiltered = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -128,6 +128,7 @@ namespace Analogy
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnButtomExpand = new DevExpress.XtraBars.BarButtonItem();
             this.btSwitchExpandButtomMessage = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
             this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
             this.sBtnPageNext = new DevExpress.XtraEditors.SimpleButton();
@@ -163,10 +164,11 @@ namespace Analogy
             this.sBtnMostCommon = new DevExpress.XtraEditors.SimpleButton();
             this.chkExclude = new System.Windows.Forms.CheckBox();
             this.spltText = new System.Windows.Forms.SplitContainer();
-            this.txtbIncludeText = new DevExpress.XtraEditors.TextEdit();
+            this.txtbInclude = new DevExpress.XtraEditors.TextEdit();
             this.sbtnTextInclude = new DevExpress.XtraEditors.SimpleButton();
             this.chkbIncludeText = new System.Windows.Forms.CheckBox();
             this.pboxInfo = new System.Windows.Forms.PictureBox();
+            this.sbtnPreDefinedFilters = new DevExpress.XtraEditors.SimpleButton();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.tcBottom = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMessageInfo = new DevExpress.XtraTab.XtraTabPage();
@@ -241,6 +243,8 @@ namespace Analogy
             this.tsmiSaveLayoutBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIncreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -279,7 +283,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.spltText)).BeginInit();
             this.spltText.Panel1.SuspendLayout();
             this.spltText.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeText.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).BeginInit();
@@ -322,7 +326,8 @@ namespace Analogy
             this.gridControl.Size = new System.Drawing.Size(2124, 248);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.logGrid,this.logGridFiltered});
+            this.logGrid,
+            this.logGridFiltered});
             this.gridControl.Click += new System.EventHandler(this.pmsGrid_Click);
             this.gridControl.DoubleClick += new System.EventHandler(this.pmsGrid_DoubleClick);
             this.gridControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LogGrid_KeyPress);
@@ -557,56 +562,6 @@ namespace Analogy
             this.logGrid.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
             this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.GridViewCustomColumnDisplayText);
             this.logGrid.Click += new System.EventHandler(this.logGrid_Click);
-
-
-
-
-            // 
-            // logGridFiltered
-            // 
-            this.logGridFiltered.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.logGridFiltered.Appearance.OddRow.Options.UseBackColor = true;
-            this.logGridFiltered.Appearance.Row.Options.UseTextOptions = true;
-            this.logGridFiltered.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.logGridFiltered.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.logGridFiltered.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.logGridFiltered.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumnDataSource,
-            this.gridColumnDate,
-            this.gridColumnTimeDiff,
-            this.gridColumnText,
-            this.gridColumnSource,
-            this.gridColumnLevel,
-            this.gridColumnClass,
-            this.gridColumnCategory,
-            this.gridColumnUser,
-            this.gridColumnModule,
-            this.gridColumnObject,
-            this.gridColumnProcessID,
-            this.gridColumnThread});
-            this.logGridFiltered.DetailHeight = 431;
-            this.logGridFiltered.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.logGridFiltered.GridControl = this.gridControl;
-            this.logGridFiltered.Images = this.imageList;
-            this.logGridFiltered.IndicatorWidth = 24;
-            this.logGridFiltered.Name = "logGrid";
-            this.logGridFiltered.OptionsBehavior.Editable = false;
-            this.logGridFiltered.OptionsFilter.AllowColumnMRUFilterList = false;
-            this.logGridFiltered.OptionsFilter.AllowMRUFilterList = false;
-            this.logGridFiltered.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.logGridFiltered.OptionsView.AutoCalcPreviewLineCount = true;
-            this.logGridFiltered.OptionsView.ColumnAutoWidth = false;
-            this.logGridFiltered.OptionsView.RowAutoHeight = true;
-            this.logGridFiltered.OptionsView.ShowAutoFilterRow = true;
-            this.logGridFiltered.OptionsView.ShowGroupPanel = false;
-            this.logGridFiltered.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
-            this.logGridFiltered.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
-            this.logGridFiltered.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.PmsGridView_SelectionChanged);
-            this.logGridFiltered.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGrid_FocusedRowChanged);
-            this.logGridFiltered.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
-            this.logGridFiltered.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.GridViewCustomColumnDisplayText);
-            this.logGridFiltered.Click += new System.EventHandler(this.logGrid_Click);
-
             // 
             // gridColumnDataSource
             // 
@@ -858,9 +813,55 @@ namespace Analogy
             this.imageList.Images.SetKeyName(8, "log16x16.ico");
             this.imageList.Images.SetKeyName(9, "Question_16x16.png");
             // 
+            // logGridFiltered
+            // 
+            this.logGridFiltered.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.logGridFiltered.Appearance.OddRow.Options.UseBackColor = true;
+            this.logGridFiltered.Appearance.Row.Options.UseTextOptions = true;
+            this.logGridFiltered.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.logGridFiltered.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.logGridFiltered.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.logGridFiltered.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumnDataSource,
+            this.gridColumnDate,
+            this.gridColumnTimeDiff,
+            this.gridColumnText,
+            this.gridColumnSource,
+            this.gridColumnLevel,
+            this.gridColumnClass,
+            this.gridColumnCategory,
+            this.gridColumnUser,
+            this.gridColumnModule,
+            this.gridColumnObject,
+            this.gridColumnProcessID,
+            this.gridColumnThread});
+            this.logGridFiltered.DetailHeight = 431;
+            this.logGridFiltered.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.logGridFiltered.GridControl = this.gridControl;
+            this.logGridFiltered.Images = this.imageList;
+            this.logGridFiltered.IndicatorWidth = 24;
+            this.logGridFiltered.Name = "logGridFiltered";
+            this.logGridFiltered.OptionsBehavior.Editable = false;
+            this.logGridFiltered.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.logGridFiltered.OptionsFilter.AllowMRUFilterList = false;
+            this.logGridFiltered.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.logGridFiltered.OptionsView.AutoCalcPreviewLineCount = true;
+            this.logGridFiltered.OptionsView.ColumnAutoWidth = false;
+            this.logGridFiltered.OptionsView.RowAutoHeight = true;
+            this.logGridFiltered.OptionsView.ShowAutoFilterRow = true;
+            this.logGridFiltered.OptionsView.ShowGroupPanel = false;
+            this.logGridFiltered.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
+            this.logGridFiltered.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
+            this.logGridFiltered.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.PmsGridView_SelectionChanged);
+            this.logGridFiltered.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGrid_FocusedRowChanged);
+            this.logGridFiltered.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
+            this.logGridFiltered.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.GridViewCustomColumnDisplayText);
+            this.logGridFiltered.Click += new System.EventHandler(this.logGrid_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txtbHighlight);
+            this.panel1.Controls.Add(this.sbtnMoreHighlight);
             this.panel1.Controls.Add(this.pnlButtonsHighlight);
             this.panel1.Controls.Add(this.chkbHighlight);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -876,7 +877,7 @@ namespace Analogy
             this.txtbHighlight.Location = new System.Drawing.Point(200, 0);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1404, 22);
+            this.txtbHighlight.Size = new System.Drawing.Size(1333, 22);
             this.txtbHighlight.TabIndex = 23;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
             // 
@@ -1390,6 +1391,17 @@ namespace Analogy
             this.btSwitchExpandButtomMessage.Name = "btSwitchExpandButtomMessage";
             this.btSwitchExpandButtomMessage.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem1_CheckedChanged);
             // 
+            // sbtnMoreHighlight
+            // 
+            this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1533, 0);
+            this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
+            this.sbtnMoreHighlight.Size = new System.Drawing.Size(71, 26);
+            this.sbtnMoreHighlight.TabIndex = 43;
+            this.sbtnMoreHighlight.Text = "More ...";
+            this.sbtnMoreHighlight.Click += new System.EventHandler(this.sbtnMoreHighlight_Click);
+            // 
             // pnlButtonsHighlight
             // 
             this.pnlButtonsHighlight.Controls.Add(this.lblPageNumber);
@@ -1851,33 +1863,34 @@ namespace Analogy
             // 
             // spltText.Panel1
             // 
-            this.spltText.Panel1.Controls.Add(this.txtbIncludeText);
+            this.spltText.Panel1.Controls.Add(this.txtbInclude);
             this.spltText.Panel1.Controls.Add(this.sbtnTextInclude);
             this.spltText.Panel1.Controls.Add(this.chkbIncludeText);
             this.spltText.Panel1.Controls.Add(this.pboxInfo);
+            this.spltText.Panel1.Controls.Add(this.sbtnPreDefinedFilters);
             this.spltText.Panel2Collapsed = true;
             this.spltText.Size = new System.Drawing.Size(1624, 24);
             this.spltText.SplitterDistance = 998;
             this.spltText.TabIndex = 22;
             // 
-            // txtbIncludeText
+            // txtbInclude
             // 
-            this.txtbIncludeText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtbIncludeText.Location = new System.Drawing.Point(127, 0);
-            this.txtbIncludeText.MenuManager = this.barManager1;
-            this.txtbIncludeText.Name = "txtbIncludeText";
-            this.txtbIncludeText.Size = new System.Drawing.Size(1474, 22);
-            this.txtbIncludeText.TabIndex = 19;
-            this.txtbIncludeText.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
-            this.txtbIncludeText.Enter += new System.EventHandler(this.txtbInclude_Enter);
-            this.txtbIncludeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
-            this.txtbIncludeText.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
+            this.txtbInclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtbInclude.Location = new System.Drawing.Point(127, 0);
+            this.txtbInclude.MenuManager = this.barManager1;
+            this.txtbInclude.Name = "txtbInclude";
+            this.txtbInclude.Size = new System.Drawing.Size(1451, 22);
+            this.txtbInclude.TabIndex = 19;
+            this.txtbInclude.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
+            this.txtbInclude.Enter += new System.EventHandler(this.txtbInclude_Enter);
+            this.txtbInclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
+            this.txtbInclude.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
             // 
             // sbtnTextInclude
             // 
             this.sbtnTextInclude.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1601, 0);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1578, 0);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(23, 24);
             this.sbtnTextInclude.TabIndex = 20;
@@ -1909,6 +1922,17 @@ namespace Analogy
             this.pboxInfo.TabIndex = 12;
             this.pboxInfo.TabStop = false;
             // 
+            // sbtnPreDefinedFilters
+            // 
+            this.sbtnPreDefinedFilters.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.Properties.Resources.SingleMasterFilter_16x16;
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1601, 0);
+            this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
+            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(23, 24);
+            this.sbtnPreDefinedFilters.TabIndex = 21;
+            this.sbtnPreDefinedFilters.ToolTip = "Pre-defined filters";
+            this.sbtnPreDefinedFilters.Click += new System.EventHandler(this.sbtnPreDefinedFilters_Click);
+            // 
             // chkLstLogLevel
             // 
             this.chkLstLogLevel.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
@@ -1928,7 +1952,6 @@ namespace Analogy
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
-            this.chkLstLogLevel.DrawItem += new DevExpress.XtraEditors.ListBoxDrawItemEventHandler(this.chkLstLogLevel_DrawItem);
             // 
             // tcBottom
             // 
@@ -2969,6 +2992,18 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark.Text = "Decrease Font Size";
             this.tsmiDecreaseFontBookmark.Click += new System.EventHandler(this.tsmiDecreaseFont_Click);
             // 
+            // contextMenuStripFilters
+            // 
+            this.contextMenuStripFilters.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripFilters.Name = "contextMenuStripFilters";
+            this.contextMenuStripFilters.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -2987,6 +3022,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             this.cmsMessageOperation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logGridFiltered)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
@@ -3025,7 +3061,7 @@ namespace Analogy
             this.spltText.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltText)).EndInit();
             this.spltText.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeText.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcBottom)).EndInit();
@@ -3229,7 +3265,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnSaveViewAgnostic;
         private DevExpress.XtraBars.BarSubItem barSubItemSaveEntireLog;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSaveEntireInAnalogy;
-        private DevExpress.XtraEditors.TextEdit txtbIncludeText;
+        private DevExpress.XtraEditors.TextEdit txtbInclude;
         private DevExpress.XtraEditors.TextEdit txtbExclude;
         private DevExpress.XtraEditors.TextEdit txtbHighlight;
         private DevExpress.XtraEditors.MemoEdit rtxtContent;
@@ -3261,5 +3297,9 @@ namespace Analogy
         private System.Windows.Forms.ToolStripMenuItem tsmiDateFilterOlder;
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterNewer;
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterOlder;
+        private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
+        private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

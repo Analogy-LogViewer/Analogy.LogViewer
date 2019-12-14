@@ -42,7 +42,7 @@ namespace Analogy.DataSources
             var builtInItems = new List<IAnalogyDataProvider>();
             var adp = new AnalogyOfflineDataProvider();
             builtInItems.Add(adp);
-            adp.InitializeDataProviderAsync();
+            adp.InitializeDataProviderAsync(AnalogyLogger.Intance);
             Items = builtInItems;
         }
     }
@@ -60,7 +60,7 @@ namespace Analogy.DataSources
         public Image OptionalOpenFolderImage { get; }
         public Image OptionalOpenFilesImage { get; }
 
-        public Task InitializeDataProviderAsync()
+        public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             return Task.CompletedTask;
         }

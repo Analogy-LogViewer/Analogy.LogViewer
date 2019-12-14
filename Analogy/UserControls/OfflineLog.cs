@@ -23,6 +23,7 @@ namespace Analogy
             //TreeListFileNodes = new List<string>();
             SelectedPath = initSelectedPath;
             InitializeComponent();
+            treeList1.Columns["colChanged"].SortOrder = SortOrder.Descending;
             treeList1.Appearance.HideSelectionRow.Assign(treeList1.ViewInfo.PaintAppearance.FocusedRow);
         }
 
@@ -119,6 +120,7 @@ namespace Analogy
 
             treeList1.BestFitColumns();
             treeList1.ClearSelection();
+          
             treeList1.SelectionChanged += TreeList1_SelectionChanged;
         }
 
