@@ -28,10 +28,10 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\netcoreapp3.0\Analogy.dll" target="lib\netcoreapp3.0\Analogy.dll" />
-    <file src="bin\Release\netcoreapp3.0\Analogy.exe" target="lib\netcoreapp3.0\Analogy.exe" />
-    <file src="bin\Release\netcoreapp3.0\Analogy.runtimeconfig.json" target="lib\netcoreapp3.0\Analogy.runtimeconfig.json" />
-    <file src="bin\Release\netcoreapp3.0\Analogy.deps.json" target="lib\netcoreapp3.0\Analogy.deps.json" />
+    <file src="Analogy\bin\Release\netcoreapp3.0\Analogy.dll" target="lib\netcoreapp3.0\Analogy.dll" />
+    <file src="Analogy\bin\Release\netcoreapp3.0\Analogy.exe" target="lib\netcoreapp3.0\Analogy.exe" />
+    <file src="Analogy\bin\Release\netcoreapp3.0\Analogy.runtimeconfig.json" target="lib\netcoreapp3.0\Analogy.runtimeconfig.json" />
+    <file src="Analogy\bin\Release\netcoreapp3.0\Analogy.deps.json" target="lib\netcoreapp3.0\Analogy.deps.json" />
     <file src="icon.png" target="" />
   </files>
 </package>
