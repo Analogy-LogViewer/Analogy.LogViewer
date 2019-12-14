@@ -914,29 +914,6 @@ namespace Analogy
 
         }
 
-        public void AcceptChanges(DataTable table, string source)
-        {
-            if (!IsHandleCreated) return;
-            BeginInvoke(new MethodInvoker(() =>
-            {
-                lockSlim.EnterWriteLock();
-                try
-
-                {
-#if DEBUG
-                    Console.WriteLine(source);
-#endif
-                    LogGrid.BeginDataUpdate();
-                    table.AcceptChanges();
-                    LogGrid.EndDataUpdate();
-                }
-                finally
-                {
-                    lockSlim.ExitWriteLock();
-                }
-
-            }));
-        }
         public void AcceptChanges(bool forceRefresh)
         {
             if (!IsHandleCreated) return;
