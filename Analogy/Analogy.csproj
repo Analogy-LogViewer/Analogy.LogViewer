@@ -229,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProviders\CommonChangeLog.cs" />
+    <Compile Include="FilterCriteriaObject.cs" />
     <Compile Include="Forms\AboutDataSourceBox.cs">
       <SubType>Form</SubType>
     </Compile>

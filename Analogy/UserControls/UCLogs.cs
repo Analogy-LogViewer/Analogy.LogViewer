@@ -90,12 +90,12 @@ namespace Analogy
 
         private bool EnableOTA { get; } = false;//GeneralUtils.UseDebugMode("AnalogyOTA");
         private AnalogyLogMessage _currentMassage;
-        private FilterCriteriaObject _filterCriteriaInline = new FilterCriteriaObject();
+        private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
         public bool OnlineMode { get; set; }
 
-        private bool FilterHasChanged { get; set; }
+        // private bool FilterHasChanged { get; set; }
         private bool NewDataExist { get; set; }
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
@@ -103,6 +103,8 @@ namespace Analogy
         private string LayoutFileName;
         private bool BookmarkView;
         private int pageNumber = 1;
+        private CancellationTokenSource filterTokenSource;
+        private CancellationToken filterToken;
 
         private int TotalPages => PagingManager.TotalPages;
         private IAnalogyOfflineDataProvider FileDataProvider { get; set; }
@@ -115,6 +117,8 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
+            filterTokenSource = new CancellationTokenSource();
+            filterToken = filterTokenSource.Token;
             fileProcessor = new FileProcessor(this);
             if (DesignMode) return;
             //splitContainerMain.IsSplitterFixed = false;
@@ -506,7 +510,22 @@ namespace Analogy
 
         }
 
-        private void tsmiExclude_Click(object sender, EventArgs e)
+        private async Task FilterHasChanged()
+        {
+            async Task RefreshData(CancellationToken token)
+            {
+                await Task.Delay(500);
+                if (token.IsCancellationRequested) return;
+                FilterResults();
+
+            }
+
+            filterTokenSource.Cancel();
+            filterTokenSource = new CancellationTokenSource();
+            filterToken = filterTokenSource.Token;
+            await RefreshData(filterToken);
+        }
+        private async void tsmiExclude_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedRowInGrid();
             if (message == null) return;
@@ -516,18 +535,11 @@ namespace Analogy
                 string exclude = ef.Exclude;
                 txtbExclude.Text = txtbExclude.Text + "|" + exclude;
                 chkExclude.Checked = true;
-                FilterHasChanged = true;
+                await FilterHasChanged();
             }
         }
 
-        private void RefreshUserFilter()
-        {
-            FilterHasChanged = true;
-            tmrRefreshFilter.Stop();
-            tmrRefreshFilter.Start();
-        }
-
-        private void chkbInclude_CheckedChanged(object sender, EventArgs e)
+        private async void chkbInclude_CheckedChanged(object sender, EventArgs e)
         {
             if (!chkbIncludeText.Checked && !chkExclude.Checked)
             {
@@ -535,10 +547,10 @@ namespace Analogy
                 gridColumnText.FilterInfo = null;
             }
 
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
-        private void chkbExclude_CheckedChanged(object sender, EventArgs e)
+        private async void chkbExclude_CheckedChanged(object sender, EventArgs e)
         {
             if (!chkbIncludeText.Checked && !chkExclude.Checked)
             {
@@ -546,9 +558,9 @@ namespace Analogy
                 gridColumnText.FilterInfo = null;
             }
 
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
-        private void txtbInclude_TextChanged(object sender, EventArgs e)
+        private async void txtbInclude_TextChanged(object sender, EventArgs e)
         {
             if (OldTextInclude.Equals(txtbInclude.Text)) return;
             OldTextInclude = txtbInclude.Text;
@@ -561,10 +573,10 @@ namespace Analogy
 
             chkbHighlight.Checked = false;
             chkbIncludeText.Checked = true;
-            RefreshUserFilter();
+            await FilterHasChanged();
         }
 
-        private void txtbExclude_TextChanged(object sender, EventArgs e)
+        private async void txtbExclude_TextChanged(object sender, EventArgs e)
         {
             if (OldTextExclude.Equals(txtbExclude.Text)) return;
             Settings.ExcludedText = txtbExclude.Text;
@@ -576,24 +588,7 @@ namespace Analogy
             }
 
             chkExclude.Checked = true;
-            RefreshUserFilter();
-        }
-
-        private void tmrRefreshFilter_Tick(object sender, EventArgs e)
-        {
-            if (FilterHasChanged)
-            {
-                FilterHasChanged = false;
-                FilterResults();
-            }
-        }
-
-
-        private void RadioButtons_clicked(object sender, EventArgs e)
-        {
-            chkbIncludeText.Checked = true;
-            chkExclude.Checked = true;
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
         /// <summary>
@@ -695,7 +690,7 @@ namespace Analogy
             }
         }
 
-        private (int total, int error, int warning, int critical) GetRowsCount()
+        private (int total, int error, int warning, int critical,int alerts) GetRowsCount()
         {
 
             // Create a data view by applying the grid view row filter
@@ -716,7 +711,16 @@ namespace Analogy
                 var error = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Error.ToString());
                 var warning = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Warning.ToString());
                 var critical = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Critical.ToString());
-                return (total, error, warning, critical);
+                var AlertCount = 0;
+                if (Settings.PreDefinedQueries.Alerts.Any())
+                {
+                    var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
+                    AlertCount = messages.Count(m =>
+                        Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
+
+                }
+
+                return (total, error, warning, critical, AlertCount);
             }
             finally
             {
@@ -962,31 +966,31 @@ namespace Analogy
             txtbModule.Text = module;
             FilterResults();
         }
+
+
         private void FilterResults()
         {
-            _filterCriteriaInline.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
-            _filterCriteriaInline.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
-            _filterCriteriaInline.TextInclude = chkbIncludeText.Checked ? txtbInclude.Text : string.Empty;
-            _filterCriteriaInline.TextExclude = chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
+            _filterCriteria.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
+            _filterCriteria.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
+            _filterCriteria.TextInclude = chkbIncludeText.Checked ? txtbInclude.Text : string.Empty;
+            _filterCriteria.TextExclude = chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
 
 
-            Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteriaInline.TextInclude : string.Empty;
-            Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteriaInline.TextExclude : string.Empty;
+            Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
+            Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude : string.Empty;
 
-
-
-
-            _filterCriteriaInline.Levels = null;
+            
+            _filterCriteria.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
+                _filterCriteria.Levels = new[] { AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
+                _filterCriteria.Levels = new[] { AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
+                _filterCriteria.Levels = new[] { AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
+                _filterCriteria.Levels = new[] { AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
             else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
-                _filterCriteriaInline.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
+                _filterCriteria.Levels = new[] { AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
 
 
 
@@ -997,13 +1001,13 @@ namespace Analogy
                 var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
                     .Select(i => i.Substring(1, i.Length - 1));
 
-                _filterCriteriaInline.Sources = includeItems.Select(val => val.Trim()).ToArray();
-                _filterCriteriaInline.ExcludedSources = excludeItems.Select(val => val.Trim()).ToArray();
+                _filterCriteria.Sources = includeItems.Select(val => val.Trim()).ToArray();
+                _filterCriteria.ExcludedSources = excludeItems.Select(val => val.Trim()).ToArray();
             }
             else
             {
-                _filterCriteriaInline.Sources = null;
-                _filterCriteriaInline.ExcludedSources = null;
+                _filterCriteria.Sources = null;
+                _filterCriteria.ExcludedSources = null;
             }
 
             Settings.SourceText = Settings.SaveSearchFilters ? txtbSource.Text : string.Empty;
@@ -1016,18 +1020,18 @@ namespace Analogy
                 var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
                       .Select(i => i.Substring(1, i.Length - 1));
 
-                _filterCriteriaInline.Modules = includeItems.Select(val => val.Trim()).ToArray();
-                _filterCriteriaInline.ExcludedModules = excludeItems.Select(val => val.Trim()).ToArray();
+                _filterCriteria.Modules = includeItems.Select(val => val.Trim()).ToArray();
+                _filterCriteria.ExcludedModules = excludeItems.Select(val => val.Trim()).ToArray();
 
 
             }
             else
             {
-                _filterCriteriaInline.Modules = null;
-                _filterCriteriaInline.ExcludedModules = null;
+                _filterCriteria.Modules = null;
+                _filterCriteria.ExcludedModules = null;
             }
             Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
-            string filter = _filterCriteriaInline.GetSqlExpression();
+            string filter = _filterCriteria.GetSqlExpression();
             if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
             {
                 CriteriaOperator op = LogGrid.ActiveFilterCriteria;
@@ -1037,13 +1041,15 @@ namespace Analogy
             lockSlim.EnterWriteLock();
             try
             {
-                _messageData.BeginLoadData();
-                //todo:replace for performance
-                logGridFiltered.ActiveFilterString = _filterCriteriaInline.GetSqlExpression();
-                _messageData.DefaultView.RowFilter = _filterCriteriaInline.GetSqlExpression();
-                //gridControl.MainView = logGridFiltered;
-                //LogGrid = logGridFiltered;
-                _messageData.EndLoadData();
+
+                //var rows = _messageData.Select(filter);
+                //var dt = _messageData.Clone();
+                //foreach (DataRow row in rows)
+                //{
+                //    dt.ImportRow(row);
+                //}
+                //gridControl.DataSource = dt;
+                _messageData.DefaultView.RowFilter = _filterCriteria.GetSqlExpression();
             }
             finally
             {
@@ -1089,9 +1095,17 @@ namespace Analogy
             BeginInvoke(new MethodInvoker(() =>
             {
                 var result = GetRowsCount();
+                lblTotalMessages.Text = $"Total messages:{result.total}. Errors:{result.error}. Warnings:{result.warning}. Criticals:{result.critical}.";
+                if (result.alerts > 0)
+                {
+                    lblTotalMessagesAlert.Text = $" ALERTS EXISTS: {result.alerts}!";
+                    lblTotalMessagesAlert.Visible = true;
+                }
+                else
+                {
+                    lblTotalMessagesAlert.Visible = false;
+                }
 
-                lblTotalMessages.Text =
-                    $"Total messages:{result.total}. Errors:{result.error}. Warnings:{result.warning}. Criticals:{result.critical}";
             }));
         }
 
@@ -1247,26 +1261,6 @@ namespace Analogy
 
         }
 
-        private void txtbExcludeModule_TextChanged(object sender, EventArgs e)
-        {
-            //if (string.IsNullOrEmpty(txtbExcludeModule.Text))
-            //{
-            //    chkbExcludeModules.Checked = false;
-            //}
-            //else
-            //{
-            //    if (!chkbExcludeModules.Checked)
-            //        chkbExcludeModules.Checked = true;
-            //}
-            //RefreshUserFilter();
-            //Settings.ExcludedModules = txtbExcludeModule.Text;
-        }
-
-        private void chkbExcludeSourceAndModule_CheckedChanged(object sender, EventArgs e)
-        {
-            FilterHasChanged = true;
-        }
-
         private void gridControlBookmarkedMessages_DoubleClick(object sender, EventArgs e)
         {
             if (!(e is DXMouseEventArgs args))
@@ -1359,16 +1353,16 @@ namespace Analogy
 
 
 
-        private void chkbHighlight_CheckedChanged(object sender, EventArgs e)
+        private async void chkbHighlight_CheckedChanged(object sender, EventArgs e)
         {
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
-        private void txtbHighlight_KeyUp(object sender, KeyEventArgs e)
+        private async void txtbHighlight_KeyUp(object sender, KeyEventArgs e)
         {
             chkbHighlight.Checked = !string.IsNullOrEmpty(txtbHighlight.Text);
             HighlightRows.Clear();
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
         private void tsmiExcludeSource_Click(object sender, EventArgs e)
@@ -1576,7 +1570,7 @@ namespace Analogy
             ClearLogs(true);
         }
 
-        private void sBtnMostCommon_Click(object sender, EventArgs e)
+        private async void sBtnMostCommon_Click(object sender, EventArgs e)
         {
             List<string> items;
 
@@ -1589,23 +1583,19 @@ namespace Analogy
             {
                 _excludeMostCommon = AnalogyExclude.GlobalExclusion;
                 chkExclude.Checked = true;
-                FilterHasChanged = true;
+                await FilterHasChanged();
             }
         }
 
-        private void chkLstLogLevel_SelectedIndexChanged(object sender, EventArgs e)
+        private async void chkLstLogLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //chkbIncludeText.Checked = true;
-            //chkExclude.Checked = true;
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
 
-        private void chkLstLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        private async void chkLstLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
-            //chkbIncludeText.Checked = true;
-            //chkExclude.Checked = true;
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
         private void sBtnLength_Click(object sender, EventArgs e)
@@ -2151,7 +2141,7 @@ namespace Analogy
             txtbSource.Text = "";
         }
 
-        private void txtbIncludeSource_TextChanged(object sender, EventArgs e)
+        private async void txtbIncludeSource_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtbSource.Text))
             {
@@ -2163,7 +2153,7 @@ namespace Analogy
                     chkbSources.Checked = true;
             }
 
-            RefreshUserFilter();
+            await FilterHasChanged();
             Settings.SourceText = chkbSources.Text;
         }
 
@@ -2173,7 +2163,7 @@ namespace Analogy
             txtbModule.Text = "";
         }
 
-        private void txtbIncludeModule_TextChanged(object sender, EventArgs e)
+        private async void txtbIncludeModule_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtbModule.Text))
             {
@@ -2185,7 +2175,7 @@ namespace Analogy
                     chkbModules.Checked = true;
             }
 
-            RefreshUserFilter();
+            await FilterHasChanged();
             Settings.ModuleText = chkbModules.Text;
         }
 
@@ -2194,37 +2184,37 @@ namespace Analogy
             UndockViewPerProcess();
         }
 
-        private void deNewerThanFilter_EditValueChanged(object sender, EventArgs e)
+        private async void deNewerThanFilter_EditValueChanged(object sender, EventArgs e)
         {
             chkDateNewerThan.Checked = true;
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
-        private void deNewerThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
+        private async void deNewerThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
         {
             chkDateNewerThan.Checked = true;
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
-        private void deOlderThanFilter_EditValueChanged(object sender, EventArgs e)
+        private async void deOlderThanFilter_EditValueChanged(object sender, EventArgs e)
         {
             chkDateOlderThan.Checked = true;
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
-        private void deOlderThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
+        private async void deOlderThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
         {
             chkDateOlderThan.Checked = true;
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
-        private void chkDateOlderThan_CheckedChanged(object sender, EventArgs e)
+        private async void chkDateOlderThan_CheckedChanged(object sender, EventArgs e)
         {
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
-        private void chkDateNewerThan_CheckedChanged(object sender, EventArgs e)
+        private async void chkDateNewerThan_CheckedChanged(object sender, EventArgs e)
         {
-            FilterHasChanged = true;
+            await FilterHasChanged();
         }
 
         private void tsmiDateFilterNewer_Click(object sender, EventArgs e)

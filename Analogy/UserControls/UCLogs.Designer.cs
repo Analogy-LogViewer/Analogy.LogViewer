@@ -19,8 +19,6 @@ namespace Analogy
             if (DesignMode) return;
             tmrNewData.Stop();
             tmrNewData.Dispose();
-            tmrRefreshFilter.Stop();
-            tmrRefreshFilter.Dispose();
             if (disposing)
             {
 
@@ -191,7 +189,6 @@ namespace Analogy
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.tmrRefreshFilter = new System.Windows.Forms.Timer(this.components);
             this.tmrNewData = new System.Windows.Forms.Timer(this.components);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMain = new DevExpress.XtraTab.XtraTabPage();
@@ -246,6 +243,7 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lblTotalMessagesAlert = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -768,6 +766,7 @@ namespace Analogy
             this.gridColumnObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnObject.Caption = "Object";
+            this.gridColumnObject.FieldName = "Object";
             this.gridColumnObject.MinWidth = 24;
             this.gridColumnObject.Name = "gridColumnObject";
             this.gridColumnObject.OptionsColumn.AllowEdit = false;
@@ -2309,20 +2308,14 @@ namespace Analogy
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(173, 0);
+            this.progressBar1.Location = new System.Drawing.Point(345, 0);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar1.MarqueeAnimationSpeed = 1;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1752, 30);
+            this.progressBar1.Size = new System.Drawing.Size(1580, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
-            // 
-            // tmrRefreshFilter
-            // 
-            this.tmrRefreshFilter.Enabled = true;
-            this.tmrRefreshFilter.Interval = 500;
-            this.tmrRefreshFilter.Tick += new System.EventHandler(this.tmrRefreshFilter_Tick);
             // 
             // tmrNewData
             // 
@@ -2376,6 +2369,7 @@ namespace Analogy
             // pnlBottom
             // 
             this.pnlBottom.Controls.Add(this.progressBar1);
+            this.pnlBottom.Controls.Add(this.lblTotalMessagesAlert);
             this.pnlBottom.Controls.Add(this.sBtnCancel);
             this.pnlBottom.Controls.Add(this.lblTotalMessages);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -2410,7 +2404,8 @@ namespace Analogy
             this.lblTotalMessages.Location = new System.Drawing.Point(0, 0);
             this.lblTotalMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblTotalMessages.Name = "lblTotalMessages";
-            this.lblTotalMessages.Size = new System.Drawing.Size(173, 23);
+            this.lblTotalMessages.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.lblTotalMessages.Size = new System.Drawing.Size(183, 23);
             this.lblTotalMessages.TabIndex = 0;
             this.lblTotalMessages.Text = "Total messages: N/A";
             // 
@@ -3016,6 +3011,24 @@ namespace Analogy
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // lblTotalMessagesAlert
+            // 
+            this.lblTotalMessagesAlert.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblTotalMessagesAlert.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalMessagesAlert.Appearance.Options.UseBackColor = true;
+            this.lblTotalMessagesAlert.Appearance.Options.UseFont = true;
+            this.lblTotalMessagesAlert.Appearance.Options.UseTextOptions = true;
+            this.lblTotalMessagesAlert.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.lblTotalMessagesAlert.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblTotalMessagesAlert.Location = new System.Drawing.Point(183, 0);
+            this.lblTotalMessagesAlert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lblTotalMessagesAlert.Name = "lblTotalMessagesAlert";
+            this.lblTotalMessagesAlert.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblTotalMessagesAlert.Size = new System.Drawing.Size(162, 23);
+            this.lblTotalMessagesAlert.TabIndex = 6;
+            this.lblTotalMessagesAlert.Text = "ALERTS EXISTS: !";
+            this.lblTotalMessagesAlert.Visible = false;
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3130,7 +3143,6 @@ namespace Analogy
         private System.Windows.Forms.CheckBox chkbIncludeText;
         private System.Windows.Forms.CheckBox chkExclude;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Timer tmrRefreshFilter;
         private System.Windows.Forms.ContextMenuStrip cmsMessageOperation;
         private System.Windows.Forms.ToolStripMenuItem tsmiCopy;
         private System.Windows.Forms.ToolStripMenuItem tsmiEmail;
@@ -3314,5 +3326,6 @@ namespace Analogy
         private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
     }
 }
