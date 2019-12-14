@@ -203,13 +203,13 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
-                chkLstLogLevel.Items[0].CheckState = (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
                     ? CheckState.Unchecked
                     : CheckState.Checked;
             }
             if (e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[2].CheckState = (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
                     ? CheckState.Unchecked
                     : CheckState.Checked;
             }
@@ -233,14 +233,14 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
-                chkLstLogLevel.Items[0].CheckState = (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
                     ? CheckState.Unchecked
                     : CheckState.Checked;
                 return true;
             }
             if (e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[2].CheckState = (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
                     ? CheckState.Unchecked
                     : CheckState.Checked;
                 return true;
