@@ -64,6 +64,7 @@ namespace Analogy
         public List<FactorySettings> FactoriesSettings { get; set; }
         public Guid LastOpenedDataProvider { get; set; }
         public bool RememberLastOpenedDataProvider { get; set; }
+        public PreDefinedQueries PreDefinedQueries { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -88,25 +89,11 @@ namespace Analogy
             ModuleText = Settings.Default.ModuleText;
             ShowHistoryOfClearedMessages = Settings.Default.ShowHistoryClearedMessages;
             SaveSearchFilters = Settings.Default.SaveSearchFilters;
-            //SimpleMode = Properties.Settings.Default.SimpleMode;
-            RecentFiles =
-                Settings.Default.RecentFiles
-                    .Split(new[] { "##" }, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(itm =>
-                    {
-                        var items = itm.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                        if (Guid.TryParse(items[0], out Guid id))
-                        {
-                            return (id, items.Last());
-                        }
-
-                        return (Guid.NewGuid(), items.Last());
-                    }).ToList();
+            RecentFiles = ParseSettings<List<(Guid ID, string FileName)>>(Settings.Default.RecentFiles);
             RecentFilesCount = Settings.Default.RecentFilesCount;
             EnableFileCaching = Settings.Default.EnableFileCaching;
             LoadExtensionsOnStartup = Settings.Default.LoadExtensionsOnStartup;
-            StartupExtensions = Settings.Default.StartupExtensions
-                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
+            StartupExtensions = ParseSettings<List<Guid>>(Settings.Default.StartupExtensions);
             StartupRibbonMinimized = Settings.Default.StartupRibbonMinimized;
             StartupErrorLogLevel = Settings.Default.StartupErrorLogLevel;
             PagingEnabled = Settings.Default.PagingEnabled;
@@ -117,18 +104,16 @@ namespace Analogy
             SearchAlsoInSourceAndModule = Settings.Default.SearchAlsoInSourceAndModule;
             IdleMode = Settings.Default.IdleMode;
             IdleTimeMinutes = Settings.Default.IdleTimeMinutes;
-            EventLogs = Settings.Default.WindowsEventLogs.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
-                .ToList();
-            AutoStartDataProviders = Settings.Default.AutoStartDataProviders
-                .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();
+            EventLogs = ParseSettings<List<string>>(Settings.Default.WindowsEventLogs);
+            AutoStartDataProviders = ParseSettings<List<Guid>>(Settings.Default.AutoStartDataProviders);
             AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
             ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
-           // LogParsersSettings = ParseSettings<LogParserSettingsContainer>(Settings.Default.LogParsersSettings);
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
             FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
             LastOpenedDataProvider = Settings.Default.LastOpenedDataProvider;
             RememberLastOpenedDataProvider = Settings.Default.RememberLastOpenedDataProvider;
+            PreDefinedQueries = ParseSettings<PreDefinedQueries>(Settings.Default.PreDefinedQueries);
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -159,12 +144,10 @@ namespace Analogy
             Settings.Default.ShowHistoryClearedMessages = ShowHistoryOfClearedMessages;
             Settings.Default.SaveSearchFilters = SaveSearchFilters;
             Settings.Default.RecentFilesCount = RecentFilesCount;
-            Settings.Default.RecentFiles = string.Join("##",
-                RecentFiles.Take(RecentFilesCount).Select(i => $"{i.ID},{i.FileName}"));
-            //Properties.Settings.Default.SimpleMode = SimpleMode;
+            Settings.Default.RecentFiles = JsonConvert.SerializeObject(RecentFiles.Take(RecentFilesCount).ToList());
             Settings.Default.EnableFileCaching = EnableFileCaching;
             Settings.Default.LoadExtensionsOnStartup = LoadExtensionsOnStartup;
-            Settings.Default.StartupExtensions = string.Join(",", StartupExtensions);
+            Settings.Default.StartupExtensions = JsonConvert.SerializeObject(StartupExtensions);
             Settings.Default.StartupRibbonMinimized = StartupRibbonMinimized;
             Settings.Default.StartupErrorLogLevel = StartupErrorLogLevel;
             Settings.Default.PagingEnabled = PagingEnabled;
@@ -175,36 +158,21 @@ namespace Analogy
             Settings.Default.SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule;
             Settings.Default.IdleMode = IdleMode;
             Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
-            Settings.Default.WindowsEventLogs = string.Join(",", EventLogs);
-            Settings.Default.AutoStartDataProviders = string.Join(",", AutoStartDataProviders);
+            Settings.Default.WindowsEventLogs = JsonConvert.SerializeObject(EventLogs);
+            Settings.Default.AutoStartDataProviders = JsonConvert.SerializeObject(AutoStartDataProviders);
             Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
-            try
-            {
-              //  Settings.Default.LogParsersSettings = JsonConvert.SerializeObject(LogParsersSettings);
-            }
-            catch
-            {
-                Settings.Default.LogParsersSettings = string.Empty;
-            }
-            try
-            {
-                Settings.Default.ColorSettings = JsonConvert.SerializeObject(ColorSettings);
-            }
-            catch
-            {
-                Settings.Default.ColorSettings = string.Empty;
-            }
-
+            Settings.Default.ColorSettings = JsonConvert.SerializeObject(ColorSettings);
             Settings.Default.DefaultDescendOrder = DefaultDescendOrder;
             Settings.Default.FactoriesOrder = JsonConvert.SerializeObject(FactoriesOrder);
             Settings.Default.FactoriesSettings = JsonConvert.SerializeObject(FactoriesSettings);
-             Settings.Default.LastOpenedDataProvider= LastOpenedDataProvider;
+            Settings.Default.LastOpenedDataProvider = LastOpenedDataProvider;
             Settings.Default.RememberLastOpenedDataProvider = RememberLastOpenedDataProvider;
+            Settings.Default.PreDefinedQueries = JsonConvert.SerializeObject(PreDefinedQueries);
             Settings.Default.Save();
 
         }
 
-    public void AddToRecentFiles(Guid iD, string file)
+        public void AddToRecentFiles(Guid iD, string file)
         {
             AnalogyOpenedFiles += 1;
             if (!RecentFiles.Contains((iD, file)))
@@ -245,10 +213,10 @@ namespace Analogy
             {
                 FactoryGuid = factory.FactoryID,
                 Status = DataProviderFactoryStatus.NotSet,
-                UserSettingFileAssociations =new List<string>()
-                    //factory.DataProviders.Items
-                    //.Where(itm => itm is IAnalogyOfflineDataProvider)
-                    //.SelectMany(itm => ((IAnalogyOfflineDataProvider)itm).SupportFormats).ToList()
+                UserSettingFileAssociations = new List<string>()
+                //factory.DataProviders.Items
+                //.Where(itm => itm is IAnalogyOfflineDataProvider)
+                //.SelectMany(itm => ((IAnalogyOfflineDataProvider)itm).SupportFormats).ToList()
             };
             FactoriesSettings.Add(createNew);
             return createNew;
@@ -361,9 +329,109 @@ namespace Analogy
         }
     }
 
-    public class PreDefinedQuery
+    public enum PreDefinedQueryType
     {
+        Contains,
+        Equals
+    }
+    [Serializable]
+    public class PreDefinedQueries
+    {
+        public List<PreDefineHighlight> Highlights { get; set; }
 
+        public List<PreDefineFilter> Filters { get; set; }
+
+        public List<PreDefineAlert> Alerts { get; set; }
+
+        public PreDefinedQueries()
+        {
+            Highlights = new List<PreDefineHighlight>();
+            Filters = new List<PreDefineFilter>();
+            Alerts = new List<PreDefineAlert>();
+        }
+
+        public void AddHighlight(string text, PreDefinedQueryType type, Color color) => Highlights.Add(new PreDefineHighlight(type, text, color));
+        public void AddFilter(string includeText, string excludeText, string sources, string modules) => Filters.Add(new PreDefineFilter(includeText,excludeText,sources,modules));
+        public void AddAlert(string includeText, string excludeText, string sources, string modules) => Alerts.Add(new PreDefineAlert(includeText, excludeText, sources, modules));
+
+        public void RemoveHighlight(PreDefineHighlight highlight)
+        {
+            if (Highlights.Contains(highlight))
+                Highlights.Remove(highlight);
+        }
+
+        public void RemoveFilter(PreDefineFilter filter)
+        {
+            if (Filters.Contains(filter))
+                Filters.Remove(filter);
+        }
+        public void RemoveAlert(PreDefineAlert alert)
+        {
+            if (Alerts.Contains(alert))
+                Alerts.Remove(alert);
+        }
+    }
+    [Serializable]
+    public class PreDefineHighlight
+    {
+        public PreDefinedQueryType PreDefinedQueryType { get; set; }
+        public string Text { get; set; }
+        public Color Color { get; set; }
+
+        public PreDefineHighlight(PreDefinedQueryType preDefinedQueryType, string text, Color color)
+        {
+            PreDefinedQueryType = preDefinedQueryType;
+            Text = text ?? string.Empty;
+            Color = color;
+        }
+        public override string ToString()
+        {
+            return $"Highlight: {Text}. Type:{PreDefinedQueryType}. Color:{Color}";
+        }
+    }
+
+    [Serializable]
+    public class PreDefineFilter
+    {
+        public string IncludeText { get; }
+        public string ExcludeText { get; }
+        public string Sources { get; }
+        public string Modules { get; }
+
+
+        public PreDefineFilter(string includeText, string excludeText, string sources, string modules)
+        {
+            IncludeText = includeText ?? string.Empty;
+            ExcludeText = excludeText ?? string.Empty;
+            Sources = sources ?? string.Empty;
+            Modules = modules ?? string.Empty;
+        }
+        public override string ToString()
+        {
+            return $"Filter: Message Text:{IncludeText}. Exclude:{ExcludeText}. Sources:{Sources}. Modules:{Modules}";
+        }
+    }
+
+    [Serializable]
+    public class PreDefineAlert
+    {
+        public string IncludeText { get; }
+        public string ExcludeText { get; }
+        public string Sources { get; }
+        public string Modules { get; }
+
+
+        public PreDefineAlert(string includeText, string excludeText, string sources, string modules)
+        {
+            IncludeText = includeText ?? string.Empty;
+            ExcludeText = excludeText ?? string.Empty;
+            Sources = sources ?? string.Empty;
+            Modules = modules ?? string.Empty;
+        }
+        public override string ToString()
+        {
+            return $"Alert: Message Text:{IncludeText}. Exclude:{ExcludeText}. Sources:{Sources}. Modules:{Modules}";
+        }
     }
 }
 
