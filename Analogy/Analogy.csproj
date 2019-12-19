@@ -35,10 +35,12 @@
     <Reference Include="DevExpress.Images.v19.1">
       <HintPath>DevExpress\DevExpress.Images.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Printing.v19.1.Core">
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.Printing.v19.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v19.1">
+    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>DevExpress\DevExpress.Utils.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraBars.v19.1">
