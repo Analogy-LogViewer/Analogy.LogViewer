@@ -85,23 +85,21 @@ namespace Analogy
 
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
-
+            
             var table = pages.Last();
             allMessages.Add(message);
             if (table.Rows.Count + 1 > pageSize)
             {
-                var isTableInView = currentTable == table;
-                if (!isTableInView)
-                    owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessage)}");
                 table = Utils.DataTableConstructor();
                 pages.Add(table);
                 var pageStartRowIndex = (pages.Count - 1) * pageSize;
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
-            lockSlim.EnterWriteLock();
             try
             {
+                lockSlim.EnterWriteLock();
                 DataRow dtr = table.NewRow();
+                dtr.BeginEdit();
                 dtr["Date"] = message.Date;
                 dtr["Text"] = message.Text ?? "";
                 dtr["Source"] = message.Source ?? "";
@@ -124,13 +122,14 @@ namespace Analogy
             }
         }
 
-        public IEnumerable<(DataRow, AnalogyLogMessage)> AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        public List<(DataRow, AnalogyLogMessage)> AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             var table = pages.Last();
             var countInsideTable = table.Rows.Count;
-            lockSlim.EnterWriteLock();
+            List<(DataRow row, AnalogyLogMessage message)> rows = new List<(DataRow row, AnalogyLogMessage message)>(messages.Count);
             try
             {
+                 lockSlim.EnterWriteLock();
                 foreach (var message in messages)
                 {
                     if (message.Level == AnalogyLogLevel.Disabled)
@@ -138,9 +137,6 @@ namespace Analogy
                     allMessages.Add(message);
                     if (countInsideTable + 1 > pageSize)
                     {
-                        var isTableInView = currentTable == table;
-                        if (!isTableInView)
-                            owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessages)}");
                         table = Utils.DataTableConstructor();
                         pages.Add(table);
                         countInsideTable = 0;
@@ -150,6 +146,7 @@ namespace Analogy
 
                     countInsideTable++;
                     DataRow dtr = table.NewRow();
+                    dtr.BeginEdit();
                     dtr["Date"] = message.Date;
                     dtr["Text"] = message.Text ?? "";
                     dtr["Source"] = message.Source ?? "";
@@ -163,7 +160,7 @@ namespace Analogy
                     dtr["ThreadID"] = message.Thread;
                     dtr["DataProvider"] = dataSource ?? string.Empty;
                     table.Rows.Add(dtr);
-                    yield return (dtr, message);
+                    rows.Add((dtr, message));
                 }
 
             }
@@ -171,8 +168,8 @@ namespace Analogy
             {
                 lockSlim.ExitWriteLock();
             }
-            //if (currentTable != table)
-            //    owner.AcceptChanges(table, $"{nameof(PagingManager)}-{nameof(AppendMessage)}(2)");
+
+            return rows;
         }
 
 

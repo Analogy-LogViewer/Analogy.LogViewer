@@ -53,15 +53,28 @@ namespace Analogy
 
             }
             //otherwise read file:
-            FileProcessingManager.Instance.AddProcessingFile(FileName);
-            if (!DataWindow.DoNotAddToRecentHistory)
-                Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
-            var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false)).ToList();
-            FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
-            if (LogWindow != null)
-                Interlocked.Decrement(ref LogWindow.fileLoadingCount);
-            return messages;
+            try
+            {
 
+
+                FileProcessingManager.Instance.AddProcessingFile(FileName);
+                if (!DataWindow.DoNotAddToRecentHistory)
+                    Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
+                var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false)).ToList();
+                FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
+                if (LogWindow != null)
+                    Interlocked.Decrement(ref LogWindow.fileLoadingCount);
+                return messages;
+            }
+            catch (Exception e)
+            {
+                AnalogyLogger.Intance.LogCritical("Analogy", $"Error parsing file: {e}");
+                AnalogyLogMessage error = new AnalogyLogMessage($"Error reading file {filename}: Error: {e.Message}", AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None");
+                error.Source = nameof(FileProcessor);
+                error.Module = "Analogy";
+                DataWindow.AppendMessage(error,fileDataProvider.GetType().FullName);
+                return new List<AnalogyLogMessage> { error };
+            }
         }
 
 
