@@ -564,7 +564,7 @@ namespace Analogy
         {
             if (OldTextInclude.Equals(txtbInclude.Text)) return;
             OldTextInclude = txtbInclude.Text;
-            txtbHighlight.Text = txtbInclude.Text;
+           // txtbHighlight.Text = txtbInclude.Text;
             if (string.IsNullOrEmpty(txtbInclude.Text))
             {
                 chkbIncludeText.Checked = false;
