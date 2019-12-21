@@ -62,6 +62,7 @@
             this.bbsItem = new DevExpress.XtraBars.BarSubItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
@@ -82,9 +83,6 @@
             this.bsiWindowsEventLogs = new DevExpress.XtraBars.BarSubItem();
             this.barStaticItemDefaultLevel = new DevExpress.XtraBars.BarStaticItem();
             this.bBtnOpenAnalogyLog = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnCloseCurrentTabPage = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnCloseOtherTabPages = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnCloseAllTabPage = new DevExpress.XtraBars.BarButtonItem();
             this.bsiMemoryUsage = new DevExpress.XtraBars.BarStaticItem();
             this.bsiIdleMessage = new DevExpress.XtraBars.BarStaticItem();
             this.bbtnUserSettingsResourceUsage = new DevExpress.XtraBars.BarButtonItem();
@@ -99,14 +97,15 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.xtcLogs = new DevExpress.XtraTab.XtraTabControl();
-            this.popupMenuTabPages = new DevExpress.XtraBars.PopupMenu(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenuTabPages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -174,9 +173,6 @@
             this.bsiWindowsEventLogs,
             this.barStaticItemDefaultLevel,
             this.bBtnOpenAnalogyLog,
-            this.bbtnCloseCurrentTabPage,
-            this.bbtnCloseOtherTabPages,
-            this.bbtnCloseAllTabPage,
             this.bsiMemoryUsage,
             this.bsiIdleMessage,
             this.bbtnUserSettingsResourceUsage,
@@ -430,6 +426,13 @@
             this.bbtnItemHelp.Name = "bbtnItemHelp";
             this.bbtnItemHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemHelp_ItemClick);
             // 
+            // bbtnDebugLog
+            // 
+            this.bbtnDebugLog.Caption = "Internal Log Messages";
+            this.bbtnDebugLog.Id = 73;
+            this.bbtnDebugLog.Name = "bbtnDebugLog";
+            this.bbtnDebugLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDebugLog_ItemClick);
+            // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "Change Log";
@@ -619,24 +622,6 @@
             this.bBtnOpenAnalogyLog.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
-            // bbtnCloseCurrentTabPage
-            // 
-            this.bbtnCloseCurrentTabPage.Caption = "Close this tab";
-            this.bbtnCloseCurrentTabPage.Id = 61;
-            this.bbtnCloseCurrentTabPage.Name = "bbtnCloseCurrentTabPage";
-            // 
-            // bbtnCloseOtherTabPages
-            // 
-            this.bbtnCloseOtherTabPages.Caption = "Close all other tabs";
-            this.bbtnCloseOtherTabPages.Id = 62;
-            this.bbtnCloseOtherTabPages.Name = "bbtnCloseOtherTabPages";
-            // 
-            // bbtnCloseAllTabPage
-            // 
-            this.bbtnCloseAllTabPage.Caption = "close all tabs";
-            this.bbtnCloseAllTabPage.Id = 63;
-            this.bbtnCloseAllTabPage.Name = "bbtnCloseAllTabPage";
-            // 
             // bsiMemoryUsage
             // 
             this.bsiMemoryUsage.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -762,42 +747,35 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1517, 37);
             // 
-            // xtcLogs
-            // 
-            this.xtcLogs.AllowDrop = true;
-            this.xtcLogs.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
-            this.xtcLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtcLogs.Location = new System.Drawing.Point(0, 178);
-            this.xtcLogs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.xtcLogs.Name = "xtcLogs";
-            this.xtcLogs.Size = new System.Drawing.Size(1517, 344);
-            this.xtcLogs.TabIndex = 4;
-            this.xtcLogs.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtcLogs_SelectedPageChanged);
-            this.xtcLogs.CloseButtonClick += new System.EventHandler(this.xtcLogs_CloseButtonClick);
-            this.xtcLogs.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragDrop);
-            this.xtcLogs.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragEnter);
-            this.xtcLogs.MouseUp += new System.Windows.Forms.MouseEventHandler(this.XtcLogs_MouseUp);
-            // 
-            // popupMenuTabPages
-            // 
-            this.popupMenuTabPages.ItemLinks.Add(this.bbtnCloseCurrentTabPage, true);
-            this.popupMenuTabPages.ItemLinks.Add(this.bbtnCloseOtherTabPages);
-            this.popupMenuTabPages.ItemLinks.Add(this.bbtnCloseAllTabPage);
-            this.popupMenuTabPages.Name = "popupMenuTabPages";
-            this.popupMenuTabPages.Ribbon = this.ribbonControlMain;
-            // 
             // tmrStatusUpdates
             // 
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             this.tmrStatusUpdates.Tick += new System.EventHandler(this.TmrStatusUpdates_Tick);
             // 
-            // bbtnDebugLog
+            // dockManager1
             // 
-            this.bbtnDebugLog.Caption = "Internal Log Messages";
-            this.bbtnDebugLog.Id = 73;
-            this.bbtnDebugLog.Name = "bbtnDebugLog";
-            this.bbtnDebugLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDebugLog_ItemClick);
+            this.dockManager1.Form = this;
+            this.dockManager1.TopZIndexControls.AddRange(new string[] {
+            "DevExpress.XtraBars.BarDockControl",
+            "DevExpress.XtraBars.StandaloneBarDockControl",
+            "System.Windows.Forms.StatusBar",
+            "System.Windows.Forms.MenuStrip",
+            "System.Windows.Forms.StatusStrip",
+            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonControl",
+            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
+            "DevExpress.XtraBars.Navigation.TileNavPane",
+            "DevExpress.XtraBars.TabFormControl",
+            "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
+            "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
+            // 
+            // documentManager1
+            // 
+            this.documentManager1.ContainerControl = this;
+            this.documentManager1.View = this.tabbedView1;
+            this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
+            this.tabbedView1});
             // 
             // MainForm
             // 
@@ -805,7 +783,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1517, 559);
-            this.Controls.Add(this.xtcLogs);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -822,8 +799,9 @@
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyMainForm_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenuTabPages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -845,7 +823,6 @@
         private DevExpress.XtraBars.BarButtonItem btnItemSearch;
         private DevExpress.XtraBars.BarButtonItem btnItemCombineFiles;
         private DevExpress.XtraBars.BarButtonItem btnItemConvert;
-        private DevExpress.XtraTab.XtraTabControl xtcLogs;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarSubItem bsiRecent;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem2;
@@ -884,10 +861,6 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItemDefaultLevel;
         private DevExpress.XtraBars.BarButtonItem bBtnOpenAnalogyLog;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.PopupMenu popupMenuTabPages;
-        private DevExpress.XtraBars.BarButtonItem bbtnCloseCurrentTabPage;
-        private DevExpress.XtraBars.BarButtonItem bbtnCloseOtherTabPages;
-        private DevExpress.XtraBars.BarButtonItem bbtnCloseAllTabPage;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiMemoryUsage;
         private System.Windows.Forms.Timer tmrStatusUpdates;
@@ -900,5 +873,8 @@
         private DevExpress.XtraBars.BarButtonItem bBtnItemImportSettings;
         private DevExpress.XtraBars.BarButtonItem btnErrors;
         private DevExpress.XtraBars.BarButtonItem bbtnDebugLog;
+        private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
     }
 }
