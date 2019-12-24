@@ -1033,13 +1033,14 @@ namespace Analogy
             }
             Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
             string filter = _filterCriteria.GetSqlExpression();
+            lockSlim.EnterWriteLock();
             if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
             {
                 CriteriaOperator op = LogGrid.ActiveFilterCriteria;
                 string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
                 filter = $"{filter} and {filterString}";
             }
-            lockSlim.EnterWriteLock();
+
             try
             {
 
@@ -1051,17 +1052,18 @@ namespace Analogy
                 //}
                 //gridControl.DataSource = dt;
                 _messageData.DefaultView.RowFilter = _filterCriteria.GetSqlExpression();
+                var location = LocateByValue(0, gridColumnObject, _currentMassage);
+                if (location >= 0)
+                    LogGrid.FocusedRowHandle = location;
+                //LogGrid.RefreshData();
+                RefreshUIMessagesCount();
             }
             finally
             {
                 lockSlim.ExitWriteLock();
             }
 
-            var location = LocateByValue(0, gridColumnObject, _currentMassage);
-            if (location >= 0)
-                LogGrid.FocusedRowHandle = location;
-            LogGrid.RefreshData();
-            RefreshUIMessagesCount();
+
 
         }
         public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val)
@@ -1426,31 +1428,6 @@ namespace Analogy
             gridControl.RefreshDataSource();
             lockSlim.ExitWriteLock();
         }
-
-        private async void tsbtnImport_Click(object sender, EventArgs e)
-        {
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter =
-                "Plain XML log file (*.log)|*.log|JSON file (*.json)|*.json|NLOG file (*.nlog)|*.nlog|Zipped XML log file (*.zip)|*.zip|ETW log file (*.etl)|*.etl";
-            openFileDialog1.Title = @"Import file to current view";
-            openFileDialog1.Multiselect = false;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    await LoadFilesAsync(new List<string> { openFileDialog1.FileName }, false);
-                }
-                catch (Exception exception)
-                {
-                    XtraMessageBox.Show(exception.Message, @"Error Opening file", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-            }
-
-        }
-
         private void btnUp_Click(object sender, EventArgs e)
         {
             if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
