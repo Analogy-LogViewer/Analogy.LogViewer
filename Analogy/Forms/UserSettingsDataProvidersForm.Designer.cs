@@ -66,7 +66,7 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageWindowsEventLogs;
-            this.tabControlMain.Size = new System.Drawing.Size(904, 624);
+            this.tabControlMain.Size = new System.Drawing.Size(904, 625);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageWindowsEventLogs,
@@ -85,7 +85,7 @@
             this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
             this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
             this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
-            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(731, 617);
+            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(731, 618);
             this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
             // 
             // xtraUCWindowsEventLogs1
@@ -93,7 +93,7 @@
             this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
             this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
-            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(731, 595);
+            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(731, 596);
             this.xtraUCWindowsEventLogs1.TabIndex = 0;
             // 
             // lblWindowsEventLogs
@@ -196,7 +196,7 @@
             this.xtraTabPage1.ImageOptions.Image = global::Analogy.Properties.Resources.Mirada_Icon;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.PageVisible = false;
-            this.xtraTabPage1.Size = new System.Drawing.Size(731, 616);
+            this.xtraTabPage1.Size = new System.Drawing.Size(731, 617);
             this.xtraTabPage1.Text = "Mirada logs Parser";
             // 
             // xtraTabPage2
@@ -219,7 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 624);
+            this.ClientSize = new System.Drawing.Size(904, 625);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
