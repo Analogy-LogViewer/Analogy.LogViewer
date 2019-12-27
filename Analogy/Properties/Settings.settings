@@ -78,7 +78,7 @@
       <Value Profile="(Default)">600</Value>
     </Setting>
     <Setting Name="WindowsEventLogs" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Application,Security,Setup,System</Value>
+      <Value Profile="(Default)">["Application","System"]</Value>
     </Setting>
     <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

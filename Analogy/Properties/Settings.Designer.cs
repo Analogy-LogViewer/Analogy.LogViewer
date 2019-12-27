@@ -325,7 +325,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Application,Security,Setup,System")]
+        [global::System.Configuration.DefaultSettingValueAttribute("[\"Application\",\"System\"]")]
         public string WindowsEventLogs {
             get {
                 return ((string)(this["WindowsEventLogs"]));
