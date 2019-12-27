@@ -64,7 +64,7 @@ namespace Analogy
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            AnalogyLogger.Intance.LogException(e.Exception as Exception, nameof(Application_ThreadException), "Error: " + e.Exception);
+            AnalogyLogger.Intance.LogException(e.Exception, nameof(Application_ThreadException), "Error: " + e.Exception);
             MessageBox.Show("Error: " + e.Exception, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
