@@ -19,7 +19,7 @@ namespace Analogy
             WindowsFormsSettings.LoadApplicationSettings();
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+            //AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
             Application.EnableVisualStyles();
             Settings.IncreaseNumberOfLaunches();
             if (!string.IsNullOrEmpty(Settings.ApplicationSkinName))
