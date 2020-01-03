@@ -25,14 +25,13 @@ using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Types;
 using DevExpress.Data.Filtering;
-using static System.Enum;
-using Message = System.Windows.Forms.Message;
 
 namespace Analogy
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
     {
+        private bool simClear;
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
@@ -51,7 +50,6 @@ namespace Analogy
         private IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions { get; set; }
         private List<IAnalogyExtension> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new List<int>();
-        private int SelectedHighlightRow { get; set; }
         private ToolTip Tip { get; set; }
         private List<string> _excludeMostCommon = new List<string>();
         public const string DataGridDateColumnName = "Date";
@@ -117,6 +115,7 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
+            SetupEventsHandlers();
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
             fileProcessor = new FileProcessor(this);
@@ -130,6 +129,104 @@ namespace Analogy
             _messageData = PagingManager.CurrentPage();
         }
 
+        private void SetupEventsHandlers()
+        {
+            txtbInclude.Enter += (s, e) => txtbInclude.SelectAll();
+            txtbInclude.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    var added = Settings.AddNewSearchesEntryToLists(txtbInclude.Text, true);
+                    if (added)
+                    {
+                        autoCompleteInclude.Add(txtbInclude.Text);
+                    }
+
+                }
+            };
+            txtbInclude.MouseEnter += (s, e) =>
+            {
+                txtbInclude.Focus();
+                txtbInclude.SelectAll();
+            };
+            txtbInclude.TextChanged += async (s, e) =>
+            {
+                if (OldTextInclude.Equals(txtbInclude.Text)) return;
+                OldTextInclude = txtbInclude.Text;
+                // txtbHighlight.Text = txtbInclude.Text;
+                if (string.IsNullOrEmpty(txtbInclude.Text))
+                {
+                    chkbIncludeText.Checked = false;
+                    return;
+                }
+
+                chkbHighlight.Checked = false;
+                chkbIncludeText.Checked = true;
+                await FilterHasChanged();
+            };
+
+            txtbExclude.Enter += (s, e) => txtbExclude.SelectAll();
+            txtbExclude.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    var added = Settings.AddNewSearchesEntryToLists(txtbExclude.Text, false);
+                    if (added)
+                        autoCompleteExclude.Add(txtbExclude.Text);
+                }
+            };
+            txtbExclude.MouseEnter += (s, e) =>
+            {
+                txtbExclude.Focus();
+                txtbExclude.SelectAll();
+            };
+            txtbExclude.TextChanged += async (s, e) =>
+            {
+                if (OldTextExclude.Equals(txtbExclude.Text)) return;
+                Settings.ExcludedText = txtbExclude.Text;
+                OldTextExclude = txtbExclude.Text;
+                if (string.IsNullOrEmpty(txtbExclude.Text))
+                {
+                    chkExclude.Checked = false;
+                    return;
+                }
+
+                chkExclude.Checked = true;
+                await FilterHasChanged();
+            };
+
+            txtbSource.TextChanged += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtbSource.Text))
+                {
+                    chkbSources.Checked = false;
+                }
+                else
+                {
+                    if (!chkbSources.Checked)
+                        chkbSources.Checked = true;
+                }
+
+                await FilterHasChanged();
+                Settings.SourceText = chkbSources.Text;
+            };
+
+            txtbModule.TextChanged += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtbModule.Text))
+                {
+                    chkbModules.Checked = false;
+                }
+                else
+                {
+                    if (!chkbModules.Checked)
+                        chkbModules.Checked = true;
+                }
+
+                await FilterHasChanged();
+                Settings.ModuleText = chkbModules.Text;
+            };
+        }
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
@@ -400,7 +497,7 @@ namespace Analogy
             if (sender is GridView view && e.RowHandle >= 0)
             {
                 string level = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Level"]);
-                var parsed = TryParse(level, true, out AnalogyLogLevel enumLevel);
+                var parsed = Enum.TryParse(level, true, out AnalogyLogLevel enumLevel);
                 if (parsed)
                 {
                     e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(enumLevel);
@@ -560,36 +657,6 @@ namespace Analogy
 
             await FilterHasChanged();
         }
-        private async void txtbInclude_TextChanged(object sender, EventArgs e)
-        {
-            if (OldTextInclude.Equals(txtbInclude.Text)) return;
-            OldTextInclude = txtbInclude.Text;
-            txtbHighlight.Text = txtbInclude.Text;
-            if (string.IsNullOrEmpty(txtbInclude.Text))
-            {
-                chkbIncludeText.Checked = false;
-                return;
-            }
-
-            chkbHighlight.Checked = false;
-            chkbIncludeText.Checked = true;
-            await FilterHasChanged();
-        }
-
-        private async void txtbExclude_TextChanged(object sender, EventArgs e)
-        {
-            if (OldTextExclude.Equals(txtbExclude.Text)) return;
-            Settings.ExcludedText = txtbExclude.Text;
-            OldTextExclude = txtbExclude.Text;
-            if (string.IsNullOrEmpty(txtbExclude.Text))
-            {
-                chkExclude.Checked = false;
-                return;
-            }
-
-            chkExclude.Checked = true;
-            await FilterHasChanged();
-        }
 
         /// <summary>
         /// Set custom column display text
@@ -690,7 +757,7 @@ namespace Analogy
             }
         }
 
-        private (int total, int error, int warning, int critical,int alerts) GetRowsCount()
+        private (int total, int error, int warning, int critical, int alerts) GetRowsCount()
         {
 
             // Create a data view by applying the grid view row filter
@@ -979,7 +1046,7 @@ namespace Analogy
             Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
             Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude : string.Empty;
 
-            
+
             _filterCriteria.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
                 _filterCriteria.Levels = new[] { AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };
@@ -1032,13 +1099,14 @@ namespace Analogy
             }
             Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
             string filter = _filterCriteria.GetSqlExpression();
+            lockSlim.EnterWriteLock();
             if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
             {
                 CriteriaOperator op = LogGrid.ActiveFilterCriteria;
                 string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
                 filter = $"{filter} and {filterString}";
             }
-            lockSlim.EnterWriteLock();
+
             try
             {
 
@@ -1050,17 +1118,18 @@ namespace Analogy
                 //}
                 //gridControl.DataSource = dt;
                 _messageData.DefaultView.RowFilter = _filterCriteria.GetSqlExpression();
+                var location = LocateByValue(0, gridColumnObject, _currentMassage);
+                if (location >= 0)
+                    LogGrid.FocusedRowHandle = location;
+                //LogGrid.RefreshData();
+                RefreshUIMessagesCount();
             }
             finally
             {
                 lockSlim.ExitWriteLock();
             }
 
-            var location = LocateByValue(0, gridColumnObject, _currentMassage);
-            if (location >= 0)
-                LogGrid.FocusedRowHandle = location;
-            LogGrid.RefreshData();
-            RefreshUIMessagesCount();
+
 
         }
         public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val)
@@ -1357,18 +1426,12 @@ namespace Analogy
 
         private void txtbInclude_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                autoCompleteInclude.Add(txtbInclude.Text);
-            }
+
         }
 
         private void txtbExclude_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                autoCompleteExclude.Add(txtbExclude.Text);
-            }
+
         }
 
         private void tsmiTimeDiff_Click(object sender, EventArgs e)
@@ -1400,31 +1463,6 @@ namespace Analogy
             gridControl.RefreshDataSource();
             lockSlim.ExitWriteLock();
         }
-
-        private async void tsbtnImport_Click(object sender, EventArgs e)
-        {
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter =
-                "Plain XML log file (*.log)|*.log|JSON file (*.json)|*.json|NLOG file (*.nlog)|*.nlog|Zipped XML log file (*.zip)|*.zip|ETW log file (*.etl)|*.etl";
-            openFileDialog1.Title = @"Import file to current view";
-            openFileDialog1.Multiselect = false;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    await LoadFilesAsync(new List<string> { openFileDialog1.FileName }, false);
-                }
-                catch (Exception exception)
-                {
-                    XtraMessageBox.Show(exception.Message, @"Error Opening file", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-            }
-
-        }
-
         private void btnUp_Click(object sender, EventArgs e)
         {
             if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
@@ -2118,18 +2156,7 @@ namespace Analogy
 
         private async void txtbIncludeSource_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbSource.Text))
-            {
-                chkbSources.Checked = false;
-            }
-            else
-            {
-                if (!chkbSources.Checked)
-                    chkbSources.Checked = true;
-            }
 
-            await FilterHasChanged();
-            Settings.SourceText = chkbSources.Text;
         }
 
 
@@ -2140,18 +2167,7 @@ namespace Analogy
 
         private async void txtbIncludeModule_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbModule.Text))
-            {
-                chkbModules.Checked = false;
-            }
-            else
-            {
-                if (!chkbModules.Checked)
-                    chkbModules.Checked = true;
-            }
 
-            await FilterHasChanged();
-            Settings.ModuleText = chkbModules.Text;
         }
 
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
@@ -2245,6 +2261,21 @@ namespace Analogy
             }
 
             contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (simClear)
+            {
+                txtbInclude.Text = "";
+                simClear = false;
+                return;
+            }
+            else
+            {
+                txtbInclude.Text = "8 | 9";
+                simClear = true;
+            }
         }
     }
 }

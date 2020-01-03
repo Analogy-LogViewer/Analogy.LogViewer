@@ -78,7 +78,7 @@
       <Value Profile="(Default)">600</Value>
     </Setting>
     <Setting Name="WindowsEventLogs" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Application,Security,Setup,System</Value>
+      <Value Profile="(Default)">["Application","System"]</Value>
     </Setting>
     <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -111,6 +111,18 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="PreDefinedQueries" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RememberLastSearches" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="NumberOfLastSearches" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="LastSearchesInclude" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastSearchesExclude" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

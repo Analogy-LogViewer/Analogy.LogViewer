@@ -11,6 +11,9 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
+            yield return new AnalogyChangeLog("Auto complete user setting is not working (issue #78)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 12, 27)); yield return new AnalogyChangeLog("Default user setting are invalid for some properties (issue #76)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2020, 01, 03));
+            yield return new AnalogyChangeLog("Add docking/undocking management when more than one log is opened (issue #75)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 24));
+            yield return new AnalogyChangeLog("Changes in 'include Text' text box effect 'highlight lines...' textbox (Issue #74)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 20));
             yield return new AnalogyChangeLog("Add alert messages and notifications (Issue #46)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 14));
             yield return new AnalogyChangeLog("Update all dependencies nugets versions (issue #73)", AnalogChangeLogType.None, "Lior Banai", new DateTime(2019, 12, 14));
             yield return new AnalogyChangeLog("Shortcuts keys are not correct (issue #72)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2019, 12, 14));

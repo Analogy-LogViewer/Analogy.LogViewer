@@ -325,7 +325,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Application,Security,Setup,System")]
+        [global::System.Configuration.DefaultSettingValueAttribute("[\"Application\",\"System\"]")]
         public string WindowsEventLogs {
             get {
                 return ((string)(this["WindowsEventLogs"]));
@@ -464,6 +464,54 @@ namespace Analogy.Properties {
             }
             set {
                 this["PreDefinedQueries"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RememberLastSearches {
+            get {
+                return ((bool)(this["RememberLastSearches"]));
+            }
+            set {
+                this["RememberLastSearches"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int NumberOfLastSearches {
+            get {
+                return ((int)(this["NumberOfLastSearches"]));
+            }
+            set {
+                this["NumberOfLastSearches"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSearchesInclude {
+            get {
+                return ((string)(this["LastSearchesInclude"]));
+            }
+            set {
+                this["LastSearchesInclude"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSearchesExclude {
+            get {
+                return ((string)(this["LastSearchesExclude"]));
+            }
+            set {
+                this["LastSearchesExclude"] = value;
             }
         }
     }

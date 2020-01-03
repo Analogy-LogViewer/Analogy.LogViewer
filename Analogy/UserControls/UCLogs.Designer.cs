@@ -193,6 +193,7 @@ namespace Analogy
             this.xtpMain = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.pnlBottom = new System.Windows.Forms.Panel();
+            this.lblTotalMessagesAlert = new DevExpress.XtraEditors.LabelControl();
             this.sBtnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.lblTotalMessages = new DevExpress.XtraEditors.LabelControl();
             this.xtCounts = new DevExpress.XtraTab.XtraTabPage();
@@ -242,7 +243,8 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lblTotalMessagesAlert = new DevExpress.XtraEditors.LabelControl();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -1693,7 +1695,6 @@ namespace Analogy
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Size = new System.Drawing.Size(1145, 22);
             this.txtbModule.TabIndex = 26;
-            this.txtbModule.TextChanged += new System.EventHandler(this.txtbIncludeModule_TextChanged);
             // 
             // sbtnIncludeModules
             // 
@@ -1754,7 +1755,6 @@ namespace Analogy
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Size = new System.Drawing.Size(1373, 22);
             this.txtbSource.TabIndex = 25;
-            this.txtbSource.TextChanged += new System.EventHandler(this.txtbIncludeSource_TextChanged);
             // 
             // sbtnIncludeSources
             // 
@@ -1815,8 +1815,6 @@ namespace Analogy
             this.txtbExclude.Name = "txtbExclude";
             this.txtbExclude.Size = new System.Drawing.Size(1354, 22);
             this.txtbExclude.TabIndex = 20;
-            this.txtbExclude.TextChanged += new System.EventHandler(this.txtbExclude_TextChanged);
-            this.txtbExclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbExclude_KeyDown);
             // 
             // sbtnTextExclude
             // 
@@ -1880,10 +1878,6 @@ namespace Analogy
             this.txtbInclude.Name = "txtbInclude";
             this.txtbInclude.Size = new System.Drawing.Size(1451, 22);
             this.txtbInclude.TabIndex = 19;
-            this.txtbInclude.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
-            this.txtbInclude.Enter += new System.EventHandler(this.txtbInclude_Enter);
-            this.txtbInclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
-            this.txtbInclude.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
             // 
             // sbtnTextInclude
             // 
@@ -2366,6 +2360,24 @@ namespace Analogy
             this.pnlBottom.Name = "pnlBottom";
             this.pnlBottom.Size = new System.Drawing.Size(2124, 30);
             this.pnlBottom.TabIndex = 3;
+            // 
+            // lblTotalMessagesAlert
+            // 
+            this.lblTotalMessagesAlert.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblTotalMessagesAlert.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalMessagesAlert.Appearance.Options.UseBackColor = true;
+            this.lblTotalMessagesAlert.Appearance.Options.UseFont = true;
+            this.lblTotalMessagesAlert.Appearance.Options.UseTextOptions = true;
+            this.lblTotalMessagesAlert.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.lblTotalMessagesAlert.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblTotalMessagesAlert.Location = new System.Drawing.Point(183, 0);
+            this.lblTotalMessagesAlert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lblTotalMessagesAlert.Name = "lblTotalMessagesAlert";
+            this.lblTotalMessagesAlert.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblTotalMessagesAlert.Size = new System.Drawing.Size(162, 23);
+            this.lblTotalMessagesAlert.TabIndex = 6;
+            this.lblTotalMessagesAlert.Text = "ALERTS EXISTS: !";
+            this.lblTotalMessagesAlert.Visible = false;
             // 
             // sBtnCancel
             // 
@@ -2999,23 +3011,15 @@ namespace Analogy
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // lblTotalMessagesAlert
+            // timer1
             // 
-            this.lblTotalMessagesAlert.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblTotalMessagesAlert.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalMessagesAlert.Appearance.Options.UseBackColor = true;
-            this.lblTotalMessagesAlert.Appearance.Options.UseFont = true;
-            this.lblTotalMessagesAlert.Appearance.Options.UseTextOptions = true;
-            this.lblTotalMessagesAlert.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.lblTotalMessagesAlert.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTotalMessagesAlert.Location = new System.Drawing.Point(183, 0);
-            this.lblTotalMessagesAlert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblTotalMessagesAlert.Name = "lblTotalMessagesAlert";
-            this.lblTotalMessagesAlert.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblTotalMessagesAlert.Size = new System.Drawing.Size(162, 23);
-            this.lblTotalMessagesAlert.TabIndex = 6;
-            this.lblTotalMessagesAlert.Text = "ALERTS EXISTS: !";
-            this.lblTotalMessagesAlert.Visible = false;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 600;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // UCLogs
             // 
@@ -3314,5 +3318,7 @@ namespace Analogy
         private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
