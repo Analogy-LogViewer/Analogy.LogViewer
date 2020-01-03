@@ -25,8 +25,6 @@ using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Types;
 using DevExpress.Data.Filtering;
-using static System.Enum;
-using Message = System.Windows.Forms.Message;
 
 namespace Analogy
 {
@@ -52,7 +50,6 @@ namespace Analogy
         private IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions { get; set; }
         private List<IAnalogyExtension> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new List<int>();
-        private int SelectedHighlightRow { get; set; }
         private ToolTip Tip { get; set; }
         private List<string> _excludeMostCommon = new List<string>();
         public const string DataGridDateColumnName = "Date";
@@ -134,12 +131,17 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
-            txtbInclude.Enter+=(s,e) => txtbInclude.SelectAll();
+            txtbInclude.Enter += (s, e) => txtbInclude.SelectAll();
             txtbInclude.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    autoCompleteInclude.Add(txtbInclude.Text);
+                    var added = Settings.AddNewSearchesEntryToLists(txtbInclude.Text, true);
+                    if (added)
+                    {
+                        autoCompleteInclude.Add(txtbInclude.Text);
+                    }
+
                 }
             };
             txtbInclude.MouseEnter += (s, e) =>
@@ -168,7 +170,9 @@ namespace Analogy
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    autoCompleteExclude.Add(txtbExclude.Text);
+                    var added = Settings.AddNewSearchesEntryToLists(txtbExclude.Text, false);
+                    if (added)
+                        autoCompleteExclude.Add(txtbExclude.Text);
                 }
             };
             txtbExclude.MouseEnter += (s, e) =>
@@ -493,7 +497,7 @@ namespace Analogy
             if (sender is GridView view && e.RowHandle >= 0)
             {
                 string level = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Level"]);
-                var parsed = TryParse(level, true, out AnalogyLogLevel enumLevel);
+                var parsed = Enum.TryParse(level, true, out AnalogyLogLevel enumLevel);
                 if (parsed)
                 {
                     e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(enumLevel);
@@ -753,7 +757,7 @@ namespace Analogy
             }
         }
 
-        private (int total, int error, int warning, int critical,int alerts) GetRowsCount()
+        private (int total, int error, int warning, int critical, int alerts) GetRowsCount()
         {
 
             // Create a data view by applying the grid view row filter
@@ -1042,7 +1046,7 @@ namespace Analogy
             Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
             Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude : string.Empty;
 
-            
+
             _filterCriteria.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
                 _filterCriteria.Levels = new[] { AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown };

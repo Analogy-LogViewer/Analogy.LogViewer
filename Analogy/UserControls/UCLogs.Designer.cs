@@ -246,7 +246,6 @@ namespace Analogy
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -1873,7 +1872,6 @@ namespace Analogy
             // 
             // spltText.Panel1
             // 
-            this.spltText.Panel1.Controls.Add(this.dropDownButton1);
             this.spltText.Panel1.Controls.Add(this.txtbInclude);
             this.spltText.Panel1.Controls.Add(this.sbtnTextInclude);
             this.spltText.Panel1.Controls.Add(this.chkbIncludeText);
@@ -3035,16 +3033,6 @@ namespace Analogy
             this.timer2.Interval = 600;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // dropDownButton1
-            // 
-            this.dropDownButton1.Location = new System.Drawing.Point(398, 1);
-            this.dropDownButton1.MenuManager = this.barManager1;
-            this.dropDownButton1.Name = "dropDownButton1";
-            this.dropDownButton1.Size = new System.Drawing.Size(280, 20);
-            this.dropDownButton1.TabIndex = 22;
-            this.dropDownButton1.Text = "dropDownButton1";
-            this.dropDownButton1.Visible = false;
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3345,6 +3333,5 @@ namespace Analogy
         private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
-        private DevExpress.XtraEditors.DropDownButton dropDownButton1;
     }
 }

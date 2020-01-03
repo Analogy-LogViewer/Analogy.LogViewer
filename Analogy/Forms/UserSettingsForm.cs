@@ -35,7 +35,7 @@ namespace Analogy
         public UserSettingsForm()
         {
             InitializeComponent();
-
+            SetupEventsHandlers();
         }
 
         public UserSettingsForm(int tabIndex) : this()
@@ -48,10 +48,20 @@ namespace Analogy
             if (tab != null)
                 InitialSelection = tab.TabIndex;
         }
+
+        private void SetupEventsHandlers()
+        {
+            tsAutoComplete.IsOnChanged += (s, e) => { Settings.RememberLastSearches = tsAutoComplete.IsOn; };
+            nudAutoCompleteCount.ValueChanged += (s, e) =>
+            {
+                Settings.NumberOfLastSearches = (int)nudAutoCompleteCount.Value;
+            };
+        }
         private void LoadSettings()
         {
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
+            tsAutoComplete.IsOn = Settings.RememberLastSearches;
             nudRecent.Value = Settings.RecentFilesCount;
             tsUserStatistics.IsOn = Settings.EnableUserStatistics;
             //tsSimpleMode.IsOn = Settings.SimpleMode;
@@ -115,6 +125,8 @@ namespace Analogy
             lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
+            nudAutoCompleteCount.Value = Settings.NumberOfLastSearches;
+
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -144,6 +156,7 @@ namespace Analogy
                 }
             }
             Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
+            Settings.RememberLastSearches = tsAutoComplete.IsOn;
             Settings.UpdateOrder(order);
             Settings.Save();
         }
@@ -417,7 +430,7 @@ namespace Analogy
         {
             if (rbtnHighlightContains.Checked)
             {
-                Settings.PreDefinedQueries.AddHighlight(teHighlightContains.Text,PreDefinedQueryType.Contains,cpeHighlightPreDefined.Color);
+                Settings.PreDefinedQueries.AddHighlight(teHighlightContains.Text, PreDefinedQueryType.Contains, cpeHighlightPreDefined.Color);
                 lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
                 lboxHighlightItems.Refresh();
             }
