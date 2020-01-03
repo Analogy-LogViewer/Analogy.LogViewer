@@ -246,6 +246,7 @@ namespace Analogy
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -1433,7 +1434,7 @@ namespace Analogy
             // 
             // lblPageNumber
             // 
-            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPageNumber.Appearance.Options.UseTextOptions = true;
             this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -1568,7 +1569,7 @@ namespace Analogy
             // 
             // spltcDateFiltering
             // 
-            this.spltcDateFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.spltcDateFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcDateFiltering.Location = new System.Drawing.Point(3, 124);
             this.spltcDateFiltering.Name = "spltcDateFiltering";
@@ -1683,7 +1684,7 @@ namespace Analogy
             // 
             // spltcProcessesModule
             // 
-            this.spltcProcessesModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.spltcProcessesModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcProcessesModule.Location = new System.Drawing.Point(7, 94);
             this.spltcProcessesModule.Name = "spltcProcessesModule";
@@ -1707,7 +1708,6 @@ namespace Analogy
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Size = new System.Drawing.Size(1145, 22);
             this.txtbModule.TabIndex = 26;
-            this.txtbModule.TextChanged += new System.EventHandler(this.txtbIncludeModule_TextChanged);
             // 
             // sbtnIncludeModules
             // 
@@ -1744,7 +1744,7 @@ namespace Analogy
             // 
             // spltcSources
             // 
-            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcSources.Location = new System.Drawing.Point(7, 65);
             this.spltcSources.Name = "spltcSources";
@@ -1768,7 +1768,6 @@ namespace Analogy
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Size = new System.Drawing.Size(1373, 22);
             this.txtbSource.TabIndex = 25;
-            this.txtbSource.TextChanged += new System.EventHandler(this.txtbIncludeSource_TextChanged);
             // 
             // sbtnIncludeSources
             // 
@@ -1805,7 +1804,7 @@ namespace Analogy
             // 
             // spltTextExclude
             // 
-            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltTextExclude.Location = new System.Drawing.Point(7, 37);
             this.spltTextExclude.Name = "spltTextExclude";
@@ -1829,8 +1828,6 @@ namespace Analogy
             this.txtbExclude.Name = "txtbExclude";
             this.txtbExclude.Size = new System.Drawing.Size(1354, 22);
             this.txtbExclude.TabIndex = 20;
-            this.txtbExclude.TextChanged += new System.EventHandler(this.txtbExclude_TextChanged);
-            this.txtbExclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbExclude_KeyDown);
             // 
             // sbtnTextExclude
             // 
@@ -1869,13 +1866,14 @@ namespace Analogy
             // 
             // spltText
             // 
-            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltText.Location = new System.Drawing.Point(7, 7);
             this.spltText.Name = "spltText";
             // 
             // spltText.Panel1
             // 
+            this.spltText.Panel1.Controls.Add(this.dropDownButton1);
             this.spltText.Panel1.Controls.Add(this.txtbInclude);
             this.spltText.Panel1.Controls.Add(this.sbtnTextInclude);
             this.spltText.Panel1.Controls.Add(this.chkbIncludeText);
@@ -1894,10 +1892,6 @@ namespace Analogy
             this.txtbInclude.Name = "txtbInclude";
             this.txtbInclude.Size = new System.Drawing.Size(1451, 22);
             this.txtbInclude.TabIndex = 19;
-            this.txtbInclude.TextChanged += new System.EventHandler(this.txtbInclude_TextChanged);
-            this.txtbInclude.Enter += new System.EventHandler(this.txtbInclude_Enter);
-            this.txtbInclude.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbInclude_KeyDown);
-            this.txtbInclude.MouseEnter += new System.EventHandler(this.txtbInclude_MouseEnter);
             // 
             // sbtnTextInclude
             // 
@@ -2509,8 +2503,8 @@ namespace Analogy
             // 
             // spltGroupByChars
             // 
-            this.spltGroupByChars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.spltGroupByChars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltGroupByChars.Location = new System.Drawing.Point(12, 52);
             this.spltGroupByChars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -3038,9 +3032,18 @@ namespace Analogy
             // 
             // timer2
             // 
-            timer2.Enabled = false;
             this.timer2.Interval = 600;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // dropDownButton1
+            // 
+            this.dropDownButton1.Location = new System.Drawing.Point(398, 1);
+            this.dropDownButton1.MenuManager = this.barManager1;
+            this.dropDownButton1.Name = "dropDownButton1";
+            this.dropDownButton1.Size = new System.Drawing.Size(280, 20);
+            this.dropDownButton1.TabIndex = 22;
+            this.dropDownButton1.Text = "dropDownButton1";
+            this.dropDownButton1.Visible = false;
             // 
             // UCLogs
             // 
@@ -3342,5 +3345,6 @@ namespace Analogy
         private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private DevExpress.XtraEditors.DropDownButton dropDownButton1;
     }
 }

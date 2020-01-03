@@ -118,6 +118,7 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
+            SetupEventsHandlers();
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
             fileProcessor = new FileProcessor(this);
@@ -131,6 +132,97 @@ namespace Analogy
             _messageData = PagingManager.CurrentPage();
         }
 
+        private void SetupEventsHandlers()
+        {
+            txtbInclude.Enter+=(s,e) => txtbInclude.SelectAll();
+            txtbInclude.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    autoCompleteInclude.Add(txtbInclude.Text);
+                }
+            };
+            txtbInclude.MouseEnter += (s, e) =>
+            {
+                txtbInclude.Focus();
+                txtbInclude.SelectAll();
+            };
+            txtbInclude.TextChanged += async (s, e) =>
+            {
+                if (OldTextInclude.Equals(txtbInclude.Text)) return;
+                OldTextInclude = txtbInclude.Text;
+                // txtbHighlight.Text = txtbInclude.Text;
+                if (string.IsNullOrEmpty(txtbInclude.Text))
+                {
+                    chkbIncludeText.Checked = false;
+                    return;
+                }
+
+                chkbHighlight.Checked = false;
+                chkbIncludeText.Checked = true;
+                await FilterHasChanged();
+            };
+
+            txtbExclude.Enter += (s, e) => txtbExclude.SelectAll();
+            txtbExclude.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    autoCompleteExclude.Add(txtbExclude.Text);
+                }
+            };
+            txtbExclude.MouseEnter += (s, e) =>
+            {
+                txtbExclude.Focus();
+                txtbExclude.SelectAll();
+            };
+            txtbExclude.TextChanged += async (s, e) =>
+            {
+                if (OldTextExclude.Equals(txtbExclude.Text)) return;
+                Settings.ExcludedText = txtbExclude.Text;
+                OldTextExclude = txtbExclude.Text;
+                if (string.IsNullOrEmpty(txtbExclude.Text))
+                {
+                    chkExclude.Checked = false;
+                    return;
+                }
+
+                chkExclude.Checked = true;
+                await FilterHasChanged();
+            };
+
+            txtbSource.TextChanged += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtbSource.Text))
+                {
+                    chkbSources.Checked = false;
+                }
+                else
+                {
+                    if (!chkbSources.Checked)
+                        chkbSources.Checked = true;
+                }
+
+                await FilterHasChanged();
+                Settings.SourceText = chkbSources.Text;
+            };
+
+            txtbModule.TextChanged += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtbModule.Text))
+                {
+                    chkbModules.Checked = false;
+                }
+                else
+                {
+                    if (!chkbModules.Checked)
+                        chkbModules.Checked = true;
+                }
+
+                await FilterHasChanged();
+                Settings.ModuleText = chkbModules.Text;
+            };
+        }
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
@@ -559,36 +651,6 @@ namespace Analogy
                 gridColumnText.FilterInfo = null;
             }
 
-            await FilterHasChanged();
-        }
-        private async void txtbInclude_TextChanged(object sender, EventArgs e)
-        {
-            if (OldTextInclude.Equals(txtbInclude.Text)) return;
-            OldTextInclude = txtbInclude.Text;
-           // txtbHighlight.Text = txtbInclude.Text;
-            if (string.IsNullOrEmpty(txtbInclude.Text))
-            {
-                chkbIncludeText.Checked = false;
-                return;
-            }
-
-            chkbHighlight.Checked = false;
-            chkbIncludeText.Checked = true;
-            await FilterHasChanged();
-        }
-
-        private async void txtbExclude_TextChanged(object sender, EventArgs e)
-        {
-            if (OldTextExclude.Equals(txtbExclude.Text)) return;
-            Settings.ExcludedText = txtbExclude.Text;
-            OldTextExclude = txtbExclude.Text;
-            if (string.IsNullOrEmpty(txtbExclude.Text))
-            {
-                chkExclude.Checked = false;
-                return;
-            }
-
-            chkExclude.Checked = true;
             await FilterHasChanged();
         }
 
@@ -1385,18 +1447,12 @@ namespace Analogy
 
         private void txtbInclude_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                autoCompleteInclude.Add(txtbInclude.Text);
-            }
+
         }
 
         private void txtbExclude_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                autoCompleteExclude.Add(txtbExclude.Text);
-            }
+
         }
 
         private void tsmiTimeDiff_Click(object sender, EventArgs e)
@@ -2121,18 +2177,7 @@ namespace Analogy
 
         private async void txtbIncludeSource_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbSource.Text))
-            {
-                chkbSources.Checked = false;
-            }
-            else
-            {
-                if (!chkbSources.Checked)
-                    chkbSources.Checked = true;
-            }
 
-            await FilterHasChanged();
-            Settings.SourceText = chkbSources.Text;
         }
 
 
@@ -2143,18 +2188,7 @@ namespace Analogy
 
         private async void txtbIncludeModule_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbModule.Text))
-            {
-                chkbModules.Checked = false;
-            }
-            else
-            {
-                if (!chkbModules.Checked)
-                    chkbModules.Checked = true;
-            }
 
-            await FilterHasChanged();
-            Settings.ModuleText = chkbModules.Text;
         }
 
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
