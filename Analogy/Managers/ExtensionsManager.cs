@@ -56,8 +56,7 @@ namespace Analogy
         {
             if (LoadedExtensions.Any()) return LoadedExtensions;
             NameValueCollection appSettings = ConfigurationManager.AppSettings;
-            List<string> files = appSettings["AssembliesToLoad"]
-                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> files =new List<string>();
             string dir = Environment.CurrentDirectory;
             Type isExtension = typeof(IAnalogyExtension);
 
