@@ -117,7 +117,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="NumberOfLastSearches" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="LastSearchesInclude" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

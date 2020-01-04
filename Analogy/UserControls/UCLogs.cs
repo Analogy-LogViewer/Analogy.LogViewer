@@ -115,7 +115,7 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
- 
+
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
             fileProcessor = new FileProcessor(this);
@@ -1041,6 +1041,14 @@ namespace Analogy
 
         private void FilterResults()
         {
+            string include = txtbInclude.Text;
+            string exclude = txtbExclude.Text;
+            if (!autoCompleteInclude.Contains(include))
+                autoCompleteInclude.Add(include);
+            if (!autoCompleteExclude.Contains(exclude))
+                autoCompleteExclude.Add(exclude);
+            Settings.AddNewSearchesEntryToLists(include, true);
+            Settings.AddNewSearchesEntryToLists(exclude, false);
             _filterCriteria.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteria.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
             _filterCriteria.TextInclude = chkbIncludeText.Checked ? txtbInclude.Text : string.Empty;
