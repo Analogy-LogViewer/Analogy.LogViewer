@@ -60,7 +60,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError("Error Saving file: " + e);
+                AnalogyLogManager.Instance.LogError("Error Saving file: " + e,nameof(BookmarkPersistManager));
                 XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -99,7 +99,7 @@ namespace Analogy
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogManager.Instance.LogError("Error deleting file: " + e);
+                        AnalogyLogManager.Instance.LogError("Error deleting file: " + e,nameof(BookmarkPersistManager));
                     }
             }
             else
@@ -112,7 +112,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError("Error saving file: " + e);
+                    AnalogyLogManager.Instance.LogError("Error saving file: " + e, nameof(BookmarkPersistManager));
                     XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

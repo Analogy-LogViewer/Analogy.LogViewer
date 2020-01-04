@@ -22,9 +22,9 @@ namespace Analogy.Managers
             messages = new List<AnalogyLogMessage>();
         }
 
-        public void LogError(string error)
+        public void LogError(string error,string source)
         {
-            messages.Add(new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy"));
+            messages.Add(new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General, source));
             OnNewError?.Invoke(this, new EventArgs());
         }
         public void LogEvent(string data,string source)

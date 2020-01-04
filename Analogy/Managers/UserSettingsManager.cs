@@ -135,7 +135,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError("Error during parsing: " + e);
+                AnalogyLogManager.Instance.LogError("Error during parsing: " + e, nameof(UserSettingsManager));
                 return new T();
             }
 

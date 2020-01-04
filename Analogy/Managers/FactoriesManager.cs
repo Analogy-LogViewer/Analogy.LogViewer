@@ -57,7 +57,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
+                AnalogyLogManager.Instance.LogError("Error during data providers: " + e, nameof(FactoriesManager));
             }
 
         }
@@ -220,14 +220,14 @@ namespace Analogy
                         }
                         catch (Exception e)
                         {
-                            AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
+                            AnalogyLogManager.Instance.LogError("Error during data providers: " + e, nameof(FactoriesManager));
                         }
 
                     }
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError("Error during data providers: " + e);
+                    AnalogyLogManager.Instance.LogError("Error during data providers: " + e, nameof(FactoriesManager));
                 }
             }
         }

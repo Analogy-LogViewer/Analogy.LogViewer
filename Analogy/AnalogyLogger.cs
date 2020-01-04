@@ -37,7 +37,7 @@ namespace Analogy
 
         public virtual void LogError(string source, string message, [CallerMemberName] string memberName = "" , [CallerLineNumber] int lineNumber = 0, [CallerFilePath] string filePath = "")
         {
-            AnalogyLogManager.Instance.LogError("Error: " + GetFormattedString(message, memberName, lineNumber, filePath));
+            AnalogyLogManager.Instance.LogError("Error: " + GetFormattedString(message, memberName, lineNumber, filePath),source);
         }
 
         public virtual void LogCritical(string source, string message, [CallerMemberName] string memberName = "" , [CallerLineNumber] int lineNumber = 0, [CallerFilePath] string filePath = "")
