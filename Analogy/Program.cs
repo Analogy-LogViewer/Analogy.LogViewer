@@ -53,7 +53,7 @@ namespace Analogy
         }
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            AnalogyLogger.Intance.LogException(e.Exception, nameof(CurrentDomain_FirstChanceException), "Error: " + e);
+            AnalogyLogger.Intance.LogWarning( nameof(CurrentDomain_FirstChanceException), e.Exception.ToString());
         }
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
