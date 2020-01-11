@@ -1,19 +1,6 @@
-using System.Runtime.InteropServices;
+ï»¿using System.Runtime.InteropServices;
 using System.Reflection;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("Analogy Log Viewer")]
-[assembly: AssemblyDescription("Modern Log Viewer and analyzer.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Lior Banai")]
-[assembly: AssemblyProduct("Analogy Log Viewer")]
-[assembly: AssemblyCopyright("Copyright © Lior Banai 2019")]
 [assembly: AssemblyTrademark("Lior Banai (liorbanai@gmail.com)")]
-[assembly: AssemblyCulture("")]
 
 //
 // Version information for an assembly consists of the following four values:
@@ -54,7 +41,5 @@ using System.Reflection;
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
-[assembly: AssemblyVersion("4.1.8.0")]
-[assembly: AssemblyFileVersion("4.1.8.0")]
 [assembly: ComVisible(false)]
 
