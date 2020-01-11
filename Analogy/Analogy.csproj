@@ -11,7 +11,7 @@
     <SccProvider>SAK</SccProvider>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>Analogy_logo1.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Analogy_logo1.ico</ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>Analogy</AssemblyName>
@@ -314,7 +314,7 @@
     <Compile Include="UserControls\CombineFilesUC.Designer.cs">
       <DependentUpon>CombineFilesUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataTypes.cs" />
+    <Compile Include="Types\DataTypes.cs" />
     <Compile Include="EmbeddedAssembly.cs" />
     <Compile Include="Forms\ExtensionsForm.cs">
       <SubType>Form</SubType>
@@ -842,8 +842,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Analogy_icon1_16x16.ico" />
-    <Content Include="Analogy_logo1.ico" />
+    <Content Include="Resources\Analogy_icon1_16x16.ico" />
+    <Content Include="Resources\Analogy_logo1.ico" />
     <Content Include="Icons\Analogy_icon1.ico" />
     <Content Include="Icons\Analogy_icon1_16x16.ico" />
     <Content Include="Icons\Analogy_Icon2.ico" />
