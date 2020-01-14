@@ -28,9 +28,9 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Analogy.exe" target="lib\net472\Analogy.exe" />
-    <file src="bin\Release\Analogy.xml" target="lib\net472\Analogy.xml" />
-    <file src="bin\Release\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
+    <file src="Analogy\bin\Release\net472\Analogy.exe" target="lib\net472\Analogy.exe" />
+    <file src="Analogy\bin\Release\net472\Analogy.xml" target="lib\net472\Analogy.xml" />
+    <file src="Analogy\bin\Release\net472\Analogy.exe.config" target="lib\net472\Analogy.exe.config" />
     <file src="icon.png" target="" />
   </files>
 </package>

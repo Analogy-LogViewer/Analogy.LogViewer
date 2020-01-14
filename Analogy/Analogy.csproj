@@ -90,6 +90,7 @@
     <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Analogy.LogViewer</PackageId>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
