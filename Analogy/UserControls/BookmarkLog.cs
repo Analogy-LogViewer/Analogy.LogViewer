@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using Analogy.Interfaces;
 using DevExpress.XtraBars;
 
 namespace Analogy
@@ -21,31 +19,14 @@ namespace Analogy
         private async void BookmarkLog_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-            ucLogs1.btswitchRefreshLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            ucLogs1.btsAutoScrollToBottom.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            ucLogs1.btswitchRefreshLog.Visibility = BarItemVisibility.Never;
+            ucLogs1.btsAutoScrollToBottom.Visibility = BarItemVisibility.Never;
             ucLogs1.SetBookmarkMode();
             var messages = await BookmarkPersistManager.Instance.GetMessages();
-            AppendMessages(messages, "Analogy bookmarks");
-            BookmarkPersistManager.Instance.MessageReceived += (s, msg) => AppendMessage(msg.Message, msg.DataSource);
-            BookmarkPersistManager.Instance.MessageRemoved += (s, msg) => RemoveMessage(msg.Message);
+            ucLogs1.AppendMessages(messages, "Analogy bookmarks");
+            BookmarkPersistManager.Instance.MessageReceived += (s, msg) => ucLogs1.AppendMessage(msg.Message, msg.DataSource);
+            BookmarkPersistManager.Instance.MessageRemoved += (s, msg) => ucLogs1.RemoveMessage(msg.Message);
         }
-
-        private void RemoveMessage(AnalogyLogMessage msgMessage)
-        {
-            ucLogs1.RemoveMessage(msgMessage);
-        }
-
-
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
-        {
-            ucLogs1.AppendMessage(message, dataSource);
-        }
-
-        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
-        {
-            ucLogs1.AppendMessages(messages, dataSource);
-        }
-
     }
 
 }

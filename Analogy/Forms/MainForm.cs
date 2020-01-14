@@ -490,6 +490,7 @@ namespace Analogy
         {
             settings.UpdateRunningTime();
             settings.Save();
+            AnalogyLogManager.Instance.SaveFile();
             BookmarkPersistManager.Instance.SaveFile();
         }
 
