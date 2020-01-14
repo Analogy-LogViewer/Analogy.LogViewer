@@ -2,12 +2,12 @@
 <package >
   <metadata>
     <id>Analogy.LogViewer</id>
-    <version>4.1.8</version>
+    <version>4.1.9</version>
     <title>Analogy Log Viewer</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/philips-software/logviewer/</projectUrl>
+    <projectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</projectUrl>
     <icon>icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer</description>

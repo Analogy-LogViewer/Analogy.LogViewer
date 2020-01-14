@@ -84,11 +84,12 @@
     <PreBuildEvent />
     <PostBuildEvent />
     <Version>4.1.9</Version>
-    <RepositoryUrl>https://github.com/philips-software/logviewer</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
-    <PackageProjectUrl>https://github.com/philips-software/logviewer</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
