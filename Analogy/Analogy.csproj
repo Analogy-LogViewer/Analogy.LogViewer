@@ -12,6 +12,16 @@
     <AssemblyName>Analogy</AssemblyName>
     <RootNamespace>Analogy</RootNamespace>
     <ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>Analogy.LogViewer.Core</PackageId>
+    <Authors>Lior Banai</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
+    <PackageTags />
   </PropertyGroup>
 
   <ItemGroup>
@@ -78,6 +88,13 @@
     <Reference Include="DevExpress.XtraTreeList.v19.1">
       
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
