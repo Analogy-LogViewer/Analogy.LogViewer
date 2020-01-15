@@ -69,6 +69,7 @@ namespace Analogy
         public int NumberOfLastSearches { get; set; }
         public List<string> LastSearchesInclude { get; set; }
         public List<string> LastSearchesExclude { get; set; }
+        public int AnalogyInternalLogPeriod { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -76,6 +77,7 @@ namespace Analogy
 
         public void Load()
         {
+            AnalogyInternalLogPeriod = 5;
             if (Settings.Default.UpgradeRequired)
             {
                 Settings.Default.Upgrade();
@@ -135,7 +137,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError("Error during parsing: " + e);
+                AnalogyLogManager.Instance.LogError("Error during parsing: " + e, nameof(UserSettingsManager));
                 return new T();
             }
 

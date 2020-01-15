@@ -11,7 +11,7 @@ Some features of this tool are:
 4.	Combine multiple files
 5.	Compare logs 
 6.	Themes support
-7.	64 bit support (allow loading more files compare to old tool)
+7.	64 bit support (allow loading more files)
 8.	Personalization (users settings per user) 
 9.	Columns extension to add more columns specific to the data source implementation
 10.	Exporting to Excel/CSV files

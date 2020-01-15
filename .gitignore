@@ -87,3 +87,4 @@
 /Analogy.UnitTests/bin/Release
 /Analogy/DevExpress/.net framework
 /Analogy/DevExpress
+*.bak

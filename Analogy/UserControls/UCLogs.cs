@@ -115,22 +115,28 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
-            SetupEventsHandlers();
+
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
             fileProcessor = new FileProcessor(this);
             if (DesignMode) return;
-            //splitContainerMain.IsSplitterFixed = false;
-            //splitContainerMain.FixedPanel = SplitFixedPanel.None;
-            //ClientSizeChanged += (s, e) => { splitContainerMain.SplitterPosition = (int)0.8 * splitContainerMain.Height; };
             LayoutFileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "layout.xml");
             PagingManager = new PagingManager(this);
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
+            SetupEventsHandlers();
         }
 
         private void SetupEventsHandlers()
         {
+            PagingManager.OnPageChanged += (s, arg) =>
+            {
+                if (IsDisposed) return;
+                BeginInvoke(new MethodInvoker(() =>
+                    lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
+
+            };
+
             txtbInclude.Enter += (s, e) => txtbInclude.SelectAll();
             txtbInclude.KeyDown += (s, e) =>
             {
@@ -231,13 +237,6 @@ namespace Analogy
         {
             if (DesignMode) return;
 
-            PagingManager.OnPageChanged += (s, arg) =>
-            {
-                if (IsDisposed) return;
-                BeginInvoke(new MethodInvoker(() =>
-                    lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
-
-            };
             LoadUISettings();
             BookmarkModeUI();
 
@@ -360,6 +359,11 @@ namespace Analogy
             pnlFilteringLeft.Dock = DockStyle.Fill;
             txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtbInclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            if (Settings.RememberLastSearches)
+            {
+                autoCompleteInclude.AddRange(Settings.LastSearchesInclude.ToArray());
+                autoCompleteExclude.AddRange(Settings.LastSearchesExclude.ToArray());
+            }
             txtbInclude.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
 
             txtbExclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -1037,6 +1041,14 @@ namespace Analogy
 
         private void FilterResults()
         {
+            string include = txtbInclude.Text;
+            string exclude = txtbExclude.Text;
+            if (!autoCompleteInclude.Contains(include))
+                autoCompleteInclude.Add(include);
+            if (!autoCompleteExclude.Contains(exclude))
+                autoCompleteExclude.Add(exclude);
+            Settings.AddNewSearchesEntryToLists(include, true);
+            Settings.AddNewSearchesEntryToLists(exclude, false);
             _filterCriteria.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteria.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
             _filterCriteria.TextInclude = chkbIncludeText.Checked ? txtbInclude.Text : string.Empty;

@@ -22,7 +22,7 @@ namespace Analogy
         private bool ContentChanged;
         private bool fileLoaded;
         private List<AnalogyLogMessage> Messages { get; set; }
-        private readonly string bookmarkFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
+        private string BookmarkFileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         public BookmarkPersistManager()
@@ -49,19 +49,19 @@ namespace Analogy
 
         public async Task<List<AnalogyLogMessage>> GetMessages()
         {
-            if (fileLoaded || !File.Exists(bookmarkFileName))
+            if (fileLoaded || !File.Exists(BookmarkFileName))
                 return Messages;
             //todo: which format;
             try
             {
                 AnalogyXmlLogFile read = new AnalogyXmlLogFile();
-                Messages = await read.ReadFromFile(bookmarkFileName);
+                Messages = await read.ReadFromFile(BookmarkFileName);
                 fileLoaded = true;
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError("Error Saving file: " + e);
-                XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AnalogyLogManager.Instance.LogError("Error reading file: " + e, nameof(BookmarkPersistManager));
+                XtraMessageBox.Show(e.Message, @"Error reading file", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return Messages;
@@ -92,14 +92,14 @@ namespace Analogy
             if (!ContentChanged) return;
             if (!Messages.Any())
             {
-                if (File.Exists(bookmarkFileName))
+                if (File.Exists(BookmarkFileName))
                     try
                     {
-                        File.Delete(bookmarkFileName);
+                        File.Delete(BookmarkFileName);
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogManager.Instance.LogError("Error deleting file: " + e);
+                        AnalogyLogManager.Instance.LogError("Error deleting file: " + e, nameof(BookmarkPersistManager));
                     }
             }
             else
@@ -108,11 +108,11 @@ namespace Analogy
                 try
                 {
                     AnalogyXmlLogFile save = new AnalogyXmlLogFile();
-                    save.Save(Messages, bookmarkFileName);
+                    save.Save(Messages, BookmarkFileName);
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError("Error saving file: " + e);
+                    AnalogyLogManager.Instance.LogError("Error saving file: " + e, nameof(BookmarkPersistManager));
                     XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

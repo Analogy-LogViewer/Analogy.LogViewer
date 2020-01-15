@@ -92,7 +92,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError("Error during call for SaveSetting for data provider: " + e);
+                    AnalogyLogManager.Instance.LogError("Error during call for SaveSetting for data provider: " + e, nameof(SaveSetting));
                 }
 
             }

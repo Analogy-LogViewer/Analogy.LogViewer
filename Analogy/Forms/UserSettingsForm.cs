@@ -336,7 +336,7 @@ namespace Analogy
                 }
                 catch (Exception ex)
                 {
-                    AnalogyLogManager.Instance.LogError("Error during save to file: " + e);
+                    AnalogyLogManager.Instance.LogError("Error during save to file: " + e, nameof(sBtnExportColors_Click));
                     XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
@@ -365,7 +365,7 @@ namespace Analogy
                 }
                 catch (Exception ex)
                 {
-                    AnalogyLogManager.Instance.LogError("Error during import data: " + e);
+                    AnalogyLogManager.Instance.LogError("Error during import data: " + e, nameof(sBtnImportColors_Click));
                     XtraMessageBox.Show("Error Import: " + ex.Message, @"Error Import file", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }

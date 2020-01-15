@@ -371,13 +371,16 @@ namespace Analogy
                         var factory = supportedAssociation.First();
                         var parser = FactoriesManager.Instance
                             .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryGuid, files).ToList();
-                        RibbonPage page = (Mapping.ContainsKey(factory.FactoryGuid)) ? Mapping[factory.FactoryGuid] : null;
+                        RibbonPage page = (Mapping.ContainsKey(factory.FactoryGuid))
+                            ? Mapping[factory.FactoryGuid]
+                            : null;
                         if (parser.Count == 1)
                             OpenOfflineLogs(page, files, parser.First());
                         else
                         {
                             XtraMessageBox.Show(
-                                $@"More than one data provider detected for this file for {factory.FactoryName}." + Environment.NewLine +
+                                $@"More than one data provider detected for this file for {factory.FactoryName}." +
+                                Environment.NewLine +
                                 "Please open it directly from the data provider menu", "Unable to open file",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
@@ -385,12 +388,12 @@ namespace Analogy
 
                     }
                     else
-
-                        XtraMessageBox.Show(
-                            "Zero or more than one data provider detected for this file." + Environment.NewLine +
-                            "Please open it directly from the data provider menu", "Unable to open file",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                    {
+                        string msg = "Zero or more than one data provider detected for this file." + Environment.NewLine +
+                                     "Please open it directly from the data provider menu or add default association under:" + Environment.NewLine +
+                                     "Settings -> Data providers settings -> Default File Associations";
+                        XtraMessageBox.Show(msg, "Unable to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
 
             }
@@ -492,6 +495,7 @@ namespace Analogy
         {
             settings.UpdateRunningTime();
             settings.Save();
+            AnalogyLogManager.Instance.SaveFile();
             BookmarkPersistManager.Instance.SaveFile();
         }
 
@@ -730,7 +734,7 @@ namespace Analogy
                         }
                         catch (Exception e)
                         {
-                            AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e);
+                            AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e, nameof(MainForm));
                         }
 
                         if (canStartReceiving) //connected
@@ -782,7 +786,7 @@ namespace Analogy
                                     catch (Exception e)
                                     {
                                         AnalogyLogManager.Instance.LogError(
-                                            "Error during call to Stop receiving: " + e);
+                                            "Error during call to Stop receiving: " + e, nameof(OnXtcLogsOnControlRemoved));
                                     }
                                     finally
                                     {
@@ -897,7 +901,7 @@ namespace Analogy
                         }
                         catch (Exception e)
                         {
-                            AnalogyLogManager.Instance.LogError("Error during dispose: " + e);
+                            AnalogyLogManager.Instance.LogError("Error during dispose: " + e, nameof(OnXtcLogsOnControlRemoved));
                         }
                         finally
                         {
@@ -1170,7 +1174,7 @@ namespace Analogy
                         }
                         catch (Exception e)
                         {
-                            AnalogyLogManager.Instance.LogError("Error during dispose: " + e);
+                            AnalogyLogManager.Instance.LogError("Error during dispose: " + e, nameof(OnXtcLogsOnControlRemoved));
                         }
                         finally
                         {
@@ -1332,7 +1336,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e);
+                    AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e, nameof(AddSingleRealTimeDataSource));
                 }
 
                 if (canStartReceiving) //connected
@@ -1385,7 +1389,7 @@ namespace Analogy
                             }
                             catch (Exception e)
                             {
-                                AnalogyLogManager.Instance.LogError("Error during call to Stop receiving: " + e);
+                                AnalogyLogManager.Instance.LogError("Error during call to Stop receiving: " + e, nameof(AddSingleRealTimeDataSource));
                             }
                             finally
                             {
@@ -1503,7 +1507,7 @@ namespace Analogy
                     }
                     catch (Exception exception)
                     {
-                        AnalogyLogManager.Instance.LogError("Error during export settings: " + e);
+                        AnalogyLogManager.Instance.LogError("Error during export settings: " + e, nameof(bBtnExtensionSettings_ItemClick));
                         XtraMessageBox.Show("Error exporting settings: " + exception.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
