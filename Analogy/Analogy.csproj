@@ -27,48 +27,48 @@
 
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v19.1.Core">
-      <HintPath>DevExpress\DevExpress.Charts.v19.1.Core.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Data.v19.1">
-      <HintPath>DevExpress\DevExpress.Data.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Images.v19.1">
-      <HintPath>DevExpress\DevExpress.Images.v19.1.dll</HintPath>
+      
     </Reference>
-    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DevExpress\DevExpress.Printing.v19.1.Core.dll</HintPath>
+      
     </Reference>
-    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DevExpress\DevExpress.Utils.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraBars.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraBars.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraCharts.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1.UI">
-      <HintPath>DevExpress\DevExpress.XtraCharts.v19.1.UI.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1.Wizard">
-      <HintPath>DevExpress\DevExpress.XtraCharts.v19.1.Wizard.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraEditors.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraGrid.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraGrid.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraLayout.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraLayout.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraPrinting.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraPrinting.v19.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.XtraTreeList.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraTreeList.v19.1.dll</HintPath>
+      
     </Reference>
   </ItemGroup>
 
