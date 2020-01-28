@@ -57,6 +57,7 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
+            await AnalogyLogManager.Instance.Init();
             string[] arguments = Environment.GetCommandLineArgs();
             disableOnlineDueToFileOpen = arguments.Length == 2;
             if (DesignMode) return;

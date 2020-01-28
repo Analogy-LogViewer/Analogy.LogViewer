@@ -25,12 +25,18 @@ namespace Analogy.Managers
         public AnalogyLogManager()
         {
             messages = new List<AnalogyLogMessage>();
+         
+        }
+
+        public async Task Init()
+        {
             if (File.Exists(FileName))
             {
                 try
                 {
                     AnalogyXmlLogFile read = new AnalogyXmlLogFile();
-                    messages = read.ReadFromFile(FileName).Result;
+                   var messages = await read.ReadFromFile(FileName);
+                   this.messages.AddRange(this.messages);
                 }
                 catch (Exception e)
                 {
