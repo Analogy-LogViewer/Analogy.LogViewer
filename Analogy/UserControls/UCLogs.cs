@@ -546,6 +546,7 @@ namespace Analogy
         {
             if (!(e.RowHandle >= 0) || !e.Info.IsRowIndicator || !(sender is GridView view)) return;
             AnalogyLogMessage msg = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, "Object");
+            if (msg == null) return;
             Image img = imageList.Images[7];
             switch (msg.Level)
             {
