@@ -11,6 +11,8 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
+            
+            yield return new AnalogyChangeLog("NullReferenceException during row painting (Philips ICAP data provider). (Issue #85)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 27)); yield return new AnalogyChangeLog("Persist Analogy internal log to file (issue #83)", AnalogChangeLogType.Defect, "Lior Banai", new DateTime(2020, 01, 31));
             yield return new AnalogyChangeLog("Persist Analogy internal log to file (issue #83)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 27)); yield return new AnalogyChangeLog("Persist Analogy internal log to file (issue #83)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 01, 14));
             yield return new AnalogyChangeLog("Move to SDK-Style projects and package references. (issue #82)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 27)); yield return new AnalogyChangeLog("Default user setting are invalid for some properties (issue #76)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 01, 11));
             yield return new AnalogyChangeLog("Upgrade DevExpress Version to 19.1.8 (Latest supported with current license)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 27)); yield return new AnalogyChangeLog("Default user setting are invalid for some properties (issue #76)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 01, 11));
