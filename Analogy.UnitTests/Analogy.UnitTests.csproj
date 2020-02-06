@@ -50,7 +50,7 @@
       <Version>2.1.0-beta</Version>
     </PackageReference>
     <PackageReference Include="MSTest.TestFramework">
-      <Version>2.1.0-beta</Version>
+      <Version>2.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
