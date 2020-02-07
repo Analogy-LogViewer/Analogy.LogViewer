@@ -37,6 +37,7 @@ The following  custom data providers exists:
 - [Confluent's Apache Kafka .NET client Producer and consumer to Analogy](https://github.com/LiorBanai/Analogy.LogViewer.KafkaProvider)
 - [NLog Parser with layout customization](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog)
 - Windows event logs
+- [Catel log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.CatelProject)
 - [IIS log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.IISLogParser)
 - [RSS Reader](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RSSReader)
 
