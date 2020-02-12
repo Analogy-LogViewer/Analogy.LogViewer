@@ -1,4 +1,4 @@
-# Analogy Log Viewer
+# Analogy Log Viewer [![Release](Assets/releases.svg)](https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases/)   [![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems (with built-in NLog Parser and others).
 
@@ -37,6 +37,7 @@ The following  custom data providers exists:
 - [Confluent's Apache Kafka .NET client Producer and consumer to Analogy](https://github.com/LiorBanai/Analogy.LogViewer.KafkaProvider)
 - [NLog Parser with layout customization](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog)
 - Windows event logs
+- [Catel log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.CatelProject)
 - [IIS log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.IISLogParser)
 - [RSS Reader](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RSSReader)
 
