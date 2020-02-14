@@ -34,18 +34,9 @@ in order to compile this code [DevExpress](https://www.devexpress.com/) assembli
 View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
 # Data Providers
-The following  custom data providers exists:
-- [Confluent's Apache Kafka .NET client Producer and consumer to Analogy](https://github.com/LiorBanai/Analogy.LogViewer.KafkaProvider)
-- [NLog Parser with layout customization](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog)
-- Windows event logs
-- [Catel log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.CatelProject)
-- [IIS log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.IISLogParser)
-- [RSS Reader](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RSSReader)
-
-
-Data providers settings are managed in their own user setting windows
-![Data Providers settings screen](Assets/AnalogyDataProviders.jpg)
-
+ 
+ [View Overview repository for complete list of data Providers (some of them are still Work in progress)](https://github.com/Analogy-LogViewer/Overview)
+ 
 # Usage
 
 The primary usage of this application is to implement your own data source of logs of your own business domain by implementing small Interface but there are built in data providers (like NLog parser) that can be used without and additional coding.
