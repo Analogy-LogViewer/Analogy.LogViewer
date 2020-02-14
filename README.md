@@ -24,27 +24,19 @@ Main interaction UI:
 # Dependencies & Build
 - Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.0.
 The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Visual studio for this framework is Visual studio 2017 (or above).
-After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.Implementation.*.dll
+After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.LogViewer.*.dll
 - Analogy Interfaces assembly is complied to .Net Standard 2.0.
 
 Detailed Documentation will be added to the Wiki page.
 
 - DevExpress User Controls:
 in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
+View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
 # Data Providers
-The following  custom data providers exists:
-- [Confluent's Apache Kafka .NET client Producer and consumer to Analogy](https://github.com/LiorBanai/Analogy.LogViewer.KafkaProvider)
-- [NLog Parser with layout customization](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog)
-- Windows event logs
-- [Catel log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.CatelProject)
-- [IIS log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.IISLogParser)
-- [RSS Reader](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RSSReader)
-
-
-Data providers settings are managed in their own user setting windows
-![Data Providers settings screen](Assets/AnalogyDataProviders.jpg)
-
+ 
+ [View Overview repository for complete list of data Providers (some of them are still Work in progress)](https://github.com/Analogy-LogViewer/Overview)
+ 
 # Usage
 
 The primary usage of this application is to implement your own data source of logs of your own business domain by implementing small Interface but there are built in data providers (like NLog parser) that can be used without and additional coding.
