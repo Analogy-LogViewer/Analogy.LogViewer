@@ -22,6 +22,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageTags />
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,7 +30,7 @@
     <PackageReference Include="Analogy.LogViewer.Example" Version="1.0.9" />
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.7.3" />
     <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="1.0.1" />
-    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.4" />
+    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.4.1" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
