@@ -318,6 +318,10 @@ namespace Analogy
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             KeyEventArgs e = new KeyEventArgs(keyData);
+            if (e.Control && e.KeyCode == Keys.D)
+            {
+                btswitchExpand.Checked = !btswitchExpand.Checked;
+            }
             if (e.Control && e.KeyCode == Keys.F)
 
             {

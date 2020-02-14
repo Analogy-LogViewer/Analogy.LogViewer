@@ -985,6 +985,7 @@ namespace Analogy
             // btswitchExpand
             // 
             this.btswitchExpand.Caption = "Expand";
+            this.btswitchExpand.Hint = "Show/Hide selected message details (CTRL+D)";
             this.btswitchExpand.Id = 2;
             this.btswitchExpand.Name = "btswitchExpand";
             this.btswitchExpand.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btswitchExpand_CheckedChanged);
