@@ -63,8 +63,9 @@
     <NoStdLib>false</NoStdLib>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -691,7 +692,7 @@
     <PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.0.2" />
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.7.3" />
     <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="1.0.1" />
-    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.4" />
+    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.4.1" />
     <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.0.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
