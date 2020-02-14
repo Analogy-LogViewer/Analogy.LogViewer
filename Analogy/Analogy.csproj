@@ -42,9 +42,9 @@
     <Company>Lior Banai</Company>
     <Product>Analogy Log Viewer</Product>
     <Description>Modern Log Viewer and analyzer.</Description>
-    <Copyright>Copyright @ Lior Banai 2019</Copyright>
-    <AssemblyVersion>4.1.9.0</AssemblyVersion>
-    <FileVersion>4.1.9.0</FileVersion>
+    <Copyright>Copyright @ Lior Banai 2020</Copyright>
+    <AssemblyVersion>4.1.10.0</AssemblyVersion>
+    <FileVersion>4.1.10.0</FileVersion>
     <NoWarn>1591;1573;0419;1607</NoWarn>
     <PlatformToolset>v120</PlatformToolset>
     <BaseAddress>285212672</BaseAddress>
@@ -83,7 +83,7 @@
   <PropertyGroup>
     <PreBuildEvent />
     <PostBuildEvent />
-    <Version>4.1.9</Version>
+    <Version>4.1.10</Version>
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
@@ -91,6 +91,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Analogy.LogViewer</PackageId>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
