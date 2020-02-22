@@ -693,6 +693,7 @@
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.7.3" />
     <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="1.0.1" />
     <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.4.1" />
+    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.4.1" />
     <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.0.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
