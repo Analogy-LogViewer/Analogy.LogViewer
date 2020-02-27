@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Analogy.DataProviders.Extensions;
+﻿using Analogy.DataProviders.Extensions;
 using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Types;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Analogy
 {
@@ -199,7 +199,8 @@ namespace Analogy
                             if (aType.GetInterface(nameof(IAnalogyFactory)) != null)
                             {
                                 if (!(Activator.CreateInstance(aType) is IAnalogyFactory factory)) continue;
-                                FactorySettings setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
+                                FactorySettings setting =
+                                    UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
                                 setting.FactoryName = factory.Title;
                                 if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
                                 foreach (var provider in factory.DataProviders.Items)
@@ -212,22 +213,32 @@ namespace Analogy
                                 Assemblies.Add((factory, assembly));
 
                             }
+
                             if (aType.GetInterface(nameof(IAnalogyDataProviderSettings)) != null)
                             {
-                                if (!(Activator.CreateInstance(aType) is IAnalogyDataProviderSettings setting)) continue;
+                                if (!(Activator.CreateInstance(aType) is IAnalogyDataProviderSettings setting))
+                                    continue;
                                 DataProviderSettings.Add(setting);
                             }
                         }
+                        catch (ReflectionTypeLoadException ex)
+                        {
+                            AnalogyLogManager.Instance.LogError($"{aType}: Error during data providers: {string.Join(",", ex.LoaderExceptions.ToList())}. {aFile})", nameof(FactoriesManager));
+                        }
                         catch (Exception e)
                         {
-                            AnalogyLogManager.Instance.LogError("Error during data providers: " + e, nameof(FactoriesManager));
+                            AnalogyLogManager.Instance.LogError($"{aType}: Error during data providers: {e} ({e.InnerException}. {aFile})", nameof(FactoriesManager));
                         }
 
                     }
                 }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    AnalogyLogManager.Instance.LogError($"{aFile}: Error during data providers: {string.Join(",", ex.LoaderExceptions.ToList())}. {aFile})", nameof(FactoriesManager));
+                }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError("Error during data providers: " + e, nameof(FactoriesManager));
+                    AnalogyLogManager.Instance.LogError($"{aFile}: Error during data providers: {e} ({e.InnerException})", nameof(FactoriesManager));
                 }
             }
         }
