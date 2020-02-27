@@ -3,7 +3,7 @@
 Analogy Log Viewer is using DevExpress User Controls for UI.
 in order to compile this code please download Version 19.1.9 from [DevExpress Site](https://www.devexpress.com/)
 
-The following dll are needed for compilations (put them in this folder or update Analogy project References):
+The following dll are needed for compilations:
 1.	DevExpress.Charts.v19.1.Core.dll
 2.	DevExpress.Data.v19.1.dll
 3.	DevExpress.Images.v19.1.dll
