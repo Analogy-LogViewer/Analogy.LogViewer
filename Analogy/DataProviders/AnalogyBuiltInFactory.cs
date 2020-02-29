@@ -52,9 +52,9 @@ namespace Analogy.DataSources
         public Guid ID { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
 
         public bool CanSaveToLogFile { get; } = true;
-        public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.log;*.json|Plain Analogy XML log file (*.log)|*.log|Analogy JSON file (*.json)|*.json";
-        public string FileSaveDialogFilters { get; } = "Plain Analogy XML log file (*.log)|*.log|Analogy JSON file (*.json)|*.json";
-        public IEnumerable<string> SupportFormats { get; } = new[] { "*.log", "*.json" };
+        public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.xml;*.json;*.bin|Plain Analogy XML log file (*.xml)|*.log|Analogy JSON file (*.json)|*.json|Analogy MessagePack bin file (*.bin)|*.bin";
+        public string FileSaveDialogFilters { get; } = "Plain Analogy XML log file (*.xml)|*.xml|Analogy JSON file (*.json)|*.json|Analogy MessagePack bin file (*.bin)|*.bin";
+        public IEnumerable<string> SupportFormats { get; } = new[] { "*.xml", "*.json" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
         public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
         public Image OptionalOpenFolderImage { get; }
@@ -84,6 +84,12 @@ namespace Analogy.DataSources
                 var messages = await logFile.ReadFromFile(fileName, token, messagesHandler);
                 return messages;
             }
+            if (fileName.EndsWith(".bin", StringComparison.InvariantCultureIgnoreCase))
+            {
+                AnalogyMessagePackFormat logFile = new AnalogyMessagePackFormat();
+                var messages = await logFile.ReadFromFile(fileName, token, messagesHandler);
+                return messages;
+            }
             else
             {
                 AnalogyLogMessage m = new AnalogyLogMessage
@@ -110,24 +116,29 @@ namespace Analogy.DataSources
             => Task.Factory.StartNew(async () =>
             {
 
-                if (fileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase))
+                if (fileName.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
                 {
                     AnalogyXmlLogFile logFile = new AnalogyXmlLogFile();
                     await logFile.Save(messages, fileName);
 
                 }
-                if (fileName.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase))
+                else if (fileName.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase))
                 {
                     AnalogyJsonLogFile logFile = new AnalogyJsonLogFile();
                     await logFile.Save(messages, fileName);
-
+                }
+                else if (fileName.EndsWith(".bin", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    AnalogyMessagePackFormat logFile = new AnalogyMessagePackFormat();
+                    await logFile.Save(messages, fileName);
                 }
             });
 
         public bool CanOpenFile(string fileName)
 
-            => fileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase) ||
-                fileName.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase);
+            => fileName.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase) ||
+                fileName.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase) ||
+                fileName.EndsWith(".bin", StringComparison.InvariantCultureIgnoreCase);
 
 
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
@@ -136,6 +147,7 @@ namespace Analogy.DataSources
         {
             List<FileInfo> files = dirInfo.GetFiles("*.log")
                 .Concat(dirInfo.GetFiles("*.json"))
+                .Concat(dirInfo.GetFiles("*.bin"))
                 .ToList();
             if (!recursive)
                 return files;
