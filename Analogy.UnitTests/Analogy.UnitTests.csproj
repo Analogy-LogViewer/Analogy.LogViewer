@@ -72,7 +72,7 @@
       <Version>2.1.7.3</Version>
     </PackageReference>
     <PackageReference Include="MessagePack">
-      <Version>2.1.80</Version>
+      <Version>2.1.90</Version>
     </PackageReference>
     <PackageReference Include="MSTest.TestAdapter">
       <Version>2.1.0</Version>
