@@ -11,6 +11,8 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
+            
+            yield return new AnalogyChangeLog("Add MessagePack binary format to built in supported Analogy Formats (Issue #102)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 02, 29));
             yield return new AnalogyChangeLog("Add shortcut for toggle detailed messages info (Issue #96)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 02, 14));
             yield return new AnalogyChangeLog("Upgrade DevExpress to v19.1.9 (Issue #97)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 02, 14));
             yield return new AnalogyChangeLog("NullReferenceException during row painting (Philips ICAP data provider). (Issue #85)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 27));
