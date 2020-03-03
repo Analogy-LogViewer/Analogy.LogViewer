@@ -714,7 +714,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.0.3" />
-    <PackageReference Include="Analogy.LogViewer.Example" Version="1.0.9">
+    <PackageReference Include="Analogy.LogViewer.Example" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
