@@ -57,8 +57,7 @@ namespace Analogy.DataSources
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.xml", "*.json" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
         public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
-        public Image OptionalOpenFolderImage { get; }
-        public Image OptionalOpenFilesImage { get; }
+        public bool DisableFilePoolingOption { get; } = false;
 
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
