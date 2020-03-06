@@ -55,8 +55,7 @@ namespace Analogy.DataSources
 
         public string InitialFolderFullPath { get; } =
             Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt", "Logs");
-        public Image OptionalOpenFolderImage { get; } = Resources.OperatingSystem_16x16;
-        public Image OptionalOpenFilesImage { get; } = Resources.OperatingSystem_16x16;
+        public bool DisableFilePoolingOption { get; } = false;
 
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
