@@ -12,7 +12,7 @@
     <AssemblyName>Analogy</AssemblyName>
     <RootNamespace>Analogy</RootNamespace>
     <ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageId>Analogy.LogViewer.Core</PackageId>
     <Authors>Lior Banai</Authors>
