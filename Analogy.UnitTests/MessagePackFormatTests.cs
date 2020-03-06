@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Analogy.LogLoaders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Analogy.UnitTests
