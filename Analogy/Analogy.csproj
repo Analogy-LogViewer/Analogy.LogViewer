@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -23,6 +23,9 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageTags />
     <RepositoryType>git</RepositoryType>
+    <Version>4.1.12</Version>
+    <Copyright>Lior Banai ©  2020</Copyright>
+    <Product>Analogy Log Viewer Core</Product>
   </PropertyGroup>
 
   <ItemGroup>
