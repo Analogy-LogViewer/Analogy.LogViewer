@@ -727,11 +727,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets></IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.5">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.5" />
+    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.5" />
+    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.5.2" />
     <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
