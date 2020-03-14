@@ -657,6 +657,12 @@ namespace Analogy
                 }
             }
 
+            AddFactorySettings(factory, ribbonPage);
+            AddAbout(factory,ribbonPage);
+        }
+
+        private void AddAbout(IAnalogyFactory factory, RibbonPage ribbonPage)
+        {
             RibbonPageGroup groupInfoSource = new RibbonPageGroup("About");
             groupInfoSource.Alignment = RibbonPageGroupAlignment.Far;
             BarButtonItem aboutBtn = new BarButtonItem();
@@ -667,9 +673,7 @@ namespace Analogy
             aboutBtn.ImageOptions.LargeImage = Resources.About_32x32;
             aboutBtn.ItemClick += (sender, e) => { new AboutDataSourceBox(factory).ShowDialog(this); };
             ribbonPage.Groups.Add(groupInfoSource);
-            AddFactorySettings(factory, ribbonPage);
         }
-
         private void AddFactorySettings(IAnalogyFactory factory, RibbonPage ribbonPage)
         {
             if (settings.GetFactorySetting(factory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
@@ -682,15 +686,14 @@ namespace Analogy
             settingsBtn.Caption = factorySetting.Title;
             settingsBtn.RibbonStyle = RibbonItemStyles.All;
             groupSettings.ItemLinks.Add(settingsBtn);
-            settingsBtn.ImageOptions.Image = Resources.Technology_16x16;
-            settingsBtn.ImageOptions.LargeImage = Resources.Technology_32x32;
+            settingsBtn.ImageOptions.Image = factorySetting.SmallImage ?? Resources.Technology_16x16;
+            settingsBtn.ImageOptions.LargeImage = factorySetting.LargeImage ?? Resources.Technology_32x32;
             XtraForm form = new XtraForm();
             form.Controls.Add(factorySetting.DataProviderSettings);
             factorySetting.DataProviderSettings.Dock = DockStyle.Fill;
             form.WindowState = FormWindowState.Maximized;
             settingsBtn.ItemClick += (sender, e) => { form.ShowDialog(this); };
             ribbonPage.Groups.Add(groupSettings);
-
         }
         private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
