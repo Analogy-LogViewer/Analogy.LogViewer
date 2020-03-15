@@ -811,8 +811,9 @@ namespace Analogy
             this.imageList.Images.SetKeyName(5, "Warning_32x32.png");
             this.imageList.Images.SetKeyName(6, "debug.gif");
             this.imageList.Images.SetKeyName(7, "New_16x16.png");
-            this.imageList.Images.SetKeyName(8, "log16x16.ico");
+            this.imageList.Images.SetKeyName(8, "Analogy_icon1_16x16.ico");
             this.imageList.Images.SetKeyName(9, "Question_16x16.png");
+            this.imageList.Images.SetKeyName(10, "log16x16.ico");
             // 
             // logGridFiltered
             // 

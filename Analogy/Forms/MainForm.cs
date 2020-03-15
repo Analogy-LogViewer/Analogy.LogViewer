@@ -1,25 +1,23 @@
-﻿using DevExpress.XtraBars;
-using DevExpress.XtraBars.Ribbon;
-using DevExpress.XtraTab;
-using DevExpress.XtraTab.ViewInfo;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.DataSources;
+﻿using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Tools;
 using Analogy.Types;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using DevExpress.XtraTab;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy
 {
@@ -113,6 +111,7 @@ namespace Analogy
             IAnalogyFactory analogy = FactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
             if (settings.GetFactorySetting(analogy.FactoryID).Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
+
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
             IAnalogyFactory eventLogDataFactory = FactoriesManager.Instance.Get(EventLogDataFactory.ID);
             if (settings.GetFactorySetting(eventLogDataFactory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
@@ -663,6 +662,12 @@ namespace Analogy
                 }
             }
 
+            AddFactorySettings(factory, ribbonPage);
+            AddAbout(factory,ribbonPage);
+        }
+
+        private void AddAbout(IAnalogyFactory factory, RibbonPage ribbonPage)
+        {
             RibbonPageGroup groupInfoSource = new RibbonPageGroup("About");
             groupInfoSource.Alignment = RibbonPageGroupAlignment.Far;
             BarButtonItem aboutBtn = new BarButtonItem();
@@ -674,7 +679,27 @@ namespace Analogy
             aboutBtn.ItemClick += (sender, e) => { new AboutDataSourceBox(factory).ShowDialog(this); };
             ribbonPage.Groups.Add(groupInfoSource);
         }
-
+        private void AddFactorySettings(IAnalogyFactory factory, RibbonPage ribbonPage)
+        {
+            if (settings.GetFactorySetting(factory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
+                return;
+            var factorySetting = FactoriesManager.Instance.GetSettings(factory.FactoryID);
+            if (factorySetting == null) return;
+            RibbonPageGroup groupSettings = new RibbonPageGroup("Settings");
+            groupSettings.Alignment = RibbonPageGroupAlignment.Far;
+            BarButtonItem settingsBtn = new BarButtonItem();
+            settingsBtn.Caption = factorySetting.Title;
+            settingsBtn.RibbonStyle = RibbonItemStyles.All;
+            groupSettings.ItemLinks.Add(settingsBtn);
+            settingsBtn.ImageOptions.Image = factorySetting.SmallImage ?? Resources.Technology_16x16;
+            settingsBtn.ImageOptions.LargeImage = factorySetting.LargeImage ?? Resources.Technology_32x32;
+            XtraForm form = new XtraForm();
+            form.Controls.Add(factorySetting.DataProviderSettings);
+            factorySetting.DataProviderSettings.Dock = DockStyle.Fill;
+            form.WindowState = FormWindowState.Maximized;
+            settingsBtn.ItemClick += (sender, e) => { form.ShowDialog(this); };
+            ribbonPage.Groups.Add(groupSettings);
+        }
         private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup(dataSourceFactory.Title);
