@@ -29,13 +29,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.0.4" />
+    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.0.4.3" />
     <PackageReference Include="Analogy.LogViewer.Example" Version="1.1.0" />
-    <PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.1.0" />
+    <PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.1.0.1" />
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.8" />
-    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.5" />
-    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.5" />
-    <PackageReference Include="Analogy.LogViewer.Serilog" Version="1.0.0" />
+    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.5.1" />
+    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.5.2" />
+    <PackageReference Include="Analogy.LogViewer.Serilog" Version="1.0.2.1" />
     <PackageReference Include="MessagePack" Version="2.1.90" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
