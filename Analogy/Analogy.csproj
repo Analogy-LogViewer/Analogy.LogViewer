@@ -728,7 +728,7 @@
       <IncludeAssets></IncludeAssets>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.0.5.2" />
-    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.5.2" />
+    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.5.3" />
     <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.1.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
