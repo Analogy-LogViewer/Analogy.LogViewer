@@ -160,7 +160,8 @@ namespace Analogy
         public bool IsBuiltInFactory(Guid factoryId) => BuiltInFactories.Exists(f => f.FactoryID.Equals(factoryId));
         public List<IAnalogyDataProviderSettings> GetProvidersSettings() => DataProvidersSettings.ToList();
 
-
+        public IAnalogyDataProviderSettings GetSettings(Guid factoryId) =>
+            DataProvidersSettings.FirstOrDefault(p => p.FactoryId == factoryId);
     }
 
     public class ExternalDataProviders
