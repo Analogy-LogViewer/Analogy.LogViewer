@@ -6,14 +6,14 @@ The application has many standard operations for analysis logs (like filtering, 
 This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
 Some features of this tool are:
 1.	Windows event log support (evtx files)
-2.	Logs aggregation into single view.
+2.	Aggregation into single view.
 3.	Search in multiple files
 4.	Combine multiple files
 5.	Compare logs 
 6.	Themes support
 7.	64 bit support (allow loading more files)
 8.	Personalization (users settings per user) 
-9.	Columns extension to add more columns specific to the data source implementation
+9.	Columns Extendable: Ability to add more columns specific to the data source implementation
 10.	Exporting to Excel/CSV files
 
 Main interaction UI:
