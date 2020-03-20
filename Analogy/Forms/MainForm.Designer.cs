@@ -522,8 +522,8 @@
             // 
             this.bBtnExtensionSettings.Caption = "Extensions";
             this.bBtnExtensionSettings.Id = 40;
-            this.bBtnExtensionSettings.ImageOptions.Image = global::Analogy.Properties.Resources.extension32;
-            this.bBtnExtensionSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExtensionSettings.ImageOptions.LargeImage")));
+            this.bBtnExtensionSettings.ImageOptions.Image = global::Analogy.Properties.Resources.extension16;
+            this.bBtnExtensionSettings.ImageOptions.LargeImage = global::Analogy.Properties.Resources.extension32;
             this.bBtnExtensionSettings.LargeWidth = 80;
             this.bBtnExtensionSettings.Name = "bBtnExtensionSettings";
             this.bBtnExtensionSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
