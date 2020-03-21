@@ -1,7 +1,21 @@
-# Analogy Log Viewer 
-[![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=1&branchName=master)   <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases" alt="Latest Release">
-    <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/> <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.12...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/></a>
+# Analogy Log Viewer
 
+<p align="center">
+    
+[![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
+[![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=1&branchName=master)
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues" alt="Issues">
+    <img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"/>
+</a>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE" alt="License">
+    <img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"/>
+</a>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases" alt="Latest Release">
+    <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/>
+</a>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.12...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
+</a>
+</p>
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems (with built-in NLog Parser and others).
 
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
