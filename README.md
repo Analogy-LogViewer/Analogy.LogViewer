@@ -16,6 +16,8 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.12...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
 </a>
 </p>
+
+
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems (with built-in NLog Parser and others).
 
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
