@@ -7,11 +7,11 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues" alt="Issues">
     <img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE" alt="License">
-    <img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"/>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases" alt="Latest Release">
-    <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
+    <img alt="Latest Release" src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.12...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
 </a>
