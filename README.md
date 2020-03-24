@@ -7,7 +7,7 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues" alt="Issues">
     <img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE">
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE.md">
     <img alt="License" src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
