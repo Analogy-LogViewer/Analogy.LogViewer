@@ -22,6 +22,11 @@ Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems wit
 
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
 This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
+
+Currently working on:
+- [ ] Colaboration like feature: abilit to send log messages to gRPC/WCF service and/or between data providers [Issue #119](https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/119)
+
+
 Some features of this tool are:
 1.	Windows event log support (evtx files)
 2.	Aggregation into single view.
@@ -40,7 +45,7 @@ Main interaction UI:
 ![Main screen](Assets/AnalogyMainUI.jpg)
 
 # Dependencies & Build
-- Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.0.
+- Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.1.
 The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Visual studio for this framework is Visual studio 2017 (or above).
 After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.LogViewer.*.dll
 - Analogy Interfaces assembly is complied to .Net Standard 2.0.
