@@ -24,7 +24,7 @@ The application has many standard operations for analysis logs (like filtering, 
 This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
 
 Currently working on:
-- [ ] Colaboration like feature: abilit to send log messages to gRPC/WCF service and/or between data providers [Issue #119](https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/119)
+- [ ] collaboration-like feature: abilit to send log messages to gRPC/WCF service and/or between data providers [Issue #119](https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/119)
 
 
 Some features of this tool are:
