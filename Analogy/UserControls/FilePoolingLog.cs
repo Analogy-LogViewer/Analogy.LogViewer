@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Types;
-using DevExpress.XtraBars;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy

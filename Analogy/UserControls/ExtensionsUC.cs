@@ -8,7 +8,7 @@ namespace Analogy
 {
     public partial class ExtensionsUC : UserControl
     {
-        public event EventHandler<EventArgs> OnClick;
+        public event EventHandler<EventArgs> OnClicked;
         public ExtensionsUC()
         {
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace Analogy
                 sBtnLoad.Text = "Loaded";
             }
 
-            OnClick?.Invoke(this, new EventArgs());
+            OnClicked?.Invoke(this, new EventArgs());
         }
     }
 }

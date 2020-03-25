@@ -10,11 +10,10 @@ namespace Analogy
 {
     public class AnalogyLogger: IAnalogyLogger
     {
-        public static Lazy<IAnalogyLogger> _instance = new Lazy<IAnalogyLogger>(()=>new AnalogyLogger());
-        public static IAnalogyLogger Intance => _instance.Value;
+        public static readonly Lazy<IAnalogyLogger> _instance = new Lazy<IAnalogyLogger>(()=>new AnalogyLogger());
+        public static IAnalogyLogger Instance => _instance.Value;
         private string DateTimeWithMilliseconds => DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt", DateTimeFormatInfo.InvariantInfo);
         private static readonly Process CurrentProcess = Process.GetCurrentProcess();
-        private string ProcessName { get; } = CurrentProcess.ProcessName;
         private DateTime ProcessStartTime => CurrentProcess.StartTime;
         private AnalogyLogger()
         {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -9,7 +8,6 @@ using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.LogLoaders;
-using Analogy.Properties;
 
 
 namespace Analogy.DataSources
