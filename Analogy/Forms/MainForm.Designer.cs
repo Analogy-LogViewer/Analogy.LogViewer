@@ -91,8 +91,6 @@
             this.btnErrors = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -188,7 +186,6 @@
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageThemes,
-            this.ribbonPage4,
             this.ribbonPage1});
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
@@ -510,10 +507,10 @@
             // 
             // bBtnExtensionSettings
             // 
-            this.bBtnExtensionSettings.Caption = "Extensions setting";
+            this.bBtnExtensionSettings.Caption = "Extensions";
             this.bBtnExtensionSettings.Id = 40;
-            this.bBtnExtensionSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExtensionSettings.ImageOptions.Image")));
-            this.bBtnExtensionSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExtensionSettings.ImageOptions.LargeImage")));
+            this.bBtnExtensionSettings.ImageOptions.Image = global::Analogy.Properties.Resources.extension16;
+            this.bBtnExtensionSettings.ImageOptions.LargeImage = global::Analogy.Properties.Resources.extension32;
             this.bBtnExtensionSettings.LargeWidth = 80;
             this.bBtnExtensionSettings.Name = "bBtnExtensionSettings";
             this.bBtnExtensionSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -688,19 +685,6 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "Options";
             // 
-            // ribbonPage4
-            // 
-            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup10});
-            this.ribbonPage4.Name = "ribbonPage4";
-            this.ribbonPage4.Text = "Extensions";
-            // 
-            // ribbonPageGroup10
-            // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.bbiExtensions);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            this.ribbonPageGroup10.Text = "Extensions Selection";
-            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -839,8 +823,6 @@
         private DevExpress.XtraBars.BarButtonItem bBtnWindowsEventLogs;
         private DevExpress.XtraBars.BarButtonItem bBtnOnlineEventLogs;
         private DevExpress.XtraBars.BarButtonItem bbiExtensions;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem bBtnShortcuts;
         private DevExpress.XtraBars.BarButtonItem bBtnMRUSettings;
         private DevExpress.XtraBars.BarSubItem bsiWindowsEventLogs;

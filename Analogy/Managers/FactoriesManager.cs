@@ -47,7 +47,7 @@ namespace Analogy
                     if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
                     foreach (var provider in factory.DataProviders.Items)
                     {
-                        provider.InitializeDataProviderAsync(AnalogyLogger.Intance);
+                        provider.InitializeDataProviderAsync(AnalogyLogger.Instance);
                     }
                     //if no exception in init then add to list
                     Factories.Add(factory);
@@ -206,7 +206,7 @@ namespace Analogy
                                 if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
                                 foreach (var provider in factory.DataProviders.Items)
                                 {
-                                    provider.InitializeDataProviderAsync(AnalogyLogger.Intance);
+                                    provider.InitializeDataProviderAsync(AnalogyLogger.Instance);
                                 }
 
                                 //if no exception in init then add to list

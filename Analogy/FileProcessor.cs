@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml;
 using Analogy.Interfaces;
 
 namespace Analogy
@@ -68,7 +67,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogger.Intance.LogCritical("Analogy", $"Error parsing file: {e}");
+                AnalogyLogger.Instance.LogCritical("Analogy", $"Error parsing file: {e}");
                 AnalogyLogMessage error = new AnalogyLogMessage($"Error reading file {filename}: Error: {e.Message}", AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None");
                 error.Source = nameof(FileProcessor);
                 error.Module = "Analogy";

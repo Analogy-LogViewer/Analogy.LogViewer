@@ -42,6 +42,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
@@ -54,6 +55,7 @@
             this.chklItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.chklItems.CheckOnClick = true;
+            this.chklItems.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chklItems.FormattingEnabled = true;
             this.chklItems.Location = new System.Drawing.Point(15, 33);
             this.chklItems.Margin = new System.Windows.Forms.Padding(6);
@@ -66,6 +68,7 @@
             // 
             this.rtxtbMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxtbMessages.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtbMessages.Location = new System.Drawing.Point(11, 357);
             this.rtxtbMessages.Name = "rtxtbMessages";
             this.rtxtbMessages.Size = new System.Drawing.Size(894, 106);
@@ -77,6 +80,7 @@
             this.lblAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAuthor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblAuthor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAuthor.Location = new System.Drawing.Point(399, 303);
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(510, 31);
@@ -89,6 +93,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDescription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDescription.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.Location = new System.Drawing.Point(399, 68);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(510, 176);
@@ -100,6 +105,7 @@
             this.lblExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExtension.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblExtension.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExtension.Location = new System.Drawing.Point(399, 33);
             this.lblExtension.Name = "lblExtension";
             this.lblExtension.Size = new System.Drawing.Size(510, 31);
@@ -111,6 +117,7 @@
             this.lblType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblType.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(399, 265);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(510, 31);
@@ -120,6 +127,8 @@
             // sBtnLoad
             // 
             this.sBtnLoad.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.sBtnLoad.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sBtnLoad.Appearance.Options.UseFont = true;
             this.sBtnLoad.Location = new System.Drawing.Point(320, 475);
             this.sBtnLoad.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.sBtnLoad.Name = "sBtnLoad";

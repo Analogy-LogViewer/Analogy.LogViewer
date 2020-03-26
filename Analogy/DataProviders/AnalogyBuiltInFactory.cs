@@ -42,7 +42,7 @@ namespace Analogy.DataSources
             var builtInItems = new List<IAnalogyDataProvider>();
             var adp = new AnalogyOfflineDataProvider();
             builtInItems.Add(adp);
-            adp.InitializeDataProviderAsync(AnalogyLogger.Intance);
+            adp.InitializeDataProviderAsync(AnalogyLogger.Instance);
             Items = builtInItems;
         }
     }

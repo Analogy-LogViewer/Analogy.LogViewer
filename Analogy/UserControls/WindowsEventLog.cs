@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.Managers;
-using DevExpress.XtraBars;
 
 namespace Analogy
 {

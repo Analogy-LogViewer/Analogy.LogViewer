@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.Types;
-using DevExpress.XtraBars;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy

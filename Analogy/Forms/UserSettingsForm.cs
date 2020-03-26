@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Types;
-using DevExpress.Utils;
 
 namespace Analogy
 {

@@ -43,17 +43,6 @@ namespace Analogy
             }
         }
 
-
-
-        private void btnTop10_Click(object sender, EventArgs e)
-        {
-            int length = Math.Min(10, checkedListBoxControl1.Items.Count);
-            for (int i = 0; i < length; i++)
-            {
-                checkedListBoxControl1.SetItemCheckState(i, CheckState.Checked);
-            }
-        }
-
         private void sBtnOk_Click(object sender, EventArgs e)
         {
             GlobalExclusion = checkedListBoxControl1.CheckedItems.Cast<DevExpress.XtraEditors.Controls.CheckedListBoxItem>().Select(i => FilterCriteriaObject.EscapeLikeValue((i.Value as AnalogyCheckListItem)?.Text)).ToList();

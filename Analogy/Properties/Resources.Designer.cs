@@ -451,6 +451,26 @@ namespace Analogy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap extension16 {
+            get {
+                object obj = ResourceManager.GetObject("extension16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap extension32 {
+            get {
+                object obj = ResourceManager.GetObject("extension32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feature is disabled.
         /// </summary>
         internal static string FeatureDisable {

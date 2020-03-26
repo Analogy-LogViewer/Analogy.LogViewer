@@ -12,7 +12,7 @@ namespace Analogy
 
         private void ExtensionsForm_Load(object sender, EventArgs e)
         {
-            extensionsUC1.OnClick += (s, args) => { Close(); };
+            extensionsUC1.OnClicked += (s, args) => { Close(); };
 
         }
     }
