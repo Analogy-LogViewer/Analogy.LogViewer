@@ -217,7 +217,7 @@ namespace Analogy
         }
         public FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory)
         {
-            bool Exists(Guid guid) => guid == factory.FactoryID;
+            bool Exists(Guid guid) => guid == factory.FactoryId;
             if (FactoriesSettings.Exists(f => Exists(f.FactoryGuid)))
             {
                 return FactoriesSettings.Single(f => Exists(f.FactoryGuid));
@@ -225,12 +225,9 @@ namespace Analogy
 
             var createNew = new FactorySettings
             {
-                FactoryGuid = factory.FactoryID,
+                FactoryGuid = factory.FactoryId,
                 Status = DataProviderFactoryStatus.NotSet,
                 UserSettingFileAssociations = new List<string>()
-                //factory.DataProviders.Items
-                //.Where(itm => itm is IAnalogyOfflineDataProvider)
-                //.SelectMany(itm => ((IAnalogyOfflineDataProvider)itm).SupportFormats).ToList()
             };
             FactoriesSettings.Add(createNew);
             return createNew;

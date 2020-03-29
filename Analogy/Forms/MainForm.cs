@@ -55,7 +55,10 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
-            await AnalogyLogManager.Instance.Init();
+
+            var logger= AnalogyLogManager.Instance.Init();
+            var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
+            await Task.WhenAll(logger, factories);
             string[] arguments = Environment.GetCommandLineArgs();
             disableOnlineDueToFileOpen = arguments.Length == 2;
             if (DesignMode) return;
@@ -109,12 +112,12 @@ namespace Analogy
         private void CreateAnalogyBuiltinDataProviders()
         {
             IAnalogyFactory analogy = FactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
-            if (settings.GetFactorySetting(analogy.FactoryID).Status != DataProviderFactoryStatus.Disabled)
+            if (settings.GetFactorySetting(analogy.FactoryId).Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
 
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-            IAnalogyFactory eventLogDataFactory = FactoriesManager.Instance.Get(EventLogDataFactory.ID);
-            if (settings.GetFactorySetting(eventLogDataFactory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
+            IAnalogyFactory eventLogDataFactory = FactoriesManager.Instance.Get(EventLogDataFactory.id);
+            if (settings.GetFactorySetting(eventLogDataFactory.FactoryId).Status == DataProviderFactoryStatus.Disabled)
                 return;
             //CreateEventLogsGroup
             RibbonPage ribbonPage = new RibbonPage(eventLogDataFactory.Title);

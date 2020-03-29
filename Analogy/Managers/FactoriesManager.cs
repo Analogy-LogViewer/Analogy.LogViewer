@@ -20,39 +20,44 @@ namespace Analogy
             _instance = new Lazy<FactoriesManager>(() => new FactoriesManager());
         private static object sync = new object();
         private bool ExternalDataSourcesAdded { get; set; }
-        public static FactoriesManager Instance = _instance.Value;
-        private List<IAnalogyFactory> BuiltInFactories { get; }
-        private List<IAnalogyDataProviderSettings> DataProvidersSettings { get; set; }
+        public static readonly FactoriesManager Instance = _instance.Value;
+        private List<FactoryContainer> BuiltInFactories { get; }
 
-        public List<(IAnalogyFactory Factory, Assembly Assembly)> Assemblies { get; private set; }
-
-        private List<IAnalogyFactory> Factories { get; }
+        public List<FactoryContainer> Factories { get; private set; }
 
         public FactoriesManager()
         {
-            DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
-            Factories = new List<IAnalogyFactory>();
-            Assemblies = new List<(IAnalogyFactory Factory, Assembly Assembly)>
-            {
-                (new AnalogyBuiltInFactory(), Assembly.GetExecutingAssembly()),
-                (new EventLogDataFactory(), Assembly.GetAssembly(typeof(EventLogDataFactory)))
-            };
-            BuiltInFactories = new List<IAnalogyFactory>();
-            try
-            {
-                foreach ((IAnalogyFactory factory, _) in Assemblies)
-                {
-                    FactorySettings setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
-                    setting.FactoryName = factory.Title;
-                    if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
-                    foreach (var provider in factory.DataProviders.Items)
-                    {
-                        provider.InitializeDataProviderAsync(AnalogyLogger.Instance);
-                    }
-                    //if no exception in init then add to list
-                    Factories.Add(factory);
-                    BuiltInFactories.Add(factory);
+            Factories = new List<FactoryContainer>();
+            BuiltInFactories = new List<FactoryContainer>();
+            FactoryContainer fc = new FactoryContainer(Assembly.GetExecutingAssembly());
+            fc.AddFactory(new AnalogyBuiltInFactory());
+            fc.AddFactory(new EventLogDataFactory());
+            fc.AddDataProviderFactory(new AnalogyOfflineDataProviderFactory());
+            fc.AddCustomActionFactory(new AnalogyCustomActionFactory());
+            BuiltInFactories.Add(fc);
+        }
 
+        public async Task InitializeBuiltInFactories()
+        {
+            try
+
+            {
+                foreach (FactoryContainer factoryContainer in BuiltInFactories)
+                {
+                    foreach (var factory in factoryContainer.Factories)
+                    {
+                        FactorySettings setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
+                        setting.FactoryName = factory.Title;
+                        if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
+                        foreach (var providerFactory in factoryContainer.DataProvidersFactories.Where(f =>
+                            f.FactoryId == factory.FactoryId))
+                        {
+                            foreach (var provider in providerFactory.DataProviders)
+                            {
+                                await provider.InitializeDataProviderAsync(AnalogyLogger.Instance);
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception e)
@@ -176,7 +181,7 @@ namespace Analogy
         public List<IAnalogyFactory> Factories { get; }
         public List<IAnalogyDataProviderSettings> DataProviderSettings { get; }
 
-        public ExternalDataProviders()
+        private ExternalDataProviders()
         {
 
             Factories = new List<IAnalogyFactory>();

@@ -15,21 +15,20 @@ namespace Analogy.DataSources
 
     public class EventLogDataFactory : IAnalogyFactory
     {
-        public static Guid ID { get; } = new Guid("3949DB4C-0E22-4795-92C1-61B05EDB3F6C");
-
-        public Guid FactoryID { get; } = ID;
+        public static Guid id = new Guid("3949DB4C-0E22-4795-92C1-61B05EDB3F6C");
+        public Guid FactoryId { get; } = id;
         public string Title { get; } = "Windows Event logs";
-        public IAnalogyDataProvidersFactory DataProviders { get; }=new EventLogDataProviders();
-        public IAnalogyCustomActionsFactory Actions { get; } = new EmptyActionsFactory();
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; } = CommonChangeLog.GetChangeLog();
         public IEnumerable<string> Contributors { get; } = new List<string>() { "Lior Banai" };
         public string About { get; } = "Analogy Built-In Windows Event Log Data Provider";
 
-        public class EventLogDataProviders : IAnalogyDataProvidersFactory
-        {
-            public string Title { get; } = "Analogy Built-In Windows Event Log Data Provider";
-            public IEnumerable<IAnalogyDataProvider> Items { get; } = new List<IAnalogyDataProvider> { new EventLogDataProvider() };
-        }
+    }
+
+    public class EventLogDataProviders : IAnalogyDataProvidersFactory
+    {
+        public Guid FactoryId { get; } = EventLogDataFactory.id;
+        public string Title { get; } = "Analogy Built-In Windows Event Log Data Provider";
+        public IEnumerable<IAnalogyDataProvider> DataProviders { get; }= new List<IAnalogyDataProvider> { new EventLogDataProvider() };
     }
     public class EventLogDataProvider : IAnalogyOfflineDataProvider
     {
