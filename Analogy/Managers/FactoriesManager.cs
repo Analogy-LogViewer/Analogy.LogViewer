@@ -18,23 +18,25 @@ namespace Analogy
 
         private static readonly Lazy<FactoriesManager>
             _instance = new Lazy<FactoriesManager>(() => new FactoriesManager());
+
         private static object sync = new object();
         public static readonly FactoriesManager Instance = _instance.Value;
-        private List<FactoryContainer> BuiltInFactories { get; }
+        private List<AssemblyContainer> BuiltInFactories { get; }
 
-        public List<FactoryContainer> Factories { get; private set; }
+        public List<AssemblyContainer> Factories { get; private set; }
 
         public FactoriesManager()
         {
-            Factories = new List<FactoryContainer>();
-            BuiltInFactories = new List<FactoryContainer>();
-            FactoryContainer fc = new FactoryContainer(Assembly.GetExecutingAssembly());
+            Factories = new List<AssemblyContainer>();
+            BuiltInFactories = new List<AssemblyContainer>();
+            AssemblyContainer fc = new AssemblyContainer(Assembly.GetExecutingAssembly());
             var analogyFactory = new AnalogyBuiltInFactory();
             var analogyFactorySetting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyFactory);
             analogyFactorySetting.FactoryName = analogyFactory.Title;
             fc.AddFactory(analogyFactory, analogyFactorySetting);
             var analogyEventLogsFactory = new EventLogDataFactory();
-            var analogyEventLogsFactorySetting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyEventLogsFactory);
+            var analogyEventLogsFactorySetting =
+                UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyEventLogsFactory);
             analogyEventLogsFactorySetting.FactoryName = analogyEventLogsFactory.Title;
             fc.AddFactory(analogyEventLogsFactory, analogyEventLogsFactorySetting);
             fc.AddDataProviderFactory(new AnalogyOfflineDataProviderFactory());
@@ -44,33 +46,33 @@ namespace Analogy
 
         public async Task InitializeBuiltInFactories()
         {
-            
-                var dataProviders = BuiltInFactories.SelectMany(f =>
-                        f.DataProvidersFactories.Where(df =>
-                            df.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
-                    .SelectMany(d => d.Provider.DataProviders).ToList();
 
-                var initTasks = dataProviders.Select(d => d.InitializeDataProviderAsync(AnalogyLogger.Instance))
-                    .ToList();
-                var completion = Task.WhenAll(initTasks);
-                try
+            var dataProviders = BuiltInFactories.SelectMany(f =>
+                    f.DataProvidersFactories.Where(df =>
+                        df.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
+                .SelectMany(d => d.Provider.DataProviders).ToList();
+
+            var initTasks = dataProviders.Select(d => d.InitializeDataProviderAsync(AnalogyLogger.Instance))
+                .ToList();
+            var completion = Task.WhenAll(initTasks);
+            try
+            {
+                await completion;
+            }
+            catch (AggregateException ex)
+            {
+                AnalogyLogger.Instance.LogException(ex, "InitializeBuiltInFactories",
+                    "Error during Initialization");
+            }
+
+            foreach (var t in initTasks)
+            {
+                if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    await completion;
-                }
-                catch (AggregateException ex)
-                {
-                    AnalogyLogger.Instance.LogException(ex, "InitializeBuiltInFactories",
+                    AnalogyLogger.Instance.LogException(t.Exception, "AddExternalDataSources",
                         "Error during Initialization");
                 }
-
-                foreach (var t in initTasks)
-                {
-                    if (t.Status != TaskStatus.RanToCompletion)
-                    {
-                        AnalogyLogger.Instance.LogException(t.Exception, "AddExternalDataSources",
-                            "Error during Initialization");
-                    }
-                }
+            }
         }
 
         public async Task AddExternalDataSources()
@@ -97,12 +99,14 @@ namespace Analogy
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    AnalogyLogger.Instance.LogException(t.Exception,"AddExternalDataSources", "Error during Initialization");
+                    AnalogyLogger.Instance.LogException(t.Exception, "AddExternalDataSources",
+                        "Error during Initialization");
                 }
             }
         }
 
-        public IEnumerable<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
+        public IEnumerable<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(
+            string[] fileNames)
         {
             foreach (var factory in Factories)
             {
@@ -114,7 +118,8 @@ namespace Analogy
                         i is IAnalogyOfflineDataProvider offline && offline.CanOpenAllFiles(fileNames));
                     foreach (IAnalogyDataProvider dataSource in supported)
                     {
-                        yield return (dataSource as IAnalogyOfflineDataProvider, dataProvidersFactory.Factory.FactoryId);
+                        yield return (dataSource as IAnalogyOfflineDataProvider,
+                            dataProvidersFactory.Factory.FactoryId);
                     }
                 }
             }
@@ -149,7 +154,7 @@ namespace Analogy
 
         public IAnalogyFactory Get(Guid id) =>
             Factories.Single(a => a.Factories.Exists(f => f.FactoryId == id))
-                     .Factories.Single(f => f.FactoryId == id);
+                .Factories.Single(f => f.FactoryId == id);
 
         public bool IsBuiltInFactory(IAnalogyFactory factory) => IsBuiltInFactory(factory.FactoryId);
 
@@ -163,73 +168,96 @@ namespace Analogy
         public IAnalogyDataProviderSettings GetSettings(Guid factoryId) =>
             Factories.SelectMany(f => f.DataProvidersSettings).First(d => d.Factory.FactoryId == factoryId).Provider;
 
-    public class ExternalDataProviders
-    {
-        private static readonly AsyncLazy<ExternalDataProviders> _instance = new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders());
-
-        public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
-        public List<FactoryContainer> Factories { get; private set; }
-
-        private ExternalDataProviders()
+        public class ExternalDataProviders
         {
+            private static readonly AsyncLazy<ExternalDataProviders> _instance =
+                new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders());
 
-            Factories = new List<FactoryContainer>();
+            public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
+            public List<AssemblyContainer> Factories { get; private set; }
 
-            var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
-                @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly);
-            foreach (string aFile in analogyAssemblies)
+            private ExternalDataProviders()
             {
-                try
+
+                Factories = new List<AssemblyContainer>();
+
+                var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
+                    @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly);
+                foreach (string aFile in analogyAssemblies)
                 {
-                   
-                    Assembly assembly = Assembly.LoadFrom(Path.GetFullPath(aFile));
-                    FactoryContainer factoryContainer = new FactoryContainer(assembly);
-                    Type[] types = assembly.GetTypes();
-                    foreach (Type aType in types)
+                    try
                     {
-                        try
+                        Assembly assembly = Assembly.LoadFrom(Path.GetFullPath(aFile));
+                        AssemblyContainer assemblyContainer = new AssemblyContainer(assembly);
+                        Type[] types = assembly.GetTypes();
+                        foreach (Type aType in types)
                         {
-                            if (aType.GetInterface(nameof(IAnalogyFactory)) != null && Activator.CreateInstance(aType) is IAnalogyFactory factory)
+                            try
                             {
-                                factoryContainer.AddFactory(factory);
-                                FactorySettings setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
-                                setting.FactoryName = factory.Title;
-                                factoryContainer.AddFactorySettings(setting);
-                                if (setting.Status == DataProviderFactoryStatus.Disabled) continue;
-                                foreach (var provider in factory.DataProviders.Items)
+                                if (aType.GetInterface(nameof(IAnalogyFactory)) != null &&
+                                    Activator.CreateInstance(aType) is IAnalogyFactory factory)
                                 {
-                                    provider.InitializeDataProviderAsync(AnalogyLogger.Instance);
+                                    FactorySettings setting =
+                                        UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
+                                    setting.FactoryName = factory.Title;
+                                    assemblyContainer.AddFactory(factory, setting);
+                                }
+
+                                else if (aType.GetInterface(nameof(IAnalogyDataProvidersFactory)) != null &&
+                                    (Activator.CreateInstance(aType) is IAnalogyDataProvidersFactory
+                                        dataProviderFactory))
+                                {
+                                    assemblyContainer.AddDataProviderFactory(dataProviderFactory);
+                                }
+                                else if (aType.GetInterface(nameof(IAnalogyDataProviderSettings)) != null &&
+                                    (Activator.CreateInstance(aType) is IAnalogyDataProviderSettings
+                                        dataProviderSettings))
+                                {
+                                    assemblyContainer.AddDataProvidersSettings(dataProviderSettings);
+                                }
+                                else if (aType.GetInterface(nameof(IAnalogyCustomActionsFactory)) != null &&
+                                         (Activator.CreateInstance(aType) is IAnalogyCustomActionsFactory
+                                             analogyCustomActionsFactory))
+                                {
+                                    assemblyContainer.AddCustomActionFactory(analogyCustomActionsFactory);
+                                }
+                                else if (aType.GetInterface(nameof(IAnalogyShareableFactory)) != null &&
+                                         (Activator.CreateInstance(aType) is IAnalogyShareableFactory
+                                             analogyShareableFactory))
+                                {
+                                    assemblyContainer.AddShareableFactory(analogyShareableFactory);
                                 }
                             }
-
-                            if (aType.GetInterface(nameof(IAnalogyDataProviderSettings)) != null)
+                            catch (ReflectionTypeLoadException ex)
                             {
-                                if (!(Activator.CreateInstance(aType) is IAnalogyDataProviderSettings setting))
-                                    continue;
-                                DataProviderSettings.Add(setting);
+                                AnalogyLogManager.Instance.LogError(
+                                    $"{aType}: Error during data providers: {string.Join(",", ex.LoaderExceptions.ToList())}. {aFile})",
+                                    nameof(FactoriesManager));
                             }
-                        }
-                        catch (ReflectionTypeLoadException ex)
-                        {
-                            AnalogyLogManager.Instance.LogError($"{aType}: Error during data providers: {string.Join(",", ex.LoaderExceptions.ToList())}. {aFile})", nameof(FactoriesManager));
-                        }
-                        catch (Exception e)
-                        {
-                            AnalogyLogManager.Instance.LogError($"{aType}: Error during data providers: {e} ({e.InnerException}. {aFile})", nameof(FactoriesManager));
-                        }
+                            catch (Exception e)
+                            {
+                                AnalogyLogManager.Instance.LogError(
+                                    $"{aType}: Error during data providers: {e} ({e.InnerException}. {aFile})",
+                                    nameof(FactoriesManager));
+                            }
 
+                        }
+                    }
+                    catch (ReflectionTypeLoadException ex)
+                    {
+                        AnalogyLogManager.Instance.LogError(
+                            $"{aFile}: Error during data providers: {string.Join(",", ex.LoaderExceptions.ToList())}. {aFile})",
+                            nameof(FactoriesManager));
+                    }
+                    catch (Exception e)
+                    {
+                        AnalogyLogManager.Instance.LogError(
+                            $"{aFile}: Error during data providers: {e} ({e.InnerException})",
+                            nameof(FactoriesManager));
                     }
                 }
-                catch (ReflectionTypeLoadException ex)
-                {
-                    AnalogyLogManager.Instance.LogError($"{aFile}: Error during data providers: {string.Join(",", ex.LoaderExceptions.ToList())}. {aFile})", nameof(FactoriesManager));
-                }
-                catch (Exception e)
-                {
-                    AnalogyLogManager.Instance.LogError($"{aFile}: Error during data providers: {e} ({e.InnerException})", nameof(FactoriesManager));
-                }
             }
-        }
 
+        }
     }
 }
