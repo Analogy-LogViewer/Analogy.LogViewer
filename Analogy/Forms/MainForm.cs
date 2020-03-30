@@ -373,9 +373,9 @@ namespace Analogy
                     {
                         var factory = supportedAssociation.First();
                         var parser = FactoriesManager.Instance
-                            .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryGuid, files).ToList();
-                        RibbonPage page = (Mapping.ContainsKey(factory.FactoryGuid))
-                            ? Mapping[factory.FactoryGuid]
+                            .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryId, files).ToList();
+                        RibbonPage page = (Mapping.ContainsKey(factory.FactoryId))
+                            ? Mapping[factory.FactoryId]
                             : null;
                         if (parser.Count == 1)
                             OpenOfflineLogs(page, files, parser.First());

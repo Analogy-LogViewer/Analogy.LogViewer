@@ -208,9 +208,9 @@ namespace Analogy
         public FactorySettings GetFactorySetting(Guid factoryID)
         {
             bool Exists(Guid guid) => guid == factoryID;
-            if (FactoriesSettings.Exists(f => Exists(f.FactoryGuid)))
+            if (FactoriesSettings.Exists(f => Exists(f.FactoryId)))
             {
-                return FactoriesSettings.Single(f => Exists(f.FactoryGuid));
+                return FactoriesSettings.Single(f => Exists(f.FactoryId));
             }
 
             return null;
@@ -218,14 +218,14 @@ namespace Analogy
         public FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory)
         {
             bool Exists(Guid guid) => guid == factory.FactoryId;
-            if (FactoriesSettings.Exists(f => Exists(f.FactoryGuid)))
+            if (FactoriesSettings.Exists(f => Exists(f.FactoryId)))
             {
-                return FactoriesSettings.Single(f => Exists(f.FactoryGuid));
+                return FactoriesSettings.Single(f => Exists(f.FactoryId));
             }
 
             var createNew = new FactorySettings
             {
-                FactoryGuid = factory.FactoryId,
+                FactoryId = factory.FactoryId,
                 Status = DataProviderFactoryStatus.NotSet,
                 UserSettingFileAssociations = new List<string>()
             };
@@ -346,7 +346,7 @@ namespace Analogy
     public class FactorySettings
     {
         public string FactoryName { get; set; }
-        public Guid FactoryGuid { get; set; }
+        public Guid FactoryId { get; set; }
         public List<string> UserSettingFileAssociations { get; set; }
         public DataProviderFactoryStatus Status { get; set; }
 

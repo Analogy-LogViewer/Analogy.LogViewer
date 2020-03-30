@@ -105,14 +105,14 @@ namespace Analogy
             {
                 FactorySettings factory = Settings.GetFactorySetting(setting);
                 if (factory == null) continue;
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryGuid);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
-            foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryGuid)))
+            foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {
 
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryGuid);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }
 
@@ -145,7 +145,7 @@ namespace Analogy
             var checkedItem = chkLstDataProviderStatus.CheckedItems.Cast<FactoryCheckItem>().ToList();
             foreach (Guid guid in order)
             {
-                var factory = Settings.FactoriesSettings.SingleOrDefault(f => f.FactoryGuid == guid);
+                var factory = Settings.FactoriesSettings.SingleOrDefault(f => f.FactoryId == guid);
                 if (factory != null)
                 {
                     factory.Status = checkedItem.Exists(f => f.ID == guid)
