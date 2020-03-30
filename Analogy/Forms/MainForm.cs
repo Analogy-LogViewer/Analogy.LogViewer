@@ -111,19 +111,22 @@ namespace Analogy
 
         private void CreateAnalogyBuiltinDataProviders()
         {
-            IAnalogyFactory analogy = FactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
-            if (settings.GetFactorySetting(analogy.FactoryId).Status != DataProviderFactoryStatus.Disabled)
+            FactoryContainer analogy = FactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
+            if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
 
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-            IAnalogyFactory eventLogDataFactory = FactoriesManager.Instance.Get(EventLogDataFactory.id);
-            if (settings.GetFactorySetting(eventLogDataFactory.FactoryId).Status == DataProviderFactoryStatus.Disabled)
+            FactoryContainer eventLogDataFactory = FactoriesManager.Instance.Get(EventLogDataFactory.id);
+            if (eventLogDataFactory.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
                 return;
             //CreateEventLogsGroup
-            RibbonPage ribbonPage = new RibbonPage(eventLogDataFactory.Title);
-            EventLogDataProvider elds = eventLogDataFactory.DataProviders.Items.First() as EventLogDataProvider;
+            RibbonPage ribbonPage = new RibbonPage(eventLogDataFactory.Factory.Title);
+
+            EventLogDataProvider elds =
+                eventLogDataFactory.DataProvidersFactories.First().DataProviders.First() as EventLogDataProvider;
+
             ribbonControlMain.Pages.Insert(2, ribbonPage);
-            RibbonPageGroup group = new RibbonPageGroup(eventLogDataFactory.DataProviders.Title);
+            RibbonPageGroup group = new RibbonPageGroup(eventLogDataFactory.Factory.Title);
             ribbonPage.Groups.Add(group);
 
 
@@ -175,8 +178,8 @@ namespace Analogy
                     "Logs", "System.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() { file });
+                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
+                    AddRecentWindowsEventLogFiles(new List<string>() {file});
                 }
             };
             group.ItemLinks.Add(systemLog);
@@ -192,8 +195,8 @@ namespace Analogy
                     "Logs", "Application.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() { file });
+                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
+                    AddRecentWindowsEventLogFiles(new List<string>() {file});
                 }
             };
             group.ItemLinks.Add(appLog);
@@ -209,8 +212,8 @@ namespace Analogy
                     "Logs", "Security.evtx");
                 if (File.Exists(file))
                 {
-                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() { file });
+                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
+                    AddRecentWindowsEventLogFiles(new List<string>() {file});
                 }
             };
             group.ItemLinks.Add(secLog);
@@ -617,38 +620,40 @@ namespace Analogy
 
         private void CreateDataSources()
         {
-            foreach (IAnalogyFactory factory in FactoriesManager.Instance.GetFactories()
-                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory) &&
-                                  settings.GetFactorySetting(factory.FactoryID).Status != DataProviderFactoryStatus.Disabled))
+            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
+                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
+                                  factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
             {
                 CreateDataSource(factory, 3);
             }
 
         }
 
-        private void CreateDataSource(IAnalogyFactory factory, int position)
+        private void CreateDataSource(FactoryContainer fc, int position)
         {
-            if (factory.Title == null) return;
+            if (fc.Factory.Title == null) return;
 
-            RibbonPage ribbonPage = new RibbonPage(factory.Title);
+            RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
-            Mapping.Add(factory.FactoryID, ribbonPage);
+            Mapping.Add(fc.Factory.FactoryId, ribbonPage);
 
-            //todo:move logic to factory manager
-            var dataSourceFactory = factory.DataProviders;
-            if (dataSourceFactory?.Items != null && dataSourceFactory.Items.Any() &&
-                !string.IsNullOrEmpty(dataSourceFactory.Title))
+            var dataSourceFactory = fc.DataProvidersFactories;
+            foreach (var dataProvidersFactory in dataSourceFactory)
             {
-                CreateDataSourceRibbonGroup(dataSourceFactory, ribbonPage);
+                if (!string.IsNullOrEmpty(dataProvidersFactory.Title))
+                {
+                    CreateDataSourceRibbonGroup(dataProvidersFactory, ribbonPage);
+                }
             }
 
-            var actionFactory = factory.Actions;
-            if (actionFactory?.Items != null && actionFactory.Items.Any() && !string.IsNullOrEmpty(actionFactory.Title))
+            var actionFactories = fc.CustomActionsFactories;
+            foreach (var actionFactory in actionFactories)
             {
+                if (string.IsNullOrEmpty(actionFactory.Title)) continue;
                 RibbonPageGroup groupActionSource = new RibbonPageGroup(actionFactory.Title);
                 groupActionSource.AllowTextClipping = false;
                 ribbonPage.Groups.Add(groupActionSource);
-                foreach (IAnalogyCustomAction action in actionFactory.Items)
+                foreach (IAnalogyCustomAction action in actionFactory.Actions)
                 {
                     BarButtonItem actionBtn = new BarButtonItem();
                     actionBtn.Caption = action.Title;
@@ -660,11 +665,11 @@ namespace Analogy
                 }
             }
 
-            AddFactorySettings(factory, ribbonPage);
-            AddAbout(factory,ribbonPage);
+            AddFactorySettings(fc, ribbonPage);
+            AddAbout(fc,ribbonPage);
         }
 
-        private void AddAbout(IAnalogyFactory factory, RibbonPage ribbonPage)
+        private void AddAbout(FactoryContainer fc, RibbonPage ribbonPage)
         {
             RibbonPageGroup groupInfoSource = new RibbonPageGroup("About");
             groupInfoSource.Alignment = RibbonPageGroupAlignment.Far;
@@ -674,28 +679,30 @@ namespace Analogy
             groupInfoSource.ItemLinks.Add(aboutBtn);
             aboutBtn.ImageOptions.Image = Resources.About_16x16;
             aboutBtn.ImageOptions.LargeImage = Resources.About_32x32;
-            aboutBtn.ItemClick += (sender, e) => { new AboutDataSourceBox(factory).ShowDialog(this); };
+            aboutBtn.ItemClick += (sender, e) => { new AboutDataSourceBox(fc.Factory).ShowDialog(this); };
             ribbonPage.Groups.Add(groupInfoSource);
         }
-        private void AddFactorySettings(IAnalogyFactory factory, RibbonPage ribbonPage)
+        private void AddFactorySettings(FactoryContainer fc, RibbonPage ribbonPage)
         {
-            if (settings.GetFactorySetting(factory.FactoryID).Status == DataProviderFactoryStatus.Disabled)
+            if (fc.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
                 return;
-            var factorySetting = FactoriesManager.Instance.GetSettings(factory.FactoryID);
-            if (factorySetting == null) return;
-            RibbonPageGroup groupSettings = new RibbonPageGroup("Settings");
-            groupSettings.Alignment = RibbonPageGroupAlignment.Far;
-            BarButtonItem settingsBtn = new BarButtonItem();
-            settingsBtn.Caption = factorySetting.Title;
-            settingsBtn.RibbonStyle = RibbonItemStyles.All;
-            groupSettings.ItemLinks.Add(settingsBtn);
-            settingsBtn.ImageOptions.Image = factorySetting.SmallImage ?? Resources.Technology_16x16;
-            settingsBtn.ImageOptions.LargeImage = factorySetting.LargeImage ?? Resources.Technology_32x32;
-            XtraForm form = new XtraForm();
-            form.Controls.Add(factorySetting.DataProviderSettings);
-            factorySetting.DataProviderSettings.Dock = DockStyle.Fill;
-            form.WindowState = FormWindowState.Maximized;
-            settingsBtn.ItemClick += (sender, e) => { form.ShowDialog(this); };
+            RibbonPageGroup groupSettings = new RibbonPageGroup("Settings") {Alignment = RibbonPageGroupAlignment.Far};
+
+            foreach (var providerSetting in fc.DataProvidersSettings)
+            {
+                BarButtonItem settingsBtn = new BarButtonItem
+                {
+                    Caption = providerSetting.Title, RibbonStyle = RibbonItemStyles.All
+                };
+                groupSettings.ItemLinks.Add(settingsBtn);
+                settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
+                settingsBtn.ImageOptions.LargeImage = providerSetting.LargeImage ?? Resources.Technology_32x32;
+                XtraForm form = new XtraForm();
+                form.Controls.Add(providerSetting.DataProviderSettings);
+                providerSetting.DataProviderSettings.Dock = DockStyle.Fill;
+                form.WindowState = FormWindowState.Maximized;
+                settingsBtn.ItemClick += (sender, e) => { form.ShowDialog(this); };
+            }
             ribbonPage.Groups.Add(groupSettings);
         }
         private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
@@ -720,7 +727,7 @@ namespace Analogy
 
         private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
         {
-            var realtimes = dataSourceFactory.Items.Where(f => f is IAnalogyRealTimeDataProvider)
+            var realtimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
             if (realtimes.Count == 0) return;
             if (realtimes.Count == 1)
@@ -854,7 +861,7 @@ namespace Analogy
         private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
 
-            var offlineProviders = factory.Items.Where(f => f is IAnalogyOfflineDataProvider)
+            var offlineProviders = factory.DataProviders.Where(f => f is IAnalogyOfflineDataProvider)
                 .Cast<IAnalogyOfflineDataProvider>().ToList();
 
             if (!offlineProviders.Any()) return;
