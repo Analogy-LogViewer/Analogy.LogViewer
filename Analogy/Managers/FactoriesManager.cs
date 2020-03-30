@@ -150,7 +150,7 @@ namespace Analogy
         public Assembly GetAssemblyOfFactory(IAnalogyFactory factory) =>
             Factories.Single(f => f.Factory == factory).Assembly;
 
-        public FactoryContainer Get(Guid id) => Factories.Single(f => f.Factory.FactoryId == id);
+        public FactoryContainer GetBuiltInFactoryContainer(Guid id) => BuiltInFactories.Single(f => f.Factory.FactoryId == id);
         public bool IsBuiltInFactory(IAnalogyFactory factory) => IsBuiltInFactory(factory.FactoryId);
 
         public bool IsBuiltInFactory(Guid factoryId) =>

@@ -111,12 +111,12 @@ namespace Analogy
 
         private void CreateAnalogyBuiltinDataProviders()
         {
-            FactoryContainer analogy = FactoriesManager.Instance.Get(AnalogyBuiltInFactory.AnalogyGuid);
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
 
             ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-            FactoryContainer eventLogDataFactory = FactoriesManager.Instance.Get(EventLogDataFactory.id);
+            FactoryContainer eventLogDataFactory = FactoriesManager.Instance.GetBuiltInFactoryContainer(EventLogDataFactory.id);
             if (eventLogDataFactory.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
                 return;
             //CreateEventLogsGroup
