@@ -129,14 +129,17 @@ namespace Analogy
 
         public IEnumerable<(string Name, Guid ID)> GetRealTimeDataSourcesNamesAndIds()
         {
-            foreach (var factory in Factories)
+            foreach (var fc in Factories)
             {
-                IEnumerable<IAnalogyDataProvider> supported =
-                    factory.DataProviders.Items.Where(i => i is IAnalogyRealTimeDataProvider);
-                foreach (var analogyDataSource in supported)
+                foreach (var pc in fc.DataProvidersFactories)
                 {
-                    var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
-                    yield return (factory.Title, dataSource.ID);
+                    IEnumerable<IAnalogyDataProvider> supported =
+                        pc.Provider.DataProviders.Where(d => d is IAnalogyRealTimeDataProvider);
+                    foreach (var analogyDataSource in supported)
+                    {
+                        var dataSource = (IAnalogyRealTimeDataProvider) analogyDataSource;
+                        yield return (pc.Factory.Title, dataSource.ID);
+                    }
                 }
             }
         }
@@ -152,11 +155,13 @@ namespace Analogy
 
         public bool IsBuiltInFactory(Guid factoryId) =>
             BuiltInFactories.Exists(fc => fc.Factories.Exists(f => f.FactoryId == factoryId));
-        public List<IAnalogyDataProviderSettings> GetProvidersSettings() => Factories.SelectMany(f=>f.FactorySettings).Where(f=>f.)
+
+        public List<IAnalogyDataProviderSettings> GetProvidersSettings() => Factories
+            .SelectMany(f => f.DataProvidersSettings)
+            .Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled).Select(f => f.Provider).ToList();
 
         public IAnalogyDataProviderSettings GetSettings(Guid factoryId) =>
-            DataProvidersSettings.FirstOrDefault(p => p.FactoryId == factoryId);
-    }
+            Factories.SelectMany(f => f.DataProvidersSettings).First(d => d.Factory.FactoryId == factoryId).Provider;
 
     public class ExternalDataProviders
     {

@@ -18,7 +18,7 @@ namespace Analogy.Managers
         public List<ProviderContainer<IAnalogyDataProviderSettings>> DataProvidersSettings { get; }
         public List<ProviderContainer<IAnalogyShareableFactory>> ShareableFactories { get; }
 
-        private List<FactorySettings> FactorySettings { get; }
+        public List<FactorySettings> FactorySettings { get; }
        //public IEnumerable<IAnalogyDataProvidersFactory> EnabledDataProvidersFactories => DataProvidersFactories.Where(
         //    d => FactorySettings.Exists(f => f.FactoryId == d.FactoryId) &&
         //         FactorySettings.Single(f => f.FactoryId == d.FactoryId).Status !=
