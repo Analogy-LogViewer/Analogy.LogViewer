@@ -723,7 +723,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.8">
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets></IncludeAssets>
     </PackageReference>
