@@ -41,5 +41,7 @@ namespace Analogy.Managers
 
         public void AddShareableFactory(IAnalogyShareableFactory shareableFactory) =>
             ShareableFactories.Add(shareableFactory);
+
+        public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";
     }
 }
