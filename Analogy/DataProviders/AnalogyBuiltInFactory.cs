@@ -16,26 +16,22 @@ namespace Analogy.DataSources
     public class AnalogyBuiltInFactory : IAnalogyFactory
     {
         public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
-        public Guid FactoryID { get; } = AnalogyGuid;
+        public Guid FactoryId { get; } = AnalogyGuid;
         public string Title { get; } = "Analogy Logs Formats";
-        public IAnalogyDataProvidersFactory DataProviders { get; }
-        public IAnalogyCustomActionsFactory Actions { get; }
         public IEnumerable<IAnalogyChangeLog> ChangeLog => CommonChangeLog.GetChangeLog();
-        public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
+        public IEnumerable<string> Contributors { get; } = new List<string> {"Lior Banai"};
         public string About { get; } = "Analogy Built-in Data Source";
+
         public AnalogyBuiltInFactory()
         {
-            DataProviders = new AnalogyOfflineDataProviderFactory();
-            Actions = new AnalogyCustomActionFactory();
-
         }
-
     }
 
     public class AnalogyOfflineDataProviderFactory : IAnalogyDataProvidersFactory
     {
+        public Guid FactoryId { get; } = AnalogyBuiltInFactory.AnalogyGuid;
         public string Title { get; } = "Analogy Built-In Data Provider";
-        public IEnumerable<IAnalogyDataProvider> Items { get; }
+        public IEnumerable<IAnalogyDataProvider> DataProviders { get; }
 
         public AnalogyOfflineDataProviderFactory()
         {
@@ -43,14 +39,13 @@ namespace Analogy.DataSources
             var adp = new AnalogyOfflineDataProvider();
             builtInItems.Add(adp);
             adp.InitializeDataProviderAsync(AnalogyLogger.Instance);
-            Items = builtInItems;
+            DataProviders= builtInItems;
         }
     }
 
     public class AnalogyOfflineDataProvider : IAnalogyOfflineDataProvider
     {
         public Guid ID { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
-
         public bool CanSaveToLogFile { get; } = true;
         public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.xml;*.json;*.bin|Plain Analogy XML log file (*.xml)|*.log|Analogy JSON file (*.json)|*.json|Analogy MessagePack bin file (*.bin)|*.bin";
         public string FileSaveDialogFilters { get; } = "Plain Analogy XML log file (*.xml)|*.xml|Analogy JSON file (*.json)|*.json|Analogy MessagePack bin file (*.bin)|*.bin";
@@ -166,16 +161,15 @@ namespace Analogy.DataSources
         }
     }
 
-
-
     public class AnalogyCustomActionFactory : IAnalogyCustomActionsFactory
     {
+        public Guid FactoryId { get; } = AnalogyBuiltInFactory.AnalogyGuid;
         public string Title { get; } = "Analogy Built-In tools";
-        public IEnumerable<IAnalogyCustomAction> Items { get; }
-
+        public IEnumerable<IAnalogyCustomAction> Actions { get; }
+     
         public AnalogyCustomActionFactory()
         {
-            Items = new List<IAnalogyCustomAction>() { new AnalogyCustomAction()/*,new AnalogyDataProvidersCustomAction()*/ };
+            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction()/*,new AnalogyDataProvidersCustomAction()*/ };
         }
     }
 
@@ -191,17 +185,5 @@ namespace Analogy.DataSources
         public string Title { get; } = "Process Identifier";
 
     }
-    public class AnalogyDataProvidersCustomAction : IAnalogyCustomAction
-    {
-        public Action Action => () =>
-        {
-            var p = new UserSettingsDataProvidersForm();
-            p.Show();
-        };
-        public Guid ID { get; } = new Guid("8398FD33-78D0-4F07-B50C-13B922DC64B4");
-        public Image Image { get; } = Resources.ChartsShowLegend_32x32;
-        public string Title { get; } = "data providers settings";
-
-    }
-}
+ }
 
