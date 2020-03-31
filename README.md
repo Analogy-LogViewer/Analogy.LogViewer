@@ -62,7 +62,7 @@ View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/A
  
 ## Usage
 
-The primary usage of this application is to implement your own data source of logs of your own business domain by implementing small Interface but there are built in data providers (like NLog parser) that can be used without and additional coding.
+While there already [some implementation](https://github.com/Analogy-LogViewer/Overview#data-providers) for common logs files/frameworks, the primary usage of this application is to implement your own data providers of logs for your own business domain by implementing few interfaces
 
 to implement a new data provider do the following:
 
