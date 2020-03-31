@@ -56,13 +56,9 @@ Detailed Documentation will be added to the Wiki page.
 in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
 View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
-## Data Providers
- 
- [List of data Providers (some of them are still Work in progress)](https://github.com/Analogy-LogViewer/Overview)
- 
 ## Usage
 
-While there already [some implementation](https://github.com/Analogy-LogViewer/Overview#data-providers) for common logs files/frameworks, the primary usage of this application is to implement your own data providers of logs for your own business domain by implementing few interfaces
+While there already [some implementations](https://github.com/Analogy-LogViewer/Overview#data-providers) for common logs files/frameworks, the primary usage of this application is to implement your own data providers of logs for your own business domain by implementing few interfaces
 
 to implement a new data provider do the following:
 
