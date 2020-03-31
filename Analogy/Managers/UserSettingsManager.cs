@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Analogy
 {
@@ -115,7 +115,7 @@ namespace Analogy
             ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
-            FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
+            FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings).Where(f => f.FactoryId != Guid.Empty).ToList();
             LastOpenedDataProvider = Settings.Default.LastOpenedDataProvider;
             PreDefinedQueries = ParseSettings<PreDefinedQueries>(Settings.Default.PreDefinedQueries);
             RememberLastOpenedDataProvider = Settings.Default.RememberLastOpenedDataProvider;
@@ -354,6 +354,8 @@ namespace Analogy
         {
             UserSettingFileAssociations = new List<string>();
         }
+        public override string ToString() => $"{nameof(FactoryName)}: {FactoryName}, {nameof(FactoryId)}: {FactoryId}, {nameof(Status)}: {Status}";
+
     }
 
     public enum PreDefinedQueryType
