@@ -43,8 +43,8 @@
     <Product>Analogy Log Viewer</Product>
     <Description>Modern Log Viewer and analyzer.</Description>
     <Copyright>Copyright @ Lior Banai 2020</Copyright>
-    <AssemblyVersion>4.1.12.0</AssemblyVersion>
-    <FileVersion>4.1.12.0</FileVersion>
+    <AssemblyVersion>4.1.13.0</AssemblyVersion>
+    <FileVersion>4.1.13.0</FileVersion>
     <NoWarn>1591;1573;0419;1607</NoWarn>
     <PlatformToolset>v120</PlatformToolset>
     <BaseAddress>285212672</BaseAddress>
@@ -107,7 +107,7 @@
   <PropertyGroup>
     <PreBuildEvent />
     <PostBuildEvent />
-    <Version>4.1.12</Version>
+    <Version>4.1.13</Version>
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
@@ -117,6 +117,7 @@
     <PackageId>Analogy.LogViewer</PackageId>
     <RepositoryType>git</RepositoryType>
     <Authors>Lior Banai</Authors>
+    <PackageReleaseNotes>aligned with interface API V2.2.o</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
@@ -725,11 +726,11 @@
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.0">
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.1.0" >
+    <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.6" >
+    <PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -737,7 +738,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Serilog" Version="1.1.0" >
+    <PackageReference Include="Analogy.LogViewer.Serilog" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
