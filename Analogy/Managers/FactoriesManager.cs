@@ -147,8 +147,12 @@ namespace Analogy
             }
         }
 
-        public Assembly GetAssemblyOfFactory(IAnalogyFactory factory) =>
-            Factories.Single(f => f.Factory == factory).Assembly;
+        public Assembly GetAssemblyOfFactory(IAnalogyFactory factory)
+        {
+            if (BuiltInFactories.Exists(f => f.Factory == factory))
+                return BuiltInFactories.First(f => f.Factory == factory).Assembly;
+            return Factories.Single(f => f.Factory == factory).Assembly;
+        }
 
         public FactoryContainer GetBuiltInFactoryContainer(Guid id) => BuiltInFactories.Single(f => f.Factory.FactoryId == id);
         public bool IsBuiltInFactory(IAnalogyFactory factory) => IsBuiltInFactory(factory.FactoryId);
