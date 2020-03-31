@@ -23,9 +23,10 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageTags />
     <RepositoryType>git</RepositoryType>
-    <Version>4.1.12</Version>
+    <Version>4.1.13</Version>
     <Copyright>Lior Banai ©  2020</Copyright>
     <Product>Analogy Log Viewer Core</Product>
+    <PackageReleaseNotes>aligned with interface API V2.2.0</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,7 +40,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.0" />
-    <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="1.1.0" >
+    <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -51,7 +52,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.1.1" >
+    <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
