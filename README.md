@@ -13,7 +13,7 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
     <img alt="Latest Release" src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.12...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.12...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
 </a>
 </p>
 
@@ -44,7 +44,7 @@ Main interaction UI:
 - Messages area: File system UI and Main Log viewer area
 ![Main screen](Assets/AnalogyMainUI.jpg)
 
-# Dependencies & Build
+## Dependencies & Build
 - Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.1.
 The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Visual studio for this framework is Visual studio 2017 (or above).
 After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.LogViewer.*.dll
@@ -56,17 +56,92 @@ Detailed Documentation will be added to the Wiki page.
 in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
 View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
-# Data Providers
- 
- [View Overview repository for complete list of data Providers (some of them are still Work in progress)](https://github.com/Analogy-LogViewer/Overview)
- 
-# Usage
+## Usage
 
-The primary usage of this application is to implement your own data source of logs of your own business domain by implementing small Interface but there are built in data providers (like NLog parser) that can be used without and additional coding.
+While there already [some implementations](https://github.com/Analogy-LogViewer/Overview#data-providers) for common logs files/frameworks, the primary usage of this application is to implement your own data providers of logs for your own business domain by implementing few interfaces
+
+to implement a new data provider do the following:
+
+0. Create new  cs project and make sure your assembly is named Analogy.LogViewer.*.dll.
+1. reference nuget package [Analogy.LogViewer.Interfaces](https://www.nuget.org/packages/Analogy.LogViewer.Interfaces/).
+2. implement interface:
+```csharp
+    public interface IAnalogyFactory
+    {
+        Guid FactoryId { get; }
+        string Title { get; }
+        IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
+        IEnumerable<string> Contributors { get; }
+        string About { get; }
+    }
+```
+
+The FactoryId is the identifier of your provider.
+
+3. implement interfaces IAnalogyRealTimeDataProvider (for real time messages) or IAnalogyOfflineDataProvider (for existing log files).
+
+```csharp
+  public interface IAnalogyRealTimeDataProvider : IAnalogyDataProvider
+  {
+    event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
+    event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
+    event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
+    IAnalogyOfflineDataProvider FileOperationsHandler { get; }
+    Task<bool> CanStartReceiving();
+    void StartReceiving();
+    void StopReceiving();
+    bool IsConnected { get; }
+  }
+```
+
+```csharp
+
+  public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
+  {
+    bool DisableFilePoolingOption { get; }
+    bool CanSaveToLogFile { get; }
+    string FileOpenDialogFilters { get; }
+    string FileSaveDialogFilters { get; }
+    IEnumerable<string> SupportFormats { get; }
+    string InitialFolderFullPath { get; }
+    Task<IEnumerable<AnalogyLogMessage>> Process(
+      string fileName,
+      CancellationToken token,
+      ILogMessageCreatedHandler messagesHandler);
+    IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad);
+    Task SaveAsync(List<AnalogyLogMessage> messages, string fileName);
+    bool CanOpenFile(string fileName);
+    bool CanOpenAllFiles(IEnumerable<string> fileNames);
+  }
+```
+
+4. Implement the container for those interfaces IAnalogyDataProvidersFactory (make sure FactoryId is the same one you created at step 2):
+
+```csharp
+
+    public interface IAnalogyDataProvidersFactory
+    {
+        /// <summary>
+        /// the factory id which this Data providers factory belongs to
+        /// </summary>
+        Guid FactoryId { get; }
+        string Title { get; }
+        IEnumerable<IAnalogyDataProvider> DataProviders { get; }
+    }
+```
+
+you can implement additional interfaces:
+ - IAnalogyDataProviderSettings - add ability to create use control to load in the application user settings. You can create a specific UI to change specific settings for your provider.
+this interface comes from nuget package [Analogy.DataProviders.Extensions](https://www.nuget.org/packages/Analogy.DataProviders.Extensions/).
+ - IAnalogyCustomActionsFactory - custom action to add to the UI
+ - IAnalogyShareableFactory - add ability to send log messages from one provider to another
+
+Project [Analogy.LogViewer.Example](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Example) has concrete example.
+
+5. Put your dll at the same folder as the application. You can download [latest version](https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases)
 
 <a name="contact"></a>
 ## Contact
 
 ### Owner
 - [Lior Banai](mailto:liorbanai@gmail.com)
-
