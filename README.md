@@ -4,16 +4,17 @@
     
 [![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
 [![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=1&branchName=master)
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues" alt="Issues">
-    <img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"/>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues">
+    <img alt="Issues" img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE.md">
-    <img alt="License" src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"/>
+    <img alt="License" img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
-    <img alt="Latest Release" src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/>
+    <img alt="Latest Release" img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/>
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.13...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.13...master">
+    <img alt="Commits Since Latest Release" img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
 </a>
 </p>
 
