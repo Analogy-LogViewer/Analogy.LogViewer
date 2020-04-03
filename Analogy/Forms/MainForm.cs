@@ -698,9 +698,11 @@ namespace Analogy
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
                 settingsBtn.ImageOptions.LargeImage = providerSetting.LargeImage ?? Resources.Technology_32x32;
                 XtraForm form = new XtraForm();
+                form.Text = "Data Provider Settings: " + providerSetting.Title;
                 form.Controls.Add(providerSetting.DataProviderSettings);
                 providerSetting.DataProviderSettings.Dock = DockStyle.Fill;
                 form.WindowState = FormWindowState.Maximized;
+                form.Closing += async (s, e) => { await providerSetting.SaveSettingsAsync(); };
                 settingsBtn.ItemClick += (sender, e) => { form.ShowDialog(this); };
             }
             ribbonPage.Groups.Add(groupSettings);
