@@ -5,28 +5,29 @@
 [![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
 [![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=1&branchName=master)
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues">
-    <img alt="Issues" img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"/>
+    <img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer" img alt="Issues" />
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE.md">
-    <img alt="License" img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"/>
+    <img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer" img alt="License" />
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
-    <img alt="Latest Release" img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"/>
+    <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer" img alt="Latest Release" />
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.13...master">
-    <img alt="Commits Since Latest Release" img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
+    <img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest" img alt="Commits Since Latest Release"/>
 </a>
 </p>
 
 ## Content
 [General](https://github.com/Analogy-LogViewer/Analogy.LogViewer#general)
 
-[Dependencies and Build](https://github.com/Analogy-LogViewer/Analogy.LogViewer#dependencies--build)
-
 [Usage and how to create custom data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#usage)
 
 [Logs Analysis and Visualizers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#logs-analysis-and-visualizers)
 
+[Dependencies and Build](https://github.com/Analogy-LogViewer/Analogy.LogViewer#dependencies--build)
+
+[Contact](https://github.com/Analogy-LogViewer/Analogy.LogViewer#contact)
 
 ## General
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems with support for most log frameworks log files ([serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [plain text](https://github.com/Analogy-LogViewer/Analogy.LogViewer.PlainTextParser),  and [others](https://github.com/Analogy-LogViewer/Overview#data-providers)).
@@ -54,18 +55,6 @@ Main interaction UI:
 - Ribbon area: Log files operations (open) and tools (search/combine/Compare)
 - Messages area: File system UI and Main Log viewer area
 ![Main screen](Assets/AnalogyMainUI.jpg)
-
-## Dependencies & Build
-- Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.1.
-The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Visual studio for this framework is Visual studio 2017 (or above).
-After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.LogViewer.*.dll
-- Analogy Interfaces assembly is complied to .Net Standard 2.0.
-
-Detailed Documentation will be added to the Wiki page.
-
-- DevExpress User Controls:
-in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
-View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
 ## Usage
 
@@ -159,6 +148,20 @@ The application has some analyzers and visualization.
 - On/Off Distribution: Show existance of message along the time.
 
 ![Plots Screen](Assets/gitHistoryDataVisualizer.jpg)
+
+
+## Dependencies & Build
+- Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.1.
+The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Visual studio for this framework is Visual studio 2017 (or above).
+After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.LogViewer.*.dll
+- Analogy Interfaces assembly is complied to .Net Standard 2.0.
+
+Detailed Documentation will be added to the Wiki page.
+
+- DevExpress User Controls:
+in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
+View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
+
 
 <a name="contact"></a>
 ## Contact
