@@ -18,7 +18,19 @@
 </a>
 </p>
 
+## Content
+[General](https://github.com/Analogy-LogViewer/Analogy.LogViewer#general)
 
+[Dependencies and Build](https://github.com/Analogy-LogViewer/Analogy.LogViewer#dependencies--build)
+
+[Usage and how to create custom data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#usage)
+
+[Data Analysis and Visualizer](https://github.com/Analogy-LogViewer/Analogy.LogViewer#usage)
+
+
+
+
+## General
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems with support for most log frameworks log files ([serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [plain text](https://github.com/Analogy-LogViewer/Analogy.LogViewer.PlainTextParser),  and [others](https://github.com/Analogy-LogViewer/Overview#data-providers)).
 
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
@@ -140,6 +152,14 @@ this interface comes from nuget package [Analogy.DataProviders.Extensions](https
 Project [Analogy.LogViewer.Example](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Example) has concrete example.
 
 5. Put your dll at the same folder as the application. You can download [latest version](https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases)
+
+## Data Analysis and Visualizer
+
+The application has some analyzers and visualization.
+- Time Distribution: shows at what time of day the message was logged.
+- Frequency: shows count of how many repeated messages were logged (you can define the text to filter).
+- On/Off Distribution: Show existance of message along the time.
+
 
 <a name="contact"></a>
 ## Contact
