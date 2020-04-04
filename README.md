@@ -28,8 +28,6 @@
 [Data Analysis and Visualizer](https://github.com/Analogy-LogViewer/Analogy.LogViewer#data-analysis-and-visualizer)
 
 
-
-
 ## General
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems with support for most log frameworks log files ([serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [plain text](https://github.com/Analogy-LogViewer/Analogy.LogViewer.PlainTextParser),  and [others](https://github.com/Analogy-LogViewer/Overview#data-providers)).
 
@@ -160,6 +158,7 @@ The application has some analyzers and visualization.
 - Frequency: shows count of how many repeated messages were logged (you can define the text to filter).
 - On/Off Distribution: Show existance of message along the time.
 
+![Plots Screen](Assets/gitHistoryDataVisualizer.jpg)
 
 <a name="contact"></a>
 ## Contact
