@@ -25,7 +25,7 @@
 
 [Usage and how to create custom data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#usage)
 
-[Data Analysis and Visualizer](https://github.com/Analogy-LogViewer/Analogy.LogViewer#data-analysis-and-visualizer)
+[Logs Analysis and Visualizers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#logs-analysis-and-visualizers)
 
 
 ## General
@@ -151,7 +151,7 @@ Project [Analogy.LogViewer.Example](https://github.com/Analogy-LogViewer/Analogy
 
 5. Put your dll at the same folder as the application. You can download [latest version](https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases)
 
-## Data Analysis and Visualizer
+## Logs Analysis and Visualizers
 
 The application has some analyzers and visualization.
 - Time Distribution: shows at what time of day the message was logged.
