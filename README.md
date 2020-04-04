@@ -25,7 +25,7 @@
 
 [Usage and how to create custom data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#usage)
 
-[Data Analysis and Visualizer](https://github.com/Analogy-LogViewer/Analogy.LogViewer#usage)
+[Data Analysis and Visualizer](https://github.com/Analogy-LogViewer/Analogy.LogViewer#data-analysis-and-visualizer)
 
 
 
