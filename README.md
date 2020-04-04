@@ -1,4 +1,4 @@
-# Analogy Log Viewer
+# Analogy Log Viewer    <img src="./Assets/icon.png" align="right" width="155px" height="155px">
 
 <p align="center">
     
