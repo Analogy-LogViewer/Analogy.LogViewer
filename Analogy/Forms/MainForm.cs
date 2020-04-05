@@ -653,6 +653,11 @@ namespace Analogy
                 RibbonPageGroup groupActionSource = new RibbonPageGroup(actionFactory.Title);
                 groupActionSource.AllowTextClipping = false;
                 ribbonPage.Groups.Add(groupActionSource);
+                if (actionFactory.Actions == null)
+                {
+                    AnalogyLogManager.Instance.LogCritical($"null actions for {actionFactory.Title}:{actionFactory.FactoryId}",$"{actionFactory.Title}{actionFactory.FactoryId}");
+                    continue;
+                }
                 foreach (IAnalogyCustomAction action in actionFactory.Actions)
                 {
                     BarButtonItem actionBtn = new BarButtonItem();
