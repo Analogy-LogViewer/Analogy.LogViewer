@@ -47,7 +47,7 @@ namespace Analogy.DataSources
     {
         public Guid ID { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
         public bool CanSaveToLogFile { get; } = true;
-        public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.xml;*.json;*.bin|Plain Analogy XML log file (*.xml)|*.log|Analogy JSON file (*.json)|*.json|Analogy MessagePack bin file (*.bin)|*.bin";
+        public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.xml;*.json;*.bin|Plain Analogy XML log file (*.xml)|*.xml|Analogy JSON file (*.json)|*.json|Analogy MessagePack bin file (*.bin)|*.bin";
         public string FileSaveDialogFilters { get; } = "Plain Analogy XML log file (*.xml)|*.xml|Analogy JSON file (*.json)|*.json|Analogy MessagePack bin file (*.bin)|*.bin";
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.xml", "*.json" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
@@ -65,12 +65,11 @@ namespace Analogy.DataSources
         }
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
-            if (fileName.EndsWith(".log", StringComparison.InvariantCultureIgnoreCase))
+            if (fileName.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
             {
                 AnalogyXmlLogFile logFile = new AnalogyXmlLogFile();
                 var messages = await logFile.ReadFromFile(fileName, token, messagesHandler);
                 return messages;
-
             }
             if (fileName.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -139,7 +138,7 @@ namespace Analogy.DataSources
 
         public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
-            List<FileInfo> files = dirInfo.GetFiles("*.log")
+            List<FileInfo> files = dirInfo.GetFiles("*.xml")
                 .Concat(dirInfo.GetFiles("*.json"))
                 .Concat(dirInfo.GetFiles("*.bin"))
                 .ToList();

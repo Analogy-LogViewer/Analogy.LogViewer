@@ -750,7 +750,7 @@ namespace Analogy
                 {
                     CriteriaOperator op = LogGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
                     string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
-                    filter = $"{filter} and {filterString}";
+                    filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
                 }
                 //todo
                 //todo:replace for performance
@@ -1577,7 +1577,7 @@ namespace Analogy
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter =
-                "Plain XML log file (*.log)|*.log|JSON file (*.json)|*.json|NLOG file (*.nlog)|*.nlog|Zipped XML log file (*.zip)|*.zip|ETW log file (*.etl)|*.etl";
+                "Plain XML log file (*.xml)|*.xml|JSON file (*.json)|*.json|NLOG file (*.nlog)|*.nlog|Zipped XML log file (*.zip)|*.zip|ETW log file (*.etl)|*.etl";
             openFileDialog1.Title = @"Import file to current view";
             openFileDialog1.Multiselect = false;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)

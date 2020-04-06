@@ -45,7 +45,6 @@ namespace Analogy
             this.colChanged = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colFullPath = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -75,7 +74,6 @@ namespace Analogy
             this.splcLeft.Panel2.SuspendLayout();
             this.splcLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkbSelectionMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRecursiveLoad.Properties)).BeginInit();
@@ -162,7 +160,6 @@ namespace Analogy
             this.treeList1.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus;
             this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.Size = new System.Drawing.Size(392, 401);
-            this.treeList1.StateImageList = this.imageCollection1;
             this.treeList1.TabIndex = 8;
             this.treeList1.TreeLevelWidth = 24;
             this.treeList1.SelectionChanged += new System.EventHandler(this.TreeList1_SelectionChanged);
@@ -207,14 +204,6 @@ namespace Analogy
             this.colFullPath.Visible = true;
             this.colFullPath.VisibleIndex = 3;
             this.colFullPath.Width = 116;
-            // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.Images.SetKeyName(0, "Folder_Closed.png");
-            this.imageCollection1.Images.SetKeyName(1, "Folder_Opened.png");
-            this.imageCollection1.Images.SetKeyName(2, "File.png");
-            this.imageCollection1.Images.SetKeyName(3, "Local_Disk.png");
             // 
             // standaloneBarDockControl1
             // 
@@ -457,7 +446,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.splcLeft)).EndInit();
             this.splcLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkbSelectionMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRecursiveLoad.Properties)).EndInit();
@@ -489,7 +477,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnOpenFolder;
         private DevExpress.XtraBars.BarButtonItem bBtnRefresh;
         private DevExpress.XtraBars.BarButtonItem bBtnDelete;
-        private DevExpress.Utils.ImageCollection imageCollection1;
         private FolderTreeViewUC folderTreeViewUC1;
         private DevExpress.XtraBars.BarButtonItem bBtnSelectAll;
         private DevExpress.XtraEditors.CheckEdit checkEditRecursiveLoad;
