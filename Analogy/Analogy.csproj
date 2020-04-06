@@ -94,15 +94,6 @@
     <Reference Include="DevExpress.Images.v19.1">
       <HintPath>DevExpress\DevExpress.Images.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Mvvm.v19.1">
-      <HintPath>DevExpress\DevExpress.Mvvm.v19.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Mvvm.v19.1.DataModel">
-      <HintPath>DevExpress\DevExpress.Mvvm.v19.1.DataModel.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Mvvm.v19.1.ViewModel">
-      <HintPath>DevExpress\DevExpress.Mvvm.v19.1.ViewModel.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.Pdf.v19.1.Core">
       <HintPath>DevExpress\DevExpress.Pdf.v19.1.Core.dll</HintPath>
     </Reference>
@@ -121,12 +112,6 @@
     <Reference Include="DevExpress.Utils.v19.1.UI">
       <HintPath>DevExpress\DevExpress.Utils.v19.1.UI.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxThemes.v19.1">
-      <HintPath>DevExpress\DevExpress.Web.ASPxThemes.v19.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Web.v19.1">
-      <HintPath>DevExpress\DevExpress.Web.v19.1.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.XtraBars.v19.1">
       <HintPath>DevExpress\DevExpress.XtraBars.v19.1.dll</HintPath>
     </Reference>
@@ -139,14 +124,8 @@
     <Reference Include="DevExpress.XtraCharts.v19.1.UI">
       <HintPath>DevExpress\DevExpress.XtraCharts.v19.1.UI.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v19.1.Web">
-      <HintPath>DevExpress\DevExpress.XtraCharts.v19.1.Web.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1.Wizard">
       <HintPath>DevExpress\DevExpress.XtraCharts.v19.1.Wizard.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraDialogs.v19.1">
-      <HintPath>DevExpress\DevExpress.XtraDialogs.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v19.1">
       <HintPath>DevExpress\DevExpress.XtraEditors.v19.1.dll</HintPath>
