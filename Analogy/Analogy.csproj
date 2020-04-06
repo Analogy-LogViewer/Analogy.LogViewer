@@ -94,6 +94,12 @@
     <Reference Include="DevExpress.Images.v19.1">
       <HintPath>DevExpress\DevExpress.Images.v19.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Mvvm.v19.1">
+      <HintPath>DevExpress\DevExpress.Mvvm.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v19.1.ViewModel">
+      <HintPath>DevExpress\DevExpress.Mvvm.v19.1.ViewModel.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Pdf.v19.1.Core">
       <HintPath>DevExpress\DevExpress.Pdf.v19.1.Core.dll</HintPath>
     </Reference>
