@@ -27,7 +27,7 @@ namespace Analogy
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlineUCLogs));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilePoolingUCLogs));
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tsPrimary = new System.Windows.Forms.ToolStrip();
@@ -111,9 +111,9 @@ namespace Analogy
             // listBoxClearHistory
             // 
             this.listBoxClearHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxClearHistory.Location = new System.Drawing.Point(0, 37);
+            this.listBoxClearHistory.Location = new System.Drawing.Point(0, 32);
             this.listBoxClearHistory.Name = "listBoxClearHistory";
-            this.listBoxClearHistory.Size = new System.Drawing.Size(202, 663);
+            this.listBoxClearHistory.Size = new System.Drawing.Size(202, 668);
             this.listBoxClearHistory.TabIndex = 1;
             // 
             // standaloneBarDockControl1
@@ -124,7 +124,7 @@ namespace Analogy
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(202, 37);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(202, 32);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
@@ -163,8 +163,6 @@ namespace Analogy
             this.bbtnClear.Caption = "Clear";
             this.bbtnClear.Hint = "clear History";
             this.bbtnClear.Id = 0;
-            this.bbtnClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnClear.ImageOptions.Image")));
-            this.bbtnClear.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnClear.ImageOptions.LargeImage")));
             this.bbtnClear.Name = "bbtnClear";
             this.bbtnClear.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnClear_ItemClick);
@@ -174,8 +172,6 @@ namespace Analogy
             this.bbtnHide.Caption = "Hide";
             this.bbtnHide.Hint = "collapse window";
             this.bbtnHide.Id = 1;
-            this.bbtnHide.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnHide.ImageOptions.Image")));
-            this.bbtnHide.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnHide.ImageOptions.LargeImage")));
             this.bbtnHide.Name = "bbtnHide";
             this.bbtnHide.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnHide.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnHide_ItemClick);
@@ -215,6 +211,8 @@ namespace Analogy
             // ucLogs1
             // 
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucLogs1.DoNotAddToRecentHistory = false;
+            this.ucLogs1.ForceNoFileCaching = false;
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
@@ -222,7 +220,7 @@ namespace Analogy
             this.ucLogs1.Size = new System.Drawing.Size(1181, 700);
             this.ucLogs1.TabIndex = 0;
             // 
-            // OnlineUCLogs
+            // FilePoolingUCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -233,7 +231,7 @@ namespace Analogy
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "OnlineUCLogs";
+            this.Name = "FilePoolingUCLogs";
             this.Size = new System.Drawing.Size(1387, 700);
             this.Load += new System.EventHandler(this.OnlineUCLogs_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragDrop);
