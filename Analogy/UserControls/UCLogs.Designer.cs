@@ -246,6 +246,8 @@ namespace Analogy
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -313,6 +315,10 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.cmsBookmarked.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
+            this.MainSplitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridControl
@@ -324,7 +330,7 @@ namespace Analogy
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(2124, 248);
+            this.gridControl.Size = new System.Drawing.Size(2118, 248);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid,
@@ -882,7 +888,7 @@ namespace Analogy
             this.panel1.Location = new System.Drawing.Point(0, 401);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2124, 26);
+            this.panel1.Size = new System.Drawing.Size(2118, 26);
             this.panel1.TabIndex = 4;
             // 
             // txtbHighlight
@@ -891,7 +897,7 @@ namespace Analogy
             this.txtbHighlight.Location = new System.Drawing.Point(200, 0);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1333, 22);
+            this.txtbHighlight.Size = new System.Drawing.Size(1327, 22);
             this.txtbHighlight.TabIndex = 23;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
             // 
@@ -1192,7 +1198,7 @@ namespace Analogy
             this.bdcTopFiltering.Manager = this.barManager1;
             this.bdcTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcTopFiltering.Name = "bdcTopFiltering";
-            this.bdcTopFiltering.Size = new System.Drawing.Size(2124, 38);
+            this.bdcTopFiltering.Size = new System.Drawing.Size(2118, 38);
             this.bdcTopFiltering.Text = "standaloneBarDockControl1";
             // 
             // BbarMainMenu
@@ -1246,7 +1252,7 @@ namespace Analogy
             this.bdcMessageBottom.Manager = this.barManager1;
             this.bdcMessageBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcMessageBottom.Name = "bdcMessageBottom";
-            this.bdcMessageBottom.Size = new System.Drawing.Size(2117, 37);
+            this.bdcMessageBottom.Size = new System.Drawing.Size(2111, 37);
             this.bdcMessageBottom.Text = "standaloneBarDockControl2";
             // 
             // barBookmark
@@ -1408,7 +1414,7 @@ namespace Analogy
             // sbtnMoreHighlight
             // 
             this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1533, 0);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1527, 0);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
             this.sbtnMoreHighlight.Size = new System.Drawing.Size(71, 26);
@@ -1426,7 +1432,7 @@ namespace Analogy
             this.pnlButtonsHighlight.Controls.Add(this.btnUp);
             this.pnlButtonsHighlight.Controls.Add(this.btnDown);
             this.pnlButtonsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1604, 0);
+            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1598, 0);
             this.pnlButtonsHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlButtonsHighlight.Name = "pnlButtonsHighlight";
             this.pnlButtonsHighlight.Size = new System.Drawing.Size(520, 26);
@@ -1530,7 +1536,7 @@ namespace Analogy
             this.pnlTopFiltering.Location = new System.Drawing.Point(0, 0);
             this.pnlTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTopFiltering.Name = "pnlTopFiltering";
-            this.pnlTopFiltering.Size = new System.Drawing.Size(2124, 153);
+            this.pnlTopFiltering.Size = new System.Drawing.Size(2118, 153);
             this.pnlTopFiltering.TabIndex = 3;
             // 
             // spltFilteringBoth
@@ -1548,8 +1554,8 @@ namespace Analogy
             // 
             this.spltFilteringBoth.Panel2.Controls.Add(this.chkLstLogLevel);
             this.spltFilteringBoth.Panel2MinSize = 150;
-            this.spltFilteringBoth.Size = new System.Drawing.Size(2124, 153);
-            this.spltFilteringBoth.SplitterDistance = 1635;
+            this.spltFilteringBoth.Size = new System.Drawing.Size(2118, 153);
+            this.spltFilteringBoth.SplitterDistance = 1630;
             this.spltFilteringBoth.SplitterWidth = 3;
             this.spltFilteringBoth.TabIndex = 19;
             // 
@@ -1564,7 +1570,7 @@ namespace Analogy
             this.pnlFilteringLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlFilteringLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFilteringLeft.Name = "pnlFilteringLeft";
-            this.pnlFilteringLeft.Size = new System.Drawing.Size(1635, 153);
+            this.pnlFilteringLeft.Size = new System.Drawing.Size(1630, 153);
             this.pnlFilteringLeft.TabIndex = 20;
             // 
             // spltcDateFiltering
@@ -1583,7 +1589,7 @@ namespace Analogy
             this.spltcDateFiltering.Panel1.Controls.Add(this.chkDateNewerThan);
             this.spltcDateFiltering.Panel1.Controls.Add(this.pictureBox1);
             this.spltcDateFiltering.Panel2Collapsed = true;
-            this.spltcDateFiltering.Size = new System.Drawing.Size(1624, 24);
+            this.spltcDateFiltering.Size = new System.Drawing.Size(1619, 24);
             this.spltcDateFiltering.SplitterDistance = 683;
             this.spltcDateFiltering.TabIndex = 27;
             // 
@@ -1653,7 +1659,7 @@ namespace Analogy
             // 
             this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Right;
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(1601, 0);
+            this.simpleButton1.Location = new System.Drawing.Point(1596, 0);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(23, 24);
             this.simpleButton1.TabIndex = 24;
@@ -1696,7 +1702,7 @@ namespace Analogy
             this.spltcProcessesModule.Panel1.Controls.Add(this.sbtnUndockPerProcess);
             this.spltcProcessesModule.Panel1.Controls.Add(this.chkbModules);
             this.spltcProcessesModule.Panel2Collapsed = true;
-            this.spltcProcessesModule.Size = new System.Drawing.Size(1624, 24);
+            this.spltcProcessesModule.Size = new System.Drawing.Size(1619, 24);
             this.spltcProcessesModule.SplitterDistance = 574;
             this.spltcProcessesModule.TabIndex = 26;
             // 
@@ -1706,14 +1712,14 @@ namespace Analogy
             this.txtbModule.Location = new System.Drawing.Point(275, 0);
             this.txtbModule.MenuManager = this.barManager1;
             this.txtbModule.Name = "txtbModule";
-            this.txtbModule.Size = new System.Drawing.Size(1145, 22);
+            this.txtbModule.Size = new System.Drawing.Size(1140, 22);
             this.txtbModule.TabIndex = 26;
             // 
             // sbtnIncludeModules
             // 
             this.sbtnIncludeModules.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnIncludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeModules.ImageOptions.Image")));
-            this.sbtnIncludeModules.Location = new System.Drawing.Point(1420, 0);
+            this.sbtnIncludeModules.Location = new System.Drawing.Point(1415, 0);
             this.sbtnIncludeModules.Name = "sbtnIncludeModules";
             this.sbtnIncludeModules.Size = new System.Drawing.Size(23, 24);
             this.sbtnIncludeModules.TabIndex = 24;
@@ -1724,7 +1730,7 @@ namespace Analogy
             // 
             this.sbtnUndockPerProcess.AutoSize = true;
             this.sbtnUndockPerProcess.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(1443, 0);
+            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(1438, 0);
             this.sbtnUndockPerProcess.Name = "sbtnUndockPerProcess";
             this.sbtnUndockPerProcess.Size = new System.Drawing.Size(181, 24);
             this.sbtnUndockPerProcess.TabIndex = 24;
@@ -1756,7 +1762,7 @@ namespace Analogy
             this.spltcSources.Panel1.Controls.Add(this.chkbSources);
             this.spltcSources.Panel1.Controls.Add(this.pboxInfoExclude);
             this.spltcSources.Panel2Collapsed = true;
-            this.spltcSources.Size = new System.Drawing.Size(1624, 24);
+            this.spltcSources.Size = new System.Drawing.Size(1619, 24);
             this.spltcSources.SplitterDistance = 683;
             this.spltcSources.TabIndex = 25;
             // 
@@ -1766,14 +1772,14 @@ namespace Analogy
             this.txtbSource.Location = new System.Drawing.Point(228, 0);
             this.txtbSource.MenuManager = this.barManager1;
             this.txtbSource.Name = "txtbSource";
-            this.txtbSource.Size = new System.Drawing.Size(1373, 22);
+            this.txtbSource.Size = new System.Drawing.Size(1368, 22);
             this.txtbSource.TabIndex = 25;
             // 
             // sbtnIncludeSources
             // 
             this.sbtnIncludeSources.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnIncludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeSources.ImageOptions.Image")));
-            this.sbtnIncludeSources.Location = new System.Drawing.Point(1601, 0);
+            this.sbtnIncludeSources.Location = new System.Drawing.Point(1596, 0);
             this.sbtnIncludeSources.Name = "sbtnIncludeSources";
             this.sbtnIncludeSources.Size = new System.Drawing.Size(23, 24);
             this.sbtnIncludeSources.TabIndex = 24;
@@ -1816,7 +1822,7 @@ namespace Analogy
             this.spltTextExclude.Panel1.Controls.Add(this.sBtnMostCommon);
             this.spltTextExclude.Panel1.Controls.Add(this.chkExclude);
             this.spltTextExclude.Panel2Collapsed = true;
-            this.spltTextExclude.Size = new System.Drawing.Size(1624, 24);
+            this.spltTextExclude.Size = new System.Drawing.Size(1619, 24);
             this.spltTextExclude.SplitterDistance = 998;
             this.spltTextExclude.TabIndex = 24;
             // 
@@ -1826,14 +1832,14 @@ namespace Analogy
             this.txtbExclude.Location = new System.Drawing.Point(127, 0);
             this.txtbExclude.MenuManager = this.barManager1;
             this.txtbExclude.Name = "txtbExclude";
-            this.txtbExclude.Size = new System.Drawing.Size(1354, 22);
+            this.txtbExclude.Size = new System.Drawing.Size(1349, 22);
             this.txtbExclude.TabIndex = 20;
             // 
             // sbtnTextExclude
             // 
             this.sbtnTextExclude.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
-            this.sbtnTextExclude.Location = new System.Drawing.Point(1481, 0);
+            this.sbtnTextExclude.Location = new System.Drawing.Point(1476, 0);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
             this.sbtnTextExclude.Size = new System.Drawing.Size(23, 24);
             this.sbtnTextExclude.TabIndex = 20;
@@ -1843,7 +1849,7 @@ namespace Analogy
             // sBtnMostCommon
             // 
             this.sBtnMostCommon.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sBtnMostCommon.Location = new System.Drawing.Point(1504, 0);
+            this.sBtnMostCommon.Location = new System.Drawing.Point(1499, 0);
             this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMostCommon.Name = "sBtnMostCommon";
             this.sBtnMostCommon.Size = new System.Drawing.Size(120, 24);
@@ -1879,7 +1885,7 @@ namespace Analogy
             this.spltText.Panel1.Controls.Add(this.pboxInfo);
             this.spltText.Panel1.Controls.Add(this.sbtnPreDefinedFilters);
             this.spltText.Panel2Collapsed = true;
-            this.spltText.Size = new System.Drawing.Size(1624, 24);
+            this.spltText.Size = new System.Drawing.Size(1619, 24);
             this.spltText.SplitterDistance = 998;
             this.spltText.TabIndex = 22;
             // 
@@ -1889,14 +1895,14 @@ namespace Analogy
             this.txtbInclude.Location = new System.Drawing.Point(127, 0);
             this.txtbInclude.MenuManager = this.barManager1;
             this.txtbInclude.Name = "txtbInclude";
-            this.txtbInclude.Size = new System.Drawing.Size(1451, 22);
+            this.txtbInclude.Size = new System.Drawing.Size(1446, 22);
             this.txtbInclude.TabIndex = 19;
             // 
             // sbtnTextInclude
             // 
             this.sbtnTextInclude.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1578, 0);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1573, 0);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(23, 24);
             this.sbtnTextInclude.TabIndex = 20;
@@ -1932,7 +1938,7 @@ namespace Analogy
             // 
             this.sbtnPreDefinedFilters.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.Properties.Resources.SingleMasterFilter_16x16;
-            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1601, 0);
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1596, 0);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
             this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(23, 24);
             this.sbtnPreDefinedFilters.TabIndex = 21;
@@ -1954,7 +1960,7 @@ namespace Analogy
             this.chkLstLogLevel.Location = new System.Drawing.Point(0, 0);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
-            this.chkLstLogLevel.Size = new System.Drawing.Size(486, 153);
+            this.chkLstLogLevel.Size = new System.Drawing.Size(485, 153);
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
@@ -1966,7 +1972,7 @@ namespace Analogy
             this.tcBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tcBottom.Name = "tcBottom";
             this.tcBottom.SelectedTabPage = this.xtpMessageInfo;
-            this.tcBottom.Size = new System.Drawing.Size(2124, 204);
+            this.tcBottom.Size = new System.Drawing.Size(2118, 204);
             this.tcBottom.TabIndex = 6;
             this.tcBottom.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpMessageInfo,
@@ -1978,7 +1984,7 @@ namespace Analogy
             this.xtpMessageInfo.Controls.Add(this.bdcMessageBottom);
             this.xtpMessageInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpMessageInfo.Name = "xtpMessageInfo";
-            this.xtpMessageInfo.Size = new System.Drawing.Size(2117, 170);
+            this.xtpMessageInfo.Size = new System.Drawing.Size(2111, 170);
             this.xtpMessageInfo.Text = "Message Info";
             // 
             // rtxtContent
@@ -1987,7 +1993,7 @@ namespace Analogy
             this.rtxtContent.Location = new System.Drawing.Point(0, 37);
             this.rtxtContent.MenuManager = this.barManager1;
             this.rtxtContent.Name = "rtxtContent";
-            this.rtxtContent.Size = new System.Drawing.Size(2117, 133);
+            this.rtxtContent.Size = new System.Drawing.Size(2111, 133);
             this.rtxtContent.TabIndex = 2;
             // 
             // xtpBookmarks
@@ -2303,11 +2309,11 @@ namespace Analogy
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(345, 0);
+            this.progressBar1.Location = new System.Drawing.Point(312, 0);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar1.MarqueeAnimationSpeed = 1;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1580, 30);
+            this.progressBar1.Size = new System.Drawing.Size(1607, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
@@ -2321,11 +2327,11 @@ namespace Analogy
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 20);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtpMain;
-            this.xtraTabControl1.Size = new System.Drawing.Size(2131, 739);
+            this.xtraTabControl1.Size = new System.Drawing.Size(2125, 739);
             this.xtraTabControl1.TabIndex = 7;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpMain,
@@ -2338,7 +2344,7 @@ namespace Analogy
             this.xtpMain.Controls.Add(this.pnlBottom);
             this.xtpMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpMain.Name = "xtpMain";
-            this.xtpMain.Size = new System.Drawing.Size(2124, 705);
+            this.xtpMain.Size = new System.Drawing.Size(2118, 705);
             this.xtpMain.Text = "Logs";
             // 
             // splitContainerMain
@@ -2356,7 +2362,7 @@ namespace Analogy
             this.splitContainerMain.Panel1.Text = "Panel1";
             this.splitContainerMain.Panel2.Controls.Add(this.tcBottom);
             this.splitContainerMain.Panel2.Text = "Panel2";
-            this.splitContainerMain.Size = new System.Drawing.Size(2124, 637);
+            this.splitContainerMain.Size = new System.Drawing.Size(2118, 637);
             this.splitContainerMain.SplitterPosition = 204;
             this.splitContainerMain.TabIndex = 21;
             this.splitContainerMain.Text = "splitContainerControl1";
@@ -2371,23 +2377,23 @@ namespace Analogy
             this.pnlBottom.Location = new System.Drawing.Point(0, 675);
             this.pnlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(2124, 30);
+            this.pnlBottom.Size = new System.Drawing.Size(2118, 30);
             this.pnlBottom.TabIndex = 3;
             // 
             // lblTotalMessagesAlert
             // 
             this.lblTotalMessagesAlert.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblTotalMessagesAlert.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalMessagesAlert.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalMessagesAlert.Appearance.Options.UseBackColor = true;
             this.lblTotalMessagesAlert.Appearance.Options.UseFont = true;
             this.lblTotalMessagesAlert.Appearance.Options.UseTextOptions = true;
             this.lblTotalMessagesAlert.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.lblTotalMessagesAlert.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTotalMessagesAlert.Location = new System.Drawing.Point(183, 0);
+            this.lblTotalMessagesAlert.Location = new System.Drawing.Point(167, 0);
             this.lblTotalMessagesAlert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblTotalMessagesAlert.Name = "lblTotalMessagesAlert";
             this.lblTotalMessagesAlert.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblTotalMessagesAlert.Size = new System.Drawing.Size(162, 23);
+            this.lblTotalMessagesAlert.Size = new System.Drawing.Size(145, 21);
             this.lblTotalMessagesAlert.TabIndex = 6;
             this.lblTotalMessagesAlert.Text = "ALERTS EXISTS: !";
             this.lblTotalMessagesAlert.Visible = false;
@@ -2398,7 +2404,7 @@ namespace Analogy
             this.sBtnCancel.Appearance.Options.UseFont = true;
             this.sBtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.sBtnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnCancel.ImageOptions.Image")));
-            this.sBtnCancel.Location = new System.Drawing.Point(1925, 0);
+            this.sBtnCancel.Location = new System.Drawing.Point(1919, 0);
             this.sBtnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnCancel.Name = "sBtnCancel";
             this.sBtnCancel.Size = new System.Drawing.Size(199, 30);
@@ -2409,7 +2415,7 @@ namespace Analogy
             // 
             // lblTotalMessages
             // 
-            this.lblTotalMessages.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalMessages.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalMessages.Appearance.Options.UseFont = true;
             this.lblTotalMessages.Appearance.Options.UseTextOptions = true;
             this.lblTotalMessages.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -2418,19 +2424,14 @@ namespace Analogy
             this.lblTotalMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblTotalMessages.Name = "lblTotalMessages";
             this.lblTotalMessages.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.lblTotalMessages.Size = new System.Drawing.Size(183, 23);
+            this.lblTotalMessages.Size = new System.Drawing.Size(167, 21);
             this.lblTotalMessages.TabIndex = 0;
             this.lblTotalMessages.Text = "Total messages: N/A";
             // 
             // xtCounts
             // 
-            this.xtCounts.Controls.Add(this.nudGroupBychars);
-            this.xtCounts.Controls.Add(this.txtbGroupByCharsLimit);
-            this.xtCounts.Controls.Add(this.sBtnGroup);
-            this.xtCounts.Controls.Add(this.sBtnLength);
-            this.xtCounts.Controls.Add(this.lblGroupByCharsLimit);
             this.xtCounts.Controls.Add(this.spltGroupByChars);
-            this.xtCounts.Controls.Add(this.lblGroupByChars);
+            this.xtCounts.Controls.Add(this.panelControl1);
             this.xtCounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtCounts.Name = "xtCounts";
             this.xtCounts.Size = new System.Drawing.Size(2124, 705);
@@ -2443,7 +2444,7 @@ namespace Analogy
             0,
             0,
             0});
-            this.nudGroupBychars.Location = new System.Drawing.Point(756, 18);
+            this.nudGroupBychars.Location = new System.Drawing.Point(744, 7);
             this.nudGroupBychars.MenuManager = this.barManager1;
             this.nudGroupBychars.Name = "nudGroupBychars";
             this.nudGroupBychars.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -2465,7 +2466,7 @@ namespace Analogy
             // 
             // txtbGroupByCharsLimit
             // 
-            this.txtbGroupByCharsLimit.Location = new System.Drawing.Point(157, 18);
+            this.txtbGroupByCharsLimit.Location = new System.Drawing.Point(147, 7);
             this.txtbGroupByCharsLimit.MenuManager = this.barManager1;
             this.txtbGroupByCharsLimit.Name = "txtbGroupByCharsLimit";
             this.txtbGroupByCharsLimit.Size = new System.Drawing.Size(250, 22);
@@ -2473,7 +2474,7 @@ namespace Analogy
             // 
             // sBtnGroup
             // 
-            this.sBtnGroup.Location = new System.Drawing.Point(860, 16);
+            this.sBtnGroup.Location = new System.Drawing.Point(848, 5);
             this.sBtnGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnGroup.Name = "sBtnGroup";
             this.sBtnGroup.Size = new System.Drawing.Size(83, 25);
@@ -2483,7 +2484,7 @@ namespace Analogy
             // 
             // sBtnLength
             // 
-            this.sBtnLength.Location = new System.Drawing.Point(413, 16);
+            this.sBtnLength.Location = new System.Drawing.Point(401, 5);
             this.sBtnLength.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnLength.Name = "sBtnLength";
             this.sBtnLength.Size = new System.Drawing.Size(83, 25);
@@ -2494,7 +2495,7 @@ namespace Analogy
             // lblGroupByCharsLimit
             // 
             this.lblGroupByCharsLimit.AutoSize = true;
-            this.lblGroupByCharsLimit.Location = new System.Drawing.Point(10, 23);
+            this.lblGroupByCharsLimit.Location = new System.Drawing.Point(0, 10);
             this.lblGroupByCharsLimit.Name = "lblGroupByCharsLimit";
             this.lblGroupByCharsLimit.Size = new System.Drawing.Size(141, 17);
             this.lblGroupByCharsLimit.TabIndex = 7;
@@ -2502,10 +2503,8 @@ namespace Analogy
             // 
             // spltGroupByChars
             // 
-            this.spltGroupByChars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.spltGroupByChars.Location = new System.Drawing.Point(12, 52);
+            this.spltGroupByChars.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spltGroupByChars.Location = new System.Drawing.Point(0, 41);
             this.spltGroupByChars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spltGroupByChars.Name = "spltGroupByChars";
             this.spltGroupByChars.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -2517,8 +2516,8 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(2004, 633);
-            this.spltGroupByChars.SplitterDistance = 324;
+            this.spltGroupByChars.Size = new System.Drawing.Size(2124, 664);
+            this.spltGroupByChars.SplitterDistance = 339;
             this.spltGroupByChars.TabIndex = 4;
             // 
             // gCtrlGrouping
@@ -2530,7 +2529,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(2004, 324);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(2124, 339);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2553,7 +2552,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridView1;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2004, 305);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2124, 321);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2838,7 +2837,7 @@ namespace Analogy
             // lblGroupByChars
             // 
             this.lblGroupByChars.AutoSize = true;
-            this.lblGroupByChars.Location = new System.Drawing.Point(525, 23);
+            this.lblGroupByChars.Location = new System.Drawing.Point(513, 9);
             this.lblGroupByChars.Name = "lblGroupByChars";
             this.lblGroupByChars.Size = new System.Drawing.Size(225, 17);
             this.lblGroupByChars.TabIndex = 2;
@@ -3034,11 +3033,40 @@ namespace Analogy
             this.timer2.Interval = 600;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.nudGroupBychars);
+            this.panelControl1.Controls.Add(this.lblGroupByCharsLimit);
+            this.panelControl1.Controls.Add(this.txtbGroupByCharsLimit);
+            this.panelControl1.Controls.Add(this.sBtnGroup);
+            this.panelControl1.Controls.Add(this.sBtnLength);
+            this.panelControl1.Controls.Add(this.lblGroupByChars);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(2124, 41);
+            this.panelControl1.TabIndex = 16;
+            // 
+            // MainSplitContainer
+            // 
+            this.MainSplitContainer.Collapsed = true;
+            this.MainSplitContainer.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel1;
+            this.MainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainSplitContainer.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None;
+            this.MainSplitContainer.Location = new System.Drawing.Point(0, 20);
+            this.MainSplitContainer.Name = "MainSplitContainer";
+            this.MainSplitContainer.Panel1.Text = "Panel1";
+            this.MainSplitContainer.Panel2.Controls.Add(this.xtraTabControl1);
+            this.MainSplitContainer.Panel2.Text = "Panel2";
+            this.MainSplitContainer.Size = new System.Drawing.Size(2131, 739);
+            this.MainSplitContainer.SplitterPosition = 187;
+            this.MainSplitContainer.TabIndex = 12;
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.MainSplitContainer);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -3110,7 +3138,6 @@ namespace Analogy
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
             this.xtCounts.ResumeLayout(false);
-            this.xtCounts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).EndInit();
             this.spltGroupByChars.Panel1.ResumeLayout(false);
@@ -3123,6 +3150,11 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.cmsBookmarked.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
+            this.MainSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3334,5 +3366,7 @@ namespace Analogy
         private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SplitContainerControl MainSplitContainer;
     }
 }
