@@ -2,13 +2,14 @@
 using System.Linq;
 using System.Windows.Forms;
 using Analogy;
+using DevExpress.XtraCharts.Demos;
 
 
 namespace Philips.Analogy
 {
     public partial class LogStatisticsUC : UserControl
     {
-        private LogStatistics Statistics { get; set; }
+        public LogStatistics Statistics { get; set; }
         private static Color[] colors;
 
         public LogStatisticsUC()
@@ -22,14 +23,12 @@ namespace Philips.Analogy
 
         }
 
-        public LogStatisticsUC(LogStatistics statistics) : this() => Statistics = statistics;
-
-
         private void CreatePieGlobal()
         {
-            //GraphPane global = zedGraphGlobal.GraphPane;
-            //global.Title = "Messages distribution";
-            //CreatePie(global, Statistics.CalculateGlobalStatistics());
+            Pie3DDoughnut3DFunnel3DViewsDemo  pie = new Pie3DDoughnut3DFunnel3DViewsDemo();
+            pie.SetDataSources(Statistics.CalculateGlobalStatistics());
+            spltCTop.Panel2.Controls.Add(pie);
+            pie.Dock = DockStyle.Fill;
             //// optional depending on whether you want labels within the graph legend
             //global.Legend.IsVisible = true;
             //zedGraphGlobal.AxisChange();

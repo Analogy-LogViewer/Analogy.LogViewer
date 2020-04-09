@@ -1,4 +1,6 @@
-﻿namespace Analogy
+﻿using System.Collections.Generic;
+
+namespace Analogy
 {
     public class ItemStatistics
     {
@@ -15,5 +17,26 @@
             => (Name, TotalMessages, Errors, Warnings, Critical, Events, Debug, Verbose) =
                 (name, total, errors, warnings, critical, events, debug, verbose);
 
+        public IEnumerable<Statistics> AsList()
+        {
+            yield return new Statistics(nameof(Errors), Errors);
+            yield return new Statistics(nameof(Warnings), Warnings);
+            yield return new Statistics(nameof(Critical), Critical);
+            yield return new Statistics(nameof(Debug),Debug);
+            yield return new Statistics(nameof(Verbose),Verbose);
+
+        }
+    }
+
+    public class Statistics
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+
+        public Statistics(string name, int value)
+        {
+            Name = name;
+            Value = value;
+        }
     }
 }

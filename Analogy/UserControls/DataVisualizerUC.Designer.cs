@@ -46,7 +46,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMessagesText = new DevExpress.XtraTab.XtraTabPage();
             this.xtpPieChart = new DevExpress.XtraTab.XtraTabPage();
-            this.scPies = new DevExpress.XtraEditors.SplitContainerControl();
+            this.logStatisticsUC1 = new Philips.Analogy.LogStatisticsUC();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).BeginInit();
@@ -66,8 +66,6 @@
             this.xtraTabControl1.SuspendLayout();
             this.xtpMessagesText.SuspendLayout();
             this.xtpPieChart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scPies)).BeginInit();
-            this.scPies.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -233,23 +231,19 @@
             // 
             // xtpPieChart
             // 
-            this.xtpPieChart.Controls.Add(this.scPies);
+            this.xtpPieChart.Controls.Add(this.logStatisticsUC1);
             this.xtpPieChart.Name = "xtpPieChart";
-            this.xtpPieChart.PageVisible = false;
             this.xtpPieChart.Size = new System.Drawing.Size(1008, 537);
             this.xtpPieChart.Text = "Pies";
             // 
-            // scPies
+            // logStatisticsUC1
             // 
-            this.scPies.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scPies.Horizontal = false;
-            this.scPies.Location = new System.Drawing.Point(0, 0);
-            this.scPies.Name = "scPies";
-            this.scPies.Panel1.Text = "Panel1";
-            this.scPies.Panel2.Text = "Panel2";
-            this.scPies.Size = new System.Drawing.Size(1008, 537);
-            this.scPies.SplitterPosition = 191;
-            this.scPies.TabIndex = 0;
+            this.logStatisticsUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logStatisticsUC1.Location = new System.Drawing.Point(0, 0);
+            this.logStatisticsUC1.Name = "logStatisticsUC1";
+            this.logStatisticsUC1.Size = new System.Drawing.Size(1008, 537);
+            this.logStatisticsUC1.Statistics = null;
+            this.logStatisticsUC1.TabIndex = 0;
             // 
             // DataVisualizerUC
             // 
@@ -279,8 +273,6 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.xtpMessagesText.ResumeLayout(false);
             this.xtpPieChart.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scPies)).EndInit();
-            this.scPies.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -301,6 +293,6 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtpMessagesText;
         private DevExpress.XtraTab.XtraTabPage xtpPieChart;
-        private DevExpress.XtraEditors.SplitContainerControl scPies;
+        private Philips.Analogy.LogStatisticsUC logStatisticsUC1;
     }
 }

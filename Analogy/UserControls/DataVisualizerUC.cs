@@ -27,6 +27,7 @@ namespace Analogy
         public DataVisualizerUC(List<AnalogyLogMessage> messages) : this()
         {
             Messages = messages;
+            logStatisticsUC1.Statistics = new LogStatistics(messages);
         }
 
         private void DataVisualizerUC_Load(object sender, EventArgs e)
