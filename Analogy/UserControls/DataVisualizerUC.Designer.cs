@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel4 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel5 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel6 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel3 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.sBtnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.chklistItems = new DevExpress.XtraEditors.CheckedListBoxControl();
@@ -55,13 +55,13 @@
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlOnOff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
             this.tabNavigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlFrequency)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).BeginInit();
             this.tnpTimeDistribution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartTimeDistribution)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtpMessagesText.SuspendLayout();
@@ -166,8 +166,8 @@
             this.chartControlOnOff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartControlOnOff.Name = "chartControlOnOff";
             this.chartControlOnOff.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            sideBySideBarSeriesLabel4.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartControlOnOff.SeriesTemplate.Label = sideBySideBarSeriesLabel4;
+            sideBySideBarSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartControlOnOff.SeriesTemplate.Label = sideBySideBarSeriesLabel1;
             this.chartControlOnOff.Size = new System.Drawing.Size(1324, 557);
             this.chartControlOnOff.TabIndex = 1;
             // 
@@ -187,8 +187,8 @@
             this.chartControlFrequency.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartControlFrequency.Name = "chartControlFrequency";
             this.chartControlFrequency.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            sideBySideBarSeriesLabel5.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartControlFrequency.SeriesTemplate.Label = sideBySideBarSeriesLabel5;
+            sideBySideBarSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartControlFrequency.SeriesTemplate.Label = sideBySideBarSeriesLabel2;
             this.chartControlFrequency.Size = new System.Drawing.Size(1324, 524);
             this.chartControlFrequency.TabIndex = 2;
             // 
@@ -207,8 +207,8 @@
             this.chartTimeDistribution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartTimeDistribution.Name = "chartTimeDistribution";
             this.chartTimeDistribution.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            sideBySideBarSeriesLabel6.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartTimeDistribution.SeriesTemplate.Label = sideBySideBarSeriesLabel6;
+            sideBySideBarSeriesLabel3.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartTimeDistribution.SeriesTemplate.Label = sideBySideBarSeriesLabel3;
             this.chartTimeDistribution.Size = new System.Drawing.Size(1008, 360);
             this.chartTimeDistribution.TabIndex = 3;
             // 
@@ -235,6 +235,7 @@
             // 
             this.xtpPieChart.Controls.Add(this.scPies);
             this.xtpPieChart.Name = "xtpPieChart";
+            this.xtpPieChart.PageVisible = false;
             this.xtpPieChart.Size = new System.Drawing.Size(1008, 537);
             this.xtpPieChart.Text = "Pies";
             // 
@@ -266,13 +267,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
             this.tabNavigationPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlOnOff)).EndInit();
             this.tabNavigationPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlFrequency)).EndInit();
             this.tnpTimeDistribution.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTimeDistribution)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
