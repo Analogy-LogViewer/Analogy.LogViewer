@@ -19,9 +19,7 @@ namespace DevExpress.XtraCharts.Demos {
         bool IsDoughnutActive {
             get { return ActiveSeries.View is Doughnut3DSeriesView; }
         }
-        bool IsFunnelSeriesActive {
-            get { return ActiveSeries.View is Funnel3DSeriesView; }
-        }
+   
 
         protected override int DefaultPerspective {
             get { return 20; }
@@ -50,7 +48,6 @@ namespace DevExpress.XtraCharts.Demos {
                 return new List<ChartControl>() {
                     chartPie3D,
                     chartDoughnut3D,
-                    chartFunnel3D
                 };
             }
         }
@@ -177,32 +174,37 @@ namespace DevExpress.XtraCharts.Demos {
             series1.ValueDataMembers.AddRange(new string[] { "Value" });
             // Add the series to the chart. 
             chartPie3D.Series.Add(series1);
-            chartPie3D.Legend.Visibility = Utils.DefaultBoolean.True;
+            series1.LabelsVisibility = Utils.DefaultBoolean.True;
+            checkEditLabelVisible.Checked = true;
+
             SetValueAsPercent(true);
+            checkEditValueAsPercent.Checked = true;
         }
 
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
             documentManager.View.Controller.Activate(documentPie3D);
         }
-        protected override void UpdateControlsCore() {
+
+        protected override void UpdateControlsCore()
+        {
             base.UpdateControlsCore();
             layoutControl.BeginUpdate();
             checkEditLabelVisible.Checked = ActiveSeries.LabelsVisibility == DevExpress.Utils.DefaultBoolean.True;
             string actualPattern = ActiveSeries.Label.TextPattern;
-            checkEditValueAsPercent.Checked = actualPattern == PiePercentPattern || actualPattern == FunnelPercentPattern;
+            checkEditValueAsPercent.Checked =
+                actualPattern == PiePercentPattern || actualPattern == FunnelPercentPattern;
             comboBoxEditLabelPosition.Properties.Items.Clear();
-            if (IsFunnelSeriesActive)
-                UpdateFunnelOptions();
-            else {
-                layoutControlGroupFunnelGeneral.Visibility = LayoutVisibility.Never;
-                layoutControlGroupPieDoughnutGeneral.Visibility = LayoutVisibility.Always;
-                layoutControlGroupExplodedDistance.Visibility = IsDoughnutActive ? LayoutVisibility.Never : LayoutVisibility.Always;
-                layoutControlItemDoughnutHoleRadius.Visibility = IsDoughnutActive ? LayoutVisibility.Always : LayoutVisibility.Never;
-                UpdatePieOptions();
-            }
+            layoutControlGroupFunnelGeneral.Visibility = LayoutVisibility.Never;
+            layoutControlGroupPieDoughnutGeneral.Visibility = LayoutVisibility.Always;
+            layoutControlGroupExplodedDistance.Visibility =
+                IsDoughnutActive ? LayoutVisibility.Never : LayoutVisibility.Always;
+            layoutControlItemDoughnutHoleRadius.Visibility =
+                IsDoughnutActive ? LayoutVisibility.Always : LayoutVisibility.Never;
+            UpdatePieOptions();
             layoutControl.EndUpdate();
         }
+
         protected override void UpdateRotationAngles(Diagram3D diagram) {
             diagram.RotationOrder = RotationOrder.ZXY;
             if (IsPieActive) {

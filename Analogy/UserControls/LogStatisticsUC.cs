@@ -26,13 +26,10 @@ namespace Philips.Analogy
         private void CreatePieGlobal()
         {
             Pie3DDoughnut3DFunnel3DViewsDemo  pie = new Pie3DDoughnut3DFunnel3DViewsDemo();
-            pie.SetDataSources(Statistics.CalculateGlobalStatistics());
             spltCTop.Panel2.Controls.Add(pie);
             pie.Dock = DockStyle.Fill;
-            //// optional depending on whether you want labels within the graph legend
-            //global.Legend.IsVisible = true;
-            //zedGraphGlobal.AxisChange();
-            //zedGraphGlobal.Invalidate();
+            pie.SetDataSources(Statistics.CalculateGlobalStatistics());
+          
         }
         //private void CreatePie(GraphPane graph, ItemStatistics entry)
         //{

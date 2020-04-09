@@ -43,27 +43,10 @@
             DevExpress.XtraCharts.Doughnut3DSeriesView doughnut3DSeriesView1 = new DevExpress.XtraCharts.Doughnut3DSeriesView();
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
-            DevExpress.XtraCharts.FunnelDiagram3D funnelDiagram3D1 = new DevExpress.XtraCharts.FunnelDiagram3D();
-            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Funnel3DSeriesLabel funnel3DSeriesLabel1 = new DevExpress.XtraCharts.Funnel3DSeriesLabel();
-            DevExpress.XtraCharts.SeriesPoint seriesPoint9 = new DevExpress.XtraCharts.SeriesPoint("Visited a Website", new object[] {
-            ((object)(9152D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint10 = new DevExpress.XtraCharts.SeriesPoint("Downloaded a Trial", new object[] {
-            ((object)(6870D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint11 = new DevExpress.XtraCharts.SeriesPoint("Contacted to Support", new object[] {
-            ((object)(5121D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint12 = new DevExpress.XtraCharts.SeriesPoint("Subscribed", new object[] {
-            ((object)(2224D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint13 = new DevExpress.XtraCharts.SeriesPoint("Renewed", new object[] {
-            ((object)(1670D))});
-            DevExpress.XtraCharts.Funnel3DSeriesView funnel3DSeriesView1 = new DevExpress.XtraCharts.Funnel3DSeriesView();
-            DevExpress.XtraCharts.Funnel3DSeriesView funnel3DSeriesView2 = new DevExpress.XtraCharts.Funnel3DSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle3 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentPie3D = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.documentDoughnut3D = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
-            this.documentFunnel3D = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelPie3D = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelPie3D_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -71,9 +54,6 @@
             this.dockPanelDoughnut3D = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelDoughnut3D_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.chartDoughnut3D = new DevExpress.XtraCharts.ChartControl();
-            this.dockPanelFunnel3D = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanelFunnel3D_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.chartFunnel3D = new DevExpress.XtraCharts.ChartControl();
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.currentTabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
@@ -112,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentPie3D)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentDoughnut3D)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentFunnel3D)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             this.dockPanelPie3D.SuspendLayout();
             this.dockPanelPie3D_Container.SuspendLayout();
@@ -128,14 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(doughnut3DSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(doughnut3DSeriesView1)).BeginInit();
-            this.dockPanelFunnel3D.SuspendLayout();
-            this.dockPanelFunnel3D_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartFunnel3D)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(funnelDiagram3D1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(funnel3DSeriesLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(funnel3DSeriesView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(funnel3DSeriesView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentTabbedView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
@@ -171,26 +142,25 @@
             // 
             // sidePanelOptions
             // 
-            this.sidePanelOptions.Location = new System.Drawing.Point(629, 0);
-            this.sidePanelOptions.Size = new System.Drawing.Size(421, 747);
+            this.sidePanelOptions.Location = new System.Drawing.Point(500, 0);
+            this.sidePanelOptions.Size = new System.Drawing.Size(550, 747);
             // 
             // tabPaneOptions
             // 
-            this.tabPaneOptions.RegularSize = new System.Drawing.Size(420, 747);
-            this.tabPaneOptions.Size = new System.Drawing.Size(420, 747);
+            this.tabPaneOptions.RegularSize = new System.Drawing.Size(549, 747);
+            this.tabPaneOptions.Size = new System.Drawing.Size(549, 747);
             // 
             // tabNavigationPageOptions
             // 
             this.tabNavigationPageOptions.Controls.Add(this.layoutControl);
-            this.tabNavigationPageOptions.Margin = new System.Windows.Forms.Padding(8, 5, 8, 5);
-            this.tabNavigationPageOptions.Size = new System.Drawing.Size(420, 714);
+            this.tabNavigationPageOptions.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.tabNavigationPageOptions.Size = new System.Drawing.Size(549, 714);
             // 
             // documentGroup
             // 
             this.documentGroup.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
             this.documentPie3D,
-            this.documentDoughnut3D,
-            this.documentFunnel3D});
+            this.documentDoughnut3D});
             // 
             // documentPie3D
             // 
@@ -214,17 +184,6 @@
             this.documentDoughnut3D.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
             this.documentDoughnut3D.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.False;
             // 
-            // documentFunnel3D
-            // 
-            this.documentFunnel3D.Caption = "Funnel 3D";
-            this.documentFunnel3D.ControlName = "dockPanelFunnel3D";
-            this.documentFunnel3D.FloatLocation = new System.Drawing.Point(0, 0);
-            this.documentFunnel3D.FloatSize = new System.Drawing.Size(200, 200);
-            this.documentFunnel3D.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.documentFunnel3D.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
-            this.documentFunnel3D.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
-            this.documentFunnel3D.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.False;
-            // 
             // dockManager
             // 
             this.dockManager.DockingOptions.FloatOnDblClick = false;
@@ -234,8 +193,7 @@
             this.dockManager.Form = this;
             this.dockManager.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.dockPanelPie3D,
-            this.dockPanelDoughnut3D,
-            this.dockPanelFunnel3D});
+            this.dockPanelDoughnut3D});
             this.dockManager.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -255,7 +213,7 @@
             this.dockPanelPie3D.DockedAsTabbedDocument = true;
             this.dockPanelPie3D.ID = new System.Guid("7e379c16-fc83-4f40-9a2f-161f41dcd445");
             this.dockPanelPie3D.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelPie3D.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.dockPanelPie3D.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.dockPanelPie3D.Name = "dockPanelPie3D";
             this.dockPanelPie3D.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanelPie3D.Size = new System.Drawing.Size(1050, 719);
@@ -265,7 +223,7 @@
             // 
             this.dockPanelPie3D_Container.Controls.Add(this.chartPie3D);
             this.dockPanelPie3D_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelPie3D_Container.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.dockPanelPie3D_Container.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.dockPanelPie3D_Container.Name = "dockPanelPie3D_Container";
             this.dockPanelPie3D_Container.Size = new System.Drawing.Size(1050, 719);
             this.dockPanelPie3D_Container.TabIndex = 0;
@@ -289,7 +247,7 @@
             this.chartPie3D.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
             this.chartPie3D.Legend.Name = "Default Legend";
             this.chartPie3D.Location = new System.Drawing.Point(0, 0);
-            this.chartPie3D.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.chartPie3D.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.chartPie3D.Name = "chartPie3D";
             pie3DSeriesLabel1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             pie3DSeriesLabel1.Position = DevExpress.XtraCharts.PieSeriesLabelPosition.Radial;
@@ -312,7 +270,7 @@
             this.dockPanelDoughnut3D.DockedAsTabbedDocument = true;
             this.dockPanelDoughnut3D.ID = new System.Guid("a60845bf-46cb-4dc4-8479-8abe2e400624");
             this.dockPanelDoughnut3D.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelDoughnut3D.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.dockPanelDoughnut3D.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.dockPanelDoughnut3D.Name = "dockPanelDoughnut3D";
             this.dockPanelDoughnut3D.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanelDoughnut3D.Size = new System.Drawing.Size(1050, 719);
@@ -322,7 +280,7 @@
             // 
             this.dockPanelDoughnut3D_Container.Controls.Add(this.chartDoughnut3D);
             this.dockPanelDoughnut3D_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelDoughnut3D_Container.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.dockPanelDoughnut3D_Container.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.dockPanelDoughnut3D_Container.Name = "dockPanelDoughnut3D_Container";
             this.dockPanelDoughnut3D_Container.Size = new System.Drawing.Size(1050, 719);
             this.dockPanelDoughnut3D_Container.TabIndex = 0;
@@ -346,7 +304,7 @@
             this.chartDoughnut3D.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
             this.chartDoughnut3D.Legend.Name = "Default Legend";
             this.chartDoughnut3D.Location = new System.Drawing.Point(0, 0);
-            this.chartDoughnut3D.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.chartDoughnut3D.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.chartDoughnut3D.Name = "chartDoughnut3D";
             doughnut3DSeriesLabel1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             doughnut3DSeriesLabel1.Position = DevExpress.XtraCharts.PieSeriesLabelPosition.Radial;
@@ -380,67 +338,6 @@
             chartTitle1,
             chartTitle2});
             // 
-            // dockPanelFunnel3D
-            // 
-            this.dockPanelFunnel3D.Controls.Add(this.dockPanelFunnel3D_Container);
-            this.dockPanelFunnel3D.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
-            this.dockPanelFunnel3D.DockedAsTabbedDocument = true;
-            this.dockPanelFunnel3D.ID = new System.Guid("9c19101a-e027-4676-8069-588cb77f9d5b");
-            this.dockPanelFunnel3D.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelFunnel3D.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
-            this.dockPanelFunnel3D.Name = "dockPanelFunnel3D";
-            this.dockPanelFunnel3D.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelFunnel3D.Size = new System.Drawing.Size(1050, 719);
-            this.dockPanelFunnel3D.Text = "Funnel 3D";
-            // 
-            // dockPanelFunnel3D_Container
-            // 
-            this.dockPanelFunnel3D_Container.Controls.Add(this.chartFunnel3D);
-            this.dockPanelFunnel3D_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelFunnel3D_Container.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
-            this.dockPanelFunnel3D_Container.Name = "dockPanelFunnel3D_Container";
-            this.dockPanelFunnel3D_Container.Size = new System.Drawing.Size(1050, 719);
-            this.dockPanelFunnel3D_Container.TabIndex = 0;
-            // 
-            // chartFunnel3D
-            // 
-            this.chartFunnel3D.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            funnelDiagram3D1.RotationMatrixSerializable = "1;0;0;0;0;0.866025403784439;0.5;0;0;-0.5;0.866025403784439;0;0;0;0;1";
-            funnelDiagram3D1.RuntimeRotation = true;
-            funnelDiagram3D1.RuntimeScrolling = true;
-            funnelDiagram3D1.RuntimeZooming = true;
-            this.chartFunnel3D.Diagram = funnelDiagram3D1;
-            this.chartFunnel3D.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartFunnel3D.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Right;
-            this.chartFunnel3D.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Bottom;
-            this.chartFunnel3D.Legend.BackColor = System.Drawing.Color.Transparent;
-            this.chartFunnel3D.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            this.chartFunnel3D.Legend.Name = "Default Legend";
-            this.chartFunnel3D.Location = new System.Drawing.Point(0, 0);
-            this.chartFunnel3D.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
-            this.chartFunnel3D.Name = "chartFunnel3D";
-            funnel3DSeriesLabel1.LineLength = 40;
-            funnel3DSeriesLabel1.TextPattern = "{A}: {VP:P0}";
-            series3.Label = funnel3DSeriesLabel1;
-            series3.LegendTextPattern = "{A}";
-            series3.Name = "Series 1";
-            series3.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
-            seriesPoint9,
-            seriesPoint10,
-            seriesPoint11,
-            seriesPoint12,
-            seriesPoint13});
-            funnel3DSeriesView1.PointDistance = 10;
-            series3.View = funnel3DSeriesView1;
-            this.chartFunnel3D.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series3};
-            this.chartFunnel3D.SeriesTemplate.View = funnel3DSeriesView2;
-            this.chartFunnel3D.Size = new System.Drawing.Size(1050, 719);
-            this.chartFunnel3D.TabIndex = 1;
-            chartTitle3.Text = "Website Visitor Trend";
-            this.chartFunnel3D.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle3});
-            // 
             // documentManager
             // 
             this.documentManager.ContainerControl = this;
@@ -465,8 +362,7 @@
             this.currentTabbedView.DocumentProperties.ShowPinButton = false;
             this.currentTabbedView.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.documentPie3D,
-            this.documentDoughnut3D,
-            this.documentFunnel3D});
+            this.documentDoughnut3D});
             dockingContainer1.Element = this.documentGroup;
             this.currentTabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
             dockingContainer1});
@@ -489,11 +385,11 @@
             this.layoutControl.Controls.Add(this.spinEditFunnelHoleRadius);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.layoutControl.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.layoutControl.Name = "layoutControl";
             this.layoutControl.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(325, 182, 650, 400);
             this.layoutControl.Root = this.layoutControlGroupRoot;
-            this.layoutControl.Size = new System.Drawing.Size(420, 714);
+            this.layoutControl.Size = new System.Drawing.Size(549, 714);
             this.layoutControl.TabIndex = 2;
             this.layoutControl.Text = "layoutControl1";
             // 
@@ -501,44 +397,44 @@
             // 
             this.checkEditLabelVisible.EditValue = true;
             this.checkEditLabelVisible.Location = new System.Drawing.Point(13, 285);
-            this.checkEditLabelVisible.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.checkEditLabelVisible.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.checkEditLabelVisible.Name = "checkEditLabelVisible";
             this.checkEditLabelVisible.Properties.Caption = "Visible";
-            this.checkEditLabelVisible.Size = new System.Drawing.Size(394, 20);
+            this.checkEditLabelVisible.Size = new System.Drawing.Size(523, 20);
             this.checkEditLabelVisible.StyleController = this.layoutControl;
-            this.checkEditLabelVisible.TabIndex = 3;
+            this.checkEditLabelVisible.TabIndex = 7;
             this.checkEditLabelVisible.CheckedChanged += new System.EventHandler(this.checkEditLabelVisible_CheckedChanged);
             // 
             // checkEditValueAsPercent
             // 
             this.checkEditValueAsPercent.Location = new System.Drawing.Point(13, 309);
-            this.checkEditValueAsPercent.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.checkEditValueAsPercent.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.checkEditValueAsPercent.Name = "checkEditValueAsPercent";
             this.checkEditValueAsPercent.Properties.Caption = "Value as Percent";
-            this.checkEditValueAsPercent.Size = new System.Drawing.Size(394, 20);
+            this.checkEditValueAsPercent.Size = new System.Drawing.Size(523, 20);
             this.checkEditValueAsPercent.StyleController = this.layoutControl;
-            this.checkEditValueAsPercent.TabIndex = 5;
+            this.checkEditValueAsPercent.TabIndex = 8;
             // 
             // comboBoxEditPerspectiveAngle
             // 
             this.comboBoxEditPerspectiveAngle.Location = new System.Drawing.Point(148, 405);
-            this.comboBoxEditPerspectiveAngle.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.comboBoxEditPerspectiveAngle.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.comboBoxEditPerspectiveAngle.Name = "comboBoxEditPerspectiveAngle";
             this.comboBoxEditPerspectiveAngle.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEditPerspectiveAngle.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEditPerspectiveAngle.Size = new System.Drawing.Size(259, 22);
+            this.comboBoxEditPerspectiveAngle.Size = new System.Drawing.Size(388, 22);
             this.comboBoxEditPerspectiveAngle.StyleController = this.layoutControl;
-            this.comboBoxEditPerspectiveAngle.TabIndex = 6;
+            this.comboBoxEditPerspectiveAngle.TabIndex = 10;
             // 
             // simpleButtonRestoreDefaultAngles
             // 
-            this.simpleButtonRestoreDefaultAngles.Location = new System.Drawing.Point(14, 445);
-            this.simpleButtonRestoreDefaultAngles.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.simpleButtonRestoreDefaultAngles.Location = new System.Drawing.Point(14, 447);
+            this.simpleButtonRestoreDefaultAngles.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.simpleButtonRestoreDefaultAngles.Name = "simpleButtonRestoreDefaultAngles";
-            this.simpleButtonRestoreDefaultAngles.Size = new System.Drawing.Size(392, 27);
+            this.simpleButtonRestoreDefaultAngles.Size = new System.Drawing.Size(521, 27);
             this.simpleButtonRestoreDefaultAngles.StyleController = this.layoutControl;
-            this.simpleButtonRestoreDefaultAngles.TabIndex = 7;
+            this.simpleButtonRestoreDefaultAngles.TabIndex = 11;
             this.simpleButtonRestoreDefaultAngles.Text = "Restore Default Angles";
             // 
             // spinEditHoleRadius
@@ -549,7 +445,7 @@
             0,
             0});
             this.spinEditHoleRadius.Location = new System.Drawing.Point(148, 63);
-            this.spinEditHoleRadius.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.spinEditHoleRadius.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.spinEditHoleRadius.Name = "spinEditHoleRadius";
             this.spinEditHoleRadius.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -562,34 +458,34 @@
             0,
             0,
             0});
-            this.spinEditHoleRadius.Size = new System.Drawing.Size(259, 22);
+            this.spinEditHoleRadius.Size = new System.Drawing.Size(388, 22);
             this.spinEditHoleRadius.StyleController = this.layoutControl;
-            this.spinEditHoleRadius.TabIndex = 12;
+            this.spinEditHoleRadius.TabIndex = 2;
             // 
             // comboBoxEditExplodedPoints
             // 
             this.comboBoxEditExplodedPoints.Location = new System.Drawing.Point(148, 37);
-            this.comboBoxEditExplodedPoints.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.comboBoxEditExplodedPoints.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.comboBoxEditExplodedPoints.Name = "comboBoxEditExplodedPoints";
             this.comboBoxEditExplodedPoints.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEditExplodedPoints.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEditExplodedPoints.Size = new System.Drawing.Size(259, 22);
+            this.comboBoxEditExplodedPoints.Size = new System.Drawing.Size(388, 22);
             this.comboBoxEditExplodedPoints.StyleController = this.layoutControl;
-            this.comboBoxEditExplodedPoints.TabIndex = 13;
+            this.comboBoxEditExplodedPoints.TabIndex = 0;
             this.comboBoxEditExplodedPoints.EditValueChanged += new System.EventHandler(this.comboBoxEditExplodedPoints_SelectedIndexChanged);
             // 
             // comboBoxEditHeightToWidthRatio
             // 
             this.comboBoxEditHeightToWidthRatio.Location = new System.Drawing.Point(148, 213);
-            this.comboBoxEditHeightToWidthRatio.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.comboBoxEditHeightToWidthRatio.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.comboBoxEditHeightToWidthRatio.Name = "comboBoxEditHeightToWidthRatio";
             this.comboBoxEditHeightToWidthRatio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEditHeightToWidthRatio.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEditHeightToWidthRatio.Size = new System.Drawing.Size(259, 22);
+            this.comboBoxEditHeightToWidthRatio.Size = new System.Drawing.Size(388, 22);
             this.comboBoxEditHeightToWidthRatio.StyleController = this.layoutControl;
-            this.comboBoxEditHeightToWidthRatio.TabIndex = 5;
+            this.comboBoxEditHeightToWidthRatio.TabIndex = 6;
             this.comboBoxEditHeightToWidthRatio.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditHeightToWidthRatio_SelectedIndexChanged);
             // 
             // spinEditPointDistance
@@ -600,7 +496,7 @@
             0,
             0});
             this.spinEditPointDistance.Location = new System.Drawing.Point(148, 187);
-            this.spinEditPointDistance.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.spinEditPointDistance.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.spinEditPointDistance.Name = "spinEditPointDistance";
             this.spinEditPointDistance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -618,22 +514,22 @@
             0,
             0,
             0});
-            this.spinEditPointDistance.Size = new System.Drawing.Size(259, 22);
+            this.spinEditPointDistance.Size = new System.Drawing.Size(388, 22);
             this.spinEditPointDistance.StyleController = this.layoutControl;
-            this.spinEditPointDistance.TabIndex = 8;
+            this.spinEditPointDistance.TabIndex = 5;
             this.spinEditPointDistance.EditValueChanged += new System.EventHandler(this.spinEditPointDistance_EditValueChanged);
             // 
             // comboBoxEditLabelPosition
             // 
             this.comboBoxEditLabelPosition.Location = new System.Drawing.Point(148, 333);
-            this.comboBoxEditLabelPosition.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.comboBoxEditLabelPosition.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.comboBoxEditLabelPosition.Name = "comboBoxEditLabelPosition";
             this.comboBoxEditLabelPosition.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEditLabelPosition.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEditLabelPosition.Size = new System.Drawing.Size(259, 22);
+            this.comboBoxEditLabelPosition.Size = new System.Drawing.Size(388, 22);
             this.comboBoxEditLabelPosition.StyleController = this.layoutControl;
-            this.comboBoxEditLabelPosition.TabIndex = 14;
+            this.comboBoxEditLabelPosition.TabIndex = 9;
             this.comboBoxEditLabelPosition.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditLabelPosition_SelectedIndexChanged);
             // 
             // spinEditExplodedDistance
@@ -644,7 +540,7 @@
             0,
             0});
             this.spinEditExplodedDistance.Location = new System.Drawing.Point(148, 89);
-            this.spinEditExplodedDistance.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.spinEditExplodedDistance.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.spinEditExplodedDistance.Name = "spinEditExplodedDistance";
             this.spinEditExplodedDistance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -658,9 +554,9 @@
             0,
             0,
             0});
-            this.spinEditExplodedDistance.Size = new System.Drawing.Size(259, 22);
+            this.spinEditExplodedDistance.Size = new System.Drawing.Size(388, 22);
             this.spinEditExplodedDistance.StyleController = this.layoutControl;
-            this.spinEditExplodedDistance.TabIndex = 17;
+            this.spinEditExplodedDistance.TabIndex = 3;
             this.spinEditExplodedDistance.EditValueChanged += new System.EventHandler(this.spinEditExplodedDistance_EditValueChanged);
             // 
             // spinEditFunnelHoleRadius
@@ -671,7 +567,7 @@
             0,
             0});
             this.spinEditFunnelHoleRadius.Location = new System.Drawing.Point(148, 161);
-            this.spinEditFunnelHoleRadius.Margin = new System.Windows.Forms.Padding(7, 4, 7, 4);
+            this.spinEditFunnelHoleRadius.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.spinEditFunnelHoleRadius.Name = "spinEditFunnelHoleRadius";
             this.spinEditFunnelHoleRadius.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -686,9 +582,9 @@
             0,
             0,
             0});
-            this.spinEditFunnelHoleRadius.Size = new System.Drawing.Size(259, 22);
+            this.spinEditFunnelHoleRadius.Size = new System.Drawing.Size(388, 22);
             this.spinEditFunnelHoleRadius.StyleController = this.layoutControl;
-            this.spinEditFunnelHoleRadius.TabIndex = 18;
+            this.spinEditFunnelHoleRadius.TabIndex = 4;
             this.spinEditFunnelHoleRadius.EditValueChanged += new System.EventHandler(this.spinEditFunnelHoleRadius_EditValueChanged);
             // 
             // layoutControlGroupRoot
@@ -703,7 +599,7 @@
             this.layoutControlGroupCamera});
             this.layoutControlGroupRoot.Name = "Root";
             this.layoutControlGroupRoot.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroupRoot.Size = new System.Drawing.Size(420, 714);
+            this.layoutControlGroupRoot.Size = new System.Drawing.Size(549, 714);
             this.layoutControlGroupRoot.TextVisible = false;
             // 
             // layoutControlGroupPieDoughnutGeneral
@@ -717,7 +613,7 @@
             this.layoutControlItemExplodedPoints});
             this.layoutControlGroupPieDoughnutGeneral.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroupPieDoughnutGeneral.Name = "layoutControlGroupPieDoughnutGeneral";
-            this.layoutControlGroupPieDoughnutGeneral.Size = new System.Drawing.Size(420, 124);
+            this.layoutControlGroupPieDoughnutGeneral.Size = new System.Drawing.Size(549, 124);
             this.layoutControlGroupPieDoughnutGeneral.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroupPieDoughnutGeneral.Text = "General";
             // 
@@ -727,7 +623,7 @@
             this.layoutControlItemDoughnutHoleRadius.CustomizationFormText = "HoleRadius (%)";
             this.layoutControlItemDoughnutHoleRadius.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItemDoughnutHoleRadius.Name = "layoutControlItemDoughnutHoleRadius";
-            this.layoutControlItemDoughnutHoleRadius.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlItemDoughnutHoleRadius.Size = new System.Drawing.Size(527, 26);
             this.layoutControlItemDoughnutHoleRadius.Text = "Hole Radius:";
             this.layoutControlItemDoughnutHoleRadius.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -736,7 +632,7 @@
             this.layoutControlGroupExplodedDistance.Control = this.spinEditExplodedDistance;
             this.layoutControlGroupExplodedDistance.Location = new System.Drawing.Point(0, 52);
             this.layoutControlGroupExplodedDistance.Name = "layoutControlGroupExplodedDistanstance";
-            this.layoutControlGroupExplodedDistance.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlGroupExplodedDistance.Size = new System.Drawing.Size(527, 26);
             this.layoutControlGroupExplodedDistance.Text = "Exploded Distanstance:";
             this.layoutControlGroupExplodedDistance.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -746,7 +642,7 @@
             this.layoutControlItemExplodedPoints.CustomizationFormText = "Exploded Points";
             this.layoutControlItemExplodedPoints.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItemExplodedPoints.Name = "layoutControlItemExplodedPoints";
-            this.layoutControlItemExplodedPoints.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlItemExplodedPoints.Size = new System.Drawing.Size(527, 26);
             this.layoutControlItemExplodedPoints.Text = "Exploded Points:";
             this.layoutControlItemExplodedPoints.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -761,7 +657,7 @@
             this.layoutControlItemValueAsPercent});
             this.layoutControlGroupLabel.Location = new System.Drawing.Point(0, 248);
             this.layoutControlGroupLabel.Name = "layoutControlGroupLabel";
-            this.layoutControlGroupLabel.Size = new System.Drawing.Size(420, 120);
+            this.layoutControlGroupLabel.Size = new System.Drawing.Size(549, 120);
             this.layoutControlGroupLabel.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroupLabel.Text = "Label";
             // 
@@ -770,7 +666,7 @@
             this.layoutControlItemLabelVisible.Control = this.checkEditLabelVisible;
             this.layoutControlItemLabelVisible.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItemLabelVisible.Name = "layoutControlItemLabelVisible";
-            this.layoutControlItemLabelVisible.Size = new System.Drawing.Size(398, 24);
+            this.layoutControlItemLabelVisible.Size = new System.Drawing.Size(527, 24);
             this.layoutControlItemLabelVisible.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItemLabelVisible.TextVisible = false;
             // 
@@ -780,7 +676,7 @@
             this.layoutControlItemPosition.CustomizationFormText = "Label Position";
             this.layoutControlItemPosition.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItemPosition.Name = "layoutControlItemPosition";
-            this.layoutControlItemPosition.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlItemPosition.Size = new System.Drawing.Size(527, 26);
             this.layoutControlItemPosition.Text = "Position:";
             this.layoutControlItemPosition.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -789,7 +685,7 @@
             this.layoutControlItemValueAsPercent.Control = this.checkEditValueAsPercent;
             this.layoutControlItemValueAsPercent.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItemValueAsPercent.Name = "layoutControlItemValueAsPercent";
-            this.layoutControlItemValueAsPercent.Size = new System.Drawing.Size(398, 24);
+            this.layoutControlItemValueAsPercent.Size = new System.Drawing.Size(527, 24);
             this.layoutControlItemValueAsPercent.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItemValueAsPercent.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItemValueAsPercent.TextVisible = false;
@@ -797,9 +693,9 @@
             // emptySpaceItem
             // 
             this.emptySpaceItem.AllowHotTrack = false;
-            this.emptySpaceItem.Location = new System.Drawing.Point(0, 486);
+            this.emptySpaceItem.Location = new System.Drawing.Point(0, 488);
             this.emptySpaceItem.Name = "emptySpaceItem";
-            this.emptySpaceItem.Size = new System.Drawing.Size(420, 228);
+            this.emptySpaceItem.Size = new System.Drawing.Size(549, 226);
             this.emptySpaceItem.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroupFunnelGeneral
@@ -813,7 +709,7 @@
             this.layoutControlItemFunnelHoleRadius});
             this.layoutControlGroupFunnelGeneral.Location = new System.Drawing.Point(0, 124);
             this.layoutControlGroupFunnelGeneral.Name = "layoutControlGroupFunnelGeneral";
-            this.layoutControlGroupFunnelGeneral.Size = new System.Drawing.Size(420, 124);
+            this.layoutControlGroupFunnelGeneral.Size = new System.Drawing.Size(549, 124);
             this.layoutControlGroupFunnelGeneral.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroupFunnelGeneral.Text = "General";
             // 
@@ -823,7 +719,7 @@
             this.layoutControlItemPointDistance.CustomizationFormText = "Size:";
             this.layoutControlItemPointDistance.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItemPointDistance.Name = "layoutControlItemPointDistance";
-            this.layoutControlItemPointDistance.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlItemPointDistance.Size = new System.Drawing.Size(527, 26);
             this.layoutControlItemPointDistance.Text = "Point Distance:";
             this.layoutControlItemPointDistance.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -833,7 +729,7 @@
             this.layoutControlItemHeightToWidthRatio.CustomizationFormText = "Kind:";
             this.layoutControlItemHeightToWidthRatio.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItemHeightToWidthRatio.Name = "layoutControlItemHeightToWidthRatio";
-            this.layoutControlItemHeightToWidthRatio.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlItemHeightToWidthRatio.Size = new System.Drawing.Size(527, 26);
             this.layoutControlItemHeightToWidthRatio.Text = "Height / Width Ratio:";
             this.layoutControlItemHeightToWidthRatio.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -842,7 +738,7 @@
             this.layoutControlItemFunnelHoleRadius.Control = this.spinEditFunnelHoleRadius;
             this.layoutControlItemFunnelHoleRadius.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItemFunnelHoleRadius.Name = "layoutControlItemFunnelHoleRadius";
-            this.layoutControlItemFunnelHoleRadius.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlItemFunnelHoleRadius.Size = new System.Drawing.Size(527, 26);
             this.layoutControlItemFunnelHoleRadius.Text = "Hole Radius:";
             this.layoutControlItemFunnelHoleRadius.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -856,7 +752,7 @@
             this.layoutControlItemRestoreDefaultAngles});
             this.layoutControlGroupCamera.Location = new System.Drawing.Point(0, 368);
             this.layoutControlGroupCamera.Name = "layoutControlGroupCamera";
-            this.layoutControlGroupCamera.Size = new System.Drawing.Size(420, 118);
+            this.layoutControlGroupCamera.Size = new System.Drawing.Size(549, 120);
             this.layoutControlGroupCamera.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroupCamera.Text = "Camera";
             // 
@@ -865,7 +761,7 @@
             this.layoutControlItemPerspectiveAngle.Control = this.comboBoxEditPerspectiveAngle;
             this.layoutControlItemPerspectiveAngle.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItemPerspectiveAngle.Name = "layoutControlItemPerspectiveAngle";
-            this.layoutControlItemPerspectiveAngle.Size = new System.Drawing.Size(398, 26);
+            this.layoutControlItemPerspectiveAngle.Size = new System.Drawing.Size(527, 26);
             this.layoutControlItemPerspectiveAngle.Text = "Perspective Angle:";
             this.layoutControlItemPerspectiveAngle.TextSize = new System.Drawing.Size(132, 16);
             // 
@@ -874,8 +770,8 @@
             this.layoutControlItemRestoreDefaultAngles.Control = this.simpleButtonRestoreDefaultAngles;
             this.layoutControlItemRestoreDefaultAngles.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItemRestoreDefaultAngles.Name = "layoutControlItemRestoreDefaultAngles";
-            this.layoutControlItemRestoreDefaultAngles.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 16, 3);
-            this.layoutControlItemRestoreDefaultAngles.Size = new System.Drawing.Size(398, 46);
+            this.layoutControlItemRestoreDefaultAngles.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 18, 3);
+            this.layoutControlItemRestoreDefaultAngles.Size = new System.Drawing.Size(527, 48);
             this.layoutControlItemRestoreDefaultAngles.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItemRestoreDefaultAngles.TextVisible = false;
             // 
@@ -896,7 +792,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentPie3D)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentDoughnut3D)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentFunnel3D)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
             this.dockPanelPie3D.ResumeLayout(false);
             this.dockPanelPie3D_Container.ResumeLayout(false);
@@ -912,14 +807,6 @@
             ((System.ComponentModel.ISupportInitialize)(doughnut3DSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoughnut3D)).EndInit();
-            this.dockPanelFunnel3D.ResumeLayout(false);
-            this.dockPanelFunnel3D_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(funnelDiagram3D1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(funnel3DSeriesLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(funnel3DSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(funnel3DSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartFunnel3D)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentTabbedView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
@@ -965,11 +852,8 @@
         XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroup;
         XtraBars.Docking2010.Views.Tabbed.Document documentPie3D;
         XtraBars.Docking2010.Views.Tabbed.Document documentDoughnut3D;
-        XtraBars.Docking2010.Views.Tabbed.Document documentFunnel3D;
         XtraBars.Docking.DockPanel dockPanelDoughnut3D;
         XtraBars.Docking.ControlContainer dockPanelDoughnut3D_Container;
-        XtraBars.Docking.DockPanel dockPanelFunnel3D;
-        XtraBars.Docking.ControlContainer dockPanelFunnel3D_Container;
         XtraLayout.LayoutControl layoutControl;
         XtraEditors.CheckEdit checkEditLabelVisible;
         XtraEditors.CheckEdit checkEditValueAsPercent;
@@ -1001,6 +885,5 @@
         XtraLayout.LayoutControlItem layoutControlItemFunnelHoleRadius;
         ChartControl chartPie3D;
         ChartControl chartDoughnut3D;
-        ChartControl chartFunnel3D;
     }
 }

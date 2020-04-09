@@ -106,7 +106,6 @@ namespace DevExpress.XtraCharts.Demos {
         protected virtual void OnLabelAngleChanged(int angle) {
             SetLabelAngle(angle);
         }
-        public virtual void SetDataSources() { }
         protected virtual void UpdateControlsCore() { }
         protected virtual void OnDocumentActivatedCore(BaseDocument document) {
             UpdateControls();
@@ -124,13 +123,12 @@ namespace DevExpress.XtraCharts.Demos {
             OnDocumentActivatedCore(document);
         }
         protected void SetLabelAngle(SeriesLabelBase label, int labelAngle) {
-            PointSeriesLabel pointLabel = label as PointSeriesLabel;
-            if(pointLabel != null) {
+            if(label is PointSeriesLabel pointLabel) {
                 pointLabel.Angle = labelAngle;
                 return;
             }
-            RangeAreaSeriesLabel rangeAreaLabel = label as RangeAreaSeriesLabel;
-            if(rangeAreaLabel != null) {
+
+            if(label is RangeAreaSeriesLabel rangeAreaLabel) {
                 rangeAreaLabel.MinValueAngle = labelAngle;
                 rangeAreaLabel.MaxValueAngle = labelAngle;
             }
