@@ -150,6 +150,9 @@ The application has some analyzers and visualization.
 ![Plots Screen](Assets/gitHistoryDataVisualizer.jpg)
 
 
+- Pie Charts: shows pie charts per source/module/log level.
+![Pie Charts](Assets/AnalogyPie.jpg)
+
 ## Dependencies & Build
 - Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.1.
 The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Visual studio for this framework is Visual studio 2017 (or above).
