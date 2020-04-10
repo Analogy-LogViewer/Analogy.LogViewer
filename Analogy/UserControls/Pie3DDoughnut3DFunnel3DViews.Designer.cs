@@ -1,5 +1,5 @@
 ﻿namespace DevExpress.XtraCharts.Demos {
-    partial class Pie3DDoughnut3DFunnel3DViewsDemo {
+    partial class Pie3DChart {
         System.ComponentModel.IContainer components = null;
 
         protected override void Dispose(bool disposing) {
@@ -46,14 +46,11 @@
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentPie3D = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
-            this.documentDoughnut3D = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelPie3D = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelPie3D_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.chartPie3D = new DevExpress.XtraCharts.ChartControl();
             this.dockPanelDoughnut3D = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanelDoughnut3D_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.chartDoughnut3D = new DevExpress.XtraCharts.ChartControl();
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.currentTabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
@@ -91,7 +88,6 @@
             this.tabNavigationPageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentPie3D)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentDoughnut3D)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             this.dockPanelPie3D.SuspendLayout();
             this.dockPanelPie3D_Container.SuspendLayout();
@@ -101,8 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView1)).BeginInit();
             this.dockPanelDoughnut3D.SuspendLayout();
-            this.dockPanelDoughnut3D_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDoughnut3D)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(doughnut3DSeriesLabel1)).BeginInit();
@@ -159,8 +153,7 @@
             // documentGroup
             // 
             this.documentGroup.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
-            this.documentPie3D,
-            this.documentDoughnut3D});
+            this.documentPie3D});
             // 
             // documentPie3D
             // 
@@ -172,17 +165,6 @@
             this.documentPie3D.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
             this.documentPie3D.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
             this.documentPie3D.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.False;
-            // 
-            // documentDoughnut3D
-            // 
-            this.documentDoughnut3D.Caption = "Doughnut 3D";
-            this.documentDoughnut3D.ControlName = "dockPanelDoughnut3D";
-            this.documentDoughnut3D.FloatLocation = new System.Drawing.Point(0, 0);
-            this.documentDoughnut3D.FloatSize = new System.Drawing.Size(200, 200);
-            this.documentDoughnut3D.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.documentDoughnut3D.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
-            this.documentDoughnut3D.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
-            this.documentDoughnut3D.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.False;
             // 
             // dockManager
             // 
@@ -265,7 +247,6 @@
             // 
             // dockPanelDoughnut3D
             // 
-            this.dockPanelDoughnut3D.Controls.Add(this.dockPanelDoughnut3D_Container);
             this.dockPanelDoughnut3D.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
             this.dockPanelDoughnut3D.DockedAsTabbedDocument = true;
             this.dockPanelDoughnut3D.ID = new System.Guid("a60845bf-46cb-4dc4-8479-8abe2e400624");
@@ -276,18 +257,8 @@
             this.dockPanelDoughnut3D.Size = new System.Drawing.Size(1050, 719);
             this.dockPanelDoughnut3D.Text = "Doughnut 3D";
             // 
-            // dockPanelDoughnut3D_Container
-            // 
-            this.dockPanelDoughnut3D_Container.Controls.Add(this.chartDoughnut3D);
-            this.dockPanelDoughnut3D_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelDoughnut3D_Container.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
-            this.dockPanelDoughnut3D_Container.Name = "dockPanelDoughnut3D_Container";
-            this.dockPanelDoughnut3D_Container.Size = new System.Drawing.Size(1050, 719);
-            this.dockPanelDoughnut3D_Container.TabIndex = 0;
-            // 
             // chartDoughnut3D
             // 
-            this.chartDoughnut3D.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
             simpleDiagram3D2.LabelsResolveOverlappingMinIndent = 3;
             simpleDiagram3D2.RotationMatrixSerializable = "0.965925826289068;0.258819045102521;0;0;-0.212012149896655;0.791240115236224;-0.5" +
     "73576436351046;0;-0.148452505549685;0.554032293222323;0.819152044288992;0;0;0;0;" +
@@ -295,17 +266,6 @@
             simpleDiagram3D2.RuntimeRotation = true;
             simpleDiagram3D2.RuntimeScrolling = true;
             simpleDiagram3D2.RuntimeZooming = true;
-            this.chartDoughnut3D.Diagram = simpleDiagram3D2;
-            this.chartDoughnut3D.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartDoughnut3D.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
-            this.chartDoughnut3D.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
-            this.chartDoughnut3D.Legend.BackColor = System.Drawing.Color.Transparent;
-            this.chartDoughnut3D.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            this.chartDoughnut3D.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
-            this.chartDoughnut3D.Legend.Name = "Default Legend";
-            this.chartDoughnut3D.Location = new System.Drawing.Point(0, 0);
-            this.chartDoughnut3D.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
-            this.chartDoughnut3D.Name = "chartDoughnut3D";
             doughnut3DSeriesLabel1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             doughnut3DSeriesLabel1.Position = DevExpress.XtraCharts.PieSeriesLabelPosition.Radial;
             doughnut3DSeriesLabel1.TextPattern = "{A}: {VP:P2}";
@@ -323,10 +283,6 @@
             seriesPoint7,
             seriesPoint8});
             series2.View = doughnut3DSeriesView1;
-            this.chartDoughnut3D.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series2};
-            this.chartDoughnut3D.Size = new System.Drawing.Size(1050, 719);
-            this.chartDoughnut3D.TabIndex = 1;
             chartTitle1.Indent = 10;
             chartTitle1.Text = "Land Area by Country";
             chartTitle2.Alignment = System.Drawing.StringAlignment.Far;
@@ -334,9 +290,6 @@
             chartTitle2.Font = new System.Drawing.Font("Tahoma", 8F);
             chartTitle2.Text = "From www.nationmaster.com";
             chartTitle2.TextColor = System.Drawing.Color.Gray;
-            this.chartDoughnut3D.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle1,
-            chartTitle2});
             // 
             // documentManager
             // 
@@ -361,8 +314,7 @@
             this.currentTabbedView.DocumentProperties.ShowInDocumentSelector = false;
             this.currentTabbedView.DocumentProperties.ShowPinButton = false;
             this.currentTabbedView.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
-            this.documentPie3D,
-            this.documentDoughnut3D});
+            this.documentPie3D});
             dockingContainer1.Element = this.documentGroup;
             this.currentTabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
             dockingContainer1});
@@ -775,14 +727,14 @@
             this.layoutControlItemRestoreDefaultAngles.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItemRestoreDefaultAngles.TextVisible = false;
             // 
-            // Pie3DDoughnut3DFunnel3DViewsDemo
+            // Pie3DChart
             // 
             this.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "Pie3DDoughnut3DFunnel3DViewsDemo";
+            this.Name = "Pie3DChart";
             this.Size = new System.Drawing.Size(1050, 747);
             this.Controls.SetChildIndex(this.sidePanelOptions, 0);
             this.sidePanelOptions.ResumeLayout(false);
@@ -791,7 +743,6 @@
             this.tabNavigationPageOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentPie3D)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentDoughnut3D)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
             this.dockPanelPie3D.ResumeLayout(false);
             this.dockPanelPie3D_Container.ResumeLayout(false);
@@ -801,12 +752,10 @@
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie3D)).EndInit();
             this.dockPanelDoughnut3D.ResumeLayout(false);
-            this.dockPanelDoughnut3D_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(doughnut3DSeriesLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(doughnut3DSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDoughnut3D)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentTabbedView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
@@ -851,9 +800,7 @@
         XtraBars.Docking2010.Views.Tabbed.TabbedView currentTabbedView;
         XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroup;
         XtraBars.Docking2010.Views.Tabbed.Document documentPie3D;
-        XtraBars.Docking2010.Views.Tabbed.Document documentDoughnut3D;
         XtraBars.Docking.DockPanel dockPanelDoughnut3D;
-        XtraBars.Docking.ControlContainer dockPanelDoughnut3D_Container;
         XtraLayout.LayoutControl layoutControl;
         XtraEditors.CheckEdit checkEditLabelVisible;
         XtraEditors.CheckEdit checkEditValueAsPercent;
@@ -884,6 +831,5 @@
         XtraEditors.SpinEdit spinEditFunnelHoleRadius;
         XtraLayout.LayoutControlItem layoutControlItemFunnelHoleRadius;
         ChartControl chartPie3D;
-        ChartControl chartDoughnut3D;
     }
 }

@@ -56,7 +56,6 @@ namespace DevExpress.XtraCharts.Demos {
         }
         bool IsFullStackedView(SeriesViewBase view) {
             return view is FullStackedAreaSeriesView ||
-                   view is FullStackedSplineAreaSeriesView ||
                    view is FullStackedLineSeriesView ||
                    view is FullStackedArea3DSeriesView ||
                    view is FullStackedLine3DSeriesView;

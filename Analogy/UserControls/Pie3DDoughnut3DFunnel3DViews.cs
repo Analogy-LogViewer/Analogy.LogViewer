@@ -9,50 +9,34 @@ using DevExpress.XtraLayout;
 using DevExpress.XtraLayout.Utils;
 
 namespace DevExpress.XtraCharts.Demos {
-    public partial class Pie3DDoughnut3DFunnel3DViewsDemo : ChartDemoModule3DViews {
+    public partial class Pie3DChart : ChartModule3DViews {
         readonly string[] pieLabelPosition = new string[] { "Inside", "Outside", "TwoColumns", "Radial" };
-        readonly string[] funnelLabelPosition = new string[] { "LeftColumn", "Left", "Center", "Right", "RightColumn" };
 
-        bool IsPieActive {
-            get { return ActiveSeries.View is Pie3DSeriesView; }
-        }
-        bool IsDoughnutActive {
-            get { return ActiveSeries.View is Doughnut3DSeriesView; }
-        }
-   
+        bool IsPieActive => ActiveSeries.View is Pie3DSeriesView;
 
-        protected override int DefaultPerspective {
-            get { return 20; }
-        }
-        protected override LayoutControl OptionsLayoutControl {
-            get { return layoutControl; }
-        }
-        protected override SimpleButton DefaultAnglesButton {
-            get { return simpleButtonRestoreDefaultAngles; }
-        }
-        protected override ComboBoxEdit PerspectiveAngleComboBoxEdit {
-            get { return comboBoxEditPerspectiveAngle; }
-        }
-        protected override CheckEdit ValueAsPercentCheckEdit {
-            get { return checkEditValueAsPercent; }
-        }
-        protected override CheckEdit LabelVisibleCheckEdit {
-            get { return checkEditLabelVisible; }
-        }
-        protected override TabbedView TabbedView {
-            get { return currentTabbedView; }
-        }
+        bool IsDoughnutActive => ActiveSeries.View is Doughnut3DSeriesView;
 
-        internal override List<ChartControl> ChartControls {
-            get {
-                return new List<ChartControl>() {
-                    chartPie3D,
-                    chartDoughnut3D,
-                };
-            }
-        }
 
-        public Pie3DDoughnut3DFunnel3DViewsDemo() {
+        protected override int DefaultPerspective => 20;
+
+        protected override LayoutControl OptionsLayoutControl => layoutControl;
+
+        protected override SimpleButton DefaultAnglesButton => simpleButtonRestoreDefaultAngles;
+
+        protected override ComboBoxEdit PerspectiveAngleComboBoxEdit => comboBoxEditPerspectiveAngle;
+
+        protected override CheckEdit ValueAsPercentCheckEdit => checkEditValueAsPercent;
+
+        protected override CheckEdit LabelVisibleCheckEdit => checkEditLabelVisible;
+
+        protected override TabbedView TabbedView => currentTabbedView;
+
+        internal override List<ChartControl> ChartControls =>
+            new List<ChartControl>() {
+                chartPie3D,
+            };
+
+        public Pie3DChart() {
             InitializeComponent();
         }
 
@@ -138,16 +122,6 @@ namespace DevExpress.XtraCharts.Demos {
             }
             comboBoxEditExplodedPoints.SelectedIndex = explodeSelectedIndex;
         }
-        void UpdateFunnelOptions() {
-            layoutControlGroupFunnelGeneral.Visibility = LayoutVisibility.Always;
-            layoutControlGroupPieDoughnutGeneral.Visibility = LayoutVisibility.Never;
-            comboBoxEditLabelPosition.Properties.Items.AddRange(funnelLabelPosition);
-            Funnel3DSeriesView view = (Funnel3DSeriesView)ActiveSeries.View;
-            comboBoxEditHeightToWidthRatio.EditValue = view.HeightToWidthRatio;
-            spinEditPointDistance.Value = view.PointDistance;
-            comboBoxEditLabelPosition.SelectedIndex = (int)((FunnelSeriesLabel)ActiveSeries.Label).Position;
-            spinEditFunnelHoleRadius.Value = view.HoleRadiusPercent;
-        }
 
         protected override void InitControls() {
             base.InitControls();
@@ -157,7 +131,6 @@ namespace DevExpress.XtraCharts.Demos {
             comboBoxEditExplodedPoints.SelectedIndex = 0;
             spinEditPointDistance.EditValueChanged += spinEditPointDistance_EditValueChanged;
             comboBoxEditHeightToWidthRatio.Properties.Items.AddRange(new double[] { 0.1, 0.25, 0.5, 0.75, 1, 2, 4, 6, 8, 10 });
-            spinEditHoleRadius.EditValue = ((Doughnut3DSeriesView)chartDoughnut3D.Series[0].View).HoleRadiusPercent;
             spinEditHoleRadius.EditValueChanged += spinEditHoleRadius_EditValueChanged;
         }
 

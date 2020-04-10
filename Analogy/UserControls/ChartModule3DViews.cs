@@ -2,7 +2,7 @@
 using DevExpress.XtraEditors;
 
 namespace DevExpress.XtraCharts.Demos {
-    public class ChartDemoModule3DViews : ChartDemoModuleLabelViews {
+    public class ChartModule3DViews : ChartDemoModuleLabelViews {
         const string DefaultPerspectiveText = "Default";
         
         Diagram3D Diagram3D => ChartControl.Diagram as Diagram3D;

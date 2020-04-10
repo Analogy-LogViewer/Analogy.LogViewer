@@ -25,7 +25,7 @@ namespace Philips.Analogy
 
         private void CreatePieGlobal()
         {
-            Pie3DDoughnut3DFunnel3DViewsDemo  pie = new Pie3DDoughnut3DFunnel3DViewsDemo();
+            Pie3DChart  pie = new Pie3DChart();
             spltCTop.Panel2.Controls.Add(pie);
             pie.Dock = DockStyle.Fill;
             pie.SetDataSources(Statistics.CalculateGlobalStatistics());
