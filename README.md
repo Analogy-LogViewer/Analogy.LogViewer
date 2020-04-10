@@ -146,7 +146,6 @@ The application has some analyzers and visualization.
 - Time Distribution: shows at what time of day the message was logged.
 - Frequency: shows count of how many repeated messages were logged (you can define the text to filter).
 - On/Off Distribution: Show existance of message along the time.
-
 ![Plots Screen](Assets/gitHistoryDataVisualizer.jpg)
 
 
