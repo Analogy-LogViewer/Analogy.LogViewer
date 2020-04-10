@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Analogy;
+using Analogy.UserControls;
 using DevExpress.XtraBars.Docking2010.Views;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
 using DevExpress.XtraEditors;
@@ -10,7 +11,7 @@ using DevExpress.XtraLayout.Utils;
 
 namespace DevExpress.XtraCharts.Demos {
     public partial class Pie3DChart : ChartModule3DViews {
-        readonly string[] pieLabelPosition = new string[] { "Inside", "Outside", "TwoColumns", "Radial" };
+        readonly string[] pieLabelPosition = { "Inside", "Outside", "TwoColumns", "Radial" };
 
         bool IsPieActive => ActiveSeries.View is Pie3DSeriesView;
 

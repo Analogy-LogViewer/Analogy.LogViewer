@@ -1,8 +1,9 @@
 ﻿using System;
+using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 
-namespace DevExpress.XtraCharts.Demos {
-    public class ChartModule3DViews : ChartDemoModuleLabelViews {
+namespace Analogy.UserControls {
+    public class ChartModule3DViews : ChartModuleLabelViews {
         const string DefaultPerspectiveText = "Default";
         
         Diagram3D Diagram3D => ChartControl.Diagram as Diagram3D;

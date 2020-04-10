@@ -5,14 +5,15 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using DevExpress.Utils;
 using DevExpress.Utils.Menu;
+using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Printing;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using PrintImageFormat = DevExpress.XtraCharts.Printing.PrintImageFormat;
 
-namespace DevExpress.XtraCharts.Demos {
+namespace Analogy.UserControls {
 
-    public partial class ChartDemoModule: XtraUserControl
+    public partial class ChartModule: XtraUserControl
     {
         class ImageFormatInfo {
             ImageCodecInfo imageCodecInfo;
@@ -126,7 +127,7 @@ namespace DevExpress.XtraCharts.Demos {
 
         public bool AllowPrintOptions => ChartControl != null;
 
-        internal ChartDemoModule() {
+        internal ChartModule() {
             InitializeComponent();
         }
 

@@ -1,5 +1,5 @@
-﻿namespace DevExpress.XtraCharts.Demos {
-    partial class ChartDemoModuleWithOptions {
+﻿namespace Analogy.UserControls {
+    partial class ChartModuleWithOptions {
         System.ComponentModel.IContainer components = null;
 
         protected override void Dispose(bool disposing) {
@@ -56,12 +56,12 @@
             this.tabNavigationPageOptions.Name = "tabNavigationPageOptions";
             this.tabNavigationPageOptions.Size = new System.Drawing.Size(239, 542);
             // 
-            // ChartDemoModuleWithOptions
+            // ChartModuleWithOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.sidePanelOptions);
-            this.Name = "ChartDemoModuleWithOptions";
+            this.Name = "ChartModuleWithOptions";
             this.Size = new System.Drawing.Size(788, 571);
             this.sidePanelOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneOptions)).EndInit();
@@ -72,8 +72,8 @@
 
         #endregion
 
-        protected XtraEditors.SidePanel sidePanelOptions;
-        protected XtraBars.Navigation.TabPane tabPaneOptions;
-        protected XtraBars.Navigation.TabNavigationPage tabNavigationPageOptions;
+        protected DevExpress.XtraEditors.SidePanel sidePanelOptions;
+        protected DevExpress.XtraBars.Navigation.TabPane tabPaneOptions;
+        protected DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageOptions;
     }
 }

@@ -1,9 +1,10 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraCharts.Demos;
 
-namespace DevExpress.XtraCharts.Demos {
+namespace Analogy.UserControls {
 
-    public partial class ChartDemoModuleWithOptions : ChartDemoModule {
+    public partial class ChartModuleWithOptions : ChartModule {
         NavigationPaneState optionsPanelStateField;
 
         public NavigationPaneState OptionsPanelState {
@@ -13,7 +14,7 @@ namespace DevExpress.XtraCharts.Demos {
                 this.tabPaneOptions.State = optionsPanelStateField;
             }
         }
-        public ChartDemoModuleWithOptions() {
+        public ChartModuleWithOptions() {
             InitializeComponent();
             this.tabPaneOptions.AllowCollapse = DefaultBoolean.True;
             this.tabPaneOptions.State = optionsPanelStateField;

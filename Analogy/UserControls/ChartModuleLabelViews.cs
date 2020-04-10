@@ -4,11 +4,13 @@ using DevExpress.Utils.Design;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Docking2010.Views;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
+using DevExpress.XtraCharts;
+using DevExpress.XtraCharts.Demos;
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout;
 
-namespace DevExpress.XtraCharts.Demos {
-    public class ChartDemoModuleLabelViews : ChartDemoModuleWithOptions {
+namespace Analogy.UserControls {
+    public class ChartModuleLabelViews : ChartModuleWithOptions {
         protected const string PiePercentPattern = "{A}: {VP:P2}";
         protected const string FunnelPercentPattern = "{A}: {VP:P0}";
         protected const string PercentPattern = "{VP:P0}";
@@ -40,7 +42,7 @@ namespace DevExpress.XtraCharts.Demos {
 
         internal override ChartControl ChartControl => activeChart;
 
-        public ChartDemoModuleLabelViews() {
+        public ChartModuleLabelViews() {
             Load += ChartDemoModuleLabelViews_Load;
         }
         
@@ -88,7 +90,7 @@ namespace DevExpress.XtraCharts.Demos {
             foreach (Series series in ChartControl.Series) 
                 SetLabelAngle(series.Label, labelAngle);
         }
-        void TabbedView_PopupMenuShowing(object sender, XtraBars.Docking2010.Views.PopupMenuShowingEventArgs e) {
+        void TabbedView_PopupMenuShowing(object sender, DevExpress.XtraBars.Docking2010.Views.PopupMenuShowingEventArgs e) {
             e.Cancel = e.GetDocument() != null;
         }
 

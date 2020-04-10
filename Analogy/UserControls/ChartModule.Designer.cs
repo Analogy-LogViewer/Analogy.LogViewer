@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace DevExpress.XtraCharts.Demos {
+namespace Analogy.UserControls {
 
-    partial class ChartDemoModule {
+    partial class ChartModule {
         IContainer components = null;
 
         protected override void Dispose(bool disposing) {
