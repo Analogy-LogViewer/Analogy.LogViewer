@@ -35,10 +35,6 @@ Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems wit
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
 This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
 
-Currently working on:
-- [ ] collaboration-like feature: abilit to send log messages to gRPC/WCF service and/or between data providers [Issue #119](https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/119)
-
-
 Some features of this tool are:
 1.	Windows event log support (evtx files)
 2.	Aggregation into single view.
@@ -50,6 +46,7 @@ Some features of this tool are:
 8.	Personalization (users settings per user) 
 9.	Columns Extendable: Ability to add more columns specific to the data source implementation
 10.	Exporting to Excel/CSV files
+11. Collaboration-like feature: abilit to send log messages to gRPC/WCF service and/or between data providers
 
 Main interaction UI:
 - Ribbon area: Log files operations (open) and tools (search/combine/Compare)
