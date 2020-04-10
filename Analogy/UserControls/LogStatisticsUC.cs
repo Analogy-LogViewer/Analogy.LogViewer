@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Forms;
 using Analogy;
-using DevExpress.XtraCharts.Demos;
 
 
 namespace Philips.Analogy
@@ -11,6 +10,9 @@ namespace Philips.Analogy
     {
         public LogStatistics Statistics { get; set; }
         private static Color[] colors;
+        private PieChartUC GlobalPie;
+        private PieChartUC SourcePie;
+        private PieChartUC ModulePie;
 
         public LogStatisticsUC()
         {
@@ -23,33 +25,15 @@ namespace Philips.Analogy
 
         }
 
-        private void CreatePieGlobal()
+        private void CreatePies()
         {
-            Pie3DChart  pie = new Pie3DChart();
-            spltCTop.Panel2.Controls.Add(pie);
-            pie.Dock = DockStyle.Fill;
-            pie.SetDataSources(Statistics.CalculateGlobalStatistics());
-          
+            GlobalPie = new PieChartUC();
+            spltCTop.Panel2.Controls.Add(GlobalPie);
+            GlobalPie.Dock = DockStyle.Fill;
+            GlobalPie.SetDataSources(Statistics.CalculateGlobalStatistics());
+
+
         }
-        //private void CreatePie(GraphPane graph, ItemStatistics entry)
-        //{
-
-        //    AddPie(graph, entry.Events, Color.AliceBlue, $"Events: {entry.Events}");
-        //    AddPie(graph, entry.Critical, Color.Red, $"Critical: {entry.Critical}");
-        //    AddPie(graph, entry.Errors, Color.PaleVioletRed, $"Errors: {entry.Errors}");
-        //    AddPie(graph, entry.Debug, Color.SpringGreen, $"Debug: {entry.Debug}");
-        //    AddPie(graph, entry.Warnings, Color.Yellow, $"Warnings: {entry.Warnings}");
-        //    AddPie(graph, entry.Verbose, Color.Black, $"Verbose: {entry.Verbose}");
-        //}
-
-        //private void AddPie(GraphPane graph, int value, Color color, string legend)
-        //{
-        //    if (value > 0)
-        //    {
-        //        PieItem pie = graph.AddPieSlice(value, color, 0.1F, legend);
-        //        pie.LabelType = PieLabelType.Name;
-        //    }
-        //}
 
         private void LogStatisticsUC_Load(object sender, System.EventArgs e)
         {
@@ -59,7 +43,7 @@ namespace Philips.Analogy
         private void LoadStatistics()
         {
             if (Statistics == null) return;
-            CreatePieGlobal();
+            CreatePies();
             PopulateGlobalDataGridView();
             PopulateSource();
             PopulateModule();
@@ -68,6 +52,12 @@ namespace Philips.Analogy
         private void PopulateModule()
         {
             var modules = Statistics.CalculateModulesStatistics().OrderByDescending(s => s.TotalMessages).ToList();
+
+            ModulePie = new PieChartUC();
+            spltcModules.Panel2.Controls.Add(ModulePie);
+            ModulePie.Dock = DockStyle.Fill;
+            ModulePie.SetDataSources(modules.First());
+
             dgvModules.SelectionChanged -= dgvModules_SelectionChanged;
             dgvModules.DataSource = modules;
             dgvModules.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -77,10 +67,17 @@ namespace Philips.Analogy
         private void PopulateSource()
         {
             var sources = Statistics.CalculateSourcesStatistics().OrderByDescending(s => s.TotalMessages).ToList();
+
+            SourcePie = new PieChartUC();
+            spltcSources.Panel2.Controls.Add(SourcePie);
+            SourcePie.Dock = DockStyle.Fill;
+            SourcePie.SetDataSources(sources.First());
+
             dgvSource.SelectionChanged -= dgvSource_SelectionChanged;
             dgvSource.DataSource = sources;
             dgvSource.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvSource.SelectionChanged += dgvSource_SelectionChanged;
+
         }
 
         public void RefreshStatistics(LogStatistics statistics)
@@ -104,24 +101,11 @@ namespace Philips.Analogy
 
         private void dgvSource_SelectionChanged(object sender, System.EventArgs e)
         {
-            //if (dgvSource.SelectedRows.Count == 0) return;
-            //var entry = dgvSource.SelectedRows[0].DataBoundItem as ItemStatistics;
-            //if (entry != null)
-            //{
-            //    zedGraphSource.GraphPane.GraphItemList.Clear();
-            //    GraphPane graph = zedGraphSource.GraphPane;
-            //    graph.CurveList.Clear();
-            //    graph.Title = $"statistics for {entry.Name}";
-            //    AddPie(graph, entry.Events, Color.AliceBlue, $"Events: {entry.Events}");
-            //    AddPie(graph, entry.Critical, Color.Red, $"Critical: {entry.Critical}");
-            //    AddPie(graph, entry.Errors, Color.PaleVioletRed, $"Errors: {entry.Errors}");
-            //    AddPie(graph, entry.Debug, Color.SpringGreen, $"Debug: {entry.Debug}");
-            //    AddPie(graph, entry.Warnings, Color.Yellow, $"Warnings: {entry.Warnings}");
-            //    AddPie(graph, entry.Verbose, Color.Black, $"Verbose: {entry.Verbose}");
-            //    zedGraphSource.AxisChange();
-            //    zedGraphSource.Invalidate();
-            //    Refresh();
-            //}
+            if (dgvSource.SelectedRows.Count == 0) return;
+            if (dgvSource.SelectedRows[0].DataBoundItem is ItemStatistics entry)
+            {
+                SourcePie.SetDataSources(entry);
+            }
         }
 
         private void dgvSource_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -131,24 +115,11 @@ namespace Philips.Analogy
 
         private void dgvModules_SelectionChanged(object sender, System.EventArgs e)
         {
-            //    if (dgvModules.SelectedRows.Count == 0) return;
-            //    var entry = dgvModules.SelectedRows[0].DataBoundItem as ItemStatistics;
-            //    if (entry != null)
-            //    {
-            //        zedGraphModules.GraphPane.GraphItemList.Clear();
-            //        GraphPane graph = zedGraphModules.GraphPane;
-            //        graph.CurveList.Clear();
-            //        graph.Title = $"statistics for {entry.Name}";
-            //        AddPie(graph, entry.Events, Color.AliceBlue, $"Events: {entry.Events}");
-            //        AddPie(graph, entry.Critical, Color.Red, $"Critical: {entry.Critical}");
-            //        AddPie(graph, entry.Errors, Color.PaleVioletRed, $"Errors: {entry.Errors}");
-            //        AddPie(graph, entry.Debug, Color.SpringGreen, $"Debug: {entry.Debug}");
-            //        AddPie(graph, entry.Warnings, Color.Yellow, $"Warnings: {entry.Warnings}");
-            //        AddPie(graph, entry.Verbose, Color.Black, $"Verbose: {entry.Verbose}");
-            //        zedGraphModules.AxisChange();
-            //        zedGraphModules.Invalidate();
-            //        Refresh();
-            //    }
+            if (dgvModules.SelectedRows.Count == 0) return;
+            if (dgvModules.SelectedRows[0].DataBoundItem is ItemStatistics entry)
+            {
+                ModulePie.SetDataSources(entry);
+            }
         }
     }
 }

@@ -22,17 +22,26 @@ namespace Analogy
                 CountMessages(Messages, AnalogyLogLevel.Event), CountMessages(Messages, AnalogyLogLevel.Debug),
                 CountMessages(Messages, AnalogyLogLevel.Verbose));
         }
+
         public IEnumerable<ItemStatistics> CalculateModulesStatistics()
         {
             foreach (var module in Modules)
             {
-                yield return new ItemStatistics(module, Messages.Count(m => m.Module.Equals(module)),
-                    CountModuleMessages(module, AnalogyLogLevel.Error), CountModuleMessages(module, AnalogyLogLevel.Warning),
-                    CountModuleMessages(module, AnalogyLogLevel.Critical), CountModuleMessages(module, AnalogyLogLevel.Event),
-                    CountModuleMessages(module, AnalogyLogLevel.Debug), CountModuleMessages(module, AnalogyLogLevel.Verbose));
+                yield return CalculateSingleStatistics(module);
+
             }
 
         }
+
+        public ItemStatistics CalculateSingleStatistics(string module)
+        {
+            return new ItemStatistics(module, Messages.Count(m => m.Module.Equals(module)),
+                CountModuleMessages(module, AnalogyLogLevel.Error), CountModuleMessages(module, AnalogyLogLevel.Warning),
+                CountModuleMessages(module, AnalogyLogLevel.Critical), CountModuleMessages(module, AnalogyLogLevel.Event),
+                CountModuleMessages(module, AnalogyLogLevel.Debug), CountModuleMessages(module, AnalogyLogLevel.Verbose));
+
+        }
+
         public IEnumerable<ItemStatistics> CalculateSourcesStatistics()
         {
             foreach (var source in Sources)

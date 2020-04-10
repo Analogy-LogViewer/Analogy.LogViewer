@@ -8,7 +8,10 @@ namespace Analogy.DataProviders
     {
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
-            yield return new AnalogyChangeLog("Bug: Dedicated user setting window does not call the Save method of the data provider  (Issue #124", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 04, 03));
+            yield return new AnalogyChangeLog("Logs Analysis: add some pie charts (Issue #131)", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2020, 04, 06));
+            yield return new AnalogyChangeLog("Logs Analysis: add log level distribution chart (Issue #129)", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2020, 04, 06));
+            yield return new AnalogyChangeLog("Upgrade to DevExpress 19.1.10 (Issue #128)", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 04, 06));
+            yield return new AnalogyChangeLog("Bug: Dedicated user setting window does not call the Save method of the data provider (Issue #124", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 04, 03));
             yield return new AnalogyChangeLog("Refactor interfaces (Issue #12 at https://github.com/Analogy-LogViewer/Analogy.Interfaces)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 03, 31));
             yield return new AnalogyChangeLog("UI: Add button to open custom user setting window (Issue #113)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 03, 15));
             yield return new AnalogyChangeLog("Add MessagePack binary format to built in supported Analogy Formats (Issue #102)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 02, 29));

@@ -19,11 +19,12 @@ namespace Analogy
 
         public IEnumerable<Statistics> AsList()
         {
+            yield return new Statistics(nameof(Critical), Critical);
             yield return new Statistics(nameof(Errors), Errors);
             yield return new Statistics(nameof(Warnings), Warnings);
-            yield return new Statistics(nameof(Critical), Critical);
-            yield return new Statistics(nameof(Debug),Debug);
-            yield return new Statistics(nameof(Verbose),Verbose);
+            yield return new Statistics(nameof(Verbose), Verbose);
+            yield return new Statistics(nameof(Debug), Debug);
+            yield return new Statistics(nameof(Events), Events);
 
         }
     }
