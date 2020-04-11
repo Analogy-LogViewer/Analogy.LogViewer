@@ -2,7 +2,7 @@
 
 namespace Analogy
 {
-    partial class OnlineUCLogs
+    partial class RemoteLogsUC
     {
         /// <summary> 
         /// Required designer variable.

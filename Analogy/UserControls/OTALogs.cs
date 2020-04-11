@@ -62,7 +62,6 @@ namespace Analogy
             Logs = new UCLogs();
             groupBox2.Controls.Add(Logs);
             Logs.Dock = DockStyle.Fill;
-            Logs.RefreshUI();
         }
     }
 }

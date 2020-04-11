@@ -12,15 +12,14 @@ using Message = System.Windows.Forms.Message;
 namespace Analogy
 {
 
-    public partial class OnlineUCLogs : UserControl
+    public partial class RemoteLogsUC : UserControl
     {
         private bool _showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
-        public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime)
+        public RemoteLogsUC(IAnalogyRealTimeDataProvider realTime)
         {
             InitializeComponent();
-
             ucLogs1.SetFileDataSource(realTime.FileOperationsHandler);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -48,7 +47,6 @@ namespace Analogy
             listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
             if (Enable && !IsDisposed)
@@ -58,7 +56,6 @@ namespace Analogy
             }
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)

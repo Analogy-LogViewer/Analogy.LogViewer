@@ -88,8 +88,6 @@ namespace Analogy
             Logs = new UCLogs();
             groupBox2.Controls.Add(Logs);
             Logs.Dock = DockStyle.Fill;
-            Logs.RefreshUI();
-            ;
         }
 
         private void AnalogyOTAForm_FormClosing(object sender, FormClosingEventArgs e)

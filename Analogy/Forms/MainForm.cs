@@ -108,225 +108,12 @@ namespace Analogy
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
                 btnErrors.Visibility = BarItemVisibility.Always;
         }
-
-
-
-        //private void CreateAnalogyBuiltinDataProviders()
-        //{
-        //    FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-        //    if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
-        //        CreateDataSource(analogy, 0);
-
-        //    ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-
-        //    BarButtonItem evtxRealTime = new BarButtonItem();
-        //    evtxRealTime.Caption = "Real Time Windows Event Logs";
-        //    evtxRealTime.RibbonStyle = RibbonItemStyles.All;
-        //    evtxRealTime.ImageOptions.Image = Resources.OperatingSystem_16x16;
-        //    evtxRealTime.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-        //    evtxRealTime.ItemClick += (s, be) =>
-        //    {
-        //        UserControl windowsEventlog = new WindowsEventLog();
-        //        var page = dockManager1.AddPanel(DockingStyle.Float);
-        //        page.DockedAsTabbedDocument = true;
-        //        page.Controls.Add(windowsEventlog);
-        //        windowsEventlog.Dock = DockStyle.Fill;
-        //        page.Text = $"Windows Log";
-        //        dockManager1.ActivePanel = page;
-        //    };
-        //    group.ItemLinks.Add(evtxRealTime);
-
-        //    BarButtonItem evtxFile = new BarButtonItem();
-        //    evtxFile.Caption = "Open Event log file (*.Evtx)";
-        //    evtxFile.RibbonStyle = RibbonItemStyles.All;
-        //    evtxFile.ImageOptions.Image = Resources.OperatingSystem_16x16;
-        //    evtxFile.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-        //    evtxFile.ItemClick += (s, be) =>
-        //    {
-
-        //        OpenFileDialog openFileDialog1 = new OpenFileDialog();
-        //        openFileDialog1.Filter = "Windows Event log files (*.evtx)|*.evtx";
-        //        openFileDialog1.Title = @"Open Files";
-        //        openFileDialog1.Multiselect = true;
-        //        if (openFileDialog1.ShowDialog() == DialogResult.OK)
-        //        {
-        //            OpenOfflineLogs(ribbonPage, openFileDialog1.FileNames, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(openFileDialog1.FileNames.ToList());
-        //        }
-        //    };
-        //    group.ItemLinks.Add(evtxFile);
-
-        //    BarButtonItem systemLog = new BarButtonItem();
-        //    systemLog.Caption = $"Open {Environment.MachineName} System Log file";
-        //    systemLog.RibbonStyle = RibbonItemStyles.All;
-        //    systemLog.ImageOptions.Image = Resources.OperatingSystem_16x16;
-        //    systemLog.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-        //    systemLog.ItemClick += (s, be) =>
-        //    {
-        //        string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-        //            "Logs", "System.evtx");
-        //        if (File.Exists(file))
-        //        {
-        //            OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(new List<string>() {file});
-        //        }
-        //    };
-        //    group.ItemLinks.Add(systemLog);
-
-        //    BarButtonItem appLog = new BarButtonItem();
-        //    appLog.Caption = $"Open {Environment.MachineName} Application Log file";
-        //    appLog.RibbonStyle = RibbonItemStyles.All;
-        //    appLog.ImageOptions.Image = Resources.OperatingSystem_16x16;
-        //    appLog.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-        //    appLog.ItemClick += (s, be) =>
-        //    {
-        //        string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-        //            "Logs", "Application.evtx");
-        //        if (File.Exists(file))
-        //        {
-        //            OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(new List<string>() {file});
-        //        }
-        //    };
-        //    group.ItemLinks.Add(appLog);
-
-        //    BarButtonItem secLog = new BarButtonItem();
-        //    secLog.Caption = $"Open {Environment.MachineName} Security Log file";
-        //    secLog.RibbonStyle = RibbonItemStyles.All;
-        //    secLog.ImageOptions.Image = Resources.OperatingSystem_16x16;
-        //    secLog.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-        //    secLog.ItemClick += (s, be) =>
-        //    {
-        //        string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-        //            "Logs", "Security.evtx");
-        //        if (File.Exists(file))
-        //        {
-        //            OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(new List<string>() {file});
-        //        }
-        //    };
-        //    group.ItemLinks.Add(secLog);
-        //    BarButtonItem btnFolder = new BarButtonItem();
-        //    btnFolder.Caption = $"Local Machine logs - {Environment.MachineName}";
-        //    btnFolder.RibbonStyle = RibbonItemStyles.All;
-        //    btnFolder.ImageOptions.Image = Resources.OperatingSystem_16x16;
-        //    btnFolder.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-        //    btnFolder.ItemClick += (s, be) =>
-        //    {
-        //        LocalLogFiles offlineUC = new LocalLogFiles(new EventLogDataProvider());
-        //        offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
-        //            "System32", "Winevt", "Logs");
-        //        var page = dockManager1.AddPanel(DockingStyle.Float);
-        //        page.DockedAsTabbedDocument = true;
-        //        page.Tag = ribbonPage;
-        //        page.Controls.Add(offlineUC);
-        //        offlineUC.Dock = DockStyle.Fill;
-        //        page.Text = $"Local Machine logs";
-        //        dockManager1.ActivePanel = page;
-        //    };
-        //    group.ItemLinks.Add(btnFolder);
-        //    CreateEventLogsMenu(ribbonPage);
-        //}
-
-        //private void CreateEventLogsMenu(RibbonPage ribbonPage)
-        //{
-        //    EventLogDataProvider elds = new EventLogDataProvider();
-        //    BarButtonItem evtxRealTime = new BarButtonItem();
-        //    evtxRealTime.Caption = "Real Time Windows Event Logs";
-        //    evtxRealTime.ItemClick += (s, be) =>
-        //    {
-        //        UserControl windowsEventlog = new WindowsEventLog();
-        //        var page = dockManager1.AddPanel(DockingStyle.Float);
-        //        page.DockedAsTabbedDocument = true;
-        //        page.Tag = ribbonPage;
-        //        page.Controls.Add(windowsEventlog);
-        //        windowsEventlog.Dock = DockStyle.Fill;
-        //        page.Text = $"Windows Log";
-        //        dockManager1.ActivePanel = page;
-        //    };
-        //    bsiWindowsEventLogs.AddItem(evtxRealTime);
-
-        //    BarButtonItem evtxFile = new BarButtonItem();
-        //    evtxFile.Caption = "Open Event log file (*.Evtx)";
-        //    evtxFile.ItemClick += (s, be) =>
-        //    {
-
-        //        OpenFileDialog openFileDialog1 = new OpenFileDialog();
-        //        openFileDialog1.Filter = "Windows Event log files (*.evtx)|*.evtx";
-        //        openFileDialog1.Title = @"Open Files";
-        //        openFileDialog1.Multiselect = true;
-        //        if (openFileDialog1.ShowDialog() == DialogResult.OK)
-        //        {
-        //            OpenOfflineLogs(ribbonPage, openFileDialog1.FileNames, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(openFileDialog1.FileNames.ToList());
-        //        }
-        //    };
-        //    bsiWindowsEventLogs.AddItem(evtxFile);
-
-        //    BarButtonItem systemLog = new BarButtonItem();
-        //    systemLog.Caption = $"Open {Environment.MachineName} System Log file";
-        //    systemLog.ItemClick += (s, be) =>
-        //    {
-        //        string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-        //            "Logs", "System.evtx");
-        //        if (File.Exists(file))
-        //        {
-        //            OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(new List<string>() { file });
-        //        }
-        //    };
-        //    bsiWindowsEventLogs.AddItem(systemLog);
-
-        //    BarButtonItem appLog = new BarButtonItem();
-        //    appLog.Caption = $"Open {Environment.MachineName} Application Log file";
-        //    appLog.ItemClick += (s, be) =>
-        //    {
-        //        string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-        //            "Logs", "Application.evtx");
-        //        if (File.Exists(file))
-        //        {
-        //            OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(new List<string>() { file });
-        //        }
-        //    };
-        //    bsiWindowsEventLogs.AddItem(appLog);
-
-        //    BarButtonItem secLog = new BarButtonItem();
-        //    secLog.Caption = $"Open {Environment.MachineName} Security Log file";
-        //    secLog.ItemClick += (s, be) =>
-        //    {
-        //        string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-        //            "Logs", "Security.evtx");
-        //        if (File.Exists(file))
-        //        {
-        //            OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-        //            AddRecentWindowsEventLogFiles(new List<string>() { file });
-        //        }
-        //    };
-        //    bsiWindowsEventLogs.AddItem(secLog);
-        //    BarButtonItem btnFolder = new BarButtonItem();
-        //    btnFolder.Caption = $"Local Machine logs - {Environment.MachineName}";
-        //    btnFolder.ItemClick += (s, be) =>
-        //    {
-        //        LocalLogFiles offlineUC = new LocalLogFiles(new EventLogDataProvider());
-        //        offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
-        //            "System32", "Winevt", "Logs");
-        //        var page = dockManager1.AddPanel(DockingStyle.Float);
-        //        page.DockedAsTabbedDocument = true;
-        //        page.Controls.Add(offlineUC);
-        //        offlineUC.Dock = DockStyle.Fill;
-        //        page.Text = $"Local Machine logs";
-        //        dockManager1.ActivePanel = page;
-        //    };
-        //    bsiWindowsEventLogs.AddItem(btnFolder);
-        //}
-
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
             IAnalogyOfflineDataProvider dataProvider,
             string title = null)
         {
             openedWindows++;
-            UserControl offlineUC = new LocalLogFiles(dataProvider, filenames);
+            UserControl offlineUC = new LocalLogFilesUC(dataProvider, filenames);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
             page.Tag = ribbonPage;
@@ -874,7 +661,17 @@ namespace Analogy
                 openedWindows++;
                 singleBtn.ItemClick += (sender, e) =>
                 {
-                    LocalLogFiles offlineUC = new LocalLogFiles();
+                    CancellationTokenSource cts = new CancellationTokenSource(); 
+                    LocalLogFilesUC offlineUC = new LocalLogFilesUC(cts);
+                    if (single is IAnalogySingleFileDataProvider fileProvider)
+                    {
+                        fileProvider.Process(cts.Token, offlineUC.Handler);
+                    }
+
+                    if (single is IAnalogySingleDataProvider singleProvider)
+                    {
+                        singleProvider.Execute(cts.Token, offlineUC.Handler);
+                    }
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
                     page.Tag = ribbonPage;
@@ -927,7 +724,7 @@ namespace Analogy
                 string[] files = null)
             {
                 openedWindows++;
-                UserControl offlineUC = new LocalLogFiles(dataProvider, files, initialFolder);
+                UserControl offlineUC = new LocalLogFilesUC(dataProvider, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
@@ -1199,7 +996,7 @@ namespace Analogy
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
                 openedWindows++;
-                UserControl offlineUC = new LocalLogFiles(offlineAnalogy, files, initialFolder);
+                UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;

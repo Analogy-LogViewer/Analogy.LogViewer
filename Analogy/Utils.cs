@@ -197,8 +197,7 @@ namespace Analogy
         public static string GetFileNameAsDataSource(string fileName)
         {
             string file = Path.GetFileName(fileName);
-            return fileName.Equals(file) ? fileName : $"{file} ({fileName})";
-
+            return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
 
         static long GetLastInputTime()

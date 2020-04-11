@@ -315,11 +315,11 @@
     <Compile Update="UserControls\BookmarkLog.Designer.cs">
       <DependentUpon>BookmarkLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\OfflineLog.cs">
+    <Compile Update="UserControls\LocalLogFilesUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\OfflineLog.Designer.cs">
-      <DependentUpon>OfflineLog.cs</DependentUpon>
+    <Compile Update="UserControls\LocalLogFilesUC.Designer.cs">
+      <DependentUpon>LocalLogFilesUC.cs</DependentUpon>
     </Compile>
     <Compile Update="UserControls\OnlineLog.cs">
       <SubType>UserControl</SubType>
@@ -588,8 +588,8 @@
     <EmbeddedResource Update="UserControls\BookmarkLog.resx">
       <DependentUpon>BookmarkLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="UserControls\OfflineLog.resx">
-      <DependentUpon>OfflineLog.cs</DependentUpon>
+    <EmbeddedResource Update="UserControls\LocalLogFilesUC.resx">
+      <DependentUpon>LocalLogFilesUC.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="UserControls\OnlineLog.resx">

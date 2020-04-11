@@ -24,7 +24,6 @@ namespace Analogy
         {
             InitializeComponent();
             FileName = fileName;
-            ucLogs1.OnlineMode = false;
             PoolingManager = new FilePoolingManager(FileName, offlineDataProvider);
             ucLogs1.SetFileDataSource(offlineDataProvider);
             PoolingManager.OnNewMessages += (s, data) =>
@@ -83,15 +82,7 @@ namespace Analogy
             }));
             
         }
-        private void AnalogyUCLogs_DragEnter(object sender, DragEventArgs e) =>
-            e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
-        private async void AnalogyUCLogs_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            await LoadFilesAsync(files.ToList(), true);
-
-        }
-
+   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
@@ -102,11 +93,6 @@ namespace Analogy
                 ucLogs1.AppendMessages(messages, interned);
                 
             }
-        }
-
-        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
-        {
-            await ucLogs1.LoadFilesAsync(fileNames, clearLogBeforeLoading);
         }
 
         private void bbtnClear_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

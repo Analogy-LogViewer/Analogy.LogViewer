@@ -37,7 +37,7 @@ namespace Analogy
         private PagingManager PagingManager { get; set; }
         private FileProcessor fileProcessor { get; set; }
 
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        public CancellationTokenSource CancellationTokenSource { get; set; }= new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
@@ -91,7 +91,6 @@ namespace Analogy
         private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
-        public bool OnlineMode { get; set; }
 
         // private bool FilterHasChanged { get; set; }
         private bool NewDataExist { get; set; }
@@ -277,16 +276,23 @@ namespace Analogy
         public void SetFileDataSource(IAnalogyOfflineDataProvider fileDataProvider)
         {
             FileDataProvider = fileDataProvider;
-            if (FileDataProvider is EventLogDataProvider eventDataSource)
-                eventDataSource.LogWindow = this;
-            if (FileDataProvider == null)
+            SetSaveButtonsVisibility(FileDataProvider != null);
+        }
+
+        public void SetSaveButtonsVisibility(bool on)
+        {
+            if (on)
             {
                 //disable specific saving
+                bBtnSaveLog.Visibility = BarItemVisibility.Always;
+                bBtnSaveEntireLog.Visibility = BarItemVisibility.Always;
+            }
+            else
+            {
                 bBtnSaveLog.Visibility = BarItemVisibility.Never;
                 bBtnSaveEntireLog.Visibility = BarItemVisibility.Never;
             }
         }
-
 
         public void ProcessCmdKeyFromParent(Keys keyData)
         {
@@ -1195,26 +1201,10 @@ namespace Analogy
             }));
         }
 
-        public void RefreshUI()
-        {
-            //gridColumnDataSource.VisibleIndex = 0;
-            //gridColumnDate.VisibleIndex = 1;
-            //gridColumnText.VisibleIndex = 2;
-            //gridColumnSource.VisibleIndex = 3;
-            //gridColumnLevel.VisibleIndex = 4;
-            //gridColumnClass.VisibleIndex = 5;
-            //gridColumnModule.VisibleIndex = 6;
-            //gridColumnProcessID.VisibleIndex = 7;
-            //gridColumnUser.VisibleIndex = 8;
-            //gridColumnCategory.VisibleIndex = 9;
-            //gridColumnAudit.VisibleIndex = 10;
-
-        }
-
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
         {
-            cancellationTokenSource = new CancellationTokenSource();
-            CancellationToken token = cancellationTokenSource.Token;
+            CancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = CancellationTokenSource.Token;
             if (clearLogBeforeLoading)
                 ClearLogs(false);
             sBtnCancel.Visible = true;
@@ -1234,7 +1224,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename, cancellationTokenSource.Token);
+                await fileProcessor.Process(FileDataProvider, filename, token);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -1886,10 +1876,10 @@ namespace Analogy
 
         private void sBtnCancel_Click(object sender, EventArgs e)
         {
-            cancellationTokenSource.Cancel(false);
+            CancellationTokenSource.Cancel(false);
             Interlocked.Exchange(ref fileLoadingCount, 0);
 
-            cancellationTokenSource = new CancellationTokenSource();
+            CancellationTokenSource = new CancellationTokenSource();
             sBtnCancel.Visible = false;
         }
 
