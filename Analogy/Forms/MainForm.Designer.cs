@@ -80,7 +80,6 @@
             this.bbiExtensions = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnMRUSettings = new DevExpress.XtraBars.BarButtonItem();
-            this.bsiWindowsEventLogs = new DevExpress.XtraBars.BarSubItem();
             this.barStaticItemDefaultLevel = new DevExpress.XtraBars.BarStaticItem();
             this.bBtnOpenAnalogyLog = new DevExpress.XtraBars.BarButtonItem();
             this.bsiMemoryUsage = new DevExpress.XtraBars.BarStaticItem();
@@ -168,7 +167,6 @@
             this.bbiExtensions,
             this.bBtnShortcuts,
             this.bBtnMRUSettings,
-            this.bsiWindowsEventLogs,
             this.barStaticItemDefaultLevel,
             this.bBtnOpenAnalogyLog,
             this.bsiMemoryUsage,
@@ -591,18 +589,7 @@
             this.bBtnMRUSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnMRUSettings.ImageOptions.LargeImage")));
             this.bBtnMRUSettings.LargeWidth = 80;
             this.bBtnMRUSettings.Name = "bBtnMRUSettings";
-            this.bBtnMRUSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnMRUSettings_ItemClick);
-            // 
-            // bsiWindowsEventLogs
-            // 
-            this.bsiWindowsEventLogs.Caption = "Windows Event Logs";
-            this.bsiWindowsEventLogs.Id = 52;
-            this.bsiWindowsEventLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiWindowsEventLogs.ImageOptions.Image")));
-            this.bsiWindowsEventLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiWindowsEventLogs.ImageOptions.LargeImage")));
-            this.bsiWindowsEventLogs.Name = "bsiWindowsEventLogs";
-            this.bsiWindowsEventLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
+            this.bBtnMRUSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnMRUSettings_ItemClick); // 
             // barStaticItemDefaultLevel
             // 
             this.barStaticItemDefaultLevel.Caption = "Default Level: n/a";
@@ -839,7 +826,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiExtensions;
         private DevExpress.XtraBars.BarButtonItem bBtnShortcuts;
         private DevExpress.XtraBars.BarButtonItem bBtnMRUSettings;
-        private DevExpress.XtraBars.BarSubItem bsiWindowsEventLogs;
         private DevExpress.XtraBars.BarStaticItem barStaticItemDefaultLevel;
         private DevExpress.XtraBars.BarButtonItem bBtnOpenAnalogyLog;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;

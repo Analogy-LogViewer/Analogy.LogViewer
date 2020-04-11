@@ -14,9 +14,8 @@ namespace Analogy
 
     public partial class OnlineUCLogs : UserControl
     {
-        private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
-        private bool _sendLogs;
-        private static int clearHistoryCounter;
+        private bool _showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
+        private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
         public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime)
         {
@@ -39,10 +38,10 @@ namespace Analogy
 
         private void UcLogs1_OnHistoryCleared(object sender, AnalogyClearedHistoryEventArgs e)
         {
-            Interlocked.Increment(ref clearHistoryCounter);
+            Interlocked.Increment(ref _clearHistoryCounter);
             listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
-            spltMain.Panel1Collapsed = !showHistory;
-            string entry = $"History #{clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
+            spltMain.Panel1Collapsed = !_showHistory;
+            string entry = $"History #{_clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
             FileProcessingManager.Instance.DoneProcessingFile(e.ClearedMessages, entry);
             listBoxClearHistory.Items.Add(entry);
             listBoxClearHistory.SelectedItem = null;
@@ -93,7 +92,7 @@ namespace Analogy
         private void bbtnHide_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (IsDisposed) return;
-            showHistory = false;
+            _showHistory = false;
             spltMain.Panel1Collapsed = true;
         }
 

@@ -17,6 +17,7 @@ namespace Analogy
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }
+        public ILogMessageCreatedHandler Handler => ucLogs1;
         //private List<string> TreeListFileNodes { get; set; }
         public OfflineUCLogs(string initSelectedPath)
         {
@@ -35,6 +36,11 @@ namespace Analogy
                 extrenalFiles.AddRange(fileNames);
             ucLogs1.OnlineMode = false;
             ucLogs1.SetFileDataSource(dataProvider);
+        }
+        public OfflineUCLogs() : this(null)
+        { 
+            ucLogs1.OnlineMode = true;
+            ucLogs1.SetFileDataSource(null);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -104,7 +110,7 @@ namespace Analogy
 
         private void PopulateFiles(string folder)
         {
-            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
+            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder) || DataProvider==null) return;
             SelectedPath = folder;
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;

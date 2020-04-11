@@ -192,41 +192,7 @@ namespace Analogy
             lookAndFeel.SkinName = skinName;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static AnalogyLogMessage CreateMessageFromEvent(EventLogEntry eEntry)
-        {
-            AnalogyLogMessage m = new AnalogyLogMessage();
-            switch (eEntry.EntryType)
-            {
-                case EventLogEntryType.Error:
-                    m.Level = AnalogyLogLevel.Error;
-                    break;
-                case EventLogEntryType.Warning:
-                    m.Level = AnalogyLogLevel.Warning;
-                    break;
-                case EventLogEntryType.Information:
-                    m.Level = AnalogyLogLevel.Event;
-                    break;
-                case EventLogEntryType.SuccessAudit:
-                    m.Level = AnalogyLogLevel.Event;
-                    break;
-                case EventLogEntryType.FailureAudit:
-                    m.Level = AnalogyLogLevel.Error;
-                    break;
-                default:
-                    m.Level = AnalogyLogLevel.Event;
-                    break;
-            }
 
-            m.Category = eEntry.Category;
-            m.Date = eEntry.TimeGenerated;
-            m.ID = Guid.NewGuid();
-            m.Source = eEntry.Source;
-            m.Text = eEntry.Message;
-            m.User = eEntry.UserName;
-            m.Module = eEntry.Source;
-            return m;
-        }
 
         public static string GetFileNameAsDataSource(string fileName)
         {

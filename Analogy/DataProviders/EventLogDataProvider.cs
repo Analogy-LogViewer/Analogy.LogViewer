@@ -13,28 +13,8 @@ using Analogy.LogLoaders;
 namespace Analogy.DataSources
 {
 
-    public class EventLogDataFactory : IAnalogyFactory
-    {
-        public static Guid id = new Guid("3949DB4C-0E22-4795-92C1-61B05EDB3F6C");
-        public Guid FactoryId { get; } = id;
-        public string Title { get; } = "Windows Event logs";
-        public IEnumerable<IAnalogyChangeLog> ChangeLog { get; } = CommonChangeLog.GetChangeLog();
-        public IEnumerable<string> Contributors { get; } = new List<string>() { "Lior Banai" };
-        public string About { get; } = "Analogy Built-In Windows Event Log Data Provider";
 
-    }
 
-    public class EventLogDataProvidersFactory : IAnalogyDataProvidersFactory
-    {
-        public Guid FactoryId { get; } = EventLogDataFactory.id;
-        public string Title { get; } = "Analogy Built-In Windows Event Log Data Provider";
-        
-        public IEnumerable<IAnalogyDataProvider> DataProviders { get; }
-        public EventLogDataProvidersFactory()
-        {
-            DataProviders = new List<IAnalogyDataProvider> { new EventLogDataProvider() };
-        }
-    }
     public class EventLogDataProvider : IAnalogyOfflineDataProvider
     {
         public string OptionalTitle { get; } = "Analogy Built-In Windows Event Log Data Provider";

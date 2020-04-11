@@ -37,14 +37,6 @@ namespace Analogy
             fc.AddDataProviderFactory(new AnalogyOfflineDataProviderFactory());
             fc.AddCustomActionFactory(new AnalogyCustomActionFactory());
             BuiltInFactories.Add(fc);
-            var analogyEventLogsFactory = new EventLogDataFactory();
-            var analogyEventLogsFactorySetting =
-                UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyEventLogsFactory);
-            analogyEventLogsFactorySetting.FactoryName = analogyEventLogsFactory.Title;
-            var fcEvents =
-                new FactoryContainer(currentAssembly, analogyEventLogsFactory, analogyEventLogsFactorySetting);
-            fcEvents.AddDataProviderFactory(new EventLogDataProvidersFactory());
-            BuiltInFactories.Add(fcEvents);
         }
 
         public async Task InitializeBuiltInFactories()
