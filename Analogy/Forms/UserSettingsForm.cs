@@ -59,6 +59,7 @@ namespace Analogy
         {
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
+            listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
             tsAutoComplete.IsOn = Settings.RememberLastSearches;
             nudRecent.Value = Settings.RecentFilesCount;
             tsUserStatistics.IsOn = Settings.EnableUserStatistics;
@@ -483,6 +484,34 @@ namespace Analogy
                 lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
                 lboxAlerts.Refresh();
             }
+        }
+
+        private void sbtnFolderProbingBrowse_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderDlg = new FolderBrowserDialog
+            {
+                ShowNewFolderButton = false
+            })
+            {
+                // Show the FolderBrowserDialog.  
+                DialogResult result = folderDlg.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    teFoldersProbing.Text = folderDlg.SelectedPath;
+                }
+            }
+        }
+
+        private void sbtnFolderProbingAdd_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(teFoldersProbing.Text)) return;
+            listBoxFoldersProbing.Items.Add(teFoldersProbing.Text);
+        }
+
+        private void sbtnDeleteFolderProbing_Click(object sender, EventArgs e)
+        {
+            if (listBoxFoldersProbing.SelectedItem!=null)
+                listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
         }
     }
 }
