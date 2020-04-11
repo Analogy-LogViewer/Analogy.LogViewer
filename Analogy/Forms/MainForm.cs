@@ -651,8 +651,9 @@ namespace Analogy
             {
                 BarButtonItem singleBtn = new BarButtonItem();
                 group.ItemLinks.Add(singleBtn);
-                singleBtn.ImageOptions.LargeImage = Resources.Single32x32;
-                singleBtn.ImageOptions.Image = Resources.Single16x16;
+                var images = FactoriesManager.Instance.GetImages(single.ID);
+                singleBtn.ImageOptions.LargeImage = images == null ? Resources.Single32x32 : images.LargeImage;
+                singleBtn.ImageOptions.Image = images == null ? Resources.Single16x16:images.SmallImage;
                 singleBtn.RibbonStyle = RibbonItemStyles.All;
                 singleBtn.Caption = "Single provider" + (!string.IsNullOrEmpty(single.OptionalTitle)
                     ? $" - {single.OptionalTitle}"

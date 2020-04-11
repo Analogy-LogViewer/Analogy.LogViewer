@@ -22,7 +22,7 @@ namespace Analogy
         private static object sync = new object();
         public static readonly FactoriesManager Instance = _instance.Value;
         private List<FactoryContainer> BuiltInFactories { get; }
-
+        private List<DataProviderImages> DataProviderImages { get; set; }
         public List<FactoryContainer> Factories { get; private set; }
 
         public FactoriesManager()
@@ -73,6 +73,7 @@ namespace Analogy
             ExternalDataProviders result = await ExternalDataProviders.GetExternalDataProviders();
             var factoryContainers = result.Factories.Where(f => !Factories.Contains(f)).ToList();
             Factories.AddRange(factoryContainers);
+            DataProviderImages = result.DataProviderImages;
             var dataProviders = factoryContainers.Where(f =>
                     f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
@@ -162,7 +163,7 @@ namespace Analogy
                 fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled && fc.Factory.FactoryId == factoryId)
             .DataProvidersSettings;
 
-
+        public DataProviderImages GetImages(Guid id) => DataProviderImages.FirstOrDefault(i => i.ItemId == id);
         public class ExternalDataProviders
         {
             private static readonly AsyncLazy<ExternalDataProviders> _instance =
@@ -170,12 +171,12 @@ namespace Analogy
 
             public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
             public List<FactoryContainer> Factories { get; private set; }
-
+            public List<DataProviderImages> DataProviderImages { get; set; }
             private ExternalDataProviders()
             {
 
                 Factories = new List<FactoryContainer>();
-
+                DataProviderImages=new List<DataProviderImages>();
                 var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
                     @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList();
                 if (UserSettingsManager.UserSettings.AdditionalProbingLocations!=null)
@@ -200,6 +201,13 @@ namespace Analogy
                     {
                         Assembly assembly = Assembly.LoadFrom(Path.GetFullPath(aFile));
                         var types = assembly.GetTypes().ToList();
+                        foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyComponentImages)) != null))
+                        {
+                            var factory = Activator.CreateInstance(f) as IAnalogyComponentImages;
+                            DataProviderImages.AddRange(factory.GetDataProviderImages());
+                        }
+
+
                         foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
                         {
                             var factory = Activator.CreateInstance(f) as IAnalogyFactory;
