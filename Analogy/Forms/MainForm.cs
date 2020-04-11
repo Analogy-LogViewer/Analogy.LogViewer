@@ -213,7 +213,7 @@ namespace Analogy
         //    btnFolder.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
         //    btnFolder.ItemClick += (s, be) =>
         //    {
-        //        OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
+        //        LocalLogFiles offlineUC = new LocalLogFiles(new EventLogDataProvider());
         //        offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
         //            "System32", "Winevt", "Logs");
         //        var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -308,7 +308,7 @@ namespace Analogy
         //    btnFolder.Caption = $"Local Machine logs - {Environment.MachineName}";
         //    btnFolder.ItemClick += (s, be) =>
         //    {
-        //        OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
+        //        LocalLogFiles offlineUC = new LocalLogFiles(new EventLogDataProvider());
         //        offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
         //            "System32", "Winevt", "Logs");
         //        var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -326,7 +326,7 @@ namespace Analogy
             string title = null)
         {
             openedWindows++;
-            UserControl offlineUC = new OfflineUCLogs(dataProvider, filenames);
+            UserControl offlineUC = new LocalLogFiles(dataProvider, filenames);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
             page.Tag = ribbonPage;
@@ -724,12 +724,12 @@ namespace Analogy
 
         private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
         {
-            var realtimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
+            var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
-            if (realtimes.Count == 0) return;
-            if (realtimes.Count == 1)
+            if (realTimes.Count == 0) return;
+            if (realTimes.Count == 1)
             {
-                AddSingleRealTimeDataSource(ribbonPage, realtimes.First(), dataSourceFactory.Title, group);
+                AddSingleRealTimeDataSource(ribbonPage, realTimes.First(), dataSourceFactory.Title, group);
             }
             else
             {
@@ -740,7 +740,7 @@ namespace Analogy
                 realTimeMenu.Caption = "Real Time Logs";
 
 
-                foreach (var realTime in realtimes)
+                foreach (var realTime in realTimes)
                 {
 
 
@@ -874,7 +874,7 @@ namespace Analogy
                 openedWindows++;
                 singleBtn.ItemClick += (sender, e) =>
                 {
-                    OfflineUCLogs offlineUC = new OfflineUCLogs();
+                    LocalLogFiles offlineUC = new LocalLogFiles();
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
                     page.Tag = ribbonPage;
@@ -927,7 +927,7 @@ namespace Analogy
                 string[] files = null)
             {
                 openedWindows++;
-                UserControl offlineUC = new OfflineUCLogs(dataProvider, files, initialFolder);
+                UserControl offlineUC = new LocalLogFiles(dataProvider, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
@@ -1199,7 +1199,7 @@ namespace Analogy
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
                 openedWindows++;
-                UserControl offlineUC = new OfflineUCLogs(offlineAnalogy, files, initialFolder);
+                UserControl offlineUC = new LocalLogFiles(offlineAnalogy, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;

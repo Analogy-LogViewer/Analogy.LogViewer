@@ -11,15 +11,14 @@ using DevExpress.XtraBars;
 namespace Analogy
 {
 
-    public partial class OfflineUCLogs : UserControl
+    public partial class LocalLogFiles : UserControl
     {
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }
         public ILogMessageCreatedHandler Handler => ucLogs1;
         //private List<string> TreeListFileNodes { get; set; }
-        public OfflineUCLogs(string initSelectedPath)
+        public LocalLogFiles(string initSelectedPath)
         {
             //TreeListFileNodes = new List<string>();
             SelectedPath = initSelectedPath;
@@ -28,7 +27,7 @@ namespace Analogy
             treeList1.Appearance.HideSelectionRow.Assign(treeList1.ViewInfo.PaintAppearance.FocusedRow);
         }
 
-        public OfflineUCLogs(IAnalogyOfflineDataProvider dataProvider, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
+        public LocalLogFiles(IAnalogyOfflineDataProvider dataProvider, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
         {
 
             DataProvider = dataProvider;
@@ -37,7 +36,7 @@ namespace Analogy
             ucLogs1.OnlineMode = false;
             ucLogs1.SetFileDataSource(dataProvider);
         }
-        public OfflineUCLogs() : this(null)
+        public LocalLogFiles() : this(null)
         { 
             ucLogs1.OnlineMode = true;
             ucLogs1.SetFileDataSource(null);
