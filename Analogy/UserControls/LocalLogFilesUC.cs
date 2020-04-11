@@ -38,7 +38,7 @@ namespace Analogy
             ucLogs1.SetFileDataSource(dataProvider);
         }
 
-        public LocalLogFilesUC(CancellationTokenSource cts)
+        public LocalLogFilesUC(CancellationTokenSource cts):this()
         {
             ucLogs1.CancellationTokenSource = cts;
         }

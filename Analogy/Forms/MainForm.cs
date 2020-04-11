@@ -663,6 +663,13 @@ namespace Analogy
                 {
                     CancellationTokenSource cts = new CancellationTokenSource(); 
                     LocalLogFilesUC offlineUC = new LocalLogFilesUC(cts);
+                    var page = dockManager1.AddPanel(DockingStyle.Float);
+                    page.DockedAsTabbedDocument = true;
+                    page.Tag = ribbonPage;
+                    page.Controls.Add(offlineUC);
+                    offlineUC.Dock = DockStyle.Fill;
+                    page.Text = $"{offlineTitle} #{openedWindows} ({single.OptionalTitle})";
+                    dockManager1.ActivePanel = page;
                     if (single is IAnalogySingleFileDataProvider fileProvider)
                     {
                         fileProvider.Process(cts.Token, offlineUC.Handler);
@@ -672,21 +679,7 @@ namespace Analogy
                     {
                         singleProvider.Execute(cts.Token, offlineUC.Handler);
                     }
-                    var page = dockManager1.AddPanel(DockingStyle.Float);
-                    page.DockedAsTabbedDocument = true;
-                    page.Tag = ribbonPage;
-                    page.Controls.Add(offlineUC);
-                    offlineUC.Dock = DockStyle.Fill;
-                    page.Text = $"{offlineTitle} #{openedWindows} ({single.OptionalTitle})";
-                    dockManager1.ActivePanel = page;
-                    if (single is IAnalogySingleDataProvider sdp)
-                    {
-                        sdp.Execute(CancellationToken.None, offlineUC.Handler);
-                    }
-                    if (single is IAnalogySingleFileDataProvider sfp)
-                    {
-                        sfp.Process(CancellationToken.None, offlineUC.Handler);
-                    }
+             
                 };
             }
         }

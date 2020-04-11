@@ -178,6 +178,22 @@ namespace Analogy
 
                 var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
                     @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList();
+                if (UserSettingsManager.UserSettings.AdditionalProbingLocations!=null)
+                {
+                    foreach (string folder in UserSettingsManager.UserSettings.AdditionalProbingLocations)
+                    {
+                        try
+                        {
+                            analogyAssemblies.AddRange(Directory.EnumerateFiles(folder, @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList());
+                        }
+                        catch (Exception e)
+                        {
+                           AnalogyLogger.Instance.LogException(e,nameof(ExternalDataProviders),$"Error probing folder {folder}. Error: {e.Message}");
+                        }
+                    }
+                  
+
+                }
                 foreach (string aFile in analogyAssemblies)
                 {
                     try
