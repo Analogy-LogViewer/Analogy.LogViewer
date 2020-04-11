@@ -206,8 +206,7 @@ namespace Analogy
                             var factory = Activator.CreateInstance(f) as IAnalogyComponentImages;
                             DataProviderImages.AddRange(factory.GetDataProviderImages());
                         }
-
-
+                        
                         foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
                         {
                             var factory = Activator.CreateInstance(f) as IAnalogyFactory;
