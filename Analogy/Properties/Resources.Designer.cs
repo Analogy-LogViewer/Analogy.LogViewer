@@ -471,15 +471,6 @@ namespace Analogy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feature is disabled.
-        /// </summary>
-        internal static string FeatureDisable {
-            get {
-                return ResourceManager.GetString("FeatureDisable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap FilePooling_16x16 {

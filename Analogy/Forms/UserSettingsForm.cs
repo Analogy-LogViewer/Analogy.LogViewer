@@ -157,6 +157,7 @@ namespace Analogy
             Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
             Settings.RememberLastSearches = tsAutoComplete.IsOn;
             Settings.UpdateOrder(order);
+            Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
             Settings.Save();
         }
 

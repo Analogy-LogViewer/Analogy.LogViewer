@@ -39,7 +39,7 @@ namespace Analogy
         {
             if (!EnableOTA)
             {
-                MessageBox.Show(Properties.Resources.FeatureDisable, Application.ProductName, MessageBoxButtons.OK,
+                MessageBox.Show("", Application.ProductName, MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 return;
             }

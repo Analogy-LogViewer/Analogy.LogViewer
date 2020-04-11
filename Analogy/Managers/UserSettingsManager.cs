@@ -183,7 +183,7 @@ namespace Analogy
             Settings.Default.NumberOfLastSearches = NumberOfLastSearches;
             Settings.Default.LastSearchesInclude = JsonConvert.SerializeObject(LastSearchesInclude.Take(NumberOfLastSearches).ToList());
             Settings.Default.LastSearchesExclude = JsonConvert.SerializeObject(LastSearchesExclude.Take(NumberOfLastSearches).ToList());
-            Settings.Default.a = ParseSettings<List<string>>(Settings.Default.AutoStartDataProviders);
+            Settings.Default.AdditionalProbingLocations = JsonConvert.SerializeObject(AdditionalProbingLocations);
             Settings.Default.Save();
 
         }
