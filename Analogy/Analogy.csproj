@@ -5,39 +5,11 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccProvider>SAK</SccProvider>
     <ApplicationIcon>Resources\Analogy_logo1.ico</ApplicationIcon>
-    <AssemblyKeyContainerName />
-    <AssemblyOriginatorKeyFile />
-    <DefaultClientScript>JScript</DefaultClientScript>
-    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
-    <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <OutputType>WinExe</OutputType>
-    <PlatformTarget>x86</PlatformTarget>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>Analogy.Program</StartupObject>
     <FileUpgradeFlags />
-    <UpgradeBackupLocation />
-    <SccAuxPath>SAK</SccAuxPath>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PlatformToolset>v120</PlatformToolset>
-    <PublishUrl>http://localhost/LogViewer/</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
     <AssemblyTitle>Analogy Log Viewer</AssemblyTitle>
     <Company>Lior Banai</Company>
     <Product>Analogy Log Viewer</Product>
@@ -55,15 +27,20 @@
     <PostBuildEvent />
     <PreBuildEvent />
     <PostBuildEvent />
-    <Platforms>AnyCPU;x86</Platforms>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <ConfigurationOverrideFile />
     <DocumentationFile />
-    <NoStdLib>false</NoStdLib>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <DebugType>portable</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ConfigurationOverrideFile />
+    <DocumentationFile />
     <DebugType>portable</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -72,9 +49,6 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <ConfigurationOverrideFile />
     <DocumentationFile />
-    <NoStdLib>false</NoStdLib>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <DebugType>portable</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -84,9 +58,14 @@
     <ConfigurationOverrideFile />
     <DocumentationFile>bin\$(Configuration)\Analogy.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
-    <NoStdLib>false</NoStdLib>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <DebugType>portable</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ConfigurationOverrideFile />
+    <DocumentationFile>bin\$(Configuration)\Analogy.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
@@ -95,14 +74,8 @@
     <ConfigurationOverrideFile />
     <DocumentationFile>bin\$(Configuration)\Analogy.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
-    <NoStdLib>false</NoStdLib>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <DebugType>portable</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent />
