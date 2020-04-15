@@ -23,7 +23,7 @@ namespace Analogy
         public ClientServerUCLog(IAnalogyOfflineDataProvider dataProvider) : this()
         {
             DataProvider = dataProvider;
-            ucLogs1.SetFileDataSource(DataProvider);
+            ucLogs1.SetFileDataSource(dataProvider,DataProvider);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

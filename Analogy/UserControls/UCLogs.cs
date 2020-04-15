@@ -104,6 +104,7 @@ namespace Analogy
         private CancellationToken filterToken;
 
         private int TotalPages => PagingManager.TotalPages;
+        private IAnalogyDataProvider DataProvider { get; set; }
         private IAnalogyOfflineDataProvider FileDataProvider { get; set; }
         private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         public GridView LogGrid
@@ -273,8 +274,9 @@ namespace Analogy
             gridControl.Focus();
         }
 
-        public void SetFileDataSource(IAnalogyOfflineDataProvider fileDataProvider)
+        public void SetFileDataSource(IAnalogyDataProvider dataProvider,IAnalogyOfflineDataProvider fileDataProvider)
         {
+            DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
             SetSaveButtonsVisibility(FileDataProvider != null);
         }

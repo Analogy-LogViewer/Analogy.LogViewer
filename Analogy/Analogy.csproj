@@ -693,7 +693,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.0" />
+    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.1" />
       <PackageReference Include="Analogy.LogViewer.Example" Version="1.2.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -702,7 +702,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.1">
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.2">
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>

@@ -580,7 +580,8 @@ namespace Analogy
                             ribbonControlMain.SelectedPage = ribbonPage;
                             onlineUC.Dock = DockStyle.Fill;
                             page.Text = $"{onlineTitle} #{openedWindows} ({dataSourceFactory.Title})";
-                            dockManager1.ActivePanel = page; realTime.OnMessageReady += OnRealTimeOnMessageReady;
+                            dockManager1.ActivePanel = page; 
+                            realTime.OnMessageReady += OnRealTimeOnMessageReady;
                             realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                             realTime.OnDisconnected += OnRealTimeDisconnected;
                             realTime.StartReceiving();

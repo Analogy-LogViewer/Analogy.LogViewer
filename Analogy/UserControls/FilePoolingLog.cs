@@ -25,7 +25,7 @@ namespace Analogy
             InitializeComponent();
             FileName = fileName;
             PoolingManager = new FilePoolingManager(FileName, offlineDataProvider);
-            ucLogs1.SetFileDataSource(offlineDataProvider);
+            ucLogs1.SetFileDataSource(offlineDataProvider,offlineDataProvider);
             PoolingManager.OnNewMessages += (s, data) =>
             {
                 AppendMessages(data.messages, data.dataSource);

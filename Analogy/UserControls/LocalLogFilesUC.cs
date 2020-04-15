@@ -35,7 +35,7 @@ namespace Analogy
             DataProvider = dataProvider;
             if (fileNames != null)
                 extrenalFiles.AddRange(fileNames);
-            ucLogs1.SetFileDataSource(dataProvider);
+            ucLogs1.SetFileDataSource(dataProvider,dataProvider);
         }
 
         public LocalLogFilesUC(CancellationTokenSource cts):this()

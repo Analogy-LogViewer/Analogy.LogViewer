@@ -20,7 +20,7 @@ namespace Analogy
         public RemoteLogsUC(IAnalogyRealTimeDataProvider realTime)
         {
             InitializeComponent();
-            ucLogs1.SetFileDataSource(realTime.FileOperationsHandler);
+            ucLogs1.SetFileDataSource(realTime,realTime.FileOperationsHandler);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
