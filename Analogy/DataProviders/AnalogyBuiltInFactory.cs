@@ -65,11 +65,6 @@ namespace Analogy.DataSources
             //nop
         }
 
-        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
-        {
-            return (Color.Empty, Color.Empty);
-        }
-
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             if (fileName.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
@@ -143,10 +138,14 @@ namespace Analogy.DataSources
 
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
-        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders() =>
-            Array.Empty<(string, string)>();
+        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
+            => Array.Empty<(string, string)>();
+
+        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
+            => (Color.Empty, Color.Empty);
         
-    private static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
+
+        private static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
             List<FileInfo> files = dirInfo.GetFiles("*.xml")
                 .Concat(dirInfo.GetFiles("*.json"))
