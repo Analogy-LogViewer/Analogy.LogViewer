@@ -31,7 +31,6 @@ namespace Analogy
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
     {
-        private bool simClear;
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
@@ -2295,21 +2294,6 @@ namespace Analogy
             }
 
             contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (simClear)
-            {
-                txtbInclude.Text = "";
-                simClear = false;
-                return;
-            }
-            else
-            {
-                txtbInclude.Text = "8 | 9";
-                simClear = true;
-            }
         }
     }
 }

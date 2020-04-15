@@ -247,8 +247,6 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
@@ -1329,7 +1327,7 @@ namespace Analogy
             this.bdcBookmarks.Manager = this.barManager1;
             this.bdcBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcBookmarks.Name = "bdcBookmarks";
-            this.bdcBookmarks.Size = new System.Drawing.Size(1924, 32);
+            this.bdcBookmarks.Size = new System.Drawing.Size(2111, 32);
             this.bdcBookmarks.Text = "standaloneBarDockControl1";
             // 
             // barGroup
@@ -2029,7 +2027,7 @@ namespace Analogy
             this.xtpBookmarks.Controls.Add(this.bdcBookmarks);
             this.xtpBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpBookmarks.Name = "xtpBookmarks";
-            this.xtpBookmarks.Size = new System.Drawing.Size(1924, 170);
+            this.xtpBookmarks.Size = new System.Drawing.Size(2111, 170);
             this.xtpBookmarks.Text = "Bookmarks";
             // 
             // gridControlBookmarkedMessages
@@ -2040,7 +2038,7 @@ namespace Analogy
             this.gridControlBookmarkedMessages.MainView = this.gridViewBookmarkedMessages;
             this.gridControlBookmarkedMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlBookmarkedMessages.Name = "gridControlBookmarkedMessages";
-            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(1924, 138);
+            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(2111, 138);
             this.gridControlBookmarkedMessages.TabIndex = 3;
             this.gridControlBookmarkedMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBookmarkedMessages});
@@ -2461,7 +2459,7 @@ namespace Analogy
             this.xtCounts.Controls.Add(this.panelControl1);
             this.xtCounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtCounts.Name = "xtCounts";
-            this.xtCounts.Size = new System.Drawing.Size(1931, 705);
+            this.xtCounts.Size = new System.Drawing.Size(2118, 705);
             this.xtCounts.Text = "Messages Grouping";
             // 
             // spltGroupByChars
@@ -2479,7 +2477,7 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(1931, 664);
+            this.spltGroupByChars.Size = new System.Drawing.Size(2118, 664);
             this.spltGroupByChars.SplitterDistance = 339;
             this.spltGroupByChars.TabIndex = 4;
             // 
@@ -2492,7 +2490,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(1931, 339);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(2118, 339);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2515,7 +2513,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridView1;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1931, 321);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2118, 321);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2808,7 +2806,7 @@ namespace Analogy
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1931, 41);
+            this.panelControl1.Size = new System.Drawing.Size(2118, 41);
             this.panelControl1.TabIndex = 16;
             // 
             // nudGroupBychars
@@ -3063,16 +3061,6 @@ namespace Analogy
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 600;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // MainSplitContainer
             // 
@@ -3392,8 +3380,6 @@ namespace Analogy
         private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SplitContainerControl MainSplitContainer;
         private DevExpress.XtraBars.Bar barGroup;
