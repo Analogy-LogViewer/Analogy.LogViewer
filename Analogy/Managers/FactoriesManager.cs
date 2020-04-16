@@ -213,6 +213,11 @@ namespace Analogy
                             var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
                             setting.FactoryName = factory.Title;
                             FactoryContainer fc = new FactoryContainer(assembly, factory, setting);
+                            if (Factories.Exists(fa => fa.Factory.FactoryId==factory.FactoryId))
+                            {
+                                Factories.Remove(Factories.FirstOrDefault(fa =>
+                                    fa.Factory.FactoryId == factory.FactoryId));
+                            }
                             Factories.Add(fc);
                         }
 

@@ -237,6 +237,7 @@ namespace Analogy
             if (DesignMode) return;
 
             LoadUISettings();
+            LoadReplacementHeaders();
             BookmarkModeUI();
 
             hasAnyInPlaceExtensions = ExtensionManager.HasAnyInPlace;
@@ -271,6 +272,24 @@ namespace Analogy
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
 
             gridControl.Focus();
+        }
+
+        private void LoadReplacementHeaders()
+        {
+            try
+            {
+                if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
+                    return;
+                foreach ((string originalHeader, string replacementHeader) in DataProvider.GetReplacementHeaders())
+                {
+                    logGrid.Columns[originalHeader].Caption = replacementHeader;
+                }
+
+            }
+            catch (Exception)
+            {
+               //ignore replacement
+            }
         }
 
         public void SetFileDataSource(IAnalogyDataProvider dataProvider,IAnalogyOfflineDataProvider fileDataProvider)
