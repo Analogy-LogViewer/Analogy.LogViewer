@@ -569,6 +569,17 @@ namespace Analogy
                         e.Appearance.BackColor = preDefineHighlight.Color;
                     }
                 }
+
+                if (DataProvider.UseCustomColors)
+                {
+                    IAnalogyLogMessage m = (AnalogyLogMessage) view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                    if (m == null) return;
+                    var colors = DataProvider.GetColorForMessage(m);
+                    if (colors.backgroundColor != Color.Empty)
+                        e.Appearance.BackColor = colors.backgroundColor;
+                    if (colors.foregroundColor!= Color.Empty)
+                        e.Appearance.ForeColor = colors.foregroundColor;
+                }
             }
         }
 
@@ -805,7 +816,7 @@ namespace Analogy
                 {
                     CriteriaOperator op = LogGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
                     string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
-                    filter = $"{filter} and {filterString}";
+                    filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
                 }
 
                 var rows = _messageData.Select(filter);
@@ -813,16 +824,16 @@ namespace Analogy
                 var error = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Error.ToString());
                 var warning = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Warning.ToString());
                 var critical = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Critical.ToString());
-                var AlertCount = 0;
+                var alertCount = 0;
                 if (Settings.PreDefinedQueries.Alerts.Any())
                 {
                     var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
-                    AlertCount = messages.Count(m =>
+                    alertCount = messages.Count(m =>
                         Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
 
                 }
 
-                return (total, error, warning, critical, AlertCount);
+                return (total, error, warning, critical, alertCount);
             }
             finally
             {
