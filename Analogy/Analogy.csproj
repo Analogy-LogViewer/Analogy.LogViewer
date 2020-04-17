@@ -12,7 +12,7 @@
     <AssemblyName>Analogy</AssemblyName>
     <RootNamespace>Analogy</RootNamespace>
     <ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageId>Analogy.LogViewer.Core</PackageId>
     <Authors>Lior Banai</Authors>
@@ -23,10 +23,10 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageTags />
     <RepositoryType>git</RepositoryType>
-    <Version>4.1.13</Version>
+    <Version>4.1.14</Version>
     <Copyright>Lior Banai ©  2020</Copyright>
     <Product>Analogy Log Viewer Core</Product>
-    <PackageReleaseNotes>aligned with interface API V2.2.0</PackageReleaseNotes>
+    <PackageReleaseNotes>aligned with interface API V2.2.2</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
