@@ -300,12 +300,6 @@
     <Compile Update="UserControls\OnlineLog.Designer.cs">
       <DependentUpon>OnlineLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\OTALogs.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\OTALogs.Designer.cs">
-      <DependentUpon>OTALogs.cs</DependentUpon>
-    </Compile>
     <Compile Update="UserControls\FilesOperationsUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -567,9 +561,6 @@
     </EmbeddedResource>
     <EmbeddedResource Update="UserControls\OnlineLog.resx">
       <DependentUpon>OnlineLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="UserControls\OTALogs.resx">
-      <DependentUpon>OTALogs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="UserControls\FilesOperationsUC.resx">
       <DependentUpon>FilesOperationsUC.cs</DependentUpon>
