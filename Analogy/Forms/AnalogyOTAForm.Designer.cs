@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnalogyOTAForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnStartServer = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.sbtnInit = new DevExpress.XtraEditors.SimpleButton();
+            this.cbShares = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,56 +39,44 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnStartServer);
+            this.groupBox1.Controls.Add(this.cbShares);
+            this.groupBox1.Controls.Add(this.sbtnInit);
             this.groupBox1.Location = new System.Drawing.Point(13, 16);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(850, 77);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Collector mode (logs will sent here)";
+            this.groupBox1.Text = "Analogy Shareable Component";
             // 
-            // label1
+            // sbtnInit
             // 
-            this.label1.Location = new System.Drawing.Point(324, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(510, 30);
-            this.label1.TabIndex = 1;
+            this.sbtnInit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnInit.Location = new System.Drawing.Point(671, 22);
+            this.sbtnInit.Name = "sbtnInit";
+            this.sbtnInit.Size = new System.Drawing.Size(163, 40);
+            this.sbtnInit.TabIndex = 1;
+            this.sbtnInit.Text = "initialize Component";
             // 
-            // btnStartServer
+            // cbShares
             // 
-            this.btnStartServer.Location = new System.Drawing.Point(5, 21);
-            this.btnStartServer.Name = "btnStartServer";
-            this.btnStartServer.Size = new System.Drawing.Size(304, 37);
-            this.btnStartServer.TabIndex = 0;
-            this.btnStartServer.Text = "Start Receiving Messages";
-            this.btnStartServer.UseVisualStyleBackColor = true;
-            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Location = new System.Drawing.Point(11, 99);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(851, 344);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Incomings Logs:";
+            this.cbShares.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbShares.FormattingEnabled = true;
+            this.cbShares.Location = new System.Drawing.Point(20, 31);
+            this.cbShares.Name = "cbShares";
+            this.cbShares.Size = new System.Drawing.Size(636, 24);
+            this.cbShares.TabIndex = 2;
             // 
             // AnalogyOTAForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 455);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnalogyOTAForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Over the air logs";
+            this.Text = "Share Logs";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnalogyOTAForm_FormClosing);
             this.Load += new System.EventHandler(this.AnalogyOTAForm_Load);
             this.groupBox1.ResumeLayout(false);
@@ -100,8 +87,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnStartServer;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.SimpleButton sbtnInit;
+        private System.Windows.Forms.ComboBox cbShares;
     }
 }

@@ -106,7 +106,7 @@ namespace Analogy
             this.bBtnExportHtml = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnImport = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnShare = new DevExpress.XtraBars.BarButtonItem();
             this.bdcTopFiltering = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BbarMainMenu = new DevExpress.XtraBars.Bar();
             this.barMessage = new DevExpress.XtraBars.Bar();
@@ -952,7 +952,7 @@ namespace Analogy
             this.barButtonItemSaveEntireInAnalogy,
             this.barSubItem1,
             this.bBtnUndockViewPerProcess,
-            this.barButtonItem5});
+            this.bBtnShare});
             this.barManager1.MainMenu = this.BbarMainMenu;
             this.barManager1.MaxItemId = 37;
             // 
@@ -976,7 +976,7 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnDataVisualizer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnShare)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
             this.barTopFiltering.OptionsBar.DisableClose = true;
@@ -1195,13 +1195,13 @@ namespace Analogy
             this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
             // 
-            // barButtonItem5
+            // bBtnShare
             // 
-            this.barButtonItem5.Caption = "Share Log";
-            this.barButtonItem5.Id = 36;
-            this.barButtonItem5.ImageOptions.Image = global::Analogy.Properties.Resources.upload16x16;
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnShare.Caption = "Share Log";
+            this.bBtnShare.Id = 36;
+            this.bBtnShare.ImageOptions.Image = global::Analogy.Properties.Resources.upload16x16;
+            this.bBtnShare.Name = "bBtnShare";
+            this.bBtnShare.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bdcTopFiltering
             // 
@@ -3395,6 +3395,6 @@ namespace Analogy
         private DevExpress.XtraEditors.SplitContainerControl MainSplitContainer;
         private DevExpress.XtraBars.Bar barGroup;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControlLeft;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem bBtnShare;
     }
 }

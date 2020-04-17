@@ -128,6 +128,11 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
+            bBtnShare.ItemClick += (s, e) =>
+            {
+                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable());
+                share.Show(this);
+            };
             PagingManager.OnPageChanged += (s, arg) =>
             {
                 if (IsDisposed) return;
@@ -1315,21 +1320,6 @@ namespace Analogy
             }
         }
 
-        private void tsBtnShare_Click(object sender, EventArgs e)
-        {
-            if (EnableOTA)
-            {
-                AnalogyOTAClient client = new AnalogyOTAClient(GetFilteredDataTable());
-                client.Show(this);
-            }
-            else
-            {
-                XtraMessageBox.Show("Sharing logs feature has been disabled", "Operation Is Not allowed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-
         private void tmrNewData_Tick(object sender, EventArgs e)
         {
             if (NewDataExist)
@@ -1337,34 +1327,6 @@ namespace Analogy
                 NewDataExist = false;
                 AcceptChanges(false);
             }
-
-        }
-
-        private void txtbInclude_MouseEnter(object sender, EventArgs e)
-        {
-            txtbInclude.Focus();
-            txtbInclude.SelectAll();
-        }
-
-        private void txtbInclude_Enter(object sender, EventArgs e)
-        {
-            txtbInclude.SelectAll();
-        }
-
-        private void txtbExcludeSource_TextChanged(object sender, EventArgs e)
-        {
-            //if (string.IsNullOrEmpty(txtbExcludeSource.Text))
-            //{
-            //    chkbExcludeSources.Checked = false;
-            //}
-            //else
-            //{
-            //    if (!chkbExcludeSources.Checked)
-            //        chkbExcludeSources.Checked = true;
-            //}
-
-            //RefreshUserFilter();
-            //Settings.ExcludedSource = txtbExcludeSource.Text;
 
         }
 
