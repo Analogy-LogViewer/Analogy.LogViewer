@@ -86,7 +86,7 @@
     <PackageIconUrl />
     <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Analogy.LogViewer</PackageId>
     <RepositoryType>git</RepositoryType>
     <Authors>Lior Banai</Authors>
