@@ -30,17 +30,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.0.6" />
-    <PackageReference Include="Analogy.LogViewer.Example" Version="1.2.0">
+    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.1" />
+    <PackageReference Include="Analogy.LogViewer.Example" Version="1.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.2.0">
+    <PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.0" />
-    <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="1.1.0">
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.2" />
+    <PackageReference Include="Analogy.LogViewer.KafkaProvider" Version="1.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
