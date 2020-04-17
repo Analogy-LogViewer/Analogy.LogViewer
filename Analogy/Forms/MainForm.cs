@@ -196,27 +196,11 @@ namespace Analogy
         private void AnalogyMainForm_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
 
-        private void OpenOTALogs()
-        {
-            var OTAUC = new OTALogs();
-            var page = dockManager1.AddPanel(DockingStyle.Float);
-            page.DockedAsTabbedDocument = true;
-            page.Controls.Add(OTAUC);
-            OTAUC.Dock = DockStyle.Fill;
-            page.Text = $"Over the air log";
-            dockManager1.ActivePanel = page;
-        }
 
         private void OpenProcessForm()
         {
             var p = new ProcessNameAndID();
             p.Show(this);
-        }
-
-
-        private void btnItemOTA_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenOTALogs();
         }
 
         private void bItemProcess_ItemClick(object sender, ItemClickEventArgs e)
