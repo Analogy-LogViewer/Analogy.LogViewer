@@ -31,13 +31,12 @@ namespace Analogy
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
     {
-        private bool simClear;
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
         private FileProcessor fileProcessor { get; set; }
 
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        public CancellationTokenSource CancellationTokenSource { get; set; }= new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
@@ -91,7 +90,6 @@ namespace Analogy
         private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
-        public bool OnlineMode { get; set; }
 
         // private bool FilterHasChanged { get; set; }
         private bool NewDataExist { get; set; }
@@ -105,6 +103,7 @@ namespace Analogy
         private CancellationToken filterToken;
 
         private int TotalPages => PagingManager.TotalPages;
+        private IAnalogyDataProvider DataProvider { get; set; }
         private IAnalogyOfflineDataProvider FileDataProvider { get; set; }
         private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         public GridView LogGrid
@@ -238,6 +237,7 @@ namespace Analogy
             if (DesignMode) return;
 
             LoadUISettings();
+            LoadReplacementHeaders();
             BookmarkModeUI();
 
             hasAnyInPlaceExtensions = ExtensionManager.HasAnyInPlace;
@@ -274,19 +274,45 @@ namespace Analogy
             gridControl.Focus();
         }
 
-        public void SetFileDataSource(IAnalogyOfflineDataProvider fileDataProvider)
+        private void LoadReplacementHeaders()
         {
+            try
+            {
+                if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
+                    return;
+                foreach ((string originalHeader, string replacementHeader) in DataProvider.GetReplacementHeaders())
+                {
+                    logGrid.Columns[originalHeader].Caption = replacementHeader;
+                }
+
+            }
+            catch (Exception)
+            {
+               //ignore replacement
+            }
+        }
+
+        public void SetFileDataSource(IAnalogyDataProvider dataProvider,IAnalogyOfflineDataProvider fileDataProvider)
+        {
+            DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
-            if (FileDataProvider is EventLogDataProvider eventDataSource)
-                eventDataSource.LogWindow = this;
-            if (FileDataProvider == null)
+            SetSaveButtonsVisibility(FileDataProvider != null);
+        }
+
+        public void SetSaveButtonsVisibility(bool on)
+        {
+            if (on)
             {
                 //disable specific saving
+                bBtnSaveLog.Visibility = BarItemVisibility.Always;
+                bBtnSaveEntireLog.Visibility = BarItemVisibility.Always;
+            }
+            else
+            {
                 bBtnSaveLog.Visibility = BarItemVisibility.Never;
                 bBtnSaveEntireLog.Visibility = BarItemVisibility.Never;
             }
         }
-
 
         public void ProcessCmdKeyFromParent(Keys keyData)
         {
@@ -543,6 +569,17 @@ namespace Analogy
                         e.Appearance.BackColor = preDefineHighlight.Color;
                     }
                 }
+
+                if (DataProvider.UseCustomColors)
+                {
+                    IAnalogyLogMessage m = (AnalogyLogMessage) view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                    if (m == null) return;
+                    var colors = DataProvider.GetColorForMessage(m);
+                    if (colors.backgroundColor != Color.Empty)
+                        e.Appearance.BackColor = colors.backgroundColor;
+                    if (colors.foregroundColor!= Color.Empty)
+                        e.Appearance.ForeColor = colors.foregroundColor;
+                }
             }
         }
 
@@ -779,7 +816,7 @@ namespace Analogy
                 {
                     CriteriaOperator op = LogGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
                     string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
-                    filter = $"{filter} and {filterString}";
+                    filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
                 }
 
                 var rows = _messageData.Select(filter);
@@ -787,16 +824,16 @@ namespace Analogy
                 var error = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Error.ToString());
                 var warning = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Warning.ToString());
                 var critical = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Critical.ToString());
-                var AlertCount = 0;
+                var alertCount = 0;
                 if (Settings.PreDefinedQueries.Alerts.Any())
                 {
                     var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
-                    AlertCount = messages.Count(m =>
+                    alertCount = messages.Count(m =>
                         Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
 
                 }
 
-                return (total, error, warning, critical, AlertCount);
+                return (total, error, warning, critical, alertCount);
             }
             finally
             {
@@ -1195,26 +1232,10 @@ namespace Analogy
             }));
         }
 
-        public void RefreshUI()
-        {
-            //gridColumnDataSource.VisibleIndex = 0;
-            //gridColumnDate.VisibleIndex = 1;
-            //gridColumnText.VisibleIndex = 2;
-            //gridColumnSource.VisibleIndex = 3;
-            //gridColumnLevel.VisibleIndex = 4;
-            //gridColumnClass.VisibleIndex = 5;
-            //gridColumnModule.VisibleIndex = 6;
-            //gridColumnProcessID.VisibleIndex = 7;
-            //gridColumnUser.VisibleIndex = 8;
-            //gridColumnCategory.VisibleIndex = 9;
-            //gridColumnAudit.VisibleIndex = 10;
-
-        }
-
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
         {
-            cancellationTokenSource = new CancellationTokenSource();
-            CancellationToken token = cancellationTokenSource.Token;
+            CancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = CancellationTokenSource.Token;
             if (clearLogBeforeLoading)
                 ClearLogs(false);
             sBtnCancel.Visible = true;
@@ -1234,7 +1255,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename, cancellationTokenSource.Token);
+                await fileProcessor.Process(FileDataProvider, filename, token);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -1861,10 +1882,10 @@ namespace Analogy
 
         private void sBtnCancel_Click(object sender, EventArgs e)
         {
-            cancellationTokenSource.Cancel(false);
+            CancellationTokenSource.Cancel(false);
             Interlocked.Exchange(ref fileLoadingCount, 0);
 
-            cancellationTokenSource = new CancellationTokenSource();
+            CancellationTokenSource = new CancellationTokenSource();
             sBtnCancel.Visible = false;
         }
 
@@ -2278,21 +2299,6 @@ namespace Analogy
             }
 
             contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (simClear)
-            {
-                txtbInclude.Text = "";
-                simClear = false;
-                return;
-            }
-            else
-            {
-                txtbInclude.Text = "8 | 9";
-                simClear = true;
-            }
         }
     }
 }

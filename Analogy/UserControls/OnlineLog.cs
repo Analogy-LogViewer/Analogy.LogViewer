@@ -14,16 +14,14 @@ namespace Analogy
 
     public partial class OnlineUCLogs : UserControl
     {
-        private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
-        private bool _sendLogs;
-        private static int clearHistoryCounter;
+        private bool _showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
+        private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
         public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime)
         {
             InitializeComponent();
-            ucLogs1.OnlineMode = true;
 
-            ucLogs1.SetFileDataSource(realTime.FileOperationsHandler);
+            ucLogs1.SetFileDataSource(realTime,realTime.FileOperationsHandler);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -39,26 +37,16 @@ namespace Analogy
 
         private void UcLogs1_OnHistoryCleared(object sender, AnalogyClearedHistoryEventArgs e)
         {
-            Interlocked.Increment(ref clearHistoryCounter);
+            Interlocked.Increment(ref _clearHistoryCounter);
             listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
-            spltMain.Panel1Collapsed = !showHistory;
-            string entry = $"History #{clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
+            spltMain.Panel1Collapsed = !_showHistory;
+            string entry = $"History #{_clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
             FileProcessingManager.Instance.DoneProcessingFile(e.ClearedMessages, entry);
             listBoxClearHistory.Items.Add(entry);
             listBoxClearHistory.SelectedItem = null;
             listBoxClearHistory.SelectedIndex = -1;
             listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
         }
-
-        private void AnalogyUCLogs_DragEnter(object sender, DragEventArgs e) =>
-            e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
-        private async void AnalogyUCLogs_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            await LoadFilesAsync(files.ToList(), true);
-
-        }
-
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
@@ -80,11 +68,6 @@ namespace Analogy
             }
         }
 
-        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
-        {
-            await ucLogs1.LoadFilesAsync(fileNames, clearLogBeforeLoading);
-        }
-
         private void bbtnClear_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             listBoxClearHistory.Items.Clear();
@@ -93,7 +76,7 @@ namespace Analogy
         private void bbtnHide_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (IsDisposed) return;
-            showHistory = false;
+            _showHistory = false;
             spltMain.Panel1Collapsed = true;
         }
 

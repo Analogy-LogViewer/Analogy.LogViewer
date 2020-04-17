@@ -2,7 +2,7 @@
 
 namespace Analogy
 {
-    partial class OfflineUCLogs
+    partial class LocalLogFilesUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -36,7 +36,7 @@ namespace Analogy
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OfflineUCLogs));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LocalLogFilesUC));
             this.spltMain = new System.Windows.Forms.SplitContainer();
             this.splcLeft = new System.Windows.Forms.SplitContainer();
             this.folderTreeViewUC1 = new Analogy.FolderTreeViewUC();
@@ -361,7 +361,6 @@ namespace Analogy
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
-            this.ucLogs1.OnlineMode = false;
             this.ucLogs1.Size = new System.Drawing.Size(991, 700);
             this.ucLogs1.TabIndex = 0;
             // 
@@ -421,7 +420,7 @@ namespace Analogy
             this.bBtnOpenFolder.Name = "bBtnOpenFolder";
             this.bBtnOpenFolder.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // OfflineUCLogs
+            // LocalLogFilesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -432,7 +431,7 @@ namespace Analogy
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "OfflineUCLogs";
+            this.Name = "LocalLogFilesUC";
             this.Size = new System.Drawing.Size(1387, 700);
             this.Load += new System.EventHandler(this.OfflineUCLogs_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragDrop);

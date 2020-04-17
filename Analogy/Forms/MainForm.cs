@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,8 +33,7 @@ namespace Analogy
             new Dictionary<DockPanel, IAnalogyRealTimeDataProvider>();
 
         private List<Task<bool>> OnlineSources = new List<Task<bool>>();
-        private int offline;
-        private int online;
+        private int openedWindows;
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
         private DockPanel currentContextPage;
@@ -66,8 +66,10 @@ namespace Analogy
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             ribbonControlMain.Minimized = UserSettingsManager.UserSettings.StartupRibbonMinimized;
 
-
-            CreateAnalogyBuiltinDataProviders();
+            //CreateAnalogyBuiltinDataProviders
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
+                CreateDataSource(analogy, 0);
             await FactoriesManager.Instance.AddExternalDataSources();
 
             CreateDataSources();
@@ -106,244 +108,18 @@ namespace Analogy
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
                 btnErrors.Visibility = BarItemVisibility.Always;
         }
-
-
-
-        private void CreateAnalogyBuiltinDataProviders()
-        {
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
-                CreateDataSource(analogy, 0);
-
-            ribbonControlMain.SelectedPage = ribbonControlMain.Pages.First();
-            FactoryContainer eventLogDataFactory = FactoriesManager.Instance.GetBuiltInFactoryContainer(EventLogDataFactory.id);
-            if (eventLogDataFactory.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
-                return;
-            //CreateEventLogsGroup
-            RibbonPage ribbonPage = new RibbonPage(eventLogDataFactory.Factory.Title);
-
-            EventLogDataProvider elds =
-                eventLogDataFactory.DataProvidersFactories.First().DataProviders.First() as EventLogDataProvider;
-
-            ribbonControlMain.Pages.Insert(2, ribbonPage);
-            RibbonPageGroup group = new RibbonPageGroup(eventLogDataFactory.Factory.Title);
-            ribbonPage.Groups.Add(group);
-
-
-            BarButtonItem evtxRealTime = new BarButtonItem();
-            evtxRealTime.Caption = "Real Time Windows Event Logs";
-            evtxRealTime.RibbonStyle = RibbonItemStyles.All;
-            evtxRealTime.ImageOptions.Image = Resources.OperatingSystem_16x16;
-            evtxRealTime.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-            evtxRealTime.ItemClick += (s, be) =>
-            {
-                UserControl windowsEventlog = new WindowsEventLog();
-                var page = dockManager1.AddPanel(DockingStyle.Float);
-                page.DockedAsTabbedDocument = true;
-                page.Controls.Add(windowsEventlog);
-                windowsEventlog.Dock = DockStyle.Fill;
-                page.Text = $"Windows Log";
-                dockManager1.ActivePanel = page;
-            };
-            group.ItemLinks.Add(evtxRealTime);
-
-            BarButtonItem evtxFile = new BarButtonItem();
-            evtxFile.Caption = "Open Event log file (*.Evtx)";
-            evtxFile.RibbonStyle = RibbonItemStyles.All;
-            evtxFile.ImageOptions.Image = Resources.OperatingSystem_16x16;
-            evtxFile.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-            evtxFile.ItemClick += (s, be) =>
-            {
-
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Filter = "Windows Event log files (*.evtx)|*.evtx";
-                openFileDialog1.Title = @"Open Files";
-                openFileDialog1.Multiselect = true;
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    OpenOfflineLogs(ribbonPage, openFileDialog1.FileNames, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(openFileDialog1.FileNames.ToList());
-                }
-            };
-            group.ItemLinks.Add(evtxFile);
-
-            BarButtonItem systemLog = new BarButtonItem();
-            systemLog.Caption = $"Open {Environment.MachineName} System Log file";
-            systemLog.RibbonStyle = RibbonItemStyles.All;
-            systemLog.ImageOptions.Image = Resources.OperatingSystem_16x16;
-            systemLog.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-            systemLog.ItemClick += (s, be) =>
-            {
-                string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-                    "Logs", "System.evtx");
-                if (File.Exists(file))
-                {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() {file});
-                }
-            };
-            group.ItemLinks.Add(systemLog);
-
-            BarButtonItem appLog = new BarButtonItem();
-            appLog.Caption = $"Open {Environment.MachineName} Application Log file";
-            appLog.RibbonStyle = RibbonItemStyles.All;
-            appLog.ImageOptions.Image = Resources.OperatingSystem_16x16;
-            appLog.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-            appLog.ItemClick += (s, be) =>
-            {
-                string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-                    "Logs", "Application.evtx");
-                if (File.Exists(file))
-                {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() {file});
-                }
-            };
-            group.ItemLinks.Add(appLog);
-
-            BarButtonItem secLog = new BarButtonItem();
-            secLog.Caption = $"Open {Environment.MachineName} Security Log file";
-            secLog.RibbonStyle = RibbonItemStyles.All;
-            secLog.ImageOptions.Image = Resources.OperatingSystem_16x16;
-            secLog.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-            secLog.ItemClick += (s, be) =>
-            {
-                string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-                    "Logs", "Security.evtx");
-                if (File.Exists(file))
-                {
-                    OpenOfflineLogs(ribbonPage, new[] {file}, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() {file});
-                }
-            };
-            group.ItemLinks.Add(secLog);
-            BarButtonItem btnFolder = new BarButtonItem();
-            btnFolder.Caption = $"Local Machine logs - {Environment.MachineName}";
-            btnFolder.RibbonStyle = RibbonItemStyles.All;
-            btnFolder.ImageOptions.Image = Resources.OperatingSystem_16x16;
-            btnFolder.ImageOptions.LargeImage = Resources.OperatingSystem_32x32;
-            btnFolder.ItemClick += (s, be) =>
-            {
-                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
-                offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
-                    "System32", "Winevt", "Logs");
-                var page = dockManager1.AddPanel(DockingStyle.Float);
-                page.DockedAsTabbedDocument = true;
-                page.Tag = ribbonPage;
-                page.Controls.Add(offlineUC);
-                offlineUC.Dock = DockStyle.Fill;
-                page.Text = $"Local Machine logs";
-                dockManager1.ActivePanel = page;
-            };
-            group.ItemLinks.Add(btnFolder);
-            CreateEventLogsMenu(ribbonPage);
-        }
-
-        private void CreateEventLogsMenu(RibbonPage ribbonPage)
-        {
-            EventLogDataProvider elds = new EventLogDataProvider();
-            BarButtonItem evtxRealTime = new BarButtonItem();
-            evtxRealTime.Caption = "Real Time Windows Event Logs";
-            evtxRealTime.ItemClick += (s, be) =>
-            {
-                UserControl windowsEventlog = new WindowsEventLog();
-                var page = dockManager1.AddPanel(DockingStyle.Float);
-                page.DockedAsTabbedDocument = true;
-                page.Tag = ribbonPage;
-                page.Controls.Add(windowsEventlog);
-                windowsEventlog.Dock = DockStyle.Fill;
-                page.Text = $"Windows Log";
-                dockManager1.ActivePanel = page;
-            };
-            bsiWindowsEventLogs.AddItem(evtxRealTime);
-
-            BarButtonItem evtxFile = new BarButtonItem();
-            evtxFile.Caption = "Open Event log file (*.Evtx)";
-            evtxFile.ItemClick += (s, be) =>
-            {
-
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Filter = "Windows Event log files (*.evtx)|*.evtx";
-                openFileDialog1.Title = @"Open Files";
-                openFileDialog1.Multiselect = true;
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    OpenOfflineLogs(ribbonPage, openFileDialog1.FileNames, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(openFileDialog1.FileNames.ToList());
-                }
-            };
-            bsiWindowsEventLogs.AddItem(evtxFile);
-
-            BarButtonItem systemLog = new BarButtonItem();
-            systemLog.Caption = $"Open {Environment.MachineName} System Log file";
-            systemLog.ItemClick += (s, be) =>
-            {
-                string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-                    "Logs", "System.evtx");
-                if (File.Exists(file))
-                {
-                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() { file });
-                }
-            };
-            bsiWindowsEventLogs.AddItem(systemLog);
-
-            BarButtonItem appLog = new BarButtonItem();
-            appLog.Caption = $"Open {Environment.MachineName} Application Log file";
-            appLog.ItemClick += (s, be) =>
-            {
-                string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-                    "Logs", "Application.evtx");
-                if (File.Exists(file))
-                {
-                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() { file });
-                }
-            };
-            bsiWindowsEventLogs.AddItem(appLog);
-
-            BarButtonItem secLog = new BarButtonItem();
-            secLog.Caption = $"Open {Environment.MachineName} Security Log file";
-            secLog.ItemClick += (s, be) =>
-            {
-                string file = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"), "System32", "Winevt",
-                    "Logs", "Security.evtx");
-                if (File.Exists(file))
-                {
-                    OpenOfflineLogs(ribbonPage, new[] { file }, elds, "Windows Event log");
-                    AddRecentWindowsEventLogFiles(new List<string>() { file });
-                }
-            };
-            bsiWindowsEventLogs.AddItem(secLog);
-            BarButtonItem btnFolder = new BarButtonItem();
-            btnFolder.Caption = $"Local Machine logs - {Environment.MachineName}";
-            btnFolder.ItemClick += (s, be) =>
-            {
-                OfflineUCLogs offlineUC = new OfflineUCLogs(new EventLogDataProvider());
-                offlineUC.SelectedPath = Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
-                    "System32", "Winevt", "Logs");
-                var page = dockManager1.AddPanel(DockingStyle.Float);
-                page.DockedAsTabbedDocument = true;
-                page.Controls.Add(offlineUC);
-                offlineUC.Dock = DockStyle.Fill;
-                page.Text = $"Local Machine logs";
-                dockManager1.ActivePanel = page;
-            };
-            bsiWindowsEventLogs.AddItem(btnFolder);
-        }
-
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
             IAnalogyOfflineDataProvider dataProvider,
             string title = null)
         {
-            offline++;
-            UserControl offlineUC = new OfflineUCLogs(dataProvider, filenames);
+            openedWindows++;
+            UserControl offlineUC = new LocalLogFilesUC(dataProvider, filenames);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
             page.Tag = ribbonPage;
             page.Controls.Add(offlineUC);
             offlineUC.Dock = DockStyle.Fill;
-            page.Text = $"{offlineTitle} #{offline}{(title == null ? "" : $" ({title})")}";
+            page.Text = $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
             dockManager1.ActivePanel = page;
         }
 
@@ -541,13 +317,13 @@ namespace Analogy
 
         private void OpenBookmarkLog()
         {
-            offline++;
+            openedWindows++;
             var bookmarkLog = new BookmarkLog();
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
             page.Controls.Add(bookmarkLog);
             bookmarkLog.Dock = DockStyle.Fill;
-            page.Text = $"Analogy Bookmarked logs #{offline}";
+            page.Text = $"Analogy Bookmarked logs #{openedWindows}";
             dockManager1.ActivePanel = page;
         }
 
@@ -724,6 +500,7 @@ namespace Analogy
             ribbonPage.Groups.Add(ribbonPageGroup);
 
             AddRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
+            AddSingleDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
 
 
@@ -739,12 +516,12 @@ namespace Analogy
 
         private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
         {
-            var realtimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
+            var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
-            if (realtimes.Count == 0) return;
-            if (realtimes.Count == 1)
+            if (realTimes.Count == 0) return;
+            if (realTimes.Count == 1)
             {
-                AddSingleRealTimeDataSource(ribbonPage, realtimes.First(), dataSourceFactory.Title, group);
+                AddSingleRealTimeDataSource(ribbonPage, realTimes.First(), dataSourceFactory.Title, group);
             }
             else
             {
@@ -755,7 +532,7 @@ namespace Analogy
                 realTimeMenu.Caption = "Real Time Logs";
 
 
-                foreach (var realTime in realtimes)
+                foreach (var realTime in realTimes)
                 {
 
 
@@ -782,7 +559,7 @@ namespace Analogy
 
                         if (canStartReceiving) //connected
                         {
-                            online++;
+                            openedWindows++;
                             realTimeBtn.ImageOptions.Image = Resources.Database_on;
                             var onlineUC = new OnlineUCLogs(realTime);
 
@@ -807,8 +584,9 @@ namespace Analogy
                             page.Controls.Add(onlineUC);
                             ribbonControlMain.SelectedPage = ribbonPage;
                             onlineUC.Dock = DockStyle.Fill;
-                            page.Text = $"{onlineTitle} #{online} ({dataSourceFactory.Title})";
-                            dockManager1.ActivePanel = page; realTime.OnMessageReady += OnRealTimeOnMessageReady;
+                            page.Text = $"{onlineTitle} #{openedWindows} ({dataSourceFactory.Title})";
+                            dockManager1.ActivePanel = page; 
+                            realTime.OnMessageReady += OnRealTimeOnMessageReady;
                             realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                             realTime.OnDisconnected += OnRealTimeDisconnected;
                             realTime.StartReceiving();
@@ -865,10 +643,54 @@ namespace Analogy
 
                     }
 
-                    /// 
                 }
             }
         }
+
+        private void AddSingleDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory,
+            RibbonPageGroup group)
+        {
+           var singles = dataSourceFactory.DataProviders.Where(f => f is IAnalogySingleDataProvider ||
+                                                                     f is IAnalogySingleFileDataProvider).ToList();
+            
+            foreach (var single in singles)
+            {
+                BarButtonItem singleBtn = new BarButtonItem();
+                group.ItemLinks.Add(singleBtn);
+                var images = FactoriesManager.Instance.GetImages(single.ID);
+                singleBtn.ImageOptions.LargeImage = images == null ? Resources.Single32x32 : images.LargeImage;
+                singleBtn.ImageOptions.Image = images == null ? Resources.Single16x16:images.SmallImage;
+                singleBtn.RibbonStyle = RibbonItemStyles.All;
+                singleBtn.Caption = "Single provider" + (!string.IsNullOrEmpty(single.OptionalTitle)
+                    ? $" - {single.OptionalTitle}"
+                    : string.Empty);
+
+                openedWindows++;
+                singleBtn.ItemClick += (sender, e) =>
+                {
+                    CancellationTokenSource cts = new CancellationTokenSource(); 
+                    LocalLogFilesUC offlineUC = new LocalLogFilesUC(cts);
+                    var page = dockManager1.AddPanel(DockingStyle.Float);
+                    page.DockedAsTabbedDocument = true;
+                    page.Tag = ribbonPage;
+                    page.Controls.Add(offlineUC);
+                    offlineUC.Dock = DockStyle.Fill;
+                    page.Text = $"{offlineTitle} #{openedWindows} ({single.OptionalTitle})";
+                    dockManager1.ActivePanel = page;
+                    if (single is IAnalogySingleFileDataProvider fileProvider)
+                    {
+                        fileProvider.Process(cts.Token, offlineUC.Handler);
+                    }
+
+                    if (single is IAnalogySingleDataProvider singleProvider)
+                    {
+                        singleProvider.Execute(cts.Token, offlineUC.Handler);
+                    }
+             
+                };
+            }
+        }
+
 
         private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
@@ -901,27 +723,27 @@ namespace Analogy
             void OpenOffline(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider, string initialFolder,
                 string[] files = null)
             {
-                offline++;
-                UserControl offlineUC = new OfflineUCLogs(dataProvider, files, initialFolder);
+                openedWindows++;
+                UserControl offlineUC = new LocalLogFilesUC(dataProvider, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(offlineUC);
                 offlineUC.Dock = DockStyle.Fill;
-                page.Text = $"{offlineTitle} #{offline} ({titleOfDataSource})";
+                page.Text = $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
             }
 
             void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
-                offline++;
+                openedWindows++;
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(ClientServerUCLog);
                 ClientServerUCLog.Dock = DockStyle.Fill;
-                page.Text = $"Client/Server logs #{offline}. {titleOfDataSource}";
+                page.Text = $"Client/Server logs #{openedWindows}. {titleOfDataSource}";
                 dockManager1.ActivePanel = page;
             }
 
@@ -929,7 +751,7 @@ namespace Analogy
                 string initialFolder, string file)
             {
 
-                offline++;
+                openedWindows++;
                 UserControl filepoolingUC = new FilePoolingUCLogs(dataProvider, file, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1173,27 +995,27 @@ namespace Analogy
 
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
-                offline++;
-                UserControl offlineUC = new OfflineUCLogs(offlineAnalogy, files, initialFolder);
+                openedWindows++;
+                UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(offlineUC);
                 offlineUC.Dock = DockStyle.Fill;
-                page.Text = $"{offlineTitle} #{offline} ({titleOfDataSource})";
+                page.Text = $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
             }
 
             void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
-                offline++;
+                openedWindows++;
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(ClientServerUCLog);
                 ClientServerUCLog.Dock = DockStyle.Fill;
-                page.Text = $"Client/Server logs #{offline}. {titleOfDataSource}";
+                page.Text = $"Client/Server logs #{openedWindows}. {titleOfDataSource}";
                 dockManager1.ActivePanel = page;
 
 
@@ -1202,7 +1024,7 @@ namespace Analogy
             void OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
             {
 
-                offline++;
+                openedWindows++;
                 UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1384,7 +1206,7 @@ namespace Analogy
 
                 if (canStartReceiving) //connected
                 {
-                    online++;
+                    openedWindows++;
                     realTimeBtn.ImageOptions.Image = Resources.Database_on;
                     var onlineUC = new OnlineUCLogs(realTime);
 
@@ -1409,7 +1231,7 @@ namespace Analogy
                     page.Controls.Add(onlineUC);
                     ribbonControlMain.SelectedPage = ribbonPage;
                     onlineUC.Dock = DockStyle.Fill;
-                    page.Text = $"{onlineTitle} #{online} ({title})";
+                    page.Text = $"{onlineTitle} #{openedWindows} ({title})";
                     realTime.OnMessageReady += OnRealTimeOnMessageReady;
                     realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                     realTime.OnDisconnected += OnRealTimeDisconnected;

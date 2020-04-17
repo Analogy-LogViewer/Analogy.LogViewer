@@ -514,5 +514,19 @@ namespace Analogy.Properties {
                 this["LastSearchesExclude"] = value;
             }
         }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AdditionalProbingLocations
+        {
+            get
+            {
+                return ((string)(this["AdditionalProbingLocations"]));
+            }
+            set
+            {
+                this["AdditionalProbingLocations"] = value;
+            }
+        }
     }
 }

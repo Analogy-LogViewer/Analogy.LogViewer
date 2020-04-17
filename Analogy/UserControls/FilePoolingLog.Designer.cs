@@ -216,7 +216,6 @@ namespace Analogy
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
-            this.ucLogs1.OnlineMode = false;
             this.ucLogs1.Size = new System.Drawing.Size(1181, 700);
             this.ucLogs1.TabIndex = 0;
             // 
@@ -234,8 +233,6 @@ namespace Analogy
             this.Name = "FilePoolingUCLogs";
             this.Size = new System.Drawing.Size(1387, 700);
             this.Load += new System.EventHandler(this.OnlineUCLogs_Load);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragEnter);
             this.tsPrimary.ResumeLayout(false);
             this.tsPrimary.PerformLayout();
             this.spltMain.Panel1.ResumeLayout(false);

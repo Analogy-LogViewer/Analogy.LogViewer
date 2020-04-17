@@ -52,6 +52,7 @@ namespace Analogy.DataSources
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.xml", "*.json" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
         public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
+        public bool UseCustomColors { get; set; } = false;
         public bool DisableFilePoolingOption { get; } = false;
 
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
@@ -63,6 +64,7 @@ namespace Analogy.DataSources
         {
             //nop
         }
+
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             if (fileName.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
@@ -136,7 +138,14 @@ namespace Analogy.DataSources
 
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
-        public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
+        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
+            => Array.Empty<(string, string)>();
+
+        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
+            => (Color.Empty, Color.Empty);
+        
+
+        private static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
             List<FileInfo> files = dirInfo.GetFiles("*.xml")
                 .Concat(dirInfo.GetFiles("*.json"))
@@ -158,6 +167,8 @@ namespace Analogy.DataSources
 
             return files;
         }
+
+
     }
 
     public class AnalogyCustomActionFactory : IAnalogyCustomActionsFactory

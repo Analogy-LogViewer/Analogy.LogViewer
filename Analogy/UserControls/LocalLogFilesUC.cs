@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
@@ -11,32 +13,37 @@ using DevExpress.XtraBars;
 namespace Analogy
 {
 
-    public partial class OfflineUCLogs : UserControl
+    public partial class LocalLogFilesUC : UserControl
     {
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }
+        public ILogMessageCreatedHandler Handler => ucLogs1;
         //private List<string> TreeListFileNodes { get; set; }
-        public OfflineUCLogs(string initSelectedPath)
+        public LocalLogFilesUC(string initSelectedPath=null)
         {
-            //TreeListFileNodes = new List<string>();
             SelectedPath = initSelectedPath;
             InitializeComponent();
             treeList1.Columns["colChanged"].SortOrder = SortOrder.Descending;
             treeList1.Appearance.HideSelectionRow.Assign(treeList1.ViewInfo.PaintAppearance.FocusedRow);
+            ucLogs1.SetSaveButtonsVisibility(false);
         }
 
-        public OfflineUCLogs(IAnalogyOfflineDataProvider dataProvider, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
+        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
         {
 
             DataProvider = dataProvider;
             if (fileNames != null)
                 extrenalFiles.AddRange(fileNames);
-            ucLogs1.OnlineMode = false;
-            ucLogs1.SetFileDataSource(dataProvider);
+            ucLogs1.SetFileDataSource(dataProvider,dataProvider);
         }
 
+        public LocalLogFilesUC(CancellationTokenSource cts):this()
+        {
+            ucLogs1.CancellationTokenSource = cts;
+        }
+
+        public void ShowFolderAndFilesPanel(bool on) => spltMain.Panel1Collapsed = !on;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             ucLogs1.ProcessCmdKeyFromParent(keyData);
@@ -46,7 +53,6 @@ namespace Analogy
         {
             if (DesignMode) return;
             folderTreeViewUC1.FolderChanged += FolderTreeViewUC1_FolderChanged;
-            spltMain.Panel1Collapsed = false;
             ucLogs1.btswitchRefreshLog.Visibility = BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = BarItemVisibility.Never;
             if (extrenalFiles.Any())
@@ -67,8 +73,6 @@ namespace Analogy
 
         private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
         {
-
-
             var t = treeList1.Nodes.FirstOrDefault(n => data.file.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
             if (t != null && treeList1.FocusedNode != t)
             {
@@ -80,13 +84,9 @@ namespace Analogy
                 treeList1.Selection.Add(t);
                 treeList1.SelectionChanged += TreeList1_SelectionChanged;
             }
-
-
-
-
         }
 
-        private async void FolderTreeViewUC1_FolderChanged(object sender, Types.FolderSelectionEventArgs e)
+        private void FolderTreeViewUC1_FolderChanged(object sender, Types.FolderSelectionEventArgs e)
         {
             if (Directory.Exists(e.SelectedFolderPath))
             {
@@ -98,13 +98,14 @@ namespace Analogy
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         private async void AnalogyUCLogs_DragDrop(object sender, DragEventArgs e)
         {
+            if (DataProvider == null) return; 
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             await LoadFilesAsync(files.ToList(), chkbSelectionMode.Checked);
         }
 
         private void PopulateFiles(string folder)
         {
-            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
+            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder) || DataProvider==null) return;
             SelectedPath = folder;
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
@@ -132,7 +133,7 @@ namespace Analogy
 
         }
 
-        private void bBtnOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bBtnOpen_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (treeList1.Selection.Any())
             {
@@ -142,7 +143,7 @@ namespace Analogy
             }
         }
 
-        private void bBtnDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bBtnDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (treeList1.Selection.Any())
             {
@@ -166,12 +167,12 @@ namespace Analogy
 
         }
 
-        private void bBtnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bBtnRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
             PopulateFiles(SelectedPath);
         }
 
-        private void bBtnSelectAll_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bBtnSelectAll_ItemClick(object sender, ItemClickEventArgs e)
         {
             treeList1.SelectAll();
         }
@@ -181,6 +182,7 @@ namespace Analogy
             List<string> files = treeList1.Selection.Select(node => (string)node.GetValue(colFullPath)).ToList();
             await LoadFilesAsync(files, chkbSelectionMode.Checked);
         }
+
     }
 
 }

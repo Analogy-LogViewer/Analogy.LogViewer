@@ -233,7 +233,6 @@ namespace Analogy
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
-            this.ucLogs1.OnlineMode = false;
             this.ucLogs1.Size = new System.Drawing.Size(1007, 676);
             this.ucLogs1.TabIndex = 0;
             // 

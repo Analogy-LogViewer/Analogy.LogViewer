@@ -471,15 +471,6 @@ namespace Analogy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feature is disabled.
-        /// </summary>
-        internal static string FeatureDisable {
-            get {
-                return ResourceManager.GetString("FeatureDisable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap FilePooling_16x16 {
@@ -1095,6 +1086,26 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap share {
             get {
                 object obj = ResourceManager.GetObject("share", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Single16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Single16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Single32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Single32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
