@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using MessagePack;
 
 namespace Analogy
 {
@@ -19,7 +21,7 @@ namespace Analogy
             public IAnalogyShareable Shareable { get; set; }
     
         }
-
+        private IAnalogyShareable Shareable { get; set; }
         private List<AnalogyLogMessage> messages;
         public AnalogyOTAForm()
         {
@@ -55,9 +57,35 @@ namespace Analogy
      
         }
 
-        private void AnalogyOTAForm_FormClosing(object sender, FormClosingEventArgs e)
+        private async void AnalogyOTAForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-     
+            if (Shareable != null)
+                await Shareable.CleanupSender();
+        }
+
+
+        private async void sbtnInit_Click(object sender, EventArgs e)
+        {
+            if (cbShares.SelectedItem != null && cbShares.SelectedItem is ComboboxItem item)
+            {
+                Shareable = item.Shareable;
+            }
+
+            await Shareable.InitializeSender();
+            sBtnSend.Enabled = true;
+        }
+
+        private void sBtnSend_Click(object sender, EventArgs e)
+        {
+            if (rbList.Checked)
+            {
+                Shareable.SendMessages(messages,"");
+            }
+            else
+            {
+                byte[] data = MessagePackSerializer.Serialize(messages);
+                Shareable.SendMessages(data, "");
+            }
         }
     }
 }
