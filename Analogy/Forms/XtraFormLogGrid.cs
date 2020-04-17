@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Analogy.DataSources;
 using Analogy.Interfaces;
+using Analogy.Managers;
 
 namespace Analogy
 {
@@ -18,6 +21,10 @@ namespace Analogy
             _dataSource = dataSource;
             if (!string.IsNullOrEmpty(processOrModule))
                 ucLogs1.FilterResults(processOrModule);
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
+            ucLogs1.SetFileDataSource(analogyDataProvider, null);
+
         }
 
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
