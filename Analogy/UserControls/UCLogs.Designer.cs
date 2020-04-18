@@ -3104,6 +3104,7 @@ namespace Analogy
             // 
             // spltMain
             // 
+            this.spltMain.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel1;
             this.spltMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spltMain.Horizontal = false;
             this.spltMain.IsSplitterFixed = true;

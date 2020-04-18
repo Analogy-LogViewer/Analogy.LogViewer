@@ -134,6 +134,7 @@ namespace Analogy
             {
                 FullModeEnabled = !FullModeEnabled;
                 FullMode?.Invoke(this,FullModeEnabled);
+                spltMain.Collapsed = FullModeEnabled;
             };
             bBtnShare.ItemClick += (s, e) =>
             {
