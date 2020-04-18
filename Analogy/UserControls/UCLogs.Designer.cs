@@ -249,6 +249,8 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
+            this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
+            this.spltMain = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -320,6 +322,8 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain)).BeginInit();
+            this.spltMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridControl
@@ -327,11 +331,11 @@ namespace Analogy
             this.gridControl.ContextMenuStrip = this.cmsMessageOperation;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl.Location = new System.Drawing.Point(0, 153);
+            this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(2118, 248);
+            this.gridControl.Size = new System.Drawing.Size(2118, 243);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid,
@@ -952,9 +956,10 @@ namespace Analogy
             this.barButtonItemSaveEntireInAnalogy,
             this.barSubItem1,
             this.bBtnUndockViewPerProcess,
-            this.bBtnShare});
+            this.bBtnShare,
+            this.bBtnFullGrid});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 37;
+            this.barManager1.MaxItemId = 38;
             // 
             // barTopFiltering
             // 
@@ -971,6 +976,7 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveEntireLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveView),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
             new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
@@ -1568,11 +1574,11 @@ namespace Analogy
             // pnlTopFiltering
             // 
             this.pnlTopFiltering.Controls.Add(this.spltFilteringBoth);
-            this.pnlTopFiltering.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTopFiltering.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTopFiltering.Location = new System.Drawing.Point(0, 0);
             this.pnlTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTopFiltering.Name = "pnlTopFiltering";
-            this.pnlTopFiltering.Size = new System.Drawing.Size(2118, 153);
+            this.pnlTopFiltering.Size = new System.Drawing.Size(2118, 152);
             this.pnlTopFiltering.TabIndex = 3;
             // 
             // spltFilteringBoth
@@ -1590,7 +1596,7 @@ namespace Analogy
             // 
             this.spltFilteringBoth.Panel2.Controls.Add(this.chkLstLogLevel);
             this.spltFilteringBoth.Panel2MinSize = 150;
-            this.spltFilteringBoth.Size = new System.Drawing.Size(2118, 153);
+            this.spltFilteringBoth.Size = new System.Drawing.Size(2118, 152);
             this.spltFilteringBoth.SplitterDistance = 1629;
             this.spltFilteringBoth.SplitterWidth = 3;
             this.spltFilteringBoth.TabIndex = 19;
@@ -1606,7 +1612,7 @@ namespace Analogy
             this.pnlFilteringLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlFilteringLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFilteringLeft.Name = "pnlFilteringLeft";
-            this.pnlFilteringLeft.Size = new System.Drawing.Size(1629, 153);
+            this.pnlFilteringLeft.Size = new System.Drawing.Size(1629, 152);
             this.pnlFilteringLeft.TabIndex = 20;
             // 
             // spltcDateFiltering
@@ -1996,7 +2002,7 @@ namespace Analogy
             this.chkLstLogLevel.Location = new System.Drawing.Point(0, 0);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
-            this.chkLstLogLevel.Size = new System.Drawing.Size(486, 153);
+            this.chkLstLogLevel.Size = new System.Drawing.Size(486, 152);
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
@@ -2392,9 +2398,8 @@ namespace Analogy
             this.splitContainerMain.Location = new System.Drawing.Point(0, 38);
             this.splitContainerMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainerMain.Name = "splitContainerMain";
-            this.splitContainerMain.Panel1.Controls.Add(this.gridControl);
+            this.splitContainerMain.Panel1.Controls.Add(this.spltMain);
             this.splitContainerMain.Panel1.Controls.Add(this.panel1);
-            this.splitContainerMain.Panel1.Controls.Add(this.pnlTopFiltering);
             this.splitContainerMain.Panel1.Text = "Panel1";
             this.splitContainerMain.Panel2.Controls.Add(this.tcBottom);
             this.splitContainerMain.Panel2.Text = "Panel2";
@@ -3089,6 +3094,29 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
+            // bBtnFullGrid
+            // 
+            this.bBtnFullGrid.Caption = "Full";
+            this.bBtnFullGrid.Id = 37;
+            this.bBtnFullGrid.ImageOptions.Image = global::Analogy.Properties.Resources.FullscreenBlue16;
+            this.bBtnFullGrid.Name = "bBtnFullGrid";
+            this.bBtnFullGrid.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // spltMain
+            // 
+            this.spltMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spltMain.Horizontal = false;
+            this.spltMain.IsSplitterFixed = true;
+            this.spltMain.Location = new System.Drawing.Point(0, 0);
+            this.spltMain.Name = "spltMain";
+            this.spltMain.Panel1.Controls.Add(this.pnlTopFiltering);
+            this.spltMain.Panel1.Text = "Panel1";
+            this.spltMain.Panel2.Controls.Add(this.gridControl);
+            this.spltMain.Panel2.Text = "Panel2";
+            this.spltMain.Size = new System.Drawing.Size(2118, 401);
+            this.spltMain.SplitterPosition = 152;
+            this.spltMain.TabIndex = 5;
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3182,6 +3210,8 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain)).EndInit();
+            this.spltMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3396,5 +3426,7 @@ namespace Analogy
         private DevExpress.XtraBars.Bar barGroup;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControlLeft;
         private DevExpress.XtraBars.BarButtonItem bBtnShare;
+        private DevExpress.XtraBars.BarButtonItem bBtnFullGrid;
+        private DevExpress.XtraEditors.SplitContainerControl spltMain;
     }
 }
