@@ -90,12 +90,12 @@ namespace Analogy
             this.btswitchExpand = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
-            this.barSubItemSaveEntireLog = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItemSaveLog = new DevExpress.XtraBars.BarSubItem();
             this.bBtnSaveEntireLog = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSaveEntireInAnalogy = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItemSaveView = new DevExpress.XtraBars.BarSubItem();
             this.bBtnSaveLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSaveViewAgnostic = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
@@ -196,6 +196,7 @@ namespace Analogy
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMain = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerMain = new DevExpress.XtraEditors.SplitContainerControl();
+            this.spltMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.lblTotalMessagesAlert = new DevExpress.XtraEditors.LabelControl();
             this.sBtnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -249,8 +250,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
-            this.spltMain = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -304,6 +303,8 @@ namespace Analogy
             this.xtpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain)).BeginInit();
+            this.spltMain.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.xtCounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).BeginInit();
@@ -322,8 +323,6 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spltMain)).BeginInit();
-            this.spltMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridControl
@@ -950,9 +949,8 @@ namespace Analogy
             this.bBtnSaveEntireLog,
             this.bBtnDataVisualizer,
             this.bbiScreenshot,
-            this.barSubItemSaveView,
             this.bbtnSaveViewAgnostic,
-            this.barSubItemSaveEntireLog,
+            this.barSubItemSaveLog,
             this.barButtonItemSaveEntireInAnalogy,
             this.barSubItem1,
             this.bBtnUndockViewPerProcess,
@@ -974,8 +972,7 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchExpand),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveEntireLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveView),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
@@ -1034,17 +1031,19 @@ namespace Analogy
             this.btsAutoScrollToBottom.Name = "btsAutoScrollToBottom";
             this.btsAutoScrollToBottom.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btsAutoScrollToBottom_CheckedChanged);
             // 
-            // barSubItemSaveEntireLog
+            // barSubItemSaveLog
             // 
-            this.barSubItemSaveEntireLog.Caption = "Save Entire Log";
-            this.barSubItemSaveEntireLog.Id = 31;
-            this.barSubItemSaveEntireLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveEntireLog.ImageOptions.Image")));
-            this.barSubItemSaveEntireLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveEntireLog.ImageOptions.LargeImage")));
-            this.barSubItemSaveEntireLog.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barSubItemSaveLog.Caption = "Save Log";
+            this.barSubItemSaveLog.Id = 31;
+            this.barSubItemSaveLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveEntireLog.ImageOptions.Image")));
+            this.barSubItemSaveLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveEntireLog.ImageOptions.LargeImage")));
+            this.barSubItemSaveLog.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveEntireLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSaveEntireInAnalogy)});
-            this.barSubItemSaveEntireLog.Name = "barSubItemSaveEntireLog";
-            this.barSubItemSaveEntireLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSaveEntireInAnalogy),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSaveViewAgnostic)});
+            this.barSubItemSaveLog.Name = "barSubItemSaveLog";
+            this.barSubItemSaveLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bBtnSaveEntireLog
             // 
@@ -1065,18 +1064,6 @@ namespace Analogy
             this.barButtonItemSaveEntireInAnalogy.Name = "barButtonItemSaveEntireInAnalogy";
             this.barButtonItemSaveEntireInAnalogy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItemSaveEntireInAnalogy_ItemClick);
             // 
-            // barSubItemSaveView
-            // 
-            this.barSubItemSaveView.Caption = "Save Current View";
-            this.barSubItemSaveView.Id = 29;
-            this.barSubItemSaveView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveView.ImageOptions.Image")));
-            this.barSubItemSaveView.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveView.ImageOptions.LargeImage")));
-            this.barSubItemSaveView.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSaveViewAgnostic)});
-            this.barSubItemSaveView.Name = "barSubItemSaveView";
-            this.barSubItemSaveView.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // bBtnSaveLog
             // 
             this.bBtnSaveLog.Caption = "Save Current View (custom Format)";
@@ -1095,6 +1082,14 @@ namespace Analogy
             this.bbtnSaveViewAgnostic.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.LargeImage")));
             this.bbtnSaveViewAgnostic.Name = "bbtnSaveViewAgnostic";
             this.bbtnSaveViewAgnostic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSaveViewAgnostic_ItemClick);
+            // 
+            // bBtnFullGrid
+            // 
+            this.bBtnFullGrid.Caption = "Full";
+            this.bBtnFullGrid.Id = 37;
+            this.bBtnFullGrid.ImageOptions.Image = global::Analogy.Properties.Resources.FullscreenBlue16;
+            this.bBtnFullGrid.Name = "bBtnFullGrid";
+            this.bBtnFullGrid.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // barSubItem1
             // 
@@ -2408,6 +2403,22 @@ namespace Analogy
             this.splitContainerMain.TabIndex = 21;
             this.splitContainerMain.Text = "splitContainerControl1";
             // 
+            // spltMain
+            // 
+            this.spltMain.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel1;
+            this.spltMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spltMain.Horizontal = false;
+            this.spltMain.IsSplitterFixed = true;
+            this.spltMain.Location = new System.Drawing.Point(0, 0);
+            this.spltMain.Name = "spltMain";
+            this.spltMain.Panel1.Controls.Add(this.pnlTopFiltering);
+            this.spltMain.Panel1.Text = "Panel1";
+            this.spltMain.Panel2.Controls.Add(this.gridControl);
+            this.spltMain.Panel2.Text = "Panel2";
+            this.spltMain.Size = new System.Drawing.Size(2118, 401);
+            this.spltMain.SplitterPosition = 152;
+            this.spltMain.TabIndex = 5;
+            // 
             // pnlBottom
             // 
             this.pnlBottom.Controls.Add(this.progressBar1);
@@ -3094,30 +3105,6 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // bBtnFullGrid
-            // 
-            this.bBtnFullGrid.Caption = "Full";
-            this.bBtnFullGrid.Id = 37;
-            this.bBtnFullGrid.ImageOptions.Image = global::Analogy.Properties.Resources.FullscreenBlue16;
-            this.bBtnFullGrid.Name = "bBtnFullGrid";
-            this.bBtnFullGrid.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // spltMain
-            // 
-            this.spltMain.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel1;
-            this.spltMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spltMain.Horizontal = false;
-            this.spltMain.IsSplitterFixed = true;
-            this.spltMain.Location = new System.Drawing.Point(0, 0);
-            this.spltMain.Name = "spltMain";
-            this.spltMain.Panel1.Controls.Add(this.pnlTopFiltering);
-            this.spltMain.Panel1.Text = "Panel1";
-            this.spltMain.Panel2.Controls.Add(this.gridControl);
-            this.spltMain.Panel2.Text = "Panel2";
-            this.spltMain.Size = new System.Drawing.Size(2118, 401);
-            this.spltMain.SplitterPosition = 152;
-            this.spltMain.TabIndex = 5;
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3191,6 +3178,8 @@ namespace Analogy
             this.xtpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain)).EndInit();
+            this.spltMain.ResumeLayout(false);
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
             this.xtCounts.ResumeLayout(false);
@@ -3211,8 +3200,6 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.spltMain)).EndInit();
-            this.spltMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3381,9 +3368,8 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnDataVisualizer;
         private DevExpress.XtraBars.BarButtonItem bbiScreenshot;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnThread;
-        private DevExpress.XtraBars.BarSubItem barSubItemSaveView;
         private DevExpress.XtraBars.BarButtonItem bbtnSaveViewAgnostic;
-        private DevExpress.XtraBars.BarSubItem barSubItemSaveEntireLog;
+        private DevExpress.XtraBars.BarSubItem barSubItemSaveLog;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSaveEntireInAnalogy;
         private DevExpress.XtraEditors.TextEdit txtbInclude;
         private DevExpress.XtraEditors.TextEdit txtbExclude;
