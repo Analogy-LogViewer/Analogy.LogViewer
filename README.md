@@ -46,7 +46,7 @@ Some features of this tool are:
 8.	Personalization (users settings per user) 
 9.	Columns Extendable: Ability to add more columns specific to the data source implementation
 10.	Exporting to Excel/CSV files
-11. Collaboration-like feature: abilit to send log messages to gRPC/WCF service and/or between data providers
+11. Collaboration-like feature: ability to send log messages to gRPC/WCF service and/or between data providers
 
 Main interaction UI:
 - Ribbon area: Log files operations (open) and tools (search/combine/Compare)
