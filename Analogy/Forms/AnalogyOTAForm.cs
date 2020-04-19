@@ -66,11 +66,12 @@ namespace Analogy
 
         private async void sbtnInit_Click(object sender, EventArgs e)
         {
-            if (cbShares.SelectedItem != null && cbShares.SelectedItem is ComboboxItem item)
+            if (cbShares.SelectedItem == null || !(cbShares.SelectedItem is ComboboxItem item))
             {
-                Shareable = item.Shareable;
+                return;
             }
 
+            Shareable = item.Shareable;
             await Shareable.InitializeSender();
             sBtnSend.Enabled = true;
         }
