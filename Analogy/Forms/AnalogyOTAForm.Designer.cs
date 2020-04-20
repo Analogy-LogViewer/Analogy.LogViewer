@@ -115,7 +115,6 @@
             this.Controls.Add(this.rbList);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnalogyOTAForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Share Logs";
