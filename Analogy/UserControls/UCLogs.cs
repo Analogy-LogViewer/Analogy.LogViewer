@@ -37,12 +37,14 @@ namespace Analogy
         private FileProcessor fileProcessor { get; set; }
 
         public CancellationTokenSource CancellationTokenSource { get; set; }= new CancellationTokenSource();
+        public event EventHandler<bool> FullMode; 
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         private string OldTextInclude = string.Empty;
         private string OldTextExclude = string.Empty;
         public int fileLoadingCount;
+        private bool FullModeEnabled { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
@@ -128,6 +130,17 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
+            bBtnFullGrid.ItemClick += (s, e) =>
+            {
+                FullModeEnabled = !FullModeEnabled;
+                FullMode?.Invoke(this,FullModeEnabled);
+                spltMain.Collapsed = FullModeEnabled;
+            };
+            bBtnShare.ItemClick += (s, e) =>
+            {
+                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable());
+                share.Show(this);
+            };
             PagingManager.OnPageChanged += (s, arg) =>
             {
                 if (IsDisposed) return;
@@ -1312,34 +1325,6 @@ namespace Analogy
                 NewDataExist = false;
                 AcceptChanges(false);
             }
-
-        }
-
-        private void txtbInclude_MouseEnter(object sender, EventArgs e)
-        {
-            txtbInclude.Focus();
-            txtbInclude.SelectAll();
-        }
-
-        private void txtbInclude_Enter(object sender, EventArgs e)
-        {
-            txtbInclude.SelectAll();
-        }
-
-        private void txtbExcludeSource_TextChanged(object sender, EventArgs e)
-        {
-            //if (string.IsNullOrEmpty(txtbExcludeSource.Text))
-            //{
-            //    chkbExcludeSources.Checked = false;
-            //}
-            //else
-            //{
-            //    if (!chkbExcludeSources.Checked)
-            //        chkbExcludeSources.Checked = true;
-            //}
-
-            //RefreshUserFilter();
-            //Settings.ExcludedSource = txtbExcludeSource.Text;
 
         }
 

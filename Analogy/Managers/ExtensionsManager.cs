@@ -55,13 +55,11 @@ namespace Analogy
         public IEnumerable<IAnalogyExtension> GetExtensions()
         {
             if (LoadedExtensions.Any()) return LoadedExtensions;
-            NameValueCollection appSettings = ConfigurationManager.AppSettings;
-            List<string> files =new List<string>();
             string dir = Environment.CurrentDirectory;
             Type isExtension = typeof(IAnalogyExtension);
 
             List<Type> res = new List<Type>();
-            files.AddRange(Directory.GetFiles(dir, "Analogy.*.Extension.dll"));
+            var files=Directory.EnumerateFiles(dir, "Analogy.*.Extension.dll");
             foreach (var file in files)
             {
                 var fileToload = Path.Combine(dir, file);

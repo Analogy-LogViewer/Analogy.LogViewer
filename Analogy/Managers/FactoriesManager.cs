@@ -201,26 +201,29 @@ namespace Analogy
                     {
                         Assembly assembly = Assembly.LoadFrom(Path.GetFullPath(aFile));
                         var types = assembly.GetTypes().ToList();
-                        foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyComponentImages)) != null))
-                        {
-                            var factory = Activator.CreateInstance(f) as IAnalogyComponentImages;
-                            DataProviderImages.AddRange(factory.GetDataProviderImages());
-                        }
-                        
+
                         foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
                         {
                             var factory = Activator.CreateInstance(f) as IAnalogyFactory;
                             var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
                             setting.FactoryName = factory.Title;
                             FactoryContainer fc = new FactoryContainer(assembly, factory, setting);
-                            if (Factories.Exists(fa => fa.Factory.FactoryId==factory.FactoryId))
+                            if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))
                             {
                                 Factories.Remove(Factories.FirstOrDefault(fa =>
                                     fa.Factory.FactoryId == factory.FactoryId));
                             }
                             Factories.Add(fc);
+                            
                         }
 
+                        foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyComponentImages)) != null))
+                        {
+                            var factory = Activator.CreateInstance(f) as IAnalogyComponentImages;
+                            DataProviderImages.AddRange(factory.GetDataProviderImages());
+                        }
+                        
+                
                         foreach (Type aType in types.Where(aType =>
                             aType.GetInterface(nameof(IAnalogyDataProvidersFactory)) != null))
                         {
@@ -272,6 +275,7 @@ namespace Analogy
 
                 }
 
+                Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
             }
 
         }

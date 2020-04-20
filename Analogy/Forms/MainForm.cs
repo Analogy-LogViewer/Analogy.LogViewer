@@ -197,32 +197,11 @@ namespace Analogy
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
 
 
-        private void tsmiAbout_Click(object sender, EventArgs e)
-        {
-            AnalogyAboutBox ab = new AnalogyAboutBox();
-            ab.ShowDialog(this);
-        }
-
-
-        private void tsBtnMail_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Process.Start($"mailto:liorbanai@gmail.com?Subject=Analogy App");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, @"Error opening mail client", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
         private void OpenProcessForm()
         {
             var p = new ProcessNameAndID();
             p.Show(this);
         }
-
 
         private void bItemProcess_ItemClick(object sender, ItemClickEventArgs e)
         {
