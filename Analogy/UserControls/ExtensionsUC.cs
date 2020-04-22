@@ -31,9 +31,9 @@ namespace Analogy
         {
             IAnalogyExtension analogyExtension = (IAnalogyExtension)chklItems.SelectedItem;
             if (analogyExtension == null) return;
-            lblExtension.Text = $"Name: {analogyExtension.DisplayName}";
+            lblExtension.Text = $"Name: {analogyExtension.Title}";
             lblDescription.Text = $"Description: {analogyExtension.Description}";
-            lblType.Text = $"Type: {analogyExtension.AnalogyExtensionType}";
+            lblType.Text = $"Type: {analogyExtension.ExtensionType}";
             lblAuthor.Text = $"Author: {analogyExtension.Author} (Mail: {analogyExtension.AuthorMail})";
         }
 

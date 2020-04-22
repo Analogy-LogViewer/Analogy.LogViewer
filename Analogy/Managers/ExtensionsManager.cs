@@ -22,9 +22,9 @@ namespace Analogy
         public bool HasAnyUserControl => UserControlRegisteredExtensions.Any();
 
         public IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions =>
-            registeredExtensions.Where(e => e.AnalogyExtensionType == AnalogyExtensionType.InPlace).ToList();
+            registeredExtensions.Where(e => e.ExtensionType == AnalogyExtensionType.InPlace).ToList();
         public IEnumerable<IAnalogyExtension> UserControlRegisteredExtensions =>
-            registeredExtensions.Where(e => e.AnalogyExtensionType == AnalogyExtensionType.UserControl).ToList();
+            registeredExtensions.Where(e => e.ExtensionType == AnalogyExtensionType.UserControl).ToList();
         private int ColumnIndexes { get; set; } = 12;
         private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();
@@ -40,7 +40,7 @@ namespace Analogy
         {
             if (extension == null) return;
             registeredExtensions.Add(extension);
-            if (extension.AnalogyExtensionType == AnalogyExtensionType.InPlace)
+            if (extension.ExtensionType == AnalogyExtensionType.InPlace)
             {
                 var columns = extension.GetColumnsInfo();
                 foreach (AnalogyColumnInfo column in columns)
