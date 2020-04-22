@@ -47,11 +47,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageDataProviders = new DevExpress.XtraTab.XtraTabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblNlog = new System.Windows.Forms.LinkLabel();
-            this.lblRSS = new System.Windows.Forms.LinkLabel();
-            this.lblIIS = new System.Windows.Forms.LinkLabel();
-            this.lblKafka = new System.Windows.Forms.LinkLabel();
-            this.lblWindowsEventLogs = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -61,7 +56,6 @@
             this.xtraTabPageOrganizations.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.xtraTabPageDataProviders.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -285,82 +279,12 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.lblNlog);
-            this.flowLayoutPanel1.Controls.Add(this.lblRSS);
-            this.flowLayoutPanel1.Controls.Add(this.lblIIS);
-            this.flowLayoutPanel1.Controls.Add(this.lblKafka);
-            this.flowLayoutPanel1.Controls.Add(this.lblWindowsEventLogs);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1042, 409);
             this.flowLayoutPanel1.TabIndex = 3;
-            // 
-            // lblNlog
-            // 
-            this.lblNlog.Image = ((System.Drawing.Image)(resources.GetObject("lblNlog.Image")));
-            this.lblNlog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblNlog.Location = new System.Drawing.Point(3, 0);
-            this.lblNlog.Name = "lblNlog";
-            this.lblNlog.Size = new System.Drawing.Size(280, 132);
-            this.lblNlog.TabIndex = 0;
-            this.lblNlog.TabStop = true;
-            this.lblNlog.Text = "NLog Data Provider";
-            this.lblNlog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblNlog.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNlog_LinkClicked);
-            // 
-            // lblRSS
-            // 
-            this.lblRSS.Image = global::Analogy.Properties.Resources.AnalogyRSS;
-            this.lblRSS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblRSS.Location = new System.Drawing.Point(3, 132);
-            this.lblRSS.Name = "lblRSS";
-            this.lblRSS.Size = new System.Drawing.Size(280, 132);
-            this.lblRSS.TabIndex = 1;
-            this.lblRSS.TabStop = true;
-            this.lblRSS.Text = "RSS Parser";
-            this.lblRSS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblRSS.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRSS_LinkClicked);
-            // 
-            // lblIIS
-            // 
-            this.lblIIS.Image = global::Analogy.Properties.Resources.AnalogyIIS128x128;
-            this.lblIIS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblIIS.Location = new System.Drawing.Point(3, 264);
-            this.lblIIS.Name = "lblIIS";
-            this.lblIIS.Size = new System.Drawing.Size(280, 132);
-            this.lblIIS.TabIndex = 2;
-            this.lblIIS.TabStop = true;
-            this.lblIIS.Text = "IIS Logs parser";
-            this.lblIIS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblIIS.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblIIS_LinkClicked);
-            // 
-            // lblKafka
-            // 
-            this.lblKafka.Image = global::Analogy.Properties.Resources.Analogy_With_kafka;
-            this.lblKafka.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblKafka.Location = new System.Drawing.Point(289, 0);
-            this.lblKafka.Name = "lblKafka";
-            this.lblKafka.Size = new System.Drawing.Size(280, 132);
-            this.lblKafka.TabIndex = 3;
-            this.lblKafka.TabStop = true;
-            this.lblKafka.Text = "Kafka Data Provider";
-            this.lblKafka.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblKafka.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblKafka_LinkClicked);
-            // 
-            // lblWindowsEventLogs
-            // 
-            this.lblWindowsEventLogs.Image = global::Analogy.Properties.Resources.AnalogyWindows128x128;
-            this.lblWindowsEventLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblWindowsEventLogs.Location = new System.Drawing.Point(289, 132);
-            this.lblWindowsEventLogs.Name = "lblWindowsEventLogs";
-            this.lblWindowsEventLogs.Size = new System.Drawing.Size(280, 132);
-            this.lblWindowsEventLogs.TabIndex = 4;
-            this.lblWindowsEventLogs.TabStop = true;
-            this.lblWindowsEventLogs.Text = "Windows Event Logs";
-            this.lblWindowsEventLogs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblWindowsEventLogs.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblWindowsEventLogs_LinkClicked);
             // 
             // AnalogyAboutBox
             // 
@@ -389,7 +313,6 @@
             this.xtraTabPageOrganizations.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.xtraTabPageDataProviders.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -411,12 +334,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageOrganizations;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProviders;
-        private System.Windows.Forms.LinkLabel lblNlog;
-        private System.Windows.Forms.LinkLabel lblRSS;
-        private System.Windows.Forms.LinkLabel lblIIS;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.LinkLabel lblKafka;
-        private System.Windows.Forms.LinkLabel lblWindowsEventLogs;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.LinkLabel lblPhilips;
         private System.Windows.Forms.LinkLabel lblKama;
