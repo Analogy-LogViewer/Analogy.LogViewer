@@ -27,6 +27,8 @@
 
 [Dependencies and Build](https://github.com/Analogy-LogViewer/Analogy.LogViewer#dependencies--build)
 
+[Issues](https://github.com/Analogy-LogViewer/Analogy.LogViewer#issues)
+
 [Contact](https://github.com/Analogy-LogViewer/Analogy.LogViewer#contact)
 
 ## General
@@ -161,6 +163,8 @@ Detailed Documentation will be added to the Wiki page.
 in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
 View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
+## Issues
+- Windows 10 Blocks Zip files by default. Make sure after you download the files to unblock them. Make sure the are [unblocked](https://singularlabs.com/tips/how-to-unblock-a-zip-file-on-windows-10/) before unzipping them
 
 <a name="contact"></a>
 ## Contact
