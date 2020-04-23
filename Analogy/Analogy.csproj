@@ -23,14 +23,17 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageTags />
     <RepositoryType>git</RepositoryType>
-    <Version>4.1.14</Version>
+    <Version>4.1.15</Version>
     <Copyright>Lior Banai ©  2020</Copyright>
     <Product>Analogy Log Viewer Core</Product>
     <PackageReleaseNotes>aligned with interface API V2.2.2</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.1" />
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.3" />
+    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.2" />
+    <PackageReference Include="MessagePack" Version="2.1.115" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Analogy.LogViewer.Example" Version="1.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -39,7 +42,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.2" />
     <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -56,12 +58,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MessagePack" Version="2.1.115" />
+
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+
   </ItemGroup>
 
   <ItemGroup>
