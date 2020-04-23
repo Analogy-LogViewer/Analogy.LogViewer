@@ -185,14 +185,17 @@ namespace Analogy
                     {
                         try
                         {
-                            analogyAssemblies.AddRange(Directory.EnumerateFiles(folder, @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList());
+                            if (Directory.Exists(folder))
+                                analogyAssemblies.AddRange(Directory.EnumerateFiles(folder, @"*Analogy.LogViewer.*.dll",
+                                    SearchOption.TopDirectoryOnly).ToList());
                         }
                         catch (Exception e)
                         {
-                           AnalogyLogger.Instance.LogException(e,nameof(ExternalDataProviders),$"Error probing folder {folder}. Error: {e.Message}");
+                            AnalogyLogger.Instance.LogException(e, nameof(ExternalDataProviders),
+                                $"Error probing folder {folder}. Error: {e.Message}");
                         }
                     }
-                  
+
 
                 }
                 foreach (string aFile in analogyAssemblies)

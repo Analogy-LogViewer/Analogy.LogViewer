@@ -50,7 +50,7 @@ namespace Analogy
                 var extensions = manager.GetExtensions().ToList();
                 foreach (Guid guid in Settings.StartupExtensions)
                 {
-                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.ExtensionID == guid));
+                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.ID == guid));
                 }
 
             }

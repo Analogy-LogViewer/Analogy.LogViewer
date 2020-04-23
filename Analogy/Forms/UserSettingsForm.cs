@@ -87,7 +87,7 @@ namespace Analogy
             foreach (var extension in extensions)
             {
 
-                chklItems.Items.Add(extension, Settings.StartupExtensions.Contains(extension.ExtensionID));
+                chklItems.Items.Add(extension, Settings.StartupExtensions.Contains(extension.ID));
                 chklItems.DisplayMember = "DisplayName";
 
             }
@@ -255,7 +255,7 @@ namespace Analogy
         private void chklItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             Settings.StartupExtensions =
-                chklItems.CheckedItems.Cast<IAnalogyExtension>().Select(ex => ex.ExtensionID).ToList();
+                chklItems.CheckedItems.Cast<IAnalogyExtension>().Select(ex => ex.ID).ToList();
 
 
         }

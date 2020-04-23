@@ -7,11 +7,6 @@ namespace Analogy
 {
     partial class AnalogyAboutBox : XtraForm
     {
-        private string githubAnalogyNLog = "https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog";
-        private string githubAnalogyRSSParser = "https://github.com/Analogy-LogViewer/Analogy.LogViewer.RSSReader";
-        private string githubAnalogyIISParser = "https://github.com/Analogy-LogViewer/Analogy.LogViewer.IISLogParser";
-        private string githubAnalogyKafkaProvider= "https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider";
-        private string githubAnalogyWindowsEventLogs ="https://github.com/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs";
         private string philips = "https://www.philips.com/global";
         private string kama = "https://www.linkedin.com/company/kama-research-ltd/about/";
         public AnalogyAboutBox()
@@ -101,35 +96,11 @@ namespace Analogy
         }
         #endregion
 
-        private void lblNlog_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(githubAnalogyNLog);
-        }
-
-        private void lblRSS_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(githubAnalogyRSSParser);
-
-        }
-
-        private void lblIIS_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(githubAnalogyIISParser);
-        }
-
-        private void lblKafka_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(githubAnalogyKafkaProvider);
-        }
+     
 
         private void lblPhilips_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(philips);
-        }
-
-        private void lblWindowsEventLogs_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(githubAnalogyWindowsEventLogs);
         }
 
         private void lblKama_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)

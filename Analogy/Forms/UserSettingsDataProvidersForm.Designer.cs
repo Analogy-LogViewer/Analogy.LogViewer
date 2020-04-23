@@ -30,22 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsDataProvidersForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPageWindowsEventLogs = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraUCWindowsEventLogs1 = new Analogy.XtraUCWindowsEventLogs();
-            this.lblWindowsEventLogs = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageIIS = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.xtraTabPageLog4Net = new DevExpress.XtraTab.XtraTabPage();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageJson = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageXML = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
-            this.xtraTabPageWindowsEventLogs.SuspendLayout();
             this.xtraTabPageIIS.SuspendLayout();
-            this.xtraTabPageLog4Net.SuspendLayout();
             this.xtraTabPageJson.SuspendLayout();
             this.xtraTabPageXML.SuspendLayout();
             this.SuspendLayout();
@@ -59,49 +52,20 @@
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedTabPage = this.xtraTabPageWindowsEventLogs;
-            this.tabControlMain.Size = new System.Drawing.Size(904, 626);
+            this.tabControlMain.SelectedTabPage = this.xtraTabPageIIS;
+            this.tabControlMain.Size = new System.Drawing.Size(904, 627);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPageWindowsEventLogs,
             this.xtraTabPageIIS,
-            this.xtraTabPageLog4Net,
             this.xtraTabPageJson,
             this.xtraTabPageXML});
-            // 
-            // xtraTabPageWindowsEventLogs
-            // 
-            this.xtraTabPageWindowsEventLogs.Controls.Add(this.xtraUCWindowsEventLogs1);
-            this.xtraTabPageWindowsEventLogs.Controls.Add(this.lblWindowsEventLogs);
-            this.xtraTabPageWindowsEventLogs.ImageOptions.Image = global::Analogy.Properties.Resources.OperatingSystem_32x32;
-            this.xtraTabPageWindowsEventLogs.Name = "xtraTabPageWindowsEventLogs";
-            this.xtraTabPageWindowsEventLogs.Size = new System.Drawing.Size(731, 619);
-            this.xtraTabPageWindowsEventLogs.Text = "Windows Event logs";
-            // 
-            // xtraUCWindowsEventLogs1
-            // 
-            this.xtraUCWindowsEventLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraUCWindowsEventLogs1.Location = new System.Drawing.Point(0, 22);
-            this.xtraUCWindowsEventLogs1.Name = "xtraUCWindowsEventLogs1";
-            this.xtraUCWindowsEventLogs1.Size = new System.Drawing.Size(731, 597);
-            this.xtraUCWindowsEventLogs1.TabIndex = 0;
-            // 
-            // lblWindowsEventLogs
-            // 
-            this.lblWindowsEventLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWindowsEventLogs.Location = new System.Drawing.Point(0, 0);
-            this.lblWindowsEventLogs.Name = "lblWindowsEventLogs";
-            this.lblWindowsEventLogs.Padding = new System.Windows.Forms.Padding(3);
-            this.lblWindowsEventLogs.Size = new System.Drawing.Size(233, 22);
-            this.lblWindowsEventLogs.TabIndex = 1;
-            this.lblWindowsEventLogs.Text = "Windows Event logs: real time settings:";
             // 
             // xtraTabPageIIS
             // 
             this.xtraTabPageIIS.Controls.Add(this.labelControl10);
             this.xtraTabPageIIS.ImageOptions.Image = global::Analogy.Properties.Resources.iis;
             this.xtraTabPageIIS.Name = "xtraTabPageIIS";
-            this.xtraTabPageIIS.Size = new System.Drawing.Size(731, 618);
+            this.xtraTabPageIIS.Size = new System.Drawing.Size(779, 620);
             this.xtraTabPageIIS.Text = "IIS Logs";
             // 
             // labelControl10
@@ -113,29 +77,12 @@
             this.labelControl10.TabIndex = 5;
             this.labelControl10.Text = "No special settings exists";
             // 
-            // xtraTabPageLog4Net
-            // 
-            this.xtraTabPageLog4Net.Controls.Add(this.labelControl11);
-            this.xtraTabPageLog4Net.ImageOptions.Image = global::Analogy.Properties.Resources.log4net32x32;
-            this.xtraTabPageLog4Net.Name = "xtraTabPageLog4Net";
-            this.xtraTabPageLog4Net.Size = new System.Drawing.Size(731, 618);
-            this.xtraTabPageLog4Net.Text = "Log4Net Parser";
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(10, 10);
-            this.labelControl11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(78, 16);
-            this.labelControl11.TabIndex = 14;
-            this.labelControl11.Text = "Coming soon.";
-            // 
             // xtraTabPageJson
             // 
             this.xtraTabPageJson.Controls.Add(this.labelControl12);
             this.xtraTabPageJson.ImageOptions.Image = global::Analogy.Properties.Resources.jsonfile32x32;
             this.xtraTabPageJson.Name = "xtraTabPageJson";
-            this.xtraTabPageJson.Size = new System.Drawing.Size(731, 618);
+            this.xtraTabPageJson.Size = new System.Drawing.Size(779, 620);
             this.xtraTabPageJson.Text = "Json Parser";
             // 
             // labelControl12
@@ -152,7 +99,7 @@
             this.xtraTabPageXML.Controls.Add(this.labelControl13);
             this.xtraTabPageXML.ImageOptions.Image = global::Analogy.Properties.Resources.xml32x32;
             this.xtraTabPageXML.Name = "xtraTabPageXML";
-            this.xtraTabPageXML.Size = new System.Drawing.Size(731, 618);
+            this.xtraTabPageXML.Size = new System.Drawing.Size(779, 620);
             this.xtraTabPageXML.Text = "XML Parser";
             // 
             // labelControl13
@@ -168,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 626);
+            this.ClientSize = new System.Drawing.Size(904, 627);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -180,12 +127,8 @@
             this.Load += new System.EventHandler(this.UserSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
-            this.xtraTabPageWindowsEventLogs.ResumeLayout(false);
-            this.xtraTabPageWindowsEventLogs.PerformLayout();
             this.xtraTabPageIIS.ResumeLayout(false);
             this.xtraTabPageIIS.PerformLayout();
-            this.xtraTabPageLog4Net.ResumeLayout(false);
-            this.xtraTabPageLog4Net.PerformLayout();
             this.xtraTabPageJson.ResumeLayout(false);
             this.xtraTabPageJson.PerformLayout();
             this.xtraTabPageXML.ResumeLayout(false);
@@ -197,15 +140,10 @@
         #endregion
 
         private DevExpress.XtraTab.XtraTabControl tabControlMain;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPageLog4Net;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageJson;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageXML;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPageWindowsEventLogs;
-        private DevExpress.XtraEditors.LabelControl lblWindowsEventLogs;
-        private XtraUCWindowsEventLogs xtraUCWindowsEventLogs1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageIIS;
         private DevExpress.XtraEditors.LabelControl labelControl10;
     }
