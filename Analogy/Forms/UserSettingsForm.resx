@@ -163,16 +163,6 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="lblExplaination.Text" xml:space="preserve">
-    <value>All texts are using the same rules are the search window:
-For text (include/exclue) use + for "and" and | for "Or" operations.
-For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>All texts are using the same rules are the search window:
-For text (include/exclue) use + for "and" and | for "Or" operations.
-For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
-  </data>
   <data name="xtraTabPagePreDefined.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABZ0RVh0VGl0
@@ -422,6 +412,16 @@ For source/modules use , as seperator and - for exclusion. for example: "test, -
         HIEVYbkKoUcpcCNwhAK5/QtHwYYjtBxYnyP4KTj1PGvL1xD/muOnEe4kqhKAs1fBW6+Atxl4hsX9xv4D
         V66B9LmnOSkAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="lblExplaination.Text" xml:space="preserve">
+    <value>All texts are using the same rules are the search window:
+For text (include/exclue) use + for "and" and | for "Or" operations.
+For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>All texts are using the same rules are the search window:
+For text (include/exclue) use + for "and" and | for "Or" operations.
+For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
   </data>
   <data name="sBtnMoveUp.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
