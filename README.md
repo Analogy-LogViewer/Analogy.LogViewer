@@ -164,7 +164,7 @@ in order to compile this code [DevExpress](https://www.devexpress.com/) assembli
 View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
 ## Issues
-- Windows 10 blocks Zip files by default. Make sure to unblock them before unzipping. [how to unblocked](https://singularlabs.com/tips/how-to-unblock-a-zip-file-on-windows-10/) before unzipping them
+- Windows 10 blocks Zip files by default. Make sure to unblock them before unzipping. [How to unblocked](https://singularlabs.com/tips/how-to-unblock-a-zip-file-on-windows-10/).
 
 <a name="contact"></a>
 ## Contact
