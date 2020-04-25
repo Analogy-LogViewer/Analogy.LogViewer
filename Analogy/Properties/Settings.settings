@@ -63,7 +63,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="FontSize" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">10.5</Value>
+      <Value Profile="(Default)">8.5</Value>
     </Setting>
     <Setting Name="IncludeText" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -87,7 +87,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="AutoScrollToLastMessage" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LogParsersSettings" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -127,6 +127,9 @@
     </Setting>
     <Setting Name="AdditionalProbingLocations" Type="System.String" Scope="User">
       <Value Profile="(Default)">[]</Value>
+    </Setting>
+    <Setting Name="SingleInstance" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

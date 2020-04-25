@@ -5,6 +5,7 @@ using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Tools;
 using Analogy.Types;
+using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Ribbon;
@@ -16,6 +17,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +26,16 @@ namespace Analogy
 {
     public partial class MainForm : RibbonForm
     {
+
+        const int WM_COPYDATA = 0x004A;
+
+        [DllImport("user32", EntryPoint = "SendMessageA")]
+        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")]
+        internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         private string filePoolingTitle = "File Pooling";
         private string offlineTitle = "Offline log";
         private string onlineTitle = "Online log";
@@ -47,7 +59,28 @@ namespace Analogy
             // Handling the QueryControl event that will populate all automatically generated Documents
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_COPYDATA)
+            {
+                //Reconstruct copy data structure
+                NativeMethods.COPYDATASTRUCT _dataStruct = Marshal.PtrToStructure<NativeMethods.COPYDATASTRUCT>(m.LParam);
 
+                //Get the messag (file name we sent from the other instance)
+                string filename = Marshal.PtrToStringUni(_dataStruct.lpData, _dataStruct.cbData / 2);
+
+                string[] fileNames = { filename };
+                OpenOfflineFileWithSpecificDataProvider(fileNames);
+                Process currentProcess = Process.GetCurrentProcess();
+                IntPtr hWnd = currentProcess.MainWindowHandle;
+                if (hWnd != IntPtr.Zero)
+                {
+                    SetForegroundWindow(hWnd);
+                }
+            }
+
+            base.WndProc(ref m);
+        }
         private void AnalogyMainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             //todo: end onlines;
@@ -56,7 +89,7 @@ namespace Analogy
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
 
-            var logger= AnalogyLogManager.Instance.Init();
+            var logger = AnalogyLogManager.Instance.Init();
             var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
             await Task.WhenAll(logger, factories);
             string[] arguments = Environment.GetCommandLineArgs();
@@ -306,25 +339,24 @@ namespace Analogy
             dockManager1.ActivePanel = page;
         }
 
-        private void bBtnStatisticsFiltering_ItemClick(object sender, ItemClickEventArgs e)
+        private void bbtnSettingsApplication_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(0);
             user.ShowDialog(this);
         }
-
-        private void bBtnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
+        private void bBtnStatisticsFiltering_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(1);
             user.ShowDialog(this);
         }
 
-        private void bBtnStatisticsLookAndFeel_ItemClick(object sender, ItemClickEventArgs e)
+        private void bBtnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(2);
             user.ShowDialog(this);
         }
 
-        private void bBtnStatisticsUserStatistics_ItemClick(object sender, ItemClickEventArgs e)
+        private void bBtnStatisticsLookAndFeel_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(3);
             user.ShowDialog(this);
@@ -334,24 +366,6 @@ namespace Analogy
         {
             UserSettingsForm user = new UserSettingsForm(4);
             user.ShowDialog(this);
-        }
-
-        private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
-
-        private void bBtnWindowsEventLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Filter = "Windows Event log files (*.evtx)|*.evtx";
-            //openFileDialog1.Title = @"Open Files";
-            //openFileDialog1.Multiselect = true;
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    OpenOfflineLogs(openFileDialog1.FileNames);
-            //    AddRecentFiles(openFileDialog1.FileNames.ToList());
-            //}
-
         }
 
         private void bBtnShortcuts_ItemClick(object sender, ItemClickEventArgs e)
@@ -365,7 +379,31 @@ namespace Analogy
             UserSettingsForm user = new UserSettingsForm(6);
             user.ShowDialog(this);
         }
+        private void btnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(7);
+            user.ShowDialog(this);
+        }
 
+        private void btnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(8);
+            user.ShowDialog(this);
+        }
+
+        private void bBtnStatisticsUserStatistics_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(9);
+            user.ShowDialog(this);
+        }
+        private void bBtnDataProviderSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
+            user.ShowDialog(this);
+        }
+        private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
+        {
+        }
 
         private void bBtnOnlineEventLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -415,7 +453,7 @@ namespace Analogy
                 ribbonPage.Groups.Add(groupActionSource);
                 if (actionFactory.Actions == null)
                 {
-                    AnalogyLogManager.Instance.LogCritical($"null actions for {actionFactory.Title}:{actionFactory.FactoryId}",$"{actionFactory.Title}{actionFactory.FactoryId}");
+                    AnalogyLogManager.Instance.LogCritical($"null actions for {actionFactory.Title}:{actionFactory.FactoryId}", $"{actionFactory.Title}{actionFactory.FactoryId}");
                     continue;
                 }
                 foreach (IAnalogyCustomAction action in actionFactory.Actions)
@@ -431,7 +469,7 @@ namespace Analogy
             }
 
             AddFactorySettings(fc, ribbonPage);
-            AddAbout(fc,ribbonPage);
+            AddAbout(fc, ribbonPage);
         }
 
         private void AddAbout(FactoryContainer fc, RibbonPage ribbonPage)
@@ -451,13 +489,14 @@ namespace Analogy
         {
             if (fc.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
                 return;
-            RibbonPageGroup groupSettings = new RibbonPageGroup("Settings") {Alignment = RibbonPageGroupAlignment.Far};
+            RibbonPageGroup groupSettings = new RibbonPageGroup("Settings") { Alignment = RibbonPageGroupAlignment.Far };
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
                 BarButtonItem settingsBtn = new BarButtonItem
                 {
-                    Caption = providerSetting.Title, RibbonStyle = RibbonItemStyles.All
+                    Caption = providerSetting.Title,
+                    RibbonStyle = RibbonItemStyles.All
                 };
                 groupSettings.ItemLinks.Add(settingsBtn);
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
@@ -564,7 +603,7 @@ namespace Analogy
                             ribbonControlMain.SelectedPage = ribbonPage;
                             onlineUC.Dock = DockStyle.Fill;
                             page.Text = $"{onlineTitle} #{openedWindows} ({dataSourceFactory.Title})";
-                            dockManager1.ActivePanel = page; 
+                            dockManager1.ActivePanel = page;
                             realTime.OnMessageReady += OnRealTimeOnMessageReady;
                             realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                             realTime.OnDisconnected += OnRealTimeDisconnected;
@@ -629,16 +668,16 @@ namespace Analogy
         private void AddSingleDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory,
             RibbonPageGroup group)
         {
-           var singles = dataSourceFactory.DataProviders.Where(f => f is IAnalogySingleDataProvider ||
-                                                                     f is IAnalogySingleFileDataProvider).ToList();
-            
+            var singles = dataSourceFactory.DataProviders.Where(f => f is IAnalogySingleDataProvider ||
+                                                                      f is IAnalogySingleFileDataProvider).ToList();
+
             foreach (var single in singles)
             {
                 BarButtonItem singleBtn = new BarButtonItem();
                 group.ItemLinks.Add(singleBtn);
                 var images = FactoriesManager.Instance.GetImages(single.ID);
                 singleBtn.ImageOptions.LargeImage = images == null ? Resources.Single32x32 : images.LargeImage;
-                singleBtn.ImageOptions.Image = images == null ? Resources.Single16x16:images.SmallImage;
+                singleBtn.ImageOptions.Image = images == null ? Resources.Single16x16 : images.SmallImage;
                 singleBtn.RibbonStyle = RibbonItemStyles.All;
                 singleBtn.Caption = "Single provider" + (!string.IsNullOrEmpty(single.OptionalTitle)
                     ? $" - {single.OptionalTitle}"
@@ -647,7 +686,7 @@ namespace Analogy
                 openedWindows++;
                 singleBtn.ItemClick += (sender, e) =>
                 {
-                    CancellationTokenSource cts = new CancellationTokenSource(); 
+                    CancellationTokenSource cts = new CancellationTokenSource();
                     LocalLogFilesUC offlineUC = new LocalLogFilesUC(cts);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
@@ -665,7 +704,7 @@ namespace Analogy
                     {
                         singleProvider.Execute(cts.Token, offlineUC.Handler);
                     }
-             
+
                 };
             }
         }
@@ -1310,17 +1349,6 @@ namespace Analogy
             tmrStatusUpdates.Start();
         }
 
-        private void btnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(7);
-            user.ShowDialog(this);
-        }
-
-        private void btnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(8);
-            user.ShowDialog(this);
-        }
 
         private void bbiFileCaching_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1328,11 +1356,7 @@ namespace Analogy
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
         }
 
-        private void bBtnDataProviderSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
-            user.ShowDialog(this);
-        }
+
 
         private void bBtnItemExportSettings_ItemClick(object sender, ItemClickEventArgs e)
         {

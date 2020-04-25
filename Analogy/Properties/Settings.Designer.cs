@@ -12,7 +12,7 @@ namespace Analogy.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -265,7 +265,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("8.5")]
         public float FontSize {
             get {
                 return ((float)(this["FontSize"]));
@@ -361,7 +361,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool AutoScrollToLastMessage {
             get {
                 return ((bool)(this["AutoScrollToLastMessage"]));
@@ -397,7 +397,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool DefaultDescendOrder {
             get {
                 return ((bool)(this["DefaultDescendOrder"]));
@@ -514,18 +514,28 @@ namespace Analogy.Properties {
                 this["LastSearchesExclude"] = value;
             }
         }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AdditionalProbingLocations
-        {
-            get
-            {
+        [global::System.Configuration.DefaultSettingValueAttribute("[]")]
+        public string AdditionalProbingLocations {
+            get {
                 return ((string)(this["AdditionalProbingLocations"]));
             }
-            set
-            {
+            set {
                 this["AdditionalProbingLocations"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SingleInstance {
+            get {
+                return ((bool)(this["SingleInstance"]));
+            }
+            set {
+                this["SingleInstance"] = value;
             }
         }
     }

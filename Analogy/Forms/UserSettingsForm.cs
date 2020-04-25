@@ -1,12 +1,12 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Interfaces;
+using Analogy.Managers;
+using Analogy.Types;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Managers;
-using Analogy.Types;
 
 namespace Analogy
 {
@@ -125,7 +125,7 @@ namespace Analogy
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
             nudAutoCompleteCount.Value = Settings.NumberOfLastSearches;
-
+            tsSingleInstance.IsOn = Settings.SingleInstance;
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -158,6 +158,7 @@ namespace Analogy
             Settings.RememberLastSearches = tsAutoComplete.IsOn;
             Settings.UpdateOrder(order);
             Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
+            Settings.SingleInstance = tsSingleInstance.IsOn;
             Settings.Save();
         }
 
@@ -511,7 +512,7 @@ namespace Analogy
 
         private void sbtnDeleteFolderProbing_Click(object sender, EventArgs e)
         {
-            if (listBoxFoldersProbing.SelectedItem!=null)
+            if (listBoxFoldersProbing.SelectedItem != null)
                 listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
         }
     }

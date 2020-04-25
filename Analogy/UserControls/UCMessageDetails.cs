@@ -4,10 +4,11 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
-    public partial class UCMessageDetails : UserControl
+    public partial class UCMessageDetails : XtraUserControl
     {
         private AnalogyLogMessage Message { get; set; }
         private List<AnalogyLogMessage> Messages { get; }
@@ -47,10 +48,10 @@ namespace Analogy
         }
         private void LoadMessage()
         {
-            rtxtbText.Text = Message.Text;
+            memoText.Text = Message.Text;
             txtID.Text = Message.ID.ToString();
             rtxtbDataSource.Text = DataSource;
-            txtbDateValue.Text = Message.Date.ToString("MM/dd/yyyy hh:mm:ss.fff tt", DateTimeFormatInfo.InvariantInfo);
+            txtbDateValue.Text = Message.Date.ToString();
             txtbLevelValue.Text = Message.Level.ToString();
             txtbProcessValue.Text = $"{Message.Module} (ID:{Message.ProcessID})";
             txtSourceValue.Text = Message.Source;
@@ -58,7 +59,7 @@ namespace Analogy
             txtbFileName.Text = Message.FileName;
             txtbUser.Text = Message.User;
             txtbLineNumber.Text = Message.LineNumber.ToString();
-            rtxtbIndex.Text = $"{Messages.IndexOf(Message) + 1} of {Messages.Count}";
+            txtbIndex.Text = $"{Messages.IndexOf(Message) + 1} of {Messages.Count}";
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -85,7 +86,7 @@ namespace Analogy
 
         private void sBtnCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(rtxtbText.Text);
+            Clipboard.SetText(memoText.Text);
         }
 
 
