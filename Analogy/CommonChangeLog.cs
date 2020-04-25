@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Analogy.DataProviders
+namespace Analogy
 {
     public static class CommonChangeLog
     {
@@ -10,6 +10,7 @@ namespace Analogy.DataProviders
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Add Single Instance User settings #157",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Date Time value is displayed wrong in Detailed Message window (Issue #156)", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Logs Analysis: add some pie charts (Issue #131)", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2020, 04, 06)),
             new AnalogyChangeLog("Logs Analysis: add log level distribution chart (Issue #129)", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2020, 04, 06)),
@@ -26,10 +27,10 @@ namespace Analogy.DataProviders
             new AnalogyChangeLog("Upgrade DevExpress Version to 19.1.8 (Latest supported with current license)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 27)),
             new AnalogyChangeLog("Default user setting are invalid for some properties (issue #76)", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 01, 03)),
             new AnalogyChangeLog("Auto complete user setting is not working (issue #78)", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2019, 12, 27)),
-            new AnalogyChangeLog("Add docking/undocking management when more than one log is opened (issue #75)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 24)),
-            new AnalogyChangeLog("Changes in 'include Text' text box effect 'highlight lines...' textbox (Issue #74)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 20)),
+            new AnalogyChangeLog("Add docking/un-docking management when more than one log is opened (issue #75)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 24)),
+            new AnalogyChangeLog("Changes in 'include Text' text box effect 'highlight lines...' text box (Issue #74)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 20)),
             new AnalogyChangeLog("Add alert messages and notifications (Issue #46)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 14)),
-            new AnalogyChangeLog("Update all dependencies nugets versions (issue #73)", AnalogChangeLogType.None, "Lior Banai", new DateTime(2019, 12, 14)),
+            new AnalogyChangeLog("Update all dependencies nuget versions (issue #73)", AnalogChangeLogType.None, "Lior Banai", new DateTime(2019, 12, 14)),
             new AnalogyChangeLog("Shortcuts keys are not correct (issue #72)", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2019, 12, 14)),
             new AnalogyChangeLog("Search filtering: Add user predefined search queries (issue #11)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 13)),
             new AnalogyChangeLog("Add individual colors rules (issue #03)", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2019, 12, 12)),

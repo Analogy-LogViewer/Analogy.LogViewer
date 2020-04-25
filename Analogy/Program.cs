@@ -1,6 +1,7 @@
 ﻿using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -31,12 +32,15 @@ namespace Analogy
             {
                 Settings.ApplicationSkinName = ((UserLookAndFeel)s).ActiveSkinName;
             };
-
+            if (UserSettingsManager.UserSettings.SingleInstance && Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+            {
+                XtraMessageBox.Show("Single instance is on. Exiting this instance", "Analogy");
+                return;
+            }
             LoadStartupExtensions();
             Application.Run(new MainForm());
 
         }
-
 
 
         private static void LoadStartupExtensions()
@@ -54,7 +58,7 @@ namespace Analogy
         }
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogWarning( nameof(CurrentDomain_FirstChanceException), e.Exception.ToString());
+            AnalogyLogger.Instance.LogWarning(nameof(CurrentDomain_FirstChanceException), e.Exception.ToString());
         }
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {

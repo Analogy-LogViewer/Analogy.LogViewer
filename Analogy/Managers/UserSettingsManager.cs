@@ -70,6 +70,7 @@ namespace Analogy
         public List<string> LastSearchesExclude { get; set; }
         public int AnalogyInternalLogPeriod { get; set; }
         public List<string> AdditionalProbingLocations { get; set; }
+        public bool SingleInstance { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -125,6 +126,7 @@ namespace Analogy
             LastSearchesExclude = ParseSettings<List<string>>(Settings.Default.LastSearchesExclude);
             NumberOfLastSearches = Settings.Default.NumberOfLastSearches;
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
+            SingleInstance = Settings.Default.SingleInstance;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -184,6 +186,7 @@ namespace Analogy
             Settings.Default.LastSearchesInclude = JsonConvert.SerializeObject(LastSearchesInclude.Take(NumberOfLastSearches).ToList());
             Settings.Default.LastSearchesExclude = JsonConvert.SerializeObject(LastSearchesExclude.Take(NumberOfLastSearches).ToList());
             Settings.Default.AdditionalProbingLocations = JsonConvert.SerializeObject(AdditionalProbingLocations);
+            Settings.Default.SingleInstance = SingleInstance;
             Settings.Default.Save();
 
         }
