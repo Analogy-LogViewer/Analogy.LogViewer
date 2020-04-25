@@ -339,25 +339,24 @@ namespace Analogy
             dockManager1.ActivePanel = page;
         }
 
-        private void bBtnStatisticsFiltering_ItemClick(object sender, ItemClickEventArgs e)
+        private void bbtnSettingsApplication_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(0);
             user.ShowDialog(this);
         }
-
-        private void bBtnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
+        private void bBtnStatisticsFiltering_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(1);
             user.ShowDialog(this);
         }
 
-        private void bBtnStatisticsLookAndFeel_ItemClick(object sender, ItemClickEventArgs e)
+        private void bBtnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(2);
             user.ShowDialog(this);
         }
 
-        private void bBtnStatisticsUserStatistics_ItemClick(object sender, ItemClickEventArgs e)
+        private void bBtnStatisticsLookAndFeel_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(3);
             user.ShowDialog(this);
@@ -367,24 +366,6 @@ namespace Analogy
         {
             UserSettingsForm user = new UserSettingsForm(4);
             user.ShowDialog(this);
-        }
-
-        private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
-
-        private void bBtnWindowsEventLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Filter = "Windows Event log files (*.evtx)|*.evtx";
-            //openFileDialog1.Title = @"Open Files";
-            //openFileDialog1.Multiselect = true;
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    OpenOfflineLogs(openFileDialog1.FileNames);
-            //    AddRecentFiles(openFileDialog1.FileNames.ToList());
-            //}
-
         }
 
         private void bBtnShortcuts_ItemClick(object sender, ItemClickEventArgs e)
@@ -398,7 +379,31 @@ namespace Analogy
             UserSettingsForm user = new UserSettingsForm(6);
             user.ShowDialog(this);
         }
+        private void btnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(7);
+            user.ShowDialog(this);
+        }
 
+        private void btnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(8);
+            user.ShowDialog(this);
+        }
+
+        private void bBtnStatisticsUserStatistics_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(9);
+            user.ShowDialog(this);
+        }
+        private void bBtnDataProviderSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
+            user.ShowDialog(this);
+        }
+        private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
+        {
+        }
 
         private void bBtnOnlineEventLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1344,17 +1349,6 @@ namespace Analogy
             tmrStatusUpdates.Start();
         }
 
-        private void btnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(7);
-            user.ShowDialog(this);
-        }
-
-        private void btnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(8);
-            user.ShowDialog(this);
-        }
 
         private void bbiFileCaching_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1362,11 +1356,7 @@ namespace Analogy
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
         }
 
-        private void bBtnDataProviderSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
-            user.ShowDialog(this);
-        }
+
 
         private void bBtnItemExportSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
