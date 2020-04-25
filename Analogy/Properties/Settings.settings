@@ -87,7 +87,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="AutoScrollToLastMessage" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LogParsersSettings" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
