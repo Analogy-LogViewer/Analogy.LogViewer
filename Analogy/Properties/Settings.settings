@@ -63,7 +63,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="FontSize" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">10.5</Value>
+      <Value Profile="(Default)">8.5</Value>
     </Setting>
     <Setting Name="IncludeText" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
