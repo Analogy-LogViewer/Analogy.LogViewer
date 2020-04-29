@@ -545,6 +545,7 @@ namespace Analogy
             {
                 BarSubItem realTimeMenu = new BarSubItem();
                 group.ItemLinks.Add(realTimeMenu);
+                var images = FactoriesManager.Instance.GetImages(dataSourceFactory.FactoryId);
                 realTimeMenu.ImageOptions.Image = Resources.Database_off;
                 realTimeMenu.RibbonStyle = RibbonItemStyles.All;
                 realTimeMenu.Caption = "Real Time Logs";
