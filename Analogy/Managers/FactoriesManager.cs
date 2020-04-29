@@ -133,7 +133,7 @@ namespace Analogy
                         dpf.DataProviders.Where(d => d is IAnalogyRealTimeDataProvider);
                     foreach (var analogyDataSource in supported)
                     {
-                        var dataSource = (IAnalogyRealTimeDataProvider) analogyDataSource;
+                        var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
                         yield return (dpf.Title, dataSource.ID);
                     }
                 }
@@ -176,10 +176,10 @@ namespace Analogy
             {
 
                 Factories = new List<FactoryContainer>();
-                DataProviderImages=new List<DataProviderImages>();
+                DataProviderImages = new List<DataProviderImages>();
                 var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
                     @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList();
-                if (UserSettingsManager.UserSettings.AdditionalProbingLocations!=null)
+                if (UserSettingsManager.UserSettings.AdditionalProbingLocations != null)
                 {
                     foreach (string folder in UserSettingsManager.UserSettings.AdditionalProbingLocations)
                     {
@@ -217,7 +217,7 @@ namespace Analogy
                                     fa.Factory.FactoryId == factory.FactoryId));
                             }
                             Factories.Add(fc);
-                            
+
                         }
 
                         foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyComponentImages)) != null))
@@ -225,8 +225,8 @@ namespace Analogy
                             var factory = Activator.CreateInstance(f) as IAnalogyComponentImages;
                             DataProviderImages.AddRange(factory.GetDataProviderImages());
                         }
-                        
-                
+
+
                         foreach (Type aType in types.Where(aType =>
                             aType.GetInterface(nameof(IAnalogyDataProvidersFactory)) != null))
                         {
@@ -261,6 +261,14 @@ namespace Analogy
                             var share = Activator.CreateInstance(aType) as IAnalogyShareableFactory;
                             var factory = Factories.First(f => f.Factory.FactoryId == share.FactoryId);
                             factory.AddShareableFactory(share);
+                        }
+                        foreach (Type aType in types.Where(aType =>
+                            aType.GetInterface(nameof(IAnalogyExtensionsFactory)) != null))
+                        {
+
+                            var extension = Activator.CreateInstance(aType) as IAnalogyExtensionsFactory;
+                            var factory = Factories.First(f => f.Factory.FactoryId == extension.FactoryId);
+                            factory.AddExtensionFactory(extension);
                         }
                     }
                     catch (ReflectionTypeLoadException ex)
