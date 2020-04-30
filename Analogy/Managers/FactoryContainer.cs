@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Analogy.DataProviders.Extensions;
+﻿using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces.Factories;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Analogy.Managers
 {
@@ -18,6 +14,7 @@ namespace Analogy.Managers
         public List<IAnalogyDataProvidersFactory> DataProvidersFactories { get; }
         public List<IAnalogyDataProviderSettings> DataProvidersSettings { get; }
         public List<IAnalogyShareableFactory> ShareableFactories { get; }
+        public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
 
         public FactoryContainer(Assembly assembly, IAnalogyFactory factory, FactorySettings factorySetting)
         {
@@ -28,6 +25,7 @@ namespace Analogy.Managers
             DataProvidersFactories = new List<IAnalogyDataProvidersFactory>();
             DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
             ShareableFactories = new List<IAnalogyShareableFactory>();
+            ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
         }
 
 
@@ -41,7 +39,8 @@ namespace Analogy.Managers
 
         public void AddShareableFactory(IAnalogyShareableFactory shareableFactory) =>
             ShareableFactories.Add(shareableFactory);
-
+        public void AddExtensionFactory(IAnalogyExtensionsFactory extensionFactory) =>
+            ExtensionsFactories.Add(extensionFactory);
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";
     }
 }

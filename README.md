@@ -13,7 +13,7 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"  alt="Latest Release" />
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.14...master">
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.1.16...master">
     <img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"  alt="Commits Since Latest Release"/>
 </a>
 </p>
@@ -164,7 +164,7 @@ in order to compile this code [DevExpress](https://www.devexpress.com/) assembli
 View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
 ## Issues
-- Windows 10 Blocks Zip files by default. Make sure after you download the files to unblock them. Make sure the are [unblocked](https://singularlabs.com/tips/how-to-unblock-a-zip-file-on-windows-10/) before unzipping them
+- Windows 10 blocks Zip files by default. Make sure to unblock them before unzipping. [How to unblocked](https://singularlabs.com/tips/how-to-unblock-a-zip-file-on-windows-10/).
 
 <a name="contact"></a>
 ## Contact
