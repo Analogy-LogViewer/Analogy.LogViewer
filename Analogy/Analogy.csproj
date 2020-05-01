@@ -192,39 +192,27 @@
     <Compile Update="Forms\UserSettingsDataProvidersForm.Designer.cs">
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\AnalogyColumnsMatcherUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\AnalogyColumnsMatcherUC.cs" />
     <Compile Update="UserControls\AnalogyColumnsMatcherUC.Designer.cs">
       <DependentUpon>AnalogyColumnsMatcherUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\FilePoolingLog.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\FilePoolingLog.cs" />
     <Compile Update="UserControls\FilePoolingLog.Designer.cs">
       <DependentUpon>FilePoolingLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\DataVisualizerUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\DataVisualizerUC.cs" />
     <Compile Update="UserControls\DataVisualizerUC.Designer.cs">
       <DependentUpon>DataVisualizerUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\DataVisualizerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\DataVisualizerForm.cs" />
     <Compile Update="Forms\DataVisualizerForm.Designer.cs">
       <DependentUpon>DataVisualizerForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\MainForm.cs" />
     <Compile Update="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\AnalogyOTAForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\AnalogyOTAForm.cs" />
     <Compile Update="Forms\AnalogyOTAForm.Designer.cs">
       <DependentUpon>AnalogyOTAForm.cs</DependentUpon>
     </Compile>
@@ -234,21 +222,15 @@
     <Compile Update="Forms\ChangeLog.Designer.cs">
       <DependentUpon>ChangeLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\CombineFilesUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\CombineFilesUC.cs" />
     <Compile Update="UserControls\CombineFilesUC.Designer.cs">
       <DependentUpon>CombineFilesUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\ExtensionsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\ExtensionsForm.cs" />
     <Compile Update="Forms\ExtensionsForm.Designer.cs">
       <DependentUpon>ExtensionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\ExtensionsUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\ExtensionsUC.cs" />
     <Compile Update="UserControls\ExtensionsUC.Designer.cs">
       <DependentUpon>ExtensionsUC.cs</DependentUpon>
     </Compile>
@@ -258,33 +240,23 @@
     <Compile Update="UserControls\FileSystemUC.Designer.cs">
       <DependentUpon>FileSystemUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\FolderTreeViewUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\FolderTreeViewUC.cs" />
     <Compile Update="UserControls\FolderTreeViewUC.Designer.cs">
       <DependentUpon>FolderTreeViewUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\FormCombineFiles.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\FormCombineFiles.cs" />
     <Compile Update="Forms\FormCombineFiles.Designer.cs">
       <DependentUpon>FormCombineFiles.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\FormMessageDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\FormMessageDetails.cs" />
     <Compile Update="Forms\FormMessageDetails.Designer.cs">
       <DependentUpon>FormMessageDetails.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\ClientServerLog.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\ClientServerLog.cs" />
     <Compile Update="UserControls\ClientServerLog.Designer.cs">
       <DependentUpon>ClientServerLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\BookmarkLog.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\BookmarkLog.cs" />
     <Compile Update="UserControls\BookmarkLog.Designer.cs">
       <DependentUpon>BookmarkLog.cs</DependentUpon>
     </Compile>
@@ -294,9 +266,7 @@
     <Compile Update="UserControls\LocalLogFilesUC.Designer.cs">
       <DependentUpon>LocalLogFilesUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\OnlineLog.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\OnlineLog.cs" />
     <Compile Update="UserControls\OnlineLog.Designer.cs">
       <DependentUpon>OnlineLog.cs</DependentUpon>
     </Compile>
@@ -306,9 +276,7 @@
     <Compile Update="UserControls\FilesOperationsUC.Designer.cs">
       <DependentUpon>FilesOperationsUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\ProcessNameAndID.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\ProcessNameAndID.cs" />
     <Compile Update="Forms\ProcessNameAndID.Designer.cs">
       <DependentUpon>ProcessNameAndID.cs</DependentUpon>
     </Compile>
@@ -334,21 +302,15 @@
     <Compile Update="Forms\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\SearchInFilesUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\SearchInFilesUC.cs" />
     <Compile Update="UserControls\SearchInFilesUC.Designer.cs">
       <DependentUpon>SearchInFilesUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\ToolbarFormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\ToolbarFormMain.cs" />
     <Compile Update="Forms\ToolbarFormMain.Designer.cs">
       <DependentUpon>ToolbarFormMain.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\FileComparerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\FileComparerForm.cs" />
     <Compile Update="Forms\FileComparerForm.Designer.cs">
       <DependentUpon>FileComparerForm.cs</DependentUpon>
     </Compile>
@@ -358,69 +320,47 @@
     <Compile Update="UserControls\LogsComparerUC.Designer.cs">
       <DependentUpon>LogsComparerUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\UCLogs.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\UCLogs.cs" />
     <Compile Update="UserControls\UCLogs.Designer.cs">
       <DependentUpon>UCLogs.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\UCMessageDetails.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\UCMessageDetails.cs" />
     <Compile Update="UserControls\UCMessageDetails.Designer.cs">
       <DependentUpon>UCMessageDetails.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\UserSettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\UserSettingsForm.cs" />
     <Compile Update="Forms\UserSettingsForm.Designer.cs">
       <DependentUpon>UserSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\UtilityUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\UtilityUC.cs" />
     <Compile Update="UserControls\UtilityUC.Designer.cs">
       <DependentUpon>UtilityUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\WindowsEventLog.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\WindowsEventLog.cs" />
     <Compile Update="UserControls\WindowsEventLog.designer.cs">
       <DependentUpon>WindowsEventLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\XtraFormClientServer.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\XtraFormClientServer.cs" />
     <Compile Update="Forms\XtraFormClientServer.Designer.cs">
       <DependentUpon>XtraFormClientServer.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\XtraFormLogGrid.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\XtraFormLogGrid.cs" />
     <Compile Update="Forms\XtraFormLogGrid.Designer.cs">
       <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\XtraFormWindowsEventlogsManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\XtraFormWindowsEventlogsManager.cs" />
     <Compile Update="Forms\XtraFormWindowsEventlogsManager.Designer.cs">
       <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\XtraUCDirectoryListing.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\XtraUCDirectoryListing.cs" />
     <Compile Update="UserControls\XtraUCDirectoryListing.Designer.cs">
       <DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\XtraUCFileSystem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\XtraUCFileSystem.cs" />
     <Compile Update="UserControls\XtraUCFileSystem.Designer.cs">
       <DependentUpon>XtraUCFileSystem.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\XtraUCWindowsEventLogs.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\XtraUCWindowsEventLogs.cs" />
     <Compile Update="UserControls\XtraUCWindowsEventLogs.Designer.cs">
       <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
     </Compile>
