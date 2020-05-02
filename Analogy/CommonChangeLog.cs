@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Allow each Data provider to supply its own icons and Images for the UI #127",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 02)),
                 new AnalogyChangeLog("Open new logs as new tabs in the same application instance #155",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Add Single Instance User settings #157",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Date Time value is displayed wrong in Detailed Message window (Issue #156)", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 04, 25)),

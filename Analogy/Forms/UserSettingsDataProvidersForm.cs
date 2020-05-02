@@ -61,7 +61,7 @@ namespace Analogy
                 tab.Text = settings.Title;
                 UserControl uc = settings.DataProviderSettings;
                 tab.Controls.Add(uc);
-                tab.Image = settings.SmallImage ?? Resources.Technology_16x16;
+                tab.Image = settings.LargeImage ?? Resources.Technology_32x32;
                 //ab.
                 uc.Dock = DockStyle.Fill;
                 tabControlMain.TabPages.Add(tab);

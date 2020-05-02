@@ -6,6 +6,7 @@ using Analogy.Managers;
 using Analogy.Types;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -22,7 +23,7 @@ namespace Analogy
         private static object sync = new object();
         public static readonly FactoriesManager Instance = _instance.Value;
         private List<FactoryContainer> BuiltInFactories { get; }
-        private List<DataProviderImages> DataProviderImages { get; set; }
+        private List<IAnalogyComponentImages> DataProviderImages { get; set; }
         public List<FactoryContainer> Factories { get; private set; }
 
         public FactoriesManager()
@@ -73,7 +74,7 @@ namespace Analogy
             ExternalDataProviders result = await ExternalDataProviders.GetExternalDataProviders();
             var factoryContainers = result.Factories.Where(f => !Factories.Contains(f)).ToList();
             Factories.AddRange(factoryContainers);
-            DataProviderImages = result.DataProviderImages;
+            DataProviderImages = result.DataProvidersImages;
             var dataProviders = factoryContainers.Where(f =>
                     f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
@@ -163,7 +164,71 @@ namespace Analogy
                 fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled && fc.Factory.FactoryId == factoryId)
             .DataProvidersSettings;
 
-        public DataProviderImages GetImages(Guid id) => DataProviderImages.FirstOrDefault(i => i.ItemId == id);
+
+
+        public Image GetLargeImage(Guid analogyComponentId)
+        {
+            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
+            {
+                var image = componentImages.GetLargeImage(analogyComponentId);
+                if (image != null) return image;
+            }
+
+            return null;
+        }
+
+        public Image GetSmallImage(Guid analogyComponentId)
+        {
+            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
+            {
+                var image = componentImages.GetSmallImage(analogyComponentId);
+                if (image != null) return image;
+            }
+
+            return null;
+        }
+
+        public Image GetOnlineConnectedLargeImage(Guid analogyComponentId)
+        {
+            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
+            {
+                var image = componentImages.GetOnlineConnectedLargeImage(analogyComponentId);
+                if (image != null) return image;
+            }
+
+            return null;
+        }
+        public Image GetOnlineConnectedSmallImage(Guid analogyComponentId)
+        {
+            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
+            {
+                var image = componentImages.GetOnlineConnectedSmallImage(analogyComponentId);
+                if (image != null) return image;
+            }
+
+            return null;
+        }
+        public Image GetOnlineDisconnectedLargeImage(Guid analogyComponentId)
+        {
+            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
+            {
+                var image = componentImages.GetOnlineDisconnectedLargeImage(analogyComponentId);
+                if (image != null) return image;
+            }
+
+            return null;
+        }
+        public Image GetOnlineDisconnectedSmallImage(Guid analogyComponentId)
+        {
+            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
+            {
+                var image = componentImages.GetOnlineDisconnectedSmallImage(analogyComponentId);
+                if (image != null) return image;
+            }
+
+            return null;
+        }
+
         public class ExternalDataProviders
         {
             private static readonly AsyncLazy<ExternalDataProviders> _instance =
@@ -171,12 +236,12 @@ namespace Analogy
 
             public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
             public List<FactoryContainer> Factories { get; private set; }
-            public List<DataProviderImages> DataProviderImages { get; set; }
+            public List<IAnalogyComponentImages> DataProvidersImages { get; set; }
+
             private ExternalDataProviders()
             {
-
+                DataProvidersImages = new List<IAnalogyComponentImages>();
                 Factories = new List<FactoryContainer>();
-                DataProviderImages = new List<DataProviderImages>();
                 var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
                     @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList();
                 if (UserSettingsManager.UserSettings.AdditionalProbingLocations != null)
@@ -223,7 +288,7 @@ namespace Analogy
                         foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyComponentImages)) != null))
                         {
                             var factory = Activator.CreateInstance(f) as IAnalogyComponentImages;
-                            DataProviderImages.AddRange(factory.GetDataProviderImages());
+                            DataProvidersImages.Add(factory);
                         }
 
 
