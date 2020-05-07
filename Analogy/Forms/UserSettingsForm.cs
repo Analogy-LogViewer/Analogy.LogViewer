@@ -1,5 +1,6 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Managers;
+using Analogy.Properties;
 using Analogy.Types;
 using DevExpress.XtraEditors;
 using System;
@@ -126,6 +127,14 @@ namespace Analogy
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
             nudAutoCompleteCount.Value = Settings.NumberOfLastSearches;
             tsSingleInstance.IsOn = Settings.SingleInstance;
+            if (Settings.AnalogyIcon == "Light")
+            {
+                rbtnLightIconColor.Checked = true;
+            }
+            else
+            {
+                rbtnDarkIconColor.Checked = true;
+            }
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -159,6 +168,14 @@ namespace Analogy
             Settings.UpdateOrder(order);
             Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
             Settings.SingleInstance = tsSingleInstance.IsOn;
+            if (rbtnLightIconColor.Checked)
+            {
+                Settings.AnalogyIcon = "Light";
+            }
+            else
+            {
+                Settings.AnalogyIcon = "Dark";
+            }
             Settings.Save();
         }
 
@@ -515,5 +532,23 @@ namespace Analogy
             if (listBoxFoldersProbing.SelectedItem != null)
                 listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
         }
+
+        private void rbtnDarkIconColor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnDarkIconColor.Checked)
+            {
+                peAnalogy.Image = Resources.AnalogyDark;
+            }
+        }
+
+        private void rbtnLightIconColor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnLightIconColor.Checked)
+            {
+                peAnalogy.Image = Resources.AnalogyLight;
+            }
+        }
+
     }
 }
+

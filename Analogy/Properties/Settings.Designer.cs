@@ -670,5 +670,19 @@ namespace Analogy.Properties
                 this["SingleInstance"] = value;
             }
         }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
+        public string AnalogyIcon
+        {
+            get
+            {
+                return ((string)(this["AnalogyIcon"]));
+            }
+            set
+            {
+                this["AnalogyIcon"] = value;
+            }
+        }
     }
 }
