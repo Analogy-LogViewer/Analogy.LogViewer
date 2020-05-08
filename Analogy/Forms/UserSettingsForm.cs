@@ -3,6 +3,7 @@ using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,13 +42,30 @@ namespace Analogy
         {
             InitialSelection = tabIndex;
         }
-        public UserSettingsForm(string tabName) : this()
-        {
-            var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
-            if (tab != null)
-                InitialSelection = tab.TabIndex;
-        }
 
+        private void UserSettingsForm_Load(object sender, EventArgs e)
+        {
+            ShowIcon = true;
+            logGrid.MouseDown += logGrid_MouseDown;
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+            LoadSettings();
+            if (InitialSelection >= 0)
+                tabControlMain.SelectedTabPageIndex = InitialSelection;
+            if (File.Exists(Settings.LogGridFileName))
+            {
+                gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
+            }
+
+        }
+        void logGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            GridHitInfo info = logGrid.CalcHitInfo(e.Location);
+            if (info.InColumnPanel)
+            {
+                teHeader.Tag = info.Column;
+                teHeader.Text = info.Column.Caption;
+            }
+        }
         private void SetupEventsHandlers()
         {
             tsAutoComplete.IsOnChanged += (s, e) => { Settings.RememberLastSearches = tsAutoComplete.IsOn; };
@@ -207,15 +225,7 @@ namespace Analogy
             Settings.ShowHistoryOfClearedMessages = tsHistory.IsOn;
         }
 
-        private void UserSettingsForm_Load(object sender, EventArgs e)
-        {
-            ShowIcon = true;
-            Icon = UserSettingsManager.UserSettings.GetIcon();
-            LoadSettings();
-            if (InitialSelection >= 0)
-                tabControlMain.SelectedTabPageIndex = InitialSelection;
 
-        }
 
         private void nudRecent_ValueChanged(object sender, EventArgs e)
         {
@@ -551,6 +561,27 @@ namespace Analogy
             }
         }
 
+        private void sbtnHeaderSet_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(teHeader.Text) && teHeader.Tag is DevExpress.XtraGrid.Columns.GridColumn column)
+            {
+                column.Caption = teHeader.Text;
+                SaveGridLayout();
+            }
+        }
+        private void SaveGridLayout()
+        {
+            try
+            {
+                gridControl.MainView.SaveLayoutToXml(Settings.LogGridFileName);
+            }
+            catch (Exception e)
+            {
+                AnalogyLogger.Instance.LogException(e, "Analogy", $"Error saving setting: {e.Message}");
+                XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     }
 }
 

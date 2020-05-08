@@ -571,6 +571,11 @@ namespace Analogy
             this.logGrid.OptionsBehavior.Editable = false;
             this.logGrid.OptionsFilter.AllowColumnMRUFilterList = false;
             this.logGrid.OptionsFilter.AllowMRUFilterList = false;
+            this.logGrid.OptionsLayout.Columns.StoreAllOptions = true;
+            this.logGrid.OptionsLayout.Columns.StoreAppearance = true;
+            this.logGrid.OptionsLayout.StoreAllOptions = true;
+            this.logGrid.OptionsLayout.StoreAppearance = true;
+            this.logGrid.OptionsLayout.StoreFormatRules = true;
             this.logGrid.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.logGrid.OptionsView.AutoCalcPreviewLineCount = true;
             this.logGrid.OptionsView.ColumnAutoWidth = false;
@@ -1339,7 +1344,7 @@ namespace Analogy
             this.bdcBookmarks.Manager = this.barManager1;
             this.bdcBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcBookmarks.Name = "bdcBookmarks";
-            this.bdcBookmarks.Size = new System.Drawing.Size(2111, 32);
+            this.bdcBookmarks.Size = new System.Drawing.Size(2117, 32);
             this.bdcBookmarks.Text = "standaloneBarDockControl1";
             // 
             // barGroup
@@ -2039,7 +2044,7 @@ namespace Analogy
             this.xtpBookmarks.Controls.Add(this.bdcBookmarks);
             this.xtpBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpBookmarks.Name = "xtpBookmarks";
-            this.xtpBookmarks.Size = new System.Drawing.Size(2111, 170);
+            this.xtpBookmarks.Size = new System.Drawing.Size(2117, 170);
             this.xtpBookmarks.Text = "Bookmarks";
             // 
             // gridControlBookmarkedMessages
@@ -2050,7 +2055,7 @@ namespace Analogy
             this.gridControlBookmarkedMessages.MainView = this.gridViewBookmarkedMessages;
             this.gridControlBookmarkedMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlBookmarkedMessages.Name = "gridControlBookmarkedMessages";
-            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(2111, 138);
+            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(2117, 138);
             this.gridControlBookmarkedMessages.TabIndex = 3;
             this.gridControlBookmarkedMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBookmarkedMessages});
@@ -2087,6 +2092,11 @@ namespace Analogy
             this.gridViewBookmarkedMessages.OptionsCustomization.AllowGroup = false;
             this.gridViewBookmarkedMessages.OptionsFilter.AllowColumnMRUFilterList = false;
             this.gridViewBookmarkedMessages.OptionsFilter.AllowMRUFilterList = false;
+            this.gridViewBookmarkedMessages.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridViewBookmarkedMessages.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridViewBookmarkedMessages.OptionsLayout.StoreAllOptions = true;
+            this.gridViewBookmarkedMessages.OptionsLayout.StoreAppearance = true;
+            this.gridViewBookmarkedMessages.OptionsLayout.StoreFormatRules = true;
             this.gridViewBookmarkedMessages.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewBookmarkedMessages.OptionsView.AutoCalcPreviewLineCount = true;
             this.gridViewBookmarkedMessages.OptionsView.ColumnAutoWidth = false;
@@ -2486,7 +2496,7 @@ namespace Analogy
             this.xtCounts.Controls.Add(this.panelControl1);
             this.xtCounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtCounts.Name = "xtCounts";
-            this.xtCounts.Size = new System.Drawing.Size(2118, 705);
+            this.xtCounts.Size = new System.Drawing.Size(2124, 705);
             this.xtCounts.Text = "Messages Grouping";
             // 
             // spltGroupByChars
@@ -2504,7 +2514,7 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(2118, 664);
+            this.spltGroupByChars.Size = new System.Drawing.Size(2124, 664);
             this.spltGroupByChars.SplitterDistance = 339;
             this.spltGroupByChars.TabIndex = 4;
             // 
@@ -2517,7 +2527,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(2118, 339);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(2124, 339);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2540,7 +2550,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridView1;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2118, 321);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2124, 321);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2833,7 +2843,7 @@ namespace Analogy
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(2118, 41);
+            this.panelControl1.Size = new System.Drawing.Size(2124, 41);
             this.panelControl1.TabIndex = 16;
             // 
             // nudGroupBychars

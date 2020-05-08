@@ -10,6 +10,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("User settings: Allow user to change grid headers/titles #154",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
+                new AnalogyChangeLog("UI: Add alternate icons (light/dark themes) #167",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
                 new AnalogyChangeLog("Allow each Data provider to supply its own icons and Images for the UI #127",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 02)),
                 new AnalogyChangeLog("Open new logs as new tabs in the same application instance #155",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Add Single Instance User settings #157",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),

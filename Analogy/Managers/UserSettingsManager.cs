@@ -9,7 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace Analogy
@@ -72,6 +74,7 @@ namespace Analogy
         public List<string> AdditionalProbingLocations { get; set; }
         public bool SingleInstance { get; set; }
         public string AnalogyIcon { get; set; }
+        public string LogGridFileName => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "AnalogyGridlayout.xml");
         public UserSettingsManager()
         {
             Load();
@@ -277,6 +280,8 @@ namespace Analogy
         {
             return AnalogyIcon == "Dark" ? Resources.AnalogyIconDark : Resources.AnalogyIconLight;
         }
+
+
     }
     [Serializable]
     public class LogParserSettingsContainer

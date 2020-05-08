@@ -1,4 +1,8 @@
-﻿using DevExpress.Data;
+﻿using Analogy.DataSources;
+using Analogy.Interfaces;
+using Analogy.Types;
+using DevExpress.Data;
+using DevExpress.Data.Filtering;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
@@ -17,14 +21,9 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataSources;
-using Analogy.Interfaces;
-using Analogy.Types;
-using DevExpress.Data.Filtering;
 
 namespace Analogy
 {
@@ -36,8 +35,8 @@ namespace Analogy
         private PagingManager PagingManager { get; set; }
         private FileProcessor fileProcessor { get; set; }
 
-        public CancellationTokenSource CancellationTokenSource { get; set; }= new CancellationTokenSource();
-        public event EventHandler<bool> FullMode; 
+        public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
+        public event EventHandler<bool> FullMode;
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
@@ -98,7 +97,6 @@ namespace Analogy
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
         private DateTime diffStartTime = DateTime.MinValue;
-        private string LayoutFileName;
         private bool BookmarkView;
         private int pageNumber = 1;
         private CancellationTokenSource filterTokenSource;
@@ -121,7 +119,6 @@ namespace Analogy
             filterToken = filterTokenSource.Token;
             fileProcessor = new FileProcessor(this);
             if (DesignMode) return;
-            LayoutFileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "layout.xml");
             PagingManager = new PagingManager(this);
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
@@ -133,7 +130,7 @@ namespace Analogy
             bBtnFullGrid.ItemClick += (s, e) =>
             {
                 FullModeEnabled = !FullModeEnabled;
-                FullMode?.Invoke(this,FullModeEnabled);
+                FullMode?.Invoke(this, FullModeEnabled);
                 spltMain.Collapsed = FullModeEnabled;
             };
             bBtnShare.ItemClick += (s, e) =>
@@ -301,11 +298,11 @@ namespace Analogy
             }
             catch (Exception)
             {
-               //ignore replacement
+                //ignore replacement
             }
         }
 
-        public void SetFileDataSource(IAnalogyDataProvider dataProvider,IAnalogyOfflineDataProvider fileDataProvider)
+        public void SetFileDataSource(IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider fileDataProvider)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
@@ -414,10 +411,10 @@ namespace Analogy
             txtbExclude.MaskBox.AutoCompleteCustomSource = autoCompleteExclude;
 
             gridControl.ForceInitialize();
-            if (File.Exists(LayoutFileName))
+            if (File.Exists(Settings.LogGridFileName))
             {
-                gridControl.MainView.RestoreLayoutFromXml(LayoutFileName);
-                gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(LayoutFileName);
+                gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
+                gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
             }
             if (Settings.SaveSearchFilters)
             {
@@ -585,12 +582,12 @@ namespace Analogy
 
                 if (DataProvider.UseCustomColors)
                 {
-                    IAnalogyLogMessage m = (AnalogyLogMessage) view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                    IAnalogyLogMessage m = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
                     if (m == null) return;
                     var colors = DataProvider.GetColorForMessage(m);
                     if (colors.backgroundColor != Color.Empty)
                         e.Appearance.BackColor = colors.backgroundColor;
-                    if (colors.foregroundColor!= Color.Empty)
+                    if (colors.foregroundColor != Color.Empty)
                         e.Appearance.ForeColor = colors.foregroundColor;
                 }
             }
@@ -1710,12 +1707,13 @@ namespace Analogy
         {
             try
             {
-                gridControl.MainView.SaveLayoutToXml(LayoutFileName);
+                gridControl.MainView.SaveLayoutToXml(Settings.LogGridFileName);
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
-                Console.WriteLine(exception);
-                throw;
+                AnalogyLogger.Instance.LogException(e, "Analogy", $"Error saving setting: {e.Message}");
+                XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
         private void tsmiBookmarkPersist_Click(object sender, EventArgs e)
