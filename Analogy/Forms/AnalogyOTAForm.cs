@@ -1,15 +1,10 @@
-﻿using DevExpress.XtraEditors;
-
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
+using MessagePack;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using System.ServiceModel;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
-using MessagePack;
 
 namespace Analogy
 {
@@ -19,13 +14,13 @@ namespace Analogy
         {
             public string Name { get; set; }
             public IAnalogyShareable Shareable { get; set; }
-    
+
         }
         private IAnalogyShareable Shareable { get; set; }
         private List<AnalogyLogMessage> messages;
         public AnalogyOTAForm()
         {
-            messages=new List<AnalogyLogMessage>();
+            messages = new List<AnalogyLogMessage>();
             InitializeComponent();
         }
 
@@ -43,7 +38,7 @@ namespace Analogy
                 {
                     foreach (var share in sf.Shareables)
                     {
-                        items.Add(new ComboboxItem() {Name = sf.Title, Shareable = share});
+                        items.Add(new ComboboxItem() { Name = sf.Title, Shareable = share });
                     }
                 }
             }
@@ -54,7 +49,7 @@ namespace Analogy
 
         private void AnalogyOTAForm_Load(object sender, EventArgs e)
         {
-     
+            Icon = UserSettingsManager.UserSettings.GetIcon();
         }
 
         private async void AnalogyOTAForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -80,7 +75,7 @@ namespace Analogy
         {
             if (rbList.Checked)
             {
-                Shareable.SendMessages(messages,"");
+                Shareable.SendMessages(messages, "");
             }
             else
             {

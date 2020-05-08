@@ -17,6 +17,7 @@ namespace Analogy
 
         private void ProcessNameAndID_Load(object sender, EventArgs e)
         {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
             processes = Process.GetProcesses().Select(p => new ProcessName(p.ProcessName, p.Id)).OrderByDescending(p => p.ID);
             gridControl1.DataSource = processes;
         }

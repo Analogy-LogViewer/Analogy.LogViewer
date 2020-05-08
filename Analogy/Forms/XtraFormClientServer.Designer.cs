@@ -128,6 +128,7 @@
             this.Name = "XtraFormClientServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Other File Locations";
+            this.Load += new System.EventHandler(this.XtraFormClientServer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

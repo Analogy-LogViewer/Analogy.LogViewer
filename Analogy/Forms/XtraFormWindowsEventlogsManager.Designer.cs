@@ -50,6 +50,7 @@
             this.Name = "XtraFormWindowsEventlogsManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Windows event logs";
+            this.Load += new System.EventHandler(this.XtraFormWindowsEventlogsManager_Load);
             this.ResumeLayout(false);
 
         }

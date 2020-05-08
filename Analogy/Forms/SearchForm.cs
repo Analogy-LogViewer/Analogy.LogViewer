@@ -17,5 +17,10 @@ namespace Analogy
             this.offlineAnalogy = offlineAnalogy;
             searchInFilesUC1.SetDataSource(offlineAnalogy);
         }
+
+        private void SearchForm_Load(object sender, System.EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 }

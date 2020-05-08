@@ -207,8 +207,10 @@ namespace Analogy
             Settings.ShowHistoryOfClearedMessages = tsHistory.IsOn;
         }
 
-        private async void UserSettingsForm_Load(object sender, EventArgs e)
+        private void UserSettingsForm_Load(object sender, EventArgs e)
         {
+            ShowIcon = true;
+            Icon = UserSettingsManager.UserSettings.GetIcon();
             LoadSettings();
             if (InitialSelection >= 0)
                 tabControlMain.SelectedTabPageIndex = InitialSelection;

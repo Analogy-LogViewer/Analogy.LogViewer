@@ -51,6 +51,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FileComparerForm";
             this.Text = "Logs comparer";
+            this.Load += new System.EventHandler(this.FileComparerForm_Load);
             this.ResumeLayout(false);
 
         }

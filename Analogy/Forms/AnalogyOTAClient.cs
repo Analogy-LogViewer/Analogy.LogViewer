@@ -1,10 +1,10 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 using System;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -41,6 +41,7 @@ namespace Analogy
 
         private void AnalogyOTAClient_Load(object sender, System.EventArgs e)
         {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
             foreach (DataRow dataRow in Data.Rows)
             {
                 checkedListBox1.Items.Add(new CheckListItemForSending(dataRow[9] as AnalogyLogMessage, dataRow[11].ToString()),

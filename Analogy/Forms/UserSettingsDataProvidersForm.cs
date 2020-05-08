@@ -68,8 +68,9 @@ namespace Analogy
             }
         }
 
-        private async void UserSettingsForm_Load(object sender, EventArgs e)
+        private void UserSettingsForm_Load(object sender, EventArgs e)
         {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
             LoadSettings();
 
             if (_initialSelection >= 0)

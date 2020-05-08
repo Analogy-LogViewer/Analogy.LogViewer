@@ -63,6 +63,11 @@ namespace Analogy
                 checkedListBoxControl1.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
+
+        private void AnalogyExclude_Load(object sender, EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 
     public class SqlParser

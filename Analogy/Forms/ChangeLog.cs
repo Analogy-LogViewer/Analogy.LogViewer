@@ -14,5 +14,10 @@ namespace Analogy
         {
             Close();
         }
+
+        private void ChangeLog_Load(object sender, EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 }

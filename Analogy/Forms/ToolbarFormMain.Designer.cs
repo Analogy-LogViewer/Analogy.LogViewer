@@ -119,7 +119,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1010, 65);
+            this.barDockControlTop.Size = new System.Drawing.Size(1010, 57);
             // 
             // barDockControlBottom
             // 
@@ -134,19 +134,19 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 65);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 314);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 322);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1010, 65);
+            this.barDockControlRight.Location = new System.Drawing.Point(1010, 57);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 314);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 322);
             // 
             // bar4
             // 
@@ -170,10 +170,10 @@
             // 
             this.xtcLogs.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.xtcLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtcLogs.Location = new System.Drawing.Point(0, 65);
+            this.xtcLogs.Location = new System.Drawing.Point(0, 57);
             this.xtcLogs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtcLogs.Name = "xtcLogs";
-            this.xtcLogs.Size = new System.Drawing.Size(1010, 314);
+            this.xtcLogs.Size = new System.Drawing.Size(1010, 322);
             this.xtcLogs.TabIndex = 6;
             // 
             // ToolbarFormMain
@@ -190,6 +190,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ToolbarFormMain";
             this.Text = "Analogy - Compact Mode";
+            this.Load += new System.EventHandler(this.ToolbarFormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtcLogs)).EndInit();
             this.ResumeLayout(false);

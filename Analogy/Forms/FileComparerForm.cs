@@ -16,5 +16,10 @@ namespace Analogy.Tools
             this.offlineAnalogy = offlineAnalogy;
             logsComparerUC1.SetDataSource(offlineAnalogy);
         }
+
+        private void FileComparerForm_Load(object sender, System.EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 }

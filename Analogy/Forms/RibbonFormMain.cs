@@ -6,5 +6,10 @@
         {
             InitializeComponent();
         }
+
+        private void RibbonFormMain_Load(object sender, System.EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 }

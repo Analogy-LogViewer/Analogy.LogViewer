@@ -55,6 +55,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Combine Files";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormCombineFiles_Load);
             this.ResumeLayout(false);
 
         }
