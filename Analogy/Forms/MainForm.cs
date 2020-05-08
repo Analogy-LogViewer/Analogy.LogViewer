@@ -1433,7 +1433,17 @@ namespace Analogy
             AnalogyLogManager.Instance.Show(this);
         }
 
-
+        private void bbtnStar_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
+            }
+            catch (Exception exception)
+            {
+                AnalogyLogger.Instance.LogException(exception, "", $"Error: {exception.Message}");
+            }
+        }
     }
 }
 
