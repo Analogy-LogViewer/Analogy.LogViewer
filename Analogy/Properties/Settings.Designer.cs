@@ -684,5 +684,19 @@ namespace Analogy.Properties
                 this["AnalogyIcon"] = value;
             }
         }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("yyyy.MM.dd HH:mm:ss.ff")]
+        public string DateTimePattern
+        {
+            get
+            {
+                return ((string)(this["DateTimePattern"]));
+            }
+            set
+            {
+                this["DateTimePattern"] = value;
+            }
+        }
     }
 }

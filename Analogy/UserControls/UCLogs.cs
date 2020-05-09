@@ -432,6 +432,16 @@ namespace Analogy
                 chkLstLogLevel.Items[1].CheckState = CheckState.Checked;
             LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSize);
             btsAutoScrollToBottom.Checked = Settings.AutoScrollToLastMessage;
+
+            gridViewPrimary.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+            gridViewPrimary.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
+
+            gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+            gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
+
+            gridViewGrouping.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+            gridViewGrouping.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
+
         }
 
         private void BookmarkModeUI()
@@ -1742,7 +1752,7 @@ namespace Analogy
         //{
         //    if (e.Column.FieldName == "gridColumnLevelImage")
         //    {
-        //        string severity = logGrid.GetListSourceRowCellValue(e.ListSourceRowIndex, gridView1.Columns["Level"])
+        //        string severity = logGrid.GetListSourceRowCellValue(e.ListSourceRowIndex, gridViewPrimary.Columns["Level"])
         //            .ToString();
         //        LogLevel level = Utils.GetLogLevel(severity);
         //        switch (level)

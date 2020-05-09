@@ -75,6 +75,7 @@ namespace Analogy
         public bool SingleInstance { get; set; }
         public string AnalogyIcon { get; set; }
         public string LogGridFileName => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "AnalogyGridlayout.xml");
+        public string DateTimePattern { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -90,6 +91,9 @@ namespace Analogy
                 Settings.Default.Save();
             }
 
+            DateTimePattern = !string.IsNullOrEmpty(Settings.Default.DateTimePattern)
+                ? Settings.Default.DateTimePattern
+                : "yyyy.MM.dd HH:mm:ss.ff";
             AnalogyIcon = Settings.Default.AnalogyIcon;
             ApplicationSkinName = Settings.Default.ApplicationSkinName;
             EnableUserStatistics = Settings.Default.EnableUserStatistics;
@@ -152,6 +156,9 @@ namespace Analogy
         }
         public void Save()
         {
+            Settings.Default.DateTimePattern = !string.IsNullOrEmpty(DateTimePattern)
+                ? DateTimePattern
+                : "yyyy.MM.dd HH:mm:ss.ff";
             Settings.Default.AnalogyIcon = AnalogyIcon;
             Settings.Default.ApplicationSkinName = ApplicationSkinName;
             Settings.Default.EnableUserStatistics = EnableUserStatistics;

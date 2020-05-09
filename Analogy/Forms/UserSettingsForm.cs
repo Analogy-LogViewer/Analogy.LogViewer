@@ -2,6 +2,7 @@
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
@@ -76,6 +77,9 @@ namespace Analogy
         }
         private void LoadSettings()
         {
+            logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+            logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
+            gridColumnDate.DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());

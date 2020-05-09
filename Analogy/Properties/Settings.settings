@@ -134,5 +134,8 @@
     <Setting Name="AnalogyIcon" Type="System.String" Scope="User">
       <Value Profile="(Default)">Dark</Value>
     </Setting>
+    <Setting Name="DateTimePattern" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"yyyy.MM.dd HH:mm:ss.ff"</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
