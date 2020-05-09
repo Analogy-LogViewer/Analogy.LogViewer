@@ -242,6 +242,33 @@ namespace Analogy
                 Settings.ModuleText = chkbModules.Text;
             };
         }
+   
+
+        private void LoadReplacementHeaders()
+        {
+            try
+            {
+                if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
+                    return;
+                foreach ((string originalHeader, string replacementHeader) in DataProvider.GetReplacementHeaders())
+                {
+                    logGrid.Columns[originalHeader].Caption = replacementHeader;
+                }
+
+            }
+            catch (Exception)
+            {
+                //ignore replacement
+            }
+        }
+
+        public void SetFileDataSource(IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider fileDataProvider)
+        {
+            DataProvider = dataProvider;
+            FileDataProvider = fileDataProvider;
+            SetSaveButtonsVisibility(FileDataProvider != null);
+        }
+
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
@@ -283,32 +310,6 @@ namespace Analogy
 
             gridControl.Focus();
         }
-
-        private void LoadReplacementHeaders()
-        {
-            try
-            {
-                if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
-                    return;
-                foreach ((string originalHeader, string replacementHeader) in DataProvider.GetReplacementHeaders())
-                {
-                    logGrid.Columns[originalHeader].Caption = replacementHeader;
-                }
-
-            }
-            catch (Exception)
-            {
-                //ignore replacement
-            }
-        }
-
-        public void SetFileDataSource(IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider fileDataProvider)
-        {
-            DataProvider = dataProvider;
-            FileDataProvider = fileDataProvider;
-            SetSaveButtonsVisibility(FileDataProvider != null);
-        }
-
         public void SetSaveButtonsVisibility(bool on)
         {
             if (on)
@@ -439,8 +440,6 @@ namespace Analogy
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
 
-            gridViewGrouping.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
-            gridViewGrouping.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
 
         }
 

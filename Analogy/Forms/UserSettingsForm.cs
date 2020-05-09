@@ -7,8 +7,11 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Analogy
@@ -30,6 +33,7 @@ namespace Analogy
             public override string ToString() => $"{Name} ({ID})";
         }
 
+        private DataTable messageData;
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private int InitialSelection = -1;
 
@@ -37,6 +41,28 @@ namespace Analogy
         {
             InitializeComponent();
             SetupEventsHandlers();
+
+
+        }
+
+        private void SetupExampleMessage(DataTable messageData)
+        {
+            DataRow dtr = messageData.NewRow();
+            dtr.BeginEdit();
+            dtr["Date"] = DateTime.Now;
+            dtr["Text"] = "Test 1";
+            dtr["Source"] = "Analogy";
+            dtr["Level"] = AnalogyLogLevel.Event.ToString();
+            dtr["Class"] = AnalogyLogClass.General.ToString();
+            dtr["Category"] = "None";
+            dtr["User"] = "None";
+            dtr["Module"] = "Analogy";
+            dtr["ProcessID"] = Process.GetCurrentProcess().Id;
+            dtr["ThreadID"] = Thread.CurrentContext.ContextID;
+            dtr["DataProvider"] = string.Empty;
+            dtr.EndEdit();
+            messageData.Rows.Add(dtr);
+            messageData.AcceptChanges();
         }
 
         public UserSettingsForm(int tabIndex) : this()
@@ -56,6 +82,9 @@ namespace Analogy
             {
                 gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
             }
+            messageData = Utils.DataTableConstructor();
+            gridControl.DataSource = messageData.DefaultView;
+            SetupExampleMessage(messageData);
 
         }
         void logGrid_MouseDown(object sender, MouseEventArgs e)
@@ -79,7 +108,6 @@ namespace Analogy
         {
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
-            gridColumnDate.DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
