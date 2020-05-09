@@ -80,7 +80,6 @@ namespace Analogy
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.logGridFiltered = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -206,7 +205,7 @@ namespace Analogy
             this.gCtrlGrouping = new DevExpress.XtraGrid.GridControl();
             this.gridViewGrouping = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridControlMessageGrouping = new DevExpress.XtraGrid.GridControl();
-            this.gridViewPrimary = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewGrouping2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -253,7 +252,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logGridFiltered)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -314,7 +312,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gCtrlGrouping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMessageGrouping)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewPrimary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).BeginInit();
@@ -337,8 +335,7 @@ namespace Analogy
             this.gridControl.Size = new System.Drawing.Size(2124, 243);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.logGrid,
-            this.logGridFiltered});
+            this.logGrid});
             this.gridControl.Click += new System.EventHandler(this.pmsGrid_Click);
             this.gridControl.DoubleClick += new System.EventHandler(this.pmsGrid_DoubleClick);
             this.gridControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LogGrid_KeyPress);
@@ -841,51 +838,6 @@ namespace Analogy
             this.imageList.Images.SetKeyName(8, "Analogy_icon1_16x16.ico");
             this.imageList.Images.SetKeyName(9, "Question_16x16.png");
             this.imageList.Images.SetKeyName(10, "log16x16.ico");
-            // 
-            // logGridFiltered
-            // 
-            this.logGridFiltered.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.logGridFiltered.Appearance.OddRow.Options.UseBackColor = true;
-            this.logGridFiltered.Appearance.Row.Options.UseTextOptions = true;
-            this.logGridFiltered.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.logGridFiltered.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.logGridFiltered.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.logGridFiltered.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumnDataSource,
-            this.gridColumnDate,
-            this.gridColumnTimeDiff,
-            this.gridColumnText,
-            this.gridColumnSource,
-            this.gridColumnLevel,
-            this.gridColumnClass,
-            this.gridColumnCategory,
-            this.gridColumnUser,
-            this.gridColumnModule,
-            this.gridColumnObject,
-            this.gridColumnProcessID,
-            this.gridColumnThread});
-            this.logGridFiltered.DetailHeight = 431;
-            this.logGridFiltered.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.logGridFiltered.GridControl = this.gridControl;
-            this.logGridFiltered.Images = this.imageList;
-            this.logGridFiltered.IndicatorWidth = 24;
-            this.logGridFiltered.Name = "logGridFiltered";
-            this.logGridFiltered.OptionsBehavior.Editable = false;
-            this.logGridFiltered.OptionsFilter.AllowColumnMRUFilterList = false;
-            this.logGridFiltered.OptionsFilter.AllowMRUFilterList = false;
-            this.logGridFiltered.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.logGridFiltered.OptionsView.AutoCalcPreviewLineCount = true;
-            this.logGridFiltered.OptionsView.ColumnAutoWidth = false;
-            this.logGridFiltered.OptionsView.RowAutoHeight = true;
-            this.logGridFiltered.OptionsView.ShowAutoFilterRow = true;
-            this.logGridFiltered.OptionsView.ShowGroupPanel = false;
-            this.logGridFiltered.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
-            this.logGridFiltered.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
-            this.logGridFiltered.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.PmsGridView_SelectionChanged);
-            this.logGridFiltered.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGrid_FocusedRowChanged);
-            this.logGridFiltered.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
-            this.logGridFiltered.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.GridViewCustomColumnDisplayText);
-            this.logGridFiltered.Click += new System.EventHandler(this.logGrid_Click);
             // 
             // panel1
             // 
@@ -1482,7 +1434,7 @@ namespace Analogy
             // 
             // lblPageNumber
             // 
-            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPageNumber.Appearance.Options.UseTextOptions = true;
             this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -1617,7 +1569,7 @@ namespace Analogy
             // 
             // spltcDateFiltering
             // 
-            this.spltcDateFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltcDateFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcDateFiltering.Location = new System.Drawing.Point(3, 124);
             this.spltcDateFiltering.Name = "spltcDateFiltering";
@@ -1732,7 +1684,7 @@ namespace Analogy
             // 
             // spltcProcessesModule
             // 
-            this.spltcProcessesModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltcProcessesModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcProcessesModule.Location = new System.Drawing.Point(7, 94);
             this.spltcProcessesModule.Name = "spltcProcessesModule";
@@ -1792,7 +1744,7 @@ namespace Analogy
             // 
             // spltcSources
             // 
-            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcSources.Location = new System.Drawing.Point(7, 65);
             this.spltcSources.Name = "spltcSources";
@@ -1852,7 +1804,7 @@ namespace Analogy
             // 
             // spltTextExclude
             // 
-            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltTextExclude.Location = new System.Drawing.Point(7, 37);
             this.spltTextExclude.Name = "spltTextExclude";
@@ -1914,7 +1866,7 @@ namespace Analogy
             // 
             // spltText
             // 
-            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltText.Location = new System.Drawing.Point(7, 7);
             this.spltText.Name = "spltText";
@@ -2547,23 +2499,23 @@ namespace Analogy
             this.gridControlMessageGrouping.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlMessageGrouping.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Location = new System.Drawing.Point(0, 0);
-            this.gridControlMessageGrouping.MainView = this.gridViewPrimary;
+            this.gridControlMessageGrouping.MainView = this.gridViewGrouping2;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
             this.gridControlMessageGrouping.Size = new System.Drawing.Size(2124, 321);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewPrimary});
+            this.gridViewGrouping2});
             // 
-            // gridViewPrimary
+            // gridViewGrouping2
             // 
-            this.gridViewPrimary.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridViewPrimary.Appearance.OddRow.Options.UseBackColor = true;
-            this.gridViewPrimary.Appearance.Row.Options.UseTextOptions = true;
-            this.gridViewPrimary.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridViewPrimary.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridViewPrimary.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.gridViewPrimary.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewGrouping2.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridViewGrouping2.Appearance.OddRow.Options.UseBackColor = true;
+            this.gridViewGrouping2.Appearance.Row.Options.UseTextOptions = true;
+            this.gridViewGrouping2.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridViewGrouping2.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridViewGrouping2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridViewGrouping2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn13,
             this.gridColumn14,
             this.gridColumn15,
@@ -2576,24 +2528,24 @@ namespace Analogy
             this.gridColumn22,
             this.gridColumn23,
             this.gridColumn24});
-            this.gridViewPrimary.DetailHeight = 431;
-            this.gridViewPrimary.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridViewPrimary.GridControl = this.gridControlMessageGrouping;
-            this.gridViewPrimary.Images = this.imageList;
-            this.gridViewPrimary.IndicatorWidth = 24;
-            this.gridViewPrimary.Name = "gridViewPrimary";
-            this.gridViewPrimary.OptionsBehavior.Editable = false;
-            this.gridViewPrimary.OptionsCustomization.AllowGroup = false;
-            this.gridViewPrimary.OptionsFilter.AllowColumnMRUFilterList = false;
-            this.gridViewPrimary.OptionsFilter.AllowMRUFilterList = false;
-            this.gridViewPrimary.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridViewPrimary.OptionsView.AutoCalcPreviewLineCount = true;
-            this.gridViewPrimary.OptionsView.ColumnAutoWidth = false;
-            this.gridViewPrimary.OptionsView.RowAutoHeight = true;
-            this.gridViewPrimary.OptionsView.ShowAutoFilterRow = true;
-            this.gridViewPrimary.OptionsView.ShowGroupPanel = false;
-            this.gridViewPrimary.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
-            this.gridViewPrimary.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
+            this.gridViewGrouping2.DetailHeight = 431;
+            this.gridViewGrouping2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridViewGrouping2.GridControl = this.gridControlMessageGrouping;
+            this.gridViewGrouping2.Images = this.imageList;
+            this.gridViewGrouping2.IndicatorWidth = 24;
+            this.gridViewGrouping2.Name = "gridViewGrouping2";
+            this.gridViewGrouping2.OptionsBehavior.Editable = false;
+            this.gridViewGrouping2.OptionsCustomization.AllowGroup = false;
+            this.gridViewGrouping2.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.gridViewGrouping2.OptionsFilter.AllowMRUFilterList = false;
+            this.gridViewGrouping2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewGrouping2.OptionsView.AutoCalcPreviewLineCount = true;
+            this.gridViewGrouping2.OptionsView.ColumnAutoWidth = false;
+            this.gridViewGrouping2.OptionsView.RowAutoHeight = true;
+            this.gridViewGrouping2.OptionsView.ShowAutoFilterRow = true;
+            this.gridViewGrouping2.OptionsView.ShowGroupPanel = false;
+            this.gridViewGrouping2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
+            this.gridViewGrouping2.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
             // 
             // gridColumn13
             // 
@@ -3134,7 +3086,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             this.cmsMessageOperation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logGridFiltered)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
@@ -3201,7 +3152,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gCtrlGrouping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMessageGrouping)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewPrimary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -3219,7 +3170,6 @@ namespace Analogy
         #endregion
         private DevExpress.XtraGrid.GridControl gridControl;
         private GridView logGrid;
-        private GridView logGridFiltered;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDate;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDataSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnText;
@@ -3280,7 +3230,7 @@ namespace Analogy
         private System.Windows.Forms.Label lblGroupByChars;
         private System.Windows.Forms.SplitContainer spltGroupByChars;
         private DevExpress.XtraGrid.GridControl gridControlMessageGrouping;
-        private GridView gridViewPrimary;
+        private GridView gridViewGrouping2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;

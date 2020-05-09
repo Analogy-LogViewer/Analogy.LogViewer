@@ -107,10 +107,11 @@ namespace Analogy
         }
         private void LoadSettings()
         {
-            
+
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
+            teDateTimeFormat.Text = Settings.DateTimePattern;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
             tsAutoComplete.IsOn = Settings.RememberLastSearches;
@@ -615,6 +616,13 @@ namespace Analogy
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void sbtnDateTimeFormat_Click(object sender, EventArgs e)
+        {
+
+            logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+            logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
         }
     }
 }
