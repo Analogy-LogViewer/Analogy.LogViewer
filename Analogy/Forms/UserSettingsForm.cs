@@ -45,12 +45,12 @@ namespace Analogy
 
         }
 
-        private void SetupExampleMessage(DataTable messageData)
+        private void SetupExampleMessage(string text)
         {
             DataRow dtr = messageData.NewRow();
             dtr.BeginEdit();
             dtr["Date"] = DateTime.Now;
-            dtr["Text"] = "Test 1";
+            dtr["Text"] = text;
             dtr["Source"] = "Analogy";
             dtr["Level"] = AnalogyLogLevel.Event.ToString();
             dtr["Class"] = AnalogyLogClass.General.ToString();
@@ -84,7 +84,8 @@ namespace Analogy
             }
             messageData = Utils.DataTableConstructor();
             gridControl.DataSource = messageData.DefaultView;
-            SetupExampleMessage(messageData);
+            SetupExampleMessage("Test 1");
+            SetupExampleMessage("Test 2");
 
         }
         void logGrid_MouseDown(object sender, MouseEventArgs e)
@@ -106,6 +107,7 @@ namespace Analogy
         }
         private void LoadSettings()
         {
+            
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
