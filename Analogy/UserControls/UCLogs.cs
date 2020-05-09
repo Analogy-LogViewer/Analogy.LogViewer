@@ -454,7 +454,7 @@ namespace Analogy
 
         public void LoadExtensions()
         {
-            var extensions = FactoriesManager.Instance.GetExtensions(DataProvider).ToList();
+            var extensions =ExtensionManager.RegisteredExtensions.Where(e=>e.TargetProviderId==DataProvider.ID).ToList();
             hasAnyInPlaceExtensions = extensions.Any(e=>e.ExtensionType==AnalogyExtensionType.InPlace);
             hasAnyUserControlExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.UserControl);
             InPlaceRegisteredExtensions = extensions.Where(e => e.ExtensionType == AnalogyExtensionType.InPlace).ToList();

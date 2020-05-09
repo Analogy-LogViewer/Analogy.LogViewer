@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Add Columns extension support #149",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),
                 new AnalogyChangeLog("Add an option to display date/time in local pattern #154",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),
                 new AnalogyChangeLog("User settings: Allow user to change grid headers/titles #153",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
                 new AnalogyChangeLog("UI: Add alternate icons (light/dark themes) #167",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
