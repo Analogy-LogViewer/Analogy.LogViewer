@@ -178,18 +178,18 @@ namespace Analogy
             this.xtpBookmarks = new DevExpress.XtraTab.XtraTabPage();
             this.gridControlBookmarkedMessages = new DevExpress.XtraGrid.GridControl();
             this.gridViewBookmarkedMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkText = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkSource = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkLevel = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkClass = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkCategory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkUser = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkModule = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkAudit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkObject = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tmrNewData = new System.Windows.Forms.Timer(this.components);
@@ -1482,7 +1482,7 @@ namespace Analogy
             // 
             // lblPageNumber
             // 
-            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPageNumber.Appearance.Options.UseTextOptions = true;
             this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -1617,7 +1617,7 @@ namespace Analogy
             // 
             // spltcDateFiltering
             // 
-            this.spltcDateFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltcDateFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcDateFiltering.Location = new System.Drawing.Point(3, 124);
             this.spltcDateFiltering.Name = "spltcDateFiltering";
@@ -1732,7 +1732,7 @@ namespace Analogy
             // 
             // spltcProcessesModule
             // 
-            this.spltcProcessesModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltcProcessesModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcProcessesModule.Location = new System.Drawing.Point(7, 94);
             this.spltcProcessesModule.Name = "spltcProcessesModule";
@@ -1792,7 +1792,7 @@ namespace Analogy
             // 
             // spltcSources
             // 
-            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltcSources.Location = new System.Drawing.Point(7, 65);
             this.spltcSources.Name = "spltcSources";
@@ -1852,7 +1852,7 @@ namespace Analogy
             // 
             // spltTextExclude
             // 
-            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltTextExclude.Location = new System.Drawing.Point(7, 37);
             this.spltTextExclude.Name = "spltTextExclude";
@@ -1914,7 +1914,7 @@ namespace Analogy
             // 
             // spltText
             // 
-            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spltText.Location = new System.Drawing.Point(7, 7);
             this.spltText.Name = "spltText";
@@ -2070,18 +2070,18 @@ namespace Analogy
             this.gridViewBookmarkedMessages.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridViewBookmarkedMessages.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridViewBookmarkedMessages.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn6,
-            this.gridColumn7,
-            this.gridColumn8,
-            this.gridColumn9,
-            this.gridColumn10,
-            this.gridColumn11,
-            this.gridColumn12});
+            this.gridColumnBookmarkDataSource,
+            this.gridColumnBookmarkDate,
+            this.gridColumnBookmarkText,
+            this.gridColumnBookmarkSource,
+            this.gridColumnBookmarkLevel,
+            this.gridColumnBookmarkClass,
+            this.gridColumnBookmarkCategory,
+            this.gridColumnBookmarkUser,
+            this.gridColumnBookmarkModule,
+            this.gridColumnBookmarkAudit,
+            this.gridColumnBookmarkObject,
+            this.gridColumnBookmarkProcessID});
             this.gridViewBookmarkedMessages.DetailHeight = 431;
             this.gridViewBookmarkedMessages.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewBookmarkedMessages.GridControl = this.gridControlBookmarkedMessages;
@@ -2108,242 +2108,242 @@ namespace Analogy
             this.gridViewBookmarkedMessages.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
             this.gridViewBookmarkedMessages.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
             // 
-            // gridColumn1
+            // gridColumnBookmarkDataSource
             // 
-            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn1.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn1.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn1.Caption = "Data Source";
-            this.gridColumn1.FieldName = "DataProvider";
-            this.gridColumn1.MinWidth = 24;
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.OptionsColumn.AllowFocus = false;
-            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn1.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn1.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn1.OptionsColumn.ReadOnly = true;
-            this.gridColumn1.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 175;
+            this.gridColumnBookmarkDataSource.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkDataSource.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkDataSource.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkDataSource.Caption = "Data Source";
+            this.gridColumnBookmarkDataSource.FieldName = "DataProvider";
+            this.gridColumnBookmarkDataSource.MinWidth = 24;
+            this.gridColumnBookmarkDataSource.Name = "gridColumnBookmarkDataSource";
+            this.gridColumnBookmarkDataSource.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkDataSource.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkDataSource.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkDataSource.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkDataSource.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkDataSource.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkDataSource.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnBookmarkDataSource.Visible = true;
+            this.gridColumnBookmarkDataSource.VisibleIndex = 0;
+            this.gridColumnBookmarkDataSource.Width = 175;
             // 
-            // gridColumn2
+            // gridColumnBookmarkDate
             // 
-            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn2.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn2.Caption = "Date";
-            this.gridColumn2.DisplayFormat.FormatString = "yyyy.MM.dd HH:mm:ss.ff";
-            this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn2.FieldName = "Date";
-            this.gridColumn2.MinWidth = 24;
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowEdit = false;
-            this.gridColumn2.OptionsColumn.AllowFocus = false;
-            this.gridColumn2.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn2.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn2.OptionsColumn.ReadOnly = true;
-            this.gridColumn2.OptionsFilter.AllowAutoFilter = false;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 164;
+            this.gridColumnBookmarkDate.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkDate.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkDate.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkDate.Caption = "Date";
+            this.gridColumnBookmarkDate.DisplayFormat.FormatString = "yyyy.MM.dd HH:mm:ss.ff";
+            this.gridColumnBookmarkDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumnBookmarkDate.FieldName = "Date";
+            this.gridColumnBookmarkDate.MinWidth = 24;
+            this.gridColumnBookmarkDate.Name = "gridColumnBookmarkDate";
+            this.gridColumnBookmarkDate.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkDate.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkDate.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkDate.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkDate.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkDate.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkDate.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumnBookmarkDate.Visible = true;
+            this.gridColumnBookmarkDate.VisibleIndex = 1;
+            this.gridColumnBookmarkDate.Width = 164;
             // 
-            // gridColumn3
+            // gridColumnBookmarkText
             // 
-            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn3.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn3.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn3.Caption = "Text";
-            this.gridColumn3.FieldName = "Text";
-            this.gridColumn3.MinWidth = 24;
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.OptionsColumn.AllowEdit = false;
-            this.gridColumn3.OptionsColumn.AllowFocus = false;
-            this.gridColumn3.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn3.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn3.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn3.OptionsColumn.ReadOnly = true;
-            this.gridColumn3.OptionsFilter.AllowFilter = false;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 290;
+            this.gridColumnBookmarkText.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkText.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkText.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkText.Caption = "Text";
+            this.gridColumnBookmarkText.FieldName = "Text";
+            this.gridColumnBookmarkText.MinWidth = 24;
+            this.gridColumnBookmarkText.Name = "gridColumnBookmarkText";
+            this.gridColumnBookmarkText.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkText.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkText.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkText.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkText.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkText.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkText.OptionsFilter.AllowFilter = false;
+            this.gridColumnBookmarkText.Visible = true;
+            this.gridColumnBookmarkText.VisibleIndex = 2;
+            this.gridColumnBookmarkText.Width = 290;
             // 
-            // gridColumn4
+            // gridColumnBookmarkSource
             // 
-            this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn4.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn4.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn4.Caption = "Source";
-            this.gridColumn4.FieldName = "Source";
-            this.gridColumn4.MinWidth = 24;
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.OptionsColumn.AllowEdit = false;
-            this.gridColumn4.OptionsColumn.AllowFocus = false;
-            this.gridColumn4.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn4.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn4.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn4.OptionsColumn.ReadOnly = true;
-            this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 5;
-            this.gridColumn4.Width = 234;
+            this.gridColumnBookmarkSource.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkSource.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkSource.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkSource.Caption = "Source";
+            this.gridColumnBookmarkSource.FieldName = "Source";
+            this.gridColumnBookmarkSource.MinWidth = 24;
+            this.gridColumnBookmarkSource.Name = "gridColumnBookmarkSource";
+            this.gridColumnBookmarkSource.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkSource.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkSource.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkSource.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkSource.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkSource.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkSource.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnBookmarkSource.Visible = true;
+            this.gridColumnBookmarkSource.VisibleIndex = 5;
+            this.gridColumnBookmarkSource.Width = 234;
             // 
-            // gridColumn5
+            // gridColumnBookmarkLevel
             // 
-            this.gridColumn5.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn5.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn5.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn5.Caption = "Level";
-            this.gridColumn5.FieldName = "Level";
-            this.gridColumn5.MinWidth = 24;
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.OptionsColumn.AllowEdit = false;
-            this.gridColumn5.OptionsColumn.AllowFocus = false;
-            this.gridColumn5.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn5.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn5.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn5.OptionsColumn.ReadOnly = true;
-            this.gridColumn5.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 6;
-            this.gridColumn5.Width = 115;
+            this.gridColumnBookmarkLevel.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkLevel.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkLevel.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkLevel.Caption = "Level";
+            this.gridColumnBookmarkLevel.FieldName = "Level";
+            this.gridColumnBookmarkLevel.MinWidth = 24;
+            this.gridColumnBookmarkLevel.Name = "gridColumnBookmarkLevel";
+            this.gridColumnBookmarkLevel.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkLevel.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkLevel.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkLevel.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkLevel.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkLevel.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkLevel.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnBookmarkLevel.Visible = true;
+            this.gridColumnBookmarkLevel.VisibleIndex = 6;
+            this.gridColumnBookmarkLevel.Width = 115;
             // 
-            // gridColumn6
+            // gridColumnBookmarkClass
             // 
-            this.gridColumn6.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn6.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn6.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn6.Caption = "Class";
-            this.gridColumn6.FieldName = "Class";
-            this.gridColumn6.MinWidth = 24;
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.OptionsColumn.AllowEdit = false;
-            this.gridColumn6.OptionsColumn.AllowFocus = false;
-            this.gridColumn6.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn6.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn6.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn6.OptionsColumn.ReadOnly = true;
-            this.gridColumn6.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 115;
+            this.gridColumnBookmarkClass.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkClass.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkClass.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkClass.Caption = "Class";
+            this.gridColumnBookmarkClass.FieldName = "Class";
+            this.gridColumnBookmarkClass.MinWidth = 24;
+            this.gridColumnBookmarkClass.Name = "gridColumnBookmarkClass";
+            this.gridColumnBookmarkClass.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkClass.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkClass.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkClass.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkClass.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkClass.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkClass.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnBookmarkClass.Visible = true;
+            this.gridColumnBookmarkClass.VisibleIndex = 7;
+            this.gridColumnBookmarkClass.Width = 115;
             // 
-            // gridColumn7
+            // gridColumnBookmarkCategory
             // 
-            this.gridColumn7.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn7.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn7.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn7.Caption = "Category";
-            this.gridColumn7.FieldName = "Category";
-            this.gridColumn7.MinWidth = 24;
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.OptionsColumn.AllowEdit = false;
-            this.gridColumn7.OptionsColumn.AllowFocus = false;
-            this.gridColumn7.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn7.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn7.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn7.OptionsColumn.ReadOnly = true;
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
-            this.gridColumn7.Width = 115;
+            this.gridColumnBookmarkCategory.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkCategory.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkCategory.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkCategory.Caption = "Category";
+            this.gridColumnBookmarkCategory.FieldName = "Category";
+            this.gridColumnBookmarkCategory.MinWidth = 24;
+            this.gridColumnBookmarkCategory.Name = "gridColumnBookmarkCategory";
+            this.gridColumnBookmarkCategory.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkCategory.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkCategory.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkCategory.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkCategory.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkCategory.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkCategory.Visible = true;
+            this.gridColumnBookmarkCategory.VisibleIndex = 8;
+            this.gridColumnBookmarkCategory.Width = 115;
             // 
-            // gridColumn8
+            // gridColumnBookmarkUser
             // 
-            this.gridColumn8.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn8.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn8.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn8.Caption = "User";
-            this.gridColumn8.FieldName = "User";
-            this.gridColumn8.MinWidth = 24;
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.OptionsColumn.AllowEdit = false;
-            this.gridColumn8.OptionsColumn.AllowFocus = false;
-            this.gridColumn8.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn8.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn8.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn8.OptionsColumn.ReadOnly = true;
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 9;
-            this.gridColumn8.Width = 115;
+            this.gridColumnBookmarkUser.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkUser.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkUser.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkUser.Caption = "User";
+            this.gridColumnBookmarkUser.FieldName = "User";
+            this.gridColumnBookmarkUser.MinWidth = 24;
+            this.gridColumnBookmarkUser.Name = "gridColumnBookmarkUser";
+            this.gridColumnBookmarkUser.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkUser.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkUser.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkUser.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkUser.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkUser.Visible = true;
+            this.gridColumnBookmarkUser.VisibleIndex = 9;
+            this.gridColumnBookmarkUser.Width = 115;
             // 
-            // gridColumn9
+            // gridColumnBookmarkModule
             // 
-            this.gridColumn9.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn9.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn9.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn9.Caption = "Module";
-            this.gridColumn9.FieldName = "Module";
-            this.gridColumn9.MinWidth = 24;
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.OptionsColumn.AllowEdit = false;
-            this.gridColumn9.OptionsColumn.AllowFocus = false;
-            this.gridColumn9.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn9.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn9.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn9.OptionsColumn.ReadOnly = true;
-            this.gridColumn9.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 10;
-            this.gridColumn9.Width = 115;
+            this.gridColumnBookmarkModule.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkModule.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkModule.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkModule.Caption = "Module";
+            this.gridColumnBookmarkModule.FieldName = "Module";
+            this.gridColumnBookmarkModule.MinWidth = 24;
+            this.gridColumnBookmarkModule.Name = "gridColumnBookmarkModule";
+            this.gridColumnBookmarkModule.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkModule.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkModule.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkModule.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkModule.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkModule.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkModule.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnBookmarkModule.Visible = true;
+            this.gridColumnBookmarkModule.VisibleIndex = 10;
+            this.gridColumnBookmarkModule.Width = 115;
             // 
-            // gridColumn10
+            // gridColumnBookmarkAudit
             // 
-            this.gridColumn10.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn10.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn10.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn10.Caption = "Audit";
-            this.gridColumn10.FieldName = "Audit";
-            this.gridColumn10.MinWidth = 24;
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.OptionsColumn.AllowEdit = false;
-            this.gridColumn10.OptionsColumn.AllowFocus = false;
-            this.gridColumn10.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn10.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn10.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn10.OptionsColumn.ReadOnly = true;
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 3;
-            this.gridColumn10.Width = 115;
+            this.gridColumnBookmarkAudit.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkAudit.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkAudit.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkAudit.Caption = "Audit";
+            this.gridColumnBookmarkAudit.FieldName = "Audit";
+            this.gridColumnBookmarkAudit.MinWidth = 24;
+            this.gridColumnBookmarkAudit.Name = "gridColumnBookmarkAudit";
+            this.gridColumnBookmarkAudit.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkAudit.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkAudit.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkAudit.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkAudit.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkAudit.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkAudit.Visible = true;
+            this.gridColumnBookmarkAudit.VisibleIndex = 3;
+            this.gridColumnBookmarkAudit.Width = 115;
             // 
-            // gridColumn11
+            // gridColumnBookmarkObject
             // 
-            this.gridColumn11.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn11.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn11.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn11.Caption = "Object";
-            this.gridColumn11.MinWidth = 24;
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.OptionsColumn.AllowEdit = false;
-            this.gridColumn11.OptionsColumn.AllowFocus = false;
-            this.gridColumn11.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn11.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn11.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn11.OptionsColumn.ReadOnly = true;
-            this.gridColumn11.OptionsColumn.ShowCaption = false;
-            this.gridColumn11.OptionsColumn.ShowInCustomizationForm = false;
-            this.gridColumn11.Width = 87;
+            this.gridColumnBookmarkObject.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkObject.Caption = "Object";
+            this.gridColumnBookmarkObject.MinWidth = 24;
+            this.gridColumnBookmarkObject.Name = "gridColumnBookmarkObject";
+            this.gridColumnBookmarkObject.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkObject.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkObject.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkObject.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkObject.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkObject.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkObject.OptionsColumn.ShowCaption = false;
+            this.gridColumnBookmarkObject.OptionsColumn.ShowInCustomizationForm = false;
+            this.gridColumnBookmarkObject.Width = 87;
             // 
-            // gridColumn12
+            // gridColumnBookmarkProcessID
             // 
-            this.gridColumn12.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn12.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumn12.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn12.Caption = "ProcessID";
-            this.gridColumn12.FieldName = "ProcessID";
-            this.gridColumn12.MinWidth = 24;
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.OptionsColumn.AllowEdit = false;
-            this.gridColumn12.OptionsColumn.AllowFocus = false;
-            this.gridColumn12.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn12.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn12.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn12.OptionsColumn.ReadOnly = true;
-            this.gridColumn12.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 4;
-            this.gridColumn12.Width = 115;
+            this.gridColumnBookmarkProcessID.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnBookmarkProcessID.Caption = "ProcessID";
+            this.gridColumnBookmarkProcessID.FieldName = "ProcessID";
+            this.gridColumnBookmarkProcessID.MinWidth = 24;
+            this.gridColumnBookmarkProcessID.Name = "gridColumnBookmarkProcessID";
+            this.gridColumnBookmarkProcessID.OptionsColumn.AllowEdit = false;
+            this.gridColumnBookmarkProcessID.OptionsColumn.AllowFocus = false;
+            this.gridColumnBookmarkProcessID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkProcessID.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnBookmarkProcessID.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnBookmarkProcessID.OptionsColumn.ReadOnly = true;
+            this.gridColumnBookmarkProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnBookmarkProcessID.Visible = true;
+            this.gridColumnBookmarkProcessID.VisibleIndex = 4;
+            this.gridColumnBookmarkProcessID.Width = 115;
             // 
             // imageListBottom
             // 
@@ -3248,18 +3248,18 @@ namespace Analogy
         private System.Windows.Forms.PictureBox pboxInfoExclude;
         private DevExpress.XtraGrid.GridControl gridControlBookmarkedMessages;
         private GridView gridViewBookmarkedMessages;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkDataSource;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkDate;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkText;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkSource;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkLevel;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkClass;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkCategory;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkModule;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkAudit;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkObject;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkProcessID;
         private System.Windows.Forms.ImageList imageListBottom;
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmark;
         private System.Windows.Forms.ToolStripMenuItem tsmiAddCommentToMessage;
