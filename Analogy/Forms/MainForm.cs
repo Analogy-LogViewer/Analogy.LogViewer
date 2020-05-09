@@ -104,7 +104,7 @@ namespace Analogy
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
             await FactoriesManager.Instance.AddExternalDataSources();
-
+            LoadStartupExtensions();
             CreateDataSources();
 
             //set Default page:
@@ -154,7 +154,19 @@ namespace Analogy
             page.Text = $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
             dockManager1.ActivePanel = page;
         }
+        private  void LoadStartupExtensions()
+        {
+            if (settings.LoadExtensionsOnStartup && settings.StartupExtensions.Any())
+            {
+                var manager = ExtensionsManager.Instance;
+                var extensions = manager.GetExtensions().ToList();
+                foreach (Guid guid in settings.StartupExtensions)
+                {
+                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.ID == guid));
+                }
 
+            }
+        }
         private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
         {
             while (!Initialized)

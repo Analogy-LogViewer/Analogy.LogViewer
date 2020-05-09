@@ -1,11 +1,7 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -52,48 +48,7 @@ namespace Analogy
             }
         }
 
-        public IEnumerable<IAnalogyExtension> GetExtensions()
-        {
-            if (LoadedExtensions.Any()) return LoadedExtensions;
-            string dir = Environment.CurrentDirectory;
-            Type isExtension = typeof(IAnalogyExtension);
+        public IEnumerable<IAnalogyExtension> GetExtensions() => FactoriesManager.Instance.GetAllExtensions();
 
-            List<Type> res = new List<Type>();
-            var files=Directory.EnumerateFiles(dir, "Analogy.*.Extension.dll");
-            foreach (var file in files)
-            {
-                var fileToload = Path.Combine(dir, file);
-                if (!File.Exists(fileToload))
-                {
-                    Log.LogError("Analogy", $"{file} does not exist. Skipping");
-                    continue;
-                }
-                try
-                {
-                    var assm = Assembly.LoadFrom(fileToload).GetTypes()
-                        .Where(t => t.GetInterfaces().Any(i => i.Name.Equals(isExtension.Name))).ToList();
-                    res.AddRange(assm);
-                }
-                catch (Exception ex)
-                {
-                    Log.LogError("Analogy", $"Error for:{file}: {ex.Message}");
-                }
-            }
-
-            foreach (Type type in res)
-            {
-                try
-                {
-                    IAnalogyExtension control = (IAnalogyExtension)Activator.CreateInstance(type);
-                    LoadedExtensions.Add(control);
-                }
-                catch (Exception exception)
-                {
-                    Log.LogError("Analogy", $"Error for:{type.Name}: {exception.Message}");
-                }
-            }
-
-            return LoadedExtensions;
-        }
     }
 }

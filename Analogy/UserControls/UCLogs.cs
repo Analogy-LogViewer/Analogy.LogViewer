@@ -276,12 +276,8 @@ namespace Analogy
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
+            LoadExtensions();
 
-            hasAnyInPlaceExtensions = ExtensionManager.HasAnyInPlace;
-            hasAnyUserControlExtensions = ExtensionManager.HasAnyInPlace;
-            InPlaceRegisteredExtensions = ExtensionManager.InPlaceRegisteredExtensions.ToList();
-            UserControlRegisteredExtensions = ExtensionManager.UserControlRegisteredExtensions.ToList();
-            InitializeExtensionsColumns();
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
                 progressBar1.Maximum = value.Total;
@@ -456,8 +452,13 @@ namespace Analogy
             }
         }
 
-        private void InitializeExtensionsColumns()
+        public void LoadExtensions()
         {
+            var extensions = FactoriesManager.Instance.GetExtensions(DataProvider).ToList();
+            hasAnyInPlaceExtensions = extensions.Any(e=>e.ExtensionType==AnalogyExtensionType.InPlace);
+            hasAnyUserControlExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.UserControl);
+            InPlaceRegisteredExtensions = extensions.Where(e => e.ExtensionType == AnalogyExtensionType.InPlace).ToList();
+            UserControlRegisteredExtensions = extensions.Where(e => e.ExtensionType == AnalogyExtensionType.UserControl).ToList();
             foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
             {
                 var columns = extension.GetColumnsInfo();
@@ -474,8 +475,6 @@ namespace Analogy
 
             }
         }
-
-
 
         private void UCLogs_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;

@@ -55,7 +55,6 @@ namespace Analogy
                     XtraMessageBox.Show("Single instance is on. Exiting this instance", "Analogy");
                 return;
             }
-            LoadStartupExtensions();
             Application.Run(new MainForm());
 
         }
@@ -90,19 +89,7 @@ namespace Analogy
             var current = Process.GetCurrentProcess();
             return Process.GetProcessesByName(current.ProcessName).FirstOrDefault(p => p.Id != current.Id);
         }
-        private static void LoadStartupExtensions()
-        {
-            if (Settings.LoadExtensionsOnStartup && Settings.StartupExtensions.Any())
-            {
-                var manager = ExtensionsManager.Instance;
-                var extensions = manager.GetExtensions().ToList();
-                foreach (Guid guid in Settings.StartupExtensions)
-                {
-                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.ID == guid));
-                }
 
-            }
-        }
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
             AnalogyLogger.Instance.LogWarning(nameof(CurrentDomain_FirstChanceException), e.Exception.ToString());

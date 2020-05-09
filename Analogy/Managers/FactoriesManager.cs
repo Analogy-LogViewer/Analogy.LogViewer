@@ -159,13 +159,6 @@ namespace Analogy
             .SelectMany(f => f.DataProvidersSettings)
             .ToList();
 
-        public List<IAnalogyDataProviderSettings> GetSettings(Guid factoryId) => Factories
-            .Single(fc =>
-                fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled && fc.Factory.FactoryId == factoryId)
-            .DataProvidersSettings;
-
-
-
         public Image GetLargeImage(Guid analogyComponentId)
         {
             foreach (IAnalogyComponentImages componentImages in DataProviderImages)
@@ -198,26 +191,7 @@ namespace Analogy
 
             return null;
         }
-        public Image GetOnlineConnectedSmallImage(Guid analogyComponentId)
-        {
-            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
-            {
-                var image = componentImages.GetOnlineConnectedSmallImage(analogyComponentId);
-                if (image != null) return image;
-            }
 
-            return null;
-        }
-        public Image GetOnlineDisconnectedLargeImage(Guid analogyComponentId)
-        {
-            foreach (IAnalogyComponentImages componentImages in DataProviderImages)
-            {
-                var image = componentImages.GetOnlineDisconnectedLargeImage(analogyComponentId);
-                if (image != null) return image;
-            }
-
-            return null;
-        }
         public Image GetOnlineDisconnectedSmallImage(Guid analogyComponentId)
         {
             foreach (IAnalogyComponentImages componentImages in DataProviderImages)
@@ -354,6 +328,24 @@ namespace Analogy
                 Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
             }
 
+        }
+
+        public IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider)
+            => GetAllExtensions().Where(e => e.TargetProviderId == dataProvider.ID);
+
+        public IEnumerable<IAnalogyExtension> GetAllExtensions()
+        {
+            foreach (var factory in Factories)
+            {
+                if (factory.FactorySetting.Status == DataProviderFactoryStatus.Disabled) continue;
+                foreach (var extensionFactory in factory.ExtensionsFactories)
+                {
+                    foreach (IAnalogyExtension extension in extensionFactory.Extensions)
+                    {
+                        yield return extension;
+                    }
+                }
+            }
         }
     }
 }
