@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using DevExpress.XtraEditors;
 
 namespace Analogy
 {

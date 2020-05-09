@@ -28,7 +28,7 @@ using System.Windows.Forms;
 namespace Analogy
 {
 
-    public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler
+    public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow
     {
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
@@ -73,7 +73,7 @@ namespace Analogy
         }
 
         private int ExternalWindowsCount;
-        private List<AnalogyLogMessage> Messages
+        public List<AnalogyLogMessage> Messages
         {
             get
             {
@@ -272,7 +272,7 @@ namespace Analogy
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-
+            //LogWindowsContainer.Instance.Register(this);
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
@@ -299,6 +299,7 @@ namespace Analogy
 
                 }
             };
+
 
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
@@ -454,8 +455,8 @@ namespace Analogy
 
         public void LoadExtensions()
         {
-            var extensions =ExtensionManager.RegisteredExtensions.Where(e=>e.TargetProviderId==DataProvider.ID).ToList();
-            hasAnyInPlaceExtensions = extensions.Any(e=>e.ExtensionType==AnalogyExtensionType.InPlace);
+            var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetProviderId == DataProvider.ID).ToList();
+            hasAnyInPlaceExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.InPlace);
             hasAnyUserControlExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.UserControl);
             InPlaceRegisteredExtensions = extensions.Where(e => e.ExtensionType == AnalogyExtensionType.InPlace).ToList();
             UserControlRegisteredExtensions = extensions.Where(e => e.ExtensionType == AnalogyExtensionType.UserControl).ToList();
@@ -823,6 +824,8 @@ namespace Analogy
                 lockSlim.ExitReadLock();
             }
         }
+
+        public List<AnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
 
         private (int total, int error, int warning, int critical, int alerts) GetRowsCount()
         {
