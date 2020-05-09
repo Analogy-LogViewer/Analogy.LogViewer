@@ -51,7 +51,7 @@ namespace Analogy
             memoText.Text = Message.Text;
             txtID.Text = Message.ID.ToString();
             rtxtbDataSource.Text = DataSource;
-            txtbDateValue.Text = Message.Date.ToString("yyyy.MM.dd HH:mm:ss.ff");
+            txtbDateValue.Text = Message.Date.ToString(UserSettingsManager.UserSettings.DateTimePattern);
             txtbLevelValue.Text = Message.Level.ToString();
             txtbProcessValue.Text = $"{Message.Module} (ID:{Message.ProcessID})";
             txtSourceValue.Text = Message.Source;

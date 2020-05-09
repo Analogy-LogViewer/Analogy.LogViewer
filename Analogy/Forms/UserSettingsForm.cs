@@ -623,6 +623,7 @@ namespace Analogy
 
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
+            Settings.DateTimePattern = teDateTimeFormat.Text;
         }
     }
 }
