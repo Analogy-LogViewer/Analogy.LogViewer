@@ -154,7 +154,7 @@ namespace Analogy
             page.Text = $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
             dockManager1.ActivePanel = page;
         }
-        private  void LoadStartupExtensions()
+        private void LoadStartupExtensions()
         {
             if (settings.LoadExtensionsOnStartup && settings.StartupExtensions.Any())
             {
