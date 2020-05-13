@@ -1,11 +1,17 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Managers;
+using Analogy.Properties;
 using Analogy.Types;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Analogy
@@ -27,6 +33,7 @@ namespace Analogy
             public override string ToString() => $"{Name} ({ID})";
         }
 
+        private DataTable messageData;
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private int InitialSelection = -1;
 
@@ -34,19 +41,62 @@ namespace Analogy
         {
             InitializeComponent();
             SetupEventsHandlers();
+
+
+        }
+
+        private void SetupExampleMessage(string text)
+        {
+            DataRow dtr = messageData.NewRow();
+            dtr.BeginEdit();
+            dtr["Date"] = DateTime.Now;
+            dtr["Text"] = text;
+            dtr["Source"] = "Analogy";
+            dtr["Level"] = AnalogyLogLevel.Event.ToString();
+            dtr["Class"] = AnalogyLogClass.General.ToString();
+            dtr["Category"] = "None";
+            dtr["User"] = "None";
+            dtr["Module"] = "Analogy";
+            dtr["ProcessID"] = Process.GetCurrentProcess().Id;
+            dtr["ThreadID"] = Thread.CurrentContext.ContextID;
+            dtr["DataProvider"] = string.Empty;
+            dtr.EndEdit();
+            messageData.Rows.Add(dtr);
+            messageData.AcceptChanges();
         }
 
         public UserSettingsForm(int tabIndex) : this()
         {
             InitialSelection = tabIndex;
         }
-        public UserSettingsForm(string tabName) : this()
-        {
-            var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
-            if (tab != null)
-                InitialSelection = tab.TabIndex;
-        }
 
+        private void UserSettingsForm_Load(object sender, EventArgs e)
+        {
+            ShowIcon = true;
+            logGrid.MouseDown += logGrid_MouseDown;
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+            LoadSettings();
+            if (InitialSelection >= 0)
+                tabControlMain.SelectedTabPageIndex = InitialSelection;
+            if (File.Exists(Settings.LogGridFileName))
+            {
+                gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
+            }
+            messageData = Utils.DataTableConstructor();
+            gridControl.DataSource = messageData.DefaultView;
+            SetupExampleMessage("Test 1");
+            SetupExampleMessage("Test 2");
+
+        }
+        void logGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            GridHitInfo info = logGrid.CalcHitInfo(e.Location);
+            if (info.InColumnPanel)
+            {
+                teHeader.Tag = info.Column;
+                teHeader.Text = info.Column.Caption;
+            }
+        }
         private void SetupEventsHandlers()
         {
             tsAutoComplete.IsOnChanged += (s, e) => { Settings.RememberLastSearches = tsAutoComplete.IsOn; };
@@ -57,7 +107,11 @@ namespace Analogy
         }
         private void LoadSettings()
         {
+
+            logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+            logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
+            teDateTimeFormat.Text = Settings.DateTimePattern;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
             tsAutoComplete.IsOn = Settings.RememberLastSearches;
@@ -126,6 +180,14 @@ namespace Analogy
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
             nudAutoCompleteCount.Value = Settings.NumberOfLastSearches;
             tsSingleInstance.IsOn = Settings.SingleInstance;
+            if (Settings.AnalogyIcon == "Light")
+            {
+                rbtnLightIconColor.Checked = true;
+            }
+            else
+            {
+                rbtnDarkIconColor.Checked = true;
+            }
             LoadColorSettings();
         }
         private void SaveSetting()
@@ -159,6 +221,14 @@ namespace Analogy
             Settings.UpdateOrder(order);
             Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
             Settings.SingleInstance = tsSingleInstance.IsOn;
+            if (rbtnLightIconColor.Checked)
+            {
+                Settings.AnalogyIcon = "Light";
+            }
+            else
+            {
+                Settings.AnalogyIcon = "Dark";
+            }
             Settings.Save();
         }
 
@@ -190,13 +260,7 @@ namespace Analogy
             Settings.ShowHistoryOfClearedMessages = tsHistory.IsOn;
         }
 
-        private async void UserSettingsForm_Load(object sender, EventArgs e)
-        {
-            LoadSettings();
-            if (InitialSelection >= 0)
-                tabControlMain.SelectedTabPageIndex = InitialSelection;
 
-        }
 
         private void nudRecent_ValueChanged(object sender, EventArgs e)
         {
@@ -515,5 +579,52 @@ namespace Analogy
             if (listBoxFoldersProbing.SelectedItem != null)
                 listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
         }
+
+        private void rbtnDarkIconColor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnDarkIconColor.Checked)
+            {
+                peAnalogy.Image = Resources.AnalogyDark;
+            }
+        }
+
+        private void rbtnLightIconColor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnLightIconColor.Checked)
+            {
+                peAnalogy.Image = Resources.AnalogyLight;
+            }
+        }
+
+        private void sbtnHeaderSet_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(teHeader.Text) && teHeader.Tag is DevExpress.XtraGrid.Columns.GridColumn column)
+            {
+                column.Caption = teHeader.Text;
+                SaveGridLayout();
+            }
+        }
+        private void SaveGridLayout()
+        {
+            try
+            {
+                gridControl.MainView.SaveLayoutToXml(Settings.LogGridFileName);
+            }
+            catch (Exception e)
+            {
+                AnalogyLogger.Instance.LogException(e, "Analogy", $"Error saving setting: {e.Message}");
+                XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void sbtnDateTimeFormat_Click(object sender, EventArgs e)
+        {
+
+            logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+            logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
+            Settings.DateTimePattern = teDateTimeFormat.Text;
+        }
     }
 }
+

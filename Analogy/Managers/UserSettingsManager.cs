@@ -9,7 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace Analogy
@@ -71,6 +73,9 @@ namespace Analogy
         public int AnalogyInternalLogPeriod { get; set; }
         public List<string> AdditionalProbingLocations { get; set; }
         public bool SingleInstance { get; set; }
+        public string AnalogyIcon { get; set; }
+        public string LogGridFileName => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "AnalogyGridlayout.xml");
+        public string DateTimePattern { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -86,6 +91,10 @@ namespace Analogy
                 Settings.Default.Save();
             }
 
+            DateTimePattern = !string.IsNullOrEmpty(Settings.Default.DateTimePattern)
+                ? Settings.Default.DateTimePattern
+                : "yyyy.MM.dd HH:mm:ss.ff";
+            AnalogyIcon = Settings.Default.AnalogyIcon;
             ApplicationSkinName = Settings.Default.ApplicationSkinName;
             EnableUserStatistics = Settings.Default.EnableUserStatistics;
             AnalogyRunningTime = Settings.Default.AnalogyRunningTime;
@@ -147,6 +156,10 @@ namespace Analogy
         }
         public void Save()
         {
+            Settings.Default.DateTimePattern = !string.IsNullOrEmpty(DateTimePattern)
+                ? DateTimePattern
+                : "yyyy.MM.dd HH:mm:ss.ff";
+            Settings.Default.AnalogyIcon = AnalogyIcon;
             Settings.Default.ApplicationSkinName = ApplicationSkinName;
             Settings.Default.EnableUserStatistics = EnableUserStatistics;
             Settings.Default.AnalogyRunningTime = AnalogyRunningTime;
@@ -269,6 +282,13 @@ namespace Analogy
                 return true;
             }
         }
+
+        public Icon GetIcon()
+        {
+            return AnalogyIcon == "Dark" ? Resources.AnalogyIconDark : Resources.AnalogyIconLight;
+        }
+
+
     }
     [Serializable]
     public class LogParserSettingsContainer

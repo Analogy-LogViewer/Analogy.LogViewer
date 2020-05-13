@@ -17,5 +17,10 @@ namespace Analogy
             this.offlineAnalogy = offlineAnalogy;
             combineFilesUC1.SetDataSource(offlineAnalogy);
         }
+
+        private void FormCombineFiles_Load(object sender, System.EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 }

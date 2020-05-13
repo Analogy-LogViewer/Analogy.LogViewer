@@ -36,7 +36,7 @@
             // 
             // txtbMessage
             // 
-            this.txtbMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtbMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbMessage.Location = new System.Drawing.Point(10, 12);
             this.txtbMessage.Name = "txtbMessage";
@@ -75,6 +75,7 @@
             this.Name = "AnalogyExcludeMessage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "exclude";
+            this.Load += new System.EventHandler(this.AnalogyExcludeMessage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -26,6 +26,7 @@ namespace Analogy.Managers
             DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
             ShareableFactories = new List<IAnalogyShareableFactory>();
             ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
+
         }
 
 

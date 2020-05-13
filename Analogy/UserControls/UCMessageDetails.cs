@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using DevExpress.XtraEditors;
 
 namespace Analogy
 {
@@ -51,7 +50,7 @@ namespace Analogy
             memoText.Text = Message.Text;
             txtID.Text = Message.ID.ToString();
             rtxtbDataSource.Text = DataSource;
-            txtbDateValue.Text = Message.Date.ToString();
+            txtbDateValue.Text = Message.Date.ToString(UserSettingsManager.UserSettings.DateTimePattern);
             txtbLevelValue.Text = Message.Level.ToString();
             txtbProcessValue.Text = $"{Message.Module} (ID:{Message.ProcessID})";
             txtSourceValue.Text = Message.Source;

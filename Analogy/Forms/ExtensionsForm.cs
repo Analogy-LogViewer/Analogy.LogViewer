@@ -12,6 +12,7 @@ namespace Analogy
 
         private void ExtensionsForm_Load(object sender, EventArgs e)
         {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
             extensionsUC1.OnClicked += (s, args) => { Close(); };
 
         }

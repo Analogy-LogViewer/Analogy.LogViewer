@@ -88,7 +88,7 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
-
+            Icon = settings.GetIcon();
             var logger = AnalogyLogManager.Instance.Init();
             var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
             await Task.WhenAll(logger, factories);
@@ -104,7 +104,7 @@ namespace Analogy
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 CreateDataSource(analogy, 0);
             await FactoriesManager.Instance.AddExternalDataSources();
-
+            LoadStartupExtensions();
             CreateDataSources();
 
             //set Default page:
@@ -123,7 +123,6 @@ namespace Analogy
             {
                 string[] fileNames = { arguments[1] };
                 await OpenOfflineFileWithSpecificDataProvider(fileNames);
-
             }
             else
                 TmrAutoConnect.Enabled = true;
@@ -155,7 +154,19 @@ namespace Analogy
             page.Text = $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
             dockManager1.ActivePanel = page;
         }
+        private void LoadStartupExtensions()
+        {
+            if (settings.LoadExtensionsOnStartup && settings.StartupExtensions.Any())
+            {
+                var manager = ExtensionsManager.Instance;
+                var extensions = manager.GetExtensions().ToList();
+                foreach (Guid guid in settings.StartupExtensions)
+                {
+                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.ID == guid));
+                }
 
+            }
+        }
         private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
         {
             while (!Initialized)
@@ -545,7 +556,7 @@ namespace Analogy
             {
                 BarSubItem realTimeMenu = new BarSubItem();
                 group.ItemLinks.Add(realTimeMenu);
-                var images = FactoriesManager.Instance.GetImages(dataSourceFactory.FactoryId);
+
                 realTimeMenu.ImageOptions.Image = Resources.Database_off;
                 realTimeMenu.RibbonStyle = RibbonItemStyles.All;
                 realTimeMenu.Caption = "Real Time Logs";
@@ -553,11 +564,13 @@ namespace Analogy
 
                 foreach (var realTime in realTimes)
                 {
-
-
+                    //var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.ID);
+                    var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.ID);
+                    //var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
+                    var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
                     BarButtonItem realTimeBtn = new BarButtonItem();
                     realTimeMenu.ItemLinks.Add(realTimeBtn);
-                    realTimeBtn.ImageOptions.Image = Resources.Database_off;
+                    realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
                     realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                     realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle)
                                               ? $" - {realTime.OptionalTitle}"
@@ -579,7 +592,7 @@ namespace Analogy
                         if (canStartReceiving) //connected
                         {
                             openedWindows++;
-                            realTimeBtn.ImageOptions.Image = Resources.Database_on;
+                            realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                             var onlineUC = new OnlineUCLogs(realTime);
 
                             void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -594,7 +607,7 @@ namespace Analogy
                                     $"Source {dataSourceFactory.Title} Disconnected. Reason: {e.DisconnectedReason}",
                                     AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, dataSourceFactory.Title, "Analogy");
                                 onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                                realTimeBtn.ImageOptions.Image = Resources.Database_off;
+                                realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
                             }
 
                             var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -676,9 +689,11 @@ namespace Analogy
             {
                 BarButtonItem singleBtn = new BarButtonItem();
                 group.ItemLinks.Add(singleBtn);
-                var images = FactoriesManager.Instance.GetImages(single.ID);
-                singleBtn.ImageOptions.LargeImage = images == null ? Resources.Single32x32 : images.LargeImage;
-                singleBtn.ImageOptions.Image = images == null ? Resources.Single16x16 : images.SmallImage;
+                var imageLarge = FactoriesManager.Instance.GetLargeImage(single.ID);
+                var imageSmall = FactoriesManager.Instance.GetSmallImage(single.ID);
+
+                singleBtn.ImageOptions.LargeImage = imageLarge ?? Resources.Single32x32;
+                singleBtn.ImageOptions.Image = imageSmall ?? Resources.Single16x16;
                 singleBtn.RibbonStyle = RibbonItemStyles.All;
                 singleBtn.Caption = "Single provider" + (!string.IsNullOrEmpty(single.OptionalTitle)
                     ? $" - {single.OptionalTitle}"
@@ -1206,7 +1221,11 @@ namespace Analogy
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            realTimeBtn.ImageOptions.Image = Resources.Database_off;
+            //var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.ID);
+            var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.ID);
+            //var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
+            var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
+            realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ? $" - {realTime.OptionalTitle}" : string.Empty);
 
@@ -1226,7 +1245,7 @@ namespace Analogy
                 if (canStartReceiving) //connected
                 {
                     openedWindows++;
-                    realTimeBtn.ImageOptions.Image = Resources.Database_on;
+                    realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                     var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1241,7 +1260,7 @@ namespace Analogy
                             $"Source {title} Disconnected. Reason: {e.DisconnectedReason}",
                             AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                        realTimeBtn.ImageOptions.Image = Resources.Database_off;
+                        realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
                     }
 
                     var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1426,7 +1445,17 @@ namespace Analogy
             AnalogyLogManager.Instance.Show(this);
         }
 
-
+        private void bbtnStar_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
+            }
+            catch (Exception exception)
+            {
+                AnalogyLogger.Instance.LogException(exception, "", $"Error: {exception.Message}");
+            }
+        }
     }
 }
 

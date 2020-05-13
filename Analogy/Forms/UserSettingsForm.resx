@@ -165,7 +165,7 @@
   </data>
   <data name="lblExplaination.Text" xml:space="preserve">
     <value>All texts are using the same rules are the search window:
-For text (include/exclue) use + for "and" and | for "Or" operations.
+For text (include/exclude) use + for "and" and | for "Or" operations.
 For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
   </data>
   <data name="label5.Text" xml:space="preserve">

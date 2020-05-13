@@ -6,5 +6,10 @@
         {
             InitializeComponent();
         }
+
+        private void XtraFormWindowsEventlogsManager_Load(object sender, System.EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 }

@@ -65,5 +65,10 @@ namespace Analogy
 
             }
         }
+
+        private void XtraFormClientServer_Load(object sender, EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
+        }
     }
 }

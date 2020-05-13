@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -19,7 +19,7 @@ namespace Analogy
         }
         private void DataVisualizerUCForm_Load(object sender, EventArgs e)
         {
-
+            Icon = UserSettingsManager.UserSettings.GetIcon();
         }
     }
 }

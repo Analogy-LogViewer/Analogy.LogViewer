@@ -1,8 +1,8 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -23,6 +23,11 @@ namespace Analogy
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FormMessageDetails_Load(object sender, EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
         }
     }
 }

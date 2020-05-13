@@ -28,6 +28,7 @@ namespace Analogy
 
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
             if (DesignMode) return;
 
             ucLogs1.AppendMessages(_messages, _dataSource);

@@ -1,7 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -28,6 +28,11 @@ namespace Analogy
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void AnalogyExcludeMessage_Load(object sender, EventArgs e)
+        {
+            Icon = UserSettingsManager.UserSettings.GetIcon();
         }
     }
 }
