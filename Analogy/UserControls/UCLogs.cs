@@ -92,7 +92,7 @@ namespace Analogy
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
 
-        // private bool FilterHasChanged { get; set; }
+        private List<string> LoadedFiles { get; set; }
         private bool NewDataExist { get; set; }
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
@@ -241,6 +241,8 @@ namespace Analogy
                 await FilterHasChanged();
                 Settings.ModuleText = chkbModules.Text;
             };
+
+            bbtnReload.ItemClick += async (s, e) => { await LoadFilesAsync(LoadedFiles, true, true); };
         }
 
 
@@ -1256,8 +1258,10 @@ namespace Analogy
             }));
         }
 
-        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
+        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading, bool forceNoCaching = false)
         {
+            LoadedFiles = fileNames;
+            bbtnReload.Visibility = BarItemVisibility.Always;
             CancellationTokenSource = new CancellationTokenSource();
             CancellationToken token = CancellationTokenSource.Token;
             if (clearLogBeforeLoading)
@@ -1279,7 +1283,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename, token);
+                await fileProcessor.Process(FileDataProvider, filename, token, forceNoCaching);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)

@@ -1,10 +1,10 @@
+using Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -24,11 +24,11 @@ namespace Analogy
 
         }
 
-        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider, string filename, CancellationToken token)
+        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider, string filename, CancellationToken token, bool forceNoCache = false)
         {
             FileName = filename;
             if (string.IsNullOrEmpty(FileName)) return new List<AnalogyLogMessage>();
-            if (!DataWindow.ForceNoFileCaching && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
+            if ((!forceNoCache || !DataWindow.ForceNoFileCaching) && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
@@ -71,7 +71,7 @@ namespace Analogy
                 AnalogyLogMessage error = new AnalogyLogMessage($"Error reading file {filename}: Error: {e.Message}", AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None");
                 error.Source = nameof(FileProcessor);
                 error.Module = "Analogy";
-                DataWindow.AppendMessage(error,fileDataProvider.GetType().FullName);
+                DataWindow.AppendMessage(error, fileDataProvider.GetType().FullName);
                 return new List<AnalogyLogMessage> { error };
             }
         }
