@@ -2311,6 +2311,12 @@ namespace Analogy
 
             contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
         }
+
+        public void EnableFileReload(string fileName)
+        {
+            LoadedFiles = new List<string>() { fileName };
+            bbtnReload.Visibility = BarItemVisibility.Always;
+        }
     }
 }
 
