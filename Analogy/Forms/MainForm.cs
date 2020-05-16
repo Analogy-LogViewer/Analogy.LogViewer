@@ -88,6 +88,8 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
+
+            Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
             Icon = settings.GetIcon();
             var logger = AnalogyLogManager.Instance.Init();
             var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
