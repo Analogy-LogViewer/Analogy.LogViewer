@@ -60,8 +60,8 @@
             this.bbitemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.bbsItem = new DevExpress.XtraBars.BarSubItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
@@ -98,6 +98,7 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -178,10 +179,11 @@
             this.btnErrors,
             this.bbtnDebugLog,
             this.bbtnSettingsApplication,
-            this.bbtnStar});
+            this.bbtnStar,
+            this.bbtnUpdates});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 76;
+            this.ribbonControlMain.MaxItemId = 77;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -189,7 +191,7 @@
             this.ribbonPage1});
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1300, 143);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1517, 178);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
             // 
@@ -392,7 +394,8 @@
             this.bbsItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates)});
             this.bbsItem.Name = "bbsItem";
             // 
             // bbtnItemChangeLog
@@ -402,19 +405,19 @@
             this.bbtnItemChangeLog.Name = "bbtnItemChangeLog";
             this.bbtnItemChangeLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemChangeLog_ItemClick);
             // 
-            // bbtnItemHelp
-            // 
-            this.bbtnItemHelp.Caption = "About";
-            this.bbtnItemHelp.Id = 27;
-            this.bbtnItemHelp.Name = "bbtnItemHelp";
-            this.bbtnItemHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemHelp_ItemClick);
-            // 
             // bbtnDebugLog
             // 
             this.bbtnDebugLog.Caption = "Internal Log Messages";
             this.bbtnDebugLog.Id = 73;
             this.bbtnDebugLog.Name = "bbtnDebugLog";
             this.bbtnDebugLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDebugLog_ItemClick);
+            // 
+            // bbtnItemHelp
+            // 
+            this.bbtnItemHelp.Caption = "About";
+            this.bbtnItemHelp.Id = 27;
+            this.bbtnItemHelp.Name = "bbtnItemHelp";
+            this.bbtnItemHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemHelp_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -710,11 +713,11 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bsiMemoryUsage);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 423);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1300, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1517, 37);
             // 
             // tmrStatusUpdates
             // 
@@ -746,12 +749,18 @@
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
+            // bbtnUpdates
+            // 
+            this.bbtnUpdates.Caption = "Check for updates";
+            this.bbtnUpdates.Id = 76;
+            this.bbtnUpdates.Name = "bbtnUpdates";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 454);
+            this.ClientSize = new System.Drawing.Size(1517, 559);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -842,5 +851,6 @@
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.BarButtonItem bbtnSettingsApplication;
         private DevExpress.XtraBars.BarButtonItem bbtnStar;
+        private DevExpress.XtraBars.BarButtonItem bbtnUpdates;
     }
 }
