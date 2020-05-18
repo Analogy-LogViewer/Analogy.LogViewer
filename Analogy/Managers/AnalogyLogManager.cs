@@ -19,10 +19,15 @@ namespace Analogy.Managers
         private static int postfix = 0;
         private List<AnalogyLogMessage> messages;
         public event EventHandler OnNewError;
-
+        public List<string> ignoredMessages;
         public AnalogyLogManager()
         {
             messages = new List<AnalogyLogMessage>();
+            ignoredMessages = new List<string>
+            {
+                "System.ArgumentException: Duplicate component name '_Container'.  Component names must be unique and case-insensitive",
+                "System.IO.FileNotFoundException: Could not load file or assembly 'mscorlib.XmlSerializers"
+            };
 
         }
 
@@ -33,13 +38,12 @@ namespace Analogy.Managers
                 try
                 {
                     AnalogyXmlLogFile read = new AnalogyXmlLogFile();
-                    var messages = await read.ReadFromFile(FileName);
-                    this.messages.AddRange(this.messages);
+                    var old = await read.ReadFromFile(FileName);
+                    this.messages.AddRange(old.Where(m => !ignoredMessages.Any(m.Text.Contains)));
                 }
                 catch (Exception e)
                 {
                     LogError("Error loading file: " + e, nameof(AnalogyLogManager));
-                    //XtraMessageBox.Show(e.Message, @"Error loading file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -99,29 +103,35 @@ namespace Analogy.Managers
 
         public void LogError(string error, string source)
         {
+            if (ignoredMessages.Any(error.Contains)) return;
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General, source));
             OnNewError?.Invoke(this, new EventArgs());
         }
         public void LogEvent(string data, string source)
         {
+            if (ignoredMessages.Any(data.Contains)) return;
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Event, AnalogyLogClass.General, source));
         }
         public void LogWarning(string data, string source)
         {
+            if (ignoredMessages.Any(data.Contains)) return;
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Warning, AnalogyLogClass.General, source));
         }
         public void LogDebug(string data, string source)
         {
+            if (ignoredMessages.Any(data.Contains)) return;
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Debug, AnalogyLogClass.General, source));
         }
         public void LogCritical(string data, string source)
         {
+            if (ignoredMessages.Any(data.Contains)) return;
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Critical, AnalogyLogClass.General, source));
+            OnNewError?.Invoke(this, new EventArgs());
         }
         public void Show(MainForm mainForm)
         {
@@ -131,6 +141,7 @@ namespace Analogy.Managers
 
         public void LogErrorMessage(AnalogyLogMessage error)
         {
+            if (ignoredMessages.Any(error.Text.Contains)) return;
             ContentChanged = true;
             messages.Add(error);
             OnNewError?.Invoke(this, new EventArgs());
