@@ -1,4 +1,5 @@
 ﻿using Analogy.DataSources;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -1457,6 +1458,12 @@ namespace Analogy
             {
                 AnalogyLogger.Instance.LogException(exception, "", $"Error: {exception.Message}");
             }
+        }
+
+        private void bbtnUpdates_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UpdateForm update = new UpdateForm();
+            update.Show(this);
         }
     }
 }

@@ -1,19 +1,19 @@
+using Analogy.Interfaces;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -166,7 +166,7 @@ namespace Analogy
             }
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
-            dtb.DefaultView.Sort =UserSettingsManager.UserSettings.DefaultDescendOrder ?
+            dtb.DefaultView.Sort = UserSettingsManager.UserSettings.DefaultDescendOrder ?
                 "Date DESC" : "Date ASC";
 
             return dtb;
@@ -220,53 +220,69 @@ namespace Analogy
         }
         public static TimeSpan IdleTime() => TimeSpan.FromSeconds(GetLastInputTime());
 
-        
-         
 
-            public static bool MatchedAll(string pattern, IEnumerable<string> files)
+
+
+        public static bool MatchedAll(string pattern, IEnumerable<string> files)
+        {
+            Regex reg = Convert(pattern);
+            return files.All(f => reg.IsMatch(f));
+        }
+        public static Regex Convert(string pattern)
+        {
+            if (pattern == null)
             {
-                Regex reg = Convert(pattern);
-                return files.All(f => reg.IsMatch(f));
+                throw new ArgumentNullException();
             }
-            public static Regex Convert(string pattern)
+            pattern = pattern.Trim();
+            if (pattern.Length == 0)
             {
-                if (pattern == null)
-                {
-                    throw new ArgumentNullException();
-                }
-                pattern = pattern.Trim();
-                if (pattern.Length == 0)
-                {
-                    throw new ArgumentException("Pattern is empty.");
-                }
-                if (IllegalCharactersRegex.IsMatch(pattern))
-                {
-                    throw new ArgumentException("Pattern contains illegal characters.");
-                }
-                bool hasExtension = CatchExtentionRegex.IsMatch(pattern);
-                bool matchExact = false;
-                if (HasQuestionMarkRegEx.IsMatch(pattern))
-                {
-                    matchExact = true;
-                }
-                else if (hasExtension)
-                {
-                    matchExact = CatchExtentionRegex.Match(pattern).Groups[1].Length != 3;
-                }
-                string regexString = Regex.Escape(pattern);
-                regexString = "^" + Regex.Replace(regexString, @"\\\*", ".*");
-                regexString = Regex.Replace(regexString, @"\\\?", ".");
-                if (!matchExact && hasExtension)
-                {
-                    regexString += NonDotCharacters;
-                }
-                regexString += "$";
-                Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                return regex;
+                throw new ArgumentException("Pattern is empty.");
             }
-        
+            if (IllegalCharactersRegex.IsMatch(pattern))
+            {
+                throw new ArgumentException("Pattern contains illegal characters.");
+            }
+            bool hasExtension = CatchExtentionRegex.IsMatch(pattern);
+            bool matchExact = false;
+            if (HasQuestionMarkRegEx.IsMatch(pattern))
+            {
+                matchExact = true;
+            }
+            else if (hasExtension)
+            {
+                matchExact = CatchExtentionRegex.Match(pattern).Groups[1].Length != 3;
+            }
+            string regexString = Regex.Escape(pattern);
+            regexString = "^" + Regex.Replace(regexString, @"\\\*", ".*");
+            regexString = Regex.Replace(regexString, @"\\\?", ".");
+            if (!matchExact && hasExtension)
+            {
+                regexString += NonDotCharacters;
+            }
+            regexString += "$";
+            Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            return regex;
+        }
+
+        public static async Task<string> GetAsync(string uri)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                client.DefaultRequestHeaders.UserAgent.TryParseAdd("Analogy");//Set the User Agent to "request"
+                using (HttpResponseMessage response = await client.GetAsync(uri))
+                {
+                    response.EnsureSuccessStatusCode();
+                    return await response.Content.ReadAsStringAsync();
+                }
+            }
+
+        }
+
     }
-    
+
     public abstract class Saver
     {
         public static void ExportToJson(DataTable data, string filename)

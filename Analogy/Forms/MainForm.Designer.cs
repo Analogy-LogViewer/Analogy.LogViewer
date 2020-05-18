@@ -62,6 +62,7 @@
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
@@ -98,7 +99,6 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -394,8 +394,8 @@
             this.bbsItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bbsItem.Name = "bbsItem";
             // 
             // bbtnItemChangeLog
@@ -418,6 +418,13 @@
             this.bbtnItemHelp.Id = 27;
             this.bbtnItemHelp.Name = "bbtnItemHelp";
             this.bbtnItemHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemHelp_ItemClick);
+            // 
+            // bbtnUpdates
+            // 
+            this.bbtnUpdates.Caption = "Check for updates";
+            this.bbtnUpdates.Id = 76;
+            this.bbtnUpdates.Name = "bbtnUpdates";
+            this.bbtnUpdates.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnUpdates_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -748,12 +755,6 @@
             this.documentManager1.View = this.tabbedView1;
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
-            // 
-            // bbtnUpdates
-            // 
-            this.bbtnUpdates.Caption = "Check for updates";
-            this.bbtnUpdates.Id = 76;
-            this.bbtnUpdates.Name = "bbtnUpdates";
             // 
             // MainForm
             // 
