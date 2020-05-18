@@ -83,7 +83,7 @@ namespace Analogy
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        private void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)
             {
