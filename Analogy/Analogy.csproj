@@ -643,7 +643,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.0.0" />
+    <PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.0.1" />
     <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.1.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
