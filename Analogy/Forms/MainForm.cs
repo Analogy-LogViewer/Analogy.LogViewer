@@ -174,21 +174,28 @@ namespace Analogy
         {
             while (!Initialized)
                 await Task.Delay(250);
+
             var supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
             {
                 var parser = supported.First();
-                RibbonPage page = (Mapping.ContainsKey(parser.FactoryID)) ? Mapping[parser.FactoryID] : null;
+                RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
                 OpenOfflineLogs(page, files, parser.DataProvider);
             }
             else
             {
+
+                if (supported.Any(d => d.DataProvider.ID == UserSettingsManager.UserSettings.LastOpenedDataProvider))
+                {
+                    var parser = supported.First(d =>
+                        d.DataProvider.ID == UserSettingsManager.UserSettings.LastOpenedDataProvider);
+                }
                 supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
                     !FactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
                 if (supported.Count == 1)
                 {
                     var parser = supported.First();
-                    RibbonPage page = (Mapping.ContainsKey(parser.FactoryID)) ? Mapping[parser.FactoryID] : null;
+                    RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
                     OpenOfflineLogs(page, files, parser.DataProvider);
                 }
                 else
