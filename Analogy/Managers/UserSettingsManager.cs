@@ -1,4 +1,5 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataProviders;
+using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -78,6 +79,8 @@ namespace Analogy
         public string DateTimePattern { get; set; }
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
+        public GithubReleaseEntry LastVersionChecked { get; set; }
+        public string GitHubToken { get; } = Environment.GetEnvironmentVariable("GitHubNotifier_Token");
         public UserSettingsManager()
         {
             Load();
@@ -139,6 +142,7 @@ namespace Analogy
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
             SingleInstance = Settings.Default.SingleInstance;
             LastUpdate = Settings.Default.LastUpdate;
+            LastVersionChecked = ParseSettings<GithubReleaseEntry>(Settings.Default.LastVersionChecked);
             switch (Settings.Default.UpdateMode)
             {
                 case 0:
@@ -220,6 +224,7 @@ namespace Analogy
             Settings.Default.SingleInstance = SingleInstance;
             Settings.Default.LastUpdate = LastUpdate;
             Settings.Default.UpdateMode = (int)UpdateMode;
+            Settings.Default.LastVersionChecked = JsonConvert.SerializeObject(LastVersionChecked);
             Settings.Default.Save();
 
         }

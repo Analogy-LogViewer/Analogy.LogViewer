@@ -1,6 +1,9 @@
-﻿using Analogy.Types;
+﻿using Analogy.DataProviders;
+using Analogy.Types;
 using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Analogy.Managers
 {
@@ -10,7 +13,7 @@ namespace Analogy.Managers
             _instance = new Lazy<UpdateManager>(() => new UpdateManager());
 
         public static readonly UpdateManager Instance = _instance.Value;
-
+        private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;
 
         public UpdateMode UpdateMode
@@ -18,7 +21,11 @@ namespace Analogy.Managers
             get => UserSettingsManager.UserSettings.UpdateMode;
             set => UserSettingsManager.UserSettings.UpdateMode = value;
         }
-
+        public GithubReleaseEntry LastVersionChecked
+        {
+            get => UserSettingsManager.UserSettings.LastVersionChecked;
+            set => UserSettingsManager.UserSettings.LastVersionChecked = value;
+        }
         public DateTime LastUpdate
         {
             get => UserSettingsManager.UserSettings.LastUpdate;
@@ -55,6 +62,23 @@ namespace Analogy.Managers
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             CurrentVersion = fvi.FileVersion;
+        }
+
+        public async Task<(bool newData, GithubReleaseEntry release)> CheckVersion(bool forceUpdate)
+        {
+            if (!forceUpdate && DateTime.Now > NextUpdate)
+                return (false, UserSettingsManager.UserSettings.LastVersionChecked);
+            var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(repository + "/releases", UserSettingsManager.UserSettings.GitHubToken, UpdateManager.Instance.LastUpdate);
+            LastUpdate = DateTime.Now;
+            CheckedThisTun = true;
+            if (!newData)
+            {
+                return (false, UserSettingsManager.UserSettings.LastVersionChecked);
+
+            }
+            var release = entries.OrderByDescending(r => r.Published).First();
+            UserSettingsManager.UserSettings.LastVersionChecked = release;
+            return (true, release);
         }
     }
 }

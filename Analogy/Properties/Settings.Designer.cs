@@ -730,5 +730,20 @@ namespace Analogy.Properties
                 this["UpdateMode"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastVersionChecked
+        {
+            get
+            {
+                return ((string)(this["LastVersionChecked"]));
+            }
+            set
+            {
+                this["LastVersionChecked"] = value;
+            }
+        }
     }
 }

@@ -1,14 +1,11 @@
-﻿using Analogy.DataProviders;
-using Analogy.Managers;
-using Newtonsoft.Json;
+﻿using Analogy.Managers;
 using System;
-using System.Linq;
 
 namespace Analogy.Forms
 {
     public partial class UpdateForm : DevExpress.XtraEditors.XtraForm
     {
-        private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
+
         public UpdateForm()
         {
             InitializeComponent();
@@ -18,12 +15,20 @@ namespace Analogy.Forms
         {
             Icon = UserSettingsManager.UserSettings.GetIcon();
             lblCurrentVersion.Text = $"Your current version is: V{UpdateManager.Instance.CurrentVersion}";
+            lblLatestVersion.Text =
+                $"Latest version is: {(UpdateManager.Instance.LastVersionChecked == null || UpdateManager.Instance.LastVersionChecked.TagName == null ? "not checked" : UpdateManager.Instance.LastVersionChecked.TagName)}";
+
+            if (UpdateManager.Instance.LastVersionChecked != null && UpdateManager.Instance.LastVersionChecked.TagName != null)
+            {
+                richTextBoxRelease.Text = UpdateManager.Instance.LastVersionChecked.ToString();
+                hyperLinkEditLatest.Text = UpdateManager.Instance.LastVersionChecked.HtmlUrl;
+            }
         }
 
         private async void sbtnCheck_Click(object sender, EventArgs e)
         {
-            string releases = await Utils.GetAsync(repository + "/releases");
-            var release = JsonConvert.DeserializeObject<GithubReleaseEntry[]>(releases).OrderByDescending(r => r.Published).First();
+            var (_, release) = await UpdateManager.Instance.CheckVersion(true);
+            UserSettingsManager.UserSettings.LastVersionChecked = release;
             lblLatestVersion.Text = "Latest version is: " + release.TagName;
             richTextBoxRelease.Text = release.ToString();
             hyperLinkEditLatest.Text = release.HtmlUrl;

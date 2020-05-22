@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -265,53 +265,37 @@ namespace Analogy
             return regex;
         }
 
-        public static async Task<string> GetAsync(string uri)
+        public static async Task<(bool newData, T result)> GetAsync<T>(string uri, string token, DateTime lastModified)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                Uri myUri = new Uri(uri);
+                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(myUri);
+                myHttpWebRequest.Accept = "application/json";
+                myHttpWebRequest.UserAgent = "Analogy";
+                if (!string.IsNullOrEmpty(token))
+                    myHttpWebRequest.Headers.Add(HttpRequestHeader.Authorization, $"Token {token}");
 
-                client.DefaultRequestHeaders.UserAgent.TryParseAdd("Analogy");//Set the User Agent to "request"
-                using (HttpResponseMessage response = await client.GetAsync(uri))
+                myHttpWebRequest.IfModifiedSince = lastModified;
+
+                HttpWebResponse myHttpWebResponse = (HttpWebResponse)await myHttpWebRequest.GetResponseAsync();
+                if (myHttpWebResponse.StatusCode == HttpStatusCode.NotModified)
+                    return (false, default);
+
+                using (var reader = new System.IO.StreamReader(myHttpWebResponse.GetResponseStream()))
                 {
-                    response.EnsureSuccessStatusCode();
-                    return await response.Content.ReadAsStringAsync();
+                    string responseText = await reader.ReadToEndAsync();
+                    return (true, JsonConvert.DeserializeObject<T>(responseText));
                 }
             }
-
-        }
-
-    }
-
-    public abstract class Saver
-    {
-        public static void ExportToJson(DataTable data, string filename)
-        {
-            List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
-            foreach (DataRow dtr in data.Rows)
+            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotModified)
             {
-
-                AnalogyLogMessage log = (AnalogyLogMessage)dtr["Object"];
-                messages.Add(log);
+                return (false, default);
             }
-
-            string json = JsonConvert.SerializeObject(messages);
-            File.WriteAllText(filename, json);
-        }
-        public static void ExportToJson(List<AnalogyLogMessage> messages, string filename)
-        {
-            string json = JsonConvert.SerializeObject(messages);
-            File.WriteAllText(filename, json);
         }
 
-        public static void ExportToCSV(List<AnalogyLogMessage> messages, string fileName)
-        {
-            string text = string.Join(Environment.NewLine, messages.Select(GetCsvFromMessage).ToArray());
-            File.WriteAllText(fileName, text);
-        }
 
-        private static string GetCsvFromMessage(AnalogyLogMessage m) =>
-        $"ID:{m.ID};Text:{m.Text};Category:{m.Category};Source:{m.Source};Level:{m.Level};Class:{m.Class};Module:{m.Module};Method:{m.MethodName};FileName:{m.FileName};LineNumber:{m.LineNumber};ProcessID:{m.ProcessID};User:{m.User};Parameters:{(m.Parameters == null ? string.Empty : string.Join(",", m.Parameters))}";
+
     }
 
     /// <summary>
