@@ -1,6 +1,7 @@
 using Analogy.Interfaces;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;

@@ -58,7 +58,7 @@ namespace Analogy
             dtr["User"] = "None";
             dtr["Module"] = "Analogy";
             dtr["ProcessID"] = Process.GetCurrentProcess().Id;
-            dtr["ThreadID"] = Thread.CurrentContext.ContextID;
+            dtr["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
             dtr["DataProvider"] = string.Empty;
             dtr.EndEdit();
             messageData.Rows.Add(dtr);
