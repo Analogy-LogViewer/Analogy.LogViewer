@@ -58,7 +58,7 @@ namespace Analogy
             dtr["User"] = "None";
             dtr["Module"] = "Analogy";
             dtr["ProcessID"] = Process.GetCurrentProcess().Id;
-            dtr["ThreadID"] = Thread.CurrentContext.ContextID;
+            dtr["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
             dtr["DataProvider"] = string.Empty;
             dtr.EndEdit();
             messageData.Rows.Add(dtr);
@@ -227,7 +227,7 @@ namespace Analogy
             Settings.SingleInstance = tsSingleInstance.IsOn;
             Settings.AnalogyIcon = rbtnLightIconColor.Checked ? "Light" : "Dark";
             var options = typeof(UpdateMode).GetDisplayValues();
-            UpdateManager.Instance.UpdateMode = (UpdateMode) Enum.Parse(typeof(UpdateMode),options.Single(k=>k.Value==cbUpdates.SelectedItem.ToString()).Key,true);
+            UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode), options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
             Settings.Save();
         }
 
