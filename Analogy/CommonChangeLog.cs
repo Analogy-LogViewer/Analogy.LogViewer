@@ -10,7 +10,9 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-            new AnalogyChangeLog("combine opened logs into one. #152",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),
+
+                new AnalogyChangeLog("Add auto update/version checker #165",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),
+                new AnalogyChangeLog("combine opened logs into one. #152",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),
             new AnalogyChangeLog("Add Reload option for loaded logs files #169",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 14)),
             new AnalogyChangeLog("Add Columns extension support #149",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),
             new AnalogyChangeLog("Add an option to display date/time in local pattern #154",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),

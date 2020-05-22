@@ -66,7 +66,7 @@ namespace Analogy.Managers
 
         public async Task<(bool newData, GithubReleaseEntry release)> CheckVersion(bool forceUpdate)
         {
-            if (!forceUpdate && DateTime.Now > NextUpdate)
+            if (!forceUpdate && NextUpdate > DateTime.Now)
                 return (false, UserSettingsManager.UserSettings.LastVersionChecked);
             var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(repository + "/releases", UserSettingsManager.UserSettings.GitHubToken, UpdateManager.Instance.LastUpdate);
             LastUpdate = DateTime.Now;

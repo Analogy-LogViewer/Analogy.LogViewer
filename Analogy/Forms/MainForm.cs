@@ -94,10 +94,6 @@ namespace Analogy
             Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
             Icon = settings.GetIcon();
             var logger = AnalogyLogManager.Instance.Init();
-            if (UpdateManager.Instance.LastVersionChecked != null && UpdateManager.Instance.LastVersionChecked.TagName != null)
-            {
-                bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.LastVersionChecked.TagName;
-            }
             var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
             await Task.WhenAll(logger, factories);
             string[] arguments = Environment.GetCommandLineArgs();
@@ -148,6 +144,11 @@ namespace Analogy
             ribbonControlMain.SelectedPageChanging += ribbonControlMain_SelectedPageChanging;
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
                 btnErrors.Visibility = BarItemVisibility.Always;
+            var (_, release) = await UpdateManager.Instance.CheckVersion(false);
+            if (release?.TagName != null)
+            {
+                bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.LastVersionChecked.TagName;
+            }
         }
 
         private void SetupEventHandlers()
@@ -185,6 +186,7 @@ namespace Analogy
                 var openLogs = new OpenWindows(items);
                 openLogs.Show(this);
             };
+            bbtnCheckUpdates.ItemClick += (s, e) => OpenUpdateWindow();
         }
 
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
@@ -1494,6 +1496,11 @@ namespace Analogy
         }
 
         private void bbtnUpdates_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenUpdateWindow();
+        }
+
+        private void OpenUpdateWindow()
         {
             UpdateForm update = new UpdateForm();
             update.Show(this);
