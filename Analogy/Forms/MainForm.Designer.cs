@@ -59,6 +59,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.bbitemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.bbsItem = new DevExpress.XtraBars.BarSubItem();
+            this.bbtnCombineOpenLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
@@ -99,7 +100,7 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.bbtnCombineOpenLogs = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -182,10 +183,11 @@
             this.bbtnSettingsApplication,
             this.bbtnStar,
             this.bbtnUpdates,
-            this.bbtnCombineOpenLogs});
+            this.bbtnCombineOpenLogs,
+            this.bbtnCheckUpdates});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 78;
+            this.ribbonControlMain.MaxItemId = 79;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -400,6 +402,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bbsItem.Name = "bbsItem";
+            // 
+            // bbtnCombineOpenLogs
+            // 
+            this.bbtnCombineOpenLogs.Caption = "Combine open logs";
+            this.bbtnCombineOpenLogs.Id = 77;
+            this.bbtnCombineOpenLogs.Name = "bbtnCombineOpenLogs";
             // 
             // bbtnItemChangeLog
             // 
@@ -723,6 +731,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bsiMemoryUsage);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
+            this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
@@ -759,11 +768,13 @@
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
-            // bbtnCombineOpenLogs
+            // bbtnCheckUpdates
             // 
-            this.bbtnCombineOpenLogs.Caption = "Combine open logs";
-            this.bbtnCombineOpenLogs.Id = 77;
-            this.bbtnCombineOpenLogs.Name = "bbtnCombineOpenLogs";
+            this.bbtnCheckUpdates.Caption = "Check For Update";
+            this.bbtnCheckUpdates.Id = 78;
+            this.bbtnCheckUpdates.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnCheckUpdates.ImageOptions.Image")));
+            this.bbtnCheckUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCheckUpdates.ImageOptions.LargeImage")));
+            this.bbtnCheckUpdates.Name = "bbtnCheckUpdates";
             // 
             // MainForm
             // 
@@ -863,5 +874,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnStar;
         private DevExpress.XtraBars.BarButtonItem bbtnUpdates;
         private DevExpress.XtraBars.BarButtonItem bbtnCombineOpenLogs;
+        private DevExpress.XtraBars.BarButtonItem bbtnCheckUpdates;
     }
 }

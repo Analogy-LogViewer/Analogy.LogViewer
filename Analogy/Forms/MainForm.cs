@@ -94,6 +94,10 @@ namespace Analogy
             Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
             Icon = settings.GetIcon();
             var logger = AnalogyLogManager.Instance.Init();
+            if (UpdateManager.Instance.LastVersionChecked != null && UpdateManager.Instance.LastVersionChecked.TagName != null)
+            {
+                bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.LastVersionChecked.TagName;
+            }
             var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
             await Task.WhenAll(logger, factories);
             string[] arguments = Environment.GetCommandLineArgs();
