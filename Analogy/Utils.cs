@@ -1,18 +1,18 @@
+using Analogy.Interfaces;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -165,7 +165,7 @@ namespace Analogy
             }
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
-            dtb.DefaultView.Sort =UserSettingsManager.UserSettings.DefaultDescendOrder ?
+            dtb.DefaultView.Sort = UserSettingsManager.UserSettings.DefaultDescendOrder ?
                 "Date DESC" : "Date ASC";
 
             return dtb;
@@ -219,82 +219,82 @@ namespace Analogy
         }
         public static TimeSpan IdleTime() => TimeSpan.FromSeconds(GetLastInputTime());
 
-        
-         
 
-            public static bool MatchedAll(string pattern, IEnumerable<string> files)
-            {
-                Regex reg = Convert(pattern);
-                return files.All(f => reg.IsMatch(f));
-            }
-            public static Regex Convert(string pattern)
-            {
-                if (pattern == null)
-                {
-                    throw new ArgumentNullException();
-                }
-                pattern = pattern.Trim();
-                if (pattern.Length == 0)
-                {
-                    throw new ArgumentException("Pattern is empty.");
-                }
-                if (IllegalCharactersRegex.IsMatch(pattern))
-                {
-                    throw new ArgumentException("Pattern contains illegal characters.");
-                }
-                bool hasExtension = CatchExtentionRegex.IsMatch(pattern);
-                bool matchExact = false;
-                if (HasQuestionMarkRegEx.IsMatch(pattern))
-                {
-                    matchExact = true;
-                }
-                else if (hasExtension)
-                {
-                    matchExact = CatchExtentionRegex.Match(pattern).Groups[1].Length != 3;
-                }
-                string regexString = Regex.Escape(pattern);
-                regexString = "^" + Regex.Replace(regexString, @"\\\*", ".*");
-                regexString = Regex.Replace(regexString, @"\\\?", ".");
-                if (!matchExact && hasExtension)
-                {
-                    regexString += NonDotCharacters;
-                }
-                regexString += "$";
-                Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                return regex;
-            }
-        
-    }
-    
-    public abstract class Saver
-    {
-        public static void ExportToJson(DataTable data, string filename)
+
+
+        public static bool MatchedAll(string pattern, IEnumerable<string> files)
         {
-            List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
-            foreach (DataRow dtr in data.Rows)
-            {
-
-                AnalogyLogMessage log = (AnalogyLogMessage)dtr["Object"];
-                messages.Add(log);
-            }
-
-            string json = System.Text.Json.JsonSerializer.Serialize(messages);
-            File.WriteAllText(filename, json);
+            Regex reg = Convert(pattern);
+            return files.All(f => reg.IsMatch(f));
         }
-        public static void ExportToJson(List<AnalogyLogMessage> messages, string filename)
+        public static Regex Convert(string pattern)
         {
-            string json = System.Text.Json.JsonSerializer.Serialize(messages);
-            File.WriteAllText(filename, json);
+            if (pattern == null)
+            {
+                throw new ArgumentNullException();
+            }
+            pattern = pattern.Trim();
+            if (pattern.Length == 0)
+            {
+                throw new ArgumentException("Pattern is empty.");
+            }
+            if (IllegalCharactersRegex.IsMatch(pattern))
+            {
+                throw new ArgumentException("Pattern contains illegal characters.");
+            }
+            bool hasExtension = CatchExtentionRegex.IsMatch(pattern);
+            bool matchExact = false;
+            if (HasQuestionMarkRegEx.IsMatch(pattern))
+            {
+                matchExact = true;
+            }
+            else if (hasExtension)
+            {
+                matchExact = CatchExtentionRegex.Match(pattern).Groups[1].Length != 3;
+            }
+            string regexString = Regex.Escape(pattern);
+            regexString = "^" + Regex.Replace(regexString, @"\\\*", ".*");
+            regexString = Regex.Replace(regexString, @"\\\?", ".");
+            if (!matchExact && hasExtension)
+            {
+                regexString += NonDotCharacters;
+            }
+            regexString += "$";
+            Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            return regex;
         }
 
-        public static void ExportToCSV(List<AnalogyLogMessage> messages, string fileName)
+        public static async Task<(bool newData, T result)> GetAsync<T>(string uri, string token, DateTime lastModified)
         {
-            string text = string.Join(Environment.NewLine, messages.Select(GetCsvFromMessage).ToArray());
-            File.WriteAllText(fileName, text);
+            try
+            {
+                Uri myUri = new Uri(uri);
+                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(myUri);
+                myHttpWebRequest.Accept = "application/json";
+                myHttpWebRequest.UserAgent = "Analogy";
+                if (!string.IsNullOrEmpty(token))
+                    myHttpWebRequest.Headers.Add(HttpRequestHeader.Authorization, $"Token {token}");
+
+                myHttpWebRequest.IfModifiedSince = lastModified;
+
+                HttpWebResponse myHttpWebResponse = (HttpWebResponse)await myHttpWebRequest.GetResponseAsync();
+                if (myHttpWebResponse.StatusCode == HttpStatusCode.NotModified)
+                    return (false, default);
+
+                using (var reader = new System.IO.StreamReader(myHttpWebResponse.GetResponseStream()))
+                {
+                    string responseText = await reader.ReadToEndAsync();
+                    return (true, JsonConvert.DeserializeObject<T>(responseText));
+                }
+            }
+            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotModified)
+            {
+                return (false, default);
+            }
         }
 
-        private static string GetCsvFromMessage(AnalogyLogMessage m) =>
-        $"ID:{m.ID};Text:{m.Text};Category:{m.Category};Source:{m.Source};Level:{m.Level};Class:{m.Class};Module:{m.Module};Method:{m.MethodName};FileName:{m.FileName};LineNumber:{m.LineNumber};ProcessID:{m.ProcessID};User:{m.User};Parameters:{(m.Parameters == null ? string.Empty : string.Join(",", m.Parameters))}";
+
+
     }
 
     /// <summary>

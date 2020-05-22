@@ -10,12 +10,16 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("Add Columns extension support #149",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),
-                new AnalogyChangeLog("Add an option to display date/time in local pattern #154",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),
-                new AnalogyChangeLog("User settings: Allow user to change grid headers/titles #153",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
-                new AnalogyChangeLog("UI: Add alternate icons (light/dark themes) #167",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
-                new AnalogyChangeLog("Allow each Data provider to supply its own icons and Images for the UI #127",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 02)),
-                new AnalogyChangeLog("Open new logs as new tabs in the same application instance #155",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),
+
+                new AnalogyChangeLog("Add auto update/version checker #165",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),
+                new AnalogyChangeLog("combine opened logs into one. #152",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),
+            new AnalogyChangeLog("Add Reload option for loaded logs files #169",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 14)),
+            new AnalogyChangeLog("Add Columns extension support #149",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),
+            new AnalogyChangeLog("Add an option to display date/time in local pattern #154",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 09)),
+            new AnalogyChangeLog("User settings: Allow user to change grid headers/titles #153",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
+            new AnalogyChangeLog("UI: Add alternate icons (light/dark themes) #167",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 08)),
+            new AnalogyChangeLog("Allow each Data provider to supply its own icons and Images for the UI #127",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 02)),
+            new AnalogyChangeLog("Open new logs as new tabs in the same application instance #155",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Add Single Instance User settings #157",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Date Time value is displayed wrong in Detailed Message window (Issue #156)", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 04, 25)),
             new AnalogyChangeLog("Logs Analysis: add some pie charts (Issue #131)", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2020, 04, 06)),

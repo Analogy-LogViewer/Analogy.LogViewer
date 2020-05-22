@@ -1,4 +1,5 @@
 ﻿using Analogy.DataSources;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -21,6 +22,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Analogy
 {
@@ -88,12 +90,15 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
+
+            Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
             Icon = settings.GetIcon();
             var logger = AnalogyLogManager.Instance.Init();
             var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
             await Task.WhenAll(logger, factories);
             string[] arguments = Environment.GetCommandLineArgs();
             disableOnlineDueToFileOpen = arguments.Length == 2;
+            SetupEventHandlers();
             if (DesignMode) return;
 
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
@@ -139,7 +144,51 @@ namespace Analogy
             ribbonControlMain.SelectedPageChanging += ribbonControlMain_SelectedPageChanging;
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
                 btnErrors.Visibility = BarItemVisibility.Always;
+            var (_, release) = await UpdateManager.Instance.CheckVersion(false);
+            if (release?.TagName != null)
+            {
+                bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.LastVersionChecked.TagName;
+            }
         }
+
+        private void SetupEventHandlers()
+        {
+            ILogWindow GetLogWindows(Control mainControl)
+            {
+                while (true)
+                {
+                    if (mainControl is ILogWindow logWindow) return logWindow;
+                    if (mainControl is SplitContainer split)
+                    {
+                        var log1 = GetLogWindows(split.Panel1);
+                        if (log1 != null) return log1;
+                        mainControl = split.Panel2;
+                        continue;
+                    }
+
+                    for (int i = 0; i < mainControl.Controls.Count; i++)
+                    {
+                        var control = mainControl.Controls[i];
+                        if (control is ILogWindow logWindow2) return logWindow2;
+                        return GetLogWindows(control);
+                    }
+
+                    return null;
+                    break;
+                }
+            }
+
+
+            bbtnCombineOpenLogs.ItemClick += (s, e) =>
+            {
+                var items = dockManager1.Panels.Select(p => (p.Text, GetLogWindows(p))).Where(l => l.Item2 != null)
+                    .ToList();
+                var openLogs = new OpenWindows(items);
+                openLogs.Show(this);
+            };
+            bbtnCheckUpdates.ItemClick += (s, e) => OpenUpdateWindow();
+        }
+
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
             IAnalogyOfflineDataProvider dataProvider,
             string title = null)
@@ -171,21 +220,28 @@ namespace Analogy
         {
             while (!Initialized)
                 await Task.Delay(250);
+
             var supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
             {
                 var parser = supported.First();
-                RibbonPage page = (Mapping.ContainsKey(parser.FactoryID)) ? Mapping[parser.FactoryID] : null;
+                RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
                 OpenOfflineLogs(page, files, parser.DataProvider);
             }
             else
             {
+
+                if (supported.Any(d => d.DataProvider.ID == UserSettingsManager.UserSettings.LastOpenedDataProvider))
+                {
+                    var parser = supported.First(d =>
+                        d.DataProvider.ID == UserSettingsManager.UserSettings.LastOpenedDataProvider);
+                }
                 supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
                     !FactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
                 if (supported.Count == 1)
                 {
                     var parser = supported.First();
-                    RibbonPage page = (Mapping.ContainsKey(parser.FactoryID)) ? Mapping[parser.FactoryID] : null;
+                    RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
                     OpenOfflineLogs(page, files, parser.DataProvider);
                 }
                 else
@@ -256,24 +312,6 @@ namespace Analogy
         {
             var ex = new ExtensionsForm();
             ex.ShowDialog(this);
-        }
-
-        private void AddRecentWindowsEventLogFiles(List<string> files)
-        {
-            //if (files.Any())
-            //{
-            //    foreach (string file in files)
-            //    {
-            //        if (!File.Exists(file)) continue;
-            //        BarButtonItem btn = new BarButtonItem();
-            //        btn.Caption = file;
-            //        btn.ItemClick += (s, be) =>
-            //        {
-            //            OpenOfflineLogs(new[] { be.Item.Caption });
-            //        };
-            //        bsiRecent.AddItem(btn);
-            //    }
-            //}
         }
 
         private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataProvider offlineAnalogy,
@@ -1455,6 +1493,17 @@ namespace Analogy
             {
                 AnalogyLogger.Instance.LogException(exception, "", $"Error: {exception.Message}");
             }
+        }
+
+        private void bbtnUpdates_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenUpdateWindow();
+        }
+
+        private void OpenUpdateWindow()
+        {
+            UpdateForm update = new UpdateForm();
+            update.Show(this);
         }
     }
 }

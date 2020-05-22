@@ -189,6 +189,10 @@ namespace Analogy
                 rbtnDarkIconColor.Checked = true;
             }
             LoadColorSettings();
+
+
+            cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
+            cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
         }
         private void SaveSetting()
         {
@@ -221,14 +225,9 @@ namespace Analogy
             Settings.UpdateOrder(order);
             Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
             Settings.SingleInstance = tsSingleInstance.IsOn;
-            if (rbtnLightIconColor.Checked)
-            {
-                Settings.AnalogyIcon = "Light";
-            }
-            else
-            {
-                Settings.AnalogyIcon = "Dark";
-            }
+            Settings.AnalogyIcon = rbtnLightIconColor.Checked ? "Light" : "Dark";
+            var options = typeof(UpdateMode).GetDisplayValues();
+            UpdateManager.Instance.UpdateMode = (UpdateMode) Enum.Parse(typeof(UpdateMode),options.Single(k=>k.Value==cbUpdates.SelectedItem.ToString()).Key,true);
             Settings.Save();
         }
 

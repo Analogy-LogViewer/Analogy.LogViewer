@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Types;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Windows.Forms;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy
@@ -20,12 +18,13 @@ namespace Analogy
         private string FileName { get; set; }
         public bool Enable { get; set; } = true;
         private FilePoolingManager PoolingManager { get; }
-        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string fileName,string initialFolder)
+        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string fileName, string initialFolder)
         {
             InitializeComponent();
             FileName = fileName;
             PoolingManager = new FilePoolingManager(FileName, offlineDataProvider);
-            ucLogs1.SetFileDataSource(offlineDataProvider,offlineDataProvider);
+            ucLogs1.SetFileDataSource(offlineDataProvider, offlineDataProvider);
+            ucLogs1.EnableFileReload(FileName);
             PoolingManager.OnNewMessages += (s, data) =>
             {
                 AppendMessages(data.messages, data.dataSource);
@@ -80,18 +79,18 @@ namespace Analogy
                 listBoxClearHistory.SelectedIndex = -1;
                 listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
             }));
-            
+
         }
-   
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        private void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)
             {
 
                 string interned = string.Intern(dataSource);
                 ucLogs1.AppendMessages(messages, interned);
-                
+
             }
         }
 
@@ -111,7 +110,7 @@ namespace Analogy
         {
             if (listBoxClearHistory.SelectedItem == null) return;
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
-            XtraFormLogGrid grid = new XtraFormLogGrid(messages, Environment.MachineName);
+            XtraFormLogGrid grid = new XtraFormLogGrid(messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
         }
     }

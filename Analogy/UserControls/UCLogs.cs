@@ -92,7 +92,7 @@ namespace Analogy
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
 
-        // private bool FilterHasChanged { get; set; }
+        private List<string> LoadedFiles { get; set; }
         private bool NewDataExist { get; set; }
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
@@ -103,8 +103,8 @@ namespace Analogy
         private CancellationToken filterToken;
 
         private int TotalPages => PagingManager.TotalPages;
-        private IAnalogyDataProvider DataProvider { get; set; }
-        private IAnalogyOfflineDataProvider FileDataProvider { get; set; }
+        public IAnalogyDataProvider DataProvider { get; set; }
+        public IAnalogyOfflineDataProvider FileDataProvider { get; set; }
         private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         public GridView LogGrid
         {
@@ -241,6 +241,8 @@ namespace Analogy
                 await FilterHasChanged();
                 Settings.ModuleText = chkbModules.Text;
             };
+
+            bbtnReload.ItemClick += async (s, e) => { await LoadFilesAsync(LoadedFiles, true, true); };
         }
 
 
@@ -1256,8 +1258,10 @@ namespace Analogy
             }));
         }
 
-        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading)
+        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading, bool forceNoCaching = false)
         {
+            LoadedFiles = fileNames;
+            bbtnReload.Visibility = BarItemVisibility.Always;
             CancellationTokenSource = new CancellationTokenSource();
             CancellationToken token = CancellationTokenSource.Token;
             if (clearLogBeforeLoading)
@@ -1279,7 +1283,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename, token);
+                await fileProcessor.Process(FileDataProvider, filename, token, forceNoCaching);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -2019,7 +2023,7 @@ namespace Analogy
             if (!msg.Any()) return;
             var source = GetFilteredDataTable().Rows[0]?["DataProvider"]?.ToString();
             if (source == null) return;
-            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source);
+            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -2158,7 +2162,7 @@ namespace Analogy
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -2296,6 +2300,12 @@ namespace Analogy
             }
 
             contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
+        }
+
+        public void EnableFileReload(string fileName)
+        {
+            LoadedFiles = new List<string>() { fileName };
+            bbtnReload.Visibility = BarItemVisibility.Always;
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
 
 namespace Analogy.Managers
 {
@@ -16,39 +16,50 @@ namespace Analogy.Managers
         private readonly CancellationTokenSource _cancellationTokenSource;
         private readonly List<AnalogyLogMessage> _messages;
         public EventHandler<(List<AnalogyLogMessage> messages, string dataSource)> OnNewMessages;
-        public bool ForceNoFileCaching { get; set; } = true; 
+        public bool ForceNoFileCaching { get; set; } = true;
 
         public bool DoNotAddToRecentHistory { get; set; } = true;
         private readonly object _sync;
-        private readonly FileSystemWatcher _watchFile;
+        private FileSystemWatcher _watchFile;
         private bool _readingInprogress;
         private DateTime lastWriteTime = DateTime.MinValue;
         private readonly AnalogyLogMessageCustomEqualityComparer _customEqualityComparer;
         public FilePoolingManager(string fileName, IAnalogyOfflineDataProvider offlineDataProvider)
         {
             _sync = new object();
-            _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer();
-            _customEqualityComparer.CompareID = false;
+            _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer { CompareID = false };
             _cancellationTokenSource = new CancellationTokenSource();
             OfflineDataProvider = offlineDataProvider;
             _messages = new List<AnalogyLogMessage>();
             FileName = fileName;
             FileProcessor = new FileProcessor(this);
-            _watchFile = new FileSystemWatcher
-            {
-                Path = Path.GetDirectoryName(fileName),
-                Filter = Path.GetFileName(fileName)
-            };
-            _watchFile.Changed += WatchFile_Changed;
-            _watchFile.Deleted += WatchFile_Deleted;
-            _watchFile.Renamed += WatchFile_Renamed;
-            _watchFile.Error += WatchFile_Error;
+
         }
 
 
         public Task Init()
         {
+            _watchFile = new FileSystemWatcher
+            {
+                Path = Path.GetDirectoryName(FileName),
+                Filter = Path.GetFileName(FileName)
+            };
+            _watchFile.Changed += WatchFile_Changed;
+            _watchFile.Deleted += WatchFile_Deleted;
+            _watchFile.Renamed += WatchFile_Renamed;
+            _watchFile.Error += WatchFile_Error;
             _watchFile.EnableRaisingEvents = true;
+            AnalogyLogMessage m = new AnalogyLogMessage
+            {
+                Text = $"Start monitoring file {FileName}.",
+                FileName = FileName,
+                Level = AnalogyLogLevel.AnalogyInformation,
+                Category = "",
+                Source = "Analogy",
+                Class = AnalogyLogClass.General,
+                Date = DateTime.Now
+            };
+            OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
             return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
         }
 
@@ -98,26 +109,30 @@ namespace Analogy.Managers
                 FileName = FileName,
                 Level = AnalogyLogLevel.Critical,
                 Category = "",
+                Source = "Analogy",
                 Class = AnalogyLogClass.General,
                 Date = DateTime.Now
             };
             OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
         }
 
-        private void WatchFile_Renamed(object sender, RenamedEventArgs e)
+        private async void WatchFile_Renamed(object sender, RenamedEventArgs e)
         {
             _watchFile.EnableRaisingEvents = false;
             AnalogyLogMessage m = new AnalogyLogMessage
             {
-                Text = $"{FileName} has changed to {e.OldName}. Stopping monitoring",
+                Text = $"{FileName} has changed to {e.FullPath} from {e.OldName}. restarting monitoring",
                 FileName = FileName,
                 Level = AnalogyLogLevel.Warning,
                 Category = "",
+                Source = "Analogy",
                 Class = AnalogyLogClass.General,
                 Date = DateTime.Now
             };
             _watchFile.Dispose();
             OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
+            await Init();
+
         }
 
         private void WatchFile_Deleted(object sender, FileSystemEventArgs e)
