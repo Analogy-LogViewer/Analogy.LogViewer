@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Analogy.Properties
 {
 
@@ -696,6 +698,36 @@ namespace Analogy.Properties
             set
             {
                 this["DateTimePattern"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public DateTime LastUpdate
+        {
+            get
+            {
+                return ((DateTime)(this["LastUpdate"]));
+            }
+            set
+            {
+                this["LastUpdate"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UpdateMode
+        {
+            get
+            {
+                return ((int)(this["UpdateMode"]));
+            }
+            set
+            {
+                this["UpdateMode"] = value;
             }
         }
     }

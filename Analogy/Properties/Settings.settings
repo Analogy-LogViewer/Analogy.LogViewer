@@ -137,5 +137,11 @@
     <Setting Name="DateTimePattern" Type="System.String" Scope="User">
       <Value Profile="(Default)">yyyy.MM.dd HH:mm:ss.ff</Value>
     </Setting>
+    <Setting Name="LastUpdate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UpdateMode" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

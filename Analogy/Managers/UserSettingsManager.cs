@@ -76,6 +76,8 @@ namespace Analogy
         public string AnalogyIcon { get; set; }
         public string LogGridFileName => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "AnalogyGridlayout.xml");
         public string DateTimePattern { get; set; }
+        public UpdateMode UpdateMode { get; set; }
+        public DateTime LastUpdate { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -136,6 +138,22 @@ namespace Analogy
             NumberOfLastSearches = Settings.Default.NumberOfLastSearches;
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
             SingleInstance = Settings.Default.SingleInstance;
+            LastUpdate = Settings.Default.LastUpdate;
+            switch (Settings.Default.UpdateMode)
+            {
+                case 0:
+                    UpdateMode = UpdateMode.Never;
+                    break;
+                case 1:
+                    UpdateMode = UpdateMode.EachStartup;
+                    break;
+                case 2:
+                    UpdateMode = UpdateMode.OnceAWeek;
+                    break;
+                case 3:
+                    UpdateMode = UpdateMode.OnceAMonth;
+                    break;
+            }
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -200,6 +218,8 @@ namespace Analogy
             Settings.Default.LastSearchesExclude = JsonConvert.SerializeObject(LastSearchesExclude.Take(NumberOfLastSearches).ToList());
             Settings.Default.AdditionalProbingLocations = JsonConvert.SerializeObject(AdditionalProbingLocations);
             Settings.Default.SingleInstance = SingleInstance;
+            Settings.Default.LastUpdate = LastUpdate;
+            Settings.Default.UpdateMode = (int)UpdateMode;
             Settings.Default.Save();
 
         }
