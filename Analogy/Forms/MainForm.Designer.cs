@@ -99,6 +99,7 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.bbtnCombineOpenLogs = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -180,10 +181,11 @@
             this.bbtnDebugLog,
             this.bbtnSettingsApplication,
             this.bbtnStar,
-            this.bbtnUpdates});
+            this.bbtnUpdates,
+            this.bbtnCombineOpenLogs});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 77;
+            this.ribbonControlMain.MaxItemId = 78;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -392,6 +394,7 @@
             this.bbsItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbsItem.ImageOptions.Image")));
             this.bbsItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbsItem.ImageOptions.LargeImage")));
             this.bbsItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnCombineOpenLogs),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
@@ -756,6 +759,12 @@
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
+            // bbtnCombineOpenLogs
+            // 
+            this.bbtnCombineOpenLogs.Caption = "Combine open logs";
+            this.bbtnCombineOpenLogs.Id = 77;
+            this.bbtnCombineOpenLogs.Name = "bbtnCombineOpenLogs";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -853,5 +862,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnSettingsApplication;
         private DevExpress.XtraBars.BarButtonItem bbtnStar;
         private DevExpress.XtraBars.BarButtonItem bbtnUpdates;
+        private DevExpress.XtraBars.BarButtonItem bbtnCombineOpenLogs;
     }
 }

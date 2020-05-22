@@ -103,8 +103,8 @@ namespace Analogy
         private CancellationToken filterToken;
 
         private int TotalPages => PagingManager.TotalPages;
-        private IAnalogyDataProvider DataProvider { get; set; }
-        private IAnalogyOfflineDataProvider FileDataProvider { get; set; }
+        public IAnalogyDataProvider DataProvider { get; set; }
+        public IAnalogyOfflineDataProvider FileDataProvider { get; set; }
         private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         public GridView LogGrid
         {
@@ -2033,7 +2033,7 @@ namespace Analogy
             if (!msg.Any()) return;
             var source = GetFilteredDataTable().Rows[0]?["DataProvider"]?.ToString();
             if (source == null) return;
-            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source);
+            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -2172,7 +2172,7 @@ namespace Analogy
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);

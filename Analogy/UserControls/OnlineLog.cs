@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using Analogy.Types;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Types;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy
@@ -20,7 +18,7 @@ namespace Analogy
         public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime)
         {
             InitializeComponent();
-            ucLogs1.SetFileDataSource(realTime,realTime.FileOperationsHandler);
+            ucLogs1.SetFileDataSource(realTime, realTime.FileOperationsHandler);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -83,7 +81,7 @@ namespace Analogy
         {
             if (listBoxClearHistory.SelectedItem == null) return;
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
-            XtraFormLogGrid grid = new XtraFormLogGrid(messages, Environment.MachineName);
+            XtraFormLogGrid grid = new XtraFormLogGrid(messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
         }
     }

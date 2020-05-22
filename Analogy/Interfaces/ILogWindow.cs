@@ -2,7 +2,7 @@
 
 namespace Analogy.Interfaces
 {
-    internal interface ILogWindow
+    public interface ILogWindow
     {
 
         List<AnalogyLogMessage> GetMessages();

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Analogy.DataSources;
+﻿using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Managers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Analogy
 {
@@ -13,24 +13,36 @@ namespace Analogy
         public XtraFormLogGrid()
         {
             InitializeComponent();
+            _messages = new List<AnalogyLogMessage>();
+            _dataSource = "Analogy";
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
+            ucLogs1.SetFileDataSource(analogyDataProvider, null);
+        }
+        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource) : this()
+        {
+            _messages = messages;
+            _dataSource = dataSource;
         }
 
-        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource,string processOrModule=null) : this()
+
+        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider fileProvider = null, string processOrModule = null)
         {
+            InitializeComponent();
             _messages = messages;
             _dataSource = dataSource;
             if (!string.IsNullOrEmpty(processOrModule))
                 ucLogs1.FilterResults(processOrModule);
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
-            ucLogs1.SetFileDataSource(analogyDataProvider, null);
+            ucLogs1.SetFileDataSource(dataProvider, fileProvider);
+
+
         }
 
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
             Icon = UserSettingsManager.UserSettings.GetIcon();
             if (DesignMode) return;
-
+            if (_messages == null || !_messages.Any()) return;
             ucLogs1.AppendMessages(_messages, _dataSource);
         }
 
