@@ -1258,7 +1258,7 @@ namespace Analogy
             }));
         }
 
-        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading, bool forceNoCaching = false)
+        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading, bool IsReloadSoForceNoCaching = false)
         {
             LoadedFiles = fileNames;
             bbtnReload.Visibility = BarItemVisibility.Always;
@@ -1283,7 +1283,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename, token, forceNoCaching);
+                await fileProcessor.Process(FileDataProvider, filename, token, IsReloadSoForceNoCaching);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)

@@ -24,11 +24,11 @@ namespace Analogy
 
         }
 
-        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider, string filename, CancellationToken token, bool forceNoCache = false)
+        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider, string filename, CancellationToken token, bool isReload = false)
         {
             FileName = filename;
             if (string.IsNullOrEmpty(FileName)) return new List<AnalogyLogMessage>();
-            if ((!forceNoCache || !DataWindow.ForceNoFileCaching) && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
+            if ((!isReload || !DataWindow.ForceNoFileCaching) && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
