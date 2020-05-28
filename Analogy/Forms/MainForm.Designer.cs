@@ -92,6 +92,7 @@
             this.bbtnSettingsApplication = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnCompactMemory = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -101,7 +102,7 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.bbtnCompactMemory = new DevExpress.XtraBars.BarButtonItem();
+            this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -699,6 +700,15 @@
             this.bbtnCheckUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCheckUpdates.ImageOptions.LargeImage")));
             this.bbtnCheckUpdates.Name = "bbtnCheckUpdates";
             // 
+            // bbtnCompactMemory
+            // 
+            this.bbtnCompactMemory.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbtnCompactMemory.Caption = "Compact Memory";
+            this.bbtnCompactMemory.Id = 79;
+            this.bbtnCompactMemory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnCompactMemory.ImageOptions.Image")));
+            this.bbtnCompactMemory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCompactMemory.ImageOptions.LargeImage")));
+            this.bbtnCompactMemory.Name = "bbtnCompactMemory";
+            // 
             // ribbonPageThemes
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -781,14 +791,11 @@
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
-            // bbtnCompactMemory
+            // notifyIconAnalogy
             // 
-            this.bbtnCompactMemory.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bbtnCompactMemory.Caption = "Compact Memory";
-            this.bbtnCompactMemory.Id = 79;
-            this.bbtnCompactMemory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnClearCache.ImageOptions.Image")));
-            this.bbtnCompactMemory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnClearCache.ImageOptions.LargeImage")));
-            this.bbtnCompactMemory.Name = "bbtnCompactMemory";
+            this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
+            this.notifyIconAnalogy.Text = "Analogy";
+            this.notifyIconAnalogy.Visible = true;
             // 
             // MainForm
             // 
@@ -890,5 +897,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnCombineOpenLogs;
         private DevExpress.XtraBars.BarButtonItem bbtnCheckUpdates;
         private DevExpress.XtraBars.BarButtonItem bbtnCompactMemory;
+        private System.Windows.Forms.NotifyIcon notifyIconAnalogy;
     }
 }

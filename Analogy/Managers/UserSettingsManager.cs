@@ -80,7 +80,9 @@ namespace Analogy
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
         public GithubReleaseEntry LastVersionChecked { get; set; }
-        public string GitHubToken { get; } = Environment.GetEnvironmentVariable("GitHubNotifier_Token");
+        public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token");
+        public bool MinimizedToTrayBar { get; set; }
+
         public UserSettingsManager()
         {
             Load();
@@ -158,6 +160,8 @@ namespace Analogy
                     UpdateMode = UpdateMode.OnceAMonth;
                     break;
             }
+
+            MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -225,6 +229,7 @@ namespace Analogy
             Settings.Default.LastUpdate = LastUpdate;
             Settings.Default.UpdateMode = (int)UpdateMode;
             Settings.Default.LastVersionChecked = JsonConvert.SerializeObject(LastVersionChecked);
+            Settings.Default.MinimizedToTrayBar = MinimizedToTrayBar;
             Settings.Default.Save();
 
         }

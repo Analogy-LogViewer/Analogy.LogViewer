@@ -190,6 +190,7 @@ namespace Analogy
             LoadColorSettings();
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
+            tsTraybar.IsOn = Settings.MinimizedToTrayBar;
         }
         private void SaveSetting()
         {
@@ -227,6 +228,7 @@ namespace Analogy
             Settings.AnalogyIcon = rbtnLightIconColor.Checked ? "Light" : "Dark";
             var options = typeof(UpdateMode).GetDisplayValues();
             UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode), options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
+            Settings.MinimizedToTrayBar = tsTraybar.IsOn;
             Settings.Save();
         }
 

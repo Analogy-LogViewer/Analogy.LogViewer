@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Allows application to minimized to the tray bar instead of closing #174",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 28)),
                 new AnalogyChangeLog("Add Cache cleaner #175",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 28)),
                 new AnalogyChangeLog("On reload of files add option to color mark the new messages #170",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 28)),
                 new AnalogyChangeLog("Add auto update/version checker #165",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),

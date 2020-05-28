@@ -51,6 +51,7 @@ namespace Analogy
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
         private DockPanel currentContextPage;
+        private bool preventExit = false;
         private UserSettingsManager settings => UserSettingsManager.UserSettings;
         private bool Initialized { get; set; }
 
@@ -93,6 +94,7 @@ namespace Analogy
 
             Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
             Icon = settings.GetIcon();
+            notifyIconAnalogy.Visible = preventExit = settings.MinimizedToTrayBar;
             var logger = AnalogyLogManager.Instance.Init();
             var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
             await Task.WhenAll(logger, factories);
@@ -177,8 +179,6 @@ namespace Analogy
                     break;
                 }
             }
-
-
             bbtnCombineOpenLogs.ItemClick += (s, e) =>
             {
                 var items = dockManager1.Panels.Select(p => (p.Text, GetLogWindows(p))).Where(l => l.Item2 != null)
@@ -188,6 +188,13 @@ namespace Analogy
             };
             bbtnCheckUpdates.ItemClick += (s, e) => OpenUpdateWindow();
             bbtnCompactMemory.ItemClick += (_, __) => FileProcessingManager.Instance.Reset();
+            notifyIconAnalogy.DoubleClick += (_, __) =>
+            {
+                if (Visible)
+                    Hide();
+                else
+                    Show();
+            };
         }
 
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
@@ -337,10 +344,27 @@ namespace Analogy
 
         private void AnalogyMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            settings.UpdateRunningTime();
-            settings.Save();
-            AnalogyLogManager.Instance.SaveFile();
-            BookmarkPersistManager.Instance.SaveFile();
+            if (preventExit && e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+                var popupNotifier = new NotificationWindow.PopupNotifier
+                {
+                    TitleText = "Analogy Log Viewer",
+                    ContentText = "Still here... Double click the icon to restore",
+                    IsRightToLeft = false,
+                    Image = Properties.Resources.Analogy_Icon2
+
+                };
+                popupNotifier.Popup();
+            }
+            else
+            {
+                settings.UpdateRunningTime();
+                settings.Save();
+                AnalogyLogManager.Instance.SaveFile();
+                BookmarkPersistManager.Instance.SaveFile();
+            }
         }
 
         private void bbtnItemChangeLog_ItemClick(object sender, ItemClickEventArgs e)
@@ -363,6 +387,8 @@ namespace Analogy
 
         private void bbtnItemExit_ItemClick(object sender, ItemClickEventArgs e)
         {
+            preventExit = false;
+            Close();
             Application.Exit();
         }
 
@@ -1507,7 +1533,7 @@ namespace Analogy
             update.Show(this);
         }
 
-       
+
     }
 }
 
