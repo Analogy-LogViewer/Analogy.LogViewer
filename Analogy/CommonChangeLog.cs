@@ -10,7 +10,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-
+                new AnalogyChangeLog("Add Cache cleaner #175",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 28)),
+                new AnalogyChangeLog("On reload of files add option to color mark the new messages #170",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 28)),
                 new AnalogyChangeLog("Add auto update/version checker #165",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),
                 new AnalogyChangeLog("combine opened logs into one. #152",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 22)),
             new AnalogyChangeLog("Add Reload option for loaded logs files #169",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 14)),

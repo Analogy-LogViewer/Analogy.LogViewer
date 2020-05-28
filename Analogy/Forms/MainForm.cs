@@ -187,6 +187,7 @@ namespace Analogy
                 openLogs.Show(this);
             };
             bbtnCheckUpdates.ItemClick += (s, e) => OpenUpdateWindow();
+            bbtnCompactMemory.ItemClick += (_, __) => FileProcessingManager.Instance.Reset();
         }
 
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
@@ -1505,6 +1506,8 @@ namespace Analogy
             UpdateForm update = new UpdateForm();
             update.Show(this);
         }
+
+       
     }
 }
 
