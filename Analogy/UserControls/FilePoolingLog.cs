@@ -22,9 +22,10 @@ namespace Analogy
         {
             InitializeComponent();
             FileName = fileName;
-            PoolingManager = new FilePoolingManager(FileName, offlineDataProvider);
+            PoolingManager = new FilePoolingManager(FileName,ucLogs1, offlineDataProvider);
             ucLogs1.SetFileDataSource(offlineDataProvider, offlineDataProvider);
             ucLogs1.EnableFileReload(FileName);
+          
             PoolingManager.OnNewMessages += (s, data) =>
             {
                 AppendMessages(data.messages, data.dataSource);

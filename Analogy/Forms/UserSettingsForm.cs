@@ -107,7 +107,6 @@ namespace Analogy
         }
         private void LoadSettings()
         {
-
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
@@ -189,8 +188,6 @@ namespace Analogy
                 rbtnDarkIconColor.Checked = true;
             }
             LoadColorSettings();
-
-
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
         }
@@ -207,7 +204,9 @@ namespace Analogy
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Critical, cpeLogLevelCritical.Color);
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.AnalogyInformation, cpeLogLevelAnalogyInformation.Color);
             Settings.ColorSettings.SetHighlightColor(cpeHighlightColor.Color);
-
+            Settings.ColorSettings.SetNewMessagesColor(cpeNewMessagesColor.Color);
+            Settings.ColorSettings.EnableNewMessagesColor = ceNewMessagesColor.Checked;
+            Settings.ColorSettings.OverrideLogLevelColor = ceOverrideLogLevelColor.Checked;
             List<Guid> order = (from FactoryCheckItem itm in chkLstDataProviderStatus.Items select (itm.ID)).ToList();
             var checkedItem = chkLstDataProviderStatus.CheckedItems.Cast<FactoryCheckItem>().ToList();
             foreach (Guid guid in order)
@@ -242,9 +241,11 @@ namespace Analogy
             cpeLogLevelWarning.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Warning);
             cpeLogLevelError.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Error);
             cpeLogLevelCritical.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Critical);
-            cpeLogLevelAnalogyInformation.Color =
-                Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.AnalogyInformation);
+            cpeLogLevelAnalogyInformation.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.AnalogyInformation);
             cpeHighlightColor.Color = Settings.ColorSettings.GetHighlightColor();
+            cpeNewMessagesColor.Color = Settings.ColorSettings.GetNewMessagesColor();
+            ceNewMessagesColor.Checked = Settings.ColorSettings.EnableNewMessagesColor;
+            ceOverrideLogLevelColor.Checked = Settings.ColorSettings.OverrideLogLevelColor;
         }
 
 
@@ -623,6 +624,12 @@ namespace Analogy
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
             Settings.DateTimePattern = teDateTimeFormat.Text;
+        }
+
+        private void ceNewMessagesColor_CheckedChanged(object sender, EventArgs e)
+        {
+            cpeNewMessagesColor.Enabled = ceNewMessagesColor.Checked;
+
         }
     }
 }

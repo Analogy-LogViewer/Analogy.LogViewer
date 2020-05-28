@@ -23,10 +23,12 @@ namespace Analogy.Managers
         private FileSystemWatcher _watchFile;
         private bool _readingInprogress;
         private DateTime lastWriteTime = DateTime.MinValue;
+        private UCLogs LogUI;
         private readonly AnalogyLogMessageCustomEqualityComparer _customEqualityComparer;
-        public FilePoolingManager(string fileName, IAnalogyOfflineDataProvider offlineDataProvider)
+        public FilePoolingManager(string fileName, UCLogs logUI, IAnalogyOfflineDataProvider offlineDataProvider)
         {
             _sync = new object();
+            LogUI = logUI;
             _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer { CompareID = false };
             _cancellationTokenSource = new CancellationTokenSource();
             OfflineDataProvider = offlineDataProvider;
@@ -168,6 +170,7 @@ namespace Analogy.Managers
             {
                 if (e.ChangeType == WatcherChangeTypes.Changed)
                 {
+                    LogUI.SetReloadColorDate(FileProcessor.lastNewestMessage);
                     await FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
                 }
             }

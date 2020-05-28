@@ -10,6 +10,8 @@ namespace Analogy
 {
     public class FileProcessor
     {
+        public event EventHandler<EventArgs> OnFileReadingFinished;
+        public DateTime lastNewestMessage;
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
@@ -61,6 +63,8 @@ namespace Analogy
                     Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
                 var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false)).ToList();
                 FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
+                lastNewestMessage = messages.Select(m => m.Date).Max();
+                OnFileReadingFinished?.Invoke(this, EventArgs.Empty);
                 if (LogWindow != null)
                     Interlocked.Decrement(ref LogWindow.fileLoadingCount);
                 return messages;
