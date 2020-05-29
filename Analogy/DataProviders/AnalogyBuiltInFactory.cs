@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Analogy.Forms;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using Analogy.LogLoaders;
+using Analogy.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.DataProviders;
-using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
-using Analogy.LogLoaders;
-using Analogy.Properties;
 
 namespace Analogy.DataSources
 {
@@ -19,7 +19,7 @@ namespace Analogy.DataSources
         public Guid FactoryId { get; } = AnalogyGuid;
         public string Title { get; } = "Analogy Logs Formats";
         public IEnumerable<IAnalogyChangeLog> ChangeLog => CommonChangeLog.GetChangeLog();
-        public IEnumerable<string> Contributors { get; } = new List<string> {"Lior Banai"};
+        public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
         public string About { get; } = "Analogy Built-in Data Source";
 
         public AnalogyBuiltInFactory()
@@ -39,7 +39,7 @@ namespace Analogy.DataSources
             var adp = new AnalogyOfflineDataProvider();
             builtInItems.Add(adp);
             adp.InitializeDataProviderAsync(AnalogyLogger.Instance);
-            DataProviders= builtInItems;
+            DataProviders = builtInItems;
         }
     }
 
@@ -143,7 +143,7 @@ namespace Analogy.DataSources
 
         public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
             => (Color.Empty, Color.Empty);
-        
+
 
         private static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
@@ -176,10 +176,10 @@ namespace Analogy.DataSources
         public Guid FactoryId { get; } = AnalogyBuiltInFactory.AnalogyGuid;
         public string Title { get; } = "Analogy Built-In tools";
         public IEnumerable<IAnalogyCustomAction> Actions { get; }
-     
+
         public AnalogyCustomActionFactory()
         {
-            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction()/*,new AnalogyDataProvidersCustomAction()*/ };
+            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction(), new AnalogyUnixTimeAction() };
         }
     }
 
@@ -195,5 +195,17 @@ namespace Analogy.DataSources
         public string Title { get; } = "Process Identifier";
 
     }
- }
+    public class AnalogyUnixTimeAction : IAnalogyCustomAction
+    {
+        public Action Action => () =>
+        {
+            var p = new UnixTimeConverter();
+            p.Show();
+        };
+        public Guid ID { get; } = new Guid("89173452-9C8E-4946-8C39-CAF2C8B6522D");
+        public Image Image { get; } = Resources.ChartsShowLegend_32x32;
+        public string Title { get; } = "Unix Time Converter";
+
+    }
+}
 
