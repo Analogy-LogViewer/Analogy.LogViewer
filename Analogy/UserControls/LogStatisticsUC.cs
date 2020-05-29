@@ -14,6 +14,7 @@ namespace Philips.Analogy
         private PieChartUC GlobalPie;
         private PieChartUC SourcePie;
         private PieChartUC ModulePie;
+        private PieChartUC FreeTextPie;
         public LogStatistics FreeTextStatistics { get; set; }
 
         public LogStatisticsUC()
@@ -137,6 +138,23 @@ namespace Philips.Analogy
                     dgvFreeText.Rows.Add(statistics.Name, statistics.Value);
                 }
             }
+
+            FreeTextChart();
+        }
+
+        private void FreeTextChart()
+        {
+            if (FreeTextPie == null)
+            {
+                FreeTextPie = new PieChartUC();
+                spltCFreeText.Panel2.Controls.Add(FreeTextPie);
+                FreeTextPie.Dock = DockStyle.Fill;
+                FreeTextPie.SetDataSources("Free Text", Statistics.CalculateTextStatistics());
+            }
+            else
+            {
+                FreeTextPie.SetDataSources("Free Text", Statistics.CalculateTextStatistics());
+            }
         }
 
         private void chklistItems_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
@@ -147,7 +165,7 @@ namespace Philips.Analogy
             {
                 Statistics.AddText(item);
             }
-
+            FreeTextChart();
         }
     }
 }

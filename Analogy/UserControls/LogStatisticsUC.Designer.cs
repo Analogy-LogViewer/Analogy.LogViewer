@@ -46,7 +46,7 @@
             this.chklistItems = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.spltCFreeText = new System.Windows.Forms.SplitContainer();
             this.dgvFreeText = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,9 +71,9 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltCFreeText)).BeginInit();
+            this.spltCFreeText.Panel1.SuspendLayout();
+            this.spltCFreeText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFreeText)).BeginInit();
             this.SuspendLayout();
             // 
@@ -226,7 +226,7 @@
             // 
             // tabPageFreeText
             // 
-            this.tabPageFreeText.Controls.Add(this.splitContainer1);
+            this.tabPageFreeText.Controls.Add(this.spltCFreeText);
             this.tabPageFreeText.Controls.Add(this.panelControl1);
             this.tabPageFreeText.Location = new System.Drawing.Point(4, 25);
             this.tabPageFreeText.Name = "tabPageFreeText";
@@ -275,10 +275,10 @@
             // 
             this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.Location = new System.Drawing.Point(328, 6);
+            this.textEdit1.Location = new System.Drawing.Point(149, 6);
             this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(565, 22);
+            this.textEdit1.Size = new System.Drawing.Size(744, 22);
             this.textEdit1.TabIndex = 5;
             // 
             // labelControl1
@@ -286,23 +286,23 @@
             this.labelControl1.Location = new System.Drawing.Point(5, 9);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(307, 16);
+            this.labelControl1.Size = new System.Drawing.Size(52, 16);
             this.labelControl1.TabIndex = 4;
-            this.labelControl1.Text = "Filter messages (add empty for non filtering plotting):";
+            this.labelControl1.Text = "Add text:";
             // 
-            // splitContainer1
+            // spltCFreeText
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 141);
-            this.splitContainer1.Name = "splitContainer1";
+            this.spltCFreeText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spltCFreeText.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spltCFreeText.Location = new System.Drawing.Point(3, 141);
+            this.spltCFreeText.Name = "spltCFreeText";
             // 
-            // splitContainer1.Panel1
+            // spltCFreeText.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dgvFreeText);
-            this.splitContainer1.Size = new System.Drawing.Size(962, 273);
-            this.splitContainer1.SplitterDistance = 357;
-            this.splitContainer1.TabIndex = 1;
+            this.spltCFreeText.Panel1.Controls.Add(this.dgvFreeText);
+            this.spltCFreeText.Size = new System.Drawing.Size(962, 273);
+            this.spltCFreeText.SplitterDistance = 357;
+            this.spltCFreeText.TabIndex = 1;
             // 
             // dgvFreeText
             // 
@@ -365,9 +365,9 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.spltCFreeText.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltCFreeText)).EndInit();
+            this.spltCFreeText.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFreeText)).EndInit();
             this.ResumeLayout(false);
 
@@ -392,7 +392,7 @@
         private DevExpress.XtraEditors.CheckedListBoxControl chklistItems;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer spltCFreeText;
         private System.Windows.Forms.DataGridView dgvFreeText;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
