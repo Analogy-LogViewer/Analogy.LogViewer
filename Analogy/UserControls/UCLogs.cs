@@ -128,6 +128,11 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
+            logGrid.EndSorting += (s, e) =>
+            {
+                var sortOrder = gridColumnDate.SortOrder;
+                Settings.DefaultDescendOrder = sortOrder == ColumnSortOrder.Descending;
+            };
             bBtnFullGrid.ItemClick += (s, e) =>
             {
                 FullModeEnabled = !FullModeEnabled;
@@ -399,7 +404,8 @@ namespace Analogy
             Tip = new ToolTip();
             Tip.SetToolTip(pboxInfo, "Use & or + for AND operations. Use | for OR operations");
             Tip.SetToolTip(pboxInfoExclude, "Use , to separate values. to exclude source or module prefix it with -");
-
+            gridColumnDate.SortOrder =
+                Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
             pnlFilteringLeft.Dock = DockStyle.Fill;
             txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;

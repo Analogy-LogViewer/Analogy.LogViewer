@@ -78,11 +78,23 @@ namespace Analogy
             var dataProviders = factoryContainers.Where(f =>
                     f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
-            var initTasks = dataProviders.Select(d => d.InitializeDataProviderAsync(AnalogyLogger.Instance)).ToList();
-            var completion = Task.WhenAll(initTasks);
+            var initTasks = new List<Task>();
+            foreach (var provider in dataProviders)
+            {
+                try
+                {
+                    initTasks.Add(provider.InitializeDataProviderAsync(AnalogyLogger.Instance));
+
+                }
+                catch (Exception e)
+                {
+                    AnalogyLogger.Instance.LogException(e, "AddExternalDataSources", $"Error during Initialization of {provider.OptionalTitle}");
+
+                }
+            }
             try
             {
-                await completion;
+                await Task.WhenAll(initTasks); ;
             }
             catch (AggregateException ex)
             {
