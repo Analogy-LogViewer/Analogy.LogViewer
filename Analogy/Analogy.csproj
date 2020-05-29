@@ -158,39 +158,27 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Forms\AboutDataSourceBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\AboutDataSourceBox.cs" />
     <Compile Update="Forms\AboutDataSourceBox.Designer.cs">
       <DependentUpon>AboutDataSourceBox.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\AnalogyAboutBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\AnalogyAboutBox.cs" />
     <Compile Update="Forms\AnalogyAboutBox.Designer.cs">
       <DependentUpon>AnalogyAboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\AnalogyExclude.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\AnalogyExclude.cs" />
     <Compile Update="Forms\AnalogyExclude.Designer.cs">
       <DependentUpon>AnalogyExclude.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\AnalogyExcludeMessage.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\AnalogyExcludeMessage.cs" />
     <Compile Update="Forms\AnalogyExcludeMessage.Designer.cs">
       <DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\AnalogyOTAClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\AnalogyOTAClient.cs" />
     <Compile Update="Forms\AnalogyOTAClient.Designer.cs">
       <DependentUpon>AnalogyOTAClient.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\UserSettingsDataProvidersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\UserSettingsDataProvidersForm.cs" />
     <Compile Update="Forms\UserSettingsDataProvidersForm.Designer.cs">
       <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
     </Compile>
@@ -218,9 +206,7 @@
     <Compile Update="Forms\AnalogyOTAForm.Designer.cs">
       <DependentUpon>AnalogyOTAForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\ChangeLog.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\ChangeLog.cs" />
     <Compile Update="Forms\ChangeLog.Designer.cs">
       <DependentUpon>ChangeLog.cs</DependentUpon>
     </Compile>
@@ -236,9 +222,7 @@
     <Compile Update="UserControls\ExtensionsUC.Designer.cs">
       <DependentUpon>ExtensionsUC.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\FileSystemUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\FileSystemUC.cs" />
     <Compile Update="UserControls\FileSystemUC.Designer.cs">
       <DependentUpon>FileSystemUC.cs</DependentUpon>
     </Compile>
@@ -262,9 +246,7 @@
     <Compile Update="UserControls\BookmarkLog.Designer.cs">
       <DependentUpon>BookmarkLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\LocalLogFilesUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\LocalLogFilesUC.cs" />
     <Compile Update="UserControls\LocalLogFilesUC.Designer.cs">
       <DependentUpon>LocalLogFilesUC.cs</DependentUpon>
     </Compile>
@@ -272,9 +254,7 @@
     <Compile Update="UserControls\OnlineLog.Designer.cs">
       <DependentUpon>OnlineLog.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\FilesOperationsUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\FilesOperationsUC.cs" />
     <Compile Update="UserControls\FilesOperationsUC.Designer.cs">
       <DependentUpon>FilesOperationsUC.cs</DependentUpon>
     </Compile>
@@ -292,15 +272,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Forms\RibbonFormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\RibbonFormMain.cs" />
     <Compile Update="Forms\RibbonFormMain.Designer.cs">
       <DependentUpon>RibbonFormMain.cs</DependentUpon>
     </Compile>
-    <Compile Update="Forms\SearchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\SearchForm.cs" />
     <Compile Update="Forms\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
@@ -316,9 +292,7 @@
     <Compile Update="Forms\FileComparerForm.Designer.cs">
       <DependentUpon>FileComparerForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\LogsComparerUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="UserControls\LogsComparerUC.cs" />
     <Compile Update="UserControls\LogsComparerUC.Designer.cs">
       <DependentUpon>LogsComparerUC.cs</DependentUpon>
     </Compile>

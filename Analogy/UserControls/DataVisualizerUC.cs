@@ -1,10 +1,10 @@
-﻿using DevExpress.XtraCharts;
+﻿using Analogy.Interfaces;
+using DevExpress.XtraCharts;
 using DevExpress.XtraEditors.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -32,7 +32,7 @@ namespace Analogy
 
         private void DataVisualizerUC_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Plot()
@@ -96,7 +96,7 @@ namespace Analogy
 
             chartControlOnOff.SeriesTemplate.ArgumentScaleType = ScaleType.DateTime;
             chartControlOnOff.SeriesTemplate.ChangeView(ViewType.Line);
-            XYDiagram diagram = (XYDiagram) chartControlOnOff.Diagram;
+            XYDiagram diagram = (XYDiagram)chartControlOnOff.Diagram;
             diagram.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Millisecond;
             diagram.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Hour;
             diagram.AxisX.Label.DateTimeOptions.Format = DateTimeFormat.ShortTime;
@@ -106,10 +106,10 @@ namespace Analogy
             chartControlFrequency.DataSource = CreateTable(frequencyCount);
             chartControlFrequency.SeriesDataMember = "Name";
             chartControlFrequency.SeriesTemplate.ArgumentDataMember = "Date";
-            chartControlFrequency.SeriesTemplate.ValueDataMembers.AddRange(new string[] {"ValueX"});
+            chartControlFrequency.SeriesTemplate.ValueDataMembers.AddRange(new string[] { "ValueX" });
             chartControlFrequency.SeriesTemplate.ArgumentScaleType = ScaleType.DateTime;
             chartControlFrequency.SeriesTemplate.ChangeView(ViewType.Bar);
-            XYDiagram diagram2 = (XYDiagram) chartControlFrequency.Diagram;
+            XYDiagram diagram2 = (XYDiagram)chartControlFrequency.Diagram;
             diagram2.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Millisecond;
             diagram2.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Hour;
             diagram2.AxisX.Label.DateTimeOptions.Format = DateTimeFormat.ShortTime;
@@ -121,7 +121,7 @@ namespace Analogy
             chartTimeDistribution.SeriesTemplate.ValueDataMembers.AddRange("ValueY");
             chartTimeDistribution.SeriesTemplate.ArgumentScaleType = ScaleType.DateTime;
             chartTimeDistribution.SeriesTemplate.ChangeView(ViewType.Point);
-            XYDiagram diagram3 = (XYDiagram) chartTimeDistribution.Diagram;
+            XYDiagram diagram3 = (XYDiagram)chartTimeDistribution.Diagram;
             diagram3.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Millisecond;
             diagram3.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Hour;
             diagram3.AxisX.Label.DateTimeOptions.Format = DateTimeFormat.LongDate;
@@ -165,7 +165,7 @@ namespace Analogy
                 foreach (AnalogyLogMessage val in td.Value)
                 {
                     tbl.Rows.Add(item, val.Date, val.Date.Ticks,
-                        val.Date.Hour + (float) val.Date.Minute / 60 + (float) val.Date.Second / 60 / 60);
+                        val.Date.Hour + (float)val.Date.Minute / 60 + (float)val.Date.Second / 60 / 60);
                 }
 
             }
