@@ -92,6 +92,7 @@
             this.bbtnSettingsApplication = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnCompactMemory = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -101,6 +102,7 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -184,10 +186,11 @@
             this.bbtnStar,
             this.bbtnUpdates,
             this.bbtnCombineOpenLogs,
-            this.bbtnCheckUpdates});
+            this.bbtnCheckUpdates,
+            this.bbtnCompactMemory});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 79;
+            this.ribbonControlMain.MaxItemId = 80;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -697,6 +700,15 @@
             this.bbtnCheckUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCheckUpdates.ImageOptions.LargeImage")));
             this.bbtnCheckUpdates.Name = "bbtnCheckUpdates";
             // 
+            // bbtnCompactMemory
+            // 
+            this.bbtnCompactMemory.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbtnCompactMemory.Caption = "Compact Memory";
+            this.bbtnCompactMemory.Id = 79;
+            this.bbtnCompactMemory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnCompactMemory.ImageOptions.Image")));
+            this.bbtnCompactMemory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCompactMemory.ImageOptions.LargeImage")));
+            this.bbtnCompactMemory.Name = "bbtnCompactMemory";
+            // 
             // ribbonPageThemes
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -739,6 +751,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbiFileCaching);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiIdleMessage);
             this.ribbonStatusBar.ItemLinks.Add(this.bsiMemoryUsage);
+            this.ribbonStatusBar.ItemLinks.Add(this.bbtnCompactMemory);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
@@ -777,6 +790,12 @@
             this.documentManager1.View = this.tabbedView1;
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
+            // 
+            // notifyIconAnalogy
+            // 
+            this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
+            this.notifyIconAnalogy.Text = "Analogy";
+            this.notifyIconAnalogy.Visible = true;
             // 
             // MainForm
             // 
@@ -877,5 +896,7 @@
         private DevExpress.XtraBars.BarButtonItem bbtnUpdates;
         private DevExpress.XtraBars.BarButtonItem bbtnCombineOpenLogs;
         private DevExpress.XtraBars.BarButtonItem bbtnCheckUpdates;
+        private DevExpress.XtraBars.BarButtonItem bbtnCompactMemory;
+        private System.Windows.Forms.NotifyIcon notifyIconAnalogy;
     }
 }

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Interfaces;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -9,7 +10,7 @@ namespace Analogy
         private List<AnalogyLogMessage> Messages { get; }
         private List<string> Sources => Messages.Select(m => m.Source).Distinct().ToList();
         private List<string> Modules => Messages.Select(m => m.Module).Distinct().ToList();
-
+        private List<string> Texts = new List<string>();
         public LogStatistics(List<AnalogyLogMessage> messages)
         {
             Messages = messages;
@@ -23,6 +24,21 @@ namespace Analogy
                 CountMessages(Messages, AnalogyLogLevel.Verbose));
         }
 
+        public List<Statistics> CalculateTextStatistics()
+        {
+            var total = Messages.Count;
+            List<Statistics> items = new List<Statistics>();
+            items.Add(new Statistics("Total messages", total));
+            foreach (string text in Texts)
+            {
+                items.Add(new Statistics(text, Messages.Count(m => m.Text.Contains(text, StringComparison.InvariantCultureIgnoreCase))));
+            }
+
+            return items;
+        }
+
+        public void AddText(string text) => Texts.Add(text);
+        public void ClearTexts() => Texts.Clear();
         public IEnumerable<ItemStatistics> CalculateModulesStatistics()
         {
             foreach (var module in Modules)

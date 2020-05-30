@@ -94,6 +94,7 @@ namespace Analogy
 
         private List<string> LoadedFiles { get; set; }
         private bool NewDataExist { get; set; }
+        private DateTime reloadDateTime = DateTime.MaxValue;
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
         private DateTime diffStartTime = DateTime.MinValue;
@@ -114,7 +115,7 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
-
+            var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
             fileProcessor = new FileProcessor(this);
@@ -127,6 +128,11 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
+            logGrid.EndSorting += (s, e) =>
+            {
+                var sortOrder = gridColumnDate.SortOrder;
+                Settings.DefaultDescendOrder = sortOrder == ColumnSortOrder.Descending;
+            };
             bBtnFullGrid.ItemClick += (s, e) =>
             {
                 FullModeEnabled = !FullModeEnabled;
@@ -242,7 +248,11 @@ namespace Analogy
                 Settings.ModuleText = chkbModules.Text;
             };
 
-            bbtnReload.ItemClick += async (s, e) => { await LoadFilesAsync(LoadedFiles, true, true); };
+            bbtnReload.ItemClick += async (s, e) =>
+            {
+                reloadDateTime = fileProcessor.lastNewestMessage;
+                await LoadFilesAsync(LoadedFiles, true, true);
+            };
         }
 
 
@@ -394,7 +404,8 @@ namespace Analogy
             Tip = new ToolTip();
             Tip.SetToolTip(pboxInfo, "Use & or + for AND operations. Use | for OR operations");
             Tip.SetToolTip(pboxInfoExclude, "Use , to separate values. to exclude source or module prefix it with -");
-
+            gridColumnDate.SortOrder =
+                Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
             pnlFilteringLeft.Dock = DockStyle.Fill;
             txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -554,32 +565,36 @@ namespace Analogy
         {
             if (sender is GridView view && e.RowHandle >= 0)
             {
-                string level = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Level"]);
-                var parsed = Enum.TryParse(level, true, out AnalogyLogLevel enumLevel);
-                if (parsed)
+                IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                if (message == null) return;
+                if (!Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor && message.Date > reloadDateTime)
                 {
-                    e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(enumLevel);
-                    switch (enumLevel)
-                    {
-                        case AnalogyLogLevel.Warning:
-                        case AnalogyLogLevel.Error:
-                        case AnalogyLogLevel.Critical:
-                            if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                                e.Appearance.ForeColor = Color.Black;
-                            break;
-                        case AnalogyLogLevel.Event:
-                        case AnalogyLogLevel.Verbose:
-                        case AnalogyLogLevel.Debug:
-                        case AnalogyLogLevel.Disabled:
-                        case AnalogyLogLevel.Trace:
-                        case AnalogyLogLevel.Unknown:
-                        case AnalogyLogLevel.AnalogyInformation:
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
+                    e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
                 }
-
+                e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(message.Level);
+                switch (message.Level)
+                {
+                    case AnalogyLogLevel.Warning:
+                    case AnalogyLogLevel.Error:
+                    case AnalogyLogLevel.Critical:
+                        if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                            e.Appearance.ForeColor = Color.Black;
+                        break;
+                    case AnalogyLogLevel.Event:
+                    case AnalogyLogLevel.Verbose:
+                    case AnalogyLogLevel.Debug:
+                    case AnalogyLogLevel.Disabled:
+                    case AnalogyLogLevel.Trace:
+                    case AnalogyLogLevel.Unknown:
+                    case AnalogyLogLevel.AnalogyInformation:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor && message.Date > reloadDateTime)
+                {
+                    e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
+                }
                 string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
                 if (chkbHighlight.Checked && FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
                 {
@@ -1258,7 +1273,7 @@ namespace Analogy
             }));
         }
 
-        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading, bool forceNoCaching = false)
+        public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading, bool IsReloadSoForceNoCaching = false)
         {
             LoadedFiles = fileNames;
             bbtnReload.Visibility = BarItemVisibility.Always;
@@ -1283,7 +1298,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename, token, forceNoCaching);
+                await fileProcessor.Process(FileDataProvider, filename, token, IsReloadSoForceNoCaching);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -2307,6 +2322,8 @@ namespace Analogy
             LoadedFiles = new List<string>() { fileName };
             bbtnReload.Visibility = BarItemVisibility.Always;
         }
+
+        public void SetReloadColorDate(DateTime value) => reloadDateTime = value;
     }
 }
 

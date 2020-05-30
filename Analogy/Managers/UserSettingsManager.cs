@@ -80,7 +80,9 @@ namespace Analogy
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
         public GithubReleaseEntry LastVersionChecked { get; set; }
-        public string GitHubToken { get; } = Environment.GetEnvironmentVariable("GitHubNotifier_Token");
+        public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token");
+        public bool MinimizedToTrayBar { get; set; }
+
         public UserSettingsManager()
         {
             Load();
@@ -158,6 +160,8 @@ namespace Analogy
                     UpdateMode = UpdateMode.OnceAMonth;
                     break;
             }
+
+            MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -225,6 +229,7 @@ namespace Analogy
             Settings.Default.LastUpdate = LastUpdate;
             Settings.Default.UpdateMode = (int)UpdateMode;
             Settings.Default.LastVersionChecked = JsonConvert.SerializeObject(LastVersionChecked);
+            Settings.Default.MinimizedToTrayBar = MinimizedToTrayBar;
             Settings.Default.Save();
 
         }
@@ -334,9 +339,14 @@ namespace Analogy
         public Dictionary<AnalogyLogLevel, Color> LogLevelColors { get; set; }
 
         public Color HighlightColor { get; set; }
+        public Color NewMessagesColor { get; set; }
+        public bool EnableNewMessagesColor { get; set; }
+        public bool OverrideLogLevelColor { get; set; }
+
         public ColorSettings()
         {
             HighlightColor = Color.Aqua;
+            NewMessagesColor = Color.PaleTurquoise;
             var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
             LogLevelColors = new Dictionary<AnalogyLogLevel, Color>(logLevelValues.Length);
 
@@ -385,9 +395,11 @@ namespace Analogy
         public Color GetColorForLogLevel(AnalogyLogLevel level) => LogLevelColors[level];
 
         public Color GetHighlightColor() => HighlightColor;
+        public Color GetNewMessagesColor() => NewMessagesColor;
 
         public void SetColorForLogLevel(AnalogyLogLevel level, Color value) => LogLevelColors[level] = value;
         public void SetHighlightColor(Color value) => HighlightColor = value;
+        public void SetNewMessagesColor(Color value) => NewMessagesColor = value;
         public string AsJson() => JsonConvert.SerializeObject(this);
         public static ColorSettings FromJson(string fileName) => JsonConvert.DeserializeObject<ColorSettings>(fileName);
     }

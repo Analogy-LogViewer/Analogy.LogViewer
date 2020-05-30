@@ -10,6 +10,8 @@ namespace Analogy
 {
     public class FileProcessor
     {
+        public event EventHandler<EventArgs> OnFileReadingFinished;
+        public DateTime lastNewestMessage;
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
@@ -24,11 +26,11 @@ namespace Analogy
 
         }
 
-        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider, string filename, CancellationToken token, bool forceNoCache = false)
+        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider, string filename, CancellationToken token, bool isReload = false)
         {
             FileName = filename;
             if (string.IsNullOrEmpty(FileName)) return new List<AnalogyLogMessage>();
-            if ((!forceNoCache || !DataWindow.ForceNoFileCaching) && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
+            if ((!isReload || !DataWindow.ForceNoFileCaching) && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
@@ -61,6 +63,8 @@ namespace Analogy
                     Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
                 var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false)).ToList();
                 FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
+                lastNewestMessage = messages.Select(m => m.Date).Max();
+                OnFileReadingFinished?.Invoke(this, EventArgs.Empty);
                 if (LogWindow != null)
                     Interlocked.Decrement(ref LogWindow.fileLoadingCount);
                 return messages;

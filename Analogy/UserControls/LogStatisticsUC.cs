@@ -1,7 +1,8 @@
-﻿using System.Drawing;
+﻿using Analogy;
+using DevExpress.XtraEditors.Controls;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy;
 
 
 namespace Philips.Analogy
@@ -13,6 +14,8 @@ namespace Philips.Analogy
         private PieChartUC GlobalPie;
         private PieChartUC SourcePie;
         private PieChartUC ModulePie;
+        private PieChartUC FreeTextPie;
+        public LogStatistics FreeTextStatistics { get; set; }
 
         public LogStatisticsUC()
         {
@@ -120,6 +123,49 @@ namespace Philips.Analogy
             {
                 ModulePie.SetDataSources(entry);
             }
+        }
+
+        private void sBtnAdd_Click(object sender, System.EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textEdit1.Text))
+            {
+                Statistics.AddText(textEdit1.Text);
+                chklistItems.Items.Add(textEdit1.Text, true);
+                var items = Statistics.CalculateTextStatistics();
+                dgvFreeText.Rows.Clear();
+                foreach (Statistics statistics in items)
+                {
+                    dgvFreeText.Rows.Add(statistics.Name, statistics.Value);
+                }
+            }
+
+            FreeTextChart();
+        }
+
+        private void FreeTextChart()
+        {
+            if (FreeTextPie == null)
+            {
+                FreeTextPie = new PieChartUC();
+                spltCFreeText.Panel2.Controls.Add(FreeTextPie);
+                FreeTextPie.Dock = DockStyle.Fill;
+                FreeTextPie.SetDataSources("Free Text", Statistics.CalculateTextStatistics());
+            }
+            else
+            {
+                FreeTextPie.SetDataSources("Free Text", Statistics.CalculateTextStatistics());
+            }
+        }
+
+        private void chklistItems_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            var Items = chklistItems.CheckedItems.Cast<CheckedListBoxItem>().Select(i => i.Value.ToString()).ToList();
+            Statistics.ClearTexts();
+            foreach (string item in Items)
+            {
+                Statistics.AddText(item);
+            }
+            FreeTextChart();
         }
     }
 }

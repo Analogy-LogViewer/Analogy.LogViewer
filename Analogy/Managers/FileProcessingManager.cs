@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -12,7 +12,7 @@ namespace Analogy
 
         private List<string> ProcessedFileNames { get; set; } = new List<string>();
         private List<string> Processing { get; set; } = new List<string>();
-        private readonly object lockObject = new object();
+        private readonly object _lockObject = new object();
 
         private Dictionary<string, List<AnalogyLogMessage>> Messages { get; } = new Dictionary<string, List<AnalogyLogMessage>>(StringComparer.OrdinalIgnoreCase);
         public bool AlreadyProcessed(string filename) => ProcessedFileNames.Contains(filename, StringComparer.OrdinalIgnoreCase);
@@ -26,7 +26,7 @@ namespace Analogy
 
         public void DoneProcessingFile(List<AnalogyLogMessage> messages, string filename)
         {
-            lock (lockObject)
+            lock (_lockObject)
             {
                 if (Processing.Contains(filename))
                     Processing.Remove(filename);
@@ -44,5 +44,13 @@ namespace Analogy
 
         public List<AnalogyLogMessage> GetMessages(string filename) => Messages[filename];
 
+        public void Reset()
+        {
+            ProcessedFileNames.Clear();
+            Messages.Clear();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+        }
     }
 }
