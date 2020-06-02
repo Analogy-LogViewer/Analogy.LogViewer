@@ -103,6 +103,7 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
+            this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -187,10 +188,11 @@
             this.bbtnUpdates,
             this.bbtnCombineOpenLogs,
             this.bbtnCheckUpdates,
-            this.bbtnCompactMemory});
+            this.bbtnCompactMemory,
+            this.bbtnReportIssueOrRequest});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 80;
+            this.ribbonControlMain.MaxItemId = 81;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -754,6 +756,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCompactMemory);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
+            this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -796,6 +799,14 @@
             this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
+            // 
+            // bbtnReportIssueOrRequest
+            // 
+            this.bbtnReportIssueOrRequest.Caption = "Report Issue Or Request";
+            this.bbtnReportIssueOrRequest.Id = 80;
+            this.bbtnReportIssueOrRequest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnReportIssueOrRequest.ImageOptions.Image")));
+            this.bbtnReportIssueOrRequest.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReportIssueOrRequest.ImageOptions.LargeImage")));
+            this.bbtnReportIssueOrRequest.Name = "bbtnReportIssueOrRequest";
             // 
             // MainForm
             // 
@@ -898,5 +909,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnCheckUpdates;
         private DevExpress.XtraBars.BarButtonItem bbtnCompactMemory;
         private System.Windows.Forms.NotifyIcon notifyIconAnalogy;
+        private DevExpress.XtraBars.BarButtonItem bbtnReportIssueOrRequest;
     }
 }
