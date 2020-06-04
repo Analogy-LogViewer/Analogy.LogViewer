@@ -63,7 +63,8 @@ namespace Analogy
                     Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
                 var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false)).ToList();
                 FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
-                lastNewestMessage = messages.Select(m => m.Date).Max();
+                if (messages.Any())
+                    lastNewestMessage = messages.Select(m => m.Date).Max();
                 OnFileReadingFinished?.Invoke(this, EventArgs.Empty);
                 if (LogWindow != null)
                     Interlocked.Decrement(ref LogWindow.fileLoadingCount);
