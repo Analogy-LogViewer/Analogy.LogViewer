@@ -30,7 +30,7 @@ namespace Analogy
         {
             FileName = filename;
             if (string.IsNullOrEmpty(FileName)) return new List<AnalogyLogMessage>();
-            if ((!isReload || !DataWindow.ForceNoFileCaching) && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
+            if (!isReload && !DataWindow.ForceNoFileCaching && FileProcessingManager.Instance.AlreadyProcessed(FileName) && Settings.EnableFileCaching) //get it from the cache
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
