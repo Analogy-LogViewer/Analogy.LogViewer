@@ -179,6 +179,12 @@ namespace Analogy
                     break;
                 }
             }
+
+            bbtnReportIssueOrRequest.ItemClick += (_, __) =>
+            {
+                OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues");
+            };
+
             bbtnCombineOpenLogs.ItemClick += (s, e) =>
             {
                 var items = dockManager1.Panels.Select(p => (p.Text, GetLogWindows(p))).Where(l => l.Item2 != null)
@@ -1512,16 +1518,19 @@ namespace Analogy
 
         private void bbtnStar_ItemClick(object sender, ItemClickEventArgs e)
         {
+            OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
+        }
+        private void OpenLink(string url)
+        {
             try
             {
-                System.Diagnostics.Process.Start("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
             }
             catch (Exception exception)
             {
                 AnalogyLogger.Instance.LogException(exception, "", $"Error: {exception.Message}");
             }
         }
-
         private void bbtnUpdates_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenUpdateWindow();
