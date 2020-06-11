@@ -93,6 +93,7 @@
             this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCompactMemory = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -103,7 +104,6 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
-            this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -690,7 +690,8 @@
             // 
             this.bbtnStar.Caption = "GitHub";
             this.bbtnStar.Id = 75;
-            this.bbtnStar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnStar.ImageOptions.SvgImage")));
+            this.bbtnStar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnStar.ImageOptions.Image")));
+            this.bbtnStar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnStar.ImageOptions.LargeImage")));
             this.bbtnStar.Name = "bbtnStar";
             this.bbtnStar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnStar_ItemClick);
             // 
@@ -710,6 +711,14 @@
             this.bbtnCompactMemory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnCompactMemory.ImageOptions.Image")));
             this.bbtnCompactMemory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCompactMemory.ImageOptions.LargeImage")));
             this.bbtnCompactMemory.Name = "bbtnCompactMemory";
+            // 
+            // bbtnReportIssueOrRequest
+            // 
+            this.bbtnReportIssueOrRequest.Caption = "Report Issue Or Request";
+            this.bbtnReportIssueOrRequest.Id = 80;
+            this.bbtnReportIssueOrRequest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnReportIssueOrRequest.ImageOptions.Image")));
+            this.bbtnReportIssueOrRequest.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReportIssueOrRequest.ImageOptions.LargeImage")));
+            this.bbtnReportIssueOrRequest.Name = "bbtnReportIssueOrRequest";
             // 
             // ribbonPageThemes
             // 
@@ -799,14 +808,6 @@
             this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
-            // 
-            // bbtnReportIssueOrRequest
-            // 
-            this.bbtnReportIssueOrRequest.Caption = "Report Issue Or Request";
-            this.bbtnReportIssueOrRequest.Id = 80;
-            this.bbtnReportIssueOrRequest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnReportIssueOrRequest.ImageOptions.Image")));
-            this.bbtnReportIssueOrRequest.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReportIssueOrRequest.ImageOptions.LargeImage")));
-            this.bbtnReportIssueOrRequest.Name = "bbtnReportIssueOrRequest";
             // 
             // MainForm
             // 
