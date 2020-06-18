@@ -1285,7 +1285,7 @@ namespace Analogy
             progressBar1.Value = 0;
             progressBar1.Maximum = fileNames.Count;
             progressBar1.Style = fileNames.Count > 1 ? ProgressBarStyle.Continuous : ProgressBarStyle.Marquee;
-            fileLoadingCount = +fileNames.Count;
+            fileLoadingCount = fileNames.Count;
             progressBar1.Visible = true;
             int processed = 0;
             foreach (string filename in fileNames)
@@ -1344,9 +1344,9 @@ namespace Analogy
 
         }
 
-  
 
-       
+
+
 
         private void tmrNewData_Tick(object sender, EventArgs e)
         {
@@ -2208,10 +2208,6 @@ namespace Analogy
             txtbSource.Text = "";
         }
 
-        private async void txtbIncludeSource_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void sbtnIncludeModules_Click(object sender, EventArgs e)
@@ -2219,10 +2215,6 @@ namespace Analogy
             txtbModule.Text = "";
         }
 
-        private async void txtbIncludeModule_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
         {

@@ -50,7 +50,6 @@ namespace Analogy
         private int openedWindows;
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
-        private DockPanel currentContextPage;
         private bool preventExit = false;
         private UserSettingsManager settings => UserSettingsManager.UserSettings;
         private bool Initialized { get; set; }
@@ -176,7 +175,6 @@ namespace Analogy
                     }
 
                     return null;
-                    break;
                 }
             }
 
@@ -295,7 +293,7 @@ namespace Analogy
             }
         }
 
-        private void AnalogyMainForm_DragDrop(object sender, DragEventArgs e)
+        private async void AnalogyMainForm_DragDrop(object sender, DragEventArgs e)
         {
             // Handle FileDrop data.
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -303,7 +301,7 @@ namespace Analogy
                 // Assign the file names to a string array, in 
                 // case the user has selected multiple files.
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                OpenOfflineFileWithSpecificDataProvider(files);
+                await OpenOfflineFileWithSpecificDataProvider(files);
             }
         }
 
@@ -883,7 +881,7 @@ namespace Analogy
                 page.Tag = ribbonPage;
                 page.Controls.Add(filepoolingUC);
                 filepoolingUC.Dock = DockStyle.Fill;
-                page.Text = $"{filePoolingTitle} #{filePooling} ({titleOfDataSource})";
+                page.Text = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
 
 
@@ -1156,7 +1154,7 @@ namespace Analogy
                 page.Tag = ribbonPage;
                 page.Controls.Add(filepoolingUC);
                 filepoolingUC.Dock = DockStyle.Fill;
-                page.Text = $"{filePoolingTitle} #{filePooling} ({titleOfDataSource})";
+                page.Text = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }

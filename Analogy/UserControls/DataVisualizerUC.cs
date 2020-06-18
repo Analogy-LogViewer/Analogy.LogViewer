@@ -10,9 +10,7 @@ namespace Analogy
 {
     public partial class DataVisualizerUC : DevExpress.XtraEditors.XtraUserControl
     {
-        double XRange = 0;
-        double YRange = 0;
-        double CellSize = 0.5;
+
         private List<AnalogyLogMessage> Messages { get; set; }
 
         private List<string> Items { get; set; }

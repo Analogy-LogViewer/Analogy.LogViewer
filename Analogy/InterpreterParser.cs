@@ -68,10 +68,8 @@ namespace Analogy
                 {
                     case SearchType.And:
                         return $"Text like '%{EscapeLikeValue(Left.Value)}%' and Text like '%{EscapeLikeValue(Right.Value)}%'";
-                        break;
                     case SearchType.Or:
                         return $"Text like '%{EscapeLikeValue(Left.Value)}%' Or Text like '%{EscapeLikeValue(Right.Value)}%'";
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
