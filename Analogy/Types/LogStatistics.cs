@@ -41,7 +41,7 @@ namespace Analogy
         public void ClearTexts() => Texts.Clear();
         public IEnumerable<ItemStatistics> CalculateModulesStatistics()
         {
-            foreach (var module in Modules)
+            foreach (var module in Modules.Where(m => m != null))
             {
                 yield return CalculateSingleStatistics(module);
 
@@ -51,7 +51,7 @@ namespace Analogy
 
         public ItemStatistics CalculateSingleStatistics(string module)
         {
-            return new ItemStatistics(module, Messages.Count(m => m.Module.Equals(module)),
+            return new ItemStatistics(module, Messages.Count(m => module.Equals(m.Module)),
                 CountModuleMessages(module, AnalogyLogLevel.Error), CountModuleMessages(module, AnalogyLogLevel.Warning),
                 CountModuleMessages(module, AnalogyLogLevel.Critical), CountModuleMessages(module, AnalogyLogLevel.Event),
                 CountModuleMessages(module, AnalogyLogLevel.Debug), CountModuleMessages(module, AnalogyLogLevel.Verbose));
@@ -60,9 +60,9 @@ namespace Analogy
 
         public IEnumerable<ItemStatistics> CalculateSourcesStatistics()
         {
-            foreach (var source in Sources)
+            foreach (var source in Sources.Where(s => s != null))
             {
-                yield return new ItemStatistics(source, Messages.Count(m => m.Source.Equals(source)),
+                yield return new ItemStatistics(source, Messages.Count(m => source.Equals(m.Source)),
                     CountSourceMessages(source, AnalogyLogLevel.Error), CountSourceMessages(source, AnalogyLogLevel.Warning),
                     CountSourceMessages(source, AnalogyLogLevel.Critical), CountSourceMessages(source, AnalogyLogLevel.Event),
                     CountSourceMessages(source, AnalogyLogLevel.Debug), CountSourceMessages(source, AnalogyLogLevel.Verbose));
@@ -71,7 +71,7 @@ namespace Analogy
         }
 
         private int CountMessages(List<AnalogyLogMessage> messages, AnalogyLogLevel level) => messages.Count(m => m.Level == level);
-        private int CountModuleMessages(string module, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && m.Module.Equals(module));
-        private int CountSourceMessages(string source, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && m.Source.Equals(source));
+        private int CountModuleMessages(string module, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && module.Equals(m.Module));
+        private int CountSourceMessages(string source, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && source.Equals(m.Source));
     }
 }
