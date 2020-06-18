@@ -11,8 +11,9 @@ namespace Analogy
             return new List<AnalogyChangeLog>
             {
 
-             new AnalogyChangeLog("Upgrade to DevExpress 19.1.11. #187",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 11)),
-             new AnalogyChangeLog("Reload file is ignore when caching is on #181",AnalogChangeLogType.Bug,"Lior Banai", new DateTime(2020, 06, 04)),
+                new AnalogyChangeLog("NullReferenceException when using the data visualizer on a Serilog/Clef log file #189",AnalogChangeLogType.Bug,"Lior Banai", new DateTime(2020, 06, 18)),
+                new AnalogyChangeLog("Upgrade to DevExpress 19.1.11. #187",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 11)),
+                new AnalogyChangeLog("Reload file is ignore when caching is on #181",AnalogChangeLogType.Bug,"Lior Banai", new DateTime(2020, 06, 04)),
                 new AnalogyChangeLog("Log Analysis: Add free-text pie chart #177",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 29)),
                 new AnalogyChangeLog("Store date sorting order between runs #178",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 29)),
                 new AnalogyChangeLog("Allows application to minimized to the tray bar instead of closing #174",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 05, 28)),
