@@ -153,7 +153,7 @@ namespace Analogy
                             {
                                 dirs = new string[0];
                             }
-                        string[] files = ListFiles ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).ToArray() : new string[0];
+                        string[] files = ListFiles ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).Distinct().ToArray() : new string[0];
                         string[] arr = new string[dirs.Length + files.Length];
                         if (ListFolders)
                             dirs.CopyTo(arr, 0);

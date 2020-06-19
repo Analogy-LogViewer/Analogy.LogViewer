@@ -13,7 +13,6 @@ namespace Analogy
     {
         private IAnalogyOfflineDataProvider _dataProvider;
         public event EventHandler<SelectionEventArgs> SelectionChanged;
-        public bool ZipFilesOnly { get; set; }
 
         public IAnalogyOfflineDataProvider DataProvider
         {
@@ -39,7 +38,7 @@ namespace Analogy
             lBoxFiles.SelectedIndexChanged -= lBoxFiles_SelectedIndexChanged;
             DirectoryInfo dirInfo = new DirectoryInfo(e.SelectedFolderPath);
             bool recursive = checkEditRecursiveLoad.Checked;
-            List<FileInfo> fileInfos = (ZipFilesOnly ? dirInfo.GetFiles("*.zip").ToList() : DataProvider.GetSupportedFiles(dirInfo, recursive)).OrderByDescending(f => f.LastWriteTime).ToList();
+            List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursive).Distinct(new FileInfoComparer()).OrderByDescending(f => f.LastWriteTime).ToList();
             lBoxFiles.DisplayMember = recursive ? "FullName" : "Name";
             lBoxFiles.DataSource = fileInfos;
             lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;
