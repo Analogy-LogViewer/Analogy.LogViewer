@@ -931,8 +931,8 @@ namespace Analogy
             //add recent folders
             //recent bar
             BarSubItem recentFolders = new BarSubItem { Caption = "Recent Folders" };
-            recentFolders.ImageOptions.Image = Resources.RecentlyUse_16x16;
-            recentFolders.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
+            recentFolders.ImageOptions.Image = Resources.LoadFrom_16x16;
+            recentFolders.ImageOptions.LargeImage = Resources.LoadFrom_32x32;
             recentFolders.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(recentFolders);
             foreach (var dataProvider in offlineProviders)
@@ -1202,8 +1202,8 @@ namespace Analogy
             //recent folder
             //recent bar
             BarSubItem recentFolders = new BarSubItem { Caption = "Recent Folders" };
-            recentFolders.ImageOptions.Image = Resources.RecentlyUse_16x16;
-            recentFolders.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
+            recentFolders.ImageOptions.Image = Resources.LoadFrom_16x16;
+            recentFolders.ImageOptions.LargeImage = Resources.LoadFrom_32x32;
             recentFolders.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(recentFolders);
             foreach (var path in settings.GetRecentFolders(offlineAnalogy.ID))
