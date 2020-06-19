@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using Analogy.Types;
+using DevExpress.XtraBars;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Types;
-using DevExpress.XtraBars;
 
 namespace Analogy
 {
@@ -21,7 +20,7 @@ namespace Analogy
         private IAnalogyOfflineDataProvider DataProvider { get; }
         public ILogMessageCreatedHandler Handler => ucLogs1;
         //private List<string> TreeListFileNodes { get; set; }
-        public LocalLogFilesUC(string initSelectedPath=null)
+        public LocalLogFilesUC(string initSelectedPath = null)
         {
             SelectedPath = initSelectedPath;
             InitializeComponent();
@@ -36,10 +35,10 @@ namespace Analogy
             DataProvider = dataProvider;
             if (fileNames != null)
                 extrenalFiles.AddRange(fileNames);
-            ucLogs1.SetFileDataSource(dataProvider,dataProvider);
+            ucLogs1.SetFileDataSource(dataProvider, dataProvider);
         }
 
-        public LocalLogFilesUC(CancellationTokenSource cts):this()
+        public LocalLogFilesUC(CancellationTokenSource cts) : this()
         {
             ucLogs1.CancellationTokenSource = cts;
         }
@@ -99,18 +98,19 @@ namespace Analogy
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         private async void AnalogyUCLogs_DragDrop(object sender, DragEventArgs e)
         {
-            if (DataProvider == null) return; 
+            if (DataProvider == null) return;
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             await LoadFilesAsync(files.ToList(), chkbSelectionMode.Checked);
         }
 
         private void PopulateFiles(string folder)
         {
-            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder) || DataProvider==null) return;
+            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder) || DataProvider == null) return;
             SelectedPath = folder;
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
+            UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.ID, folder);
             List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).ToList();
             treeList1.Nodes.Clear();
             // TreeListFileNodes.Clear();
@@ -122,7 +122,7 @@ namespace Analogy
 
             treeList1.BestFitColumns();
             treeList1.ClearSelection();
-          
+
             treeList1.SelectionChanged += TreeList1_SelectionChanged;
         }
 

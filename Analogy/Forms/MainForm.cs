@@ -1006,7 +1006,7 @@ namespace Analogy
             group.ItemLinks.Add(recentBar);
             foreach (var dataProvider in offlineProviders)
             {
-                var recents = UserSettingsManager.UserSettings.RecentFiles.Where(itm => itm.ID == dataProvider.ID)
+                var recents = UserSettingsManager.UserSettings.GetRecentFiles(dataProvider.ID)
                     .Select(itm => itm.FileName).ToList();
                 AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle, recents);
             }
@@ -1233,7 +1233,7 @@ namespace Analogy
 
             //add recent
             group.ItemLinks.Add(recentBar);
-            var recents = UserSettingsManager.UserSettings.RecentFiles.Where(itm => itm.ID == offlineAnalogy.ID)
+            var recents = UserSettingsManager.UserSettings.GetRecentFiles(offlineAnalogy.ID)
                 .Select(itm => itm.FileName).ToList();
             AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title, recents);
 

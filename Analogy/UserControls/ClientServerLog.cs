@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Interfaces;
+using Analogy.Types;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,8 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Types;
 
 namespace Analogy
 {
@@ -24,7 +24,7 @@ namespace Analogy
         public ClientServerUCLog(IAnalogyOfflineDataProvider dataProvider) : this()
         {
             DataProvider = dataProvider;
-            ucLogs1.SetFileDataSource(dataProvider,DataProvider);
+            ucLogs1.SetFileDataSource(dataProvider, DataProvider);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -52,6 +52,7 @@ namespace Analogy
             if (!Directory.Exists(folder)) return;
             lBoxFiles.SelectedIndexChanged -= lBoxFiles_SelectedIndexChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
+            UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.ID, folder);
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
             var fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).OrderByDescending(f => f.LastWriteTime);
             lBoxFiles.DisplayMember = recursiveLoad ? "FullName" : "Name";

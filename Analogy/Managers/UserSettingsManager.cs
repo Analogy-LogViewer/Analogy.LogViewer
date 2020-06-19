@@ -248,7 +248,6 @@ namespace Analogy
         }
         public void AddToRecentFolders(Guid iD, string path)
         {
-            AnalogyOpenedFiles += 1;
             if (!RecentFolders.Contains((iD, path)))
                 RecentFolders.Insert(0, (iD, path));
         }
@@ -329,6 +328,12 @@ namespace Analogy
             return AnalogyIcon == "Dark" ? Resources.AnalogyIconDark : Resources.AnalogyIconLight;
         }
 
+
+        public IEnumerable<(Guid ID, string FileName)> GetRecentFiles(Guid offlineAnalogyId) =>
+            RecentFiles.Where(itm => itm.ID == offlineAnalogyId);
+
+        public IEnumerable<(Guid ID, string Path)> GetRecentFolders(Guid offlineAnalogyId) =>
+            RecentFolders.Where(itm => itm.ID == offlineAnalogyId);
 
     }
     [Serializable]

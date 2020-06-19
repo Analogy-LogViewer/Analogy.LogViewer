@@ -1,12 +1,12 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Interfaces;
+using Analogy.Types;
+using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Types;
 
 namespace Analogy
 {
@@ -172,6 +172,7 @@ namespace Analogy
         public void SetPath(string path, IAnalogyOfflineDataProvider dataProvider)
         {
             DataProvider = dataProvider;
+            UserSettingsManager.UserSettings.AddToRecentFolders(dataProvider.ID, path);
             startupDrive = path;
             treeList1.ClearNodes();
             treeList1.DataSource = new object();
