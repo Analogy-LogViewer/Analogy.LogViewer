@@ -893,7 +893,7 @@ namespace Analogy
 
             //recent bar
             BarSubItem recentBar = new BarSubItem();
-            recentBar.Caption = "Recently Used Files";
+            recentBar.Caption = "Recent Files";
             recentBar.ImageOptions.Image = Resources.RecentlyUse_16x16;
             recentBar.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
             recentBar.RibbonStyle = RibbonItemStyles.All;
@@ -924,6 +924,32 @@ namespace Analogy
                         };
 
                         folderBar.AddItem(btn);
+                    }
+                }
+            }
+
+            //add recent folders
+            //recent bar
+            BarSubItem recentFolders = new BarSubItem { Caption = "Recent Folders" };
+            recentFolders.ImageOptions.Image = Resources.RecentlyUse_16x16;
+            recentFolders.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
+            recentFolders.RibbonStyle = RibbonItemStyles.All;
+            group.ItemLinks.Add(recentFolders);
+            foreach (var dataProvider in offlineProviders)
+            {
+                BarSubItem btnFolder = new BarSubItem { Caption = dataProvider.OptionalTitle };
+                recentFolders.AddItem(btnFolder);
+                foreach (var path in settings.GetRecentFolders(dataProvider.ID))
+                {  //add local folder button:
+                    if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
+                    {
+                        BarButtonItem btn = new BarButtonItem { Caption = path.Path };
+                        btn.ItemClick += (s, be) =>
+                        {
+                            OpenOffline(dataProvider.OptionalTitle, dataProvider, path.Path);
+                        };
+
+                        btnFolder.AddItem(btn);
                     }
                 }
             }
@@ -1173,9 +1199,35 @@ namespace Analogy
                 localfolder.ItemClick += (sender, e) => { OpenOffline(title, offlineAnalogy.InitialFolderFullPath); };
             }
 
+            //recent folder
+            //recent bar
+            BarSubItem recentFolders = new BarSubItem { Caption = "Recent Folders" };
+            recentFolders.ImageOptions.Image = Resources.RecentlyUse_16x16;
+            recentFolders.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
+            recentFolders.RibbonStyle = RibbonItemStyles.All;
+            group.ItemLinks.Add(recentFolders);
+            foreach (var path in settings.GetRecentFolders(offlineAnalogy.ID))
+            {  //add local folder button:
+                if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
+                {
+                    BarButtonItem btn = new BarButtonItem { Caption = path.Path };
+                    btn.ItemClick += (s, be) =>
+                    {
+                        OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
+                    };
+
+                    recentFolders.AddItem(btn);
+                }
+            }
+
+
+
+
+
+
             //recent bar
             BarSubItem recentBar = new BarSubItem();
-            recentBar.Caption = "Recently Used Files";
+            recentBar.Caption = "Recent Files";
             recentBar.ImageOptions.Image = Resources.RecentlyUse_16x16;
             recentBar.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
             recentBar.RibbonStyle = RibbonItemStyles.Large | RibbonItemStyles.SmallWithText |
