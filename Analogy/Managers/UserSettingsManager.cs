@@ -34,8 +34,10 @@ namespace Analogy
         public string SourceText { get; set; }
         public string ModuleText { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
+        public List<(Guid ID, string Path)> RecentFolders { get; set; }
         public bool ShowHistoryOfClearedMessages { get; set; }
         public int RecentFilesCount { get; set; }
+        public int RecentFoldersCount { get; set; }
         public bool EnableUserStatistics { get; set; }
         public TimeSpan AnalogyRunningTime { get; set; }
         public uint AnalogyLaunches { get; set; }
@@ -114,6 +116,8 @@ namespace Analogy
             SaveSearchFilters = Settings.Default.SaveSearchFilters;
             RecentFiles = ParseSettings<List<(Guid ID, string FileName)>>(Settings.Default.RecentFiles);
             RecentFilesCount = Settings.Default.RecentFilesCount;
+            RecentFoldersCount = Settings.Default.RecentFoldersCount;
+            RecentFolders = ParseSettings<List<(Guid ID, string Path)>>(Settings.Default.RecentFolders);
             EnableFileCaching = Settings.Default.EnableFileCaching;
             LoadExtensionsOnStartup = Settings.Default.LoadExtensionsOnStartup;
             StartupExtensions = ParseSettings<List<Guid>>(Settings.Default.StartupExtensions);
@@ -197,6 +201,8 @@ namespace Analogy
             Settings.Default.SaveSearchFilters = SaveSearchFilters;
             Settings.Default.RecentFilesCount = RecentFilesCount;
             Settings.Default.RecentFiles = JsonConvert.SerializeObject(RecentFiles.Take(RecentFilesCount).ToList());
+            Settings.Default.RecentFoldersCount = RecentFoldersCount;
+            Settings.Default.RecentFolders = JsonConvert.SerializeObject(RecentFolders.Take(RecentFoldersCount).ToList());
             Settings.Default.EnableFileCaching = EnableFileCaching;
             Settings.Default.LoadExtensionsOnStartup = LoadExtensionsOnStartup;
             Settings.Default.StartupExtensions = JsonConvert.SerializeObject(StartupExtensions);
@@ -240,7 +246,12 @@ namespace Analogy
             if (!RecentFiles.Contains((iD, file)))
                 RecentFiles.Insert(0, (iD, file));
         }
-
+        public void AddToRecentFolders(Guid iD, string path)
+        {
+            AnalogyOpenedFiles += 1;
+            if (!RecentFolders.Contains((iD, path)))
+                RecentFolders.Insert(0, (iD, path));
+        }
         public void ClearStatistics()
         {
             AnalogyRunningTime = TimeSpan.FromSeconds(0);

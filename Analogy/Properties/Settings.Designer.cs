@@ -106,6 +106,20 @@ namespace Analogy.Properties
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RecentFolders
+        {
+            get
+            {
+                return ((string)(this["RecentFolders"]));
+            }
+            set
+            {
+                this["RecentFolders"] = value;
+            }
+        }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int RecentFilesCount
         {
@@ -116,6 +130,21 @@ namespace Analogy.Properties
             set
             {
                 this["RecentFilesCount"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int RecentFoldersCount
+        {
+            get
+            {
+                return ((int)(this["RecentFoldersCount"]));
+            }
+            set
+            {
+                this["RecentFoldersCount"] = value;
             }
         }
 

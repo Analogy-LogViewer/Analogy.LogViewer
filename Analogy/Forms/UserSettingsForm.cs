@@ -114,7 +114,8 @@ namespace Analogy
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
             tsAutoComplete.IsOn = Settings.RememberLastSearches;
-            nudRecent.Value = Settings.RecentFilesCount;
+            nudRecentFiles.Value = Settings.RecentFilesCount;
+            nudRecentFolders.Value = Settings.RecentFoldersCount;
             tsUserStatistics.IsOn = Settings.EnableUserStatistics;
             //tsSimpleMode.IsOn = Settings.SimpleMode;
             tsFileCaching.IsOn = Settings.EnableFileCaching;
@@ -208,6 +209,8 @@ namespace Analogy
             Settings.ColorSettings.SetNewMessagesColor(cpeNewMessagesColor.Color);
             Settings.ColorSettings.EnableNewMessagesColor = ceNewMessagesColor.Checked;
             Settings.ColorSettings.OverrideLogLevelColor = ceOverrideLogLevelColor.Checked;
+            Settings.RecentFilesCount = (int)nudRecentFiles.Value;
+            Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
             List<Guid> order = (from FactoryCheckItem itm in chkLstDataProviderStatus.Items select (itm.ID)).ToList();
             var checkedItem = chkLstDataProviderStatus.CheckedItems.Cast<FactoryCheckItem>().ToList();
             foreach (Guid guid in order)
@@ -262,12 +265,6 @@ namespace Analogy
             Settings.ShowHistoryOfClearedMessages = tsHistory.IsOn;
         }
 
-
-
-        private void nudRecent_ValueChanged(object sender, EventArgs e)
-        {
-            Settings.RecentFilesCount = (int)nudRecent.Value;
-        }
 
         private void tsUserStatistics_Toggled(object sender, EventArgs e)
         {
