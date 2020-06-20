@@ -609,7 +609,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.8">
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.9">
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.1.3">
       <PrivateAssets>all</PrivateAssets>
@@ -624,7 +624,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Serilog" Version="1.1.8">
+    <PackageReference Include="Analogy.LogViewer.Serilog" Version="1.1.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
