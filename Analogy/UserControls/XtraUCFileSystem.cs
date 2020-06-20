@@ -1,12 +1,12 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Interfaces;
+using Analogy.Types;
+using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Types;
 
 namespace Analogy
 {
@@ -153,7 +153,7 @@ namespace Analogy
                             {
                                 dirs = new string[0];
                             }
-                        string[] files = ListFiles ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).ToArray() : new string[0];
+                        string[] files = ListFiles ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).Distinct().ToArray() : new string[0];
                         string[] arr = new string[dirs.Length + files.Length];
                         if (ListFolders)
                             dirs.CopyTo(arr, 0);
@@ -172,6 +172,7 @@ namespace Analogy
         public void SetPath(string path, IAnalogyOfflineDataProvider dataProvider)
         {
             DataProvider = dataProvider;
+            UserSettingsManager.UserSettings.AddToRecentFolders(dataProvider.ID, path);
             startupDrive = path;
             treeList1.ClearNodes();
             treeList1.DataSource = new object();

@@ -112,6 +112,7 @@ namespace Analogy
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["ThreadID"] = message.Thread;
                 dtr["DataProvider"] = dataSource ?? string.Empty;
+                dtr["MachineName"] = message.MachineName??string.Empty;
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -159,6 +160,7 @@ namespace Analogy
                     dtr["ProcessID"] = message.ProcessID;
                     dtr["ThreadID"] = message.Thread;
                     dtr["DataProvider"] = dataSource ?? string.Empty;
+                    dtr["MachineName"] = message.MachineName ?? string.Empty;
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }

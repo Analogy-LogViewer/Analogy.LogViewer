@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -114,54 +115,32 @@ namespace Analogy
 
             throw new FileNotFoundException("GeneralDataUtils: File does not exist: " + filename, filename);
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataTable DataTableConstructor()
         {
 
             DataTable dtb = new DataTable();
-
-            var dtc = new DataColumn("Date", typeof(DateTime));
-            dtb.Columns.Add(dtc);
-            dtc = new DataColumn("TimeDiff", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Text", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Source", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Level", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Class", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Category", typeof(string));
-            dtb.Columns.Add(dtc);
-            dtc = new DataColumn("User", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Module", typeof(string));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("Object", typeof(object));
-            dtb.Columns.Add(dtc);
-
-            dtc = new DataColumn("ProcessID", typeof(int));
-            dtb.Columns.Add(dtc);
-            dtc = new DataColumn("ThreadID", typeof(int));
-            dtb.Columns.Add(dtc);
-            dtc = new DataColumn("DataProvider", typeof(string));
-            dtb.Columns.Add(dtc);
+            dtb.Columns.Add(new DataColumn("Date", typeof(DateTime)));
+            dtb.Columns.Add(new DataColumn("TimeDiff", typeof(string)));
+            dtb.Columns.Add(new DataColumn("Text", typeof(string)));
+            dtb.Columns.Add(new DataColumn("Source", typeof(string)));
+            dtb.Columns.Add(new DataColumn("Level", typeof(string)));
+            dtb.Columns.Add(new DataColumn("Class", typeof(string)));
+            dtb.Columns.Add(new DataColumn("Category", typeof(string)));
+            dtb.Columns.Add(new DataColumn("User", typeof(string)));
+            dtb.Columns.Add(new DataColumn("Module", typeof(string)));
+            dtb.Columns.Add(new DataColumn("Object", typeof(object)));
+            dtb.Columns.Add(new DataColumn("ProcessID", typeof(int)));
+            dtb.Columns.Add(new DataColumn("ThreadID", typeof(int)));
+            dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
+            dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
             var manager = ExtensionsManager.Instance;
             foreach (IAnalogyExtension extension in manager.InPlaceRegisteredExtensions)
             {
                 var columns = extension.GetColumnsInfo();
                 foreach (AnalogyColumnInfo column in columns)
                 {
-                    dtc = new DataColumn(column.ColumnName, column.ColumnType);
-                    dtb.Columns.Add(dtc);
+                    dtb.Columns.Add(new DataColumn(column.ColumnName, column.ColumnType));
                 }
             }
             dtb.DefaultView.AllowNew = false;

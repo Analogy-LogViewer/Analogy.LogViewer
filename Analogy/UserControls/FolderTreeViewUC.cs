@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using Analogy.Types;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Types;
 
 namespace Analogy
 {
@@ -21,13 +21,9 @@ namespace Analogy
 
         private async void txtbFolder_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && Directory.Exists(txtbFolder.Text))
             {
-                if (Directory.Exists(txtbFolder.Text))
-                {
-                    await PopulateFolders(txtbFolder.Text, DataProvider);
-                }
-
+                await PopulateFolders(txtbFolder.Text, DataProvider);
             }
         }
         private async Task PopulateFolders(string folderText, IAnalogyOfflineDataProvider dataProvider)
@@ -37,6 +33,7 @@ namespace Analogy
                 xtraUCFileSystem1.SetPath(folderText, dataProvider);
                 txtbFolder.Text = folderText;
                 FolderChanged?.Invoke(this, new FolderSelectionEventArgs(folderText));
+                SetRecentFolderList();
             }
             else
             {
@@ -44,26 +41,6 @@ namespace Analogy
             }
         }
 
-        private static TreeNode CreateDirectoryNode(DirectoryInfo directoryInfo)
-        {
-            var node = new TreeNode(directoryInfo.Name);
-            node.Tag = directoryInfo.FullName;
-            DirectoryInfo[] dirs = new DirectoryInfo[0];
-            try
-            {
-                dirs = directoryInfo.GetDirectories();
-            }
-            catch (Exception)
-            {
-                //nothing
-            }
-
-            foreach (var directory in dirs)
-                node.Nodes.Add(CreateDirectoryNode(directory));
-            //foreach (var file in directoryInfo.GetFiles())
-            //    directoryNode.Nodes.Add(new TreeNode(file.Name));
-            return node;
-        }
         private async void FolderTreeViewUC_Load(object sender, EventArgs e)
         {
             txtbFolder.Text = SelectedPath;
@@ -73,7 +50,7 @@ namespace Analogy
             }
         }
 
-        private async void btnOpenFile_Click(object sender, EventArgs e)
+        private async void btnOpenFolder_Click(object sender, EventArgs e)
         {
             var folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog1.SelectedPath = SelectedPath;
@@ -92,6 +69,23 @@ namespace Analogy
             SelectedPath = folder;
             txtbFolder.Text = folder;
             xtraUCFileSystem1.SetPath(folder, dataProvider);
+            SetRecentFolderList();
+        }
+
+        private void SetRecentFolderList()
+        {
+            cmsFolders.Items.Clear();
+
+            foreach (var folder in UserSettingsManager.UserSettings.GetRecentFolders(DataProvider.ID))
+            {
+                cmsFolders.Items.Add(folder.Path, null, (_, __) => SetFolder(folder.Path, DataProvider));
+            }
+        }
+
+        private void sbtnRecent_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                cmsFolders.Show(sbtnRecent.PointToScreen(e.Location));
         }
     }
 
