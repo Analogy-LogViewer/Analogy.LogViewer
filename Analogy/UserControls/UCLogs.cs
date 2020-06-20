@@ -1419,6 +1419,7 @@ namespace Analogy
             dtr["ProcessID"] = message.ProcessID;
             string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider");
             dtr["DataProvider"] = dataSource;
+            dtr["MachineName"] = message.MachineName ?? string.Empty;
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1893,6 +1894,7 @@ namespace Analogy
                 dtr["Object"] = message;
                 dtr["ProcessID"] = message.ProcessID;
                 dtr["DataProvider"] = "";
+                dtr["MachineName"] = message.MachineName ?? string.Empty;
                 if (diffStartTime > DateTime.MinValue)
                 {
                     dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();

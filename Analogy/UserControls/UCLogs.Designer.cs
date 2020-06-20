@@ -79,6 +79,7 @@ namespace Analogy
             this.gridColumnObject = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
@@ -190,6 +191,7 @@ namespace Analogy
             this.gridColumnBookmarkAudit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnBookmarkObject = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnBookmarkProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tmrNewData = new System.Windows.Forms.Timer(this.components);
@@ -250,8 +252,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.gridColumnMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -826,6 +826,16 @@ namespace Analogy
             this.gridColumnThread.Visible = true;
             this.gridColumnThread.VisibleIndex = 10;
             this.gridColumnThread.Width = 109;
+            // 
+            // gridColumnMachineName
+            // 
+            this.gridColumnMachineName.Caption = "Machine Name";
+            this.gridColumnMachineName.FieldName = "MachineName";
+            this.gridColumnMachineName.MinWidth = 25;
+            this.gridColumnMachineName.Name = "gridColumnMachineName";
+            this.gridColumnMachineName.Visible = true;
+            this.gridColumnMachineName.VisibleIndex = 11;
+            this.gridColumnMachineName.Width = 94;
             // 
             // imageList
             // 
@@ -2313,6 +2323,16 @@ namespace Analogy
             this.gridColumnBookmarkProcessID.VisibleIndex = 4;
             this.gridColumnBookmarkProcessID.Width = 115;
             // 
+            // gridColumnBookmarkMachineName
+            // 
+            this.gridColumnBookmarkMachineName.Caption = "Machine Name";
+            this.gridColumnBookmarkMachineName.FieldName = "MachineName";
+            this.gridColumnBookmarkMachineName.MinWidth = 25;
+            this.gridColumnBookmarkMachineName.Name = "gridColumnBookmarkMachineName";
+            this.gridColumnBookmarkMachineName.Visible = true;
+            this.gridColumnBookmarkMachineName.VisibleIndex = 11;
+            this.gridColumnBookmarkMachineName.Width = 94;
+            // 
             // imageListBottom
             // 
             this.imageListBottom.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListBottom.ImageStream")));
@@ -3083,24 +3103,6 @@ namespace Analogy
             this.MainSplitContainer.Size = new System.Drawing.Size(2131, 739);
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
-            // 
-            // gridColumnMachineName
-            // 
-            this.gridColumnMachineName.Caption = "Machine Name";
-            this.gridColumnMachineName.MinWidth = 25;
-            this.gridColumnMachineName.Name = "gridColumnMachineName";
-            this.gridColumnMachineName.Visible = true;
-            this.gridColumnMachineName.VisibleIndex = 11;
-            this.gridColumnMachineName.Width = 94;
-            // 
-            // gridColumnBookmarkMachineName
-            // 
-            this.gridColumnBookmarkMachineName.Caption = "Machine Name";
-            this.gridColumnBookmarkMachineName.MinWidth = 25;
-            this.gridColumnBookmarkMachineName.Name = "gridColumnBookmarkMachineName";
-            this.gridColumnBookmarkMachineName.Visible = true;
-            this.gridColumnBookmarkMachineName.VisibleIndex = 11;
-            this.gridColumnBookmarkMachineName.Width = 94;
             // 
             // UCLogs
             // 

@@ -60,6 +60,7 @@ namespace Analogy
             dtr["ProcessID"] = Process.GetCurrentProcess().Id;
             dtr["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
             dtr["DataProvider"] = string.Empty;
+            dtr["MachineName"] = "None";
             dtr.EndEdit();
             messageData.Rows.Add(dtr);
             messageData.AcceptChanges();
