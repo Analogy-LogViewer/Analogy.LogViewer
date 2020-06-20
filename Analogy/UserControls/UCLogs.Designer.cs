@@ -86,6 +86,7 @@ namespace Analogy
             this.barTopFiltering = new DevExpress.XtraBars.Bar();
             this.bBtnClearLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnRemoveBoomark = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btswitchExpand = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
@@ -249,7 +250,8 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.bbtnReload = new DevExpress.XtraBars.BarButtonItem();
+            this.gridColumnMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnBookmarkMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -559,7 +561,8 @@ namespace Analogy
             this.gridColumnModule,
             this.gridColumnObject,
             this.gridColumnProcessID,
-            this.gridColumnThread});
+            this.gridColumnThread,
+            this.gridColumnMachineName});
             this.logGrid.DetailHeight = 431;
             this.logGrid.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.logGrid.GridControl = this.gridControl;
@@ -968,6 +971,15 @@ namespace Analogy
             this.bBtnRemoveBoomark.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnRemoveBoomark.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnRemoveBoomark.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnRemoveBoomark_ItemClick);
+            // 
+            // bbtnReload
+            // 
+            this.bbtnReload.Caption = "Reload Files";
+            this.bbtnReload.Id = 38;
+            this.bbtnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnReload.ImageOptions.SvgImage")));
+            this.bbtnReload.Name = "bbtnReload";
+            this.bbtnReload.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bbtnReload.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // btswitchExpand
             // 
@@ -2036,7 +2048,8 @@ namespace Analogy
             this.gridColumnBookmarkModule,
             this.gridColumnBookmarkAudit,
             this.gridColumnBookmarkObject,
-            this.gridColumnBookmarkProcessID});
+            this.gridColumnBookmarkProcessID,
+            this.gridColumnBookmarkMachineName});
             this.gridViewBookmarkedMessages.DetailHeight = 431;
             this.gridViewBookmarkedMessages.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewBookmarkedMessages.GridControl = this.gridControlBookmarkedMessages;
@@ -3071,14 +3084,23 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // bbtnReload
+            // gridColumnMachineName
             // 
-            this.bbtnReload.Caption = "Reload Files";
-            this.bbtnReload.Id = 38;
-            this.bbtnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnReload.ImageOptions.SvgImage")));
-            this.bbtnReload.Name = "bbtnReload";
-            this.bbtnReload.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bbtnReload.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.gridColumnMachineName.Caption = "Machine Name";
+            this.gridColumnMachineName.MinWidth = 25;
+            this.gridColumnMachineName.Name = "gridColumnMachineName";
+            this.gridColumnMachineName.Visible = true;
+            this.gridColumnMachineName.VisibleIndex = 11;
+            this.gridColumnMachineName.Width = 94;
+            // 
+            // gridColumnBookmarkMachineName
+            // 
+            this.gridColumnBookmarkMachineName.Caption = "Machine Name";
+            this.gridColumnBookmarkMachineName.MinWidth = 25;
+            this.gridColumnBookmarkMachineName.Name = "gridColumnBookmarkMachineName";
+            this.gridColumnBookmarkMachineName.Visible = true;
+            this.gridColumnBookmarkMachineName.VisibleIndex = 11;
+            this.gridColumnBookmarkMachineName.Width = 94;
             // 
             // UCLogs
             // 
@@ -3389,5 +3411,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnFullGrid;
         private DevExpress.XtraEditors.SplitContainerControl spltMain;
         private DevExpress.XtraBars.BarButtonItem bbtnReload;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnMachineName;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkMachineName;
     }
 }
