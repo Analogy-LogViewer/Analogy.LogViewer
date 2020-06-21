@@ -774,7 +774,7 @@ namespace Analogy
                 singleBtn.ItemClick += (sender, e) =>
                 {
                     CancellationTokenSource cts = new CancellationTokenSource();
-                    LocalLogFilesUC offlineUC = new LocalLogFilesUC(cts);
+                    LocalLogFilesUC offlineUC = new LocalLogFilesUC(single,cts);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
                     page.Tag = ribbonPage;

@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("[Windows Events log Parser] Unable to load system log files (*.evtx). #197",AnalogChangeLogType.Bug,"Lior Banai", new DateTime(2020, 06, 21)),
                 new AnalogyChangeLog("Add MachineName to UI columns. #196",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 20)),
                 new AnalogyChangeLog("Add Recent Folder to The Ribbon UI. #193",AnalogChangeLogType.Feature,"Lior Banai", new DateTime(2020, 06, 19)),
                 new AnalogyChangeLog("Remember Last X open folders locations in the Open folder UI. #183",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 19)),
