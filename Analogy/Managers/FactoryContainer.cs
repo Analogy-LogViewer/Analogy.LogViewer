@@ -1,6 +1,8 @@
 ﻿using Analogy.DataProviders.Extensions;
 using Analogy.Interfaces.Factories;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Analogy.Managers
@@ -15,6 +17,7 @@ namespace Analogy.Managers
         public List<IAnalogyDataProviderSettings> DataProvidersSettings { get; }
         public List<IAnalogyShareableFactory> ShareableFactories { get; }
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
+        public List<IAnalogyComponentImages> DataProviderImages { get; private set; }
 
         public FactoryContainer(Assembly assembly, IAnalogyFactory factory, FactorySettings factorySetting)
         {
@@ -26,6 +29,7 @@ namespace Analogy.Managers
             DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
             ShareableFactories = new List<IAnalogyShareableFactory>();
             ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
+            DataProviderImages = new List<IAnalogyComponentImages>();
 
         }
 
@@ -40,8 +44,17 @@ namespace Analogy.Managers
 
         public void AddShareableFactory(IAnalogyShareableFactory shareableFactory) =>
             ShareableFactories.Add(shareableFactory);
+
         public void AddExtensionFactory(IAnalogyExtensionsFactory extensionFactory) =>
             ExtensionsFactories.Add(extensionFactory);
+
+        public void AddImages(IAnalogyComponentImages images) => DataProviderImages.Add(images);
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";
+
+        public bool ContainsDataProviderOrDataFactory(Guid componentId) =>
+            DataProvidersFactories.Any(d =>
+                d.FactoryId == componentId ||
+                d.DataProviders.Any(dp => dp.ID == componentId));
+
     }
 }
