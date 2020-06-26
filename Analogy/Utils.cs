@@ -271,6 +271,10 @@ namespace Analogy
             {
                 return (false, default);
             }
+            catch (Exception)
+            {
+                return (false, default);
+            }
         }
 
 
