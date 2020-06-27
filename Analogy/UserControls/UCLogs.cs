@@ -2219,23 +2219,11 @@ namespace Analogy
         {
             txtbSource.Text = "";
         }
-
-        private async void txtbIncludeSource_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
+        
         private void sbtnIncludeModules_Click(object sender, EventArgs e)
         {
             txtbModule.Text = "";
         }
-
-        private async void txtbIncludeModule_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
         {
             UndockViewPerProcess();

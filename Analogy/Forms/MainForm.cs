@@ -73,7 +73,7 @@ namespace Analogy
                 string filename = Marshal.PtrToStringUni(_dataStruct.lpData, _dataStruct.cbData / 2);
 
                 string[] fileNames = { filename };
-                OpenOfflineFileWithSpecificDataProvider(fileNames);
+                _ = OpenOfflineFileWithSpecificDataProvider(fileNames);
                 Process currentProcess = Process.GetCurrentProcess();
                 IntPtr hWnd = currentProcess.MainWindowHandle;
                 if (hWnd != IntPtr.Zero)
@@ -172,11 +172,11 @@ namespace Analogy
                     {
                         var control = mainControl.Controls[i];
                         if (control is ILogWindow logWindow2) return logWindow2;
-                        return GetLogWindows(control);
+                        if (GetLogWindows(control) is ILogWindow log)
+                            return log;
                     }
 
                     return null;
-                    break;
                 }
             }
 
@@ -295,7 +295,7 @@ namespace Analogy
             }
         }
 
-        private void AnalogyMainForm_DragDrop(object sender, DragEventArgs e)
+        private async void AnalogyMainForm_DragDrop(object sender, DragEventArgs e)
         {
             // Handle FileDrop data.
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -303,7 +303,7 @@ namespace Analogy
                 // Assign the file names to a string array, in 
                 // case the user has selected multiple files.
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                OpenOfflineFileWithSpecificDataProvider(files);
+               await OpenOfflineFileWithSpecificDataProvider(files);
             }
         }
 
