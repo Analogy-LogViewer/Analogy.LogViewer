@@ -487,17 +487,6 @@ namespace Analogy
         {
         }
 
-        private void bBtnOnlineEventLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserControl offlineUC = new WindowsEventLog();
-            var page = dockManager1.AddPanel(DockingStyle.Float);
-            page.DockedAsTabbedDocument = true;
-            page.Controls.Add(offlineUC);
-            offlineUC.Dock = DockStyle.Fill;
-            page.Text = $"Windows Log";
-            dockManager1.ActivePanel = page;
-        }
-
         private void CreateDataSources()
         {
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories

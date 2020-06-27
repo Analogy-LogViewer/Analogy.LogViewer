@@ -76,7 +76,6 @@
             this.bBtnStatisticsUserStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnExtensionSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnCompareLogs = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnOnlineEventLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExtensions = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnMRUSettings = new DevExpress.XtraBars.BarButtonItem();
@@ -167,7 +166,6 @@
             this.bBtnStatisticsUserStatistics,
             this.bBtnExtensionSettings,
             this.bBtnCompareLogs,
-            this.bBtnOnlineEventLogs,
             this.bbiExtensions,
             this.bBtnShortcuts,
             this.bBtnMRUSettings,
@@ -555,15 +553,6 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.bBtnCompareLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCompareLogs_ItemClick);
             // 
-            // bBtnOnlineEventLogs
-            // 
-            this.bBtnOnlineEventLogs.Caption = "Real Time Windows Event Logs";
-            this.bBtnOnlineEventLogs.Id = 47;
-            this.bBtnOnlineEventLogs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnOnlineEventLogs.ImageOptions.Image")));
-            this.bBtnOnlineEventLogs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnOnlineEventLogs.ImageOptions.LargeImage")));
-            this.bBtnOnlineEventLogs.Name = "bBtnOnlineEventLogs";
-            this.bBtnOnlineEventLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnOnlineEventLogs_ItemClick);
-            // 
             // bbiExtensions
             // 
             this.bbiExtensions.Caption = "Extensions List";
@@ -881,7 +870,6 @@
         private DevExpress.XtraBars.BarButtonItem bBtnStatisticsUserStatistics;
         private DevExpress.XtraBars.BarButtonItem bBtnExtensionSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnCompareLogs;
-        private DevExpress.XtraBars.BarButtonItem bBtnOnlineEventLogs;
         private DevExpress.XtraBars.BarButtonItem bbiExtensions;
         private DevExpress.XtraBars.BarButtonItem bBtnShortcuts;
         private DevExpress.XtraBars.BarButtonItem bBtnMRUSettings;
