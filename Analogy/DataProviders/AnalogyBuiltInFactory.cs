@@ -93,7 +93,8 @@ namespace Analogy.DataSources
                     Level = AnalogyLogLevel.Critical,
                     Source = "Analogy",
                     Module = System.Diagnostics.Process.GetCurrentProcess().ProcessName,
-                    ProcessID = System.Diagnostics.Process.GetCurrentProcess().Id,
+                    ProcessId = System.Diagnostics.Process.GetCurrentProcess().Id,
+                    MachineName = Environment.MachineName,
                     Class = AnalogyLogClass.General,
                     User = Environment.UserName,
                     Date = DateTime.Now

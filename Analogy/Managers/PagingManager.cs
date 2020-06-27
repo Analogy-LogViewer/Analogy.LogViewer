@@ -98,21 +98,7 @@ namespace Analogy
             try
             {
                 lockSlim.EnterWriteLock();
-                DataRow dtr = table.NewRow();
-                dtr.BeginEdit();
-                dtr["Date"] = message.Date;
-                dtr["Text"] = message.Text ?? "";
-                dtr["Source"] = message.Source ?? "";
-                dtr["Level"] = string.Intern(message.Level.ToString());
-                dtr["Class"] = string.Intern(message.Class.ToString());
-                dtr["Category"] = message.Category ?? "";
-                dtr["User"] = message.User ?? "";
-                dtr["Module"] = message.Module ?? "";
-                dtr["Object"] = message;
-                dtr["ProcessID"] = message.ProcessID;
-                dtr["ThreadID"] = message.Thread;
-                dtr["DataProvider"] = dataSource ?? string.Empty;
-                dtr["MachineName"] = message.MachineName??string.Empty;
+                DataRow dtr = Utils.CreateRow(table, message,dataSource);
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -146,21 +132,7 @@ namespace Analogy
                     }
 
                     countInsideTable++;
-                    DataRow dtr = table.NewRow();
-                    dtr.BeginEdit();
-                    dtr["Date"] = message.Date;
-                    dtr["Text"] = message.Text ?? "";
-                    dtr["Source"] = message.Source ?? "";
-                    dtr["Level"] = string.Intern(message.Level.ToString());
-                    dtr["Class"] = string.Intern(message.Class.ToString());
-                    dtr["Category"] = message.Category ?? "";
-                    dtr["User"] = message.User ?? "";
-                    dtr["Module"] = message.Module ?? "";
-                    dtr["Object"] = message;
-                    dtr["ProcessID"] = message.ProcessID;
-                    dtr["ThreadID"] = message.Thread;
-                    dtr["DataProvider"] = dataSource ?? string.Empty;
-                    dtr["MachineName"] = message.MachineName ?? string.Empty;
+                    DataRow dtr = Utils.CreateRow(table, message, dataSource);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }

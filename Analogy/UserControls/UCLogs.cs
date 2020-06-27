@@ -1405,21 +1405,8 @@ namespace Analogy
             int[] selRows = LogGrid.GetSelectedRows();
             if (message == null) return;
             lockSlim.EnterWriteLock();
-
-            DataRow dtr = _bookmarkedMessages.NewRow();
-            dtr["Date"] = message.Date;
-            dtr["Text"] = message.Text ?? "";
-            dtr["Source"] = message.Source ?? "";
-            dtr["Level"] = message.Level.ToString();
-            dtr["Class"] = message.Class.ToString();
-            dtr["Category"] = message.Category ?? "";
-            dtr["User"] = message.User ?? "";
-            dtr["Module"] = message.Module ?? "";
-            dtr["Object"] = message;
-            dtr["ProcessID"] = message.ProcessID;
-            string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider");
-            dtr["DataProvider"] = dataSource;
-            dtr["MachineName"] = message.MachineName ?? string.Empty;
+            string dataSource = (string) LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
+            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message,dataSource);
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1881,20 +1868,7 @@ namespace Analogy
             foreach (var message in messages)
             {
 
-                DataRow dtr = grouped.NewRow();
-
-                dtr["Date"] = message.Date;
-                dtr["Text"] = message.Text ?? "";
-                dtr["Source"] = message.Source ?? "";
-                dtr["Level"] = message.Level;
-                dtr["Class"] = message.Class;
-                dtr["Category"] = message.Category ?? "";
-                dtr["User"] = message.User ?? "";
-                dtr["Module"] = message.Module ?? "";
-                dtr["Object"] = message;
-                dtr["ProcessID"] = message.ProcessID;
-                dtr["DataProvider"] = "";
-                dtr["MachineName"] = message.MachineName ?? string.Empty;
+                DataRow dtr = Utils.CreateRow(grouped, message, "");
                 if (diffStartTime > DateTime.MinValue)
                 {
                     dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();

@@ -48,11 +48,14 @@ namespace Analogy
         private void LoadMessage()
         {
             memoText.Text = Message.Text;
-            txtID.Text = Message.ID.ToString();
-            rtxtbDataSource.Text = DataSource;
+            txtbMachineName.Text = Message.MachineName;
+            txtID.Text = Message.Id.ToString();
+            txtbDataSource.Text = DataSource;
             txtbDateValue.Text = Message.Date.ToString(UserSettingsManager.UserSettings.DateTimePattern);
             txtbLevelValue.Text = Message.Level.ToString();
-            txtbProcessValue.Text = $"{Message.Module} (ID:{Message.ProcessID})";
+            txtbProcessModuleName.Text =Message.Module;
+            txtbProcessId.Text = Message.ProcessId.ToString();
+            txtbThreadId.Text = Message.ThreadId.ToString();
             txtSourceValue.Text = Message.Source;
             txtbMethod.Text = Message.MethodName;
             txtbFileName.Text = Message.FileName;
