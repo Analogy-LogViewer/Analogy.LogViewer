@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog( "Add multi select of rows. #204",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 28)),
                 new AnalogyChangeLog( "Enable version check on startup. #200",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 26)),
                 new AnalogyChangeLog( "Ribbon Icons are not correct for real time data sources. #199",AnalogChangeLogType.Bug,"Lior Banai", new DateTime(2020, 06, 26)),
                 new AnalogyChangeLog("[Windows Events log Parser] Unable to load system log files (*.evtx). #197",AnalogChangeLogType.Bug,"Lior Banai", new DateTime(2020, 06, 21)),
