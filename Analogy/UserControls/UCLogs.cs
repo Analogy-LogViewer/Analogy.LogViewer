@@ -115,6 +115,8 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
+            logGrid.OptionsSelection.MultiSelect = true;
+            logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
             var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
@@ -1842,12 +1844,11 @@ namespace Analogy
 
         private (AnalogyLogMessage, string) GetMessageFromSelectedRowInGrid()
         {
-            int[] selRows = LogGrid.GetSelectedRows();
-            if (selRows == null || !selRows.Any()) return (null, string.Empty);
-            var row = selRows.First();
-            string datasource = (string)LogGrid.GetRowCellValue(row, "DataProvider");
-            AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetRowCellValue(selRows.First(), "Object");
-            return (message, datasource);
+            var row = LogGrid.GetFocusedRow();
+            if (row == null) return (null, string.Empty);
+            string dataSource = (string)LogGrid.GetFocusedRowCellValue("DataProvider");
+            AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetFocusedRowCellValue("Object");
+            return (message, dataSource);
 
         }
 
