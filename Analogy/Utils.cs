@@ -271,10 +271,32 @@ namespace Analogy
             {
                 return (false, default);
             }
+            catch (Exception)
+            {
+                return (false, default);
+            }
         }
 
-
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource)
+        {
+            var dtr = table.NewRow();
+            dtr.BeginEdit();
+            dtr["Date"] = message.Date;
+            dtr["Text"] = message.Text ?? "";
+            dtr["Source"] = message.Source ?? "";
+            dtr["Level"] = string.Intern(message.Level.ToString());
+            dtr["Class"] = string.Intern(message.Class.ToString());
+            dtr["Category"] = message.Category ?? "";
+            dtr["User"] = message.User ?? "";
+            dtr["Module"] = message.Module ?? "";
+            dtr["Object"] = message;
+            dtr["ProcessID"] = message.ProcessId;
+            dtr["ThreadID"] = message.ThreadId;
+            dtr["DataProvider"] = dataSource ?? string.Empty;
+            dtr["MachineName"] = message.MachineName ?? string.Empty;
+            return dtr;
+        }
     }
 
     /// <summary>

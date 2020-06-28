@@ -56,3 +56,4 @@
 /Analogy.UnitTests/obj
 /Analogy.UnitTests/bin/Release
 *.bak
+_ReSharper.Caches

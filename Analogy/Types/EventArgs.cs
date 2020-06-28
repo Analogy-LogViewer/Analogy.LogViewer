@@ -34,13 +34,4 @@ namespace Analogy.Types
             ClearedMessages = clearedMessages;
         }
     }
-    public class AnalogyNewMessagesEventArgs : EventArgs
-    {
-        public List<AnalogyLogMessage> NewMessages { get; }
-
-        public AnalogyNewMessagesEventArgs(List<AnalogyLogMessage> newMessages)
-        {
-            NewMessages = NewMessages;
-        }
-    }
 }

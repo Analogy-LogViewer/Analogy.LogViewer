@@ -72,7 +72,7 @@ namespace Analogy
                 string filename = Marshal.PtrToStringUni(_dataStruct.lpData, _dataStruct.cbData / 2);
 
                 string[] fileNames = { filename };
-                OpenOfflineFileWithSpecificDataProvider(fileNames);
+                _ = OpenOfflineFileWithSpecificDataProvider(fileNames);
                 Process currentProcess = Process.GetCurrentProcess();
                 IntPtr hWnd = currentProcess.MainWindowHandle;
                 if (hWnd != IntPtr.Zero)
@@ -171,7 +171,8 @@ namespace Analogy
                     {
                         var control = mainControl.Controls[i];
                         if (control is ILogWindow logWindow2) return logWindow2;
-                        return GetLogWindows(control);
+                        if (GetLogWindows(control) is ILogWindow log)
+                            return log;
                     }
 
                     return null;
@@ -485,17 +486,6 @@ namespace Analogy
         {
         }
 
-        private void bBtnOnlineEventLogs_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserControl offlineUC = new WindowsEventLog();
-            var page = dockManager1.AddPanel(DockingStyle.Float);
-            page.DockedAsTabbedDocument = true;
-            page.Controls.Add(offlineUC);
-            offlineUC.Dock = DockStyle.Fill;
-            page.Text = $"Windows Log";
-            dockManager1.ActivePanel = page;
-        }
-
         private void CreateDataSources()
         {
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
@@ -772,7 +762,7 @@ namespace Analogy
                 singleBtn.ItemClick += (sender, e) =>
                 {
                     CancellationTokenSource cts = new CancellationTokenSource();
-                    LocalLogFilesUC offlineUC = new LocalLogFilesUC(cts);
+                    LocalLogFilesUC offlineUC = new LocalLogFilesUC(single, cts);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
                     page.Tag = ribbonPage;
@@ -1342,10 +1332,11 @@ namespace Analogy
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            //var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.ID);
+            var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.ID);
             var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.ID);
-            //var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
-            var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
+            var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
+            var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedSmallImage(realTime.ID);
+            realTimeBtn.ImageOptions.LargeImage = imageLargeOffline ?? Resources.Database_off;
             realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ? $" - {realTime.OptionalTitle}" : string.Empty);
@@ -1367,6 +1358,7 @@ namespace Analogy
                 {
                     openedWindows++;
                     realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.LargeImage = imageLargeOnline ?? Resources.Database_on;
                     var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1382,6 +1374,7 @@ namespace Analogy
                             AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
                         realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                        realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
                     }
 
                     var page = dockManager1.AddPanel(DockingStyle.Float);
