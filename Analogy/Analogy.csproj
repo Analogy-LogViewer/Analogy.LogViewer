@@ -609,7 +609,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.2.9">
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.0">
     </PackageReference>
     <PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.1.3">
       <PrivateAssets>all</PrivateAssets>
@@ -629,7 +629,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="LiorBanai.NotificationWindow" Version="1.0.3" />
-    <PackageReference Include="MessagePack" Version="2.1.115" />
+    <PackageReference Include="MessagePack" Version="2.1.143" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

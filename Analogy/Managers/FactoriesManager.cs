@@ -20,7 +20,6 @@ namespace Analogy
         private static readonly Lazy<FactoriesManager>
             _instance = new Lazy<FactoriesManager>(() => new FactoriesManager());
 
-        private static object sync = new object();
         public static readonly FactoriesManager Instance = _instance.Value;
         private List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; private set; }
@@ -92,7 +91,7 @@ namespace Analogy
             }
             try
             {
-                await Task.WhenAll(initTasks); ;
+                await Task.WhenAll(initTasks);
             }
             catch (AggregateException ex)
             {
@@ -319,8 +318,8 @@ namespace Analogy
                         {
 
                             var dataProviderFactory = Activator.CreateInstance(aType) as IAnalogyDataProvidersFactory;
-                            var factory = Factories.First(f => f.Factory.FactoryId == dataProviderFactory.FactoryId);
-                            factory.AddDataProviderFactory(dataProviderFactory);
+                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == dataProviderFactory?.FactoryId);
+                            factory?.AddDataProviderFactory(dataProviderFactory);
                         }
 
                         foreach (Type aType in types.Where(aType =>
@@ -328,8 +327,8 @@ namespace Analogy
                         {
 
                             var settings = Activator.CreateInstance(aType) as IAnalogyDataProviderSettings;
-                            var factory = Factories.First(f => f.Factory.FactoryId == settings.FactoryId);
-                            factory.AddDataProvidersSettings(settings);
+                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == settings?.FactoryId);
+                            factory?.AddDataProvidersSettings(settings);
                         }
 
                         foreach (Type aType in types.Where(aType =>
@@ -337,8 +336,8 @@ namespace Analogy
                         {
 
                             var custom = Activator.CreateInstance(aType) as IAnalogyCustomActionsFactory;
-                            var factory = Factories.First(f => f.Factory.FactoryId == custom.FactoryId);
-                            factory.AddCustomActionFactory(custom);
+                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == custom?.FactoryId);
+                            factory?.AddCustomActionFactory(custom);
                         }
 
                         foreach (Type aType in types.Where(aType =>
@@ -346,16 +345,16 @@ namespace Analogy
                         {
 
                             var share = Activator.CreateInstance(aType) as IAnalogyShareableFactory;
-                            var factory = Factories.First(f => f.Factory.FactoryId == share.FactoryId);
-                            factory.AddShareableFactory(share);
+                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == share?.FactoryId);
+                            factory?.AddShareableFactory(share);
                         }
                         foreach (Type aType in types.Where(aType =>
                             aType.GetInterface(nameof(IAnalogyExtensionsFactory)) != null))
                         {
 
                             var extension = Activator.CreateInstance(aType) as IAnalogyExtensionsFactory;
-                            var factory = Factories.First(f => f.Factory.FactoryId == extension.FactoryId);
-                            factory.AddExtensionFactory(extension);
+                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == extension?.FactoryId);
+                            factory?.AddExtensionFactory(extension);
                         }
                     }
                     catch (ReflectionTypeLoadException ex)
