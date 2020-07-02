@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -65,6 +66,8 @@ namespace Analogy
         private static Regex IllegalCharactersRegex = new Regex("[" + @"\/:<>|" + "\"]", RegexOptions.Compiled);
         private static Regex CatchExtentionRegex = new Regex(@"^\s*.+\.([^\.]+)\s*$", RegexOptions.Compiled);
         private static string NonDotCharacters = @"[^.]*";
+      
+
         //
         /// <summary>
         /// 
@@ -277,6 +280,7 @@ namespace Analogy
             }
         }
 
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource)
         {
@@ -295,6 +299,14 @@ namespace Analogy
             dtr["ThreadID"] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
             dtr["MachineName"] = message.MachineName ?? string.Empty;
+            if (message.AdditionalInformation != null)
+            {
+                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                {
+                    dtr[info.Key] = info.Value;
+                }
+
+            }
             return dtr;
         }
     }

@@ -15,8 +15,8 @@
     <Product>Analogy Log Viewer</Product>
     <Description>Modern Log Viewer and analyzer.</Description>
     <Copyright>Copyright @ Lior Banai 2020</Copyright>
-    <AssemblyVersion>4.2.2.0</AssemblyVersion>
-    <FileVersion>4.2.2.0</FileVersion>
+    <AssemblyVersion>4.2.3.0</AssemblyVersion>
+    <FileVersion>4.2.3.0</FileVersion>
     <NoWarn>1591;1573;0419;1607</NoWarn>
     <PlatformToolset>v120</PlatformToolset>
     <BaseAddress>285212672</BaseAddress>
@@ -80,7 +80,7 @@
   <PropertyGroup>
     <PreBuildEvent />
     <PostBuildEvent />
-    <Version>4.2.2</Version>
+    <Version>4.2.3</Version>
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />

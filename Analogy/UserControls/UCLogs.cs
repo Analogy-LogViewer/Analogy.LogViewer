@@ -34,7 +34,8 @@ namespace Analogy
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
         private FileProcessor fileProcessor { get; set; }
-
+        ManualResetEvent columnAdderSync = new ManualResetEvent(false);
+        public List<string> CurrentColumns { get; set; }
         public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
         public event EventHandler<bool> FullMode;
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
@@ -125,6 +126,7 @@ namespace Analogy
             PagingManager = new PagingManager(this);
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
+            CurrentColumns = logGrid.Columns.Select(c => c.FieldName).ToList();
             SetupEventsHandlers();
         }
 
@@ -983,7 +985,6 @@ namespace Analogy
             {
                 PagingManager.IncrementTotalMissedMessages();
             }
-            lockSlim.EnterWriteLock();
             if (ExternalWindowsCount > 0)
             {
                 foreach (XtraFormLogGrid grid in ExternalWindows)
@@ -994,11 +995,34 @@ namespace Analogy
 
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
+            lockSlim.EnterWriteLock();
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
             }
+            lockSlim.ExitWriteLock();
+            if (message.AdditionalInformation != null)
+            {
+                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                {
+                    if (!CurrentColumns.Contains(info.Key))
+                    {
+                        BeginInvoke(new MethodInvoker(() =>
+                        {
+                            if (!logGrid.Columns.Select(g => g.FieldName).Contains(info.Key))
+                                logGrid.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                            CurrentColumns.Add(info.Key);
+                            columnAdderSync.Set();
 
+                        }));
+                        columnAdderSync.WaitOne();
+                        columnAdderSync.Reset();
+                    }
+
+                }
+
+            }
+            lockSlim.EnterWriteLock();
             if (hasAnyInPlaceExtensions)
             {
                 foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
@@ -1407,8 +1431,9 @@ namespace Analogy
             int[] selRows = LogGrid.GetSelectedRows();
             if (message == null) return;
             lockSlim.EnterWriteLock();
-            string dataSource = (string) LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
-            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message,dataSource);
+            string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
+            AddExtraColumnsIfNeededToBookmark(message);
+            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource);
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1422,6 +1447,42 @@ namespace Analogy
             if (persists)
                 BookmarkPersistManager.Instance.AddBookmarkedMessage(message, dataSource);
             lockSlim.ExitWriteLock();
+        }
+
+        private void AddExtraColumnsIfNeededToBookmark(AnalogyLogMessage message)
+        {
+            if (message.AdditionalInformation != null)
+            {
+                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                {
+                    if (!_bookmarkedMessages.Columns.Contains(info.Key))
+                    {
+
+                        if (!InvokeRequired)
+                        {
+
+                            if (!gridViewBookmarkedMessages.Columns.Select(g => g.FieldName).Contains(info.Key))
+                                gridViewBookmarkedMessages.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                            _bookmarkedMessages.Columns.Add(info.Key);
+                        }
+                        else
+                        {
+                            BeginInvoke(new MethodInvoker(() =>
+                            {
+                                if (!gridViewBookmarkedMessages.Columns.Select(g => g.FieldName).Contains(info.Key))
+                                    gridViewBookmarkedMessages.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                                _bookmarkedMessages.Columns.Add(info.Key);
+                                columnAdderSync.Set();
+                            }));
+                            columnAdderSync.WaitOne();
+                            columnAdderSync.Reset();
+
+                        }
+                    }
+                }
+            }
+
+
         }
 
         private void GoToMessage()
@@ -1868,7 +1929,7 @@ namespace Analogy
             var messages = groupingByChars[key];
             foreach (var message in messages)
             {
-
+                AddExtraColumnsIfNeededToBookmark(message);
                 DataRow dtr = Utils.CreateRow(grouped, message, "");
                 if (diffStartTime > DateTime.MinValue)
                 {
@@ -2194,7 +2255,7 @@ namespace Analogy
         {
             txtbSource.Text = "";
         }
-        
+
         private void sbtnIncludeModules_Click(object sender, EventArgs e)
         {
             txtbModule.Text = "";
