@@ -1001,26 +1001,9 @@ namespace Analogy
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
             }
             lockSlim.ExitWriteLock();
-            if (message.AdditionalInformation != null)
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
-                {
-                    if (!CurrentColumns.Contains(info.Key))
-                    {
-                        BeginInvoke(new MethodInvoker(() =>
-                        {
-                            if (!logGrid.Columns.Select(g => g.FieldName).Contains(info.Key))
-                                logGrid.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
-                            CurrentColumns.Add(info.Key);
-                            columnAdderSync.Set();
-
-                        }));
-                        columnAdderSync.WaitOne();
-                        columnAdderSync.Reset();
-                    }
-
-                }
-
+                AddExtraColumnsToLogGrid(logGrid, message);
             }
             lockSlim.EnterWriteLock();
             if (hasAnyInPlaceExtensions)
@@ -1047,6 +1030,37 @@ namespace Analogy
                 NewDataExist = true;
         }
 
+        private void AddExtraColumnsToLogGrid(GridView gridView, AnalogyLogMessage message)
+        {
+            foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+            {
+                if (!CurrentColumns.Contains(info.Key))
+                {
+                    if (this.InvokeRequired)
+                    {
+                        BeginInvoke(new MethodInvoker(() =>
+                     {
+                         if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
+                             gridView.Columns.Add(new GridColumn()
+                             { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                         CurrentColumns.Add(info.Key);
+                         columnAdderSync.Set();
+                     }));
+                        columnAdderSync.WaitOne();
+                        columnAdderSync.Reset();
+                    }
+                    else
+                    {
+                        if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
+                            gridView.Columns.Add(new GridColumn()
+                            { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                        CurrentColumns.Add(info.Key);
+                    }
+
+                }
+            }
+        }
+
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
 
@@ -1054,7 +1068,7 @@ namespace Analogy
             {
                 PagingManager.IncrementTotalMissedMessages();
             }
-            lockSlim.EnterWriteLock();
+            //lockSlim.EnterWriteLock();
             if (ExternalWindowsCount > 0)
             {
                 foreach (XtraFormLogGrid grid in ExternalWindows)
@@ -1081,10 +1095,13 @@ namespace Analogy
                         }
                     }
                 }
-
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+                {
+                    AddExtraColumnsToLogGrid(logGrid, message);
+                }
                 dtr.EndEdit();
             }
-            lockSlim.ExitWriteLock();
+            //lockSlim.ExitWriteLock();
             if (PagingManager.IsCurrentPageInView(_messageData))
                 NewDataExist = true;
 

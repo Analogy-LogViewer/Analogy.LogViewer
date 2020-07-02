@@ -11,7 +11,7 @@ namespace Analogy
 {
     public class PagingManager
     {
-        public List<string> CurrentColumns { get; set; }
+        //public List<string> CurrentColumns { get; set; }
         private static ManualResetEvent columnAdderSync = new ManualResetEvent(false);
         public ReaderWriterLockSlim columnsLockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private readonly UCLogs owner;
@@ -44,16 +44,16 @@ namespace Analogy
 
         public PagingManager(UCLogs owner)
         {
-            CurrentColumns = new List<string>();
+            //CurrentColumns = new List<string>();
             this.owner = owner;
             pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
 
             currentTable = Utils.DataTableConstructor();
-            foreach (DataColumn column in currentTable.Columns)
-            {
-                CurrentColumns.Add(column.ColumnName);
-            }
+            //foreach (DataColumn column in currentTable.Columns)
+            //{
+            //    CurrentColumns.Add(column.ColumnName);
+            //}
             pages.Add(currentTable);
             currentPageNumber = 1;
             allMessages = new List<AnalogyLogMessage>();
@@ -95,7 +95,6 @@ namespace Analogy
 
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
-            AddExtraColumnsIfNeeded(currentTable,message);
             var table = pages.Last();
             allMessages.Add(message);
             if (table.Rows.Count + 1 > pageSize)
@@ -107,6 +106,8 @@ namespace Analogy
             }
             try
             {
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+                    AddExtraColumnsIfNeeded(table, message);
                 lockSlim.EnterWriteLock();
                 DataRow dtr = Utils.CreateRow(table, message, dataSource);
                 table.Rows.Add(dtr);
@@ -126,7 +127,7 @@ namespace Analogy
             List<(DataRow row, AnalogyLogMessage message)> rows = new List<(DataRow row, AnalogyLogMessage message)>(messages.Count);
             foreach (var message in messages)
             {
-                AddExtraColumnsIfNeeded(currentTable,message);
+
                 if (message.Level == AnalogyLogLevel.Disabled)
                     continue; //ignore those messages
                 allMessages.Add(message);
@@ -138,7 +139,8 @@ namespace Analogy
                     var pageStartRowIndex = (pages.Count - 1) * pageSize;
                     OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
                 }
-
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+                    AddExtraColumnsIfNeeded(table, message);
                 countInsideTable++;
                 try
                 {
@@ -158,29 +160,27 @@ namespace Analogy
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null)
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
 
-                    if (!CurrentColumns.Contains(info.Key))
+                    if (!currentTable.Columns.Contains(info.Key))
                     {
                         columnsLockSlim.EnterWriteLock();
-                        if (!CurrentColumns.Contains(info.Key))
+                        if (!currentTable.Columns.Contains(info.Key))
                         {
                             if (!owner.InvokeRequired)
                             {
-                                CurrentColumns.Add(info.Key);
                                 table.Columns.Add(info.Key);
                             }
                             else
                             {
                                 owner.BeginInvoke(new MethodInvoker(() =>
                                 {
-                                    CurrentColumns.Add(info.Key);
                                     table.Columns.Add(info.Key);
                                     columnAdderSync.Set();
-                                    
+
                                 }));
                                 columnAdderSync.WaitOne();
                                 columnAdderSync.Reset();
