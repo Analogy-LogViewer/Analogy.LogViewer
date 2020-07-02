@@ -629,7 +629,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="LiorBanai.NotificationWindow" Version="1.0.3" />
-    <PackageReference Include="MessagePack" Version="2.1.143" />
+    <PackageReference Include="MessagePack" Version="2.1.152" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
