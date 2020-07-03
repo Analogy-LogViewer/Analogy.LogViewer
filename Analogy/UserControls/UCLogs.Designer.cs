@@ -93,12 +93,15 @@ namespace Analogy
             this.barSubItemSaveLog = new DevExpress.XtraBars.BarSubItem();
             this.bBtnSaveEntireLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnSaveLog = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnSaveCurrentSelectionCustomFormat = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSaveEntireInAnalogy = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSaveViewAgnostic = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnSaveCurrentSelectionAnalogyFormat = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnUndockSelection = new DevExpress.XtraBars.BarButtonItem();
             this.bbiScreenshot = new DevExpress.XtraBars.BarButtonItem();
             this.bSMExports = new DevExpress.XtraBars.BarSubItem();
             this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
@@ -915,9 +918,12 @@ namespace Analogy
             this.bBtnUndockViewPerProcess,
             this.bBtnShare,
             this.bBtnFullGrid,
-            this.bbtnReload});
+            this.bbtnReload,
+            this.bBtnSaveCurrentSelectionCustomFormat,
+            this.bBtnSaveCurrentSelectionAnalogyFormat,
+            this.bBtnUndockSelection});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 39;
+            this.barManager1.MaxItemId = 42;
             // 
             // barTopFiltering
             // 
@@ -1010,14 +1016,16 @@ namespace Analogy
             this.barSubItemSaveLog.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveEntireLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveCurrentSelectionCustomFormat),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSaveEntireInAnalogy),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSaveViewAgnostic)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSaveViewAgnostic),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnSaveCurrentSelectionAnalogyFormat)});
             this.barSubItemSaveLog.Name = "barSubItemSaveLog";
             this.barSubItemSaveLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bBtnSaveEntireLog
             // 
-            this.bBtnSaveEntireLog.Caption = "Save Entire Log (custom Format)";
+            this.bBtnSaveEntireLog.Caption = "Save entire Log (custom Format)";
             this.bBtnSaveEntireLog.Id = 25;
             this.bBtnSaveEntireLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.Image")));
             this.bBtnSaveEntireLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.LargeImage")));
@@ -1027,7 +1035,7 @@ namespace Analogy
             // 
             // bBtnSaveLog
             // 
-            this.bBtnSaveLog.Caption = "Save Current View (custom Format)";
+            this.bBtnSaveLog.Caption = "Save current view (custom Format)";
             this.bBtnSaveLog.Id = 4;
             this.bBtnSaveLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.Image")));
             this.bBtnSaveLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.LargeImage")));
@@ -1035,9 +1043,18 @@ namespace Analogy
             this.bBtnSaveLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnSaveLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveLog_ItemClick);
             // 
+            // bBtnSaveCurrentSelectionCustomFormat
+            // 
+            this.bBtnSaveCurrentSelectionCustomFormat.Caption = "save current rows selection (custom Format)";
+            this.bBtnSaveCurrentSelectionCustomFormat.Id = 39;
+            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image")));
+            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage")));
+            this.bBtnSaveCurrentSelectionCustomFormat.Name = "bBtnSaveCurrentSelectionCustomFormat";
+            this.bBtnSaveCurrentSelectionCustomFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionCustomFormat_ItemClick);
+            // 
             // barButtonItemSaveEntireInAnalogy
             // 
-            this.barButtonItemSaveEntireInAnalogy.Caption = "Save Entire Log in Analogy Format (agnostic to specific implementation)";
+            this.barButtonItemSaveEntireInAnalogy.Caption = "Save entire log in Analogy Format (agnostic to specific implementation)";
             this.barButtonItemSaveEntireInAnalogy.Id = 32;
             this.barButtonItemSaveEntireInAnalogy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.Image")));
             this.barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage")));
@@ -1046,12 +1063,22 @@ namespace Analogy
             // 
             // bbtnSaveViewAgnostic
             // 
-            this.bbtnSaveViewAgnostic.Caption = "Save Current View in Analogy Format (agnostic to Specific implementation)";
+            this.bbtnSaveViewAgnostic.Caption = "Save current view in Analogy Format (agnostic to Specific implementation)";
             this.bbtnSaveViewAgnostic.Id = 30;
             this.bbtnSaveViewAgnostic.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.Image")));
             this.bbtnSaveViewAgnostic.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.LargeImage")));
             this.bbtnSaveViewAgnostic.Name = "bbtnSaveViewAgnostic";
             this.bbtnSaveViewAgnostic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSaveViewAgnostic_ItemClick);
+            // 
+            // bBtnSaveCurrentSelectionAnalogyFormat
+            // 
+            this.bBtnSaveCurrentSelectionAnalogyFormat.Caption = "Save current rows selection in Analogy Format (agnostic to Specific implementatio" +
+    "n)";
+            this.bBtnSaveCurrentSelectionAnalogyFormat.Id = 40;
+            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image")));
+            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage")));
+            this.bBtnSaveCurrentSelectionAnalogyFormat.Name = "bBtnSaveCurrentSelectionAnalogyFormat";
+            this.bBtnSaveCurrentSelectionAnalogyFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionAnalogyFormat_ItemClick);
             // 
             // bBtnFullGrid
             // 
@@ -1069,7 +1096,8 @@ namespace Analogy
             this.barSubItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockView),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockViewPerProcess)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockViewPerProcess),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockSelection)});
             this.barSubItem1.Name = "barSubItem1";
             this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1091,6 +1119,15 @@ namespace Analogy
             this.bBtnUndockViewPerProcess.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockViewPerProcess.ImageOptions.LargeImage")));
             this.bBtnUndockViewPerProcess.Name = "bBtnUndockViewPerProcess";
             this.bBtnUndockViewPerProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockViewPerProcess_ItemClick);
+            // 
+            // bBtnUndockSelection
+            // 
+            this.bBtnUndockSelection.Caption = "Undock rows selection";
+            this.bBtnUndockSelection.Id = 41;
+            this.bBtnUndockSelection.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockSelection.ImageOptions.Image")));
+            this.bBtnUndockSelection.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockSelection.ImageOptions.LargeImage")));
+            this.bBtnUndockSelection.Name = "bBtnUndockSelection";
+            this.bBtnUndockSelection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockSelection_ItemClick);
             // 
             // bbiScreenshot
             // 
@@ -3402,5 +3439,8 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnReload;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMachineName;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkMachineName;
+        private DevExpress.XtraBars.BarButtonItem bBtnSaveCurrentSelectionCustomFormat;
+        private DevExpress.XtraBars.BarButtonItem bBtnSaveCurrentSelectionAnalogyFormat;
+        private DevExpress.XtraBars.BarButtonItem bBtnUndockSelection;
     }
 }

@@ -157,6 +157,8 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xTabMRU = new DevExpress.XtraTab.XtraTabPage();
+            this.lblRecentFolders = new DevExpress.XtraEditors.LabelControl();
+            this.nudRecentFolders = new System.Windows.Forms.NumericUpDown();
             this.lblRecent = new DevExpress.XtraEditors.LabelControl();
             this.nudRecentFiles = new System.Windows.Forms.NumericUpDown();
             this.xtraTabPageResources = new DevExpress.XtraTab.XtraTabPage();
@@ -202,8 +204,7 @@
             this.gcIntervals = new DevExpress.XtraEditors.GroupControl();
             this.cbUpdates = new DevExpress.XtraEditors.ComboBoxEdit();
             this.lblUpdates = new DevExpress.XtraEditors.LabelControl();
-            this.lblRecentFolders = new DevExpress.XtraEditors.LabelControl();
-            this.nudRecentFolders = new System.Windows.Forms.NumericUpDown();
+            this.tsCheckAdditionalInformation = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageFilter.SuspendLayout();
@@ -284,6 +285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tswitchExtensionsStartup.Properties)).BeginInit();
             this.xtPage.SuspendLayout();
             this.xTabMRU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).BeginInit();
             this.xtraTabPageResources.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).BeginInit();
@@ -311,7 +313,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcIntervals)).BeginInit();
             this.gcIntervals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbUpdates.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -324,7 +326,7 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageFilter;
-            this.tabControlMain.Size = new System.Drawing.Size(991, 765);
+            this.tabControlMain.Size = new System.Drawing.Size(991, 766);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageApplication,
@@ -346,7 +348,7 @@
             this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageFilter.ImageOptions.Image")));
             this.xtraTabPageFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPageFilter.Name = "xtraTabPageFilter";
-            this.xtraTabPageFilter.Size = new System.Drawing.Size(790, 758);
+            this.xtraTabPageFilter.Size = new System.Drawing.Size(790, 759);
             this.xtraTabPageFilter.Text = "Filtering and Interactions";
             // 
             // groupControl5
@@ -378,7 +380,7 @@
             // 
             // teDateTimeFormat
             // 
-            this.teDateTimeFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.teDateTimeFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teDateTimeFormat.Location = new System.Drawing.Point(118, 246);
             this.teDateTimeFormat.Name = "teDateTimeFormat";
@@ -395,7 +397,7 @@
             // 
             // panelControlMessages
             // 
-            this.panelControlMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panelControlMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControlMessages.Controls.Add(this.gridControl);
             this.panelControlMessages.Location = new System.Drawing.Point(5, 88);
@@ -713,7 +715,7 @@
             // 
             // teHeader
             // 
-            this.teHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.teHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teHeader.Location = new System.Drawing.Point(5, 54);
             this.teHeader.Name = "teHeader";
@@ -742,7 +744,7 @@
             // 
             // tsDataTimeAscendDescend
             // 
-            this.tsDataTimeAscendDescend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsDataTimeAscendDescend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsDataTimeAscendDescend.Location = new System.Drawing.Point(6, 64);
             this.tsDataTimeAscendDescend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -755,7 +757,7 @@
             // 
             // tsHistory
             // 
-            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsHistory.Location = new System.Drawing.Point(5, 169);
             this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -833,7 +835,7 @@
             // 
             // tsErrorLevelAsDefault
             // 
-            this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 96);
             this.tsErrorLevelAsDefault.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -846,7 +848,7 @@
             // 
             // tsFilteringExclude
             // 
-            this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsFilteringExclude.Location = new System.Drawing.Point(5, 33);
             this.tsFilteringExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -859,7 +861,7 @@
             // 
             // tsAutoComplete
             // 
-            this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsAutoComplete.Location = new System.Drawing.Point(5, 130);
             this.tsAutoComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -875,21 +877,21 @@
             this.xtraTabPageApplication.Controls.Add(this.groupControl3);
             this.xtraTabPageApplication.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_icon1;
             this.xtraTabPageApplication.Name = "xtraTabPageApplication";
-            this.xtraTabPageApplication.Size = new System.Drawing.Size(790, 666);
+            this.xtraTabPageApplication.Size = new System.Drawing.Size(790, 759);
             this.xtraTabPageApplication.Text = "Application Settings";
             // 
             // groupControl4
             // 
-            this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl4.Controls.Add(this.peAnalogy);
             this.groupControl4.Controls.Add(this.rbtnLightIconColor);
             this.groupControl4.Controls.Add(this.rbtnDarkIconColor);
-            this.groupControl4.Location = new System.Drawing.Point(5, 160);
+            this.groupControl4.Location = new System.Drawing.Point(5, 186);
             this.groupControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(781, 131);
+            this.groupControl4.Size = new System.Drawing.Size(781, 132);
             this.groupControl4.TabIndex = 6;
             this.groupControl4.Text = "UI Settings";
             // 
@@ -929,22 +931,23 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl3.Controls.Add(this.tsCheckAdditionalInformation);
             this.groupControl3.Controls.Add(this.tsTraybar);
             this.groupControl3.Controls.Add(this.tsFileCaching);
             this.groupControl3.Controls.Add(this.tsSingleInstance);
             this.groupControl3.Location = new System.Drawing.Point(5, 10);
             this.groupControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(781, 146);
+            this.groupControl3.Size = new System.Drawing.Size(781, 172);
             this.groupControl3.TabIndex = 5;
             this.groupControl3.Text = "General";
             // 
             // tsTraybar
             // 
-            this.tsTraybar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsTraybar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsTraybar.Location = new System.Drawing.Point(18, 101);
             this.tsTraybar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -956,7 +959,7 @@
             // 
             // tsFileCaching
             // 
-            this.tsFileCaching.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsFileCaching.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsFileCaching.EditValue = true;
             this.tsFileCaching.Location = new System.Drawing.Point(18, 69);
@@ -970,7 +973,7 @@
             // 
             // tsSingleInstance
             // 
-            this.tsSingleInstance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsSingleInstance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsSingleInstance.EditValue = true;
             this.tsSingleInstance.Location = new System.Drawing.Point(18, 37);
@@ -987,7 +990,7 @@
             this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPagePreDefined.ImageOptions.Image")));
             this.xtraTabPagePreDefined.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPagePreDefined.Name = "xtraTabPagePreDefined";
-            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(790, 666);
+            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(790, 759);
             this.xtraTabPagePreDefined.Text = "Pre-Defined Queries";
             // 
             // xtraTabControlQueries
@@ -996,7 +999,7 @@
             this.xtraTabControlQueries.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlQueries.Name = "xtraTabControlQueries";
             this.xtraTabControlQueries.SelectedTabPage = this.xtraTabPageColorHighlight;
-            this.xtraTabControlQueries.Size = new System.Drawing.Size(790, 666);
+            this.xtraTabControlQueries.Size = new System.Drawing.Size(790, 759);
             this.xtraTabControlQueries.TabIndex = 0;
             this.xtraTabControlQueries.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageColorHighlight,
@@ -1009,13 +1012,13 @@
             this.xtraTabPageColorHighlight.Controls.Add(this.lboxHighlightItems);
             this.xtraTabPageColorHighlight.Controls.Add(this.gcHighlight);
             this.xtraTabPageColorHighlight.Name = "xtraTabPageColorHighlight";
-            this.xtraTabPageColorHighlight.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPageColorHighlight.Size = new System.Drawing.Size(783, 725);
             this.xtraTabPageColorHighlight.Text = "Color Highlighting";
             // 
             // sbtnDeleteHighlight
             // 
             this.sbtnDeleteHighlight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteHighlight.Location = new System.Drawing.Point(670, 602);
+            this.sbtnDeleteHighlight.Location = new System.Drawing.Point(670, 695);
             this.sbtnDeleteHighlight.Name = "sbtnDeleteHighlight";
             this.sbtnDeleteHighlight.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteHighlight.TabIndex = 7;
@@ -1024,12 +1027,12 @@
             // 
             // lboxHighlightItems
             // 
-            this.lboxHighlightItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lboxHighlightItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxHighlightItems.Location = new System.Drawing.Point(5, 206);
             this.lboxHighlightItems.Name = "lboxHighlightItems";
-            this.lboxHighlightItems.Size = new System.Drawing.Size(775, 390);
+            this.lboxHighlightItems.Size = new System.Drawing.Size(775, 483);
             this.lboxHighlightItems.TabIndex = 1;
             // 
             // gcHighlight
@@ -1068,7 +1071,7 @@
             // 
             // cpeHighlightPreDefined
             // 
-            this.cpeHighlightPreDefined.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeHighlightPreDefined.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeHighlightPreDefined.EditValue = System.Drawing.Color.Empty;
             this.cpeHighlightPreDefined.Location = new System.Drawing.Point(194, 106);
@@ -1081,7 +1084,7 @@
             // 
             // teHighlightEquals
             // 
-            this.teHighlightEquals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.teHighlightEquals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teHighlightEquals.Enabled = false;
             this.teHighlightEquals.Location = new System.Drawing.Point(194, 76);
@@ -1091,7 +1094,7 @@
             // 
             // teHighlightContains
             // 
-            this.teHighlightContains.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.teHighlightContains.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teHighlightContains.Location = new System.Drawing.Point(194, 43);
             this.teHighlightContains.Name = "teHighlightContains";
@@ -1137,13 +1140,13 @@
             this.xtraTabPageFilters.Controls.Add(this.txtbExcludeFilter);
             this.xtraTabPageFilters.Controls.Add(this.txtbIncludeTextFilter);
             this.xtraTabPageFilters.Name = "xtraTabPageFilters";
-            this.xtraTabPageFilters.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPageFilters.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPageFilters.Text = "Filters";
             // 
             // sbtnDeleteFilter
             // 
             this.sbtnDeleteFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteFilter.Location = new System.Drawing.Point(669, 600);
+            this.sbtnDeleteFilter.Location = new System.Drawing.Point(669, 692);
             this.sbtnDeleteFilter.Name = "sbtnDeleteFilter";
             this.sbtnDeleteFilter.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteFilter.TabIndex = 38;
@@ -1152,12 +1155,12 @@
             // 
             // lboxFilters
             // 
-            this.lboxFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lboxFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxFilters.Location = new System.Drawing.Point(4, 251);
             this.lboxFilters.Name = "lboxFilters";
-            this.lboxFilters.Size = new System.Drawing.Size(775, 343);
+            this.lboxFilters.Size = new System.Drawing.Size(775, 435);
             this.lboxFilters.TabIndex = 37;
             // 
             // sbtnAddFilter
@@ -1172,7 +1175,7 @@
             // 
             // lblExplaination
             // 
-            this.lblExplaination.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblExplaination.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExplaination.AutoEllipsis = true;
             this.lblExplaination.Location = new System.Drawing.Point(4, 161);
@@ -1219,7 +1222,7 @@
             // 
             // txtbSourcesFilter
             // 
-            this.txtbSourcesFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbSourcesFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbSourcesFilter.Location = new System.Drawing.Point(200, 67);
             this.txtbSourcesFilter.Name = "txtbSourcesFilter";
@@ -1228,7 +1231,7 @@
             // 
             // txtbModulesFilter
             // 
-            this.txtbModulesFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbModulesFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbModulesFilter.Location = new System.Drawing.Point(200, 97);
             this.txtbModulesFilter.Name = "txtbModulesFilter";
@@ -1237,7 +1240,7 @@
             // 
             // txtbExcludeFilter
             // 
-            this.txtbExcludeFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbExcludeFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbExcludeFilter.Location = new System.Drawing.Point(200, 37);
             this.txtbExcludeFilter.Name = "txtbExcludeFilter";
@@ -1246,7 +1249,7 @@
             // 
             // txtbIncludeTextFilter
             // 
-            this.txtbIncludeTextFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbIncludeTextFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbIncludeTextFilter.Location = new System.Drawing.Point(200, 8);
             this.txtbIncludeTextFilter.Name = "txtbIncludeTextFilter";
@@ -1268,13 +1271,13 @@
             this.xtraTabPageAlerts.Controls.Add(this.txtbExcludeAlert);
             this.xtraTabPageAlerts.Controls.Add(this.txtbIncludeTextAlert);
             this.xtraTabPageAlerts.Name = "xtraTabPageAlerts";
-            this.xtraTabPageAlerts.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPageAlerts.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPageAlerts.Text = "Alert and Notifications";
             // 
             // sbtnDeleteAlerts
             // 
             this.sbtnDeleteAlerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteAlerts.Location = new System.Drawing.Point(669, 600);
+            this.sbtnDeleteAlerts.Location = new System.Drawing.Point(669, 692);
             this.sbtnDeleteAlerts.Name = "sbtnDeleteAlerts";
             this.sbtnDeleteAlerts.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteAlerts.TabIndex = 46;
@@ -1283,12 +1286,12 @@
             // 
             // lboxAlerts
             // 
-            this.lboxAlerts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lboxAlerts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxAlerts.Location = new System.Drawing.Point(4, 251);
             this.lboxAlerts.Name = "lboxAlerts";
-            this.lboxAlerts.Size = new System.Drawing.Size(775, 343);
+            this.lboxAlerts.Size = new System.Drawing.Size(775, 435);
             this.lboxAlerts.TabIndex = 45;
             // 
             // sbtnAddAlerts
@@ -1303,7 +1306,7 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoEllipsis = true;
             this.label5.Location = new System.Drawing.Point(4, 161);
@@ -1350,7 +1353,7 @@
             // 
             // txtbSourcesAlert
             // 
-            this.txtbSourcesAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbSourcesAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbSourcesAlert.Location = new System.Drawing.Point(200, 67);
             this.txtbSourcesAlert.Name = "txtbSourcesAlert";
@@ -1359,7 +1362,7 @@
             // 
             // txtbModulesAlert
             // 
-            this.txtbModulesAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbModulesAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbModulesAlert.Location = new System.Drawing.Point(200, 97);
             this.txtbModulesAlert.Name = "txtbModulesAlert";
@@ -1368,7 +1371,7 @@
             // 
             // txtbExcludeAlert
             // 
-            this.txtbExcludeAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbExcludeAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbExcludeAlert.Location = new System.Drawing.Point(200, 37);
             this.txtbExcludeAlert.Name = "txtbExcludeAlert";
@@ -1377,7 +1380,7 @@
             // 
             // txtbIncludeTextAlert
             // 
-            this.txtbIncludeTextAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbIncludeTextAlert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbIncludeTextAlert.Location = new System.Drawing.Point(200, 8);
             this.txtbIncludeTextAlert.Name = "txtbIncludeTextAlert";
@@ -1399,7 +1402,7 @@
             this.tpLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpLookAndFeel.ImageOptions.Image")));
             this.tpLookAndFeel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpLookAndFeel.Name = "tpLookAndFeel";
-            this.tpLookAndFeel.Size = new System.Drawing.Size(790, 666);
+            this.tpLookAndFeel.Size = new System.Drawing.Size(790, 758);
             this.tpLookAndFeel.Text = "Look And Feel";
             // 
             // ceOverrideLogLevelColor
@@ -1423,7 +1426,7 @@
             // 
             // cpeNewMessagesColor
             // 
-            this.cpeNewMessagesColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeNewMessagesColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeNewMessagesColor.EditValue = System.Drawing.Color.Empty;
             this.cpeNewMessagesColor.Location = new System.Drawing.Point(345, 452);
@@ -1464,7 +1467,7 @@
             // 
             // cpeHighlightColor
             // 
-            this.cpeHighlightColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeHighlightColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeHighlightColor.EditValue = System.Drawing.Color.Empty;
             this.cpeHighlightColor.Location = new System.Drawing.Point(154, 424);
@@ -1477,8 +1480,8 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl2.Controls.Add(this.lblLogLevelAnalogyInformation);
             this.groupControl2.Controls.Add(this.cpeLogLevelAnalogyInformation);
@@ -1516,7 +1519,7 @@
             // 
             // cpeLogLevelAnalogyInformation
             // 
-            this.cpeLogLevelAnalogyInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelAnalogyInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelAnalogyInformation.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelAnalogyInformation.Location = new System.Drawing.Point(140, 307);
@@ -1537,7 +1540,7 @@
             // 
             // cpeLogLevelCritical
             // 
-            this.cpeLogLevelCritical.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelCritical.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelCritical.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelCritical.Location = new System.Drawing.Point(140, 279);
@@ -1558,7 +1561,7 @@
             // 
             // cpeLogLevelError
             // 
-            this.cpeLogLevelError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelError.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelError.Location = new System.Drawing.Point(140, 251);
@@ -1579,7 +1582,7 @@
             // 
             // cpeLogLevelWarning
             // 
-            this.cpeLogLevelWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelWarning.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelWarning.Location = new System.Drawing.Point(140, 223);
@@ -1600,7 +1603,7 @@
             // 
             // cpeLogLevelEvent
             // 
-            this.cpeLogLevelEvent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelEvent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelEvent.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelEvent.Location = new System.Drawing.Point(140, 195);
@@ -1621,7 +1624,7 @@
             // 
             // cpeLogLevelDebug
             // 
-            this.cpeLogLevelDebug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelDebug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelDebug.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelDebug.Location = new System.Drawing.Point(140, 167);
@@ -1642,7 +1645,7 @@
             // 
             // cpeLogLevelVerbose
             // 
-            this.cpeLogLevelVerbose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelVerbose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelVerbose.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelVerbose.Location = new System.Drawing.Point(140, 139);
@@ -1663,7 +1666,7 @@
             // 
             // cpeLogLevelTrace
             // 
-            this.cpeLogLevelTrace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelTrace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelTrace.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelTrace.Location = new System.Drawing.Point(140, 111);
@@ -1684,7 +1687,7 @@
             // 
             // cpeLogLevelDisabled
             // 
-            this.cpeLogLevelDisabled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelDisabled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelDisabled.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelDisabled.Location = new System.Drawing.Point(140, 83);
@@ -1705,7 +1708,7 @@
             // 
             // cpeLogLevelUnknown
             // 
-            this.cpeLogLevelUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cpeLogLevelUnknown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeLogLevelUnknown.EditValue = System.Drawing.Color.Empty;
             this.cpeLogLevelUnknown.Location = new System.Drawing.Point(140, 55);
@@ -1718,7 +1721,7 @@
             // 
             // tsStartupRibbonMinimized
             // 
-            this.tsStartupRibbonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsStartupRibbonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsStartupRibbonMinimized.EditValue = true;
             this.tsStartupRibbonMinimized.Location = new System.Drawing.Point(14, 6);
@@ -1732,7 +1735,7 @@
             // 
             // tsSimpleMode
             // 
-            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsSimpleMode.Enabled = false;
             this.tsSimpleMode.Location = new System.Drawing.Point(14, 41);
@@ -1751,7 +1754,7 @@
             this.tpExtensions.ImageOptions.Image = global::Analogy.Properties.Resources.extension32;
             this.tpExtensions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpExtensions.Name = "tpExtensions";
-            this.tpExtensions.Size = new System.Drawing.Size(790, 666);
+            this.tpExtensions.Size = new System.Drawing.Size(790, 758);
             this.tpExtensions.Text = "Extensions";
             // 
             // xtcExtensions
@@ -1760,7 +1763,7 @@
             this.xtcExtensions.Location = new System.Drawing.Point(0, 0);
             this.xtcExtensions.Name = "xtcExtensions";
             this.xtcExtensions.SelectedTabPage = this.xtraTabPage1;
-            this.xtcExtensions.Size = new System.Drawing.Size(790, 666);
+            this.xtcExtensions.Size = new System.Drawing.Size(790, 758);
             this.xtcExtensions.TabIndex = 8;
             this.xtcExtensions.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1770,7 +1773,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.extensionsUC1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPage1.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPage1.Text = "Extensions";
             // 
             // extensionsUC1
@@ -1780,7 +1783,7 @@
             this.extensionsUC1.Location = new System.Drawing.Point(0, 0);
             this.extensionsUC1.Margin = new System.Windows.Forms.Padding(4);
             this.extensionsUC1.Name = "extensionsUC1";
-            this.extensionsUC1.Size = new System.Drawing.Size(783, 632);
+            this.extensionsUC1.Size = new System.Drawing.Size(783, 724);
             this.extensionsUC1.TabIndex = 0;
             // 
             // xtraTabPage2
@@ -1788,7 +1791,7 @@
             this.xtraTabPage2.Controls.Add(this.chklItems);
             this.xtraTabPage2.Controls.Add(this.tswitchExtensionsStartup);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPage2.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPage2.Text = "Startup";
             // 
             // chklItems
@@ -1799,7 +1802,7 @@
             this.chklItems.Location = new System.Drawing.Point(0, 28);
             this.chklItems.Margin = new System.Windows.Forms.Padding(6, 10, 6, 6);
             this.chklItems.Name = "chklItems";
-            this.chklItems.Size = new System.Drawing.Size(783, 604);
+            this.chklItems.Size = new System.Drawing.Size(783, 696);
             this.chklItems.TabIndex = 6;
             this.chklItems.SelectedIndexChanged += new System.EventHandler(this.chklItems_SelectedIndexChanged);
             // 
@@ -1825,7 +1828,7 @@
             this.xtPage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtPage.ImageOptions.Image")));
             this.xtPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtPage.Name = "xtPage";
-            this.xtPage.Size = new System.Drawing.Size(790, 666);
+            this.xtPage.Size = new System.Drawing.Size(790, 758);
             this.xtPage.Text = "Shortcuts";
             // 
             // labelControl10
@@ -1885,6 +1888,29 @@
             this.xTabMRU.Size = new System.Drawing.Size(790, 758);
             this.xTabMRU.Text = "Most Recently Used";
             // 
+            // lblRecentFolders
+            // 
+            this.lblRecentFolders.Location = new System.Drawing.Point(20, 43);
+            this.lblRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lblRecentFolders.Name = "lblRecentFolders";
+            this.lblRecentFolders.Size = new System.Drawing.Size(194, 16);
+            this.lblRecentFolders.TabIndex = 5;
+            this.lblRecentFolders.Text = "Number of recent folders to keep:";
+            // 
+            // nudRecentFolders
+            // 
+            this.nudRecentFolders.Location = new System.Drawing.Point(247, 41);
+            this.nudRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudRecentFolders.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudRecentFolders.Name = "nudRecentFolders";
+            this.nudRecentFolders.Size = new System.Drawing.Size(73, 23);
+            this.nudRecentFolders.TabIndex = 4;
+            this.nudRecentFolders.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // lblRecent
             // 
             this.lblRecent.Location = new System.Drawing.Point(20, 12);
@@ -1915,7 +1941,7 @@
             this.xtraTabPageResources.Controls.Add(this.toggleSwitchIdleMode);
             this.xtraTabPageResources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageResources.ImageOptions.Image")));
             this.xtraTabPageResources.Name = "xtraTabPageResources";
-            this.xtraTabPageResources.Size = new System.Drawing.Size(790, 666);
+            this.xtraTabPageResources.Size = new System.Drawing.Size(790, 758);
             this.xtraTabPageResources.Text = "Resources Usage";
             // 
             // labelControl5
@@ -1954,7 +1980,7 @@
             // 
             // toggleSwitchIdleMode
             // 
-            this.toggleSwitchIdleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.toggleSwitchIdleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.toggleSwitchIdleMode.Location = new System.Drawing.Point(16, 10);
             this.toggleSwitchIdleMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1970,7 +1996,7 @@
             this.xtraTabPageDataProviders.Controls.Add(this.xtraTabControlDataProviderSettings);
             this.xtraTabPageDataProviders.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_Icon2;
             this.xtraTabPageDataProviders.Name = "xtraTabPageDataProviders";
-            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(790, 666);
+            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(790, 758);
             this.xtraTabPageDataProviders.Text = "Data Providers";
             // 
             // xtraTabControlDataProviderSettings
@@ -1979,7 +2005,7 @@
             this.xtraTabControlDataProviderSettings.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlDataProviderSettings.Name = "xtraTabControlDataProviderSettings";
             this.xtraTabControlDataProviderSettings.SelectedTabPage = this.xtraTabPageDataProvidersOrder;
-            this.xtraTabControlDataProviderSettings.Size = new System.Drawing.Size(790, 666);
+            this.xtraTabControlDataProviderSettings.Size = new System.Drawing.Size(790, 758);
             this.xtraTabControlDataProviderSettings.TabIndex = 10;
             this.xtraTabControlDataProviderSettings.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageDataProvidersOrder,
@@ -1992,7 +2018,7 @@
             // 
             this.xtraTabPageDataProvidersOrder.Controls.Add(this.splitContainerControlDataProviders);
             this.xtraTabPageDataProvidersOrder.Name = "xtraTabPageDataProvidersOrder";
-            this.xtraTabPageDataProvidersOrder.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPageDataProvidersOrder.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPageDataProvidersOrder.Text = "Data Providers Enable/Disable";
             // 
             // splitContainerControlDataProviders
@@ -2008,7 +2034,7 @@
             this.splitContainerControlDataProviders.Panel2.Controls.Add(this.labelControl7);
             this.splitContainerControlDataProviders.Panel2.Controls.Add(this.tsRememberLastOpenedDataProvider);
             this.splitContainerControlDataProviders.Panel2.Text = "Panel2";
-            this.splitContainerControlDataProviders.Size = new System.Drawing.Size(783, 632);
+            this.splitContainerControlDataProviders.Size = new System.Drawing.Size(783, 724);
             this.splitContainerControlDataProviders.SplitterPosition = 46;
             this.splitContainerControlDataProviders.TabIndex = 14;
             // 
@@ -2060,7 +2086,7 @@
             this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 64);
             this.chkLstDataProviderStatus.Margin = new System.Windows.Forms.Padding(6);
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(777, 568);
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(777, 660);
             this.chkLstDataProviderStatus.TabIndex = 10;
             // 
             // labelControl7
@@ -2093,7 +2119,7 @@
             this.xtraTabPageDataProvidersRealTime.Controls.Add(this.chkLstItemRealTimeDataSources);
             this.xtraTabPageDataProvidersRealTime.Controls.Add(this.labelControl6);
             this.xtraTabPageDataProvidersRealTime.Name = "xtraTabPageDataProvidersRealTime";
-            this.xtraTabPageDataProvidersRealTime.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPageDataProvidersRealTime.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPageDataProvidersRealTime.Text = "Real time Auto-Startup";
             // 
             // chkLstItemRealTimeDataSources
@@ -2104,7 +2130,7 @@
             this.chkLstItemRealTimeDataSources.Location = new System.Drawing.Point(0, 36);
             this.chkLstItemRealTimeDataSources.Margin = new System.Windows.Forms.Padding(6);
             this.chkLstItemRealTimeDataSources.Name = "chkLstItemRealTimeDataSources";
-            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(783, 596);
+            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(783, 688);
             this.chkLstItemRealTimeDataSources.TabIndex = 8;
             this.chkLstItemRealTimeDataSources.SelectedIndexChanged += new System.EventHandler(this.ChkLstItemRealTimeDataSources_SelectedIndexChanged);
             // 
@@ -2128,7 +2154,7 @@
             this.xtraTabPageDataProviderAssociation.Controls.Add(this.labelControl8);
             this.xtraTabPageDataProviderAssociation.Controls.Add(this.txtbDataProviderAssociation);
             this.xtraTabPageDataProviderAssociation.Name = "xtraTabPageDataProviderAssociation";
-            this.xtraTabPageDataProviderAssociation.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPageDataProviderAssociation.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPageDataProviderAssociation.Text = "Default File Associations";
             // 
             // cbDataProviderAssociation
@@ -2161,7 +2187,7 @@
             // 
             // txtbDataProviderAssociation
             // 
-            this.txtbDataProviderAssociation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbDataProviderAssociation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbDataProviderAssociation.Location = new System.Drawing.Point(224, 54);
             this.txtbDataProviderAssociation.Name = "txtbDataProviderAssociation";
@@ -2172,7 +2198,7 @@
             // 
             this.xtraTabPageDataProvidersCustom.Controls.Add(this.btnDataProviderCustomSettings);
             this.xtraTabPageDataProvidersCustom.Name = "xtraTabPageDataProvidersCustom";
-            this.xtraTabPageDataProvidersCustom.Size = new System.Drawing.Size(783, 632);
+            this.xtraTabPageDataProvidersCustom.Size = new System.Drawing.Size(783, 724);
             this.xtraTabPageDataProvidersCustom.Text = "Custom Settings";
             // 
             // btnDataProviderCustomSettings
@@ -2195,7 +2221,7 @@
             this.xtpExternalLocations.Controls.Add(this.listBoxFoldersProbing);
             this.xtpExternalLocations.Controls.Add(this.sbtnFolderProbingAdd);
             this.xtpExternalLocations.Name = "xtpExternalLocations";
-            this.xtpExternalLocations.Size = new System.Drawing.Size(783, 632);
+            this.xtpExternalLocations.Size = new System.Drawing.Size(783, 724);
             this.xtpExternalLocations.Text = "External Locations";
             // 
             // lblAssemblies
@@ -2232,7 +2258,7 @@
             // 
             // teFoldersProbing
             // 
-            this.teFoldersProbing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.teFoldersProbing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teFoldersProbing.Location = new System.Drawing.Point(14, 67);
             this.teFoldersProbing.Name = "teFoldersProbing";
@@ -2251,12 +2277,12 @@
             // 
             // listBoxFoldersProbing
             // 
-            this.listBoxFoldersProbing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.listBoxFoldersProbing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxFoldersProbing.Location = new System.Drawing.Point(11, 95);
             this.listBoxFoldersProbing.Name = "listBoxFoldersProbing";
-            this.listBoxFoldersProbing.Size = new System.Drawing.Size(765, 524);
+            this.listBoxFoldersProbing.Size = new System.Drawing.Size(765, 616);
             this.listBoxFoldersProbing.TabIndex = 2;
             // 
             // sbtnFolderProbingAdd
@@ -2276,13 +2302,13 @@
             this.tpStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpStatistics.ImageOptions.Image")));
             this.tpStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Size = new System.Drawing.Size(790, 666);
+            this.tpStatistics.Size = new System.Drawing.Size(790, 758);
             this.tpStatistics.Text = "User Statistics";
             // 
             // groupControl1
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.lblOpenedFiles);
             this.groupControl1.Controls.Add(this.lblRunningTime);
@@ -2335,7 +2361,7 @@
             // 
             // tsUserStatistics
             // 
-            this.tsUserStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tsUserStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsUserStatistics.Location = new System.Drawing.Point(29, 11);
             this.tsUserStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2351,13 +2377,13 @@
             this.xtraTabPageUpdates.Controls.Add(this.gcIntervals);
             this.xtraTabPageUpdates.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageUpdates.ImageOptions.Image")));
             this.xtraTabPageUpdates.Name = "xtraTabPageUpdates";
-            this.xtraTabPageUpdates.Size = new System.Drawing.Size(790, 666);
+            this.xtraTabPageUpdates.Size = new System.Drawing.Size(790, 758);
             this.xtraTabPageUpdates.Text = "Updates";
             // 
             // gcIntervals
             // 
-            this.gcIntervals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.gcIntervals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gcIntervals.Controls.Add(this.cbUpdates);
             this.gcIntervals.Controls.Add(this.lblUpdates);
@@ -2386,34 +2412,23 @@
             this.lblUpdates.TabIndex = 12;
             this.lblUpdates.Text = "Choose interval for checking for updates:";
             // 
-            // lblRecentFolders
+            // tsCheckAdditionalInformation
             // 
-            this.lblRecentFolders.Location = new System.Drawing.Point(20, 43);
-            this.lblRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblRecentFolders.Name = "lblRecentFolders";
-            this.lblRecentFolders.Size = new System.Drawing.Size(194, 16);
-            this.lblRecentFolders.TabIndex = 5;
-            this.lblRecentFolders.Text = "Number of recent folders to keep:";
-            // 
-            // nudRecentFolders
-            // 
-            this.nudRecentFolders.Location = new System.Drawing.Point(247, 41);
-            this.nudRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudRecentFolders.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.nudRecentFolders.Name = "nudRecentFolders";
-            this.nudRecentFolders.Size = new System.Drawing.Size(73, 23);
-            this.nudRecentFolders.TabIndex = 4;
-            this.nudRecentFolders.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tsCheckAdditionalInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsCheckAdditionalInformation.Location = new System.Drawing.Point(18, 133);
+            this.tsCheckAdditionalInformation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsCheckAdditionalInformation.Name = "tsCheckAdditionalInformation";
+            this.tsCheckAdditionalInformation.Properties.OffText = "Don\'t load dynamic columns at run time";
+            this.tsCheckAdditionalInformation.Properties.OnText = "Load dynamic columns at run time";
+            this.tsCheckAdditionalInformation.Size = new System.Drawing.Size(758, 28);
+            this.tsCheckAdditionalInformation.TabIndex = 4;
             // 
             // UserSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 765);
+            this.ClientSize = new System.Drawing.Size(991, 766);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2510,6 +2525,7 @@
             this.xtPage.PerformLayout();
             this.xTabMRU.ResumeLayout(false);
             this.xTabMRU.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).EndInit();
             this.xtraTabPageResources.ResumeLayout(false);
             this.xtraTabPageResources.PerformLayout();
@@ -2542,7 +2558,7 @@
             this.gcIntervals.ResumeLayout(false);
             this.gcIntervals.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbUpdates.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2724,5 +2740,6 @@
         private DevExpress.XtraEditors.ToggleSwitch tsTraybar;
         private DevExpress.XtraEditors.LabelControl lblRecentFolders;
         private System.Windows.Forms.NumericUpDown nudRecentFolders;
+        private DevExpress.XtraEditors.ToggleSwitch tsCheckAdditionalInformation;
     }
 }

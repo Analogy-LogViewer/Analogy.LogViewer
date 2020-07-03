@@ -10,6 +10,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog( "Add option to select rows and perform operation on the selection (save to file, open in new window, etc). #201",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 07, 03)),
+                new AnalogyChangeLog( "Add dynamic columns at run time based on AdditionalInformation Property of AnalogyLogMessage. #206",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 07, 02)),
                 new AnalogyChangeLog( "Add multi select of rows. #204",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 28)),
                 new AnalogyChangeLog( "Enable version check on startup. #200",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 26)),
                 new AnalogyChangeLog( "Ribbon Icons are not correct for real time data sources. #199",AnalogChangeLogType.Bug,"Lior Banai", new DateTime(2020, 06, 26)),
