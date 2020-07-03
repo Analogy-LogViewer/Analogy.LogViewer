@@ -23,7 +23,7 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageTags />
     <RepositoryType>git</RepositoryType>
-    <Version>4.2.2</Version>
+    <Version>4.2.3</Version>
     <Copyright>Lior Banai ©  2020</Copyright>
     <Product>Analogy Log Viewer Core</Product>
     <PackageReleaseNotes></PackageReleaseNotes>
