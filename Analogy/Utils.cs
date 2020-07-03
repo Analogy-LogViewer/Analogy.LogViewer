@@ -282,7 +282,7 @@ namespace Analogy
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource)
+        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource, bool checkAdditionalInformation)
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
@@ -299,7 +299,7 @@ namespace Analogy
             dtr["ThreadID"] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
             dtr["MachineName"] = message.MachineName ?? string.Empty;
-            if (message.AdditionalInformation != null)
+            if (checkAdditionalInformation && message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {

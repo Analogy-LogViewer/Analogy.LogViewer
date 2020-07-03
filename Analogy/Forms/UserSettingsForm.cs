@@ -193,6 +193,7 @@ namespace Analogy
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
             tsTraybar.IsOn = Settings.MinimizedToTrayBar;
+            tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
         }
         private void SaveSetting()
         {
@@ -233,6 +234,7 @@ namespace Analogy
             var options = typeof(UpdateMode).GetDisplayValues();
             UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode), options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
             Settings.MinimizedToTrayBar = tsTraybar.IsOn;
+            Settings.CheckAdditionalInformation=tsCheckAdditionalInformation.IsOn;
             Settings.Save();
         }
 

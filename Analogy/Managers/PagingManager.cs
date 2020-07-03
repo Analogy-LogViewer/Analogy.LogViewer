@@ -106,10 +106,10 @@ namespace Analogy
             }
             try
             {
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
                     AddExtraColumnsIfNeeded(table, message);
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource);
+                DataRow dtr = Utils.CreateRow(table, message, dataSource,Settings.CheckAdditionalInformation);
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -139,13 +139,13 @@ namespace Analogy
                     var pageStartRowIndex = (pages.Count - 1) * pageSize;
                     OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
                 }
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
                     AddExtraColumnsIfNeeded(table, message);
                 countInsideTable++;
                 try
                 {
                     lockSlim.EnterWriteLock();
-                    DataRow dtr = Utils.CreateRow(table, message, dataSource);
+                    DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }
@@ -160,7 +160,7 @@ namespace Analogy
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {

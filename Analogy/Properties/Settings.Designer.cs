@@ -788,5 +788,21 @@ namespace Analogy.Properties
                 this["MinimizedToTrayBar"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckAdditionalInformation
+        {
+            get
+            {
+                return ((bool)(this["CheckAdditionalInformation"]));
+            }
+            set
+            {
+                this["CheckAdditionalInformation"] = value;
+            }
+        }
     }
+
 }

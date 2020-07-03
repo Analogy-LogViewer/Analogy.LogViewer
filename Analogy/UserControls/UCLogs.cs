@@ -1003,7 +1003,7 @@ namespace Analogy
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
             }
             lockSlim.ExitWriteLock();
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
             {
                 AddExtraColumnsToLogGrid(logGrid, message);
             }
@@ -1034,33 +1034,34 @@ namespace Analogy
 
         private void AddExtraColumnsToLogGrid(GridView gridView, AnalogyLogMessage message)
         {
-            foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
-            {
-                if (!CurrentColumns.Contains(info.Key))
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
-                    if (this.InvokeRequired)
+                    if (!CurrentColumns.Contains(info.Key))
                     {
-                        BeginInvoke(new MethodInvoker(() =>
-                     {
-                         if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
-                             gridView.Columns.Add(new GridColumn()
-                             { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
-                         CurrentColumns.Add(info.Key);
-                         columnAdderSync.Set();
-                     }));
-                        columnAdderSync.WaitOne();
-                        columnAdderSync.Reset();
-                    }
-                    else
-                    {
-                        if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
-                            gridView.Columns.Add(new GridColumn()
-                            { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
-                        CurrentColumns.Add(info.Key);
-                    }
+                        if (this.InvokeRequired)
+                        {
+                            BeginInvoke(new MethodInvoker(() =>
+                            {
+                                if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
+                                    gridView.Columns.Add(new GridColumn()
+                                        {Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true});
+                                CurrentColumns.Add(info.Key);
+                                columnAdderSync.Set();
+                            }));
+                            columnAdderSync.WaitOne();
+                            columnAdderSync.Reset();
+                        }
+                        else
+                        {
+                            if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
+                                gridView.Columns.Add(new GridColumn()
+                                    {Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true});
+                            CurrentColumns.Add(info.Key);
+                        }
 
+                    }
                 }
-            }
         }
 
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
@@ -1097,7 +1098,7 @@ namespace Analogy
                         }
                     }
                 }
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
                 {
                     AddExtraColumnsToLogGrid(logGrid, message);
                 }
@@ -1452,7 +1453,7 @@ namespace Analogy
             lockSlim.EnterWriteLock();
             string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
             AddExtraColumnsIfNeededToBookmark(message);
-            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource);
+            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource, Settings.CheckAdditionalInformation);
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -1470,7 +1471,7 @@ namespace Analogy
 
         private void AddExtraColumnsIfNeededToBookmark(AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null)
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
@@ -1966,7 +1967,7 @@ namespace Analogy
             foreach (var message in messages)
             {
                 AddExtraColumnsIfNeededToBookmark(message);
-                DataRow dtr = Utils.CreateRow(grouped, message, "");
+                DataRow dtr = Utils.CreateRow(grouped, message, "",Settings.CheckAdditionalInformation);
                 if (diffStartTime > DateTime.MinValue)
                 {
                     dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
