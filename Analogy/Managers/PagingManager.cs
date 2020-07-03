@@ -167,27 +167,32 @@ namespace Analogy
 
                     if (!currentTable.Columns.Contains(info.Key))
                     {
-                        columnsLockSlim.EnterWriteLock();
-                        if (!currentTable.Columns.Contains(info.Key))
+                        if (!owner.InvokeRequired)
                         {
-                            if (!owner.InvokeRequired)
+                            columnsLockSlim.EnterWriteLock();
+                            if (!currentTable.Columns.Contains(info.Key))
                             {
                                 table.Columns.Add(info.Key);
                             }
-                            else
+
+                            columnsLockSlim.ExitWriteLock();
+                        }
+                        else
+                        {
+                            owner.BeginInvoke(new MethodInvoker(() =>
                             {
-                                owner.BeginInvoke(new MethodInvoker(() =>
+                                columnsLockSlim.EnterWriteLock();
+                                if (!currentTable.Columns.Contains(info.Key))
                                 {
                                     table.Columns.Add(info.Key);
                                     columnAdderSync.Set();
 
-                                }));
-                                columnAdderSync.WaitOne();
-                                columnAdderSync.Reset();
-
-                            }
+                                }
+                                columnsLockSlim.ExitWriteLock();
+                            }));
+                            columnAdderSync.WaitOne();
+                            columnAdderSync.Reset();
                         }
-                        columnsLockSlim.ExitWriteLock();
                     }
                 }
             }
