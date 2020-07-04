@@ -132,9 +132,9 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
-            chkbIncludeText.CheckedChanged += async (s, e) =>
+            ceIncludeText.CheckedChanged += async (s, e) =>
             {
-                if (!chkbIncludeText.Checked && !chkExclude.Checked)
+                if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
                     LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
@@ -142,9 +142,9 @@ namespace Analogy
 
                 await FilterHasChanged();
             };
-            chkExclude.CheckedChanged += async (s, e) =>
+            ceExcludeText.CheckedChanged += async (s, e) =>
             {
-                if (!chkbIncludeText.Checked && !chkExclude.Checked)
+                if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
                     LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
@@ -201,12 +201,12 @@ namespace Analogy
                 // txtbHighlight.Text = txtbInclude.Text;
                 if (string.IsNullOrEmpty(txtbInclude.Text))
                 {
-                    chkbIncludeText.Checked = false;
+                    ceIncludeText.Checked = false;
                     return;
                 }
 
                 chkbHighlight.Checked = false;
-                chkbIncludeText.Checked = true;
+                ceIncludeText.Checked = true;
                 await FilterHasChanged();
             };
 
@@ -232,11 +232,11 @@ namespace Analogy
                 OldTextExclude = txtbExclude.Text;
                 if (string.IsNullOrEmpty(txtbExclude.Text))
                 {
-                    chkExclude.Checked = false;
+                    ceExcludeText.Checked = false;
                     return;
                 }
 
-                chkExclude.Checked = true;
+                ceExcludeText.Checked = true;
                 await FilterHasChanged();
             };
 
@@ -428,7 +428,6 @@ namespace Analogy
         private void LoadUISettings()
         {
             Tip = new ToolTip();
-            Tip.SetToolTip(pboxInfo, "Use & or + for AND operations. Use | for OR operations");
             Tip.SetToolTip(pboxInfoExclude, "Use , to separate values. to exclude source or module prefix it with -");
             gridColumnDate.SortOrder =
                 Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
@@ -742,13 +741,13 @@ namespace Analogy
             {
                 string exclude = ef.Exclude;
                 txtbExclude.Text = txtbExclude.Text + "|" + exclude;
-                chkExclude.Checked = true;
+                ceExcludeText.Checked = true;
                 await FilterHasChanged();
             }
         }
 
 
-        
+
         /// <summary>
         /// Set custom column display text
         /// </summary>
@@ -1045,7 +1044,7 @@ namespace Analogy
                             {
                                 if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
                                     gridView.Columns.Add(new GridColumn()
-                                        {Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true});
+                                    { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
                                 CurrentColumns.Add(info.Key);
                                 columnAdderSync.Set();
                             }));
@@ -1056,7 +1055,7 @@ namespace Analogy
                         {
                             if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
                                 gridView.Columns.Add(new GridColumn()
-                                    {Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true});
+                                { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
                             CurrentColumns.Add(info.Key);
                         }
 
@@ -1180,8 +1179,8 @@ namespace Analogy
             Settings.AddNewSearchesEntryToLists(exclude, false);
             _filterCriteria.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteria.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
-            _filterCriteria.TextInclude = chkbIncludeText.Checked ? txtbInclude.Text : string.Empty;
-            _filterCriteria.TextExclude = chkExclude.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
+            _filterCriteria.TextInclude = ceIncludeText.Checked ? txtbInclude.Text : string.Empty;
+            _filterCriteria.TextExclude = ceExcludeText.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
 
 
             Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
@@ -1728,7 +1727,7 @@ namespace Analogy
             if (ef.ShowDialog(this) == DialogResult.OK)
             {
                 _excludeMostCommon = AnalogyExclude.GlobalExclusion;
-                chkExclude.Checked = true;
+                ceExcludeText.Checked = true;
                 await FilterHasChanged();
             }
         }
@@ -1922,14 +1921,14 @@ namespace Analogy
         {
             dataProvider = string.Empty;
             var selectedRowHandles = logGrid.GetSelectedRows();
-            List<AnalogyLogMessage> messages=new List<AnalogyLogMessage>();
+            List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
             for (int i = 0; i < selectedRowHandles.Length; i++)
             {
 
                 if (selectedRowHandles[i] >= 0)
                 {
-                    dataProvider = (string) LogGrid.GetRowCellValue(selectedRowHandles[i], "DataProvider");
-                    AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetRowCellValue(selectedRowHandles[i],"Object");
+                    dataProvider = (string)LogGrid.GetRowCellValue(selectedRowHandles[i], "DataProvider");
+                    AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetRowCellValue(selectedRowHandles[i], "Object");
                     messages.Add(message);
                 }
             }
@@ -1967,7 +1966,7 @@ namespace Analogy
             foreach (var message in messages)
             {
                 AddExtraColumnsIfNeededToBookmark(message);
-                DataRow dtr = Utils.CreateRow(grouped, message, "",Settings.CheckAdditionalInformation);
+                DataRow dtr = Utils.CreateRow(grouped, message, "", Settings.CheckAdditionalInformation);
                 if (diffStartTime > DateTime.MinValue)
                 {
                     dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
@@ -2401,7 +2400,7 @@ namespace Analogy
         private void bBtnSaveCurrentSelectionCustomFormat_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-          SaveMessagesToLog(FileDataProvider, GetMessagesFromSelectedRowInGrid(out _));
+            SaveMessagesToLog(FileDataProvider, GetMessagesFromSelectedRowInGrid(out _));
         }
 
         private void bBtnSaveCurrentSelectionAnalogyFormat_ItemClick(object sender, ItemClickEventArgs e)
