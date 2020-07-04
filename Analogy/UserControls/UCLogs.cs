@@ -131,6 +131,10 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
+            chkDateOlderThan.CheckedChanged += async (s, e) => await FilterHasChanged();
+            chkDateNewerThan.CheckedChanged += async (s, e) => await FilterHasChanged();
+            ceModulesProcess.Click += async (s, e) => await FilterHasChanged();
+            ceSources.Click += async (s, e) => await FilterHasChanged();
             ceIncludeText.CheckedChanged += async (s, e) =>
             {
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
@@ -2318,16 +2322,6 @@ namespace Analogy
         private async void deOlderThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
         {
             chkDateOlderThan.Checked = true;
-            await FilterHasChanged();
-        }
-
-        private async void chkDateOlderThan_CheckedChanged(object sender, EventArgs e)
-        {
-            await FilterHasChanged();
-        }
-
-        private async void chkDateNewerThan_CheckedChanged(object sender, EventArgs e)
-        {
             await FilterHasChanged();
         }
 
