@@ -132,6 +132,26 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
+            chkbIncludeText.CheckedChanged += async (s, e) =>
+            {
+                if (!chkbIncludeText.Checked && !chkExclude.Checked)
+                {
+                    LogGrid.ClearColumnsFilter();
+                    gridColumnText.FilterInfo = null;
+                }
+
+                await FilterHasChanged();
+            };
+            chkExclude.CheckedChanged += async (s, e) =>
+            {
+                if (!chkbIncludeText.Checked && !chkExclude.Checked)
+                {
+                    LogGrid.ClearColumnsFilter();
+                    gridColumnText.FilterInfo = null;
+                }
+
+                await FilterHasChanged();
+            };
             logGrid.EndSorting += (s, e) =>
             {
                 var sortOrder = gridColumnDate.SortOrder;
@@ -727,28 +747,8 @@ namespace Analogy
             }
         }
 
-        private async void chkbInclude_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!chkbIncludeText.Checked && !chkExclude.Checked)
-            {
-                LogGrid.ClearColumnsFilter();
-                gridColumnText.FilterInfo = null;
-            }
 
-            await FilterHasChanged();
-        }
-
-        private async void chkbExclude_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!chkbIncludeText.Checked && !chkExclude.Checked)
-            {
-                LogGrid.ClearColumnsFilter();
-                gridColumnText.FilterInfo = null;
-            }
-
-            await FilterHasChanged();
-        }
-
+        
         /// <summary>
         /// Set custom column display text
         /// </summary>
