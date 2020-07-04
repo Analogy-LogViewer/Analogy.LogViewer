@@ -51,7 +51,6 @@ namespace Analogy
         private IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions { get; set; }
         private List<IAnalogyExtension> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new List<int>();
-        private ToolTip Tip { get; set; }
         private List<string> _excludeMostCommon = new List<string>();
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
@@ -244,32 +243,32 @@ namespace Analogy
             {
                 if (string.IsNullOrEmpty(txtbSource.Text))
                 {
-                    chkbSources.Checked = false;
+                    ceSources.Checked = false;
                 }
                 else
                 {
-                    if (!chkbSources.Checked)
-                        chkbSources.Checked = true;
+                    if (!ceSources.Checked)
+                        ceSources.Checked = true;
                 }
 
                 await FilterHasChanged();
-                Settings.SourceText = chkbSources.Text;
+                Settings.SourceText = txtbSource.Text;
             };
 
             txtbModule.TextChanged += async (s, e) =>
             {
                 if (string.IsNullOrEmpty(txtbModule.Text))
                 {
-                    chkbModules.Checked = false;
+                    ceModulesProcess.Checked = false;
                 }
                 else
                 {
-                    if (!chkbModules.Checked)
-                        chkbModules.Checked = true;
+                    if (!ceModulesProcess.Checked)
+                        ceModulesProcess.Checked = true;
                 }
 
                 await FilterHasChanged();
-                Settings.ModuleText = chkbModules.Text;
+                Settings.ModuleText = txtbModule.Text;
             };
 
             bbtnReload.ItemClick += async (s, e) =>
@@ -427,8 +426,6 @@ namespace Analogy
 
         private void LoadUISettings()
         {
-            Tip = new ToolTip();
-            Tip.SetToolTip(pboxInfoExclude, "Use , to separate values. to exclude source or module prefix it with -");
             gridColumnDate.SortOrder =
                 Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
             spltFilteringBoth.SplitterDistance = spltFilteringBoth.Width - 150;
@@ -1201,7 +1198,7 @@ namespace Analogy
 
 
 
-            if (chkbSources.Checked && !string.IsNullOrEmpty(txtbSource.Text))
+            if (ceSources.Checked && !string.IsNullOrEmpty(txtbSource.Text))
             {
                 var items = txtbSource.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 var includeItems = items.Where(i => !i.StartsWith("-"));
@@ -1219,7 +1216,7 @@ namespace Analogy
 
             Settings.SourceText = Settings.SaveSearchFilters ? txtbSource.Text : string.Empty;
 
-            if (chkbModules.Checked && !string.IsNullOrEmpty(txtbModule.Text))
+            if (ceModulesProcess.Checked && !string.IsNullOrEmpty(txtbModule.Text))
             {
 
                 var items = txtbModule.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
