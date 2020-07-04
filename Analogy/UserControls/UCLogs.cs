@@ -126,13 +126,38 @@ namespace Analogy
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
             CurrentColumns = logGrid.Columns.Select(c => c.FieldName).ToList();
+            deNewerThanFilter.DateTime = DateTime.Now;
+            deOlderThanFilter.DateTime = DateTime.Now;
             SetupEventsHandlers();
         }
 
         private void SetupEventsHandlers()
         {
-            chkDateOlderThan.CheckedChanged += async (s, e) => await FilterHasChanged();
-            chkDateNewerThan.CheckedChanged += async (s, e) => await FilterHasChanged();
+            deNewerThanFilter.EditValueChanged += async (s, e) =>
+            {
+                ceNewerThanFilter.Checked = true;
+                await FilterHasChanged();
+            };
+            deNewerThanFilter.Properties.EditValueChanged += async (s, e) =>
+            {
+                ceNewerThanFilter.Checked = true;
+                await FilterHasChanged();
+            };
+
+            deOlderThanFilter.EditValueChanged += async (s, e) =>
+            {
+                ceOlderThanFilter.Checked = true;
+                await FilterHasChanged();
+            };
+
+            deOlderThanFilter.Properties.EditValueChanged += async (s, e) =>
+             {
+                 ceOlderThanFilter.Checked = true;
+                 await FilterHasChanged();
+             };
+
+            ceOlderThanFilter.CheckedChanged += async (s, e) => await FilterHasChanged();
+            ceNewerThanFilter.CheckedChanged += async (s, e) => await FilterHasChanged();
             ceModulesProcess.Click += async (s, e) => await FilterHasChanged();
             ceSources.Click += async (s, e) => await FilterHasChanged();
             ceIncludeText.CheckedChanged += async (s, e) =>
@@ -1178,8 +1203,8 @@ namespace Analogy
                 autoCompleteExclude.Add(exclude);
             Settings.AddNewSearchesEntryToLists(include, true);
             Settings.AddNewSearchesEntryToLists(exclude, false);
-            _filterCriteria.NewerThan = chkDateNewerThan.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
-            _filterCriteria.OlderThan = chkDateOlderThan.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
+            _filterCriteria.NewerThan = ceNewerThanFilter.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
+            _filterCriteria.OlderThan = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
             _filterCriteria.TextInclude = ceIncludeText.Checked ? txtbInclude.Text : string.Empty;
             _filterCriteria.TextExclude = ceExcludeText.Checked ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon) : string.Empty;
 
@@ -2302,55 +2327,33 @@ namespace Analogy
             UndockViewPerProcess();
         }
 
-        private async void deNewerThanFilter_EditValueChanged(object sender, EventArgs e)
-        {
-            chkDateNewerThan.Checked = true;
-            await FilterHasChanged();
-        }
-        private async void deNewerThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-            chkDateNewerThan.Checked = true;
-            await FilterHasChanged();
-        }
-
-        private async void deOlderThanFilter_EditValueChanged(object sender, EventArgs e)
-        {
-            chkDateOlderThan.Checked = true;
-            await FilterHasChanged();
-        }
-
-        private async void deOlderThanFilter_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-            chkDateOlderThan.Checked = true;
-            await FilterHasChanged();
-        }
 
         private void tsmiDateFilterNewer_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             deNewerThanFilter.DateTime = message.Date;
-            chkDateNewerThan.Checked = true;
+            ceNewerThanFilter.Checked = true;
         }
 
         private void tsmiDateFilterOlder_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             deOlderThanFilter.DateTime = message.Date;
-            chkDateOlderThan.Checked = true;
+            ceOlderThanFilter.Checked = true;
         }
 
         private void tsmiBookmarkDateFilterNewer_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             deNewerThanFilter.DateTime = message.Date;
-            chkDateNewerThan.Checked = true;
+            ceNewerThanFilter.Checked = true;
         }
 
         private void tsmiBookmarkDateFilterOlder_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             deOlderThanFilter.DateTime = message.Date;
-            chkDateOlderThan.Checked = true;
+            ceOlderThanFilter.Checked = true;
         }
 
         private void sbtnMoreHighlight_Click(object sender, EventArgs e)

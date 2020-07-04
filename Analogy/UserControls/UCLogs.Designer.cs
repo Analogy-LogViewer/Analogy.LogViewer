@@ -149,17 +149,16 @@ namespace Analogy
             this.pnlFilteringLeft = new System.Windows.Forms.Panel();
             this.spltcDateFiltering = new System.Windows.Forms.SplitContainer();
             this.deOlderThanFilter = new DevExpress.XtraEditors.DateEdit();
-            this.chkDateOlderThan = new System.Windows.Forms.CheckBox();
             this.deNewerThanFilter = new DevExpress.XtraEditors.DateEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.chkDateNewerThan = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.spltcProcessesModule = new System.Windows.Forms.SplitContainer();
             this.txtbModule = new DevExpress.XtraEditors.TextEdit();
+            this.ceModulesProcess = new DevExpress.XtraEditors.CheckEdit();
             this.sbtnIncludeModules = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnUndockPerProcess = new DevExpress.XtraEditors.SimpleButton();
             this.spltcSources = new System.Windows.Forms.SplitContainer();
             this.txtbSource = new DevExpress.XtraEditors.TextEdit();
+            this.ceSources = new DevExpress.XtraEditors.CheckEdit();
             this.sbtnIncludeSources = new DevExpress.XtraEditors.SimpleButton();
             this.spltTextExclude = new System.Windows.Forms.SplitContainer();
             this.txtbExclude = new DevExpress.XtraEditors.TextEdit();
@@ -251,8 +250,8 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.ceSources = new DevExpress.XtraEditors.CheckEdit();
-            this.ceModulesProcess = new DevExpress.XtraEditors.CheckEdit();
+            this.ceNewerThanFilter = new DevExpress.XtraEditors.CheckEdit();
+            this.ceOlderThanFilter = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -273,15 +272,16 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNewerThanFilter.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNewerThanFilter.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltcProcessesModule)).BeginInit();
             this.spltcProcessesModule.Panel1.SuspendLayout();
             this.spltcProcessesModule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbModule.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceModulesProcess.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltcSources)).BeginInit();
             this.spltcSources.Panel1.SuspendLayout();
             this.spltcSources.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbSource.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSources.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltTextExclude)).BeginInit();
             this.spltTextExclude.Panel1.SuspendLayout();
             this.spltTextExclude.SuspendLayout();
@@ -325,8 +325,8 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ceSources.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceModulesProcess.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceNewerThanFilter.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceOlderThanFilter.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -1639,11 +1639,10 @@ namespace Analogy
             // spltcDateFiltering.Panel1
             // 
             this.spltcDateFiltering.Panel1.Controls.Add(this.deOlderThanFilter);
-            this.spltcDateFiltering.Panel1.Controls.Add(this.chkDateOlderThan);
+            this.spltcDateFiltering.Panel1.Controls.Add(this.ceOlderThanFilter);
             this.spltcDateFiltering.Panel1.Controls.Add(this.deNewerThanFilter);
+            this.spltcDateFiltering.Panel1.Controls.Add(this.ceNewerThanFilter);
             this.spltcDateFiltering.Panel1.Controls.Add(this.simpleButton1);
-            this.spltcDateFiltering.Panel1.Controls.Add(this.chkDateNewerThan);
-            this.spltcDateFiltering.Panel1.Controls.Add(this.pictureBox1);
             this.spltcDateFiltering.Panel2Collapsed = true;
             this.spltcDateFiltering.Size = new System.Drawing.Size(1622, 24);
             this.spltcDateFiltering.SplitterDistance = 683;
@@ -1653,7 +1652,7 @@ namespace Analogy
             // 
             this.deOlderThanFilter.Dock = System.Windows.Forms.DockStyle.Left;
             this.deOlderThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deOlderThanFilter.Location = new System.Drawing.Point(551, 0);
+            this.deOlderThanFilter.Location = new System.Drawing.Point(306, 0);
             this.deOlderThanFilter.MenuManager = this.barManager1;
             this.deOlderThanFilter.Name = "deOlderThanFilter";
             this.deOlderThanFilter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1669,27 +1668,14 @@ namespace Analogy
             this.deOlderThanFilter.Properties.Mask.EditMask = "dd.MM.yyyy HH:mm:ss.fff";
             this.deOlderThanFilter.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.deOlderThanFilter.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.deOlderThanFilter.Properties.EditValueChanged += new System.EventHandler(this.deOlderThanFilter_Properties_EditValueChanged);
             this.deOlderThanFilter.Size = new System.Drawing.Size(207, 22);
             this.deOlderThanFilter.TabIndex = 27;
-            this.deOlderThanFilter.EditValueChanged += new System.EventHandler(this.deOlderThanFilter_EditValueChanged);
-            // 
-            // chkDateOlderThan
-            // 
-            this.chkDateOlderThan.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkDateOlderThan.Location = new System.Drawing.Point(439, 0);
-            this.chkDateOlderThan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkDateOlderThan.Name = "chkDateOlderThan";
-            this.chkDateOlderThan.Size = new System.Drawing.Size(112, 24);
-            this.chkDateOlderThan.TabIndex = 26;
-            this.chkDateOlderThan.Text = "And:";
-            this.chkDateOlderThan.UseVisualStyleBackColor = true;
             // 
             // deNewerThanFilter
             // 
             this.deNewerThanFilter.Dock = System.Windows.Forms.DockStyle.Left;
             this.deNewerThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deNewerThanFilter.Location = new System.Drawing.Point(232, 0);
+            this.deNewerThanFilter.Location = new System.Drawing.Point(57, 0);
             this.deNewerThanFilter.MenuManager = this.barManager1;
             this.deNewerThanFilter.Name = "deNewerThanFilter";
             this.deNewerThanFilter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1705,10 +1691,8 @@ namespace Analogy
             this.deNewerThanFilter.Properties.Mask.EditMask = "dd.MM.yyyy HH:mm:ss.fff";
             this.deNewerThanFilter.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.deNewerThanFilter.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.deNewerThanFilter.Properties.EditValueChanged += new System.EventHandler(this.deNewerThanFilter_Properties_EditValueChanged);
             this.deNewerThanFilter.Size = new System.Drawing.Size(207, 22);
             this.deNewerThanFilter.TabIndex = 25;
-            this.deNewerThanFilter.EditValueChanged += new System.EventHandler(this.deNewerThanFilter_EditValueChanged);
             // 
             // simpleButton1
             // 
@@ -1719,28 +1703,6 @@ namespace Analogy
             this.simpleButton1.Size = new System.Drawing.Size(23, 24);
             this.simpleButton1.TabIndex = 24;
             this.simpleButton1.ToolTip = "Clear the text";
-            // 
-            // chkDateNewerThan
-            // 
-            this.chkDateNewerThan.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkDateNewerThan.Location = new System.Drawing.Point(19, 0);
-            this.chkDateNewerThan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkDateNewerThan.Name = "chkDateNewerThan";
-            this.chkDateNewerThan.Size = new System.Drawing.Size(213, 24);
-            this.chkDateNewerThan.TabIndex = 23;
-            this.chkDateNewerThan.Text = "Time between:";
-            this.chkDateNewerThan.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::Analogy.Properties.Resources.Info_16x16;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(19, 24);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
             // 
             // spltcProcessesModule
             // 
@@ -1768,6 +1730,20 @@ namespace Analogy
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Size = new System.Drawing.Size(1189, 22);
             this.txtbModule.TabIndex = 26;
+            // 
+            // ceModulesProcess
+            // 
+            this.ceModulesProcess.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ceModulesProcess.Location = new System.Drawing.Point(0, 0);
+            this.ceModulesProcess.MenuManager = this.barManager1;
+            this.ceModulesProcess.Name = "ceModulesProcess";
+            this.ceModulesProcess.Properties.AutoWidth = true;
+            this.ceModulesProcess.Properties.Caption = "Include/Exclude Processes/Modules:";
+            this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
+            this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
+            this.ceModulesProcess.Size = new System.Drawing.Size(229, 24);
+            this.ceModulesProcess.TabIndex = 27;
+            this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
             // sbtnIncludeModules
             // 
@@ -1816,6 +1792,20 @@ namespace Analogy
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Size = new System.Drawing.Size(1433, 22);
             this.txtbSource.TabIndex = 25;
+            // 
+            // ceSources
+            // 
+            this.ceSources.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ceSources.Location = new System.Drawing.Point(0, 0);
+            this.ceSources.MenuManager = this.barManager1;
+            this.ceSources.Name = "ceSources";
+            this.ceSources.Properties.AutoWidth = true;
+            this.ceSources.Properties.Caption = "Include/Exclude Sources:";
+            this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
+            this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
+            this.ceSources.Size = new System.Drawing.Size(166, 24);
+            this.ceSources.TabIndex = 26;
+            this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
             // sbtnIncludeSources
             // 
@@ -3094,33 +3084,33 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // ceSources
+            // ceNewerThanFilter
             // 
-            this.ceSources.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ceSources.Location = new System.Drawing.Point(0, 0);
-            this.ceSources.MenuManager = this.barManager1;
-            this.ceSources.Name = "ceSources";
-            this.ceSources.Properties.AutoWidth = true;
-            this.ceSources.Properties.Caption = "Include/Exclude Sources:";
-            this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("checkEdit1.Properties.ImageOptions.ImageChecked1")));
-            this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("checkEdit1.Properties.ImageOptions.ImageUnchecked1")));
-            this.ceSources.Size = new System.Drawing.Size(166, 24);
-            this.ceSources.TabIndex = 26;
-            this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
+            this.ceNewerThanFilter.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ceNewerThanFilter.Location = new System.Drawing.Point(0, 0);
+            this.ceNewerThanFilter.MenuManager = this.barManager1;
+            this.ceNewerThanFilter.Name = "ceNewerThanFilter";
+            this.ceNewerThanFilter.Properties.Appearance.Options.UseImage = true;
+            this.ceNewerThanFilter.Properties.AutoWidth = true;
+            this.ceNewerThanFilter.Properties.Caption = "From:";
+            this.ceNewerThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("checkEdit1.Properties.ImageOptions.ImageChecked")));
+            this.ceNewerThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("checkEdit1.Properties.ImageOptions.ImageUnchecked")));
+            this.ceNewerThanFilter.Size = new System.Drawing.Size(57, 24);
+            this.ceNewerThanFilter.TabIndex = 28;
             // 
-            // ceModulesProcess
+            // ceOlderThanFilter
             // 
-            this.ceModulesProcess.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ceModulesProcess.Location = new System.Drawing.Point(0, 0);
-            this.ceModulesProcess.MenuManager = this.barManager1;
-            this.ceModulesProcess.Name = "ceModulesProcess";
-            this.ceModulesProcess.Properties.AutoWidth = true;
-            this.ceModulesProcess.Properties.Caption = "Include/Exclude Processes/Modules:";
-            this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("checkEdit1.Properties.ImageOptions.ImageChecked")));
-            this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("checkEdit1.Properties.ImageOptions.ImageUnchecked")));
-            this.ceModulesProcess.Size = new System.Drawing.Size(229, 24);
-            this.ceModulesProcess.TabIndex = 27;
-            this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
+            this.ceOlderThanFilter.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ceOlderThanFilter.Location = new System.Drawing.Point(264, 0);
+            this.ceOlderThanFilter.MenuManager = this.barManager1;
+            this.ceOlderThanFilter.Name = "ceOlderThanFilter";
+            this.ceOlderThanFilter.Properties.Appearance.Options.UseImage = true;
+            this.ceOlderThanFilter.Properties.AutoWidth = true;
+            this.ceOlderThanFilter.Properties.Caption = "To:";
+            this.ceOlderThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("checkEdit2.Properties.ImageOptions.ImageChecked")));
+            this.ceOlderThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("checkEdit2.Properties.ImageOptions.ImageUnchecked")));
+            this.ceOlderThanFilter.Size = new System.Drawing.Size(42, 24);
+            this.ceOlderThanFilter.TabIndex = 29;
             // 
             // UCLogs
             // 
@@ -3152,23 +3142,25 @@ namespace Analogy
             this.spltFilteringBoth.ResumeLayout(false);
             this.pnlFilteringLeft.ResumeLayout(false);
             this.spltcDateFiltering.Panel1.ResumeLayout(false);
+            this.spltcDateFiltering.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltcDateFiltering)).EndInit();
             this.spltcDateFiltering.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNewerThanFilter.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNewerThanFilter.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.spltcProcessesModule.Panel1.ResumeLayout(false);
             this.spltcProcessesModule.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltcProcessesModule)).EndInit();
             this.spltcProcessesModule.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtbModule.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceModulesProcess.Properties)).EndInit();
             this.spltcSources.Panel1.ResumeLayout(false);
             this.spltcSources.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltcSources)).EndInit();
             this.spltcSources.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtbSource.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSources.Properties)).EndInit();
             this.spltTextExclude.Panel1.ResumeLayout(false);
             this.spltTextExclude.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltTextExclude)).EndInit();
@@ -3217,8 +3209,8 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ceSources.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceModulesProcess.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceNewerThanFilter.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceOlderThanFilter.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3407,10 +3399,7 @@ namespace Analogy
         private System.Windows.Forms.SplitContainer spltcDateFiltering;
         private DevExpress.XtraEditors.DateEdit deNewerThanFilter;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private System.Windows.Forms.CheckBox chkDateNewerThan;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.DateEdit deOlderThanFilter;
-        private System.Windows.Forms.CheckBox chkDateOlderThan;
         private System.Windows.Forms.ToolStripMenuItem tsmiDateFilterNewer;
         private System.Windows.Forms.ToolStripMenuItem tsmiDateFilterOlder;
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterNewer;
@@ -3437,5 +3426,7 @@ namespace Analogy
         private DevExpress.XtraEditors.CheckEdit ceIncludeText;
         private DevExpress.XtraEditors.CheckEdit ceSources;
         private DevExpress.XtraEditors.CheckEdit ceModulesProcess;
+        private DevExpress.XtraEditors.CheckEdit ceOlderThanFilter;
+        private DevExpress.XtraEditors.CheckEdit ceNewerThanFilter;
     }
 }
