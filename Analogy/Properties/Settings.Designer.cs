@@ -803,6 +803,21 @@ namespace Analogy.Properties
                 this["CheckAdditionalInformation"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AnalogyPosition
+        {
+            get
+            {
+                return ((string)(this["AnalogyPosition"]));
+            }
+            set
+            {
+                this["AnalogyPosition"] = value;
+            }
+        }
     }
 
 }

@@ -1,7 +1,30 @@
 ﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Analogy
 {
+    [Serializable]
+    public class AnalogyPositionState
+    {
+        public FormWindowState WindowState { get; set; }
+        public Point Location { get; set; }
+        public Size Size { get; set; }
+        public bool RememberLastPosition { get; set; }
+        public AnalogyPositionState()
+        {
+            WindowState = FormWindowState.Maximized;
+            RememberLastPosition = true;
+        }
+
+        public AnalogyPositionState(FormWindowState formWindowState, Point location, Size size)
+        {
+            WindowState = formWindowState;
+            Location = location;
+            Size = size;
+        }
+
+    }
     public enum DataSourceType
     {
         Client,

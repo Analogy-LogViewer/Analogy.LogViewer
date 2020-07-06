@@ -89,8 +89,51 @@ namespace Analogy
             //todo: end onlines;
         }
 
+        private void AnalogyMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (preventExit && e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+                var popupNotifier = new NotificationWindow.PopupNotifier
+                {
+                    TitleText = "Analogy Log Viewer",
+                    ContentText = "Still here... Double click the icon to restore",
+                    IsRightToLeft = false,
+                    Image = Properties.Resources.Analogy_Icon2
+
+                };
+                popupNotifier.Popup();
+            }
+            else
+            {
+                settings.AnalogyPosition.Location=Location;
+                settings.AnalogyPosition.Size=Size;
+                settings.AnalogyPosition.WindowState=WindowState;
+                settings.UpdateRunningTime();
+                settings.Save();
+                AnalogyLogManager.Instance.SaveFile();
+                BookmarkPersistManager.Instance.SaveFile();
+            }
+        }
+
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
+            if (settings.AnalogyPosition.RememberLastPosition)
+            {
+                WindowState = settings.AnalogyPosition.WindowState;
+                if (WindowState != FormWindowState.Maximized &&
+                    Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
+                {
+                    Location = settings.AnalogyPosition.Location;
+                    Size = settings.AnalogyPosition.Size;
+                }
+                else
+                {
+                    AnalogyLogger.Instance.LogError("",
+                        $"Last location {settings.AnalogyPosition.Location} is not inside any screen");
+                }
+            }
 
             Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
             Icon = settings.GetIcon();
@@ -348,30 +391,7 @@ namespace Analogy
             }
         }
 
-        private void AnalogyMainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (preventExit && e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-                Hide();
-                var popupNotifier = new NotificationWindow.PopupNotifier
-                {
-                    TitleText = "Analogy Log Viewer",
-                    ContentText = "Still here... Double click the icon to restore",
-                    IsRightToLeft = false,
-                    Image = Properties.Resources.Analogy_Icon2
-
-                };
-                popupNotifier.Popup();
-            }
-            else
-            {
-                settings.UpdateRunningTime();
-                settings.Save();
-                AnalogyLogManager.Instance.SaveFile();
-                BookmarkPersistManager.Instance.SaveFile();
-            }
-        }
+    
 
         private void bbtnItemChangeLog_ItemClick(object sender, ItemClickEventArgs e)
         {
