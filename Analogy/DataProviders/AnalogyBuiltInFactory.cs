@@ -226,13 +226,13 @@ namespace Analogy.DataSources
             return null;
         }
 
-        public Image GetOnlineConnectedLargeImage(Guid analogyComponentId) => throw new NotImplementedException();
+        public Image GetOnlineConnectedLargeImage(Guid analogyComponentId) => null;
 
-        public Image GetOnlineConnectedSmallImage(Guid analogyComponentId) => throw new NotImplementedException();
+        public Image GetOnlineConnectedSmallImage(Guid analogyComponentId) => null;
 
-        public Image GetOnlineDisconnectedLargeImage(Guid analogyComponentId) => throw new NotImplementedException();
+        public Image GetOnlineDisconnectedLargeImage(Guid analogyComponentId) => null;
 
-        public Image GetOnlineDisconnectedSmallImage(Guid analogyComponentId) => throw new NotImplementedException();
+        public Image GetOnlineDisconnectedSmallImage(Guid analogyComponentId) => null;
     }
 }
 
