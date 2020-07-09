@@ -53,7 +53,7 @@ Some features of this tool are:
 Main interaction UI:
 - Ribbon area: Log files operations (open) and tools (search/combine/Compare)
 - Messages area: File system UI and Main Log viewer area
-![Main screen](Assets/AnalogyMainUI.jpg)
+![Main screen](Assets/AnalogyMainUI2.jpg)
 
 ## Usage
 
