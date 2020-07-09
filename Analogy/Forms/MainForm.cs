@@ -107,9 +107,9 @@ namespace Analogy
             }
             else
             {
-                settings.AnalogyPosition.Location=Location;
-                settings.AnalogyPosition.Size=Size;
-                settings.AnalogyPosition.WindowState=WindowState;
+                settings.AnalogyPosition.Location = Location;
+                settings.AnalogyPosition.Size = Size;
+                settings.AnalogyPosition.WindowState = WindowState;
                 settings.UpdateRunningTime();
                 settings.Save();
                 AnalogyLogManager.Instance.SaveFile();
@@ -152,7 +152,9 @@ namespace Analogy
             //CreateAnalogyBuiltinDataProviders
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
+            {
                 CreateDataSource(analogy, 0);
+            }
             await FactoriesManager.Instance.AddExternalDataSources();
             LoadStartupExtensions();
             CreateDataSources();
@@ -346,7 +348,7 @@ namespace Analogy
                 // Assign the file names to a string array, in 
                 // case the user has selected multiple files.
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-               await OpenOfflineFileWithSpecificDataProvider(files);
+                await OpenOfflineFileWithSpecificDataProvider(files);
             }
         }
 
@@ -391,7 +393,7 @@ namespace Analogy
             }
         }
 
-    
+
 
         private void bbtnItemChangeLog_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -525,7 +527,11 @@ namespace Analogy
             RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(fc.Factory.FactoryId, ribbonPage);
-
+            var ribbonPageImage = FactoriesManager.Instance.GetSmallImage(fc.Factory.FactoryId);
+            if (ribbonPageImage != null)
+            {
+                ribbonPage.ImageOptions.Image = ribbonPageImage;
+            }
             var dataSourceFactory = fc.DataProvidersFactories;
             foreach (var dataProvidersFactory in dataSourceFactory)
             {

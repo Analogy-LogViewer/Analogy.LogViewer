@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -198,7 +198,7 @@
             this.ribbonPage1});
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1517, 178);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1300, 146);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
             // 
@@ -279,9 +279,9 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group2";
+            galleryItemGroup3.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup3});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -291,9 +291,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Group3";
+            galleryItemGroup4.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup4});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -464,7 +464,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // bBtnBookmarked
             // 
@@ -713,6 +713,7 @@
             // 
             this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3});
+            this.ribbonPageThemes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPageThemes.ImageOptions.Image")));
             this.ribbonPageThemes.Name = "ribbonPageThemes";
             this.ribbonPageThemes.Text = "Themes";
             // 
@@ -727,6 +728,7 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupSettings});
+            this.ribbonPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.ImageOptions.Image")));
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Settings";
             // 
@@ -756,11 +758,11 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 423);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1517, 37);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1300, 31);
             // 
             // tmrStatusUpdates
             // 
@@ -801,9 +803,9 @@
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1517, 559);
+            this.ClientSize = new System.Drawing.Size(1300, 454);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

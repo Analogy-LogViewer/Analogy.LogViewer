@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Add providers icon to the ribbon page. #219",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,09)),
                 new AnalogyChangeLog("Main log viewer window always starts up full screen. #213",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,05)),
                 new AnalogyChangeLog("Cleanup Filtering UI Elements. #212",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,04)),
                 new AnalogyChangeLog( "Add option to select rows and perform operation on the selection (save to file, open in new window, etc). #201",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 07, 03)),
