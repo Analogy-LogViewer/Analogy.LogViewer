@@ -635,6 +635,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Analogy_icon1_16x16.ico" />
