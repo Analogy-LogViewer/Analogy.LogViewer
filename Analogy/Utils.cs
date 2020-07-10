@@ -302,8 +302,14 @@ namespace Analogy
             if (checkAdditionalInformation && message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
-                {
+                {if (dtr.Table.Columns.Contains(info.Key))
                     dtr[info.Key] = info.Value;
+                    else
+                    {
+                        AnalogyLogger.Instance.LogError("",
+                            $"key {info.Key} does not exist in table {table.TableName}");
+                    }
+
                 }
 
             }

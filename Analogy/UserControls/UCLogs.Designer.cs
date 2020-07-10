@@ -221,12 +221,9 @@ namespace Analogy
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.nudGroupBychars = new DevExpress.XtraEditors.SpinEdit();
-            this.lblGroupByCharsLimit = new System.Windows.Forms.Label();
-            this.txtbGroupByCharsLimit = new DevExpress.XtraEditors.TextEdit();
+            this.txtbGroupByChars = new DevExpress.XtraEditors.TextEdit();
             this.sBtnGroup = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnLength = new DevExpress.XtraEditors.SimpleButton();
-            this.lblGroupByChars = new System.Windows.Forms.Label();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.cmsBookmarked = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCalcDiffBookmark = new System.Windows.Forms.ToolStripMenuItem();
@@ -251,6 +248,9 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
+            this.rbGroupByText = new System.Windows.Forms.RadioButton();
+            this.rbGroupByTextLength = new System.Windows.Forms.RadioButton();
+            this.nudGroupBychars = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -320,12 +320,12 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByChars.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -1642,7 +1642,7 @@ namespace Analogy
             this.spltcDateFiltering.Panel1.Controls.Add(this.ceNewerThanFilter);
             this.spltcDateFiltering.Panel2Collapsed = true;
             this.spltcDateFiltering.Size = new System.Drawing.Size(521, 24);
-            this.spltcDateFiltering.SplitterDistance = 683;
+            this.spltcDateFiltering.SplitterDistance = 496;
             this.spltcDateFiltering.TabIndex = 27;
             // 
             // deOlderThanFilter
@@ -2486,7 +2486,7 @@ namespace Analogy
             // spltGroupByChars
             // 
             this.spltGroupByChars.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spltGroupByChars.Location = new System.Drawing.Point(0, 41);
+            this.spltGroupByChars.Location = new System.Drawing.Point(0, 26);
             this.spltGroupByChars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spltGroupByChars.Name = "spltGroupByChars";
             this.spltGroupByChars.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -2498,8 +2498,8 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(2124, 664);
-            this.spltGroupByChars.SplitterDistance = 339;
+            this.spltGroupByChars.Size = new System.Drawing.Size(2124, 679);
+            this.spltGroupByChars.SplitterDistance = 346;
             this.spltGroupByChars.TabIndex = 4;
             // 
             // gCtrlGrouping
@@ -2511,7 +2511,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(2124, 339);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(2124, 346);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2534,7 +2534,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridViewGrouping2;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2124, 321);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2124, 329);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping2});
@@ -2818,90 +2818,52 @@ namespace Analogy
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.nudGroupBychars);
-            this.panelControl1.Controls.Add(this.lblGroupByCharsLimit);
-            this.panelControl1.Controls.Add(this.txtbGroupByCharsLimit);
             this.panelControl1.Controls.Add(this.sBtnGroup);
+            this.panelControl1.Controls.Add(this.nudGroupBychars);
+            this.panelControl1.Controls.Add(this.rbGroupByTextLength);
             this.panelControl1.Controls.Add(this.sBtnLength);
-            this.panelControl1.Controls.Add(this.lblGroupByChars);
+            this.panelControl1.Controls.Add(this.txtbGroupByChars);
+            this.panelControl1.Controls.Add(this.rbGroupByText);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(2124, 41);
+            this.panelControl1.Size = new System.Drawing.Size(2124, 26);
             this.panelControl1.TabIndex = 16;
             // 
-            // nudGroupBychars
+            // txtbGroupByChars
             // 
-            this.nudGroupBychars.EditValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Location = new System.Drawing.Point(744, 7);
-            this.nudGroupBychars.MenuManager = this.barManager1;
-            this.nudGroupBychars.Name = "nudGroupBychars";
-            this.nudGroupBychars.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nudGroupBychars.Properties.IsFloatValue = false;
-            this.nudGroupBychars.Properties.Mask.EditMask = "N00";
-            this.nudGroupBychars.Properties.MaxValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Properties.MinValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Size = new System.Drawing.Size(98, 22);
-            this.nudGroupBychars.TabIndex = 15;
-            // 
-            // lblGroupByCharsLimit
-            // 
-            this.lblGroupByCharsLimit.AutoSize = true;
-            this.lblGroupByCharsLimit.Location = new System.Drawing.Point(0, 10);
-            this.lblGroupByCharsLimit.Name = "lblGroupByCharsLimit";
-            this.lblGroupByCharsLimit.Size = new System.Drawing.Size(141, 17);
-            this.lblGroupByCharsLimit.TabIndex = 7;
-            this.lblGroupByCharsLimit.Text = "group by text length:";
-            // 
-            // txtbGroupByCharsLimit
-            // 
-            this.txtbGroupByCharsLimit.Location = new System.Drawing.Point(147, 7);
-            this.txtbGroupByCharsLimit.MenuManager = this.barManager1;
-            this.txtbGroupByCharsLimit.Name = "txtbGroupByCharsLimit";
-            this.txtbGroupByCharsLimit.Size = new System.Drawing.Size(250, 22);
-            this.txtbGroupByCharsLimit.TabIndex = 14;
+            this.txtbGroupByChars.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtbGroupByChars.Location = new System.Drawing.Point(132, 2);
+            this.txtbGroupByChars.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.txtbGroupByChars.MenuManager = this.barManager1;
+            this.txtbGroupByChars.Name = "txtbGroupByChars";
+            this.txtbGroupByChars.Size = new System.Drawing.Size(250, 22);
+            this.txtbGroupByChars.TabIndex = 14;
+            this.txtbGroupByChars.Click += new System.EventHandler(this.txtbGroupByChars_Click);
             // 
             // sBtnGroup
             // 
-            this.sBtnGroup.Location = new System.Drawing.Point(848, 5);
+            this.sBtnGroup.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sBtnGroup.Location = new System.Drawing.Point(794, 2);
             this.sBtnGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnGroup.Name = "sBtnGroup";
-            this.sBtnGroup.Size = new System.Drawing.Size(83, 25);
+            this.sBtnGroup.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.sBtnGroup.Size = new System.Drawing.Size(83, 22);
             this.sBtnGroup.TabIndex = 13;
             this.sBtnGroup.Text = "Group";
             this.sBtnGroup.Click += new System.EventHandler(this.sBtnGroup_Click);
             // 
             // sBtnLength
             // 
-            this.sBtnLength.Location = new System.Drawing.Point(401, 5);
-            this.sBtnLength.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sBtnLength.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sBtnLength.Location = new System.Drawing.Point(382, 2);
+            this.sBtnLength.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.sBtnLength.Name = "sBtnLength";
-            this.sBtnLength.Size = new System.Drawing.Size(83, 25);
+            this.sBtnLength.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.sBtnLength.Size = new System.Drawing.Size(83, 22);
             this.sBtnLength.TabIndex = 12;
             this.sBtnLength.Text = "Set Length";
             this.sBtnLength.Click += new System.EventHandler(this.sBtnLength_Click);
-            // 
-            // lblGroupByChars
-            // 
-            this.lblGroupByChars.AutoSize = true;
-            this.lblGroupByChars.Location = new System.Drawing.Point(513, 9);
-            this.lblGroupByChars.Name = "lblGroupByChars";
-            this.lblGroupByChars.Size = new System.Drawing.Size(225, 17);
-            this.lblGroupByChars.TabIndex = 2;
-            this.lblGroupByChars.Text = "Or group by number of characters:";
             // 
             // cmsBookmarked
             // 
@@ -3100,6 +3062,55 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
+            // rbGroupByText
+            // 
+            this.rbGroupByText.AutoSize = true;
+            this.rbGroupByText.Checked = true;
+            this.rbGroupByText.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rbGroupByText.Location = new System.Drawing.Point(2, 2);
+            this.rbGroupByText.Name = "rbGroupByText";
+            this.rbGroupByText.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.rbGroupByText.Size = new System.Drawing.Size(130, 22);
+            this.rbGroupByText.TabIndex = 16;
+            this.rbGroupByText.Text = "group by text:";
+            this.rbGroupByText.UseVisualStyleBackColor = true;
+            // 
+            // rbGroupByTextLength
+            // 
+            this.rbGroupByTextLength.AutoSize = true;
+            this.rbGroupByTextLength.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rbGroupByTextLength.Location = new System.Drawing.Point(465, 2);
+            this.rbGroupByTextLength.Name = "rbGroupByTextLength";
+            this.rbGroupByTextLength.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.rbGroupByTextLength.Size = new System.Drawing.Size(256, 22);
+            this.rbGroupByTextLength.TabIndex = 17;
+            this.rbGroupByTextLength.Text = "Or group by number of characters:";
+            this.rbGroupByTextLength.UseVisualStyleBackColor = true;
+            // 
+            // nudGroupBychars
+            // 
+            this.nudGroupBychars.Dock = System.Windows.Forms.DockStyle.Left;
+            this.nudGroupBychars.Location = new System.Drawing.Point(721, 2);
+            this.nudGroupBychars.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Name = "nudGroupBychars";
+            this.nudGroupBychars.Size = new System.Drawing.Size(73, 23);
+            this.nudGroupBychars.TabIndex = 18;
+            this.nudGroupBychars.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.ValueChanged += new System.EventHandler(this.nudGroupBychars_ValueChanged);
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3193,12 +3204,12 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByCharsLimit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByChars.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3260,7 +3271,6 @@ namespace Analogy
         private System.Windows.Forms.SplitContainer spltFilteringBoth;
         private System.Windows.Forms.Panel pnlFilteringLeft;
         private DevExpress.XtraTab.XtraTabPage xtCounts;
-        private System.Windows.Forms.Label lblGroupByChars;
         private System.Windows.Forms.SplitContainer spltGroupByChars;
         private DevExpress.XtraGrid.GridControl gridControlMessageGrouping;
         private GridView gridViewGrouping2;
@@ -3276,7 +3286,6 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
-        private System.Windows.Forms.Label lblGroupByCharsLimit;
         private DevExpress.XtraEditors.SimpleButton btnUp;
         private DevExpress.XtraEditors.SimpleButton btnDown;
         private DevExpress.XtraEditors.LabelControl lblTotalMessages;
@@ -3369,8 +3378,7 @@ namespace Analogy
         private DevExpress.XtraEditors.TextEdit txtbExclude;
         private DevExpress.XtraEditors.TextEdit txtbHighlight;
         private DevExpress.XtraEditors.MemoEdit rtxtContent;
-        private DevExpress.XtraEditors.TextEdit txtbGroupByCharsLimit;
-        private DevExpress.XtraEditors.SpinEdit nudGroupBychars;
+        private DevExpress.XtraEditors.TextEdit txtbGroupByChars;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem bBtnUndockViewPerProcess;
         private System.Windows.Forms.SplitContainer spltText;
@@ -3415,5 +3423,8 @@ namespace Analogy
         private DevExpress.XtraEditors.CheckEdit ceModulesProcess;
         private DevExpress.XtraEditors.CheckEdit ceOlderThanFilter;
         private DevExpress.XtraEditors.CheckEdit ceNewerThanFilter;
+        private System.Windows.Forms.RadioButton rbGroupByText;
+        private System.Windows.Forms.RadioButton rbGroupByTextLength;
+        private System.Windows.Forms.NumericUpDown nudGroupBychars;
     }
 }

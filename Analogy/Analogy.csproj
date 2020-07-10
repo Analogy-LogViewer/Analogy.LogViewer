@@ -16,7 +16,7 @@
     <Description>Modern Log Viewer and analyzer.</Description>
     <Copyright>Copyright @ Lior Banai 2020</Copyright>
     <AssemblyVersion>4.2.4.0</AssemblyVersion>
-    <FileVersion>4.2.3.0</FileVersion>
+    <FileVersion>4.2.4.0</FileVersion>
     <NoWarn>1591;1573;0419;1607</NoWarn>
     <PlatformToolset>v120</PlatformToolset>
     <BaseAddress>285212672</BaseAddress>
