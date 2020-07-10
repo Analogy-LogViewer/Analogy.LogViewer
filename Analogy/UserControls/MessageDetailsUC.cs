@@ -7,17 +7,17 @@ using System.Windows.Forms;
 
 namespace Analogy
 {
-    public partial class UCMessageDetails : XtraUserControl
+    public partial class MessageDetailsUC : XtraUserControl
     {
         private AnalogyLogMessage Message { get; set; }
         private List<AnalogyLogMessage> Messages { get; }
         private string DataSource { get; }
-        public UCMessageDetails()
+        public MessageDetailsUC()
         {
             InitializeComponent();
         }
 
-        public UCMessageDetails(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
+        public MessageDetailsUC(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
         {
             Message = msg;
             Messages = messages;
@@ -26,6 +26,7 @@ namespace Analogy
 
         private void UCMessageDetails_Load(object sender, EventArgs e)
         {
+            xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageText;
             LoadMessage();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -47,6 +48,11 @@ namespace Analogy
         }
         private void LoadMessage()
         {
+       
+            xtraTabPageAdditionalInformation.PageVisible = Message.AdditionalInformation != null && Message.AdditionalInformation.Any();
+            if (Message.AdditionalInformation != null)
+                memoAdditionalInformation.Text = string.Join(Environment.NewLine,
+                    Message.AdditionalInformation.Select(kv => $"{kv.Key}:{kv.Value}"));
             memoText.Text = Message.Text;
             txtbMachineName.Text = Message.MachineName;
             txtID.Text = Message.Id.ToString();

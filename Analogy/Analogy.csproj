@@ -300,9 +300,9 @@
     <Compile Update="UserControls\UCLogs.Designer.cs">
       <DependentUpon>UCLogs.cs</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\UCMessageDetails.cs" />
-    <Compile Update="UserControls\UCMessageDetails.Designer.cs">
-      <DependentUpon>UCMessageDetails.cs</DependentUpon>
+    <Compile Update="UserControls\MessageDetailsUC.cs" />
+    <Compile Update="UserControls\MessageDetailsUC.Designer.cs">
+      <DependentUpon>MessageDetailsUC.cs</DependentUpon>
     </Compile>
     <Compile Update="Forms\UserSettingsForm.cs" />
     <Compile Update="Forms\UserSettingsForm.Designer.cs">
@@ -502,8 +502,8 @@
     <EmbeddedResource Update="UserControls\UCLogs.resx">
       <DependentUpon>UCLogs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="UserControls\UCMessageDetails.resx">
-      <DependentUpon>UCMessageDetails.cs</DependentUpon>
+    <EmbeddedResource Update="UserControls\MessageDetailsUC.resx">
+      <DependentUpon>MessageDetailsUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="Forms\UserSettingsForm.resx">
       <DependentUpon>UserSettingsForm.cs</DependentUpon>
