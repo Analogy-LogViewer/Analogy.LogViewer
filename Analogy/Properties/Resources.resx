@@ -496,4 +496,10 @@
   <data name="LoadFrom_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoadFrom_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Analogy_image_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Analogy_image_16x16.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Analogy_image_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Analogy_image_32x32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

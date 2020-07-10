@@ -15,7 +15,7 @@ namespace Analogy
 
         public FormMessageDetails(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
         {
-            UCMessageDetails uc = new UCMessageDetails(msg, messages, dataSource);
+            MessageDetailsUC uc = new MessageDetailsUC(msg, messages, dataSource);
             spltCMain.Panel1.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
         }

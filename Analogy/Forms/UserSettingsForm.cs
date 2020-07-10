@@ -108,6 +108,7 @@ namespace Analogy
         }
         private void LoadSettings()
         {
+            tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
@@ -195,6 +196,7 @@ namespace Analogy
             tsTraybar.IsOn = Settings.MinimizedToTrayBar;
             tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
         }
+
         private void SaveSetting()
         {
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Unknown, cpeLogLevelUnknown.Color);
@@ -206,13 +208,14 @@ namespace Analogy
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Warning, cpeLogLevelWarning.Color);
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Error, cpeLogLevelError.Color);
             Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Critical, cpeLogLevelCritical.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.AnalogyInformation, cpeLogLevelAnalogyInformation.Color);
+            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.AnalogyInformation,
+                cpeLogLevelAnalogyInformation.Color);
             Settings.ColorSettings.SetHighlightColor(cpeHighlightColor.Color);
             Settings.ColorSettings.SetNewMessagesColor(cpeNewMessagesColor.Color);
             Settings.ColorSettings.EnableNewMessagesColor = ceNewMessagesColor.Checked;
             Settings.ColorSettings.OverrideLogLevelColor = ceOverrideLogLevelColor.Checked;
-            Settings.RecentFilesCount = (int)nudRecentFiles.Value;
-            Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
+            Settings.RecentFilesCount = (int) nudRecentFiles.Value;
+            Settings.RecentFoldersCount = (int) nudRecentFolders.Value;
             List<Guid> order = (from FactoryCheckItem itm in chkLstDataProviderStatus.Items select (itm.ID)).ToList();
             var checkedItem = chkLstDataProviderStatus.CheckedItems.Cast<FactoryCheckItem>().ToList();
             foreach (Guid guid in order)
@@ -225,6 +228,7 @@ namespace Analogy
                         : DataProviderFactoryStatus.Disabled;
                 }
             }
+
             Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
             Settings.RememberLastSearches = tsAutoComplete.IsOn;
             Settings.UpdateOrder(order);
@@ -232,9 +236,11 @@ namespace Analogy
             Settings.SingleInstance = tsSingleInstance.IsOn;
             Settings.AnalogyIcon = rbtnLightIconColor.Checked ? "Light" : "Dark";
             var options = typeof(UpdateMode).GetDisplayValues();
-            UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode), options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
+            UpdateManager.Instance.UpdateMode = (UpdateMode) Enum.Parse(typeof(UpdateMode),
+                options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
             Settings.MinimizedToTrayBar = tsTraybar.IsOn;
-            Settings.CheckAdditionalInformation=tsCheckAdditionalInformation.IsOn;
+            Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
+            Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
             Settings.Save();
         }
 

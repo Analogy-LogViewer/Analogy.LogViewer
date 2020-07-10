@@ -1,6 +1,6 @@
 ﻿namespace Analogy
 {
-    partial class UCMessageDetails
+    partial class MessageDetailsUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCMessageDetails));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageDetailsUC));
             this.btnNext = new DevExpress.XtraEditors.SimpleButton();
             this.btnPrev = new DevExpress.XtraEditors.SimpleButton();
-            this.sBtnCopy = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.txtbDateValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -56,13 +55,16 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtbIndex = new DevExpress.XtraEditors.TextEdit();
             this.memoText = new DevExpress.XtraEditors.MemoEdit();
-            this.lblText = new DevExpress.XtraEditors.LabelControl();
             this.lblMachineName = new DevExpress.XtraEditors.LabelControl();
             this.txtbMachineName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtbProcessId = new DevExpress.XtraEditors.TextEdit();
             this.lblThreadId = new DevExpress.XtraEditors.LabelControl();
             this.txtbThreadId = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabControlMessageInfo = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPageText = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPageAdditionalInformation = new DevExpress.XtraTab.XtraTabPage();
+            this.memoAdditionalInformation = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDateValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDataSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSourceValue.Properties)).BeginInit();
@@ -78,6 +80,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtbMachineName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbProcessId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbThreadId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMessageInfo)).BeginInit();
+            this.xtraTabControlMessageInfo.SuspendLayout();
+            this.xtraTabPageText.SuspendLayout();
+            this.xtraTabPageAdditionalInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoAdditionalInformation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNext
@@ -99,16 +106,6 @@
             this.btnPrev.Size = new System.Drawing.Size(24, 26);
             this.btnPrev.TabIndex = 39;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
-            // sBtnCopy
-            // 
-            this.sBtnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnCopy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnCopy.ImageOptions.Image")));
-            this.sBtnCopy.Location = new System.Drawing.Point(842, 61);
-            this.sBtnCopy.Name = "sBtnCopy";
-            this.sBtnCopy.Size = new System.Drawing.Size(24, 26);
-            this.sBtnCopy.TabIndex = 44;
-            this.sBtnCopy.Click += new System.EventHandler(this.sBtnCopy_Click);
             // 
             // simpleButton1
             // 
@@ -338,23 +335,11 @@
             // 
             // memoText
             // 
-            this.memoText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoText.Location = new System.Drawing.Point(52, 64);
+            this.memoText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoText.Location = new System.Drawing.Point(0, 0);
             this.memoText.Name = "memoText";
-            this.memoText.Size = new System.Drawing.Size(784, 186);
+            this.memoText.Size = new System.Drawing.Size(856, 154);
             this.memoText.TabIndex = 50;
-            // 
-            // lblText
-            // 
-            this.lblText.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblText.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblText.Location = new System.Drawing.Point(0, 65);
-            this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(46, 22);
-            this.lblText.TabIndex = 48;
-            this.lblText.Text = "Text:";
             // 
             // lblMachineName
             // 
@@ -416,23 +401,58 @@
             this.txtbThreadId.Size = new System.Drawing.Size(641, 22);
             this.txtbThreadId.TabIndex = 55;
             // 
-            // UCMessageDetails
+            // xtraTabControlMessageInfo
+            // 
+            this.xtraTabControlMessageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xtraTabControlMessageInfo.Location = new System.Drawing.Point(3, 62);
+            this.xtraTabControlMessageInfo.Name = "xtraTabControlMessageInfo";
+            this.xtraTabControlMessageInfo.SelectedTabPage = this.xtraTabPageText;
+            this.xtraTabControlMessageInfo.Size = new System.Drawing.Size(863, 188);
+            this.xtraTabControlMessageInfo.TabIndex = 57;
+            this.xtraTabControlMessageInfo.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPageText,
+            this.xtraTabPageAdditionalInformation});
+            // 
+            // xtraTabPageText
+            // 
+            this.xtraTabPageText.Controls.Add(this.memoText);
+            this.xtraTabPageText.Name = "xtraTabPageText";
+            this.xtraTabPageText.Size = new System.Drawing.Size(856, 154);
+            this.xtraTabPageText.Text = "Message Text";
+            // 
+            // xtraTabPageAdditionalInformation
+            // 
+            this.xtraTabPageAdditionalInformation.Controls.Add(this.memoAdditionalInformation);
+            this.xtraTabPageAdditionalInformation.Name = "xtraTabPageAdditionalInformation";
+            this.xtraTabPageAdditionalInformation.Size = new System.Drawing.Size(856, 154);
+            this.xtraTabPageAdditionalInformation.Text = "Message\'s Additional Information";
+            // 
+            // memoAdditionalInformation
+            // 
+            this.memoAdditionalInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoAdditionalInformation.Location = new System.Drawing.Point(0, 0);
+            this.memoAdditionalInformation.Name = "memoAdditionalInformation";
+            this.memoAdditionalInformation.Size = new System.Drawing.Size(856, 154);
+            this.memoAdditionalInformation.TabIndex = 51;
+            // 
+            // MessageDetailsUC
             // 
             this.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.xtraTabControlMessageInfo);
             this.Controls.Add(this.lblThreadId);
             this.Controls.Add(this.txtbThreadId);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.txtbProcessId);
             this.Controls.Add(this.lblMachineName);
             this.Controls.Add(this.txtbMachineName);
-            this.Controls.Add(this.memoText);
             this.Controls.Add(this.txtbIndex);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.lblText);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.lblUser);
@@ -452,11 +472,10 @@
             this.Controls.Add(this.txtSourceValue);
             this.Controls.Add(this.txtbDataSource);
             this.Controls.Add(this.txtbDateValue);
-            this.Controls.Add(this.sBtnCopy);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "UCMessageDetails";
+            this.Name = "MessageDetailsUC";
             this.Size = new System.Drawing.Size(875, 593);
             this.Load += new System.EventHandler(this.UCMessageDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtbDateValue.Properties)).EndInit();
@@ -474,6 +493,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtbMachineName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbProcessId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbThreadId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMessageInfo)).EndInit();
+            this.xtraTabControlMessageInfo.ResumeLayout(false);
+            this.xtraTabPageText.ResumeLayout(false);
+            this.xtraTabPageAdditionalInformation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoAdditionalInformation.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -481,7 +505,6 @@
         #endregion
         private DevExpress.XtraEditors.SimpleButton btnNext;
         private DevExpress.XtraEditors.SimpleButton btnPrev;
-        private DevExpress.XtraEditors.SimpleButton sBtnCopy;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.TextEdit txtbDateValue;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -506,12 +529,15 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtbIndex;
         private DevExpress.XtraEditors.MemoEdit memoText;
-        private DevExpress.XtraEditors.LabelControl lblText;
         private DevExpress.XtraEditors.LabelControl lblMachineName;
         private DevExpress.XtraEditors.TextEdit txtbMachineName;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txtbProcessId;
         private DevExpress.XtraEditors.LabelControl lblThreadId;
         private DevExpress.XtraEditors.TextEdit txtbThreadId;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControlMessageInfo;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageText;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageAdditionalInformation;
+        private DevExpress.XtraEditors.MemoEdit memoAdditionalInformation;
     }
 }

@@ -10,6 +10,12 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Add ability to add notes to log messages. #217 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
+                new AnalogyChangeLog("Shows AnalogyLogMessage's AdditionalInformation Properties in Detailed Window. #215",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
+                new AnalogyChangeLog("System.ArgumentException when using the 'messages grouping' tab with a log file that contains custom columns. #225",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,10)),
+                new AnalogyChangeLog("Add providers icon to the ribbon page. #219",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,09)),
+                new AnalogyChangeLog("Main log viewer window always starts up full screen. #213",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,05)),
+                new AnalogyChangeLog("Cleanup Filtering UI Elements. #212",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,04)),
                 new AnalogyChangeLog( "Add option to select rows and perform operation on the selection (save to file, open in new window, etc). #201",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 07, 03)),
                 new AnalogyChangeLog( "Add dynamic columns at run time based on AdditionalInformation Property of AnalogyLogMessage. #206",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 07, 02)),
                 new AnalogyChangeLog( "Add multi select of rows. #204",AnalogChangeLogType.Improvement,"Lior Banai", new DateTime(2020, 06, 28)),

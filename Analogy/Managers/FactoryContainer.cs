@@ -51,10 +51,13 @@ namespace Analogy.Managers
         public void AddImages(IAnalogyComponentImages images) => DataProviderImages.Add(images);
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";
 
-        public bool ContainsDataProviderOrDataFactory(Guid componentId) =>
+        public bool ContainsDataProviderOrDataFactory(Guid componentId)
+        {
+            var contains=
             DataProvidersFactories.Any(d =>
                 d.FactoryId == componentId ||
                 d.DataProviders.Any(dp => dp.ID == componentId));
-
+            return contains;
+        }
     }
 }
