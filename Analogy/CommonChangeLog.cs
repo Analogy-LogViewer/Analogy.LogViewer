@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Add ability to add notes to log messages. #217 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
                 new AnalogyChangeLog("Shows AnalogyLogMessage's AdditionalInformation Properties in Detailed Window. #215",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
                 new AnalogyChangeLog("System.ArgumentException when using the 'messages grouping' tab with a log file that contains custom columns. #225",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,10)),
                 new AnalogyChangeLog("Add providers icon to the ribbon page. #219",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,09)),

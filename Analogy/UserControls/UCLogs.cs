@@ -2024,7 +2024,7 @@ namespace Analogy
             }
         }
 
-        private (AnalogyLogMessage, string) GetMessageFromSelectedFocusedRowInGrid()
+        private (AnalogyLogMessage message, string dataProvider) GetMessageFromSelectedFocusedRowInGrid()
         {
             var row = LogGrid.GetFocusedRow();
             if (row == null) return (null, string.Empty);
@@ -2521,6 +2521,17 @@ namespace Analogy
         private void txtbGroupByChars_Click(object sender, EventArgs e)
         {
             rbGroupByText.Checked = true;
+        }
+
+        private void tsmiAddCommentToMessage_Click(object sender, EventArgs e)
+        {
+            var msg = GetMessageFromSelectedFocusedRowInGrid();
+            if (msg.message != null)
+            {
+                var addNoteForm = new AnalogyAddCommentsToMessage(msg.message);
+                addNoteForm.Show(this);
+            }
+
         }
     }
 }

@@ -221,9 +221,12 @@ namespace Analogy
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.txtbGroupByChars = new DevExpress.XtraEditors.TextEdit();
             this.sBtnGroup = new DevExpress.XtraEditors.SimpleButton();
+            this.nudGroupBychars = new System.Windows.Forms.NumericUpDown();
+            this.rbGroupByTextLength = new System.Windows.Forms.RadioButton();
             this.sBtnLength = new DevExpress.XtraEditors.SimpleButton();
+            this.txtbGroupByChars = new DevExpress.XtraEditors.TextEdit();
+            this.rbGroupByText = new System.Windows.Forms.RadioButton();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.cmsBookmarked = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCalcDiffBookmark = new System.Windows.Forms.ToolStripMenuItem();
@@ -248,9 +251,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.rbGroupByText = new System.Windows.Forms.RadioButton();
-            this.rbGroupByTextLength = new System.Windows.Forms.RadioButton();
-            this.nudGroupBychars = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -320,12 +320,12 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGrouping2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByChars.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -372,7 +372,7 @@ namespace Analogy
             this.tsmiIncreaseFont,
             this.tsmiDecreaseFont});
             this.cmsMessageOperation.Name = "cmsMessageOperation";
-            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 496);
+            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 524);
             this.cmsMessageOperation.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMessageOperation_Opening);
             // 
             // tsmiClearLog
@@ -454,12 +454,11 @@ namespace Analogy
             // 
             // tsmiAddCommentToMessage
             // 
-            this.tsmiAddCommentToMessage.Enabled = false;
             this.tsmiAddCommentToMessage.Image = global::Analogy.Properties.Resources.EditComment_16x16;
             this.tsmiAddCommentToMessage.Name = "tsmiAddCommentToMessage";
             this.tsmiAddCommentToMessage.Size = new System.Drawing.Size(415, 26);
-            this.tsmiAddCommentToMessage.Text = "Add message/comment at this timestamp";
-            this.tsmiAddCommentToMessage.Visible = false;
+            this.tsmiAddCommentToMessage.Text = "Add note/Comment to this message";
+            this.tsmiAddCommentToMessage.Click += new System.EventHandler(this.tsmiAddCommentToMessage_Click);
             // 
             // toolStripSeparator2
             // 
@@ -2830,17 +2829,6 @@ namespace Analogy
             this.panelControl1.Size = new System.Drawing.Size(2124, 26);
             this.panelControl1.TabIndex = 16;
             // 
-            // txtbGroupByChars
-            // 
-            this.txtbGroupByChars.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtbGroupByChars.Location = new System.Drawing.Point(132, 2);
-            this.txtbGroupByChars.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.txtbGroupByChars.MenuManager = this.barManager1;
-            this.txtbGroupByChars.Name = "txtbGroupByChars";
-            this.txtbGroupByChars.Size = new System.Drawing.Size(250, 22);
-            this.txtbGroupByChars.TabIndex = 14;
-            this.txtbGroupByChars.Click += new System.EventHandler(this.txtbGroupByChars_Click);
-            // 
             // sBtnGroup
             // 
             this.sBtnGroup.Dock = System.Windows.Forms.DockStyle.Left;
@@ -2853,6 +2841,42 @@ namespace Analogy
             this.sBtnGroup.Text = "Group";
             this.sBtnGroup.Click += new System.EventHandler(this.sBtnGroup_Click);
             // 
+            // nudGroupBychars
+            // 
+            this.nudGroupBychars.Dock = System.Windows.Forms.DockStyle.Left;
+            this.nudGroupBychars.Location = new System.Drawing.Point(721, 2);
+            this.nudGroupBychars.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.Name = "nudGroupBychars";
+            this.nudGroupBychars.Size = new System.Drawing.Size(73, 23);
+            this.nudGroupBychars.TabIndex = 18;
+            this.nudGroupBychars.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudGroupBychars.ValueChanged += new System.EventHandler(this.nudGroupBychars_ValueChanged);
+            // 
+            // rbGroupByTextLength
+            // 
+            this.rbGroupByTextLength.AutoSize = true;
+            this.rbGroupByTextLength.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rbGroupByTextLength.Location = new System.Drawing.Point(465, 2);
+            this.rbGroupByTextLength.Name = "rbGroupByTextLength";
+            this.rbGroupByTextLength.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.rbGroupByTextLength.Size = new System.Drawing.Size(256, 22);
+            this.rbGroupByTextLength.TabIndex = 17;
+            this.rbGroupByTextLength.Text = "Or group by number of characters:";
+            this.rbGroupByTextLength.UseVisualStyleBackColor = true;
+            // 
             // sBtnLength
             // 
             this.sBtnLength.Dock = System.Windows.Forms.DockStyle.Left;
@@ -2864,6 +2888,31 @@ namespace Analogy
             this.sBtnLength.TabIndex = 12;
             this.sBtnLength.Text = "Set Length";
             this.sBtnLength.Click += new System.EventHandler(this.sBtnLength_Click);
+            // 
+            // txtbGroupByChars
+            // 
+            this.txtbGroupByChars.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtbGroupByChars.Location = new System.Drawing.Point(132, 2);
+            this.txtbGroupByChars.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.txtbGroupByChars.MenuManager = this.barManager1;
+            this.txtbGroupByChars.Name = "txtbGroupByChars";
+            this.txtbGroupByChars.Size = new System.Drawing.Size(250, 22);
+            this.txtbGroupByChars.TabIndex = 14;
+            this.txtbGroupByChars.Click += new System.EventHandler(this.txtbGroupByChars_Click);
+            // 
+            // rbGroupByText
+            // 
+            this.rbGroupByText.AutoSize = true;
+            this.rbGroupByText.Checked = true;
+            this.rbGroupByText.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rbGroupByText.Location = new System.Drawing.Point(2, 2);
+            this.rbGroupByText.Name = "rbGroupByText";
+            this.rbGroupByText.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.rbGroupByText.Size = new System.Drawing.Size(130, 22);
+            this.rbGroupByText.TabIndex = 16;
+            this.rbGroupByText.TabStop = true;
+            this.rbGroupByText.Text = "group by text:";
+            this.rbGroupByText.UseVisualStyleBackColor = true;
             // 
             // cmsBookmarked
             // 
@@ -3062,55 +3111,6 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // rbGroupByText
-            // 
-            this.rbGroupByText.AutoSize = true;
-            this.rbGroupByText.Checked = true;
-            this.rbGroupByText.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rbGroupByText.Location = new System.Drawing.Point(2, 2);
-            this.rbGroupByText.Name = "rbGroupByText";
-            this.rbGroupByText.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.rbGroupByText.Size = new System.Drawing.Size(130, 22);
-            this.rbGroupByText.TabIndex = 16;
-            this.rbGroupByText.Text = "group by text:";
-            this.rbGroupByText.UseVisualStyleBackColor = true;
-            // 
-            // rbGroupByTextLength
-            // 
-            this.rbGroupByTextLength.AutoSize = true;
-            this.rbGroupByTextLength.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rbGroupByTextLength.Location = new System.Drawing.Point(465, 2);
-            this.rbGroupByTextLength.Name = "rbGroupByTextLength";
-            this.rbGroupByTextLength.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.rbGroupByTextLength.Size = new System.Drawing.Size(256, 22);
-            this.rbGroupByTextLength.TabIndex = 17;
-            this.rbGroupByTextLength.Text = "Or group by number of characters:";
-            this.rbGroupByTextLength.UseVisualStyleBackColor = true;
-            // 
-            // nudGroupBychars
-            // 
-            this.nudGroupBychars.Dock = System.Windows.Forms.DockStyle.Left;
-            this.nudGroupBychars.Location = new System.Drawing.Point(721, 2);
-            this.nudGroupBychars.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.Name = "nudGroupBychars";
-            this.nudGroupBychars.Size = new System.Drawing.Size(73, 23);
-            this.nudGroupBychars.TabIndex = 18;
-            this.nudGroupBychars.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudGroupBychars.ValueChanged += new System.EventHandler(this.nudGroupBychars_ValueChanged);
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3204,12 +3204,12 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByChars.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
