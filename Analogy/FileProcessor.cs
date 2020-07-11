@@ -181,7 +181,7 @@ namespace Analogy
                 {
 
                     //build a list of files to be extracted
-                    var entries = archive.Entries.Where(entry => fileDataProvider.CanOpenFile(entry.FullName));
+                    var entries = archive.Entries.Where(entry => !entry.FullName.EndsWith("/") && fileDataProvider.CanOpenFile(entry.FullName));
                     foreach (ZipArchiveEntry entry in entries)
                     {
                         entry.ExtractToFile(Path.Combine(extractPath, entry.Name));
