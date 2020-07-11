@@ -1137,8 +1137,12 @@ namespace Analogy
 
         private string GetOpenFilter(string openFilter)
         {
-            if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
-            string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
+            //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
+            //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
+            //return openFilter + compressedFilter;
+
+            if (openFilter.Contains("*.zip")) return openFilter;
+            string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
             return openFilter + compressedFilter;
 
         }
