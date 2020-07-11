@@ -114,6 +114,7 @@ namespace Analogy
                 settings.Save();
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
+                CleanupManager.Instance.Clean();
             }
         }
 
@@ -991,7 +992,7 @@ namespace Analogy
                         {
                             OpenFileDialog openFileDialog1 = new OpenFileDialog
                             {
-                                Filter = dataProvider.FileOpenDialogFilters,
+                                Filter = GetOpenFilter(dataProvider.FileOpenDialogFilters),
                                 Title = @"Open Files",
                                 Multiselect = true
                             };
@@ -1135,6 +1136,18 @@ namespace Analogy
             }
         }
 
+        private string GetOpenFilter(string openFilter)
+        {
+            //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
+            //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
+            //return openFilter + compressedFilter;
+
+            if (openFilter.Contains("*.zip")) return openFilter;
+            string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
+            return openFilter + compressedFilter;
+
+        }
+
         private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
            string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
@@ -1261,7 +1274,7 @@ namespace Analogy
                 {
                     OpenFileDialog openFileDialog1 = new OpenFileDialog
                     {
-                        Filter = offlineAnalogy.FileOpenDialogFilters,
+                        Filter = GetOpenFilter(offlineAnalogy.FileOpenDialogFilters),
                         Title = @"Open Files",
                         Multiselect = true
                     };

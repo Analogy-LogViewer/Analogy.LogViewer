@@ -1763,22 +1763,6 @@ namespace Analogy
                     MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
-                    //SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    //saveFileDialog.Filter = "Plain XML log file - Analogy Data format (*.xml)| *.xml";
-
-                    //if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-                    //{
-                    //    try
-                    //    {
-                    //        AnalogyXmlLogFile save = new AnalogyXmlLogFile();
-                    //        save.Save(Messages, saveFileDialog.FileName);
-                    //        XtraMessageBox.Show("Operation Completed", $"Messages were saved to {saveFileDialog.FileName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    }
-                    //    catch (Exception e)
-                    //    {
-                    //        XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    }
-                    //}
                 }
                 else
                 {
