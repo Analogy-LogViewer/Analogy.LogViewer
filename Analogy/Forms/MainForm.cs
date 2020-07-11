@@ -114,6 +114,7 @@ namespace Analogy
                 settings.Save();
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
+                CleanupManager.Instance.Clean();
             }
         }
 

@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Managers;
 using DevExpress.Mvvm.Native;
 
 namespace Analogy
@@ -102,6 +103,7 @@ namespace Analogy
                             DataWindow.AppendMessage(error, fileDataProvider.GetType().FullName);
                             return new List<AnalogyLogMessage> { error };
                         }
+                        CleanupManager.Instance.AddFolder(extractedPath);
                         var files = Directory.GetFiles(extractedPath);
                         files.ForEach(async file =>
                         {
@@ -137,7 +139,7 @@ namespace Analogy
 
         private string UnzipFilesIntoTempFolder(string zipPath, IAnalogyOfflineDataProvider fileDataProvider)
         {
-            string extractPath =Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            string extractPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             Directory.CreateDirectory(extractPath);
             if (zipPath.EndsWith("zip", StringComparison.InvariantCultureIgnoreCase))
                 UnzipZipFileIntoTempFolder(zipPath, extractPath, fileDataProvider);
