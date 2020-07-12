@@ -915,34 +915,29 @@ namespace Analogy
             recentBar.RibbonStyle = RibbonItemStyles.All;
 
             //local folder
-            if (offlineProviders.Any(i => !string.IsNullOrEmpty(i.InitialFolderFullPath) &&
-                                          Directory.Exists(i.InitialFolderFullPath)))
+
+            BarSubItem folderBar = new BarSubItem();
+            folderBar.Caption = "Open Folder";
+            folderBar.ImageOptions.Image = Resources.Open2_32x32;
+            folderBar.ImageOptions.LargeImage = Resources.Open2_32x32;
+            folderBar.RibbonStyle = RibbonItemStyles.All;
+            group.ItemLinks.Add(folderBar);
+
+            foreach (var dataProvider in offlineProviders)
             {
-                BarSubItem folderBar = new BarSubItem();
-                folderBar.Caption = "Open Folder";
-                folderBar.ImageOptions.Image = Resources.Open2_32x32;
-                folderBar.ImageOptions.LargeImage = Resources.Open2_32x32;
-                folderBar.RibbonStyle = RibbonItemStyles.All;
-                group.ItemLinks.Add(folderBar);
-
-                foreach (var dataProvider in offlineProviders)
+                string directory = (!string.IsNullOrEmpty(dataProvider.InitialFolderFullPath) &&
+                                   Directory.Exists(dataProvider.InitialFolderFullPath))
+                    ? dataProvider.InitialFolderFullPath
+                    : Environment.CurrentDirectory;
+                //add local folder button:
+                BarButtonItem btn = new BarButtonItem { Caption = directory };
+                btn.ItemClick += (s, be) =>
                 {
-
-                    //add local folder button:
-                    if (!string.IsNullOrEmpty(dataProvider.InitialFolderFullPath) &&
-                        Directory.Exists(dataProvider.InitialFolderFullPath))
-                    {
-                        BarButtonItem btn = new BarButtonItem { Caption = dataProvider.InitialFolderFullPath };
-                        btn.ItemClick += (s, be) =>
-                        {
-                            OpenOffline(dataProvider.OptionalTitle, dataProvider,
-                                dataProvider.InitialFolderFullPath);
-                        };
-
-                        folderBar.AddItem(btn);
-                    }
-                }
+                    OpenOffline(dataProvider.OptionalTitle, dataProvider, directory);
+                };
+                folderBar.AddItem(btn);
             }
+
 
             //add recent folders
             //recent bar
@@ -1216,16 +1211,16 @@ namespace Analogy
             }
 
             //add local folder button:
-            if (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
-                Directory.Exists(offlineAnalogy.InitialFolderFullPath))
-            {
-                BarButtonItem localfolder = new BarButtonItem();
-                localfolder.Caption = "Open Folder";
-                localfolder.RibbonStyle = RibbonItemStyles.All;
-                group.ItemLinks.Add(localfolder);
-                localfolder.ImageOptions.Image = Resources.Open2_32x32;
-                localfolder.ItemClick += (sender, e) => { OpenOffline(title, offlineAnalogy.InitialFolderFullPath); };
-            }
+            string directory = (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
+                                Directory.Exists(offlineAnalogy.InitialFolderFullPath))
+                ? offlineAnalogy.InitialFolderFullPath
+                : Environment.CurrentDirectory;
+            BarButtonItem localfolder = new BarButtonItem();
+            localfolder.Caption = "Open Folder";
+            localfolder.RibbonStyle = RibbonItemStyles.All;
+            group.ItemLinks.Add(localfolder);
+            localfolder.ImageOptions.Image = Resources.Open2_32x32;
+            localfolder.ItemClick += (sender, e) => { OpenOffline(title, directory); };
 
             //recent folder
             //recent bar

@@ -628,7 +628,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.0.5" />
+    <PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.0.5" >
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	    <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Analogy.LogViewer.RSSReader" Version="1.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -636,6 +639,10 @@
     <PackageReference Include="Analogy.LogViewer.Serilog" Version="1.2.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="1.0.8" >
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	    <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="LiorBanai.NotificationWindow" Version="1.0.3" />
     <PackageReference Include="MessagePack" Version="2.1.152" />
