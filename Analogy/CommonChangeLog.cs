@@ -10,7 +10,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("Add search filters hints / indicators. #232 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,13)),
+                new AnalogyChangeLog("Remove XML format for analogy. #230",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,13)),
+                new AnalogyChangeLog("Add search filters hints / indicators. #232",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,13)),
                 new AnalogyChangeLog("show open folder regardless of provider supplied folder. #229",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,12)),
                 new AnalogyChangeLog("Add Support for reading compressed Zip files. #218",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,11)),
                 new AnalogyChangeLog("Add ability to add notes to log messages. #217",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
