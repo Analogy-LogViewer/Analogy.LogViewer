@@ -372,7 +372,7 @@ namespace Analogy
             this.tsmiIncreaseFont,
             this.tsmiDecreaseFont});
             this.cmsMessageOperation.Name = "cmsMessageOperation";
-            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 524);
+            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 496);
             this.cmsMessageOperation.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMessageOperation_Opening);
             // 
             // tsmiClearLog
@@ -1742,6 +1742,8 @@ namespace Analogy
             this.txtbModule.Location = new System.Drawing.Point(229, 0);
             this.txtbModule.MenuManager = this.barManager1;
             this.txtbModule.Name = "txtbModule";
+            this.txtbModule.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+    "udeA, includeB, -ExcludeC, -ExcludeD";
             this.txtbModule.Size = new System.Drawing.Size(662, 22);
             this.txtbModule.TabIndex = 26;
             // 
@@ -1805,6 +1807,8 @@ namespace Analogy
             this.txtbSource.Location = new System.Drawing.Point(166, 0);
             this.txtbSource.MenuManager = this.barManager1;
             this.txtbSource.Name = "txtbSource";
+            this.txtbSource.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+    "udeA, includeB, -ExcludeC, -ExcludeD";
             this.txtbSource.Size = new System.Drawing.Size(1433, 22);
             this.txtbSource.TabIndex = 25;
             // 
@@ -1857,6 +1861,7 @@ namespace Analogy
             this.txtbExclude.Location = new System.Drawing.Point(99, 0);
             this.txtbExclude.MenuManager = this.barManager1;
             this.txtbExclude.Name = "txtbExclude";
+            this.txtbExclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
             this.txtbExclude.Size = new System.Drawing.Size(1380, 22);
             this.txtbExclude.TabIndex = 20;
             // 
@@ -1919,6 +1924,7 @@ namespace Analogy
             this.txtbInclude.Location = new System.Drawing.Point(97, 0);
             this.txtbInclude.MenuManager = this.barManager1;
             this.txtbInclude.Name = "txtbInclude";
+            this.txtbInclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
             this.txtbInclude.Size = new System.Drawing.Size(1479, 22);
             this.txtbInclude.TabIndex = 19;
             // 
