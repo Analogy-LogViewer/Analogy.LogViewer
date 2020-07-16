@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Add .net framework 4.7.1 compilation target #236",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,16)),
                 new AnalogyChangeLog("Remove XML format for analogy. #230",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,13)),
                 new AnalogyChangeLog("Add search filters hints / indicators. #232",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,13)),
                 new AnalogyChangeLog("show open folder regardless of provider supplied folder. #229",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,12)),
