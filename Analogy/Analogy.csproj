@@ -3,7 +3,7 @@
   <PropertyGroup>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
@@ -85,88 +85,197 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v19.1">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+		<Reference Include="DevExpress.BonusSkins.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.BonusSkins.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Charts.v19.1.Core">
+			<HintPath>DevExpress\.net core\DevExpress.Charts.v19.1.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Data.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.Data.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Images.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.Images.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Map.v19.1.Core">
+			<HintPath>DevExpress\.net core\DevExpress.Map.v19.1.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Mvvm.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.Mvvm.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Mvvm.v19.1.DataModel">
+			<HintPath>DevExpress\.net core\DevExpress.Mvvm.v19.1.DataModel.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Mvvm.v19.1.ViewModel">
+			<HintPath>DevExpress\.net core\DevExpress.Mvvm.v19.1.ViewModel.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Office.v19.1.Core">
+			<HintPath>DevExpress\.net core\DevExpress.Office.v19.1.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Pdf.v19.1.Core">
+			<HintPath>DevExpress\.net core\DevExpress.Pdf.v19.1.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Printing.v19.1.Core">
+			<HintPath>DevExpress\.net core\DevExpress.Printing.v19.1.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.RichEdit.v19.1.Core">
+			<HintPath>DevExpress\.net core\DevExpress.RichEdit.v19.1.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Sparkline.v19.1.Core">
+			<HintPath>DevExpress\.net core\DevExpress.Sparkline.v19.1.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Utils.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.Utils.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Utils.v19.1.UI">
+			<HintPath>DevExpress\.net core\DevExpress.Utils.v19.1.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Web.ASPxThemes.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.Web.ASPxThemes.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.Web.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.Web.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraBars.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraBars.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraCharts.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraCharts.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraCharts.v19.1.Extensions">
+			<HintPath>DevExpress\.net core\DevExpress.XtraCharts.v19.1.Extensions.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraCharts.v19.1.UI">
+			<HintPath>DevExpress\.net core\DevExpress.XtraCharts.v19.1.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraCharts.v19.1.Web">
+			<HintPath>DevExpress\.net core\DevExpress.XtraCharts.v19.1.Web.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraCharts.v19.1.Wizard">
+			<HintPath>DevExpress\.net core\DevExpress.XtraCharts.v19.1.Wizard.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraEditors.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraEditors.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraGrid.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraGrid.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraLayout.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraLayout.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraNavBar.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraNavBar.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraPrinting.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraPrinting.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraRichEdit.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraRichEdit.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraTreeList.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraTreeList.v19.1.dll</HintPath>
+		</Reference>
+		<Reference Include="DevExpress.XtraVerticalGrid.v19.1">
+			<HintPath>DevExpress\.net core\DevExpress.XtraVerticalGrid.v19.1.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
+    <Reference Include="DevExpress.BonusSkins.v19.1">
+      <HintPath>DevExpress\.net framework\DevExpress.BonusSkins.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Charts.v19.1.Core">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Charts.v19.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Data.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dialogs.v19.1.Core">
+      <HintPath>DevExpress\.net framework\DevExpress.Dialogs.v19.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Images.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Images.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Mvvm.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Mvvm.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Mvvm.v19.1.ViewModel">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Mvvm.v19.1.ViewModel.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Pdf.v19.1.Core">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Pdf.v19.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Printing.v19.1.Core">
-
-    </Reference>
-    <Reference Include="DevExpress.Office.v19.1.Core">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Printing.v19.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.RichEdit.v19.1.Core">
-
+      <HintPath>DevExpress\.net framework\DevExpress.RichEdit.v19.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Sparkline.v19.1.Core">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Sparkline.v19.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Utils.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v19.1.UI">
-
+      <HintPath>DevExpress\.net framework\DevExpress.Utils.v19.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v19.1">
+      <HintPath>DevExpress\.net framework\DevExpress.Web.ASPxThemes.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v19.1">
+      <HintPath>DevExpress\.net framework\DevExpress.Web.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraBars.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraBars.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraCharts.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1.Extensions">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraCharts.v19.1.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1.UI">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraCharts.v19.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.1.Web">
+      <HintPath>DevExpress\.net framework\DevExpress.XtraCharts.v19.1.Web.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v19.1.Wizard">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraCharts.v19.1.Wizard.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraDialogs.v19.1">
+      <HintPath>DevExpress\.net framework\DevExpress.XtraDialogs.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraEditors.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGrid.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraGrid.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraLayout.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraLayout.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraNavBar.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraNavBar.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPrinting.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraPrinting.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraRichEdit.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraRichEdit.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraTreeList.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraTreeList.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraVerticalGrid.v19.1">
-
+      <HintPath>DevExpress\.net framework\DevExpress.XtraVerticalGrid.v19.1.dll</HintPath>
     </Reference>
   </ItemGroup>
+  
 
-  <ItemGroup>
+	<ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
