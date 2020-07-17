@@ -85,6 +85,9 @@ namespace Analogy
         public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token");
         public bool MinimizedToTrayBar { get; set; }
         public bool CheckAdditionalInformation { get; set; }
+
+        public AnalogyPositionState AnalogyPosition { get; set; }
+
         public UserSettingsManager()
         {
             Load();
@@ -166,7 +169,8 @@ namespace Analogy
             }
 
             MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
-            CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation;
+            CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation; 
+            AnalogyPosition = ParseSettings<AnalogyPositionState>(Settings.Default.AnalogyPosition) ?? new AnalogyPositionState();
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -238,6 +242,7 @@ namespace Analogy
             Settings.Default.LastVersionChecked = JsonConvert.SerializeObject(LastVersionChecked);
             Settings.Default.MinimizedToTrayBar = MinimizedToTrayBar;
             Settings.Default.CheckAdditionalInformation=CheckAdditionalInformation;
+            Settings.Default.AnalogyPosition = JsonConvert.SerializeObject(AnalogyPosition);
             Settings.Default.Save();
 
         }

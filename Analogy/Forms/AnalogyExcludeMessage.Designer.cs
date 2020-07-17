@@ -71,7 +71,6 @@
             this.Controls.Add(this.sBtnCancel);
             this.Controls.Add(this.sBtnOk);
             this.Controls.Add(this.txtbMessage);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnalogyExcludeMessage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "exclude";

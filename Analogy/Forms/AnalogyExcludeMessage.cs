@@ -11,6 +11,7 @@ namespace Analogy
         public AnalogyExcludeMessage()
         {
             InitializeComponent();
+            Icon = UserSettingsManager.UserSettings.GetIcon();
         }
 
         public AnalogyExcludeMessage(AnalogyLogMessage m) : this()
