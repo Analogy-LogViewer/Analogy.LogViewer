@@ -30,6 +30,9 @@
 	<Company>Analogy.LogViewer</Company>
   </PropertyGroup>
 
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+		<GenerateResourceUsePreserializedResources >true</GenerateResourceUsePreserializedResources>
+	</PropertyGroup>
 	<ItemGroup>
 	<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />
  </ItemGroup> 
@@ -75,7 +78,7 @@
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
 	<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="System.Resources.Extensions" Version="4.7.1" />
+	<PackageReference Include="System.Resources.Extensions" Version="4.7.1" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' "/>
 
   </ItemGroup>
 
