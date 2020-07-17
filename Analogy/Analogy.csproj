@@ -14,7 +14,7 @@
     <ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageId>Analogy.LogViewer.Core</PackageId>
+    <PackageId>Analogy.LogViewer</PackageId>
     <Authors>Lior Banai</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
@@ -23,9 +23,9 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
     <PackageTags />
     <RepositoryType>git</RepositoryType>
-    <Version>4.2.4</Version>
+    <Version>4.2.5</Version>
     <Copyright>Lior Banai ©  2020</Copyright>
-    <Product>Analogy Log Viewer Core</Product>
+    <Product>Analogy Log Viewer</Product>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Company>Analogy.LogViewer</Company>
   </PropertyGroup>
