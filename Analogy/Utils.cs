@@ -66,7 +66,7 @@ namespace Analogy
         private static Regex IllegalCharactersRegex = new Regex("[" + @"\/:<>|" + "\"]", RegexOptions.Compiled);
         private static Regex CatchExtentionRegex = new Regex(@"^\s*.+\.([^\.]+)\s*$", RegexOptions.Compiled);
         private static string NonDotCharacters = @"[^.]*";
-      
+
 
         //
         /// <summary>
@@ -302,8 +302,9 @@ namespace Analogy
             if (checkAdditionalInformation && message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
-                {if (dtr.Table.Columns.Contains(info.Key))
-                    dtr[info.Key] = info.Value;
+                {
+                    if (dtr.Table.Columns.Contains(info.Key))
+                        dtr[info.Key] = info.Value;
                     else
                     {
                         AnalogyLogger.Instance.LogError("",
@@ -314,6 +315,12 @@ namespace Analogy
 
             }
             return dtr;
+        }
+
+        public static bool IsCompressedArchive(string filename)
+        {
+            return filename.EndsWith(".gz", StringComparison.InvariantCultureIgnoreCase) ||
+                   filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
         }
     }
 

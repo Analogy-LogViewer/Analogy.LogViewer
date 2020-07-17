@@ -113,16 +113,16 @@ namespace Analogy
                 settings.Save();
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
+                CleanupManager.Instance.Clean();
             }
         }
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
-            if (settings.AnalogyPosition.RememberLastPosition)
+            if (settings.AnalogyPosition.RememberLastPosition && WindowState != FormWindowState.Maximized)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
-                if (WindowState != FormWindowState.Maximized &&
-                    Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
+                if (Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
                 {
                     Location = settings.AnalogyPosition.Location;
                     Size = settings.AnalogyPosition.Size;
@@ -913,34 +913,29 @@ namespace Analogy
             recentBar.RibbonStyle = RibbonItemStyles.All;
 
             //local folder
-            if (offlineProviders.Any(i => !string.IsNullOrEmpty(i.InitialFolderFullPath) &&
-                                          Directory.Exists(i.InitialFolderFullPath)))
+
+            BarSubItem folderBar = new BarSubItem();
+            folderBar.Caption = "Open Folder";
+            folderBar.ImageOptions.Image = Resources.Open2_32x32;
+            folderBar.ImageOptions.LargeImage = Resources.Open2_32x32;
+            folderBar.RibbonStyle = RibbonItemStyles.All;
+            group.ItemLinks.Add(folderBar);
+
+            foreach (var dataProvider in offlineProviders)
             {
-                BarSubItem folderBar = new BarSubItem();
-                folderBar.Caption = "Open Folder";
-                folderBar.ImageOptions.Image = Resources.Open2_32x32;
-                folderBar.ImageOptions.LargeImage = Resources.Open2_32x32;
-                folderBar.RibbonStyle = RibbonItemStyles.All;
-                group.ItemLinks.Add(folderBar);
-
-                foreach (var dataProvider in offlineProviders)
+                string directory = (!string.IsNullOrEmpty(dataProvider.InitialFolderFullPath) &&
+                                   Directory.Exists(dataProvider.InitialFolderFullPath))
+                    ? dataProvider.InitialFolderFullPath
+                    : Environment.CurrentDirectory;
+                //add local folder button:
+                BarButtonItem btn = new BarButtonItem { Caption = directory };
+                btn.ItemClick += (s, be) =>
                 {
-
-                    //add local folder button:
-                    if (!string.IsNullOrEmpty(dataProvider.InitialFolderFullPath) &&
-                        Directory.Exists(dataProvider.InitialFolderFullPath))
-                    {
-                        BarButtonItem btn = new BarButtonItem { Caption = dataProvider.InitialFolderFullPath };
-                        btn.ItemClick += (s, be) =>
-                        {
-                            OpenOffline(dataProvider.OptionalTitle, dataProvider,
-                                dataProvider.InitialFolderFullPath);
-                        };
-
-                        folderBar.AddItem(btn);
-                    }
-                }
+                    OpenOffline(dataProvider.OptionalTitle, dataProvider, directory);
+                };
+                folderBar.AddItem(btn);
             }
+
 
             //add recent folders
             //recent bar
@@ -990,7 +985,7 @@ namespace Analogy
                         {
                             OpenFileDialog openFileDialog1 = new OpenFileDialog
                             {
-                                Filter = dataProvider.FileOpenDialogFilters,
+                                Filter = GetOpenFilter(dataProvider.FileOpenDialogFilters),
                                 Title = @"Open Files",
                                 Multiselect = true
                             };
@@ -1134,6 +1129,29 @@ namespace Analogy
             }
         }
 
+        private string GetOpenFilter(string openFilter)
+        {
+            if (!settings.EnableCompressedArchives)
+            {
+                return openFilter;
+            }
+            //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
+            //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
+            //return openFilter + compressedFilter;
+            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase)) 
+            {
+                string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
+                openFilter = openFilter + compressedFilter;
+            }
+            if (!openFilter.Contains("*.gz",StringComparison.InvariantCultureIgnoreCase))
+            {
+                string compressedFilter = "|Compressed Gzip Archive (*.gz)|*.gz";
+                openFilter = openFilter + compressedFilter;
+            }
+
+            return openFilter;
+        }
+
         private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
            string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
@@ -1202,16 +1220,16 @@ namespace Analogy
             }
 
             //add local folder button:
-            if (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
-                Directory.Exists(offlineAnalogy.InitialFolderFullPath))
-            {
-                BarButtonItem localfolder = new BarButtonItem();
-                localfolder.Caption = "Open Folder";
-                localfolder.RibbonStyle = RibbonItemStyles.All;
-                group.ItemLinks.Add(localfolder);
-                localfolder.ImageOptions.Image = Resources.Open2_32x32;
-                localfolder.ItemClick += (sender, e) => { OpenOffline(title, offlineAnalogy.InitialFolderFullPath); };
-            }
+            string directory = (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
+                                Directory.Exists(offlineAnalogy.InitialFolderFullPath))
+                ? offlineAnalogy.InitialFolderFullPath
+                : Environment.CurrentDirectory;
+            BarButtonItem localfolder = new BarButtonItem();
+            localfolder.Caption = "Open Folder";
+            localfolder.RibbonStyle = RibbonItemStyles.All;
+            group.ItemLinks.Add(localfolder);
+            localfolder.ImageOptions.Image = Resources.Open2_32x32;
+            localfolder.ItemClick += (sender, e) => { OpenOffline(title, directory); };
 
             //recent folder
             //recent bar
@@ -1260,7 +1278,7 @@ namespace Analogy
                 {
                     OpenFileDialog openFileDialog1 = new OpenFileDialog
                     {
-                        Filter = offlineAnalogy.FileOpenDialogFilters,
+                        Filter = GetOpenFilter(offlineAnalogy.FileOpenDialogFilters),
                         Title = @"Open Files",
                         Multiselect = true
                     };

@@ -687,6 +687,21 @@ namespace Analogy.Properties
                 this["AnalogyPosition"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnableCompressedArchives
+        {
+            get
+            {
+                return ((bool)(this["EnableCompressedArchives"]));
+            }
+            set
+            {
+                this["EnableCompressedArchives"] = value;
+            }
+        }
     }
 
 }

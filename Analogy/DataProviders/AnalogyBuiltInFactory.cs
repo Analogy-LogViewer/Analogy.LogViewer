@@ -49,7 +49,7 @@ namespace Analogy.DataSources
         public Guid ID { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
         public bool CanSaveToLogFile { get; } = true;
         public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.axml;*.ajson;*.abin|Plain Analogy XML log file (*.axml)|*.axml|Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
-        public string FileSaveDialogFilters { get; } = "Plain Analogy XML log file (*.axml)|*.axml|Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
+        public string FileSaveDialogFilters { get; } = "Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.axml", "*.ajson", "*.abin" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
         public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
@@ -112,14 +112,7 @@ namespace Analogy.DataSources
 
             => Task.Factory.StartNew(async () =>
             {
-
-                if (fileName.EndsWith(".axml", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    AnalogyXmlLogFile logFile = new AnalogyXmlLogFile();
-                    await logFile.Save(messages, fileName);
-
-                }
-                else if (fileName.EndsWith(".ajson", StringComparison.InvariantCultureIgnoreCase))
+                if (fileName.EndsWith(".ajson", StringComparison.InvariantCultureIgnoreCase))
                 {
                     AnalogyJsonLogFile logFile = new AnalogyJsonLogFile();
                     await logFile.Save(messages, fileName);

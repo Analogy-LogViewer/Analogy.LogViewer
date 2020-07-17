@@ -10,7 +10,13 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("Add ability to add notes to log messages. #217 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
+                new AnalogyChangeLog("Support gz archive files #231",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,17)),
+                new AnalogyChangeLog("Add .net framework 4.7.1 compilation target #236",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,16)),
+                new AnalogyChangeLog("Remove XML format for analogy. #230",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,13)),
+                new AnalogyChangeLog("Add search filters hints / indicators. #232",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,13)),
+                new AnalogyChangeLog("show open folder regardless of provider supplied folder. #229",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,12)),
+                new AnalogyChangeLog("Add Support for reading compressed Zip files. #218",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,11)),
+                new AnalogyChangeLog("Add ability to add notes to log messages. #217",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
                 new AnalogyChangeLog("Shows AnalogyLogMessage's AdditionalInformation Properties in Detailed Window. #215",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,10)),
                 new AnalogyChangeLog("System.ArgumentException when using the 'messages grouping' tab with a log file that contains custom columns. #225",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,10)),
                 new AnalogyChangeLog("Add providers icon to the ribbon page. #219",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,09)),

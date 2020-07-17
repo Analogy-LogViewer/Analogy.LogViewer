@@ -108,6 +108,7 @@ namespace Analogy
         }
         private void LoadSettings()
         {
+            tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
             tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
@@ -241,6 +242,7 @@ namespace Analogy
             Settings.MinimizedToTrayBar = tsTraybar.IsOn;
             Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
             Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
+            Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
             Settings.Save();
         }
 

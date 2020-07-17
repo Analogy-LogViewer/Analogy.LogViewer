@@ -87,6 +87,7 @@ namespace Analogy
         public bool CheckAdditionalInformation { get; set; }
 
         public AnalogyPositionState AnalogyPosition { get; set; }
+        public bool EnableCompressedArchives { get; set; }
 
         public UserSettingsManager()
         {
@@ -95,6 +96,7 @@ namespace Analogy
 
         public void Load()
         {
+            EnableCompressedArchives = true;
             AnalogyInternalLogPeriod = 5;
             if (Settings.Default.UpgradeRequired)
             {
@@ -169,8 +171,9 @@ namespace Analogy
             }
 
             MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
-            CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation; 
+            CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation;
             AnalogyPosition = ParseSettings<AnalogyPositionState>(Settings.Default.AnalogyPosition) ?? new AnalogyPositionState();
+            EnableCompressedArchives = Settings.Default.EnableCompressedArchives;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -241,8 +244,9 @@ namespace Analogy
             Settings.Default.UpdateMode = (int)UpdateMode;
             Settings.Default.LastVersionChecked = JsonConvert.SerializeObject(LastVersionChecked);
             Settings.Default.MinimizedToTrayBar = MinimizedToTrayBar;
-            Settings.Default.CheckAdditionalInformation=CheckAdditionalInformation;
+            Settings.Default.CheckAdditionalInformation = CheckAdditionalInformation;
             Settings.Default.AnalogyPosition = JsonConvert.SerializeObject(AnalogyPosition);
+            Settings.Default.EnableCompressedArchives=EnableCompressedArchives;
             Settings.Default.Save();
 
         }

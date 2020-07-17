@@ -9,6 +9,7 @@ namespace Analogy.Managers
 {
     public class FactoryContainer
     {
+        public string AssemblyFullPath { get; }
         public Assembly Assembly { get; }
         public IAnalogyFactory Factory { get; }
         public FactorySettings FactorySetting { get; }
@@ -19,7 +20,7 @@ namespace Analogy.Managers
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         public List<IAnalogyComponentImages> DataProviderImages { get; private set; }
 
-        public FactoryContainer(Assembly assembly, IAnalogyFactory factory, FactorySettings factorySetting)
+        public FactoryContainer(Assembly assembly,string assemblyFullPath, IAnalogyFactory factory, FactorySettings factorySetting)
         {
             Assembly = assembly;
             Factory = factory;

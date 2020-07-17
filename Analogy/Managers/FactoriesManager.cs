@@ -32,7 +32,7 @@ namespace Analogy
             var currentAssembly = Assembly.GetExecutingAssembly();
             var analogyFactorySetting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyFactory);
             analogyFactorySetting.FactoryName = analogyFactory.Title;
-            FactoryContainer fc = new FactoryContainer(currentAssembly, analogyFactory, analogyFactorySetting);
+            FactoryContainer fc = new FactoryContainer(currentAssembly, Environment.CurrentDirectory, analogyFactory, analogyFactorySetting);
             fc.AddDataProviderFactory(new AnalogyOfflineDataProviderFactory());
             fc.AddCustomActionFactory(new AnalogyCustomActionFactory());
             BuiltInFactories.Add(fc);
@@ -287,7 +287,8 @@ namespace Analogy
                 {
                     try
                     {
-                        Assembly assembly = Assembly.LoadFrom(Path.GetFullPath(aFile));
+                        string path = Path.GetFullPath(aFile);
+                        Assembly assembly = Assembly.LoadFrom(path);
                         var types = assembly.GetTypes().ToList();
 
                         foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
@@ -295,7 +296,7 @@ namespace Analogy
                             var factory = Activator.CreateInstance(f) as IAnalogyFactory;
                             var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
                             setting.FactoryName = factory.Title;
-                            FactoryContainer fc = new FactoryContainer(assembly, factory, setting);
+                            FactoryContainer fc = new FactoryContainer(assembly, path, factory, setting);
                             if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))
                             {
                                 Factories.Remove(Factories.FirstOrDefault(fa =>
