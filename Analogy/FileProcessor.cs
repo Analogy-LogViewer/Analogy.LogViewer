@@ -159,7 +159,7 @@ namespace Analogy
             FileInfo fileToDecompress = new FileInfo(zipPath);
             using (FileStream originalFileStream = fileToDecompress.OpenRead())
             {
-                string currentFileName = fileToDecompress.FullName;
+                string currentFileName = fileToDecompress.Name;
                 string newFileName = Path.Combine(extractPath, currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length));
 
                 using (FileStream decompressedFileStream = File.Create(newFileName))

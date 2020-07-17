@@ -1146,7 +1146,7 @@ namespace Analogy
             }
             if (!openFilter.Contains("*.gz",StringComparison.InvariantCultureIgnoreCase))
             {
-                string compressedFilter = "|Compressed GZ Archive (*.gz)|*.gz";
+                string compressedFilter = "|Compressed Gzip Archive (*.gz)|*.gz";
                 openFilter = openFilter + compressedFilter;
             }
 
