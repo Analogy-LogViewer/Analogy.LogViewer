@@ -69,6 +69,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
 
   </ItemGroup>
 
@@ -272,6 +273,8 @@
     <Reference Include="DevExpress.XtraVerticalGrid.v19.1">
       <HintPath>DevExpress\.net framework\DevExpress.XtraVerticalGrid.v19.1.dll</HintPath>
     </Reference>
+		<Reference Include="System.ComponentModel.DataAnnotations" />
+		<Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   
 

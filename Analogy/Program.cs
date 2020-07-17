@@ -31,7 +31,9 @@ namespace Analogy
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
             Application.EnableVisualStyles();
+#if NETCOREAPP3_1
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
+#endif
             Settings.IncreaseNumberOfLaunches();
             if (!string.IsNullOrEmpty(Settings.ApplicationSkinName))
             {
