@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 	<OutputType>WinExe</OutputType>
-	<TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+	<TargetFrameworks>net472;net471;netcoreapp3.1</TargetFrameworks>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	<IncludeSymbols>true</IncludeSymbols>
@@ -182,7 +182,7 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
 	<Reference Include="DevExpress.BonusSkins.v19.1">
 	  <HintPath>DevExpress\.net framework\DevExpress.BonusSkins.v19.1.dll</HintPath>
 	</Reference>
@@ -285,7 +285,7 @@
 		<Reference Include="System.Windows.Forms" />
 
   </ItemGroup>
-  <ItemGroup  Condition=" '$(TargetFramework)' == 'net472' ">
+  <ItemGroup  Condition=" '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
     <Compile Update="Forms\AboutDataSourceBox.cs" />
     <Compile Update="Forms\AboutDataSourceBox.Designer.cs">
       <DependentUpon>AboutDataSourceBox.cs</DependentUpon>
