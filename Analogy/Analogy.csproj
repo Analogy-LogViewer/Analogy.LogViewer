@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 	<OutputType>WinExe</OutputType>
-	<TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
+	<TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	<IncludeSymbols>true</IncludeSymbols>
@@ -283,8 +283,450 @@
 		<Reference Include="System.ServiceProcess" />
 		<Reference Include="System.Web.Extensions" />
 		<Reference Include="System.Windows.Forms" />
+
   </ItemGroup>
-  
+  <ItemGroup  Condition=" '$(TargetFramework)' == 'net472' ">
+    <Compile Update="Forms\AboutDataSourceBox.cs" />
+    <Compile Update="Forms\AboutDataSourceBox.Designer.cs">
+      <DependentUpon>AboutDataSourceBox.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\AnalogyAboutBox.cs" />
+    <Compile Update="Forms\AnalogyAboutBox.Designer.cs">
+      <DependentUpon>AnalogyAboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\AnalogyExclude.cs" />
+    <Compile Update="Forms\AnalogyExclude.Designer.cs">
+      <DependentUpon>AnalogyExclude.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\AnalogyAddCommentsToMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AnalogyExcludeMessage.cs" />
+    <Compile Update="Forms\AnalogyExcludeMessage.Designer.cs">
+      <DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\AnalogyOTAClient.cs" />
+    <Compile Update="Forms\AnalogyOTAClient.Designer.cs">
+      <DependentUpon>AnalogyOTAClient.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\UserSettingsDataProvidersForm.cs" />
+    <Compile Update="Forms\UserSettingsDataProvidersForm.Designer.cs">
+      <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\AnalogyColumnsMatcherUC.cs" />
+    <Compile Update="UserControls\AnalogyColumnsMatcherUC.Designer.cs">
+      <DependentUpon>AnalogyColumnsMatcherUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\FilePoolingLog.cs" />
+    <Compile Update="UserControls\FilePoolingLog.Designer.cs">
+      <DependentUpon>FilePoolingLog.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\DataVisualizerUC.cs" />
+    <Compile Update="UserControls\DataVisualizerUC.Designer.cs">
+      <DependentUpon>DataVisualizerUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\DataVisualizerForm.cs" />
+    <Compile Update="Forms\DataVisualizerForm.Designer.cs">
+      <DependentUpon>DataVisualizerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\MainForm.cs" />
+    <Compile Update="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\AnalogyOTAForm.cs" />
+    <Compile Update="Forms\AnalogyOTAForm.Designer.cs">
+      <DependentUpon>AnalogyOTAForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\ChangeLog.cs" />
+    <Compile Update="Forms\ChangeLog.Designer.cs">
+      <DependentUpon>ChangeLog.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\CombineFilesUC.cs" />
+    <Compile Update="UserControls\CombineFilesUC.Designer.cs">
+      <DependentUpon>CombineFilesUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\ExtensionsForm.cs" />
+    <Compile Update="Forms\ExtensionsForm.Designer.cs">
+      <DependentUpon>ExtensionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\ExtensionsUC.cs" />
+    <Compile Update="UserControls\ExtensionsUC.Designer.cs">
+      <DependentUpon>ExtensionsUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\FileSystemUC.cs" />
+    <Compile Update="UserControls\FileSystemUC.Designer.cs">
+      <DependentUpon>FileSystemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\FolderTreeViewUC.cs" />
+    <Compile Update="UserControls\FolderTreeViewUC.Designer.cs">
+      <DependentUpon>FolderTreeViewUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormCombineFiles.cs" />
+    <Compile Update="Forms\FormCombineFiles.Designer.cs">
+      <DependentUpon>FormCombineFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FormMessageDetails.cs" />
+    <Compile Update="Forms\FormMessageDetails.Designer.cs">
+      <DependentUpon>FormMessageDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\ClientServerLog.cs" />
+    <Compile Update="UserControls\ClientServerLog.Designer.cs">
+      <DependentUpon>ClientServerLog.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\BookmarkLog.cs" />
+    <Compile Update="UserControls\BookmarkLog.Designer.cs">
+      <DependentUpon>BookmarkLog.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\LocalLogFilesUC.cs" />
+    <Compile Update="UserControls\LocalLogFilesUC.Designer.cs">
+      <DependentUpon>LocalLogFilesUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\OnlineLog.cs" />
+    <Compile Update="UserControls\OnlineLog.Designer.cs">
+      <DependentUpon>OnlineLog.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\FilesOperationsUC.cs" />
+    <Compile Update="UserControls\FilesOperationsUC.Designer.cs">
+      <DependentUpon>FilesOperationsUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\ProcessNameAndID.cs" />
+    <Compile Update="Forms\ProcessNameAndID.Designer.cs">
+      <DependentUpon>ProcessNameAndID.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\RibbonFormMain.cs" />
+    <Compile Update="Forms\RibbonFormMain.Designer.cs">
+      <DependentUpon>RibbonFormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\SearchForm.cs" />
+    <Compile Update="Forms\SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\SearchInFilesUC.cs" />
+    <Compile Update="UserControls\SearchInFilesUC.Designer.cs">
+      <DependentUpon>SearchInFilesUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\ToolbarFormMain.cs" />
+    <Compile Update="Forms\ToolbarFormMain.Designer.cs">
+      <DependentUpon>ToolbarFormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\FileComparerForm.cs" />
+    <Compile Update="Forms\FileComparerForm.Designer.cs">
+      <DependentUpon>FileComparerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\LogsComparerUC.cs" />
+    <Compile Update="UserControls\LogsComparerUC.Designer.cs">
+      <DependentUpon>LogsComparerUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\UCLogs.cs" />
+    <Compile Update="UserControls\UCLogs.Designer.cs">
+      <DependentUpon>UCLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\MessageDetailsUC.cs" />
+    <Compile Update="UserControls\MessageDetailsUC.Designer.cs">
+      <DependentUpon>MessageDetailsUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\UserSettingsForm.cs" />
+    <Compile Update="Forms\UserSettingsForm.Designer.cs">
+      <DependentUpon>UserSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\UtilityUC.cs" />
+    <Compile Update="UserControls\UtilityUC.Designer.cs">
+      <DependentUpon>UtilityUC.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\WindowsEventLog.cs" />
+    <Compile Update="UserControls\WindowsEventLog.designer.cs">
+      <DependentUpon>WindowsEventLog.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\XtraFormClientServer.cs" />
+    <Compile Update="Forms\XtraFormClientServer.Designer.cs">
+      <DependentUpon>XtraFormClientServer.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\XtraFormLogGrid.cs" />
+    <Compile Update="Forms\XtraFormLogGrid.Designer.cs">
+      <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\XtraFormWindowsEventlogsManager.cs" />
+    <Compile Update="Forms\XtraFormWindowsEventlogsManager.Designer.cs">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\XtraUCDirectoryListing.cs" />
+    <Compile Update="UserControls\XtraUCDirectoryListing.Designer.cs">
+      <DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\XtraUCFileSystem.cs" />
+    <Compile Update="UserControls\XtraUCFileSystem.Designer.cs">
+      <DependentUpon>XtraUCFileSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\XtraUCWindowsEventLogs.cs" />
+    <Compile Update="UserControls\XtraUCWindowsEventLogs.Designer.cs">
+      <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
+    </Compile>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Resources\iis.jpg" />
+    <None Include="Resources\rss.jpg" />
+    <None Include="Resources\kama.jpg" />
+    <None Include="Resources\iqon.jpg" />
+    <None Include="Resources\Mirada_Icon.jpg" />
+    <None Include="Resources\log4net32x32.png" />
+    <None Include="Resources\xml32x32.png" />
+    <None Include="Resources\jsonfile32x32.png" />
+    <None Include="Resources\serilog32x32.png" />
+    <None Include="Resources\serilog.png" />
+    <None Include="Resources\nlog.png" />
+    <None Include="Resources\FilePooling_32x32.png" />
+    <None Include="Resources\FilePooling_16x16.png" />
+    <EmbeddedResource Update="Forms\AnalogyExcludeMessage - Copy.resx">
+      <DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\UserSettingsDataProvidersForm.resx">
+      <DependentUpon>UserSettingsDataProvidersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\AnalogyColumnsMatcherUC.resx">
+      <DependentUpon>AnalogyColumnsMatcherUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\FilePoolingLog.resx">
+      <DependentUpon>FilePoolingLog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\XtraFormWindowsEventlogsManager.resx">
+      <DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\XtraUCWindowsEventLogs.resx">
+      <DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\About_32x32.png" />
+    <None Include="Resources\About_16x16.png" />
+    <None Include="Resources\TwoColumns.png" />
+    <None Include="Resources\ServerMode_32x32.png" />
+    <None Include="Resources\ServerMode_16x16.png" />
+    <None Include="Resources\OperatingSystem_32x32.png" />
+    <None Include="Resources\OperatingSystem_16x16.png" />
+    <None Include="Resources\RichEditBookmark_32x32.png" />
+    <None Include="Resources\RecentlyUse_32x32.png" />
+    <None Include="Resources\RecentlyUse_16x16.png" />
+    <None Include="Resources\FitNone_16x16.png" />
+    <None Include="Resources\Delete_16x16.png" />
+    <None Include="Resources\Iqon_Spectral32x32.jpg" />
+    <None Include="Resources\IncreaseFontSize_16x16.png" />
+    <None Include="Resources\DecreaseFontSize_16x16.png" />
+    <None Include="Resources\Mirada_Icon2.jpg" />
+    <None Include="Resources\Iqon_Spectral.jpg" />
+    <None Include="Resources\Miradaa_Icon.jpg" />
+    <None Include="Resources\iqon.png" />
+    <EmbeddedResource Update="Forms\AboutDataSourceBox.resx">
+      <DependentUpon>AboutDataSourceBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\DataVisualizerUC.resx">
+      <DependentUpon>DataVisualizerUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\DataVisualizerForm.resx">
+      <DependentUpon>DataVisualizerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\Copy_16x16.png" />
+    <None Include="Resources\Database_on.png" />
+    <None Include="Resources\Database_off.png" />
+    <None Include="Resources\NotOk_32x32.png" />
+    <None Include="Resources\OK_32x32.png" />
+    <None Include="Resources\First_32x32.png" />
+    <None Include="Resources\First_16x16.png" />
+    <None Include="Resources\Media_32x32.png" />
+    <None Include="Resources\Media_16x16.png" />
+    <None Include="Resources\working.gif" />
+    <None Include="Resources\Article_32x32.png" />
+    <None Include="Resources\Article_16x16.png" />
+    <None Include="Resources\ChartsShowLegend_32x32.png" />
+    <None Include="Resources\ChartsShowLegend_16x16.png" />
+    <None Include="Resources\RowIndex_32x32.png" />
+    <None Include="Resources\RowIndex_16x16.png" />
+    <None Include="Resources\PageSetup_32x32.png" />
+    <None Include="Resources\PageSetup_16x16.png" />
+    <None Include="Resources\Action_OpenFile_32x32.png" />
+    <None Include="Resources\Action_OpenFile_16x16.png" />
+    <None Include="Resources\Save_16x16.png" />
+    <None Include="Resources\AddFile_32x32.png" />
+    <None Include="Resources\AddFile_16x16.png" />
+    <None Include="Resources\Time2_32x32.png" />
+    <None Include="Resources\Time2_16x16.png" />
+    <None Include="Resources\Radio_32x32.png" />
+    <None Include="Resources\Radio_16x16.png" />
+    <None Include="Resources\IDE_32x32.png" />
+    <None Include="Resources\IDE_16x16.png" />
+    <None Include="Resources\Properties_32x32.png" />
+    <None Include="Resources\Properties_16x16.png" />
+    <None Include="Resources\Wizard_32x32.png" />
+    <EmbeddedResource Update="Forms\ExtensionsForm.resx">
+      <DependentUpon>ExtensionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\ExtensionsUC.resx">
+      <DependentUpon>ExtensionsUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FormMessageDetails.resx">
+      <DependentUpon>FormMessageDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\Bar_32x32.png" />
+    <None Include="Resources\3DColumn_32x32.png" />
+    <None Include="Resources\3DClusteredColumn_32x32.png" />
+    <None Include="Resources\Sutotal_32x32.png" />
+    <None Include="Resources\ArrangeGroups_32x32.png" />
+    <None Include="Resources\ThreeColumns.png" />
+    <None Include="Resources\Lookup&amp;Reference_32x32.png" />
+    <None Include="Resources\LocalColorScheme_32x32.png" />
+    <None Include="Resources\IndentIncrease_16x16.png" />
+    <None Include="Resources\EditComment_16x16.png" />
+    <None Include="Resources\RichEditBookmark_16x16.png" />
+    <EmbeddedResource Update="UserControls\CombineFilesUC.resx">
+      <DependentUpon>CombineFilesUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\FileSystemUC.resx">
+      <DependentUpon>FileSystemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\FolderTreeViewUC.resx">
+      <DependentUpon>FolderTreeViewUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FormCombineFiles.resx">
+      <DependentUpon>FormCombineFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\ClientServerLog.resx">
+      <DependentUpon>ClientServerLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\BookmarkLog.resx">
+      <DependentUpon>BookmarkLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\LocalLogFilesUC.resx">
+      <DependentUpon>LocalLogFilesUC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\OnlineLog.resx">
+      <DependentUpon>OnlineLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\FilesOperationsUC.resx">
+      <DependentUpon>FilesOperationsUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\RibbonFormMain.resx">
+      <DependentUpon>RibbonFormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\SearchInFilesUC.resx">
+      <DependentUpon>SearchInFilesUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ToolbarFormMain.resx">
+      <DependentUpon>ToolbarFormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\FileComparerForm.resx">
+      <DependentUpon>FileComparerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\LogsComparerUC.resx">
+      <DependentUpon>LogsComparerUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\UCLogs.resx">
+      <DependentUpon>UCLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\MessageDetailsUC.resx">
+      <DependentUpon>MessageDetailsUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\UserSettingsForm.resx">
+      <DependentUpon>UserSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\UtilityUC.resx">
+      <DependentUpon>UtilityUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\WindowsEventLog.resx">
+      <DependentUpon>WindowsEventLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\XtraFormClientServer.resx">
+      <DependentUpon>XtraFormClientServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\XtraFormLogGrid.resx">
+      <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\XtraUCDirectoryListing.resx">
+      <DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\XtraUCFileSystem.resx">
+      <DependentUpon>XtraUCFileSystem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Resources\Info_16x16.png" />
+    <None Include="Resources\Download_32x32.png" />
+    <None Include="Resources\Open2_32x32.png" />
+    <None Include="Resources\ClearFilter_16x16.png" />
+    <None Include="Resources\logIcon.png" />
+    <None Include="Resources\Send_16x16.png" />
+    <None Include="Resources\Paste_16x16.png" />
+    <None Include="Resources\DeleteList_32x32.png" />
+    <None Include="Resources\PieLabelsDataLabels_32x32.png" />
+    <None Include="Resources\Insert_32x32.png" />
+    <None Include="Resources\Clear_32x32.png" />
+    <None Include="Resources\Clear_16x16.png" />
+    <None Include="Resources\openFile.png" />
+    <None Include="Resources\FullscreenBlue16.png" />
+    <None Include="Resources\crossMark.png" />
+    <None Include="Resources\checkOK.png" />
+    <None Include="Resources\EMAIL.png" />
+    <None Include="Resources\share.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\LogConfig.png" />
+    <None Include="Resources\ServerON.png" />
+    <None Include="Resources\serverOff.png" />
+    <None Include="Resources\databasearchitecture.png" />
+    <None Include="Resources\pause2.png" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\Clear.png" />
+    <None Include="Resources\upload1.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\json.png" />
+    <None Include="Resources\restart.jpg" />
+    <EmbeddedResource Update="Forms\AnalogyAboutBox.resx">
+      <DependentUpon>AnalogyAboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\AnalogyExclude.resx">
+      <DependentUpon>AnalogyExclude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\AnalogyExcludeMessage.resx">
+      <DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\AnalogyOTAClient.resx">
+      <DependentUpon>AnalogyOTAClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\AnalogyOTAForm.resx">
+      <DependentUpon>AnalogyOTAForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ChangeLog.resx">
+      <DependentUpon>ChangeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\ProcessNameAndID.resx">
+      <DependentUpon>ProcessNameAndID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Utils.resx">
+      <DependentUpon>Utils.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
 
 	<ItemGroup>
 	<Compile Update="Properties\Settings.Designer.cs">
