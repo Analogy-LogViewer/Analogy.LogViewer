@@ -1133,14 +1133,25 @@ namespace Analogy
 
         private string GetOpenFilter(string openFilter)
         {
+            if (!settings.EnableCompressedArchives)
+            {
+                return openFilter;
+            }
             //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
             //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
             //return openFilter + compressedFilter;
+            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase)) 
+            {
+                string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
+                openFilter = openFilter + compressedFilter;
+            }
+            if (!openFilter.Contains("*.gz",StringComparison.InvariantCultureIgnoreCase))
+            {
+                string compressedFilter = "|Compressed GZ Archive (*.gz)|*.gz";
+                openFilter = openFilter + compressedFilter;
+            }
 
-            if (openFilter.Contains("*.zip")) return openFilter;
-            string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
-            return openFilter + compressedFilter;
-
+            return openFilter;
         }
 
         private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,

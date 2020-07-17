@@ -89,7 +89,7 @@ namespace Analogy
                 }
                 else //cannot open natively. is it compressed file?
                 {
-                    if (Utils.IsCompressedArchive(filename))
+                    if (Settings.EnableCompressedArchives && Utils.IsCompressedArchive(filename))
                     {
                         var compressedMessages = new List<AnalogyLogMessage>();
                         string extractedPath = UnzipFilesIntoTempFolder(filename, fileDataProvider);
