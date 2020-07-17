@@ -120,11 +120,10 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
-            if (settings.AnalogyPosition.RememberLastPosition)
+            if (settings.AnalogyPosition.RememberLastPosition && WindowState != FormWindowState.Maximized)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
-                if (WindowState != FormWindowState.Maximized &&
-                    Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
+                if (Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
                 {
                     Location = settings.AnalogyPosition.Location;
                     Size = settings.AnalogyPosition.Size;
