@@ -30,6 +30,11 @@
 	<Company>Analogy.LogViewer</Company>
   </PropertyGroup>
 
+	<ItemGroup>
+    <None  Remove="App.config"  Condition=" '$(TargetFramework)' == 'netcoreapp3.1' "/>
+ </ItemGroup> 
+
+
   <ItemGroup>
 	<PackageReference Include="Analogy.LogViewer.Example" Version="1.2.6">
 	  <PrivateAssets>all</PrivateAssets>
@@ -285,7 +290,7 @@
 		<Reference Include="System.Windows.Forms" />
 
   </ItemGroup>
-  <ItemGroup  Condition=" '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
     <Compile Update="Forms\AboutDataSourceBox.cs" />
     <Compile Update="Forms\AboutDataSourceBox.Designer.cs">
       <DependentUpon>AboutDataSourceBox.cs</DependentUpon>
