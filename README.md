@@ -157,11 +157,6 @@ The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Vi
 After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.LogViewer.*.dll
 - Analogy Interfaces assembly is complied to .Net Standard 2.0.
 
-Detailed Documentation will be added to the Wiki page.
-
-- DevExpress User Controls:
-in order to compile this code [DevExpress](https://www.devexpress.com/) assemblies are required (winforms package only).
-View [list](https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/Analogy/DevExpress/README.md) of needed DLLs.
 
 ## Issues
 - Windows 10 blocks Zip files by default. Make sure to unblock them before unzipping. [How to unblocked](https://singularlabs.com/tips/how-to-unblock-a-zip-file-on-windows-10/).
