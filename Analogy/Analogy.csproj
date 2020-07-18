@@ -14,7 +14,7 @@
 		<ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<GenerateResourceUsePreserializedResources Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">true</GenerateResourceUsePreserializedResources>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 		<PackageId>Analogy.LogViewer</PackageId>
 		<Authors>Lior Banai</Authors>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
