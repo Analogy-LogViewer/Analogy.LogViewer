@@ -362,3 +362,4 @@ MigrationBackup/
 
 *.bak
 _ReSharper.Caches
+/Analogy/obj
