@@ -24,6 +24,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraPrinting.Native;
 
 namespace Analogy
 {
@@ -33,11 +34,10 @@ namespace Analogy
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
-        private FileProcessor fileProcessor { get; set; }
-        ManualResetEvent columnAdderSync = new ManualResetEvent(false);
+        private FileProcessor FileProcessor { get; set; }
+        public ManualResetEvent columnAdderSync = new ManualResetEvent(false);
         public List<(string field, string caption)> CurrentColumnsFields { get; set; }
         public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
-        public event EventHandler<bool> FullMode;
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
@@ -96,7 +96,6 @@ namespace Analogy
             }
         }
 
-        private bool EnableOTA { get; } = false; //GeneralUtils.UseDebugMode("AnalogyOTA");
         private AnalogyLogMessage _currentMassage;
         private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
@@ -129,19 +128,30 @@ namespace Analogy
             InitializeComponent();
             logGrid.OptionsSelection.MultiSelect = true;
             logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
-            var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
-            fileProcessor = new FileProcessor(this);
+            FileProcessor = new FileProcessor(this);
             if (DesignMode) return;
             PagingManager = new PagingManager(this);
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
-            CurrentColumnsFields = logGrid.Columns.Select(c => (c.FieldName, c.Caption)).ToList();
+            var excludedColumns = new List<GridColumn>()
+            {
+                gridColumnDate,
+                gridColumnTimeDiff,
+                gridColumnText,
+                gridColumnSource,
+                gridColumnLevel,
+                gridColumnModule,
+                gridColumnObject,
+            };
+            CurrentColumnsFields =
+                logGrid.Columns.Except(excludedColumns).Select(c => (c.FieldName, c.Caption)).ToList();
+                
             deNewerThanFilter.DateTime = DateTime.Now;
             deOlderThanFilter.DateTime = DateTime.Now;
-            IncludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.caption, c.field, true)).ToList();
-            ExcludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.caption, c.field, true)).ToList();
+            IncludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.caption, c.field, false)).ToList();
+            ExcludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.caption, c.field, false)).ToList();
             clbInclude.DisplayMember = nameof(FilterCriteriaUIOption.DisplayMember);
             clbInclude.ValueMember = nameof(FilterCriteriaUIOption.ValueMember);
             clbInclude.CheckMember = nameof(FilterCriteriaUIOption.CheckMember);
@@ -150,11 +160,16 @@ namespace Analogy
             clbExclude.ValueMember = nameof(FilterCriteriaUIOption.ValueMember);
             clbExclude.CheckMember = nameof(FilterCriteriaUIOption.CheckMember);
             clbExclude.DataSource = IncludeFilterCriteriaUIOptions;
+            _filterCriteria.IncludeFilterCriteriaUIOptions = IncludeFilterCriteriaUIOptions;
+            _filterCriteria.ExcludeFilterCriteriaUIOptions = ExcludeFilterCriteriaUIOptions;
+
             SetupEventsHandlers();
         }
 
         private void SetupEventsHandlers()
         {
+            clbInclude.ItemCheck += async (_, __) =>await FilterHasChanged();
+            clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
             deNewerThanFilter.EditValueChanged += async (s, e) =>
             {
                 ceNewerThanFilter.Checked = true;
@@ -210,7 +225,6 @@ namespace Analogy
             bBtnFullGrid.ItemClick += (s, e) =>
             {
                 FullModeEnabled = !FullModeEnabled;
-                FullMode?.Invoke(this, FullModeEnabled);
                 pnlFilters.Visible = !FullModeEnabled;
             };
             bBtnShare.ItemClick += (s, e) =>
@@ -324,7 +338,7 @@ namespace Analogy
 
             bbtnReload.ItemClick += async (s, e) =>
             {
-                reloadDateTime = fileProcessor.lastNewestMessage;
+                reloadDateTime = FileProcessor.lastNewestMessage;
                 await LoadFilesAsync(LoadedFiles, true, true);
             };
         }
@@ -1339,24 +1353,16 @@ namespace Analogy
             Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
             string filter = _filterCriteria.GetSqlExpression();
             lockSlim.EnterWriteLock();
-            if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
-            {
-                CriteriaOperator op = LogGrid.ActiveFilterCriteria;
-                string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
-                filter = $"{filter} and {filterString}";
-            }
+            //if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
+            //{
+            //    CriteriaOperator op = LogGrid.ActiveFilterCriteria;
+            //    string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
+            //    filter = $"{filter} and {filterString}";
+            //}
 
             try
             {
-
-                //var rows = _messageData.Select(filter);
-                //var dt = _messageData.Clone();
-                //foreach (DataRow row in rows)
-                //{
-                //    dt.ImportRow(row);
-                //}
-                //gridControl.DataSource = dt;
-                _messageData.DefaultView.RowFilter = _filterCriteria.GetSqlExpression();
+                _messageData.DefaultView.RowFilter = filter;
                 var location = LocateByValue(0, gridColumnObject, _currentMassage);
                 if (location >= 0)
                     LogGrid.FocusedRowHandle = location;
@@ -1398,6 +1404,7 @@ namespace Analogy
             }
             catch
             {
+                //do nothing
             }
 
             return int.MinValue;
@@ -1425,7 +1432,7 @@ namespace Analogy
         }
 
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading,
-            bool IsReloadSoForceNoCaching = false)
+            bool isReloadSoForceNoCaching = false)
         {
             LoadedFiles = fileNames;
             bbtnReload.Visibility = BarItemVisibility.Always;
@@ -1451,7 +1458,7 @@ namespace Analogy
                 }
 
                 Text = @"File: " + filename;
-                await fileProcessor.Process(FileDataProvider, filename, token, IsReloadSoForceNoCaching);
+                await FileProcessor.Process(FileDataProvider, filename, token, isReloadSoForceNoCaching);
                 processed++;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
@@ -2300,7 +2307,7 @@ namespace Analogy
             lockSlim.EnterWriteLock();
             while (_messageData.Rows.Count > 0)
             {
-                if (_messageData.Rows[0]["Object"] != current)
+                if (!Equals(_messageData.Rows[0]["Object"], current))
                     _messageData.Rows.RemoveAt(0);
                 else
                 {

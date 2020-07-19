@@ -27,9 +27,9 @@ namespace Analogy
             set => _arrLevels = value;
         }
 
-        //private string Category = "";
-
-
+        public List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
+        public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string EscapeLikeValue(string value)
         {
             StringBuilder sb = new StringBuilder(value.Length);
@@ -98,15 +98,7 @@ namespace Analogy
                 ExcludedSources = excludeItems.Select(val => val.Trim()).ToArray();
             }
         }
-        public string GetSqlExpression(string textInclude, string textExclude, string sources, string modules)
-        {
 
-            SetSources(sources);
-            SetModules(modules);
-            TextInclude = textInclude ?? string.Empty;
-            TextExclude = textExclude ?? string.Empty;
-            return GetSqlExpression();
-        }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string GetSqlExpression()
         {
@@ -214,6 +206,24 @@ namespace Analogy
             string dateFilter = $" AND (Date >= '{NewerThan}' and Date <= '{OlderThan}')";
 
             sqlString.Append(dateFilter);
+
+
+            var includeColumns = IncludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
+            foreach (FilterCriteriaUIOption include in includeColumns)
+            {
+                sqlString.Append(" and (");
+                sqlString.Append(string.Join(" Or ", includeTexts.Select(l => $" {EscapeLikeValue(include.ValueMember)} like '%{EscapeLikeValue(l)}%'")));
+                sqlString.Append(")");
+            }
+
+            var excludeColumns = ExcludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
+            foreach (FilterCriteriaUIOption exclude in excludeColumns)
+            {
+                sqlString.Append(" and (");
+                sqlString.Append(string.Join(" and ", excludedTexts.Select(l => $" NOT {EscapeLikeValue(exclude.ValueMember)} like '%{EscapeLikeValue(l)}%'")));
+                sqlString.Append(")");
+            }
+
             return sqlString.ToString();
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -294,7 +304,7 @@ namespace Analogy
             if (!match) return false;
             if (ExcludedModules != null && ExcludedModules.Any())
             {
-                match = ExcludedModules.All(m =>!message.Module.Contains(m, StringComparison.InvariantCultureIgnoreCase));
+                match = ExcludedModules.All(m => !message.Module.Contains(m, StringComparison.InvariantCultureIgnoreCase));
             }
             if (!match) return false;
 

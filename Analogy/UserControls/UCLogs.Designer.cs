@@ -193,6 +193,14 @@ namespace Analogy
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMain = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerMain = new DevExpress.XtraEditors.SplitContainerControl();
+            this.pnlFilters = new DevExpress.XtraEditors.PanelControl();
+            this.pnlLeftFilters = new DevExpress.XtraEditors.PanelControl();
+            this.pnlModulesAndDates = new System.Windows.Forms.Panel();
+            this.tpFilters = new DevExpress.XtraBars.Navigation.TabPane();
+            this.tpIncludeFilter = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.clbInclude = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.tpExcludeFilter = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.clbExclude = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.lblTotalMessagesAlert = new DevExpress.XtraEditors.LabelControl();
             this.sBtnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -246,14 +254,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.tpFilters = new DevExpress.XtraBars.Navigation.TabPane();
-            this.tpIncludeFilter = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.clbInclude = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.tpExcludeFilter = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.clbExclude = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.pnlLeftFilters = new DevExpress.XtraEditors.PanelControl();
-            this.pnlModulesAndDates = new System.Windows.Forms.Panel();
-            this.pnlFilters = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -303,6 +303,17 @@ namespace Analogy
             this.xtpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).BeginInit();
+            this.pnlFilters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlLeftFilters)).BeginInit();
+            this.pnlLeftFilters.SuspendLayout();
+            this.pnlModulesAndDates.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tpFilters)).BeginInit();
+            this.tpFilters.SuspendLayout();
+            this.tpIncludeFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).BeginInit();
+            this.tpExcludeFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).BeginInit();
             this.pnlBottom.SuspendLayout();
             this.xtCounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).BeginInit();
@@ -321,17 +332,6 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tpFilters)).BeginInit();
-            this.tpFilters.SuspendLayout();
-            this.tpIncludeFilter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).BeginInit();
-            this.tpExcludeFilter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlLeftFilters)).BeginInit();
-            this.pnlLeftFilters.SuspendLayout();
-            this.pnlModulesAndDates.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).BeginInit();
-            this.pnlFilters.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridControl
@@ -377,7 +377,7 @@ namespace Analogy
             this.tsmiIncreaseFont,
             this.tsmiDecreaseFont});
             this.cmsMessageOperation.Name = "cmsMessageOperation";
-            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 496);
+            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 470);
             this.cmsMessageOperation.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMessageOperation_Opening);
             // 
             // tsmiClearLog
@@ -2350,6 +2350,90 @@ namespace Analogy
             this.splitContainerMain.TabIndex = 21;
             this.splitContainerMain.Text = "splitContainerControl1";
             // 
+            // pnlFilters
+            // 
+            this.pnlFilters.Controls.Add(this.pnlLeftFilters);
+            this.pnlFilters.Controls.Add(this.tpFilters);
+            this.pnlFilters.Controls.Add(this.chkLstLogLevel);
+            this.pnlFilters.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFilters.Location = new System.Drawing.Point(0, 0);
+            this.pnlFilters.Name = "pnlFilters";
+            this.pnlFilters.Size = new System.Drawing.Size(2124, 102);
+            this.pnlFilters.TabIndex = 6;
+            // 
+            // pnlLeftFilters
+            // 
+            this.pnlLeftFilters.Controls.Add(this.pnlModulesAndDates);
+            this.pnlLeftFilters.Controls.Add(this.spltcSources);
+            this.pnlLeftFilters.Controls.Add(this.spltTextExclude);
+            this.pnlLeftFilters.Controls.Add(this.spltText);
+            this.pnlLeftFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLeftFilters.Location = new System.Drawing.Point(2, 2);
+            this.pnlLeftFilters.Name = "pnlLeftFilters";
+            this.pnlLeftFilters.Size = new System.Drawing.Size(1798, 98);
+            this.pnlLeftFilters.TabIndex = 27;
+            // 
+            // pnlModulesAndDates
+            // 
+            this.pnlModulesAndDates.Controls.Add(this.spltcProcessesModule);
+            this.pnlModulesAndDates.Controls.Add(this.spltcDateFiltering);
+            this.pnlModulesAndDates.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlModulesAndDates.Location = new System.Drawing.Point(2, 73);
+            this.pnlModulesAndDates.Name = "pnlModulesAndDates";
+            this.pnlModulesAndDates.Size = new System.Drawing.Size(1794, 22);
+            this.pnlModulesAndDates.TabIndex = 28;
+            // 
+            // tpFilters
+            // 
+            this.tpFilters.Controls.Add(this.tpIncludeFilter);
+            this.tpFilters.Controls.Add(this.tpExcludeFilter);
+            this.tpFilters.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tpFilters.Location = new System.Drawing.Point(1800, 2);
+            this.tpFilters.Name = "tpFilters";
+            this.tpFilters.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.tpIncludeFilter,
+            this.tpExcludeFilter});
+            this.tpFilters.RegularSize = new System.Drawing.Size(181, 98);
+            this.tpFilters.SelectedPage = this.tpIncludeFilter;
+            this.tpFilters.Size = new System.Drawing.Size(181, 98);
+            this.tpFilters.TabAlignment = DevExpress.XtraEditors.Alignment.Center;
+            this.tpFilters.TabIndex = 26;
+            this.tpFilters.Text = "tabPaneExtraColumns";
+            // 
+            // tpIncludeFilter
+            // 
+            this.tpIncludeFilter.Caption = "Include";
+            this.tpIncludeFilter.Controls.Add(this.clbInclude);
+            this.tpIncludeFilter.Name = "tpIncludeFilter";
+            this.tpIncludeFilter.Size = new System.Drawing.Size(181, 65);
+            this.tpIncludeFilter.ToolTip = "Fields to include in the include filter";
+            // 
+            // clbInclude
+            // 
+            this.clbInclude.CheckOnClick = true;
+            this.clbInclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clbInclude.Location = new System.Drawing.Point(0, 0);
+            this.clbInclude.Name = "clbInclude";
+            this.clbInclude.Size = new System.Drawing.Size(181, 65);
+            this.clbInclude.TabIndex = 21;
+            // 
+            // tpExcludeFilter
+            // 
+            this.tpExcludeFilter.Caption = "Excludes";
+            this.tpExcludeFilter.Controls.Add(this.clbExclude);
+            this.tpExcludeFilter.Name = "tpExcludeFilter";
+            this.tpExcludeFilter.Size = new System.Drawing.Size(181, 87);
+            this.tpExcludeFilter.ToolTip = "Fields to include in the exclude filter";
+            // 
+            // clbExclude
+            // 
+            this.clbExclude.CheckOnClick = true;
+            this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clbExclude.Location = new System.Drawing.Point(0, 0);
+            this.clbExclude.Name = "clbExclude";
+            this.clbExclude.Size = new System.Drawing.Size(181, 87);
+            this.clbExclude.TabIndex = 22;
+            // 
             // pnlBottom
             // 
             this.pnlBottom.Controls.Add(this.progressBar1);
@@ -3049,91 +3133,6 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // tpFilters
-            // 
-            this.tpFilters.Controls.Add(this.tpIncludeFilter);
-            this.tpFilters.Controls.Add(this.tpExcludeFilter);
-            this.tpFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tpFilters.Location = new System.Drawing.Point(1800, 2);
-            this.tpFilters.Name = "tpFilters";
-            this.tpFilters.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.tpIncludeFilter,
-            this.tpExcludeFilter});
-            this.tpFilters.RegularSize = new System.Drawing.Size(181, 98);
-            this.tpFilters.SelectedPage = this.tpIncludeFilter;
-            this.tpFilters.Size = new System.Drawing.Size(181, 98);
-            this.tpFilters.TabAlignment = DevExpress.XtraEditors.Alignment.Center;
-            this.tpFilters.TabIndex = 26;
-            this.tpFilters.Text = "tabPaneExtraColumns";
-            this.tpFilters.Visible = false;
-            // 
-            // tpIncludeFilter
-            // 
-            this.tpIncludeFilter.Caption = "Include";
-            this.tpIncludeFilter.Controls.Add(this.clbInclude);
-            this.tpIncludeFilter.Name = "tpIncludeFilter";
-            this.tpIncludeFilter.Size = new System.Drawing.Size(181, 65);
-            this.tpIncludeFilter.ToolTip = "Fields to include in the include filter";
-            // 
-            // clbInclude
-            // 
-            this.clbInclude.CheckOnClick = true;
-            this.clbInclude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clbInclude.Location = new System.Drawing.Point(0, 0);
-            this.clbInclude.Name = "clbInclude";
-            this.clbInclude.Size = new System.Drawing.Size(181, 65);
-            this.clbInclude.TabIndex = 21;
-            // 
-            // tpExcludeFilter
-            // 
-            this.tpExcludeFilter.Caption = "Excludes";
-            this.tpExcludeFilter.Controls.Add(this.clbExclude);
-            this.tpExcludeFilter.Name = "tpExcludeFilter";
-            this.tpExcludeFilter.Size = new System.Drawing.Size(181, 87);
-            this.tpExcludeFilter.ToolTip = "Fields to include in the exclude filter";
-            // 
-            // clbExclude
-            // 
-            this.clbExclude.CheckOnClick = true;
-            this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clbExclude.Location = new System.Drawing.Point(0, 0);
-            this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(181, 87);
-            this.clbExclude.TabIndex = 22;
-            // 
-            // pnlLeftFilters
-            // 
-            this.pnlLeftFilters.Controls.Add(this.pnlModulesAndDates);
-            this.pnlLeftFilters.Controls.Add(this.spltcSources);
-            this.pnlLeftFilters.Controls.Add(this.spltTextExclude);
-            this.pnlLeftFilters.Controls.Add(this.spltText);
-            this.pnlLeftFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLeftFilters.Location = new System.Drawing.Point(2, 2);
-            this.pnlLeftFilters.Name = "pnlLeftFilters";
-            this.pnlLeftFilters.Size = new System.Drawing.Size(1798, 98);
-            this.pnlLeftFilters.TabIndex = 27;
-            // 
-            // pnlModulesAndDates
-            // 
-            this.pnlModulesAndDates.Controls.Add(this.spltcProcessesModule);
-            this.pnlModulesAndDates.Controls.Add(this.spltcDateFiltering);
-            this.pnlModulesAndDates.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlModulesAndDates.Location = new System.Drawing.Point(2, 73);
-            this.pnlModulesAndDates.Name = "pnlModulesAndDates";
-            this.pnlModulesAndDates.Size = new System.Drawing.Size(1794, 22);
-            this.pnlModulesAndDates.TabIndex = 28;
-            // 
-            // pnlFilters
-            // 
-            this.pnlFilters.Controls.Add(this.pnlLeftFilters);
-            this.pnlFilters.Controls.Add(this.tpFilters);
-            this.pnlFilters.Controls.Add(this.chkLstLogLevel);
-            this.pnlFilters.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFilters.Location = new System.Drawing.Point(0, 0);
-            this.pnlFilters.Name = "pnlFilters";
-            this.pnlFilters.Size = new System.Drawing.Size(2124, 102);
-            this.pnlFilters.TabIndex = 6;
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3205,6 +3204,17 @@ namespace Analogy
             this.xtpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).EndInit();
+            this.pnlFilters.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlLeftFilters)).EndInit();
+            this.pnlLeftFilters.ResumeLayout(false);
+            this.pnlModulesAndDates.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tpFilters)).EndInit();
+            this.tpFilters.ResumeLayout(false);
+            this.tpIncludeFilter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).EndInit();
+            this.tpExcludeFilter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
             this.xtCounts.ResumeLayout(false);
@@ -3225,17 +3235,6 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tpFilters)).EndInit();
-            this.tpFilters.ResumeLayout(false);
-            this.tpIncludeFilter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).EndInit();
-            this.tpExcludeFilter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlLeftFilters)).EndInit();
-            this.pnlLeftFilters.ResumeLayout(false);
-            this.pnlModulesAndDates.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).EndInit();
-            this.pnlFilters.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
