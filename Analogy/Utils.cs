@@ -108,7 +108,7 @@ namespace Analogy
                 {
                     using (Stream myReader = File.Open(filename, FileMode.Open, FileAccess.Read))
                     {
-                        return (T)formatter.Deserialize(myReader, null);
+                        return (T)formatter.Deserialize(myReader);
                     }
                 }
                 catch (Exception ex)

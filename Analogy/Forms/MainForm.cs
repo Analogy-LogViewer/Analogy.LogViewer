@@ -50,7 +50,6 @@ namespace Analogy
         private int openedWindows;
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
-        private DockPanel currentContextPage;
         private bool preventExit = false;
         private UserSettingsManager settings => UserSettingsManager.UserSettings;
         private bool Initialized { get; set; }
@@ -135,7 +134,13 @@ namespace Analogy
                 }
             }
 
-            Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
+            string framework = string.Empty;
+#if NETCOREAPP3_1
+            framework= ".Net Core 3.1";
+#else
+            framework = ".Net Framework 4.7.2/1";
+#endif
+            Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion} {framework})";
             Icon = settings.GetIcon();
             notifyIconAnalogy.Visible = preventExit = settings.MinimizedToTrayBar;
             var logger = AnalogyLogManager.Instance.Init();
@@ -898,7 +903,7 @@ namespace Analogy
                 page.Tag = ribbonPage;
                 page.Controls.Add(filepoolingUC);
                 filepoolingUC.Dock = DockStyle.Fill;
-                page.Text = $"{filePoolingTitle} #{filePooling} ({titleOfDataSource})";
+                page.Text = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
 
 
@@ -1139,12 +1144,12 @@ namespace Analogy
             //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
             //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
             //return openFilter + compressedFilter;
-            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase)) 
+            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase))
             {
                 string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
                 openFilter = openFilter + compressedFilter;
             }
-            if (!openFilter.Contains("*.gz",StringComparison.InvariantCultureIgnoreCase))
+            if (!openFilter.Contains("*.gz", StringComparison.InvariantCultureIgnoreCase))
             {
                 string compressedFilter = "|Compressed Gzip Archive (*.gz)|*.gz";
                 openFilter = openFilter + compressedFilter;
@@ -1215,7 +1220,7 @@ namespace Analogy
                 page.Tag = ribbonPage;
                 page.Controls.Add(filepoolingUC);
                 filepoolingUC.Dock = DockStyle.Fill;
-                page.Text = $"{filePoolingTitle} #{filePooling} ({titleOfDataSource})";
+                page.Text = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }

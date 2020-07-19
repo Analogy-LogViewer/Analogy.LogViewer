@@ -1437,7 +1437,7 @@ namespace Analogy
             progressBar1.Value = 0;
             progressBar1.Maximum = fileNames.Count;
             progressBar1.Style = fileNames.Count > 1 ? ProgressBarStyle.Continuous : ProgressBarStyle.Marquee;
-            fileLoadingCount = +fileNames.Count;
+            fileLoadingCount = fileNames.Count;
             progressBar1.Visible = true;
             int processed = 0;
             foreach (string filename in fileNames)
@@ -1497,19 +1497,9 @@ namespace Analogy
 
         }
 
-        private void tsmiOTAFull_Click(object sender, EventArgs e)
-        {
-            if (EnableOTA)
-            {
-                AnalogyOTAClient client = new AnalogyOTAClient(GetFilteredDataTable());
-                client.Show(this);
-            }
-            else
-            {
-                MessageBox.Show("Sending logs feature has been disabled", "Operation Is Not allowed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+
+
+
 
         private void tmrNewData_Tick(object sender, EventArgs e)
         {
@@ -2414,10 +2404,18 @@ namespace Analogy
             txtbSource.Text = "";
         }
 
+        private async void txtbIncludeSource_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void sbtnIncludeModules_Click(object sender, EventArgs e)
         {
             txtbModule.Text = "";
         }
+
+
         private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
         {
             UndockViewPerProcess();

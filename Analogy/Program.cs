@@ -1,4 +1,4 @@
-﻿using DevExpress.LookAndFeel;
+using DevExpress.LookAndFeel;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraEditors;
 using System;
@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Analogy
 {
-    public class Program
+    static class Program
     {
         public const int WM_COPYDATA = 0x004A;
 
@@ -31,6 +31,9 @@ namespace Analogy
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
             Application.EnableVisualStyles();
+#if NETCOREAPP3_1
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+#endif
             Settings.IncreaseNumberOfLaunches();
             if (!string.IsNullOrEmpty(Settings.ApplicationSkinName))
             {

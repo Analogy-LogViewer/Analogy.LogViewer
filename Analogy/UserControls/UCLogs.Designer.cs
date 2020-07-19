@@ -60,7 +60,6 @@ namespace Analogy
             this.tsmiExcludeModule = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiEmail = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiOTAFull = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSaveLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIncreaseFont = new System.Windows.Forms.ToolStripMenuItem();
@@ -373,7 +372,6 @@ namespace Analogy
             this.tsmiExcludeModule,
             this.toolStripSeparator3,
             this.tsmiEmail,
-            this.tsmiOTAFull,
             this.toolStripSeparator1,
             this.tsmiSaveLayout,
             this.tsmiIncreaseFont,
@@ -508,16 +506,6 @@ namespace Analogy
             this.tsmiEmail.Size = new System.Drawing.Size(415, 26);
             this.tsmiEmail.Text = "Send selected message by mail";
             this.tsmiEmail.Click += new System.EventHandler(this.tsmiEmail_Click);
-            // 
-            // tsmiOTAFull
-            // 
-            this.tsmiOTAFull.Enabled = false;
-            this.tsmiOTAFull.Image = global::Analogy.Properties.Resources.logIcon;
-            this.tsmiOTAFull.Name = "tsmiOTAFull";
-            this.tsmiOTAFull.Size = new System.Drawing.Size(415, 26);
-            this.tsmiOTAFull.Text = "Send Log to another Analogy";
-            this.tsmiOTAFull.Visible = false;
-            this.tsmiOTAFull.Click += new System.EventHandler(this.tsmiOTAFull_Click);
             // 
             // toolStripSeparator1
             // 
@@ -3275,7 +3263,6 @@ namespace Analogy
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmiExclude;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem tsmiOTAFull;
         private System.Windows.Forms.Timer tmrNewData;
         private DevExpress.XtraGrid.GridControl gridControlBookmarkedMessages;
         private GridView gridViewBookmarkedMessages;
