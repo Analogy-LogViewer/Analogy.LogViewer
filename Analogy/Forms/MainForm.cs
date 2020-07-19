@@ -134,7 +134,13 @@ namespace Analogy
                 }
             }
 
-            Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion})";
+            string framework = string.Empty;
+#if NETCOREAPP3_1
+            framework= ".Net Core 3.1";
+#else
+            framework = ".Net Framework 4.7.2/1";
+#endif
+            Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion} {framework})";
             Icon = settings.GetIcon();
             notifyIconAnalogy.Visible = preventExit = settings.MinimizedToTrayBar;
             var logger = AnalogyLogManager.Instance.Init();
@@ -1138,12 +1144,12 @@ namespace Analogy
             //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
             //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
             //return openFilter + compressedFilter;
-            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase)) 
+            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase))
             {
                 string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
                 openFilter = openFilter + compressedFilter;
             }
-            if (!openFilter.Contains("*.gz",StringComparison.InvariantCultureIgnoreCase))
+            if (!openFilter.Contains("*.gz", StringComparison.InvariantCultureIgnoreCase))
             {
                 string compressedFilter = "|Compressed Gzip Archive (*.gz)|*.gz";
                 openFilter = openFilter + compressedFilter;
