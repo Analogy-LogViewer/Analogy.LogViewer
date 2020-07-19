@@ -1140,8 +1140,8 @@ namespace Analogy
                                     CurrentColumnsFields.Add((info.Key, info.Key));
                                     IncludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                                     ExcludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
-                                    columnAdderSync.Set();
                                 }
+                                columnAdderSync.Set();
                             }));
                             columnAdderSync.WaitOne();
                             columnAdderSync.Reset();
@@ -1602,8 +1602,8 @@ namespace Analogy
                                     view.Columns.Add(new GridColumn()
                                     { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
                                     table.Columns.Add(info.Key);
-                                    columnAdderSync.Set();
                                 }
+                                columnAdderSync.Set();
                             }));
                             columnAdderSync.WaitOne();
                             columnAdderSync.Reset();

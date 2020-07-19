@@ -20,9 +20,10 @@ namespace Analogy.Managers
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         public List<IAnalogyComponentImages> DataProviderImages { get; private set; }
 
-        public FactoryContainer(Assembly assembly,string assemblyFullPath, IAnalogyFactory factory, FactorySettings factorySetting)
+        public FactoryContainer(Assembly assembly, string assemblyFullPath, IAnalogyFactory factory, FactorySettings factorySetting)
         {
             Assembly = assembly;
+            AssemblyFullPath = assemblyFullPath;
             Factory = factory;
             FactorySetting = factorySetting;
             CustomActionsFactories = new List<IAnalogyCustomActionsFactory>();
@@ -54,7 +55,7 @@ namespace Analogy.Managers
 
         public bool ContainsDataProviderOrDataFactory(Guid componentId)
         {
-            var contains=
+            var contains =
             DataProvidersFactories.Any(d =>
                 d.FactoryId == componentId ||
                 d.DataProviders.Any(dp => dp.ID == componentId));

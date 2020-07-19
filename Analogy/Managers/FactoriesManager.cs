@@ -20,6 +20,7 @@ namespace Analogy
         private static readonly Lazy<FactoriesManager>
             _instance = new Lazy<FactoriesManager>(() => new FactoriesManager());
 
+        public List<string> ProbingPaths { get; set; } = new List<string>();
         public static readonly FactoriesManager Instance = _instance.Value;
         private List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; private set; }
@@ -289,6 +290,12 @@ namespace Analogy
                     {
                         string path = Path.GetFullPath(aFile);
                         Assembly assembly = Assembly.LoadFrom(path);
+                        int index = Instance.ProbingPaths.IndexOf(path);
+                        if (index != -1)
+                            Instance.ProbingPaths[index] = path;
+                        else
+                            Instance.ProbingPaths.Add(path);
+
                         var types = assembly.GetTypes().ToList();
 
                         foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
