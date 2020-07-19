@@ -207,21 +207,32 @@ namespace Analogy
 
             sqlString.Append(dateFilter);
 
-
-            var includeColumns = IncludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
-            foreach (FilterCriteriaUIOption include in includeColumns)
+            if (includeTexts.Any())
             {
-                sqlString.Append(" and (");
-                sqlString.Append(string.Join(" Or ", includeTexts.Select(l => $" {EscapeLikeValue(include.ValueMember)} like '%{EscapeLikeValue(l)}%'")));
-                sqlString.Append(")");
+                var includeColumns = IncludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
+                foreach (FilterCriteriaUIOption include in includeColumns)
+                {
+                    sqlString.Append(" or (");
+                    string op = (orOperationInInclude) ? "or" : "and";
+                    sqlString.Append(string.Join($" {op} ",
+                        includeTexts.Select(l =>
+                            $" [{EscapeLikeValue(include.ValueMember)}] like '%{EscapeLikeValue(l)}%'")));
+                    sqlString.Append(")");
+                }
             }
 
-            var excludeColumns = ExcludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
-            foreach (FilterCriteriaUIOption exclude in excludeColumns)
+            if (excludedTexts.Any())
             {
-                sqlString.Append(" and (");
-                sqlString.Append(string.Join(" and ", excludedTexts.Select(l => $" NOT {EscapeLikeValue(exclude.ValueMember)} like '%{EscapeLikeValue(l)}%'")));
-                sqlString.Append(")");
+                var excludeColumns = ExcludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
+                foreach (FilterCriteriaUIOption exclude in excludeColumns)
+                {
+                    sqlString.Append(" and (");
+                    string op = (orOperationInexclude) ? "and" : "or";
+                    sqlString.Append(string.Join($" {op} ",
+                        excludedTexts.Select(l =>
+                            $" NOT [{EscapeLikeValue(exclude.ValueMember)}] like '%{EscapeLikeValue(l)}%'")));
+                    sqlString.Append(")");
+                }
             }
 
             return sqlString.ToString();

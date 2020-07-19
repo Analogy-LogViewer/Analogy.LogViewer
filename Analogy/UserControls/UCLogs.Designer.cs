@@ -1693,7 +1693,7 @@ namespace Analogy
             this.txtbModule.MenuManager = this.barManager1;
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
-    "udeA, includeB, -ExcludeC, -ExcludeD";
+    "udeA, -ExcludeB";
             this.txtbModule.Size = new System.Drawing.Size(840, 22);
             this.txtbModule.TabIndex = 26;
             // 

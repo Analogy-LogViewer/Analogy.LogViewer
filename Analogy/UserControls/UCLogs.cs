@@ -147,7 +147,7 @@ namespace Analogy
             };
             CurrentColumnsFields =
                 logGrid.Columns.Except(excludedColumns).Select(c => (c.FieldName, c.Caption)).ToList();
-                
+
             deNewerThanFilter.DateTime = DateTime.Now;
             deOlderThanFilter.DateTime = DateTime.Now;
             IncludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.caption, c.field, false)).ToList();
@@ -159,7 +159,7 @@ namespace Analogy
             clbExclude.DisplayMember = nameof(FilterCriteriaUIOption.DisplayMember);
             clbExclude.ValueMember = nameof(FilterCriteriaUIOption.ValueMember);
             clbExclude.CheckMember = nameof(FilterCriteriaUIOption.CheckMember);
-            clbExclude.DataSource = IncludeFilterCriteriaUIOptions;
+            clbExclude.DataSource = ExcludeFilterCriteriaUIOptions;
             _filterCriteria.IncludeFilterCriteriaUIOptions = IncludeFilterCriteriaUIOptions;
             _filterCriteria.ExcludeFilterCriteriaUIOptions = ExcludeFilterCriteriaUIOptions;
 
@@ -168,7 +168,7 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
-            clbInclude.ItemCheck += async (_, __) =>await FilterHasChanged();
+            clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
             clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
             deNewerThanFilter.EditValueChanged += async (s, e) =>
             {
@@ -1353,12 +1353,12 @@ namespace Analogy
             Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
             string filter = _filterCriteria.GetSqlExpression();
             lockSlim.EnterWriteLock();
-            //if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
-            //{
-            //    CriteriaOperator op = LogGrid.ActiveFilterCriteria;
-            //    string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
-            //    filter = $"{filter} and {filterString}";
-            //}
+            if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
+            {
+                CriteriaOperator op = LogGrid.ActiveFilterCriteria;
+                string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
+                filter = $"{filter} and {filterString}";
+            }
 
             try
             {
