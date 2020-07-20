@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Allows loading data providers' dependencies from different locations. #184",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,20)),
                 new AnalogyChangeLog("Add option to select on which columns the search will be performed. #205",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,19)),
                 new AnalogyChangeLog("Support gz archive files. #231",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,17)),
                 new AnalogyChangeLog("Add .net framework 4.7.1 compilation target #236",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,16)),

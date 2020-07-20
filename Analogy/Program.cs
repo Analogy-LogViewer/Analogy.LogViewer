@@ -2,6 +2,7 @@ using DevExpress.LookAndFeel;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraEditors;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Analogy
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         private static UserSettingsManager Settings => UserSettingsManager.UserSettings;
-
+        private static string AssemblyLocation;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -28,8 +29,8 @@ namespace Analogy
         {
 
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-
-            //AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+            AssemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             WindowsFormsSettings.LoadApplicationSettings();
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -145,8 +146,10 @@ namespace Analogy
             string filename = args.Name.Split(',')[0] + ".dll".ToLower();
 
 
-            var paths = FactoriesManager.Instance.ProbingPaths.Select(Path.GetDirectoryName).Distinct()
+
+            var paths = FactoriesManager.Instance.ProbingPaths.Select(Path.GetDirectoryName).Except(new List<string> { AssemblyLocation }).Distinct()
                 .ToList();
+
             foreach (var path in paths)
             {
                 string asmFile = FindFileInPath(filename, path);
@@ -154,9 +157,9 @@ namespace Analogy
                 {
                     try
                     {
-                        //string finalPath = Path.GetDirectoryName(asmFile);
-                        //if (!string.IsNullOrEmpty(finalPath))
-                        //    Environment.CurrentDirectory = finalPath;
+                        string finalPath = Path.GetDirectoryName(asmFile);
+                        if (!string.IsNullOrEmpty(finalPath) && paths.Count == 1)
+                            Environment.CurrentDirectory = finalPath;
                         return Assembly.LoadFrom(asmFile);
                     }
                     catch
