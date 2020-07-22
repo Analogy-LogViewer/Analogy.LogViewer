@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("Exclude source/module/text does not clear the hints text. #259",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,22)),
                 new AnalogyChangeLog("Allows loading data providers' dependencies from different locations. #184",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,20)),
                 new AnalogyChangeLog("Add option to select on which columns the search will be performed. #205",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,19)),
                 new AnalogyChangeLog("Support gz archive files. #231",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,17)),

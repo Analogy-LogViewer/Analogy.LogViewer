@@ -823,7 +823,8 @@ namespace Analogy
             if (ef.ShowDialog(this) == DialogResult.OK)
             {
                 string exclude = ef.Exclude;
-                txtbExclude.Text = txtbExclude.Text + "|" + exclude;
+
+                txtbExclude.Text = txtbExclude.Text == txtbExclude.Properties.NullText ? exclude : txtbExclude.Text + "|" + exclude;
                 ceExcludeText.Checked = true;
                 await FilterHasChanged();
             }
@@ -1659,25 +1660,16 @@ namespace Analogy
 
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (!string.IsNullOrEmpty(message?.Source))
-                txtbSource.Text = txtbSource.Text + ",-" + message.Source;
+                txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? ("-" + message.Source) : txtbSource.Text + ", -" + message.Source;
         }
 
         private void tsmiExcludeModule_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (!string.IsNullOrEmpty(message?.Module))
-                txtbModule.Text = txtbModule.Text + ",-" + message.Module;
+                txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? ("-" + message.Module) : txtbModule.Text + ",-" + message.Module;
         }
 
-        private void txtbInclude_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void txtbExclude_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
 
         private void tsmiTimeDiff_Click(object sender, EventArgs e)
         {
@@ -2542,6 +2534,16 @@ namespace Analogy
                 addNoteForm.Show(this);
             }
 
+        }
+
+        private void txtbInclude_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            tpFilters.SelectedPage = tpIncludeFilter;
+        }
+
+        private void txtbExclude_EditValueChanged(object sender, EventArgs e)
+        {
+            tpFilters.SelectedPage = tpExcludeFilter;
         }
     }
 }

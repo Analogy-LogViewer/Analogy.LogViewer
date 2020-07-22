@@ -1812,6 +1812,7 @@ namespace Analogy
             this.txtbExclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
             this.txtbExclude.Size = new System.Drawing.Size(1552, 22);
             this.txtbExclude.TabIndex = 20;
+            this.txtbExclude.EditValueChanged += new System.EventHandler(this.txtbExclude_EditValueChanged);
             // 
             // ceExcludeText
             // 
@@ -1874,6 +1875,7 @@ namespace Analogy
             this.txtbInclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
             this.txtbInclude.Size = new System.Drawing.Size(1651, 22);
             this.txtbInclude.TabIndex = 19;
+            this.txtbInclude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbInclude_KeyPress);
             // 
             // ceIncludeText
             // 
