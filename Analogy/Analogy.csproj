@@ -62,7 +62,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="LiorBanai.NotificationWindow" Version="1.0.4" />
+		<PackageReference Include="LiorBanai.NotificationWindow" Version="1.0.5" />
 		<PackageReference Include="MessagePack" Version="2.1.152" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="1.2.5">
