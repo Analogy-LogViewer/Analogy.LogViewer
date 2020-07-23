@@ -3,17 +3,18 @@
 <p align="center">
     
 [![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
-[![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.LogViewer?branchName=master)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=1&branchName=master)  ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/workflows/.NET%20Core%20Desktop/badge.svg)
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues">
     <img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"  alt="Issues" />
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE.md">
     <img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"  alt="License" />
 </a>
+
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"  alt="Latest Release" />
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.2.4...master">
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/compare/V4.2.5...master">
     <img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"  alt="Commits Since Latest Release"/>
 </a>
 </p>
