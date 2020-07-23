@@ -24,7 +24,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraPrinting.Native;
 
 namespace Analogy
 {
@@ -2538,12 +2537,12 @@ namespace Analogy
 
         private void txtbInclude_KeyPress(object sender, KeyPressEventArgs e)
         {
-            tpFilters.SelectedPage = tpIncludeFilter;
+            xtcFilters.SelectedTabPage= xtpFiltersIncludes;
         }
 
         private void txtbExclude_EditValueChanged(object sender, EventArgs e)
         {
-            tpFilters.SelectedPage = tpExcludeFilter;
+            xtcFilters.SelectedTabPage = xtpFiltersExclude;
         }
     }
 }
