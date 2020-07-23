@@ -371,7 +371,7 @@ namespace Analogy
         private void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-            //LogWindowsContainer.Instance.Register(this);
+            xtcFiltersLeft.SelectedTabPage = xtpFilters;
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
@@ -660,71 +660,67 @@ namespace Analogy
 
         private void pmsGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            if (sender is GridView view && e.RowHandle >= 0)
+            if (!(sender is GridView view) || e.RowHandle < 0) return;
+            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+            if (message == null) return;
+            if (!Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
+                message.Date > reloadDateTime)
             {
-                IAnalogyLogMessage message =
+                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
+            }
+
+            e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(message.Level);
+            switch (message.Level)
+            {
+                case AnalogyLogLevel.Warning:
+                case AnalogyLogLevel.Error:
+                case AnalogyLogLevel.Critical:
+                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
+                        e.Appearance.ForeColor = Color.Black;
+                    break;
+                case AnalogyLogLevel.Event:
+                case AnalogyLogLevel.Verbose:
+                case AnalogyLogLevel.Debug:
+                case AnalogyLogLevel.Disabled:
+                case AnalogyLogLevel.Trace:
+                case AnalogyLogLevel.Unknown:
+                case AnalogyLogLevel.AnalogyInformation:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
+                message.Date > reloadDateTime)
+            {
+                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
+            }
+            string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
+            foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
+            {
+                if (FilterCriteriaObject.Match(text, preDefineHighlight.Text,
+                    preDefineHighlight.PreDefinedQueryType))
+                {
+                    e.Appearance.BackColor = preDefineHighlight.Color;
+                }
+            }
+
+            if (DataProvider.UseCustomColors)
+            {
+                IAnalogyLogMessage m =
                     (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
-                if (message == null) return;
-                if (!Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
-                    message.Date > reloadDateTime)
-                {
-                    e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
-                }
+                if (m == null) return;
+                var colors = DataProvider.GetColorForMessage(m);
+                if (colors.backgroundColor != Color.Empty)
+                    e.Appearance.BackColor = colors.backgroundColor;
+                if (colors.foregroundColor != Color.Empty)
+                    e.Appearance.ForeColor = colors.foregroundColor;
+            }
 
-                e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(message.Level);
-                switch (message.Level)
-                {
-                    case AnalogyLogLevel.Warning:
-                    case AnalogyLogLevel.Error:
-                    case AnalogyLogLevel.Critical:
-                        if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                            e.Appearance.ForeColor = Color.Black;
-                        break;
-                    case AnalogyLogLevel.Event:
-                    case AnalogyLogLevel.Verbose:
-                    case AnalogyLogLevel.Debug:
-                    case AnalogyLogLevel.Disabled:
-                    case AnalogyLogLevel.Trace:
-                    case AnalogyLogLevel.Unknown:
-                    case AnalogyLogLevel.AnalogyInformation:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
-                    message.Date > reloadDateTime)
-                {
-                    e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
-                }
-
-                string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
-                if (chkbHighlight.Checked &&
-                    FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
-                {
-                    e.Appearance.BackColor = Settings.ColorSettings.GetHighlightColor();
-                }
-
-                foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
-                {
-                    if (FilterCriteriaObject.Match(text, preDefineHighlight.Text,
-                        preDefineHighlight.PreDefinedQueryType))
-                    {
-                        e.Appearance.BackColor = preDefineHighlight.Color;
-                    }
-                }
-
-                if (DataProvider.UseCustomColors)
-                {
-                    IAnalogyLogMessage m =
-                        (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
-                    if (m == null) return;
-                    var colors = DataProvider.GetColorForMessage(m);
-                    if (colors.backgroundColor != Color.Empty)
-                        e.Appearance.BackColor = colors.backgroundColor;
-                    if (colors.foregroundColor != Color.Empty)
-                        e.Appearance.ForeColor = colors.foregroundColor;
-                }
+            if (chkbHighlight.Checked &&
+                FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
+            {
+                e.Appearance.BackColor = Settings.ColorSettings.GetHighlightColor();
             }
         }
 
@@ -2537,7 +2533,7 @@ namespace Analogy
 
         private void txtbInclude_KeyPress(object sender, KeyPressEventArgs e)
         {
-            xtcFilters.SelectedTabPage= xtpFiltersIncludes;
+            xtcFilters.SelectedTabPage = xtpFiltersIncludes;
         }
 
         private void txtbExclude_EditValueChanged(object sender, EventArgs e)
