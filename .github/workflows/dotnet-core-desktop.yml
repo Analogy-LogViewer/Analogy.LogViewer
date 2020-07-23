@@ -49,8 +49,8 @@ jobs:
         Configuration: ${{ matrix.configuration }}
     # Execute all unit tests in the solution
     # Execute all unit tests in the solution
-    - name: Execute unit tests
-      run: dotnet test
+    #- name: Execute unit tests
+    # run: dotnet test
 
     # Publish Artifacts 
     - name: 'Publish Artifacts'
