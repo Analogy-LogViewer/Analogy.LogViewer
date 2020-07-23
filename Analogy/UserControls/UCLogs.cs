@@ -372,6 +372,8 @@ namespace Analogy
         {
             if (DesignMode) return;
             xtcFiltersLeft.SelectedTabPage = xtpFilters;
+            xtpSearch.PageVisible = false;
+            xtpGoTo.PageVisible = false;
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
