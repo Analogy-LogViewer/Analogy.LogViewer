@@ -42,13 +42,25 @@ namespace Analogy
             Settings.IncreaseNumberOfLaunches();
             if (!string.IsNullOrEmpty(Settings.ApplicationSkinName))
             {
-                UserLookAndFeel.Default.SkinName = Settings.ApplicationSkinName;
+                if (!string.IsNullOrEmpty(Settings.ApplicationSvgPaletteName))
+                {
+                    UserLookAndFeel.Default.SetSkinStyle(Settings.ApplicationSkinName, Settings.ApplicationSvgPaletteName);
+                }
+                else
+                    UserLookAndFeel.Default.SetSkinStyle(Settings.ApplicationSkinName);
+
+                UserLookAndFeel.Default.Style = Settings.ApplicationStyle;
             }
 
             UserLookAndFeel.Default.StyleChanged += (s, e) =>
             {
-                Settings.ApplicationSkinName = ((UserLookAndFeel)s).ActiveSkinName;
+                UserLookAndFeel laf = (UserLookAndFeel)s;
+                Settings.ApplicationSkinName = laf.ActiveSkinName;
+                Settings.ApplicationStyle = laf.Style;
+                Settings.ApplicationSvgPaletteName = laf.ActiveSvgPaletteName;
+
             };
+
             if (UserSettingsManager.UserSettings.SingleInstance &&
                 Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {

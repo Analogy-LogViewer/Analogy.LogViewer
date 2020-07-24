@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using DevExpress.LookAndFeel;
 
 namespace Analogy
 {
@@ -90,6 +91,9 @@ namespace Analogy
         public bool EnableCompressedArchives { get; set; }
         public bool IsBuiltInSearchPanelVisible { get; set; }
         public BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; }
+        public string ApplicationSvgPaletteName { get; set; }
+        public LookAndFeelStyle ApplicationStyle { get; set; } = LookAndFeelStyle.Skin;
+
         public UserSettingsManager()
         {
             Load();
@@ -172,6 +176,12 @@ namespace Analogy
                     break;
             }
 
+            if (Enum.TryParse(Settings.Default.ApplicationStyle, out LookAndFeelStyle style))
+            {
+                ApplicationStyle = style;
+            }
+
+            ApplicationSvgPaletteName = Settings.Default.ApplicationSvgPaletteName;
             MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
             CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation;
             AnalogyPosition = ParseSettings<AnalogyPositionState>(Settings.Default.AnalogyPosition) ??
@@ -257,6 +267,8 @@ namespace Analogy
             Settings.Default.EnableCompressedArchives = EnableCompressedArchives;
             Settings.Default.IsBuiltInSearchPanelVisible = IsBuiltInSearchPanelVisible;
             Settings.Default.BuiltInSearchPanelMode = BuiltInSearchPanelMode.ToString();
+            Settings.Default.ApplicationStyle = ApplicationStyle.ToString();
+            Settings.Default.ApplicationSvgPaletteName = ApplicationSvgPaletteName;
             Settings.Default.Save();
 
         }

@@ -170,5 +170,11 @@
     <Setting Name="BuiltInSearchPanelMode" Type="System.String" Scope="User">
       <Value Profile="(Default)">Search</Value>
     </Setting>
+    <Setting Name="ApplicationSvgPaletteName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ApplicationStyle" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
