@@ -89,8 +89,6 @@
             this.bbtnCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCompactMemory = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageThemes = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -99,6 +97,8 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
+            this.skinRibbonGalleryBarItem3 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.skinPaletteRibbonGalleryBarItem3 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -179,15 +179,18 @@
             this.bbtnCombineOpenLogs,
             this.bbtnCheckUpdates,
             this.bbtnCompactMemory,
-            this.bbtnReportIssueOrRequest});
+            this.bbtnReportIssueOrRequest,
+            this.skinRibbonGalleryBarItem3,
+            this.skinPaletteRibbonGalleryBarItem3});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 81;
+            this.ribbonControlMain.MaxItemId = 83;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPageThemes,
             this.ribbonPage1});
+            this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGalleryBarItem3);
+            this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem3);
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
             this.ribbonControlMain.Size = new System.Drawing.Size(1517, 178);
@@ -669,21 +672,6 @@
             this.bbtnReportIssueOrRequest.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReportIssueOrRequest.ImageOptions.LargeImage")));
             this.bbtnReportIssueOrRequest.Name = "bbtnReportIssueOrRequest";
             // 
-            // ribbonPageThemes
-            // 
-            this.ribbonPageThemes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
-            this.ribbonPageThemes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPageThemes.ImageOptions.Image")));
-            this.ribbonPageThemes.Name = "ribbonPageThemes";
-            this.ribbonPageThemes.Text = "Themes";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.skinRibbonGalleryBarItem2);
-            this.ribbonPageGroup3.ItemLinks.Add(this.skinPaletteRibbonGalleryBarItem2);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Options";
-            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -760,6 +748,18 @@
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
             // 
+            // skinRibbonGalleryBarItem3
+            // 
+            this.skinRibbonGalleryBarItem3.Caption = "skinRibbonGalleryBarItem3";
+            this.skinRibbonGalleryBarItem3.Id = 81;
+            this.skinRibbonGalleryBarItem3.Name = "skinRibbonGalleryBarItem3";
+            // 
+            // skinPaletteRibbonGalleryBarItem3
+            // 
+            this.skinPaletteRibbonGalleryBarItem3.Caption = "skinPaletteRibbonGalleryBarItem3";
+            this.skinPaletteRibbonGalleryBarItem3.Id = 82;
+            this.skinPaletteRibbonGalleryBarItem3.Name = "skinPaletteRibbonGalleryBarItem3";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -800,8 +800,6 @@
         private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem1;
         private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem2;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageThemes;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem btnItemSearch;
         private DevExpress.XtraBars.BarButtonItem btnItemCombineFiles;
         private DevExpress.XtraBars.BarButtonItem btnItemConvert;
@@ -857,5 +855,7 @@
         private DevExpress.XtraBars.BarButtonItem bbtnCompactMemory;
         private System.Windows.Forms.NotifyIcon notifyIconAnalogy;
         private DevExpress.XtraBars.BarButtonItem bbtnReportIssueOrRequest;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem3;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem3;
     }
 }

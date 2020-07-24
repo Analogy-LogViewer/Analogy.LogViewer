@@ -10,6 +10,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+
+                new AnalogyChangeLog("V4.2.5 - [UI] Add color Palette to user settings and revamp the UI #273",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
                 new AnalogyChangeLog("V4.2.5 - [Performance] Reduce the usage of ReaderWriterLockSlim. #272",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
                 new AnalogyChangeLog("V4.2.5 - Set CTRL+F to open search panel automatically. #270",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
                 new AnalogyChangeLog("V4.2.5 - Add Search panel. #269",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
