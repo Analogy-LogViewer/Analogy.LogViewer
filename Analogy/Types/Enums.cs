@@ -1,12 +1,15 @@
-﻿using Analogy.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 
 namespace Analogy.Types
 {
+    public enum BuiltInSearchPanelMode
+    {
+        Search,
+        Filter,
+    }
     public enum UpdateMode
     {
         [Display(Name = "Never")] Never,

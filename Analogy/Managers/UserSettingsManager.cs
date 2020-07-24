@@ -88,7 +88,8 @@ namespace Analogy
 
         public AnalogyPositionState AnalogyPosition { get; set; }
         public bool EnableCompressedArchives { get; set; }
-
+        public bool IsBuiltInSearchPanelVisible { get; set; }
+        public BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -142,7 +143,8 @@ namespace Analogy
             ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
-            FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings).Where(f => f.FactoryId != Guid.Empty).ToList();
+            FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings)
+                .Where(f => f.FactoryId != Guid.Empty).ToList();
             LastOpenedDataProvider = Settings.Default.LastOpenedDataProvider;
             PreDefinedQueries = ParseSettings<PreDefinedQueries>(Settings.Default.PreDefinedQueries);
             RememberLastOpenedDataProvider = Settings.Default.RememberLastOpenedDataProvider;
@@ -172,8 +174,14 @@ namespace Analogy
 
             MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
             CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation;
-            AnalogyPosition = ParseSettings<AnalogyPositionState>(Settings.Default.AnalogyPosition) ?? new AnalogyPositionState();
+            AnalogyPosition = ParseSettings<AnalogyPositionState>(Settings.Default.AnalogyPosition) ??
+                              new AnalogyPositionState();
             EnableCompressedArchives = Settings.Default.EnableCompressedArchives;
+            IsBuiltInSearchPanelVisible = Settings.Default.IsBuiltInSearchPanelVisible;
+            if (Enum.TryParse(Settings.Default.BuiltInSearchPanelMode, out BuiltInSearchPanelMode result))
+            {
+                BuiltInSearchPanelMode = result;
+            }
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -246,7 +254,9 @@ namespace Analogy
             Settings.Default.MinimizedToTrayBar = MinimizedToTrayBar;
             Settings.Default.CheckAdditionalInformation = CheckAdditionalInformation;
             Settings.Default.AnalogyPosition = JsonConvert.SerializeObject(AnalogyPosition);
-            Settings.Default.EnableCompressedArchives=EnableCompressedArchives;
+            Settings.Default.EnableCompressedArchives = EnableCompressedArchives;
+            Settings.Default.IsBuiltInSearchPanelVisible = IsBuiltInSearchPanelVisible;
+            Settings.Default.BuiltInSearchPanelMode = BuiltInSearchPanelMode.ToString();
             Settings.Default.Save();
 
         }

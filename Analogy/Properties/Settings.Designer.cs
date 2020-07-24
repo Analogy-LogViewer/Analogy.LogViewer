@@ -8,14 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
-namespace Analogy.Properties
-{
-
-
+namespace Analogy.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -88,20 +85,6 @@ namespace Analogy.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RecentFolders
-        {
-            get
-            {
-                return ((string)(this["RecentFolders"]));
-            }
-            set
-            {
-                this["RecentFolders"] = value;
-            }
-        }
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int RecentFilesCount {
             get {
@@ -112,21 +95,6 @@ namespace Analogy.Properties
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int RecentFoldersCount
-        {
-            get
-            {
-                return ((int)(this["RecentFoldersCount"]));
-            }
-            set
-            {
-                this["RecentFoldersCount"] = value;
-            }
-        }
-
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
@@ -570,138 +538,160 @@ namespace Analogy.Properties
                 this["SingleInstance"] = value;
             }
         }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
-        public string AnalogyIcon
-        {
-            get
-            {
+        public string AnalogyIcon {
+            get {
                 return ((string)(this["AnalogyIcon"]));
             }
-            set
-            {
+            set {
                 this["AnalogyIcon"] = value;
             }
         }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("yyyy.MM.dd HH:mm:ss.ff")]
-        public string DateTimePattern
-        {
-            get
-            {
+        public string DateTimePattern {
+            get {
                 return ((string)(this["DateTimePattern"]));
             }
-            set
-            {
+            set {
                 this["DateTimePattern"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public DateTime LastUpdate
-        {
-            get
-            {
-                return ((DateTime)(this["LastUpdate"]));
+        public global::System.DateTime LastUpdate {
+            get {
+                return ((global::System.DateTime)(this["LastUpdate"]));
             }
-            set
-            {
+            set {
                 this["LastUpdate"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int UpdateMode
-        {
-            get
-            {
+        public int UpdateMode {
+            get {
                 return ((int)(this["UpdateMode"]));
             }
-            set
-            {
+            set {
                 this["UpdateMode"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastVersionChecked
-        {
-            get
-            {
+        public string LastVersionChecked {
+            get {
                 return ((string)(this["LastVersionChecked"]));
             }
-            set
-            {
+            set {
                 this["LastVersionChecked"] = value;
             }
         }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool MinimizedToTrayBar
-        {
-            get
-            {
+        public bool MinimizedToTrayBar {
+            get {
                 return ((bool)(this["MinimizedToTrayBar"]));
             }
-            set
-            {
+            set {
                 this["MinimizedToTrayBar"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CheckAdditionalInformation
-        {
-            get
-            {
-                return ((bool)(this["CheckAdditionalInformation"]));
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int RecentFoldersCount {
+            get {
+                return ((int)(this["RecentFoldersCount"]));
             }
-            set
-            {
-                this["CheckAdditionalInformation"] = value;
+            set {
+                this["RecentFoldersCount"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AnalogyPosition
-        {
-            get
-            {
-                return ((string)(this["AnalogyPosition"]));
+        public string RecentFolders {
+            get {
+                return ((string)(this["RecentFolders"]));
             }
-            set
-            {
-                this["AnalogyPosition"] = value;
+            set {
+                this["RecentFolders"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool EnableCompressedArchives
-        {
-            get
-            {
+        public bool CheckAdditionalInformation {
+            get {
+                return ((bool)(this["CheckAdditionalInformation"]));
+            }
+            set {
+                this["CheckAdditionalInformation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AnalogyPosition {
+            get {
+                return ((string)(this["AnalogyPosition"]));
+            }
+            set {
+                this["AnalogyPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableCompressedArchives {
+            get {
                 return ((bool)(this["EnableCompressedArchives"]));
             }
-            set
-            {
+            set {
                 this["EnableCompressedArchives"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsBuiltInSearchPanelVisible {
+            get {
+                return ((bool)(this["IsBuiltInSearchPanelVisible"]));
+            }
+            set {
+                this["IsBuiltInSearchPanelVisible"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Search")]
+        public string BuiltInSearchPanelMode {
+            get {
+                return ((string)(this["BuiltInSearchPanelMode"]));
+            }
+            set {
+                this["BuiltInSearchPanelMode"] = value;
+            }
+        }
     }
-
 }

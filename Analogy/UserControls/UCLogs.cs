@@ -167,6 +167,18 @@ namespace Analogy
 
         private void SetupEventsHandlers()
         {
+            rgSearchMode.SelectedIndexChanged += (s, e) =>
+            {
+                Settings.BuiltInSearchPanelMode = rgSearchMode.SelectedIndex == 0 ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
+                logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
+                    ? FindPanelBehavior.Search
+                    : FindPanelBehavior.Filter;
+            };
+            sbtnToggleSearchFilter.Click += (_, __) =>
+            {
+                Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
+                logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
+            };
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
             clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
             deNewerThanFilter.EditValueChanged += async (s, e) =>
@@ -372,8 +384,7 @@ namespace Analogy
         {
             if (DesignMode) return;
             xtcFiltersLeft.SelectedTabPage = xtpFilters;
-            xtpSearch.PageVisible = false;
-            xtpGoTo.PageVisible = false;
+
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
@@ -499,6 +510,11 @@ namespace Analogy
 
         private void LoadUISettings()
         {
+            logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
+            rgSearchMode.SelectedIndex = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search ? 0 : 1;
+            logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
+                ? FindPanelBehavior.Search
+                : FindPanelBehavior.Filter;
             gridColumnDate.SortOrder =
                 Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
             txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;

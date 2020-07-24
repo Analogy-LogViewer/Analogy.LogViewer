@@ -161,8 +161,14 @@
     <Setting Name="AnalogyPosition" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="EnableCompressedArchives" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="EnableCompressedArchives" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IsBuiltInSearchPanelVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BuiltInSearchPanelMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Search</Value>
     </Setting>
   </Settings>
 </SettingsFile>

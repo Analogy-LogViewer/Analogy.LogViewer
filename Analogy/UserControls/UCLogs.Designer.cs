@@ -97,16 +97,16 @@ namespace Analogy
             this.barButtonItemSaveEntireInAnalogy = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSaveViewAgnostic = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnSaveCurrentSelectionAnalogyFormat = new DevExpress.XtraBars.BarButtonItem();
+            this.bSMExports = new DevExpress.XtraBars.BarSubItem();
+            this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnExportCSV = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnExportHtml = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockSelection = new DevExpress.XtraBars.BarButtonItem();
             this.bbiScreenshot = new DevExpress.XtraBars.BarButtonItem();
-            this.bSMExports = new DevExpress.XtraBars.BarSubItem();
-            this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnExportCSV = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnExportHtml = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnImport = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnShare = new DevExpress.XtraBars.BarButtonItem();
@@ -194,10 +194,18 @@ namespace Analogy
             this.xtpMain = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.pnlFilters = new DevExpress.XtraEditors.PanelControl();
+            this.xtcFiltersLeft = new DevExpress.XtraTab.XtraTabControl();
+            this.xtpFilters = new DevExpress.XtraTab.XtraTabPage();
             this.pnlLeftFilters = new DevExpress.XtraEditors.PanelControl();
             this.pnlModulesAndDates = new System.Windows.Forms.Panel();
+            this.xtcFilters = new DevExpress.XtraTab.XtraTabControl();
+            this.xtpFiltersIncludes = new DevExpress.XtraTab.XtraTabPage();
             this.clbInclude = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.xtpFiltersExclude = new DevExpress.XtraTab.XtraTabPage();
             this.clbExclude = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.xtpSearchFilterPanel = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.sbtnToggleSearchFilter = new DevExpress.XtraEditors.SimpleButton();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.lblTotalMessagesAlert = new DevExpress.XtraEditors.LabelControl();
             this.sBtnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -251,13 +259,7 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.xtcFiltersLeft = new DevExpress.XtraTab.XtraTabControl();
-            this.xtpSearch = new DevExpress.XtraTab.XtraTabPage();
-            this.xtpFilters = new DevExpress.XtraTab.XtraTabPage();
-            this.xtcFilters = new DevExpress.XtraTab.XtraTabControl();
-            this.xtpFiltersIncludes = new DevExpress.XtraTab.XtraTabPage();
-            this.xtpFiltersExclude = new DevExpress.XtraTab.XtraTabPage();
-            this.xtpGoTo = new DevExpress.XtraTab.XtraTabPage();
+            this.rgSearchMode = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -309,11 +311,19 @@ namespace Analogy
             this.splitContainerMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).BeginInit();
             this.pnlFilters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtcFiltersLeft)).BeginInit();
+            this.xtcFiltersLeft.SuspendLayout();
+            this.xtpFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlLeftFilters)).BeginInit();
             this.pnlLeftFilters.SuspendLayout();
             this.pnlModulesAndDates.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtcFilters)).BeginInit();
+            this.xtcFilters.SuspendLayout();
+            this.xtpFiltersIncludes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).BeginInit();
+            this.xtpFiltersExclude.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).BeginInit();
+            this.xtpSearchFilterPanel.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.xtCounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).BeginInit();
@@ -332,13 +342,7 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xtcFiltersLeft)).BeginInit();
-            this.xtcFiltersLeft.SuspendLayout();
-            this.xtpFilters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xtcFilters)).BeginInit();
-            this.xtcFilters.SuspendLayout();
-            this.xtpFiltersIncludes.SuspendLayout();
-            this.xtpFiltersExclude.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -572,9 +576,10 @@ namespace Analogy
             this.logGrid.Images = this.imageList;
             this.logGrid.IndicatorWidth = 24;
             this.logGrid.Name = "logGrid";
-            this.logGrid.OptionsBehavior.Editable = false;
+            this.logGrid.OptionsBehavior.AllowIncrementalSearch = true;
             this.logGrid.OptionsFilter.AllowColumnMRUFilterList = false;
             this.logGrid.OptionsFilter.AllowMRUFilterList = false;
+            this.logGrid.OptionsFind.AlwaysVisible = true;
             this.logGrid.OptionsLayout.Columns.StoreAllOptions = true;
             this.logGrid.OptionsLayout.Columns.StoreAppearance = true;
             this.logGrid.OptionsLayout.StoreAllOptions = true;
@@ -1092,6 +1097,48 @@ namespace Analogy
             this.bBtnSaveCurrentSelectionAnalogyFormat.Name = "bBtnSaveCurrentSelectionAnalogyFormat";
             this.bBtnSaveCurrentSelectionAnalogyFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionAnalogyFormat_ItemClick);
             // 
+            // bSMExports
+            // 
+            this.bSMExports.Caption = "Export";
+            this.bSMExports.Id = 20;
+            this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
+            this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
+            this.bSMExports.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportCSV),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportHtml)});
+            this.bSMExports.Name = "bSMExports";
+            this.bSMExports.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bBtnExportExcel
+            // 
+            this.bBtnExportExcel.Caption = "Export To Excel";
+            this.bBtnExportExcel.Id = 21;
+            this.bBtnExportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.Image")));
+            this.bBtnExportExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.LargeImage")));
+            this.bBtnExportExcel.Name = "bBtnExportExcel";
+            this.bBtnExportExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportExcel_ItemClick);
+            // 
+            // bBtnExportCSV
+            // 
+            this.bBtnExportCSV.Caption = "Export To CSV";
+            this.bBtnExportCSV.Id = 22;
+            this.bBtnExportCSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.Image")));
+            this.bBtnExportCSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.LargeImage")));
+            this.bBtnExportCSV.Name = "bBtnExportCSV";
+            this.bBtnExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportCSV_ItemClick);
+            // 
+            // bBtnExportHtml
+            // 
+            this.bBtnExportHtml.Caption = "Export To Html";
+            this.bBtnExportHtml.Id = 23;
+            this.bBtnExportHtml.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.Image")));
+            this.bBtnExportHtml.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.LargeImage")));
+            this.bBtnExportHtml.Name = "bBtnExportHtml";
+            this.bBtnExportHtml.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnExportHtml.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bBtnExportHtml.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportHtml_ItemClick);
+            // 
             // bBtnFullGrid
             // 
             this.bBtnFullGrid.Caption = "Full";
@@ -1151,48 +1198,6 @@ namespace Analogy
             this.bbiScreenshot.Name = "bbiScreenshot";
             this.bbiScreenshot.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbiScreenshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiScreenshot_ItemClick);
-            // 
-            // bSMExports
-            // 
-            this.bSMExports.Caption = "Export";
-            this.bSMExports.Id = 20;
-            this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
-            this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
-            this.bSMExports.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportCSV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportHtml)});
-            this.bSMExports.Name = "bSMExports";
-            this.bSMExports.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // bBtnExportExcel
-            // 
-            this.bBtnExportExcel.Caption = "Export To Excel";
-            this.bBtnExportExcel.Id = 21;
-            this.bBtnExportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.Image")));
-            this.bBtnExportExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.LargeImage")));
-            this.bBtnExportExcel.Name = "bBtnExportExcel";
-            this.bBtnExportExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportExcel_ItemClick);
-            // 
-            // bBtnExportCSV
-            // 
-            this.bBtnExportCSV.Caption = "Export To CSV";
-            this.bBtnExportCSV.Id = 22;
-            this.bBtnExportCSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.Image")));
-            this.bBtnExportCSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.LargeImage")));
-            this.bBtnExportCSV.Name = "bBtnExportCSV";
-            this.bBtnExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportCSV_ItemClick);
-            // 
-            // bBtnExportHtml
-            // 
-            this.bBtnExportHtml.Caption = "Export To Html";
-            this.bBtnExportHtml.Id = 23;
-            this.bBtnExportHtml.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.Image")));
-            this.bBtnExportHtml.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.LargeImage")));
-            this.bBtnExportHtml.Name = "bBtnExportHtml";
-            this.bBtnExportHtml.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnExportHtml.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bBtnExportHtml.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportHtml_ItemClick);
             // 
             // bBtnImport
             // 
@@ -1358,7 +1363,7 @@ namespace Analogy
             this.bdcBookmarks.Manager = this.barManager1;
             this.bdcBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcBookmarks.Name = "bdcBookmarks";
-            this.bdcBookmarks.Size = new System.Drawing.Size(2117, 32);
+            this.bdcBookmarks.Size = new System.Drawing.Size(1839, 32);
             this.bdcBookmarks.Text = "standaloneBarDockControl1";
             // 
             // barGroup
@@ -1978,7 +1983,7 @@ namespace Analogy
             this.xtpBookmarks.Controls.Add(this.bdcBookmarks);
             this.xtpBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpBookmarks.Name = "xtpBookmarks";
-            this.xtpBookmarks.Size = new System.Drawing.Size(2117, 170);
+            this.xtpBookmarks.Size = new System.Drawing.Size(1839, 170);
             this.xtpBookmarks.Text = "Bookmarks";
             // 
             // gridControlBookmarkedMessages
@@ -1989,7 +1994,7 @@ namespace Analogy
             this.gridControlBookmarkedMessages.MainView = this.gridViewBookmarkedMessages;
             this.gridControlBookmarkedMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlBookmarkedMessages.Name = "gridControlBookmarkedMessages";
-            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(2117, 138);
+            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(1839, 138);
             this.gridControlBookmarkedMessages.TabIndex = 3;
             this.gridControlBookmarkedMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBookmarkedMessages});
@@ -2369,6 +2374,26 @@ namespace Analogy
             this.pnlFilters.Size = new System.Drawing.Size(1846, 138);
             this.pnlFilters.TabIndex = 6;
             // 
+            // xtcFiltersLeft
+            // 
+            this.xtcFiltersLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtcFiltersLeft.Location = new System.Drawing.Point(2, 2);
+            this.xtcFiltersLeft.Name = "xtcFiltersLeft";
+            this.xtcFiltersLeft.SelectedTabPage = this.xtpFilters;
+            this.xtcFiltersLeft.Size = new System.Drawing.Size(1701, 134);
+            this.xtcFiltersLeft.TabIndex = 28;
+            this.xtcFiltersLeft.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtpFilters,
+            this.xtpSearchFilterPanel});
+            // 
+            // xtpFilters
+            // 
+            this.xtpFilters.Controls.Add(this.pnlLeftFilters);
+            this.xtpFilters.Controls.Add(this.xtcFilters);
+            this.xtpFilters.Name = "xtpFilters";
+            this.xtpFilters.Size = new System.Drawing.Size(1694, 100);
+            this.xtpFilters.Text = "Filters";
+            // 
             // pnlLeftFilters
             // 
             this.pnlLeftFilters.Controls.Add(this.pnlModulesAndDates);
@@ -2391,6 +2416,25 @@ namespace Analogy
             this.pnlModulesAndDates.Size = new System.Drawing.Size(1538, 22);
             this.pnlModulesAndDates.TabIndex = 28;
             // 
+            // xtcFilters
+            // 
+            this.xtcFilters.Dock = System.Windows.Forms.DockStyle.Right;
+            this.xtcFilters.Location = new System.Drawing.Point(1542, 0);
+            this.xtcFilters.Name = "xtcFilters";
+            this.xtcFilters.SelectedTabPage = this.xtpFiltersIncludes;
+            this.xtcFilters.Size = new System.Drawing.Size(152, 100);
+            this.xtcFilters.TabIndex = 29;
+            this.xtcFilters.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtpFiltersIncludes,
+            this.xtpFiltersExclude});
+            // 
+            // xtpFiltersIncludes
+            // 
+            this.xtpFiltersIncludes.Controls.Add(this.clbInclude);
+            this.xtpFiltersIncludes.Name = "xtpFiltersIncludes";
+            this.xtpFiltersIncludes.Size = new System.Drawing.Size(145, 66);
+            this.xtpFiltersIncludes.Text = "Includes";
+            // 
             // clbInclude
             // 
             this.clbInclude.CheckOnClick = true;
@@ -2400,14 +2444,46 @@ namespace Analogy
             this.clbInclude.Size = new System.Drawing.Size(145, 66);
             this.clbInclude.TabIndex = 21;
             // 
+            // xtpFiltersExclude
+            // 
+            this.xtpFiltersExclude.Controls.Add(this.clbExclude);
+            this.xtpFiltersExclude.Name = "xtpFiltersExclude";
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(145, 66);
+            this.xtpFiltersExclude.Text = "Excludes";
+            // 
             // clbExclude
             // 
             this.clbExclude.CheckOnClick = true;
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(145, 91);
+            this.clbExclude.Size = new System.Drawing.Size(145, 66);
             this.clbExclude.TabIndex = 22;
+            // 
+            // xtpSearchFilterPanel
+            // 
+            this.xtpSearchFilterPanel.Controls.Add(this.rgSearchMode);
+            this.xtpSearchFilterPanel.Controls.Add(this.labelControl1);
+            this.xtpSearchFilterPanel.Controls.Add(this.sbtnToggleSearchFilter);
+            this.xtpSearchFilterPanel.Name = "xtpSearchFilterPanel";
+            this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1694, 100);
+            this.xtpSearchFilterPanel.Text = "Search/Filter Panel";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(3, 39);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(65, 16);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "Text Mode:";
+            // 
+            // sbtnToggleSearchFilter
+            // 
+            this.sbtnToggleSearchFilter.Location = new System.Drawing.Point(3, 3);
+            this.sbtnToggleSearchFilter.Name = "sbtnToggleSearchFilter";
+            this.sbtnToggleSearchFilter.Size = new System.Drawing.Size(254, 28);
+            this.sbtnToggleSearchFilter.TabIndex = 0;
+            this.sbtnToggleSearchFilter.Text = "Toggle Search/Filter Panel On/Off";
             // 
             // pnlBottom
             // 
@@ -2476,7 +2552,7 @@ namespace Analogy
             this.xtCounts.Controls.Add(this.panelControl1);
             this.xtCounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtCounts.Name = "xtCounts";
-            this.xtCounts.Size = new System.Drawing.Size(2124, 705);
+            this.xtCounts.Size = new System.Drawing.Size(1846, 705);
             this.xtCounts.Text = "Messages Grouping";
             // 
             // spltGroupByChars
@@ -2494,7 +2570,7 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(2124, 679);
+            this.spltGroupByChars.Size = new System.Drawing.Size(1846, 679);
             this.spltGroupByChars.SplitterDistance = 346;
             this.spltGroupByChars.TabIndex = 4;
             // 
@@ -2507,7 +2583,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(2124, 346);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(1846, 346);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2530,7 +2606,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridViewGrouping2;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(2124, 329);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1846, 329);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping2});
@@ -2823,7 +2899,7 @@ namespace Analogy
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(2124, 26);
+            this.panelControl1.Size = new System.Drawing.Size(1846, 26);
             this.panelControl1.TabIndex = 16;
             // 
             // sBtnGroup
@@ -3108,64 +3184,16 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // xtcFiltersLeft
+            // rgSearchMode
             // 
-            this.xtcFiltersLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtcFiltersLeft.Location = new System.Drawing.Point(2, 2);
-            this.xtcFiltersLeft.Name = "xtcFiltersLeft";
-            this.xtcFiltersLeft.SelectedTabPage = this.xtpFilters;
-            this.xtcFiltersLeft.Size = new System.Drawing.Size(1701, 134);
-            this.xtcFiltersLeft.TabIndex = 28;
-            this.xtcFiltersLeft.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtpSearch,
-            this.xtpFilters,
-            this.xtpGoTo});
-            // 
-            // xtpSearch
-            // 
-            this.xtpSearch.Name = "xtpSearch";
-            this.xtpSearch.Size = new System.Drawing.Size(1624, 54);
-            this.xtpSearch.Text = "Search";
-            // 
-            // xtpFilters
-            // 
-            this.xtpFilters.Controls.Add(this.pnlLeftFilters);
-            this.xtpFilters.Controls.Add(this.xtcFilters);
-            this.xtpFilters.Name = "xtpFilters";
-            this.xtpFilters.Size = new System.Drawing.Size(1694, 100);
-            this.xtpFilters.Text = "Filters";
-            // 
-            // xtcFilters
-            // 
-            this.xtcFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.xtcFilters.Location = new System.Drawing.Point(1542, 0);
-            this.xtcFilters.Name = "xtcFilters";
-            this.xtcFilters.SelectedTabPage = this.xtpFiltersIncludes;
-            this.xtcFilters.Size = new System.Drawing.Size(152, 100);
-            this.xtcFilters.TabIndex = 29;
-            this.xtcFilters.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtpFiltersIncludes,
-            this.xtpFiltersExclude});
-            // 
-            // xtpFiltersIncludes
-            // 
-            this.xtpFiltersIncludes.Controls.Add(this.clbInclude);
-            this.xtpFiltersIncludes.Name = "xtpFiltersIncludes";
-            this.xtpFiltersIncludes.Size = new System.Drawing.Size(145, 66);
-            this.xtpFiltersIncludes.Text = "Includes";
-            // 
-            // xtpFiltersExclude
-            // 
-            this.xtpFiltersExclude.Controls.Add(this.clbExclude);
-            this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(145, 91);
-            this.xtpFiltersExclude.Text = "Excludes";
-            // 
-            // xtpGoTo
-            // 
-            this.xtpGoTo.Name = "xtpGoTo";
-            this.xtpGoTo.Size = new System.Drawing.Size(1694, 100);
-            this.xtpGoTo.Text = "Go To";
+            this.rgSearchMode.Location = new System.Drawing.Point(104, 37);
+            this.rgSearchMode.MenuManager = this.barManager1;
+            this.rgSearchMode.Name = "rgSearchMode";
+            this.rgSearchMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Search Mode"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Filter Mode")});
+            this.rgSearchMode.Size = new System.Drawing.Size(153, 56);
+            this.rgSearchMode.TabIndex = 4;
             // 
             // UCLogs
             // 
@@ -3240,11 +3268,20 @@ namespace Analogy
             this.splitContainerMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).EndInit();
             this.pnlFilters.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtcFiltersLeft)).EndInit();
+            this.xtcFiltersLeft.ResumeLayout(false);
+            this.xtpFilters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlLeftFilters)).EndInit();
             this.pnlLeftFilters.ResumeLayout(false);
             this.pnlModulesAndDates.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtcFilters)).EndInit();
+            this.xtcFilters.ResumeLayout(false);
+            this.xtpFiltersIncludes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).EndInit();
+            this.xtpFiltersExclude.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).EndInit();
+            this.xtpSearchFilterPanel.ResumeLayout(false);
+            this.xtpSearchFilterPanel.PerformLayout();
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
             this.xtCounts.ResumeLayout(false);
@@ -3265,13 +3302,7 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.xtcFiltersLeft)).EndInit();
-            this.xtcFiltersLeft.ResumeLayout(false);
-            this.xtpFilters.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.xtcFilters)).EndInit();
-            this.xtcFilters.ResumeLayout(false);
-            this.xtpFiltersIncludes.ResumeLayout(false);
-            this.xtpFiltersExclude.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3492,8 +3523,10 @@ namespace Analogy
         private DevExpress.XtraTab.XtraTabPage xtpFiltersIncludes;
         private DevExpress.XtraTab.XtraTabPage xtpFiltersExclude;
         private DevExpress.XtraTab.XtraTabControl xtcFiltersLeft;
-        private DevExpress.XtraTab.XtraTabPage xtpSearch;
+        private DevExpress.XtraTab.XtraTabPage xtpSearchFilterPanel;
         private DevExpress.XtraTab.XtraTabPage xtpFilters;
-        private DevExpress.XtraTab.XtraTabPage xtpGoTo;
+        private DevExpress.XtraEditors.SimpleButton sbtnToggleSearchFilter;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.RadioGroup rgSearchMode;
     }
 }
