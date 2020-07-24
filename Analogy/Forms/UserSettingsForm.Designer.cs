@@ -150,7 +150,6 @@
             this.tpExtensions = new DevExpress.XtraTab.XtraTabPage();
             this.xtcExtensions = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.extensionsUC1 = new Analogy.ExtensionsUC();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.chklItems = new System.Windows.Forms.CheckedListBox();
             this.tswitchExtensionsStartup = new DevExpress.XtraEditors.ToggleSwitch();
@@ -1830,20 +1829,9 @@
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.extensionsUC1);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(783, 731);
             this.xtraTabPage1.Text = "Extensions";
-            // 
-            // extensionsUC1
-            // 
-            this.extensionsUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extensionsUC1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.extensionsUC1.Location = new System.Drawing.Point(0, 0);
-            this.extensionsUC1.Margin = new System.Windows.Forms.Padding(4);
-            this.extensionsUC1.Name = "extensionsUC1";
-            this.extensionsUC1.Size = new System.Drawing.Size(783, 731);
-            this.extensionsUC1.TabIndex = 0;
             // 
             // xtraTabPage2
             // 
@@ -2742,7 +2730,6 @@
         private DevExpress.XtraTab.XtraTabControl xtcExtensions;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private ExtensionsUC extensionsUC1;
         private DevExpress.XtraEditors.ListBoxControl listBoxFoldersProbing;
         private DevExpress.XtraEditors.SimpleButton sbtnDeleteFolderProbing;
         private DevExpress.XtraEditors.SimpleButton sbtnFolderProbingAdd;

@@ -372,11 +372,7 @@ namespace Analogy
             OpenProcessForm();
         }
 
-        private void bbiExtensions_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var ex = new ExtensionsForm();
-            ex.ShowDialog(this);
-        }
+ 
 
         private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataProvider offlineAnalogy,
             string title, List<string> files)
@@ -1635,7 +1631,47 @@ namespace Analogy
             update.Show(this);
         }
 
+        private void btnApplicationSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(0);
+            user.ShowDialog(this);
+        }
 
+        private void btnFiltering_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(1);
+            user.ShowDialog(this);
+        }
+
+        private void btnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(2);
+            user.ShowDialog(this);
+        }
+
+        private void btnLookAndFeel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(3);
+            user.ShowDialog(this);
+        }
+
+        private void btnShortcuts_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(4);
+            user.ShowDialog(this);
+        }
+
+        private void btnMRU_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(5);
+            user.ShowDialog(this);
+        }
+
+        private void btnResourcesUsage_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(6);
+            user.ShowDialog(this);
+        }
     }
 }
 
