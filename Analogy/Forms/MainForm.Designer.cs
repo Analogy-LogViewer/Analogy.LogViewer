@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup5 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup6 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -67,15 +67,12 @@
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
             this.bBtnBookmarked = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnClientServer = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnStatisticsUserStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnCompareLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExtensions = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemDefaultLevel = new DevExpress.XtraBars.BarStaticItem();
             this.bsiMemoryUsage = new DevExpress.XtraBars.BarStaticItem();
             this.bsiIdleMessage = new DevExpress.XtraBars.BarStaticItem();
-            this.bbtnSettingsStartupDataSources = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnDataProviderSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnErrors = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
@@ -83,14 +80,6 @@
             this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem3 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.skinPaletteRibbonGalleryBarItem3 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
-            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.btnApplicationSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnFiltering = new DevExpress.XtraBars.BarButtonItem();
@@ -99,11 +88,19 @@
             this.btnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.btnMRU = new DevExpress.XtraBars.BarButtonItem();
             this.btnResourcesUsage = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.btnCustomDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUserSettings = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -158,15 +155,12 @@
             this.barWorkspaceMenuItem1,
             this.bBtnBookmarked,
             this.bBtnClientServer,
-            this.bBtnStatisticsUserStatistics,
             this.bBtnCompareLogs,
             this.bbiExtensions,
             this.barStaticItemDefaultLevel,
             this.bsiMemoryUsage,
             this.bsiIdleMessage,
-            this.bbtnSettingsStartupDataSources,
             this.bbiFileCaching,
-            this.bBtnDataProviderSettings,
             this.bBtnItemExportSettings,
             this.bBtnItemImportSettings,
             this.btnErrors,
@@ -190,21 +184,21 @@
             this.barSubItem3,
             this.barButtonItem9,
             this.barSubItem4,
-            this.barButtonItem10,
-            this.barButtonItem11});
+            this.btnCustomDataProvidersSettings,
+            this.btnUserSettings,
+            this.btnDataProvidersSettings,
+            this.btnSettingsUpdate});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 96;
+            this.ribbonControlMain.MaxItemId = 98;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
-            this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1});
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGalleryBarItem3);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem3);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.barSubItem2);
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1517, 178);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1517, 61);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
             // 
@@ -285,9 +279,9 @@
             // 
             // 
             // 
-            galleryItemGroup5.Caption = "Group2";
+            galleryItemGroup3.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup5});
+            galleryItemGroup3});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -297,9 +291,9 @@
             // 
             // 
             // 
-            galleryItemGroup6.Caption = "Group3";
+            galleryItemGroup4.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup6});
+            galleryItemGroup4});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -450,7 +444,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // bBtnBookmarked
             // 
@@ -471,16 +465,6 @@
             this.bBtnClientServer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnClientServer.ImageOptions.LargeImage")));
             this.bBtnClientServer.Name = "bBtnClientServer";
             this.bBtnClientServer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnClientServer_ItemClick);
-            // 
-            // bBtnStatisticsUserStatistics
-            // 
-            this.bBtnStatisticsUserStatistics.Caption = "User Statistics";
-            this.bBtnStatisticsUserStatistics.Id = 39;
-            this.bBtnStatisticsUserStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsUserStatistics.ImageOptions.Image")));
-            this.bBtnStatisticsUserStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnStatisticsUserStatistics.ImageOptions.LargeImage")));
-            this.bBtnStatisticsUserStatistics.LargeWidth = 100;
-            this.bBtnStatisticsUserStatistics.Name = "bBtnStatisticsUserStatistics";
-            this.bBtnStatisticsUserStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnStatisticsUserStatistics_ItemClick);
             // 
             // bBtnCompareLogs
             // 
@@ -524,17 +508,6 @@
             this.bsiIdleMessage.Id = 65;
             this.bsiIdleMessage.Name = "bsiIdleMessage";
             // 
-            // bbtnSettingsStartupDataSources
-            // 
-            this.bbtnSettingsStartupDataSources.Caption = "Data providers Settings ";
-            this.bbtnSettingsStartupDataSources.Id = 67;
-            this.bbtnSettingsStartupDataSources.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_Icon2;
-            this.bbtnSettingsStartupDataSources.ImageOptions.LargeImage = global::Analogy.Properties.Resources.Analogy_Icon2;
-            this.bbtnSettingsStartupDataSources.Name = "bbtnSettingsStartupDataSources";
-            this.bbtnSettingsStartupDataSources.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bbtnSettingsStartupDataSources.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSettingsStartupDataSources_ItemClick);
-            // 
             // bbiFileCaching
             // 
             this.bbiFileCaching.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -542,16 +515,6 @@
             this.bbiFileCaching.Id = 68;
             this.bbiFileCaching.Name = "bbiFileCaching";
             this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
-            // 
-            // bBtnDataProviderSettings
-            // 
-            this.bBtnDataProviderSettings.Caption = "Custom Data Providers Settings";
-            this.bBtnDataProviderSettings.Id = 69;
-            this.bBtnDataProviderSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Database_on;
-            this.bBtnDataProviderSettings.Name = "bBtnDataProviderSettings";
-            this.bBtnDataProviderSettings.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bBtnDataProviderSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataProviderSettings_ItemClick);
             // 
             // btnErrors
             // 
@@ -608,21 +571,107 @@
             this.skinPaletteRibbonGalleryBarItem3.Id = 82;
             this.skinPaletteRibbonGalleryBarItem3.Name = "skinPaletteRibbonGalleryBarItem3";
             // 
-            // ribbonPage1
+            // barSubItem2
             // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupSettings});
-            this.ribbonPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.ImageOptions.Image")));
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Settings";
+            this.barSubItem2.Caption = "Settings";
+            this.barSubItem2.Hint = "Application Settings";
+            this.barSubItem2.Id = 83;
+            this.barSubItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.Image")));
+            this.barSubItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.LargeImage")));
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnApplicationSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnFiltering),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnPreDefinedQueries),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLookAndFeel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnMRU),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnResourcesUsage),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDataProvidersSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCustomDataProvidersSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnUserSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate)});
+            this.barSubItem2.Name = "barSubItem2";
             // 
-            // ribbonPageGroupSettings
+            // btnApplicationSettings
             // 
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.bbtnSettingsStartupDataSources);
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnDataProviderSettings);
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.bBtnStatisticsUserStatistics);
-            this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
-            this.ribbonPageGroupSettings.Text = "Settings";
+            this.btnApplicationSettings.Caption = "Application Settings";
+            this.btnApplicationSettings.Id = 84;
+            this.btnApplicationSettings.Name = "btnApplicationSettings";
+            this.btnApplicationSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnApplicationSettings_ItemClick);
+            // 
+            // btnFiltering
+            // 
+            this.btnFiltering.Caption = "Filtering";
+            this.btnFiltering.Id = 85;
+            this.btnFiltering.Name = "btnFiltering";
+            this.btnFiltering.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFiltering_ItemClick);
+            // 
+            // btnPreDefinedQueries
+            // 
+            this.btnPreDefinedQueries.Caption = "Pre-Defined Queries";
+            this.btnPreDefinedQueries.Id = 86;
+            this.btnPreDefinedQueries.Name = "btnPreDefinedQueries";
+            this.btnPreDefinedQueries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPreDefinedQueries_ItemClick);
+            // 
+            // btnLookAndFeel
+            // 
+            this.btnLookAndFeel.Caption = "Look and Feel";
+            this.btnLookAndFeel.Id = 87;
+            this.btnLookAndFeel.Name = "btnLookAndFeel";
+            this.btnLookAndFeel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLookAndFeel_ItemClick);
+            // 
+            // btnShortcuts
+            // 
+            this.btnShortcuts.Caption = "Shortcuts";
+            this.btnShortcuts.Id = 88;
+            this.btnShortcuts.Name = "btnShortcuts";
+            this.btnShortcuts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShortcuts_ItemClick);
+            // 
+            // btnMRU
+            // 
+            this.btnMRU.Caption = "MRU";
+            this.btnMRU.Id = 89;
+            this.btnMRU.Name = "btnMRU";
+            this.btnMRU.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMRU_ItemClick);
+            // 
+            // btnResourcesUsage
+            // 
+            this.btnResourcesUsage.Caption = "Resource Usage";
+            this.btnResourcesUsage.Id = 90;
+            this.btnResourcesUsage.Name = "btnResourcesUsage";
+            this.btnResourcesUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnResourcesUsage_ItemClick);
+            // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "Data Provider Settings";
+            this.barSubItem4.Id = 93;
+            this.barSubItem4.Name = "barSubItem4";
+            // 
+            // btnCustomDataProvidersSettings
+            // 
+            this.btnCustomDataProvidersSettings.Caption = "Custom Data Providers Settings";
+            this.btnCustomDataProvidersSettings.Id = 94;
+            this.btnCustomDataProvidersSettings.Name = "btnCustomDataProvidersSettings";
+            this.btnCustomDataProvidersSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCustomDataProvidersSettings_ItemClick);
+            // 
+            // btnUserSettings
+            // 
+            this.btnUserSettings.Caption = "User Statistics";
+            this.btnUserSettings.Id = 95;
+            this.btnUserSettings.Name = "btnUserSettings";
+            this.btnUserSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserSettings_ItemClick);
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "barSubItem3";
+            this.barSubItem3.Id = 91;
+            this.barSubItem3.Name = "barSubItem3";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Data Providers Settings";
+            this.barButtonItem9.Id = 92;
+            this.barButtonItem9.Name = "barButtonItem9";
             // 
             // ribbonStatusBar
             // 
@@ -676,104 +725,19 @@
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
             // 
-            // barSubItem2
+            // btnDataProvidersSettings
             // 
-            this.barSubItem2.Caption = "Settings";
-            this.barSubItem2.Hint = "Application Settings";
-            this.barSubItem2.Id = 83;
-            this.barSubItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.Image")));
-            this.barSubItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.LargeImage")));
-            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnApplicationSettings),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnFiltering),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnPreDefinedQueries),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnLookAndFeel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnMRU),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnResourcesUsage),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11)});
-            this.barSubItem2.Name = "barSubItem2";
+            this.btnDataProvidersSettings.Caption = "Data Providers Settings";
+            this.btnDataProvidersSettings.Id = 96;
+            this.btnDataProvidersSettings.Name = "btnDataProvidersSettings";
+            this.btnDataProvidersSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDataProvidersSettings_ItemClick);
             // 
-            // btnApplicationSettings
+            // btnSettingsUpdate
             // 
-            this.btnApplicationSettings.Caption = "Application Settings";
-            this.btnApplicationSettings.Id = 84;
-            this.btnApplicationSettings.Name = "btnApplicationSettings";
-            this.btnApplicationSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnApplicationSettings_ItemClick);
-            // 
-            // btnFiltering
-            // 
-            this.btnFiltering.Caption = "Filtering";
-            this.btnFiltering.Id = 85;
-            this.btnFiltering.Name = "btnFiltering";
-            this.btnFiltering.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFiltering_ItemClick);
-            // 
-            // btnPreDefinedQueries
-            // 
-            this.btnPreDefinedQueries.Caption = "Pre-Defined Queries";
-            this.btnPreDefinedQueries.Id = 86;
-            this.btnPreDefinedQueries.Name = "btnPreDefinedQueries";
-            this.btnPreDefinedQueries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPreDefinedQueries_ItemClick);
-            // 
-            // btnLookAndFeel
-            // 
-            this.btnLookAndFeel.Caption = "Look and Feel";
-            this.btnLookAndFeel.Id = 87;
-            this.btnLookAndFeel.Name = "btnLookAndFeel";
-            this.btnLookAndFeel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLookAndFeel_ItemClick);
-            // 
-            // btnShortcuts
-            // 
-            this.btnShortcuts.Caption = "Shortcuts";
-            this.btnShortcuts.Id = 88;
-            this.btnShortcuts.Name = "btnShortcuts";
-            this.btnShortcuts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShortcuts_ItemClick);
-            // 
-            // btnMRU
-            // 
-            this.btnMRU.Caption = "MRU";
-            this.btnMRU.Id = 89;
-            this.btnMRU.Name = "btnMRU";
-            this.btnMRU.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMRU_ItemClick);
-            // 
-            // btnResourcesUsage
-            // 
-            this.btnResourcesUsage.Caption = "Resource Usage";
-            this.btnResourcesUsage.Id = 90;
-            this.btnResourcesUsage.Name = "btnResourcesUsage";
-            this.btnResourcesUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnResourcesUsage_ItemClick);
-            // 
-            // barSubItem3
-            // 
-            this.barSubItem3.Caption = "barSubItem3";
-            this.barSubItem3.Id = 91;
-            this.barSubItem3.Name = "barSubItem3";
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Data Providers Settings";
-            this.barButtonItem9.Id = 92;
-            this.barButtonItem9.Name = "barButtonItem9";
-            // 
-            // barSubItem4
-            // 
-            this.barSubItem4.Caption = "Data Provider Settings";
-            this.barSubItem4.Id = 93;
-            this.barSubItem4.Name = "barSubItem4";
-            // 
-            // barButtonItem10
-            // 
-            this.barButtonItem10.Caption = "Custom Data Providers Settings";
-            this.barButtonItem10.Id = 94;
-            this.barButtonItem10.Name = "barButtonItem10";
-            // 
-            // barButtonItem11
-            // 
-            this.barButtonItem11.Caption = "User Statistics";
-            this.barButtonItem11.Id = 95;
-            this.barButtonItem11.Name = "barButtonItem11";
+            this.btnSettingsUpdate.Caption = "Updates";
+            this.btnSettingsUpdate.Id = 97;
+            this.btnSettingsUpdate.Name = "btnSettingsUpdate";
+            this.btnSettingsUpdate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSettingsUpdate_ItemClick);
             // 
             // MainForm
             // 
@@ -835,19 +799,14 @@
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
         private DevExpress.XtraBars.BarButtonItem bBtnBookmarked;
         private DevExpress.XtraBars.BarButtonItem bBtnClientServer;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
-        private DevExpress.XtraBars.BarButtonItem bBtnStatisticsUserStatistics;
         private DevExpress.XtraBars.BarButtonItem bBtnCompareLogs;
         private DevExpress.XtraBars.BarButtonItem bbiExtensions;
         private DevExpress.XtraBars.BarStaticItem barStaticItemDefaultLevel;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiMemoryUsage;
         private System.Windows.Forms.Timer tmrStatusUpdates;
         private DevExpress.XtraBars.BarStaticItem bsiIdleMessage;
-        private DevExpress.XtraBars.BarButtonItem bbtnSettingsStartupDataSources;
         private DevExpress.XtraBars.BarButtonItem bbiFileCaching;
-        private DevExpress.XtraBars.BarButtonItem bBtnDataProviderSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnItemExportSettings;
         private DevExpress.XtraBars.BarButtonItem bBtnItemImportSettings;
         private DevExpress.XtraBars.BarButtonItem btnErrors;
@@ -873,9 +832,11 @@
         private DevExpress.XtraBars.BarButtonItem btnMRU;
         private DevExpress.XtraBars.BarButtonItem btnResourcesUsage;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem btnCustomDataProvidersSettings;
+        private DevExpress.XtraBars.BarButtonItem btnUserSettings;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem btnDataProvidersSettings;
+        private DevExpress.XtraBars.BarButtonItem btnSettingsUpdate;
     }
 }

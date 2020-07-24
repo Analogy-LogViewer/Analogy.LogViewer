@@ -122,7 +122,6 @@ namespace Analogy
             tsUserStatistics.IsOn = Settings.EnableUserStatistics;
             //tsSimpleMode.IsOn = Settings.SimpleMode;
             tsFileCaching.IsOn = Settings.EnableFileCaching;
-            tswitchExtensionsStartup.IsOn = Settings.LoadExtensionsOnStartup;
             tsStartupRibbonMinimized.IsOn = Settings.StartupRibbonMinimized;
             tsErrorLevelAsDefault.IsOn = Settings.StartupErrorLogLevel;
             chkEditPaging.Checked = Settings.PagingEnabled;
@@ -139,15 +138,6 @@ namespace Analogy
             toggleSwitchIdleMode.IsOn = Settings.IdleMode;
             nudIdleTime.Value = Settings.IdleTimeMinutes;
             tsDataTimeAscendDescend.IsOn = Settings.DefaultDescendOrder;
-            var manager = ExtensionsManager.Instance;
-            var extensions = manager.GetExtensions().ToList();
-            foreach (var extension in extensions)
-            {
-
-                chklItems.Items.Add(extension, Settings.StartupExtensions.Contains(extension.ID));
-                chklItems.DisplayMember = "DisplayName";
-
-            }
 
             var startup = Settings.AutoStartDataProviders;
             var loaded = FactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
@@ -319,20 +309,6 @@ namespace Analogy
         private void tsFileCaching_Toggled(object sender, EventArgs e)
         {
             Settings.EnableFileCaching = tsFileCaching.IsOn;
-        }
-
-        private void tswitchExtensionsStartup_Toggled(object sender, EventArgs e)
-        {
-            Settings.LoadExtensionsOnStartup = tswitchExtensionsStartup.IsOn;
-            chklItems.Enabled = tswitchExtensionsStartup.IsOn;
-        }
-
-        private void chklItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Settings.StartupExtensions =
-                chklItems.CheckedItems.Cast<IAnalogyExtension>().Select(ex => ex.ID).ToList();
-
-
         }
 
         private void tsStartupRibbonMinimized_Toggled(object sender, EventArgs e)
