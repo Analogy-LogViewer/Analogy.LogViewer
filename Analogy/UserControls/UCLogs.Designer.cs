@@ -204,6 +204,7 @@ namespace Analogy
             this.xtpFiltersExclude = new DevExpress.XtraTab.XtraTabPage();
             this.clbExclude = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.xtpSearchFilterPanel = new DevExpress.XtraTab.XtraTabPage();
+            this.rgSearchMode = new DevExpress.XtraEditors.RadioGroup();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnToggleSearchFilter = new DevExpress.XtraEditors.SimpleButton();
             this.pnlBottom = new System.Windows.Forms.Panel();
@@ -259,7 +260,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.rgSearchMode = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -324,6 +324,7 @@ namespace Analogy
             this.xtpFiltersExclude.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).BeginInit();
             this.xtpSearchFilterPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).BeginInit();
             this.pnlBottom.SuspendLayout();
             this.xtCounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).BeginInit();
@@ -342,7 +343,6 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -2469,6 +2469,17 @@ namespace Analogy
             this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1694, 100);
             this.xtpSearchFilterPanel.Text = "Search/Filter Panel";
             // 
+            // rgSearchMode
+            // 
+            this.rgSearchMode.Location = new System.Drawing.Point(104, 37);
+            this.rgSearchMode.MenuManager = this.barManager1;
+            this.rgSearchMode.Name = "rgSearchMode";
+            this.rgSearchMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Search Mode (CTRL + F)"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Filter Mode (ALT + F)")});
+            this.rgSearchMode.Size = new System.Drawing.Size(193, 56);
+            this.rgSearchMode.TabIndex = 4;
+            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(3, 39);
@@ -2481,7 +2492,7 @@ namespace Analogy
             // 
             this.sbtnToggleSearchFilter.Location = new System.Drawing.Point(3, 3);
             this.sbtnToggleSearchFilter.Name = "sbtnToggleSearchFilter";
-            this.sbtnToggleSearchFilter.Size = new System.Drawing.Size(254, 28);
+            this.sbtnToggleSearchFilter.Size = new System.Drawing.Size(294, 28);
             this.sbtnToggleSearchFilter.TabIndex = 0;
             this.sbtnToggleSearchFilter.Text = "Toggle Search/Filter Panel On/Off";
             // 
@@ -3184,17 +3195,6 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // rgSearchMode
-            // 
-            this.rgSearchMode.Location = new System.Drawing.Point(104, 37);
-            this.rgSearchMode.MenuManager = this.barManager1;
-            this.rgSearchMode.Name = "rgSearchMode";
-            this.rgSearchMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Search Mode"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Filter Mode")});
-            this.rgSearchMode.Size = new System.Drawing.Size(153, 56);
-            this.rgSearchMode.TabIndex = 4;
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3282,6 +3282,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).EndInit();
             this.xtpSearchFilterPanel.ResumeLayout(false);
             this.xtpSearchFilterPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
             this.xtCounts.ResumeLayout(false);
@@ -3302,7 +3303,6 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

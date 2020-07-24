@@ -165,15 +165,16 @@ namespace Analogy
             SetupEventsHandlers();
         }
 
+        private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
+        {
+            Settings.BuiltInSearchPanelMode = rgSearchMode.SelectedIndex == 0 ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
+            logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
+                ? FindPanelBehavior.Search
+                : FindPanelBehavior.Filter;
+        }
         private void SetupEventsHandlers()
         {
-            rgSearchMode.SelectedIndexChanged += (s, e) =>
-            {
-                Settings.BuiltInSearchPanelMode = rgSearchMode.SelectedIndex == 0 ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
-                logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
-                    ? FindPanelBehavior.Search
-                    : FindPanelBehavior.Filter;
-            };
+            rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             sbtnToggleSearchFilter.Click += (_, __) =>
             {
                 Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
@@ -442,15 +443,25 @@ namespace Analogy
             KeyEventArgs e = new KeyEventArgs(keyData);
             if (e.Control && e.KeyCode == Keys.F)
             {
-                txtbInclude.Focus();
+                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ToggleSearch();
+                rgSearchMode.SelectedIndex = 0;
+                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
+            }
+            if (e.Alt && e.KeyCode == Keys.F)
+            {
+                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ToggleFilter();
+                rgSearchMode.SelectedIndex = 1;
+                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             }
 
             if (e.Shift && e.KeyCode == Keys.F)
-
             {
-                txtbExclude.Focus();
+                xtcFiltersLeft.SelectedTabPage = xtpFilters;
+                txtbInclude.Focus();
             }
-
+            
             if (e.Alt && e.KeyCode == Keys.E)
             {
                 chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
@@ -472,19 +483,31 @@ namespace Analogy
             if (e.Control && e.KeyCode == Keys.D)
             {
                 btswitchExpand.Checked = !btswitchExpand.Checked;
+                return true;
             }
 
-            if (e.Control && e.KeyCode == Keys.F)
 
+            if (e.Control && e.KeyCode == Keys.F)
             {
-                txtbInclude.Focus();
+                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ToggleSearch();
+                rgSearchMode.SelectedIndex = 0;
+                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
+                return true;
+            }
+            if (e.Alt && e.KeyCode == Keys.F)
+            {
+                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ToggleFilter();
+                rgSearchMode.SelectedIndex = 1;
+                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
                 return true;
             }
 
             if (e.Shift && e.KeyCode == Keys.F)
-
             {
-                txtbExclude.Focus();
+                xtcFiltersLeft.SelectedTabPage = xtpFilters;
+                txtbInclude.Focus(); 
                 return true;
             }
 
@@ -508,6 +531,34 @@ namespace Analogy
 
         }
 
+        private void ToggleSearch()
+        {
+            if (Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search)
+            {
+                Settings.IsBuiltInSearchPanelVisible =!Settings.IsBuiltInSearchPanelVisible;
+            }
+            else
+            {
+                Settings.BuiltInSearchPanelMode = BuiltInSearchPanelMode.Search;
+                Settings.IsBuiltInSearchPanelVisible =true;
+                logGrid.OptionsFind.Behavior = FindPanelBehavior.Search;
+            }
+            logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
+        }
+        private void ToggleFilter()
+        {
+            if (Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Filter)
+            {
+                Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
+            }
+            else
+            {
+                Settings.BuiltInSearchPanelMode = BuiltInSearchPanelMode.Filter;
+                Settings.IsBuiltInSearchPanelVisible = true;
+                logGrid.OptionsFind.Behavior = FindPanelBehavior.Filter;
+            }
+            logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
+        }
         private void LoadUISettings()
         {
             logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;

@@ -10,6 +10,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.5 -  set CTRL+F to open search panel automatically. #270",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
                 new AnalogyChangeLog("V4.2.5 - Add Search panel. #269",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
                 new AnalogyChangeLog("V4.2.5 - Add Go To / Jump to message. #267",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
                 new AnalogyChangeLog("V4.2.5 - Add Go To / Jump To timestamp option. #266",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
