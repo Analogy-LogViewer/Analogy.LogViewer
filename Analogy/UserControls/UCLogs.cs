@@ -605,7 +605,7 @@ namespace Analogy
         {
             logGrid.OptionsSelection.MultiSelect = true;
             logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
-            logGrid.OptionsView.ShowFooter = true;
+            //logGrid.OptionsView.ShowFooter = true;
             //Set up a summary on the "yourfieldname" column
             //logGrid.Columns[0].SummaryItem.SummaryType = SummaryItemType.Custom;
             ////logGrid.Columns[0].SummaryItem.FieldName = "id";
@@ -1815,29 +1815,29 @@ namespace Analogy
             lockSlim.ExitWriteLock();
         }
 
-        private void btnUp_Click(object sender, EventArgs e)
-        {
-            if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
-            {
-                int selected = LogGrid.GetSelectedRows().First();
-                if (HighlightRows.All(r => r >= selected))
-                    LogGrid.SelectRow(HighlightRows.Last());
-                else
-                    LogGrid.SelectRow(HighlightRows.First(r => r < selected));
-            }
-        }
+        //private void btnUp_Click(object sender, EventArgs e)
+        //{
+        //    if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
+        //    {
+        //        int selected = LogGrid.GetSelectedRows().First();
+        //        if (HighlightRows.All(r => r >= selected))
+        //            LogGrid.SelectRow(HighlightRows.Last());
+        //        else
+        //            LogGrid.SelectRow(HighlightRows.First(r => r < selected));
+        //    }
+        //}
 
-        private void btnDown_Click(object sender, EventArgs e)
-        {
-            if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
-            {
-                int selected = LogGrid.GetSelectedRows().First();
-                if (HighlightRows.All(r => r <= selected))
-                    LogGrid.SelectRow(HighlightRows.First());
-                else
-                    LogGrid.SelectRow(HighlightRows.First(r => r > selected));
-            }
-        }
+        //private void btnDown_Click(object sender, EventArgs e)
+        //{
+        //    if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
+        //    {
+        //        int selected = LogGrid.GetSelectedRows().First();
+        //        if (HighlightRows.All(r => r <= selected))
+        //            LogGrid.SelectRow(HighlightRows.First());
+        //        else
+        //            LogGrid.SelectRow(HighlightRows.First(r => r > selected));
+        //    }
+        //}
 
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {

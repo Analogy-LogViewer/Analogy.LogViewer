@@ -140,8 +140,6 @@ namespace Analogy
             this.sBtnLastPage = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnPagePrevious = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnPageFirst = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUp = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDown = new DevExpress.XtraEditors.SimpleButton();
             this.chkbHighlight = new System.Windows.Forms.CheckBox();
             this.spltcDateFiltering = new System.Windows.Forms.SplitContainer();
             this.deOlderThanFilter = new DevExpress.XtraEditors.DateEdit();
@@ -880,7 +878,7 @@ namespace Analogy
             this.txtbHighlight.Location = new System.Drawing.Point(200, 0);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1055, 22);
+            this.txtbHighlight.Size = new System.Drawing.Size(1162, 22);
             this.txtbHighlight.TabIndex = 23;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
             // 
@@ -1475,7 +1473,7 @@ namespace Analogy
             // sbtnMoreHighlight
             // 
             this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1255, 0);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1362, 0);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
             this.sbtnMoreHighlight.Size = new System.Drawing.Size(71, 26);
@@ -1490,13 +1488,11 @@ namespace Analogy
             this.pnlButtonsHighlight.Controls.Add(this.sBtnLastPage);
             this.pnlButtonsHighlight.Controls.Add(this.sbtnPagePrevious);
             this.pnlButtonsHighlight.Controls.Add(this.sbtnPageFirst);
-            this.pnlButtonsHighlight.Controls.Add(this.btnUp);
-            this.pnlButtonsHighlight.Controls.Add(this.btnDown);
             this.pnlButtonsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1326, 0);
+            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1433, 0);
             this.pnlButtonsHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlButtonsHighlight.Name = "pnlButtonsHighlight";
-            this.pnlButtonsHighlight.Size = new System.Drawing.Size(520, 26);
+            this.pnlButtonsHighlight.Size = new System.Drawing.Size(413, 26);
             this.pnlButtonsHighlight.TabIndex = 12;
             // 
             // lblPageNumber
@@ -1506,17 +1502,17 @@ namespace Analogy
             this.lblPageNumber.Appearance.Options.UseTextOptions = true;
             this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblPageNumber.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblPageNumber.Location = new System.Drawing.Point(232, 4);
+            this.lblPageNumber.Location = new System.Drawing.Point(178, 4);
             this.lblPageNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lblPageNumber.Name = "lblPageNumber";
-            this.lblPageNumber.Size = new System.Drawing.Size(113, 18);
+            this.lblPageNumber.Size = new System.Drawing.Size(60, 18);
             this.lblPageNumber.TabIndex = 46;
             this.lblPageNumber.Text = "Page 1 / 1";
             // 
             // sBtnPageNext
             // 
             this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(355, 0);
+            this.sBtnPageNext.Location = new System.Drawing.Point(248, 0);
             this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnPageNext.Name = "sBtnPageNext";
             this.sBtnPageNext.Size = new System.Drawing.Size(87, 25);
@@ -1527,7 +1523,7 @@ namespace Analogy
             // sBtnLastPage
             // 
             this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(444, 0);
+            this.sBtnLastPage.Location = new System.Drawing.Point(337, 0);
             this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLastPage.Name = "sBtnLastPage";
             this.sBtnLastPage.Size = new System.Drawing.Size(73, 25);
@@ -1537,7 +1533,7 @@ namespace Analogy
             // 
             // sbtnPagePrevious
             // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(138, 0);
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(85, 0);
             this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPagePrevious.Name = "sbtnPagePrevious";
             this.sbtnPagePrevious.Size = new System.Drawing.Size(87, 25);
@@ -1547,35 +1543,13 @@ namespace Analogy
             // 
             // sbtnPageFirst
             // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(61, 0);
+            this.sbtnPageFirst.Location = new System.Drawing.Point(6, 0);
             this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPageFirst.Name = "sbtnPageFirst";
             this.sbtnPageFirst.Size = new System.Drawing.Size(73, 25);
             this.sbtnPageFirst.TabIndex = 42;
             this.sbtnPageFirst.Text = "first Page";
             this.sbtnPageFirst.Click += new System.EventHandler(this.sbtnPageFirst_Click);
-            // 
-            // btnUp
-            // 
-            this.btnUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUp.ImageOptions.Image")));
-            this.btnUp.Location = new System.Drawing.Point(7, 0);
-            this.btnUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(21, 26);
-            this.btnUp.TabIndex = 41;
-            this.btnUp.Visible = false;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-            // 
-            // btnDown
-            // 
-            this.btnDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.ImageOptions.Image")));
-            this.btnDown.Location = new System.Drawing.Point(33, 0);
-            this.btnDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(21, 26);
-            this.btnDown.TabIndex = 40;
-            this.btnDown.Visible = false;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // chkbHighlight
             // 
@@ -3375,8 +3349,6 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
-        private DevExpress.XtraEditors.SimpleButton btnUp;
-        private DevExpress.XtraEditors.SimpleButton btnDown;
         private DevExpress.XtraEditors.LabelControl lblTotalMessages;
         private DevExpress.XtraTab.XtraTabControl tcBottom;
         private DevExpress.XtraTab.XtraTabPage xtpMessageInfo;
