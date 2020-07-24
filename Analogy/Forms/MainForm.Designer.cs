@@ -56,8 +56,6 @@
             this.skinPaletteRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.bbitemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.bbsItem = new DevExpress.XtraBars.BarSubItem();
             this.bbtnCombineOpenLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
@@ -65,7 +63,6 @@
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
             this.bBtnBookmarked = new DevExpress.XtraBars.BarButtonItem();
@@ -80,7 +77,6 @@
             this.bBtnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnMRUSettings = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemDefaultLevel = new DevExpress.XtraBars.BarStaticItem();
-            this.bBtnOpenAnalogyLog = new DevExpress.XtraBars.BarButtonItem();
             this.bsiMemoryUsage = new DevExpress.XtraBars.BarStaticItem();
             this.bsiIdleMessage = new DevExpress.XtraBars.BarStaticItem();
             this.bbtnUserSettingsResourceUsage = new DevExpress.XtraBars.BarButtonItem();
@@ -148,15 +144,12 @@
             this.skinPaletteRibbonGalleryBarItem2,
             this.barButtonItem1,
             this.barSubItem1,
-            this.barButtonItem2,
-            this.bbitemHelp,
             this.bbsItem,
             this.bbtnItemHelp,
             this.barButtonItem3,
             this.bbtnItemChangeLog,
             this.bbtnItemSettings,
             this.bbtnItemExit,
-            this.barButtonItem4,
             this.barWorkspaceMenuItem1,
             this.bBtnBookmarked,
             this.bBtnClientServer,
@@ -170,7 +163,6 @@
             this.bBtnShortcuts,
             this.bBtnMRUSettings,
             this.barStaticItemDefaultLevel,
-            this.bBtnOpenAnalogyLog,
             this.bsiMemoryUsage,
             this.bsiIdleMessage,
             this.bbtnUserSettingsResourceUsage,
@@ -376,21 +368,7 @@
             // 
             this.barSubItem1.Caption = "barSubItem1";
             this.barSubItem1.Id = 23;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.barSubItem1.Name = "barSubItem1";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 24;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // bbitemHelp
-            // 
-            this.bbitemHelp.Caption = "barButtonItem3";
-            this.bbitemHelp.Id = 25;
-            this.bbitemHelp.Name = "bbitemHelp";
             // 
             // bbsItem
             // 
@@ -447,12 +425,6 @@
             this.barButtonItem3.Caption = "Change Log";
             this.barButtonItem3.Id = 28;
             this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "barButtonItem4";
-            this.barButtonItem4.Id = 32;
-            this.barButtonItem4.Name = "barButtonItem4";
             // 
             // barWorkspaceMenuItem1
             // 
@@ -591,16 +563,6 @@
             this.barStaticItemDefaultLevel.Caption = "Default Level: n/a";
             this.barStaticItemDefaultLevel.Id = 59;
             this.barStaticItemDefaultLevel.Name = "barStaticItemDefaultLevel";
-            // 
-            // bBtnOpenAnalogyLog
-            // 
-            this.bBtnOpenAnalogyLog.Caption = "Open Analogy Xml File";
-            this.bBtnOpenAnalogyLog.Id = 60;
-            this.bBtnOpenAnalogyLog.ImageOptions.Image = global::Analogy.Properties.Resources.logIcon;
-            this.bBtnOpenAnalogyLog.LargeWidth = 100;
-            this.bBtnOpenAnalogyLog.Name = "bBtnOpenAnalogyLog";
-            this.bBtnOpenAnalogyLog.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // bsiMemoryUsage
             // 
@@ -850,15 +812,12 @@
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem bbitemHelp;
         private DevExpress.XtraBars.BarSubItem bbsItem;
         private DevExpress.XtraBars.BarButtonItem bbtnItemChangeLog;
         private DevExpress.XtraBars.BarButtonItem bbtnItemHelp;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem bbtnItemSettings;
         private DevExpress.XtraBars.BarButtonItem bbtnItemExit;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarWorkspaceMenuItem barWorkspaceMenuItem1;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
         private DevExpress.XtraBars.BarButtonItem bBtnBookmarked;
@@ -874,7 +833,6 @@
         private DevExpress.XtraBars.BarButtonItem bBtnShortcuts;
         private DevExpress.XtraBars.BarButtonItem bBtnMRUSettings;
         private DevExpress.XtraBars.BarStaticItem barStaticItemDefaultLevel;
-        private DevExpress.XtraBars.BarButtonItem bBtnOpenAnalogyLog;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiMemoryUsage;
