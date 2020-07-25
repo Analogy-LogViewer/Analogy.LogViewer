@@ -71,6 +71,7 @@
             this.hyperLinkEdit18 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.hyperLinkEdit19 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.hyperLinkEdit20 = new DevExpress.XtraEditors.HyperLinkEdit();
+            this.hyperLinkEdit21 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -105,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit18.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit19.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit20.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit21.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -290,7 +292,7 @@
             this.lblPhilips.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblPhilips.Location = new System.Drawing.Point(13, 5);
             this.lblPhilips.Name = "lblPhilips";
-            this.lblPhilips.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblPhilips.Padding = new System.Windows.Forms.Padding(5);
             this.lblPhilips.Size = new System.Drawing.Size(414, 218);
             this.lblPhilips.TabIndex = 6;
             this.lblPhilips.TabStop = true;
@@ -304,7 +306,7 @@
             this.lblKama.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblKama.Location = new System.Drawing.Point(433, 5);
             this.lblKama.Name = "lblKama";
-            this.lblKama.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblKama.Padding = new System.Windows.Forms.Padding(5);
             this.lblKama.Size = new System.Drawing.Size(416, 218);
             this.lblKama.TabIndex = 7;
             this.lblKama.TabStop = true;
@@ -515,6 +517,7 @@
             this.flowLayoutPanel3.Controls.Add(this.hyperLinkEdit18);
             this.flowLayoutPanel3.Controls.Add(this.hyperLinkEdit19);
             this.flowLayoutPanel3.Controls.Add(this.hyperLinkEdit20);
+            this.flowLayoutPanel3.Controls.Add(this.hyperLinkEdit21);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
@@ -530,7 +533,7 @@
             this.hyperLinkEdit27.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit27.Name = "hyperLinkEdit27";
             this.hyperLinkEdit27.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit27.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit27.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit27.TabIndex = 12;
             // 
             // hyperLinkEdit28
@@ -540,7 +543,7 @@
             this.hyperLinkEdit28.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit28.Name = "hyperLinkEdit28";
             this.hyperLinkEdit28.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit28.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit28.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit28.TabIndex = 13;
             // 
             // hyperLinkEdit15
@@ -550,7 +553,7 @@
             this.hyperLinkEdit15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit15.Name = "hyperLinkEdit15";
             this.hyperLinkEdit15.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit15.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit15.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit15.TabIndex = 14;
             // 
             // hyperLinkEdit16
@@ -560,7 +563,7 @@
             this.hyperLinkEdit16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit16.Name = "hyperLinkEdit16";
             this.hyperLinkEdit16.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit16.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit16.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit16.TabIndex = 15;
             // 
             // hyperLinkEdit17
@@ -570,7 +573,7 @@
             this.hyperLinkEdit17.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit17.Name = "hyperLinkEdit17";
             this.hyperLinkEdit17.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit17.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit17.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit17.TabIndex = 16;
             // 
             // hyperLinkEdit18
@@ -580,7 +583,7 @@
             this.hyperLinkEdit18.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit18.Name = "hyperLinkEdit18";
             this.hyperLinkEdit18.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit18.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit18.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit18.TabIndex = 17;
             // 
             // hyperLinkEdit19
@@ -590,7 +593,7 @@
             this.hyperLinkEdit19.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit19.Name = "hyperLinkEdit19";
             this.hyperLinkEdit19.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit19.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit19.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit19.TabIndex = 18;
             // 
             // hyperLinkEdit20
@@ -600,8 +603,18 @@
             this.hyperLinkEdit20.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hyperLinkEdit20.Name = "hyperLinkEdit20";
             this.hyperLinkEdit20.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit20.Size = new System.Drawing.Size(467, 22);
+            this.hyperLinkEdit20.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit20.TabIndex = 19;
+            // 
+            // hyperLinkEdit21
+            // 
+            this.hyperLinkEdit21.EditValue = "https://github.com/Analogy-LogViewer/Analogy.LogViewer.VisualStudioLogParser";
+            this.hyperLinkEdit21.Location = new System.Drawing.Point(3, 244);
+            this.hyperLinkEdit21.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.hyperLinkEdit21.Name = "hyperLinkEdit21";
+            this.hyperLinkEdit21.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.hyperLinkEdit21.Size = new System.Drawing.Size(507, 22);
+            this.hyperLinkEdit21.TabIndex = 20;
             // 
             // AnalogyAboutBox
             // 
@@ -655,6 +668,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit18.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit19.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit20.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit21.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -704,5 +718,6 @@
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit18;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit19;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit20;
+        private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit21;
     }
 }
