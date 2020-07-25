@@ -498,11 +498,11 @@ namespace Analogy
                 rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             }
 
-            if (e.Shift && e.KeyCode == Keys.F)
-            {
-                xtcFiltersLeft.SelectedTabPage = xtpFilters;
-                txtbInclude.Focus();
-            }
+            //if (e.Shift && e.KeyCode == Keys.F)
+            //{
+            //    xtcFiltersLeft.SelectedTabPage = xtpFilters;
+            //    txtbInclude.Focus();
+            //}
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
@@ -546,12 +546,12 @@ namespace Analogy
                 return true;
             }
 
-            if (e.Shift && e.KeyCode == Keys.F)
-            {
-                xtcFiltersLeft.SelectedTabPage = xtpFilters;
-                txtbInclude.Focus();
-                return true;
-            }
+            //if (e.Shift && e.KeyCode == Keys.F)
+            //{
+            //    xtcFiltersLeft.SelectedTabPage = xtpFilters;
+            //    txtbInclude.Focus();
+            //    return true;
+            //}
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
