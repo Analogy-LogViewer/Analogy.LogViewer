@@ -138,7 +138,7 @@
       <Value Profile="(Default)">yyyy.MM.dd HH:mm:ss.ff</Value>
     </Setting>
     <Setting Name="LastUpdate" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">2019-11-01</Value>
     </Setting>
     <Setting Name="UpdateMode" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
