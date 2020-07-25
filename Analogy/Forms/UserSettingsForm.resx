@@ -163,6 +163,16 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <data name="lblExplaination.Text" xml:space="preserve">
+    <value>All texts are using the same rules are the search window:
+For text (include/exclude) use + for "and" and | for "Or" operations.
+For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>All texts are using the same rules are the search window:
+For text (include/exclue) use + for "and" and | for "Or" operations.
+For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
+  </data>
   <data name="xtraTabPagePreDefined.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABZ0RVh0VGl0
@@ -371,6 +381,77 @@
         V66B9LmnOSkAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="sBtnMoveUp.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAA90RVh0VGl0
+        bGUAVXA7QXJyb3c7yF4oFAAABsxJREFUWEfFlnlQVVUcxy+YSzVqaWrTTH9Y/zRNNfWHU6YVOmmrOuVW
+        tuiIOFqYwgNUkE0EXNLRAQxBDUFkeayyyL7IDspm7Pv62LfHA2Tp1+/3u/fRvUaO9od9Z75z7u++c36f
+        c37n3DNPAID/1TO+fJJWBo8nA5kfWXIeMxWBJNeQUsFFTS4RnPUORgcVCyeCSqiLgb1f/ganwGJQXcrY
+        gLGh1eVcwdI7W7DwyhZU2KqovZQlmHuK1kvOY6YikESw4ck/ZzTKYJ/LjYUuQcXtGu0YWP+e275d5f4c
+        vR+amBLIg5IHxkUf9MigcSw5j5mKQJITrlQO1UpGUbln2frmn08t64Aa3QTEFbXBQY90N3pPv+uh/exJ
+        of/+pGDqdpvGsuQ8ZioCSY43ihCIq5EZRXBDc/f4FW5RZVOakQnI7xuDJt04uAQWTu1xjViBv/MkCNqH
+        7h0Tvf9CGo1nyXnMVASS7K8XimCppGSU4VsffDnP5lpBUYVGC8X99yGjexRyesagpG0QTN3SSl992+hp
+        6qcH945OCj3ovedSaDxLzmOmIpB0zPeOuI9YRjKKVv+UxW/pZuqsBqjRjkNG1wikdYxAqkYHJX2jcC2p
+        Cna7xlhSP+rfjeCu0Qmha2RCMD6VTDlYch4zFYGkoz75uI+TbBTv+25H/+XH/Qt1zQjP6hyB5PZhSGob
+        hsRWLSS0aKGiZwRUHhm6TQcuvkL9aVyHbkLo0I0Lu1wSKA9LzmOmIpBkdTmP95CMMkTPOeRx+2Z2VTfc
+        RVAiAuObtRDXNASxjUMQ0zAIyRgnlWrgR6fYGOw/l8ZphseFdu248L1THOVhyXnMVASSVF65vH8oLr3J
+        yZubPaLKoLp/jMEEjEZH1Q9AZG0/RNT0Q3h1H+RjVVz878BmS//tOG42jW8Zui/scIilXCw5j5mKQJLZ
+        xWxquPQfbT20ROWZpanoHIZkXLEcGFbVB6GVvaCu6IGgsh4ILu+F3MZ+2OUcp3lnnfFSHM/nYZttNOVj
+        yXnMVASSDrhlUkOln2tyOsE9IrcZcnB1BAyp7ENgL8JEaMAf3eB/rwuul3SBX1EnRFb2gG9iNXxlpfbE
+        8fRV8HlAs+Q8ZiqCv0UDZm+xuLLKzid/qrQD4ZiYYAH3EFiKQLRfSSf4ItSnsAOu3tXA5QINeOe1Q3Jt
+        H+w/mzJltPPcaswzB02LYcl5zFQEorj0y5a/MX/PmaSSlPIu8Mlrg7OpjeCR1QreBe0MunpHNAEvZreC
+        W2YL/JrSCM5xdXA6oR7CClpho0pdtmDpcrqmeSsouZzHTEUgimY7b4dtmJU7Hryosm44k9wAJxPr4VRS
+        A5zClp7Jrghyia8H5/g6OHGrFpxia8ExphYcomvACyfr6JsPa028bDCffisUPGYqAqn0a76zf830fLru
+        NpbyfGoTQurYrlJLQIbiap0k8PGYGoTXgH1UNdjdrAZbtBq3Zqt1pO7N9Qdex7y0FQZyHjMVgbT6bx2i
+        o0Px4MXgQQvEJOQAyU6xIvQ4QXnFNeBARvDV3Da4ktMG3rgll3BLvDKxjasGo73X6CJ4hvLLecxUBNMT
+        iINv0Nvt42Cb3S3YZhsLW47Fgh/uPwEZimW2R9tF44oRbnuzCryx7J+Zh8OnZuHwycEwWI9e90sofIyW
+        JjBLzmOmIhC3gA4MdZ6PXohehH7pa+toCMVTry+v3sciq8Emogqs0Z4ZLQzE/i+jX0A/j6ZD+CyaLyY5
+        j5mKQBR/BWiaCHkeevFGqygILupAYBXYSCaodXglHCWHVYJ7ejOs+VlNiZag6eARlHJM3wVyHjMVgaRN
+        h6OEojYtPfKhRC/63CISAu52iDD0kfAqOILQw6EV6EqwCqmEC/gZfrgviBItlsYZZDcOCqtNAvFRlJzH
+        TEUg6QuLCOFuyxAbRStYRPvql6+ZBlJrhbYMKQcLNbkCzuJnunpvICWi8vMEMhsGhPf3BOCjKDmPmYpA
+        EsKEguYhNooSLaa9vYaXjh7GbXA5qCSbB5XzBYQwSkRbwBPIqBsQVhrfwEdRch4zFYGkdQdDhbymITaK
+        J7DWVM2fmHlQGZgHo6lFm5EDy+AQ+iTeCyuNlRNIq+0X3tv9mBNYaxoi5ODeoabPgNFPavDGb5tWeQpv
+        PzJdTCdv4eVExjvhBBphlGh6C9Jq/sMEVuGhIaP0X8SCd3f6pNLqsJy8SrG9wUC5V/xwlf6B0udLZ8eA
+        4GS95DxmKoKZRZcTXaML0LSyZZJffMD0jkpPcP5HhP6H5DxmKoKZRVWgZLQiKitN5mGmftSfv/sHJecx
+        UxE8XJTwUf2vkvOY+eCLJ2sQ/gJv1yXMMTZttwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="sBtnMoveDown.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
   <data name="tpStatistics.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -449,87 +530,6 @@
         ZIKOBP0dw19GozF+ioGR0Qpb12LThfbp0wzn2ViudSqIOp2OL8LPw2yhfeFLfzaznW32TqqJ2brySZOn
         zWS/eXLGa2tGNTAcZOS3QmYniEycb7lx91IrFyxd4wzj11fRCUdvxHwbg+4zY43mjmDg9zJKkCH6LqSH
         DkE1/yB5PNR9tJv+78GYfwPiYK7C4w/SeAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="lblExplaination.Text" xml:space="preserve">
-    <value>All texts are using the same rules are the search window:
-For text (include/exclude) use + for "and" and | for "Or" operations.
-For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>All texts are using the same rules are the search window:
-For text (include/exclue) use + for "and" and | for "Or" operations.
-For source/modules use , as seperator and - for exclusion. for example: "test, -test2" wll exclude test 2 and wil show all that has text in them.</value>
-  </data>
-  <data name="sBtnMoveUp.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="sBtnMoveDown.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

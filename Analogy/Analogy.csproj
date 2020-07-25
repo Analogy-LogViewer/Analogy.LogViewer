@@ -347,14 +347,6 @@
 		<Compile Update="UserControls\CombineFilesUC.Designer.cs">
 			<DependentUpon>CombineFilesUC.cs</DependentUpon>
 		</Compile>
-		<Compile Update="Forms\ExtensionsForm.cs" />
-		<Compile Update="Forms\ExtensionsForm.Designer.cs">
-			<DependentUpon>ExtensionsForm.cs</DependentUpon>
-		</Compile>
-		<Compile Update="UserControls\ExtensionsUC.cs" />
-		<Compile Update="UserControls\ExtensionsUC.Designer.cs">
-			<DependentUpon>ExtensionsUC.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\FileSystemUC.cs" />
 		<Compile Update="UserControls\FileSystemUC.Designer.cs">
 			<DependentUpon>FileSystemUC.cs</DependentUpon>
@@ -569,12 +561,6 @@
 		<None Include="Resources\Properties_32x32.png" />
 		<None Include="Resources\Properties_16x16.png" />
 		<None Include="Resources\Wizard_32x32.png" />
-		<EmbeddedResource Update="Forms\ExtensionsForm.resx">
-			<DependentUpon>ExtensionsForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\ExtensionsUC.resx">
-			<DependentUpon>ExtensionsUC.cs</DependentUpon>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Forms\FormMessageDetails.resx">
 			<DependentUpon>FormMessageDetails.cs</DependentUpon>
 		</EmbeddedResource>
