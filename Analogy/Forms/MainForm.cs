@@ -585,7 +585,7 @@ namespace Analogy
         }
         private void AddFactorySettings(FactoryContainer fc, RibbonPage ribbonPage)
         {
-            if (fc.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
+            if (fc.FactorySetting.Status == DataProviderFactoryStatus.Disabled || !fc.DataProvidersSettings.Any())
                 return;
             RibbonPageGroup groupSettings = new RibbonPageGroup("Settings") { Alignment = RibbonPageGroupAlignment.Far };
 
