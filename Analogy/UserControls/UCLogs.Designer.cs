@@ -230,6 +230,8 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiIncludeSource = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiIncludeModule = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -735,9 +737,11 @@ namespace Analogy
             this.bbiExcludeModule,
             this.bbiSaveLayout,
             this.bbiIncreaseFontSize,
-            this.bbiDecreaseFontSize});
+            this.bbiDecreaseFontSize,
+            this.bbiIncludeSource,
+            this.bbiIncludeModule});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 59;
+            this.barManager1.MaxItemId = 61;
             // 
             // barTopFiltering
             // 
@@ -2924,6 +2928,8 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCopyAllMessages),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddNoteToMessage),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeMessage, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeSource),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeModule),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeColumnHeaderFilter),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeMessage, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeSource),
@@ -2933,6 +2939,22 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDecreaseFontSize)});
             this.LogGridPopupMenu.Manager = this.barManager1;
             this.LogGridPopupMenu.Name = "LogGridPopupMenu";
+            // 
+            // bbiIncludeSource
+            // 
+            this.bbiIncludeSource.Caption = "Include source";
+            this.bbiIncludeSource.Id = 59;
+            this.bbiIncludeSource.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.Image")));
+            this.bbiIncludeSource.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.LargeImage")));
+            this.bbiIncludeSource.Name = "bbiIncludeSource";
+            // 
+            // bbiIncludeModule
+            // 
+            this.bbiIncludeModule.Caption = "Include process/module";
+            this.bbiIncludeModule.Id = 60;
+            this.bbiIncludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.Image")));
+            this.bbiIncludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.LargeImage")));
+            this.bbiIncludeModule.Name = "bbiIncludeModule";
             // 
             // UCLogs
             // 
@@ -3236,5 +3258,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiSaveLayout;
         private DevExpress.XtraBars.BarButtonItem bbiIncreaseFontSize;
         private DevExpress.XtraBars.BarButtonItem bbiDecreaseFontSize;
+        private DevExpress.XtraBars.BarButtonItem bbiIncludeSource;
+        private DevExpress.XtraBars.BarButtonItem bbiIncludeModule;
     }
 }
