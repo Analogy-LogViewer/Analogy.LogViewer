@@ -731,7 +731,6 @@ namespace Analogy
         {
             if (BookmarkView)
             {
-                gridControl.ContextMenuStrip = cmsBookmarked;
                 bBtnRemoveBoomark.Visibility = BarItemVisibility.Always;
                 bBtnImport.Visibility = BarItemVisibility.Never;
             }
@@ -2178,27 +2177,6 @@ namespace Analogy
             return messages;
 
         }
-        private void cmsBookmarked_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            if (message != null)
-            {
-                tsmiExcludeModuleBookmark.Text = $"Exclude Process: {message.Module}";
-                tsmiExcludeSourceBookmark.Text = $"Exclude Source: {message.Source}";
-                tsmiBookmarkDateFilterNewer.Text = $"Show all messages after {message.Date}";
-                tsmiBookmarkDateFilterOlder.Text = $"Show all messages Before {message.Date}";
-                tsmiBookmarkDateFilterNewer.Visible = true;
-                tsmiBookmarkDateFilterOlder.Visible = true;
-            }
-            else
-            {
-                tsmiBookmarkDateFilterNewer.Visible = false;
-                tsmiBookmarkDateFilterOlder.Visible = false;
-
-            }
-        }
-
-
         private void gridViewGrouping_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             if (e.FocusedRowHandle < 0) return;
