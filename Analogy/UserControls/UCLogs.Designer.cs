@@ -249,7 +249,7 @@ namespace Analogy
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -332,7 +332,7 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogGridPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -3100,9 +3100,9 @@ namespace Analogy
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
             // 
-            // popupMenu1
+            // LogGridPopupMenu
             // 
-            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.LogGridPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDiffTime),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterFrom),
@@ -3120,8 +3120,8 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSaveLayout, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncreaseFontSize),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDecreaseFontSize)});
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
+            this.LogGridPopupMenu.Manager = this.barManager1;
+            this.LogGridPopupMenu.Name = "LogGridPopupMenu";
             // 
             // UCLogs
             // 
@@ -3230,7 +3230,7 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogGridPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3429,7 +3429,7 @@ namespace Analogy
         private DevExpress.XtraEditors.SimpleButton sbtnToggleSearchFilter;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.RadioGroup rgSearchMode;
-        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.PopupMenu LogGridPopupMenu;
         private DevExpress.XtraBars.BarButtonItem bbiDiffTime;
         private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterFrom;
         private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterTo;

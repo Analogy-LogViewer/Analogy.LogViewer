@@ -242,7 +242,7 @@ namespace Analogy
             #endregion
             logGrid.MouseDown += LogGrid_MouseDown;
             logGrid.MouseUp += LogGrid_MouseUp;
-            popupMenu1.BeforePopup += (_, __) => UpdatePopupTexts();
+            LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             sbtnToggleSearchFilter.Click += (_, __) =>
@@ -488,7 +488,7 @@ namespace Analogy
         {
             if (e.Button == MouseButtons.Right)
             {
-                popupMenu1.ShowPopup(Cursor.Position);
+                LogGridPopupMenu.ShowPopup(Cursor.Position);
             }
         }
         private void LoadReplacementHeaders()
