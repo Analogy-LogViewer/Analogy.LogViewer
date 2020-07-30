@@ -225,9 +225,20 @@ namespace Analogy
             #region
 
             bbiIncludeColumnHeaderFilter.ItemClick += (s, e) => { };
-            bbiIncludeMessage.ItemClick += (s, e) => { };
-            bbiIncludeSource.ItemClick += (s, e) => { };
-            bbiIncludeModule.ItemClick += (s, e) => { };
+            bbiIncludeMessage.ItemClick += tsmiInclude_Click;
+            bbiIncludeSource.ItemClick += (s, e) =>
+            {
+                (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+                if (!string.IsNullOrEmpty(message?.Source))
+                    txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? (message.Source) : txtbSource.Text + "," + message.Source;
+
+            };
+            bbiIncludeModule.ItemClick += (s, e) =>
+            {
+                (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+                if (!string.IsNullOrEmpty(message?.Module))
+                    txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? (message.Module) : txtbModule.Text + "," + message.Module;
+            };
             bbiDiffTime.ItemClick += tsmiTimeDiff_Click;
             bbiIncreaseFontSize.ItemClick += tsmiIncreaseFont_Click;
             bbiDecreaseFontSize.ItemClick += tsmiDecreaseFont_Click;
@@ -473,6 +484,8 @@ namespace Analogy
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
+                bbiIncludeModule.Caption = $"Include Process/Module: {message.Module}";
+                bbiIncludeSource.Caption = $"Include Source: {message.Source}";
                 bbiExcludeModule.Caption = $"Exclude Process/Module: {message.Module}";
                 bbiExcludeSource.Caption = $"Exclude Source: {message.Source}";
                 bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
@@ -993,9 +1006,10 @@ namespace Analogy
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message == null) return;
             var ef = new AnalogyExcludeMessage(message);
+            ef.Text = "Exclude";
             if (ef.ShowDialog(this) == DialogResult.OK)
             {
-                string exclude = ef.Exclude;
+                string exclude = ef.MessageText;
 
                 txtbExclude.Text = txtbExclude.Text == txtbExclude.Properties.NullText ? exclude : txtbExclude.Text + "|" + exclude;
                 ceExcludeText.Checked = true;
@@ -1003,7 +1017,21 @@ namespace Analogy
             }
         }
 
+        private async void tsmiInclude_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+            if (message == null) return;
+            var ef = new AnalogyExcludeMessage(message);
+            ef.Text = "Include";
+            if (ef.ShowDialog(this) == DialogResult.OK)
+            {
+                string include = ef.MessageText;
 
+                txtbInclude.Text = txtbInclude.Text == txtbInclude.Properties.NullText ? include : txtbInclude.Text + "|" + include;
+                ceIncludeText.Checked = true;
+                await FilterHasChanged();
+            }
+        }
 
         /// <summary>
         /// Set custom column display text
@@ -1830,7 +1858,6 @@ namespace Analogy
 
         private void tsmiExcludeSource_Click(object sender, EventArgs e)
         {
-
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (!string.IsNullOrEmpty(message?.Source))
                 txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? ("-" + message.Source) : txtbSource.Text + ", -" + message.Source;
