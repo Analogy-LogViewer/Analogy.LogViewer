@@ -256,8 +256,9 @@ namespace Analogy
             this.tsmiIncreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecreaseFontBookmark = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -341,11 +342,11 @@ namespace Analogy
             this.cmsBookmarked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
             // 
-            this.gridControl.ContextMenuStrip = this.cmsMessageOperation;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Location = new System.Drawing.Point(0, 138);
@@ -936,9 +937,10 @@ namespace Analogy
             this.bbtnReload,
             this.bBtnSaveCurrentSelectionCustomFormat,
             this.bBtnSaveCurrentSelectionAnalogyFormat,
-            this.bBtnUndockSelection});
+            this.bBtnUndockSelection,
+            this.barButtonItem5});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 42;
+            this.barManager1.MaxItemId = 43;
             // 
             // barTopFiltering
             // 
@@ -2422,7 +2424,7 @@ namespace Analogy
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(145, 66);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(201, 66);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2431,7 +2433,7 @@ namespace Analogy
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(145, 66);
+            this.clbExclude.Size = new System.Drawing.Size(201, 66);
             this.clbExclude.TabIndex = 22;
             // 
             // xtpSearchFilterPanel
@@ -3147,12 +3149,6 @@ namespace Analogy
             this.contextMenuStripFilters.Name = "contextMenuStripFilters";
             this.contextMenuStripFilters.Size = new System.Drawing.Size(61, 4);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // MainSplitContainer
             // 
             this.MainSplitContainer.Collapsed = true;
@@ -3169,6 +3165,19 @@ namespace Analogy
             this.MainSplitContainer.Size = new System.Drawing.Size(1853, 739);
             this.MainSplitContainer.SplitterPosition = 187;
             this.MainSplitContainer.TabIndex = 12;
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "bbiPopupClearMesages";
+            this.barButtonItem5.Id = 42;
+            this.barButtonItem5.Name = "barButtonItem5";
             // 
             // UCLogs
             // 
@@ -3278,6 +3287,7 @@ namespace Analogy
             this.cmsBookmarked.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3464,7 +3474,6 @@ namespace Analogy
         private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
         private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SplitContainerControl MainSplitContainer;
@@ -3501,5 +3510,7 @@ namespace Analogy
         private DevExpress.XtraEditors.SimpleButton sbtnToggleSearchFilter;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.RadioGroup rgSearchMode;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }

@@ -221,11 +221,8 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
-            logGrid.Columns["Level"].SummaryItem.SummaryType = SummaryItemType.Custom;
-
-            logGrid.Columns["Level"].SummaryItem.FieldName = "Level";
-
-            //logGrid.Columns["Level"].SummaryItem.DisplayFormat = "Count: {0:n0}";
+            logGrid.MouseDown += LogGrid_MouseDown;
+            logGrid.MouseUp += LogGrid_MouseUp;
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             sbtnToggleSearchFilter.Click += (_, __) =>
@@ -415,8 +412,6 @@ namespace Analogy
                 {
                     counts[key] = 0;
                 }
-
-
             else if (e.SummaryProcess == CustomSummaryProcess.Calculate)
             {
                 counts[(string)e.FieldValue] = counts[(string)e.FieldValue] + 1;
@@ -437,6 +432,24 @@ namespace Analogy
             //}
         }
 
+        private void LogGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                GridView view = sender as GridView;
+                GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+                if (hitInfo.InRow && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
+                {
+                }
+            }
+        }
+        private void LogGrid_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                popupMenu1.ShowPopup(Cursor.Position);
+            }
+        }
         private void LoadReplacementHeaders()
         {
             try
@@ -603,6 +616,8 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            logGrid.Columns["Level"].SummaryItem.SummaryType = SummaryItemType.Custom;
+            logGrid.Columns["Level"].SummaryItem.FieldName = "Level";
             logGrid.OptionsSelection.MultiSelect = true;
             logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
             //logGrid.OptionsView.ShowFooter = true;
