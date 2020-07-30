@@ -222,6 +222,9 @@ namespace Analogy
         private void SetupEventsHandlers()
         {
             #region
+
+            bbiIncludeColumnHeaderFilter.ItemClick += (s, e) => { };
+            bbiIncludeMessage.ItemClick += (s, e) => { };
             bbiDiffTime.ItemClick += tsmiTimeDiff_Click;
             bbiIncreaseFontSize.ItemClick += tsmiIncreaseFont_Click;
             bbiDecreaseFontSize.ItemClick += tsmiDecreaseFont_Click;
@@ -456,6 +459,21 @@ namespace Analogy
                 GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
                 if (hitInfo.InRow && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
                 {
+                    (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+                    if (message != null)
+                    {
+                        bbiExcludeModule.Caption = $"Exclude Process/Module: {message.Module}";
+                        bbiExcludeSource.Caption = $"Exclude Source: {message.Source}";
+                        bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
+                        bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
+                        bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
+                        bbiDatetiemFilterTo.Visibility = BarItemVisibility.Always;
+                    }
+                    else
+                    {
+                        bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Never;
+                        bbiDatetiemFilterTo.Visibility = BarItemVisibility.Never;
+                    }
                 }
             }
         }
@@ -2120,26 +2138,6 @@ namespace Analogy
                 _messageData.Rows.Remove(row);
         }
 
-        private void cmsMessageOperation_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            if (message != null)
-            {
-                tsmiExcludeModule.Text = $"Exclude Process: {message.Module}";
-                tsmiExcludeSource.Text = $"Exclude Source: {message.Source}";
-                tsmiDateFilterNewer.Text = $"Show all messages after {message.Date}";
-                tsmiDateFilterOlder.Text = $"Show all messages Before {message.Date}";
-                tsmiDateFilterNewer.Visible = true;
-                tsmiDateFilterOlder.Visible = true;
-            }
-            else
-            {
-                tsmiDateFilterNewer.Visible = false;
-                tsmiDateFilterOlder.Visible = false;
-
-            }
-        }
-
         private (AnalogyLogMessage message, string dataProvider) GetMessageFromSelectedFocusedRowInGrid()
         {
             var row = LogGrid.GetFocusedRow();
@@ -2182,7 +2180,7 @@ namespace Analogy
             }
             else
             {
-                tsmiDateFilterNewer.Visible = false;
+                tsmiBookmarkDateFilterNewer.Visible = false;
                 tsmiBookmarkDateFilterOlder.Visible = false;
 
             }

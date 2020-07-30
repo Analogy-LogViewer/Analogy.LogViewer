@@ -58,26 +58,6 @@ namespace Analogy
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.cmsMessageOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiTimeDiff = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDateFilterNewer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDateFilterOlder = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiBookmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBookmarkPersist = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCopyMessages = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAddCommentToMessage = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiExclude = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiExcludeSource = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiExcludeModule = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiEmail = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiSaveLayout = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiIncreaseFont = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDecreaseFont = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -272,7 +252,6 @@ namespace Analogy
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
-            this.cmsMessageOperation.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -685,173 +664,6 @@ namespace Analogy
             this.imageList.Images.SetKeyName(8, "Analogy_icon1_16x16.ico");
             this.imageList.Images.SetKeyName(9, "Question_16x16.png");
             this.imageList.Images.SetKeyName(10, "log16x16.ico");
-            // 
-            // cmsMessageOperation
-            // 
-            this.cmsMessageOperation.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsMessageOperation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiTimeDiff,
-            this.tsmiDateFilterNewer,
-            this.tsmiDateFilterOlder,
-            this.toolStripSeparator4,
-            this.tsmiBookmark,
-            this.tsmiBookmarkPersist,
-            this.tsmiCopy,
-            this.tsmiCopyMessages,
-            this.tsmiAddCommentToMessage,
-            this.toolStripSeparator2,
-            this.tsmiExclude,
-            this.tsmiExcludeSource,
-            this.tsmiExcludeModule,
-            this.toolStripSeparator3,
-            this.tsmiEmail,
-            this.toolStripSeparator1,
-            this.tsmiSaveLayout,
-            this.tsmiIncreaseFont,
-            this.tsmiDecreaseFont});
-            this.cmsMessageOperation.Name = "cmsMessageOperation";
-            this.cmsMessageOperation.Size = new System.Drawing.Size(416, 446);
-            this.cmsMessageOperation.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMessageOperation_Opening);
-            // 
-            // tsmiTimeDiff
-            // 
-            this.tsmiTimeDiff.Image = global::Analogy.Properties.Resources.Time2_16x16;
-            this.tsmiTimeDiff.Name = "tsmiTimeDiff";
-            this.tsmiTimeDiff.Size = new System.Drawing.Size(415, 26);
-            this.tsmiTimeDiff.Text = "Calculate Time Difference from this entry";
-            this.tsmiTimeDiff.Click += new System.EventHandler(this.tsmiTimeDiff_Click);
-            // 
-            // tsmiDateFilterNewer
-            // 
-            this.tsmiDateFilterNewer.Image = global::Analogy.Properties.Resources.Time2_16x16;
-            this.tsmiDateFilterNewer.Name = "tsmiDateFilterNewer";
-            this.tsmiDateFilterNewer.Size = new System.Drawing.Size(415, 26);
-            this.tsmiDateFilterNewer.Text = "DateTime filter: After";
-            this.tsmiDateFilterNewer.Click += new System.EventHandler(this.tsmiDateFilterNewer_Click);
-            // 
-            // tsmiDateFilterOlder
-            // 
-            this.tsmiDateFilterOlder.Image = global::Analogy.Properties.Resources.Time2_16x16;
-            this.tsmiDateFilterOlder.Name = "tsmiDateFilterOlder";
-            this.tsmiDateFilterOlder.Size = new System.Drawing.Size(415, 26);
-            this.tsmiDateFilterOlder.Text = "DateTime filter: before ";
-            this.tsmiDateFilterOlder.Click += new System.EventHandler(this.tsmiDateFilterOlder_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(412, 6);
-            // 
-            // tsmiBookmark
-            // 
-            this.tsmiBookmark.Image = global::Analogy.Properties.Resources.RichEditBookmark_16x16;
-            this.tsmiBookmark.Name = "tsmiBookmark";
-            this.tsmiBookmark.Size = new System.Drawing.Size(415, 26);
-            this.tsmiBookmark.Text = "Bookmark this message (current Analogy instance)";
-            this.tsmiBookmark.Click += new System.EventHandler(this.tsmiBookmark_Click);
-            // 
-            // tsmiBookmarkPersist
-            // 
-            this.tsmiBookmarkPersist.Image = global::Analogy.Properties.Resources.RichEditBookmark_16x16;
-            this.tsmiBookmarkPersist.Name = "tsmiBookmarkPersist";
-            this.tsmiBookmarkPersist.Size = new System.Drawing.Size(415, 26);
-            this.tsmiBookmarkPersist.Text = "Bookmark this message for later use (persistent)";
-            this.tsmiBookmarkPersist.Click += new System.EventHandler(this.tsmiBookmarkPersist_Click);
-            // 
-            // tsmiCopy
-            // 
-            this.tsmiCopy.Image = global::Analogy.Properties.Resources.Copy_16x16;
-            this.tsmiCopy.Name = "tsmiCopy";
-            this.tsmiCopy.Size = new System.Drawing.Size(415, 26);
-            this.tsmiCopy.Text = "Copy selected message to clipboard";
-            this.tsmiCopy.Click += new System.EventHandler(this.tsmiCopy_Click);
-            // 
-            // tsmiCopyMessages
-            // 
-            this.tsmiCopyMessages.Image = global::Analogy.Properties.Resources.Copy_16x16;
-            this.tsmiCopyMessages.Name = "tsmiCopyMessages";
-            this.tsmiCopyMessages.Size = new System.Drawing.Size(415, 26);
-            this.tsmiCopyMessages.Text = "Copy all messages in view to clipboard";
-            this.tsmiCopyMessages.Click += new System.EventHandler(this.tsmiCopyMessages_Click);
-            // 
-            // tsmiAddCommentToMessage
-            // 
-            this.tsmiAddCommentToMessage.Image = global::Analogy.Properties.Resources.EditComment_16x16;
-            this.tsmiAddCommentToMessage.Name = "tsmiAddCommentToMessage";
-            this.tsmiAddCommentToMessage.Size = new System.Drawing.Size(415, 26);
-            this.tsmiAddCommentToMessage.Text = "Add note/Comment to this message";
-            this.tsmiAddCommentToMessage.Click += new System.EventHandler(this.tsmiAddCommentToMessage_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(412, 6);
-            // 
-            // tsmiExclude
-            // 
-            this.tsmiExclude.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
-            this.tsmiExclude.Name = "tsmiExclude";
-            this.tsmiExclude.Size = new System.Drawing.Size(415, 26);
-            this.tsmiExclude.Text = "Exclude selected message ";
-            this.tsmiExclude.Click += new System.EventHandler(this.tsmiExclude_Click);
-            // 
-            // tsmiExcludeSource
-            // 
-            this.tsmiExcludeSource.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
-            this.tsmiExcludeSource.Name = "tsmiExcludeSource";
-            this.tsmiExcludeSource.Size = new System.Drawing.Size(415, 26);
-            this.tsmiExcludeSource.Text = "Exclude Source";
-            this.tsmiExcludeSource.Click += new System.EventHandler(this.tsmiExcludeSource_Click);
-            // 
-            // tsmiExcludeModule
-            // 
-            this.tsmiExcludeModule.Image = global::Analogy.Properties.Resources.ClearFilter_16x16;
-            this.tsmiExcludeModule.Name = "tsmiExcludeModule";
-            this.tsmiExcludeModule.Size = new System.Drawing.Size(415, 26);
-            this.tsmiExcludeModule.Text = "Exclude Process";
-            this.tsmiExcludeModule.Click += new System.EventHandler(this.tsmiExcludeModule_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(412, 6);
-            // 
-            // tsmiEmail
-            // 
-            this.tsmiEmail.Image = global::Analogy.Properties.Resources.Send_16x16;
-            this.tsmiEmail.Name = "tsmiEmail";
-            this.tsmiEmail.Size = new System.Drawing.Size(415, 26);
-            this.tsmiEmail.Text = "Send selected message by mail";
-            this.tsmiEmail.Click += new System.EventHandler(this.tsmiEmail_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(412, 6);
-            // 
-            // tsmiSaveLayout
-            // 
-            this.tsmiSaveLayout.Image = global::Analogy.Properties.Resources.Save_16x16;
-            this.tsmiSaveLayout.Name = "tsmiSaveLayout";
-            this.tsmiSaveLayout.Size = new System.Drawing.Size(415, 26);
-            this.tsmiSaveLayout.Text = "Save columns layout";
-            this.tsmiSaveLayout.Click += new System.EventHandler(this.tsmiSaveLayout_Click);
-            // 
-            // tsmiIncreaseFont
-            // 
-            this.tsmiIncreaseFont.Image = global::Analogy.Properties.Resources.IncreaseFontSize_16x16;
-            this.tsmiIncreaseFont.Name = "tsmiIncreaseFont";
-            this.tsmiIncreaseFont.Size = new System.Drawing.Size(415, 26);
-            this.tsmiIncreaseFont.Text = "Increase Font Size";
-            this.tsmiIncreaseFont.Click += new System.EventHandler(this.tsmiIncreaseFont_Click);
-            // 
-            // tsmiDecreaseFont
-            // 
-            this.tsmiDecreaseFont.Image = global::Analogy.Properties.Resources.DecreaseFontSize_16x16;
-            this.tsmiDecreaseFont.Name = "tsmiDecreaseFont";
-            this.tsmiDecreaseFont.Size = new System.Drawing.Size(415, 26);
-            this.tsmiDecreaseFont.Text = "Decrease Font Size";
-            this.tsmiDecreaseFont.Click += new System.EventHandler(this.tsmiDecreaseFont_Click);
             // 
             // panel1
             // 
@@ -3328,7 +3140,6 @@ namespace Analogy
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
-            this.cmsMessageOperation.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
@@ -3441,12 +3252,6 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ContextMenuStrip cmsMessageOperation;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCopy;
-        private System.Windows.Forms.ToolStripMenuItem tsmiEmail;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem tsmiExclude;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.Timer tmrNewData;
         private DevExpress.XtraGrid.GridControl gridControlBookmarkedMessages;
         private GridView gridViewBookmarkedMessages;
@@ -3463,19 +3268,13 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkObject;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkProcessID;
         private System.Windows.Forms.ImageList imageListBottom;
-        private System.Windows.Forms.ToolStripMenuItem tsmiBookmark;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAddCommentToMessage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox chkbHighlight;
-        private System.Windows.Forms.ToolStripMenuItem tsmiExcludeSource;
-        private System.Windows.Forms.ToolStripMenuItem tsmiExcludeModule;
         private System.Windows.Forms.Panel pnlButtonsHighlight;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtpMain;
         private System.Windows.Forms.Panel pnlBottom;
-        private System.Windows.Forms.ToolStripMenuItem tsmiTimeDiff;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTimeDiff;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private DevExpress.XtraTab.XtraTabPage xtCounts;
         private System.Windows.Forms.SplitContainer spltGroupByChars;
         private DevExpress.XtraGrid.GridControl gridControlMessageGrouping;
@@ -3526,9 +3325,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnopyBookmarked;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem bBtnGoToMessage;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSaveLayout;
-        private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkPersist;
         private System.Windows.Forms.ContextMenuStrip cmsBookmarked;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalcDiffBookmark;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
@@ -3548,7 +3344,6 @@ namespace Analogy
         private DevExpress.XtraGrid.GridControl gCtrlGrouping;
         private GridView gridViewGrouping;
         private DevExpress.XtraEditors.SimpleButton sBtnCancel;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCopyMessages;
         private System.Windows.Forms.ToolStripMenuItem tsmiCopyMessagesBookmark;
         private DevExpress.XtraBars.BarButtonItem bBtnCopyAllBookmarks;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerMain;
@@ -3564,8 +3359,6 @@ namespace Analogy
         internal DevExpress.XtraBars.BarToggleSwitchItem btsAutoScrollToBottom;
         private DevExpress.XtraBars.BarButtonItem bBtnUndockView;
         private DevExpress.XtraBars.BarButtonItem bBtnSaveEntireLog;
-        private System.Windows.Forms.ToolStripMenuItem tsmiIncreaseFont;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDecreaseFont;
         private System.Windows.Forms.ToolStripMenuItem tsmiIncreaseFontBookmark;
         private System.Windows.Forms.ToolStripMenuItem tsmiDecreaseFontBookmark;
         private DevExpress.XtraBars.BarButtonItem bBtnDataVisualizer;
@@ -3595,8 +3388,6 @@ namespace Analogy
         private System.Windows.Forms.SplitContainer spltcDateFiltering;
         private DevExpress.XtraEditors.DateEdit deNewerThanFilter;
         private DevExpress.XtraEditors.DateEdit deOlderThanFilter;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDateFilterNewer;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDateFilterOlder;
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterNewer;
         private System.Windows.Forms.ToolStripMenuItem tsmiBookmarkDateFilterOlder;
         private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
