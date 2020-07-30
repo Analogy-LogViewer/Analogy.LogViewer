@@ -127,8 +127,6 @@ namespace Analogy
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnExpand = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnButtomExpand = new DevExpress.XtraBars.BarButtonItem();
@@ -258,7 +256,16 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiDiffTime = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDatetiemFilterFrom = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDatetiemFilterTo = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.cmsMessageOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
@@ -901,8 +908,6 @@ namespace Analogy
             this.barManager1.DockControls.Add(this.standaloneBarDockControlLeft);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1,
-            this.barButtonItem2,
             this.btswitchExpand,
             this.btswitchRefreshLog,
             this.bBtnSaveLog,
@@ -938,9 +943,18 @@ namespace Analogy
             this.bBtnSaveCurrentSelectionCustomFormat,
             this.bBtnSaveCurrentSelectionAnalogyFormat,
             this.bBtnUndockSelection,
-            this.barButtonItem5});
+            this.bbiDiffTime,
+            this.bbiDatetiemFilterFrom,
+            this.bbiDatetiemFilterTo,
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barButtonItem5,
+            this.barButtonItem6,
+            this.barButtonItem7,
+            this.barButtonItem8,
+            this.barButtonItem9});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 43;
+            this.barManager1.MaxItemId = 53;
             // 
             // barTopFiltering
             // 
@@ -1424,18 +1438,6 @@ namespace Analogy
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 739);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 1;
-            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // bBtnExpand
             // 
@@ -3169,15 +3171,85 @@ namespace Analogy
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDiffTime),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterFrom),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterTo),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
+            // bbiDiffTime
+            // 
+            this.bbiDiffTime.Caption = "Calculate time difference from this point";
+            this.bbiDiffTime.Id = 43;
+            this.bbiDiffTime.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDiffTime.ImageOptions.Image")));
+            this.bbiDiffTime.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDiffTime.ImageOptions.LargeImage")));
+            this.bbiDiffTime.Name = "bbiDiffTime";
+            // 
+            // bbiDatetiemFilterFrom
+            // 
+            this.bbiDatetiemFilterFrom.Caption = "Date Time Filter: From";
+            this.bbiDatetiemFilterFrom.Id = 44;
+            this.bbiDatetiemFilterFrom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterFrom.ImageOptions.Image")));
+            this.bbiDatetiemFilterFrom.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterFrom.ImageOptions.LargeImage")));
+            this.bbiDatetiemFilterFrom.Name = "bbiDatetiemFilterFrom";
+            // 
+            // bbiDatetiemFilterTo
+            // 
+            this.bbiDatetiemFilterTo.Caption = "Date Time Filter: To";
+            this.bbiDatetiemFilterTo.Id = 45;
+            this.bbiDatetiemFilterTo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterTo.ImageOptions.Image")));
+            this.bbiDatetiemFilterTo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterTo.ImageOptions.LargeImage")));
+            this.bbiDatetiemFilterTo.Name = "bbiDatetiemFilterTo";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Bookmark this message (Non persist)";
+            this.barButtonItem1.Id = 46;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Bookmark this message for later user (Persist)";
+            this.barButtonItem2.Id = 47;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
             // barButtonItem5
             // 
-            this.barButtonItem5.Caption = "bbiPopupClearMesages";
-            this.barButtonItem5.Id = 42;
+            this.barButtonItem5.Caption = "Copy selected message to clipboard";
+            this.barButtonItem5.Id = 48;
             this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Copy all messages in view to clipboard";
+            this.barButtonItem6.Id = 49;
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Add Note/Comment to this message (not auto saved)";
+            this.barButtonItem7.Id = 50;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Include Selected message";
+            this.barButtonItem8.Id = 51;
+            this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Set X as column header filter for Y";
+            this.barButtonItem9.Id = 52;
+            this.barButtonItem9.Name = "barButtonItem9";
             // 
             // UCLogs
             // 
@@ -3376,8 +3448,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnSaveLog;
         private DevExpress.XtraBars.BarButtonItem bBtnImport;
         private DevExpress.XtraBars.BarButtonItem bBtnClearLog;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         internal DevExpress.XtraBars.BarToggleSwitchItem btswitchRefreshLog;
         private DevExpress.XtraEditors.SimpleButton sBtnMostCommon;
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstLogLevel;
@@ -3511,6 +3581,15 @@ namespace Analogy
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.RadioGroup rgSearchMode;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem bbiDiffTime;
+        private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterFrom;
+        private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterTo;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
     }
 }
