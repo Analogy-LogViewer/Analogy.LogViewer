@@ -242,6 +242,7 @@ namespace Analogy
             #endregion
             logGrid.MouseDown += LogGrid_MouseDown;
             logGrid.MouseUp += LogGrid_MouseUp;
+            popupMenu1.BeforePopup += (_, __) => UpdatePopupTexts();
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             sbtnToggleSearchFilter.Click += (_, __) =>
@@ -459,24 +460,30 @@ namespace Analogy
                 GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
                 if (hitInfo.InRow && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
                 {
-                    (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-                    if (message != null)
-                    {
-                        bbiExcludeModule.Caption = $"Exclude Process/Module: {message.Module}";
-                        bbiExcludeSource.Caption = $"Exclude Source: {message.Source}";
-                        bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
-                        bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
-                        bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
-                        bbiDatetiemFilterTo.Visibility = BarItemVisibility.Always;
-                    }
-                    else
-                    {
-                        bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Never;
-                        bbiDatetiemFilterTo.Visibility = BarItemVisibility.Never;
-                    }
+                    UpdatePopupTexts();
                 }
             }
         }
+
+        private void UpdatePopupTexts()
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+            if (message != null)
+            {
+                bbiExcludeModule.Caption = $"Exclude Process/Module: {message.Module}";
+                bbiExcludeSource.Caption = $"Exclude Source: {message.Source}";
+                bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
+                bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
+                bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
+                bbiDatetiemFilterTo.Visibility = BarItemVisibility.Always;
+            }
+            else
+            {
+                bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Never;
+                bbiDatetiemFilterTo.Visibility = BarItemVisibility.Never;
+            }
+        }
+
         private void LogGrid_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
