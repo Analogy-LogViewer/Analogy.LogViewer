@@ -223,8 +223,12 @@ namespace Analogy
         private void SetupEventsHandlers()
         {
             #region
-
-            bbiIncludeColumnHeaderFilter.ItemClick += (s, e) => { };
+            
+            bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
+            {
+                if (bbiIncludeColumnHeaderFilter.Tag is ViewColumnFilterInfo filter)
+                    logGrid.ActiveFilter.Add(filter);
+            };
             bbiIncludeMessage.ItemClick += tsmiInclude_Click;
             bbiIncludeSource.ItemClick += (s, e) =>
             {
@@ -475,6 +479,21 @@ namespace Analogy
                 if (hitInfo.InRow && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
                 {
                     UpdatePopupTexts();
+                    var value=view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
+                    if (value != null)
+                    {
+                        ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
+                            new ColumnFilterInfo($"[{hitInfo.Column.FieldName}] = '{value}'", ""));
+
+                        bbiIncludeColumnHeaderFilter.Caption = $"Set '{value}' as column header filter for column '{hitInfo.Column.Caption}'";
+                        bbiIncludeColumnHeaderFilter.Tag = viewFilterInfo;
+                        bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Always;
+                    }
+                    else
+                    {
+                        bbiIncludeColumnHeaderFilter.Tag = null;
+                        bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Never;
+                    }
                 }
             }
         }
