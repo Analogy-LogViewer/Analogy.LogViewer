@@ -226,6 +226,8 @@ namespace Analogy
 
             bbiIncludeColumnHeaderFilter.ItemClick += (s, e) => { };
             bbiIncludeMessage.ItemClick += (s, e) => { };
+            bbiIncludeSource.ItemClick += (s, e) => { };
+            bbiIncludeModule.ItemClick += (s, e) => { };
             bbiDiffTime.ItemClick += tsmiTimeDiff_Click;
             bbiIncreaseFontSize.ItemClick += tsmiIncreaseFont_Click;
             bbiDecreaseFontSize.ItemClick += tsmiDecreaseFont_Click;
