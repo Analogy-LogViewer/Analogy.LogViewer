@@ -443,69 +443,6 @@ namespace Analogy
             page.Text = $"Analogy Bookmarked logs #{openedWindows}";
             dockManager1.ActivePanel = page;
         }
-
-        private void bbtnSettingsApplication_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(0);
-            user.ShowDialog(this);
-        }
-        private void bBtnStatisticsFiltering_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(1);
-            user.ShowDialog(this);
-        }
-
-        private void bBtnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(2);
-            user.ShowDialog(this);
-        }
-
-        private void bBtnStatisticsLookAndFeel_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(3);
-            user.ShowDialog(this);
-        }
-
-        private void bBtnExtensionSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(4);
-            user.ShowDialog(this);
-        }
-
-        private void bBtnShortcuts_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(5);
-            user.ShowDialog(this);
-        }
-
-        private void bBtnMRUSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(6);
-            user.ShowDialog(this);
-        }
-        private void btnUserSettingsResourceUsage_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(7);
-            user.ShowDialog(this);
-        }
-
-        private void btnSettingsStartupDataSources_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(8);
-            user.ShowDialog(this);
-        }
-
-        private void bBtnStatisticsUserStatistics_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(9);
-            user.ShowDialog(this);
-        }
-        private void bBtnDataProviderSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
-            user.ShowDialog(this);
-        }
         private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
         }
@@ -1555,7 +1492,7 @@ namespace Analogy
                     }
                     catch (Exception exception)
                     {
-                        AnalogyLogManager.Instance.LogError("Error during export settings: " + e, nameof(bBtnExtensionSettings_ItemClick));
+                        AnalogyLogManager.Instance.LogError("Error during export settings: " + e, nameof(bBtnItemExportSettings_ItemClick));
                         XtraMessageBox.Show("Error exporting settings: " + exception.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

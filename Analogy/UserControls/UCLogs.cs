@@ -24,6 +24,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Managers;
 
 namespace Analogy
 {
@@ -493,6 +494,7 @@ namespace Analogy
         }
         private void LoadReplacementHeaders()
         {
+            if (DataProvider == null) return;
             try
             {
                 if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
@@ -2134,6 +2136,9 @@ namespace Analogy
 
         public void SetBookmarkMode()
         {
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            var provider = analogy.DataProvidersFactories[0].DataProviders.First();
+            SetFileDataSource(provider, null);
             BookmarkView = true;
             BookmarkModeUI();
         }

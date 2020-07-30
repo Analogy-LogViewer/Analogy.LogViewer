@@ -250,6 +250,7 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.LogGridBookmarkPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -333,6 +334,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
             this.MainSplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogGridPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogGridBookmarkPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -3123,6 +3125,29 @@ namespace Analogy
             this.LogGridPopupMenu.Manager = this.barManager1;
             this.LogGridPopupMenu.Name = "LogGridPopupMenu";
             // 
+            // LogGridBookmarkPopupMenu
+            // 
+            this.LogGridBookmarkPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDiffTime),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterFrom),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterTo),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarkNonPersist),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarkPersist),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiCopyMessage),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiCopyAllMessages),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddNoteToMessage),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeMessage, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeColumnHeaderFilter),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeMessage, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeSource),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeModule),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSaveLayout, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncreaseFontSize),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDecreaseFontSize)});
+            this.LogGridBookmarkPopupMenu.Manager = this.barManager1;
+            this.LogGridBookmarkPopupMenu.Name = "LogGridBookmarkPopupMenu";
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3231,6 +3256,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
             this.MainSplitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogGridPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogGridBookmarkPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3446,5 +3472,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiSaveLayout;
         private DevExpress.XtraBars.BarButtonItem bbiIncreaseFontSize;
         private DevExpress.XtraBars.BarButtonItem bbiDecreaseFontSize;
+        private DevExpress.XtraBars.PopupMenu LogGridBookmarkPopupMenu;
     }
 }
