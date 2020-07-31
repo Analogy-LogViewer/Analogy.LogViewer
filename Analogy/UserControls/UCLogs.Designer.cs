@@ -429,6 +429,7 @@ namespace Analogy
             this.gridColumnTimeDiff.FieldName = "TimeDiff";
             this.gridColumnTimeDiff.MinWidth = 22;
             this.gridColumnTimeDiff.Name = "gridColumnTimeDiff";
+            this.gridColumnTimeDiff.OptionsColumn.AllowEdit = false;
             this.gridColumnTimeDiff.Width = 87;
             // 
             // gridColumnText
@@ -613,6 +614,7 @@ namespace Analogy
             this.gridColumnThread.FieldName = "ThreadID";
             this.gridColumnThread.MinWidth = 25;
             this.gridColumnThread.Name = "gridColumnThread";
+            this.gridColumnThread.OptionsColumn.AllowEdit = false;
             this.gridColumnThread.Visible = true;
             this.gridColumnThread.VisibleIndex = 10;
             this.gridColumnThread.Width = 109;
@@ -623,6 +625,7 @@ namespace Analogy
             this.gridColumnMachineName.FieldName = "MachineName";
             this.gridColumnMachineName.MinWidth = 25;
             this.gridColumnMachineName.Name = "gridColumnMachineName";
+            this.gridColumnMachineName.OptionsColumn.AllowEdit = false;
             this.gridColumnMachineName.Visible = true;
             this.gridColumnMachineName.VisibleIndex = 11;
             this.gridColumnMachineName.Width = 94;
