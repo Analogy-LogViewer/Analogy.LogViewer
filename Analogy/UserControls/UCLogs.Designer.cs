@@ -125,6 +125,8 @@ namespace Analogy
             this.bbiSaveLayout = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncreaseFontSize = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDecreaseFontSize = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiIncludeSource = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiIncludeModule = new DevExpress.XtraBars.BarButtonItem();
             this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
             this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
@@ -230,8 +232,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bbiIncludeSource = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiIncludeModule = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -334,8 +334,6 @@ namespace Analogy
             // 
             // logGrid
             // 
-            this.logGrid.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.logGrid.Appearance.OddRow.Options.UseBackColor = true;
             this.logGrid.Appearance.Row.Options.UseTextOptions = true;
             this.logGrid.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.logGrid.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
@@ -377,7 +375,6 @@ namespace Analogy
             this.logGrid.OptionsView.ShowAutoFilterRow = true;
             this.logGrid.OptionsView.ShowGroupPanel = false;
             this.logGrid.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
-            this.logGrid.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
             this.logGrid.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.PmsGridView_SelectionChanged);
             this.logGrid.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGrid_FocusedRowChanged);
             this.logGrid.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
@@ -1389,6 +1386,22 @@ namespace Analogy
             this.bbiDecreaseFontSize.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDecreaseFontSize.ImageOptions.LargeImage")));
             this.bbiDecreaseFontSize.Name = "bbiDecreaseFontSize";
             // 
+            // bbiIncludeSource
+            // 
+            this.bbiIncludeSource.Caption = "Include source";
+            this.bbiIncludeSource.Id = 59;
+            this.bbiIncludeSource.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.Image")));
+            this.bbiIncludeSource.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.LargeImage")));
+            this.bbiIncludeSource.Name = "bbiIncludeSource";
+            // 
+            // bbiIncludeModule
+            // 
+            this.bbiIncludeModule.Caption = "Include process/module";
+            this.bbiIncludeModule.Id = 60;
+            this.bbiIncludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.Image")));
+            this.bbiIncludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.LargeImage")));
+            this.bbiIncludeModule.Name = "bbiIncludeModule";
+            // 
             // sbtnMoreHighlight
             // 
             this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
@@ -1939,7 +1952,6 @@ namespace Analogy
             this.gridViewBookmarkedMessages.OptionsView.ShowAutoFilterRow = true;
             this.gridViewBookmarkedMessages.OptionsView.ShowGroupPanel = false;
             this.gridViewBookmarkedMessages.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
-            this.gridViewBookmarkedMessages.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
             // 
             // gridColumnBookmarkDataSource
             // 
@@ -2554,7 +2566,6 @@ namespace Analogy
             this.gridViewGrouping2.OptionsView.ShowAutoFilterRow = true;
             this.gridViewGrouping2.OptionsView.ShowGroupPanel = false;
             this.gridViewGrouping2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
-            this.gridViewGrouping2.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.pmsGridView_RowStyle);
             // 
             // gridColumn13
             // 
@@ -2939,22 +2950,6 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDecreaseFontSize)});
             this.LogGridPopupMenu.Manager = this.barManager1;
             this.LogGridPopupMenu.Name = "LogGridPopupMenu";
-            // 
-            // bbiIncludeSource
-            // 
-            this.bbiIncludeSource.Caption = "Include source";
-            this.bbiIncludeSource.Id = 59;
-            this.bbiIncludeSource.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.Image")));
-            this.bbiIncludeSource.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.LargeImage")));
-            this.bbiIncludeSource.Name = "bbiIncludeSource";
-            // 
-            // bbiIncludeModule
-            // 
-            this.bbiIncludeModule.Caption = "Include process/module";
-            this.bbiIncludeModule.Id = 60;
-            this.bbiIncludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.Image")));
-            this.bbiIncludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.LargeImage")));
-            this.bbiIncludeModule.Name = "bbiIncludeModule";
             // 
             // UCLogs
             // 

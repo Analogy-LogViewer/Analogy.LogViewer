@@ -223,7 +223,7 @@ namespace Analogy
         private void SetupEventsHandlers()
         {
             #region
-            
+
             bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
             {
                 if (bbiIncludeColumnHeaderFilter.Tag is ViewColumnFilterInfo filter)
@@ -234,14 +234,14 @@ namespace Analogy
             {
                 (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
                 if (!string.IsNullOrEmpty(message?.Source))
-                    txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? (message.Source) : txtbSource.Text + "," + message.Source;
+                    txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? message.Source : txtbSource.Text + "," + message.Source;
 
             };
             bbiIncludeModule.ItemClick += (s, e) =>
             {
                 (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
                 if (!string.IsNullOrEmpty(message?.Module))
-                    txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? (message.Module) : txtbModule.Text + "," + message.Module;
+                    txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? message.Module : txtbModule.Text + "," + message.Module;
             };
             bbiDiffTime.ItemClick += tsmiTimeDiff_Click;
             bbiIncreaseFontSize.ItemClick += tsmiIncreaseFont_Click;
@@ -258,10 +258,15 @@ namespace Analogy
             bbiDatetiemFilterTo.ItemClick += tsmiDateFilterOlder_Click;
             bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
             #endregion
+            logGrid.RowStyle += pmsGridView_RowStyle;
+
             logGrid.MouseDown += LogGrid_MouseDown;
             logGrid.MouseUp += LogGrid_MouseUp;
             LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
+            gridViewBookmarkedMessages.RowStyle += pmsGridView_RowStyle;
+            gridViewGrouping2.RowStyle += pmsGridView_RowStyle;
+
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             sbtnToggleSearchFilter.Click += (_, __) =>
             {
@@ -479,7 +484,7 @@ namespace Analogy
                 if (hitInfo.InRow && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
                 {
                     UpdatePopupTexts();
-                    var value=view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
+                    var value = view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
                     if (value != null)
                     {
                         ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
@@ -596,14 +601,14 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
-                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[1].CheckState = chkLstLogLevel.Items[1].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
             }
 
             if (e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[2].CheckState = (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[2].CheckState = chkLstLogLevel.Items[2].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
             }
@@ -645,7 +650,7 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
-                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[1].CheckState = chkLstLogLevel.Items[1].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
                 return true;
@@ -653,7 +658,7 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[2].CheckState = (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[2].CheckState = chkLstLogLevel.Items[2].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
                 return true;
@@ -870,40 +875,26 @@ namespace Analogy
 
         private void pmsGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            if (!(sender is GridView view) || e.RowHandle < 0) return;
+            if (!Settings.ColorSettings.EnableMessagesColors || !(sender is GridView view) || e.RowHandle < 0) return;
             IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
             if (message == null) return;
             if (!Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
                 message.Date > reloadDateTime)
             {
-                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
+                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor.BackgroundColor;
+                e.Appearance.ForeColor = Settings.ColorSettings.NewMessagesColor.TextColor;
             }
 
-            e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(message.Level);
-            switch (message.Level)
-            {
-                case AnalogyLogLevel.Warning:
-                case AnalogyLogLevel.Error:
-                case AnalogyLogLevel.Critical:
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
-                    break;
-                case AnalogyLogLevel.Event:
-                case AnalogyLogLevel.Verbose:
-                case AnalogyLogLevel.Debug:
-                case AnalogyLogLevel.Disabled:
-                case AnalogyLogLevel.Trace:
-                case AnalogyLogLevel.Unknown:
-                case AnalogyLogLevel.AnalogyInformation:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
+            var (backgroundColorLevel, textColorLevel) = Settings.ColorSettings.GetColorForLogLevel(message.Level);
+            e.Appearance.BackColor =backgroundColorLevel;
+            e.Appearance.ForeColor = textColorLevel;
+           
             if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
                 message.Date > reloadDateTime)
             {
-                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
+                var (backgroundColor, textColor) = Settings.ColorSettings.NewMessagesColor;
+                e.Appearance.BackColor = backgroundColor;
+                e.Appearance.ForeColor = textColor;
             }
             string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
             foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
@@ -930,7 +921,9 @@ namespace Analogy
             if (chkbHighlight.Checked &&
                 FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
             {
-                e.Appearance.BackColor = Settings.ColorSettings.GetHighlightColor();
+                var (backgroundColorHighlight, textColorHighlight) = Settings.ColorSettings.GetHighlightColor();
+                e.Appearance.BackColor = backgroundColorHighlight;
+                e.Appearance.ForeColor = textColorHighlight;
             }
         }
 
@@ -1879,14 +1872,14 @@ namespace Analogy
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (!string.IsNullOrEmpty(message?.Source))
-                txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? ("-" + message.Source) : txtbSource.Text + ", -" + message.Source;
+                txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? "-" + message.Source : txtbSource.Text + ", -" + message.Source;
         }
 
         private void tsmiExcludeModule_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (!string.IsNullOrEmpty(message?.Module))
-                txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? ("-" + message.Module) : txtbModule.Text + ",-" + message.Module;
+                txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? "-" + message.Module : txtbModule.Text + ",-" + message.Module;
         }
 
 
