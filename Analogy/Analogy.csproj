@@ -24,11 +24,12 @@
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
 		<PackageTags />
 		<RepositoryType>git</RepositoryType>
-		<Version>4.2.5</Version>
+		<Version>4.2.6</Version>
 		<Copyright>Lior Banai ©  2020</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<Company>Analogy.LogViewer</Company>
+		<FileVersion>4.2.66.0</FileVersion>
 	</PropertyGroup>
 
 

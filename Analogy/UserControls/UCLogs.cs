@@ -508,10 +508,10 @@ namespace Analogy
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                bbiIncludeModule.Caption = $"Include Process/Module: {message.Module}";
-                bbiIncludeSource.Caption = $"Include Source: {message.Source}";
-                bbiExcludeModule.Caption = $"Exclude Process/Module: {message.Module}";
-                bbiExcludeSource.Caption = $"Exclude Source: {message.Source}";
+                bbiIncludeModule.Caption = $"Include Process/Module: Append '{message.Module}' to filter";
+                bbiIncludeSource.Caption = $"Include Source: Append '{message.Source}' to filter";
+                bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{message.Module}' to filter";
+                bbiExcludeSource.Caption = $"Exclude Source: Append '{message.Source}' to filter";
                 bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
                 bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
                 bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
