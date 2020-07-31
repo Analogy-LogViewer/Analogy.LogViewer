@@ -24,6 +24,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Managers;
 
 namespace Analogy
 {
@@ -221,12 +222,51 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
-            logGrid.Columns["Level"].SummaryItem.SummaryType = SummaryItemType.Custom;
+            #region
 
-            logGrid.Columns["Level"].SummaryItem.FieldName = "Level";
+            bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
+            {
+                if (bbiIncludeColumnHeaderFilter.Tag is ViewColumnFilterInfo filter)
+                    logGrid.ActiveFilter.Add(filter);
+            };
+            bbiIncludeMessage.ItemClick += tsmiInclude_Click;
+            bbiIncludeSource.ItemClick += (s, e) =>
+            {
+                (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+                if (!string.IsNullOrEmpty(message?.Source))
+                    txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? message.Source : txtbSource.Text + "," + message.Source;
 
-            //logGrid.Columns["Level"].SummaryItem.DisplayFormat = "Count: {0:n0}";
+            };
+            bbiIncludeModule.ItemClick += (s, e) =>
+            {
+                (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+                if (!string.IsNullOrEmpty(message?.Module))
+                    txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? message.Module : txtbModule.Text + "," + message.Module;
+            };
+            bbiDiffTime.ItemClick += tsmiTimeDiff_Click;
+            bbiIncreaseFontSize.ItemClick += tsmiIncreaseFont_Click;
+            bbiDecreaseFontSize.ItemClick += tsmiDecreaseFont_Click;
+            bbiSaveLayout.ItemClick += tsmiSaveLayout_Click;
+            bbiExcludeModule.ItemClick += tsmiExcludeModule_Click;
+            bbiExcludeSource.ItemClick += tsmiExcludeSource_Click;
+            bbiExcludeMessage.ItemClick += tsmiExclude_Click;
+            bbiAddNoteToMessage.ItemClick += tsmiAddCommentToMessage_Click;
+            bbiCopyAllMessages.ItemClick += tsmiCopyMessages_Click;
+            bbiCopyMessage.ItemClick += tsmiCopy_Click;
+            bbiBookmarkPersist.ItemClick += tsmiBookmarkPersist_Click;
+            bbiBookmarkNonPersist.ItemClick += tsmiBookmark_Click;
+            bbiDatetiemFilterTo.ItemClick += tsmiDateFilterOlder_Click;
+            bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
+            #endregion
+            logGrid.RowStyle += pmsGridView_RowStyle;
+
+            logGrid.MouseDown += LogGrid_MouseDown;
+            logGrid.MouseUp += LogGrid_MouseUp;
+            LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
+            gridViewBookmarkedMessages.RowStyle += pmsGridView_RowStyle;
+            gridViewGrouping2.RowStyle += pmsGridView_RowStyle;
+
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             sbtnToggleSearchFilter.Click += (_, __) =>
             {
@@ -266,7 +306,7 @@ namespace Analogy
             {
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
-                    LogGrid.ClearColumnsFilter();
+                   // LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
                 }
 
@@ -276,7 +316,7 @@ namespace Analogy
             {
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
-                    LogGrid.ClearColumnsFilter();
+                    //LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
                 }
 
@@ -415,8 +455,6 @@ namespace Analogy
                 {
                     counts[key] = 0;
                 }
-
-
             else if (e.SummaryProcess == CustomSummaryProcess.Calculate)
             {
                 counts[(string)e.FieldValue] = counts[(string)e.FieldValue] + 1;
@@ -437,8 +475,65 @@ namespace Analogy
             //}
         }
 
+        private void LogGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                GridView view = sender as GridView;
+                GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+                if (hitInfo.InRow && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
+                {
+                    UpdatePopupTexts();
+                    var value = view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
+                    if (value != null)
+                    {
+                        ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
+                            new ColumnFilterInfo($"[{hitInfo.Column.FieldName}] = '{value}'", ""));
+
+                        bbiIncludeColumnHeaderFilter.Caption = $"Set '{value}' as column header filter for column '{hitInfo.Column.Caption}'";
+                        bbiIncludeColumnHeaderFilter.Tag = viewFilterInfo;
+                        bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Always;
+                    }
+                    else
+                    {
+                        bbiIncludeColumnHeaderFilter.Tag = null;
+                        bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Never;
+                    }
+                }
+            }
+        }
+
+        private void UpdatePopupTexts()
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+            if (message != null)
+            {
+                bbiIncludeModule.Caption = $"Include Process/Module: Append '{message.Module}' to filter";
+                bbiIncludeSource.Caption = $"Include Source: Append '{message.Source}' to filter";
+                bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{message.Module}' to filter";
+                bbiExcludeSource.Caption = $"Exclude Source: Append '{message.Source}' to filter";
+                bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
+                bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
+                bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
+                bbiDatetiemFilterTo.Visibility = BarItemVisibility.Always;
+            }
+            else
+            {
+                bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Never;
+                bbiDatetiemFilterTo.Visibility = BarItemVisibility.Never;
+            }
+        }
+
+        private void LogGrid_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                LogGridPopupMenu.ShowPopup(Cursor.Position);
+            }
+        }
         private void LoadReplacementHeaders()
         {
+            if (DataProvider == null) return;
             try
             {
                 if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
@@ -506,14 +601,14 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
-                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[1].CheckState = chkLstLogLevel.Items[1].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
             }
 
             if (e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[2].CheckState = (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[2].CheckState = chkLstLogLevel.Items[2].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
             }
@@ -555,7 +650,7 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
-                chkLstLogLevel.Items[1].CheckState = (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[1].CheckState = chkLstLogLevel.Items[1].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
                 return true;
@@ -563,7 +658,7 @@ namespace Analogy
 
             if (e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[2].CheckState = (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
+                chkLstLogLevel.Items[2].CheckState = chkLstLogLevel.Items[2].CheckState == CheckState.Checked
                     ? CheckState.Unchecked
                     : CheckState.Checked;
                 return true;
@@ -603,6 +698,8 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            logGrid.Columns["Level"].SummaryItem.SummaryType = SummaryItemType.Custom;
+            logGrid.Columns["Level"].SummaryItem.FieldName = "Level";
             logGrid.OptionsSelection.MultiSelect = true;
             logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
             //logGrid.OptionsView.ShowFooter = true;
@@ -673,7 +770,6 @@ namespace Analogy
         {
             if (BookmarkView)
             {
-                gridControl.ContextMenuStrip = cmsBookmarked;
                 bBtnRemoveBoomark.Visibility = BarItemVisibility.Always;
                 bBtnImport.Visibility = BarItemVisibility.Never;
             }
@@ -779,40 +875,26 @@ namespace Analogy
 
         private void pmsGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            if (!(sender is GridView view) || e.RowHandle < 0) return;
+            if (!Settings.ColorSettings.EnableMessagesColors || !(sender is GridView view) || e.RowHandle < 0) return;
             IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
             if (message == null) return;
             if (!Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
                 message.Date > reloadDateTime)
             {
-                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
+                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor.BackgroundColor;
+                e.Appearance.ForeColor = Settings.ColorSettings.NewMessagesColor.TextColor;
             }
 
-            e.Appearance.BackColor = Settings.ColorSettings.GetColorForLogLevel(message.Level);
-            switch (message.Level)
-            {
-                case AnalogyLogLevel.Warning:
-                case AnalogyLogLevel.Error:
-                case AnalogyLogLevel.Critical:
-                    if (UserLookAndFeel.Default.ActiveLookAndFeel.ActiveSkinName.Contains("Dark"))
-                        e.Appearance.ForeColor = Color.Black;
-                    break;
-                case AnalogyLogLevel.Event:
-                case AnalogyLogLevel.Verbose:
-                case AnalogyLogLevel.Debug:
-                case AnalogyLogLevel.Disabled:
-                case AnalogyLogLevel.Trace:
-                case AnalogyLogLevel.Unknown:
-                case AnalogyLogLevel.AnalogyInformation:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
+            var (backgroundColorLevel, textColorLevel) = Settings.ColorSettings.GetColorForLogLevel(message.Level);
+            e.Appearance.BackColor =backgroundColorLevel;
+            e.Appearance.ForeColor = textColorLevel;
+           
             if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
                 message.Date > reloadDateTime)
             {
-                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor;
+                var (backgroundColor, textColor) = Settings.ColorSettings.NewMessagesColor;
+                e.Appearance.BackColor = backgroundColor;
+                e.Appearance.ForeColor = textColor;
             }
             string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
             foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
@@ -839,7 +921,9 @@ namespace Analogy
             if (chkbHighlight.Checked &&
                 FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
             {
-                e.Appearance.BackColor = Settings.ColorSettings.GetHighlightColor();
+                var (backgroundColorHighlight, textColorHighlight) = Settings.ColorSettings.GetHighlightColor();
+                e.Appearance.BackColor = backgroundColorHighlight;
+                e.Appearance.ForeColor = textColorHighlight;
             }
         }
 
@@ -934,9 +1018,10 @@ namespace Analogy
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message == null) return;
             var ef = new AnalogyExcludeMessage(message);
+            ef.Text = "Exclude";
             if (ef.ShowDialog(this) == DialogResult.OK)
             {
-                string exclude = ef.Exclude;
+                string exclude = ef.MessageText;
 
                 txtbExclude.Text = txtbExclude.Text == txtbExclude.Properties.NullText ? exclude : txtbExclude.Text + "|" + exclude;
                 ceExcludeText.Checked = true;
@@ -944,7 +1029,21 @@ namespace Analogy
             }
         }
 
+        private async void tsmiInclude_Click(object sender, EventArgs e)
+        {
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+            if (message == null) return;
+            var ef = new AnalogyExcludeMessage(message);
+            ef.Text = "Include";
+            if (ef.ShowDialog(this) == DialogResult.OK)
+            {
+                string include = ef.MessageText;
 
+                txtbInclude.Text = txtbInclude.Text == txtbInclude.Properties.NullText ? include : txtbInclude.Text + "|" + include;
+                ceIncludeText.Checked = true;
+                await FilterHasChanged();
+            }
+        }
 
         /// <summary>
         /// Set custom column display text
@@ -1032,12 +1131,6 @@ namespace Analogy
                     filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
                 }
 
-                //todo
-                //todo:replace for performance
-                //var rows = _messageData.Select(filter);
-                //var filteredDataTable = _messageData.Clone();
-                //filteredDataTable.Rows.Add(rows);
-                //return filteredDataTable;
                 return new DataView(_messageData, filter, null, DataViewRowState.CurrentRows).ToTable();
             }
             finally
@@ -1047,44 +1140,6 @@ namespace Analogy
         }
 
         public List<AnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
-
-        private (int total, int error, int warning, int critical, int alerts) GetRowsCount()
-        {
-
-            // Create a data view by applying the grid view row filter
-            try
-            {
-                lockSlim.EnterReadLock();
-
-                string filter = _messageData.DefaultView.RowFilter;
-                if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
-                {
-                    CriteriaOperator op = LogGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
-                    string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
-                    filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
-                }
-
-                var rows = _messageData.Select(filter);
-                var total = rows.Length;
-                var error = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Error.ToString());
-                var warning = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Warning.ToString());
-                var critical = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Critical.ToString());
-                var alertCount = 0;
-                if (Settings.PreDefinedQueries.Alerts.Any())
-                {
-                    var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
-                    alertCount = messages.Count(m =>
-                        Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
-
-                }
-
-                return (total, error, warning, critical, alertCount);
-            }
-            finally
-            {
-                lockSlim.ExitReadLock();
-            }
-        }
 
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
@@ -1387,6 +1442,15 @@ namespace Analogy
 
         private void FilterResults()
         {
+            if (txtbInclude.Text == txtbInclude.Properties.NullText)
+                txtbInclude.Text = string.Empty;
+            if (txtbExclude.Text == txtbExclude.Properties.NullText)
+                txtbExclude.Text = string.Empty;
+            if (txtbSource.Text == txtbSource.Properties.NullText)
+                txtbSource.Text = string.Empty;
+            if (txtbModule.Text == txtbModule.Properties.NullText)
+                txtbModule.Text = string.Empty;
+
             string include = txtbInclude.Text;
             string exclude = txtbExclude.Text;
             if (!autoCompleteInclude.Contains(include))
@@ -1401,11 +1465,9 @@ namespace Analogy
             _filterCriteria.TextExclude = ceExcludeText.Checked
                 ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon)
                 : string.Empty;
-
-
+            
             Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
             Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude : string.Empty;
-
 
             _filterCriteria.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
@@ -1456,8 +1518,6 @@ namespace Analogy
 
                 _filterCriteria.Modules = includeItems.Select(val => val.Trim()).ToArray();
                 _filterCriteria.ExcludedModules = excludeItems.Select(val => val.Trim()).ToArray();
-
-
             }
             else
             {
@@ -1771,17 +1831,16 @@ namespace Analogy
 
         private void tsmiExcludeSource_Click(object sender, EventArgs e)
         {
-
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (!string.IsNullOrEmpty(message?.Source))
-                txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? ("-" + message.Source) : txtbSource.Text + ", -" + message.Source;
+                txtbSource.Text = txtbSource.Text == txtbSource.Properties.NullText ? "-" + message.Source : txtbSource.Text + ", -" + message.Source;
         }
 
         private void tsmiExcludeModule_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (!string.IsNullOrEmpty(message?.Module))
-                txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? ("-" + message.Module) : txtbModule.Text + ",-" + message.Module;
+                txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? "-" + message.Module : txtbModule.Text + ",-" + message.Module;
         }
 
 
@@ -1815,29 +1874,6 @@ namespace Analogy
             lockSlim.ExitWriteLock();
         }
 
-        //private void btnUp_Click(object sender, EventArgs e)
-        //{
-        //    if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
-        //    {
-        //        int selected = LogGrid.GetSelectedRows().First();
-        //        if (HighlightRows.All(r => r >= selected))
-        //            LogGrid.SelectRow(HighlightRows.Last());
-        //        else
-        //            LogGrid.SelectRow(HighlightRows.First(r => r < selected));
-        //    }
-        //}
-
-        //private void btnDown_Click(object sender, EventArgs e)
-        //{
-        //    if (HighlightRows.Any() && LogGrid.GetSelectedRows().Any())
-        //    {
-        //        int selected = LogGrid.GetSelectedRows().First();
-        //        if (HighlightRows.All(r => r <= selected))
-        //            LogGrid.SelectRow(HighlightRows.First());
-        //        else
-        //            LogGrid.SelectRow(HighlightRows.First(r => r > selected));
-        //    }
-        //}
 
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {
@@ -2101,6 +2137,9 @@ namespace Analogy
 
         public void SetBookmarkMode()
         {
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            var provider = analogy.DataProvidersFactories[0].DataProviders.First();
+            SetFileDataSource(provider, null);
             BookmarkView = true;
             BookmarkModeUI();
         }
@@ -2110,26 +2149,6 @@ namespace Analogy
             var row = _messageData.AsEnumerable().SingleOrDefault(r => r["Object"] == msgMessage);
             if (row != null)
                 _messageData.Rows.Remove(row);
-        }
-
-        private void cmsMessageOperation_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            if (message != null)
-            {
-                tsmiExcludeModule.Text = $"Exclude Process: {message.Module}";
-                tsmiExcludeSource.Text = $"Exclude Source: {message.Source}";
-                tsmiDateFilterNewer.Text = $"Show all messages after {message.Date}";
-                tsmiDateFilterOlder.Text = $"Show all messages Before {message.Date}";
-                tsmiDateFilterNewer.Visible = true;
-                tsmiDateFilterOlder.Visible = true;
-            }
-            else
-            {
-                tsmiDateFilterNewer.Visible = false;
-                tsmiDateFilterOlder.Visible = false;
-
-            }
         }
 
         private (AnalogyLogMessage message, string dataProvider) GetMessageFromSelectedFocusedRowInGrid()
@@ -2160,27 +2179,6 @@ namespace Analogy
             return messages;
 
         }
-        private void cmsBookmarked_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            if (message != null)
-            {
-                tsmiExcludeModuleBookmark.Text = $"Exclude Process: {message.Module}";
-                tsmiExcludeSourceBookmark.Text = $"Exclude Source: {message.Source}";
-                tsmiBookmarkDateFilterNewer.Text = $"Show all messages after {message.Date}";
-                tsmiBookmarkDateFilterOlder.Text = $"Show all messages Before {message.Date}";
-                tsmiBookmarkDateFilterNewer.Visible = true;
-                tsmiBookmarkDateFilterOlder.Visible = true;
-            }
-            else
-            {
-                tsmiDateFilterNewer.Visible = false;
-                tsmiBookmarkDateFilterOlder.Visible = false;
-
-            }
-        }
-
-
         private void gridViewGrouping_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             if (e.FocusedRowHandle < 0) return;
