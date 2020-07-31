@@ -306,7 +306,7 @@ namespace Analogy
             {
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
-                    LogGrid.ClearColumnsFilter();
+                   // LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
                 }
 
@@ -316,7 +316,7 @@ namespace Analogy
             {
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
-                    LogGrid.ClearColumnsFilter();
+                    //LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
                 }
 
@@ -1131,12 +1131,6 @@ namespace Analogy
                     filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
                 }
 
-                //todo
-                //todo:replace for performance
-                //var rows = _messageData.Select(filter);
-                //var filteredDataTable = _messageData.Clone();
-                //filteredDataTable.Rows.Add(rows);
-                //return filteredDataTable;
                 return new DataView(_messageData, filter, null, DataViewRowState.CurrentRows).ToTable();
             }
             finally
@@ -1448,6 +1442,15 @@ namespace Analogy
 
         private void FilterResults()
         {
+            if (txtbInclude.Text == txtbInclude.Properties.NullText)
+                txtbInclude.Text = string.Empty;
+            if (txtbExclude.Text == txtbExclude.Properties.NullText)
+                txtbExclude.Text = string.Empty;
+            if (txtbSource.Text == txtbSource.Properties.NullText)
+                txtbSource.Text = string.Empty;
+            if (txtbModule.Text == txtbModule.Properties.NullText)
+                txtbModule.Text = string.Empty;
+
             string include = txtbInclude.Text;
             string exclude = txtbExclude.Text;
             if (!autoCompleteInclude.Contains(include))
@@ -1462,11 +1465,9 @@ namespace Analogy
             _filterCriteria.TextExclude = ceExcludeText.Checked
                 ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon)
                 : string.Empty;
-
-
+            
             Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
             Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude : string.Empty;
-
 
             _filterCriteria.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
@@ -1517,8 +1518,6 @@ namespace Analogy
 
                 _filterCriteria.Modules = includeItems.Select(val => val.Trim()).ToArray();
                 _filterCriteria.ExcludedModules = excludeItems.Select(val => val.Trim()).ToArray();
-
-
             }
             else
             {
