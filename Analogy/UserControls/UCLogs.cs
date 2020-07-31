@@ -1147,44 +1147,6 @@ namespace Analogy
 
         public List<AnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
 
-        private (int total, int error, int warning, int critical, int alerts) GetRowsCount()
-        {
-
-            // Create a data view by applying the grid view row filter
-            try
-            {
-                lockSlim.EnterReadLock();
-
-                string filter = _messageData.DefaultView.RowFilter;
-                if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
-                {
-                    CriteriaOperator op = LogGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
-                    string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
-                    filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
-                }
-
-                var rows = _messageData.Select(filter);
-                var total = rows.Length;
-                var error = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Error.ToString());
-                var warning = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Warning.ToString());
-                var critical = rows.Count(r => r["Level"].ToString() == AnalogyLogLevel.Critical.ToString());
-                var alertCount = 0;
-                if (Settings.PreDefinedQueries.Alerts.Any())
-                {
-                    var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
-                    alertCount = messages.Count(m =>
-                        Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
-
-                }
-
-                return (total, error, warning, critical, alertCount);
-            }
-            finally
-            {
-                lockSlim.ExitReadLock();
-            }
-        }
-
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
             string displayText = string.Empty;
