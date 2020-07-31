@@ -161,7 +161,6 @@
             this.cpeLogLevelDisabled = new DevExpress.XtraEditors.ColorPickEdit();
             this.lblLogLevelUnknown = new DevExpress.XtraEditors.LabelControl();
             this.cpeLogLevelUnknown = new DevExpress.XtraEditors.ColorPickEdit();
-            this.tsSimpleMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtPage = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -305,7 +304,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelTrace.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDisabled.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelUnknown.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).BeginInit();
             this.xtPage.SuspendLayout();
             this.xTabMRU.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).BeginInit();
@@ -1488,7 +1486,6 @@
             this.tpLookAndFeel.Controls.Add(this.lblHighlightColor);
             this.tpLookAndFeel.Controls.Add(this.cpeHighlightColor);
             this.tpLookAndFeel.Controls.Add(this.groupControl2);
-            this.tpLookAndFeel.Controls.Add(this.tsSimpleMode);
             this.tpLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpLookAndFeel.ImageOptions.Image")));
             this.tpLookAndFeel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpLookAndFeel.Name = "tpLookAndFeel";
@@ -1499,7 +1496,7 @@
             // 
             this.cpeNewMessagesColorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeNewMessagesColorText.EditValue = System.Drawing.Color.Empty;
-            this.cpeNewMessagesColorText.Location = new System.Drawing.Point(557, 458);
+            this.cpeNewMessagesColorText.Location = new System.Drawing.Point(557, 431);
             this.cpeNewMessagesColorText.Name = "cpeNewMessagesColorText";
             this.cpeNewMessagesColorText.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.cpeNewMessagesColorText.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1511,7 +1508,7 @@
             // 
             this.cpeHighlightColorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeHighlightColorText.EditValue = System.Drawing.Color.Empty;
-            this.cpeHighlightColorText.Location = new System.Drawing.Point(557, 427);
+            this.cpeHighlightColorText.Location = new System.Drawing.Point(557, 400);
             this.cpeHighlightColorText.Name = "cpeHighlightColorText";
             this.cpeHighlightColorText.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.cpeHighlightColorText.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1523,19 +1520,17 @@
             // 
             this.tsEnableColors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsEnableColors.Enabled = false;
-            this.tsEnableColors.Location = new System.Drawing.Point(14, 41);
+            this.tsEnableColors.Location = new System.Drawing.Point(14, 10);
             this.tsEnableColors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsEnableColors.Name = "tsEnableColors";
             this.tsEnableColors.Properties.OffText = "Colors are disabled";
             this.tsEnableColors.Properties.OnText = "Colors are enabled";
             this.tsEnableColors.Size = new System.Drawing.Size(613, 28);
             this.tsEnableColors.TabIndex = 28;
-            this.tsEnableColors.Visible = false;
             // 
             // ceOverrideLogLevelColor
             // 
-            this.ceOverrideLogLevelColor.Location = new System.Drawing.Point(33, 485);
+            this.ceOverrideLogLevelColor.Location = new System.Drawing.Point(33, 458);
             this.ceOverrideLogLevelColor.Name = "ceOverrideLogLevelColor";
             this.ceOverrideLogLevelColor.Properties.Caption = "New messages Color: Override Log Level Colors";
             this.ceOverrideLogLevelColor.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
@@ -1544,7 +1539,7 @@
             // 
             // ceNewMessagesColor
             // 
-            this.ceNewMessagesColor.Location = new System.Drawing.Point(32, 459);
+            this.ceNewMessagesColor.Location = new System.Drawing.Point(32, 432);
             this.ceNewMessagesColor.Name = "ceNewMessagesColor";
             this.ceNewMessagesColor.Properties.Caption = "New messages Color (for reload or pooling):";
             this.ceNewMessagesColor.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
@@ -1556,7 +1551,7 @@
             // 
             this.cpeNewMessagesColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeNewMessagesColor.EditValue = System.Drawing.Color.Empty;
-            this.cpeNewMessagesColor.Location = new System.Drawing.Point(373, 457);
+            this.cpeNewMessagesColor.Location = new System.Drawing.Point(373, 430);
             this.cpeNewMessagesColor.Name = "cpeNewMessagesColor";
             this.cpeNewMessagesColor.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.cpeNewMessagesColor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1587,9 +1582,9 @@
             // lblHighlightColor
             // 
             this.lblHighlightColor.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.lblHighlightColor.Location = new System.Drawing.Point(32, 427);
+            this.lblHighlightColor.Location = new System.Drawing.Point(32, 400);
             this.lblHighlightColor.Name = "lblHighlightColor";
-            this.lblHighlightColor.Size = new System.Drawing.Size(136, 16);
+            this.lblHighlightColor.Size = new System.Drawing.Size(140, 16);
             this.lblHighlightColor.TabIndex = 21;
             this.lblHighlightColor.Text = "Highlight Color:";
             // 
@@ -1597,7 +1592,7 @@
             // 
             this.cpeHighlightColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cpeHighlightColor.EditValue = System.Drawing.Color.Empty;
-            this.cpeHighlightColor.Location = new System.Drawing.Point(373, 427);
+            this.cpeHighlightColor.Location = new System.Drawing.Point(373, 400);
             this.cpeHighlightColor.Name = "cpeHighlightColor";
             this.cpeHighlightColor.Properties.AutomaticColor = System.Drawing.Color.Black;
             this.cpeHighlightColor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1642,7 +1637,7 @@
             this.groupControl2.Controls.Add(this.cpeLogLevelDisabled);
             this.groupControl2.Controls.Add(this.lblLogLevelUnknown);
             this.groupControl2.Controls.Add(this.cpeLogLevelUnknown);
-            this.groupControl2.Location = new System.Drawing.Point(14, 74);
+            this.groupControl2.Location = new System.Drawing.Point(14, 43);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(770, 348);
             this.groupControl2.TabIndex = 4;
@@ -1791,7 +1786,7 @@
             this.lblLogLevelAnalogyInformation.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelAnalogyInformation.Location = new System.Drawing.Point(18, 310);
             this.lblLogLevelAnalogyInformation.Name = "lblLogLevelAnalogyInformation";
-            this.lblLogLevelAnalogyInformation.Size = new System.Drawing.Size(136, 16);
+            this.lblLogLevelAnalogyInformation.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelAnalogyInformation.TabIndex = 19;
             this.lblLogLevelAnalogyInformation.Text = "AnalogyInformation:";
             // 
@@ -1812,7 +1807,7 @@
             this.lblLogLevelCritical.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelCritical.Location = new System.Drawing.Point(19, 282);
             this.lblLogLevelCritical.Name = "lblLogLevelCritical";
-            this.lblLogLevelCritical.Size = new System.Drawing.Size(135, 16);
+            this.lblLogLevelCritical.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelCritical.TabIndex = 17;
             this.lblLogLevelCritical.Text = "Critical:";
             // 
@@ -1833,7 +1828,7 @@
             this.lblLogLevelError.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelError.Location = new System.Drawing.Point(19, 254);
             this.lblLogLevelError.Name = "lblLogLevelError";
-            this.lblLogLevelError.Size = new System.Drawing.Size(135, 16);
+            this.lblLogLevelError.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelError.TabIndex = 15;
             this.lblLogLevelError.Text = "Error:";
             // 
@@ -1854,7 +1849,7 @@
             this.lblLogLevelWarning.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelWarning.Location = new System.Drawing.Point(19, 226);
             this.lblLogLevelWarning.Name = "lblLogLevelWarning";
-            this.lblLogLevelWarning.Size = new System.Drawing.Size(135, 16);
+            this.lblLogLevelWarning.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelWarning.TabIndex = 13;
             this.lblLogLevelWarning.Text = "Warning:";
             // 
@@ -1875,7 +1870,7 @@
             this.lblLogLevelEvent.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelEvent.Location = new System.Drawing.Point(19, 198);
             this.lblLogLevelEvent.Name = "lblLogLevelEvent";
-            this.lblLogLevelEvent.Size = new System.Drawing.Size(135, 16);
+            this.lblLogLevelEvent.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelEvent.TabIndex = 11;
             this.lblLogLevelEvent.Text = "Event:";
             // 
@@ -1896,7 +1891,7 @@
             this.lblLogLevelDebug.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelDebug.Location = new System.Drawing.Point(19, 170);
             this.lblLogLevelDebug.Name = "lblLogLevelDebug";
-            this.lblLogLevelDebug.Size = new System.Drawing.Size(128, 16);
+            this.lblLogLevelDebug.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelDebug.TabIndex = 9;
             this.lblLogLevelDebug.Text = "Debug:";
             // 
@@ -1917,7 +1912,7 @@
             this.lblLogLevelVerbose.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelVerbose.Location = new System.Drawing.Point(19, 142);
             this.lblLogLevelVerbose.Name = "lblLogLevelVerbose";
-            this.lblLogLevelVerbose.Size = new System.Drawing.Size(135, 16);
+            this.lblLogLevelVerbose.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelVerbose.TabIndex = 7;
             this.lblLogLevelVerbose.Text = "Verbose:";
             // 
@@ -1938,7 +1933,7 @@
             this.lblLogLevelTrace.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelTrace.Location = new System.Drawing.Point(19, 114);
             this.lblLogLevelTrace.Name = "lblLogLevelTrace";
-            this.lblLogLevelTrace.Size = new System.Drawing.Size(124, 16);
+            this.lblLogLevelTrace.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelTrace.TabIndex = 5;
             this.lblLogLevelTrace.Text = "Trace:";
             // 
@@ -1959,7 +1954,7 @@
             this.lblLogLevelDisabled.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelDisabled.Location = new System.Drawing.Point(19, 86);
             this.lblLogLevelDisabled.Name = "lblLogLevelDisabled";
-            this.lblLogLevelDisabled.Size = new System.Drawing.Size(135, 16);
+            this.lblLogLevelDisabled.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelDisabled.TabIndex = 3;
             this.lblLogLevelDisabled.Text = "Disabled:";
             // 
@@ -1980,7 +1975,7 @@
             this.lblLogLevelUnknown.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblLogLevelUnknown.Location = new System.Drawing.Point(19, 58);
             this.lblLogLevelUnknown.Name = "lblLogLevelUnknown";
-            this.lblLogLevelUnknown.Size = new System.Drawing.Size(135, 16);
+            this.lblLogLevelUnknown.Size = new System.Drawing.Size(140, 16);
             this.lblLogLevelUnknown.TabIndex = 1;
             this.lblLogLevelUnknown.Text = "Unknown:";
             // 
@@ -1995,21 +1990,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cpeLogLevelUnknown.Size = new System.Drawing.Size(171, 22);
             this.cpeLogLevelUnknown.TabIndex = 0;
-            // 
-            // tsSimpleMode
-            // 
-            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsSimpleMode.Enabled = false;
-            this.tsSimpleMode.Location = new System.Drawing.Point(14, 10);
-            this.tsSimpleMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsSimpleMode.Name = "tsSimpleMode";
-            this.tsSimpleMode.Properties.OffText = "Use advanced UI (Restart required)";
-            this.tsSimpleMode.Properties.OnText = "Use simplified UI (Restart required)";
-            this.tsSimpleMode.Size = new System.Drawing.Size(613, 28);
-            this.tsSimpleMode.TabIndex = 2;
-            this.tsSimpleMode.Visible = false;
-            this.tsSimpleMode.Toggled += new System.EventHandler(this.tsSimpleMode_Toggled);
             // 
             // xtPage
             // 
@@ -2712,7 +2692,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelTrace.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelDisabled.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpeLogLevelUnknown.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).EndInit();
             this.xtPage.ResumeLayout(false);
             this.xtPage.PerformLayout();
             this.xTabMRU.ResumeLayout(false);
@@ -2774,7 +2753,6 @@
         private DevExpress.XtraEditors.ToggleSwitch tsUserStatistics;
         private DevExpress.XtraEditors.ToggleSwitch tsFileCaching;
         private DevExpress.XtraEditors.GroupControl gcFiltering;
-        private DevExpress.XtraEditors.ToggleSwitch tsSimpleMode;
         private DevExpress.XtraEditors.ToggleSwitch tsStartupRibbonMinimized;
         private DevExpress.XtraEditors.ToggleSwitch tsErrorLevelAsDefault;
         private DevExpress.XtraEditors.CheckEdit chkEditPaging;
