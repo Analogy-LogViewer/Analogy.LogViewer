@@ -53,8 +53,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.sBtnOk);
-            this.splitContainer1.Size = new System.Drawing.Size(852, 452);
-            this.splitContainer1.SplitterDistance = 385;
+            this.splitContainer1.Size = new System.Drawing.Size(1056, 456);
+            this.splitContainer1.SplitterDistance = 388;
             this.splitContainer1.TabIndex = 0;
             // 
             // rtxtbChangeLog
@@ -63,17 +63,17 @@
             this.rtxtbChangeLog.Location = new System.Drawing.Point(0, 0);
             this.rtxtbChangeLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtxtbChangeLog.Name = "rtxtbChangeLog";
-            this.rtxtbChangeLog.Size = new System.Drawing.Size(852, 385);
+            this.rtxtbChangeLog.Size = new System.Drawing.Size(1056, 388);
             this.rtxtbChangeLog.TabIndex = 0;
             this.rtxtbChangeLog.Text = resources.GetString("rtxtbChangeLog.Text");
             // 
             // sBtnOk
             // 
             this.sBtnOk.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sBtnOk.Location = new System.Drawing.Point(786, 0);
+            this.sBtnOk.Location = new System.Drawing.Point(990, 0);
             this.sBtnOk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnOk.Name = "sBtnOk";
-            this.sBtnOk.Size = new System.Drawing.Size(66, 63);
+            this.sBtnOk.Size = new System.Drawing.Size(66, 64);
             this.sBtnOk.TabIndex = 1;
             this.sBtnOk.Text = "OK";
             this.sBtnOk.Click += new System.EventHandler(this.sBtnOk_Click);
@@ -82,13 +82,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 452);
+            this.ClientSize = new System.Drawing.Size(1056, 456);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ChangeLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Change Log (Before releasing as open source)";
+            this.Text = "Change Log";
             this.Load += new System.EventHandler(this.ChangeLog_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

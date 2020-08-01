@@ -1,6 +1,7 @@
 ﻿using Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Analogy
 {
@@ -134,5 +135,9 @@ namespace Analogy
             new AnalogyChangeLog("First release as open source tool.", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2019, 08, 19)),
             };
         }
+
+        public static string GetChangeLogFull => string.Join(Environment.NewLine,
+            GetChangeLog().OrderByDescending(c => c.Date).Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
+
     }
 }
