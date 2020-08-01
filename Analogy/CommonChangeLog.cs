@@ -10,10 +10,11 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("V4.2.6 - [UI] Enable/Disable theme colors for log grids  #282",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,31)),
+                new AnalogyChangeLog("V4.2.6 - Remember last position and state does not retains settings under some condition #283",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,31)),
+                new AnalogyChangeLog("V4.2.6 - [UI] Enable/Disable theme colors for log grids #282",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,31)),
                 new AnalogyChangeLog("V4.2.6 - [UI] Log grid context menu does not respect theme colors #280",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,31)),
                 new AnalogyChangeLog("V4.2.6 - [UI] some UI Elements does not fit to screen in different themes #277",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,31)),
-                new AnalogyChangeLog("V4.2.6 - Searching based on a selected value in a custom column #271",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,30)),
+                new AnalogyChangeLog("V4.2.6 - Searching based on a selected value in a custom column #271",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,30)),
                 new AnalogyChangeLog("V4.2.5 - [Core 3.1] First time run: Fix default user settings for LastUpdate #276",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,25)),
                 new AnalogyChangeLog("V4.2.5 - [UI] Add color Palette to user settings and revamp the UI #273",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),
                 new AnalogyChangeLog("V4.2.5 - [Performance] Reduce the usage of ReaderWriterLockSlim. #272",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,24)),

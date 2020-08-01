@@ -198,7 +198,7 @@
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.barSubItem2);
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1517, 61);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1127, 61);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
             // 
@@ -718,11 +718,11 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 522);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 402);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1517, 37);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1127, 37);
             // 
             // tmrStatusUpdates
             // 
@@ -765,7 +765,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1517, 559);
+            this.ClientSize = new System.Drawing.Size(1127, 439);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
