@@ -39,6 +39,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.1.1" />
 		<PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7.1" />
+
 		<PackageReference Include="LiorBanai.NotificationWindow" Version="1.0.5" />
 		<PackageReference Include="MessagePack" Version="2.1.152" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -76,7 +77,11 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.WhatsApp" Version="1.0.0" >
+		<PackageReference Include="Analogy.LogViewer.WhatsApp" Version="1.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Analogy.LogViewer.VisualStudioLogParser" Version="1.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
