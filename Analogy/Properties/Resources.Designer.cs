@@ -173,6 +173,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Analogy1024x1024 {
+            get {
+                object obj = ResourceManager.GetObject("Analogy1024x1024", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AnalogyDark {
             get {
                 object obj = ResourceManager.GetObject("AnalogyDark", resourceCulture);

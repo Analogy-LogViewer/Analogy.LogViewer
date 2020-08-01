@@ -27,19 +27,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnalogyAboutBox));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
             this.labelCompanyName = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.okButton = new System.Windows.Forms.Button();
+            this.meAbout = new DevExpress.XtraEditors.MemoEdit();
+            this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageAbout = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPageCredit = new DevExpress.XtraTab.XtraTabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPageOrganizations = new DevExpress.XtraTab.XtraTabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblPhilips = new System.Windows.Forms.LinkLabel();
@@ -74,10 +73,12 @@
             this.hyperLinkEdit21 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meAbout.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPageAbout.SuspendLayout();
             this.xtraTabPageCredit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.xtraTabPageOrganizations.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.xtraTabPageDataProviders.SuspendLayout();
@@ -119,8 +120,8 @@
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
-            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 4);
-            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 5);
+            this.tableLayoutPanel.Controls.Add(this.meAbout, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.btnOK, 1, 5);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -138,7 +139,7 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Image = global::Analogy.Properties.Resources.Analogy1024x1024;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 4);
             this.logoPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.logoPictureBox.Name = "logoPictureBox";
@@ -196,30 +197,23 @@
             this.labelCompanyName.Text = "Company Name";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxDescription
+            // meAbout
             // 
-            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Location = new System.Drawing.Point(536, 164);
-            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(7, 4, 3, 4);
-            this.textBoxDescription.Multiline = true;
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDescription.Size = new System.Drawing.Size(503, 196);
-            this.textBoxDescription.TabIndex = 23;
-            this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail: Liorbanai@gmail.com";
+            this.meAbout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.meAbout.EditValue = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail: Liorbanai@gmail.com";
+            this.meAbout.Location = new System.Drawing.Point(532, 163);
+            this.meAbout.Name = "meAbout";
+            this.meAbout.Size = new System.Drawing.Size(507, 198);
+            this.meAbout.TabIndex = 25;
             // 
-            // okButton
+            // btnOK
             // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(952, 371);
-            this.okButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(87, 34);
-            this.okButton.TabIndex = 24;
-            this.okButton.Text = "&OK";
+            this.btnOK.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnOK.Location = new System.Drawing.Point(973, 367);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(66, 39);
+            this.btnOK.TabIndex = 26;
+            this.btnOK.Text = "OK";
             // 
             // xtraTabControl1
             // 
@@ -247,21 +241,19 @@
             // 
             // xtraTabPageCredit
             // 
-            this.xtraTabPageCredit.Controls.Add(this.richTextBox1);
+            this.xtraTabPageCredit.Controls.Add(this.memoEdit1);
             this.xtraTabPageCredit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPageCredit.Name = "xtraTabPageCredit";
             this.xtraTabPageCredit.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPageCredit.Text = "Contributors and Credits";
             // 
-            // richTextBox1
+            // memoEdit1
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1042, 409);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit1.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(1042, 409);
+            this.memoEdit1.TabIndex = 0;
             // 
             // xtraTabPageOrganizations
             // 
@@ -618,7 +610,7 @@
             // 
             // AnalogyAboutBox
             // 
-            this.AcceptButton = this.okButton;
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 465);
@@ -634,12 +626,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Analogy";
             this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meAbout.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPageAbout.ResumeLayout(false);
             this.xtraTabPageCredit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.xtraTabPageOrganizations.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.xtraTabPageDataProviders.ResumeLayout(false);
@@ -681,12 +674,9 @@
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelCopyright;
         private System.Windows.Forms.Label labelCompanyName;
-        private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Button okButton;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageAbout;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageCredit;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageOrganizations;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -719,5 +709,8 @@
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit19;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit20;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit21;
+        private DevExpress.XtraEditors.MemoEdit meAbout;
+        private DevExpress.XtraEditors.SimpleButton btnOK;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
     }
 }

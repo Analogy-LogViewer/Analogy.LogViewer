@@ -32,20 +32,23 @@
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
             this.labelCompanyName = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.okButton = new System.Windows.Forms.Button();
+            this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
-            this.rtxtChangeLog = new System.Windows.Forms.RichTextBox();
+            this.meChangeLog = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.rtxtContributions = new System.Windows.Forms.RichTextBox();
+            this.meContributions = new DevExpress.XtraEditors.MemoEdit();
+            this.meDescription = new DevExpress.XtraEditors.MemoEdit();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.meChangeLog.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.meContributions.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meDescription.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -57,8 +60,8 @@
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
-            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 4);
-            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 5);
+            this.tableLayoutPanel.Controls.Add(this.btnOK, 0, 5);
+            this.tableLayoutPanel.Controls.Add(this.meDescription, 0, 4);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -121,30 +124,14 @@
             this.labelCompanyName.Text = "Company Name";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxDescription
+            // btnOK
             // 
-            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Location = new System.Drawing.Point(7, 164);
-            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(7, 4, 3, 4);
-            this.textBoxDescription.Multiline = true;
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDescription.Size = new System.Drawing.Size(1032, 196);
-            this.textBoxDescription.TabIndex = 23;
-            this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail:  LiorBanai@gmail.com";
-            // 
-            // okButton
-            // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(952, 371);
-            this.okButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(87, 34);
-            this.okButton.TabIndex = 24;
-            this.okButton.Text = "&OK";
+            this.btnOK.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnOK.Location = new System.Drawing.Point(975, 367);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(64, 39);
+            this.btnOK.TabIndex = 24;
+            this.btnOK.Text = "OK";
             // 
             // xtraTabControl1
             // 
@@ -170,42 +157,46 @@
             // 
             // xtraTabPage3
             // 
-            this.xtraTabPage3.Controls.Add(this.rtxtChangeLog);
+            this.xtraTabPage3.Controls.Add(this.meChangeLog);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPage3.Text = "Change Log";
             // 
-            // rtxtChangeLog
+            // meChangeLog
             // 
-            this.rtxtChangeLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtChangeLog.Location = new System.Drawing.Point(0, 0);
-            this.rtxtChangeLog.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rtxtChangeLog.Name = "rtxtChangeLog";
-            this.rtxtChangeLog.Size = new System.Drawing.Size(1042, 409);
-            this.rtxtChangeLog.TabIndex = 1;
-            this.rtxtChangeLog.Text = "";
+            this.meChangeLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.meChangeLog.Location = new System.Drawing.Point(0, 0);
+            this.meChangeLog.Name = "meChangeLog";
+            this.meChangeLog.Size = new System.Drawing.Size(1042, 409);
+            this.meChangeLog.TabIndex = 3;
             // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Controls.Add(this.rtxtContributions);
+            this.xtraTabPage2.Controls.Add(this.meContributions);
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1042, 409);
             this.xtraTabPage2.Text = "Contributions";
             // 
-            // rtxtContributions
+            // meContributions
             // 
-            this.rtxtContributions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtContributions.Location = new System.Drawing.Point(0, 0);
-            this.rtxtContributions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rtxtContributions.Name = "rtxtContributions";
-            this.rtxtContributions.Size = new System.Drawing.Size(1042, 409);
-            this.rtxtContributions.TabIndex = 0;
-            this.rtxtContributions.Text = "";
+            this.meContributions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.meContributions.Location = new System.Drawing.Point(0, 0);
+            this.meContributions.Name = "meContributions";
+            this.meContributions.Size = new System.Drawing.Size(1042, 409);
+            this.meContributions.TabIndex = 0;
+            // 
+            // meDescription
+            // 
+            this.meDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.meDescription.Location = new System.Drawing.Point(3, 163);
+            this.meDescription.Name = "meDescription";
+            this.meDescription.Size = new System.Drawing.Size(1036, 198);
+            this.meDescription.TabIndex = 25;
             // 
             // AboutDataSourceBox
             // 
-            this.AcceptButton = this.okButton;
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 465);
@@ -222,12 +213,14 @@
             this.Text = "Analogy";
             this.Load += new System.EventHandler(this.AboutDataSourceBox_Load);
             this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.meChangeLog.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.meContributions.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meDescription.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,13 +232,13 @@
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelCopyright;
         private System.Windows.Forms.Label labelCompanyName;
-        private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Button okButton;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private System.Windows.Forms.RichTextBox rtxtContributions;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
-        private System.Windows.Forms.RichTextBox rtxtChangeLog;
+        private DevExpress.XtraEditors.SimpleButton btnOK;
+        private DevExpress.XtraEditors.MemoEdit meChangeLog;
+        private DevExpress.XtraEditors.MemoEdit meContributions;
+        private DevExpress.XtraEditors.MemoEdit meDescription;
     }
 }
