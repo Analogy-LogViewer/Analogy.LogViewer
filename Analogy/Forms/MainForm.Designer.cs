@@ -531,6 +531,7 @@
             // 
             this.bbtnStar.Caption = "GitHub";
             this.bbtnStar.Id = 75;
+            this.bbtnStar.ImageOptions.Image = global::Analogy.Properties.Resources.GitHub_Mark_32px;
             this.bbtnStar.Name = "bbtnStar";
             this.bbtnStar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnStar_ItemClick);
             // 
