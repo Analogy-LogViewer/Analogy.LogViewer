@@ -119,19 +119,20 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
-            if (settings.AnalogyPosition.RememberLastPosition && settings.AnalogyPosition.WindowState != FormWindowState.Maximized)
+            if (settings.AnalogyPosition.RememberLastPosition)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
-                if (Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
-                {
-                    Location = settings.AnalogyPosition.Location;
-                    Size = settings.AnalogyPosition.Size;
-                }
-                else
-                {
-                    AnalogyLogger.Instance.LogError("",
-                        $"Last location {settings.AnalogyPosition.Location} is not inside any screen");
-                }
+                if (WindowState != FormWindowState.Maximized)
+                    if (Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
+                    {
+                        Location = settings.AnalogyPosition.Location;
+                        Size = settings.AnalogyPosition.Size;
+                    }
+                    else
+                    {
+                        AnalogyLogger.Instance.LogError("",
+                            $"Last location {settings.AnalogyPosition.Location} is not inside any screen");
+                    }
             }
 
             string framework = string.Empty;
@@ -372,7 +373,7 @@ namespace Analogy
             OpenProcessForm();
         }
 
- 
+
 
         private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataProvider offlineAnalogy,
             string title, List<string> files)
@@ -1620,7 +1621,7 @@ namespace Analogy
         {
             UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
             user.ShowDialog(this);
-  
+
         }
 
         private void btnUserSettings_ItemClick(object sender, ItemClickEventArgs e)
