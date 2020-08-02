@@ -698,6 +698,12 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            bBtnShare.Visibility =
+                FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
+                    .SelectMany(fc => fc.Shareables).Any()
+                    ? BarItemVisibility.Always
+                    : BarItemVisibility.Never;
+
             logGrid.Columns["Level"].SummaryItem.SummaryType = SummaryItemType.Custom;
             logGrid.Columns["Level"].SummaryItem.FieldName = "Level";
             logGrid.OptionsSelection.MultiSelect = true;
