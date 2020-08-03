@@ -360,7 +360,10 @@ namespace Analogy
         {
             return AnalogyIcon == "Dark" ? Resources.AnalogyIconDark : Resources.AnalogyIconLight;
         }
-
+        public Image GetImage()
+        {
+            return AnalogyIcon == "Dark" ? Resources.AnalogyDark : Resources.AnalogyLight;
+        }
 
         public IEnumerable<(Guid ID, string FileName)> GetRecentFiles(Guid offlineAnalogyId) =>
             RecentFiles.Where(itm => itm.ID == offlineAnalogyId);

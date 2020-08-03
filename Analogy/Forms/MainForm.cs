@@ -94,15 +94,17 @@ namespace Analogy
             {
                 e.Cancel = true;
                 Hide();
-                var popupNotifier = new NotificationWindow.PopupNotifier
-                {
-                    TitleText = "Analogy Log Viewer",
-                    ContentText = "Still here... Double click the icon to restore",
-                    IsRightToLeft = false,
-                    Image = Properties.Resources.Analogy_Icon2
+                var alertControl = new DevExpress.XtraBars.Alerter.AlertControl();
 
+                var titleText = "Analogy Log Viewer";
+                var contentText = "Still here... Double click the icon to restore";
+                alertControl.AutoFormDelay = 3000;
+                alertControl.AlertClick += (_, __) =>
+                {
+                    Show();
+                    Focus();
                 };
-                popupNotifier.Popup();
+                alertControl.Show(this, titleText, contentText, settings.GetImage());
             }
             else
             {
