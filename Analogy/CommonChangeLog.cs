@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.6 - [net471] appconfig is missing support for 4.7.1. #290",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,08,03)),
                 new AnalogyChangeLog("V4.2.6 - remove shareable button if no shareable components exists. #284",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,02)),
                 new AnalogyChangeLog("V4.2.6 - Remember last position and state does not retains settings under some condition #283",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,07,31)),
                 new AnalogyChangeLog("V4.2.6 - [UI] Enable/Disable theme colors for log grids #282",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,07,31)),
