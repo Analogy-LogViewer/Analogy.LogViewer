@@ -10,7 +10,7 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/blob/master/LICENSE.md">
     <img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer"  alt="License" />
 </a>
-
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=Analogy-LogViewer/Analogy.LogViewer)](https://dependabot.com)
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"  alt="Latest Release" />
 </a>
