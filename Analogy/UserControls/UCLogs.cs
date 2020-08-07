@@ -460,6 +460,10 @@ namespace Analogy
                 reloadDateTime = FileProcessor.lastNewestMessage;
                 await LoadFilesAsync(LoadedFiles, true, true);
             };
+
+            bbiSaveBookmarks.ItemClick += (_, __) => SaveMessagesToLog(FileDataProvider, BookmarkedMessages);
+
+
         }
 
         private void LogGrid_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
@@ -1410,7 +1414,7 @@ namespace Analogy
 
         }
 
-        public void AcceptChanges(bool forceRefresh)
+        private void AcceptChanges(bool forceRefresh)
         {
             if (!IsHandleCreated) return;
             if (_realtimeUpdate || forceRefresh)
@@ -2533,11 +2537,6 @@ namespace Analogy
         private void sbtnIncludeSources_Click(object sender, EventArgs e)
         {
             txtbSource.Text = "";
-        }
-
-        private async void txtbIncludeSource_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
 

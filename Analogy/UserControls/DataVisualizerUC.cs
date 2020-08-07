@@ -97,7 +97,7 @@ namespace Analogy
             XYDiagram diagram = (XYDiagram)chartControlOnOff.Diagram;
             diagram.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Millisecond;
             diagram.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Hour;
-            diagram.AxisX.Label.DateTimeOptions.Format = DateTimeFormat.ShortTime;
+            diagram.AxisX.Label.TextPattern = "{A:t}";
 
 
             chartControlFrequency.Series.Clear();
@@ -110,7 +110,7 @@ namespace Analogy
             XYDiagram diagram2 = (XYDiagram)chartControlFrequency.Diagram;
             diagram2.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Millisecond;
             diagram2.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Hour;
-            diagram2.AxisX.Label.DateTimeOptions.Format = DateTimeFormat.ShortTime;
+            diagram2.AxisX.Label.TextPattern = "{A:t}";
 
             chartTimeDistribution.Series.Clear();
             chartTimeDistribution.DataSource = CreateTimeDistributionTable(timeDistribution);
@@ -122,7 +122,7 @@ namespace Analogy
             XYDiagram diagram3 = (XYDiagram)chartTimeDistribution.Diagram;
             diagram3.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Millisecond;
             diagram3.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Hour;
-            diagram3.AxisX.Label.DateTimeOptions.Format = DateTimeFormat.LongDate;
+            diagram3.AxisX.Label.TextPattern = "{A:l}";
             diagram3.AxisY.VisualRange.MinValue = 0;
             diagram3.AxisY.VisualRange.MaxValue = 24;
 

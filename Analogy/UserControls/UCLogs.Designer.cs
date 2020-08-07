@@ -232,6 +232,7 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiSaveBookmarks = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -739,9 +740,10 @@ namespace Analogy
             this.bbiIncreaseFontSize,
             this.bbiDecreaseFontSize,
             this.bbiIncludeSource,
-            this.bbiIncludeModule});
+            this.bbiIncludeModule,
+            this.bbiSaveBookmarks});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 61;
+            this.barManager1.MaxItemId = 62;
             // 
             // barTopFiltering
             // 
@@ -1102,6 +1104,7 @@ namespace Analogy
             this.barBookmark.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.barBookmark.FloatLocation = new System.Drawing.Point(566, 323);
             this.barBookmark.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSaveBookmarks),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnopyBookmarked),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnCopyAllBookmarks),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
@@ -2954,6 +2957,15 @@ namespace Analogy
             this.LogGridPopupMenu.Manager = this.barManager1;
             this.LogGridPopupMenu.Name = "LogGridPopupMenu";
             // 
+            // bbiSaveBookmarks
+            // 
+            this.bbiSaveBookmarks.Caption = "Save Bookmarks";
+            this.bbiSaveBookmarks.Id = 61;
+            this.bbiSaveBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.bbiSaveBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiSaveBookmarks.Name = "bbiSaveBookmarks";
+            this.bbiSaveBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3258,5 +3270,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiDecreaseFontSize;
         private DevExpress.XtraBars.BarButtonItem bbiIncludeSource;
         private DevExpress.XtraBars.BarButtonItem bbiIncludeModule;
+        private DevExpress.XtraBars.BarButtonItem bbiSaveBookmarks;
     }
 }
