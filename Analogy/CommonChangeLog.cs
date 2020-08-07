@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+
+                new AnalogyChangeLog( "V4.2.6 - Add + and - shortcuts to open message text details. #293",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,07)),
                 new AnalogyChangeLog("V4.2.6 - Remove dependency on LiorBanai.NotificationWindow assembly. #289",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,03)),
                 new AnalogyChangeLog("V4.2.6 - [net471] appconfig is missing support for 4.7.1. #290",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,08,03)),
                 new AnalogyChangeLog("V4.2.6 - remove shareable button if no shareable components exists. #284",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,02)),

@@ -1,9 +1,9 @@
 ﻿using Analogy.DataSources;
 using Analogy.Interfaces;
+using Analogy.Managers;
 using Analogy.Types;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
-using DevExpress.LookAndFeel;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
@@ -24,7 +24,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Managers;
 
 namespace Analogy
 {
@@ -258,8 +257,23 @@ namespace Analogy
             bbiDatetiemFilterTo.ItemClick += tsmiDateFilterOlder_Click;
             bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
             #endregion
-            logGrid.RowStyle += pmsGridView_RowStyle;
 
+            gridControl.KeyUp += (s, e) =>
+            {
+                Keys excludeModifier = e.KeyCode & ~Keys.Control & ~Keys.Shift & ~Keys.Alt;
+                switch (excludeModifier)
+                {
+                    case Keys.Oemplus:
+                    case Keys.Add:
+                        btswitchExpand.Checked = false;
+                        break;
+                    case Keys.OemMinus:
+                    case Keys.Subtract:
+                        btswitchExpand.Checked = true;
+                        break;
+                }
+            };
+            logGrid.RowStyle += pmsGridView_RowStyle;
             logGrid.MouseDown += LogGrid_MouseDown;
             logGrid.MouseUp += LogGrid_MouseUp;
             LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
@@ -306,7 +320,7 @@ namespace Analogy
             {
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
-                   // LogGrid.ClearColumnsFilter();
+                    // LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
                 }
 
@@ -892,9 +906,9 @@ namespace Analogy
             }
 
             var (backgroundColorLevel, textColorLevel) = Settings.ColorSettings.GetColorForLogLevel(message.Level);
-            e.Appearance.BackColor =backgroundColorLevel;
+            e.Appearance.BackColor = backgroundColorLevel;
             e.Appearance.ForeColor = textColorLevel;
-           
+
             if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
                 message.Date > reloadDateTime)
             {
@@ -1471,7 +1485,7 @@ namespace Analogy
             _filterCriteria.TextExclude = ceExcludeText.Checked
                 ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon)
                 : string.Empty;
-            
+
             Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
             Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude : string.Empty;
 
