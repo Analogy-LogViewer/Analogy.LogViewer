@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog( "V4.2.7 - [Feature] Add Generic XML Parser. #300",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,08,09)),
+                new AnalogyChangeLog( "V4.2.7 - [Feature] Add Generic Json Parser. #299",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,08,09)),
                 new AnalogyChangeLog( "V4.2.6 - Add + and - shortcuts to open message text details. #293",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,07)),
                 new AnalogyChangeLog( "V4.2.6 - [Bookmarks] Add button to save non persist bookmarks. #291",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,07)),
                 new AnalogyChangeLog("V4.2.6 - Remove dependency on LiorBanai.NotificationWindow assembly. #289",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,03)),

@@ -24,12 +24,12 @@
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
 		<PackageTags />
 		<RepositoryType>git</RepositoryType>
-		<Version>4.2.6.1</Version>
+		<Version>4.2.7.0</Version>
 		<Copyright>Lior Banai ©  2020</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<Company>Analogy.LogViewer</Company>
-		<FileVersion>4.2.6.1</FileVersion>
+		<FileVersion>4.2.7.0</FileVersion>
 	</PropertyGroup>
 
 
@@ -39,10 +39,19 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.2.6" />
 		<PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7.4" />
+
 		<PackageReference Include="MessagePack" Version="2.1.152" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="4.6.0" />
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="0.1.1" >
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="0.1.0" >
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Analogy.LogViewer.Example" Version="1.2.9">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
