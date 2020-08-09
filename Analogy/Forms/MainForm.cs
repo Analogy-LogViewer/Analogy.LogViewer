@@ -540,6 +540,9 @@ namespace Analogy
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
                 settingsBtn.ImageOptions.LargeImage = providerSetting.LargeImage ?? Resources.Technology_32x32;
                 XtraForm form = new DataProviderSettingsForm();
+                //var imageSmall = FactoriesManager.Instance.GetSmallImage(providerSetting.ID);
+                //if (imageSmall != null)
+                //    form.Icon = imageSmall;
                 form.Text = "Data Provider Settings: " + providerSetting.Title;
                 form.Controls.Add(providerSetting.DataProviderSettings);
                 providerSetting.DataProviderSettings.Dock = DockStyle.Fill;
