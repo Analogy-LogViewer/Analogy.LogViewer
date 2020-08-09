@@ -539,11 +539,10 @@ namespace Analogy
                 groupSettings.ItemLinks.Add(settingsBtn);
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
                 settingsBtn.ImageOptions.LargeImage = providerSetting.LargeImage ?? Resources.Technology_32x32;
-                XtraForm form = new XtraForm();
+                XtraForm form = new DataProviderSettingsForm();
                 form.Text = "Data Provider Settings: " + providerSetting.Title;
                 form.Controls.Add(providerSetting.DataProviderSettings);
                 providerSetting.DataProviderSettings.Dock = DockStyle.Fill;
-                form.WindowState = FormWindowState.Maximized;
                 form.Closing += async (s, e) => { await providerSetting.SaveSettingsAsync(); };
                 settingsBtn.ItemClick += (sender, e) => { form.ShowDialog(this); };
             }

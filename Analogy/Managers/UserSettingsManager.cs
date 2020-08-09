@@ -372,19 +372,7 @@ namespace Analogy
             RecentFolders.Where(itm => itm.ID == offlineAnalogyId);
 
     }
-    [Serializable]
-    public class LogParserSettingsContainer
-    {
-        public ILogParserSettings NLogParserSettings { get; set; }
-
-        public LogParserSettingsContainer()
-        {
-            NLogParserSettings = new LogParserSettings();
-            NLogParserSettings.Splitter = "|";
-
-        }
-
-    }
+ 
     [Serializable]
     public class ColorSettings
     {
