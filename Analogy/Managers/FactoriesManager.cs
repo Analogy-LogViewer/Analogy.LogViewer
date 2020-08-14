@@ -33,7 +33,8 @@ namespace Analogy
             var currentAssembly = Assembly.GetExecutingAssembly();
             var analogyFactorySetting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyFactory);
             analogyFactorySetting.FactoryName = analogyFactory.Title;
-            FactoryContainer fc = new FactoryContainer(currentAssembly, Environment.CurrentDirectory, analogyFactory, analogyFactorySetting);
+            FactoryContainer fc = new FactoryContainer(currentAssembly, Environment.CurrentDirectory, analogyFactory,
+                analogyFactorySetting);
             fc.AddDataProviderFactory(new AnalogyOfflineDataProviderFactory());
             fc.AddCustomActionFactory(new AnalogyCustomActionFactory());
             BuiltInFactories.Add(fc);
@@ -86,10 +87,12 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogger.Instance.LogException(e, "AddExternalDataSources", $"Error during Initialization of {provider.OptionalTitle}");
+                    AnalogyLogger.Instance.LogException(e, "AddExternalDataSources",
+                        $"Error during Initialization of {provider.OptionalTitle}");
 
                 }
             }
+
             try
             {
                 await Task.WhenAll(initTasks);
@@ -134,7 +137,7 @@ namespace Analogy
                 .Select(res => res.DataProvider);
         }
 
-        public IEnumerable<(string Name, Guid ID)> GetRealTimeDataSourcesNamesAndIds()
+        public IEnumerable<(string Name, Guid ID, Image Image, string Description)> GetRealTimeDataSourcesNamesAndIds()
         {
             foreach (var fc in Factories)
             {
@@ -144,21 +147,22 @@ namespace Analogy
                         dpf.DataProviders.Where(d => d is IAnalogyRealTimeDataProvider);
                     foreach (var analogyDataSource in supported)
                     {
-                        var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
-                        yield return (dpf.Title, dataSource.ID);
+                        var dataSource = (IAnalogyRealTimeDataProvider) analogyDataSource;
+                        yield return (dpf.Title, dataSource.ID, GetLargeImage(dataSource.ID), dpf.Title);
                     }
                 }
             }
         }
 
         public Assembly GetAssemblyOfFactory(IAnalogyFactory factory)
-        {
-            if (BuiltInFactories.Exists(f => f.Factory == factory))
-                return BuiltInFactories.First(f => f.Factory == factory).Assembly;
-            return Factories.Single(f => f.Factory == factory).Assembly;
-        }
+            => BuiltInFactories.Exists(f => f.Factory == factory)
+                ? BuiltInFactories.First(f => f.Factory == factory).Assembly
+                : Factories.Single(f => f.Factory == factory).Assembly;
 
-        public FactoryContainer GetBuiltInFactoryContainer(Guid id) => BuiltInFactories.Single(f => f.Factory.FactoryId == id);
+
+        public FactoryContainer GetBuiltInFactoryContainer(Guid id) =>
+            BuiltInFactories.Single(f => f.Factory.FactoryId == id);
+
         public bool IsBuiltInFactory(IAnalogyFactory factory) => IsBuiltInFactory(factory.FactoryId);
 
         public bool IsBuiltInFactory(Guid factoryId) =>
@@ -210,6 +214,7 @@ namespace Analogy
 
             return null;
         }
+
         public Image GetOnlineConnectedSmallImage(Guid componentId)
         {
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
@@ -237,6 +242,7 @@ namespace Analogy
 
             return null;
         }
+
         public Image GetOnlineDisconnectedLargeImage(Guid componentId)
         {
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
@@ -250,140 +256,7 @@ namespace Analogy
 
             return null;
         }
-        public class ExternalDataProviders
-        {
-            private static readonly AsyncLazy<ExternalDataProviders> _instance =
-                new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders());
 
-            public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
-            public List<FactoryContainer> Factories { get; private set; }
-            public List<(Guid id, IAnalogyComponentImages images)> DataProvidersImages { get; set; }
-
-            private ExternalDataProviders()
-            {
-                DataProvidersImages = new List<(Guid id, IAnalogyComponentImages images)>();
-                Factories = new List<FactoryContainer>();
-                var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
-                    @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList();
-                if (UserSettingsManager.UserSettings.AdditionalProbingLocations != null)
-                {
-                    foreach (string folder in UserSettingsManager.UserSettings.AdditionalProbingLocations)
-                    {
-                        try
-                        {
-                            if (Directory.Exists(folder))
-                                analogyAssemblies.AddRange(Directory.EnumerateFiles(folder, @"*Analogy.LogViewer.*.dll",
-                                    SearchOption.TopDirectoryOnly).ToList());
-                        }
-                        catch (Exception e)
-                        {
-                            AnalogyLogger.Instance.LogException(e, nameof(ExternalDataProviders),
-                                $"Error probing folder {folder}. Error: {e.Message}");
-                        }
-                    }
-
-
-                }
-                foreach (string aFile in analogyAssemblies)
-                {
-                    try
-                    {
-                        string path = Path.GetFullPath(aFile);
-                        Assembly assembly = Assembly.LoadFrom(path);
-                        int index = Instance.ProbingPaths.IndexOf(path);
-                        if (index != -1)
-                            Instance.ProbingPaths[index] = path;
-                        else
-                            Instance.ProbingPaths.Add(path);
-
-                        var types = assembly.GetTypes().ToList();
-
-                        foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
-                        {
-                            var factory = Activator.CreateInstance(f) as IAnalogyFactory;
-                            var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
-                            setting.FactoryName = factory.Title;
-                            FactoryContainer fc = new FactoryContainer(assembly, path, factory, setting);
-                            if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))
-                            {
-                                Factories.Remove(Factories.FirstOrDefault(fa =>
-                                    fa.Factory.FactoryId == factory.FactoryId));
-                            }
-                            Factories.Add(fc);
-
-                        }
-                        foreach (var t in types.Where(aType => aType.GetInterface(nameof(IAnalogyComponentImages)) != null))
-                        {
-                            var images = Activator.CreateInstance(t) as IAnalogyComponentImages;
-                            var factory = Factories.First(f => f.Assembly == assembly);
-                            factory.AddImages(images);
-
-                        }
-
-
-                        foreach (Type aType in types.Where(aType =>
-                            aType.GetInterface(nameof(IAnalogyDataProvidersFactory)) != null))
-                        {
-
-                            var dataProviderFactory = Activator.CreateInstance(aType) as IAnalogyDataProvidersFactory;
-                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == dataProviderFactory?.FactoryId);
-                            factory?.AddDataProviderFactory(dataProviderFactory);
-                        }
-
-                        foreach (Type aType in types.Where(aType =>
-                            aType.GetInterface(nameof(IAnalogyDataProviderSettings)) != null))
-                        {
-
-                            var settings = Activator.CreateInstance(aType) as IAnalogyDataProviderSettings;
-                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == settings?.FactoryId);
-                            factory?.AddDataProvidersSettings(settings);
-                        }
-
-                        foreach (Type aType in types.Where(aType =>
-                            aType.GetInterface(nameof(IAnalogyCustomActionsFactory)) != null))
-                        {
-
-                            var custom = Activator.CreateInstance(aType) as IAnalogyCustomActionsFactory;
-                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == custom?.FactoryId);
-                            factory?.AddCustomActionFactory(custom);
-                        }
-
-                        foreach (Type aType in types.Where(aType =>
-                            aType.GetInterface(nameof(IAnalogyShareableFactory)) != null))
-                        {
-
-                            var share = Activator.CreateInstance(aType) as IAnalogyShareableFactory;
-                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == share?.FactoryId);
-                            factory?.AddShareableFactory(share);
-                        }
-                        foreach (Type aType in types.Where(aType =>
-                            aType.GetInterface(nameof(IAnalogyExtensionsFactory)) != null))
-                        {
-
-                            var extension = Activator.CreateInstance(aType) as IAnalogyExtensionsFactory;
-                            var factory = Factories.FirstOrDefault(f => f.Factory.FactoryId == extension?.FactoryId);
-                            factory?.AddExtensionFactory(extension);
-                        }
-                    }
-                    catch (ReflectionTypeLoadException ex)
-                    {
-                        AnalogyLogManager.Instance.LogError(
-                            $"{aFile}: Error during data providers: {string.Join(",", ex.LoaderExceptions.ToList())}. {aFile})",
-                            nameof(FactoriesManager));
-                    }
-                    catch (Exception e)
-                    {
-                        AnalogyLogManager.Instance.LogError(
-                            $"{aFile}: Error during data providers: {e} ({e.InnerException}. {aFile})",
-                            nameof(FactoriesManager));
-                    }
-
-                }
-
-                Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
-            }
-
-        }
 
         public IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider)
             => GetAllExtensions().Where(e => e.TargetProviderId == dataProvider.ID);
@@ -402,5 +275,15 @@ namespace Analogy
                 }
             }
         }
+
+        public FactoryContainer GetFactory(Guid componentId)
+            => IsBuiltInFactory(componentId)
+                ? BuiltInFactories.FirstOrDefault(f => f.Factory.FactoryId == componentId ||
+                                                       f.DataProvidersFactories.Any(dpf =>
+                                                           dpf.DataProviders.Any(dp => dp.ID == componentId)))
+                : Factories.FirstOrDefault(f => f.Factory.FactoryId == componentId ||
+                                                f.DataProvidersFactories.Any(dpf =>
+                                                    dpf.DataProviders.Any(dp => dp.ID == componentId)));
+
     }
 }

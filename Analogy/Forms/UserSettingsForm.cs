@@ -9,25 +9,33 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using DevExpress.Data.Helpers;
+using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
 {
 
     public partial class UserSettingsForm : XtraForm
     {
-        private struct FactoryCheckItem
+        public struct FactoryCheckItem
         {
-            public string Name;
-            public Guid ID;
+            public string Name { get; }
+            public Guid ID { get; }
+            public string Description { get; }
+            public Image Image { get; }
 
-            public FactoryCheckItem(string name, Guid id)
+            public FactoryCheckItem(string name, Guid id, string description, Image image)
             {
                 Name = name;
                 ID = id;
+                Description = description;
+                Image = image;
             }
 
             public override string ToString() => $"{Name} ({ID})";
@@ -35,6 +43,7 @@ namespace Analogy
 
         private DataTable messageData;
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        public List<FactoryCheckItem> Factories { get; set; } = new List<FactoryCheckItem>();
         private int InitialSelection = -1;
 
         public UserSettingsForm()
@@ -169,7 +178,7 @@ namespace Analogy
             var loaded = FactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
-                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID);
+                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID,realTime.Description,realTime.Image);
                 chkLstItemRealTimeDataSources.Items.Add(itm, startup.Contains(itm.ID));
             }
 
@@ -179,14 +188,17 @@ namespace Analogy
             {
                 FactorySettings factory = Settings.GetFactorySetting(setting);
                 if (factory == null) continue;
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId);
+               var factoryContainer= FactoriesManager.Instance.GetFactory(factory.FactoryId);
+               var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, factoryContainer.Factory.About,image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
             foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {
-
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId);
+                var factoryContainer = FactoriesManager.Instance.GetFactory(factory.FactoryId);
+                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, factoryContainer.Factory.About, image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }
 
@@ -219,14 +231,16 @@ namespace Analogy
             SaveColorsSettings();
             Settings.RecentFilesCount = (int)nudRecentFiles.Value;
             Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
-            List<Guid> order = (from FactoryCheckItem itm in chkLstDataProviderStatus.Items select (itm.ID)).ToList();
-            var checkedItem = chkLstDataProviderStatus.CheckedItems.Cast<FactoryCheckItem>().ToList();
-            foreach (Guid guid in order)
+            List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);
+            foreach (CheckedListBoxItem item in chkLstDataProviderStatus.Items)
             {
+                FactoryCheckItem fci =(FactoryCheckItem) item.Value;
+                order.Add(fci.ID);
+                var guid = fci.ID;
                 var factory = Settings.FactoriesSettings.SingleOrDefault(f => f.FactoryId == guid);
                 if (factory != null)
                 {
-                    factory.Status = checkedItem.Exists(f => f.ID == guid)
+                    factory.Status = item.CheckState==CheckState.Checked
                         ? DataProviderFactoryStatus.Enabled
                         : DataProviderFactoryStatus.Disabled;
                 }
@@ -574,7 +588,7 @@ namespace Analogy
             lboxAlerts.Refresh();
         }
 
-        private void sbtnDeleteAlerts_Click(object sender, EventArgs e)
+        private void btnDeleteAlerts_Click(object sender, EventArgs e)
         {
             if (lboxAlerts.SelectedItem is PreDefineAlert alert)
             {
@@ -584,7 +598,7 @@ namespace Analogy
             }
         }
 
-        private void sbtnFolderProbingBrowse_Click(object sender, EventArgs e)
+        private void btnFolderProbingBrowse_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog folderDlg = new FolderBrowserDialog
             {
@@ -600,13 +614,13 @@ namespace Analogy
             }
         }
 
-        private void sbtnFolderProbingAdd_Click(object sender, EventArgs e)
+        private void btnFolderProbingAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(teFoldersProbing.Text)) return;
             listBoxFoldersProbing.Items.Add(teFoldersProbing.Text);
         }
 
-        private void sbtnDeleteFolderProbing_Click(object sender, EventArgs e)
+        private void btnDeleteFolderProbing_Click(object sender, EventArgs e)
         {
             if (listBoxFoldersProbing.SelectedItem != null)
                 listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
@@ -628,7 +642,7 @@ namespace Analogy
             }
         }
 
-        private void sbtnHeaderSet_Click(object sender, EventArgs e)
+        private void btnHeaderSet_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(teHeader.Text) && teHeader.Tag is DevExpress.XtraGrid.Columns.GridColumn column)
             {
@@ -650,7 +664,7 @@ namespace Analogy
             }
         }
 
-        private void sbtnDateTimeFormat_Click(object sender, EventArgs e)
+        private void btnDateTimeFormat_Click(object sender, EventArgs e)
         {
 
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
