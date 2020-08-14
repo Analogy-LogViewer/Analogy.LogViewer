@@ -39,7 +39,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.2.6" />
 		<PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7.4" />
-		<PackageReference Include="MessagePack" Version="2.1.152" />
+		<PackageReference Include="MessagePack" Version="2.1.165" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="4.6.0" />
@@ -752,7 +752,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
 		<PackageReference Include="Analogy.LogViewer.gRPC">
-			<Version>1.0.0.3</Version>
+			<Version>1.0.1</Version>
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
