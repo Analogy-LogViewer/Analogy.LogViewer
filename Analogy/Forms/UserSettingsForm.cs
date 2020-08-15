@@ -49,7 +49,7 @@ namespace Analogy
         public UserSettingsForm()
         {
             InitializeComponent();
-    
+
 
 
         }
@@ -178,7 +178,7 @@ namespace Analogy
             var loaded = FactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
-                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID,realTime.Description,realTime.Image);
+                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID, realTime.Description, realTime.Image);
                 chkLstItemRealTimeDataSources.Items.Add(itm, startup.Contains(itm.ID));
             }
 
@@ -188,9 +188,9 @@ namespace Analogy
             {
                 FactorySettings factory = Settings.GetFactorySetting(setting);
                 if (factory == null) continue;
-               var factoryContainer= FactoriesManager.Instance.GetFactory(factory.FactoryId);
-               var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, factoryContainer.Factory.About,image);
+                var factoryContainer = FactoriesManager.Instance.GetFactory(factory.FactoryId);
+                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, factoryContainer.Factory.About, image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
@@ -203,8 +203,11 @@ namespace Analogy
             }
 
             //file associations:
-            cbDataProviderAssociation.DataSource = Settings.FactoriesSettings;
-            cbDataProviderAssociation.DisplayMember = "FactoryName";
+
+            cbDataProviderAssociation.Properties.DataSource = Settings.FactoriesSettings;
+            cbDataProviderAssociation.Properties.DisplayMember = "FactoryName";
+            cbDataProviderAssociation.EditValue = Settings.FactoriesSettings.First();
+            //cbDataProviderAssociation.Properties.ValueMember = "ID";
             tsRememberLastOpenedDataProvider.IsOn = Settings.RememberLastOpenedDataProvider;
             lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
@@ -234,13 +237,13 @@ namespace Analogy
             List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);
             foreach (CheckedListBoxItem item in chkLstDataProviderStatus.Items)
             {
-                FactoryCheckItem fci =(FactoryCheckItem) item.Value;
+                FactoryCheckItem fci = (FactoryCheckItem)item.Value;
                 order.Add(fci.ID);
                 var guid = fci.ID;
                 var factory = Settings.FactoriesSettings.SingleOrDefault(f => f.FactoryId == guid);
                 if (factory != null)
                 {
-                    factory.Status = item.CheckState==CheckState.Checked
+                    factory.Status = item.CheckState == CheckState.Checked
                         ? DataProviderFactoryStatus.Enabled
                         : DataProviderFactoryStatus.Disabled;
                 }
@@ -511,7 +514,7 @@ namespace Analogy
 
         private void cbDataProviderAssociation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbDataProviderAssociation.SelectedItem is FactorySettings setting && setting.UserSettingFileAssociations.Any())
+            if (cbDataProviderAssociation.EditValue is FactorySettings setting && setting.UserSettingFileAssociations.Any())
                 txtbDataProviderAssociation.Text = string.Join(",", setting.UserSettingFileAssociations);
             else
                 txtbDataProviderAssociation.Text = string.Empty;
@@ -520,7 +523,7 @@ namespace Analogy
 
         private void btnSetFileAssociation_Click(object sender, EventArgs e)
         {
-            if (cbDataProviderAssociation.SelectedItem is FactorySettings setting)
+            if (cbDataProviderAssociation.EditValue is FactorySettings setting)
                 setting.UserSettingFileAssociations = txtbDataProviderAssociation.Text
                     .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
