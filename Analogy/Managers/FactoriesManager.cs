@@ -276,7 +276,7 @@ namespace Analogy
             }
         }
 
-        public FactoryContainer GetFactory(Guid componentId)
+        public FactoryContainer FactoryContainer(Guid componentId)
             => IsBuiltInFactory(componentId)
                 ? BuiltInFactories.FirstOrDefault(f => f.Factory.FactoryId == componentId ||
                                                        f.DataProvidersFactories.Any(dpf =>

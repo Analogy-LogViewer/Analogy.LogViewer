@@ -14,8 +14,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using DevExpress.Data.Helpers;
-using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
@@ -23,27 +21,10 @@ namespace Analogy
 
     public partial class UserSettingsForm : XtraForm
     {
-        public struct FactoryCheckItem
-        {
-            public string Name { get; }
-            public Guid ID { get; }
-            public string Description { get; }
-            public Image Image { get; }
-
-            public FactoryCheckItem(string name, Guid id, string description, Image image)
-            {
-                Name = name;
-                ID = id;
-                Description = description;
-                Image = image;
-            }
-
-            public override string ToString() => $"{Name} ({ID})";
-        }
+ 
 
         private DataTable messageData;
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
-        public List<FactoryCheckItem> Factories { get; set; } = new List<FactoryCheckItem>();
         private int InitialSelection = -1;
 
         public UserSettingsForm()
@@ -188,7 +169,7 @@ namespace Analogy
             {
                 FactorySettings factory = Settings.GetFactorySetting(setting);
                 if (factory == null) continue;
-                var factoryContainer = FactoriesManager.Instance.GetFactory(factory.FactoryId);
+                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
@@ -197,7 +178,7 @@ namespace Analogy
             //add missing:
             foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {
-                var factoryContainer = FactoriesManager.Instance.GetFactory(factory.FactoryId);
+                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
