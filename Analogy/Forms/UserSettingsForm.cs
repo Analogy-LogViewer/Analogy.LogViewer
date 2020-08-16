@@ -189,16 +189,18 @@ namespace Analogy
                 FactorySettings factory = Settings.GetFactorySetting(setting);
                 if (factory == null) continue;
                 var factoryContainer = FactoriesManager.Instance.GetFactory(factory.FactoryId);
+                string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, factoryContainer.Factory.About, image);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
             foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {
                 var factoryContainer = FactoriesManager.Instance.GetFactory(factory.FactoryId);
+                string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, factoryContainer.Factory.About, image);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }
 

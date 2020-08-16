@@ -49,14 +49,11 @@ namespace Analogy.Managers
             {
                 try
                 {
-                    string path = Path.GetFullPath(aFile);
-                    Assembly assembly = Assembly.LoadFrom(path);
-                    int index = FactoriesManager.Instance.ProbingPaths.IndexOf(path);
-                    if (index != -1)
-                        FactoriesManager.Instance.ProbingPaths[index] = path;
-                    else
+                    string fileName = Path.GetFullPath(aFile);
+                    string path = Path.GetDirectoryName(aFile);
+                    Assembly assembly = Assembly.LoadFrom(fileName);
+                    if (!FactoriesManager.Instance.ProbingPaths.Contains(path))
                         FactoriesManager.Instance.ProbingPaths.Add(path);
-
                     var types = assembly.GetTypes().ToList();
 
                     foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
@@ -64,7 +61,7 @@ namespace Analogy.Managers
                         var factory = Activator.CreateInstance(f) as IAnalogyFactory;
                         var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
                         setting.FactoryName = factory.Title;
-                        FactoryContainer fc = new FactoryContainer(assembly, path, factory, setting);
+                        FactoryContainer fc = new FactoryContainer(assembly, fileName, factory, setting);
                         if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))
                         {
                             Factories.Remove(Factories.FirstOrDefault(fa =>
