@@ -204,6 +204,8 @@ namespace Analogy
             {
                 bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.LastVersionChecked.TagName;
             }
+            //FirstTimeRunForm f=new FirstTimeRunForm();
+            //f.ShowDialog(this);
         }
 
         private void SetupEventHandlers()
