@@ -752,5 +752,17 @@ namespace Analogy.Properties {
                 this["FirstRun"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowMessageDetails {
+            get {
+                return ((bool)(this["ShowMessageDetails"]));
+            }
+            set {
+                this["ShowMessageDetails"] = value;
+            }
+        }
     }
 }

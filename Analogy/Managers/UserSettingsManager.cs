@@ -93,7 +93,7 @@ namespace Analogy
         public BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; }
         public string ApplicationSvgPaletteName { get; set; }
         public LookAndFeelStyle ApplicationStyle { get; set; } = LookAndFeelStyle.Skin;
-
+        public bool ShowMessageDetails { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -192,6 +192,8 @@ namespace Analogy
             {
                 BuiltInSearchPanelMode = result;
             }
+
+            ShowMessageDetails = Settings.Default.ShowMessageDetails;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -269,6 +271,7 @@ namespace Analogy
             Settings.Default.BuiltInSearchPanelMode = BuiltInSearchPanelMode.ToString();
             Settings.Default.ApplicationStyle = ApplicationStyle.ToString();
             Settings.Default.ApplicationSvgPaletteName = ApplicationSvgPaletteName;
+            Settings.Default.ShowMessageDetails = ShowMessageDetails;
             Settings.Default.Save();
 
         }
@@ -372,7 +375,7 @@ namespace Analogy
             RecentFolders.Where(itm => itm.ID == offlineAnalogyId);
 
     }
- 
+
     [Serializable]
     public class ColorSettings
     {

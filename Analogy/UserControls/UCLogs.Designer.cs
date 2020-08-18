@@ -65,7 +65,7 @@ namespace Analogy
             this.bBtnClearLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnRemoveBoomark = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnReload = new DevExpress.XtraBars.BarButtonItem();
-            this.btswitchExpand = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.btswitchMessageDetails = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.barSubItemSaveLog = new DevExpress.XtraBars.BarSubItem();
@@ -94,6 +94,7 @@ namespace Analogy
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bdcMessageBottom = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barBookmark = new DevExpress.XtraBars.Bar();
+            this.bbiSaveBookmarks = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnopyBookmarked = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnCopyAllBookmarks = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -232,7 +233,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bbiSaveBookmarks = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -688,7 +688,7 @@ namespace Analogy
             this.barManager1.DockControls.Add(this.standaloneBarDockControlLeft);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btswitchExpand,
+            this.btswitchMessageDetails,
             this.btswitchRefreshLog,
             this.bBtnSaveLog,
             this.bBtnImport,
@@ -756,7 +756,7 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemoveBoomark),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnReload),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btswitchExpand),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btswitchMessageDetails),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
@@ -805,13 +805,15 @@ namespace Analogy
             this.bbtnReload.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnReload.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
-            // btswitchExpand
+            // btswitchMessageDetails
             // 
-            this.btswitchExpand.Caption = "Expand";
-            this.btswitchExpand.Hint = "Show/Hide selected message details (CTRL+D)";
-            this.btswitchExpand.Id = 2;
-            this.btswitchExpand.Name = "btswitchExpand";
-            this.btswitchExpand.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btswitchExpand_CheckedChanged);
+            this.btswitchMessageDetails.BindableChecked = true;
+            this.btswitchMessageDetails.Caption = "Message Details";
+            this.btswitchMessageDetails.Checked = true;
+            this.btswitchMessageDetails.Hint = "Show/Hide selected message details (CTRL+D)";
+            this.btswitchMessageDetails.Id = 2;
+            this.btswitchMessageDetails.Name = "btswitchMessageDetails";
+            this.btswitchMessageDetails.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btswitchExpand_CheckedChanged);
             // 
             // btswitchRefreshLog
             // 
@@ -1118,6 +1120,15 @@ namespace Analogy
             this.barBookmark.OptionsBar.UseWholeRow = true;
             this.barBookmark.StandaloneBarDockControl = this.bdcBookmarks;
             this.barBookmark.Text = "Custom 5";
+            // 
+            // bbiSaveBookmarks
+            // 
+            this.bbiSaveBookmarks.Caption = "Save Bookmarks";
+            this.bbiSaveBookmarks.Id = 61;
+            this.bbiSaveBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveBookmarks.ImageOptions.Image")));
+            this.bbiSaveBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveBookmarks.ImageOptions.LargeImage")));
+            this.bbiSaveBookmarks.Name = "bbiSaveBookmarks";
+            this.bbiSaveBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bBtnopyBookmarked
             // 
@@ -2957,15 +2968,6 @@ namespace Analogy
             this.LogGridPopupMenu.Manager = this.barManager1;
             this.LogGridPopupMenu.Name = "LogGridPopupMenu";
             // 
-            // bbiSaveBookmarks
-            // 
-            this.bbiSaveBookmarks.Caption = "Save Bookmarks";
-            this.bbiSaveBookmarks.Id = 61;
-            this.bbiSaveBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiSaveBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.bbiSaveBookmarks.Name = "bbiSaveBookmarks";
-            this.bbiSaveBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3145,7 +3147,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarToggleSwitchItem btswitchExpand;
+        private DevExpress.XtraBars.BarToggleSwitchItem btswitchMessageDetails;
         private DevExpress.XtraBars.BarButtonItem bBtnSaveLog;
         private DevExpress.XtraBars.BarButtonItem bBtnImport;
         private DevExpress.XtraBars.BarButtonItem bBtnClearLog;

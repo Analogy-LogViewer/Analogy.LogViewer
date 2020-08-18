@@ -265,11 +265,13 @@ namespace Analogy
                 {
                     case Keys.Oemplus:
                     case Keys.Add:
-                        btswitchExpand.Checked = false;
+                        btswitchMessageDetails.Checked = true;
+                        Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
                         break;
                     case Keys.OemMinus:
                     case Keys.Subtract:
-                        btswitchExpand.Checked = true;
+                        btswitchMessageDetails.Checked = false;
+                        Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
                         break;
                 }
             };
@@ -637,7 +639,8 @@ namespace Analogy
             KeyEventArgs e = new KeyEventArgs(keyData);
             if (e.Control && e.KeyCode == Keys.D)
             {
-                btswitchExpand.Checked = !btswitchExpand.Checked;
+                btswitchMessageDetails.Checked = !btswitchMessageDetails.Checked;
+                Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
                 return true;
             }
 
@@ -771,8 +774,8 @@ namespace Analogy
             btswitchRefreshLog.Checked = true;
             gridColumnCategory.Visible = false;
             LogGrid.BestFitColumns();
-            btswitchExpand.Checked = true;
-            splitContainerMain.Collapsed = true;
+            btswitchMessageDetails.Checked = Settings.ShowMessageDetails;
+            splitContainerMain.Collapsed = !Settings.ShowMessageDetails;
             if (Settings.StartupErrorLogLevel)
                 chkLstLogLevel.Items[1].CheckState = CheckState.Checked;
             LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSize);
@@ -1765,7 +1768,8 @@ namespace Analogy
 
             _bookmarkedMessages.Rows.Add(dtr);
             _bookmarkedMessages.AcceptChanges();
-            btswitchExpand.Checked = true;
+            btswitchMessageDetails.Checked = true;
+            Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
             splitContainerMain.Collapsed = false;
             tcBottom.SelectedTabPage = xtpBookmarks;
             if (persists)
@@ -1901,7 +1905,8 @@ namespace Analogy
 
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            splitContainerMain.Collapsed = btswitchExpand.Checked;
+            Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
+            splitContainerMain.Collapsed = !btswitchMessageDetails.Checked;
         }
 
         private void btswitchRefreshLog_CheckedChanged(object sender, ItemClickEventArgs e)
