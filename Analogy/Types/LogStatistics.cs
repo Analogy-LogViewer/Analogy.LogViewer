@@ -28,7 +28,7 @@ namespace Analogy
         {
             var total = Messages.Count;
             List<Statistics> items = new List<Statistics>();
-            items.Add(new Statistics("Total messages", total));
+            //items.Add(new Statistics("Total messages", total));
             foreach (string text in Texts)
             {
                 items.Add(new Statistics(text, Messages.Count(m => m.Text.Contains(text, StringComparison.InvariantCultureIgnoreCase))));
