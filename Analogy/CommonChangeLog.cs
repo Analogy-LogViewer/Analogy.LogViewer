@@ -11,12 +11,12 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog( "V4.2.7 - Remember show message details settings. #322",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,18)),
-                new AnalogyChangeLog( "V4.2.7 - [Data Providers] Add gRPC provider to core 3.1 version. #319",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,13)),
-                new AnalogyChangeLog( "V4.2.7 - [Feature] Add Generic XML Parser. #300",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,08,09)),
-                new AnalogyChangeLog( "V4.2.7 - [Feature] Add Generic Json Parser. #299",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,08,09)),
-                new AnalogyChangeLog( "V4.2.6 - Add + and - shortcuts to open message text details. #293",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,07)),
-                new AnalogyChangeLog( "V4.2.6 - [Bookmarks] Add button to save non persist bookmarks. #291",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,07)),
+                new AnalogyChangeLog("V4.2.7 - Remember show message details settings. #322",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,18)),
+                new AnalogyChangeLog("V4.2.7 - [Data Providers] Add gRPC provider to core 3.1 version. #319",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,13)),
+                new AnalogyChangeLog("V4.2.7 - [Feature] Add Generic XML Parser. #300",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,08,09)),
+                new AnalogyChangeLog("V4.2.7 - [Feature] Add Generic Json Parser. #299",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,08,09)),
+                new AnalogyChangeLog("V4.2.6 - Add + and - shortcuts to open message text details. #293",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,07)),
+                new AnalogyChangeLog("V4.2.6 - [Bookmarks] Add button to save non persist bookmarks. #291",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,07)),
                 new AnalogyChangeLog("V4.2.6 - Remove dependency on LiorBanai.NotificationWindow assembly. #289",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,03)),
                 new AnalogyChangeLog("V4.2.6 - [net471] appconfig is missing support for 4.7.1. #290",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,08,03)),
                 new AnalogyChangeLog("V4.2.6 - remove shareable button if no shareable components exists. #284",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,02)),
