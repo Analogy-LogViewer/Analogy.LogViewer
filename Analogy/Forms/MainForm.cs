@@ -652,16 +652,17 @@ namespace Analogy
                             realTime.OnMessageReady += OnRealTimeOnMessageReady;
                             realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                             realTime.OnDisconnected += OnRealTimeDisconnected;
-                            realTime.StartReceiving();
+                            await realTime.StartReceiving();
                             onlineDataSourcesMapping.Add(page, realTime);
-                            void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
+
+                            async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                             {
                                 if (arg.Panel == page)
                                 {
                                     try
                                     {
                                         onlineUC.Enable = false;
-                                        realTime.StopReceiving();
+                                        await realTime.StopReceiving();
                                         realTime.OnMessageReady -= OnRealTimeOnMessageReady;
                                         realTime.OnManyMessagesReady -= OnRealTimeOnOnManyMessagesReady;
                                         realTime.OnDisconnected -= OnRealTimeDisconnected;
@@ -1377,18 +1378,18 @@ namespace Analogy
                     realTime.OnMessageReady += OnRealTimeOnMessageReady;
                     realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                     realTime.OnDisconnected += OnRealTimeDisconnected;
-                    realTime.StartReceiving();
+                    await realTime.StartReceiving();
                     onlineDataSourcesMapping.Add(page, realTime);
                     dockManager1.ActivePanel = page;
 
-                    void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
+                    async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                     {
                         if (arg.Panel == page)
                         {
                             try
                             {
                                 onlineUC.Enable = false;
-                                realTime.StopReceiving();
+                                await realTime.StopReceiving();
                                 realTime.OnMessageReady -= OnRealTimeOnMessageReady;
                                 realTime.OnManyMessagesReady -= OnRealTimeOnOnManyMessagesReady;
                                 realTime.OnDisconnected -= OnRealTimeDisconnected;

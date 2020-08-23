@@ -1478,8 +1478,8 @@ namespace Analogy
             if (txtbModule.Text == txtbModule.Properties.NullText)
                 txtbModule.Text = string.Empty;
 
-            string include = txtbInclude.Text;
-            string exclude = txtbExclude.Text;
+            string include = txtbInclude.Text.Trim();
+            string exclude = txtbExclude.Text.Trim();
             if (!autoCompleteInclude.Contains(include))
                 autoCompleteInclude.Add(include);
             if (!autoCompleteExclude.Contains(exclude))
@@ -1488,13 +1488,13 @@ namespace Analogy
             Settings.AddNewSearchesEntryToLists(exclude, false);
             _filterCriteria.NewerThan = ceNewerThanFilter.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteria.OlderThan = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
-            _filterCriteria.TextInclude = ceIncludeText.Checked ? txtbInclude.Text : string.Empty;
+            _filterCriteria.TextInclude = ceIncludeText.Checked ? txtbInclude.Text.Trim() : string.Empty;
             _filterCriteria.TextExclude = ceExcludeText.Checked
-                ? txtbExclude.Text + "|" + string.Join("|", _excludeMostCommon)
+                ? txtbExclude.Text.Trim() + "|" + string.Join("|", _excludeMostCommon)
                 : string.Empty;
 
-            Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude : string.Empty;
-            Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude : string.Empty;
+            Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude.Trim() : string.Empty;
+            Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude.Trim() : string.Empty;
 
             _filterCriteria.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
@@ -1519,7 +1519,8 @@ namespace Analogy
 
             if (ceSources.Checked && !string.IsNullOrEmpty(txtbSource.Text))
             {
-                var items = txtbSource.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var items = txtbSource.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(v => v.Trim()).ToList();
                 var includeItems = items.Where(i => !i.StartsWith("-"));
                 var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
                     .Select(i => i.Substring(1, i.Length - 1));
@@ -1538,7 +1539,8 @@ namespace Analogy
             if (ceModulesProcess.Checked && !string.IsNullOrEmpty(txtbModule.Text))
             {
 
-                var items = txtbModule.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var items = txtbModule.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(v => v.Trim()).ToList();
                 var includeItems = items.Where(i => !i.StartsWith("-"));
                 var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
                     .Select(i => i.Substring(1, i.Length - 1));

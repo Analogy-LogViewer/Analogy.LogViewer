@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.7 - [Filtering] append logic is incorrect. #330",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,08,23)),
+                new AnalogyChangeLog("V4.2.7 - Make IAnalogyRealTimeDataProvider Async. #329",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,23)),
                 new AnalogyChangeLog("V4.2.7 - Remember show message details settings. #322",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,18)),
                 new AnalogyChangeLog("V4.2.7 - [Data Providers] Add gRPC provider to core 3.1 version. #319",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,13)),
                 new AnalogyChangeLog("V4.2.7 - [Feature] Add Generic XML Parser. #300",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,08,09)),
