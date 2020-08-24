@@ -598,6 +598,17 @@ namespace Analogy
         public void ProcessCmdKeyFromParent(Keys keyData)
         {
             KeyEventArgs e = new KeyEventArgs(keyData);
+            if (e.Control && e.KeyCode == Keys.D)
+            {
+                btswitchMessageDetails.Checked = !btswitchMessageDetails.Checked;
+                Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
+                return;
+            }
+            if (e.Control && e.KeyCode == Keys.R)
+            {
+                btswitchRefreshLog.Checked = !btswitchRefreshLog.Checked;
+                return;
+            }
             if (e.Control && e.KeyCode == Keys.F)
             {
                 rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
@@ -613,11 +624,6 @@ namespace Analogy
                 rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             }
 
-            //if (e.Shift && e.KeyCode == Keys.F)
-            //{
-            //    xtcFiltersLeft.SelectedTabPage = xtpFilters;
-            //    txtbInclude.Focus();
-            //}
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
@@ -643,7 +649,11 @@ namespace Analogy
                 Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
                 return true;
             }
-
+            if (e.Control && e.KeyCode == Keys.R)
+            {
+                btswitchRefreshLog.Checked = !btswitchRefreshLog.Checked;
+                return true;
+            }
 
             if (e.Control && e.KeyCode == Keys.F)
             {
@@ -661,13 +671,6 @@ namespace Analogy
                 rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
                 return true;
             }
-
-            //if (e.Shift && e.KeyCode == Keys.F)
-            //{
-            //    xtcFiltersLeft.SelectedTabPage = xtpFilters;
-            //    txtbInclude.Focus();
-            //    return true;
-            //}
 
             if (e.Alt && e.KeyCode == Keys.E)
             {
