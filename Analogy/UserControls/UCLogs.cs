@@ -1430,10 +1430,9 @@ namespace Analogy
                     lockSlim.EnterWriteLock();
                     try
                     {
-                        LogGrid.BeginDataUpdate();
+                       // LogGrid.BeginDataUpdate();
                         _messageData.AcceptChanges();
-                        LogGrid.EndDataUpdate();
-                        //RefreshUIMessagesCount();
+                       // LogGrid.EndDataUpdate();
                     }
                     finally
                     {

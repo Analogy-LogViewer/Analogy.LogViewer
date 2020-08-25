@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.7 - [Real time logs] Focus is stolen on every refresh #357",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,08,25)),
                 new AnalogyChangeLog("V4.2.7 - [Real time logs] add keyboard shortcut to toggle pause/Resume refresh of logs #355",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,24)),
                 new AnalogyChangeLog("V4.2.7 - [Filtering] append logic is incorrect. #330",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,08,23)),
                 new AnalogyChangeLog("V4.2.7 - Make IAnalogyRealTimeDataProvider Async. #329",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,23)),
