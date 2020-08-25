@@ -27,8 +27,6 @@
 
 [Logs Analysis and Visualizers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#logs-analysis-and-visualizers)
 
-[Dependencies and Build](https://github.com/Analogy-LogViewer/Analogy.LogViewer#dependencies--build)
-
 [Issues](https://github.com/Analogy-LogViewer/Analogy.LogViewer#issues)
 
 [Contact](https://github.com/Analogy-LogViewer/Analogy.LogViewer#contact)
@@ -59,8 +57,10 @@ Main interaction UI:
 
 ## Usage
 
-While there already [some implementations](https://github.com/Analogy-LogViewer/Overview#data-providers) for common logs files/frameworks, the primary usage of this application is to implement your own data providers of logs for your own business domain by implementing few interfaces
+The application has built in data providers: [see implementations](https://github.com/Analogy-LogViewer/Analogy#log-viewer-application) for common logs files/frameworks.
+There is also real time windows service that can be used for consolidate messages from different processes.
 
+Yuo can alsos create your own providers:
 to implement a new data provider do the following:
 
 0. Create new  cs project and make sure your assembly is named Analogy.LogViewer.*.dll.
@@ -152,12 +152,6 @@ The application has some analyzers and visualization.
 
 - Pie Charts: shows pie charts per source/module/log level.
 ![Pie Charts](Assets/AnalogyPie.jpg)
-
-## Dependencies & Build
-- Main Application UI is complied to .Net Framework 4.7.2 and to .Net Core 3.1.
-The projects targets .Net Framework 4.7.2/Core 3.0 . The supported version of Visual studio for this framework is Visual studio 2017 (or above).
-After successfull build any custom data source assemblies should be placed at the same folder as the executable (Analogy.exe) with the folowing pattern Analogy.LogViewer.*.dll
-- Analogy Interfaces assembly is complied to .Net Standard 2.0.
 
 
 ## Issues
