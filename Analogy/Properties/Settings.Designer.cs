@@ -425,7 +425,7 @@ namespace Analogy.Properties {
             "d3f2d04\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"Analogy Ex" +
             "amples\",\"FactoryId\":\"4b1ebc0f-64dd-44a1-bc27-79dbfc6384cc\",\"UserSettingFileAssoc" +
             "iations\":[],\"Status\":2},{\"FactoryName\":\"gRPC Receiver\",\"FactoryId\":\"9bd37cc2-daa" +
-            "7-4d17-974c-01ef3f3c79ba\",\"UserSettingFileAssociations\":[],\"Status\":2},{\"Factory" +
+            "7-4d17-974c-01ef3f3c79ba\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"Factory" +
             "Name\":\"IIS Parser\",\"FactoryId\":\"ad7187b1-bd09-4bfe-a28b-3fd3de879009\",\"UserSetti" +
             "ngFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"Json Log Parser\",\"FactoryId\":" +
             "\"d7146342-aeb2-4bd5-8710-7d1bf06ea5cf\",\"UserSettingFileAssociations\":[],\"Status\"" +
@@ -443,7 +443,9 @@ namespace Analogy.Properties {
             ",\"UserSettingFileAssociations\":[],\"Status\":2},{\"FactoryName\":\"Windows Event logs" +
             "\",\"FactoryId\":\"3999db4c-0e22-4795-92c1-61b05edb3f6c\",\"UserSettingFileAssociation" +
             "s\":[],\"Status\":1},{\"FactoryName\":\"XML Text Parser\",\"FactoryId\":\"9652600e-1b14-48" +
-            "12-bcec-9a6194db9aea\",\"UserSettingFileAssociations\":[],\"Status\":1}]")]
+            "12-bcec-9a6194db9aea\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryName" +
+            "\":\"Git History\",\"FactoryId\":\"b842cc0f-ad83-48fb-8394-3189f9a75024\",\"UserSettingF" +
+            "ileAssociations\":[],\"Status\":2}]")]
         public string FactoriesSettings {
             get {
                 return ((string)(this["FactoriesSettings"]));
