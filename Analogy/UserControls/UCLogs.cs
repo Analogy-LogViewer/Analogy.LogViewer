@@ -55,7 +55,7 @@ namespace Analogy
         private List<string> _excludeMostCommon = new List<string>();
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
-
+        private bool _simpleMode;
         private ReaderWriterLockSlim lockExternalWindowsObject =
             new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
 
@@ -127,7 +127,7 @@ namespace Analogy
         {
 
             InitializeComponent();
-
+            _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
             foreach (string value in logLevels)
             {
@@ -722,6 +722,7 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            xtcFilters.Visible = !_simpleMode;
             bBtnShare.Visibility =
                 FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
                     .SelectMany(fc => fc.Shareables).Any()

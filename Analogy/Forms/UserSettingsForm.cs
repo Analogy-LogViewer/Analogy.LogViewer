@@ -4,24 +4,23 @@ using Analogy.Properties;
 using Analogy.Types;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
 {
 
     public partial class UserSettingsForm : XtraForm
     {
- 
+
 
         private DataTable messageData;
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
@@ -124,6 +123,7 @@ namespace Analogy
         }
         private void LoadSettings()
         {
+            tsSimpleMode.IsOn = Settings.SimpleMode;
             tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
             tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
@@ -215,6 +215,7 @@ namespace Analogy
         private void SaveSetting()
         {
             SaveColorsSettings();
+            Settings.SimpleMode = tsSimpleMode.IsOn;
             Settings.RecentFilesCount = (int)nudRecentFiles.Value;
             Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
             List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);

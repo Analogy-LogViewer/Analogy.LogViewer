@@ -93,6 +93,7 @@ namespace Analogy
         public string ApplicationSvgPaletteName { get; set; }
         public LookAndFeelStyle ApplicationStyle { get; set; } = LookAndFeelStyle.Skin;
         public bool ShowMessageDetails { get; set; }
+        public bool SimpleMode { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -155,6 +156,7 @@ namespace Analogy
             RememberLastSearches = Settings.Default.RememberLastSearches;
             LastSearchesInclude = ParseSettings<List<string>>(Settings.Default.LastSearchesInclude);
             LastSearchesExclude = ParseSettings<List<string>>(Settings.Default.LastSearchesExclude);
+            SimpleMode = Settings.Default.SimpleMode;
             NumberOfLastSearches = Settings.Default.NumberOfLastSearches;
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
             SingleInstance = Settings.Default.SingleInstance;
@@ -274,6 +276,7 @@ namespace Analogy
             Settings.Default.ApplicationStyle = ApplicationStyle.ToString();
             Settings.Default.ApplicationSvgPaletteName = ApplicationSvgPaletteName;
             Settings.Default.ShowMessageDetails = ShowMessageDetails;
+            Settings.Default.SimpleMode = SimpleMode;
             Settings.Default.Save();
 
         }
