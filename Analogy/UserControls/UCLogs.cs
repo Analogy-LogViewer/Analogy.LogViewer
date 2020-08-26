@@ -413,7 +413,7 @@ namespace Analogy
             txtbExclude.TextChanged += async (s, e) =>
             {
                 if (OldTextExclude.Equals(txtbExclude.Text)) return;
-                Settings.ExcludedText = txtbExclude.Text;
+                Settings.ExcludeText = txtbExclude.Text;
                 OldTextExclude = txtbExclude.Text;
                 if (string.IsNullOrEmpty(txtbExclude.Text))
                 {
@@ -769,7 +769,7 @@ namespace Analogy
             if (Settings.SaveSearchFilters)
             {
                 txtbInclude.Text = Settings.IncludeText;
-                txtbExclude.Text = Settings.ExcludedText;
+                txtbExclude.Text = Settings.ExcludeText;
                 txtbSource.Text = Settings.SourceText;
                 txtbModule.Text = Settings.ModuleText;
             }
@@ -1430,9 +1430,9 @@ namespace Analogy
                     lockSlim.EnterWriteLock();
                     try
                     {
-                       // LogGrid.BeginDataUpdate();
+                        // LogGrid.BeginDataUpdate();
                         _messageData.AcceptChanges();
-                       // LogGrid.EndDataUpdate();
+                        // LogGrid.EndDataUpdate();
                     }
                     finally
                     {
@@ -1495,8 +1495,8 @@ namespace Analogy
                 ? txtbExclude.Text.Trim() + "|" + string.Join("|", _excludeMostCommon)
                 : string.Empty;
 
-            Settings.IncludeText = Settings.SaveSearchFilters ? _filterCriteria.TextInclude.Trim() : string.Empty;
-            Settings.ExcludedText = Settings.SaveSearchFilters ? _filterCriteria.TextExclude.Trim() : string.Empty;
+            Settings.IncludeText = Settings.SaveSearchFilters ? txtbInclude.Text : string.Empty;
+            Settings.ExcludeText = Settings.SaveSearchFilters ? txtbExclude.Text : string.Empty;
 
             _filterCriteria.Levels = null;
             if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)

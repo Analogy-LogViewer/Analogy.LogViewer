@@ -1,10 +1,10 @@
 ﻿using Analogy.DataProviders;
 using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
+using DevExpress.LookAndFeel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using DevExpress.LookAndFeel;
 
 namespace Analogy
 {
@@ -30,7 +29,7 @@ namespace Analogy
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
         public bool SaveSearchFilters { get; set; }
         public string IncludeText { get; set; }
-        public string ExcludedText { get; set; }
+        public string ExcludeText { get; set; }
 
         public string SourceText { get; set; }
         public string ModuleText { get; set; }
@@ -119,7 +118,8 @@ namespace Analogy
             AnalogyRunningTime = Settings.Default.AnalogyRunningTime;
             AnalogyLaunches = Settings.Default.AnalogyLaunchesCount;
             AnalogyOpenedFiles = Settings.Default.OpenFilesCount;
-            ExcludedText = Settings.Default.ModuleText;
+            ExcludeText = Settings.Default.ExcludeText;
+            IncludeText = Settings.Default.IncludeText;
             SourceText = Settings.Default.SourceText;
             ModuleText = Settings.Default.ModuleText;
             ShowHistoryOfClearedMessages = Settings.Default.ShowHistoryClearedMessages;
@@ -225,6 +225,8 @@ namespace Analogy
             Settings.Default.OpenFilesCount = AnalogyOpenedFiles;
             Settings.Default.ModuleText = ModuleText;
             Settings.Default.SourceText = SourceText;
+            Settings.Default.ExcludeText = ExcludeText;
+            Settings.Default.IncludeText = IncludeText;
             Settings.Default.ShowHistoryClearedMessages = ShowHistoryOfClearedMessages;
             Settings.Default.SaveSearchFilters = SaveSearchFilters;
             Settings.Default.RecentFilesCount = RecentFilesCount;
