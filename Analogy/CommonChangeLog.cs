@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.7 - Create tutorial for first time run #358",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,27)),
                 new AnalogyChangeLog("V4.2.7 - Change default setting to save Excluded filtering #361",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,26)),
                 new AnalogyChangeLog("V4.2.7 - [UI] Add simple/Advance mode #360",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,08,26)),
                 new AnalogyChangeLog("V4.2.7 - [Real time logs] Focus is stolen on every refresh #357",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,08,25)),

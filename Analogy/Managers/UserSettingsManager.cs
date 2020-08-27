@@ -94,6 +94,7 @@ namespace Analogy
         public LookAndFeelStyle ApplicationStyle { get; set; } = LookAndFeelStyle.Skin;
         public bool ShowMessageDetails { get; set; }
         public bool SimpleMode { get; set; }
+        public bool IsFirstRun { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -113,6 +114,7 @@ namespace Analogy
             DateTimePattern = !string.IsNullOrEmpty(Settings.Default.DateTimePattern)
                 ? Settings.Default.DateTimePattern
                 : "yyyy.MM.dd HH:mm:ss.ff";
+            IsFirstRun = Settings.Default.FirstRun;
             AnalogyIcon = Settings.Default.AnalogyIcon;
             ApplicationSkinName = Settings.Default.ApplicationSkinName;
             EnableUserStatistics = Settings.Default.EnableUserStatistics;
@@ -216,6 +218,7 @@ namespace Analogy
         }
         public void Save()
         {
+            Settings.Default.FirstRun = false;
             Settings.Default.DateTimePattern = !string.IsNullOrEmpty(DateTimePattern)
                 ? DateTimePattern
                 : "yyyy.MM.dd HH:mm:ss.ff";

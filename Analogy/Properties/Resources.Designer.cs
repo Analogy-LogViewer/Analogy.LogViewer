@@ -183,6 +183,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AnalogyBanner512x512 {
+            get {
+                object obj = ResourceManager.GetObject("AnalogyBanner512x512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AnalogyDark {
             get {
                 object obj = ResourceManager.GetObject("AnalogyDark", resourceCulture);
@@ -1053,6 +1063,26 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ribbon {
+            get {
+                object obj = ResourceManager.GetObject("Ribbon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ribbon2 {
+            get {
+                object obj = ResourceManager.GetObject("Ribbon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RichEditBookmark_16x16 {
             get {
                 object obj = ResourceManager.GetObject("RichEditBookmark_16x16", resourceCulture);
@@ -1186,6 +1216,16 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap ServerON {
             get {
                 object obj = ResourceManager.GetObject("ServerON", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SettingsMenu {
+            get {
+                object obj = ResourceManager.GetObject("SettingsMenu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

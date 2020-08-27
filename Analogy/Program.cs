@@ -1,3 +1,4 @@
+using Analogy.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraEditors;
@@ -79,6 +80,11 @@ namespace Analogy
                 return;
             }
 
+            if (Settings.IsFirstRun)
+            {
+                FirstTimeRunForm f = new FirstTimeRunForm();
+                f.ShowDialog();
+            }
             Application.Run(new MainForm());
 
         }
