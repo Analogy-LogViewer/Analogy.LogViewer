@@ -58,8 +58,9 @@ jobs:
     #- name: Execute unit tests
     # run: dotnet test
 
-    # Authenticate to service...
-rm ${${HOME}/Installer/Installer_TemporaryKey.pfx}
+    - name: Delete key file
+      run: |
+       rm ${${HOME}/Installer/Installer_TemporaryKey.pfx}
 
     # Publish Artifacts 
     - name: 'Publish Artifacts'
