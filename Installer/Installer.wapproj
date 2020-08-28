@@ -56,7 +56,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>..\Analogy\Analogy.csproj</EntryPointProjectUniqueName>
-    <PackageCertificateThumbprint>EBF8BFFE31B87A251D799EF1A5DEA0F548DAEFBA</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint></PackageCertificateThumbprint>
     <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
