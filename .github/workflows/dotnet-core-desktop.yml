@@ -27,10 +27,8 @@ jobs:
         fetch-depth: 0
 
     - name: Write key file
-      env:
-        AUTH: ${{ secrets.AUTH }}
       run: |
-           echo "$AUTH" | base64 --decode > ./Installer/Installer_TemporaryKey.pfx
+           echo ${{ secrets.AUTH }} | base64 --decode > ./Installer/Installer_TemporaryKey.pfx
 
     # Install the .NET Core workload
     - name: Install .NET Core
