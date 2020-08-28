@@ -57,10 +57,10 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>..\Analogy\Analogy.csproj</EntryPointProjectUniqueName>
     <PackageCertificateThumbprint>EBF8BFFE31B87A251D799EF1A5DEA0F548DAEFBA</PackageCertificateThumbprint>
-    <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <AppxPackageDir>C:\Analogy.LogViewer</AppxPackageDir>
+    <AppxPackageDir>C:\git\Analogy.LogViewer\Installer\bin\</AppxPackageDir>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <AppInstallerUri>C:\Analogy.LogViewer</AppInstallerUri>
