@@ -28,7 +28,7 @@ jobs:
 
     - name: Write key file
       run: |
-           echo    Get-Content "${{ secrets.AUTH }}" | dos2unix | base64 --decode > Installer\Installer_TemporaryKey.pfx
+           echo "${{ secrets.AUTH }}" | base64 -di > Installer\Installer_TemporaryKey.pfx
 
     # Install the .NET Core workload
     - name: Install .NET Core
