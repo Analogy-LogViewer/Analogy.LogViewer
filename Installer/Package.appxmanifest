@@ -9,7 +9,7 @@
   <Identity
     Name="74448e72-1aac-4efb-a3e1-267629f8483e"
     Publisher="CN=Lior Banai"
-    Version="1.0.0.0" />
+    Version="1.0.2.0" />
 
   <Properties>
     <DisplayName>Analogy Log Viewer</DisplayName>
