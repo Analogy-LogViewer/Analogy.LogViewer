@@ -28,7 +28,7 @@ jobs:
 
     - name: Write key file
       run: |
-           echo ${{ secrets.AUTH }} | base64 --decode > ./Installer/Installer_TemporaryKey.pfx
+           echo ${{ secrets.AUTH }} | base64 --decode > Installer\Installer_TemporaryKey.pfx
 
     # Install the .NET Core workload
     - name: Install .NET Core
@@ -57,7 +57,7 @@ jobs:
 
     - name: Delete key file
       run: |
-       rm ./Installer/Installer_TemporaryKey.pfx
+       rm  Installer\Installer_TemporaryKey.pfx
 
     # Publish Artifacts 
     - name: 'Publish Artifacts'
