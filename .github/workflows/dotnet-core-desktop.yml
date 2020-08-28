@@ -30,7 +30,7 @@ jobs:
       env:
             AUTH: ${{ secrets.AUTH }}
       run: |
-           echo "$AUTH" | base64 --decode > ${HOME}/Installer/Installer_TemporaryKey.pfx
+           echo "$AUTH" | base64 --decode > ./Installer/Installer_TemporaryKey.pfx
 
     # Install the .NET Core workload
     - name: Install .NET Core
@@ -54,13 +54,12 @@ jobs:
       env:
         Configuration: ${{ matrix.configuration }}
     # Execute all unit tests in the solution
-    # Execute all unit tests in the solution
     #- name: Execute unit tests
     # run: dotnet test
 
     - name: Delete key file
       run: |
-       rm ${${HOME}/Installer/Installer_TemporaryKey.pfx}
+       rm ./Installer/Installer_TemporaryKey.pfx
 
     # Publish Artifacts 
     - name: 'Publish Artifacts'
