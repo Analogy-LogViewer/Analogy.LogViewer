@@ -117,7 +117,7 @@ namespace Analogy
             return retval;
         }
 
-        public static Process GetAlreadyRunningInstance()
+        private static Process GetAlreadyRunningInstance()
         {
             var current = Process.GetCurrentProcess();
             return Process.GetProcessesByName(current.ProcessName).FirstOrDefault(p => p.Id != current.Id);
