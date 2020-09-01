@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRunForm));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement5 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement6 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement7 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement8 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
-            this.btnNext1 = new DevExpress.XtraEditors.SimpleButton();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.tpRibbon = new DevExpress.XtraTab.XtraTabPage();
             this.btnBack1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnNext2 = new DevExpress.XtraEditors.SimpleButton();
             this.memoEdit2 = new DevExpress.XtraEditors.MemoEdit();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
+            this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
+            this.btnNext1 = new DevExpress.XtraEditors.SimpleButton();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.tpSettings = new DevExpress.XtraTab.XtraTabPage();
             this.btnBack2 = new DevExpress.XtraEditors.SimpleButton();
             this.btnNext3 = new DevExpress.XtraEditors.SimpleButton();
@@ -62,12 +62,12 @@
             this.chkLstDataProviderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            this.tpWelcome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.tpRibbon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
+            this.tpWelcome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.tpSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
@@ -93,6 +93,57 @@
             this.tpSettings,
             this.tpFinish,
             this.tpDataProviders});
+            // 
+            // tpRibbon
+            // 
+            this.tpRibbon.Controls.Add(this.btnBack1);
+            this.tpRibbon.Controls.Add(this.btnNext2);
+            this.tpRibbon.Controls.Add(this.memoEdit2);
+            this.tpRibbon.Controls.Add(this.pictureEdit2);
+            this.tpRibbon.Name = "tpRibbon";
+            this.tpRibbon.Size = new System.Drawing.Size(1114, 389);
+            this.tpRibbon.Text = "Application Ribbon";
+            // 
+            // btnBack1
+            // 
+            this.btnBack1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack1.Location = new System.Drawing.Point(875, 352);
+            this.btnBack1.Name = "btnBack1";
+            this.btnBack1.Size = new System.Drawing.Size(115, 34);
+            this.btnBack1.TabIndex = 4;
+            this.btnBack1.Tag = "1";
+            this.btnBack1.Text = "Back";
+            this.btnBack1.Click += new System.EventHandler(this.SetBack);
+            // 
+            // btnNext2
+            // 
+            this.btnNext2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext2.Location = new System.Drawing.Point(996, 352);
+            this.btnNext2.Name = "btnNext2";
+            this.btnNext2.Size = new System.Drawing.Size(115, 34);
+            this.btnNext2.TabIndex = 3;
+            this.btnNext2.Tag = "1";
+            this.btnNext2.Text = "Next";
+            this.btnNext2.Click += new System.EventHandler(this.SetNext);
+            // 
+            // memoEdit2
+            // 
+            this.memoEdit2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit2.EditValue = resources.GetString("memoEdit2.EditValue");
+            this.memoEdit2.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit2.Name = "memoEdit2";
+            this.memoEdit2.Size = new System.Drawing.Size(1114, 213);
+            this.memoEdit2.TabIndex = 2;
+            // 
+            // pictureEdit2
+            // 
+            this.pictureEdit2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureEdit2.EditValue = global::Analogy.Properties.Resources.Ribbon2;
+            this.pictureEdit2.Location = new System.Drawing.Point(0, 213);
+            this.pictureEdit2.Name = "pictureEdit2";
+            this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit2.Size = new System.Drawing.Size(1114, 176);
+            this.pictureEdit2.TabIndex = 1;
             // 
             // tpWelcome
             // 
@@ -135,59 +186,6 @@
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit1.Size = new System.Drawing.Size(389, 389);
             this.pictureEdit1.TabIndex = 0;
-            // 
-            // tpRibbon
-            // 
-            this.tpRibbon.Controls.Add(this.btnBack1);
-            this.tpRibbon.Controls.Add(this.btnNext2);
-            this.tpRibbon.Controls.Add(this.memoEdit2);
-            this.tpRibbon.Controls.Add(this.pictureEdit2);
-            this.tpRibbon.Name = "tpRibbon";
-            this.tpRibbon.Size = new System.Drawing.Size(1114, 389);
-            this.tpRibbon.Text = "Application Ribbon";
-            // 
-            // btnBack1
-            // 
-            this.btnBack1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack1.Location = new System.Drawing.Point(875, 352);
-            this.btnBack1.Name = "btnBack1";
-            this.btnBack1.Size = new System.Drawing.Size(115, 34);
-            this.btnBack1.TabIndex = 4;
-            this.btnBack1.Tag = "1";
-            this.btnBack1.Text = "Back";
-            this.btnBack1.Click += new System.EventHandler(this.SetBack);
-            // 
-            // btnNext2
-            // 
-            this.btnNext2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext2.Location = new System.Drawing.Point(996, 352);
-            this.btnNext2.Name = "btnNext2";
-            this.btnNext2.Size = new System.Drawing.Size(115, 34);
-            this.btnNext2.TabIndex = 3;
-            this.btnNext2.Tag = "1";
-            this.btnNext2.Text = "Next";
-            this.btnNext2.Click += new System.EventHandler(this.SetNext);
-            // 
-            // memoEdit2
-            // 
-            this.memoEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoEdit2.EditValue = resources.GetString("memoEdit2.EditValue");
-            this.memoEdit2.Location = new System.Drawing.Point(3, 174);
-            this.memoEdit2.Name = "memoEdit2";
-            this.memoEdit2.Size = new System.Drawing.Size(1105, 172);
-            this.memoEdit2.TabIndex = 2;
-            // 
-            // pictureEdit2
-            // 
-            this.pictureEdit2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureEdit2.EditValue = global::Analogy.Properties.Resources.Ribbon2;
-            this.pictureEdit2.Location = new System.Drawing.Point(0, 0);
-            this.pictureEdit2.Name = "pictureEdit2";
-            this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit2.Size = new System.Drawing.Size(1114, 176);
-            this.pictureEdit2.TabIndex = 1;
             // 
             // tpSettings
             // 
@@ -312,40 +310,40 @@
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
             this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 389);
             this.chkLstDataProviderStatus.TabIndex = 13;
-            tableColumnDefinition3.Length.Value = 206D;
-            tableColumnDefinition4.Length.Value = 549D;
-            itemTemplateBase2.Columns.Add(tableColumnDefinition3);
-            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
-            templatedItemElement5.ColumnIndex = 1;
-            templatedItemElement5.FieldName = null;
-            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement5.Text = "Name";
-            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
-            templatedItemElement6.ColumnIndex = 1;
-            templatedItemElement6.FieldName = null;
-            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement6.Text = "ID";
-            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight;
-            templatedItemElement7.ColumnIndex = 1;
-            templatedItemElement7.FieldName = null;
-            templatedItemElement7.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement7.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement7.Text = "Description ";
-            templatedItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement8.FieldName = null;
-            templatedItemElement8.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement8.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement8.Text = "Image ";
-            templatedItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            itemTemplateBase2.Elements.Add(templatedItemElement5);
-            itemTemplateBase2.Elements.Add(templatedItemElement6);
-            itemTemplateBase2.Elements.Add(templatedItemElement7);
-            itemTemplateBase2.Elements.Add(templatedItemElement8);
-            itemTemplateBase2.Name = "template1";
-            itemTemplateBase2.Rows.Add(tableRowDefinition2);
-            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase2);
+            tableColumnDefinition1.Length.Value = 206D;
+            tableColumnDefinition2.Length.Value = 549D;
+            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
+            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
+            templatedItemElement1.ColumnIndex = 1;
+            templatedItemElement1.FieldName = null;
+            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement1.Text = "Name";
+            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopLeft;
+            templatedItemElement2.ColumnIndex = 1;
+            templatedItemElement2.FieldName = null;
+            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement2.Text = "ID";
+            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight;
+            templatedItemElement3.ColumnIndex = 1;
+            templatedItemElement3.FieldName = null;
+            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement3.Text = "Description ";
+            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement4.FieldName = null;
+            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement4.Text = "Image ";
+            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            itemTemplateBase1.Elements.Add(templatedItemElement1);
+            itemTemplateBase1.Elements.Add(templatedItemElement2);
+            itemTemplateBase1.Elements.Add(templatedItemElement3);
+            itemTemplateBase1.Elements.Add(templatedItemElement4);
+            itemTemplateBase1.Name = "template1";
+            itemTemplateBase1.Rows.Add(tableRowDefinition1);
+            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase1);
             // 
             // FirstTimeRunForm
             // 
@@ -361,12 +359,12 @@
             this.Load += new System.EventHandler(this.FirstTimeRunForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            this.tpWelcome.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.tpRibbon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
+            this.tpWelcome.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.tpSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
