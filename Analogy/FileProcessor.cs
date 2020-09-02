@@ -75,7 +75,7 @@ namespace Analogy
                     FileProcessingManager.Instance.AddProcessingFile(FileName);
 
                     if (!DataWindow.DoNotAddToRecentHistory)
-                        Settings.AddToRecentFiles(fileDataProvider.ID, FileName);
+                        Settings.AddToRecentFiles(fileDataProvider.Id, FileName);
 
                     var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false))
                         .ToList();

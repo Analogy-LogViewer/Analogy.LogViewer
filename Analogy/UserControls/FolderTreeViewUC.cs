@@ -76,7 +76,7 @@ namespace Analogy
         {
             cmsFolders.Items.Clear();
 
-            foreach (var folder in UserSettingsManager.UserSettings.GetRecentFolders(DataProvider.ID))
+            foreach (var folder in UserSettingsManager.UserSettings.GetRecentFolders(DataProvider.Id))
             {
                 cmsFolders.Items.Add(folder.Path, null, (_, __) => SetFolder(folder.Path, DataProvider));
             }

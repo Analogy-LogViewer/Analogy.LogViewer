@@ -47,12 +47,14 @@ namespace Analogy.DataSources
 
     public class AnalogyOfflineDataProvider : IAnalogyOfflineDataProvider
     {
-        public Guid ID { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
+        public Guid Id { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
         public bool CanSaveToLogFile { get; } = true;
         public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.axml;*.ajson;*.abin|Plain Analogy XML log file (*.axml)|*.axml|Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
         public string FileSaveDialogFilters { get; } = "Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.axml", "*.ajson", "*.abin" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
+        public Image LargeImage { get; } = null;
+        public Image SmallImage { get; } = null;
         public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
         public bool UseCustomColors { get; set; } = false;
         public bool DisableFilePoolingOption { get; } = false;
@@ -186,8 +188,9 @@ namespace Analogy.DataSources
             var p = new ProcessNameAndID();
             p.Show();
         };
-        public Guid ID { get; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
-        public Image Image { get; } = Resources.ChartsShowLegend_32x32;
+        public Guid Id { get; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
+        public Image SmallImage { get; } = Resources.ChartsShowLegend_16x16;
+        public Image LargeImage { get; } = Resources.ChartsShowLegend_32x32;
         public string Title { get; } = "Process Identifier";
 
     }
@@ -198,9 +201,12 @@ namespace Analogy.DataSources
             var p = new UnixTimeConverter();
             p.Show();
         };
-        public Guid ID { get; } = new Guid("89173452-9C8E-4946-8C39-CAF2C8B6522D");
-        public Image Image { get; } = Resources.ChartsShowLegend_32x32;
+        public Guid Id { get; } = new Guid("89173452-9C8E-4946-8C39-CAF2C8B6522D");
+        public Image SmallImage { get; } = Resources.ChartsShowLegend_16x16;
+        public Image LargeImage { get; } = Resources.ChartsShowLegend_32x32;
+
         public string Title { get; } = "Unix Time Converter";
+
 
     }
 

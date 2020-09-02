@@ -148,7 +148,7 @@ namespace Analogy
                     foreach (var analogyDataSource in supported)
                     {
                         var dataSource = (IAnalogyRealTimeDataProvider) analogyDataSource;
-                        yield return (dpf.Title, dataSource.ID, GetLargeImage(dataSource.ID), dpf.Title);
+                        yield return (dpf.Title, dataSource.Id, GetLargeImage(dataSource.Id), dpf.Title);
                     }
                 }
             }
@@ -259,7 +259,7 @@ namespace Analogy
 
 
         public IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider)
-            => GetAllExtensions().Where(e => e.TargetProviderId == dataProvider.ID);
+            => GetAllExtensions().Where(e => e.TargetProviderId == dataProvider.Id);
 
         public IEnumerable<IAnalogyExtension> GetAllExtensions()
         {
@@ -280,10 +280,10 @@ namespace Analogy
             => IsBuiltInFactory(componentId)
                 ? BuiltInFactories.FirstOrDefault(f => f.Factory.FactoryId == componentId ||
                                                        f.DataProvidersFactories.Any(dpf =>
-                                                           dpf.DataProviders.Any(dp => dp.ID == componentId)))
+                                                           dpf.DataProviders.Any(dp => dp.Id == componentId)))
                 : Factories.FirstOrDefault(f => f.Factory.FactoryId == componentId ||
                                                 f.DataProvidersFactories.Any(dpf =>
-                                                    dpf.DataProviders.Any(dp => dp.ID == componentId)));
+                                                    dpf.DataProviders.Any(dp => dp.Id == componentId)));
 
     }
 }

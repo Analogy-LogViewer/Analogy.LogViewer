@@ -280,7 +280,7 @@ namespace Analogy
                 var extensions = manager.GetExtensions().ToList();
                 foreach (Guid guid in settings.StartupExtensions)
                 {
-                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.ID == guid));
+                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.Id == guid));
                 }
 
             }
@@ -300,10 +300,10 @@ namespace Analogy
             else
             {
 
-                if (supported.Any(d => d.DataProvider.ID == UserSettingsManager.UserSettings.LastOpenedDataProvider))
+                if (supported.Any(d => d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider))
                 {
                     var parser = supported.First(d =>
-                        d.DataProvider.ID == UserSettingsManager.UserSettings.LastOpenedDataProvider);
+                        d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider);
                 }
                 supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
                     !FactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
@@ -502,8 +502,8 @@ namespace Analogy
                     actionBtn.Caption = action.Title;
                     actionBtn.RibbonStyle = RibbonItemStyles.All;
                     groupActionSource.ItemLinks.Add(actionBtn);
-                    actionBtn.ImageOptions.Image = Resources.PageSetup_32x32;
-                    actionBtn.ImageOptions.LargeImage = Resources.PageSetup_32x32;
+                    actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.PageSetup_32x32;
+                    actionBtn.ImageOptions.LargeImage = action.LargeImage ?? Resources.PageSetup_32x32;
                     actionBtn.ItemClick += (sender, e) => { action.Action(); };
                 }
             }
@@ -542,7 +542,7 @@ namespace Analogy
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
                 settingsBtn.ImageOptions.LargeImage = providerSetting.LargeImage ?? Resources.Technology_32x32;
                 XtraForm form = new DataProviderSettingsForm();
-                //var imageSmall = FactoriesManager.Instance.GetSmallImage(providerSetting.ID);
+                //var imageSmall = FactoriesManager.Instance.GetSmallImage(providerSetting.Id);
                 //if (imageSmall != null)
                 //    form.Icon = imageSmall;
                 form.Text = "Data Provider Settings: " + providerSetting.Title;
@@ -595,10 +595,10 @@ namespace Analogy
 
                 foreach (var realTime in realTimes)
                 {
-                    //var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.ID);
-                    var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.ID);
-                    //var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
-                    var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
+                    //var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.Id);
+                    var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.Id);
+                    //var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.Id);
+                    var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.Id);
                     BarButtonItem realTimeBtn = new BarButtonItem();
                     realTimeMenu.ItemLinks.Add(realTimeBtn);
                     realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
@@ -690,7 +690,7 @@ namespace Analogy
                     }
 
                     realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
-                    if (settings.AutoStartDataProviders.Contains(realTime.ID)
+                    if (settings.AutoStartDataProviders.Contains(realTime.Id)
                         && !disableOnlineDueToFileOpen)
                     {
                         async Task<bool> AutoOpenRealTime()
@@ -721,8 +721,8 @@ namespace Analogy
             {
                 BarButtonItem singleBtn = new BarButtonItem();
                 group.ItemLinks.Add(singleBtn);
-                var imageLarge = FactoriesManager.Instance.GetLargeImage(single.ID);
-                var imageSmall = FactoriesManager.Instance.GetSmallImage(single.ID);
+                var imageLarge = FactoriesManager.Instance.GetLargeImage(single.Id);
+                var imageSmall = FactoriesManager.Instance.GetSmallImage(single.Id);
 
                 singleBtn.ImageOptions.LargeImage = imageLarge ?? Resources.Single32x32;
                 singleBtn.ImageOptions.Image = imageSmall ?? Resources.Single16x16;
@@ -769,7 +769,7 @@ namespace Analogy
             {
                 var offlineAnalogy = offlineProviders.First();
                 string optionalText = !string.IsNullOrEmpty(offlineAnalogy.OptionalTitle)
-                    ? " for" + offlineAnalogy.OptionalTitle
+                    ? " for " + offlineAnalogy.OptionalTitle
                     : string.Empty;
                 RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools{optionalText}");
                 groupOfflineFileTools.AllowTextClipping = false;
@@ -895,7 +895,7 @@ namespace Analogy
             {
                 BarSubItem btnFolder = new BarSubItem { Caption = dataProvider.OptionalTitle };
                 recentFolders.AddItem(btnFolder);
-                foreach (var path in settings.GetRecentFolders(dataProvider.ID))
+                foreach (var path in settings.GetRecentFolders(dataProvider.Id))
                 {  //add local folder button:
                     if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
                     {
@@ -988,7 +988,7 @@ namespace Analogy
             group.ItemLinks.Add(recentBar);
             foreach (var dataProvider in offlineProviders)
             {
-                var recents = UserSettingsManager.UserSettings.GetRecentFiles(dataProvider.ID)
+                var recents = UserSettingsManager.UserSettings.GetRecentFiles(dataProvider.Id)
                     .Select(itm => itm.FileName).ToList();
                 AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle, recents);
             }
@@ -1185,7 +1185,7 @@ namespace Analogy
             recentFolders.ImageOptions.LargeImage = Resources.LoadFrom_32x32;
             recentFolders.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(recentFolders);
-            foreach (var path in settings.GetRecentFolders(offlineAnalogy.ID))
+            foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
             {  //add local folder button:
                 if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
                 {
@@ -1264,7 +1264,7 @@ namespace Analogy
 
             //add recent
             group.ItemLinks.Add(recentBar);
-            var recents = UserSettingsManager.UserSettings.GetRecentFiles(offlineAnalogy.ID)
+            var recents = UserSettingsManager.UserSettings.GetRecentFiles(offlineAnalogy.Id)
                 .Select(itm => itm.FileName).ToList();
             AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title, recents);
 
@@ -1323,10 +1323,10 @@ namespace Analogy
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.ID);
-            var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.ID);
-            var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.ID);
-            var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedSmallImage(realTime.ID);
+            var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.Id);
+            var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.Id);
+            var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.Id);
+            var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedSmallImage(realTime.Id);
             realTimeBtn.ImageOptions.LargeImage = imageLargeOffline ?? Resources.Database_off;
             realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
@@ -1416,7 +1416,7 @@ namespace Analogy
             }
 
             realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
-            if (settings.AutoStartDataProviders.Contains(realTime.ID)
+            if (settings.AutoStartDataProviders.Contains(realTime.Id)
             && !disableOnlineDueToFileOpen)
             {
                 async Task<bool> AutoOpenRealTime()

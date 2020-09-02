@@ -808,7 +808,7 @@ namespace Analogy
 
         public void LoadExtensions()
         {
-            var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetProviderId == DataProvider.ID)
+            var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetProviderId == DataProvider.Id)
                 .ToList();
             hasAnyInPlaceExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.InPlace);
             hasAnyUserControlExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.UserControl);

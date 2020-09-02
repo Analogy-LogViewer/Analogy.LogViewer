@@ -172,7 +172,7 @@ namespace Analogy
         public void SetPath(string path, IAnalogyOfflineDataProvider dataProvider)
         {
             DataProvider = dataProvider;
-            UserSettingsManager.UserSettings.AddToRecentFolders(dataProvider.ID, path);
+            UserSettingsManager.UserSettings.AddToRecentFolders(dataProvider.Id, path);
             startupDrive = path;
             treeList1.ClearNodes();
             treeList1.DataSource = new object();

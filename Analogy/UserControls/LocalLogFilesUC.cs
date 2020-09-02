@@ -111,7 +111,7 @@ namespace Analogy
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
-            UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.ID, folder);
+            UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.Id, folder);
             List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).ToList();
             treeList1.Nodes.Clear();
             // TreeListFileNodes.Clear();

@@ -58,7 +58,7 @@ namespace Analogy.Managers
             var contains =
             DataProvidersFactories.Any(d =>
                 d.FactoryId == componentId ||
-                d.DataProviders.Any(dp => dp.ID == componentId));
+                d.DataProviders.Any(dp => dp.Id == componentId));
             return contains;
         }
     }
