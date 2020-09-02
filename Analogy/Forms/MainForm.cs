@@ -1218,8 +1218,8 @@ namespace Analogy
                 BarButtonItem openFiles = new BarButtonItem();
                 openFiles.Caption = "Open Files";
                 group.ItemLinks.Add(openFiles);
-                openFiles.ImageOptions.Image = Resources.Article_16x16;
-                openFiles.ImageOptions.LargeImage = Resources.Article_32x32;
+                openFiles.ImageOptions.Image = offlineAnalogy.SmallImage ?? Resources.Article_16x16;
+                openFiles.ImageOptions.LargeImage = offlineAnalogy.LargeImage ?? Resources.Article_32x32;
                 openFiles.RibbonStyle = RibbonItemStyles.All;
                 openFiles.ItemClick += (sender, e) =>
                 {
