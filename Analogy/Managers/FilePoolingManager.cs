@@ -29,7 +29,7 @@ namespace Analogy.Managers
         {
             _sync = new object();
             LogUI = logUI;
-            _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer { CompareID = false };
+            _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer { CompareId = false };
             _cancellationTokenSource = new CancellationTokenSource();
             OfflineDataProvider = offlineDataProvider;
             _messages = new List<AnalogyLogMessage>();

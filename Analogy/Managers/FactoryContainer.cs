@@ -1,9 +1,9 @@
-﻿using Analogy.DataProviders.Extensions;
-using Analogy.Interfaces.Factories;
+﻿using Analogy.Interfaces.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Analogy.Interfaces;
 
 namespace Analogy.Managers
 {

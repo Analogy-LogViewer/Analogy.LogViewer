@@ -1,5 +1,4 @@
-﻿using Analogy.DataProviders.Extensions;
-using Analogy.DataSources;
+﻿using Analogy.DataSources;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -147,7 +146,7 @@ namespace Analogy
                         dpf.DataProviders.Where(d => d is IAnalogyRealTimeDataProvider);
                     foreach (var analogyDataSource in supported)
                     {
-                        var dataSource = (IAnalogyRealTimeDataProvider) analogyDataSource;
+                        var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
                         yield return (dpf.Title, dataSource.Id, GetLargeImage(dataSource.Id), dpf.Title);
                     }
                 }

@@ -1,5 +1,4 @@
-﻿using Analogy.DataProviders.Extensions;
-using Analogy.Forms;
+﻿using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.LogLoaders;
@@ -18,11 +17,11 @@ namespace Analogy.DataSources
     public class AnalogyBuiltInFactory : IAnalogyFactory
     {
         public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
-        public Guid FactoryId { get; } = AnalogyGuid;
-        public string Title { get; } = "Analogy Logs Formats";
-        public IEnumerable<IAnalogyChangeLog> ChangeLog => CommonChangeLog.GetChangeLog();
-        public IEnumerable<string> Contributors { get; } = new List<string> { "Lior Banai" };
-        public string About { get; } = "Analogy Built-in Data Source";
+        public Guid FactoryId { get; set; } = AnalogyGuid;
+        public string Title { get; set; } = "Analogy Logs Formats";
+        public IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = CommonChangeLog.GetChangeLog();
+        public IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
+        public string About { get; set; } = "Analogy Built-in Data Source";
 
         public AnalogyBuiltInFactory()
         {
@@ -31,8 +30,8 @@ namespace Analogy.DataSources
 
     public class AnalogyOfflineDataProviderFactory : IAnalogyDataProvidersFactory
     {
-        public Guid FactoryId { get; } = AnalogyBuiltInFactory.AnalogyGuid;
-        public string Title { get; } = "Analogy Built-In Data Provider";
+        public Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
+        public string Title { get; set; } = "Analogy Built-In Data Provider";
         public IEnumerable<IAnalogyDataProvider> DataProviders { get; }
 
         public AnalogyOfflineDataProviderFactory()
@@ -47,15 +46,15 @@ namespace Analogy.DataSources
 
     public class AnalogyOfflineDataProvider : IAnalogyOfflineDataProvider
     {
-        public Guid Id { get; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
+        public Guid Id { get; set; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
         public bool CanSaveToLogFile { get; } = true;
         public string FileOpenDialogFilters { get; } = "All supported Analogy log file types|*.axml;*.ajson;*.abin|Plain Analogy XML log file (*.axml)|*.axml|Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
         public string FileSaveDialogFilters { get; } = "Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
         public IEnumerable<string> SupportFormats { get; } = new[] { "*.axml", "*.ajson", "*.abin" };
         public string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
-        public Image LargeImage { get; } = null;
-        public Image SmallImage { get; } = null;
-        public string OptionalTitle { get; } = "Analogy Built-In Offline Readers";
+        public Image LargeImage { get; set; } = null;
+        public Image SmallImage { get; set; } = null;
+        public string OptionalTitle { get; set; } = "Analogy Built-In Offline Readers";
         public bool UseCustomColors { get; set; } = false;
         public bool DisableFilePoolingOption { get; } = false;
 
@@ -171,8 +170,8 @@ namespace Analogy.DataSources
 
     public class AnalogyCustomActionFactory : IAnalogyCustomActionsFactory
     {
-        public Guid FactoryId { get; } = AnalogyBuiltInFactory.AnalogyGuid;
-        public string Title { get; } = "Analogy Built-In tools";
+        public Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
+        public string Title { get; set; } = "Analogy Built-In tools";
         public IEnumerable<IAnalogyCustomAction> Actions { get; }
 
         public AnalogyCustomActionFactory()
@@ -188,11 +187,11 @@ namespace Analogy.DataSources
             var p = new ProcessNameAndID();
             p.Show();
         };
-        public Guid Id { get; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
-        public Image SmallImage { get; } = Resources.ChartsShowLegend_16x16;
-        public Image LargeImage { get; } = Resources.ChartsShowLegend_32x32;
-        public string Title { get; } = "Process Identifier";
-
+        public Guid Id { get; set; } = new Guid("8D24EC70-60C0-4823-BE9C-F4A59303FFB3");
+        public Image SmallImage { get; set; } = Resources.ChartsShowLegend_16x16;
+        public Image LargeImage { get; set; } = Resources.ChartsShowLegend_32x32;
+        public string Title { get; set; } = "Process Identifier";
+        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.BelongsToProvider;
     }
     public class AnalogyUnixTimeAction : IAnalogyCustomAction
     {
@@ -201,12 +200,12 @@ namespace Analogy.DataSources
             var p = new UnixTimeConverter();
             p.Show();
         };
-        public Guid Id { get; } = new Guid("89173452-9C8E-4946-8C39-CAF2C8B6522D");
-        public Image SmallImage { get; } = Resources.ChartsShowLegend_16x16;
-        public Image LargeImage { get; } = Resources.ChartsShowLegend_32x32;
+        public Guid Id { get; set; } = new Guid("89173452-9C8E-4946-8C39-CAF2C8B6522D");
+        public Image SmallImage { get; set; } = Resources.ChartsShowLegend_16x16;
+        public Image LargeImage { get; set; } = Resources.ChartsShowLegend_32x32;
 
-        public string Title { get; } = "Unix Time Converter";
-
+        public string Title { get; set; } = "Unix Time Converter";
+        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.BelongsToProvider;
 
     }
 

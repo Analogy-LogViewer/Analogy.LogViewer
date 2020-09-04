@@ -1,11 +1,11 @@
-﻿using Analogy.DataProviders.Extensions;
-using Analogy.Managers;
+﻿using Analogy.Managers;
 using Analogy.Properties;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.Interfaces;
 
 namespace Analogy
 {
