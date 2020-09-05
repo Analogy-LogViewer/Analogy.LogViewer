@@ -75,8 +75,9 @@
             // 
             // lblMulti
             // 
+            this.lblMulti.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMulti.AutoSize = true;
-            this.lblMulti.Location = new System.Drawing.Point(436, 71);
+            this.lblMulti.Location = new System.Drawing.Point(436, 55);
             this.lblMulti.Name = "lblMulti";
             this.lblMulti.Size = new System.Drawing.Size(113, 17);
             this.lblMulti.TabIndex = 10;
@@ -85,7 +86,7 @@
             // lblSingle
             // 
             this.lblSingle.AutoSize = true;
-            this.lblSingle.Location = new System.Drawing.Point(3, 66);
+            this.lblSingle.Location = new System.Drawing.Point(3, 55);
             this.lblSingle.Name = "lblSingle";
             this.lblSingle.Size = new System.Drawing.Size(99, 17);
             this.lblSingle.TabIndex = 9;
@@ -93,6 +94,7 @@
             // 
             // pictureEdit2
             // 
+            this.pictureEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureEdit2.EditValue = global::Analogy.Properties.Resources.WhatsNew_4_2_8_ToggleLogLevel2;
             this.pictureEdit2.Location = new System.Drawing.Point(439, 91);
             this.pictureEdit2.Name = "pictureEdit2";
