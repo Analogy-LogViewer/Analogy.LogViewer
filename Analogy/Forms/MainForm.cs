@@ -121,7 +121,8 @@ namespace Analogy
 
         private async void AnalogyMainForm_Load(object sender, EventArgs e)
         {
-            if (settings.AnalogyPosition.RememberLastPosition)
+            if (DesignMode) return;
+            if (settings.AnalogyPosition.RememberLastPosition || settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
                 if (WindowState != FormWindowState.Maximized)
@@ -152,8 +153,6 @@ namespace Analogy
             string[] arguments = Environment.GetCommandLineArgs();
             disableOnlineDueToFileOpen = arguments.Length == 2;
             SetupEventHandlers();
-            if (DesignMode) return;
-
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             ribbonControlMain.Minimized = UserSettingsManager.UserSettings.StartupRibbonMinimized;
 
@@ -204,8 +203,13 @@ namespace Analogy
             {
                 bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.LastVersionChecked.TagName;
             }
-            //FirstTimeRunForm f=new FirstTimeRunForm();
-            //f.ShowDialog(this);
+
+            if (settings.ShowWhatIsNewAtStartup)
+            {
+                WhatsNewForm f = new WhatsNewForm();
+                f.ShowDialog(this);
+            }
+
         }
 
         private void SetupEventHandlers()
