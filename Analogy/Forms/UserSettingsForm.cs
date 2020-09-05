@@ -67,8 +67,6 @@ namespace Analogy
             Icon = UserSettingsManager.UserSettings.GetIcon();
             LoadSettings();
             SetupEventsHandlers();
-            if (InitialSelection >= 0)
-                tabControlMain.SelectedTabPageIndex = InitialSelection;
             if (File.Exists(Settings.LogGridFileName))
             {
                 gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
@@ -77,7 +75,8 @@ namespace Analogy
             gridControl.DataSource = messageData.DefaultView;
             SetupExampleMessage("Test 1");
             SetupExampleMessage("Test 2");
-
+            if (InitialSelection >= 0)
+                tabControlMain.SelectedTabPageIndex = InitialSelection;
         }
         void logGrid_MouseDown(object sender, MouseEventArgs e)
         {
@@ -119,8 +118,27 @@ namespace Analogy
             cpeLogLevelUnknownText.ColorChanged += RowColors_ColorChanged;
             cpeHighlightColorText.ColorChanged += RowColors_ColorChanged;
             cpeNewMessagesColorText.ColorChanged += RowColors_ColorChanged;
-
+            gridControl.MainView.Layout += MainView_Layout;
         }
+
+        private void MainView_Layout(object sender, EventArgs e)
+        {
+            if (tabControlMain.SelectedTabPage == xtraTabPageFilter && xtraTabPageFilter.Visible)
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(Settings.LogGridFileName))
+                    {
+                        gridControl.MainView.SaveLayoutToXml(Settings.LogGridFileName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                   AnalogyLogManager.Instance.LogError(ex.Message,nameof(MainView_Layout));
+                }
+            }
+        }
+
         private void LoadSettings()
         {
             tsSimpleMode.IsOn = Settings.SimpleMode;

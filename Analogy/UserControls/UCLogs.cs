@@ -275,6 +275,7 @@ namespace Analogy
                         break;
                 }
             };
+            gridControl.MainView.Layout += MainView_Layout;
             logGrid.RowStyle += pmsGridView_RowStyle;
             logGrid.MouseDown += LogGrid_MouseDown;
             logGrid.MouseUp += LogGrid_MouseUp;
@@ -466,6 +467,21 @@ namespace Analogy
             bbiSaveBookmarks.ItemClick += (_, __) => SaveMessagesToLog(FileDataProvider, BookmarkedMessages);
 
 
+        }
+
+        private void MainView_Layout(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(Settings.LogGridFileName))
+                {
+                    gridControl.MainView.SaveLayoutToXml(Settings.LogGridFileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                AnalogyLogManager.Instance.LogError(ex.Message, nameof(MainView_Layout));
+            }
         }
 
         private void LogGrid_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
@@ -1431,10 +1447,10 @@ namespace Analogy
                     lockSlim.EnterWriteLock();
                     try
                     {
-                        // LogGrid.BeginDataUpdate();
-                        _messageData.AcceptChanges();
-                        // LogGrid.EndDataUpdate();
-                    }
+                    // LogGrid.BeginDataUpdate();
+                    _messageData.AcceptChanges();
+                    // LogGrid.EndDataUpdate();
+                }
                     finally
                     {
                         lockSlim.ExitWriteLock();
