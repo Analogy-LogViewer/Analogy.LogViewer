@@ -208,6 +208,7 @@ namespace Analogy
             {
                 WhatsNewForm f = new WhatsNewForm();
                 f.ShowDialog(this);
+                settings.ShowWhatIsNewAtStartup = false;
             }
 
         }

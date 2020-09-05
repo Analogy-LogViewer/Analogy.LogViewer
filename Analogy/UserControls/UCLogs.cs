@@ -644,19 +644,37 @@ namespace Analogy
             }
 
 
-            if (e.Alt && e.KeyCode == Keys.E)
+            if (e.Alt && e.KeyCode == Keys.E || e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[1].CheckState = chkLstLogLevel.Items[1].CheckState == CheckState.Checked
-                    ? CheckState.Unchecked
-                    : CheckState.Checked;
+                if (e.KeyCode == Keys.W)
+                {
+                    chkLstLogLevel.Items[AnalogyLogLevel.Warning.ToString()].CheckState = chkLstLogLevel.Items[AnalogyLogLevel.Warning.ToString()].CheckState == CheckState.Checked
+                        ? CheckState.Unchecked
+                        : CheckState.Checked;
+                }
+                else
+                    switch (logLevelSelectionType)
+                {
+                    case LogLevelSelectionType.Single:
+                        chkLstLogLevel.Items["Error + Critical"].CheckState = chkLstLogLevel.Items["Error + Critical"].CheckState == CheckState.Checked
+                            ? CheckState.Unchecked
+                            : CheckState.Checked;
+                        break;
+                    case LogLevelSelectionType.Multiple:
+                        chkLstLogLevel.Items["Error"].CheckState = chkLstLogLevel.Items["Error"].CheckState == CheckState.Checked
+                            ? CheckState.Unchecked
+                            : CheckState.Checked;
+                        chkLstLogLevel.Items["Critical"].CheckState = chkLstLogLevel.Items["Critical"].CheckState == CheckState.Checked
+                            ? CheckState.Unchecked
+                            : CheckState.Checked;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
             }
 
-            if (e.Alt && e.KeyCode == Keys.W)
-            {
-                chkLstLogLevel.Items[2].CheckState = chkLstLogLevel.Items[2].CheckState == CheckState.Checked
-                    ? CheckState.Unchecked
-                    : CheckState.Checked;
-            }
+       
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -691,19 +709,33 @@ namespace Analogy
                 return true;
             }
 
-            if (e.Alt && e.KeyCode == Keys.E)
+            if (e.Alt && e.KeyCode == Keys.E || e.Alt && e.KeyCode == Keys.W)
             {
-                chkLstLogLevel.Items[1].CheckState = chkLstLogLevel.Items[1].CheckState == CheckState.Checked
-                    ? CheckState.Unchecked
-                    : CheckState.Checked;
-                return true;
-            }
-
-            if (e.Alt && e.KeyCode == Keys.W)
-            {
-                chkLstLogLevel.Items[2].CheckState = chkLstLogLevel.Items[2].CheckState == CheckState.Checked
-                    ? CheckState.Unchecked
-                    : CheckState.Checked;
+                if (e.KeyCode == Keys.W)
+                {
+                    chkLstLogLevel.Items[AnalogyLogLevel.Warning.ToString()].CheckState = chkLstLogLevel.Items[AnalogyLogLevel.Warning.ToString()].CheckState == CheckState.Checked
+                        ? CheckState.Unchecked
+                        : CheckState.Checked;
+                }
+                else
+                    switch (logLevelSelectionType)
+                    {
+                        case LogLevelSelectionType.Single:
+                            chkLstLogLevel.Items["Error + Critical"].CheckState = chkLstLogLevel.Items["Error + Critical"].CheckState == CheckState.Checked
+                                ? CheckState.Unchecked
+                                : CheckState.Checked;
+                            break;
+                        case LogLevelSelectionType.Multiple:
+                            chkLstLogLevel.Items["Error"].CheckState = chkLstLogLevel.Items["Error"].CheckState == CheckState.Checked
+                                ? CheckState.Unchecked
+                                : CheckState.Checked;
+                            chkLstLogLevel.Items["Critical"].CheckState = chkLstLogLevel.Items["Critical"].CheckState == CheckState.Checked
+                                ? CheckState.Unchecked
+                                : CheckState.Checked;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 return true;
             }
 
@@ -1543,13 +1575,13 @@ namespace Analogy
                     break;
                 case LogLevelSelectionType.Multiple:
                     _filterCriteria.Levels = chkLstLogLevel.CheckedItems.Cast<CheckedListBoxItem>()
-                        .Select(level => (AnalogyLogLevel) Enum.Parse(typeof(AnalogyLogLevel), (string) level.Value))
+                        .Select(level => (AnalogyLogLevel)Enum.Parse(typeof(AnalogyLogLevel), (string)level.Value))
                         .ToArray();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-         
+
 
             if (ceSources.Checked && !string.IsNullOrEmpty(txtbSource.Text))
             {
