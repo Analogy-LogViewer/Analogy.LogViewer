@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<OutputType>WinExe</OutputType>
+		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetFrameworks>net472;net471;netcoreapp3.1</TargetFrameworks>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
