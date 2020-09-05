@@ -600,10 +600,8 @@ namespace Analogy
 
                 foreach (var realTime in realTimes)
                 {
-                    //var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.Id);
-                    var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.Id);
-                    //var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.Id);
-                    var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.Id);
+                    var imageSmallOffline = realTime.DisconnectedSmallImage;
+                    var imageSmallOnline = realTime.ConnectedSmallImage;
                     BarButtonItem realTimeBtn = new BarButtonItem();
                     realTimeMenu.ItemLinks.Add(realTimeBtn);
                     realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
@@ -1328,12 +1326,12 @@ namespace Analogy
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            var imageLargeOffline = FactoriesManager.Instance.GetOnlineDisconnectedLargeImage(realTime.Id);
-            var imageSmallOffline = FactoriesManager.Instance.GetOnlineDisconnectedSmallImage(realTime.Id);
-            var imageLargeOnline = FactoriesManager.Instance.GetOnlineConnectedLargeImage(realTime.Id);
-            var imageSmallOnline = FactoriesManager.Instance.GetOnlineConnectedSmallImage(realTime.Id);
-            realTimeBtn.ImageOptions.LargeImage = imageLargeOffline ?? Resources.Database_off;
-            realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+            var disconnectedLargeImage = realTime.DisconnectedLargeImage;
+            var disconnectedSmallImage = realTime.DisconnectedSmallImage;
+            var connectedLargeImage = realTime.ConnectedLargeImage;
+            var connectedSmallImage = realTime.ConnectedSmallImage;
+            realTimeBtn.ImageOptions.LargeImage = disconnectedLargeImage ?? Resources.Database_off;
+            realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ? $" - {realTime.OptionalTitle}" : string.Empty);
 
@@ -1353,8 +1351,8 @@ namespace Analogy
                 if (canStartReceiving) //connected
                 {
                     openedWindows++;
-                    realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
-                    realTimeBtn.ImageOptions.LargeImage = imageLargeOnline ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.Image = connectedSmallImage ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.LargeImage = connectedLargeImage ?? Resources.Database_on;
                     var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1369,8 +1367,8 @@ namespace Analogy
                             $"Source {title} Disconnected. Reason: {e.DisconnectedReason}",
                             AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                        realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
-                        realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
+                        realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
+                        realTimeBtn.ImageOptions.Image = disconnectedLargeImage ?? Resources.Database_off;
                     }
 
                     var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1557,7 +1555,7 @@ namespace Analogy
 
         private void bbtnStar_ItemClick(object sender, ItemClickEventArgs e)
         {
-           Utils. OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
+            Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
         }
 
         private void bbtnUpdates_ItemClick(object sender, ItemClickEventArgs e)
