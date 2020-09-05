@@ -16,6 +16,9 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Types;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
 {
@@ -66,6 +69,7 @@ namespace Analogy
         private static Regex IllegalCharactersRegex = new Regex("[" + @"\/:<>|" + "\"]", RegexOptions.Compiled);
         private static Regex CatchExtentionRegex = new Regex(@"^\s*.+\.([^\.]+)\s*$", RegexOptions.Compiled);
         private static string NonDotCharacters = @"[^.]*";
+        public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
 
         //
@@ -174,8 +178,6 @@ namespace Analogy
             lookAndFeel.SkinName = skinName;
         }
 
-
-
         public static string GetFileNameAsDataSource(string fileName)
         {
             string file = Path.GetFileName(fileName);
@@ -201,9 +203,6 @@ namespace Analogy
             return ((idleTime > 0) ? (idleTime / 1000) : 0);
         }
         public static TimeSpan IdleTime() => TimeSpan.FromSeconds(GetLastInputTime());
-
-
-
 
         public static bool MatchedAll(string pattern, IEnumerable<string> files)
         {
@@ -246,7 +245,6 @@ namespace Analogy
             Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
             return regex;
         }
-
         public static async Task<(bool newData, T result)> GetAsync<T>(string uri, string token, DateTime lastModified)
         {
             try
@@ -279,7 +277,6 @@ namespace Analogy
                 return (false, default);
             }
         }
-
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource, bool checkAdditionalInformation)
@@ -316,11 +313,37 @@ namespace Analogy
             }
             return dtr;
         }
-
         public static bool IsCompressedArchive(string filename)
         {
             return filename.EndsWith(".gz", StringComparison.InvariantCultureIgnoreCase) ||
                    filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public static void SetLogLevel(CheckedListBoxControl chkLstLogLevel)
+        {
+            chkLstLogLevel.Items.Clear();
+            switch (UserSettingsManager.UserSettings.LogLevelSelection)
+            {
+                case LogLevelSelectionType.Single:
+                    chkLstLogLevel.CheckMode = CheckMode.Single;
+                    chkLstLogLevel.CheckStyle = CheckStyles.Radio;
+                    CheckedListBoxItem[] radioLevels = {
+                        new CheckedListBoxItem("Trace"),
+                        new CheckedListBoxItem("Error + Critical"),
+                        new CheckedListBoxItem("Warning"),
+                        new CheckedListBoxItem("Debug"),
+                        new CheckedListBoxItem("Verbose")
+                    };
+                    chkLstLogLevel.Items.AddRange(radioLevels);
+                    break;
+                case LogLevelSelectionType.Multiple:
+                    chkLstLogLevel.CheckMode = CheckMode.Multiple;
+                    chkLstLogLevel.CheckStyle = CheckStyles.Standard;
+                    chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, true)).ToArray());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 

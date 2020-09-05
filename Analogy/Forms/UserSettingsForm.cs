@@ -119,6 +119,11 @@ namespace Analogy
             cpeHighlightColorText.ColorChanged += RowColors_ColorChanged;
             cpeNewMessagesColorText.ColorChanged += RowColors_ColorChanged;
             gridControl.MainView.Layout += MainView_Layout;
+            tsLogLevels.IsOnChanged += (s, e) =>
+             {
+                 Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
+                 Utils.SetLogLevel(chkLstLogLevel);
+             };
         }
 
         private void MainView_Layout(object sender, EventArgs e)
@@ -134,7 +139,7 @@ namespace Analogy
                 }
                 catch (Exception ex)
                 {
-                   AnalogyLogManager.Instance.LogError(ex.Message,nameof(MainView_Layout));
+                    AnalogyLogManager.Instance.LogError(ex.Message, nameof(MainView_Layout));
                 }
             }
         }
@@ -181,8 +186,6 @@ namespace Analogy
                 chkLstItemRealTimeDataSources.Items.Add(itm, startup.Contains(itm.ID));
             }
 
-
-
             foreach (var setting in Settings.FactoriesOrder)
             {
                 FactorySettings factory = Settings.GetFactorySetting(setting);
@@ -228,12 +231,15 @@ namespace Analogy
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
             tsTraybar.IsOn = Settings.MinimizedToTrayBar;
             tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
+            tsLogLevels.IsOn = Settings.LogLevelSelection == LogLevelSelectionType.Multiple;
+            Utils.SetLogLevel(chkLstLogLevel);
         }
 
         private void SaveSetting()
         {
             SaveColorsSettings();
             Settings.SimpleMode = tsSimpleMode.IsOn;
+            Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
             Settings.RecentFilesCount = (int)nudRecentFiles.Value;
             Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
             List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);

@@ -185,5 +185,11 @@
     <Setting Name="ExcludeText" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="LogLevelSelection" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"Single"</Value>
+    </Setting>
+    <Setting Name="ShowWhatIsNewAtStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -95,6 +95,8 @@ namespace Analogy
         public bool ShowMessageDetails { get; set; }
         public bool SimpleMode { get; set; }
         public bool IsFirstRun { get; set; }
+        public LogLevelSelectionType LogLevelSelection { get; set; }
+        public bool ShowWhatIsNewAtStartup { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -184,7 +186,10 @@ namespace Analogy
             {
                 ApplicationStyle = style;
             }
-
+            if (Enum.TryParse(Settings.Default.LogLevelSelection, out LogLevelSelectionType type))
+            {
+                LogLevelSelection = type;
+            }
             ApplicationSvgPaletteName = Settings.Default.ApplicationSvgPaletteName;
             MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
             CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation;
@@ -198,6 +203,7 @@ namespace Analogy
             }
 
             ShowMessageDetails = Settings.Default.ShowMessageDetails;
+            ShowWhatIsNewAtStartup = Settings.Default.ShowWhatIsNewAtStartup;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -280,6 +286,8 @@ namespace Analogy
             Settings.Default.ApplicationSvgPaletteName = ApplicationSvgPaletteName;
             Settings.Default.ShowMessageDetails = ShowMessageDetails;
             Settings.Default.SimpleMode = SimpleMode;
+            Settings.Default.LogLevelSelection = LogLevelSelection.ToString();
+            Settings.Default.ShowWhatIsNewAtStartup=ShowWhatIsNewAtStartup;
             Settings.Default.Save();
 
         }

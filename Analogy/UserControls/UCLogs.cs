@@ -24,6 +24,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Data.Helpers;
+using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
 {
@@ -115,7 +117,6 @@ namespace Analogy
         public IAnalogyDataProvider DataProvider { get; set; }
         public IAnalogyOfflineDataProvider FileDataProvider { get; set; }
         private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
-        private static List<string> logLevels = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
         private Dictionary<string, int> counts;
         public GridView LogGrid
         {
@@ -123,15 +124,17 @@ namespace Analogy
             set => logGrid = value;
         }
 
+        private LogLevelSelectionType logLevelSelectionType = UserSettingsManager.UserSettings.LogLevelSelection;
+
         public UCLogs()
         {
 
             InitializeComponent();
             _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
-            foreach (string value in logLevels)
+            foreach (string value in Utils.LogLevels)
             {
-                counts.Add(value.ToString(), 0);
+                counts.Add(value, 0);
             }
 
             filterTokenSource = new CancellationTokenSource();
@@ -169,7 +172,7 @@ namespace Analogy
             _filterCriteria.IncludeFilterCriteriaUIOptions = IncludeFilterCriteriaUIOptions;
             _filterCriteria.ExcludeFilterCriteriaUIOptions = ExcludeFilterCriteriaUIOptions;
 
-            SetupEventsHandlers();
+
         }
 
         private void UCLogs_Load(object sender, EventArgs e)
@@ -182,7 +185,7 @@ namespace Analogy
             LoadReplacementHeaders();
             BookmarkModeUI();
             LoadExtensions();
-
+            SetupEventsHandlers();
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
                 progressBar1.Maximum = value.Total;
@@ -487,7 +490,7 @@ namespace Analogy
         private void LogGrid_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
         {
             if (e.SummaryProcess == CustomSummaryProcess.Start)
-                foreach (var key in logLevels)
+                foreach (var key in Utils.LogLevels)
                 {
                     counts[key] = 0;
                 }
@@ -738,6 +741,7 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            Utils.SetLogLevel(chkLstLogLevel);
             xtcFilters.Visible = !_simpleMode;
             bBtnShare.Visibility =
                 FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
@@ -1447,10 +1451,10 @@ namespace Analogy
                     lockSlim.EnterWriteLock();
                     try
                     {
-                    // LogGrid.BeginDataUpdate();
-                    _messageData.AcceptChanges();
-                    // LogGrid.EndDataUpdate();
-                }
+                        // LogGrid.BeginDataUpdate();
+                        _messageData.AcceptChanges();
+                        // LogGrid.EndDataUpdate();
+                    }
                     finally
                     {
                         lockSlim.ExitWriteLock();
@@ -1516,25 +1520,36 @@ namespace Analogy
             Settings.ExcludeText = Settings.SaveSearchFilters ? txtbExclude.Text : string.Empty;
 
             _filterCriteria.Levels = null;
-            if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
-                _filterCriteria.Levels = new[]
-                    {AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
-            if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
-                _filterCriteria.Levels = new[]
-                {
-                    AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown
-                };
-            else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
-                _filterCriteria.Levels = new[]
-                    {AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
-            else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
-                _filterCriteria.Levels = new[]
-                    {AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
-            else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
-                _filterCriteria.Levels = new[]
-                    {AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
-
-
+            switch (logLevelSelectionType)
+            {
+                case LogLevelSelectionType.Single:
+                    if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
+                        _filterCriteria.Levels = new[]
+                            {AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                    if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
+                        _filterCriteria.Levels = new[]
+                        {
+                            AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown
+                        };
+                    else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
+                        _filterCriteria.Levels = new[]
+                            {AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                    else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
+                        _filterCriteria.Levels = new[]
+                            {AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                    else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
+                        _filterCriteria.Levels = new[]
+                            {AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                    break;
+                case LogLevelSelectionType.Multiple:
+                    _filterCriteria.Levels = chkLstLogLevel.CheckedItems.Cast<CheckedListBoxItem>()
+                        .Select(level => (AnalogyLogLevel) Enum.Parse(typeof(AnalogyLogLevel), (string) level.Value))
+                        .ToArray();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+         
 
             if (ceSources.Checked && !string.IsNullOrEmpty(txtbSource.Text))
             {

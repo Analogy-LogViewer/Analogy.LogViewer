@@ -5,6 +5,11 @@ using System.Linq;
 
 namespace Analogy.Types
 {
+    public enum LogLevelSelectionType
+    {
+        Single,
+        Multiple
+    }
     public enum BuiltInSearchPanelMode
     {
         Search,

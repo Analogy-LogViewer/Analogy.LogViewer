@@ -321,11 +321,11 @@ namespace Analogy
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl.Location = new System.Drawing.Point(0, 145);
+            this.gridControl.Location = new System.Drawing.Point(0, 167);
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1846, 256);
+            this.gridControl.Size = new System.Drawing.Size(1846, 234);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -1671,8 +1671,9 @@ namespace Analogy
             // 
             // spltcSources
             // 
-            this.spltcSources.Dock = System.Windows.Forms.DockStyle.Top;
-            this.spltcSources.Location = new System.Drawing.Point(2, 49);
+            this.spltcSources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spltcSources.Location = new System.Drawing.Point(2, 62);
             this.spltcSources.Name = "spltcSources";
             // 
             // spltcSources.Panel1
@@ -1723,8 +1724,9 @@ namespace Analogy
             // 
             // spltTextExclude
             // 
-            this.spltTextExclude.Dock = System.Windows.Forms.DockStyle.Top;
-            this.spltTextExclude.Location = new System.Drawing.Point(2, 25);
+            this.spltTextExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spltTextExclude.Location = new System.Drawing.Point(2, 33);
             this.spltTextExclude.Name = "spltTextExclude";
             // 
             // spltTextExclude.Panel1
@@ -1786,8 +1788,9 @@ namespace Analogy
             // 
             // spltText
             // 
-            this.spltText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.spltText.Location = new System.Drawing.Point(2, 2);
+            this.spltText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spltText.Location = new System.Drawing.Point(2, 5);
             this.spltText.Name = "spltText";
             // 
             // spltText.Panel1
@@ -1864,7 +1867,7 @@ namespace Analogy
             this.chkLstLogLevel.Location = new System.Drawing.Point(1703, 2);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
-            this.chkLstLogLevel.Size = new System.Drawing.Size(141, 141);
+            this.chkLstLogLevel.Size = new System.Drawing.Size(141, 163);
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
@@ -2293,7 +2296,7 @@ namespace Analogy
             this.pnlFilters.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFilters.Location = new System.Drawing.Point(0, 0);
             this.pnlFilters.Name = "pnlFilters";
-            this.pnlFilters.Size = new System.Drawing.Size(1846, 145);
+            this.pnlFilters.Size = new System.Drawing.Size(1846, 167);
             this.pnlFilters.TabIndex = 6;
             // 
             // xtcFiltersLeft
@@ -2302,7 +2305,7 @@ namespace Analogy
             this.xtcFiltersLeft.Location = new System.Drawing.Point(2, 2);
             this.xtcFiltersLeft.Name = "xtcFiltersLeft";
             this.xtcFiltersLeft.SelectedTabPage = this.xtpFilters;
-            this.xtcFiltersLeft.Size = new System.Drawing.Size(1701, 141);
+            this.xtcFiltersLeft.Size = new System.Drawing.Size(1701, 163);
             this.xtcFiltersLeft.TabIndex = 28;
             this.xtcFiltersLeft.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpFilters,
@@ -2313,7 +2316,7 @@ namespace Analogy
             this.xtpFilters.Controls.Add(this.pnlLeftFilters);
             this.xtpFilters.Controls.Add(this.xtcFilters);
             this.xtpFilters.Name = "xtpFilters";
-            this.xtpFilters.Size = new System.Drawing.Size(1694, 107);
+            this.xtpFilters.Size = new System.Drawing.Size(1694, 129);
             this.xtpFilters.Text = "Filters";
             // 
             // pnlLeftFilters
@@ -2325,15 +2328,16 @@ namespace Analogy
             this.pnlLeftFilters.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLeftFilters.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftFilters.Name = "pnlLeftFilters";
-            this.pnlLeftFilters.Size = new System.Drawing.Size(1486, 107);
+            this.pnlLeftFilters.Size = new System.Drawing.Size(1486, 129);
             this.pnlLeftFilters.TabIndex = 27;
             // 
             // pnlModulesAndDates
             // 
+            this.pnlModulesAndDates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlModulesAndDates.Controls.Add(this.spltcProcessesModule);
             this.pnlModulesAndDates.Controls.Add(this.spltcDateFiltering);
-            this.pnlModulesAndDates.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlModulesAndDates.Location = new System.Drawing.Point(2, 73);
+            this.pnlModulesAndDates.Location = new System.Drawing.Point(2, 91);
             this.pnlModulesAndDates.Name = "pnlModulesAndDates";
             this.pnlModulesAndDates.Size = new System.Drawing.Size(1482, 22);
             this.pnlModulesAndDates.TabIndex = 28;
@@ -2344,7 +2348,7 @@ namespace Analogy
             this.xtcFilters.Location = new System.Drawing.Point(1486, 0);
             this.xtcFilters.Name = "xtcFilters";
             this.xtcFilters.SelectedTabPage = this.xtpFiltersIncludes;
-            this.xtcFilters.Size = new System.Drawing.Size(208, 107);
+            this.xtcFilters.Size = new System.Drawing.Size(208, 129);
             this.xtcFilters.TabIndex = 29;
             this.xtcFilters.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpFiltersIncludes,
@@ -2354,7 +2358,7 @@ namespace Analogy
             // 
             this.xtpFiltersIncludes.Controls.Add(this.clbInclude);
             this.xtpFiltersIncludes.Name = "xtpFiltersIncludes";
-            this.xtpFiltersIncludes.Size = new System.Drawing.Size(201, 73);
+            this.xtpFiltersIncludes.Size = new System.Drawing.Size(201, 95);
             this.xtpFiltersIncludes.Text = "Includes";
             // 
             // clbInclude
@@ -2363,14 +2367,14 @@ namespace Analogy
             this.clbInclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbInclude.Location = new System.Drawing.Point(0, 0);
             this.clbInclude.Name = "clbInclude";
-            this.clbInclude.Size = new System.Drawing.Size(201, 73);
+            this.clbInclude.Size = new System.Drawing.Size(201, 95);
             this.clbInclude.TabIndex = 21;
             // 
             // xtpFiltersExclude
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(201, 66);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(201, 73);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2379,7 +2383,7 @@ namespace Analogy
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(201, 66);
+            this.clbExclude.Size = new System.Drawing.Size(201, 73);
             this.clbExclude.TabIndex = 22;
             // 
             // xtpSearchFilterPanel
@@ -2388,7 +2392,7 @@ namespace Analogy
             this.xtpSearchFilterPanel.Controls.Add(this.labelControl1);
             this.xtpSearchFilterPanel.Controls.Add(this.sbtnToggleSearchFilter);
             this.xtpSearchFilterPanel.Name = "xtpSearchFilterPanel";
-            this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1694, 100);
+            this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1694, 107);
             this.xtpSearchFilterPanel.Text = "Search/Filter Panel";
             // 
             // rgSearchMode
