@@ -241,7 +241,7 @@ namespace Analogy
 
             bbtnReportIssueOrRequest.ItemClick += (_, __) =>
             {
-                OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues");
+                Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues");
             };
 
             bbtnCombineOpenLogs.ItemClick += (s, e) =>
@@ -1556,19 +1556,9 @@ namespace Analogy
 
         private void bbtnStar_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
+           Utils. OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
         }
-        private void OpenLink(string url)
-        {
-            try
-            {
-                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-            }
-            catch (Exception exception)
-            {
-                AnalogyLogger.Instance.LogException(exception, "", $"Error: {exception.Message}");
-            }
-        }
+
         private void bbtnUpdates_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenUpdateWindow();
