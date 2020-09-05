@@ -24,5 +24,11 @@ namespace Analogy.WhatIsNew
             ((HyperlinkLabelControl) sender).LinkVisited = true;
             Utils.OpenLink(e.Link);
         }
+
+        private void hyperlinkUserSettingsLookAndFeel_HyperlinkClick(object sender, DevExpress.Utils.HyperlinkClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(3);
+            user.ShowDialog(this);
+        }
     }
 }

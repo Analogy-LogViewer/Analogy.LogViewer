@@ -85,6 +85,7 @@
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "WhatsNewForm";
             this.NavigationControl = this.accordionControl1;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Analogy: What is new";
             this.Load += new System.EventHandler(this.WhatsNewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
