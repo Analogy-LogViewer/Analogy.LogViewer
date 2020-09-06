@@ -57,10 +57,13 @@ Main interaction UI:
 
 ## Usage
 
-The application has built in data providers: [see implementations](https://github.com/Analogy-LogViewer/Analogy#log-viewer-application) for common logs files/frameworks.
-There is also real time windows service that can be used for consolidate messages from different processes.
+Thre are 3 modes of operations:
+- real time log server: a gRPC Windows service that can receive messages from any gRPC client and the Log viewer app can connect to it to show real time logs.
+- real time logs: different implementation tha tcan receive logs in real time (e.g: Windows event log data provider that show event logs as they are created)
+- Offline mode: Parse log files. There are many different implemetations.
+For a full list: [see implementations](https://github.com/Analogy-LogViewer/Analogy#log-viewer-application) for common logs files/frameworks.
 
-Yuo can alsos create your own providers:
+You can also create your own providers:
 to implement a new data provider do the following:
 
 0. Create new  cs project and make sure your assembly is named Analogy.LogViewer.*.dll.
