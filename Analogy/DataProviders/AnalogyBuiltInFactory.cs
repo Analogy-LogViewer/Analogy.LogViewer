@@ -20,6 +20,8 @@ namespace Analogy.DataSources
         public Guid FactoryId { get; set; } = AnalogyGuid;
         public string Title { get; set; } = "Analogy Logs Formats";
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = CommonChangeLog.GetChangeLog();
+        public Image LargeImage { get; set; } = Resources.Analogy_image_32x32;
+        public Image SmallImage { get; set; } = Resources.Analogy_image_32x32;
         public IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
         public string About { get; set; } = "Analogy Built-in Data Source";
 
