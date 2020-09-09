@@ -491,9 +491,6 @@
 		</None>
 		<None Include="Resources\iis.jpg" />
 		<None Include="Resources\rss.jpg" />
-		<None Include="Resources\kama.jpg" />
-		<None Include="Resources\iqon.jpg" />
-		<None Include="Resources\Mirada_Icon.jpg" />
 		<None Include="Resources\log4net32x32.png" />
 		<None Include="Resources\xml32x32.png" />
 		<None Include="Resources\jsonfile32x32.png" />
@@ -533,13 +530,8 @@
 		<None Include="Resources\RecentlyUse_16x16.png" />
 		<None Include="Resources\FitNone_16x16.png" />
 		<None Include="Resources\Delete_16x16.png" />
-		<None Include="Resources\Iqon_Spectral32x32.jpg" />
 		<None Include="Resources\IncreaseFontSize_16x16.png" />
 		<None Include="Resources\DecreaseFontSize_16x16.png" />
-		<None Include="Resources\Mirada_Icon2.jpg" />
-		<None Include="Resources\Iqon_Spectral.jpg" />
-		<None Include="Resources\Miradaa_Icon.jpg" />
-		<None Include="Resources\iqon.png" />
 		<EmbeddedResource Update="Forms\AboutDataSourceBox.resx">
 			<DependentUpon>AboutDataSourceBox.cs</DependentUpon>
 		</EmbeddedResource>
@@ -674,7 +666,6 @@
 		<None Include="Resources\Download_32x32.png" />
 		<None Include="Resources\Open2_32x32.png" />
 		<None Include="Resources\ClearFilter_16x16.png" />
-		<None Include="Resources\logIcon.png" />
 		<None Include="Resources\Send_16x16.png" />
 		<None Include="Resources\Paste_16x16.png" />
 		<None Include="Resources\DeleteList_32x32.png" />
@@ -682,18 +673,14 @@
 		<None Include="Resources\Insert_32x32.png" />
 		<None Include="Resources\Clear_32x32.png" />
 		<None Include="Resources\Clear_16x16.png" />
-		<None Include="Resources\openFile.png" />
 		<None Include="Resources\FullscreenBlue16.png" />
 		<None Include="Resources\crossMark.png" />
 		<None Include="Resources\checkOK.png" />
-		<None Include="Resources\EMAIL.png" />
 		<None Include="Resources\share.png" />
 		<None Include="Resources\copy.png" />
-		<None Include="Resources\LogConfig.png" />
 		<None Include="Resources\ServerON.png" />
 		<None Include="Resources\serverOff.png" />
 		<None Include="Resources\databasearchitecture.png" />
-		<None Include="Resources\pause2.png" />
 		<None Include="Resources\play.png" />
 		<None Include="Resources\Clear.png" />
 		<None Include="Resources\upload1.png" />

@@ -363,26 +363,6 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap checkOK {
-            get {
-                object obj = ResourceManager.GetObject("checkOK", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Clear {
-            get {
-                object obj = ResourceManager.GetObject("Clear", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Clear_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Clear_16x16", resourceCulture);
@@ -463,16 +443,6 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap databasearchitecture {
-            get {
-                object obj = ResourceManager.GetObject("databasearchitecture", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap DecreaseFontSize_16x16 {
             get {
                 object obj = ResourceManager.GetObject("DecreaseFontSize_16x16", resourceCulture);
@@ -516,16 +486,6 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap EditComment_16x16 {
             get {
                 object obj = ResourceManager.GetObject("EditComment_16x16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap EMAIL {
-            get {
-                object obj = ResourceManager.GetObject("EMAIL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -703,16 +663,6 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap iqon {
-            get {
-                object obj = ResourceManager.GetObject("iqon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap json {
             get {
                 object obj = ResourceManager.GetObject("json", resourceCulture);
@@ -726,26 +676,6 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap jsonfile32x32 {
             get {
                 object obj = ResourceManager.GetObject("jsonfile32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap kama {
-            get {
-                object obj = ResourceManager.GetObject("kama", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap KamaMedical {
-            get {
-                object obj = ResourceManager.GetObject("KamaMedical", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -793,16 +723,6 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LogConfig {
-            get {
-                object obj = ResourceManager.GetObject("LogConfig", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Lookup_Reference_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Lookup&Reference_32x32", resourceCulture);
@@ -826,16 +746,6 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap Media_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Media_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Mirada_Icon {
-            get {
-                object obj = ResourceManager.GetObject("Mirada_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -876,16 +786,6 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap Open2_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Open2_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap openFile {
-            get {
-                object obj = ResourceManager.GetObject("openFile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
