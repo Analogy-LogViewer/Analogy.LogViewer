@@ -261,6 +261,17 @@ namespace Analogy
                 else
                     Show();
             };
+            bbtnWhatsNew.ItemClick += (_, __) =>
+            {
+                WhatsNewForm f = new WhatsNewForm();
+                f.ShowDialog(this);
+                settings.ShowWhatIsNewAtStartup = false;
+            };
+            bbtnFirstRun.ItemClick += (_, __) =>
+            {
+                FirstTimeRunForm f = new FirstTimeRunForm();
+                f.ShowDialog(this);
+            };
         }
 
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
