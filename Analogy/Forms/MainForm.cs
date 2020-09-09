@@ -571,10 +571,10 @@ namespace Analogy
         }
         private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
-            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup(dataSourceFactory.Title);
+            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Offline Data Provides: {dataSourceFactory.Title}");
             ribbonPageGroup.AllowTextClipping = false;
             ribbonPage.Groups.Add(ribbonPageGroup);
-
+            
             AddRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddSingleDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
@@ -590,7 +590,137 @@ namespace Analogy
             bookmarkBtn.ItemClick += (sender, e) => { OpenBookmarkLog(); };
         }
 
-        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
+        private void AddFlatRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
+        {
+            var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
+                .Cast<IAnalogyRealTimeDataProvider>().ToList();
+            if (realTimes.Count == 0) return;
+
+
+            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Real Time Providers: {dataSourceFactory.Title}");
+            ribbonPageGroup.AllowTextClipping = false;
+            ribbonPage.Groups.Insert(0,ribbonPageGroup);
+            
+            foreach (var realTime in realTimes)
+            {
+                var imageSmallOffline = realTime.DisconnectedSmallImage;
+                var imageSmallOnline = realTime.ConnectedSmallImage;
+                BarButtonItem realTimeBtn = new BarButtonItem();
+                ribbonPageGroup.ItemLinks.Add(realTimeBtn);
+                realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                realTimeBtn.RibbonStyle = RibbonItemStyles.All;
+                realTimeBtn.Caption = (!string.IsNullOrEmpty(realTime.OptionalTitle)
+                    ? $"{realTime.OptionalTitle}"
+                    : "real time source");
+
+                async Task<bool> OpenRealTime()
+                {
+                    realTimeBtn.Enabled = false;
+                    bool canStartReceiving = false;
+                    try
+                    {
+                        canStartReceiving = await realTime.CanStartReceiving();
+                    }
+                    catch (Exception e)
+                    {
+                        AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e,
+                            nameof(MainForm));
+                    }
+
+                    if (canStartReceiving) //connected
+                    {
+                        openedWindows++;
+                        realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                        var onlineUC = new OnlineUCLogs(realTime);
+
+                        void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
+                            onlineUC.AppendMessage(e.Message, Environment.MachineName);
+
+                        void OnRealTimeOnOnManyMessagesReady(object sender, AnalogyLogMessagesArgs e) =>
+                            onlineUC.AppendMessages(e.Messages, Environment.MachineName);
+
+                        void OnRealTimeDisconnected(object sender, AnalogyDataSourceDisconnectedArgs e)
+                        {
+                            AnalogyLogMessage disconnected = new AnalogyLogMessage(
+                                $"Source {dataSourceFactory.Title} Disconnected. Reason: {e.DisconnectedReason}",
+                                AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General,
+                                dataSourceFactory.Title, "Analogy");
+                            onlineUC.AppendMessage(disconnected, Environment.MachineName);
+                            realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                        }
+
+                        var page = dockManager1.AddPanel(DockingStyle.Float);
+                        page.DockedAsTabbedDocument = true;
+                        page.Tag = ribbonPage;
+                        page.Controls.Add(onlineUC);
+                        ribbonControlMain.SelectedPage = ribbonPage;
+                        onlineUC.Dock = DockStyle.Fill;
+                        page.Text = $"{onlineTitle} #{openedWindows} ({dataSourceFactory.Title})";
+                        dockManager1.ActivePanel = page;
+                        realTime.OnMessageReady += OnRealTimeOnMessageReady;
+                        realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
+                        realTime.OnDisconnected += OnRealTimeDisconnected;
+                        await realTime.StartReceiving();
+                        onlineDataSourcesMapping.Add(page, realTime);
+
+                        async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
+                        {
+                            if (arg.Panel == page)
+                            {
+                                try
+                                {
+                                    onlineUC.Enable = false;
+                                    await realTime.StopReceiving();
+                                    realTime.OnMessageReady -= OnRealTimeOnMessageReady;
+                                    realTime.OnManyMessagesReady -= OnRealTimeOnOnManyMessagesReady;
+                                    realTime.OnDisconnected -= OnRealTimeDisconnected;
+                                    //page.Controls.Remove(onlineUC);
+                                }
+                                catch (Exception e)
+                                {
+                                    AnalogyLogManager.Instance.LogError(
+                                        "Error during call to Stop receiving: " + e,
+                                        nameof(OnXtcLogsOnControlRemoved));
+                                }
+                                finally
+                                {
+                                    dockManager1.ClosedPanel -= OnXtcLogsOnControlRemoved;
+                                }
+                            }
+                        }
+
+                        dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
+                        realTimeBtn.Enabled = true;
+                        return true;
+                    }
+
+                    realTimeBtn.Enabled = true;
+                    return false;
+                }
+
+                realTimeBtn.ItemClick += async (s, be) => await OpenRealTime();
+                if (settings.AutoStartDataProviders.Contains(realTime.Id)
+                    && !disableOnlineDueToFileOpen)
+                {
+                    async Task<bool> AutoOpenRealTime()
+                    {
+                        while (!await OpenRealTime())
+                        {
+                            await Task.Delay(1000);
+                        }
+
+                        return true;
+                    }
+
+                    OnlineSources.Add(AutoOpenRealTime());
+
+                }
+
+            }
+        }
+
+        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory,
+            RibbonPageGroup group)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
@@ -618,8 +748,8 @@ namespace Analogy
                     realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
                     realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                     realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle)
-                                              ? $" - {realTime.OptionalTitle}"
-                                              : string.Empty);
+                        ? $" - {realTime.OptionalTitle}"
+                        : string.Empty);
 
                     async Task<bool> OpenRealTime()
                     {
@@ -631,7 +761,8 @@ namespace Analogy
                         }
                         catch (Exception e)
                         {
-                            AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e, nameof(MainForm));
+                            AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e,
+                                nameof(MainForm));
                         }
 
                         if (canStartReceiving) //connected
@@ -650,7 +781,8 @@ namespace Analogy
                             {
                                 AnalogyLogMessage disconnected = new AnalogyLogMessage(
                                     $"Source {dataSourceFactory.Title} Disconnected. Reason: {e.DisconnectedReason}",
-                                    AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, dataSourceFactory.Title, "Analogy");
+                                    AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General,
+                                    dataSourceFactory.Title, "Analogy");
                                 onlineUC.AppendMessage(disconnected, Environment.MachineName);
                                 realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
                             }
@@ -685,7 +817,8 @@ namespace Analogy
                                     catch (Exception e)
                                     {
                                         AnalogyLogManager.Instance.LogError(
-                                            "Error during call to Stop receiving: " + e, nameof(OnXtcLogsOnControlRemoved));
+                                            "Error during call to Stop receiving: " + e,
+                                            nameof(OnXtcLogsOnControlRemoved));
                                     }
                                     finally
                                     {
@@ -1356,7 +1489,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e, nameof(AddSingleRealTimeDataSource));
+                    AnalogyLogManager.Instance.LogError("Error during call to canStartReceiving: " + e, nameof(OpenRealTime));
                 }
 
                 if (canStartReceiving) //connected
@@ -1411,7 +1544,7 @@ namespace Analogy
                             }
                             catch (Exception e)
                             {
-                                AnalogyLogManager.Instance.LogError("Error during call to Stop receiving: " + e, nameof(AddSingleRealTimeDataSource));
+                                AnalogyLogManager.Instance.LogError("Error during call to Stop receiving: " + e, nameof(OnXtcLogsOnControlRemoved));
                             }
                             finally
                             {
