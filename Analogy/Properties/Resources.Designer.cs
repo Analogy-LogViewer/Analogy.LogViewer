@@ -803,16 +803,6 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logIcon {
-            get {
-                object obj = ResourceManager.GetObject("logIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Lookup_Reference_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Lookup&Reference_32x32", resourceCulture);
@@ -953,39 +943,9 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pause2 {
-            get {
-                object obj = ResourceManager.GetObject("pause2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Philips {
-            get {
-                object obj = ResourceManager.GetObject("Philips", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap PieLabelsDataLabels_32x32 {
             get {
                 object obj = ResourceManager.GetObject("PieLabelsDataLabels_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap play {
-            get {
-                object obj = ResourceManager.GetObject("play", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1046,16 +1006,6 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap RecentlyUse_32x32 {
             get {
                 object obj = ResourceManager.GetObject("RecentlyUse_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap restart {
-            get {
-                object obj = ResourceManager.GetObject("restart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

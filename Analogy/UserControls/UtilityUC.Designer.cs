@@ -36,7 +36,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Analogy.Properties.Resources.logIcon;
+            this.pictureBox1.Image = global::Analogy.Properties.Resources.extension32;
             this.pictureBox1.Location = new System.Drawing.Point(6, 6);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox1.Name = "pictureBox1";
@@ -47,7 +47,7 @@
             // 
             // lblText
             // 
-            this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblText.Location = new System.Drawing.Point(84, 6);
             this.lblText.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);

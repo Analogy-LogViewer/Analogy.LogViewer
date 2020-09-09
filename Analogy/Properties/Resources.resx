@@ -223,9 +223,6 @@
   <data name="SettingsMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SettingsMenu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="RichEditBookmark_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RichEditBookmark_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -240,9 +237,6 @@
   </data>
   <data name="AnalogyLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnalogyLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Philips" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Philips.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Analogy1024x1024" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Analogy1024x1024.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -370,9 +364,6 @@
   <data name="AnalogyNlog128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnalogyNlog128x1281.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pause2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pause2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Article_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Article_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -466,9 +457,6 @@
   <data name="NotOk_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NotOk_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="restart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\restart.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="json" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\json.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -480,9 +468,6 @@
   </data>
   <data name="Single16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Single16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="play" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Database_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Database_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

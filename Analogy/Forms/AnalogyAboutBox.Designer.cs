@@ -39,11 +39,6 @@
             this.xtraTabPageAbout = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPageCredit = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.xtraTabPageOrganizations = new DevExpress.XtraTab.XtraTabPage();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblPhilips = new System.Windows.Forms.LinkLabel();
-            this.lblKama = new System.Windows.Forms.LinkLabel();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPageDataProviders = new DevExpress.XtraTab.XtraTabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.hyperLinkEdit1 = new DevExpress.XtraEditors.HyperLinkEdit();
@@ -79,8 +74,6 @@
             this.xtraTabPageAbout.SuspendLayout();
             this.xtraTabPageCredit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
-            this.xtraTabPageOrganizations.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.xtraTabPageDataProviders.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).BeginInit();
@@ -200,7 +193,7 @@
             // meAbout
             // 
             this.meAbout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.meAbout.EditValue = "Created by Lior Banai (2017)\r\ncontact info:\r\nmail: Liorbanai@gmail.com";
+            this.meAbout.EditValue = "Created by Lior Banai (2018)\r\ncontact info:\r\nmail: Liorbanai@gmail.com";
             this.meAbout.Location = new System.Drawing.Point(532, 163);
             this.meAbout.Name = "meAbout";
             this.meAbout.Size = new System.Drawing.Size(507, 198);
@@ -227,7 +220,6 @@
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageAbout,
             this.xtraTabPageCredit,
-            this.xtraTabPageOrganizations,
             this.xtraTabPageDataProviders,
             this.xtraTabPage1});
             // 
@@ -254,70 +246,6 @@
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Size = new System.Drawing.Size(1042, 409);
             this.memoEdit1.TabIndex = 0;
-            // 
-            // xtraTabPageOrganizations
-            // 
-            this.xtraTabPageOrganizations.Controls.Add(this.flowLayoutPanel2);
-            this.xtraTabPageOrganizations.Controls.Add(this.labelControl1);
-            this.xtraTabPageOrganizations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.xtraTabPageOrganizations.Name = "xtraTabPageOrganizations";
-            this.xtraTabPageOrganizations.PageVisible = false;
-            this.xtraTabPageOrganizations.Size = new System.Drawing.Size(1042, 409);
-            this.xtraTabPageOrganizations.Text = "Organizations";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Controls.Add(this.lblPhilips);
-            this.flowLayoutPanel2.Controls.Add(this.lblKama);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 34);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1042, 375);
-            this.flowLayoutPanel2.TabIndex = 1;
-            // 
-            // lblPhilips
-            // 
-            this.lblPhilips.Image = global::Analogy.Properties.Resources.Philips;
-            this.lblPhilips.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblPhilips.Location = new System.Drawing.Point(13, 5);
-            this.lblPhilips.Name = "lblPhilips";
-            this.lblPhilips.Padding = new System.Windows.Forms.Padding(5);
-            this.lblPhilips.Size = new System.Drawing.Size(414, 218);
-            this.lblPhilips.TabIndex = 6;
-            this.lblPhilips.TabStop = true;
-            this.lblPhilips.Text = "Philips Healthcare";
-            this.lblPhilips.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblPhilips.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPhilips_LinkClicked);
-            // 
-            // lblKama
-            // 
-            this.lblKama.Image = global::Analogy.Properties.Resources.KamaMedical;
-            this.lblKama.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblKama.Location = new System.Drawing.Point(433, 5);
-            this.lblKama.Name = "lblKama";
-            this.lblKama.Padding = new System.Windows.Forms.Padding(5);
-            this.lblKama.Size = new System.Drawing.Size(416, 218);
-            this.lblKama.TabIndex = 7;
-            this.lblKama.TabStop = true;
-            this.lblKama.Text = "Kama Research Ltd.";
-            this.lblKama.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblKama.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblKama_LinkClicked);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelControl1.Location = new System.Drawing.Point(0, 0);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(1042, 34);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Analogy Log Viewer is used by the following Organizations:";
             // 
             // xtraTabPageDataProviders
             // 
@@ -633,8 +561,6 @@
             this.xtraTabPageAbout.ResumeLayout(false);
             this.xtraTabPageCredit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
-            this.xtraTabPageOrganizations.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.xtraTabPageDataProviders.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).EndInit();
@@ -677,11 +603,6 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageAbout;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageCredit;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPageOrganizations;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.LinkLabel lblPhilips;
-        private System.Windows.Forms.LinkLabel lblKama;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageDataProviders;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
