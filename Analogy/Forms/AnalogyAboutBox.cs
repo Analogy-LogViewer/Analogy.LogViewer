@@ -7,8 +7,6 @@ namespace Analogy
 {
     partial class AnalogyAboutBox : XtraForm
     {
-        private string philips = "https://www.philips.com/global";
-        private string kama = "https://www.linkedin.com/company/kama-research-ltd/about/";
         public AnalogyAboutBox()
         {
             InitializeComponent();
@@ -17,9 +15,7 @@ namespace Analogy
             this.labelVersion.Text = string.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.meAbout.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2017){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
-
-
+            this.meAbout.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2018){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
         }
 
         #region Assembly Attribute Accessors
@@ -96,16 +92,5 @@ namespace Analogy
         }
         #endregion
 
-
-
-        private void lblPhilips_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(philips);
-        }
-
-        private void lblKama_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(kama);
-        }
     }
 }
