@@ -34,6 +34,15 @@
 ## General
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems with support for most log frameworks log files ([serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [plain text](https://github.com/Analogy-LogViewer/Analogy.LogViewer.PlainTextParser),  and [others](https://github.com/Analogy-LogViewer/Overview#data-providers)).
 
+now support both offline log files:
+1. Support common frameworks like [Serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [NLog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog), etc.
+2. Support generic log files like plain text with [Regex parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser) and [XML](https://github.com/Analogy-LogViewer/Analogy.LogViewer.XMLParser)/[Json](https://github.com/Analogy-LogViewer/Analogy.LogViewer.JsonParser) parsers.
+
+And real time streaming of logs logs: 
+1. [NLog Target](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog.Targets) 
+2. [Serilog Sink](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) 
+3. [Asp Core log provider](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider)
+
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
 This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
 
