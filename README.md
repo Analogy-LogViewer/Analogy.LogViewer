@@ -42,7 +42,7 @@ And real time streaming of logs:
 2. [Serilog Sink](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) 
 3. [Asp Core log provider](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider)
 
- For a complete list visit [Analogy Overview repository](https://github.com/Analogy-LogViewer/Overview)).
+ For a complete list visit [Analogy Overview repository](https://github.com/Analogy-LogViewer/Overview).
 
 The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
 This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
