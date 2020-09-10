@@ -38,7 +38,7 @@ now support both offline log files:
 1. Support common frameworks like [Serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [NLog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog), etc.
 2. Support generic log files like plain text with [Regex parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser) and [XML](https://github.com/Analogy-LogViewer/Analogy.LogViewer.XMLParser)/[Json](https://github.com/Analogy-LogViewer/Analogy.LogViewer.JsonParser) parsers.
 
-And real time streaming of logs logs: 
+And real time streaming of logs: 
 1. [NLog Target](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog.Targets) 
 2. [Serilog Sink](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) 
 3. [Asp Core log provider](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider)
