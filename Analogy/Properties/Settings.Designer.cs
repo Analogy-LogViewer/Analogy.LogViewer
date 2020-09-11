@@ -443,9 +443,7 @@ namespace Analogy.Properties {
             ",\"UserSettingFileAssociations\":[],\"Status\":2},{\"FactoryName\":\"Windows Event logs" +
             "\",\"FactoryId\":\"3999db4c-0e22-4795-92c1-61b05edb3f6c\",\"UserSettingFileAssociation" +
             "s\":[],\"Status\":1},{\"FactoryName\":\"XML Text Parser\",\"FactoryId\":\"9652600e-1b14-48" +
-            "12-bcec-9a6194db9aea\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryName" +
-            "\":\"Git History\",\"FactoryId\":\"b842cc0f-ad83-48fb-8394-3189f9a75024\",\"UserSettingF" +
-            "ileAssociations\":[],\"Status\":2}]")]
+            "12-bcec-9a6194db9aea\",\"UserSettingFileAssociations\":[],\"Status\":1}]")]
         public string FactoriesSettings {
             get {
                 return ((string)(this["FactoriesSettings"]));

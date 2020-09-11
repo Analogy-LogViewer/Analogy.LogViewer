@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.8 - Create data provider selection for first time run #359",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,11)),
                 new AnalogyChangeLog("V4.2.8 - Replace Event log level with Information #477",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,11)),
                 new AnalogyChangeLog("V4.2.8 - Switch to json log format for bookmarks and internal log #476 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,11)),
                 new AnalogyChangeLog("V4.2.8 - [Filtering] Message layout does not affect view and keeps resetting #417",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,09,05)),

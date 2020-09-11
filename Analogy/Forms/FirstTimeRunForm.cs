@@ -1,11 +1,18 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using Analogy.Types;
+using DevExpress.Web.Office.Internal;
+using DevExpress.XtraEditors.Controls;
 
 namespace Analogy.Forms
 {
     public partial class FirstTimeRunForm : DevExpress.XtraEditors.XtraForm
     {
+        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+
         public List<FactoryCheckItem> Factories { get; set; } = new List<FactoryCheckItem>();
         public FirstTimeRunForm()
         {
@@ -20,16 +27,25 @@ namespace Analogy.Forms
         {
             if (DesignMode) return;
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            foreach (var fc in FactoriesManager.Instance.Factories)
+            foreach (var setting in Settings.FactoriesOrder)
             {
-                string about = fc.Factory.About;
-                var image = FactoriesManager.Instance.GetLargeImage(fc.Factory.FactoryId);
-                var dp = new FactoryCheckItem(fc.Factory.Title, fc.Factory.FactoryId, about, image);
-                Factories.Add(dp);
-
+                FactorySettings factory = Settings.GetFactorySetting(setting);
+                if (factory == null) continue;
+                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
+                string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
+                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
+                chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
-
-            chkLstDataProviderStatus.DataSource = Factories;
+            //add missing:
+            foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
+            {
+                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
+                string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
+                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
+                chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
+            }
         }
 
         private void SetNext(object sender, EventArgs e) => SetNextTab(int.Parse((sender as SimpleButton).Tag.ToString()));
@@ -41,6 +57,29 @@ namespace Analogy.Forms
         private void AcceptAndClose(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void SaveSettings()
+        {
+            List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);
+            foreach (CheckedListBoxItem item in chkLstDataProviderStatus.Items)
+            {
+                FactoryCheckItem fci = (FactoryCheckItem)item.Value;
+                order.Add(fci.ID);
+                var guid = fci.ID;
+                var factory = Settings.FactoriesSettings.SingleOrDefault(f => f.FactoryId == guid);
+                if (factory != null)
+                {
+                    factory.Status = item.CheckState == CheckState.Checked
+                        ? DataProviderFactoryStatus.Enabled
+                        : DataProviderFactoryStatus.Disabled;
+                }
+            }
+        }
+
+        private void chkLstDataProviderStatus_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            SaveSettings();
         }
     }
 }
