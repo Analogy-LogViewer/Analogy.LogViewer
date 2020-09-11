@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Analogy.Managers
@@ -14,7 +15,7 @@ namespace Analogy.Managers
         public static AnalogyLogManager Instance => _instance.Value;
         public bool HasErrorMessages => messages.Any(m => m.Level == AnalogyLogLevel.Critical || m.Level == AnalogyLogLevel.Error);
         public bool HasWarningMessages => messages.Any(m => m.Level == AnalogyLogLevel.Warning);
-        private string FileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AnalogyInternalLog_{postfix}.log");
+        private string FileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AnalogyInternalLog_{postfix}.ajson");
         private bool ContentChanged;
         private static int postfix = 0;
         private List<AnalogyLogMessage> messages;
@@ -37,8 +38,8 @@ namespace Analogy.Managers
             {
                 try
                 {
-                    AnalogyXmlLogFile read = new AnalogyXmlLogFile();
-                    var old = await read.ReadFromFile(FileName);
+                    AnalogyJsonLogFile read = new AnalogyJsonLogFile();
+                    var old = await read.ReadFromFile(FileName,new CancellationToken(), null);
                     this.messages.AddRange(old.Where(m => !ignoredMessages.Any(m.Text.Contains)));
                 }
                 catch (Exception e)
@@ -75,7 +76,7 @@ namespace Analogy.Managers
 
                 try
                 {
-                    AnalogyXmlLogFile save = new AnalogyXmlLogFile();
+                    AnalogyJsonLogFile save = new AnalogyJsonLogFile();
                     save.Save(GetFilteredMessages(), FileName);
                 }
                 catch (Exception e)

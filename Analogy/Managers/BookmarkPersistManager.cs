@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
@@ -54,8 +55,8 @@ namespace Analogy
             //todo: which format;
             try
             {
-                AnalogyXmlLogFile read = new AnalogyXmlLogFile();
-                Messages = await read.ReadFromFile(BookmarkFileName);
+                AnalogyJsonLogFile read = new AnalogyJsonLogFile();
+                Messages = (await read.ReadFromFile(BookmarkFileName, new CancellationToken(), null)).ToList();
                 fileLoaded = true;
             }
             catch (Exception e)
@@ -107,7 +108,7 @@ namespace Analogy
 
                 try
                 {
-                    AnalogyXmlLogFile save = new AnalogyXmlLogFile();
+                    AnalogyJsonLogFile save = new AnalogyJsonLogFile();
                     save.Save(Messages, BookmarkFileName);
                 }
                 catch (Exception e)

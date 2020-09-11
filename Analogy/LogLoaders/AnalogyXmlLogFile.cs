@@ -12,7 +12,10 @@ namespace Analogy.LogLoaders
 {
     public class AnalogyXmlLogFile
     {
-
+        public AnalogyXmlLogFile()
+        {
+            
+        }
         public Task Save(List<AnalogyLogMessage> messages, string filename)
             => Task.Factory.StartNew(() =>
             {
@@ -22,9 +25,6 @@ namespace Analogy.LogLoaders
                     ser.Serialize(fs, messages);
                 }
             });
-
-
-
 
         public Task<List<AnalogyLogMessage>> ReadFromFile(string filename) =>
             Task.Factory.StartNew(() =>
@@ -51,7 +51,6 @@ namespace Analogy.LogLoaders
 
                 }
             });
-
         internal Task<List<AnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             return Task.Factory.StartNew(() =>

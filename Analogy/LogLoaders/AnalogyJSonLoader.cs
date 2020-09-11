@@ -25,7 +25,7 @@ namespace Analogy.LogLoaders
                     Source = "Analogy",
                     Module = Process.GetCurrentProcess().ProcessName
                 };
-                messageHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
+                messageHandler?.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                 return new List<AnalogyLogMessage>() { empty };
             }
 
@@ -40,7 +40,7 @@ namespace Analogy.LogLoaders
                         data = textReader.ReadToEnd();
                     }
                     List<AnalogyLogMessage> messages = JsonConvert.DeserializeObject<List<AnalogyLogMessage>>(data);
-                    messageHandler.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
+                    messageHandler?.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                     return messages;
                 }
                 catch (Exception ex)
@@ -54,7 +54,7 @@ namespace Analogy.LogLoaders
                             Module = Process.GetCurrentProcess().ProcessName
                         };
                     AnalogyLogManager.Instance.LogErrorMessage(empty);
-                    messageHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
+                    messageHandler?.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                     return new List<AnalogyLogMessage>() { empty };
                 }
             }, token);
