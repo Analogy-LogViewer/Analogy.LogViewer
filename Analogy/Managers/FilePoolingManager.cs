@@ -55,7 +55,7 @@ namespace Analogy.Managers
             {
                 Text = $"Start monitoring file {FileName}.",
                 FileName = FileName,
-                Level = AnalogyLogLevel.AnalogyInformation,
+                Level = AnalogyLogLevel.Analogy,
                 Category = "",
                 Source = "Analogy",
                 Class = AnalogyLogClass.General,

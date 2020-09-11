@@ -38,7 +38,7 @@ namespace Analogy.Managers
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogger.Instance.LogException(e, "Cleanup", $"Error delete folder: {e.Message}");
+                        AnalogyLogger.Instance.LogException($"Error delete folder: {e.Message}",e, "Cleanup");
                     }
             }
 

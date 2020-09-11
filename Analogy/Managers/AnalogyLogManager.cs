@@ -108,11 +108,11 @@ namespace Analogy.Managers
             messages.Add(new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General, source));
             OnNewError?.Invoke(this, new EventArgs());
         }
-        public void LogEvent(string data, string source)
+        public void LogInformation(string data, string source)
         {
             if (ignoredMessages.Any(data.Contains)) return;
             ContentChanged = true;
-            messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Event, AnalogyLogClass.General, source));
+            messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Information, AnalogyLogClass.General, source));
         }
         public void LogWarning(string data, string source)
         {

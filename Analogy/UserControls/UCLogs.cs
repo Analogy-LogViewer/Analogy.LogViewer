@@ -24,6 +24,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.Data.Helpers;
 using DevExpress.XtraEditors.Controls;
 
@@ -1026,7 +1027,7 @@ namespace Analogy
                     img = imageList.Images[1];
                     break;
                 case AnalogyLogLevel.Trace:
-                case AnalogyLogLevel.Event:
+                case AnalogyLogLevel.Information:
                     img = imageList.Images[7];
                     break;
                 case AnalogyLogLevel.Verbose:
@@ -1035,9 +1036,9 @@ namespace Analogy
                 case AnalogyLogLevel.Debug:
                     img = imageList.Images[6];
                     break;
-                case AnalogyLogLevel.Disabled:
+                case AnalogyLogLevel.None:
                     break;
-                case AnalogyLogLevel.AnalogyInformation:
+                case AnalogyLogLevel.Analogy:
                     img = imageList.Images[8];
                     break;
                 case AnalogyLogLevel.Unknown:
@@ -1317,7 +1318,7 @@ namespace Analogy
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource)
         {
-            if (message.Level == AnalogyLogLevel.Disabled)
+            if (message.Level == AnalogyLogLevel.None)
                 return; //ignore those messages
 
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
@@ -1557,21 +1558,21 @@ namespace Analogy
                 case LogLevelSelectionType.Single:
                     if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Trace, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                            {AnalogyLogLevel.Trace,  AnalogyLogLevel.Unknown};
                     if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
                         _filterCriteria.Levels = new[]
                         {
-                            AnalogyLogLevel.Error, AnalogyLogLevel.Critical, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown
+                            AnalogyLogLevel.Error, AnalogyLogLevel.Critical,  AnalogyLogLevel.Unknown
                         };
                     else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Warning, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                            {AnalogyLogLevel.Warning,  AnalogyLogLevel.Unknown};
                     else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Debug, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                            {AnalogyLogLevel.Debug,  AnalogyLogLevel.Unknown};
                     else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Verbose, AnalogyLogLevel.Disabled, AnalogyLogLevel.Unknown};
+                            {AnalogyLogLevel.Verbose,  AnalogyLogLevel.Unknown};
                     break;
                 case LogLevelSelectionType.Multiple:
                     _filterCriteria.Levels = chkLstLogLevel.CheckedItems.Cast<CheckedListBoxItem>()
@@ -2170,7 +2171,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException(e, "Analogy", $"Error saving setting: {e.Message}");
+                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}",e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

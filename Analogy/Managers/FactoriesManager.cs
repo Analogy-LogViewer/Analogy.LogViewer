@@ -54,16 +54,14 @@ namespace Analogy
             }
             catch (AggregateException ex)
             {
-                AnalogyLogger.Instance.LogException(ex, "InitializeBuiltInFactories",
-                    "Error during Initialization");
+                AnalogyLogger.Instance.LogException("Error during Initialization",ex, "InitializeBuiltInFactories");
             }
 
             foreach (var t in initTasks)
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    AnalogyLogger.Instance.LogException(t.Exception, "AddExternalDataSources",
-                        "Error during Initialization");
+                    AnalogyLogger.Instance.LogException("Error during Initialization",t.Exception, "AddExternalDataSources");
                 }
             }
         }
@@ -86,8 +84,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogger.Instance.LogException(e, "AddExternalDataSources",
-                        $"Error during Initialization of {provider.OptionalTitle}");
+                    AnalogyLogger.Instance.LogException($"Error during Initialization of {provider.OptionalTitle}",e, "AddExternalDataSources");
 
                 }
             }
@@ -98,15 +95,14 @@ namespace Analogy
             }
             catch (AggregateException ex)
             {
-                AnalogyLogger.Instance.LogException(ex, "AddExternalDataSources", "Error during Initialization");
+                AnalogyLogger.Instance.LogException( "Error during Initialization",ex, "AddExternalDataSources");
             }
 
             foreach (var t in initTasks)
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    AnalogyLogger.Instance.LogException(t.Exception, "AddExternalDataSources",
-                        "Error during Initialization");
+                    AnalogyLogger.Instance.LogException("Error during Initialization",t.Exception, "AddExternalDataSources");
                 }
             }
         }

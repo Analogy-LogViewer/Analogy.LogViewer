@@ -131,15 +131,13 @@ namespace Analogy
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogException(e.ExceptionObject as Exception,
-                nameof(CurrentDomain_UnhandledException), "Error: " + e.ExceptionObject);
+            AnalogyLogger.Instance.LogException("Error: " + e.ExceptionObject,e.ExceptionObject as Exception, nameof(CurrentDomain_UnhandledException));
             MessageBox.Show("Error: " + e.ExceptionObject, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogException(e.Exception, nameof(Application_ThreadException),
-                "Error: " + e.Exception);
+            AnalogyLogger.Instance.LogException("Error: " + e.Exception,e.Exception, nameof(Application_ThreadException));
             MessageBox.Show("Error: " + e.Exception, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }

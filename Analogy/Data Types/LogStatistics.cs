@@ -20,7 +20,7 @@ namespace Analogy
         {
             return new ItemStatistics("Global", Messages.Count, CountMessages(Messages, AnalogyLogLevel.Error),
                 CountMessages(Messages, AnalogyLogLevel.Warning), CountMessages(Messages, AnalogyLogLevel.Critical),
-                CountMessages(Messages, AnalogyLogLevel.Event), CountMessages(Messages, AnalogyLogLevel.Debug),
+                CountMessages(Messages, AnalogyLogLevel.Information), CountMessages(Messages, AnalogyLogLevel.Debug),
                 CountMessages(Messages, AnalogyLogLevel.Verbose));
         }
 
@@ -53,7 +53,7 @@ namespace Analogy
         {
             return new ItemStatistics(module, Messages.Count(m => module.Equals(m.Module)),
                 CountModuleMessages(module, AnalogyLogLevel.Error), CountModuleMessages(module, AnalogyLogLevel.Warning),
-                CountModuleMessages(module, AnalogyLogLevel.Critical), CountModuleMessages(module, AnalogyLogLevel.Event),
+                CountModuleMessages(module, AnalogyLogLevel.Critical), CountModuleMessages(module, AnalogyLogLevel.Information),
                 CountModuleMessages(module, AnalogyLogLevel.Debug), CountModuleMessages(module, AnalogyLogLevel.Verbose));
 
         }
@@ -64,7 +64,7 @@ namespace Analogy
             {
                 yield return new ItemStatistics(source, Messages.Count(m => source.Equals(m.Source)),
                     CountSourceMessages(source, AnalogyLogLevel.Error), CountSourceMessages(source, AnalogyLogLevel.Warning),
-                    CountSourceMessages(source, AnalogyLogLevel.Critical), CountSourceMessages(source, AnalogyLogLevel.Event),
+                    CountSourceMessages(source, AnalogyLogLevel.Critical), CountSourceMessages(source, AnalogyLogLevel.Information),
                     CountSourceMessages(source, AnalogyLogLevel.Debug), CountSourceMessages(source, AnalogyLogLevel.Verbose));
             }
 

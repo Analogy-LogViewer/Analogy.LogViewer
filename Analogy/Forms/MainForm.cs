@@ -643,7 +643,7 @@ namespace Analogy
                         {
                             AnalogyLogMessage disconnected = new AnalogyLogMessage(
                                 $"Source {dataSourceFactory.Title} Disconnected. Reason: {e.DisconnectedReason}",
-                                AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General,
+                                AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
                             realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
@@ -781,7 +781,7 @@ namespace Analogy
                             {
                                 AnalogyLogMessage disconnected = new AnalogyLogMessage(
                                     $"Source {dataSourceFactory.Title} Disconnected. Reason: {e.DisconnectedReason}",
-                                    AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General,
+                                    AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                     dataSourceFactory.Title, "Analogy");
                                 onlineUC.AppendMessage(disconnected, Environment.MachineName);
                                 realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
@@ -1509,7 +1509,7 @@ namespace Analogy
                     {
                         AnalogyLogMessage disconnected = new AnalogyLogMessage(
                             $"Source {title} Disconnected. Reason: {e.DisconnectedReason}",
-                            AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, title, "Analogy");
+                            AnalogyLogLevel.Analogy, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
                         realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
                         realTimeBtn.ImageOptions.Image = disconnectedLargeImage ?? Resources.Database_off;

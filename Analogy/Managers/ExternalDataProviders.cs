@@ -38,8 +38,7 @@ namespace Analogy.Managers
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogger.Instance.LogException(e, nameof(ExternalDataProviders),
-                            $"Error probing folder {folder}. Error: {e.Message}");
+                        AnalogyLogger.Instance.LogException($"Error probing folder {folder}. Error: {e.Message}",e, nameof(ExternalDataProviders));
                     }
                 }
 

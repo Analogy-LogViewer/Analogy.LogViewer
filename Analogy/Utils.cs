@@ -17,6 +17,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Types;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
@@ -359,7 +360,7 @@ namespace Analogy
             }
             catch (Exception exception)
             {
-                AnalogyLogger.Instance.LogException(exception, "", $"Error: {exception.Message}");
+                AnalogyLogger.Instance.LogException($"Error: {exception.Message}",exception, "");
             }
         }
     }

@@ -419,7 +419,7 @@ namespace Analogy
                     case AnalogyLogLevel.Unknown:
                         LogLevelColors.Add(level, (Color.White, Color.Black));
                         break;
-                    case AnalogyLogLevel.Disabled:
+                    case AnalogyLogLevel.None:
                         LogLevelColors.Add(level, (Color.LightGray, Color.Black));
                         break;
                     case AnalogyLogLevel.Trace:
@@ -431,7 +431,7 @@ namespace Analogy
                     case AnalogyLogLevel.Debug:
                         LogLevelColors.Add(level, (Color.White, Color.Black));
                         break;
-                    case AnalogyLogLevel.Event:
+                    case AnalogyLogLevel.Information:
                         LogLevelColors.Add(level, (Color.White, Color.Black));
                         break;
                     case AnalogyLogLevel.Warning:
@@ -443,7 +443,7 @@ namespace Analogy
                     case AnalogyLogLevel.Critical:
                         LogLevelColors.Add(level, (Color.Red, Color.Black));
                         break;
-                    case AnalogyLogLevel.AnalogyInformation:
+                    case AnalogyLogLevel.Analogy:
                         LogLevelColors.Add(level, (Color.White, Color.Black));
                         break;
                     default:
