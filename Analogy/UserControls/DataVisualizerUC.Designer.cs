@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel3 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
@@ -47,6 +48,7 @@
             this.xtpMessagesText = new DevExpress.XtraTab.XtraTabPage();
             this.xtpPieChart = new DevExpress.XtraTab.XtraTabPage();
             this.logStatisticsUC1 = new Philips.Analogy.LogStatisticsUC();
+            this.tmrPlotting = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).BeginInit();
@@ -104,7 +106,7 @@
             this.chklistItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.chklistItems.Location = new System.Drawing.Point(19, 44);
+            this.chklistItems.Location = new System.Drawing.Point(18, 40);
             this.chklistItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chklistItems.Name = "chklistItems";
             this.chklistItems.Size = new System.Drawing.Size(497, 93);
@@ -239,11 +241,16 @@
             // logStatisticsUC1
             // 
             this.logStatisticsUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logStatisticsUC1.FreeTextStatistics = null;
             this.logStatisticsUC1.Location = new System.Drawing.Point(0, 0);
             this.logStatisticsUC1.Name = "logStatisticsUC1";
             this.logStatisticsUC1.Size = new System.Drawing.Size(1008, 537);
             this.logStatisticsUC1.Statistics = null;
             this.logStatisticsUC1.TabIndex = 0;
+            // 
+            // tmrPlotting
+            // 
+            this.tmrPlotting.Interval = 5000;
             // 
             // DataVisualizerUC
             // 
@@ -294,5 +301,6 @@
         private DevExpress.XtraTab.XtraTabPage xtpMessagesText;
         private DevExpress.XtraTab.XtraTabPage xtpPieChart;
         private Philips.Analogy.LogStatisticsUC logStatisticsUC1;
+        private System.Windows.Forms.Timer tmrPlotting;
     }
 }

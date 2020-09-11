@@ -11,10 +11,10 @@ namespace Analogy
     public partial class DataVisualizerUC : DevExpress.XtraEditors.XtraUserControl
     {
 
-        private List<AnalogyLogMessage> Messages { get; set; }
+        private Func<List<AnalogyLogMessage>> Messages { get; set; }
 
         private List<string> Items { get; set; }
-        private List<string> MessagesText => Messages.Select(r => r.Text).ToList();
+        private List<string> MessagesText => Messages().Select(r => r.Text).ToList();
 
         public DataVisualizerUC()
         {
@@ -22,9 +22,14 @@ namespace Analogy
             InitializeComponent();
         }
 
+        public DataVisualizerUC(Func<List<AnalogyLogMessage>> messagesFunc) : this()
+        {
+            Messages = messagesFunc;
+            logStatisticsUC1.Statistics = new LogStatistics(messagesFunc);
+        }
         public DataVisualizerUC(List<AnalogyLogMessage> messages) : this()
         {
-            Messages = messages;
+            Messages = () => messages;
             logStatisticsUC1.Statistics = new LogStatistics(messages);
         }
 
@@ -35,6 +40,7 @@ namespace Analogy
 
         private void Plot()
         {
+            logStatisticsUC1.Statistics = new LogStatistics(Messages);
             Dictionary<string, Dictionary<TimeSpan, int>> frequency =
                 new Dictionary<string, Dictionary<TimeSpan, int>>();
             Dictionary<string, Dictionary<TimeSpan, int>> frequencyCount =
@@ -49,7 +55,7 @@ namespace Analogy
                 timeDistribution.Add(item, new List<AnalogyLogMessage>());
             }
 
-            foreach (var m in Messages)
+            foreach (var m in Messages())
             {
 
                 foreach (var item in Items)

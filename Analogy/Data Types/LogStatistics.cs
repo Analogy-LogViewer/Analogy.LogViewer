@@ -7,15 +7,19 @@ namespace Analogy
 {
     public class LogStatistics
     {
-        private List<AnalogyLogMessage> Messages { get; }
+        private Func<List<AnalogyLogMessage>> MessagesSource { get; set; }
+        private List<AnalogyLogMessage> Messages => MessagesSource();
         private List<string> Sources => Messages.Select(m => m.Source).Distinct().ToList();
         private List<string> Modules => Messages.Select(m => m.Module).Distinct().ToList();
         private List<string> Texts = new List<string>();
         public LogStatistics(List<AnalogyLogMessage> messages)
         {
-            Messages = messages;
+            MessagesSource = () => messages;
         }
-
+        public LogStatistics(Func<List<AnalogyLogMessage>> messagesFunc)
+        {
+            MessagesSource = messagesFunc;
+        }
         public ItemStatistics CalculateGlobalStatistics()
         {
             return new ItemStatistics("Global", Messages.Count, CountMessages(Messages, AnalogyLogLevel.Error),
