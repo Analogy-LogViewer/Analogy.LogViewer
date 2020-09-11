@@ -20,7 +20,7 @@ namespace Analogy
             
         }
 
-        public void LogEvent(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
+        public void LogInformation(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
             => AnalogyLogManager.Instance.LogInformation(GetFormattedString(message, memberName, lineNumber, filePath), source);
 
         public void LogWarning(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
