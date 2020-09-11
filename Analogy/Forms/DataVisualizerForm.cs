@@ -11,6 +11,12 @@ namespace Analogy
         {
             InitializeComponent();
         }
+        public DataVisualizerForm(Func<List<AnalogyLogMessage>> messages) : this()
+        {
+            DataVisualizerUC uc = new DataVisualizerUC(messages);
+            this.Controls.Add(uc);
+            uc.Dock = DockStyle.Fill;
+        }
         public DataVisualizerForm(List<AnalogyLogMessage> messages) : this()
         {
             DataVisualizerUC uc = new DataVisualizerUC(messages);

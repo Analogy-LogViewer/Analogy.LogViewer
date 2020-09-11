@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Analogy
 {
@@ -40,7 +41,7 @@ namespace Analogy
 
         private void Plot()
         {
-            logStatisticsUC1.Statistics = new LogStatistics(Messages);
+            logStatisticsUC1.RefreshStatistics(new LogStatistics(Messages));
             Dictionary<string, Dictionary<TimeSpan, int>> frequency =
                 new Dictionary<string, Dictionary<TimeSpan, int>>();
             Dictionary<string, Dictionary<TimeSpan, int>> frequencyCount =
@@ -50,12 +51,13 @@ namespace Analogy
 
             foreach (var item in Items)
             {
-                frequency.Add(item, new Dictionary<TimeSpan, int>());
-                frequencyCount.Add(item, new Dictionary<TimeSpan, int>());
-                timeDistribution.Add(item, new List<AnalogyLogMessage>());
+                frequency[item] = new Dictionary<TimeSpan, int>();
+                frequencyCount[item] = new Dictionary<TimeSpan, int>();
+                timeDistribution[item] = new List<AnalogyLogMessage>();
             }
 
-            foreach (var m in Messages())
+            var msgs = Messages();
+            foreach (var m in msgs)
             {
 
                 foreach (var item in Items)
@@ -190,6 +192,8 @@ namespace Analogy
             {
                 Items.Add(textEdit1.Text.Substring(textEdit1.Text.IndexOf(':') + 1));
                 chklistItems.Items.Add(textEdit1.Text, true);
+                ceAutoRefresh.Enabled = true;
+                seRefreshInterval.Enabled = true;
                 Plot();
             }
             else
@@ -198,6 +202,33 @@ namespace Analogy
                 chklistItems.Items.Add("", true);
                 Plot();
             }
+        }
+
+        private void seRefreshInterval_EditValueChanged(object sender, EventArgs e)
+        {
+            ceAutoRefresh.CheckState = CheckState.Checked;
+            tmrPlotting.Interval = (int)seRefreshInterval.Value * 1000;
+        }
+
+        private void ceAutoRefresh_EditValueChanged(object sender, EventArgs e)
+        {
+            if (ceAutoRefresh.Checked)
+            {
+                tmrPlotting.Interval = (int)seRefreshInterval.Value * 1000;
+                tmrPlotting.Enabled = true;
+            }
+            else
+            {
+                tmrPlotting.Enabled = false;
+            }
+
+        }
+
+        private void tmrPlotting_Tick(object sender, EventArgs e)
+        {
+            tmrPlotting.Enabled = false;
+            Plot();
+            tmrPlotting.Enabled = true;
         }
     }
 }

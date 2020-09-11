@@ -655,27 +655,27 @@ namespace Analogy
                 }
                 else
                     switch (logLevelSelectionType)
-                {
-                    case LogLevelSelectionType.Single:
-                        chkLstLogLevel.Items["Error + Critical"].CheckState = chkLstLogLevel.Items["Error + Critical"].CheckState == CheckState.Checked
-                            ? CheckState.Unchecked
-                            : CheckState.Checked;
-                        break;
-                    case LogLevelSelectionType.Multiple:
-                        chkLstLogLevel.Items["Error"].CheckState = chkLstLogLevel.Items["Error"].CheckState == CheckState.Checked
-                            ? CheckState.Unchecked
-                            : CheckState.Checked;
-                        chkLstLogLevel.Items["Critical"].CheckState = chkLstLogLevel.Items["Critical"].CheckState == CheckState.Checked
-                            ? CheckState.Unchecked
-                            : CheckState.Checked;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                    {
+                        case LogLevelSelectionType.Single:
+                            chkLstLogLevel.Items["Error + Critical"].CheckState = chkLstLogLevel.Items["Error + Critical"].CheckState == CheckState.Checked
+                                ? CheckState.Unchecked
+                                : CheckState.Checked;
+                            break;
+                        case LogLevelSelectionType.Multiple:
+                            chkLstLogLevel.Items["Error"].CheckState = chkLstLogLevel.Items["Error"].CheckState == CheckState.Checked
+                                ? CheckState.Unchecked
+                                : CheckState.Checked;
+                            chkLstLogLevel.Items["Critical"].CheckState = chkLstLogLevel.Items["Critical"].CheckState == CheckState.Checked
+                                ? CheckState.Unchecked
+                                : CheckState.Checked;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
 
             }
 
-       
+
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -2171,7 +2171,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}",e, "Analogy");
+                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -2523,8 +2523,7 @@ namespace Analogy
 
         private void bBtnDataVisualizer_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var messages = Messages;
-            DataVisualizerForm sv = new DataVisualizerForm(messages);
+            DataVisualizerForm sv = new DataVisualizerForm(() => Messages);
             sv.Show(this);
         }
 
