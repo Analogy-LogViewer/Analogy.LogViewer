@@ -21,8 +21,8 @@ namespace Analogy
 
         public List<string> ProbingPaths { get; set; } = new List<string>();
         public static readonly FactoriesManager Instance = _instance.Value;
-        private List<FactoryContainer> BuiltInFactories { get; }
-        public List<FactoryContainer> Factories { get; private set; }
+        public List<FactoryContainer> BuiltInFactories { get; }
+        public List<FactoryContainer> Factories { get; }
 
         public FactoriesManager()
         {

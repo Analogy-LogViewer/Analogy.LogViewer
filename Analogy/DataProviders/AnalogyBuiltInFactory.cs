@@ -193,7 +193,7 @@ namespace Analogy.DataSources
         public Image SmallImage { get; set; } = Resources.ChartsShowLegend_16x16;
         public Image LargeImage { get; set; } = Resources.ChartsShowLegend_32x32;
         public string Title { get; set; } = "Process Identifier";
-        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.BelongsToProvider;
+        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
     }
     public class AnalogyUnixTimeAction : IAnalogyCustomAction
     {
@@ -207,7 +207,7 @@ namespace Analogy.DataSources
         public Image LargeImage { get; set; } = Resources.ChartsShowLegend_32x32;
 
         public string Title { get; set; } = "Unix Time Converter";
-        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.BelongsToProvider;
+        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
 
     }
 

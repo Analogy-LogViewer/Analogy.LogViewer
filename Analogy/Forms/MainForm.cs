@@ -163,6 +163,7 @@ namespace Analogy
                 CreateDataSource(analogy, 0);
             }
             await FactoriesManager.Instance.AddExternalDataSources();
+            PopulateGlobalTools();
             LoadStartupExtensions();
             CreateDataSources();
 
@@ -211,6 +212,33 @@ namespace Analogy
                 settings.ShowWhatIsNewAtStartup = false;
             }
 
+        }
+
+        private void PopulateGlobalTools()
+        {
+            var allFactories = FactoriesManager.Instance.Factories.ToList();
+            allFactories.AddRange(FactoriesManager.Instance.BuiltInFactories);
+            foreach (FactoryContainer fc in allFactories
+                .Where(factory => factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
+            {
+                var actionFactories = fc.CustomActionsFactories;
+                foreach (var actionFactory in actionFactories)
+                {
+                    foreach (IAnalogyCustomAction action in actionFactory.Actions)
+                    {
+                        if (action.Type == AnalogyCustomActionType.BelongsToProvider) continue;
+
+                        BarButtonItem actionBtn = new BarButtonItem();
+                        bsiGlobalTools.ItemLinks.Add(actionBtn);
+                        actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.globalTools16x16;
+                        actionBtn.ImageOptions.LargeImage = action.LargeImage ?? Resources.globalTools32x32;
+                        actionBtn.RibbonStyle = RibbonItemStyles.All;
+                        actionBtn.Caption = string.IsNullOrEmpty(action.Title) ? "Tool" : action.Title;
+                        actionBtn.ItemClick += (sender, e) => { action.Action(); };
+
+                    }
+                }
+            }
         }
 
         private void SetupEventHandlers()
@@ -501,8 +529,10 @@ namespace Analogy
             }
 
             var actionFactories = fc.CustomActionsFactories;
-            foreach (var actionFactory in actionFactories)
+            foreach (var actionFactory in actionFactories.Where(af
+                => af.Actions.Any(a => a.Type == AnalogyCustomActionType.BelongsToProvider)))
             {
+
                 if (string.IsNullOrEmpty(actionFactory.Title)) continue;
                 RibbonPageGroup groupActionSource = new RibbonPageGroup(actionFactory.Title);
                 groupActionSource.AllowTextClipping = false;
@@ -512,7 +542,7 @@ namespace Analogy
                     AnalogyLogManager.Instance.LogCritical($"null actions for {actionFactory.Title}:{actionFactory.FactoryId}", $"{actionFactory.Title}{actionFactory.FactoryId}");
                     continue;
                 }
-                foreach (IAnalogyCustomAction action in actionFactory.Actions)
+                foreach (IAnalogyCustomAction action in actionFactory.Actions.Where(a => a.Type == AnalogyCustomActionType.BelongsToProvider))
                 {
                     BarButtonItem actionBtn = new BarButtonItem
                     {

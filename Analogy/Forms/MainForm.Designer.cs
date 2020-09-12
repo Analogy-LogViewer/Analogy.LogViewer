@@ -41,6 +41,13 @@
             this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
+            this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
+            this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bItemProcess = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemDark = new DevExpress.XtraBars.BarButtonItem();
@@ -58,10 +65,6 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.bbsItem = new DevExpress.XtraBars.BarSubItem();
             this.bbtnCombineOpenLogs = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
@@ -101,9 +104,7 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
-            this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
-            this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -129,10 +130,12 @@
             // 
             this.ribbonControlMain.AllowKeyTips = false;
             this.ribbonControlMain.ApplicationButtonDropDownControl = this.applicationMenu1;
+            this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiGlobalTools);
             this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsmInfo);
             this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bsmInfo,
             this.ribbonControlMain.ExpandCollapseItem,
             this.ribbonControlMain.SearchEditItem,
             this.btnItemLocalLogs,
@@ -192,12 +195,12 @@
             this.btnUserSettings,
             this.btnDataProvidersSettings,
             this.btnSettingsUpdate,
-            this.bsmInfo,
             this.bbtnFirstRun,
-            this.bbtnWhatsNew});
+            this.bbtnWhatsNew,
+            this.bsiGlobalTools});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 101;
+            this.ribbonControlMain.MaxItemId = 103;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
@@ -250,6 +253,71 @@
             this.bbtnItemExit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnItemExit.ImageOptions.LargeImage")));
             this.bbtnItemExit.Name = "bbtnItemExit";
             this.bbtnItemExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemExit_ItemClick);
+            // 
+            // bsmInfo
+            // 
+            this.bsmInfo.Caption = "About and information";
+            this.bsmInfo.Id = 98;
+            this.bsmInfo.ImageOptions.Image = global::Analogy.Properties.Resources.About_16x16;
+            this.bsmInfo.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnWhatsNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnFirstRun),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
+            this.bsmInfo.Name = "bsmInfo";
+            // 
+            // bbtnWhatsNew
+            // 
+            this.bbtnWhatsNew.Caption = "What\'s New";
+            this.bbtnWhatsNew.Id = 100;
+            this.bbtnWhatsNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.Image")));
+            this.bbtnWhatsNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.LargeImage")));
+            this.bbtnWhatsNew.Name = "bbtnWhatsNew";
+            // 
+            // bbtnFirstRun
+            // 
+            this.bbtnFirstRun.Caption = "Show first run window";
+            this.bbtnFirstRun.Id = 99;
+            this.bbtnFirstRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.Image")));
+            this.bbtnFirstRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.LargeImage")));
+            this.bbtnFirstRun.Name = "bbtnFirstRun";
+            // 
+            // bbtnItemChangeLog
+            // 
+            this.bbtnItemChangeLog.Caption = "Change Log";
+            this.bbtnItemChangeLog.Id = 29;
+            this.bbtnItemChangeLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemChangeLog.ImageOptions.Image")));
+            this.bbtnItemChangeLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnItemChangeLog.ImageOptions.LargeImage")));
+            this.bbtnItemChangeLog.Name = "bbtnItemChangeLog";
+            this.bbtnItemChangeLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemChangeLog_ItemClick);
+            // 
+            // bbtnDebugLog
+            // 
+            this.bbtnDebugLog.Caption = "Internal log";
+            this.bbtnDebugLog.Id = 73;
+            this.bbtnDebugLog.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
+            this.bbtnDebugLog.Name = "bbtnDebugLog";
+            this.bbtnDebugLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDebugLog_ItemClick);
+            // 
+            // bbtnUpdates
+            // 
+            this.bbtnUpdates.Caption = "Check for updates";
+            this.bbtnUpdates.Id = 76;
+            this.bbtnUpdates.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnUpdates.ImageOptions.Image")));
+            this.bbtnUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnUpdates.ImageOptions.LargeImage")));
+            this.bbtnUpdates.Name = "bbtnUpdates";
+            this.bbtnUpdates.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnUpdates_ItemClick);
+            // 
+            // bbtnItemHelp
+            // 
+            this.bbtnItemHelp.Caption = "About";
+            this.bbtnItemHelp.Id = 27;
+            this.bbtnItemHelp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemHelp.ImageOptions.Image")));
+            this.bbtnItemHelp.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnItemHelp.ImageOptions.LargeImage")));
+            this.bbtnItemHelp.Name = "bbtnItemHelp";
+            this.bbtnItemHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemHelp_ItemClick);
             // 
             // btnItemLocalLogs
             // 
@@ -400,41 +468,6 @@
             this.bbtnCombineOpenLogs.Caption = "Combine open logs";
             this.bbtnCombineOpenLogs.Id = 77;
             this.bbtnCombineOpenLogs.Name = "bbtnCombineOpenLogs";
-            // 
-            // bbtnItemChangeLog
-            // 
-            this.bbtnItemChangeLog.Caption = "Change Log";
-            this.bbtnItemChangeLog.Id = 29;
-            this.bbtnItemChangeLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemChangeLog.ImageOptions.Image")));
-            this.bbtnItemChangeLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnItemChangeLog.ImageOptions.LargeImage")));
-            this.bbtnItemChangeLog.Name = "bbtnItemChangeLog";
-            this.bbtnItemChangeLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemChangeLog_ItemClick);
-            // 
-            // bbtnDebugLog
-            // 
-            this.bbtnDebugLog.Caption = "Internal log";
-            this.bbtnDebugLog.Id = 73;
-            this.bbtnDebugLog.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
-            this.bbtnDebugLog.Name = "bbtnDebugLog";
-            this.bbtnDebugLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDebugLog_ItemClick);
-            // 
-            // bbtnUpdates
-            // 
-            this.bbtnUpdates.Caption = "Check for updates";
-            this.bbtnUpdates.Id = 76;
-            this.bbtnUpdates.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnUpdates.ImageOptions.Image")));
-            this.bbtnUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnUpdates.ImageOptions.LargeImage")));
-            this.bbtnUpdates.Name = "bbtnUpdates";
-            this.bbtnUpdates.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnUpdates_ItemClick);
-            // 
-            // bbtnItemHelp
-            // 
-            this.bbtnItemHelp.Caption = "About";
-            this.bbtnItemHelp.Id = 27;
-            this.bbtnItemHelp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnItemHelp.ImageOptions.Image")));
-            this.bbtnItemHelp.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnItemHelp.ImageOptions.LargeImage")));
-            this.bbtnItemHelp.Name = "bbtnItemHelp";
-            this.bbtnItemHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemHelp_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -769,35 +802,13 @@
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
             // 
-            // bsmInfo
+            // bsiGlobalTools
             // 
-            this.bsmInfo.Caption = "About and information";
-            this.bsmInfo.Id = 98;
-            this.bsmInfo.ImageOptions.Image = global::Analogy.Properties.Resources.About_16x16;
-            this.bsmInfo.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnWhatsNew),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnFirstRun),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
-            this.bsmInfo.Name = "bsmInfo";
-            // 
-            // bbtnFirstRun
-            // 
-            this.bbtnFirstRun.Caption = "Show first run window";
-            this.bbtnFirstRun.Id = 99;
-            this.bbtnFirstRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.Image")));
-            this.bbtnFirstRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.LargeImage")));
-            this.bbtnFirstRun.Name = "bbtnFirstRun";
-            // 
-            // bbtnWhatsNew
-            // 
-            this.bbtnWhatsNew.Caption = "What\'s New";
-            this.bbtnWhatsNew.Id = 100;
-            this.bbtnWhatsNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.Image")));
-            this.bbtnWhatsNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.LargeImage")));
-            this.bbtnWhatsNew.Name = "bbtnWhatsNew";
+            this.bsiGlobalTools.Caption = "Global Tools";
+            this.bsiGlobalTools.Id = 102;
+            this.bsiGlobalTools.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.Image")));
+            this.bsiGlobalTools.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.LargeImage")));
+            this.bsiGlobalTools.Name = "bsiGlobalTools";
             // 
             // MainForm
             // 
@@ -901,5 +912,6 @@
         private DevExpress.XtraBars.BarSubItem bsmInfo;
         private DevExpress.XtraBars.BarButtonItem bbtnFirstRun;
         private DevExpress.XtraBars.BarButtonItem bbtnWhatsNew;
+        private DevExpress.XtraBars.BarSubItem bsiGlobalTools;
     }
 }
