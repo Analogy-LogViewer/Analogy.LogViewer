@@ -612,15 +612,15 @@ namespace Analogy
             AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
 
             FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(dataSourceFactory.FactoryId);
-            IAnalogyImages images = container?.Images?.FirstOrDefault();//todo:add bookmarks
+            IAnalogyImages images = container?.Images?.FirstOrDefault();
 
             //add bookmark
             BarButtonItem bookmarkBtn = new BarButtonItem();
             bookmarkBtn.Caption = "Bookmarks";
             bookmarkBtn.RibbonStyle = RibbonItemStyles.All;
             ribbonPageGroup.ItemLinks.Add(bookmarkBtn);
-            bookmarkBtn.ImageOptions.Image = Resources.RichEditBookmark_16x16;
-            bookmarkBtn.ImageOptions.LargeImage = Resources.RichEditBookmark_32x32;
+            bookmarkBtn.ImageOptions.Image = images?.GetSmallBookmarksImage(dataSourceFactory.FactoryId) ?? Resources.RichEditBookmark_16x16;
+            bookmarkBtn.ImageOptions.LargeImage = images?.GetLargeBookmarksImage(dataSourceFactory.FactoryId) ?? Resources.RichEditBookmark_32x32;
             bookmarkBtn.ItemClick += (sender, e) => { OpenBookmarkLog(); };
         }
 
