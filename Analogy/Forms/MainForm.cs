@@ -514,9 +514,11 @@ namespace Analogy
                 }
                 foreach (IAnalogyCustomAction action in actionFactory.Actions)
                 {
-                    BarButtonItem actionBtn = new BarButtonItem();
-                    actionBtn.Caption = action.Title;
-                    actionBtn.RibbonStyle = RibbonItemStyles.All;
+                    BarButtonItem actionBtn = new BarButtonItem
+                    {
+                        Caption = action.Title,
+                        RibbonStyle = RibbonItemStyles.All
+                    };
                     groupActionSource.ItemLinks.Add(actionBtn);
                     actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.PageSetup_32x32;
                     actionBtn.ImageOptions.LargeImage = action.LargeImage ?? Resources.PageSetup_32x32;
@@ -574,11 +576,13 @@ namespace Analogy
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Offline Data Provides: {dataSourceFactory.Title}");
             ribbonPageGroup.AllowTextClipping = false;
             ribbonPage.Groups.Add(ribbonPageGroup);
-            
+
             AddRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddSingleDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
 
+            FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(dataSourceFactory.FactoryId);
+            IAnalogyImages images = container?.Images?.FirstOrDefault();//todo:add bookmarks
 
             //add bookmark
             BarButtonItem bookmarkBtn = new BarButtonItem();
@@ -599,8 +603,8 @@ namespace Analogy
 
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Real Time Providers: {dataSourceFactory.Title}");
             ribbonPageGroup.AllowTextClipping = false;
-            ribbonPage.Groups.Insert(0,ribbonPageGroup);
-            
+            ribbonPage.Groups.Insert(0, ribbonPageGroup);
+
             foreach (var realTime in realTimes)
             {
                 var imageSmallOffline = realTime.DisconnectedSmallImage;
@@ -921,18 +925,24 @@ namespace Analogy
                 RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools{optionalText}");
                 groupOfflineFileTools.AllowTextClipping = false;
                 ribbonPage.Groups.Add(groupOfflineFileTools);
-                AddSingleOfflineDataSource(ribbonPage, offlineAnalogy, factory.Title, group, groupOfflineFileTools);
+                AddSingleOfflineDataSource(ribbonPage, offlineAnalogy, factory.FactoryId, factory.Title, group, groupOfflineFileTools);
             }
             else
             {
-                AddMultiplesOfflineDataSource(ribbonPage, offlineProviders, factory.Title, group);
+                AddMultiplesOfflineDataSource(ribbonPage, offlineProviders, factory.FactoryId, factory.Title, group);
             }
 
         }
 
         private void AddMultiplesOfflineDataSource(RibbonPage ribbonPage,
-            List<IAnalogyOfflineDataProvider> offlineProviders, string factoryTitle, RibbonPageGroup group)
+            List<IAnalogyOfflineDataProvider> offlineProviders, Guid factoryId, string factoryTitle, RibbonPageGroup group)
         {
+
+            FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(factoryId);
+            IAnalogyImages images = container?.Images?.FirstOrDefault();
+
+
+            #region Actions
             void OpenOffline(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider, string initialFolder,
                 string[] files = null)
             {
@@ -998,20 +1008,20 @@ namespace Analogy
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }
 
-
+            #endregion
             //recent bar
             BarSubItem recentBar = new BarSubItem();
             recentBar.Caption = "Recent Files";
-            recentBar.ImageOptions.Image = Resources.RecentlyUse_16x16;
-            recentBar.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
+            recentBar.ImageOptions.Image = images?.GetSmallRecentFilesImage(factoryId) ?? Resources.RecentlyUse_16x16;
+            recentBar.ImageOptions.LargeImage = images?.GetLargeRecentFilesImage(factoryId) ?? Resources.RecentlyUse_32x32;
             recentBar.RibbonStyle = RibbonItemStyles.All;
 
             //local folder
 
             BarSubItem folderBar = new BarSubItem();
             folderBar.Caption = "Open Folder";
-            folderBar.ImageOptions.Image = Resources.Open2_32x32;
-            folderBar.ImageOptions.LargeImage = Resources.Open2_32x32;
+            folderBar.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.Open2_32x32;
+            folderBar.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.Open2_32x32;
             folderBar.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(folderBar);
 
@@ -1034,8 +1044,8 @@ namespace Analogy
             //add recent folders
             //recent bar
             BarSubItem recentFolders = new BarSubItem { Caption = "Recent Folders" };
-            recentFolders.ImageOptions.Image = Resources.LoadFrom_16x16;
-            recentFolders.ImageOptions.LargeImage = Resources.LoadFrom_32x32;
+            recentFolders.ImageOptions.Image = images?.GetSmallRecentFoldersImage(factoryId) ?? Resources.LoadFrom_16x16;
+            recentFolders.ImageOptions.LargeImage = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
             recentFolders.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(recentFolders);
             foreach (var dataProvider in offlineProviders)
@@ -1101,8 +1111,8 @@ namespace Analogy
                 BarSubItem filePoolingBtn = new BarSubItem();
                 filePoolingBtn.Caption = "File Pooling";
                 group.ItemLinks.Add(filePoolingBtn);
-                filePoolingBtn.ImageOptions.Image = Resources.FilePooling_16x16;
-                filePoolingBtn.ImageOptions.LargeImage = Resources.FilePooling_32x32;
+                filePoolingBtn.ImageOptions.Image = images?.GetSmallFilePoolingImage(factoryId) ?? Resources.FilePooling_16x16;
+                filePoolingBtn.ImageOptions.LargeImage = images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
                 filePoolingBtn.RibbonStyle = RibbonItemStyles.All;
 
                 foreach (var dataProvider in offlineProviders)
@@ -1144,8 +1154,8 @@ namespace Analogy
             externalSources.Caption = "Known Locations";
             externalSources.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(externalSources);
-            externalSources.ImageOptions.Image = Resources.ServerMode_16x16;
-            externalSources.ImageOptions.LargeImage = Resources.ServerMode_32x32;
+            externalSources.ImageOptions.Image = images?.GetSmallKnownLocationsImage(factoryId) ?? Resources.ServerMode_16x16;
+            externalSources.ImageOptions.LargeImage = images?.GetLargeKnownLocationsImage(factoryId) ?? Resources.ServerMode_32x32;
             //add client/server  button:
             foreach (var dataProvider in offlineProviders)
             {
@@ -1157,7 +1167,6 @@ namespace Analogy
                 externalSources.AddItem(btnOpenLocation);
             }
 
-
             //add tools
 
             RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools for {factoryTitle}");
@@ -1168,8 +1177,8 @@ namespace Analogy
             BarSubItem searchFiles = new BarSubItem();
             searchFiles.Caption = "Search in Files";
             groupOfflineFileTools.ItemLinks.Add(searchFiles);
-            searchFiles.ImageOptions.Image = Resources.Lookup_Reference_32x32;
-            searchFiles.ImageOptions.LargeImage = Resources.Lookup_Reference_32x32;
+            searchFiles.ImageOptions.Image = images?.GetSmallSearchImage(factoryId) ?? Resources.Lookup_Reference_32x32;
+            searchFiles.ImageOptions.LargeImage = images?.GetLargeSearchImage(factoryId) ?? Resources.Lookup_Reference_32x32;
             searchFiles.RibbonStyle = RibbonItemStyles.All;
 
             foreach (var dataProvider in offlineProviders)
@@ -1187,8 +1196,8 @@ namespace Analogy
             BarSubItem combineFiles = new BarSubItem();
             combineFiles.Caption = "Combine Files";
             groupOfflineFileTools.ItemLinks.Add(combineFiles);
-            combineFiles.ImageOptions.Image = Resources.Sutotal_32x32;
-            combineFiles.ImageOptions.LargeImage = Resources.Sutotal_32x32;
+            combineFiles.ImageOptions.Image = images?.GetSmallCombineLogsImage(factoryId) ?? Resources.Sutotal_32x32;
+            combineFiles.ImageOptions.LargeImage = images?.GetLargeCombineLogsImage(factoryId) ?? Resources.Sutotal_32x32;
             combineFiles.RibbonStyle = RibbonItemStyles.All;
 
             foreach (var dataProvider in offlineProviders)
@@ -1207,8 +1216,8 @@ namespace Analogy
             BarSubItem compareFiles = new BarSubItem();
             compareFiles.Caption = "Compare Files";
             groupOfflineFileTools.ItemLinks.Add(compareFiles);
-            compareFiles.ImageOptions.Image = Resources.TwoColumns;
-            compareFiles.ImageOptions.LargeImage = Resources.TwoColumns;
+            compareFiles.ImageOptions.Image = images?.GetSmallCompareLogsImage(factoryId) ?? Resources.TwoColumns;
+            compareFiles.ImageOptions.LargeImage = images?.GetLargeCompareLogsImage(factoryId) ?? Resources.TwoColumns;
             compareFiles.RibbonStyle = RibbonItemStyles.All;
 
             foreach (var dataProvider in offlineProviders)
@@ -1247,9 +1256,9 @@ namespace Analogy
         }
 
         private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
-           string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
+          Guid factoryId, string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
-
+            #region actions
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
                 openedWindows++;
@@ -1312,24 +1321,28 @@ namespace Analogy
                 dockManager1.ActivePanel = page;
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }
-
+            #endregion
             //add local folder button:
             string directory = (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
                                 Directory.Exists(offlineAnalogy.InitialFolderFullPath))
                 ? offlineAnalogy.InitialFolderFullPath
-                : Environment.CurrentDirectory;
+                : Environment.CurrentDirectory;//todo:open folder dialog
+
+            FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(offlineAnalogy.Id);
+            IAnalogyImages images = container?.Images?.FirstOrDefault();
             BarButtonItem localfolder = new BarButtonItem();
             localfolder.Caption = "Open Folder";
             localfolder.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(localfolder);
-            localfolder.ImageOptions.Image = Resources.Open2_32x32;
+            localfolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.Open2_32x32;
+            localfolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.Open2_32x32;
             localfolder.ItemClick += (sender, e) => { OpenOffline(title, directory); };
 
             //recent folder
             //recent bar
             BarSubItem recentFolders = new BarSubItem { Caption = "Recent Folders" };
-            recentFolders.ImageOptions.Image = Resources.LoadFrom_16x16;
-            recentFolders.ImageOptions.LargeImage = Resources.LoadFrom_32x32;
+            recentFolders.ImageOptions.Image = images?.GetSmallRecentFoldersImage(factoryId) ?? Resources.LoadFrom_16x16;
+            recentFolders.ImageOptions.LargeImage = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
             recentFolders.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(recentFolders);
             foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
@@ -1348,14 +1361,11 @@ namespace Analogy
 
 
 
-
-
-
             //recent bar
             BarSubItem recentBar = new BarSubItem();
             recentBar.Caption = "Recent Files";
-            recentBar.ImageOptions.Image = Resources.RecentlyUse_16x16;
-            recentBar.ImageOptions.LargeImage = Resources.RecentlyUse_32x32;
+            recentBar.ImageOptions.Image = images?.GetSmallRecentFilesImage(factoryId) ?? Resources.RecentlyUse_16x16;
+            recentBar.ImageOptions.LargeImage = images?.GetLargeRecentFilesImage(factoryId) ?? Resources.RecentlyUse_32x32;
             recentBar.RibbonStyle = RibbonItemStyles.Large | RibbonItemStyles.SmallWithText |
                                     RibbonItemStyles.SmallWithoutText;
             //add Files open buttons
@@ -1388,8 +1398,8 @@ namespace Analogy
                 BarButtonItem filePoolingBtn = new BarButtonItem();
                 filePoolingBtn.Caption = "File Pooling";
                 group.ItemLinks.Add(filePoolingBtn);
-                filePoolingBtn.ImageOptions.Image = Resources.FilePooling_16x16;
-                filePoolingBtn.ImageOptions.LargeImage = Resources.FilePooling_32x32;
+                filePoolingBtn.ImageOptions.Image = images?.GetSmallFilePoolingImage(factoryId) ?? Resources.FilePooling_16x16;
+                filePoolingBtn.ImageOptions.LargeImage = images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
                 filePoolingBtn.RibbonStyle = RibbonItemStyles.All;
                 filePoolingBtn.ItemClick += (sender, e) =>
                 {
@@ -1420,8 +1430,8 @@ namespace Analogy
             externalSources.Caption = "Known Locations";
             externalSources.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(externalSources);
-            externalSources.ImageOptions.Image = Resources.ServerMode_16x16;
-            externalSources.ImageOptions.LargeImage = Resources.ServerMode_32x32;
+            externalSources.ImageOptions.Image = images?.GetSmallKnownLocationsImage(factoryId) ?? Resources.ServerMode_16x16;
+            externalSources.ImageOptions.LargeImage = images?.GetLargeKnownLocationsImage(factoryId) ?? Resources.ServerMode_32x32;
             externalSources.ItemClick += (sender, e) => { OpenExternalDataSource(title, offlineAnalogy); };
 
 
@@ -1429,8 +1439,8 @@ namespace Analogy
             BarButtonItem searchFiles = new BarButtonItem();
             searchFiles.Caption = "Search in Files";
             groupOfflineFileTools.ItemLinks.Add(searchFiles);
-            searchFiles.ImageOptions.Image = Resources.Lookup_Reference_32x32;
-            searchFiles.ImageOptions.LargeImage = Resources.Lookup_Reference_32x32;
+            searchFiles.ImageOptions.Image = images?.GetSmallSearchImage(offlineAnalogy.Id) ?? Resources.Lookup_Reference_32x32;
+            searchFiles.ImageOptions.LargeImage = images?.GetLargeSearchImage(offlineAnalogy.Id) ?? Resources.Lookup_Reference_32x32;
             searchFiles.RibbonStyle = RibbonItemStyles.All;
             searchFiles.ItemClick += (sender, e) =>
             {
@@ -1441,8 +1451,8 @@ namespace Analogy
             BarButtonItem combineFiles = new BarButtonItem();
             combineFiles.Caption = "Combine Files";
             groupOfflineFileTools.ItemLinks.Add(combineFiles);
-            combineFiles.ImageOptions.Image = Resources.Sutotal_32x32;
-            combineFiles.ImageOptions.LargeImage = Resources.Sutotal_32x32;
+            combineFiles.ImageOptions.Image = images?.GetSmallCombineLogsImage(offlineAnalogy.Id) ?? Resources.Sutotal_32x32;
+            combineFiles.ImageOptions.LargeImage = images?.GetLargeCombineLogsImage(offlineAnalogy.Id) ?? Resources.Sutotal_32x32;
             combineFiles.RibbonStyle = RibbonItemStyles.All;
             combineFiles.ItemClick += (sender, e) =>
             {
@@ -1454,8 +1464,8 @@ namespace Analogy
             BarButtonItem compareFiles = new BarButtonItem();
             compareFiles.Caption = "Compare Files";
             groupOfflineFileTools.ItemLinks.Add(compareFiles);
-            compareFiles.ImageOptions.Image = Resources.TwoColumns;
-            compareFiles.ImageOptions.LargeImage = Resources.TwoColumns;
+            compareFiles.ImageOptions.Image = images?.GetSmallCompareLogsImage(offlineAnalogy.Id) ?? Resources.TwoColumns;
+            compareFiles.ImageOptions.LargeImage = images?.GetLargeCompareLogsImage(offlineAnalogy.Id) ?? Resources.TwoColumns;
             compareFiles.RibbonStyle = RibbonItemStyles.All;
             compareFiles.ItemClick += (sender, e) =>
             {

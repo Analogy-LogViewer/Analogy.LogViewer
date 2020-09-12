@@ -19,7 +19,7 @@ namespace Analogy.Managers
         public List<IAnalogyShareableFactory> ShareableFactories { get; }
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         public List<IAnalogyComponentImages> DataProviderImages { get; private set; }
-
+        public List<IAnalogyImages> Images { get; private set; }
         public FactoryContainer(Assembly assembly, string assemblyFullPath, IAnalogyFactory factory, FactorySettings factorySetting)
         {
             Assembly = assembly;
@@ -32,7 +32,7 @@ namespace Analogy.Managers
             ShareableFactories = new List<IAnalogyShareableFactory>();
             ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
             DataProviderImages = new List<IAnalogyComponentImages>();
-
+            Images=new List<IAnalogyImages>();
         }
 
 
@@ -50,7 +50,9 @@ namespace Analogy.Managers
         public void AddExtensionFactory(IAnalogyExtensionsFactory extensionFactory) =>
             ExtensionsFactories.Add(extensionFactory);
 
-        public void AddImages(IAnalogyComponentImages images) => DataProviderImages.Add(images);
+        public void AddComponentImages(IAnalogyComponentImages images) => DataProviderImages.Add(images);
+        public void AddImages(IAnalogyImages images) => Images.Add(images);
+
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";
 
         public bool ContainsDataProviderOrDataFactory(Guid componentId)

@@ -54,14 +54,14 @@ namespace Analogy
             }
             catch (AggregateException ex)
             {
-                AnalogyLogger.Instance.LogException("Error during Initialization",ex, "InitializeBuiltInFactories");
+                AnalogyLogger.Instance.LogException("Error during Initialization", ex, "InitializeBuiltInFactories");
             }
 
             foreach (var t in initTasks)
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    AnalogyLogger.Instance.LogException("Error during Initialization",t.Exception, "AddExternalDataSources");
+                    AnalogyLogger.Instance.LogException("Error during Initialization", t.Exception, "AddExternalDataSources");
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogger.Instance.LogException($"Error during Initialization of {provider.OptionalTitle}",e, "AddExternalDataSources");
+                    AnalogyLogger.Instance.LogException($"Error during Initialization of {provider.OptionalTitle}", e, "AddExternalDataSources");
 
                 }
             }
@@ -95,14 +95,14 @@ namespace Analogy
             }
             catch (AggregateException ex)
             {
-                AnalogyLogger.Instance.LogException( "Error during Initialization",ex, "AddExternalDataSources");
+                AnalogyLogger.Instance.LogException("Error during Initialization", ex, "AddExternalDataSources");
             }
 
             foreach (var t in initTasks)
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    AnalogyLogger.Instance.LogException("Error during Initialization",t.Exception, "AddExternalDataSources");
+                    AnalogyLogger.Instance.LogException("Error during Initialization", t.Exception, "AddExternalDataSources");
                 }
             }
         }
@@ -181,6 +181,9 @@ namespace Analogy
 
             return null;
         }
+
+        public FactoryContainer GetFactoryContainer(Guid componentId)
+            => Factories.SingleOrDefault(f => f.ContainsDataProviderOrDataFactory(componentId));
 
         public Image GetSmallImage(Guid componentId)
         {

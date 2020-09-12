@@ -38,7 +38,7 @@ namespace Analogy.Managers
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogger.Instance.LogException($"Error probing folder {folder}. Error: {e.Message}",e, nameof(ExternalDataProviders));
+                        AnalogyLogger.Instance.LogException($"Error probing folder {folder}. Error: {e.Message}", e, nameof(ExternalDataProviders));
                     }
                 }
 
@@ -73,10 +73,16 @@ namespace Analogy.Managers
                     {
                         var images = Activator.CreateInstance(t) as IAnalogyComponentImages;
                         var factory = Factories.First(f => f.Assembly == assembly);
+                        factory.AddComponentImages(images);
+
+                    }
+                    foreach (var t in types.Where(aType => aType.GetInterface(nameof(IAnalogyImages)) != null))
+                    {
+                        var images = Activator.CreateInstance(t) as IAnalogyImages;
+                        var factory = Factories.First(f => f.Assembly == assembly);
                         factory.AddImages(images);
 
                     }
-
 
                     foreach (Type aType in types.Where(aType =>
                         aType.GetInterface(nameof(IAnalogyDataProvidersFactory)) != null))
