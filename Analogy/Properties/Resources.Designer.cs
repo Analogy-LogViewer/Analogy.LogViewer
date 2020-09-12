@@ -1253,6 +1253,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap WhatsNew_4_2_8_GlobalTools {
+            get {
+                object obj = ResourceManager.GetObject("WhatsNew_4_2_8_GlobalTools", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WhatsNew_4_2_8_ToggleLogLevel1 {
             get {
                 object obj = ResourceManager.GetObject("WhatsNew_4_2_8_ToggleLogLevel1", resourceCulture);
