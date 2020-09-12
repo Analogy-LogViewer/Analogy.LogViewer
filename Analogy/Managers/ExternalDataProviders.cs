@@ -18,11 +18,11 @@ namespace Analogy.Managers
 
         public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
         public List<FactoryContainer> Factories { get; private set; }
-        public List<(Guid id, IAnalogyComponentImages images)> DataProvidersImages { get; set; }
+        public List<(Guid id, IAnalogyImages images)> DataProvidersImages { get; set; }
 
         private ExternalDataProviders()
         {
-            DataProvidersImages = new List<(Guid id, IAnalogyComponentImages images)>();
+            DataProvidersImages = new List<(Guid id, IAnalogyImages images)>();
             Factories = new List<FactoryContainer>();
             var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList();
@@ -69,9 +69,9 @@ namespace Analogy.Managers
                         Factories.Add(fc);
 
                     }
-                    foreach (var t in types.Where(aType => aType.GetInterface(nameof(IAnalogyComponentImages)) != null))
+                    foreach (var t in types.Where(aType => aType.GetInterface(nameof(IAnalogyImages)) != null))
                     {
-                        var images = Activator.CreateInstance(t) as IAnalogyComponentImages;
+                        var images = Activator.CreateInstance(t) as IAnalogyImages;
                         var factory = Factories.First(f => f.Assembly == assembly);
                         factory.AddComponentImages(images);
 

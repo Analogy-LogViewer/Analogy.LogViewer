@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.LogViewer.Template.IAnalogy;
 
 namespace Analogy.DataSources
 {
@@ -211,29 +212,8 @@ namespace Analogy.DataSources
 
     }
 
-    public class AnalogyComponentImages : IAnalogyComponentImages
+    public class AnalogyBuiltInImages : AnalogyImages
     {
-        public Image GetLargeImage(Guid analogyComponentId)
-        {
-            if (analogyComponentId == AnalogyBuiltInFactory.AnalogyGuid)
-                return Resources.Analogy_image_32x32;
-            return null;
-        }
-
-        public Image GetSmallImage(Guid analogyComponentId)
-        {
-            if (analogyComponentId == AnalogyBuiltInFactory.AnalogyGuid)
-                return Resources.Analogy_image_16x16;
-            return null;
-        }
-
-        public Image GetOnlineConnectedLargeImage(Guid analogyComponentId) => null;
-
-        public Image GetOnlineConnectedSmallImage(Guid analogyComponentId) => null;
-
-        public Image GetOnlineDisconnectedLargeImage(Guid analogyComponentId) => null;
-
-        public Image GetOnlineDisconnectedSmallImage(Guid analogyComponentId) => null;
     }
 }
 

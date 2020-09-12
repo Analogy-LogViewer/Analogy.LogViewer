@@ -18,7 +18,7 @@ namespace Analogy.Managers
         public List<IAnalogyDataProviderSettings> DataProvidersSettings { get; }
         public List<IAnalogyShareableFactory> ShareableFactories { get; }
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
-        public List<IAnalogyComponentImages> DataProviderImages { get; private set; }
+        public List<IAnalogyImages> DataProviderImages { get; private set; }
         public List<IAnalogyImages> Images { get; private set; }
         public FactoryContainer(Assembly assembly, string assemblyFullPath, IAnalogyFactory factory, FactorySettings factorySetting)
         {
@@ -31,7 +31,7 @@ namespace Analogy.Managers
             DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
             ShareableFactories = new List<IAnalogyShareableFactory>();
             ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
-            DataProviderImages = new List<IAnalogyComponentImages>();
+            DataProviderImages = new List<IAnalogyImages>();
             Images=new List<IAnalogyImages>();
         }
 
@@ -50,7 +50,7 @@ namespace Analogy.Managers
         public void AddExtensionFactory(IAnalogyExtensionsFactory extensionFactory) =>
             ExtensionsFactories.Add(extensionFactory);
 
-        public void AddComponentImages(IAnalogyComponentImages images) => DataProviderImages.Add(images);
+        public void AddComponentImages(IAnalogyImages images) => DataProviderImages.Add(images);
         public void AddImages(IAnalogyImages images) => Images.Add(images);
 
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";

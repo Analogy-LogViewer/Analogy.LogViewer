@@ -172,11 +172,8 @@ namespace Analogy
         {
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
             {
-                foreach (var componentImages in factoryContainer.DataProviderImages)
-                {
-                    var image = componentImages.GetLargeImage(componentId);
-                    if (image != null) return image;
-                }
+                if (factoryContainer.Factory.LargeImage != null)
+                    return factoryContainer.Factory.LargeImage;
             }
 
             return null;
@@ -189,72 +186,12 @@ namespace Analogy
         {
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
             {
-                foreach (var componentImages in factoryContainer.DataProviderImages)
-                {
-                    var image = componentImages.GetSmallImage(componentId);
-                    if (image != null) return image;
-                }
+                if (factoryContainer.Factory.SmallImage != null)
+                    return factoryContainer.Factory.SmallImage;
             }
 
             return null;
         }
-
-        public Image GetOnlineConnectedLargeImage(Guid componentId)
-        {
-            foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
-            {
-                foreach (var componentImages in factoryContainer.DataProviderImages)
-                {
-                    var image = componentImages.GetOnlineConnectedLargeImage(componentId);
-                    if (image != null) return image;
-                }
-            }
-
-            return null;
-        }
-
-        public Image GetOnlineConnectedSmallImage(Guid componentId)
-        {
-            foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
-            {
-                foreach (var componentImages in factoryContainer.DataProviderImages)
-                {
-                    var image = componentImages.GetOnlineConnectedSmallImage(componentId);
-                    if (image != null) return image;
-                }
-            }
-
-            return null;
-        }
-
-        public Image GetOnlineDisconnectedSmallImage(Guid componentId)
-        {
-            foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
-            {
-                foreach (var componentImages in factoryContainer.DataProviderImages)
-                {
-                    var image = componentImages.GetOnlineDisconnectedSmallImage(componentId);
-                    if (image != null) return image;
-                }
-            }
-
-            return null;
-        }
-
-        public Image GetOnlineDisconnectedLargeImage(Guid componentId)
-        {
-            foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
-            {
-                foreach (var componentImages in factoryContainer.DataProviderImages)
-                {
-                    var image = componentImages.GetOnlineConnectedLargeImage(componentId);
-                    if (image != null) return image;
-                }
-            }
-
-            return null;
-        }
-
 
         public IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider)
             => GetAllExtensions().Where(e => e.TargetProviderId == dataProvider.Id);
