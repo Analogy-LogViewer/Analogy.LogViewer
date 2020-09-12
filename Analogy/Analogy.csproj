@@ -740,7 +740,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
 		<PackageReference Include="Analogy.LogViewer.gRPC">
-			<Version>1.2.3</Version>
+			<Version>1.3.0</Version>
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
