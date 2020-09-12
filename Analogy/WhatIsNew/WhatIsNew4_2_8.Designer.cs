@@ -41,15 +41,15 @@
             this.pe4_2_8singleloglevel = new DevExpress.XtraEditors.PictureEdit();
             this.highlight415 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.hyperlinkLabelControl5 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.hyperlinkLabelControl2 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue415 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue417 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue418 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue420 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.hyperlinkLabelControl2 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.hyperlinkLabelControl3 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.hyperlinkLabelControl4 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.hyperlinkLabelControl5 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -113,7 +113,8 @@
             this.highlight279.Size = new System.Drawing.Size(182, 26);
             this.highlight279.TabIndex = 5;
             this.highlight279.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/279>Add Globa" +
-    "l tools bottons #279</href>";
+    "l tools buttons #279</href>";
+            this.highlight279.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // panelControl1
             // 
@@ -206,6 +207,42 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(782, 428);
             this.xtraTabPage2.Text = "Github Issues";
             // 
+            // hyperlinkLabelControl5
+            // 
+            this.hyperlinkLabelControl5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.hyperlinkLabelControl5.Location = new System.Drawing.Point(0, 208);
+            this.hyperlinkLabelControl5.Name = "hyperlinkLabelControl5";
+            this.hyperlinkLabelControl5.Padding = new System.Windows.Forms.Padding(5);
+            this.hyperlinkLabelControl5.Size = new System.Drawing.Size(236, 26);
+            this.hyperlinkLabelControl5.TabIndex = 8;
+            this.hyperlinkLabelControl5.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/279>Add Globa" +
+    "l tool interface - UI part #279</href>";
+            this.hyperlinkLabelControl5.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // hyperlinkLabelControl2
+            // 
+            this.hyperlinkLabelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.hyperlinkLabelControl2.Location = new System.Drawing.Point(0, 182);
+            this.hyperlinkLabelControl2.Name = "hyperlinkLabelControl2";
+            this.hyperlinkLabelControl2.Padding = new System.Windows.Forms.Padding(5);
+            this.hyperlinkLabelControl2.Size = new System.Drawing.Size(314, 26);
+            this.hyperlinkLabelControl2.TabIndex = 6;
+            this.hyperlinkLabelControl2.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/359>Create da" +
+    "ta provider selection for first time run #359</href>";
+            this.hyperlinkLabelControl2.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // hyperlinkLabelControl1
+            // 
+            this.hyperlinkLabelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(0, 156);
+            this.hyperlinkLabelControl1.Name = "hyperlinkLabelControl1";
+            this.hyperlinkLabelControl1.Padding = new System.Windows.Forms.Padding(5);
+            this.hyperlinkLabelControl1.Size = new System.Drawing.Size(263, 26);
+            this.hyperlinkLabelControl1.TabIndex = 7;
+            this.hyperlinkLabelControl1.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/366>Add Icon/" +
+    "Image to Actions Commands #366</href>";
+            this.hyperlinkLabelControl1.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
             // issue415
             // 
             this.issue415.Dock = System.Windows.Forms.DockStyle.Top;
@@ -254,28 +291,6 @@
     "what is new at start of application #420</href>";
             this.issue420.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
-            // hyperlinkLabelControl1
-            // 
-            this.hyperlinkLabelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(0, 156);
-            this.hyperlinkLabelControl1.Name = "hyperlinkLabelControl1";
-            this.hyperlinkLabelControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.hyperlinkLabelControl1.Size = new System.Drawing.Size(263, 26);
-            this.hyperlinkLabelControl1.TabIndex = 7;
-            this.hyperlinkLabelControl1.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/366>Add Icon/" +
-    "Image to Actions Commands #366</href>";
-            // 
-            // hyperlinkLabelControl2
-            // 
-            this.hyperlinkLabelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hyperlinkLabelControl2.Location = new System.Drawing.Point(0, 182);
-            this.hyperlinkLabelControl2.Name = "hyperlinkLabelControl2";
-            this.hyperlinkLabelControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.hyperlinkLabelControl2.Size = new System.Drawing.Size(314, 26);
-            this.hyperlinkLabelControl2.TabIndex = 6;
-            this.hyperlinkLabelControl2.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/359>Create da" +
-    "ta provider selection for first time run #359</href>";
-            // 
             // hyperlinkLabelControl3
             // 
             this.hyperlinkLabelControl3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -286,6 +301,7 @@
             this.hyperlinkLabelControl3.TabIndex = 4;
             this.hyperlinkLabelControl3.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/476>Switch to" +
     " json log format for bookmarks and internal log #476</href>";
+            this.hyperlinkLabelControl3.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // hyperlinkLabelControl4
             // 
@@ -297,17 +313,7 @@
             this.hyperlinkLabelControl4.TabIndex = 5;
             this.hyperlinkLabelControl4.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/477>Replace E" +
     "vent log level with Information #477</href>";
-            // 
-            // hyperlinkLabelControl5
-            // 
-            this.hyperlinkLabelControl5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hyperlinkLabelControl5.Location = new System.Drawing.Point(0, 208);
-            this.hyperlinkLabelControl5.Name = "hyperlinkLabelControl5";
-            this.hyperlinkLabelControl5.Padding = new System.Windows.Forms.Padding(5);
-            this.hyperlinkLabelControl5.Size = new System.Drawing.Size(236, 26);
-            this.hyperlinkLabelControl5.TabIndex = 8;
-            this.hyperlinkLabelControl5.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/279>Add Globa" +
-    "l tool interface - UI part #279</href>";
+            this.hyperlinkLabelControl4.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_2_8
             // 
