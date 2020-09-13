@@ -126,7 +126,7 @@ namespace Analogy
         private static void CurrentDomain_FirstChanceException(object sender,
             System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogWarning(nameof(CurrentDomain_FirstChanceException), e.Exception.ToString());
+            AnalogyLogger.Instance.LogWarning( e.Exception.ToString(), nameof(CurrentDomain_FirstChanceException));
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
