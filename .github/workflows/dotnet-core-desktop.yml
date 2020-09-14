@@ -48,7 +48,7 @@ jobs:
     
     # Buid the application 
     - name: Build the application
-      run: msbuild $env:Solution_Name /t:Rebuild /p:Configuration=$env:Configuration
+      run: msbuild $env:Solution_Name /t:Rebuild;Publish /p:PublishProfile=FolderProfile.pubxml /p:Configuration=$env:Configuration
       env:
         Configuration: ${{ matrix.configuration }}
     # Execute all unit tests in the solution
@@ -58,6 +58,7 @@ jobs:
     - name: Delete key file
       run: |
        rm  ./Installer/Installer_TemporaryKey.pfx
+
 
     # Publish Artifacts 
     - name: 'Publish Artifacts'
