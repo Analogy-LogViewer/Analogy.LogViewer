@@ -530,7 +530,7 @@ namespace Analogy
                         ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
                             new ColumnFilterInfo($"[{hitInfo.Column.FieldName}] = '{value}'", ""));
 
-                        bbiIncludeColumnHeaderFilter.Caption = $"Set '{value}' as column header filter for column '{hitInfo.Column.Caption}'";
+                        bbiIncludeColumnHeaderFilter.Caption = $"Set '{value.ToString().Take(100).ToString()}' as column header filter for column '{hitInfo.Column.Caption}'";
                         bbiIncludeColumnHeaderFilter.Tag = viewFilterInfo;
                         bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Always;
                     }
@@ -548,10 +548,10 @@ namespace Analogy
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                bbiIncludeModule.Caption = $"Include Process/Module: Append '{message.Module}' to filter";
-                bbiIncludeSource.Caption = $"Include Source: Append '{message.Source}' to filter";
-                bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{message.Module}' to filter";
-                bbiExcludeSource.Caption = $"Exclude Source: Append '{message.Source}' to filter";
+                bbiIncludeModule.Caption = $"Include Process/Module: Append '{message.Module.Take(100)}' to filter";
+                bbiIncludeSource.Caption = $"Include Source: Append '{message.Source.Take(100)}' to filter";
+                bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{message.Module}.Take(100)' to filter";
+                bbiExcludeSource.Caption = $"Exclude Source: Append '{message.Source.Take(100)}' to filter";
                 bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
                 bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
                 bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
@@ -2255,6 +2255,12 @@ namespace Analogy
             if (row == null) return (null, string.Empty);
             string dataSource = (string)LogGrid.GetFocusedRowCellValue("DataProvider");
             AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetFocusedRowCellValue("Object");
+            if (message.Module == null)
+                message.Module = string.Empty;
+            if (message.Source == null)
+                message.Source = string.Empty;
+            if (message.Text == null)
+                message.Text = string.Empty;
             return (message, dataSource);
 
         }

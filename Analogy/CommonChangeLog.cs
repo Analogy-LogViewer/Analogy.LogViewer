@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.8 - [Context menu] limit number of characters showed in the messages context menu. #505",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,16)),
                 new AnalogyChangeLog("V4.2.8 - Add Global tool interface - UI part #279",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,12)),
                 new AnalogyChangeLog("V4.2.8 - Add Icon/Image to Actions Commands #366",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,12)),
                 new AnalogyChangeLog("V4.2.8 - Create data provider selection for first time run #359",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,11)),

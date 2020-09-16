@@ -2374,7 +2374,7 @@ namespace Analogy
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(201, 73);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(201, 95);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2383,7 +2383,7 @@ namespace Analogy
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(201, 73);
+            this.clbExclude.Size = new System.Drawing.Size(201, 95);
             this.clbExclude.TabIndex = 22;
             // 
             // xtpSearchFilterPanel
@@ -2392,7 +2392,7 @@ namespace Analogy
             this.xtpSearchFilterPanel.Controls.Add(this.labelControl1);
             this.xtpSearchFilterPanel.Controls.Add(this.sbtnToggleSearchFilter);
             this.xtpSearchFilterPanel.Name = "xtpSearchFilterPanel";
-            this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1694, 107);
+            this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1694, 129);
             this.xtpSearchFilterPanel.Text = "Search/Filter Panel";
             // 
             // rgSearchMode
