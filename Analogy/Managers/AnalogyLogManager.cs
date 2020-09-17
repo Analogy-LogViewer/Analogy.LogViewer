@@ -15,7 +15,7 @@ namespace Analogy.Managers
         public static AnalogyLogManager Instance => _instance.Value;
         public bool HasErrorMessages => messages.Any(m => m.Level == AnalogyLogLevel.Critical || m.Level == AnalogyLogLevel.Error);
         public bool HasWarningMessages => messages.Any(m => m.Level == AnalogyLogLevel.Warning);
-        private string FileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AnalogyInternalLog_{postfix}.ajson");
+        //private string FileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AnalogyInternalLog_{postfix}.ajson");
         private bool ContentChanged;
         private static int postfix = 0;
         private List<AnalogyLogMessage> messages;
@@ -34,19 +34,19 @@ namespace Analogy.Managers
 
         public async Task Init()
         {
-            if (File.Exists(FileName))
-            {
-                try
-                {
-                    AnalogyJsonLogFile read = new AnalogyJsonLogFile();
-                    var old = await read.ReadFromFile(FileName,new CancellationToken(), null);
-                    this.messages.AddRange(old.Where(m => !ignoredMessages.Any(m.Text.Contains)));
-                }
-                catch (Exception e)
-                {
-                    LogError("Error loading file: " + e, nameof(AnalogyLogManager));
-                }
-            }
+            //if (File.Exists(FileName))
+            //{
+            //    try
+            //    {
+            //        AnalogyJsonLogFile read = new AnalogyJsonLogFile();
+            //        var old = await read.ReadFromFile(FileName,new CancellationToken(), null);
+            //        this.messages.AddRange(old.Where(m => !ignoredMessages.Any(m.Text.Contains)));
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        LogError("Error loading file: " + e, nameof(AnalogyLogManager));
+            //    }
+            //}
         }
 
         private List<AnalogyLogMessage> GetFilteredMessages()
@@ -58,39 +58,39 @@ namespace Analogy.Managers
         }
         public void SaveFile()
         {
-            if (!ContentChanged) return;
-            if (!messages.Any())
-            {
-                if (File.Exists(FileName))
-                    try
-                    {
-                        File.Delete(FileName);
-                    }
-                    catch (Exception e)
-                    {
-                        LogError("Error deleting file: " + e, nameof(AnalogyLogManager));
-                    }
-            }
-            else
-            {
+            //if (!ContentChanged) return;
+            //if (!messages.Any())
+            //{
+            //    if (File.Exists(FileName))
+            //        try
+            //        {
+            //            File.Delete(FileName);
+            //        }
+            //        catch (Exception e)
+            //        {
+            //            LogError("Error deleting file: " + e, nameof(AnalogyLogManager));
+            //        }
+            //}
+            //else
+            //{
 
-                try
-                {
-                    AnalogyJsonLogFile save = new AnalogyJsonLogFile();
-                    save.Save(GetFilteredMessages(), FileName);
-                }
-                catch (Exception e)
-                {
-                    LogError("Error saving file: " + e, nameof(AnalogyLogManager));
-                    if (postfix < 3)
-                    {
-                        postfix++;
-                        SaveFile();
-                    }
+            //    try
+            //    {
+            //        AnalogyJsonLogFile save = new AnalogyJsonLogFile();
+            //        save.Save(GetFilteredMessages(), FileName);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        LogError("Error saving file: " + e, nameof(AnalogyLogManager));
+            //        if (postfix < 3)
+            //        {
+            //            postfix++;
+            //            SaveFile();
+            //        }
 
-                    //XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            //        //XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
         }
 
         public void ClearLog()

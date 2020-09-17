@@ -147,9 +147,7 @@ namespace Analogy
             Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion} {framework})";
             Icon = settings.GetIcon();
             notifyIconAnalogy.Visible = preventExit = settings.MinimizedToTrayBar;
-            var logger = AnalogyLogManager.Instance.Init();
-            var factories = FactoriesManager.Instance.InitializeBuiltInFactories();
-            await Task.WhenAll(logger, factories);
+            await FactoriesManager.Instance.InitializeBuiltInFactories();
             string[] arguments = Environment.GetCommandLineArgs();
             disableOnlineDueToFileOpen = arguments.Length == 2;
             SetupEventHandlers();
