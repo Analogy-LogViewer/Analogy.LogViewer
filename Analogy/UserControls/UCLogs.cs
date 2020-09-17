@@ -25,6 +25,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Tools;
 using DevExpress.Data.Helpers;
 using DevExpress.XtraEditors.Controls;
 
@@ -245,6 +246,12 @@ namespace Analogy
                 (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
                 if (!string.IsNullOrEmpty(message?.Module))
                     txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? message.Module : txtbModule.Text + "," + message.Module;
+            };
+            bbiJsonViewer.ItemClick += (s, e) =>
+            {
+                (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+                JsonViewerForm j = new JsonViewerForm(message);
+                j.Show(this);
             };
             bbiDiffTime.ItemClick += tsmiTimeDiff_Click;
             bbiIncreaseFontSize.ItemClick += tsmiIncreaseFont_Click;
@@ -529,8 +536,8 @@ namespace Analogy
                     {
                         ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
                             new ColumnFilterInfo($"[{hitInfo.Column.FieldName}] = '{value}'", ""));
-
-                        bbiIncludeColumnHeaderFilter.Caption = $"Set '{value.ToString().Take(100).ToString()}' as column header filter for column '{hitInfo.Column.Caption}'";
+                        string val = new string(value.ToString().Take(100).ToArray());
+                        bbiIncludeColumnHeaderFilter.Caption = $"Set '{val}' as column header filter for column '{hitInfo.Column.Caption}'";
                         bbiIncludeColumnHeaderFilter.Tag = viewFilterInfo;
                         bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Always;
                     }
@@ -548,10 +555,12 @@ namespace Analogy
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                bbiIncludeModule.Caption = $"Include Process/Module: Append '{message.Module.Take(100)}' to filter";
-                bbiIncludeSource.Caption = $"Include Source: Append '{message.Source.Take(100)}' to filter";
-                bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{message.Module}.Take(100)' to filter";
-                bbiExcludeSource.Caption = $"Exclude Source: Append '{message.Source.Take(100)}' to filter";
+                var module = new string(message.Module.Take(100).ToArray());
+                var source = new string(message.Source.Take(100).ToArray());
+                bbiIncludeModule.Caption = $"Include Process/Module: Append '{module}' to filter";
+                bbiIncludeSource.Caption = $"Include Source: Append '{source}' to filter";
+                bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{module}' to filter";
+                bbiExcludeSource.Caption = $"Exclude Source: Append '{source}' to filter";
                 bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
                 bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
                 bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
