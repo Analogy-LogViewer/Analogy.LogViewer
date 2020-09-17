@@ -83,4 +83,22 @@ namespace Analogy
             return $"{DisplayName} ({Type})";
         }
     }
+
+    [Serializable]
+    public class FontSettings
+    {
+        public string DefaultFont { get; set; }
+        public float DefaultFontSize { get; set; }
+
+        public string DefaultMenuFont { get; set; }
+        public float DefaultMenuFontSize { get; set; }
+
+        public FontSettings()
+        {
+            DefaultFont = "Tahoma";
+            DefaultFontSize = 8.25f;
+            DefaultMenuFont = "Segoe UI";
+            DefaultMenuFontSize = 12f;
+        }
+    }
 }

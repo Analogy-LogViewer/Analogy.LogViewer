@@ -33,9 +33,14 @@ namespace Analogy
             AssemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             WindowsFormsSettings.LoadApplicationSettings();
+            //check font size
+            var defaultFont = WindowsFormsSettings.DefaultFont;
+            var defaultMenuFont = WindowsFormsSettings.DefaultMenuFont;
+            
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+
             Application.EnableVisualStyles();
 #if NETCOREAPP3_1
             Application.SetHighDpiMode(HighDpiMode.SystemAware);

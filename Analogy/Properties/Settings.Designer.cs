@@ -800,5 +800,18 @@ namespace Analogy.Properties {
                 this["ShowWhatIsNewAtStartup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\"DefaultFont\":\"Tahoma\",\"DefaultFontSize\":8.25,\"DefaultMenuFont\":\"Segoe UI\",\"Defa" +
+            "ultMenuFontSize\":12.0}")]
+        public string FontSettings {
+            get {
+                return ((string)(this["FontSettings"]));
+            }
+            set {
+                this["FontSettings"] = value;
+            }
+        }
     }
 }

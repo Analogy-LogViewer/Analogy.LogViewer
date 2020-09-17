@@ -97,6 +97,7 @@ namespace Analogy
         public bool IsFirstRun { get; set; }
         public LogLevelSelectionType LogLevelSelection { get; set; }
         public bool ShowWhatIsNewAtStartup { get; set; }
+        public FontSettings FontSettings { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -204,6 +205,7 @@ namespace Analogy
 
             ShowMessageDetails = Settings.Default.ShowMessageDetails;
             ShowWhatIsNewAtStartup = Settings.Default.ShowWhatIsNewAtStartup;
+            FontSettings = ParseSettings<FontSettings>(Settings.Default.FontSettings);
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -287,7 +289,8 @@ namespace Analogy
             Settings.Default.ShowMessageDetails = ShowMessageDetails;
             Settings.Default.SimpleMode = SimpleMode;
             Settings.Default.LogLevelSelection = LogLevelSelection.ToString();
-            Settings.Default.ShowWhatIsNewAtStartup=ShowWhatIsNewAtStartup;
+            Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
+            Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
             Settings.Default.Save();
 
         }
