@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Managers;
 using DevExpress.XtraBars.Ribbon;
 using Newtonsoft.Json.Linq;
 
@@ -55,8 +56,16 @@ namespace Analogy.Tools.JsonViewer
 
         public void ShowJson(string jsonString)
         {
-            JObject json = JObject.Parse(jsonString);
-            LoadTree(json);
+            try
+            {
+                JObject json = JObject.Parse(jsonString);
+                LoadTree(json);
+            }
+            catch (Exception e)
+            {
+                AnalogyLogManager.Instance.LogError("Error loading json: " + e.Message, nameof(JsonTreeView));
+            }
+
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]

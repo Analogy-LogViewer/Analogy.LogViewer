@@ -30,7 +30,7 @@
         {
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnLoad = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -38,31 +38,37 @@
             // 
             // memoEdit1
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(27, 27);
+            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.memoEdit1.Location = new System.Drawing.Point(3, 6);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(412, 54);
+            this.memoEdit1.Size = new System.Drawing.Size(973, 73);
             this.memoEdit1.TabIndex = 0;
             // 
             // splitContainerControl1
             // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(259, 279);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton1);
+            this.splitContainerControl1.Panel1.Controls.Add(this.sbtnLoad);
             this.splitContainerControl1.Panel1.Controls.Add(this.memoEdit1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(551, 216);
-            this.splitContainerControl1.SplitterPosition = 79;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1056, 646);
+            this.splitContainerControl1.SplitterPosition = 91;
             this.splitContainerControl1.TabIndex = 1;
             // 
-            // simpleButton1
+            // sbtnLoad
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(473, 28);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(45, 21);
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "Load";
+            this.sbtnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnLoad.Location = new System.Drawing.Point(983, 28);
+            this.sbtnLoad.Name = "sbtnLoad";
+            this.sbtnLoad.Size = new System.Drawing.Size(60, 21);
+            this.sbtnLoad.TabIndex = 1;
+            this.sbtnLoad.Text = "Load";
+            this.sbtnLoad.Click += new System.EventHandler(this.sbtnLoad_Click);
             // 
             // JsonViewerForm
             // 
@@ -71,7 +77,8 @@
             this.ClientSize = new System.Drawing.Size(1056, 646);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "JsonViewerForm";
-            this.Text = "JsonViewerForm";
+            this.Text = "Json Viewer";
+            this.Load += new System.EventHandler(this.JsonViewerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
@@ -83,6 +90,6 @@
 
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton sbtnLoad;
     }
 }

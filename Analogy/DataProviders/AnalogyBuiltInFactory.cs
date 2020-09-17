@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.LogViewer.Template.IAnalogy;
+using Analogy.Tools;
 
 namespace Analogy.DataSources
 {
@@ -179,7 +180,7 @@ namespace Analogy.DataSources
 
         public AnalogyCustomActionFactory()
         {
-            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction(), new AnalogyUnixTimeAction() };
+            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction(), new AnalogyUnixTimeAction(), new AnalogyJsonViewerAction() };
         }
     }
 
@@ -211,6 +212,23 @@ namespace Analogy.DataSources
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
 
     }
+
+    public class AnalogyJsonViewerAction : IAnalogyCustomAction
+    {
+        public Action Action => () =>
+        {
+            var p = new JsonViewerForm();
+            p.Show();
+        };
+        public Guid Id { get; set; } = new Guid("330b8471-c763-4579-a7e5-9efed71a56a5");
+        public Image SmallImage { get; set; } = Resources.ChartsShowLegend_16x16;
+        public Image LargeImage { get; set; } = Resources.ChartsShowLegend_32x32;
+
+        public string Title { get; set; } = "Json object Visualizer";
+        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
+
+    }
+
 
     public class AnalogyBuiltInImages : AnalogyImages
     {
