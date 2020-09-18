@@ -221,8 +221,8 @@ namespace Analogy.DataSources
             p.Show();
         };
         public Guid Id { get; set; } = new Guid("330b8471-c763-4579-a7e5-9efed71a56a5");
-        public Image SmallImage { get; set; } = Resources.ChartsShowLegend_16x16;
-        public Image LargeImage { get; set; } = Resources.ChartsShowLegend_32x32;
+        public Image SmallImage { get; set; } = Resources.json16x16;
+        public Image LargeImage { get; set; } = Resources.json32x32;
 
         public string Title { get; set; } = "Json object Visualizer";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;

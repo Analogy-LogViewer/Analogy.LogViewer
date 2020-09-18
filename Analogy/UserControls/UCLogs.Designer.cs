@@ -128,6 +128,7 @@ namespace Analogy
             this.bbiDecreaseFontSize = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncludeSource = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncludeModule = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiJsonViewer = new DevExpress.XtraBars.BarButtonItem();
             this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
             this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
@@ -233,7 +234,6 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bbiJsonViewer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -1420,6 +1420,14 @@ namespace Analogy
             this.bbiIncludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.Image")));
             this.bbiIncludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.LargeImage")));
             this.bbiIncludeModule.Name = "bbiIncludeModule";
+            // 
+            // bbiJsonViewer
+            // 
+            this.bbiJsonViewer.Caption = "Open message in JSON Visualizer";
+            this.bbiJsonViewer.Id = 62;
+            this.bbiJsonViewer.ImageOptions.Image = global::Analogy.Properties.Resources.json16x16;
+            this.bbiJsonViewer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiJsonViewer.ImageOptions.LargeImage")));
+            this.bbiJsonViewer.Name = "bbiJsonViewer";
             // 
             // sbtnMoreHighlight
             // 
@@ -2974,14 +2982,6 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDecreaseFontSize)});
             this.LogGridPopupMenu.Manager = this.barManager1;
             this.LogGridPopupMenu.Name = "LogGridPopupMenu";
-            // 
-            // bbiJsonViewer
-            // 
-            this.bbiJsonViewer.Caption = "Open message in JSON Visualizer";
-            this.bbiJsonViewer.Id = 62;
-            this.bbiJsonViewer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiJsonViewer.ImageOptions.Image")));
-            this.bbiJsonViewer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiJsonViewer.ImageOptions.LargeImage")));
-            this.bbiJsonViewer.Name = "bbiJsonViewer";
             // 
             // UCLogs
             // 

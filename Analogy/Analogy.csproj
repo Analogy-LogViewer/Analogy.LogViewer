@@ -680,14 +680,12 @@
 		<None Include="Resources\FullscreenBlue16.png" />
 		<None Include="Resources\crossMark.png" />
 		<None Include="Resources\checkOK.png" />
-		<None Include="Resources\share.png" />
 		<None Include="Resources\copy.png" />
 		<None Include="Resources\ServerON.png" />
 		<None Include="Resources\serverOff.png" />
 		<None Include="Resources\databasearchitecture.png" />
 		<None Include="Resources\play.png" />
 		<None Include="Resources\Clear.png" />
-		<None Include="Resources\upload1.png" />
 		<None Include="Resources\save.png" />
 		<None Include="Resources\json.png" />
 		<None Include="Resources\restart.jpg" />
