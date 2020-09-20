@@ -5,6 +5,13 @@ using System.Linq;
 
 namespace Analogy.Types
 {
+    public enum FontSelectionType
+    {
+        Normal,
+        Large,
+        VeryLarge,
+        Manual
+    }
     public enum LogLevelSelectionType
     {
         Single,

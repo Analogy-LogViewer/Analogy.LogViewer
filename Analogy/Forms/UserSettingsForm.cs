@@ -34,26 +34,7 @@ namespace Analogy
 
         }
 
-        private void SetupExampleMessage(string text)
-        {
-            DataRow dtr = messageData.NewRow();
-            dtr.BeginEdit();
-            dtr["Date"] = DateTime.Now;
-            dtr["Text"] = text;
-            dtr["Source"] = "Analogy";
-            dtr["Level"] = AnalogyLogLevel.Information.ToString();
-            dtr["Class"] = AnalogyLogClass.General.ToString();
-            dtr["Category"] = "None";
-            dtr["User"] = "None";
-            dtr["Module"] = "Analogy";
-            dtr["ProcessID"] = Process.GetCurrentProcess().Id;
-            dtr["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
-            dtr["DataProvider"] = string.Empty;
-            dtr["MachineName"] = "None";
-            dtr.EndEdit();
-            messageData.Rows.Add(dtr);
-            messageData.AcceptChanges();
-        }
+     
 
         public UserSettingsForm(int tabIndex) : this()
         {
@@ -233,6 +214,40 @@ namespace Analogy
             tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
             tsLogLevels.IsOn = Settings.LogLevelSelection == LogLevelSelectionType.Multiple;
             Utils.SetLogLevel(chkLstLogLevel);
+
+            switch (Settings.FontSettings.FontSelectionType)
+            {
+                case FontSelectionType.Normal:
+                    rbFontSizeNormal.Checked = true;
+                    break;
+                case FontSelectionType.Large:
+                    rbFontSizeLarge.Checked = true;
+                    break;
+                case FontSelectionType.VeryLarge:
+                    rbFontSizeVeryLarge.Checked = true;
+                    break;
+                case FontSelectionType.Manual:
+                default:
+                    rbFontSizeNormal.Checked = true;
+                    break;
+            }
+            switch (Settings.FontSettings.MenuFontSelectionType)
+            {
+                case FontSelectionType.Normal:
+                    rbMenuFontSizeNormal.Checked = true;
+                    break;
+                case FontSelectionType.Large:
+                    rbMenuFontSizeLarge.Checked = true;
+                    break;
+                case FontSelectionType.VeryLarge:
+                    rbMenuFontSizeVeryLarge.Checked = true;
+                    break;
+                case FontSelectionType.Manual:
+                default:
+                    rbMenuFontSizeNormal.Checked = true;
+                    break;
+
+            }
         }
 
         private void SaveSetting()
@@ -270,6 +285,23 @@ namespace Analogy
             Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
             Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
             Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
+
+            if (rbFontSizeNormal.Checked)
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Normal);
+            if (rbFontSizeLarge.Checked)
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Large);
+            if (rbFontSizeVeryLarge.Checked)
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.VeryLarge);
+
+            if (rbMenuFontSizeNormal.Checked)
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Normal);
+            if (rbMenuFontSizeLarge.Checked)
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Large);
+            if (rbMenuFontSizeVeryLarge.Checked)
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge);
+
+
+
             Settings.Save();
         }
 
@@ -325,7 +357,26 @@ namespace Analogy
             UpdateColors();
         }
 
-
+        private void SetupExampleMessage(string text)
+        {
+            DataRow dtr = messageData.NewRow();
+            dtr.BeginEdit();
+            dtr["Date"] = DateTime.Now;
+            dtr["Text"] = text;
+            dtr["Source"] = "Analogy";
+            dtr["Level"] = AnalogyLogLevel.Information.ToString();
+            dtr["Class"] = AnalogyLogClass.General.ToString();
+            dtr["Category"] = "None";
+            dtr["User"] = "None";
+            dtr["Module"] = "Analogy";
+            dtr["ProcessID"] = Process.GetCurrentProcess().Id;
+            dtr["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
+            dtr["DataProvider"] = string.Empty;
+            dtr["MachineName"] = "None";
+            dtr.EndEdit();
+            messageData.Rows.Add(dtr);
+            messageData.AcceptChanges();
+        }
         private void tsFilteringExclude_Toggled(object sender, EventArgs e)
         {
             Settings.SaveSearchFilters = tsFilteringExclude.IsOn;

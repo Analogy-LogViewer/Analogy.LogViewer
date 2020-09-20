@@ -32,6 +32,10 @@
 		<Company>Analogy.LogViewer</Company>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
+	  <PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
 
 	<ItemGroup>
 		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />

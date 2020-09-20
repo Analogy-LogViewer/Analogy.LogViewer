@@ -32,6 +32,10 @@
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageApplication = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.rbMenuFontSizeVeryLarge = new System.Windows.Forms.RadioButton();
+            this.rbMenuFontSizeLarge = new System.Windows.Forms.RadioButton();
+            this.rbMenuFontSizeNormal = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.rbFontSizeVeryLarge = new System.Windows.Forms.RadioButton();
             this.rbFontSizeLarge = new System.Windows.Forms.RadioButton();
             this.rbFontSizeNormal = new System.Windows.Forms.RadioButton();
@@ -39,7 +43,7 @@
             this.peAnalogy = new DevExpress.XtraEditors.PictureEdit();
             this.rbtnLightIconColor = new System.Windows.Forms.RadioButton();
             this.rbtnDarkIconColor = new System.Windows.Forms.RadioButton();
-            this.lblGlobalFontSize = new System.Windows.Forms.Label();
+            this.lblUlFontSize = new System.Windows.Forms.Label();
             this.tsRememberLastPositionAndState = new DevExpress.XtraEditors.ToggleSwitch();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.tsEnableCompressedArchive = new DevExpress.XtraEditors.ToggleSwitch();
@@ -224,6 +228,8 @@
             this.gcIntervals = new DevExpress.XtraEditors.GroupControl();
             this.cbUpdates = new DevExpress.XtraEditors.ComboBoxEdit();
             this.lblUpdates = new DevExpress.XtraEditors.LabelControl();
+            this.pcUiFont = new DevExpress.XtraEditors.PanelControl();
+            this.pcMenuFont = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.xtraTabPageApplication.SuspendLayout();
@@ -353,6 +359,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcIntervals)).BeginInit();
             this.gcIntervals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbUpdates.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUiFont)).BeginInit();
+            this.pcUiFont.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcMenuFont)).BeginInit();
+            this.pcMenuFont.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -365,7 +375,7 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageApplication;
-            this.tabControlMain.Size = new System.Drawing.Size(991, 788);
+            this.tabControlMain.Size = new System.Drawing.Size(991, 790);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageApplication,
@@ -387,50 +397,101 @@
             this.xtraTabPageApplication.Controls.Add(this.groupControl3);
             this.xtraTabPageApplication.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_icon1;
             this.xtraTabPageApplication.Name = "xtraTabPageApplication";
-            this.xtraTabPageApplication.Size = new System.Drawing.Size(790, 781);
+            this.xtraTabPageApplication.Size = new System.Drawing.Size(790, 783);
             this.xtraTabPageApplication.Text = "Application Settings";
             // 
             // groupControl4
             // 
-            this.groupControl4.Controls.Add(this.rbFontSizeVeryLarge);
-            this.groupControl4.Controls.Add(this.rbFontSizeLarge);
-            this.groupControl4.Controls.Add(this.rbFontSizeNormal);
+            this.groupControl4.Controls.Add(this.pcMenuFont);
+            this.groupControl4.Controls.Add(this.pcUiFont);
             this.groupControl4.Controls.Add(this.panelControl1);
-            this.groupControl4.Controls.Add(this.lblGlobalFontSize);
             this.groupControl4.Controls.Add(this.tsRememberLastPositionAndState);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl4.Location = new System.Drawing.Point(0, 419);
             this.groupControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(790, 306);
+            this.groupControl4.Size = new System.Drawing.Size(790, 362);
             this.groupControl4.TabIndex = 6;
             this.groupControl4.Text = "UI Settings";
             // 
+            // rbMenuFontSizeVeryLarge
+            // 
+            this.rbMenuFontSizeVeryLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbMenuFontSizeVeryLarge.AutoSize = true;
+            this.rbMenuFontSizeVeryLarge.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.rbMenuFontSizeVeryLarge.Location = new System.Drawing.Point(594, 17);
+            this.rbMenuFontSizeVeryLarge.Name = "rbMenuFontSizeVeryLarge";
+            this.rbMenuFontSizeVeryLarge.Size = new System.Drawing.Size(162, 41);
+            this.rbMenuFontSizeVeryLarge.TabIndex = 14;
+            this.rbMenuFontSizeVeryLarge.Text = "Very Large";
+            this.rbMenuFontSizeVeryLarge.UseVisualStyleBackColor = true;
+            // 
+            // rbMenuFontSizeLarge
+            // 
+            this.rbMenuFontSizeLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbMenuFontSizeLarge.AutoSize = true;
+            this.rbMenuFontSizeLarge.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.rbMenuFontSizeLarge.Location = new System.Drawing.Point(443, 17);
+            this.rbMenuFontSizeLarge.Name = "rbMenuFontSizeLarge";
+            this.rbMenuFontSizeLarge.Size = new System.Drawing.Size(94, 36);
+            this.rbMenuFontSizeLarge.TabIndex = 13;
+            this.rbMenuFontSizeLarge.Text = "Large";
+            this.rbMenuFontSizeLarge.UseVisualStyleBackColor = true;
+            // 
+            // rbMenuFontSizeNormal
+            // 
+            this.rbMenuFontSizeNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbMenuFontSizeNormal.AutoSize = true;
+            this.rbMenuFontSizeNormal.Checked = true;
+            this.rbMenuFontSizeNormal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMenuFontSizeNormal.Location = new System.Drawing.Point(304, 17);
+            this.rbMenuFontSizeNormal.Name = "rbMenuFontSizeNormal";
+            this.rbMenuFontSizeNormal.Size = new System.Drawing.Size(99, 32);
+            this.rbMenuFontSizeNormal.TabIndex = 12;
+            this.rbMenuFontSizeNormal.TabStop = true;
+            this.rbMenuFontSizeNormal.Text = "Normal";
+            this.rbMenuFontSizeNormal.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(161, 17);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Menu contexts Font size:";
+            // 
             // rbFontSizeVeryLarge
             // 
+            this.rbFontSizeVeryLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbFontSizeVeryLarge.AutoSize = true;
-            this.rbFontSizeVeryLarge.Location = new System.Drawing.Point(492, 76);
+            this.rbFontSizeVeryLarge.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.rbFontSizeVeryLarge.Location = new System.Drawing.Point(594, 26);
             this.rbFontSizeVeryLarge.Name = "rbFontSizeVeryLarge";
-            this.rbFontSizeVeryLarge.Size = new System.Drawing.Size(95, 21);
+            this.rbFontSizeVeryLarge.Size = new System.Drawing.Size(150, 33);
             this.rbFontSizeVeryLarge.TabIndex = 10;
             this.rbFontSizeVeryLarge.Text = "Very Large";
             this.rbFontSizeVeryLarge.UseVisualStyleBackColor = true;
             // 
             // rbFontSizeLarge
             // 
+            this.rbFontSizeLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbFontSizeLarge.AutoSize = true;
-            this.rbFontSizeLarge.Location = new System.Drawing.Point(373, 76);
+            this.rbFontSizeLarge.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.rbFontSizeLarge.Location = new System.Drawing.Point(443, 32);
             this.rbFontSizeLarge.Name = "rbFontSizeLarge";
-            this.rbFontSizeLarge.Size = new System.Drawing.Size(63, 21);
+            this.rbFontSizeLarge.Size = new System.Drawing.Size(72, 25);
             this.rbFontSizeLarge.TabIndex = 9;
             this.rbFontSizeLarge.Text = "Large";
             this.rbFontSizeLarge.UseVisualStyleBackColor = true;
             // 
             // rbFontSizeNormal
             // 
+            this.rbFontSizeNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbFontSizeNormal.AutoSize = true;
             this.rbFontSizeNormal.Checked = true;
-            this.rbFontSizeNormal.Location = new System.Drawing.Point(265, 76);
+            this.rbFontSizeNormal.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.rbFontSizeNormal.Location = new System.Drawing.Point(304, 32);
             this.rbFontSizeNormal.Name = "rbFontSizeNormal";
             this.rbFontSizeNormal.Size = new System.Drawing.Size(72, 21);
             this.rbFontSizeNormal.TabIndex = 8;
@@ -440,19 +501,21 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.peAnalogy);
             this.panelControl1.Controls.Add(this.rbtnLightIconColor);
             this.panelControl1.Controls.Add(this.rbtnDarkIconColor);
-            this.panelControl1.Location = new System.Drawing.Point(15, 200);
+            this.panelControl1.Location = new System.Drawing.Point(11, 256);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(390, 101);
+            this.panelControl1.Size = new System.Drawing.Size(763, 101);
             this.panelControl1.TabIndex = 7;
             // 
             // peAnalogy
             // 
             this.peAnalogy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.peAnalogy.EditValue = global::Analogy.Properties.Resources.AnalogyDark;
-            this.peAnalogy.Location = new System.Drawing.Point(293, 5);
+            this.peAnalogy.Location = new System.Drawing.Point(666, 5);
             this.peAnalogy.Name = "peAnalogy";
             this.peAnalogy.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.peAnalogy.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
@@ -462,7 +525,7 @@
             // rbtnLightIconColor
             // 
             this.rbtnLightIconColor.AutoSize = true;
-            this.rbtnLightIconColor.Location = new System.Drawing.Point(5, 36);
+            this.rbtnLightIconColor.Location = new System.Drawing.Point(5, 56);
             this.rbtnLightIconColor.Name = "rbtnLightIconColor";
             this.rbtnLightIconColor.Size = new System.Drawing.Size(88, 21);
             this.rbtnLightIconColor.TabIndex = 1;
@@ -474,7 +537,7 @@
             // 
             this.rbtnDarkIconColor.AutoSize = true;
             this.rbtnDarkIconColor.Checked = true;
-            this.rbtnDarkIconColor.Location = new System.Drawing.Point(5, 9);
+            this.rbtnDarkIconColor.Location = new System.Drawing.Point(5, 17);
             this.rbtnDarkIconColor.Name = "rbtnDarkIconColor";
             this.rbtnDarkIconColor.Size = new System.Drawing.Size(87, 21);
             this.rbtnDarkIconColor.TabIndex = 1;
@@ -483,14 +546,14 @@
             this.rbtnDarkIconColor.UseVisualStyleBackColor = true;
             this.rbtnDarkIconColor.CheckedChanged += new System.EventHandler(this.rbtnDarkIconColor_CheckedChanged);
             // 
-            // lblGlobalFontSize
+            // lblUlFontSize
             // 
-            this.lblGlobalFontSize.AutoSize = true;
-            this.lblGlobalFontSize.Location = new System.Drawing.Point(18, 78);
-            this.lblGlobalFontSize.Name = "lblGlobalFontSize";
-            this.lblGlobalFontSize.Size = new System.Drawing.Size(109, 17);
-            this.lblGlobalFontSize.TabIndex = 6;
-            this.lblGlobalFontSize.Text = "Global fonts size:";
+            this.lblUlFontSize.AutoSize = true;
+            this.lblUlFontSize.Location = new System.Drawing.Point(5, 36);
+            this.lblUlFontSize.Name = "lblUlFontSize";
+            this.lblUlFontSize.Size = new System.Drawing.Size(66, 17);
+            this.lblUlFontSize.TabIndex = 6;
+            this.lblUlFontSize.Text = "Font size:";
             // 
             // tsRememberLastPositionAndState
             // 
@@ -633,7 +696,7 @@
             this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageFilter.ImageOptions.Image")));
             this.xtraTabPageFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPageFilter.Name = "xtraTabPageFilter";
-            this.xtraTabPageFilter.Size = new System.Drawing.Size(790, 780);
+            this.xtraTabPageFilter.Size = new System.Drawing.Size(790, 782);
             this.xtraTabPageFilter.Text = "Filtering and Interactions";
             // 
             // groupControl5
@@ -1176,7 +1239,7 @@
             this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPagePreDefined.ImageOptions.Image")));
             this.xtraTabPagePreDefined.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPagePreDefined.Name = "xtraTabPagePreDefined";
-            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(790, 780);
+            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(790, 782);
             this.xtraTabPagePreDefined.Text = "Pre-Defined Queries";
             // 
             // xtraTabControlQueries
@@ -1185,7 +1248,7 @@
             this.xtraTabControlQueries.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlQueries.Name = "xtraTabControlQueries";
             this.xtraTabControlQueries.SelectedTabPage = this.xtraTabPageColorHighlight;
-            this.xtraTabControlQueries.Size = new System.Drawing.Size(790, 780);
+            this.xtraTabControlQueries.Size = new System.Drawing.Size(790, 782);
             this.xtraTabControlQueries.TabIndex = 0;
             this.xtraTabControlQueries.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageColorHighlight,
@@ -1198,13 +1261,13 @@
             this.xtraTabPageColorHighlight.Controls.Add(this.lboxHighlightItems);
             this.xtraTabPageColorHighlight.Controls.Add(this.gcHighlight);
             this.xtraTabPageColorHighlight.Name = "xtraTabPageColorHighlight";
-            this.xtraTabPageColorHighlight.Size = new System.Drawing.Size(783, 746);
+            this.xtraTabPageColorHighlight.Size = new System.Drawing.Size(783, 748);
             this.xtraTabPageColorHighlight.Text = "Color Highlighting";
             // 
             // sbtnDeleteHighlight
             // 
             this.sbtnDeleteHighlight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteHighlight.Location = new System.Drawing.Point(670, 716);
+            this.sbtnDeleteHighlight.Location = new System.Drawing.Point(670, 718);
             this.sbtnDeleteHighlight.Name = "sbtnDeleteHighlight";
             this.sbtnDeleteHighlight.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteHighlight.TabIndex = 7;
@@ -1218,7 +1281,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxHighlightItems.Location = new System.Drawing.Point(5, 206);
             this.lboxHighlightItems.Name = "lboxHighlightItems";
-            this.lboxHighlightItems.Size = new System.Drawing.Size(775, 504);
+            this.lboxHighlightItems.Size = new System.Drawing.Size(775, 506);
             this.lboxHighlightItems.TabIndex = 1;
             // 
             // gcHighlight
@@ -1326,13 +1389,13 @@
             this.xtraTabPageFilters.Controls.Add(this.txtbExcludeFilter);
             this.xtraTabPageFilters.Controls.Add(this.txtbIncludeTextFilter);
             this.xtraTabPageFilters.Name = "xtraTabPageFilters";
-            this.xtraTabPageFilters.Size = new System.Drawing.Size(783, 746);
+            this.xtraTabPageFilters.Size = new System.Drawing.Size(783, 748);
             this.xtraTabPageFilters.Text = "Filters";
             // 
             // sbtnDeleteFilter
             // 
             this.sbtnDeleteFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteFilter.Location = new System.Drawing.Point(669, 714);
+            this.sbtnDeleteFilter.Location = new System.Drawing.Point(669, 716);
             this.sbtnDeleteFilter.Name = "sbtnDeleteFilter";
             this.sbtnDeleteFilter.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteFilter.TabIndex = 38;
@@ -1346,7 +1409,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxFilters.Location = new System.Drawing.Point(4, 251);
             this.lboxFilters.Name = "lboxFilters";
-            this.lboxFilters.Size = new System.Drawing.Size(775, 457);
+            this.lboxFilters.Size = new System.Drawing.Size(775, 459);
             this.lboxFilters.TabIndex = 37;
             // 
             // sbtnAddFilter
@@ -1457,13 +1520,13 @@
             this.xtraTabPageAlerts.Controls.Add(this.txtbExcludeAlert);
             this.xtraTabPageAlerts.Controls.Add(this.txtbIncludeTextAlert);
             this.xtraTabPageAlerts.Name = "xtraTabPageAlerts";
-            this.xtraTabPageAlerts.Size = new System.Drawing.Size(783, 746);
+            this.xtraTabPageAlerts.Size = new System.Drawing.Size(783, 748);
             this.xtraTabPageAlerts.Text = "Alert and Notifications";
             // 
             // sbtnDeleteAlerts
             // 
             this.sbtnDeleteAlerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteAlerts.Location = new System.Drawing.Point(669, 714);
+            this.sbtnDeleteAlerts.Location = new System.Drawing.Point(669, 716);
             this.sbtnDeleteAlerts.Name = "sbtnDeleteAlerts";
             this.sbtnDeleteAlerts.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteAlerts.TabIndex = 46;
@@ -1477,7 +1540,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxAlerts.Location = new System.Drawing.Point(4, 251);
             this.lboxAlerts.Name = "lboxAlerts";
-            this.lboxAlerts.Size = new System.Drawing.Size(775, 457);
+            this.lboxAlerts.Size = new System.Drawing.Size(775, 459);
             this.lboxAlerts.TabIndex = 45;
             // 
             // sbtnAddAlerts
@@ -1592,7 +1655,7 @@
             this.tpLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpLookAndFeel.ImageOptions.Image")));
             this.tpLookAndFeel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpLookAndFeel.Name = "tpLookAndFeel";
-            this.tpLookAndFeel.Size = new System.Drawing.Size(790, 780);
+            this.tpLookAndFeel.Size = new System.Drawing.Size(790, 782);
             this.tpLookAndFeel.Text = "Look And Feel";
             // 
             // chkLstLogLevel
@@ -2134,7 +2197,7 @@
             this.xtPage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtPage.ImageOptions.Image")));
             this.xtPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtPage.Name = "xtPage";
-            this.xtPage.Size = new System.Drawing.Size(790, 780);
+            this.xtPage.Size = new System.Drawing.Size(790, 782);
             this.xtPage.Text = "Shortcuts";
             // 
             // labelControl10
@@ -2192,7 +2255,7 @@
             this.xTabMRU.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xTabMRU.ImageOptions.Image")));
             this.xTabMRU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xTabMRU.Name = "xTabMRU";
-            this.xTabMRU.Size = new System.Drawing.Size(790, 780);
+            this.xTabMRU.Size = new System.Drawing.Size(790, 782);
             this.xTabMRU.Text = "Most Recently Used";
             // 
             // lblRecentFolders
@@ -2249,7 +2312,7 @@
             this.xtraTabPageResources.Controls.Add(this.toggleSwitchIdleMode);
             this.xtraTabPageResources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageResources.ImageOptions.Image")));
             this.xtraTabPageResources.Name = "xtraTabPageResources";
-            this.xtraTabPageResources.Size = new System.Drawing.Size(790, 780);
+            this.xtraTabPageResources.Size = new System.Drawing.Size(790, 782);
             this.xtraTabPageResources.Text = "Resources Usage";
             // 
             // labelControl5
@@ -2305,7 +2368,7 @@
             this.xtraTabPageDataProviders.Controls.Add(this.xtraTabControlDataProviderSettings);
             this.xtraTabPageDataProviders.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_Icon2;
             this.xtraTabPageDataProviders.Name = "xtraTabPageDataProviders";
-            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(790, 780);
+            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(790, 782);
             this.xtraTabPageDataProviders.Text = "Data Providers";
             // 
             // xtraTabControlDataProviderSettings
@@ -2314,7 +2377,7 @@
             this.xtraTabControlDataProviderSettings.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlDataProviderSettings.Name = "xtraTabControlDataProviderSettings";
             this.xtraTabControlDataProviderSettings.SelectedTabPage = this.xtraTabPageDataProvidersOrder;
-            this.xtraTabControlDataProviderSettings.Size = new System.Drawing.Size(790, 780);
+            this.xtraTabControlDataProviderSettings.Size = new System.Drawing.Size(790, 782);
             this.xtraTabControlDataProviderSettings.TabIndex = 10;
             this.xtraTabControlDataProviderSettings.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageDataProvidersOrder,
@@ -2327,7 +2390,7 @@
             // 
             this.xtraTabPageDataProvidersOrder.Controls.Add(this.splitContainerControlDataProviders);
             this.xtraTabPageDataProvidersOrder.Name = "xtraTabPageDataProvidersOrder";
-            this.xtraTabPageDataProvidersOrder.Size = new System.Drawing.Size(783, 746);
+            this.xtraTabPageDataProvidersOrder.Size = new System.Drawing.Size(783, 748);
             this.xtraTabPageDataProvidersOrder.Text = "Data Providers Enable/Disable";
             // 
             // splitContainerControlDataProviders
@@ -2343,7 +2406,7 @@
             this.splitContainerControlDataProviders.Panel2.Controls.Add(this.labelControl7);
             this.splitContainerControlDataProviders.Panel2.Controls.Add(this.tsRememberLastOpenedDataProvider);
             this.splitContainerControlDataProviders.Panel2.Text = "Panel2";
-            this.splitContainerControlDataProviders.Size = new System.Drawing.Size(783, 746);
+            this.splitContainerControlDataProviders.Size = new System.Drawing.Size(783, 748);
             this.splitContainerControlDataProviders.SplitterPosition = 46;
             this.splitContainerControlDataProviders.TabIndex = 14;
             // 
@@ -2394,7 +2457,7 @@
             this.chkLstDataProviderStatus.ItemHeight = 62;
             this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 64);
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(777, 682);
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(777, 684);
             this.chkLstDataProviderStatus.TabIndex = 12;
             // 
             // labelControl7
@@ -2427,7 +2490,7 @@
             this.xtraTabPageDataProvidersRealTime.Controls.Add(this.chkLstItemRealTimeDataSources);
             this.xtraTabPageDataProvidersRealTime.Controls.Add(this.labelControl6);
             this.xtraTabPageDataProvidersRealTime.Name = "xtraTabPageDataProvidersRealTime";
-            this.xtraTabPageDataProvidersRealTime.Size = new System.Drawing.Size(783, 746);
+            this.xtraTabPageDataProvidersRealTime.Size = new System.Drawing.Size(783, 748);
             this.xtraTabPageDataProvidersRealTime.Text = "Real time Auto-Startup";
             // 
             // chkLstItemRealTimeDataSources
@@ -2435,7 +2498,7 @@
             this.chkLstItemRealTimeDataSources.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkLstItemRealTimeDataSources.Location = new System.Drawing.Point(0, 36);
             this.chkLstItemRealTimeDataSources.Name = "chkLstItemRealTimeDataSources";
-            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(783, 710);
+            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(783, 712);
             this.chkLstItemRealTimeDataSources.TabIndex = 10;
             this.chkLstItemRealTimeDataSources.SelectedIndexChanged += new System.EventHandler(this.ChkLstItemRealTimeDataSources_SelectedIndexChanged);
             // 
@@ -2459,7 +2522,7 @@
             this.xtraTabPageDataProviderAssociation.Controls.Add(this.btnSetFileAssociation);
             this.xtraTabPageDataProviderAssociation.Controls.Add(this.labelControl8);
             this.xtraTabPageDataProviderAssociation.Name = "xtraTabPageDataProviderAssociation";
-            this.xtraTabPageDataProviderAssociation.Size = new System.Drawing.Size(783, 746);
+            this.xtraTabPageDataProviderAssociation.Size = new System.Drawing.Size(783, 748);
             this.xtraTabPageDataProviderAssociation.Text = "Default File Associations";
             // 
             // cbDataProviderAssociation
@@ -2505,7 +2568,7 @@
             // 
             this.xtraTabPageDataProvidersCustom.Controls.Add(this.btnDataProviderCustomSettings);
             this.xtraTabPageDataProvidersCustom.Name = "xtraTabPageDataProvidersCustom";
-            this.xtraTabPageDataProvidersCustom.Size = new System.Drawing.Size(783, 746);
+            this.xtraTabPageDataProvidersCustom.Size = new System.Drawing.Size(783, 748);
             this.xtraTabPageDataProvidersCustom.Text = "Custom Settings";
             // 
             // btnDataProviderCustomSettings
@@ -2528,7 +2591,7 @@
             this.xtpExternalLocations.Controls.Add(this.listBoxFoldersProbing);
             this.xtpExternalLocations.Controls.Add(this.sbtnFolderProbingAdd);
             this.xtpExternalLocations.Name = "xtpExternalLocations";
-            this.xtpExternalLocations.Size = new System.Drawing.Size(783, 746);
+            this.xtpExternalLocations.Size = new System.Drawing.Size(783, 748);
             this.xtpExternalLocations.Text = "External Locations";
             // 
             // lblAssemblies
@@ -2589,7 +2652,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxFoldersProbing.Location = new System.Drawing.Point(11, 95);
             this.listBoxFoldersProbing.Name = "listBoxFoldersProbing";
-            this.listBoxFoldersProbing.Size = new System.Drawing.Size(765, 638);
+            this.listBoxFoldersProbing.Size = new System.Drawing.Size(765, 640);
             this.listBoxFoldersProbing.TabIndex = 2;
             // 
             // sbtnFolderProbingAdd
@@ -2610,7 +2673,7 @@
             this.tpStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpStatistics.ImageOptions.Image")));
             this.tpStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Size = new System.Drawing.Size(790, 780);
+            this.tpStatistics.Size = new System.Drawing.Size(790, 782);
             this.tpStatistics.Text = "User Statistics";
             // 
             // groupControl1
@@ -2686,7 +2749,7 @@
             this.xtraTabPageUpdates.Controls.Add(this.gcIntervals);
             this.xtraTabPageUpdates.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageUpdates.ImageOptions.Image")));
             this.xtraTabPageUpdates.Name = "xtraTabPageUpdates";
-            this.xtraTabPageUpdates.Size = new System.Drawing.Size(790, 780);
+            this.xtraTabPageUpdates.Size = new System.Drawing.Size(790, 782);
             this.xtraTabPageUpdates.Text = "Updates";
             // 
             // gcIntervals
@@ -2721,11 +2784,37 @@
             this.lblUpdates.TabIndex = 12;
             this.lblUpdates.Text = "Choose interval for checking for updates:";
             // 
+            // pcUiFont
+            // 
+            this.pcUiFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pcUiFont.Controls.Add(this.rbFontSizeVeryLarge);
+            this.pcUiFont.Controls.Add(this.rbFontSizeNormal);
+            this.pcUiFont.Controls.Add(this.rbFontSizeLarge);
+            this.pcUiFont.Controls.Add(this.lblUlFontSize);
+            this.pcUiFont.Location = new System.Drawing.Point(11, 70);
+            this.pcUiFont.Name = "pcUiFont";
+            this.pcUiFont.Size = new System.Drawing.Size(767, 84);
+            this.pcUiFont.TabIndex = 15;
+            // 
+            // pcMenuFont
+            // 
+            this.pcMenuFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pcMenuFont.Controls.Add(this.rbMenuFontSizeNormal);
+            this.pcMenuFont.Controls.Add(this.rbMenuFontSizeLarge);
+            this.pcMenuFont.Controls.Add(this.label6);
+            this.pcMenuFont.Controls.Add(this.rbMenuFontSizeVeryLarge);
+            this.pcMenuFont.Location = new System.Drawing.Point(11, 160);
+            this.pcMenuFont.Name = "pcMenuFont";
+            this.pcMenuFont.Size = new System.Drawing.Size(767, 84);
+            this.pcMenuFont.TabIndex = 16;
+            // 
             // UserSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 788);
+            this.ClientSize = new System.Drawing.Size(991, 790);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2740,7 +2829,6 @@
             this.xtraTabPageApplication.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
-            this.groupControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -2876,6 +2964,12 @@
             this.gcIntervals.ResumeLayout(false);
             this.gcIntervals.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbUpdates.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUiFont)).EndInit();
+            this.pcUiFont.ResumeLayout(false);
+            this.pcUiFont.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcMenuFont)).EndInit();
+            this.pcMenuFont.ResumeLayout(false);
+            this.pcMenuFont.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3076,6 +3170,12 @@
         private System.Windows.Forms.RadioButton rbFontSizeLarge;
         private System.Windows.Forms.RadioButton rbFontSizeNormal;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.Label lblGlobalFontSize;
+        private System.Windows.Forms.Label lblUlFontSize;
+        private System.Windows.Forms.RadioButton rbMenuFontSizeVeryLarge;
+        private System.Windows.Forms.RadioButton rbMenuFontSizeLarge;
+        private System.Windows.Forms.RadioButton rbMenuFontSizeNormal;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraEditors.PanelControl pcMenuFont;
+        private DevExpress.XtraEditors.PanelControl pcUiFont;
     }
 }

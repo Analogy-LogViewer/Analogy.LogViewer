@@ -39,7 +39,7 @@ namespace Analogy
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
-
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
 #if NETCOREAPP3_1
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
