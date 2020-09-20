@@ -169,6 +169,10 @@ The application has some analyzers and visualization.
 ![Pie Charts](Assets/AnalogyPie.jpg)
 
 
+- Json Visualizer:
+![Json Visualizer](Assets/JsonVisualizer.jpg)
+
+
 ## Issues
 - Windows 10 blocks Zip files by default. Make sure to unblock them before unzipping. [How to unblocked](https://singularlabs.com/tips/how-to-unblock-a-zip-file-on-windows-10/).
 
