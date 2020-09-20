@@ -26,7 +26,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Tools;
-using DevExpress.Data.Helpers;
 using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
@@ -844,7 +843,7 @@ namespace Analogy
             splitContainerMain.Collapsed = !Settings.ShowMessageDetails;
             if (Settings.StartupErrorLogLevel)
                 chkLstLogLevel.Items[1].CheckState = CheckState.Checked;
-            LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSize);
+            LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSettings.GridFontSize);
             btsAutoScrollToBottom.Checked = Settings.AutoScrollToLastMessage;
 
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
@@ -2494,9 +2493,9 @@ namespace Analogy
 
         private void tsmiIncreaseFont_Click(object sender, EventArgs e)
         {
-            Settings.FontSize = LogGrid.Appearance.Row.Font.Size + 2;
-            LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSize);
-            gridViewBookmarkedMessages.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSize);
+            var fontSize = Settings.FontSettings.GridFontSize = LogGrid.Appearance.Row.Font.Size + 2;
+            LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
+            gridViewBookmarkedMessages.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
             SaveGridLayout();
         }
 
@@ -2504,9 +2503,9 @@ namespace Analogy
         {
             if (LogGrid.Appearance.Row.Font.Size < 5) return;
             {
-                Settings.FontSize = LogGrid.Appearance.Row.Font.Size - 2;
-                LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSize);
-                gridViewBookmarkedMessages.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, Settings.FontSize);
+              var fontSize=  Settings.FontSettings.GridFontSize = LogGrid.Appearance.Row.Font.Size - 2;
+                LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
+                gridViewBookmarkedMessages.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
                 SaveGridLayout();
             }
         }

@@ -51,7 +51,6 @@ namespace Analogy
         public bool PagingEnabled { get; set; }
         public int PagingSize { get; set; }
         public bool ShowChangeLogAtStartUp { get; set; }
-        public float FontSize { get; set; }
         public bool SearchAlsoInSourceAndModule { get; set; }
         public string InitialSelectedDataProvider { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
         public bool IdleMode { get; set; }
@@ -142,7 +141,6 @@ namespace Analogy
             PagingEnabled = Settings.Default.PagingEnabled;
             PagingSize = Settings.Default.PagingSize;
             ShowChangeLogAtStartUp = Settings.Default.ShowChangeLogAtStartUp;
-            FontSize = Settings.Default.FontSize;
             IncludeText = Settings.Default.IncludeText;
             SearchAlsoInSourceAndModule = Settings.Default.SearchAlsoInSourceAndModule;
             IdleMode = Settings.Default.IdleMode;
@@ -254,7 +252,6 @@ namespace Analogy
             Settings.Default.PagingEnabled = PagingEnabled;
             Settings.Default.PagingSize = PagingSize;
             Settings.Default.ShowChangeLogAtStartUp = false;
-            Settings.Default.FontSize = FontSize;
             Settings.Default.IncludeText = IncludeText;
             Settings.Default.SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule;
             Settings.Default.IdleMode = IdleMode;

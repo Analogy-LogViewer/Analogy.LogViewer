@@ -265,18 +265,6 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8.5")]
-        public float FontSize {
-            get {
-                return ((float)(this["FontSize"]));
-            }
-            set {
-                this["FontSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string IncludeText {
             get {
@@ -803,8 +791,8 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("{\"DefaultFont\":\"Tahoma\",\"DefaultFontSize\":8.25,\"DefaultMenuFont\":\"Segoe UI\",\"Defa" +
-            "ultMenuFontSize\":12.0}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\"GridFontSize\":8.5,\"FontName\":\"Tahoma\",\"FontSize\":8.25,\"MenuFontName\":\"Segoe UI\"" +
+            ",\"MenuFontSize\":12.0}")]
         public string FontSettings {
             get {
                 return ((string)(this["FontSettings"]));

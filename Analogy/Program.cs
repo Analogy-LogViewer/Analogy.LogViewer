@@ -5,6 +5,7 @@ using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -33,10 +34,8 @@ namespace Analogy
             AssemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             WindowsFormsSettings.LoadApplicationSettings();
-            //check font size
-            var defaultFont = WindowsFormsSettings.DefaultFont;
-            var defaultMenuFont = WindowsFormsSettings.DefaultMenuFont;
-            
+            WindowsFormsSettings.DefaultFont = Settings.FontSettings.UIFont;
+            WindowsFormsSettings.DefaultMenuFont = Settings.FontSettings.MenuFont;
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
@@ -131,18 +130,18 @@ namespace Analogy
         private static void CurrentDomain_FirstChanceException(object sender,
             System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogWarning( e.Exception.ToString(), nameof(CurrentDomain_FirstChanceException));
+            AnalogyLogger.Instance.LogWarning(e.Exception.ToString(), nameof(CurrentDomain_FirstChanceException));
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogException("Error: " + e.ExceptionObject,e.ExceptionObject as Exception, nameof(CurrentDomain_UnhandledException));
+            AnalogyLogger.Instance.LogException("Error: " + e.ExceptionObject, e.ExceptionObject as Exception, nameof(CurrentDomain_UnhandledException));
             MessageBox.Show("Error: " + e.ExceptionObject, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogException("Error: " + e.Exception,e.Exception, nameof(Application_ThreadException));
+            AnalogyLogger.Instance.LogException("Error: " + e.Exception, e.Exception, nameof(Application_ThreadException));
             MessageBox.Show("Error: " + e.Exception, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }

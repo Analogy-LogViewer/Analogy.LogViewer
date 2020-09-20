@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace Analogy
 {
@@ -87,18 +88,20 @@ namespace Analogy
     [Serializable]
     public class FontSettings
     {
-        public string DefaultFont { get; set; }
-        public float DefaultFontSize { get; set; }
-
-        public string DefaultMenuFont { get; set; }
-        public float DefaultMenuFontSize { get; set; }
-
+        public float GridFontSize { get; set; }
+        public string FontName { get; set; }
+        public float FontSize { get; set; }
+        [JsonIgnore] public Font UIFont => new Font(FontName, FontSize);
+        public string MenuFontName { get; set; }
+        public float MenuFontSize { get; set; }
+        [JsonIgnore] public Font MenuFont => new Font(MenuFontName, MenuFontSize);
         public FontSettings()
         {
-            DefaultFont = "Tahoma";
-            DefaultFontSize = 8.25f;
-            DefaultMenuFont = "Segoe UI";
-            DefaultMenuFontSize = 12f;
+            GridFontSize = 8.5f;
+            FontName = "Tahoma";
+            FontSize = 8.25f;
+            MenuFontName = "Segoe UI";
+            MenuFontSize = 12f;
         }
     }
 }

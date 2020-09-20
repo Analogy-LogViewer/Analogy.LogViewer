@@ -242,6 +242,8 @@
             // memoEdit1
             // 
             this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit1.EditValue = "Json Viewer: initial version is based on https://github.com/alex75it/JSON-Tree-Vi" +
+    "ewer";
             this.memoEdit1.Location = new System.Drawing.Point(0, 0);
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Size = new System.Drawing.Size(1042, 409);
