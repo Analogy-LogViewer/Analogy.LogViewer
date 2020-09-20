@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Managers;
 using DevExpress.XtraBars.Ribbon;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Analogy.Tools.JsonViewer
@@ -58,7 +59,7 @@ namespace Analogy.Tools.JsonViewer
         {
             try
             {
-                JObject json = JObject.Parse(jsonString);
+                object json = JsonConvert.DeserializeObject(jsonString);
                 LoadTree(json);
             }
             catch (Exception e)
@@ -69,20 +70,37 @@ namespace Analogy.Tools.JsonViewer
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        private void LoadTree(JObject json)
+        private void LoadTree(object jsonData)
         {
             Nodes.Clear();
+            if (jsonData is JArray jsonArray)
+            {
+                var rootNode = new JsonTreeNode(JsonNodeType.Object, "(root array)");
+                foreach (JToken jToken in jsonArray)
+                {
+                    var node = new JsonTreeNode(JsonNodeType.Array, jToken.Type.ToString());
+                    rootNode.Nodes.Add(node);
+                    LoadObject(jToken as JObject, node);
+                }
+                TreeNode[] rootNodeArray = new TreeNode[rootNode.Nodes.Count];
+                rootNode.Nodes.CopyTo(rootNodeArray, 0);
+                Nodes.Add(rootNode);
+                SelectedNode = rootNodeArray.First() as JsonTreeNode;
+                rootNode.ImageKey = rootNode.NodeType.ToString();
+                rootNode.SelectedImageKey = rootNode.ImageKey;
+                rootNode.ExpandAll();
+            }
 
-            var rootNode = new JsonTreeNode(JsonNodeType.Object, "(root)");
-            Nodes.Add(rootNode);
-            SelectedNode = rootNode;
-
-            rootNode.ImageKey = rootNode.NodeType.ToString();
-            rootNode.SelectedImageKey = rootNode.ImageKey;
-
-            LoadObject(json, rootNode);
-
-            rootNode.Expand();
+            if (jsonData is JObject json)
+            {
+                var rootNode = new JsonTreeNode(JsonNodeType.Object, "(root)");
+                Nodes.Add(rootNode);
+                SelectedNode = rootNode;
+                rootNode.ImageKey = rootNode.NodeType.ToString();
+                rootNode.SelectedImageKey = rootNode.ImageKey;
+                LoadObject(json, rootNode);
+                rootNode.ExpandAll();
+            }
         }
 
         private void AddNode(JsonTreeNode parentNode, string property, JToken item)
@@ -111,6 +129,7 @@ namespace Analogy.Tools.JsonViewer
 
         private void LoadObject(JObject obj, JsonTreeNode node)
         {
+            if (obj is null) return;
             foreach (var item in obj)
             {
                 AddNode(node, item.Key, item.Value);
