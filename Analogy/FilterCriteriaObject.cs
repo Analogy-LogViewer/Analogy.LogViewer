@@ -200,8 +200,12 @@ namespace Analogy
                 sqlString.Append(string.Join(" Or ", Modules.Select(l => $" Module like '%{EscapeLikeValue(l)}%'")));
                 sqlString.Append(")");
             }
-            string sTemp = string.Join(",", Levels.Select(l => $"'{l}'"));
-            sqlString.Append(" and Level in (" + sTemp + ")");
+
+            if (Levels != null && Levels.Any())
+            {
+                string sTemp = string.Join(",", Levels.Select(l => $"'{l}'"));
+                sqlString.Append(" and Level in (" + sTemp + ")");
+            }
 
             string dateFilter = $" AND (Date >= '{NewerThan}' and Date <= '{OlderThan}')";
 

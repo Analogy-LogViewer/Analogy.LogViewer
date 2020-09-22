@@ -341,7 +341,7 @@ namespace Analogy
                 case LogLevelSelectionType.Multiple:
                     chkLstLogLevel.CheckMode = CheckMode.Multiple;
                     chkLstLogLevel.CheckStyle = CheckStyles.Standard;
-                    chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, true)).ToArray());
+                    chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, false)).ToArray());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
