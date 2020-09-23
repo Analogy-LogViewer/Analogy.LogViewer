@@ -40,7 +40,6 @@ it supports both offline log files:
 And real time streaming of logs: 
 1. [NLog Target](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog.Targets) 
 2. [Serilog Sink](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) 
-2. [Serilog Sink](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) 
 3. [Asp Core log provider](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider)
 4. [Python streaming](https://github.com/Analogy-LogViewer/Analogy-Python-Logging)
 
