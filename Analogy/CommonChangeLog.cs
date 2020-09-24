@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.9 - [UI] Analogy Save message still says XML format while it has been deprecated and replaced by Json #514",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,09,24)),
                 new AnalogyChangeLog("V4.2.9 - [Usability] Add global font size settings for high resolution monitors #501",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,20)),
                 new AnalogyChangeLog("V4.2.9 - [feature] Add View as json tree on right click on log message #504",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,19)),
                 new AnalogyChangeLog("V4.2.8 - [Context menu] limit number of characters showed in the messages context menu. #505",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,09,16)),

@@ -2025,7 +2025,7 @@ namespace Analogy
             {
                 if (XtraMessageBox.Show(
                     "Current Data Source does not support Save Operation" + Environment.NewLine +
-                    "Do you want to Save in Analogy XML Format?", @"Save not Supported", MessageBoxButtons.YesNo,
+                    "Do you want to Save in Analogy Json Format?", @"Save not Supported", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     SaveMessagesToLog(AnalogyOfflineDataProvider, messages);
