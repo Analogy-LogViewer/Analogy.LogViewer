@@ -345,11 +345,12 @@ namespace Analogy
 
                 if (supported.Any(d =>
                     d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider ||
-                    d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider))
+                    d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider
+                    && d.DataProvider.CanOpenAllFiles(files)))
                 {
                     supported = supported.Where(d =>
                         d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider ||
-                        d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider).ToList();
+                        d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
 
                 }
                 else
