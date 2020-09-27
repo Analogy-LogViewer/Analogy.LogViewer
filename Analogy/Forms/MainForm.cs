@@ -329,6 +329,7 @@ namespace Analogy
         }
         private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
         {
+            Debugger.Launch();
             while (!Initialized)
                 await Task.Delay(250);
 
@@ -342,13 +343,18 @@ namespace Analogy
             else
             {
 
-                if (supported.Any(d => d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider))
+                if (supported.Any(d =>
+                    d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider ||
+                    d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider))
                 {
-                    var parser = supported.First(d =>
-                        d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider);
+                    supported = supported.Where(d =>
+                        d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider ||
+                        d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider).ToList();
+
                 }
-                supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
-                    !FactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
+                else
+                    supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
+                        !FactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
                 if (supported.Count == 1)
                 {
                     var parser = supported.First();
