@@ -608,7 +608,7 @@ namespace Analogy
         }
         private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
-            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Offline Data Provides: {dataSourceFactory.Title}");
+            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Data Provider: {dataSourceFactory.Title}");
             ribbonPageGroup.AllowTextClipping = false;
             ribbonPage.Groups.Add(ribbonPageGroup);
 
