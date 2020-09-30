@@ -41,6 +41,7 @@
             this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
             this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
             this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
@@ -104,7 +105,6 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
-            this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -135,6 +135,7 @@
             this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bsiGlobalTools,
             this.bsmInfo,
             this.ribbonControlMain.ExpandCollapseItem,
             this.ribbonControlMain.SearchEditItem,
@@ -196,8 +197,7 @@
             this.btnDataProvidersSettings,
             this.btnSettingsUpdate,
             this.bbtnFirstRun,
-            this.bbtnWhatsNew,
-            this.bsiGlobalTools});
+            this.bbtnWhatsNew});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonControlMain.MaxItemId = 103;
@@ -206,6 +206,7 @@
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem3);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.barSubItem2);
+            this.ribbonControlMain.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
             this.ribbonControlMain.Size = new System.Drawing.Size(1127, 61);
@@ -253,6 +254,14 @@
             this.bbtnItemExit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnItemExit.ImageOptions.LargeImage")));
             this.bbtnItemExit.Name = "bbtnItemExit";
             this.bbtnItemExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnItemExit_ItemClick);
+            // 
+            // bsiGlobalTools
+            // 
+            this.bsiGlobalTools.Caption = "Global Tools";
+            this.bsiGlobalTools.Id = 102;
+            this.bsiGlobalTools.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.Image")));
+            this.bsiGlobalTools.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.LargeImage")));
+            this.bsiGlobalTools.Name = "bsiGlobalTools";
             // 
             // bsmInfo
             // 
@@ -801,14 +810,6 @@
             this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
-            // 
-            // bsiGlobalTools
-            // 
-            this.bsiGlobalTools.Caption = "Global Tools";
-            this.bsiGlobalTools.Id = 102;
-            this.bsiGlobalTools.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.Image")));
-            this.bsiGlobalTools.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.LargeImage")));
-            this.bsiGlobalTools.Name = "bsiGlobalTools";
             // 
             // MainForm
             // 
