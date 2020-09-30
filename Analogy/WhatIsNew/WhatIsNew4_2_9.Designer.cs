@@ -30,13 +30,13 @@
         {
             this.xtcV4_2_9 = new DevExpress.XtraTab.XtraTabControl();
             this.xtPageHighlight = new DevExpress.XtraTab.XtraTabPage();
+            this.HighlightAffirmations = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.HighlightRabbitMq = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.highlight504 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.xtPageIssues = new DevExpress.XtraTab.XtraTabPage();
             this.issue514 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue501 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue504 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.HighlightRabbitMq = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.HighlightAffirmations = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtcV4_2_9)).BeginInit();
             this.xtcV4_2_9.SuspendLayout();
             this.xtPageHighlight.SuspendLayout();
@@ -64,6 +64,30 @@
             this.xtPageHighlight.Name = "xtPageHighlight";
             this.xtPageHighlight.Size = new System.Drawing.Size(782, 428);
             this.xtPageHighlight.Text = "V4.2.9 Highlights / Changes";
+            // 
+            // HighlightAffirmations
+            // 
+            this.HighlightAffirmations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HighlightAffirmations.Location = new System.Drawing.Point(0, 52);
+            this.HighlightAffirmations.Name = "HighlightAffirmations";
+            this.HighlightAffirmations.Padding = new System.Windows.Forms.Padding(5);
+            this.HighlightAffirmations.Size = new System.Drawing.Size(257, 26);
+            this.HighlightAffirmations.TabIndex = 7;
+            this.HighlightAffirmations.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer.Affirmations>Affirma" +
+    "tions Streamer (New Data Provider)</href>";
+            this.HighlightAffirmations.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // HighlightRabbitMq
+            // 
+            this.HighlightRabbitMq.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HighlightRabbitMq.Location = new System.Drawing.Point(0, 26);
+            this.HighlightRabbitMq.Name = "HighlightRabbitMq";
+            this.HighlightRabbitMq.Padding = new System.Windows.Forms.Padding(5);
+            this.HighlightRabbitMq.Size = new System.Drawing.Size(224, 26);
+            this.HighlightRabbitMq.TabIndex = 6;
+            this.HighlightRabbitMq.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer.RabbitMq>RabbitMq Pa" +
+    "rser (New Data Provider)</href>";
+            this.HighlightRabbitMq.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // highlight504
             // 
@@ -117,36 +141,11 @@
             this.Issue504.Location = new System.Drawing.Point(0, 0);
             this.Issue504.Name = "Issue504";
             this.Issue504.Padding = new System.Windows.Forms.Padding(5);
-            this.Issue504.Size = new System.Drawing.Size(489, 26);
+            this.Issue504.Size = new System.Drawing.Size(483, 26);
             this.Issue504.TabIndex = 5;
             this.Issue504.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/504>Add Json " +
-    "global tools and Add View as json tree on right click on log message #504</href>" +
-    "";
+    "global tool and Add View as json tree on right click on log message #504</href>";
             this.Issue504.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
-            // HighlightRabbitMq
-            // 
-            this.HighlightRabbitMq.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HighlightRabbitMq.Location = new System.Drawing.Point(0, 26);
-            this.HighlightRabbitMq.Name = "HighlightRabbitMq";
-            this.HighlightRabbitMq.Padding = new System.Windows.Forms.Padding(5);
-            this.HighlightRabbitMq.Size = new System.Drawing.Size(224, 26);
-            this.HighlightRabbitMq.TabIndex = 6;
-            this.HighlightRabbitMq.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer.RabbitMq>RabbitMq Pa" +
-    "rser (New Data Provider)</href>";
-            this.HighlightRabbitMq.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
-            // HighlightAffirmations
-            // 
-            this.HighlightAffirmations.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HighlightAffirmations.Location = new System.Drawing.Point(0, 52);
-            this.HighlightAffirmations.Name = "HighlightAffirmations";
-            this.HighlightAffirmations.Padding = new System.Windows.Forms.Padding(5);
-            this.HighlightAffirmations.Size = new System.Drawing.Size(257, 26);
-            this.HighlightAffirmations.TabIndex = 7;
-            this.HighlightAffirmations.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer.Affirmations>Affirma" +
-    "tions Streamer (New Data Provider)</href>";
-            this.HighlightAffirmations.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_2_9
             // 

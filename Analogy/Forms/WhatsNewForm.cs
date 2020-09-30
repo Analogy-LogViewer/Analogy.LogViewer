@@ -57,12 +57,9 @@ namespace Analogy.Forms
             {
                 if (others.Name == control) continue;
                 others.SendToBack();
-                others.Visible = false;
             }
 
             fluentDesignFormContainer1.Controls[control].BringToFront();
-            fluentDesignFormContainer1.Controls[control].Visible = true;
-
 
         }
     }

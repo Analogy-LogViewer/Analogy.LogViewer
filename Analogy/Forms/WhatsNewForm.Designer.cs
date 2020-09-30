@@ -30,8 +30,8 @@
         {
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.e428 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e429 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.e428 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
@@ -59,19 +59,19 @@
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
+            // e429
+            // 
+            this.e429.Name = "e429";
+            this.e429.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.e429.Text = "V4.2.9";
+            this.e429.Click += new System.EventHandler(this.e429_Click);
+            // 
             // e428
             // 
             this.e428.Name = "e428";
             this.e428.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.e428.Text = "V4.2.8";
             this.e428.Click += new System.EventHandler(this.e428_Click);
-            // 
-            // e429
-            // 
-            this.e429.Name = "e429";
-            this.e429.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.e429.Text = "V4.2.9";
-            this.e428.Click += new System.EventHandler(this.e429_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -95,7 +95,7 @@
             this.Name = "WhatsNewForm";
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Analogy: What is new";
+            this.Text = "Analogy: What Is New";
             this.Load += new System.EventHandler(this.WhatsNewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
