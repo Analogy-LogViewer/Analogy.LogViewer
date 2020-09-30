@@ -117,48 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="memoEdit1.EditValue" xml:space="preserve">
-    <value>Analogy Log Viewer is multi purpose Log Viewer for Windows Operating System.
-
-It supports three modes:
-1. Offline data providers (many parsers of different files types) 
-2. Online / real time providers (like windows event logs or gRPC)
-3. Connect to gRPC Analogy Log Server (https://github.com/Analogy-LogViewer/Analogy.LogViewer.gRPC) to read messages send by any executable that can use gRPC client.
-
-There are many differerent data providers available for use. A complete list exist at: https://github.com/Analogy-LogViewer/Analogy</value>
-  </data>
-  <data name="memoEdit2.EditValue" xml:space="preserve">
-    <value>The different implementations are arranged by top level main menu: each data provider has its own tab in the ribbon (gRPC Receiver, IIS Parser, etc). 
-First tab is Analogy "format": you can save logs from any provider in a format the application can read Regardless the data provider existance/loaded. 
-
-Ribbon Elements: Each offline Data Provider has the following:
-● Open Folder: Open pre-defined folder
-● Recent Folders: Open recent folders (number of items is configurable in the user settings)
-● Open Files: Open the Open File dialog to select file for loading.
-● File Pooling: Same as "Open Files" but reloading the selected file on changes .
-● Recent Files: Same as recent folders (number of items is configurable in the user settings)
-● Known locations: User defined location (local paths or network path where log files are stored)
-● Bookmarks: shows any saved bookmarks.</value>
-  </data>
-  <data name="memoEdit3.EditValue" xml:space="preserve">
-    <value>Settings Options:
-● Application Settings: Application level settings:
-   ○ single/multi instance, 
-   ○ Caching of loaded files (on by default), 
-   ○ Support for compressed files
-   ○ remember last position
-● Filtering Settings: settings related to filtering operations (simple/advance mode, save filters, sorting, messages layout and columns names).
-● Pre-Defined Queries: configure user defined filters
-● Look And Feel: Defines message's colors
-● Shortcuts: Application defined shortcuts.
-● Most Recently used: Defined file/folder recent settings
-● Data Providers Settings: settings related to data providers:
-   ○  Enable/Disable data providers.
-   ○ Auto startup for real time data providers.
-   ○ Default file Association (force opening file log with specific provider)
- 
-● Custom Data Providers Settings: Open specific data providers' settings
-● User Statistics: Some statistics for current user.
-● Updates: Enable/Disable update checker.</value>
-  </data>
 </root>
