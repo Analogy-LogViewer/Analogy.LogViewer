@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -84,7 +84,7 @@
             this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGallery = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.skinPaletteRibbonGalleryBarItem3 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.bsiSettings = new DevExpress.XtraBars.BarSubItem();
             this.btnApplicationSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnFiltering = new DevExpress.XtraBars.BarButtonItem();
             this.btnPreDefinedQueries = new DevExpress.XtraBars.BarButtonItem();
@@ -181,7 +181,7 @@
             this.bbtnReportIssueOrRequest,
             this.skinRibbonGallery,
             this.skinPaletteRibbonGalleryBarItem3,
-            this.barSubItem2,
+            this.bsiSettings,
             this.btnApplicationSettings,
             this.btnFiltering,
             this.btnPreDefinedQueries,
@@ -205,7 +205,7 @@
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem3);
-            this.ribbonControlMain.QuickToolbarItemLinks.Add(this.barSubItem2);
+            this.ribbonControlMain.QuickToolbarItemLinks.Add(this.bsiSettings);
             this.ribbonControlMain.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
@@ -363,9 +363,9 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group2";
+            galleryItemGroup3.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup3});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -375,9 +375,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Group3";
+            galleryItemGroup4.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup4});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -494,7 +494,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // bBtnBookmarked
             // 
@@ -622,14 +622,14 @@
             this.skinPaletteRibbonGalleryBarItem3.Id = 82;
             this.skinPaletteRibbonGalleryBarItem3.Name = "skinPaletteRibbonGalleryBarItem3";
             // 
-            // barSubItem2
+            // bsiSettings
             // 
-            this.barSubItem2.Caption = "Settings";
-            this.barSubItem2.Hint = "Application Settings";
-            this.barSubItem2.Id = 83;
-            this.barSubItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.Image")));
-            this.barSubItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.LargeImage")));
-            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.bsiSettings.Caption = "Settings";
+            this.bsiSettings.Hint = "Application Settings";
+            this.bsiSettings.Id = 83;
+            this.bsiSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.Image")));
+            this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.LargeImage")));
+            this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnApplicationSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnFiltering),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnPreDefinedQueries),
@@ -641,7 +641,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCustomDataProvidersSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnUserSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate)});
-            this.barSubItem2.Name = "barSubItem2";
+            this.bsiSettings.Name = "bsiSettings";
             // 
             // btnApplicationSettings
             // 
@@ -895,7 +895,7 @@
         private DevExpress.XtraBars.BarButtonItem bbtnReportIssueOrRequest;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGallery;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem3;
-        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarSubItem bsiSettings;
         private DevExpress.XtraBars.BarButtonItem btnApplicationSettings;
         private DevExpress.XtraBars.BarButtonItem btnFiltering;
         private DevExpress.XtraBars.BarButtonItem btnPreDefinedQueries;
