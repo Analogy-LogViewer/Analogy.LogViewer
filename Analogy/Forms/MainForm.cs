@@ -152,8 +152,9 @@ namespace Analogy
             disableOnlineDueToFileOpen = arguments.Length == 2;
             SetupEventHandlers();
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
-            ribbonControlMain.Minimized = UserSettingsManager.UserSettings.StartupRibbonMinimized;
+            ribbonControlMain.Minimized = settings.StartupRibbonMinimized;
 
+            ribbonControlMain.RibbonStyle = settings.RibbonStyle;
             //CreateAnalogyBuiltinDataProviders
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
@@ -166,7 +167,7 @@ namespace Analogy
             CreateDataSources();
 
             //set Default page:
-            Guid defaultPage = new Guid(UserSettingsManager.UserSettings.InitialSelectedDataProvider);
+            Guid defaultPage = new Guid(settings.InitialSelectedDataProvider);
             if (Mapping.ContainsKey(defaultPage))
             {
                 ribbonControlMain.SelectedPage = Mapping[defaultPage];
@@ -185,14 +186,14 @@ namespace Analogy
             else
                 TmrAutoConnect.Enabled = true;
 
-            if (UserSettingsManager.UserSettings.ShowChangeLogAtStartUp)
+            if (settings.ShowChangeLogAtStartUp)
             {
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
-            if (UserSettingsManager.UserSettings.RememberLastOpenedDataProvider && Mapping.ContainsKey(UserSettingsManager.UserSettings.LastOpenedDataProvider))
+            if (settings.RememberLastOpenedDataProvider && Mapping.ContainsKey(settings.LastOpenedDataProvider))
             {
-                ribbonControlMain.SelectPage(Mapping[UserSettingsManager.UserSettings.LastOpenedDataProvider]);
+                ribbonControlMain.SelectPage(Mapping[settings.LastOpenedDataProvider]);
             }
             ribbonControlMain.SelectedPageChanging += ribbonControlMain_SelectedPageChanging;
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
@@ -344,13 +345,13 @@ namespace Analogy
             {
 
                 if (supported.Any(d =>
-                    d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider ||
-                    d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider
+                    d.DataProvider.Id == settings.LastOpenedDataProvider ||
+                    d.FactoryID == settings.LastOpenedDataProvider
                     && d.DataProvider.CanOpenAllFiles(files)))
                 {
                     supported = supported.Where(d =>
-                        d.DataProvider.Id == UserSettingsManager.UserSettings.LastOpenedDataProvider ||
-                        d.FactoryID == UserSettingsManager.UserSettings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
+                        d.DataProvider.Id == settings.LastOpenedDataProvider ||
+                        d.FactoryID == settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
 
                 }
                 else
@@ -1180,7 +1181,7 @@ namespace Analogy
             group.ItemLinks.Add(recentBar);
             foreach (var dataProvider in offlineProviders)
             {
-                var recents = UserSettingsManager.UserSettings.GetRecentFiles(dataProvider.Id)
+                var recents = settings.GetRecentFiles(dataProvider.Id)
                     .Select(itm => itm.FileName).ToList();
                 AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle, recents);
             }
@@ -1456,7 +1457,7 @@ namespace Analogy
 
             //add recent
             group.ItemLinks.Add(recentBar);
-            var recents = UserSettingsManager.UserSettings.GetRecentFiles(offlineAnalogy.Id)
+            var recents = settings.GetRecentFiles(offlineAnalogy.Id)
                 .Select(itm => itm.FileName).ToList();
             AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title, recents);
 
@@ -1733,7 +1734,7 @@ namespace Analogy
             if (Mapping.ContainsValue(e.Page))
             {
                 Guid id = Mapping.Single(kv => kv.Value == e.Page).Key;
-                UserSettingsManager.UserSettings.LastOpenedDataProvider = id;
+                settings.LastOpenedDataProvider = id;
             }
         }
 

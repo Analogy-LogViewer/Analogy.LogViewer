@@ -191,5 +191,8 @@
     <Setting Name="FontSettings" Type="System.String" Scope="User">
       <Value Profile="(Default)">{"GridFontSize":8.5,"FontName":"Tahoma","FontSize":8.25,"MenuFontName":"Segoe UI","MenuFontSize":12.0}</Value>
     </Setting>
+    <Setting Name="RibbonStyle" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

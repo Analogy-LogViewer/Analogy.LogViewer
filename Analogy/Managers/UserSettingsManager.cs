@@ -5,6 +5,7 @@ using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
 using DevExpress.LookAndFeel;
+using DevExpress.XtraBars.Ribbon;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -97,6 +98,7 @@ namespace Analogy
         public LogLevelSelectionType LogLevelSelection { get; set; }
         public bool ShowWhatIsNewAtStartup { get; set; }
         public FontSettings FontSettings { get; set; }
+        public RibbonControlStyle RibbonStyle { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -111,6 +113,7 @@ namespace Analogy
                 Settings.Default.Upgrade();
                 Settings.Default.UpgradeRequired = false;
                 Settings.Default.Save();
+                ShowWhatIsNewAtStartup = true;
             }
 
             DateTimePattern = !string.IsNullOrEmpty(Settings.Default.DateTimePattern)
@@ -204,6 +207,7 @@ namespace Analogy
             ShowMessageDetails = Settings.Default.ShowMessageDetails;
             ShowWhatIsNewAtStartup = Settings.Default.ShowWhatIsNewAtStartup;
             FontSettings = ParseSettings<FontSettings>(Settings.Default.FontSettings);
+            RibbonStyle = (RibbonControlStyle)Settings.Default.RibbonStyle;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -288,6 +292,7 @@ namespace Analogy
             Settings.Default.LogLevelSelection = LogLevelSelection.ToString();
             Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
+            Settings.Default.RibbonStyle = (int)RibbonStyle;
             Settings.Default.Save();
 
         }
