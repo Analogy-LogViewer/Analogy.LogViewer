@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -152,6 +153,7 @@ namespace Analogy
             disableOnlineDueToFileOpen = arguments.Length == 2;
             SetupEventHandlers();
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
+            bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
             ribbonControlMain.Minimized = settings.StartupRibbonMinimized;
 
             ribbonControlMain.RibbonStyle = settings.RibbonStyle;
@@ -281,6 +283,7 @@ namespace Analogy
             };
             bbtnCheckUpdates.ItemClick += (s, e) => OpenUpdateWindow();
             bbtnCompactMemory.ItemClick += (_, __) => FileProcessingManager.Instance.Reset();
+            bbtnCompactMemory.Visibility = BarItemVisibility.Never;
             notifyIconAnalogy.DoubleClick += (_, __) =>
             {
                 if (Visible)
@@ -1672,6 +1675,7 @@ namespace Analogy
         {
             settings.EnableFileCaching = !settings.EnableFileCaching;
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
+            bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
         }
 
 
