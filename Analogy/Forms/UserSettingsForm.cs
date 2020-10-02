@@ -110,8 +110,8 @@ namespace Analogy
             tsRibbonCompactStyle.IsOnChanged += (s, e) =>
             {
                 Settings.RibbonStyle = tsRibbonCompactStyle.IsOn
-                    ? RibbonControlStyle.OfficeUniversal
-                    : RibbonControlStyle.Default;
+                    ? CommandLayout.Simplified
+                    : CommandLayout.Classic;
             };
         }
 
@@ -257,7 +257,7 @@ namespace Analogy
 
             }
 
-            tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == RibbonControlStyle.OfficeUniversal;
+            tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == CommandLayout.Simplified;
         }
 
         private void SaveSetting()

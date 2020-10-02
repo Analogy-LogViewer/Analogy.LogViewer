@@ -26,9 +26,9 @@ namespace Analogy
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
 
-        private RibbonControlStyle _ribbonStyle;
+        private CommandLayout _ribbonStyle;
 
-        public event EventHandler<RibbonControlStyle> OnRibbonControlStyleChanged;
+        public event EventHandler<CommandLayout> OnRibbonControlStyleChanged;
 
         public string ApplicationSkinName { get; set; }
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
@@ -103,7 +103,7 @@ namespace Analogy
         public bool ShowWhatIsNewAtStartup { get; set; }
         public FontSettings FontSettings { get; set; }
 
-        public RibbonControlStyle RibbonStyle
+        public CommandLayout RibbonStyle
         {
             get => _ribbonStyle;
             set
@@ -225,7 +225,7 @@ namespace Analogy
             ShowMessageDetails = Settings.Default.ShowMessageDetails;
             ShowWhatIsNewAtStartup = Settings.Default.ShowWhatIsNewAtStartup;
             FontSettings = ParseSettings<FontSettings>(Settings.Default.FontSettings);
-            RibbonStyle = (RibbonControlStyle)Settings.Default.RibbonStyle;
+            RibbonStyle = (CommandLayout)Settings.Default.RibbonStyle;
         }
 
         private T ParseSettings<T>(string data) where T : new()

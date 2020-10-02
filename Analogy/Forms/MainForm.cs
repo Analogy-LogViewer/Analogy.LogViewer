@@ -156,7 +156,7 @@ namespace Analogy
             bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
             ribbonControlMain.Minimized = settings.StartupRibbonMinimized;
 
-            ribbonControlMain.RibbonStyle = settings.RibbonStyle;
+            ribbonControlMain.CommandLayout = settings.RibbonStyle;
             //CreateAnalogyBuiltinDataProviders
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
@@ -269,7 +269,7 @@ namespace Analogy
                 }
             }
 
-            settings.OnRibbonControlStyleChanged += (s, e) => ribbonControlMain.RibbonStyle = e;
+            settings.OnRibbonControlStyleChanged += (s, e) => ribbonControlMain.CommandLayout = e;
             bbtnReportIssueOrRequest.ItemClick += (_, __) =>
             {
                 Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues");
