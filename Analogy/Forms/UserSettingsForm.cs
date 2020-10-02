@@ -3,6 +3,7 @@ using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Types;
 using DevExpress.Utils;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
@@ -34,7 +35,7 @@ namespace Analogy
 
         }
 
-     
+
 
         public UserSettingsForm(int tabIndex) : this()
         {
@@ -105,6 +106,13 @@ namespace Analogy
                  Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
                  Utils.SetLogLevel(chkLstLogLevel);
              };
+
+            tsRibbonCompactStyle.IsOnChanged += (s, e) =>
+            {
+                Settings.RibbonStyle = tsRibbonCompactStyle.IsOn
+                    ? RibbonControlStyle.OfficeUniversal
+                    : RibbonControlStyle.Default;
+            };
         }
 
         private void MainView_Layout(object sender, EventArgs e)
@@ -248,6 +256,8 @@ namespace Analogy
                     break;
 
             }
+
+            tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == RibbonControlStyle.OfficeUniversal;
         }
 
         private void SaveSetting()
@@ -720,7 +730,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}",e, "Analogy");
+                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

@@ -269,6 +269,7 @@ namespace Analogy
                 }
             }
 
+            settings.OnRibbonControlStyleChanged += (s, e) => ribbonControlMain.RibbonStyle = e;
             bbtnReportIssueOrRequest.ItemClick += (_, __) =>
             {
                 Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues");

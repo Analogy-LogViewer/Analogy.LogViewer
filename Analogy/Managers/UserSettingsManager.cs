@@ -26,6 +26,10 @@ namespace Analogy
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
 
+        private RibbonControlStyle _ribbonStyle;
+
+        public event EventHandler<RibbonControlStyle> OnRibbonControlStyleChanged;
+
         public string ApplicationSkinName { get; set; }
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
         public bool SaveSearchFilters { get; set; }
@@ -98,7 +102,21 @@ namespace Analogy
         public LogLevelSelectionType LogLevelSelection { get; set; }
         public bool ShowWhatIsNewAtStartup { get; set; }
         public FontSettings FontSettings { get; set; }
-        public RibbonControlStyle RibbonStyle { get; set; }
+
+        public RibbonControlStyle RibbonStyle
+        {
+            get => _ribbonStyle;
+            set
+            {
+                if (_ribbonStyle != value)
+                {
+                    _ribbonStyle = value;
+                    OnRibbonControlStyleChanged?.Invoke(this, value);
+
+                }
+            }
+        }
+
         public UserSettingsManager()
         {
             Load();
