@@ -44,6 +44,7 @@ namespace Analogy
         }
 
     }
+    [Serializable]
     public class FilterCriteriaUIOption
     {
         public string DisplayMember { get; set; }
