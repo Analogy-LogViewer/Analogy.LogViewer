@@ -181,9 +181,8 @@ namespace Analogy.Managers
 
 
                 }
-
-                Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
             }
+            Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
 
         }
     }
