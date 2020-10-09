@@ -303,6 +303,9 @@ namespace Analogy
                 FirstTimeRunForm f = new FirstTimeRunForm();
                 f.ShowDialog(this);
             };
+
+            bbiBookmarks.ItemClick+= (s, e) => OpenBookmarkLog();
+            
         }
 
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
