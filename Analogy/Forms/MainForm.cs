@@ -617,21 +617,9 @@ namespace Analogy
             ribbonPageGroup.AllowTextClipping = false;
             ribbonPage.Groups.Add(ribbonPageGroup);
 
-            AddRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
+            AddFlatRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddSingleDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
-
-            FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(dataSourceFactory.FactoryId);
-            IAnalogyImages images = container?.Images?.FirstOrDefault();
-
-            //add bookmark
-            BarButtonItem bookmarkBtn = new BarButtonItem();
-            bookmarkBtn.Caption = "Bookmarks";
-            bookmarkBtn.RibbonStyle = RibbonItemStyles.All;
-            ribbonPageGroup.ItemLinks.Add(bookmarkBtn);
-            bookmarkBtn.ImageOptions.Image = images?.GetSmallBookmarksImage(dataSourceFactory.FactoryId) ?? Resources.RichEditBookmark_16x16;
-            bookmarkBtn.ImageOptions.LargeImage = images?.GetLargeBookmarksImage(dataSourceFactory.FactoryId) ?? Resources.RichEditBookmark_32x32;
-            bookmarkBtn.ItemClick += (sender, e) => { OpenBookmarkLog(); };
         }
 
         private void AddFlatRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
@@ -639,9 +627,10 @@ namespace Analogy
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
             if (realTimes.Count == 0) return;
-
-
-            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Real Time Providers: {dataSourceFactory.Title}");
+            string title = !string.IsNullOrEmpty(dataSourceFactory.Title)
+                ? dataSourceFactory.Title
+                : "real time Provider";
+            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Real Time Providers: {title}");
             ribbonPageGroup.AllowTextClipping = false;
             ribbonPage.Groups.Insert(0, ribbonPageGroup);
 
@@ -655,7 +644,7 @@ namespace Analogy
                 realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                 realTimeBtn.Caption = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
-                    : "real time source");
+                    : "real time provider");
 
                 async Task<bool> OpenRealTime()
                 {
