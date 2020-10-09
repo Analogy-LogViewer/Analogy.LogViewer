@@ -1,12 +1,15 @@
 ﻿using Analogy.DataSources;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
+using Analogy.Tools;
 using Analogy.Types;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
@@ -24,9 +27,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces.DataTypes;
-using Analogy.Tools;
-using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
 {
@@ -527,7 +527,7 @@ namespace Analogy
             {
                 GridView view = sender as GridView;
                 GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
-                if (hitInfo.InRow && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
+                if (hitInfo.InRow && hitInfo.RowHandle >= 0 && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
                 {
                     UpdatePopupTexts();
                     var value = view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
@@ -574,9 +574,10 @@ namespace Analogy
 
         private void LogGrid_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            GridHitInfo hitInfo = logGrid.CalcHitInfo(e.Location);
+            if (e.Button == MouseButtons.Right && !hitInfo.InColumnPanel)
             {
-                LogGridPopupMenu.ShowPopup(Cursor.Position);
+                  LogGridPopupMenu.ShowPopup(Cursor.Position);
             }
         }
         private void LoadReplacementHeaders()
@@ -2503,7 +2504,7 @@ namespace Analogy
         {
             if (LogGrid.Appearance.Row.Font.Size < 5) return;
             {
-              var fontSize=  Settings.FontSettings.GridFontSize = LogGrid.Appearance.Row.Font.Size - 2;
+                var fontSize = Settings.FontSettings.GridFontSize = LogGrid.Appearance.Row.Font.Size - 2;
                 LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
                 gridViewBookmarkedMessages.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
                 SaveGridLayout();
