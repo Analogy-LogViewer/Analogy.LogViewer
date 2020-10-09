@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.10 - The OK button on the 'Data Source Information' dialog doesn't seem to do anything. #546",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,10,09)),
                 new AnalogyChangeLog("V4.2.10 - [Extendability] Allows shuffling of provider between factories #534",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,06)),
                 new AnalogyChangeLog("V4.2.10 - [UI] add setting to toggle compact ribbon view #520",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,02)),
                 new AnalogyChangeLog("V4.2.9 - [UI] Analogy Save message still says XML format while it has been deprecated and replaced by Json #514",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,09,24)),
