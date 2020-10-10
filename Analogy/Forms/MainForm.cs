@@ -1,4 +1,5 @@
-﻿using Analogy.Forms;
+﻿using Analogy.DataProviders;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -11,6 +12,7 @@ using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,7 +24,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataProviders;
 
 
 namespace Analogy
@@ -141,7 +142,7 @@ namespace Analogy
 
             string framework = string.Empty;
 #if NETCOREAPP3_1
-            framework= ".Net Core 3.1";
+            framework = ".Net Core 3.1";
 #else
             framework = ".Net Framework 4.7.2/1";
 #endif
@@ -304,8 +305,8 @@ namespace Analogy
                 f.ShowDialog(this);
             };
 
-            bbiBookmarks.ItemClick+= (s, e) => OpenBookmarkLog();
-            
+            bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
+
         }
 
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
@@ -616,8 +617,7 @@ namespace Analogy
         }
         private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
-            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Data Provider: {dataSourceFactory.Title}");
-            ribbonPageGroup.AllowTextClipping = false;
+            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Data Provider: {dataSourceFactory.Title}") { AllowTextClipping = false };
             ribbonPage.Groups.Add(ribbonPageGroup);
 
             AddFlatRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
@@ -974,6 +974,7 @@ namespace Analogy
             IAnalogyImages images = container?.Images?.FirstOrDefault();
 
 
+
             #region Actions
             void OpenOffline(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider, string initialFolder,
                 string[] files = null)
@@ -1048,8 +1049,8 @@ namespace Analogy
             recentBar.ImageOptions.LargeImage = images?.GetLargeRecentFilesImage(factoryId) ?? Resources.RecentlyUse_32x32;
             recentBar.RibbonStyle = RibbonItemStyles.All;
 
-            //local folder
 
+            //local folder
             BarSubItem folderBar = new BarSubItem();
             folderBar.Caption = "Open Folder";
             folderBar.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.Open2_32x32;
@@ -1071,7 +1072,27 @@ namespace Analogy
                 };
                 folderBar.AddItem(btn);
             }
+            //todo: add for multiples implementations
 
+            ////add local folder button:
+            //BarButtonItem localfolder = new BarButtonItem();
+            //localfolder.Caption = "Open Folder Selection";
+            //localfolder.RibbonStyle = RibbonItemStyles.All;
+            //group.ItemLinks.Add(localfolder);
+            //localfolder.ImageOptions.Image = Resources.OpenFolder_16x16;
+            //localfolder.ImageOptions.LargeImage = Resources.OpenFolder_32x32;
+            //localfolder.ItemClick += (sender, e) =>
+            //{
+            //    using (var dialog = new CommonOpenFileDialog())
+            //    {
+            //        dialog.InitialDirectory = Environment.CurrentDirectory;
+            //        dialog.IsFolderPicker = true;
+            //        if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            //        {
+            //            OpenOffline(title, dialog.FileName);
+            //        }
+            //    }
+            //};
 
             //add recent folders
             //recent bar
@@ -1354,21 +1375,43 @@ namespace Analogy
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }
             #endregion
-            //add local folder button:
-            string directory = (!string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
-                                Directory.Exists(offlineAnalogy.InitialFolderFullPath))
-                ? offlineAnalogy.InitialFolderFullPath
-                : Environment.CurrentDirectory;//todo:open folder dialog
-
             FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(offlineAnalogy.Id);
-            IAnalogyImages images = container?.Images?.FirstOrDefault();
+            IAnalogyImages? images = container?.Images?.FirstOrDefault();
+
+            var preDefinedFolderExist = !string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
+                                        Directory.Exists(offlineAnalogy.InitialFolderFullPath);
+            //add specific folder button:
+            if (preDefinedFolderExist)
+            {
+                string specificDirectory = offlineAnalogy.InitialFolderFullPath!;
+                BarButtonItem specificLocalFolder = new BarButtonItem();
+                specificLocalFolder.Caption = "Open Pre-defined Folder";
+                specificLocalFolder.RibbonStyle = RibbonItemStyles.All;
+                group.ItemLinks.Add(specificLocalFolder);
+                specificLocalFolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.OpenFolder_16x16;
+                specificLocalFolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
+                specificLocalFolder.ItemClick += (sender, e) => { OpenOffline(title, specificDirectory); };
+            }
+
+            //add local folder button:
             BarButtonItem localfolder = new BarButtonItem();
-            localfolder.Caption = "Open Folder";
+            localfolder.Caption = "Open Folder Selection";
             localfolder.RibbonStyle = RibbonItemStyles.All;
             group.ItemLinks.Add(localfolder);
-            localfolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.Open2_32x32;
-            localfolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.Open2_32x32;
-            localfolder.ItemClick += (sender, e) => { OpenOffline(title, directory); };
+            localfolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.OpenFolder_16x16;
+            localfolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
+            localfolder.ItemClick += (sender, e) =>
+            {
+                using (var dialog = new CommonOpenFileDialog())
+                {
+                    dialog.InitialDirectory = preDefinedFolderExist ? offlineAnalogy.InitialFolderFullPath : Environment.CurrentDirectory;
+                    dialog.IsFolderPicker = true;
+                    if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        OpenOffline(title, dialog.FileName);
+                    }
+                }
+            };
 
             //recent folder
             //recent bar
