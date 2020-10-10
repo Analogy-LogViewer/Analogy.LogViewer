@@ -1,4 +1,4 @@
-﻿using Analogy.DataSources;
+﻿using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using System.Collections.Generic;

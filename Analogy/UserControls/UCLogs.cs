@@ -1,4 +1,4 @@
-﻿using Analogy.DataSources;
+﻿using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
@@ -577,7 +577,7 @@ namespace Analogy
             GridHitInfo hitInfo = logGrid.CalcHitInfo(e.Location);
             if (e.Button == MouseButtons.Right && !hitInfo.InColumnPanel)
             {
-                  LogGridPopupMenu.ShowPopup(Cursor.Position);
+                LogGridPopupMenu.ShowPopup(Cursor.Position);
             }
         }
         private void LoadReplacementHeaders()

@@ -1,5 +1,4 @@
-﻿using Analogy.DataSources;
-using Analogy.Forms;
+﻿using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -23,6 +22,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataProviders;
 
 
 namespace Analogy

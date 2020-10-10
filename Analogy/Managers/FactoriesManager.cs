@@ -1,4 +1,4 @@
-﻿using Analogy.DataSources;
+﻿using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -6,7 +6,6 @@ using Analogy.Types;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
