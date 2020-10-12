@@ -12,7 +12,6 @@ using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
-using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -1402,15 +1401,28 @@ namespace Analogy
             localfolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
             localfolder.ItemClick += (sender, e) =>
             {
-                using (var dialog = new CommonOpenFileDialog())
+#if NETCOREAPP3_1
+                using (var folderBrowserDialog = new FolderBrowserDialog { ShowNewFolderButton = false })
+                {
+                    folderBrowserDialog.SelectedPath = preDefinedFolderExist ? offlineAnalogy.InitialFolderFullPath : Environment.CurrentDirectory;
+                    DialogResult result = folderBrowserDialog.ShowDialog(); // Show the dialog.
+                    if (result == DialogResult.OK) // Test result.
+                    {
+                        if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
+                            OpenOffline(title, folderBrowserDialog.SelectedPath);
+                    }
+                }
+#else
+                using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
                 {
                     dialog.InitialDirectory = preDefinedFolderExist ? offlineAnalogy.InitialFolderFullPath : Environment.CurrentDirectory;
                     dialog.IsFolderPicker = true;
-                    if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
                     {
                         OpenOffline(title, dialog.FileName);
                     }
                 }
+#endif
             };
 
             //recent folder
