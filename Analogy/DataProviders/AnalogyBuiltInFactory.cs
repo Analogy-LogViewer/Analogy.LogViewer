@@ -49,7 +49,7 @@ namespace Analogy.DataProviders
         public override string FileOpenDialogFilters { get; set; } = "All supported Analogy log file types|*.axml;*.ajson;*.abin|Plain Analogy XML log file (*.axml)|*.axml|Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
         public override string FileSaveDialogFilters { get; set; } = "Analogy JSON file (*.ajson)|*.ajson|Analogy MessagePack bin file (*.abin)|*.abin";
         public override IEnumerable<string> SupportFormats { get; set; } = new[] { "*.axml", "*.ajson", "*.abin" };
-        public override string InitialFolderFullPath { get; } = Environment.CurrentDirectory;
+        public override string? InitialFolderFullPath { get; set; } = Environment.CurrentDirectory;
 
         public override string? OptionalTitle { get; set; } = "Analogy Built-In Offline Readers";
 
