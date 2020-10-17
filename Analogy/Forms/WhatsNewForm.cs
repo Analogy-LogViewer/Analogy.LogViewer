@@ -16,8 +16,7 @@ namespace Analogy.Forms
         {
             if (DesignMode) return;
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            WhatIsNew4_2_9 uc = new WhatIsNew4_2_9();
-            uc.Name = "V4.2.9";
+            WhatIsNew4_2_10 uc = new WhatIsNew4_2_10 {Name = "V4.2.10"};
             fluentDesignFormContainer1.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
             uc.BringToFront();
@@ -60,6 +59,20 @@ namespace Analogy.Forms
             }
 
             fluentDesignFormContainer1.Controls[control].BringToFront();
+
+        }
+
+        private void e4210_Click(object sender, EventArgs e)
+        {
+            if (!fluentDesignFormContainer1.Controls.ContainsKey("V4.2.10"))
+            {
+                WhatIsNew4_2_10 uc = new WhatIsNew4_2_10();
+                uc.Name = "V4.2.10";
+                fluentDesignFormContainer1.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                uc.BringToFront();
+            }
+            SetActive("V4.2.10");
 
         }
     }
