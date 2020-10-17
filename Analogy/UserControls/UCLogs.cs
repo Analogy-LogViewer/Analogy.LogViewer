@@ -385,11 +385,6 @@ namespace Analogy
 
                 }
             };
-            txtbInclude.MouseEnter += (s, e) =>
-            {
-                txtbInclude.Focus();
-                txtbInclude.SelectAll();
-            };
             txtbInclude.TextChanged += async (s, e) =>
             {
                 if (OldTextInclude.Equals(txtbInclude.Text)) return;
@@ -415,11 +410,6 @@ namespace Analogy
                     if (added)
                         autoCompleteExclude.Add(txtbExclude.Text);
                 }
-            };
-            txtbExclude.MouseEnter += (s, e) =>
-            {
-                txtbExclude.Focus();
-                txtbExclude.SelectAll();
             };
             txtbExclude.TextChanged += async (s, e) =>
             {
