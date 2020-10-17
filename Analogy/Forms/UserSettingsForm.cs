@@ -30,12 +30,8 @@ namespace Analogy
         public UserSettingsForm()
         {
             InitializeComponent();
-
-
-
+            messageData = Utils.DataTableConstructor();
         }
-
-
 
         public UserSettingsForm(int tabIndex) : this()
         {
@@ -53,7 +49,7 @@ namespace Analogy
             {
                 gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
             }
-            messageData = Utils.DataTableConstructor();
+    
             gridControl.DataSource = messageData.DefaultView;
             SetupExampleMessage("Test 1");
             SetupExampleMessage("Test 2");
@@ -258,6 +254,7 @@ namespace Analogy
             }
 
             tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == CommandLayout.Simplified;
+            tsEnableFirstChanceException.IsOn = Settings.EnableFirstChanceException;
         }
 
         private void SaveSetting()
@@ -310,7 +307,7 @@ namespace Analogy
             if (rbMenuFontSizeVeryLarge.Checked)
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge);
 
-
+            Settings.EnableFirstChanceException= tsEnableFirstChanceException.IsOn;
 
             Settings.Save();
         }

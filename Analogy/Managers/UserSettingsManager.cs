@@ -102,7 +102,7 @@ namespace Analogy
         public LogLevelSelectionType LogLevelSelection { get; set; }
         public bool ShowWhatIsNewAtStartup { get; set; }
         public FontSettings FontSettings { get; set; }
-
+        public bool EnableFirstChanceException { get; set; }
         public CommandLayout RibbonStyle
         {
             get => _ribbonStyle;
@@ -226,6 +226,7 @@ namespace Analogy
             ShowWhatIsNewAtStartup = Settings.Default.ShowWhatIsNewAtStartup;
             FontSettings = ParseSettings<FontSettings>(Settings.Default.FontSettings);
             RibbonStyle = (CommandLayout)Settings.Default.RibbonStyle;
+            EnableFirstChanceException = Settings.Default.EnableFirstChanceException;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -311,6 +312,7 @@ namespace Analogy
             Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
             Settings.Default.RibbonStyle = (int)RibbonStyle;
+            Settings.Default.EnableFirstChanceException=EnableFirstChanceException;
             Settings.Default.Save();
 
         }

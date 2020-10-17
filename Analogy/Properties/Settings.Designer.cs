@@ -810,5 +810,17 @@ namespace Analogy.Properties {
                 this["RibbonStyle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableFirstChanceException {
+            get {
+                return ((bool)(this["EnableFirstChanceException"]));
+            }
+            set {
+                this["EnableFirstChanceException"] = value;
+            }
+        }
     }
 }

@@ -5,7 +5,6 @@ using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -38,7 +37,10 @@ namespace Analogy
             WindowsFormsSettings.DefaultMenuFont = Settings.FontSettings.MenuFont;
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+            if (Settings.EnableFirstChanceException)
+            {
+                AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+            }
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
 #if NETCOREAPP3_1
