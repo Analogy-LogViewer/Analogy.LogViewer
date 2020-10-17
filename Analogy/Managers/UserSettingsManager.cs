@@ -27,7 +27,8 @@ namespace Analogy
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
 
         private CommandLayout _ribbonStyle;
-
+        private bool _enableFirstChanceException;
+        public event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
         public event EventHandler<CommandLayout> OnRibbonControlStyleChanged;
 
         public string ApplicationSkinName { get; set; }
@@ -102,7 +103,20 @@ namespace Analogy
         public LogLevelSelectionType LogLevelSelection { get; set; }
         public bool ShowWhatIsNewAtStartup { get; set; }
         public FontSettings FontSettings { get; set; }
-        public bool EnableFirstChanceException { get; set; }
+
+        public bool EnableFirstChanceException
+        {
+            get => _enableFirstChanceException;
+            set
+            {
+                if (_enableFirstChanceException != value)
+                {
+                    _enableFirstChanceException = value;
+                    OnEnableFirstChanceExceptionChanged?.Invoke(this,value);
+                }
+            }
+        }
+
         public CommandLayout RibbonStyle
         {
             get => _ribbonStyle;

@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.2.10 - [Debugging] Add toggle for FirstChanceException #567",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,17)),
                 new AnalogyChangeLog("V4.2.10 - Remove focus on mouse over for filtering text boxes #566",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,17)),
                 new AnalogyChangeLog("V4.2.10 - [UI] Add Open folder dialog button #527",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,10)),
                 new AnalogyChangeLog("V4.2.10 - Enable Nullable annotations #559",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,10)),

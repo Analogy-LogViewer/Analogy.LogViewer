@@ -1877,6 +1877,12 @@ namespace Analogy
             UserSettingsForm user = new UserSettingsForm(9);
             user.ShowDialog(this);
         }
+
+        private void btnSettingsDebugging_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(10);
+            user.ShowDialog(this);
+        }
     }
 }
 

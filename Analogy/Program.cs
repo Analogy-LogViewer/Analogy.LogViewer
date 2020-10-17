@@ -41,6 +41,18 @@ namespace Analogy
             {
                 AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
             }
+
+            Settings.OnEnableFirstChanceExceptionChanged += (s, e) =>
+            {
+                if (e)
+                {
+                    AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+                }
+                else
+                {
+                    AppDomain.CurrentDomain.FirstChanceException -= CurrentDomain_FirstChanceException;
+                }
+            };
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
 #if NETCOREAPP3_1
