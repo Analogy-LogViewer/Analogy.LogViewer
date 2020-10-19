@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.X.XX - 4.2.10 UnauthorizedAccessException when closing the app #568",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,10,19)),
                 new AnalogyChangeLog("V4.2.10 - [Debugging] Add toggle for FirstChanceException #567",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,17)),
                 new AnalogyChangeLog("V4.2.10 - Remove focus on mouse over for filtering text boxes #566",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,17)),
                 new AnalogyChangeLog("V4.2.10 - [UI] Add Open folder dialog button #527",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,10)),
