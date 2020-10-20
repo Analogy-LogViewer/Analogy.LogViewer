@@ -49,7 +49,7 @@ namespace Analogy
             {
                 gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
             }
-    
+
             gridControl.DataSource = messageData.DefaultView;
             SetupExampleMessage("Test 1");
             SetupExampleMessage("Test 2");
@@ -307,7 +307,7 @@ namespace Analogy
             if (rbMenuFontSizeVeryLarge.Checked)
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge);
 
-            Settings.EnableFirstChanceException= tsEnableFirstChanceException.IsOn;
+            Settings.EnableFirstChanceException = tsEnableFirstChanceException.IsOn;
 
             Settings.Save();
         }
@@ -669,6 +669,7 @@ namespace Analogy
 
         private void btnFolderProbingBrowse_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP3_1
             using (FolderBrowserDialog folderDlg = new FolderBrowserDialog
             {
                 ShowNewFolderButton = false
@@ -681,6 +682,16 @@ namespace Analogy
                     teFoldersProbing.Text = folderDlg.SelectedPath;
                 }
             }
+#else
+            using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
+            {
+                dialog.IsFolderPicker = true;
+                if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+                {
+                    teFoldersProbing.Text = dialog.FileName;
+                }
+            }
+#endif
         }
 
         private void btnFolderProbingAdd_Click(object sender, EventArgs e)

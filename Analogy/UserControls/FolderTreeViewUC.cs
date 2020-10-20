@@ -52,6 +52,7 @@ namespace Analogy
 
         private async void btnOpenFolder_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP3_1
             var folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog1.SelectedPath = SelectedPath;
             if (DialogResult.OK == folderBrowserDialog1.ShowDialog(this))
@@ -59,7 +60,18 @@ namespace Analogy
                 SelectedPath = folderBrowserDialog1.SelectedPath;
                 await PopulateFolders(SelectedPath, DataProvider);
             }
-
+#else
+            using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
+            {
+                dialog.InitialDirectory = SelectedPath;
+                dialog.IsFolderPicker = true;
+                if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+                {
+                    SelectedPath = dialog.FileName;
+                    await PopulateFolders(SelectedPath, DataProvider);
+                }
+            }
+#endif
         }
 
         public void SetFolder(string folder, IAnalogyOfflineDataProvider dataProvider)
