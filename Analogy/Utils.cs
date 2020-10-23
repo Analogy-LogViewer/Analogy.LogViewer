@@ -74,6 +74,7 @@ namespace Analogy
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
 
+
         //
         /// <summary>
         /// 
@@ -362,6 +363,13 @@ namespace Analogy
             {
                 AnalogyLogger.Instance.LogException($"Error: {exception.Message}",exception, "");
             }
+        }
+     
+        public static string CurrentDirectory()
+        {
+            string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var directory = System.IO.Path.GetDirectoryName(location);
+            return directory;
         }
     }
     

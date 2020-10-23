@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net.Cache;
 using System.Reflection;
@@ -24,6 +25,8 @@ namespace Analogy.Managers
         public static readonly UpdateManager Instance = _instance.Value;
         private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;
+        private string updaterRepository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.Updater";
+
 
         public UpdateMode UpdateMode
         {
@@ -68,22 +71,22 @@ namespace Analogy.Managers
         public Version? NewestVersion => GetVersionFromTagName(Settings.LastVersionChecked?.TagName);
         public TargetFrameworkAttribute CurrentFrameworkAttribute => (TargetFrameworkAttribute)Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(TargetFrameworkAttribute));
 
+        private string UpdaterDownloadFile { get; set; }
         public string UpdaterExecutable
         {
             get
             {
-                string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                var directory = System.IO.Path.GetDirectoryName(location);
-                string targetFileName = Path.Combine(directory, "Analogy.Updater.exe");
+                string targetFileName = Path.Combine(Utils.CurrentDirectory(), "Analogy.Updater.exe");
                 return targetFileName;
             }
         }
+
 
         public bool NewVersionExist
         {
             get
             {
-                if (Settings.LastVersionChecked != null && NewestVersion!=null)
+                if (Settings.LastVersionChecked != null && NewestVersion != null)
                 {
                     return NewestVersion > CurrentVersion;
                 }
@@ -177,7 +180,7 @@ namespace Analogy.Managers
         }
         public async Task<(string TagName, GithubAsset UpdaterAsset)?> GetLatestUpdater()
         {
-            var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(repository + "/releases", UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue);
+            var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(updaterRepository + "/releases", UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue);
             var release = entries.OrderByDescending(r => r.Published)
                 .FirstOrDefault(r => r.Assets.Any(a => a.Name.Contains("Analogy.Updater")));
             if (release != null)
@@ -196,12 +199,12 @@ namespace Analogy.Managers
             }
             if (!File.Exists(UpdaterExecutable))
             {
-                DownloadUpdater(update.Value.UpdaterAsset);
+                await DownloadUpdater(update.Value.UpdaterAsset);
 
             }
             else if (GetVersionFromTagName(update.Value.TagName) > CurrentVersion)
             {
-                DownloadUpdater(update.Value.UpdaterAsset);
+                await DownloadUpdater(update.Value.UpdaterAsset);
             }
             else
             {
@@ -209,8 +212,9 @@ namespace Analogy.Managers
             }
         }
 
-        private void DownloadUpdater(GithubAsset updaterAsset)
+        private async Task<bool> DownloadUpdater(GithubAsset updaterAsset)
         {
+            var tcs = new TaskCompletionSource<bool>();
 
             webClient = new MyWebClient
             {
@@ -223,29 +227,83 @@ namespace Analogy.Managers
             //}
 
             var uri = new Uri(updaterAsset.BrowserDownloadUrl);
+
             //if (AutoUpdater.BasicAuthDownload != null)
             //{
             //    _webClient.Headers[HttpRequestHeader.Authorization] = AutoUpdater.BasicAuthDownload.ToString();
             //}
 
+            var tempPath = Path.Combine(Path.GetTempPath(), "Analogy.Updater.zip");
+            string directory = Path.GetDirectoryName(tempPath);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            UpdaterDownloadFile = tempPath;
             webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
-            webClient.DownloadFileAsync(uri, UpdaterExecutable);
+            webClient.DownloadFileAsync(uri, tempPath);
+
+            void WebClientOnDownloadFileCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
+            {
+                if (asyncCompletedEventArgs.Cancelled)
+                {
+                    tcs.SetResult(false);
+                    return;
+                }
+
+                UnzipZipFileIntoTempFolder(tempPath, Utils.CurrentDirectory());
+                if (asyncCompletedEventArgs.Error != null)
+                {
+                    XtraMessageBox.Show(asyncCompletedEventArgs.Error.Message,
+                        asyncCompletedEventArgs.Error.GetType().ToString(), MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                }
+                webClient.Dispose();
+                tcs.SetResult(true);
+            }
+
+            return await tcs.Task;
+
         }
-        private void WebClientOnDownloadFileCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
+
+        private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath)
         {
-            if (asyncCompletedEventArgs.Cancelled)
+            string version = "net472";
+            if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.1") ||
+                CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
+                version = "net472";
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("3.1"))
+                version = "netcoreapp3.1";
+            using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
             {
-                return;
-            }
+                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
+                {
+                    //build a list of files to be extracted
+                    var entries = archive.Entries.Where(entry =>
+                        !entry.FullName.EndsWith("/") && entry.FullName.Contains(version));
+                    foreach (ZipArchiveEntry entry in entries)
+                    {
+                        string target = Path.Combine(extractPath, entry.Name);
+                        string directory = Path.GetDirectoryName(target);
+                        if (!Directory.Exists(directory))
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
 
-            if (asyncCompletedEventArgs.Error != null)
-            {
-                XtraMessageBox.Show(asyncCompletedEventArgs.Error.Message,
-                    asyncCompletedEventArgs.Error.GetType().ToString(), MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                        try
+                        {
+                            entry.ExtractToFile(target, true);
+                        }
+                        catch (Exception e)
+                        {
+                           AnalogyLogger.Instance.LogException($"Error unpacking Updater: {e.Message}",e);
+                        }
 
+                    }
+                }
             }
-            webClient.Dispose();
         }
     }
 }
