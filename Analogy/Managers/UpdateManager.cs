@@ -1,12 +1,17 @@
 ﻿using Analogy.DataProviders;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Types;
+using DevExpress.XtraEditors;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Cache;
 using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.Managers
 {
@@ -58,36 +63,80 @@ namespace Analogy.Managers
             }
         }
 
-        public Version CurrentVersion { get; }
-        public TargetFrameworkAttribute CurrentFrameworkAttribute => (TargetFrameworkAttribute) Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(TargetFrameworkAttribute));
-        public string UpdateExecutable => Path.ChangeExtension(Environment.CurrentDirectory, "Analogy.Updater.exe");
+        public string CurrentVersionNumber { get; set; }
+        public Version CurrentVersion => new Version(CurrentVersionNumber);
+        public Version? NewestVersion => GetVersionFromTagName(Settings.LastVersionChecked?.TagName);
+        public TargetFrameworkAttribute CurrentFrameworkAttribute => (TargetFrameworkAttribute)Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(TargetFrameworkAttribute));
+
+        public string UpdaterExecutable
+        {
+            get
+            {
+                string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                var directory = System.IO.Path.GetDirectoryName(location);
+                string targetFileName = Path.Combine(directory, "Analogy.Updater.exe");
+                return targetFileName;
+            }
+        }
+
         public bool NewVersionExist
         {
             get
             {
-                if (Settings.LastVersionChecked != null)
+                if (Settings.LastVersionChecked != null && NewestVersion!=null)
                 {
-                    Version nextVersion = new Version(Settings.LastVersionChecked.TagName.Replace("V", ""));
-                    return nextVersion > CurrentVersion;
+                    return NewestVersion > CurrentVersion;
                 }
 
                 return false;
             }
         }
 
-        public Analogy.Interfaces.DataTypes.AnalogyDownloadInformation UpdateInformation { get; }
+        public AnalogyDownloadInformation UpdateInformation
+        {
+            get
+            {
+                string tag = "";
+                string downloadTag = "";
+                if (!string.IsNullOrEmpty(Settings.LastVersionChecked?.TagName))
+                {
+                    tag = $"tag/{Settings.LastVersionChecked?.TagName}";
+                    downloadTag = $"https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases/download/{Settings.LastVersionChecked?.TagName}";
+                    var downloadAsset = GetDownloadAsset();
+                    if (downloadAsset != null)
+                    {
+                        downloadTag = downloadAsset.BrowserDownloadUrl;
+                    }
+
+                }
+                AnalogyDownloadInformation updateInfo = new AnalogyDownloadInformation
+                ("Analogy Log viewer", NewVersionExist,
+                    downloadTag,
+                    $"https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases/{tag}",
+                    NewestVersion.ToString(), CurrentVersionNumber, false,
+                    Interfaces.UpdateMode.Normal, "", "", "");
+                return updateInfo;
+            }
+        }
+
+        private MyWebClient webClient;
         public UpdateManager()
         {
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            CurrentVersion = new Version(fvi.FileVersion);
+            CurrentVersionNumber = fvi.FileVersion;
+        }
+
+        private Version? GetVersionFromTagName(string? tagName)
+        {
+            return tagName == null ? null : new Version(tagName.Replace("V", "").Replace("v", ""));
         }
 
         public async Task<(bool newData, GithubReleaseEntry release)> CheckVersion(bool forceUpdate)
         {
-            if (!forceUpdate && NextUpdate > DateTime.Now)
+            if (!forceUpdate && NextUpdate > DateTime.Now && UserSettingsManager.UserSettings.LastVersionChecked != null)
                 return (false, UserSettingsManager.UserSettings.LastVersionChecked);
-            var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(repository + "/releases", UserSettingsManager.UserSettings.GitHubToken, UpdateManager.Instance.LastUpdate);
+            var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(repository + "/releases", UserSettingsManager.UserSettings.GitHubToken, Instance.LastUpdate);
             LastUpdate = DateTime.Now;
             CheckedThisTun = true;
             if (!newData)
@@ -98,6 +147,105 @@ namespace Analogy.Managers
             var release = entries.OrderByDescending(r => r.Published).First();
             UserSettingsManager.UserSettings.LastVersionChecked = release;
             return (true, release);
+        }
+
+        public GithubAsset? GetDownloadAsset()
+        {
+            GithubAsset? asset = null;
+            if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.1"))
+            {
+                asset = LastVersionChecked.Assets
+                    .FirstOrDefault(a => a.Name.Contains("471") || a.Name.Contains("471"));
+            }
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
+            {
+                asset = LastVersionChecked.Assets
+                    .FirstOrDefault(a => a.Name.Contains("472") || a.Name.Contains("472"));
+            }
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.8"))
+            {
+                asset = LastVersionChecked.Assets
+                    .FirstOrDefault(a => a.Name.Contains("48") || a.Name.Contains("48"));
+            }
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("3.1"))
+            {
+                asset = LastVersionChecked.Assets
+                    .FirstOrDefault(a => a.Name.Contains("3.1") || a.Name.Contains("netcoreapp3.1"));
+            }
+
+            return asset;
+        }
+        public async Task<(string TagName, GithubAsset UpdaterAsset)?> GetLatestUpdater()
+        {
+            var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(repository + "/releases", UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue);
+            var release = entries.OrderByDescending(r => r.Published)
+                .FirstOrDefault(r => r.Assets.Any(a => a.Name.Contains("Analogy.Updater")));
+            if (release != null)
+            {
+                return (release.TagName, release.Assets.First(a => a.Name.Contains("Analogy.Updater")));
+            }
+            return null;
+        }
+        public async Task DownloadUpdaterIfNeeded()
+        {
+            var update = await GetLatestUpdater();
+            if (!update.HasValue)
+            {
+                AnalogyLogger.Instance.LogError("Updater was not found");
+                return;
+            }
+            if (!File.Exists(UpdaterExecutable))
+            {
+                DownloadUpdater(update.Value.UpdaterAsset);
+
+            }
+            else if (GetVersionFromTagName(update.Value.TagName) > CurrentVersion)
+            {
+                DownloadUpdater(update.Value.UpdaterAsset);
+            }
+            else
+            {
+                AnalogyLogger.Instance.LogInformation("No need to download Updater");
+            }
+        }
+
+        private void DownloadUpdater(GithubAsset updaterAsset)
+        {
+
+            webClient = new MyWebClient
+            {
+                CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore)
+            };
+
+            //if (AutoUpdater.Proxy != null)
+            //{
+            //    _webClient.Proxy = AutoUpdater.Proxy;
+            //}
+
+            var uri = new Uri(updaterAsset.BrowserDownloadUrl);
+            //if (AutoUpdater.BasicAuthDownload != null)
+            //{
+            //    _webClient.Headers[HttpRequestHeader.Authorization] = AutoUpdater.BasicAuthDownload.ToString();
+            //}
+
+            webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
+            webClient.DownloadFileAsync(uri, UpdaterExecutable);
+        }
+        private void WebClientOnDownloadFileCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
+        {
+            if (asyncCompletedEventArgs.Cancelled)
+            {
+                return;
+            }
+
+            if (asyncCompletedEventArgs.Error != null)
+            {
+                XtraMessageBox.Show(asyncCompletedEventArgs.Error.Message,
+                    asyncCompletedEventArgs.Error.GetType().ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+            }
+            webClient.Dispose();
         }
     }
 }
