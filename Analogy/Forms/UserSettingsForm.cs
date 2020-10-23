@@ -212,7 +212,7 @@ namespace Analogy
                 rbtnDarkIconColor.Checked = true;
             }
             LoadColorsSettings();
-            cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
+            cbUpdates.Properties.Items.AddRange(typeof(Types.UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
             tsTraybar.IsOn = Settings.MinimizedToTrayBar;
             tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
@@ -285,8 +285,8 @@ namespace Analogy
             Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
             Settings.SingleInstance = tsSingleInstance.IsOn;
             Settings.AnalogyIcon = rbtnLightIconColor.Checked ? "Light" : "Dark";
-            var options = typeof(UpdateMode).GetDisplayValues();
-            UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode),
+            var options = typeof(Types.UpdateMode).GetDisplayValues();
+            UpdateManager.Instance.UpdateMode = (Types.UpdateMode)Enum.Parse(typeof(Types.UpdateMode),
                 options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
             Settings.MinimizedToTrayBar = tsTraybar.IsOn;
             Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;

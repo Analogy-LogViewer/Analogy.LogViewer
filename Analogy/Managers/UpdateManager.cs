@@ -2,7 +2,10 @@
 using Analogy.Types;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Versioning;
 using System.Threading.Tasks;
 
 namespace Analogy.Managers
@@ -12,24 +15,25 @@ namespace Analogy.Managers
         private static readonly Lazy<UpdateManager>
             _instance = new Lazy<UpdateManager>(() => new UpdateManager());
 
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         public static readonly UpdateManager Instance = _instance.Value;
         private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;
 
         public UpdateMode UpdateMode
         {
-            get => UserSettingsManager.UserSettings.UpdateMode;
-            set => UserSettingsManager.UserSettings.UpdateMode = value;
+            get => Settings.UpdateMode;
+            set => Settings.UpdateMode = value;
         }
         public GithubReleaseEntry LastVersionChecked
         {
-            get => UserSettingsManager.UserSettings.LastVersionChecked;
-            set => UserSettingsManager.UserSettings.LastVersionChecked = value;
+            get => Settings.LastVersionChecked;
+            set => Settings.LastVersionChecked = value;
         }
         public DateTime LastUpdate
         {
-            get => UserSettingsManager.UserSettings.LastUpdate;
-            set => UserSettingsManager.UserSettings.LastUpdate = value;
+            get => Settings.LastUpdate;
+            set => Settings.LastUpdate = value;
         }
         public bool CheckedThisTun { get; set; }
 
@@ -54,14 +58,29 @@ namespace Analogy.Managers
             }
         }
 
-        public string CurrentVersion { get; }
+        public Version CurrentVersion { get; }
+        public TargetFrameworkAttribute CurrentFrameworkAttribute => (TargetFrameworkAttribute) Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(TargetFrameworkAttribute));
+        public string UpdateExecutable => Path.ChangeExtension(Environment.CurrentDirectory, "Analogy.Updater.exe");
+        public bool NewVersionExist
+        {
+            get
+            {
+                if (Settings.LastVersionChecked != null)
+                {
+                    Version nextVersion = new Version(Settings.LastVersionChecked.TagName.Replace("V", ""));
+                    return nextVersion > CurrentVersion;
+                }
 
+                return false;
+            }
+        }
 
+        public Analogy.Interfaces.DataTypes.AnalogyDownloadInformation UpdateInformation { get; }
         public UpdateManager()
         {
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            CurrentVersion = fvi.FileVersion;
+            CurrentVersion = new Version(fvi.FileVersion);
         }
 
         public async Task<(bool newData, GithubReleaseEntry release)> CheckVersion(bool forceUpdate)

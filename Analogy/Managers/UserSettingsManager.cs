@@ -84,9 +84,9 @@ namespace Analogy
         public string AnalogyIcon { get; set; }
         public string LogGridFileName => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "AnalogyGridlayout.xml");
         public string DateTimePattern { get; set; }
-        public UpdateMode UpdateMode { get; set; }
+        public Types.UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
-        public GithubReleaseEntry LastVersionChecked { get; set; }
+        public GithubReleaseEntry? LastVersionChecked { get; set; }
         public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token");
         public bool MinimizedToTrayBar { get; set; }
         public bool CheckAdditionalInformation { get; set; }
@@ -203,16 +203,16 @@ namespace Analogy
             switch (Settings.Default.UpdateMode)
             {
                 case 0:
-                    UpdateMode = UpdateMode.Never;
+                    UpdateMode = Types.UpdateMode.Never;
                     break;
                 case 1:
-                    UpdateMode = UpdateMode.EachStartup;
+                    UpdateMode = Types.UpdateMode.EachStartup;
                     break;
                 case 2:
-                    UpdateMode = UpdateMode.OnceAWeek;
+                    UpdateMode = Types.UpdateMode.OnceAWeek;
                     break;
                 case 3:
-                    UpdateMode = UpdateMode.OnceAMonth;
+                    UpdateMode = Types.UpdateMode.OnceAMonth;
                     break;
             }
 
