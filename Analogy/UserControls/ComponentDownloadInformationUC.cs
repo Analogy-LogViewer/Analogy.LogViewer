@@ -19,18 +19,16 @@ namespace Analogy.UserControls
                 if (DownloadInfo != null)
                 {
                     var hasUpdate = await DownloadInfo.CheckVersion();
-                    if (hasUpdate)
-                    {
+                    UpdateLatestVersionText();
 
-                    }
                 }
             };
             btnDownload.Click += (s, e) =>
             {
-                if (DownloadInfo != null && DownloadInfo.IsUpdateAvailable)
-                {
-                    UpdateLatestVersionText();
-                }
+                //if (DownloadInfo != null && DownloadInfo.IsUpdateAvailable)
+                //{
+                //    UpdateLatestVersionText();
+                //}
             };
         }
 
@@ -42,14 +40,16 @@ namespace Analogy.UserControls
 
         private void ComponentDownloadInformationUC_Load(object sender, EventArgs e)
         {
-            if (Factory != null && DownloadInfo != null)
+            if (Factory != null)
             {
                 if (Factory.Factory.LargeImage != null)
                     picture.Image = Factory.Factory.LargeImage;
                 lblTitle.Text = Factory.Factory.Title;
+            }
+            if (DownloadInfo != null)
+            {
                 lblCurrentVersion.Text = "Current Version: " + DownloadInfo.InstalledVersion.ToString();
                 UpdateLatestVersionText();
-
             }
         }
 
@@ -57,8 +57,8 @@ namespace Analogy.UserControls
         {
             if (DownloadInfo != null && DownloadInfo.LatestVersion != null)
             {
-                lblLatestVersion.Text = DownloadInfo.LatestVersion.ToString();
-                if (DownloadInfo.IsUpdateAvailable)
+                lblLatestVersion.Text = "released Version: " + DownloadInfo.LatestVersion.ToString();
+                if (DownloadInfo.LatestVersion >= DownloadInfo.InstalledVersion)
                 {
                     lblLatestVersion.Appearance.BackColor = Color.GreenYellow;
                     btnDownload.Visible = true;
@@ -66,5 +66,7 @@ namespace Analogy.UserControls
 
             }
         }
+
+
     }
 }

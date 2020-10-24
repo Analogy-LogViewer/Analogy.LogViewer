@@ -29,36 +29,35 @@ namespace Analogy.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelComponents = new DevExpress.XtraEditors.PanelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.panelComponents)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // panelComponents
+            // panel1
             // 
-            this.panelComponents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelComponents.Location = new System.Drawing.Point(3, 51);
-            this.panelComponents.Name = "panelComponents";
-            this.panelComponents.Size = new System.Drawing.Size(793, 386);
-            this.panelComponents.TabIndex = 0;
+            this.panel1.AutoScroll = true;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1105, 820);
+            this.panel1.TabIndex = 0;
             // 
             // ComponentDownloadsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelComponents);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1105, 820);
+            this.Controls.Add(this.panel1);
             this.Name = "ComponentDownloadsForm";
             this.Text = "Providers Versions";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ComponentDownloadsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.panelComponents)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.PanelControl panelComponents;
+        private System.Windows.Forms.Panel panel1;
     }
 }
