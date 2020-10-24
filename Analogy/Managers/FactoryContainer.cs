@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Managers
 {
@@ -13,6 +14,7 @@ namespace Analogy.Managers
         public Assembly Assembly { get; }
         public IAnalogyFactory Factory { get; }
         public FactorySettings FactorySetting { get; }
+        public IAnalogyDownloadInformation? DownloadInformation { get; set; }
         public List<IAnalogyCustomActionsFactory> CustomActionsFactories { get; }
         public List<IAnalogyDataProvidersFactory> DataProvidersFactories { get; }
         public List<IAnalogyDataProviderSettings> DataProvidersSettings { get; }
@@ -49,6 +51,8 @@ namespace Analogy.Managers
             ExtensionsFactories.Add(extensionFactory);
         public void AddImages(IAnalogyImages images) => Images.Add(images);
 
+        public void AddDownloadInformation(IAnalogyDownloadInformation downloadInformation)
+            => DownloadInformation = downloadInformation;
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";
 
         public bool ContainsDataProviderOrDataFactory(Guid componentId)

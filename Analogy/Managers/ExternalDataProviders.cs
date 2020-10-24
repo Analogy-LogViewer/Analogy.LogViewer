@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Managers
 {
@@ -71,7 +72,7 @@ namespace Analogy.Managers
                 {
                     try
                     {
-                        var factory = Activator.CreateInstance(f) as IAnalogyFactory;
+                        var factory = (Activator.CreateInstance(f) as IAnalogyFactory)!;
                         var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
                         setting.FactoryName = factory.Title;
                         FactoryContainer fc = new FactoryContainer(assembly, fileName, factory, setting);
@@ -90,11 +91,11 @@ namespace Analogy.Managers
             }
             foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
             {
-                foreach (var iimage in types.Where(aType => aType.GetInterface(nameof(IAnalogyImages)) != null))
+                foreach (var img in types.Where(aType => aType.GetInterface(nameof(IAnalogyImages)) != null))
                 {
                     try
                     {
-                        var images = Activator.CreateInstance(iimage) as IAnalogyImages;
+                        var images = (Activator.CreateInstance(img) as IAnalogyImages)!;
                         var factory = Factories.FirstOrDefault(f => f.Assembly == assembly);
                         factory?.AddImages(images);
 
@@ -110,7 +111,7 @@ namespace Analogy.Managers
                 {
                     try
                     {
-                        var dataProviderFactory = Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactory;
+                        var dataProviderFactory = (Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactory)!;
                         var factory = Factories.First(f => f.Factory.FactoryId == dataProviderFactory?.FactoryId);
                         factory.AddDataProviderFactory(dataProviderFactory);
                     }
@@ -124,7 +125,7 @@ namespace Analogy.Managers
                     {
                         try
                         {
-                            var settings = Activator.CreateInstance(isettings) as IAnalogyDataProviderSettings;
+                            var settings = (Activator.CreateInstance(isettings) as IAnalogyDataProviderSettings)!;
                             var factory = Factories.First(f => f.Factory.FactoryId == settings?.FactoryId);
                             factory.AddDataProvidersSettings(settings);
                         }
@@ -134,12 +135,11 @@ namespace Analogy.Managers
                         }
                     }
 
-                    foreach (Type iaction in types.Where(aType =>
-                        aType.GetInterface(nameof(IAnalogyCustomActionsFactory)) != null))
+                    foreach (Type iaction in types.Where(aType => aType.GetInterface(nameof(IAnalogyCustomActionsFactory)) != null))
                     {
                         try
                         {
-                            var custom = Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactory;
+                            var custom = (Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactory)!;
                             var factory = Factories.First(f => f.Factory.FactoryId == custom?.FactoryId);
                             factory.AddCustomActionFactory(custom);
                         }
@@ -149,12 +149,11 @@ namespace Analogy.Managers
                         }
                     }
 
-                    foreach (Type ishare in types.Where(aType =>
-                        aType.GetInterface(nameof(IAnalogyShareableFactory)) != null))
+                    foreach (Type ishare in types.Where(aType => aType.GetInterface(nameof(IAnalogyShareableFactory)) != null))
                     {
                         try
                         {
-                            var share = Activator.CreateInstance(ishare) as IAnalogyShareableFactory;
+                            var share = (Activator.CreateInstance(ishare) as IAnalogyShareableFactory)!;
                             var factory = Factories.First(f => f.Factory.FactoryId == share?.FactoryId);
                             factory.AddShareableFactory(share);
                         }
@@ -164,12 +163,11 @@ namespace Analogy.Managers
                         }
                     }
 
-                    foreach (Type aType in types.Where(aType =>
-                        aType.GetInterface(nameof(IAnalogyExtensionsFactory)) != null))
+                    foreach (Type aType in types.Where(aType => aType.GetInterface(nameof(IAnalogyExtensionsFactory)) != null))
                     {
                         try
                         {
-                            var extension = Activator.CreateInstance(aType) as IAnalogyExtensionsFactory;
+                            var extension = (Activator.CreateInstance(aType) as IAnalogyExtensionsFactory)!;
                             var factory = Factories.First(f => f.Factory.FactoryId == extension?.FactoryId);
                             factory.AddExtensionFactory(extension);
                         }
@@ -179,7 +177,19 @@ namespace Analogy.Managers
                         }
                     }
 
-
+                    foreach (Type aType in types.Where(aType => aType.GetInterface(nameof(IAnalogyDownloadInformation)) != null))
+                    {
+                        try
+                        {
+                            var downloadInfo = (Activator.CreateInstance(aType) as IAnalogyDownloadInformation)!;
+                            var factory = Factories.First(f => f.Factory.FactoryId == downloadInfo?.PrimaryFactoryId);
+                            factory.AddDownloadInformation(downloadInfo);
+                        }
+                        catch (Exception e)
+                        {
+                            AnalogyLogManager.Instance.LogError($"{fileName}: Error during data providers: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
+                        }
+                    }
                 }
             }
             Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
