@@ -58,8 +58,8 @@ namespace Analogy.Forms
                 if (File.Exists(Updater.UpdaterExecutable))
                 {
                     var processStartInfo = new ProcessStartInfo();
-                    var info = Updater.UpdateInformation;
-                    string data = $"\"{info.Title}\" {info.DownloadURL}";
+                    var info = Updater.DownloadInformation;
+                    string data = $"\"{info.title}\" {info.DownloadURL}";
                     processStartInfo.Arguments = data;
                     processStartInfo.Verb = "runas";
                     processStartInfo.FileName = Updater.UpdaterExecutable;

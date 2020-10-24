@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.LogViewer.Template.IAnalogy;
 
 namespace Analogy.Managers
 {
@@ -95,15 +96,13 @@ namespace Analogy.Managers
             }
         }
 
-        public AnalogyDownloadInformation UpdateInformation
+        public (string title,string DownloadURL) DownloadInformation
         {
             get
             {
-                string tag = "";
                 string downloadTag = "";
                 if (!string.IsNullOrEmpty(Settings.LastVersionChecked?.TagName))
                 {
-                    tag = $"tag/{Settings.LastVersionChecked?.TagName}";
                     downloadTag = $"https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases/download/{Settings.LastVersionChecked?.TagName}";
                     var downloadAsset = GetDownloadAsset();
                     if (downloadAsset != null)
@@ -112,13 +111,7 @@ namespace Analogy.Managers
                     }
 
                 }
-                AnalogyDownloadInformation updateInfo = new AnalogyDownloadInformation
-                ("Analogy Log viewer", NewVersionExist,
-                    downloadTag,
-                    $"https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases/{tag}",
-                    NewestVersion.ToString(), CurrentVersionNumber, false,
-                    Interfaces.UpdateMode.Normal, "", "", "");
-                return updateInfo;
+                return ("Analogy Log viewer", downloadTag);
             }
         }
 
