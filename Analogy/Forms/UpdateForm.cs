@@ -59,14 +59,14 @@ namespace Analogy.Forms
                 {
                     var processStartInfo = new ProcessStartInfo();
                     var info = Updater.DownloadInformation;
-                    string data = $"\"{info.title}\" {info.DownloadURL}";
+                    string data = $"\"{info.title}\" {info.DownloadURL} \"{Utils.CurrentDirectory()}\"";
                     processStartInfo.Arguments = data;
                     processStartInfo.Verb = "runas";
                     processStartInfo.FileName = Updater.UpdaterExecutable;
                     try
                     {
-                        Process.Start(processStartInfo);
-                        //Application.Exit();
+                       Process.Start(processStartInfo);
+                       Application.Exit();
                     }
                     catch (Exception ex)
                     {

@@ -139,13 +139,8 @@ namespace Analogy
                     }
             }
 
-            string framework = string.Empty;
-#if NETCOREAPP3_1
-            framework = ".Net Core 3.1";
-#else
-            framework = ".Net Framework 4.7.2/1";
-#endif
-            Text = $"Analogy Log Viewer ({UpdateManager.Instance.CurrentVersion} {framework})";
+            string framework = UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName;
+            Text = $"Analogy Log Viewer {UpdateManager.Instance.CurrentVersion} ({framework})";
             Icon = settings.GetIcon();
             notifyIconAnalogy.Visible = preventExit = settings.MinimizedToTrayBar;
             await FactoriesManager.Instance.InitializeBuiltInFactories();

@@ -1,5 +1,4 @@
 ﻿using Analogy.DataProviders;
-using Analogy.Interfaces.DataTypes;
 using Analogy.Types;
 using DevExpress.XtraEditors;
 using System;
@@ -13,7 +12,6 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.LogViewer.Template.IAnalogy;
 
 namespace Analogy.Managers
 {
@@ -77,7 +75,7 @@ namespace Analogy.Managers
         {
             get
             {
-                string targetFileName = Path.Combine(Utils.CurrentDirectory(), "Analogy.Updater.exe");
+                string targetFileName = Path.Combine(Utils.CurrentDirectory(), "Analogy.Updater", "Analogy.Updater.exe");
                 return targetFileName;
             }
         }
@@ -96,7 +94,7 @@ namespace Analogy.Managers
             }
         }
 
-        public (string title,string DownloadURL) DownloadInformation
+        public (string title, string DownloadURL) DownloadInformation
         {
             get
             {
@@ -257,7 +255,7 @@ namespace Analogy.Managers
                     return;
                 }
 
-                UnzipZipFileIntoTempFolder(tempPath, Utils.CurrentDirectory());
+                UnzipZipFileIntoTempFolder(tempPath, Path.GetDirectoryName(UpdaterExecutable));
                 if (asyncCompletedEventArgs.Error != null)
                 {
                     XtraMessageBox.Show(asyncCompletedEventArgs.Error.Message,
@@ -303,7 +301,7 @@ namespace Analogy.Managers
                         }
                         catch (Exception e)
                         {
-                           AnalogyLogger.Instance.LogException($"Error unpacking Updater: {e.Message}",e);
+                            AnalogyLogger.Instance.LogException($"Error unpacking Updater: {e.Message}", e);
                         }
 
                     }
