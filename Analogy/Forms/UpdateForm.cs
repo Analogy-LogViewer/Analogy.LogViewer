@@ -1,10 +1,5 @@
 ﻿using Analogy.Managers;
 using System;
-using System.Diagnostics;
-using System.IO;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using Newtonsoft.Json;
 
 namespace Analogy.Forms
 {
@@ -52,8 +47,9 @@ namespace Analogy.Forms
         private async void sbtnUpdateNow_Click(object sender, EventArgs e)
         {
             var downloadInfo = Updater.DownloadInformation;
+            sbtnUpdateNow.Enabled = false;
             await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL);
-
+            sbtnUpdateNow.Enabled = true;
         }
     }
 }

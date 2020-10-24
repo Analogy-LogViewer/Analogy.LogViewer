@@ -27,7 +27,9 @@ namespace Analogy.UserControls
             {
                 if (DownloadInfo != null && DownloadInfo.IsUpdateAvailable && DownloadInfo.DownloadURL != null)
                 {
+                    btnDownload.Enabled = false;
                     await UpdateManager.Instance.InitiateUpdate(DownloadInfo.Name, DownloadInfo.DownloadURL);
+                    btnDownload.Enabled = true;
                 }
             };
         }
