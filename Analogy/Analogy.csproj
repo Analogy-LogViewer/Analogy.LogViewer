@@ -46,7 +46,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.1" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.7.9.5" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="1.6.9.11" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="1.6.10" />
 		<PackageReference Include="MessagePack" Version="2.2.60" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
@@ -55,43 +55,43 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="0.3.3">
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="0.3.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="0.3.3">
+		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="0.3.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Example" Version="1.7.7">
+		<PackageReference Include="Analogy.LogViewer.Example" Version="1.7.8">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.4.5">
+		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.4.6">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="1.3.1">
+		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="1.3.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.3.4">
+		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.3.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.4.1">
+		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.4.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.6.6">
+		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.6.7">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="1.3.5">
+		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="1.3.6">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="2.1.1">
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="2.1.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -746,7 +746,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
 		<PackageReference Include="Analogy.LogViewer.gRPC">
-			<Version>1.4.2</Version>
+			<Version>1.4.2.1</Version>
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
