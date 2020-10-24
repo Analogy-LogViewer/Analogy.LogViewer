@@ -18,19 +18,20 @@ namespace Analogy.UserControls
             {
                 if (DownloadInfo != null)
                 {
-                    var hasUpdate = await DownloadInfo.CheckVersion();
+                    await DownloadInfo.CheckVersion();
                     UpdateLatestVersionText();
 
                 }
             };
-            btnDownload.Click += (s, e) =>
+            btnDownload.Click += async (s, e) =>
             {
-                //if (DownloadInfo != null && DownloadInfo.IsUpdateAvailable)
-                //{
-                //    UpdateLatestVersionText();
-                //}
+                if (DownloadInfo != null && DownloadInfo.IsUpdateAvailable && DownloadInfo.DownloadURL != null)
+                {
+                    await UpdateManager.Instance.InitiateUpdate(DownloadInfo.Name, DownloadInfo.DownloadURL);
+                }
             };
         }
+
 
         public ComponentDownloadInformationUC(FactoryContainer factory) : this()
         {

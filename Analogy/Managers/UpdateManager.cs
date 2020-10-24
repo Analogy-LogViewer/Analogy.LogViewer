@@ -1,4 +1,5 @@
-﻿using Analogy.Types;
+﻿using Analogy.CommonUtilities.Web;
+using Analogy.Types;
 using DevExpress.XtraEditors;
 using System;
 using System.ComponentModel;
@@ -11,7 +12,6 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonUtilities.Web;
 
 namespace Analogy.Managers
 {
@@ -130,7 +130,7 @@ namespace Analogy.Managers
         {
             if (!forceUpdate && NextUpdate > DateTime.Now && UserSettingsManager.UserSettings.LastVersionChecked != null)
                 return (false, UserSettingsManager.UserSettings.LastVersionChecked);
-            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(repository + "/releases","Analogy Log Viewer", UserSettingsManager.UserSettings.GitHubToken, Instance.LastUpdate);
+            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(repository + "/releases", "Analogy Log Viewer", UserSettingsManager.UserSettings.GitHubToken, Instance.LastUpdate);
             LastUpdate = DateTime.Now;
             CheckedThisTun = true;
             if (!newData)
@@ -171,7 +171,7 @@ namespace Analogy.Managers
         }
         public async Task<(string TagName, GithubObjects.GithubAsset UpdaterAsset)?> GetLatestUpdater()
         {
-            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(updaterRepository + "/releases","Analogy Log Viewer", UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue);
+            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(updaterRepository + "/releases", "Analogy Log Viewer", UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue);
             if (entries == null)
             {
                 return null;
@@ -305,6 +305,45 @@ namespace Analogy.Managers
                         }
 
                     }
+                }
+            }
+        }
+
+        public async Task InitiateUpdate(string title, string downloadURL)
+        {
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(downloadURL))
+                return;
+            if (XtraMessageBox.Show(
+                "Updating the application will close the current instance." + Environment.NewLine +
+                "Do you want to update right Now?", @"Update Confirmation", MessageBoxButtons.YesNo) ==
+            DialogResult.Yes)
+            {
+                await DownloadUpdaterIfNeeded();
+                if (File.Exists(UpdaterExecutable))
+                {
+                    var processStartInfo = new ProcessStartInfo();
+                    string data = $"\"{title}\" {downloadURL} \"{Utils.CurrentDirectory()}\"";
+                    processStartInfo.Arguments = data;
+                    processStartInfo.Verb = "runas";
+                    processStartInfo.FileName = UpdaterExecutable;
+                    try
+                    {
+                        Process.Start(processStartInfo);
+                        Application.Exit();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show($"Error during Updater: {ex.Message}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show(
+                        "Updater was not found. Please submit this issue with the following information" +
+                        Environment.NewLine +
+                        $"Current Directory: {Environment.CurrentDirectory}", @"Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
                 }
             }
         }

@@ -11,6 +11,7 @@ namespace Analogy.Forms
     public partial class UpdateForm : DevExpress.XtraEditors.XtraForm
     {
         private UpdateManager Updater => UpdateManager.Instance;
+
         public UpdateForm()
         {
             InitializeComponent();
@@ -19,7 +20,8 @@ namespace Analogy.Forms
         private void UpdateForm_Load(object sender, EventArgs e)
         {
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            lblCurrentVersion.Text = $"Your current version is: V{Updater.CurrentVersion}. (Target Framework:{Updater.CurrentFrameworkAttribute.FrameworkName})";
+            lblCurrentVersion.Text =
+                $"Your current version is: V{Updater.CurrentVersion}. (Target Framework:{Updater.CurrentFrameworkAttribute.FrameworkName})";
             lblLatestVersion.Text =
                 $"Latest version is: {(Updater.LastVersionChecked?.TagName == null ? "not checked" : Updater.LastVersionChecked.TagName)}";
 
@@ -47,42 +49,11 @@ namespace Analogy.Forms
             }
         }
 
-        private async  void sbtnUpdateNow_Click(object sender, EventArgs e)
+        private async void sbtnUpdateNow_Click(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show(
-                    "Updating the application will close the current instance." + Environment.NewLine +
-                    "Do you want to update right Now?", @"Update Confirmation", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes)
-            {
-                await Updater.DownloadUpdaterIfNeeded();
-                if (File.Exists(Updater.UpdaterExecutable))
-                {
-                    var processStartInfo = new ProcessStartInfo();
-                    var info = Updater.DownloadInformation;
-                    string data = $"\"{info.title}\" {info.DownloadURL} \"{Utils.CurrentDirectory()}\"";
-                    processStartInfo.Arguments = data;
-                    processStartInfo.Verb = "runas";
-                    processStartInfo.FileName = Updater.UpdaterExecutable;
-                    try
-                    {
-                       Process.Start(processStartInfo);
-                       Application.Exit();
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show($"Error during Updater: {ex.Message}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    XtraMessageBox.Show(
-                        "Updater was not found. Please submit this issue with the following information" +
-                        Environment.NewLine +
-                        $"Current Directory: {Environment.CurrentDirectory}", @"Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+            var downloadInfo = Updater.DownloadInformation;
+            await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL);
 
-                }
-            }
         }
     }
 }
