@@ -248,38 +248,38 @@ namespace Analogy
             Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
             return regex;
         }
-        public static async Task<(bool newData, T result)> GetAsync<T>(string uri, string token, DateTime lastModified)
-        {
-            try
-            {
-                Uri myUri = new Uri(uri);
-                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(myUri);
-                myHttpWebRequest.Accept = "application/json";
-                myHttpWebRequest.UserAgent = "Analogy";
-                if (!string.IsNullOrEmpty(token))
-                    myHttpWebRequest.Headers.Add(HttpRequestHeader.Authorization, $"Token {token}");
+        //public static async Task<(bool newData, T result)> GetAsync<T>(string uri, string token, DateTime lastModified)
+        //{
+        //    try
+        //    {
+        //        Uri myUri = new Uri(uri);
+        //        HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(myUri);
+        //        myHttpWebRequest.Accept = "application/json";
+        //        myHttpWebRequest.UserAgent = "Analogy";
+        //        if (!string.IsNullOrEmpty(token))
+        //            myHttpWebRequest.Headers.Add(HttpRequestHeader.Authorization, $"Token {token}");
 
-                myHttpWebRequest.IfModifiedSince = lastModified;
+        //        myHttpWebRequest.IfModifiedSince = lastModified;
 
-                HttpWebResponse myHttpWebResponse = (HttpWebResponse)await myHttpWebRequest.GetResponseAsync();
-                if (myHttpWebResponse.StatusCode == HttpStatusCode.NotModified)
-                    return (false, default)!;
+        //        HttpWebResponse myHttpWebResponse = (HttpWebResponse)await myHttpWebRequest.GetResponseAsync();
+        //        if (myHttpWebResponse.StatusCode == HttpStatusCode.NotModified)
+        //            return (false, default)!;
 
-                using (var reader = new System.IO.StreamReader(myHttpWebResponse.GetResponseStream()))
-                {
-                    string responseText = await reader.ReadToEndAsync();
-                    return (true, JsonConvert.DeserializeObject<T>(responseText));
-                }
-            }
-            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotModified)
-            {
-                return (false, default)!;
-            }
-            catch (Exception)
-            {
-                return (false, default)!;
-            }
-        }
+        //        using (var reader = new System.IO.StreamReader(myHttpWebResponse.GetResponseStream()))
+        //        {
+        //            string responseText = await reader.ReadToEndAsync();
+        //            return (true, JsonConvert.DeserializeObject<T>(responseText));
+        //        }
+        //    }
+        //    catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotModified)
+        //    {
+        //        return (false, default)!;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return (false, default)!;
+        //    }
+        //}
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource, bool checkAdditionalInformation)

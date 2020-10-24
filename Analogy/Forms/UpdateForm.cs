@@ -34,7 +34,7 @@ namespace Analogy.Forms
             }
         }
 
-        private async void sbtnCheck_Click(object sender, EventArgs e)
+        private async void sbtnCheckUpdate_Click(object sender, EventArgs e)
         {
             var (_, release) = await Updater.CheckVersion(true);
             UserSettingsManager.UserSettings.LastVersionChecked = release;

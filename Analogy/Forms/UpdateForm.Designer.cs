@@ -73,7 +73,7 @@
             this.sbtnCheck.Size = new System.Drawing.Size(127, 26);
             this.sbtnCheck.TabIndex = 1;
             this.sbtnCheck.Text = "Check Now";
-            this.sbtnCheck.Click += new System.EventHandler(this.sbtnCheck_Click);
+            this.sbtnCheck.Click += new System.EventHandler(this.sbtnCheckUpdate_Click);
             // 
             // richTextBoxRelease
             // 
