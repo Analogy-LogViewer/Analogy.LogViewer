@@ -263,7 +263,7 @@ namespace Analogy
 
                 HttpWebResponse myHttpWebResponse = (HttpWebResponse)await myHttpWebRequest.GetResponseAsync();
                 if (myHttpWebResponse.StatusCode == HttpStatusCode.NotModified)
-                    return (false, default);
+                    return (false, default)!;
 
                 using (var reader = new System.IO.StreamReader(myHttpWebResponse.GetResponseStream()))
                 {
@@ -273,11 +273,11 @@ namespace Analogy
             }
             catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotModified)
             {
-                return (false, default);
+                return (false, default)!;
             }
             catch (Exception)
             {
-                return (false, default);
+                return (false, default)!;
             }
         }
 

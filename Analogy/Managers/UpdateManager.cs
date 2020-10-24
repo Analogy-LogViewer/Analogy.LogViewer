@@ -174,6 +174,10 @@ namespace Analogy.Managers
         public async Task<(string TagName, GithubAsset UpdaterAsset)?> GetLatestUpdater()
         {
             var (newData, entries) = await Utils.GetAsync<GithubReleaseEntry[]>(updaterRepository + "/releases", UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue);
+            if (entries == null)
+            {
+                return null;
+            }
             var release = entries.OrderByDescending(r => r.Published)
                 .FirstOrDefault(r => r.Assets.Any(a => a.Name.Contains("Analogy.Updater")));
             if (release != null)
