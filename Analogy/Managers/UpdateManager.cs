@@ -195,7 +195,7 @@ namespace Analogy.Managers
                 await DownloadUpdater(update.Value.UpdaterAsset);
 
             }
-            else if (GetVersionFromTagName(update.Value.TagName) > CurrentVersion)
+            else if (GetVersionFromTagName(update.Value.TagName) > UpdaterVersion())
             {
                 await DownloadUpdater(update.Value.UpdaterAsset);
             }
@@ -203,6 +203,14 @@ namespace Analogy.Managers
             {
                 AnalogyLogger.Instance.LogInformation("No need to download Updater");
             }
+        }
+
+        private Version UpdaterVersion()
+        {
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(UpdaterExecutable);
+            return new Version(fvi.FileVersion);
+
+
         }
 
         private async Task<bool> DownloadUpdater(GithubAsset updaterAsset)
