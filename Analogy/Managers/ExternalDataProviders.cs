@@ -182,7 +182,7 @@ namespace Analogy.Managers
                         try
                         {
                             var downloadInfo = (Activator.CreateInstance(aType) as IAnalogyDownloadInformation)!;
-                            var factory = Factories.First(f => f.Factory.FactoryId == downloadInfo?.PrimaryFactoryId);
+                            var factory = Factories.First(f => f.Factory.FactoryId == downloadInfo?.FactoryId);
                             factory.AddDownloadInformation(downloadInfo);
                         }
                         catch (Exception e)

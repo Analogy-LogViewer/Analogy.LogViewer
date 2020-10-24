@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -107,6 +107,7 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
+            this.bbtnDataProvidersUpdates = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -202,10 +203,11 @@
             this.bbtnFirstRun,
             this.bbtnWhatsNew,
             this.bbiBookmarks,
-            this.btnSettingsDebugging});
+            this.btnSettingsDebugging,
+            this.bbtnDataProvidersUpdates});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 105;
+            this.ribbonControlMain.MaxItemId = 106;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
@@ -289,6 +291,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDataProvidersUpdates),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bsmInfo.Name = "bsmInfo";
             // 
@@ -378,9 +381,9 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group2";
+            galleryItemGroup3.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup3});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -390,9 +393,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Group3";
+            galleryItemGroup4.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup4});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -509,7 +512,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // bBtnBookmarked
             // 
@@ -836,6 +839,14 @@
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
             // 
+            // bbtnDataProvidersUpdates
+            // 
+            this.bbtnDataProvidersUpdates.Caption = "Check for Data Providers Updates";
+            this.bbtnDataProvidersUpdates.Id = 105;
+            this.bbtnDataProvidersUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnDataProvidersUpdates.ImageOptions.LargeImage")));
+            this.bbtnDataProvidersUpdates.Name = "bbtnDataProvidersUpdates";
+            this.bbtnDataProvidersUpdates.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDataProvidersUpdates_ItemClick);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -941,5 +952,6 @@
         private DevExpress.XtraBars.BarSubItem bsiGlobalTools;
         private DevExpress.XtraBars.BarButtonItem bbiBookmarks;
         private DevExpress.XtraBars.BarButtonItem btnSettingsDebugging;
+        private DevExpress.XtraBars.BarButtonItem bbtnDataProvidersUpdates;
     }
 }

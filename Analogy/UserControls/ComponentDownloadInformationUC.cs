@@ -1,9 +1,8 @@
 ﻿using Analogy.Interfaces.DataTypes;
-using Analogy.Interfaces.Factories;
+using Analogy.Managers;
 using DevExpress.XtraEditors;
 using System;
 using System.Drawing;
-using Analogy.Managers;
 
 namespace Analogy.UserControls
 {
@@ -48,7 +47,7 @@ namespace Analogy.UserControls
                 if (Factory.Factory.LargeImage != null)
                     picture.Image = Factory.Factory.LargeImage;
                 lblTitle.Text = Factory.Factory.Title;
-                lblCurrentVersion.Text = DownloadInfo.InstalledVersion.ToString();
+                lblCurrentVersion.Text = "Current Version: " + DownloadInfo.InstalledVersion.ToString();
                 UpdateLatestVersionText();
 
             }

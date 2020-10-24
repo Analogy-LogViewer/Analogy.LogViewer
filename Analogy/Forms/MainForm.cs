@@ -1878,6 +1878,17 @@ namespace Analogy
             UserSettingsForm user = new UserSettingsForm(10);
             user.ShowDialog(this);
         }
+
+        private void bbtnDataProvidersUpdates_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenDataProvidersUpdateWindow();
+        }
+
+        private void OpenDataProvidersUpdateWindow()
+        {
+            var update = new ComponentDownloadsForm();
+            update.Show(this);
+        }
     }
 }
 
