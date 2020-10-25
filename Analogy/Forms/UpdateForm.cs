@@ -6,6 +6,7 @@ namespace Analogy.Forms
     public partial class UpdateForm : DevExpress.XtraEditors.XtraForm
     {
         private UpdateManager Updater => UpdateManager.Instance;
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
 
         public UpdateForm()
         {
@@ -14,7 +15,7 @@ namespace Analogy.Forms
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = Settings.GetIcon();
             lblCurrentVersion.Text =
                 $"Your current version is: V{Updater.CurrentVersion}. (Target Framework:{Updater.CurrentFrameworkAttribute.FrameworkName})";
             lblLatestVersion.Text =
@@ -34,7 +35,7 @@ namespace Analogy.Forms
         private async void sbtnCheckUpdate_Click(object sender, EventArgs e)
         {
             var (_, release) = await Updater.CheckVersion(true);
-            UserSettingsManager.UserSettings.LastVersionChecked = release;
+            Settings.LastVersionChecked = release;
             lblLatestVersion.Text = $"Latest version is: {release.TagName}.";
             richTextBoxRelease.Text = release.ToString();
             hyperLinkEditLatest.Text = release.HtmlUrl;

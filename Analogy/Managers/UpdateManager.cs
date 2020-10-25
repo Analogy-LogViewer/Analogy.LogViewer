@@ -69,13 +69,11 @@ namespace Analogy.Managers
         public Version CurrentVersion => new Version(CurrentVersionNumber);
         public Version? NewestVersion => GetVersionFromTagName(Settings.LastVersionChecked?.TagName);
         public TargetFrameworkAttribute CurrentFrameworkAttribute => (TargetFrameworkAttribute)Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(TargetFrameworkAttribute));
-
-        private string UpdaterDownloadFile { get; set; }
         public string UpdaterExecutable
         {
             get
             {
-                string targetFileName = Path.Combine(Utils.CurrentDirectory(), "Analogy.Updater", "Analogy.Updater.exe");
+                string targetFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Analogy.Updater", "Analogy.Updater.exe"); //Path.Combine(Utils.CurrentDirectory(), "Analogy.Updater", "Analogy.Updater.exe");
                 return targetFileName;
             }
         }
@@ -243,7 +241,6 @@ namespace Analogy.Managers
                 Directory.CreateDirectory(directory);
             }
 
-            UpdaterDownloadFile = tempPath;
             webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
             webClient.DownloadFileAsync(uri, tempPath);
 
