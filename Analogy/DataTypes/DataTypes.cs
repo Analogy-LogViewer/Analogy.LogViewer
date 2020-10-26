@@ -2,10 +2,9 @@
 using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
-using Analogy.Types;
 using Newtonsoft.Json;
 
-namespace Analogy
+namespace Analogy.DataTypes
 {
     public struct FactoryCheckItem
     {

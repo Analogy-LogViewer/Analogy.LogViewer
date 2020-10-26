@@ -2,7 +2,10 @@
 using Analogy.UserControls;
 using DevExpress.XtraEditors;
 using System;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 
 namespace Analogy.Forms
 {
@@ -25,7 +28,19 @@ namespace Analogy.Forms
               //  first ??= uc;
 
             }
-           // panel1.ScrollControlIntoView(first);
+
+            var assemblies = FactoriesManager.Instance.Factories.Select(f=>Path.GetFileName(f.AssemblyFullPath)).ToList();
+            var supported = UserSettingsManager.UserSettings.SupportedDataProviders;
+            var notInstalled = supported.Where(s => !assemblies.Contains(s.AssemblyFileName)).ToList();
+          
+            foreach (var dp in notInstalled)
+            {
+                MissingDownloadInformation missing = new MissingDownloadInformation(dp.FactoryId,dp.Name,dp.RepositoryURL);
+                ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(missing);
+                xtraTabPage2.Controls.Add(uc);
+                uc.Dock = DockStyle.Top;
+
+            }
         }
     }
 }

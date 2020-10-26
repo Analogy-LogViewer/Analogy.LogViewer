@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Analogy
+namespace Analogy.DataTypes
 {
     public class ItemStatistics
     {

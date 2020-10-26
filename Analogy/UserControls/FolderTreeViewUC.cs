@@ -1,9 +1,9 @@
 ﻿using Analogy.Interfaces;
-using Analogy.Types;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 
 namespace Analogy
 {

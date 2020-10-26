@@ -1,12 +1,12 @@
-﻿using Analogy.Interfaces;
-using DevExpress.XtraEditors;
-using MessagePack;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using Analogy.Interfaces;
+using DevExpress.XtraEditors;
+using MessagePack;
 
-namespace Analogy
+namespace Analogy.Forms
 {
     public partial class AnalogyOTAForm : XtraForm
     {

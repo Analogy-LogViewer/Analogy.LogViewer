@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using Analogy.DataTypes;
 
-namespace Analogy
+namespace Analogy.Forms
 {
     public partial class XtraFormClientServer : DevExpress.XtraEditors.XtraForm
     {

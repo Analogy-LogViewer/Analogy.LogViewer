@@ -1,10 +1,10 @@
-﻿using Analogy.DataProviders;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Managers;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Analogy
+namespace Analogy.Forms
 {
     public partial class XtraFormLogGrid : DevExpress.XtraEditors.XtraForm
     {

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using DevExpress.XtraEditors;
 
-namespace Analogy
+namespace Analogy.Forms
 {
     partial class AnalogyAboutBox : XtraForm
     {

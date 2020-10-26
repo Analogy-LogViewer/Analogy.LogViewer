@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace Analogy.Types
+namespace Analogy.DataTypes
 {
     /// <summary>
     /// Provides support for asynchronous lazy initialization. This type is fully threadsafe.

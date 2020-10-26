@@ -5,7 +5,7 @@ using System.Reflection;
 using Analogy.Interfaces.Factories;
 using DevExpress.XtraEditors;
 
-namespace Analogy
+namespace Analogy.Forms
 {
     partial class AboutDataSourceBox : XtraForm
     {

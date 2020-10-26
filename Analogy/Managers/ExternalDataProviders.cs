@@ -1,12 +1,12 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
-using Analogy.Types;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Managers

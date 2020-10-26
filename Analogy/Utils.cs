@@ -17,8 +17,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
-using Analogy.Types;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 

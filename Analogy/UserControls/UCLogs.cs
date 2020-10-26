@@ -3,7 +3,6 @@ using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using Analogy.Tools;
-using Analogy.Types;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
 using DevExpress.Utils;
@@ -27,6 +26,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
+using Analogy.Forms;
 
 namespace Analogy
 {

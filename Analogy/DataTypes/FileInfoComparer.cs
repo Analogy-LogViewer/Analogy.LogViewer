@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Analogy.Types
+namespace Analogy.DataTypes
 {
     public class FileInfoComparer : IEqualityComparer<FileInfo>
     {

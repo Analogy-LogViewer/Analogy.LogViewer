@@ -3,6 +3,7 @@ using DevExpress.XtraEditors.Controls;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 
 
 namespace Philips.Analogy

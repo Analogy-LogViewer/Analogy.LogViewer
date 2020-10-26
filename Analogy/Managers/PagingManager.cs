@@ -4,8 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
-using Analogy.Types;
 
 namespace Analogy
 {

@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Analogy.DataTypes;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Managers;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Analogy.Interfaces;
 
-namespace Analogy.Types
+namespace Analogy.DataTypes
 {
     public class FolderSelectionEventArgs : EventArgs
     {

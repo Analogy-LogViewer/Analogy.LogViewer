@@ -1,4 +1,4 @@
-﻿namespace Analogy.Types
+﻿namespace Analogy.DataTypes
 {
     public enum DataProviderFactoryStatus
     {

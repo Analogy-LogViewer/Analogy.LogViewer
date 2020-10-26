@@ -52,7 +52,7 @@ namespace Analogy.UserControls
             this.lblTitle.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.lblTitle.Location = new System.Drawing.Point(64, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(157, 32);
+            this.lblTitle.Size = new System.Drawing.Size(332, 32);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "title";
             // 
@@ -60,7 +60,7 @@ namespace Analogy.UserControls
             // 
             this.lblCurrentVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblCurrentVersion.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblCurrentVersion.Location = new System.Drawing.Point(227, 13);
+            this.lblCurrentVersion.Location = new System.Drawing.Point(402, 13);
             this.lblCurrentVersion.Name = "lblCurrentVersion";
             this.lblCurrentVersion.Size = new System.Drawing.Size(195, 32);
             this.lblCurrentVersion.TabIndex = 3;
@@ -70,7 +70,7 @@ namespace Analogy.UserControls
             // 
             this.lblLatestVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblLatestVersion.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblLatestVersion.Location = new System.Drawing.Point(428, 13);
+            this.lblLatestVersion.Location = new System.Drawing.Point(603, 13);
             this.lblLatestVersion.Name = "lblLatestVersion";
             this.lblLatestVersion.Size = new System.Drawing.Size(195, 32);
             this.lblLatestVersion.TabIndex = 4;
@@ -78,7 +78,7 @@ namespace Analogy.UserControls
             // 
             // btnCheckNow
             // 
-            this.btnCheckNow.Location = new System.Drawing.Point(629, 13);
+            this.btnCheckNow.Location = new System.Drawing.Point(804, 13);
             this.btnCheckNow.Name = "btnCheckNow";
             this.btnCheckNow.Size = new System.Drawing.Size(106, 32);
             this.btnCheckNow.TabIndex = 5;
@@ -86,7 +86,7 @@ namespace Analogy.UserControls
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(741, 13);
+            this.btnDownload.Location = new System.Drawing.Point(916, 13);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(137, 32);
             this.btnDownload.TabIndex = 6;
@@ -105,7 +105,7 @@ namespace Analogy.UserControls
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.picture);
             this.Name = "ComponentDownloadInformationUC";
-            this.Size = new System.Drawing.Size(902, 97);
+            this.Size = new System.Drawing.Size(1056, 97);
             this.Load += new System.EventHandler(this.ComponentDownloadInformationUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);

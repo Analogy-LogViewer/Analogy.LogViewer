@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Analogy.Types;
+using Analogy.DataTypes;
 
 namespace Analogy
 {

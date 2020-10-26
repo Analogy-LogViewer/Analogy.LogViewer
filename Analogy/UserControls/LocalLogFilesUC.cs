@@ -1,5 +1,4 @@
 ﻿using Analogy.Interfaces;
-using Analogy.Types;
 using DevExpress.XtraBars;
 using System;
 using System.Collections.Generic;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 
 namespace Analogy
 {
@@ -87,7 +87,7 @@ namespace Analogy
             }
         }
 
-        private void FolderTreeViewUC1_FolderChanged(object sender, Types.FolderSelectionEventArgs e)
+        private void FolderTreeViewUC1_FolderChanged(object sender, FolderSelectionEventArgs e)
         {
             if (Directory.Exists(e.SelectedFolderPath))
             {

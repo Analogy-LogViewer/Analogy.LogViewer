@@ -19,9 +19,10 @@ namespace Analogy.UserControls
                 if (DownloadInfo != null)
                 {
                     await DownloadInfo.CheckVersion();
-                    UpdateLatestVersionText();
-
                 }
+                UpdateLatestVersionText();
+
+
             };
             btnDownload.Click += async (s, e) =>
             {
@@ -38,9 +39,13 @@ namespace Analogy.UserControls
         public ComponentDownloadInformationUC(FactoryContainer factory) : this()
         {
             Factory = factory;
-            DownloadInfo = Factory.DownloadInformation;
+            DownloadInfo = Factory.DownloadInformation!;
         }
 
+        public ComponentDownloadInformationUC(IAnalogyDownloadInformation downloadInfo):this()
+        {
+            DownloadInfo = downloadInfo;
+        }
         private void ComponentDownloadInformationUC_Load(object sender, EventArgs e)
         {
             if (Factory != null)
@@ -49,19 +54,23 @@ namespace Analogy.UserControls
                     picture.Image = Factory.Factory.LargeImage;
                 lblTitle.Text = Factory.Factory.Title;
             }
-            if (DownloadInfo != null)
+            else
             {
-                lblCurrentVersion.Text = "Current Version: " + DownloadInfo.InstalledVersion.ToString();
-                UpdateLatestVersionText();
+                lblTitle.Text = DownloadInfo?.Name;
             }
+
+            lblCurrentVersion.Text = DownloadInfo?.InstalledVersion > new Version(0, 0, 0)
+                    ? DownloadInfo.InstalledVersion.ToString()
+                    : "N/A";
+            UpdateLatestVersionText();
         }
 
         private void UpdateLatestVersionText()
         {
-            if (DownloadInfo != null && DownloadInfo.LatestVersion != null)
+            if (DownloadInfo?.LatestVersion != null)
             {
                 lblLatestVersion.Text = "released Version: " + DownloadInfo.LatestVersion.ToString();
-                if (DownloadInfo.LatestVersion >= DownloadInfo.InstalledVersion || DownloadInfo.InstalledVersion.Equals(new Version(0,0,0)))
+                if (DownloadInfo.LatestVersion >= DownloadInfo.InstalledVersion || DownloadInfo.InstalledVersion.Equals(new Version(0, 0, 0)))
                 {
                     lblLatestVersion.Appearance.BackColor = Color.GreenYellow;
                     btnDownload.Visible = true;

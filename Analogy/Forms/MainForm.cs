@@ -1,19 +1,4 @@
-﻿using Analogy.DataProviders;
-using Analogy.Forms;
-using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
-using Analogy.Managers;
-using Analogy.Properties;
-using Analogy.Tools;
-using Analogy.Types;
-using DevExpress.Utils.Drawing.Helpers;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Docking;
-using DevExpress.XtraBars.Ribbon;
-using DevExpress.XtraEditors;
-using DevExpress.XtraTab;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -23,9 +8,21 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataProviders;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using Analogy.Managers;
+using Analogy.Properties;
+using DevExpress.Utils.Drawing.Helpers;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Docking;
+using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
+using DevExpress.XtraTab;
+using Newtonsoft.Json;
 
-
-namespace Analogy
+namespace Analogy.Forms
 {
     public partial class MainForm : RibbonForm
     {

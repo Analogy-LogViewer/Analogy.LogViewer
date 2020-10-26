@@ -1,11 +1,12 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Managers;
-using Analogy.Types;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
+using Analogy.DataTypes;
+using Analogy.Forms;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy

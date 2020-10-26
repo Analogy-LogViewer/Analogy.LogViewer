@@ -1,5 +1,4 @@
 ﻿using Analogy.Interfaces;
-using Analogy.Types;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using System;
@@ -7,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 
 namespace Analogy
 {

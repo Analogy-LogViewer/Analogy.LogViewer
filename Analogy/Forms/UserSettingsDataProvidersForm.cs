@@ -1,13 +1,13 @@
-﻿using Analogy.Managers;
-using Analogy.Properties;
-using DevExpress.XtraEditors;
-using DevExpress.XtraTab;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using Analogy.Managers;
+using Analogy.Properties;
+using DevExpress.XtraEditors;
+using DevExpress.XtraTab;
 
-namespace Analogy
+namespace Analogy.Forms
 {
 
     public partial class UserSettingsDataProvidersForm : XtraForm

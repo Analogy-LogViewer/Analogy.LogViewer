@@ -1,9 +1,9 @@
-﻿using Analogy.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Analogy.Interfaces;
 
-namespace Analogy
+namespace Analogy.DataTypes
 {
     public class LogStatistics
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Analogy.Types
+namespace Analogy.DataTypes
 {
     public enum FontSelectionType
     {

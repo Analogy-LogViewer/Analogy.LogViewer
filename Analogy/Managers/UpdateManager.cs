@@ -1,5 +1,4 @@
 ﻿using Analogy.CommonUtilities.Web;
-using Analogy.Types;
 using DevExpress.XtraEditors;
 using System;
 using System.ComponentModel;
@@ -12,6 +11,7 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 
 namespace Analogy.Managers
 {
