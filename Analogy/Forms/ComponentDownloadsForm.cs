@@ -16,16 +16,16 @@ namespace Analogy.Forms
         private void ComponentDownloadsForm_Load(object sender, EventArgs e)
         {
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            UserControl first = null;
+           // UserControl first = null;
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories)
             {
                 ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(factory);
-                panel1.Controls.Add(uc);
+                xtraTabPage1.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
-                first ??= uc;
+              //  first ??= uc;
 
             }
-            panel1.ScrollControlIntoView(first);
+           // panel1.ScrollControlIntoView(first);
         }
     }
 }

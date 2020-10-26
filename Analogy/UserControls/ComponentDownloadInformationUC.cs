@@ -61,7 +61,7 @@ namespace Analogy.UserControls
             if (DownloadInfo != null && DownloadInfo.LatestVersion != null)
             {
                 lblLatestVersion.Text = "released Version: " + DownloadInfo.LatestVersion.ToString();
-                if (DownloadInfo.LatestVersion >= DownloadInfo.InstalledVersion)
+                if (DownloadInfo.LatestVersion >= DownloadInfo.InstalledVersion || DownloadInfo.InstalledVersion.Equals(new Version(0,0,0)))
                 {
                     lblLatestVersion.Appearance.BackColor = Color.GreenYellow;
                     btnDownload.Visible = true;
