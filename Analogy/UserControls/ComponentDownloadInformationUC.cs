@@ -3,6 +3,7 @@ using Analogy.Managers;
 using DevExpress.XtraEditors;
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
@@ -31,6 +32,10 @@ namespace Analogy.UserControls
                     btnDownload.Enabled = false;
                     await UpdateManager.Instance.InitiateUpdate(DownloadInfo.Name, DownloadInfo.DownloadURL);
                     btnDownload.Enabled = true;
+                }
+                else
+                {
+                    XtraMessageBox.Show("Download file was not found.", "", MessageBoxButtons.OK);
                 }
             };
         }
