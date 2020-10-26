@@ -1,4 +1,5 @@
 ﻿using Analogy.DataProviders;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -8,7 +9,6 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Analogy.DataTypes;
 
 namespace Analogy
 {
@@ -70,6 +70,8 @@ namespace Analogy
             ExternalDataProviders result = await ExternalDataProviders.GetExternalDataProviders();
             var factoryContainers = result.Factories.Where(f => !Factories.Contains(f)).ToList();
             Factories.AddRange(factoryContainers);
+            Factories.RemoveAll(f => !f.AssemblyExist);
+
             var dataProviders = factoryContainers.Where(f =>
                     f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();

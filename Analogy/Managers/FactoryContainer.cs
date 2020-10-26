@@ -1,6 +1,7 @@
 ﻿using Analogy.Interfaces.Factories;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Analogy.Interfaces;
@@ -10,6 +11,7 @@ namespace Analogy.Managers
 {
     public class FactoryContainer
     {
+        public bool AssemblyExist => File.Exists(AssemblyFullPath);
         public string AssemblyFullPath { get; }
         public Assembly Assembly { get; }
         public IAnalogyFactory Factory { get; }
