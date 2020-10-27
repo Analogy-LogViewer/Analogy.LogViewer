@@ -25,7 +25,7 @@ namespace Analogy.Managers
             DataProvidersImages = new List<(Guid id, IAnalogyImages images)>();
             Factories = new List<FactoryContainer>();
             var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
-                @"*Analogy.LogViewer.*.dll", SearchOption.TopDirectoryOnly).ToList();
+                @"*Analogy.LogViewer.*.dll", SearchOption.AllDirectories).ToList();
             if (UserSettingsManager.UserSettings.AdditionalProbingLocations != null)
             {
                 foreach (string folder in UserSettingsManager.UserSettings.AdditionalProbingLocations)

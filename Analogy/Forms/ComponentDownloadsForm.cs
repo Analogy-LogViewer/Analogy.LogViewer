@@ -31,7 +31,7 @@ namespace Analogy.Forms
 
             var assemblies = FactoriesManager.Instance.Factories.Select(f=>Path.GetFileName(f.AssemblyFullPath)).ToList();
             var supported = UserSettingsManager.UserSettings.SupportedDataProviders;
-            var notInstalled = supported.Where(s => !assemblies.Contains(s.AssemblyFileName)).ToList();
+            var notInstalled = supported.Where(s => !assemblies.Contains(s.AssemblyFileName,StringComparison.InvariantCultureIgnoreCase)).ToList();
           
             foreach (var dp in notInstalled)
             {

@@ -20,5 +20,7 @@ namespace Analogy.DataTypes
             AssemblyFileName = assemblyFileName;
             RepositoryURL = repositoryUrl;
         }
+
+        public override string ToString() => $"{nameof(Name)}: {Name}, {nameof(AssemblyFileName)}: {AssemblyFileName}, {nameof(FactoryId)}: {FactoryId}, {nameof(RepositoryURL)}: {RepositoryURL}";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Analogy.DataProviders;
+﻿using Analogy.CommonUtilities.Web;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
@@ -14,8 +15,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Analogy.CommonUtilities.Web;
-using Analogy.DataTypes;
 
 namespace Analogy
 {
@@ -88,7 +87,7 @@ namespace Analogy
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
         public GithubObjects.GithubReleaseEntry? LastVersionChecked { get; set; }
-        public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token");
+        public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token") ?? string.Empty;
         public bool MinimizedToTrayBar { get; set; }
         public bool CheckAdditionalInformation { get; set; }
 
@@ -113,7 +112,7 @@ namespace Analogy
                 if (_enableFirstChanceException != value)
                 {
                     _enableFirstChanceException = value;
-                    OnEnableFirstChanceExceptionChanged?.Invoke(this,value);
+                    OnEnableFirstChanceExceptionChanged?.Invoke(this, value);
                 }
             }
         }
@@ -140,7 +139,7 @@ namespace Analogy
 
         public void Load()
         {
-            SupportedDataProviders=new List<DataProviderInformation>();
+            SupportedDataProviders = new List<DataProviderInformation>();
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Serilog", "Analogy.LogViewer.Serilog.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Serilog"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.RabbitMq", "Analogy.LogViewer.RabbitMq.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RabbitMq"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.RSSReader", "Analogy.LogViewer.RSSReader.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RSSReader"));
@@ -158,7 +157,7 @@ namespace Analogy
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.GitHistory", "Analogy.LogViewer.GitHistory.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.GitHistory"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Affirmations", "Analogy.LogViewer.Affirmations.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Affirmations"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Log4Net", "Analogy.LogViewer.Log4Net.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Log4Net"));
-            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Nlog", "Analogy.LogViewer.Nlog.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Nlog"));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Nlog", "Analogy.LogViewer.NLogProvider.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Nlog"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.PlainTextParser", "Analogy.LogViewer.PlainTextParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.PlainTextParser"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.PowerToys", "Analogy.LogViewer.PowerToys.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.PowerToys"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.RegexParser", "Analogy.LogViewer.RegexParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RegexParser"));
@@ -355,7 +354,7 @@ namespace Analogy
             Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
             Settings.Default.RibbonStyle = (int)RibbonStyle;
-            Settings.Default.EnableFirstChanceException=EnableFirstChanceException;
+            Settings.Default.EnableFirstChanceException = EnableFirstChanceException;
             Settings.Default.Save();
 
         }
