@@ -92,5 +92,9 @@ namespace Analogy.Forms
         }
         #endregion
 
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
