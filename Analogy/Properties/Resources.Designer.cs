@@ -481,6 +481,15 @@ namespace Analogy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading at {0}/s.
+        /// </summary>
+        internal static string DownloadSpeedMessage {
+            get {
+                return ResourceManager.GetString("DownloadSpeedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap EditComment_16x16 {

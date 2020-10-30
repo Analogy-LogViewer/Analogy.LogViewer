@@ -1,4 +1,6 @@
 ﻿using Analogy.CommonUtilities.Web;
+using Analogy.DataTypes;
+using Analogy.Updater;
 using DevExpress.XtraEditors;
 using System;
 using System.ComponentModel;
@@ -6,12 +8,11 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Net.Cache;
 using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataTypes;
+using MyWebClient = Analogy.DataTypes.MyWebClient;
 
 namespace Analogy.Managers
 {
@@ -192,11 +193,13 @@ namespace Analogy.Managers
             }
             if (!File.Exists(UpdaterExecutable))
             {
+                XtraMessageBox.Show("Updater Manager was not found." + Environment.NewLine + "It will be downloaded right now", @"Update Confirmation", MessageBoxButtons.OK);
                 await DownloadUpdater(update.Value.UpdaterAsset);
 
             }
             else if (GetVersionFromTagName(update.Value.TagName) > UpdaterVersion())
             {
+                XtraMessageBox.Show("Updater Manager is out of date." + Environment.NewLine + "Latest version will be downloaded right now", @"Update Confirmation", MessageBoxButtons.OK);
                 await DownloadUpdater(update.Value.UpdaterAsset);
             }
             else
@@ -215,55 +218,9 @@ namespace Analogy.Managers
 
         private async Task<bool> DownloadUpdater(GithubObjects.GithubAsset updaterAsset)
         {
-            var tcs = new TaskCompletionSource<bool>();
-
-            webClient = new MyWebClient
-            {
-                CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore)
-            };
-
-            //if (AutoUpdater.Proxy != null)
-            //{
-            //    _webClient.Proxy = AutoUpdater.Proxy;
-            //}
-
-            var uri = new Uri(updaterAsset.BrowserDownloadUrl);
-
-            //if (AutoUpdater.BasicAuthDownload != null)
-            //{
-            //    _webClient.Headers[HttpRequestHeader.Authorization] = AutoUpdater.BasicAuthDownload.ToString();
-            //}
-
-            var tempPath = Path.Combine(Path.GetTempPath(), "Analogy.Updater.zip");
-            string directory = Path.GetDirectoryName(tempPath);
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            webClient.DownloadFileCompleted += WebClientOnDownloadFileCompleted;
-            webClient.DownloadFileAsync(uri, tempPath);
-
-            void WebClientOnDownloadFileCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
-            {
-                if (asyncCompletedEventArgs.Cancelled)
-                {
-                    tcs.SetResult(false);
-                    return;
-                }
-
-                UnzipZipFileIntoTempFolder(tempPath, Path.GetDirectoryName(UpdaterExecutable));
-                if (asyncCompletedEventArgs.Error != null)
-                {
-                    XtraMessageBox.Show(asyncCompletedEventArgs.Error.Message,
-                        asyncCompletedEventArgs.Error.GetType().ToString(), MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                }
-                webClient.Dispose();
-                tcs.SetResult(true);
-            }
-
+            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+            var downloadDialog = new DownloadUpdateDialog(updaterAsset.BrowserDownloadUrl, Path.GetDirectoryName(UpdaterExecutable), CurrentFrameworkAttribute, tcs);
+            downloadDialog.ShowDialog();
             return await tcs.Task;
 
         }
