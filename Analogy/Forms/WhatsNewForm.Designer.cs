@@ -30,11 +30,11 @@
         {
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.e430 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e4210 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e429 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e428 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.e430 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,13 @@
             this.accordionControl1.Size = new System.Drawing.Size(176, 443);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            // 
+            // e430
+            // 
+            this.e430.Name = "e430";
+            this.e430.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.e430.Text = "V4.3.0";
+            this.e430.Click += new System.EventHandler(this.e430_Click);
             // 
             // e4210
             // 
@@ -92,12 +99,6 @@
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(1046, 30);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            // 
-            // e430
-            // 
-            this.e430.Name = "e430";
-            this.e430.Text = "V4.3.0";
-            this.e430.Click += new System.EventHandler(this.e430_Click);
             // 
             // WhatsNewForm
             // 
