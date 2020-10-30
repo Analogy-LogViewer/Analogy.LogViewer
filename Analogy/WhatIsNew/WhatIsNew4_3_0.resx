@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="labelControl1.Text" xml:space="preserve">
-    <value>This version adds an Auto Update feature. From this version and later, you can get notification when a new version is released and you can downlaod it directly from the App. You can also download different data providers from the data provider update window</value>
+    <value>This version adds an Auto Update feature. From this version and later, you can get notification when a new version is released and you can download it directly from the App. You can also download different data providers from the data provider update window</value>
   </data>
 </root>

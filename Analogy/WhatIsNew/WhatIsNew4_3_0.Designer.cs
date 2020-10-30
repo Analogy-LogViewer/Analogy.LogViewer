@@ -39,6 +39,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtPageIssues = new DevExpress.XtraTab.XtraTabPage();
             this.gcImprovements = new DevExpress.XtraEditors.GroupControl();
+            this.Issue645 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue619 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue202 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue596 = new DevExpress.XtraEditors.HyperlinkLabelControl();
@@ -46,7 +47,6 @@
             this.gcBugs = new DevExpress.XtraEditors.GroupControl();
             this.Issue636 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue568 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.Issue645 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtcV4_3_0)).BeginInit();
             this.xtcV4_3_0.SuspendLayout();
             this.xtPageHighlight.SuspendLayout();
@@ -180,6 +180,18 @@
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
             // 
+            // Issue645
+            // 
+            this.Issue645.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Issue645.Location = new System.Drawing.Point(2, 129);
+            this.Issue645.Name = "Issue645";
+            this.Issue645.Padding = new System.Windows.Forms.Padding(5);
+            this.Issue645.Size = new System.Drawing.Size(362, 26);
+            this.Issue645.TabIndex = 17;
+            this.Issue645.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/645>Add suppo" +
+    "rt for loading data providers from sub folders #645</href>";
+            this.Issue645.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
             // Issue619
             // 
             this.Issue619.Dock = System.Windows.Forms.DockStyle.Top;
@@ -263,18 +275,6 @@
             this.Issue568.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/568>4.2.10 Un" +
     "authorizedAccessException when closing the app #568</href>";
             this.Issue568.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
-            // Issue645
-            // 
-            this.Issue645.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue645.Location = new System.Drawing.Point(2, 129);
-            this.Issue645.Name = "Issue645";
-            this.Issue645.Padding = new System.Windows.Forms.Padding(5);
-            this.Issue645.Size = new System.Drawing.Size(362, 26);
-            this.Issue645.TabIndex = 17;
-            this.Issue645.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/645>Add suppo" +
-    "rt for loading data providers from sub folders #645</href>";
-            this.Issue645.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_3_0
             // 
