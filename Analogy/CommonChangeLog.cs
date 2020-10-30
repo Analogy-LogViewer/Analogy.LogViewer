@@ -15,7 +15,7 @@ namespace Analogy
                 new AnalogyChangeLog("V4.2.13 - App hangs when trying to load file in use #636",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,10,27)),
                 new AnalogyChangeLog("V4.2.12 - Add support for loading data providers from sub folders #645",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,27)),
                 new AnalogyChangeLog("V4.2.12 - [Feature] Add data provider update mechanism #596",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,10,26)),
-                new AnalogyChangeLog("V4.2.12 - [Feature] Add Update to Analogy enhancement #595",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,10,26)),
+                new AnalogyChangeLog("V4.2.12 - [Feature] Add Update to Analogy #595",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,10,26)),
                 new AnalogyChangeLog("V4.2.12 - [Feature] Add Data providers download/install page #202",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,10,26)),
                 new AnalogyChangeLog("V4.2.11 - 4.2.10 UnauthorizedAccessException when closing the app #568",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,10,19)),
                 new AnalogyChangeLog("V4.2.10 - [Debugging] Add toggle for FirstChanceException #567",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,17)),
