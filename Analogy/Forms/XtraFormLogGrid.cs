@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Analogy.DataProviders;
+﻿using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Managers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Analogy.Forms
 {
@@ -26,13 +26,13 @@ namespace Analogy.Forms
         }
 
 
-        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider fileProvider = null, string processOrModule = null)
+        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null)
         {
             InitializeComponent();
             _messages = messages;
             _dataSource = dataSource;
             if (!string.IsNullOrEmpty(processOrModule))
-                ucLogs1.FilterResults(processOrModule);
+                ucLogs1.FilterResults(processOrModule!);
             ucLogs1.SetFileDataSource(dataProvider, fileProvider);
 
 
@@ -42,8 +42,10 @@ namespace Analogy.Forms
         {
             Icon = UserSettingsManager.UserSettings.GetIcon();
             if (DesignMode) return;
-            if (_messages == null || !_messages.Any()) return;
-            ucLogs1.AppendMessages(_messages, _dataSource);
+            if (!_messages.Any()) return;
+            {
+                ucLogs1.AppendMessages(_messages, _dataSource);
+            }
         }
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource) =>

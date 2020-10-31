@@ -308,7 +308,7 @@ namespace Analogy.Forms
 
         private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
             IAnalogyOfflineDataProvider dataProvider,
-            string title = null)
+            string? title = null)
         {
             openedWindows++;
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, filenames);

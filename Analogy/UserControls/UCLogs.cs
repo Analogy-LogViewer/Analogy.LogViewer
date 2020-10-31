@@ -117,7 +117,7 @@ namespace Analogy
 
         private int TotalPages => PagingManager.TotalPages;
         public IAnalogyDataProvider DataProvider { get; set; }
-        public IAnalogyOfflineDataProvider FileDataProvider { get; set; }
+        public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         private Dictionary<string, int> counts;
         public GridView LogGrid
@@ -590,7 +590,7 @@ namespace Analogy
             }
         }
 
-        public void SetFileDataSource(IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider fileDataProvider)
+        public void SetFileDataSource(IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileDataProvider)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;

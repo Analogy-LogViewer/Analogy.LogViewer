@@ -1,4 +1,5 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraBars;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataTypes;
 
 namespace Analogy
 {
@@ -20,16 +20,16 @@ namespace Analogy
         private IAnalogyOfflineDataProvider DataProvider { get; }
         public ILogMessageCreatedHandler Handler => ucLogs1;
         //private List<string> TreeListFileNodes { get; set; }
-        public LocalLogFilesUC(string initSelectedPath = null)
+        public LocalLogFilesUC(string? initSelectedPath = null)
         {
-            SelectedPath = initSelectedPath;
+            SelectedPath = initSelectedPath ?? string.Empty;
             InitializeComponent();
             treeList1.Columns["colChanged"].SortOrder = SortOrder.Descending;
             treeList1.Appearance.HideSelectionRow.Assign(treeList1.ViewInfo.PaintAppearance.FocusedRow);
             ucLogs1.SetSaveButtonsVisibility(false);
         }
 
-        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[] fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
+        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string initialSelectedPath = null) : this(initialSelectedPath)
         {
 
             DataProvider = dataProvider;
@@ -38,7 +38,7 @@ namespace Analogy
             ucLogs1.SetFileDataSource(dataProvider, dataProvider);
         }
 
-        public LocalLogFilesUC(IAnalogyDataProvider dataProvider,CancellationTokenSource cts) : this()
+        public LocalLogFilesUC(IAnalogyDataProvider dataProvider, CancellationTokenSource cts) : this()
         {
             ucLogs1.SetFileDataSource(dataProvider, null);
             ucLogs1.CancellationTokenSource = cts;
