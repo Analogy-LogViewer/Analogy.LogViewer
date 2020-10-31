@@ -120,7 +120,10 @@ namespace Analogy.DataProviders
                 .Concat(dirInfo.GetFiles("*.abin"))
                 .ToList();
             if (!recursive)
+            {
                 return files;
+            }
+
             try
             {
                 foreach (DirectoryInfo dir in dirInfo.GetDirectories())

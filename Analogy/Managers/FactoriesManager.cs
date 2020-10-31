@@ -174,7 +174,9 @@ namespace Analogy
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
             {
                 if (factoryContainer.Factory.LargeImage != null)
+                {
                     return factoryContainer.Factory.LargeImage;
+                }
             }
 
             return null;
@@ -188,7 +190,9 @@ namespace Analogy
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
             {
                 if (factoryContainer.Factory.SmallImage != null)
+                {
                     return factoryContainer.Factory.SmallImage;
+                }
             }
 
             return null;
@@ -201,7 +205,11 @@ namespace Analogy
         {
             foreach (var factory in Factories)
             {
-                if (factory.FactorySetting.Status == DataProviderFactoryStatus.Disabled) continue;
+                if (factory.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
+                {
+                    continue;
+                }
+
                 foreach (var extensionFactory in factory.ExtensionsFactories)
                 {
                     foreach (IAnalogyExtension extension in extensionFactory.Extensions)

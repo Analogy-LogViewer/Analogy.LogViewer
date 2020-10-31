@@ -46,7 +46,11 @@ namespace Philips.Analogy
 
         private void LoadStatistics()
         {
-            if (Statistics == null) return;
+            if (Statistics == null)
+            {
+                return;
+            }
+
             CreatePies();
             PopulateGlobalDataGridView();
             PopulateSource();
@@ -105,7 +109,11 @@ namespace Philips.Analogy
 
         private void dgvSource_SelectionChanged(object sender, System.EventArgs e)
         {
-            if (dgvSource.SelectedRows.Count == 0) return;
+            if (dgvSource.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
             if (dgvSource.SelectedRows[0].DataBoundItem is ItemStatistics entry)
             {
                 SourcePie.SetDataSources(entry);
@@ -119,7 +127,11 @@ namespace Philips.Analogy
 
         private void dgvModules_SelectionChanged(object sender, System.EventArgs e)
         {
-            if (dgvModules.SelectedRows.Count == 0) return;
+            if (dgvModules.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
             if (dgvModules.SelectedRows[0].DataBoundItem is ItemStatistics entry)
             {
                 ModulePie.SetDataSources(entry);

@@ -33,8 +33,10 @@ namespace Analogy.Managers
                     try
                     {
                         if (Directory.Exists(folder))
+                        {
                             analogyAssemblies.AddRange(Directory.EnumerateFiles(folder, @"*Analogy.LogViewer.*.dll",
                                 SearchOption.TopDirectoryOnly).ToList());
+                        }
                     }
                     catch (Exception e)
                     {
@@ -49,14 +51,21 @@ namespace Analogy.Managers
             var typesToLoad = new List<(Assembly assembly, string fileName, List<Type> types)>();
             foreach (string aFile in analogyAssemblies)
             {
-                if (aFile.Contains("Analogy.LogViewer.Template")) continue;
+                if (aFile.Contains("Analogy.LogViewer.Template"))
+                {
+                    continue;
+                }
+
                 try
                 {
                     string fileName = Path.GetFullPath(aFile);
                     string path = Path.GetDirectoryName(aFile);
                     Assembly assembly = Assembly.LoadFrom(fileName);
                     if (!FactoriesManager.Instance.ProbingPaths.Contains(path))
+                    {
                         FactoriesManager.Instance.ProbingPaths.Add(path);
+                    }
+
                     var types = assembly.GetTypes().Where(t => !t.IsAbstract).ToList();
                     typesToLoad.Add((assembly, aFile, types));
                 }

@@ -89,7 +89,10 @@ namespace Analogy
             try
             {
                 if (!string.IsNullOrEmpty(directoryName) && !(Directory.Exists(directoryName)))
+                {
                     Directory.CreateDirectory(directoryName);
+                }
+
                 using (Stream myWriter = File.Open(filename, FileMode.Create, FileAccess.ReadWrite))
                 {
                     formatter.Serialize(myWriter, item);
@@ -111,6 +114,7 @@ namespace Analogy
         {
             var formatter = new BinaryFormatter();
             if (File.Exists(filename))
+            {
                 try
                 {
                     using (Stream myReader = File.Open(filename, FileMode.Open, FileAccess.Read))
@@ -122,6 +126,7 @@ namespace Analogy
                 {
                     throw new Exception("GeneralDataUtils: Error in DeSerializeBinaryFile", ex);
                 }
+            }
 
             throw new FileNotFoundException("GeneralDataUtils: File does not exist: " + filename, filename);
         }
@@ -173,7 +178,9 @@ namespace Analogy
                 SetLookAndFellSkin(feel.LookAndFeel, skinName);
             }
             foreach (Control c in control.Controls)
+            {
                 SetSkin(c, skinName);
+            }
         }
         private static void SetLookAndFellSkin(UserLookAndFeel lookAndFeel, string skinName)
         {
@@ -304,7 +311,9 @@ namespace Analogy
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
                     if (dtr.Table.Columns.Contains(info.Key))
+                    {
                         dtr[info.Key] = info.Value;
+                    }
                     else
                     {
                         AnalogyLogger.Instance.LogError("",

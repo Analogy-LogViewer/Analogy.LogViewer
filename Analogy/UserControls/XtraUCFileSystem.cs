@@ -27,7 +27,11 @@ namespace Analogy
             ListFolders = listFoldersToLoad;
             ListFiles = listFilesToLoad;
             InitializeComponent();
-            if (DesignMode) return;
+            if (DesignMode)
+            {
+                return;
+            }
+
             treeList1.DataSource = new object();
 
         }
@@ -43,10 +47,18 @@ namespace Analogy
                     e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
                     Int64 size = Convert.ToInt64(e.Node.GetValue("Size"));
                     if (size >= 1024)
+                    {
                         e.CellText = string.Format("{0:### ### ###} KB", size / 1024);
-                    else e.CellText = string.Format("{0} Bytes", size);
+                    }
+                    else
+                    {
+                        e.CellText = string.Format("{0} Bytes", size);
+                    }
                 }
-                else e.CellText = String.Format("<{0}>", e.Node.GetDisplayText("Type"));
+                else
+                {
+                    e.CellText = String.Format("<{0}>", e.Node.GetDisplayText("Type"));
+                }
             }
 
             if (e.Column == colName)
@@ -61,10 +73,17 @@ namespace Analogy
         private void treeList1_GetStateImage(object sender, GetStateImageEventArgs e)
         {
             if (e.Node.GetDisplayText("Type") == "Folder")
+            {
                 e.NodeImageIndex = e.Node.Expanded ? 1 : 0;
-            else if (e.Node.GetDisplayText("Type") == "File") e.NodeImageIndex = 2;
-            else e.NodeImageIndex = 3;
-
+            }
+            else if (e.Node.GetDisplayText("Type") == "File")
+            {
+                e.NodeImageIndex = 2;
+            }
+            else
+            {
+                e.NodeImageIndex = 3;
+            }
         }
 
         private void treeList1_VirtualTreeGetCellValue(object sender, VirtualTreeGetCellValueInfo e)
@@ -78,11 +97,19 @@ namespace Analogy
 
             if (e.Column == colType)
             {
-                if (IsDrive((string)e.Node)) e.CellData = "Drive";
+                if (IsDrive((string)e.Node))
+                {
+                    e.CellData = "Drive";
+                }
                 else if (!IsFile(di))
+                {
                     e.CellData = "Folder";
+                }
                 else
+                {
                     e.CellData = "File";
+                }
+
                 if (e.Column == colFullPath)
                 {
                     e.CellData = (string)e.Node;
@@ -96,12 +123,18 @@ namespace Analogy
                 {
                     e.CellData = new FileInfo((string)e.Node).Length;
                 }
-                else e.CellData = null;
+                else
+                {
+                    e.CellData = null;
+                }
+
                 return;
             }
 
             if (e.Column == colFullPath)
+            {
                 e.CellData = (string)e.Node;
+            }
         }
 
         bool IsFile(DirectoryInfo info)
@@ -120,7 +153,10 @@ namespace Analogy
             string[] drives = Directory.GetLogicalDrives();
             foreach (string drive in drives)
             {
-                if (drive.Equals(val)) return true;
+                if (drive.Equals(val))
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -140,11 +176,15 @@ namespace Analogy
                 {
                     string path = startupDrive;
                     if (e.Node is string node)
+                    {
                         path = node;
+                    }
+
                     if (Directory.Exists(path))
                     {
                         string[] dirs = new string[0];
                         if (ListFolders)
+                        {
                             try
                             {
                                 dirs = Directory.GetDirectories(path);
@@ -153,15 +193,26 @@ namespace Analogy
                             {
                                 dirs = new string[0];
                             }
+                        }
+
                         string[] files = ListFiles ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).Distinct().ToArray() : new string[0];
                         string[] arr = new string[dirs.Length + files.Length];
                         if (ListFolders)
+                        {
                             dirs.CopyTo(arr, 0);
+                        }
+
                         if (!ListFolders)
+                        {
                             files.CopyTo(arr, dirs.Length);
+                        }
+
                         e.Children = arr;
                     }
-                    else e.Children = new object[] { };
+                    else
+                    {
+                        e.Children = new object[] { };
+                    }
                 }
                 catch { e.Children = new object[] { }; }
             }
@@ -180,7 +231,11 @@ namespace Analogy
 
         private void treeList1_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
-            if (e.Node == null) return;
+            if (e.Node == null)
+            {
+                return;
+            }
+
             FolderChanged?.Invoke(this, new FolderSelectionEventArgs(e.Node.GetDisplayText("Path")));
         }
 

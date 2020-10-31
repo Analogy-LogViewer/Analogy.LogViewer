@@ -64,7 +64,11 @@ namespace Analogy
             if (lBoxFiles.SelectedItem != null)
             {
                 var filename = (lBoxFiles.SelectedItem as FileInfo)?.FullName;
-                if (filename == null || !File.Exists(filename)) return;
+                if (filename == null || !File.Exists(filename))
+                {
+                    return;
+                }
+
                 Process.Start("explorer.exe", "/select, \"" + filename + "\"");
             }
         }

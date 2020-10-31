@@ -363,12 +363,16 @@ namespace Analogy
         {
             AnalogyOpenedFiles += 1;
             if (!RecentFiles.Contains((iD, file)))
+            {
                 RecentFiles.Insert(0, (iD, file));
+            }
         }
         public void AddToRecentFolders(Guid iD, string path)
         {
             if (!RecentFolders.Contains((iD, path)))
+            {
                 RecentFolders.Insert(0, (iD, path));
+            }
         }
         public void ClearStatistics()
         {
@@ -414,7 +418,10 @@ namespace Analogy
         public void UpdateOrder(List<Guid> order)
         {
             if (FactoriesOrder.SequenceEqual(order))
+            {
                 return;
+            }
+
             FactoriesOrder = order;
             OnFactoryOrderChanged?.Invoke(this, new EventArgs());
         }
@@ -429,14 +436,20 @@ namespace Analogy
             if (include)
             {
                 if (LastSearchesInclude.Contains(text, StringComparison.InvariantCultureIgnoreCase))
+                {
                     return false;
+                }
+
                 LastSearchesInclude.Add(text);
                 return true;
             }
             else
             {
                 if (LastSearchesExclude.Contains(text, StringComparison.InvariantCultureIgnoreCase))
+                {
                     return false;
+                }
+
                 LastSearchesExclude.Add(text);
                 return true;
             }
@@ -576,18 +589,24 @@ namespace Analogy
         public void RemoveHighlight(PreDefineHighlight highlight)
         {
             if (Highlights.Contains(highlight))
+            {
                 Highlights.Remove(highlight);
+            }
         }
 
         public void RemoveFilter(PreDefineFilter filter)
         {
             if (Filters.Contains(filter))
+            {
                 Filters.Remove(filter);
+            }
         }
         public void RemoveAlert(PreDefineAlert alert)
         {
             if (Alerts.Contains(alert))
+            {
                 Alerts.Remove(alert);
+            }
         }
     }
     [Serializable]

@@ -32,7 +32,10 @@ namespace Analogy.Forms
             _messages = messages;
             _dataSource = dataSource;
             if (!string.IsNullOrEmpty(processOrModule))
+            {
                 ucLogs1.FilterResults(processOrModule!);
+            }
+
             ucLogs1.SetFileDataSource(dataProvider, fileProvider);
 
 
@@ -41,8 +44,16 @@ namespace Analogy.Forms
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            if (DesignMode) return;
-            if (!_messages.Any()) return;
+            if (DesignMode)
+            {
+                return;
+            }
+
+            if (!_messages.Any())
+            {
+                return;
+            }
+
             {
                 ucLogs1.AppendMessages(_messages, _dataSource);
             }

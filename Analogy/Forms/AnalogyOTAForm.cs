@@ -55,7 +55,9 @@ namespace Analogy.Forms
         private async void AnalogyOTAForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Shareable != null)
+            {
                 await Shareable.CleanupSender();
+            }
         }
 
 

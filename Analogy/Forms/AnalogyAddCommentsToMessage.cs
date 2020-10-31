@@ -48,7 +48,10 @@ namespace Analogy.Forms
             if (!string.IsNullOrEmpty(memoNoteKey.Text))
             {
                 if( Message.AdditionalInformation==null)
+                {
                     Message.AdditionalInformation=new Dictionary<string, string>();
+                }
+
                 Message.AdditionalInformation[memoNoteKey.Text] = memoText.Text;
             }
         }

@@ -54,7 +54,9 @@ namespace Analogy.Forms
             SetupExampleMessage("Test 1");
             SetupExampleMessage("Test 2");
             if (InitialSelection >= 0)
+            {
                 tabControlMain.SelectedTabPageIndex = InitialSelection;
+            }
         }
         void logGrid_MouseDown(object sender, MouseEventArgs e)
         {
@@ -174,7 +176,11 @@ namespace Analogy.Forms
             foreach (var setting in Settings.FactoriesOrder)
             {
                 FactorySettings factory = Settings.GetFactorySetting(setting);
-                if (factory == null) continue;
+                if (factory == null)
+                {
+                    continue;
+                }
+
                 var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
@@ -294,18 +300,34 @@ namespace Analogy.Forms
             Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
 
             if (rbFontSizeNormal.Checked)
+            {
                 Settings.FontSettings.SetFontSelectionType(FontSelectionType.Normal);
+            }
+
             if (rbFontSizeLarge.Checked)
+            {
                 Settings.FontSettings.SetFontSelectionType(FontSelectionType.Large);
+            }
+
             if (rbFontSizeVeryLarge.Checked)
+            {
                 Settings.FontSettings.SetFontSelectionType(FontSelectionType.VeryLarge);
+            }
 
             if (rbMenuFontSizeNormal.Checked)
+            {
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Normal);
+            }
+
             if (rbMenuFontSizeLarge.Checked)
+            {
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Large);
+            }
+
             if (rbMenuFontSizeVeryLarge.Checked)
+            {
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge);
+            }
 
             Settings.EnableFirstChanceException = tsEnableFirstChanceException.IsOn;
 
@@ -560,7 +582,11 @@ namespace Analogy.Forms
 
         private void sBtnMoveUp_Click(object sender, EventArgs e)
         {
-            if (chkLstDataProviderStatus.SelectedIndex <= 0) return;
+            if (chkLstDataProviderStatus.SelectedIndex <= 0)
+            {
+                return;
+            }
+
             var selectedIndex = chkLstDataProviderStatus.SelectedIndex;
             var currentValue = chkLstDataProviderStatus.Items[selectedIndex];
             chkLstDataProviderStatus.Items[selectedIndex] = chkLstDataProviderStatus.Items[selectedIndex - 1];
@@ -570,7 +596,11 @@ namespace Analogy.Forms
 
         private void sBtnMoveDown_Click(object sender, EventArgs e)
         {
-            if (chkLstDataProviderStatus.SelectedIndex == chkLstDataProviderStatus.Items.Count - 1) return;
+            if (chkLstDataProviderStatus.SelectedIndex == chkLstDataProviderStatus.Items.Count - 1)
+            {
+                return;
+            }
+
             var selectedIndex = chkLstDataProviderStatus.SelectedIndex;
             var currentValue = chkLstDataProviderStatus.Items[selectedIndex + 1];
             chkLstDataProviderStatus.Items[selectedIndex + 1] = chkLstDataProviderStatus.Items[selectedIndex];
@@ -581,17 +611,22 @@ namespace Analogy.Forms
         private void cbDataProviderAssociation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbDataProviderAssociation.EditValue is FactorySettings setting && setting.UserSettingFileAssociations.Any())
+            {
                 txtbDataProviderAssociation.Text = string.Join(",", setting.UserSettingFileAssociations);
+            }
             else
+            {
                 txtbDataProviderAssociation.Text = string.Empty;
-
+            }
         }
 
         private void btnSetFileAssociation_Click(object sender, EventArgs e)
         {
             if (cbDataProviderAssociation.EditValue is FactorySettings setting)
+            {
                 setting.UserSettingFileAssociations = txtbDataProviderAssociation.Text
                     .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
         }
 
         private void rbtnHighlightContains_CheckedChanged(object sender, EventArgs e)
@@ -696,14 +731,20 @@ namespace Analogy.Forms
 
         private void btnFolderProbingAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(teFoldersProbing.Text)) return;
+            if (string.IsNullOrEmpty(teFoldersProbing.Text))
+            {
+                return;
+            }
+
             listBoxFoldersProbing.Items.Add(teFoldersProbing.Text);
         }
 
         private void btnDeleteFolderProbing_Click(object sender, EventArgs e)
         {
             if (listBoxFoldersProbing.SelectedItem != null)
+            {
                 listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
+            }
         }
 
         private void rbtnDarkIconColor_CheckedChanged(object sender, EventArgs e)

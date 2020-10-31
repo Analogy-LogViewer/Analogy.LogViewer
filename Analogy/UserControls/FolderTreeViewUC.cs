@@ -77,7 +77,11 @@ namespace Analogy
         public void SetFolder(string folder, IAnalogyOfflineDataProvider dataProvider)
         {
             this.DataProvider = dataProvider;
-            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
+            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder))
+            {
+                return;
+            }
+
             SelectedPath = folder;
             txtbFolder.Text = folder;
             xtraUCFileSystem1.SetPath(folder, dataProvider);
@@ -97,7 +101,9 @@ namespace Analogy
         private void sbtnRecent_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 cmsFolders.Show(sbtnRecent.PointToScreen(e.Location));
+            }
         }
     }
 

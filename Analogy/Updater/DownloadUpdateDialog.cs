@@ -99,9 +99,14 @@ namespace Analogy.Updater
             string version = "net472";
             if (_currentFrameworkAttribute.FrameworkName.EndsWith("4.7.1") ||
                 _currentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
+            {
                 version = "net472";
+            }
             else if (_currentFrameworkAttribute.FrameworkName.EndsWith("3.1"))
+            {
                 version = "netcoreapp3.1";
+            }
+
             using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
@@ -159,7 +164,10 @@ namespace Analogy.Updater
         {
             string[] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" };
             if (byteCount == 0)
+            {
                 return "0" + suf[0];
+            }
+
             long bytes = Math.Abs(byteCount);
             int place = Convert.ToInt32(Math.Floor(Math.Log(bytes, 1024)));
             double num = Math.Round(bytes / Math.Pow(1024, place), 1);
@@ -173,7 +181,10 @@ namespace Analogy.Updater
             {
                 var index = contentDisposition.IndexOf(lookForFileName, StringComparison.CurrentCultureIgnoreCase);
                 if (index >= 0)
+                {
                     fileName = contentDisposition.Substring(index + lookForFileName.Length);
+                }
+
                 if (fileName.StartsWith("\""))
                 {
                     var file = fileName.Substring(1, fileName.Length - 1);

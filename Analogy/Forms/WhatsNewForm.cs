@@ -14,7 +14,11 @@ namespace Analogy.Forms
 
         private void WhatsNewForm_Load(object sender, EventArgs e)
         {
-            if (DesignMode) return;
+            if (DesignMode)
+            {
+                return;
+            }
+
             Icon = UserSettingsManager.UserSettings.GetIcon();
             WhatIsNew4_3_0 uc = new WhatIsNew4_3_0 { Name = "V4.3.0"};
             fluentDesignFormContainer1.Controls.Add(uc);
@@ -54,7 +58,11 @@ namespace Analogy.Forms
         {
             foreach (UserControl others in fluentDesignFormContainer1.Controls)
             {
-                if (others.Name == control) continue;
+                if (others.Name == control)
+                {
+                    continue;
+                }
+
                 others.SendToBack();
             }
 

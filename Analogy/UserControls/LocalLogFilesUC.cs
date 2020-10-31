@@ -34,7 +34,10 @@ namespace Analogy
 
             DataProvider = dataProvider;
             if (fileNames != null)
+            {
                 extrenalFiles.AddRange(fileNames);
+            }
+
             ucLogs1.SetFileDataSource(dataProvider, dataProvider);
         }
 
@@ -52,14 +55,20 @@ namespace Analogy
         }
         private async void OfflineUCLogs_Load(object sender, EventArgs e)
         {
-            if (DesignMode) return;
+            if (DesignMode)
+            {
+                return;
+            }
+
             folderTreeViewUC1.FolderChanged += FolderTreeViewUC1_FolderChanged;
             ucLogs1.btswitchRefreshLog.Visibility = BarItemVisibility.Never;
             ucLogs1.btsAutoScrollToBottom.Visibility = BarItemVisibility.Never;
             if (extrenalFiles.Any())
             {
                 if (File.Exists(extrenalFiles.First()))
+                {
                     SelectedPath = Path.GetDirectoryName(extrenalFiles.First());
+                }
             }
 
             folderTreeViewUC1.SetFolder(SelectedPath, DataProvider);
@@ -99,14 +108,22 @@ namespace Analogy
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         private async void AnalogyUCLogs_DragDrop(object sender, DragEventArgs e)
         {
-            if (DataProvider == null) return;
+            if (DataProvider == null)
+            {
+                return;
+            }
+
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             await LoadFilesAsync(files.ToList(), chkbSelectionMode.Checked);
         }
 
         private void PopulateFiles(string folder)
         {
-            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder) || DataProvider == null) return;
+            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder) || DataProvider == null)
+            {
+                return;
+            }
+
             SelectedPath = folder;
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
@@ -140,7 +157,11 @@ namespace Analogy
             if (treeList1.Selection.Any())
             {
                 var filename = (string)treeList1.Selection.First().GetValue(colFullPath);
-                if (filename == null || !File.Exists(filename)) return;
+                if (filename == null || !File.Exists(filename))
+                {
+                    return;
+                }
+
                 Process.Start("explorer.exe", "/select, \"" + filename + "\"");
             }
         }
@@ -150,11 +171,16 @@ namespace Analogy
             if (treeList1.Selection.Any())
             {
                 var filename = (string)treeList1.Selection.First().GetValue(colFullPath);
-                if (filename == null || !File.Exists(filename)) return;
+                if (filename == null || !File.Exists(filename))
+                {
+                    return;
+                }
+
                 var result = MessageBox.Show($"Are you sure you want to delete {filename}?", "Delete confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
                     if (File.Exists(filename))
+                    {
                         try
                         {
                             File.Delete(filename);
@@ -164,6 +190,7 @@ namespace Analogy
                         {
                             MessageBox.Show(exception.Message, @"Error deleting file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                    }
                 }
             }
 

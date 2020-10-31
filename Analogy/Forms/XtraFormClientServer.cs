@@ -14,9 +14,13 @@ namespace Analogy.Forms
         public void UpdateUI()
         {
             if (rBtnNetwork.Checked)
+            {
                 lblPath.Text = "Network Path:";
+            }
             else if (rBtnLocal.Checked)
+            {
                 lblPath.Text = "Local Path:";
+            }
         }
 
         private void radioButtons_CheckedChanged(object sender, EventArgs e)

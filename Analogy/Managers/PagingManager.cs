@@ -107,7 +107,10 @@ namespace Analogy
             try
             {
                 if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+                {
                     AddExtraColumnsIfNeeded(table, message);
+                }
+
                 lockSlim.EnterWriteLock();
                 DataRow dtr = Utils.CreateRow(table, message, dataSource,Settings.CheckAdditionalInformation);
                 table.Rows.Add(dtr);
@@ -129,7 +132,10 @@ namespace Analogy
             {
 
                 if (message.Level == AnalogyLogLevel.None)
+                {
                     continue; //ignore those messages
+                }
+
                 allMessages.Add(message);
                 if (countInsideTable + 1 > pageSize)
                 {
@@ -140,7 +146,10 @@ namespace Analogy
                     OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
                 }
                 if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+                {
                     AddExtraColumnsIfNeeded(table, message);
+                }
+
                 countInsideTable++;
                 try
                 {

@@ -48,7 +48,11 @@ namespace Analogy
         }
         private async void OnlineUCLogs_Load(object sender, EventArgs e)
         {
-            if (DesignMode) return;
+            if (DesignMode)
+            {
+                return;
+            }
+
             ucLogs1.OnHistoryCleared += UcLogs1_OnHistoryCleared;
             spltMain.Panel1Collapsed = true;
             await PoolingManager.Init();
@@ -68,7 +72,11 @@ namespace Analogy
         }
         private void OnNewMessages(List<AnalogyLogMessage> messages)
         {
-            if (IsDisposed || !IsHandleCreated) return;
+            if (IsDisposed || !IsHandleCreated)
+            {
+                return;
+            }
+
             BeginInvoke(new MethodInvoker(() =>
             {
                 Interlocked.Increment(ref clearHistoryCounter);
@@ -103,14 +111,22 @@ namespace Analogy
 
         private void bbtnHide_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (IsDisposed) return;
+            if (IsDisposed)
+            {
+                return;
+            }
+
             showHistory = false;
             spltMain.Panel1Collapsed = true;
         }
 
         private void ListBoxClearHistoryIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxClearHistory.SelectedItem == null) return;
+            if (listBoxClearHistory.SelectedItem == null)
+            {
+                return;
+            }
+
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);

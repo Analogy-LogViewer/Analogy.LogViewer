@@ -128,7 +128,10 @@ namespace Analogy.Managers
         public async Task<(bool newData, GithubObjects.GithubReleaseEntry release)> CheckVersion(bool forceUpdate)
         {
             if (!forceUpdate && NextUpdate > DateTime.Now && UserSettingsManager.UserSettings.LastVersionChecked != null)
+            {
                 return (false, UserSettingsManager.UserSettings.LastVersionChecked);
+            }
+
             var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(repository + "/releases", "Analogy Log Viewer", UserSettingsManager.UserSettings.GitHubToken, Instance.LastUpdate);
             LastUpdate = DateTime.Now;
             CheckedThisTun = true;
@@ -230,9 +233,14 @@ namespace Analogy.Managers
             string version = "net472";
             if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.1") ||
                 CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
+            {
                 version = "net472";
+            }
             else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("3.1"))
+            {
                 version = "netcoreapp3.1";
+            }
+
             using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
@@ -266,11 +274,14 @@ namespace Analogy.Managers
         public async Task InitiateUpdate(string title, string downloadURL)
         {
             if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(downloadURL))
+            {
                 return;
+            }
+
             if (XtraMessageBox.Show(
-                "Updating the application will close the current instance." + Environment.NewLine +
-                "Do you want to update right Now?", @"Update Confirmation", MessageBoxButtons.YesNo) ==
-            DialogResult.Yes)
+                    "Updating the application will close the current instance." + Environment.NewLine +
+                    "Do you want to update right Now?", @"Update Confirmation", MessageBoxButtons.YesNo) ==
+                DialogResult.Yes)
             {
                 await DownloadUpdaterIfNeeded();
                 if (File.Exists(UpdaterExecutable))

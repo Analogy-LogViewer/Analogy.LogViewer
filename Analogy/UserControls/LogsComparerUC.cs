@@ -134,7 +134,11 @@ namespace Analogy.Tools
 
         private void CompareIfBothSideAreLoaded()
         {
-            if (LeftFile == null | RightFile == null) return;
+            if (LeftFile == null | RightFile == null)
+            {
+                return;
+            }
+
             if (LeftFile.IsLoaded && RightFile.IsLoaded)
             {
                 Compare();

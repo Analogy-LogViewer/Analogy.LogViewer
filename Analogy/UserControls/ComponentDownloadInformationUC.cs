@@ -56,7 +56,10 @@ namespace Analogy.UserControls
             if (Factory != null)
             {
                 if (Factory.Factory.LargeImage != null)
+                {
                     picture.Image = Factory.Factory.LargeImage;
+                }
+
                 lblTitle.Text = Factory.Factory.Title;
             }
             else

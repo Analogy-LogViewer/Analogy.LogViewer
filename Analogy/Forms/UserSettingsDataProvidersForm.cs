@@ -44,7 +44,9 @@ namespace Analogy.Forms
         {
             var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
             if (tab != null)
+            {
                 _initialSelection = tab.TabIndex;
+            }
         }
 
         private void LoadSettings()
@@ -74,9 +76,9 @@ namespace Analogy.Forms
             LoadSettings();
 
             if (_initialSelection >= 0)
+            {
                 tabControlMain.SelectedTabPageIndex = _initialSelection;
-
-
+            }
         }
 
         private void UserSettingsDataProvidersForm_FormClosing(object sender, FormClosingEventArgs e)
