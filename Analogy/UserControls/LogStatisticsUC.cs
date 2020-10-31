@@ -10,23 +10,16 @@ namespace Philips.Analogy
 {
     public partial class LogStatisticsUC : UserControl
     {
-        public LogStatistics Statistics { get; set; }
-        private static Color[] colors;
-        private PieChartUC GlobalPie;
-        private PieChartUC SourcePie;
-        private PieChartUC ModulePie;
-        private PieChartUC FreeTextPie;
+        public LogStatistics? Statistics { get; set; }
+        private PieChartUC? GlobalPie;
+        private PieChartUC? SourcePie;
+        private PieChartUC? ModulePie;
+        private PieChartUC? FreeTextPie;
         public LogStatistics FreeTextStatistics { get; set; }
 
         public LogStatisticsUC()
         {
             InitializeComponent();
-            colors = new Color[]
-            {
-                Color.Aqua, Color.Blue, Color.Green, Color.Red, Color.Goldenrod, Color.Purple, Color.MediumPurple,
-                Color.OrangeRed, Color.Fuchsia
-            };
-
         }
 
         private void CreatePies()
@@ -34,7 +27,10 @@ namespace Philips.Analogy
             GlobalPie = new PieChartUC();
             spltCTop.Panel2.Controls.Add(GlobalPie);
             GlobalPie.Dock = DockStyle.Fill;
-            GlobalPie.SetDataSources(Statistics.CalculateGlobalStatistics());
+            if (Statistics != null)
+            {
+                GlobalPie.SetDataSources(Statistics.CalculateGlobalStatistics());
+            }
 
 
         }
@@ -59,6 +55,10 @@ namespace Philips.Analogy
 
         private void PopulateModule()
         {
+            if (Statistics == null)
+            {
+                return;
+            }
             var modules = Statistics.CalculateModulesStatistics().OrderByDescending(s => s.TotalMessages).ToList();
 
             ModulePie = new PieChartUC();
@@ -74,6 +74,10 @@ namespace Philips.Analogy
 
         private void PopulateSource()
         {
+            if (Statistics == null)
+            {
+                return;
+            }
             var sources = Statistics.CalculateSourcesStatistics().OrderByDescending(s => s.TotalMessages).ToList();
 
             SourcePie = new PieChartUC();
@@ -96,6 +100,10 @@ namespace Philips.Analogy
 
         private void PopulateGlobalDataGridView()
         {
+            if (Statistics == null)
+            {
+                return;
+            }
             ItemStatistics item = Statistics.CalculateGlobalStatistics();
             dgvTop.Rows.Add("Total messages:", item.TotalMessages);
             dgvTop.Rows.Add("Events:", item.Events);
@@ -140,6 +148,10 @@ namespace Philips.Analogy
 
         private void sBtnAdd_Click(object sender, System.EventArgs e)
         {
+            if (Statistics == null)
+            {
+                return;
+            }
             if (!string.IsNullOrEmpty(textEdit1.Text))
             {
                 Statistics.AddText(textEdit1.Text);
@@ -172,6 +184,10 @@ namespace Philips.Analogy
 
         private void chklistItems_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
+            if (Statistics == null)
+            {
+                return;
+            }
             var Items = chklistItems.CheckedItems.Cast<CheckedListBoxItem>().Select(i => i.Value.ToString()).ToList();
             Statistics.ClearTexts();
             foreach (string item in Items)

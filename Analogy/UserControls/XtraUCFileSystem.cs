@@ -1,4 +1,5 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using System;
@@ -6,17 +7,16 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.DataTypes;
 
 namespace Analogy
 {
     public partial class XtraUCFileSystem : XtraUserControl
     {
-        public event EventHandler<FolderSelectionEventArgs> FolderChanged;
-        private string startupDrive;
-        private bool ListFolders;
-        private bool ListFiles;
-        private IAnalogyOfflineDataProvider DataProvider { get; set; }
+        public event EventHandler<FolderSelectionEventArgs>? FolderChanged;
+        private string? _startupDrive;
+        private bool _listFolders;
+        private bool _listFiles;
+        private IAnalogyOfflineDataProvider? DataProvider { get; set; }
 
         public XtraUCFileSystem() : this(false, false)
         {
@@ -24,8 +24,8 @@ namespace Analogy
         }
         public XtraUCFileSystem(bool listFoldersToLoad, bool listFilesToLoad)
         {
-            ListFolders = listFoldersToLoad;
-            ListFiles = listFilesToLoad;
+            _listFolders = listFoldersToLoad;
+            _listFiles = listFilesToLoad;
             InitializeComponent();
             if (DesignMode)
             {
@@ -46,18 +46,11 @@ namespace Analogy
                     e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
                     e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
                     Int64 size = Convert.ToInt64(e.Node.GetValue("Size"));
-                    if (size >= 1024)
-                    {
-                        e.CellText = string.Format("{0:### ### ###} KB", size / 1024);
-                    }
-                    else
-                    {
-                        e.CellText = string.Format("{0} Bytes", size);
-                    }
+                    e.CellText = size >= 1024 ? $"{size / 1024:### ### ###} KB" : $"{size} Bytes";
                 }
                 else
                 {
-                    e.CellText = String.Format("<{0}>", e.Node.GetDisplayText("Type"));
+                    e.CellText = $"<{e.Node.GetDisplayText("Type")}>";
                 }
             }
 
@@ -163,18 +156,12 @@ namespace Analogy
 
         private void treeList1_VirtualTreeGetChildNodes(object sender, VirtualTreeGetChildNodesInfo e)
         {
-            Cursor current = Cursor.Current;
+            Cursor current = Cursor.Current!;
             Cursor.Current = Cursors.WaitCursor;
-            //if (!loadDrives)
-            //{
-            //    string[] roots = Directory.GetLogicalDrives();
-            //    e.Children = roots;
-            //    loadDrives = true;
-            //}
             {
                 try
                 {
-                    string path = startupDrive;
+                    string path = _startupDrive!;
                     if (e.Node is string node)
                     {
                         path = node;
@@ -183,7 +170,7 @@ namespace Analogy
                     if (Directory.Exists(path))
                     {
                         string[] dirs = new string[0];
-                        if (ListFolders)
+                        if (_listFolders)
                         {
                             try
                             {
@@ -195,14 +182,14 @@ namespace Analogy
                             }
                         }
 
-                        string[] files = ListFiles ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).Distinct().ToArray() : new string[0];
+                        string[] files = _listFiles && DataProvider != null ? DataProvider.GetSupportedFiles(new DirectoryInfo(path), false).Select(f => f.Name).Distinct().ToArray() : new string[0];
                         string[] arr = new string[dirs.Length + files.Length];
-                        if (ListFolders)
+                        if (_listFolders)
                         {
                             dirs.CopyTo(arr, 0);
                         }
 
-                        if (!ListFolders)
+                        if (!_listFolders)
                         {
                             files.CopyTo(arr, dirs.Length);
                         }
@@ -224,7 +211,7 @@ namespace Analogy
         {
             DataProvider = dataProvider;
             UserSettingsManager.UserSettings.AddToRecentFolders(dataProvider.Id, path);
-            startupDrive = path;
+            _startupDrive = path;
             treeList1.ClearNodes();
             treeList1.DataSource = new object();
         }
@@ -241,8 +228,8 @@ namespace Analogy
 
         public void SetListing(bool listFolders, bool listFiles)
         {
-            ListFolders = listFolders;
-            ListFiles = listFiles;
+            _listFolders = listFolders;
+            _listFiles = listFiles;
             colType.Visible = false;
             if (listFolders & !listFiles)
             {
