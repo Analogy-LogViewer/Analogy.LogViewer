@@ -214,6 +214,6 @@
     <value>DownloadUpdateDialog</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v19.1, Version=19.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

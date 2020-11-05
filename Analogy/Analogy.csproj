@@ -126,9 +126,6 @@
 		<Reference Include="DevExpress.Images.v19.1">
 			<HintPath>DevExpress\.net core\DevExpress.Images.v19.1.dll</HintPath>
 		</Reference>
-		<Reference Include="DevExpress.Map.v19.1.Core">
-			<HintPath>DevExpress\.net core\DevExpress.Map.v19.1.Core.dll</HintPath>
-		</Reference>
 		<Reference Include="DevExpress.Mvvm.v19.1">
 			<HintPath>DevExpress\.net core\DevExpress.Mvvm.v19.1.dll</HintPath>
 		</Reference>
@@ -158,12 +155,6 @@
 		</Reference>
 		<Reference Include="DevExpress.Utils.v19.1.UI">
 			<HintPath>DevExpress\.net core\DevExpress.Utils.v19.1.UI.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Web.ASPxThemes.v19.1">
-			<HintPath>DevExpress\.net core\DevExpress.Web.ASPxThemes.v19.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Web.v19.1">
-			<HintPath>DevExpress\.net core\DevExpress.Web.v19.1.dll</HintPath>
 		</Reference>
 		<Reference Include="DevExpress.XtraBars.v19.1">
 			<HintPath>DevExpress\.net core\DevExpress.XtraBars.v19.1.dll</HintPath>
@@ -248,12 +239,6 @@
 		</Reference>
 		<Reference Include="DevExpress.Utils.v19.1.UI">
 			<HintPath>DevExpress\.net framework\DevExpress.Utils.v19.1.UI.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Web.ASPxThemes.v19.1">
-			<HintPath>DevExpress\.net framework\DevExpress.Web.ASPxThemes.v19.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Web.v19.1">
-			<HintPath>DevExpress\.net framework\DevExpress.Web.v19.1.dll</HintPath>
 		</Reference>
 		<Reference Include="DevExpress.XtraBars.v19.1">
 			<HintPath>DevExpress\.net framework\DevExpress.XtraBars.v19.1.dll</HintPath>
