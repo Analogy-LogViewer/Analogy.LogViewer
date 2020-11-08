@@ -34,11 +34,15 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>8.0</LangVersion>
 	</PropertyGroup>
-
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
 	  <PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
-
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />
@@ -200,7 +204,7 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or '$(TargetFramework)' == 'net471' ">
 		<Reference Include="DevExpress.BonusSkins.v19.1">
 			<HintPath>DevExpress\.net framework\DevExpress.BonusSkins.v19.1.dll</HintPath>
 		</Reference>
@@ -297,7 +301,7 @@
 		<Reference Include="System.Windows.Forms" />
 
 	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
 		<Compile Update="Forms\AboutDataSourceBox.cs" />
 		<Compile Update="Forms\AboutDataSourceBox.Designer.cs">
 			<DependentUpon>AboutDataSourceBox.cs</DependentUpon>
@@ -736,7 +740,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
 		<PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
 	</ItemGroup>
 	<ItemGroup>
