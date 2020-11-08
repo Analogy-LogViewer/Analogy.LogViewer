@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using ChangeEventArgs = DevExpress.XtraEditors.Controls.ChangeEventArgs;
 
 namespace Analogy
 {
@@ -209,23 +210,20 @@ namespace Analogy
                 }
             });
 
-            LogGrid.RowCountChanged += (s, arg) =>
-            {
-                if (Settings.AutoScrollToLastMessage && !IsDisposed)
-                {
-                    BeginInvoke(new MethodInvoker(() =>
-                    {
-                        LogGrid.MoveLast();
-                        LogGrid.MakeRowVisible(LogGrid.FocusedRowHandle);
-                    }));
-
-                }
-            };
+     
 
 
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
+
+            if (Settings.SaveSearchFilters)
+            {
+                txtbInclude.Text = string.IsNullOrEmpty(Settings.IncludeText) || Settings.IncludeText == txtbInclude.Properties.NullText ? null : Settings.IncludeText;
+                txtbExclude.Text = string.IsNullOrEmpty(Settings.ExcludeText) || Settings.ExcludeText == txtbExclude.Properties.NullText ? null : Settings.ExcludeText; ;
+                txtbSource.Text = string.IsNullOrEmpty(Settings.SourceText) || Settings.SourceText == txtbSource.Properties.NullText ? null : Settings.SourceText;
+                txtbModule.Text = string.IsNullOrEmpty(Settings.ModuleText) || Settings.ModuleText == txtbModule.Properties.NullText ? null : Settings.ModuleText;
+            }
 
             gridControl.Focus();
         }
@@ -285,6 +283,19 @@ namespace Analogy
             bbiDatetiemFilterTo.ItemClick += tsmiDateFilterOlder_Click;
             bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
             #endregion
+
+            LogGrid.RowCountChanged += (s, arg) =>
+            {
+                if (Settings.AutoScrollToLastMessage && !IsDisposed)
+                {
+                    BeginInvoke(new MethodInvoker(() =>
+                    {
+                        LogGrid.MoveLast();
+                        LogGrid.MakeRowVisible(LogGrid.FocusedRowHandle);
+                    }));
+
+                }
+            };
 
             gridControl.KeyUp += (s, e) =>
             {
@@ -407,9 +418,15 @@ namespace Analogy
 
                 }
             };
+
+            txtbInclude.EditValueChanged += EditValueChanged;
+            txtbExclude.EditValueChanged += EditValueChanged;
+            txtbSource.EditValueChanged += EditValueChanged;
+            txtbModule.EditValueChanged += EditValueChanged;
             txtbInclude.TextChanged += async (s, e) =>
             {
-                if (OldTextInclude.Equals(txtbInclude.Text))
+                if (OldTextInclude.Equals(txtbInclude.Text) ||
+                    txtbInclude.Text.Equals(txtbInclude.Properties.NullText))
                 {
                     return;
                 }
@@ -419,6 +436,7 @@ namespace Analogy
                 if (string.IsNullOrEmpty(txtbInclude.Text))
                 {
                     ceIncludeText.Checked = false;
+                    txtbInclude.EditValue = null;
                     return;
                 }
 
@@ -441,7 +459,8 @@ namespace Analogy
             };
             txtbExclude.TextChanged += async (s, e) =>
             {
-                if (OldTextExclude.Equals(txtbExclude.Text))
+                if (OldTextExclude.Equals(txtbExclude.Text)||
+                    txtbExclude.Text.Equals(txtbExclude.Properties.NullText))
                 {
                     return;
                 }
@@ -451,6 +470,7 @@ namespace Analogy
                 if (string.IsNullOrEmpty(txtbExclude.Text))
                 {
                     ceExcludeText.Checked = false;
+                    txtbExclude.EditValue = null;
                     return;
                 }
 
@@ -460,9 +480,11 @@ namespace Analogy
 
             txtbSource.TextChanged += async (s, e) =>
             {
-                if (string.IsNullOrEmpty(txtbSource.Text))
+                if (string.IsNullOrEmpty(txtbSource.Text) ||
+                    txtbSource.Text.Equals(txtbSource.Properties.NullText))
                 {
                     ceSources.Checked = false;
+                    txtbSource.EditValue = null;
                 }
                 else
                 {
@@ -478,9 +500,11 @@ namespace Analogy
 
             txtbModule.TextChanged += async (s, e) =>
             {
-                if (string.IsNullOrEmpty(txtbModule.Text))
+                if (string.IsNullOrEmpty(txtbModule.Text) ||
+                    txtbModule.Text.Equals(txtbModule.Properties.NullText))
                 {
                     ceModulesProcess.Checked = false;
+                    txtbModule.EditValue = null;
                 }
                 else
                 {
@@ -504,6 +528,16 @@ namespace Analogy
 
 
         }
+
+        private void EditValueChanged(object sender, EventArgs e)
+        {
+
+            if (sender is BaseEdit edit && e is ChangingEventArgs change && change.NewValue == string.Empty)
+            {
+                edit.EditValue = null;
+            }
+        }
+
 
         private void MainView_Layout(object sender, EventArgs e)
         {
@@ -867,15 +901,6 @@ namespace Analogy
                 gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
                 gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
             }
-
-            if (Settings.SaveSearchFilters)
-            {
-                txtbInclude.Text = Settings.IncludeText;
-                txtbExclude.Text = Settings.ExcludeText;
-                txtbSource.Text = Settings.SourceText;
-                txtbModule.Text = Settings.ModuleText;
-            }
-
             btswitchRefreshLog.Checked = true;
             gridColumnCategory.Visible = false;
             LogGrid.BestFitColumns();
@@ -1507,7 +1532,7 @@ namespace Analogy
                                 if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
                                 {
                                     gridView.Columns.Add(new GridColumn()
-                                        { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                                    { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
                                     CurrentColumnsFields.Add((info.Key, info.Key));
                                     IncludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                                     ExcludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
@@ -1644,6 +1669,7 @@ namespace Analogy
 
         public void FilterResults(string module)
         {
+            if (IsDisposed) return;
             txtbModule.Text = module;
             FilterResults();
         }
@@ -3023,11 +3049,13 @@ namespace Analogy
 
         private void txtbInclude_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (IsDisposed) return;
             xtcFilters.SelectedTabPage = xtpFiltersIncludes;
         }
 
         private void txtbExclude_EditValueChanged(object sender, EventArgs e)
         {
+            if (IsDisposed) return;
             xtcFilters.SelectedTabPage = xtpFiltersExclude;
         }
     }
