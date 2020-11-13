@@ -130,7 +130,10 @@
             this.pictureEdit1.EditValue = global::Analogy.Properties.Resources.AnalogyBanner512x512;
             this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ReadOnly = true;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
+            this.pictureEdit1.Properties.ShowMenu = false;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit1.Size = new System.Drawing.Size(389, 389);
             this.pictureEdit1.TabIndex = 0;
@@ -152,7 +155,10 @@
             this.pictureEdit2.EditValue = global::Analogy.Properties.Resources.Ribbon2;
             this.pictureEdit2.Location = new System.Drawing.Point(0, 245);
             this.pictureEdit2.Name = "pictureEdit2";
+            this.pictureEdit2.Properties.ReadOnly = true;
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit2.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
+            this.pictureEdit2.Properties.ShowMenu = false;
             this.pictureEdit2.Size = new System.Drawing.Size(1114, 101);
             this.pictureEdit2.TabIndex = 1;
             // 
@@ -236,7 +242,9 @@
             this.pictureEdit3.EditValue = global::Analogy.Properties.Resources.SettingsMenu;
             this.pictureEdit3.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit3.Name = "pictureEdit3";
-            this.pictureEdit3.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit3.Properties.ReadOnly = true;
+            this.pictureEdit3.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
+            this.pictureEdit3.Properties.ShowMenu = false;
             this.pictureEdit3.Size = new System.Drawing.Size(414, 389);
             this.pictureEdit3.TabIndex = 5;
             // 
