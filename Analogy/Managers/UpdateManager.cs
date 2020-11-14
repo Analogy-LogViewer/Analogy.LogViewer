@@ -3,7 +3,6 @@ using Analogy.DataTypes;
 using Analogy.Updater;
 using DevExpress.XtraEditors;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -230,11 +229,18 @@ namespace Analogy.Managers
 
         private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath)
         {
-            string version = "net472";
-            if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.1") ||
-                CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
+            string version="net48";
+            if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.1"))
+            {
+                version = "net471";
+            }
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
             {
                 version = "net472";
+            }
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.8"))
+            {
+                version = "net48";
             }
             else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("3.1"))
             {

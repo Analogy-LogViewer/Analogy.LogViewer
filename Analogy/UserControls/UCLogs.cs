@@ -28,7 +28,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
-using ChangeEventArgs = DevExpress.XtraEditors.Controls.ChangeEventArgs;
 
 namespace Analogy
 {
@@ -1668,7 +1667,11 @@ namespace Analogy
 
         public void FilterResults(string module)
         {
-            if (IsDisposed) return;
+            if (IsDisposed)
+            {
+                return;
+            }
+
             txtbModule.Text = module;
             FilterResults();
         }
@@ -3048,13 +3051,21 @@ namespace Analogy
 
         private void txtbInclude_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (IsDisposed) return;
+            if (IsDisposed)
+            {
+                return;
+            }
+
             xtcFilters.SelectedTabPage = xtpFiltersIncludes;
         }
 
         private void txtbExclude_EditValueChanged(object sender, EventArgs e)
         {
-            if (IsDisposed) return;
+            if (IsDisposed)
+            {
+                return;
+            }
+
             xtcFilters.SelectedTabPage = xtpFiltersExclude;
         }
     }
