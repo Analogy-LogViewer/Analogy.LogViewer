@@ -48,7 +48,7 @@
 		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.1" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.2" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.7.9.5" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.6.10" />
 		<PackageReference Include="MessagePack" Version="2.2.60" />
