@@ -48,9 +48,9 @@
 		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.1" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.7.9.5" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="1.6.10" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.2" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.8.1.1" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="1.6.10.1" />
 		<PackageReference Include="MessagePack" Version="2.2.60" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
@@ -59,39 +59,39 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="0.3.5">
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="0.3.6">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="0.3.5">
+		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="0.3.6">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Example" Version="1.7.9">
+		<PackageReference Include="Analogy.LogViewer.Example" Version="1.8.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.4.8">
+		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="1.4.8.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="1.4.0">
+		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="1.4.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.4.0">
+		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.4.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.4.3">
+		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="1.4.3.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.7.0">
+		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.7.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="1.4.0">
+		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="1.4.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -735,7 +735,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
 		<PackageReference Include="Analogy.LogViewer.gRPC">
-			<Version>1.4.3.1</Version>
+			<Version>1.4.3.2</Version>
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
