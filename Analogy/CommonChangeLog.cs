@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.3.2 - Enable DirectX rendering #681",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,20)),
                 new AnalogyChangeLog("V4.3.1 - [UI] Disable right click on images in the First Run window #660",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,13)),
                 new AnalogyChangeLog("V4.3.1 - Category column is hidden by default. undo it. #659",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,12)),
                 new AnalogyChangeLog("V4.3.1 - [UI] null values are not displayed correctly #654",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,08)),

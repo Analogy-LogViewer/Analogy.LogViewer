@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Analogy.Managers;
 
 namespace Analogy
 {
@@ -28,7 +29,11 @@ namespace Analogy
         [STAThread]
         static void Main()
         {
-
+            AnalogyLogManager.Instance.LogInformation($"OS: {Environment.OSVersion.Version}",nameof(Program));
+            if (Environment.OSVersion.Version.Major >= 10)
+            {
+                WindowsFormsSettings.ForceDirectXPaint();
+            }
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             AssemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
