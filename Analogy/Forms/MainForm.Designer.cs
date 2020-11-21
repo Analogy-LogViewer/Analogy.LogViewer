@@ -33,6 +33,13 @@
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -108,6 +115,7 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
+            this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -590,6 +598,16 @@
             this.bbiFileCaching.Caption = "File caching is";
             this.bbiFileCaching.Id = 68;
             this.bbiFileCaching.Name = "bbiFileCaching";
+            toolTipTitleItem1.Text = "File Caching";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "If enabled, a file that was already loaded won\'t be read again when selected and " +
+    "the content will be loaded from cache.";
+            toolTipTitleItem2.LeftIndent = 6;
+            toolTipTitleItem2.Text = "click on the text to toggle file caching";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipTitleItem2);
+            this.bbiFileCaching.SuperTip = superToolTip1;
             this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
             // 
             // btnErrors
@@ -641,6 +659,12 @@
             this.skinRibbonGallery.Caption = "Skin";
             this.skinRibbonGallery.Id = 81;
             this.skinRibbonGallery.Name = "skinRibbonGallery";
+            toolTipTitleItem3.Text = "Skins and themes";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "A list of built-in skins and themes";
+            superToolTip2.Items.Add(toolTipTitleItem3);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.skinRibbonGallery.SuperTip = superToolTip2;
             // 
             // skinPaletteRibbonGalleryBarItem3
             // 
@@ -850,6 +874,7 @@
             // MainForm
             // 
             this.AllowDrop = true;
+            this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 439);
@@ -953,5 +978,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiBookmarks;
         private DevExpress.XtraBars.BarButtonItem btnSettingsDebugging;
         private DevExpress.XtraBars.BarButtonItem bbtnDataProvidersUpdates;
+        private DevExpress.Utils.DefaultToolTipController defaultToolTipController1;
     }
 }
