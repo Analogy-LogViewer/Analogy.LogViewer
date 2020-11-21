@@ -35,21 +35,7 @@ A log viewer that can parse log files and stream logs from C#, Python, Java and 
 [Contact](https://github.com/Analogy-LogViewer/Analogy.LogViewer#contact)
 
 ## General
-Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems with support for most log frameworks log files:
-it supports both offline log files:
-1. Supports common frameworks like [Serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [NLog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog), etc.
-2. Supports generic log files like plain text with [Regex parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser) and [XML](https://github.com/Analogy-LogViewer/Analogy.LogViewer.XMLParser)/[Json](https://github.com/Analogy-LogViewer/Analogy.LogViewer.JsonParser) parsers.
-
-And real time streaming of logs: 
-1. [NLog Target](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog.Targets) 
-2. [Serilog Sink](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) 
-3. [Asp Core log provider](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider)
-4. [Python streaming](https://github.com/Analogy-LogViewer/Analogy-Python-Logging)
-
- For a complete list visit [Analogy Overview repository](https://github.com/Analogy-LogViewer/Overview).
-
-The application has many standard operations for analysis logs (like filtering, excluding) but its strength is in the ability to add additional custom data sources by implementing few interfaces.
-This allows adding any logs formats and/or custom modification of logs before presenting the data in the UI Layer.
+Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems.
 
 Some features of this tool are:
 1.	Windows event log support (evtx files)
@@ -69,92 +55,85 @@ Main interaction UI:
 - Messages area: File system UI and Main Log viewer area
 ![Main screen](Assets/AnalogyMainUI2.jpg)
 
+The application supports the followings data providers:
+
+1. Common logs frameworks like: [Serilog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog), [NLog](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog), [Log4Net](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net), [Microsoft Logging](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider). 
+
+2. Generic file types: [Json Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.JsonParser) and [XML parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.XMLParser).
+
+3. Real time streaming from the following languages: [C#](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider), [C++](https://github.com/Analogy-LogViewer/Analogy-cpp-Logging), [Python](https://github.com/Analogy-LogViewer/Analogy-Python-Logging) and [JAVA](https://github.com/Analogy-LogViewer/Analogy-Java-Logging) using [gRPC log Server](https://github.com/Analogy-LogViewer/Real-Time-Log-Server) and client.
+
+4. Custom providers. Create specific parsers for specific applications. For a complete list visit [Analogy Overview repository](https://github.com/Analogy-LogViewer/Overview).
+
 ## Usage
 
 Thre are 3 modes of operations:
 - real time log server: a gRPC Windows service that can receive messages from any gRPC client and the Log viewer app can connect to it to show real time logs.
-- real time logs: different implementation tha tcan receive logs in real time (e.g: Windows event log data provider that show event logs as they are created)
+- real time logs: different implementation that can receive logs in real time (e.g: Windows event log data provider that show event logs as they are created)
 - Offline mode: Parse log files. There are many different implemetations.
 For a full list: [see implementations](https://github.com/Analogy-LogViewer/Analogy#log-viewer-application) for common logs files/frameworks.
 
-You can also create your own providers:
+
+If you need you can create your own providers:
 to implement a new data provider do the following:
 
 0. Create new  cs project and make sure your assembly is named Analogy.LogViewer.*.dll.
-1. reference nuget package [Analogy.LogViewer.Interfaces](https://www.nuget.org/packages/Analogy.LogViewer.Interfaces/).
-2. implement interface:
+1. reference nugets package [Analogy.LogViewer.Interfaces](https://www.nuget.org/packages/Analogy.LogViewer.Interfaces/) and [Analogy.LogViewer.Template](https://www.nuget.org/packages/Analogy.LogViewer.Template/)
+
+2. inherite  ```Analogy.LogViewer.Template.PrimaryFactory``` class  from the template and override some properties:
 ```csharp
-    public interface IAnalogyFactory
+    public class PrimaryFactory : Analogy.LogViewer.Template.PrimaryFactory
     {
-        Guid FactoryId { get; }
-        string Title { get; }
-        IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
-        IEnumerable<string> Contributors { get; }
-        string About { get; }
+        internal static Guid Id { get; }= new Guid("XXXXXXXX");
+        public override Guid FactoryId { get; set; } = Id;
+        public override string Title { get; set; } = "Name of your provider (like Serilog, Nlog)";
+        public override IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = ChangeLogList.GetChangeLog();
+        public override IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
+        public override string About { get; set; } = "Analogy Log Parser";
+        public override Image? SmallImage { get; set; } = Resources.Image16x16;
+        public override Image? LargeImage { get; set; } = Resources.Image32x32;
+
+
     }
 ```
 
 The FactoryId is the identifier of your provider.
+all other providers (real time, offline) refer to this identifier to group them under the tab in the U.
 
-3. implement interfaces IAnalogyRealTimeDataProvider (for real time messages) or IAnalogyOfflineDataProvider (for existing log files).
-
+3. create DataProvidersFactory class that contains all your providers (real time or offline):
 ```csharp
-  public interface IAnalogyRealTimeDataProvider : IAnalogyDataProvider
-  {
-    event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
-    event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
-    event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
-    IAnalogyOfflineDataProvider FileOperationsHandler { get; }
-    Task<bool> CanStartReceiving();
-    void StartReceiving();
-    void StopReceiving();
-    bool IsConnected { get; }
-  }
-```
-
-```csharp
-
-  public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
-  {
-    bool DisableFilePoolingOption { get; }
-    bool CanSaveToLogFile { get; }
-    string FileOpenDialogFilters { get; }
-    string FileSaveDialogFilters { get; }
-    IEnumerable<string> SupportFormats { get; }
-    string InitialFolderFullPath { get; }
-    Task<IEnumerable<AnalogyLogMessage>> Process(
-      string fileName,
-      CancellationToken token,
-      ILogMessageCreatedHandler messagesHandler);
-    IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad);
-    Task SaveAsync(List<AnalogyLogMessage> messages, string fileName);
-    bool CanOpenFile(string fileName);
-    bool CanOpenAllFiles(IEnumerable<string> fileNames);
-  }
-```
-
-4. Implement the container for those interfaces IAnalogyDataProvidersFactory (make sure FactoryId is the same one you created at step 2):
-
-```csharp
-
-    public interface IAnalogyDataProvidersFactory
+    public class DataProvidersFactory : LogViewer.Template.DataProvidersFactory
     {
-        /// <summary>
-        /// the factory id which this Data providers factory belongs to
-        /// </summary>
-        Guid FactoryId { get; }
-        string Title { get; }
-        IEnumerable<IAnalogyDataProvider> DataProviders { get; }
+        public override Guid FactoryId { get; set; } = PrimaryFactory.Id;
+        public override string Title { get; set; } = "Log Parsers";
+        public override IEnumerable<IAnalogyDataProvider> DataProviders { get; set; } = new List<IAnalogyDataProvider> 
+        {new SomeOfflineDataProvider(), new OnlinelineDataProvider() };
     }
+ ```
+ 
+4. To implement offline (log file) Parser inherite ```Analogy.LogViewer.Template.OfflineDataProvider``` and at minimum override the Parse methods and some properties like Id:
+
+```csharp
+  public class OfflineDataProvider : Analogy.LogViewer.Template.OfflineDataProvider
+  {
+      public override Image? SmallImage { get; set; } = null;
+      public override Image? LargeImage { get; set; } = null;
+      public override string? OptionalTitle { get; set; } = "Some Parser";
+      public override string FileOpenDialogFilters { get; set; } = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+      public override IEnumerable<string> SupportFormats { get; set; } = new List<string> { "*.txt" };
+      public override string? InitialFolderFullPath { get; set; } = Environment.CurrentDirectory;
+      public override Guid Id { get; set; } = new Guid("XXXX");
+     
+     private PlainTextLogFileParser parser=new PlainTextLogFileParser();
+      
+      public override Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,ILogMessageCreatedHandler messagesHandler)
+            => parser.Process(fileName, token, messagesHandler);
 ```
 
-you can implement additional interfaces:
- - IAnalogyDataProviderSettings - add ability to create use control to load in the application user settings. You can create a specific UI to change specific settings for your provider.
-this interface comes from nuget package [Analogy.DataProviders.Extensions](https://www.nuget.org/packages/Analogy.DataProviders.Extensions/).
- - IAnalogyCustomActionsFactory - custom action to add to the UI
- - IAnalogyShareableFactory - add ability to send log messages from one provider to another
+4. To implement real time streaming Parser inherite ```Analogy.LogViewer.Template.OnlineDataProvider``` and again override needed members.
 
-Project [Analogy.LogViewer.Example](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Example) has concrete example.
+you can use exisitng projects (like [PowerToys Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.PowerToys) for offline and [Windows Event logs](https://github.com/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs) for real time)
+another option is to check the [Analogy.LogViewer.Example](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Example) example.
 
 5. Put your dll at the same folder as the application. You can download [latest version](https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases)
 
