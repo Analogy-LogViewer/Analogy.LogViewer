@@ -41,18 +41,18 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -171,6 +171,7 @@ namespace Analogy
             this.spltText = new System.Windows.Forms.SplitContainer();
             this.txtbInclude = new DevExpress.XtraEditors.TextEdit();
             this.ceIncludeText = new DevExpress.XtraEditors.CheckEdit();
+            this.defaultToolTipController = new DevExpress.Utils.ToolTipController(this.components);
             this.sbtnTextInclude = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnPreDefinedFilters = new DevExpress.XtraEditors.SimpleButton();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
@@ -246,7 +247,7 @@ namespace Analogy
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.defaultToolTipController = new DevExpress.Utils.ToolTipController(this.components);
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -1669,13 +1670,13 @@ namespace Analogy
             this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
             this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
             this.ceModulesProcess.Size = new System.Drawing.Size(229, 22);
-            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem4.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.ceModulesProcess.SuperTip = superToolTip1;
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceModulesProcess.SuperTip = superToolTip4;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1804,12 +1805,12 @@ namespace Analogy
             this.ceExcludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageChecked")));
             this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceExcludeText.Size = new System.Drawing.Size(99, 24);
-            toolTipTitleItem2.Text = "Text Property Filtering (exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceExcludeText.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Text Property Filtering (exclude)";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.ceExcludeText.SuperTip = superToolTip1;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnTextExclude
@@ -1875,15 +1876,19 @@ namespace Analogy
             this.ceIncludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageChecked")));
             this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceIncludeText.Size = new System.Drawing.Size(97, 23);
-            toolTipTitleItem4.Text = "Text Property Filtering";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.ceIncludeText.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Text Property Filtering";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceIncludeText.SuperTip = superToolTip2;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
+            // 
+            // defaultToolTipController
+            // 
+            this.defaultToolTipController.Appearance.Options.UseBorderColor = true;
             // 
             // sbtnTextInclude
             // 
@@ -3028,9 +3033,9 @@ namespace Analogy
             this.LogGridPopupMenu.Manager = this.barManager1;
             this.LogGridPopupMenu.Name = "LogGridPopupMenu";
             // 
-            // defaultToolTipController
+            // alertControl1
             // 
-            this.defaultToolTipController.Appearance.Options.UseBorderColor = true;
+            this.alertControl1.ShowPinButton = false;
             // 
             // UCLogs
             // 
@@ -3341,5 +3346,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiSaveBookmarks;
         private DevExpress.XtraBars.BarButtonItem bbiJsonViewer;
         private DevExpress.Utils.ToolTipController defaultToolTipController;
+        private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
     }
 }

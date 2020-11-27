@@ -28,6 +28,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Properties;
+using DevExpress.XtraBars.Alerter;
 
 namespace Analogy
 {
@@ -218,10 +220,32 @@ namespace Analogy
 
             if (Settings.SaveSearchFilters)
             {
-                txtbInclude.Text = string.IsNullOrEmpty(Settings.IncludeText) || Settings.IncludeText == txtbInclude.Properties.NullText ? null : Settings.IncludeText;
-                txtbExclude.Text = string.IsNullOrEmpty(Settings.ExcludeText) || Settings.ExcludeText == txtbExclude.Properties.NullText ? null : Settings.ExcludeText; ;
-                txtbSource.Text = string.IsNullOrEmpty(Settings.SourceText) || Settings.SourceText == txtbSource.Properties.NullText ? null : Settings.SourceText;
-                txtbModule.Text = string.IsNullOrEmpty(Settings.ModuleText) || Settings.ModuleText == txtbModule.Properties.NullText ? null : Settings.ModuleText;
+                string? includeText = string.IsNullOrEmpty(Settings.IncludeText) || Settings.IncludeText == txtbInclude.Properties.NullText ? null : Settings.IncludeText;
+                txtbInclude.Text = includeText;
+                string? excludeText = string.IsNullOrEmpty(Settings.ExcludeText) || Settings.ExcludeText == txtbExclude.Properties.NullText ? null : Settings.ExcludeText;
+                txtbExclude.Text = excludeText;
+                string? source = string.IsNullOrEmpty(Settings.SourceText) || Settings.SourceText == txtbSource.Properties.NullText ? null : Settings.SourceText;
+                txtbSource.Text = source;
+                string? module = string.IsNullOrEmpty(Settings.ModuleText) || Settings.ModuleText == txtbModule.Properties.NullText ? null : Settings.ModuleText;
+                txtbModule.Text = module;
+
+                if (!string.IsNullOrEmpty(includeText) || !string.IsNullOrEmpty(excludeText) ||
+                    !string.IsNullOrEmpty(source) || !string.IsNullOrEmpty(module))
+                {
+                    AlertButton btn1 = new AlertButton(Resources.Clear_16x16);
+                    btn1.Hint = "Clear Filtering";
+                    btn1.Name = "buttonClearFiltering";
+                    alertControl1.Buttons.Add(btn1);
+                    alertControl1.ButtonClick += (s, arg) =>
+                    {
+                        if (arg.ButtonName == btn1.Name)
+                        {
+                            txtbInclude.Text = txtbExclude.Text = txtbSource.Text = txtbModule.Text = null;
+                        }
+                    };
+                    AlertInfo info = new AlertInfo("Filtering", "previous search filters are used");
+                    alertControl1.Show(this.ParentForm, info);
+                }
             }
 
             gridControl.Focus();
