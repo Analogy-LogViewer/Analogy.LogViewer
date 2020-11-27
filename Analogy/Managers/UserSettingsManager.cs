@@ -164,6 +164,7 @@ namespace Analogy
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.gRPC", "Analogy.LogViewer.gRPC.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.gRPC"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WindowsEventLogs", "Analogy.LogViewer.WindowsEventLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Example", "Analogy.LogViewer.Example.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Example"));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.GitHubActionLogs", "Analogy.LogViewer.GitHubActionLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.GitHubActionLogs"));
 
 
             EnableCompressedArchives = true;
