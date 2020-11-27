@@ -20,7 +20,7 @@ namespace Analogy
         }
 
 
-        public void SetDataSources(ItemStatistics statistics)
+        public void SetDataSources(LogAnalyzerLogLevel statistics)
         {
             if (pieChart == null)
             {

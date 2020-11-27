@@ -211,7 +211,7 @@ namespace Analogy
                 }
             });
 
-     
+
 
 
             gridControl.DataSource = _messageData.DefaultView;
@@ -261,8 +261,7 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
-            #region
-
+            #region buttons
             bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
             {
                 if (bbiIncludeColumnHeaderFilter.Tag is ViewColumnFilterInfo filter)
@@ -307,6 +306,138 @@ namespace Analogy
             bbiBookmarkNonPersist.ItemClick += tsmiBookmark_Click;
             bbiDatetiemFilterTo.ItemClick += tsmiDateFilterOlder_Click;
             bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
+            sbtnToggleSearchFilter.Click += (_, __) =>
+            {
+                Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
+                logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
+            };
+            bBtnFullGrid.ItemClick += (s, e) =>
+            {
+                FullModeEnabled = !FullModeEnabled;
+                pnlFilters.Visible = !FullModeEnabled;
+            };
+            bBtnShare.ItemClick += (s, e) =>
+            {
+                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable());
+                share.Show(this);
+            };
+            bbtnReload.ItemClick += async (s, e) =>
+            {
+                reloadDateTime = FileProcessor.lastNewestMessage;
+                await LoadFilesAsync(LoadedFiles, true, true);
+            };
+            bbiSaveBookmarks.ItemClick += (_, __) => SaveMessagesToLog(FileDataProvider, BookmarkedMessages);
+
+            #endregion
+            #region textboxes
+            txtbInclude.Enter += (s, e) => txtbInclude.SelectAll();
+            txtbInclude.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    var added = Settings.AddNewSearchesEntryToLists(txtbInclude.Text, true);
+                    if (added)
+                    {
+                        autoCompleteInclude.Add(txtbInclude.Text);
+                    }
+
+                }
+            };
+            txtbInclude.EditValueChanged += EditValueChanged;
+            txtbExclude.EditValueChanged += EditValueChanged;
+            txtbSource.EditValueChanged += EditValueChanged;
+            txtbModule.EditValueChanged += EditValueChanged;
+            txtbInclude.TextChanged += async (s, e) =>
+            {
+                if (OldTextInclude.Equals(txtbInclude.Text) ||
+                    txtbInclude.Text.Equals(txtbInclude.Properties.NullText))
+                {
+                    return;
+                }
+
+                OldTextInclude = txtbInclude.Text;
+                // txtbHighlight.Text = txtbInclude.Text;
+                if (string.IsNullOrEmpty(txtbInclude.Text))
+                {
+                    ceIncludeText.Checked = false;
+                    txtbInclude.EditValue = null;
+                    return;
+                }
+
+                chkbHighlight.Checked = false;
+                ceIncludeText.Checked = true;
+                await FilterHasChanged();
+            };
+            txtbExclude.Enter += (s, e) => txtbExclude.SelectAll();
+            txtbExclude.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    var added = Settings.AddNewSearchesEntryToLists(txtbExclude.Text, false);
+                    if (added)
+                    {
+                        autoCompleteExclude.Add(txtbExclude.Text);
+                    }
+                }
+            };
+            txtbExclude.TextChanged += async (s, e) =>
+            {
+                if (OldTextExclude.Equals(txtbExclude.Text) ||
+                    txtbExclude.Text.Equals(txtbExclude.Properties.NullText))
+                {
+                    return;
+                }
+
+                Settings.ExcludeText = txtbExclude.Text;
+                OldTextExclude = txtbExclude.Text;
+                if (string.IsNullOrEmpty(txtbExclude.Text))
+                {
+                    ceExcludeText.Checked = false;
+                    txtbExclude.EditValue = null;
+                    return;
+                }
+
+                ceExcludeText.Checked = true;
+                await FilterHasChanged();
+            };
+            txtbSource.TextChanged += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtbSource.Text) ||
+                    txtbSource.Text.Equals(txtbSource.Properties.NullText))
+                {
+                    ceSources.Checked = false;
+                    txtbSource.EditValue = null;
+                }
+                else
+                {
+                    if (!ceSources.Checked)
+                    {
+                        ceSources.Checked = true;
+                    }
+                }
+
+                await FilterHasChanged();
+                Settings.SourceText = txtbSource.Text;
+            };
+            txtbModule.TextChanged += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtbModule.Text) ||
+                    txtbModule.Text.Equals(txtbModule.Properties.NullText))
+                {
+                    ceModulesProcess.Checked = false;
+                    txtbModule.EditValue = null;
+                }
+                else
+                {
+                    if (!ceModulesProcess.Checked)
+                    {
+                        ceModulesProcess.Checked = true;
+                    }
+                }
+
+                await FilterHasChanged();
+                Settings.ModuleText = txtbModule.Text;
+            };
             #endregion
 
             LogGrid.RowCountChanged += (s, arg) =>
@@ -321,7 +452,6 @@ namespace Analogy
 
                 }
             };
-
             gridControl.KeyUp += (s, e) =>
             {
                 Keys excludeModifier = e.KeyCode & ~Keys.Control & ~Keys.Shift & ~Keys.Alt;
@@ -347,13 +477,7 @@ namespace Analogy
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
             gridViewBookmarkedMessages.RowStyle += pmsGridView_RowStyle;
             gridViewGrouping2.RowStyle += pmsGridView_RowStyle;
-
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
-            sbtnToggleSearchFilter.Click += (_, __) =>
-            {
-                Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
-                logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
-            };
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
             clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
             deNewerThanFilter.EditValueChanged += async (s, e) =>
@@ -408,16 +532,6 @@ namespace Analogy
                 var sortOrder = gridColumnDate.SortOrder;
                 Settings.DefaultDescendOrder = sortOrder == ColumnSortOrder.Descending;
             };
-            bBtnFullGrid.ItemClick += (s, e) =>
-            {
-                FullModeEnabled = !FullModeEnabled;
-                pnlFilters.Visible = !FullModeEnabled;
-            };
-            bBtnShare.ItemClick += (s, e) =>
-            {
-                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable());
-                share.Show(this);
-            };
             PagingManager.OnPageChanged += (s, arg) =>
             {
                 if (IsDisposed)
@@ -429,129 +543,6 @@ namespace Analogy
                     lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
 
             };
-
-            txtbInclude.Enter += (s, e) => txtbInclude.SelectAll();
-            txtbInclude.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    var added = Settings.AddNewSearchesEntryToLists(txtbInclude.Text, true);
-                    if (added)
-                    {
-                        autoCompleteInclude.Add(txtbInclude.Text);
-                    }
-
-                }
-            };
-
-            txtbInclude.EditValueChanged += EditValueChanged;
-            txtbExclude.EditValueChanged += EditValueChanged;
-            txtbSource.EditValueChanged += EditValueChanged;
-            txtbModule.EditValueChanged += EditValueChanged;
-            txtbInclude.TextChanged += async (s, e) =>
-            {
-                if (OldTextInclude.Equals(txtbInclude.Text) ||
-                    txtbInclude.Text.Equals(txtbInclude.Properties.NullText))
-                {
-                    return;
-                }
-
-                OldTextInclude = txtbInclude.Text;
-                // txtbHighlight.Text = txtbInclude.Text;
-                if (string.IsNullOrEmpty(txtbInclude.Text))
-                {
-                    ceIncludeText.Checked = false;
-                    txtbInclude.EditValue = null;
-                    return;
-                }
-
-                chkbHighlight.Checked = false;
-                ceIncludeText.Checked = true;
-                await FilterHasChanged();
-            };
-
-            txtbExclude.Enter += (s, e) => txtbExclude.SelectAll();
-            txtbExclude.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    var added = Settings.AddNewSearchesEntryToLists(txtbExclude.Text, false);
-                    if (added)
-                    {
-                        autoCompleteExclude.Add(txtbExclude.Text);
-                    }
-                }
-            };
-            txtbExclude.TextChanged += async (s, e) =>
-            {
-                if (OldTextExclude.Equals(txtbExclude.Text)||
-                    txtbExclude.Text.Equals(txtbExclude.Properties.NullText))
-                {
-                    return;
-                }
-
-                Settings.ExcludeText = txtbExclude.Text;
-                OldTextExclude = txtbExclude.Text;
-                if (string.IsNullOrEmpty(txtbExclude.Text))
-                {
-                    ceExcludeText.Checked = false;
-                    txtbExclude.EditValue = null;
-                    return;
-                }
-
-                ceExcludeText.Checked = true;
-                await FilterHasChanged();
-            };
-
-            txtbSource.TextChanged += async (s, e) =>
-            {
-                if (string.IsNullOrEmpty(txtbSource.Text) ||
-                    txtbSource.Text.Equals(txtbSource.Properties.NullText))
-                {
-                    ceSources.Checked = false;
-                    txtbSource.EditValue = null;
-                }
-                else
-                {
-                    if (!ceSources.Checked)
-                    {
-                        ceSources.Checked = true;
-                    }
-                }
-
-                await FilterHasChanged();
-                Settings.SourceText = txtbSource.Text;
-            };
-
-            txtbModule.TextChanged += async (s, e) =>
-            {
-                if (string.IsNullOrEmpty(txtbModule.Text) ||
-                    txtbModule.Text.Equals(txtbModule.Properties.NullText))
-                {
-                    ceModulesProcess.Checked = false;
-                    txtbModule.EditValue = null;
-                }
-                else
-                {
-                    if (!ceModulesProcess.Checked)
-                    {
-                        ceModulesProcess.Checked = true;
-                    }
-                }
-
-                await FilterHasChanged();
-                Settings.ModuleText = txtbModule.Text;
-            };
-
-            bbtnReload.ItemClick += async (s, e) =>
-            {
-                reloadDateTime = FileProcessor.lastNewestMessage;
-                await LoadFilesAsync(LoadedFiles, true, true);
-            };
-
-            bbiSaveBookmarks.ItemClick += (_, __) => SaveMessagesToLog(FileDataProvider, BookmarkedMessages);
-
-
         }
 
         private void EditValueChanged(object sender, EventArgs e)

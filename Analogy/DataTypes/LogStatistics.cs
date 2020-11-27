@@ -20,12 +20,12 @@ namespace Analogy.DataTypes
         {
             MessagesSource = messagesFunc;
         }
-        public ItemStatistics CalculateGlobalStatistics()
+        public LogAnalyzerLogLevel CalculateGlobalStatistics()
         {
-            return new ItemStatistics("Global", Messages.Count, CountMessages(Messages, AnalogyLogLevel.Error),
+            return new LogAnalyzerLogLevel("Global", Messages.Count, CountMessages(Messages, AnalogyLogLevel.Error),
                 CountMessages(Messages, AnalogyLogLevel.Warning), CountMessages(Messages, AnalogyLogLevel.Critical),
                 CountMessages(Messages, AnalogyLogLevel.Information), CountMessages(Messages, AnalogyLogLevel.Debug),
-                CountMessages(Messages, AnalogyLogLevel.Verbose));
+                CountMessages(Messages, AnalogyLogLevel.Verbose), CountMessages(Messages, AnalogyLogLevel.Trace));
         }
 
         public List<Statistics> CalculateTextStatistics()
@@ -43,7 +43,7 @@ namespace Analogy.DataTypes
 
         public void AddText(string text) => Texts.Add(text);
         public void ClearTexts() => Texts.Clear();
-        public IEnumerable<ItemStatistics> CalculateModulesStatistics()
+        public IEnumerable<LogAnalyzerLogLevel> CalculateModulesStatistics()
         {
             foreach (var module in Modules.Where(m => m != null))
             {
@@ -53,23 +53,30 @@ namespace Analogy.DataTypes
 
         }
 
-        public ItemStatistics CalculateSingleStatistics(string module)
+        public LogAnalyzerLogLevel CalculateSingleStatistics(string module)
         {
-            return new ItemStatistics(module, Messages.Count(m => module.Equals(m.Module)),
-                CountModuleMessages(module, AnalogyLogLevel.Error), CountModuleMessages(module, AnalogyLogLevel.Warning),
-                CountModuleMessages(module, AnalogyLogLevel.Critical), CountModuleMessages(module, AnalogyLogLevel.Information),
-                CountModuleMessages(module, AnalogyLogLevel.Debug), CountModuleMessages(module, AnalogyLogLevel.Verbose));
+            return new LogAnalyzerLogLevel(module, Messages.Count(m => module.Equals(m.Module)),
+                CountModuleMessages(module, AnalogyLogLevel.Error),
+                CountModuleMessages(module, AnalogyLogLevel.Warning),
+                CountModuleMessages(module, AnalogyLogLevel.Critical),
+                CountModuleMessages(module, AnalogyLogLevel.Information),
+                CountModuleMessages(module, AnalogyLogLevel.Debug),
+                CountModuleMessages(module, AnalogyLogLevel.Verbose), CountMessages(Messages, AnalogyLogLevel.Trace));
 
         }
 
-        public IEnumerable<ItemStatistics> CalculateSourcesStatistics()
+        public IEnumerable<LogAnalyzerLogLevel> CalculateSourcesStatistics()
         {
             foreach (var source in Sources.Where(s => s != null))
             {
-                yield return new ItemStatistics(source, Messages.Count(m => source.Equals(m.Source)),
-                    CountSourceMessages(source, AnalogyLogLevel.Error), CountSourceMessages(source, AnalogyLogLevel.Warning),
-                    CountSourceMessages(source, AnalogyLogLevel.Critical), CountSourceMessages(source, AnalogyLogLevel.Information),
-                    CountSourceMessages(source, AnalogyLogLevel.Debug), CountSourceMessages(source, AnalogyLogLevel.Verbose));
+                yield return new LogAnalyzerLogLevel(source, Messages.Count(m => source.Equals(m.Source)),
+                    CountSourceMessages(source, AnalogyLogLevel.Error),
+                    CountSourceMessages(source, AnalogyLogLevel.Warning),
+                    CountSourceMessages(source, AnalogyLogLevel.Critical),
+                    CountSourceMessages(source, AnalogyLogLevel.Information),
+                    CountSourceMessages(source, AnalogyLogLevel.Debug),
+                    CountSourceMessages(source, AnalogyLogLevel.Verbose),
+                    CountMessages(Messages, AnalogyLogLevel.Trace));
             }
 
         }

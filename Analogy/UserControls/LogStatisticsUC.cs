@@ -83,8 +83,13 @@ namespace Philips.Analogy
             SourcePie = new PieChartUC();
             spltcSources.Panel2.Controls.Add(SourcePie);
             SourcePie.Dock = DockStyle.Fill;
+            if (!sources.Any())
+            {
+                return;
+            }
             SourcePie.SetDataSources(sources.First());
 
+            gridSource.
             dgvSource.SelectionChanged -= dgvSource_SelectionChanged;
             dgvSource.DataSource = sources;
             dgvSource.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -104,11 +109,11 @@ namespace Philips.Analogy
             {
                 return;
             }
-            ItemStatistics item = Statistics.CalculateGlobalStatistics();
+            LogAnalyzerLogLevel item = Statistics.CalculateGlobalStatistics();
             dgvTop.Rows.Add("Total messages:", item.TotalMessages);
-            dgvTop.Rows.Add("Events:", item.Events);
-            dgvTop.Rows.Add("Errors:", item.Errors);
-            dgvTop.Rows.Add("Warnings:", item.Warnings);
+            dgvTop.Rows.Add("Events:", item.Information);
+            dgvTop.Rows.Add("Errors:", item.Error);
+            dgvTop.Rows.Add("Warnings:", item.Warning);
             dgvTop.Rows.Add("Criticals:", item.Critical);
             dgvTop.Rows.Add("Debug:", item.Debug);
             dgvTop.Rows.Add("Verbose:", item.Verbose);
@@ -122,7 +127,7 @@ namespace Philips.Analogy
                 return;
             }
 
-            if (dgvSource.SelectedRows[0].DataBoundItem is ItemStatistics entry)
+            if (dgvSource.SelectedRows[0].DataBoundItem is LogAnalyzerLogLevel entry)
             {
                 SourcePie.SetDataSources(entry);
             }
@@ -140,7 +145,7 @@ namespace Philips.Analogy
                 return;
             }
 
-            if (dgvModules.SelectedRows[0].DataBoundItem is ItemStatistics entry)
+            if (dgvModules.SelectedRows[0].DataBoundItem is LogAnalyzerLogLevel entry)
             {
                 ModulePie.SetDataSources(entry);
             }
