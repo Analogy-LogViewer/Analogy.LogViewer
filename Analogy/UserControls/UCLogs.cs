@@ -238,7 +238,7 @@ namespace Analogy
                     alertControl1.Buttons.Add(btn1);
                     alertControl1.ButtonClick += (s, arg) =>
                     {
-                        if (arg.ButtonName == btn1.Name)
+                        if (arg.Button == btn1)
                         {
                             txtbInclude.Text = txtbExclude.Text = txtbSource.Text = txtbModule.Text = null;
                         }
