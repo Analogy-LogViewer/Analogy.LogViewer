@@ -238,12 +238,14 @@ namespace Analogy
                     alertControl1.Buttons.Add(btn1);
                     alertControl1.ButtonClick += (s, arg) =>
                     {
-                        if (arg.Button == btn1)
+                        if (arg.ButtonName == btn1.Name)
                         {
                             txtbInclude.Text = txtbExclude.Text = txtbSource.Text = txtbModule.Text = null;
+                            ceIncludeText.Checked = ceExcludeText.Checked =
+                                ceModulesProcess.Checked = ceSources.Checked = false;
                         }
                     };
-                    AlertInfo info = new AlertInfo("Filtering", "previous search filters are used");
+                    AlertInfo info = new AlertInfo("Filtering", "old search filters are used. You can clear those with the x button");
                     alertControl1.Show(this.ParentForm, info);
                 }
             }
