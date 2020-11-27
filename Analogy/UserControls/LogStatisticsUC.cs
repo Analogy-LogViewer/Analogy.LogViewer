@@ -106,14 +106,9 @@ namespace Philips.Analogy
             {
                 return;
             }
-            LogAnalyzerLogLevel item = Statistics.CalculateGlobalStatistics();
-            dgvTop.Rows.Add("Total messages:", item.Messages);
-            dgvTop.Rows.Add("Events:", item.Information);
-            dgvTop.Rows.Add("Errors:", item.Error);
-            dgvTop.Rows.Add("Warnings:", item.Warning);
-            dgvTop.Rows.Add("Criticals:", item.Critical);
-            dgvTop.Rows.Add("Debug:", item.Debug);
-            dgvTop.Rows.Add("Verbose:", item.Verbose);
+            var items = Statistics.CalculateGlobalStatistics().AsList();
+            gridControlGlobal.DataSource = items;
+
 
         }
 
@@ -128,11 +123,7 @@ namespace Philips.Analogy
                 Statistics.AddText(textEdit1.Text);
                 chklistItems.Items.Add(textEdit1.Text, true);
                 var items = Statistics.CalculateTextStatistics();
-                dgvFreeText.Rows.Clear();
-                foreach (Statistics statistics in items)
-                {
-                    dgvFreeText.Rows.Add(statistics.Name, statistics.Value);
-                }
+                gridControlFreeText.DataSource = items;
             }
 
             FreeTextChart();
@@ -182,6 +173,16 @@ namespace Philips.Analogy
             {
                 ModulePie?.SetDataSources(logLevel);
             }
+        }
+
+        private void gridViewGlobal_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+
+        }
+
+        private void gridViewFreeText_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+
         }
     }
 }

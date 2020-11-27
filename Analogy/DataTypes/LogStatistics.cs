@@ -28,14 +28,14 @@ namespace Analogy.DataTypes
                 CountMessages(Messages, AnalogyLogLevel.Verbose), CountMessages(Messages, AnalogyLogLevel.Trace));
         }
 
-        public List<Statistics> CalculateTextStatistics()
+        public List<LogAnalyzerSingleDataPoint> CalculateTextStatistics()
         {
             var total = Messages.Count;
-            List<Statistics> items = new List<Statistics>();
+            List<LogAnalyzerSingleDataPoint> items = new List<LogAnalyzerSingleDataPoint>();
             //items.Add(new Statistics("Total messages", total));
             foreach (string text in Texts)
             {
-                items.Add(new Statistics(text, Messages.Count(m => m.Text.Contains(text, StringComparison.InvariantCultureIgnoreCase))));
+                items.Add(new LogAnalyzerSingleDataPoint(text, Messages.Count(m => m.Text.Contains(text, StringComparison.InvariantCultureIgnoreCase))));
             }
 
             return items;

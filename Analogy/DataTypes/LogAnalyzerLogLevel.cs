@@ -18,24 +18,36 @@ namespace Analogy.DataTypes
             => (Name, Messages, Error, Warning, Critical, Information, Debug, Verbose,Trace) =
                 (name, total, errors, warnings, critical, events, debug, verbose,trace);
 
-        public IEnumerable<Statistics> AsList()
+        public IEnumerable<LogAnalyzerSingleDataPoint> AsList()
         {
-            yield return new Statistics(nameof(Critical), Critical);
-            yield return new Statistics(nameof(Error), Error);
-            yield return new Statistics(nameof(Warning), Warning);
-            yield return new Statistics(nameof(Verbose), Verbose);
-            yield return new Statistics(nameof(Debug), Debug);
-            yield return new Statistics(nameof(Information), Information);
-            yield return new Statistics(nameof(Trace), Trace);
+            yield return new LogAnalyzerSingleDataPoint("Total Messages", Messages);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Critical), Critical);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Error), Error);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Warning), Warning);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Verbose), Verbose);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Debug), Debug);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Information), Information);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Trace), Trace);
         }
+        public IEnumerable<LogAnalyzerSingleDataPoint> AsListWithoutTotal()
+        {
+            yield return new LogAnalyzerSingleDataPoint(nameof(Critical), Critical);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Error), Error);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Warning), Warning);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Verbose), Verbose);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Debug), Debug);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Information), Information);
+            yield return new LogAnalyzerSingleDataPoint(nameof(Trace), Trace);
+        }
+        
     }
 
-    public class Statistics
+    public class LogAnalyzerSingleDataPoint
     {
         public string Name { get; set; }
         public int Value { get; set; }
 
-        public Statistics(string name, int value)
+        public LogAnalyzerSingleDataPoint(string name, int value)
         {
             Name = name;
             Value = value;

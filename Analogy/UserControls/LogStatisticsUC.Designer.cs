@@ -31,9 +31,10 @@ namespace Philips.Analogy
         private void InitializeComponent()
         {
             this.spltCTop = new System.Windows.Forms.SplitContainer();
-            this.dgvTop = new System.Windows.Forms.DataGridView();
-            this.ColumnTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridControlGlobal = new DevExpress.XtraGrid.GridControl();
+            this.gridViewGlobal = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumnGlobalName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnValue = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tabControlBottom = new System.Windows.Forms.TabControl();
             this.tabPageSources = new System.Windows.Forms.TabPage();
             this.spltcSources = new System.Windows.Forms.SplitContainer();
@@ -50,17 +51,6 @@ namespace Philips.Analogy
             this.gridColumnLevelTrace = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tabPageModules = new System.Windows.Forms.TabPage();
             this.spltcModules = new System.Windows.Forms.SplitContainer();
-            this.tabPageGlobal = new System.Windows.Forms.TabPage();
-            this.tabPageFreeText = new System.Windows.Forms.TabPage();
-            this.spltCFreeText = new System.Windows.Forms.SplitContainer();
-            this.dgvFreeText = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.sBtnAdd = new DevExpress.XtraEditors.SimpleButton();
-            this.chklistItems = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gridControlModules = new DevExpress.XtraGrid.GridControl();
             this.gridModules = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,10 +62,23 @@ namespace Philips.Analogy
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tabPageGlobal = new System.Windows.Forms.TabPage();
+            this.tabPageFreeText = new System.Windows.Forms.TabPage();
+            this.spltCFreeText = new System.Windows.Forms.SplitContainer();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.sBtnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.chklistItems = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.gridControlFreeText = new DevExpress.XtraGrid.GridControl();
+            this.gridViewFreeText = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.spltCTop)).BeginInit();
             this.spltCTop.Panel1.SuspendLayout();
             this.spltCTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlGlobal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewGlobal)).BeginInit();
             this.tabControlBottom.SuspendLayout();
             this.tabPageSources.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltcSources)).BeginInit();
@@ -87,18 +90,19 @@ namespace Philips.Analogy
             ((System.ComponentModel.ISupportInitialize)(this.spltcModules)).BeginInit();
             this.spltcModules.Panel1.SuspendLayout();
             this.spltcModules.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlModules)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridModules)).BeginInit();
             this.tabPageGlobal.SuspendLayout();
             this.tabPageFreeText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltCFreeText)).BeginInit();
             this.spltCFreeText.Panel1.SuspendLayout();
             this.spltCFreeText.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFreeText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlModules)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridModules)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlFreeText)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewFreeText)).BeginInit();
             this.SuspendLayout();
             // 
             // spltCTop
@@ -110,41 +114,92 @@ namespace Philips.Analogy
             // 
             // spltCTop.Panel1
             // 
-            this.spltCTop.Panel1.Controls.Add(this.dgvTop);
+            this.spltCTop.Panel1.Controls.Add(this.gridControlGlobal);
             this.spltCTop.Size = new System.Drawing.Size(962, 411);
             this.spltCTop.SplitterDistance = 357;
             this.spltCTop.TabIndex = 0;
             // 
-            // dgvTop
+            // gridControlGlobal
             // 
-            this.dgvTop.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvTop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTop.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnTitle,
-            this.ColumnValue});
-            this.dgvTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTop.Location = new System.Drawing.Point(0, 0);
-            this.dgvTop.Name = "dgvTop";
-            this.dgvTop.RowHeadersWidth = 51;
-            this.dgvTop.RowTemplate.Height = 24;
-            this.dgvTop.Size = new System.Drawing.Size(357, 411);
-            this.dgvTop.TabIndex = 0;
+            this.gridControlGlobal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlGlobal.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridControlGlobal.Location = new System.Drawing.Point(0, 0);
+            this.gridControlGlobal.MainView = this.gridViewGlobal;
+            this.gridControlGlobal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridControlGlobal.Name = "gridControlGlobal";
+            this.gridControlGlobal.Size = new System.Drawing.Size(357, 411);
+            this.gridControlGlobal.TabIndex = 3;
+            this.gridControlGlobal.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewGlobal});
             // 
-            // ColumnTitle
+            // gridViewGlobal
             // 
-            this.ColumnTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnTitle.HeaderText = "Type";
-            this.ColumnTitle.MinimumWidth = 6;
-            this.ColumnTitle.Name = "ColumnTitle";
-            this.ColumnTitle.Width = 69;
+            this.gridViewGlobal.Appearance.Row.Options.UseTextOptions = true;
+            this.gridViewGlobal.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridViewGlobal.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridViewGlobal.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridViewGlobal.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumnGlobalName,
+            this.gridColumnValue});
+            this.gridViewGlobal.DetailHeight = 431;
+            this.gridViewGlobal.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridViewGlobal.GridControl = this.gridControlGlobal;
+            this.gridViewGlobal.IndicatorWidth = 24;
+            this.gridViewGlobal.Name = "gridViewGlobal";
+            this.gridViewGlobal.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridViewGlobal.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.gridViewGlobal.OptionsFilter.AllowMRUFilterList = false;
+            this.gridViewGlobal.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridViewGlobal.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridViewGlobal.OptionsLayout.StoreAllOptions = true;
+            this.gridViewGlobal.OptionsLayout.StoreAppearance = true;
+            this.gridViewGlobal.OptionsLayout.StoreFormatRules = true;
+            this.gridViewGlobal.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewGlobal.OptionsView.AutoCalcPreviewLineCount = true;
+            this.gridViewGlobal.OptionsView.RowAutoHeight = true;
+            this.gridViewGlobal.OptionsView.ShowGroupPanel = false;
+            this.gridViewGlobal.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewGlobal_FocusedRowChanged);
             // 
-            // ColumnValue
+            // gridColumnGlobalName
             // 
-            this.ColumnValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColumnValue.HeaderText = "Count";
-            this.ColumnValue.MinimumWidth = 6;
-            this.ColumnValue.Name = "ColumnValue";
-            this.ColumnValue.Width = 74;
+            this.gridColumnGlobalName.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnGlobalName.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnGlobalName.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnGlobalName.Caption = "Name";
+            this.gridColumnGlobalName.FieldName = "Name";
+            this.gridColumnGlobalName.MinWidth = 50;
+            this.gridColumnGlobalName.Name = "gridColumnGlobalName";
+            this.gridColumnGlobalName.OptionsColumn.AllowEdit = false;
+            this.gridColumnGlobalName.OptionsColumn.AllowFocus = false;
+            this.gridColumnGlobalName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnGlobalName.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnGlobalName.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnGlobalName.OptionsColumn.ReadOnly = true;
+            this.gridColumnGlobalName.OptionsFilter.AllowFilter = false;
+            this.gridColumnGlobalName.Visible = true;
+            this.gridColumnGlobalName.VisibleIndex = 0;
+            this.gridColumnGlobalName.Width = 200;
+            // 
+            // gridColumnValue
+            // 
+            this.gridColumnValue.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnValue.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnValue.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnValue.Caption = "Count";
+            this.gridColumnValue.FieldName = "Value";
+            this.gridColumnValue.MinWidth = 100;
+            this.gridColumnValue.Name = "gridColumnValue";
+            this.gridColumnValue.OptionsColumn.AllowEdit = false;
+            this.gridColumnValue.OptionsColumn.AllowFocus = false;
+            this.gridColumnValue.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnValue.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnValue.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnValue.OptionsColumn.ReadOnly = true;
+            this.gridColumnValue.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnValue.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnValue.Visible = true;
+            this.gridColumnValue.VisibleIndex = 1;
+            this.gridColumnValue.Width = 100;
             // 
             // tabControlBottom
             // 
@@ -229,7 +284,7 @@ namespace Philips.Analogy
             this.logGridSource.OptionsView.AutoCalcPreviewLineCount = true;
             this.logGridSource.OptionsView.RowAutoHeight = true;
             this.logGridSource.OptionsView.ShowGroupPanel = false;
-            this.logGridSource.FocusedRowChanged += new FocusedRowChangedEventHandler(this.logGridSource_FocusedRowChanged);
+            this.logGridSource.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGridSource_FocusedRowChanged);
             // 
             // gridColumnName
             // 
@@ -431,128 +486,6 @@ namespace Philips.Analogy
             this.spltcModules.SplitterDistance = 478;
             this.spltcModules.TabIndex = 2;
             // 
-            // tabPageGlobal
-            // 
-            this.tabPageGlobal.Controls.Add(this.spltCTop);
-            this.tabPageGlobal.Location = new System.Drawing.Point(4, 25);
-            this.tabPageGlobal.Name = "tabPageGlobal";
-            this.tabPageGlobal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGlobal.Size = new System.Drawing.Size(968, 417);
-            this.tabPageGlobal.TabIndex = 2;
-            this.tabPageGlobal.Text = "Global";
-            this.tabPageGlobal.UseVisualStyleBackColor = true;
-            // 
-            // tabPageFreeText
-            // 
-            this.tabPageFreeText.Controls.Add(this.spltCFreeText);
-            this.tabPageFreeText.Controls.Add(this.panelControl1);
-            this.tabPageFreeText.Location = new System.Drawing.Point(4, 25);
-            this.tabPageFreeText.Name = "tabPageFreeText";
-            this.tabPageFreeText.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFreeText.Size = new System.Drawing.Size(968, 417);
-            this.tabPageFreeText.TabIndex = 3;
-            this.tabPageFreeText.Text = "Free Text";
-            this.tabPageFreeText.UseVisualStyleBackColor = true;
-            // 
-            // spltCFreeText
-            // 
-            this.spltCFreeText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spltCFreeText.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.spltCFreeText.Location = new System.Drawing.Point(3, 141);
-            this.spltCFreeText.Name = "spltCFreeText";
-            // 
-            // spltCFreeText.Panel1
-            // 
-            this.spltCFreeText.Panel1.Controls.Add(this.dgvFreeText);
-            this.spltCFreeText.Size = new System.Drawing.Size(962, 273);
-            this.spltCFreeText.SplitterDistance = 357;
-            this.spltCFreeText.TabIndex = 1;
-            // 
-            // dgvFreeText
-            // 
-            this.dgvFreeText.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvFreeText.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFreeText.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.dgvFreeText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFreeText.Location = new System.Drawing.Point(0, 0);
-            this.dgvFreeText.Name = "dgvFreeText";
-            this.dgvFreeText.RowHeadersWidth = 51;
-            this.dgvFreeText.RowTemplate.Height = 24;
-            this.dgvFreeText.Size = new System.Drawing.Size(357, 273);
-            this.dgvFreeText.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Type";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 69;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Count";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 74;
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.sBtnAdd);
-            this.panelControl1.Controls.Add(this.chklistItems);
-            this.panelControl1.Controls.Add(this.textEdit1);
-            this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(3, 3);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(962, 138);
-            this.panelControl1.TabIndex = 0;
-            // 
-            // sBtnAdd
-            // 
-            this.sBtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnAdd.Location = new System.Drawing.Point(899, 3);
-            this.sBtnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sBtnAdd.Name = "sBtnAdd";
-            this.sBtnAdd.Size = new System.Drawing.Size(58, 28);
-            this.sBtnAdd.TabIndex = 7;
-            this.sBtnAdd.Text = "Add";
-            this.sBtnAdd.Click += new System.EventHandler(this.sBtnAdd_Click);
-            // 
-            // chklistItems
-            // 
-            this.chklistItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chklistItems.Location = new System.Drawing.Point(5, 36);
-            this.chklistItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chklistItems.Name = "chklistItems";
-            this.chklistItems.Size = new System.Drawing.Size(952, 93);
-            this.chklistItems.TabIndex = 6;
-            this.chklistItems.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chklistItems_ItemCheck);
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.Location = new System.Drawing.Point(149, 6);
-            this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(776, 22);
-            this.textEdit1.TabIndex = 5;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(5, 9);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(52, 16);
-            this.labelControl1.TabIndex = 4;
-            this.labelControl1.Text = "Add text:";
-            // 
             // gridControlModules
             // 
             this.gridControlModules.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -599,7 +532,7 @@ namespace Philips.Analogy
             this.gridModules.OptionsView.AutoCalcPreviewLineCount = true;
             this.gridModules.OptionsView.RowAutoHeight = true;
             this.gridModules.OptionsView.ShowGroupPanel = false;
-            this.gridModules.FocusedRowChanged += new FocusedRowChangedEventHandler(this.gridModules_FocusedRowChanged);
+            this.gridModules.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridModules_FocusedRowChanged);
             // 
             // gridColumn1
             // 
@@ -777,6 +710,179 @@ namespace Philips.Analogy
             this.gridColumn9.VisibleIndex = 6;
             this.gridColumn9.Width = 70;
             // 
+            // tabPageGlobal
+            // 
+            this.tabPageGlobal.Controls.Add(this.spltCTop);
+            this.tabPageGlobal.Location = new System.Drawing.Point(4, 25);
+            this.tabPageGlobal.Name = "tabPageGlobal";
+            this.tabPageGlobal.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGlobal.Size = new System.Drawing.Size(968, 417);
+            this.tabPageGlobal.TabIndex = 2;
+            this.tabPageGlobal.Text = "Global";
+            this.tabPageGlobal.UseVisualStyleBackColor = true;
+            // 
+            // tabPageFreeText
+            // 
+            this.tabPageFreeText.Controls.Add(this.spltCFreeText);
+            this.tabPageFreeText.Controls.Add(this.panelControl1);
+            this.tabPageFreeText.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFreeText.Name = "tabPageFreeText";
+            this.tabPageFreeText.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageFreeText.Size = new System.Drawing.Size(968, 417);
+            this.tabPageFreeText.TabIndex = 3;
+            this.tabPageFreeText.Text = "Free Text";
+            this.tabPageFreeText.UseVisualStyleBackColor = true;
+            // 
+            // spltCFreeText
+            // 
+            this.spltCFreeText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spltCFreeText.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spltCFreeText.Location = new System.Drawing.Point(3, 141);
+            this.spltCFreeText.Name = "spltCFreeText";
+            // 
+            // spltCFreeText.Panel1
+            // 
+            this.spltCFreeText.Panel1.Controls.Add(this.gridControlFreeText);
+            this.spltCFreeText.Size = new System.Drawing.Size(962, 273);
+            this.spltCFreeText.SplitterDistance = 357;
+            this.spltCFreeText.TabIndex = 1;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.sBtnAdd);
+            this.panelControl1.Controls.Add(this.chklistItems);
+            this.panelControl1.Controls.Add(this.textEdit1);
+            this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(3, 3);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(962, 138);
+            this.panelControl1.TabIndex = 0;
+            // 
+            // sBtnAdd
+            // 
+            this.sBtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sBtnAdd.Location = new System.Drawing.Point(899, 3);
+            this.sBtnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sBtnAdd.Name = "sBtnAdd";
+            this.sBtnAdd.Size = new System.Drawing.Size(58, 28);
+            this.sBtnAdd.TabIndex = 7;
+            this.sBtnAdd.Text = "Add";
+            this.sBtnAdd.Click += new System.EventHandler(this.sBtnAdd_Click);
+            // 
+            // chklistItems
+            // 
+            this.chklistItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chklistItems.Location = new System.Drawing.Point(5, 36);
+            this.chklistItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chklistItems.Name = "chklistItems";
+            this.chklistItems.Size = new System.Drawing.Size(952, 93);
+            this.chklistItems.TabIndex = 6;
+            this.chklistItems.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chklistItems_ItemCheck);
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit1.Location = new System.Drawing.Point(149, 6);
+            this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(776, 22);
+            this.textEdit1.TabIndex = 5;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(5, 9);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(52, 16);
+            this.labelControl1.TabIndex = 4;
+            this.labelControl1.Text = "Add text:";
+            // 
+            // gridControlFreeText
+            // 
+            this.gridControlFreeText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlFreeText.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridControlFreeText.Location = new System.Drawing.Point(0, 0);
+            this.gridControlFreeText.MainView = this.gridViewFreeText;
+            this.gridControlFreeText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridControlFreeText.Name = "gridControlFreeText";
+            this.gridControlFreeText.Size = new System.Drawing.Size(357, 273);
+            this.gridControlFreeText.TabIndex = 4;
+            this.gridControlFreeText.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewFreeText});
+            // 
+            // gridViewFreeText
+            // 
+            this.gridViewFreeText.Appearance.Row.Options.UseTextOptions = true;
+            this.gridViewFreeText.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridViewFreeText.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridViewFreeText.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridViewFreeText.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn10,
+            this.gridColumn11});
+            this.gridViewFreeText.DetailHeight = 431;
+            this.gridViewFreeText.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridViewFreeText.GridControl = this.gridControlFreeText;
+            this.gridViewFreeText.IndicatorWidth = 24;
+            this.gridViewFreeText.Name = "gridViewFreeText";
+            this.gridViewFreeText.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridViewFreeText.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.gridViewFreeText.OptionsFilter.AllowMRUFilterList = false;
+            this.gridViewFreeText.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridViewFreeText.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridViewFreeText.OptionsLayout.StoreAllOptions = true;
+            this.gridViewFreeText.OptionsLayout.StoreAppearance = true;
+            this.gridViewFreeText.OptionsLayout.StoreFormatRules = true;
+            this.gridViewFreeText.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewFreeText.OptionsView.AutoCalcPreviewLineCount = true;
+            this.gridViewFreeText.OptionsView.RowAutoHeight = true;
+            this.gridViewFreeText.OptionsView.ShowGroupPanel = false;
+            this.gridViewFreeText.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewFreeText_FocusedRowChanged);
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn10.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn10.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn10.Caption = "Name";
+            this.gridColumn10.FieldName = "Name";
+            this.gridColumn10.MinWidth = 50;
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.AllowFocus = false;
+            this.gridColumn10.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn10.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn10.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn10.OptionsColumn.ReadOnly = true;
+            this.gridColumn10.OptionsFilter.AllowFilter = false;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 0;
+            this.gridColumn10.Width = 200;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn11.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn11.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn11.Caption = "Count";
+            this.gridColumn11.FieldName = "Value";
+            this.gridColumn11.MinWidth = 100;
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.OptionsColumn.AllowEdit = false;
+            this.gridColumn11.OptionsColumn.AllowFocus = false;
+            this.gridColumn11.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn11.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn11.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn11.OptionsColumn.ReadOnly = true;
+            this.gridColumn11.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 1;
+            this.gridColumn11.Width = 100;
+            // 
             // LogStatisticsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -788,7 +894,8 @@ namespace Philips.Analogy
             this.spltCTop.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltCTop)).EndInit();
             this.spltCTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlGlobal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewGlobal)).EndInit();
             this.tabControlBottom.ResumeLayout(false);
             this.tabPageSources.ResumeLayout(false);
             this.spltcSources.Panel1.ResumeLayout(false);
@@ -800,34 +907,32 @@ namespace Philips.Analogy
             this.spltcModules.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltcModules)).EndInit();
             this.spltcModules.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlModules)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridModules)).EndInit();
             this.tabPageGlobal.ResumeLayout(false);
             this.tabPageFreeText.ResumeLayout(false);
             this.spltCFreeText.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltCFreeText)).EndInit();
             this.spltCFreeText.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFreeText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlModules)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridModules)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlFreeText)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewFreeText)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.SplitContainer spltCTop;
-        private System.Windows.Forms.DataGridView dgvTop;
         private System.Windows.Forms.SplitContainer spltcSources;
         private System.Windows.Forms.TabControl tabControlBottom;
         private System.Windows.Forms.TabPage tabPageSources;
         private System.Windows.Forms.TabPage tabPageModules;
         private System.Windows.Forms.SplitContainer spltcModules;
         private System.Windows.Forms.TabPage tabPageGlobal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnValue;
         private System.Windows.Forms.TabPage tabPageFreeText;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton sBtnAdd;
@@ -835,9 +940,6 @@ namespace Philips.Analogy
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.SplitContainer spltCFreeText;
-        private System.Windows.Forms.DataGridView dgvFreeText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DevExpress.XtraGrid.GridControl GridControlSource;
         private DevExpress.XtraGrid.Views.Grid.GridView logGridSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnName;
@@ -860,5 +962,13 @@ namespace Philips.Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.GridControl gridControlGlobal;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewGlobal;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnGlobalName;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnValue;
+        private DevExpress.XtraGrid.GridControl gridControlFreeText;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewFreeText;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
     }
 }

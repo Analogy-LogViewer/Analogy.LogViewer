@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.3.2 - Fix charts UI issues (winforms datagrid) #685",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,27)),
                 new AnalogyChangeLog("V4.3.2 - Remove grouping tab as it has low value #684",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,27)),
                 new AnalogyChangeLog("V4.3.2 - [Usability] Add notification when filtering is on #683",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,27)),
                 new AnalogyChangeLog("V4.3.2 - Enable DirectX rendering #681",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,20)),
