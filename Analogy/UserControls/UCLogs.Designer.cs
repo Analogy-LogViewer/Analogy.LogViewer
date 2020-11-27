@@ -41,18 +41,18 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -1670,13 +1670,13 @@ namespace Analogy
             this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
             this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
             this.ceModulesProcess.Size = new System.Drawing.Size(229, 22);
-            toolTipTitleItem4.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.ceModulesProcess.SuperTip = superToolTip4;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.ceModulesProcess.SuperTip = superToolTip1;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1744,13 +1744,13 @@ namespace Analogy
             this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
             this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
             this.ceSources.Size = new System.Drawing.Size(166, 24);
-            toolTipTitleItem5.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceSources.SuperTip = superToolTip5;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceSources.SuperTip = superToolTip2;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1805,12 +1805,12 @@ namespace Analogy
             this.ceExcludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageChecked")));
             this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceExcludeText.Size = new System.Drawing.Size(99, 24);
-            toolTipTitleItem1.Text = "Text Property Filtering (exclude)";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.ceExcludeText.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceExcludeText.SuperTip = superToolTip3;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnTextExclude
@@ -1876,12 +1876,12 @@ namespace Analogy
             this.ceIncludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageChecked")));
             this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceIncludeText.Size = new System.Drawing.Size(97, 23);
-            toolTipTitleItem2.Text = "Text Property Filtering";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceIncludeText.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Text Property Filtering";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceIncludeText.SuperTip = superToolTip4;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;

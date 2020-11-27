@@ -189,7 +189,7 @@ namespace Analogy
             {
                 return;
             }
-
+            xtraTabControl1.TabPages.Remove(xtCounts);
             xtcFiltersLeft.SelectedTabPage = xtpFilters;
 
             LoadUISettings();
