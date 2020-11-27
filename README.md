@@ -30,6 +30,8 @@ A log viewer that can parse log files and stream logs from C#, Python, Java and 
 
 [Logs Analysis and Visualizers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#logs-analysis-and-visualizers)
 
+[brief list of data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#brief-list-of-data-providers)
+
 [Issues](https://github.com/Analogy-LogViewer/Analogy.LogViewer#issues)
 
 [Contact](https://github.com/Analogy-LogViewer/Analogy.LogViewer#contact)
@@ -63,7 +65,7 @@ The application supports the followings data providers:
 
 3. Real time streaming from the following languages: [C#](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider), [C++](https://github.com/Analogy-LogViewer/Analogy-cpp-Logging), [Python](https://github.com/Analogy-LogViewer/Analogy-Python-Logging) and [JAVA](https://github.com/Analogy-LogViewer/Analogy-Java-Logging) using [gRPC log Server](https://github.com/Analogy-LogViewer/Real-Time-Log-Server) and client.
 
-4. Custom providers. Create specific parsers for specific applications. For a complete list visit [Analogy Overview repository](https://github.com/Analogy-LogViewer/Overview).
+4. Custom providers. Create specific parsers for specific applications.
 
 ## Usage
 
@@ -152,6 +154,35 @@ The application has some analyzers and visualization.
 
 - Json Visualizer:
 ![Json Visualizer](Assets/JsonVisualizer.jpg)
+
+## brief list of data providers
+
+- For a complete list visit [Analogy Overview repository](https://github.com/Analogy-LogViewer/Overview).
+
+#### Real Time Data providers:
+| Data Provider   |      Description      |
+|----------|:---------------|
+| [gRPC Real Time Data Provider](https://github.com/Analogy-LogViewer/Analogy.LogViewer.gRPC) | A gRPC Data provider that connect to Analogy Log Server and read message back to Analogy Log Viewer
+| [Analogy.AspNetCore.LogProvider](https://github.com/Analogy-LogViewer/Analogy.AspNetCore.LogProvider/) | A AspNetCore provider that streams logs to Analogy Log Server
+| [Analogy.LogViewer.NLog.Targets](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLog.Targets/) | NLog Target that streams logs to Analogy Log Server
+| [Serilog Sink](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) | Serilog Sink  that streams logs to Analogy Log Server
+|[Windows event logs](https://github.com/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs) | Real time Component of Windows Event logs Parser
+
+#### Offline Data providers:
+| Data Provider   |      Description      |
+|----------|:---------------|
+|[Serilog Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog) | Parser for Serilog log files
+|[NLog Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.NLogProvider) | Parser for NLog log files
+|[Log4Net Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4Net) | Parser for Log4Net log files
+|[Regular Expression Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser) | Regular Expression Parser
+|[IIS log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.IISLogParser) | Parser for IIS log files
+|[RSS Reader](https://github.com/Analogy-LogViewer/Analogy.LogViewer.RSSReader) | RSS Feeds inside Analogy Log Viewer
+|[Generic Json Log Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.JsonParser) | Generic Json Parser
+|[XML Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.XMLFileProvider) |  Generic XML Parser
+|[Windows event logs](https://github.com/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs) | Windows Event logs Parser
+|[Plain Text Parser](https://github.com/Analogy-LogViewer/Analogy.LogViewer.PlainTextParser)  | Plain Text Parser
+|[Git History](https://github.com/Analogy-LogViewer/Analogy.LogViewer.GitHistory) | Display your Git Repository commit history
+|[Kafka Producer/ consumer](https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider) | Kafka Producer / Consumer
 
 
 ## Issues
