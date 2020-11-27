@@ -232,7 +232,7 @@ namespace Analogy
                 if (!string.IsNullOrEmpty(includeText) || !string.IsNullOrEmpty(excludeText) ||
                     !string.IsNullOrEmpty(source) || !string.IsNullOrEmpty(module))
                 {
-                    AlertButton btn1 = new AlertButton(Resources.Clear_16x16);
+                    AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
                     btn1.Hint = "Clear Filtering";
                     btn1.Name = "buttonClearFiltering";
                     alertControl1.Buttons.Add(btn1);
