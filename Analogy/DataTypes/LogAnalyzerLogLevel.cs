@@ -5,7 +5,7 @@ namespace Analogy.DataTypes
     public class LogAnalyzerLogLevel
     {
         public string Name { get; private set; }
-        public int TotalMessages { get; private set; }
+        public int Messages { get; private set; }
         public int Error { get; private set; }
         public int Warning { get; private set; }
         public int Critical { get; private set; }
@@ -15,7 +15,7 @@ namespace Analogy.DataTypes
         public int Trace { get; private set; }
 
         public LogAnalyzerLogLevel(string name, int total, int errors, int warnings, int critical, int events, int debug, int verbose,int trace)
-            => (Name, TotalMessages, Error, Warning, Critical, Information, Debug, Verbose,Trace) =
+            => (Name, Messages, Error, Warning, Critical, Information, Debug, Verbose,Trace) =
                 (name, total, errors, warnings, critical, events, debug, verbose,trace);
 
         public IEnumerable<Statistics> AsList()

@@ -59,17 +59,15 @@ namespace Philips.Analogy
             {
                 return;
             }
-            var modules = Statistics.CalculateModulesStatistics().OrderByDescending(s => s.TotalMessages).ToList();
+            var modules = Statistics.CalculateModulesStatistics().OrderByDescending(s => s.Messages).ToList();
 
             ModulePie = new PieChartUC();
             spltcModules.Panel2.Controls.Add(ModulePie);
             ModulePie.Dock = DockStyle.Fill;
             ModulePie.SetDataSources(modules.First());
 
-            dgvModules.SelectionChanged -= dgvModules_SelectionChanged;
-            dgvModules.DataSource = modules;
-            dgvModules.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvModules.SelectionChanged += dgvModules_SelectionChanged;
+            //dgvModules.SelectionChanged -= dgvModules_SelectionChanged;
+            gridControlModules.DataSource = modules;
         }
 
         private void PopulateSource()
@@ -78,7 +76,7 @@ namespace Philips.Analogy
             {
                 return;
             }
-            var sources = Statistics.CalculateSourcesStatistics().OrderByDescending(s => s.TotalMessages).ToList();
+            var sources = Statistics.CalculateSourcesStatistics().OrderByDescending(s => s.Messages).ToList();
 
             SourcePie = new PieChartUC();
             spltcSources.Panel2.Controls.Add(SourcePie);
@@ -89,11 +87,10 @@ namespace Philips.Analogy
             }
             SourcePie.SetDataSources(sources.First());
 
-            gridSource.
-            dgvSource.SelectionChanged -= dgvSource_SelectionChanged;
-            dgvSource.DataSource = sources;
-            dgvSource.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvSource.SelectionChanged += dgvSource_SelectionChanged;
+            //            dgvSource.SelectionChanged -= dgvSource_SelectionChanged;
+            GridControlSource.DataSource = sources;
+            //  dgvSource.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dgvSource.SelectionChanged += dgvSource_SelectionChanged;
 
         }
 
@@ -110,7 +107,7 @@ namespace Philips.Analogy
                 return;
             }
             LogAnalyzerLogLevel item = Statistics.CalculateGlobalStatistics();
-            dgvTop.Rows.Add("Total messages:", item.TotalMessages);
+            dgvTop.Rows.Add("Total messages:", item.Messages);
             dgvTop.Rows.Add("Events:", item.Information);
             dgvTop.Rows.Add("Errors:", item.Error);
             dgvTop.Rows.Add("Warnings:", item.Warning);
@@ -118,37 +115,6 @@ namespace Philips.Analogy
             dgvTop.Rows.Add("Debug:", item.Debug);
             dgvTop.Rows.Add("Verbose:", item.Verbose);
 
-        }
-
-        private void dgvSource_SelectionChanged(object sender, System.EventArgs e)
-        {
-            if (dgvSource.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
-            if (dgvSource.SelectedRows[0].DataBoundItem is LogAnalyzerLogLevel entry)
-            {
-                SourcePie.SetDataSources(entry);
-            }
-        }
-
-        private void dgvSource_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvModules_SelectionChanged(object sender, System.EventArgs e)
-        {
-            if (dgvModules.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
-            if (dgvModules.SelectedRows[0].DataBoundItem is LogAnalyzerLogLevel entry)
-            {
-                ModulePie.SetDataSources(entry);
-            }
         }
 
         private void sBtnAdd_Click(object sender, System.EventArgs e)
@@ -201,5 +167,22 @@ namespace Philips.Analogy
             }
             FreeTextChart();
         }
+
+        private void logGridSource_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (e.FocusedRowHandle >= 0 && logGridSource.GetFocusedRow() is LogAnalyzerLogLevel logLevel)
+            {
+                SourcePie?.SetDataSources(logLevel);
+            }
+        }
+
+        private void gridModules_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (e.FocusedRowHandle >= 0 && gridModules.GetFocusedRow() is LogAnalyzerLogLevel logLevel)
+            {
+                ModulePie?.SetDataSources(logLevel);
+            }
+        }
     }
 }
+

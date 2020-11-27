@@ -1,4 +1,6 @@
-﻿namespace Philips.Analogy
+﻿using DevExpress.XtraGrid.Views.Base;
+
+namespace Philips.Analogy
 {
     partial class LogStatisticsUC
     {
@@ -35,9 +37,19 @@
             this.tabControlBottom = new System.Windows.Forms.TabControl();
             this.tabPageSources = new System.Windows.Forms.TabPage();
             this.spltcSources = new System.Windows.Forms.SplitContainer();
+            this.GridControlSource = new DevExpress.XtraGrid.GridControl();
+            this.logGridSource = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumnName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnMessagesCount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLevelCritical = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLevelError = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLevelWarning = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLevelInformation = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLevelDebug = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLevelVerbose = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLevelTrace = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tabPageModules = new System.Windows.Forms.TabPage();
             this.spltcModules = new System.Windows.Forms.SplitContainer();
-            this.dgvModules = new System.Windows.Forms.DataGridView();
             this.tabPageGlobal = new System.Windows.Forms.TabPage();
             this.tabPageFreeText = new System.Windows.Forms.TabPage();
             this.spltCFreeText = new System.Windows.Forms.SplitContainer();
@@ -49,17 +61,17 @@
             this.chklistItems = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.gridSource = new DevExpress.XtraGrid.GridControl();
-            this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumnName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnMessagesCount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLevelCritical = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLevelError = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLevelWarning = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLevelTrace = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLevelDebug = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLevelVerbose = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLevelInformation = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControlModules = new DevExpress.XtraGrid.GridControl();
+            this.gridModules = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.spltCTop)).BeginInit();
             this.spltCTop.Panel1.SuspendLayout();
             this.spltCTop.SuspendLayout();
@@ -69,11 +81,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.spltcSources)).BeginInit();
             this.spltcSources.Panel1.SuspendLayout();
             this.spltcSources.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControlSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logGridSource)).BeginInit();
             this.tabPageModules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltcModules)).BeginInit();
             this.spltcModules.Panel1.SuspendLayout();
             this.spltcModules.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModules)).BeginInit();
             this.tabPageGlobal.SuspendLayout();
             this.tabPageFreeText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltCFreeText)).BeginInit();
@@ -84,8 +97,8 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlModules)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridModules)).BeginInit();
             this.SuspendLayout();
             // 
             // spltCTop
@@ -165,10 +178,234 @@
             // 
             // spltcSources.Panel1
             // 
-            this.spltcSources.Panel1.Controls.Add(this.gridSource);
+            this.spltcSources.Panel1.Controls.Add(this.GridControlSource);
             this.spltcSources.Size = new System.Drawing.Size(962, 411);
             this.spltcSources.SplitterDistance = 478;
             this.spltcSources.TabIndex = 1;
+            // 
+            // GridControlSource
+            // 
+            this.GridControlSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridControlSource.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridControlSource.Location = new System.Drawing.Point(0, 0);
+            this.GridControlSource.MainView = this.logGridSource;
+            this.GridControlSource.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridControlSource.Name = "GridControlSource";
+            this.GridControlSource.Size = new System.Drawing.Size(478, 411);
+            this.GridControlSource.TabIndex = 1;
+            this.GridControlSource.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.logGridSource});
+            // 
+            // logGridSource
+            // 
+            this.logGridSource.Appearance.Row.Options.UseTextOptions = true;
+            this.logGridSource.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.logGridSource.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.logGridSource.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.logGridSource.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumnName,
+            this.gridColumnMessagesCount,
+            this.gridColumnLevelCritical,
+            this.gridColumnLevelError,
+            this.gridColumnLevelWarning,
+            this.gridColumnLevelInformation,
+            this.gridColumnLevelDebug,
+            this.gridColumnLevelVerbose,
+            this.gridColumnLevelTrace});
+            this.logGridSource.DetailHeight = 431;
+            this.logGridSource.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.logGridSource.GridControl = this.GridControlSource;
+            this.logGridSource.IndicatorWidth = 24;
+            this.logGridSource.Name = "logGridSource";
+            this.logGridSource.OptionsBehavior.AllowIncrementalSearch = true;
+            this.logGridSource.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.logGridSource.OptionsFilter.AllowMRUFilterList = false;
+            this.logGridSource.OptionsLayout.Columns.StoreAllOptions = true;
+            this.logGridSource.OptionsLayout.Columns.StoreAppearance = true;
+            this.logGridSource.OptionsLayout.StoreAllOptions = true;
+            this.logGridSource.OptionsLayout.StoreAppearance = true;
+            this.logGridSource.OptionsLayout.StoreFormatRules = true;
+            this.logGridSource.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.logGridSource.OptionsView.AutoCalcPreviewLineCount = true;
+            this.logGridSource.OptionsView.RowAutoHeight = true;
+            this.logGridSource.OptionsView.ShowGroupPanel = false;
+            this.logGridSource.FocusedRowChanged += new FocusedRowChangedEventHandler(this.logGridSource_FocusedRowChanged);
+            // 
+            // gridColumnName
+            // 
+            this.gridColumnName.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnName.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnName.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnName.Caption = "Name";
+            this.gridColumnName.FieldName = "Name";
+            this.gridColumnName.MinWidth = 50;
+            this.gridColumnName.Name = "gridColumnName";
+            this.gridColumnName.OptionsColumn.AllowEdit = false;
+            this.gridColumnName.OptionsColumn.AllowFocus = false;
+            this.gridColumnName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnName.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnName.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnName.OptionsColumn.ReadOnly = true;
+            this.gridColumnName.OptionsFilter.AllowFilter = false;
+            this.gridColumnName.Visible = true;
+            this.gridColumnName.VisibleIndex = 0;
+            this.gridColumnName.Width = 200;
+            // 
+            // gridColumnMessagesCount
+            // 
+            this.gridColumnMessagesCount.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnMessagesCount.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnMessagesCount.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnMessagesCount.Caption = "Messages";
+            this.gridColumnMessagesCount.FieldName = "Messages";
+            this.gridColumnMessagesCount.MinWidth = 100;
+            this.gridColumnMessagesCount.Name = "gridColumnMessagesCount";
+            this.gridColumnMessagesCount.OptionsColumn.AllowEdit = false;
+            this.gridColumnMessagesCount.OptionsColumn.AllowFocus = false;
+            this.gridColumnMessagesCount.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnMessagesCount.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnMessagesCount.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnMessagesCount.OptionsColumn.ReadOnly = true;
+            this.gridColumnMessagesCount.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnMessagesCount.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnMessagesCount.Visible = true;
+            this.gridColumnMessagesCount.VisibleIndex = 1;
+            this.gridColumnMessagesCount.Width = 100;
+            // 
+            // gridColumnLevelCritical
+            // 
+            this.gridColumnLevelCritical.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnLevelCritical.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnLevelCritical.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnLevelCritical.Caption = "Critical";
+            this.gridColumnLevelCritical.FieldName = "Critical";
+            this.gridColumnLevelCritical.MinWidth = 70;
+            this.gridColumnLevelCritical.Name = "gridColumnLevelCritical";
+            this.gridColumnLevelCritical.OptionsColumn.AllowEdit = false;
+            this.gridColumnLevelCritical.OptionsColumn.AllowFocus = false;
+            this.gridColumnLevelCritical.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelCritical.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelCritical.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnLevelCritical.OptionsColumn.ReadOnly = true;
+            this.gridColumnLevelCritical.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnLevelCritical.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnLevelCritical.Visible = true;
+            this.gridColumnLevelCritical.VisibleIndex = 2;
+            this.gridColumnLevelCritical.Width = 70;
+            // 
+            // gridColumnLevelError
+            // 
+            this.gridColumnLevelError.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnLevelError.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnLevelError.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnLevelError.Caption = "Error";
+            this.gridColumnLevelError.FieldName = "Error";
+            this.gridColumnLevelError.MinWidth = 70;
+            this.gridColumnLevelError.Name = "gridColumnLevelError";
+            this.gridColumnLevelError.OptionsColumn.AllowEdit = false;
+            this.gridColumnLevelError.OptionsColumn.AllowFocus = false;
+            this.gridColumnLevelError.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelError.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelError.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnLevelError.OptionsColumn.ReadOnly = true;
+            this.gridColumnLevelError.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnLevelError.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnLevelError.Visible = true;
+            this.gridColumnLevelError.VisibleIndex = 4;
+            this.gridColumnLevelError.Width = 70;
+            // 
+            // gridColumnLevelWarning
+            // 
+            this.gridColumnLevelWarning.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnLevelWarning.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnLevelWarning.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnLevelWarning.Caption = "Warning";
+            this.gridColumnLevelWarning.FieldName = "Warning";
+            this.gridColumnLevelWarning.MinWidth = 70;
+            this.gridColumnLevelWarning.Name = "gridColumnLevelWarning";
+            this.gridColumnLevelWarning.OptionsColumn.AllowEdit = false;
+            this.gridColumnLevelWarning.OptionsColumn.AllowFocus = false;
+            this.gridColumnLevelWarning.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelWarning.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelWarning.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnLevelWarning.OptionsColumn.ReadOnly = true;
+            this.gridColumnLevelWarning.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnLevelWarning.Visible = true;
+            this.gridColumnLevelWarning.VisibleIndex = 5;
+            this.gridColumnLevelWarning.Width = 70;
+            // 
+            // gridColumnLevelInformation
+            // 
+            this.gridColumnLevelInformation.Caption = "Information";
+            this.gridColumnLevelInformation.FieldName = "Information";
+            this.gridColumnLevelInformation.MinWidth = 70;
+            this.gridColumnLevelInformation.Name = "gridColumnLevelInformation";
+            this.gridColumnLevelInformation.OptionsColumn.AllowEdit = false;
+            this.gridColumnLevelInformation.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnLevelInformation.Visible = true;
+            this.gridColumnLevelInformation.VisibleIndex = 8;
+            this.gridColumnLevelInformation.Width = 70;
+            // 
+            // gridColumnLevelDebug
+            // 
+            this.gridColumnLevelDebug.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnLevelDebug.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnLevelDebug.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnLevelDebug.Caption = "Debug";
+            this.gridColumnLevelDebug.FieldName = "Debug";
+            this.gridColumnLevelDebug.MinWidth = 70;
+            this.gridColumnLevelDebug.Name = "gridColumnLevelDebug";
+            this.gridColumnLevelDebug.OptionsColumn.AllowEdit = false;
+            this.gridColumnLevelDebug.OptionsColumn.AllowFocus = false;
+            this.gridColumnLevelDebug.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelDebug.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnLevelDebug.OptionsColumn.ReadOnly = true;
+            this.gridColumnLevelDebug.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnLevelDebug.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnLevelDebug.Visible = true;
+            this.gridColumnLevelDebug.VisibleIndex = 3;
+            this.gridColumnLevelDebug.Width = 70;
+            // 
+            // gridColumnLevelVerbose
+            // 
+            this.gridColumnLevelVerbose.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnLevelVerbose.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnLevelVerbose.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnLevelVerbose.Caption = "Verbose";
+            this.gridColumnLevelVerbose.FieldName = "Verbose";
+            this.gridColumnLevelVerbose.MinWidth = 70;
+            this.gridColumnLevelVerbose.Name = "gridColumnLevelVerbose";
+            this.gridColumnLevelVerbose.OptionsColumn.AllowEdit = false;
+            this.gridColumnLevelVerbose.OptionsColumn.AllowFocus = false;
+            this.gridColumnLevelVerbose.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelVerbose.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelVerbose.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnLevelVerbose.OptionsColumn.ReadOnly = true;
+            this.gridColumnLevelVerbose.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnLevelVerbose.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnLevelVerbose.Visible = true;
+            this.gridColumnLevelVerbose.VisibleIndex = 7;
+            this.gridColumnLevelVerbose.Width = 70;
+            // 
+            // gridColumnLevelTrace
+            // 
+            this.gridColumnLevelTrace.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnLevelTrace.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumnLevelTrace.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumnLevelTrace.Caption = "Trace";
+            this.gridColumnLevelTrace.FieldName = "Trace";
+            this.gridColumnLevelTrace.MinWidth = 70;
+            this.gridColumnLevelTrace.Name = "gridColumnLevelTrace";
+            this.gridColumnLevelTrace.OptionsColumn.AllowEdit = false;
+            this.gridColumnLevelTrace.OptionsColumn.AllowFocus = false;
+            this.gridColumnLevelTrace.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelTrace.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumnLevelTrace.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumnLevelTrace.OptionsColumn.ReadOnly = true;
+            this.gridColumnLevelTrace.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumnLevelTrace.Visible = true;
+            this.gridColumnLevelTrace.VisibleIndex = 6;
+            this.gridColumnLevelTrace.Width = 70;
             // 
             // tabPageModules
             // 
@@ -189,24 +426,10 @@
             // 
             // spltcModules.Panel1
             // 
-            this.spltcModules.Panel1.Controls.Add(this.dgvModules);
+            this.spltcModules.Panel1.Controls.Add(this.gridControlModules);
             this.spltcModules.Size = new System.Drawing.Size(962, 411);
             this.spltcModules.SplitterDistance = 478;
             this.spltcModules.TabIndex = 2;
-            // 
-            // dgvModules
-            // 
-            this.dgvModules.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvModules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModules.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvModules.Location = new System.Drawing.Point(0, 0);
-            this.dgvModules.MultiSelect = false;
-            this.dgvModules.Name = "dgvModules";
-            this.dgvModules.RowHeadersWidth = 51;
-            this.dgvModules.RowTemplate.Height = 24;
-            this.dgvModules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvModules.Size = new System.Drawing.Size(478, 411);
-            this.dgvModules.TabIndex = 0;
             // 
             // tabPageGlobal
             // 
@@ -318,7 +541,7 @@
             this.textEdit1.Location = new System.Drawing.Point(149, 6);
             this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(744, 22);
+            this.textEdit1.Size = new System.Drawing.Size(776, 22);
             this.textEdit1.TabIndex = 5;
             // 
             // labelControl1
@@ -330,229 +553,229 @@
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "Add text:";
             // 
-            // gridSource
+            // gridControlModules
             // 
-            this.gridSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSource.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridSource.Location = new System.Drawing.Point(0, 0);
-            this.gridSource.MainView = this.logGrid;
-            this.gridSource.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridSource.Name = "gridSource";
-            this.gridSource.Size = new System.Drawing.Size(478, 411);
-            this.gridSource.TabIndex = 1;
-            this.gridSource.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.logGrid});
+            this.gridControlModules.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlModules.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridControlModules.Location = new System.Drawing.Point(0, 0);
+            this.gridControlModules.MainView = this.gridModules;
+            this.gridControlModules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridControlModules.Name = "gridControlModules";
+            this.gridControlModules.Size = new System.Drawing.Size(478, 411);
+            this.gridControlModules.TabIndex = 2;
+            this.gridControlModules.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridModules});
             // 
-            // logGrid
+            // gridModules
             // 
-            this.logGrid.Appearance.Row.Options.UseTextOptions = true;
-            this.logGrid.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.logGrid.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.logGrid.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.logGrid.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumnName,
-            this.gridColumnMessagesCount,
-            this.gridColumnLevelCritical,
-            this.gridColumnLevelError,
-            this.gridColumnLevelWarning,
-            this.gridColumnLevelInformation,
-            this.gridColumnLevelDebug,
-            this.gridColumnLevelVerbose,
-            this.gridColumnLevelTrace});
-            this.logGrid.DetailHeight = 431;
-            this.logGrid.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.logGrid.GridControl = this.gridSource;
-            this.logGrid.IndicatorWidth = 24;
-            this.logGrid.Name = "logGrid";
-            this.logGrid.OptionsBehavior.AllowIncrementalSearch = true;
-            this.logGrid.OptionsFilter.AllowColumnMRUFilterList = false;
-            this.logGrid.OptionsFilter.AllowMRUFilterList = false;
-            this.logGrid.OptionsLayout.Columns.StoreAllOptions = true;
-            this.logGrid.OptionsLayout.Columns.StoreAppearance = true;
-            this.logGrid.OptionsLayout.StoreAllOptions = true;
-            this.logGrid.OptionsLayout.StoreAppearance = true;
-            this.logGrid.OptionsLayout.StoreFormatRules = true;
-            this.logGrid.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.logGrid.OptionsView.AutoCalcPreviewLineCount = true;
-            this.logGrid.OptionsView.ColumnAutoWidth = false;
-            this.logGrid.OptionsView.RowAutoHeight = true;
-            this.logGrid.OptionsView.ShowGroupPanel = false;
+            this.gridModules.Appearance.Row.Options.UseTextOptions = true;
+            this.gridModules.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridModules.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridModules.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridModules.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9});
+            this.gridModules.DetailHeight = 431;
+            this.gridModules.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridModules.GridControl = this.gridControlModules;
+            this.gridModules.IndicatorWidth = 24;
+            this.gridModules.Name = "gridModules";
+            this.gridModules.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridModules.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.gridModules.OptionsFilter.AllowMRUFilterList = false;
+            this.gridModules.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridModules.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridModules.OptionsLayout.StoreAllOptions = true;
+            this.gridModules.OptionsLayout.StoreAppearance = true;
+            this.gridModules.OptionsLayout.StoreFormatRules = true;
+            this.gridModules.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridModules.OptionsView.AutoCalcPreviewLineCount = true;
+            this.gridModules.OptionsView.RowAutoHeight = true;
+            this.gridModules.OptionsView.ShowGroupPanel = false;
+            this.gridModules.FocusedRowChanged += new FocusedRowChangedEventHandler(this.gridModules_FocusedRowChanged);
             // 
-            // gridColumnName
+            // gridColumn1
             // 
-            this.gridColumnName.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnName.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnName.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnName.Caption = "Name";
-            this.gridColumnName.FieldName = "Name";
-            this.gridColumnName.MinWidth = 24;
-            this.gridColumnName.Name = "gridColumnName";
-            this.gridColumnName.OptionsColumn.AllowEdit = false;
-            this.gridColumnName.OptionsColumn.AllowFocus = false;
-            this.gridColumnName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnName.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnName.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnName.OptionsColumn.ReadOnly = true;
-            this.gridColumnName.OptionsFilter.AllowFilter = false;
-            this.gridColumnName.Visible = true;
-            this.gridColumnName.VisibleIndex = 0;
-            this.gridColumnName.Width = 200;
+            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn1.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn1.Caption = "Name";
+            this.gridColumn1.FieldName = "Name";
+            this.gridColumn1.MinWidth = 50;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
+            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn1.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn1.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
+            this.gridColumn1.OptionsFilter.AllowFilter = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 200;
             // 
-            // gridColumnMessagesCount
+            // gridColumn2
             // 
-            this.gridColumnMessagesCount.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnMessagesCount.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnMessagesCount.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnMessagesCount.Caption = "Messages";
-            this.gridColumnMessagesCount.FieldName = "MessagesCount";
-            this.gridColumnMessagesCount.MinWidth = 24;
-            this.gridColumnMessagesCount.Name = "gridColumnMessagesCount";
-            this.gridColumnMessagesCount.OptionsColumn.AllowEdit = false;
-            this.gridColumnMessagesCount.OptionsColumn.AllowFocus = false;
-            this.gridColumnMessagesCount.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnMessagesCount.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnMessagesCount.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnMessagesCount.OptionsColumn.ReadOnly = true;
-            this.gridColumnMessagesCount.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnMessagesCount.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnMessagesCount.Visible = true;
-            this.gridColumnMessagesCount.VisibleIndex = 1;
-            this.gridColumnMessagesCount.Width = 234;
+            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn2.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn2.Caption = "Messages";
+            this.gridColumn2.FieldName = "Messages";
+            this.gridColumn2.MinWidth = 100;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsColumn.AllowFocus = false;
+            this.gridColumn2.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn2.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn2.OptionsColumn.ReadOnly = true;
+            this.gridColumn2.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumn2.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 100;
             // 
-            // gridColumnLevelCritical
+            // gridColumn3
             // 
-            this.gridColumnLevelCritical.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnLevelCritical.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnLevelCritical.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnLevelCritical.Caption = "Critical";
-            this.gridColumnLevelCritical.FieldName = "Critical";
-            this.gridColumnLevelCritical.MinWidth = 24;
-            this.gridColumnLevelCritical.Name = "gridColumnLevelCritical";
-            this.gridColumnLevelCritical.OptionsColumn.AllowEdit = false;
-            this.gridColumnLevelCritical.OptionsColumn.AllowFocus = false;
-            this.gridColumnLevelCritical.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelCritical.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelCritical.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnLevelCritical.OptionsColumn.ReadOnly = true;
-            this.gridColumnLevelCritical.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnLevelCritical.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnLevelCritical.Visible = true;
-            this.gridColumnLevelCritical.VisibleIndex = 2;
-            this.gridColumnLevelCritical.Width = 115;
+            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn3.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn3.Caption = "Critical";
+            this.gridColumn3.FieldName = "Critical";
+            this.gridColumn3.MinWidth = 70;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.OptionsColumn.AllowFocus = false;
+            this.gridColumn3.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn3.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn3.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn3.OptionsColumn.ReadOnly = true;
+            this.gridColumn3.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 70;
             // 
-            // gridColumnLevelError
+            // gridColumn4
             // 
-            this.gridColumnLevelError.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnLevelError.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnLevelError.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnLevelError.Caption = "Error";
-            this.gridColumnLevelError.FieldName = "Error";
-            this.gridColumnLevelError.MinWidth = 24;
-            this.gridColumnLevelError.Name = "gridColumnLevelError";
-            this.gridColumnLevelError.OptionsColumn.AllowEdit = false;
-            this.gridColumnLevelError.OptionsColumn.AllowFocus = false;
-            this.gridColumnLevelError.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelError.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelError.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnLevelError.OptionsColumn.ReadOnly = true;
-            this.gridColumnLevelError.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnLevelError.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnLevelError.Visible = true;
-            this.gridColumnLevelError.VisibleIndex = 4;
-            this.gridColumnLevelError.Width = 115;
+            this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn4.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn4.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn4.Caption = "Error";
+            this.gridColumn4.FieldName = "Error";
+            this.gridColumn4.MinWidth = 70;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.AllowFocus = false;
+            this.gridColumn4.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn4.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn4.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
+            this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.Width = 70;
             // 
-            // gridColumnLevelWarning
+            // gridColumn5
             // 
-            this.gridColumnLevelWarning.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnLevelWarning.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnLevelWarning.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnLevelWarning.Caption = "Warning";
-            this.gridColumnLevelWarning.FieldName = "Warning";
-            this.gridColumnLevelWarning.MinWidth = 24;
-            this.gridColumnLevelWarning.Name = "gridColumnLevelWarning";
-            this.gridColumnLevelWarning.OptionsColumn.AllowEdit = false;
-            this.gridColumnLevelWarning.OptionsColumn.AllowFocus = false;
-            this.gridColumnLevelWarning.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelWarning.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelWarning.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnLevelWarning.OptionsColumn.ReadOnly = true;
-            this.gridColumnLevelWarning.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnLevelWarning.Visible = true;
-            this.gridColumnLevelWarning.VisibleIndex = 5;
-            this.gridColumnLevelWarning.Width = 115;
+            this.gridColumn5.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn5.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn5.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn5.Caption = "Warning";
+            this.gridColumn5.FieldName = "Warning";
+            this.gridColumn5.MinWidth = 70;
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.OptionsColumn.AllowFocus = false;
+            this.gridColumn5.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn5.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn5.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn5.OptionsColumn.ReadOnly = true;
+            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.Width = 70;
             // 
-            // gridColumnLevelTrace
+            // gridColumn6
             // 
-            this.gridColumnLevelTrace.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnLevelTrace.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnLevelTrace.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnLevelTrace.Caption = "Trace";
-            this.gridColumnLevelTrace.FieldName = "Trace";
-            this.gridColumnLevelTrace.MinWidth = 24;
-            this.gridColumnLevelTrace.Name = "gridColumnLevelTrace";
-            this.gridColumnLevelTrace.OptionsColumn.AllowEdit = false;
-            this.gridColumnLevelTrace.OptionsColumn.AllowFocus = false;
-            this.gridColumnLevelTrace.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelTrace.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelTrace.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnLevelTrace.OptionsColumn.ReadOnly = true;
-            this.gridColumnLevelTrace.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnLevelTrace.Visible = true;
-            this.gridColumnLevelTrace.VisibleIndex = 6;
-            this.gridColumnLevelTrace.Width = 115;
+            this.gridColumn6.Caption = "Information";
+            this.gridColumn6.FieldName = "Information";
+            this.gridColumn6.MinWidth = 70;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 8;
+            this.gridColumn6.Width = 70;
             // 
-            // gridColumnLevelDebug
+            // gridColumn7
             // 
-            this.gridColumnLevelDebug.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnLevelDebug.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnLevelDebug.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnLevelDebug.Caption = "Debug";
-            this.gridColumnLevelDebug.FieldName = "Debug";
-            this.gridColumnLevelDebug.MinWidth = 24;
-            this.gridColumnLevelDebug.Name = "gridColumnLevelDebug";
-            this.gridColumnLevelDebug.OptionsColumn.AllowEdit = false;
-            this.gridColumnLevelDebug.OptionsColumn.AllowFocus = false;
-            this.gridColumnLevelDebug.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelDebug.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnLevelDebug.OptionsColumn.ReadOnly = true;
-            this.gridColumnLevelDebug.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnLevelDebug.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnLevelDebug.Visible = true;
-            this.gridColumnLevelDebug.VisibleIndex = 3;
-            this.gridColumnLevelDebug.Width = 115;
+            this.gridColumn7.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn7.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn7.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn7.Caption = "Debug";
+            this.gridColumn7.FieldName = "Debug";
+            this.gridColumn7.MinWidth = 70;
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.AllowFocus = false;
+            this.gridColumn7.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn7.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn7.OptionsColumn.ReadOnly = true;
+            this.gridColumn7.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 3;
+            this.gridColumn7.Width = 70;
             // 
-            // gridColumnLevelVerbose
+            // gridColumn8
             // 
-            this.gridColumnLevelVerbose.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnLevelVerbose.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnLevelVerbose.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnLevelVerbose.Caption = "Verbose";
-            this.gridColumnLevelVerbose.FieldName = "Verbose";
-            this.gridColumnLevelVerbose.MinWidth = 24;
-            this.gridColumnLevelVerbose.Name = "gridColumnLevelVerbose";
-            this.gridColumnLevelVerbose.OptionsColumn.AllowEdit = false;
-            this.gridColumnLevelVerbose.OptionsColumn.AllowFocus = false;
-            this.gridColumnLevelVerbose.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelVerbose.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnLevelVerbose.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnLevelVerbose.OptionsColumn.ReadOnly = true;
-            this.gridColumnLevelVerbose.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnLevelVerbose.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnLevelVerbose.Visible = true;
-            this.gridColumnLevelVerbose.VisibleIndex = 7;
-            this.gridColumnLevelVerbose.Width = 115;
+            this.gridColumn8.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn8.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn8.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn8.Caption = "Verbose";
+            this.gridColumn8.FieldName = "Verbose";
+            this.gridColumn8.MinWidth = 70;
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.AllowFocus = false;
+            this.gridColumn8.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn8.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn8.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn8.OptionsColumn.ReadOnly = true;
+            this.gridColumn8.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 70;
             // 
-            // gridColumnLevelInformation
+            // gridColumn9
             // 
-            this.gridColumnLevelInformation.Caption = "Information";
-            this.gridColumnLevelInformation.FieldName = "Information";
-            this.gridColumnLevelInformation.MinWidth = 25;
-            this.gridColumnLevelInformation.Name = "gridColumnLevelInformation";
-            this.gridColumnLevelInformation.OptionsColumn.AllowEdit = false;
-            this.gridColumnLevelInformation.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumnLevelInformation.Visible = true;
-            this.gridColumnLevelInformation.VisibleIndex = 8;
-            this.gridColumnLevelInformation.Width = 109;
+            this.gridColumn9.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn9.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            this.gridColumn9.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.gridColumn9.Caption = "Trace";
+            this.gridColumn9.FieldName = "Trace";
+            this.gridColumn9.MinWidth = 70;
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsColumn.AllowFocus = false;
+            this.gridColumn9.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn9.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn9.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn9.OptionsColumn.ReadOnly = true;
+            this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 6;
+            this.gridColumn9.Width = 70;
             // 
             // LogStatisticsUC
             // 
@@ -571,11 +794,12 @@
             this.spltcSources.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltcSources)).EndInit();
             this.spltcSources.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridControlSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logGridSource)).EndInit();
             this.tabPageModules.ResumeLayout(false);
             this.spltcModules.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltcModules)).EndInit();
             this.spltcModules.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModules)).EndInit();
             this.tabPageGlobal.ResumeLayout(false);
             this.tabPageFreeText.ResumeLayout(false);
             this.spltCFreeText.Panel1.ResumeLayout(false);
@@ -587,8 +811,8 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklistItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlModules)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridModules)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,7 +825,6 @@
         private System.Windows.Forms.TabPage tabPageSources;
         private System.Windows.Forms.TabPage tabPageModules;
         private System.Windows.Forms.SplitContainer spltcModules;
-        private System.Windows.Forms.DataGridView dgvModules;
         private System.Windows.Forms.TabPage tabPageGlobal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnValue;
@@ -615,8 +838,8 @@
         private System.Windows.Forms.DataGridView dgvFreeText;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DevExpress.XtraGrid.GridControl gridSource;
-        private DevExpress.XtraGrid.Views.Grid.GridView logGrid;
+        private DevExpress.XtraGrid.GridControl GridControlSource;
+        private DevExpress.XtraGrid.Views.Grid.GridView logGridSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnName;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMessagesCount;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnLevelCritical;
@@ -626,5 +849,16 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnLevelDebug;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnLevelVerbose;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnLevelTrace;
+        private DevExpress.XtraGrid.GridControl gridControlModules;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridModules;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

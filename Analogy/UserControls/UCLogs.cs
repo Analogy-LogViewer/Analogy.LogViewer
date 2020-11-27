@@ -470,13 +470,13 @@ namespace Analogy
                 }
             };
             gridControl.MainView.Layout += MainView_Layout;
-            logGrid.RowStyle += pmsGridView_RowStyle;
+            logGrid.RowStyle += LogGridView_RowStyle;
             logGrid.MouseDown += LogGrid_MouseDown;
             logGrid.MouseUp += LogGrid_MouseUp;
             LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
-            gridViewBookmarkedMessages.RowStyle += pmsGridView_RowStyle;
-            gridViewGrouping2.RowStyle += pmsGridView_RowStyle;
+            gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
+            gridViewGrouping2.RowStyle += LogGridView_RowStyle;
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
             clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
@@ -989,205 +989,6 @@ namespace Analogy
 
         #region UI events
 
-        private void logGrid_Click(object sender, EventArgs e)
-        {
-            if (!(e is DXMouseEventArgs args))
-            {
-                return;
-            }
-
-            GridHitInfo hi = LogGrid.CalcHitInfo(new Point(args.X, args.Y));
-
-            if (hi.RowHandle < 0)
-            {
-                return;
-            }
-
-            int[] selRows = LogGrid.GetSelectedRows();
-
-            if (selRows == null || selRows.Length != 1)
-            {
-                return;
-            }
-
-            int rownum = selRows.First();
-            _currentMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
-            LoadTextBoxes(_currentMassage);
-            if (hasAnyInPlaceExtensions)
-            {
-                var rowHandle = hi.RowHandle;
-                var column = hi.Column;
-                if (column == null)
-                {
-                    return;
-                }
-
-                foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
-                {
-                    var columns = extension.GetColumnsInfo();
-                    foreach (AnalogyColumnInfo exColumn in columns)
-                    {
-                        if (column.FieldName.Equals(exColumn.ColumnName) &&
-                            column.Caption.Equals(exColumn.ColumnCaption))
-                        {
-                            var cellValue = LogGrid.GetRowCellValue(rowHandle, exColumn.ColumnName);
-                            AnalogyCellClickedEventArgs argsForEx =
-                                new AnalogyCellClickedEventArgs(exColumn.ColumnName, cellValue, _currentMassage);
-                            extension.CellClicked(sender, argsForEx);
-                        }
-
-                    }
-                }
-
-
-            }
-
-        }
-
-        private void PmsGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            if (message == null)
-            {
-                return;
-            }
-
-            LoadTextBoxes(message);
-
-        }
-
-        private void LogGrid_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                OpenMessageDetails();
-            }
-        }
-
-        private void pmsGridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            if (!Settings.ColorSettings.EnableMessagesColors || !(sender is GridView view) || e.RowHandle < 0)
-            {
-                return;
-            }
-
-            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
-            if (message == null)
-            {
-                return;
-            }
-
-            if (!Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
-                message.Date > reloadDateTime)
-            {
-                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor.BackgroundColor;
-                e.Appearance.ForeColor = Settings.ColorSettings.NewMessagesColor.TextColor;
-            }
-
-            var (backgroundColorLevel, textColorLevel) = Settings.ColorSettings.GetColorForLogLevel(message.Level);
-            e.Appearance.BackColor = backgroundColorLevel;
-            e.Appearance.ForeColor = textColorLevel;
-
-            if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
-                message.Date > reloadDateTime)
-            {
-                var (backgroundColor, textColor) = Settings.ColorSettings.NewMessagesColor;
-                e.Appearance.BackColor = backgroundColor;
-                e.Appearance.ForeColor = textColor;
-            }
-            string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
-            foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
-            {
-                if (FilterCriteriaObject.Match(text, preDefineHighlight.Text,
-                    preDefineHighlight.PreDefinedQueryType))
-                {
-                    e.Appearance.BackColor = preDefineHighlight.Color;
-                }
-            }
-
-            if (DataProvider.UseCustomColors)
-            {
-                IAnalogyLogMessage m =
-                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
-                if (m == null)
-                {
-                    return;
-                }
-
-                var colors = DataProvider.GetColorForMessage(m);
-                if (colors.backgroundColor != Color.Empty)
-                {
-                    e.Appearance.BackColor = colors.backgroundColor;
-                }
-
-                if (colors.foregroundColor != Color.Empty)
-                {
-                    e.Appearance.ForeColor = colors.foregroundColor;
-                }
-            }
-
-            if (chkbHighlight.Checked &&
-                FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
-            {
-                var (backgroundColorHighlight, textColorHighlight) = Settings.ColorSettings.GetHighlightColor();
-                e.Appearance.BackColor = backgroundColorHighlight;
-                e.Appearance.ForeColor = textColorHighlight;
-            }
-        }
-
-        private void pmsGridView_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
-        {
-            if (!(e.RowHandle >= 0) || !e.Info.IsRowIndicator || !(sender is GridView view))
-            {
-                return;
-            }
-
-            AnalogyLogMessage msg = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, "Object");
-            if (msg == null)
-            {
-                return;
-            }
-
-            Image img = imageList.Images[7];
-            switch (msg.Level)
-            {
-                case AnalogyLogLevel.Critical:
-                case AnalogyLogLevel.Error:
-                    img = imageList.Images[0];
-                    break;
-                case AnalogyLogLevel.Warning:
-                    img = imageList.Images[1];
-                    break;
-                case AnalogyLogLevel.Trace:
-                case AnalogyLogLevel.Information:
-                    img = imageList.Images[7];
-                    break;
-                case AnalogyLogLevel.Verbose:
-                    img = imageList.Images[2];
-                    break;
-                case AnalogyLogLevel.Debug:
-                    img = imageList.Images[6];
-                    break;
-                case AnalogyLogLevel.None:
-                    break;
-                case AnalogyLogLevel.Analogy:
-                    img = imageList.Images[8];
-                    break;
-                case AnalogyLogLevel.Unknown:
-                    img = imageList.Images[9];
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            Rectangle r = e.Bounds;
-            int x = r.X + (r.Width - imageList.ImageSize.Width) / 2;
-            int y = r.Y + (r.Height - imageList.ImageSize.Height) / 2;
-            e.Cache.DrawImage(img, x, y);
-            e.Handled = true;
-        }
 
         private void tsmiCopy_Click(object sender, EventArgs e)
         {
@@ -1281,19 +1082,6 @@ namespace Analogy
             }
         }
 
-        /// <summary>
-        /// Set custom column display text
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GridViewCustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.GroupRowHandle == BaseListSourceDataController.FilterRow &&
-                e.Column.FieldName == DataGridDateColumnName)
-            {
-                e.DisplayText = e.Column.FilterInfo.DisplayText;
-            }
-        }
 
         /// <summary>
         /// Called when column filter button is clicked
@@ -1996,7 +1784,233 @@ namespace Analogy
 
         }
 
+        #region Log grid Event Handlers
+        private void logGrid_Click(object sender, EventArgs e)
+        {
+            if (!(e is DXMouseEventArgs args))
+            {
+                return;
+            }
 
+            GridHitInfo hi = LogGrid.CalcHitInfo(new Point(args.X, args.Y));
+
+            if (hi.RowHandle < 0)
+            {
+                return;
+            }
+
+            int[] selRows = LogGrid.GetSelectedRows();
+
+            if (selRows == null || selRows.Length != 1)
+            {
+                return;
+            }
+
+            int rownum = selRows.First();
+            _currentMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
+            LoadTextBoxes(_currentMassage);
+            if (hasAnyInPlaceExtensions)
+            {
+                var rowHandle = hi.RowHandle;
+                var column = hi.Column;
+                if (column == null)
+                {
+                    return;
+                }
+
+                foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
+                {
+                    var columns = extension.GetColumnsInfo();
+                    foreach (AnalogyColumnInfo exColumn in columns)
+                    {
+                        if (column.FieldName.Equals(exColumn.ColumnName) &&
+                            column.Caption.Equals(exColumn.ColumnCaption))
+                        {
+                            var cellValue = LogGrid.GetRowCellValue(rowHandle, exColumn.ColumnName);
+                            AnalogyCellClickedEventArgs argsForEx =
+                                new AnalogyCellClickedEventArgs(exColumn.ColumnName, cellValue, _currentMassage);
+                            extension.CellClicked(sender, argsForEx);
+                        }
+
+                    }
+                }
+
+
+            }
+
+        }
+
+        private void LogGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+            if (message == null)
+            {
+                return;
+            }
+
+            LoadTextBoxes(message);
+
+        }
+
+        private void LogGrid_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                OpenMessageDetails();
+            }
+        }
+
+        private void LogGridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (!Settings.ColorSettings.EnableMessagesColors || !(sender is GridView view) || e.RowHandle < 0)
+            {
+                return;
+            }
+
+            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+            if (message == null)
+            {
+                return;
+            }
+
+            if (!Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
+                message.Date > reloadDateTime)
+            {
+                e.Appearance.BackColor = Settings.ColorSettings.NewMessagesColor.BackgroundColor;
+                e.Appearance.ForeColor = Settings.ColorSettings.NewMessagesColor.TextColor;
+            }
+
+            var (backgroundColorLevel, textColorLevel) = Settings.ColorSettings.GetColorForLogLevel(message.Level);
+            e.Appearance.BackColor = backgroundColorLevel;
+            e.Appearance.ForeColor = textColorLevel;
+
+            if (Settings.ColorSettings.OverrideLogLevelColor && Settings.ColorSettings.EnableNewMessagesColor &&
+                message.Date > reloadDateTime)
+            {
+                var (backgroundColor, textColor) = Settings.ColorSettings.NewMessagesColor;
+                e.Appearance.BackColor = backgroundColor;
+                e.Appearance.ForeColor = textColor;
+            }
+            string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
+            foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
+            {
+                if (FilterCriteriaObject.Match(text, preDefineHighlight.Text,
+                    preDefineHighlight.PreDefinedQueryType))
+                {
+                    e.Appearance.BackColor = preDefineHighlight.Color;
+                }
+            }
+
+            if (DataProvider.UseCustomColors)
+            {
+                IAnalogyLogMessage m =
+                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                if (m == null)
+                {
+                    return;
+                }
+
+                var colors = DataProvider.GetColorForMessage(m);
+                if (colors.backgroundColor != Color.Empty)
+                {
+                    e.Appearance.BackColor = colors.backgroundColor;
+                }
+
+                if (colors.foregroundColor != Color.Empty)
+                {
+                    e.Appearance.ForeColor = colors.foregroundColor;
+                }
+            }
+
+            if (chkbHighlight.Checked &&
+                FilterCriteriaObject.Match(text, txtbHighlight.Text, PreDefinedQueryType.Contains))
+            {
+                var (backgroundColorHighlight, textColorHighlight) = Settings.ColorSettings.GetHighlightColor();
+                e.Appearance.BackColor = backgroundColorHighlight;
+                e.Appearance.ForeColor = textColorHighlight;
+            }
+        }
+
+        private void LogGrid_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (!(e.RowHandle >= 0) || !e.Info.IsRowIndicator || !(sender is GridView view))
+            {
+                return;
+            }
+
+            AnalogyLogMessage msg = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, "Object");
+            if (msg == null)
+            {
+                return;
+            }
+
+            Image img = imageList.Images[7];
+            switch (msg.Level)
+            {
+                case AnalogyLogLevel.Critical:
+                case AnalogyLogLevel.Error:
+                    img = imageList.Images[0];
+                    break;
+                case AnalogyLogLevel.Warning:
+                    img = imageList.Images[1];
+                    break;
+                case AnalogyLogLevel.Trace:
+                case AnalogyLogLevel.Information:
+                    img = imageList.Images[7];
+                    break;
+                case AnalogyLogLevel.Verbose:
+                    img = imageList.Images[2];
+                    break;
+                case AnalogyLogLevel.Debug:
+                    img = imageList.Images[6];
+                    break;
+                case AnalogyLogLevel.None:
+                    break;
+                case AnalogyLogLevel.Analogy:
+                    img = imageList.Images[8];
+                    break;
+                case AnalogyLogLevel.Unknown:
+                    img = imageList.Images[9];
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            Rectangle r = e.Bounds;
+            int x = r.X + (r.Width - imageList.ImageSize.Width) / 2;
+            int y = r.Y + (r.Height - imageList.ImageSize.Height) / 2;
+            e.Cache.DrawImage(img, x, y);
+            e.Handled = true;
+        }
+
+        private void LogGrid_DoubleClick(object sender, EventArgs e)
+        {
+            if (!(e is DXMouseEventArgs args))
+            {
+                return;
+            }
+
+            OpenMessageDetails();
+            //CreateBookmark();
+
+        }
+        /// <summary>
+        /// Set custom column display text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LogGridViewCustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.GroupRowHandle == BaseListSourceDataController.FilterRow &&
+                e.Column.FieldName == DataGridDateColumnName)
+            {
+                e.DisplayText = e.Column.FilterInfo.DisplayText;
+            }
+        }
+
+        #endregion
 
 
 
@@ -2021,17 +2035,7 @@ namespace Analogy
 
         }
 
-        private void pmsGrid_DoubleClick(object sender, EventArgs e)
-        {
-            if (!(e is DXMouseEventArgs args))
-            {
-                return;
-            }
-
-            OpenMessageDetails();
-            //CreateBookmark();
-
-        }
+    
 
         private void OpenMessageDetails()
         {
@@ -2502,7 +2506,7 @@ namespace Analogy
             }
         }
 
-        private (AnalogyLogMessage message, string dataProvider) GetMessageFromSelectedFocusedRowInGrid()
+        private (AnalogyLogMessage? message, string dataProvider) GetMessageFromSelectedFocusedRowInGrid()
         {
             var row = LogGrid.GetFocusedRow();
             if (row == null)
@@ -2610,7 +2614,7 @@ namespace Analogy
             Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
         }
 
-        private void pmsGrid_Click(object sender, EventArgs e)
+        private void LogGrid_Click(object sender, EventArgs e)
         {
             if (btsAutoScrollToBottom.Checked)
             {

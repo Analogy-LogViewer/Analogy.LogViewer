@@ -344,8 +344,8 @@ namespace Analogy
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
-            this.gridControl.Click += new System.EventHandler(this.pmsGrid_Click);
-            this.gridControl.DoubleClick += new System.EventHandler(this.pmsGrid_DoubleClick);
+            this.gridControl.Click += new System.EventHandler(this.LogGrid_Click);
+            this.gridControl.DoubleClick += new System.EventHandler(this.LogGrid_DoubleClick);
             this.gridControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LogGrid_KeyPress);
             // 
             // logGrid
@@ -390,11 +390,11 @@ namespace Analogy
             this.logGrid.OptionsView.RowAutoHeight = true;
             this.logGrid.OptionsView.ShowAutoFilterRow = true;
             this.logGrid.OptionsView.ShowGroupPanel = false;
-            this.logGrid.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
-            this.logGrid.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.PmsGridView_SelectionChanged);
+            this.logGrid.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.LogGrid_CustomDrawRowIndicator);
+            this.logGrid.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.LogGridView_SelectionChanged);
             this.logGrid.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGrid_FocusedRowChanged);
             this.logGrid.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
-            this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.GridViewCustomColumnDisplayText);
+            this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.LogGridViewCustomColumnDisplayText);
             this.logGrid.Click += new System.EventHandler(this.logGrid_Click);
             // 
             // gridColumnDataSource
@@ -2031,7 +2031,7 @@ namespace Analogy
             this.gridViewBookmarkedMessages.OptionsView.RowAutoHeight = true;
             this.gridViewBookmarkedMessages.OptionsView.ShowAutoFilterRow = true;
             this.gridViewBookmarkedMessages.OptionsView.ShowGroupPanel = false;
-            this.gridViewBookmarkedMessages.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
+            this.gridViewBookmarkedMessages.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.LogGrid_CustomDrawRowIndicator);
             // 
             // gridColumnBookmarkDataSource
             // 
@@ -2646,7 +2646,7 @@ namespace Analogy
             this.gridViewGrouping2.OptionsView.RowAutoHeight = true;
             this.gridViewGrouping2.OptionsView.ShowAutoFilterRow = true;
             this.gridViewGrouping2.OptionsView.ShowGroupPanel = false;
-            this.gridViewGrouping2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.pmsGridView_CustomDrawRowIndicator);
+            this.gridViewGrouping2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.LogGrid_CustomDrawRowIndicator);
             // 
             // gridColumn13
             // 
