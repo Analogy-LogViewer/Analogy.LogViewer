@@ -2754,7 +2754,7 @@
             this.tpStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpStatistics.ImageOptions.Image")));
             this.tpStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Size = new System.Drawing.Size(790, 787);
+            this.tpStatistics.Size = new System.Drawing.Size(790, 906);
             this.tpStatistics.Text = "User Statistics";
             // 
             // groupControl1
@@ -2769,7 +2769,7 @@
             this.groupControl1.Location = new System.Drawing.Point(5, 50);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(782, 545);
+            this.groupControl1.Size = new System.Drawing.Size(782, 664);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Statistics";
             // 

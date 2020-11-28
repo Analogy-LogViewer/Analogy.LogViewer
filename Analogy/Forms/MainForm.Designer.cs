@@ -30,15 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
@@ -281,6 +287,12 @@
             this.bsiGlobalTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarks)});
             this.bsiGlobalTools.Name = "bsiGlobalTools";
+            toolTipTitleItem1.Text = "Global Tools";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "List of built-in and Extrenal tools";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bsiGlobalTools.SuperTip = superToolTip1;
             // 
             // bbiBookmarks
             // 
@@ -302,8 +314,15 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDataProvidersUpdates),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiUserSettingsStatistics),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bsmInfo.Name = "bsmInfo";
+            toolTipTitleItem2.Text = "Info";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "General information about the applications";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.bsmInfo.SuperTip = superToolTip2;
             // 
             // bbtnWhatsNew
             // 
@@ -399,9 +418,9 @@
             // 
             // 
             // 
-            galleryItemGroup3.Caption = "Group2";
+            galleryItemGroup1.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup3});
+            galleryItemGroup1});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -411,9 +430,9 @@
             // 
             // 
             // 
-            galleryItemGroup4.Caption = "Group3";
+            galleryItemGroup2.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup4});
+            galleryItemGroup2});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -530,7 +549,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition2;
+            this.workspaceManager1.TransitionType = pushTransition1;
             // 
             // bBtnBookmarked
             // 
@@ -600,15 +619,15 @@
             this.bbiFileCaching.Caption = "File caching is";
             this.bbiFileCaching.Id = 68;
             this.bbiFileCaching.Name = "bbiFileCaching";
-            toolTipTitleItem4.Text = "File Caching";
+            toolTipTitleItem3.Text = "File Caching";
             toolTipItem3.LeftIndent = 6;
             toolTipItem3.Text = "If enabled, a file that was already loaded won\'t be read again when selected and " +
     "the content will be loaded from cache.";
-            toolTipTitleItem5.LeftIndent = 6;
-            toolTipTitleItem5.Text = "click on the text to toggle file caching";
-            superToolTip3.Items.Add(toolTipTitleItem4);
+            toolTipTitleItem4.LeftIndent = 6;
+            toolTipTitleItem4.Text = "click on the text to toggle file caching";
+            superToolTip3.Items.Add(toolTipTitleItem3);
             superToolTip3.Items.Add(toolTipItem3);
-            superToolTip3.Items.Add(toolTipTitleItem5);
+            superToolTip3.Items.Add(toolTipTitleItem4);
             this.bbiFileCaching.SuperTip = superToolTip3;
             this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
             // 
@@ -661,10 +680,10 @@
             this.skinRibbonGallery.Caption = "Skin";
             this.skinRibbonGallery.Id = 81;
             this.skinRibbonGallery.Name = "skinRibbonGallery";
-            toolTipTitleItem6.Text = "Skins and themes";
+            toolTipTitleItem5.Text = "Skins and themes";
             toolTipItem4.LeftIndent = 6;
             toolTipItem4.Text = "A list of built-in skins and themes";
-            superToolTip4.Items.Add(toolTipTitleItem6);
+            superToolTip4.Items.Add(toolTipTitleItem5);
             superToolTip4.Items.Add(toolTipItem4);
             this.skinRibbonGallery.SuperTip = superToolTip4;
             // 
@@ -692,7 +711,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDataProvidersSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSettingsExtensions),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCustomDataProvidersSettings),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiUserSettingsStatistics),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsDebugging)});
             this.bsiSettings.Name = "bsiSettings";
@@ -790,8 +808,8 @@
             // 
             this.bbiUserSettingsStatistics.Caption = "User Statistics";
             this.bbiUserSettingsStatistics.Id = 95;
-            this.bbiUserSettingsStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUserSettings.ImageOptions.Image")));
-            this.bbiUserSettingsStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUserSettings.ImageOptions.LargeImage")));
+            this.bbiUserSettingsStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.Image")));
+            this.bbiUserSettingsStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.LargeImage")));
             this.bbiUserSettingsStatistics.Name = "bbiUserSettingsStatistics";
             this.bbiUserSettingsStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserSettingsStatistics_ItemClick);
             // 
