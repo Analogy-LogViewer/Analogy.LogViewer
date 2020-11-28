@@ -1947,22 +1947,15 @@ namespace Analogy.Forms
         }
 
 
-        private void bbiUserSettingsStatistics_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnSettingsUpdate_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(9);
             user.ShowDialog(this);
         }
 
-
-        private void btnSettingsUpdate_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsForm user = new UserSettingsForm(10);
-            user.ShowDialog(this);
-        }
-
         private void btnSettingsDebugging_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(11);
+            UserSettingsForm user = new UserSettingsForm(10);
             user.ShowDialog(this);
         }
 
@@ -1971,6 +1964,11 @@ namespace Analogy.Forms
             OpenDataProvidersUpdateWindow();
         }
 
+        private void bbiUserStatistics_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var user = new UserStatisticsForm();
+            user.ShowDialog(this);
+        }
         private void OpenDataProvidersUpdateWindow()
         {
             var update = new ComponentDownloadsForm();

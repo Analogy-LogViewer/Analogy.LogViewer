@@ -223,13 +223,6 @@
             this.xtraTabPageExtension = new DevExpress.XtraTab.XtraTabPage();
             this.chkLstItemExtensions = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.tpStatistics = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.lblOpenedFiles = new DevExpress.XtraEditors.LabelControl();
-            this.lblRunningTime = new DevExpress.XtraEditors.LabelControl();
-            this.lblLaunchCount = new DevExpress.XtraEditors.LabelControl();
-            this.btnClearStatistics = new DevExpress.XtraEditors.SimpleButton();
-            this.tsUserStatistics = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtraTabPageUpdates = new DevExpress.XtraTab.XtraTabPage();
             this.gcIntervals = new DevExpress.XtraEditors.GroupControl();
             this.cbUpdates = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -364,10 +357,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxFoldersProbing)).BeginInit();
             this.xtraTabPageExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstItemExtensions)).BeginInit();
-            this.tpStatistics.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tsUserStatistics.Properties)).BeginInit();
             this.xtraTabPageUpdates.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcIntervals)).BeginInit();
             this.gcIntervals.SuspendLayout();
@@ -386,7 +375,7 @@
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageApplication;
-            this.tabControlMain.Size = new System.Drawing.Size(991, 913);
+            this.tabControlMain.Size = new System.Drawing.Size(991, 914);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageApplication,
@@ -398,7 +387,6 @@
             this.xtraTabPageResources,
             this.xtraTabPageDataProviders,
             this.xtraTabPageExtension,
-            this.tpStatistics,
             this.xtraTabPageUpdates,
             this.xtraTabPageDebugging});
             // 
@@ -410,7 +398,7 @@
             this.xtraTabPageApplication.Controls.Add(this.gcGeneral);
             this.xtraTabPageApplication.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_icon1;
             this.xtraTabPageApplication.Name = "xtraTabPageApplication";
-            this.xtraTabPageApplication.Size = new System.Drawing.Size(790, 906);
+            this.xtraTabPageApplication.Size = new System.Drawing.Size(790, 907);
             this.xtraTabPageApplication.Text = "Application Settings";
             // 
             // gcCompressedArchives
@@ -748,7 +736,7 @@
             this.xtraTabPageFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageFilter.ImageOptions.Image")));
             this.xtraTabPageFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPageFilter.Name = "xtraTabPageFilter";
-            this.xtraTabPageFilter.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabPageFilter.Size = new System.Drawing.Size(790, 906);
             this.xtraTabPageFilter.Text = "Filtering and Interactions";
             // 
             // groupControl5
@@ -1323,7 +1311,7 @@
             this.xtraTabPagePreDefined.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPagePreDefined.ImageOptions.Image")));
             this.xtraTabPagePreDefined.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPagePreDefined.Name = "xtraTabPagePreDefined";
-            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabPagePreDefined.Size = new System.Drawing.Size(790, 906);
             this.xtraTabPagePreDefined.Text = "Pre-Defined Queries";
             // 
             // xtraTabControlQueries
@@ -1332,7 +1320,7 @@
             this.xtraTabControlQueries.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlQueries.Name = "xtraTabControlQueries";
             this.xtraTabControlQueries.SelectedTabPage = this.xtraTabPageColorHighlight;
-            this.xtraTabControlQueries.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabControlQueries.Size = new System.Drawing.Size(790, 906);
             this.xtraTabControlQueries.TabIndex = 0;
             this.xtraTabControlQueries.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageColorHighlight,
@@ -1345,13 +1333,13 @@
             this.xtraTabPageColorHighlight.Controls.Add(this.lboxHighlightItems);
             this.xtraTabPageColorHighlight.Controls.Add(this.gcHighlight);
             this.xtraTabPageColorHighlight.Name = "xtraTabPageColorHighlight";
-            this.xtraTabPageColorHighlight.Size = new System.Drawing.Size(783, 753);
+            this.xtraTabPageColorHighlight.Size = new System.Drawing.Size(783, 872);
             this.xtraTabPageColorHighlight.Text = "Color Highlighting";
             // 
             // sbtnDeleteHighlight
             // 
             this.sbtnDeleteHighlight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteHighlight.Location = new System.Drawing.Point(670, 723);
+            this.sbtnDeleteHighlight.Location = new System.Drawing.Point(670, 842);
             this.sbtnDeleteHighlight.Name = "sbtnDeleteHighlight";
             this.sbtnDeleteHighlight.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteHighlight.TabIndex = 7;
@@ -1365,7 +1353,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxHighlightItems.Location = new System.Drawing.Point(5, 206);
             this.lboxHighlightItems.Name = "lboxHighlightItems";
-            this.lboxHighlightItems.Size = new System.Drawing.Size(775, 511);
+            this.lboxHighlightItems.Size = new System.Drawing.Size(775, 630);
             this.lboxHighlightItems.TabIndex = 1;
             // 
             // gcHighlight
@@ -1473,13 +1461,13 @@
             this.xtraTabPageFilters.Controls.Add(this.txtbExcludeFilter);
             this.xtraTabPageFilters.Controls.Add(this.txtbIncludeTextFilter);
             this.xtraTabPageFilters.Name = "xtraTabPageFilters";
-            this.xtraTabPageFilters.Size = new System.Drawing.Size(783, 753);
+            this.xtraTabPageFilters.Size = new System.Drawing.Size(783, 872);
             this.xtraTabPageFilters.Text = "Filters";
             // 
             // sbtnDeleteFilter
             // 
             this.sbtnDeleteFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteFilter.Location = new System.Drawing.Point(669, 721);
+            this.sbtnDeleteFilter.Location = new System.Drawing.Point(669, 840);
             this.sbtnDeleteFilter.Name = "sbtnDeleteFilter";
             this.sbtnDeleteFilter.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteFilter.TabIndex = 38;
@@ -1493,7 +1481,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxFilters.Location = new System.Drawing.Point(4, 251);
             this.lboxFilters.Name = "lboxFilters";
-            this.lboxFilters.Size = new System.Drawing.Size(775, 464);
+            this.lboxFilters.Size = new System.Drawing.Size(775, 583);
             this.lboxFilters.TabIndex = 37;
             // 
             // sbtnAddFilter
@@ -1604,13 +1592,13 @@
             this.xtraTabPageAlerts.Controls.Add(this.txtbExcludeAlert);
             this.xtraTabPageAlerts.Controls.Add(this.txtbIncludeTextAlert);
             this.xtraTabPageAlerts.Name = "xtraTabPageAlerts";
-            this.xtraTabPageAlerts.Size = new System.Drawing.Size(783, 753);
+            this.xtraTabPageAlerts.Size = new System.Drawing.Size(783, 872);
             this.xtraTabPageAlerts.Text = "Alert and Notifications";
             // 
             // sbtnDeleteAlerts
             // 
             this.sbtnDeleteAlerts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteAlerts.Location = new System.Drawing.Point(669, 721);
+            this.sbtnDeleteAlerts.Location = new System.Drawing.Point(669, 840);
             this.sbtnDeleteAlerts.Name = "sbtnDeleteAlerts";
             this.sbtnDeleteAlerts.Size = new System.Drawing.Size(110, 27);
             this.sbtnDeleteAlerts.TabIndex = 46;
@@ -1624,7 +1612,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboxAlerts.Location = new System.Drawing.Point(4, 251);
             this.lboxAlerts.Name = "lboxAlerts";
-            this.lboxAlerts.Size = new System.Drawing.Size(775, 464);
+            this.lboxAlerts.Size = new System.Drawing.Size(775, 583);
             this.lboxAlerts.TabIndex = 45;
             // 
             // sbtnAddAlerts
@@ -1737,7 +1725,7 @@
             this.tpLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpLookAndFeel.ImageOptions.Image")));
             this.tpLookAndFeel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpLookAndFeel.Name = "tpLookAndFeel";
-            this.tpLookAndFeel.Size = new System.Drawing.Size(790, 787);
+            this.tpLookAndFeel.Size = new System.Drawing.Size(790, 906);
             this.tpLookAndFeel.Text = "Colors of messages";
             // 
             // cpeNewMessagesColorText
@@ -2249,7 +2237,7 @@
             this.xtPage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtPage.ImageOptions.Image")));
             this.xtPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtPage.Name = "xtPage";
-            this.xtPage.Size = new System.Drawing.Size(790, 787);
+            this.xtPage.Size = new System.Drawing.Size(790, 906);
             this.xtPage.Text = "Shortcuts";
             // 
             // labelControl10
@@ -2307,7 +2295,7 @@
             this.xTabMRU.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xTabMRU.ImageOptions.Image")));
             this.xTabMRU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xTabMRU.Name = "xTabMRU";
-            this.xTabMRU.Size = new System.Drawing.Size(790, 787);
+            this.xTabMRU.Size = new System.Drawing.Size(790, 906);
             this.xTabMRU.Text = "Most Recently Used";
             // 
             // lblRecentFolders
@@ -2364,7 +2352,7 @@
             this.xtraTabPageResources.Controls.Add(this.toggleSwitchIdleMode);
             this.xtraTabPageResources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageResources.ImageOptions.Image")));
             this.xtraTabPageResources.Name = "xtraTabPageResources";
-            this.xtraTabPageResources.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabPageResources.Size = new System.Drawing.Size(790, 906);
             this.xtraTabPageResources.Text = "Resources Usage";
             // 
             // labelControl5
@@ -2420,7 +2408,7 @@
             this.xtraTabPageDataProviders.Controls.Add(this.xtraTabControlDataProviderSettings);
             this.xtraTabPageDataProviders.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_Icon2;
             this.xtraTabPageDataProviders.Name = "xtraTabPageDataProviders";
-            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(790, 906);
             this.xtraTabPageDataProviders.Text = "Data Providers";
             // 
             // xtraTabControlDataProviderSettings
@@ -2429,7 +2417,7 @@
             this.xtraTabControlDataProviderSettings.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlDataProviderSettings.Name = "xtraTabControlDataProviderSettings";
             this.xtraTabControlDataProviderSettings.SelectedTabPage = this.xtraTabPageDataProvidersOrder;
-            this.xtraTabControlDataProviderSettings.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabControlDataProviderSettings.Size = new System.Drawing.Size(790, 906);
             this.xtraTabControlDataProviderSettings.TabIndex = 10;
             this.xtraTabControlDataProviderSettings.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageDataProvidersOrder,
@@ -2442,7 +2430,7 @@
             // 
             this.xtraTabPageDataProvidersOrder.Controls.Add(this.splitContainerControlDataProviders);
             this.xtraTabPageDataProvidersOrder.Name = "xtraTabPageDataProvidersOrder";
-            this.xtraTabPageDataProvidersOrder.Size = new System.Drawing.Size(783, 753);
+            this.xtraTabPageDataProvidersOrder.Size = new System.Drawing.Size(783, 872);
             this.xtraTabPageDataProvidersOrder.Text = "Data Providers Enable/Disable";
             // 
             // splitContainerControlDataProviders
@@ -2458,7 +2446,7 @@
             this.splitContainerControlDataProviders.Panel2.Controls.Add(this.labelControl7);
             this.splitContainerControlDataProviders.Panel2.Controls.Add(this.tsRememberLastOpenedDataProvider);
             this.splitContainerControlDataProviders.Panel2.Text = "Panel2";
-            this.splitContainerControlDataProviders.Size = new System.Drawing.Size(783, 753);
+            this.splitContainerControlDataProviders.Size = new System.Drawing.Size(783, 872);
             this.splitContainerControlDataProviders.SplitterPosition = 46;
             this.splitContainerControlDataProviders.TabIndex = 14;
             // 
@@ -2509,7 +2497,7 @@
             this.chkLstDataProviderStatus.ItemHeight = 62;
             this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 64);
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(777, 689);
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(777, 808);
             this.chkLstDataProviderStatus.TabIndex = 12;
             // 
             // labelControl7
@@ -2542,7 +2530,7 @@
             this.xtraTabPageDataProvidersRealTime.Controls.Add(this.chkLstItemRealTimeDataSources);
             this.xtraTabPageDataProvidersRealTime.Controls.Add(this.labelControl6);
             this.xtraTabPageDataProvidersRealTime.Name = "xtraTabPageDataProvidersRealTime";
-            this.xtraTabPageDataProvidersRealTime.Size = new System.Drawing.Size(783, 753);
+            this.xtraTabPageDataProvidersRealTime.Size = new System.Drawing.Size(783, 872);
             this.xtraTabPageDataProvidersRealTime.Text = "Real time Auto-Startup";
             // 
             // chkLstItemRealTimeDataSources
@@ -2550,7 +2538,7 @@
             this.chkLstItemRealTimeDataSources.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkLstItemRealTimeDataSources.Location = new System.Drawing.Point(0, 36);
             this.chkLstItemRealTimeDataSources.Name = "chkLstItemRealTimeDataSources";
-            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(783, 717);
+            this.chkLstItemRealTimeDataSources.Size = new System.Drawing.Size(783, 836);
             this.chkLstItemRealTimeDataSources.TabIndex = 10;
             // 
             // labelControl6
@@ -2573,7 +2561,7 @@
             this.xtraTabPageDataProviderAssociation.Controls.Add(this.btnSetFileAssociation);
             this.xtraTabPageDataProviderAssociation.Controls.Add(this.labelControl8);
             this.xtraTabPageDataProviderAssociation.Name = "xtraTabPageDataProviderAssociation";
-            this.xtraTabPageDataProviderAssociation.Size = new System.Drawing.Size(783, 753);
+            this.xtraTabPageDataProviderAssociation.Size = new System.Drawing.Size(783, 872);
             this.xtraTabPageDataProviderAssociation.Text = "Default File Associations";
             // 
             // cbDataProviderAssociation
@@ -2619,7 +2607,7 @@
             // 
             this.xtraTabPageDataProvidersCustom.Controls.Add(this.btnDataProviderCustomSettings);
             this.xtraTabPageDataProvidersCustom.Name = "xtraTabPageDataProvidersCustom";
-            this.xtraTabPageDataProvidersCustom.Size = new System.Drawing.Size(783, 753);
+            this.xtraTabPageDataProvidersCustom.Size = new System.Drawing.Size(783, 872);
             this.xtraTabPageDataProvidersCustom.Text = "Custom Settings";
             // 
             // btnDataProviderCustomSettings
@@ -2642,7 +2630,7 @@
             this.xtpExternalLocations.Controls.Add(this.listBoxFoldersProbing);
             this.xtpExternalLocations.Controls.Add(this.sbtnFolderProbingAdd);
             this.xtpExternalLocations.Name = "xtpExternalLocations";
-            this.xtpExternalLocations.Size = new System.Drawing.Size(783, 753);
+            this.xtpExternalLocations.Size = new System.Drawing.Size(783, 872);
             this.xtpExternalLocations.Text = "External Locations";
             // 
             // lblAssemblies
@@ -2703,7 +2691,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxFoldersProbing.Location = new System.Drawing.Point(11, 95);
             this.listBoxFoldersProbing.Name = "listBoxFoldersProbing";
-            this.listBoxFoldersProbing.Size = new System.Drawing.Size(765, 645);
+            this.listBoxFoldersProbing.Size = new System.Drawing.Size(765, 764);
             this.listBoxFoldersProbing.TabIndex = 2;
             // 
             // sbtnFolderProbingAdd
@@ -2722,7 +2710,7 @@
             this.xtraTabPageExtension.Controls.Add(this.labelControl12);
             this.xtraTabPageExtension.ImageOptions.Image = global::Analogy.Properties.Resources.extension32;
             this.xtraTabPageExtension.Name = "xtraTabPageExtension";
-            this.xtraTabPageExtension.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabPageExtension.Size = new System.Drawing.Size(790, 906);
             this.xtraTabPageExtension.Text = "Extensions";
             // 
             // chkLstItemExtensions
@@ -2730,7 +2718,7 @@
             this.chkLstItemExtensions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkLstItemExtensions.Location = new System.Drawing.Point(0, 36);
             this.chkLstItemExtensions.Name = "chkLstItemExtensions";
-            this.chkLstItemExtensions.Size = new System.Drawing.Size(790, 751);
+            this.chkLstItemExtensions.Size = new System.Drawing.Size(790, 870);
             this.chkLstItemExtensions.TabIndex = 12;
             // 
             // labelControl12
@@ -2746,91 +2734,13 @@
             this.labelControl12.TabIndex = 11;
             this.labelControl12.Text = "Load the following Extensions:";
             // 
-            // tpStatistics
-            // 
-            this.tpStatistics.AutoScroll = true;
-            this.tpStatistics.Controls.Add(this.groupControl1);
-            this.tpStatistics.Controls.Add(this.tsUserStatistics);
-            this.tpStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tpStatistics.ImageOptions.Image")));
-            this.tpStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Size = new System.Drawing.Size(790, 906);
-            this.tpStatistics.Text = "User Statistics";
-            // 
-            // groupControl1
-            // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.Controls.Add(this.lblOpenedFiles);
-            this.groupControl1.Controls.Add(this.lblRunningTime);
-            this.groupControl1.Controls.Add(this.lblLaunchCount);
-            this.groupControl1.Controls.Add(this.btnClearStatistics);
-            this.groupControl1.Location = new System.Drawing.Point(5, 50);
-            this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(782, 664);
-            this.groupControl1.TabIndex = 3;
-            this.groupControl1.Text = "Statistics";
-            // 
-            // lblOpenedFiles
-            // 
-            this.lblOpenedFiles.Location = new System.Drawing.Point(26, 90);
-            this.lblOpenedFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblOpenedFiles.Name = "lblOpenedFiles";
-            this.lblOpenedFiles.Size = new System.Drawing.Size(156, 16);
-            this.lblOpenedFiles.TabIndex = 3;
-            this.lblOpenedFiles.Text = "Number Of Opened Files: 0";
-            // 
-            // lblRunningTime
-            // 
-            this.lblRunningTime.Location = new System.Drawing.Point(26, 63);
-            this.lblRunningTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblRunningTime.Name = "lblRunningTime";
-            this.lblRunningTime.Size = new System.Drawing.Size(95, 16);
-            this.lblRunningTime.TabIndex = 2;
-            this.lblRunningTime.Text = "Running Time: 0";
-            // 
-            // lblLaunchCount
-            // 
-            this.lblLaunchCount.Location = new System.Drawing.Point(26, 36);
-            this.lblLaunchCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblLaunchCount.Name = "lblLaunchCount";
-            this.lblLaunchCount.Size = new System.Drawing.Size(182, 16);
-            this.lblLaunchCount.TabIndex = 1;
-            this.lblLaunchCount.Text = "Number of Analogy Launches: 0";
-            // 
-            // btnClearStatistics
-            // 
-            this.btnClearStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearStatistics.Location = new System.Drawing.Point(666, 27);
-            this.btnClearStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnClearStatistics.Name = "btnClearStatistics";
-            this.btnClearStatistics.Size = new System.Drawing.Size(96, 33);
-            this.btnClearStatistics.TabIndex = 0;
-            this.btnClearStatistics.Text = "Clear";
-            this.btnClearStatistics.Click += new System.EventHandler(this.btnClearStatistics_Click);
-            // 
-            // tsUserStatistics
-            // 
-            this.tsUserStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsUserStatistics.Location = new System.Drawing.Point(29, 11);
-            this.tsUserStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsUserStatistics.Name = "tsUserStatistics";
-            this.tsUserStatistics.Properties.OffText = "User Statistics are disabled";
-            this.tsUserStatistics.Properties.OnText = "User Statistics are enabled";
-            this.tsUserStatistics.Size = new System.Drawing.Size(691, 28);
-            this.tsUserStatistics.TabIndex = 2;
-            this.tsUserStatistics.Toggled += new System.EventHandler(this.tsUserStatistics_Toggled);
-            // 
             // xtraTabPageUpdates
             // 
             this.xtraTabPageUpdates.AutoScroll = true;
             this.xtraTabPageUpdates.Controls.Add(this.gcIntervals);
             this.xtraTabPageUpdates.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageUpdates.ImageOptions.Image")));
             this.xtraTabPageUpdates.Name = "xtraTabPageUpdates";
-            this.xtraTabPageUpdates.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabPageUpdates.Size = new System.Drawing.Size(790, 906);
             this.xtraTabPageUpdates.Text = "Updates";
             // 
             // gcIntervals
@@ -2870,7 +2780,7 @@
             this.xtraTabPageDebugging.Controls.Add(this.tsEnableFirstChanceException);
             this.xtraTabPageDebugging.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPageDebugging.ImageOptions.Image")));
             this.xtraTabPageDebugging.Name = "xtraTabPageDebugging";
-            this.xtraTabPageDebugging.Size = new System.Drawing.Size(790, 787);
+            this.xtraTabPageDebugging.Size = new System.Drawing.Size(790, 906);
             this.xtraTabPageDebugging.Text = "Debugging";
             // 
             // tsEnableFirstChanceException
@@ -2890,7 +2800,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 913);
+            this.ClientSize = new System.Drawing.Size(991, 914);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -3039,11 +2949,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxFoldersProbing)).EndInit();
             this.xtraTabPageExtension.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkLstItemExtensions)).EndInit();
-            this.tpStatistics.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tsUserStatistics.Properties)).EndInit();
             this.xtraTabPageUpdates.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcIntervals)).EndInit();
             this.gcIntervals.ResumeLayout(false);
@@ -3066,13 +2971,6 @@
         private DevExpress.XtraEditors.LabelControl lblRecent;
         private System.Windows.Forms.NumericUpDown nudRecentFiles;
         private DevExpress.XtraTab.XtraTabPage tpLookAndFeel;
-        private DevExpress.XtraTab.XtraTabPage tpStatistics;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.LabelControl lblOpenedFiles;
-        private DevExpress.XtraEditors.LabelControl lblRunningTime;
-        private DevExpress.XtraEditors.LabelControl lblLaunchCount;
-        private DevExpress.XtraEditors.SimpleButton btnClearStatistics;
-        private DevExpress.XtraEditors.ToggleSwitch tsUserStatistics;
         private DevExpress.XtraEditors.ToggleSwitch tsFileCaching;
         private DevExpress.XtraEditors.GroupControl gcFiltering;
         private DevExpress.XtraEditors.ToggleSwitch tsStartupRibbonMinimized;

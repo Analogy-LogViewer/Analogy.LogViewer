@@ -811,7 +811,7 @@
             this.bbiUserSettingsStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.Image")));
             this.bbiUserSettingsStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.LargeImage")));
             this.bbiUserSettingsStatistics.Name = "bbiUserSettingsStatistics";
-            this.bbiUserSettingsStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserSettingsStatistics_ItemClick);
+            this.bbiUserSettingsStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserStatistics_ItemClick);
             // 
             // btnSettingsUpdate
             // 

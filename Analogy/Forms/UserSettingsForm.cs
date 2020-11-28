@@ -145,7 +145,6 @@ namespace Analogy.Forms
             tsAutoComplete.IsOn = Settings.RememberLastSearches;
             nudRecentFiles.Value = Settings.RecentFilesCount;
             nudRecentFolders.Value = Settings.RecentFoldersCount;
-            tsUserStatistics.IsOn = Settings.EnableUserStatistics;
             //tsSimpleMode.IsOn = Settings.SimpleMode;
             tsFileCaching.IsOn = Settings.EnableFileCaching;
             tsStartupRibbonMinimized.IsOn = Settings.StartupRibbonMinimized;
@@ -445,44 +444,6 @@ namespace Analogy.Forms
         }
 
 
-        private void tsUserStatistics_Toggled(object sender, EventArgs e)
-        {
-            EnableDisableUserStatistics(tsUserStatistics.IsOn);
-            Settings.EnableUserStatistics = tsUserStatistics.IsOn;
-
-        }
-
-        private void EnableDisableUserStatistics(bool isOn)
-        {
-            if (isOn)
-            {
-                lblLaunchCount.Text = $"Number of Analogy Launches: {Settings.AnalogyLaunches}";
-                lblRunningTime.Text = $"Running Time: {Settings.DisplayRunningTime}";
-                lblOpenedFiles.Text = $"Number Of Opened Files: {Settings.AnalogyOpenedFiles}";
-            }
-            else
-            {
-                lblLaunchCount.Text = $"Number of Analogy Launches: 0";
-                lblRunningTime.Text = $"Running Time: 0";
-                lblOpenedFiles.Text = $"Number Of Opened Files: N/A";
-            }
-        }
-
-        private void btnClearStatistics_Click(object sender, EventArgs e)
-        {
-            XtraMessageBox.AllowCustomLookAndFeel = true;
-            var result = XtraMessageBox.Show("Clear statistics?", "Confirmation Required", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                Settings.ClearStatistics();
-            }
-
-        }
-
-        private void tsSimpleMode_Toggled(object sender, EventArgs e)
-        {
-            //Settings.SimpleMode = tsSimpleMode.IsOn;
-        }
 
         private void tsFileCaching_Toggled(object sender, EventArgs e)
         {
