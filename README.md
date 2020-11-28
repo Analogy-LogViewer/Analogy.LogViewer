@@ -28,6 +28,8 @@ A log viewer that can parse log files and stream logs from C#, Python, Java and 
 
 [Usage and how to create custom data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#usage)
 
+[Extensions](https://github.com/Analogy-LogViewer/Analogy.LogViewer#Extensions)
+
 [Logs Analysis and Visualizers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#logs-analysis-and-visualizers)
 
 [brief list of data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#brief-list-of-data-providers)
@@ -138,6 +140,15 @@ you can use exisitng projects (like [PowerToys Parser](https://github.com/Analog
 another option is to check the [Analogy.LogViewer.Example](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Example) example.
 
 5. Put your dll at the same folder as the application. You can download [latest version](https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases)
+
+
+## Extensions
+
+Along with custom Data Providers you can create extensions for existing providers:
+1. In Place extension: Add columns to the log messages data grid to add more information to the data grid,
+2. User Control extension: Add new tab in the UI with a custom user control that receive the incoming messages and can create custom logic to handles those.
+
+The example data provider has example for this (you need to enable the extension in the extensions tab in the user settings). 
 
 ## Logs Analysis and Visualizers
 
