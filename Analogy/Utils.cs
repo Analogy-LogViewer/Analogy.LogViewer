@@ -1,26 +1,22 @@
+using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
-using Newtonsoft.Json;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataTypes;
-using Analogy.Interfaces.DataTypes;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
 
 namespace Analogy
 {
@@ -150,7 +146,7 @@ namespace Analogy
             dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
             dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
             var manager = ExtensionsManager.Instance;
-            foreach (IAnalogyExtension extension in manager.InPlaceRegisteredExtensions)
+            foreach (var extension in manager.InPlaceRegisteredExtensions)
             {
                 var columns = extension.GetColumnsInfo();
                 foreach (AnalogyColumnInfo column in columns)
@@ -370,10 +366,10 @@ namespace Analogy
             }
             catch (Exception exception)
             {
-                AnalogyLogger.Instance.LogException($"Error: {exception.Message}",exception, "");
+                AnalogyLogger.Instance.LogException($"Error: {exception.Message}", exception, "");
             }
         }
-     
+
         public static string CurrentDirectory()
         {
             string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -381,5 +377,5 @@ namespace Analogy
             return directory;
         }
     }
-    
+
 }

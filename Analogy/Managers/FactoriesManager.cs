@@ -199,7 +199,7 @@ namespace Analogy
         }
 
         public IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider)
-            => GetAllExtensions().Where(e => e.TargetProviderId == dataProvider.Id);
+            => GetAllExtensions().Where(e => e.TargetComponentId == dataProvider.Id);
 
         public IEnumerable<IAnalogyExtension> GetAllExtensions()
         {

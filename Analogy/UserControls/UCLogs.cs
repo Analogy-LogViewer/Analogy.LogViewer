@@ -1,12 +1,16 @@
 ﻿using Analogy.DataProviders;
+using Analogy.DataTypes;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
+using Analogy.Properties;
 using Analogy.Tools;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Columns;
@@ -26,10 +30,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataTypes;
-using Analogy.Forms;
-using Analogy.Properties;
-using DevExpress.XtraBars.Alerter;
 
 namespace Analogy
 {
@@ -55,8 +55,8 @@ namespace Analogy
         private bool LoadingInProgress => fileLoadingCount > 0;
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
-        private IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions { get; set; }
-        private List<IAnalogyExtension> UserControlRegisteredExtensions { get; set; }
+        private IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; set; }
+        private IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new List<int>();
         private List<string> _excludeMostCommon = new List<string>();
         public const string DataGridDateColumnName = "Date";
@@ -952,15 +952,13 @@ namespace Analogy
 
         public void LoadExtensions()
         {
-            var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetProviderId == DataProvider.Id)
+            var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetComponentId == DataProvider.Id)
                 .ToList();
-            hasAnyInPlaceExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.InPlace);
-            hasAnyUserControlExtensions = extensions.Any(e => e.ExtensionType == AnalogyExtensionType.UserControl);
-            InPlaceRegisteredExtensions =
-                extensions.Where(e => e.ExtensionType == AnalogyExtensionType.InPlace).ToList();
-            UserControlRegisteredExtensions =
-                extensions.Where(e => e.ExtensionType == AnalogyExtensionType.UserControl).ToList();
-            foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
+            hasAnyInPlaceExtensions = extensions.Any(e => e is IAnalogyExtensionInPlace);
+            hasAnyUserControlExtensions = extensions.Any(e => e is IAnalogyExtensionUserControl);
+            InPlaceRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionInPlace).Cast<IAnalogyExtensionInPlace>();
+            UserControlRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionUserControl).Cast<IAnalogyExtensionUserControl>();
+            foreach (IAnalogyExtensionInPlace extension in InPlaceRegisteredExtensions)
             {
                 var columns = extension.GetColumnsInfo();
                 foreach (AnalogyColumnInfo column in columns)
@@ -973,6 +971,10 @@ namespace Analogy
                     LogGrid.Columns.Add(gridColumn);
                     gridColumn.Visible = true;
                 }
+
+            }
+            foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
+            {
 
             }
         }
@@ -1266,6 +1268,7 @@ namespace Analogy
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();
+                return;
             }
 
             if (ExternalWindowsCount > 0)
@@ -1294,7 +1297,7 @@ namespace Analogy
             lockSlim.EnterWriteLock();
             if (hasAnyInPlaceExtensions)
             {
-                foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
+                foreach (IAnalogyExtensionInPlace extension in InPlaceRegisteredExtensions)
                 {
                     var columns = extension.GetColumnsInfo();
                     foreach (AnalogyColumnInfo column in columns)
@@ -1306,7 +1309,7 @@ namespace Analogy
 
             if (hasAnyUserControlExtensions)
             {
-                foreach (IAnalogyExtension extension in UserControlRegisteredExtensions)
+                foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
                 {
                     extension.NewMessage(message);
                 }
@@ -1367,6 +1370,7 @@ namespace Analogy
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();
+                return;
             }
 
             //lockSlim.EnterWriteLock();
@@ -1387,7 +1391,7 @@ namespace Analogy
 
                 if (hasAnyInPlaceExtensions)
                 {
-                    foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
+                    foreach (IAnalogyExtensionInPlace extension in InPlaceRegisteredExtensions)
                     {
                         var columns = extension.GetColumnsInfo();
                         foreach (AnalogyColumnInfo column in columns)
@@ -1414,7 +1418,7 @@ namespace Analogy
 
             if (hasAnyUserControlExtensions)
             {
-                foreach (IAnalogyExtension extension in UserControlRegisteredExtensions)
+                foreach (var extension in UserControlRegisteredExtensions)
                 {
                     extension.NewMessages(messages);
                 }
@@ -1818,7 +1822,7 @@ namespace Analogy
                     return;
                 }
 
-                foreach (IAnalogyExtension extension in InPlaceRegisteredExtensions)
+                foreach (var extension in InPlaceRegisteredExtensions)
                 {
                     var columns = extension.GetColumnsInfo();
                     foreach (AnalogyColumnInfo exColumn in columns)
@@ -2035,7 +2039,7 @@ namespace Analogy
 
         }
 
-    
+
 
         private void OpenMessageDetails()
         {

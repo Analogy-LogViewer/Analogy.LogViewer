@@ -18,10 +18,11 @@ namespace Analogy
         public bool HasAnyInPlace => InPlaceRegisteredExtensions.Any();
         public bool HasAnyUserControl => UserControlRegisteredExtensions.Any();
 
-        public IEnumerable<IAnalogyExtension> InPlaceRegisteredExtensions =>
-            registeredExtensions.Where(e => e.ExtensionType == AnalogyExtensionType.InPlace).ToList();
-        public IEnumerable<IAnalogyExtension> UserControlRegisteredExtensions =>
-            registeredExtensions.Where(e => e.ExtensionType == AnalogyExtensionType.UserControl).ToList();
+        public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions =>
+            registeredExtensions.Where(e => e is IAnalogyExtensionInPlace).Cast<IAnalogyExtensionInPlace>();
+
+        public IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions =>
+            registeredExtensions.Where(e => e is IAnalogyExtensionUserControl).Cast<IAnalogyExtensionUserControl>();
         private int ColumnIndexes { get; set; } = 12;
         private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();
@@ -41,9 +42,9 @@ namespace Analogy
             }
 
             registeredExtensions.Add(extension);
-            if (extension.ExtensionType == AnalogyExtensionType.InPlace)
+            if (extension is IAnalogyExtensionInPlace inPlaceExtension)
             {
-                var columns = extension.GetColumnsInfo();
+                var columns = inPlaceExtension.GetColumnsInfo();
                 foreach (AnalogyColumnInfo column in columns)
                 {
                     extensionsDataColumns.Add(
