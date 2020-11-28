@@ -1,4 +1,6 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 using System;
 using System.Collections.Generic;
@@ -6,8 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Analogy.DataTypes;
-using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Managers
 {
@@ -115,8 +115,7 @@ namespace Analogy.Managers
                     }
                 }
 
-                foreach (Type dpf in types.Where(aType =>
-                    aType.GetInterface(nameof(IAnalogyDataProvidersFactory)) != null))
+                foreach (Type dpf in types.Where(aType => aType.GetInterface(nameof(IAnalogyDataProvidersFactory)) != null))
                 {
                     try
                     {
@@ -129,8 +128,7 @@ namespace Analogy.Managers
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during data providers: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
 
-                    foreach (Type isettings in types.Where(aType =>
-                        aType.GetInterface(nameof(IAnalogyDataProviderSettings)) != null))
+                    foreach (Type isettings in types.Where(aType => aType.GetInterface(nameof(IAnalogyDataProviderSettings)) != null))
                     {
                         try
                         {
@@ -199,6 +197,21 @@ namespace Analogy.Managers
                             AnalogyLogManager.Instance.LogError($"{fileName}: Error during data providers: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                         }
                     }
+
+                    foreach (var plotter in types.Where(aType => aType.GetInterface(nameof(IAnalogyPlotting)) != null))
+                    {
+                        try
+                        {
+                            var plot = (Activator.CreateInstance(plotter) as IAnalogyPlotting)!;
+                            var factory = Factories.First(f => f.Factory.FactoryId == plot.FactoryId);
+                            factory.AddGraphPlotter(plot);
+                        }
+                        catch (Exception e)
+                        {
+                            AnalogyLogManager.Instance.LogError($"{fileName}: Error during plotter loading: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
+                        }
+                    }
+
                 }
             }
             Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);

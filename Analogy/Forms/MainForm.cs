@@ -4,6 +4,7 @@ using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
+using Analogy.UserControls;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking;
@@ -578,7 +579,10 @@ namespace Analogy.Forms
             {
                 ribbonPage.ImageOptions.Image = ribbonPageImage;
             }
+
+            AddGraphPlotter(ribbonPage, fc.GraphPlotter);
             var dataSourceFactory = fc.DataProvidersFactories;
+
             foreach (var dataProvidersFactory in dataSourceFactory)
             {
                 if (!string.IsNullOrEmpty(dataProvidersFactory.Title))
@@ -675,6 +679,76 @@ namespace Analogy.Forms
             AddFlatRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddSingleDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
+        }
+
+        private void AddGraphPlotter(RibbonPage ribbonPage, List<IAnalogyPlotting> graphPlotters)
+        {
+
+            if (graphPlotters.Count == 0)
+            {
+                return;
+            }
+            RibbonPageGroup ribbonPageGroup = new RibbonPageGroup("Graph Plotter") { AllowTextClipping = false };
+            ribbonPage.Groups.Insert(0, ribbonPageGroup);
+
+            foreach (var plot in graphPlotters)
+            {
+                BarButtonItem plotterBtn = new BarButtonItem();
+                ribbonPageGroup.ItemLinks.Add(plotterBtn);
+                plotterBtn.ImageOptions.Image = Resources.Line_16x16;
+                plotterBtn.ImageOptions.LargeImage = Resources.Line_32x32;
+                plotterBtn.RibbonStyle = RibbonItemStyles.All;
+                plotterBtn.Caption = plot.Title;
+
+                async Task<bool> OpenPlotter()
+                {
+                    plotterBtn.Enabled = false;
+                    openedWindows++;
+                    //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                    var plotterUC = new PlottingUC(plot);
+                    var page = dockManager1.AddPanel(DockingStyle.Float);
+                    page.DockedAsTabbedDocument = true;
+                    page.Tag = ribbonPage;
+                    page.Controls.Add(plotterUC);
+                    ribbonControlMain.SelectedPage = ribbonPage;
+                    plotterUC.Dock = DockStyle.Fill;
+                    page.Text = $"{plot.Title} #{openedWindows}";
+                    dockManager1.ActivePanel = page;
+                    plotterUC.Start();
+                    await plot.StartPlotting();
+
+                    async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
+                    {
+                        if (arg.Panel == page)
+                        {
+                            try
+                            {
+                                await plot.StopPlotting();
+                                plotterUC.Stop();
+
+                                //page.Controls.Remove(onlineUC);
+                            }
+                            catch (Exception e)
+                            {
+                                AnalogyLogManager.Instance.LogError(
+                                    "Error during call to Stop plotting: " + e,
+                                    nameof(OnXtcLogsOnControlRemoved));
+                            }
+                            finally
+                            {
+                                dockManager1.ClosedPanel -= OnXtcLogsOnControlRemoved;
+                            }
+                        }
+                    }
+
+                    dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
+                    plotterBtn.Enabled = true;
+                    return true;
+                }
+
+                plotterBtn.ItemClick += async (s, be) => await OpenPlotter();
+
+            }
         }
 
         private void AddFlatRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)

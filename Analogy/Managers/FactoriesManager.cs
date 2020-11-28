@@ -71,7 +71,6 @@ namespace Analogy
             var factoryContainers = result.Factories.Where(f => !Factories.Contains(f)).ToList();
             Factories.AddRange(factoryContainers);
             Factories.RemoveAll(f => !f.AssemblyExist);
-
             var dataProviders = factoryContainers.Where(f =>
                     f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();

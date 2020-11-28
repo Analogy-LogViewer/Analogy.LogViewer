@@ -2556,7 +2556,7 @@ namespace Analogy
             // spltGroupByChars
             // 
             this.spltGroupByChars.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spltGroupByChars.Location = new System.Drawing.Point(0, 26);
+            this.spltGroupByChars.Location = new System.Drawing.Point(0, 40);
             this.spltGroupByChars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spltGroupByChars.Name = "spltGroupByChars";
             this.spltGroupByChars.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -2568,8 +2568,8 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(1846, 679);
-            this.spltGroupByChars.SplitterDistance = 346;
+            this.spltGroupByChars.Size = new System.Drawing.Size(1846, 665);
+            this.spltGroupByChars.SplitterDistance = 338;
             this.spltGroupByChars.TabIndex = 4;
             // 
             // gCtrlGrouping
@@ -2581,7 +2581,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(1846, 346);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(1846, 338);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2604,7 +2604,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridViewGrouping2;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1846, 329);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1846, 323);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping2});
@@ -2896,7 +2896,7 @@ namespace Analogy
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1846, 26);
+            this.panelControl1.Size = new System.Drawing.Size(1846, 40);
             this.panelControl1.TabIndex = 16;
             // 
             // sBtnGroup
@@ -2906,7 +2906,7 @@ namespace Analogy
             this.sBtnGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnGroup.Name = "sBtnGroup";
             this.sBtnGroup.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.sBtnGroup.Size = new System.Drawing.Size(83, 22);
+            this.sBtnGroup.Size = new System.Drawing.Size(83, 36);
             this.sBtnGroup.TabIndex = 13;
             this.sBtnGroup.Text = "Group";
             this.sBtnGroup.Click += new System.EventHandler(this.sBtnGroup_Click);
@@ -2942,7 +2942,7 @@ namespace Analogy
             this.rbGroupByTextLength.Location = new System.Drawing.Point(465, 2);
             this.rbGroupByTextLength.Name = "rbGroupByTextLength";
             this.rbGroupByTextLength.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.rbGroupByTextLength.Size = new System.Drawing.Size(256, 22);
+            this.rbGroupByTextLength.Size = new System.Drawing.Size(256, 36);
             this.rbGroupByTextLength.TabIndex = 17;
             this.rbGroupByTextLength.Text = "Or group by number of characters:";
             this.rbGroupByTextLength.UseVisualStyleBackColor = true;
@@ -2954,7 +2954,7 @@ namespace Analogy
             this.sBtnLength.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.sBtnLength.Name = "sBtnLength";
             this.sBtnLength.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.sBtnLength.Size = new System.Drawing.Size(83, 22);
+            this.sBtnLength.Size = new System.Drawing.Size(83, 36);
             this.sBtnLength.TabIndex = 12;
             this.sBtnLength.Text = "Set Length";
             this.sBtnLength.Click += new System.EventHandler(this.sBtnLength_Click);
@@ -2978,7 +2978,7 @@ namespace Analogy
             this.rbGroupByText.Location = new System.Drawing.Point(2, 2);
             this.rbGroupByText.Name = "rbGroupByText";
             this.rbGroupByText.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.rbGroupByText.Size = new System.Drawing.Size(130, 22);
+            this.rbGroupByText.Size = new System.Drawing.Size(130, 36);
             this.rbGroupByText.TabIndex = 16;
             this.rbGroupByText.TabStop = true;
             this.rbGroupByText.Text = "group by text:";
