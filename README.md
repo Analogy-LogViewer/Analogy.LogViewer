@@ -30,6 +30,8 @@ A log viewer that can parse log files and stream logs from C#, Python, Java and 
 
 [Extensions](https://github.com/Analogy-LogViewer/Analogy.LogViewer#Extensions)
 
+[Plotting](https://github.com/Analogy-LogViewer/Analogy.LogViewer#Plotting)
+
 [Logs Analysis and Visualizers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#logs-analysis-and-visualizers)
 
 [brief list of data providers](https://github.com/Analogy-LogViewer/Analogy.LogViewer#brief-list-of-data-providers)
@@ -141,7 +143,6 @@ another option is to check the [Analogy.LogViewer.Example](https://github.com/An
 
 5. Put your dll at the same folder as the application. You can download [latest version](https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases)
 
-
 ## Extensions
 
 Along with custom Data Providers you can create extensions for existing providers:
@@ -150,6 +151,28 @@ Along with custom Data Providers you can create extensions for existing provider
 
 The example data provider has example for this (you need to enable the extension in the extensions tab in the user settings). 
 
+## Plotting
+
+Along with custom Data Providers you can create Plots of arbitrary data by implementing the ```IAnalogyPlotting ``` Interface:
+```csharp
+ public interface IAnalogyPlotting
+    {
+        event EventHandler<AnalogyPlottingPointData> OnNewPointData;
+        IEnumerable<(string SeriesName, AnalogyPlottingSeriesType SeriesViewType)> GetChartSeries();
+        Guid Id { get; set; }
+        /// <summary>
+        /// the factory id which this Data providers factory belongs to
+        /// </summary>
+        Guid FactoryId { get; set; }
+        string Title { get; set; }
+        Task InitializePlottingAsync(IAnalogyLogger logger);
+        Task StartPlotting();
+        Task StopPlotting();
+    }
+}
+```
+The example data provider has example for this:
+![Example plot](Assets/plottingExample.jpg)
 ## Logs Analysis and Visualizers
 
 The application has some analyzers and visualization.
