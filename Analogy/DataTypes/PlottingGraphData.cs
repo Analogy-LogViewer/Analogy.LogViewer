@@ -81,5 +81,9 @@ namespace Analogy.DataTypes
             }
         }
 
+        public void Start()
+        {
+            RefreshData.Enabled = true;
+        }
     }
 }

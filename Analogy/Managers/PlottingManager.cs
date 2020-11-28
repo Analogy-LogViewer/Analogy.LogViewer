@@ -1,4 +1,5 @@
-﻿using Analogy.DataTypes;
+﻿using System;
+using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
 using System.Collections.Generic;
 
@@ -22,7 +23,16 @@ namespace Analogy.Managers
                 if (seriesName.Equals(pt.Name))
                 {
                     data.AddDataPoint(pt);
+                    return;
                 }
+            }
+        }
+
+        public void Start()
+        {
+            foreach ((string _, PlottingGraphData data)  in GraphsData)
+            {
+                data.Start();
             }
         }
     }

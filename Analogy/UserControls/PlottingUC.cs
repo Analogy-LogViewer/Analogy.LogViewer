@@ -59,6 +59,7 @@ namespace Analogy.UserControls
         public void Start()
         {
             Plotter.OnNewPointData += Plotter_OnNewPointData;
+            Manager.Start();
         }
 
         private void Plotter_OnNewPointData(object sender, AnalogyPlottingPointData e)

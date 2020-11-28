@@ -80,7 +80,6 @@ namespace Analogy
                 try
                 {
                     initTasks.Add(provider.InitializeDataProviderAsync(AnalogyLogger.Instance));
-
                 }
                 catch (Exception e)
                 {
