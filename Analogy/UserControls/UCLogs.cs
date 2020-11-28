@@ -18,6 +18,7 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
+using DevExpress.XtraTab;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -950,7 +951,7 @@ namespace Analogy
             }
         }
 
-        public void LoadExtensions()
+        public async Task LoadExtensions()
         {
             var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetComponentId == DataProvider.Id)
                 .ToList();
@@ -975,7 +976,11 @@ namespace Analogy
             }
             foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
             {
-
+                XtraTabPage page = new XtraTabPage();
+                page.Text = extension.Title;
+                page.Controls.Add(extension.UserControl);
+                await extension.InitUserControl;
+                xtraTabControl1.TabPages.Add(page);
             }
         }
 
@@ -1311,7 +1316,7 @@ namespace Analogy
             {
                 foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
                 {
-                    extension.NewMessage(message);
+                    BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
                 }
             }
 
@@ -1420,7 +1425,7 @@ namespace Analogy
             {
                 foreach (var extension in UserControlRegisteredExtensions)
                 {
-                    extension.NewMessages(messages);
+                    BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages)));
                 }
             }
 
