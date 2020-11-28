@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.DataProviders;
+﻿using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
@@ -21,6 +11,16 @@ using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -206,7 +206,7 @@ namespace Analogy.Forms
             }
 
             var (_, release) = await UpdateManager.Instance.CheckVersion(false);
-            if (release?.TagName != null && UpdateManager.Instance.NewestVersion!=null)
+            if (release?.TagName != null && UpdateManager.Instance.NewestVersion != null)
             {
                 bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
                 if (UpdateManager.Instance.NewVersionExist)
@@ -356,7 +356,7 @@ namespace Analogy.Forms
         }
         private void LoadStartupExtensions()
         {
-            if (settings.LoadExtensionsOnStartup && settings.StartupExtensions.Any())
+            if (settings.StartupExtensions.Any())
             {
                 var manager = ExtensionsManager.Instance;
                 var extensions = manager.GetExtensions().ToList();
@@ -1938,24 +1938,31 @@ namespace Analogy.Forms
         {
             UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
             user.ShowDialog(this);
-
         }
 
-        private void btnUserSettings_ItemClick(object sender, ItemClickEventArgs e)
+        private void bbiSettingsExtensions_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(8);
             user.ShowDialog(this);
         }
 
-        private void btnSettingsUpdate_ItemClick(object sender, ItemClickEventArgs e)
+
+        private void bbiUserSettingsStatistics_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(9);
             user.ShowDialog(this);
         }
 
-        private void btnSettingsDebugging_ItemClick(object sender, ItemClickEventArgs e)
+
+        private void btnSettingsUpdate_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserSettingsForm user = new UserSettingsForm(10);
+            user.ShowDialog(this);
+        }
+
+        private void btnSettingsDebugging_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UserSettingsForm user = new UserSettingsForm(11);
             user.ShowDialog(this);
         }
 
@@ -1969,6 +1976,7 @@ namespace Analogy.Forms
             var update = new ComponentDownloadsForm();
             update.Show(this);
         }
+
     }
 }
 

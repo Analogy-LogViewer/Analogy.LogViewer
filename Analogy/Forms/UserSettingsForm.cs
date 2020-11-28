@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Windows.Forms;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;
@@ -15,6 +7,14 @@ using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -261,6 +261,13 @@ namespace Analogy.Forms
 
             tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == CommandLayout.Simplified;
             tsEnableFirstChanceException.IsOn = Settings.EnableFirstChanceException;
+
+            var extensions = FactoriesManager.Instance.GetAllExtensions();
+            foreach (var ex in extensions)
+            {
+                FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description, null);
+                chkLstItemExtensions.Items.Add(itm, Settings.StartupExtensions.Contains(itm.ID));
+            }
         }
 
         private void SaveSetting()
@@ -282,6 +289,26 @@ namespace Analogy.Forms
                     factory.Status = item.CheckState == CheckState.Checked
                         ? DataProviderFactoryStatus.Enabled
                         : DataProviderFactoryStatus.Disabled;
+                }
+            }
+
+            Settings.AutoStartDataProviders = new List<Guid>();
+            foreach (CheckedListBoxItem item in chkLstItemRealTimeDataSources.Items)
+            {
+                if (item.CheckState == CheckState.Checked)
+                {
+                    FactoryCheckItem f = (FactoryCheckItem)item.Value;
+                    Settings.AutoStartDataProviders.Add(f.ID);
+                }
+            }
+
+            Settings.StartupExtensions = new List<Guid>();
+            foreach (CheckedListBoxItem item in chkLstItemExtensions.Items)
+            {
+                if (item.CheckState == CheckState.Checked)
+                {
+                    FactoryCheckItem f = (FactoryCheckItem)item.Value;
+                    Settings.StartupExtensions.Add(f.ID);
                 }
             }
 
@@ -498,12 +525,6 @@ namespace Analogy.Forms
         {
             Settings.IdleTimeMinutes = (int)nudIdleTime.Value;
 
-        }
-
-        private void ChkLstItemRealTimeDataSources_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Settings.AutoStartDataProviders =
-                chkLstItemRealTimeDataSources.CheckedItems.Cast<FactoryCheckItem>().Select(r => r.ID).ToList();
         }
 
         private void UserSettingsForm_FormClosing(object sender, FormClosingEventArgs e)

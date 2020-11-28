@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.3.3 - Auto restart real time provider selection is broken #688",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,28)),
                 new AnalogyChangeLog("V4.3.2 - add https://github.com/Analogy-LogViewer/Analogy.LogViewer.GitHubActionLogs to the download Window #686",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,27)),
                 new AnalogyChangeLog("V4.3.2 - Fix charts UI issues (winforms datagrid) #685",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,27)),
                 new AnalogyChangeLog("V4.3.2 - Remove grouping tab as it has low value #684",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,27)),
@@ -19,7 +20,7 @@ namespace Analogy
                 new AnalogyChangeLog("V4.3.1 - [UI] Disable right click on images in the First Run window #660",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,13)),
                 new AnalogyChangeLog("V4.3.1 - Category column is hidden by default. undo it. #659",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,12)),
                 new AnalogyChangeLog("V4.3.1 - [UI] null values are not displayed correctly #654",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,08)),
-                new AnalogyChangeLog("V4.3.1 - Upgrade to DevExpress 19.1.12 #621",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,05)), 
+                new AnalogyChangeLog("V4.3.1 - Upgrade to DevExpress 19.1.12 #621",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,05)),
                 new AnalogyChangeLog("V4.3.0 - [Updater] show download progress #619",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,30)),
                 new AnalogyChangeLog("V4.2.13 - App hangs when trying to load file in use #636",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,10,27)),
                 new AnalogyChangeLog("V4.2.12 - Add support for loading data providers from sub folders #645",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,10,27)),

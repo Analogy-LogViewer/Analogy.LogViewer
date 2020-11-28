@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace Analogy.DataTypes
 {
@@ -11,9 +11,9 @@ namespace Analogy.DataTypes
         public string Name { get; }
         public Guid ID { get; }
         public string Description { get; }
-        public Image Image { get; }
+        public Image? Image { get; }
 
-        public FactoryCheckItem(string name, Guid id, string description, Image image)
+        public FactoryCheckItem(string name, Guid id, string description, Image? image)
         {
             Name = name;
             ID = id;
@@ -86,7 +86,7 @@ namespace Analogy.DataTypes
             return $"{DisplayName} ({Type})";
         }
     }
-    
+
 
     [Serializable]
     public class FontSettings
@@ -96,7 +96,7 @@ namespace Analogy.DataTypes
         public float GridFontSize { get; set; }
         public string FontName { get; set; }
         public float FontSize { get; set; }
-        [JsonIgnore] public Font UIFont => new Font(FontName, FontSize,FontStyle.Regular,GraphicsUnit.Point);
+        [JsonIgnore] public Font UIFont => new Font(FontName, FontSize, FontStyle.Regular, GraphicsUnit.Point);
         public string MenuFontName { get; set; }
         public float MenuFontSize { get; set; }
         [JsonIgnore] public Font MenuFont => new Font(MenuFontName, MenuFontSize, FontStyle.Regular, GraphicsUnit.Point);
@@ -118,7 +118,7 @@ namespace Analogy.DataTypes
             {
                 case FontSelectionType.Large:
                     FontName = "Tahoma";
-                    FontSize =10f;
+                    FontSize = 10f;
                     break;
                 case FontSelectionType.VeryLarge:
                     FontName = "Tahoma";
