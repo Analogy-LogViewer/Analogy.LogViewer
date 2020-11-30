@@ -370,7 +370,6 @@ namespace Analogy.Forms
         }
         private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
         {
-            Debugger.Launch();
             while (!Initialized)
             {
                 await Task.Delay(250);
