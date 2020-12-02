@@ -9,26 +9,26 @@ namespace Analogy.DataTypes
 {
     public class PlottingGraphData
     {
-        public int DataWindow { get; }
+        public int DataWindow { get; set; }
         public ObservableCollection<AnalogyPlottingPointData> ViewportData { get; }
         private List<AnalogyPlottingPointData> rawData;
         private ReaderWriterLockSlim sync;
-        private int refreshIntervalMilliseconds = 1000;
-        private Timer RefreshData;
+        private float RefreshIntervalSeconds { get; set; }
+        private Timer RefreshDataTimer;
         private int lastRawDataIndex = 0;
-        public PlottingGraphData(int refreshIntervalMilliseconds, int dataWindow)
+        public PlottingGraphData(float refreshIntervalSeconds, int dataWindow)
         {
             DataWindow = dataWindow;
-            this.refreshIntervalMilliseconds = refreshIntervalMilliseconds;
+            RefreshIntervalSeconds = refreshIntervalSeconds;
             sync = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
             ViewportData = new ObservableCollection<AnalogyPlottingPointData>();
             rawData = new List<AnalogyPlottingPointData>();
-            RefreshData = new Timer();
-            RefreshData.Interval = refreshIntervalMilliseconds;
-            RefreshData.Tick += RefreshData_Tick;
+            RefreshDataTimer = new Timer();
+            RefreshDataTimer.Interval = (int)(RefreshIntervalSeconds * 1000);
+            RefreshDataTimer.Tick += RefreshDataTimerTick;
         }
 
-        private void RefreshData_Tick(object sender, System.EventArgs e)
+        private void RefreshDataTimerTick(object sender, EventArgs e)
         {
             try
             {
@@ -66,6 +66,7 @@ namespace Analogy.DataTypes
             }
         }
 
+        public void SetIntervalValue(float seconds) => RefreshDataTimer.Interval = (int)(seconds * 1000);
         public void Clear()
         {
             try
@@ -83,7 +84,12 @@ namespace Analogy.DataTypes
 
         public void Start()
         {
-            RefreshData.Enabled = true;
+            RefreshDataTimer.Enabled = true;
+        }
+
+        public void SetWindowValue(int windowValue)
+        {
+            DataWindow = windowValue;
         }
     }
 }

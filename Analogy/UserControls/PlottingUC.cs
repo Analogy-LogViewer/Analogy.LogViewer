@@ -33,7 +33,7 @@ namespace Analogy.UserControls
 
             foreach (var (seriesName, viewType) in Plotter.GetChartSeries())
             {
-                PlottingGraphData data = new PlottingGraphData((int)nudRefreshInterval.Value, (int)nudWindow.Value);
+                PlottingGraphData data = new PlottingGraphData((float)nudRefreshInterval.Value, (int)nudWindow.Value);
                 Manager.AddGraphData(seriesName, data);
                 Series series = new Series(seriesName, (ViewType)viewType)
                 {
@@ -70,6 +70,16 @@ namespace Analogy.UserControls
         public void Stop()
         {
             Plotter.OnNewPointData -= Plotter_OnNewPointData;
+        }
+
+        private void nudRefreshInterval_ValueChanged(object sender, System.EventArgs e)
+        {
+            Manager.SetRefreshInterval((float) nudRefreshInterval.Value);
+        }
+
+        private void nudWindow_ValueChanged(object sender, System.EventArgs e)
+        {
+            Manager.SetDataWindow((int)nudWindow.Value);
         }
     }
 }

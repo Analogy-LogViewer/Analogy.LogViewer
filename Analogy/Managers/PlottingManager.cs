@@ -1,5 +1,4 @@
-﻿using System;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
 using System.Collections.Generic;
 
@@ -30,10 +29,26 @@ namespace Analogy.Managers
 
         public void Start()
         {
-            foreach ((string _, PlottingGraphData data)  in GraphsData)
+            foreach ((string _, PlottingGraphData data) in GraphsData)
             {
                 data.Start();
             }
+        }
+
+        public void SetRefreshInterval(float seconds)
+        {
+            GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>
+            {
+                entry.data.SetIntervalValue(seconds);
+            });
+        }
+
+        public void SetDataWindow(int windowValue)
+        {
+            GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>
+            {
+                entry.data.SetWindowValue(windowValue);
+            });
         }
     }
 }

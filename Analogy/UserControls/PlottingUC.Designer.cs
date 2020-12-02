@@ -32,14 +32,14 @@ namespace Analogy.UserControls
             this.nudWindow = new System.Windows.Forms.NumericUpDown();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.nudRefreshInterval = new System.Windows.Forms.NumericUpDown();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.nudRefreshInterval = new System.Windows.Forms.NumericUpDown();
+            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             ((System.ComponentModel.ISupportInitialize)(this.nudWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // nudWindow
@@ -64,6 +64,7 @@ namespace Analogy.UserControls
             0,
             0,
             0});
+            this.nudWindow.ValueChanged += new System.EventHandler(this.nudWindow_ValueChanged);
             // 
             // labelControl1
             // 
@@ -91,6 +92,40 @@ namespace Analogy.UserControls
             this.splitContainerControl1.SplitterPosition = 54;
             this.splitContainerControl1.TabIndex = 21;
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl2.Location = new System.Drawing.Point(834, 34);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(170, 16);
+            this.labelControl2.TabIndex = 22;
+            this.labelControl2.Text = "Chart refresh rate (Seconds):";
+            // 
+            // nudRefreshInterval
+            // 
+            this.nudRefreshInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudRefreshInterval.DecimalPlaces = 1;
+            this.nudRefreshInterval.Location = new System.Drawing.Point(1031, 31);
+            this.nudRefreshInterval.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudRefreshInterval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudRefreshInterval.Name = "nudRefreshInterval";
+            this.nudRefreshInterval.Size = new System.Drawing.Size(73, 23);
+            this.nudRefreshInterval.TabIndex = 21;
+            this.nudRefreshInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudRefreshInterval.ValueChanged += new System.EventHandler(this.nudRefreshInterval_ValueChanged);
+            // 
             // chartControl1
             // 
             this.chartControl1.BorderOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(217)))), ((int)(((byte)(240)))));
@@ -103,38 +138,6 @@ namespace Analogy.UserControls
             this.chartControl1.Size = new System.Drawing.Size(1107, 461);
             this.chartControl1.TabIndex = 1;
             // 
-            // nudRefreshInterval
-            // 
-            this.nudRefreshInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRefreshInterval.Location = new System.Drawing.Point(1031, 31);
-            this.nudRefreshInterval.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudRefreshInterval.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.nudRefreshInterval.Name = "nudRefreshInterval";
-            this.nudRefreshInterval.Size = new System.Drawing.Size(73, 23);
-            this.nudRefreshInterval.TabIndex = 21;
-            this.nudRefreshInterval.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Location = new System.Drawing.Point(834, 34);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(191, 16);
-            this.labelControl2.TabIndex = 22;
-            this.labelControl2.Text = "Chart refresh rate (milliseconds):";
-            // 
             // PlottingUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -146,8 +149,8 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.nudWindow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
