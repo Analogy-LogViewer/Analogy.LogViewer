@@ -102,7 +102,7 @@ namespace Analogy
             }
         }
 
-        private AnalogyLogMessage _currentMassage;
+        private AnalogyLogMessage SelectedMassage { get; set; }
         private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
@@ -1631,7 +1631,7 @@ namespace Analogy
             try
             {
                 _messageData.DefaultView.RowFilter = filter;
-                var location = LocateByValue(0, gridColumnObject, _currentMassage);
+                var location = LocateByValue(0, gridColumnObject, SelectedMassage);
                 if (location >= 0)
                 {
                     LogGrid.FocusedRowHandle = location;
@@ -1816,8 +1816,8 @@ namespace Analogy
             }
 
             int rownum = selRows.First();
-            _currentMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
-            LoadTextBoxes(_currentMassage);
+            SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
+            LoadTextBoxes(SelectedMassage);
             if (hasAnyInPlaceExtensions)
             {
                 var rowHandle = hi.RowHandle;
@@ -1837,7 +1837,7 @@ namespace Analogy
                         {
                             var cellValue = LogGrid.GetRowCellValue(rowHandle, exColumn.ColumnName);
                             AnalogyCellClickedEventArgs argsForEx =
-                                new AnalogyCellClickedEventArgs(exColumn.ColumnName, cellValue, _currentMassage);
+                                new AnalogyCellClickedEventArgs(exColumn.ColumnName, cellValue, SelectedMassage);
                             extension.CellClicked(sender, argsForEx);
                         }
 
@@ -2783,12 +2783,12 @@ namespace Analogy
                 return;
             }
 
-            AnalogyLogMessage m = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
-            LoadTextBoxes(m);
+            SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
+            LoadTextBoxes(SelectedMassage);
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
             if (!LoadingInProgress)
             {
-                OnFocusedRowChanged?.Invoke(this, (dataProvider, m));
+                OnFocusedRowChanged?.Invoke(this, (dataProvider, SelectedMassage));
             }
         }
 
