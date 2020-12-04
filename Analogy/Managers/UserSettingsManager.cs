@@ -67,7 +67,6 @@ namespace Analogy
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
         public bool DefaultDescendOrder { get; set; }
-        //public LogParserSettingsContainer LogParsersSettings { get; set; }
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
