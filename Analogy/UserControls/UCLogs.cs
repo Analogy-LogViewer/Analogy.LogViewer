@@ -184,7 +184,7 @@ namespace Analogy
 
         }
 
-        private void UCLogs_Load(object sender, EventArgs e)
+        private async void UCLogs_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
@@ -196,7 +196,7 @@ namespace Analogy
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
-            LoadExtensions();
+           await LoadExtensions();
             SetupEventsHandlers();
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
@@ -211,10 +211,7 @@ namespace Analogy
                     progressBar1.Visible = false;
                 }
             });
-
-
-
-
+            
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
@@ -446,8 +443,16 @@ namespace Analogy
                 {
                     BeginInvoke(new MethodInvoker(() =>
                     {
-                        LogGrid.MoveLast();
-                        LogGrid.MakeRowVisible(LogGrid.FocusedRowHandle);
+                        if (Settings.DefaultDescendOrder)
+                        {
+                            LogGrid.MoveFirst();
+                            LogGrid.MakeRowVisible(LogGrid.FocusedRowHandle);
+                        }
+                        else
+                        {
+                            LogGrid.MoveLast();
+                            LogGrid.MakeRowVisible(LogGrid.FocusedRowHandle);
+                        }
                     }));
 
                 }
@@ -1631,11 +1636,11 @@ namespace Analogy
             try
             {
                 _messageData.DefaultView.RowFilter = filter;
-                var location = LocateByValue(0, gridColumnObject, SelectedMassage);
-                if (location >= 0 && ApplyGoToSelectedMessageAfterFirstClick)
-                {
+               // var location = LocateByValue(0, gridColumnObject, SelectedMassage);
+               // if (location >= 0 && ApplyGoToSelectedMessageAfterFirstClick)
+                //{
                   //  LogGrid.FocusedRowHandle = location;
-                }
+                //}
 
                 //LogGrid.RefreshData();
                 //RefreshUIMessagesCount();
@@ -2722,6 +2727,7 @@ namespace Analogy
         private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             int row = e.FocusedRowHandle;
+            AnalogyLogManager.Instance.LogInformation(row.ToString(),"");
             if (row < 0)
             {
                 return;
