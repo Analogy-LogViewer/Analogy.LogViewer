@@ -1636,14 +1636,13 @@ namespace Analogy
             try
             {
                 _messageData.DefaultView.RowFilter = filter;
-               // var location = LocateByValue(0, gridColumnObject, SelectedMassage);
-               // if (location >= 0 && ApplyGoToSelectedMessageAfterFirstClick)
-                //{
-                  //  LogGrid.FocusedRowHandle = location;
-                //}
+                var location = LocateByValue(0, gridColumnObject, SelectedMassage);
+                if (location >= 0 && ApplyGoToSelectedMessageAfterFirstClick)
+                {
+                    //LogGrid.FocusedRowHandle = location;
+                    LogGrid.MakeRowVisible(location);
+                }
 
-                //LogGrid.RefreshData();
-                //RefreshUIMessagesCount();
             }
             finally
             {
