@@ -1632,7 +1632,7 @@ namespace Analogy
             {
                 _messageData.DefaultView.RowFilter = filter;
                 var location = LocateByValue(0, gridColumnObject, SelectedMassage);
-                if (location >= 0)
+                if (location >= 0 && ApplyGoToSelectedMessageAfterFirstClick)
                 {
                     LogGrid.FocusedRowHandle = location;
                 }
@@ -1817,6 +1817,7 @@ namespace Analogy
 
             int rownum = selRows.First();
             SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
+            ApplyGoToSelectedMessageAfterFirstClick = true;
             LoadTextBoxes(SelectedMassage);
             if (hasAnyInPlaceExtensions)
             {
