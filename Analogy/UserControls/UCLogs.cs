@@ -440,7 +440,6 @@ namespace Analogy
                 Settings.ModuleText = txtbModule.Text;
             };
             #endregion
-
             LogGrid.RowCountChanged += (s, arg) =>
             {
                 if (Settings.AutoScrollToLastMessage && !IsDisposed)
@@ -546,6 +545,7 @@ namespace Analogy
             };
         }
 
+   
         private void EditValueChanged(object sender, EventArgs e)
         {
 
@@ -1634,7 +1634,7 @@ namespace Analogy
                 var location = LocateByValue(0, gridColumnObject, SelectedMassage);
                 if (location >= 0 && ApplyGoToSelectedMessageAfterFirstClick)
                 {
-                    LogGrid.FocusedRowHandle = location;
+                  //  LogGrid.FocusedRowHandle = location;
                 }
 
                 //LogGrid.RefreshData();
@@ -1690,28 +1690,7 @@ namespace Analogy
 
             return int.MinValue;
         }
-
-        //private void RefreshUIMessagesCount()
-        //{
-        //if (!IsHandleCreated) return;
-        //BeginInvoke(new MethodInvoker(() =>
-        //{
-        //    var result = GetRowsCount();
-        //    lblTotalMessages.Text =
-        //        $"Total messages:{result.total}. Errors:{result.error}. Warnings:{result.warning}. Criticals:{result.critical}.";
-        //    if (result.alerts > 0)
-        //    {
-        //        lblTotalMessagesAlert.Text = $" ALERTS EXISTS: {result.alerts}!";
-        //        lblTotalMessagesAlert.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        lblTotalMessagesAlert.Visible = false;
-        //    }
-
-        //}));
-        //}
-
+        
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading,
             bool isReloadSoForceNoCaching = false)
         {
@@ -1794,6 +1773,8 @@ namespace Analogy
         }
 
         #region Log grid Event Handlers
+
+
         private void logGrid_Click(object sender, EventArgs e)
         {
             if (!(e is DXMouseEventArgs args))
@@ -2050,9 +2031,7 @@ namespace Analogy
             GoToMessage();
 
         }
-
-
-
+        
         private void OpenMessageDetails()
         {
             (AnalogyLogMessage message, string dataSource) = GetMessageFromSelectedFocusedRowInGrid();
@@ -2219,29 +2198,29 @@ namespace Analogy
                 diffStartTime = message.Date;
                 UpdateTimes();
             }
-        }
 
-        private void UpdateTimes()
-        {
-            gridColumnTimeDiff.Visible = true;
-            gridColumnTimeDiff.VisibleIndex = 2;
-
-            lockSlim.EnterWriteLock();
-            _messageData.BeginLoadData();
-            foreach (DataRow row in _messageData.Rows)
+            void UpdateTimes()
             {
-                AnalogyLogMessage message = (AnalogyLogMessage)row["Object"];
-                //row["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString("d\\.hh\\:mm\\:ss\\.fff");
-                row["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
-            }
+                gridColumnTimeDiff.Visible = true;
+                gridColumnTimeDiff.VisibleIndex = 2;
 
-            _messageData.EndLoadData();
-            AcceptChanges(true);
-            gridControl.RefreshDataSource();
-            lockSlim.ExitWriteLock();
+                lockSlim.EnterWriteLock();
+                _messageData.BeginLoadData();
+                foreach (DataRow row in _messageData.Rows)
+                {
+                    AnalogyLogMessage message = (AnalogyLogMessage)row["Object"];
+                    //row["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString("d\\.hh\\:mm\\:ss\\.fff");
+                    row["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
+                }
+
+                _messageData.EndLoadData();
+                AcceptChanges(true);
+                gridControl.RefreshDataSource();
+                lockSlim.ExitWriteLock();
+            }
         }
 
-
+  
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
@@ -2469,41 +2448,7 @@ namespace Analogy
                 BookmarkPersistManager.Instance.RemoveBookmark(message);
             }
         }
-        //private void logGrid_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
-        //{
-        //    if (e.Column.FieldName == "gridColumnLevelImage")
-        //    {
-        //        string severity = logGrid.GetListSourceRowCellValue(e.ListSourceRowIndex, gridViewGrouping2.Columns["Level"])
-        //            .ToString();
-        //        LogLevel level = Utils.GetLogLevel(severity);
-        //        switch (level)
-        //        {
-        //            case LogLevel.Critical:
-        //            case LogLevel.Error:
-        //                e.Value = imageList.Images[0];
-        //                break;
-        //            case LogLevel.Warning:
-        //                e.Value = imageList.Images[1];
-        //                break;
-        //            case LogLevel.Event:
-        //                e.Value = imageList.Images[2];
-        //                break;
-        //            case LogLevel.Verbose:
-        //                e.Value = imageList.Images[2];
-        //                break;
-        //            case LogLevel.Debug:
-        //                e.Value = imageList.Images[1];
-        //                break;
-        //            case LogLevel.Disabled:
-        //                e.Value = imageList.Images[1];
-        //                break;
-        //            default:
-        //                throw new ArgumentOutOfRangeException();
-        //        }
-
-        //    }
-        //}
-
+ 
         public void SetBookmarkMode()
         {
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
@@ -2629,9 +2574,7 @@ namespace Analogy
         {
             Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
         }
-
-
-
+        
         private void sbtnPageFirst_Click(object sender, EventArgs e)
         {
             pageNumber = 1;
