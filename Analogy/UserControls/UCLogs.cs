@@ -1321,7 +1321,10 @@ namespace Analogy
             {
                 foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
                 {
-                    BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
+                    if (IsHandleCreated)
+                    {
+                        BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
+                    }
                 }
             }
 
@@ -1636,10 +1639,14 @@ namespace Analogy
             try
             {
                 _messageData.DefaultView.RowFilter = filter;
-                var location = LocateByValue(0, gridColumnObject, SelectedMassage);
-                if (location >= 0 && ApplyGoToSelectedMessageAfterFirstClick && Settings.TrackActiveMessage)
+      
+                if (ApplyGoToSelectedMessageAfterFirstClick && Settings.TrackActiveMessage)
                 {
-                    LogGrid.MakeRowVisible(location);
+                    var location = LocateByValue(0, gridColumnObject, SelectedMassage);
+                    if (location >= 0)
+                    {
+                        LogGrid.MakeRowVisible(location);
+                    }
                 }
 
             }
@@ -1801,7 +1808,14 @@ namespace Analogy
 
             int rownum = selRows.First();
             SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
-            ApplyGoToSelectedMessageAfterFirstClick = true;
+            if (Settings.TrackActiveMessage)
+            {
+                ApplyGoToSelectedMessageAfterFirstClick = true;
+            }
+            else
+            {
+                logGrid.FocusInvalidRow();
+            }
             LoadTextBoxes(SelectedMassage);
             if (hasAnyInPlaceExtensions)
             {
@@ -2725,11 +2739,12 @@ namespace Analogy
         private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             int row = e.FocusedRowHandle;
-            AnalogyLogManager.Instance.LogInformation(row.ToString(),"");
+            
             if (row < 0)
             {
                 return;
             }
+
 
             SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
             LoadTextBoxes(SelectedMassage);
