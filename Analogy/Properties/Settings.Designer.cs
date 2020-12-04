@@ -822,5 +822,17 @@ namespace Analogy.Properties {
                 this["EnableFirstChanceException"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TrackActiveMessage {
+            get {
+                return ((bool)(this["TrackActiveMessage"]));
+            }
+            set {
+                this["TrackActiveMessage"] = value;
+            }
+        }
     }
 }

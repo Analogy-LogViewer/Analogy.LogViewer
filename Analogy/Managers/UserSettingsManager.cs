@@ -130,7 +130,7 @@ namespace Analogy
                 }
             }
         }
-
+        public bool TrackActiveMessage { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -197,7 +197,6 @@ namespace Analogy
             RecentFoldersCount = Settings.Default.RecentFoldersCount;
             RecentFolders = ParseSettings<List<(Guid ID, string Path)>>(Settings.Default.RecentFolders);
             EnableFileCaching = Settings.Default.EnableFileCaching;
-            //LoadExtensionsOnStartup = Settings.Default.LoadExtensionsOnStartup;
             StartupExtensions = ParseSettings<List<Guid>>(Settings.Default.StartupExtensions);
             StartupRibbonMinimized = Settings.Default.StartupRibbonMinimized;
             StartupErrorLogLevel = Settings.Default.StartupErrorLogLevel;
@@ -269,6 +268,7 @@ namespace Analogy
             FontSettings = ParseSettings<FontSettings>(Settings.Default.FontSettings);
             RibbonStyle = (CommandLayout)Settings.Default.RibbonStyle;
             EnableFirstChanceException = Settings.Default.EnableFirstChanceException;
+            TrackActiveMessage = Settings.Default.TrackActiveMessage;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -310,7 +310,6 @@ namespace Analogy
             Settings.Default.RecentFoldersCount = RecentFoldersCount;
             Settings.Default.RecentFolders = JsonConvert.SerializeObject(RecentFolders.Take(RecentFoldersCount).ToList());
             Settings.Default.EnableFileCaching = EnableFileCaching;
-            // Settings.Default.LoadExtensionsOnStartup = LoadExtensionsOnStartup;
             Settings.Default.StartupExtensions = JsonConvert.SerializeObject(StartupExtensions);
             Settings.Default.StartupRibbonMinimized = StartupRibbonMinimized;
             Settings.Default.StartupErrorLogLevel = StartupErrorLogLevel;
@@ -355,6 +354,7 @@ namespace Analogy
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
             Settings.Default.RibbonStyle = (int)RibbonStyle;
             Settings.Default.EnableFirstChanceException = EnableFirstChanceException;
+            Settings.Default.TrackActiveMessage = TrackActiveMessage;
             Settings.Default.Save();
 
         }

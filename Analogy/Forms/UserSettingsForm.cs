@@ -134,6 +134,7 @@ namespace Analogy.Forms
         private void LoadSettings()
         {
             tsSimpleMode.IsOn = Settings.SimpleMode;
+            tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
             tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
             tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
@@ -272,6 +273,7 @@ namespace Analogy.Forms
         private void SaveSetting()
         {
             SaveColorsSettings();
+            Settings.TrackActiveMessage = tsTrackActiveMessage.IsOn;
             Settings.SimpleMode = tsSimpleMode.IsOn;
             Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
             Settings.RecentFilesCount = (int)nudRecentFiles.Value;
