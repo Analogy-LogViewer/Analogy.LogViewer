@@ -344,7 +344,7 @@ namespace Analogy
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
-            this.gridControl.Click += new System.EventHandler(this.LogGrid_Click);
+            this.gridControl.Click += new System.EventHandler(this.gridControl_Click);
             this.gridControl.DoubleClick += new System.EventHandler(this.LogGrid_DoubleClick);
             this.gridControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LogGrid_KeyPress);
             // 

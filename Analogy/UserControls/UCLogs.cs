@@ -101,7 +101,7 @@ namespace Analogy
                 return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList();
             }
         }
-
+        private bool ApplyGoToSelectedMessageAfterFirstClick { get; set; }
         private AnalogyLogMessage SelectedMassage { get; set; }
         private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
@@ -1848,7 +1848,13 @@ namespace Analogy
             }
 
         }
-
+        private void gridControl_Click(object sender, EventArgs e)
+        {
+            if (btsAutoScrollToBottom.Checked)
+            {
+                btsAutoScrollToBottom.Checked = false;
+            }
+        }
         private void LogGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -2623,13 +2629,7 @@ namespace Analogy
             Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
         }
 
-        private void LogGrid_Click(object sender, EventArgs e)
-        {
-            if (btsAutoScrollToBottom.Checked)
-            {
-                btsAutoScrollToBottom.Checked = false;
-            }
-        }
+
 
         private void sbtnPageFirst_Click(object sender, EventArgs e)
         {
