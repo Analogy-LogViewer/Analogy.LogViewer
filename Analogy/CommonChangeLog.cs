@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.3.3 - [Debug] Reflect internal log changes in real time #736",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,06)),
                 new AnalogyChangeLog("V4.3.3 - Remove Debugger.Launch from open file association path #691",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,28)),
                 new AnalogyChangeLog("V4.3.3 - Move User Statistics outside of user settings #689",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,28)),
                 new AnalogyChangeLog("V4.3.3 - Auto restart real time provider selection is broken #688",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,28)),

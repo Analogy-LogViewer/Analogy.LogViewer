@@ -17,8 +17,15 @@ namespace Analogy.Forms
             _dataSource = "Analogy";
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
+            AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
             ucLogs1.SetFileDataSource(analogyDataProvider, null);
         }
+
+        private void Instance_OnNewMessage(object sender, (AnalogyLogMessage msg, string source) e)
+        {
+            ucLogs1.AppendMessage(e.msg,e.source);
+        }
+
         public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource) : this()
         {
             _messages = messages;
@@ -64,5 +71,9 @@ namespace Analogy.Forms
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource) =>
             ucLogs1.AppendMessages(messages, dataSource);
 
+        private void XtraFormLogGrid_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            AnalogyLogManager.Instance.OnNewMessage -= Instance_OnNewMessage;
+        }
     }
 }

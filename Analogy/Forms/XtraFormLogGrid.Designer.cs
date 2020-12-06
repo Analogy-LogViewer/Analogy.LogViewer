@@ -28,15 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Threading.CancellationTokenSource cancellationTokenSource1 = new System.Threading.CancellationTokenSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormLogGrid));
             this.ucLogs1 = new Analogy.UCLogs();
             this.SuspendLayout();
             // 
             // ucLogs1
             // 
+            this.ucLogs1.CancellationTokenSource = cancellationTokenSource1;
+            this.ucLogs1.CurrentColumnsFields = ((System.Collections.Generic.List<System.ValueTuple<string, string>>)(resources.GetObject("ucLogs1.CurrentColumnsFields")));
+            this.ucLogs1.DataProvider = null;
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogs1.DoNotAddToRecentHistory = false;
+            this.ucLogs1.ExcludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.ExcludeFilterCriteriaUIOptions")));
+            this.ucLogs1.FileDataProvider = null;
             this.ucLogs1.ForceNoFileCaching = false;
+            this.ucLogs1.IncludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.IncludeFilterCriteriaUIOptions")));
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
@@ -54,6 +61,7 @@
             this.Name = "XtraFormLogGrid";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Analogy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XtraFormLogGrid_FormClosing);
             this.Load += new System.EventHandler(this.XtraFormLogGrid_Load);
             this.ResumeLayout(false);
 

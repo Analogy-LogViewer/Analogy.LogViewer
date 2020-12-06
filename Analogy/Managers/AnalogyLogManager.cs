@@ -12,8 +12,10 @@ namespace Analogy.Managers
 {
     public class AnalogyLogManager
     {
+        public event EventHandler<(AnalogyLogMessage msg,string source)> OnNewMessage;
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
         public static AnalogyLogManager Instance => _instance.Value;
+
         public bool HasErrorMessages => messages.Any(m => m.Level == AnalogyLogLevel.Critical || m.Level == AnalogyLogLevel.Error);
         public bool HasWarningMessages => messages.Any(m => m.Level == AnalogyLogLevel.Warning);
         //private string FileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AnalogyInternalLog_{postfix}.ajson");
@@ -113,6 +115,8 @@ namespace Analogy.Managers
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General, source));
             OnNewError?.Invoke(this, new EventArgs());
+            AnalogyErrorMessage err=new AnalogyErrorMessage(error,source);
+            OnNewMessage?.Invoke(this,(err,source));
         }
         public void LogInformation(string data, string source)
         {
@@ -123,6 +127,8 @@ namespace Analogy.Managers
 
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Information, AnalogyLogClass.General, source));
+            AnalogyInformationMessage err = new AnalogyInformationMessage(data, source);
+            OnNewMessage?.Invoke(this, (err, source));
         }
         public void LogWarning(string data, string source)
         {
@@ -133,6 +139,9 @@ namespace Analogy.Managers
 
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Warning, AnalogyLogClass.General, source));
+            AnalogyInformationMessage err = new AnalogyInformationMessage(data, source);
+            err.Level = AnalogyLogLevel.Warning;
+            OnNewMessage?.Invoke(this, (err, source));
         }
         public void LogDebug(string data, string source)
         {
@@ -143,6 +152,9 @@ namespace Analogy.Managers
 
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Debug, AnalogyLogClass.General, source));
+            AnalogyInformationMessage err = new AnalogyInformationMessage(data, source);
+            err.Level = AnalogyLogLevel.Debug;
+            OnNewMessage?.Invoke(this, (err, source));
         }
         public void LogCritical(string data, string source)
         {
@@ -154,6 +166,9 @@ namespace Analogy.Managers
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(data, AnalogyLogLevel.Critical, AnalogyLogClass.General, source));
             OnNewError?.Invoke(this, new EventArgs());
+            AnalogyInformationMessage err = new AnalogyInformationMessage(data, source);
+            err.Level = AnalogyLogLevel.Critical;
+            OnNewMessage?.Invoke(this, (err, source));
         }
         public void Show(MainForm mainForm)
         {
@@ -171,6 +186,7 @@ namespace Analogy.Managers
             ContentChanged = true;
             messages.Add(error);
             OnNewError?.Invoke(this, new EventArgs());
+            OnNewMessage?.Invoke(this, (error, error.Source));
         }
     }
 }
