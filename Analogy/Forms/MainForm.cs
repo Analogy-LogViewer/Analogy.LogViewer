@@ -22,6 +22,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils;
 
 namespace Analogy.Forms
 {
@@ -778,7 +779,17 @@ namespace Analogy.Forms
                 realTimeBtn.Caption = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
                     : "real time provider");
-
+                if (realTime.ToolTip != null)
+                {
+                    SuperToolTip toolTip = new SuperToolTip();
+                    // Create an object to initialize the SuperToolTip.
+                    SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+                    args.Title.Text = realTime.ToolTip.Title;
+                    args.Contents.Text = realTime.ToolTip.Content;
+                    // args.Contents.Image = realTime.ToolTip.Image;
+                    toolTip.Setup(args);
+                    realTimeBtn.SuperTip = toolTip;
+                }
                 async Task<bool> OpenRealTime()
                 {
                     realTimeBtn.Enabled = false;
@@ -1047,7 +1058,17 @@ namespace Analogy.Forms
                 singleBtn.Caption = "Single provider" + (!string.IsNullOrEmpty(single.OptionalTitle)
                     ? $" - {single.OptionalTitle}"
                     : string.Empty);
-
+                if (single.ToolTip != null)
+                {
+                    SuperToolTip toolTip = new SuperToolTip();
+                    // Create an object to initialize the SuperToolTip.
+                    SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+                    args.Title.Text = single.ToolTip.Title;
+                    args.Contents.Text = single.ToolTip.Content;
+                    // args.Contents.Image = realTime.ToolTip.Image;
+                    toolTip.Setup(args);
+                    singleBtn.SuperTip = toolTip;
+                }
                 openedWindows++;
                 singleBtn.ItemClick += (sender, e) =>
                 {
