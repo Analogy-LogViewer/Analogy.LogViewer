@@ -196,7 +196,7 @@ namespace Analogy
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
-           await LoadExtensions();
+            await LoadExtensions();
             SetupEventsHandlers();
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
@@ -211,7 +211,7 @@ namespace Analogy
                     progressBar1.Visible = false;
                 }
             });
-            
+
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
@@ -550,7 +550,7 @@ namespace Analogy
             };
         }
 
-   
+
         private void EditValueChanged(object sender, EventArgs e)
         {
 
@@ -1639,7 +1639,7 @@ namespace Analogy
             try
             {
                 _messageData.DefaultView.RowFilter = filter;
-      
+
                 if (ApplyGoToSelectedMessageAfterFirstClick && Settings.TrackActiveMessage)
                 {
                     var location = LocateByValue(0, gridColumnObject, SelectedMassage);
@@ -1700,7 +1700,7 @@ namespace Analogy
 
             return int.MinValue;
         }
-        
+
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading,
             bool isReloadSoForceNoCaching = false)
         {
@@ -1848,6 +1848,30 @@ namespace Analogy
             }
 
         }
+        private void LogGrid_DoubleClick(object sender, EventArgs e)
+        {
+            if (!(e is DXMouseEventArgs args))
+            {
+                return;
+            }
+            GridHitInfo hi = LogGrid.CalcHitInfo(new Point(args.X, args.Y));
+
+            if (hi.RowHandle < 0)
+            {
+                return;
+            }
+            string dataSource = (string)LogGrid.GetRowCellValue(hi.RowHandle,"DataProvider") ?? string.Empty;
+            AnalogyLogMessage? message = LogGrid.GetRowCellValue(hi.RowHandle, "Object") as AnalogyLogMessage;
+            if (message == null)
+            {
+                return;
+            }
+
+            FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource);
+            details.Show(this);
+            //CreateBookmark();
+
+        }
         private void gridControl_Click(object sender, EventArgs e)
         {
             if (btsAutoScrollToBottom.Checked)
@@ -1873,7 +1897,14 @@ namespace Analogy
         {
             if (e.KeyChar == (char)13)
             {
-                OpenMessageDetails();
+                (AnalogyLogMessage? message, string dataSource) = GetMessageFromSelectedFocusedRowInGrid();
+                if (message == null)
+                {
+                    return;
+                }
+
+                FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource);
+                details.Show(this);
             }
         }
 
@@ -2000,17 +2031,7 @@ namespace Analogy
             e.Handled = true;
         }
 
-        private void LogGrid_DoubleClick(object sender, EventArgs e)
-        {
-            if (!(e is DXMouseEventArgs args))
-            {
-                return;
-            }
-            
-            OpenMessageDetails();
-            //CreateBookmark();
 
-        }
         /// <summary>
         /// Set custom column display text
         /// </summary>
@@ -2049,18 +2070,7 @@ namespace Analogy
             GoToMessage();
 
         }
-        
-        private void OpenMessageDetails()
-        {
-            (AnalogyLogMessage message, string dataSource) = GetMessageFromSelectedFocusedRowInGrid();
-            if (message == null)
-            {
-                return;
-            }
 
-            FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource);
-            details.Show(this);
-        }
 
         private void tsmiBookmark_Click(object sender, EventArgs e)
         {
@@ -2238,7 +2248,7 @@ namespace Analogy
             }
         }
 
-  
+
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
@@ -2466,7 +2476,7 @@ namespace Analogy
                 BookmarkPersistManager.Instance.RemoveBookmark(message);
             }
         }
- 
+
         public void SetBookmarkMode()
         {
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
@@ -2592,7 +2602,7 @@ namespace Analogy
         {
             Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
         }
-        
+
         private void sbtnPageFirst_Click(object sender, EventArgs e)
         {
             pageNumber = 1;
@@ -2740,7 +2750,7 @@ namespace Analogy
         private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             int row = e.FocusedRowHandle;
-            
+
             if (row < 0)
             {
                 return;

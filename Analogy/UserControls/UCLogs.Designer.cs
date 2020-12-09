@@ -345,7 +345,6 @@ namespace Analogy
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
             this.gridControl.Click += new System.EventHandler(this.gridControl_Click);
-            this.gridControl.DoubleClick += new System.EventHandler(this.LogGrid_DoubleClick);
             this.gridControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LogGrid_KeyPress);
             // 
             // logGrid
@@ -396,6 +395,8 @@ namespace Analogy
             this.logGrid.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
             this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.LogGridViewCustomColumnDisplayText);
             this.logGrid.Click += new System.EventHandler(this.logGrid_Click);
+            this.logGrid.DoubleClick += new System.EventHandler(this.LogGrid_DoubleClick);
+
             // 
             // gridColumnDataSource
             // 
