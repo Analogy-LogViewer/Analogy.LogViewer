@@ -61,8 +61,8 @@ jobs:
 
 
     # Publish Artifacts 
-    - name: 'Publish Artifacts'
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: Analogy_Artifacts_${{ matrix.configuration }}
-        path: ./Analogy/bin/${{ matrix.configuration }}
+  # - name: 'Publish Artifacts'
+  #   uses: actions/upload-artifact@v1.0.0
+  #   with:
+  #     name: Analogy_Artifacts_${{ matrix.configuration }}
+  #     path: ./Analogy/bin/${{ matrix.configuration }}
