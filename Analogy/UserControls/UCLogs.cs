@@ -1808,14 +1808,15 @@ namespace Analogy
 
             int rownum = selRows.First();
             SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
-            if (Settings.TrackActiveMessage)
-            {
-                ApplyGoToSelectedMessageAfterFirstClick = true;
-            }
-            else
-            {
-                logGrid.FocusInvalidRow();
-            }
+            //todo
+            //if (Settings.TrackActiveMessage)
+            //{
+            //    ApplyGoToSelectedMessageAfterFirstClick = true;
+            //}
+            //else
+            //{
+            //    logGrid.FocusInvalidRow();
+            //}
             LoadTextBoxes(SelectedMassage);
             if (hasAnyInPlaceExtensions)
             {
@@ -2005,7 +2006,7 @@ namespace Analogy
             {
                 return;
             }
-
+            
             OpenMessageDetails();
             //CreateBookmark();
 
