@@ -137,10 +137,9 @@ namespace Analogy
                 treeList1.Nodes.Add(fi.Name, fi.LastWriteTime, fi.Length, fi.FullName);
                 // TreeListFileNodes.Add(fi.FullName);
             }
-
-            treeList1.BestFitColumns();
             treeList1.ClearSelection();
-
+            treeList1.TopVisibleNodeIndex = 0;
+            treeList1.BestFitColumns();
             treeList1.SelectionChanged += TreeList1_SelectionChanged;
         }
 
