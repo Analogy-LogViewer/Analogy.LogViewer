@@ -63,6 +63,7 @@
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDataProvidersUpdates = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiUserSettingsStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bItemProcess = new DevExpress.XtraBars.BarButtonItem();
@@ -110,7 +111,6 @@
             this.btnDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSettingsExtensions = new DevExpress.XtraBars.BarButtonItem();
             this.btnCustomDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiUserSettingsStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsDebugging = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
@@ -151,7 +151,6 @@
             this.ribbonControlMain.AutoHideEmptyItems = true;
             this.ribbonControlMain.AutoSaveLayoutToXmlPath = "AnalogyRibbonSettings.xml";
             this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiGlobalTools);
-            this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsmInfo);
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bsiGlobalTools,
@@ -226,6 +225,7 @@
             this.ribbonControlMain.MaxItemId = 107;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
+            this.ribbonControlMain.PageHeaderItemLinks.Add(this.bsmInfo);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinPaletteRibbonGalleryBarItem3);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.bsiSettings);
@@ -373,6 +373,15 @@
             this.bbtnDataProvidersUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnDataProvidersUpdates.ImageOptions.LargeImage")));
             this.bbtnDataProvidersUpdates.Name = "bbtnDataProvidersUpdates";
             this.bbtnDataProvidersUpdates.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDataProvidersUpdates_ItemClick);
+            // 
+            // bbiUserSettingsStatistics
+            // 
+            this.bbiUserSettingsStatistics.Caption = "User Statistics";
+            this.bbiUserSettingsStatistics.Id = 95;
+            this.bbiUserSettingsStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.Image")));
+            this.bbiUserSettingsStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.LargeImage")));
+            this.bbiUserSettingsStatistics.Name = "bbiUserSettingsStatistics";
+            this.bbiUserSettingsStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserStatistics_ItemClick);
             // 
             // bbtnItemHelp
             // 
@@ -803,15 +812,6 @@
             this.btnCustomDataProvidersSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCustomDataProvidersSettings.ImageOptions.LargeImage")));
             this.btnCustomDataProvidersSettings.Name = "btnCustomDataProvidersSettings";
             this.btnCustomDataProvidersSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCustomDataProvidersSettings_ItemClick);
-            // 
-            // bbiUserSettingsStatistics
-            // 
-            this.bbiUserSettingsStatistics.Caption = "User Statistics";
-            this.bbiUserSettingsStatistics.Id = 95;
-            this.bbiUserSettingsStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.Image")));
-            this.bbiUserSettingsStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.LargeImage")));
-            this.bbiUserSettingsStatistics.Name = "bbiUserSettingsStatistics";
-            this.bbiUserSettingsStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserStatistics_ItemClick);
             // 
             // btnSettingsUpdate
             // 
