@@ -179,7 +179,7 @@ namespace Analogy
             }
 
             // check for assemblies already loaded
-            Assembly assembly = AppDomain.CurrentDomain.GetAssemblies()
+            Assembly? assembly = AppDomain.CurrentDomain.GetAssemblies()
                 .FirstOrDefault(a => a.GetName().Name == args.Name);
             if (assembly != null)
             {
@@ -196,7 +196,7 @@ namespace Analogy
 
             var paths = FactoriesManager.Instance.ProbingPaths.Select(Path.GetDirectoryName).Except(new List<string> { AssemblyLocation }).Distinct()
                 .ToList();
-
+            paths.AddRange(AnalogyNonPersistSettings.Instance.AdditionalAssembliesDependenciesLocations);
             foreach (var path in paths)
             {
                 string asmFile = FindFileInPath(filename, path);

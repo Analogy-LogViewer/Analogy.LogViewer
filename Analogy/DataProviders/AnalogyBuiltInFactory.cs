@@ -38,7 +38,6 @@ namespace Analogy.DataProviders
         public AnalogyOfflineDataProviderFactory()
         {
             var adp = new AnalogyOfflineDataProvider();
-            adp.InitializeDataProviderAsync(AnalogyLogger.Instance);
             DataProviders = new List<IAnalogyDataProvider> { adp };
         }
     }
