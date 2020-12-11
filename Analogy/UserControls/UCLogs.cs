@@ -670,7 +670,7 @@ namespace Analogy
             {
                 return;
             }
-
+     
             try
             {
                 if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
@@ -678,11 +678,23 @@ namespace Analogy
                     return;
                 }
 
-                foreach ((string originalHeader, string replacementHeader) in DataProvider.GetReplacementHeaders())
+                foreach ((string fieldName, string replacementHeader) in DataProvider.GetReplacementHeaders())
                 {
-                    logGrid.Columns[originalHeader].Caption = replacementHeader;
+                    var column = logGrid.Columns.FirstOrDefault((col) => col.FieldName == fieldName);
+                    if (column != null)
+                    {
+                        column.Caption = replacementHeader;
+                    }
                 }
-
+               
+                foreach (string fieldName in DataProvider.HideColumns())
+                {
+                    var column = logGrid.Columns.FirstOrDefault((col) => col.FieldName == fieldName);
+                    if (column != null)
+                    {
+                        column.Visible = false;
+                    }
+                }
             }
             catch (Exception)
             {
