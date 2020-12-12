@@ -151,7 +151,7 @@ Along with custom Data Providers you can create extensions for existing provider
 
 The example data provider has example for this (you need to enable the extension in the extensions tab in the user settings). 
 
-Discuss about the extension here: (Extension Disscussion)[https://github.com/Analogy-LogViewer/Analogy.LogViewer/discussions/770]
+Discuss about the extension here: [Extension Disscussion](https://github.com/Analogy-LogViewer/Analogy.LogViewer/discussions/770)
 
 ## Plotting
 
@@ -176,7 +176,7 @@ Along with custom Data Providers you can create Plots of arbitrary data by imple
 The example data provider has example for this:
 ![Example plot](Assets/plottingExample.jpg)
 
-Discuss about the plotting here: (Extension Disscussion)[https://github.com/Analogy-LogViewer/Analogy.LogViewer/discussions/772]
+Discuss about the plotting here: [Extension Disscussion](https://github.com/Analogy-LogViewer/Analogy.LogViewer/discussions/772)
 ## Logs Analysis and Visualizers
 
 The application has some analyzers and visualization.
