@@ -834,5 +834,17 @@ namespace Analogy.Properties {
                 this["TrackActiveMessage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public float RealTimeRefreshInterval {
+            get {
+                return ((float)(this["RealTimeRefreshInterval"]));
+            }
+            set {
+                this["RealTimeRefreshInterval"] = value;
+            }
+        }
     }
 }

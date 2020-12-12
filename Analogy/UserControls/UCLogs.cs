@@ -129,7 +129,18 @@ namespace Analogy
             set => logGrid = value;
         }
 
+        private bool _realTimeMode;
+        public bool RealTimeMode
+        {
+            get => _realtimeUpdate;
+            set
+            {
+                _realtimeUpdate = value;
+                btsAutoScrollToBottom.Checked = _realtimeUpdate;
+            }
+        }
         private LogLevelSelectionType logLevelSelectionType = UserSettingsManager.UserSettings.LogLevelSelection;
+
 
         public UCLogs()
         {
@@ -707,6 +718,10 @@ namespace Analogy
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
             SetSaveButtonsVisibility(FileDataProvider != null);
+            if (dataProvider is IAnalogyRealTimeDataProvider)
+            {
+                RealTimeMode = true;
+            }
         }
 
 

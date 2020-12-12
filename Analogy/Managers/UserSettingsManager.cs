@@ -131,6 +131,7 @@ namespace Analogy
             }
         }
         public bool TrackActiveMessage { get; set; }
+        public float RealTimeRefreshInterval { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -269,6 +270,7 @@ namespace Analogy
             RibbonStyle = (CommandLayout)Settings.Default.RibbonStyle;
             EnableFirstChanceException = Settings.Default.EnableFirstChanceException;
             TrackActiveMessage = Settings.Default.TrackActiveMessage;
+            RealTimeRefreshInterval = Settings.Default.RealTimeRefreshInterval;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -355,6 +357,7 @@ namespace Analogy
             Settings.Default.RibbonStyle = (int)RibbonStyle;
             Settings.Default.EnableFirstChanceException = EnableFirstChanceException;
             Settings.Default.TrackActiveMessage = TrackActiveMessage;
+            Settings.Default.RealTimeRefreshInterval = RealTimeRefreshInterval;
             Settings.Default.Save();
 
         }
