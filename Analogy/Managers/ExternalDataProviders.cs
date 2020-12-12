@@ -75,7 +75,6 @@ namespace Analogy.Managers
                 }
             }
             #endregion
-
             #region Load Factories
             foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
             {
@@ -111,7 +110,7 @@ namespace Analogy.Managers
             #endregion
             foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
             {
-                foreach (var img in types.Where(aType => aType.GetInterface(nameof(IAnalogyImages)) != null))
+                foreach (Type img in types.Where(aType => aType.GetInterface(nameof(IAnalogyImages)) != null))
                 {
                     try
                     {
@@ -212,13 +211,30 @@ namespace Analogy.Managers
                     }
                 }
 
-                foreach (var plotter in types.Where(aType => aType.GetInterface(nameof(IAnalogyPlotting)) != null))
+                foreach (Type plotter in types.Where(aType => aType.GetInterface(nameof(IAnalogyPlotting)) != null))
                 {
                     try
                     {
                         var plot = (Activator.CreateInstance(plotter) as IAnalogyPlotting)!;
                         var factory = Factories.First(f => f.Factory.FactoryId == plot.FactoryId);
                         factory.AddGraphPlotter(plot);
+                    }
+                    catch (Exception e)
+                    {
+                        AnalogyLogManager.Instance.LogError($"{fileName}: Error during plotter loading: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
+                    }
+                }
+
+                foreach (Type policyType in types.Where(aType => aType.GetInterface(nameof(IAnalogyPolicyEnforcer)) != null))
+                {
+                    try
+                    {
+                        var policy = (Activator.CreateInstance(policyType) as IAnalogyPolicyEnforcer)!;
+                        if (policy.DisableUpdates)
+                        {
+                            AnalogyLogger.Instance.LogWarning($"disable Update from: {policyType.FullName}");
+                            AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides = true;
+                        }
                     }
                     catch (Exception e)
                     {

@@ -10,7 +10,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {
+            { 
+                new AnalogyChangeLog("V4.3.3 - Add Application's settings overrider by data provider (e.g disable auto update, etc) #731",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),
                 new AnalogyChangeLog("V4.3.3 - Add additional probing locations provided by data providers #732",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,11)),
                 new AnalogyChangeLog("V4.3.3 - Add option to hide irrelevant columns #734",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,11)),
                 new AnalogyChangeLog("V4.3.3 - [Debug] Reflect internal log changes in real time #736",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,06)),

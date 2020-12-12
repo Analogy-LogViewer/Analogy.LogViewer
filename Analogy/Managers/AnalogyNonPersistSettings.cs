@@ -13,6 +13,7 @@ namespace Analogy.Managers
             new Lazy<AnalogyNonPersistSettings>(() => new AnalogyNonPersistSettings());
         public static AnalogyNonPersistSettings Instance { get; set; } = _instance.Value;
         public List<string> AdditionalAssembliesDependenciesLocations { get; }
+        public bool DisableUpdatesByDataProvidersOverrides { get; set; }
         public AnalogyNonPersistSettings()
         {
             AdditionalAssembliesDependenciesLocations=new List<string>();

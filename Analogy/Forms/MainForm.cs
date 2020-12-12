@@ -207,18 +207,25 @@ namespace Analogy.Forms
                 btnErrors.Visibility = BarItemVisibility.Always;
             }
 
-            var (_, release) = await UpdateManager.Instance.CheckVersion(false);
-            if (release?.TagName != null && UpdateManager.Instance.NewestVersion != null)
+            if (!AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
             {
-                bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
-                if (UpdateManager.Instance.NewVersionExist)
+                var (_, release) = await UpdateManager.Instance.CheckVersion(false);
+                if (release?.TagName != null && UpdateManager.Instance.NewestVersion != null)
                 {
-                    bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
-                    bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.Instance.NewestVersion.ToString();
+                    bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
+                    if (UpdateManager.Instance.NewVersionExist)
+                    {
+                        bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
+                        bbtnCheckUpdates.Caption =
+                            "New Version Available: " + UpdateManager.Instance.NewestVersion.ToString();
 
+                    }
                 }
             }
-
+            else
+            {
+                AnalogyLogManager.Instance.LogWarning("Update is disabled",nameof(MainForm));
+            }
             if (settings.ShowWhatIsNewAtStartup)
             {
                 WhatsNewForm f = new WhatsNewForm();

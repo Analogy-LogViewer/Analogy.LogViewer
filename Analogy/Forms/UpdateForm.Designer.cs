@@ -34,6 +34,7 @@
             this.richTextBoxRelease = new System.Windows.Forms.RichTextBox();
             this.hyperLinkEditLatest = new DevExpress.XtraEditors.HyperLinkEdit();
             this.sbtnUpdateNow = new DevExpress.XtraEditors.SimpleButton();
+            this.lblDisableUpdates = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditLatest.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             this.lblCurrentVersion.Appearance.Options.UseFont = true;
             this.lblCurrentVersion.AutoEllipsis = true;
             this.lblCurrentVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblCurrentVersion.Location = new System.Drawing.Point(12, 16);
+            this.lblCurrentVersion.Location = new System.Drawing.Point(12, 28);
             this.lblCurrentVersion.Name = "lblCurrentVersion";
             this.lblCurrentVersion.Size = new System.Drawing.Size(805, 23);
             this.lblCurrentVersion.TabIndex = 0;
@@ -59,7 +60,7 @@
             this.lblLatestVersion.Appearance.Options.UseFont = true;
             this.lblLatestVersion.AutoEllipsis = true;
             this.lblLatestVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblLatestVersion.Location = new System.Drawing.Point(12, 55);
+            this.lblLatestVersion.Location = new System.Drawing.Point(12, 67);
             this.lblLatestVersion.Name = "lblLatestVersion";
             this.lblLatestVersion.Size = new System.Drawing.Size(805, 23);
             this.lblLatestVersion.TabIndex = 0;
@@ -68,7 +69,7 @@
             // sbtnCheck
             // 
             this.sbtnCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnCheck.Location = new System.Drawing.Point(840, 18);
+            this.sbtnCheck.Location = new System.Drawing.Point(840, 28);
             this.sbtnCheck.Name = "sbtnCheck";
             this.sbtnCheck.Size = new System.Drawing.Size(127, 26);
             this.sbtnCheck.TabIndex = 1;
@@ -100,7 +101,7 @@
             // sbtnUpdateNow
             // 
             this.sbtnUpdateNow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnUpdateNow.Location = new System.Drawing.Point(840, 50);
+            this.sbtnUpdateNow.Location = new System.Drawing.Point(840, 64);
             this.sbtnUpdateNow.Name = "sbtnUpdateNow";
             this.sbtnUpdateNow.Size = new System.Drawing.Size(127, 26);
             this.sbtnUpdateNow.TabIndex = 5;
@@ -108,11 +109,24 @@
             this.sbtnUpdateNow.Visible = false;
             this.sbtnUpdateNow.Click += new System.EventHandler(this.sbtnUpdateNow_Click);
             // 
+            // lblDisableUpdates
+            // 
+            this.lblDisableUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDisableUpdates.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblDisableUpdates.Appearance.Options.UseForeColor = true;
+            this.lblDisableUpdates.Location = new System.Drawing.Point(671, 8);
+            this.lblDisableUpdates.Name = "lblDisableUpdates";
+            this.lblDisableUpdates.Size = new System.Drawing.Size(297, 16);
+            this.lblDisableUpdates.TabIndex = 15;
+            this.lblDisableUpdates.Text = "Updates are disabled due to data provider overrides";
+            this.lblDisableUpdates.Visible = false;
+            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 425);
+            this.Controls.Add(this.lblDisableUpdates);
             this.Controls.Add(this.sbtnUpdateNow);
             this.Controls.Add(this.hyperLinkEditLatest);
             this.Controls.Add(this.richTextBoxRelease);
@@ -125,6 +139,7 @@
             this.Load += new System.EventHandler(this.UpdateForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditLatest.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -136,5 +151,6 @@
         private System.Windows.Forms.RichTextBox richTextBoxRelease;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEditLatest;
         private DevExpress.XtraEditors.SimpleButton sbtnUpdateNow;
+        private DevExpress.XtraEditors.LabelControl lblDisableUpdates;
     }
 }

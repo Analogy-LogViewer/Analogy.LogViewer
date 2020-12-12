@@ -21,7 +21,16 @@ namespace Analogy.Forms
             lblLatestVersion.Text =
                 $"Latest version is: {(Updater.LastVersionChecked?.TagName == null ? "not checked" : Updater.LastVersionChecked.TagName)}";
 
-            if (Updater.LastVersionChecked != null && Updater.LastVersionChecked.TagName != null)
+            if (AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
+            {
+                AnalogyLogManager.Instance.LogWarning("Update is disabled", nameof(UpdateForm));
+                sbtnUpdateNow.Visible = false;
+                sbtnCheck.Visible = false;
+                lblDisableUpdates.Visible = true;
+                return;
+            }
+
+            if (Updater.LastVersionChecked?.TagName != null)
             {
                 richTextBoxRelease.Text = Updater.LastVersionChecked.ToString();
                 hyperLinkEditLatest.Text = Updater.LastVersionChecked.HtmlUrl;

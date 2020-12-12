@@ -220,6 +220,11 @@ namespace Analogy.Forms
             LoadColorsSettings();
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
+            if (AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
+            {
+                lblDisableUpdates.Visible = true;
+                cbUpdates.Enabled = false;
+            }
             tsTraybar.IsOn = Settings.MinimizedToTrayBar;
             tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
             tsLogLevels.IsOn = Settings.LogLevelSelection == LogLevelSelectionType.Multiple;
