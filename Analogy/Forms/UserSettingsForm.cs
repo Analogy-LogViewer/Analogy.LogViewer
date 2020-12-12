@@ -134,6 +134,7 @@ namespace Analogy.Forms
         private void LoadSettings()
         {
             tsSimpleMode.IsOn = Settings.SimpleMode;
+            nudRealTimeRefreshInterval.Value = (decimal)Settings.RealTimeRefreshInterval;
             tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
             tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
             tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
@@ -278,6 +279,7 @@ namespace Analogy.Forms
         private void SaveSetting()
         {
             SaveColorsSettings();
+            Settings.RealTimeRefreshInterval = (float)nudRealTimeRefreshInterval.Value;
             Settings.TrackActiveMessage = tsTrackActiveMessage.IsOn;
             Settings.SimpleMode = tsSimpleMode.IsOn;
             Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;

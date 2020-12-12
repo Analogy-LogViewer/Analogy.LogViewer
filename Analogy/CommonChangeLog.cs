@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.3.3 - [Real time] add option to change refresh rate [default 1 second] #768",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),
                 new AnalogyChangeLog("V4.3.3 - [Feature] Data plotting API #682",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),
                 new AnalogyChangeLog("V4.3.3 - [Charting] Enable real time charting #769",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),
                 new AnalogyChangeLog("V4.3.3 - Add Application's settings overrider by data provider (e.g disable auto update, etc) #731",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),

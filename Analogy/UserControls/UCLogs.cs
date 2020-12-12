@@ -37,6 +37,7 @@ namespace Analogy
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow
     {
+        #region properties
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
@@ -140,7 +141,7 @@ namespace Analogy
             }
         }
         private LogLevelSelectionType logLevelSelectionType = UserSettingsManager.UserSettings.LogLevelSelection;
-
+        #endregion
 
         public UCLogs()
         {
@@ -681,7 +682,7 @@ namespace Analogy
             {
                 return;
             }
-     
+
             try
             {
                 if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
@@ -697,7 +698,7 @@ namespace Analogy
                         column.Caption = replacementHeader;
                     }
                 }
-               
+
                 foreach (string fieldName in DataProvider.HideColumns())
                 {
                     var column = logGrid.Columns.FirstOrDefault((col) => col.FieldName == fieldName);
@@ -906,6 +907,7 @@ namespace Analogy
         private void LoadUISettings()
         {
             Utils.SetLogLevel(chkLstLogLevel);
+            tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
             xtcFilters.Visible = !_simpleMode;
             bBtnShare.Visibility =
                 FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
@@ -1887,7 +1889,7 @@ namespace Analogy
             {
                 return;
             }
-            string dataSource = (string)LogGrid.GetRowCellValue(hi.RowHandle,"DataProvider") ?? string.Empty;
+            string dataSource = (string)LogGrid.GetRowCellValue(hi.RowHandle, "DataProvider") ?? string.Empty;
             AnalogyLogMessage? message = LogGrid.GetRowCellValue(hi.RowHandle, "Object") as AnalogyLogMessage;
             if (message == null)
             {

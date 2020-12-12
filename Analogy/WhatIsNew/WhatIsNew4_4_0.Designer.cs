@@ -39,18 +39,19 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtPageIssues = new DevExpress.XtraTab.XtraTabPage();
             this.gcImprovements = new DevExpress.XtraEditors.GroupControl();
+            this.issue731 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.issue732 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.issue734 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.issue735 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.issue736 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue689 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue687 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue769 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue682 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.gcBugs = new DevExpress.XtraEditors.GroupControl();
-            this.Issue688 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue691 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.issue732 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.issue734 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.issue735 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.issue736 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.issue731 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.Issue688 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.issue768 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtcV4_4_0)).BeginInit();
             this.xtcV4_4_0.SuspendLayout();
             this.xtPageHighlight.SuspendLayout();
@@ -186,6 +187,7 @@
             // 
             // gcImprovements
             // 
+            this.gcImprovements.Controls.Add(this.issue768);
             this.gcImprovements.Controls.Add(this.issue731);
             this.gcImprovements.Controls.Add(this.issue732);
             this.gcImprovements.Controls.Add(this.issue734);
@@ -198,9 +200,70 @@
             this.gcImprovements.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcImprovements.Location = new System.Drawing.Point(10, 103);
             this.gcImprovements.Name = "gcImprovements";
-            this.gcImprovements.Size = new System.Drawing.Size(762, 283);
+            this.gcImprovements.Size = new System.Drawing.Size(762, 296);
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
+            // 
+            // issue731
+            // 
+            this.issue731.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue731.Location = new System.Drawing.Point(2, 233);
+            this.issue731.Name = "issue731";
+            this.issue731.Padding = new System.Windows.Forms.Padding(5);
+            this.issue731.Size = new System.Drawing.Size(515, 26);
+            this.issue731.TabIndex = 20;
+            this.issue731.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/731>Add Appli" +
+    "cation\'s settings overrider by data provider (e.g disable auto update, etc) #731" +
+    "</href>";
+            this.issue731.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // issue732
+            // 
+            this.issue732.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue732.Location = new System.Drawing.Point(2, 207);
+            this.issue732.Name = "issue732";
+            this.issue732.Padding = new System.Windows.Forms.Padding(5);
+            this.issue732.Size = new System.Drawing.Size(382, 26);
+            this.issue732.TabIndex = 16;
+            this.issue732.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/732>Add addit" +
+    "ional probing locations provided by data providers #732</href>";
+            this.issue732.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // issue734
+            // 
+            this.issue734.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue734.Location = new System.Drawing.Point(2, 181);
+            this.issue734.Name = "issue734";
+            this.issue734.Padding = new System.Windows.Forms.Padding(5);
+            this.issue734.Size = new System.Drawing.Size(257, 26);
+            this.issue734.TabIndex = 19;
+            this.issue734.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/734>Add optio" +
+    "n to hide irrelevant columns #734</href>";
+            this.issue734.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // issue735
+            // 
+            this.issue735.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue735.Location = new System.Drawing.Point(2, 155);
+            this.issue735.Name = "issue735";
+            this.issue735.Padding = new System.Windows.Forms.Padding(5);
+            this.issue735.Size = new System.Drawing.Size(253, 26);
+            this.issue735.TabIndex = 18;
+            this.issue735.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/735>[gRPC] Ad" +
+    "d self hosting gRPC server #735</href>";
+            this.issue735.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // issue736
+            // 
+            this.issue736.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue736.Location = new System.Drawing.Point(2, 129);
+            this.issue736.Name = "issue736";
+            this.issue736.Padding = new System.Windows.Forms.Padding(5);
+            this.issue736.Size = new System.Drawing.Size(321, 26);
+            this.issue736.TabIndex = 17;
+            this.issue736.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/736>[Debug] R" +
+    "eflect internal log changes in real time #736</href>";
+            this.issue736.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // Issue689
             // 
@@ -262,18 +325,6 @@
             this.gcBugs.TabIndex = 6;
             this.gcBugs.Text = "Bug Fixes";
             // 
-            // Issue688
-            // 
-            this.Issue688.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue688.Location = new System.Drawing.Point(2, 25);
-            this.Issue688.Name = "Issue688";
-            this.Issue688.Padding = new System.Windows.Forms.Padding(5);
-            this.Issue688.Size = new System.Drawing.Size(328, 26);
-            this.Issue688.TabIndex = 4;
-            this.Issue688.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/688>Auto rest" +
-    "art real time provider selection is broken #688</href>";
-            this.Issue688.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
             // issue691
             // 
             this.issue691.Dock = System.Windows.Forms.DockStyle.Top;
@@ -286,66 +337,29 @@
     "bugger.Launch from open file association path #691</href>";
             this.issue691.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
-            // issue732
+            // Issue688
             // 
-            this.issue732.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue732.Location = new System.Drawing.Point(2, 207);
-            this.issue732.Name = "issue732";
-            this.issue732.Padding = new System.Windows.Forms.Padding(5);
-            this.issue732.Size = new System.Drawing.Size(382, 26);
-            this.issue732.TabIndex = 16;
-            this.issue732.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/732>Add addit" +
-    "ional probing locations provided by data providers #732</href>";
-            this.issue732.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.Issue688.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Issue688.Location = new System.Drawing.Point(2, 25);
+            this.Issue688.Name = "Issue688";
+            this.Issue688.Padding = new System.Windows.Forms.Padding(5);
+            this.Issue688.Size = new System.Drawing.Size(328, 26);
+            this.Issue688.TabIndex = 4;
+            this.Issue688.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/688>Auto rest" +
+    "art real time provider selection is broken #688</href>";
+            this.Issue688.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
-            // issue734
+            // issue768
             // 
-            this.issue734.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue734.Location = new System.Drawing.Point(2, 181);
-            this.issue734.Name = "issue734";
-            this.issue734.Padding = new System.Windows.Forms.Padding(5);
-            this.issue734.Size = new System.Drawing.Size(257, 26);
-            this.issue734.TabIndex = 19;
-            this.issue734.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/734>Add optio" +
-    "n to hide irrelevant columns #734</href>";
-            this.issue734.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
-            // issue735
-            // 
-            this.issue735.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue735.Location = new System.Drawing.Point(2, 155);
-            this.issue735.Name = "issue735";
-            this.issue735.Padding = new System.Windows.Forms.Padding(5);
-            this.issue735.Size = new System.Drawing.Size(253, 26);
-            this.issue735.TabIndex = 18;
-            this.issue735.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/735>[gRPC] Ad" +
-    "d self hosting gRPC server #735</href>";
-            this.issue735.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
-            // issue736
-            // 
-            this.issue736.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue736.Location = new System.Drawing.Point(2, 129);
-            this.issue736.Name = "issue736";
-            this.issue736.Padding = new System.Windows.Forms.Padding(5);
-            this.issue736.Size = new System.Drawing.Size(321, 26);
-            this.issue736.TabIndex = 17;
-            this.issue736.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/736>[Debug] R" +
-    "eflect internal log changes in real time #736</href>";
-            this.issue736.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
-            // issue731
-            // 
-            this.issue731.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue731.Location = new System.Drawing.Point(2, 233);
-            this.issue731.Name = "issue731";
-            this.issue731.Padding = new System.Windows.Forms.Padding(5);
-            this.issue731.Size = new System.Drawing.Size(515, 26);
-            this.issue731.TabIndex = 20;
-            this.issue731.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/731>Add Appli" +
-    "cation\'s settings overrider by data provider (e.g disable auto update, etc) #731" +
-    "</href>";
-            this.issue731.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.issue768.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue768.Location = new System.Drawing.Point(2, 259);
+            this.issue768.Name = "issue768";
+            this.issue768.Padding = new System.Windows.Forms.Padding(5);
+            this.issue768.Size = new System.Drawing.Size(412, 26);
+            this.issue768.TabIndex = 21;
+            this.issue768.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/768>[Real tim" +
+    "e] add option to change refresh rate [default 1 second] #768</href>";
+            this.issue768.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_4_0
             // 
@@ -397,5 +411,6 @@
         private DevExpress.XtraEditors.HyperlinkLabelControl issue735;
         private DevExpress.XtraEditors.HyperlinkLabelControl issue736;
         private DevExpress.XtraEditors.HyperlinkLabelControl issue731;
+        private DevExpress.XtraEditors.HyperlinkLabelControl issue768;
     }
 }
