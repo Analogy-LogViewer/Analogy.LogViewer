@@ -11,14 +11,14 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.3.3 - [Feature] Data plotting API #682",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),
                 new AnalogyChangeLog("V4.3.3 - [Charting] Enable real time charting #769",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),
                 new AnalogyChangeLog("V4.3.3 - Add Application's settings overrider by data provider (e.g disable auto update, etc) #731",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),
                 new AnalogyChangeLog("V4.3.3 - Add additional probing locations provided by data providers #732",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,11)),
                 new AnalogyChangeLog("V4.3.3 - Add option to hide irrelevant columns #734",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,11)),
-                new AnalogyChangeLog("V4.3.3 - [Debug] Reflect internal log changes in real time #736",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,06)),
                 new AnalogyChangeLog("V4.3.3 - [gRPC] Add self hosting gRPC server #735",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,07)),
                 new AnalogyChangeLog("V4.3.3 - [Debug] Reflect internal log changes in real time #736",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,06)),
-                new AnalogyChangeLog("V4.3.3 - Remove Debugger.Launch from open file association path #691",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,28)),
+                new AnalogyChangeLog("V4.3.3 - Remove Debugger.Launch from open file association path #691",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,28)),
                 new AnalogyChangeLog("V4.3.3 - Move User Statistics outside of user settings #689",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,11,28)),
                 new AnalogyChangeLog("V4.3.3 - Auto restart real time provider selection is broken #688",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2020,11,28)),
                 new AnalogyChangeLog("V4.3.3 - [Feature] Restore Extensions code (User control) #687",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2020,11,28)),
