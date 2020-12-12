@@ -27,7 +27,7 @@ namespace Analogy
         public DataVisualizerUC(Func<List<AnalogyLogMessage>> messagesFunc) : this()
         {
             Messages = messagesFunc;
-            logStatisticsUC1.Statistics = new LogStatistics(messagesFunc);
+            logStatisticsUC1.Statistics = new LogStatistics(messagesFunc.Invoke());
         }
         public DataVisualizerUC(List<AnalogyLogMessage> messages) : this()
         {
@@ -42,7 +42,7 @@ namespace Analogy
 
         private void Plot()
         {
-            logStatisticsUC1.RefreshStatistics(new LogStatistics(Messages));
+            logStatisticsUC1.RefreshStatistics(new LogStatistics(Messages.Invoke()));
             Dictionary<string, Dictionary<TimeSpan, int>> frequency =
                 new Dictionary<string, Dictionary<TimeSpan, int>>();
             Dictionary<string, Dictionary<TimeSpan, int>> frequencyCount =
@@ -94,19 +94,6 @@ namespace Analogy
                     }
                 }
             }
-
-            chartControlOnOff.Series.Clear();
-            chartControlOnOff.DataSource = CreateTable(frequency);
-            chartControlOnOff.SeriesDataMember = "Name";
-            chartControlOnOff.SeriesTemplate.ArgumentDataMember = "Date";
-            chartControlOnOff.SeriesTemplate.ValueDataMembers.AddRange("ValueX");
-
-            chartControlOnOff.SeriesTemplate.ArgumentScaleType = ScaleType.DateTime;
-            chartControlOnOff.SeriesTemplate.ChangeView(ViewType.Line);
-            XYDiagram diagram = (XYDiagram)chartControlOnOff.Diagram;
-            diagram.AxisX.DateTimeScaleOptions.MeasureUnit = DateTimeMeasureUnit.Millisecond;
-            diagram.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Hour;
-            diagram.AxisX.Label.TextPattern = "{A:t}";
 
 
             chartControlFrequency.Series.Clear();
@@ -189,20 +176,13 @@ namespace Analogy
 
         private void sBtnAdd_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textEdit1.Text))
-            {
-                Items.Add(textEdit1.Text.Substring(textEdit1.Text.IndexOf(':') + 1));
-                chklistItems.Items.Add(textEdit1.Text, true);
-                ceAutoRefresh.Enabled = true;
-                seRefreshInterval.Enabled = true;
-                Plot();
-            }
-            else
-            {
-                Items.Add("");
-                chklistItems.Items.Add("", true);
-                Plot();
-            }
+            string text = !string.IsNullOrEmpty(textEdit1.Text) ? textEdit1.Text : "";
+            Items.Add(text);
+            chklistItems.Items.Add(text, true);
+            ceAutoRefresh.Enabled = true;
+            seRefreshInterval.Enabled = true;
+            Plot();
+
         }
 
         private void seRefreshInterval_EditValueChanged(object sender, EventArgs e)

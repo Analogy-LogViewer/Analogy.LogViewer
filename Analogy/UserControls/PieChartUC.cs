@@ -8,7 +8,7 @@ namespace Analogy
 {
     public partial class PieChartUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private ChartControl pieChart;
+        private ChartControl? pieChart;
 
         public PieChartUC()
         {
@@ -22,18 +22,19 @@ namespace Analogy
 
         public void SetDataSources(LogAnalyzerLogLevel statistics)
         {
-            if (pieChart == null)
+            if (pieChart != null)
             {
-                pieChart = new ChartControl();
-                pieChart.Titles.Add(new ChartTitle() { Text = statistics.Name });
-                pieChart.AllowGesture = true;
+                pieChart.Series[0].DataSource = statistics.AsListWithoutTotal();
+                return;
             }
+            pieChart = new ChartControl();
+            pieChart.Titles.Add(new ChartTitle() { Text = statistics.Name });
+            pieChart.AllowGesture = true;
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = statistics.Name });
             pieChart.Series.Clear();
             // Create a pie series. 
             Series series1 = new Series(statistics.Name, ViewType.Pie3D);
-
             // Bind the series to data. 
             series1.DataSource = statistics.AsListWithoutTotal();
             series1.ArgumentDataMember = nameof(LogAnalyzerSingleDataPoint.Name);

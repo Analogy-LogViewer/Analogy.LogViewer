@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel3 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.seRefreshInterval = new DevExpress.XtraEditors.SpinEdit();
             this.ceAutoRefresh = new DevExpress.XtraEditors.CheckEdit();
@@ -40,8 +39,6 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
-            this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.chartControlOnOff = new DevExpress.XtraCharts.ChartControl();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.chartControlFrequency = new DevExpress.XtraCharts.ChartControl();
             this.tnpTimeDistribution = new DevExpress.XtraBars.Navigation.TabNavigationPage();
@@ -59,15 +56,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
-            this.tabNavigationPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartControlOnOff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
             this.tabNavigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlFrequency)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
             this.tnpTimeDistribution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartTimeDistribution)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtpMessagesText.SuspendLayout();
@@ -121,7 +115,6 @@
             0});
             this.seRefreshInterval.Size = new System.Drawing.Size(110, 22);
             this.seRefreshInterval.TabIndex = 5;
-            this.seRefreshInterval.Visible = false;
             this.seRefreshInterval.EditValueChanged += new System.EventHandler(this.seRefreshInterval_EditValueChanged);
             // 
             // ceAutoRefresh
@@ -133,7 +126,6 @@
             this.ceAutoRefresh.Properties.Caption = "Auto Refresh (seconds):";
             this.ceAutoRefresh.Size = new System.Drawing.Size(167, 20);
             this.ceAutoRefresh.TabIndex = 4;
-            this.ceAutoRefresh.Visible = false;
             this.ceAutoRefresh.EditValueChanged += new System.EventHandler(this.ceAutoRefresh_EditValueChanged);
             // 
             // sBtnAdd
@@ -180,7 +172,6 @@
             // 
             // tabPane1
             // 
-            this.tabPane1.Controls.Add(this.tabNavigationPage1);
             this.tabPane1.Controls.Add(this.tabNavigationPage2);
             this.tabPane1.Controls.Add(this.tnpTimeDistribution);
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -189,33 +180,11 @@
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tnpTimeDistribution,
-            this.tabNavigationPage2,
-            this.tabNavigationPage1});
+            this.tabNavigationPage2});
             this.tabPane1.RegularSize = new System.Drawing.Size(1008, 393);
             this.tabPane1.SelectedPage = this.tnpTimeDistribution;
             this.tabPane1.Size = new System.Drawing.Size(1008, 393);
             this.tabPane1.TabIndex = 1;
-            // 
-            // tabNavigationPage1
-            // 
-            this.tabNavigationPage1.Caption = "On/off Plot";
-            this.tabNavigationPage1.Controls.Add(this.chartControlOnOff);
-            this.tabNavigationPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(1324, 557);
-            // 
-            // chartControlOnOff
-            // 
-            this.chartControlOnOff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartControlOnOff.Legend.Name = "Default Legend";
-            this.chartControlOnOff.Location = new System.Drawing.Point(0, 0);
-            this.chartControlOnOff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.chartControlOnOff.Name = "chartControlOnOff";
-            this.chartControlOnOff.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            sideBySideBarSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartControlOnOff.SeriesTemplate.Label = sideBySideBarSeriesLabel1;
-            this.chartControlOnOff.Size = new System.Drawing.Size(1324, 557);
-            this.chartControlOnOff.TabIndex = 1;
             // 
             // tabNavigationPage2
             // 
@@ -223,7 +192,7 @@
             this.tabNavigationPage2.Controls.Add(this.chartControlFrequency);
             this.tabNavigationPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Size = new System.Drawing.Size(1324, 524);
+            this.tabNavigationPage2.Size = new System.Drawing.Size(1008, 360);
             // 
             // chartControlFrequency
             // 
@@ -233,9 +202,9 @@
             this.chartControlFrequency.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartControlFrequency.Name = "chartControlFrequency";
             this.chartControlFrequency.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            sideBySideBarSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartControlFrequency.SeriesTemplate.Label = sideBySideBarSeriesLabel2;
-            this.chartControlFrequency.Size = new System.Drawing.Size(1324, 524);
+            sideBySideBarSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartControlFrequency.SeriesTemplate.Label = sideBySideBarSeriesLabel1;
+            this.chartControlFrequency.Size = new System.Drawing.Size(1008, 360);
             this.chartControlFrequency.TabIndex = 2;
             // 
             // tnpTimeDistribution
@@ -253,8 +222,8 @@
             this.chartTimeDistribution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartTimeDistribution.Name = "chartTimeDistribution";
             this.chartTimeDistribution.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            sideBySideBarSeriesLabel3.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartTimeDistribution.SeriesTemplate.Label = sideBySideBarSeriesLabel3;
+            sideBySideBarSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartTimeDistribution.SeriesTemplate.Label = sideBySideBarSeriesLabel2;
             this.chartTimeDistribution.Size = new System.Drawing.Size(1008, 360);
             this.chartTimeDistribution.TabIndex = 3;
             // 
@@ -316,14 +285,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
-            this.tabNavigationPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartControlOnOff)).EndInit();
             this.tabNavigationPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlFrequency)).EndInit();
             this.tnpTimeDistribution.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTimeDistribution)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
@@ -335,13 +301,11 @@
 
         #endregion
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraCharts.ChartControl chartControlOnOff;
         private DevExpress.XtraEditors.SimpleButton sBtnAdd;
         private DevExpress.XtraEditors.CheckedListBoxControl chklistItems;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
         private DevExpress.XtraCharts.ChartControl chartControlFrequency;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tnpTimeDistribution;

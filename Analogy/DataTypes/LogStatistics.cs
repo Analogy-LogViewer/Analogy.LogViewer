@@ -11,15 +11,15 @@ namespace Analogy.DataTypes
         private List<AnalogyLogMessage> Messages => MessagesSource();
         private List<string> Sources => Messages.Select(m => m.Source).Distinct().ToList();
         private List<string> Modules => Messages.Select(m => m.Module).Distinct().ToList();
-        private List<string> Texts = new List<string>();
+        public List<string> Texts { get; set; }= new List<string>();
         public LogStatistics(List<AnalogyLogMessage> messages)
         {
             MessagesSource = () => messages;
         }
-        public LogStatistics(Func<List<AnalogyLogMessage>> messagesFunc)
-        {
-            MessagesSource = messagesFunc;
-        }
+        //public LogStatistics(Func<List<AnalogyLogMessage>> messagesFunc)
+        //{
+        //    MessagesSource = messagesFunc;
+        //}
         public LogAnalyzerLogLevel CalculateGlobalStatistics()
         {
             return new LogAnalyzerLogLevel("Global", Messages.Count, CountMessages(Messages, AnalogyLogLevel.Error),

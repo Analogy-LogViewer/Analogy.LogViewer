@@ -20,20 +20,21 @@ namespace Philips.Analogy
         public LogStatisticsUC()
         {
             InitializeComponent();
-        }
-
-        private void CreatePies()
-        {
+            SourcePie = new PieChartUC();
+            spltcSources.Panel2.Controls.Add(SourcePie);
+            SourcePie.Dock = DockStyle.Fill;
             GlobalPie = new PieChartUC();
             spltCTop.Panel2.Controls.Add(GlobalPie);
             GlobalPie.Dock = DockStyle.Fill;
-            if (Statistics != null)
-            {
-                GlobalPie.SetDataSources(Statistics.CalculateGlobalStatistics());
-            }
-
-
+            ModulePie = new PieChartUC();
+            spltcModules.Panel2.Controls.Add(ModulePie);
+            ModulePie.Dock = DockStyle.Fill;
+            FreeTextPie = new PieChartUC();
+            spltCFreeText.Panel2.Controls.Add(FreeTextPie);
+            FreeTextPie.Dock = DockStyle.Fill;
         }
+
+
 
         private void LogStatisticsUC_Load(object sender, System.EventArgs e)
         {
@@ -47,10 +48,11 @@ namespace Philips.Analogy
                 return;
             }
 
-            CreatePies();
+            GlobalPie.SetDataSources(Statistics.CalculateGlobalStatistics());
             PopulateGlobalDataGridView();
             PopulateSource();
             PopulateModule();
+            PopulateFreeText();
         }
 
         private void PopulateModule()
@@ -61,9 +63,7 @@ namespace Philips.Analogy
             }
             var modules = Statistics.CalculateModulesStatistics().OrderByDescending(s => s.Messages).ToList();
 
-            ModulePie = new PieChartUC();
-            spltcModules.Panel2.Controls.Add(ModulePie);
-            ModulePie.Dock = DockStyle.Fill;
+
             ModulePie.SetDataSources(modules.First());
 
             //dgvModules.SelectionChanged -= dgvModules_SelectionChanged;
@@ -78,9 +78,7 @@ namespace Philips.Analogy
             }
             var sources = Statistics.CalculateSourcesStatistics().OrderByDescending(s => s.Messages).ToList();
 
-            SourcePie = new PieChartUC();
-            spltcSources.Panel2.Controls.Add(SourcePie);
-            SourcePie.Dock = DockStyle.Fill;
+
             if (!sources.Any())
             {
                 return;
@@ -96,6 +94,10 @@ namespace Philips.Analogy
 
         public void RefreshStatistics(LogStatistics statistics)
         {
+            if (Statistics != null)
+            {
+                statistics.Texts = Statistics.Texts;
+            }
             Statistics = statistics;
             LoadStatistics();
         }
@@ -122,26 +124,17 @@ namespace Philips.Analogy
             {
                 Statistics.AddText(textEdit1.Text);
                 chklistItems.Items.Add(textEdit1.Text, true);
-                var items = Statistics.CalculateTextStatistics();
-                gridControlFreeText.DataSource = items;
+
             }
 
-            FreeTextChart();
+            PopulateFreeText();
         }
 
-        private void FreeTextChart()
+        private void PopulateFreeText()
         {
-            if (FreeTextPie == null)
-            {
-                FreeTextPie = new PieChartUC();
-                spltCFreeText.Panel2.Controls.Add(FreeTextPie);
-                FreeTextPie.Dock = DockStyle.Fill;
-                FreeTextPie.SetDataSources("Free Text", Statistics.CalculateTextStatistics());
-            }
-            else
-            {
-                FreeTextPie.SetDataSources("Free Text", Statistics.CalculateTextStatistics());
-            }
+            var items = Statistics.CalculateTextStatistics();
+            gridControlFreeText.DataSource = items;
+            FreeTextPie.SetDataSources("Free Text", Statistics.CalculateTextStatistics());
         }
 
         private void chklistItems_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
@@ -156,7 +149,7 @@ namespace Philips.Analogy
             {
                 Statistics.AddText(item);
             }
-            FreeTextChart();
+            PopulateFreeText();
         }
 
         private void logGridSource_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
