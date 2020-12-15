@@ -30,13 +30,15 @@ namespace Analogy.UserControls
                 return;
             }
             chartControl1.Titles.Add(new ChartTitle { Text = Plotter.Title });
-
+            chartControl1.Legend.UseCheckBoxes = true;
             foreach (var (seriesName, viewType) in Plotter.GetChartSeries())
             {
                 PlottingGraphData data = new PlottingGraphData((float)nudRefreshInterval.Value, (int)nudWindow.Value);
                 Manager.AddGraphData(seriesName, data);
                 Series series = new Series(seriesName, (ViewType)viewType)
                 {
+                    CheckableInLegend = true,
+                    CheckedInLegend = true,
                     DataSource = data.ViewportData,
                     DataSourceSorted = true,
                     ArgumentDataMember = nameof(AnalogyPlottingPointData.DateTime)
