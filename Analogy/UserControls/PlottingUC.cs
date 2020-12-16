@@ -29,6 +29,7 @@ namespace Analogy.UserControls
             {
                 return;
             }
+
             chartControl1.Titles.Add(new ChartTitle { Text = Plotter.Title });
             chartControl1.Legend.UseCheckBoxes = true;
             foreach (var (seriesName, viewType) in Plotter.GetChartSeries())
@@ -55,9 +56,59 @@ namespace Analogy.UserControls
             // diagram.AxisX.VisualRange.EndSideMargin = 200;
             diagram.DependentAxesYRange = DefaultBoolean.True;
             diagram.AxisY.WholeRange.AlwaysShowZeroLevel = false;
+            SetChartType();
 
         }
 
+        private void SetChartType()
+        {
+            XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
+            if (rbChartType.SelectedIndex == 0)
+            {
+                diagram.Panes.Clear();
+                for (int i = 1; i < chartControl1.Series.Count; i++)
+                {
+
+                    XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase)chartControl1.Series[i].View;
+                    view.Pane = diagram.DefaultPane;
+                    chartControl1.Series[i].CheckedInLegend = true;
+                    chartControl1.Series[i].CheckableInLegend = true;
+
+                }
+            }
+            if (rbChartType.SelectedIndex > 0 && chartControl1.Series.Count > 0)
+            {
+
+                diagram.Panes.Clear();
+                for (int i = 1; i < chartControl1.Series.Count; i++)
+                {
+                    XYDiagramPane pane = new XYDiagramPane($@"Pane {i}");
+                    diagram.Panes.Add(pane);
+
+                    XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase)chartControl1.Series[i].View;
+                    view.Pane = pane;
+                    chartControl1.Series[i].CheckedInLegend = true;
+                    chartControl1.Series[i].CheckableInLegend = true;
+
+                }
+            }
+
+            if (rbChartType.SelectedIndex == 1)
+            {
+                diagram.PaneLayout.Direction = PaneLayoutDirection.Vertical;
+                diagram.PaneLayout.AutoLayoutMode = PaneAutoLayoutMode.Linear;
+            }
+            else if (rbChartType.SelectedIndex == 2)
+            {
+                diagram.PaneLayout.Direction = PaneLayoutDirection.Horizontal;
+                diagram.PaneLayout.AutoLayoutMode = PaneAutoLayoutMode.Linear;
+            }
+            else if (rbChartType.SelectedIndex == 3)
+            {
+                diagram.PaneLayout.AutoLayoutMode = PaneAutoLayoutMode.Grid;
+            }
+
+        }
         public void Start()
         {
             Plotter.OnNewPointData += Plotter_OnNewPointData;
@@ -76,12 +127,17 @@ namespace Analogy.UserControls
 
         private void nudRefreshInterval_ValueChanged(object sender, System.EventArgs e)
         {
-            Manager.SetRefreshInterval((float) nudRefreshInterval.Value);
+            Manager.SetRefreshInterval((float)nudRefreshInterval.Value);
         }
 
         private void nudWindow_ValueChanged(object sender, System.EventArgs e)
         {
             Manager.SetDataWindow((int)nudWindow.Value);
+        }
+
+        private void rbChartType_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            SetChartType();
         }
     }
 }

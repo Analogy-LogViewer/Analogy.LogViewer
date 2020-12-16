@@ -35,11 +35,14 @@ namespace Analogy.UserControls
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.nudRefreshInterval = new System.Windows.Forms.NumericUpDown();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
+            this.lblChartType = new DevExpress.XtraEditors.LabelControl();
+            this.rbChartType = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.nudWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbChartType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // nudWindow
@@ -81,6 +84,8 @@ namespace Analogy.UserControls
             this.splitContainerControl1.Horizontal = false;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.rbChartType);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblChartType);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl2);
             this.splitContainerControl1.Panel1.Controls.Add(this.nudRefreshInterval);
             this.splitContainerControl1.Panel1.Controls.Add(this.nudWindow);
@@ -89,7 +94,7 @@ namespace Analogy.UserControls
             this.splitContainerControl1.Panel2.Controls.Add(this.chartControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1107, 521);
-            this.splitContainerControl1.SplitterPosition = 54;
+            this.splitContainerControl1.SplitterPosition = 118;
             this.splitContainerControl1.TabIndex = 21;
             // 
             // labelControl2
@@ -135,8 +140,29 @@ namespace Analogy.UserControls
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl1.Size = new System.Drawing.Size(1107, 461);
+            this.chartControl1.Size = new System.Drawing.Size(1107, 397);
             this.chartControl1.TabIndex = 1;
+            // 
+            // lblChartType
+            // 
+            this.lblChartType.Location = new System.Drawing.Point(12, 13);
+            this.lblChartType.Name = "lblChartType";
+            this.lblChartType.Size = new System.Drawing.Size(68, 16);
+            this.lblChartType.TabIndex = 23;
+            this.lblChartType.Text = "Chart Type:";
+            // 
+            // rbChartType
+            // 
+            this.rbChartType.Location = new System.Drawing.Point(111, 9);
+            this.rbChartType.Name = "rbChartType";
+            this.rbChartType.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Single Chart"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pane Per Series - Horizontal"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pane Per Series - Vertical"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pane Per Series - Auto Layout")});
+            this.rbChartType.Size = new System.Drawing.Size(207, 109);
+            this.rbChartType.TabIndex = 24;
+            this.rbChartType.SelectedIndexChanged += new System.EventHandler(this.rbChartType_SelectedIndexChanged);
             // 
             // PlottingUC
             // 
@@ -151,6 +177,7 @@ namespace Analogy.UserControls
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbChartType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +190,7 @@ namespace Analogy.UserControls
         private DevExpress.XtraCharts.ChartControl chartControl1;
         private System.Windows.Forms.NumericUpDown nudRefreshInterval;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lblChartType;
+        private DevExpress.XtraEditors.RadioGroup rbChartType;
     }
 }
