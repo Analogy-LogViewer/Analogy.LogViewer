@@ -176,7 +176,12 @@ Along with custom Data Providers you can create Plots of arbitrary data by imple
 The example data provider has example for this:
 ![Example plot](Assets/plottingExample.jpg)
 
+You can select the chart's layout from the UI:
+![horizontal plot](Assets/plottingMultiPaneExample.jpg)
+![vertical plot](Assets/plottingMultiPaneExample2.jpg)
+
 Discuss about the plotting here: [Extension Disscussion](https://github.com/Analogy-LogViewer/Analogy.LogViewer/discussions/772)
+
 ## Logs Analysis and Visualizers
 
 The application has some analyzers and visualization.
