@@ -255,8 +255,9 @@ namespace Analogy
                     alertControl1.Show(this.ParentForm, info);
                 }
             }
-
-            dockManager1.ActivePanel = dockPanelLogs;
+            documentManager1.BeginUpdate();
+            documentManager1.View.ActivateDocument(dockPanelLogs);
+            documentManager1.EndUpdate();
             gridControl.Focus();
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
@@ -1011,7 +1012,6 @@ namespace Analogy
                 page.Controls.Add(extension.UserControl);
                 await extension.InitUserControl;
                 page.DockedAsTabbedDocument = true;
-                //xtraTabControl1.TabPages.Add(page);
             }
         }
 

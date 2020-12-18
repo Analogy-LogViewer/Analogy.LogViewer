@@ -41,9 +41,6 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -53,13 +50,13 @@ namespace Analogy
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer3 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer4 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.document2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
-            this.documentGroup2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
-            this.document3 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -264,8 +261,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.document3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -379,21 +374,6 @@ namespace Analogy
             this.document2.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
             this.document2.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // documentGroup2
-            // 
-            this.documentGroup2.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
-            this.document3});
-            // 
-            // document3
-            // 
-            this.document3.Caption = "Detailed information";
-            this.document3.ControlName = "dockPanelLogsDetails";
-            this.document3.FloatLocation = new System.Drawing.Point(763, 614);
-            this.document3.FloatSize = new System.Drawing.Size(580, 204);
-            this.document3.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
-            this.document3.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
-            this.document3.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
-            // 
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -402,7 +382,7 @@ namespace Analogy
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1847, 259);
+            this.gridControl.Size = new System.Drawing.Size(1847, 264);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -731,7 +711,7 @@ namespace Analogy
             this.panel1.Controls.Add(this.pnlButtonsHighlight);
             this.panel1.Controls.Add(this.chkbHighlight);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 439);
+            this.panel1.Location = new System.Drawing.Point(0, 444);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1847, 26);
@@ -1183,7 +1163,7 @@ namespace Analogy
             this.bdcMessageBottom.Manager = this.barManager1;
             this.bdcMessageBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcMessageBottom.Name = "bdcMessageBottom";
-            this.bdcMessageBottom.Size = new System.Drawing.Size(1840, 37);
+            this.bdcMessageBottom.Size = new System.Drawing.Size(1836, 37);
             this.bdcMessageBottom.Text = "standaloneBarDockControl2";
             // 
             // barBookmark
@@ -1792,13 +1772,13 @@ namespace Analogy
             this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
             this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
             this.ceModulesProcess.Size = new System.Drawing.Size(229, 22);
-            toolTipTitleItem5.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceModulesProcess.SuperTip = superToolTip5;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.ceModulesProcess.SuperTip = superToolTip1;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1866,13 +1846,13 @@ namespace Analogy
             this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
             this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
             this.ceSources.Size = new System.Drawing.Size(166, 24);
-            toolTipTitleItem1.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.ceSources.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceSources.SuperTip = superToolTip2;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1927,12 +1907,12 @@ namespace Analogy
             this.ceExcludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageChecked")));
             this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceExcludeText.Size = new System.Drawing.Size(99, 24);
-            toolTipTitleItem2.Text = "Text Property Filtering (exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceExcludeText.SuperTip = superToolTip2;
+            toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceExcludeText.SuperTip = superToolTip3;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnTextExclude
@@ -1998,12 +1978,12 @@ namespace Analogy
             this.ceIncludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageChecked")));
             this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceIncludeText.Size = new System.Drawing.Size(97, 23);
-            toolTipTitleItem3.Text = "Text Property Filtering";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.ceIncludeText.SuperTip = superToolTip3;
+            toolTipTitleItem4.Text = "Text Property Filtering";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceIncludeText.SuperTip = superToolTip4;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
@@ -2061,7 +2041,7 @@ namespace Analogy
             this.tcBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tcBottom.Name = "tcBottom";
             this.tcBottom.SelectedTabPage = this.xtpMessageInfo;
-            this.tcBottom.Size = new System.Drawing.Size(1847, 174);
+            this.tcBottom.Size = new System.Drawing.Size(1843, 172);
             this.tcBottom.TabIndex = 6;
             this.tcBottom.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpMessageInfo,
@@ -2073,7 +2053,7 @@ namespace Analogy
             this.xtpMessageInfo.Controls.Add(this.bdcMessageBottom);
             this.xtpMessageInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpMessageInfo.Name = "xtpMessageInfo";
-            this.xtpMessageInfo.Size = new System.Drawing.Size(1840, 140);
+            this.xtpMessageInfo.Size = new System.Drawing.Size(1836, 138);
             this.xtpMessageInfo.Text = "Message Info";
             // 
             // rtxtContent
@@ -2082,7 +2062,7 @@ namespace Analogy
             this.rtxtContent.Location = new System.Drawing.Point(0, 37);
             this.rtxtContent.MenuManager = this.barManager1;
             this.rtxtContent.Name = "rtxtContent";
-            this.rtxtContent.Size = new System.Drawing.Size(1840, 103);
+            this.rtxtContent.Size = new System.Drawing.Size(1836, 101);
             this.rtxtContent.TabIndex = 2;
             // 
             // xtpBookmarks
@@ -2565,8 +2545,8 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(1847, 425);
-            this.spltGroupByChars.SplitterDistance = 214;
+            this.spltGroupByChars.Size = new System.Drawing.Size(1847, 430);
+            this.spltGroupByChars.SplitterDistance = 216;
             this.spltGroupByChars.TabIndex = 4;
             // 
             // gCtrlGrouping
@@ -2578,7 +2558,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(1847, 214);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(1847, 216);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2601,7 +2581,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridViewGrouping2;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1847, 207);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1847, 210);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping2});
@@ -3028,20 +3008,15 @@ namespace Analogy
             // tabbedView1
             // 
             this.tabbedView1.DocumentGroups.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup[] {
-            this.documentGroup1,
-            this.documentGroup2});
+            this.documentGroup1});
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.document1,
-            this.document2,
-            this.document3});
+            this.document2});
             this.tabbedView1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            dockingContainer3.Element = this.documentGroup1;
-            dockingContainer3.Length.UnitValue = 1.4189383070301291D;
-            dockingContainer4.Element = this.documentGroup2;
-            dockingContainer4.Length.UnitValue = 0.58106169296987087D;
+            dockingContainer1.Element = this.documentGroup1;
+            dockingContainer1.Length.UnitValue = 1.4189383070301291D;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer3,
-            dockingContainer4});
+            dockingContainer1});
             this.tabbedView1.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // dockManager1
@@ -3049,8 +3024,8 @@ namespace Analogy
             this.dockManager1.Form = this;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.dockPanelLogs,
-            this.dockPanelLogsDetails,
-            this.dockPanelMessageGrouping});
+            this.dockPanelMessageGrouping,
+            this.dockPanelLogsDetails});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -3083,29 +3058,29 @@ namespace Analogy
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 465);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 470);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // dockPanelLogsDetails
             // 
             this.dockPanelLogsDetails.Controls.Add(this.dockPanel1_Container);
-            this.dockPanelLogsDetails.DockedAsTabbedDocument = true;
-            this.dockPanelLogsDetails.FloatLocation = new System.Drawing.Point(763, 614);
-            this.dockPanelLogsDetails.FloatSize = new System.Drawing.Size(580, 204);
+            this.dockPanelLogsDetails.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.dockPanelLogsDetails.FloatSize = new System.Drawing.Size(200, 204);
             this.dockPanelLogsDetails.FloatVertical = true;
             this.dockPanelLogsDetails.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
+            this.dockPanelLogsDetails.Location = new System.Drawing.Point(0, 523);
             this.dockPanelLogsDetails.Name = "dockPanelLogsDetails";
+            this.dockPanelLogsDetails.Options.ShowCloseButton = false;
             this.dockPanelLogsDetails.OriginalSize = new System.Drawing.Size(200, 204);
-            this.dockPanelLogsDetails.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.dockPanelLogsDetails.SavedIndex = 1;
+            this.dockPanelLogsDetails.Size = new System.Drawing.Size(1853, 204);
             this.dockPanelLogsDetails.Text = "Detailed information";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tcBottom);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(5, 27);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(1847, 174);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 172);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // dockPanelMessageGrouping
@@ -3123,13 +3098,14 @@ namespace Analogy
             this.controlContainer1.Controls.Add(this.panelControl1);
             this.controlContainer1.Location = new System.Drawing.Point(0, 0);
             this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(1847, 465);
+            this.controlContainer1.Size = new System.Drawing.Size(1847, 470);
             this.controlContainer1.TabIndex = 0;
             // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dockPanelLogsDetails);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -3143,8 +3119,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.document3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -3451,7 +3425,5 @@ namespace Analogy
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document document2;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelMessageGrouping;
         private DevExpress.XtraBars.Docking.ControlContainer controlContainer1;
-        private DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroup2;
-        private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document document3;
     }
 }
