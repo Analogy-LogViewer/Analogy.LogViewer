@@ -11,6 +11,7 @@ using DevExpress.Data.Filtering;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Alerter;
+using DevExpress.XtraBars.Docking;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Columns;
@@ -18,7 +19,6 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
-using DevExpress.XtraTab;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -202,7 +202,6 @@ namespace Analogy
             {
                 return;
             }
-            xtraTabControl1.TabPages.Remove(xtCounts);
             xtcFiltersLeft.SelectedTabPage = xtpFilters;
 
             LoadUISettings();
@@ -212,16 +211,13 @@ namespace Analogy
             SetupEventsHandlers();
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
-                progressBar1.Maximum = value.Total;
-                if (value.Processed < progressBar1.Maximum && value.Total > 1)
-                {
-                    progressBar1.Value = value.Processed;
-                }
-
                 if (value.Processed == value.Total)
                 {
-                    progressBar1.Visible = false;
+                    bprogressBar.Visibility = BarItemVisibility.Never;
+                    bprogressBar.Caption = "";
+                    return;
                 }
+                bprogressBar.Caption = $"{value.Processed}/{value.Total}";
             });
 
             gridControl.DataSource = _messageData.DefaultView;
@@ -260,6 +256,7 @@ namespace Analogy
                 }
             }
 
+            dockManager1.ActivePanel = dockPanelLogs;
             gridControl.Focus();
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
@@ -604,8 +601,7 @@ namespace Analogy
 
             else if (e.SummaryProcess == CustomSummaryProcess.Finalize)
             {
-                lblTotalMessages.Text =
-                    $"Total messages:{counts.Values.Sum()}. Errors:{counts["Error"]}. Warnings:{counts["Warning"]}. Critical:{counts["Critical"]}.";
+                bstaticTotalMessages.Caption = $"Total messages:{counts.Values.Sum()}. Errors:{counts["Error"]}. Warnings:{counts["Warning"]}. Critical:{counts["Critical"]}.";
             }
             //todo: add alerts
             //if (Settings.PreDefinedQueries.Alerts.Any())
@@ -955,7 +951,7 @@ namespace Analogy
             btswitchRefreshLog.Checked = true;
             LogGrid.BestFitColumns();
             btswitchMessageDetails.Checked = Settings.ShowMessageDetails;
-            splitContainerMain.Collapsed = !Settings.ShowMessageDetails;
+            dockPanelLogsDetails.Visibility = Settings.ShowMessageDetails ? DockVisibility.Visible : DockVisibility.Hidden;
             if (Settings.StartupErrorLogLevel)
             {
                 chkLstLogLevel.Items[1].CheckState = CheckState.Checked;
@@ -1010,11 +1006,12 @@ namespace Analogy
             }
             foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
             {
-                XtraTabPage page = new XtraTabPage();
+                var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.Text = extension.Title;
                 page.Controls.Add(extension.UserControl);
                 await extension.InitUserControl;
-                xtraTabControl1.TabPages.Add(page);
+                page.DockedAsTabbedDocument = true;
+                //xtraTabControl1.TabPages.Add(page);
             }
         }
 
@@ -1742,12 +1739,9 @@ namespace Analogy
                 ClearLogs(false);
             }
 
-            sBtnCancel.Visible = true;
-            progressBar1.Value = 0;
-            progressBar1.Maximum = fileNames.Count;
-            progressBar1.Style = fileNames.Count > 1 ? ProgressBarStyle.Continuous : ProgressBarStyle.Marquee;
+            bbtnCancel.Visibility = BarItemVisibility.Always;
             fileLoadingCount = fileNames.Count;
-            progressBar1.Visible = true;
+            bprogressBar.Visibility = BarItemVisibility.Always;
             int processed = 0;
             foreach (string filename in fileNames)
             {
@@ -1765,12 +1759,12 @@ namespace Analogy
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, fileNames.Count, filename));
                 if (token.IsCancellationRequested)
                 {
-                    progressBar1.Visible = false;
+                    bprogressBar.Visibility = BarItemVisibility.Never;
                     break;
                 }
             }
 
-            sBtnCancel.Visible = false;
+            bbtnCancel.Visibility = BarItemVisibility.Never;
         }
 
         private void ClearLogs(bool raiseEvent)
@@ -2130,7 +2124,7 @@ namespace Analogy
             _bookmarkedMessages.AcceptChanges();
             btswitchMessageDetails.Checked = true;
             Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
-            splitContainerMain.Collapsed = false;
+            dockPanelLogsDetails.Visibility = DockVisibility.Visible;
             tcBottom.SelectedTabPage = xtpBookmarks;
             if (persists)
             {
@@ -2281,7 +2275,7 @@ namespace Analogy
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
-            splitContainerMain.Collapsed = !btswitchMessageDetails.Checked;
+            dockPanelLogsDetails.Visibility = btswitchMessageDetails.Checked ? DockVisibility.Visible : DockVisibility.Hidden;
         }
 
         private void btswitchRefreshLog_CheckedChanged(object sender, ItemClickEventArgs e)
@@ -2439,7 +2433,7 @@ namespace Analogy
         private void barToggleSwitchItem1_CheckedChanged(object sender, ItemClickEventArgs e)
         {
 
-            splitContainerMain.Collapsed = !btSwitchExpandButtomMessage.Checked;
+            pnlFilters.Visible = !btSwitchExpandButtomMessage.Checked;
 
         }
 
@@ -2597,15 +2591,6 @@ namespace Analogy
 
             grouped.AcceptChanges();
             gridControlMessageGrouping.DataSource = grouped;
-        }
-
-        private void sBtnCancel_Click(object sender, EventArgs e)
-        {
-            CancellationTokenSource.Cancel(false);
-            Interlocked.Exchange(ref fileLoadingCount, 0);
-
-            CancellationTokenSource = new CancellationTokenSource();
-            sBtnCancel.Visible = false;
         }
 
         private void tsmiCopyMessages_Click(object sender, EventArgs e)
@@ -3100,6 +3085,15 @@ namespace Analogy
             }
 
             xtcFilters.SelectedTabPage = xtpFiltersExclude;
+        }
+
+        private void bbtnCancel_Click(object sender, ItemClickEventArgs e)
+        {
+            CancellationTokenSource.Cancel(false);
+            Interlocked.Exchange(ref fileLoadingCount, 0);
+
+            CancellationTokenSource = new CancellationTokenSource();
+            bbtnCancel.Visibility = BarItemVisibility.Never;
         }
     }
 }

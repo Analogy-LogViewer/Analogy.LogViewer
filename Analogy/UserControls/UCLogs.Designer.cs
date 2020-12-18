@@ -53,6 +53,13 @@ namespace Analogy
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer3 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer4 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
+            this.document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
+            this.document2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
+            this.documentGroup2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
+            this.document3 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -113,7 +120,12 @@ namespace Analogy
             this.bBtnGoToMessage = new DevExpress.XtraBars.BarButtonItem();
             this.bdcBookmarks = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barGroup = new DevExpress.XtraBars.Bar();
-            this.standaloneBarDockControlLeft = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.bstaticTotalMessages = new DevExpress.XtraBars.BarStaticItem();
+            this.bstaticAlert = new DevExpress.XtraBars.BarStaticItem();
+            this.bbtnCancel = new DevExpress.XtraBars.BarButtonItem();
+            this.bprogressBar = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemMarqueeProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -141,6 +153,8 @@ namespace Analogy
             this.bbiIncludeSource = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncludeModule = new DevExpress.XtraBars.BarButtonItem();
             this.bbiJsonViewer = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
+            this.repositoryItemProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
             this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
@@ -195,11 +209,7 @@ namespace Analogy
             this.gridColumnBookmarkProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnBookmarkMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tmrNewData = new System.Windows.Forms.Timer(this.components);
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtpMain = new DevExpress.XtraTab.XtraTabPage();
-            this.splitContainerMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.pnlFilters = new DevExpress.XtraEditors.PanelControl();
             this.xtcFiltersLeft = new DevExpress.XtraTab.XtraTabControl();
             this.xtpFilters = new DevExpress.XtraTab.XtraTabPage();
@@ -214,11 +224,6 @@ namespace Analogy
             this.rgSearchMode = new DevExpress.XtraEditors.RadioGroup();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnToggleSearchFilter = new DevExpress.XtraEditors.SimpleButton();
-            this.pnlBottom = new System.Windows.Forms.Panel();
-            this.lblTotalMessagesAlert = new DevExpress.XtraEditors.LabelControl();
-            this.sBtnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.lblTotalMessages = new DevExpress.XtraEditors.LabelControl();
-            this.xtCounts = new DevExpress.XtraTab.XtraTabPage();
             this.spltGroupByChars = new System.Windows.Forms.SplitContainer();
             this.gCtrlGrouping = new DevExpress.XtraGrid.GridControl();
             this.gridViewGrouping = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -245,14 +250,30 @@ namespace Analogy
             this.rbGroupByText = new System.Windows.Forms.RadioButton();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.MainSplitContainer = new DevExpress.XtraEditors.SplitContainerControl();
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanelLogsDetails = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanelMessageGrouping = new DevExpress.XtraBars.Docking.DockPanel();
+            this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).BeginInit();
             this.pnlButtonsHighlight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltcDateFiltering)).BeginInit();
             this.spltcDateFiltering.Panel1.SuspendLayout();
@@ -291,11 +312,6 @@ namespace Analogy
             this.xtpBookmarks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
-            this.xtpMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
-            this.splitContainerMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).BeginInit();
             this.pnlFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtcFiltersLeft)).BeginInit();
@@ -312,8 +328,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).BeginInit();
             this.xtpSearchFilterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).BeginInit();
-            this.pnlBottom.SuspendLayout();
-            this.xtCounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).BeginInit();
             this.spltGroupByChars.Panel1.SuspendLayout();
             this.spltGroupByChars.Panel2.SuspendLayout();
@@ -327,20 +341,68 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByChars.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).BeginInit();
-            this.MainSplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogGridPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.dockPanelLogs.SuspendLayout();
+            this.dockPanel2_Container.SuspendLayout();
+            this.dockPanelLogsDetails.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
+            this.dockPanelMessageGrouping.SuspendLayout();
+            this.controlContainer1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // documentGroup1
+            // 
+            this.documentGroup1.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
+            this.document1,
+            this.document2});
+            // 
+            // document1
+            // 
+            this.document1.Caption = "Logs";
+            this.document1.ControlName = "dockPanelLogs";
+            this.document1.FloatLocation = new System.Drawing.Point(0, 0);
+            this.document1.FloatSize = new System.Drawing.Size(200, 200);
+            this.document1.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
+            this.document1.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
+            this.document1.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
+            // 
+            // document2
+            // 
+            this.document2.Caption = "Message Grouping";
+            this.document2.ControlName = "dockPanelMessageGrouping";
+            this.document2.FloatLocation = new System.Drawing.Point(0, 0);
+            this.document2.FloatSize = new System.Drawing.Size(200, 200);
+            this.document2.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
+            this.document2.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
+            this.document2.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
+            // 
+            // documentGroup2
+            // 
+            this.documentGroup2.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
+            this.document3});
+            // 
+            // document3
+            // 
+            this.document3.Caption = "Detailed information";
+            this.document3.ControlName = "dockPanelLogsDetails";
+            this.document3.FloatLocation = new System.Drawing.Point(763, 614);
+            this.document3.FloatSize = new System.Drawing.Size(580, 204);
+            this.document3.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
+            this.document3.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
+            this.document3.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl.Location = new System.Drawing.Point(0, 167);
+            this.gridControl.Location = new System.Drawing.Point(0, 206);
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1846, 233);
+            this.gridControl.Size = new System.Drawing.Size(1847, 259);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -396,7 +458,6 @@ namespace Analogy
             this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.LogGridViewCustomColumnDisplayText);
             this.logGrid.Click += new System.EventHandler(this.logGrid_Click);
             this.logGrid.DoubleClick += new System.EventHandler(this.LogGrid_DoubleClick);
-
             // 
             // gridColumnDataSource
             // 
@@ -670,10 +731,10 @@ namespace Analogy
             this.panel1.Controls.Add(this.pnlButtonsHighlight);
             this.panel1.Controls.Add(this.chkbHighlight);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 400);
+            this.panel1.Location = new System.Drawing.Point(0, 439);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1846, 26);
+            this.panel1.Size = new System.Drawing.Size(1847, 26);
             this.panel1.TabIndex = 4;
             // 
             // txtbHighlight
@@ -682,7 +743,7 @@ namespace Analogy
             this.txtbHighlight.Location = new System.Drawing.Point(200, 0);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1162, 22);
+            this.txtbHighlight.Size = new System.Drawing.Size(1163, 22);
             this.txtbHighlight.TabIndex = 23;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
             // 
@@ -693,7 +754,8 @@ namespace Analogy
             this.BbarMainMenu,
             this.barMessage,
             this.barBookmark,
-            this.barGroup});
+            this.barGroup,
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -701,7 +763,6 @@ namespace Analogy
             this.barManager1.DockControls.Add(this.bdcTopFiltering);
             this.barManager1.DockControls.Add(this.bdcMessageBottom);
             this.barManager1.DockControls.Add(this.bdcBookmarks);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControlLeft);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btswitchMessageDetails,
@@ -758,9 +819,18 @@ namespace Analogy
             this.bbiIncludeSource,
             this.bbiIncludeModule,
             this.bbiSaveBookmarks,
-            this.bbiJsonViewer});
+            this.bbiJsonViewer,
+            this.bbtnCancel,
+            this.bstaticTotalMessages,
+            this.bstaticAlert,
+            this.bprogressBar});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 63;
+            this.barManager1.MaxItemId = 71;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemProgressBar1,
+            this.repositoryItemProgressBar2,
+            this.repositoryItemMarqueeProgressBar1});
+            this.barManager1.StatusBar = this.bar1;
             // 
             // barTopFiltering
             // 
@@ -768,7 +838,7 @@ namespace Analogy
             this.barTopFiltering.DockCol = 0;
             this.barTopFiltering.DockRow = 0;
             this.barTopFiltering.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.barTopFiltering.FloatLocation = new System.Drawing.Point(192, 279);
+            this.barTopFiltering.FloatLocation = new System.Drawing.Point(133, 284);
             this.barTopFiltering.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemoveBoomark),
@@ -1059,7 +1129,7 @@ namespace Analogy
             this.bdcTopFiltering.Manager = this.barManager1;
             this.bdcTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcTopFiltering.Name = "bdcTopFiltering";
-            this.bdcTopFiltering.Size = new System.Drawing.Size(1846, 39);
+            this.bdcTopFiltering.Size = new System.Drawing.Size(1847, 39);
             this.bdcTopFiltering.Text = "standaloneBarDockControl1";
             // 
             // BbarMainMenu
@@ -1113,7 +1183,7 @@ namespace Analogy
             this.bdcMessageBottom.Manager = this.barManager1;
             this.bdcMessageBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcMessageBottom.Name = "bdcMessageBottom";
-            this.bdcMessageBottom.Size = new System.Drawing.Size(1839, 37);
+            this.bdcMessageBottom.Size = new System.Drawing.Size(1840, 37);
             this.bdcMessageBottom.Text = "standaloneBarDockControl2";
             // 
             // barBookmark
@@ -1197,7 +1267,7 @@ namespace Analogy
             this.bdcBookmarks.Manager = this.barManager1;
             this.bdcBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcBookmarks.Name = "bdcBookmarks";
-            this.bdcBookmarks.Size = new System.Drawing.Size(1839, 37);
+            this.bdcBookmarks.Size = new System.Drawing.Size(563, 37);
             this.bdcBookmarks.Text = "standaloneBarDockControl1";
             // 
             // barGroup
@@ -1210,19 +1280,62 @@ namespace Analogy
             this.barGroup.OptionsBar.AllowQuickCustomization = false;
             this.barGroup.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
             this.barGroup.OptionsBar.UseWholeRow = true;
-            this.barGroup.StandaloneBarDockControl = this.standaloneBarDockControlLeft;
             this.barGroup.Text = "Counts";
             // 
-            // standaloneBarDockControlLeft
+            // bar1
             // 
-            this.standaloneBarDockControlLeft.AutoSize = true;
-            this.standaloneBarDockControlLeft.CausesValidation = false;
-            this.standaloneBarDockControlLeft.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.standaloneBarDockControlLeft.Manager = this.barManager1;
-            this.standaloneBarDockControlLeft.Name = "standaloneBarDockControlLeft";
-            this.standaloneBarDockControlLeft.Size = new System.Drawing.Size(0, 31);
-            this.standaloneBarDockControlLeft.Text = "standaloneBarDockControl1";
+            this.bar1.BarName = "Custom 7";
+            this.bar1.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bstaticTotalMessages),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bstaticAlert),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnCancel),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.bprogressBar, "", false, true, true, 534)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 7";
+            // 
+            // bstaticTotalMessages
+            // 
+            this.bstaticTotalMessages.Caption = "Total messages: N/A";
+            this.bstaticTotalMessages.Id = 67;
+            this.bstaticTotalMessages.Name = "bstaticTotalMessages";
+            // 
+            // bstaticAlert
+            // 
+            this.bstaticAlert.Caption = "ALERTS EXISTS: !";
+            this.bstaticAlert.Id = 68;
+            this.bstaticAlert.Name = "bstaticAlert";
+            this.bstaticAlert.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // bbtnCancel
+            // 
+            this.bbtnCancel.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbtnCancel.Caption = "Cancel Processing";
+            this.bbtnCancel.Id = 66;
+            this.bbtnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnCancel.ImageOptions.Image")));
+            this.bbtnCancel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCancel.ImageOptions.LargeImage")));
+            this.bbtnCancel.Name = "bbtnCancel";
+            this.bbtnCancel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bbtnCancel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbtnCancel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnCancel_Click);
+            // 
+            // bprogressBar
+            // 
+            this.bprogressBar.AutoFillWidth = true;
+            this.bprogressBar.Edit = this.repositoryItemMarqueeProgressBar1;
+            this.bprogressBar.Id = 70;
+            this.bprogressBar.Name = "bprogressBar";
+            this.bprogressBar.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bprogressBar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // repositoryItemMarqueeProgressBar1
+            // 
+            this.repositoryItemMarqueeProgressBar1.Name = "repositoryItemMarqueeProgressBar1";
             // 
             // barDockControlTop
             // 
@@ -1237,10 +1350,10 @@ namespace Analogy
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 759);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 727);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1853, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1853, 32);
             // 
             // barDockControlLeft
             // 
@@ -1249,7 +1362,7 @@ namespace Analogy
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 739);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 707);
             // 
             // barDockControlRight
             // 
@@ -1258,7 +1371,7 @@ namespace Analogy
             this.barDockControlRight.Location = new System.Drawing.Point(1853, 20);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 739);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 707);
             // 
             // bBtnExpand
             // 
@@ -1447,10 +1560,18 @@ namespace Analogy
             this.bbiJsonViewer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiJsonViewer.ImageOptions.LargeImage")));
             this.bbiJsonViewer.Name = "bbiJsonViewer";
             // 
+            // repositoryItemProgressBar1
+            // 
+            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            // 
+            // repositoryItemProgressBar2
+            // 
+            this.repositoryItemProgressBar2.Name = "repositoryItemProgressBar2";
+            // 
             // sbtnMoreHighlight
             // 
             this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1362, 0);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1363, 0);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
             this.sbtnMoreHighlight.Size = new System.Drawing.Size(71, 26);
@@ -1466,7 +1587,7 @@ namespace Analogy
             this.pnlButtonsHighlight.Controls.Add(this.sbtnPagePrevious);
             this.pnlButtonsHighlight.Controls.Add(this.sbtnPageFirst);
             this.pnlButtonsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1433, 0);
+            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1434, 0);
             this.pnlButtonsHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlButtonsHighlight.Name = "pnlButtonsHighlight";
             this.pnlButtonsHighlight.Size = new System.Drawing.Size(413, 26);
@@ -1544,7 +1665,7 @@ namespace Analogy
             // spltcDateFiltering
             // 
             this.spltcDateFiltering.Dock = System.Windows.Forms.DockStyle.Right;
-            this.spltcDateFiltering.Location = new System.Drawing.Point(961, 0);
+            this.spltcDateFiltering.Location = new System.Drawing.Point(962, 0);
             this.spltcDateFiltering.Name = "spltcDateFiltering";
             // 
             // spltcDateFiltering.Panel1
@@ -1645,7 +1766,7 @@ namespace Analogy
             this.spltcProcessesModule.Panel1.Controls.Add(this.sbtnIncludeModules);
             this.spltcProcessesModule.Panel1.Controls.Add(this.sbtnUndockPerProcess);
             this.spltcProcessesModule.Panel2Collapsed = true;
-            this.spltcProcessesModule.Size = new System.Drawing.Size(961, 22);
+            this.spltcProcessesModule.Size = new System.Drawing.Size(962, 22);
             this.spltcProcessesModule.SplitterDistance = 574;
             this.spltcProcessesModule.TabIndex = 26;
             // 
@@ -1657,7 +1778,7 @@ namespace Analogy
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            this.txtbModule.Size = new System.Drawing.Size(528, 22);
+            this.txtbModule.Size = new System.Drawing.Size(529, 22);
             this.txtbModule.TabIndex = 26;
             // 
             // ceModulesProcess
@@ -1685,7 +1806,7 @@ namespace Analogy
             // 
             this.sbtnIncludeModules.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnIncludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeModules.ImageOptions.Image")));
-            this.sbtnIncludeModules.Location = new System.Drawing.Point(757, 0);
+            this.sbtnIncludeModules.Location = new System.Drawing.Point(758, 0);
             this.sbtnIncludeModules.Name = "sbtnIncludeModules";
             this.sbtnIncludeModules.Size = new System.Drawing.Size(23, 22);
             this.sbtnIncludeModules.TabIndex = 24;
@@ -1696,7 +1817,7 @@ namespace Analogy
             // 
             this.sbtnUndockPerProcess.AutoSize = true;
             this.sbtnUndockPerProcess.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(780, 0);
+            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(781, 0);
             this.sbtnUndockPerProcess.Name = "sbtnUndockPerProcess";
             this.sbtnUndockPerProcess.Size = new System.Drawing.Size(181, 22);
             this.sbtnUndockPerProcess.TabIndex = 24;
@@ -1717,7 +1838,7 @@ namespace Analogy
             this.spltcSources.Panel1.Controls.Add(this.ceSources);
             this.spltcSources.Panel1.Controls.Add(this.sbtnIncludeSources);
             this.spltcSources.Panel2Collapsed = true;
-            this.spltcSources.Size = new System.Drawing.Size(1482, 24);
+            this.spltcSources.Size = new System.Drawing.Size(1483, 24);
             this.spltcSources.SplitterDistance = 683;
             this.spltcSources.TabIndex = 25;
             // 
@@ -1731,7 +1852,7 @@ namespace Analogy
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, includeB, -ExcludeC, -ExcludeD";
-            this.txtbSource.Size = new System.Drawing.Size(1293, 22);
+            this.txtbSource.Size = new System.Drawing.Size(1294, 22);
             this.txtbSource.TabIndex = 25;
             // 
             // ceSources
@@ -1759,7 +1880,7 @@ namespace Analogy
             // 
             this.sbtnIncludeSources.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnIncludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeSources.ImageOptions.Image")));
-            this.sbtnIncludeSources.Location = new System.Drawing.Point(1459, 0);
+            this.sbtnIncludeSources.Location = new System.Drawing.Point(1460, 0);
             this.sbtnIncludeSources.Name = "sbtnIncludeSources";
             this.sbtnIncludeSources.Size = new System.Drawing.Size(23, 24);
             this.sbtnIncludeSources.TabIndex = 24;
@@ -1780,7 +1901,7 @@ namespace Analogy
             this.spltTextExclude.Panel1.Controls.Add(this.sbtnTextExclude);
             this.spltTextExclude.Panel1.Controls.Add(this.sBtnMostCommon);
             this.spltTextExclude.Panel2Collapsed = true;
-            this.spltTextExclude.Size = new System.Drawing.Size(1482, 24);
+            this.spltTextExclude.Size = new System.Drawing.Size(1483, 24);
             this.spltTextExclude.SplitterDistance = 998;
             this.spltTextExclude.TabIndex = 24;
             // 
@@ -1791,7 +1912,7 @@ namespace Analogy
             this.txtbExclude.MenuManager = this.barManager1;
             this.txtbExclude.Name = "txtbExclude";
             this.txtbExclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbExclude.Size = new System.Drawing.Size(1240, 22);
+            this.txtbExclude.Size = new System.Drawing.Size(1241, 22);
             this.txtbExclude.TabIndex = 20;
             this.txtbExclude.EditValueChanged += new System.EventHandler(this.txtbExclude_EditValueChanged);
             // 
@@ -1818,7 +1939,7 @@ namespace Analogy
             // 
             this.sbtnTextExclude.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
-            this.sbtnTextExclude.Location = new System.Drawing.Point(1339, 0);
+            this.sbtnTextExclude.Location = new System.Drawing.Point(1340, 0);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
             this.sbtnTextExclude.Size = new System.Drawing.Size(23, 24);
             this.sbtnTextExclude.TabIndex = 20;
@@ -1828,7 +1949,7 @@ namespace Analogy
             // sBtnMostCommon
             // 
             this.sBtnMostCommon.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sBtnMostCommon.Location = new System.Drawing.Point(1362, 0);
+            this.sBtnMostCommon.Location = new System.Drawing.Point(1363, 0);
             this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMostCommon.Name = "sBtnMostCommon";
             this.sBtnMostCommon.Size = new System.Drawing.Size(120, 24);
@@ -1850,7 +1971,7 @@ namespace Analogy
             this.spltText.Panel1.Controls.Add(this.sbtnTextInclude);
             this.spltText.Panel1.Controls.Add(this.sbtnPreDefinedFilters);
             this.spltText.Panel2Collapsed = true;
-            this.spltText.Size = new System.Drawing.Size(1482, 23);
+            this.spltText.Size = new System.Drawing.Size(1483, 23);
             this.spltText.SplitterDistance = 998;
             this.spltText.TabIndex = 22;
             // 
@@ -1861,7 +1982,7 @@ namespace Analogy
             this.txtbInclude.MenuManager = this.barManager1;
             this.txtbInclude.Name = "txtbInclude";
             this.txtbInclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbInclude.Size = new System.Drawing.Size(1339, 22);
+            this.txtbInclude.Size = new System.Drawing.Size(1340, 22);
             this.txtbInclude.TabIndex = 19;
             this.txtbInclude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbInclude_KeyPress);
             // 
@@ -1895,7 +2016,7 @@ namespace Analogy
             // 
             this.sbtnTextInclude.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1436, 0);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1437, 0);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(23, 23);
             this.sbtnTextInclude.TabIndex = 20;
@@ -1906,7 +2027,7 @@ namespace Analogy
             // 
             this.sbtnPreDefinedFilters.Dock = System.Windows.Forms.DockStyle.Right;
             this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.Properties.Resources.SingleMasterFilter_16x16;
-            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1459, 0);
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1460, 0);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
             this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(23, 23);
             this.sbtnPreDefinedFilters.TabIndex = 21;
@@ -1925,7 +2046,7 @@ namespace Analogy
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Warning"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Debug"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Verbose")});
-            this.chkLstLogLevel.Location = new System.Drawing.Point(1703, 2);
+            this.chkLstLogLevel.Location = new System.Drawing.Point(1704, 2);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
             this.chkLstLogLevel.Size = new System.Drawing.Size(141, 163);
@@ -1940,7 +2061,7 @@ namespace Analogy
             this.tcBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tcBottom.Name = "tcBottom";
             this.tcBottom.SelectedTabPage = this.xtpMessageInfo;
-            this.tcBottom.Size = new System.Drawing.Size(1846, 204);
+            this.tcBottom.Size = new System.Drawing.Size(1847, 174);
             this.tcBottom.TabIndex = 6;
             this.tcBottom.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpMessageInfo,
@@ -1952,7 +2073,7 @@ namespace Analogy
             this.xtpMessageInfo.Controls.Add(this.bdcMessageBottom);
             this.xtpMessageInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpMessageInfo.Name = "xtpMessageInfo";
-            this.xtpMessageInfo.Size = new System.Drawing.Size(1839, 170);
+            this.xtpMessageInfo.Size = new System.Drawing.Size(1840, 140);
             this.xtpMessageInfo.Text = "Message Info";
             // 
             // rtxtContent
@@ -1961,7 +2082,7 @@ namespace Analogy
             this.rtxtContent.Location = new System.Drawing.Point(0, 37);
             this.rtxtContent.MenuManager = this.barManager1;
             this.rtxtContent.Name = "rtxtContent";
-            this.rtxtContent.Size = new System.Drawing.Size(1839, 133);
+            this.rtxtContent.Size = new System.Drawing.Size(1840, 103);
             this.rtxtContent.TabIndex = 2;
             // 
             // xtpBookmarks
@@ -1970,7 +2091,7 @@ namespace Analogy
             this.xtpBookmarks.Controls.Add(this.bdcBookmarks);
             this.xtpBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpBookmarks.Name = "xtpBookmarks";
-            this.xtpBookmarks.Size = new System.Drawing.Size(1839, 170);
+            this.xtpBookmarks.Size = new System.Drawing.Size(563, 142);
             this.xtpBookmarks.Text = "Bookmarks";
             // 
             // gridControlBookmarkedMessages
@@ -1981,7 +2102,7 @@ namespace Analogy
             this.gridControlBookmarkedMessages.MainView = this.gridViewBookmarkedMessages;
             this.gridControlBookmarkedMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlBookmarkedMessages.Name = "gridControlBookmarkedMessages";
-            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(1839, 133);
+            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(563, 105);
             this.gridControlBookmarkedMessages.TabIndex = 3;
             this.gridControlBookmarkedMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBookmarkedMessages});
@@ -2289,75 +2410,20 @@ namespace Analogy
             this.imageListBottom.Images.SetKeyName(1, "RichEditBookmark_16x16.png");
             this.imageListBottom.Images.SetKeyName(2, "RichEditBookmark_32x32.png");
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(312, 0);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.progressBar1.MarqueeAnimationSpeed = 1;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1335, 30);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 1;
-            this.progressBar1.Visible = false;
-            // 
             // tmrNewData
             // 
             this.tmrNewData.Enabled = true;
             this.tmrNewData.Interval = 1000;
             this.tmrNewData.Tick += new System.EventHandler(this.tmrNewData_Tick);
             // 
-            // xtraTabControl1
-            // 
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtpMain;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1853, 739);
-            this.xtraTabControl1.TabIndex = 7;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtpMain,
-            this.xtCounts});
-            // 
-            // xtpMain
-            // 
-            this.xtpMain.Controls.Add(this.splitContainerMain);
-            this.xtpMain.Controls.Add(this.bdcTopFiltering);
-            this.xtpMain.Controls.Add(this.pnlBottom);
-            this.xtpMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.xtpMain.Name = "xtpMain";
-            this.xtpMain.Size = new System.Drawing.Size(1846, 705);
-            this.xtpMain.Text = "Logs";
-            // 
-            // splitContainerMain
-            // 
-            this.splitContainerMain.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel2;
-            this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMain.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            this.splitContainerMain.Horizontal = false;
-            this.splitContainerMain.Location = new System.Drawing.Point(0, 39);
-            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.splitContainerMain.Name = "splitContainerMain";
-            this.splitContainerMain.Panel1.Controls.Add(this.gridControl);
-            this.splitContainerMain.Panel1.Controls.Add(this.pnlFilters);
-            this.splitContainerMain.Panel1.Controls.Add(this.panel1);
-            this.splitContainerMain.Panel1.Text = "Panel1";
-            this.splitContainerMain.Panel2.Controls.Add(this.tcBottom);
-            this.splitContainerMain.Panel2.Text = "Panel2";
-            this.splitContainerMain.Size = new System.Drawing.Size(1846, 636);
-            this.splitContainerMain.SplitterPosition = 204;
-            this.splitContainerMain.TabIndex = 21;
-            this.splitContainerMain.Text = "splitContainerControl1";
-            // 
             // pnlFilters
             // 
             this.pnlFilters.Controls.Add(this.xtcFiltersLeft);
             this.pnlFilters.Controls.Add(this.chkLstLogLevel);
             this.pnlFilters.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFilters.Location = new System.Drawing.Point(0, 0);
+            this.pnlFilters.Location = new System.Drawing.Point(0, 39);
             this.pnlFilters.Name = "pnlFilters";
-            this.pnlFilters.Size = new System.Drawing.Size(1846, 167);
+            this.pnlFilters.Size = new System.Drawing.Size(1847, 167);
             this.pnlFilters.TabIndex = 6;
             // 
             // xtcFiltersLeft
@@ -2366,7 +2432,7 @@ namespace Analogy
             this.xtcFiltersLeft.Location = new System.Drawing.Point(2, 2);
             this.xtcFiltersLeft.Name = "xtcFiltersLeft";
             this.xtcFiltersLeft.SelectedTabPage = this.xtpFilters;
-            this.xtcFiltersLeft.Size = new System.Drawing.Size(1701, 163);
+            this.xtcFiltersLeft.Size = new System.Drawing.Size(1702, 163);
             this.xtcFiltersLeft.TabIndex = 28;
             this.xtcFiltersLeft.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpFilters,
@@ -2377,7 +2443,7 @@ namespace Analogy
             this.xtpFilters.Controls.Add(this.pnlLeftFilters);
             this.xtpFilters.Controls.Add(this.xtcFilters);
             this.xtpFilters.Name = "xtpFilters";
-            this.xtpFilters.Size = new System.Drawing.Size(1694, 129);
+            this.xtpFilters.Size = new System.Drawing.Size(1695, 129);
             this.xtpFilters.Text = "Filters";
             // 
             // pnlLeftFilters
@@ -2389,7 +2455,7 @@ namespace Analogy
             this.pnlLeftFilters.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLeftFilters.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftFilters.Name = "pnlLeftFilters";
-            this.pnlLeftFilters.Size = new System.Drawing.Size(1486, 129);
+            this.pnlLeftFilters.Size = new System.Drawing.Size(1487, 129);
             this.pnlLeftFilters.TabIndex = 27;
             // 
             // pnlModulesAndDates
@@ -2400,13 +2466,13 @@ namespace Analogy
             this.pnlModulesAndDates.Controls.Add(this.spltcDateFiltering);
             this.pnlModulesAndDates.Location = new System.Drawing.Point(2, 91);
             this.pnlModulesAndDates.Name = "pnlModulesAndDates";
-            this.pnlModulesAndDates.Size = new System.Drawing.Size(1482, 22);
+            this.pnlModulesAndDates.Size = new System.Drawing.Size(1483, 22);
             this.pnlModulesAndDates.TabIndex = 28;
             // 
             // xtcFilters
             // 
             this.xtcFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.xtcFilters.Location = new System.Drawing.Point(1486, 0);
+            this.xtcFilters.Location = new System.Drawing.Point(1487, 0);
             this.xtcFilters.Name = "xtcFilters";
             this.xtcFilters.SelectedTabPage = this.xtpFiltersIncludes;
             this.xtcFilters.Size = new System.Drawing.Size(208, 129);
@@ -2453,7 +2519,7 @@ namespace Analogy
             this.xtpSearchFilterPanel.Controls.Add(this.labelControl1);
             this.xtpSearchFilterPanel.Controls.Add(this.sbtnToggleSearchFilter);
             this.xtpSearchFilterPanel.Name = "xtpSearchFilterPanel";
-            this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1694, 129);
+            this.xtpSearchFilterPanel.Size = new System.Drawing.Size(1695, 129);
             this.xtpSearchFilterPanel.Text = "Search/Filter Panel";
             // 
             // rgSearchMode
@@ -2484,76 +2550,6 @@ namespace Analogy
             this.sbtnToggleSearchFilter.TabIndex = 0;
             this.sbtnToggleSearchFilter.Text = "Toggle Search/Filter Panel On/Off";
             // 
-            // pnlBottom
-            // 
-            this.pnlBottom.Controls.Add(this.progressBar1);
-            this.pnlBottom.Controls.Add(this.lblTotalMessagesAlert);
-            this.pnlBottom.Controls.Add(this.sBtnCancel);
-            this.pnlBottom.Controls.Add(this.lblTotalMessages);
-            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 675);
-            this.pnlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(1846, 30);
-            this.pnlBottom.TabIndex = 3;
-            // 
-            // lblTotalMessagesAlert
-            // 
-            this.lblTotalMessagesAlert.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblTotalMessagesAlert.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalMessagesAlert.Appearance.Options.UseBackColor = true;
-            this.lblTotalMessagesAlert.Appearance.Options.UseFont = true;
-            this.lblTotalMessagesAlert.Appearance.Options.UseTextOptions = true;
-            this.lblTotalMessagesAlert.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.lblTotalMessagesAlert.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTotalMessagesAlert.Location = new System.Drawing.Point(167, 0);
-            this.lblTotalMessagesAlert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblTotalMessagesAlert.Name = "lblTotalMessagesAlert";
-            this.lblTotalMessagesAlert.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblTotalMessagesAlert.Size = new System.Drawing.Size(145, 21);
-            this.lblTotalMessagesAlert.TabIndex = 6;
-            this.lblTotalMessagesAlert.Text = "ALERTS EXISTS: !";
-            this.lblTotalMessagesAlert.Visible = false;
-            // 
-            // sBtnCancel
-            // 
-            this.sBtnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sBtnCancel.Appearance.Options.UseFont = true;
-            this.sBtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sBtnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sBtnCancel.ImageOptions.Image")));
-            this.sBtnCancel.Location = new System.Drawing.Point(1647, 0);
-            this.sBtnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnCancel.Name = "sBtnCancel";
-            this.sBtnCancel.Size = new System.Drawing.Size(199, 30);
-            this.sBtnCancel.TabIndex = 5;
-            this.sBtnCancel.Text = "Cancel Processing";
-            this.sBtnCancel.Visible = false;
-            this.sBtnCancel.Click += new System.EventHandler(this.sBtnCancel_Click);
-            // 
-            // lblTotalMessages
-            // 
-            this.lblTotalMessages.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalMessages.Appearance.Options.UseFont = true;
-            this.lblTotalMessages.Appearance.Options.UseTextOptions = true;
-            this.lblTotalMessages.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.lblTotalMessages.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTotalMessages.Location = new System.Drawing.Point(0, 0);
-            this.lblTotalMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblTotalMessages.Name = "lblTotalMessages";
-            this.lblTotalMessages.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.lblTotalMessages.Size = new System.Drawing.Size(167, 21);
-            this.lblTotalMessages.TabIndex = 0;
-            this.lblTotalMessages.Text = "Total messages: N/A";
-            // 
-            // xtCounts
-            // 
-            this.xtCounts.Controls.Add(this.spltGroupByChars);
-            this.xtCounts.Controls.Add(this.panelControl1);
-            this.xtCounts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.xtCounts.Name = "xtCounts";
-            this.xtCounts.Size = new System.Drawing.Size(1846, 705);
-            this.xtCounts.Text = "Messages Grouping";
-            // 
             // spltGroupByChars
             // 
             this.spltGroupByChars.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2569,8 +2565,8 @@ namespace Analogy
             // spltGroupByChars.Panel2
             // 
             this.spltGroupByChars.Panel2.Controls.Add(this.gridControlMessageGrouping);
-            this.spltGroupByChars.Size = new System.Drawing.Size(1846, 665);
-            this.spltGroupByChars.SplitterDistance = 338;
+            this.spltGroupByChars.Size = new System.Drawing.Size(1847, 425);
+            this.spltGroupByChars.SplitterDistance = 214;
             this.spltGroupByChars.TabIndex = 4;
             // 
             // gCtrlGrouping
@@ -2582,7 +2578,7 @@ namespace Analogy
             this.gCtrlGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gCtrlGrouping.MenuManager = this.barManager1;
             this.gCtrlGrouping.Name = "gCtrlGrouping";
-            this.gCtrlGrouping.Size = new System.Drawing.Size(1846, 338);
+            this.gCtrlGrouping.Size = new System.Drawing.Size(1847, 214);
             this.gCtrlGrouping.TabIndex = 0;
             this.gCtrlGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping});
@@ -2605,7 +2601,7 @@ namespace Analogy
             this.gridControlMessageGrouping.MainView = this.gridViewGrouping2;
             this.gridControlMessageGrouping.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlMessageGrouping.Name = "gridControlMessageGrouping";
-            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1846, 323);
+            this.gridControlMessageGrouping.Size = new System.Drawing.Size(1847, 207);
             this.gridControlMessageGrouping.TabIndex = 4;
             this.gridControlMessageGrouping.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGrouping2});
@@ -2897,7 +2893,7 @@ namespace Analogy
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1846, 40);
+            this.panelControl1.Size = new System.Drawing.Size(1847, 40);
             this.panelControl1.TabIndex = 16;
             // 
             // sBtnGroup
@@ -2991,23 +2987,6 @@ namespace Analogy
             this.contextMenuStripFilters.Name = "contextMenuStripFilters";
             this.contextMenuStripFilters.Size = new System.Drawing.Size(61, 4);
             // 
-            // MainSplitContainer
-            // 
-            this.MainSplitContainer.Collapsed = true;
-            this.MainSplitContainer.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel1;
-            this.MainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainSplitContainer.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None;
-            this.MainSplitContainer.Location = new System.Drawing.Point(0, 20);
-            this.MainSplitContainer.Name = "MainSplitContainer";
-            this.MainSplitContainer.Panel1.Controls.Add(this.standaloneBarDockControlLeft);
-            this.MainSplitContainer.Panel1.Text = "Panel1";
-            this.MainSplitContainer.Panel2.Controls.Add(this.xtraTabControl1);
-            this.MainSplitContainer.Panel2.Text = "Panel2";
-            this.MainSplitContainer.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
-            this.MainSplitContainer.Size = new System.Drawing.Size(1853, 739);
-            this.MainSplitContainer.SplitterPosition = 187;
-            this.MainSplitContainer.TabIndex = 12;
-            // 
             // LogGridPopupMenu
             // 
             this.LogGridPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -3038,11 +3017,119 @@ namespace Analogy
             // 
             this.alertControl1.ShowPinButton = false;
             // 
+            // documentManager1
+            // 
+            this.documentManager1.ContainerControl = this;
+            this.documentManager1.MenuManager = this.barManager1;
+            this.documentManager1.View = this.tabbedView1;
+            this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
+            this.tabbedView1});
+            // 
+            // tabbedView1
+            // 
+            this.tabbedView1.DocumentGroups.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup[] {
+            this.documentGroup1,
+            this.documentGroup2});
+            this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
+            this.document1,
+            this.document2,
+            this.document3});
+            this.tabbedView1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            dockingContainer3.Element = this.documentGroup1;
+            dockingContainer3.Length.UnitValue = 1.4189383070301291D;
+            dockingContainer4.Element = this.documentGroup2;
+            dockingContainer4.Length.UnitValue = 0.58106169296987087D;
+            this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
+            dockingContainer3,
+            dockingContainer4});
+            this.tabbedView1.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
+            // 
+            // dockManager1
+            // 
+            this.dockManager1.Form = this;
+            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanelLogs,
+            this.dockPanelLogsDetails,
+            this.dockPanelMessageGrouping});
+            this.dockManager1.TopZIndexControls.AddRange(new string[] {
+            "DevExpress.XtraBars.BarDockControl",
+            "DevExpress.XtraBars.StandaloneBarDockControl",
+            "System.Windows.Forms.StatusBar",
+            "System.Windows.Forms.MenuStrip",
+            "System.Windows.Forms.StatusStrip",
+            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonControl",
+            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
+            "DevExpress.XtraBars.Navigation.TileNavPane",
+            "DevExpress.XtraBars.TabFormControl",
+            "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
+            "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
+            // 
+            // dockPanelLogs
+            // 
+            this.dockPanelLogs.Controls.Add(this.dockPanel2_Container);
+            this.dockPanelLogs.DockedAsTabbedDocument = true;
+            this.dockPanelLogs.ID = new System.Guid("3e67bfab-0a04-4919-82f8-b34cb75b93ba");
+            this.dockPanelLogs.Name = "dockPanelLogs";
+            this.dockPanelLogs.Options.ShowCloseButton = false;
+            this.dockPanelLogs.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelLogs.Text = "Logs";
+            // 
+            // dockPanel2_Container
+            // 
+            this.dockPanel2_Container.Controls.Add(this.panel1);
+            this.dockPanel2_Container.Controls.Add(this.gridControl);
+            this.dockPanel2_Container.Controls.Add(this.pnlFilters);
+            this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
+            this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel2_Container.Name = "dockPanel2_Container";
+            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 465);
+            this.dockPanel2_Container.TabIndex = 0;
+            // 
+            // dockPanelLogsDetails
+            // 
+            this.dockPanelLogsDetails.Controls.Add(this.dockPanel1_Container);
+            this.dockPanelLogsDetails.DockedAsTabbedDocument = true;
+            this.dockPanelLogsDetails.FloatLocation = new System.Drawing.Point(763, 614);
+            this.dockPanelLogsDetails.FloatSize = new System.Drawing.Size(580, 204);
+            this.dockPanelLogsDetails.FloatVertical = true;
+            this.dockPanelLogsDetails.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
+            this.dockPanelLogsDetails.Name = "dockPanelLogsDetails";
+            this.dockPanelLogsDetails.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelLogsDetails.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.dockPanelLogsDetails.SavedIndex = 1;
+            this.dockPanelLogsDetails.Text = "Detailed information";
+            // 
+            // dockPanel1_Container
+            // 
+            this.dockPanel1_Container.Controls.Add(this.tcBottom);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(1847, 174);
+            this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // dockPanelMessageGrouping
+            // 
+            this.dockPanelMessageGrouping.Controls.Add(this.controlContainer1);
+            this.dockPanelMessageGrouping.DockedAsTabbedDocument = true;
+            this.dockPanelMessageGrouping.ID = new System.Guid("55ad5174-2f87-4858-b536-31c9acb02108");
+            this.dockPanelMessageGrouping.Name = "dockPanelMessageGrouping";
+            this.dockPanelMessageGrouping.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelMessageGrouping.Text = "Message Grouping";
+            // 
+            // controlContainer1
+            // 
+            this.controlContainer1.Controls.Add(this.spltGroupByChars);
+            this.controlContainer1.Controls.Add(this.panelControl1);
+            this.controlContainer1.Location = new System.Drawing.Point(0, 0);
+            this.controlContainer1.Name = "controlContainer1";
+            this.controlContainer1.Size = new System.Drawing.Size(1847, 465);
+            this.controlContainer1.TabIndex = 0;
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.MainSplitContainer);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -3053,12 +3140,20 @@ namespace Analogy
             this.Load += new System.EventHandler(this.UCLogs_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragEnter);
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).EndInit();
             this.pnlButtonsHighlight.ResumeLayout(false);
             this.spltcDateFiltering.Panel1.ResumeLayout(false);
             this.spltcDateFiltering.Panel1.PerformLayout();
@@ -3104,12 +3199,6 @@ namespace Analogy
             this.xtpBookmarks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
-            this.xtpMain.ResumeLayout(false);
-            this.xtpMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
-            this.splitContainerMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).EndInit();
             this.pnlFilters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtcFiltersLeft)).EndInit();
@@ -3127,9 +3216,6 @@ namespace Analogy
             this.xtpSearchFilterPanel.ResumeLayout(false);
             this.xtpSearchFilterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgSearchMode.Properties)).EndInit();
-            this.pnlBottom.ResumeLayout(false);
-            this.pnlBottom.PerformLayout();
-            this.xtCounts.ResumeLayout(false);
             this.spltGroupByChars.Panel1.ResumeLayout(false);
             this.spltGroupByChars.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltGroupByChars)).EndInit();
@@ -3144,9 +3230,17 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.nudGroupBychars)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbGroupByChars.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainer)).EndInit();
-            this.MainSplitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogGridPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.dockPanelLogs.ResumeLayout(false);
+            this.dockPanel2_Container.ResumeLayout(false);
+            this.dockPanel2_Container.PerformLayout();
+            this.dockPanelLogsDetails.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
+            this.dockPanelMessageGrouping.ResumeLayout(false);
+            this.controlContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3167,7 +3261,6 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnObject;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private System.Windows.Forms.ImageList imageList;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer tmrNewData;
         private DevExpress.XtraGrid.GridControl gridControlBookmarkedMessages;
         private GridView gridViewBookmarkedMessages;
@@ -3187,11 +3280,7 @@ namespace Analogy
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox chkbHighlight;
         private System.Windows.Forms.Panel pnlButtonsHighlight;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtpMain;
-        private System.Windows.Forms.Panel pnlBottom;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTimeDiff;
-        private DevExpress.XtraTab.XtraTabPage xtCounts;
         private System.Windows.Forms.SplitContainer spltGroupByChars;
         private DevExpress.XtraGrid.GridControl gridControlMessageGrouping;
         private GridView gridViewGrouping2;
@@ -3207,7 +3296,6 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
-        private DevExpress.XtraEditors.LabelControl lblTotalMessages;
         private DevExpress.XtraTab.XtraTabControl tcBottom;
         private DevExpress.XtraTab.XtraTabPage xtpMessageInfo;
         private DevExpress.XtraTab.XtraTabPage xtpBookmarks;
@@ -3244,9 +3332,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnRemoveBoomark;
         private DevExpress.XtraGrid.GridControl gCtrlGrouping;
         private GridView gridViewGrouping;
-        private DevExpress.XtraEditors.SimpleButton sBtnCancel;
         private DevExpress.XtraBars.BarButtonItem bBtnCopyAllBookmarks;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerMain;
         private DevExpress.XtraEditors.SimpleButton sbtnPageFirst;
         private DevExpress.XtraEditors.LabelControl lblPageNumber;
         private DevExpress.XtraEditors.SimpleButton sBtnPageNext;
@@ -3289,11 +3375,8 @@ namespace Analogy
         private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
         private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
-        private DevExpress.XtraEditors.LabelControl lblTotalMessagesAlert;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SplitContainerControl MainSplitContainer;
         private DevExpress.XtraBars.Bar barGroup;
-        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControlLeft;
         private DevExpress.XtraBars.BarButtonItem bBtnShare;
         private DevExpress.XtraBars.BarButtonItem bBtnFullGrid;
         private DevExpress.XtraBars.BarButtonItem bbtnReload;
@@ -3348,5 +3431,27 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiJsonViewer;
         private DevExpress.Utils.ToolTipController defaultToolTipController;
         private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
+        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
+        private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroup1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document document1;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanelLogs;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanelLogsDetails;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
+        private DevExpress.XtraBars.BarButtonItem bbtnCancel;
+        private DevExpress.XtraBars.BarStaticItem bstaticTotalMessages;
+        private DevExpress.XtraBars.BarStaticItem bstaticAlert;
+        private DevExpress.XtraBars.BarEditItem bprogressBar;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar repositoryItemMarqueeProgressBar1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar2;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document document2;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanelMessageGrouping;
+        private DevExpress.XtraBars.Docking.ControlContainer controlContainer1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroup2;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document document3;
     }
 }
