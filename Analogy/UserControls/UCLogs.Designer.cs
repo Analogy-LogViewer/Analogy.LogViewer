@@ -254,10 +254,10 @@ namespace Analogy
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanelLogsDetails = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelMessageGrouping = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanelLogsDetails = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document2)).BeginInit();
@@ -342,10 +342,10 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanelLogs.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
-            this.dockPanelLogsDetails.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
             this.dockPanelMessageGrouping.SuspendLayout();
             this.controlContainer1.SuspendLayout();
+            this.dockPanelLogsDetails.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -1247,7 +1247,7 @@ namespace Analogy
             this.bdcBookmarks.Manager = this.barManager1;
             this.bdcBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcBookmarks.Name = "bdcBookmarks";
-            this.bdcBookmarks.Size = new System.Drawing.Size(563, 37);
+            this.bdcBookmarks.Size = new System.Drawing.Size(1836, 37);
             this.bdcBookmarks.Text = "standaloneBarDockControl1";
             // 
             // barGroup
@@ -2071,7 +2071,7 @@ namespace Analogy
             this.xtpBookmarks.Controls.Add(this.bdcBookmarks);
             this.xtpBookmarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtpBookmarks.Name = "xtpBookmarks";
-            this.xtpBookmarks.Size = new System.Drawing.Size(563, 142);
+            this.xtpBookmarks.Size = new System.Drawing.Size(1836, 138);
             this.xtpBookmarks.Text = "Bookmarks";
             // 
             // gridControlBookmarkedMessages
@@ -2082,7 +2082,7 @@ namespace Analogy
             this.gridControlBookmarkedMessages.MainView = this.gridViewBookmarkedMessages;
             this.gridControlBookmarkedMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlBookmarkedMessages.Name = "gridControlBookmarkedMessages";
-            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(563, 105);
+            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(1836, 101);
             this.gridControlBookmarkedMessages.TabIndex = 3;
             this.gridControlBookmarkedMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewBookmarkedMessages});
@@ -3061,6 +3061,24 @@ namespace Analogy
             this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 470);
             this.dockPanel2_Container.TabIndex = 0;
             // 
+            // dockPanelMessageGrouping
+            // 
+            this.dockPanelMessageGrouping.Controls.Add(this.controlContainer1);
+            this.dockPanelMessageGrouping.DockedAsTabbedDocument = true;
+            this.dockPanelMessageGrouping.ID = new System.Guid("55ad5174-2f87-4858-b536-31c9acb02108");
+            this.dockPanelMessageGrouping.Name = "dockPanelMessageGrouping";
+            this.dockPanelMessageGrouping.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelMessageGrouping.Text = "Message Grouping";
+            // 
+            // controlContainer1
+            // 
+            this.controlContainer1.Controls.Add(this.spltGroupByChars);
+            this.controlContainer1.Controls.Add(this.panelControl1);
+            this.controlContainer1.Location = new System.Drawing.Point(0, 0);
+            this.controlContainer1.Name = "controlContainer1";
+            this.controlContainer1.Size = new System.Drawing.Size(1847, 470);
+            this.controlContainer1.TabIndex = 0;
+            // 
             // dockPanelLogsDetails
             // 
             this.dockPanelLogsDetails.Controls.Add(this.dockPanel1_Container);
@@ -3082,24 +3100,6 @@ namespace Analogy
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 172);
             this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // dockPanelMessageGrouping
-            // 
-            this.dockPanelMessageGrouping.Controls.Add(this.controlContainer1);
-            this.dockPanelMessageGrouping.DockedAsTabbedDocument = true;
-            this.dockPanelMessageGrouping.ID = new System.Guid("55ad5174-2f87-4858-b536-31c9acb02108");
-            this.dockPanelMessageGrouping.Name = "dockPanelMessageGrouping";
-            this.dockPanelMessageGrouping.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelMessageGrouping.Text = "Message Grouping";
-            // 
-            // controlContainer1
-            // 
-            this.controlContainer1.Controls.Add(this.spltGroupByChars);
-            this.controlContainer1.Controls.Add(this.panelControl1);
-            this.controlContainer1.Location = new System.Drawing.Point(0, 0);
-            this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(1847, 470);
-            this.controlContainer1.TabIndex = 0;
             // 
             // UCLogs
             // 
@@ -3211,10 +3211,10 @@ namespace Analogy
             this.dockPanelLogs.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
-            this.dockPanelLogsDetails.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
             this.dockPanelMessageGrouping.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
+            this.dockPanelLogsDetails.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

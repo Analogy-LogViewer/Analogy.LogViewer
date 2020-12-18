@@ -202,6 +202,7 @@ namespace Analogy
             {
                 return;
             }
+            dockPanelMessageGrouping.Visibility = DockVisibility.Hidden;
             xtcFiltersLeft.SelectedTabPage = xtpFilters;
 
             LoadUISettings();
