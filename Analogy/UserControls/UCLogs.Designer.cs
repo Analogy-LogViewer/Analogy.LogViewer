@@ -41,9 +41,6 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -53,7 +50,10 @@ namespace Analogy
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -107,12 +107,14 @@ namespace Analogy
             this.BbarMainMenu = new DevExpress.XtraBars.Bar();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
+            this.sbarMessageInfo = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barBookmark = new DevExpress.XtraBars.Bar();
             this.bbiSaveBookmarks = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnopyBookmarked = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnCopyAllBookmarks = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnGoToMessage = new DevExpress.XtraBars.BarButtonItem();
+            this.sbarBookmarks = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barGroup = new DevExpress.XtraBars.Bar();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bstaticTotalMessages = new DevExpress.XtraBars.BarStaticItem();
@@ -224,13 +226,11 @@ namespace Analogy
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.sbarMessageInfo = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.sbarBookmarks = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -298,11 +298,11 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanelLogs.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
-            this.dockPanelBookmarks.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
+            this.panelContainer1.SuspendLayout();
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
-            this.panelContainer1.SuspendLayout();
+            this.dockPanelBookmarks.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -1100,6 +1100,16 @@ namespace Analogy
             this.bBtnCopyButtom.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnCopyButtom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyButtom_ItemClick);
             // 
+            // sbarMessageInfo
+            // 
+            this.sbarMessageInfo.CausesValidation = false;
+            this.sbarMessageInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sbarMessageInfo.Location = new System.Drawing.Point(0, 0);
+            this.sbarMessageInfo.Manager = this.barManager1;
+            this.sbarMessageInfo.Name = "sbarMessageInfo";
+            this.sbarMessageInfo.Size = new System.Drawing.Size(1843, 29);
+            this.sbarMessageInfo.Text = "standaloneBarDockControl1";
+            // 
             // barBookmark
             // 
             this.barBookmark.BarName = "Boommarks";
@@ -1171,6 +1181,16 @@ namespace Analogy
             this.bBtnGoToMessage.Name = "bBtnGoToMessage";
             this.bBtnGoToMessage.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnGoToMessage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnGoToMessage_ItemClick);
+            // 
+            // sbarBookmarks
+            // 
+            this.sbarBookmarks.CausesValidation = false;
+            this.sbarBookmarks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sbarBookmarks.Location = new System.Drawing.Point(0, 0);
+            this.sbarBookmarks.Manager = this.barManager1;
+            this.sbarBookmarks.Name = "sbarBookmarks";
+            this.sbarBookmarks.Size = new System.Drawing.Size(1843, 38);
+            this.sbarBookmarks.Text = "standaloneBarDockControl1";
             // 
             // barGroup
             // 
@@ -1694,13 +1714,13 @@ namespace Analogy
             this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
             this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
             this.ceModulesProcess.Size = new System.Drawing.Size(229, 22);
-            toolTipTitleItem5.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceModulesProcess.SuperTip = superToolTip5;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.ceModulesProcess.SuperTip = superToolTip1;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1768,13 +1788,13 @@ namespace Analogy
             this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
             this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
             this.ceSources.Size = new System.Drawing.Size(166, 24);
-            toolTipTitleItem1.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.ceSources.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceSources.SuperTip = superToolTip2;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1829,12 +1849,12 @@ namespace Analogy
             this.ceExcludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageChecked")));
             this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceExcludeText.Size = new System.Drawing.Size(99, 24);
-            toolTipTitleItem2.Text = "Text Property Filtering (exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceExcludeText.SuperTip = superToolTip2;
+            toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceExcludeText.SuperTip = superToolTip3;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnTextExclude
@@ -1900,12 +1920,12 @@ namespace Analogy
             this.ceIncludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageChecked")));
             this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceIncludeText.Size = new System.Drawing.Size(97, 23);
-            toolTipTitleItem3.Text = "Text Property Filtering";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.ceIncludeText.SuperTip = superToolTip3;
+            toolTipTitleItem4.Text = "Text Property Filtering";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceIncludeText.SuperTip = superToolTip4;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
@@ -2472,10 +2492,10 @@ namespace Analogy
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.document1});
             this.tabbedView1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            dockingContainer2.Element = this.documentGroup1;
-            dockingContainer2.Length.UnitValue = 1.4189383070301291D;
+            dockingContainer1.Element = this.documentGroup1;
+            dockingContainer1.Length.UnitValue = 1.4189383070301291D;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer2});
+            dockingContainer1});
             this.tabbedView1.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // dockManager1
@@ -2519,26 +2539,20 @@ namespace Analogy
             this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 470);
             this.dockPanel2_Container.TabIndex = 0;
             // 
-            // dockPanelBookmarks
+            // panelContainer1
             // 
-            this.dockPanelBookmarks.Controls.Add(this.dockPanel1_Container);
-            this.dockPanelBookmarks.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.dockPanelBookmarks.FloatSize = new System.Drawing.Size(699, 204);
-            this.dockPanelBookmarks.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
-            this.dockPanelBookmarks.Location = new System.Drawing.Point(5, 27);
-            this.dockPanelBookmarks.Name = "dockPanelBookmarks";
-            this.dockPanelBookmarks.OriginalSize = new System.Drawing.Size(200, 204);
-            this.dockPanelBookmarks.Size = new System.Drawing.Size(1843, 141);
-            this.dockPanelBookmarks.Text = "Bookmarks";
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Controls.Add(this.gridControlBookmarkedMessages);
-            this.dockPanel1_Container.Controls.Add(this.sbarBookmarks);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
-            this.dockPanel1_Container.TabIndex = 0;
+            this.panelContainer1.ActiveChild = this.dockPanelMessageInfo;
+            this.panelContainer1.Controls.Add(this.dockPanelMessageInfo);
+            this.panelContainer1.Controls.Add(this.dockPanelBookmarks);
+            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.panelContainer1.FloatSize = new System.Drawing.Size(428, 200);
+            this.panelContainer1.ID = new System.Guid("ac1a6167-81e4-42f6-b999-c394cc58516b");
+            this.panelContainer1.Location = new System.Drawing.Point(0, 523);
+            this.panelContainer1.Name = "panelContainer1";
+            this.panelContainer1.OriginalSize = new System.Drawing.Size(200, 204);
+            this.panelContainer1.Size = new System.Drawing.Size(1853, 204);
+            this.panelContainer1.Tabbed = true;
+            this.panelContainer1.Text = "panelContainer1";
             // 
             // dockPanelMessageInfo
             // 
@@ -2562,42 +2576,26 @@ namespace Analogy
             this.controlContainer1.Size = new System.Drawing.Size(1843, 141);
             this.controlContainer1.TabIndex = 0;
             // 
-            // sbarMessageInfo
+            // dockPanelBookmarks
             // 
-            this.sbarMessageInfo.CausesValidation = false;
-            this.sbarMessageInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sbarMessageInfo.Location = new System.Drawing.Point(0, 0);
-            this.sbarMessageInfo.Manager = this.barManager1;
-            this.sbarMessageInfo.Name = "sbarMessageInfo";
-            this.sbarMessageInfo.Size = new System.Drawing.Size(1843, 29);
-            this.sbarMessageInfo.Text = "standaloneBarDockControl1";
+            this.dockPanelBookmarks.Controls.Add(this.dockPanel1_Container);
+            this.dockPanelBookmarks.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanelBookmarks.FloatSize = new System.Drawing.Size(699, 204);
+            this.dockPanelBookmarks.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
+            this.dockPanelBookmarks.Location = new System.Drawing.Point(5, 27);
+            this.dockPanelBookmarks.Name = "dockPanelBookmarks";
+            this.dockPanelBookmarks.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelBookmarks.Size = new System.Drawing.Size(1843, 141);
+            this.dockPanelBookmarks.Text = "Bookmarks";
             // 
-            // panelContainer1
+            // dockPanel1_Container
             // 
-            this.panelContainer1.ActiveChild = this.dockPanelMessageInfo;
-            this.panelContainer1.Controls.Add(this.dockPanelMessageInfo);
-            this.panelContainer1.Controls.Add(this.dockPanelBookmarks);
-            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.panelContainer1.FloatSize = new System.Drawing.Size(428, 200);
-            this.panelContainer1.ID = new System.Guid("ac1a6167-81e4-42f6-b999-c394cc58516b");
-            this.panelContainer1.Location = new System.Drawing.Point(0, 523);
-            this.panelContainer1.Name = "panelContainer1";
-            this.panelContainer1.OriginalSize = new System.Drawing.Size(200, 204);
-            this.panelContainer1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.panelContainer1.SavedIndex = 1;
-            this.panelContainer1.Size = new System.Drawing.Size(1853, 204);
-            this.panelContainer1.Tabbed = true;
-            this.panelContainer1.Text = "panelContainer1";
-            // 
-            // sbarBookmarks
-            // 
-            this.sbarBookmarks.CausesValidation = false;
-            this.sbarBookmarks.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sbarBookmarks.Location = new System.Drawing.Point(0, 0);
-            this.sbarBookmarks.Manager = this.barManager1;
-            this.sbarBookmarks.Name = "sbarBookmarks";
-            this.sbarBookmarks.Size = new System.Drawing.Size(1843, 38);
-            this.sbarBookmarks.Text = "standaloneBarDockControl1";
+            this.dockPanel1_Container.Controls.Add(this.gridControlBookmarkedMessages);
+            this.dockPanel1_Container.Controls.Add(this.sbarBookmarks);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
+            this.dockPanel1_Container.TabIndex = 0;
             // 
             // UCLogs
             // 
@@ -2689,11 +2687,11 @@ namespace Analogy
             this.dockPanelLogs.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
-            this.dockPanelBookmarks.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
+            this.panelContainer1.ResumeLayout(false);
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
-            this.panelContainer1.ResumeLayout(false);
+            this.dockPanelBookmarks.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
