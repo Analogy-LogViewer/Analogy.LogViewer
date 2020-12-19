@@ -30,7 +30,7 @@ namespace Analogy.Extensions
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer3 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer4 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -98,9 +98,9 @@ namespace Analogy.Extensions
             this.documentGroup2});
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.document1});
-            dockingContainer3.Element = this.documentGroup2;
+            dockingContainer4.Element = this.documentGroup2;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer3});
+            dockingContainer4});
             // 
             // dockManager1
             // 
@@ -589,6 +589,7 @@ namespace Analogy.Extensions
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "LogsMessageGroupingExtensionUC";
             this.Size = new System.Drawing.Size(1015, 662);
+            this.Load += new System.EventHandler(this.LogsMessageGroupingExtensionUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();

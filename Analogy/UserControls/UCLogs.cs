@@ -47,7 +47,6 @@ namespace Analogy
         public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
-        private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         private string OldTextInclude = string.Empty;
         private string OldTextExclude = string.Empty;
         public int fileLoadingCount;
@@ -491,7 +490,6 @@ namespace Analogy
             LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
-            gridViewGrouping2.RowStyle += LogGridView_RowStyle;
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
             clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
@@ -966,11 +964,6 @@ namespace Analogy
 
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
-
-            gridViewGrouping2.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
-            gridViewGrouping2.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
-
-
         }
 
         private void BookmarkModeUI()
@@ -2386,7 +2379,7 @@ namespace Analogy
         {
             await FilterHasChanged();
         }
-        
+
         private void bBtnCopyButtom_ItemClick(object sender, ItemClickEventArgs e)
         {
             Clipboard.SetText(rtxtContent.Text);
@@ -2531,33 +2524,7 @@ namespace Analogy
             return messages;
 
         }
-        private void gridViewGrouping_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
-        {
-            if (e.FocusedRowHandle < 0)
-            {
-                return;
-            }
 
-            var grouped = Utils.DataTableConstructor();
-            string key =
-                (string)gridViewGrouping.GetRowCellValue(e.FocusedRowHandle, gridViewGrouping.Columns.First());
-            var messages = groupingByChars[key];
-            foreach (var message in messages)
-            {
-                AddExtraColumnsIfNeededToTable(grouped, gridViewGrouping2, message);
-                DataRow dtr = Utils.CreateRow(grouped, message, "", Settings.CheckAdditionalInformation);
-                if (diffStartTime > DateTime.MinValue)
-                {
-                    dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
-                }
-
-                grouped.Rows.Add(dtr);
-
-            }
-
-            grouped.AcceptChanges();
-            gridControlMessageGrouping.DataSource = grouped;
-        }
 
         private void tsmiCopyMessages_Click(object sender, EventArgs e)
         {
@@ -3011,12 +2978,7 @@ namespace Analogy
             };
             grid.Show(this);
         }
-
-        private void nudGroupBychars_ValueChanged(object sender, EventArgs e)
-        {
-            rbGroupByTextLength.Checked = true;
-        }
-
+        
         private void tsmiAddCommentToMessage_Click(object sender, EventArgs e)
         {
             var msg = GetMessageFromSelectedFocusedRowInGrid();
