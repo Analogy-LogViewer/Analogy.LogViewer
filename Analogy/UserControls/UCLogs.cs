@@ -901,6 +901,7 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
             xtcFilters.Visible = !_simpleMode;
@@ -950,7 +951,7 @@ namespace Analogy
             btswitchRefreshLog.Checked = true;
             LogGrid.BestFitColumns();
             btswitchMessageDetails.Checked = Settings.ShowMessageDetails;
-            dockPanelLogsDetails.Visibility = Settings.ShowMessageDetails ? DockVisibility.Visible : DockVisibility.Hidden;
+            dockPanelMessageInfo.Visibility = Settings.ShowMessageDetails ? DockVisibility.Visible : DockVisibility.Hidden;
             if (Settings.StartupErrorLogLevel)
             {
                 chkLstLogLevel.Items[1].CheckState = CheckState.Checked;
@@ -2117,8 +2118,9 @@ namespace Analogy
             _bookmarkedMessages.AcceptChanges();
             btswitchMessageDetails.Checked = true;
             Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
-            dockPanelLogsDetails.Visibility = DockVisibility.Visible;
-            tcBottom.SelectedTabPage = xtpBookmarks;
+            dockPanelBookmarks.Visibility = DockVisibility.Visible;
+            documentManager1.View.ActivateDocument(dockPanelBookmarks);
+            tabbedView1.ActivateDocument(dockPanelBookmarks);
             if (persists)
             {
                 BookmarkPersistManager.Instance.AddBookmarkedMessage(message, dataSource);
@@ -2268,7 +2270,7 @@ namespace Analogy
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
-            dockPanelLogsDetails.Visibility = btswitchMessageDetails.Checked ? DockVisibility.Visible : DockVisibility.Hidden;
+            dockPanelMessageInfo.Visibility = btswitchMessageDetails.Checked ? DockVisibility.Visible : DockVisibility.Hidden;
         }
 
         private void btswitchRefreshLog_CheckedChanged(object sender, ItemClickEventArgs e)
