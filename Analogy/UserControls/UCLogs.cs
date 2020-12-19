@@ -2386,41 +2386,7 @@ namespace Analogy
         {
             await FilterHasChanged();
         }
-
-        private void sBtnLength_Click(object sender, EventArgs e)
-        {
-            ApplyGrouping();
-        }
-
-        private void sBtnGroup_Click(object sender, EventArgs e)
-        {
-            ApplyGrouping();
-
-        }
-
-        private void ApplyGrouping()
-        {
-            if (rbGroupByTextLength.Checked)
-            {
-                gCtrlGrouping.DataSource = null;
-                List<IGrouping<string, AnalogyLogMessage>> grouped = Messages
-                    .GroupBy(s => s.Text.Substring(0, Math.Min(s.Text.Length, (int)nudGroupBychars.Value)))
-                    .OrderByDescending(i => i.Count()).ToList();
-                groupingByChars = grouped.ToDictionary(g => g.Key, g => g.ToList());
-                gCtrlGrouping.DataSource = groupingByChars.Keys;
-            }
-            else // group by text
-            {
-                gCtrlGrouping.DataSource = null;
-                List<IGrouping<string, AnalogyLogMessage>> grouped = Messages.Where(m => m.Text.Contains(txtbGroupByChars.Text, StringComparison.CurrentCultureIgnoreCase))
-                    .GroupBy(s => s.Text)
-                    .OrderByDescending(i => i.Count()).ToList();
-                groupingByChars = grouped.ToDictionary(g => g.Key, g => g.ToList());
-                gCtrlGrouping.DataSource = groupingByChars.Keys;
-            }
-        }
-
-
+        
         private void bBtnCopyButtom_ItemClick(object sender, ItemClickEventArgs e)
         {
             Clipboard.SetText(rtxtContent.Text);
@@ -3049,11 +3015,6 @@ namespace Analogy
         private void nudGroupBychars_ValueChanged(object sender, EventArgs e)
         {
             rbGroupByTextLength.Checked = true;
-        }
-
-        private void txtbGroupByChars_Click(object sender, EventArgs e)
-        {
-            rbGroupByText.Checked = true;
         }
 
         private void tsmiAddCommentToMessage_Click(object sender, EventArgs e)
