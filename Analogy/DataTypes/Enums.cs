@@ -7,6 +7,7 @@ namespace Analogy.DataTypes
 {
     public enum FontSelectionType
     {
+        Default,
         Normal,
         Large,
         VeryLarge,

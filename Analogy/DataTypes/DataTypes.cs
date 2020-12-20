@@ -102,32 +102,29 @@ namespace Analogy.DataTypes
         [JsonIgnore] public Font MenuFont => new Font(MenuFontName, MenuFontSize, FontStyle.Regular, GraphicsUnit.Point);
         public FontSettings()
         {
-            FontSelectionType = FontSelectionType.Normal;
-            MenuFontSelectionType = FontSelectionType.Normal;
-            GridFontSize = 8.5f;
-            FontName = "Tahoma";
-            FontSize = 8.25f;
-            MenuFontName = "Segoe UI";
-            MenuFontSize = 12f;
+            SetFontSelectionType(FontSelectionType.Default);
+            SetMenuFontSelectionType(FontSelectionType.Default);
         }
 
         public void SetFontSelectionType(FontSelectionType mode)
         {
             FontSelectionType = mode;
+            FontName = "Tahoma";
             switch (mode)
             {
-                case FontSelectionType.Large:
-                    FontName = "Tahoma";
-                    FontSize = 10f;
-                    break;
-                case FontSelectionType.VeryLarge:
-                    FontName = "Tahoma";
-                    FontSize = 14f;
+                case FontSelectionType.Default:
+                    FontSize = 8.25f;
                     break;
                 case FontSelectionType.Normal:
-                case FontSelectionType.Manual:
+                    FontSize = 10f;
+                    break;
+                case FontSelectionType.Large:
+                    FontSize = 12f;
+                    break;
+                case FontSelectionType.VeryLarge:
+                    FontSize = 14f;
+                    break;
                 default:
-                    FontName = "Tahoma";
                     FontSize = 8.25f;
                     break;
             }
@@ -135,20 +132,22 @@ namespace Analogy.DataTypes
         public void SetMenuFontSelectionType(FontSelectionType mode)
         {
             MenuFontSelectionType = mode;
+            MenuFontName = "Segoe UI";
             switch (mode)
             {
+                case FontSelectionType.Default:
+                    MenuFontSize = 12f;
+                    break;
+                case FontSelectionType.Normal:
+                    MenuFontSize = 10f;
+                    break;
                 case FontSelectionType.Large:
-                    MenuFontName = "Segoe UI";
                     MenuFontSize = 14f;
                     break;
                 case FontSelectionType.VeryLarge:
-                    MenuFontName = "Segoe UI";
                     MenuFontSize = 16f;
                     break;
-                case FontSelectionType.Normal:
-                case FontSelectionType.Manual:
                 default:
-                    MenuFontName = "Segoe UI";
                     MenuFontSize = 12f;
                     break;
             }

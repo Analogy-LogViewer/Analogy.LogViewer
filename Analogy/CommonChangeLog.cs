@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.4.1 - [UI] Enable DPI awareness #783",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,20)),
                 new AnalogyChangeLog("V4.4.1 - [Plotting] add option to split charts to different panes #776",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,16)),
                 new AnalogyChangeLog("V4.4.1 - [Plotting] Enable toggle on/off series #775",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,16)),
                 new AnalogyChangeLog("V4.4.0 - [Real time] add option to change refresh rate [default 1 second] #768",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,12)),

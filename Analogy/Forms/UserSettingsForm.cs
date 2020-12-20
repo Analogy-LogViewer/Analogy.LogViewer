@@ -233,6 +233,9 @@ namespace Analogy.Forms
 
             switch (Settings.FontSettings.FontSelectionType)
             {
+                case FontSelectionType.Default:
+                    rbFontSizeDefault.Checked = true;
+                    break;
                 case FontSelectionType.Normal:
                     rbFontSizeNormal.Checked = true;
                     break;
@@ -249,6 +252,9 @@ namespace Analogy.Forms
             }
             switch (Settings.FontSettings.MenuFontSelectionType)
             {
+                case FontSelectionType.Default:
+                    rbMenuFontSizeDefault.Checked = true;
+                    break;
                 case FontSelectionType.Normal:
                     rbMenuFontSizeNormal.Checked = true;
                     break;
@@ -333,33 +339,40 @@ namespace Analogy.Forms
             Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
             Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
             Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
-
-            if (rbFontSizeNormal.Checked)
+            if (rbFontSizeDefault.Checked)
+            {
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Default);
+            }
+            else if (rbFontSizeNormal.Checked)
             {
                 Settings.FontSettings.SetFontSelectionType(FontSelectionType.Normal);
             }
 
-            if (rbFontSizeLarge.Checked)
+            else if (rbFontSizeLarge.Checked)
             {
                 Settings.FontSettings.SetFontSelectionType(FontSelectionType.Large);
             }
 
-            if (rbFontSizeVeryLarge.Checked)
+            else if (rbFontSizeVeryLarge.Checked)
             {
                 Settings.FontSettings.SetFontSelectionType(FontSelectionType.VeryLarge);
             }
-
-            if (rbMenuFontSizeNormal.Checked)
+            
+            if (rbMenuFontSizeDefault.Checked)
+            {
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Default);
+            }
+            else if (rbMenuFontSizeNormal.Checked)
             {
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Normal);
             }
 
-            if (rbMenuFontSizeLarge.Checked)
+            else if (rbMenuFontSizeLarge.Checked)
             {
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Large);
             }
 
-            if (rbMenuFontSizeVeryLarge.Checked)
+            else if (rbMenuFontSizeVeryLarge.Checked)
             {
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge);
             }

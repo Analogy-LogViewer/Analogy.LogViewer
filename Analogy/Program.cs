@@ -29,6 +29,8 @@ namespace Analogy
         [STAThread]
         static void Main()
         {
+            WindowsFormsSettings.LoadApplicationSettings();
+            WindowsFormsSettings.SetDPIAware();
             AnalogyLogManager.Instance.LogInformation($"OS: {Environment.OSVersion.Version}",nameof(Program));
             if (Environment.OSVersion.Version.Major >= 10)
             {
@@ -37,7 +39,6 @@ namespace Analogy
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             AssemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-            WindowsFormsSettings.LoadApplicationSettings();
             WindowsFormsSettings.DefaultFont = Settings.FontSettings.UIFont;
             WindowsFormsSettings.DefaultMenuFont = Settings.FontSettings.MenuFont;
             Application.ThreadException += Application_ThreadException;
@@ -46,7 +47,6 @@ namespace Analogy
             {
                 AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
             }
-
             Settings.OnEnableFirstChanceExceptionChanged += (s, e) =>
             {
                 if (e)
