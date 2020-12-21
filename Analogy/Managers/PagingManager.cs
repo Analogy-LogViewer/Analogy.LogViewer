@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using Analogy.DataTypes;
-using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -14,7 +14,7 @@ namespace Analogy
         //public List<string> CurrentColumns { get; set; }
         private static ManualResetEvent columnAdderSync = new ManualResetEvent(false);
         public ReaderWriterLockSlim columnsLockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
-        private readonly UCLogs owner;
+        private readonly UserControl owner;
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
@@ -42,7 +42,7 @@ namespace Analogy
 
         public static int TotalMissedMessages => _totalMissedMessages;
 
-        public PagingManager(UCLogs owner)
+        public PagingManager(UserControl owner)
         {
             //CurrentColumns = new List<string>();
             this.owner = owner;
@@ -112,7 +112,7 @@ namespace Analogy
                 }
 
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource,Settings.CheckAdditionalInformation);
+                DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                 table.Rows.Add(dtr);
                 return dtr;
 
