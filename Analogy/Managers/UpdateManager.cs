@@ -11,7 +11,6 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MyWebClient = Analogy.DataTypes.MyWebClient;
 
 namespace Analogy.Managers
 {
@@ -111,7 +110,6 @@ namespace Analogy.Managers
             }
         }
 
-        private MyWebClient webClient;
         public UpdateManager()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();

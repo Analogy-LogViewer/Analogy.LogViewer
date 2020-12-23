@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Net;
 using System.Windows.Forms;
 
 namespace Analogy.DataTypes
@@ -23,6 +23,7 @@ namespace Analogy.DataTypes
 
         public override string ToString() => $"{Name} ({ID})";
     }
+
     [Serializable]
     public class AnalogyPositionState
     {
@@ -30,6 +31,7 @@ namespace Analogy.DataTypes
         public Point Location { get; set; }
         public Size Size { get; set; }
         public bool RememberLastPosition { get; set; }
+
         public AnalogyPositionState()
         {
             WindowState = FormWindowState.Maximized;
@@ -44,6 +46,7 @@ namespace Analogy.DataTypes
         }
 
     }
+
     [Serializable]
     public class FilterCriteriaUIOption
     {
@@ -59,6 +62,7 @@ namespace Analogy.DataTypes
             CheckMember = checkMember;
         }
     }
+
     public enum DataSourceType
     {
         Client,
@@ -66,6 +70,7 @@ namespace Analogy.DataTypes
         NetworkPath,
         LocalPath
     }
+
     [Serializable]
     public class DataSource
     {
@@ -73,6 +78,7 @@ namespace Analogy.DataTypes
         public string Path { get; set; }
         public DataSourceType Type { get; set; }
         public string DisplayName { get; set; }
+
         public DataSource(string hostNameOrIp, string path, string displayName, DataSourceType type)
         {
             HostNameOrIP = hostNameOrIp ?? throw new ArgumentNullException(nameof(hostNameOrIp));
@@ -99,7 +105,10 @@ namespace Analogy.DataTypes
         [JsonIgnore] public Font UIFont => new Font(FontName, FontSize, FontStyle.Regular, GraphicsUnit.Point);
         public string MenuFontName { get; set; }
         public float MenuFontSize { get; set; }
-        [JsonIgnore] public Font MenuFont => new Font(MenuFontName, MenuFontSize, FontStyle.Regular, GraphicsUnit.Point);
+
+        [JsonIgnore]
+        public Font MenuFont => new Font(MenuFontName, MenuFontSize, FontStyle.Regular, GraphicsUnit.Point);
+
         public FontSettings()
         {
             SetFontSelectionType(FontSelectionType.Default);
@@ -129,6 +138,7 @@ namespace Analogy.DataTypes
                     break;
             }
         }
+
         public void SetMenuFontSelectionType(FontSelectionType mode)
         {
             MenuFontSelectionType = mode;
@@ -153,19 +163,26 @@ namespace Analogy.DataTypes
             }
         }
     }
-    public class MyWebClient : WebClient
-    {
-        /// <summary>
-        ///     Response Uri after any redirects.
-        /// </summary>
-        public Uri ResponseUri;
 
-        /// <inheritdoc />
-        protected override WebResponse GetWebResponse(WebRequest request, IAsyncResult result)
+    [Serializable]
+    public class FilteringOverrider
+    {
+        public List<string> AllowText { get; set; }
+        public List<string> AllowSources { get; set; }
+        public List<string> AllowModules { get; set; }
+        public Dictionary<string, bool> AllowsLogLevels { get; set; }
+
+
+        public FilteringOverrider()
         {
-            WebResponse webResponse = base.GetWebResponse(request, result);
-            ResponseUri = webResponse.ResponseUri;
-            return webResponse;
+            AllowText = new List<string>();
+            AllowModules = new List<string>();
+            AllowSources = new List<string>();
+            AllowsLogLevels = new Dictionary<string, bool>();
+            foreach (string value in Utils.LogLevels)
+            {
+                AllowsLogLevels.Add(value, false);
+            }
         }
     }
 }
