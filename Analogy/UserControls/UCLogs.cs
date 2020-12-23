@@ -101,7 +101,6 @@ namespace Analogy
                 return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList();
             }
         }
-        private bool ApplyGoToSelectedMessageAfterFirstClick { get; set; }
         private AnalogyLogMessage SelectedMassage { get; set; }
         private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
@@ -257,7 +256,6 @@ namespace Analogy
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
-            gridControl.Focus();
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
         {
@@ -487,8 +485,25 @@ namespace Analogy
             logGrid.RowStyle += LogGridView_RowStyle;
             logGrid.MouseDown += LogGrid_MouseDown;
             logGrid.MouseUp += LogGrid_MouseUp;
+            logGrid.KeyUp += (sender, e) =>
+            {
+                if (sender is GridView view)
+                {
+                    int row = view.FocusedRowHandle;
+                    if (row < 0)
+                    {
+                        return;
+                    }
+                    SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(row, "Object");
+                }
+            };
             LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
             logGrid.CustomSummaryCalculate += LogGrid_CustomSummaryCalculate;
+            logGrid.CustomDrawRowIndicator += LogGrid_CustomDrawRowIndicator;
+            logGrid.SelectionChanged += LogGridView_SelectionChanged;
+            logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
+
+
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
             rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
@@ -614,9 +629,8 @@ namespace Analogy
 
         private void LogGrid_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && sender is GridView view)
             {
-                GridView view = sender as GridView;
                 GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
                 if (hitInfo.InRow && hitInfo.RowHandle >= 0 && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
                 {
@@ -1332,7 +1346,9 @@ namespace Analogy
                     var columns = extension.GetColumnsInfo();
                     foreach (AnalogyColumnInfo column in columns)
                     {
+                        dtr.BeginEdit();
                         dtr[column.ColumnName] = extension.GetValueForCellColumn(message, column.ColumnName);
+                        dtr.EndEdit();
                     }
                 }
             }
@@ -1474,9 +1490,9 @@ namespace Analogy
                     lockSlim.EnterWriteLock();
                     try
                     {
-                        // LogGrid.BeginDataUpdate();
+                        //LogGrid.BeginDataUpdate();
                         _messageData.AcceptChanges();
-                        // LogGrid.EndDataUpdate();
+                        //LogGrid.EndDataUpdate();
                     }
                     finally
                     {
@@ -1660,7 +1676,7 @@ namespace Analogy
             {
                 _messageData.DefaultView.RowFilter = filter;
 
-                if (ApplyGoToSelectedMessageAfterFirstClick && Settings.TrackActiveMessage)
+                if (!Settings.AutoScrollToLastMessage && Settings.TrackActiveMessage)
                 {
                     var location = LocateByValue(0, gridColumnObject, SelectedMassage);
                     if (location >= 0)
@@ -1825,15 +1841,6 @@ namespace Analogy
 
             int rownum = selRows.First();
             SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
-            //todo
-            //if (Settings.TrackActiveMessage)
-            //{
-            //    ApplyGoToSelectedMessageAfterFirstClick = true;
-            //}
-            //else
-            //{
-            //    logGrid.FocusInvalidRow();
-            //}
             LoadTextBoxes(SelectedMassage);
             if (hasAnyInPlaceExtensions)
             {
@@ -2187,7 +2194,7 @@ namespace Analogy
                 var location = LocateByValue(0, gridColumnObject, LogMessage);
                 if (location >= 0)
                 {
-                    LogGrid.FocusedRowHandle = location;
+                    LogGrid.MakeRowVisible(location);
                 }
                 else
                 {
@@ -2706,8 +2713,8 @@ namespace Analogy
             }
 
 
-            SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
-            LoadTextBoxes(SelectedMassage);
+            var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
+            LoadTextBoxes(focusedMassage);
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
             if (!LoadingInProgress)
             {
@@ -2980,7 +2987,7 @@ namespace Analogy
             };
             grid.Show(this);
         }
-        
+
         private void tsmiAddCommentToMessage_Click(object sender, EventArgs e)
         {
             var msg = GetMessageFromSelectedFocusedRowInGrid();

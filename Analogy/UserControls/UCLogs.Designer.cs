@@ -377,9 +377,6 @@ namespace Analogy
             this.logGrid.OptionsView.RowAutoHeight = true;
             this.logGrid.OptionsView.ShowAutoFilterRow = true;
             this.logGrid.OptionsView.ShowGroupPanel = false;
-            this.logGrid.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.LogGrid_CustomDrawRowIndicator);
-            this.logGrid.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.LogGridView_SelectionChanged);
-            this.logGrid.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.logGrid_FocusedRowChanged);
             this.logGrid.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
             this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.LogGridViewCustomColumnDisplayText);
             this.logGrid.Click += new System.EventHandler(this.logGrid_Click);
