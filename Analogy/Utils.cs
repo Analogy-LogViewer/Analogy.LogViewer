@@ -353,6 +353,13 @@ namespace Analogy
                     throw new ArgumentOutOfRangeException();
             }
         }
+        public static void FillLogLevels(CheckedListBoxControl chkLstLogLevel)
+        {
+            chkLstLogLevel.Items.Clear();
+            chkLstLogLevel.CheckStyle = CheckStyles.Standard;
+            chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, UserSettingsManager.UserSettings.FilteringExclusion.IsLogLevelExcluded(l))).ToArray());
+
+        }
 
         public static void OpenLink(string url)
         {

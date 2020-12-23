@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Analogy.Interfaces;
 
 namespace Analogy.DataTypes
 {
@@ -165,24 +166,30 @@ namespace Analogy.DataTypes
     }
 
     [Serializable]
-    public class FilteringOverrider
+    public class FilteringExclusion
     {
-        public List<string> AllowText { get; set; }
-        public List<string> AllowSources { get; set; }
-        public List<string> AllowModules { get; set; }
-        public Dictionary<string, bool> AllowsLogLevels { get; set; }
+        public List<string> ExcludeTexts { get; set; }
+        public List<string> ExcludeSources { get; set; }
+        public List<string> ExcludeModules { get; set; }
+        public Dictionary<string, bool> ExcludeLogLevels { get; set; }
 
 
-        public FilteringOverrider()
+        public FilteringExclusion()
         {
-            AllowText = new List<string>();
-            AllowModules = new List<string>();
-            AllowSources = new List<string>();
-            AllowsLogLevels = new Dictionary<string, bool>();
+            ExcludeTexts = new List<string>();
+            ExcludeModules = new List<string>();
+            ExcludeSources = new List<string>();
+            ExcludeLogLevels = new Dictionary<string, bool>();
             foreach (string value in Utils.LogLevels)
             {
-                AllowsLogLevels.Add(value, false);
+                ExcludeLogLevels.Add(value, false);
             }
         }
+
+        public bool IsLogLevelExcluded(AnalogyLogLevel level) => IsLogLevelExcluded(level.ToString());
+        public bool IsLogLevelExcluded(string level) => ExcludeLogLevels.ContainsKey(level) && ExcludeLogLevels[level];
+
+        public void SetLogLevelExclusion(string level, bool exclude)=> ExcludeLogLevels[level] = exclude;
+        
     }
 }

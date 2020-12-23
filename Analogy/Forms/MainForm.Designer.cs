@@ -154,9 +154,9 @@
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bsiGlobalTools,
-            this.bsmInfo,
             this.ribbonControlMain.ExpandCollapseItem,
             this.ribbonControlMain.SearchEditItem,
+            this.bsmInfo,
             this.btnItemLocalLogs,
             this.bItemProcess,
             this.btnItemDark,
@@ -752,7 +752,7 @@
             // 
             // btnLookAndFeel
             // 
-            this.btnLookAndFeel.Caption = "Look and Feel";
+            this.btnLookAndFeel.Caption = "Colors and Layout ";
             this.btnLookAndFeel.Id = 87;
             this.btnLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLookAndFeel.ImageOptions.Image")));
             this.btnLookAndFeel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLookAndFeel.ImageOptions.LargeImage")));

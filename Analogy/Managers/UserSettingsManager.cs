@@ -132,6 +132,7 @@ namespace Analogy
         }
         public bool TrackActiveMessage { get; set; }
         public float RealTimeRefreshInterval { get; set; }
+        public FilteringExclusion FilteringExclusion { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -165,8 +166,7 @@ namespace Analogy
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WindowsEventLogs", "Analogy.LogViewer.WindowsEventLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Example", "Analogy.LogViewer.Example.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Example"));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.GitHubActionLogs", "Analogy.LogViewer.GitHubActionLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.GitHubActionLogs"));
-
-
+            FilteringExclusion = ParseSettings<FilteringExclusion>(Settings.Default.FilteringExclusion);
             EnableCompressedArchives = true;
             AnalogyInternalLogPeriod = 5;
             if (Settings.Default.UpgradeRequired)
@@ -358,6 +358,7 @@ namespace Analogy
             Settings.Default.EnableFirstChanceException = EnableFirstChanceException;
             Settings.Default.TrackActiveMessage = TrackActiveMessage;
             Settings.Default.RealTimeRefreshInterval = RealTimeRefreshInterval;
+            Settings.Default.FilteringExclusion = JsonConvert.SerializeObject(FilteringExclusion);
             Settings.Default.Save();
 
         }

@@ -846,5 +846,17 @@ namespace Analogy.Properties {
                 this["RealTimeRefreshInterval"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FilteringExclusion {
+            get {
+                return ((string)(this["FilteringExclusion"]));
+            }
+            set {
+                this["FilteringExclusion"] = value;
+            }
+        }
     }
 }

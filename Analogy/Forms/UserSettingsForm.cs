@@ -230,7 +230,7 @@ namespace Analogy.Forms
             tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
             tsLogLevels.IsOn = Settings.LogLevelSelection == LogLevelSelectionType.Multiple;
             Utils.SetLogLevel(chkLstLogLevel);
-
+            Utils.FillLogLevels(chklExclusionLogLevel);
             switch (Settings.FontSettings.FontSelectionType)
             {
                 case FontSelectionType.Default:
@@ -836,6 +836,12 @@ namespace Analogy.Forms
             lblLogLevelAnalogyInformation.ForeColor = cpeLogLevelAnalogyInformationText.Color;
             lblHighlightColor.ForeColor = cpeHighlightColorText.Color;
             ceNewMessagesColor.ForeColor = cpeNewMessagesColorText.Color;
+        }
+
+        private void chklExclusionLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            var item = chklExclusionLogLevel.Items[e.Index].Value.ToString();
+            Settings.FilteringExclusion.SetLogLevelExclusion(item, e.State == CheckState.Checked);
         }
     }
 }
