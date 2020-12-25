@@ -53,6 +53,7 @@
             this.bbtnItemSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRestart = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
             this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
             this.bbiBookmarks = new DevExpress.XtraBars.BarButtonItem();
@@ -123,7 +124,6 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbiRestart = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -271,6 +271,15 @@
             this.bBtnItemImportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemImportSettings.ImageOptions.Image")));
             this.bBtnItemImportSettings.Name = "bBtnItemImportSettings";
             this.bBtnItemImportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemImportSettings_ItemClick);
+            // 
+            // bbiRestart
+            // 
+            this.bbiRestart.Caption = "Restart Application";
+            this.bbiRestart.Id = 107;
+            this.bbiRestart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiRestart.ImageOptions.Image")));
+            this.bbiRestart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRestart.ImageOptions.LargeImage")));
+            this.bbiRestart.Name = "bbiRestart";
+            this.bbiRestart.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbtnItemExit
             // 
@@ -903,14 +912,6 @@
             this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
-            // 
-            // bbiRestart
-            // 
-            this.bbiRestart.Caption = "Restart Application";
-            this.bbiRestart.Id = 107;
-            this.bbiRestart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiRestart.ImageOptions.Image")));
-            this.bbiRestart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRestart.ImageOptions.LargeImage")));
-            this.bbiRestart.Name = "bbiRestart";
             // 
             // MainForm
             // 
