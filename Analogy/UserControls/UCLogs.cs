@@ -571,6 +571,9 @@ namespace Analogy
                     lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
 
             };
+
+            ceLogLevelAnd.CheckedChanged += async (s, e) => await FilterHasChanged();
+            ceLogLevelOr.CheckedChanged += async (s, e) => await FilterHasChanged();
         }
 
 
