@@ -101,7 +101,7 @@ namespace Analogy
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public string GetSqlExpression()
+        public string GetSqlExpression(bool orLogLevel)
         {
 
             StringBuilder sqlString = new StringBuilder();

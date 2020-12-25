@@ -241,7 +241,7 @@ namespace Analogy
             this.pnlLevel = new DevExpress.XtraEditors.PanelControl();
             this.pnlLevelFilteringType = new DevExpress.XtraEditors.PanelControl();
             this.ceLogLevelAnd = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.ceLogLevelOr = new DevExpress.XtraEditors.CheckEdit();
             this.pnlExtraFilters = new System.Windows.Forms.Panel();
             this.gcFilters = new DevExpress.XtraEditors.GroupControl();
             this.ceFilterPanelSearch = new DevExpress.XtraEditors.CheckEdit();
@@ -316,7 +316,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.pnlLevelFilteringType)).BeginInit();
             this.pnlLevelFilteringType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ceLogLevelAnd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceLogLevelOr.Properties)).BeginInit();
             this.pnlExtraFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcFilters)).BeginInit();
             this.gcFilters.SuspendLayout();
@@ -2379,7 +2379,7 @@ namespace Analogy
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(201, 95);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(199, 141);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2388,7 +2388,7 @@ namespace Analogy
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(201, 95);
+            this.clbExclude.Size = new System.Drawing.Size(199, 141);
             this.clbExclude.TabIndex = 22;
             // 
             // labelControl1
@@ -2575,7 +2575,7 @@ namespace Analogy
             // 
             // pnlLevelFilteringType
             // 
-            this.pnlLevelFilteringType.Controls.Add(this.checkEdit1);
+            this.pnlLevelFilteringType.Controls.Add(this.ceLogLevelOr);
             this.pnlLevelFilteringType.Controls.Add(this.ceLogLevelAnd);
             this.pnlLevelFilteringType.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLevelFilteringType.Location = new System.Drawing.Point(2, 2);
@@ -2602,25 +2602,25 @@ namespace Analogy
             this.ceLogLevelAnd.SuperTip = superToolTip8;
             this.ceLogLevelAnd.TabIndex = 0;
             // 
-            // checkEdit1
+            // ceLogLevelOr
             // 
-            this.checkEdit1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkEdit1.Location = new System.Drawing.Point(69, 2);
-            this.checkEdit1.MenuManager = this.barManager1;
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Or";
-            this.checkEdit1.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
-            this.checkEdit1.Properties.RadioGroupIndex = 5;
-            this.checkEdit1.Size = new System.Drawing.Size(66, 22);
+            this.ceLogLevelOr.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ceLogLevelOr.Location = new System.Drawing.Point(69, 2);
+            this.ceLogLevelOr.MenuManager = this.barManager1;
+            this.ceLogLevelOr.Name = "ceLogLevelOr";
+            this.ceLogLevelOr.Properties.Caption = "Or";
+            this.ceLogLevelOr.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
+            this.ceLogLevelOr.Properties.RadioGroupIndex = 5;
+            this.ceLogLevelOr.Size = new System.Drawing.Size(66, 22);
             toolTipTitleItem7.Text = "Or Log level Filtering";
             toolTipItem7.LeftIndent = 6;
             toolTipItem7.Text = "The OR type allows to always show some log levels regardless the current filters." +
     " This is usefull when you want to see some log level alongs with other filters";
             superToolTip7.Items.Add(toolTipTitleItem7);
             superToolTip7.Items.Add(toolTipItem7);
-            this.checkEdit1.SuperTip = superToolTip7;
-            this.checkEdit1.TabIndex = 1;
-            this.checkEdit1.TabStop = false;
+            this.ceLogLevelOr.SuperTip = superToolTip7;
+            this.ceLogLevelOr.TabIndex = 1;
+            this.ceLogLevelOr.TabStop = false;
             // 
             // pnlExtraFilters
             // 
@@ -2777,7 +2777,7 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.pnlLevelFilteringType)).EndInit();
             this.pnlLevelFilteringType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ceLogLevelAnd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceLogLevelOr.Properties)).EndInit();
             this.pnlExtraFilters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcFilters)).EndInit();
             this.gcFilters.ResumeLayout(false);
@@ -2964,7 +2964,7 @@ namespace Analogy
         private DevExpress.XtraBars.StandaloneBarDockControl sbarBookmarks;
         private DevExpress.XtraEditors.PanelControl pnlLevel;
         private DevExpress.XtraEditors.PanelControl pnlLevelFilteringType;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.CheckEdit ceLogLevelOr;
         private DevExpress.XtraEditors.CheckEdit ceLogLevelAnd;
         private System.Windows.Forms.Panel pnlExtraFilters;
         private DevExpress.XtraEditors.GroupControl gcFilters;

@@ -258,7 +258,7 @@ namespace Analogy
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
         {
-            Settings.BuiltInSearchPanelMode = ceFilterPanelSearch.CheckState== CheckState.Checked ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
+            Settings.BuiltInSearchPanelMode = ceFilterPanelSearch.CheckState == CheckState.Checked ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
             logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
                 ? FindPanelBehavior.Search
                 : FindPanelBehavior.Filter;
@@ -577,10 +577,10 @@ namespace Analogy
         private void EditValueChanged(object sender, EventArgs e)
         {
 
-            if (sender is BaseEdit edit && e is ChangingEventArgs change && change.NewValue == string.Empty)
-            {
-                edit.EditValue = null;
-            }
+            //if (sender is BaseEdit edit && e is ChangingEventArgs change && change.NewValue == string.Empty)
+            //{
+            //    edit.EditValue = null;
+            //}
         }
 
 
@@ -771,7 +771,7 @@ namespace Analogy
                 ceFilterPanelFilter.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
                 ceFilterPanelSearch.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
                 ToggleSearch();
-                ceFilterPanelSearch.CheckState=CheckState.Checked;
+                ceFilterPanelSearch.CheckState = CheckState.Checked;
                 ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
                 ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             }
@@ -1549,26 +1549,26 @@ namespace Analogy
         {
             if (txtbInclude.Text == txtbInclude.Properties.NullText)
             {
-                txtbInclude.Text = string.Empty;
+                txtbInclude.Text = null;
             }
 
             if (txtbExclude.Text == txtbExclude.Properties.NullText)
             {
-                txtbExclude.Text = string.Empty;
+                txtbExclude.Text = null;
             }
 
             if (txtbSource.Text == txtbSource.Properties.NullText)
             {
-                txtbSource.Text = string.Empty;
+                txtbSource.Text = null;
             }
 
             if (txtbModule.Text == txtbModule.Properties.NullText)
             {
-                txtbModule.Text = string.Empty;
+                txtbModule.Text = null;
             }
 
-            string include = txtbInclude.Text.Trim();
-            string exclude = txtbExclude.Text.Trim();
+            string include = txtbInclude.Text == null ? string.Empty : txtbInclude.Text.Trim();
+            string exclude = txtbExclude.Text == null ? string.Empty : txtbExclude.Text.Trim();
             if (!autoCompleteInclude.Contains(include))
             {
                 autoCompleteInclude.Add(include);
@@ -1583,13 +1583,13 @@ namespace Analogy
             Settings.AddNewSearchesEntryToLists(exclude, false);
             _filterCriteria.NewerThan = ceNewerThanFilter.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteria.OlderThan = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
-            _filterCriteria.TextInclude = ceIncludeText.Checked ? txtbInclude.Text.Trim() : string.Empty;
+            _filterCriteria.TextInclude = ceIncludeText.Checked ? (txtbInclude.Text == null ? string.Empty : txtbInclude.Text.Trim()) : string.Empty;
             _filterCriteria.TextExclude = ceExcludeText.Checked
-                ? txtbExclude.Text.Trim() + "|" + string.Join("|", _excludeMostCommon)
+                ? (txtbExclude.Text == null ? string.Empty : txtbExclude.Text.Trim()) + "|" + string.Join("|", _excludeMostCommon)
                 : string.Empty;
 
-            Settings.IncludeText = Settings.SaveSearchFilters ? txtbInclude.Text : string.Empty;
-            Settings.ExcludeText = Settings.SaveSearchFilters ? txtbExclude.Text : string.Empty;
+            Settings.IncludeText = Settings.SaveSearchFilters && txtbInclude.Text != null ? txtbInclude.Text : string.Empty;
+            Settings.ExcludeText = Settings.SaveSearchFilters && txtbExclude.Text != null ? txtbExclude.Text : string.Empty;
 
             _filterCriteria.Levels = null;
             switch (logLevelSelectionType)
@@ -1652,7 +1652,7 @@ namespace Analogy
                 _filterCriteria.ExcludedSources = null;
             }
 
-            Settings.SourceText = Settings.SaveSearchFilters ? txtbSource.Text : string.Empty;
+            Settings.SourceText = Settings.SaveSearchFilters && txtbSource.Text != null ? txtbSource.Text : string.Empty;
 
             if (ceModulesProcess.Checked && !string.IsNullOrEmpty(txtbModule.Text))
             {
@@ -1672,8 +1672,8 @@ namespace Analogy
                 _filterCriteria.ExcludedModules = null;
             }
 
-            Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
-            string filter = _filterCriteria.GetSqlExpression();
+            Settings.ModuleText = Settings.SaveSearchFilters && txtbModule.Text != null ? txtbModule.Text : string.Empty;
+            string filter = _filterCriteria.GetSqlExpression(ceLogLevelOr.Checked);
             lockSlim.EnterWriteLock();
             if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
             {

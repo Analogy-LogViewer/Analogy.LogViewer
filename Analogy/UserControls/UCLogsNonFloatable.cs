@@ -1656,7 +1656,7 @@ namespace Analogy
             }
 
             Settings.ModuleText = Settings.SaveSearchFilters ? txtbModule.Text : string.Empty;
-            string filter = _filterCriteria.GetSqlExpression();
+            string filter = _filterCriteria.GetSqlExpression(false);
             lockSlim.EnterWriteLock();
             if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
             {
