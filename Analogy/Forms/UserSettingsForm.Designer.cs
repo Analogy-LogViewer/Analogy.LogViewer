@@ -390,14 +390,15 @@
             // 
             // tabControlMain
             // 
+            this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMain.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
             this.tabControlMain.HeaderOrientation = DevExpress.XtraTab.TabOrientation.Horizontal;
-            this.tabControlMain.Location = new System.Drawing.Point(0, 47);
+            this.tabControlMain.Location = new System.Drawing.Point(0, 0);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlMain.MinimumSize = new System.Drawing.Size(814, 382);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedTabPage = this.xtraTabPageApplication;
-            this.tabControlMain.Size = new System.Drawing.Size(991, 922);
+            this.tabControlMain.Size = new System.Drawing.Size(991, 925);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageApplication,
@@ -420,7 +421,7 @@
             this.xtraTabPageApplication.Controls.Add(this.gcGeneral);
             this.xtraTabPageApplication.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_icon1;
             this.xtraTabPageApplication.Name = "xtraTabPageApplication";
-            this.xtraTabPageApplication.Size = new System.Drawing.Size(817, 915);
+            this.xtraTabPageApplication.Size = new System.Drawing.Size(817, 918);
             this.xtraTabPageApplication.Text = "Application Settings";
             // 
             // gcCompressedArchives
@@ -2966,7 +2967,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 924);
+            this.ClientSize = new System.Drawing.Size(991, 925);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
