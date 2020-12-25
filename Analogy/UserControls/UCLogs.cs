@@ -200,7 +200,6 @@ namespace Analogy
             {
                 return;
             }
-            xtcFiltersLeft.SelectedTabPage = xtpFilters;
 
             LoadUISettings();
             LoadReplacementHeaders();
@@ -259,7 +258,7 @@ namespace Analogy
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
         {
-            Settings.BuiltInSearchPanelMode = rgSearchMode.SelectedIndex == 0 ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
+            Settings.BuiltInSearchPanelMode = ceFilterPanelSearch.CheckState== CheckState.Checked ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
             logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
                 ? FindPanelBehavior.Search
                 : FindPanelBehavior.Filter;
@@ -505,7 +504,8 @@ namespace Analogy
 
 
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
-            rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
+            ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
+            ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
             clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
             deNewerThanFilter.EditValueChanged += async (s, e) =>
@@ -768,17 +768,21 @@ namespace Analogy
             }
             if (e.Control && e.KeyCode == Keys.F)
             {
-                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelFilter.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
                 ToggleSearch();
-                rgSearchMode.SelectedIndex = 0;
-                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckState=CheckState.Checked;
+                ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             }
             if (e.Alt && e.KeyCode == Keys.F)
             {
-                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelFilter.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
                 ToggleFilter();
-                rgSearchMode.SelectedIndex = 1;
-                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelFilter.CheckState = CheckState.Checked;
+                ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             }
 
 
@@ -833,18 +837,22 @@ namespace Analogy
 
             if (e.Control && e.KeyCode == Keys.F)
             {
-                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelFilter.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
                 ToggleSearch();
-                rgSearchMode.SelectedIndex = 0;
-                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckState = CheckState.Checked;
+                ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
                 return true;
             }
             if (e.Alt && e.KeyCode == Keys.F)
             {
-                rgSearchMode.SelectedIndexChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelFilter.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged -= rgSearchMode_SelectedIndexChanged;
                 ToggleFilter();
-                rgSearchMode.SelectedIndex = 1;
-                rgSearchMode.SelectedIndexChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelFilter.CheckState = CheckState.Checked;
+                ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
+                ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
                 return true;
             }
 
@@ -918,7 +926,7 @@ namespace Analogy
             dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
-            xtcFilters.Visible = !_simpleMode;
+            pnlExtraFilters.Visible = !_simpleMode;
             bBtnShare.Visibility =
                 FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
                     .SelectMany(fc => fc.Shareables).Any()
@@ -936,7 +944,9 @@ namespace Analogy
 
             //logGrid.Columns[0].SummaryItem.DisplayFormat = "Rows: {0:n0}";
             logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
-            rgSearchMode.SelectedIndex = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search ? 0 : 1;
+            ceFilterPanelSearch.CheckState = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search ? CheckState.Checked : CheckState.Unchecked;
+            ceFilterPanelFilter.CheckState = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Filter ? CheckState.Checked : CheckState.Unchecked;
+
             logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
                 ? FindPanelBehavior.Search
                 : FindPanelBehavior.Filter;
