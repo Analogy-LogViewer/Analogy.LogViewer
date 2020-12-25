@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.4.1 - Add application restart button when enabling/disabling data providers #778",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,25)),
                 new AnalogyChangeLog("V4.4.1 - Add option to show specific log levels (like Error,Warning...) regardless active filtering #784",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,25)),
                 new AnalogyChangeLog("V4.4.1 - [UI] Enable DPI awareness #783",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,20)),
                 new AnalogyChangeLog("V4.4.1 - [Plotting] add option to split charts to different panes #776",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,16)),

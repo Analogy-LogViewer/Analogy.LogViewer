@@ -224,7 +224,7 @@ namespace Analogy.Forms
             }
             else
             {
-                AnalogyLogManager.Instance.LogWarning("Update is disabled",nameof(MainForm));
+                AnalogyLogManager.Instance.LogWarning("Update is disabled", nameof(MainForm));
             }
             if (settings.ShowWhatIsNewAtStartup)
             {
@@ -267,6 +267,19 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            bbiRestart.ItemClick += (s, e) =>
+            {
+                try
+                {
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+                catch (Exception exception)
+                {
+                 AnalogyLogger.Instance.LogCritical($"Unable to restart application: {exception.Message}");
+                }
+             
+            };
             ILogWindow GetLogWindows(Control mainControl)
             {
                 while (true)
