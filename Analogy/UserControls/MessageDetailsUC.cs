@@ -9,14 +9,21 @@ namespace Analogy
 {
     public partial class MessageDetailsUC : XtraUserControl
     {
-        private AnalogyLogMessage Message { get; set; }
+        private AnalogyLogMessage? Message { get; set; }
         private List<AnalogyLogMessage> Messages { get; }
         private string DataSource { get; }
         public MessageDetailsUC()
         {
             InitializeComponent();
+            Messages = new List<AnalogyLogMessage>(0);
         }
 
+        public void SetMessage(AnalogyLogMessage m)
+        {
+            Messages.Clear();
+            Messages.Add(m);
+            Message = m;
+        }
         public MessageDetailsUC(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
         {
             Message = msg;
@@ -26,6 +33,8 @@ namespace Analogy
 
         private void UCMessageDetails_Load(object sender, EventArgs e)
         {
+            if (DesignMode)
+            { return; }
             xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageText;
             LoadMessage();
         }
@@ -46,9 +55,13 @@ namespace Analogy
             return base.ProcessCmdKey(ref msg, keyData);
 
         }
-        private void LoadMessage()
+
+        public void LoadMessage()
         {
-       
+            if (Message == null)
+            {
+                return;
+            }
             xtraTabPageAdditionalInformation.PageVisible = Message.AdditionalInformation != null && Message.AdditionalInformation.Any();
             if (Message.AdditionalInformation != null)
             {
@@ -62,7 +75,7 @@ namespace Analogy
             txtbDataSource.Text = DataSource;
             txtbDateValue.Text = Message.Date.ToString(UserSettingsManager.UserSettings.DateTimePattern);
             txtbLevelValue.Text = Message.Level.ToString();
-            txtbProcessModuleName.Text =Message.Module;
+            txtbProcessModuleName.Text = Message.Module;
             txtbProcessId.Text = Message.ProcessId.ToString();
             txtbThreadId.Text = Message.ThreadId.ToString();
             txtSourceValue.Text = Message.Source;

@@ -242,10 +242,10 @@ namespace Analogy
             this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -318,10 +318,10 @@ namespace Analogy
             this.dockPanelLogs.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
             this.panelContainer1.SuspendLayout();
-            this.dockPanelBookmarks.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
+            this.dockPanelBookmarks.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -2624,7 +2624,7 @@ namespace Analogy
             // 
             // panelContainer1
             // 
-            this.panelContainer1.ActiveChild = this.dockPanelBookmarks;
+            this.panelContainer1.ActiveChild = this.dockPanelMessageInfo;
             this.panelContainer1.Controls.Add(this.dockPanelMessageInfo);
             this.panelContainer1.Controls.Add(this.dockPanelBookmarks);
             this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
@@ -2636,27 +2636,6 @@ namespace Analogy
             this.panelContainer1.Size = new System.Drawing.Size(1853, 204);
             this.panelContainer1.Tabbed = true;
             this.panelContainer1.Text = "panelContainer1";
-            // 
-            // dockPanelBookmarks
-            // 
-            this.dockPanelBookmarks.Controls.Add(this.dockPanel1_Container);
-            this.dockPanelBookmarks.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.dockPanelBookmarks.FloatSize = new System.Drawing.Size(699, 204);
-            this.dockPanelBookmarks.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
-            this.dockPanelBookmarks.Location = new System.Drawing.Point(5, 27);
-            this.dockPanelBookmarks.Name = "dockPanelBookmarks";
-            this.dockPanelBookmarks.OriginalSize = new System.Drawing.Size(200, 204);
-            this.dockPanelBookmarks.Size = new System.Drawing.Size(1843, 141);
-            this.dockPanelBookmarks.Text = "Bookmarks";
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Controls.Add(this.gridControlBookmarkedMessages);
-            this.dockPanel1_Container.Controls.Add(this.sbarBookmarks);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
-            this.dockPanel1_Container.TabIndex = 0;
             // 
             // dockPanelMessageInfo
             // 
@@ -2679,6 +2658,27 @@ namespace Analogy
             this.controlContainer1.Name = "controlContainer1";
             this.controlContainer1.Size = new System.Drawing.Size(1843, 141);
             this.controlContainer1.TabIndex = 0;
+            // 
+            // dockPanelBookmarks
+            // 
+            this.dockPanelBookmarks.Controls.Add(this.dockPanel1_Container);
+            this.dockPanelBookmarks.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanelBookmarks.FloatSize = new System.Drawing.Size(699, 204);
+            this.dockPanelBookmarks.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
+            this.dockPanelBookmarks.Location = new System.Drawing.Point(5, 27);
+            this.dockPanelBookmarks.Name = "dockPanelBookmarks";
+            this.dockPanelBookmarks.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelBookmarks.Size = new System.Drawing.Size(1843, 141);
+            this.dockPanelBookmarks.Text = "Bookmarks";
+            // 
+            // dockPanel1_Container
+            // 
+            this.dockPanel1_Container.Controls.Add(this.gridControlBookmarkedMessages);
+            this.dockPanel1_Container.Controls.Add(this.sbarBookmarks);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
+            this.dockPanel1_Container.TabIndex = 0;
             // 
             // UCLogs
             // 
@@ -2775,12 +2775,12 @@ namespace Analogy
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
             this.panelContainer1.ResumeLayout(false);
-            this.dockPanelBookmarks.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
-            this.dockPanel1_Container.PerformLayout();
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             this.controlContainer1.PerformLayout();
+            this.dockPanelBookmarks.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
+            this.dockPanel1_Container.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
