@@ -217,11 +217,11 @@ namespace Analogy
             this.tmrNewData = new System.Windows.Forms.Timer(this.components);
             this.pnlFilters = new DevExpress.XtraEditors.PanelControl();
             this.gcFilters = new DevExpress.XtraEditors.GroupControl();
+            this.pnlModulesAndDates = new System.Windows.Forms.Panel();
             this.ceFilterPanelFilter = new DevExpress.XtraEditors.CheckEdit();
             this.ceFilterPanelSearch = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnToggleSearchFilter = new DevExpress.XtraEditors.SimpleButton();
-            this.pnlModulesAndDates = new System.Windows.Forms.Panel();
             this.pnlExtraFilters = new System.Windows.Forms.Panel();
             this.xtcFilters = new DevExpress.XtraTab.XtraTabControl();
             this.xtpFiltersIncludes = new DevExpress.XtraTab.XtraTabPage();
@@ -294,9 +294,9 @@ namespace Analogy
             this.pnlFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcFilters)).BeginInit();
             this.gcFilters.SuspendLayout();
+            this.pnlModulesAndDates.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelSearch.Properties)).BeginInit();
-            this.pnlModulesAndDates.SuspendLayout();
             this.pnlExtraFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtcFilters)).BeginInit();
             this.xtcFilters.SuspendLayout();
@@ -347,7 +347,7 @@ namespace Analogy
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1847, 252);
+            this.gridControl.Size = new System.Drawing.Size(1847, 226);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -2350,6 +2350,16 @@ namespace Analogy
             this.gcFilters.TabIndex = 31;
             this.gcFilters.Text = "Filters";
             // 
+            // pnlModulesAndDates
+            // 
+            this.pnlModulesAndDates.Controls.Add(this.spltcProcessesModule);
+            this.pnlModulesAndDates.Controls.Add(this.spltcDateFiltering);
+            this.pnlModulesAndDates.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlModulesAndDates.Location = new System.Drawing.Point(2, 96);
+            this.pnlModulesAndDates.Name = "pnlModulesAndDates";
+            this.pnlModulesAndDates.Size = new System.Drawing.Size(1492, 22);
+            this.pnlModulesAndDates.TabIndex = 28;
+            // 
             // ceFilterPanelFilter
             // 
             this.ceFilterPanelFilter.Location = new System.Drawing.Point(568, 145);
@@ -2401,16 +2411,6 @@ namespace Analogy
             this.sbtnToggleSearchFilter.Size = new System.Drawing.Size(294, 28);
             this.sbtnToggleSearchFilter.TabIndex = 0;
             this.sbtnToggleSearchFilter.Text = "Toggle Search/Filter Panel On/Off";
-            // 
-            // pnlModulesAndDates
-            // 
-            this.pnlModulesAndDates.Controls.Add(this.spltcProcessesModule);
-            this.pnlModulesAndDates.Controls.Add(this.spltcDateFiltering);
-            this.pnlModulesAndDates.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlModulesAndDates.Location = new System.Drawing.Point(2, 96);
-            this.pnlModulesAndDates.Name = "pnlModulesAndDates";
-            this.pnlModulesAndDates.Size = new System.Drawing.Size(1492, 22);
-            this.pnlModulesAndDates.TabIndex = 28;
             // 
             // pnlExtraFilters
             // 
@@ -2613,8 +2613,8 @@ namespace Analogy
             // 
             // dockPanel2_Container
             // 
-            this.dockPanel2_Container.Controls.Add(this.panel1);
             this.dockPanel2_Container.Controls.Add(this.gridControl);
+            this.dockPanel2_Container.Controls.Add(this.panel1);
             this.dockPanel2_Container.Controls.Add(this.pnlFilters);
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
@@ -2750,9 +2750,9 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.gcFilters)).EndInit();
             this.gcFilters.ResumeLayout(false);
             this.gcFilters.PerformLayout();
+            this.pnlModulesAndDates.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelSearch.Properties)).EndInit();
-            this.pnlModulesAndDates.ResumeLayout(false);
             this.pnlExtraFilters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtcFilters)).EndInit();
             this.xtcFilters.ResumeLayout(false);
