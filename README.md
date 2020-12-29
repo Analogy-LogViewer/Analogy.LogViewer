@@ -22,6 +22,7 @@
 </p>
 
 A log viewer that can parse log files and stream logs from C#, Python, Java and others.
+You can also implement your own parsers or request to add new parsers for other logs
 
 ## Content
 [General](https://github.com/Analogy-LogViewer/Analogy.LogViewer#general)
