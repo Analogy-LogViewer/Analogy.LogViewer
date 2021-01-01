@@ -143,8 +143,10 @@ namespace Analogy
 
         public UCLogs()
         {
-
             InitializeComponent();
+            WorkspaceManager.SetSerializationEnabled(logGrid,false);
+            WorkspaceManager.SetSerializationEnabled(gridControl, false);
+
             _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
             foreach (string value in Utils.LogLevels)
@@ -200,7 +202,8 @@ namespace Analogy
             {
                 return;
             }
-
+            
+            wsLogs.CaptureWorkspace("Default");
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
@@ -216,7 +219,6 @@ namespace Analogy
                 }
                 bprogressBar.Caption = $"{value.Processed}/{value.Total}";
             });
-
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
@@ -255,6 +257,13 @@ namespace Analogy
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
+            if (Settings.UseCustomLogsLayout && !string.IsNullOrEmpty(Settings.LogsLayoutFileName)
+                                             && File.Exists(Settings.LogsLayoutFileName))
+            {
+                string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
+                wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
+                wsLogs.ApplyWorkspace(name);
+            }
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
         {
@@ -501,9 +510,8 @@ namespace Analogy
             logGrid.CustomDrawRowIndicator += LogGrid_CustomDrawRowIndicator;
             logGrid.SelectionChanged += LogGridView_SelectionChanged;
             logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
-
-
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
+            
             ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
@@ -574,6 +582,30 @@ namespace Analogy
 
             ceLogLevelAnd.CheckedChanged += async (s, e) => await FilterHasChanged();
             ceLogLevelOr.CheckedChanged += async (s, e) => await FilterHasChanged();
+
+            wsLogs.WorkspaceSaved += (s, e) =>
+            {
+                Settings.LogsLayoutFileName = e.Workspace.Path;
+                Settings.UseCustomLogsLayout = true;
+            };
+            wsLogs.AfterApplyWorkspace += (s, e) =>
+            {
+                if (e is WorkspaceEventArgs ws)
+                {
+                    if (string.IsNullOrEmpty(ws.Workspace.Path))
+                    {
+                        Settings.UseCustomLogsLayout = false;
+                    }
+                    else if (File.Exists(ws.Workspace.Path))
+                    {
+                        Settings.UseCustomLogsLayout = true;
+                        Settings.LogsLayoutFileName = ws.Workspace.Path;
+                    }
+
+                }
+                
+
+            };
         }
 
 
