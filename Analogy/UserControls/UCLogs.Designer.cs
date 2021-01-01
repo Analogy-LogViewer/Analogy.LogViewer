@@ -41,6 +41,7 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -102,19 +103,23 @@ namespace Analogy
             this.bBtnSaveEntireLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnSaveLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnSaveCurrentSelectionCustomFormat = new DevExpress.XtraBars.BarButtonItem();
-            this.bSMExports = new DevExpress.XtraBars.BarSubItem();
-            this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnExportCSV = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnExportHtml = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockSelection = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiScreenshot = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnImport = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiSettings = new DevExpress.XtraBars.BarSubItem();
+            this.bBtnImport = new DevExpress.XtraBars.BarButtonItem();
+            this.bSMExports = new DevExpress.XtraBars.BarSubItem();
+            this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnExportCSV = new DevExpress.XtraBars.BarButtonItem();
+            this.bBtnExportHtml = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnShare = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiScreenshot = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiLayouts = new DevExpress.XtraBars.BarSubItem();
+            this.bwmiLayout = new DevExpress.XtraBars.BarWorkspaceMenuItem();
+            this.wsLogs = new DevExpress.Utils.WorkspaceManager(this.components);
             this.bdcTopFiltering = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BbarMainMenu = new DevExpress.XtraBars.Bar();
             this.barMessage = new DevExpress.XtraBars.Bar();
@@ -246,7 +251,6 @@ namespace Analogy
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.bsiSettings = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -509,6 +513,8 @@ namespace Analogy
             this.gridColumnLevel.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnLevel.OptionsColumn.ReadOnly = true;
             this.gridColumnLevel.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.gridColumnLevel.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumnLevel.Visible = true;
             this.gridColumnLevel.VisibleIndex = 4;
             this.gridColumnLevel.Width = 115;
@@ -767,9 +773,11 @@ namespace Analogy
             this.bstaticTotalMessages,
             this.bstaticAlert,
             this.bprogressBar,
-            this.bsiSettings});
+            this.bsiSettings,
+            this.bwmiLayout,
+            this.bsiLayouts});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 72;
+            this.barManager1.MaxItemId = 74;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -930,48 +938,6 @@ namespace Analogy
             this.bBtnSaveCurrentSelectionCustomFormat.Name = "bBtnSaveCurrentSelectionCustomFormat";
             this.bBtnSaveCurrentSelectionCustomFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionCustomFormat_ItemClick);
             // 
-            // bSMExports
-            // 
-            this.bSMExports.Caption = "Export Log";
-            this.bSMExports.Id = 20;
-            this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
-            this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
-            this.bSMExports.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportCSV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportHtml)});
-            this.bSMExports.Name = "bSMExports";
-            this.bSMExports.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // bBtnExportExcel
-            // 
-            this.bBtnExportExcel.Caption = "Export To Excel";
-            this.bBtnExportExcel.Id = 21;
-            this.bBtnExportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.Image")));
-            this.bBtnExportExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.LargeImage")));
-            this.bBtnExportExcel.Name = "bBtnExportExcel";
-            this.bBtnExportExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportExcel_ItemClick);
-            // 
-            // bBtnExportCSV
-            // 
-            this.bBtnExportCSV.Caption = "Export To CSV";
-            this.bBtnExportCSV.Id = 22;
-            this.bBtnExportCSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.Image")));
-            this.bBtnExportCSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.LargeImage")));
-            this.bBtnExportCSV.Name = "bBtnExportCSV";
-            this.bBtnExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportCSV_ItemClick);
-            // 
-            // bBtnExportHtml
-            // 
-            this.bBtnExportHtml.Caption = "Export To Html";
-            this.bBtnExportHtml.Id = 23;
-            this.bBtnExportHtml.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.Image")));
-            this.bBtnExportHtml.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.LargeImage")));
-            this.bBtnExportHtml.Name = "bBtnExportHtml";
-            this.bBtnExportHtml.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnExportHtml.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bBtnExportHtml.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportHtml_ItemClick);
-            // 
             // bBtnFullGrid
             // 
             this.bBtnFullGrid.Caption = "Full";
@@ -1021,16 +987,31 @@ namespace Analogy
             this.bBtnUndockSelection.Name = "bBtnUndockSelection";
             this.bBtnUndockSelection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockSelection_ItemClick);
             // 
-            // bbiScreenshot
+            // bBtnDataVisualizer
             // 
-            this.bbiScreenshot.Caption = "Take screenshot";
-            this.bbiScreenshot.Hint = "Take screenshot of the messages control";
-            this.bbiScreenshot.Id = 27;
-            this.bbiScreenshot.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.Image")));
-            this.bbiScreenshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.LargeImage")));
-            this.bbiScreenshot.Name = "bbiScreenshot";
-            this.bbiScreenshot.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bbiScreenshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiScreenshot_ItemClick);
+            this.bBtnDataVisualizer.Caption = "Data Visualizer";
+            this.bBtnDataVisualizer.Id = 26;
+            this.bBtnDataVisualizer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.Image")));
+            this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
+            this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
+            this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
+            // 
+            // bsiSettings
+            // 
+            this.bsiSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiSettings.Caption = "Settings";
+            this.bsiSettings.Id = 71;
+            this.bsiSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.Image")));
+            this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.LargeImage")));
+            this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnShare),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiLayouts)});
+            this.bsiSettings.Name = "bsiSettings";
+            this.bsiSettings.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
             // bBtnImport
             // 
@@ -1043,15 +1024,47 @@ namespace Analogy
             this.bBtnImport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnImport_ItemClick);
             // 
-            // bBtnDataVisualizer
+            // bSMExports
             // 
-            this.bBtnDataVisualizer.Caption = "Data Visualizer";
-            this.bBtnDataVisualizer.Id = 26;
-            this.bBtnDataVisualizer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.Image")));
-            this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
-            this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
-            this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
+            this.bSMExports.Caption = "Export Log";
+            this.bSMExports.Id = 20;
+            this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
+            this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
+            this.bSMExports.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportCSV),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportHtml)});
+            this.bSMExports.Name = "bSMExports";
+            this.bSMExports.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bBtnExportExcel
+            // 
+            this.bBtnExportExcel.Caption = "Export To Excel";
+            this.bBtnExportExcel.Id = 21;
+            this.bBtnExportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.Image")));
+            this.bBtnExportExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.LargeImage")));
+            this.bBtnExportExcel.Name = "bBtnExportExcel";
+            this.bBtnExportExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportExcel_ItemClick);
+            // 
+            // bBtnExportCSV
+            // 
+            this.bBtnExportCSV.Caption = "Export To CSV";
+            this.bBtnExportCSV.Id = 22;
+            this.bBtnExportCSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.Image")));
+            this.bBtnExportCSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.LargeImage")));
+            this.bBtnExportCSV.Name = "bBtnExportCSV";
+            this.bBtnExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportCSV_ItemClick);
+            // 
+            // bBtnExportHtml
+            // 
+            this.bBtnExportHtml.Caption = "Export To Html";
+            this.bBtnExportHtml.Id = 23;
+            this.bBtnExportHtml.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.Image")));
+            this.bBtnExportHtml.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.LargeImage")));
+            this.bBtnExportHtml.Name = "bBtnExportHtml";
+            this.bBtnExportHtml.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnExportHtml.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bBtnExportHtml.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportHtml_ItemClick);
             // 
             // bBtnShare
             // 
@@ -1060,6 +1073,40 @@ namespace Analogy
             this.bBtnShare.ImageOptions.Image = global::Analogy.Properties.Resources.upload16x16;
             this.bBtnShare.Name = "bBtnShare";
             this.bBtnShare.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bbiScreenshot
+            // 
+            this.bbiScreenshot.Caption = "Take screenshot";
+            this.bbiScreenshot.Hint = "Take screenshot of the messages control";
+            this.bbiScreenshot.Id = 27;
+            this.bbiScreenshot.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.Image")));
+            this.bbiScreenshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.LargeImage")));
+            this.bbiScreenshot.Name = "bbiScreenshot";
+            this.bbiScreenshot.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bbiScreenshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiScreenshot_ItemClick);
+            // 
+            // bsiLayouts
+            // 
+            this.bsiLayouts.Caption = "Windows Layouts";
+            this.bsiLayouts.Id = 73;
+            this.bsiLayouts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiLayouts.ImageOptions.Image")));
+            this.bsiLayouts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiLayouts.ImageOptions.LargeImage")));
+            this.bsiLayouts.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bwmiLayout)});
+            this.bsiLayouts.Name = "bsiLayouts";
+            // 
+            // bwmiLayout
+            // 
+            this.bwmiLayout.Caption = "Windows Layout";
+            this.bwmiLayout.Id = 72;
+            this.bwmiLayout.Name = "bwmiLayout";
+            this.bwmiLayout.ShowSaveLoadCommands = true;
+            this.bwmiLayout.WorkspaceManager = this.wsLogs;
+            // 
+            // wsLogs
+            // 
+            this.wsLogs.TargetControl = this;
+            this.wsLogs.TransitionType = pushTransition1;
             // 
             // bdcTopFiltering
             // 
@@ -2679,21 +2726,6 @@ namespace Analogy
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
             this.dockPanel1_Container.TabIndex = 0;
             // 
-            // bsiSettings
-            // 
-            this.bsiSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiSettings.Caption = "Settings";
-            this.bsiSettings.Id = 71;
-            this.bsiSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.Image")));
-            this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.LargeImage")));
-            this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnShare),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot)});
-            this.bsiSettings.Name = "bsiSettings";
-            this.bsiSettings.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -2982,5 +3014,8 @@ namespace Analogy
         private DevExpress.XtraEditors.CheckEdit ceFilterPanelFilter;
         private DevExpress.XtraEditors.CheckEdit ceFilterPanelSearch;
         private DevExpress.XtraBars.BarSubItem bsiSettings;
+        private DevExpress.XtraBars.BarWorkspaceMenuItem bwmiLayout;
+        private DevExpress.Utils.WorkspaceManager wsLogs;
+        private DevExpress.XtraBars.BarSubItem bsiLayouts;
     }
 }

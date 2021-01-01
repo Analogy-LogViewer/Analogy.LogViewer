@@ -31,6 +31,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid;
 
 namespace Analogy
 {
@@ -143,8 +144,10 @@ namespace Analogy
 
         public UCLogs()
         {
-
             InitializeComponent();
+           // WorkspaceManager.SetSerializationEnabled(logGrid,false);
+           // WorkspaceManager.SetSerializationEnabled(gridControl, false);
+
             _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
             foreach (string value in Utils.LogLevels)
@@ -200,7 +203,8 @@ namespace Analogy
             {
                 return;
             }
-
+            
+            wsLogs.CaptureWorkspace("Default");
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
@@ -216,7 +220,6 @@ namespace Analogy
                 }
                 bprogressBar.Caption = $"{value.Processed}/{value.Total}";
             });
-
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
@@ -255,6 +258,13 @@ namespace Analogy
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
+            if (Settings.UseCustomLogsLayout && !string.IsNullOrEmpty(Settings.LogsLayoutFileName)
+                                             && File.Exists(Settings.LogsLayoutFileName))
+            {
+                string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
+                wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
+                wsLogs.ApplyWorkspace(name);
+            }
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
         {
@@ -501,9 +511,8 @@ namespace Analogy
             logGrid.CustomDrawRowIndicator += LogGrid_CustomDrawRowIndicator;
             logGrid.SelectionChanged += LogGridView_SelectionChanged;
             logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
-
-
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
+            
             ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
@@ -574,6 +583,30 @@ namespace Analogy
 
             ceLogLevelAnd.CheckedChanged += async (s, e) => await FilterHasChanged();
             ceLogLevelOr.CheckedChanged += async (s, e) => await FilterHasChanged();
+
+            wsLogs.WorkspaceSaved += (s, e) =>
+            {
+                Settings.LogsLayoutFileName = e.Workspace.Path;
+                Settings.UseCustomLogsLayout = true;
+            };
+            wsLogs.AfterApplyWorkspace += (s, e) =>
+            {
+                if (e is WorkspaceEventArgs ws)
+                {
+                    if (string.IsNullOrEmpty(ws.Workspace.Path))
+                    {
+                        Settings.UseCustomLogsLayout = false;
+                    }
+                    else if (File.Exists(ws.Workspace.Path))
+                    {
+                        Settings.UseCustomLogsLayout = true;
+                        Settings.LogsLayoutFileName = ws.Workspace.Path;
+                    }
+
+                }
+                
+
+            };
         }
 
 
@@ -604,30 +637,34 @@ namespace Analogy
 
         private void LogGrid_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
         {
-            if (e.SummaryProcess == CustomSummaryProcess.Start)
+            if (e.Item is GridSummaryItem item && item.FieldName.Equals(gridColumnLevel.FieldName))
             {
-                foreach (var key in Utils.LogLevels)
+                if (e.SummaryProcess == CustomSummaryProcess.Start)
                 {
-                    counts[key] = 0;
+                    foreach (var key in Utils.LogLevels)
+                    {
+                        counts[key] = 0;
+                    }
                 }
-            }
-            else if (e.SummaryProcess == CustomSummaryProcess.Calculate)
-            {
-                counts[(string)e.FieldValue] = counts[(string)e.FieldValue] + 1;
-            }
+                else if (e.SummaryProcess == CustomSummaryProcess.Calculate)
+                {
+                    counts[(string) e.FieldValue] = counts[(string) e.FieldValue] + 1;
+                }
 
-            else if (e.SummaryProcess == CustomSummaryProcess.Finalize)
-            {
-                bstaticTotalMessages.Caption = $"Total messages:{counts.Values.Sum()}. Errors:{counts["Error"]}. Warnings:{counts["Warning"]}. Critical:{counts["Critical"]}.";
-            }
-            //todo: add alerts
-            //if (Settings.PreDefinedQueries.Alerts.Any())
-            //{
-            //    var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
-            //    alertCount = messages.Count(m =>
-            //        Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
+                else if (e.SummaryProcess == CustomSummaryProcess.Finalize)
+                {
+                    bstaticTotalMessages.Caption =
+                        $"Total messages:{counts.Values.Sum()}. Errors:{counts["Error"]}. Warnings:{counts["Warning"]}. Critical:{counts["Critical"]}.";
+                }
+                //todo: add alerts
+                //if (Settings.PreDefinedQueries.Alerts.Any())
+                //{
+                //    var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
+                //    alertCount = messages.Count(m =>
+                //        Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
 
-            //}
+                //}
+            }
         }
 
         private void LogGrid_MouseDown(object sender, MouseEventArgs e)
@@ -928,6 +965,12 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            gridControl.ForceInitialize();
+            if (File.Exists(Settings.LogGridFileName))
+            {
+                gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
+                gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
+            }
             dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
@@ -935,18 +978,12 @@ namespace Analogy
             bBtnShare.Enabled =
                 FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
                     .SelectMany(fc => fc.Shareables).Any();
-                   
+                 
 
-            logGrid.Columns["Level"].SummaryItem.SummaryType = SummaryItemType.Custom;
-            logGrid.Columns["Level"].SummaryItem.FieldName = "Level";
             logGrid.OptionsSelection.MultiSelect = true;
             logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
-            //logGrid.OptionsView.ShowFooter = true;
-            //Set up a summary on the "yourfieldname" column
-            //logGrid.Columns[0].SummaryItem.SummaryType = SummaryItemType.Custom;
-            ////logGrid.Columns[0].SummaryItem.FieldName = "id";
-
-            //logGrid.Columns[0].SummaryItem.DisplayFormat = "Rows: {0:n0}";
+           // logGrid.OptionsView.ShowFooter = true;
+           
             logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
             ceFilterPanelSearch.CheckState = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search ? CheckState.Checked : CheckState.Unchecked;
             ceFilterPanelFilter.CheckState = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Filter ? CheckState.Checked : CheckState.Unchecked;
@@ -970,12 +1007,6 @@ namespace Analogy
             txtbExclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtbExclude.MaskBox.AutoCompleteCustomSource = autoCompleteExclude;
 
-            gridControl.ForceInitialize();
-            if (File.Exists(Settings.LogGridFileName))
-            {
-                gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
-                gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
-            }
             btswitchRefreshLog.Checked = true;
             LogGrid.BestFitColumns();
             btswitchMessageDetails.Checked = Settings.ShowMessageDetails;
