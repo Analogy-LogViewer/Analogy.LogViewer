@@ -133,6 +133,8 @@ namespace Analogy
         public bool TrackActiveMessage { get; set; }
         public float RealTimeRefreshInterval { get; set; }
         public FilteringExclusion FilteringExclusion { get; set; }
+        public string LogsLayoutFileName { get; set; }
+        public bool UseCustomLogsLayout { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -228,21 +230,14 @@ namespace Analogy
             SingleInstance = Settings.Default.SingleInstance;
             LastUpdate = Settings.Default.LastUpdate;
             LastVersionChecked = ParseSettings<GithubObjects.GithubReleaseEntry>(Settings.Default.LastVersionChecked);
-            switch (Settings.Default.UpdateMode)
+            UpdateMode = Settings.Default.UpdateMode switch
             {
-                case 0:
-                    UpdateMode = UpdateMode.Never;
-                    break;
-                case 1:
-                    UpdateMode = UpdateMode.EachStartup;
-                    break;
-                case 2:
-                    UpdateMode = UpdateMode.OnceAWeek;
-                    break;
-                case 3:
-                    UpdateMode = UpdateMode.OnceAMonth;
-                    break;
-            }
+                0 => UpdateMode.Never,
+                1 => UpdateMode.EachStartup,
+                2 => UpdateMode.OnceAWeek,
+                3 => UpdateMode.OnceAMonth,
+                _ => UpdateMode
+            };
 
             if (Enum.TryParse(Settings.Default.ApplicationStyle, out LookAndFeelStyle style))
             {
@@ -271,6 +266,8 @@ namespace Analogy
             EnableFirstChanceException = Settings.Default.EnableFirstChanceException;
             TrackActiveMessage = Settings.Default.TrackActiveMessage;
             RealTimeRefreshInterval = Settings.Default.RealTimeRefreshInterval;
+            UseCustomLogsLayout = Settings.Default.UseCustomLogsLayout;
+            LogsLayoutFileName = Settings.Default.LogsLayoutFileName;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -359,8 +356,9 @@ namespace Analogy
             Settings.Default.TrackActiveMessage = TrackActiveMessage;
             Settings.Default.RealTimeRefreshInterval = RealTimeRefreshInterval;
             Settings.Default.FilteringExclusion = JsonConvert.SerializeObject(FilteringExclusion);
+            Settings.Default.UseCustomLogsLayout = UseCustomLogsLayout;
+            Settings.Default.LogsLayoutFileName = LogsLayoutFileName;
             Settings.Default.Save();
-
         }
 
         public void AddToRecentFiles(Guid iD, string file)

@@ -858,5 +858,29 @@ namespace Analogy.Properties {
                 this["FilteringExclusion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LogsLayoutFileName {
+            get {
+                return ((string)(this["LogsLayoutFileName"]));
+            }
+            set {
+                this["LogsLayoutFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseCustomLogsLayout {
+            get {
+                return ((bool)(this["UseCustomLogsLayout"]));
+            }
+            set {
+                this["UseCustomLogsLayout"] = value;
+            }
+        }
     }
 }
