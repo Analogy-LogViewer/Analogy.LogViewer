@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.4.1 - Add Import button to import existing logs into already loaded file #787",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,01)),
+                new AnalogyChangeLog("V4.4.1 - [Tool tips] Enable Data providers to supply their own text #737",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,01)),
                 new AnalogyChangeLog("V4.4.1 - Add application restart button when enabling/disabling data providers #778",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,25)),
                 new AnalogyChangeLog("V4.4.1 - Add option to show specific log levels (like Error,Warning...) regardless active filtering #784",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,25)),
                 new AnalogyChangeLog("V4.4.1 - [UI] Enable DPI awareness #783",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,20)),

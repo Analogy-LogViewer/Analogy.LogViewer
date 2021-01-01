@@ -1321,7 +1321,7 @@ namespace Analogy.Forms
                         {
                             OpenFileDialog openFileDialog1 = new OpenFileDialog
                             {
-                                Filter = GetOpenFilter(dataProvider.FileOpenDialogFilters),
+                                Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
                                 Title = @"Open Files",
                                 Multiselect = true
                             };
@@ -1464,29 +1464,7 @@ namespace Analogy.Forms
             }
         }
 
-        private string GetOpenFilter(string openFilter)
-        {
-            if (!settings.EnableCompressedArchives)
-            {
-                return openFilter;
-            }
-            //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
-            //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
-            //return openFilter + compressedFilter;
-            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase))
-            {
-                string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
-                openFilter = openFilter + compressedFilter;
-            }
-            if (!openFilter.Contains("*.gz", StringComparison.InvariantCultureIgnoreCase))
-            {
-                string compressedFilter = "|Compressed Gzip Archive (*.gz)|*.gz";
-                openFilter = openFilter + compressedFilter;
-            }
-
-            return openFilter;
-        }
-
+  
         private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
           Guid factoryId, string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
@@ -1651,7 +1629,7 @@ namespace Analogy.Forms
                 {
                     OpenFileDialog openFileDialog1 = new OpenFileDialog
                     {
-                        Filter = GetOpenFilter(offlineAnalogy.FileOpenDialogFilters),
+                        Filter = Utils.GetOpenFilter(offlineAnalogy.FileOpenDialogFilters),
                         Title = @"Open Files",
                         Multiselect = true
                     };

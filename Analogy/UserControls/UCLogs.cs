@@ -735,6 +735,8 @@ namespace Analogy
             {
                 RealTimeMode = true;
             }
+            bBtnImport.Visibility =  BarItemVisibility.Always;
+            bBtnImport.Enabled = FileDataProvider != null;
         }
 
 
@@ -930,11 +932,10 @@ namespace Analogy
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
             pnlExtraFilters.Visible = !_simpleMode;
-            bBtnShare.Visibility =
+            bBtnShare.Enabled =
                 FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
-                    .SelectMany(fc => fc.Shareables).Any()
-                    ? BarItemVisibility.Always
-                    : BarItemVisibility.Never;
+                    .SelectMany(fc => fc.Shareables).Any();
+                   
 
             logGrid.Columns["Level"].SummaryItem.SummaryType = SummaryItemType.Custom;
             logGrid.Columns["Level"].SummaryItem.FieldName = "Level";
@@ -2348,24 +2349,27 @@ namespace Analogy
 
         private async void bBtnImport_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter =
-                "Plain XML log file (*.xml)|*.xml|JSON file (*.json)|*.json|NLOG file (*.nlog)|*.nlog|Zipped XML log file (*.zip)|*.zip|ETW log file (*.etl)|*.etl";
-            openFileDialog1.Title = @"Import file to current view";
-            openFileDialog1.Multiselect = false;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (FileDataProvider != null)
             {
-                try
+                OpenFileDialog openFileDialog1 = new OpenFileDialog
                 {
-                    await LoadFilesAsync(new List<string> { openFileDialog1.FileName }, false);
-                }
-                catch (Exception exception)
+                    Filter = Utils.GetOpenFilter(FileDataProvider.FileOpenDialogFilters),
+                    Title = @"Import file to current view",
+                    Multiselect = false
+                };
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    XtraMessageBox.Show(exception.Message, @"Error Opening file", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+                    try
+                    {
+                        await LoadFilesAsync(new List<string> { openFileDialog1.FileName }, false);
+                    }
+                    catch (Exception exception)
+                    {
+                        XtraMessageBox.Show(exception.Message, @"Error Opening file", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
 
+                }
             }
         }
 

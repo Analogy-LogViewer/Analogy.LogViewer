@@ -246,6 +246,7 @@ namespace Analogy
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.bsiSettings = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -765,9 +766,10 @@ namespace Analogy
             this.bbtnCancel,
             this.bstaticTotalMessages,
             this.bstaticAlert,
-            this.bprogressBar});
+            this.bprogressBar,
+            this.bsiSettings});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 71;
+            this.barManager1.MaxItemId = 72;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -789,13 +791,10 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnDataVisualizer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnShare)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
             this.barTopFiltering.OptionsBar.DisableClose = true;
@@ -933,7 +932,7 @@ namespace Analogy
             // 
             // bSMExports
             // 
-            this.bSMExports.Caption = "Export";
+            this.bSMExports.Caption = "Export Log";
             this.bSMExports.Id = 20;
             this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
             this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
@@ -2646,7 +2645,7 @@ namespace Analogy
             this.dockPanelMessageInfo.Location = new System.Drawing.Point(5, 27);
             this.dockPanelMessageInfo.Name = "dockPanelMessageInfo";
             this.dockPanelMessageInfo.Options.ShowCloseButton = false;
-            this.dockPanelMessageInfo.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelMessageInfo.OriginalSize = new System.Drawing.Size(1843, 141);
             this.dockPanelMessageInfo.Size = new System.Drawing.Size(1843, 141);
             this.dockPanelMessageInfo.Text = "Message Info";
             // 
@@ -2667,7 +2666,7 @@ namespace Analogy
             this.dockPanelBookmarks.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
             this.dockPanelBookmarks.Location = new System.Drawing.Point(5, 27);
             this.dockPanelBookmarks.Name = "dockPanelBookmarks";
-            this.dockPanelBookmarks.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelBookmarks.OriginalSize = new System.Drawing.Size(1843, 141);
             this.dockPanelBookmarks.Size = new System.Drawing.Size(1843, 141);
             this.dockPanelBookmarks.Text = "Bookmarks";
             // 
@@ -2679,6 +2678,21 @@ namespace Analogy
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
             this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // bsiSettings
+            // 
+            this.bsiSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiSettings.Caption = "Settings";
+            this.bsiSettings.Id = 71;
+            this.bsiSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.Image")));
+            this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.LargeImage")));
+            this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnShare),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot)});
+            this.bsiSettings.Name = "bsiSettings";
+            this.bsiSettings.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
             // UCLogs
             // 
@@ -2967,5 +2981,6 @@ namespace Analogy
         private DevExpress.XtraEditors.GroupControl gcFilters;
         private DevExpress.XtraEditors.CheckEdit ceFilterPanelFilter;
         private DevExpress.XtraEditors.CheckEdit ceFilterPanelSearch;
+        private DevExpress.XtraBars.BarSubItem bsiSettings;
     }
 }
