@@ -45,7 +45,8 @@ namespace Analogy.Forms
         {
             var (_, release) = await Updater.CheckVersion(true);
             Settings.LastVersionChecked = release;
-            lblLatestVersion.Text = $"Latest version is: {release.TagName}.";
+            string preRelease = release.PreRelease ? " (This is pre-release version)" : string.Empty;
+            lblLatestVersion.Text = $"Latest version is: {release.TagName}{preRelease}.";
             richTextBoxRelease.Text = release.ToString();
             hyperLinkEditLatest.Text = release.HtmlUrl;
             if (Updater.NewVersionExist)
