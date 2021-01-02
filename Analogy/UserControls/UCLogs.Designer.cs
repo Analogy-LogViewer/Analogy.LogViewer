@@ -251,6 +251,8 @@ namespace Analogy
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGoToActiveMessage = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -775,9 +777,11 @@ namespace Analogy
             this.bprogressBar,
             this.bsiSettings,
             this.bwmiLayout,
-            this.bsiLayouts});
+            this.bsiLayouts,
+            this.bbiGoToMessage,
+            this.bbiGoToActiveMessage});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 74;
+            this.barManager1.MaxItemId = 76;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -798,6 +802,7 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchMessageDetails),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.btsAutoScrollToBottom),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiGoToActiveMessage, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
@@ -1140,7 +1145,8 @@ namespace Analogy
             this.barMessage.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.barMessage.FloatLocation = new System.Drawing.Point(901, 601);
             this.barMessage.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnCopyButtom)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnCopyButtom),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiGoToMessage, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barMessage.OptionsBar.AllowCollapse = true;
             this.barMessage.OptionsBar.AllowDelete = true;
             this.barMessage.OptionsBar.AllowQuickCustomization = false;
@@ -2726,6 +2732,22 @@ namespace Analogy
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
             this.dockPanel1_Container.TabIndex = 0;
             // 
+            // bbiGoToMessage
+            // 
+            this.bbiGoToMessage.Caption = "Go To This Message";
+            this.bbiGoToMessage.Id = 74;
+            this.bbiGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToselectedMessage.ImageOptions.Image")));
+            this.bbiGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToselectedMessage.ImageOptions.LargeImage")));
+            this.bbiGoToMessage.Name = "bbiGoToMessage";
+            // 
+            // bbiGoToActiveMessage
+            // 
+            this.bbiGoToActiveMessage.Caption = "Go To Active Message";
+            this.bbiGoToActiveMessage.Id = 75;
+            this.bbiGoToActiveMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.Image")));
+            this.bbiGoToActiveMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.LargeImage")));
+            this.bbiGoToActiveMessage.Name = "bbiGoToActiveMessage";
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3017,5 +3039,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarWorkspaceMenuItem bwmiLayout;
         private DevExpress.Utils.WorkspaceManager wsLogs;
         private DevExpress.XtraBars.BarSubItem bsiLayouts;
+        private DevExpress.XtraBars.BarButtonItem bbiGoToMessage;
+        private DevExpress.XtraBars.BarButtonItem bbiGoToActiveMessage;
     }
 }

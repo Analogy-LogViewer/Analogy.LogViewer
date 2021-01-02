@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.4.1 - Add button to go selected message in grid #729",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,02)),
                 new AnalogyChangeLog("V4.4.1 - Add Import button to import existing logs into already loaded file #787",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,01)),
                 new AnalogyChangeLog("V4.4.1 - [Tool tips] Enable Data providers to supply their own text #737",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,01)),
                 new AnalogyChangeLog("V4.4.1 - Add application restart button when enabling/disabling data providers #778",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2020,12,25)),

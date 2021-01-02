@@ -102,7 +102,7 @@ namespace Analogy
                 return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList();
             }
         }
-        private AnalogyLogMessage SelectedMassage { get; set; }
+        private AnalogyLogMessage? SelectedMassage { get; set; }
         private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
@@ -145,8 +145,8 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
-           // WorkspaceManager.SetSerializationEnabled(logGrid,false);
-           // WorkspaceManager.SetSerializationEnabled(gridControl, false);
+            // WorkspaceManager.SetSerializationEnabled(logGrid,false);
+            // WorkspaceManager.SetSerializationEnabled(gridControl, false);
 
             _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
@@ -203,7 +203,7 @@ namespace Analogy
             {
                 return;
             }
-            
+
             wsLogs.CaptureWorkspace("Default");
             LoadUISettings();
             LoadReplacementHeaders();
@@ -276,13 +276,30 @@ namespace Analogy
         private void SetupEventsHandlers()
         {
             #region buttons
-            bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
+
+            bbiGoToActiveMessage.ItemClick += (s, e) =>
             {
-                if (bbiIncludeColumnHeaderFilter.Tag is ViewColumnFilterInfo filter)
+                if (SelectedMassage != null)
                 {
-                    logGrid.ActiveFilter.Add(filter);
+                    GoToPrimaryGridMessage(SelectedMassage);
+
                 }
             };
+            bbiGoToMessage.ItemClick += (s, e) =>
+            {
+                if (rtxtContent.Tag is AnalogyLogMessage m)
+                {
+                    GoToPrimaryGridMessage(m);
+
+                }
+            };
+            bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
+           {
+               if (bbiIncludeColumnHeaderFilter.Tag is ViewColumnFilterInfo filter)
+               {
+                   logGrid.ActiveFilter.Add(filter);
+               }
+           };
             bbiIncludeMessage.ItemClick += tsmiInclude_Click;
             bbiIncludeSource.ItemClick += (s, e) =>
             {
@@ -512,7 +529,7 @@ namespace Analogy
             logGrid.SelectionChanged += LogGridView_SelectionChanged;
             logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
-            
+
             ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
@@ -604,7 +621,7 @@ namespace Analogy
                     }
 
                 }
-                
+
 
             };
         }
@@ -648,7 +665,7 @@ namespace Analogy
                 }
                 else if (e.SummaryProcess == CustomSummaryProcess.Calculate)
                 {
-                    counts[(string) e.FieldValue] = counts[(string) e.FieldValue] + 1;
+                    counts[(string)e.FieldValue] = counts[(string)e.FieldValue] + 1;
                 }
 
                 else if (e.SummaryProcess == CustomSummaryProcess.Finalize)
@@ -772,7 +789,7 @@ namespace Analogy
             {
                 RealTimeMode = true;
             }
-            bBtnImport.Visibility =  BarItemVisibility.Always;
+            bBtnImport.Visibility = BarItemVisibility.Always;
             bBtnImport.Enabled = FileDataProvider != null;
         }
 
@@ -978,12 +995,12 @@ namespace Analogy
             bBtnShare.Enabled =
                 FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
                     .SelectMany(fc => fc.Shareables).Any();
-                 
+
 
             logGrid.OptionsSelection.MultiSelect = true;
             logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
-           // logGrid.OptionsView.ShowFooter = true;
-           
+            // logGrid.OptionsView.ShowFooter = true;
+
             logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
             ceFilterPanelSearch.CheckState = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search ? CheckState.Checked : CheckState.Unchecked;
             ceFilterPanelFilter.CheckState = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Filter ? CheckState.Checked : CheckState.Unchecked;
@@ -1851,10 +1868,15 @@ namespace Analogy
         {
             if (InvokeRequired)
             {
-                BeginInvoke(new MethodInvoker(() => rtxtContent.Text = m.Text));
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    rtxtContent.Tag = m;
+                    rtxtContent.Text = m.Text;
+                }));
             }
             else
             {
+                rtxtContent.Tag = m;
                 rtxtContent.Text = m.Text;
             }
 
@@ -1950,8 +1972,6 @@ namespace Analogy
         }
         private void LogGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message == null)
             {
@@ -2136,7 +2156,7 @@ namespace Analogy
                 return;
             }
 
-            GoToMessage();
+            GoToBookmarkedMessage();
 
         }
 
@@ -2223,23 +2243,41 @@ namespace Analogy
 
         }
 
-        private void GoToMessage()
+        private void GoToBookmarkedMessage()
         {
             int[] selRows = gridViewBookmarkedMessages.GetSelectedRows();
             if (selRows == null || selRows.Length != 1)
             {
                 return;
             }
-
             int rownum = selRows.First();
             var currentRow = (DataRowView)gridViewBookmarkedMessages.GetRow(rownum);
+            var logMessage = currentRow["Object"] as AnalogyLogMessage;
+            if (logMessage == null)
+            {
+                return;
+            }
+            GoToMessage(gridViewBookmarkedMessages, logMessage);
+        }
+
+        private void GoToPrimaryGridMessage(AnalogyLogMessage m)
+        {
+            btsAutoScrollToBottom.Checked = false;
+            GoToMessage(logGrid, m);
+
+        }
+
+        private void GoToMessage(GridView gridView, AnalogyLogMessage logMessage)
+        {
             try
             {
-                var LogMessage = currentRow["Object"] as AnalogyLogMessage;
-                var location = LocateByValue(0, gridColumnObject, LogMessage);
+                var location = LocateByValue(0, gridColumnObject, logMessage);
                 if (location >= 0)
                 {
-                    LogGrid.MakeRowVisible(location);
+                    logGrid.FocusedRowChanged -= logGrid_FocusedRowChanged;
+                    gridView.MakeRowVisible(location);
+                    gridView.FocusedRowHandle=location;
+                    logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
                 }
                 else
                 {
@@ -2455,7 +2493,7 @@ namespace Analogy
 
         private void bBtnGoToMessage_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GoToMessage();
+            GoToBookmarkedMessage();
         }
 
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
