@@ -31,22 +31,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRunForm));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
-            this.btnNext1 = new DevExpress.XtraEditors.SimpleButton();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.pnlBottom1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnNext1 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.tpRibbon = new DevExpress.XtraTab.XtraTabPage();
+            this.pnlFill2 = new DevExpress.XtraEditors.PanelControl();
+            this.memoEdit2 = new DevExpress.XtraEditors.MemoEdit();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
+            this.pnlBottom2 = new DevExpress.XtraEditors.PanelControl();
             this.btnBack1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnNext2 = new DevExpress.XtraEditors.SimpleButton();
-            this.memoEdit2 = new DevExpress.XtraEditors.MemoEdit();
             this.tpSettings = new DevExpress.XtraTab.XtraTabPage();
-            this.btnBack2 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnNext3 = new DevExpress.XtraEditors.SimpleButton();
             this.memoEdit3 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnNext3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnBack2 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.tpDataProviders = new DevExpress.XtraTab.XtraTabPage();
             this.chkLstDataProviderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.pnlBottom4 = new DevExpress.XtraEditors.PanelControl();
             this.btnBack3 = new DevExpress.XtraEditors.SimpleButton();
             this.btnNext4 = new DevExpress.XtraEditors.SimpleButton();
             this.lblDataProviders = new DevExpress.XtraEditors.LabelControl();
@@ -61,17 +65,25 @@
             this.xtraTabControl1.SuspendLayout();
             this.tpWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlBottom1)).BeginInit();
+            this.pnlBottom1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.tpRibbon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlFill2)).BeginInit();
+            this.pnlFill2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlBottom2)).BeginInit();
+            this.pnlBottom2.SuspendLayout();
             this.tpSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             this.tpDataProviders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlBottom4)).BeginInit();
+            this.pnlBottom4.SuspendLayout();
             this.tpFinish.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).BeginInit();
@@ -84,7 +96,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tpWelcome;
             this.xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1121, 396);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1121, 496);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tpWelcome,
@@ -95,17 +107,35 @@
             // 
             // tpWelcome
             // 
-            this.tpWelcome.Controls.Add(this.btnNext1);
             this.tpWelcome.Controls.Add(this.memoEdit1);
+            this.tpWelcome.Controls.Add(this.pnlBottom1);
             this.tpWelcome.Controls.Add(this.pictureEdit1);
             this.tpWelcome.Name = "tpWelcome";
-            this.tpWelcome.Size = new System.Drawing.Size(1114, 389);
+            this.tpWelcome.Size = new System.Drawing.Size(1114, 489);
             this.tpWelcome.Text = "Welcome";
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit1.EditValue = resources.GetString("memoEdit1.EditValue");
+            this.memoEdit1.Location = new System.Drawing.Point(490, 0);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(624, 439);
+            this.memoEdit1.TabIndex = 1;
+            // 
+            // pnlBottom1
+            // 
+            this.pnlBottom1.Controls.Add(this.btnNext1);
+            this.pnlBottom1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottom1.Location = new System.Drawing.Point(490, 439);
+            this.pnlBottom1.Name = "pnlBottom1";
+            this.pnlBottom1.Size = new System.Drawing.Size(624, 50);
+            this.pnlBottom1.TabIndex = 3;
             // 
             // btnNext1
             // 
             this.btnNext1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext1.Location = new System.Drawing.Point(996, 325);
+            this.btnNext1.Location = new System.Drawing.Point(504, 10);
             this.btnNext1.Name = "btnNext1";
             this.btnNext1.Size = new System.Drawing.Size(115, 34);
             this.btnNext1.TabIndex = 2;
@@ -113,21 +143,10 @@
             this.btnNext1.Text = "Next";
             this.btnNext1.Click += new System.EventHandler(this.SetNext);
             // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoEdit1.EditValue = resources.GetString("memoEdit1.EditValue");
-            this.memoEdit1.Location = new System.Drawing.Point(395, 3);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(716, 316);
-            this.memoEdit1.TabIndex = 1;
-            // 
             // pictureEdit1
             // 
             this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureEdit1.EditValue = global::Analogy.Properties.Resources.AnalogyBanner512x512;
+            this.pictureEdit1.EditValue = global::Analogy.Properties.Resources.Analogy512x512;
             this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ReadOnly = true;
@@ -135,37 +154,63 @@
             this.pictureEdit1.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit1.Properties.ShowMenu = false;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(389, 389);
+            this.pictureEdit1.Size = new System.Drawing.Size(490, 489);
             this.pictureEdit1.TabIndex = 0;
             // 
             // tpRibbon
             // 
-            this.tpRibbon.Controls.Add(this.pictureEdit2);
-            this.tpRibbon.Controls.Add(this.btnBack1);
-            this.tpRibbon.Controls.Add(this.btnNext2);
-            this.tpRibbon.Controls.Add(this.memoEdit2);
+            this.tpRibbon.Controls.Add(this.pnlFill2);
+            this.tpRibbon.Controls.Add(this.pnlBottom2);
             this.tpRibbon.Name = "tpRibbon";
-            this.tpRibbon.Size = new System.Drawing.Size(1114, 389);
+            this.tpRibbon.Size = new System.Drawing.Size(1114, 489);
             this.tpRibbon.Text = "Application Ribbon";
+            // 
+            // pnlFill2
+            // 
+            this.pnlFill2.Controls.Add(this.memoEdit2);
+            this.pnlFill2.Controls.Add(this.pictureEdit2);
+            this.pnlFill2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFill2.Location = new System.Drawing.Point(0, 0);
+            this.pnlFill2.Name = "pnlFill2";
+            this.pnlFill2.Size = new System.Drawing.Size(1114, 444);
+            this.pnlFill2.TabIndex = 6;
+            // 
+            // memoEdit2
+            // 
+            this.memoEdit2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit2.EditValue = resources.GetString("memoEdit2.EditValue");
+            this.memoEdit2.Location = new System.Drawing.Point(2, 2);
+            this.memoEdit2.Name = "memoEdit2";
+            this.memoEdit2.Size = new System.Drawing.Size(1110, 265);
+            this.memoEdit2.TabIndex = 2;
             // 
             // pictureEdit2
             // 
-            this.pictureEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureEdit2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureEdit2.EditValue = global::Analogy.Properties.Resources.Ribbon2;
-            this.pictureEdit2.Location = new System.Drawing.Point(0, 245);
+            this.pictureEdit2.Location = new System.Drawing.Point(2, 267);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.ReadOnly = true;
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit2.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit2.Properties.ShowMenu = false;
-            this.pictureEdit2.Size = new System.Drawing.Size(1114, 101);
+            this.pictureEdit2.Size = new System.Drawing.Size(1110, 175);
             this.pictureEdit2.TabIndex = 1;
+            // 
+            // pnlBottom2
+            // 
+            this.pnlBottom2.Controls.Add(this.btnBack1);
+            this.pnlBottom2.Controls.Add(this.btnNext2);
+            this.pnlBottom2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottom2.Location = new System.Drawing.Point(0, 444);
+            this.pnlBottom2.Name = "pnlBottom2";
+            this.pnlBottom2.Size = new System.Drawing.Size(1114, 45);
+            this.pnlBottom2.TabIndex = 5;
             // 
             // btnBack1
             // 
             this.btnBack1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack1.Location = new System.Drawing.Point(875, 352);
+            this.btnBack1.Location = new System.Drawing.Point(871, 6);
             this.btnBack1.Name = "btnBack1";
             this.btnBack1.Size = new System.Drawing.Size(115, 34);
             this.btnBack1.TabIndex = 4;
@@ -176,7 +221,7 @@
             // btnNext2
             // 
             this.btnNext2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext2.Location = new System.Drawing.Point(996, 352);
+            this.btnNext2.Location = new System.Drawing.Point(992, 6);
             this.btnNext2.Name = "btnNext2";
             this.btnNext2.Size = new System.Drawing.Size(115, 34);
             this.btnNext2.TabIndex = 3;
@@ -184,40 +229,38 @@
             this.btnNext2.Text = "Next";
             this.btnNext2.Click += new System.EventHandler(this.SetNext);
             // 
-            // memoEdit2
-            // 
-            this.memoEdit2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit2.EditValue = resources.GetString("memoEdit2.EditValue");
-            this.memoEdit2.Location = new System.Drawing.Point(0, 0);
-            this.memoEdit2.Name = "memoEdit2";
-            this.memoEdit2.Size = new System.Drawing.Size(1114, 389);
-            this.memoEdit2.TabIndex = 2;
-            // 
             // tpSettings
             // 
-            this.tpSettings.Controls.Add(this.btnBack2);
-            this.tpSettings.Controls.Add(this.btnNext3);
             this.tpSettings.Controls.Add(this.memoEdit3);
+            this.tpSettings.Controls.Add(this.panelControl2);
             this.tpSettings.Controls.Add(this.pictureEdit3);
             this.tpSettings.Name = "tpSettings";
-            this.tpSettings.Size = new System.Drawing.Size(1114, 389);
+            this.tpSettings.Size = new System.Drawing.Size(1114, 489);
             this.tpSettings.Text = "Settings";
             // 
-            // btnBack2
+            // memoEdit3
             // 
-            this.btnBack2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack2.Location = new System.Drawing.Point(875, 326);
-            this.btnBack2.Name = "btnBack2";
-            this.btnBack2.Size = new System.Drawing.Size(115, 34);
-            this.btnBack2.TabIndex = 8;
-            this.btnBack2.Tag = "2";
-            this.btnBack2.Text = "Back";
-            this.btnBack2.Click += new System.EventHandler(this.SetBack);
+            this.memoEdit3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit3.EditValue = resources.GetString("memoEdit3.EditValue");
+            this.memoEdit3.Location = new System.Drawing.Point(414, 0);
+            this.memoEdit3.Name = "memoEdit3";
+            this.memoEdit3.Size = new System.Drawing.Size(700, 442);
+            this.memoEdit3.TabIndex = 6;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.btnNext3);
+            this.panelControl2.Controls.Add(this.btnBack2);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl2.Location = new System.Drawing.Point(414, 442);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(700, 47);
+            this.panelControl2.TabIndex = 9;
             // 
             // btnNext3
             // 
             this.btnNext3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext3.Location = new System.Drawing.Point(996, 326);
+            this.btnNext3.Location = new System.Drawing.Point(580, 7);
             this.btnNext3.Name = "btnNext3";
             this.btnNext3.Size = new System.Drawing.Size(115, 34);
             this.btnNext3.TabIndex = 7;
@@ -225,16 +268,16 @@
             this.btnNext3.Text = "Next";
             this.btnNext3.Click += new System.EventHandler(this.SetNext);
             // 
-            // memoEdit3
+            // btnBack2
             // 
-            this.memoEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoEdit3.EditValue = resources.GetString("memoEdit3.EditValue");
-            this.memoEdit3.Location = new System.Drawing.Point(420, 3);
-            this.memoEdit3.Name = "memoEdit3";
-            this.memoEdit3.Size = new System.Drawing.Size(688, 317);
-            this.memoEdit3.TabIndex = 6;
+            this.btnBack2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack2.Location = new System.Drawing.Point(459, 7);
+            this.btnBack2.Name = "btnBack2";
+            this.btnBack2.Size = new System.Drawing.Size(115, 34);
+            this.btnBack2.TabIndex = 8;
+            this.btnBack2.Tag = "2";
+            this.btnBack2.Text = "Back";
+            this.btnBack2.Click += new System.EventHandler(this.SetBack);
             // 
             // pictureEdit3
             // 
@@ -245,16 +288,16 @@
             this.pictureEdit3.Properties.ReadOnly = true;
             this.pictureEdit3.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit3.Properties.ShowMenu = false;
-            this.pictureEdit3.Size = new System.Drawing.Size(414, 389);
+            this.pictureEdit3.Size = new System.Drawing.Size(414, 489);
             this.pictureEdit3.TabIndex = 5;
             // 
             // tpDataProviders
             // 
             this.tpDataProviders.Controls.Add(this.chkLstDataProviderStatus);
-            this.tpDataProviders.Controls.Add(this.panelControl1);
+            this.tpDataProviders.Controls.Add(this.pnlBottom4);
             this.tpDataProviders.Controls.Add(this.lblDataProviders);
             this.tpDataProviders.Name = "tpDataProviders";
-            this.tpDataProviders.Size = new System.Drawing.Size(1114, 389);
+            this.tpDataProviders.Size = new System.Drawing.Size(1114, 489);
             this.tpDataProviders.Text = "Data Providers";
             // 
             // chkLstDataProviderStatus
@@ -263,19 +306,19 @@
             this.chkLstDataProviderStatus.ItemHeight = 62;
             this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 36);
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 311);
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 411);
             this.chkLstDataProviderStatus.TabIndex = 14;
             this.chkLstDataProviderStatus.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstDataProviderStatus_ItemCheck);
             // 
-            // panelControl1
+            // pnlBottom4
             // 
-            this.panelControl1.Controls.Add(this.btnBack3);
-            this.panelControl1.Controls.Add(this.btnNext4);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 347);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1114, 42);
-            this.panelControl1.TabIndex = 15;
+            this.pnlBottom4.Controls.Add(this.btnBack3);
+            this.pnlBottom4.Controls.Add(this.btnNext4);
+            this.pnlBottom4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottom4.Location = new System.Drawing.Point(0, 447);
+            this.pnlBottom4.Name = "pnlBottom4";
+            this.pnlBottom4.Size = new System.Drawing.Size(1114, 42);
+            this.pnlBottom4.TabIndex = 15;
             // 
             // btnBack3
             // 
@@ -323,7 +366,7 @@
             this.tpFinish.Controls.Add(this.labelControl1);
             this.tpFinish.Controls.Add(this.hyperLinkEdit1);
             this.tpFinish.Name = "tpFinish";
-            this.tpFinish.Size = new System.Drawing.Size(1114, 389);
+            this.tpFinish.Size = new System.Drawing.Size(1114, 489);
             this.tpFinish.Text = "Done";
             // 
             // labelControl3
@@ -342,7 +385,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(996, 325);
+            this.btnOK.Location = new System.Drawing.Point(993, 422);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(115, 34);
             this.btnOK.TabIndex = 8;
@@ -386,7 +429,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1121, 396);
+            this.ClientSize = new System.Drawing.Size(1121, 496);
             this.Controls.Add(this.xtraTabControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -398,17 +441,25 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.tpWelcome.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlBottom1)).EndInit();
+            this.pnlBottom1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.tpRibbon.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlFill2)).EndInit();
+            this.pnlFill2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlBottom2)).EndInit();
+            this.pnlBottom2.ResumeLayout(false);
             this.tpSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             this.tpDataProviders.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlBottom4)).EndInit();
+            this.pnlBottom4.ResumeLayout(false);
             this.tpFinish.ResumeLayout(false);
             this.tpFinish.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit2.Properties)).EndInit();
@@ -443,9 +494,13 @@
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit1;
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstDataProviderStatus;
         private DevExpress.XtraEditors.LabelControl lblDataProviders;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.PanelControl pnlBottom4;
         private DevExpress.XtraEditors.SimpleButton btnBack3;
         private DevExpress.XtraEditors.SimpleButton btnNext4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.PanelControl pnlBottom1;
+        private DevExpress.XtraEditors.PanelControl pnlFill2;
+        private DevExpress.XtraEditors.PanelControl pnlBottom2;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
     }
 }

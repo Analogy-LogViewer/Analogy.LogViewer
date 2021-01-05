@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="memoEdit1.EditValue" xml:space="preserve">
-    <value>Analogy Log Viewer is multi purpose Log Viewer for Windows Operating System.
+    <value>Analogy Log Viewer is multi purpose Log Viewer for Windows Operating System:
+
+A customizable Log Viewer with ability to create custom providers. Can be used with C#, C++, Python, Java and others.
 
 It supports three modes:
 1. Offline data providers (many parsers of different files types) 
