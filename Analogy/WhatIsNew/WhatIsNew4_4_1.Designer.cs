@@ -332,6 +332,7 @@
             this.gcBugs.Size = new System.Drawing.Size(762, 93);
             this.gcBugs.TabIndex = 6;
             this.gcBugs.Text = "Bug Fixes";
+            this.gcBugs.Visible = false;
             // 
             // WhatIsNew4_4_1
             // 

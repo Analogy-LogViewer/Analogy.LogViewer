@@ -412,23 +412,26 @@ namespace Analogy.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("[{\"FactoryName\":\"Analogy Logs Formats\",\"FactoryId\":\"d3047f5d-cfeb-4a69-8f10-ae5f4" +
             "d3f2d04\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"Analogy Ex" +
             "amples\",\"FactoryId\":\"4b1ebc0f-64dd-44a1-bc27-79dbfc6384cc\",\"UserSettingFileAssoc" +
-            "iations\":[],\"Status\":2},{\"FactoryName\":\"gRPC Receiver\",\"FactoryId\":\"9bd37cc2-daa" +
+            "iations\":[],\"Status\":1},{\"FactoryName\":\"gRPC Receiver\",\"FactoryId\":\"9bd37cc2-daa" +
             "7-4d17-974c-01ef3f3c79ba\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"Factory" +
             "Name\":\"IIS Parser\",\"FactoryId\":\"ad7187b1-bd09-4bfe-a28b-3fd3de879009\",\"UserSetti" +
-            "ngFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"Json Log Parser\",\"FactoryId\":" +
+            "ngFileAssociations\":[],\"Status\":2},{\"FactoryName\":\"Json Log Parser\",\"FactoryId\":" +
             "\"d7146342-aeb2-4bd5-8710-7d1bf06ea5cf\",\"UserSettingFileAssociations\":[],\"Status\"" +
             ":1},{\"FactoryName\":\"Log4Net Parser\",\"FactoryId\":\"dbc17c75-5212-46e3-b98a-539e779" +
             "000e3\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"NLogs Parser" +
             "\",\"FactoryId\":\"33cbfa00-da3e-4f9f-b5a1-be978fd09d57\",\"UserSettingFileAssociation" +
             "s\":[],\"Status\":1},{\"FactoryName\":\"Plain Text Parser\",\"FactoryId\":\"11cbfa00-da2e-" +
-            "2f9f-b5a1-be978fd09d57\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryNa" +
+            "2f9f-b5a1-be978fd09d57\",\"UserSettingFileAssociations\":[],\"Status\":2},{\"FactoryNa" +
             "me\":\"Regular Expression Parser\",\"FactoryId\":\"7da2570c-92aa-423f-bcd8-43bb877463f" +
-            "6\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"Serilog Parser\"," +
+            "6\",\"UserSettingFileAssociations\":[],\"Status\":2},{\"FactoryName\":\"Serilog Parser\"," +
             "\"FactoryId\":\"513a4393-425e-4054-92d4-6a816983e51f\",\"UserSettingFileAssociations\"" +
             ":[],\"Status\":1},{\"FactoryName\":\"Windows Event logs\",\"FactoryId\":\"3999db4c-0e22-4" +
             "795-92c1-61b05edb3f6c\",\"UserSettingFileAssociations\":[],\"Status\":1},{\"FactoryNam" +
             "e\":\"XML Text Parser\",\"FactoryId\":\"9652600e-1b14-4812-bcec-9a6194db9aea\",\"UserSet" +
-            "tingFileAssociations\":[],\"Status\":1}]")]
+            "tingFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"Git History\",\"FactoryId\":\"b" +
+            "842cc0f-ad83-48fb-8394-3189f9a75024\",\"UserSettingFileAssociations\":[],\"Status\":2" +
+            "},{\"FactoryName\":\"GitHub\",\"FactoryId\":\"8064229a-2605-42fa-9e72-75444e4ab13f\",\"Us" +
+            "erSettingFileAssociations\":[],\"Status\":2}]")]
         public string FactoriesSettings {
             get {
                 return ((string)(this["FactoriesSettings"]));
