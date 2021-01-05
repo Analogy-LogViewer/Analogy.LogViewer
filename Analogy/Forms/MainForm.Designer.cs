@@ -371,7 +371,7 @@
             // 
             // bbtnUpdates
             // 
-            this.bbtnUpdates.Caption = "Check for updates";
+            this.bbtnUpdates.Caption = "Check for Updates";
             this.bbtnUpdates.Id = 76;
             this.bbtnUpdates.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnUpdates.ImageOptions.Image")));
             this.bbtnUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnUpdates.ImageOptions.LargeImage")));
@@ -380,7 +380,7 @@
             // 
             // bbtnDataProvidersUpdates
             // 
-            this.bbtnDataProvidersUpdates.Caption = "Check for updates to Data Providers";
+            this.bbtnDataProvidersUpdates.Caption = "Check for Updates (Data Providers)";
             this.bbtnDataProvidersUpdates.Id = 105;
             this.bbtnDataProvidersUpdates.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnDataProvidersUpdates.ImageOptions.LargeImage")));
             this.bbtnDataProvidersUpdates.Name = "bbtnDataProvidersUpdates";
