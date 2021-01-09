@@ -69,6 +69,21 @@ namespace Analogy.Forms
         }
         private void SetupEventsHandlers()
         {
+            sbtnResetSettings.Click += (s, e) =>
+            {
+                var result = XtraMessageBox.Show("Are you sure you want to reset all settings to their defaults", @"Reset settings", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    var owner = this.Owner;
+                    this.FormClosing -= UserSettingsForm_FormClosing;
+                    Hide();
+                    Close();
+                    Settings.ResetSettings();
+                    UserSettingsForm user = new UserSettingsForm();
+                    user.ShowDialog(owner);
+                }
+            };
             tsAutoComplete.IsOnChanged += (s, e) => { Settings.RememberLastSearches = tsAutoComplete.IsOn; };
             nudAutoCompleteCount.ValueChanged += (s, e) =>
             {
@@ -357,7 +372,7 @@ namespace Analogy.Forms
             {
                 Settings.FontSettings.SetFontSelectionType(FontSelectionType.VeryLarge);
             }
-            
+
             if (rbMenuFontSizeDefault.Checked)
             {
                 Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Default);

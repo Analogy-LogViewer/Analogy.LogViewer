@@ -112,8 +112,9 @@ namespace Analogy.DataTypes
 
         public FontSettings()
         {
+            GridFontSize = 8.5f;
             SetFontSelectionType(FontSelectionType.Default);
-            SetMenuFontSelectionType(FontSelectionType.Default);
+            SetMenuFontSelectionType(FontSelectionType.Normal);
         }
 
         public void SetFontSelectionType(FontSelectionType mode)

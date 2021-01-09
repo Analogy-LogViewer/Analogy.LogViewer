@@ -791,8 +791,7 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("{\"GridFontSize\":8.5,\"FontName\":\"Tahoma\",\"FontSize\":8.25,\"MenuFontName\":\"Segoe UI\"" +
-            ",\"MenuFontSize\":12.0}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string FontSettings {
             get {
                 return ((string)(this["FontSettings"]));

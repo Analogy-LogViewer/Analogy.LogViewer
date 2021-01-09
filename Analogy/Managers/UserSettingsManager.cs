@@ -472,6 +472,14 @@ namespace Analogy
         public IEnumerable<(Guid ID, string Path)> GetRecentFolders(Guid offlineAnalogyId) =>
             RecentFolders.Where(itm => itm.ID == offlineAnalogyId);
 
+        public void ResetSettings()
+        {
+            Settings.Default.Reset();
+            Settings.Default.UpgradeRequired = false;
+            Settings.Default.Save();
+            ShowWhatIsNewAtStartup = true;
+            Load();
+        }
     }
 
     [Serializable]
