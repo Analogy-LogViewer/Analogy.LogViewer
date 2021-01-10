@@ -33,6 +33,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
 using Markdig;
+using Markdig.SyntaxHighlighting;
 
 namespace Analogy
 {
@@ -1874,14 +1875,20 @@ namespace Analogy
                 {
                     recMessageDetails.Tag = m.Text;
                     recMessageDetails.Text = m.Text;
-                    recMessageDetails.HtmlText = Markdown.ToHtml(m.Text);
+                    var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
+                        .UseSyntaxHighlighting()
+                        .Build();
+                    recMessageDetails.HtmlText = Markdown.ToHtml(m.Text,pipeline);
                 }));
             }
             else
             {
                 recMessageDetails.Tag = m;
                 recMessageDetails.Text = m.Text;
-                recMessageDetails.HtmlText = Markdown.ToHtml(m.Text);
+                var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
+                    .UseSyntaxHighlighting()
+                    .Build();
+                recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
             }
 
         }

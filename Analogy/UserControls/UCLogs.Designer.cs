@@ -250,9 +250,9 @@ namespace Analogy
             this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
             this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -2717,6 +2717,17 @@ namespace Analogy
             this.controlContainer1.Size = new System.Drawing.Size(1843, 141);
             this.controlContainer1.TabIndex = 0;
             // 
+            // recMessageDetails
+            // 
+            this.recMessageDetails.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.recMessageDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recMessageDetails.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.recMessageDetails.Location = new System.Drawing.Point(0, 37);
+            this.recMessageDetails.MenuManager = this.barManager1;
+            this.recMessageDetails.Name = "recMessageDetails";
+            this.recMessageDetails.Size = new System.Drawing.Size(1843, 104);
+            this.recMessageDetails.TabIndex = 4;
+            // 
             // dockPanelBookmarks
             // 
             this.dockPanelBookmarks.Controls.Add(this.dockPanel1_Container);
@@ -2737,18 +2748,6 @@ namespace Analogy
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
             this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // recMessageDetails
-            // 
-            this.recMessageDetails.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
-            this.recMessageDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recMessageDetails.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
-            this.recMessageDetails.Location = new System.Drawing.Point(0, 37);
-            this.recMessageDetails.MenuManager = this.barManager1;
-            this.recMessageDetails.Name = "recMessageDetails";
-            this.recMessageDetails.Size = new System.Drawing.Size(1843, 104);
-            this.recMessageDetails.TabIndex = 4;
-            this.recMessageDetails.Text = "richEditControl1";
             // 
             // UCLogs
             // 
