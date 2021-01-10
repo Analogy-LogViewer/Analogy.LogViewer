@@ -32,6 +32,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
+using Markdig;
 
 namespace Analogy
 {
@@ -287,7 +288,7 @@ namespace Analogy
             };
             bbiGoToMessage.ItemClick += (s, e) =>
             {
-                if (rtxtContent.Tag is AnalogyLogMessage m)
+                if (recMessageDetails.Tag is AnalogyLogMessage m)
                 {
                     GoToPrimaryGridMessage(m);
 
@@ -1853,7 +1854,8 @@ namespace Analogy
             pageNumber = 1;
             UpdatePage(PagingManager.FirstPage());
             AcceptChanges(true);
-            rtxtContent.Text = string.Empty;
+            recMessageDetails.Text = string.Empty;
+            recMessageDetails.HtmlText = string.Empty;
             if (BookmarkView)
             {
                 BookmarkPersistManager.Instance.ClearBookmarks();
@@ -1870,14 +1872,16 @@ namespace Analogy
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    rtxtContent.Tag = m;
-                    rtxtContent.Text = m.Text;
+                    recMessageDetails.Tag = m.Text;
+                    recMessageDetails.Text = m.Text;
+                    recMessageDetails.HtmlText = Markdown.ToHtml(m.Text);
                 }));
             }
             else
             {
-                rtxtContent.Tag = m;
-                rtxtContent.Text = m.Text;
+                recMessageDetails.Tag = m;
+                recMessageDetails.Text = m.Text;
+                recMessageDetails.HtmlText = Markdown.ToHtml(m.Text);
             }
 
         }
@@ -2276,7 +2280,7 @@ namespace Analogy
                 {
                     logGrid.FocusedRowChanged -= logGrid_FocusedRowChanged;
                     gridView.MakeRowVisible(location);
-                    gridView.FocusedRowHandle=location;
+                    gridView.FocusedRowHandle = location;
                     logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
                 }
                 else
@@ -2477,7 +2481,7 @@ namespace Analogy
 
         private void bBtnCopyButtom_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Clipboard.SetText(rtxtContent.Text);
+            Clipboard.SetText(recMessageDetails.Text);
         }
 
         private void bBtnButtomExpand_ItemClick(object sender, ItemClickEventArgs e)

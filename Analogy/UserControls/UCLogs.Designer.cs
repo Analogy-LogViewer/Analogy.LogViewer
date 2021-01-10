@@ -96,6 +96,7 @@ namespace Analogy
             this.btswitchMessageDetails = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.bbiGoToActiveMessage = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemSaveLog = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemSaveEntireInAnalogy = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSaveViewAgnostic = new DevExpress.XtraBars.BarButtonItem();
@@ -124,6 +125,7 @@ namespace Analogy
             this.BbarMainMenu = new DevExpress.XtraBars.Bar();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
             this.sbarMessageInfo = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barBookmark = new DevExpress.XtraBars.Bar();
             this.bbiSaveBookmarks = new DevExpress.XtraBars.BarButtonItem();
@@ -202,7 +204,6 @@ namespace Analogy
             this.sbtnTextInclude = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnPreDefinedFilters = new DevExpress.XtraEditors.SimpleButton();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.rtxtContent = new DevExpress.XtraEditors.MemoEdit();
             this.gridControlBookmarkedMessages = new DevExpress.XtraGrid.GridControl();
             this.gridViewBookmarkedMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnBookmarkDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -251,8 +252,7 @@ namespace Analogy
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiGoToActiveMessage = new DevExpress.XtraBars.BarButtonItem();
+            this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -294,7 +294,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceIncludeText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rtxtContent.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).BeginInit();
@@ -870,6 +869,14 @@ namespace Analogy
             this.btsAutoScrollToBottom.Name = "btsAutoScrollToBottom";
             this.btsAutoScrollToBottom.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btsAutoScrollToBottom_CheckedChanged);
             // 
+            // bbiGoToActiveMessage
+            // 
+            this.bbiGoToActiveMessage.Caption = "Go To Active Message";
+            this.bbiGoToActiveMessage.Id = 75;
+            this.bbiGoToActiveMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.Image")));
+            this.bbiGoToActiveMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.LargeImage")));
+            this.bbiGoToActiveMessage.Name = "bbiGoToActiveMessage";
+            // 
             // barSubItemSaveLog
             // 
             this.barSubItemSaveLog.Caption = "Save Log";
@@ -1167,6 +1174,14 @@ namespace Analogy
             this.bBtnCopyButtom.Name = "bBtnCopyButtom";
             this.bBtnCopyButtom.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnCopyButtom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyButtom_ItemClick);
+            // 
+            // bbiGoToMessage
+            // 
+            this.bbiGoToMessage.Caption = "Go To This Message";
+            this.bbiGoToMessage.Id = 74;
+            this.bbiGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.Image")));
+            this.bbiGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.LargeImage")));
+            this.bbiGoToMessage.Name = "bbiGoToMessage";
             // 
             // sbarMessageInfo
             // 
@@ -2043,15 +2058,6 @@ namespace Analogy
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
             // 
-            // rtxtContent
-            // 
-            this.rtxtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtContent.Location = new System.Drawing.Point(0, 37);
-            this.rtxtContent.MenuManager = this.barManager1;
-            this.rtxtContent.Name = "rtxtContent";
-            this.rtxtContent.Size = new System.Drawing.Size(1843, 104);
-            this.rtxtContent.TabIndex = 2;
-            // 
             // gridControlBookmarkedMessages
             // 
             this.gridControlBookmarkedMessages.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2704,7 +2710,7 @@ namespace Analogy
             // 
             // controlContainer1
             // 
-            this.controlContainer1.Controls.Add(this.rtxtContent);
+            this.controlContainer1.Controls.Add(this.recMessageDetails);
             this.controlContainer1.Controls.Add(this.sbarMessageInfo);
             this.controlContainer1.Location = new System.Drawing.Point(0, 0);
             this.controlContainer1.Name = "controlContainer1";
@@ -2732,21 +2738,17 @@ namespace Analogy
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
             this.dockPanel1_Container.TabIndex = 0;
             // 
-            // bbiGoToMessage
+            // recMessageDetails
             // 
-            this.bbiGoToMessage.Caption = "Go To This Message";
-            this.bbiGoToMessage.Id = 74;
-            this.bbiGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToselectedMessage.ImageOptions.Image")));
-            this.bbiGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToselectedMessage.ImageOptions.LargeImage")));
-            this.bbiGoToMessage.Name = "bbiGoToMessage";
-            // 
-            // bbiGoToActiveMessage
-            // 
-            this.bbiGoToActiveMessage.Caption = "Go To Active Message";
-            this.bbiGoToActiveMessage.Id = 75;
-            this.bbiGoToActiveMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.Image")));
-            this.bbiGoToActiveMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.LargeImage")));
-            this.bbiGoToActiveMessage.Name = "bbiGoToActiveMessage";
+            this.recMessageDetails.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.recMessageDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recMessageDetails.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.recMessageDetails.Location = new System.Drawing.Point(0, 37);
+            this.recMessageDetails.MenuManager = this.barManager1;
+            this.recMessageDetails.Name = "recMessageDetails";
+            this.recMessageDetails.Size = new System.Drawing.Size(1843, 104);
+            this.recMessageDetails.TabIndex = 4;
+            this.recMessageDetails.Text = "richEditControl1";
             // 
             // UCLogs
             // 
@@ -2810,7 +2812,6 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceIncludeText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rtxtContent.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilters)).EndInit();
@@ -2938,7 +2939,6 @@ namespace Analogy
         private DevExpress.XtraEditors.TextEdit txtbInclude;
         private DevExpress.XtraEditors.TextEdit txtbExclude;
         private DevExpress.XtraEditors.TextEdit txtbHighlight;
-        private DevExpress.XtraEditors.MemoEdit rtxtContent;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem bBtnUndockViewPerProcess;
         private System.Windows.Forms.SplitContainer spltText;
@@ -3041,5 +3041,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarSubItem bsiLayouts;
         private DevExpress.XtraBars.BarButtonItem bbiGoToMessage;
         private DevExpress.XtraBars.BarButtonItem bbiGoToActiveMessage;
+        private DevExpress.XtraRichEdit.RichEditControl recMessageDetails;
     }
 }
