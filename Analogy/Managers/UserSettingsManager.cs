@@ -135,6 +135,7 @@ namespace Analogy
         public FilteringExclusion FilteringExclusion { get; set; }
         public string LogsLayoutFileName { get; set; }
         public bool UseCustomLogsLayout { get; set; }
+        public bool ViewDetailedMessageWithHTML { get; set; }
         public UserSettingsManager()
         {
             Load();
@@ -268,6 +269,7 @@ namespace Analogy
             RealTimeRefreshInterval = Settings.Default.RealTimeRefreshInterval;
             UseCustomLogsLayout = Settings.Default.UseCustomLogsLayout;
             LogsLayoutFileName = Settings.Default.LogsLayoutFileName;
+            ViewDetailedMessageWithHTML = Settings.Default.ViewDetailedMessageWithHTML;
         }
 
         private T ParseSettings<T>(string data) where T : new()
@@ -358,6 +360,7 @@ namespace Analogy
             Settings.Default.FilteringExclusion = JsonConvert.SerializeObject(FilteringExclusion);
             Settings.Default.UseCustomLogsLayout = UseCustomLogsLayout;
             Settings.Default.LogsLayoutFileName = LogsLayoutFileName;
+            Settings.Default.ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML;
             Settings.Default.Save();
         }
 

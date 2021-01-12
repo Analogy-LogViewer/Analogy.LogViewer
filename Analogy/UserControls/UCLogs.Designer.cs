@@ -250,9 +250,12 @@ namespace Analogy
             this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.scMessageDetails = new DevExpress.XtraEditors.SplitContainerControl();
+            this.meMessageDetails = new DevExpress.XtraEditors.MemoEdit();
             this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
             this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.btsViewAsHTML = new DevExpress.XtraBars.BarToggleSwitchItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -326,6 +329,9 @@ namespace Analogy
             this.panelContainer1.SuspendLayout();
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).BeginInit();
+            this.scMessageDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.meMessageDetails.Properties)).BeginInit();
             this.dockPanelBookmarks.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             this.SuspendLayout();
@@ -778,9 +784,10 @@ namespace Analogy
             this.bwmiLayout,
             this.bsiLayouts,
             this.bbiGoToMessage,
-            this.bbiGoToActiveMessage});
+            this.bbiGoToActiveMessage,
+            this.btsViewAsHTML});
             this.barManager1.MainMenu = this.BbarMainMenu;
-            this.barManager1.MaxItemId = 76;
+            this.barManager1.MaxItemId = 77;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -1153,7 +1160,8 @@ namespace Analogy
             this.barMessage.FloatLocation = new System.Drawing.Point(901, 601);
             this.barMessage.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnCopyButtom),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiGoToMessage, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiGoToMessage, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btsViewAsHTML)});
             this.barMessage.OptionsBar.AllowCollapse = true;
             this.barMessage.OptionsBar.AllowDelete = true;
             this.barMessage.OptionsBar.AllowQuickCustomization = false;
@@ -1191,7 +1199,7 @@ namespace Analogy
             this.sbarMessageInfo.Location = new System.Drawing.Point(0, 0);
             this.sbarMessageInfo.Manager = this.barManager1;
             this.sbarMessageInfo.Name = "sbarMessageInfo";
-            this.sbarMessageInfo.Size = new System.Drawing.Size(1843, 37);
+            this.sbarMessageInfo.Size = new System.Drawing.Size(1843, 39);
             this.sbarMessageInfo.Text = "standaloneBarDockControl1";
             // 
             // barBookmark
@@ -2710,22 +2718,45 @@ namespace Analogy
             // 
             // controlContainer1
             // 
-            this.controlContainer1.Controls.Add(this.recMessageDetails);
+            this.controlContainer1.Controls.Add(this.scMessageDetails);
             this.controlContainer1.Controls.Add(this.sbarMessageInfo);
             this.controlContainer1.Location = new System.Drawing.Point(0, 0);
             this.controlContainer1.Name = "controlContainer1";
             this.controlContainer1.Size = new System.Drawing.Size(1843, 141);
             this.controlContainer1.TabIndex = 0;
             // 
+            // scMessageDetails
+            // 
+            this.scMessageDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMessageDetails.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None;
+            this.scMessageDetails.Location = new System.Drawing.Point(0, 39);
+            this.scMessageDetails.Name = "scMessageDetails";
+            this.scMessageDetails.Panel1.Controls.Add(this.meMessageDetails);
+            this.scMessageDetails.Panel1.Text = "Panel1";
+            this.scMessageDetails.Panel2.Controls.Add(this.recMessageDetails);
+            this.scMessageDetails.Panel2.Text = "Panel2";
+            this.scMessageDetails.Size = new System.Drawing.Size(1843, 102);
+            this.scMessageDetails.SplitterPosition = 783;
+            this.scMessageDetails.TabIndex = 6;
+            // 
+            // meMessageDetails
+            // 
+            this.meMessageDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.meMessageDetails.Location = new System.Drawing.Point(0, 0);
+            this.meMessageDetails.MenuManager = this.barManager1;
+            this.meMessageDetails.Name = "meMessageDetails";
+            this.meMessageDetails.Size = new System.Drawing.Size(783, 102);
+            this.meMessageDetails.TabIndex = 0;
+            // 
             // recMessageDetails
             // 
             this.recMessageDetails.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
             this.recMessageDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recMessageDetails.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
-            this.recMessageDetails.Location = new System.Drawing.Point(0, 37);
+            this.recMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.recMessageDetails.MenuManager = this.barManager1;
             this.recMessageDetails.Name = "recMessageDetails";
-            this.recMessageDetails.Size = new System.Drawing.Size(1843, 104);
+            this.recMessageDetails.Size = new System.Drawing.Size(1054, 102);
             this.recMessageDetails.TabIndex = 4;
             // 
             // dockPanelBookmarks
@@ -2748,6 +2779,12 @@ namespace Analogy
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
             this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // btsViewAsHTML
+            // 
+            this.btsViewAsHTML.Caption = "View as HTML";
+            this.btsViewAsHTML.Id = 76;
+            this.btsViewAsHTML.Name = "btsViewAsHTML";
             // 
             // UCLogs
             // 
@@ -2846,6 +2883,9 @@ namespace Analogy
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             this.controlContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).EndInit();
+            this.scMessageDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.meMessageDetails.Properties)).EndInit();
             this.dockPanelBookmarks.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             this.dockPanel1_Container.PerformLayout();
@@ -3041,5 +3081,8 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiGoToMessage;
         private DevExpress.XtraBars.BarButtonItem bbiGoToActiveMessage;
         private DevExpress.XtraRichEdit.RichEditControl recMessageDetails;
+        private DevExpress.XtraEditors.SplitContainerControl scMessageDetails;
+        private DevExpress.XtraEditors.MemoEdit meMessageDetails;
+        private DevExpress.XtraBars.BarToggleSwitchItem btsViewAsHTML;
     }
 }

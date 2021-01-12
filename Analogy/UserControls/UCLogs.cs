@@ -289,11 +289,16 @@ namespace Analogy
             };
             bbiGoToMessage.ItemClick += (s, e) =>
             {
-                if (recMessageDetails.Tag is AnalogyLogMessage m)
+                if (recMessageDetails.Tag is AnalogyLogMessage m1)
                 {
-                    GoToPrimaryGridMessage(m);
+                    GoToPrimaryGridMessage(m1);
+                }
+                else if (meMessageDetails.Tag is AnalogyLogMessage m2)
+                {
+                    GoToPrimaryGridMessage(m2);
 
                 }
+
             };
             bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
            {
@@ -472,6 +477,7 @@ namespace Analogy
                 Settings.ModuleText = txtbModule.Text;
             };
             #endregion
+            #region log grid
             LogGrid.RowCountChanged += (s, arg) =>
             {
                 if (Settings.AutoScrollToLastMessage && !IsDisposed)
@@ -531,7 +537,7 @@ namespace Analogy
             logGrid.SelectionChanged += LogGridView_SelectionChanged;
             logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
-
+            #endregion
             ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
@@ -625,6 +631,11 @@ namespace Analogy
                 }
 
 
+            };
+            btsViewAsHTML.CheckedChanged += (s, e) =>
+            {
+                Settings.ViewDetailedMessageWithHTML = btsViewAsHTML.Checked;
+                SetupMessageDetailPanel();
             };
         }
 
@@ -985,6 +996,8 @@ namespace Analogy
         private void LoadUISettings()
         {
             gridControl.ForceInitialize();
+            SetupMessageDetailPanel();
+            btsViewAsHTML.Checked = Settings.ViewDetailedMessageWithHTML;
             if (File.Exists(Settings.LogGridFileName))
             {
                 gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
@@ -1045,6 +1058,12 @@ namespace Analogy
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
         }
 
+        private void SetupMessageDetailPanel()
+        {
+            scMessageDetails.PanelVisibility = !Settings.ViewDetailedMessageWithHTML
+                ? SplitPanelVisibility.Panel1
+                : SplitPanelVisibility.Panel2;
+        }
         private void BookmarkModeUI()
         {
             if (BookmarkView)
@@ -1857,6 +1876,7 @@ namespace Analogy
             AcceptChanges(true);
             recMessageDetails.Text = string.Empty;
             recMessageDetails.HtmlText = string.Empty;
+            meMessageDetails.Text = string.Empty;
             if (BookmarkView)
             {
                 BookmarkPersistManager.Instance.ClearBookmarks();
@@ -1869,25 +1889,26 @@ namespace Analogy
 
         private void LoadTextBoxes(AnalogyLogMessage m)
         {
+            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
+                .UseSyntaxHighlighting()
+                .Build();
             if (InvokeRequired)
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    recMessageDetails.Tag = m.Text;
+                    recMessageDetails.Tag = m;
                     recMessageDetails.Text = m.Text;
-                    var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
-                        .UseSyntaxHighlighting()
-                        .Build();
-                    recMessageDetails.HtmlText = Markdown.ToHtml(m.Text,pipeline);
+                    meMessageDetails.Tag = m;
+                    meMessageDetails.Text = m.Text;
+                    recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
                 }));
             }
             else
             {
                 recMessageDetails.Tag = m;
                 recMessageDetails.Text = m.Text;
-                var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
-                    .UseSyntaxHighlighting()
-                    .Build();
+                meMessageDetails.Tag = m;
+                meMessageDetails.Text = m.Text;
                 recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
             }
 
