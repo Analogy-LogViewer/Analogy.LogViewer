@@ -708,7 +708,6 @@
 		<EmbeddedResource Update="Forms\ProcessNameAndID.resx">
 			<DependentUpon>ProcessNameAndID.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Properties\licenses.licx" />
 		<EmbeddedResource Update="Properties\Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
