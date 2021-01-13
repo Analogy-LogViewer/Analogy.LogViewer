@@ -5,6 +5,7 @@ using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.UserControls;
+using DevExpress.Utils;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking;
@@ -22,7 +23,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Utils;
 
 namespace Analogy.Forms
 {
@@ -276,9 +276,9 @@ namespace Analogy.Forms
                 }
                 catch (Exception exception)
                 {
-                 AnalogyLogger.Instance.LogCritical($"Unable to restart application: {exception.Message}");
+                    AnalogyLogger.Instance.LogCritical($"Unable to restart application: {exception.Message}");
                 }
-             
+
             };
             ILogWindow GetLogWindows(Control mainControl)
             {
@@ -1464,7 +1464,7 @@ namespace Analogy.Forms
             }
         }
 
-  
+
         private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
           Guid factoryId, string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
@@ -1873,15 +1873,7 @@ namespace Analogy.Forms
         {
             tmrStatusUpdates.Stop();
             bsiMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [MB]";
-            if (settings.IdleMode)
-            {
-                bsiIdleMessage.Caption =
-                    $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}";
-            }
-            else
-            {
-                bsiIdleMessage.Caption = "Idle mode is off";
-            }
+            bsiIdleMessage.Caption = settings.IdleMode ? $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}" : "Idle mode is off";
 
             tmrStatusUpdates.Start();
         }

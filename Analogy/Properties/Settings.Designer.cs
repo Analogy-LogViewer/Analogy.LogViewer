@@ -884,5 +884,17 @@ namespace Analogy.Properties {
                 this["UseCustomLogsLayout"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ViewDetailedMessageWithHTML {
+            get {
+                return ((bool)(this["ViewDetailedMessageWithHTML"]));
+            }
+            set {
+                this["ViewDetailedMessageWithHTML"] = value;
+            }
+        }
     }
 }
