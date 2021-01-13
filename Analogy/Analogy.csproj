@@ -53,7 +53,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.5" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="1.4.1" />
-		<PackageReference Include="Analogy.LogViewer.Github" Version="1.4.3" />
+		<PackageReference Include="Analogy.LogViewer.Github" Version="1.4.3.1" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.9.1.1" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.8.1" />
 		<PackageReference Include="Markdig" Version="0.22.1" />
