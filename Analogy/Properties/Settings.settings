@@ -215,5 +215,8 @@
     <Setting Name="ViewDetailedMessageWithHTML" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SettingsMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PerUser</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

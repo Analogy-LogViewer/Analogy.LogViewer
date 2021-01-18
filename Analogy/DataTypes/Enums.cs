@@ -29,7 +29,7 @@ namespace Analogy.DataTypes
         [Display(Name = "Each Startup")] EachStartup,
         [Display(Name = "Once a Week")] OnceAWeek,
         [Display(Name = "Once a Month")] OnceAMonth,
-    }    
+    }
     /// <summary>
     /// Represents custom filter item types.
     /// </summary>
@@ -63,6 +63,12 @@ namespace Analogy.DataTypes
         /// Last one month
         /// </summary>
         LastMonth
+    }
+
+    public enum SettingsMode
+    {
+        PerUser,
+        ApplicationFolder
     }
 
     public static class EnumUtils

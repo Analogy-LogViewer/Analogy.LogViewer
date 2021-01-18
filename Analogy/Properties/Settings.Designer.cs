@@ -896,5 +896,17 @@ namespace Analogy.Properties {
                 this["ViewDetailedMessageWithHTML"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PerUser")]
+        public string SettingsMode {
+            get {
+                return ((string)(this["SettingsMode"]));
+            }
+            set {
+                this["SettingsMode"] = value;
+            }
+        }
     }
 }
