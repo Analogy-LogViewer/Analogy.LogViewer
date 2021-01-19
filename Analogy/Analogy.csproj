@@ -51,11 +51,11 @@
 		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.5" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.5.1" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="1.4.1" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="1.4.3.4" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.9.1.1" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="1.8.1" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.9.1.2" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="1.8.1.1" />
 		<PackageReference Include="Markdig" Version="0.23.0" />
 		<PackageReference Include="Markdig.SyntaxHighlighting" Version="1.1.7" />
 		<PackageReference Include="MessagePack" Version="2.2.85" />
@@ -94,7 +94,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.8.1">
+		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="1.8.1.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -741,7 +741,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
 		<PackageReference Include="Analogy.LogViewer.gRPC">
-			<Version>1.5.4.1</Version>
+			<Version>1.5.4.3</Version>
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
