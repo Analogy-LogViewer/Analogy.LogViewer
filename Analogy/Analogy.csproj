@@ -53,7 +53,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.5.1" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="1.4.1" />
-		<PackageReference Include="Analogy.LogViewer.Github" Version="1.4.3.4" />
+		<PackageReference Include="Analogy.LogViewer.Github" Version="1.4.3.5" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.9.1.2" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.8.1.1" />
 		<PackageReference Include="Markdig" Version="0.23.0" />
@@ -74,7 +74,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Example" Version="1.9.7">
+		<PackageReference Include="Analogy.LogViewer.Example" Version="1.9.7.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -86,7 +86,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.5.1">
+		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="1.5.1.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -98,7 +98,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="1.5.1">
+		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="1.5.1.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
