@@ -139,31 +139,31 @@ namespace Analogy
         public SettingsMode SettingsMode { get; set; }
         public UserSettingsManager()
         {
-            SettingsMode mode = SettingsMode.PerUser;
-            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(AnalogyRegistryKey))
-            {
-                object? modeRegistry = key?.GetValue("SettingsMode");
-                if (modeRegistry != null && Enum.TryParse(modeRegistry.ToString(), out mode))
-                {
-                    AnalogyLogger.Instance.LogInformation($"Working mode: {mode}");
-                }
-            }
-
-            SettingsMode = mode;
-            switch (SettingsMode)
-            {
-                case SettingsMode.PerUser:
-                    LoadPerUserSettings();
-                    break;
-                case SettingsMode.ApplicationFolder:
-                    LoadPortableSettings();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            TryLoadPortableSettings();
+            //SettingsMode mode = SettingsMode.PerUser;
+            //using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(AnalogyRegistryKey))
+            //{
+            //    object? modeRegistry = key?.GetValue("SettingsMode");
+            //    if (modeRegistry != null && Enum.TryParse(modeRegistry.ToString(), out mode))
+            //    {
+            //        AnalogyLogger.Instance.LogInformation($"Working mode: {mode}");
+            //    }
+            //}
+            //SettingsMode = mode;
+            //switch (SettingsMode)
+            //{
+            //    case SettingsMode.PerUser:
+            //        LoadPerUserSettings();
+            //        break;
+            //    case SettingsMode.ApplicationFolder:
+            //        LoadPortableSettings();
+            //        break;
+            //    default:
+            //        throw new ArgumentOutOfRangeException();
+            //}
         }
 
-        private void LoadPortableSettings()
+        private void TryLoadPortableSettings()
         {
             if (File.Exists(LocalSettingFileName))
             {
@@ -188,7 +188,7 @@ namespace Analogy
 
         private void LoadPerUserSettings()
         {
-
+            SettingsMode = SettingsMode.PerUser;
             FilteringExclusion = ParseSettings<FilteringExclusion>(Settings.Default.FilteringExclusion);
             EnableCompressedArchives = true;
             AnalogyInternalLogPeriod = 5;
@@ -290,11 +290,12 @@ namespace Analogy
             UseCustomLogsLayout = Settings.Default.UseCustomLogsLayout;
             LogsLayoutFileName = Settings.Default.LogsLayoutFileName;
             ViewDetailedMessageWithHTML = Settings.Default.ViewDetailedMessageWithHTML;
-           
+
         }
 
         private void ApplyLocalSettings(UserSettings settings)
         {
+            SettingsMode = SettingsMode.ApplicationFolder;
             ApplicationSkinName = settings.ApplicationSkinName;
             SaveSearchFilters = settings.SaveSearchFilters;
             IncludeText = settings.IncludeText;
@@ -465,6 +466,7 @@ namespace Analogy
             {
                 case SettingsMode.PerUser:
                     SavePerUserSettings();
+                    DeletePortableSettings();
                     break;
                 case SettingsMode.ApplicationFolder:
                     SavePortableSettings();
@@ -472,21 +474,37 @@ namespace Analogy
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            SaveSettingModeToRegistry();
+            //SaveSettingModeToRegistry();
         }
 
-        private void SaveSettingModeToRegistry()
+        private void DeletePortableSettings()
         {
-            try
+            if (File.Exists(LocalSettingFileName))
             {
-                using RegistryKey key = Registry.CurrentUser.CreateSubKey(AnalogyRegistryKey);
-                key?.SetValue("SettingsMode", SettingsMode.ToString());
-            }
-            catch (Exception e)
-            {
-                AnalogyLogger.Instance.LogError($"Unable to create registry key: {e.Message}");
+                try
+                {
+                   File.Delete(LocalSettingFileName);
+                }
+                catch (Exception e)
+                {
+                    AnalogyLogManager.Instance.LogError($"Unable to remove local settings. Error: {e.Message}.", nameof(UserSettingsManager));
+                }
             }
         }
+
+        //private void SaveSettingModeToRegistry()
+        //{
+        //    try
+        //    {
+        //        using RegistryKey key = Registry.LocalMachine.CreateSubKey(AnalogyRegistryKey);
+        //        key?.SetValue("SettingsMode", SettingsMode.ToString());
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        AnalogyLogger.Instance.LogError($"Unable to create registry key: {e.Message}");
+        //    }
+        //}
+
         private void SavePortableSettings()
         {
             try
@@ -499,6 +517,7 @@ namespace Analogy
             {
                 AnalogyLogManager.Instance.LogError($"Unable to save setting to {LocalSettingFileName}. Error: {e.Message}. Saving Per user", nameof(UserSettingsManager));
                 SettingsMode = SettingsMode.PerUser;
+                SavePerUserSettings();
             }
         }
 
