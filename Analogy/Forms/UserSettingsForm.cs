@@ -148,6 +148,7 @@ namespace Analogy.Forms
 
         private void LoadSettings()
         {
+            tsSettingModeApplictionFolder.IsOn = Settings.SettingsMode == SettingsMode.ApplicationFolder;
             tsSimpleMode.IsOn = Settings.SimpleMode;
             nudRealTimeRefreshInterval.Value = (decimal)Settings.RealTimeRefreshInterval;
             tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
@@ -300,6 +301,9 @@ namespace Analogy.Forms
         private void SaveSetting()
         {
             SaveColorsSettings();
+            Settings.SettingsMode = tsSettingModeApplictionFolder.IsOn
+                ? SettingsMode.ApplicationFolder
+                : SettingsMode.PerUser;
             Settings.RealTimeRefreshInterval = (float)nudRealTimeRefreshInterval.Value;
             Settings.TrackActiveMessage = tsTrackActiveMessage.IsOn;
             Settings.SimpleMode = tsSimpleMode.IsOn;

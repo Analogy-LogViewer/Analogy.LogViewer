@@ -149,7 +149,8 @@ namespace Analogy
                 }
             }
 
-            switch (mode)
+            SettingsMode = mode;
+            switch (SettingsMode)
             {
                 case SettingsMode.PerUser:
                     LoadPerUserSettings();
@@ -694,6 +695,7 @@ namespace Analogy
             Settings.Default.UpgradeRequired = false;
             Settings.Default.Save();
             ShowWhatIsNewAtStartup = true;
+            SettingsMode = SettingsMode.PerUser;
             LoadPerUserSettings();
         }
     }
