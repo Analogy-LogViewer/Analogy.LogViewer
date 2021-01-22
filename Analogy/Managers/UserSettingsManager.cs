@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Microsoft.Win32;
 
 namespace Analogy
 {
@@ -25,6 +26,7 @@ namespace Analogy
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
 
+        private static string AnalogyRegistryKey => @"SOFTWARE\Analogy.LogViewer";
         private CommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
         public event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
@@ -137,11 +139,55 @@ namespace Analogy
         public SettingsMode SettingsMode { get; set; }
         public UserSettingsManager()
         {
-            Load();
+            SettingsMode mode = SettingsMode.PerUser;
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(AnalogyRegistryKey))
+            {
+                object? modeRegistry = key?.GetValue("SettingsMode");
+                if (modeRegistry != null && Enum.TryParse(modeRegistry.ToString(), out mode))
+                {
+                    AnalogyLogger.Instance.LogInformation($"Working mode: {mode}");
+                }
+            }
+
+            switch (mode)
+            {
+                case SettingsMode.PerUser:
+                    LoadPerUserSettings();
+                    break;
+                case SettingsMode.ApplicationFolder:
+                    LoadPortableSettings();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
-        public void Load()
+        private void LoadPortableSettings()
         {
+            if (File.Exists(LocalSettingFileName))
+            {
+                try
+                {
+                    string data = File.ReadAllText(LocalSettingFileName);
+                    var settings = JsonConvert.DeserializeObject<UserSettings>(data);
+                    ApplyLocalSettings(settings);
+                }
+                catch (Exception e)
+                {
+                    AnalogyLogManager.Instance.LogError($"Unable to read settings from {LocalSettingFileName}. Error: {e.Message}. Loading per user settings", nameof(UserSettingsManager));
+                    LoadPerUserSettings();
+                }
+            }
+            else
+            {
+                AnalogyLogManager.Instance.LogError($"File {LocalSettingFileName} does not exist. Loading per user settings", nameof(UserSettingsManager));
+                LoadPerUserSettings();
+            }
+        }
+
+        private void LoadPerUserSettings()
+        {
+
             FilteringExclusion = ParseSettings<FilteringExclusion>(Settings.Default.FilteringExclusion);
             EnableCompressedArchives = true;
             AnalogyInternalLogPeriod = 5;
@@ -243,23 +289,10 @@ namespace Analogy
             UseCustomLogsLayout = Settings.Default.UseCustomLogsLayout;
             LogsLayoutFileName = Settings.Default.LogsLayoutFileName;
             ViewDetailedMessageWithHTML = Settings.Default.ViewDetailedMessageWithHTML;
-            if (File.Exists(LocalSettingFileName))
-            {
-                try
-                {
-                    string data = File.ReadAllText(LocalSettingFileName);
-                    UserSettingsManager settings = JsonConvert.DeserializeObject<UserSettingsManager>(data);
-                    ApplyLocalSettings(settings);
-                }
-                catch (Exception e)
-                {
-                    AnalogyLogManager.Instance.LogError($"Unable to save update settings from {LocalSettingFileName}. Error: {e.Message}", nameof(UserSettingsManager));
-
-                }
-            }
+           
         }
 
-        private void ApplyLocalSettings(UserSettingsManager settings)
+        private void ApplyLocalSettings(UserSettings settings)
         {
             ApplicationSkinName = settings.ApplicationSkinName;
             SaveSearchFilters = settings.SaveSearchFilters;
@@ -331,6 +364,84 @@ namespace Analogy
             UseCustomLogsLayout = settings.UseCustomLogsLayout;
             ViewDetailedMessageWithHTML = settings.ViewDetailedMessageWithHTML;
         }
+
+        private UserSettings CreateUserSettings()
+        {
+            var userSettings = new UserSettings()
+            {
+                ApplicationSkinName = ApplicationSkinName,
+                SaveSearchFilters = SaveSearchFilters,
+                IncludeText = IncludeText,
+                ExcludeText = ExcludeText,
+                SourceText = SourceText,
+                ModuleText = ModuleText,
+                RecentFiles = RecentFiles,
+                RecentFolders = RecentFolders,
+                ShowHistoryOfClearedMessages = ShowHistoryOfClearedMessages,
+                RecentFilesCount = RecentFilesCount,
+                RecentFoldersCount = RecentFoldersCount,
+                EnableUserStatistics = EnableUserStatistics,
+                AnalogyRunningTime = AnalogyRunningTime,
+                AnalogyLaunches = AnalogyLaunches,
+                AnalogyOpenedFiles = AnalogyOpenedFiles,
+                EnableFileCaching = EnableFileCaching,
+                StartupExtensions = StartupExtensions,
+                StartupRibbonMinimized = StartupRibbonMinimized,
+                StartupErrorLogLevel = StartupErrorLogLevel,
+                PagingEnabled = PagingEnabled,
+                PagingSize = PagingSize,
+                ShowChangeLogAtStartUp = ShowChangeLogAtStartUp,
+                SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule,
+                IdleMode = IdleMode,
+                IdleTimeMinutes = IdleTimeMinutes,
+                EventLogs = EventLogs,
+                AutoStartDataProviders = AutoStartDataProviders,
+                AutoScrollToLastMessage = AutoScrollToLastMessage,
+                DefaultDescendOrder = DefaultDescendOrder,
+                ColorSettings = ColorSettings,
+                FactoriesOrder = FactoriesOrder,
+                FactoriesSettings = FactoriesSettings,
+                LastOpenedDataProvider = LastOpenedDataProvider,
+                RememberLastOpenedDataProvider = RememberLastOpenedDataProvider,
+                RememberLastSearches = RememberLastSearches,
+                PreDefinedQueries = PreDefinedQueries,
+                NumberOfLastSearches = NumberOfLastSearches,
+                LastSearchesInclude = LastSearchesInclude,
+                LastSearchesExclude = LastSearchesExclude,
+                AnalogyInternalLogPeriod = AnalogyInternalLogPeriod,
+                AdditionalProbingLocations = AdditionalProbingLocations,
+                SingleInstance = SingleInstance,
+                AnalogyIcon = AnalogyIcon,
+                DateTimePattern = DateTimePattern,
+                UpdateMode = UpdateMode,
+                LastUpdate = LastUpdate,
+                LastVersionChecked = LastVersionChecked,
+                MinimizedToTrayBar = MinimizedToTrayBar,
+                CheckAdditionalInformation = CheckAdditionalInformation,
+                AnalogyPosition = AnalogyPosition,
+                EnableCompressedArchives = EnableCompressedArchives,
+                IsBuiltInSearchPanelVisible = IsBuiltInSearchPanelVisible,
+                BuiltInSearchPanelMode = BuiltInSearchPanelMode,
+                ApplicationSvgPaletteName = ApplicationSvgPaletteName,
+                ApplicationStyle = ApplicationStyle,
+                ShowMessageDetails = ShowMessageDetails,
+                SimpleMode = SimpleMode,
+                IsFirstRun = IsFirstRun,
+                LogLevelSelection = LogLevelSelection,
+                ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup,
+                FontSettings = FontSettings,
+                EnableFirstChanceException = EnableFirstChanceException,
+                RibbonStyle = RibbonStyle,
+                TrackActiveMessage = TrackActiveMessage,
+                RealTimeRefreshInterval = RealTimeRefreshInterval,
+                FilteringExclusion = FilteringExclusion,
+                LogsLayoutFileName = LogsLayoutFileName,
+                UseCustomLogsLayout = UseCustomLogsLayout,
+                ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML
+            };
+            return userSettings;
+        }
+
         private T ParseSettings<T>(string data) where T : new()
         {
             try
@@ -348,6 +459,49 @@ namespace Analogy
 
         }
         public void Save()
+        {
+            switch (SettingsMode)
+            {
+                case SettingsMode.PerUser:
+                    SavePerUserSettings();
+                    break;
+                case SettingsMode.ApplicationFolder:
+                    SavePortableSettings();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            SaveSettingModeToRegistry();
+        }
+
+        private void SaveSettingModeToRegistry()
+        {
+            try
+            {
+                using RegistryKey key = Registry.CurrentUser.CreateSubKey(AnalogyRegistryKey);
+                key?.SetValue("SettingsMode", SettingsMode.ToString());
+            }
+            catch (Exception e)
+            {
+                AnalogyLogger.Instance.LogError($"Unable to create registry key: {e.Message}");
+            }
+        }
+        private void SavePortableSettings()
+        {
+            try
+            {
+                UserSettings settings = CreateUserSettings();
+                string data = JsonConvert.SerializeObject(settings);
+                File.WriteAllText(LocalSettingFileName, data);
+            }
+            catch (Exception e)
+            {
+                AnalogyLogManager.Instance.LogError($"Unable to save setting to {LocalSettingFileName}. Error: {e.Message}. Saving Per user", nameof(UserSettingsManager));
+                SettingsMode = SettingsMode.PerUser;
+            }
+        }
+
+        private void SavePerUserSettings()
         {
             Settings.Default.FirstRun = false;
             Settings.Default.DateTimePattern = !string.IsNullOrEmpty(DateTimePattern)
@@ -421,16 +575,6 @@ namespace Analogy
             Settings.Default.LogsLayoutFileName = LogsLayoutFileName;
             Settings.Default.ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML;
             Settings.Default.Save();
-            if (SettingsMode == SettingsMode.PerUser)
-                try
-                {
-                    string data = JsonConvert.SerializeObject(this);
-                    File.WriteAllText(LocalSettingFileName, data);
-                }
-                catch (Exception e)
-                {
-                    AnalogyLogManager.Instance.LogError($"Unable to save setting to {LocalSettingFileName}. Error: {e.Message}", nameof(UserSettingsManager));
-                }
         }
 
         public void AddToRecentFiles(Guid iD, string file)
@@ -550,7 +694,7 @@ namespace Analogy
             Settings.Default.UpgradeRequired = false;
             Settings.Default.Save();
             ShowWhatIsNewAtStartup = true;
-            Load();
+            LoadPerUserSettings();
         }
     }
 
