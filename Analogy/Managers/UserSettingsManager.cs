@@ -29,13 +29,14 @@ namespace Analogy
         private bool _enableFirstChanceException;
         public event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
         public event EventHandler<CommandLayout> OnRibbonControlStyleChanged;
-
+        private string LocalSettingFileName { get; } = "AnalogyLocalSettings.json";
+        public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
+        public string InitialSelectedDataProvider { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
         public string ApplicationSkinName { get; set; }
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
         public bool SaveSearchFilters { get; set; }
         public string IncludeText { get; set; }
         public string ExcludeText { get; set; }
-
         public string SourceText { get; set; }
         public string ModuleText { get; set; }
         public List<(Guid ID, string FileName)> RecentFiles { get; set; }
@@ -48,7 +49,7 @@ namespace Analogy
         public uint AnalogyLaunches { get; set; }
         public uint AnalogyOpenedFiles { get; set; }
         public bool EnableFileCaching { get; set; }
-        public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
+
         public List<Guid> StartupExtensions { get; set; }
         public bool StartupRibbonMinimized { get; set; }
         public bool StartupErrorLogLevel { get; set; }
@@ -56,7 +57,7 @@ namespace Analogy
         public int PagingSize { get; set; }
         public bool ShowChangeLogAtStartUp { get; set; }
         public bool SearchAlsoInSourceAndModule { get; set; }
-        public string InitialSelectedDataProvider { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
+
         public bool IdleMode { get; set; }
         public int IdleTimeMinutes { get; set; }
 
@@ -242,8 +243,94 @@ namespace Analogy
             UseCustomLogsLayout = Settings.Default.UseCustomLogsLayout;
             LogsLayoutFileName = Settings.Default.LogsLayoutFileName;
             ViewDetailedMessageWithHTML = Settings.Default.ViewDetailedMessageWithHTML;
+            if (File.Exists(LocalSettingFileName))
+            {
+                try
+                {
+                    string data = File.ReadAllText(LocalSettingFileName);
+                    UserSettingsManager settings = JsonConvert.DeserializeObject<UserSettingsManager>(data);
+                    ApplyLocalSettings(settings);
+                }
+                catch (Exception e)
+                {
+                    AnalogyLogManager.Instance.LogError($"Unable to save update settings from {LocalSettingFileName}. Error: {e.Message}", nameof(UserSettingsManager));
+
+                }
+            }
         }
 
+        private void ApplyLocalSettings(UserSettingsManager settings)
+        {
+            ApplicationSkinName = settings.ApplicationSkinName;
+            SaveSearchFilters = settings.SaveSearchFilters;
+            IncludeText = settings.IncludeText;
+            ExcludeText = settings.ExcludeText;
+            SourceText = settings.SourceText;
+            ModuleText = settings.ModuleText;
+            RecentFiles = settings.RecentFiles;
+            RecentFolders = settings.RecentFolders;
+            ShowHistoryOfClearedMessages = settings.ShowHistoryOfClearedMessages;
+            RecentFilesCount = settings.RecentFilesCount;
+            RecentFoldersCount = settings.RecentFoldersCount;
+            EnableUserStatistics = settings.EnableUserStatistics;
+            AnalogyRunningTime = settings.AnalogyRunningTime;
+            AnalogyLaunches = settings.AnalogyLaunches;
+            AnalogyOpenedFiles = settings.AnalogyOpenedFiles;
+            EnableFileCaching = settings.EnableFileCaching;
+            StartupExtensions = settings.StartupExtensions;
+            StartupRibbonMinimized = settings.StartupRibbonMinimized;
+            StartupErrorLogLevel = settings.StartupErrorLogLevel;
+            PagingEnabled = settings.PagingEnabled;
+            PagingSize = settings.PagingSize;
+            ShowChangeLogAtStartUp = settings.ShowChangeLogAtStartUp;
+            SearchAlsoInSourceAndModule = settings.SearchAlsoInSourceAndModule;
+            IdleMode = settings.IdleMode;
+            IdleTimeMinutes = settings.IdleTimeMinutes;
+            EventLogs = settings.EventLogs;
+            AutoStartDataProviders = settings.AutoStartDataProviders;
+            AutoScrollToLastMessage = settings.AutoScrollToLastMessage;
+            DefaultDescendOrder = settings.DefaultDescendOrder;
+            ColorSettings = settings.ColorSettings;
+            FactoriesOrder = settings.FactoriesOrder;
+            FactoriesSettings = settings.FactoriesSettings;
+            LastOpenedDataProvider = settings.LastOpenedDataProvider;
+            RememberLastOpenedDataProvider = settings.RememberLastOpenedDataProvider;
+            RememberLastSearches = settings.RememberLastSearches;
+            PreDefinedQueries = settings.PreDefinedQueries;
+            NumberOfLastSearches = settings.NumberOfLastSearches;
+            LastSearchesInclude = settings.LastSearchesInclude;
+            LastSearchesExclude = settings.LastSearchesExclude;
+            AnalogyInternalLogPeriod = settings.AnalogyInternalLogPeriod;
+            AdditionalProbingLocations = settings.AdditionalProbingLocations;
+            SingleInstance = settings.SingleInstance;
+            AnalogyIcon = settings.AnalogyIcon;
+            DateTimePattern = settings.DateTimePattern;
+            UpdateMode = settings.UpdateMode;
+            LastUpdate = settings.LastUpdate;
+            LastVersionChecked = settings.LastVersionChecked;
+            MinimizedToTrayBar = settings.MinimizedToTrayBar;
+            CheckAdditionalInformation = settings.CheckAdditionalInformation;
+            AnalogyPosition = settings.AnalogyPosition;
+            EnableCompressedArchives = settings.EnableCompressedArchives;
+            IsBuiltInSearchPanelVisible = settings.IsBuiltInSearchPanelVisible;
+            BuiltInSearchPanelMode = settings.BuiltInSearchPanelMode;
+            ApplicationSvgPaletteName = settings.ApplicationSvgPaletteName;
+            ApplicationStyle = settings.ApplicationStyle;
+            ShowMessageDetails = settings.ShowMessageDetails;
+            SimpleMode = settings.SimpleMode;
+            IsFirstRun = settings.IsFirstRun;
+            LogLevelSelection = settings.LogLevelSelection;
+            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup;
+            FontSettings = settings.FontSettings;
+            EnableFirstChanceException = settings.EnableFirstChanceException;
+            RibbonStyle = settings.RibbonStyle;
+            TrackActiveMessage = settings.TrackActiveMessage;
+            RealTimeRefreshInterval = settings.RealTimeRefreshInterval;
+            FilteringExclusion = settings.FilteringExclusion;
+            LogsLayoutFileName = settings.LogsLayoutFileName;
+            UseCustomLogsLayout = settings.UseCustomLogsLayout;
+            ViewDetailedMessageWithHTML = settings.ViewDetailedMessageWithHTML;
+        }
         private T ParseSettings<T>(string data) where T : new()
         {
             try
@@ -334,6 +421,16 @@ namespace Analogy
             Settings.Default.LogsLayoutFileName = LogsLayoutFileName;
             Settings.Default.ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML;
             Settings.Default.Save();
+            if (SettingsMode == SettingsMode.PerUser)
+                try
+                {
+                    string data = JsonConvert.SerializeObject(this);
+                    File.WriteAllText(LocalSettingFileName, data);
+                }
+                catch (Exception e)
+                {
+                    AnalogyLogManager.Instance.LogError($"Unable to save setting to {LocalSettingFileName}. Error: {e.Message}", nameof(UserSettingsManager));
+                }
         }
 
         public void AddToRecentFiles(Guid iD, string file)
