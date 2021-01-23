@@ -63,6 +63,7 @@ namespace Analogy.Forms
 
         private void AcceptAndClose(object sender, EventArgs e)
         {
+            Settings.IsFirstRun = false;
             Close();
         }
 
