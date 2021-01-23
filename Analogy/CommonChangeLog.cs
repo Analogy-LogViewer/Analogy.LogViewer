@@ -11,7 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("V4.4.2 - [UI] Add HTML/Markdown text rendering support in message details #813",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,13)),
+                new AnalogyChangeLog("V4.5.0 - Add Portable Version #822",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,23)),
+                new AnalogyChangeLog("V4.5.0 - [UI] Add HTML/Markdown text rendering support in message details #813",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,13)),
                 new AnalogyChangeLog("V4.4.1 - Add Reset all setting to their default button #812",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,09)),
                 new AnalogyChangeLog("V4.4.1 - [UI] Make all elements in the log windows floatable #781",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,02)),
                 new AnalogyChangeLog("V4.4.1 - Add button to go selected message in grid #729",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,01,02)),
