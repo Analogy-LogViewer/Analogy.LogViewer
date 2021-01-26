@@ -122,10 +122,10 @@ namespace Analogy
             this.bwmiLayout = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.wsLogs = new DevExpress.Utils.WorkspaceManager(this.components);
             this.bdcTopFiltering = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BbarMainMenu = new DevExpress.XtraBars.Bar();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
+            this.btsViewAsHTML = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.sbarMessageInfo = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barBookmark = new DevExpress.XtraBars.Bar();
             this.bbiSaveBookmarks = new DevExpress.XtraBars.BarButtonItem();
@@ -255,7 +255,6 @@ namespace Analogy
             this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
             this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.btsViewAsHTML = new DevExpress.XtraBars.BarToggleSwitchItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -355,11 +354,11 @@ namespace Analogy
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl.Location = new System.Drawing.Point(0, 218);
+            this.gridControl.Location = new System.Drawing.Point(0, 179);
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1847, 226);
+            this.gridControl.Size = new System.Drawing.Size(1847, 246);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -687,7 +686,7 @@ namespace Analogy
             this.panel1.Controls.Add(this.pnlButtonsHighlight);
             this.panel1.Controls.Add(this.chkbHighlight);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 444);
+            this.panel1.Location = new System.Drawing.Point(0, 425);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1847, 26);
@@ -707,7 +706,6 @@ namespace Analogy
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.barTopFiltering,
-            this.BbarMainMenu,
             this.barMessage,
             this.barBookmark,
             this.barGroup,
@@ -786,7 +784,6 @@ namespace Analogy
             this.bbiGoToMessage,
             this.bbiGoToActiveMessage,
             this.btsViewAsHTML});
-            this.barManager1.MainMenu = this.BbarMainMenu;
             this.barManager1.MaxItemId = 77;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
@@ -798,9 +795,9 @@ namespace Analogy
             // 
             this.barTopFiltering.BarName = "Log Operations";
             this.barTopFiltering.DockCol = 0;
-            this.barTopFiltering.DockRow = 0;
-            this.barTopFiltering.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.barTopFiltering.FloatLocation = new System.Drawing.Point(133, 284);
+            this.barTopFiltering.DockRow = 1;
+            this.barTopFiltering.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barTopFiltering.FloatLocation = new System.Drawing.Point(104, 140);
             this.barTopFiltering.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemoveBoomark),
@@ -819,7 +816,6 @@ namespace Analogy
             this.barTopFiltering.OptionsBar.DisableClose = true;
             this.barTopFiltering.OptionsBar.DisableCustomization = true;
             this.barTopFiltering.OptionsBar.UseWholeRow = true;
-            this.barTopFiltering.StandaloneBarDockControl = this.bdcTopFiltering;
             this.barTopFiltering.Text = "Operations";
             // 
             // bBtnClearLog
@@ -1136,20 +1132,8 @@ namespace Analogy
             this.bdcTopFiltering.Manager = this.barManager1;
             this.bdcTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcTopFiltering.Name = "bdcTopFiltering";
-            this.bdcTopFiltering.Size = new System.Drawing.Size(1847, 39);
+            this.bdcTopFiltering.Size = new System.Drawing.Size(1847, 0);
             this.bdcTopFiltering.Text = "standaloneBarDockControl1";
-            // 
-            // BbarMainMenu
-            // 
-            this.BbarMainMenu.BarName = "Main menu";
-            this.BbarMainMenu.DockCol = 0;
-            this.BbarMainMenu.DockRow = 0;
-            this.BbarMainMenu.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.BbarMainMenu.FloatLocation = new System.Drawing.Point(258, 133);
-            this.BbarMainMenu.OptionsBar.MultiLine = true;
-            this.BbarMainMenu.OptionsBar.UseWholeRow = true;
-            this.BbarMainMenu.Text = "Main menu";
-            this.BbarMainMenu.Visible = false;
             // 
             // barMessage
             // 
@@ -1190,6 +1174,12 @@ namespace Analogy
             this.bbiGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.Image")));
             this.bbiGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.LargeImage")));
             this.bbiGoToMessage.Name = "bbiGoToMessage";
+            // 
+            // btsViewAsHTML
+            // 
+            this.btsViewAsHTML.Caption = "View as HTML";
+            this.btsViewAsHTML.Id = 76;
+            this.btsViewAsHTML.Name = "btsViewAsHTML";
             // 
             // sbarMessageInfo
             // 
@@ -1359,7 +1349,7 @@ namespace Analogy
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1853, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1853, 39);
             // 
             // barDockControlBottom
             // 
@@ -1374,19 +1364,19 @@ namespace Analogy
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 707);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 688);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1853, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1853, 39);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 707);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 688);
             // 
             // bBtnExpand
             // 
@@ -2394,7 +2384,7 @@ namespace Analogy
             this.pnlFilters.Controls.Add(this.pnlExtraFilters);
             this.pnlFilters.Controls.Add(this.pnlLevel);
             this.pnlFilters.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFilters.Location = new System.Drawing.Point(0, 39);
+            this.pnlFilters.Location = new System.Drawing.Point(0, 0);
             this.pnlFilters.Name = "pnlFilters";
             this.pnlFilters.Size = new System.Drawing.Size(1847, 179);
             this.pnlFilters.TabIndex = 6;
@@ -2685,7 +2675,7 @@ namespace Analogy
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 470);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 451);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // panelContainer1
@@ -2779,12 +2769,6 @@ namespace Analogy
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(1843, 141);
             this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // btsViewAsHTML
-            // 
-            this.btsViewAsHTML.Caption = "View as HTML";
-            this.btsViewAsHTML.Id = 76;
-            this.btsViewAsHTML.Name = "btsViewAsHTML";
             // 
             // UCLogs
             // 
@@ -2932,7 +2916,6 @@ namespace Analogy
         private DevExpress.XtraBars.StandaloneBarDockControl bdcTopFiltering;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar barTopFiltering;
-        private DevExpress.XtraBars.Bar BbarMainMenu;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
