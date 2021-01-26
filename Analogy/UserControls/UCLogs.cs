@@ -352,7 +352,7 @@ namespace Analogy
             bBtnFullGrid.ItemClick += (s, e) =>
             {
                 FullModeEnabled = !FullModeEnabled;
-                pnlFilters.Visible = !FullModeEnabled;
+                dockPanelFiltering.Visible = !FullModeEnabled;
             };
             bBtnShare.ItemClick += (s, e) =>
             {
@@ -2519,7 +2519,7 @@ namespace Analogy
         private void barToggleSwitchItem1_CheckedChanged(object sender, ItemClickEventArgs e)
         {
 
-            pnlFilters.Visible = !btSwitchExpandButtomMessage.Checked;
+            dockPanelFiltering.Visible = !btSwitchExpandButtomMessage.Checked;
 
         }
 
