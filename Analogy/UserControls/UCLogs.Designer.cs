@@ -384,7 +384,7 @@ namespace Analogy
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1847, 225);
+            this.gridControl.Size = new System.Drawing.Size(1847, 215);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -712,7 +712,7 @@ namespace Analogy
             this.panel1.Controls.Add(this.pnlButtonsHighlight);
             this.panel1.Controls.Add(this.chkbHighlight);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 225);
+            this.panel1.Location = new System.Drawing.Point(0, 215);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1847, 26);
@@ -1696,7 +1696,7 @@ namespace Analogy
             // deOlderThanFilter
             // 
             this.deOlderThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deOlderThanFilter.Location = new System.Drawing.Point(1281, 105);
+            this.deOlderThanFilter.Location = new System.Drawing.Point(1299, 105);
             this.deOlderThanFilter.MenuManager = this.barManager1;
             this.deOlderThanFilter.MinimumSize = new System.Drawing.Size(175, 0);
             this.deOlderThanFilter.Name = "deOlderThanFilter";
@@ -1713,7 +1713,7 @@ namespace Analogy
             this.deOlderThanFilter.Properties.Mask.EditMask = "dd.MM.yyyy HH:mm:ss.fff";
             this.deOlderThanFilter.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.deOlderThanFilter.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.deOlderThanFilter.Size = new System.Drawing.Size(175, 22);
+            this.deOlderThanFilter.Size = new System.Drawing.Size(178, 22);
             this.deOlderThanFilter.StyleController = this.layoutControl1;
             this.deOlderThanFilter.TabIndex = 27;
             // 
@@ -1743,16 +1743,16 @@ namespace Analogy
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1033, 193, 812, 837);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1489, 134);
+            this.layoutControl1.Size = new System.Drawing.Size(1489, 144);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // sbtnIncludeModules
             // 
             this.sbtnIncludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeModules.ImageOptions.Image")));
-            this.sbtnIncludeModules.Location = new System.Drawing.Point(967, 105);
+            this.sbtnIncludeModules.Location = new System.Drawing.Point(979, 105);
             this.sbtnIncludeModules.Name = "sbtnIncludeModules";
-            this.sbtnIncludeModules.Size = new System.Drawing.Size(24, 27);
+            this.sbtnIncludeModules.Size = new System.Drawing.Size(25, 27);
             this.sbtnIncludeModules.StyleController = this.layoutControl1;
             this.sbtnIncludeModules.TabIndex = 24;
             this.sbtnIncludeModules.ToolTip = "Clear the text";
@@ -1760,7 +1760,7 @@ namespace Analogy
             // 
             // ceOlderThanFilter
             // 
-            this.ceOlderThanFilter.Location = new System.Drawing.Point(1235, 105);
+            this.ceOlderThanFilter.Location = new System.Drawing.Point(1252, 105);
             this.ceOlderThanFilter.MenuManager = this.barManager1;
             this.ceOlderThanFilter.Name = "ceOlderThanFilter";
             this.ceOlderThanFilter.Properties.Appearance.Options.UseImage = true;
@@ -1775,7 +1775,7 @@ namespace Analogy
             // deNewerThanFilter
             // 
             this.deNewerThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deNewerThanFilter.Location = new System.Drawing.Point(1056, 105);
+            this.deNewerThanFilter.Location = new System.Drawing.Point(1070, 105);
             this.deNewerThanFilter.MenuManager = this.barManager1;
             this.deNewerThanFilter.MinimumSize = new System.Drawing.Size(175, 0);
             this.deNewerThanFilter.Name = "deNewerThanFilter";
@@ -1792,15 +1792,15 @@ namespace Analogy
             this.deNewerThanFilter.Properties.Mask.EditMask = "dd.MM.yyyy HH:mm:ss.fff";
             this.deNewerThanFilter.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.deNewerThanFilter.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.deNewerThanFilter.Size = new System.Drawing.Size(175, 22);
+            this.deNewerThanFilter.Size = new System.Drawing.Size(178, 22);
             this.deNewerThanFilter.StyleController = this.layoutControl1;
             this.deNewerThanFilter.TabIndex = 25;
             // 
             // sbtnUndockPerProcess
             // 
-            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(782, 105);
+            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(791, 105);
             this.sbtnUndockPerProcess.Name = "sbtnUndockPerProcess";
-            this.sbtnUndockPerProcess.Size = new System.Drawing.Size(181, 27);
+            this.sbtnUndockPerProcess.Size = new System.Drawing.Size(184, 27);
             this.sbtnUndockPerProcess.StyleController = this.layoutControl1;
             this.sbtnUndockPerProcess.TabIndex = 24;
             this.sbtnUndockPerProcess.Text = "Split view per Process/Module";
@@ -1809,7 +1809,7 @@ namespace Analogy
             // 
             // ceNewerThanFilter
             // 
-            this.ceNewerThanFilter.Location = new System.Drawing.Point(995, 105);
+            this.ceNewerThanFilter.Location = new System.Drawing.Point(1008, 105);
             this.ceNewerThanFilter.MenuManager = this.barManager1;
             this.ceNewerThanFilter.Name = "ceNewerThanFilter";
             this.ceNewerThanFilter.Properties.Appearance.Options.UseImage = true;
@@ -1849,14 +1849,14 @@ namespace Analogy
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            this.txtbModule.Size = new System.Drawing.Size(505, 22);
+            this.txtbModule.Size = new System.Drawing.Size(514, 22);
             this.txtbModule.StyleController = this.layoutControl1;
             this.txtbModule.TabIndex = 26;
             // 
             // sbtnIncludeSources
             // 
             this.sbtnIncludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeSources.ImageOptions.Image")));
-            this.sbtnIncludeSources.Location = new System.Drawing.Point(1432, 74);
+            this.sbtnIncludeSources.Location = new System.Drawing.Point(1453, 74);
             this.sbtnIncludeSources.Name = "sbtnIncludeSources";
             this.sbtnIncludeSources.Size = new System.Drawing.Size(24, 27);
             this.sbtnIncludeSources.StyleController = this.layoutControl1;
@@ -1894,14 +1894,14 @@ namespace Analogy
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, includeB, -ExcludeC, -ExcludeD";
-            this.txtbSource.Size = new System.Drawing.Size(1221, 22);
+            this.txtbSource.Size = new System.Drawing.Size(1242, 22);
             this.txtbSource.StyleController = this.layoutControl1;
             this.txtbSource.TabIndex = 25;
             // 
             // sbtnTextExclude
             // 
             this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
-            this.sbtnTextExclude.Location = new System.Drawing.Point(1337, 43);
+            this.sbtnTextExclude.Location = new System.Drawing.Point(1356, 43);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
             this.sbtnTextExclude.Size = new System.Drawing.Size(24, 27);
             this.sbtnTextExclude.StyleController = this.layoutControl1;
@@ -1915,17 +1915,17 @@ namespace Analogy
             this.txtbExclude.MenuManager = this.barManager1;
             this.txtbExclude.Name = "txtbExclude";
             this.txtbExclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbExclude.Size = new System.Drawing.Size(1191, 22);
+            this.txtbExclude.Size = new System.Drawing.Size(1210, 22);
             this.txtbExclude.StyleController = this.layoutControl1;
             this.txtbExclude.TabIndex = 20;
             this.txtbExclude.EditValueChanged += new System.EventHandler(this.txtbExclude_EditValueChanged);
             // 
             // sBtnMostCommon
             // 
-            this.sBtnMostCommon.Location = new System.Drawing.Point(1365, 43);
+            this.sBtnMostCommon.Location = new System.Drawing.Point(1384, 43);
             this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMostCommon.Name = "sBtnMostCommon";
-            this.sBtnMostCommon.Size = new System.Drawing.Size(91, 27);
+            this.sBtnMostCommon.Size = new System.Drawing.Size(93, 27);
             this.sBtnMostCommon.StyleController = this.layoutControl1;
             this.sBtnMostCommon.TabIndex = 8;
             this.sBtnMostCommon.Text = "Most Common";
@@ -1953,9 +1953,9 @@ namespace Analogy
             // sbtnPreDefinedFilters
             // 
             this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.Properties.Resources.SingleMasterFilter_16x16;
-            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1432, 12);
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1452, 12);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
-            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(24, 27);
+            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(25, 27);
             this.sbtnPreDefinedFilters.StyleController = this.layoutControl1;
             this.sbtnPreDefinedFilters.TabIndex = 21;
             this.sbtnPreDefinedFilters.ToolTip = "Pre-defined filters";
@@ -1967,7 +1967,7 @@ namespace Analogy
             this.txtbInclude.MenuManager = this.barManager1;
             this.txtbInclude.Name = "txtbInclude";
             this.txtbInclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbInclude.Size = new System.Drawing.Size(1258, 22);
+            this.txtbInclude.Size = new System.Drawing.Size(1278, 22);
             this.txtbInclude.StyleController = this.layoutControl1;
             this.txtbInclude.TabIndex = 19;
             this.txtbInclude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbInclude_KeyPress);
@@ -1975,7 +1975,7 @@ namespace Analogy
             // sbtnTextInclude
             // 
             this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1404, 12);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1424, 12);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(24, 27);
             this.sbtnTextInclude.StyleController = this.layoutControl1;
@@ -2034,7 +2034,7 @@ namespace Analogy
             this.layoutControlItem18,
             this.layoutControlItem19});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1468, 144);
+            this.Root.Size = new System.Drawing.Size(1489, 144);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
@@ -2056,14 +2056,14 @@ namespace Analogy
             this.layoutControlItem1.Control = this.txtbInclude;
             this.layoutControlItem1.Location = new System.Drawing.Point(130, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1262, 31);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1282, 31);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.sbtnTextInclude;
-            this.layoutControlItem3.Location = new System.Drawing.Point(1392, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(1412, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(28, 31);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -2072,9 +2072,9 @@ namespace Analogy
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.sbtnPreDefinedFilters;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1420, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1440, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(28, 31);
+            this.layoutControlItem4.Size = new System.Drawing.Size(29, 31);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -2083,7 +2083,7 @@ namespace Analogy
             this.layoutControlItem5.Control = this.txtbExclude;
             this.layoutControlItem5.Location = new System.Drawing.Point(130, 31);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1195, 31);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1214, 31);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -2102,16 +2102,16 @@ namespace Analogy
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.sBtnMostCommon;
-            this.layoutControlItem7.Location = new System.Drawing.Point(1353, 31);
+            this.layoutControlItem7.Location = new System.Drawing.Point(1372, 31);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(95, 31);
+            this.layoutControlItem7.Size = new System.Drawing.Size(97, 31);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.sbtnTextExclude;
-            this.layoutControlItem8.Location = new System.Drawing.Point(1325, 31);
+            this.layoutControlItem8.Location = new System.Drawing.Point(1344, 31);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(28, 31);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
@@ -2122,7 +2122,7 @@ namespace Analogy
             this.layoutControlItem9.Control = this.txtbSource;
             this.layoutControlItem9.Location = new System.Drawing.Point(195, 62);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(1225, 31);
+            this.layoutControlItem9.Size = new System.Drawing.Size(1246, 31);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
@@ -2141,7 +2141,7 @@ namespace Analogy
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.sbtnIncludeSources;
-            this.layoutControlItem11.Location = new System.Drawing.Point(1420, 62);
+            this.layoutControlItem11.Location = new System.Drawing.Point(1441, 62);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(28, 31);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
@@ -2152,7 +2152,7 @@ namespace Analogy
             this.layoutControlItem12.Control = this.txtbModule;
             this.layoutControlItem12.Location = new System.Drawing.Point(261, 93);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(509, 31);
+            this.layoutControlItem12.Size = new System.Drawing.Size(518, 31);
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
@@ -2171,54 +2171,54 @@ namespace Analogy
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.sbtnUndockPerProcess;
-            this.layoutControlItem14.Location = new System.Drawing.Point(770, 93);
+            this.layoutControlItem14.Location = new System.Drawing.Point(779, 93);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(185, 31);
+            this.layoutControlItem14.Size = new System.Drawing.Size(188, 31);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
             // 
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.sbtnIncludeModules;
-            this.layoutControlItem15.Location = new System.Drawing.Point(955, 93);
+            this.layoutControlItem15.Location = new System.Drawing.Point(967, 93);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(28, 31);
+            this.layoutControlItem15.Size = new System.Drawing.Size(29, 31);
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
             // 
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.ceNewerThanFilter;
-            this.layoutControlItem16.Location = new System.Drawing.Point(983, 93);
+            this.layoutControlItem16.Location = new System.Drawing.Point(996, 93);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(61, 31);
+            this.layoutControlItem16.Size = new System.Drawing.Size(62, 31);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.deNewerThanFilter;
-            this.layoutControlItem17.Location = new System.Drawing.Point(1044, 93);
+            this.layoutControlItem17.Location = new System.Drawing.Point(1058, 93);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(179, 31);
+            this.layoutControlItem17.Size = new System.Drawing.Size(182, 31);
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
             // layoutControlItem18
             // 
             this.layoutControlItem18.Control = this.ceOlderThanFilter;
-            this.layoutControlItem18.Location = new System.Drawing.Point(1223, 93);
+            this.layoutControlItem18.Location = new System.Drawing.Point(1240, 93);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(46, 31);
+            this.layoutControlItem18.Size = new System.Drawing.Size(47, 31);
             this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem18.TextVisible = false;
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.deOlderThanFilter;
-            this.layoutControlItem19.Location = new System.Drawing.Point(1269, 93);
+            this.layoutControlItem19.Location = new System.Drawing.Point(1287, 93);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(179, 31);
+            this.layoutControlItem19.Size = new System.Drawing.Size(182, 31);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
@@ -2237,7 +2237,7 @@ namespace Analogy
             this.chkLstLogLevel.Location = new System.Drawing.Point(2, 28);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
-            this.chkLstLogLevel.Size = new System.Drawing.Size(137, 138);
+            this.chkLstLogLevel.Size = new System.Drawing.Size(137, 148);
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
@@ -2622,7 +2622,7 @@ namespace Analogy
             this.pnlExtraFilters.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlExtraFilters.Location = new System.Drawing.Point(1496, 0);
             this.pnlExtraFilters.Name = "pnlExtraFilters";
-            this.pnlExtraFilters.Size = new System.Drawing.Size(206, 168);
+            this.pnlExtraFilters.Size = new System.Drawing.Size(206, 178);
             this.pnlExtraFilters.TabIndex = 30;
             // 
             // xtcFilters
@@ -2631,7 +2631,7 @@ namespace Analogy
             this.xtcFilters.Location = new System.Drawing.Point(0, 0);
             this.xtcFilters.Name = "xtcFilters";
             this.xtcFilters.SelectedTabPage = this.xtpFiltersIncludes;
-            this.xtcFilters.Size = new System.Drawing.Size(206, 168);
+            this.xtcFilters.Size = new System.Drawing.Size(206, 178);
             this.xtcFilters.TabIndex = 29;
             this.xtcFilters.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpFiltersIncludes,
@@ -2641,7 +2641,7 @@ namespace Analogy
             // 
             this.xtpFiltersIncludes.Controls.Add(this.clbInclude);
             this.xtpFiltersIncludes.Name = "xtpFiltersIncludes";
-            this.xtpFiltersIncludes.Size = new System.Drawing.Size(199, 134);
+            this.xtpFiltersIncludes.Size = new System.Drawing.Size(199, 144);
             this.xtpFiltersIncludes.Text = "Includes";
             // 
             // clbInclude
@@ -2650,7 +2650,7 @@ namespace Analogy
             this.clbInclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbInclude.Location = new System.Drawing.Point(0, 0);
             this.clbInclude.Name = "clbInclude";
-            this.clbInclude.Size = new System.Drawing.Size(199, 134);
+            this.clbInclude.Size = new System.Drawing.Size(199, 144);
             this.clbInclude.TabIndex = 21;
             // 
             // xtpFiltersExclude
@@ -2676,7 +2676,7 @@ namespace Analogy
             this.pnlLevel.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlLevel.Location = new System.Drawing.Point(1702, 0);
             this.pnlLevel.Name = "pnlLevel";
-            this.pnlLevel.Size = new System.Drawing.Size(141, 168);
+            this.pnlLevel.Size = new System.Drawing.Size(141, 178);
             this.pnlLevel.TabIndex = 29;
             // 
             // pnlLevelFilteringType
@@ -2823,7 +2823,7 @@ namespace Analogy
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 251);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 241);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // panelContainer1
@@ -2927,8 +2927,8 @@ namespace Analogy
             this.dockPanelFiltering.Name = "dockPanelFiltering";
             this.dockPanelFiltering.Options.AllowDockAsTabbedDocument = false;
             this.dockPanelFiltering.Options.ShowCloseButton = false;
-            this.dockPanelFiltering.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelFiltering.Size = new System.Drawing.Size(1853, 200);
+            this.dockPanelFiltering.OriginalSize = new System.Drawing.Size(200, 210);
+            this.dockPanelFiltering.Size = new System.Drawing.Size(1853, 210);
             this.dockPanelFiltering.Text = "Filtering";
             // 
             // controlContainer2
@@ -2938,7 +2938,7 @@ namespace Analogy
             this.controlContainer2.Controls.Add(this.pnlLevel);
             this.controlContainer2.Location = new System.Drawing.Point(5, 25);
             this.controlContainer2.Name = "controlContainer2";
-            this.controlContainer2.Size = new System.Drawing.Size(1843, 168);
+            this.controlContainer2.Size = new System.Drawing.Size(1843, 178);
             this.controlContainer2.TabIndex = 0;
             // 
             // xtabFilters
@@ -2947,7 +2947,7 @@ namespace Analogy
             this.xtabFilters.Location = new System.Drawing.Point(0, 0);
             this.xtabFilters.Name = "xtabFilters";
             this.xtabFilters.SelectedTabPage = this.xtraTabPage1;
-            this.xtabFilters.Size = new System.Drawing.Size(1496, 168);
+            this.xtabFilters.Size = new System.Drawing.Size(1496, 178);
             this.xtabFilters.TabIndex = 32;
             this.xtabFilters.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -2957,7 +2957,7 @@ namespace Analogy
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1489, 134);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1489, 144);
             this.xtraTabPage1.Text = "Filter";
             // 
             // xtraTabPage2
