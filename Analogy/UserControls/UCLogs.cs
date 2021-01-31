@@ -1764,7 +1764,7 @@ namespace Analogy
                     var location = LocateByValue(0, gridColumnObject, SelectedMassage);
                     if (location >= 0)
                     {
-                        LogGrid.MakeRowVisible(location);
+                        LogGrid.FocusedRowHandle = location;
                     }
                 }
 
@@ -2306,10 +2306,7 @@ namespace Analogy
                 var location = LocateByValue(0, gridColumnObject, logMessage);
                 if (location >= 0)
                 {
-                    logGrid.FocusedRowChanged -= logGrid_FocusedRowChanged;
-                    gridView.MakeRowVisible(location);
-                    gridView.FocusedRowHandle = location;
-                    logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
+                    logGrid.FocusedRowHandle = location;
                 }
                 else
                 {
