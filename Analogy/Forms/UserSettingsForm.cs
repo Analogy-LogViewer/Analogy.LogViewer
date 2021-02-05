@@ -23,14 +23,14 @@ namespace Analogy.Forms
     {
 
 
-        private DataTable messageData;
+     
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private int InitialSelection = -1;
 
         public UserSettingsForm()
         {
             InitializeComponent();
-            messageData = Utils.DataTableConstructor();
+     
         }
 
         public UserSettingsForm(int tabIndex) : this()
@@ -41,60 +41,26 @@ namespace Analogy.Forms
         private void UserSettingsForm_Load(object sender, EventArgs e)
         {
             ShowIcon = true;
-            logGrid.MouseDown += logGrid_MouseDown;
+            
             Icon = UserSettingsManager.UserSettings.GetIcon();
             LoadSettings();
             SetupEventsHandlers();
-            if (File.Exists(Settings.LogGridFileName))
-            {
-                gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
-            }
 
-            gridControl.DataSource = messageData.DefaultView;
-            SetupExampleMessage("Test 1");
-            SetupExampleMessage("Test 2");
             if (InitialSelection >= 0)
             {
                 tabControlMain.SelectedTabPageIndex = InitialSelection;
             }
         }
-        void logGrid_MouseDown(object sender, MouseEventArgs e)
-        {
-            GridHitInfo info = logGrid.CalcHitInfo(e.Location);
-            if (info.InColumnPanel)
-            {
-                teHeader.Tag = info.Column;
-                teHeader.Text = info.Column.Caption;
-            }
-        }
+  
         private void SetupEventsHandlers()
         {
-            gridControl.MainView.Layout += MainView_Layout;
         }
 
-        private void MainView_Layout(object sender, EventArgs e)
-        {
-            if (tabControlMain.SelectedTabPage == xtraTabPageFilter && xtraTabPageFilter.Visible)
-            {
-                try
-                {
-                    if (!string.IsNullOrEmpty(Settings.LogGridFileName))
-                    {
-                        gridControl.MainView.SaveLayoutToXml(Settings.LogGridFileName);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    AnalogyLogManager.Instance.LogError(ex.Message, nameof(MainView_Layout));
-                }
-            }
-        }
+   
 
         private void LoadSettings()
         {
-            logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
-            logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
-            teDateTimeFormat.Text = Settings.DateTimePattern;
+
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
             nudRecentFiles.Value = Settings.RecentFilesCount;
             nudRecentFolders.Value = Settings.RecentFoldersCount;
@@ -213,26 +179,6 @@ namespace Analogy.Forms
             Settings.Save();
         }
         
-        private void SetupExampleMessage(string text)
-        {
-            DataRow dtr = messageData.NewRow();
-            dtr.BeginEdit();
-            dtr["Date"] = DateTime.Now;
-            dtr["Text"] = text;
-            dtr["Source"] = "Analogy";
-            dtr["Level"] = AnalogyLogLevel.Information.ToString();
-            dtr["Class"] = AnalogyLogClass.General.ToString();
-            dtr["Category"] = "None";
-            dtr["User"] = "None";
-            dtr["Module"] = "Analogy";
-            dtr["ProcessID"] = Process.GetCurrentProcess().Id;
-            dtr["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
-            dtr["DataProvider"] = string.Empty;
-            dtr["MachineName"] = "None";
-            dtr.EndEdit();
-            messageData.Rows.Add(dtr);
-            messageData.AcceptChanges();
-        }
      
         private void ToggleSwitchIdleMode_Toggled(object sender, EventArgs e)
         {
@@ -377,37 +323,8 @@ namespace Analogy.Forms
                 listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
             }
         }
-        
-        private void btnHeaderSet_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(teHeader.Text) && teHeader.Tag is DevExpress.XtraGrid.Columns.GridColumn column)
-            {
-                column.Caption = teHeader.Text;
-                SaveGridLayout();
-            }
-        }
-        private void SaveGridLayout()
-        {
-            try
-            {
-                gridControl.MainView.SaveLayoutToXml(Settings.LogGridFileName);
-            }
-            catch (Exception e)
-            {
-                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}", e, "Analogy");
-                XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-        }
-
-        private void btnDateTimeFormat_Click(object sender, EventArgs e)
-        {
-
-            logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
-            logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
-            Settings.DateTimePattern = teDateTimeFormat.Text;
-        }
-        
+       
+     
     }
 }
 
