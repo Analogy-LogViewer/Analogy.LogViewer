@@ -95,11 +95,7 @@ namespace Analogy.Forms
             cpeHighlightColorText.ColorChanged += RowColors_ColorChanged;
             cpeNewMessagesColorText.ColorChanged += RowColors_ColorChanged;
             gridControl.MainView.Layout += MainView_Layout;
-            tsLogLevels.IsOnChanged += (s, e) =>
-             {
-                 Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
-                 Utils.SetLogLevel(chkLstLogLevel);
-             };
+
 
 
         }
@@ -124,32 +120,16 @@ namespace Analogy.Forms
 
         private void LoadSettings()
         {
-            tsSimpleMode.IsOn = Settings.SimpleMode;
-            tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
-            tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             teDateTimeFormat.Text = Settings.DateTimePattern;
-            tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
             nudRecentFiles.Value = Settings.RecentFilesCount;
             nudRecentFolders.Value = Settings.RecentFoldersCount;
             //tsSimpleMode.IsOn = Settings.SimpleMode;
-            tsErrorLevelAsDefault.IsOn = Settings.StartupErrorLogLevel;
-            chkEditPaging.Checked = Settings.PagingEnabled;
-            if (Settings.PagingEnabled)
-            {
-                nudPageLength.Value = Settings.PagingSize;
-            }
-            else
-            {
-                nudPageLength.Enabled = false;
-            }
 
-            checkEditSearchAlsoInSourceAndModule.Checked = Settings.SearchAlsoInSourceAndModule;
             toggleSwitchIdleMode.IsOn = Settings.IdleMode;
             nudIdleTime.Value = Settings.IdleTimeMinutes;
-            tsDataTimeAscendDescend.IsOn = Settings.DefaultDescendOrder;
 
             var startup = Settings.AutoStartDataProviders;
             var loaded = FactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
@@ -203,10 +183,7 @@ namespace Analogy.Forms
                 cbUpdates.Enabled = false;
             }
             
-            tsLogLevels.IsOn = Settings.LogLevelSelection == LogLevelSelectionType.Multiple;
-            Utils.SetLogLevel(chkLstLogLevel);
-            Utils.FillLogLevels(chklExclusionLogLevel);
-
+        
             tsEnableFirstChanceException.IsOn = Settings.EnableFirstChanceException;
 
             var extensions = FactoriesManager.Instance.GetAllExtensions();
@@ -220,9 +197,6 @@ namespace Analogy.Forms
         private void SaveSetting()
         {
             SaveColorsSettings();
-            Settings.TrackActiveMessage = tsTrackActiveMessage.IsOn;
-            Settings.SimpleMode = tsSimpleMode.IsOn;
-            Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
             Settings.RecentFilesCount = (int)nudRecentFiles.Value;
             Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
             List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);
@@ -344,38 +318,7 @@ namespace Analogy.Forms
             messageData.Rows.Add(dtr);
             messageData.AcceptChanges();
         }
-        private void tsFilteringExclude_Toggled(object sender, EventArgs e)
-        {
-            Settings.SaveSearchFilters = tsFilteringExclude.IsOn;
-
-        }
-
-        private void tsHistory_Toggled(object sender, EventArgs e)
-        {
-            Settings.ShowHistoryOfClearedMessages = tsHistory.IsOn;
-        }
-
-        private void tsErrorLevelAsDefault_Toggled(object sender, EventArgs e)
-        {
-            Settings.StartupErrorLogLevel = tsErrorLevelAsDefault.IsOn;
-        }
-
-        private void chkEditPaging_CheckedChanged(object sender, EventArgs e)
-        {
-            Settings.PagingEnabled = chkEditPaging.Checked;
-            nudPageLength.Enabled = Settings.PagingEnabled;
-        }
-
-        private void nudPageLength_ValueChanged(object sender, EventArgs e)
-        {
-            Settings.PagingSize = (int)nudPageLength.Value;
-        }
-
-        private void checkEditSearchAlsoInSourceAndModule_CheckedChanged(object sender, EventArgs e)
-        {
-            Settings.SearchAlsoInSourceAndModule = checkEditSearchAlsoInSourceAndModule.Checked;
-        }
-
+     
         private void ToggleSwitchIdleMode_Toggled(object sender, EventArgs e)
         {
             Settings.IdleMode = toggleSwitchIdleMode.IsOn;
@@ -391,14 +334,6 @@ namespace Analogy.Forms
         private void UserSettingsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveSetting();
-        }
-
-
-
-        private void tsDataTimeAscendDescend_Toggled(object sender, EventArgs e)
-        {
-            Settings.DefaultDescendOrder = tsDataTimeAscendDescend.IsOn;
-
         }
 
         private void sBtnExportColors_Click(object sender, EventArgs e)
@@ -700,11 +635,6 @@ namespace Analogy.Forms
             ceNewMessagesColor.ForeColor = cpeNewMessagesColorText.Color;
         }
 
-        private void chklExclusionLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
-        {
-            var item = chklExclusionLogLevel.Items[e.Index].Value.ToString();
-            Settings.FilteringExclusion.SetLogLevelExclusion(item, e.State == CheckState.Checked);
-        }
     }
 }
 
