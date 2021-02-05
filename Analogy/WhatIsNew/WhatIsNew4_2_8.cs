@@ -28,7 +28,7 @@ namespace Analogy.WhatIsNew
 
         private void hyperlinkUserSettingsLookAndFeel_HyperlinkClick(object sender, DevExpress.Utils.HyperlinkClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(3);
+            var user = new ApplicationSettingsForm();
             user.ShowDialog(this);
         }
     }

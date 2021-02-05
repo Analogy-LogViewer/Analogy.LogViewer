@@ -43,16 +43,16 @@ namespace Analogy.Forms
             this.DataProviders = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.DataProviderList = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.DataProviderExternal = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.shortcuts = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Extensions = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.updates = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.debugging = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.DataProviderExternal = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.bbtnReset = new DevExpress.XtraBars.BarButtonItem();
+            this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -183,6 +183,26 @@ namespace Analogy.Forms
             this.accordionControlElement4.Text = "Real Time Data Providers";
             this.accordionControlElement4.Click += new System.EventHandler(this.accordionControlElement4_Click);
             // 
+            // accordionControlElement5
+            // 
+            this.accordionControlElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
+            this.accordionControlElement5.Name = "accordionControlElement5";
+            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement5.Text = "Default File Associations";
+            this.accordionControlElement5.Click += new System.EventHandler(this.accordionControlElement5_Click);
+            // 
+            // DataProviderExternal
+            // 
+            this.DataProviderExternal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DataProviderExternal.ImageOptions.Image")));
+            this.DataProviderExternal.Name = "DataProviderExternal";
+            this.DataProviderExternal.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.DataProviderExternal.Text = "Additional Locations";
+            this.DataProviderExternal.Click += new System.EventHandler(this.DataProviderExternal_Click);
+            // 
+            // accordionControlSeparator1
+            // 
+            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
+            // 
             // shortcuts
             // 
             this.shortcuts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("shortcuts.ImageOptions.Image")));
@@ -215,14 +235,6 @@ namespace Analogy.Forms
             this.debugging.Text = "Debugging";
             this.debugging.Click += new System.EventHandler(this.debugging_Click);
             // 
-            // accordionControlElement5
-            // 
-            this.accordionControlElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
-            this.accordionControlElement5.Name = "accordionControlElement5";
-            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement5.Text = "Default File Associations";
-            this.accordionControlElement5.Click += new System.EventHandler(this.accordionControlElement5_Click);
-            // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
@@ -235,26 +247,6 @@ namespace Analogy.Forms
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtnReset);
             // 
-            // fluentDesignFormContainer1
-            // 
-            this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 30);
-            this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(938, 821);
-            this.fluentDesignFormContainer1.TabIndex = 0;
-            // 
-            // DataProviderExternal
-            // 
-            this.DataProviderExternal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DataProviderExternal.ImageOptions.Image")));
-            this.DataProviderExternal.Name = "DataProviderExternal";
-            this.DataProviderExternal.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.DataProviderExternal.Text = "Additional Locations";
-            this.DataProviderExternal.Click += new System.EventHandler(this.DataProviderExternal_Click);
-            // 
-            // accordionControlSeparator1
-            // 
-            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
-            // 
             // bbtnReset
             // 
             this.bbtnReset.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -265,6 +257,14 @@ namespace Analogy.Forms
             this.bbtnReset.Name = "bbtnReset";
             this.bbtnReset.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnReset_ItemClick);
+            // 
+            // fluentDesignFormContainer1
+            // 
+            this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 30);
+            this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(938, 821);
+            this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // ApplicationSettingsForm
             // 
@@ -278,7 +278,7 @@ namespace Analogy.Forms
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "ApplicationSettingsForm";
             this.NavigationControl = this.accordionControl1;
-            this.Text = "ApplicationSettingsForm";
+            this.Text = "Application Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ApplicationSettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.ApplicationSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();

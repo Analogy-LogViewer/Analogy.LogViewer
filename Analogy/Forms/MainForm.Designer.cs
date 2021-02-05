@@ -764,12 +764,12 @@
             // 
             // btnLookAndFeel
             // 
-            this.btnLookAndFeel.Caption = "Colors and Layout ";
+            this.btnLookAndFeel.Caption = "Colors";
             this.btnLookAndFeel.Id = 87;
             this.btnLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLookAndFeel.ImageOptions.Image")));
             this.btnLookAndFeel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLookAndFeel.ImageOptions.LargeImage")));
             this.btnLookAndFeel.Name = "btnLookAndFeel";
-            this.btnLookAndFeel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLookAndFeel_ItemClick);
+            this.btnLookAndFeel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnColors_ItemClick);
             // 
             // btnShortcuts
             // 

@@ -536,7 +536,7 @@ namespace Analogy.Forms
 
         private void bbtnItemSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm();
+            ApplicationSettingsForm user = new ApplicationSettingsForm();
             user.ShowDialog(this);
         }
 
@@ -1979,44 +1979,44 @@ namespace Analogy.Forms
 
         private void btnFiltering_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(1);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Filtering");
             user.ShowDialog(this);
         }
 
         private void btnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(2);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Predefined queries");
             user.ShowDialog(this);
         }
 
-        private void btnLookAndFeel_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnColors_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(3);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Color Settings");
             user.ShowDialog(this);
         }
 
         private void btnShortcuts_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(4);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
             user.ShowDialog(this);
         }
 
         private void btnMRU_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(5);
-            user.ShowDialog(this);
+            //ApplicationSettingsForm user = new ApplicationSettingsForm(5);
+            //user.ShowDialog(this);
         }
 
         private void btnResourcesUsage_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(6);
-            user.ShowDialog(this);
+            //UserSettingsForm user = new UserSettingsForm(6);
+            //user.ShowDialog(this);
         }
 
         private void btnDataProvidersSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(7);
-            user.ShowDialog(this);
+            //UserSettingsForm user = new UserSettingsForm(7);
+            //user.ShowDialog(this);
         }
 
         private void btnCustomDataProvidersSettings_ItemClick(object sender, ItemClickEventArgs e)
@@ -2027,20 +2027,20 @@ namespace Analogy.Forms
 
         private void bbiSettingsExtensions_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(8);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Extensions");
             user.ShowDialog(this);
         }
 
 
         private void btnSettingsUpdate_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(9);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Updates");
             user.ShowDialog(this);
         }
 
         private void btnSettingsDebugging_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(10);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Debugging");
             user.ShowDialog(this);
         }
 

@@ -3031,7 +3031,7 @@ namespace Analogy
 
         private void sbtnMoreHighlight_Click(object sender, EventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(1);
+            var user = new ApplicationSettingsForm("Color Highlighting");
             user.ShowDialog(this);
         }
 
