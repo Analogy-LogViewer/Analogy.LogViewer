@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Analogy.ApplicationSettings;
+using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
 {
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         public ApplicationSettingsForm()
         {
             InitializeComponent();
@@ -133,6 +135,27 @@ namespace Analogy.Forms
         private void DataProviderExternal_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl("Data Provider external locations Settings", new DataProvidersExternalLocationsSettingsUC());
+        }
+
+        private void bbtnReset_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var result = XtraMessageBox.Show("Are you sure you want to reset all settings to their defaults", @"Reset settings", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                var owner = this.Owner;
+                this.FormClosing -= ApplicationSettingsForm_FormClosing;
+                Hide();
+                Close();
+                Settings.ResetSettings();
+                ApplicationSettingsForm us = new ApplicationSettingsForm();
+                us.ShowDialog(owner);
+            }
+        }
+
+        private void ApplicationSettingsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Settings.Save();
         }
     }
 }

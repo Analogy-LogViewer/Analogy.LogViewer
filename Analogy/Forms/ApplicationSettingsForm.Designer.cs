@@ -264,6 +264,7 @@ namespace Analogy.Forms
             this.bbtnReset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReset.ImageOptions.LargeImage")));
             this.bbtnReset.Name = "bbtnReset";
             this.bbtnReset.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bbtnReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnReset_ItemClick);
             // 
             // ApplicationSettingsForm
             // 
@@ -278,6 +279,7 @@ namespace Analogy.Forms
             this.Name = "ApplicationSettingsForm";
             this.NavigationControl = this.accordionControl1;
             this.Text = "ApplicationSettingsForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ApplicationSettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.ApplicationSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();

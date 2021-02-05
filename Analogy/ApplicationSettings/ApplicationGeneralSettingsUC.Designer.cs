@@ -29,15 +29,19 @@ namespace Analogy.ApplicationSettings
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.gcCompressedArchives = new DevExpress.XtraEditors.GroupControl();
             this.tsEnableCompressedArchive = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcGeneral = new DevExpress.XtraEditors.GroupControl();
+            this.nudRecentFolders = new System.Windows.Forms.NumericUpDown();
+            this.nudRecentFiles = new System.Windows.Forms.NumericUpDown();
+            this.lblRecentFolders = new DevExpress.XtraEditors.LabelControl();
+            this.lblRecent = new DevExpress.XtraEditors.LabelControl();
             this.nudRealTimeRefreshInterval = new System.Windows.Forms.NumericUpDown();
             this.lblRealTimeRefreshInterval = new DevExpress.XtraEditors.LabelControl();
             this.tsWhatsNew = new DevExpress.XtraEditors.ToggleSwitch();
@@ -47,14 +51,9 @@ namespace Analogy.ApplicationSettings
             this.tsTraybar = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsFileCaching = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsSingleInstance = new DevExpress.XtraEditors.ToggleSwitch();
-            this.sbtnResetSettings = new DevExpress.XtraEditors.SimpleButton();
             this.gcSettingsLocation = new DevExpress.XtraEditors.GroupControl();
             this.ceSettingsLocationApplicationFolder = new DevExpress.XtraEditors.CheckEdit();
             this.ceSettingsLocationPerUser = new DevExpress.XtraEditors.CheckEdit();
-            this.lblRecentFolders = new DevExpress.XtraEditors.LabelControl();
-            this.lblRecent = new DevExpress.XtraEditors.LabelControl();
-            this.nudRecentFolders = new System.Windows.Forms.NumericUpDown();
-            this.nudRecentFiles = new System.Windows.Forms.NumericUpDown();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.nudIdleTime = new System.Windows.Forms.NumericUpDown();
@@ -64,6 +63,8 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.tsEnableCompressedArchive.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcGeneral)).BeginInit();
             this.gcGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRealTimeRefreshInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsWhatsNew.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).BeginInit();
@@ -76,8 +77,6 @@ namespace Analogy.ApplicationSettings
             this.gcSettingsLocation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationApplicationFolder.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationPerUser.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).BeginInit();
@@ -88,7 +87,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.gcCompressedArchives.Controls.Add(this.tsEnableCompressedArchive);
             this.gcCompressedArchives.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcCompressedArchives.Location = new System.Drawing.Point(0, 536);
+            this.gcCompressedArchives.Location = new System.Drawing.Point(0, 532);
             this.gcCompressedArchives.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcCompressedArchives.Name = "gcCompressedArchives";
             this.gcCompressedArchives.Size = new System.Drawing.Size(786, 75);
@@ -126,12 +125,60 @@ namespace Analogy.ApplicationSettings
             this.gcGeneral.Controls.Add(this.tsFileCaching);
             this.gcGeneral.Controls.Add(this.tsSingleInstance);
             this.gcGeneral.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcGeneral.Location = new System.Drawing.Point(0, 109);
+            this.gcGeneral.Location = new System.Drawing.Point(0, 105);
             this.gcGeneral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcGeneral.Name = "gcGeneral";
             this.gcGeneral.Size = new System.Drawing.Size(786, 355);
             this.gcGeneral.TabIndex = 8;
             this.gcGeneral.Text = "General";
+            // 
+            // nudRecentFolders
+            // 
+            this.nudRecentFolders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudRecentFolders.Location = new System.Drawing.Point(700, 312);
+            this.nudRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudRecentFolders.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudRecentFolders.Name = "nudRecentFolders";
+            this.nudRecentFolders.Size = new System.Drawing.Size(73, 23);
+            this.nudRecentFolders.TabIndex = 41;
+            this.nudRecentFolders.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // nudRecentFiles
+            // 
+            this.nudRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudRecentFiles.Location = new System.Drawing.Point(700, 281);
+            this.nudRecentFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudRecentFiles.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudRecentFiles.Name = "nudRecentFiles";
+            this.nudRecentFiles.Size = new System.Drawing.Size(73, 23);
+            this.nudRecentFiles.TabIndex = 40;
+            this.nudRecentFiles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblRecentFolders
+            // 
+            this.lblRecentFolders.Location = new System.Drawing.Point(11, 319);
+            this.lblRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lblRecentFolders.Name = "lblRecentFolders";
+            this.lblRecentFolders.Size = new System.Drawing.Size(194, 16);
+            this.lblRecentFolders.TabIndex = 39;
+            this.lblRecentFolders.Text = "Number of recent folders to keep:";
+            // 
+            // lblRecent
+            // 
+            this.lblRecent.Location = new System.Drawing.Point(11, 288);
+            this.lblRecent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lblRecent.Name = "lblRecent";
+            this.lblRecent.Size = new System.Drawing.Size(178, 16);
+            this.lblRecent.TabIndex = 38;
+            this.lblRecent.Text = "Number of recent files to keep:";
             // 
             // nudRealTimeRefreshInterval
             // 
@@ -245,13 +292,13 @@ namespace Analogy.ApplicationSettings
             this.tsFileCaching.Properties.OffText = "Don\'t use caching of loaded logs";
             this.tsFileCaching.Properties.OnText = "Use caching of loaded logs";
             this.tsFileCaching.Size = new System.Drawing.Size(763, 28);
-            toolTipTitleItem3.Text = "Caching";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "When enable files that were loaded won\'t be loaded again and the messages will be" +
+            toolTipTitleItem1.Text = "Caching";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "When enable files that were loaded won\'t be loaded again and the messages will be" +
     " loaded from in-memory cache.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.tsFileCaching.SuperTip = superToolTip3;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.tsFileCaching.SuperTip = superToolTip1;
             this.tsFileCaching.TabIndex = 1;
             // 
             // tsSingleInstance
@@ -265,34 +312,24 @@ namespace Analogy.ApplicationSettings
             this.tsSingleInstance.Properties.OffText = "Multi Instance Mode";
             this.tsSingleInstance.Properties.OnText = "Single Instance Mode";
             this.tsSingleInstance.Size = new System.Drawing.Size(763, 28);
-            toolTipTitleItem1.Text = "Single Instance mode";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "When enabled only one instance will run and other instances will exit immediately" +
+            toolTipTitleItem2.Text = "Single Instance mode";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "When enabled only one instance will run and other instances will exit immediately" +
     "";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.tsSingleInstance.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.tsSingleInstance.SuperTip = superToolTip2;
             this.tsSingleInstance.TabIndex = 2;
-            // 
-            // sbtnResetSettings
-            // 
-            this.sbtnResetSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnResetSettings.Location = new System.Drawing.Point(640, 69);
-            this.sbtnResetSettings.Name = "sbtnResetSettings";
-            this.sbtnResetSettings.Size = new System.Drawing.Size(141, 35);
-            this.sbtnResetSettings.TabIndex = 38;
-            this.sbtnResetSettings.Text = "Reset All Settings";
             // 
             // gcSettingsLocation
             // 
-            this.gcSettingsLocation.Controls.Add(this.sbtnResetSettings);
             this.gcSettingsLocation.Controls.Add(this.ceSettingsLocationApplicationFolder);
             this.gcSettingsLocation.Controls.Add(this.ceSettingsLocationPerUser);
             this.gcSettingsLocation.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcSettingsLocation.Location = new System.Drawing.Point(0, 0);
             this.gcSettingsLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcSettingsLocation.Name = "gcSettingsLocation";
-            this.gcSettingsLocation.Size = new System.Drawing.Size(786, 109);
+            this.gcSettingsLocation.Size = new System.Drawing.Size(786, 105);
             this.gcSettingsLocation.TabIndex = 11;
             this.gcSettingsLocation.Text = "Settings Location";
             // 
@@ -320,61 +357,13 @@ namespace Analogy.ApplicationSettings
             this.ceSettingsLocationPerUser.Size = new System.Drawing.Size(782, 27);
             this.ceSettingsLocationPerUser.TabIndex = 0;
             // 
-            // lblRecentFolders
-            // 
-            this.lblRecentFolders.Location = new System.Drawing.Point(11, 319);
-            this.lblRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblRecentFolders.Name = "lblRecentFolders";
-            this.lblRecentFolders.Size = new System.Drawing.Size(194, 16);
-            this.lblRecentFolders.TabIndex = 39;
-            this.lblRecentFolders.Text = "Number of recent folders to keep:";
-            // 
-            // lblRecent
-            // 
-            this.lblRecent.Location = new System.Drawing.Point(11, 288);
-            this.lblRecent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblRecent.Name = "lblRecent";
-            this.lblRecent.Size = new System.Drawing.Size(178, 16);
-            this.lblRecent.TabIndex = 38;
-            this.lblRecent.Text = "Number of recent files to keep:";
-            // 
-            // nudRecentFolders
-            // 
-            this.nudRecentFolders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRecentFolders.Location = new System.Drawing.Point(700, 312);
-            this.nudRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudRecentFolders.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.nudRecentFolders.Name = "nudRecentFolders";
-            this.nudRecentFolders.Size = new System.Drawing.Size(73, 23);
-            this.nudRecentFolders.TabIndex = 41;
-            this.nudRecentFolders.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // nudRecentFiles
-            // 
-            this.nudRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRecentFiles.Location = new System.Drawing.Point(700, 281);
-            this.nudRecentFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudRecentFiles.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.nudRecentFiles.Name = "nudRecentFiles";
-            this.nudRecentFiles.Size = new System.Drawing.Size(73, 23);
-            this.nudRecentFiles.TabIndex = 40;
-            this.nudRecentFiles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.nudIdleTime);
             this.groupControl1.Controls.Add(this.toggleSwitchIdleMode);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 464);
+            this.groupControl1.Location = new System.Drawing.Point(0, 460);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(786, 72);
             this.groupControl1.TabIndex = 12;
@@ -443,6 +432,8 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.gcGeneral)).EndInit();
             this.gcGeneral.ResumeLayout(false);
             this.gcGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRealTimeRefreshInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsWhatsNew.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).EndInit();
@@ -455,8 +446,6 @@ namespace Analogy.ApplicationSettings
             this.gcSettingsLocation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationApplicationFolder.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationPerUser.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -471,7 +460,6 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.GroupControl gcCompressedArchives;
         private DevExpress.XtraEditors.ToggleSwitch tsEnableCompressedArchive;
         private DevExpress.XtraEditors.GroupControl gcGeneral;
-        private DevExpress.XtraEditors.SimpleButton sbtnResetSettings;
         private System.Windows.Forms.NumericUpDown nudRealTimeRefreshInterval;
         private DevExpress.XtraEditors.LabelControl lblRealTimeRefreshInterval;
         private DevExpress.XtraEditors.ToggleSwitch tsWhatsNew;
