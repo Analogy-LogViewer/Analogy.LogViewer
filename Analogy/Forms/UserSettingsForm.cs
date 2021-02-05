@@ -69,26 +69,7 @@ namespace Analogy.Forms
         }
         private void SetupEventsHandlers()
         {
-            sbtnResetSettings.Click += (s, e) =>
-            {
-                var result = XtraMessageBox.Show("Are you sure you want to reset all settings to their defaults", @"Reset settings", MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Information);
-                if (result == DialogResult.Yes)
-                {
-                    var owner = this.Owner;
-                    this.FormClosing -= UserSettingsForm_FormClosing;
-                    Hide();
-                    Close();
-                    Settings.ResetSettings();
-                    UserSettingsForm user = new UserSettingsForm();
-                    user.ShowDialog(owner);
-                }
-            };
-            tsAutoComplete.IsOnChanged += (s, e) => { Settings.RememberLastSearches = tsAutoComplete.IsOn; };
-            nudAutoCompleteCount.ValueChanged += (s, e) =>
-            {
-                Settings.NumberOfLastSearches = (int)nudAutoCompleteCount.Value;
-            };
+    
             cpeNewMessagesColor.ColorChanged += RowColors_ColorChanged;
             cpeHighlightColor.ColorChanged += RowColors_ColorChanged;
             cpeLogLevelAnalogyInformation.ColorChanged += RowColors_ColorChanged;
@@ -120,12 +101,7 @@ namespace Analogy.Forms
                  Utils.SetLogLevel(chkLstLogLevel);
              };
 
-            tsRibbonCompactStyle.IsOnChanged += (s, e) =>
-            {
-                Settings.RibbonStyle = tsRibbonCompactStyle.IsOn
-                    ? CommandLayout.Simplified
-                    : CommandLayout.Classic;
-            };
+
         }
 
         private void MainView_Layout(object sender, EventArgs e)
@@ -148,24 +124,18 @@ namespace Analogy.Forms
 
         private void LoadSettings()
         {
-            tsSettingModeApplictionFolder.IsOn = Settings.SettingsMode == SettingsMode.ApplicationFolder;
             tsSimpleMode.IsOn = Settings.SimpleMode;
-            nudRealTimeRefreshInterval.Value = (decimal)Settings.RealTimeRefreshInterval;
             tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
             tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
-            tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             teDateTimeFormat.Text = Settings.DateTimePattern;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
-            tsAutoComplete.IsOn = Settings.RememberLastSearches;
             nudRecentFiles.Value = Settings.RecentFilesCount;
             nudRecentFolders.Value = Settings.RecentFoldersCount;
             //tsSimpleMode.IsOn = Settings.SimpleMode;
-            tsFileCaching.IsOn = Settings.EnableFileCaching;
-            tsStartupRibbonMinimized.IsOn = Settings.StartupRibbonMinimized;
             tsErrorLevelAsDefault.IsOn = Settings.StartupErrorLogLevel;
             chkEditPaging.Checked = Settings.PagingEnabled;
             if (Settings.PagingEnabled)
@@ -224,8 +194,7 @@ namespace Analogy.Forms
             lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
-            nudAutoCompleteCount.Value = Settings.NumberOfLastSearches;
-            tsSingleInstance.IsOn = Settings.SingleInstance;
+            
             if (Settings.AnalogyIcon == "Light")
             {
                 rbtnLightIconColor.Checked = true;
@@ -242,8 +211,7 @@ namespace Analogy.Forms
                 lblDisableUpdates.Visible = true;
                 cbUpdates.Enabled = false;
             }
-            tsTraybar.IsOn = Settings.MinimizedToTrayBar;
-            tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
+            
             tsLogLevels.IsOn = Settings.LogLevelSelection == LogLevelSelectionType.Multiple;
             Utils.SetLogLevel(chkLstLogLevel);
             Utils.FillLogLevels(chklExclusionLogLevel);
@@ -287,7 +255,6 @@ namespace Analogy.Forms
 
             }
 
-            tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == CommandLayout.Simplified;
             tsEnableFirstChanceException.IsOn = Settings.EnableFirstChanceException;
 
             var extensions = FactoriesManager.Instance.GetAllExtensions();
@@ -301,10 +268,6 @@ namespace Analogy.Forms
         private void SaveSetting()
         {
             SaveColorsSettings();
-            Settings.SettingsMode = tsSettingModeApplictionFolder.IsOn
-                ? SettingsMode.ApplicationFolder
-                : SettingsMode.PerUser;
-            Settings.RealTimeRefreshInterval = (float)nudRealTimeRefreshInterval.Value;
             Settings.TrackActiveMessage = tsTrackActiveMessage.IsOn;
             Settings.SimpleMode = tsSimpleMode.IsOn;
             Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
@@ -346,17 +309,13 @@ namespace Analogy.Forms
             }
 
             Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
-            Settings.RememberLastSearches = tsAutoComplete.IsOn;
             Settings.UpdateOrder(order);
             Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
-            Settings.SingleInstance = tsSingleInstance.IsOn;
+
             Settings.AnalogyIcon = rbtnLightIconColor.Checked ? "Light" : "Dark";
             var options = typeof(UpdateMode).GetDisplayValues();
             UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode),
                 options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
-            Settings.MinimizedToTrayBar = tsTraybar.IsOn;
-            Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
-            Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
             Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
             if (rbFontSizeDefault.Checked)
             {
@@ -482,18 +441,6 @@ namespace Analogy.Forms
         private void tsHistory_Toggled(object sender, EventArgs e)
         {
             Settings.ShowHistoryOfClearedMessages = tsHistory.IsOn;
-        }
-
-
-
-        private void tsFileCaching_Toggled(object sender, EventArgs e)
-        {
-            Settings.EnableFileCaching = tsFileCaching.IsOn;
-        }
-
-        private void tsStartupRibbonMinimized_Toggled(object sender, EventArgs e)
-        {
-            Settings.StartupRibbonMinimized = tsStartupRibbonMinimized.IsOn;
         }
 
         private void tsErrorLevelAsDefault_Toggled(object sender, EventArgs e)

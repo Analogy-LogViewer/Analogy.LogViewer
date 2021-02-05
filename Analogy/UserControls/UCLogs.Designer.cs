@@ -2657,7 +2657,7 @@ namespace Analogy
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(199, 134);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(199, 144);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2666,7 +2666,7 @@ namespace Analogy
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(199, 134);
+            this.clbExclude.Size = new System.Drawing.Size(199, 144);
             this.clbExclude.TabIndex = 22;
             // 
             // pnlLevel
@@ -2967,7 +2967,7 @@ namespace Analogy
             this.xtraTabPage2.Controls.Add(this.ceFilterPanelSearch);
             this.xtraTabPage2.Controls.Add(this.ceFilterPanelFilter);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1489, 134);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1489, 144);
             this.xtraTabPage2.Text = "Grid Pane";
             // 
             // UCLogs
