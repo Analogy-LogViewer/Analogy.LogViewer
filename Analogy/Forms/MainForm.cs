@@ -1973,7 +1973,7 @@ namespace Analogy.Forms
 
         private void btnApplicationSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UserSettingsForm user = new UserSettingsForm(0);
+            ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");
             user.ShowDialog(this);
         }
 

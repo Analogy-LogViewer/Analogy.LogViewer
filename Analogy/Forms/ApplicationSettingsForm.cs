@@ -15,9 +15,16 @@ namespace Analogy.Forms
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private string SelectedSettingName { get; }
         public ApplicationSettingsForm()
         {
             InitializeComponent();
+            SelectedSettingName = string.Empty;
+        }
+
+        public ApplicationSettingsForm(string selectedSettingName) : this()
+        {
+            SelectedSettingName = selectedSettingName;
         }
 
         private void ApplicationSettingsForm_Load(object sender, EventArgs e)
@@ -29,20 +36,69 @@ namespace Analogy.Forms
 
             ShowIcon = true;
             Icon = UserSettingsManager.UserSettings.GetIcon();
-
-
-            Icon = UserSettingsManager.UserSettings.GetIcon();
-            ApplicationGeneralSettingsUC uc = new ApplicationGeneralSettingsUC { Name = "Application Settings" };
-            fluentDesignFormContainer1.Controls.Add(uc);
-            uc.Dock = DockStyle.Fill;
-            uc.BringToFront();
-            accordionControl1.SelectedElement = accordionControl1.Elements.First();
-        }
-        private void AddOrBringToFrontUserControl(string name, UserControl uc)
-        {
-            if (!fluentDesignFormContainer1.Controls.ContainsKey(name))
+            if (string.IsNullOrEmpty(SelectedSettingName))
+            {
+                ApplicationGeneralSettingsUC uc = new ApplicationGeneralSettingsUC { Name = "Application Settings" };
+                fluentDesignFormContainer1.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                uc.BringToFront();
+                accordionControl1.SelectedElement = accordionControl1.Elements.First();
+            }
+            else
             {
 
+                AddOrBringToFrontUserControl(SelectedSettingName);
+            }
+        }
+
+        private UserControl GetUserControlByName(string name)
+        {
+            switch (name)
+            {
+                case "Application Settings":
+                    return new ApplicationGeneralSettingsUC();
+                case "Application UI Settings":
+                    return new ApplicationUISettingsUC();
+                case "Messages Filtering":
+                    return new FilteringSettingsUC();
+                case "Messages Layout":
+                    return new MessagesLayoutSettingsUC();
+                case "Color Settings":
+                    return new ColorSettingsUC();
+                case "Color Highlighting":
+                    return new ColorHighlightSettingsUC();
+                case "Predefined queries":
+                    return new PredefinedFiltersUC();
+                case "Shortcuts":
+                    return new ShortcutSettingsUC();
+                case "Extensions":
+                    return new ExtensionSettingsUC();
+                case "Updates":
+                    return new UpdateSettingsUC();
+                case "Debugging":
+                    return new DebuggingSettingsUC();
+                case "Data Provider Settings":
+                    return new DataProvidersSettingsUC();
+                case "Real Time Data Provider Settings":
+                    return new DataProvidersRealTimeSettingsUC();
+                case "Data Provider File Associations Settings":
+                    return new DataProvidersFileAssociationUC();
+                case "Data Provider external locations Settings":
+                    return new DataProvidersExternalLocationsSettingsUC();
+                default:
+                    {
+                        AnalogyLogger.Instance.LogError($"User Setting with {name} was not found");
+                        throw new Exception($"User Setting with {name} was not found");
+                    }
+            }
+        }
+
+        private void AddOrBringToFrontUserControl(string name)
+        {
+
+            if (!fluentDesignFormContainer1.Controls.ContainsKey(name))
+            {
+                var uc = GetUserControlByName(name);
                 uc.Name = name;
                 fluentDesignFormContainer1.Controls.Add(uc);
                 uc.Dock = DockStyle.Fill;
@@ -60,81 +116,80 @@ namespace Analogy.Forms
 
             fluentDesignFormContainer1.Controls[name].BringToFront();
         }
-        
+
         private void applicationSettings_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Application Settings", new ApplicationGeneralSettingsUC());
+            AddOrBringToFrontUserControl("Application Settings");
         }
-        
+
         private void applicationUISettings_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Application UI Settings", new ApplicationUISettingsUC());
+            AddOrBringToFrontUserControl("Application UI Settings");
         }
 
         private void messagesFiltering_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Messages Filtering", new FilteringSettingsUC());
+            AddOrBringToFrontUserControl("Messages Filtering");
         }
 
         private void MessagesLayout_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Messages Layout", new MessagesLayoutSettingsUC());
-
+            AddOrBringToFrontUserControl("Messages Layout");
         }
 
         private void colorSettings_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Color Settings", new ColorSettingsUC());
+            AddOrBringToFrontUserControl("Color Settings");
         }
 
         private void MessagesColorHighlighting_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Color Highlighting", new ColorHighlightSettingsUC());
+            AddOrBringToFrontUserControl("Color Highlighting");
         }
 
         private void predefinedQueries_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Predefined queries", new PredefinedFiltersUC());
+            AddOrBringToFrontUserControl("Predefined queries");
         }
 
         private void shortcuts_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Shortcuts", new ShortcutSettingsUC());
+            AddOrBringToFrontUserControl("Shortcuts");
         }
 
         private void Extensions_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Extensions", new ExtensionSettingsUC());
+            AddOrBringToFrontUserControl("Extensions");
         }
 
         private void updates_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Updates", new UpdateSettingsUC());
+            AddOrBringToFrontUserControl("Updates");
         }
 
         private void debugging_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Debugging", new DebuggingSettingsUC());
+            AddOrBringToFrontUserControl("Debugging");
         }
 
         private void DataProviderList_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Data Provider Settings", new DataProvidersSettingsUC());
+            AddOrBringToFrontUserControl("Data Provider Settings");
         }
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Real Time Data Provider Settings", new DataProvidersRealTimeSettingsUC());
+            AddOrBringToFrontUserControl("Real Time Data Provider Settings");
         }
 
         private void accordionControlElement5_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Data Provider File Associations Settings", new DataProvidersFileAssociationUC());
+            AddOrBringToFrontUserControl("Data Provider File Associations Settings");
         }
 
         private void DataProviderExternal_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Data Provider external locations Settings", new DataProvidersExternalLocationsSettingsUC());
+            AddOrBringToFrontUserControl("Data Provider external locations Settings");
         }
 
         private void bbtnReset_ItemClick(object sender, ItemClickEventArgs e)

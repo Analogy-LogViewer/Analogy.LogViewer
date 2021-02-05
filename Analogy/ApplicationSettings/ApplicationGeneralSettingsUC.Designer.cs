@@ -87,7 +87,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.gcCompressedArchives.Controls.Add(this.tsEnableCompressedArchive);
             this.gcCompressedArchives.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcCompressedArchives.Location = new System.Drawing.Point(0, 532);
+            this.gcCompressedArchives.Location = new System.Drawing.Point(0, 476);
             this.gcCompressedArchives.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcCompressedArchives.Name = "gcCompressedArchives";
             this.gcCompressedArchives.Size = new System.Drawing.Size(786, 75);
@@ -125,17 +125,17 @@ namespace Analogy.ApplicationSettings
             this.gcGeneral.Controls.Add(this.tsFileCaching);
             this.gcGeneral.Controls.Add(this.tsSingleInstance);
             this.gcGeneral.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcGeneral.Location = new System.Drawing.Point(0, 105);
+            this.gcGeneral.Location = new System.Drawing.Point(0, 91);
             this.gcGeneral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcGeneral.Name = "gcGeneral";
-            this.gcGeneral.Size = new System.Drawing.Size(786, 355);
+            this.gcGeneral.Size = new System.Drawing.Size(786, 313);
             this.gcGeneral.TabIndex = 8;
             this.gcGeneral.Text = "General";
             // 
             // nudRecentFolders
             // 
             this.nudRecentFolders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRecentFolders.Location = new System.Drawing.Point(700, 312);
+            this.nudRecentFolders.Location = new System.Drawing.Point(700, 280);
             this.nudRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudRecentFolders.Maximum = new decimal(new int[] {
             20,
@@ -150,7 +150,7 @@ namespace Analogy.ApplicationSettings
             // nudRecentFiles
             // 
             this.nudRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRecentFiles.Location = new System.Drawing.Point(700, 281);
+            this.nudRecentFiles.Location = new System.Drawing.Point(700, 249);
             this.nudRecentFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudRecentFiles.Maximum = new decimal(new int[] {
             20,
@@ -164,7 +164,7 @@ namespace Analogy.ApplicationSettings
             // 
             // lblRecentFolders
             // 
-            this.lblRecentFolders.Location = new System.Drawing.Point(11, 319);
+            this.lblRecentFolders.Location = new System.Drawing.Point(11, 287);
             this.lblRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblRecentFolders.Name = "lblRecentFolders";
             this.lblRecentFolders.Size = new System.Drawing.Size(194, 16);
@@ -173,7 +173,7 @@ namespace Analogy.ApplicationSettings
             // 
             // lblRecent
             // 
-            this.lblRecent.Location = new System.Drawing.Point(11, 288);
+            this.lblRecent.Location = new System.Drawing.Point(11, 256);
             this.lblRecent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblRecent.Name = "lblRecent";
             this.lblRecent.Size = new System.Drawing.Size(178, 16);
@@ -184,7 +184,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.nudRealTimeRefreshInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudRealTimeRefreshInterval.DecimalPlaces = 1;
-            this.nudRealTimeRefreshInterval.Location = new System.Drawing.Point(543, 254);
+            this.nudRealTimeRefreshInterval.Location = new System.Drawing.Point(543, 222);
             this.nudRealTimeRefreshInterval.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudRealTimeRefreshInterval.Maximum = new decimal(new int[] {
             10000,
@@ -207,7 +207,7 @@ namespace Analogy.ApplicationSettings
             // 
             // lblRealTimeRefreshInterval
             // 
-            this.lblRealTimeRefreshInterval.Location = new System.Drawing.Point(10, 256);
+            this.lblRealTimeRefreshInterval.Location = new System.Drawing.Point(10, 224);
             this.lblRealTimeRefreshInterval.Name = "lblRealTimeRefreshInterval";
             this.lblRealTimeRefreshInterval.Size = new System.Drawing.Size(305, 16);
             this.lblRealTimeRefreshInterval.TabIndex = 37;
@@ -218,7 +218,7 @@ namespace Analogy.ApplicationSettings
             this.tsWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsWhatsNew.EditValue = true;
-            this.tsWhatsNew.Location = new System.Drawing.Point(10, 185);
+            this.tsWhatsNew.Location = new System.Drawing.Point(10, 153);
             this.tsWhatsNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsWhatsNew.Name = "tsWhatsNew";
             this.tsWhatsNew.Properties.OffText = "Dont show what is new at start of application";
@@ -242,7 +242,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.tsAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsAutoComplete.Location = new System.Drawing.Point(10, 217);
+            this.tsAutoComplete.Location = new System.Drawing.Point(10, 185);
             this.tsAutoComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsAutoComplete.Name = "tsAutoComplete";
             this.tsAutoComplete.Properties.OffText = "Don\'t save last searches";
@@ -253,7 +253,7 @@ namespace Analogy.ApplicationSettings
             // nudAutoCompleteCount
             // 
             this.nudAutoCompleteCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudAutoCompleteCount.Location = new System.Drawing.Point(543, 223);
+            this.nudAutoCompleteCount.Location = new System.Drawing.Point(543, 191);
             this.nudAutoCompleteCount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudAutoCompleteCount.Maximum = new decimal(new int[] {
             50,
@@ -329,7 +329,7 @@ namespace Analogy.ApplicationSettings
             this.gcSettingsLocation.Location = new System.Drawing.Point(0, 0);
             this.gcSettingsLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcSettingsLocation.Name = "gcSettingsLocation";
-            this.gcSettingsLocation.Size = new System.Drawing.Size(786, 105);
+            this.gcSettingsLocation.Size = new System.Drawing.Size(786, 91);
             this.gcSettingsLocation.TabIndex = 11;
             this.gcSettingsLocation.Text = "Settings Location";
             // 
@@ -363,7 +363,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl1.Controls.Add(this.nudIdleTime);
             this.groupControl1.Controls.Add(this.toggleSwitchIdleMode);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 460);
+            this.groupControl1.Location = new System.Drawing.Point(0, 404);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(786, 72);
             this.groupControl1.TabIndex = 12;
