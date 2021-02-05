@@ -58,7 +58,6 @@ namespace Analogy.Forms
             this.accordionControlElement2,
             this.accordionControlElement1,
             this.DataProviders,
-            this.predefinedQueries,
             this.shortcuts,
             this.Extensions,
             this.updates,
@@ -66,13 +65,13 @@ namespace Analogy.Forms
             this.accordionControl1.Location = new System.Drawing.Point(0, 30);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(260, 636);
+            this.accordionControl1.Size = new System.Drawing.Size(260, 821);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
             // applicationGeneralSettings
             // 
-            this.applicationGeneralSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
+            this.applicationGeneralSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image1")));
             this.applicationGeneralSettings.Name = "applicationGeneralSettings";
             this.applicationGeneralSettings.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.applicationGeneralSettings.Text = "General Settings";
@@ -131,7 +130,7 @@ namespace Analogy.Forms
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1023, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1198, 30);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -141,8 +140,10 @@ namespace Analogy.Forms
             this.messagesFiltering,
             this.MessagesLayout,
             this.colorSettings,
-            this.MessagesColorHighlighting});
-            this.accordionControlElement1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image1")));
+            this.MessagesColorHighlighting,
+            this.predefinedQueries});
+            this.accordionControlElement1.Expanded = true;
+            this.accordionControlElement1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Messages Settings";
             // 
@@ -192,7 +193,7 @@ namespace Analogy.Forms
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 30);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(763, 636);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(938, 821);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // ApplicationUISettings
@@ -207,7 +208,7 @@ namespace Analogy.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 666);
+            this.ClientSize = new System.Drawing.Size(1198, 851);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
