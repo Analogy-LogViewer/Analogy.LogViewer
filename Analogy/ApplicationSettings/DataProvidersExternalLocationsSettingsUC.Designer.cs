@@ -1,7 +1,7 @@
 ﻿
 namespace Analogy.ApplicationSettings
 {
-    partial class DataProvidersExternalLocations
+    partial class DataProvidersExternalLocationsSettingsUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -108,7 +108,7 @@ namespace Analogy.ApplicationSettings
             this.sbtnFolderProbingAdd.TabIndex = 16;
             this.sbtnFolderProbingAdd.Text = "Add";
             // 
-            // DataProvidersExternalLocations
+            // DataProvidersExternalLocationsSettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,7 +120,7 @@ namespace Analogy.ApplicationSettings
             this.Controls.Add(this.listBoxFoldersProbing);
             this.Controls.Add(this.lblFoldersProbing);
             this.Controls.Add(this.lblAssemblies);
-            this.Name = "DataProvidersExternalLocations";
+            this.Name = "DataProvidersExternalLocationsSettingsUC";
             this.Size = new System.Drawing.Size(830, 527);
             this.Load += new System.EventHandler(this.DataProvidersExternalLocations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listBoxFoldersProbing)).EndInit();

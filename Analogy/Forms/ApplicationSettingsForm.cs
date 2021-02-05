@@ -114,5 +114,25 @@ namespace Analogy.Forms
         {
             AddOrBringToFrontUserControl("Debugging", new DebuggingSettingsUC());
         }
+
+        private void DataProviderList_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl("Data Provider Settings", new DataProvidersSettingsUC());
+        }
+
+        private void accordionControlElement4_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl("Real Time Data Provider Settings", new DataProvidersRealTimeSettingsUC());
+        }
+
+        private void accordionControlElement5_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl("Data Provider File Associations Settings", new DataProvidersFileAssociationUC());
+        }
+
+        private void DataProviderExternal_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl("Data Provider external locations Settings", new DataProvidersExternalLocationsSettingsUC());
+        }
     }
 }

@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {
-    public partial class DataProvidersExternalLocations : DevExpress.XtraEditors.XtraUserControl
+    public partial class DataProvidersExternalLocationsSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
         private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
 
-        public DataProvidersExternalLocations()
+        public DataProvidersExternalLocationsSettingsUC()
         {
             InitializeComponent();
         }
