@@ -141,6 +141,31 @@ namespace Analogy.DataTypes
             }
         }
 
+        public Font GetFontType(FontSelectionType mode)
+        {
+          var fontName = "Tahoma";
+          float fontSize;
+            switch (mode)
+            {
+                case FontSelectionType.Default:
+                    fontSize = 8.25f;
+                    break;
+                case FontSelectionType.Normal:
+                    fontSize = 10f;
+                    break;
+                case FontSelectionType.Large:
+                    fontSize = 12f;
+                    break;
+                case FontSelectionType.VeryLarge:
+                    fontSize = 14f;
+                    break;
+                default:
+                    fontSize = 8.25f;
+                    break;
+            }
+            return new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Point);
+
+        }
         public void SetMenuFontSelectionType(FontSelectionType mode)
         {
             MenuFontSelectionType = mode;
@@ -163,6 +188,31 @@ namespace Analogy.DataTypes
                     MenuFontSize = 12f;
                     break;
             }
+        }
+
+        public Font GetMenuFont(FontSelectionType mode)
+        {
+            var menuFontName = "Segoe UI";
+            float menuFontSize;
+            switch (mode)
+            {
+                case FontSelectionType.Default:
+                    menuFontSize = 12f;
+                    break;
+                case FontSelectionType.Normal:
+                    menuFontSize = 10f;
+                    break;
+                case FontSelectionType.Large:
+                    menuFontSize = 14f;
+                    break;
+                case FontSelectionType.VeryLarge:
+                    menuFontSize = 16f;
+                    break;
+                default:
+                    menuFontSize = 12f;
+                    break;
+            }
+            return new Font(menuFontName, menuFontSize, FontStyle.Regular, GraphicsUnit.Point);
         }
     }
 

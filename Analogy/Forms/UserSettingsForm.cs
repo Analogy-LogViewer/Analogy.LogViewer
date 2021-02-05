@@ -126,7 +126,6 @@ namespace Analogy.Forms
         {
             tsSimpleMode.IsOn = Settings.SimpleMode;
             tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
-            tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
@@ -195,14 +194,6 @@ namespace Analogy.Forms
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
             
-            if (Settings.AnalogyIcon == "Light")
-            {
-                rbtnLightIconColor.Checked = true;
-            }
-            else
-            {
-                rbtnDarkIconColor.Checked = true;
-            }
             LoadColorsSettings();
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
@@ -215,45 +206,6 @@ namespace Analogy.Forms
             tsLogLevels.IsOn = Settings.LogLevelSelection == LogLevelSelectionType.Multiple;
             Utils.SetLogLevel(chkLstLogLevel);
             Utils.FillLogLevels(chklExclusionLogLevel);
-            switch (Settings.FontSettings.FontSelectionType)
-            {
-                case FontSelectionType.Default:
-                    rbFontSizeDefault.Checked = true;
-                    break;
-                case FontSelectionType.Normal:
-                    rbFontSizeNormal.Checked = true;
-                    break;
-                case FontSelectionType.Large:
-                    rbFontSizeLarge.Checked = true;
-                    break;
-                case FontSelectionType.VeryLarge:
-                    rbFontSizeVeryLarge.Checked = true;
-                    break;
-                case FontSelectionType.Manual:
-                default:
-                    rbFontSizeNormal.Checked = true;
-                    break;
-            }
-            switch (Settings.FontSettings.MenuFontSelectionType)
-            {
-                case FontSelectionType.Default:
-                    rbMenuFontSizeDefault.Checked = true;
-                    break;
-                case FontSelectionType.Normal:
-                    rbMenuFontSizeNormal.Checked = true;
-                    break;
-                case FontSelectionType.Large:
-                    rbMenuFontSizeLarge.Checked = true;
-                    break;
-                case FontSelectionType.VeryLarge:
-                    rbMenuFontSizeVeryLarge.Checked = true;
-                    break;
-                case FontSelectionType.Manual:
-                default:
-                    rbMenuFontSizeNormal.Checked = true;
-                    break;
-
-            }
 
             tsEnableFirstChanceException.IsOn = Settings.EnableFirstChanceException;
 
@@ -312,49 +264,9 @@ namespace Analogy.Forms
             Settings.UpdateOrder(order);
             Settings.AdditionalProbingLocations = listBoxFoldersProbing.Items.Cast<string>().ToList();
 
-            Settings.AnalogyIcon = rbtnLightIconColor.Checked ? "Light" : "Dark";
             var options = typeof(UpdateMode).GetDisplayValues();
             UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode),
                 options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
-            Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
-            if (rbFontSizeDefault.Checked)
-            {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Default);
-            }
-            else if (rbFontSizeNormal.Checked)
-            {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Normal);
-            }
-
-            else if (rbFontSizeLarge.Checked)
-            {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Large);
-            }
-
-            else if (rbFontSizeVeryLarge.Checked)
-            {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.VeryLarge);
-            }
-
-            if (rbMenuFontSizeDefault.Checked)
-            {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Default);
-            }
-            else if (rbMenuFontSizeNormal.Checked)
-            {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Normal);
-            }
-
-            else if (rbMenuFontSizeLarge.Checked)
-            {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Large);
-            }
-
-            else if (rbMenuFontSizeVeryLarge.Checked)
-            {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge);
-            }
-
             Settings.EnableFirstChanceException = tsEnableFirstChanceException.IsOn;
 
             Settings.Save();
@@ -716,23 +628,7 @@ namespace Analogy.Forms
                 listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
             }
         }
-
-        private void rbtnDarkIconColor_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbtnDarkIconColor.Checked)
-            {
-                peAnalogy.Image = Resources.AnalogyDark;
-            }
-        }
-
-        private void rbtnLightIconColor_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbtnLightIconColor.Checked)
-            {
-                peAnalogy.Image = Resources.AnalogyLight;
-            }
-        }
-
+        
         private void btnHeaderSet_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(teHeader.Text) && teHeader.Tag is DevExpress.XtraGrid.Columns.GridColumn column)

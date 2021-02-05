@@ -31,13 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSettingsForm));
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageApplication = new DevExpress.XtraTab.XtraTabPage();
-            this.gcCompressedArchives = new DevExpress.XtraEditors.GroupControl();
-            this.tsEnableCompressedArchive = new DevExpress.XtraEditors.ToggleSwitch();
-            this.gcUISettings = new DevExpress.XtraEditors.GroupControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.peAnalogy = new DevExpress.XtraEditors.PictureEdit();
-            this.rbtnLightIconColor = new System.Windows.Forms.RadioButton();
-            this.rbtnDarkIconColor = new System.Windows.Forms.RadioButton();
             this.xtraTabPageFilter = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
@@ -216,15 +209,6 @@
             this.tsEnableFirstChanceException = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
             this.tabControlMain.SuspendLayout();
-            this.xtraTabPageApplication.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcCompressedArchives)).BeginInit();
-            this.gcCompressedArchives.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tsEnableCompressedArchive.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).BeginInit();
-            this.gcUISettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.peAnalogy.Properties)).BeginInit();
             this.xtraTabPageFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -368,96 +352,10 @@
             // xtraTabPageApplication
             // 
             this.xtraTabPageApplication.AutoScroll = true;
-            this.xtraTabPageApplication.Controls.Add(this.gcCompressedArchives);
-            this.xtraTabPageApplication.Controls.Add(this.gcUISettings);
             this.xtraTabPageApplication.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_icon1;
             this.xtraTabPageApplication.Name = "xtraTabPageApplication";
             this.xtraTabPageApplication.Size = new System.Drawing.Size(817, 925);
             this.xtraTabPageApplication.Text = "Application Settings";
-            // 
-            // gcCompressedArchives
-            // 
-            this.gcCompressedArchives.Controls.Add(this.tsEnableCompressedArchive);
-            this.gcCompressedArchives.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcCompressedArchives.Location = new System.Drawing.Point(0, 407);
-            this.gcCompressedArchives.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gcCompressedArchives.Name = "gcCompressedArchives";
-            this.gcCompressedArchives.Size = new System.Drawing.Size(817, 75);
-            this.gcCompressedArchives.TabIndex = 7;
-            this.gcCompressedArchives.Text = "Compressed Archives";
-            // 
-            // tsEnableCompressedArchive
-            // 
-            this.tsEnableCompressedArchive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsEnableCompressedArchive.EditValue = true;
-            this.tsEnableCompressedArchive.Location = new System.Drawing.Point(11, 37);
-            this.tsEnableCompressedArchive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsEnableCompressedArchive.Name = "tsEnableCompressedArchive";
-            this.tsEnableCompressedArchive.Properties.AutoHeight = false;
-            this.tsEnableCompressedArchive.Properties.OffText = "Disable support for archives files  (Zip and gz)";
-            this.tsEnableCompressedArchive.Properties.OnText = "Enable support for archives files  (Zip and gz) - Add extensions to Open File dia" +
-    "log";
-            this.tsEnableCompressedArchive.Size = new System.Drawing.Size(794, 28);
-            this.tsEnableCompressedArchive.TabIndex = 5;
-            // 
-            // gcUISettings
-            // 
-            this.gcUISettings.Controls.Add(this.panelControl1);
-            this.gcUISettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcUISettings.Location = new System.Drawing.Point(0, 0);
-            this.gcUISettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gcUISettings.Name = "gcUISettings";
-            this.gcUISettings.Size = new System.Drawing.Size(817, 407);
-            this.gcUISettings.TabIndex = 6;
-            this.gcUISettings.Text = "UI Settings";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelControl1.Controls.Add(this.peAnalogy);
-            this.panelControl1.Controls.Add(this.rbtnLightIconColor);
-            this.panelControl1.Controls.Add(this.rbtnDarkIconColor);
-            this.panelControl1.Location = new System.Drawing.Point(11, 301);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(790, 101);
-            this.panelControl1.TabIndex = 7;
-            // 
-            // peAnalogy
-            // 
-            this.peAnalogy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.peAnalogy.EditValue = global::Analogy.Properties.Resources.AnalogyDark;
-            this.peAnalogy.Location = new System.Drawing.Point(693, 5);
-            this.peAnalogy.Name = "peAnalogy";
-            this.peAnalogy.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.peAnalogy.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.peAnalogy.Size = new System.Drawing.Size(91, 91);
-            this.peAnalogy.TabIndex = 2;
-            // 
-            // rbtnLightIconColor
-            // 
-            this.rbtnLightIconColor.AutoSize = true;
-            this.rbtnLightIconColor.Location = new System.Drawing.Point(5, 56);
-            this.rbtnLightIconColor.Name = "rbtnLightIconColor";
-            this.rbtnLightIconColor.Size = new System.Drawing.Size(88, 21);
-            this.rbtnLightIconColor.TabIndex = 1;
-            this.rbtnLightIconColor.Text = "Light icon";
-            this.rbtnLightIconColor.UseVisualStyleBackColor = true;
-            this.rbtnLightIconColor.CheckedChanged += new System.EventHandler(this.rbtnLightIconColor_CheckedChanged);
-            // 
-            // rbtnDarkIconColor
-            // 
-            this.rbtnDarkIconColor.AutoSize = true;
-            this.rbtnDarkIconColor.Checked = true;
-            this.rbtnDarkIconColor.Location = new System.Drawing.Point(5, 17);
-            this.rbtnDarkIconColor.Name = "rbtnDarkIconColor";
-            this.rbtnDarkIconColor.Size = new System.Drawing.Size(87, 21);
-            this.rbtnDarkIconColor.TabIndex = 1;
-            this.rbtnDarkIconColor.TabStop = true;
-            this.rbtnDarkIconColor.Text = "Dark icon";
-            this.rbtnDarkIconColor.UseVisualStyleBackColor = true;
-            this.rbtnDarkIconColor.CheckedChanged += new System.EventHandler(this.rbtnDarkIconColor_CheckedChanged);
             // 
             // xtraTabPageFilter
             // 
@@ -2578,16 +2476,6 @@
             this.Load += new System.EventHandler(this.UserSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).EndInit();
             this.tabControlMain.ResumeLayout(false);
-            this.xtraTabPageApplication.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcCompressedArchives)).EndInit();
-            this.gcCompressedArchives.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tsEnableCompressedArchive.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).EndInit();
-            this.gcUISettings.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.peAnalogy.Properties)).EndInit();
             this.xtraTabPageFilter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -2846,10 +2734,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnObject;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnThread;
-        private DevExpress.XtraEditors.GroupControl gcUISettings;
-        private DevExpress.XtraEditors.PictureEdit peAnalogy;
-        private System.Windows.Forms.RadioButton rbtnLightIconColor;
-        private System.Windows.Forms.RadioButton rbtnDarkIconColor;
         private DevExpress.XtraEditors.LabelControl lblHeader;
         private DevExpress.XtraEditors.SimpleButton sbtnHeaderSet;
         private DevExpress.XtraEditors.TextEdit teHeader;
@@ -2866,8 +2750,6 @@
         private DevExpress.XtraEditors.CheckEdit ceOverrideLogLevelColor;
         private DevExpress.XtraEditors.LabelControl lblRecentFolders;
         private System.Windows.Forms.NumericUpDown nudRecentFolders;
-        private DevExpress.XtraEditors.GroupControl gcCompressedArchives;
-        private DevExpress.XtraEditors.ToggleSwitch tsEnableCompressedArchive;
         private DevExpress.XtraEditors.ToggleSwitch tsEnableColors;
         private DevExpress.XtraEditors.LabelControl lblLogLevelRowTextColor;
         private DevExpress.XtraEditors.ColorPickEdit cpeLogLevelAnalogyInformationText;
@@ -2890,7 +2772,6 @@
         private DevExpress.XtraEditors.ToggleSwitch tsSimpleMode;
         private DevExpress.XtraEditors.ToggleSwitch tsLogLevels;
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstLogLevel;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageDebugging;
         private DevExpress.XtraEditors.ToggleSwitch tsEnableFirstChanceException;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageExtension;
