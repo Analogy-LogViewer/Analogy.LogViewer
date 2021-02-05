@@ -60,47 +60,16 @@ namespace Analogy.Forms
 
         private void LoadSettings()
         {
-
-
-
-            cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
-            cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
-            if (AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
-            {
-                lblDisableUpdates.Visible = true;
-                cbUpdates.Enabled = false;
-            }
-
-
-            tsEnableFirstChanceException.IsOn = Settings.EnableFirstChanceException;
-
         }
-
-        private void SaveSetting()
-        {
-           
-
-
-
-            var options = typeof(UpdateMode).GetDisplayValues();
-            UpdateManager.Instance.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode),
-                options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
-            Settings.EnableFirstChanceException = tsEnableFirstChanceException.IsOn;
-
-            Settings.Save();
-        }
-
+        
+         
+        
 
         private void UserSettingsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveSetting();
+            Settings.Save();
         }
-
-        private void btnDataProviderCustomSettings_Click(object sender, EventArgs e)
-        {
-       
-        }
-
+        
         //private void sBtnMoveUp_Click(object sender, EventArgs e)
         //{
         //    if (chkLstDataProviderStatus.SelectedIndex <= 0)
