@@ -69,35 +69,7 @@ namespace Analogy.Forms
         }
         private void SetupEventsHandlers()
         {
-    
-            cpeNewMessagesColor.ColorChanged += RowColors_ColorChanged;
-            cpeHighlightColor.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelAnalogyInformation.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelCritical.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelError.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelWarning.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelEvent.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelDebug.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelVerbose.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelTrace.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelDisabled.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelUnknown.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelAnalogyInformationText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelCriticalText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelErrorText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelWarningText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelEventText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelDebugText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelVerboseText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelTraceText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelDisabledText.ColorChanged += RowColors_ColorChanged;
-            cpeLogLevelUnknownText.ColorChanged += RowColors_ColorChanged;
-            cpeHighlightColorText.ColorChanged += RowColors_ColorChanged;
-            cpeNewMessagesColorText.ColorChanged += RowColors_ColorChanged;
             gridControl.MainView.Layout += MainView_Layout;
-
-
-
         }
 
         private void MainView_Layout(object sender, EventArgs e)
@@ -171,7 +143,6 @@ namespace Analogy.Forms
             //cbDataProviderAssociation.Properties.ValueMember = "ID";
             tsRememberLastOpenedDataProvider.IsOn = Settings.RememberLastOpenedDataProvider;
             
-            LoadColorsSettings();
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
             if (AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
@@ -193,7 +164,6 @@ namespace Analogy.Forms
 
         private void SaveSetting()
         {
-            SaveColorsSettings();
             Settings.RecentFilesCount = (int)nudRecentFiles.Value;
             Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
             List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);
@@ -242,59 +212,7 @@ namespace Analogy.Forms
 
             Settings.Save();
         }
-
-        private void SaveColorsSettings()
-        {
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Unknown, cpeLogLevelUnknown.Color, cpeLogLevelUnknownText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.None, cpeLogLevelDisabled.Color, cpeLogLevelDisabledText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Trace, cpeLogLevelTrace.Color, cpeLogLevelTraceText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Verbose, cpeLogLevelVerbose.Color, cpeLogLevelVerboseText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Debug, cpeLogLevelDebug.Color, cpeLogLevelDebugText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Information, cpeLogLevelEvent.Color, cpeLogLevelEventText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Warning, cpeLogLevelWarning.Color, cpeLogLevelWarningText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Error, cpeLogLevelError.Color, cpeLogLevelErrorText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Critical, cpeLogLevelCritical.Color, cpeLogLevelCriticalText.Color);
-            Settings.ColorSettings.SetColorForLogLevel(AnalogyLogLevel.Analogy, cpeLogLevelAnalogyInformation.Color, cpeLogLevelAnalogyInformationText.Color);
-            Settings.ColorSettings.SetHighlightColor(cpeHighlightColor.Color, cpeHighlightColorText.Color);
-            Settings.ColorSettings.SetNewMessagesColor(cpeNewMessagesColor.Color, cpeNewMessagesColorText.Color);
-            Settings.ColorSettings.EnableNewMessagesColor = ceNewMessagesColor.Checked;
-            Settings.ColorSettings.OverrideLogLevelColor = ceOverrideLogLevelColor.Checked;
-            Settings.ColorSettings.EnableMessagesColors = tsEnableColors.IsOn;
-        }
-        private void LoadColorsSettings()
-        {
-            tsEnableColors.IsOn = Settings.ColorSettings.EnableMessagesColors;
-            cpeLogLevelUnknown.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Unknown).BackgroundColor;
-            cpeLogLevelDisabled.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.None).BackgroundColor;
-            cpeLogLevelTrace.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Trace).BackgroundColor;
-            cpeLogLevelVerbose.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Verbose).BackgroundColor;
-            cpeLogLevelDebug.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Debug).BackgroundColor;
-            cpeLogLevelEvent.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Information).BackgroundColor;
-            cpeLogLevelWarning.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Warning).BackgroundColor;
-            cpeLogLevelError.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Error).BackgroundColor;
-            cpeLogLevelCritical.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Critical).BackgroundColor;
-            cpeLogLevelAnalogyInformation.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Analogy).BackgroundColor;
-            cpeHighlightColor.Color = Settings.ColorSettings.GetHighlightColor().BackgroundColor;
-            cpeNewMessagesColor.Color = Settings.ColorSettings.GetNewMessagesColor().BackgroundColor;
-
-            cpeLogLevelUnknownText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Unknown).TextColor;
-            cpeLogLevelDisabledText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.None).TextColor;
-            cpeLogLevelTraceText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Trace).TextColor;
-            cpeLogLevelVerboseText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Verbose).TextColor;
-            cpeLogLevelDebugText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Debug).TextColor;
-            cpeLogLevelEventText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Information).TextColor;
-            cpeLogLevelWarningText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Warning).TextColor;
-            cpeLogLevelErrorText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Error).TextColor;
-            cpeLogLevelCriticalText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Critical).TextColor;
-            cpeLogLevelAnalogyInformationText.Color = Settings.ColorSettings.GetColorForLogLevel(AnalogyLogLevel.Analogy).TextColor;
-            cpeHighlightColorText.Color = Settings.ColorSettings.GetHighlightColor().TextColor;
-            cpeNewMessagesColorText.Color = Settings.ColorSettings.GetNewMessagesColor().TextColor;
-
-            ceNewMessagesColor.Checked = Settings.ColorSettings.EnableNewMessagesColor;
-            ceOverrideLogLevelColor.Checked = Settings.ColorSettings.OverrideLogLevelColor;
-            UpdateColors();
-        }
-
+        
         private void SetupExampleMessage(string text)
         {
             DataRow dtr = messageData.NewRow();
@@ -357,34 +275,6 @@ namespace Analogy.Forms
                         MessageBoxIcon.Error);
                 }
 
-            }
-        }
-
-        private void sBtnImportColors_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Analogy Color Settings (*.json)|*.json";
-            openFileDialog1.Title = @"Import NLog settings";
-            openFileDialog1.Multiselect = true;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    var json = File.ReadAllText(openFileDialog1.FileName);
-                    ColorSettings color = ColorSettings.FromJson(json);
-                    Settings.ColorSettings = color;
-                    LoadColorsSettings();
-                    XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                }
-                catch (Exception ex)
-                {
-                    AnalogyLogManager.Instance.LogError("Error during import data: " + e, nameof(sBtnImportColors_Click));
-                    XtraMessageBox.Show("Error Import: " + ex.Message, @"Error Import file", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
             }
         }
 
@@ -517,48 +407,7 @@ namespace Analogy.Forms
             logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
             Settings.DateTimePattern = teDateTimeFormat.Text;
         }
-
-        private void ceNewMessagesColor_CheckedChanged(object sender, EventArgs e)
-        {
-            cpeNewMessagesColor.Enabled = ceNewMessagesColor.Checked;
-
-        }
-
-        private void RowColors_ColorChanged(object sender, EventArgs e)
-        {
-            tsEnableColors.IsOn = true;
-            UpdateColors();
-        }
-
-        private void UpdateColors()
-        {
-
-            lblLogLevelUnknown.BackColor = cpeLogLevelUnknown.Color;
-            lblLogLevelDisabled.BackColor = cpeLogLevelDisabled.Color;
-            lblLogLevelTrace.BackColor = cpeLogLevelTrace.Color;
-            lblLogLevelVerbose.BackColor = cpeLogLevelVerbose.Color;
-            lblLogLevelDebug.BackColor = cpeLogLevelDebug.Color;
-            lblLogLevelEvent.BackColor = cpeLogLevelEvent.Color;
-            lblLogLevelWarning.BackColor = cpeLogLevelWarning.Color;
-            lblLogLevelError.BackColor = cpeLogLevelError.Color;
-            lblLogLevelCritical.BackColor = cpeLogLevelCritical.Color;
-            lblLogLevelAnalogyInformation.BackColor = cpeLogLevelAnalogyInformation.Color;
-            lblHighlightColor.BackColor = cpeHighlightColor.Color;
-            ceNewMessagesColor.BackColor = cpeNewMessagesColor.Color;
-            lblLogLevelUnknown.ForeColor = cpeLogLevelUnknownText.Color;
-            lblLogLevelDisabled.ForeColor = cpeLogLevelDisabledText.Color;
-            lblLogLevelTrace.ForeColor = cpeLogLevelTraceText.Color;
-            lblLogLevelVerbose.ForeColor = cpeLogLevelVerboseText.Color;
-            lblLogLevelDebug.ForeColor = cpeLogLevelDebugText.Color;
-            lblLogLevelEvent.ForeColor = cpeLogLevelEventText.Color;
-            lblLogLevelWarning.ForeColor = cpeLogLevelWarningText.Color;
-            lblLogLevelError.ForeColor = cpeLogLevelErrorText.Color;
-            lblLogLevelCritical.ForeColor = cpeLogLevelCriticalText.Color;
-            lblLogLevelAnalogyInformation.ForeColor = cpeLogLevelAnalogyInformationText.Color;
-            lblHighlightColor.ForeColor = cpeHighlightColorText.Color;
-            ceNewMessagesColor.ForeColor = cpeNewMessagesColorText.Color;
-        }
-
+        
     }
 }
 
