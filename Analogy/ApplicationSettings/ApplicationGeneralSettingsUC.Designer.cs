@@ -29,16 +29,15 @@ namespace Analogy.ApplicationSettings
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.gcCompressedArchives = new DevExpress.XtraEditors.GroupControl();
             this.tsEnableCompressedArchive = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcGeneral = new DevExpress.XtraEditors.GroupControl();
-            this.sbtnResetSettings = new DevExpress.XtraEditors.SimpleButton();
             this.nudRealTimeRefreshInterval = new System.Windows.Forms.NumericUpDown();
             this.lblRealTimeRefreshInterval = new DevExpress.XtraEditors.LabelControl();
             this.tsWhatsNew = new DevExpress.XtraEditors.ToggleSwitch();
@@ -48,9 +47,18 @@ namespace Analogy.ApplicationSettings
             this.tsTraybar = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsFileCaching = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsSingleInstance = new DevExpress.XtraEditors.ToggleSwitch();
+            this.sbtnResetSettings = new DevExpress.XtraEditors.SimpleButton();
             this.gcSettingsLocation = new DevExpress.XtraEditors.GroupControl();
-            this.ceSettingsLocationPerUser = new DevExpress.XtraEditors.CheckEdit();
             this.ceSettingsLocationApplicationFolder = new DevExpress.XtraEditors.CheckEdit();
+            this.ceSettingsLocationPerUser = new DevExpress.XtraEditors.CheckEdit();
+            this.lblRecentFolders = new DevExpress.XtraEditors.LabelControl();
+            this.lblRecent = new DevExpress.XtraEditors.LabelControl();
+            this.nudRecentFolders = new System.Windows.Forms.NumericUpDown();
+            this.nudRecentFiles = new System.Windows.Forms.NumericUpDown();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.nudIdleTime = new System.Windows.Forms.NumericUpDown();
+            this.toggleSwitchIdleMode = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.gcCompressedArchives)).BeginInit();
             this.gcCompressedArchives.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsEnableCompressedArchive.Properties)).BeginInit();
@@ -66,15 +74,21 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.tsSingleInstance.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcSettingsLocation)).BeginInit();
             this.gcSettingsLocation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationPerUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationApplicationFolder.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationPerUser.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIdleMode.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcCompressedArchives
             // 
             this.gcCompressedArchives.Controls.Add(this.tsEnableCompressedArchive);
             this.gcCompressedArchives.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcCompressedArchives.Location = new System.Drawing.Point(0, 399);
+            this.gcCompressedArchives.Location = new System.Drawing.Point(0, 536);
             this.gcCompressedArchives.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcCompressedArchives.Name = "gcCompressedArchives";
             this.gcCompressedArchives.Size = new System.Drawing.Size(786, 75);
@@ -98,6 +112,10 @@ namespace Analogy.ApplicationSettings
             // 
             // gcGeneral
             // 
+            this.gcGeneral.Controls.Add(this.nudRecentFolders);
+            this.gcGeneral.Controls.Add(this.nudRecentFiles);
+            this.gcGeneral.Controls.Add(this.lblRecentFolders);
+            this.gcGeneral.Controls.Add(this.lblRecent);
             this.gcGeneral.Controls.Add(this.nudRealTimeRefreshInterval);
             this.gcGeneral.Controls.Add(this.lblRealTimeRefreshInterval);
             this.gcGeneral.Controls.Add(this.tsWhatsNew);
@@ -111,18 +129,9 @@ namespace Analogy.ApplicationSettings
             this.gcGeneral.Location = new System.Drawing.Point(0, 109);
             this.gcGeneral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcGeneral.Name = "gcGeneral";
-            this.gcGeneral.Size = new System.Drawing.Size(786, 290);
+            this.gcGeneral.Size = new System.Drawing.Size(786, 355);
             this.gcGeneral.TabIndex = 8;
             this.gcGeneral.Text = "General";
-            // 
-            // sbtnResetSettings
-            // 
-            this.sbtnResetSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnResetSettings.Location = new System.Drawing.Point(640, 69);
-            this.sbtnResetSettings.Name = "sbtnResetSettings";
-            this.sbtnResetSettings.Size = new System.Drawing.Size(141, 35);
-            this.sbtnResetSettings.TabIndex = 38;
-            this.sbtnResetSettings.Text = "Reset All Settings";
             // 
             // nudRealTimeRefreshInterval
             // 
@@ -236,13 +245,13 @@ namespace Analogy.ApplicationSettings
             this.tsFileCaching.Properties.OffText = "Don\'t use caching of loaded logs";
             this.tsFileCaching.Properties.OnText = "Use caching of loaded logs";
             this.tsFileCaching.Size = new System.Drawing.Size(763, 28);
-            toolTipTitleItem1.Text = "Caching";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "When enable files that were loaded won\'t be loaded again and the messages will be" +
+            toolTipTitleItem3.Text = "Caching";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "When enable files that were loaded won\'t be loaded again and the messages will be" +
     " loaded from in-memory cache.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.tsFileCaching.SuperTip = superToolTip1;
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.tsFileCaching.SuperTip = superToolTip3;
             this.tsFileCaching.TabIndex = 1;
             // 
             // tsSingleInstance
@@ -256,14 +265,23 @@ namespace Analogy.ApplicationSettings
             this.tsSingleInstance.Properties.OffText = "Multi Instance Mode";
             this.tsSingleInstance.Properties.OnText = "Single Instance Mode";
             this.tsSingleInstance.Size = new System.Drawing.Size(763, 28);
-            toolTipTitleItem2.Text = "Single Instance mode";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "When enabled only one instance will run and other instances will exit immediately" +
+            toolTipTitleItem1.Text = "Single Instance mode";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "When enabled only one instance will run and other instances will exit immediately" +
     "";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.tsSingleInstance.SuperTip = superToolTip2;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.tsSingleInstance.SuperTip = superToolTip1;
             this.tsSingleInstance.TabIndex = 2;
+            // 
+            // sbtnResetSettings
+            // 
+            this.sbtnResetSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnResetSettings.Location = new System.Drawing.Point(640, 69);
+            this.sbtnResetSettings.Name = "sbtnResetSettings";
+            this.sbtnResetSettings.Size = new System.Drawing.Size(141, 35);
+            this.sbtnResetSettings.TabIndex = 38;
+            this.sbtnResetSettings.Text = "Reset All Settings";
             // 
             // gcSettingsLocation
             // 
@@ -278,6 +296,18 @@ namespace Analogy.ApplicationSettings
             this.gcSettingsLocation.TabIndex = 11;
             this.gcSettingsLocation.Text = "Settings Location";
             // 
+            // ceSettingsLocationApplicationFolder
+            // 
+            this.ceSettingsLocationApplicationFolder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ceSettingsLocationApplicationFolder.Location = new System.Drawing.Point(2, 52);
+            this.ceSettingsLocationApplicationFolder.Name = "ceSettingsLocationApplicationFolder";
+            this.ceSettingsLocationApplicationFolder.Properties.Caption = "Portable: Store settings in the Application Folder (May need folder permissions)";
+            this.ceSettingsLocationApplicationFolder.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgToggle1;
+            this.ceSettingsLocationApplicationFolder.Properties.RadioGroupIndex = 0;
+            this.ceSettingsLocationApplicationFolder.Size = new System.Drawing.Size(782, 27);
+            this.ceSettingsLocationApplicationFolder.TabIndex = 1;
+            this.ceSettingsLocationApplicationFolder.TabStop = false;
+            // 
             // ceSettingsLocationPerUser
             // 
             this.ceSettingsLocationPerUser.Dock = System.Windows.Forms.DockStyle.Top;
@@ -290,16 +320,110 @@ namespace Analogy.ApplicationSettings
             this.ceSettingsLocationPerUser.Size = new System.Drawing.Size(782, 27);
             this.ceSettingsLocationPerUser.TabIndex = 0;
             // 
-            // ceSettingsLocationApplicationFolder
+            // lblRecentFolders
             // 
-            this.ceSettingsLocationApplicationFolder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ceSettingsLocationApplicationFolder.Location = new System.Drawing.Point(2, 52);
-            this.ceSettingsLocationApplicationFolder.Name = "ceSettingsLocationApplicationFolder";
-            this.ceSettingsLocationApplicationFolder.Properties.Caption = "Portable: Store settings in the Application Folder (May need folder permissions)";
-            this.ceSettingsLocationApplicationFolder.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgToggle1;
-            this.ceSettingsLocationApplicationFolder.Properties.RadioGroupIndex = 0;
-            this.ceSettingsLocationApplicationFolder.Size = new System.Drawing.Size(782, 27);
-            this.ceSettingsLocationApplicationFolder.TabIndex = 1;
+            this.lblRecentFolders.Location = new System.Drawing.Point(11, 319);
+            this.lblRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lblRecentFolders.Name = "lblRecentFolders";
+            this.lblRecentFolders.Size = new System.Drawing.Size(194, 16);
+            this.lblRecentFolders.TabIndex = 39;
+            this.lblRecentFolders.Text = "Number of recent folders to keep:";
+            // 
+            // lblRecent
+            // 
+            this.lblRecent.Location = new System.Drawing.Point(11, 288);
+            this.lblRecent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lblRecent.Name = "lblRecent";
+            this.lblRecent.Size = new System.Drawing.Size(178, 16);
+            this.lblRecent.TabIndex = 38;
+            this.lblRecent.Text = "Number of recent files to keep:";
+            // 
+            // nudRecentFolders
+            // 
+            this.nudRecentFolders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudRecentFolders.Location = new System.Drawing.Point(700, 312);
+            this.nudRecentFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudRecentFolders.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudRecentFolders.Name = "nudRecentFolders";
+            this.nudRecentFolders.Size = new System.Drawing.Size(73, 23);
+            this.nudRecentFolders.TabIndex = 41;
+            this.nudRecentFolders.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // nudRecentFiles
+            // 
+            this.nudRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudRecentFiles.Location = new System.Drawing.Point(700, 281);
+            this.nudRecentFiles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudRecentFiles.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudRecentFiles.Name = "nudRecentFiles";
+            this.nudRecentFiles.Size = new System.Drawing.Size(73, 23);
+            this.nudRecentFiles.TabIndex = 40;
+            this.nudRecentFiles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.labelControl5);
+            this.groupControl1.Controls.Add(this.nudIdleTime);
+            this.groupControl1.Controls.Add(this.toggleSwitchIdleMode);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl1.Location = new System.Drawing.Point(0, 464);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(786, 72);
+            this.groupControl1.TabIndex = 12;
+            this.groupControl1.Text = "Idle mode";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(255, 35);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(208, 16);
+            this.labelControl5.TabIndex = 11;
+            this.labelControl5.Text = "Idle time (in minutes) of no activity :";
+            // 
+            // nudIdleTime
+            // 
+            this.nudIdleTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudIdleTime.Location = new System.Drawing.Point(672, 28);
+            this.nudIdleTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudIdleTime.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.nudIdleTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudIdleTime.Name = "nudIdleTime";
+            this.nudIdleTime.Size = new System.Drawing.Size(101, 23);
+            this.nudIdleTime.TabIndex = 10;
+            this.nudIdleTime.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // toggleSwitchIdleMode
+            // 
+            this.toggleSwitchIdleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toggleSwitchIdleMode.Location = new System.Drawing.Point(11, 29);
+            this.toggleSwitchIdleMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.toggleSwitchIdleMode.Name = "toggleSwitchIdleMode";
+            this.toggleSwitchIdleMode.Properties.OffText = "don\'t enable idle mode";
+            this.toggleSwitchIdleMode.Properties.OnText = "Idle mode: ignore incoming messages when user is idle";
+            this.toggleSwitchIdleMode.Size = new System.Drawing.Size(767, 28);
+            this.toggleSwitchIdleMode.TabIndex = 9;
             // 
             // ApplicationGeneralSettingsUC
             // 
@@ -307,10 +431,11 @@ namespace Analogy.ApplicationSettings
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.gcCompressedArchives);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcGeneral);
             this.Controls.Add(this.gcSettingsLocation);
             this.Name = "ApplicationGeneralSettingsUC";
-            this.Size = new System.Drawing.Size(786, 570);
+            this.Size = new System.Drawing.Size(786, 643);
             this.Load += new System.EventHandler(this.ApplicationGeneralSettingsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcCompressedArchives)).EndInit();
             this.gcCompressedArchives.ResumeLayout(false);
@@ -328,8 +453,15 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.tsSingleInstance.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcSettingsLocation)).EndInit();
             this.gcSettingsLocation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationPerUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationApplicationFolder.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSettingsLocationPerUser.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFolders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecentFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIdleTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitchIdleMode.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,5 +484,13 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.GroupControl gcSettingsLocation;
         private DevExpress.XtraEditors.CheckEdit ceSettingsLocationPerUser;
         private DevExpress.XtraEditors.CheckEdit ceSettingsLocationApplicationFolder;
+        private DevExpress.XtraEditors.LabelControl lblRecentFolders;
+        private DevExpress.XtraEditors.LabelControl lblRecent;
+        private System.Windows.Forms.NumericUpDown nudRecentFolders;
+        private System.Windows.Forms.NumericUpDown nudRecentFiles;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private System.Windows.Forms.NumericUpDown nudIdleTime;
+        private DevExpress.XtraEditors.ToggleSwitch toggleSwitchIdleMode;
     }
 }

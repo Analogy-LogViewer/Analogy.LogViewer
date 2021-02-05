@@ -67,14 +67,29 @@ namespace Analogy.ApplicationSettings
             tsCheckAdditionalInformation.IsOnChanged += (s, e) =>
               Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
             tsFileCaching.IsOnChanged += (s, e) => Settings.EnableFileCaching = tsFileCaching.IsOn;
-            tsEnableCompressedArchive.IsOnChanged+= (s,e)=> Settings.EnableCompressedArchives= tsEnableCompressedArchive.IsOn;
-          
+            tsEnableCompressedArchive.IsOnChanged += (s, e) => Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
 
+            nudRecentFiles.ValueChanged += (s, e) =>
+            {
+                Settings.RecentFilesCount = (int)nudRecentFiles.Value;
+            };
+            nudRecentFolders.ValueChanged += (s, e) =>
+            {
+                Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
+            };
+            nudIdleTime.ValueChanged += (s, e) =>
+            {
+                Settings.IdleTimeMinutes = (int)nudIdleTime.Value;
+            };
+            toggleSwitchIdleMode.IsOnChanged += (s, e) => { Settings.IdleMode = toggleSwitchIdleMode.IsOn; };
         }
 
         private void LoadSettings()
         {
-
+            toggleSwitchIdleMode.IsOn = Settings.IdleMode;
+            nudIdleTime.Value = Settings.IdleTimeMinutes;
+            nudRecentFiles.Value = Settings.RecentFilesCount;
+            nudRecentFolders.Value = Settings.RecentFoldersCount;
             ceSettingsLocationApplicationFolder.Checked = Settings.SettingsMode == SettingsMode.ApplicationFolder;
             ceSettingsLocationPerUser.Checked = Settings.SettingsMode == SettingsMode.PerUser;
             nudRealTimeRefreshInterval.Value = (decimal)Settings.RealTimeRefreshInterval;

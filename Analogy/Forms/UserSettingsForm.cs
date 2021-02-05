@@ -62,12 +62,10 @@ namespace Analogy.Forms
         {
 
             listBoxFoldersProbing.Items.AddRange(Settings.AdditionalProbingLocations.ToArray());
-            nudRecentFiles.Value = Settings.RecentFilesCount;
-            nudRecentFolders.Value = Settings.RecentFoldersCount;
+   
             //tsSimpleMode.IsOn = Settings.SimpleMode;
 
-            toggleSwitchIdleMode.IsOn = Settings.IdleMode;
-            nudIdleTime.Value = Settings.IdleTimeMinutes;
+  
 
             var startup = Settings.AutoStartDataProviders;
             var loaded = FactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
@@ -130,8 +128,6 @@ namespace Analogy.Forms
 
         private void SaveSetting()
         {
-            Settings.RecentFilesCount = (int)nudRecentFiles.Value;
-            Settings.RecentFoldersCount = (int)nudRecentFolders.Value;
             List<Guid> order = new List<Guid>(chkLstDataProviderStatus.Items.Count);
             foreach (CheckedListBoxItem item in chkLstDataProviderStatus.Items)
             {
@@ -178,50 +174,11 @@ namespace Analogy.Forms
 
             Settings.Save();
         }
-        
-     
-        private void ToggleSwitchIdleMode_Toggled(object sender, EventArgs e)
-        {
-            Settings.IdleMode = toggleSwitchIdleMode.IsOn;
-
-        }
-
-        private void NudIdleTime_ValueChanged(object sender, EventArgs e)
-        {
-            Settings.IdleTimeMinutes = (int)nudIdleTime.Value;
-
-        }
-
+       
+    
         private void UserSettingsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveSetting();
-        }
-
-        private void sBtnExportColors_Click(object sender, EventArgs e)
-        {
-            SaveSetting();
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Analogy Color Settings (*.json)|*.json";
-            saveFileDialog.Title = @"Export Analogy Color settings";
-
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-
-                try
-                {
-                    File.WriteAllText(saveFileDialog.FileName, Settings.ColorSettings.AsJson());
-                    XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                }
-                catch (Exception ex)
-                {
-                    AnalogyLogManager.Instance.LogError("Error during save to file: " + e, nameof(sBtnExportColors_Click));
-                    XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-            }
         }
 
         private void btnDataProviderCustomSettings_Click(object sender, EventArgs e)
