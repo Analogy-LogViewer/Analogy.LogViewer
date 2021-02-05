@@ -34,18 +34,6 @@
             this.gcCompressedArchives = new DevExpress.XtraEditors.GroupControl();
             this.tsEnableCompressedArchive = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcUISettings = new DevExpress.XtraEditors.GroupControl();
-            this.pcMenuFont = new DevExpress.XtraEditors.PanelControl();
-            this.rbMenuFontSizeDefault = new System.Windows.Forms.RadioButton();
-            this.rbMenuFontSizeNormal = new System.Windows.Forms.RadioButton();
-            this.rbMenuFontSizeLarge = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.rbMenuFontSizeVeryLarge = new System.Windows.Forms.RadioButton();
-            this.pcUiFont = new DevExpress.XtraEditors.PanelControl();
-            this.rbFontSizeDefault = new System.Windows.Forms.RadioButton();
-            this.rbFontSizeVeryLarge = new System.Windows.Forms.RadioButton();
-            this.rbFontSizeNormal = new System.Windows.Forms.RadioButton();
-            this.rbFontSizeLarge = new System.Windows.Forms.RadioButton();
-            this.lblUlFontSize = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.peAnalogy = new DevExpress.XtraEditors.PictureEdit();
             this.rbtnLightIconColor = new System.Windows.Forms.RadioButton();
@@ -234,10 +222,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsEnableCompressedArchive.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).BeginInit();
             this.gcUISettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcMenuFont)).BeginInit();
-            this.pcMenuFont.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcUiFont)).BeginInit();
-            this.pcUiFont.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peAnalogy.Properties)).BeginInit();
@@ -419,8 +403,6 @@
             // 
             // gcUISettings
             // 
-            this.gcUISettings.Controls.Add(this.pcMenuFont);
-            this.gcUISettings.Controls.Add(this.pcUiFont);
             this.gcUISettings.Controls.Add(this.panelControl1);
             this.gcUISettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcUISettings.Location = new System.Drawing.Point(0, 0);
@@ -429,152 +411,6 @@
             this.gcUISettings.Size = new System.Drawing.Size(817, 407);
             this.gcUISettings.TabIndex = 6;
             this.gcUISettings.Text = "UI Settings";
-            // 
-            // pcMenuFont
-            // 
-            this.pcMenuFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pcMenuFont.Controls.Add(this.rbMenuFontSizeDefault);
-            this.pcMenuFont.Controls.Add(this.rbMenuFontSizeNormal);
-            this.pcMenuFont.Controls.Add(this.rbMenuFontSizeLarge);
-            this.pcMenuFont.Controls.Add(this.label6);
-            this.pcMenuFont.Controls.Add(this.rbMenuFontSizeVeryLarge);
-            this.pcMenuFont.Location = new System.Drawing.Point(11, 214);
-            this.pcMenuFont.Name = "pcMenuFont";
-            this.pcMenuFont.Size = new System.Drawing.Size(794, 84);
-            this.pcMenuFont.TabIndex = 16;
-            // 
-            // rbMenuFontSizeDefault
-            // 
-            this.rbMenuFontSizeDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbMenuFontSizeDefault.AutoSize = true;
-            this.rbMenuFontSizeDefault.Checked = true;
-            this.rbMenuFontSizeDefault.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.rbMenuFontSizeDefault.Location = new System.Drawing.Point(240, 21);
-            this.rbMenuFontSizeDefault.Name = "rbMenuFontSizeDefault";
-            this.rbMenuFontSizeDefault.Size = new System.Drawing.Size(96, 32);
-            this.rbMenuFontSizeDefault.TabIndex = 15;
-            this.rbMenuFontSizeDefault.TabStop = true;
-            this.rbMenuFontSizeDefault.Text = "Default";
-            this.rbMenuFontSizeDefault.UseVisualStyleBackColor = true;
-            // 
-            // rbMenuFontSizeNormal
-            // 
-            this.rbMenuFontSizeNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbMenuFontSizeNormal.AutoSize = true;
-            this.rbMenuFontSizeNormal.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.rbMenuFontSizeNormal.Location = new System.Drawing.Point(375, 25);
-            this.rbMenuFontSizeNormal.Name = "rbMenuFontSizeNormal";
-            this.rbMenuFontSizeNormal.Size = new System.Drawing.Size(88, 27);
-            this.rbMenuFontSizeNormal.TabIndex = 12;
-            this.rbMenuFontSizeNormal.Text = "Normal";
-            this.rbMenuFontSizeNormal.UseVisualStyleBackColor = true;
-            // 
-            // rbMenuFontSizeLarge
-            // 
-            this.rbMenuFontSizeLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbMenuFontSizeLarge.AutoSize = true;
-            this.rbMenuFontSizeLarge.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.rbMenuFontSizeLarge.Location = new System.Drawing.Point(493, 18);
-            this.rbMenuFontSizeLarge.Name = "rbMenuFontSizeLarge";
-            this.rbMenuFontSizeLarge.Size = new System.Drawing.Size(94, 36);
-            this.rbMenuFontSizeLarge.TabIndex = 13;
-            this.rbMenuFontSizeLarge.Text = "Large";
-            this.rbMenuFontSizeLarge.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(161, 17);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Menu contexts Font size:";
-            // 
-            // rbMenuFontSizeVeryLarge
-            // 
-            this.rbMenuFontSizeVeryLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbMenuFontSizeVeryLarge.AutoSize = true;
-            this.rbMenuFontSizeVeryLarge.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.rbMenuFontSizeVeryLarge.Location = new System.Drawing.Point(609, 18);
-            this.rbMenuFontSizeVeryLarge.Name = "rbMenuFontSizeVeryLarge";
-            this.rbMenuFontSizeVeryLarge.Size = new System.Drawing.Size(162, 41);
-            this.rbMenuFontSizeVeryLarge.TabIndex = 14;
-            this.rbMenuFontSizeVeryLarge.Text = "Very Large";
-            this.rbMenuFontSizeVeryLarge.UseVisualStyleBackColor = true;
-            // 
-            // pcUiFont
-            // 
-            this.pcUiFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pcUiFont.Controls.Add(this.rbFontSizeDefault);
-            this.pcUiFont.Controls.Add(this.rbFontSizeVeryLarge);
-            this.pcUiFont.Controls.Add(this.rbFontSizeNormal);
-            this.pcUiFont.Controls.Add(this.rbFontSizeLarge);
-            this.pcUiFont.Controls.Add(this.lblUlFontSize);
-            this.pcUiFont.Location = new System.Drawing.Point(11, 124);
-            this.pcUiFont.Name = "pcUiFont";
-            this.pcUiFont.Size = new System.Drawing.Size(794, 84);
-            this.pcUiFont.TabIndex = 15;
-            // 
-            // rbFontSizeDefault
-            // 
-            this.rbFontSizeDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbFontSizeDefault.AutoSize = true;
-            this.rbFontSizeDefault.Checked = true;
-            this.rbFontSizeDefault.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.rbFontSizeDefault.Location = new System.Drawing.Point(264, 31);
-            this.rbFontSizeDefault.Name = "rbFontSizeDefault";
-            this.rbFontSizeDefault.Size = new System.Drawing.Size(72, 21);
-            this.rbFontSizeDefault.TabIndex = 11;
-            this.rbFontSizeDefault.TabStop = true;
-            this.rbFontSizeDefault.Text = "Default";
-            this.rbFontSizeDefault.UseVisualStyleBackColor = true;
-            // 
-            // rbFontSizeVeryLarge
-            // 
-            this.rbFontSizeVeryLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbFontSizeVeryLarge.AutoSize = true;
-            this.rbFontSizeVeryLarge.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.rbFontSizeVeryLarge.Location = new System.Drawing.Point(621, 26);
-            this.rbFontSizeVeryLarge.Name = "rbFontSizeVeryLarge";
-            this.rbFontSizeVeryLarge.Size = new System.Drawing.Size(150, 33);
-            this.rbFontSizeVeryLarge.TabIndex = 10;
-            this.rbFontSizeVeryLarge.Text = "Very Large";
-            this.rbFontSizeVeryLarge.UseVisualStyleBackColor = true;
-            // 
-            // rbFontSizeNormal
-            // 
-            this.rbFontSizeNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbFontSizeNormal.AutoSize = true;
-            this.rbFontSizeNormal.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.rbFontSizeNormal.Location = new System.Drawing.Point(375, 30);
-            this.rbFontSizeNormal.Name = "rbFontSizeNormal";
-            this.rbFontSizeNormal.Size = new System.Drawing.Size(84, 25);
-            this.rbFontSizeNormal.TabIndex = 8;
-            this.rbFontSizeNormal.Text = "Normal";
-            this.rbFontSizeNormal.UseVisualStyleBackColor = true;
-            // 
-            // rbFontSizeLarge
-            // 
-            this.rbFontSizeLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbFontSizeLarge.AutoSize = true;
-            this.rbFontSizeLarge.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.rbFontSizeLarge.Location = new System.Drawing.Point(493, 29);
-            this.rbFontSizeLarge.Name = "rbFontSizeLarge";
-            this.rbFontSizeLarge.Size = new System.Drawing.Size(81, 28);
-            this.rbFontSizeLarge.TabIndex = 9;
-            this.rbFontSizeLarge.Text = "Large";
-            this.rbFontSizeLarge.UseVisualStyleBackColor = true;
-            // 
-            // lblUlFontSize
-            // 
-            this.lblUlFontSize.AutoSize = true;
-            this.lblUlFontSize.Location = new System.Drawing.Point(9, 36);
-            this.lblUlFontSize.Name = "lblUlFontSize";
-            this.lblUlFontSize.Size = new System.Drawing.Size(66, 17);
-            this.lblUlFontSize.TabIndex = 6;
-            this.lblUlFontSize.Text = "Font size:";
             // 
             // panelControl1
             // 
@@ -2748,12 +2584,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsEnableCompressedArchive.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).EndInit();
             this.gcUISettings.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcMenuFont)).EndInit();
-            this.pcMenuFont.ResumeLayout(false);
-            this.pcMenuFont.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcUiFont)).EndInit();
-            this.pcUiFont.ResumeLayout(false);
-            this.pcUiFont.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -3060,17 +2890,7 @@
         private DevExpress.XtraEditors.ToggleSwitch tsSimpleMode;
         private DevExpress.XtraEditors.ToggleSwitch tsLogLevels;
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstLogLevel;
-        private System.Windows.Forms.RadioButton rbFontSizeVeryLarge;
-        private System.Windows.Forms.RadioButton rbFontSizeLarge;
-        private System.Windows.Forms.RadioButton rbFontSizeNormal;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.Label lblUlFontSize;
-        private System.Windows.Forms.RadioButton rbMenuFontSizeVeryLarge;
-        private System.Windows.Forms.RadioButton rbMenuFontSizeLarge;
-        private System.Windows.Forms.RadioButton rbMenuFontSizeNormal;
-        private System.Windows.Forms.Label label6;
-        private DevExpress.XtraEditors.PanelControl pcMenuFont;
-        private DevExpress.XtraEditors.PanelControl pcUiFont;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageDebugging;
         private DevExpress.XtraEditors.ToggleSwitch tsEnableFirstChanceException;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageExtension;
@@ -3078,8 +2898,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.ToggleSwitch tsTrackActiveMessage;
         private DevExpress.XtraEditors.LabelControl lblDisableUpdates;
-        private System.Windows.Forms.RadioButton rbFontSizeDefault;
-        private System.Windows.Forms.RadioButton rbMenuFontSizeDefault;
         private DevExpress.XtraEditors.GroupControl gcColors;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl13;
