@@ -80,7 +80,7 @@ namespace Analogy.ApplicationSettings
             this.gcFiltering.Margin = new System.Windows.Forms.Padding(10);
             this.gcFiltering.Name = "gcFiltering";
             this.gcFiltering.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.gcFiltering.Size = new System.Drawing.Size(840, 518);
+            this.gcFiltering.Size = new System.Drawing.Size(840, 449);
             this.gcFiltering.TabIndex = 4;
             this.gcFiltering.Text = "Filtering and search ";
             // 
@@ -233,7 +233,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl1.Controls.Add(this.labelControl13);
             this.groupControl1.Controls.Add(this.chklExclusionLogLevel);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 518);
+            this.groupControl1.Location = new System.Drawing.Point(0, 449);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(840, 278);
             this.groupControl1.TabIndex = 37;
