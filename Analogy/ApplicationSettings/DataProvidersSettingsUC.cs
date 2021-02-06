@@ -58,7 +58,15 @@ namespace Analogy.ApplicationSettings
         private void SetupEventsHandlers()
         {
             chkLstDataProviderStatus.CheckMemberChanged += (s, e) => SaveSettings();
-            tsRememberLastOpenedDataProvider.IsOnChanged+=(s,e) => Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
+            tsRememberLastOpenedDataProvider.IsOnChanged += (s, e) =>
+                Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
+            chkLstDataProviderStatus.CustomizeItem += (s, e) =>
+            {
+                FactoryCheckItem bind = (FactoryCheckItem) e.Value;
+                e.TemplatedItem.Elements[0].ImageOptions.Image = bind.Image;
+                e.TemplatedItem.Elements[1].Text = $"{bind.Name} (id:{bind.ID})";
+                e.TemplatedItem.Elements[2].Text = bind.Description;
+            };
         }
 
         private void SaveSettings()
