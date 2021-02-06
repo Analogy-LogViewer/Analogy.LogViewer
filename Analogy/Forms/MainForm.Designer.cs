@@ -53,7 +53,6 @@
             this.bbtnItemSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnItemExportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiRestart = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
             this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
             this.bbiBookmarks = new DevExpress.XtraBars.BarButtonItem();
@@ -103,15 +102,15 @@
             this.skinPaletteRibbonGalleryBarItem3 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             this.bsiSettings = new DevExpress.XtraBars.BarSubItem();
             this.btnApplicationSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnApplicationUISettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnFiltering = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMessageColumnsLayoutSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnColorsSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnColorHighlightSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnPreDefinedQueries = new DevExpress.XtraBars.BarButtonItem();
-            this.btnLookAndFeel = new DevExpress.XtraBars.BarButtonItem();
             this.btnShortcuts = new DevExpress.XtraBars.BarButtonItem();
-            this.btnMRU = new DevExpress.XtraBars.BarButtonItem();
-            this.btnResourcesUsage = new DevExpress.XtraBars.BarButtonItem();
             this.btnDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSettingsExtensions = new DevExpress.XtraBars.BarButtonItem();
-            this.btnCustomDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsDebugging = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
@@ -204,14 +203,11 @@
             this.btnApplicationSettings,
             this.btnFiltering,
             this.btnPreDefinedQueries,
-            this.btnLookAndFeel,
+            this.btnColorsSettings,
             this.btnShortcuts,
-            this.btnMRU,
-            this.btnResourcesUsage,
             this.barSubItem3,
             this.barButtonItem9,
             this.barSubItem4,
-            this.btnCustomDataProvidersSettings,
             this.bbiUserSettingsStatistics,
             this.btnDataProvidersSettings,
             this.btnSettingsUpdate,
@@ -221,10 +217,12 @@
             this.btnSettingsDebugging,
             this.bbtnDataProvidersUpdates,
             this.bbiSettingsExtensions,
-            this.bbiRestart});
+            this.btnApplicationUISettings,
+            this.btnMessageColumnsLayoutSettings,
+            this.btnColorHighlightSettings});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 108;
+            this.ribbonControlMain.MaxItemId = 111;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bsmInfo);
@@ -243,7 +241,6 @@
             this.applicationMenu1.ItemLinks.Add(this.bbtnItemSettings);
             this.applicationMenu1.ItemLinks.Add(this.bBtnItemExportSettings);
             this.applicationMenu1.ItemLinks.Add(this.bBtnItemImportSettings);
-            this.applicationMenu1.ItemLinks.Add(this.bbiRestart);
             this.applicationMenu1.ItemLinks.Add(this.bbtnItemExit);
             this.applicationMenu1.Name = "applicationMenu1";
             this.applicationMenu1.Ribbon = this.ribbonControlMain;
@@ -271,15 +268,6 @@
             this.bBtnItemImportSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnItemImportSettings.ImageOptions.Image")));
             this.bBtnItemImportSettings.Name = "bBtnItemImportSettings";
             this.bBtnItemImportSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnItemImportSettings_ItemClick);
-            // 
-            // bbiRestart
-            // 
-            this.bbiRestart.Caption = "Restart Application";
-            this.bbiRestart.Id = 107;
-            this.bbiRestart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiRestart.ImageOptions.Image")));
-            this.bbiRestart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRestart.ImageOptions.LargeImage")));
-            this.bbiRestart.Name = "bbiRestart";
-            this.bbiRestart.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbtnItemExit
             // 
@@ -723,15 +711,15 @@
             this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.LargeImage")));
             this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnApplicationSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnApplicationUISettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnFiltering),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnMessageColumnsLayoutSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnColorsSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnColorHighlightSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnPreDefinedQueries),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnLookAndFeel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnMRU),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnResourcesUsage),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDataProvidersSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSettingsExtensions),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCustomDataProvidersSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsDebugging)});
             this.bsiSettings.Name = "bsiSettings";
@@ -742,34 +730,54 @@
             this.btnApplicationSettings.Id = 84;
             this.btnApplicationSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
             this.btnApplicationSettings.Name = "btnApplicationSettings";
-            this.btnApplicationSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnApplicationSettings_ItemClick);
+            // 
+            // btnApplicationUISettings
+            // 
+            this.btnApplicationUISettings.Caption = "Application UI Settings";
+            this.btnApplicationUISettings.Id = 108;
+            this.btnApplicationUISettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnApplicationUISettings.ImageOptions.Image")));
+            this.btnApplicationUISettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnApplicationUISettings.ImageOptions.LargeImage")));
+            this.btnApplicationUISettings.Name = "btnApplicationUISettings";
             // 
             // btnFiltering
             // 
-            this.btnFiltering.Caption = "Filtering";
+            this.btnFiltering.Caption = "Filtering and Interactions";
             this.btnFiltering.Id = 85;
             this.btnFiltering.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltering.ImageOptions.Image")));
             this.btnFiltering.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFiltering.ImageOptions.LargeImage")));
             this.btnFiltering.Name = "btnFiltering";
-            this.btnFiltering.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFiltering_ItemClick);
+            // 
+            // btnMessageColumnsLayoutSettings
+            // 
+            this.btnMessageColumnsLayoutSettings.Caption = "Message Columns Layout";
+            this.btnMessageColumnsLayoutSettings.Id = 109;
+            this.btnMessageColumnsLayoutSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMessageColumnsLayoutSettings.ImageOptions.Image")));
+            this.btnMessageColumnsLayoutSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMessageColumnsLayoutSettings.ImageOptions.LargeImage")));
+            this.btnMessageColumnsLayoutSettings.Name = "btnMessageColumnsLayoutSettings";
+            // 
+            // btnColorsSettings
+            // 
+            this.btnColorsSettings.Caption = "Colors";
+            this.btnColorsSettings.Id = 87;
+            this.btnColorsSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnColorsSettings.ImageOptions.Image")));
+            this.btnColorsSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnColorsSettings.ImageOptions.LargeImage")));
+            this.btnColorsSettings.Name = "btnColorsSettings";
+            // 
+            // btnColorHighlightSettings
+            // 
+            this.btnColorHighlightSettings.Caption = "Rows Color Highlight";
+            this.btnColorHighlightSettings.Id = 110;
+            this.btnColorHighlightSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnColorHighlightSettings.ImageOptions.Image")));
+            this.btnColorHighlightSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnColorHighlightSettings.ImageOptions.LargeImage")));
+            this.btnColorHighlightSettings.Name = "btnColorHighlightSettings";
             // 
             // btnPreDefinedQueries
             // 
-            this.btnPreDefinedQueries.Caption = "Pre-Defined Queries";
+            this.btnPreDefinedQueries.Caption = "Predefined Queries";
             this.btnPreDefinedQueries.Id = 86;
             this.btnPreDefinedQueries.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPreDefinedQueries.ImageOptions.Image")));
             this.btnPreDefinedQueries.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPreDefinedQueries.ImageOptions.LargeImage")));
             this.btnPreDefinedQueries.Name = "btnPreDefinedQueries";
-            this.btnPreDefinedQueries.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPreDefinedQueries_ItemClick);
-            // 
-            // btnLookAndFeel
-            // 
-            this.btnLookAndFeel.Caption = "Colors";
-            this.btnLookAndFeel.Id = 87;
-            this.btnLookAndFeel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLookAndFeel.ImageOptions.Image")));
-            this.btnLookAndFeel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLookAndFeel.ImageOptions.LargeImage")));
-            this.btnLookAndFeel.Name = "btnLookAndFeel";
-            this.btnLookAndFeel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnColors_ItemClick);
             // 
             // btnShortcuts
             // 
@@ -780,24 +788,6 @@
             this.btnShortcuts.Name = "btnShortcuts";
             this.btnShortcuts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShortcuts_ItemClick);
             // 
-            // btnMRU
-            // 
-            this.btnMRU.Caption = "MRU";
-            this.btnMRU.Id = 89;
-            this.btnMRU.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMRU.ImageOptions.Image")));
-            this.btnMRU.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMRU.ImageOptions.LargeImage")));
-            this.btnMRU.Name = "btnMRU";
-            this.btnMRU.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMRU_ItemClick);
-            // 
-            // btnResourcesUsage
-            // 
-            this.btnResourcesUsage.Caption = "Resource Usage";
-            this.btnResourcesUsage.Id = 90;
-            this.btnResourcesUsage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnResourcesUsage.ImageOptions.Image")));
-            this.btnResourcesUsage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnResourcesUsage.ImageOptions.LargeImage")));
-            this.btnResourcesUsage.Name = "btnResourcesUsage";
-            this.btnResourcesUsage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnResourcesUsage_ItemClick);
-            // 
             // btnDataProvidersSettings
             // 
             this.btnDataProvidersSettings.Caption = "Data Providers Settings";
@@ -805,7 +795,6 @@
             this.btnDataProvidersSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.Image")));
             this.btnDataProvidersSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.LargeImage")));
             this.btnDataProvidersSettings.Name = "btnDataProvidersSettings";
-            this.btnDataProvidersSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDataProvidersSettings_ItemClick);
             // 
             // bbiSettingsExtensions
             // 
@@ -815,15 +804,6 @@
             this.bbiSettingsExtensions.ImageOptions.LargeImage = global::Analogy.Properties.Resources.extension32;
             this.bbiSettingsExtensions.Name = "bbiSettingsExtensions";
             this.bbiSettingsExtensions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSettingsExtensions_ItemClick);
-            // 
-            // btnCustomDataProvidersSettings
-            // 
-            this.btnCustomDataProvidersSettings.Caption = "Custom Data Providers Settings";
-            this.btnCustomDataProvidersSettings.Id = 94;
-            this.btnCustomDataProvidersSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomDataProvidersSettings.ImageOptions.Image")));
-            this.btnCustomDataProvidersSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCustomDataProvidersSettings.ImageOptions.LargeImage")));
-            this.btnCustomDataProvidersSettings.Name = "btnCustomDataProvidersSettings";
-            this.btnCustomDataProvidersSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCustomDataProvidersSettings_ItemClick);
             // 
             // btnSettingsUpdate
             // 
@@ -1002,12 +982,9 @@
         private DevExpress.XtraBars.BarButtonItem btnApplicationSettings;
         private DevExpress.XtraBars.BarButtonItem btnFiltering;
         private DevExpress.XtraBars.BarButtonItem btnPreDefinedQueries;
-        private DevExpress.XtraBars.BarButtonItem btnLookAndFeel;
+        private DevExpress.XtraBars.BarButtonItem btnColorsSettings;
         private DevExpress.XtraBars.BarButtonItem btnShortcuts;
-        private DevExpress.XtraBars.BarButtonItem btnMRU;
-        private DevExpress.XtraBars.BarButtonItem btnResourcesUsage;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
-        private DevExpress.XtraBars.BarButtonItem btnCustomDataProvidersSettings;
         private DevExpress.XtraBars.BarButtonItem bbiUserSettingsStatistics;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
@@ -1022,6 +999,8 @@
         private DevExpress.XtraBars.BarButtonItem bbtnDataProvidersUpdates;
         private DevExpress.Utils.DefaultToolTipController defaultToolTipController1;
         private DevExpress.XtraBars.BarButtonItem bbiSettingsExtensions;
-        private DevExpress.XtraBars.BarButtonItem bbiRestart;
+        private DevExpress.XtraBars.BarButtonItem btnApplicationUISettings;
+        private DevExpress.XtraBars.BarButtonItem btnMessageColumnsLayoutSettings;
+        private DevExpress.XtraBars.BarButtonItem btnColorHighlightSettings;
     }
 }

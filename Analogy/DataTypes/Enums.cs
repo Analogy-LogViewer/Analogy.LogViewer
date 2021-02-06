@@ -103,4 +103,5 @@ namespace Analogy.DataTypes
             return enumValues;
         }
     }
+    
 }

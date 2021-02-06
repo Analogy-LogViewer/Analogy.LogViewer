@@ -267,19 +267,51 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
-            bbiRestart.ItemClick += (s, e) =>
-            {
-                try
-                {
-                    Application.Restart();
-                    Environment.Exit(0);
-                }
-                catch (Exception exception)
-                {
-                    AnalogyLogger.Instance.LogCritical($"Unable to restart application: {exception.Message}");
-                }
+            #region  main menu
 
+            btnApplicationSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");
+                user.ShowDialog(this);
             };
+            btnApplicationUISettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Application UI Settings");
+                user.ShowDialog(this);
+            };
+            btnFiltering.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Filtering");
+                user.ShowDialog(this);
+            };
+            btnMessageColumnsLayoutSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Layout");
+                user.ShowDialog(this);
+            };
+            btnColorsSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Settings");
+                user.ShowDialog(this);
+            };
+            btnColorHighlightSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Highlighting");
+                user.ShowDialog(this);
+            };
+            btnPreDefinedQueries.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Predefined queries");
+                user.ShowDialog(this);
+            };
+            btnDataProvidersSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Data Provider Settings");
+                user.ShowDialog(this);
+            };
+            #endregion
+            
+ 
             ILogWindow GetLogWindows(Control mainControl)
             {
                 while (true)
@@ -1971,59 +2003,14 @@ namespace Analogy.Forms
             update.Show(this);
         }
 
-        private void btnApplicationSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");
-            user.ShowDialog(this);
-        }
-
-        private void btnFiltering_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Filtering");
-            user.ShowDialog(this);
-        }
-
-        private void btnPreDefinedQueries_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Predefined queries");
-            user.ShowDialog(this);
-        }
-
-        private void btnColors_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Color Settings");
-            user.ShowDialog(this);
-        }
 
         private void btnShortcuts_ItemClick(object sender, ItemClickEventArgs e)
         {
             ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
             user.ShowDialog(this);
         }
+    
 
-        private void btnMRU_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //ApplicationSettingsForm user = new ApplicationSettingsForm(5);
-            //user.ShowDialog(this);
-        }
-
-        private void btnResourcesUsage_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //UserSettingsForm user = new UserSettingsForm(6);
-            //user.ShowDialog(this);
-        }
-
-        private void btnDataProvidersSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //UserSettingsForm user = new UserSettingsForm(7);
-            //user.ShowDialog(this);
-        }
-
-        private void btnCustomDataProvidersSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            UserSettingsDataProvidersForm user = new UserSettingsDataProvidersForm();
-            user.ShowDialog(this);
-        }
 
         private void bbiSettingsExtensions_ItemClick(object sender, ItemClickEventArgs e)
         {
