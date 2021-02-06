@@ -523,4 +523,37 @@
   <data name="Analogy512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Analogy512x512.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="actions32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\actions32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Affirmations32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Affirmations32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Git_icon_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Git_icon_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gRPC32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gRPC32x32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Log4jXml32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Log4jXml32x32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="philips_image_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\philips_image_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="powertoys32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\powertoys32x32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rabbitmq32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rabbitmq32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VS32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VS32x32.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wcf32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wcf32x32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="whatsappicon32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whatsappicon32x32.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
