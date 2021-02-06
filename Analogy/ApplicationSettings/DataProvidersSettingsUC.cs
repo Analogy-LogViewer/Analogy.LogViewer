@@ -39,7 +39,7 @@ namespace Analogy.ApplicationSettings
                 }
 
                 var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
-                string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
+                string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Not found";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
@@ -57,7 +57,7 @@ namespace Analogy.ApplicationSettings
 
         private void SetupEventsHandlers()
         {
-            chkLstDataProviderStatus.CheckMemberChanged += (s, e) => SaveSettings();
+            chkLstDataProviderStatus.ItemCheck += (s, e) => SaveSettings();
             tsRememberLastOpenedDataProvider.IsOnChanged += (s, e) =>
                 Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
             chkLstDataProviderStatus.CustomizeItem += (s, e) =>

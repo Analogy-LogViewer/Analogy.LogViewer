@@ -232,7 +232,7 @@ namespace Analogy.Managers
                         var policy = (Activator.CreateInstance(policyType) as IAnalogyPolicyEnforcer)!;
                         if (policy.DisableUpdates)
                         {
-                            AnalogyLogger.Instance.LogWarning($"disable Update from: {policyType.FullName}");
+                            AnalogyLogger.Instance.LogWarning($"disable Update by: {policyType.FullName}");
                             AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides = true;
                         }
                     }
@@ -243,7 +243,7 @@ namespace Analogy.Managers
                 }
 
             }
-            Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
+            //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
 
         }
     }

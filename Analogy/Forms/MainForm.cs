@@ -247,7 +247,7 @@ namespace Analogy.Forms
                 {
                     foreach (IAnalogyCustomAction action in actionFactory.Actions)
                     {
-                        if (action.Type == AnalogyCustomActionType.BelongsToProvider)
+                        if (action.Type != AnalogyCustomActionType.Global)
                         {
                             continue;
                         }

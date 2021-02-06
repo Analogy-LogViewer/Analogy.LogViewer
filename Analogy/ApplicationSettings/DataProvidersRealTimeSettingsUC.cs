@@ -39,7 +39,7 @@ namespace Analogy.ApplicationSettings
 
         private void SetupEventsHandlers()
         {
-            chkLstItemRealTimeDataSources.CheckMemberChanged += (s, e) =>
+            chkLstItemRealTimeDataSources.ItemCheck += (s, e) =>
             {
                 Settings.AutoStartDataProviders = new List<Guid>();
                 foreach (CheckedListBoxItem item in chkLstItemRealTimeDataSources.Items)

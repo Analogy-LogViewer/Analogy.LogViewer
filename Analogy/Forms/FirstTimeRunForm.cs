@@ -30,6 +30,15 @@ namespace Analogy.Forms
             }
 
             Icon = UserSettingsManager.UserSettings.GetIcon();
+            chkLstDataProviderStatus.CustomizeItem += (s, e) =>
+            {
+                FactoryCheckItem bind = (FactoryCheckItem)e.Value;
+                e.TemplatedItem.Elements[0].ImageOptions.Image = bind.Image;
+                e.TemplatedItem.Elements[1].Text = $"{bind.Name} (id:{bind.ID})";
+                e.TemplatedItem.Elements[2].Text = bind.Description;
+            };
+            chkLstDataProviderStatus.ItemCheck+=(s,e) => SaveSettings();
+            
             foreach (var setting in Settings.FactoriesOrder)
             {
                 FactorySettings factory = Settings.GetFactorySetting(setting);
@@ -85,9 +94,5 @@ namespace Analogy.Forms
             }
         }
 
-        private void chkLstDataProviderStatus_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
-        {
-            SaveSettings();
-        }
     }
 }

@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRunForm));
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement5 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement6 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan2 = new DevExpress.XtraEditors.TableLayout.TableSpan();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
@@ -49,7 +58,6 @@
             this.btnBack2 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.tpDataProviders = new DevExpress.XtraTab.XtraTabPage();
-            this.chkLstDataProviderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.pnlBottom4 = new DevExpress.XtraEditors.PanelControl();
             this.btnBack3 = new DevExpress.XtraEditors.SimpleButton();
             this.btnNext4 = new DevExpress.XtraEditors.SimpleButton();
@@ -61,6 +69,7 @@
             this.hyperLinkEdit2 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.hyperLinkEdit1 = new DevExpress.XtraEditors.HyperLinkEdit();
+            this.chkLstDataProviderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.tpWelcome.SuspendLayout();
@@ -81,12 +90,12 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             this.tpDataProviders.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom4)).BeginInit();
             this.pnlBottom4.SuspendLayout();
             this.tpFinish.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -300,16 +309,6 @@
             this.tpDataProviders.Size = new System.Drawing.Size(1114, 489);
             this.tpDataProviders.Text = "Data Providers";
             // 
-            // chkLstDataProviderStatus
-            // 
-            this.chkLstDataProviderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkLstDataProviderStatus.ItemHeight = 62;
-            this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 36);
-            this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 411);
-            this.chkLstDataProviderStatus.TabIndex = 14;
-            this.chkLstDataProviderStatus.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstDataProviderStatus_ItemCheck);
-            // 
             // pnlBottom4
             // 
             this.pnlBottom4.Controls.Add(this.btnBack3);
@@ -425,6 +424,50 @@
             this.hyperLinkEdit1.Size = new System.Drawing.Size(774, 22);
             this.hyperLinkEdit1.TabIndex = 0;
             // 
+            // chkLstDataProviderStatus
+            // 
+            this.chkLstDataProviderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkLstDataProviderStatus.ItemHeight = 62;
+            this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 36);
+            this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 411);
+            this.chkLstDataProviderStatus.TabIndex = 16;
+            tableColumnDefinition3.Length.Value = 70D;
+            tableColumnDefinition4.Length.Value = 660D;
+            itemTemplateBase2.Columns.Add(tableColumnDefinition3);
+            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
+            templatedItemElement4.FieldName = null;
+            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement4.Text = "";
+            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            templatedItemElement5.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
+            templatedItemElement5.Appearance.Normal.Options.UseFont = true;
+            templatedItemElement5.Appearance.Normal.Options.UseForeColor = true;
+            templatedItemElement5.ColumnIndex = 1;
+            templatedItemElement5.FieldName = null;
+            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement5.Text = "Name";
+            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement6.ColumnIndex = 1;
+            templatedItemElement6.FieldName = null;
+            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement6.RowIndex = 1;
+            templatedItemElement6.Text = "description";
+            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase2.Elements.Add(templatedItemElement4);
+            itemTemplateBase2.Elements.Add(templatedItemElement5);
+            itemTemplateBase2.Elements.Add(templatedItemElement6);
+            itemTemplateBase2.Name = "template1";
+            itemTemplateBase2.Rows.Add(tableRowDefinition3);
+            itemTemplateBase2.Rows.Add(tableRowDefinition4);
+            tableSpan2.RowSpan = 2;
+            itemTemplateBase2.Spans.Add(tableSpan2);
+            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase2);
+            // 
             // FirstTimeRunForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -457,13 +500,13 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             this.tpDataProviders.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom4)).EndInit();
             this.pnlBottom4.ResumeLayout(false);
             this.tpFinish.ResumeLayout(false);
             this.tpFinish.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -492,7 +535,6 @@
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEdit1;
-        private DevExpress.XtraEditors.CheckedListBoxControl chkLstDataProviderStatus;
         private DevExpress.XtraEditors.LabelControl lblDataProviders;
         private DevExpress.XtraEditors.PanelControl pnlBottom4;
         private DevExpress.XtraEditors.SimpleButton btnBack3;
@@ -502,5 +544,6 @@
         private DevExpress.XtraEditors.PanelControl pnlFill2;
         private DevExpress.XtraEditors.PanelControl pnlBottom2;
         private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.CheckedListBoxControl chkLstDataProviderStatus;
     }
 }
