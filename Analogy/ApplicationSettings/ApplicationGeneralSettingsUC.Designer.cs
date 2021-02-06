@@ -339,7 +339,7 @@ namespace Analogy.ApplicationSettings
             this.ceSettingsLocationApplicationFolder.Location = new System.Drawing.Point(2, 52);
             this.ceSettingsLocationApplicationFolder.Name = "ceSettingsLocationApplicationFolder";
             this.ceSettingsLocationApplicationFolder.Properties.Caption = "Portable: Store settings in the Application Folder (May need folder permissions)";
-            this.ceSettingsLocationApplicationFolder.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgToggle1;
+            this.ceSettingsLocationApplicationFolder.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
             this.ceSettingsLocationApplicationFolder.Properties.RadioGroupIndex = 0;
             this.ceSettingsLocationApplicationFolder.Size = new System.Drawing.Size(782, 27);
             this.ceSettingsLocationApplicationFolder.TabIndex = 1;
@@ -352,7 +352,7 @@ namespace Analogy.ApplicationSettings
             this.ceSettingsLocationPerUser.Location = new System.Drawing.Point(2, 25);
             this.ceSettingsLocationPerUser.Name = "ceSettingsLocationPerUser";
             this.ceSettingsLocationPerUser.Properties.Caption = "Per User: Store settings in: %userprofile%\\appdata\\local\\Analogy.LogViewer";
-            this.ceSettingsLocationPerUser.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgToggle1;
+            this.ceSettingsLocationPerUser.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
             this.ceSettingsLocationPerUser.Properties.RadioGroupIndex = 0;
             this.ceSettingsLocationPerUser.Size = new System.Drawing.Size(782, 27);
             this.ceSettingsLocationPerUser.TabIndex = 0;
