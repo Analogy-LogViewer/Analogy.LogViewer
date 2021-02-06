@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.5.1 - [UI] Refactor download/update data providers UI #867",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,06)),
                 new AnalogyChangeLog("V4.5.1 - [UI] Refactor data provider lists #866",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,06)),
                 new AnalogyChangeLog("V4.5.1 - [UI] Refactor settings form to use hamburger like UI #865",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,06)),
                 new AnalogyChangeLog("V4.5.1 - [UI] Improve settings and data Location wording #864",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,06)),

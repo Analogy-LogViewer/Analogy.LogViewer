@@ -43,6 +43,7 @@ namespace Analogy.UserControls
             this.picture.Location = new System.Drawing.Point(2, 3);
             this.picture.Name = "picture";
             this.picture.Size = new System.Drawing.Size(56, 55);
+            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picture.TabIndex = 0;
             this.picture.TabStop = false;
             // 
@@ -105,7 +106,7 @@ namespace Analogy.UserControls
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.picture);
             this.Name = "ComponentDownloadInformationUC";
-            this.Size = new System.Drawing.Size(1056, 97);
+            this.Size = new System.Drawing.Size(1056, 62);
             this.Load += new System.EventHandler(this.ComponentDownloadInformationUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);

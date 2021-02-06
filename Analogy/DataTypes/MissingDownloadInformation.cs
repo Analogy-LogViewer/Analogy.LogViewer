@@ -1,5 +1,6 @@
 ﻿using Analogy.LogViewer.Template;
 using System;
+using System.Drawing;
 using System.Reflection;
 using System.Runtime.Versioning;
 
@@ -14,14 +15,15 @@ namespace Analogy.DataTypes
         public override TargetFrameworkAttribute CurrentFrameworkAttribute { get; set; } = (TargetFrameworkAttribute)Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(TargetFrameworkAttribute));
         protected override string RepositoryURL { get; set; }
         public override string InstalledVersionNumber { get; }
-
-        public MissingDownloadInformation(Guid factoryId, string name,string repoURL)
+        public Image Image { get; set; }
+        public MissingDownloadInformation(Guid factoryId, string name,string repoURL,Image image)
         {
             FactoryId = factoryId;
             Name = name;
             InstalledVersion = new Version(0,0,0);
             InstalledVersionNumber = "0.0.0";
             RepositoryURL = repoURL;
+            Image = image;
         }
 
     }
