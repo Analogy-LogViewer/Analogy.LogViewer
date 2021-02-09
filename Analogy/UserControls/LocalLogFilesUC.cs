@@ -126,7 +126,8 @@ namespace Analogy
 
             SelectedPath = folder;
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
-            bool recursiveLoad = checkEditRecursiveLoad.Checked;
+            bool isRoot = Directory.GetLogicalDrives().Any(d => d.Equals(SelectedPath,StringComparison.OrdinalIgnoreCase));
+            bool recursiveLoad = checkEditRecursiveLoad.Checked && !isRoot;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
             UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.Id, folder);
             List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).ToList();
