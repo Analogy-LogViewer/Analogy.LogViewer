@@ -14,11 +14,14 @@ using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
+using Markdig;
+using Markdig.SyntaxHighlighting;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,9 +34,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraGrid;
-using Markdig;
-using Markdig.SyntaxHighlighting;
 
 namespace Analogy
 {
@@ -2289,17 +2289,17 @@ namespace Analogy
             {
                 return;
             }
-            GoToMessage(gridViewBookmarkedMessages, logMessage);
+            GoToMessage(logMessage);
         }
 
         private void GoToPrimaryGridMessage(AnalogyLogMessage m)
         {
             btsAutoScrollToBottom.Checked = false;
-            GoToMessage(logGrid, m);
+            GoToMessage(m);
 
         }
 
-        private void GoToMessage(GridView gridView, AnalogyLogMessage logMessage)
+        private void GoToMessage(AnalogyLogMessage logMessage)
         {
             try
             {
@@ -2307,6 +2307,7 @@ namespace Analogy
                 if (location >= 0)
                 {
                     logGrid.FocusedRowHandle = location;
+                    logGrid.MakeRowVisible(location);
                 }
                 else
                 {
