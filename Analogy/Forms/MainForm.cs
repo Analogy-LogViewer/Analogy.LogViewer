@@ -8,6 +8,7 @@ using Analogy.UserControls;
 using DevExpress.Utils;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
@@ -125,7 +126,40 @@ namespace Analogy.Forms
             {
                 return;
             }
+            NotificationManager.Instance.OnNewNotification += (s, notification) =>
+             {
+                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
+                 AlertControl ac = new AlertControl(this.components)
+                 {
+                     AutoFormDelay = notification.DurationSeconds * 1000
+                 };
+                 if (notification.ActionOnClick != null)
+                 {
 
+                     AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
+                     btn1.Hint = "OK";
+                     btn1.Name = "NotificationActionButton";
+                     ac.Buttons.Add(btn1);
+                     ac.ButtonClick += (sender, arg) =>
+                     {
+                         if (arg.ButtonName == btn1.Name)
+                         {
+                             try
+                             {
+                                 notification.ActionOnClick?.Invoke();
+
+                             }
+                             catch (Exception exception)
+                             {
+                                 XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
+                                     MessageBoxButtons.OK);
+
+                             }
+                         }
+                     };
+                 }
+                 ac.Show(this.ParentForm, info);
+             };
             if (settings.AnalogyPosition.RememberLastPosition || settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
@@ -310,8 +344,8 @@ namespace Analogy.Forms
                 user.ShowDialog(this);
             };
             #endregion
-            
- 
+
+
             ILogWindow GetLogWindows(Control mainControl)
             {
                 while (true)
@@ -2009,7 +2043,7 @@ namespace Analogy.Forms
             ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
             user.ShowDialog(this);
         }
-    
+
 
 
         private void bbiSettingsExtensions_ItemClick(object sender, ItemClickEventArgs e)

@@ -108,8 +108,8 @@
             this.btnColorsSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnColorHighlightSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnPreDefinedQueries = new DevExpress.XtraBars.BarButtonItem();
-            this.btnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.btnDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSettingsExtensions = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsDebugging = new DevExpress.XtraBars.BarButtonItem();
@@ -123,6 +123,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -779,6 +780,14 @@
             this.btnPreDefinedQueries.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPreDefinedQueries.ImageOptions.LargeImage")));
             this.btnPreDefinedQueries.Name = "btnPreDefinedQueries";
             // 
+            // btnDataProvidersSettings
+            // 
+            this.btnDataProvidersSettings.Caption = "Data Providers Settings";
+            this.btnDataProvidersSettings.Id = 96;
+            this.btnDataProvidersSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.Image")));
+            this.btnDataProvidersSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.LargeImage")));
+            this.btnDataProvidersSettings.Name = "btnDataProvidersSettings";
+            // 
             // btnShortcuts
             // 
             this.btnShortcuts.Caption = "Shortcuts";
@@ -787,14 +796,6 @@
             this.btnShortcuts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnShortcuts.ImageOptions.LargeImage")));
             this.btnShortcuts.Name = "btnShortcuts";
             this.btnShortcuts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShortcuts_ItemClick);
-            // 
-            // btnDataProvidersSettings
-            // 
-            this.btnDataProvidersSettings.Caption = "Data Providers Settings";
-            this.btnDataProvidersSettings.Id = 96;
-            this.btnDataProvidersSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.Image")));
-            this.btnDataProvidersSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.LargeImage")));
-            this.btnDataProvidersSettings.Name = "btnDataProvidersSettings";
             // 
             // bbiSettingsExtensions
             // 

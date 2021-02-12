@@ -46,6 +46,13 @@
 		<DebugType>full</DebugType>
 		<DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="UserControls\UCLogsNonFloatable.cs" />
+	  <Compile Remove="UserControls\UCLogsNonFloatable.Designer.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />

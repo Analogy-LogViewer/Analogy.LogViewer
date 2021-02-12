@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.5.1 - [Data providers] Add custom data provider notification mechanism #516",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,12)),
                 new AnalogyChangeLog("V4.5.1 - [UI] Do not load subfolders when root folder/drive is selected #868",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,09)),
                 new AnalogyChangeLog("V4.5.1 - [UI] Refactor download/update data providers UI #867",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,06)),
                 new AnalogyChangeLog("V4.5.1 - [UI] Refactor data provider lists #866",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,06)),

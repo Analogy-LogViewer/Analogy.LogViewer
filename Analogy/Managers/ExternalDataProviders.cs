@@ -99,6 +99,7 @@ namespace Analogy.Managers
                                 AnalogyNonPersistSettings.Instance.AddDependencyLocation(path);
                             }
                         }
+                        factory.RegisterNotificationCallback(NotificationManager.Instance);
                         Factories.Add(fc);
                     }
                     catch (Exception e)

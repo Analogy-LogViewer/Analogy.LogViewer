@@ -28,6 +28,7 @@ namespace Analogy
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
             var analogyFactory = new AnalogyBuiltInFactory();
+            analogyFactory.RegisterNotificationCallback(NotificationManager.Instance);
             var currentAssembly = Assembly.GetExecutingAssembly();
             var analogyFactorySetting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyFactory);
             analogyFactorySetting.FactoryName = analogyFactory.Title;
