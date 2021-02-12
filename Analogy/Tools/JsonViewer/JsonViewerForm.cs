@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Analogy.Interfaces;
 using Analogy.Tools.JsonViewer;
-using DevExpress.XtraEditors;
-using Analogy.Interfaces;
 using Newtonsoft.Json;
+using System;
+using System.Windows.Forms;
 
 namespace Analogy.Tools
 {
@@ -19,15 +11,17 @@ namespace Analogy.Tools
         private UserSettingsManager settings => UserSettingsManager.UserSettings;
         private JsonTreeView _jsonTreeView;
         private AnalogyLogMessage message;
+        private readonly bool _useRawField;
 
         public JsonViewerForm()
         {
             InitializeComponent();
         }
 
-        public JsonViewerForm(AnalogyLogMessage message):this()
+        public JsonViewerForm(AnalogyLogMessage message) : this()
         {
             this.message = message;
+            _useRawField = message.RawTextType == AnalogyRowTextType.JSON;
         }
 
         private void JsonViewerForm_Load(object sender, EventArgs e)
@@ -43,8 +37,8 @@ namespace Analogy.Tools
             _jsonTreeView.Dock = DockStyle.Fill;
             if (message != null)
             {
-                memoEdit1.Text = message.Text;
-                var json = ExtractJsonObject(message.Text);
+                memoEdit1.Text = _useRawField ? message.RawText : message.Text;
+                var json = ExtractJsonObject(_useRawField ? message.RawText : message.Text);
                 if (!string.IsNullOrEmpty(json))
                 {
                     _jsonTreeView.ShowJson(json);

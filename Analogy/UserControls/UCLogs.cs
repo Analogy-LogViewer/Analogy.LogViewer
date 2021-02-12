@@ -279,6 +279,30 @@ namespace Analogy
         {
             #region buttons
 
+            bbtnRawMessageViewer.ItemClick += (s, e) =>
+            {
+                if (bbtnRawMessageViewer.Tag is AnalogyLogMessage m)
+                {
+                    switch (m.RawTextType)
+                    {
+                        case AnalogyRowTextType.None:
+                        case AnalogyRowTextType.Unknown:
+                        case AnalogyRowTextType.PlainText:
+                        case AnalogyRowTextType.RichText:
+                        case AnalogyRowTextType.XML:
+                        case AnalogyRowTextType.HTML:
+                        case AnalogyRowTextType.Markdown:
+
+                            break;
+                        case AnalogyRowTextType.JSON:
+                            var viewer = new JsonViewerForm(m);
+                            viewer.Show(this);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+            };
             bbiGoToActiveMessage.ItemClick += (s, e) =>
             {
                 if (SelectedMassage != null)
@@ -1889,6 +1913,25 @@ namespace Analogy
 
         private void LoadTextBoxes(AnalogyLogMessage m)
         {
+            switch (m.RawTextType)
+            {
+                case AnalogyRowTextType.None:
+                case AnalogyRowTextType.Unknown:
+                case AnalogyRowTextType.PlainText:
+                case AnalogyRowTextType.RichText:
+                case AnalogyRowTextType.XML:
+                case AnalogyRowTextType.HTML:
+                case AnalogyRowTextType.Markdown:
+                    bbtnRawMessageViewer.Visibility = BarItemVisibility.Never;
+                    break;
+                case AnalogyRowTextType.JSON:
+                    bbtnRawMessageViewer.Visibility = BarItemVisibility.Always;
+                    bbtnRawMessageViewer.Caption = "View in Json Visualizer";
+                    bbtnRawMessageViewer.ImageOptions.Image = Resources.json16x16;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
                 .UseSyntaxHighlighting()
                 .Build();
@@ -1896,6 +1939,7 @@ namespace Analogy
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
+                    bbtnRawMessageViewer.Tag = m;
                     recMessageDetails.Tag = m;
                     recMessageDetails.Text = m.Text;
                     meMessageDetails.Tag = m;
@@ -1905,6 +1949,7 @@ namespace Analogy
             }
             else
             {
+                bbtnRawMessageViewer.Tag = m;
                 recMessageDetails.Tag = m;
                 recMessageDetails.Text = m.Text;
                 meMessageDetails.Tag = m;
