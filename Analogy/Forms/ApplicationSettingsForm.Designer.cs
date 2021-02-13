@@ -98,7 +98,7 @@ namespace Analogy.Forms
             this.ApplicationUISettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ApplicationUISettings.ImageOptions.Image")));
             this.ApplicationUISettings.Name = "ApplicationUISettings";
             this.ApplicationUISettings.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.ApplicationUISettings.Text = "UI Settings";
+            this.ApplicationUISettings.Text = "UI Settings and Themes";
             this.ApplicationUISettings.Click += new System.EventHandler(this.applicationUISettings_Click);
             // 
             // accordionControlElement1

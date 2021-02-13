@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Properties;
+using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
+using System;
 
 namespace Analogy.ApplicationSettings
 {
@@ -32,12 +25,26 @@ namespace Analogy.ApplicationSettings
 
         private void ApplicationUISettingsUC_Load(object sender, EventArgs e)
         {
+            if (DesignMode)
+            {
+                return;
+
+            }
+
             LoadSettings();
             SetupEventsHandlers();
         }
 
         private void SetupEventsHandlers()
         {
+            UserLookAndFeel.Default.StyleChanged += (s, e) =>
+            {
+                UserLookAndFeel laf = (UserLookAndFeel)s;
+                lblSkinName.Text = "Skin name: " + laf.ActiveSkinName;
+                lblApplicationStyle.Text = "Application style: " + laf.Style;
+                lblSvgPalette.Text = "Active Svg Palette: " + laf.ActiveSvgPaletteName;
+
+            };
             tsStartupRibbonMinimized.Toggled +=
                 (s, e) => Settings.StartupRibbonMinimized = tsStartupRibbonMinimized.IsOn;
             tsRibbonCompactStyle.IsOnChanged += (s, e) =>
@@ -73,6 +80,9 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
+            lblSkinName.Text = "Skin name: " + Settings.ApplicationSkinName;
+            lblApplicationStyle.Text = "Application style: " + Settings.ApplicationStyle;
+            lblSvgPalette.Text = "Active Svg Palette: " + Settings.ApplicationSvgPaletteName;
             tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
             tsStartupRibbonMinimized.IsOn = Settings.StartupRibbonMinimized;
             tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == CommandLayout.Simplified;
@@ -125,7 +135,7 @@ namespace Analogy.ApplicationSettings
                 ceIconDark.Checked = true;
                 peAnalogy.Image = Resources.AnalogyDark;
             }
-            
+
         }
 
         private void SetFonts()

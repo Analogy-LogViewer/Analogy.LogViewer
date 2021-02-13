@@ -1,14 +1,9 @@
-﻿using DevExpress.XtraBars;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Analogy.ApplicationSettings;
+﻿using Analogy.ApplicationSettings;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -85,6 +80,7 @@ namespace Analogy.Forms
                     return new DataProvidersFileAssociationUC();
                 case "Data Provider external locations Settings":
                     return new DataProvidersExternalLocationsSettingsUC();
+
                 default:
                     {
                         AnalogyLogger.Instance.LogError($"User Setting with {name} was not found");
@@ -212,5 +208,6 @@ namespace Analogy.Forms
         {
             Settings.Save();
         }
+
     }
 }
