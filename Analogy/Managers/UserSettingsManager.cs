@@ -15,7 +15,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Microsoft.Win32;
 
 namespace Analogy
 {
@@ -26,7 +25,6 @@ namespace Analogy
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
 
-        private static string AnalogyRegistryKey => @"SOFTWARE\Analogy.LogViewer";
         private CommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
         public event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
@@ -137,6 +135,7 @@ namespace Analogy
         public bool ViewDetailedMessageWithHTML { get; set; }
 
         public SettingsMode SettingsMode { get; set; }
+
         public UserSettingsManager()
         {
             TryLoadPortableSettings();
@@ -483,7 +482,7 @@ namespace Analogy
             {
                 try
                 {
-                   File.Delete(LocalSettingFileName);
+                    File.Delete(LocalSettingFileName);
                 }
                 catch (Exception e)
                 {

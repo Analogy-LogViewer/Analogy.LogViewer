@@ -114,11 +114,11 @@
             this.lblDisableUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDisableUpdates.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblDisableUpdates.Appearance.Options.UseForeColor = true;
-            this.lblDisableUpdates.Location = new System.Drawing.Point(671, 8);
+            this.lblDisableUpdates.Location = new System.Drawing.Point(552, 8);
             this.lblDisableUpdates.Name = "lblDisableUpdates";
-            this.lblDisableUpdates.Size = new System.Drawing.Size(297, 16);
+            this.lblDisableUpdates.Size = new System.Drawing.Size(416, 16);
             this.lblDisableUpdates.TabIndex = 15;
-            this.lblDisableUpdates.Text = "Updates are disabled due to data provider overrides";
+            this.lblDisableUpdates.Text = "Updates are disabled due to data provider overrides or Registry Override";
             this.lblDisableUpdates.Visible = false;
             // 
             // UpdateForm

@@ -21,7 +21,7 @@ namespace Analogy.Forms
             lblLatestVersion.Text =
                 $"Latest version is: {(Updater.LastVersionChecked?.TagName == null ? "not checked" : Updater.LastVersionChecked.TagName)}";
 
-            if (AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
+            if (AnalogyNonPersistSettings.Instance.UpdateAreDisabled)
             {
                 AnalogyLogManager.Instance.LogWarning("Update is disabled", nameof(UpdateForm));
                 sbtnUpdateNow.Visible = false;

@@ -42,7 +42,7 @@ namespace Analogy.ApplicationSettings
         {
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
             cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
-            if (AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
+            if (AnalogyNonPersistSettings.Instance.UpdateAreDisabled)
             {
                 lblDisableUpdates.Visible = true;
                 cbUpdates.Enabled = false;

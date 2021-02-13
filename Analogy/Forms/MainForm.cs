@@ -241,7 +241,7 @@ namespace Analogy.Forms
                 btnErrors.Visibility = BarItemVisibility.Always;
             }
 
-            if (!AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides)
+            if (!AnalogyNonPersistSettings.Instance.UpdateAreDisabled)
             {
                 var (_, release) = await UpdateManager.Instance.CheckVersion(false);
                 if (release?.TagName != null && UpdateManager.Instance.NewestVersion != null)
