@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.5.1 - Warn if no File open filter is set for an offline data provider #871",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,13)),
                 new AnalogyChangeLog("V4.5.1 - Add registry settings override. #872",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,13)),
                 new AnalogyChangeLog("V4.5.1 - [UI] Add additional skins #873",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,13)),
                 new AnalogyChangeLog("V4.5.1 - [Data providers] Add custom data provider notification mechanism #516",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,12)),

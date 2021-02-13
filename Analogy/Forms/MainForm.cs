@@ -1,6 +1,7 @@
 ﻿using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
@@ -133,6 +134,7 @@ namespace Analogy.Forms
                  {
                      AutoFormDelay = notification.DurationSeconds * 1000
                  };
+                 ac.AutoHeight = true;
                  if (notification.ActionOnClick != null)
                  {
 
@@ -673,7 +675,7 @@ namespace Analogy.Forms
             {
                 if (!string.IsNullOrEmpty(dataProvidersFactory.Title))
                 {
-                    CreateDataSourceRibbonGroup(dataProvidersFactory, ribbonPage);
+                    CreateDataSourceRibbonGroup(fc.Factory, dataProvidersFactory, ribbonPage);
                 }
             }
 
@@ -757,14 +759,14 @@ namespace Analogy.Forms
             }
             ribbonPage.Groups.Add(groupSettings);
         }
-        private void CreateDataSourceRibbonGroup(IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
+        private void CreateDataSourceRibbonGroup(IAnalogyFactory factory, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Data Provider: {dataSourceFactory.Title}") { AllowTextClipping = false };
             ribbonPage.Groups.Add(ribbonPageGroup);
 
-            AddFlatRealTimeDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
-            AddSingleDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
-            AddOfflineDataSource(ribbonPage, dataSourceFactory, ribbonPageGroup);
+            AddFlatRealTimeDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
+            AddSingleDataSources(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
+            AddOfflineDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
         }
 
         private void AddGraphPlotter(RibbonPage ribbonPage, List<IAnalogyPlotting> graphPlotters)
@@ -838,7 +840,7 @@ namespace Analogy.Forms
             }
         }
 
-        private void AddFlatRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
+        private void AddFlatRealTimeDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
@@ -1125,8 +1127,7 @@ namespace Analogy.Forms
             }
         }
 
-        private void AddSingleDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory,
-            RibbonPageGroup group)
+        private void AddSingleDataSources(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
         {
             var singles = dataSourceFactory.DataProviders.Where(f => f is IAnalogySingleDataProvider ||
                                                                       f is IAnalogySingleFileDataProvider).ToList();
@@ -1182,7 +1183,7 @@ namespace Analogy.Forms
         }
 
 
-        private void AddOfflineDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
+        private void AddOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
 
             var offlineProviders = factory.DataProviders.Where(f => f is IAnalogyOfflineDataProvider)
@@ -1202,21 +1203,23 @@ namespace Analogy.Forms
                 RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools{optionalText}");
                 groupOfflineFileTools.AllowTextClipping = false;
                 ribbonPage.Groups.Add(groupOfflineFileTools);
-                AddSingleOfflineDataSource(ribbonPage, offlineAnalogy, factory.FactoryId, factory.Title, group, groupOfflineFileTools);
+                AddSingleOfflineDataSource(primaryFactory, ribbonPage, offlineAnalogy, factory, group, groupOfflineFileTools);
             }
             else
             {
-                AddMultiplesOfflineDataSource(ribbonPage, offlineProviders, factory.FactoryId, factory.Title, group);
+                AddMultiplesOfflineDataSource(primaryFactory, ribbonPage, offlineProviders, factory, group);
             }
 
         }
 
-        private void AddMultiplesOfflineDataSource(RibbonPage ribbonPage,
-            List<IAnalogyOfflineDataProvider> offlineProviders, Guid factoryId, string factoryTitle, RibbonPageGroup group)
+        private void AddMultiplesOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage,
+            List<IAnalogyOfflineDataProvider> offlineProviders, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
 
+            Guid factoryId = factory.FactoryId;
+            string factoryTitle = factory.Title;
             FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(factoryId);
-            IAnalogyImages images = container?.Images?.FirstOrDefault();
+            IAnalogyImages? images = container?.Images?.FirstOrDefault();
 
 
 
@@ -1305,8 +1308,8 @@ namespace Analogy.Forms
 
             foreach (var dataProvider in offlineProviders)
             {
-                string directory = (!string.IsNullOrEmpty(dataProvider.InitialFolderFullPath) &&
-                                   Directory.Exists(dataProvider.InitialFolderFullPath))
+                string? directory = (!string.IsNullOrEmpty(dataProvider.InitialFolderFullPath) &&
+                                     Directory.Exists(dataProvider.InitialFolderFullPath))
                     ? dataProvider.InitialFolderFullPath
                     : Environment.CurrentDirectory;
                 //add local folder button:
@@ -1317,27 +1320,6 @@ namespace Analogy.Forms
                 };
                 folderBar.AddItem(btn);
             }
-            //todo: add for multiples implementations
-
-            ////add local folder button:
-            //BarButtonItem localfolder = new BarButtonItem();
-            //localfolder.Caption = "Open Folder Selection";
-            //localfolder.RibbonStyle = RibbonItemStyles.All;
-            //group.ItemLinks.Add(localfolder);
-            //localfolder.ImageOptions.Image = Resources.OpenFolder_16x16;
-            //localfolder.ImageOptions.LargeImage = Resources.OpenFolder_32x32;
-            //localfolder.ItemClick += (sender, e) =>
-            //{
-            //    using (var dialog = new CommonOpenFileDialog())
-            //    {
-            //        dialog.InitialDirectory = Environment.CurrentDirectory;
-            //        dialog.IsFolderPicker = true;
-            //        if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            //        {
-            //            OpenOffline(title, dialog.FileName);
-            //        }
-            //    }
-            //};
 
             //add recent folders
             //recent bar
@@ -1400,6 +1382,15 @@ namespace Analogy.Forms
                             }
                         };
                         openFiles.AddItem(btnOpenFile);
+                    }
+                    else
+                    {
+
+                        IAnalogyNotification notification = new AnalogyNotification(factoryId,
+                            "Missing File Open Dialog Filter",
+                            $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
+                            , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
+                        NotificationManager.Instance.RaiseNotification(notification, true);
                     }
                 }
 
@@ -1531,9 +1522,11 @@ namespace Analogy.Forms
         }
 
 
-        private void AddSingleOfflineDataSource(RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
-          Guid factoryId, string title, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
+        private void AddSingleOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
+            IAnalogyDataProvidersFactory factory, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
         {
+            Guid factoryId = factory.FactoryId;
+            string title = factory.Title;
             #region actions
             void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
@@ -1730,6 +1723,15 @@ namespace Analogy.Forms
                     }
 
                 };
+            }
+            else
+            {
+
+                IAnalogyNotification notification = new AnalogyNotification(factoryId,
+                    "Missing File Open Dialog Filter",
+                    $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
+                    , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
+                NotificationManager.Instance.RaiseNotification(notification, true);
             }
 
             //add recent
