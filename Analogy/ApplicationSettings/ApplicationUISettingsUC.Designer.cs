@@ -49,19 +49,19 @@ namespace Analogy.ApplicationSettings
             this.tsRibbonCompactStyle = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsRememberLastPositionAndState = new DevExpress.XtraEditors.ToggleSwitch();
             this.groupControlThemes = new DevExpress.XtraEditors.GroupControl();
+            this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
+            this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
+            this.lblSkinName = new DevExpress.XtraEditors.LabelControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar3 = new DevExpress.XtraBars.Bar();
-            this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
-            this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
-            this.lblSkinName = new DevExpress.XtraEditors.LabelControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).BeginInit();
             this.gcUISettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -167,12 +167,12 @@ namespace Analogy.ApplicationSettings
             // 
             // ceContextMenuFontsVeryLarge
             // 
-            this.ceContextMenuFontsVeryLarge.Location = new System.Drawing.Point(486, 38);
+            this.ceContextMenuFontsVeryLarge.Location = new System.Drawing.Point(529, 38);
             this.ceContextMenuFontsVeryLarge.Name = "ceContextMenuFontsVeryLarge";
             this.ceContextMenuFontsVeryLarge.Properties.Caption = "Very Large";
             this.ceContextMenuFontsVeryLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceContextMenuFontsVeryLarge.Properties.RadioGroupIndex = 2;
-            this.ceContextMenuFontsVeryLarge.Size = new System.Drawing.Size(108, 20);
+            this.ceContextMenuFontsVeryLarge.Size = new System.Drawing.Size(270, 20);
             this.ceContextMenuFontsVeryLarge.TabIndex = 22;
             this.ceContextMenuFontsVeryLarge.TabStop = false;
             // 
@@ -183,7 +183,7 @@ namespace Analogy.ApplicationSettings
             this.ceContextMenuFontsLarge.Properties.Caption = "Large";
             this.ceContextMenuFontsLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceContextMenuFontsLarge.Properties.RadioGroupIndex = 2;
-            this.ceContextMenuFontsLarge.Size = new System.Drawing.Size(108, 20);
+            this.ceContextMenuFontsLarge.Size = new System.Drawing.Size(149, 20);
             this.ceContextMenuFontsLarge.TabIndex = 21;
             this.ceContextMenuFontsLarge.TabStop = false;
             // 
@@ -225,12 +225,12 @@ namespace Analogy.ApplicationSettings
             // 
             // ceFontsVeryLarge
             // 
-            this.ceFontsVeryLarge.Location = new System.Drawing.Point(486, 38);
+            this.ceFontsVeryLarge.Location = new System.Drawing.Point(529, 38);
             this.ceFontsVeryLarge.Name = "ceFontsVeryLarge";
             this.ceFontsVeryLarge.Properties.Caption = "Very Large";
             this.ceFontsVeryLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFontsVeryLarge.Properties.RadioGroupIndex = 1;
-            this.ceFontsVeryLarge.Size = new System.Drawing.Size(108, 20);
+            this.ceFontsVeryLarge.Size = new System.Drawing.Size(270, 20);
             this.ceFontsVeryLarge.TabIndex = 22;
             this.ceFontsVeryLarge.TabStop = false;
             // 
@@ -241,7 +241,7 @@ namespace Analogy.ApplicationSettings
             this.ceFontsLarge.Properties.Caption = "Large";
             this.ceFontsLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFontsLarge.Properties.RadioGroupIndex = 1;
-            this.ceFontsLarge.Size = new System.Drawing.Size(108, 20);
+            this.ceFontsLarge.Size = new System.Drawing.Size(149, 20);
             this.ceFontsLarge.TabIndex = 21;
             this.ceFontsLarge.TabStop = false;
             // 
@@ -318,6 +318,30 @@ namespace Analogy.ApplicationSettings
             this.groupControlThemes.TabIndex = 11;
             this.groupControlThemes.Text = "Themes and Skins";
             // 
+            // lblApplicationStyle
+            // 
+            this.lblApplicationStyle.Location = new System.Drawing.Point(13, 110);
+            this.lblApplicationStyle.Name = "lblApplicationStyle";
+            this.lblApplicationStyle.Size = new System.Drawing.Size(99, 16);
+            this.lblApplicationStyle.TabIndex = 5;
+            this.lblApplicationStyle.Text = "Application Style:";
+            // 
+            // lblSvgPalette
+            // 
+            this.lblSvgPalette.Location = new System.Drawing.Point(13, 88);
+            this.lblSvgPalette.Name = "lblSvgPalette";
+            this.lblSvgPalette.Size = new System.Drawing.Size(107, 16);
+            this.lblSvgPalette.TabIndex = 4;
+            this.lblSvgPalette.Text = "Active Svg Palette:";
+            // 
+            // lblSkinName
+            // 
+            this.lblSkinName.Location = new System.Drawing.Point(13, 66);
+            this.lblSkinName.Name = "lblSkinName";
+            this.lblSkinName.Size = new System.Drawing.Size(66, 16);
+            this.lblSkinName.TabIndex = 3;
+            this.lblSkinName.Text = "Skin Name:";
+            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
@@ -345,6 +369,46 @@ namespace Analogy.ApplicationSettings
             this.skinPaletteDropDownButtonItem1});
             this.barManager1.MaxItemId = 2;
             this.barManager1.StatusBar = this.bar3;
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 4";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar1.FloatLocation = new System.Drawing.Point(77, 192);
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinDropDownButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DisableClose = true;
+            this.bar1.OptionsBar.DisableCustomization = true;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.bar1.Text = "Custom 4";
+            // 
+            // skinDropDownButtonItem1
+            // 
+            this.skinDropDownButtonItem1.Id = 0;
+            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            // 
+            // skinPaletteDropDownButtonItem1
+            // 
+            this.skinPaletteDropDownButtonItem1.Enabled = false;
+            this.skinPaletteDropDownButtonItem1.Id = 1;
+            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
             // 
             // barDockControlTop
             // 
@@ -377,69 +441,6 @@ namespace Analogy.ApplicationSettings
             this.barDockControlRight.Location = new System.Drawing.Point(900, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 644);
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
-            // lblApplicationStyle
-            // 
-            this.lblApplicationStyle.Location = new System.Drawing.Point(13, 110);
-            this.lblApplicationStyle.Name = "lblApplicationStyle";
-            this.lblApplicationStyle.Size = new System.Drawing.Size(99, 16);
-            this.lblApplicationStyle.TabIndex = 5;
-            this.lblApplicationStyle.Text = "Application Style:";
-            // 
-            // lblSvgPalette
-            // 
-            this.lblSvgPalette.Location = new System.Drawing.Point(13, 88);
-            this.lblSvgPalette.Name = "lblSvgPalette";
-            this.lblSvgPalette.Size = new System.Drawing.Size(107, 16);
-            this.lblSvgPalette.TabIndex = 4;
-            this.lblSvgPalette.Text = "Active Svg Palette:";
-            // 
-            // lblSkinName
-            // 
-            this.lblSkinName.Location = new System.Drawing.Point(13, 66);
-            this.lblSkinName.Name = "lblSkinName";
-            this.lblSkinName.Size = new System.Drawing.Size(66, 16);
-            this.lblSkinName.TabIndex = 3;
-            this.lblSkinName.Text = "Skin Name:";
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Custom 4";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar1.FloatLocation = new System.Drawing.Point(77, 192);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinDropDownButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1)});
-            this.bar1.OptionsBar.AllowQuickCustomization = false;
-            this.bar1.OptionsBar.DisableClose = true;
-            this.bar1.OptionsBar.DisableCustomization = true;
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
-            this.bar1.Text = "Custom 4";
-            // 
-            // skinDropDownButtonItem1
-            // 
-            this.skinDropDownButtonItem1.Id = 0;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            // 
-            // skinPaletteDropDownButtonItem1
-            // 
-            this.skinPaletteDropDownButtonItem1.Enabled = false;
-            this.skinPaletteDropDownButtonItem1.Id = 1;
-            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
             // 
             // ApplicationUISettingsUC
             // 
