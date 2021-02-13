@@ -138,32 +138,6 @@ namespace Analogy
 
         public UserSettingsManager()
         {
-            TryLoadPortableSettings();
-            //SettingsMode mode = SettingsMode.PerUser;
-            //using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(AnalogyRegistryKey))
-            //{
-            //    object? modeRegistry = key?.GetValue("SettingsMode");
-            //    if (modeRegistry != null && Enum.TryParse(modeRegistry.ToString(), out mode))
-            //    {
-            //        AnalogyLogger.Instance.LogInformation($"Working mode: {mode}");
-            //    }
-            //}
-            //SettingsMode = mode;
-            //switch (SettingsMode)
-            //{
-            //    case SettingsMode.PerUser:
-            //        LoadPerUserSettings();
-            //        break;
-            //    case SettingsMode.ApplicationFolder:
-            //        LoadPortableSettings();
-            //        break;
-            //    default:
-            //        throw new ArgumentOutOfRangeException();
-            //}
-        }
-
-        private void TryLoadPortableSettings()
-        {
             if (File.Exists(LocalSettingFileName))
             {
                 try
@@ -174,16 +148,17 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError($"Unable to read settings from {LocalSettingFileName}. Error: {e.Message}. Loading per user settings", nameof(UserSettingsManager));
+                    AnalogyLogManager.Instance.LogInformation($"Unable to read settings from {LocalSettingFileName}. Error: {e.Message}. Loading per user settings", nameof(UserSettingsManager));
                     LoadPerUserSettings();
                 }
             }
             else
             {
-                AnalogyLogManager.Instance.LogError($"File {LocalSettingFileName} does not exist. Loading per user settings", nameof(UserSettingsManager));
+                AnalogyLogManager.Instance.LogInformation($"File {LocalSettingFileName} does not exist. Loading per user settings", nameof(UserSettingsManager));
                 LoadPerUserSettings();
             }
         }
+
 
         private void LoadPerUserSettings()
         {
@@ -191,12 +166,13 @@ namespace Analogy
             FilteringExclusion = ParseSettings<FilteringExclusion>(Settings.Default.FilteringExclusion);
             EnableCompressedArchives = true;
             AnalogyInternalLogPeriod = 5;
+            bool upgradeRequired = false;
             if (Settings.Default.UpgradeRequired)
             {
+                upgradeRequired = true;
                 Settings.Default.Upgrade();
                 Settings.Default.UpgradeRequired = false;
                 Settings.Default.Save();
-                ShowWhatIsNewAtStartup = true;
             }
 
             DateTimePattern = !string.IsNullOrEmpty(Settings.Default.DateTimePattern)
@@ -280,7 +256,7 @@ namespace Analogy
             }
 
             ShowMessageDetails = Settings.Default.ShowMessageDetails;
-            ShowWhatIsNewAtStartup = Settings.Default.ShowWhatIsNewAtStartup;
+            ShowWhatIsNewAtStartup = upgradeRequired || Settings.Default.ShowWhatIsNewAtStartup;
             FontSettings = ParseSettings<FontSettings>(Settings.Default.FontSettings);
             RibbonStyle = (CommandLayout)Settings.Default.RibbonStyle;
             EnableFirstChanceException = Settings.Default.EnableFirstChanceException;
@@ -354,7 +330,6 @@ namespace Analogy
             SimpleMode = settings.SimpleMode;
             IsFirstRun = settings.IsFirstRun;
             LogLevelSelection = settings.LogLevelSelection;
-            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup;
             FontSettings = settings.FontSettings;
             EnableFirstChanceException = settings.EnableFirstChanceException;
             RibbonStyle = settings.RibbonStyle;
@@ -364,6 +339,12 @@ namespace Analogy
             LogsLayoutFileName = settings.LogsLayoutFileName;
             UseCustomLogsLayout = settings.UseCustomLogsLayout;
             ViewDetailedMessageWithHTML = settings.ViewDetailedMessageWithHTML;
+            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup;
+            if (UpdateManager.Instance.CurrentVersion.ToString(4) != settings.Version)
+            {
+                ShowWhatIsNewAtStartup = true;
+            }
+
         }
 
         private UserSettings CreateUserSettings()
@@ -509,6 +490,7 @@ namespace Analogy
             try
             {
                 UserSettings settings = CreateUserSettings();
+                settings.Version = UpdateManager.Instance.CurrentVersion.ToString(4);
                 string data = JsonConvert.SerializeObject(settings);
                 File.WriteAllText(LocalSettingFileName, data);
             }

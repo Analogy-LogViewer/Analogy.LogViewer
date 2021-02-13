@@ -84,5 +84,6 @@ namespace Analogy.DataTypes
         public bool UseCustomLogsLayout { get; set; }
         public bool ViewDetailedMessageWithHTML { get; set; }
         public SettingsMode SettingsMode { get; set; }
+        public string Version { get; set; }
     }
 }
