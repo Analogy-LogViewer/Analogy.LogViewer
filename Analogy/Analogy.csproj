@@ -34,11 +34,18 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>8.0</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
 		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|x64'">
+	  <PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|x64'">
 	  <PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
@@ -46,12 +53,17 @@
 		<DebugType>full</DebugType>
 		<DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|x64'">
+	  <PlatformTarget>AnyCPU</PlatformTarget>
+	  <DebugType>full</DebugType>
+	  <DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Remove="UserControls\UCLogsNonFloatable.cs" />
-	  <Compile Remove="UserControls\UCLogsNonFloatable.Designer.cs" />
+		<Compile Remove="UserControls\UCLogsNonFloatable.cs" />
+		<Compile Remove="UserControls\UCLogsNonFloatable.Designer.cs" />
 	</ItemGroup>
 	<ItemGroup>
-	  <EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
+		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -119,14 +131,18 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Analogy.LogViewer.gRPC" Version="1.6.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="MainForm.resx">
 			<DependentUpon>MainForm.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Tools\JsonViewer\JsonNodeImages.resx">
-		  <Generator>PublicResXFileCodeGenerator</Generator>
-		  <LastGenOutput>JsonNodeImages.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>JsonNodeImages.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
 
@@ -732,9 +748,9 @@
 			<DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
 		<Compile Update="Tools\JsonViewer\JsonNodeImages.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>JsonNodeImages.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>JsonNodeImages.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
 
@@ -744,18 +760,10 @@
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
 	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-		<PackageReference Include="Analogy.LogViewer.gRPC">
-			<Version>1.5.4.4</Version>
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
 		<PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Updater\" />
+		<Folder Include="Updater\" />
 	</ItemGroup>
 </Project>

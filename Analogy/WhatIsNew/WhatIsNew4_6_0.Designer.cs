@@ -30,6 +30,8 @@
         {
             this.xtcV4_6_0 = new DevExpress.XtraTab.XtraTabControl();
             this.xtPageHighlight = new DevExpress.XtraTab.XtraTabPage();
+            this.highlight866 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.highlight865 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.highlight872 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.highlight873 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -47,8 +49,8 @@
             this.Issue838 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue516 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.gcBugs = new DevExpress.XtraEditors.GroupControl();
-            this.highlight866 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.highlight865 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.highlight874 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.issue874 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtcV4_6_0)).BeginInit();
             this.xtcV4_6_0.SuspendLayout();
             this.xtPageHighlight.SuspendLayout();
@@ -75,6 +77,7 @@
             // xtPageHighlight
             // 
             this.xtPageHighlight.AutoScroll = true;
+            this.xtPageHighlight.Controls.Add(this.highlight874);
             this.xtPageHighlight.Controls.Add(this.highlight866);
             this.xtPageHighlight.Controls.Add(this.highlight865);
             this.xtPageHighlight.Controls.Add(this.highlight872);
@@ -84,10 +87,34 @@
             this.xtPageHighlight.Size = new System.Drawing.Size(782, 428);
             this.xtPageHighlight.Text = "V4.6.0 Highlights / Changes";
             // 
+            // highlight866
+            // 
+            this.highlight866.Dock = System.Windows.Forms.DockStyle.Top;
+            this.highlight866.Location = new System.Drawing.Point(0, 198);
+            this.highlight866.Name = "highlight866";
+            this.highlight866.Padding = new System.Windows.Forms.Padding(5);
+            this.highlight866.Size = new System.Drawing.Size(224, 26);
+            this.highlight866.TabIndex = 12;
+            this.highlight866.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/866>[UI] Refa" +
+    "ctor data provider lists #866</href>";
+            this.highlight866.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // highlight865
+            // 
+            this.highlight865.Dock = System.Windows.Forms.DockStyle.Top;
+            this.highlight865.Location = new System.Drawing.Point(0, 172);
+            this.highlight865.Name = "highlight865";
+            this.highlight865.Padding = new System.Windows.Forms.Padding(5);
+            this.highlight865.Size = new System.Drawing.Size(342, 26);
+            this.highlight865.TabIndex = 11;
+            this.highlight865.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/865>[UI] Refa" +
+    "ctor settings form to use hamburger like UI #865</href>";
+            this.highlight865.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
             // highlight872
             // 
             this.highlight872.Dock = System.Windows.Forms.DockStyle.Top;
-            this.highlight872.Location = new System.Drawing.Point(0, 115);
+            this.highlight872.Location = new System.Drawing.Point(0, 146);
             this.highlight872.Name = "highlight872";
             this.highlight872.Padding = new System.Windows.Forms.Padding(5);
             this.highlight872.Size = new System.Drawing.Size(216, 26);
@@ -99,7 +126,7 @@
             // highlight873
             // 
             this.highlight873.Dock = System.Windows.Forms.DockStyle.Top;
-            this.highlight873.Location = new System.Drawing.Point(0, 89);
+            this.highlight873.Location = new System.Drawing.Point(0, 120);
             this.highlight873.Name = "highlight873";
             this.highlight873.Padding = new System.Windows.Forms.Padding(5);
             this.highlight873.Size = new System.Drawing.Size(183, 26);
@@ -115,7 +142,7 @@
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(782, 89);
+            this.groupControl1.Size = new System.Drawing.Size(782, 120);
             this.groupControl1.TabIndex = 10;
             this.groupControl1.Text = "Notice";
             // 
@@ -130,10 +157,11 @@
             this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl1.Location = new System.Drawing.Point(2, 25);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(778, 44);
+            this.labelControl1.Size = new System.Drawing.Size(778, 88);
             this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "In this version the User Settings form is redesigned.\r\nThere is new Data provider" +
-    " Notification Mechanism and new skins.";
+    " Notification Mechanism and new skins.\r\n\r\ngRPC client To Analogy Log Server is n" +
+    "owt enabled on .Net Frameworks versions";
             // 
             // xtPageIssues
             // 
@@ -146,6 +174,7 @@
             // 
             // gcImprovements
             // 
+            this.gcImprovements.Controls.Add(this.issue874);
             this.gcImprovements.Controls.Add(this.issue873);
             this.gcImprovements.Controls.Add(this.issue872);
             this.gcImprovements.Controls.Add(this.issue871);
@@ -159,7 +188,7 @@
             this.gcImprovements.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcImprovements.Location = new System.Drawing.Point(10, 103);
             this.gcImprovements.Name = "gcImprovements";
-            this.gcImprovements.Size = new System.Drawing.Size(762, 296);
+            this.gcImprovements.Size = new System.Drawing.Size(762, 322);
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
             // 
@@ -294,29 +323,29 @@
             this.gcBugs.Text = "Bug Fixes";
             this.gcBugs.Visible = false;
             // 
-            // highlight866
+            // highlight874
             // 
-            this.highlight866.Dock = System.Windows.Forms.DockStyle.Top;
-            this.highlight866.Location = new System.Drawing.Point(0, 167);
-            this.highlight866.Name = "highlight866";
-            this.highlight866.Padding = new System.Windows.Forms.Padding(5);
-            this.highlight866.Size = new System.Drawing.Size(224, 26);
-            this.highlight866.TabIndex = 12;
-            this.highlight866.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/866>[UI] Refa" +
-    "ctor data provider lists #866</href>";
-            this.highlight866.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.highlight874.Dock = System.Windows.Forms.DockStyle.Top;
+            this.highlight874.Location = new System.Drawing.Point(0, 224);
+            this.highlight874.Name = "highlight874";
+            this.highlight874.Padding = new System.Windows.Forms.Padding(5);
+            this.highlight874.Size = new System.Drawing.Size(276, 26);
+            this.highlight874.TabIndex = 13;
+            this.highlight874.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/874>Enable gR" +
+    "PC on .NET framework version #874</href>";
+            this.highlight874.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
-            // highlight865
+            // issue874
             // 
-            this.highlight865.Dock = System.Windows.Forms.DockStyle.Top;
-            this.highlight865.Location = new System.Drawing.Point(0, 141);
-            this.highlight865.Name = "highlight865";
-            this.highlight865.Padding = new System.Windows.Forms.Padding(5);
-            this.highlight865.Size = new System.Drawing.Size(342, 26);
-            this.highlight865.TabIndex = 11;
-            this.highlight865.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/865>[UI] Refa" +
-    "ctor settings form to use hamburger like UI #865</href>";
-            this.highlight865.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.issue874.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue874.Location = new System.Drawing.Point(2, 285);
+            this.issue874.Name = "issue874";
+            this.issue874.Padding = new System.Windows.Forms.Padding(5);
+            this.issue874.Size = new System.Drawing.Size(276, 26);
+            this.issue874.TabIndex = 22;
+            this.issue874.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/874>Enable gR" +
+    "PC on .NET framework version #874</href>";
+            this.issue874.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_6_0
             // 
@@ -363,5 +392,7 @@
         private DevExpress.XtraEditors.HyperlinkLabelControl issue873;
         private DevExpress.XtraEditors.HyperlinkLabelControl highlight866;
         private DevExpress.XtraEditors.HyperlinkLabelControl highlight865;
+        private DevExpress.XtraEditors.HyperlinkLabelControl highlight874;
+        private DevExpress.XtraEditors.HyperlinkLabelControl issue874;
     }
 }
