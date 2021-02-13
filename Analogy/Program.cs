@@ -29,6 +29,7 @@ namespace Analogy
         [STAThread]
         static void Main()
         {
+            DevExpress.UserSkins.BonusSkins.Register();
             WindowsFormsSettings.LoadApplicationSettings();
             WindowsFormsSettings.SetDPIAware();
             AnalogyLogManager.Instance.LogInformation($"OS: {Environment.OSVersion.Version}",nameof(Program));
