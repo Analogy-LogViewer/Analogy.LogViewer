@@ -55,7 +55,6 @@ namespace Analogy.ApplicationSettings
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
             this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
@@ -99,7 +98,7 @@ namespace Analogy.ApplicationSettings
             this.gcUISettings.Controls.Add(this.tsRibbonCompactStyle);
             this.gcUISettings.Controls.Add(this.tsRememberLastPositionAndState);
             this.gcUISettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcUISettings.Location = new System.Drawing.Point(0, 158);
+            this.gcUISettings.Location = new System.Drawing.Point(0, 138);
             this.gcUISettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcUISettings.Name = "gcUISettings";
             this.gcUISettings.Size = new System.Drawing.Size(900, 456);
@@ -313,7 +312,7 @@ namespace Analogy.ApplicationSettings
             this.groupControlThemes.Controls.Add(this.lblSkinName);
             this.groupControlThemes.Controls.Add(this.standaloneBarDockControl1);
             this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControlThemes.Location = new System.Drawing.Point(0, 20);
+            this.groupControlThemes.Location = new System.Drawing.Point(0, 0);
             this.groupControlThemes.Name = "groupControlThemes";
             this.groupControlThemes.Size = new System.Drawing.Size(900, 138);
             this.groupControlThemes.TabIndex = 11;
@@ -333,7 +332,6 @@ namespace Analogy.ApplicationSettings
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
             this.bar3,
             this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -345,7 +343,6 @@ namespace Analogy.ApplicationSettings
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.skinDropDownButtonItem1,
             this.skinPaletteDropDownButtonItem1});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 2;
             this.barManager1.StatusBar = this.bar3;
             // 
@@ -355,7 +352,7 @@ namespace Analogy.ApplicationSettings
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(900, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(900, 0);
             // 
             // barDockControlBottom
             // 
@@ -369,26 +366,17 @@ namespace Analogy.ApplicationSettings
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 624);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 644);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(900, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(900, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 624);
-            // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 644);
             // 
             // bar3
             // 
@@ -521,7 +509,6 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.GroupControl groupControlThemes;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
