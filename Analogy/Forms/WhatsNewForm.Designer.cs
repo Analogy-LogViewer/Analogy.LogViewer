@@ -30,6 +30,7 @@
         {
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.e450 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e441 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e440 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e432 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -39,7 +40,7 @@
             this.e429 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e428 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.e450 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.e460 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.accordionControl1.AllowItemSelection = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.e460,
             this.e450,
             this.e441,
             this.e440,
@@ -68,10 +70,18 @@
             this.e428});
             this.accordionControl1.Location = new System.Drawing.Point(0, 30);
             this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             this.accordionControl1.Size = new System.Drawing.Size(176, 443);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            // 
+            // e450
+            // 
+            this.e450.Name = "e450";
+            this.e450.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.e450.Text = "V4.5.0";
+            this.e450.Click += new System.EventHandler(this.e450_Click);
             // 
             // e441
             // 
@@ -138,12 +148,12 @@
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
-            // e450
+            // e460
             // 
-            this.e450.Name = "e450";
-            this.e450.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.e450.Text = "V4.5.0";
-            this.e450.Click += new System.EventHandler(this.e450_Click);
+            this.e460.Name = "e460";
+            this.e460.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.e460.Text = "V4.6.0";
+            this.e460.Click += new System.EventHandler(this.e460_Click);
             // 
             // WhatsNewForm
             // 
@@ -179,5 +189,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement e440;
         private DevExpress.XtraBars.Navigation.AccordionControlElement e441;
         private DevExpress.XtraBars.Navigation.AccordionControlElement e450;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement e460;
     }
 }
