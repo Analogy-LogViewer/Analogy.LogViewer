@@ -5,31 +5,64 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;
 using DevExpress.XtraBars.Alerter;
+using DevExpress.XtraBars.Docking;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 
 namespace Analogy
 {
     public partial class FluentDesignMainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        const int WM_COPYDATA = 0x004A;
+
+        [DllImport("user32", EntryPoint = "SendMessageA")]
+        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        private string filePoolingTitle = "File Pooling";
+        private string offlineTitle = "Offline log";
+        private string onlineTitle = "Online log";
+        private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
+
+        private Dictionary<DockPanel, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
+            new Dictionary<DockPanel, IAnalogyRealTimeDataProvider>();
+
+        private List<Task<bool>> OnlineSources = new List<Task<bool>>();
+        private int openedWindows;
+        private int filePooling;
+        private bool disableOnlineDueToFileOpen;
+        private bool preventExit = false;
+        private UserSettingsManager settings => UserSettingsManager.UserSettings;
+        private bool Initialized { get; set; }
+
         public FluentDesignMainForm()
         {
             InitializeComponent();
         }
 
-        private void FluentDesignMainForm_Load(object sender, EventArgs e)
+        private async void FluentDesignMainForm_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
                 return;
             }
+
             NotificationManager.Instance.OnNewNotification += (s, notification) =>
             {
                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
@@ -63,9 +96,11 @@ namespace Analogy
                         }
                     };
                 }
+
                 ac.Show(this.ParentForm, info);
             };
-            if (settings.AnalogyPosition.RememberLastPosition || settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
+            if (settings.AnalogyPosition.RememberLastPosition ||
+                settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
                 if (WindowState != FormWindowState.Maximized)
@@ -93,26 +128,22 @@ namespace Analogy
             SetupEventHandlers();
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
-            ribbonControlMain.Minimized = settings.StartupRibbonMinimized;
 
-            ribbonControlMain.CommandLayout = settings.RibbonStyle;
+
+            //todo:
+
             //CreateAnalogyBuiltinDataProviders
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
-            {
-                CreateDataSource(analogy, 0);
-            }
-            await FactoriesManager.Instance.AddExternalDataSources();
-            PopulateGlobalTools();
-            LoadStartupExtensions();
-            CreateDataSources();
+            //FactoryContainer analogy =
+            //    FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            //if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
+            //{
+            //    CreateDataSource(analogy, 0);
+            //}
 
-            //set Default page:
-            Guid defaultPage = new Guid(settings.InitialSelectedDataProvider);
-            if (Mapping.ContainsKey(defaultPage))
-            {
-                ribbonControlMain.SelectedPage = Mapping[defaultPage];
-            }
+            //await FactoriesManager.Instance.AddExternalDataSources();
+            //PopulateGlobalTools();
+            //LoadStartupExtensions();
+            //CreateDataSources();
 
             if (OnlineSources.Any())
             {
@@ -122,9 +153,9 @@ namespace Analogy
             Initialized = true;
             //todo: fine handler for file
             if (arguments.Length == 2)
-            {
+            {//todo
                 string[] fileNames = { arguments[1] };
-                await OpenOfflineFileWithSpecificDataProvider(fileNames);
+                // await OpenOfflineFileWithSpecificDataProvider(fileNames);
             }
             else
             {
@@ -136,11 +167,7 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
-            if (settings.RememberLastOpenedDataProvider && Mapping.ContainsKey(settings.LastOpenedDataProvider))
-            {
-                ribbonControlMain.SelectPage(Mapping[settings.LastOpenedDataProvider]);
-            }
-            ribbonControlMain.SelectedPageChanging += ribbonControlMain_SelectedPageChanging;
+
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
             {
                 btnErrors.Visibility = BarItemVisibility.Always;
@@ -165,12 +192,17 @@ namespace Analogy
             {
                 AnalogyLogManager.Instance.LogWarning("Update is disabled", nameof(MainForm));
             }
+
             if (settings.ShowWhatIsNewAtStartup)
             {
                 WhatsNewForm f = new WhatsNewForm();
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             }
+        }
+
+        private void SetupEventHandlers()
+        {
 
         }
     }

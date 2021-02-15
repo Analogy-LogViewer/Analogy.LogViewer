@@ -30,9 +30,7 @@ namespace Analogy.Forms
 {
     public partial class MainForm : RibbonForm
     {
-
         const int WM_COPYDATA = 0x004A;
-
         [DllImport("user32", EntryPoint = "SendMessageA")]
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")]

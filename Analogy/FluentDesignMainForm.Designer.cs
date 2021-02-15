@@ -30,36 +30,46 @@ namespace Analogy
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
-            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barMain = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtom = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barMain = new DevExpress.XtraBars.Bar();
-            this.barButtom = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
+            this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
+            this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
+            this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
+            this.btnErrors = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
+            this.defaultToolTipController1.SetAllowHtmlText(this.fluentDesignFormContainer1, DevExpress.Utils.DefaultBoolean.Default);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(50, 86);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(50, 55);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1117, 556);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1117, 584);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl1
@@ -67,11 +77,11 @@ namespace Analogy
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 86);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 55);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(50, 556);
+            this.accordionControl1.Size = new System.Drawing.Size(50, 584);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -107,18 +117,9 @@ namespace Analogy
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
             "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
             // 
-            // documentManager1
-            // 
-            this.documentManager1.ContainerControl = this;
-            this.documentManager1.MenuManager = this.barManager1;
-            this.documentManager1.View = this.tabbedView1;
-            this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
-            this.tabbedView1});
-            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
             this.barMain,
             this.barButtom});
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -128,54 +129,20 @@ namespace Analogy
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.bbtnStar,
+            this.bbiFileCaching,
+            this.btnErrors,
+            this.bbtnCheckUpdates});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 5;
             this.barManager1.StatusBar = this.barButtom;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 30);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1167, 56);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 642);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1167, 24);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 86);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 556);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1167, 86);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 556);
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.Text = "Tools";
             // 
             // barMain
             // 
             this.barMain.BarName = "Main menu";
             this.barMain.DockCol = 0;
+            this.barMain.DockRow = 0;
             this.barMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.barMain.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
@@ -183,25 +150,122 @@ namespace Analogy
             this.barMain.OptionsBar.UseWholeRow = true;
             this.barMain.Text = "Main menu";
             // 
-            // barButtom
-            // 
-            this.barButtom.BarName = "Status bar";
-            this.barButtom.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.barButtom.DockCol = 0;
-            this.barButtom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.barButtom.OptionsBar.AllowQuickCustomization = false;
-            this.barButtom.OptionsBar.DrawDragBorder = false;
-            this.barButtom.OptionsBar.UseWholeRow = true;
-            this.barButtom.Text = "Status bar";
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "File";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // barButtom
+            // 
+            this.barButtom.BarName = "Status bar";
+            this.barButtom.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.barButtom.DockCol = 0;
+            this.barButtom.DockRow = 0;
+            this.barButtom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.barButtom.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnStar),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFileCaching),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnErrors),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnCheckUpdates)});
+            this.barButtom.OptionsBar.AllowQuickCustomization = false;
+            this.barButtom.OptionsBar.DrawDragBorder = false;
+            this.barButtom.OptionsBar.UseWholeRow = true;
+            this.barButtom.Text = "Status bar";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 30);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1167, 25);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 639);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1167, 27);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 55);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 584);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1167, 55);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 584);
+            // 
+            // documentManager1
+            // 
+            this.documentManager1.ContainerControl = this;
+            this.documentManager1.MenuManager = this.barManager1;
+            this.documentManager1.View = this.tabbedView1;
+            this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
+            this.tabbedView1});
+            // 
+            // bbtnStar
+            // 
+            this.bbtnStar.Caption = "GitHub";
+            this.bbtnStar.Id = 1;
+            this.bbtnStar.Name = "bbtnStar";
+            // 
+            // notifyIconAnalogy
+            // 
+            this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
+            this.notifyIconAnalogy.Text = "Analogy";
+            this.notifyIconAnalogy.Visible = true;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "pause.png");
+            this.imageList1.Images.SetKeyName(1, "play.jpg");
+            this.imageList1.Images.SetKeyName(2, "54834.png");
+            this.imageList1.Images.SetKeyName(3, "json.png");
+            // 
+            // TmrAutoConnect
+            // 
+            this.TmrAutoConnect.Interval = 1000;
+            // 
+            // tmrStatusUpdates
+            // 
+            this.tmrStatusUpdates.Enabled = true;
+            this.tmrStatusUpdates.Interval = 1000;
+            // 
+            // bbiFileCaching
+            // 
+            this.bbiFileCaching.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbiFileCaching.Caption = "bbiFileCaching";
+            this.bbiFileCaching.Id = 2;
+            this.bbiFileCaching.Name = "bbiFileCaching";
+            // 
+            // btnErrors
+            // 
+            this.btnErrors.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.btnErrors.Caption = "btnErrors";
+            this.btnErrors.Id = 3;
+            this.btnErrors.Name = "btnErrors";
+            // 
+            // bbtnCheckUpdates
+            // 
+            this.bbtnCheckUpdates.Caption = "bbtnCheckUpdates";
+            this.bbtnCheckUpdates.Id = 4;
+            this.bbtnCheckUpdates.Name = "bbtnCheckUpdates";
+            // 
             // FluentDesignMainForm
             // 
+            this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1167, 666);
@@ -221,9 +285,9 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,7 +300,6 @@ namespace Analogy
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar barMain;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Bar barButtom;
@@ -246,5 +309,14 @@ namespace Analogy
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
+        private DevExpress.XtraBars.BarButtonItem bbtnStar;
+        private DevExpress.Utils.DefaultToolTipController defaultToolTipController1;
+        private System.Windows.Forms.NotifyIcon notifyIconAnalogy;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Timer TmrAutoConnect;
+        private System.Windows.Forms.Timer tmrStatusUpdates;
+        private DevExpress.XtraBars.BarButtonItem bbiFileCaching;
+        private DevExpress.XtraBars.BarButtonItem btnErrors;
+        private DevExpress.XtraBars.BarButtonItem bbtnCheckUpdates;
     }
 }
