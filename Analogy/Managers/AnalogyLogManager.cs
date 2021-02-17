@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Analogy.Forms;
 
 namespace Analogy.Managers
@@ -170,7 +171,7 @@ namespace Analogy.Managers
             err.Level = AnalogyLogLevel.Critical;
             OnNewMessage?.Invoke(this, (err, source));
         }
-        public void Show(MainForm mainForm)
+        public void Show(Form mainForm)
         {
             XtraFormLogGrid msg = new XtraFormLogGrid(messages, "Analogy");
             msg.Show(mainForm);

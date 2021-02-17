@@ -1,24 +1,20 @@
-﻿using DevExpress.XtraBars;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.DataProviders;
-using Analogy.DataTypes;
-using Analogy.Forms;
+﻿using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy
 {
@@ -63,44 +59,8 @@ namespace Analogy
                 return;
             }
 
-            NotificationManager.Instance.OnNewNotification += (s, notification) =>
-            {
-                AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
-                AlertControl ac = new AlertControl(this.components)
-                {
-                    AutoFormDelay = notification.DurationSeconds * 1000
-                };
-                ac.AutoHeight = true;
-                if (notification.ActionOnClick != null)
-                {
-
-                    AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
-                    btn1.Hint = "OK";
-                    btn1.Name = "NotificationActionButton";
-                    ac.Buttons.Add(btn1);
-                    ac.ButtonClick += (sender, arg) =>
-                    {
-                        if (arg.ButtonName == btn1.Name)
-                        {
-                            try
-                            {
-                                notification.ActionOnClick?.Invoke();
-
-                            }
-                            catch (Exception exception)
-                            {
-                                XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
-                                    MessageBoxButtons.OK);
-
-                            }
-                        }
-                    };
-                }
-
-                ac.Show(this.ParentForm, info);
-            };
             if (settings.AnalogyPosition.RememberLastPosition ||
-                settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
+             settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
                 if (WindowState != FormWindowState.Maximized)
@@ -170,7 +130,7 @@ namespace Analogy
 
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
             {
-                btnErrors.Visibility = BarItemVisibility.Always;
+                bbtnErrors.Visibility = BarItemVisibility.Always;
             }
 
             if (!AnalogyNonPersistSettings.Instance.UpdateAreDisabled)
@@ -203,7 +163,76 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            tmrStatusUpdates.Tick += (s, e) =>
+            {
+                tmrStatusUpdates.Stop();
+                bbtnMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [MB]";
+                bbtnIdleMessage.Caption = settings.IdleMode ? $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}" : "Idle mode is off";
+                tmrStatusUpdates.Start();
+            };
+            AnalogyLogManager.Instance.OnNewError += (s, e) => bbtnErrors.Visibility = BarItemVisibility.Always;
 
+            NotificationManager.Instance.OnNewNotification += (s, notification) =>
+            {
+                AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
+                AlertControl ac = new AlertControl(this.components)
+                {
+                    AutoFormDelay = notification.DurationSeconds * 1000
+                };
+                ac.AutoHeight = true;
+                if (notification.ActionOnClick != null)
+                {
+
+                    AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
+                    btn1.Hint = "OK";
+                    btn1.Name = "NotificationActionButton";
+                    ac.Buttons.Add(btn1);
+                    ac.ButtonClick += (sender, arg) =>
+                    {
+                        if (arg.ButtonName == btn1.Name)
+                        {
+                            try
+                            {
+                                notification.ActionOnClick?.Invoke();
+
+                            }
+                            catch (Exception exception)
+                            {
+                                XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
+                                    MessageBoxButtons.OK);
+
+                            }
+                        }
+                    };
+                }
+
+                ac.Show(this.ParentForm, info);
+            };
+            bbtnErrors.ItemClick += (s, e) => { AnalogyLogManager.Instance.Show(this); };
+            bbtnStar.ItemClick += (s, e) =>
+            {
+                Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer");
+            };
+            bbtnReportIssueOrRequest.ItemClick += (_, __) =>
+            {
+                Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues");
+            };
+            bbtnCheckUpdates.ItemClick += (s, e) => OpenUpdateWindow();
+
+            bbiFileCaching.ItemClick += (s, e) =>
+            {
+                settings.EnableFileCaching = !settings.EnableFileCaching;
+                bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
+                bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
+
+            };
         }
+
+        private void OpenUpdateWindow()
+        {
+            UpdateForm update = new UpdateForm();
+            update.Show(this);
+        }
+
     }
 }
