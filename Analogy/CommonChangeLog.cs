@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.6.1 - [UI] Fix high res monitors rendering #879",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,02,18)),
                 new AnalogyChangeLog("V4.6.1 - Fix floating panels sizes #878",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,02,18)),
                 new AnalogyChangeLog("V4.6.0 - Enable gRPC on .NET framework version #874",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,13)),
                 new AnalogyChangeLog("V4.6.0 - Warn if no File open filter is set for an offline data provider #871",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,02,13)),

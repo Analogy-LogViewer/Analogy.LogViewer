@@ -41,10 +41,7 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -66,7 +63,10 @@ namespace Analogy
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentMessages = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -86,8 +86,7 @@ namespace Analogy
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
+            this.chkbHighlight = new DevExpress.XtraEditors.CheckEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barTopFiltering = new DevExpress.XtraBars.Bar();
             this.bBtnClearLog = new DevExpress.XtraBars.BarButtonItem();
@@ -171,14 +170,23 @@ namespace Analogy
             this.bbiJsonViewer = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.repositoryItemProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
+            this.layoutControlLogs = new DevExpress.XtraLayout.LayoutControl();
+            this.sbtnPageFirst = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
-            this.pnlButtonsHighlight = new System.Windows.Forms.Panel();
-            this.lblPageNumber = new DevExpress.XtraEditors.LabelControl();
+            this.sbtnPagePrevious = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnPageNext = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnLastPage = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnPagePrevious = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnPageFirst = new DevExpress.XtraEditors.SimpleButton();
-            this.chkbHighlight = new System.Windows.Forms.CheckBox();
+            this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lblPageNumber = new DevExpress.XtraLayout.SimpleLabelItem();
             this.deOlderThanFilter = new DevExpress.XtraEditors.DateEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.sbtnIncludeModules = new DevExpress.XtraEditors.SimpleButton();
@@ -278,13 +286,24 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkbHighlight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).BeginInit();
-            this.pnlButtonsHighlight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlLogs)).BeginInit();
+            this.layoutControlLogs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblPageNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -379,13 +398,12 @@ namespace Analogy
             // 
             // gridControl
             // 
-            this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl.Location = new System.Drawing.Point(0, 0);
+            this.gridControl.Location = new System.Drawing.Point(7, 7);
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1847, 215);
+            this.gridControl.Size = new System.Drawing.Size(1833, 196);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -706,28 +724,15 @@ namespace Analogy
             this.imageList.Images.SetKeyName(9, "Question_16x16.png");
             this.imageList.Images.SetKeyName(10, "log16x16.ico");
             // 
-            // panel1
+            // chkbHighlight
             // 
-            this.panel1.Controls.Add(this.txtbHighlight);
-            this.panel1.Controls.Add(this.sbtnMoreHighlight);
-            this.panel1.Controls.Add(this.pnlButtonsHighlight);
-            this.panel1.Controls.Add(this.chkbHighlight);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 215);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1847, 26);
-            this.panel1.TabIndex = 4;
-            // 
-            // txtbHighlight
-            // 
-            this.txtbHighlight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtbHighlight.Location = new System.Drawing.Point(200, 0);
-            this.txtbHighlight.MenuManager = this.barManager1;
-            this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1163, 22);
-            this.txtbHighlight.TabIndex = 23;
-            this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
+            this.chkbHighlight.Location = new System.Drawing.Point(7, 207);
+            this.chkbHighlight.MenuManager = this.barManager1;
+            this.chkbHighlight.Name = "chkbHighlight";
+            this.chkbHighlight.Properties.Caption = "Highlight lines that contains:";
+            this.chkbHighlight.Size = new System.Drawing.Size(184, 20);
+            this.chkbHighlight.StyleController = this.layoutControlLogs;
+            this.chkbHighlight.TabIndex = 2;
             // 
             // barManager1
             // 
@@ -1149,7 +1154,7 @@ namespace Analogy
             // wsLogs
             // 
             this.wsLogs.TargetControl = this;
-            this.wsLogs.TransitionType = pushTransition2;
+            this.wsLogs.TransitionType = pushTransition1;
             // 
             // barMessage
             // 
@@ -1611,104 +1616,197 @@ namespace Analogy
             // 
             this.repositoryItemProgressBar2.Name = "repositoryItemProgressBar2";
             // 
+            // layoutControlLogs
+            // 
+            this.layoutControlLogs.Controls.Add(this.sbtnPageFirst);
+            this.layoutControlLogs.Controls.Add(this.sbtnMoreHighlight);
+            this.layoutControlLogs.Controls.Add(this.sbtnPagePrevious);
+            this.layoutControlLogs.Controls.Add(this.sBtnPageNext);
+            this.layoutControlLogs.Controls.Add(this.chkbHighlight);
+            this.layoutControlLogs.Controls.Add(this.sBtnLastPage);
+            this.layoutControlLogs.Controls.Add(this.txtbHighlight);
+            this.layoutControlLogs.Controls.Add(this.gridControl);
+            this.layoutControlLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControlLogs.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlLogs.Name = "layoutControlLogs";
+            this.layoutControlLogs.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(520, 50, 812, 500);
+            this.layoutControlLogs.Root = this.layoutControlGroup1;
+            this.layoutControlLogs.Size = new System.Drawing.Size(1847, 241);
+            this.layoutControlLogs.TabIndex = 6;
+            this.layoutControlLogs.Text = "layoutControl2";
+            // 
+            // sbtnPageFirst
+            // 
+            this.sbtnPageFirst.Location = new System.Drawing.Point(1456, 207);
+            this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sbtnPageFirst.Name = "sbtnPageFirst";
+            this.sbtnPageFirst.Size = new System.Drawing.Size(71, 27);
+            this.sbtnPageFirst.StyleController = this.layoutControlLogs;
+            this.sbtnPageFirst.TabIndex = 5;
+            this.sbtnPageFirst.Text = "first Page";
+            this.sbtnPageFirst.Click += new System.EventHandler(this.sbtnPageFirst_Click);
+            // 
             // sbtnMoreHighlight
             // 
-            this.sbtnMoreHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1363, 0);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1370, 207);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
-            this.sbtnMoreHighlight.Size = new System.Drawing.Size(71, 26);
-            this.sbtnMoreHighlight.TabIndex = 43;
+            this.sbtnMoreHighlight.Size = new System.Drawing.Size(82, 27);
+            this.sbtnMoreHighlight.StyleController = this.layoutControlLogs;
+            this.sbtnMoreHighlight.TabIndex = 4;
             this.sbtnMoreHighlight.Text = "More ...";
             this.sbtnMoreHighlight.Click += new System.EventHandler(this.sbtnMoreHighlight_Click);
             // 
-            // pnlButtonsHighlight
+            // sbtnPagePrevious
             // 
-            this.pnlButtonsHighlight.Controls.Add(this.lblPageNumber);
-            this.pnlButtonsHighlight.Controls.Add(this.sBtnPageNext);
-            this.pnlButtonsHighlight.Controls.Add(this.sBtnLastPage);
-            this.pnlButtonsHighlight.Controls.Add(this.sbtnPagePrevious);
-            this.pnlButtonsHighlight.Controls.Add(this.sbtnPageFirst);
-            this.pnlButtonsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlButtonsHighlight.Location = new System.Drawing.Point(1434, 0);
-            this.pnlButtonsHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlButtonsHighlight.Name = "pnlButtonsHighlight";
-            this.pnlButtonsHighlight.Size = new System.Drawing.Size(413, 26);
-            this.pnlButtonsHighlight.TabIndex = 12;
-            // 
-            // lblPageNumber
-            // 
-            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPageNumber.Appearance.Options.UseTextOptions = true;
-            this.lblPageNumber.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lblPageNumber.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblPageNumber.Location = new System.Drawing.Point(178, 4);
-            this.lblPageNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lblPageNumber.Name = "lblPageNumber";
-            this.lblPageNumber.Size = new System.Drawing.Size(60, 18);
-            this.lblPageNumber.TabIndex = 46;
-            this.lblPageNumber.Text = "Page 1 / 1";
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(1531, 207);
+            this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sbtnPagePrevious.Name = "sbtnPagePrevious";
+            this.sbtnPagePrevious.Size = new System.Drawing.Size(100, 27);
+            this.sbtnPagePrevious.StyleController = this.layoutControlLogs;
+            this.sbtnPagePrevious.TabIndex = 6;
+            this.sbtnPagePrevious.Text = "Previous Page";
+            this.sbtnPagePrevious.Click += new System.EventHandler(this.sbtnPagePrevious_Click);
             // 
             // sBtnPageNext
             // 
             this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(248, 0);
+            this.sBtnPageNext.Location = new System.Drawing.Point(1705, 207);
             this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnPageNext.Name = "sBtnPageNext";
-            this.sBtnPageNext.Size = new System.Drawing.Size(87, 25);
-            this.sBtnPageNext.TabIndex = 45;
+            this.sBtnPageNext.Size = new System.Drawing.Size(66, 27);
+            this.sBtnPageNext.StyleController = this.layoutControlLogs;
+            this.sBtnPageNext.TabIndex = 7;
             this.sBtnPageNext.Text = "Next Page";
             this.sBtnPageNext.Click += new System.EventHandler(this.sBtnPageNext_Click);
             // 
             // sBtnLastPage
             // 
             this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(337, 0);
+            this.sBtnLastPage.Location = new System.Drawing.Point(1775, 207);
             this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLastPage.Name = "sBtnLastPage";
-            this.sBtnLastPage.Size = new System.Drawing.Size(73, 25);
-            this.sBtnLastPage.TabIndex = 44;
+            this.sBtnLastPage.Size = new System.Drawing.Size(65, 27);
+            this.sBtnLastPage.StyleController = this.layoutControlLogs;
+            this.sBtnLastPage.TabIndex = 8;
             this.sBtnLastPage.Text = "Last Page";
             this.sBtnLastPage.Click += new System.EventHandler(this.sBtnLastPage_Click);
             // 
-            // sbtnPagePrevious
+            // txtbHighlight
             // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(85, 0);
-            this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sbtnPagePrevious.Name = "sbtnPagePrevious";
-            this.sbtnPagePrevious.Size = new System.Drawing.Size(87, 25);
-            this.sbtnPagePrevious.TabIndex = 43;
-            this.sbtnPagePrevious.Text = "Previous Page";
-            this.sbtnPagePrevious.Click += new System.EventHandler(this.sbtnPagePrevious_Click);
+            this.txtbHighlight.Location = new System.Drawing.Point(195, 207);
+            this.txtbHighlight.MenuManager = this.barManager1;
+            this.txtbHighlight.Name = "txtbHighlight";
+            this.txtbHighlight.Size = new System.Drawing.Size(1171, 22);
+            this.txtbHighlight.StyleController = this.layoutControlLogs;
+            this.txtbHighlight.TabIndex = 3;
+            this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
             // 
-            // sbtnPageFirst
+            // layoutControlGroup1
             // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(6, 0);
-            this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sbtnPageFirst.Name = "sbtnPageFirst";
-            this.sbtnPageFirst.Size = new System.Drawing.Size(73, 25);
-            this.sbtnPageFirst.TabIndex = 42;
-            this.sbtnPageFirst.Text = "first Page";
-            this.sbtnPageFirst.Click += new System.EventHandler(this.sbtnPageFirst_Click);
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem20,
+            this.layoutControlItem22,
+            this.layoutControlItem23,
+            this.layoutControlItem24,
+            this.layoutControlItem25,
+            this.layoutControlItem27,
+            this.layoutControlItem28,
+            this.layoutControlItem21,
+            this.lblPageNumber});
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1847, 241);
+            this.layoutControlGroup1.TextVisible = false;
             // 
-            // chkbHighlight
+            // layoutControlItem20
             // 
-            this.chkbHighlight.AutoSize = true;
-            this.chkbHighlight.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkbHighlight.Location = new System.Drawing.Point(0, 0);
-            this.chkbHighlight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chkbHighlight.Name = "chkbHighlight";
-            this.chkbHighlight.Size = new System.Drawing.Size(200, 26);
-            this.chkbHighlight.TabIndex = 11;
-            this.chkbHighlight.Text = "Highlight lines that contains:";
-            this.chkbHighlight.UseVisualStyleBackColor = true;
-            this.chkbHighlight.CheckedChanged += new System.EventHandler(this.chkbHighlight_CheckedChanged);
+            this.layoutControlItem20.Control = this.gridControl;
+            this.layoutControlItem20.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem20.Name = "layoutControlItem20";
+            this.layoutControlItem20.Size = new System.Drawing.Size(1837, 200);
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem20.TextVisible = false;
+            // 
+            // layoutControlItem22
+            // 
+            this.layoutControlItem22.Control = this.txtbHighlight;
+            this.layoutControlItem22.Location = new System.Drawing.Point(188, 200);
+            this.layoutControlItem22.Name = "layoutControlItem22";
+            this.layoutControlItem22.Size = new System.Drawing.Size(1175, 31);
+            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem22.TextVisible = false;
+            // 
+            // layoutControlItem23
+            // 
+            this.layoutControlItem23.Control = this.chkbHighlight;
+            this.layoutControlItem23.Location = new System.Drawing.Point(0, 200);
+            this.layoutControlItem23.Name = "layoutControlItem23";
+            this.layoutControlItem23.Size = new System.Drawing.Size(188, 31);
+            this.layoutControlItem23.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem23.TextVisible = false;
+            // 
+            // layoutControlItem24
+            // 
+            this.layoutControlItem24.Control = this.sBtnLastPage;
+            this.layoutControlItem24.Location = new System.Drawing.Point(1768, 200);
+            this.layoutControlItem24.Name = "layoutControlItem24";
+            this.layoutControlItem24.Size = new System.Drawing.Size(69, 31);
+            this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem24.TextVisible = false;
+            // 
+            // layoutControlItem25
+            // 
+            this.layoutControlItem25.Control = this.sBtnPageNext;
+            this.layoutControlItem25.Location = new System.Drawing.Point(1698, 200);
+            this.layoutControlItem25.Name = "layoutControlItem25";
+            this.layoutControlItem25.Size = new System.Drawing.Size(70, 31);
+            this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem25.TextVisible = false;
+            // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.sbtnPagePrevious;
+            this.layoutControlItem27.Location = new System.Drawing.Point(1524, 200);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(104, 31);
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem27.TextVisible = false;
+            // 
+            // layoutControlItem28
+            // 
+            this.layoutControlItem28.Control = this.sbtnPageFirst;
+            this.layoutControlItem28.Location = new System.Drawing.Point(1449, 200);
+            this.layoutControlItem28.Name = "layoutControlItem28";
+            this.layoutControlItem28.Size = new System.Drawing.Size(75, 31);
+            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem28.TextVisible = false;
+            // 
+            // layoutControlItem21
+            // 
+            this.layoutControlItem21.Control = this.sbtnMoreHighlight;
+            this.layoutControlItem21.Location = new System.Drawing.Point(1363, 200);
+            this.layoutControlItem21.Name = "layoutControlItem21";
+            this.layoutControlItem21.Size = new System.Drawing.Size(86, 31);
+            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem21.TextVisible = false;
+            // 
+            // lblPageNumber
+            // 
+            this.lblPageNumber.AllowHotTrack = false;
+            this.lblPageNumber.Location = new System.Drawing.Point(1628, 200);
+            this.lblPageNumber.Name = "lblPageNumber";
+            this.lblPageNumber.Size = new System.Drawing.Size(70, 31);
+            this.lblPageNumber.Text = "Page 1/1";
+            this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
             // 
             // deOlderThanFilter
             // 
             this.deOlderThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deOlderThanFilter.Location = new System.Drawing.Point(1299, 105);
+            this.deOlderThanFilter.Location = new System.Drawing.Point(1302, 100);
             this.deOlderThanFilter.MenuManager = this.barManager1;
             this.deOlderThanFilter.MinimumSize = new System.Drawing.Size(175, 0);
             this.deOlderThanFilter.Name = "deOlderThanFilter";
@@ -1725,7 +1823,7 @@ namespace Analogy
             this.deOlderThanFilter.Properties.Mask.EditMask = "dd.MM.yyyy HH:mm:ss.fff";
             this.deOlderThanFilter.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.deOlderThanFilter.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.deOlderThanFilter.Size = new System.Drawing.Size(178, 22);
+            this.deOlderThanFilter.Size = new System.Drawing.Size(180, 22);
             this.deOlderThanFilter.StyleController = this.layoutControl1;
             this.deOlderThanFilter.TabIndex = 27;
             // 
@@ -1762,7 +1860,7 @@ namespace Analogy
             // sbtnIncludeModules
             // 
             this.sbtnIncludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeModules.ImageOptions.Image")));
-            this.sbtnIncludeModules.Location = new System.Drawing.Point(979, 105);
+            this.sbtnIncludeModules.Location = new System.Drawing.Point(980, 100);
             this.sbtnIncludeModules.Name = "sbtnIncludeModules";
             this.sbtnIncludeModules.Size = new System.Drawing.Size(25, 27);
             this.sbtnIncludeModules.StyleController = this.layoutControl1;
@@ -1772,7 +1870,7 @@ namespace Analogy
             // 
             // ceOlderThanFilter
             // 
-            this.ceOlderThanFilter.Location = new System.Drawing.Point(1252, 105);
+            this.ceOlderThanFilter.Location = new System.Drawing.Point(1255, 100);
             this.ceOlderThanFilter.MenuManager = this.barManager1;
             this.ceOlderThanFilter.Name = "ceOlderThanFilter";
             this.ceOlderThanFilter.Properties.Appearance.Options.UseImage = true;
@@ -1787,7 +1885,7 @@ namespace Analogy
             // deNewerThanFilter
             // 
             this.deNewerThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deNewerThanFilter.Location = new System.Drawing.Point(1070, 105);
+            this.deNewerThanFilter.Location = new System.Drawing.Point(1072, 100);
             this.deNewerThanFilter.MenuManager = this.barManager1;
             this.deNewerThanFilter.MinimumSize = new System.Drawing.Size(175, 0);
             this.deNewerThanFilter.Name = "deNewerThanFilter";
@@ -1804,15 +1902,15 @@ namespace Analogy
             this.deNewerThanFilter.Properties.Mask.EditMask = "dd.MM.yyyy HH:mm:ss.fff";
             this.deNewerThanFilter.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
             this.deNewerThanFilter.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.deNewerThanFilter.Size = new System.Drawing.Size(178, 22);
+            this.deNewerThanFilter.Size = new System.Drawing.Size(179, 22);
             this.deNewerThanFilter.StyleController = this.layoutControl1;
             this.deNewerThanFilter.TabIndex = 25;
             // 
             // sbtnUndockPerProcess
             // 
-            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(791, 105);
+            this.sbtnUndockPerProcess.Location = new System.Drawing.Point(790, 100);
             this.sbtnUndockPerProcess.Name = "sbtnUndockPerProcess";
-            this.sbtnUndockPerProcess.Size = new System.Drawing.Size(184, 27);
+            this.sbtnUndockPerProcess.Size = new System.Drawing.Size(186, 27);
             this.sbtnUndockPerProcess.StyleController = this.layoutControl1;
             this.sbtnUndockPerProcess.TabIndex = 24;
             this.sbtnUndockPerProcess.Text = "Split view per Process/Module";
@@ -1821,7 +1919,7 @@ namespace Analogy
             // 
             // ceNewerThanFilter
             // 
-            this.ceNewerThanFilter.Location = new System.Drawing.Point(1008, 105);
+            this.ceNewerThanFilter.Location = new System.Drawing.Point(1009, 100);
             this.ceNewerThanFilter.MenuManager = this.barManager1;
             this.ceNewerThanFilter.Name = "ceNewerThanFilter";
             this.ceNewerThanFilter.Properties.Appearance.Options.UseImage = true;
@@ -1835,7 +1933,7 @@ namespace Analogy
             // 
             // ceModulesProcess
             // 
-            this.ceModulesProcess.Location = new System.Drawing.Point(12, 105);
+            this.ceModulesProcess.Location = new System.Drawing.Point(7, 100);
             this.ceModulesProcess.MenuManager = this.barManager1;
             this.ceModulesProcess.Name = "ceModulesProcess";
             this.ceModulesProcess.Properties.AutoWidth = true;
@@ -1844,31 +1942,31 @@ namespace Analogy
             this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
             this.ceModulesProcess.Size = new System.Drawing.Size(229, 20);
             this.ceModulesProcess.StyleController = this.layoutControl1;
-            toolTipTitleItem9.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.ceModulesProcess.SuperTip = superToolTip9;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.ceModulesProcess.SuperTip = superToolTip1;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
             // txtbModule
             // 
-            this.txtbModule.Location = new System.Drawing.Point(273, 105);
+            this.txtbModule.Location = new System.Drawing.Point(268, 100);
             this.txtbModule.MenuManager = this.barManager1;
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            this.txtbModule.Size = new System.Drawing.Size(514, 22);
+            this.txtbModule.Size = new System.Drawing.Size(518, 22);
             this.txtbModule.StyleController = this.layoutControl1;
             this.txtbModule.TabIndex = 26;
             // 
             // sbtnIncludeSources
             // 
             this.sbtnIncludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeSources.ImageOptions.Image")));
-            this.sbtnIncludeSources.Location = new System.Drawing.Point(1453, 74);
+            this.sbtnIncludeSources.Location = new System.Drawing.Point(1458, 69);
             this.sbtnIncludeSources.Name = "sbtnIncludeSources";
             this.sbtnIncludeSources.Size = new System.Drawing.Size(24, 27);
             this.sbtnIncludeSources.StyleController = this.layoutControl1;
@@ -1878,7 +1976,7 @@ namespace Analogy
             // 
             // ceSources
             // 
-            this.ceSources.Location = new System.Drawing.Point(12, 74);
+            this.ceSources.Location = new System.Drawing.Point(7, 69);
             this.ceSources.MenuManager = this.barManager1;
             this.ceSources.Name = "ceSources";
             this.ceSources.Properties.AutoWidth = true;
@@ -1887,13 +1985,13 @@ namespace Analogy
             this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
             this.ceSources.Size = new System.Drawing.Size(166, 20);
             this.ceSources.StyleController = this.layoutControl1;
-            toolTipTitleItem1.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.ceSources.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceSources.SuperTip = superToolTip2;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1901,19 +1999,19 @@ namespace Analogy
             // 
             this.txtbSource.EditValue = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, includeB, -ExcludeC, -ExcludeD";
-            this.txtbSource.Location = new System.Drawing.Point(207, 74);
+            this.txtbSource.Location = new System.Drawing.Point(202, 69);
             this.txtbSource.MenuManager = this.barManager1;
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, includeB, -ExcludeC, -ExcludeD";
-            this.txtbSource.Size = new System.Drawing.Size(1242, 22);
+            this.txtbSource.Size = new System.Drawing.Size(1252, 22);
             this.txtbSource.StyleController = this.layoutControl1;
             this.txtbSource.TabIndex = 25;
             // 
             // sbtnTextExclude
             // 
             this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
-            this.sbtnTextExclude.Location = new System.Drawing.Point(1356, 43);
+            this.sbtnTextExclude.Location = new System.Drawing.Point(1360, 38);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
             this.sbtnTextExclude.Size = new System.Drawing.Size(24, 27);
             this.sbtnTextExclude.StyleController = this.layoutControl1;
@@ -1923,21 +2021,21 @@ namespace Analogy
             // 
             // txtbExclude
             // 
-            this.txtbExclude.Location = new System.Drawing.Point(142, 43);
+            this.txtbExclude.Location = new System.Drawing.Point(137, 38);
             this.txtbExclude.MenuManager = this.barManager1;
             this.txtbExclude.Name = "txtbExclude";
             this.txtbExclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbExclude.Size = new System.Drawing.Size(1210, 22);
+            this.txtbExclude.Size = new System.Drawing.Size(1219, 22);
             this.txtbExclude.StyleController = this.layoutControl1;
             this.txtbExclude.TabIndex = 20;
             this.txtbExclude.EditValueChanged += new System.EventHandler(this.txtbExclude_EditValueChanged);
             // 
             // sBtnMostCommon
             // 
-            this.sBtnMostCommon.Location = new System.Drawing.Point(1384, 43);
+            this.sBtnMostCommon.Location = new System.Drawing.Point(1388, 38);
             this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMostCommon.Name = "sBtnMostCommon";
-            this.sBtnMostCommon.Size = new System.Drawing.Size(93, 27);
+            this.sBtnMostCommon.Size = new System.Drawing.Size(94, 27);
             this.sBtnMostCommon.StyleController = this.layoutControl1;
             this.sBtnMostCommon.TabIndex = 8;
             this.sBtnMostCommon.Text = "Most Common";
@@ -1945,7 +2043,7 @@ namespace Analogy
             // 
             // ceExcludeText
             // 
-            this.ceExcludeText.Location = new System.Drawing.Point(12, 43);
+            this.ceExcludeText.Location = new System.Drawing.Point(7, 38);
             this.ceExcludeText.MenuManager = this.barManager1;
             this.ceExcludeText.Name = "ceExcludeText";
             this.ceExcludeText.Properties.AutoWidth = true;
@@ -1954,18 +2052,18 @@ namespace Analogy
             this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceExcludeText.Size = new System.Drawing.Size(99, 20);
             this.ceExcludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem2.Text = "Text Property Filtering (exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceExcludeText.SuperTip = superToolTip2;
+            toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceExcludeText.SuperTip = superToolTip3;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnPreDefinedFilters
             // 
             this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.Properties.Resources.SingleMasterFilter_16x16;
-            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1452, 12);
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1457, 7);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
             this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(25, 27);
             this.sbtnPreDefinedFilters.StyleController = this.layoutControl1;
@@ -1975,11 +2073,11 @@ namespace Analogy
             // 
             // txtbInclude
             // 
-            this.txtbInclude.Location = new System.Drawing.Point(142, 12);
+            this.txtbInclude.Location = new System.Drawing.Point(137, 7);
             this.txtbInclude.MenuManager = this.barManager1;
             this.txtbInclude.Name = "txtbInclude";
             this.txtbInclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbInclude.Size = new System.Drawing.Size(1278, 22);
+            this.txtbInclude.Size = new System.Drawing.Size(1288, 22);
             this.txtbInclude.StyleController = this.layoutControl1;
             this.txtbInclude.TabIndex = 19;
             this.txtbInclude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbInclude_KeyPress);
@@ -1987,7 +2085,7 @@ namespace Analogy
             // sbtnTextInclude
             // 
             this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1424, 12);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1429, 7);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(24, 27);
             this.sbtnTextInclude.StyleController = this.layoutControl1;
@@ -1997,7 +2095,7 @@ namespace Analogy
             // 
             // ceIncludeText
             // 
-            this.ceIncludeText.Location = new System.Drawing.Point(12, 12);
+            this.ceIncludeText.Location = new System.Drawing.Point(7, 7);
             this.ceIncludeText.MenuManager = this.barManager1;
             this.ceIncludeText.Name = "ceIncludeText";
             this.ceIncludeText.Properties.Appearance.Options.UseImage = true;
@@ -2007,12 +2105,12 @@ namespace Analogy
             this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceIncludeText.Size = new System.Drawing.Size(97, 20);
             this.ceIncludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem3.Text = "Text Property Filtering";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.ceIncludeText.SuperTip = superToolTip3;
+            toolTipTitleItem4.Text = "Text Property Filtering";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceIncludeText.SuperTip = superToolTip4;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
@@ -2046,6 +2144,7 @@ namespace Analogy
             this.layoutControlItem18,
             this.layoutControlItem19});
             this.Root.Name = "Root";
+            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             this.Root.Size = new System.Drawing.Size(1489, 144);
             this.Root.TextVisible = false;
             // 
@@ -2068,14 +2167,14 @@ namespace Analogy
             this.layoutControlItem1.Control = this.txtbInclude;
             this.layoutControlItem1.Location = new System.Drawing.Point(130, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1282, 31);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1292, 31);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.sbtnTextInclude;
-            this.layoutControlItem3.Location = new System.Drawing.Point(1412, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(1422, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(28, 31);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -2084,7 +2183,7 @@ namespace Analogy
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.sbtnPreDefinedFilters;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1440, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1450, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(29, 31);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -2095,7 +2194,7 @@ namespace Analogy
             this.layoutControlItem5.Control = this.txtbExclude;
             this.layoutControlItem5.Location = new System.Drawing.Point(130, 31);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1214, 31);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1223, 31);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -2114,16 +2213,16 @@ namespace Analogy
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.sBtnMostCommon;
-            this.layoutControlItem7.Location = new System.Drawing.Point(1372, 31);
+            this.layoutControlItem7.Location = new System.Drawing.Point(1381, 31);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(97, 31);
+            this.layoutControlItem7.Size = new System.Drawing.Size(98, 31);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.sbtnTextExclude;
-            this.layoutControlItem8.Location = new System.Drawing.Point(1344, 31);
+            this.layoutControlItem8.Location = new System.Drawing.Point(1353, 31);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(28, 31);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
@@ -2134,7 +2233,7 @@ namespace Analogy
             this.layoutControlItem9.Control = this.txtbSource;
             this.layoutControlItem9.Location = new System.Drawing.Point(195, 62);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(1246, 31);
+            this.layoutControlItem9.Size = new System.Drawing.Size(1256, 31);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
@@ -2153,7 +2252,7 @@ namespace Analogy
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.sbtnIncludeSources;
-            this.layoutControlItem11.Location = new System.Drawing.Point(1441, 62);
+            this.layoutControlItem11.Location = new System.Drawing.Point(1451, 62);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(28, 31);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
@@ -2164,7 +2263,7 @@ namespace Analogy
             this.layoutControlItem12.Control = this.txtbModule;
             this.layoutControlItem12.Location = new System.Drawing.Point(261, 93);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(518, 31);
+            this.layoutControlItem12.Size = new System.Drawing.Size(522, 41);
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
@@ -2175,7 +2274,7 @@ namespace Analogy
             this.layoutControlItem13.MaxSize = new System.Drawing.Size(261, 24);
             this.layoutControlItem13.MinSize = new System.Drawing.Size(261, 24);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(261, 31);
+            this.layoutControlItem13.Size = new System.Drawing.Size(261, 41);
             this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem13.TextVisible = false;
@@ -2183,54 +2282,54 @@ namespace Analogy
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.sbtnUndockPerProcess;
-            this.layoutControlItem14.Location = new System.Drawing.Point(779, 93);
+            this.layoutControlItem14.Location = new System.Drawing.Point(783, 93);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(188, 31);
+            this.layoutControlItem14.Size = new System.Drawing.Size(190, 41);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
             // 
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.sbtnIncludeModules;
-            this.layoutControlItem15.Location = new System.Drawing.Point(967, 93);
+            this.layoutControlItem15.Location = new System.Drawing.Point(973, 93);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(29, 31);
+            this.layoutControlItem15.Size = new System.Drawing.Size(29, 41);
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
             // 
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.ceNewerThanFilter;
-            this.layoutControlItem16.Location = new System.Drawing.Point(996, 93);
+            this.layoutControlItem16.Location = new System.Drawing.Point(1002, 93);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(62, 31);
+            this.layoutControlItem16.Size = new System.Drawing.Size(63, 41);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.deNewerThanFilter;
-            this.layoutControlItem17.Location = new System.Drawing.Point(1058, 93);
+            this.layoutControlItem17.Location = new System.Drawing.Point(1065, 93);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(182, 31);
+            this.layoutControlItem17.Size = new System.Drawing.Size(183, 41);
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
             // layoutControlItem18
             // 
             this.layoutControlItem18.Control = this.ceOlderThanFilter;
-            this.layoutControlItem18.Location = new System.Drawing.Point(1240, 93);
+            this.layoutControlItem18.Location = new System.Drawing.Point(1248, 93);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(47, 31);
+            this.layoutControlItem18.Size = new System.Drawing.Size(47, 41);
             this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem18.TextVisible = false;
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.deOlderThanFilter;
-            this.layoutControlItem19.Location = new System.Drawing.Point(1287, 93);
+            this.layoutControlItem19.Location = new System.Drawing.Point(1295, 93);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(182, 31);
+            this.layoutControlItem19.Size = new System.Drawing.Size(184, 41);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
@@ -2585,12 +2684,12 @@ namespace Analogy
             this.ceFilterPanelFilter.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelFilter.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelFilter.Size = new System.Drawing.Size(184, 20);
-            toolTipTitleItem4.Text = "AND Log Level Filtering";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = resources.GetString("toolTipItem4.Text");
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.ceFilterPanelFilter.SuperTip = superToolTip4;
+            toolTipTitleItem6.Text = "AND Log Level Filtering";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = resources.GetString("toolTipItem6.Text");
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.ceFilterPanelFilter.SuperTip = superToolTip6;
             this.ceFilterPanelFilter.TabIndex = 30;
             this.ceFilterPanelFilter.TabStop = false;
             // 
@@ -2604,12 +2703,12 @@ namespace Analogy
             this.ceFilterPanelSearch.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelSearch.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelSearch.Size = new System.Drawing.Size(184, 20);
-            toolTipTitleItem6.Text = "AND Log Level Filtering";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = resources.GetString("toolTipItem6.Text");
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.ceFilterPanelSearch.SuperTip = superToolTip6;
+            toolTipTitleItem5.Text = "AND Log Level Filtering";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = resources.GetString("toolTipItem5.Text");
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.ceFilterPanelSearch.SuperTip = superToolTip5;
             this.ceFilterPanelSearch.TabIndex = 29;
             // 
             // labelControl1
@@ -2711,13 +2810,13 @@ namespace Analogy
             this.ceLogLevelOr.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelOr.Properties.RadioGroupIndex = 5;
             this.ceLogLevelOr.Size = new System.Drawing.Size(66, 22);
-            toolTipTitleItem5.Text = "Or Log level Filtering";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "The OR type allows to always show some log levels regardless the current filters." +
+            toolTipTitleItem7.Text = "Or Log level Filtering";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "The OR type allows to always show some log levels regardless the current filters." +
     " This is usefull when you want to see some log level alongs with other filters";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceLogLevelOr.SuperTip = superToolTip5;
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.ceLogLevelOr.SuperTip = superToolTip7;
             this.ceLogLevelOr.TabIndex = 1;
             this.ceLogLevelOr.TabStop = false;
             // 
@@ -2732,12 +2831,12 @@ namespace Analogy
             this.ceLogLevelAnd.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelAnd.Properties.RadioGroupIndex = 5;
             this.ceLogLevelAnd.Size = new System.Drawing.Size(61, 22);
-            toolTipTitleItem7.Text = "AND Log Level Filtering";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = resources.GetString("toolTipItem7.Text");
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.ceLogLevelAnd.SuperTip = superToolTip7;
+            toolTipTitleItem8.Text = "AND Log Level Filtering";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = resources.GetString("toolTipItem8.Text");
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.ceLogLevelAnd.SuperTip = superToolTip8;
             this.ceLogLevelAnd.TabIndex = 0;
             // 
             // contextMenuStripFilters
@@ -2791,10 +2890,10 @@ namespace Analogy
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.documentMessages});
             this.tabbedView1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            dockingContainer2.Element = this.documentGroup1;
-            dockingContainer2.Length.UnitValue = 1.4189383070301291D;
+            dockingContainer1.Element = this.documentGroup1;
+            dockingContainer1.Length.UnitValue = 1.4189383070301291D;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer2});
+            dockingContainer1});
             this.tabbedView1.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // dockManager1
@@ -2830,8 +2929,7 @@ namespace Analogy
             // 
             // dockPanel2_Container
             // 
-            this.dockPanel2_Container.Controls.Add(this.gridControl);
-            this.dockPanel2_Container.Controls.Add(this.panel1);
+            this.dockPanel2_Container.Controls.Add(this.layoutControlLogs);
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
@@ -3002,14 +3100,24 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkbHighlight.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).EndInit();
-            this.pnlButtonsHighlight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlLogs)).EndInit();
+            this.layoutControlLogs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblPageNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -3125,9 +3233,6 @@ namespace Analogy
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkObject;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkProcessID;
         private System.Windows.Forms.ImageList imageListBottom;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox chkbHighlight;
-        private System.Windows.Forms.Panel pnlButtonsHighlight;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTimeDiff;
         private DevExpress.XtraBars.StandaloneBarDockControl bdcTopFiltering;
         private DevExpress.XtraBars.BarManager barManager1;
@@ -3157,7 +3262,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnRemoveBoomark;
         private DevExpress.XtraBars.BarButtonItem bBtnCopyAllBookmarks;
         private DevExpress.XtraEditors.SimpleButton sbtnPageFirst;
-        private DevExpress.XtraEditors.LabelControl lblPageNumber;
         private DevExpress.XtraEditors.SimpleButton sBtnPageNext;
         private DevExpress.XtraEditors.SimpleButton sBtnLastPage;
         private DevExpress.XtraEditors.SimpleButton sbtnPagePrevious;
@@ -3302,5 +3406,17 @@ namespace Analogy
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraBars.BarButtonItem bbtnRawMessageViewer;
+        private DevExpress.XtraLayout.LayoutControl layoutControlLogs;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
+        private DevExpress.XtraEditors.CheckEdit chkbHighlight;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem23;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
+        private DevExpress.XtraLayout.SimpleLabelItem lblPageNumber;
     }
 }

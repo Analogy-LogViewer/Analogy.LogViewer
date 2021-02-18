@@ -277,6 +277,8 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
+            chkbHighlight.CheckedChanged += async (s, e) => await FilterHasChanged();
+
             #region buttons
 
             bbtnRawMessageViewer.ItemClick += (s, e) =>
@@ -2368,12 +2370,6 @@ namespace Analogy
             }
         }
 
-
-
-        private async void chkbHighlight_CheckedChanged(object sender, EventArgs e)
-        {
-            await FilterHasChanged();
-        }
 
         private async void txtbHighlight_KeyUp(object sender, KeyEventArgs e)
         {
