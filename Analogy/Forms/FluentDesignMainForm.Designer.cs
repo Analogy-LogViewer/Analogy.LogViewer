@@ -72,7 +72,7 @@ namespace Analogy
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(50, 55);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1117, 579);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1117, 708);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl1
@@ -84,7 +84,7 @@ namespace Analogy
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(50, 579);
+            this.accordionControl1.Size = new System.Drawing.Size(50, 708);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -253,7 +253,7 @@ namespace Analogy
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 634);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 763);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1167, 32);
             // 
@@ -263,7 +263,7 @@ namespace Analogy
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 55);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 579);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 708);
             // 
             // barDockControlRight
             // 
@@ -271,7 +271,7 @@ namespace Analogy
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1167, 55);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 579);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 708);
             // 
             // documentManager1
             // 
@@ -311,7 +311,7 @@ namespace Analogy
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 666);
+            this.ClientSize = new System.Drawing.Size(1167, 795);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
@@ -321,6 +321,7 @@ namespace Analogy
             this.Controls.Add(this.barDockControlTop);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.MinimumSize = new System.Drawing.Size(10, 800);
             this.Name = "FluentDesignMainForm";
             this.NavigationControl = this.accordionControl1;
             this.Text = "FluentDesignMainForm";

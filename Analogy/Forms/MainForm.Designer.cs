@@ -904,6 +904,7 @@
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(10, 800);
             this.Name = "MainForm";
             this.Ribbon = this.ribbonControlMain;
             this.StatusBar = this.ribbonStatusBar;
