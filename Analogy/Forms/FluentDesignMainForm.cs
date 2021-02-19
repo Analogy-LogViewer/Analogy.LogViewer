@@ -1,4 +1,6 @@
-﻿using Analogy.Forms;
+﻿using Analogy.DataProviders;
+using Analogy.DataTypes;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;
@@ -20,16 +22,13 @@ namespace Analogy
 {
     public partial class FluentDesignMainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        #region pinvoke
         const int WM_COPYDATA = 0x004A;
+        [DllImport("user32", EntryPoint = "SendMessageA")] private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")] internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
 
-        [DllImport("user32", EntryPoint = "SendMessageA")]
-        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
-
-        [DllImport("user32.dll")]
-        internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
-
-        [DllImport("user32.dll")]
-        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        [DllImport("user32.dll")] internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        #endregion
 
         private string filePoolingTitle = "File Pooling";
         private string offlineTitle = "Offline log";
@@ -92,16 +91,15 @@ namespace Analogy
 
             //todo:
 
-            //CreateAnalogyBuiltinDataProviders
-            //FactoryContainer analogy =
-            //    FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            //if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
-            //{
-            //    CreateDataSource(analogy, 0);
-            //}
+            // CreateAnalogyBuiltinDataProviders
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
+            {
+                //CreateDataSource(analogy, 0);
+            }
 
-            //await FactoriesManager.Instance.AddExternalDataSources();
-            //PopulateGlobalTools();
+            await FactoriesManager.Instance.AddExternalDataSources();
+            PopulateGlobalTools();
             //LoadStartupExtensions();
             //CreateDataSources();
 
@@ -163,6 +161,40 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            bbtnItemHelp.ItemClick += (s, e) =>
+            {
+                AnalogyAboutBox ab = new AnalogyAboutBox();
+                ab.ShowDialog(this);
+            };
+            bbiUserSettingsStatistics.ItemClick += (s, e) =>
+            {
+                var user = new UserStatisticsForm();
+                user.ShowDialog(this);
+            };
+            bbtnUpdates.ItemClick += (s, e) => OpenUpdateWindow();
+            bbtnDataProvidersUpdates.ItemClick += (s, e) =>
+            {
+                var update = new ComponentDownloadsForm();
+                update.Show(this);
+            };
+            bbtnDebugLog.ItemClick += (s, e) => AnalogyLogManager.Instance.Show(this);
+            bbtnItemChangeLog.ItemClick += (s, e) =>
+            {
+                var change = new ChangeLog();
+                change.ShowDialog(this);
+            };
+            bbtnWhatsNew.ItemClick += (_, __) =>
+            {
+                WhatsNewForm f = new WhatsNewForm();
+                f.ShowDialog(this);
+                settings.ShowWhatIsNewAtStartup = false;
+            };
+            bbtnFirstRun.ItemClick += (_, __) =>
+            {
+                FirstTimeRunForm f = new FirstTimeRunForm();
+                f.ShowDialog(this);
+            };
+
             tmrStatusUpdates.Tick += (s, e) =>
             {
                 tmrStatusUpdates.Stop();
@@ -232,6 +264,36 @@ namespace Analogy
         {
             UpdateForm update = new UpdateForm();
             update.Show(this);
+        }
+
+        private void PopulateGlobalTools()
+        {
+            var allFactories = FactoriesManager.Instance.Factories.ToList();
+            allFactories.AddRange(FactoriesManager.Instance.BuiltInFactories);
+            foreach (FactoryContainer fc in allFactories
+                .Where(factory => factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
+            {
+                var actionFactories = fc.CustomActionsFactories;
+                foreach (var actionFactory in actionFactories)
+                {
+                    foreach (IAnalogyCustomAction action in actionFactory.Actions)
+                    {
+                        if (action.Type != AnalogyCustomActionType.Global)
+                        {
+                            continue;
+                        }
+
+                        BarButtonItem actionBtn = new BarButtonItem();
+                        bsiGlobalTools.ItemLinks.Add(actionBtn);
+                        actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.globalTools16x16;
+                        actionBtn.ImageOptions.LargeImage = action.LargeImage ?? Resources.globalTools32x32;
+                        actionBtn.RibbonStyle = RibbonItemStyles.All;
+                        actionBtn.Caption = string.IsNullOrEmpty(action.Title) ? "Tool" : action.Title;
+                        actionBtn.ItemClick += (sender, e) => { action.Action(); };
+
+                    }
+                }
+            }
         }
 
     }
