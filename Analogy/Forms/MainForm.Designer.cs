@@ -43,6 +43,9 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
@@ -123,6 +126,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -219,10 +223,11 @@
             this.bbiSettingsExtensions,
             this.btnApplicationUISettings,
             this.btnMessageColumnsLayoutSettings,
-            this.btnColorHighlightSettings});
+            this.btnColorHighlightSettings,
+            this.bbtnSponsorOpenCollection});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 111;
+            this.ribbonControlMain.MaxItemId = 112;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bsmInfo);
@@ -689,12 +694,12 @@
             this.skinRibbonGallery.Caption = "Skin";
             this.skinRibbonGallery.Id = 81;
             this.skinRibbonGallery.Name = "skinRibbonGallery";
-            toolTipTitleItem5.Text = "Skins and themes";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "A list of built-in skins and themes";
-            superToolTip4.Items.Add(toolTipTitleItem5);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.skinRibbonGallery.SuperTip = superToolTip4;
+            toolTipTitleItem6.Text = "Skins and themes";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "A list of built-in skins and themes";
+            superToolTip5.Items.Add(toolTipTitleItem6);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.skinRibbonGallery.SuperTip = superToolTip5;
             // 
             // skinPaletteRibbonGalleryBarItem3
             // 
@@ -848,6 +853,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bsiMemoryUsage);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCompactMemory);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
+            this.ribbonStatusBar.ItemLinks.Add(this.bbtnSponsorOpenCollection);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
@@ -892,6 +898,18 @@
             this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
+            // 
+            // bbtnSponsorOpenCollection
+            // 
+            this.bbtnSponsorOpenCollection.Id = 111;
+            this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
+            this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
+            toolTipTitleItem5.Text = "Sponsor";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Support this project at Open Collective";
+            superToolTip4.Items.Add(toolTipTitleItem5);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip4;
             // 
             // MainForm
             // 
@@ -1003,5 +1021,6 @@
         private DevExpress.XtraBars.BarButtonItem btnApplicationUISettings;
         private DevExpress.XtraBars.BarButtonItem btnMessageColumnsLayoutSettings;
         private DevExpress.XtraBars.BarButtonItem btnColorHighlightSettings;
+        private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Analogy.DataProviders;
+﻿
+using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
@@ -301,6 +302,8 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            bbtnSponsorOpenCollection.ItemClick +=
+                (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
             #region  main menu
 
             btnApplicationSettings.ItemClick += (s, e) =>

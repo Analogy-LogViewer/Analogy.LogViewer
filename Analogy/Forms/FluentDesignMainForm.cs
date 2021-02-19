@@ -161,6 +161,8 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            bbtnSponsorOpenCollection.ItemClick +=
+                (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
             bbtnItemHelp.ItemClick += (s, e) =>
             {
                 AnalogyAboutBox ab = new AnalogyAboutBox();
