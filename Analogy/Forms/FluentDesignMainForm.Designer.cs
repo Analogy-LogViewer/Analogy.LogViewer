@@ -53,6 +53,7 @@ namespace Analogy
             this.bbiUserSettingsStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtom = new DevExpress.XtraBars.Bar();
+            this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
@@ -71,8 +72,6 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -85,20 +84,18 @@ namespace Analogy
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this.fluentDesignFormContainer1, DevExpress.Utils.DefaultBoolean.Default);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(312, 55);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(314, 55);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(855, 708);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(853, 708);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl
             // 
             this.accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1});
             this.accordionControl.Location = new System.Drawing.Point(0, 55);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(312, 708);
+            this.accordionControl.Size = new System.Drawing.Size(314, 708);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -300,6 +297,19 @@ namespace Analogy
             this.barButtom.OptionsBar.UseWholeRow = true;
             this.barButtom.Text = "Status bar";
             // 
+            // bbtnSponsorOpenCollection
+            // 
+            this.bbtnSponsorOpenCollection.Caption = "Sponsor";
+            this.bbtnSponsorOpenCollection.Id = 24;
+            this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
+            this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
+            toolTipTitleItem1.Text = "Sponsor";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Support this project at Open Collective";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
+            // 
             // bbtnStar
             // 
             this.bbtnStar.Caption = "GitHub";
@@ -422,24 +432,6 @@ namespace Analogy
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             // 
-            // accordionControlElement1
-            // 
-            this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Text = "Element1";
-            // 
-            // bbtnSponsorOpenCollection
-            // 
-            this.bbtnSponsorOpenCollection.Caption = "Sponsor";
-            this.bbtnSponsorOpenCollection.Id = 24;
-            this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
-            this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem1.Text = "Sponsor";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Support this project at Open Collective";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
-            // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
@@ -509,7 +501,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnDataProvidersUpdates;
         private DevExpress.XtraBars.BarButtonItem bbiUserSettingsStatistics;
         private DevExpress.XtraBars.BarButtonItem bbtnItemHelp;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
     }
 }
