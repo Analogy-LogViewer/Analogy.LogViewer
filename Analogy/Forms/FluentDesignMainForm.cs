@@ -125,7 +125,11 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
-
+           
+            if (settings.RememberLastOpenedDataProvider && Mapping.ContainsKey(settings.LastOpenedDataProvider))
+            {
+                ribbonControlMain.SelectPage(Mapping[settings.LastOpenedDataProvider]);
+            }
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
             {
                 bbtnErrors.Visibility = BarItemVisibility.Always;
@@ -157,6 +161,7 @@ namespace Analogy
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             }
+            
         }
 
         private void SetupEventHandlers()
@@ -304,8 +309,8 @@ namespace Analogy
             {
                 return;
             }
-
-            BarCheckItem bci = new BarCheckItem(barManager1)
+            fc.Factory.FactoryId==
+            BarCheckItem bci = new BarCheckItem(barManager1,)
             RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(fc.Factory.FactoryId, ribbonPage);
