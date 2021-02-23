@@ -125,10 +125,10 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
-           
+            //todo:fix below
             if (settings.RememberLastOpenedDataProvider && Mapping.ContainsKey(settings.LastOpenedDataProvider))
             {
-                ribbonControlMain.SelectPage(Mapping[settings.LastOpenedDataProvider]);
+                //ribbonControlMain.SelectPage(Mapping[settings.LastOpenedDataProvider]);
             }
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
             {
@@ -161,7 +161,7 @@ namespace Analogy
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             }
-            
+
         }
 
         private void SetupEventHandlers()
@@ -305,66 +305,66 @@ namespace Analogy
 
         private void CreateDataSource(FactoryContainer fc)
         {
-            if (fc.Factory.Title == null)
-            {
-                return;
-            }
-            fc.Factory.FactoryId==
-            BarCheckItem bci = new BarCheckItem(barManager1,)
-            RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
-            ribbonControlMain.Pages.Insert(position, ribbonPage);
-            Mapping.Add(fc.Factory.FactoryId, ribbonPage);
-            var ribbonPageImage = FactoriesManager.Instance.GetSmallImage(fc.Factory.FactoryId);
-            if (ribbonPageImage != null)
-            {
-                ribbonPage.ImageOptions.Image = ribbonPageImage;
-            }
+            //    if (fc.Factory.Title == null)
+            //    {
+            //        return;
+            //    }
+            //    fc.Factory.FactoryId==
+            //    BarCheckItem bci = new BarCheckItem(barManager1,)
+            //    RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
+            //    ribbonControlMain.Pages.Insert(position, ribbonPage);
+            //    Mapping.Add(fc.Factory.FactoryId, ribbonPage);
+            //    var ribbonPageImage = FactoriesManager.Instance.GetSmallImage(fc.Factory.FactoryId);
+            //    if (ribbonPageImage != null)
+            //    {
+            //        ribbonPage.ImageOptions.Image = ribbonPageImage;
+            //    }
 
-            AddGraphPlotter(ribbonPage, fc.GraphPlotter);
-            var dataSourceFactory = fc.DataProvidersFactories;
+            //    AddGraphPlotter(ribbonPage, fc.GraphPlotter);
+            //    var dataSourceFactory = fc.DataProvidersFactories;
 
-            foreach (var dataProvidersFactory in dataSourceFactory)
-            {
-                if (!string.IsNullOrEmpty(dataProvidersFactory.Title))
-                {
-                    CreateDataSourceRibbonGroup(fc.Factory, dataProvidersFactory, ribbonPage);
-                }
-            }
+            //    foreach (var dataProvidersFactory in dataSourceFactory)
+            //    {
+            //        if (!string.IsNullOrEmpty(dataProvidersFactory.Title))
+            //        {
+            //            CreateDataSourceRibbonGroup(fc.Factory, dataProvidersFactory, ribbonPage);
+            //        }
+            //    }
 
-            var actionFactories = fc.CustomActionsFactories;
-            foreach (var actionFactory in actionFactories.Where(af
-                => af.Actions.Any(a => a.Type == AnalogyCustomActionType.BelongsToProvider)))
-            {
+            //    var actionFactories = fc.CustomActionsFactories;
+            //    foreach (var actionFactory in actionFactories.Where(af
+            //        => af.Actions.Any(a => a.Type == AnalogyCustomActionType.BelongsToProvider)))
+            //    {
 
-                if (string.IsNullOrEmpty(actionFactory.Title))
-                {
-                    continue;
-                }
+            //        if (string.IsNullOrEmpty(actionFactory.Title))
+            //        {
+            //            continue;
+            //        }
 
-                RibbonPageGroup groupActionSource = new RibbonPageGroup(actionFactory.Title);
-                groupActionSource.AllowTextClipping = false;
-                ribbonPage.Groups.Add(groupActionSource);
-                if (actionFactory.Actions == null)
-                {
-                    AnalogyLogManager.Instance.LogCritical($"null actions for {actionFactory.Title}:{actionFactory.FactoryId}", $"{actionFactory.Title}{actionFactory.FactoryId}");
-                    continue;
-                }
-                foreach (IAnalogyCustomAction action in actionFactory.Actions.Where(a => a.Type == AnalogyCustomActionType.BelongsToProvider))
-                {
-                    BarButtonItem actionBtn = new BarButtonItem
-                    {
-                        Caption = action.Title,
-                        RibbonStyle = RibbonItemStyles.All
-                    };
-                    groupActionSource.ItemLinks.Add(actionBtn);
-                    actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.PageSetup_32x32;
-                    actionBtn.ImageOptions.LargeImage = action.LargeImage ?? Resources.PageSetup_32x32;
-                    actionBtn.ItemClick += (sender, e) => { action.Action(); };
-                }
-            }
+            //        RibbonPageGroup groupActionSource = new RibbonPageGroup(actionFactory.Title);
+            //        groupActionSource.AllowTextClipping = false;
+            //        ribbonPage.Groups.Add(groupActionSource);
+            //        if (actionFactory.Actions == null)
+            //        {
+            //            AnalogyLogManager.Instance.LogCritical($"null actions for {actionFactory.Title}:{actionFactory.FactoryId}", $"{actionFactory.Title}{actionFactory.FactoryId}");
+            //            continue;
+            //        }
+            //        foreach (IAnalogyCustomAction action in actionFactory.Actions.Where(a => a.Type == AnalogyCustomActionType.BelongsToProvider))
+            //        {
+            //            BarButtonItem actionBtn = new BarButtonItem
+            //            {
+            //                Caption = action.Title,
+            //                RibbonStyle = RibbonItemStyles.All
+            //            };
+            //            groupActionSource.ItemLinks.Add(actionBtn);
+            //            actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.PageSetup_32x32;
+            //            actionBtn.ImageOptions.LargeImage = action.LargeImage ?? Resources.PageSetup_32x32;
+            //            actionBtn.ItemClick += (sender, e) => { action.Action(); };
+            //        }
+            //    }
 
-            AddFactorySettings(fc, ribbonPage);
-            AddAbout(fc, ribbonPage);
+            //    AddFactorySettings(fc, ribbonPage);
+            //    AddAbout(fc, ribbonPage);
         }
 
 
