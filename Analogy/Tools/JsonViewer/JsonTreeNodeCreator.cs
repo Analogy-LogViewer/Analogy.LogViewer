@@ -27,8 +27,8 @@ namespace Analogy.Tools.JsonViewer
                 string value = item.ToString();
                 text = property == null ?
                     value :
-                    string.Format($"{property}: {value}");
-                textWhenSelected = string.Format($"{text} (type: {item.Type})");
+                    $"{property}: {value}";
+                textWhenSelected = $"{text} (type: {item.Type})";
             }
 
             type = item.Type == JTokenType.Object ? JsonNodeType.Object :
