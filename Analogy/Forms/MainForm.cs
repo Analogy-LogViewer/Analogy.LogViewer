@@ -302,6 +302,11 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            dockManager1.ClosingPanel += (s, e) =>
+            {
+                var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
+                workspace?.SaveCurrentWorkspace();
+            };
             bbtnSponsorOpenCollection.ItemClick +=
                 (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
             #region  main menu
@@ -348,46 +353,6 @@ namespace Analogy.Forms
             };
             #endregion
 
-
-            ILogWindow GetLogWindows(Control mainControl)
-            {
-                while (true)
-                {
-                    if (mainControl is ILogWindow logWindow)
-                    {
-                        return logWindow;
-                    }
-
-                    if (mainControl is SplitContainer split)
-                    {
-                        var log1 = GetLogWindows(split.Panel1);
-                        if (log1 != null)
-                        {
-                            return log1;
-                        }
-
-                        mainControl = split.Panel2;
-                        continue;
-                    }
-
-                    for (int i = 0; i < mainControl.Controls.Count; i++)
-                    {
-                        var control = mainControl.Controls[i];
-                        if (control is ILogWindow logWindow2)
-                        {
-                            return logWindow2;
-                        }
-
-                        if (GetLogWindows(control) is ILogWindow log)
-                        {
-                            return log;
-                        }
-                    }
-
-                    return null;
-                }
-            }
-
             settings.OnRibbonControlStyleChanged += (s, e) => ribbonControlMain.CommandLayout = e;
             bbtnReportIssueOrRequest.ItemClick += (_, __) =>
             {
@@ -396,7 +361,7 @@ namespace Analogy.Forms
 
             bbtnCombineOpenLogs.ItemClick += (s, e) =>
             {
-                var items = dockManager1.Panels.Select(p => (p.Text, GetLogWindows(p))).Where(l => l.Item2 != null)
+                var items = dockManager1.Panels.Select(p => (p.Text, Utils.GetLogWindows<ILogWindow>(p))).Where(l => l.Item2 != null)
                     .ToList();
                 var openLogs = new OpenWindows(items);
                 openLogs.Show(this);

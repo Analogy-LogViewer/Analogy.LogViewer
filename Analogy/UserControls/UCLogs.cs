@@ -38,7 +38,7 @@ using System.Windows.Forms;
 namespace Analogy
 {
 
-    public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow
+    public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
     {
         #region properties
         public bool ForceNoFileCaching { get; set; } = false;
@@ -147,8 +147,6 @@ namespace Analogy
         public UCLogs()
         {
             InitializeComponent();
-            // WorkspaceManager.SetSerializationEnabled(logGrid,false);
-            // WorkspaceManager.SetSerializationEnabled(gridControl, false);
 
             _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
@@ -207,6 +205,7 @@ namespace Analogy
             }
 
             wsLogs.CaptureWorkspace("Default");
+
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
@@ -260,12 +259,16 @@ namespace Analogy
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
-            if (Settings.UseCustomLogsLayout && !string.IsNullOrEmpty(Settings.LogsLayoutFileName)
-                                             && File.Exists(Settings.LogsLayoutFileName))
+            if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
             {
                 string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
                 wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
                 wsLogs.ApplyWorkspace(name);
+            }
+            if (File.Exists(AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName))
+            {
+                wsLogs.LoadWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName, AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName);
+                wsLogs.ApplyWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName);
             }
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
@@ -280,6 +283,14 @@ namespace Analogy
             chkbHighlight.CheckedChanged += async (s, e) => await FilterHasChanged();
 
             #region buttons
+
+            bbtnCancel.ItemClick += (s, e) =>
+            {
+                CancellationTokenSource.Cancel(false);
+                Interlocked.Exchange(ref fileLoadingCount, 0);
+                CancellationTokenSource = new CancellationTokenSource();
+                bbtnCancel.Visibility = BarItemVisibility.Never;
+            };
 
             bbtnRawMessageViewer.ItemClick += (s, e) =>
             {
@@ -638,7 +649,7 @@ namespace Analogy
             wsLogs.WorkspaceSaved += (s, e) =>
             {
                 Settings.LogsLayoutFileName = e.Workspace.Path;
-                Settings.UseCustomLogsLayout = true;
+               // Settings.UseCustomLogsLayout = true;
             };
             wsLogs.AfterApplyWorkspace += (s, e) =>
             {
@@ -646,11 +657,11 @@ namespace Analogy
                 {
                     if (string.IsNullOrEmpty(ws.Workspace.Path))
                     {
-                        Settings.UseCustomLogsLayout = false;
+                        //Settings.UseCustomLogsLayout = false;
                     }
                     else if (File.Exists(ws.Workspace.Path))
                     {
-                        Settings.UseCustomLogsLayout = true;
+                       // Settings.UseCustomLogsLayout = true;
                         Settings.LogsLayoutFileName = ws.Workspace.Path;
                     }
 
@@ -3176,13 +3187,19 @@ namespace Analogy
             xtcFilters.SelectedTabPage = xtpFiltersExclude;
         }
 
-        private void bbtnCancel_Click(object sender, ItemClickEventArgs e)
-        {
-            CancellationTokenSource.Cancel(false);
-            Interlocked.Exchange(ref fileLoadingCount, 0);
 
-            CancellationTokenSource = new CancellationTokenSource();
-            bbtnCancel.Visibility = BarItemVisibility.Never;
+
+        public void SaveCurrentWorkspace()
+        {
+            try
+            {
+                wsLogs.CaptureWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName);
+                wsLogs.SaveWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName, AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName, true);
+            }
+            catch (Exception e)
+            {
+               AnalogyLogManager.Instance.LogError(e.Message,nameof(SaveCurrentWorkspace));
+            }
         }
     }
 }

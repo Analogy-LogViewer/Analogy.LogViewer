@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.6.3 - [UI] Automatics save user layout changes #890",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,02,25)),
                 new AnalogyChangeLog("V4.6.2 - [json visualizer] string not in the correct format Error #886",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,02,24)),
                 new AnalogyChangeLog("V4.6.1 - [UI] Fix high res monitors rendering #879",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,02,18)),
                 new AnalogyChangeLog("V4.6.1 - Fix floating panels sizes #878",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,02,18)),

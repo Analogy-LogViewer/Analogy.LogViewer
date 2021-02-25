@@ -1358,7 +1358,6 @@ namespace Analogy
             this.bbtnCancel.Name = "bbtnCancel";
             this.bbtnCancel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnCancel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bbtnCancel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnCancel_Click);
             // 
             // bprogressBar
             // 

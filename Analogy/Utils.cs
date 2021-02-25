@@ -407,6 +407,44 @@ namespace Analogy
             return openFilter;
         }
 
+       public static  T? GetLogWindows<T>(Control mainControl) where T:class
+        {
+            while (true)
+            {
+                if (mainControl is T logWindow)
+                {
+                    return logWindow;
+                }
+
+                if (mainControl is SplitContainer split)
+                {
+                    var log1 = GetLogWindows<T>(split.Panel1);
+                    if (log1 != null)
+                    {
+                        return log1;
+                    }
+
+                    mainControl = split.Panel2;
+                    continue;
+                }
+
+                for (int i = 0; i < mainControl.Controls.Count; i++)
+                {
+                    var control = mainControl.Controls[i];
+                    if (control is T logWindow2)
+                    {
+                        return logWindow2;
+                    }
+
+                    if (GetLogWindows<T>(control) is T log)
+                    {
+                        return log;
+                    }
+                }
+
+                return null;
+            }
+        }
     }
 
 }

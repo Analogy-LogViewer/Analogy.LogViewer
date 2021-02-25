@@ -136,6 +136,7 @@ namespace Analogy
 
         public SettingsMode SettingsMode { get; set; }
 
+
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
