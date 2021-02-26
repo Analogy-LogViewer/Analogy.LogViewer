@@ -1936,10 +1936,10 @@ namespace Analogy
             this.ceModulesProcess.MenuManager = this.barManager1;
             this.ceModulesProcess.Name = "ceModulesProcess";
             this.ceModulesProcess.Properties.AutoWidth = true;
-            this.ceModulesProcess.Properties.Caption = "Include/Exclude Processes/Modules:";
+            this.ceModulesProcess.Properties.Caption = "Processes/Modules (Include/Exclude):";
             this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
             this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
-            this.ceModulesProcess.Size = new System.Drawing.Size(229, 20);
+            this.ceModulesProcess.Size = new System.Drawing.Size(239, 20);
             this.ceModulesProcess.StyleController = this.layoutControl1;
             toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
             toolTipItem1.LeftIndent = 6;
@@ -1979,10 +1979,10 @@ namespace Analogy
             this.ceSources.MenuManager = this.barManager1;
             this.ceSources.Name = "ceSources";
             this.ceSources.Properties.AutoWidth = true;
-            this.ceSources.Properties.Caption = "Include/Exclude Sources:";
+            this.ceSources.Properties.Caption = "Sources (Include/Exclude):";
             this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
             this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
-            this.ceSources.Size = new System.Drawing.Size(166, 20);
+            this.ceSources.Size = new System.Drawing.Size(176, 20);
             this.ceSources.StyleController = this.layoutControl1;
             toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
             toolTipItem2.LeftIndent = 6;
