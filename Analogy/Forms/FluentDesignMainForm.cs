@@ -166,6 +166,11 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            dockManager1.ClosingPanel += (s, e) =>
+            {
+                var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
+                workspace?.SaveCurrentWorkspace();
+            };
             bbtnSponsorOpenCollection.ItemClick +=
                 (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
             bbtnItemHelp.ItemClick += (s, e) =>
@@ -305,13 +310,13 @@ namespace Analogy
 
         private void CreateDataSource(FactoryContainer fc)
         {
-            //    if (fc.Factory.Title == null)
-            //    {
-            //        return;
-            //    }
-            //    fc.Factory.FactoryId==
-            //    BarCheckItem bci = new BarCheckItem(barManager1,)
-            //    RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
+            if (fc.Factory.Title == null)
+            {
+                return;
+            }
+
+            //    BarCheckItem bci = new BarCheckItem(barManager1,curr)
+            //        RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
             //    ribbonControlMain.Pages.Insert(position, ribbonPage);
             //    Mapping.Add(fc.Factory.FactoryId, ribbonPage);
             //    var ribbonPageImage = FactoriesManager.Instance.GetSmallImage(fc.Factory.FactoryId);
@@ -366,7 +371,5 @@ namespace Analogy
             //    AddFactorySettings(fc, ribbonPage);
             //    AddAbout(fc, ribbonPage);
         }
-
-
     }
 }
