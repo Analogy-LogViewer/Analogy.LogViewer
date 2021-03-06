@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Analogy.CommonUtilities.Web;
+﻿using Analogy.CommonUtilities.Web;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
+using System;
+using System.Collections.Generic;
 
 namespace Analogy.DataTypes
 {
@@ -85,5 +80,6 @@ namespace Analogy.DataTypes
         public bool ViewDetailedMessageWithHTML { get; set; }
         public SettingsMode SettingsMode { get; set; }
         public string Version { get; set; }
+        public MainFormType MainFormType { get; set; }
     }
 }

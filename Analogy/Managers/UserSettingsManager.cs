@@ -135,7 +135,7 @@ namespace Analogy
         public bool ViewDetailedMessageWithHTML { get; set; }
 
         public SettingsMode SettingsMode { get; set; }
-
+        public MainFormType MainFormType { get; set; }
 
         public UserSettingsManager()
         {
@@ -266,7 +266,10 @@ namespace Analogy
             UseCustomLogsLayout = Settings.Default.UseCustomLogsLayout;
             LogsLayoutFileName = Settings.Default.LogsLayoutFileName;
             ViewDetailedMessageWithHTML = Settings.Default.ViewDetailedMessageWithHTML;
-
+            if (Enum.TryParse<MainFormType>(Settings.Default.MainFormType, out var layoutVersion))
+            {
+                MainFormType = layoutVersion;
+            }
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -340,12 +343,9 @@ namespace Analogy
             LogsLayoutFileName = settings.LogsLayoutFileName;
             UseCustomLogsLayout = settings.UseCustomLogsLayout;
             ViewDetailedMessageWithHTML = settings.ViewDetailedMessageWithHTML;
-            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup;
-            if (UpdateManager.Instance.CurrentVersion.ToString(4) != settings.Version)
-            {
-                ShowWhatIsNewAtStartup = true;
-            }
-
+            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup ||
+                                     UpdateManager.Instance.CurrentVersion.ToString(4) != settings.Version;
+            MainFormType = settings.MainFormType;
         }
 
         private UserSettings CreateUserSettings()
@@ -420,7 +420,8 @@ namespace Analogy
                 FilteringExclusion = FilteringExclusion,
                 LogsLayoutFileName = LogsLayoutFileName,
                 UseCustomLogsLayout = UseCustomLogsLayout,
-                ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML
+                ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML,
+                MainFormType = MainFormType
             };
             return userSettings;
         }
@@ -576,6 +577,7 @@ namespace Analogy
             Settings.Default.UseCustomLogsLayout = UseCustomLogsLayout;
             Settings.Default.LogsLayoutFileName = LogsLayoutFileName;
             Settings.Default.ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML;
+            Settings.Default.MainFormType = MainFormType.ToString();
             Settings.Default.Save();
         }
 
@@ -697,6 +699,7 @@ namespace Analogy
             Settings.Default.Save();
             ShowWhatIsNewAtStartup = true;
             SettingsMode = SettingsMode.PerUser;
+            MainFormType = MainFormType.RibbonForm;
             LoadPerUserSettings();
         }
     }

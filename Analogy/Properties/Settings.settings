@@ -218,5 +218,8 @@
     <Setting Name="SettingsMode" Type="System.String" Scope="User">
       <Value Profile="(Default)">PerUser</Value>
     </Setting>
+    <Setting Name="MainFormType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">RibbonForm</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

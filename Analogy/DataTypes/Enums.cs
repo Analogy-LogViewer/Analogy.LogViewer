@@ -71,6 +71,11 @@ namespace Analogy.DataTypes
         ApplicationFolder
     }
 
+    public enum MainFormType
+    {
+        RibbonForm, //classic pre V5
+        FluentForm
+    }
     public static class EnumUtils
     {
         public static string GetDisplay(this Enum value)
@@ -103,5 +108,5 @@ namespace Analogy.DataTypes
             return enumValues;
         }
     }
-    
+
 }

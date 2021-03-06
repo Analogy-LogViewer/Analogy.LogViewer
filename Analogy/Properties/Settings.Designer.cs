@@ -908,5 +908,17 @@ namespace Analogy.Properties {
                 this["SettingsMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RibbonForm")]
+        public string MainFormType {
+            get {
+                return ((string)(this["MainFormType"]));
+            }
+            set {
+                this["MainFormType"] = value;
+            }
+        }
     }
 }
