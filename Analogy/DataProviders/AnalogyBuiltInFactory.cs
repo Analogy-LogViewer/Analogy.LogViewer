@@ -1,5 +1,6 @@
 ﻿using Analogy.Forms;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.LogLoaders;
 using Analogy.LogViewer.Template;
 using Analogy.LogViewer.Template.IAnalogy;
@@ -12,7 +13,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.DataProviders
 {
@@ -23,7 +23,7 @@ namespace Analogy.DataProviders
         public override string Title { get; set; } = "Analogy Logs Formats";
         public override IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = CommonChangeLog.GetChangeLog();
         public override Image? LargeImage { get; set; } = Resources.Analogy_image_32x32;
-        public override Image? SmallImage { get; set; } = Resources.Analogy_image_32x32;
+        public override Image? SmallImage { get; set; } = Resources.Analogy_image_16x16;
         public override IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
         public override string About { get; set; } = "Analogy Built-in Data Source";
 

@@ -31,7 +31,7 @@ namespace Analogy
         public event EventHandler<CommandLayout> OnRibbonControlStyleChanged;
         private string LocalSettingFileName { get; } = "AnalogyLocalSettings.json";
         public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
-        public string InitialSelectedDataProvider { get; set; } = "D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04";
+        public Guid InitialSelectedDataProvider { get; set; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
         public string ApplicationSkinName { get; set; }
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
         public bool SaveSearchFilters { get; set; }

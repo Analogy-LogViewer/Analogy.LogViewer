@@ -23,16 +23,24 @@ namespace Analogy
     public partial class FluentDesignMainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         #region pinvoke
-        const int WM_COPYDATA = 0x004A;
-        [DllImport("user32", EntryPoint = "SendMessageA")] private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
-        [DllImport("user32.dll")] internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
 
-        [DllImport("user32.dll")] internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        const int WM_COPYDATA = 0x004A;
+
+        [DllImport("user32", EntryPoint = "SendMessageA")]
+        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         #endregion
 
         private string filePoolingTitle = "File Pooling";
         private string offlineTitle = "Offline log";
         private string onlineTitle = "Online log";
+        private Guid activeProvider;
         private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
 
         private Dictionary<DockPanel, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
@@ -58,8 +66,12 @@ namespace Analogy
                 return;
             }
 
+            activeProvider = settings.RememberLastOpenedDataProvider
+                ? settings.LastOpenedDataProvider
+                : UserSettingsManager.UserSettings.InitialSelectedDataProvider;
+
             if (settings.AnalogyPosition.RememberLastPosition ||
-             settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
+                settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
             {
                 WindowState = settings.AnalogyPosition.WindowState;
                 if (WindowState != FormWindowState.Maximized)
@@ -93,15 +105,19 @@ namespace Analogy
 
             //CreateAnalogyBuiltinDataProviders
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
-            {
-                CreateDataSource(analogy);
-            }
+            CreateDataSource(analogy);
+
 
             await FactoriesManager.Instance.AddExternalDataSources();
             PopulateGlobalTools();
             //LoadStartupExtensions();
-            //CreateDataSources();
+
+            //Create all other DataSources
+            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
+                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory)))
+            {
+                CreateDataSource(factory);
+            }
 
             if (OnlineSources.Any())
             {
@@ -111,7 +127,8 @@ namespace Analogy
             Initialized = true;
             //todo: fine handler for file
             if (arguments.Length == 2)
-            {//todo
+            {
+                //todo
                 string[] fileNames = { arguments[1] };
                 // await OpenOfflineFileWithSpecificDataProvider(fileNames);
             }
@@ -125,11 +142,13 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
+
             //todo:fix below
             if (settings.RememberLastOpenedDataProvider && Mapping.ContainsKey(settings.LastOpenedDataProvider))
             {
                 //ribbonControlMain.SelectPage(Mapping[settings.LastOpenedDataProvider]);
             }
+
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
             {
                 bbtnErrors.Visibility = BarItemVisibility.Always;
@@ -216,7 +235,9 @@ namespace Analogy
             {
                 tmrStatusUpdates.Stop();
                 bbtnMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [MB]";
-                bbtnIdleMessage.Caption = settings.IdleMode ? $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}" : "Idle mode is off";
+                bbtnIdleMessage.Caption = settings.IdleMode
+                    ? $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}"
+                    : "Idle mode is off";
                 tmrStatusUpdates.Start();
             };
             AnalogyLogManager.Instance.OnNewError += (s, e) => bbtnErrors.Visibility = BarItemVisibility.Always;
@@ -320,7 +341,29 @@ namespace Analogy
                 return;
             }
 
-            //    BarCheckItem bci = new BarCheckItem(barManager1,curr)
+
+
+            BarCheckItem bci = new BarCheckItem(barManager1, fc.Factory.FactoryId == activeProvider);
+            bci.Manager = barManager1;
+            bci.CheckBoxVisibility = CheckBoxVisibility.BeforeText;
+            bci.Caption = fc.Factory.Title;
+            bci.Enabled = fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled;
+            bci.Glyph = fc.Factory.SmallImage;
+            bci.ItemClick += (s, e) =>
+            {
+                bci.Checked = true;
+                LoadFactory(fc);
+            };
+            bsiDataProviders.AddItem(bci);
+
+        }
+
+        private void LoadFactory(FactoryContainer fc)
+        {
+            if (activeProvider == fc.Factory.FactoryId)
+            {
+                return;
+            }
             //        RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
             //    ribbonControlMain.Pages.Insert(position, ribbonPage);
             //    Mapping.Add(fc.Factory.FactoryId, ribbonPage);
@@ -375,6 +418,7 @@ namespace Analogy
 
             //    AddFactorySettings(fc, ribbonPage);
             //    AddAbout(fc, ribbonPage);
+
         }
     }
 }

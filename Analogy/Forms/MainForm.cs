@@ -201,10 +201,17 @@ namespace Analogy.Forms
             await FactoriesManager.Instance.AddExternalDataSources();
             PopulateGlobalTools();
             LoadStartupExtensions();
-            CreateDataSources();
 
+
+            //Create all other DataSources
+            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
+                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
+                                  factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
+            {
+                CreateDataSource(factory, 3);
+            }
             //set Default page:
-            Guid defaultPage = new Guid(settings.InitialSelectedDataProvider);
+            Guid defaultPage = settings.InitialSelectedDataProvider;
             if (Mapping.ContainsKey(defaultPage))
             {
                 ribbonControlMain.SelectedPage = Mapping[defaultPage];
@@ -607,17 +614,7 @@ namespace Analogy.Forms
         {
         }
 
-        private void CreateDataSources()
-        {
-            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
-                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
-                                  factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
-            {
-                CreateDataSource(factory, 3);
-            }
-
-        }
-
+        
         private void CreateDataSource(FactoryContainer fc, int position)
         {
             if (fc.Factory.Title == null)

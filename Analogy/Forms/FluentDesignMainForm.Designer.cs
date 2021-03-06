@@ -31,12 +31,14 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.bbtnSettings = new DevExpress.XtraBars.BarButtonItem();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barMain = new DevExpress.XtraBars.Bar();
@@ -72,8 +74,6 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.bbtnSettings = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -103,6 +103,11 @@ namespace Analogy
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Text = "Element1";
+            // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
@@ -114,6 +119,15 @@ namespace Analogy
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtnSettings);
+            // 
+            // bbtnSettings
+            // 
+            this.bbtnSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbtnSettings.Caption = "Settings";
+            this.bbtnSettings.Id = 0;
+            this.bbtnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.Image")));
+            this.bbtnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.LargeImage")));
+            this.bbtnSettings.Name = "bbtnSettings";
             // 
             // dockManager1
             // 
@@ -166,7 +180,7 @@ namespace Analogy
             this.bbtnItemHelp,
             this.bbtnSponsorOpenCollection});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 25;
+            this.barManager1.MaxItemId = 26;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -310,12 +324,12 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem1.Text = "Sponsor";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Support this project at Open Collective";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
+            toolTipTitleItem5.Text = "Sponsor";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Support this project at Open Collective";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip5;
             // 
             // bbtnStar
             // 
@@ -438,20 +452,6 @@ namespace Analogy
             // 
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
-            // 
-            // accordionControlElement1
-            // 
-            this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Text = "Element1";
-            // 
-            // bbtnSettings
-            // 
-            this.bbtnSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bbtnSettings.Caption = "Settings";
-            this.bbtnSettings.Id = 0;
-            this.bbtnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.Image")));
-            this.bbtnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.LargeImage")));
-            this.bbtnSettings.Name = "bbtnSettings";
             // 
             // FluentDesignMainForm
             // 
