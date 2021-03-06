@@ -72,6 +72,8 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.bbtnSettings = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -92,6 +94,8 @@ namespace Analogy
             // accordionControl
             // 
             this.accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accordionControlElement1});
             this.accordionControl.Location = new System.Drawing.Point(0, 55);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
@@ -102,11 +106,14 @@ namespace Analogy
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
+            this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bbtnSettings});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(1167, 30);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtnSettings);
             // 
             // dockManager1
             // 
@@ -432,6 +439,20 @@ namespace Analogy
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Text = "Element1";
+            // 
+            // bbtnSettings
+            // 
+            this.bbtnSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bbtnSettings.Caption = "Settings";
+            this.bbtnSettings.Id = 0;
+            this.bbtnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.Image")));
+            this.bbtnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.LargeImage")));
+            this.bbtnSettings.Name = "bbtnSettings";
+            // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
@@ -502,5 +523,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiUserSettingsStatistics;
         private DevExpress.XtraBars.BarButtonItem bbtnItemHelp;
         private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.BarButtonItem bbtnSettings;
     }
 }

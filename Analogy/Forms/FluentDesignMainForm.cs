@@ -166,6 +166,11 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            bbtnSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm();
+                user.ShowDialog(this);
+            };
             dockManager1.ClosingPanel += (s, e) =>
             {
                 var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);

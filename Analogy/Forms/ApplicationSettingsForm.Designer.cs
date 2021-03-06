@@ -278,6 +278,7 @@ namespace Analogy.Forms
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "ApplicationSettingsForm";
             this.NavigationControl = this.accordionControl1;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Application Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ApplicationSettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.ApplicationSettingsForm_Load);
