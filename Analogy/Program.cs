@@ -1,4 +1,6 @@
+using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Managers;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraEditors;
@@ -10,7 +12,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Analogy.Managers;
 
 namespace Analogy
 {
@@ -32,7 +33,7 @@ namespace Analogy
             DevExpress.UserSkins.BonusSkins.Register();
             WindowsFormsSettings.LoadApplicationSettings();
             WindowsFormsSettings.SetDPIAware();
-            AnalogyLogManager.Instance.LogInformation($"OS: {Environment.OSVersion.Version}",nameof(Program));
+            AnalogyLogManager.Instance.LogInformation($"OS: {Environment.OSVersion.Version}", nameof(Program));
             if (Environment.OSVersion.Version.Major >= 10)
             {
                 WindowsFormsSettings.ForceDirectXPaint();
@@ -113,7 +114,15 @@ namespace Analogy
                 FirstTimeRunForm f = new FirstTimeRunForm();
                 f.ShowDialog();
             }
-            Application.Run(new MainForm());
+
+            if (Settings.MainFormType == MainFormType.RibbonForm)
+            {
+                Application.Run(new MainForm());
+            }
+            else
+            {
+                Application.Run(new FluentDesignMainForm());
+            }
 
         }
 

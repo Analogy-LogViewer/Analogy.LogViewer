@@ -3,6 +3,7 @@ using Analogy.Properties;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using System;
+using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {
@@ -54,7 +55,7 @@ namespace Analogy.ApplicationSettings
                     : CommandLayout.Classic;
             };
             tsRememberLastPositionAndState.IsOnChanged += (s, e) =>
-              Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
+                Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
 
             ceFontsDefault.CheckedChanged += (s, e) => SetFonts();
             ceFontsNormal.CheckedChanged += (s, e) => SetFonts();
@@ -75,11 +76,32 @@ namespace Analogy.ApplicationSettings
                 Settings.AnalogyIcon = ceIconLight.Checked ? "Light" : "Dark";
                 peAnalogy.Image = ceIconLight.Checked ? Resources.AnalogyLight : Resources.AnalogyDark;
             };
-
+            ceFluentForm.CheckStateChanged += (s, e) =>
+            {
+                if (ceFluentForm.Checked)
+                {
+                    Settings.MainFormType = MainFormType.FluentForm;
+                }
+            };
+            ceRibbonForm.CheckStateChanged += (s, e) =>
+            {
+                if (ceFluentForm.Checked)
+                {
+                    Settings.MainFormType = MainFormType.RibbonForm;
+                }
+            };
         }
+
+
 
         private void LoadSettings()
         {
+            ceRibbonForm.CheckState = Settings.MainFormType == MainFormType.RibbonForm
+                ? CheckState.Checked
+                : CheckState.Unchecked;
+            ceFluentForm.CheckState = Settings.MainFormType == MainFormType.FluentForm
+                ? CheckState.Checked
+                : CheckState.Unchecked;
             lblSkinName.Text = "Skin name: " + Settings.ApplicationSkinName;
             lblApplicationStyle.Text = "Application style: " + Settings.ApplicationStyle;
             lblSvgPalette.Text = "Active Svg Palette: " + Settings.ApplicationSvgPaletteName;

@@ -62,6 +62,9 @@ namespace Analogy.ApplicationSettings
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.gcMainForm = new DevExpress.XtraEditors.GroupControl();
+            this.ceFluentForm = new DevExpress.XtraEditors.CheckEdit();
+            this.ceRibbonForm = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).BeginInit();
             this.gcUISettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -87,6 +90,10 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).BeginInit();
             this.groupControlThemes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcMainForm)).BeginInit();
+            this.gcMainForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ceFluentForm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceRibbonForm.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcUISettings
@@ -98,10 +105,10 @@ namespace Analogy.ApplicationSettings
             this.gcUISettings.Controls.Add(this.tsRibbonCompactStyle);
             this.gcUISettings.Controls.Add(this.tsRememberLastPositionAndState);
             this.gcUISettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcUISettings.Location = new System.Drawing.Point(0, 138);
+            this.gcUISettings.Location = new System.Drawing.Point(0, 229);
             this.gcUISettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcUISettings.Name = "gcUISettings";
-            this.gcUISettings.Size = new System.Drawing.Size(900, 456);
+            this.gcUISettings.Size = new System.Drawing.Size(879, 456);
             this.gcUISettings.TabIndex = 10;
             this.gcUISettings.Text = "UI Settings";
             // 
@@ -114,7 +121,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl2.Controls.Add(this.ceIconDark);
             this.groupControl2.Location = new System.Drawing.Point(13, 321);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(875, 123);
+            this.groupControl2.Size = new System.Drawing.Size(854, 123);
             this.groupControl2.TabIndex = 22;
             this.groupControl2.Text = "Context Menus Font size:";
             // 
@@ -122,7 +129,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.peAnalogy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.peAnalogy.EditValue = global::Analogy.Properties.Resources.AnalogyDark;
-            this.peAnalogy.Location = new System.Drawing.Point(779, 27);
+            this.peAnalogy.Location = new System.Drawing.Point(758, 27);
             this.peAnalogy.Name = "peAnalogy";
             this.peAnalogy.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.peAnalogy.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
@@ -161,7 +168,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl1.Controls.Add(this.ceContextMenuFontsDefault);
             this.groupControl1.Location = new System.Drawing.Point(13, 228);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(875, 84);
+            this.groupControl1.Size = new System.Drawing.Size(854, 84);
             this.groupControl1.TabIndex = 21;
             this.groupControl1.Text = "Context Menus Font size:";
             // 
@@ -219,7 +226,7 @@ namespace Analogy.ApplicationSettings
             this.gcFonts.Controls.Add(this.ceFontsDefault);
             this.gcFonts.Location = new System.Drawing.Point(13, 140);
             this.gcFonts.Name = "gcFonts";
-            this.gcFonts.Size = new System.Drawing.Size(875, 84);
+            this.gcFonts.Size = new System.Drawing.Size(854, 84);
             this.gcFonts.TabIndex = 20;
             this.gcFonts.Text = "Fonts Size";
             // 
@@ -277,7 +284,7 @@ namespace Analogy.ApplicationSettings
             this.tsStartupRibbonMinimized.Name = "tsStartupRibbonMinimized";
             this.tsStartupRibbonMinimized.Properties.OffText = "Show Ribbon";
             this.tsStartupRibbonMinimized.Properties.OnText = "Ribbon is minimized as default";
-            this.tsStartupRibbonMinimized.Size = new System.Drawing.Size(756, 28);
+            this.tsStartupRibbonMinimized.Size = new System.Drawing.Size(735, 28);
             this.tsStartupRibbonMinimized.TabIndex = 18;
             // 
             // tsRibbonCompactStyle
@@ -289,7 +296,7 @@ namespace Analogy.ApplicationSettings
             this.tsRibbonCompactStyle.Name = "tsRibbonCompactStyle";
             this.tsRibbonCompactStyle.Properties.OffText = "Standard size for ribbon buttons";
             this.tsRibbonCompactStyle.Properties.OnText = "Compact size for ribbon buttons";
-            this.tsRibbonCompactStyle.Size = new System.Drawing.Size(875, 28);
+            this.tsRibbonCompactStyle.Size = new System.Drawing.Size(854, 28);
             this.tsRibbonCompactStyle.TabIndex = 17;
             // 
             // tsRememberLastPositionAndState
@@ -302,7 +309,7 @@ namespace Analogy.ApplicationSettings
             this.tsRememberLastPositionAndState.Properties.OffText = "Don\'t remember last position and state of the application";
             this.tsRememberLastPositionAndState.Properties.OnText = "Remember last position and state of the application (size, Location and form\'s st" +
     "ate)";
-            this.tsRememberLastPositionAndState.Size = new System.Drawing.Size(877, 28);
+            this.tsRememberLastPositionAndState.Size = new System.Drawing.Size(856, 28);
             this.tsRememberLastPositionAndState.TabIndex = 5;
             // 
             // groupControlThemes
@@ -312,9 +319,9 @@ namespace Analogy.ApplicationSettings
             this.groupControlThemes.Controls.Add(this.lblSkinName);
             this.groupControlThemes.Controls.Add(this.standaloneBarDockControl1);
             this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControlThemes.Location = new System.Drawing.Point(0, 0);
+            this.groupControlThemes.Location = new System.Drawing.Point(0, 91);
             this.groupControlThemes.Name = "groupControlThemes";
-            this.groupControlThemes.Size = new System.Drawing.Size(900, 138);
+            this.groupControlThemes.Size = new System.Drawing.Size(879, 138);
             this.groupControlThemes.TabIndex = 11;
             this.groupControlThemes.Text = "Themes and Skins";
             // 
@@ -350,7 +357,7 @@ namespace Analogy.ApplicationSettings
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 25);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(896, 37);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(875, 37);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
@@ -416,15 +423,15 @@ namespace Analogy.ApplicationSettings
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(900, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(879, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 644);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 685);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(900, 24);
+            this.barDockControlBottom.Size = new System.Drawing.Size(879, 24);
             // 
             // barDockControlLeft
             // 
@@ -432,15 +439,52 @@ namespace Analogy.ApplicationSettings
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 644);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 685);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(900, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(879, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 644);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 685);
+            // 
+            // gcMainForm
+            // 
+            this.gcMainForm.Controls.Add(this.ceFluentForm);
+            this.gcMainForm.Controls.Add(this.ceRibbonForm);
+            this.gcMainForm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcMainForm.Location = new System.Drawing.Point(0, 0);
+            this.gcMainForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gcMainForm.Name = "gcMainForm";
+            this.gcMainForm.Size = new System.Drawing.Size(879, 91);
+            this.gcMainForm.TabIndex = 16;
+            this.gcMainForm.Text = "Main Form Style";
+            // 
+            // ceFluentForm
+            // 
+            this.ceFluentForm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ceFluentForm.Enabled = false;
+            this.ceFluentForm.Location = new System.Drawing.Point(2, 52);
+            this.ceFluentForm.Name = "ceFluentForm";
+            this.ceFluentForm.Properties.Caption = "Fluent Design";
+            this.ceFluentForm.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
+            this.ceFluentForm.Properties.RadioGroupIndex = 0;
+            this.ceFluentForm.Size = new System.Drawing.Size(875, 27);
+            this.ceFluentForm.TabIndex = 1;
+            this.ceFluentForm.TabStop = false;
+            // 
+            // ceRibbonForm
+            // 
+            this.ceRibbonForm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ceRibbonForm.EditValue = true;
+            this.ceRibbonForm.Location = new System.Drawing.Point(2, 25);
+            this.ceRibbonForm.Name = "ceRibbonForm";
+            this.ceRibbonForm.Properties.Caption = "Ribbon Form";
+            this.ceRibbonForm.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
+            this.ceRibbonForm.Properties.RadioGroupIndex = 0;
+            this.ceRibbonForm.Size = new System.Drawing.Size(875, 27);
+            this.ceRibbonForm.TabIndex = 0;
             // 
             // ApplicationUISettingsUC
             // 
@@ -449,12 +493,13 @@ namespace Analogy.ApplicationSettings
             this.AutoScroll = true;
             this.Controls.Add(this.gcUISettings);
             this.Controls.Add(this.groupControlThemes);
+            this.Controls.Add(this.gcMainForm);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ApplicationUISettingsUC";
-            this.Size = new System.Drawing.Size(900, 668);
+            this.Size = new System.Drawing.Size(879, 668);
             this.Load += new System.EventHandler(this.ApplicationUISettingsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).EndInit();
             this.gcUISettings.ResumeLayout(false);
@@ -482,6 +527,10 @@ namespace Analogy.ApplicationSettings
             this.groupControlThemes.ResumeLayout(false);
             this.groupControlThemes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcMainForm)).EndInit();
+            this.gcMainForm.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ceFluentForm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceRibbonForm.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,5 +570,8 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
         private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem1;
+        private DevExpress.XtraEditors.GroupControl gcMainForm;
+        private DevExpress.XtraEditors.CheckEdit ceFluentForm;
+        private DevExpress.XtraEditors.CheckEdit ceRibbonForm;
     }
 }
