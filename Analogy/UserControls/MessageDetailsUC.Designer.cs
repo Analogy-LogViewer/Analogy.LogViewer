@@ -65,6 +65,8 @@
             this.xtraTabPageText = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPageAdditionalInformation = new DevExpress.XtraTab.XtraTabPage();
             this.memoAdditionalInformation = new DevExpress.XtraEditors.MemoEdit();
+            this.xtraTabPageRenderedText = new DevExpress.XtraTab.XtraTabPage();
+            this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDateValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDataSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSourceValue.Properties)).BeginInit();
@@ -85,6 +87,7 @@
             this.xtraTabPageText.SuspendLayout();
             this.xtraTabPageAdditionalInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoAdditionalInformation.Properties)).BeginInit();
+            this.xtraTabPageRenderedText.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNext
@@ -412,6 +415,7 @@
             this.xtraTabControlMessageInfo.Size = new System.Drawing.Size(908, 199);
             this.xtraTabControlMessageInfo.TabIndex = 57;
             this.xtraTabControlMessageInfo.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPageRenderedText,
             this.xtraTabPageText,
             this.xtraTabPageAdditionalInformation});
             // 
@@ -426,7 +430,7 @@
             // 
             this.xtraTabPageAdditionalInformation.Controls.Add(this.memoAdditionalInformation);
             this.xtraTabPageAdditionalInformation.Name = "xtraTabPageAdditionalInformation";
-            this.xtraTabPageAdditionalInformation.Size = new System.Drawing.Size(830, 154);
+            this.xtraTabPageAdditionalInformation.Size = new System.Drawing.Size(901, 165);
             this.xtraTabPageAdditionalInformation.Text = "Message\'s Additional Information";
             // 
             // memoAdditionalInformation
@@ -434,8 +438,25 @@
             this.memoAdditionalInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memoAdditionalInformation.Location = new System.Drawing.Point(0, 0);
             this.memoAdditionalInformation.Name = "memoAdditionalInformation";
-            this.memoAdditionalInformation.Size = new System.Drawing.Size(830, 154);
+            this.memoAdditionalInformation.Size = new System.Drawing.Size(901, 165);
             this.memoAdditionalInformation.TabIndex = 51;
+            // 
+            // xtraTabPageRenderedText
+            // 
+            this.xtraTabPageRenderedText.Controls.Add(this.recMessageDetails);
+            this.xtraTabPageRenderedText.Name = "xtraTabPageRenderedText";
+            this.xtraTabPageRenderedText.Size = new System.Drawing.Size(901, 165);
+            this.xtraTabPageRenderedText.Text = "Formatted Text";
+            // 
+            // recMessageDetails
+            // 
+            this.recMessageDetails.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.recMessageDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recMessageDetails.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.recMessageDetails.Location = new System.Drawing.Point(0, 0);
+            this.recMessageDetails.Name = "recMessageDetails";
+            this.recMessageDetails.Size = new System.Drawing.Size(901, 165);
+            this.recMessageDetails.TabIndex = 5;
             // 
             // MessageDetailsUC
             // 
@@ -499,6 +520,7 @@
             this.xtraTabPageText.ResumeLayout(false);
             this.xtraTabPageAdditionalInformation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoAdditionalInformation.Properties)).EndInit();
+            this.xtraTabPageRenderedText.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -540,5 +562,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageText;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageAdditionalInformation;
         private DevExpress.XtraEditors.MemoEdit memoAdditionalInformation;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageRenderedText;
+        private DevExpress.XtraRichEdit.RichEditControl recMessageDetails;
     }
 }

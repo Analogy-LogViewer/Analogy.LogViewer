@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Markdig;
+using Markdig.SyntaxHighlighting;
 
 namespace Analogy
 {
@@ -12,6 +14,7 @@ namespace Analogy
         private AnalogyLogMessage? Message { get; set; }
         private List<AnalogyLogMessage> Messages { get; }
         private string DataSource { get; }
+        private MarkdownPipeline? Pipeline { get; set; }
         public MessageDetailsUC()
         {
             InitializeComponent();
@@ -34,8 +37,14 @@ namespace Analogy
         private void UCMessageDetails_Load(object sender, EventArgs e)
         {
             if (DesignMode)
-            { return; }
-            xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageText;
+            {
+                return; 
+
+            }
+            Pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
+                .UseSyntaxHighlighting()
+                .Build();
+            xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageRenderedText;
             LoadMessage();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -84,6 +93,8 @@ namespace Analogy
             txtbUser.Text = Message.User;
             txtbLineNumber.Text = Message.LineNumber.ToString();
             txtbIndex.Text = $"{Messages.IndexOf(Message) + 1} of {Messages.Count}";
+            recMessageDetails.HtmlText = Markdown.ToHtml(Message.Text, Pipeline);
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
