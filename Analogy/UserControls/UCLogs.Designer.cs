@@ -17,8 +17,8 @@ namespace Analogy
         protected override void Dispose(bool disposing)
         {
             if (DesignMode) return;
-            tmrNewData.Stop();
-            tmrNewData.Dispose();
+            tmrNewData?.Stop();
+            tmrNewData?.Dispose();
             if (disposing)
             {
 

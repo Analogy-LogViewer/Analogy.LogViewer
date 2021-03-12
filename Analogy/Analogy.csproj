@@ -267,6 +267,9 @@
 		<Reference Include="DevExpress.Mvvm.v19.1.ViewModel">
 			<HintPath>DevExpress\.net framework\DevExpress.Mvvm.v19.1.ViewModel.dll</HintPath>
 		</Reference>
+		<Reference Include="DevExpress.Office.v19.1.Core">
+			<HintPath>DevExpress\.net framework\DevExpress.Office.v19.1.Core.dll</HintPath>
+		</Reference>
 		<Reference Include="DevExpress.Pdf.v19.1.Core">
 			<HintPath>DevExpress\.net framework\DevExpress.Pdf.v19.1.Core.dll</HintPath>
 		</Reference>

@@ -30,6 +30,7 @@ namespace Analogy
         [STAThread]
         static void Main()
         {
+            AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
             DevExpress.UserSkins.BonusSkins.Register();
             WindowsFormsSettings.LoadApplicationSettings();
             WindowsFormsSettings.SetDPIAware();
@@ -126,6 +127,17 @@ namespace Analogy
 
         }
 
+        private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
+        {
+            /*
+            Assembly assembly = args.LoadedAssembly;
+
+            File.AppendAllText("assemblies.txt", assembly.FullName + Environment.NewLine);
+            var attribute = assembly.GetCustomAttributes(true).OfType<System.Runtime.Versioning.TargetFrameworkAttribute>().FirstOrDefault();
+            if (attribute != null)
+                File.AppendAllText("assemblies.txt", attribute.FrameworkDisplayName + Environment.NewLine);
+            */
+        }
         public static void SendDataMessage(Process targetProcess, string msg)
         {
             //Copy the string message to a global memory area in unicode format
