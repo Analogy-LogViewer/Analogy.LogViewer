@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.6.5 - [UI] fix file sorting in main view. #902",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,03,15)),
                 new AnalogyChangeLog("V4.6.4 - Add missing DevExpress DevExpress.Office.v19.1.Core.dll #900",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,03,12)),
                 new AnalogyChangeLog("V4.6.4 - [UI - Detailed message] add rich text box #899",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,03,12)),
                 new AnalogyChangeLog("V4.6.3 - [UI] Save user layout changes Automatically #890",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,02,25)),

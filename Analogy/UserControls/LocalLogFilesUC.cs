@@ -126,7 +126,7 @@ namespace Analogy
 
             SelectedPath = folder;
             treeList1.SelectionChanged -= TreeList1_SelectionChanged;
-            bool isRoot = Directory.GetLogicalDrives().Any(d => d.Equals(SelectedPath,StringComparison.OrdinalIgnoreCase));
+            bool isRoot = Directory.GetLogicalDrives().Any(d => d.Equals(SelectedPath, StringComparison.OrdinalIgnoreCase));
             bool recursiveLoad = checkEditRecursiveLoad.Checked && !isRoot;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
             UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.Id, folder);
@@ -141,6 +141,10 @@ namespace Analogy
             treeList1.ClearSelection();
             //treeList1.TopVisibleNodeIndex = 0;
             treeList1.BestFitColumns();
+            if (treeList1.Nodes.Any())
+            {
+                treeList1.MakeNodeVisible(treeList1.Nodes.FirstNode);
+            }
             treeList1.SelectionChanged += TreeList1_SelectionChanged;
         }
 

@@ -78,14 +78,14 @@ namespace Analogy.ApplicationSettings
             };
             ceFluentForm.CheckStateChanged += (s, e) =>
             {
-                if (ceFluentForm.Checked)
+                if (ceFluentForm.CheckState==CheckState.Checked)
                 {
                     Settings.MainFormType = MainFormType.FluentForm;
                 }
             };
             ceRibbonForm.CheckStateChanged += (s, e) =>
             {
-                if (ceFluentForm.Checked)
+                if (ceRibbonForm.CheckState==CheckState.Checked)
                 {
                     Settings.MainFormType = MainFormType.RibbonForm;
                 }
