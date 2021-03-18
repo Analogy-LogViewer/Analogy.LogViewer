@@ -309,6 +309,10 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            bbiBinance.ItemClick += (s, e) =>
+            {
+                Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
+            };
             dockManager1.ClosingPanel += (s, e) =>
             {
                 var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
@@ -614,7 +618,7 @@ namespace Analogy.Forms
         {
         }
 
-        
+
         private void CreateDataSource(FactoryContainer fc, int position)
         {
             if (fc.Factory.Title == null)

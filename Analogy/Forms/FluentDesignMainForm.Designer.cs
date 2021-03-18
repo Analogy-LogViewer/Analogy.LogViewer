@@ -31,9 +31,9 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -74,6 +74,7 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -178,9 +179,10 @@ namespace Analogy
             this.bbtnDataProvidersUpdates,
             this.bbiUserSettingsStatistics,
             this.bbtnItemHelp,
-            this.bbtnSponsorOpenCollection});
+            this.bbtnSponsorOpenCollection,
+            this.bbiBinance});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 26;
+            this.barManager1.MaxItemId = 27;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -304,6 +306,7 @@ namespace Analogy
             this.barButtom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.barButtom.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSponsorOpenCollection),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBinance),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnStar),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiFileCaching),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnReportIssueOrRequest),
@@ -324,12 +327,12 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem5.Text = "Sponsor";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Support this project at Open Collective";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip5;
+            toolTipTitleItem4.Text = "Sponsor";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Support this project at Open Collective";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip4;
             // 
             // bbtnStar
             // 
@@ -453,6 +456,14 @@ namespace Analogy
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             // 
+            // bbiBinance
+            // 
+            this.bbiBinance.Caption = "Crypto Exchange";
+            this.bbiBinance.Id = 26;
+            this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
+            this.bbiBinance.Name = "bbiBinance";
+            this.bbiBinance.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
@@ -525,5 +536,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.BarButtonItem bbtnSettings;
+        private DevExpress.XtraBars.BarButtonItem bbiBinance;
     }
 }

@@ -185,6 +185,10 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            bbiBinance.ItemClick += (s, e) =>
+            {
+                Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
+            };
             bbtnSettings.ItemClick += (s, e) =>
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm();

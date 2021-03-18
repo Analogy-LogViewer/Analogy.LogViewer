@@ -43,12 +43,16 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -119,6 +123,7 @@
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -126,7 +131,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -224,10 +229,11 @@
             this.btnApplicationUISettings,
             this.btnMessageColumnsLayoutSettings,
             this.btnColorHighlightSettings,
-            this.bbtnSponsorOpenCollection});
+            this.bbtnSponsorOpenCollection,
+            this.bbiBinance});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 112;
+            this.ribbonControlMain.MaxItemId = 113;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bsmInfo);
@@ -694,12 +700,12 @@
             this.skinRibbonGallery.Caption = "Skin";
             this.skinRibbonGallery.Id = 81;
             this.skinRibbonGallery.Name = "skinRibbonGallery";
-            toolTipTitleItem6.Text = "Skins and themes";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "A list of built-in skins and themes";
-            superToolTip5.Items.Add(toolTipTitleItem6);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.skinRibbonGallery.SuperTip = superToolTip5;
+            toolTipTitleItem7.Text = "Skins and themes";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "A list of built-in skins and themes";
+            superToolTip6.Items.Add(toolTipTitleItem7);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.skinRibbonGallery.SuperTip = superToolTip6;
             // 
             // skinPaletteRibbonGalleryBarItem3
             // 
@@ -846,6 +852,18 @@
             this.barSubItem4.Id = 93;
             this.barSubItem4.Name = "barSubItem4";
             // 
+            // bbtnSponsorOpenCollection
+            // 
+            this.bbtnSponsorOpenCollection.Id = 111;
+            this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
+            this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
+            toolTipTitleItem5.Text = "Sponsor";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Support this project at Open Collective";
+            superToolTip4.Items.Add(toolTipTitleItem5);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip4;
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bbiFileCaching);
@@ -854,6 +872,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCompactMemory);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnSponsorOpenCollection);
+            this.ribbonStatusBar.ItemLinks.Add(this.bbiBinance);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
@@ -899,17 +918,19 @@
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
             // 
-            // bbtnSponsorOpenCollection
+            // bbiBinance
             // 
-            this.bbtnSponsorOpenCollection.Id = 111;
-            this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
-            this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem5.Text = "Sponsor";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Support this project at Open Collective";
-            superToolTip4.Items.Add(toolTipTitleItem5);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip4;
+            this.bbiBinance.Caption = "Crypto Exchange";
+            this.bbiBinance.Id = 112;
+            this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
+            this.bbiBinance.Name = "bbiBinance";
+            toolTipItem5.Text = "Support this project by registering to Binance Exchange.\r\nYou will get 5% returns" +
+    " on your fees";
+            toolTipTitleItem6.Text = "5% returns on fees using this link";
+            superToolTip5.Items.Add(toolTipItem5);
+            superToolTip5.Items.Add(toolTipSeparatorItem1);
+            superToolTip5.Items.Add(toolTipTitleItem6);
+            this.bbiBinance.SuperTip = superToolTip5;
             // 
             // MainForm
             // 
@@ -1022,5 +1043,6 @@
         private DevExpress.XtraBars.BarButtonItem btnMessageColumnsLayoutSettings;
         private DevExpress.XtraBars.BarButtonItem btnColorHighlightSettings;
         private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
+        private DevExpress.XtraBars.BarButtonItem bbiBinance;
     }
 }
