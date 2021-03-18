@@ -30,6 +30,7 @@
         {
             this.xtcV4_6_0 = new DevExpress.XtraTab.XtraTabControl();
             this.xtPageHighlight = new DevExpress.XtraTab.XtraTabPage();
+            this.highlight874 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.highlight866 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.highlight865 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.highlight872 = new DevExpress.XtraEditors.HyperlinkLabelControl();
@@ -38,6 +39,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtPageIssues = new DevExpress.XtraTab.XtraTabPage();
             this.gcImprovements = new DevExpress.XtraEditors.GroupControl();
+            this.issue874 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue873 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue872 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue871 = new DevExpress.XtraEditors.HyperlinkLabelControl();
@@ -49,8 +51,6 @@
             this.Issue838 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue516 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.gcBugs = new DevExpress.XtraEditors.GroupControl();
-            this.highlight874 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.issue874 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtcV4_6_0)).BeginInit();
             this.xtcV4_6_0.SuspendLayout();
             this.xtPageHighlight.SuspendLayout();
@@ -86,6 +86,18 @@
             this.xtPageHighlight.Name = "xtPageHighlight";
             this.xtPageHighlight.Size = new System.Drawing.Size(782, 428);
             this.xtPageHighlight.Text = "V4.6.0 Highlights / Changes";
+            // 
+            // highlight874
+            // 
+            this.highlight874.Dock = System.Windows.Forms.DockStyle.Top;
+            this.highlight874.Location = new System.Drawing.Point(0, 224);
+            this.highlight874.Name = "highlight874";
+            this.highlight874.Padding = new System.Windows.Forms.Padding(5);
+            this.highlight874.Size = new System.Drawing.Size(276, 26);
+            this.highlight874.TabIndex = 13;
+            this.highlight874.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/874>Enable gR" +
+    "PC on .NET framework version #874</href>";
+            this.highlight874.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // highlight866
             // 
@@ -161,7 +173,7 @@
             this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "In this version the User Settings form is redesigned.\r\nThere is new Data provider" +
     " Notification Mechanism and new skins.\r\n\r\ngRPC client To Analogy Log Server is n" +
-    "owt enabled on .Net Frameworks versions";
+    "ow enabled on .Net Frameworks versions";
             // 
             // xtPageIssues
             // 
@@ -191,6 +203,18 @@
             this.gcImprovements.Size = new System.Drawing.Size(762, 322);
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
+            // 
+            // issue874
+            // 
+            this.issue874.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue874.Location = new System.Drawing.Point(2, 285);
+            this.issue874.Name = "issue874";
+            this.issue874.Padding = new System.Windows.Forms.Padding(5);
+            this.issue874.Size = new System.Drawing.Size(276, 26);
+            this.issue874.TabIndex = 22;
+            this.issue874.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/874>Enable gR" +
+    "PC on .NET framework version #874</href>";
+            this.issue874.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // issue873
             // 
@@ -322,30 +346,6 @@
             this.gcBugs.TabIndex = 6;
             this.gcBugs.Text = "Bug Fixes";
             this.gcBugs.Visible = false;
-            // 
-            // highlight874
-            // 
-            this.highlight874.Dock = System.Windows.Forms.DockStyle.Top;
-            this.highlight874.Location = new System.Drawing.Point(0, 224);
-            this.highlight874.Name = "highlight874";
-            this.highlight874.Padding = new System.Windows.Forms.Padding(5);
-            this.highlight874.Size = new System.Drawing.Size(276, 26);
-            this.highlight874.TabIndex = 13;
-            this.highlight874.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/874>Enable gR" +
-    "PC on .NET framework version #874</href>";
-            this.highlight874.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
-            // issue874
-            // 
-            this.issue874.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue874.Location = new System.Drawing.Point(2, 285);
-            this.issue874.Name = "issue874";
-            this.issue874.Padding = new System.Windows.Forms.Padding(5);
-            this.issue874.Size = new System.Drawing.Size(276, 26);
-            this.issue874.TabIndex = 22;
-            this.issue874.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/874>Enable gR" +
-    "PC on .NET framework version #874</href>";
-            this.issue874.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_6_0
             // 

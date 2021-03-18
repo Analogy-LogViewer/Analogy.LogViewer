@@ -95,23 +95,24 @@ namespace Analogy
 
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
-            var table = pages.Last();
-            allMessages.Add(message);
-            if (table.Rows.Count + 1 > pageSize)
-            {
-                table = Utils.DataTableConstructor();
-                pages.Add(table);
-                var pageStartRowIndex = (pages.Count - 1) * pageSize;
-                OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
-            }
             try
             {
+                lockSlim.EnterWriteLock();
+                var table = pages.Last();
+                allMessages.Add(message);
+                if (table.Rows.Count + 1 > pageSize)
+                {
+                    table = Utils.DataTableConstructor();
+                    pages.Add(table);
+                    var pageStartRowIndex = (pages.Count - 1) * pageSize;
+                    OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
+                }
+
                 if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
                 {
                     AddExtraColumnsIfNeeded(table, message);
                 }
 
-                lockSlim.EnterWriteLock();
                 DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                 table.Rows.Add(dtr);
                 return dtr;
@@ -125,46 +126,51 @@ namespace Analogy
 
         public List<(DataRow, AnalogyLogMessage)> AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
-            var table = pages.Last();
-            var countInsideTable = table.Rows.Count;
-            List<(DataRow row, AnalogyLogMessage message)> rows = new List<(DataRow row, AnalogyLogMessage message)>(messages.Count);
-            foreach (var message in messages)
+            try
             {
+                lockSlim.EnterWriteLock();
+                var table = pages.Last();
+                var countInsideTable = table.Rows.Count;
+                List<(DataRow row, AnalogyLogMessage message)> rows =
+                    new List<(DataRow row, AnalogyLogMessage message)>(messages.Count);
+                foreach (var message in messages)
+                {
 
-                if (message.Level == AnalogyLogLevel.None)
-                {
-                    continue; //ignore those messages
-                }
+                    if (message.Level == AnalogyLogLevel.None)
+                    {
+                        continue; //ignore those messages
+                    }
 
-                allMessages.Add(message);
-                if (countInsideTable + 1 > pageSize)
-                {
-                    table = Utils.DataTableConstructor();
-                    pages.Add(table);
-                    countInsideTable = 0;
-                    var pageStartRowIndex = (pages.Count - 1) * pageSize;
-                    OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
-                }
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
-                {
-                    AddExtraColumnsIfNeeded(table, message);
-                }
+                    allMessages.Add(message);
+                    if (countInsideTable + 1 > pageSize)
+                    {
+                        table = Utils.DataTableConstructor();
+                        pages.Add(table);
+                        countInsideTable = 0;
+                        var pageStartRowIndex = (pages.Count - 1) * pageSize;
+                        OnPageChanged?.Invoke(this,
+                            new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count,
+                                pageStartRowIndex)));
+                    }
 
-                countInsideTable++;
-                try
-                {
-                    lockSlim.EnterWriteLock();
+                    if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+                        Settings.CheckAdditionalInformation)
+                    {
+                        AddExtraColumnsIfNeeded(table, message);
+                    }
+
+                    countInsideTable++;
+
                     DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }
-                finally
-                {
-                    lockSlim.ExitWriteLock();
-                }
-
+                return rows;
             }
-            return rows;
+            finally
+            {
+                lockSlim.ExitWriteLock();
+            }
         }
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
@@ -193,8 +199,12 @@ namespace Analogy
                                 columnsLockSlim.EnterWriteLock();
                                 if (!currentTable.Columns.Contains(info.Key))
                                 {
-                                    table.Columns.Add(info.Key);
-                                    columnAdderSync.Set();
+                                    columnsLockSlim.EnterWriteLock();
+                                    if (!currentTable.Columns.Contains(info.Key))
+                                    {
+                                        table.Columns.Add(info.Key);
+                                        columnAdderSync.Set();
+                                    }
 
                                 }
                                 columnsLockSlim.ExitWriteLock();
@@ -257,10 +267,16 @@ namespace Analogy
 
         public List<AnalogyLogMessage> GetAllMessages()
         {
-            lockSlim.EnterReadLock();
-            var items = allMessages.ToList();
-            lockSlim.ExitReadLock();
-            return items;
+            try
+            {
+                lockSlim.EnterReadLock();
+                var items = allMessages.ToList();
+                return items;
+            }
+            finally
+            {
+                lockSlim.ExitReadLock();
+            }
         }
 
         public DataTable CurrentPage()
