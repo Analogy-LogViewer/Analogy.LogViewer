@@ -95,24 +95,31 @@ namespace Analogy
 
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
+            var table = pages.Last();
             try
             {
                 lockSlim.EnterWriteLock();
-                var table = pages.Last();
                 allMessages.Add(message);
-                if (table.Rows.Count + 1 > pageSize)
-                {
-                    table = Utils.DataTableConstructor();
-                    pages.Add(table);
-                    var pageStartRowIndex = (pages.Count - 1) * pageSize;
-                    OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
-                }
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
+            }
+            if (table.Rows.Count + 1 > pageSize)
+            {
+                table = Utils.DataTableConstructor();
+                pages.Add(table);
+                var pageStartRowIndex = (pages.Count - 1) * pageSize;
+                OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
+            }
 
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
-                {
-                    AddExtraColumnsIfNeeded(table, message);
-                }
-
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            {
+                AddExtraColumnsIfNeeded(table, message);
+            }
+            try
+            {
+                lockSlim.EnterWriteLock();
                 DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                 table.Rows.Add(dtr);
                 return dtr;
@@ -126,51 +133,57 @@ namespace Analogy
 
         public List<(DataRow, AnalogyLogMessage)> AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
-            try
+
+            var table = pages.Last();
+            var countInsideTable = table.Rows.Count;
+            List<(DataRow row, AnalogyLogMessage message)> rows = new List<(DataRow row, AnalogyLogMessage message)>(messages.Count);
+            foreach (var message in messages)
             {
-                lockSlim.EnterWriteLock();
-                var table = pages.Last();
-                var countInsideTable = table.Rows.Count;
-                List<(DataRow row, AnalogyLogMessage message)> rows =
-                    new List<(DataRow row, AnalogyLogMessage message)>(messages.Count);
-                foreach (var message in messages)
+                if (message.Level == AnalogyLogLevel.None)
                 {
-
-                    if (message.Level == AnalogyLogLevel.None)
-                    {
-                        continue; //ignore those messages
-                    }
-
+                    continue; //ignore those messages
+                }
+                try
+                {
+                    lockSlim.EnterWriteLock();
                     allMessages.Add(message);
-                    if (countInsideTable + 1 > pageSize)
-                    {
-                        table = Utils.DataTableConstructor();
-                        pages.Add(table);
-                        countInsideTable = 0;
-                        var pageStartRowIndex = (pages.Count - 1) * pageSize;
-                        OnPageChanged?.Invoke(this,
-                            new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count,
-                                pageStartRowIndex)));
-                    }
+                }
+                finally
+                {
+                    lockSlim.ExitWriteLock();
+                }
+                if (countInsideTable + 1 > pageSize)
+                {
+                    table = Utils.DataTableConstructor();
+                    pages.Add(table);
+                    countInsideTable = 0;
+                    var pageStartRowIndex = (pages.Count - 1) * pageSize;
+                    OnPageChanged?.Invoke(this,
+                        new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count,
+                            pageStartRowIndex)));
+                }
 
-                    if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
-                        Settings.CheckAdditionalInformation)
-                    {
-                        AddExtraColumnsIfNeeded(table, message);
-                    }
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+                    Settings.CheckAdditionalInformation)
+                {
+                    AddExtraColumnsIfNeeded(table, message);
+                }
 
-                    countInsideTable++;
-
+                countInsideTable++;
+                try
+                {
+                    lockSlim.EnterWriteLock();
                     DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }
-                return rows;
+                finally
+                {
+                    lockSlim.ExitWriteLock();
+                }
+
             }
-            finally
-            {
-                lockSlim.ExitWriteLock();
-            }
+            return rows;
         }
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
@@ -184,30 +197,45 @@ namespace Analogy
                     {
                         if (!owner.InvokeRequired)
                         {
-                            columnsLockSlim.EnterWriteLock();
-                            if (!currentTable.Columns.Contains(info.Key))
+                            try
                             {
-                                table.Columns.Add(info.Key);
+                                columnsLockSlim.EnterWriteLock();
+                                if (!currentTable.Columns.Contains(info.Key))
+                                {
+                                    table.Columns.Add(info.Key);
+                                }
+                            }
+                            finally
+                            {
+                                columnsLockSlim.ExitWriteLock();
                             }
 
-                            columnsLockSlim.ExitWriteLock();
+
+
                         }
                         else
                         {
                             owner.BeginInvoke(new MethodInvoker(() =>
                             {
-                                columnsLockSlim.EnterWriteLock();
-                                if (!currentTable.Columns.Contains(info.Key))
+                                try
                                 {
+
                                     columnsLockSlim.EnterWriteLock();
                                     if (!currentTable.Columns.Contains(info.Key))
                                     {
-                                        table.Columns.Add(info.Key);
-                                        columnAdderSync.Set();
-                                    }
+                                        columnsLockSlim.EnterWriteLock();
+                                        if (!currentTable.Columns.Contains(info.Key))
+                                        {
+                                            table.Columns.Add(info.Key);
+                                            columnAdderSync.Set();
+                                        }
 
+                                    }
                                 }
-                                columnsLockSlim.ExitWriteLock();
+                                finally
+                                {
+                                    columnsLockSlim.ExitWriteLock();
+                                }
                             }));
                             columnAdderSync.WaitOne();
                             columnAdderSync.Reset();
