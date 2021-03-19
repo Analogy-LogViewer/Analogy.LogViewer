@@ -280,6 +280,13 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
+            gridControl.Click += (s, e) =>
+            {
+                if (btsAutoScrollToBottom.Checked)
+                {
+                    btsAutoScrollToBottom.Checked = false;
+                }
+            };
             chkbHighlight.CheckedChanged += async (s, e) => await FilterHasChanged();
 
             #region buttons
@@ -649,7 +656,7 @@ namespace Analogy
             wsLogs.WorkspaceSaved += (s, e) =>
             {
                 Settings.LogsLayoutFileName = e.Workspace.Path;
-               // Settings.UseCustomLogsLayout = true;
+                // Settings.UseCustomLogsLayout = true;
             };
             wsLogs.AfterApplyWorkspace += (s, e) =>
             {
@@ -661,7 +668,7 @@ namespace Analogy
                     }
                     else if (File.Exists(ws.Workspace.Path))
                     {
-                       // Settings.UseCustomLogsLayout = true;
+                        // Settings.UseCustomLogsLayout = true;
                         Settings.LogsLayoutFileName = ws.Workspace.Path;
                     }
 
@@ -2053,13 +2060,7 @@ namespace Analogy
             //CreateBookmark();
 
         }
-        private void gridControl_Click(object sender, EventArgs e)
-        {
-            if (btsAutoScrollToBottom.Checked)
-            {
-                btsAutoScrollToBottom.Checked = false;
-            }
-        }
+
         private void LogGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
@@ -3198,7 +3199,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-               AnalogyLogManager.Instance.LogError(e.Message,nameof(SaveCurrentWorkspace));
+                AnalogyLogManager.Instance.LogError(e.Message, nameof(SaveCurrentWorkspace));
             }
         }
     }
