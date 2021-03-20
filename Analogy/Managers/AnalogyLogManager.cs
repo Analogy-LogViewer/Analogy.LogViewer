@@ -173,7 +173,7 @@ namespace Analogy.Managers
         }
         public void Show(Form mainForm)
         {
-            XtraFormLogGrid msg = new XtraFormLogGrid(messages, "Analogy");
+            XtraFormLogGrid msg = new XtraFormLogGrid(messages, "Analogy",true);
             msg.Show(mainForm);
         }
 

@@ -1,32 +1,42 @@
 ﻿using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Managers;
+using DevExpress.XtraEditors;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Analogy.Forms
 {
-    public partial class XtraFormLogGrid : DevExpress.XtraEditors.XtraForm
+    public partial class XtraFormLogGrid : XtraForm
     {
+        public IAnalogyDataProvider? DataProvider { get; set; }
+        public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private readonly List<AnalogyLogMessage> _messages;
         private readonly string _dataSource;
-        public XtraFormLogGrid()
+        public UCLogs LogWindow => ucLogs1;
+         public XtraFormLogGrid(bool registerToAnalogyLogger)
         {
-            InitializeComponent();
-            _messages = new List<AnalogyLogMessage>();
-            _dataSource = "Analogy";
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
-            AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
-            ucLogs1.SetFileDataSource(analogyDataProvider, null);
+               InitializeComponent();
+               _dataSource = "Analogy";    
+               _messages = new List<AnalogyLogMessage>();
+               FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+               var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
+               AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
+               ucLogs1.SetFileDataSource(analogyDataProvider, null);
+
+            if (registerToAnalogyLogger)
+               {
+                   AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
+               }
+        }
+        public XtraFormLogGrid(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider):this(false)
+        {
+            DataProvider = dataProvider;
+            FileDataProvider = fileDataProvider;
+            ucLogs1.SetFileDataSource(DataProvider, FileDataProvider);
         }
 
-        private void Instance_OnNewMessage(object sender, (AnalogyLogMessage msg, string source) e)
-        {
-            ucLogs1.AppendMessage(e.msg,e.source);
-        }
-
-        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource) : this()
+        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, bool registerToAnalogyLogger) : this(registerToAnalogyLogger)
         {
             _messages = messages;
             _dataSource = dataSource;
@@ -48,6 +58,10 @@ namespace Analogy.Forms
 
         }
 
+        private void Instance_OnNewMessage(object sender, (AnalogyLogMessage msg, string source) e)
+        {
+            ucLogs1.AppendMessage(e.msg, e.source);
+        }
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
             Icon = UserSettingsManager.UserSettings.GetIcon();

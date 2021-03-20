@@ -38,7 +38,7 @@ namespace Analogy.Forms
 
         private void btnCombineSelected_Click(object sender, EventArgs e)
         {
-            XtraFormLogGrid msg = new XtraFormLogGrid();
+            XtraFormLogGrid msg = new XtraFormLogGrid(false);
 
             foreach (CheckedListBoxItem item in chklistLogs.CheckedItems)
             {

@@ -37,6 +37,7 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LocalLogFilesUC));
+            System.Threading.CancellationTokenSource cancellationTokenSource1 = new System.Threading.CancellationTokenSource();
             this.spltMain = new System.Windows.Forms.SplitContainer();
             this.splcLeft = new System.Windows.Forms.SplitContainer();
             this.folderTreeViewUC1 = new Analogy.FolderTreeViewUC();
@@ -144,7 +145,7 @@ namespace Analogy
             this.treeList1.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.FixedLineWidth = 3;
-            this.treeList1.Location = new System.Drawing.Point(0, 70);
+            this.treeList1.Location = new System.Drawing.Point(0, 77);
             this.treeList1.Margin = new System.Windows.Forms.Padding(4);
             this.treeList1.MinWidth = 27;
             this.treeList1.Name = "treeList1";
@@ -159,10 +160,11 @@ namespace Analogy
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus;
             this.treeList1.OptionsView.ShowIndicator = false;
-            this.treeList1.Size = new System.Drawing.Size(392, 401);
+            this.treeList1.Size = new System.Drawing.Size(392, 394);
             this.treeList1.TabIndex = 8;
             this.treeList1.TreeLevelWidth = 24;
             this.treeList1.SelectionChanged += new System.EventHandler(this.TreeList1_SelectionChanged);
+            this.treeList1.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             // 
             // colName
             // 
@@ -207,15 +209,15 @@ namespace Analogy
             // 
             // standaloneBarDockControl1
             // 
+            this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 40);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(392, 30);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(392, 37);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.AutoSize = true;
             // 
             // barManager1
             // 
@@ -356,12 +358,19 @@ namespace Analogy
             // 
             // ucLogs1
             // 
+            this.ucLogs1.CancellationTokenSource = cancellationTokenSource1;
+            this.ucLogs1.CurrentColumnsFields = ((System.Collections.Generic.List<System.ValueTuple<string, string>>)(resources.GetObject("ucLogs1.CurrentColumnsFields")));
+            this.ucLogs1.DataProvider = null;
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogs1.DoNotAddToRecentHistory = false;
+            this.ucLogs1.ExcludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.ExcludeFilterCriteriaUIOptions")));
+            this.ucLogs1.FileDataProvider = null;
             this.ucLogs1.ForceNoFileCaching = false;
+            this.ucLogs1.IncludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.IncludeFilterCriteriaUIOptions")));
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
+            this.ucLogs1.RealTimeMode = true;
             this.ucLogs1.Size = new System.Drawing.Size(991, 700);
             this.ucLogs1.TabIndex = 0;
             // 
@@ -443,6 +452,7 @@ namespace Analogy
             this.spltMain.ResumeLayout(false);
             this.splcLeft.Panel1.ResumeLayout(false);
             this.splcLeft.Panel2.ResumeLayout(false);
+            this.splcLeft.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splcLeft)).EndInit();
             this.splcLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();

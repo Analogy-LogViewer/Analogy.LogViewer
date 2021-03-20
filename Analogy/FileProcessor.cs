@@ -20,8 +20,8 @@ namespace Analogy
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
-        private ILogMessageCreatedHandler DataWindow { get; set; }
-        public UCLogs LogWindow { get; set; }
+        private ILogMessageCreatedHandler DataWindow { get;  }
+        public UCLogs LogWindow { get;}
 
         public FileProcessor(ILogMessageCreatedHandler dataWindow)
         {

@@ -9,6 +9,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils.Menu;
+using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Localization;
 
 namespace Analogy
 {
@@ -47,7 +50,6 @@ namespace Analogy
             ucLogs1.CancellationTokenSource = cts;
         }
 
-        public void ShowFolderAndFilesPanel(bool on) => spltMain.Panel1Collapsed = !on;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             ucLogs1.ProcessCmdKeyFromParent(keyData);
@@ -216,6 +218,36 @@ namespace Analogy
             await LoadFilesAsync(files, chkbSelectionMode.Checked);
         }
 
+        private async void treeList1_RowClick(object sender, DevExpress.XtraTreeList.RowClickEventArgs e)
+        {
+  
+        }
+
+        private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
+        {
+            async void OpenFileInSeparateWindow(string filename)
+            {
+                ucLogs1.OnFocusedRowChanged -= UcLogs1_OnFocusedRowChanged;
+                await ucLogs1.LoadFileInSeparateWindow(filename);
+                ucLogs1.OnFocusedRowChanged += UcLogs1_OnFocusedRowChanged;
+            }
+
+            
+                TreeList treeList = sender as TreeList;
+                TreeListHitInfo hitInfo = treeList.CalcHitInfo(e.Point);
+
+                // removing the "Runtime columns customization" item of the column header menu
+                if (hitInfo.HitInfoType == HitInfoType.Column)
+                {
+                    var file = hitInfo.Node.GetValue(colFullPath).ToString();
+
+                    DXMenuItem menuItem = new DXMenuItem($"Open file {Path.GetFileName(file)}",
+                        (_, __) => { OpenFileInSeparateWindow(file); }) {Tag = hitInfo.Column};
+                    e.Menu.Items.Add(menuItem);
+                }
+            
+
+        }
     }
 
 }

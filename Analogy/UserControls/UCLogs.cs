@@ -837,7 +837,7 @@ namespace Analogy
             }
         }
 
-        public void SetFileDataSource(IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileDataProvider)
+        public void SetFileDataSource(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
@@ -3201,6 +3201,21 @@ namespace Analogy
             {
                 AnalogyLogManager.Instance.LogError(e.Message, nameof(SaveCurrentWorkspace));
             }
+        }
+
+        public async Task LoadFileInSeparateWindow(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                AnalogyLogMessage m = new AnalogyLogMessage($"File {filename} does not exist",
+                    AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None");
+                AppendMessage(m, "Analogy");
+                return;
+            }
+
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider,AnalogyOfflineDataProvider);
+            var processor = new FileProcessor(logGridForm.LogWindow);
+            var messages= await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
         }
     }
 }
