@@ -1109,9 +1109,9 @@ namespace Analogy.Forms
                 singleBtn.ImageOptions.LargeImage = imageLarge ?? Resources.Single32x32;
                 singleBtn.ImageOptions.Image = imageSmall ?? Resources.Single16x16;
                 singleBtn.RibbonStyle = RibbonItemStyles.All;
-                singleBtn.Caption = "Single provider" + (!string.IsNullOrEmpty(single.OptionalTitle)
-                    ? $" - {single.OptionalTitle}"
-                    : string.Empty);
+                singleBtn.Caption = !string.IsNullOrEmpty(single.OptionalTitle)
+                    ? $"{single.OptionalTitle}"
+                    : "Single Data Provider";
                 if (single.ToolTip != null)
                 {
                     SuperToolTip toolTip = new SuperToolTip();
