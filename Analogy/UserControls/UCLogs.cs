@@ -3214,8 +3214,10 @@ namespace Analogy
             }
 
             XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider,AnalogyOfflineDataProvider);
+            logGridForm.Show(this);
             var processor = new FileProcessor(logGridForm.LogWindow);
-            var messages= await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
+            await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
+            
         }
     }
 }

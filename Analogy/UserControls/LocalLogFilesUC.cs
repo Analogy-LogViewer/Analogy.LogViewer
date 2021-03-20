@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Properties;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Localization;
@@ -237,12 +238,13 @@ namespace Analogy
                 TreeListHitInfo hitInfo = treeList.CalcHitInfo(e.Point);
 
                 // removing the "Runtime columns customization" item of the column header menu
-                if (hitInfo.HitInfoType == HitInfoType.Column)
+                if (hitInfo.HitInfoType == HitInfoType.Cell)
                 {
                     var file = hitInfo.Node.GetValue(colFullPath).ToString();
 
-                    DXMenuItem menuItem = new DXMenuItem($"Open file {Path.GetFileName(file)}",
+                    DXMenuItem menuItem = new DXMenuItem($"Open file {Path.GetFileName(file)} in separate Window",
                         (_, __) => { OpenFileInSeparateWindow(file); }) {Tag = hitInfo.Column};
+                   //menuItem.Image =Resources.
                     e.Menu.Items.Add(menuItem);
                 }
             
