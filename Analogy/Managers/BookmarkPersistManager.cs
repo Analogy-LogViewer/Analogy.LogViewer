@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.LogLoaders;
 using Analogy.Managers;
 
@@ -135,6 +136,10 @@ namespace Analogy
                 Messages.Clear();
                 ContentChanged = true;
             }
+        }
+        public void ReportFileReadProgress(AnalogyFileReadProgress progress)
+        {
+            //noop
         }
     }
 }

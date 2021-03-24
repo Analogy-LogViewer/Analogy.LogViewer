@@ -1145,7 +1145,7 @@ namespace Analogy
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.Text = extension.Title;
                 page.Controls.Add(extension.UserControl);
-                await extension.InitUserControl;
+                await extension.InitializeUserControl(this,AnalogyLogger.Instance);
                 page.DockedAsTabbedDocument = true;
             }
         }
@@ -3218,6 +3218,11 @@ namespace Analogy
             var processor = new FileProcessor(logGridForm.LogWindow);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
             
+        }
+
+        public void ReportFileReadProgress(AnalogyFileReadProgress progress)
+        {
+            //noop
         }
     }
 }

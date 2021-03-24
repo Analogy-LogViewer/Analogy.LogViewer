@@ -195,9 +195,11 @@ namespace Analogy
 
         public void CollapsePanel(bool top)
         {
-
             splitContainerControl1.PanelVisibility = top ? SplitPanelVisibility.Panel1 : SplitPanelVisibility.Panel2;
-
+        }
+        public void ReportFileReadProgress(AnalogyFileReadProgress progress)
+        {
+            //noop
         }
     }
 }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Managers
 {
@@ -206,7 +207,10 @@ namespace Analogy.Managers
                 _watchFile.EnableRaisingEvents = true;
             }
         }
-
+        public void ReportFileReadProgress(AnalogyFileReadProgress progress)
+        {
+            //noop
+        }
     }
 }
 

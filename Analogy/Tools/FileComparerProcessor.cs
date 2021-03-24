@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Tools
 {
@@ -50,6 +51,10 @@ namespace Analogy.Tools
         {
             AnalogyLogMessage message = (AnalogyLogMessage)dtr["Object"];
             AppendMessage(message, dataSource);
+        }
+        public void ReportFileReadProgress(AnalogyFileReadProgress progress)
+        {
+            //noop
         }
     }
 }
