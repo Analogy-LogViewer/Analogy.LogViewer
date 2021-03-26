@@ -23,7 +23,7 @@ namespace Analogy.Managers
         public List<IAnalogyShareableFactory> ShareableFactories { get; }
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         public List<IAnalogyPlotting> GraphPlotter { get; }
-
+        public List<IAnalogyCustomUserControlsFactory> UserControlsFactories { get; }
         public List<IAnalogyImages> Images { get; private set; }
         public FactoryContainer(Assembly assembly, string assemblyFullPath, IAnalogyFactory factory, FactorySettings factorySetting)
         {
@@ -56,6 +56,7 @@ namespace Analogy.Managers
             ExtensionsFactories.Add(extensionFactory);
         public void AddImages(IAnalogyImages images) => Images.Add(images);
         public void AddGraphPlotter(IAnalogyPlotting plotter) => GraphPlotter.Add(plotter);
+        public void AddCustomUserControlFactory(IAnalogyCustomUserControlsFactory uc) => UserControlsFactories.Add(uc);
         public void AddDownloadInformation(IAnalogyDownloadInformation downloadInformation)
             => DownloadInformation = downloadInformation;
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";

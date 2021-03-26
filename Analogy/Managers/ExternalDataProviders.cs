@@ -242,7 +242,21 @@ namespace Analogy.Managers
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during plotter loading: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
-
+              
+                foreach (Type uc in types.Where(aType => aType.IsAssignableFrom(typeof(IAnalogyCustomUserControlsFactory))))
+                {
+                    try
+                    {
+                        var auf = (Activator.CreateInstance(uc) as IAnalogyCustomUserControlsFactory)!;
+                        var factory = Factories.First(f => f.Factory.FactoryId == auf?.FactoryId);
+                        factory.AddCustomUserControlFactory(auf);
+                    }
+                    catch (Exception e)
+                    {
+                        AnalogyLogManager.Instance.LogError($"{fileName}: Error during adding user control factory: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
+                    }
+                }
+               
             }
             //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
 
