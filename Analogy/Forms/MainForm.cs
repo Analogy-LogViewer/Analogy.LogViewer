@@ -635,14 +635,13 @@ namespace Analogy.Forms
                 ribbonPage.ImageOptions.Image = ribbonPageImage;
             }
 
-            AddGraphPlotter(ribbonPage, fc.GraphPlotter);
             var dataSourceFactory = fc.DataProvidersFactories;
 
             foreach (var dataProvidersFactory in dataSourceFactory)
             {
                 if (!string.IsNullOrEmpty(dataProvidersFactory.Title))
                 {
-                    CreateDataSourceRibbonGroup(fc.Factory, dataProvidersFactory, ribbonPage);
+                    CreateOnlineAndOfflineProviders(fc.Factory, dataProvidersFactory, ribbonPage);
                 }
             }
 
@@ -678,6 +677,8 @@ namespace Analogy.Forms
                 }
             }
 
+            AddUserControls(ribbonPage, fc.UserControlsFactories);
+            AddGraphPlotter(ribbonPage, fc.GraphPlotter);
             AddFactorySettings(fc, ribbonPage);
             AddAbout(fc, ribbonPage);
         }
@@ -726,7 +727,7 @@ namespace Analogy.Forms
             }
             ribbonPage.Groups.Add(groupSettings);
         }
-        private void CreateDataSourceRibbonGroup(IAnalogyFactory factory, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
+        private void CreateOnlineAndOfflineProviders(IAnalogyFactory factory, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPage ribbonPage)
         {
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Data Provider: {dataSourceFactory.Title}") { AllowTextClipping = false };
             ribbonPage.Groups.Add(ribbonPageGroup);
@@ -734,6 +735,83 @@ namespace Analogy.Forms
             AddFlatRealTimeDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddSingleDataSources(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
+        }
+
+        private void AddUserControls(RibbonPage ribbonPage, List<IAnalogyCustomUserControlsFactory> userControls)
+        {
+
+            if (userControls.Count == 0)
+            {
+                return;
+            }
+
+
+            foreach (var userControlFactory in userControls)
+            {
+                RibbonPageGroup ribbonPageGroup = new RibbonPageGroup(userControlFactory.Title)
+                { AllowTextClipping = false };
+                ribbonPage.Groups.Add(ribbonPageGroup);
+                foreach (var userControl in userControlFactory.UserControls)
+                {
+                    BarButtonItem userControlBtn = new BarButtonItem();
+                    ribbonPageGroup.ItemLinks.Add(userControlBtn);
+                    userControlBtn.ImageOptions.Image = userControl.SmallImage ?? Resources.userControls16x16;
+                    userControlBtn.ImageOptions.LargeImage = userControl.LargeImage ?? Resources.UserControls32x32;
+                    userControlBtn.RibbonStyle = RibbonItemStyles.All;
+                    userControlBtn.Caption = userControl.Title;
+                    if (userControl.ToolTip != null)
+                    {
+                        SuperToolTip toolTip = new SuperToolTip();
+                        // Create an object to initialize the SuperToolTip.
+                        SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+                        args.Title.Text = userControl.ToolTip.Title;
+                        args.Contents.Text = userControl.ToolTip.Content;
+                         args.Contents.Image = userControl.ToolTip.SmallImage;
+                        toolTip.Setup(args);
+                        userControlBtn.SuperTip = toolTip;
+                    }
+                    async Task<bool> OpenUserControl()
+                    {
+                        userControlBtn.Enabled = false;
+                        openedWindows++;
+                        //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                        var page = dockManager1.AddPanel(DockingStyle.Float);
+                        await userControl.InitializeUserControl(page, AnalogyLogger.Instance);
+                        page.DockedAsTabbedDocument = true;
+                        page.Tag = ribbonPage;
+                        page.Controls.Add(userControl.UserControl);
+                        ribbonControlMain.SelectedPage = ribbonPage;
+                        userControl.UserControl.Dock = DockStyle.Fill;
+                        page.Text = $"{userControl.Title} #{openedWindows}";
+                        dockManager1.ActivePanel = page;
+                        async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
+                        {
+                            if (arg.Panel == page)
+                            {
+                                try
+                                {
+                                    await userControl.UserControlRemoved();
+                                }
+                                catch (Exception e)
+                                {
+                                    AnalogyLogManager.Instance.LogError(
+                                        "Error during call to remove user control: " + e,
+                                        nameof(OnXtcLogsOnControlRemoved));
+                                }
+                                finally
+                                {
+                                    dockManager1.ClosedPanel -= OnXtcLogsOnControlRemoved;
+                                }
+                            }
+                        }
+
+                        dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
+                        userControlBtn.Enabled = true;
+                        return true;
+                    }
+                    userControlBtn.ItemClick += async (s, be) => await OpenUserControl();
+                }
+            }
         }
 
         private void AddGraphPlotter(RibbonPage ribbonPage, List<IAnalogyPlotting> graphPlotters)
@@ -744,7 +822,7 @@ namespace Analogy.Forms
                 return;
             }
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup("Graph Plotter") { AllowTextClipping = false };
-            ribbonPage.Groups.Insert(0, ribbonPageGroup);
+            ribbonPage.Groups.Add(ribbonPageGroup);
 
             foreach (var plot in graphPlotters)
             {

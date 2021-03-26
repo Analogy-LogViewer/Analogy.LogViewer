@@ -37,6 +37,7 @@ namespace Analogy.Managers
             ShareableFactories = new List<IAnalogyShareableFactory>();
             ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
             GraphPlotter = new List<IAnalogyPlotting>();
+            UserControlsFactories = new List<IAnalogyCustomUserControlsFactory>();
             Images = new List<IAnalogyImages>();
         }
 
