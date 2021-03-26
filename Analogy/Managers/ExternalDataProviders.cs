@@ -243,7 +243,7 @@ namespace Analogy.Managers
                     }
                 }
               
-                foreach (Type uc in types.Where(aType => aType.IsAssignableFrom(typeof(IAnalogyCustomUserControlsFactory))))
+                foreach (Type uc in types.Where(aType => aType.GetInterface(nameof(IAnalogyCustomUserControlsFactory)) != null))
                 {
                     try
                     {
