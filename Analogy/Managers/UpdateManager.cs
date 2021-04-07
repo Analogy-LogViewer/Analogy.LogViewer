@@ -140,6 +140,7 @@ namespace Analogy.Managers
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WindowsEventLogs", "Analogy.LogViewer.WindowsEventLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs",Resources.OperatingSystem_32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Example", "Analogy.LogViewer.Example.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Example",Resources.Analogy_image_32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.GitHubActionLogs", "Analogy.LogViewer.GitHubActionLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.GitHubActionLogs",Resources.actions32x32));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.SerialPort", "Analogy.LogViewer.SerialPort.dll", "https://api.github.com/repos/oto313/Analogy.LogViewer.SerialPort", Resources.Analogy_image_32x32));
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
