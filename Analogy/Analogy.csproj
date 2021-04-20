@@ -4,7 +4,7 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<TargetFrameworks>net48;net472;net471;netcoreapp3.1</TargetFrameworks>
+		<TargetFrameworks>net5.0-windows;net48;net472;net471;netcoreapp3.1</TargetFrameworks>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -67,7 +67,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' " />
+		<None Remove="App.config" Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' " />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.6.2" />
