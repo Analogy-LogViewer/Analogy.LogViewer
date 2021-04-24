@@ -56,6 +56,19 @@ namespace Analogy.UserControls
             // diagram.AxisX.VisualRange.EndSideMargin = 200;
             diagram.DependentAxesYRange = DefaultBoolean.True;
             diagram.AxisY.WholeRange.AlwaysShowZeroLevel = false;
+            diagram.EnableAxisXZooming = true;
+            diagram.EnableAxisYZooming = true;
+            diagram.ZoomingOptions.UseKeyboard = true;
+            diagram.ZoomingOptions.UseKeyboardWithMouse = true;
+            diagram.ZoomingOptions.UseMouseWheel = true;
+            diagram.ZoomingOptions.UseTouchDevice = true;
+            diagram.EnableAxisXScrolling = true;
+            diagram.EnableAxisYScrolling = true;
+            diagram.ScrollingOptions.UseKeyboard = true;
+            diagram.ScrollingOptions.UseMouse = true;
+            diagram.ScrollingOptions.UseScrollBars = true;
+            diagram.ScrollingOptions.UseTouchDevice = true;
+
             SetChartType();
 
         }

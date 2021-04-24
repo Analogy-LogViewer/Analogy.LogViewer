@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.6.5 - [chart] add zoom and scroll functionality #969",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,04,24)),
                 new AnalogyChangeLog("V4.6.5 - Remove redundant Title text #915",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,03,20)),
                 new AnalogyChangeLog("V4.6.4 - Add 'Open in new tab' option to load files from the files list #914",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,03,20)),
                 new AnalogyChangeLog("V4.6.4 - Error during multiple loadings #913",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,03,20)),
