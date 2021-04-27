@@ -57,6 +57,7 @@ namespace Analogy
         public FluentDesignMainForm()
         {
             InitializeComponent();
+            EnableAcrylicAccent = false;
         }
 
         private async void FluentDesignMainForm_Load(object sender, EventArgs e)

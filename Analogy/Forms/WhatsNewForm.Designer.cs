@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.e460 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e450 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e441 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e440 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -40,7 +42,6 @@
             this.e429 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.e428 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.e460 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -48,9 +49,9 @@
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(176, 30);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(176, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(870, 443);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(870, 434);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl1
@@ -68,13 +69,20 @@
             this.e4210,
             this.e429,
             this.e428});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 30);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(176, 443);
+            this.accordionControl1.Size = new System.Drawing.Size(176, 434);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            // 
+            // e460
+            // 
+            this.e460.Name = "e460";
+            this.e460.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.e460.Text = "V4.6.0";
+            this.e460.Click += new System.EventHandler(this.e460_Click);
             // 
             // e450
             // 
@@ -144,16 +152,10 @@
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1046, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1046, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            // 
-            // e460
-            // 
-            this.e460.Name = "e460";
-            this.e460.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.e460.Text = "V4.6.0";
-            this.e460.Click += new System.EventHandler(this.e460_Click);
+            this.fluentDesignFormControl1.Click += new System.EventHandler(this.fluentDesignFormControl1_Click);
             // 
             // WhatsNewForm
             // 
