@@ -11,8 +11,12 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("V4.6.5 - [chart] add zoom and scroll functionality #969",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,04,24)),
-                new AnalogyChangeLog("V4.6.5 - Remove redundant Title text #915",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,03,20)),
+                new AnalogyChangeLog("V4.7.0 - [DevExpress V20.2] FluentDesignForm ignores the mouse click in Windows 10 mode #973 ",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,04,29)),
+                new AnalogyChangeLog("V4.7.0 - [NET 5] Add Net 5 target compilation #974 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,04,27)),
+                new AnalogyChangeLog("V4.7.0 - [DevExpress] Upgrade version to v20.2.6 #967",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,04,13)),
+                new AnalogyChangeLog("V4.7.0 - [chart] add zoom and scroll functionality #969",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,04,24)),
+                new AnalogyChangeLog("V4.7.0 - [Data Provider] Add Serial Port data provider. #968 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,04,12)),
+                new AnalogyChangeLog("V4.7.0 - Remove redundant Title text #915",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,03,20)),
                 new AnalogyChangeLog("V4.6.4 - Add 'Open in new tab' option to load files from the files list #914",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,03,20)),
                 new AnalogyChangeLog("V4.6.4 - Error during multiple loadings #913",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,03,20)),
                 new AnalogyChangeLog("V4.6.4 - [UI] fix file sorting in main view. #902",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,03,15)),
