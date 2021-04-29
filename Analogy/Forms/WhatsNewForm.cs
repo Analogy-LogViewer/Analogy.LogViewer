@@ -10,6 +10,7 @@ namespace Analogy.Forms
         public WhatsNewForm()
         {
             InitializeComponent();
+            EnableAcrylicAccent = false;
         }
 
         private void WhatsNewForm_Load(object sender, EventArgs e)
@@ -18,7 +19,6 @@ namespace Analogy.Forms
             {
                 return;
             }
-
             Icon = UserSettingsManager.UserSettings.GetIcon();
             WhatIsNew4_6_0 uc = new WhatIsNew4_6_0 { Name = "V4.6.0" };
             fluentDesignFormContainer1.Controls.Add(uc);
@@ -174,6 +174,11 @@ namespace Analogy.Forms
                 uc.BringToFront();
             }
             SetActive("V4.6.0");
+        }
+
+        private void fluentDesignFormControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Analogy.Forms
         public ApplicationSettingsForm()
         {
             InitializeComponent();
+            EnableAcrylicAccent = false;
             SelectedSettingName = string.Empty;
         }
 
