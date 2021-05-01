@@ -66,7 +66,7 @@
 		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="1.4.6.2" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="1.5.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.12.5" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.8.3.2" />
 		<PackageReference Include="Grpc.Core" Version="2.36.4" />
