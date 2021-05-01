@@ -63,7 +63,7 @@ namespace Analogy
             };
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
-#if NETCOREAPP3_1
+#if NETCOREAPP3_1 || NET
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
 #endif
             Settings.IncreaseNumberOfLaunches();

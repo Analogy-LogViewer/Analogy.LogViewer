@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.7.0 - [DevExpress 20.2] set default skin to be the same as old skin #971",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,01)),
                 new AnalogyChangeLog("V4.7.0 - [Net framework 4.X] Remove WCF data provider #976",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,01)),
                 new AnalogyChangeLog("V4.7.0 - [Analogy Updater] add partial mode for updating #977",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,01)),
                 new AnalogyChangeLog("V4.7.0 - [DevExpress V20.2] FluentDesignForm ignores the mouse click in Windows 10 mode #973",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,04,29)),

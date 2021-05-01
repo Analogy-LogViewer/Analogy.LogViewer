@@ -33,7 +33,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ApplicationSkinName" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">DevExpress Style</Value>
     </Setting>
     <Setting Name="SimpleMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -171,7 +171,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ApplicationStyle" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Skin</Value>
     </Setting>
     <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
