@@ -1,0 +1,174 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: System.Resources.Extensions
+    versions:
+    - ">= 4.7.a, < 4.8"
+  - dependency-name: Analogy.LogViewer.JsonParser
+    versions:
+    - 0.4.2
+    - 0.4.2.1
+    - 0.4.3.1
+  - dependency-name: Analogy.LogViewer.Log4Net
+    versions:
+    - 1.5.2
+    - 1.5.2.1
+  - dependency-name: Analogy.LogViewer.XMLParser
+    versions:
+    - 0.4.1.1
+    - 0.4.3
+  - dependency-name: Analogy.LogViewer.gRPC
+    versions:
+    - 1.6.3
+    - 1.6.4.1
+  - dependency-name: Analogy.LogViewer.WindowsEventLogs
+    versions:
+    - 1.5.1.2
+    - 1.5.2
+    - 1.5.3
+  - dependency-name: Analogy.LogViewer.NLogProvider
+    versions:
+    - 1.5.1.2
+    - 1.5.2
+    - 1.5.2.1
+  - dependency-name: Analogy.LogViewer.Serilog
+    versions:
+    - 2.2.2.2
+    - 2.3.0
+    - 2.3.2.1
+  - dependency-name: Analogy.LogViewer.Example
+    versions:
+    - 1.9.8.1
+    - 2.0.2
+  - dependency-name: Analogy.CommonUtilities
+    versions:
+    - 1.4.5.3
+    - 1.4.5.4
+    - 1.4.6.1
+  - dependency-name: Analogy.LogViewer.Template
+    versions:
+    - 1.8.1.3
+    - 1.8.3.1
+  - dependency-name: Analogy.LogViewer.PlainTextParser
+    versions:
+    - 1.4.6.2
+    - 1.4.8
+  - dependency-name: Grpc.Core
+    versions:
+    - 2.36.0
+    - 2.36.4
+  - dependency-name: Markdig
+    versions:
+    - 0.24.0
+  - dependency-name: MSTest.TestAdapter
+    versions:
+    - 2.2.1
+    - 2.2.2
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.9.1
+  - dependency-name: Analogy.LogViewer.PowerToys
+    versions:
+    - 0.1.6.3
+    - 0.1.7
+  - dependency-name: Analogy.LogViewer.RegexParser
+    versions:
+    - 1.8.2
+  - dependency-name: Analogy.LogViewer.Interfaces
+    versions:
+    - 2.10.0
+    - 2.10.2
+  - dependency-name: Analogy.LogViewer.Github
+    versions:
+    - 1.4.3.6
+- package-ecosystem: nuget
+  directory: "/Analogy.UnitTests"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: Analogy.LogViewer.WindowsEventLogs
+    versions:
+    - 1.5.1.2
+    - 1.5.2
+    - 1.5.3
+  - dependency-name: Analogy.LogViewer.XMLParser
+    versions:
+    - 0.4.3
+  - dependency-name: Analogy.LogViewer.RegexParser
+    versions:
+    - 1.8.2
+    - 1.8.3.3
+  - dependency-name: Analogy.LogViewer.NLogProvider
+    versions:
+    - 1.5.2.1
+  - dependency-name: Analogy.LogViewer.gRPC
+    versions:
+    - 1.6.3
+    - 1.6.4.1
+  - dependency-name: Analogy.LogViewer.Template
+    versions:
+    - 1.8.1.3
+    - 1.8.3.2
+  - dependency-name: Analogy.LogViewer.JsonParser
+    versions:
+    - 0.4.2
+    - 0.4.2.1
+    - 0.4.3.1
+  - dependency-name: Analogy.LogViewer.PlainTextParser
+    versions:
+    - 1.4.6.2
+    - 1.4.8.1
+  - dependency-name: Analogy.LogViewer.Example
+    versions:
+    - 1.9.7.2
+    - 2.0.2
+  - dependency-name: Analogy.LogViewer.Interfaces
+    versions:
+    - 2.10.0
+    - 2.10.2
+    - 2.11.0
+    - 2.12.1
+  - dependency-name: Analogy.CommonUtilities
+    versions:
+    - 1.4.5.3
+    - 1.4.5.4
+    - 1.4.6.1
+  - dependency-name: Analogy.LogViewer.IISLogsProvider
+    versions:
+    - 1.5.2.2
+  - dependency-name: Analogy.LogViewer.Log4Net
+    versions:
+    - 1.5.2
+  - dependency-name: Analogy.LogViewer.PowerToys
+    versions:
+    - 0.1.6.3
+    - 0.1.7
+    - 0.1.9
+  - dependency-name: Analogy.LogViewer.Serilog
+    versions:
+    - 2.2.2.2
+    - 2.3.0
+    - 2.3.2
+  - dependency-name: Grpc.Core
+    versions:
+    - 2.36.4
+  - dependency-name: MSTest.TestAdapter
+    versions:
+    - 2.2.3
+  - dependency-name: MSTest.TestFramework
+    versions:
+    - 2.2.1
+    - 2.2.2
+    - 2.2.3
+  - dependency-name: Analogy.LogViewer.GitHistory
+    versions:
+    - 1.4.1.1
+  - dependency-name: Analogy.LogViewer.Github
+    versions:
+    - 1.4.3.6
