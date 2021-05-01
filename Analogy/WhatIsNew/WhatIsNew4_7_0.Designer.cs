@@ -38,7 +38,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtPageIssues = new DevExpress.XtraTab.XtraTabPage();
             this.gcImprovements = new DevExpress.XtraEditors.GroupControl();
-            this.issue973 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue977 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue976 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue974 = new DevExpress.XtraEditors.HyperlinkLabelControl();
@@ -47,6 +46,7 @@
             this.Issue971 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue967 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.gcBugs = new DevExpress.XtraEditors.GroupControl();
+            this.issue973 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtcV4_7_0)).BeginInit();
             this.xtcV4_7_0.SuspendLayout();
             this.xtPageHighlight.SuspendLayout();
@@ -182,19 +182,6 @@
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
             // 
-            // issue973
-            // 
-            this.issue973.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue973.Location = new System.Drawing.Point(2, 25);
-            this.issue973.Name = "issue973";
-            this.issue973.Padding = new System.Windows.Forms.Padding(5);
-            this.issue973.Size = new System.Drawing.Size(525, 26);
-            this.issue973.TabIndex = 22;
-            this.issue973.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/973>[DevExpre" +
-    "ss V20.2] FluentDesignForm ignores the mouse click in Windows 10 mode #973</href" +
-    ">";
-            this.issue973.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
-            // 
             // issue977
             // 
             this.issue977.Dock = System.Windows.Forms.DockStyle.Top;
@@ -289,7 +276,19 @@
             this.gcBugs.Size = new System.Drawing.Size(762, 93);
             this.gcBugs.TabIndex = 6;
             this.gcBugs.Text = "Bug Fixes";
-            this.gcBugs.Visible = false;
+            // 
+            // issue973
+            // 
+            this.issue973.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue973.Location = new System.Drawing.Point(2, 25);
+            this.issue973.Name = "issue973";
+            this.issue973.Padding = new System.Windows.Forms.Padding(5);
+            this.issue973.Size = new System.Drawing.Size(525, 26);
+            this.issue973.TabIndex = 22;
+            this.issue973.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/973>[DevExpre" +
+    "ss V20.2] FluentDesignForm ignores the mouse click in Windows 10 mode #973</href" +
+    ">";
+            this.issue973.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_7_0
             // 
