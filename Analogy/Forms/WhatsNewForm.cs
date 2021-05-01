@@ -20,7 +20,7 @@ namespace Analogy.Forms
                 return;
             }
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            WhatIsNew4_6_0 uc = new WhatIsNew4_6_0 { Name = "V4.6.0" };
+            WhatIsNew4_7_0 uc = new WhatIsNew4_7_0 { Name = "V4.7.0" };
             fluentDesignFormContainer1.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
             uc.BringToFront();
@@ -176,9 +176,17 @@ namespace Analogy.Forms
             SetActive("V4.6.0");
         }
 
-        private void fluentDesignFormControl1_Click(object sender, EventArgs e)
+        private void e470_Click(object sender, EventArgs e)
         {
-
+            if (!fluentDesignFormContainer1.Controls.ContainsKey("V4.7.0"))
+            {
+                WhatIsNew4_7_0 uc = new WhatIsNew4_7_0();
+                uc.Name = "V4.7.0";
+                fluentDesignFormContainer1.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                uc.BringToFront();
+            }
+            SetActive("V4.7.0");
         }
     }
 }
