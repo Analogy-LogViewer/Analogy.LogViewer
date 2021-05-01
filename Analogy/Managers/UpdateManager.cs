@@ -306,7 +306,7 @@ namespace Analogy.Managers
             }
         }
 
-        public async Task InitiateUpdate(string title, string downloadURL)
+        public async Task InitiateUpdate(string title, string downloadURL,bool forceOverride)
         {
             if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(downloadURL))
             {
@@ -322,7 +322,8 @@ namespace Analogy.Managers
                 if (File.Exists(UpdaterExecutable))
                 {
                     var processStartInfo = new ProcessStartInfo();
-                    string data = $"\"{title}\" {downloadURL} \"{Utils.CurrentDirectory()}\"";
+                    //string data = $"\"Title={title}\" DownloadURL:{downloadURL} \"TargetFolder:{Utils.CurrentDirectory()}\" OverrideFiles={forceOverride}";
+                    string data = $"\"{title}\" {downloadURL} \"{Utils.CurrentDirectory()}\" {forceOverride}";
                     processStartInfo.Arguments = data;
                     processStartInfo.Verb = "runas";
                     processStartInfo.FileName = UpdaterExecutable;

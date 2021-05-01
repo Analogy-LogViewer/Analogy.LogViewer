@@ -59,7 +59,7 @@ namespace Analogy.Forms
         {
             var downloadInfo = Updater.DownloadInformation;
             sbtnUpdateNow.Enabled = false;
-            await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL);
+            await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL,true);
             sbtnUpdateNow.Enabled = true;
         }
     }
