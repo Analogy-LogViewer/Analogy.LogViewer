@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageDetailsUC));
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.btnNext = new DevExpress.XtraEditors.SimpleButton();
             this.btnPrev = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -63,10 +67,11 @@
             this.txtbThreadId = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabControlMessageInfo = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageText = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPageAdditionalInformation = new DevExpress.XtraTab.XtraTabPage();
-            this.memoAdditionalInformation = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPageRenderedText = new DevExpress.XtraTab.XtraTabPage();
             this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
+            this.xtraTabPageAdditionalInformation = new DevExpress.XtraTab.XtraTabPage();
+            this.memoAdditionalInformation = new DevExpress.XtraEditors.MemoEdit();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDateValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDataSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSourceValue.Properties)).BeginInit();
@@ -85,18 +90,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMessageInfo)).BeginInit();
             this.xtraTabControlMessageInfo.SuspendLayout();
             this.xtraTabPageText.SuspendLayout();
+            this.xtraTabPageRenderedText.SuspendLayout();
             this.xtraTabPageAdditionalInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoAdditionalInformation.Properties)).BeginInit();
-            this.xtraTabPageRenderedText.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
+            this.splitContainerControl1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.ImageOptions.Image")));
-            this.btnNext.Location = new System.Drawing.Point(885, 2);
+            this.btnNext.Location = new System.Drawing.Point(560, 1);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(24, 26);
+            toolTipItem3.Text = "Press right arrow to load next message";
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnNext.SuperTip = superToolTip3;
             this.btnNext.TabIndex = 38;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
@@ -104,9 +117,12 @@
             // 
             this.btnPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrev.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.ImageOptions.Image")));
-            this.btnPrev.Location = new System.Drawing.Point(855, 2);
+            this.btnPrev.Location = new System.Drawing.Point(530, 1);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(24, 26);
+            toolTipItem4.Text = "Press Left arrow to load previous message";
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnPrev.SuperTip = superToolTip4;
             this.btnPrev.TabIndex = 39;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
@@ -122,17 +138,18 @@
             // 
             this.txtbDateValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbDateValue.Location = new System.Drawing.Point(227, 325);
+            this.txtbDateValue.Location = new System.Drawing.Point(224, 325);
             this.txtbDateValue.Name = "txtbDateValue";
-            this.txtbDateValue.Size = new System.Drawing.Size(686, 22);
+            this.txtbDateValue.Size = new System.Drawing.Size(358, 22);
             this.txtbDateValue.TabIndex = 47;
             // 
             // labelControl1
             // 
-            this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.labelControl1.Location = new System.Drawing.Point(6, 325);
+            this.labelControl1.Location = new System.Drawing.Point(3, 325);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(216, 22);
             this.labelControl1.TabIndex = 48;
@@ -142,17 +159,18 @@
             // 
             this.txtbDataSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbDataSource.Location = new System.Drawing.Point(226, 297);
+            this.txtbDataSource.Location = new System.Drawing.Point(223, 297);
             this.txtbDataSource.Name = "txtbDataSource";
-            this.txtbDataSource.Size = new System.Drawing.Size(686, 22);
+            this.txtbDataSource.Size = new System.Drawing.Size(358, 22);
             this.txtbDataSource.TabIndex = 47;
             // 
             // labelControl2
             // 
-            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.labelControl2.Location = new System.Drawing.Point(6, 297);
+            this.labelControl2.Location = new System.Drawing.Point(3, 297);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(216, 22);
             this.labelControl2.TabIndex = 48;
@@ -162,17 +180,18 @@
             // 
             this.txtSourceValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSourceValue.Location = new System.Drawing.Point(227, 353);
+            this.txtSourceValue.Location = new System.Drawing.Point(224, 353);
             this.txtSourceValue.Name = "txtSourceValue";
-            this.txtSourceValue.Size = new System.Drawing.Size(686, 22);
+            this.txtSourceValue.Size = new System.Drawing.Size(358, 22);
             this.txtSourceValue.TabIndex = 47;
             // 
             // lblSource
             // 
-            this.lblSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSource.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblSource.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblSource.Location = new System.Drawing.Point(6, 353);
+            this.lblSource.Location = new System.Drawing.Point(3, 353);
             this.lblSource.Name = "lblSource";
             this.lblSource.Size = new System.Drawing.Size(216, 22);
             this.lblSource.TabIndex = 48;
@@ -182,17 +201,18 @@
             // 
             this.txtbProcessModuleName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbProcessModuleName.Location = new System.Drawing.Point(227, 381);
+            this.txtbProcessModuleName.Location = new System.Drawing.Point(224, 381);
             this.txtbProcessModuleName.Name = "txtbProcessModuleName";
-            this.txtbProcessModuleName.Size = new System.Drawing.Size(686, 22);
+            this.txtbProcessModuleName.Size = new System.Drawing.Size(358, 22);
             this.txtbProcessModuleName.TabIndex = 47;
             // 
             // lblProcess
             // 
-            this.lblProcess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblProcess.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProcess.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblProcess.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblProcess.Location = new System.Drawing.Point(6, 381);
+            this.lblProcess.Location = new System.Drawing.Point(3, 381);
             this.lblProcess.Name = "lblProcess";
             this.lblProcess.Size = new System.Drawing.Size(216, 22);
             this.lblProcess.TabIndex = 48;
@@ -202,26 +222,27 @@
             // 
             this.txtbLevelValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbLevelValue.Location = new System.Drawing.Point(227, 466);
+            this.txtbLevelValue.Location = new System.Drawing.Point(224, 466);
             this.txtbLevelValue.Name = "txtbLevelValue";
-            this.txtbLevelValue.Size = new System.Drawing.Size(686, 22);
+            this.txtbLevelValue.Size = new System.Drawing.Size(358, 22);
             this.txtbLevelValue.TabIndex = 47;
             // 
             // txtbMethod
             // 
             this.txtbMethod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbMethod.Location = new System.Drawing.Point(227, 494);
+            this.txtbMethod.Location = new System.Drawing.Point(224, 494);
             this.txtbMethod.Name = "txtbMethod";
-            this.txtbMethod.Size = new System.Drawing.Size(686, 22);
+            this.txtbMethod.Size = new System.Drawing.Size(358, 22);
             this.txtbMethod.TabIndex = 47;
             // 
             // lblLevel
             // 
-            this.lblLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLevel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblLevel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblLevel.Location = new System.Drawing.Point(6, 466);
+            this.lblLevel.Location = new System.Drawing.Point(3, 466);
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(216, 22);
             this.lblLevel.TabIndex = 48;
@@ -229,10 +250,11 @@
             // 
             // lblMethod
             // 
-            this.lblMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblMethod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMethod.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblMethod.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblMethod.Location = new System.Drawing.Point(6, 494);
+            this.lblMethod.Location = new System.Drawing.Point(3, 494);
             this.lblMethod.Name = "lblMethod";
             this.lblMethod.Size = new System.Drawing.Size(216, 22);
             this.lblMethod.TabIndex = 48;
@@ -242,17 +264,18 @@
             // 
             this.txtbFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbFileName.Location = new System.Drawing.Point(225, 522);
+            this.txtbFileName.Location = new System.Drawing.Point(222, 522);
             this.txtbFileName.Name = "txtbFileName";
-            this.txtbFileName.Size = new System.Drawing.Size(686, 22);
+            this.txtbFileName.Size = new System.Drawing.Size(358, 22);
             this.txtbFileName.TabIndex = 47;
             // 
             // lblSourceCodeFileName
             // 
-            this.lblSourceCodeFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSourceCodeFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSourceCodeFileName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblSourceCodeFileName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblSourceCodeFileName.Location = new System.Drawing.Point(4, 522);
+            this.lblSourceCodeFileName.Location = new System.Drawing.Point(1, 522);
             this.lblSourceCodeFileName.Name = "lblSourceCodeFileName";
             this.lblSourceCodeFileName.Size = new System.Drawing.Size(216, 22);
             this.lblSourceCodeFileName.TabIndex = 48;
@@ -262,17 +285,18 @@
             // 
             this.txtbLineNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbLineNumber.Location = new System.Drawing.Point(225, 550);
+            this.txtbLineNumber.Location = new System.Drawing.Point(222, 550);
             this.txtbLineNumber.Name = "txtbLineNumber";
-            this.txtbLineNumber.Size = new System.Drawing.Size(686, 22);
+            this.txtbLineNumber.Size = new System.Drawing.Size(358, 22);
             this.txtbLineNumber.TabIndex = 47;
             // 
             // lblLineNumber
             // 
-            this.lblLineNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblLineNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLineNumber.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblLineNumber.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblLineNumber.Location = new System.Drawing.Point(4, 550);
+            this.lblLineNumber.Location = new System.Drawing.Point(1, 550);
             this.lblLineNumber.Name = "lblLineNumber";
             this.lblLineNumber.Size = new System.Drawing.Size(216, 22);
             this.lblLineNumber.TabIndex = 48;
@@ -282,17 +306,18 @@
             // 
             this.txtbUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbUser.Location = new System.Drawing.Point(225, 578);
+            this.txtbUser.Location = new System.Drawing.Point(222, 578);
             this.txtbUser.Name = "txtbUser";
-            this.txtbUser.Size = new System.Drawing.Size(686, 22);
+            this.txtbUser.Size = new System.Drawing.Size(358, 22);
             this.txtbUser.TabIndex = 47;
             // 
             // lblUser
             // 
-            this.lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUser.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblUser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblUser.Location = new System.Drawing.Point(4, 578);
+            this.lblUser.Location = new System.Drawing.Point(1, 578);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(216, 22);
             this.lblUser.TabIndex = 48;
@@ -302,16 +327,16 @@
             // 
             this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtID.Location = new System.Drawing.Point(225, 34);
+            this.txtID.Location = new System.Drawing.Point(225, 31);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(686, 22);
+            this.txtID.Size = new System.Drawing.Size(359, 22);
             this.txtID.TabIndex = 49;
             // 
             // labelControl3
             // 
             this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.labelControl3.Location = new System.Drawing.Point(0, 34);
+            this.labelControl3.Location = new System.Drawing.Point(3, 31);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(216, 22);
             this.labelControl3.TabIndex = 48;
@@ -321,7 +346,7 @@
             // 
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.labelControl4.Location = new System.Drawing.Point(0, 4);
+            this.labelControl4.Location = new System.Drawing.Point(3, 3);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(216, 22);
             this.labelControl4.TabIndex = 48;
@@ -331,9 +356,9 @@
             // 
             this.txtbIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbIndex.Location = new System.Drawing.Point(222, 4);
+            this.txtbIndex.Location = new System.Drawing.Point(225, 3);
             this.txtbIndex.Name = "txtbIndex";
-            this.txtbIndex.Size = new System.Drawing.Size(627, 22);
+            this.txtbIndex.Size = new System.Drawing.Size(299, 22);
             this.txtbIndex.TabIndex = 49;
             // 
             // memoText
@@ -341,15 +366,16 @@
             this.memoText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memoText.Location = new System.Drawing.Point(0, 0);
             this.memoText.Name = "memoText";
-            this.memoText.Size = new System.Drawing.Size(901, 165);
+            this.memoText.Size = new System.Drawing.Size(574, 168);
             this.memoText.TabIndex = 50;
             // 
             // lblMachineName
             // 
-            this.lblMachineName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblMachineName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMachineName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblMachineName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblMachineName.Location = new System.Drawing.Point(7, 267);
+            this.lblMachineName.Location = new System.Drawing.Point(4, 267);
             this.lblMachineName.Name = "lblMachineName";
             this.lblMachineName.Size = new System.Drawing.Size(216, 22);
             this.lblMachineName.TabIndex = 52;
@@ -359,17 +385,18 @@
             // 
             this.txtbMachineName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbMachineName.Location = new System.Drawing.Point(227, 267);
+            this.txtbMachineName.Location = new System.Drawing.Point(224, 267);
             this.txtbMachineName.Name = "txtbMachineName";
-            this.txtbMachineName.Size = new System.Drawing.Size(686, 22);
+            this.txtbMachineName.Size = new System.Drawing.Size(358, 22);
             this.txtbMachineName.TabIndex = 51;
             // 
             // labelControl5
             // 
-            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.labelControl5.Location = new System.Drawing.Point(6, 409);
+            this.labelControl5.Location = new System.Drawing.Point(3, 409);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(216, 22);
             this.labelControl5.TabIndex = 54;
@@ -379,17 +406,18 @@
             // 
             this.txtbProcessId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbProcessId.Location = new System.Drawing.Point(227, 409);
+            this.txtbProcessId.Location = new System.Drawing.Point(224, 409);
             this.txtbProcessId.Name = "txtbProcessId";
-            this.txtbProcessId.Size = new System.Drawing.Size(686, 22);
+            this.txtbProcessId.Size = new System.Drawing.Size(358, 22);
             this.txtbProcessId.TabIndex = 53;
             // 
             // lblThreadId
             // 
-            this.lblThreadId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblThreadId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblThreadId.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblThreadId.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.lblThreadId.Location = new System.Drawing.Point(6, 437);
+            this.lblThreadId.Location = new System.Drawing.Point(3, 437);
             this.lblThreadId.Name = "lblThreadId";
             this.lblThreadId.Size = new System.Drawing.Size(216, 22);
             this.lblThreadId.TabIndex = 56;
@@ -399,9 +427,9 @@
             // 
             this.txtbThreadId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbThreadId.Location = new System.Drawing.Point(227, 437);
+            this.txtbThreadId.Location = new System.Drawing.Point(224, 437);
             this.txtbThreadId.Name = "txtbThreadId";
-            this.txtbThreadId.Size = new System.Drawing.Size(686, 22);
+            this.txtbThreadId.Size = new System.Drawing.Size(358, 22);
             this.txtbThreadId.TabIndex = 55;
             // 
             // xtraTabControlMessageInfo
@@ -409,10 +437,10 @@
             this.xtraTabControlMessageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtraTabControlMessageInfo.Location = new System.Drawing.Point(3, 62);
+            this.xtraTabControlMessageInfo.Location = new System.Drawing.Point(3, 59);
             this.xtraTabControlMessageInfo.Name = "xtraTabControlMessageInfo";
             this.xtraTabControlMessageInfo.SelectedTabPage = this.xtraTabPageText;
-            this.xtraTabControlMessageInfo.Size = new System.Drawing.Size(908, 199);
+            this.xtraTabControlMessageInfo.Size = new System.Drawing.Size(581, 202);
             this.xtraTabControlMessageInfo.TabIndex = 57;
             this.xtraTabControlMessageInfo.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageRenderedText,
@@ -423,29 +451,14 @@
             // 
             this.xtraTabPageText.Controls.Add(this.memoText);
             this.xtraTabPageText.Name = "xtraTabPageText";
-            this.xtraTabPageText.Size = new System.Drawing.Size(901, 165);
+            this.xtraTabPageText.Size = new System.Drawing.Size(574, 168);
             this.xtraTabPageText.Text = "Message Text";
-            // 
-            // xtraTabPageAdditionalInformation
-            // 
-            this.xtraTabPageAdditionalInformation.Controls.Add(this.memoAdditionalInformation);
-            this.xtraTabPageAdditionalInformation.Name = "xtraTabPageAdditionalInformation";
-            this.xtraTabPageAdditionalInformation.Size = new System.Drawing.Size(901, 165);
-            this.xtraTabPageAdditionalInformation.Text = "Message\'s Additional Information";
-            // 
-            // memoAdditionalInformation
-            // 
-            this.memoAdditionalInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoAdditionalInformation.Location = new System.Drawing.Point(0, 0);
-            this.memoAdditionalInformation.Name = "memoAdditionalInformation";
-            this.memoAdditionalInformation.Size = new System.Drawing.Size(901, 165);
-            this.memoAdditionalInformation.TabIndex = 51;
             // 
             // xtraTabPageRenderedText
             // 
             this.xtraTabPageRenderedText.Controls.Add(this.recMessageDetails);
             this.xtraTabPageRenderedText.Name = "xtraTabPageRenderedText";
-            this.xtraTabPageRenderedText.Size = new System.Drawing.Size(901, 165);
+            this.xtraTabPageRenderedText.Size = new System.Drawing.Size(640, 165);
             this.xtraTabPageRenderedText.Text = "Formatted Text";
             // 
             // recMessageDetails
@@ -455,8 +468,71 @@
             this.recMessageDetails.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
             this.recMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.recMessageDetails.Name = "recMessageDetails";
-            this.recMessageDetails.Size = new System.Drawing.Size(901, 165);
+            this.recMessageDetails.Size = new System.Drawing.Size(640, 165);
             this.recMessageDetails.TabIndex = 5;
+            // 
+            // xtraTabPageAdditionalInformation
+            // 
+            this.xtraTabPageAdditionalInformation.Controls.Add(this.memoAdditionalInformation);
+            this.xtraTabPageAdditionalInformation.Name = "xtraTabPageAdditionalInformation";
+            this.xtraTabPageAdditionalInformation.Size = new System.Drawing.Size(640, 165);
+            this.xtraTabPageAdditionalInformation.Text = "Message\'s Additional Information";
+            // 
+            // memoAdditionalInformation
+            // 
+            this.memoAdditionalInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoAdditionalInformation.Location = new System.Drawing.Point(0, 0);
+            this.memoAdditionalInformation.Name = "memoAdditionalInformation";
+            this.memoAdditionalInformation.Size = new System.Drawing.Size(640, 165);
+            this.memoAdditionalInformation.TabIndex = 51;
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblThreadId);
+            this.splitContainerControl1.Panel1.Controls.Add(this.xtraTabControlMessageInfo);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbThreadId);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl4);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl5);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbIndex);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbProcessId);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnNext);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblMachineName);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbMachineName);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnPrev);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl2);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl3);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblUser);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtID);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblLineNumber);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbDateValue);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblSourceCodeFileName);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbDataSource);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblMethod);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtSourceValue);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbUser);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblLevel);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbLevelValue);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbLineNumber);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbProcessModuleName);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbFileName);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblSource);
+            this.splitContainerControl1.Panel1.Controls.Add(this.lblProcess);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtbMethod);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(655, 604);
+            this.splitContainerControl1.SplitterPosition = 588;
+            this.splitContainerControl1.TabIndex = 3;
             // 
             // MessageDetailsUC
             // 
@@ -465,40 +541,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Controls.Add(this.xtraTabControlMessageInfo);
-            this.Controls.Add(this.lblThreadId);
-            this.Controls.Add(this.txtbThreadId);
-            this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.txtbProcessId);
-            this.Controls.Add(this.lblMachineName);
-            this.Controls.Add(this.txtbMachineName);
-            this.Controls.Add(this.txtbIndex);
-            this.Controls.Add(this.txtID);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.lblUser);
-            this.Controls.Add(this.lblLineNumber);
-            this.Controls.Add(this.lblSourceCodeFileName);
-            this.Controls.Add(this.lblMethod);
-            this.Controls.Add(this.txtbUser);
-            this.Controls.Add(this.lblLevel);
-            this.Controls.Add(this.txtbLineNumber);
-            this.Controls.Add(this.txtbFileName);
-            this.Controls.Add(this.lblProcess);
-            this.Controls.Add(this.txtbMethod);
-            this.Controls.Add(this.lblSource);
-            this.Controls.Add(this.txtbProcessModuleName);
-            this.Controls.Add(this.txtbLevelValue);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.txtSourceValue);
-            this.Controls.Add(this.txtbDataSource);
-            this.Controls.Add(this.txtbDateValue);
-            this.Controls.Add(this.btnPrev);
-            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.splitContainerControl1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MessageDetailsUC";
-            this.Size = new System.Drawing.Size(916, 604);
+            this.Size = new System.Drawing.Size(655, 604);
             this.Load += new System.EventHandler(this.UCMessageDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtbDateValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDataSource.Properties)).EndInit();
@@ -518,9 +564,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMessageInfo)).EndInit();
             this.xtraTabControlMessageInfo.ResumeLayout(false);
             this.xtraTabPageText.ResumeLayout(false);
+            this.xtraTabPageRenderedText.ResumeLayout(false);
             this.xtraTabPageAdditionalInformation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoAdditionalInformation.Properties)).EndInit();
-            this.xtraTabPageRenderedText.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
+            this.splitContainerControl1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -564,5 +615,6 @@
         private DevExpress.XtraEditors.MemoEdit memoAdditionalInformation;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageRenderedText;
         private DevExpress.XtraRichEdit.RichEditControl recMessageDetails;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
     }
 }
