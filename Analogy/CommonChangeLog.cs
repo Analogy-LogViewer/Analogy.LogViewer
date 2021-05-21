@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.7.1 - Add Json parser to the detailed message window #1002",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,21)),
                 new AnalogyChangeLog("V4.7.0 - Update version to 4.7.0 #978",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,01)),
                 new AnalogyChangeLog("V4.7.0 - [DevExpress 20.2] set default skin to be the same as old skin #971",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,01)),
                 new AnalogyChangeLog("V4.7.0 - [Net framework 4.X] Remove WCF data provider #976",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,01)),
