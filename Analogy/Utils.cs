@@ -5,6 +5,7 @@ using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -407,7 +408,7 @@ namespace Analogy
             return openFilter;
         }
 
-       public static  T? GetLogWindows<T>(Control mainControl) where T:class
+        public static T? GetLogWindows<T>(Control mainControl) where T : class
         {
             while (true)
             {
@@ -445,6 +446,28 @@ namespace Analogy
                 return null;
             }
         }
+
+        public static string ExtractJsonObject(string mixedString)
+        {
+            for (var i = mixedString.IndexOf('{'); i > -1; i = mixedString.IndexOf('{', i + 1))
+            {
+                for (var j = mixedString.LastIndexOf('}'); j > -1; j = mixedString.LastIndexOf("}", j - 1))
+                {
+                    var jsonProbe = mixedString.Substring(i, j - i + 1);
+                    try
+                    {
+                        var valid = JsonConvert.DeserializeObject(jsonProbe);
+                        return jsonProbe;
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+
+            return String.Empty;
+        }
+
     }
 
 }

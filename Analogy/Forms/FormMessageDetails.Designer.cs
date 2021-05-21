@@ -70,10 +70,10 @@
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(918, 582);
             this.Controls.Add(this.spltCMain);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("FormMessageDetails.IconOptions.Icon")));
             this.Name = "FormMessageDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Details";
+            this.Text = "Details (press left / right arrows to change messages)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMessageDetails_Load);
             this.spltCMain.Panel2.ResumeLayout(false);

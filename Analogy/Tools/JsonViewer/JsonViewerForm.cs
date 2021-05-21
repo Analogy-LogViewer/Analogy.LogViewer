@@ -38,7 +38,7 @@ namespace Analogy.Tools
             if (message != null)
             {
                 memoEdit1.Text = _useRawField ? message.RawText : message.Text;
-                var json = ExtractJsonObject(_useRawField ? message.RawText : message.Text);
+                var json =Utils.ExtractJsonObject(_useRawField ? message.RawText : message.Text);
                 if (!string.IsNullOrEmpty(json))
                 {
                     _jsonTreeView.ShowJson(json);
@@ -48,28 +48,7 @@ namespace Analogy.Tools
 
 
         }
-
-        public string ExtractJsonObject(string mixedString)
-        {
-            for (var i = mixedString.IndexOf('{'); i > -1; i = mixedString.IndexOf('{', i + 1))
-            {
-                for (var j = mixedString.LastIndexOf('}'); j > -1; j = mixedString.LastIndexOf("}", j - 1))
-                {
-                    var jsonProbe = mixedString.Substring(i, j - i + 1);
-                    try
-                    {
-                        var valid = JsonConvert.DeserializeObject(jsonProbe);
-                        return jsonProbe;
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-
-            return null;
-        }
-
+        
         private void sbtnLoad_Click(object sender, EventArgs e)
         {
             _jsonTreeView.ShowJson(memoEdit1.Text);

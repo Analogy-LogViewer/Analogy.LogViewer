@@ -1,11 +1,12 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Tools.JsonViewer;
 using DevExpress.XtraEditors;
+using Markdig;
+using Markdig.SyntaxHighlighting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Markdig;
-using Markdig.SyntaxHighlighting;
 
 namespace Analogy
 {
@@ -15,36 +16,39 @@ namespace Analogy
         private List<AnalogyLogMessage> Messages { get; }
         private string DataSource { get; }
         private MarkdownPipeline? Pipeline { get; set; }
+        private JsonTreeView _jsonTreeView;
+
         public MessageDetailsUC()
         {
             InitializeComponent();
             Messages = new List<AnalogyLogMessage>(0);
         }
 
-        public void SetMessage(AnalogyLogMessage m)
-        {
-            Messages.Clear();
-            Messages.Add(m);
-            Message = m;
-        }
         public MessageDetailsUC(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
         {
             Message = msg;
             Messages = messages;
             DataSource = dataSource;
+
         }
 
         private void UCMessageDetails_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
-                return; 
+                return;
 
             }
+
             Pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
                 .UseSyntaxHighlighting()
                 .Build();
             xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageRenderedText;
+
+
+            _jsonTreeView = new JsonTreeView();
+            splitContainerControl1.Panel2.Controls.Add(_jsonTreeView);
+            _jsonTreeView.Dock = DockStyle.Fill;
             LoadMessage();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -71,7 +75,9 @@ namespace Analogy
             {
                 return;
             }
-            xtraTabPageAdditionalInformation.PageVisible = Message.AdditionalInformation != null && Message.AdditionalInformation.Any();
+
+            xtraTabPageAdditionalInformation.PageVisible =
+                Message.AdditionalInformation != null && Message.AdditionalInformation.Any();
             if (Message.AdditionalInformation != null)
             {
                 memoAdditionalInformation.Text = string.Join(Environment.NewLine,
@@ -92,10 +98,26 @@ namespace Analogy
             txtbFileName.Text = Message.FileName;
             txtbUser.Text = Message.User;
             txtbLineNumber.Text = Message.LineNumber.ToString();
-            txtbIndex.Text = $"{Messages.IndexOf(Message) + 1} of {Messages.Count}";
+            txtbIndex.Text = $@"{Messages.IndexOf(Message) + 1} of {Messages.Count}";
             recMessageDetails.HtmlText = Markdown.ToHtml(Message.Text, Pipeline);
+            var jsonRawData = Message.RawTextType == AnalogyRowTextType.JSON;
+            if (jsonRawData)
+            {
+                var json = Utils.ExtractJsonObject(jsonRawData ? Message.RawText : Message.Text);
+                _jsonTreeView.ClearList();
+                if (!string.IsNullOrEmpty(json))
+                {
+                    _jsonTreeView.ShowJson(json);
+                }
 
+                splitContainerControl1.PanelVisibility = SplitPanelVisibility.Both;
+            }
+            else
+            {
+                splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel1;
+            }
         }
+
 
         private void btnNext_Click(object sender, EventArgs e)
         {

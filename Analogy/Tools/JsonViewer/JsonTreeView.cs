@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Analogy.Managers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Managers;
-using DevExpress.XtraBars.Ribbon;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Analogy.Tools.JsonViewer
 {
@@ -55,6 +51,10 @@ namespace Analogy.Tools.JsonViewer
             ImageList = treeImages;
         }
 
+        public void ClearList()
+        {
+            Nodes.Clear();
+        }
         public void ShowJson(string jsonString)
         {
             try
