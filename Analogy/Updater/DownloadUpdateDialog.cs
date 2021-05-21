@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Analogy.Updater
 {
-   internal partial class DownloadUpdateDialog : XtraForm
+    internal partial class DownloadUpdateDialog : XtraForm
     {
         public static IWebProxy? Proxy;
         private readonly string _downloadURL;
@@ -38,7 +38,7 @@ namespace Analogy.Updater
             _targetFolder = targetFolder;
             _currentFrameworkAttribute = currentFrameworkAttribute;
             _taskCompletionSource = taskCompletionSource;
-            _tempFile = Path.Combine(Path.GetTempPath(), "Analogy.Updater.zip"); 
+            _tempFile = Path.Combine(Path.GetTempPath(), "Analogy.Updater.zip");
             Icon = UserSettingsManager.UserSettings.GetIcon();
 
         }
@@ -97,14 +97,25 @@ namespace Analogy.Updater
         private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath)
         {
             string version = "net472";
-            if (_currentFrameworkAttribute.FrameworkName.EndsWith("4.7.1") ||
-                _currentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
+            if (_currentFrameworkAttribute.FrameworkName.EndsWith("4.7.1"))
+            {
+                version = "net471";
+            }
+            else if (_currentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
             {
                 version = "net472";
+            }
+            else if (_currentFrameworkAttribute.FrameworkName.EndsWith("4.8"))
+            {
+                version = "net48";
             }
             else if (_currentFrameworkAttribute.FrameworkName.EndsWith("3.1"))
             {
                 version = "netcoreapp3.1";
+            }
+            else if (_currentFrameworkAttribute.FrameworkName.EndsWith("5.0"))
+            {
+                version = "net5.0-windows";
             }
 
             using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))

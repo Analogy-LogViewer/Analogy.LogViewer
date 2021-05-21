@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Versioning;
@@ -196,7 +195,11 @@ namespace Analogy.Managers
                 asset = LastVersionChecked.Assets
                     .FirstOrDefault(a => a.Name.Contains("3.1") || a.Name.Contains("netcoreapp3.1"));
             }
-
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("5.0"))
+            {
+                asset = LastVersionChecked.Assets
+                    .FirstOrDefault(a => a.Name.Contains("net5.0") || a.Name.Contains("net5.0-windows"));
+            }
             return asset;
         }
         public async Task<(string TagName, GithubObjects.GithubAsset UpdaterAsset)?> GetLatestUpdater()
@@ -256,57 +259,7 @@ namespace Analogy.Managers
 
         }
 
-        private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath)
-        {
-            string version = "net48";
-            if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.1"))
-            {
-                version = "net471";
-            }
-            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.2"))
-            {
-                version = "net472";
-            }
-            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.8"))
-            {
-                version = "net48";
-            }
-            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("3.1"))
-            {
-                version = "netcoreapp3.1";
-            }
-
-            using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
-            {
-                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
-                {
-                    //build a list of files to be extracted
-                    var entries = archive.Entries.Where(entry =>
-                        !entry.FullName.EndsWith("/") && entry.FullName.Contains(version));
-                    foreach (ZipArchiveEntry entry in entries)
-                    {
-                        string target = Path.Combine(extractPath, entry.Name);
-                        string directory = Path.GetDirectoryName(target);
-                        if (!Directory.Exists(directory))
-                        {
-                            Directory.CreateDirectory(directory);
-                        }
-
-                        try
-                        {
-                            entry.ExtractToFile(target, true);
-                        }
-                        catch (Exception e)
-                        {
-                            AnalogyLogger.Instance.LogException($"Error unpacking Updater: {e.Message}", e);
-                        }
-
-                    }
-                }
-            }
-        }
-
-        public async Task InitiateUpdate(string title, string downloadURL,bool forceOverride)
+        public async Task InitiateUpdate(string title, string downloadURL, bool forceOverride)
         {
             if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(downloadURL))
             {
