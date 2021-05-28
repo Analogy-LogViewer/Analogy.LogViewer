@@ -221,5 +221,8 @@
     <Setting Name="MainFormType" Type="System.String" Scope="User">
       <Value Profile="(Default)">RibbonForm</Value>
     </Setting>
+    <Setting Name="DefaultUserLogFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

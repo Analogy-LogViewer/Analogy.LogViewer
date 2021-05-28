@@ -81,5 +81,7 @@ namespace Analogy.DataTypes
         public SettingsMode SettingsMode { get; set; }
         public string Version { get; set; }
         public MainFormType MainFormType { get; set; }
+        public string DefaultUserLogFolder { get; set; }
+
     }
 }
