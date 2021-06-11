@@ -1443,7 +1443,10 @@ namespace Analogy.Forms
 
                 //add Open Pooled file entry
                 BarSubItem filePoolingBtn = new BarSubItem();
-                filePoolingBtn.Caption = "File Pooling";
+                string caption="File Pooling (Monitoring)";
+                filePoolingBtn.Caption = caption;
+                filePoolingBtn.SuperTip =
+                    Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
                 group.ItemLinks.Add(filePoolingBtn);
                 filePoolingBtn.ImageOptions.Image = images?.GetSmallFilePoolingImage(factoryId) ?? Resources.FilePooling_16x16;
                 filePoolingBtn.ImageOptions.LargeImage = images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
@@ -1747,7 +1750,10 @@ namespace Analogy.Forms
 
                 //add Open Pooled file entry
                 BarButtonItem filePoolingBtn = new BarButtonItem();
-                filePoolingBtn.Caption = "File Pooling";
+                string caption = "File Pooling (Monitoring)";
+                filePoolingBtn.Caption = caption;
+                filePoolingBtn.SuperTip =
+                    Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
                 group.ItemLinks.Add(filePoolingBtn);
                 filePoolingBtn.ImageOptions.Image = images?.GetSmallFilePoolingImage(factoryId) ?? Resources.FilePooling_16x16;
                 filePoolingBtn.ImageOptions.LargeImage = images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;

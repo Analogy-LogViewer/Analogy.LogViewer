@@ -18,6 +18,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using DevExpress.Utils;
 
 namespace Analogy
 {
@@ -470,6 +471,17 @@ namespace Analogy
 
         public static DateTime GetOffsetTime(DateTime time) => time.Add(UserSettingsManager.UserSettings.TimeOffset);
 
+        public static SuperToolTip GetSuperTip(string title,string content)
+        {
+            SuperToolTip toolTip = new SuperToolTip();
+            // Create an object to initialize the SuperToolTip.
+            SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+            args.Title.Text = title;
+            args.Contents.Text = content;
+            // args.Contents.Image = realTime.ToolTip.Image;
+            toolTip.Setup(args);
+            return toolTip;
+        }
     }
 
 }
