@@ -137,6 +137,7 @@ namespace Analogy
         public SettingsMode SettingsMode { get; set; }
         public MainFormType MainFormType { get; set; }
         public string DefaultUserLogFolder { get; set; }
+        public TimeSpan TimeOffset { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -272,6 +273,7 @@ namespace Analogy
             }
 
             DefaultUserLogFolder = Settings.Default.DefaultUserLogFolder;
+            TimeOffset=TimeSpan.FromMilliseconds(Settings.Default.TimeOffset);
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -349,6 +351,7 @@ namespace Analogy
                                      UpdateManager.Instance.CurrentVersion.ToString(4) != settings.Version;
             MainFormType = settings.MainFormType;
             DefaultUserLogFolder = settings.DefaultUserLogFolder;
+            TimeOffset = settings.TimeOffset;
         }
 
         private UserSettings CreateUserSettings()
@@ -425,7 +428,8 @@ namespace Analogy
                 UseCustomLogsLayout = UseCustomLogsLayout,
                 ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML,
                 MainFormType = MainFormType,
-                DefaultUserLogFolder = DefaultUserLogFolder
+                DefaultUserLogFolder = DefaultUserLogFolder,
+                TimeOffset = TimeOffset
 
             };
             return userSettings;
@@ -584,6 +588,7 @@ namespace Analogy
             Settings.Default.ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML;
             Settings.Default.MainFormType = MainFormType.ToString();
             Settings.Default.DefaultUserLogFolder = DefaultUserLogFolder;
+            Settings.Default.TimeOffset = TimeOffset.TotalMilliseconds;
 
             Settings.Default.Save();
         }
