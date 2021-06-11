@@ -14,17 +14,24 @@ namespace Analogy.Tools.JsonViewer
     [Designer("JSON Tree View")]
     public class JsonTreeView : TreeView
     {
-        private TreeNode previouslySelectedNode = null;
+        private TreeNode previouslySelectedNode;
         private ContextMenuStrip treeContextMenu;
         private IContainer components;
         private ToolStripMenuItem expandAllMenuItem;
         private StatusStrip statusStrip1;
-        private string previouslySelectedNodeText = null;
-
+        private string previouslySelectedNodeText;
+        public event EventHandler<string> OnNodeChanged;
         public JsonTreeView()
         {
             InitializeComponent();
             AfterSelect += this_AfterSelect;
+            DoubleClick += (s, e) =>
+            {
+                if (SelectedNode != null)
+                {
+                    Clipboard.SetText(SelectedNode.Text,TextDataFormat.UnicodeText);
+                }
+            };
             MouseDown += this_MouseDown;
             expandAllMenuItem.Click += expandAllMenuItem_Click;
 
@@ -184,7 +191,7 @@ namespace Analogy.Tools.JsonViewer
 
         }
 
-        private new JsonTreeNode SelectedNode
+        private new JsonTreeNode? SelectedNode
         {
             get => base.SelectedNode as JsonTreeNode;
             set => base.SelectedNode = value;
@@ -203,8 +210,9 @@ namespace Analogy.Tools.JsonViewer
             previouslySelectedNodeText = e.Node.Text;
 
             e.Node.Text = ((JsonTreeNode)e.Node).TextWhenSelected;
+            OnNodeChanged?.Invoke(this,e.Node.Text);
         }
-
+        
         private void this_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)

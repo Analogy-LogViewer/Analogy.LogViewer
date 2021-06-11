@@ -32,8 +32,9 @@ namespace Analogy.Tools
             }
 
             Icon = settings.GetIcon();
-            _jsonTreeView = new JsonTreeView();
-            splitContainerControl1.Panel2.Controls.Add(_jsonTreeView);
+            _jsonTreeView = new JsonTreeView(); 
+            _jsonTreeView.OnNodeChanged += (s, e) => meSelected.Text = e;
+            splitContainerControl2.Panel1.Controls.Add(_jsonTreeView);
             _jsonTreeView.Dock = DockStyle.Fill;
             if (message != null)
             {

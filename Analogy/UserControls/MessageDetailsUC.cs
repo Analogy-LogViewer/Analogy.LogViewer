@@ -45,9 +45,9 @@ namespace Analogy
                 .Build();
             xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageRenderedText;
 
-
             _jsonTreeView = new JsonTreeView();
-            splitContainerControl1.Panel2.Controls.Add(_jsonTreeView);
+            _jsonTreeView.OnNodeChanged += (s, e) => meSelected.Text = e;
+            splitContainerControl2.Panel1.Controls.Add(_jsonTreeView);
             _jsonTreeView.Dock = DockStyle.Fill;
             LoadMessage();
         }
