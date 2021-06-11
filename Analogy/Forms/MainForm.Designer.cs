@@ -160,6 +160,7 @@
             this.ribbonControlMain.AutoHideEmptyItems = true;
             this.ribbonControlMain.AutoSaveLayoutToXmlPath = "AnalogyRibbonSettings.xml";
             this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiGlobalTools);
+            this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bsiGlobalTools,
@@ -863,6 +864,7 @@
             superToolTip4.Items.Add(toolTipTitleItem5);
             superToolTip4.Items.Add(toolTipItem4);
             this.bbtnSponsorOpenCollection.SuperTip = superToolTip4;
+            this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiBinance
             // 
@@ -941,7 +943,7 @@
             this.ClientSize = new System.Drawing.Size(1628, 896);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(10, 800);
             this.Name = "MainForm";
