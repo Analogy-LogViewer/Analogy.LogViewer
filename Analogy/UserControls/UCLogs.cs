@@ -779,8 +779,8 @@ namespace Analogy
                 bbiIncludeSource.Caption = $"Include Source: Append '{source}' to filter";
                 bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{module}' to filter";
                 bbiExcludeSource.Caption = $"Exclude Source: Append '{source}' to filter";
-                bbiDatetiemFilterFrom.Caption = $"Show all messages after {message.Date}";
-                bbiDatetiemFilterTo.Caption = $"Show all messages Before {message.Date}";
+                bbiDatetiemFilterFrom.Caption = $"Show all messages after {Utils.GetOffsetTime(message.Date)}";
+                bbiDatetiemFilterTo.Caption = $"Show all messages Before {Utils.GetOffsetTime(message.Date)}";
                 bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
                 bbiDatetiemFilterTo.Visibility = BarItemVisibility.Always;
             }
@@ -1145,7 +1145,7 @@ namespace Analogy
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.Text = extension.Title;
                 page.Controls.Add(extension.UserControl);
-                await extension.InitializeUserControl(this,AnalogyLogger.Instance);
+                await extension.InitializeUserControl(this, AnalogyLogger.Instance);
                 page.DockedAsTabbedDocument = true;
             }
         }
@@ -1455,7 +1455,7 @@ namespace Analogy
             lockSlim.EnterWriteLock();
             if (diffStartTime > DateTime.MinValue)
             {
-                dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
+                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
             }
 
             lockSlim.ExitWriteLock();
@@ -1562,7 +1562,7 @@ namespace Analogy
             {
                 if (diffStartTime > DateTime.MinValue)
                 {
-                    dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
+                    dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
                 }
 
                 if (hasAnyInPlaceExtensions)
@@ -2274,7 +2274,7 @@ namespace Analogy
                 Settings.CheckAdditionalInformation);
             if (diffStartTime > DateTime.MinValue)
             {
-                dtr["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
+                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
             }
 
             _bookmarkedMessages.Rows.Add(dtr);
@@ -2414,7 +2414,7 @@ namespace Analogy
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                diffStartTime = message.Date;
+                diffStartTime = Utils.GetOffsetTime(message.Date);
                 UpdateTimes();
             }
 
@@ -2428,8 +2428,7 @@ namespace Analogy
                 foreach (DataRow row in _messageData.Rows)
                 {
                     AnalogyLogMessage message = (AnalogyLogMessage)row["Object"];
-                    //row["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString("d\\.hh\\:mm\\:ss\\.fff");
-                    row["TimeDiff"] = message.Date.Subtract(diffStartTime).ToString();
+                    row["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
                 }
 
                 _messageData.EndLoadData();
@@ -3058,32 +3057,24 @@ namespace Analogy
         private void tsmiDateFilterNewer_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            deNewerThanFilter.DateTime = message.Date;
-            ceNewerThanFilter.Checked = true;
+            if (message != null)
+            {
+                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date);
+                ceNewerThanFilter.Checked = true;
+            }
         }
 
         private void tsmiDateFilterOlder_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            deOlderThanFilter.DateTime = message.Date;
-            ceOlderThanFilter.Checked = true;
+            if (message != null)
+            {
+                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date);
+                ceOlderThanFilter.Checked = true;
+            }
         }
 
-        private void tsmiBookmarkDateFilterNewer_Click(object sender, EventArgs e)
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            deNewerThanFilter.DateTime = message.Date;
-            ceNewerThanFilter.Checked = true;
-        }
-
-        private void tsmiBookmarkDateFilterOlder_Click(object sender, EventArgs e)
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            deOlderThanFilter.DateTime = message.Date;
-            ceOlderThanFilter.Checked = true;
-        }
-
-        private void sbtnMoreHighlight_Click(object sender, EventArgs e)
+ private void sbtnMoreHighlight_Click(object sender, EventArgs e)
         {
             var user = new ApplicationSettingsForm("Color Highlighting");
             user.ShowDialog(this);
@@ -3213,11 +3204,11 @@ namespace Analogy
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider,AnalogyOfflineDataProvider);
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
             var processor = new FileProcessor(logGridForm.LogWindow);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
-            
+
         }
 
         public void ReportFileReadProgress(AnalogyFileReadProgress progress)

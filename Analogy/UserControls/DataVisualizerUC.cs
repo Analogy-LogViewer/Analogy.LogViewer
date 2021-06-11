@@ -66,30 +66,30 @@ namespace Analogy
                     if (m.Text.Contains(item))
                     {
                         timeDistribution[item].Add(m);
-                        if (!frequency[item].ContainsKey(m.Date.TimeOfDay))
+                        if (!frequency[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
                         {
-                            frequency[item].Add(m.Date.TimeOfDay, 1);
+                            frequency[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 1);
                         }
 
-                        if (!frequencyCount[item].ContainsKey(m.Date.TimeOfDay))
+                        if (!frequencyCount[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
                         {
-                            frequencyCount[item].Add(m.Date.TimeOfDay, 1);
+                            frequencyCount[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 1);
                         }
                         else
                         {
-                            frequencyCount[item][m.Date.TimeOfDay] += 1;
+                            frequencyCount[item][Utils.GetOffsetTime(m.Date).TimeOfDay] += 1;
                         }
                     }
                     else
                     {
-                        if (!frequency[item].ContainsKey(m.Date.TimeOfDay))
+                        if (!frequency[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
                         {
-                            frequency[item].Add(m.Date.TimeOfDay, 0);
+                            frequency[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 0);
                         }
 
-                        if (!frequencyCount[item].ContainsKey(m.Date.TimeOfDay))
+                        if (!frequencyCount[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
                         {
-                            frequencyCount[item].Add(m.Date.TimeOfDay, 0);
+                            frequencyCount[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 0);
                         }
                     }
                 }
@@ -158,8 +158,8 @@ namespace Analogy
                 string item = td.Key;
                 foreach (AnalogyLogMessage val in td.Value)
                 {
-                    tbl.Rows.Add(item, val.Date, val.Date.Ticks,
-                        val.Date.Hour + (float)val.Date.Minute / 60 + (float)val.Date.Second / 60 / 60);
+                    tbl.Rows.Add(item, Utils.GetOffsetTime(val.Date), Utils.GetOffsetTime(val.Date).Ticks,
+                        val.Date.Hour + (float)Utils.GetOffsetTime(val.Date).Minute / 60 + (float)Utils.GetOffsetTime(val.Date).Second / 60 / 60);
                 }
 
             }

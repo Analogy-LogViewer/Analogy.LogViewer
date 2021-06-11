@@ -88,7 +88,7 @@ namespace Analogy
             txtbMachineName.Text = Message.MachineName;
             txtID.Text = Message.Id.ToString();
             txtbDataSource.Text = DataSource;
-            txtbDateValue.Text = Message.Date.ToString(UserSettingsManager.UserSettings.DateTimePattern);
+            txtbDateValue.Text = Utils.GetOffsetTime(Message.Date).ToString(UserSettingsManager.UserSettings.DateTimePattern);
             txtbLevelValue.Text = Message.Level.ToString();
             txtbProcessModuleName.Text = Message.Module;
             txtbProcessId.Text = Message.ProcessId.ToString();

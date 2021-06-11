@@ -290,7 +290,7 @@ namespace Analogy
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
-            dtr["Date"] = message.Date;
+            dtr["Date"] = Utils.GetOffsetTime(message.Date);
             dtr["Text"] = message.Text ?? "";
             dtr["Source"] = message.Source ?? "";
             dtr["Level"] = string.Intern(message.Level.ToString());
@@ -465,8 +465,10 @@ namespace Analogy
                 }
             }
 
-            return String.Empty;
+            return string.Empty;
         }
+
+        public static DateTime GetOffsetTime(DateTime time) => time.Add(UserSettingsManager.UserSettings.TimeOffset);
 
     }
 
