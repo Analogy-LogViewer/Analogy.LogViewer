@@ -182,7 +182,7 @@ namespace Analogy
             this.bbtnSponsorOpenCollection,
             this.bbiBinance});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 27;
+            this.barManager1.MaxItemId = 28;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -445,6 +445,13 @@ namespace Analogy
             this.notifyIconAnalogy.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconAnalogy.Icon")));
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
+            // 
+            // defaultToolTipController1
+            // 
+            // 
+            // 
+            // 
+            this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
             // 
             // imageList1
             // 
