@@ -429,7 +429,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 685);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 709);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(879, 24);
             // 
@@ -439,7 +439,7 @@ namespace Analogy.ApplicationSettings
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 685);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 709);
             // 
             // barDockControlRight
             // 
@@ -447,7 +447,7 @@ namespace Analogy.ApplicationSettings
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(879, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 685);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 709);
             // 
             // gcMainForm
             // 
@@ -465,12 +465,12 @@ namespace Analogy.ApplicationSettings
             // 
             this.ceFluentForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.ceFluentForm.Enabled = false;
-            this.ceFluentForm.Location = new System.Drawing.Point(2, 52);
+            this.ceFluentForm.Location = new System.Drawing.Point(2, 51);
             this.ceFluentForm.Name = "ceFluentForm";
             this.ceFluentForm.Properties.Caption = "Fluent Design";
             this.ceFluentForm.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
             this.ceFluentForm.Properties.RadioGroupIndex = 0;
-            this.ceFluentForm.Size = new System.Drawing.Size(875, 27);
+            this.ceFluentForm.Size = new System.Drawing.Size(875, 26);
             this.ceFluentForm.TabIndex = 1;
             this.ceFluentForm.TabStop = false;
             // 
@@ -483,7 +483,7 @@ namespace Analogy.ApplicationSettings
             this.ceRibbonForm.Properties.Caption = "Ribbon Form";
             this.ceRibbonForm.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
             this.ceRibbonForm.Properties.RadioGroupIndex = 0;
-            this.ceRibbonForm.Size = new System.Drawing.Size(875, 27);
+            this.ceRibbonForm.Size = new System.Drawing.Size(875, 26);
             this.ceRibbonForm.TabIndex = 0;
             // 
             // ApplicationUISettingsUC
@@ -499,7 +499,7 @@ namespace Analogy.ApplicationSettings
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ApplicationUISettingsUC";
-            this.Size = new System.Drawing.Size(879, 668);
+            this.Size = new System.Drawing.Size(879, 733);
             this.Load += new System.EventHandler(this.ApplicationUISettingsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).EndInit();
             this.gcUISettings.ResumeLayout(false);

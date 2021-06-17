@@ -47,7 +47,7 @@ namespace Analogy.ApplicationSettings
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             teDateTimeFormat.Text = Settings.DateTimePattern;
-
+            timeSpanEditOffset.EditValue = Settings.TimeOffset;
         }
         private void SetupExampleMessage(string text)
         {
@@ -72,6 +72,10 @@ namespace Analogy.ApplicationSettings
 
         private void SetupEventsHandlers()
         {
+            timeSpanEditOffset.EditValueChanged += (s, e) =>
+            {
+                Settings.TimeOffset = (TimeSpan)timeSpanEditOffset.EditValue;
+            };
             logGrid.MouseDown += (s, e) =>
             {
                 GridHitInfo info = logGrid.CalcHitInfo(e.Location);

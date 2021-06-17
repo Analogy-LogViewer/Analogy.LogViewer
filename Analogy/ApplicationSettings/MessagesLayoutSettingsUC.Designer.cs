@@ -30,6 +30,8 @@ namespace Analogy.ApplicationSettings
         private void InitializeComponent()
         {
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.timeSpanEditOffset = new DevExpress.XtraEditors.TimeSpanEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnDateTimeFormat = new DevExpress.XtraEditors.SimpleButton();
             this.teDateTimeFormat = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
@@ -54,6 +56,7 @@ namespace Analogy.ApplicationSettings
             this.teHeader = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timeSpanEditOffset.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teDateTimeFormat.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlMessages)).BeginInit();
             this.panelControlMessages.SuspendLayout();
@@ -64,6 +67,8 @@ namespace Analogy.ApplicationSettings
             // 
             // groupControl5
             // 
+            this.groupControl5.Controls.Add(this.timeSpanEditOffset);
+            this.groupControl5.Controls.Add(this.labelControl1);
             this.groupControl5.Controls.Add(this.sbtnDateTimeFormat);
             this.groupControl5.Controls.Add(this.teDateTimeFormat);
             this.groupControl5.Controls.Add(this.labelControl11);
@@ -75,9 +80,30 @@ namespace Analogy.ApplicationSettings
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Margin = new System.Windows.Forms.Padding(10);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(1120, 324);
+            this.groupControl5.Size = new System.Drawing.Size(1120, 359);
             this.groupControl5.TabIndex = 11;
             this.groupControl5.Text = "Messages Layout";
+            // 
+            // timeSpanEditOffset
+            // 
+            this.timeSpanEditOffset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.timeSpanEditOffset.EditValue = System.TimeSpan.Parse("00:00:00");
+            this.timeSpanEditOffset.Location = new System.Drawing.Point(118, 325);
+            this.timeSpanEditOffset.Name = "timeSpanEditOffset";
+            this.timeSpanEditOffset.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.timeSpanEditOffset.Properties.MaskSettings.Set("allowNegativeValues", true);
+            this.timeSpanEditOffset.Size = new System.Drawing.Size(997, 22);
+            this.timeSpanEditOffset.TabIndex = 18;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(7, 328);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(72, 16);
+            this.labelControl1.TabIndex = 15;
+            this.labelControl1.Text = "Time Offset:";
             // 
             // sbtnDateTimeFormat
             // 
@@ -442,6 +468,7 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timeSpanEditOffset.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teDateTimeFormat.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlMessages)).EndInit();
             this.panelControlMessages.ResumeLayout(false);
@@ -477,5 +504,7 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.LabelControl lblHeader;
         private DevExpress.XtraEditors.SimpleButton sbtnHeaderSet;
         private DevExpress.XtraEditors.TextEdit teHeader;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.TimeSpanEdit timeSpanEditOffset;
     }
 }
