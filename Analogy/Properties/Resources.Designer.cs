@@ -373,26 +373,6 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Binance {
-            get {
-                object obj = ResourceManager.GetObject("Binance", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap binance64x64 {
-            get {
-                object obj = ResourceManager.GetObject("binance64x64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap binance64x64alpha {
             get {
                 object obj = ResourceManager.GetObject("binance64x64alpha", resourceCulture);
@@ -551,22 +531,22 @@ namespace Analogy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Bitmap discord_logo_16x161 {
+        internal static System.Drawing.Icon discord_logo_16x16 {
             get {
-                object obj = ResourceManager.GetObject("discord-logo-16x161", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("discord_logo_16x16", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Bitmap discord_logo_32x321 {
+        internal static System.Drawing.Icon discord_logo_32x32 {
             get {
-                object obj = ResourceManager.GetObject("discord-logo-32x321", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("discord_logo_32x32", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -1085,16 +1065,6 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap Paste_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Paste_16x16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PayPal {
-            get {
-                object obj = ResourceManager.GetObject("PayPal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

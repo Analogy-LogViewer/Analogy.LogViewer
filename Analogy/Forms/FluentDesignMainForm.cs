@@ -186,15 +186,90 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            #region  main menu
+
+            btnSettingsUpdate.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Updates");
+                user.ShowDialog(this);
+            };
+
+            bbiSettingsExtensions.ItemClick += (s, e) =>
+            {
+
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Extensions");
+                user.ShowDialog(this);
+            };
+
+            btnSettingsDebugging.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Debugging");
+                user.ShowDialog(this);
+            };
+
+            btnShortcuts.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
+                user.ShowDialog(this);
+            };
+
+            bbiDonation.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
+                user.ShowDialog(this);
+            };
+            btnApplicationSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");
+                user.ShowDialog(this);
+            };
+            btnApplicationUISettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Application UI Settings");
+                user.ShowDialog(this);
+            };
+            btnFiltering.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Filtering");
+                user.ShowDialog(this);
+            };
+            btnMessageColumnsLayoutSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Layout");
+                user.ShowDialog(this);
+            };
+            btnColorsSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Settings");
+                user.ShowDialog(this);
+            };
+            btnSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Highlighting");
+                user.ShowDialog(this);
+            };
+            btnPreDefinedQueries.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Predefined queries");
+                user.ShowDialog(this);
+            };
+            btnPreDefinedQueries.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
+                user.ShowDialog(this);
+            };
+            btnDataProvidersSettings.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Data Provider Settings");
+                user.ShowDialog(this);
+            };
+            #endregion
+            
             bbiBinance.ItemClick += (s, e) =>
             {
                 Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
             };
-            bbtnSettings.ItemClick += (s, e) =>
-            {
-                ApplicationSettingsForm user = new ApplicationSettingsForm();
-                user.ShowDialog(this);
-            };
+
             dockManager1.ClosingPanel += (s, e) =>
             {
                 var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
@@ -423,6 +498,11 @@ namespace Analogy
 
             //    AddFactorySettings(fc, ribbonPage);
             //    AddAbout(fc, ribbonPage);
+
+        }
+
+        private void fluentDesignFormControl1_Click(object sender, EventArgs e)
+        {
 
         }
     }

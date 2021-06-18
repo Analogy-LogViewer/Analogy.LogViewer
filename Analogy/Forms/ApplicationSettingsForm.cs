@@ -81,7 +81,8 @@ namespace Analogy.Forms
                     return new DataProvidersFileAssociationUC();
                 case "Data Provider external locations Settings":
                     return new DataProvidersExternalLocationsSettingsUC();
-
+                case "Donations":
+                    return new SupportSettingsUC();
                 default:
                     {
                         AnalogyLogger.Instance.LogError($"User Setting with {name} was not found");
@@ -210,5 +211,10 @@ namespace Analogy.Forms
             Settings.Save();
         }
 
+        private void Donations_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl("Donations");
+
+        }
     }
 }

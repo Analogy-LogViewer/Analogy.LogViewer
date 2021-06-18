@@ -43,18 +43,16 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -127,7 +125,6 @@
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDiscord = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -135,6 +132,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            this.bbiDonation = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -164,6 +162,7 @@
             this.ribbonControlMain.AutoSaveLayoutToXmlPath = "AnalogyRibbonSettings.xml";
             this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiGlobalTools);
             this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
+            this.ribbonControlMain.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(37);
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bsiGlobalTools,
@@ -235,11 +234,12 @@
             this.btnColorHighlightSettings,
             this.bbtnSponsorOpenCollection,
             this.bbiBinance,
-            this.bbiDiscord});
+            this.bbiDonation});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControlMain.MaxItemId = 114;
+            this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.ribbonControlMain.MaxItemId = 115;
             this.ribbonControlMain.Name = "ribbonControlMain";
+            this.ribbonControlMain.OptionsMenuMinWidth = 412;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bsmInfo);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
@@ -248,7 +248,7 @@
             this.ribbonControlMain.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1628, 61);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1628, 71);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
             // 
@@ -706,11 +706,11 @@
             this.skinRibbonGallery.Id = 81;
             this.skinRibbonGallery.Name = "skinRibbonGallery";
             toolTipTitleItem7.Text = "Skins and themes";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "A list of built-in skins and themes";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.skinRibbonGallery.SuperTip = superToolTip7;
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "A list of built-in skins and themes";
+            superToolTip6.Items.Add(toolTipTitleItem7);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.skinRibbonGallery.SuperTip = superToolTip6;
             // 
             // skinPaletteRibbonGalleryBarItem3
             // 
@@ -737,7 +737,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSettingsExtensions),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsDebugging)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsDebugging),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDonation)});
             this.bsiSettings.Name = "bsiSettings";
             // 
             // btnApplicationSettings
@@ -810,7 +811,6 @@
             this.btnShortcuts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnShortcuts.ImageOptions.Image")));
             this.btnShortcuts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnShortcuts.ImageOptions.LargeImage")));
             this.btnShortcuts.Name = "btnShortcuts";
-            this.btnShortcuts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShortcuts_ItemClick);
             // 
             // bbiSettingsExtensions
             // 
@@ -819,7 +819,6 @@
             this.bbiSettingsExtensions.ImageOptions.Image = global::Analogy.Properties.Resources.extension16;
             this.bbiSettingsExtensions.ImageOptions.LargeImage = global::Analogy.Properties.Resources.extension32;
             this.bbiSettingsExtensions.Name = "bbiSettingsExtensions";
-            this.bbiSettingsExtensions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSettingsExtensions_ItemClick);
             // 
             // btnSettingsUpdate
             // 
@@ -828,7 +827,6 @@
             this.btnSettingsUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingsUpdate.ImageOptions.Image")));
             this.btnSettingsUpdate.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsUpdate.ImageOptions.LargeImage")));
             this.btnSettingsUpdate.Name = "btnSettingsUpdate";
-            this.btnSettingsUpdate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSettingsUpdate_ItemClick);
             // 
             // btnSettingsDebugging
             // 
@@ -837,7 +835,6 @@
             this.btnSettingsDebugging.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingsDebugging.ImageOptions.Image")));
             this.btnSettingsDebugging.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsDebugging.ImageOptions.LargeImage")));
             this.btnSettingsDebugging.Name = "btnSettingsDebugging";
-            this.btnSettingsDebugging.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSettingsDebugging_ItemClick);
             // 
             // barSubItem3
             // 
@@ -876,23 +873,13 @@
             this.bbiBinance.Id = 112;
             this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
             this.bbiBinance.Name = "bbiBinance";
-            toolTipItem6.Text = "Support this project by registering to Binance Exchange.\r\nYou will get 5% return " +
+            toolTipItem5.Text = "Support this project by registering to Binance Exchange.\r\nYou will get 5% return " +
     "on your fees";
             toolTipTitleItem6.Text = "You will get 5% return on fees using this link";
-            superToolTip6.Items.Add(toolTipItem6);
-            superToolTip6.Items.Add(toolTipSeparatorItem1);
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.bbiBinance.SuperTip = superToolTip6;
-            // 
-            // bbiDiscord
-            // 
-            this.bbiDiscord.Id = 113;
-            this.bbiDiscord.ImageOptions.Image = global::Analogy.Properties.Resources.discord_logo_32x321;
-            this.bbiDiscord.Name = "bbiDiscord";
-            toolTipItem5.Icon = ((System.Drawing.Icon)(resources.GetObject("toolTipItem5.Icon")));
-            toolTipItem5.Text = "Open Discord Channel";
             superToolTip5.Items.Add(toolTipItem5);
-            this.bbiDiscord.SuperTip = superToolTip5;
+            superToolTip5.Items.Add(toolTipSeparatorItem1);
+            superToolTip5.Items.Add(toolTipTitleItem6);
+            this.bbiBinance.SuperTip = superToolTip5;
             // 
             // ribbonStatusBar
             // 
@@ -902,16 +889,15 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCompactMemory);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnSponsorOpenCollection);
-            this.ribbonStatusBar.ItemLinks.Add(this.bbiDiscord);
             this.ribbonStatusBar.ItemLinks.Add(this.bbiBinance);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 859);
-            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 866);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1628, 37);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1628, 30);
             // 
             // tmrStatusUpdates
             // 
@@ -955,6 +941,14 @@
             // 
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
+            // 
+            // bbiDonation
+            // 
+            this.bbiDonation.Caption = "Supporting the project";
+            this.bbiDonation.Id = 114;
+            this.bbiDonation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.Image")));
+            this.bbiDonation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.LargeImage")));
+            this.bbiDonation.Name = "bbiDonation";
             // 
             // MainForm
             // 
@@ -1068,6 +1062,6 @@
         private DevExpress.XtraBars.BarButtonItem btnColorHighlightSettings;
         private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
         private DevExpress.XtraBars.BarButtonItem bbiBinance;
-        private DevExpress.XtraBars.BarButtonItem bbiDiscord;
+        private DevExpress.XtraBars.BarButtonItem bbiDonation;
     }
 }

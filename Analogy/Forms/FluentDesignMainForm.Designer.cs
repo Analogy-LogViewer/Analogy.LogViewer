@@ -31,14 +31,23 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.bbtnSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSettings = new DevExpress.XtraBars.BarSubItem();
+            this.btnApplicationSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnApplicationUISettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnFiltering = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMessageColumnsLayoutSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnColorsSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnColorHighlightSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPreDefinedQueries = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDataProvidersSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnShortcuts = new DevExpress.XtraBars.BarButtonItem();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barMain = new DevExpress.XtraBars.Bar();
@@ -75,6 +84,10 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.bbiSettingsExtensions = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSettingsDebugging = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDonation = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -87,9 +100,10 @@ namespace Analogy
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this.fluentDesignFormContainer1, DevExpress.Utils.DefaultBoolean.Default);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(314, 55);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(448, 64);
+            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(853, 708);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(719, 699);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl
@@ -97,10 +111,11 @@ namespace Analogy
             this.accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl.Location = new System.Drawing.Point(0, 55);
+            this.accordionControl.Location = new System.Drawing.Point(0, 64);
+            this.accordionControl.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(314, 708);
+            this.accordionControl.Size = new System.Drawing.Size(448, 699);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -113,22 +128,122 @@ namespace Analogy
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.bbtnSettings});
+            this.btnSettings,
+            this.btnApplicationSettings,
+            this.btnApplicationUISettings,
+            this.btnFiltering,
+            this.btnMessageColumnsLayoutSettings,
+            this.btnColorsSettings,
+            this.btnColorHighlightSettings,
+            this.btnPreDefinedQueries,
+            this.btnDataProvidersSettings,
+            this.btnShortcuts,
+            this.bbiSettingsExtensions,
+            this.btnSettingsUpdate,
+            this.btnSettingsDebugging,
+            this.bbiDonation});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1167, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1167, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtnSettings);
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.btnSettings);
+            this.fluentDesignFormControl1.Click += new System.EventHandler(this.fluentDesignFormControl1_Click);
             // 
-            // bbtnSettings
+            // btnSettings
             // 
-            this.bbtnSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bbtnSettings.Caption = "Settings";
-            this.bbtnSettings.Id = 0;
-            this.bbtnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.Image")));
-            this.bbtnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSettings.ImageOptions.LargeImage")));
-            this.bbtnSettings.Name = "bbtnSettings";
+            this.btnSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.btnSettings.Caption = "Settings";
+            this.btnSettings.Id = 0;
+            this.btnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnColorHighlightSettings.ImageOptions.Image")));
+            this.btnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnColorHighlightSettings.ImageOptions.LargeImage")));
+            this.btnSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnApplicationSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnApplicationUISettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnFiltering),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnMessageColumnsLayoutSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnColorsSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnColorHighlightSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnPreDefinedQueries),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDataProvidersSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSettingsExtensions),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsDebugging),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDonation)});
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // btnApplicationSettings
+            // 
+            this.btnApplicationSettings.Caption = "Application Settings";
+            this.btnApplicationSettings.Id = 1;
+            this.btnApplicationSettings.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
+            this.btnApplicationSettings.Name = "btnApplicationSettings";
+            // 
+            // btnApplicationUISettings
+            // 
+            this.btnApplicationUISettings.Caption = "Application UI Settings";
+            this.btnApplicationUISettings.Id = 2;
+            this.btnApplicationUISettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnApplicationUISettings.ImageOptions.Image")));
+            this.btnApplicationUISettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnApplicationUISettings.ImageOptions.LargeImage")));
+            this.btnApplicationUISettings.Name = "btnApplicationUISettings";
+            // 
+            // btnFiltering
+            // 
+            this.btnFiltering.Caption = "Filtering and Interactions";
+            this.btnFiltering.Id = 3;
+            this.btnFiltering.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltering.ImageOptions.Image")));
+            this.btnFiltering.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFiltering.ImageOptions.LargeImage")));
+            this.btnFiltering.Name = "btnFiltering";
+            // 
+            // btnMessageColumnsLayoutSettings
+            // 
+            this.btnMessageColumnsLayoutSettings.Caption = "Message Columns Layout";
+            this.btnMessageColumnsLayoutSettings.Id = 4;
+            this.btnMessageColumnsLayoutSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMessageColumnsLayoutSettings.ImageOptions.Image")));
+            this.btnMessageColumnsLayoutSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMessageColumnsLayoutSettings.ImageOptions.LargeImage")));
+            this.btnMessageColumnsLayoutSettings.Name = "btnMessageColumnsLayoutSettings";
+            // 
+            // btnColorsSettings
+            // 
+            this.btnColorsSettings.Caption = "Colors";
+            this.btnColorsSettings.Id = 5;
+            this.btnColorsSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnColorsSettings.ImageOptions.Image")));
+            this.btnColorsSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnColorsSettings.ImageOptions.LargeImage")));
+            this.btnColorsSettings.Name = "btnColorsSettings";
+            // 
+            // btnColorHighlightSettings
+            // 
+            this.btnColorHighlightSettings.Caption = "Rows Color Highlight";
+            this.btnColorHighlightSettings.Id = 6;
+            this.btnColorHighlightSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnColorHighlightSettings.ImageOptions.Image1")));
+            this.btnColorHighlightSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnColorHighlightSettings.ImageOptions.LargeImage1")));
+            this.btnColorHighlightSettings.Name = "btnColorHighlightSettings";
+            // 
+            // btnPreDefinedQueries
+            // 
+            this.btnPreDefinedQueries.Caption = "Predefined Queries";
+            this.btnPreDefinedQueries.Id = 7;
+            this.btnPreDefinedQueries.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPreDefinedQueries.ImageOptions.Image")));
+            this.btnPreDefinedQueries.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPreDefinedQueries.ImageOptions.LargeImage")));
+            this.btnPreDefinedQueries.Name = "btnPreDefinedQueries";
+            // 
+            // btnDataProvidersSettings
+            // 
+            this.btnDataProvidersSettings.Caption = "Data Providers Settings";
+            this.btnDataProvidersSettings.Id = 8;
+            this.btnDataProvidersSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.Image")));
+            this.btnDataProvidersSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDataProvidersSettings.ImageOptions.LargeImage")));
+            this.btnDataProvidersSettings.Name = "btnDataProvidersSettings";
+            // 
+            // btnShortcuts
+            // 
+            this.btnShortcuts.Caption = "Shortcuts";
+            this.btnShortcuts.Id = 9;
+            this.btnShortcuts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnShortcuts.ImageOptions.Image")));
+            this.btnShortcuts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnShortcuts.ImageOptions.LargeImage")));
+            this.btnShortcuts.Name = "btnShortcuts";
             // 
             // dockManager1
             // 
@@ -327,12 +442,12 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem1.Text = "Sponsor";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Support this project at Open Collective";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
+            toolTipTitleItem16.Text = "Sponsor";
+            toolTipItem16.LeftIndent = 6;
+            toolTipItem16.Text = "Support this project at Open Collective";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            superToolTip16.Items.Add(toolTipItem16);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip16;
             this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiBinance
@@ -404,7 +519,7 @@ namespace Analogy
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 30);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 39);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(1167, 25);
             // 
@@ -420,17 +535,17 @@ namespace Analogy
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 55);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 64);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 708);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 699);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1167, 55);
+            this.barDockControlRight.Location = new System.Drawing.Point(1167, 64);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 708);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
             // 
             // documentManager1
             // 
@@ -472,6 +587,37 @@ namespace Analogy
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             // 
+            // bbiSettingsExtensions
+            // 
+            this.bbiSettingsExtensions.Caption = "Extensions";
+            this.bbiSettingsExtensions.Id = 0;
+            this.bbiSettingsExtensions.ImageOptions.Image = global::Analogy.Properties.Resources.extension16;
+            this.bbiSettingsExtensions.Name = "bbiSettingsExtensions";
+            // 
+            // btnSettingsUpdate
+            // 
+            this.btnSettingsUpdate.Caption = "Updates";
+            this.btnSettingsUpdate.Id = 1;
+            this.btnSettingsUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingsUpdate.ImageOptions.Image")));
+            this.btnSettingsUpdate.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsUpdate.ImageOptions.LargeImage")));
+            this.btnSettingsUpdate.Name = "btnSettingsUpdate";
+            // 
+            // btnSettingsDebugging
+            // 
+            this.btnSettingsDebugging.Caption = "Debugging";
+            this.btnSettingsDebugging.Id = 2;
+            this.btnSettingsDebugging.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingsDebugging.ImageOptions.Image")));
+            this.btnSettingsDebugging.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsDebugging.ImageOptions.LargeImage")));
+            this.btnSettingsDebugging.Name = "btnSettingsDebugging";
+            // 
+            // bbiDonation
+            // 
+            this.bbiDonation.Caption = "Supporting the project";
+            this.bbiDonation.Id = 3;
+            this.bbiDonation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.Image")));
+            this.bbiDonation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.LargeImage")));
+            this.bbiDonation.Name = "bbiDonation";
+            // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
@@ -487,7 +633,7 @@ namespace Analogy
             this.Controls.Add(this.barDockControlTop);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
-            this.MinimumSize = new System.Drawing.Size(10, 800);
+            this.MinimumSize = new System.Drawing.Size(10, 796);
             this.Name = "FluentDesignMainForm";
             this.NavigationControl = this.accordionControl;
             this.Text = "Analogy";
@@ -543,7 +689,20 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbtnItemHelp;
         private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
-        private DevExpress.XtraBars.BarButtonItem bbtnSettings;
         private DevExpress.XtraBars.BarButtonItem bbiBinance;
+        private DevExpress.XtraBars.BarSubItem btnSettings;
+        private DevExpress.XtraBars.BarButtonItem btnApplicationSettings;
+        private DevExpress.XtraBars.BarButtonItem btnApplicationUISettings;
+        private DevExpress.XtraBars.BarButtonItem btnFiltering;
+        private DevExpress.XtraBars.BarButtonItem btnMessageColumnsLayoutSettings;
+        private DevExpress.XtraBars.BarButtonItem btnColorsSettings;
+        private DevExpress.XtraBars.BarButtonItem btnColorHighlightSettings;
+        private DevExpress.XtraBars.BarButtonItem btnPreDefinedQueries;
+        private DevExpress.XtraBars.BarButtonItem btnDataProvidersSettings;
+        private DevExpress.XtraBars.BarButtonItem btnShortcuts;
+        private DevExpress.XtraBars.BarButtonItem bbiSettingsExtensions;
+        private DevExpress.XtraBars.BarButtonItem btnSettingsUpdate;
+        private DevExpress.XtraBars.BarButtonItem btnSettingsDebugging;
+        private DevExpress.XtraBars.BarButtonItem bbiDonation;
     }
 }

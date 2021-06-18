@@ -309,10 +309,7 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
-            bbiDiscord.ItemClick += (s, e) =>
-            {
-                Utils.OpenLink("https://discord.com/invite/BTjavaUDR9");
-            };
+
             bbiBinance.ItemClick += (s, e) =>
             {
                 Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
@@ -324,8 +321,39 @@ namespace Analogy.Forms
             };
             bbtnSponsorOpenCollection.ItemClick +=
                 (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
+
             #region  main menu
 
+            btnSettingsUpdate.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Updates");
+                user.ShowDialog(this);
+            };
+
+            bbiSettingsExtensions.ItemClick += (s, e) =>
+            {
+
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Extensions");
+                user.ShowDialog(this);
+            };
+
+            btnSettingsDebugging.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Debugging");
+                user.ShowDialog(this);
+            };
+
+            btnShortcuts.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
+                user.ShowDialog(this);
+            };
+
+            bbiDonation.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
+                user.ShowDialog(this);
+            };
             btnApplicationSettings.ItemClick += (s, e) =>
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");
@@ -359,6 +387,11 @@ namespace Analogy.Forms
             btnPreDefinedQueries.ItemClick += (s, e) =>
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm("Predefined queries");
+                user.ShowDialog(this);
+            };
+            btnPreDefinedQueries.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
                 user.ShowDialog(this);
             };
             btnDataProvidersSettings.ItemClick += (s, e) =>
@@ -2092,34 +2125,6 @@ namespace Analogy.Forms
         {
             UpdateForm update = new UpdateForm();
             update.Show(this);
-        }
-
-
-        private void btnShortcuts_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
-            user.ShowDialog(this);
-        }
-
-
-
-        private void bbiSettingsExtensions_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Extensions");
-            user.ShowDialog(this);
-        }
-
-
-        private void btnSettingsUpdate_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Updates");
-            user.ShowDialog(this);
-        }
-
-        private void btnSettingsDebugging_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ApplicationSettingsForm user = new ApplicationSettingsForm("Debugging");
-            user.ShowDialog(this);
         }
 
         private void bbtnDataProvidersUpdates_ItemClick(object sender, ItemClickEventArgs e)
