@@ -681,6 +681,36 @@ namespace Analogy
                 Settings.ViewDetailedMessageWithHTML = btsViewAsHTML.Checked;
                 SetupMessageDetailPanel();
             };
+
+            #region Time Offsets
+
+            bciTimeOffset.ItemClick += (s, e) =>
+            {
+                Settings.TimeOffsetType = TimeOffsetType.None;
+                RefreshTimeOffset();
+            };
+            bciTimeOffsetPredefined.ItemClick += (s, e) =>
+            {
+                Settings.TimeOffsetType = TimeOffsetType.Predefined;
+                RefreshTimeOffset();
+            };
+            bciTimeOffsetUTCToLocal.ItemClick += (s, e) =>
+            {
+                Settings.TimeOffsetType = TimeOffsetType.UtcToLocalTime;
+                RefreshTimeOffset();
+            };
+            bciTimeOffsetLocalToUTC.ItemClick += (s, e) =>
+            {
+                Settings.TimeOffsetType = TimeOffsetType.LocalTimeToUtc;
+                RefreshTimeOffset();
+            };
+
+            #endregion
+        }
+
+        private void RefreshTimeOffset()
+        {
+            
         }
 
 
@@ -1039,6 +1069,23 @@ namespace Analogy
         }
         private void LoadUISettings()
         {
+            switch (Settings.TimeOffsetType)
+            {
+                case TimeOffsetType.None:
+                    bciTimeOffset.Checked = true;
+                    break;
+                case TimeOffsetType.Predefined:
+                    bciTimeOffsetPredefined.Checked = true;
+                    break;
+                case TimeOffsetType.UtcToLocalTime:
+                    bciTimeOffsetUTCToLocal.Checked = true;
+                    break;
+                case TimeOffsetType.LocalTimeToUtc:
+                    bciTimeOffsetLocalToUTC.Checked = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             gridControl.ForceInitialize();
             SetupMessageDetailPanel();
             btsViewAsHTML.Checked = Settings.ViewDetailedMessageWithHTML;
@@ -3074,7 +3121,7 @@ namespace Analogy
             }
         }
 
- private void sbtnMoreHighlight_Click(object sender, EventArgs e)
+        private void sbtnMoreHighlight_Click(object sender, EventArgs e)
         {
             var user = new ApplicationSettingsForm("Color Highlighting");
             user.ShowDialog(this);

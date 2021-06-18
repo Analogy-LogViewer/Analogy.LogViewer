@@ -1184,24 +1184,28 @@ namespace Analogy
             // bciTimeOffset
             // 
             this.bciTimeOffset.Caption = "No Time Offset";
+            this.bciTimeOffset.GroupIndex = 10;
             this.bciTimeOffset.Id = 85;
             this.bciTimeOffset.Name = "bciTimeOffset";
             // 
             // bciTimeOffsetPredefined
             // 
             this.bciTimeOffsetPredefined.Caption = "Predefined Offset";
+            this.bciTimeOffsetPredefined.GroupIndex = 10;
             this.bciTimeOffsetPredefined.Id = 86;
             this.bciTimeOffsetPredefined.Name = "bciTimeOffsetPredefined";
             // 
             // bciTimeOffsetUTCToLocal
             // 
             this.bciTimeOffsetUTCToLocal.Caption = "UTC To Local Time";
+            this.bciTimeOffsetUTCToLocal.GroupIndex = 10;
             this.bciTimeOffsetUTCToLocal.Id = 87;
             this.bciTimeOffsetUTCToLocal.Name = "bciTimeOffsetUTCToLocal";
             // 
             // bciTimeOffsetLocalToUTC
             // 
             this.bciTimeOffsetLocalToUTC.Caption = "Local Time To UTC";
+            this.bciTimeOffsetLocalToUTC.GroupIndex = 10;
             this.bciTimeOffsetLocalToUTC.Id = 88;
             this.bciTimeOffsetLocalToUTC.Name = "bciTimeOffsetLocalToUTC";
             // 
