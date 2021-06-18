@@ -51,10 +51,10 @@ namespace Analogy.Forms
             this.Extensions = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.updates = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.debugging = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.Donations = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.bbtnReset = new DevExpress.XtraBars.BarButtonItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.Donations = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -71,11 +71,11 @@ namespace Analogy.Forms
             this.updates,
             this.debugging,
             this.Donations});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
-            this.accordionControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 30);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(4);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(325, 812);
+            this.accordionControl1.Size = new System.Drawing.Size(325, 821);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -239,6 +239,14 @@ namespace Analogy.Forms
             this.debugging.Text = "Debugging";
             this.debugging.Click += new System.EventHandler(this.debugging_Click);
             // 
+            // Donations
+            // 
+            this.Donations.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Donations.ImageOptions.Image")));
+            this.Donations.Name = "Donations";
+            this.Donations.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.Donations.Text = "Donations";
+            this.Donations.Click += new System.EventHandler(this.Donations_Click);
+            // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
@@ -246,7 +254,7 @@ namespace Analogy.Forms
             this.bbtnReset});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1198, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1198, 30);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtnReset);
@@ -265,19 +273,11 @@ namespace Analogy.Forms
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(325, 39);
-            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(325, 30);
+            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(873, 812);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(873, 821);
             this.fluentDesignFormContainer1.TabIndex = 0;
-            // 
-            // Donations
-            // 
-            this.Donations.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Donations.ImageOptions.Image")));
-            this.Donations.Name = "Donations";
-            this.Donations.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.Donations.Text = "Donations";
-            this.Donations.Click += new System.EventHandler(this.Donations_Click);
             // 
             // ApplicationSettingsForm
             // 
