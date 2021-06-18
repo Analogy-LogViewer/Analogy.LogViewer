@@ -373,6 +373,36 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Binance {
+            get {
+                object obj = ResourceManager.GetObject("Binance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap binance64x64 {
+            get {
+                object obj = ResourceManager.GetObject("binance64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap binance64x64alpha {
+            get {
+                object obj = ResourceManager.GetObject("binance64x64alpha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ChartsShowLegend_16x16 {
             get {
                 object obj = ResourceManager.GetObject("ChartsShowLegend_16x16", resourceCulture);
@@ -1035,6 +1065,26 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap Paste_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Paste_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PayPal {
+            get {
+                object obj = ResourceManager.GetObject("PayPal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap paypal64 {
+            get {
+                object obj = ResourceManager.GetObject("paypal64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
