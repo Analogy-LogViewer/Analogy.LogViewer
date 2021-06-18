@@ -138,6 +138,7 @@ namespace Analogy
         public MainFormType MainFormType { get; set; }
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }
+        public TimeOffsetType TimeOffsetType { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -272,6 +273,10 @@ namespace Analogy
                 MainFormType = layoutVersion;
             }
 
+            if (Enum.TryParse<TimeOffsetType>(Settings.Default.TimeOffsetType, out var timeOffsetTypeValue))
+            {
+                TimeOffsetType = timeOffsetTypeValue;
+            }
             DefaultUserLogFolder = Settings.Default.DefaultUserLogFolder;
             TimeOffset=TimeSpan.FromMilliseconds(Settings.Default.TimeOffset);
         }
@@ -350,6 +355,7 @@ namespace Analogy
             ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup ||
                                      UpdateManager.Instance.CurrentVersion.ToString(4) != settings.Version;
             MainFormType = settings.MainFormType;
+            TimeOffsetType = settings.TimeOffsetType;
             DefaultUserLogFolder = settings.DefaultUserLogFolder;
             TimeOffset = settings.TimeOffset;
         }
@@ -428,6 +434,7 @@ namespace Analogy
                 UseCustomLogsLayout = UseCustomLogsLayout,
                 ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML,
                 MainFormType = MainFormType,
+                TimeOffsetType= TimeOffsetType,
                 DefaultUserLogFolder = DefaultUserLogFolder,
                 TimeOffset = TimeOffset
 
@@ -587,6 +594,7 @@ namespace Analogy
             Settings.Default.LogsLayoutFileName = LogsLayoutFileName;
             Settings.Default.ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML;
             Settings.Default.MainFormType = MainFormType.ToString();
+            Settings.Default.TimeOffsetType = TimeOffsetType.None.ToString();
             Settings.Default.DefaultUserLogFolder = DefaultUserLogFolder;
             Settings.Default.TimeOffset = TimeOffset.TotalMilliseconds;
 
@@ -712,6 +720,7 @@ namespace Analogy
             ShowWhatIsNewAtStartup = true;
             SettingsMode = SettingsMode.PerUser;
             MainFormType = MainFormType.RibbonForm;
+            TimeOffsetType = TimeOffsetType.None;
             LoadPerUserSettings();
         }
     }

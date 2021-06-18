@@ -1,4 +1,4 @@
-# Analogy Log Viewer   ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/workflows/.NET%20Core%20Desktop/badge.svg)
+# Analogy Log Viewer   ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/workflows/.NET%20Core%20Desktop/badge.svg) [Discord](https://discord.gg/BTjavaUDR9) ![Discord](https://img.shields.io/discord/762688735594676235?style=plastic)
   <img src="./Assets/Analogy2.png" align="right" width="155px" height="155px">
 
 <p align="center">

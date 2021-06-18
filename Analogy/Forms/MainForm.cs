@@ -309,6 +309,10 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            bbiDiscord.ItemClick += (s, e) =>
+            {
+                Utils.OpenLink("https://discord.com/invite/BTjavaUDR9");
+            };
             bbiBinance.ItemClick += (s, e) =>
             {
                 Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");

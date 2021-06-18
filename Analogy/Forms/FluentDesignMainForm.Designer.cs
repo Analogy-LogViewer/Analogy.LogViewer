@@ -31,9 +31,9 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -56,6 +56,7 @@ namespace Analogy
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtom = new DevExpress.XtraBars.Bar();
             this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFileCaching = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnReportIssueOrRequest = new DevExpress.XtraBars.BarButtonItem();
@@ -74,7 +75,6 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -182,7 +182,7 @@ namespace Analogy
             this.bbtnSponsorOpenCollection,
             this.bbiBinance});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 27;
+            this.barManager1.MaxItemId = 28;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -327,12 +327,21 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem4.Text = "Sponsor";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Support this project at Open Collective";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip4;
+            toolTipTitleItem1.Text = "Sponsor";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Support this project at Open Collective";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
+            this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // bbiBinance
+            // 
+            this.bbiBinance.Caption = "Crypto Exchange";
+            this.bbiBinance.Id = 26;
+            this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
+            this.bbiBinance.Name = "bbiBinance";
+            this.bbiBinance.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bbtnStar
             // 
@@ -437,6 +446,13 @@ namespace Analogy
             this.notifyIconAnalogy.Text = "Analogy";
             this.notifyIconAnalogy.Visible = true;
             // 
+            // defaultToolTipController1
+            // 
+            // 
+            // 
+            // 
+            this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -455,14 +471,6 @@ namespace Analogy
             // 
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
-            // 
-            // bbiBinance
-            // 
-            this.bbiBinance.Caption = "Crypto Exchange";
-            this.bbiBinance.Id = 26;
-            this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
-            this.bbiBinance.Name = "bbiBinance";
-            this.bbiBinance.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // FluentDesignMainForm
             // 

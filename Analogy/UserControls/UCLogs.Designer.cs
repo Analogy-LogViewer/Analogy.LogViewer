@@ -41,7 +41,10 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -63,10 +66,7 @@ namespace Analogy
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentMessages = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -120,6 +120,10 @@ namespace Analogy
             this.bsiLayouts = new DevExpress.XtraBars.BarSubItem();
             this.bwmiLayout = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.wsLogs = new DevExpress.Utils.WorkspaceManager(this.components);
+            this.bsiTimeOffset = new DevExpress.XtraBars.BarSubItem();
+            this.bbiTimeOffsetNone = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTimeOffsetPredefined = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTimeOffsetUTC = new DevExpress.XtraBars.BarButtonItem();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
@@ -369,6 +373,10 @@ namespace Analogy
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).BeginInit();
+            this.scMessageDetails.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel2)).BeginInit();
+            this.scMessageDetails.Panel2.SuspendLayout();
             this.scMessageDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meMessageDetails.Properties)).BeginInit();
             this.dockPanelBookmarks.SuspendLayout();
@@ -815,8 +823,12 @@ namespace Analogy
             this.bbiGoToMessage,
             this.bbiGoToActiveMessage,
             this.btsViewAsHTML,
-            this.bbtnRawMessageViewer});
-            this.barManager1.MaxItemId = 78;
+            this.bbtnRawMessageViewer,
+            this.bsiTimeOffset,
+            this.bbiTimeOffsetNone,
+            this.bbiTimeOffsetPredefined,
+            this.bbiTimeOffsetUTC});
+            this.barManager1.MaxItemId = 83;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -842,7 +854,8 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnDataVisualizer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiTimeOffset)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
             this.barTopFiltering.OptionsBar.DisableClose = true;
@@ -1153,7 +1166,38 @@ namespace Analogy
             // wsLogs
             // 
             this.wsLogs.TargetControl = this;
-            this.wsLogs.TransitionType = pushTransition1;
+            this.wsLogs.TransitionType = pushTransition2;
+            // 
+            // bsiTimeOffset
+            // 
+            this.bsiTimeOffset.Caption = "Time Offset";
+            this.bsiTimeOffset.Id = 79;
+            this.bsiTimeOffset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.Image")));
+            this.bsiTimeOffset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.LargeImage")));
+            this.bsiTimeOffset.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetNone),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetPredefined),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetUTC)});
+            this.bsiTimeOffset.Name = "bsiTimeOffset";
+            this.bsiTimeOffset.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bbiTimeOffsetNone
+            // 
+            this.bbiTimeOffsetNone.Caption = "No Offset";
+            this.bbiTimeOffsetNone.Id = 80;
+            this.bbiTimeOffsetNone.Name = "bbiTimeOffsetNone";
+            // 
+            // bbiTimeOffsetPredefined
+            // 
+            this.bbiTimeOffsetPredefined.Caption = "Predefined Offset";
+            this.bbiTimeOffsetPredefined.Id = 81;
+            this.bbiTimeOffsetPredefined.Name = "bbiTimeOffsetPredefined";
+            // 
+            // bbiTimeOffsetUTC
+            // 
+            this.bbiTimeOffsetUTC.Caption = "UTC to Local Time";
+            this.bbiTimeOffsetUTC.Id = 82;
+            this.bbiTimeOffsetUTC.Name = "bbiTimeOffsetUTC";
             // 
             // barMessage
             // 
@@ -1876,7 +1920,7 @@ namespace Analogy
             this.ceOlderThanFilter.Properties.Caption = "To:";
             this.ceOlderThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceOlderThanFilter.Properties.ImageOptions.ImageChecked")));
             this.ceOlderThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceOlderThanFilter.Properties.ImageOptions.ImageUnchecked")));
-            this.ceOlderThanFilter.Size = new System.Drawing.Size(42, 20);
+            this.ceOlderThanFilter.Size = new System.Drawing.Size(43, 20);
             this.ceOlderThanFilter.StyleController = this.layoutControl1;
             this.ceOlderThanFilter.TabIndex = 29;
             // 
@@ -1925,7 +1969,7 @@ namespace Analogy
             this.ceNewerThanFilter.Properties.Caption = "From:";
             this.ceNewerThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceNewerThanFilter.Properties.ImageOptions.ImageChecked")));
             this.ceNewerThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceNewerThanFilter.Properties.ImageOptions.ImageUnchecked")));
-            this.ceNewerThanFilter.Size = new System.Drawing.Size(57, 20);
+            this.ceNewerThanFilter.Size = new System.Drawing.Size(58, 20);
             this.ceNewerThanFilter.StyleController = this.layoutControl1;
             this.ceNewerThanFilter.TabIndex = 28;
             // 
@@ -1938,15 +1982,15 @@ namespace Analogy
             this.ceModulesProcess.Properties.Caption = "Processes/Modules (Include/Exclude):";
             this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
             this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
-            this.ceModulesProcess.Size = new System.Drawing.Size(239, 20);
+            this.ceModulesProcess.Size = new System.Drawing.Size(240, 20);
             this.ceModulesProcess.StyleController = this.layoutControl1;
-            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem9.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.ceModulesProcess.SuperTip = superToolTip1;
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.ceModulesProcess.SuperTip = superToolTip9;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1981,15 +2025,15 @@ namespace Analogy
             this.ceSources.Properties.Caption = "Sources (Include/Exclude):";
             this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
             this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
-            this.ceSources.Size = new System.Drawing.Size(176, 20);
+            this.ceSources.Size = new System.Drawing.Size(177, 20);
             this.ceSources.StyleController = this.layoutControl1;
-            toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipTitleItem1.Text = "Source Propery Filtering (include and exclude)";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceSources.SuperTip = superToolTip2;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.ceSources.SuperTip = superToolTip1;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -2048,14 +2092,14 @@ namespace Analogy
             this.ceExcludeText.Properties.Caption = "Exclude Text:";
             this.ceExcludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageChecked")));
             this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
-            this.ceExcludeText.Size = new System.Drawing.Size(99, 20);
+            this.ceExcludeText.Size = new System.Drawing.Size(100, 20);
             this.ceExcludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.ceExcludeText.SuperTip = superToolTip3;
+            toolTipTitleItem2.Text = "Text Property Filtering (exclude)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceExcludeText.SuperTip = superToolTip2;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnPreDefinedFilters
@@ -2101,14 +2145,14 @@ namespace Analogy
             this.ceIncludeText.Properties.Caption = "Include Text:";
             this.ceIncludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageChecked")));
             this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
-            this.ceIncludeText.Size = new System.Drawing.Size(97, 20);
+            this.ceIncludeText.Size = new System.Drawing.Size(98, 20);
             this.ceIncludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem4.Text = "Text Property Filtering";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.ceIncludeText.SuperTip = superToolTip4;
+            toolTipTitleItem3.Text = "Text Property Filtering";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceIncludeText.SuperTip = superToolTip3;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
@@ -2682,12 +2726,12 @@ namespace Analogy
             this.ceFilterPanelFilter.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelFilter.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelFilter.Size = new System.Drawing.Size(184, 20);
-            toolTipTitleItem6.Text = "AND Log Level Filtering";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = resources.GetString("toolTipItem6.Text");
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.ceFilterPanelFilter.SuperTip = superToolTip6;
+            toolTipTitleItem4.Text = "AND Log Level Filtering";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = resources.GetString("toolTipItem4.Text");
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceFilterPanelFilter.SuperTip = superToolTip4;
             this.ceFilterPanelFilter.TabIndex = 30;
             this.ceFilterPanelFilter.TabStop = false;
             // 
@@ -2701,12 +2745,12 @@ namespace Analogy
             this.ceFilterPanelSearch.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelSearch.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelSearch.Size = new System.Drawing.Size(184, 20);
-            toolTipTitleItem5.Text = "AND Log Level Filtering";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = resources.GetString("toolTipItem5.Text");
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceFilterPanelSearch.SuperTip = superToolTip5;
+            toolTipTitleItem6.Text = "AND Log Level Filtering";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = resources.GetString("toolTipItem6.Text");
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.ceFilterPanelSearch.SuperTip = superToolTip6;
             this.ceFilterPanelSearch.TabIndex = 29;
             // 
             // labelControl1
@@ -2808,13 +2852,13 @@ namespace Analogy
             this.ceLogLevelOr.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelOr.Properties.RadioGroupIndex = 5;
             this.ceLogLevelOr.Size = new System.Drawing.Size(66, 22);
-            toolTipTitleItem7.Text = "Or Log level Filtering";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "The OR type allows to always show some log levels regardless the current filters." +
+            toolTipTitleItem5.Text = "Or Log level Filtering";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "The OR type allows to always show some log levels regardless the current filters." +
     " This is usefull when you want to see some log level alongs with other filters";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.ceLogLevelOr.SuperTip = superToolTip7;
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.ceLogLevelOr.SuperTip = superToolTip5;
             this.ceLogLevelOr.TabIndex = 1;
             this.ceLogLevelOr.TabStop = false;
             // 
@@ -2829,12 +2873,12 @@ namespace Analogy
             this.ceLogLevelAnd.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelAnd.Properties.RadioGroupIndex = 5;
             this.ceLogLevelAnd.Size = new System.Drawing.Size(61, 22);
-            toolTipTitleItem8.Text = "AND Log Level Filtering";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = resources.GetString("toolTipItem8.Text");
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.ceLogLevelAnd.SuperTip = superToolTip8;
+            toolTipTitleItem7.Text = "AND Log Level Filtering";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = resources.GetString("toolTipItem7.Text");
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.ceLogLevelAnd.SuperTip = superToolTip7;
             this.ceLogLevelAnd.TabIndex = 0;
             // 
             // contextMenuStripFilters
@@ -2888,10 +2932,10 @@ namespace Analogy
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.documentMessages});
             this.tabbedView1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            dockingContainer1.Element = this.documentGroup1;
-            dockingContainer1.Length.UnitValue = 1.4189383070301291D;
+            dockingContainer2.Element = this.documentGroup1;
+            dockingContainer2.Length.UnitValue = 1.4189383070301291D;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer1});
+            dockingContainer2});
             this.tabbedView1.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // dockManager1
@@ -2977,8 +3021,14 @@ namespace Analogy
             this.scMessageDetails.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None;
             this.scMessageDetails.Location = new System.Drawing.Point(0, 39);
             this.scMessageDetails.Name = "scMessageDetails";
+            // 
+            // scMessageDetails.Panel1
+            // 
             this.scMessageDetails.Panel1.Controls.Add(this.meMessageDetails);
             this.scMessageDetails.Panel1.Text = "Panel1";
+            // 
+            // scMessageDetails.Panel2
+            // 
             this.scMessageDetails.Panel2.Controls.Add(this.recMessageDetails);
             this.scMessageDetails.Panel2.Text = "Panel2";
             this.scMessageDetails.Size = new System.Drawing.Size(1843, 102);
@@ -3182,6 +3232,10 @@ namespace Analogy
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             this.controlContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).EndInit();
+            this.scMessageDetails.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel2)).EndInit();
+            this.scMessageDetails.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).EndInit();
             this.scMessageDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.meMessageDetails.Properties)).EndInit();
@@ -3416,5 +3470,9 @@ namespace Analogy
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
         private DevExpress.XtraLayout.SimpleLabelItem lblPageNumber;
+        private DevExpress.XtraBars.BarSubItem bsiTimeOffset;
+        private DevExpress.XtraBars.BarButtonItem bbiTimeOffsetNone;
+        private DevExpress.XtraBars.BarButtonItem bbiTimeOffsetPredefined;
+        private DevExpress.XtraBars.BarButtonItem bbiTimeOffsetUTC;
     }
 }
