@@ -83,6 +83,8 @@ namespace Analogy.DataTypes
         public MainFormType MainFormType { get; set; }
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }
+        public TimeOffsetType TimeOffsetType { get; set; }
+
 
     }
 }

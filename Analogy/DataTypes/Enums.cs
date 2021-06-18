@@ -109,4 +109,11 @@ namespace Analogy.DataTypes
         }
     }
 
+    public enum TimeOffsetType
+    {
+        None,
+        Predefined,
+        UtcToLocalTime,
+        LocalTimeToUtc
+    }
 }

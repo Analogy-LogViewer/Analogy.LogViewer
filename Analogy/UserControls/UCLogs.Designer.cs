@@ -120,6 +120,10 @@ namespace Analogy
             this.bsiLayouts = new DevExpress.XtraBars.BarSubItem();
             this.bwmiLayout = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.wsLogs = new DevExpress.Utils.WorkspaceManager(this.components);
+            this.bsiTimeOffset = new DevExpress.XtraBars.BarSubItem();
+            this.bbiTimeOffsetNone = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTimeOffsetPredefined = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTimeOffsetUTC = new DevExpress.XtraBars.BarButtonItem();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
@@ -282,10 +286,6 @@ namespace Analogy
             this.xtabFilters = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.bsiTimeOffset = new DevExpress.XtraBars.BarSubItem();
-            this.bbiTimeOffsetNone = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiTimeOffsetPredefined = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiTimeOffsetUTC = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -1167,6 +1167,37 @@ namespace Analogy
             // 
             this.wsLogs.TargetControl = this;
             this.wsLogs.TransitionType = pushTransition2;
+            // 
+            // bsiTimeOffset
+            // 
+            this.bsiTimeOffset.Caption = "Time Offset";
+            this.bsiTimeOffset.Id = 79;
+            this.bsiTimeOffset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.Image")));
+            this.bsiTimeOffset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.LargeImage")));
+            this.bsiTimeOffset.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetNone),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetPredefined),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetUTC)});
+            this.bsiTimeOffset.Name = "bsiTimeOffset";
+            this.bsiTimeOffset.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // bbiTimeOffsetNone
+            // 
+            this.bbiTimeOffsetNone.Caption = "No Offset";
+            this.bbiTimeOffsetNone.Id = 80;
+            this.bbiTimeOffsetNone.Name = "bbiTimeOffsetNone";
+            // 
+            // bbiTimeOffsetPredefined
+            // 
+            this.bbiTimeOffsetPredefined.Caption = "Predefined Offset";
+            this.bbiTimeOffsetPredefined.Id = 81;
+            this.bbiTimeOffsetPredefined.Name = "bbiTimeOffsetPredefined";
+            // 
+            // bbiTimeOffsetUTC
+            // 
+            this.bbiTimeOffsetUTC.Caption = "UTC to Local Time";
+            this.bbiTimeOffsetUTC.Id = 82;
+            this.bbiTimeOffsetUTC.Name = "bbiTimeOffsetUTC";
             // 
             // barMessage
             // 
@@ -3096,37 +3127,6 @@ namespace Analogy
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1489, 144);
             this.xtraTabPage2.Text = "Grid Pane";
-            // 
-            // bsiTimeOffset
-            // 
-            this.bsiTimeOffset.Caption = "Time Offset";
-            this.bsiTimeOffset.Id = 79;
-            this.bsiTimeOffset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.Image")));
-            this.bsiTimeOffset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.LargeImage")));
-            this.bsiTimeOffset.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetNone),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetPredefined),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTimeOffsetUTC)});
-            this.bsiTimeOffset.Name = "bsiTimeOffset";
-            this.bsiTimeOffset.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // bbiTimeOffsetNone
-            // 
-            this.bbiTimeOffsetNone.Caption = "No Offset";
-            this.bbiTimeOffsetNone.Id = 80;
-            this.bbiTimeOffsetNone.Name = "bbiTimeOffsetNone";
-            // 
-            // bbiTimeOffsetPredefined
-            // 
-            this.bbiTimeOffsetPredefined.Caption = "Predefined Offset";
-            this.bbiTimeOffsetPredefined.Id = 81;
-            this.bbiTimeOffsetPredefined.Name = "bbiTimeOffsetPredefined";
-            // 
-            // bbiTimeOffsetUTC
-            // 
-            this.bbiTimeOffsetUTC.Caption = "UTC to Local Time";
-            this.bbiTimeOffsetUTC.Id = 82;
-            this.bbiTimeOffsetUTC.Name = "bbiTimeOffsetUTC";
             // 
             // UCLogs
             // 
