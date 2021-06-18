@@ -710,7 +710,7 @@ namespace Analogy
 
         private void RefreshTimeOffset()
         {
-            
+            PagingManager.UpdateOffsets();
         }
 
 

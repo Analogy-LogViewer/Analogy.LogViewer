@@ -328,6 +328,22 @@ namespace Analogy
         {
             Interlocked.Increment(ref _totalMissedMessages);
         }
+
+        public void UpdateOffsets()
+        {
+            lockSlim.EnterWriteLock();
+            foreach (DataTable dataTable in pages)
+            {
+                foreach (DataRow dataTableRow in dataTable.Rows)
+                {
+                    dataTableRow.BeginEdit();
+                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
+                    dataTableRow["Date"] = Utils.GetOffsetTime(m.Date);
+                    dataTableRow.EndEdit();
+                }
+            }
+            lockSlim.ExitWriteLock();
+        }
     }
 
 }
