@@ -711,6 +711,13 @@ namespace Analogy
         private void RefreshTimeOffset()
         {
             PagingManager.UpdateOffsets();
+            foreach (DataRow dataTableRow in _bookmarkedMessages.Rows)
+            {
+                dataTableRow.BeginEdit();
+                AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
+                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date);
+                dataTableRow.EndEdit();
+            }
         }
 
 
