@@ -469,9 +469,19 @@ namespace Analogy
             return string.Empty;
         }
 
-        public static DateTime GetOffsetTime(DateTime time) => time.Add(UserSettingsManager.UserSettings.TimeOffset);
+        public static DateTime GetOffsetTime(DateTime time)
+        {
+            return UserSettingsManager.UserSettings.TimeOffsetType switch
+            {
+                TimeOffsetType.None => time,
+                TimeOffsetType.Predefined => time.Add(UserSettingsManager.UserSettings.TimeOffset),
+                TimeOffsetType.UtcToLocalTime => time.ToLocalTime(),
+                TimeOffsetType.LocalTimeToUtc => time.ToUniversalTime(),
+                _ => time
+            };
+        }
 
-        public static SuperToolTip GetSuperTip(string title,string content)
+        public static SuperToolTip GetSuperTip(string title, string content)
         {
             SuperToolTip toolTip = new SuperToolTip();
             // Create an object to initialize the SuperToolTip.
