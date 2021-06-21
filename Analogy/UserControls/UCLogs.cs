@@ -34,6 +34,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Mask;
 
 namespace Analogy
 {
@@ -280,6 +281,7 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
+            logGrid.ShownEditor += GridView_ShownEditor;
             gridControl.Click += (s, e) =>
             {
                 if (btsAutoScrollToBottom.Checked)
@@ -707,7 +709,15 @@ namespace Analogy
 
             #endregion
         }
-
+        private void GridView_ShownEditor(object sender, System.EventArgs e)
+        {
+            var view = sender as GridView;
+            if (view.IsFilterRow(view.FocusedRowHandle) && view.FocusedColumn.FieldName == gridColumnProcessID.FieldName || view.FocusedColumn.FieldName == gridColumnThread.FieldName)
+                ((TextEdit)view.ActiveEditor).Properties.MaskSettings.Configure<MaskSettings.Numeric>(settings =>
+                {
+                    settings.MaskExpression = "d";
+                });
+        }
         private void RefreshTimeOffset()
         {
             PagingManager.UpdateOffsets();
