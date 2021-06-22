@@ -889,7 +889,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
-		<PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
+		<PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Updater\" />
