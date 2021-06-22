@@ -10,7 +10,13 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {
+            {       
+                new AnalogyChangeLog("V4.7.3 - [UI] Typing non numerical text in numerical fields causes exception #823",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,06,22)),
+                new AnalogyChangeLog("V4.7.3 - FileNotFound: System.Drawing.Common #1023",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,06,22)),
+                new AnalogyChangeLog("V4.7.2 - [DevExpress] Upgrade version to V21.1 #1014",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,06,11)),
+                new AnalogyChangeLog("V4.7.2 - Local time for UTC timestamps #1016",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,06,11)),
+                new AnalogyChangeLog("V4.7.2 - Allow copy values from the json formatted view #1018",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,06,11)),
+                new AnalogyChangeLog("V4.7.2 - Watch or tail? #1015",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,06,11)),
                 new AnalogyChangeLog("V4.7.1 - [Update mechanism] Add NET5 download flag #1003",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,21)),
                 new AnalogyChangeLog("V4.7.1 - Add Json parser to the detailed message window #1002",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,21)),
                 new AnalogyChangeLog("V4.7.0 - Update version to 4.7.0 #978",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,05,01)),
