@@ -34,6 +34,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Data.Mask;
 using DevExpress.XtraEditors.Mask;
 
 namespace Analogy
@@ -225,7 +226,6 @@ namespace Analogy
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
-
             if (Settings.SaveSearchFilters)
             {
                 string? includeText = string.IsNullOrEmpty(Settings.IncludeText) || Settings.IncludeText == txtbInclude.Properties.NullText ? null : Settings.IncludeText;
@@ -716,6 +716,7 @@ namespace Analogy
                 ((TextEdit)view.ActiveEditor).Properties.MaskSettings.Configure<MaskSettings.Numeric>(settings =>
                 {
                     settings.MaskExpression = "d";
+                    settings.ValueAfterDelete = NumericMaskManager.ValueAfterDelete.Null;
                 });
         }
         private void RefreshTimeOffset()
