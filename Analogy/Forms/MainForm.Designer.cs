@@ -43,16 +43,19 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -120,6 +123,7 @@
             this.bbiSettingsExtensions = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsDebugging = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDonation = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
@@ -132,7 +136,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbiDonation = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPayPal = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -234,10 +238,11 @@
             this.btnColorHighlightSettings,
             this.bbtnSponsorOpenCollection,
             this.bbiBinance,
-            this.bbiDonation});
+            this.bbiDonation,
+            this.bbiPayPal});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.ribbonControlMain.MaxItemId = 115;
+            this.ribbonControlMain.MaxItemId = 116;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.OptionsMenuMinWidth = 412;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
@@ -705,12 +710,12 @@
             this.skinRibbonGallery.Caption = "Skin";
             this.skinRibbonGallery.Id = 81;
             this.skinRibbonGallery.Name = "skinRibbonGallery";
-            toolTipTitleItem7.Text = "Skins and themes";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "A list of built-in skins and themes";
-            superToolTip6.Items.Add(toolTipTitleItem7);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.skinRibbonGallery.SuperTip = superToolTip6;
+            toolTipTitleItem8.Text = "Skins and themes";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "A list of built-in skins and themes";
+            superToolTip7.Items.Add(toolTipTitleItem8);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.skinRibbonGallery.SuperTip = superToolTip7;
             // 
             // skinPaletteRibbonGalleryBarItem3
             // 
@@ -836,6 +841,14 @@
             this.btnSettingsDebugging.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsDebugging.ImageOptions.LargeImage")));
             this.btnSettingsDebugging.Name = "btnSettingsDebugging";
             // 
+            // bbiDonation
+            // 
+            this.bbiDonation.Caption = "Supporting the project";
+            this.bbiDonation.Id = 114;
+            this.bbiDonation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.Image")));
+            this.bbiDonation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.LargeImage")));
+            this.bbiDonation.Name = "bbiDonation";
+            // 
             // barSubItem3
             // 
             this.barSubItem3.Caption = "barSubItem3";
@@ -873,13 +886,13 @@
             this.bbiBinance.Id = 112;
             this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
             this.bbiBinance.Name = "bbiBinance";
-            toolTipItem5.Text = "Support this project by registering to Binance Exchange.\r\nYou will get 5% return " +
+            toolTipItem6.Text = "Support this project by registering to Binance Exchange.\r\nYou will get 5% return " +
     "on your fees";
-            toolTipTitleItem6.Text = "You will get 5% return on fees using this link";
-            superToolTip5.Items.Add(toolTipItem5);
-            superToolTip5.Items.Add(toolTipSeparatorItem1);
-            superToolTip5.Items.Add(toolTipTitleItem6);
-            this.bbiBinance.SuperTip = superToolTip5;
+            toolTipTitleItem7.Text = "You will get 5% return on fees using this link";
+            superToolTip6.Items.Add(toolTipItem6);
+            superToolTip6.Items.Add(toolTipSeparatorItem1);
+            superToolTip6.Items.Add(toolTipTitleItem7);
+            this.bbiBinance.SuperTip = superToolTip6;
             // 
             // ribbonStatusBar
             // 
@@ -889,6 +902,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCompactMemory);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnSponsorOpenCollection);
+            this.ribbonStatusBar.ItemLinks.Add(this.bbiPayPal);
             this.ribbonStatusBar.ItemLinks.Add(this.bbiBinance);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
@@ -942,13 +956,17 @@
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
             // 
-            // bbiDonation
+            // bbiPayPal
             // 
-            this.bbiDonation.Caption = "Supporting the project";
-            this.bbiDonation.Id = 114;
-            this.bbiDonation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.Image")));
-            this.bbiDonation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.LargeImage")));
-            this.bbiDonation.Name = "bbiDonation";
+            this.bbiPayPal.Caption = "PayPal";
+            this.bbiPayPal.Id = 115;
+            this.bbiPayPal.ImageOptions.Image = global::Analogy.Properties.Resources.paypal64;
+            this.bbiPayPal.Name = "bbiPayPal";
+            toolTipTitleItem6.Text = "PayPal Donation";
+            toolTipItem5.Text = "Support the project with small PayPal donation";
+            superToolTip5.Items.Add(toolTipTitleItem6);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.bbiPayPal.SuperTip = superToolTip5;
             // 
             // MainForm
             // 
@@ -1063,5 +1081,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnSponsorOpenCollection;
         private DevExpress.XtraBars.BarButtonItem bbiBinance;
         private DevExpress.XtraBars.BarButtonItem bbiDonation;
+        private DevExpress.XtraBars.BarButtonItem bbiPayPal;
     }
 }
