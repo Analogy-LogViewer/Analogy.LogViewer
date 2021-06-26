@@ -243,7 +243,7 @@ namespace Analogy
                 ApplicationSettingsForm user = new ApplicationSettingsForm("Color Settings");
                 user.ShowDialog(this);
             };
-            btnSettings.ItemClick += (s, e) =>
+            btnColorHighlightSettings.ItemClick += (s, e) =>
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm("Color Highlighting");
                 user.ShowDialog(this);
