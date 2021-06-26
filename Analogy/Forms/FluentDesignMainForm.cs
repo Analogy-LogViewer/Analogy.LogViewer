@@ -264,7 +264,11 @@ namespace Analogy
                 user.ShowDialog(this);
             };
             #endregion
-            
+
+            bbiPayPal.ItemClick += (s, e) =>
+            {
+                Utils.OpenLink("https://www.paypal.me/liorbanai");
+            };
             bbiBinance.ItemClick += (s, e) =>
             {
                 Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
