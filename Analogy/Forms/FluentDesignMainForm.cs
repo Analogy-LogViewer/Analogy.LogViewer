@@ -143,12 +143,8 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
-
-            //todo:fix below
-            if (settings.RememberLastOpenedDataProvider && Mapping.ContainsKey(settings.LastOpenedDataProvider))
-            {
-                //ribbonControlMain.SelectPage(Mapping[settings.LastOpenedDataProvider]);
-            }
+            FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(activeProvider);
+            LoadFactory(container);
 
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
             {
@@ -448,6 +444,8 @@ namespace Analogy
             {
                 return;
             }
+
+            activeProvider = fc.Factory.FactoryId;
             //        RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
             //    ribbonControlMain.Pages.Insert(position, ribbonPage);
             //    Mapping.Add(fc.Factory.FactoryId, ribbonPage);
