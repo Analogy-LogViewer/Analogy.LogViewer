@@ -71,31 +71,28 @@ namespace Analogy
 
         public void ClearLogs()
         {
-            AnalogyPageInformation analogyPage;
-            lockSlim.EnterWriteLock();
+            lockSlim.EnterWriteLock(); 
+            var oldMessages = allMessages.ToList();
             try
             {
-                var oldMessages = allMessages.ToList();
                 pages = new List<DataTable>();
                 currentPageStartRowIndex = 0;
                 currentPageNumber = 1;
                 var first = Utils.DataTableConstructor();
                 currentTable = first;
                 pages.Add(first);
-                OnHistoryCleared?.Invoke(this, new AnalogyClearedHistoryEventArgs(oldMessages));
-                analogyPage = new AnalogyPageInformation(currentTable, 1, currentPageStartRowIndex);
             }
             finally
             {
                 lockSlim.ExitWriteLock();
             }
-
+            OnHistoryCleared?.Invoke(this, new AnalogyClearedHistoryEventArgs(oldMessages));
+            AnalogyPageInformation analogyPage = new AnalogyPageInformation(currentTable, 1, currentPageStartRowIndex);
             OnPageChanged?.Invoke(this, new AnalogyPagingChanged(analogyPage));
         }
 
         public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
         {
-            var table = pages.Last();
             try
             {
                 lockSlim.EnterWriteLock();
@@ -105,6 +102,7 @@ namespace Analogy
             {
                 lockSlim.ExitWriteLock();
             }
+            var table = pages.Last();
             if (table.Rows.Count + 1 > pageSize)
             {
                 table = Utils.DataTableConstructor();
@@ -193,14 +191,14 @@ namespace Analogy
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
 
-                    if (!currentTable.Columns.Contains(info.Key))
+                    if (!table.Columns.Contains(info.Key))
                     {
                         if (!owner.InvokeRequired)
                         {
                             try
                             {
                                 columnsLockSlim.EnterWriteLock();
-                                if (!currentTable.Columns.Contains(info.Key))
+                                if (!table.Columns.Contains(info.Key))
                                 {
                                     table.Columns.Add(info.Key);
                                 }
@@ -221,10 +219,10 @@ namespace Analogy
                                 {
 
                                     columnsLockSlim.EnterWriteLock();
-                                    if (!currentTable.Columns.Contains(info.Key))
+                                    if (!table.Columns.Contains(info.Key))
                                     {
                                         columnsLockSlim.EnterWriteLock();
-                                        if (!currentTable.Columns.Contains(info.Key))
+                                        if (!table.Columns.Contains(info.Key))
                                         {
                                             table.Columns.Add(info.Key);
                                             columnAdderSync.Set();
