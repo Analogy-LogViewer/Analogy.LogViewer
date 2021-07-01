@@ -17,6 +17,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils;
 
 namespace Analogy
 {
@@ -424,15 +425,22 @@ namespace Analogy
             {
                 return;
             }
-
-
+            
 
             BarCheckItem bci = new BarCheckItem(barManager1, fc.Factory.FactoryId == activeProvider);
             bci.Manager = barManager1;
+            bci.CheckStyle = BarCheckStyles.Radio;
+            bci.GroupIndex = 1;
             bci.CheckBoxVisibility = CheckBoxVisibility.BeforeText;
-            bci.Caption = fc.Factory.Title;
+            //bci.Caption = fc.Factory.Title;
             bci.Enabled = fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled;
-            bci.Glyph = fc.Factory.SmallImage;
+            if (fc.Factory.SmallImage != null)
+            {
+                string imageName = fc.Factory.FactoryId + "_small";
+                FactoriesImagesSmall.AddImage(fc.Factory.SmallImage,imageName);
+                bci.Caption = string.Format($"<image={imageName}>{fc.Factory.Title}");
+                bci.AllowHtmlText = DefaultBoolean.True;
+            }
             bci.ItemClick += (s, e) =>
             {
                 bci.Checked = true;
