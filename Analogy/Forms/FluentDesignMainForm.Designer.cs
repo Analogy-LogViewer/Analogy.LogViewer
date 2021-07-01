@@ -313,6 +313,7 @@ namespace Analogy
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
+            this.barManager1.HtmlImages = this.FactoriesImagesSmall;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbtnStar,
             this.bbiFileCaching,
