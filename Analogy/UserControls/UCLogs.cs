@@ -713,11 +713,13 @@ namespace Analogy
         {
             var view = sender as GridView;
             if (view.IsFilterRow(view.FocusedRowHandle) && view.FocusedColumn.FieldName == gridColumnProcessID.FieldName || view.FocusedColumn.FieldName == gridColumnThread.FieldName)
+            {
                 ((TextEdit)view.ActiveEditor).Properties.MaskSettings.Configure<MaskSettings.Numeric>(settings =>
                 {
                     settings.MaskExpression = "d";
                     settings.ValueAfterDelete = NumericMaskManager.ValueAfterDelete.Null;
                 });
+            }
         }
         private void RefreshTimeOffset()
         {
