@@ -9,7 +9,7 @@ namespace Analogy
     {
         private string FileName { get; } = "ExternalLocations.dat";
         private static readonly Lazy<ClientServerDataSourceManager> _instance = new Lazy<ClientServerDataSourceManager>(() => new ClientServerDataSourceManager());
-        public static ClientServerDataSourceManager Instance { get; } = _instance.Value;
+        public static ClientServerDataSourceManager Instance => _instance.Value;
         public List<DataSource> DataSources { get; } = new List<DataSource>();
 
         public ClientServerDataSourceManager()

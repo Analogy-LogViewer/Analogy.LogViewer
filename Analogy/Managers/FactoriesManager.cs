@@ -19,7 +19,7 @@ namespace Analogy
             _instance = new Lazy<FactoriesManager>(() => new FactoriesManager());
 
         public List<string> ProbingPaths { get; set; } = new List<string>();
-        public static readonly FactoriesManager Instance = _instance.Value;
+        public static FactoriesManager Instance => _instance.Value;
         public List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; }
 
