@@ -8,7 +8,7 @@ namespace Analogy
     public class FileProcessingManager
     {
         private static readonly Lazy<FileProcessingManager> _instance = new Lazy<FileProcessingManager>(() => new FileProcessingManager());
-        public static FileProcessingManager Instance { get; } = _instance.Value;
+        public static FileProcessingManager Instance => _instance.Value;
 
         private List<string> ProcessedFileNames { get; set; } = new List<string>();
         private List<string> Processing { get; set; } = new List<string>();
