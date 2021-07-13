@@ -115,7 +115,6 @@ namespace Analogy
                 FirstTimeRunForm f = new FirstTimeRunForm();
                 f.ShowDialog();
             }
-            //Application.Run(new FluentDesignMainForm());
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
                 Application.Run(new MainForm());

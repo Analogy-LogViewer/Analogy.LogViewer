@@ -22,8 +22,7 @@ namespace Analogy
     {
         public event EventHandler OnFactoryOrderChanged;
 
-        private static readonly Lazy<UserSettingsManager> _instance =
-            new Lazy<UserSettingsManager>(() => new UserSettingsManager());
+        private static UserSettingsManager? _userSettings;
 
         private CommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
@@ -33,7 +32,16 @@ namespace Analogy
         public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
         public Guid InitialSelectedDataProvider { get; set; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
         public string ApplicationSkinName { get; set; }
-        public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
+
+        /// <remarks>
+        /// Manually implemented lazy pattern to enable setting while keeping the ctor in the getter lazy.
+        /// </remarks>
+        public static UserSettingsManager UserSettings
+        {
+            get => _userSettings ??= new UserSettingsManager();
+            set => _userSettings = value;
+        }
+
         public bool SaveSearchFilters { get; set; }
         public string IncludeText { get; set; }
         public string ExcludeText { get; set; }

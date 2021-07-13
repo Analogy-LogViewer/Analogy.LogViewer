@@ -92,23 +92,26 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.FactoriesImagesSmall = new DevExpress.Utils.ImageCollection(this.components);
+            this.FactoriesImagesLarge = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesSmall)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesLarge)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this.fluentDesignFormContainer1, DevExpress.Utils.DefaultBoolean.Default);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(326, 55);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(448, 64);
             this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(8);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(841, 708);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(719, 699);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl
@@ -116,11 +119,11 @@ namespace Analogy
             this.accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl.Location = new System.Drawing.Point(0, 55);
+            this.accordionControl.Location = new System.Drawing.Point(0, 64);
             this.accordionControl.Margin = new System.Windows.Forms.Padding(8);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(326, 708);
+            this.accordionControl.Size = new System.Drawing.Size(448, 699);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -152,7 +155,7 @@ namespace Analogy
             this.bbiDonation});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1167, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1167, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.btnSettings);
@@ -313,6 +316,7 @@ namespace Analogy
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
+            this.barManager1.HtmlImages = this.FactoriesImagesSmall;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbtnStar,
             this.bbiFileCaching,
@@ -573,7 +577,7 @@ namespace Analogy
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 30);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 39);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(1167, 25);
             // 
@@ -589,17 +593,17 @@ namespace Analogy
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 55);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 64);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 708);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 699);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1167, 55);
+            this.barDockControlRight.Location = new System.Drawing.Point(1167, 64);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 708);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
             // 
             // documentManager1
             // 
@@ -641,11 +645,14 @@ namespace Analogy
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             // 
-            // accordionControlElement2
+            // FactoriesImagesSmall
             // 
-            this.accordionControlElement2.Name = "accordionControlElement2";
-            this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement2.Text = "Element2";
+            this.FactoriesImagesSmall.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FactoriesImagesSmall.ImageStream")));
+            // 
+            // FactoriesImagesLarge
+            // 
+            this.FactoriesImagesLarge.ImageSize = new System.Drawing.Size(32, 32);
+            this.FactoriesImagesLarge.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FactoriesImagesLarge.ImageStream")));
             // 
             // FluentDesignMainForm
             // 
@@ -662,6 +669,7 @@ namespace Analogy
             this.Controls.Add(this.barDockControlTop);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.HtmlImages = this.FactoriesImagesSmall;
             this.MinimumSize = new System.Drawing.Size(10, 796);
             this.Name = "FluentDesignMainForm";
             this.NavigationControl = this.accordionControl;
@@ -673,6 +681,8 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesSmall)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesLarge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -734,6 +744,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem btnSettingsDebugging;
         private DevExpress.XtraBars.BarButtonItem bbiDonation;
         private DevExpress.XtraBars.BarButtonItem bbiPayPal;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
+        private DevExpress.Utils.ImageCollection FactoriesImagesSmall;
+        private DevExpress.Utils.ImageCollection FactoriesImagesLarge;
     }
 }

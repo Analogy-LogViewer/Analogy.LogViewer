@@ -9,7 +9,7 @@ namespace Analogy.Managers
     {
         private static readonly Lazy<AnalogyNonPersistSettings> _instance =
             new Lazy<AnalogyNonPersistSettings>(() => new AnalogyNonPersistSettings());
-        public static AnalogyNonPersistSettings Instance { get; set; } = _instance.Value;
+        public static AnalogyNonPersistSettings Instance => _instance.Value;
         private static string AnalogyRegistryKey => @"SOFTWARE\Analogy.LogViewer";
         public List<string> AdditionalAssembliesDependenciesLocations { get; }
         public bool DisableUpdatesByDataProvidersOverrides { get; set; }

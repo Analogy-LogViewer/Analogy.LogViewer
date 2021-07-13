@@ -21,7 +21,7 @@ namespace Analogy.Managers
             _instance = new Lazy<UpdateManager>(() => new UpdateManager());
 
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
-        public static readonly UpdateManager Instance = _instance.Value;
+        public static UpdateManager Instance => _instance.Value;
         private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;
         private string updaterRepository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.Updater";
