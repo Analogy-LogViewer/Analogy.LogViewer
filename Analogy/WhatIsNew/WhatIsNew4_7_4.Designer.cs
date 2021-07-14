@@ -49,6 +49,7 @@
             this.issue823 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue1023 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.issue1044 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.issue1034 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtcV4_7_4)).BeginInit();
             this.xtcV4_7_4.SuspendLayout();
             this.xtPageHighlight.SuspendLayout();
@@ -148,6 +149,7 @@
             // 
             // xtPageIssues
             // 
+            this.xtPageIssues.AutoScroll = true;
             this.xtPageIssues.Controls.Add(this.gcImprovements);
             this.xtPageIssues.Controls.Add(this.gcBugs);
             this.xtPageIssues.Name = "xtPageIssues";
@@ -165,9 +167,9 @@
             this.gcImprovements.Controls.Add(this.Issue1015);
             this.gcImprovements.Controls.Add(this.Issue1047);
             this.gcImprovements.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcImprovements.Location = new System.Drawing.Point(10, 157);
+            this.gcImprovements.Location = new System.Drawing.Point(10, 179);
             this.gcImprovements.Name = "gcImprovements";
-            this.gcImprovements.Size = new System.Drawing.Size(767, 272);
+            this.gcImprovements.Size = new System.Drawing.Size(767, 243);
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
             // 
@@ -257,6 +259,7 @@
             // 
             // gcBugs
             // 
+            this.gcBugs.Controls.Add(this.issue1034);
             this.gcBugs.Controls.Add(this.issue1003);
             this.gcBugs.Controls.Add(this.issue823);
             this.gcBugs.Controls.Add(this.issue1023);
@@ -265,7 +268,7 @@
             this.gcBugs.Location = new System.Drawing.Point(10, 10);
             this.gcBugs.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.gcBugs.Name = "gcBugs";
-            this.gcBugs.Size = new System.Drawing.Size(767, 147);
+            this.gcBugs.Size = new System.Drawing.Size(767, 169);
             this.gcBugs.TabIndex = 6;
             this.gcBugs.Text = "Bug Fixes";
             // 
@@ -317,6 +320,19 @@
     "ess] TimeSpanEdit exception when pressing down/up keys #1044</href>";
             this.issue1044.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
+            // issue1034
+            // 
+            this.issue1034.Dock = System.Windows.Forms.DockStyle.Top;
+            this.issue1034.Location = new System.Drawing.Point(2, 132);
+            this.issue1034.Name = "issue1034";
+            this.issue1034.Padding = new System.Windows.Forms.Padding(5);
+            this.issue1034.Size = new System.Drawing.Size(560, 26);
+            this.issue1034.TabIndex = 26;
+            this.issue1034.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1034>[Real ti" +
+    "me logs] Column is already exist exception is thrown when pressing on clear Logs" +
+    " #1034</href>";
+            this.issue1034.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
             // WhatIsNew4_7_4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -364,5 +380,6 @@
         private DevExpress.XtraEditors.HyperlinkLabelControl issue1023;
         private DevExpress.XtraEditors.HyperlinkLabelControl issue1003;
         private DevExpress.XtraEditors.HyperlinkLabelControl issue823;
+        private DevExpress.XtraEditors.HyperlinkLabelControl issue1034;
     }
 }

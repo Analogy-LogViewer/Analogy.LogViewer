@@ -10,7 +10,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {             
+            {                
+                new AnalogyChangeLog("V4.7.4 - [Real time logs] Column is already exist exception is thrown when pressing on clear Logs #1034",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,07,13)),
                 new AnalogyChangeLog("V4.7.4 - [DevExpress] Upgrade version to V21.1.4 #1047",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,07,13)),
                 new AnalogyChangeLog("V4.7.4 - [DevExpress] TimeSpanEdit exception when pressing down/up keys #1044",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,07,13)),
                 new AnalogyChangeLog("V4.7.3 - [UI] Typing non numerical text in numerical fields causes exception #823",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,06,22)),
