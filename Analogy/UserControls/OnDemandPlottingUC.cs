@@ -5,6 +5,7 @@ using DevExpress.Utils;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -15,10 +16,13 @@ namespace Analogy.UserControls
         public string Title { get; }
         public AnalogyOnDemandPlottingInteractor Interactor { get; }
         private PlottingManager Manager { get; set; }
-
-        public OnDemandPlottingUC(string title)
+        private Guid Id { get; }
+        private List<string> Series { get; }
+        public OnDemandPlottingUC(Guid id, string plotTitle, List<string> alreadyExistedSeries)
         {
-            Title = title;
+            Id = id;
+            Title = plotTitle;
+            Series = alreadyExistedSeries;
             Manager = new PlottingManager();
             InitializeComponent();
         }
@@ -32,11 +36,11 @@ namespace Analogy.UserControls
 
             chartControl1.Titles.Add(new ChartTitle {Text = Title});
             chartControl1.Legend.UseCheckBoxes = true;
-            foreach (var (seriesName, viewType) in Plotter.GetChartSeries())
+            foreach (var seriesName in Series)
             {
                 PlottingGraphData data = new PlottingGraphData((float) nudRefreshInterval.Value, (int) nudWindow.Value);
                 Manager.AddGraphData(seriesName, data);
-                Series series = new Series(seriesName, (ViewType) viewType)
+                Series series = new Series(seriesName, ViewType.Line)
                 {
                     CheckableInLegend = true,
                     CheckedInLegend = true,
@@ -71,6 +75,7 @@ namespace Analogy.UserControls
             diagram.ScrollingOptions.UseTouchDevice = true;
 
             SetChartType();
+
 
         }
 
