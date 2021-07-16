@@ -8,6 +8,7 @@ namespace Analogy.DataTypes
 {
     public class AnalogyOnDemandPlottingInteractor: IAnalogyOnDemandPlottingInteractor
     {
+
         public void ShowPlot(Guid id, AnalogyOnDemandPlottingStartupType startupType)
         {
             throw new NotImplementedException();

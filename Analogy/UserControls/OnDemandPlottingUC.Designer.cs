@@ -1,7 +1,7 @@
 ﻿
 namespace Analogy.UserControls
 {
-    partial class PlottingUC
+    partial class OnDemandPlottingUC
     {
         /// <summary> 
         /// Required designer variable.
