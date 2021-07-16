@@ -1,6 +1,7 @@
 ﻿using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Analogy.Managers
 {
@@ -48,6 +49,24 @@ namespace Analogy.Managers
             GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>
             {
                 entry.data.SetWindowValue(windowValue);
+            });
+        }
+
+        public void ClearSeriesData(string seriesNameToClear)
+        {
+            var exist = GraphsData.Exists(s => s.seriesName.Equals(seriesNameToClear));
+            if (exist)
+            {
+                var series = GraphsData.First(s => s.seriesName.Equals(seriesNameToClear));
+                series.data.Clear();
+            }
+        }
+
+        public void ClearAllData()
+        {
+            GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>
+            {
+                entry.data.Clear();
             });
         }
     }

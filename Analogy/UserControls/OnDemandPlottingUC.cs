@@ -1,42 +1,42 @@
 ﻿using Analogy.DataTypes;
-using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using DevExpress.Utils;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
     public partial class OnDemandPlottingUC : XtraUserControl
     {
-        public IAnalogyPlotting? Plotter { get; }
+        public string Title { get; }
+        public AnalogyOnDemandPlottingInteractor Interactor { get; }
         private PlottingManager Manager { get; set; }
-        public OnDemandPlottingUC()
+
+        public OnDemandPlottingUC(string title)
         {
+            Title = title;
             Manager = new PlottingManager();
             InitializeComponent();
         }
 
-        public OnDemandPlottingUC(IAnalogyPlotting plotter) : this()
-        {
-            Plotter = plotter;
-        }
-
         private void PlottingUC_Load(object sender, System.EventArgs e)
         {
-            if (DesignMode || Plotter == null)
+            if (DesignMode)
             {
                 return;
             }
 
-            chartControl1.Titles.Add(new ChartTitle { Text = Plotter.Title });
+            chartControl1.Titles.Add(new ChartTitle {Text = Title});
             chartControl1.Legend.UseCheckBoxes = true;
             foreach (var (seriesName, viewType) in Plotter.GetChartSeries())
             {
-                PlottingGraphData data = new PlottingGraphData((float)nudRefreshInterval.Value, (int)nudWindow.Value);
+                PlottingGraphData data = new PlottingGraphData((float) nudRefreshInterval.Value, (int) nudWindow.Value);
                 Manager.AddGraphData(seriesName, data);
-                Series series = new Series(seriesName, (ViewType)viewType)
+                Series series = new Series(seriesName, (ViewType) viewType)
                 {
                     CheckableInLegend = true,
                     CheckedInLegend = true,
@@ -47,9 +47,10 @@ namespace Analogy.UserControls
                 series.ValueDataMembers.AddRange(nameof(AnalogyPlottingPointData.Value));
                 chartControl1.Series.Add(series);
             }
+
             chartControl1.Legend.Visibility = DefaultBoolean.True;
 
-            XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
+            XYDiagram diagram = (XYDiagram) chartControl1.Diagram;
             diagram.AxisX.DateTimeScaleOptions.ScaleMode = ScaleMode.Continuous;
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowRotate = false;
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowStagger = false;
@@ -75,20 +76,21 @@ namespace Analogy.UserControls
 
         private void SetChartType()
         {
-            XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
+            XYDiagram diagram = (XYDiagram) chartControl1.Diagram;
             if (rbChartType.SelectedIndex == 0)
             {
                 diagram.Panes.Clear();
                 for (int i = 1; i < chartControl1.Series.Count; i++)
                 {
 
-                    XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase)chartControl1.Series[i].View;
+                    XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase) chartControl1.Series[i].View;
                     view.Pane = diagram.DefaultPane;
                     chartControl1.Series[i].CheckedInLegend = true;
                     chartControl1.Series[i].CheckableInLegend = true;
 
                 }
             }
+
             if (rbChartType.SelectedIndex > 0 && chartControl1.Series.Count > 0)
             {
 
@@ -98,7 +100,7 @@ namespace Analogy.UserControls
                     XYDiagramPane pane = new XYDiagramPane($@"Pane {i}");
                     diagram.Panes.Add(pane);
 
-                    XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase)chartControl1.Series[i].View;
+                    XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase) chartControl1.Series[i].View;
                     view.Pane = pane;
                     chartControl1.Series[i].CheckedInLegend = true;
                     chartControl1.Series[i].CheckableInLegend = true;
@@ -122,35 +124,68 @@ namespace Analogy.UserControls
             }
 
         }
+
         public void Start()
         {
-            Plotter.OnNewPointData += Plotter_OnNewPointData;
             Manager.Start();
         }
 
-        private void Plotter_OnNewPointData(object sender, AnalogyPlottingPointData e)
+        private void OnNewPointData(AnalogyPlottingPointData e)
         {
             Manager.AddPoint(e);
         }
 
-        public void Stop()
-        {
-            Plotter.OnNewPointData -= Plotter_OnNewPointData;
-        }
 
         private void nudRefreshInterval_ValueChanged(object sender, System.EventArgs e)
         {
-            Manager.SetRefreshInterval((float)nudRefreshInterval.Value);
+            Manager.SetRefreshInterval((float) nudRefreshInterval.Value);
         }
 
         private void nudWindow_ValueChanged(object sender, System.EventArgs e)
         {
-            Manager.SetDataWindow((int)nudWindow.Value);
+            Manager.SetDataWindow((int) nudWindow.Value);
         }
 
         private void rbChartType_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             SetChartType();
+        }
+
+
+        public void RemoveSeriesFromPlot(string seriesName)
+        {
+            if (!IsDisposed)
+            {
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    try
+                    {
+                        if (chartControl1.Series.Any(s => s.Name.Equals(seriesName)))
+                        {
+                            Series series = chartControl1.Series[seriesName];
+                            chartControl1.Series.Remove(series);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        AnalogyLogManager.Instance.LogError($"Error removing series: {e.Message}",
+                            nameof(OnDemandPlottingUC));
+                    }
+                }));
+
+
+            }
+        }
+
+        public void ClearSeriesData(string seriesNameToClear)
+        {
+            Manager.ClearSeriesData(seriesNameToClear);
+
+        }
+
+        public void ClearAllData()
+        {
+            Manager.ClearAllData();
         }
     }
 }

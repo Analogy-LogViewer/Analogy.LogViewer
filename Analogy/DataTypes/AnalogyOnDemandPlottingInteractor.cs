@@ -4,29 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Analogy.Managers;
+
 namespace Analogy.DataTypes
 {
     public class AnalogyOnDemandPlottingInteractor: IAnalogyOnDemandPlottingInteractor
     {
-
-        public void ShowPlot(Guid id, AnalogyOnDemandPlottingStartupType startupType)
+        
+        public void ShowPlot(Guid id, string plotTitle, AnalogyOnDemandPlottingStartupType startupType)
         {
-            throw new NotImplementedException();
+            AnalogyOnDemandPlottingManager.Instance.ShowPlot(id, plotTitle, startupType);
         }
 
         public void ClosePlot(Guid id)
         {
-            throw new NotImplementedException();
+            AnalogyOnDemandPlottingManager.Instance.ClosePlot(id);
         }
 
         public void RemoveSeriesFromPlot(Guid id, string seriesName)
         {
-            throw new NotImplementedException();
+            AnalogyOnDemandPlottingManager.Instance.RemoveSeriesFromPlot(id,seriesName);
         }
 
-        public void ClearAllData(Guid id, string seriesToClear)
+        public void ClearSeriesData(Guid id, string seriesNameToClear)
         {
-            throw new NotImplementedException();
+            AnalogyOnDemandPlottingManager.Instance.ClearSeriesData(id, seriesNameToClear);
         }
+
+        public void ClearAllData(Guid id)
+        {
+            AnalogyOnDemandPlottingManager.Instance.ClearAllData(id);
+           
+        }
+
     }
 }
