@@ -282,7 +282,6 @@ namespace Analogy.Forms
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    AnalogyOnDemandPlottingManager.Instance.OnHidePlot
                     if (!e.userControl.Visible)
                     {
                         var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -290,11 +289,30 @@ namespace Analogy.Forms
                         page.Controls.Add(e.userControl);
                         e.userControl.Dock = DockStyle.Fill;
                         page.Text = $"Plot: {e.userControl.Title}";
-                        dockManager1.ActivePanel = page; 
+                        dockManager1.ActivePanel = page;
+                        page.ClosingPanel += (_,__)=>
+                        {
+                            AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+                        };
+                        void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
+                        {
+                            if (uc == e.userControl)
+                            {
+                                page.Close();
+                            }
+                        }
+                        AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+
                     }
                 }));
             };
         }
+
+        private void Page_ClosingPanel(object sender, DockPanelCancelEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void PopulateGlobalTools()
         {
             var allFactories = FactoriesManager.Instance.Factories.ToList();
