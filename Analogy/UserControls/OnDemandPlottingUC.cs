@@ -17,12 +17,10 @@ namespace Analogy.UserControls
         public AnalogyOnDemandPlottingInteractor Interactor { get; }
         private PlottingManager Manager { get; set; }
         private Guid Id { get; }
-        private List<string> Series { get; }
-        public OnDemandPlottingUC(Guid id, string plotTitle, List<string> alreadyExistedSeries)
+        public OnDemandPlottingUC(Guid id, string plotTitle)
         {
             Id = id;
             Title = plotTitle;
-            Series = alreadyExistedSeries;
             Manager = new PlottingManager();
             InitializeComponent();
         }
@@ -36,7 +34,8 @@ namespace Analogy.UserControls
 
             chartControl1.Titles.Add(new ChartTitle {Text = Title});
             chartControl1.Legend.UseCheckBoxes = true;
-            foreach (var seriesName in Series)
+
+            foreach (var seriesName in AnalogyOnDemandPlottingManager.Instance.GetSeriesNames(Id))
             {
                 PlottingGraphData data = new PlottingGraphData((float) nudRefreshInterval.Value, (int) nudWindow.Value);
                 Manager.AddGraphData(seriesName, data);
@@ -75,7 +74,13 @@ namespace Analogy.UserControls
             diagram.ScrollingOptions.UseTouchDevice = true;
 
             SetChartType();
-
+            Start();
+            PopulateData();
+            HandleDestroyed += (sender, e) =>
+            {
+                AnalogyOnDemandPlottingManager.Instance.OnNewPointsData -= OnNewPointData;
+            };
+            AnalogyOnDemandPlottingManager.Instance.OnNewPointsData += OnNewPointData;
 
         }
 
@@ -130,14 +135,23 @@ namespace Analogy.UserControls
 
         }
 
+        private void PopulateData()
+        {
+            var pts = AnalogyOnDemandPlottingManager.Instance.GetData(Id);
+            Manager.AddPoints(pts);
+        }
+
         public void Start()
         {
             Manager.Start();
         }
 
-        private void OnNewPointData(AnalogyPlottingPointData e)
+        private void OnNewPointData(object sender, (Guid Id, IEnumerable<AnalogyPlottingPointData> PointsData) e)
         {
-            Manager.AddPoint(e);
+            if (Id == e.Id)
+            {
+                Manager.AddPoints(e.PointsData.ToList());
+            }
         }
 
 

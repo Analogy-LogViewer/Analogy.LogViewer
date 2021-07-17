@@ -10,17 +10,22 @@ namespace Analogy.Managers
 {
     public class AnalogyOnDemandPlottingManager
     {
-        public event EventHandler<(OnDemandPlottingUC userControl, AnalogyOnDemandPlottingStartupType startupType)> OnShowPlot;
-        public event EventHandler<OnDemandPlottingUC> OnHidePlot;
-        event EventHandler<(Guid Id, IEnumerable<AnalogyPlottingPointData> PointsData)> OnNewPointsData;
+        public event EventHandler<(OnDemandPlottingUC userControl, AnalogyOnDemandPlottingStartupType startupType)>
+            OnShowPlot;
 
-        private static readonly Lazy<AnalogyOnDemandPlottingManager> _instance = new Lazy<AnalogyOnDemandPlottingManager>(() => new AnalogyOnDemandPlottingManager());
+        public event EventHandler<OnDemandPlottingUC> OnHidePlot;
+        public event EventHandler<(Guid Id, IEnumerable<AnalogyPlottingPointData> PointsData)> OnNewPointsData;
+
+        private static readonly Lazy<AnalogyOnDemandPlottingManager> _instance =
+            new Lazy<AnalogyOnDemandPlottingManager>(() => new AnalogyOnDemandPlottingManager());
+
         public static AnalogyOnDemandPlottingManager Instance => _instance.Value;
 
         private IAnalogyOnDemandPlottingInteractor Interactor { get; }
         private Dictionary<Guid, OnDemandPlottingUC> Plots { get; }
         private List<IAnalogyOnDemandPlotting> Plotters { get; }
         private Dictionary<Guid, List<AnalogyPlottingPointData>> Data { get; }
+
         private AnalogyOnDemandPlottingManager()
         {
             Interactor = new AnalogyOnDemandPlottingInteractor();
@@ -36,12 +41,14 @@ namespace Analogy.Managers
             Plotters.Add(plotter);
         }
 
-        private void Plotter_OnNewPointsData(object sender, (Guid Id, IEnumerable<AnalogyPlottingPointData> PointsData) e)
+        private void Plotter_OnNewPointsData(object sender,
+            (Guid Id, IEnumerable<AnalogyPlottingPointData> PointsData) e)
         {
             if (!Data.ContainsKey(e.Id))
             {
                 Data[e.Id] = new List<AnalogyPlottingPointData>();
             }
+
             Data[e.Id].AddRange(e.PointsData);
             OnNewPointsData?.Invoke(sender, e);
         }
@@ -50,13 +57,9 @@ namespace Analogy.Managers
         {
             if (!Plots.ContainsKey(id))
             {
-                List<string> alreadyExistedSeries = new List<string>();
-                if (Data.TryGetValue(id, out var data))
-                {
-                    alreadyExistedSeries.AddRange(data.Select(d=>d.Name).Distinct());
-                }
-                Plots[id] = new OnDemandPlottingUC(id,plotTitle,alreadyExistedSeries);
+                Plots[id] = new OnDemandPlottingUC(id, plotTitle);
             }
+
             OnShowPlot.Invoke(this, (Plots[id], startupType));
         }
 
@@ -100,5 +103,33 @@ namespace Analogy.Managers
                 Data.Remove(id);
             }
         }
+
+        public List<string> GetSeriesNames(Guid id)
+        {
+            if (!Plots.ContainsKey(id))
+            {
+                List<string> names = new List<string>();
+                if (Data.TryGetValue(id, out var data))
+                {
+                    names.AddRange(data.Select(d => d.Name).Distinct());
+                }
+
+                return names;
+            }
+
+            return new List<string>(0);
+        }
+
+
+        public List<AnalogyPlottingPointData> GetData(Guid id)
+        {
+            if (Data.ContainsKey(id))
+            {
+                return Data[id];
+            }
+
+            return new List<AnalogyPlottingPointData>();
+        }
+
     }
 }

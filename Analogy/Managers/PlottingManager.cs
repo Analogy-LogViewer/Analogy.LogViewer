@@ -27,7 +27,22 @@ namespace Analogy.Managers
                 }
             }
         }
+        public void AddPoints(List<AnalogyPlottingPointData> pt)
+        {
+            var grouped = pt.GroupBy(p => p.Name);
+            foreach (var byNames in grouped)
+            {
+                foreach ((string seriesName, PlottingGraphData data) in GraphsData)
+                {
+                    if (seriesName.Equals(byNames.Key))
+                    {
+                        data.AddDataPoints(byNames.ToList());
+                        return;
+                    }
+                }
+            }
 
+        }
         public void Start()
         {
             foreach ((string _, PlottingGraphData data) in GraphsData)

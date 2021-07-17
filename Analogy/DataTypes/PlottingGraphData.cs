@@ -65,7 +65,19 @@ namespace Analogy.DataTypes
 
             }
         }
+        public void AddDataPoints(List<AnalogyPlottingPointData> data)
+        {
+            try
+            {
+                sync.EnterWriteLock();
+                rawData.AddRange(data);
+            }
+            finally
+            {
+                sync.ExitWriteLock();
 
+            }
+        }
         public void SetIntervalValue(float seconds) => RefreshDataTimer.Interval = (int)(seconds * 1000);
         public void Clear()
         {
