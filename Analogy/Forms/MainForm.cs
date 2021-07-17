@@ -201,7 +201,7 @@ namespace Analogy.Forms
             await FactoriesManager.Instance.AddExternalDataSources();
             PopulateGlobalTools();
             LoadStartupExtensions();
-
+            RegisterForOnDemandPlots();
 
             //Create all other DataSources
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
@@ -276,7 +276,25 @@ namespace Analogy.Forms
             }
 
         }
-
+        private void RegisterForOnDemandPlots()
+        {
+            AnalogyOnDemandPlottingManager.Instance.OnShowPlot += (s, e) =>
+            {
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    AnalogyOnDemandPlottingManager.Instance.OnHidePlot
+                    if (!e.userControl.Visible)
+                    {
+                        var page = dockManager1.AddPanel(DockingStyle.Float);
+                        page.DockedAsTabbedDocument = e.startupType==AnalogyOnDemandPlottingStartupType.TabbedWindow;
+                        page.Controls.Add(e.userControl);
+                        e.userControl.Dock = DockStyle.Fill;
+                        page.Text = $"Plot: {e.userControl.Title}";
+                        dockManager1.ActivePanel = page; 
+                    }
+                }));
+            };
+        }
         private void PopulateGlobalTools()
         {
             var allFactories = FactoriesManager.Instance.Factories.ToList();

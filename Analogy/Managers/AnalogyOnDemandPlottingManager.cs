@@ -120,7 +120,6 @@ namespace Analogy.Managers
             return new List<string>(0);
         }
 
-
         public List<AnalogyPlottingPointData> GetData(Guid id)
         {
             if (Data.ContainsKey(id))
