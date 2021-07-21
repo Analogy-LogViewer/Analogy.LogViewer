@@ -75,6 +75,40 @@ namespace Analogy.Managers
                 }
             }
             #endregion
+            #region Load on demand plot factory
+            foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
+            {
+                foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyOnDemandPlottingFactory)) != null))
+                {
+                    try
+                    {
+                        var factory = (Activator.CreateInstance(f) as IAnalogyOnDemandPlottingFactory)!;
+                        var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
+                        setting.FactoryName = factory.Title;
+                        FactoryContainer fc = new FactoryContainer(assembly, fileName, factory, setting);
+                        if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))
+                        {
+                            Factories.Remove(Factories.FirstOrDefault(fa =>
+                                fa.Factory.FactoryId == factory.FactoryId));
+                        }
+
+                        if (factory.AdditionalProbingLocation != null)
+                        {
+                            foreach (var path in factory.AdditionalProbingLocation)
+                            {
+                                AnalogyNonPersistSettings.Instance.AddDependencyLocation(path);
+                            }
+                        }
+                        factory.RegisterNotificationCallback(NotificationManager.Instance);
+                        Factories.Add(fc);
+                    }
+                    catch (Exception e)
+                    {
+                        AnalogyLogManager.Instance.LogError($"{fileName}: Error during data providers: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
+                    }
+                }
+            }
+            #endregion
             #region Load Factories
             foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
             {
