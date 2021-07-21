@@ -77,6 +77,7 @@ namespace Analogy
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
+
         public Guid LastOpenedDataProvider { get; set; }
         public bool RememberLastOpenedDataProvider { get; set; }
         public bool RememberLastSearches { get; set; }
@@ -821,7 +822,18 @@ namespace Analogy
         public override string ToString() => $"{nameof(FactoryName)}: {FactoryName}, {nameof(FactoryId)}: {FactoryId}, {nameof(Status)}: {Status}";
 
     }
+    [Serializable]
+    public class OnDemandPlottingFactorySettings
+    {
+        public Guid FactoryId { get; set; }
+        public DataProviderFactoryStatus Status { get; set; }
 
+        public OnDemandPlottingFactorySettings()
+        {
+        }
+        public override string ToString() => $"{nameof(FactoryId)}: {FactoryId}, {nameof(Status)}: {Status}";
+
+    }
     public enum PreDefinedQueryType
     {
         Contains,

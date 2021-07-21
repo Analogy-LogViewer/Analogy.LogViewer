@@ -50,7 +50,16 @@ namespace Analogy.Managers
                 data.Start();
             }
         }
-
+        public void Start(string SeriesName)
+        {
+            foreach ((string name, PlottingGraphData data) in GraphsData)
+            {
+                if (name == SeriesName)
+                {
+                    data.Start();
+                }
+            }
+        }
         public void SetRefreshInterval(float seconds)
         {
             GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>

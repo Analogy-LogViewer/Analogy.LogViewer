@@ -76,35 +76,34 @@ namespace Analogy.Managers
             }
             #endregion
             #region Load on demand plot factory
-            foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
+            foreach ((Assembly _, string fileName, List<Type> types) in typesToLoad)
             {
                 foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyOnDemandPlottingFactory)) != null))
                 {
                     try
                     {
                         var factory = (Activator.CreateInstance(f) as IAnalogyOnDemandPlottingFactory)!;
-                        var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
-                        setting.FactoryName = factory.Title;
-                        FactoryContainer fc = new FactoryContainer(assembly, fileName, factory, setting);
-                        if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))
+                        if (factory.OnDemandPlottingGenerators != null)
                         {
-                            Factories.Remove(Factories.FirstOrDefault(fa =>
-                                fa.Factory.FactoryId == factory.FactoryId));
-                        }
-
-                        if (factory.AdditionalProbingLocation != null)
-                        {
-                            foreach (var path in factory.AdditionalProbingLocation)
+                            foreach (var plotting in factory.OnDemandPlottingGenerators)
                             {
-                                AnalogyNonPersistSettings.Instance.AddDependencyLocation(path);
+                                AnalogyOnDemandPlottingManager.Instance.Register(plotting);
                             }
                         }
-                        factory.RegisterNotificationCallback(NotificationManager.Instance);
-                        Factories.Add(fc);
+
+                        factory.OnAddedOnDemandPlottingGenerator += (s, e) =>
+                        {
+                            AnalogyOnDemandPlottingManager.Instance.Register(e);
+                        };
+                        factory.OnRemovedOnDemandPlottingGenerator += (s, e) =>
+                        {
+                            AnalogyOnDemandPlottingManager.Instance.UnRegister(e);
+                        };
+
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogManager.Instance.LogError($"{fileName}: Error during data providers: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
+                        AnalogyLogManager.Instance.LogError($"{fileName}: Error during on demand plotting: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
             }
@@ -276,7 +275,7 @@ namespace Analogy.Managers
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during plotter loading: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
-              
+
                 foreach (Type uc in types.Where(aType => aType.GetInterface(nameof(IAnalogyCustomUserControlsFactory)) != null))
                 {
                     try
@@ -290,7 +289,7 @@ namespace Analogy.Managers
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during adding user control factory: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
-               
+
             }
             //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
 

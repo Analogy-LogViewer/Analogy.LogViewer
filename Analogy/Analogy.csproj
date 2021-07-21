@@ -35,6 +35,7 @@
 		<LangVersion>8.0</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>AnyCPU;x64</Platforms>
+		<UserSecretsId>db476d63-3c8d-40f4-9618-d540fd88888d</UserSecretsId>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
 		<PlatformTarget>AnyCPU</PlatformTarget>
@@ -89,7 +90,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Example" Version="2.1.1">
+		<PackageReference Include="Analogy.LogViewer.Example" Version="2.1.2-rc">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
