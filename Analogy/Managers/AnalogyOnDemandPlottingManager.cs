@@ -109,6 +109,10 @@ namespace Analogy.Managers
                 }
             }
         }
+        public void AddSeriesToPlot(Guid id, string seriesName)
+        {
+
+        }
 
         public void ClearAllData(Guid id)
         {

@@ -21,6 +21,11 @@ namespace Analogy.DataTypes
             AnalogyOnDemandPlottingManager.Instance.ClosePlot(id);
         }
 
+        public void AddSeriesToPlot(Guid id, string seriesName)
+        {
+            AnalogyOnDemandPlottingManager.Instance.AddSeriesToPlot(id,seriesName);
+        }
+
         public void RemoveSeriesFromPlot(Guid id, string seriesName)
         {
             AnalogyOnDemandPlottingManager.Instance.RemoveSeriesFromPlot(id,seriesName);
