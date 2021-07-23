@@ -69,7 +69,7 @@ namespace Analogy.ApplicationSettings
             {
                 if (listBoxFoldersProbing.SelectedItem != null)
                 {
-                    Settings.AdditionalProbingLocations.Remove(teFoldersProbing.Text);
+                    Settings.AdditionalProbingLocations.Remove(listBoxFoldersProbing.SelectedItem.ToString());
                     listBoxFoldersProbing.Items.Remove(listBoxFoldersProbing.SelectedItem);
                 }
             };

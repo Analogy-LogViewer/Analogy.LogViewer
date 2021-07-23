@@ -201,7 +201,7 @@ namespace Analogy.Forms
             await FactoriesManager.Instance.AddExternalDataSources();
             PopulateGlobalTools();
             LoadStartupExtensions();
-
+            RegisterForOnDemandPlots();
 
             //Create all other DataSources
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
@@ -275,6 +275,44 @@ namespace Analogy.Forms
                 settings.ShowWhatIsNewAtStartup = false;
             }
 
+        }
+        private void RegisterForOnDemandPlots()
+        {
+            AnalogyOnDemandPlottingManager.Instance.OnShowPlot += (s, e) =>
+            {
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    if (!e.userControl.Visible)
+                    {
+                        var page = dockManager1.AddPanel(DockingStyle.Float);
+                        page.DockedAsTabbedDocument = e.startupType==AnalogyOnDemandPlottingStartupType.TabbedWindow;
+                        page.Controls.Add(e.userControl);
+                        e.userControl.Show();
+                        e.userControl.Dock = DockStyle.Fill;
+                        page.Text = $"Plot: {e.userControl.Title}";
+                        dockManager1.ActivePanel = page;
+                        page.ClosingPanel += (_,__)=>
+                        {
+                            AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+                        };
+                        void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
+                        {
+                            if (uc == e.userControl)
+                            {
+                                dockManager1.RemovePanel(page); 
+                                uc.Hide();
+                            }
+                        }
+                        AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+
+                    }
+                }));
+            };
+        }
+
+        private void Page_ClosingPanel(object sender, DockPanelCancelEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void PopulateGlobalTools()

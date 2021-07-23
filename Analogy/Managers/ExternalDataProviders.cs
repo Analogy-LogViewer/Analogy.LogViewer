@@ -75,6 +75,39 @@ namespace Analogy.Managers
                 }
             }
             #endregion
+            #region Load on demand plot factory
+            foreach ((Assembly _, string fileName, List<Type> types) in typesToLoad)
+            {
+                foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyOnDemandPlottingFactory)) != null))
+                {
+                    try
+                    {
+                        var factory = (Activator.CreateInstance(f) as IAnalogyOnDemandPlottingFactory)!;
+                        if (factory.OnDemandPlottingGenerators != null)
+                        {
+                            foreach (var plotting in factory.OnDemandPlottingGenerators)
+                            {
+                                AnalogyOnDemandPlottingManager.Instance.Register(plotting);
+                            }
+                        }
+
+                        factory.OnAddedOnDemandPlottingGenerator += (s, e) =>
+                        {
+                            AnalogyOnDemandPlottingManager.Instance.Register(e);
+                        };
+                        factory.OnRemovedOnDemandPlottingGenerator += (s, e) =>
+                        {
+                            AnalogyOnDemandPlottingManager.Instance.UnRegister(e);
+                        };
+
+                    }
+                    catch (Exception e)
+                    {
+                        AnalogyLogManager.Instance.LogError($"{fileName}: Error during on demand plotting: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
+                    }
+                }
+            }
+            #endregion
             #region Load Factories
             foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
             {
@@ -242,7 +275,7 @@ namespace Analogy.Managers
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during plotter loading: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
-              
+
                 foreach (Type uc in types.Where(aType => aType.GetInterface(nameof(IAnalogyCustomUserControlsFactory)) != null))
                 {
                     try
@@ -256,7 +289,7 @@ namespace Analogy.Managers
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during adding user control factory: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
-               
+
             }
             //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
 
