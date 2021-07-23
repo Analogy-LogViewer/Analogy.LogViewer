@@ -299,7 +299,8 @@ namespace Analogy.Forms
                         {
                             if (uc == e.userControl)
                             {
-                                page.Close();
+                                dockManager1.RemovePanel(page); 
+                                uc.Hide();
                             }
                         }
                         AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;

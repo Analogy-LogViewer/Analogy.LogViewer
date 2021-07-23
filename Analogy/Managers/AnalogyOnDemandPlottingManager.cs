@@ -69,7 +69,7 @@ namespace Analogy.Managers
 
         public void ShowPlot(Guid id, string plotTitle, AnalogyOnDemandPlottingStartupType startupType)
         {
-            if (!Plots.ContainsKey(id))
+            if (!Plots.ContainsKey(id) || (Plots.ContainsKey(id) && Plots[id].IsDisposed))
             {
                 var uc = new OnDemandPlottingUC(id, plotTitle);
                 uc.Hide();
