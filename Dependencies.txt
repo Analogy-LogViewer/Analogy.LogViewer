@@ -1,0 +1,18 @@
+Interface -- LogServer.Client
+Interface -- LogServer
+Interface -- CommonUtilities -- Template -- RegexParser
+Interface -- CommonUtilities -- Template -- Example
+Interface -- CommonUtilities -- Template -- Plain Text
+Interface -- CommonUtilities -- Template -- 
+Interface -- CommonUtilities -- Template -- 
+Interface -- CommonUtilities -- Template -- 
+Interface -- CommonUtilities -- Template -- 
+Interface -- CommonUtilities -- Template -- 
+Interface -- CommonUtilities -- Template -- 
+Interface -- CommonUtilities -- Template -- 
+Interface -- CommonUtilities -- Template -- 
+
+Interface -- LogServer.Client --         - AspNetCore.LogProvider
+
+Interface -- LogServer.Client --         - Grpc
+Interface -- CommonUtilities -- Template - Grpc - Kama Research
