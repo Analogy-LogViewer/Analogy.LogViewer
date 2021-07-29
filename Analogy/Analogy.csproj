@@ -610,10 +610,6 @@
 		<Compile Update="UserControls\UtilityUC.Designer.cs">
 			<DependentUpon>UtilityUC.cs</DependentUpon>
 		</Compile>
-		<Compile Update="UserControls\WindowsEventLog.cs" />
-		<Compile Update="UserControls\WindowsEventLog.designer.cs">
-			<DependentUpon>WindowsEventLog.cs</DependentUpon>
-		</Compile>
 		<Compile Update="Forms\XtraFormClientServer.cs" />
 		<Compile Update="Forms\XtraFormClientServer.Designer.cs">
 			<DependentUpon>XtraFormClientServer.cs</DependentUpon>
@@ -622,10 +618,6 @@
 		<Compile Update="Forms\XtraFormLogGrid.Designer.cs">
 			<DependentUpon>XtraFormLogGrid.cs</DependentUpon>
 		</Compile>
-		<Compile Update="Forms\XtraFormWindowsEventlogsManager.cs" />
-		<Compile Update="Forms\XtraFormWindowsEventlogsManager.Designer.cs">
-			<DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\XtraUCDirectoryListing.cs" />
 		<Compile Update="UserControls\XtraUCDirectoryListing.Designer.cs">
 			<DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>
@@ -633,10 +625,6 @@
 		<Compile Update="UserControls\XtraUCFileSystem.cs" />
 		<Compile Update="UserControls\XtraUCFileSystem.Designer.cs">
 			<DependentUpon>XtraUCFileSystem.cs</DependentUpon>
-		</Compile>
-		<Compile Update="UserControls\XtraUCWindowsEventLogs.cs" />
-		<Compile Update="UserControls\XtraUCWindowsEventLogs.Designer.cs">
-			<DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
 		</Compile>
 		<None Include="..\icon.png">
 			<Pack>True</Pack>
@@ -664,12 +652,6 @@
 		<EmbeddedResource Update="UserControls\FilePoolingLog.resx">
 			<DependentUpon>FilePoolingLog.cs</DependentUpon>
 			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Forms\XtraFormWindowsEventlogsManager.resx">
-			<DependentUpon>XtraFormWindowsEventlogsManager.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\XtraUCWindowsEventLogs.resx">
-			<DependentUpon>XtraUCWindowsEventLogs.cs</DependentUpon>
 		</EmbeddedResource>
 		<None Include="Resources\About_32x32.png" />
 		<None Include="Resources\About_16x16.png" />
@@ -794,9 +776,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\UtilityUC.resx">
 			<DependentUpon>UtilityUC.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\WindowsEventLog.resx">
-			<DependentUpon>WindowsEventLog.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Forms\XtraFormClientServer.resx">
 			<DependentUpon>XtraFormClientServer.cs</DependentUpon>
