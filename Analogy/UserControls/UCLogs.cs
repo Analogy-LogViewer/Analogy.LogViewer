@@ -35,6 +35,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Data.Mask;
+using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors.Mask;
 
 namespace Analogy
@@ -281,6 +282,21 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
+            meMessageDetails.Properties.BeforeShowMenu += (s, e) =>
+            {
+                string caption = "Show Selection In Json Viewer";
+                if (!e.Menu.Items.ToList().Exists(i => i.Caption.Equals(caption)))
+                {
+                    DXMenuItem item = new DXMenuItem(caption);
+                    item.Click += (_, __) =>
+                    {
+                        var json = meMessageDetails.SelectedText;
+                        JsonViewerForm j = new JsonViewerForm(json);
+                        j.Show(this);
+                    };
+                    e.Menu.Items.Add(item);
+                }
+            };
             logGrid.ShownEditor += GridView_ShownEditor;
             gridControl.Click += (s, e) =>
             {
