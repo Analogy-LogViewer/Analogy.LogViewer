@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.UserControls;
 
 namespace Analogy.DataProviders
 {
@@ -150,7 +151,7 @@ namespace Analogy.DataProviders
 
         public AnalogyCustomActionFactory()
         {
-            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction(), new AnalogyUnixTimeAction(), new AnalogyJsonViewerAction() };
+            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction(), new AnalogyUnixTimeAction(), new AnalogyJsonViewerAction(), new AnalogyCompareTextAction() };
         }
     }
 
@@ -189,6 +190,17 @@ namespace Analogy.DataProviders
         public AnalogyToolTip? ToolTip { get; set; }
     }
 
+    public class AnalogyCompareTextAction : IAnalogyCustomAction
+    {
+        public Action Action => () => new CompareTextForm().Show();
+        public Guid Id { get; set; } = new Guid("110b8471-c763-4579-a7e5-9efed71a56a5");
+        public Image? SmallImage { get; set; } = Resources.Watermark_16x16;
+        public Image? LargeImage { get; set; } = Resources.Watermark_32x32;
+
+        public string Title { get; set; } = "Text Comparer";
+        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
+        public AnalogyToolTip? ToolTip { get; set; }
+    }
     public class AnalogyBuiltInImages : AnalogyImages
     {
     }

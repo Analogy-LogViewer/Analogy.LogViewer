@@ -1,8 +1,7 @@
-﻿using DevExpress.XtraEditors.Controls;
-
-namespace Analogy.Tools
+﻿
+namespace Analogy.UserControls
 {
-    partial class LogsComparerUC
+    partial class CompareTextUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -57,7 +56,7 @@ namespace Analogy.Tools
             this.rtboxRight.Location = new System.Drawing.Point(0, 32);
             this.rtboxRight.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.rtboxRight.Name = "rtboxRight";
-            this.rtboxRight.Size = new System.Drawing.Size(472, 558);
+            this.rtboxRight.Size = new System.Drawing.Size(485, 595);
             this.rtboxRight.TabIndex = 3;
             this.rtboxRight.Text = "";
             // 
@@ -67,7 +66,7 @@ namespace Analogy.Tools
             this.rtboxLeft.Location = new System.Drawing.Point(0, 32);
             this.rtboxLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rtboxLeft.Name = "rtboxLeft";
-            this.rtboxLeft.Size = new System.Drawing.Size(474, 558);
+            this.rtboxLeft.Size = new System.Drawing.Size(487, 595);
             this.rtboxLeft.TabIndex = 0;
             this.rtboxLeft.Text = "";
             // 
@@ -79,7 +78,7 @@ namespace Analogy.Tools
             this.panelControlLeft.Location = new System.Drawing.Point(0, 0);
             this.panelControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControlLeft.Name = "panelControlLeft";
-            this.panelControlLeft.Size = new System.Drawing.Size(474, 32);
+            this.panelControlLeft.Size = new System.Drawing.Size(487, 32);
             this.panelControlLeft.TabIndex = 3;
             // 
             // lblFileLeft
@@ -91,13 +90,13 @@ namespace Analogy.Tools
             this.lblFileLeft.Location = new System.Drawing.Point(2, 2);
             this.lblFileLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lblFileLeft.Name = "lblFileLeft";
-            this.lblFileLeft.Size = new System.Drawing.Size(404, 28);
+            this.lblFileLeft.Size = new System.Drawing.Size(417, 28);
             this.lblFileLeft.TabIndex = 1;
             // 
             // sBtnLeft
             // 
             this.sBtnLeft.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sBtnLeft.Location = new System.Drawing.Point(406, 2);
+            this.sBtnLeft.Location = new System.Drawing.Point(419, 2);
             this.sBtnLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLeft.Name = "sBtnLeft";
             this.sBtnLeft.Size = new System.Drawing.Size(66, 28);
@@ -113,7 +112,7 @@ namespace Analogy.Tools
             this.panelControlRight.Location = new System.Drawing.Point(0, 0);
             this.panelControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControlRight.Name = "panelControlRight";
-            this.panelControlRight.Size = new System.Drawing.Size(472, 32);
+            this.panelControlRight.Size = new System.Drawing.Size(485, 32);
             this.panelControlRight.TabIndex = 4;
             // 
             // lblFileRight
@@ -125,13 +124,13 @@ namespace Analogy.Tools
             this.lblFileRight.Location = new System.Drawing.Point(2, 2);
             this.lblFileRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lblFileRight.Name = "lblFileRight";
-            this.lblFileRight.Size = new System.Drawing.Size(402, 28);
+            this.lblFileRight.Size = new System.Drawing.Size(415, 28);
             this.lblFileRight.TabIndex = 2;
             // 
             // simpleButtonRight
             // 
             this.simpleButtonRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.simpleButtonRight.Location = new System.Drawing.Point(404, 2);
+            this.simpleButtonRight.Location = new System.Drawing.Point(417, 2);
             this.simpleButtonRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButtonRight.Name = "simpleButtonRight";
             this.simpleButtonRight.Size = new System.Drawing.Size(66, 28);
@@ -157,18 +156,17 @@ namespace Analogy.Tools
             this.splitContainerControl1.Panel2.Controls.Add(this.rtboxRight);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControlRight);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(958, 590);
-            this.splitContainerControl1.SplitterPosition = 474;
-            this.splitContainerControl1.TabIndex = 2;
+            this.splitContainerControl1.Size = new System.Drawing.Size(984, 627);
+            this.splitContainerControl1.SplitterPosition = 487;
+            this.splitContainerControl1.TabIndex = 3;
             // 
-            // LogsComparerUC
+            // CompareTextUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainerControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "LogsComparerUC";
-            this.Size = new System.Drawing.Size(958, 590);
+            this.Name = "CompareTextUC";
+            this.Size = new System.Drawing.Size(984, 627);
             ((System.ComponentModel.ISupportInitialize)(this.panelControlLeft)).EndInit();
             this.panelControlLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControlRight)).EndInit();
@@ -187,13 +185,12 @@ namespace Analogy.Tools
 
         private System.Windows.Forms.RichTextBox rtboxRight;
         private System.Windows.Forms.RichTextBox rtboxLeft;
-        private DevExpress.XtraEditors.LabelControl lblFileLeft;
-        private DevExpress.XtraEditors.LabelControl lblFileRight;
         private DevExpress.XtraEditors.PanelControl panelControlLeft;
+        private DevExpress.XtraEditors.LabelControl lblFileLeft;
         private DevExpress.XtraEditors.SimpleButton sBtnLeft;
         private DevExpress.XtraEditors.PanelControl panelControlRight;
+        private DevExpress.XtraEditors.LabelControl lblFileRight;
         private DevExpress.XtraEditors.SimpleButton simpleButtonRight;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-  
     }
 }

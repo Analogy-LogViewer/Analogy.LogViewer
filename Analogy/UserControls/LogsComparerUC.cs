@@ -21,22 +21,24 @@ namespace Analogy.Tools
 
         public void LoadFiles(string pathLeft, string pathRight)
         {
-            rtboxLeft.Clear();
-            rtboxRight.Clear();
+            rtboxLeft.Text="";
+            rtboxRight.Text = "";
             lblFileLeft.Text = string.Empty;
             lblFileRight.Text = string.Empty;
+;
             if (File.Exists(pathLeft) && (pathLeft.EndsWith("txt") || pathLeft.EndsWith("cfg") || pathLeft.EndsWith("xml")))
             {
                 lblFileLeft.Text = pathLeft;
-                rtboxLeft.LoadFile(pathLeft, RichTextBoxStreamType.PlainText);
+                rtboxLeft.LoadFile(pathLeft);
+         
             }
             if (File.Exists(pathRight) && (pathRight.EndsWith("txt") || pathRight.EndsWith("cfg") || pathRight.EndsWith("xml")))
             {
                 lblFileRight.Text = pathRight;
-                rtboxRight.LoadFile(pathRight, RichTextBoxStreamType.PlainText);
+                rtboxRight.LoadFile(pathRight);
             }
 
-            int leftCount = rtboxLeft.Lines.Count();
+            int leftCount = rtboxLeft.Text.Count();
             int rightCount = rtboxRight.Lines.Count();
             int i = 0;
             int upto = Math.Min(leftCount, rightCount);
