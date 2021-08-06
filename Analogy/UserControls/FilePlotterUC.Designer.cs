@@ -37,6 +37,11 @@ namespace Analogy.UserControls
             this.spltcMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.ceDateTimeColumn = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.teFile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltcMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spltcMain.Panel1)).BeginInit();
@@ -46,6 +51,11 @@ namespace Analogy.UserControls
             this.spltcMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ceDateTimeColumn.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFile
@@ -60,9 +70,9 @@ namespace Analogy.UserControls
             // 
             this.labelControl1.Location = new System.Drawing.Point(19, 15);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(341, 16);
+            this.labelControl1.Size = new System.Drawing.Size(333, 16);
             this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "You can use this window to plot a tabular Data  from  a file.";
+            this.labelControl1.Text = "You can use this window to plot a tabular Data from a file.";
             // 
             // teFile
             // 
@@ -98,8 +108,10 @@ namespace Analogy.UserControls
             this.spltcMain.Location = new System.Drawing.Point(0, 0);
             this.spltcMain.Name = "spltcMain";
             // 
-            // spltcMain.spltcMain_Panel1
+            // spltcMain.Panel1
             // 
+            this.spltcMain.Panel1.Controls.Add(this.ceDateTimeColumn);
+            this.spltcMain.Panel1.Controls.Add(this.checkEdit1);
             this.spltcMain.Panel1.Controls.Add(this.sbtnBrowse);
             this.spltcMain.Panel1.Controls.Add(this.labelControl1);
             this.spltcMain.Panel1.Controls.Add(this.teFile);
@@ -107,12 +119,12 @@ namespace Analogy.UserControls
             this.spltcMain.Panel1.Controls.Add(this.sbtnLoad);
             this.spltcMain.Panel1.Text = "Panel1";
             // 
-            // spltcMain.spltcMain_Panel2
+            // spltcMain.Panel2
             // 
-            this.spltcMain.Panel2.Controls.Add(this.gridControl);
+            this.spltcMain.Panel2.Controls.Add(this.xtraTabControl1);
             this.spltcMain.Panel2.Text = "Panel2";
             this.spltcMain.Size = new System.Drawing.Size(1222, 479);
-            this.spltcMain.SplitterPosition = 70;
+            this.spltcMain.SplitterPosition = 118;
             this.spltcMain.TabIndex = 5;
             // 
             // gridControl
@@ -123,7 +135,7 @@ namespace Analogy.UserControls
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1222, 403);
+            this.gridControl.Size = new System.Drawing.Size(1220, 319);
             this.gridControl.TabIndex = 1;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -155,6 +167,47 @@ namespace Analogy.UserControls
             this.logGrid.OptionsView.ShowAutoFilterRow = true;
             this.logGrid.OptionsView.ShowGroupPanel = false;
             // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(19, 64);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "First row is the columns title to be use";
+            this.checkEdit1.Size = new System.Drawing.Size(296, 24);
+            this.checkEdit1.TabIndex = 5;
+            // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.Size = new System.Drawing.Size(1222, 349);
+            this.xtraTabControl1.TabIndex = 2;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1,
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.gridControl);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1220, 319);
+            this.xtraTabPage1.Text = "Data";
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1220, 319);
+            this.xtraTabPage2.Text = "Plot";
+            // 
+            // ceDateTimeColumn
+            // 
+            this.ceDateTimeColumn.Location = new System.Drawing.Point(19, 94);
+            this.ceDateTimeColumn.Name = "ceDateTimeColumn";
+            this.ceDateTimeColumn.Properties.Caption = "First column is Date/Time in UTC unix Time";
+            this.ceDateTimeColumn.Size = new System.Drawing.Size(296, 24);
+            this.ceDateTimeColumn.TabIndex = 6;
+            // 
             // FilePlotterUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -173,6 +226,11 @@ namespace Analogy.UserControls
             this.spltcMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ceDateTimeColumn.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -187,5 +245,10 @@ namespace Analogy.UserControls
         private DevExpress.XtraEditors.SplitContainerControl spltcMain;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView logGrid;
+        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraEditors.CheckEdit ceDateTimeColumn;
     }
 }
