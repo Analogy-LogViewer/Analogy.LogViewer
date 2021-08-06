@@ -1,4 +1,9 @@
-﻿using Analogy.DataTypes;
+﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Forms;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
@@ -11,6 +16,7 @@ namespace Analogy.UserControls
     public partial class PlottingUC : XtraUserControl
     {
         public IAnalogyPlotting? Plotter { get; }
+        public AnalogyPlottingInteractor Interactor { get; }
         private PlottingManager Manager { get; set; }
         public PlottingUC()
         {
@@ -18,9 +24,11 @@ namespace Analogy.UserControls
             InitializeComponent();
         }
 
-        public PlottingUC(IAnalogyPlotting plotter) : this()
+        public PlottingUC(IAnalogyPlotting plotter, AnalogyPlottingInteractor interactor) : this()
         {
             Plotter = plotter;
+            Interactor = interactor;
+            interactor.WindowSpinEdit = nudWindow;
         }
 
         private void PlottingUC_Load(object sender, System.EventArgs e)
@@ -138,19 +146,72 @@ namespace Analogy.UserControls
             Plotter.OnNewPointData -= Plotter_OnNewPointData;
         }
 
-        private void nudRefreshInterval_ValueChanged(object sender, System.EventArgs e)
-        {
-            Manager.SetRefreshInterval((float)nudRefreshInterval.Value);
-        }
-
-        private void nudWindow_ValueChanged(object sender, System.EventArgs e)
-        {
-            Manager.SetDataWindow((int)nudWindow.Value);
-        }
-
         private void rbChartType_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             SetChartType();
+        }
+
+        private void nudWindow_EditValueChanged(object sender, System.EventArgs e)
+        {
+            Manager.SetDataWindow((int)nudWindow.Value);
+
+        }
+
+        private void nudRefreshInterval_EditValueChanged(object sender, System.EventArgs e)
+        {
+            Manager.SetRefreshInterval((float)nudRefreshInterval.Value);
+
+        }
+
+        private void sbtnSaveChart_Click(object sender, System.EventArgs e)
+        {
+            using SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = "png file|*.png|jpeg file|*.jpeg"};
+
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                ImageFormat imgFormat=ImageFormat.Bmp;
+                switch (saveFileDialog.FilterIndex)
+                {
+                    case 1:
+                        imgFormat=ImageFormat.Png;
+                        break;
+                    case 2:
+                        imgFormat=ImageFormat.Jpeg;
+                        break;
+                }
+
+                SaveChartImageToFile(chartControl1, imgFormat, saveFileDialog.FileName);
+            }
+        }
+
+
+        private void SaveChartImageToFile(ChartControl chart, ImageFormat format, String fileName)
+        {
+            // Create an image in the specified format from the chart 
+            // and save it to the specified path. 
+            chart.ExportToImage(fileName, format);
+        }
+
+        private void sbtnCopyChart_Click(object sender, EventArgs e)
+        {
+            Image image = GetChartImage(chartControl1, ImageFormat.Png);
+            Clipboard.SetImage(image);
+            XtraMessageBox.Show("Chart was copied to clipboard");
+        }
+        private Image GetChartImage(ChartControl chart, ImageFormat format)
+        {
+            // Create an image. 
+            Image image = null;
+
+            // Create an image of the chart. 
+            using (MemoryStream s = new MemoryStream())
+            {
+                chart.ExportToImage(s, format);
+                image = Image.FromStream(s);
+            }
+
+            // Return the image. 
+            return image;
         }
     }
 }

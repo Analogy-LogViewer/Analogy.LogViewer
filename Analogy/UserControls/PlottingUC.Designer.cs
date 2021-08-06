@@ -29,15 +29,16 @@ namespace Analogy.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.nudWindow = new System.Windows.Forms.NumericUpDown();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.rbChartType = new DevExpress.XtraEditors.RadioGroup();
             this.lblChartType = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.nudRefreshInterval = new System.Windows.Forms.NumericUpDown();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWindow)).BeginInit();
+            this.nudWindow = new DevExpress.XtraEditors.SpinEdit();
+            this.nudRefreshInterval = new DevExpress.XtraEditors.SpinEdit();
+            this.sbtnSaveChart = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnCopyChart = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -45,38 +46,15 @@ namespace Analogy.UserControls
             this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rbChartType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWindow.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // nudWindow
-            // 
-            this.nudWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudWindow.Location = new System.Drawing.Point(1031, 3);
-            this.nudWindow.Maximum = new decimal(new int[] {
-            1410065408,
-            2,
-            0,
-            0});
-            this.nudWindow.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudWindow.Name = "nudWindow";
-            this.nudWindow.Size = new System.Drawing.Size(73, 23);
-            this.nudWindow.TabIndex = 19;
-            this.nudWindow.Value = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.nudWindow.ValueChanged += new System.EventHandler(this.nudWindow_ValueChanged);
             // 
             // labelControl1
             // 
             this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl1.Location = new System.Drawing.Point(845, 7);
+            this.labelControl1.Location = new System.Drawing.Point(810, 7);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(180, 16);
             this.labelControl1.TabIndex = 20;
@@ -91,11 +69,13 @@ namespace Analogy.UserControls
             // 
             // splitContainerControl1.Panel1
             // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.sbtnCopyChart);
+            this.splitContainerControl1.Panel1.Controls.Add(this.sbtnSaveChart);
+            this.splitContainerControl1.Panel1.Controls.Add(this.nudRefreshInterval);
+            this.splitContainerControl1.Panel1.Controls.Add(this.nudWindow);
             this.splitContainerControl1.Panel1.Controls.Add(this.rbChartType);
             this.splitContainerControl1.Panel1.Controls.Add(this.lblChartType);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl2);
-            this.splitContainerControl1.Panel1.Controls.Add(this.nudRefreshInterval);
-            this.splitContainerControl1.Panel1.Controls.Add(this.nudWindow);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             // 
@@ -104,7 +84,7 @@ namespace Analogy.UserControls
             this.splitContainerControl1.Panel2.Controls.Add(this.chartControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1107, 521);
-            this.splitContainerControl1.SplitterPosition = 91;
+            this.splitContainerControl1.SplitterPosition = 101;
             this.splitContainerControl1.TabIndex = 21;
             // 
             // rbChartType
@@ -131,36 +111,11 @@ namespace Analogy.UserControls
             // labelControl2
             // 
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Location = new System.Drawing.Point(834, 34);
+            this.labelControl2.Location = new System.Drawing.Point(820, 37);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(170, 16);
             this.labelControl2.TabIndex = 22;
             this.labelControl2.Text = "Chart refresh rate (Seconds):";
-            // 
-            // nudRefreshInterval
-            // 
-            this.nudRefreshInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRefreshInterval.DecimalPlaces = 1;
-            this.nudRefreshInterval.Location = new System.Drawing.Point(1031, 31);
-            this.nudRefreshInterval.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudRefreshInterval.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudRefreshInterval.Name = "nudRefreshInterval";
-            this.nudRefreshInterval.Size = new System.Drawing.Size(73, 23);
-            this.nudRefreshInterval.TabIndex = 21;
-            this.nudRefreshInterval.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudRefreshInterval.ValueChanged += new System.EventHandler(this.nudRefreshInterval_ValueChanged);
             // 
             // chartControl1
             // 
@@ -171,8 +126,64 @@ namespace Analogy.UserControls
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl1.Size = new System.Drawing.Size(1107, 418);
+            this.chartControl1.Size = new System.Drawing.Size(1107, 408);
             this.chartControl1.TabIndex = 1;
+            // 
+            // nudWindow
+            // 
+            this.nudWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudWindow.EditValue = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.nudWindow.Location = new System.Drawing.Point(1001, 3);
+            this.nudWindow.Name = "nudWindow";
+            this.nudWindow.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nudWindow.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.nudWindow.Properties.MaskSettings.Set("mask", "n0");
+            this.nudWindow.Size = new System.Drawing.Size(103, 24);
+            this.nudWindow.TabIndex = 26;
+            this.nudWindow.EditValueChanged += new System.EventHandler(this.nudWindow_EditValueChanged);
+            // 
+            // nudRefreshInterval
+            // 
+            this.nudRefreshInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudRefreshInterval.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudRefreshInterval.Location = new System.Drawing.Point(1001, 33);
+            this.nudRefreshInterval.Name = "nudRefreshInterval";
+            this.nudRefreshInterval.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nudRefreshInterval.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.nudRefreshInterval.Properties.MaskSettings.Set("mask", "n1");
+            this.nudRefreshInterval.Size = new System.Drawing.Size(103, 24);
+            this.nudRefreshInterval.TabIndex = 27;
+            this.nudRefreshInterval.EditValueChanged += new System.EventHandler(this.nudRefreshInterval_EditValueChanged);
+            // 
+            // sbtnSaveChart
+            // 
+            this.sbtnSaveChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnSaveChart.Location = new System.Drawing.Point(1011, 63);
+            this.sbtnSaveChart.Name = "sbtnSaveChart";
+            this.sbtnSaveChart.Size = new System.Drawing.Size(93, 34);
+            this.sbtnSaveChart.TabIndex = 28;
+            this.sbtnSaveChart.Text = "Save Chart";
+            this.sbtnSaveChart.Click += new System.EventHandler(this.sbtnSaveChart_Click);
+            // 
+            // sbtnCopyChart
+            // 
+            this.sbtnCopyChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnCopyChart.Location = new System.Drawing.Point(912, 63);
+            this.sbtnCopyChart.Name = "sbtnCopyChart";
+            this.sbtnCopyChart.Size = new System.Drawing.Size(93, 34);
+            this.sbtnCopyChart.TabIndex = 29;
+            this.sbtnCopyChart.Text = "Copy Chart";
+            this.sbtnCopyChart.Click += new System.EventHandler(this.sbtnCopyChart_Click);
             // 
             // PlottingUC
             // 
@@ -182,7 +193,6 @@ namespace Analogy.UserControls
             this.Name = "PlottingUC";
             this.Size = new System.Drawing.Size(1107, 521);
             this.Load += new System.EventHandler(this.PlottingUC_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudWindow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
             this.splitContainerControl1.Panel1.PerformLayout();
@@ -191,21 +201,23 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rbChartType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWindow.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.NumericUpDown nudWindow;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraCharts.ChartControl chartControl1;
-        private System.Windows.Forms.NumericUpDown nudRefreshInterval;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl lblChartType;
         private DevExpress.XtraEditors.RadioGroup rbChartType;
+        private DevExpress.XtraEditors.SpinEdit nudWindow;
+        private DevExpress.XtraEditors.SpinEdit nudRefreshInterval;
+        private DevExpress.XtraEditors.SimpleButton sbtnSaveChart;
+        private DevExpress.XtraEditors.SimpleButton sbtnCopyChart;
     }
 }

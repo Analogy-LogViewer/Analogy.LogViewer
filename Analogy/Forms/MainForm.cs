@@ -915,8 +915,9 @@ namespace Analogy.Forms
                 {
                     plotterBtn.Enabled = false;
                     openedWindows++;
-                    await plot.InitializePlottingAsync(new AnalogyPlottingInteractor(),AnalogyLogger.Instance);
-                    var plotterUC = new PlottingUC(plot);
+                    var plotInteractor = new AnalogyPlottingInteractor();
+                    await plot.InitializePlottingAsync(plotInteractor, AnalogyLogger.Instance);
+                    var plotterUC = new PlottingUC(plot, plotInteractor);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
                     page.Tag = ribbonPage;
