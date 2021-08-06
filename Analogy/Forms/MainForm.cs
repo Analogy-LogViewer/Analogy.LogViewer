@@ -916,7 +916,6 @@ namespace Analogy.Forms
                     plotterBtn.Enabled = false;
                     openedWindows++;
                     await plot.InitializePlottingAsync(new AnalogyPlottingInteractor(),AnalogyLogger.Instance);
-                    //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                     var plotterUC = new PlottingUC(plot);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
