@@ -42,5 +42,9 @@ namespace Analogy.DataTypes
            
         }
 
+        public void SetDefaultWindow(Guid id,int numberOfPointsInWindow)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
