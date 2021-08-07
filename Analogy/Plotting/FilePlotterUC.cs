@@ -4,6 +4,9 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
+using Analogy.Plotting;
+using DevExpress.XtraBars.Docking;
 
 namespace Analogy.UserControls
 {
@@ -12,7 +15,7 @@ namespace Analogy.UserControls
         private CancellationTokenSource cts;
         private bool InFileProcess { get; set; }
         private Task processTask;
-        private long processed;
+
         public FilePlotterUC()
         {
             InitializeComponent();
@@ -44,7 +47,7 @@ namespace Analogy.UserControls
                 {
                     sbtnLoad.Text = "load";
                     InFileProcess = false;
-                    processed = 0;
+                   
                 }
                 if (!string.IsNullOrEmpty(teFile.Text) && File.Exists(teFile.Text))
                 {
@@ -54,34 +57,27 @@ namespace Analogy.UserControls
                         return;
                     }
 
-                    processed = 0;
                     InFileProcess = true;
                     sbtnLoad.Text = "Cancel";
                     cts = new CancellationTokenSource();
                     var token = cts.Token;
                     token.Register(Cancel, true);
+                    string fileName = teFile.Text;
                     bool firstRowIsTitle = ceFirstRowTitle.Checked;
                     bool dateTimeAxis = ceDateTimeColumn.Checked;
-                    DataPlotterUC uc = new DataPlotterUC();
-                   // dockManager1.AddPanel()
-                    string fileName = teFile.Text;
-                    string line;
-                    processTask = Task.Run(async () =>
-                        {
-                            using StreamReader file = new StreamReader(fileName);
-                            line = await file.ReadLineAsync();
-                            if (string.IsNullOrEmpty(line))
-                            {
+                    AnalogyFilePlotting afp = new AnalogyFilePlotting(fileName, firstRowIsTitle, dateTimeAxis, token);
+                    var interactor = new AnalogyPlottingInteractor();
+                    DataPlotterUC uc = new DataPlotterUC(afp, interactor);
 
-                            }
+                    //add panel
+                    var page = dockManager1.AddPanel(DockingStyle.Float);
+                    page.DockedAsTabbedDocument = true;
+                    page.Controls.Add(uc);
+                    uc.Dock = DockStyle.Fill;
+                    page.Text = fileName;
+                    dockManager1.ActivePanel = page;
+                    processTask = afp.StartPlotting();
 
-                            while ((line = await file.ReadLineAsync()) != null)
-                            {
-                                processed++;
-                            }
-
-                        }
-                    );
                 }
             };
         }
