@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.7.5 -  [Plotting] Add Generic column plotter #1053",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,08,07)),
                 new AnalogyChangeLog("V4.7.5 - [Plotting] Add Export to Image of chart #1050",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,08,06)),
                 new AnalogyChangeLog("V4.7.5 - [Tool] Add Compare text #1090",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,08,03)),
                 new AnalogyChangeLog("V4.7.5 - Add Show json data of Selected text in message details #1089",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,07,31)),
