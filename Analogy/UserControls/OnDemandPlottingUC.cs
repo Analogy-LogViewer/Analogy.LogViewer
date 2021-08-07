@@ -15,13 +15,13 @@ namespace Analogy.UserControls
     {
         public string Title { get; }
         public AnalogyOnDemandPlottingInteractor Interactor { get; }
-        private PlottingManager Manager { get; set; }
+        private PlottingDataManager Manager { get; set; }
         private Guid Id { get; }
         public OnDemandPlottingUC(Guid id, string plotTitle)
         {
             Id = id;
             Title = plotTitle;
-            Manager = new PlottingManager();
+            Manager = new PlottingDataManager();
             InitializeComponent();
         }
 

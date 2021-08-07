@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Analogy.Managers
 {
-    public class PlottingManager
+    public class PlottingDataManager
     {
         private List<(string seriesName, PlottingGraphData data)> GraphsData { get; set; }
 
-        public PlottingManager()
+        public PlottingDataManager()
         {
             GraphsData = new List<(string seriesName, PlottingGraphData data)>();
         }

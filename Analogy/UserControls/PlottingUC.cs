@@ -17,10 +17,10 @@ namespace Analogy.UserControls
     {
         public IAnalogyPlotting? Plotter { get; }
         public AnalogyPlottingInteractor Interactor { get; }
-        private PlottingManager Manager { get; set; }
+        private PlottingDataManager Manager { get; set; }
         public PlottingUC()
         {
-            Manager = new PlottingManager();
+            Manager = new PlottingDataManager();
             InitializeComponent();
         }
 
@@ -38,6 +38,10 @@ namespace Analogy.UserControls
                 return;
             }
 
+            if (Interactor.WasSet)
+            {
+                nudWindow.Value = Interactor.WindowSize;
+            }
             chartControl1.Titles.Add(new ChartTitle { Text = Plotter.Title });
             chartControl1.Legend.UseCheckBoxes = true;
             foreach (var (seriesName, viewType) in Plotter.GetChartSeries())

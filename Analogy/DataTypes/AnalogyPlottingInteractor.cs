@@ -12,7 +12,11 @@ namespace Analogy.DataTypes
 {
    public class AnalogyPlottingInteractor: IAnalogyPlottingInteractor
     {
+        private SpinEdit _windowSpinEdit;
+        public bool WasSet { get;private set; }
+        public int WindowSize { get; set; }
         public SpinEdit WindowSpinEdit { get; set; }
+    
         public void SetDefaultWindow(int numberOfPointsInWindow)
         {
             if (numberOfPointsInWindow <= 0)
@@ -20,6 +24,9 @@ namespace Analogy.DataTypes
                 AnalogyLogManager.Instance.LogError($"Invalid Set default windows: {numberOfPointsInWindow}","");
                 return;
             }
+
+            WindowSize = numberOfPointsInWindow;
+            WasSet = true;
             if (WindowSpinEdit.IsHandleCreated && !WindowSpinEdit.IsDisposed)
             {
                 WindowSpinEdit.BeginInvoke(new MethodInvoker(() => { WindowSpinEdit.Value = numberOfPointsInWindow; }));
