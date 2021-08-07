@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {
-    public partial class Analytics_UC : DevExpress.XtraEditors.XtraUserControl
+    public partial class DataPlotterUC : XtraUserControl
     {
-        public Analytics_UC()
+        public DataPlotterUC()
         {
             InitializeComponent();
+        }
+
+        private void DataPlotterUC_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,11 +12,15 @@ namespace Analogy.DataTypes
 {
    public class AnalogyPlottingInteractor: IAnalogyPlottingInteractor
     {
-        private SpinEdit _windowSpinEdit;
         public bool WasSet { get;private set; }
         public int WindowSize { get; set; }
         public SpinEdit WindowSpinEdit { get; set; }
-    
+        public AnalogyPlottingPointXAxisDataType XAxisDataType { get; private set; }
+
+        public AnalogyPlottingInteractor()
+        {
+            XAxisDataType = AnalogyPlottingPointXAxisDataType.DateTime;
+        }
         public void SetDefaultWindow(int numberOfPointsInWindow)
         {
             if (numberOfPointsInWindow <= 0)
@@ -31,6 +35,11 @@ namespace Analogy.DataTypes
             {
                 WindowSpinEdit.BeginInvoke(new MethodInvoker(() => { WindowSpinEdit.Value = numberOfPointsInWindow; }));
             }
+        }
+
+        public void SetXAxisType(AnalogyPlottingPointXAxisDataType xAxisDataType)
+        {
+            XAxisDataType = xAxisDataType;
         }
     }
 }
