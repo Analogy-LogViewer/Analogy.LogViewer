@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using DevExpress.XtraEditors;
+using System;
+using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {
     public partial class FilePlotterUC : XtraUserControl
     {
+        private CancellationTokenSource cts;
+        private bool InFileProcess { get; set; }
+        private Task processTask;
+        private long processed;
         public FilePlotterUC()
         {
             InitializeComponent();
@@ -37,6 +37,56 @@ namespace Analogy.UserControls
                     teFile.Text = openFileDialog1.FileName;
                 }
             };
+
+            sbtnLoad.Click += (_, __) =>
+            {
+                void Cancel()
+                {
+                    sbtnLoad.Text = "load";
+                    InFileProcess = false;
+                    processed = 0;
+                }
+                if (!string.IsNullOrEmpty(teFile.Text) && File.Exists(teFile.Text))
+                {
+                    if (InFileProcess)
+                    {
+                        cts.Cancel(false);
+                        return;
+                    }
+
+                    processed = 0;
+                    InFileProcess = true;
+                    sbtnLoad.Text = "Cancel";
+                    cts = new CancellationTokenSource();
+                    var token = cts.Token;
+                    token.Register(Cancel, true);
+                    bool firstRowIsTitle = ceFirstRowTitle.Checked;
+                    bool dateTimeAxis = ceDateTimeColumn.Checked;
+                    DataPlotterUC uc = new DataPlotterUC();
+                   // dockManager1.AddPanel()
+                    string fileName = teFile.Text;
+                    string line;
+                    processTask = Task.Run(async () =>
+                        {
+                            using StreamReader file = new StreamReader(fileName);
+                            line = await file.ReadLineAsync();
+                            if (string.IsNullOrEmpty(line))
+                            {
+
+                            }
+
+                            while ((line = await file.ReadLineAsync()) != null)
+                            {
+                                processed++;
+                            }
+
+                        }
+                    );
+                }
+            };
         }
+
+
+
     }
 }

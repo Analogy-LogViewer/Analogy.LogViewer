@@ -1,15 +1,15 @@
-﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Windows.Forms;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using DevExpress.Utils;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
@@ -44,6 +44,7 @@ namespace Analogy.UserControls
             }
             chartControl1.Titles.Add(new ChartTitle { Text = Plotter.Title });
             chartControl1.Legend.UseCheckBoxes = true;
+            var type = Interactor.XAxisDataType;
             foreach (var (seriesName, viewType) in Plotter.GetChartSeries())
             {
                 PlottingGraphData data = new PlottingGraphData((float)nudRefreshInterval.Value, (int)nudWindow.Value);
@@ -54,7 +55,7 @@ namespace Analogy.UserControls
                     CheckedInLegend = true,
                     DataSource = data.ViewportData,
                     DataSourceSorted = true,
-                    ArgumentDataMember = nameof(AnalogyPlottingPointData.DateTime)
+                    ArgumentDataMember = type == AnalogyPlottingPointXAxisDataType.DateTime ? nameof(AnalogyPlottingPointData.DateTime) : nameof(AnalogyPlottingPointData.XAxisValue)
                 };
                 series.ValueDataMembers.AddRange(nameof(AnalogyPlottingPointData.Value));
                 chartControl1.Series.Add(series);
@@ -62,7 +63,15 @@ namespace Analogy.UserControls
             chartControl1.Legend.Visibility = DefaultBoolean.True;
 
             XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
-            diagram.AxisX.DateTimeScaleOptions.ScaleMode = ScaleMode.Continuous;
+            if (type == AnalogyPlottingPointXAxisDataType.DateTime)
+            {
+                diagram.AxisX.DateTimeScaleOptions.ScaleMode = ScaleMode.Automatic;
+            }
+            else
+            {
+                diagram.AxisX.NumericScaleOptions.ScaleMode = ScaleMode.Automatic;
+            }
+
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowRotate = false;
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowStagger = false;
             // diagram.AxisX.VisualRange.EndSideMargin = 200;
@@ -169,18 +178,18 @@ namespace Analogy.UserControls
 
         private void sbtnSaveChart_Click(object sender, System.EventArgs e)
         {
-            using SaveFileDialog saveFileDialog = new SaveFileDialog {Filter = "png file|*.png|jpeg file|*.jpeg"};
+            using SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "png file|*.png|jpeg file|*.jpeg" };
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                ImageFormat imgFormat=ImageFormat.Bmp;
+                ImageFormat imgFormat = ImageFormat.Bmp;
                 switch (saveFileDialog.FilterIndex)
                 {
                     case 1:
-                        imgFormat=ImageFormat.Png;
+                        imgFormat = ImageFormat.Png;
                         break;
                     case 2:
-                        imgFormat=ImageFormat.Jpeg;
+                        imgFormat = ImageFormat.Jpeg;
                         break;
                 }
 
