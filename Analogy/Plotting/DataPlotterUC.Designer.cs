@@ -32,7 +32,6 @@ namespace Analogy.UserControls
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
-            this.document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.document2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
@@ -45,7 +44,6 @@ namespace Analogy.UserControls
             this.dockPanelPlot = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -61,24 +59,13 @@ namespace Analogy.UserControls
             // documentGroup1
             // 
             this.documentGroup1.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
-            this.document1,
             this.document2});
-            // 
-            // document1
-            // 
-            this.document1.Caption = "Data";
-            this.document1.ControlName = "dockPanelData";
-            this.document1.FloatLocation = new System.Drawing.Point(0, 0);
-            this.document1.FloatSize = new System.Drawing.Size(200, 200);
-            this.document1.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
-            this.document1.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
-            this.document1.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
             // document2
             // 
             this.document2.Caption = "Plot";
             this.document2.ControlName = "dockPanelPlot";
-            this.document2.FloatLocation = new System.Drawing.Point(0, 0);
+            this.document2.FloatLocation = new System.Drawing.Point(80, 180);
             this.document2.FloatSize = new System.Drawing.Size(200, 200);
             this.document2.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
             this.document2.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
@@ -96,7 +83,6 @@ namespace Analogy.UserControls
             this.tabbedView1.DocumentGroups.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup[] {
             this.documentGroup1});
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
-            this.document1,
             this.document2});
             dockingContainer1.Element = this.documentGroup1;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
@@ -105,8 +91,9 @@ namespace Analogy.UserControls
             // dockManager1
             // 
             this.dockManager1.Form = this;
+            this.dockManager1.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanelData});
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanelData,
             this.dockPanelPlot});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
@@ -125,13 +112,14 @@ namespace Analogy.UserControls
             // dockPanelData
             // 
             this.dockPanelData.Controls.Add(this.dockPanel1_Container);
-            this.dockPanelData.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
             this.dockPanelData.DockedAsTabbedDocument = true;
             this.dockPanelData.ID = new System.Guid("71c3be78-c8df-4616-a74b-efe836f733ab");
-            this.dockPanelData.Location = new System.Drawing.Point(0, 0);
             this.dockPanelData.Name = "dockPanelData";
             this.dockPanelData.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelData.Size = new System.Drawing.Size(922, 517);
+            this.dockPanelData.SavedDockingContainerId = new System.Guid("df56b182-5c40-4d0a-adb8-89136a1de0cf");
+            this.dockPanelData.SavedIndex = 0;
+            this.dockPanelData.SavedMdiDocument = true;
+            this.dockPanelData.SavedMdiDocumentIndex = 1;
             this.dockPanelData.Text = "Data";
             // 
             // dockPanel1_Container
@@ -194,10 +182,17 @@ namespace Analogy.UserControls
             // dockPanelPlot
             // 
             this.dockPanelPlot.Controls.Add(this.dockPanel2_Container);
+            this.dockPanelPlot.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
             this.dockPanelPlot.DockedAsTabbedDocument = true;
+            this.dockPanelPlot.FloatLocation = new System.Drawing.Point(80, 180);
             this.dockPanelPlot.ID = new System.Guid("fec981f8-7a2c-45b9-852a-160063470721");
+            this.dockPanelPlot.Location = new System.Drawing.Point(0, 0);
             this.dockPanelPlot.Name = "dockPanelPlot";
             this.dockPanelPlot.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelPlot.SavedIndex = 1;
+            this.dockPanelPlot.SavedMdiDocument = true;
+            this.dockPanelPlot.SavedMdiDocumentIndex = 1;
+            this.dockPanelPlot.Size = new System.Drawing.Size(922, 517);
             this.dockPanelPlot.Text = "Plot";
             // 
             // dockPanel2_Container
@@ -215,7 +210,6 @@ namespace Analogy.UserControls
             this.Size = new System.Drawing.Size(928, 552);
             this.Load += new System.EventHandler(this.DataPlotterUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.document1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
@@ -235,7 +229,6 @@ namespace Analogy.UserControls
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroup1;
-        private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document document1;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelData;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
