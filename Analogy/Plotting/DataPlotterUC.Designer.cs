@@ -39,9 +39,9 @@ namespace Analogy.UserControls
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelData = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.logGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dockPanelPlot = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
@@ -52,9 +52,9 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanelData.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.dockPanelPlot.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,10 +125,13 @@ namespace Analogy.UserControls
             // dockPanelData
             // 
             this.dockPanelData.Controls.Add(this.dockPanel1_Container);
+            this.dockPanelData.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
             this.dockPanelData.DockedAsTabbedDocument = true;
             this.dockPanelData.ID = new System.Guid("71c3be78-c8df-4616-a74b-efe836f733ab");
+            this.dockPanelData.Location = new System.Drawing.Point(0, 0);
             this.dockPanelData.Name = "dockPanelData";
             this.dockPanelData.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelData.Size = new System.Drawing.Size(922, 517);
             this.dockPanelData.Text = "Data";
             // 
             // dockPanel1_Container
@@ -139,14 +142,6 @@ namespace Analogy.UserControls
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(922, 517);
             this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(922, 41);
-            this.panelControl1.TabIndex = 0;
             // 
             // gridControl
             // 
@@ -188,6 +183,14 @@ namespace Analogy.UserControls
             this.logGrid.OptionsView.ShowAutoFilterRow = true;
             this.logGrid.OptionsView.ShowGroupPanel = false;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(922, 41);
+            this.panelControl1.TabIndex = 0;
+            // 
             // dockPanelPlot
             // 
             this.dockPanelPlot.Controls.Add(this.dockPanel2_Container);
@@ -219,9 +222,9 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanelData.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.dockPanelPlot.ResumeLayout(false);
             this.ResumeLayout(false);
 

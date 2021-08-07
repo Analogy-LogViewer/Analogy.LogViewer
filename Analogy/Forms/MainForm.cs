@@ -309,12 +309,7 @@ namespace Analogy.Forms
                 }));
             };
         }
-
-        private void Page_ClosingPanel(object sender, DockPanelCancelEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         private void PopulateGlobalTools()
         {
             var allFactories = FactoriesManager.Instance.Factories.ToList();
@@ -347,6 +342,17 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            bsiFilePlotting.ItemClick += (s, e) =>
+            {
+                FilePlotterUC uc = new FilePlotterUC();
+                var page = dockManager1.AddPanel(DockingStyle.Float);
+                page.DockedAsTabbedDocument = true;
+                page.Tag = uc;
+                page.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                page.Text = "File Plotting";
+                dockManager1.ActivePanel = page;
+            };
             bbiPayPal.ItemClick += (s, e) =>
             {
                 Utils.OpenLink("https://www.paypal.me/liorbanai");

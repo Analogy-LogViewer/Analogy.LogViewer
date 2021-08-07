@@ -1,6 +1,7 @@
 ﻿using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Managers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Managers;
 
 namespace Analogy.Plotting
 {
@@ -29,16 +29,16 @@ namespace Analogy.Plotting
         private long processed;
         private List<string> headers;
         private char[] seperators = { '\t', ' ' };
-       
+
         public AnalogyFilePlotting(string fileName, bool firstRowIsTitle, bool firsColumnIsDateTime, CancellationToken token)
         {
             FileName = fileName;
             FirstRowIsTitle = firstRowIsTitle;
             FirsColumnIsDateTime = firsColumnIsDateTime;
             this.token = token;
-            using StreamReader file = new StreamReader(FileName);
             if (File.Exists(fileName))
             {
+                using StreamReader file = new StreamReader(FileName);
                 var firstLine = file.ReadLine();
                 if (!string.IsNullOrEmpty(firstLine))
                 {
@@ -58,12 +58,8 @@ namespace Analogy.Plotting
         }
         public IEnumerable<(string SeriesName, AnalogyPlottingSeriesType SeriesViewType)> GetChartSeries()
         {
-            foreach (string seriesName in headers)
+            foreach (string seriesName in headers.Skip(FirsColumnIsDateTime ? 1 : 0))
             {
-                if (FirsColumnIsDateTime)
-                {
-                   continue;
-                }
                 yield return (seriesName, AnalogyPlottingSeriesType.Line);
             }
         }
@@ -127,9 +123,9 @@ namespace Analogy.Plotting
             }
             catch (Exception e)
             {
-               AnalogyLogManager.Instance.LogError(e.ToString(),nameof(AnalogyFilePlotting));
+                AnalogyLogManager.Instance.LogError(e.ToString(), nameof(AnalogyFilePlotting));
             }
-         
+
         }
 
         public Task StopPlotting()

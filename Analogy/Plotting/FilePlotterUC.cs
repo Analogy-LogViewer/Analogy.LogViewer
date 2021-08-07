@@ -76,6 +76,7 @@ namespace Analogy.UserControls
                     uc.Dock = DockStyle.Fill;
                     page.Text = fileName;
                     dockManager1.ActivePanel = page;
+                    uc.Start();
                     processTask = afp.StartPlotting();
 
                 }

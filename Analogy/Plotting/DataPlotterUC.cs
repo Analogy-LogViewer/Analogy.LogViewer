@@ -17,7 +17,7 @@ namespace Analogy.UserControls
     {
         private readonly IAnalogyPlotting _plotter;
         private readonly AnalogyPlottingInteractor _interactor;
-
+        private PlottingUC uc;
         public DataPlotterUC()
         {
             InitializeComponent();
@@ -30,11 +30,12 @@ namespace Analogy.UserControls
         }
         private void DataPlotterUC_Load(object sender, EventArgs e)
         {
-            PlottingUC uc = new PlottingUC(_plotter, _interactor);
+             uc = new PlottingUC(_plotter, _interactor);
             dockPanelPlot.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
         }
 
-        
+        public void Start() => uc.Start(); 
+        public void Stop() => uc.Stop();
     }
 }
