@@ -116,4 +116,11 @@ namespace Analogy.DataTypes
         UtcToLocalTime,
         LocalTimeToUtc
     }
+
+    public enum AnalogyCustomXAxisPlot
+    {
+        Numerical,
+        DateTimeUnixMillisecond,
+        DateTimeUnixSecond
+    }
 }

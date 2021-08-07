@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.DataTypes;
 
 namespace Analogy.Plotting
 {
@@ -16,7 +17,7 @@ namespace Analogy.Plotting
     {
         private string FileName { get; set; }
         public bool FirstRowIsTitle { get; }
-        public bool FirsColumnIsDateTime { get; }
+        public bool CustomXAxis { get; }
         public Guid Id { get; set; } = Guid.NewGuid();
         public Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
         public string Title
@@ -25,16 +26,19 @@ namespace Analogy.Plotting
             set => FileName = value;
         }
         public event EventHandler<AnalogyPlottingPointData>? OnNewPointData;
+        private readonly AnalogyCustomXAxisPlot _xAxisType;
         private CancellationToken token;
         private long processed;
         private List<string> headers;
         private char[] seperators = { '\t', ' ' };
 
-        public AnalogyFilePlotting(string fileName, bool firstRowIsTitle, bool firsColumnIsDateTime, CancellationToken token)
+        public AnalogyFilePlotting(string fileName, bool firstRowIsTitle, bool customXAxis,
+            AnalogyCustomXAxisPlot xAxisType, CancellationToken token)
         {
             FileName = fileName;
             FirstRowIsTitle = firstRowIsTitle;
-            FirsColumnIsDateTime = firsColumnIsDateTime;
+            CustomXAxis = customXAxis;
+            _xAxisType = xAxisType;
             this.token = token;
             if (File.Exists(fileName))
             {
@@ -58,7 +62,7 @@ namespace Analogy.Plotting
         }
         public IEnumerable<(string SeriesName, AnalogyPlottingSeriesType SeriesViewType)> GetChartSeries()
         {
-            foreach (string seriesName in headers.Skip(FirsColumnIsDateTime ? 1 : 0))
+            foreach (string seriesName in headers.Skip(CustomXAxis ? 1 : 0))
             {
                 yield return (seriesName, AnalogyPlottingSeriesType.Line);
             }
@@ -96,16 +100,45 @@ namespace Analogy.Plotting
             try
             {
                 var items = line.Split(seperators);
-                if (FirsColumnIsDateTime)
+                if (CustomXAxis)
                 {
-                    DateTime time = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(items[0])).DateTime;
-                    for (int i = 1; i < items.Length; i++)
+                    switch (_xAxisType)
                     {
-                        var str = items[i];
-                        double val = double.Parse(str);
-                        string series = headers[i];
-                        var data = new AnalogyPlottingPointData(series, val, time);
-                        OnNewPointData?.Invoke(this, data);
+                        case AnalogyCustomXAxisPlot.Numerical:
+                            var x = double.Parse(items[0]);
+                            for (int i = 1; i < items.Length; i++)
+                            {
+                                var str = items[i];
+                                double val = double.Parse(str);
+                                string series = headers[i];
+                                var data = new AnalogyPlottingPointData(series, val, x);
+                                OnNewPointData?.Invoke(this, data);
+                            }
+                            break;
+                        case AnalogyCustomXAxisPlot.DateTimeUnixMillisecond:
+                            DateTime timeMili = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(items[0])).DateTime;
+                            for (int i = 1; i < items.Length; i++)
+                            {
+                                var str = items[i];
+                                double val = double.Parse(str);
+                                string series = headers[i];
+                                var data = new AnalogyPlottingPointData(series, val, timeMili);
+                                OnNewPointData?.Invoke(this, data);
+                            }
+                            break;
+                        case AnalogyCustomXAxisPlot.DateTimeUnixSecond:
+                            DateTime timeSecond = DateTimeOffset.FromUnixTimeSeconds(long.Parse(items[0])).DateTime;
+                            for (int i = 1; i < items.Length; i++)
+                            {
+                                var str = items[i];
+                                double val = double.Parse(str);
+                                string series = headers[i];
+                                var data = new AnalogyPlottingPointData(series, val, timeSecond);
+                                OnNewPointData?.Invoke(this, data);
+                            }
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
                 }
                 else

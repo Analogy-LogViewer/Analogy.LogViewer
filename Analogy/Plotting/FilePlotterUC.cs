@@ -64,8 +64,24 @@ namespace Analogy.UserControls
                     token.Register(Cancel, true);
                     string fileName = teFile.Text;
                     bool firstRowIsTitle = ceFirstRowTitle.Checked;
-                    bool dateTimeAxis = ceDateTimeColumn.Checked;
-                    AnalogyFilePlotting afp = new AnalogyFilePlotting(fileName, firstRowIsTitle, dateTimeAxis, token);
+                    bool customXAxis = ceFirstCulmnIsXAxis.Checked;
+                    AnalogyCustomXAxisPlot xAxisType = AnalogyCustomXAxisPlot.Numerical;
+                    if (customXAxis)
+                    {
+                        if (rgFirstColumnType.SelectedIndex == 0)
+                        {
+                            xAxisType = AnalogyCustomXAxisPlot.DateTimeUnixMillisecond;
+                        }
+                        else if (rgFirstColumnType.SelectedIndex == 1)
+                        {
+                            xAxisType = AnalogyCustomXAxisPlot.DateTimeUnixSecond;
+                        }
+                        else if (rgFirstColumnType.SelectedIndex == 2)
+                        {
+                            xAxisType = AnalogyCustomXAxisPlot.Numerical;
+                        }
+                    }
+                    AnalogyFilePlotting afp = new AnalogyFilePlotting(fileName, firstRowIsTitle, customXAxis, xAxisType, token);
                     var interactor = new AnalogyPlottingInteractor();
                     DataPlotterUC uc = new DataPlotterUC(afp, interactor);
 
