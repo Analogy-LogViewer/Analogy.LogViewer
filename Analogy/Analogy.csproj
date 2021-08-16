@@ -70,7 +70,7 @@
 		<PackageReference Include="Analogy.CommonUtilities" Version="1.5.4" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.14.6" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.9.4" />
-		<PackageReference Include="Grpc.Core" Version="2.39.0-pre1" />
+		<PackageReference Include="Grpc.Core" Version="2.39.1" />
 		<PackageReference Include="Markdig" Version="0.25.0" />
 		<PackageReference Include="Markdig.SyntaxHighlighting" Version="1.1.7" />
 		<PackageReference Include="MessagePack" Version="2.3.75" />
