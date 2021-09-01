@@ -282,6 +282,11 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
+
+            //sbtnUndockPerProcess.Click += (s, e) =>
+            //{
+            //    UndockViewPerProcess();
+            //};
             meMessageDetails.Properties.BeforeShowMenu += (s, e) =>
             {
                 string caption = "Show Selection In Json Viewer";
@@ -3129,13 +3134,6 @@ namespace Analogy
         {
             txtbModule.Text = "";
         }
-
-
-        private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
-        {
-            UndockViewPerProcess();
-        }
-
 
         private void tsmiDateFilterNewer_Click(object sender, EventArgs e)
         {
