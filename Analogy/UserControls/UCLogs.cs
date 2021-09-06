@@ -1785,7 +1785,7 @@ namespace Analogy
             _filterCriteria.OlderThan = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
             _filterCriteria.TextInclude = ceIncludeText.Checked ? (txtbInclude.Text == null ? string.Empty : txtbInclude.Text.Trim()) : string.Empty;
             _filterCriteria.TextExclude = ceExcludeText.Checked
-                ? (txtbExclude.Text == null ? string.Empty : txtbExclude.Text.Trim()) + "|" + string.Join("|", _excludeMostCommon)
+                ? (txtbExclude.Text == null ? string.Empty : txtbExclude.Text.Trim()) + string.Join("|", _excludeMostCommon)
                 : string.Empty;
 
             Settings.IncludeText = Settings.SaveSearchFilters && txtbInclude.Text != null ? txtbInclude.Text : string.Empty;

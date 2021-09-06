@@ -140,23 +140,12 @@ namespace Analogy
                 var split = text.Split(new[] { '&', '+' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 excludedTexts = split.Select(itm => itm.Trim()).ToList();
             }
-            if (UserSettingsManager.UserSettings.SearchAlsoInSourceAndModule)
-            {
-                sqlString.Append("((");
-            }
-            else
-            {
-                sqlString.Append("(");
-            }
 
-            if (orOperationInInclude)
-            {
-                sqlString.Append(string.Join(" Or ", includeTexts.Select(t => $" Text like '%{t}%'")));
-            }
-            else
-            {
-                sqlString.Append(string.Join(" and ", includeTexts.Select(t => $" Text like '%{t}%'")));
-            }
+            sqlString.Append(UserSettingsManager.UserSettings.SearchAlsoInSourceAndModule ? "((" : "(");
+
+            sqlString.Append(orOperationInInclude
+                ? string.Join(" Or ", includeTexts.Select(t => $" Text like '%{t}%'"))
+                : string.Join(" and ", includeTexts.Select(t => $" Text like '%{t}%'")));
 
             sqlString.Append(")");
 
@@ -191,14 +180,9 @@ namespace Analogy
             if (excludedTexts.Any())
             {
                 sqlString.Append(" and (");
-                if (orOperationInexclude)
-                {
-                    sqlString.Append(string.Join(" and ", excludedTexts.Select(t => $" NOT Text like '%{t}%'")));
-                }
-                else
-                {
-                    sqlString.Append(string.Join(" Or ", excludedTexts.Select(t => $" NOT Text like '%{t}%'")));
-                }
+                sqlString.Append(orOperationInexclude
+                    ? string.Join(" and ", excludedTexts.Select(t => $" NOT Text like '%{t}%'"))
+                    : string.Join(" Or ", excludedTexts.Select(t => $" NOT Text like '%{t}%'")));
 
                 sqlString.Append(")");
             }
