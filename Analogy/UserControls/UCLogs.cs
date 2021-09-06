@@ -2915,7 +2915,7 @@ namespace Analogy
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, @"Error Opening file location", MessageBoxButtons.OK,
+                XtraMessageBox.Show(exception.Message, @"Error Opening file location", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
