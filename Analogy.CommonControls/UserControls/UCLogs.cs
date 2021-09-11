@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
@@ -35,7 +36,7 @@ using DevExpress.XtraPrinting;
 using Markdig;
 using Markdig.SyntaxHighlighting;
 
-namespace Analogy.CommonControls
+namespace Analogy.CommonControls.UserControls
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
@@ -143,7 +144,8 @@ namespace Analogy.CommonControls
                 btsAutoScrollToBottom.Checked = _realtimeUpdate;
             }
         }
-        private LogLevelSelectionType logLevelSelectionType = UserSettingsManager.UserSettings.LogLevelSelection;
+
+        private LogLevelSelectionType logLevelSelectionType = LogLevelSelectionType.Single;
         #endregion
 
         public UCLogs()
@@ -736,14 +738,14 @@ namespace Analogy.CommonControls
                 });
             }
         }
-        private void RefreshTimeOffset()
+        private void RefreshTimeOffset(TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
             PagingManager.UpdateOffsets();
             foreach (DataRow dataTableRow in _bookmarkedMessages.Rows)
             {
                 dataTableRow.BeginEdit();
                 AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
-                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date);
+                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date,timeOffsetType,customOffset);
                 dataTableRow.EndEdit();
             }
         }

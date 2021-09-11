@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 
-namespace Analogy.CommonControls
+namespace Analogy.CommonControls.UserControls
 {
     partial class UCLogs
     {

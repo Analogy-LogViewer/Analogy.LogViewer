@@ -14,22 +14,21 @@ namespace Analogy.Forms
         private readonly List<AnalogyLogMessage> _messages;
         private readonly string _dataSource;
         public UCLogs LogWindow => ucLogs1;
-         public XtraFormLogGrid(bool registerToAnalogyLogger)
+        public XtraFormLogGrid(bool registerToAnalogyLogger)
         {
-               InitializeComponent();
-               _dataSource = "Analogy";    
-               _messages = new List<AnalogyLogMessage>();
-               FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-               var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
-               AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
-               ucLogs1.SetFileDataSource(analogyDataProvider, null);
+            InitializeComponent();
+            _dataSource = "Analogy";
+            _messages = new List<AnalogyLogMessage>();
+            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
+            ucLogs1.SetFileDataSource(analogyDataProvider, null);
 
             if (registerToAnalogyLogger)
-               {
-                   AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
-               }
+            {
+                AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
+            }
         }
-        public XtraFormLogGrid(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider):this(false)
+        public XtraFormLogGrid(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider) : this(false)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;

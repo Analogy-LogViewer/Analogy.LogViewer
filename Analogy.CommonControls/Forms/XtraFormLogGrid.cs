@@ -1,11 +1,10 @@
-﻿using Analogy.DataProviders;
-using Analogy.Interfaces;
-using Analogy.Managers;
-using DevExpress.XtraEditors;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Analogy.CommonControls.UserControls;
+using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 
-namespace Analogy.Forms
+namespace Analogy.CommonControls.Forms
 {
     public partial class XtraFormLogGrid : XtraForm
     {
@@ -19,15 +18,7 @@ namespace Analogy.Forms
                InitializeComponent();
                _dataSource = "Analogy";    
                _messages = new List<AnalogyLogMessage>();
-               FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-               var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
-               AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
-               ucLogs1.SetFileDataSource(analogyDataProvider, null);
 
-            if (registerToAnalogyLogger)
-               {
-                   AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
-               }
         }
         public XtraFormLogGrid(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider):this(false)
         {
@@ -64,7 +55,6 @@ namespace Analogy.Forms
         }
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
             if (DesignMode)
             {
                 return;
@@ -87,7 +77,6 @@ namespace Analogy.Forms
 
         private void XtraFormLogGrid_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            AnalogyLogManager.Instance.OnNewMessage -= Instance_OnNewMessage;
         }
     }
 }

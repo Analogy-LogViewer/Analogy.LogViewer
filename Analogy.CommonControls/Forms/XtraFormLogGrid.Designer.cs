@@ -1,4 +1,6 @@
-﻿namespace Analogy.Forms
+﻿using Analogy.CommonControls.UserControls;
+
+namespace Analogy.CommonControls.Forms
 {
     partial class XtraFormLogGrid
     {

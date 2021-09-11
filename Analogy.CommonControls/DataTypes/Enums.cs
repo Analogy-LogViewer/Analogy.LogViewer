@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Analogy.DataTypes
+namespace Analogy.CommonControls.DataTypes
 {
     public enum PreDefinedQueryType
     {
