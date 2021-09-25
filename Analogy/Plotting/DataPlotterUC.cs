@@ -23,19 +23,34 @@ namespace Analogy.UserControls
             InitializeComponent();
         }
 
-        public DataPlotterUC(IAnalogyPlotting plotter, AnalogyPlottingInteractor interactor):this()
+        public DataPlotterUC(IAnalogyPlotting plotter, AnalogyPlottingInteractor interactor) : this()
         {
             _plotter = plotter;
             _interactor = interactor;
         }
         private void DataPlotterUC_Load(object sender, EventArgs e)
         {
-             uc = new PlottingUC(_plotter, _interactor);
+            uc = new PlottingUC(_plotter, _interactor);
             dockPanelPlot.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
+            dockManager1.StartDocking += (s, e) =>
+            {
+                if (e.Panel.DockedAsTabbedDocument)
+                {
+                    var sz = e.Panel.Size;
+                    BeginInvoke(new Action(() =>
+                    {
+                        e.Panel.FloatSize = sz;
+                        //adjust the new panel size taking the header height into account:
+                        e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
+                    }));
+                }
+                else
+                    e.Panel.FloatSize = e.Panel.Size;
+            };
         }
 
-        public void Start() => uc.Start(); 
+        public void Start() => uc.Start();
         public void Stop() => uc.Stop();
     }
 }

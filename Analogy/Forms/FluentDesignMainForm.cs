@@ -183,6 +183,22 @@ namespace Analogy
 
         private void SetupEventHandlers()
         {
+            dockManager1.StartDocking += (s, e) =>
+            {
+                if (e.Panel.DockedAsTabbedDocument)
+                {
+                    var sz = e.Panel.Size;
+                    BeginInvoke(new Action(() =>
+                    {
+                        e.Panel.FloatSize = sz;
+                        //adjust the new panel size taking the header height into account:
+                        e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
+                    }));
+                }
+                else
+                    e.Panel.FloatSize = e.Panel.Size;
+            };
+
             #region  main menu
 
             btnSettingsUpdate.ItemClick += (s, e) =>
@@ -421,7 +437,7 @@ namespace Analogy
             {
                 return;
             }
-            
+
 
             BarCheckItem bci = new BarCheckItem(barManager1, fc.Factory.FactoryId == activeProvider);
             bci.Manager = barManager1;
@@ -433,7 +449,7 @@ namespace Analogy
             if (fc.Factory.SmallImage != null)
             {
                 string imageName = fc.Factory.FactoryId + "_small";
-                FactoriesImagesSmall.AddImage(fc.Factory.SmallImage,imageName);
+                FactoriesImagesSmall.AddImage(fc.Factory.SmallImage, imageName);
                 bci.Caption = string.Format($"<image={imageName}>{fc.Factory.Title}");
                 bci.AllowHtmlText = DefaultBoolean.True;
             }

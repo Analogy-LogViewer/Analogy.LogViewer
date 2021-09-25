@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.7.7 - Keep panel size when switching between float and dock modes #1136",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,09,25)),
                 new AnalogyChangeLog("V4.7.6 - Update Analogy.LogViewer.gRPC - remove hard-coded port 6000",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,09,01)),
                 new AnalogyChangeLog("V4.7.5 - [Plotting] Allow to set default window size #1092",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,08,07)),
                 new AnalogyChangeLog("V4.7.5 - [DevExpress] Upgrade version to V21.1.5 #1091",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,08,07)),

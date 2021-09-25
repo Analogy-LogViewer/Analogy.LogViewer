@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,6 +29,21 @@ namespace Analogy.UserControls
 
         private void SetupEventHandlers()
         {
+            dockManager1.StartDocking += (s, e) =>
+            {
+                if (e.Panel.DockedAsTabbedDocument)
+                {
+                    var sz = e.Panel.Size;
+                    BeginInvoke(new Action(() =>
+                    {
+                        e.Panel.FloatSize = sz;
+                        //adjust the new panel size taking the header height into account:
+                        e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
+                    }));
+                }
+                else
+                    e.Panel.FloatSize = e.Panel.Size;
+            };
             sbtnBrowse.Click += (_, __) =>
             {
                 using OpenFileDialog openFileDialog1 = new OpenFileDialog
@@ -47,7 +63,7 @@ namespace Analogy.UserControls
                 {
                     sbtnLoad.Text = "load";
                     InFileProcess = false;
-                   
+
                 }
                 if (!string.IsNullOrEmpty(teFile.Text) && File.Exists(teFile.Text))
                 {

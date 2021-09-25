@@ -342,6 +342,21 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            dockManager1.StartDocking += (s, e) =>
+            {
+                if (e.Panel.DockedAsTabbedDocument)
+                {
+                    var sz = e.Panel.Size;
+                    BeginInvoke(new Action(() =>
+                    {
+                        e.Panel.FloatSize = sz;
+                        //adjust the new panel size taking the header height into account:
+                        e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
+                    }));
+                }
+                else
+                    e.Panel.FloatSize = e.Panel.Size;
+            };
             bsiFilePlotting.ItemClick += (s, e) =>
             {
                 FilePlotterUC uc = new FilePlotterUC();
