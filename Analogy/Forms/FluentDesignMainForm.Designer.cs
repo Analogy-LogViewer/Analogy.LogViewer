@@ -352,6 +352,8 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiDataProviders),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiGlobalTools),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiHelp)});
+            this.barMain.OptionsBar.AllowQuickCustomization = false;
+            this.barMain.OptionsBar.DisableCustomization = true;
             this.barMain.OptionsBar.MultiLine = true;
             this.barMain.OptionsBar.UseWholeRow = true;
             this.barMain.Text = "Main menu";
