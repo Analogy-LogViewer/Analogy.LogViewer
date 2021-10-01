@@ -627,6 +627,7 @@ namespace Analogy
             AddGraphPlotter(fc, fc.GraphPlotter);
             //    AddFactorySettings(fc, ribbonPage);
             //    AddAbout(fc, ribbonPage);
+            accordionControl.EndUpdate();
 
         }
 
