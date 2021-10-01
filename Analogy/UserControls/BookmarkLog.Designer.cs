@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using Analogy.UserControls;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Analogy
 {
@@ -39,7 +40,7 @@ namespace Analogy
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookmarkLog));
             this.spltMain = new System.Windows.Forms.SplitContainer();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.ucLogs1 = new Analogy.UCLogs();
+            this.ucLogs1 = new UCLogs();
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tsPrimary = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();

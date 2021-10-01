@@ -46,7 +46,9 @@ namespace Analogy.UserControls
                     }));
                 }
                 else
+                {
                     e.Panel.FloatSize = e.Panel.Size;
+                }
             };
         }
 

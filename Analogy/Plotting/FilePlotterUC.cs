@@ -42,7 +42,9 @@ namespace Analogy.UserControls
                     }));
                 }
                 else
+                {
                     e.Panel.FloatSize = e.Panel.Size;
+                }
             };
             sbtnBrowse.Click += (_, __) =>
             {

@@ -143,7 +143,7 @@ namespace Analogy.ApplicationSettings
             this.ceIconLight.Properties.Caption = "Light Icon";
             this.ceIconLight.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceIconLight.Properties.RadioGroupIndex = 3;
-            this.ceIconLight.Size = new System.Drawing.Size(108, 20);
+            this.ceIconLight.Size = new System.Drawing.Size(108, 24);
             this.ceIconLight.TabIndex = 20;
             this.ceIconLight.TabStop = false;
             // 
@@ -154,7 +154,7 @@ namespace Analogy.ApplicationSettings
             this.ceIconDark.Properties.Caption = "Dark Icon";
             this.ceIconDark.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceIconDark.Properties.RadioGroupIndex = 3;
-            this.ceIconDark.Size = new System.Drawing.Size(108, 20);
+            this.ceIconDark.Size = new System.Drawing.Size(108, 24);
             this.ceIconDark.TabIndex = 19;
             this.ceIconDark.TabStop = false;
             // 
@@ -179,7 +179,7 @@ namespace Analogy.ApplicationSettings
             this.ceContextMenuFontsVeryLarge.Properties.Caption = "Very Large";
             this.ceContextMenuFontsVeryLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceContextMenuFontsVeryLarge.Properties.RadioGroupIndex = 2;
-            this.ceContextMenuFontsVeryLarge.Size = new System.Drawing.Size(270, 20);
+            this.ceContextMenuFontsVeryLarge.Size = new System.Drawing.Size(270, 24);
             this.ceContextMenuFontsVeryLarge.TabIndex = 22;
             this.ceContextMenuFontsVeryLarge.TabStop = false;
             // 
@@ -190,7 +190,7 @@ namespace Analogy.ApplicationSettings
             this.ceContextMenuFontsLarge.Properties.Caption = "Large";
             this.ceContextMenuFontsLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceContextMenuFontsLarge.Properties.RadioGroupIndex = 2;
-            this.ceContextMenuFontsLarge.Size = new System.Drawing.Size(149, 20);
+            this.ceContextMenuFontsLarge.Size = new System.Drawing.Size(149, 24);
             this.ceContextMenuFontsLarge.TabIndex = 21;
             this.ceContextMenuFontsLarge.TabStop = false;
             // 
@@ -201,7 +201,7 @@ namespace Analogy.ApplicationSettings
             this.ceContextMenuFontsNormal.Properties.Caption = "Normal";
             this.ceContextMenuFontsNormal.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceContextMenuFontsNormal.Properties.RadioGroupIndex = 2;
-            this.ceContextMenuFontsNormal.Size = new System.Drawing.Size(108, 20);
+            this.ceContextMenuFontsNormal.Size = new System.Drawing.Size(108, 24);
             this.ceContextMenuFontsNormal.TabIndex = 20;
             this.ceContextMenuFontsNormal.TabStop = false;
             // 
@@ -212,7 +212,7 @@ namespace Analogy.ApplicationSettings
             this.ceContextMenuFontsDefault.Properties.Caption = "Default";
             this.ceContextMenuFontsDefault.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceContextMenuFontsDefault.Properties.RadioGroupIndex = 2;
-            this.ceContextMenuFontsDefault.Size = new System.Drawing.Size(108, 20);
+            this.ceContextMenuFontsDefault.Size = new System.Drawing.Size(108, 24);
             this.ceContextMenuFontsDefault.TabIndex = 19;
             this.ceContextMenuFontsDefault.TabStop = false;
             // 
@@ -237,7 +237,7 @@ namespace Analogy.ApplicationSettings
             this.ceFontsVeryLarge.Properties.Caption = "Very Large";
             this.ceFontsVeryLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFontsVeryLarge.Properties.RadioGroupIndex = 1;
-            this.ceFontsVeryLarge.Size = new System.Drawing.Size(270, 20);
+            this.ceFontsVeryLarge.Size = new System.Drawing.Size(270, 24);
             this.ceFontsVeryLarge.TabIndex = 22;
             this.ceFontsVeryLarge.TabStop = false;
             // 
@@ -248,7 +248,7 @@ namespace Analogy.ApplicationSettings
             this.ceFontsLarge.Properties.Caption = "Large";
             this.ceFontsLarge.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFontsLarge.Properties.RadioGroupIndex = 1;
-            this.ceFontsLarge.Size = new System.Drawing.Size(149, 20);
+            this.ceFontsLarge.Size = new System.Drawing.Size(149, 24);
             this.ceFontsLarge.TabIndex = 21;
             this.ceFontsLarge.TabStop = false;
             // 
@@ -259,7 +259,7 @@ namespace Analogy.ApplicationSettings
             this.ceFontsNormal.Properties.Caption = "Normal";
             this.ceFontsNormal.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFontsNormal.Properties.RadioGroupIndex = 1;
-            this.ceFontsNormal.Size = new System.Drawing.Size(108, 20);
+            this.ceFontsNormal.Size = new System.Drawing.Size(108, 24);
             this.ceFontsNormal.TabIndex = 20;
             this.ceFontsNormal.TabStop = false;
             // 
@@ -270,7 +270,7 @@ namespace Analogy.ApplicationSettings
             this.ceFontsDefault.Properties.Caption = "Default";
             this.ceFontsDefault.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFontsDefault.Properties.RadioGroupIndex = 1;
-            this.ceFontsDefault.Size = new System.Drawing.Size(108, 20);
+            this.ceFontsDefault.Size = new System.Drawing.Size(108, 24);
             this.ceFontsDefault.TabIndex = 19;
             this.ceFontsDefault.TabStop = false;
             // 
@@ -284,7 +284,7 @@ namespace Analogy.ApplicationSettings
             this.tsStartupRibbonMinimized.Name = "tsStartupRibbonMinimized";
             this.tsStartupRibbonMinimized.Properties.OffText = "Show Ribbon";
             this.tsStartupRibbonMinimized.Properties.OnText = "Ribbon is minimized as default";
-            this.tsStartupRibbonMinimized.Size = new System.Drawing.Size(735, 28);
+            this.tsStartupRibbonMinimized.Size = new System.Drawing.Size(735, 24);
             this.tsStartupRibbonMinimized.TabIndex = 18;
             // 
             // tsRibbonCompactStyle
@@ -296,7 +296,7 @@ namespace Analogy.ApplicationSettings
             this.tsRibbonCompactStyle.Name = "tsRibbonCompactStyle";
             this.tsRibbonCompactStyle.Properties.OffText = "Standard size for ribbon buttons";
             this.tsRibbonCompactStyle.Properties.OnText = "Compact size for ribbon buttons";
-            this.tsRibbonCompactStyle.Size = new System.Drawing.Size(854, 28);
+            this.tsRibbonCompactStyle.Size = new System.Drawing.Size(854, 24);
             this.tsRibbonCompactStyle.TabIndex = 17;
             // 
             // tsRememberLastPositionAndState
@@ -309,7 +309,7 @@ namespace Analogy.ApplicationSettings
             this.tsRememberLastPositionAndState.Properties.OffText = "Don\'t remember last position and state of the application";
             this.tsRememberLastPositionAndState.Properties.OnText = "Remember last position and state of the application (size, Location and form\'s st" +
     "ate)";
-            this.tsRememberLastPositionAndState.Size = new System.Drawing.Size(856, 28);
+            this.tsRememberLastPositionAndState.Size = new System.Drawing.Size(856, 24);
             this.tsRememberLastPositionAndState.TabIndex = 5;
             // 
             // groupControlThemes
@@ -354,10 +354,10 @@ namespace Analogy.ApplicationSettings
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 25);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 28);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(875, 37);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(875, 30);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
@@ -429,9 +429,9 @@ namespace Analogy.ApplicationSettings
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 709);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 713);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(879, 24);
+            this.barDockControlBottom.Size = new System.Drawing.Size(879, 20);
             // 
             // barDockControlLeft
             // 
@@ -439,7 +439,7 @@ namespace Analogy.ApplicationSettings
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 709);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 713);
             // 
             // barDockControlRight
             // 
@@ -447,7 +447,7 @@ namespace Analogy.ApplicationSettings
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(879, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 709);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 713);
             // 
             // gcMainForm
             // 
@@ -464,8 +464,7 @@ namespace Analogy.ApplicationSettings
             // ceFluentForm
             // 
             this.ceFluentForm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ceFluentForm.Enabled = false;
-            this.ceFluentForm.Location = new System.Drawing.Point(2, 51);
+            this.ceFluentForm.Location = new System.Drawing.Point(2, 54);
             this.ceFluentForm.Name = "ceFluentForm";
             this.ceFluentForm.Properties.Caption = "Fluent Design";
             this.ceFluentForm.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
@@ -478,7 +477,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.ceRibbonForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.ceRibbonForm.EditValue = true;
-            this.ceRibbonForm.Location = new System.Drawing.Point(2, 25);
+            this.ceRibbonForm.Location = new System.Drawing.Point(2, 28);
             this.ceRibbonForm.Name = "ceRibbonForm";
             this.ceRibbonForm.Properties.Caption = "Ribbon Form";
             this.ceRibbonForm.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;

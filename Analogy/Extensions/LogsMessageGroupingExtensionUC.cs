@@ -57,7 +57,9 @@ namespace Analogy.Extensions
                     }));
                 }
                 else
+                {
                     e.Panel.FloatSize = e.Panel.Size;
+                }
             };
             gridViewGrouping2.RowStyle += LogGridView_RowStyle;
 

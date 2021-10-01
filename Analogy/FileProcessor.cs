@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Managers;
+using Analogy.UserControls;
 using DevExpress.Mvvm.Native;
 
 namespace Analogy

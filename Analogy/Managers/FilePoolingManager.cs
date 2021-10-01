@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces.DataTypes;
+using Analogy.UserControls;
 
 namespace Analogy.Managers
 {

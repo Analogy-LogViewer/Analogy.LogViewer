@@ -1,27 +1,4 @@
-﻿using Analogy.DataProviders;
-using Analogy.DataTypes;
-using Analogy.Forms;
-using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
-using Analogy.Managers;
-using Analogy.Properties;
-using Analogy.Tools;
-using DevExpress.Data;
-using DevExpress.Data.Filtering;
-using DevExpress.Utils;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Alerter;
-using DevExpress.XtraBars.Docking;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using DevExpress.XtraPrinting;
-using Markdig;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -33,11 +10,34 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataProviders;
+using Analogy.DataTypes;
+using Analogy.Forms;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Analogy.Managers;
+using Analogy.Properties;
+using Analogy.Tools;
+using DevExpress.Data;
+using DevExpress.Data.Filtering;
 using DevExpress.Data.Mask;
+using DevExpress.Utils;
 using DevExpress.Utils.Menu;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Alerter;
+using DevExpress.XtraBars.Docking;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraPrinting;
+using Markdig;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
@@ -294,7 +294,9 @@ namespace Analogy
                     }));
                 }
                 else
+                {
                     e.Panel.FloatSize = e.Panel.Size;
+                }
             };
             //sbtnUndockPerProcess.Click += (s, e) =>
             //{
