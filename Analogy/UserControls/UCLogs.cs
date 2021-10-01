@@ -21,7 +21,6 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
-using Markdig.SyntaxHighlighting;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -2055,7 +2054,6 @@ namespace Analogy
                     throw new ArgumentOutOfRangeException();
             }
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
-                .UseSyntaxHighlighting()
                 .Build();
             if (InvokeRequired)
             {

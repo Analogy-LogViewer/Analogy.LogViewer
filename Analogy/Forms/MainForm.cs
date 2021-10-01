@@ -1765,8 +1765,7 @@ namespace Analogy.Forms
             localfolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
             localfolder.ItemClick += (sender, e) =>
             {
-#if NETCOREAPP3_1 || NET
-                using (var folderBrowserDialog = new FolderBrowserDialog { ShowNewFolderButton = false })
+                using (var folderBrowserDialog = new XtraFolderBrowserDialog { ShowNewFolderButton = false })
                 {
                     folderBrowserDialog.SelectedPath = preDefinedFolderExist ? offlineAnalogy.InitialFolderFullPath : Environment.CurrentDirectory;
                     DialogResult result = folderBrowserDialog.ShowDialog(); // Show the dialog.
@@ -1778,17 +1777,6 @@ namespace Analogy.Forms
                         }
                     }
                 }
-#else
-                using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
-                {
-                    dialog.InitialDirectory = preDefinedFolderExist ? offlineAnalogy.InitialFolderFullPath : Environment.CurrentDirectory;
-                    dialog.IsFolderPicker = true;
-                    if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
-                    {
-                        OpenOffline(title, dialog.FileName);
-                    }
-                }
-#endif
             };
 
             //recent folder

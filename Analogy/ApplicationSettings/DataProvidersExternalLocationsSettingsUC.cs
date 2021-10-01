@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Analogy.ApplicationSettings
 {
@@ -29,29 +30,16 @@ namespace Analogy.ApplicationSettings
         {
             sbtnFolderProbingBrowse.Click += (s, e) =>
             {
-#if NETCOREAPP3_1 || NET
-            using (FolderBrowserDialog folderDlg = new FolderBrowserDialog
-            {
-                ShowNewFolderButton = false
-            })
-            {
+                using XtraFolderBrowserDialog folderDlg = new XtraFolderBrowserDialog
+                {
+                    ShowNewFolderButton = false
+                };
                 // Show the FolderBrowserDialog.  
                 DialogResult result = folderDlg.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     teFoldersProbing.Text = folderDlg.SelectedPath;
                 }
-            }
-#else
-                using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
-                {
-                    dialog.IsFolderPicker = true;
-                    if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
-                    {
-                        teFoldersProbing.Text = dialog.FileName;
-                    }
-                }
-#endif
             };
 
             sbtnFolderProbingAdd.Click += (s, e) =>

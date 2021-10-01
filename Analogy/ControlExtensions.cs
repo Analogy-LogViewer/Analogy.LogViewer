@@ -14,9 +14,13 @@ namespace Analogy
             try
             {
                 if (!source.InvokeRequired)
+                {
                     action(source);
+                }
                 else
+                {
                     source.Invoke(new Action(() => action(source)));
+                }
             }
             catch (Exception ex)
             {

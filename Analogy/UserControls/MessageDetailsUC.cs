@@ -2,7 +2,6 @@
 using Analogy.Tools.JsonViewer;
 using DevExpress.XtraEditors;
 using Markdig;
-using Markdig.SyntaxHighlighting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +40,6 @@ namespace Analogy
             }
 
             Pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
-                .UseSyntaxHighlighting()
                 .Build();
             xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageRenderedText;
 
