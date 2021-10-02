@@ -44,7 +44,7 @@
             this.pnlBottom1 = new DevExpress.XtraEditors.PanelControl();
             this.btnNext1 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.tpRibbon = new DevExpress.XtraTab.XtraTabPage();
+            this.tpLayout = new DevExpress.XtraTab.XtraTabPage();
             this.pnlFill2 = new DevExpress.XtraEditors.PanelControl();
             this.memoEdit2 = new DevExpress.XtraEditors.MemoEdit();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
@@ -58,6 +58,7 @@
             this.btnBack2 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.tpDataProviders = new DevExpress.XtraTab.XtraTabPage();
+            this.chkLstDataProviderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.pnlBottom4 = new DevExpress.XtraEditors.PanelControl();
             this.btnBack3 = new DevExpress.XtraEditors.SimpleButton();
             this.btnNext4 = new DevExpress.XtraEditors.SimpleButton();
@@ -69,7 +70,11 @@
             this.hyperLinkEdit2 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.hyperLinkEdit1 = new DevExpress.XtraEditors.HyperLinkEdit();
-            this.chkLstDataProviderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.stepProgressBar1 = new DevExpress.XtraEditors.StepProgressBar();
+            this.stepProgressBarItem1 = new DevExpress.XtraEditors.StepProgressBarItem();
+            this.stepProgressBarItem2 = new DevExpress.XtraEditors.StepProgressBarItem();
+            this.stepProgressBarItem3 = new DevExpress.XtraEditors.StepProgressBarItem();
+            this.stepProgressBarItem4 = new DevExpress.XtraEditors.StepProgressBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.tpWelcome.SuspendLayout();
@@ -77,7 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom1)).BeginInit();
             this.pnlBottom1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
-            this.tpRibbon.SuspendLayout();
+            this.tpLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFill2)).BeginInit();
             this.pnlFill2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit2.Properties)).BeginInit();
@@ -90,26 +95,26 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             this.tpDataProviders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom4)).BeginInit();
             this.pnlBottom4.SuspendLayout();
             this.tpFinish.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stepProgressBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 91);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tpWelcome;
-            this.xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1121, 496);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1121, 405);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tpWelcome,
-            this.tpRibbon,
+            this.tpLayout,
             this.tpSettings,
             this.tpDataProviders,
             this.tpFinish});
@@ -120,31 +125,31 @@
             this.tpWelcome.Controls.Add(this.pnlBottom1);
             this.tpWelcome.Controls.Add(this.pictureEdit1);
             this.tpWelcome.Name = "tpWelcome";
-            this.tpWelcome.Size = new System.Drawing.Size(1114, 489);
+            this.tpWelcome.Size = new System.Drawing.Size(1114, 371);
             this.tpWelcome.Text = "Welcome";
             // 
             // memoEdit1
             // 
             this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memoEdit1.EditValue = resources.GetString("memoEdit1.EditValue");
-            this.memoEdit1.Location = new System.Drawing.Point(490, 0);
+            this.memoEdit1.Location = new System.Drawing.Point(336, 0);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(624, 439);
+            this.memoEdit1.Size = new System.Drawing.Size(778, 321);
             this.memoEdit1.TabIndex = 1;
             // 
             // pnlBottom1
             // 
             this.pnlBottom1.Controls.Add(this.btnNext1);
             this.pnlBottom1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom1.Location = new System.Drawing.Point(490, 439);
+            this.pnlBottom1.Location = new System.Drawing.Point(336, 321);
             this.pnlBottom1.Name = "pnlBottom1";
-            this.pnlBottom1.Size = new System.Drawing.Size(624, 50);
+            this.pnlBottom1.Size = new System.Drawing.Size(778, 50);
             this.pnlBottom1.TabIndex = 3;
             // 
             // btnNext1
             // 
             this.btnNext1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext1.Location = new System.Drawing.Point(504, 10);
+            this.btnNext1.Location = new System.Drawing.Point(658, 10);
             this.btnNext1.Name = "btnNext1";
             this.btnNext1.Size = new System.Drawing.Size(115, 34);
             this.btnNext1.TabIndex = 2;
@@ -163,16 +168,16 @@
             this.pictureEdit1.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit1.Properties.ShowMenu = false;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(490, 489);
+            this.pictureEdit1.Size = new System.Drawing.Size(336, 371);
             this.pictureEdit1.TabIndex = 0;
             // 
-            // tpRibbon
+            // tpLayout
             // 
-            this.tpRibbon.Controls.Add(this.pnlFill2);
-            this.tpRibbon.Controls.Add(this.pnlBottom2);
-            this.tpRibbon.Name = "tpRibbon";
-            this.tpRibbon.Size = new System.Drawing.Size(1114, 489);
-            this.tpRibbon.Text = "Application Ribbon";
+            this.tpLayout.Controls.Add(this.pnlFill2);
+            this.tpLayout.Controls.Add(this.pnlBottom2);
+            this.tpLayout.Name = "tpLayout";
+            this.tpLayout.Size = new System.Drawing.Size(1114, 371);
+            this.tpLayout.Text = "Application Layout";
             // 
             // pnlFill2
             // 
@@ -181,7 +186,7 @@
             this.pnlFill2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFill2.Location = new System.Drawing.Point(0, 0);
             this.pnlFill2.Name = "pnlFill2";
-            this.pnlFill2.Size = new System.Drawing.Size(1114, 444);
+            this.pnlFill2.Size = new System.Drawing.Size(1114, 326);
             this.pnlFill2.TabIndex = 6;
             // 
             // memoEdit2
@@ -190,14 +195,13 @@
             this.memoEdit2.EditValue = resources.GetString("memoEdit2.EditValue");
             this.memoEdit2.Location = new System.Drawing.Point(2, 2);
             this.memoEdit2.Name = "memoEdit2";
-            this.memoEdit2.Size = new System.Drawing.Size(1110, 265);
+            this.memoEdit2.Size = new System.Drawing.Size(1110, 147);
             this.memoEdit2.TabIndex = 2;
             // 
             // pictureEdit2
             // 
             this.pictureEdit2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureEdit2.EditValue = global::Analogy.Properties.Resources.Ribbon2;
-            this.pictureEdit2.Location = new System.Drawing.Point(2, 267);
+            this.pictureEdit2.Location = new System.Drawing.Point(2, 149);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.ReadOnly = true;
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -211,7 +215,7 @@
             this.pnlBottom2.Controls.Add(this.btnBack1);
             this.pnlBottom2.Controls.Add(this.btnNext2);
             this.pnlBottom2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom2.Location = new System.Drawing.Point(0, 444);
+            this.pnlBottom2.Location = new System.Drawing.Point(0, 326);
             this.pnlBottom2.Name = "pnlBottom2";
             this.pnlBottom2.Size = new System.Drawing.Size(1114, 45);
             this.pnlBottom2.TabIndex = 5;
@@ -308,6 +312,50 @@
             this.tpDataProviders.Name = "tpDataProviders";
             this.tpDataProviders.Size = new System.Drawing.Size(1114, 489);
             this.tpDataProviders.Text = "Data Providers";
+            // 
+            // chkLstDataProviderStatus
+            // 
+            this.chkLstDataProviderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkLstDataProviderStatus.ItemHeight = 62;
+            this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 36);
+            this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 411);
+            this.chkLstDataProviderStatus.TabIndex = 16;
+            tableColumnDefinition3.Length.Value = 70D;
+            tableColumnDefinition4.Length.Value = 660D;
+            itemTemplateBase2.Columns.Add(tableColumnDefinition3);
+            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
+            templatedItemElement4.FieldName = null;
+            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement4.Text = "";
+            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            templatedItemElement5.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
+            templatedItemElement5.Appearance.Normal.Options.UseFont = true;
+            templatedItemElement5.Appearance.Normal.Options.UseForeColor = true;
+            templatedItemElement5.ColumnIndex = 1;
+            templatedItemElement5.FieldName = null;
+            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement5.Text = "Name";
+            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement6.ColumnIndex = 1;
+            templatedItemElement6.FieldName = null;
+            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement6.RowIndex = 1;
+            templatedItemElement6.Text = "description";
+            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase2.Elements.Add(templatedItemElement4);
+            itemTemplateBase2.Elements.Add(templatedItemElement5);
+            itemTemplateBase2.Elements.Add(templatedItemElement6);
+            itemTemplateBase2.Name = "template1";
+            itemTemplateBase2.Rows.Add(tableRowDefinition3);
+            itemTemplateBase2.Rows.Add(tableRowDefinition4);
+            tableSpan2.RowSpan = 2;
+            itemTemplateBase2.Spans.Add(tableSpan2);
+            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase2);
             // 
             // pnlBottom4
             // 
@@ -424,49 +472,38 @@
             this.hyperLinkEdit1.Size = new System.Drawing.Size(774, 22);
             this.hyperLinkEdit1.TabIndex = 0;
             // 
-            // chkLstDataProviderStatus
+            // stepProgressBar1
             // 
-            this.chkLstDataProviderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkLstDataProviderStatus.ItemHeight = 62;
-            this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 36);
-            this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 411);
-            this.chkLstDataProviderStatus.TabIndex = 16;
-            tableColumnDefinition3.Length.Value = 70D;
-            tableColumnDefinition4.Length.Value = 660D;
-            itemTemplateBase2.Columns.Add(tableColumnDefinition3);
-            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
-            templatedItemElement4.FieldName = null;
-            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement4.Text = "";
-            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement5.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            templatedItemElement5.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
-            templatedItemElement5.Appearance.Normal.Options.UseFont = true;
-            templatedItemElement5.Appearance.Normal.Options.UseForeColor = true;
-            templatedItemElement5.ColumnIndex = 1;
-            templatedItemElement5.FieldName = null;
-            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement5.Text = "Name";
-            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement6.ColumnIndex = 1;
-            templatedItemElement6.FieldName = null;
-            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement6.RowIndex = 1;
-            templatedItemElement6.Text = "description";
-            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            itemTemplateBase2.Elements.Add(templatedItemElement4);
-            itemTemplateBase2.Elements.Add(templatedItemElement5);
-            itemTemplateBase2.Elements.Add(templatedItemElement6);
-            itemTemplateBase2.Name = "template1";
-            itemTemplateBase2.Rows.Add(tableRowDefinition3);
-            itemTemplateBase2.Rows.Add(tableRowDefinition4);
-            tableSpan2.RowSpan = 2;
-            itemTemplateBase2.Spans.Add(tableSpan2);
-            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase2);
+            this.stepProgressBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.stepProgressBar1.Items.Add(this.stepProgressBarItem1);
+            this.stepProgressBar1.Items.Add(this.stepProgressBarItem2);
+            this.stepProgressBar1.Items.Add(this.stepProgressBarItem3);
+            this.stepProgressBar1.Items.Add(this.stepProgressBarItem4);
+            this.stepProgressBar1.Location = new System.Drawing.Point(0, 0);
+            this.stepProgressBar1.Name = "stepProgressBar1";
+            this.stepProgressBar1.Size = new System.Drawing.Size(1121, 91);
+            this.stepProgressBar1.TabIndex = 2;
+            this.stepProgressBar1.Visible = false;
+            // 
+            // stepProgressBarItem1
+            // 
+            this.stepProgressBarItem1.ContentBlock2.Caption = "Item1";
+            this.stepProgressBarItem1.Name = "stepProgressBarItem1";
+            // 
+            // stepProgressBarItem2
+            // 
+            this.stepProgressBarItem2.ContentBlock2.Caption = "Item2";
+            this.stepProgressBarItem2.Name = "stepProgressBarItem2";
+            // 
+            // stepProgressBarItem3
+            // 
+            this.stepProgressBarItem3.ContentBlock2.Caption = "Item3";
+            this.stepProgressBarItem3.Name = "stepProgressBarItem3";
+            // 
+            // stepProgressBarItem4
+            // 
+            this.stepProgressBarItem4.ContentBlock2.Caption = "Item4";
+            this.stepProgressBarItem4.Name = "stepProgressBarItem4";
             // 
             // FirstTimeRunForm
             // 
@@ -474,6 +511,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1121, 496);
             this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.stepProgressBar1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FirstTimeRunForm";
@@ -487,7 +525,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom1)).EndInit();
             this.pnlBottom1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
-            this.tpRibbon.ResumeLayout(false);
+            this.tpLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFill2)).EndInit();
             this.pnlFill2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit2.Properties)).EndInit();
@@ -500,13 +538,14 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             this.tpDataProviders.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom4)).EndInit();
             this.pnlBottom4.ResumeLayout(false);
             this.tpFinish.ResumeLayout(false);
             this.tpFinish.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stepProgressBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,7 +558,7 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.SimpleButton btnNext1;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
-        private DevExpress.XtraTab.XtraTabPage tpRibbon;
+        private DevExpress.XtraTab.XtraTabPage tpLayout;
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
         private DevExpress.XtraEditors.SimpleButton btnNext2;
         private DevExpress.XtraEditors.MemoEdit memoEdit2;
@@ -545,5 +584,10 @@
         private DevExpress.XtraEditors.PanelControl pnlBottom2;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstDataProviderStatus;
+        private DevExpress.XtraEditors.StepProgressBar stepProgressBar1;
+        private DevExpress.XtraEditors.StepProgressBarItem stepProgressBarItem1;
+        private DevExpress.XtraEditors.StepProgressBarItem stepProgressBarItem2;
+        private DevExpress.XtraEditors.StepProgressBarItem stepProgressBarItem3;
+        private DevExpress.XtraEditors.StepProgressBarItem stepProgressBarItem4;
     }
 }
