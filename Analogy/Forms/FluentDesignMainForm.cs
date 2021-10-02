@@ -778,7 +778,6 @@ namespace Analogy
                 //recent folder
                 AccordionControlElement recentFolders = new AccordionControlElement { Text = "Recent Folders" };
                 acRootGroupHome.Elements.Add(recentFolders);
-                recentFolders.Style = ElementStyle.Item;
                 recentFolders.ImageOptions.Image = images?.GetSmallRecentFoldersImage(factoryId) ?? Resources.LoadFrom_16x16;
                 foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
                 {
@@ -798,7 +797,6 @@ namespace Analogy
 
                 //recent bar
                 AccordionControlElement recentfiles = new AccordionControlElement();
-                recentfiles.Style = ElementStyle.Item;
                 recentfiles.Text = "Recent Files";
                 recentfiles.ImageOptions.Image = images?.GetSmallRecentFilesImage(factoryId) ?? Resources.RecentlyUse_16x16;
                 //add Files open buttons
@@ -938,7 +936,16 @@ namespace Analogy
                     AccordionControlElement btn = new AccordionControlElement();
                     recentElement.Elements.Add(btn);
                     btn.Style = ElementStyle.Item;
-                    btn.Text = file;
+                    btn.Text = Path.GetFileName(file);
+
+                    SuperToolTip toolTip = new SuperToolTip();
+                    // Create an object to initialize the SuperToolTip.
+                    SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+                    args.Title.Text = Path.GetFileName(file);
+                    args.Contents.Text = file;
+                    // args.Contents.Image = realTime.ToolTip.Image;
+                    toolTip.Setup(args);
+                    btn.SuperTip = toolTip;
                     btn.Click += (s, be) =>
                     {
                         OpenOfflineLogs(new []{file}, offlineAnalogy, title);
