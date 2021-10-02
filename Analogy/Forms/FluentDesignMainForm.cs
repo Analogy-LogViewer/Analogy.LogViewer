@@ -751,6 +751,8 @@ namespace Analogy
                     specificLocalFolder.Click += (sender, e) => { OpenOffline(title, specificDirectory); };
                 }
 
+                AccordionControlElement recentFolders = new AccordionControlElement { Text = "Recent Folders" };
+
                 //add local folder button:
                 AccordionControlElement localfolder = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(localfolder);
@@ -770,13 +772,13 @@ namespace Analogy
                             if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
                             {
                                 OpenOffline(title, folderBrowserDialog.SelectedPath);
+                                AddRecentFolder(recentFolders, offlineAnalogy, title, folderBrowserDialog.SelectedPath);
                             }
                         }
                     }
                 };
 
                 //recent folder
-                AccordionControlElement recentFolders = new AccordionControlElement { Text = "Recent Folders" };
                 acRootGroupHome.Elements.Add(recentFolders);
                 recentFolders.ImageOptions.Image = images?.GetSmallRecentFoldersImage(factoryId) ?? Resources.LoadFrom_16x16;
                 foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
@@ -784,9 +786,17 @@ namespace Analogy
                     //add local folder button:
                     if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
                     {
-                        AccordionControlElement btn = new AccordionControlElement { Text = path.Path };
+                        AccordionControlElement btn = new AccordionControlElement();
                         recentFolders.Elements.Add(btn);
                         btn.Style = ElementStyle.Item;
+                        btn.Text = Path.GetFileName(path.Path);
+                        SuperToolTip toolTip = new SuperToolTip();
+                        SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+                        args.Title.Text = Path.GetFileName(path.Path);
+                        args.Contents.Text = path.Path;
+                        // args.Contents.Image = realTime.ToolTip.Image;
+                        toolTip.Setup(args);
+                        btn.SuperTip = toolTip;
                         btn.Click += (s, be) =>
                         {
                             OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
@@ -921,6 +931,35 @@ namespace Analogy
             }
         }
 
+        private void AddRecentFolder(AccordionControlElement recentElement, IAnalogyOfflineDataProvider offlineAnalogy, string title, string recentPath)
+        {
+            AccordionControlElement btn = new AccordionControlElement();
+            recentElement.Elements.Add(btn);
+            btn.Style = ElementStyle.Item;
+            btn.Text = Path.GetFileName(recentPath);
+
+            SuperToolTip toolTip = new SuperToolTip();
+            // Create an object to initialize the SuperToolTip.
+            SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+            args.Title.Text = Path.GetFileName(recentPath);
+            args.Contents.Text = recentPath;
+            // args.Contents.Image = realTime.ToolTip.Image;
+            toolTip.Setup(args);
+            btn.SuperTip = toolTip;
+            btn.Click += (s, be) =>
+            {
+                openedWindows++;
+                UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, null, recentPath);
+                var page = dockManager1.AddPanel(DockingStyle.Float);
+                page.DockedAsTabbedDocument = true;
+                page.Controls.Add(offlineUC);
+                offlineUC.Dock = DockStyle.Fill;
+                page.Text = $"{offlineTitle} #{openedWindows} ({title})";
+                dockManager1.ActivePanel = page;
+            };
+
+
+        }
         private void AddRecentFiles(AccordionControlElement recentElement, IAnalogyOfflineDataProvider offlineAnalogy, string title, List<string> recentFiles)
         {
             if (recentFiles.Any())
@@ -939,7 +978,6 @@ namespace Analogy
                     btn.Text = Path.GetFileName(file);
 
                     SuperToolTip toolTip = new SuperToolTip();
-                    // Create an object to initialize the SuperToolTip.
                     SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                     args.Title.Text = Path.GetFileName(file);
                     args.Contents.Text = file;
@@ -948,7 +986,7 @@ namespace Analogy
                     btn.SuperTip = toolTip;
                     btn.Click += (s, be) =>
                     {
-                        OpenOfflineLogs(new []{file}, offlineAnalogy, title);
+                        OpenOfflineLogs(new[] { file }, offlineAnalogy, title);
                     };
                 }
             }
