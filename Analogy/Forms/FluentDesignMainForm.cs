@@ -798,7 +798,6 @@ namespace Analogy
 
                 //recent bar
                 AccordionControlElement recentfiles = new AccordionControlElement();
-                acRootGroupHome.Elements.Add(recentfiles);
                 recentfiles.Style = ElementStyle.Item;
                 recentfiles.Text = "Recent Files";
                 recentfiles.ImageOptions.Image = images?.GetSmallRecentFilesImage(factoryId) ?? Resources.RecentlyUse_16x16;
@@ -807,7 +806,7 @@ namespace Analogy
                 if (!string.IsNullOrEmpty(offlineAnalogy.FileOpenDialogFilters))
                 {//add Open files entry
                     AccordionControlElement openFiles = new AccordionControlElement { Text = "Open Files" };
-                    recentfiles.Elements.Add(openFiles);
+                    acRootGroupHome.Elements.Add(openFiles);
                     openFiles.Style = ElementStyle.Item;
                     openFiles.ImageOptions.Image = offlineAnalogy.SmallImage ?? Resources.Article_16x16;
                     openFiles.Click += (sender, e) =>
@@ -825,6 +824,7 @@ namespace Analogy
                         }
                     };
 
+                    acRootGroupHome.Elements.Add(recentfiles);
 
 
                     //add Open Pooled file entry
