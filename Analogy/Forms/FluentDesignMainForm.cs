@@ -747,7 +747,7 @@ namespace Analogy
                     acRootGroupHome.Elements.Add(specificLocalFolder);
                     specificLocalFolder.Style = ElementStyle.Item;
                     specificLocalFolder.Text = "Open Pre-defined Folder";
-                    specificLocalFolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.OpenFolder_16x16;
+                    specificLocalFolder.ImageOptions.Image = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
                     specificLocalFolder.Click += (sender, e) => { OpenOffline(title, specificDirectory); };
                 }
 
@@ -758,7 +758,7 @@ namespace Analogy
                 acRootGroupHome.Elements.Add(localfolder);
                 localfolder.Style = ElementStyle.Item;
                 localfolder.Text = "Open Folder Selection";
-                localfolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.OpenFolder_16x16;
+                localfolder.ImageOptions.Image = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
                 localfolder.Click += (sender, e) =>
                 {
                     using (var folderBrowserDialog = new XtraFolderBrowserDialog { ShowNewFolderButton = false })
@@ -780,7 +780,7 @@ namespace Analogy
 
                 //recent folder
                 acRootGroupHome.Elements.Add(recentFolders);
-                recentFolders.ImageOptions.Image = images?.GetSmallRecentFoldersImage(factoryId) ?? Resources.LoadFrom_16x16;
+                recentFolders.ImageOptions.Image = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
                 foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
                 {
                     //add local folder button:
@@ -808,7 +808,7 @@ namespace Analogy
                 //recent bar
                 AccordionControlElement recentfiles = new AccordionControlElement();
                 recentfiles.Text = "Recent Files";
-                recentfiles.ImageOptions.Image = images?.GetSmallRecentFilesImage(factoryId) ?? Resources.RecentlyUse_16x16;
+                recentfiles.ImageOptions.Image = images?.GetLargeRecentFilesImage(factoryId) ?? Resources.RecentlyUse_32x32;
                 //add Files open buttons
 
                 if (!string.IsNullOrEmpty(offlineAnalogy.FileOpenDialogFilters))
@@ -816,7 +816,7 @@ namespace Analogy
                     AccordionControlElement openFiles = new AccordionControlElement { Text = "Open Files" };
                     acRootGroupHome.Elements.Add(openFiles);
                     openFiles.Style = ElementStyle.Item;
-                    openFiles.ImageOptions.Image = offlineAnalogy.SmallImage ?? Resources.Article_16x16;
+                    openFiles.ImageOptions.Image = offlineAnalogy.LargeImage ?? Resources.Article_32x32;
                     openFiles.Click += (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
@@ -843,7 +843,7 @@ namespace Analogy
                     filePoolingBtn.Text = caption;
                     filePoolingBtn.SuperTip = Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
                     filePoolingBtn.ImageOptions.Image =
-                        images?.GetSmallFilePoolingImage(factoryId) ?? Resources.FilePooling_16x16;
+                        images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
                     filePoolingBtn.Click += (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
@@ -879,7 +879,7 @@ namespace Analogy
                 acRootGroupHome.Elements.Add(externalSources);
                 externalSources.Style = ElementStyle.Item;
                 externalSources.Text = "Known Locations";
-                externalSources.ImageOptions.Image = images?.GetSmallKnownLocationsImage(factoryId) ?? Resources.ServerMode_16x16;
+                externalSources.ImageOptions.Image = images?.GetLargeKnownLocationsImage(factoryId) ?? Resources.ServerMode_32x32;
                 externalSources.Click += (sender, e) => { OpenExternalDataSource(title, offlineAnalogy); };
 
 
@@ -896,7 +896,7 @@ namespace Analogy
                 searchFiles.Style = ElementStyle.Item;
                 searchFiles.Text = "Search in Files";
                 searchFiles.ImageOptions.Image =
-                    images?.GetSmallSearchImage(offlineAnalogy.Id) ?? Resources.Lookup_Reference_32x32;
+                    images?.GetLargeSearchImage(offlineAnalogy.Id) ?? Resources.Lookup_Reference_32x32;
 
                 searchFiles.Click += (sender, e) =>
                 {
@@ -910,7 +910,7 @@ namespace Analogy
 
                 combineFiles.Text = "Combine Files";
                 combineFiles.ImageOptions.Image =
-                    images?.GetSmallCombineLogsImage(offlineAnalogy.Id) ?? Resources.Sutotal_32x32;
+                    images?.GetLargeCombineLogsImage(offlineAnalogy.Id) ?? Resources.Sutotal_32x32;
                 combineFiles.Click += (sender, e) =>
                 {
                     var combined = new FormCombineFiles(offlineAnalogy);
@@ -922,7 +922,7 @@ namespace Analogy
                 compareFiles.Style = ElementStyle.Item;
 
                 compareFiles.Text = "Compare Files";
-                compareFiles.ImageOptions.Image = images?.GetSmallCompareLogsImage(offlineAnalogy.Id) ?? Resources.TwoColumns;
+                compareFiles.ImageOptions.Image = images?.GetLargeCompareLogsImage(offlineAnalogy.Id) ?? Resources.TwoColumns;
                 compareFiles.Click += (sender, e) =>
                 {
                     FileComparerForm compare = new FileComparerForm(offlineAnalogy);
@@ -1010,12 +1010,12 @@ namespace Analogy
 
             foreach (var realTime in realTimes)
             {
-                var imageSmallOffline = realTime.DisconnectedSmallImage;
-                var imageSmallOnline = realTime.ConnectedSmallImage;
+                var imageLargeOffline = realTime.DisconnectedLargeImage;
+                var imageLargeOnline = realTime.ConnectedLargeImage;
                 AccordionControlElement realTimeBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(realTimeBtn);
                 realTimeBtn.Style = ElementStyle.Item;
-                realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
                 realTimeBtn.Text = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
                     : "real time provider");
@@ -1047,7 +1047,7 @@ namespace Analogy
                     if (canStartReceiving) //connected
                     {
                         openedWindows++;
-                        realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                        realTimeBtn.ImageOptions.Image = imageLargeOnline ?? Resources.Database_on;
                         var onlineUC = new OnlineUCLogs(realTime);
 
                         void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1063,7 +1063,7 @@ namespace Analogy
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                            realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                            realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
                         }
 
                         var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1155,8 +1155,8 @@ namespace Analogy
                 AccordionControlElement singleBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(singleBtn);
                 singleBtn.Style = ElementStyle.Item;
-                var imageSmall = FactoriesManager.Instance.GetSmallImage(single.Id);
-                singleBtn.ImageOptions.Image = imageSmall ?? Resources.Single16x16;
+                var imageLarge = FactoriesManager.Instance.GetLargeImage(single.Id);
+                singleBtn.ImageOptions.Image = imageLarge ?? Resources.Single32x32;
                 singleBtn.Text = !string.IsNullOrEmpty(single.OptionalTitle)
                     ? $"{single.OptionalTitle}"
                     : "Single Data Provider";
@@ -1224,7 +1224,7 @@ namespace Analogy
                     AccordionControlElement userControlBtn = new AccordionControlElement();
                     acRootUserControl.Elements.Add(userControlBtn);
                     userControlBtn.Style = ElementStyle.Item;
-                    userControlBtn.ImageOptions.Image = userControl.SmallImage ?? Resources.userControls16x16;
+                    userControlBtn.ImageOptions.Image = userControl.LargeImage ?? Resources.UserControls32x32;
                     userControlBtn.Text = userControl.Title;
                     if (userControl.ToolTip != null)
                     {
@@ -1233,7 +1233,7 @@ namespace Analogy
                         SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                         args.Title.Text = userControl.ToolTip.Title;
                         args.Contents.Text = userControl.ToolTip.Content;
-                        args.Contents.Image = userControl.ToolTip.SmallImage;
+                        args.Contents.Image = userControl.ToolTip.LargeImage;
                         toolTip.Setup(args);
                         userControlBtn.SuperTip = toolTip;
                     }
@@ -1290,7 +1290,7 @@ namespace Analogy
             AccordionControlElement acRootGroupHome = new AccordionControlElement();
             accordionControl.Elements.Add(acRootGroupHome);
             acRootGroupHome.Expanded = true;
-            acRootGroupHome.ImageOptions.Image = Resources.Line_16x16;
+            acRootGroupHome.ImageOptions.Image = Resources.Line_32x32;
             acRootGroupHome.Text = $"Graph Plotter: {title}";
 
 
@@ -1299,7 +1299,7 @@ namespace Analogy
                 AccordionControlElement plotterBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(plotterBtn);
                 plotterBtn.Style = ElementStyle.Item;
-                plotterBtn.ImageOptions.Image = Resources.Line_16x16;
+                plotterBtn.ImageOptions.Image = Resources.Line_32x32;
                 plotterBtn.Text = plot.Title;
 
                 async Task<bool> OpenPlotter()
