@@ -123,7 +123,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(854, 123);
             this.groupControl2.TabIndex = 22;
-            this.groupControl2.Text = "Context Menus Font size:";
+            this.groupControl2.Text = "Application Icon";
             // 
             // peAnalogy
             // 
