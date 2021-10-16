@@ -112,14 +112,14 @@ namespace Analogy.CommonControls.Managers
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
 
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 AddExtraColumnsIfNeeded(table, message);
             }
             try
             {
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
+                DataRow dtr = Utils.CreateRow(table, message, dataSource);
                 table.Rows.Add(dtr);
                 return dtr;
 

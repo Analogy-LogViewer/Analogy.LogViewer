@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
+using Analogy.CommonControls.Managers;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.LogViewer.Template.Properties;
@@ -34,7 +35,6 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
-using Markdig.SyntaxHighlighting;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -60,8 +60,6 @@ namespace Analogy.CommonControls.UserControls
         public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
-        private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
         private IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; set; }
         private IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new List<int>();
@@ -228,55 +226,13 @@ namespace Analogy.CommonControls.UserControls
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
-            if (Settings.SaveSearchFilters)
-            {
-                string? includeText = string.IsNullOrEmpty(Settings.IncludeText) || Settings.IncludeText == txtbInclude.Properties.NullText ? null : Settings.IncludeText;
-                txtbInclude.Text = includeText;
-                string? excludeText = string.IsNullOrEmpty(Settings.ExcludeText) || Settings.ExcludeText == txtbExclude.Properties.NullText ? null : Settings.ExcludeText;
-                txtbExclude.Text = excludeText;
-                string? source = string.IsNullOrEmpty(Settings.SourceText) || Settings.SourceText == txtbSource.Properties.NullText ? null : Settings.SourceText;
-                txtbSource.Text = source;
-                string? module = string.IsNullOrEmpty(Settings.ModuleText) || Settings.ModuleText == txtbModule.Properties.NullText ? null : Settings.ModuleText;
-                txtbModule.Text = module;
-
-                if (!string.IsNullOrEmpty(includeText) || !string.IsNullOrEmpty(excludeText) ||
-                    !string.IsNullOrEmpty(source) || !string.IsNullOrEmpty(module))
-                {
-                    AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
-                    btn1.Hint = "Clear Filtering";
-                    btn1.Name = "buttonClearFiltering";
-                    alertControl1.Buttons.Add(btn1);
-                    alertControl1.ButtonClick += (s, arg) =>
-                    {
-                        if (arg.ButtonName == btn1.Name)
-                        {
-                            txtbInclude.Text = txtbExclude.Text = txtbSource.Text = txtbModule.Text = null;
-                            ceIncludeText.Checked = ceExcludeText.Checked =
-                                ceModulesProcess.Checked = ceSources.Checked = false;
-                        }
-                    };
-                    AlertInfo info = new AlertInfo("Filtering", "old search filters are used. You can clear those with the x button");
-                    alertControl1.Show(this.ParentForm, info);
-                }
-            }
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
-            if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
-            {
-                string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
-                wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
-                wsLogs.ApplyWorkspace(name);
-            }
-            if (File.Exists(AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName))
-            {
-                wsLogs.LoadWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName, AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName);
-                wsLogs.ApplyWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName);
-            }
+
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
         {
-            Settings.BuiltInSearchPanelMode = ceFilterPanelSearch.CheckState == CheckState.Checked ? BuiltInSearchPanelMode.Search : BuiltInSearchPanelMode.Filter;
             logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
                 ? FindPanelBehavior.Search
                 : FindPanelBehavior.Filter;

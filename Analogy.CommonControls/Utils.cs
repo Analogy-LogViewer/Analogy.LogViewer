@@ -18,7 +18,7 @@ namespace Analogy.CommonControls
             return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource, bool checkAdditionalInformation, TimeOffsetType timeOffsetType, TimeSpan customOffset)
+        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource, TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
@@ -35,7 +35,7 @@ namespace Analogy.CommonControls
             dtr["ThreadID"] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
             dtr["MachineName"] = message.MachineName ?? string.Empty;
-            if (checkAdditionalInformation && message.AdditionalInformation != null && message.AdditionalInformation.Any())
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
