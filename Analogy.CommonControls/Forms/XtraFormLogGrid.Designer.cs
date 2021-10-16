@@ -32,7 +32,7 @@ namespace Analogy.CommonControls.Forms
         {
             System.Threading.CancellationTokenSource cancellationTokenSource1 = new System.Threading.CancellationTokenSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormLogGrid));
-            this.ucLogs1 = new Analogy.UCLogs();
+            this.ucLogs1 = new UCLogs();
             this.SuspendLayout();
             // 
             // ucLogs1
@@ -42,10 +42,10 @@ namespace Analogy.CommonControls.Forms
             this.ucLogs1.DataProvider = null;
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogs1.DoNotAddToRecentHistory = false;
-            this.ucLogs1.ExcludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.ExcludeFilterCriteriaUIOptions")));
+            this.ucLogs1.ExcludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.ExcludeFilterCriteriaUIOptions")));
             this.ucLogs1.FileDataProvider = null;
             this.ucLogs1.ForceNoFileCaching = false;
-            this.ucLogs1.IncludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.IncludeFilterCriteriaUIOptions")));
+            this.ucLogs1.IncludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.IncludeFilterCriteriaUIOptions")));
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";

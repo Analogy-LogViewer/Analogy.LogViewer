@@ -18,7 +18,6 @@ namespace Analogy.CommonControls.DataTypes
         public event EventHandler<EventArgs> OnFileReadingFinished;
         public event EventHandler<string> ProcessingMessage;
         public DateTime lastNewestMessage;
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
         private ILogMessageCreatedHandler DataWindow { get; }
@@ -34,7 +33,7 @@ namespace Analogy.CommonControls.DataTypes
         }
 
         public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider,
-            string filename, CancellationToken token, bool isReload = false)
+            string filename, CancellationToken token, bool enableFileCaching, bool isReload = false)
         {
             //TODO in case of zip recursive call on all extracted files
 
@@ -47,7 +46,7 @@ namespace Analogy.CommonControls.DataTypes
 
             if (!isReload && !DataWindow.ForceNoFileCaching &&
                 FileProcessingManager.Instance.AlreadyProcessed(FileName) &&
-                Settings.EnableFileCaching) //get it from the cache
+                enableFileCaching) //get it from the cache
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
@@ -86,11 +85,6 @@ namespace Analogy.CommonControls.DataTypes
                 {
                     FileProcessingManager.Instance.AddProcessingFile(FileName);
 
-                    if (!DataWindow.DoNotAddToRecentHistory)
-                    {
-                        Settings.AddToRecentFiles(fileDataProvider.Id, FileName);
-                    }
-
                     var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false))
                         .ToList();
                     FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
@@ -109,7 +103,7 @@ namespace Analogy.CommonControls.DataTypes
                 }
                 else //cannot open natively. is it compressed file?
                 {
-                    if (Settings.EnableCompressedArchives && Utils.IsCompressedArchive(filename))
+                    if (Utils.IsCompressedArchive(filename))
                     {
                         var compressedMessages = new List<AnalogyLogMessage>();
                         string extractedPath = UnzipFilesIntoTempFolder(filename, fileDataProvider);
@@ -170,7 +164,7 @@ namespace Analogy.CommonControls.DataTypes
             }
             else
             {
-                ProcessingMessage?.Invoke(this,$"Unsupported file: {zipPath}.");
+                ProcessingMessage?.Invoke(this, $"Unsupported file: {zipPath}.");
                 return string.Empty;
             }
 

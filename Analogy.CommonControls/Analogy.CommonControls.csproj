@@ -349,7 +349,6 @@
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.14.6" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.9.4" />
 		<PackageReference Include="Markdig" Version="0.26.0" />
-		<PackageReference Include="Markdig.SyntaxHighlighting" Version="1.1.7" />
 		<PackageReference Include="MessagePack" Version="2.3.75" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="5.0.2" />

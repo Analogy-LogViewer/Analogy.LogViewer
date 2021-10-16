@@ -257,7 +257,7 @@
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Reference>
 		<Reference Include="DevExpress.XtraDialogs.v21.1">
-			<HintPath>DevExpress\.net core\DevExpress.XtraDialogs.v21.1.dll</HintPath>
+			<HintPath>..\DevExpress\.net core\DevExpress.XtraDialogs.v21.1.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Reference>
