@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using Analogy.UserControls;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Analogy
 {
@@ -58,7 +59,7 @@ namespace Analogy
             this.lBoxFiles = new DevExpress.XtraEditors.ListBoxControl();
             this.chkbSelectionMode = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditRecursiveLoad = new DevExpress.XtraEditors.CheckEdit();
-            this.ucLogs1 = new Analogy.UCLogs();
+            this.ucLogs1 = new UCLogs();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tsPrimary = new System.Windows.Forms.ToolStrip();

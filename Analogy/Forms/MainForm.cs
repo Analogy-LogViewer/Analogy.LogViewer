@@ -47,7 +47,7 @@ namespace Analogy.Forms
         private Dictionary<DockPanel, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
             new Dictionary<DockPanel, IAnalogyRealTimeDataProvider>();
 
-        private List<Task<bool>> OnlineSources = new List<Task<bool>>();
+        private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
         private int openedWindows;
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
@@ -192,7 +192,6 @@ namespace Analogy.Forms
             ribbonControlMain.Minimized = settings.StartupRibbonMinimized;
 
             ribbonControlMain.CommandLayout = settings.RibbonStyle;
-            //CreateAnalogyBuiltinDataProviders
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
             {
@@ -285,13 +284,13 @@ namespace Analogy.Forms
                     if (!e.userControl.Visible)
                     {
                         var page = dockManager1.AddPanel(DockingStyle.Float);
-                        page.DockedAsTabbedDocument = e.startupType==AnalogyOnDemandPlottingStartupType.TabbedWindow;
+                        page.DockedAsTabbedDocument = e.startupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
                         page.Controls.Add(e.userControl);
                         e.userControl.Show();
                         e.userControl.Dock = DockStyle.Fill;
                         page.Text = $"Plot: {e.userControl.Title}";
                         dockManager1.ActivePanel = page;
-                        page.ClosingPanel += (_,__)=>
+                        page.ClosingPanel += (_, __) =>
                         {
                             AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
                         };
@@ -299,7 +298,7 @@ namespace Analogy.Forms
                         {
                             if (uc == e.userControl)
                             {
-                                dockManager1.RemovePanel(page); 
+                                dockManager1.RemovePanel(page);
                                 uc.Hide();
                             }
                         }
@@ -309,7 +308,7 @@ namespace Analogy.Forms
                 }));
             };
         }
-        
+
         private void PopulateGlobalTools()
         {
             var allFactories = FactoriesManager.Instance.Factories.ToList();
@@ -342,6 +341,23 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            dockManager1.StartDocking += (s, e) =>
+            {
+                if (e.Panel.DockedAsTabbedDocument)
+                {
+                    var sz = e.Panel.Size;
+                    BeginInvoke(new Action(() =>
+                    {
+                        e.Panel.FloatSize = sz;
+                        //adjust the new panel size taking the header height into account:
+                        e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
+                    }));
+                }
+                else
+                {
+                    e.Panel.FloatSize = e.Panel.Size;
+                }
+            };
             bsiFilePlotting.ItemClick += (s, e) =>
             {
                 FilePlotterUC uc = new FilePlotterUC();
@@ -850,7 +866,7 @@ namespace Analogy.Forms
                         SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                         args.Title.Text = userControl.ToolTip.Title;
                         args.Contents.Text = userControl.ToolTip.Content;
-                         args.Contents.Image = userControl.ToolTip.SmallImage;
+                        args.Contents.Image = userControl.ToolTip.SmallImage;
                         toolTip.Setup(args);
                         userControlBtn.SuperTip = toolTip;
                     }
@@ -1527,7 +1543,7 @@ namespace Analogy.Forms
 
                 //add Open Pooled file entry
                 BarSubItem filePoolingBtn = new BarSubItem();
-                string caption="File Pooling (Monitoring)";
+                string caption = "File Pooling (Monitoring)";
                 filePoolingBtn.Caption = caption;
                 filePoolingBtn.SuperTip =
                     Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
@@ -1750,8 +1766,7 @@ namespace Analogy.Forms
             localfolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
             localfolder.ItemClick += (sender, e) =>
             {
-#if NETCOREAPP3_1 || NET
-                using (var folderBrowserDialog = new FolderBrowserDialog { ShowNewFolderButton = false })
+                using (var folderBrowserDialog = new XtraFolderBrowserDialog { ShowNewFolderButton = false })
                 {
                     folderBrowserDialog.SelectedPath = preDefinedFolderExist ? offlineAnalogy.InitialFolderFullPath : Environment.CurrentDirectory;
                     DialogResult result = folderBrowserDialog.ShowDialog(); // Show the dialog.
@@ -1763,17 +1778,6 @@ namespace Analogy.Forms
                         }
                     }
                 }
-#else
-                using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
-                {
-                    dialog.InitialDirectory = preDefinedFolderExist ? offlineAnalogy.InitialFolderFullPath : Environment.CurrentDirectory;
-                    dialog.IsFolderPicker = true;
-                    if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
-                    {
-                        OpenOffline(title, dialog.FileName);
-                    }
-                }
-#endif
             };
 
             //recent folder

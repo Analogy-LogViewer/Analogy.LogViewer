@@ -1,4 +1,6 @@
-﻿namespace Analogy.Forms
+﻿using Analogy.UserControls;
+
+namespace Analogy.Forms
 {
     partial class XtraFormLogGrid
     {
@@ -30,7 +32,7 @@
         {
             System.Threading.CancellationTokenSource cancellationTokenSource1 = new System.Threading.CancellationTokenSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormLogGrid));
-            this.ucLogs1 = new Analogy.UCLogs();
+            this.ucLogs1 = new UCLogs();
             this.SuspendLayout();
             // 
             // ucLogs1

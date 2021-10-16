@@ -1,28 +1,4 @@
-﻿using Analogy.DataProviders;
-using Analogy.DataTypes;
-using Analogy.Forms;
-using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
-using Analogy.Managers;
-using Analogy.Properties;
-using Analogy.Tools;
-using DevExpress.Data;
-using DevExpress.Data.Filtering;
-using DevExpress.Utils;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Alerter;
-using DevExpress.XtraBars.Docking;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using DevExpress.XtraPrinting;
-using Markdig;
-using Markdig.SyntaxHighlighting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -34,11 +10,34 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataProviders;
+using Analogy.DataTypes;
+using Analogy.Forms;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Analogy.Managers;
+using Analogy.Properties;
+using Analogy.Tools;
+using DevExpress.Data;
+using DevExpress.Data.Filtering;
 using DevExpress.Data.Mask;
+using DevExpress.Utils;
 using DevExpress.Utils.Menu;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Alerter;
+using DevExpress.XtraBars.Docking;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraPrinting;
+using Markdig;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
@@ -282,6 +281,27 @@ namespace Analogy
         }
         private void SetupEventsHandlers()
         {
+            dockManager1.StartDocking += (s, e) =>
+            {
+                if (e.Panel.DockedAsTabbedDocument)
+                {
+                    var sz = e.Panel.Size;
+                    BeginInvoke(new Action(() =>
+                    {
+                        e.Panel.FloatSize = sz;
+                        //adjust the new panel size taking the header height into account:
+                        e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
+                    }));
+                }
+                else
+                {
+                    e.Panel.FloatSize = e.Panel.Size;
+                }
+            };
+            //sbtnUndockPerProcess.Click += (s, e) =>
+            //{
+            //    UndockViewPerProcess();
+            //};
             meMessageDetails.Properties.BeforeShowMenu += (s, e) =>
             {
                 string caption = "Show Selection In Json Viewer";
@@ -2036,7 +2056,6 @@ namespace Analogy
                     throw new ArgumentOutOfRangeException();
             }
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
-                .UseSyntaxHighlighting()
                 .Build();
             if (InvokeRequired)
             {
@@ -3129,13 +3148,6 @@ namespace Analogy
         {
             txtbModule.Text = "";
         }
-
-
-        private void sbtnUndockPerProcess_Click(object sender, EventArgs e)
-        {
-            UndockViewPerProcess();
-        }
-
 
         private void tsmiDateFilterNewer_Click(object sender, EventArgs e)
         {

@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.DataTypes;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
@@ -52,26 +53,13 @@ namespace Analogy
 
         private async void btnOpenFolder_Click(object sender, EventArgs e)
         {
-#if NETCOREAPP3_1 || NET
-            var folderBrowserDialog1 = new FolderBrowserDialog();
+            var folderBrowserDialog1 = new XtraFolderBrowserDialog();
             folderBrowserDialog1.SelectedPath = SelectedPath;
             if (DialogResult.OK == folderBrowserDialog1.ShowDialog(this))
             {
                 SelectedPath = folderBrowserDialog1.SelectedPath;
                 await PopulateFolders(SelectedPath, DataProvider);
             }
-#else
-            using (var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog())
-            {
-                dialog.InitialDirectory = SelectedPath;
-                dialog.IsFolderPicker = true;
-                if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
-                {
-                    SelectedPath = dialog.FileName;
-                    await PopulateFolders(SelectedPath, DataProvider);
-                }
-            }
-#endif
         }
 
         public void SetFolder(string folder, IAnalogyOfflineDataProvider dataProvider)

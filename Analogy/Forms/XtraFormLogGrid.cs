@@ -4,6 +4,7 @@ using Analogy.Managers;
 using DevExpress.XtraEditors;
 using System.Collections.Generic;
 using System.Linq;
+using Analogy.UserControls;
 
 namespace Analogy.Forms
 {

@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using Analogy.UserControls;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Analogy
 {
@@ -43,7 +44,7 @@ namespace Analogy
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.ucLogs1 = new Analogy.UCLogs();
+            this.ucLogs1 = new UCLogs();
             this.tsPrimary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spltMain)).BeginInit();
             this.spltMain.Panel1.SuspendLayout();

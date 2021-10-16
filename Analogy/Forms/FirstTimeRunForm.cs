@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.Utils;
 
 namespace Analogy.Forms
 {
@@ -29,6 +30,7 @@ namespace Analogy.Forms
                 return;
             }
 
+            xtraTabControl1.ShowTabHeader = DefaultBoolean.False;
             Icon = UserSettingsManager.UserSettings.GetIcon();
             await FactoriesManager.Instance.InitializeBuiltInFactories();
             await FactoriesManager.Instance.AddExternalDataSources();
@@ -69,8 +71,17 @@ namespace Analogy.Forms
         private void SetNext(object sender, EventArgs e) => SetNextTab(int.Parse((sender as SimpleButton).Tag.ToString()));
         private void SetBack(object sender, EventArgs e) => SetBackTab(int.Parse((sender as SimpleButton).Tag.ToString()));
 
-        private void SetNextTab(int current) => xtraTabControl1.SelectedTabPageIndex = current + 1;
-        private void SetBackTab(int current) => xtraTabControl1.SelectedTabPageIndex = current - 1;
+        private void SetNextTab(int current)
+        {
+            stepProgressBar1.SelectedItemIndex = current + 1;
+            xtraTabControl1.SelectedTabPageIndex = current + 1;
+        }
+
+        private void SetBackTab(int current)
+        {
+            stepProgressBar1.SelectedItemIndex = current - 1;
+            xtraTabControl1.SelectedTabPageIndex = current - 1;
+        }
 
         private void AcceptAndClose(object sender, EventArgs e)
         {
