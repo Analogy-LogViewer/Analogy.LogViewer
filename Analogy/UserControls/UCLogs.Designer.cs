@@ -1674,6 +1674,7 @@ namespace Analogy.UserControls
             // 
             // ddbGoTo
             // 
+            this.ddbGoTo.Enabled = false;
             this.ddbGoTo.Location = new System.Drawing.Point(1405, 100);
             this.ddbGoTo.MenuManager = this.barManager1;
             this.ddbGoTo.Name = "ddbGoTo";
@@ -1682,7 +1683,6 @@ namespace Analogy.UserControls
             this.ddbGoTo.StyleController = this.layoutControl1;
             this.ddbGoTo.TabIndex = 30;
             this.ddbGoTo.Text = "Go To";
-            this.ddbGoTo.Visible = false;
             // 
             // layoutControl1
             // 
@@ -2202,6 +2202,7 @@ namespace Analogy.UserControls
             this.layoutControlItem14.Size = new System.Drawing.Size(88, 39);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
+            this.layoutControlItem14.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // popupMenuGoTo
             // 
@@ -2828,7 +2829,7 @@ namespace Analogy.UserControls
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(204, 148);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(204, 142);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2837,7 +2838,7 @@ namespace Analogy.UserControls
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(204, 148);
+            this.clbExclude.Size = new System.Drawing.Size(204, 142);
             this.clbExclude.TabIndex = 22;
             // 
             // pnlLevel
@@ -3058,7 +3059,7 @@ namespace Analogy.UserControls
             this.meMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.meMessageDetails.MenuManager = this.barManager1;
             this.meMessageDetails.Name = "meMessageDetails";
-            this.meMessageDetails.Size = new System.Drawing.Size(784, 106);
+            this.meMessageDetails.Size = new System.Drawing.Size(783, 106);
             this.meMessageDetails.TabIndex = 0;
             // 
             // recMessageDetails
@@ -3069,7 +3070,7 @@ namespace Analogy.UserControls
             this.recMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.recMessageDetails.MenuManager = this.barManager1;
             this.recMessageDetails.Name = "recMessageDetails";
-            this.recMessageDetails.Size = new System.Drawing.Size(1049, 106);
+            this.recMessageDetails.Size = new System.Drawing.Size(1050, 106);
             this.recMessageDetails.TabIndex = 4;
             // 
             // dockPanelBookmarks
