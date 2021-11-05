@@ -896,8 +896,7 @@ namespace Analogy
                     }
                 };
 
-                //recent folder
-                acRootGroupHome.Elements.Add(recentFolders);
+                
                 recentFolders.ImageOptions.Image = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
                 foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
                 {
@@ -949,11 +948,9 @@ namespace Analogy
                             AddRecentFiles(recentfiles, offlineAnalogy, title, openFileDialog1.FileNames.ToList());
                         }
                     };
+                    
 
-                    acRootGroupHome.Elements.Add(recentfiles);
-
-
-                    //add Open Pooled file entry
+                    //add Open pooling file entry
                     AccordionControlElement filePoolingBtn = new AccordionControlElement();
                     acRootGroupHome.Elements.Add(filePoolingBtn);
                     filePoolingBtn.Style = ElementStyle.Item;
@@ -991,6 +988,9 @@ namespace Analogy
                 var recents = settings.GetRecentFiles(offlineAnalogy.Id)
                     .Select(itm => itm.FileName).ToList();
                 AddRecentFiles(recentfiles, offlineAnalogy, title, recents);
+
+                acRootGroupHome.Elements.Add(recentFolders);
+                acRootGroupHome.Elements.Add(recentfiles);
 
                 //add client/server  button:
                 AccordionControlElement externalSources = new AccordionControlElement();
