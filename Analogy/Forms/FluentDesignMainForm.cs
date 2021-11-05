@@ -70,6 +70,8 @@ namespace Analogy
             {
                 return;
             }
+
+            RegisterForNotifications();
             SetWindowSizeAndPosition();
             string framework = UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName;
             Text = $"Analogy Log Viewer {UpdateManager.Instance.CurrentVersion} ({framework})";
@@ -88,7 +90,7 @@ namespace Analogy
             await FactoriesManager.Instance.AddExternalDataSources();
             PopulateGlobalTools();
             LoadStartupExtensions();
-
+            RegisterForOnDemandPlots();
             //Create all other DataSources
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
                 .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory)))
@@ -157,6 +159,45 @@ namespace Analogy
 
         }
 
+        private void RegisterForNotifications()
+        {
+            NotificationManager.Instance.OnNewNotification += (s, notification) =>
+            {
+                AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
+                AlertControl ac = new AlertControl(this.components)
+                {
+                    AutoFormDelay = notification.DurationSeconds * 1000
+                };
+                ac.AutoHeight = true;
+                if (notification.ActionOnClick != null)
+                {
+
+                    AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
+                    btn1.Hint = "OK";
+                    btn1.Name = "NotificationActionButton";
+                    ac.Buttons.Add(btn1);
+                    ac.ButtonClick += (sender, arg) =>
+                    {
+                        if (arg.ButtonName == btn1.Name)
+                        {
+                            try
+                            {
+                                notification.ActionOnClick?.Invoke();
+
+                            }
+                            catch (Exception exception)
+                            {
+                                XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
+                                    MessageBoxButtons.OK);
+
+                            }
+                        }
+                    };
+                }
+                ac.Show(this.ParentForm, info);
+            };
+        }
+
         private void SetWindowSizeAndPosition()
         {
             if (settings.AnalogyPosition.RememberLastPosition ||
@@ -178,7 +219,39 @@ namespace Analogy
                 }
             }
         }
+        private void RegisterForOnDemandPlots()
+        {
+            AnalogyOnDemandPlottingManager.Instance.OnShowPlot += (s, e) =>
+            {
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    if (!e.userControl.Visible)
+                    {
+                        var page = dockManager1.AddPanel(DockingStyle.Float);
+                        page.DockedAsTabbedDocument = e.startupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
+                        page.Controls.Add(e.userControl);
+                        e.userControl.Show();
+                        e.userControl.Dock = DockStyle.Fill;
+                        page.Text = $"Plot: {e.userControl.Title}";
+                        dockManager1.ActivePanel = page;
+                        page.ClosingPanel += (_, __) =>
+                        {
+                            AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+                        };
+                        void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
+                        {
+                            if (uc == e.userControl)
+                            {
+                                dockManager1.RemovePanel(page);
+                                uc.Hide();
+                            }
+                        }
+                        AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
 
+                    }
+                }));
+            };
+        }
         private void LoadStartupExtensions()
         {
             if (settings.StartupExtensions.Any())
@@ -625,10 +698,55 @@ namespace Analogy
             //    }
             AddUserControls(fc, fc.UserControlsFactories);
             AddGraphPlotter(fc, fc.GraphPlotter);
-            //    AddFactorySettings(fc, ribbonPage);
-            //    AddAbout(fc, ribbonPage);
+            AddFactorySettings(fc);
+            AddAbout(fc);
             accordionControl.EndUpdate();
 
+        }
+        private void AddAbout(FactoryContainer fc)
+        {
+            AccordionControlElement acRootGroupHome = new AccordionControlElement();
+            accordionControl.Elements.Add(acRootGroupHome);
+            acRootGroupHome.Expanded = true;
+            acRootGroupHome.ImageOptions.Image = Resources.About_16x16;
+            acRootGroupHome.Text = "Data Source Information";
+
+
+            AccordionControlElement aboutBtn = new AccordionControlElement();
+            acRootGroupHome.Elements.Add(aboutBtn);
+            aboutBtn.Style = ElementStyle.Item;
+            aboutBtn.ImageOptions.Image = Resources.About_16x16;
+            aboutBtn.Text = "About";
+            aboutBtn.Click += (sender, e) => { new AboutDataSourceBox(fc.Factory).ShowDialog(this); };
+        }
+        private void AddFactorySettings(FactoryContainer fc)
+        {
+            if (fc.FactorySetting.Status == DataProviderFactoryStatus.Disabled || !fc.DataProvidersSettings.Any())
+            {
+                return;
+            }
+
+            AccordionControlElement acRootGroupHome = new AccordionControlElement();
+            accordionControl.Elements.Add(acRootGroupHome);
+            acRootGroupHome.Expanded = true;
+            acRootGroupHome.ImageOptions.Image = Resources.Technology_16x16;
+            acRootGroupHome.Text = "Settings";
+
+            foreach (var providerSetting in fc.DataProvidersSettings)
+            {
+                AccordionControlElement settingsBtn = new AccordionControlElement();
+                acRootGroupHome.Elements.Add(settingsBtn);
+                settingsBtn.Style = ElementStyle.Item;
+                settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
+                settingsBtn.Text = providerSetting.Title;
+                
+                XtraForm form = new DataProviderSettingsForm();
+                form.Text = "Data Provider Settings: " + providerSetting.Title;
+                form.Controls.Add(providerSetting.DataProviderSettings);
+                providerSetting.DataProviderSettings.Dock = DockStyle.Fill;
+                form.Closing += async (s, e) => { await providerSetting.SaveSettingsAsync(); };
+                settingsBtn.Click += (sender, e) => { form.ShowDialog(this); };
+            }
         }
 
         private void LoadDataProvidersInAccordion(FactoryContainer fc)
