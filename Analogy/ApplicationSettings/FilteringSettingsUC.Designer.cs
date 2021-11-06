@@ -299,6 +299,7 @@ namespace Analogy.ApplicationSettings
             this.sePoolingDelay.Name = "sePoolingDelay";
             this.sePoolingDelay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sePoolingDelay.Properties.MaskSettings.Set("mask", "n0");
             this.sePoolingDelay.Properties.MaxValue = new decimal(new int[] {
             1000,
             0,
