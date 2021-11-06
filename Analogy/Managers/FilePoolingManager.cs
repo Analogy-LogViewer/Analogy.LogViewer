@@ -1,17 +1,19 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Analogy.UserControls;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces.DataTypes;
-using Analogy.UserControls;
 
 namespace Analogy.Managers
 {
     internal class FilePoolingManager : ILogMessageCreatedHandler
     {
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+
         private string FileName { get; }
         private FileProcessor FileProcessor { get; }
         private IAnalogyOfflineDataProvider OfflineDataProvider { get; }
@@ -25,6 +27,7 @@ namespace Analogy.Managers
         private FileSystemWatcher _watchFile;
         private bool _readingInprogress;
         private DateTime lastWriteTime = DateTime.MinValue;
+        private DateTime lastRead;
         private UCLogs LogUI;
         private readonly AnalogyLogMessageCustomEqualityComparer _customEqualityComparer;
         public FilePoolingManager(string fileName, UCLogs logUI, IAnalogyOfflineDataProvider offlineDataProvider)
@@ -168,16 +171,19 @@ namespace Analogy.Managers
                 return;
             }
 
-            lastWriteTime = f.LastWriteTime;
+
+
             lock (_sync)
             {
-                if (_readingInprogress)
+                if (_readingInprogress || (Settings.EnableFilePoolingDelay && DateTime.Now.Subtract(lastRead).TotalSeconds <= Settings.FilePoolingDelayInterval))
                 {
                     return;
                 }
-
+                lastWriteTime = f.LastWriteTime;
+                lastRead = DateTime.Now;
                 _watchFile.EnableRaisingEvents = false;
                 _readingInprogress = true;
+
             }
 
             try
