@@ -57,7 +57,17 @@ namespace Analogy.ApplicationSettings
             tsTrackActiveMessage.IsOnChanged += (s, e) => Settings.TrackActiveMessage = tsTrackActiveMessage.IsOn;
             tsSimpleMode.IsOnChanged += (s, e) => Settings.SimpleMode = tsSimpleMode.IsOn;
             tsLogLevels.IsOnChanged += (s, e) => Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
-            
+            sePoolingDelay.ValueChanged += (s, e) =>
+            {
+                Settings.FilePoolingDelayInterval = decimal.ToInt32((decimal)sePoolingDelay.EditValue);
+            };
+            ceEnablePoolingDelay.CheckStateChanged += (s, e) =>
+            {
+                Settings.EnableFilePoolingDelay = ceEnablePoolingDelay.Checked;
+            };
+
+
+
 
         }
 
@@ -86,6 +96,8 @@ namespace Analogy.ApplicationSettings
             Utils.SetLogLevel(chkLstLogLevel);
             Utils.FillLogLevels(chklExclusionLogLevel);
 
+            sePoolingDelay.Value = Settings.FilePoolingDelayInterval;
+            ceEnablePoolingDelay.Checked = Settings.EnableFilePoolingDelay;
         }
     }
 }

@@ -44,6 +44,9 @@ namespace Analogy.ApplicationSettings
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.chklExclusionLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.ceEnablePoolingDelay = new DevExpress.XtraEditors.CheckEdit();
+            this.sePoolingDelay = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).BeginInit();
             this.gcFiltering.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsTrackActiveMessage.Properties)).BeginInit();
@@ -60,6 +63,10 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklExclusionLogLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ceEnablePoolingDelay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sePoolingDelay.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcFiltering
@@ -93,7 +100,7 @@ namespace Analogy.ApplicationSettings
             this.tsTrackActiveMessage.Name = "tsTrackActiveMessage";
             this.tsTrackActiveMessage.Properties.OffText = "Do not track Active / Selected message in log grid";
             this.tsTrackActiveMessage.Properties.OnText = "Track Active / Selected message in log grid";
-            this.tsTrackActiveMessage.Size = new System.Drawing.Size(817, 28);
+            this.tsTrackActiveMessage.Size = new System.Drawing.Size(817, 24);
             this.tsTrackActiveMessage.TabIndex = 35;
             // 
             // chkLstLogLevel
@@ -123,7 +130,7 @@ namespace Analogy.ApplicationSettings
             this.tsLogLevels.Name = "tsLogLevels";
             this.tsLogLevels.Properties.OffText = "Single Selection";
             this.tsLogLevels.Properties.OnText = "Multiple Selection";
-            this.tsLogLevels.Size = new System.Drawing.Size(387, 28);
+            this.tsLogLevels.Size = new System.Drawing.Size(387, 24);
             this.tsLogLevels.TabIndex = 33;
             // 
             // tsSimpleMode
@@ -135,7 +142,7 @@ namespace Analogy.ApplicationSettings
             this.tsSimpleMode.Name = "tsSimpleMode";
             this.tsSimpleMode.Properties.OffText = "Simple mode is off (Additional options in filtering UI)";
             this.tsSimpleMode.Properties.OnText = "Simple mode is on (Less options in filtering UI)";
-            this.tsSimpleMode.Size = new System.Drawing.Size(817, 28);
+            this.tsSimpleMode.Size = new System.Drawing.Size(817, 24);
             this.tsSimpleMode.TabIndex = 8;
             // 
             // tsDataTimeAscendDescend
@@ -147,7 +154,7 @@ namespace Analogy.ApplicationSettings
             this.tsDataTimeAscendDescend.Name = "tsDataTimeAscendDescend";
             this.tsDataTimeAscendDescend.Properties.OffText = "Default sort is by ascending date (new messages are at the bottom)";
             this.tsDataTimeAscendDescend.Properties.OnText = "Default sort is by descending date (new messages are at the top)";
-            this.tsDataTimeAscendDescend.Size = new System.Drawing.Size(817, 28);
+            this.tsDataTimeAscendDescend.Size = new System.Drawing.Size(817, 24);
             this.tsDataTimeAscendDescend.TabIndex = 7;
             // 
             // tsHistory
@@ -159,7 +166,7 @@ namespace Analogy.ApplicationSettings
             this.tsHistory.Name = "tsHistory";
             this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
             this.tsHistory.Properties.OnText = "Show history of cleared Messages";
-            this.tsHistory.Size = new System.Drawing.Size(817, 28);
+            this.tsHistory.Size = new System.Drawing.Size(817, 24);
             this.tsHistory.TabIndex = 0;
             // 
             // checkEditSearchAlsoInSourceAndModule
@@ -168,7 +175,7 @@ namespace Analogy.ApplicationSettings
             this.checkEditSearchAlsoInSourceAndModule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkEditSearchAlsoInSourceAndModule.Name = "checkEditSearchAlsoInSourceAndModule";
             this.checkEditSearchAlsoInSourceAndModule.Properties.Caption = "Search text also in Source and Module/Process columns";
-            this.checkEditSearchAlsoInSourceAndModule.Size = new System.Drawing.Size(363, 20);
+            this.checkEditSearchAlsoInSourceAndModule.Size = new System.Drawing.Size(363, 24);
             this.checkEditSearchAlsoInSourceAndModule.TabIndex = 6;
             // 
             // chkEditPaging
@@ -177,7 +184,7 @@ namespace Analogy.ApplicationSettings
             this.chkEditPaging.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkEditPaging.Name = "chkEditPaging";
             this.chkEditPaging.Properties.Caption = "Enable Paging (number of rows per page):";
-            this.chkEditPaging.Size = new System.Drawing.Size(336, 20);
+            this.chkEditPaging.Size = new System.Drawing.Size(336, 24);
             this.chkEditPaging.TabIndex = 5;
             // 
             // nudPageLength
@@ -213,7 +220,7 @@ namespace Analogy.ApplicationSettings
             this.tsErrorLevelAsDefault.Name = "tsErrorLevelAsDefault";
             this.tsErrorLevelAsDefault.Properties.OffText = "Don\'t filter logs on Load";
             this.tsErrorLevelAsDefault.Properties.OnText = "Start logs with Error and Critical  level as default filtering";
-            this.tsErrorLevelAsDefault.Size = new System.Drawing.Size(817, 28);
+            this.tsErrorLevelAsDefault.Size = new System.Drawing.Size(817, 24);
             this.tsErrorLevelAsDefault.TabIndex = 3;
             // 
             // tsFilteringExclude
@@ -225,7 +232,7 @@ namespace Analogy.ApplicationSettings
             this.tsFilteringExclude.Name = "tsFilteringExclude";
             this.tsFilteringExclude.Properties.OffText = "Don\'t save filtering text upon exit";
             this.tsFilteringExclude.Properties.OnText = "Save filtering text for next startup";
-            this.tsFilteringExclude.Size = new System.Drawing.Size(817, 28);
+            this.tsFilteringExclude.Size = new System.Drawing.Size(817, 24);
             this.tsFilteringExclude.TabIndex = 1;
             // 
             // groupControl1
@@ -254,17 +261,63 @@ namespace Analogy.ApplicationSettings
             this.chklExclusionLogLevel.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
             this.chklExclusionLogLevel.CheckOnClick = true;
             this.chklExclusionLogLevel.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.chklExclusionLogLevel.Location = new System.Drawing.Point(608, 27);
+            this.chklExclusionLogLevel.Location = new System.Drawing.Point(597, 27);
             this.chklExclusionLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chklExclusionLogLevel.Name = "chklExclusionLogLevel";
             this.chklExclusionLogLevel.Size = new System.Drawing.Size(227, 247);
             this.chklExclusionLogLevel.TabIndex = 35;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.sePoolingDelay);
+            this.groupControl2.Controls.Add(this.ceEnablePoolingDelay);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl2.Location = new System.Drawing.Point(0, 727);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(840, 60);
+            this.groupControl2.TabIndex = 38;
+            this.groupControl2.Text = "File pooling Settings";
+            // 
+            // ceEnablePoolingDelay
+            // 
+            this.ceEnablePoolingDelay.Location = new System.Drawing.Point(21, 33);
+            this.ceEnablePoolingDelay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ceEnablePoolingDelay.Name = "ceEnablePoolingDelay";
+            this.ceEnablePoolingDelay.Properties.Caption = "Enable Minimum File Pooling Delay when file Changes (in Seconds)";
+            this.ceEnablePoolingDelay.Size = new System.Drawing.Size(336, 24);
+            this.ceEnablePoolingDelay.TabIndex = 7;
+            // 
+            // sePoolingDelay
+            // 
+            this.sePoolingDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sePoolingDelay.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.sePoolingDelay.Location = new System.Drawing.Point(704, 32);
+            this.sePoolingDelay.Name = "sePoolingDelay";
+            this.sePoolingDelay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sePoolingDelay.Properties.MaxValue = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.sePoolingDelay.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.sePoolingDelay.Size = new System.Drawing.Size(118, 24);
+            this.sePoolingDelay.TabIndex = 8;
             // 
             // FilteringSettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcFiltering);
             this.Name = "FilteringSettingsUC";
@@ -287,6 +340,10 @@ namespace Analogy.ApplicationSettings
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chklExclusionLogLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ceEnablePoolingDelay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sePoolingDelay.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -308,5 +365,8 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.CheckedListBoxControl chklExclusionLogLevel;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.CheckEdit ceEnablePoolingDelay;
+        private DevExpress.XtraEditors.SpinEdit sePoolingDelay;
     }
 }

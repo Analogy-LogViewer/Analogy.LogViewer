@@ -956,5 +956,29 @@ namespace Analogy.Properties {
                 this["TimeOffsetType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FilePoolingDelayEnable {
+            get {
+                return ((bool)(this["FilePoolingDelayEnable"]));
+            }
+            set {
+                this["FilePoolingDelayEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int FilePoolingDelayInterval {
+            get {
+                return ((int)(this["FilePoolingDelayInterval"]));
+            }
+            set {
+                this["FilePoolingDelayInterval"] = value;
+            }
+        }
     }
 }
