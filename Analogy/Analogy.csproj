@@ -4,7 +4,7 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<TargetFrameworks>net48;net472;net471;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net472;net471;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -156,7 +156,7 @@
 	</ItemGroup>
 
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' ">
+	com<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' or '$(TargetFramework)' == 'net6.0-windows' ">
 		<Reference Include="DevExpress.BonusSkins.v21.1">
 			<HintPath>DevExpress\.net core\DevExpress.BonusSkins.v21.1.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
