@@ -156,7 +156,7 @@
 	</ItemGroup>
 
 
-	com<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' or '$(TargetFramework)' == 'net6.0-windows' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' or '$(TargetFramework)' == 'net6.0-windows' ">
 		<Reference Include="DevExpress.BonusSkins.v21.1">
 			<HintPath>DevExpress\.net core\DevExpress.BonusSkins.v21.1.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
