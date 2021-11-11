@@ -34,6 +34,7 @@ namespace DevExpress.Sync
             this.label2 = new System.Windows.Forms.Label();
             this.txtbTarget = new System.Windows.Forms.TextBox();
             this.btnCopy = new System.Windows.Forms.Button();
+            this.btnVersionUpgrade = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtbSource
@@ -44,7 +45,7 @@ namespace DevExpress.Sync
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Size = new System.Drawing.Size(697, 27);
             this.txtbSource.TabIndex = 0;
-            this.txtbSource.Text = "c:\\Program Files (x86)\\DevExpress 21.1\\Components\\Bin\\";
+            this.txtbSource.Text = "c:\\Program Files (x86)\\DevExpress 21.2\\Components\\Bin\\";
             // 
             // label1
             // 
@@ -72,12 +73,11 @@ namespace DevExpress.Sync
             this.txtbTarget.Name = "txtbTarget";
             this.txtbTarget.Size = new System.Drawing.Size(697, 27);
             this.txtbTarget.TabIndex = 2;
-            this.txtbTarget.Text = "c:\\git\\Analogy.LogViewer\\Analogy\\DevExpress\\";
+            this.txtbTarget.Text = "D:\\git\\KX_Develop\\Common\\Redist\\DevExpress";
             // 
             // btnCopy
             // 
-            this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopy.Location = new System.Drawing.Point(659, 88);
+            this.btnCopy.Location = new System.Drawing.Point(91, 88);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(130, 51);
             this.btnCopy.TabIndex = 4;
@@ -85,11 +85,23 @@ namespace DevExpress.Sync
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
+            // btnVersionUpgrade
+            // 
+            this.btnVersionUpgrade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVersionUpgrade.Location = new System.Drawing.Point(658, 88);
+            this.btnVersionUpgrade.Name = "btnVersionUpgrade";
+            this.btnVersionUpgrade.Size = new System.Drawing.Size(130, 51);
+            this.btnVersionUpgrade.TabIndex = 5;
+            this.btnVersionUpgrade.Text = "Version Upgrade";
+            this.btnVersionUpgrade.UseVisualStyleBackColor = true;
+            this.btnVersionUpgrade.Click += new System.EventHandler(this.btnVersionUpgrade_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 159);
+            this.Controls.Add(this.btnVersionUpgrade);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtbTarget);
@@ -109,6 +121,7 @@ namespace DevExpress.Sync
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtbTarget;
         private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.Button btnVersionUpgrade;
     }
 }
 
