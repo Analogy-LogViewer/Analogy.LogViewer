@@ -5,6 +5,7 @@
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetFrameworks>net48;net472;net471;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -35,7 +36,6 @@
 		<LangVersion>8.0</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>AnyCPU;x64</Platforms>
-		<UserSecretsId>db476d63-3c8d-40f4-9618-d540fd88888d</UserSecretsId>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
 		<PlatformTarget>AnyCPU</PlatformTarget>
