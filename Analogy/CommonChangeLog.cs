@@ -11,7 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("V4.8.0 -  Add NET6 compilation #1142",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,09)),
+                new AnalogyChangeLog("V4.8.0 - Add NET6 compilation #1142",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,09)),
                 new AnalogyChangeLog("V4.8.0 - [User Settings] Set default for remember last saved search to off #1148",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,06)),
                 new AnalogyChangeLog("V4.8.0 - File Pooling - Add option to set minimum pooling interval (instead/addition to each file changes) #1150",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,06)),
                 new AnalogyChangeLog("V4.8.0 - V5 - fluent design form #1149",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,06)),

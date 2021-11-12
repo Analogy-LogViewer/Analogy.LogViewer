@@ -112,8 +112,8 @@ namespace Analogy
 
             if (Settings.IsFirstRun)
             {
-                FirstTimeRunForm f = new FirstTimeRunForm();
-                f.ShowDialog();
+               //FirstTimeRunForm f = new FirstTimeRunForm();
+               //f.ShowDialog();
             }
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
