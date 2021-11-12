@@ -35,7 +35,9 @@
             this.hyperLinkEditLatest = new DevExpress.XtraEditors.HyperLinkEdit();
             this.sbtnUpdateNow = new DevExpress.XtraEditors.SimpleButton();
             this.lblDisableUpdates = new DevExpress.XtraEditors.LabelControl();
+            this.cePreRelease = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditLatest.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cePreRelease.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCurrentVersion
@@ -62,7 +64,7 @@
             this.lblLatestVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblLatestVersion.Location = new System.Drawing.Point(12, 67);
             this.lblLatestVersion.Name = "lblLatestVersion";
-            this.lblLatestVersion.Size = new System.Drawing.Size(805, 23);
+            this.lblLatestVersion.Size = new System.Drawing.Size(645, 23);
             this.lblLatestVersion.TabIndex = 0;
             this.lblLatestVersion.Text = "Latest version is:  not checked";
             // 
@@ -121,11 +123,21 @@
             this.lblDisableUpdates.Text = "Updates are disabled due to data provider overrides or Registry Override";
             this.lblDisableUpdates.Visible = false;
             // 
+            // cePreRelease
+            // 
+            this.cePreRelease.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cePreRelease.Location = new System.Drawing.Point(689, 64);
+            this.cePreRelease.Name = "cePreRelease";
+            this.cePreRelease.Properties.Caption = "PreRelease Version";
+            this.cePreRelease.Size = new System.Drawing.Size(145, 24);
+            this.cePreRelease.TabIndex = 16;
+            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 425);
+            this.Controls.Add(this.cePreRelease);
             this.Controls.Add(this.lblDisableUpdates);
             this.Controls.Add(this.sbtnUpdateNow);
             this.Controls.Add(this.hyperLinkEditLatest);
@@ -138,6 +150,7 @@
             this.Text = "Update";
             this.Load += new System.EventHandler(this.UpdateForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEditLatest.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cePreRelease.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +165,6 @@
         private DevExpress.XtraEditors.HyperLinkEdit hyperLinkEditLatest;
         private DevExpress.XtraEditors.SimpleButton sbtnUpdateNow;
         private DevExpress.XtraEditors.LabelControl lblDisableUpdates;
+        private DevExpress.XtraEditors.CheckEdit cePreRelease;
     }
 }
