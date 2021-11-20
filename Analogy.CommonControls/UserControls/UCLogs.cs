@@ -69,7 +69,6 @@ namespace Analogy.CommonControls.UserControls
         private List<string> _excludeMostCommon = new List<string>();
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
-        private bool _simpleMode;
         private ReaderWriterLockSlim lockExternalWindowsObject =
             new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
 
@@ -153,7 +152,6 @@ namespace Analogy.CommonControls.UserControls
         {
             InitializeComponent();
 
-            _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
             foreach (string value in LogLevels)
             {
@@ -236,9 +234,7 @@ namespace Analogy.CommonControls.UserControls
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
         {
-            logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
-                ? FindPanelBehavior.Search
-                : FindPanelBehavior.Filter;
+            logGrid.OptionsFind.Behavior = FindPanelBehavior.Search;
         }
         private void SetupEventsHandlers()
         {
@@ -368,18 +364,12 @@ namespace Analogy.CommonControls.UserControls
             bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
             sbtnToggleSearchFilter.Click += (_, __) =>
             {
-                Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
-                logGrid.OptionsFind.AlwaysVisible = Settings.IsBuiltInSearchPanelVisible;
+                logGrid.OptionsFind.AlwaysVisible = false;
             };
             bBtnFullGrid.ItemClick += (s, e) =>
             {
                 FullModeEnabled = !FullModeEnabled;
                 dockPanelFiltering.Visible = !FullModeEnabled;
-            };
-            bBtnShare.ItemClick += (s, e) =>
-            {
-                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable());
-                share.Show(this);
             };
             bbtnReload.ItemClick += async (s, e) =>
             {
@@ -395,12 +385,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    var added = Settings.AddNewSearchesEntryToLists(txtbInclude.Text, true);
-                    if (added)
-                    {
-                        autoCompleteInclude.Add(txtbInclude.Text);
-                    }
-
+                    autoCompleteInclude.Add(txtbInclude.Text);
                 }
             };
             txtbInclude.EditValueChanged += EditValueChanged;
@@ -433,11 +418,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    var added = Settings.AddNewSearchesEntryToLists(txtbExclude.Text, false);
-                    if (added)
-                    {
-                        autoCompleteExclude.Add(txtbExclude.Text);
-                    }
+                   autoCompleteExclude.Add(txtbExclude.Text);
                 }
             };
             txtbExclude.TextChanged += async (s, e) =>
@@ -448,7 +429,6 @@ namespace Analogy.CommonControls.UserControls
                     return;
                 }
 
-                Settings.ExcludeText = txtbExclude.Text;
                 OldTextExclude = txtbExclude.Text;
                 if (string.IsNullOrEmpty(txtbExclude.Text))
                 {
@@ -477,7 +457,6 @@ namespace Analogy.CommonControls.UserControls
                 }
 
                 await FilterHasChanged();
-                Settings.SourceText = txtbSource.Text;
             };
             txtbModule.TextChanged += async (s, e) =>
             {
@@ -496,7 +475,6 @@ namespace Analogy.CommonControls.UserControls
                 }
 
                 await FilterHasChanged();
-                Settings.ModuleText = txtbModule.Text;
             };
             #endregion
             #region log grid
@@ -704,7 +682,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 dataTableRow.BeginEdit();
                 AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
-                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date,timeOffsetType,customOffset);
+                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, timeOffsetType, customOffset);
                 dataTableRow.EndEdit();
             }
         }
