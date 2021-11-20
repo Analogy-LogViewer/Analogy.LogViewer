@@ -119,7 +119,7 @@ namespace Analogy.CommonControls.Managers
             try
             {
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource);
+                DataRow dtr = Utils.CreateRow(table, message, dataSource,TimeOffsetType.None,TimeSpan.Zero);
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -162,8 +162,7 @@ namespace Analogy.CommonControls.Managers
                             pageStartRowIndex)));
                 }
 
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
-                    Settings.CheckAdditionalInformation)
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
                 {
                     AddExtraColumnsIfNeeded(table, message);
                 }
@@ -172,7 +171,7 @@ namespace Analogy.CommonControls.Managers
                 try
                 {
                     lockSlim.EnterWriteLock();
-                    DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
+                    DataRow dtr = Utils.CreateRow(table, message, dataSource, TimeOffsetType.None, TimeSpan.Zero);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }
@@ -187,7 +186,7 @@ namespace Analogy.CommonControls.Managers
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
