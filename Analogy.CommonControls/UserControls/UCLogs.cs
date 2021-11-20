@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
+using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.Managers;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
@@ -25,6 +26,7 @@ using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraBars.Docking;
+using DevExpress.XtraDialogs.FileExplorerExtensions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
@@ -35,6 +37,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
+using SelectionChangedEventArgs = DevExpress.Data.SelectionChangedEventArgs;
 
 namespace Analogy.CommonControls.UserControls
 {
