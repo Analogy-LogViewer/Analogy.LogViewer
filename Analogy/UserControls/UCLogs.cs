@@ -149,7 +149,6 @@ namespace Analogy.UserControls
         public UCLogs()
         {
             InitializeComponent();
-
             _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
             foreach (string value in Utils.LogLevels)

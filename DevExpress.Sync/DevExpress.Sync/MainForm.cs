@@ -77,5 +77,64 @@ namespace DevExpress.Sync
                 }
             }
         }
+
+        private void btnVersionUpgrade_Click(object sender, EventArgs e)
+        {
+            var targetFolder = txtbTarget.Text;
+            var sourceFolder = txtbSource.Text;
+            CopyFilesWithUpgrade(Path.Combine(targetFolder, ".net core"), sourceFolder, true);
+            CopyFilesWithUpgrade(Path.Combine(targetFolder, ".net framework"), sourceFolder, false);
+        }
+        private void CopyFilesWithUpgrade(string targetFolder, string sourceFolder, bool isNet)
+        {
+            var files = Directory.GetFiles(targetFolder);
+            foreach (string fullPath in files)
+            {
+                var file = Path.GetFileName(fullPath);
+                file = file.Replace("v21.1", "v21.2");
+                var targetFullPath = fullPath.Replace("v21.1", "v21.2");
+
+                if (isNet)
+                {
+                    var sourceFile = Path.Combine(sourceFolder, "NetCore", file);
+                    if (File.Exists(sourceFile))
+                    {
+                        File.Copy(sourceFile, targetFullPath, true);
+                    }
+                    else
+                    {
+                        sourceFile = Path.Combine(sourceFolder, "Standard", file);
+                        if (File.Exists(sourceFile))
+                        {
+                            File.Copy(sourceFile, targetFullPath, true);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"File {sourceFile} does not exist");
+                        }
+                    }
+                }
+                else
+                {
+                    var sourceFile = Path.Combine(sourceFolder, "Framework", file);
+                    if (File.Exists(sourceFile))
+                    {
+                        File.Copy(sourceFile, targetFullPath, true);
+                    }
+                    else
+                    {
+                        sourceFile = Path.Combine(sourceFolder, "Standard", file);
+                        if (File.Exists(sourceFile))
+                        {
+                            File.Copy(sourceFile, targetFullPath, true);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"File {sourceFile} does not exist");
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -459,7 +459,7 @@ namespace Analogy.ApplicationSettings
             this.gcMainForm.Name = "gcMainForm";
             this.gcMainForm.Size = new System.Drawing.Size(879, 91);
             this.gcMainForm.TabIndex = 16;
-            this.gcMainForm.Text = "Main Form Style";
+            this.gcMainForm.Text = "Main Form Style (Restart is needed)";
             // 
             // ceFluentForm
             // 

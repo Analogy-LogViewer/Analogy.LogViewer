@@ -84,7 +84,11 @@ namespace Analogy.DataTypes
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }
         public TimeOffsetType TimeOffsetType { get; set; }
-
+        /// <summary>
+        /// delay in seconds
+        /// </summary>
+        public int FilePoolingDelayInterval { get; set; }
+        public bool EnableFilePoolingDelay { get; set; }
 
     }
 }

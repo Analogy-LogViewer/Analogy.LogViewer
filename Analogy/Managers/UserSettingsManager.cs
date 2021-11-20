@@ -148,6 +148,12 @@ namespace Analogy
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }
         public TimeOffsetType TimeOffsetType { get; set; }
+        /// <summary>
+        /// delay in seconds
+        /// </summary>
+        public int FilePoolingDelayInterval { get; set; }
+        public bool EnableFilePoolingDelay { get; set; }
+
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -288,6 +294,8 @@ namespace Analogy
             }
             DefaultUserLogFolder = Settings.Default.DefaultUserLogFolder;
             TimeOffset=TimeSpan.FromMilliseconds(Settings.Default.TimeOffset);
+            FilePoolingDelayInterval = Settings.Default.FilePoolingDelayInterval;
+            EnableFilePoolingDelay = Settings.Default.FilePoolingDelayEnable;
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -367,6 +375,8 @@ namespace Analogy
             TimeOffsetType = settings.TimeOffsetType;
             DefaultUserLogFolder = settings.DefaultUserLogFolder;
             TimeOffset = settings.TimeOffset;
+            FilePoolingDelayInterval = settings.FilePoolingDelayInterval;
+            EnableFilePoolingDelay = settings.EnableFilePoolingDelay;
         }
 
         private UserSettings CreateUserSettings()
@@ -445,9 +455,11 @@ namespace Analogy
                 MainFormType = MainFormType,
                 TimeOffsetType= TimeOffsetType,
                 DefaultUserLogFolder = DefaultUserLogFolder,
-                TimeOffset = TimeOffset
+                TimeOffset = TimeOffset,
+                FilePoolingDelayInterval = FilePoolingDelayInterval,
+                EnableFilePoolingDelay = EnableFilePoolingDelay
 
-            };
+        };
             return userSettings;
         }
 
@@ -606,7 +618,8 @@ namespace Analogy
             Settings.Default.TimeOffsetType = TimeOffsetType.None.ToString();
             Settings.Default.DefaultUserLogFolder = DefaultUserLogFolder;
             Settings.Default.TimeOffset = TimeOffset.TotalMilliseconds;
-
+            Settings.Default.FilePoolingDelayInterval = Settings.Default.FilePoolingDelayInterval;
+            Settings.Default.FilePoolingDelayEnable = Settings.Default.FilePoolingDelayEnable;
             Settings.Default.Save();
         }
 
