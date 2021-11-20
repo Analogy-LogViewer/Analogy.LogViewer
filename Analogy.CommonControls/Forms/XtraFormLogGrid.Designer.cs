@@ -39,7 +39,6 @@ namespace Analogy.CommonControls.Forms
             // 
             this.ucLogs1.CancellationTokenSource = cancellationTokenSource1;
             this.ucLogs1.CurrentColumnsFields = ((System.Collections.Generic.List<System.ValueTuple<string, string>>)(resources.GetObject("ucLogs1.CurrentColumnsFields")));
-            this.ucLogs1.DataProvider = null;
             this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogs1.DoNotAddToRecentHistory = false;
             this.ucLogs1.ExcludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.ExcludeFilterCriteriaUIOptions")));

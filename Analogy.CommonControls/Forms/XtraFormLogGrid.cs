@@ -20,11 +20,10 @@ namespace Analogy.CommonControls.Forms
                _messages = new List<AnalogyLogMessage>();
 
         }
-        public XtraFormLogGrid(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider):this(false)
+        public XtraFormLogGrid(IAnalogyOfflineDataProvider? fileDataProvider):this(false)
         {
-            DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
-            ucLogs1.SetFileDataSource(DataProvider, FileDataProvider);
+            ucLogs1.SetFileDataSource(FileDataProvider);
         }
 
         public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, bool registerToAnalogyLogger) : this(registerToAnalogyLogger)
@@ -34,7 +33,7 @@ namespace Analogy.CommonControls.Forms
         }
 
 
-        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null)
+        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null)
         {
             InitializeComponent();
             _messages = messages;
@@ -44,7 +43,7 @@ namespace Analogy.CommonControls.Forms
                 ucLogs1.FilterResults(processOrModule!);
             }
 
-            ucLogs1.SetFileDataSource(dataProvider, fileProvider);
+            ucLogs1.SetFileDataSource(fileProvider);
 
 
         }

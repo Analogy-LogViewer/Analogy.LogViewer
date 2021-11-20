@@ -367,6 +367,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Forms\AnalogyExcludeMessage.cs">
+	    <SubType>Form</SubType>
+	  </Compile>
+	  <Compile Update="Forms\AnalogyExcludeMessage.Designer.cs">
+	    <DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Forms\FormMessageDetails.cs">
+	    <SubType>Form</SubType>
+	  </Compile>
+	  <Compile Update="Forms\FormMessageDetails.Designer.cs">
+	    <DependentUpon>FormMessageDetails.cs</DependentUpon>
+	  </Compile>
 	  <Compile Update="Forms\XtraFormLogGrid.cs" />
 	  <Compile Update="Forms\XtraFormLogGrid.Designer.cs">
 	    <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
@@ -376,6 +388,23 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Tools\JsonNodeImages.Designer.cs">
+	    <DependentUpon>JsonNodeImages.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Tools\JsonTreeView.cs">
+	    <SubType>Component</SubType>
+	  </Compile>
+	  <Compile Update="Tools\JsonViewerForm.cs">
+	    <SubType>Form</SubType>
+	  </Compile>
+	  <Compile Update="UserControls\MessageDetailsUC.cs">
+	    <SubType>UserControl</SubType>
+	  </Compile>
+	  <Compile Update="UserControls\MessageDetailsUC.Designer.cs">
+	    <DependentUpon>MessageDetailsUC.cs</DependentUpon>
+	  </Compile>
 	  <Compile Update="UserControls\UCLogs.cs" />
 	  <Compile Update="UserControls\UCLogs.Designer.cs">
 	    <DependentUpon>UCLogs.cs</DependentUpon>
@@ -383,12 +412,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="Forms\AnalogyExcludeMessage.resx">
+	    <DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FormMessageDetails.resx">
+	    <DependentUpon>FormMessageDetails.cs</DependentUpon>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\XtraFormLogGrid.resx">
 	    <DependentUpon>XtraFormLogGrid.cs</DependentUpon>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\Resources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Tools\JsonNodeImages.resx">
+	    <LastGenOutput>JsonNodeImages.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="UserControls\MessageDetailsUC.resx">
+	    <DependentUpon>MessageDetailsUC.cs</DependentUpon>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="UserControls\UCLogs.resx">
 	    <SubType>Designer</SubType>

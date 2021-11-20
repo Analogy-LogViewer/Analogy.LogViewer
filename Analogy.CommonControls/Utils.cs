@@ -7,11 +7,41 @@ using System.Runtime.CompilerServices;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using Newtonsoft.Json;
 
 namespace Analogy.CommonControls
 {
     public static class Utils
     {
+        internal const string DateFilterNone = "All";
+        /// <summary>
+        /// From Today 
+        /// </summary>
+        internal const string DateFilterToday = "Today";
+        /// <summary>
+        /// From last 2 days 
+        /// </summary>
+        internal const string DateFilterLast2Days = "Last 2 days";
+        /// <summary>
+        /// From last 3 days
+        /// </summary>
+        internal const string DateFilterLast3Days = "Last 3 days";
+        /// <summary>
+        /// From last week
+        /// </summary>
+        internal const string DateFilterLastWeek = "Last one week";
+        /// <summary>
+        /// From last 2 weeks
+        /// </summary>
+        internal const string DateFilterLast2Weeks = "Last 2 weeks";
+        /// <summary>
+        /// From last month
+        /// </summary>
+        internal const string DateFilterLastMonth = "Last one month";
+        public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
+
         public static string GetFileNameAsDataSource(string fileName)
         {
             string file = Path.GetFileName(fileName);
@@ -89,6 +119,61 @@ namespace Analogy.CommonControls
             dtb.DefaultView.Sort = "Date DESC";
 
             return dtb;
+        }
+
+        public static string ExtractJsonObject(string mixedString)
+        {
+            for (var i = mixedString.IndexOf('{'); i > -1; i = mixedString.IndexOf('{', i + 1))
+            {
+                for (var j = mixedString.LastIndexOf('}'); j > -1; j = mixedString.LastIndexOf("}", j - 1))
+                {
+                    var jsonProbe = mixedString.Substring(i, j - i + 1);
+                    try
+                    {
+                        var valid = JsonConvert.DeserializeObject(jsonProbe);
+                        return jsonProbe;
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+
+            return string.Empty;
+        }
+        public static void SetLogLevel(CheckedListBoxControl chkLstLogLevel)
+        {
+            chkLstLogLevel.Items.Clear();
+            var logLevelSelection = LogLevelSelectionType.Single;
+            switch (logLevelSelection)
+            {
+                case LogLevelSelectionType.Single:
+                    chkLstLogLevel.CheckMode = CheckMode.Single;
+                    chkLstLogLevel.CheckStyle = CheckStyles.Radio;
+                    CheckedListBoxItem[] radioLevels = {
+                        new CheckedListBoxItem("Trace"),
+                        new CheckedListBoxItem("Error + Critical"),
+                        new CheckedListBoxItem("Warning"),
+                        new CheckedListBoxItem("Debug"),
+                        new CheckedListBoxItem("Verbose")
+                    };
+                    chkLstLogLevel.Items.AddRange(radioLevels);
+                    break;
+                case LogLevelSelectionType.Multiple:
+                    chkLstLogLevel.CheckMode = CheckMode.Multiple;
+                    chkLstLogLevel.CheckStyle = CheckStyles.Standard;
+                    chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, false)).ToArray());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        public static void FillLogLevels(CheckedListBoxControl chkLstLogLevel)
+        {
+            chkLstLogLevel.Items.Clear();
+            chkLstLogLevel.CheckStyle = CheckStyles.Standard;
+            chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, false)).ToArray());
+
         }
     }
 }

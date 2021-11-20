@@ -90,7 +90,6 @@ namespace Analogy.CommonControls.UserControls
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barTopFiltering = new DevExpress.XtraBars.Bar();
             this.bBtnClearLog = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnRemoveBoomark = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btswitchMessageDetails = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
@@ -108,23 +107,15 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockSelection = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
             this.bsiSettings = new DevExpress.XtraBars.BarSubItem();
-            this.bBtnImport = new DevExpress.XtraBars.BarButtonItem();
             this.bSMExports = new DevExpress.XtraBars.BarSubItem();
             this.bBtnExportExcel = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnExportCSV = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnExportHtml = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnShare = new DevExpress.XtraBars.BarButtonItem();
             this.bbiScreenshot = new DevExpress.XtraBars.BarButtonItem();
             this.bsiLayouts = new DevExpress.XtraBars.BarSubItem();
             this.bwmiLayout = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.wsLogs = new DevExpress.Utils.WorkspaceManager(this.components);
-            this.bsiTimeOffset = new DevExpress.XtraBars.BarSubItem();
-            this.bciTimeOffset = new DevExpress.XtraBars.BarCheckItem();
-            this.bciTimeOffsetPredefined = new DevExpress.XtraBars.BarCheckItem();
-            this.bciTimeOffsetUTCToLocal = new DevExpress.XtraBars.BarCheckItem();
-            this.bciTimeOffsetLocalToUTC = new DevExpress.XtraBars.BarCheckItem();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
@@ -158,16 +149,13 @@ namespace Analogy.CommonControls.UserControls
             this.bbiDatetiemFilterFrom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDatetiemFilterTo = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBookmarkNonPersist = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiBookmarkPersist = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCopyMessage = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCopyAllMessages = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiAddNoteToMessage = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncludeMessage = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncludeColumnHeaderFilter = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExcludeMessage = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExcludeSource = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExcludeModule = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiSaveLayout = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncreaseFontSize = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDecreaseFontSize = new DevExpress.XtraBars.BarButtonItem();
             this.bbiIncludeSource = new DevExpress.XtraBars.BarButtonItem();
@@ -177,7 +165,6 @@ namespace Analogy.CommonControls.UserControls
             this.repositoryItemProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.layoutControlLogs = new DevExpress.XtraLayout.LayoutControl();
             this.sbtnPageFirst = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnPagePrevious = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnPageNext = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnLastPage = new DevExpress.XtraEditors.SimpleButton();
@@ -206,7 +193,6 @@ namespace Analogy.CommonControls.UserControls
             this.txtbSource = new DevExpress.XtraEditors.TextEdit();
             this.sbtnTextExclude = new DevExpress.XtraEditors.SimpleButton();
             this.txtbExclude = new DevExpress.XtraEditors.TextEdit();
-            this.sBtnMostCommon = new DevExpress.XtraEditors.SimpleButton();
             this.ceExcludeText = new DevExpress.XtraEditors.CheckEdit();
             this.sbtnPreDefinedFilters = new DevExpress.XtraEditors.SimpleButton();
             this.txtbInclude = new DevExpress.XtraEditors.TextEdit();
@@ -762,7 +748,6 @@ namespace Analogy.CommonControls.UserControls
             this.btswitchMessageDetails,
             this.btswitchRefreshLog,
             this.bBtnSaveLog,
-            this.bBtnImport,
             this.bBtnClearLog,
             this.bBtnExpand,
             this.barButtonItem3,
@@ -772,7 +757,6 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnopyBookmarked,
             this.barButtonItem4,
             this.bBtnGoToMessage,
-            this.bBtnRemoveBoomark,
             this.bBtnCopyAllBookmarks,
             this.btsAutoScrollToBottom,
             this.bSMExports,
@@ -781,14 +765,12 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnExportHtml,
             this.bBtnUndockView,
             this.bBtnSaveEntireLog,
-            this.bBtnDataVisualizer,
             this.bbiScreenshot,
             this.bbtnSaveViewAgnostic,
             this.barSubItemSaveLog,
             this.barButtonItemSaveEntireInAnalogy,
             this.barSubItem1,
             this.bBtnUndockViewPerProcess,
-            this.bBtnShare,
             this.bBtnFullGrid,
             this.bbtnReload,
             this.bBtnSaveCurrentSelectionCustomFormat,
@@ -798,16 +780,13 @@ namespace Analogy.CommonControls.UserControls
             this.bbiDatetiemFilterFrom,
             this.bbiDatetiemFilterTo,
             this.bbiBookmarkNonPersist,
-            this.bbiBookmarkPersist,
             this.bbiCopyMessage,
             this.bbiCopyAllMessages,
-            this.bbiAddNoteToMessage,
             this.bbiIncludeMessage,
             this.bbiIncludeColumnHeaderFilter,
             this.bbiExcludeMessage,
             this.bbiExcludeSource,
             this.bbiExcludeModule,
-            this.bbiSaveLayout,
             this.bbiIncreaseFontSize,
             this.bbiDecreaseFontSize,
             this.bbiIncludeSource,
@@ -824,12 +803,7 @@ namespace Analogy.CommonControls.UserControls
             this.bbiGoToMessage,
             this.bbiGoToActiveMessage,
             this.btsViewAsHTML,
-            this.bbtnRawMessageViewer,
-            this.bsiTimeOffset,
-            this.bciTimeOffset,
-            this.bciTimeOffsetPredefined,
-            this.bciTimeOffsetUTCToLocal,
-            this.bciTimeOffsetLocalToUTC});
+            this.bbtnRawMessageViewer});
             this.barManager1.MaxItemId = 89;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
@@ -846,7 +820,6 @@ namespace Analogy.CommonControls.UserControls
             this.barTopFiltering.FloatLocation = new System.Drawing.Point(104, 140);
             this.barTopFiltering.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemoveBoomark),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnReload),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchMessageDetails),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
@@ -855,7 +828,6 @@ namespace Analogy.CommonControls.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnDataVisualizer),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -873,17 +845,6 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnClearLog.Name = "bBtnClearLog";
             this.bBtnClearLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnClearLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnClearLog_ItemClick);
-            // 
-            // bBtnRemoveBoomark
-            // 
-            this.bBtnRemoveBoomark.Caption = "Delete message";
-            this.bBtnRemoveBoomark.Id = 15;
-            this.bBtnRemoveBoomark.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnRemoveBoomark.ImageOptions.Image")));
-            this.bBtnRemoveBoomark.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnRemoveBoomark.ImageOptions.LargeImage")));
-            this.bBtnRemoveBoomark.Name = "bBtnRemoveBoomark";
-            this.bBtnRemoveBoomark.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnRemoveBoomark.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bBtnRemoveBoomark.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnRemoveBoomark_ItemClick);
             // 
             // bbtnReload
             // 
@@ -1048,16 +1009,6 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnUndockSelection.Name = "bBtnUndockSelection";
             this.bBtnUndockSelection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockSelection_ItemClick);
             // 
-            // bBtnDataVisualizer
-            // 
-            this.bBtnDataVisualizer.Caption = "Data Visualizer";
-            this.bBtnDataVisualizer.Id = 26;
-            this.bBtnDataVisualizer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.Image")));
-            this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
-            this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
-            this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
-            // 
             // bsiSettings
             // 
             this.bsiSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -1066,25 +1017,11 @@ namespace Analogy.CommonControls.UserControls
             this.bsiSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.Image")));
             this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.LargeImage")));
             this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
             new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnShare),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsiLayouts),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsiTimeOffset)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiLayouts)});
             this.bsiSettings.Name = "bsiSettings";
             this.bsiSettings.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // bBtnImport
-            // 
-            this.bBtnImport.Caption = "Import Log";
-            this.bBtnImport.Id = 5;
-            this.bBtnImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnImport.ImageOptions.Image")));
-            this.bBtnImport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnImport.ImageOptions.LargeImage")));
-            this.bBtnImport.Name = "bBtnImport";
-            this.bBtnImport.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnImport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bBtnImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnImport_ItemClick);
             // 
             // bSMExports
             // 
@@ -1128,14 +1065,6 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnExportHtml.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bBtnExportHtml.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportHtml_ItemClick);
             // 
-            // bBtnShare
-            // 
-            this.bBtnShare.Caption = "Share Log";
-            this.bBtnShare.Id = 36;
-            this.bBtnShare.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.upload16x16;
-            this.bBtnShare.Name = "bBtnShare";
-            this.bBtnShare.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // bbiScreenshot
             // 
             this.bbiScreenshot.Caption = "Take screenshot";
@@ -1169,47 +1098,6 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.wsLogs.TargetControl = this;
             this.wsLogs.TransitionType = pushTransition1;
-            // 
-            // bsiTimeOffset
-            // 
-            this.bsiTimeOffset.Caption = "Change Time offset";
-            this.bsiTimeOffset.Id = 83;
-            this.bsiTimeOffset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.Image")));
-            this.bsiTimeOffset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.LargeImage")));
-            this.bsiTimeOffset.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffset),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffsetPredefined),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffsetUTCToLocal),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffsetLocalToUTC)});
-            this.bsiTimeOffset.Name = "bsiTimeOffset";
-            // 
-            // bciTimeOffset
-            // 
-            this.bciTimeOffset.Caption = "No Time Offset";
-            this.bciTimeOffset.GroupIndex = 10;
-            this.bciTimeOffset.Id = 85;
-            this.bciTimeOffset.Name = "bciTimeOffset";
-            // 
-            // bciTimeOffsetPredefined
-            // 
-            this.bciTimeOffsetPredefined.Caption = "Predefined Offset";
-            this.bciTimeOffsetPredefined.GroupIndex = 10;
-            this.bciTimeOffsetPredefined.Id = 86;
-            this.bciTimeOffsetPredefined.Name = "bciTimeOffsetPredefined";
-            // 
-            // bciTimeOffsetUTCToLocal
-            // 
-            this.bciTimeOffsetUTCToLocal.Caption = "UTC To Local Time";
-            this.bciTimeOffsetUTCToLocal.GroupIndex = 10;
-            this.bciTimeOffsetUTCToLocal.Id = 87;
-            this.bciTimeOffsetUTCToLocal.Name = "bciTimeOffsetUTCToLocal";
-            // 
-            // bciTimeOffsetLocalToUTC
-            // 
-            this.bciTimeOffsetLocalToUTC.Caption = "Local Time To UTC";
-            this.bciTimeOffsetLocalToUTC.GroupIndex = 10;
-            this.bciTimeOffsetLocalToUTC.Id = 88;
-            this.bciTimeOffsetLocalToUTC.Name = "bciTimeOffsetLocalToUTC";
             // 
             // barMessage
             // 
@@ -1542,14 +1430,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiBookmarkNonPersist.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiBookmarkNonPersist.ImageOptions.LargeImage")));
             this.bbiBookmarkNonPersist.Name = "bbiBookmarkNonPersist";
             // 
-            // bbiBookmarkPersist
-            // 
-            this.bbiBookmarkPersist.Caption = "Bookmark this message for later user (Persist)";
-            this.bbiBookmarkPersist.Id = 47;
-            this.bbiBookmarkPersist.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiBookmarkPersist.ImageOptions.Image")));
-            this.bbiBookmarkPersist.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiBookmarkPersist.ImageOptions.LargeImage")));
-            this.bbiBookmarkPersist.Name = "bbiBookmarkPersist";
-            // 
             // bbiCopyMessage
             // 
             this.bbiCopyMessage.Caption = "Copy selected message to clipboard";
@@ -1565,14 +1445,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiCopyAllMessages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCopyAllMessages.ImageOptions.Image")));
             this.bbiCopyAllMessages.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCopyAllMessages.ImageOptions.LargeImage")));
             this.bbiCopyAllMessages.Name = "bbiCopyAllMessages";
-            // 
-            // bbiAddNoteToMessage
-            // 
-            this.bbiAddNoteToMessage.Caption = "Add Note/Comment to this message (not auto saved)";
-            this.bbiAddNoteToMessage.Id = 50;
-            this.bbiAddNoteToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAddNoteToMessage.ImageOptions.Image")));
-            this.bbiAddNoteToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAddNoteToMessage.ImageOptions.LargeImage")));
-            this.bbiAddNoteToMessage.Name = "bbiAddNoteToMessage";
             // 
             // bbiIncludeMessage
             // 
@@ -1613,14 +1485,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiExcludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExcludeModule.ImageOptions.Image")));
             this.bbiExcludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExcludeModule.ImageOptions.LargeImage")));
             this.bbiExcludeModule.Name = "bbiExcludeModule";
-            // 
-            // bbiSaveLayout
-            // 
-            this.bbiSaveLayout.Caption = "Save columns layout";
-            this.bbiSaveLayout.Id = 56;
-            this.bbiSaveLayout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveLayout.ImageOptions.Image")));
-            this.bbiSaveLayout.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveLayout.ImageOptions.LargeImage")));
-            this.bbiSaveLayout.Name = "bbiSaveLayout";
             // 
             // bbiIncreaseFontSize
             // 
@@ -1673,7 +1537,6 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlLogs
             // 
             this.layoutControlLogs.Controls.Add(this.sbtnPageFirst);
-            this.layoutControlLogs.Controls.Add(this.sbtnMoreHighlight);
             this.layoutControlLogs.Controls.Add(this.sbtnPagePrevious);
             this.layoutControlLogs.Controls.Add(this.sBtnPageNext);
             this.layoutControlLogs.Controls.Add(this.chkbHighlight);
@@ -1691,32 +1554,21 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnPageFirst
             // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(1457, 214);
+            this.sbtnPageFirst.Location = new System.Drawing.Point(1475, 214);
             this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPageFirst.Name = "sbtnPageFirst";
-            this.sbtnPageFirst.Size = new System.Drawing.Size(71, 27);
+            this.sbtnPageFirst.Size = new System.Drawing.Size(68, 27);
             this.sbtnPageFirst.StyleController = this.layoutControlLogs;
             this.sbtnPageFirst.TabIndex = 5;
             this.sbtnPageFirst.Text = "first Page";
             this.sbtnPageFirst.Click += new System.EventHandler(this.sbtnPageFirst_Click);
             // 
-            // sbtnMoreHighlight
-            // 
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1371, 214);
-            this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
-            this.sbtnMoreHighlight.Size = new System.Drawing.Size(82, 27);
-            this.sbtnMoreHighlight.StyleController = this.layoutControlLogs;
-            this.sbtnMoreHighlight.TabIndex = 4;
-            this.sbtnMoreHighlight.Text = "More ...";
-            this.sbtnMoreHighlight.Click += new System.EventHandler(this.sbtnMoreHighlight_Click);
-            // 
             // sbtnPagePrevious
             // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(1532, 214);
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(1547, 214);
             this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPagePrevious.Name = "sbtnPagePrevious";
-            this.sbtnPagePrevious.Size = new System.Drawing.Size(100, 27);
+            this.sbtnPagePrevious.Size = new System.Drawing.Size(95, 27);
             this.sbtnPagePrevious.StyleController = this.layoutControlLogs;
             this.sbtnPagePrevious.TabIndex = 6;
             this.sbtnPagePrevious.Text = "Previous Page";
@@ -1725,10 +1577,10 @@ namespace Analogy.CommonControls.UserControls
             // sBtnPageNext
             // 
             this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(1706, 214);
+            this.sBtnPageNext.Location = new System.Drawing.Point(1710, 214);
             this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnPageNext.Name = "sBtnPageNext";
-            this.sBtnPageNext.Size = new System.Drawing.Size(66, 27);
+            this.sBtnPageNext.Size = new System.Drawing.Size(64, 27);
             this.sBtnPageNext.StyleController = this.layoutControlLogs;
             this.sBtnPageNext.TabIndex = 7;
             this.sBtnPageNext.Text = "Next Page";
@@ -1737,10 +1589,10 @@ namespace Analogy.CommonControls.UserControls
             // sBtnLastPage
             // 
             this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(1776, 214);
+            this.sBtnLastPage.Location = new System.Drawing.Point(1778, 214);
             this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLastPage.Name = "sBtnLastPage";
-            this.sBtnLastPage.Size = new System.Drawing.Size(64, 27);
+            this.sBtnLastPage.Size = new System.Drawing.Size(62, 27);
             this.sBtnLastPage.StyleController = this.layoutControlLogs;
             this.sBtnLastPage.TabIndex = 8;
             this.sBtnLastPage.Text = "Last Page";
@@ -1805,54 +1657,53 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.sBtnLastPage;
-            this.layoutControlItem24.Location = new System.Drawing.Point(1769, 207);
+            this.layoutControlItem24.Location = new System.Drawing.Point(1771, 207);
             this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(68, 31);
+            this.layoutControlItem24.Size = new System.Drawing.Size(66, 31);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
             // layoutControlItem25
             // 
             this.layoutControlItem25.Control = this.sBtnPageNext;
-            this.layoutControlItem25.Location = new System.Drawing.Point(1699, 207);
+            this.layoutControlItem25.Location = new System.Drawing.Point(1703, 207);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(70, 31);
+            this.layoutControlItem25.Size = new System.Drawing.Size(68, 31);
             this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem25.TextVisible = false;
             // 
             // layoutControlItem27
             // 
             this.layoutControlItem27.Control = this.sbtnPagePrevious;
-            this.layoutControlItem27.Location = new System.Drawing.Point(1525, 207);
+            this.layoutControlItem27.Location = new System.Drawing.Point(1540, 207);
             this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(104, 31);
+            this.layoutControlItem27.Size = new System.Drawing.Size(99, 31);
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextVisible = false;
             // 
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.sbtnPageFirst;
-            this.layoutControlItem28.Location = new System.Drawing.Point(1450, 207);
+            this.layoutControlItem28.Location = new System.Drawing.Point(1468, 207);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(75, 31);
+            this.layoutControlItem28.Size = new System.Drawing.Size(72, 31);
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem28.TextVisible = false;
             // 
             // layoutControlItem21
             // 
-            this.layoutControlItem21.Control = this.sbtnMoreHighlight;
             this.layoutControlItem21.Location = new System.Drawing.Point(1364, 207);
             this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(86, 31);
+            this.layoutControlItem21.Size = new System.Drawing.Size(104, 31);
             this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem21.TextVisible = false;
             // 
             // lblPageNumber
             // 
             this.lblPageNumber.AllowHotTrack = false;
-            this.lblPageNumber.Location = new System.Drawing.Point(1629, 207);
+            this.lblPageNumber.Location = new System.Drawing.Point(1639, 207);
             this.lblPageNumber.Name = "lblPageNumber";
-            this.lblPageNumber.Size = new System.Drawing.Size(70, 31);
+            this.lblPageNumber.Size = new System.Drawing.Size(64, 31);
             this.lblPageNumber.Text = "Page 1/1";
             this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
@@ -1896,7 +1747,6 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControl1.Controls.Add(this.txtbSource);
             this.layoutControl1.Controls.Add(this.sbtnTextExclude);
             this.layoutControl1.Controls.Add(this.txtbExclude);
-            this.layoutControl1.Controls.Add(this.sBtnMostCommon);
             this.layoutControl1.Controls.Add(this.ceExcludeText);
             this.layoutControl1.Controls.Add(this.sbtnPreDefinedFilters);
             this.layoutControl1.Controls.Add(this.txtbInclude);
@@ -2065,9 +1915,9 @@ namespace Analogy.CommonControls.UserControls
             // sbtnTextExclude
             // 
             this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
-            this.sbtnTextExclude.Location = new System.Drawing.Point(1367, 38);
+            this.sbtnTextExclude.Location = new System.Drawing.Point(1363, 38);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
-            this.sbtnTextExclude.Size = new System.Drawing.Size(24, 27);
+            this.sbtnTextExclude.Size = new System.Drawing.Size(22, 27);
             this.sbtnTextExclude.StyleController = this.layoutControl1;
             this.sbtnTextExclude.TabIndex = 20;
             this.sbtnTextExclude.ToolTip = "Clear the text";
@@ -2079,21 +1929,10 @@ namespace Analogy.CommonControls.UserControls
             this.txtbExclude.MenuManager = this.barManager1;
             this.txtbExclude.Name = "txtbExclude";
             this.txtbExclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbExclude.Size = new System.Drawing.Size(1226, 22);
+            this.txtbExclude.Size = new System.Drawing.Size(1222, 22);
             this.txtbExclude.StyleController = this.layoutControl1;
             this.txtbExclude.TabIndex = 20;
             this.txtbExclude.EditValueChanged += new System.EventHandler(this.txtbExclude_EditValueChanged);
-            // 
-            // sBtnMostCommon
-            // 
-            this.sBtnMostCommon.Location = new System.Drawing.Point(1395, 38);
-            this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sBtnMostCommon.Name = "sBtnMostCommon";
-            this.sBtnMostCommon.Size = new System.Drawing.Size(94, 27);
-            this.sBtnMostCommon.StyleController = this.layoutControl1;
-            this.sBtnMostCommon.TabIndex = 8;
-            this.sBtnMostCommon.Text = "Most Common";
-            this.sBtnMostCommon.Click += new System.EventHandler(this.sBtnMostCommon_Click);
             // 
             // ceExcludeText
             // 
@@ -2116,14 +1955,11 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnPreDefinedFilters
             // 
-            this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SingleMasterFilter_16x16;
             this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1464, 7);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
-            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(25, 27);
+            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(25, 25);
             this.sbtnPreDefinedFilters.StyleController = this.layoutControl1;
-            this.sbtnPreDefinedFilters.TabIndex = 21;
-            this.sbtnPreDefinedFilters.ToolTip = "Pre-defined filters";
-            this.sbtnPreDefinedFilters.Click += new System.EventHandler(this.sbtnPreDefinedFilters_Click);
+            this.sbtnPreDefinedFilters.TabIndex = 30;
             // 
             // txtbInclude
             // 
@@ -2248,7 +2084,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem5.Control = this.txtbExclude;
             this.layoutControlItem5.Location = new System.Drawing.Point(130, 31);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1230, 31);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1226, 31);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -2266,19 +2102,18 @@ namespace Analogy.CommonControls.UserControls
             // 
             // layoutControlItem7
             // 
-            this.layoutControlItem7.Control = this.sBtnMostCommon;
-            this.layoutControlItem7.Location = new System.Drawing.Point(1388, 31);
+            this.layoutControlItem7.Location = new System.Drawing.Point(1382, 31);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(98, 31);
+            this.layoutControlItem7.Size = new System.Drawing.Size(104, 31);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.sbtnTextExclude;
-            this.layoutControlItem8.Location = new System.Drawing.Point(1360, 31);
+            this.layoutControlItem8.Location = new System.Drawing.Point(1356, 31);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(28, 31);
+            this.layoutControlItem8.Size = new System.Drawing.Size(26, 31);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
@@ -2820,7 +2655,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(204, 148);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(204, 142);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2829,7 +2664,7 @@ namespace Analogy.CommonControls.UserControls
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(204, 148);
+            this.clbExclude.Size = new System.Drawing.Size(204, 142);
             this.clbExclude.TabIndex = 22;
             // 
             // pnlLevel
@@ -2904,11 +2739,9 @@ namespace Analogy.CommonControls.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterFrom),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterTo),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarkNonPersist),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarkPersist),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiJsonViewer),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCopyMessage),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCopyAllMessages),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddNoteToMessage),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeMessage, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeSource),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncludeModule),
@@ -2916,7 +2749,6 @@ namespace Analogy.CommonControls.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeMessage, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeSource),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiExcludeModule),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSaveLayout, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiIncreaseFontSize),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDecreaseFontSize)});
             this.LogGridPopupMenu.Manager = this.barManager1;
@@ -3050,7 +2882,7 @@ namespace Analogy.CommonControls.UserControls
             this.meMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.meMessageDetails.MenuManager = this.barManager1;
             this.meMessageDetails.Name = "meMessageDetails";
-            this.meMessageDetails.Size = new System.Drawing.Size(784, 106);
+            this.meMessageDetails.Size = new System.Drawing.Size(783, 106);
             this.meMessageDetails.TabIndex = 0;
             // 
             // recMessageDetails
@@ -3061,7 +2893,7 @@ namespace Analogy.CommonControls.UserControls
             this.recMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.recMessageDetails.MenuManager = this.barManager1;
             this.recMessageDetails.Name = "recMessageDetails";
-            this.recMessageDetails.Size = new System.Drawing.Size(1049, 106);
+            this.recMessageDetails.Size = new System.Drawing.Size(1050, 106);
             this.recMessageDetails.TabIndex = 4;
             // 
             // dockPanelBookmarks
@@ -3134,7 +2966,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.Controls.Add(this.ceFilterPanelSearch);
             this.xtraTabPage2.Controls.Add(this.ceFilterPanelFilter);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1494, 148);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1496, 142);
             this.xtraTabPage2.Text = "Grid Pane";
             // 
             // UCLogs
@@ -3304,10 +3136,8 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarToggleSwitchItem btswitchMessageDetails;
         private DevExpress.XtraBars.BarButtonItem bBtnSaveLog;
-        private DevExpress.XtraBars.BarButtonItem bBtnImport;
         private DevExpress.XtraBars.BarButtonItem bBtnClearLog;
         internal DevExpress.XtraBars.BarToggleSwitchItem btswitchRefreshLog;
-        private DevExpress.XtraEditors.SimpleButton sBtnMostCommon;
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstLogLevel;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraBars.BarButtonItem bBtnExpand;
@@ -3320,7 +3150,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarButtonItem bBtnopyBookmarked;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem bBtnGoToMessage;
-        private DevExpress.XtraBars.BarButtonItem bBtnRemoveBoomark;
         private DevExpress.XtraBars.BarButtonItem bBtnCopyAllBookmarks;
         private DevExpress.XtraEditors.SimpleButton sbtnPageFirst;
         private DevExpress.XtraEditors.SimpleButton sBtnPageNext;
@@ -3333,7 +3162,6 @@ namespace Analogy.CommonControls.UserControls
         internal DevExpress.XtraBars.BarToggleSwitchItem btsAutoScrollToBottom;
         private DevExpress.XtraBars.BarButtonItem bBtnUndockView;
         private DevExpress.XtraBars.BarButtonItem bBtnSaveEntireLog;
-        private DevExpress.XtraBars.BarButtonItem bBtnDataVisualizer;
         private DevExpress.XtraBars.BarButtonItem bbiScreenshot;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnThread;
         private DevExpress.XtraBars.BarButtonItem bbtnSaveViewAgnostic;
@@ -3353,7 +3181,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraEditors.SimpleButton sbtnUndockPerProcess;
         private DevExpress.XtraEditors.DateEdit deNewerThanFilter;
         private DevExpress.XtraEditors.DateEdit deOlderThanFilter;
-        private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
         private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
         private DevExpress.XtraBars.Bar barGroup;
@@ -3382,16 +3209,13 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterFrom;
         private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterTo;
         private DevExpress.XtraBars.BarButtonItem bbiBookmarkNonPersist;
-        private DevExpress.XtraBars.BarButtonItem bbiBookmarkPersist;
         private DevExpress.XtraBars.BarButtonItem bbiCopyMessage;
         private DevExpress.XtraBars.BarButtonItem bbiCopyAllMessages;
-        private DevExpress.XtraBars.BarButtonItem bbiAddNoteToMessage;
         private DevExpress.XtraBars.BarButtonItem bbiIncludeMessage;
         private DevExpress.XtraBars.BarButtonItem bbiIncludeColumnHeaderFilter;
         private DevExpress.XtraBars.BarButtonItem bbiExcludeMessage;
         private DevExpress.XtraBars.BarButtonItem bbiExcludeSource;
         private DevExpress.XtraBars.BarButtonItem bbiExcludeModule;
-        private DevExpress.XtraBars.BarButtonItem bbiSaveLayout;
         private DevExpress.XtraBars.BarButtonItem bbiIncreaseFontSize;
         private DevExpress.XtraBars.BarButtonItem bbiDecreaseFontSize;
         private DevExpress.XtraBars.BarButtonItem bbiIncludeSource;
@@ -3478,10 +3302,5 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
         private DevExpress.XtraLayout.SimpleLabelItem lblPageNumber;
-        private DevExpress.XtraBars.BarSubItem bsiTimeOffset;
-        private DevExpress.XtraBars.BarCheckItem bciTimeOffset;
-        private DevExpress.XtraBars.BarCheckItem bciTimeOffsetPredefined;
-        private DevExpress.XtraBars.BarCheckItem bciTimeOffsetUTCToLocal;
-        private DevExpress.XtraBars.BarCheckItem bciTimeOffsetLocalToUTC;
     }
 }
