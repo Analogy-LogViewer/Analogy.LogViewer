@@ -1,12 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy", "Analogy\Analogy.csproj", "{F2B3CF44-653A-4FD6-8B79-8D1DEC605B1E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.UnitTests", "Analogy.UnitTests\Analogy.UnitTests.csproj", "{B3AA4AAD-28D8-4A44-AAA9-3D2AC92B1BEF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analogy.CommonControls", "Analogy.CommonControls\Analogy.CommonControls.csproj", "{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,26 +52,6 @@ Global
 		{B3AA4AAD-28D8-4A44-AAA9-3D2AC92B1BEF}.Release|x64.Build.0 = Release|Any CPU
 		{B3AA4AAD-28D8-4A44-AAA9-3D2AC92B1BEF}.Release|x86.ActiveCfg = Release|Any CPU
 		{B3AA4AAD-28D8-4A44-AAA9-3D2AC92B1BEF}.Release|x86.Build.0 = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|ARM.Build.0 = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|ARM64.ActiveCfg = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|ARM64.Build.0 = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|x64.Build.0 = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Debug|x86.Build.0 = Debug|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|ARM.ActiveCfg = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|ARM.Build.0 = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|ARM64.ActiveCfg = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|ARM64.Build.0 = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|x64.ActiveCfg = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|x64.Build.0 = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|x86.ActiveCfg = Release|Any CPU
-		{7C7AAD0D-CF17-4DAD-BCBA-F6E4073EB6DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
