@@ -18,10 +18,10 @@
 		<PackageId>Analogy.CommonControls</PackageId>
 		<Authors>Lior Banai</Authors>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.CommonControls</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageIconUrl />
-		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.CommonControls</RepositoryUrl>
+		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
 		<PackageTags />
 		<RepositoryType>git</RepositoryType>
 		<Version>0.9.0</Version>
