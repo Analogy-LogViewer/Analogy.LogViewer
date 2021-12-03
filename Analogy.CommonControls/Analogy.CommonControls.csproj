@@ -18,13 +18,13 @@
 		<PackageId>Analogy.CommonControls</PackageId>
 		<Authors>Lior Banai</Authors>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.CommonControls</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageIconUrl />
-		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
+		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.CommonControls</RepositoryUrl>
 		<PackageTags />
 		<RepositoryType>git</RepositoryType>
-		<Version>4.7.6</Version>
+		<Version>0.9.0</Version>
 		<Copyright>Lior Banai © 2019-2021</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<PackageReleaseNotes></PackageReleaseNotes>
@@ -34,7 +34,6 @@
 		<LangVersion>8.0</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>AnyCPU;x64</Platforms>
-		<UserSecretsId>db476d63-3c8d-40f4-9618-d540fd88888d</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' or '$(TargetFramework)' == 'net6.0-windows' ">
