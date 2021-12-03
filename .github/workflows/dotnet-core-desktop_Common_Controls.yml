@@ -1,4 +1,4 @@
-name: .NET Core Desktop
+name: Common Controls Analogy .NET Core Desktop
 
 on:
   push:
