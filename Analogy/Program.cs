@@ -89,7 +89,11 @@ namespace Analogy
                 Settings.ApplicationSvgPaletteName = laf.ActiveSvgPaletteName;
 
             };
-
+            //// Register the Winter Joy skin. 
+            //System.Reflection.Assembly asm = typeof(DevExpress.UserSkins.WinterJoy).Assembly;
+            //DevExpress.Skins.SkinManager.Default.RegisterAssembly(asm);
+            //// Apply the skin. 
+            //DevExpress.XtraEditors.WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Winter Joy");
             if (UserSettingsManager.UserSettings.SingleInstance &&
                 Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
@@ -112,8 +116,8 @@ namespace Analogy
 
             if (Settings.IsFirstRun)
             {
-               //FirstTimeRunForm f = new FirstTimeRunForm();
-               //f.ShowDialog();
+                //FirstTimeRunForm f = new FirstTimeRunForm();
+                //f.ShowDialog();
             }
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
