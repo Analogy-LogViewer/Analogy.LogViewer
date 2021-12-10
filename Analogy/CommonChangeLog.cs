@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.8.1 - [DevExpress] Update DevExpress version to 21.2.4 Post NET6 Release #1152",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,12,10)),
+                new AnalogyChangeLog("V4.8.1 - [.NET 3.1/5/6] missing DevExpress Assembly #1180",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,12,09)),
                 new AnalogyChangeLog("V4.8.0 - Add NET6 compilation #1142",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,09)),
                 new AnalogyChangeLog("V4.8.0 - [User Settings] Set default for remember last saved search to off #1148",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,06)),
                 new AnalogyChangeLog("V4.8.0 - File Pooling - Add option to set minimum pooling interval (instead/addition to each file changes) #1150",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,11,06)),

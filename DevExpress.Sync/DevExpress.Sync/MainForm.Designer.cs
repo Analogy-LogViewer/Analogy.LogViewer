@@ -73,7 +73,7 @@ namespace DevExpress.Sync
             this.txtbTarget.Name = "txtbTarget";
             this.txtbTarget.Size = new System.Drawing.Size(697, 27);
             this.txtbTarget.TabIndex = 2;
-            this.txtbTarget.Text = "D:\\git\\KX_Develop\\Common\\Redist\\DevExpress";
+            this.txtbTarget.Text = "e:\\files\\Programming\\Analogy.LogViewer\\DevExpress\\";
             // 
             // btnCopy
             // 

@@ -84,6 +84,7 @@ namespace DevExpress.Sync
             var sourceFolder = txtbSource.Text;
             CopyFilesWithUpgrade(Path.Combine(targetFolder, ".net core"), sourceFolder, true);
             CopyFilesWithUpgrade(Path.Combine(targetFolder, ".net framework"), sourceFolder, false);
+            MessageBox.Show("Done", "Done");
         }
         private void CopyFilesWithUpgrade(string targetFolder, string sourceFolder, bool isNet)
         {
