@@ -857,7 +857,6 @@ namespace Analogy.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnDataVisualizer),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -1073,7 +1072,8 @@ namespace Analogy.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnShare),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScreenshot),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiLayouts),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsiTimeOffset)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiTimeOffset),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnDataVisualizer)});
             this.bsiSettings.Name = "bsiSettings";
             this.bsiSettings.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
