@@ -167,7 +167,6 @@
             this.ribbonControlMain.ApplicationButtonDropDownControl = this.applicationMenu1;
             this.ribbonControlMain.AutoHideEmptyItems = true;
             this.ribbonControlMain.AutoSaveLayoutToXmlPath = "AnalogyRibbonSettings.xml";
-            this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiFilePlotting);
             this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiGlobalTools);
             this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
             this.ribbonControlMain.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(37);
@@ -306,7 +305,7 @@
             // 
             // bsiFilePlotting
             // 
-            this.bsiFilePlotting.Caption = "File Plotter";
+            this.bsiFilePlotting.Caption = "File Tabular Plotter";
             this.bsiFilePlotting.Id = 117;
             this.bsiFilePlotting.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiFilePlotting.ImageOptions.Image")));
             this.bsiFilePlotting.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiFilePlotting.ImageOptions.LargeImage")));
@@ -322,7 +321,8 @@
             this.bsiGlobalTools.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.Image")));
             this.bsiGlobalTools.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.LargeImage")));
             this.bsiGlobalTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarks)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarks),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiFilePlotting)});
             this.bsiGlobalTools.Name = "bsiGlobalTools";
             toolTipTitleItem1.Text = "Global Tools";
             toolTipItem2.LeftIndent = 6;
