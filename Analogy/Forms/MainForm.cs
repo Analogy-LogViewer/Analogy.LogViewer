@@ -1345,10 +1345,15 @@ namespace Analogy.Forms
                 string optionalText = !string.IsNullOrEmpty(offlineAnalogy.OptionalTitle)
                     ? " for " + offlineAnalogy.OptionalTitle
                     : string.Empty;
-                RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools{optionalText}");
+                RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"File Tools");
                 groupOfflineFileTools.AllowTextClipping = false;
                 ribbonPage.Groups.Add(groupOfflineFileTools);
-                AddSingleOfflineDataSource(primaryFactory, ribbonPage, offlineAnalogy, factory, group, groupOfflineFileTools);
+                var tools = new BarSubItem();
+                tools.Caption = "File Tools";
+                tools.RibbonStyle = RibbonItemStyles.All;
+                tools.ImageOptions.LargeImage = Resources.FileAction_32x32;
+                groupOfflineFileTools.ItemLinks.Add(tools);
+                AddSingleOfflineDataSource(primaryFactory, ribbonPage, offlineAnalogy, factory, group, tools);
             }
             else
             {
@@ -1606,14 +1611,19 @@ namespace Analogy.Forms
 
             //add tools
 
-            RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"Tools for {factoryTitle}");
+            RibbonPageGroup groupOfflineFileTools = new RibbonPageGroup($"File Tools");
             groupOfflineFileTools.AllowTextClipping = false;
             ribbonPage.Groups.Add(groupOfflineFileTools);
 
+            var tools = new BarSubItem();
+            tools.Caption = "File Tools";
+            tools.RibbonStyle = RibbonItemStyles.All;
+            tools.ImageOptions.LargeImage = Resources.FileAction_32x32;
+            groupOfflineFileTools.ItemLinks.Add(tools);
 
             BarSubItem searchFiles = new BarSubItem();
             searchFiles.Caption = "Search in Files";
-            groupOfflineFileTools.ItemLinks.Add(searchFiles);
+            tools.ItemLinks.Add(searchFiles);
             searchFiles.ImageOptions.Image = images?.GetSmallSearchImage(factoryId) ?? Resources.Lookup_Reference_32x32;
             searchFiles.ImageOptions.LargeImage = images?.GetLargeSearchImage(factoryId) ?? Resources.Lookup_Reference_32x32;
             searchFiles.RibbonStyle = RibbonItemStyles.All;
@@ -1632,7 +1642,7 @@ namespace Analogy.Forms
 
             BarSubItem combineFiles = new BarSubItem();
             combineFiles.Caption = "Combine Files";
-            groupOfflineFileTools.ItemLinks.Add(combineFiles);
+            tools.ItemLinks.Add(combineFiles);
             combineFiles.ImageOptions.Image = images?.GetSmallCombineLogsImage(factoryId) ?? Resources.Sutotal_32x32;
             combineFiles.ImageOptions.LargeImage = images?.GetLargeCombineLogsImage(factoryId) ?? Resources.Sutotal_32x32;
             combineFiles.RibbonStyle = RibbonItemStyles.All;
@@ -1652,7 +1662,7 @@ namespace Analogy.Forms
 
             BarSubItem compareFiles = new BarSubItem();
             compareFiles.Caption = "Compare Files";
-            groupOfflineFileTools.ItemLinks.Add(compareFiles);
+            tools.ItemLinks.Add(compareFiles);
             compareFiles.ImageOptions.Image = images?.GetSmallCompareLogsImage(factoryId) ?? Resources.TwoColumns;
             compareFiles.ImageOptions.LargeImage = images?.GetLargeCompareLogsImage(factoryId) ?? Resources.TwoColumns;
             compareFiles.RibbonStyle = RibbonItemStyles.All;
@@ -1671,7 +1681,7 @@ namespace Analogy.Forms
 
 
         private void AddSingleOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
-            IAnalogyDataProvidersFactory factory, RibbonPageGroup group, RibbonPageGroup groupOfflineFileTools)
+            IAnalogyDataProvidersFactory factory, RibbonPageGroup group, BarSubItem groupOfflineFileTools)
         {
             Guid factoryId = factory.FactoryId;
             string title = factory.Title;
@@ -1913,8 +1923,7 @@ namespace Analogy.Forms
                 var combined = new FormCombineFiles(offlineAnalogy);
                 combined.Show(this);
             };
-
-
+            
             BarButtonItem compareFiles = new BarButtonItem();
             compareFiles.Caption = "Compare Files";
             groupOfflineFileTools.ItemLinks.Add(compareFiles);
