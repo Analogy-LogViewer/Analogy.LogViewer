@@ -11,7 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("V4.8.2 - [Net6] missing net 6 tag for download update from github #1184",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,12,19)),
+                new AnalogyChangeLog("V4.8.1 - [Net6] missing net 6 tag for download update from github #1184",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,12,19)),
                 new AnalogyChangeLog("V4.8.1 - NullReferenceException when opening List of Providers #1183",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,12,17)),
                 new AnalogyChangeLog("V4.8.1 - [UI] move tools to last place/collapsed in order to simplify UI #1181",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,12,17)),
                 new AnalogyChangeLog("V4.8.1 - [UI] Move Data Visualizer to the more button #1182",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,12,10)),
