@@ -1,3 +1,4 @@
+<TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net48;net472;net471</TargetFrameworks>
 Interface -- LogServer.Client
 Interface -- LogServer.Client -- NLog.Targets
 Interface -- LogServer
@@ -16,7 +17,7 @@ Interface -- CommonUtilities -- Template -- KafkaProvider
 Interface -- CommonUtilities -- Template -- Log4jXml
 Interface -- CommonUtilities -- Template -- Log4Net
 Interface -- CommonUtilities -- Template -- NLog
-Interface -- CommonUtilities -- Template -- RbbitMq
+Interface -- CommonUtilities -- Template -- RabbitMq
 Interface -- CommonUtilities -- Template -- Serilog 
 Interface -- CommonUtilities -- Template -- VisualStudioActivityLog
 Interface -- CommonUtilities -- Template -- RSSReader
