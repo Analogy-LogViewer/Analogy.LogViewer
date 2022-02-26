@@ -18,6 +18,7 @@ using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.Tools;
+using Analogy.Tools.JsonViewer;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
 using DevExpress.Data.Mask;
@@ -145,10 +146,17 @@ namespace Analogy.UserControls
         }
         private LogLevelSelectionType logLevelSelectionType = UserSettingsManager.UserSettings.LogLevelSelection;
         #endregion
+        private  JsonTreeView JsonTreeView { get; set; }
 
         public UCLogs()
         {
             InitializeComponent();
+            JsonTreeView = new JsonTreeView();
+            spltcMessages.Panel2.Controls.Add(JsonTreeView);
+            JsonTreeView.Dock = DockStyle.Fill;
+            spltcMessages.PanelVisibility = SplitPanelVisibility.Panel1;
+            WorkspaceManager.SetSerializationEnabled(gridControl, false);
+            WorkspaceManager.SetSerializationEnabled(spltcMessages, false);
             _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
             foreach (string value in Utils.LogLevels)
@@ -204,7 +212,7 @@ namespace Analogy.UserControls
             {
                 return;
             }
-
+            
             wsLogs.CaptureWorkspace("Default");
 
             LoadUISettings();

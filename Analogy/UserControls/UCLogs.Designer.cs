@@ -108,7 +108,6 @@ namespace Analogy.UserControls
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockSelection = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
             this.bsiSettings = new DevExpress.XtraBars.BarSubItem();
             this.bBtnImport = new DevExpress.XtraBars.BarButtonItem();
             this.bSMExports = new DevExpress.XtraBars.BarSubItem();
@@ -125,6 +124,7 @@ namespace Analogy.UserControls
             this.bciTimeOffsetPredefined = new DevExpress.XtraBars.BarCheckItem();
             this.bciTimeOffsetUTCToLocal = new DevExpress.XtraBars.BarCheckItem();
             this.bciTimeOffsetLocalToUTC = new DevExpress.XtraBars.BarCheckItem();
+            this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
@@ -218,6 +218,7 @@ namespace Analogy.UserControls
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.popupMenuGoTo = new DevExpress.XtraBars.PopupMenu(this.components);
             this.layoutControlLogs = new DevExpress.XtraLayout.LayoutControl();
+            this.spltcMessages = new DevExpress.XtraEditors.SplitContainerControl();
             this.sbtnPageFirst = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnMoreHighlight = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnPagePrevious = new DevExpress.XtraEditors.SimpleButton();
@@ -225,7 +226,6 @@ namespace Analogy.UserControls
             this.sBtnLastPage = new DevExpress.XtraEditors.SimpleButton();
             this.txtbHighlight = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -234,6 +234,7 @@ namespace Analogy.UserControls
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblPageNumber = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.gridControlBookmarkedMessages = new DevExpress.XtraGrid.GridControl();
             this.gridViewBookmarkedMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -336,9 +337,13 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuGoTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlLogs)).BeginInit();
             this.layoutControlLogs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltcMessages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltcMessages.Panel1)).BeginInit();
+            this.spltcMessages.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltcMessages.Panel2)).BeginInit();
+            this.spltcMessages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
@@ -347,6 +352,7 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblPageNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).BeginInit();
@@ -409,12 +415,13 @@ namespace Analogy.UserControls
             // 
             // gridControl
             // 
+            this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl.Location = new System.Drawing.Point(7, 7);
+            this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1833, 203);
+            this.gridControl.Size = new System.Drawing.Size(1570, 203);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -1049,16 +1056,6 @@ namespace Analogy.UserControls
             this.bBtnUndockSelection.Name = "bBtnUndockSelection";
             this.bBtnUndockSelection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockSelection_ItemClick);
             // 
-            // bBtnDataVisualizer
-            // 
-            this.bBtnDataVisualizer.Caption = "Data Visualizer";
-            this.bBtnDataVisualizer.Id = 26;
-            this.bBtnDataVisualizer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.Image")));
-            this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
-            this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
-            this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
-            // 
             // bsiSettings
             // 
             this.bsiSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -1212,6 +1209,16 @@ namespace Analogy.UserControls
             this.bciTimeOffsetLocalToUTC.GroupIndex = 10;
             this.bciTimeOffsetLocalToUTC.Id = 88;
             this.bciTimeOffsetLocalToUTC.Name = "bciTimeOffsetLocalToUTC";
+            // 
+            // bBtnDataVisualizer
+            // 
+            this.bBtnDataVisualizer.Caption = "Data Visualizer";
+            this.bBtnDataVisualizer.Id = 26;
+            this.bBtnDataVisualizer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.Image")));
+            this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
+            this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
+            this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
             // 
             // barMessage
             // 
@@ -2211,6 +2218,7 @@ namespace Analogy.UserControls
             // 
             // layoutControlLogs
             // 
+            this.layoutControlLogs.Controls.Add(this.spltcMessages);
             this.layoutControlLogs.Controls.Add(this.sbtnPageFirst);
             this.layoutControlLogs.Controls.Add(this.sbtnMoreHighlight);
             this.layoutControlLogs.Controls.Add(this.sbtnPagePrevious);
@@ -2218,7 +2226,6 @@ namespace Analogy.UserControls
             this.layoutControlLogs.Controls.Add(this.chkbHighlight);
             this.layoutControlLogs.Controls.Add(this.sBtnLastPage);
             this.layoutControlLogs.Controls.Add(this.txtbHighlight);
-            this.layoutControlLogs.Controls.Add(this.gridControl);
             this.layoutControlLogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControlLogs.Location = new System.Drawing.Point(0, 0);
             this.layoutControlLogs.Name = "layoutControlLogs";
@@ -2227,6 +2234,24 @@ namespace Analogy.UserControls
             this.layoutControlLogs.Size = new System.Drawing.Size(1847, 248);
             this.layoutControlLogs.TabIndex = 6;
             this.layoutControlLogs.Text = "layoutControl2";
+            // 
+            // spltcMessages
+            // 
+            this.spltcMessages.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            this.spltcMessages.Location = new System.Drawing.Point(7, 7);
+            this.spltcMessages.Name = "spltcMessages";
+            // 
+            // spltcMessages.Panel1
+            // 
+            this.spltcMessages.Panel1.Controls.Add(this.gridControl);
+            this.spltcMessages.Panel1.Text = "Panel1";
+            // 
+            // spltcMessages.Panel2
+            // 
+            this.spltcMessages.Panel2.Text = "Panel2";
+            this.spltcMessages.Size = new System.Drawing.Size(1833, 203);
+            this.spltcMessages.SplitterPosition = 251;
+            this.spltcMessages.TabIndex = 0;
             // 
             // sbtnPageFirst
             // 
@@ -2300,7 +2325,6 @@ namespace Analogy.UserControls
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem20,
             this.layoutControlItem22,
             this.layoutControlItem23,
             this.layoutControlItem24,
@@ -2308,20 +2332,12 @@ namespace Analogy.UserControls
             this.layoutControlItem27,
             this.layoutControlItem28,
             this.layoutControlItem21,
-            this.lblPageNumber});
+            this.lblPageNumber,
+            this.layoutControlItem26});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             this.layoutControlGroup1.Size = new System.Drawing.Size(1847, 248);
             this.layoutControlGroup1.TextVisible = false;
-            // 
-            // layoutControlItem20
-            // 
-            this.layoutControlItem20.Control = this.gridControl;
-            this.layoutControlItem20.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(1837, 207);
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem20.TextVisible = false;
             // 
             // layoutControlItem22
             // 
@@ -2395,6 +2411,15 @@ namespace Analogy.UserControls
             this.lblPageNumber.Text = "Page 1/1";
             this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
+            // 
+            // layoutControlItem26
+            // 
+            this.layoutControlItem26.Control = this.spltcMessages;
+            this.layoutControlItem26.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem26.Name = "layoutControlItem26";
+            this.layoutControlItem26.Size = new System.Drawing.Size(1837, 207);
+            this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem26.TextVisible = false;
             // 
             // chkLstLogLevel
             // 
@@ -3210,9 +3235,13 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuGoTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlLogs)).EndInit();
             this.layoutControlLogs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltcMessages.Panel1)).EndInit();
+            this.spltcMessages.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltcMessages.Panel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltcMessages)).EndInit();
+            this.spltcMessages.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtbHighlight.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
@@ -3221,6 +3250,7 @@ namespace Analogy.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblPageNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).EndInit();
@@ -3477,7 +3507,6 @@ namespace Analogy.UserControls
         private DevExpress.XtraBars.BarButtonItem bbtnRawMessageViewer;
         private DevExpress.XtraLayout.LayoutControl layoutControlLogs;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
         private DevExpress.XtraEditors.CheckEdit chkbHighlight;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem23;
@@ -3495,5 +3524,7 @@ namespace Analogy.UserControls
         private DevExpress.XtraEditors.DropDownButton ddbGoTo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
         private DevExpress.XtraBars.PopupMenu popupMenuGoTo;
+        private DevExpress.XtraEditors.SplitContainerControl spltcMessages;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
     }
 }
