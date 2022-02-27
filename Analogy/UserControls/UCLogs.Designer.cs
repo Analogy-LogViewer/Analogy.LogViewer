@@ -289,6 +289,7 @@ namespace Analogy.UserControls
             this.xtabFilters = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.btsiInlineJsonViewer = new DevExpress.XtraBars.BarToggleSwitchItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -838,8 +839,9 @@ namespace Analogy.UserControls
             this.bciTimeOffset,
             this.bciTimeOffsetPredefined,
             this.bciTimeOffsetUTCToLocal,
-            this.bciTimeOffsetLocalToUTC});
-            this.barManager1.MaxItemId = 89;
+            this.bciTimeOffsetLocalToUTC,
+            this.btsiInlineJsonViewer});
+            this.barManager1.MaxItemId = 90;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -864,7 +866,8 @@ namespace Analogy.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btsiInlineJsonViewer)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
             this.barTopFiltering.OptionsBar.DisableClose = true;
@@ -3171,6 +3174,12 @@ namespace Analogy.UserControls
             this.xtraTabPage2.Size = new System.Drawing.Size(1496, 142);
             this.xtraTabPage2.Text = "Grid Pane";
             // 
+            // btsiInlineJsonViewer
+            // 
+            this.btsiInlineJsonViewer.Caption = "Inline Json Viewer";
+            this.btsiInlineJsonViewer.Id = 89;
+            this.btsiInlineJsonViewer.Name = "btsiInlineJsonViewer";
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3526,5 +3535,6 @@ namespace Analogy.UserControls
         private DevExpress.XtraBars.PopupMenu popupMenuGoTo;
         private DevExpress.XtraEditors.SplitContainerControl spltcMessages;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
+        private DevExpress.XtraBars.BarToggleSwitchItem btsiInlineJsonViewer;
     }
 }

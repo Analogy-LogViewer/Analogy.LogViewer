@@ -26,7 +26,9 @@ namespace Analogy
 
         private CommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
+        private bool _inlineJsonViewer;
         public event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
+        public event EventHandler<bool> OnInlineJsonViewerChanged;
         public event EventHandler<CommandLayout> OnRibbonControlStyleChanged;
         private string LocalSettingFileName { get; } = "AnalogyLocalSettings.json";
         public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
@@ -153,7 +155,16 @@ namespace Analogy
         /// </summary>
         public int FilePoolingDelayInterval { get; set; }
         public bool EnableFilePoolingDelay { get; set; }
-        public bool InlineJsonViewer { get; set; }
+
+        public bool InlineJsonViewer
+        {
+            get => _inlineJsonViewer;
+            set
+            {
+                _inlineJsonViewer = value;
+                OnInlineJsonViewerChanged?.Invoke(this,value);
+            }
+        }
 
         public UserSettingsManager()
         {

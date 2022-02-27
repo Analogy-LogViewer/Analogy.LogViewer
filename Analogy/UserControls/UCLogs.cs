@@ -146,7 +146,7 @@ namespace Analogy.UserControls
         }
         private LogLevelSelectionType logLevelSelectionType = UserSettingsManager.UserSettings.LogLevelSelection;
         #endregion
-        private  JsonTreeView JsonTreeView { get; set; }
+        private JsonTreeView JsonTreeView { get; set; }
 
         public UCLogs()
         {
@@ -212,7 +212,7 @@ namespace Analogy.UserControls
             {
                 return;
             }
-            
+
             wsLogs.CaptureWorkspace("Default");
 
             LoadUISettings();
@@ -288,6 +288,10 @@ namespace Analogy.UserControls
         }
         private void SetupEventsHandlers()
         {
+            Settings.OnInlineJsonViewerChanged += (s, showJson) =>
+            {
+                spltcMessages.PanelVisibility = showJson ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
+            };
             dockManager1.StartDocking += (s, e) =>
             {
                 if (e.Panel.DockedAsTabbedDocument)
@@ -433,6 +437,11 @@ namespace Analogy.UserControls
             bbiBookmarkNonPersist.ItemClick += tsmiBookmark_Click;
             bbiDatetiemFilterTo.ItemClick += tsmiDateFilterOlder_Click;
             bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
+            btsiInlineJsonViewer.CheckedChanged += (s, e) =>
+            {
+                Settings.InlineJsonViewer = btsiInlineJsonViewer.Checked;
+
+            };
             sbtnToggleSearchFilter.Click += (_, __) =>
             {
                 Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
@@ -1210,6 +1219,9 @@ namespace Analogy.UserControls
 
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
+            btsiInlineJsonViewer.Checked = Settings.InlineJsonViewer;
+            spltcMessages.PanelVisibility = Settings.InlineJsonViewer ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
+
         }
 
         private void SetupMessageDetailPanel()
@@ -2992,6 +3004,10 @@ namespace Analogy.UserControls
 
             var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
             LoadTextBoxes(focusedMassage);
+            if (Settings.InlineJsonViewer &&focusedMassage.RawTextType==AnalogyRowTextType.JSON)
+            {
+                JsonTreeView.ShowJson(focusedMassage.RawText);
+            }
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
             if (!LoadingInProgress)
             {

@@ -36,10 +36,10 @@ namespace Analogy.Tools.JsonViewer
             MouseDown += this_MouseDown;
             expandAllMenuItem.Click += expandAllMenuItem_Click;
 
-            LoadImgaeList();
+            LoadImageList();
         }
 
-        private void LoadImgaeList()
+        private void LoadImageList()
         {
             ImageList treeImages = new ImageList();
             treeImages.ImageSize = new Size(16, 16);
