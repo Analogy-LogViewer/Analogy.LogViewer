@@ -153,6 +153,7 @@ namespace Analogy
         /// </summary>
         public int FilePoolingDelayInterval { get; set; }
         public bool EnableFilePoolingDelay { get; set; }
+        public bool InlineJsonViewer { get; set; }
 
         public UserSettingsManager()
         {
@@ -293,9 +294,10 @@ namespace Analogy
                 TimeOffsetType = timeOffsetTypeValue;
             }
             DefaultUserLogFolder = Settings.Default.DefaultUserLogFolder;
-            TimeOffset=TimeSpan.FromMilliseconds(Settings.Default.TimeOffset);
+            TimeOffset = TimeSpan.FromMilliseconds(Settings.Default.TimeOffset);
             FilePoolingDelayInterval = Settings.Default.FilePoolingDelayInterval;
             EnableFilePoolingDelay = Settings.Default.FilePoolingDelayEnable;
+            InlineJsonViewer = Settings.Default.InlineJsonViewer;
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -377,6 +379,7 @@ namespace Analogy
             TimeOffset = settings.TimeOffset;
             FilePoolingDelayInterval = settings.FilePoolingDelayInterval;
             EnableFilePoolingDelay = settings.EnableFilePoolingDelay;
+            InlineJsonViewer = settings.InlineJsonViewer;
         }
 
         private UserSettings CreateUserSettings()
@@ -453,13 +456,14 @@ namespace Analogy
                 UseCustomLogsLayout = UseCustomLogsLayout,
                 ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML,
                 MainFormType = MainFormType,
-                TimeOffsetType= TimeOffsetType,
+                TimeOffsetType = TimeOffsetType,
                 DefaultUserLogFolder = DefaultUserLogFolder,
                 TimeOffset = TimeOffset,
                 FilePoolingDelayInterval = FilePoolingDelayInterval,
-                EnableFilePoolingDelay = EnableFilePoolingDelay
+                EnableFilePoolingDelay = EnableFilePoolingDelay,
+                InlineJsonViewer = InlineJsonViewer
 
-        };
+            };
             return userSettings;
         }
 

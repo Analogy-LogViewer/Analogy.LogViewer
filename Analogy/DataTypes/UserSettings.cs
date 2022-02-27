@@ -89,6 +89,6 @@ namespace Analogy.DataTypes
         /// </summary>
         public int FilePoolingDelayInterval { get; set; }
         public bool EnableFilePoolingDelay { get; set; }
-
+        public bool InlineJsonViewer { get;set; }
     }
 }
