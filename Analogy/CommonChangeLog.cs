@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.8.4 - [DevExpress] Update version to V21.2.6 #1211",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,03,08)),
                 new AnalogyChangeLog("V4.8.3 -  Inline Json Viewer in the message log grid #1208",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,03,04)),
                 new AnalogyChangeLog("V4.8.2 - [DevExpress] Update version to V21.2.5 #1201",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,01,25)),
                 new AnalogyChangeLog("V4.8.1 - [Net6] missing net 6 tag for download update from github #1184",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2021,12,19)),
