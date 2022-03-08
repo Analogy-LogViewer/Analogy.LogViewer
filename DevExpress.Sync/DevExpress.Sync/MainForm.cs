@@ -26,6 +26,7 @@ namespace DevExpress.Sync
             var sourceFolder = txtbSource.Text;
             CopyFiles(Path.Combine(targetFolder, ".net core"), sourceFolder, true);
             CopyFiles(Path.Combine(targetFolder, ".net framework"), sourceFolder, false);
+            MessageBox.Show("Done", "Done");
 
         }
 
