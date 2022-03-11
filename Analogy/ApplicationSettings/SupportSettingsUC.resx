@@ -169,28 +169,31 @@
         RFpOjlJ5EVomvvB6zHGb5mOw38f/ffTr9z+VSihwJEeEQQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="lblPaypal.Text" xml:space="preserve">
+    <value>&lt;href=https://www.paypal.com/donate/?business=MCP57TBRAAVXA&amp;no_recurring=0&amp;item_name=Support+Open+source+Projects+%28Analogy+Log+Viewer%2C+HDF5-CSHARP%2C+etc%29&amp;currency_code=USD&gt;Support the project with small PayPal donation&lt;/href&gt;</value>
+  </data>
   <data name="lblBinance.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADiYAAA4mAaLvJfwAAAQeSURBVHhe5Zo7b9NQGIbDAAxcxEWCgXKT2EpTXwQdWBiZ
-        ALEyg1AF/IkKCTYG/gIqQswVhUJV26mC6EKhsAI/gErwAw6fj8+r1I59/B1fkth5pVckwTk+z2M7vkBn
-        nBGB81B41m31droi4X37H3V36iTsgUdJgjsdElLg90ho+Z6ggUfbK4EBj7ZPggE82h4JBeDR5ksgiMcJ
-        KNPuksA7arhmhSZfFh5tngSadFXwaHMk0GSrhkcnXwJNsi54dHIl0OTqhkcnTwJNqhh84HylP38NfZ7f
-        yZFAkykKvy363RnhOV1630wJwncXaRJ/Uyanb2B/E4F7Tg3TET3LEr7zO3VZff/QWDfVMKNNVfBIKQme
-        dUsNM5oI36oUHmnEnkDgd+uAR0pJ8K3rapj6IvqXT9PKthIr15cJjxSSENjvxPrsYTVEvYkkODwJhvCI
-        kYRRwiOiv5AvoSA8wpIwDnhEK6EkPKKVUDe8WLl0UL3MjOh1T9FkPscnRld4G1fOqkUyI4JrR8SWu1+9
-        zQyNOU9jxi+WPGdVfOkeUotkRuzMHlAvzSI8+xGtKBCbsyfUR5mJSeDC9xeO0rIf6TvL5hKctyz4desC
-        ido2frKk4GG7x5bg2W8M4dXWNJAQCuPC+/Z3tQ7+4zXRi8FjgiwJnAzBD8qSwEkCHs2XkNjy8VYgQQOP
-        lpaQAY9mS9DCoyUkMODRwhJy4FGSkPhnOBY8WkCCATxqLIEJjw4kGMEPypYg4X0j+KjMH8YwhvBoJIFe
-        LCX+Ir/hw4zN+TNq/dqINYPL5ljpVLea/2sfRmy4c7S84UOV8IbOuR8N0DOQEJ5X17sz8ovMGN07yPLO
-        83tj9mSJ4HvOPfXVKCwJ4ZY3hEfoUGBKMIdHeBJS4BGthAJbPpn8PaE4PKKXoIFHUiWU2PLJSAlB2vOE
-        8vBIugQGPBKTwISXNzaB80KsXT2pPsrM8J7Agxefuhdp2eecs0NcggE8InruEht+RZ7nP0TC7E2eBPwm
-        GMAHzg8lbVm8zr/LUxJ+GsMjdH49pl5mRl3kRPAoV0J4A2UOH9WzX7Ek+HPH1cvqI3d7334fm9igQRUr
-        p8PxPI21kxgbfVn23qFwFPxaYkLJlpIg4b3cK7zRS2DCo4UkMOHR0UmQ8F7imM+vkQRDeHQ0EugH7kHK
-        yjllSSgIT6VTne/cUMPUG1rh0+EJsKqVUAqeNowaZjShFVcqoVHwCE2gEgmNhEfoAuVJ+uRyKx+qiA15
-        eRu/yGFVHvPR/fy4U1hCeMXYdHikxJ5g2AmER+qXMMHwSH0SGgCPVC+hQfBIdRIaCI+Ul9Bg+DCi09kn
-        fOtZOlxO5X/EshbVUM1NIQltgUeMJLQNHokkOHoJbYVHtBIkvNteeCRVwrTAIzEJ0waPDH4Yx3nMdzr/
-        AUSrshC1/yIAAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        IwAADiMBj1VACgAABB5JREFUeF7lmjtv01AYhsMADFzERYKBcpPYSlNfBB1YGJkAsTKDUAX8iQoJNgb+
+        AipCzBWFQlXbqYLoQqGwAj+ASvADDp+Pz6vUjn38HV+S2HmlVyTBOT7PYzu+QGecEYHzUHjWbfV2uiLh
+        ffsfdXfqJOyBR0mCOx0SUuD3SGj5nqCBR9srgQGPtk+CATzaHgkF4NHmSyCIxwko0+6SwDtquGaFJl8W
+        Hm2eBJp0VfBocyTQZKuGRydfAk2yLnh0ciXQ5OqGRydPAk2qGHzgfKU/fw19nt/JkUCTKQq/LfrdGeE5
+        XXrfTAnCdxdpEn9TJqdvYH8TgXtODdMRPcsSvvM7dVl9/9BYN9Uwo01V8EgpCZ51Sw0zmgjfqhQeacSe
+        QOB364BHSknwretqmPoi+pdP08q2EivXlwmPFJIQ2O/E+uxhNUS9iSQ4PAmG8IiRhFHCI6K/kC+hIDzC
+        kjAOeEQroSQ8opVQN7xYuXRQvcyM6HVP0WQ+xydGV3gbV86qRTIjgmtHxJa7X73NDI05T2PGL5Y8Z1V8
+        6R5Si2RG7MweUC/NIjz7Ea0oEJuzJ9RHmYlJ4ML3F47Ssh/pO8vmEpy3LPh16wKJ2jZ+sqTgYbvHluDZ
+        bwzh1dY0kBAK48L79ne1Dv7jNdGLwWOCLAmcDMEPypLASQIezZeQ2PLxViBBA4+WlpABj2ZL0MKjJSQw
+        4NHCEnLgUZKQ+Gc4FjxaQIIBPGosgQmPDiQYwQ/KliDhfSP4qMwfxjCG8GgkgV4sJf4iv+HDjM35M2r9
+        2og1g8vmWOlUt5r/ax9GbLhztLzhQ5Xwhs65Hw3QM5AQnlfXuzPyi8wY3TvI8s7ze2P2ZInge8499dUo
+        LAnhljeER+hQYEowh0d4ElLgEa2EAls+mfw9oTg8opeggUdSJZTY8slICUHa84Ty8Ei6BAY8EpPAhJc3
+        NoHzQqxdPak+yszwnsCDF5+6F2nZ55yzQ1yCATwieu4SG35Fnuc/RMLsTZ4E/CYYwAfODyVtWbzOv8tT
+        En4awyN0fj2mXmZGXeRE8ChXQngDZQ4f1bNfsST4c8fVy+ojd3vffh+b2KBBFSunw/E8jbWTGBt9Wfbe
+        oXAU/FpiQsmWkiDhvdwrvNFLYMKjhSQw4dHRSZDwXuKYz6+RBEN4dDQS6AfuQcrKOWVJKAhPpVOd79xQ
+        w9QbWuHT4QmwqpVQCp42jBpmNKEVVyqhUfAITaASCY2ER+gC5Un65HIrH6qIDXl5G7/IYVUe89H9/LhT
+        WEJ4xdh0eKTEnmDYCYRH6pcwwfBIfRIaAI9UL6FB8Eh1EhoIj5SX0GD4MKLT2Sd861k6XE7lf8SyFtVQ
+        zU0hCW2BR4wktA0eiSQ4eglthUe0EiS82154JFXCtMAjMQnTBo8MfhjHecx3Ov8BRKuyELX/IgAAAAAA
+        SUVORK5CYII=
 </value>
   </data>
 </root>
