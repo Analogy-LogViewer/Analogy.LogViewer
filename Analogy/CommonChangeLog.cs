@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.8.4 - Bump Markdig from 0.27.0 to 0.28.0 #1213",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,03,13)),
                 new AnalogyChangeLog("V4.8.4 - [DevExpress] Update version to V21.2.6 #1211",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,03,08)),
                 new AnalogyChangeLog("V4.8.3 -  Inline Json Viewer in the message log grid #1208",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,03,04)),
                 new AnalogyChangeLog("V4.8.2 - [DevExpress] Update version to V21.2.5 #1201",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,01,25)),

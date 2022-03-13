@@ -95,10 +95,10 @@
             this.highlight1149.Location = new System.Drawing.Point(0, 128);
             this.highlight1149.Name = "highlight1149";
             this.highlight1149.Padding = new System.Windows.Forms.Padding(5);
-            this.highlight1149.Size = new System.Drawing.Size(162, 26);
+            this.highlight1149.Size = new System.Drawing.Size(158, 26);
             this.highlight1149.TabIndex = 8;
-            this.highlight1149.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1149> Fluent " +
-    "design form #1149</href>";
+            this.highlight1149.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1149>Fluent d" +
+    "esign form #1149</href>";
             this.highlight1149.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // highlight1142
