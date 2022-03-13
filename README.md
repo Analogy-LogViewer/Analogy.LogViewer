@@ -4,7 +4,6 @@
 <p align="center">
     
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9ff37aaf309b45f0bb2156465eb47b91)](https://app.codacy.com/gh/Analogy-LogViewer/Analogy.LogViewer?utm_source=github.com&utm_medium=referral&utm_content=Analogy-LogViewer/Analogy.LogViewer&utm_campaign=Badge_Grade)
-[![Gitter](https://badges.gitter.im/Analogy-LogViewer/community.svg)](https://gitter.im/Analogy-LogViewer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues">
     <img src="https://img.shields.io/github/issues/Analogy-LogViewer/Analogy.LogViewer"  alt="Issues" />
 </a>
