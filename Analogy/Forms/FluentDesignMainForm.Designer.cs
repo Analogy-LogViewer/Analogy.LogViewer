@@ -31,12 +31,12 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -72,6 +72,7 @@ namespace Analogy
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtom = new DevExpress.XtraBars.Bar();
             this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiKofi = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPayPal = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnStar = new DevExpress.XtraBars.BarButtonItem();
@@ -336,9 +337,10 @@ namespace Analogy
             this.bbtnItemHelp,
             this.bbtnSponsorOpenCollection,
             this.bbiBinance,
-            this.bbiPayPal});
+            this.bbiPayPal,
+            this.bbiKofi});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 29;
+            this.barManager1.MaxItemId = 30;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -465,6 +467,7 @@ namespace Analogy
             this.barButtom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.barButtom.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSponsorOpenCollection),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiKofi),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiPayPal),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiBinance),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnStar),
@@ -487,13 +490,21 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem3.Text = "Sponsor";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Support this project at Open Collective";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Sponsor";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Support this project at Open Collective";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
             this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // bbiKofi
+            // 
+            this.bbiKofi.Caption = "Ko-Fi";
+            this.bbiKofi.Id = 29;
+            this.bbiKofi.ImageOptions.Image = global::Analogy.Properties.Resources.ko_fi_logo_blue_16x16;
+            this.bbiKofi.Name = "bbiKofi";
+            this.bbiKofi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bbiPayPal
             // 
@@ -502,11 +513,11 @@ namespace Analogy
             this.bbiPayPal.ImageOptions.SvgImage = global::Analogy.Properties.Resources.paypal16x16;
             this.bbiPayPal.Name = "bbiPayPal";
             this.bbiPayPal.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem4.Text = "PayPal Donation";
-            toolTipItem4.Text = "Support the project with small PayPal donation";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.bbiPayPal.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "PayPal Donation";
+            toolTipItem2.Text = "Support the project with small PayPal donation";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.bbiPayPal.SuperTip = superToolTip2;
             // 
             // bbiBinance
             // 
@@ -747,5 +758,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiPayPal;
         private DevExpress.Utils.ImageCollection FactoriesImagesSmall;
         private DevExpress.Utils.ImageCollection FactoriesImagesLarge;
+        private DevExpress.XtraBars.BarButtonItem bbiKofi;
     }
 }

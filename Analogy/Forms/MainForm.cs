@@ -368,6 +368,10 @@ namespace Analogy.Forms
                 uc.Dock = DockStyle.Fill;
                 page.Text = "File Plotting";
                 dockManager1.ActivePanel = page;
+            }; 
+            bbiKofi.ItemClick += (s, e) =>
+            {
+                Utils.OpenLink("https://ko-fi.com/liorbanai");
             };
             bbiPayPal.ItemClick += (s, e) =>
             {

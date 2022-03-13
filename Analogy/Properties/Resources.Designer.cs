@@ -922,6 +922,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ko_fi_logo_blue_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("ko-fi-logo-blue-16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ko_fi_logo_blue_32x32 {
             get {
                 object obj = ResourceManager.GetObject("ko-fi-logo-blue-32x32", resourceCulture);
