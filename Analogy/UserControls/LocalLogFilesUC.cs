@@ -219,10 +219,6 @@ namespace Analogy
             await LoadFilesAsync(files, chkbSelectionMode.Checked);
         }
 
-        private async void treeList1_RowClick(object sender, DevExpress.XtraTreeList.RowClickEventArgs e)
-        {
-  
-        }
 
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
         {

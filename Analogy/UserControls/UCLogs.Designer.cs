@@ -125,6 +125,7 @@ namespace Analogy.UserControls
             this.bciTimeOffsetUTCToLocal = new DevExpress.XtraBars.BarCheckItem();
             this.bciTimeOffsetLocalToUTC = new DevExpress.XtraBars.BarCheckItem();
             this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
+            this.btsiInlineJsonViewer = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
@@ -145,6 +146,7 @@ namespace Analogy.UserControls
             this.bbtnCancel = new DevExpress.XtraBars.BarButtonItem();
             this.bprogressBar = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemMarqueeProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
+            this.bsiProgress = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -289,7 +291,6 @@ namespace Analogy.UserControls
             this.xtabFilters = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.btsiInlineJsonViewer = new DevExpress.XtraBars.BarToggleSwitchItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -840,8 +841,9 @@ namespace Analogy.UserControls
             this.bciTimeOffsetPredefined,
             this.bciTimeOffsetUTCToLocal,
             this.bciTimeOffsetLocalToUTC,
-            this.btsiInlineJsonViewer});
-            this.barManager1.MaxItemId = 90;
+            this.btsiInlineJsonViewer,
+            this.bsiProgress});
+            this.barManager1.MaxItemId = 91;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -1223,6 +1225,12 @@ namespace Analogy.UserControls
             this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
             // 
+            // btsiInlineJsonViewer
+            // 
+            this.btsiInlineJsonViewer.Caption = "Inline Json Viewer";
+            this.btsiInlineJsonViewer.Id = 89;
+            this.btsiInlineJsonViewer.Name = "btsiInlineJsonViewer";
+            // 
             // barMessage
             // 
             this.barMessage.BarName = "Message";
@@ -1396,7 +1404,8 @@ namespace Analogy.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.bstaticTotalMessages),
             new DevExpress.XtraBars.LinkPersistInfo(this.bstaticAlert),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnCancel),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.bprogressBar, "", false, true, true, 534)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.bprogressBar, "", false, true, true, 534),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiProgress)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -1438,6 +1447,12 @@ namespace Analogy.UserControls
             // repositoryItemMarqueeProgressBar1
             // 
             this.repositoryItemMarqueeProgressBar1.Name = "repositoryItemMarqueeProgressBar1";
+            // 
+            // bsiProgress
+            // 
+            this.bsiProgress.Caption = "0/0";
+            this.bsiProgress.Id = 90;
+            this.bsiProgress.Name = "bsiProgress";
             // 
             // barDockControlTop
             // 
@@ -3174,12 +3189,6 @@ namespace Analogy.UserControls
             this.xtraTabPage2.Size = new System.Drawing.Size(1496, 142);
             this.xtraTabPage2.Text = "Grid Pane";
             // 
-            // btsiInlineJsonViewer
-            // 
-            this.btsiInlineJsonViewer.Caption = "Inline Json Viewer";
-            this.btsiInlineJsonViewer.Id = 89;
-            this.btsiInlineJsonViewer.Name = "btsiInlineJsonViewer";
-            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3536,5 +3545,6 @@ namespace Analogy.UserControls
         private DevExpress.XtraEditors.SplitContainerControl spltcMessages;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
         private DevExpress.XtraBars.BarToggleSwitchItem btsiInlineJsonViewer;
+        private DevExpress.XtraBars.BarStaticItem bsiProgress;
     }
 }

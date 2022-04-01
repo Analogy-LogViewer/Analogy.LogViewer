@@ -44,11 +44,11 @@
 		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="1.6.3" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.15.2" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="2.1.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="2.0.1" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.0.1" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.0.1" />
 		<PackageReference Include="Grpc.Core" Version="2.45.0" />
-		<PackageReference Include="Markdig" Version="0.28.0" />
+		<PackageReference Include="Markdig" Version="0.28.1" />
 		<PackageReference Include="MessagePack" Version="2.3.85" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
@@ -58,7 +58,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="1.1.1">
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="1.2.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -66,7 +66,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Example" Version="2.3.1">
+		<PackageReference Include="Analogy.LogViewer.Example" Version="3.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -94,7 +94,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="2.5.1">
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="2.5.4-rc">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

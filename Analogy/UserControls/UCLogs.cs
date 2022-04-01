@@ -76,6 +76,7 @@ namespace Analogy.UserControls
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
+        private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
 
         private List<XtraFormLogGrid> ExternalWindows
@@ -229,6 +230,19 @@ namespace Analogy.UserControls
                     return;
                 }
                 bprogressBar.Caption = $"{value.Processed}/{value.Total}";
+            });
+
+            DataProviderProgressReporter = new Progress<AnalogyFileReadProgress>((value) =>
+            {
+                if (value.ProgressType == AnalogyFileReadProgressType.Percentage)
+                {
+                    bsiProgress.Caption = Math.Round((double)value.TotalProcessed / value.TotalProcessed, 2) * 100 + "%";
+                }
+                else
+                {
+                    bsiProgress.Caption = $"{value.TotalProcessed}/{value.TotalEntries}";
+
+                }
             });
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
@@ -420,8 +434,11 @@ namespace Analogy.UserControls
             bbiJsonViewer.ItemClick += (s, e) =>
             {
                 (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-                JsonViewerForm j = new JsonViewerForm(message);
-                j.Show(this);
+                if (message != null)
+                {
+                    JsonViewerForm j = new JsonViewerForm(message);
+                    j.Show(this);
+                }
             };
             bbiDiffTime.ItemClick += tsmiTimeDiff_Click;
             bbiIncreaseFontSize.ItemClick += tsmiIncreaseFont_Click;
@@ -947,6 +964,12 @@ namespace Analogy.UserControls
             if (dataProvider is IAnalogyRealTimeDataProvider)
             {
                 RealTimeMode = true;
+                bsiProgress.Visibility = BarItemVisibility.Never;
+            }
+            else
+            {
+                RealTimeMode = false;
+                bsiProgress.Visibility = BarItemVisibility.Always;
             }
             bBtnImport.Visibility = BarItemVisibility.Always;
             bBtnImport.Enabled = FileDataProvider != null;
@@ -1141,6 +1164,7 @@ namespace Analogy.UserControls
         }
         private void LoadUISettings()
         {
+            bsiProgress.Caption = string.Empty;
             switch (Settings.TimeOffsetType)
             {
                 case TimeOffsetType.None:
@@ -1944,7 +1968,7 @@ namespace Analogy.UserControls
 
         }
 
-        public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage val)
+        public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage? val)
         {
             if (!LogGrid.DataController.IsReady || val == null)
             {
@@ -3004,7 +3028,7 @@ namespace Analogy.UserControls
 
             var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
             LoadTextBoxes(focusedMassage);
-            if (Settings.InlineJsonViewer &&focusedMassage.RawTextType==AnalogyRowTextType.JSON)
+            if (Settings.InlineJsonViewer && focusedMassage.RawTextType == AnalogyRowTextType.JSON)
             {
                 JsonTreeView.ShowJson(focusedMassage.RawText);
             }
@@ -3331,7 +3355,7 @@ namespace Analogy.UserControls
 
         public void ReportFileReadProgress(AnalogyFileReadProgress progress)
         {
-            //noop
+            DataProviderProgressReporter.Report(progress);
         }
     }
 }

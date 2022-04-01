@@ -19,9 +19,7 @@ namespace Analogy.Managers
 
         public bool HasErrorMessages => messages.Any(m => m.Level == AnalogyLogLevel.Critical || m.Level == AnalogyLogLevel.Error);
         public bool HasWarningMessages => messages.Any(m => m.Level == AnalogyLogLevel.Warning);
-        //private string FileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AnalogyInternalLog_{postfix}.ajson");
         private bool ContentChanged;
-        private static int postfix = 0;
         private List<AnalogyLogMessage> messages;
         public event EventHandler OnNewError;
         public List<string> ignoredMessages;
