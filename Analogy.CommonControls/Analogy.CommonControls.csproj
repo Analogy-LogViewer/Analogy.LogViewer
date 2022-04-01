@@ -344,7 +344,7 @@
 	</ItemGroup>
 
 		<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="1.6.3" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="2.0.1" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.15.2" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="2.1.0" />
 		<PackageReference Include="Markdig" Version="0.28.0" />
