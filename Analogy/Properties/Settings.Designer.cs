@@ -992,5 +992,17 @@ namespace Analogy.Properties {
                 this["InlineJsonViewer"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowProcessedCounter {
+            get {
+                return ((bool)(this["ShowProcessedCounter"]));
+            }
+            set {
+                this["ShowProcessedCounter"] = value;
+            }
+        }
     }
 }

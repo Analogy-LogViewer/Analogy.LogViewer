@@ -45,8 +45,10 @@ namespace Analogy.ApplicationSettings
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.chklExclusionLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.ceEnablePoolingDelay = new DevExpress.XtraEditors.CheckEdit();
             this.sePoolingDelay = new DevExpress.XtraEditors.SpinEdit();
+            this.ceEnablePoolingDelay = new DevExpress.XtraEditors.CheckEdit();
+            this.groupControlExperimental = new DevExpress.XtraEditors.GroupControl();
+            this.tsShowProgressCounter = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).BeginInit();
             this.gcFiltering.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsTrackActiveMessage.Properties)).BeginInit();
@@ -65,8 +67,11 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.chklExclusionLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ceEnablePoolingDelay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sePoolingDelay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceEnablePoolingDelay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlExperimental)).BeginInit();
+            this.groupControlExperimental.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsShowProgressCounter.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcFiltering
@@ -278,15 +283,6 @@ namespace Analogy.ApplicationSettings
             this.groupControl2.TabIndex = 38;
             this.groupControl2.Text = "File pooling Settings";
             // 
-            // ceEnablePoolingDelay
-            // 
-            this.ceEnablePoolingDelay.Location = new System.Drawing.Point(21, 33);
-            this.ceEnablePoolingDelay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ceEnablePoolingDelay.Name = "ceEnablePoolingDelay";
-            this.ceEnablePoolingDelay.Properties.Caption = "Enable Minimum File Pooling Delay when file Changes (in Seconds)";
-            this.ceEnablePoolingDelay.Size = new System.Drawing.Size(336, 24);
-            this.ceEnablePoolingDelay.TabIndex = 7;
-            // 
             // sePoolingDelay
             // 
             this.sePoolingDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -313,16 +309,48 @@ namespace Analogy.ApplicationSettings
             this.sePoolingDelay.Size = new System.Drawing.Size(118, 24);
             this.sePoolingDelay.TabIndex = 8;
             // 
+            // ceEnablePoolingDelay
+            // 
+            this.ceEnablePoolingDelay.Location = new System.Drawing.Point(21, 33);
+            this.ceEnablePoolingDelay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ceEnablePoolingDelay.Name = "ceEnablePoolingDelay";
+            this.ceEnablePoolingDelay.Properties.Caption = "Enable Minimum File Pooling Delay when file Changes (in Seconds)";
+            this.ceEnablePoolingDelay.Size = new System.Drawing.Size(577, 24);
+            this.ceEnablePoolingDelay.TabIndex = 7;
+            // 
+            // groupControlExperimental
+            // 
+            this.groupControlExperimental.Controls.Add(this.tsShowProgressCounter);
+            this.groupControlExperimental.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControlExperimental.Location = new System.Drawing.Point(0, 787);
+            this.groupControlExperimental.Name = "groupControlExperimental";
+            this.groupControlExperimental.Size = new System.Drawing.Size(840, 60);
+            this.groupControlExperimental.TabIndex = 39;
+            this.groupControlExperimental.Text = "Experimental Settings";
+            // 
+            // tsShowProgressCounter
+            // 
+            this.tsShowProgressCounter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsShowProgressCounter.Location = new System.Drawing.Point(12, 30);
+            this.tsShowProgressCounter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsShowProgressCounter.Name = "tsShowProgressCounter";
+            this.tsShowProgressCounter.Properties.OffText = "Don\'t show count of processed messages when loading a file";
+            this.tsShowProgressCounter.Properties.OnText = "Show count of processed messages when loading a file";
+            this.tsShowProgressCounter.Size = new System.Drawing.Size(817, 24);
+            this.tsShowProgressCounter.TabIndex = 9;
+            // 
             // FilteringSettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.groupControlExperimental);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcFiltering);
             this.Name = "FilteringSettingsUC";
-            this.Size = new System.Drawing.Size(840, 798);
+            this.Size = new System.Drawing.Size(840, 871);
             this.Load += new System.EventHandler(this.FilteringSettingsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).EndInit();
             this.gcFiltering.ResumeLayout(false);
@@ -343,8 +371,11 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.chklExclusionLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ceEnablePoolingDelay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sePoolingDelay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceEnablePoolingDelay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlExperimental)).EndInit();
+            this.groupControlExperimental.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsShowProgressCounter.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,5 +400,7 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.CheckEdit ceEnablePoolingDelay;
         private DevExpress.XtraEditors.SpinEdit sePoolingDelay;
+        private DevExpress.XtraEditors.GroupControl groupControlExperimental;
+        private DevExpress.XtraEditors.ToggleSwitch tsShowProgressCounter;
     }
 }

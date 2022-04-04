@@ -66,7 +66,10 @@ namespace Analogy.ApplicationSettings
                 Settings.EnableFilePoolingDelay = ceEnablePoolingDelay.Checked;
             };
 
-
+            tsShowProgressCounter.IsOnChanged += (s, e) =>
+            {
+                Settings.ShowProcessedCounter = tsShowProgressCounter.IsOn;
+            };
 
 
         }
@@ -98,6 +101,7 @@ namespace Analogy.ApplicationSettings
 
             sePoolingDelay.Value = Settings.FilePoolingDelayInterval;
             ceEnablePoolingDelay.Checked = Settings.EnableFilePoolingDelay;
+            tsShowProgressCounter.IsOn = Settings.ShowProcessedCounter;
         }
     }
 }

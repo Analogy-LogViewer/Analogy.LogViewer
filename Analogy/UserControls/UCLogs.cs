@@ -138,14 +138,13 @@ namespace Analogy.UserControls
         private bool _realTimeMode;
         public bool RealTimeMode
         {
-            get => _realtimeUpdate;
             set
             {
                 _realtimeUpdate = value;
                 btsAutoScrollToBottom.Checked = _realtimeUpdate;
             }
         }
-        private LogLevelSelectionType logLevelSelectionType = UserSettingsManager.UserSettings.LogLevelSelection;
+        private LogLevelSelectionType LogLevelSelectionType => Settings.LogLevelSelection;
         #endregion
         private JsonTreeView JsonTreeView { get; set; }
 
@@ -234,6 +233,10 @@ namespace Analogy.UserControls
 
             DataProviderProgressReporter = new Progress<AnalogyFileReadProgress>((value) =>
             {
+                if (!Settings.ShowProcessedCounter)
+                {
+                    return;
+                }
                 if (value.ProgressType == AnalogyFileReadProgressType.Percentage)
                 {
                     bsiProgress.Caption = Math.Round((double)value.TotalProcessed / value.TotalProcessed, 2) * 100 + "%";
@@ -1037,7 +1040,7 @@ namespace Analogy.UserControls
                 }
                 else
                 {
-                    switch (logLevelSelectionType)
+                    switch (LogLevelSelectionType)
                     {
                         case LogLevelSelectionType.Single:
                             chkLstLogLevel.Items["Error + Critical"].CheckState = chkLstLogLevel.Items["Error + Critical"].CheckState == CheckState.Checked
@@ -1107,7 +1110,7 @@ namespace Analogy.UserControls
                 }
                 else
                 {
-                    switch (logLevelSelectionType)
+                    switch (LogLevelSelectionType)
                     {
                         case LogLevelSelectionType.Single:
                             chkLstLogLevel.Items["Error + Critical"].CheckState = chkLstLogLevel.Items["Error + Critical"].CheckState == CheckState.Checked
@@ -1165,6 +1168,7 @@ namespace Analogy.UserControls
         private void LoadUISettings()
         {
             bsiProgress.Caption = string.Empty;
+            bsiProgress.Visibility = Settings.ShowProcessedCounter ? BarItemVisibility.Always : BarItemVisibility.Never;
             switch (Settings.TimeOffsetType)
             {
                 case TimeOffsetType.None:
@@ -1855,7 +1859,7 @@ namespace Analogy.UserControls
             Settings.ExcludeText = Settings.SaveSearchFilters && txtbExclude.Text != null ? txtbExclude.Text : string.Empty;
 
             _filterCriteria.Levels = null;
-            switch (logLevelSelectionType)
+            switch (LogLevelSelectionType)
             {
                 case LogLevelSelectionType.Single:
                     if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)

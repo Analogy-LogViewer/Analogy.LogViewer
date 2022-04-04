@@ -90,5 +90,6 @@ namespace Analogy.DataTypes
         public int FilePoolingDelayInterval { get; set; }
         public bool EnableFilePoolingDelay { get; set; }
         public bool InlineJsonViewer { get;set; }
+        public bool ShowProcessedCounter { get; set; }
     }
 }

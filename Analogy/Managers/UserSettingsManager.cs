@@ -155,14 +155,14 @@ namespace Analogy
         /// </summary>
         public int FilePoolingDelayInterval { get; set; }
         public bool EnableFilePoolingDelay { get; set; }
-
+        public bool ShowProcessedCounter { get; set; }
         public bool InlineJsonViewer
         {
             get => _inlineJsonViewer;
             set
             {
                 _inlineJsonViewer = value;
-                OnInlineJsonViewerChanged?.Invoke(this,value);
+                OnInlineJsonViewerChanged?.Invoke(this, value);
             }
         }
 
@@ -309,6 +309,7 @@ namespace Analogy
             FilePoolingDelayInterval = Settings.Default.FilePoolingDelayInterval;
             EnableFilePoolingDelay = Settings.Default.FilePoolingDelayEnable;
             InlineJsonViewer = Settings.Default.InlineJsonViewer;
+            ShowProcessedCounter = Settings.Default.ShowProcessedCounter;
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -391,6 +392,7 @@ namespace Analogy
             FilePoolingDelayInterval = settings.FilePoolingDelayInterval;
             EnableFilePoolingDelay = settings.EnableFilePoolingDelay;
             InlineJsonViewer = settings.InlineJsonViewer;
+            ShowProcessedCounter = settings.ShowProcessedCounter;
         }
 
         private UserSettings CreateUserSettings()
@@ -472,7 +474,8 @@ namespace Analogy
                 TimeOffset = TimeOffset,
                 FilePoolingDelayInterval = FilePoolingDelayInterval,
                 EnableFilePoolingDelay = EnableFilePoolingDelay,
-                InlineJsonViewer = InlineJsonViewer
+                InlineJsonViewer = InlineJsonViewer,
+                ShowProcessedCounter = ShowProcessedCounter
 
             };
             return userSettings;
@@ -633,8 +636,10 @@ namespace Analogy
             Settings.Default.TimeOffsetType = TimeOffsetType.None.ToString();
             Settings.Default.DefaultUserLogFolder = DefaultUserLogFolder;
             Settings.Default.TimeOffset = TimeOffset.TotalMilliseconds;
-            Settings.Default.FilePoolingDelayInterval = Settings.Default.FilePoolingDelayInterval;
-            Settings.Default.FilePoolingDelayEnable = Settings.Default.FilePoolingDelayEnable;
+            Settings.Default.FilePoolingDelayInterval = FilePoolingDelayInterval;
+            Settings.Default.FilePoolingDelayEnable = EnableFilePoolingDelay;
+            Settings.Default.InlineJsonViewer = InlineJsonViewer;
+            Settings.Default.ShowProcessedCounter = ShowProcessedCounter;
             Settings.Default.Save();
         }
 
