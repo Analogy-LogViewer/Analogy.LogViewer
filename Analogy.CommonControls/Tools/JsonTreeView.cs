@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.CommonControls.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -41,19 +42,71 @@ namespace Analogy.CommonControls.Tools
         {
             ImageList treeImages = new ImageList();
             treeImages.ImageSize = new Size(16, 16);
-            ComponentResourceManager images = new ComponentResourceManager(typeof(JsonNodeImages));
-            foreach (var type in Enum.GetNames(typeof(JTokenType)))
+            foreach (JTokenType type in Enum.GetValues(typeof(JTokenType)))
             {
-                try
+                Bitmap image;
+                switch (type)
                 {
-                    treeImages.Images.Add(type, (Bitmap)images.GetObject(type));
+                    case JTokenType.None:
+                        image = Resources.None;
+                        break;
+                    case JTokenType.Object:
+                        image = Resources.Object;
+                        break;
+                    case JTokenType.Array:
+                        image = Resources.Array;
+                        break;
+                    case JTokenType.Constructor:
+                        image = Resources.None;
+                        break;
+                    case JTokenType.Property:
+                        image = Resources.None;
+                        break;
+                    case JTokenType.Comment:
+                        image = Resources.None;
+                        break;
+                    case JTokenType.Integer:
+                        image = Resources.Integer;
+                        break;
+                    case JTokenType.Float:
+                        image = Resources.Float;
+                        break;
+                    case JTokenType.String:
+                        image = Resources.String;
+                        break;
+                    case JTokenType.Boolean:
+                        image = Resources.Boolean;
+                        break;
+                    case JTokenType.Null:
+                        image = Resources.None;
+                        break;
+                    case JTokenType.Undefined:
+                        image = Resources.Undefined;
+                        break;
+                    case JTokenType.Date:
+                        image = Resources.Date;
+                        break;
+                    case JTokenType.Raw:
+                        image = Resources.Object;
+                        break;
+                    case JTokenType.Bytes:
+                        image = Resources.Object;
+                        break;
+                    case JTokenType.Guid:
+                        image = Resources.Guid;
+                        break;
+                    case JTokenType.Uri:
+                        image = Resources.Object;
+                        break;
+                    case JTokenType.TimeSpan:
+                        image = Resources.TimeSpan;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-                catch (Exception)
-                {
-                    treeImages.Images.Add(type, (Bitmap)images.GetObject("Undefined"));
-                }
-            }
 
+                treeImages.Images.Add(type.ToString(), image ?? Resources.Undefined);
+            }
             ImageList = treeImages;
         }
 

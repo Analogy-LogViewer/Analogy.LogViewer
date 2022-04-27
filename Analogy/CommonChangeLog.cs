@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.8.5 - Bump Markdig from 0.28.1 to 0.30.2  #1262",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,04,27)),
                 new AnalogyChangeLog("V4.8.5 - [DevExpress] Update version to V21.2.7 #1259",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,04,27)),
                 new AnalogyChangeLog("V4.8.5 - [UI] Add counter callback for messages read (User Settings) #1219",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,04,04)),
                 new AnalogyChangeLog("V4.8.5 - Add counter callback for messages read #1218",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,04,04)),
