@@ -105,6 +105,10 @@ namespace Analogy.Managers
                     {
                         downloadTag = downloadAsset.BrowserDownloadUrl;
                     }
+                    else
+                    {
+                        return ("", "");
+                    }
 
                 }
                 return ("Analogy Log viewer", downloadTag);

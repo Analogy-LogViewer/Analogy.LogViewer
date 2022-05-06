@@ -1,5 +1,7 @@
 ﻿using Analogy.Managers;
 using System;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
 {
@@ -60,6 +62,12 @@ namespace Analogy.Forms
         private async void sbtnUpdateNow_Click(object sender, EventArgs e)
         {
             var downloadInfo = Updater.DownloadInformation;
+            if (string.IsNullOrEmpty(downloadInfo.DownloadURL))
+            {
+                XtraMessageBox.Show("Error", "Missing download information.", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             sbtnUpdateNow.Enabled = false;
             await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL,true);
             sbtnUpdateNow.Enabled = true;
