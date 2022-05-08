@@ -57,6 +57,7 @@ namespace Analogy.UserControls
                     DataSourceSorted = true,
                     ArgumentDataMember = type == AnalogyPlottingPointXAxisDataType.DateTime ? nameof(AnalogyPlottingPointData.DateTime) : nameof(AnalogyPlottingPointData.XAxisValue)
                 };
+                
                 series.ValueDataMembers.AddRange(nameof(AnalogyPlottingPointData.Value));
                 ((LineSeriesView)series.View).MarkerVisibility = DefaultBoolean.True;
                 ((LineSeriesView)series.View).LineMarkerOptions.Kind = MarkerKind.Circle;
