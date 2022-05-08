@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
-
+using Timer = System.Windows.Forms.Timer;
 
 namespace Analogy.DataTypes
 {
     public class PlottingGraphData
     {
         public int DataWindow { get; set; }
-        public ObservableCollectionEx<AnalogyPlottingPointData> ViewportData { get; }
+        public ObservableCollection<AnalogyPlottingPointData> ViewportData { get; }
         private List<AnalogyPlottingPointData> rawData;
         private ReaderWriterLockSlim sync;
         private float RefreshIntervalSeconds { get; set; }
@@ -21,24 +21,21 @@ namespace Analogy.DataTypes
             DataWindow = dataWindow;
             RefreshIntervalSeconds = refreshIntervalSeconds;
             sync = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
-            ViewportData = new ObservableCollectionEx<AnalogyPlottingPointData>(sync);
+            ViewportData = new ObservableCollection<AnalogyPlottingPointData>();
             rawData = new List<AnalogyPlottingPointData>();
-            RefreshDataTimer = new Timer(RefreshDataTimerTick, null, Timeout.Infinite, (long)RefreshIntervalSeconds * 1000);
+            RefreshDataTimer = new Timer();
+            RefreshDataTimer.Interval = (int)(RefreshIntervalSeconds * 1000);
+            RefreshDataTimer.Tick += RefreshDataTimerTick;
         }
 
-        private void RefreshDataTimerTick(object sender)
+        private void RefreshDataTimerTick(object sender, EventArgs e)
         {
-            var changed = false;
-            List<AnalogyPlottingPointData> newData = new List<AnalogyPlottingPointData>();
             try
             {
-                sync.EnterWriteLock();
-                ViewportData._suppressNotification = true;
+                sync.EnterReadLock();
                 for (int i = Math.Max(lastRawDataIndex, rawData.Count - DataWindow); i < rawData.Count; i++)
                 {
-                    newData.Add(rawData[i]);
                     ViewportData.Add(rawData[i]);
-                    changed = true;
                 }
                 lastRawDataIndex = rawData.Count;
                 while (ViewportData.Count > DataWindow)
@@ -49,13 +46,8 @@ namespace Analogy.DataTypes
             }
             finally
             {
-                ViewportData._suppressNotification = false;
-                if (changed)
-                {
-                    ViewportData.RaiseChanged(newData);
-                }
-                sync.ExitWriteLock();
-       
+                sync.ExitReadLock();
+
             }
 
         }
@@ -86,14 +78,7 @@ namespace Analogy.DataTypes
 
             }
         }
-
-        public void SetIntervalValue(float seconds)
-        {
-            RefreshIntervalSeconds = seconds;
-            RefreshDataTimer.Change((long)(RefreshIntervalSeconds * 1000), (long)(RefreshIntervalSeconds * 1000));
-        }
-
-
+        public void SetIntervalValue(float seconds) => RefreshDataTimer.Interval = (int)(seconds * 1000);
         public void Clear()
         {
             try
@@ -111,7 +96,7 @@ namespace Analogy.DataTypes
 
         public void Start()
         {
-            RefreshDataTimer.Change(0, (long)(RefreshIntervalSeconds * 1000));
+            RefreshDataTimer.Enabled = true;
         }
 
         public void SetWindowValue(int windowValue)
