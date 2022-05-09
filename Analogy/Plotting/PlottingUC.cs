@@ -58,7 +58,7 @@ namespace Analogy.UserControls
                     ArgumentDataMember = type == AnalogyPlottingPointXAxisDataType.DateTime ? nameof(AnalogyPlottingPointData.DateTime) : nameof(AnalogyPlottingPointData.XAxisValue)
                 };
                 series.ValueDataMembers.AddRange(nameof(AnalogyPlottingPointData.Value));
-                ((LineSeriesView)series.View).MarkerVisibility = DefaultBoolean.True;
+                ((LineSeriesView)series.View).MarkerVisibility = DefaultBoolean.False;
                 ((LineSeriesView)series.View).LineMarkerOptions.Kind = MarkerKind.Circle;
                 ((LineSeriesView)series.View).LineStyle.DashStyle = DashStyle.Solid;
                 chartControl1.Series.Add(series);
@@ -228,6 +228,46 @@ namespace Analogy.UserControls
 
             // Return the image. 
             return image;
+        }
+
+        private void ceShowLegend_CheckedChanged(object sender, EventArgs e)
+        {
+            chartControl1.Legend.Visibility = ceShowLegend.Checked ? DefaultBoolean.True : DefaultBoolean.False;
+
+        }
+
+        private void ceShowHideAll_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (Series s in chartControl1.Series)
+            {
+                s.CheckedInLegend = ceShowHideAll.Checked;
+            }
+            XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
+            if (diagram == null)
+            {
+                return;
+
+            }
+
+            foreach (ConstantLine line in diagram.AxisX.ConstantLines)
+            {
+                line.CheckedInLegend = ceShowHideAll.Checked;
+            }
+            foreach (ConstantLine line in diagram.AxisY.ConstantLines)
+            {
+                line.CheckedInLegend = ceShowHideAll.Checked;
+            }
+        }
+
+        private void cePoints_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (Series s in chartControl1.Series)
+            {
+                if (s.View is LineSeriesView line)
+                {
+                    line.MarkerVisibility = cePoints.Checked ? DevExpress.Utils.DefaultBoolean.True : DefaultBoolean.False;
+                }
+            }
         }
     }
 }

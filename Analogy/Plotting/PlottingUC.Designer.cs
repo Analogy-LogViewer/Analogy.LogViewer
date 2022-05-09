@@ -31,24 +31,30 @@ namespace Analogy.UserControls
         {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.sbtnCopyChart = new DevExpress.XtraEditors.SimpleButton();
+            this.sbtnSaveChart = new DevExpress.XtraEditors.SimpleButton();
+            this.nudRefreshInterval = new DevExpress.XtraEditors.SpinEdit();
+            this.nudWindow = new DevExpress.XtraEditors.SpinEdit();
             this.rbChartType = new DevExpress.XtraEditors.RadioGroup();
             this.lblChartType = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.nudWindow = new DevExpress.XtraEditors.SpinEdit();
-            this.nudRefreshInterval = new DevExpress.XtraEditors.SpinEdit();
-            this.sbtnSaveChart = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnCopyChart = new DevExpress.XtraEditors.SimpleButton();
+            this.cePoints = new DevExpress.XtraEditors.CheckEdit();
+            this.ceShowHideAll = new DevExpress.XtraEditors.CheckEdit();
+            this.ceShowLegend = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
             this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWindow.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbChartType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWindow.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cePoints.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceShowHideAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceShowLegend.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -69,6 +75,9 @@ namespace Analogy.UserControls
             // 
             // splitContainerControl1.Panel1
             // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.cePoints);
+            this.splitContainerControl1.Panel1.Controls.Add(this.ceShowHideAll);
+            this.splitContainerControl1.Panel1.Controls.Add(this.ceShowLegend);
             this.splitContainerControl1.Panel1.Controls.Add(this.sbtnCopyChart);
             this.splitContainerControl1.Panel1.Controls.Add(this.sbtnSaveChart);
             this.splitContainerControl1.Panel1.Controls.Add(this.nudRefreshInterval);
@@ -87,6 +96,62 @@ namespace Analogy.UserControls
             this.splitContainerControl1.SplitterPosition = 101;
             this.splitContainerControl1.TabIndex = 21;
             // 
+            // sbtnCopyChart
+            // 
+            this.sbtnCopyChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnCopyChart.Location = new System.Drawing.Point(912, 63);
+            this.sbtnCopyChart.Name = "sbtnCopyChart";
+            this.sbtnCopyChart.Size = new System.Drawing.Size(93, 34);
+            this.sbtnCopyChart.TabIndex = 29;
+            this.sbtnCopyChart.Text = "Copy Chart";
+            this.sbtnCopyChart.Click += new System.EventHandler(this.sbtnCopyChart_Click);
+            // 
+            // sbtnSaveChart
+            // 
+            this.sbtnSaveChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnSaveChart.Location = new System.Drawing.Point(1011, 63);
+            this.sbtnSaveChart.Name = "sbtnSaveChart";
+            this.sbtnSaveChart.Size = new System.Drawing.Size(93, 34);
+            this.sbtnSaveChart.TabIndex = 28;
+            this.sbtnSaveChart.Text = "Save Chart";
+            this.sbtnSaveChart.Click += new System.EventHandler(this.sbtnSaveChart_Click);
+            // 
+            // nudRefreshInterval
+            // 
+            this.nudRefreshInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudRefreshInterval.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudRefreshInterval.Location = new System.Drawing.Point(1001, 33);
+            this.nudRefreshInterval.Name = "nudRefreshInterval";
+            this.nudRefreshInterval.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nudRefreshInterval.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.nudRefreshInterval.Properties.MaskSettings.Set("mask", "n1");
+            this.nudRefreshInterval.Size = new System.Drawing.Size(103, 24);
+            this.nudRefreshInterval.TabIndex = 27;
+            this.nudRefreshInterval.EditValueChanged += new System.EventHandler(this.nudRefreshInterval_EditValueChanged);
+            // 
+            // nudWindow
+            // 
+            this.nudWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudWindow.EditValue = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.nudWindow.Location = new System.Drawing.Point(1001, 3);
+            this.nudWindow.Name = "nudWindow";
+            this.nudWindow.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nudWindow.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.nudWindow.Properties.MaskSettings.Set("mask", "n0");
+            this.nudWindow.Size = new System.Drawing.Size(103, 24);
+            this.nudWindow.TabIndex = 26;
+            this.nudWindow.EditValueChanged += new System.EventHandler(this.nudWindow_EditValueChanged);
+            // 
             // rbChartType
             // 
             this.rbChartType.Location = new System.Drawing.Point(95, 9);
@@ -96,7 +161,7 @@ namespace Analogy.UserControls
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pane Per Series - Horizontal"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pane Per Series - Vertical"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pane Per Series - Auto Layout")});
-            this.rbChartType.Size = new System.Drawing.Size(565, 75);
+            this.rbChartType.Size = new System.Drawing.Size(442, 75);
             this.rbChartType.TabIndex = 24;
             this.rbChartType.SelectedIndexChanged += new System.EventHandler(this.rbChartType_SelectedIndexChanged);
             // 
@@ -129,61 +194,34 @@ namespace Analogy.UserControls
             this.chartControl1.Size = new System.Drawing.Size(1107, 408);
             this.chartControl1.TabIndex = 1;
             // 
-            // nudWindow
+            // cePoints
             // 
-            this.nudWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudWindow.EditValue = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.nudWindow.Location = new System.Drawing.Point(1001, 3);
-            this.nudWindow.Name = "nudWindow";
-            this.nudWindow.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nudWindow.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.nudWindow.Properties.MaskSettings.Set("mask", "n0");
-            this.nudWindow.Size = new System.Drawing.Size(103, 24);
-            this.nudWindow.TabIndex = 26;
-            this.nudWindow.EditValueChanged += new System.EventHandler(this.nudWindow_EditValueChanged);
+            this.cePoints.Location = new System.Drawing.Point(558, 60);
+            this.cePoints.Name = "cePoints";
+            this.cePoints.Properties.Caption = "Show/Hide Points";
+            this.cePoints.Size = new System.Drawing.Size(120, 24);
+            this.cePoints.TabIndex = 36;
+            this.cePoints.CheckedChanged += new System.EventHandler(this.cePoints_CheckedChanged);
             // 
-            // nudRefreshInterval
+            // ceShowHideAll
             // 
-            this.nudRefreshInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRefreshInterval.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudRefreshInterval.Location = new System.Drawing.Point(1001, 33);
-            this.nudRefreshInterval.Name = "nudRefreshInterval";
-            this.nudRefreshInterval.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nudRefreshInterval.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.nudRefreshInterval.Properties.MaskSettings.Set("mask", "n1");
-            this.nudRefreshInterval.Size = new System.Drawing.Size(103, 24);
-            this.nudRefreshInterval.TabIndex = 27;
-            this.nudRefreshInterval.EditValueChanged += new System.EventHandler(this.nudRefreshInterval_EditValueChanged);
+            this.ceShowHideAll.EditValue = true;
+            this.ceShowHideAll.Location = new System.Drawing.Point(558, 35);
+            this.ceShowHideAll.Name = "ceShowHideAll";
+            this.ceShowHideAll.Properties.Caption = "Show/Hide All";
+            this.ceShowHideAll.Size = new System.Drawing.Size(120, 24);
+            this.ceShowHideAll.TabIndex = 35;
+            this.ceShowHideAll.CheckedChanged += new System.EventHandler(this.ceShowHideAll_CheckedChanged);
             // 
-            // sbtnSaveChart
+            // ceShowLegend
             // 
-            this.sbtnSaveChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnSaveChart.Location = new System.Drawing.Point(1011, 63);
-            this.sbtnSaveChart.Name = "sbtnSaveChart";
-            this.sbtnSaveChart.Size = new System.Drawing.Size(93, 34);
-            this.sbtnSaveChart.TabIndex = 28;
-            this.sbtnSaveChart.Text = "Save Chart";
-            this.sbtnSaveChart.Click += new System.EventHandler(this.sbtnSaveChart_Click);
-            // 
-            // sbtnCopyChart
-            // 
-            this.sbtnCopyChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnCopyChart.Location = new System.Drawing.Point(912, 63);
-            this.sbtnCopyChart.Name = "sbtnCopyChart";
-            this.sbtnCopyChart.Size = new System.Drawing.Size(93, 34);
-            this.sbtnCopyChart.TabIndex = 29;
-            this.sbtnCopyChart.Text = "Copy Chart";
-            this.sbtnCopyChart.Click += new System.EventHandler(this.sbtnCopyChart_Click);
+            this.ceShowLegend.EditValue = true;
+            this.ceShowLegend.Location = new System.Drawing.Point(558, 9);
+            this.ceShowLegend.Name = "ceShowLegend";
+            this.ceShowLegend.Properties.Caption = "Show Legend";
+            this.ceShowLegend.Size = new System.Drawing.Size(120, 24);
+            this.ceShowLegend.TabIndex = 34;
+            this.ceShowLegend.CheckedChanged += new System.EventHandler(this.ceShowLegend_CheckedChanged);
             // 
             // PlottingUC
             // 
@@ -200,10 +238,13 @@ namespace Analogy.UserControls
             this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWindow.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rbChartType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWindow.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInterval.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cePoints.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceShowHideAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceShowLegend.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -219,5 +260,8 @@ namespace Analogy.UserControls
         private DevExpress.XtraEditors.SpinEdit nudRefreshInterval;
         private DevExpress.XtraEditors.SimpleButton sbtnSaveChart;
         private DevExpress.XtraEditors.SimpleButton sbtnCopyChart;
+        private DevExpress.XtraEditors.CheckEdit cePoints;
+        private DevExpress.XtraEditors.CheckEdit ceShowHideAll;
+        private DevExpress.XtraEditors.CheckEdit ceShowLegend;
     }
 }

@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.8.6 - [Plotting] Add toggle point marker #1267",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,05,09)),
+                new AnalogyChangeLog("V4.8.6 - [Plotting] Add show/hide legend and series #1266",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,05,09)),
                 new AnalogyChangeLog("V4.8.5 - Bump Markdig from 0.28.1 to 0.30.2  #1262",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,04,27)),
                 new AnalogyChangeLog("V4.8.5 - [DevExpress] Update version to V21.2.7 #1259",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,04,27)),
                 new AnalogyChangeLog("V4.8.5 - [UI] Add counter callback for messages read (User Settings) #1219",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,04,04)),
