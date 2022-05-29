@@ -437,5 +437,9 @@
 	  </EmbeddedResource>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Plotting\" />
+	</ItemGroup>
+
 
 </Project>
