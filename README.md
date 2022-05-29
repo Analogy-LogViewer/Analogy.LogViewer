@@ -24,8 +24,8 @@ New (June 2022):
 Standalone User Controls:
 | User Control   |      Description      |  Nuget Version |
 |----------|:---------------:|------|
-| UCLogs | Embedded Log Viewer Grid Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.LogViewer.gRPC)](https://www.nuget.org/packages/Analogy.LogViewer.gRPC/)
-| PlotterUC | Embedded Plotting Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.LogViewer.gRPC)](https://www.nuget.org/packages/Analogy.LogViewer.gRPC/)
+| UCLogs | Embedded Log Viewer Grid Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.CommonControls)](https://www.nuget.org/packages/Analogy.CommonControls//)
+| PlotterUC | Embedded Plotting Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.CommonControls)](https://www.nuget.org/packages/Analogy.CommonControls//)
 
 
 ## Content
