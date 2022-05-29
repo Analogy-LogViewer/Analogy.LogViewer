@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ucLogs1.CurrentColumnsFields" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="_logMessagesUcLogs1.CurrentColumnsFields" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAMYCbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNj
@@ -143,7 +143,7 @@
         aGluZU5hbWUGFQAAAAxNYWNoaW5lIE5hbWUB6v////v///8KCgs=
 </value>
   </data>
-  <data name="ucLogs1.ExcludeFilterCriteriaUIOptions" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="_logMessagesUcLogs1.ExcludeFilterCriteriaUIOptions" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAI0BQW5hbG9neSwgVmVyc2lvbj00LjMuMy4wLCBDdWx0dXJlPW5l
         dXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3Vs
@@ -162,7 +162,7 @@
         cmVhZElEAAELAAAABQAAAAYUAAAADE1hY2hpbmUgTmFtZQYVAAAAC01hY2hpbmVOYW1lAAs=
 </value>
   </data>
-  <data name="ucLogs1.IncludeFilterCriteriaUIOptions" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="_logMessagesUcLogs1.IncludeFilterCriteriaUIOptions" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAI0BQW5hbG9neSwgVmVyc2lvbj00LjMuMy4wLCBDdWx0dXJlPW5l
         dXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3Vs

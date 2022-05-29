@@ -41,7 +41,7 @@ using SelectionChangedEventArgs = DevExpress.Data.SelectionChangedEventArgs;
 namespace Analogy.CommonControls.UserControls
 {
 
-    public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
+    public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
     {
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
@@ -145,7 +145,7 @@ namespace Analogy.CommonControls.UserControls
 
         #endregion
 
-        public UCLogs()
+        public LogMessagesUC()
         {
             InitializeComponent();
             FileDataProvider = new AnalogyOfflineDataProvider();
@@ -2772,7 +2772,7 @@ namespace Analogy.CommonControls.UserControls
 
             XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider);
             logGridForm.Show(this);
-            var processor = new FileProcessor(logGridForm.LogWindow);
+            var processor = new FileProcessor(logGridForm.Window);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
 
         }

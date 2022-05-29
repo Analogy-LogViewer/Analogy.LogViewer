@@ -2,7 +2,7 @@
 
 namespace Analogy.CommonControls.UserControls
 {
-    partial class UCLogs
+    partial class LogMessagesUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -40,7 +40,7 @@ namespace Analogy.CommonControls.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCLogs));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMessagesUC));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -2969,7 +2969,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.Size = new System.Drawing.Size(1496, 142);
             this.xtraTabPage2.Text = "Grid Pane";
             // 
-            // UCLogs
+            // LogMessagesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2980,7 +2980,7 @@ namespace Analogy.CommonControls.UserControls
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "UCLogs";
+            this.Name = "LogMessagesUC";
             this.Size = new System.Drawing.Size(1853, 759);
             this.Load += new System.EventHandler(this.UCLogs_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragDrop);

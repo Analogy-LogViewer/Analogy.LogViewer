@@ -12,7 +12,7 @@ namespace Analogy.CommonControls.Forms
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private readonly List<AnalogyLogMessage> _messages;
         private readonly string _dataSource;
-        public UCLogs LogWindow => ucLogs1;
+        public LogMessagesUC Window => _logMessagesUcLogs1;
          public XtraFormLogGrid(bool registerToAnalogyLogger)
         {
                InitializeComponent();
@@ -23,7 +23,7 @@ namespace Analogy.CommonControls.Forms
         public XtraFormLogGrid(IAnalogyOfflineDataProvider? fileDataProvider):this(false)
         {
             FileDataProvider = fileDataProvider;
-            ucLogs1.SetFileDataSource(FileDataProvider);
+            _logMessagesUcLogs1.SetFileDataSource(FileDataProvider);
         }
 
         public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, bool registerToAnalogyLogger) : this(registerToAnalogyLogger)
@@ -40,17 +40,17 @@ namespace Analogy.CommonControls.Forms
             _dataSource = dataSource;
             if (!string.IsNullOrEmpty(processOrModule))
             {
-                ucLogs1.FilterResults(processOrModule!);
+                _logMessagesUcLogs1.FilterResults(processOrModule!);
             }
 
-            ucLogs1.SetFileDataSource(fileProvider);
+            _logMessagesUcLogs1.SetFileDataSource(fileProvider);
 
 
         }
 
         private void Instance_OnNewMessage(object sender, (AnalogyLogMessage msg, string source) e)
         {
-            ucLogs1.AppendMessage(e.msg, e.source);
+            _logMessagesUcLogs1.AppendMessage(e.msg, e.source);
         }
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
@@ -65,14 +65,14 @@ namespace Analogy.CommonControls.Forms
             }
 
             {
-                ucLogs1.AppendMessages(_messages, _dataSource);
+                _logMessagesUcLogs1.AppendMessages(_messages, _dataSource);
             }
         }
 
         public void AppendMessage(AnalogyLogMessage message, string dataSource) =>
-            ucLogs1.AppendMessage(message, dataSource);
+            _logMessagesUcLogs1.AppendMessage(message, dataSource);
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource) =>
-            ucLogs1.AppendMessages(messages, dataSource);
+            _logMessagesUcLogs1.AppendMessages(messages, dataSource);
 
         private void XtraFormLogGrid_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {

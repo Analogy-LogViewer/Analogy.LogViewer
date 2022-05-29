@@ -21,14 +21,14 @@ namespace Analogy.CommonControls.DataTypes
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
         private ILogMessageCreatedHandler DataWindow { get; }
-        public UCLogs LogWindow { get; }
+        public LogMessagesUC Window { get; }
 
         public FileProcessor(ILogMessageCreatedHandler dataWindow)
         {
             DataWindow = dataWindow;
-            if (dataWindow is UCLogs logs)
+            if (dataWindow is LogMessagesUC logs)
             {
-                LogWindow = logs;
+                Window = logs;
             }
         }
 
@@ -50,9 +50,9 @@ namespace Analogy.CommonControls.DataTypes
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
-                if (LogWindow != null)
+                if (Window != null)
                 {
-                    Interlocked.Decrement(ref LogWindow.fileLoadingCount);
+                    Interlocked.Decrement(ref Window.fileLoadingCount);
                 }
 
                 return cachedMessages;
@@ -68,9 +68,9 @@ namespace Analogy.CommonControls.DataTypes
 
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
-                if (LogWindow != null)
+                if (Window != null)
                 {
-                    Interlocked.Decrement(ref LogWindow.fileLoadingCount);
+                    Interlocked.Decrement(ref Window.fileLoadingCount);
                 }
 
                 return cachedMessages;
@@ -94,9 +94,9 @@ namespace Analogy.CommonControls.DataTypes
                     }
 
                     OnFileReadingFinished?.Invoke(this, EventArgs.Empty);
-                    if (LogWindow != null)
+                    if (Window != null)
                     {
-                        Interlocked.Decrement(ref LogWindow.fileLoadingCount);
+                        Interlocked.Decrement(ref Window.fileLoadingCount);
                     }
 
                     return messages;
