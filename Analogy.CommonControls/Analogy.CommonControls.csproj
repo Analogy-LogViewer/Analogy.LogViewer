@@ -36,8 +36,25 @@
 		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472' or '$(TargetFramework)' == 'net48'">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net471' ">
 		<PackageReference Include="Analogy.CommonControls.Dependencies.net471" Version="0.9.0" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
+		<PackageReference Include="Analogy.CommonControls.Dependencies.net472" Version="0.9.0" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+		<PackageReference Include="Analogy.CommonControls.Dependencies.net48" Version="0.9.0" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+		<PackageReference Include="Analogy.CommonControls.Dependencies.netcoreapp3.1" Version="0.9.0" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0-windows' ">
+		<PackageReference Include="Analogy.CommonControls.Dependencies.net5" Version="0.9.0" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
+		<PackageReference Include="Analogy.CommonControls.Dependencies.net6" Version="0.9.0" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472' or '$(TargetFramework)' == 'net48'">
 		<Reference Include="System.ComponentModel.DataAnnotations" />
 		<Reference Include="System.Configuration" />
 		<Reference Include="System.Data.DataSetExtensions" />
