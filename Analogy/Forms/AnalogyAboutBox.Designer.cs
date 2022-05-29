@@ -66,6 +66,8 @@
             this.hyperLinkEdit19 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.hyperLinkEdit20 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.hyperLinkEdit21 = new DevExpress.XtraEditors.HyperLinkEdit();
+            this.xtraTabPageReleases = new DevExpress.XtraTab.XtraTabPage();
+            this.sbtnFetchReleases = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meAbout.Properties)).BeginInit();
@@ -101,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit19.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit21.Properties)).BeginInit();
+            this.xtraTabPageReleases.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -126,7 +129,7 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1042, 409);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1047, 413);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // logoPictureBox
@@ -137,7 +140,7 @@
             this.logoPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
-            this.logoPictureBox.Size = new System.Drawing.Size(523, 401);
+            this.logoPictureBox.Size = new System.Drawing.Size(526, 405);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoPictureBox.TabIndex = 12;
             this.logoPictureBox.TabStop = false;
@@ -145,11 +148,11 @@
             // labelProductName
             // 
             this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProductName.Location = new System.Drawing.Point(536, 0);
+            this.labelProductName.Location = new System.Drawing.Point(539, 0);
             this.labelProductName.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(503, 21);
+            this.labelProductName.Size = new System.Drawing.Size(505, 21);
             this.labelProductName.TabIndex = 19;
             this.labelProductName.Text = "Product Name";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,11 +160,11 @@
             // labelVersion
             // 
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelVersion.Location = new System.Drawing.Point(536, 40);
+            this.labelVersion.Location = new System.Drawing.Point(539, 41);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(503, 21);
+            this.labelVersion.Size = new System.Drawing.Size(505, 21);
             this.labelVersion.TabIndex = 0;
             this.labelVersion.Text = "Version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,11 +172,11 @@
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCopyright.Location = new System.Drawing.Point(536, 80);
+            this.labelCopyright.Location = new System.Drawing.Point(539, 82);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(503, 21);
+            this.labelCopyright.Size = new System.Drawing.Size(505, 21);
             this.labelCopyright.TabIndex = 21;
             this.labelCopyright.Text = "Copyright";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,11 +184,11 @@
             // labelCompanyName
             // 
             this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCompanyName.Location = new System.Drawing.Point(536, 120);
+            this.labelCompanyName.Location = new System.Drawing.Point(539, 123);
             this.labelCompanyName.Margin = new System.Windows.Forms.Padding(7, 0, 3, 0);
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelCompanyName.Name = "labelCompanyName";
-            this.labelCompanyName.Size = new System.Drawing.Size(503, 21);
+            this.labelCompanyName.Size = new System.Drawing.Size(505, 21);
             this.labelCompanyName.TabIndex = 22;
             this.labelCompanyName.Text = "Company Name";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -194,18 +197,18 @@
             // 
             this.meAbout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.meAbout.EditValue = "Created by Lior Banai (2018)\r\ncontact info:\r\nmail: Liorbanai@gmail.com";
-            this.meAbout.Location = new System.Drawing.Point(532, 163);
+            this.meAbout.Location = new System.Drawing.Point(535, 167);
             this.meAbout.Name = "meAbout";
-            this.meAbout.Size = new System.Drawing.Size(507, 198);
+            this.meAbout.Size = new System.Drawing.Size(509, 200);
             this.meAbout.TabIndex = 25;
             // 
             // btnOK
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnOK.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnOK.Location = new System.Drawing.Point(973, 367);
+            this.btnOK.Location = new System.Drawing.Point(978, 373);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(66, 39);
+            this.btnOK.Size = new System.Drawing.Size(66, 37);
             this.btnOK.TabIndex = 26;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -223,14 +226,15 @@
             this.xtraTabPageAbout,
             this.xtraTabPageCredit,
             this.xtraTabPageDataProviders,
-            this.xtraTabPage1});
+            this.xtraTabPage1,
+            this.xtraTabPageReleases});
             // 
             // xtraTabPageAbout
             // 
             this.xtraTabPageAbout.Controls.Add(this.tableLayoutPanel);
             this.xtraTabPageAbout.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPageAbout.Name = "xtraTabPageAbout";
-            this.xtraTabPageAbout.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPageAbout.Size = new System.Drawing.Size(1047, 413);
             this.xtraTabPageAbout.Text = "About";
             // 
             // xtraTabPageCredit
@@ -238,7 +242,7 @@
             this.xtraTabPageCredit.Controls.Add(this.memoEdit1);
             this.xtraTabPageCredit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPageCredit.Name = "xtraTabPageCredit";
-            this.xtraTabPageCredit.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPageCredit.Size = new System.Drawing.Size(1047, 413);
             this.xtraTabPageCredit.Text = "Contributors and Credits";
             // 
             // memoEdit1
@@ -248,7 +252,7 @@
     "ewer";
             this.memoEdit1.Location = new System.Drawing.Point(0, 0);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(1042, 409);
+            this.memoEdit1.Size = new System.Drawing.Size(1047, 413);
             this.memoEdit1.TabIndex = 0;
             // 
             // xtraTabPageDataProviders
@@ -256,7 +260,7 @@
             this.xtraTabPageDataProviders.Controls.Add(this.flowLayoutPanel1);
             this.xtraTabPageDataProviders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPageDataProviders.Name = "xtraTabPageDataProviders";
-            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPageDataProviders.Size = new System.Drawing.Size(1047, 413);
             this.xtraTabPageDataProviders.Text = "Data Providers GitHub Repositories";
             // 
             // flowLayoutPanel1
@@ -280,7 +284,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1042, 409);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1047, 413);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // hyperLinkEdit1
@@ -428,7 +432,7 @@
             this.xtraTabPage1.Controls.Add(this.flowLayoutPanel3);
             this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1042, 409);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1047, 413);
             this.xtraTabPage1.Text = "Special Purpose Data Poviders GitHub Repositories";
             // 
             // flowLayoutPanel3
@@ -447,7 +451,7 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1042, 409);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1047, 413);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
             // hyperLinkEdit27
@@ -540,6 +544,22 @@
             this.hyperLinkEdit21.Size = new System.Drawing.Size(507, 22);
             this.hyperLinkEdit21.TabIndex = 20;
             // 
+            // xtraTabPageReleases
+            // 
+            this.xtraTabPageReleases.Controls.Add(this.sbtnFetchReleases);
+            this.xtraTabPageReleases.Name = "xtraTabPageReleases";
+            this.xtraTabPageReleases.Size = new System.Drawing.Size(1047, 413);
+            this.xtraTabPageReleases.Text = "Releases Statistics";
+            // 
+            // sbtnFetchReleases
+            // 
+            this.sbtnFetchReleases.Location = new System.Drawing.Point(0, 8);
+            this.sbtnFetchReleases.Name = "sbtnFetchReleases";
+            this.sbtnFetchReleases.Size = new System.Drawing.Size(116, 29);
+            this.sbtnFetchReleases.TabIndex = 0;
+            this.sbtnFetchReleases.Text = "Fetch Releases";
+            this.sbtnFetchReleases.Click += new System.EventHandler(this.sbtnFetchReleases_Click);
+            // 
             // AnalogyAboutBox
             // 
             this.AcceptButton = this.btnOK;
@@ -593,6 +613,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit19.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit21.Properties)).EndInit();
+            this.xtraTabPageReleases.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -638,5 +659,7 @@
         private DevExpress.XtraEditors.MemoEdit meAbout;
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageReleases;
+        private DevExpress.XtraEditors.SimpleButton sbtnFetchReleases;
     }
 }

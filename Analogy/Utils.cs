@@ -12,11 +12,13 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Utils;
 
@@ -461,6 +463,60 @@ namespace Analogy
             toolTip.Setup(args);
             return toolTip;
         }
+
+        public static async Task<(bool newData, T result)> GetAsync<T>(string uri, string token, DateTime lastModified)
+        {
+            try
+            {
+                Uri myUri = new Uri(uri);
+                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(myUri);
+                myHttpWebRequest.Accept = "application/json";
+                myHttpWebRequest.UserAgent = "Analogy.LogViewer";
+                if (!string.IsNullOrEmpty(token))
+                {
+                    myHttpWebRequest.Headers.Add(HttpRequestHeader.Authorization, $"Token {token}");
+                }
+
+                myHttpWebRequest.IfModifiedSince = lastModified;
+
+                HttpWebResponse myHttpWebResponse = (HttpWebResponse)await myHttpWebRequest.GetResponseAsync();
+                if (myHttpWebResponse.StatusCode == HttpStatusCode.NotModified)
+                {
+                    return (false, default);
+                }
+
+                using (var reader = new System.IO.StreamReader(myHttpWebResponse.GetResponseStream()))
+                {
+                    string responseText = await reader.ReadToEndAsync();
+                    return (true, JsonConvert.DeserializeObject<T>(responseText));
+                }
+            }
+            catch (WebException e) when (e.Status == WebExceptionStatus.NameResolutionFailure)
+            {
+                return (false, default);
+            }
+            catch (WebException e) when (e.Status == WebExceptionStatus.UnknownError)
+            {
+                return (false, default);
+            }
+            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotModified)
+            {
+                return (false, default);
+            }
+            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return (false, default);
+            }
+            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.Forbidden)
+            {
+                return (false, default);
+            }
+            catch (Exception)
+            {
+                return (false, default);
+            }
+        }
+
     }
 
 }
