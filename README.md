@@ -27,7 +27,10 @@ Standalone User Controls:
 | LogMessagesUC | Embedded Log Viewer Grid Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.CommonControls)](https://www.nuget.org/packages/Analogy.CommonControls//)
 | PlotterUC | Embedded Plotting Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.CommonControls)](https://www.nuget.org/packages/Analogy.CommonControls//)
 
-You can you those in your winforms apps
+You can use those in your winforms apps
+Examples:
+![Plotting Example](Assets/CommonControls_PlotECG.PNG)
+
 ## Content
 [General](https://github.com/Analogy-LogViewer/Analogy.LogViewer#general)
 
