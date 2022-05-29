@@ -19,6 +19,15 @@
 A log viewer that can parse log files and stream logs from C#, Python, Java and others.
 You can also implement your own parsers or request to add new parsers for other logs
 
+New (June 2022):
+
+Standalone User Controls:
+| User Control   |      Description      |  Nuget Version |
+|----------|:---------------:|------|
+| UCLogs | Embedded Log Viewer Grid Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.LogViewer.gRPC)](https://www.nuget.org/packages/Analogy.LogViewer.gRPC/)
+| PlotterUC | Embedded Plotting Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.LogViewer.gRPC)](https://www.nuget.org/packages/Analogy.LogViewer.gRPC/)
+
+
 ## Content
 [General](https://github.com/Analogy-LogViewer/Analogy.LogViewer#general)
 
