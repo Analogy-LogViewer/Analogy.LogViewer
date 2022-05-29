@@ -79,7 +79,7 @@ jobs:
         run: |
           Get-ChildItem .\artifactory -Filter *.nupkg |
           Where-Object { !$_.Name.Contains('preview') } |
-          ForEach-Object { dotnet nuget push $_ --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.Analogy_CommonControls_APIKEY}} }
+          ForEach-Object { dotnet nuget push $_ --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.ANALOGY_COMMONCONTROLS_APIKEY}} }
         shell: pwsh
 
       - name: Setup NuGet.exe for use with actions
