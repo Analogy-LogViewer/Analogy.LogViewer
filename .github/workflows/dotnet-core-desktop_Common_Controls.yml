@@ -86,7 +86,7 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Add private GitHub registry to NuGet
-        run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/Analogy-LogViewer/index.json -Username Analogy-LogViewer -Password ${{ secrets.Analogy_CommonControls_APIKEY }}
+        run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/Analogy-LogViewer/index.json -Username Analogy-LogViewer -Password ${{ secrets.ANALOGY_COMMONCONTROLS_APIKEY }}
 
       - name: 'Dotnet NuGet Push to github registry'     
         run: |
