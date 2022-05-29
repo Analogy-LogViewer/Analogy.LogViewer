@@ -172,8 +172,14 @@ namespace Analogy.CommonControls.Plotting
         public void Start()
         {
             Plotter.OnNewPointData += Plotter_OnNewPointData;
+            Plotter.OnNewPointsData += Plotter_OnNewPointsData;
             Manager.Start();
         }
+
+        private void Plotter_OnNewPointsData(object sender, List<AnalogyPlottingPointData> pts)
+        {
+            Manager.AddPoints(pts);
+     }
 
         private void Plotter_OnNewPointData(object sender, AnalogyPlottingPointData e)
         {
@@ -183,6 +189,7 @@ namespace Analogy.CommonControls.Plotting
         public void Stop()
         {
             Plotter.OnNewPointData -= Plotter_OnNewPointData;
+            Plotter.OnNewPointsData -= Plotter_OnNewPointsData;
         }
 
         private void rbChartType_SelectedIndexChanged(object sender, System.EventArgs e)
