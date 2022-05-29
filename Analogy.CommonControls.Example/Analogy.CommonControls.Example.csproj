@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFrameworks>net48;net472;net471;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<LangVersion>8.0</LangVersion>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Analogy.CommonControls" Version="0.9.1" />
+	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.0.1" />
+	</ItemGroup>
+
+</Project>
