@@ -40,7 +40,7 @@ You can also implement your own parsers or request to add new parsers for other 
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems.
 
 Some features of this tool are:
-1.	Windows event log support (evtx files)
+1.	Standalone Winform User Control to sohw log messages
 2.	Aggregation into single view.
 3.	Search in multiple files
 4.	Combine multiple files
