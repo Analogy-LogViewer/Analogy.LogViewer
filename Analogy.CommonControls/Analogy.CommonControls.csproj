@@ -24,7 +24,7 @@
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
 		<PackageTags />
 		<RepositoryType>git</RepositoryType>
-		<Version>0.9.3</Version>
+		<Version>0.9.4</Version>
 		<Copyright>Lior Banai © 2019-2022</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<PackageReleaseNotes></PackageReleaseNotes>
@@ -72,7 +72,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="2.0.1" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="2.1.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.1.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="3.0.1" />
 		<PackageReference Include="Markdig" Version="0.30.2" />
