@@ -26,6 +26,7 @@ namespace Analogy.Plotting
             set => FileName = value;
         }
         public event EventHandler<AnalogyPlottingPointData>? OnNewPointData;
+        public event EventHandler<List<AnalogyPlottingPointData>>? OnNewPointsData;
         private readonly AnalogyCustomXAxisPlot _xAxisType;
         private CancellationToken token;
         private long processed;
