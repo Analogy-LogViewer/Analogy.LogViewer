@@ -24,8 +24,8 @@ New (June 2022):
 Standalone User Controls:
 | User Control   |      Description      |  Nuget Version |
 |----------|:---------------:|------|
-| LogMessagesUC | Embedded Log Viewer Grid Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.CommonControls)](https://www.nuget.org/packages/Analogy.CommonControls//)
-| PlotterUC | Embedded Plotting Control | [![Nuget](https://img.shields.io/nuget/v/Analogy.CommonControls)](https://www.nuget.org/packages/Analogy.CommonControls//)
+| LogMessagesUC | Embedded Log Viewer Grid Control | --
+| PlotterUC | Embedded Plotting Control | -- 
 
 You can use those in your winforms apps
 Examples:
