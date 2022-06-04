@@ -3233,22 +3233,22 @@ namespace Analogy.UserControls
                 return;
             }
 
-            contextMenuStripFilters.Items.Clear();
+            filtersPopupMenu.ItemLinks.Clear();
             foreach (PreDefineFilter filter in Settings.PreDefinedQueries.Filters)
             {
 
-                ToolStripMenuItem item = new ToolStripMenuItem(filter.ToString());
-                item.Click += (s, arg) =>
+                BarButtonItem item = new BarButtonItem(barManager1, filter.ToString());
+                item.ItemClick += (s, arg) =>
                 {
                     txtbInclude.Text = filter.IncludeText;
                     txtbExclude.Text = filter.ExcludeText;
                     txtbSource.Text = filter.Sources;
                     txtbModule.Text = filter.Modules;
                 };
-                contextMenuStripFilters.Items.Add(item);
+                item.SuperTip = Utils.GetSuperTip(filter.Name, filter.NiceText());
+                filtersPopupMenu.ItemLinks.Add(item);
             }
-
-            contextMenuStripFilters.Show(sbtnPreDefinedFilters.PointToScreen(sbtnPreDefinedFilters.Location));
+            filtersPopupMenu.ShowPopup(Cursor.Position);
         }
 
         public void EnableFileReload(string fileName)

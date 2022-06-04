@@ -29,7 +29,7 @@ namespace Analogy.ApplicationSettings
         {
             sbtnAddFilter.Click += (s, e) =>
             {
-                Settings.PreDefinedQueries.AddFilter(txtbIncludeTextFilter.Text, txtbExcludeFilter.Text,
+                Settings.PreDefinedQueries.AddFilter(teName.Text,txtbIncludeTextFilter.Text, txtbExcludeFilter.Text,
                     txtbSourcesFilter.Text, txtbModulesFilter.Text);
                 lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
                 lboxFilters.Refresh();
@@ -50,5 +50,7 @@ namespace Analogy.ApplicationSettings
         {
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
         }
+
+        
     }
 }

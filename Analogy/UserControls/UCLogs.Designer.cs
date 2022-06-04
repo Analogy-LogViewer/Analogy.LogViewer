@@ -270,7 +270,6 @@ namespace Analogy.UserControls
             this.ceLogLevelOr = new DevExpress.XtraEditors.CheckEdit();
             this.ceLogLevelAnd = new DevExpress.XtraEditors.CheckEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
-            this.contextMenuStripFilters = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.LogGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
@@ -291,6 +290,7 @@ namespace Analogy.UserControls
             this.xtabFilters = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -398,6 +398,7 @@ namespace Analogy.UserControls
             this.xtabFilters.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -2942,12 +2943,6 @@ namespace Analogy.UserControls
             this.ceLogLevelAnd.SuperTip = superToolTip8;
             this.ceLogLevelAnd.TabIndex = 0;
             // 
-            // contextMenuStripFilters
-            // 
-            this.contextMenuStripFilters.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStripFilters.Name = "contextMenuStripFilters";
-            this.contextMenuStripFilters.Size = new System.Drawing.Size(61, 4);
-            // 
             // LogGridPopupMenu
             // 
             this.LogGridPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -3189,6 +3184,11 @@ namespace Analogy.UserControls
             this.xtraTabPage2.Size = new System.Drawing.Size(1496, 142);
             this.xtraTabPage2.Text = "Grid Pane";
             // 
+            // filtersPopupMenu
+            // 
+            this.filtersPopupMenu.Manager = this.barManager1;
+            this.filtersPopupMenu.Name = "filtersPopupMenu";
+            // 
             // UCLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3316,6 +3316,7 @@ namespace Analogy.UserControls
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3412,7 +3413,6 @@ namespace Analogy.UserControls
         private DevExpress.XtraEditors.DateEdit deOlderThanFilter;
         private DevExpress.XtraEditors.SimpleButton sbtnMoreHighlight;
         private DevExpress.XtraEditors.SimpleButton sbtnPreDefinedFilters;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripFilters;
         private DevExpress.XtraBars.Bar barGroup;
         private DevExpress.XtraBars.BarButtonItem bBtnShare;
         private DevExpress.XtraBars.BarButtonItem bBtnFullGrid;
@@ -3546,5 +3546,6 @@ namespace Analogy.UserControls
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
         private DevExpress.XtraBars.BarToggleSwitchItem btsiInlineJsonViewer;
         private DevExpress.XtraBars.BarStaticItem bsiProgress;
+        private DevExpress.XtraBars.PopupMenu filtersPopupMenu;
     }
 }

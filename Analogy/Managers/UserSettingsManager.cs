@@ -884,7 +884,7 @@ namespace Analogy
         }
 
         public void AddHighlight(string text, PreDefinedQueryType type, Color color) => Highlights.Add(new PreDefineHighlight(type, text, color));
-        public void AddFilter(string includeText, string excludeText, string sources, string modules) => Filters.Add(new PreDefineFilter(includeText, excludeText, sources, modules));
+        public void AddFilter(string name,string includeText, string excludeText, string sources, string modules) => Filters.Add(new PreDefineFilter(name,includeText, excludeText, sources, modules));
         public void AddAlert(string includeText, string excludeText, string sources, string modules) => Alerts.Add(new PreDefineAlert(includeText, excludeText, sources, modules));
 
         public void RemoveHighlight(PreDefineHighlight highlight)
@@ -932,14 +932,16 @@ namespace Analogy
     [Serializable]
     public class PreDefineFilter
     {
+        public string Name { get; set; }
         public string IncludeText { get; }
         public string ExcludeText { get; }
         public string Sources { get; }
         public string Modules { get; }
 
 
-        public PreDefineFilter(string includeText, string excludeText, string sources, string modules)
+        public PreDefineFilter(string name, string includeText, string excludeText, string sources, string modules)
         {
+            Name = name ?? string.Empty;
             IncludeText = includeText ?? string.Empty;
             ExcludeText = excludeText ?? string.Empty;
             Sources = sources ?? string.Empty;
@@ -949,6 +951,10 @@ namespace Analogy
         {
             return $"Filter: Message Text:{IncludeText}. Exclude:{ExcludeText}. Sources:{Sources}. Modules:{Modules}";
         }
+
+        public string NiceText() =>
+            $"Message Text: {IncludeText}{Environment.NewLine}Exclude Text: {ExcludeText}{Environment.NewLine}Sources: {Sources}{Environment.NewLine}Module: {Modules}";
+
     }
 }
 

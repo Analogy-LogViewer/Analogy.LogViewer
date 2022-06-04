@@ -31,29 +31,34 @@ namespace Analogy.ApplicationSettings
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PredefinedFiltersUC));
             this.gcMain = new DevExpress.XtraEditors.GroupControl();
+            this.sbtnDeleteFilter = new DevExpress.XtraEditors.SimpleButton();
+            this.lboxFilters = new DevExpress.XtraEditors.ListBoxControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.sbtnAddFilter = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblText = new DevExpress.XtraEditors.LabelControl();
             this.txtbSourcesFilter = new DevExpress.XtraEditors.TextEdit();
             this.txtbModulesFilter = new DevExpress.XtraEditors.TextEdit();
             this.txtbExcludeFilter = new DevExpress.XtraEditors.TextEdit();
             this.txtbIncludeTextFilter = new DevExpress.XtraEditors.TextEdit();
-            this.lblText = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.sbtnAddFilter = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.sbtnDeleteFilter = new DevExpress.XtraEditors.SimpleButton();
-            this.lboxFilters = new DevExpress.XtraEditors.ListBoxControl();
+            this.lblName = new DevExpress.XtraEditors.LabelControl();
+            this.teName = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gcMain)).BeginInit();
             this.gcMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lboxFilters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbSourcesFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbModulesFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeTextFilter.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lboxFilters)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcMain
             // 
+            this.gcMain.Controls.Add(this.lblName);
+            this.gcMain.Controls.Add(this.teName);
             this.gcMain.Controls.Add(this.sbtnDeleteFilter);
             this.gcMain.Controls.Add(this.lboxFilters);
             this.gcMain.Controls.Add(this.labelControl4);
@@ -72,6 +77,77 @@ namespace Analogy.ApplicationSettings
             this.gcMain.Size = new System.Drawing.Size(636, 572);
             this.gcMain.TabIndex = 0;
             this.gcMain.Text = "Predefined Filters";
+            // 
+            // sbtnDeleteFilter
+            // 
+            this.sbtnDeleteFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnDeleteFilter.Location = new System.Drawing.Point(521, 540);
+            this.sbtnDeleteFilter.Name = "sbtnDeleteFilter";
+            this.sbtnDeleteFilter.Size = new System.Drawing.Size(110, 27);
+            this.sbtnDeleteFilter.TabIndex = 43;
+            this.sbtnDeleteFilter.Text = "Delete";
+            // 
+            // lboxFilters
+            // 
+            this.lboxFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lboxFilters.Location = new System.Drawing.Point(5, 248);
+            this.lboxFilters.Name = "lboxFilters";
+            this.lboxFilters.Size = new System.Drawing.Size(626, 279);
+            this.lboxFilters.TabIndex = 42;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl4.Location = new System.Drawing.Point(16, 178);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(615, 64);
+            this.labelControl4.TabIndex = 41;
+            this.labelControl4.Text = resources.GetString("labelControl4.Text");
+            // 
+            // sbtnAddFilter
+            // 
+            this.sbtnAddFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnAddFilter.Location = new System.Drawing.Point(547, 145);
+            this.sbtnAddFilter.Name = "sbtnAddFilter";
+            this.sbtnAddFilter.Size = new System.Drawing.Size(84, 27);
+            this.sbtnAddFilter.TabIndex = 39;
+            this.sbtnAddFilter.Text = "Add";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(16, 120);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(95, 16);
+            this.labelControl2.TabIndex = 38;
+            this.labelControl2.Text = "Process/Module:";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(16, 88);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(45, 16);
+            this.labelControl3.TabIndex = 37;
+            this.labelControl3.Text = "Source:";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(16, 60);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(127, 16);
+            this.labelControl1.TabIndex = 36;
+            this.labelControl1.Text = "Exclude Message text:";
+            // 
+            // lblText
+            // 
+            this.lblText.Location = new System.Drawing.Point(16, 28);
+            this.lblText.Name = "lblText";
+            this.lblText.Size = new System.Drawing.Size(80, 16);
+            this.lblText.TabIndex = 35;
+            this.lblText.Text = "Message text:";
             // 
             // txtbSourcesFilter
             // 
@@ -109,76 +185,22 @@ namespace Analogy.ApplicationSettings
             this.txtbIncludeTextFilter.Size = new System.Drawing.Size(425, 22);
             this.txtbIncludeTextFilter.TabIndex = 31;
             // 
-            // lblText
+            // lblName
             // 
-            this.lblText.Location = new System.Drawing.Point(16, 28);
-            this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(80, 16);
-            this.lblText.TabIndex = 35;
-            this.lblText.Text = "Message text:";
+            this.lblName.Location = new System.Drawing.Point(11, 151);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(137, 16);
+            this.lblName.TabIndex = 45;
+            this.lblName.Text = "optional: Name of filter:";
             // 
-            // labelControl1
+            // teName
             // 
-            this.labelControl1.Location = new System.Drawing.Point(16, 60);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(127, 16);
-            this.labelControl1.TabIndex = 36;
-            this.labelControl1.Text = "Exclude Message text:";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(16, 120);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(95, 16);
-            this.labelControl2.TabIndex = 38;
-            this.labelControl2.Text = "Process/Module:";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(16, 88);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(45, 16);
-            this.labelControl3.TabIndex = 37;
-            this.labelControl3.Text = "Source:";
-            // 
-            // sbtnAddFilter
-            // 
-            this.sbtnAddFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnAddFilter.Location = new System.Drawing.Point(547, 145);
-            this.sbtnAddFilter.Name = "sbtnAddFilter";
-            this.sbtnAddFilter.Size = new System.Drawing.Size(84, 27);
-            this.sbtnAddFilter.TabIndex = 39;
-            this.sbtnAddFilter.Text = "Add";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.teName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl4.Location = new System.Drawing.Point(16, 178);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(615, 64);
-            this.labelControl4.TabIndex = 41;
-            this.labelControl4.Text = resources.GetString("labelControl4.Text");
-            // 
-            // sbtnDeleteFilter
-            // 
-            this.sbtnDeleteFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnDeleteFilter.Location = new System.Drawing.Point(521, 540);
-            this.sbtnDeleteFilter.Name = "sbtnDeleteFilter";
-            this.sbtnDeleteFilter.Size = new System.Drawing.Size(110, 27);
-            this.sbtnDeleteFilter.TabIndex = 43;
-            this.sbtnDeleteFilter.Text = "Delete";
-            // 
-            // lboxFilters
-            // 
-            this.lboxFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lboxFilters.Location = new System.Drawing.Point(5, 248);
-            this.lboxFilters.Name = "lboxFilters";
-            this.lboxFilters.Size = new System.Drawing.Size(626, 279);
-            this.lboxFilters.TabIndex = 42;
+            this.teName.Location = new System.Drawing.Point(206, 148);
+            this.teName.Name = "teName";
+            this.teName.Size = new System.Drawing.Size(335, 22);
+            this.teName.TabIndex = 44;
             // 
             // PredefinedFiltersUC
             // 
@@ -191,11 +213,12 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.gcMain)).EndInit();
             this.gcMain.ResumeLayout(false);
             this.gcMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lboxFilters)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbSourcesFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbModulesFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbExcludeFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbIncludeTextFilter.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lboxFilters)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,5 +238,7 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.SimpleButton sbtnDeleteFilter;
         private DevExpress.XtraEditors.ListBoxControl lboxFilters;
+        private DevExpress.XtraEditors.LabelControl lblName;
+        private DevExpress.XtraEditors.TextEdit teName;
     }
 }
