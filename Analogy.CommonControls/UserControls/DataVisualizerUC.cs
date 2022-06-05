@@ -1,18 +1,19 @@
-﻿using Analogy.Interfaces;
-using DevExpress.XtraCharts;
-using DevExpress.XtraEditors.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
-using Analogy.DataTypes;
+using Analogy.CommonControls.Interfaces;
+using Analogy.Interfaces;
+using DevExpress.XtraCharts;
+using DevExpress.XtraEditors.Controls;
 
-namespace Analogy
+namespace Analogy.CommonControls.UserControls
 {
     public partial class DataVisualizerUC : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly IUserSettingsManager _settings;
 
         private Func<List<AnalogyLogMessage>> Messages { get; set; }
 
@@ -25,13 +26,15 @@ namespace Analogy
             InitializeComponent();
         }
 
-        public DataVisualizerUC(Func<List<AnalogyLogMessage>> messagesFunc) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, Func<List<AnalogyLogMessage>> messagesFunc) : this()
         {
+            _settings = settings;
             Messages = messagesFunc;
             logStatisticsUC1.Statistics = new LogStatistics(messagesFunc.Invoke());
         }
-        public DataVisualizerUC(List<AnalogyLogMessage> messages) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, List<AnalogyLogMessage> messages) : this()
         {
+            _settings = settings;
             Messages = () => messages;
             logStatisticsUC1.Statistics = new LogStatistics(messages);
         }
@@ -67,30 +70,30 @@ namespace Analogy
                     if (m.Text.Contains(item))
                     {
                         timeDistribution[item].Add(m);
-                        if (!frequency[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
+                        if (!frequency[item].ContainsKey(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay))
                         {
-                            frequency[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 1);
+                            frequency[item].Add(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay, 1);
                         }
 
-                        if (!frequencyCount[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
+                        if (!frequencyCount[item].ContainsKey(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay))
                         {
-                            frequencyCount[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 1);
+                            frequencyCount[item].Add(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay, 1);
                         }
                         else
                         {
-                            frequencyCount[item][Utils.GetOffsetTime(m.Date).TimeOfDay] += 1;
+                            frequencyCount[item][Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay] += 1;
                         }
                     }
                     else
                     {
-                        if (!frequency[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
+                        if (!frequency[item].ContainsKey(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay))
                         {
-                            frequency[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 0);
+                            frequency[item].Add(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay, 0);
                         }
 
-                        if (!frequencyCount[item].ContainsKey(Utils.GetOffsetTime(m.Date).TimeOfDay))
+                        if (!frequencyCount[item].ContainsKey(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay))
                         {
-                            frequencyCount[item].Add(Utils.GetOffsetTime(m.Date).TimeOfDay, 0);
+                            frequencyCount[item].Add(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay, 0);
                         }
                     }
                 }
@@ -159,8 +162,8 @@ namespace Analogy
                 string item = td.Key;
                 foreach (AnalogyLogMessage val in td.Value)
                 {
-                    tbl.Rows.Add(item, Utils.GetOffsetTime(val.Date), Utils.GetOffsetTime(val.Date).Ticks,
-                        val.Date.Hour + (float)Utils.GetOffsetTime(val.Date).Minute / 60 + (float)Utils.GetOffsetTime(val.Date).Second / 60 / 60);
+                    tbl.Rows.Add(item, Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset), Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Ticks,
+                        val.Date.Hour + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Minute / 60 + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Second / 60 / 60);
                 }
 
             }

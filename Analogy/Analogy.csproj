@@ -488,10 +488,6 @@
 		<Compile Update="UserControls\DataVisualizerUC.Designer.cs">
 			<DependentUpon>DataVisualizerUC.cs</DependentUpon>
 		</Compile>
-		<Compile Update="Forms\DataVisualizerForm.cs" />
-		<Compile Update="Forms\DataVisualizerForm.Designer.cs">
-			<DependentUpon>DataVisualizerForm.cs</DependentUpon>
-		</Compile>
 		<Compile Update="Forms\MainForm.cs" />
 		<Compile Update="Forms\MainForm.Designer.cs">
 			<DependentUpon>MainForm.cs</DependentUpon>
@@ -648,9 +644,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\DataVisualizerUC.resx">
 			<DependentUpon>DataVisualizerUC.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Forms\DataVisualizerForm.resx">
-			<DependentUpon>DataVisualizerForm.cs</DependentUpon>
 		</EmbeddedResource>
 		<None Include="Resources\Copy_16x16.png" />
 		<None Include="Resources\Database_on.png" />

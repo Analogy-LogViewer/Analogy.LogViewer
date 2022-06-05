@@ -1,12 +1,9 @@
-﻿using Analogy;
-using DevExpress.XtraEditors.Controls;
-using System.Drawing;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
-using Analogy.DataTypes;
+using Analogy.CommonControls.DataTypes;
+using DevExpress.XtraEditors.Controls;
 
-
-namespace Philips.Analogy
+namespace Analogy.CommonControls.UserControls
 {
     public partial class LogStatisticsUC : UserControl
     {

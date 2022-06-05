@@ -1,6 +1,4 @@
-﻿using DevExpress.XtraGrid.Views.Base;
-
-namespace Philips.Analogy
+﻿namespace Analogy.CommonControls.UserControls
 {
     partial class LogStatisticsUC
     {

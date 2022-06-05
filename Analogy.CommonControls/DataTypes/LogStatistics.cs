@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Analogy.Interfaces;
 
-namespace Analogy.DataTypes
+namespace Analogy.CommonControls.DataTypes
 {
     public class LogStatistics
     {
@@ -35,7 +35,7 @@ namespace Analogy.DataTypes
             //items.Add(new Statistics("Total messages", total));
             foreach (string text in Texts)
             {
-                items.Add(new LogAnalyzerSingleDataPoint(text, Messages.Count(m => m.Text.Contains(text, StringComparison.InvariantCultureIgnoreCase))));
+                items.Add(new LogAnalyzerSingleDataPoint(text, Messages.Count(m => Contains(m.Text,text, StringComparison.InvariantCultureIgnoreCase))));
             }
 
             return items;
@@ -84,5 +84,16 @@ namespace Analogy.DataTypes
         private int CountMessages(List<AnalogyLogMessage> messages, AnalogyLogLevel level) => messages.Count(m => m.Level == level);
         private int CountModuleMessages(string module, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && module.Equals(m.Module));
         private int CountSourceMessages(string source, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && source.Equals(m.Source));
+        /// <summary>
+        /// Case insensitive contains(string)
+        /// </summary>
+        /// <param name="source">the original string</param>
+        /// <param name="toCheck">the string</param>
+        /// <param name="comp">string comparison</param>
+        /// <returns></returns>
+        private bool Contains(string source, string toCheck, StringComparison comp)
+        {
+            return string.IsNullOrEmpty(toCheck) || (!string.IsNullOrEmpty(source) && source.IndexOf(toCheck, comp) >= 0);
+        }
     }
 }

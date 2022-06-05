@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.CommonControls.Managers;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.Mvvm.Native;

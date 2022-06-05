@@ -436,6 +436,12 @@
 		<Compile Update="Forms\AnalogyOTAForm.Designer.cs">
 		  <DependentUpon>AnalogyOTAForm.cs</DependentUpon>
 		</Compile>
+		<Compile Update="Forms\DataVisualizerForm.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Forms\DataVisualizerForm.Designer.cs">
+		  <DependentUpon>DataVisualizerForm.cs</DependentUpon>
+		</Compile>
 		<Compile Update="Forms\FormMessageDetails.cs">
 			<SubType>Form</SubType>
 		</Compile>
@@ -464,11 +470,23 @@
 		<Compile Update="Tools\JsonViewerForm.cs">
 			<SubType>Form</SubType>
 		</Compile>
+		<Compile Update="UserControls\DataVisualizerUC.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="UserControls\DataVisualizerUC.Designer.cs">
+		  <DependentUpon>DataVisualizerUC.cs</DependentUpon>
+		</Compile>
+		<Compile Update="UserControls\LogStatisticsUC.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
 		<Compile Update="UserControls\MessageDetailsUC.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
 		<Compile Update="UserControls\MessageDetailsUC.Designer.cs">
 			<DependentUpon>MessageDetailsUC.cs</DependentUpon>
+		</Compile>
+		<Compile Update="UserControls\PieChartUC.cs">
+		  <SubType>UserControl</SubType>
 		</Compile>
 		<Compile Update="UserControls\UCLogs.cs">
 		  <SubType>UserControl</SubType>
@@ -485,6 +503,9 @@
 		<EmbeddedResource Update="Forms\AnalogyExcludeMessage.resx">
 			<DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Forms\DataVisualizerForm.resx">
+		  <DependentUpon>DataVisualizerForm.cs</DependentUpon>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Forms\FormMessageDetails.resx">
 			<DependentUpon>FormMessageDetails.cs</DependentUpon>
 		</EmbeddedResource>
@@ -498,6 +519,9 @@
 		<EmbeddedResource Update="Tools\JsonNodeImages.resx">
 			<LastGenOutput>JsonNodeImages.Designer.cs</LastGenOutput>
 			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="UserControls\DataVisualizerUC.resx">
+		  <DependentUpon>DataVisualizerUC.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\MessageDetailsUC.resx">
 			<DependentUpon>MessageDetailsUC.cs</DependentUpon>

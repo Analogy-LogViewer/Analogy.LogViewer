@@ -3105,7 +3105,7 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnDataVisualizer_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DataVisualizerForm sv = new DataVisualizerForm(() => Messages);
+            DataVisualizerForm sv = new DataVisualizerForm(Settings, () => Messages);
             sv.Show(this);
         }
 

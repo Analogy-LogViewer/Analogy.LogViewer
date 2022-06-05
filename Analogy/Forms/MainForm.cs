@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
+using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
 
 namespace Analogy.Forms
@@ -117,9 +118,9 @@ namespace Analogy.Forms
                 settings.AnalogyPosition.WindowState = WindowState;
                 settings.UpdateRunningTime();
                 settings.Save();
+                CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
-                CleanupManager.Instance.Clean();
             }
         }
 

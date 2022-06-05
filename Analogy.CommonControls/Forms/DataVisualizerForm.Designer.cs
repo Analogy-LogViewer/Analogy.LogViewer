@@ -1,4 +1,4 @@
-﻿namespace Analogy.Forms
+﻿namespace Analogy.CommonControls.Forms
 {
     partial class DataVisualizerForm
     {

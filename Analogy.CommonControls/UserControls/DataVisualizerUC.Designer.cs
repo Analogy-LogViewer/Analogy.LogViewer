@@ -1,4 +1,4 @@
-﻿namespace Analogy
+﻿namespace Analogy.CommonControls.UserControls
 {
     partial class DataVisualizerUC
     {
@@ -46,7 +46,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMessagesText = new DevExpress.XtraTab.XtraTabPage();
             this.xtpPieChart = new DevExpress.XtraTab.XtraTabPage();
-            this.logStatisticsUC1 = new CommonControls.UserControls.LogStatisticsUC();
+            this.logStatisticsUC1 = new LogStatisticsUC();
             this.tmrPlotting = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -313,7 +313,7 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtpMessagesText;
         private DevExpress.XtraTab.XtraTabPage xtpPieChart;
-        private CommonControls.UserControls.LogStatisticsUC logStatisticsUC1;
+        private LogStatisticsUC logStatisticsUC1;
         private System.Windows.Forms.Timer tmrPlotting;
         private DevExpress.XtraEditors.SpinEdit seRefreshInterval;
         private DevExpress.XtraEditors.CheckEdit ceAutoRefresh;
