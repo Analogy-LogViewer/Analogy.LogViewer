@@ -293,10 +293,15 @@ namespace Analogy.CommonControls.UserControls
                 wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
                 wsLogs.ApplyWorkspace(name);
             }
-            if (File.Exists(AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName))
+
+        }
+
+        public void LoadWorkspace(string fileName)
+        {
+            if (File.Exists(fileName))
             {
-                wsLogs.LoadWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName, AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName);
-                wsLogs.ApplyWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName);
+                wsLogs.LoadWorkspace(fileName, fileName);
+                wsLogs.ApplyWorkspace(fileName);
             }
         }
         private void rgSearchMode_SelectedIndexChanged(object s, EventArgs e)
@@ -477,7 +482,7 @@ namespace Analogy.CommonControls.UserControls
             };
             bBtnShare.ItemClick += (s, e) =>
             {
-                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable(), Settings,);
+                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable(), new List<IFactoryContainer>(0), Settings);
                 share.Show(this);
             };
             bbtnReload.ItemClick += async (s, e) =>
@@ -1201,9 +1206,7 @@ namespace Analogy.CommonControls.UserControls
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
             pnlExtraFilters.Visible = !_simpleMode;
-            bBtnShare.Enabled =
-                FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories)
-                    .SelectMany(fc => fc.Shareables).Any();
+            bBtnShare.Enabled = false;// FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories).SelectMany(fc => fc.Shareables).Any();
 
 
             logGrid.OptionsSelection.MultiSelect = true;
@@ -2579,7 +2582,7 @@ namespace Analogy.CommonControls.UserControls
                 foreach (DataRow row in _messageData.Rows)
                 {
                     AnalogyLogMessage message = (AnalogyLogMessage)row["Object"];
-                    row["TimeDiff"] = Utils.GetOffsetTime(message.Date,Settings.TimeOffsetType,Settings.TimeOffset).Subtract(diffStartTime).ToString();
+                    row["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
                 }
 
                 _messageData.EndLoadData();
@@ -2688,7 +2691,7 @@ namespace Analogy.CommonControls.UserControls
             items = Messages.Select(r => r.Text).ToList();
             lockSlim.ExitReadLock();
 
-            AnalogyExclude ef = new AnalogyExclude(items, _excludeMostCommon,Settings.GetIcon());
+            AnalogyExclude ef = new AnalogyExclude(items, _excludeMostCommon, Settings.GetIcon());
             if (ef.ShowDialog(this) == DialogResult.OK)
             {
                 _excludeMostCommon = AnalogyExclude.GlobalExclusion;

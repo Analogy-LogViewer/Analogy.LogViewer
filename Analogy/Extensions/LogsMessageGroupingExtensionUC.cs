@@ -179,7 +179,7 @@ namespace Analogy.Extensions
             foreach (var message in messages)
             {
                 AddExtraColumnsIfNeededToTable(grouped, gridViewGrouping2, message);
-                DataRow dtr = Utils.CreateRow(grouped, message, "");
+                DataRow dtr = CommonControls.Utils.CreateRow(grouped, message, "", Settings.TimeOffsetType, Settings.TimeOffset);
                 grouped.Rows.Add(dtr);
 
             }
