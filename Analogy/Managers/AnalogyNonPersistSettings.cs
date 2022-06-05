@@ -14,11 +14,10 @@ namespace Analogy.Managers
         public List<string> AdditionalAssembliesDependenciesLocations { get; }
         public bool DisableUpdatesByDataProvidersOverrides { get; set; }
         public bool DisableUpdateFromRegistry { get; set; }
-
-        public bool UpdateAreDisabled => DisableUpdateFromRegistry || DisableUpdatesByDataProvidersOverrides;
-
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
+        public bool UpdateAreDisabled => DisableUpdateFromRegistry || DisableUpdatesByDataProvidersOverrides;
+
         public AnalogyNonPersistSettings()
         {
             AdditionalAssembliesDependenciesLocations = new List<string>();

@@ -15,38 +15,31 @@ namespace Analogy.CommonControls.Forms
         private readonly List<AnalogyLogMessage> _messages;
         private readonly string _dataSource;
         public UCLogs LogWindow => ucLogs1;
-        public XtraFormLogGrid(bool registerToAnalogyLogger)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IAnalogyLogger logger)
         {
-            this.ucLogs1 = new Analogy.CommonControls.UserControls.UCLogs();
+            ucLogs1 = new UCLogs(userSettingsManager, extensionManager, logger);
             InitializeComponent();
+            Icon = userSettingsManager.GetIcon();
             _dataSource = "Analogy";
             _messages = new List<AnalogyLogMessage>();
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            var analogyDataProvider = analogy.DataProvidersFactories.First().DataProviders.First();
-            ucLogs1.SetFileDataSource(analogyDataProvider, null);
-
-            if (registerToAnalogyLogger)
-            {
-                AnalogyLogManager.Instance.OnNewMessage += Instance_OnNewMessage;
-            }
         }
-        public XtraFormLogGrid(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider) : this(false)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IAnalogyLogger logger, IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider) : this(userSettingsManager, extensionManager, logger)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
             ucLogs1.SetFileDataSource(DataProvider, FileDataProvider);
         }
 
-        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, bool registerToAnalogyLogger) : this(registerToAnalogyLogger)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IAnalogyLogger logger, List<AnalogyLogMessage> messages, string dataSource) : this(userSettingsManager, extensionManager, logger)
         {
             _messages = messages;
             _dataSource = dataSource;
         }
 
 
-        public XtraFormLogGrid(List<AnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IAnalogyLogger logger, List<AnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager, extensionManager, logger)
         {
-            this.ucLogs1 = new Analogy.CommonControls.UserControls.UCLogs();
+            this.ucLogs1 = new UCLogs(userSettingsManager, extensionManager, logger);
             InitializeComponent();
             _messages = messages;
             _dataSource = dataSource;
@@ -66,7 +59,6 @@ namespace Analogy.CommonControls.Forms
         }
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
             if (DesignMode)
             {
                 return;
@@ -89,7 +81,6 @@ namespace Analogy.CommonControls.Forms
 
         private void XtraFormLogGrid_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            AnalogyLogManager.Instance.OnNewMessage -= Instance_OnNewMessage;
         }
     }
 }

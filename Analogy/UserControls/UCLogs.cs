@@ -66,6 +66,7 @@ namespace Analogy.UserControls
         public List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
         public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
+        private IAnalogyLogger Logger => AnalogyLogger.Instance;
         private bool LoadingInProgress => fileLoadingCount > 0;
         private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
@@ -2427,7 +2428,7 @@ namespace Analogy.UserControls
             string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
             AddExtraColumnsIfNeededToTable(_bookmarkedMessages, gridViewBookmarkedMessages, message);
             DataRow dtr = CommonControls.Utils.CreateRow(_bookmarkedMessages, message, dataSource,
-                Settings.TimeOffsetType,Settings.TimeOffset);
+                Settings.TimeOffsetType, Settings.TimeOffset);
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
@@ -3006,7 +3007,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3170,7 +3171,7 @@ namespace Analogy.UserControls
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider, process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -3286,7 +3287,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3357,7 +3358,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider, AnalogyOfflineDataProvider);
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, ExtensionManager, Logger, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
             var processor = new FileProcessor(logGridForm.LogWindow);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);

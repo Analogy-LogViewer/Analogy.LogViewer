@@ -44,6 +44,8 @@ namespace Analogy.CommonControls.UserControls
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
     {
         #region properties
+        public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
+        public string CurrentLogLayoutName { get; } = "Active Layout";
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private PagingManager PagingManager { get; set; }
@@ -169,7 +171,7 @@ namespace Analogy.CommonControls.UserControls
 
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
-            FileProcessor = new FileProcessor(Settings,this, Logger);
+            FileProcessor = new FileProcessor(Settings, this, Logger);
             if (DesignMode)
             {
                 return;
@@ -3004,7 +3006,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3168,7 +3170,7 @@ namespace Analogy.CommonControls.UserControls
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider, process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -3284,7 +3286,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3336,8 +3338,8 @@ namespace Analogy.CommonControls.UserControls
         {
             try
             {
-                wsLogs.CaptureWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName);
-                wsLogs.SaveWorkspace(AnalogyNonPersistSettings.Instance.CurrentLogLayoutName, AnalogyNonPersistSettings.Instance.CurrentLogLayoutFileName, true);
+                wsLogs.CaptureWorkspace(CurrentLogLayoutName);
+                wsLogs.SaveWorkspace(CurrentLogLayoutName, CurrentLogLayoutFileName, true);
             }
             catch (Exception e)
             {
@@ -3355,9 +3357,9 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider, AnalogyOfflineDataProvider);
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, ExtensionManager, Logger, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
-            var processor = new FileProcessor(Settings,logGridForm.LogWindow,Logger);
+            var processor = new FileProcessor(Settings, logGridForm.LogWindow, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
 
         }
