@@ -5,9 +5,10 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataTypes;
+using Analogy.CommonControls.DataTypes;
 using Analogy.Plotting;
 using DevExpress.XtraBars.Docking;
+using AnalogyCustomXAxisPlot = Analogy.DataTypes.AnalogyCustomXAxisPlot;
 
 namespace Analogy.UserControls
 {
