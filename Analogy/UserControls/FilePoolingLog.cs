@@ -24,10 +24,10 @@ namespace Analogy
         {
             InitializeComponent();
             FileName = fileName;
-            PoolingManager = new FilePoolingManager(FileName,ucLogs1, offlineDataProvider);
+            PoolingManager = new FilePoolingManager(FileName, ucLogs1, offlineDataProvider);
             ucLogs1.SetFileDataSource(offlineDataProvider, offlineDataProvider);
             ucLogs1.EnableFileReload(FileName);
-          
+
             PoolingManager.OnNewMessages += (s, data) =>
             {
                 AppendMessages(data.messages, data.dataSource);
@@ -130,7 +130,7 @@ namespace Analogy
 
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance,
-                AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider,
+                FactoriesManager.Instance, AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider,
                 ucLogs1.FileDataProvider);
             grid.Show(this);
         }

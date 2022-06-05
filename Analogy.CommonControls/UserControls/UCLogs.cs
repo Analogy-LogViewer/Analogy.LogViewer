@@ -3011,7 +3011,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3175,7 +3175,7 @@ namespace Analogy.CommonControls.UserControls
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider, process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -3222,6 +3222,17 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
+        public void SetHighlightSettings(Action OpenSettingForm)
+        {
+         
+            this.sbtnMoreHighlight.Click += (s, e) =>
+            {
+                OpenSettingForm.Invoke();
+                var user = new ApplicationSettingsForm("Color Highlighting");
+                user.ShowDialog(this);
+            };
+            this.sbtnMoreHighlight.Visible = true;
+        }
         private void tsmiDateFilterOlder_Click(object sender, EventArgs e)
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
@@ -3234,8 +3245,7 @@ namespace Analogy.CommonControls.UserControls
 
         private void sbtnMoreHighlight_Click(object sender, EventArgs e)
         {
-            var user = new ApplicationSettingsForm("Color Highlighting");
-            user.ShowDialog(this);
+         
         }
 
         private void sbtnPreDefinedFilters_Click(object sender, EventArgs e)
@@ -3291,7 +3301,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3362,7 +3372,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, ExtensionManager, Logger, FileDataProvider, AnalogyOfflineDataProvider);
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
             var processor = new FileProcessor(Settings, logGridForm.LogWindow, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);

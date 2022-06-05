@@ -92,7 +92,7 @@ namespace Analogy
             }
 
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
-            XtraFormLogGrid grid = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance, AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
         }
     }

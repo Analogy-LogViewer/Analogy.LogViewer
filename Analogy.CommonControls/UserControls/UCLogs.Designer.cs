@@ -2292,7 +2292,7 @@ namespace Analogy.CommonControls.UserControls
             this.sbtnMoreHighlight.StyleController = this.layoutControlLogs;
             this.sbtnMoreHighlight.TabIndex = 4;
             this.sbtnMoreHighlight.Text = "More ...";
-            this.sbtnMoreHighlight.Click += new System.EventHandler(this.sbtnMoreHighlight_Click);
+            this.sbtnMoreHighlight.Visible = false;
             // 
             // sbtnPagePrevious
             // 

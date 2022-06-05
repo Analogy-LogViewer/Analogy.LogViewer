@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
+using Analogy.CommonControls.Managers;
 using Analogy.DataProviders;
 using Analogy.Forms;
 using Analogy.Interfaces;
@@ -3007,7 +3008,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager.Instance, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3106,7 +3107,7 @@ namespace Analogy.UserControls
 
         private void bBtnDataVisualizer_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DataVisualizerForm sv = new DataVisualizerForm(Settings,() => Messages);
+            DataVisualizerForm sv = new DataVisualizerForm(Settings, () => Messages);
             sv.Show(this);
         }
 
@@ -3171,7 +3172,7 @@ namespace Analogy.UserControls
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider, process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager.Instance, Logger, msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -3287,7 +3288,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, Logger, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager.Instance, Logger, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3358,7 +3359,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, ExtensionManager, Logger, FileDataProvider, AnalogyOfflineDataProvider);
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager.Instance, Logger, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
             var processor = new FileProcessor(logGridForm.LogWindow);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);

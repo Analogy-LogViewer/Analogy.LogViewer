@@ -4,6 +4,7 @@ using DevExpress.XtraEditors;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Analogy.CommonControls.Managers;
 using Analogy.DataTypes;
 
 namespace Analogy.UserControls
