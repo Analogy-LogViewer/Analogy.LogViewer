@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
 using Analogy.DataProviders;
 using Analogy.Forms;
@@ -39,6 +40,10 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
 using AnalogyClearedHistoryEventArgs = Analogy.DataTypes.AnalogyClearedHistoryEventArgs;
+using AnalogyExclude = Analogy.Forms.AnalogyExclude;
+using AnalogyExcludeMessage = Analogy.Forms.AnalogyExcludeMessage;
+using AnalogyOTAForm = Analogy.Forms.AnalogyOTAForm;
+using FormMessageDetails = Analogy.Forms.FormMessageDetails;
 
 namespace Analogy.UserControls
 {

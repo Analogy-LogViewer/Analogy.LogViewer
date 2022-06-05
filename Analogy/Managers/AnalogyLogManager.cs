@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Forms;
 

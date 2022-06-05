@@ -387,6 +387,13 @@
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' or '$(TargetFramework)' == 'net6.0-windows' ">
 		<PackageReference Include="Analogy.CommonControls.Dependencies.netcoreapp3.1" Version="0.9.0" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="UserControls\LogMessagesUC.cs" />
+	  <Compile Remove="UserControls\LogMessagesUC.Designer.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Remove="UserControls\LogMessagesUC.resx" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="2.1.0" />
@@ -463,10 +470,6 @@
 		<Compile Update="UserControls\MessageDetailsUC.Designer.cs">
 			<DependentUpon>MessageDetailsUC.cs</DependentUpon>
 		</Compile>
-		<Compile Update="UserControls\LogMessagesUC.cs" />
-		<Compile Update="UserControls\LogMessagesUC.Designer.cs">
-			<DependentUpon>LogMessagesUC.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\UCLogs.cs">
 		  <SubType>UserControl</SubType>
 		</Compile>
@@ -498,10 +501,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\MessageDetailsUC.resx">
 			<DependentUpon>MessageDetailsUC.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\LogMessagesUC.resx">
-			<SubType>Designer</SubType>
-			<DependentUpon>LogMessagesUC.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\UCLogs.resx">
 		  <DependentUpon>UCLogs.cs</DependentUpon>

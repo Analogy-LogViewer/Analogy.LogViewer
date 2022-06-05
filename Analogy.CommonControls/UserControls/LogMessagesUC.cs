@@ -2770,9 +2770,9 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider);
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
-            var processor = new FileProcessor(logGridForm.Window);
+            var processor = new FileProcessor(logGridForm.LogWindow);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
 
         }

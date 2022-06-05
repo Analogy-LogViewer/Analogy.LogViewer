@@ -37,10 +37,13 @@
 		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 	<ItemGroup>
+		<Compile Remove="Forms\XtraFormLogGrid.cs" />
+		<Compile Remove="Forms\XtraFormLogGrid.Designer.cs" />
 		<Compile Remove="UserControls\UCLogsNonFloatable.cs" />
 		<Compile Remove="UserControls\UCLogsNonFloatable.Designer.cs" />
 	</ItemGroup>
 	<ItemGroup>
+		<EmbeddedResource Remove="Forms\XtraFormLogGrid.resx" />
 		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 	<ItemGroup>
@@ -591,10 +594,6 @@
 		<Compile Update="Forms\XtraFormClientServer.Designer.cs">
 			<DependentUpon>XtraFormClientServer.cs</DependentUpon>
 		</Compile>
-		<Compile Update="Forms\XtraFormLogGrid.cs" />
-		<Compile Update="Forms\XtraFormLogGrid.Designer.cs">
-			<DependentUpon>XtraFormLogGrid.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\XtraUCDirectoryListing.cs" />
 		<Compile Update="UserControls\XtraUCDirectoryListing.Designer.cs">
 			<DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>
@@ -753,9 +752,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Forms\XtraFormClientServer.resx">
 			<DependentUpon>XtraFormClientServer.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Forms\XtraFormLogGrid.resx">
-			<DependentUpon>XtraFormLogGrid.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\XtraUCDirectoryListing.resx">
 			<DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>

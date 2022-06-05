@@ -1,6 +1,4 @@
-﻿using Analogy.CommonControls.UserControls;
-
-namespace Analogy.CommonControls.Forms
+﻿namespace Analogy.CommonControls.Forms
 {
     partial class XtraFormLogGrid
     {
@@ -32,31 +30,31 @@ namespace Analogy.CommonControls.Forms
         {
             System.Threading.CancellationTokenSource cancellationTokenSource1 = new System.Threading.CancellationTokenSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraFormLogGrid));
-            this._logMessagesUcLogs1 = new LogMessagesUC();
             this.SuspendLayout();
             // 
-            // _logMessagesUcLogs1
+            // ucLogs1
             // 
-            this._logMessagesUcLogs1.CancellationTokenSource = cancellationTokenSource1;
-            this._logMessagesUcLogs1.CurrentColumnsFields = ((System.Collections.Generic.List<System.ValueTuple<string, string>>)(resources.GetObject("_logMessagesUcLogs1.CurrentColumnsFields")));
-            this._logMessagesUcLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._logMessagesUcLogs1.DoNotAddToRecentHistory = false;
-            this._logMessagesUcLogs1.ExcludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<DataTypes.FilterCriteriaUIOption>)(resources.GetObject("_logMessagesUcLogs1.ExcludeFilterCriteriaUIOptions")));
-            this._logMessagesUcLogs1.FileDataProvider = null;
-            this._logMessagesUcLogs1.ForceNoFileCaching = false;
-            this._logMessagesUcLogs1.IncludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<DataTypes.FilterCriteriaUIOption>)(resources.GetObject("_logMessagesUcLogs1.IncludeFilterCriteriaUIOptions")));
-            this._logMessagesUcLogs1.Location = new System.Drawing.Point(0, 0);
-            this._logMessagesUcLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this._logMessagesUcLogs1.Name = "_logMessagesUcLogs1";
-            this._logMessagesUcLogs1.Size = new System.Drawing.Size(1200, 711);
-            this._logMessagesUcLogs1.TabIndex = 0;
+            this.ucLogs1.CancellationTokenSource = cancellationTokenSource1;
+            this.ucLogs1.CurrentColumnsFields = ((System.Collections.Generic.List<System.ValueTuple<string, string>>)(resources.GetObject("ucLogs1.CurrentColumnsFields")));
+            this.ucLogs1.DataProvider = null;
+            this.ucLogs1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucLogs1.DoNotAddToRecentHistory = false;
+            this.ucLogs1.ExcludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.CommonControls.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.ExcludeFilterCriteriaUIOptions")));
+            this.ucLogs1.FileDataProvider = null;
+            this.ucLogs1.ForceNoFileCaching = false;
+            this.ucLogs1.IncludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.CommonControls.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.IncludeFilterCriteriaUIOptions")));
+            this.ucLogs1.Location = new System.Drawing.Point(0, 0);
+            this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ucLogs1.Name = "ucLogs1";
+            this.ucLogs1.Size = new System.Drawing.Size(1200, 711);
+            this.ucLogs1.TabIndex = 0;
             // 
             // XtraFormLogGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 711);
-            this.Controls.Add(this._logMessagesUcLogs1);
+            this.Controls.Add(this.ucLogs1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "XtraFormLogGrid";
@@ -70,6 +68,6 @@ namespace Analogy.CommonControls.Forms
 
         #endregion
 
-        private LogMessagesUC _logMessagesUcLogs1;
+        private Analogy.CommonControls.UserControls.UCLogs ucLogs1;
     }
 }
