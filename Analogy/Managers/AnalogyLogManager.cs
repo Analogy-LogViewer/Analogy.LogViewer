@@ -7,13 +7,14 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.CommonControls.Interfaces;
 using Analogy.Forms;
 
 namespace Analogy.Managers
 {
-    public class AnalogyLogManager
+    public class AnalogyLogManager : IAnalogyLogger
     {
-        public event EventHandler<(AnalogyLogMessage msg,string source)> OnNewMessage;
+        public event EventHandler<(AnalogyLogMessage msg, string source)> OnNewMessage;
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
         public static AnalogyLogManager Instance => _instance.Value;
 
@@ -114,8 +115,8 @@ namespace Analogy.Managers
             ContentChanged = true;
             messages.Add(new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General, source));
             OnNewError?.Invoke(this, new EventArgs());
-            AnalogyErrorMessage err=new AnalogyErrorMessage(error,source);
-            OnNewMessage?.Invoke(this,(err,source));
+            AnalogyErrorMessage err = new AnalogyErrorMessage(error, source);
+            OnNewMessage?.Invoke(this, (err, source));
         }
         public void LogInformation(string data, string source)
         {
@@ -171,7 +172,7 @@ namespace Analogy.Managers
         }
         public void Show(Form mainForm)
         {
-            XtraFormLogGrid msg = new XtraFormLogGrid(messages, "Analogy",true);
+            XtraFormLogGrid msg = new XtraFormLogGrid(messages, "Analogy", true);
             msg.Show(mainForm);
         }
 
@@ -186,6 +187,38 @@ namespace Analogy.Managers
             messages.Add(error);
             OnNewError?.Invoke(this, new EventArgs());
             OnNewMessage?.Invoke(this, (error, error.Source));
+        }
+
+        public void LogInformation(string message, string source = "", string memberName = "", int lineNumber = 0,
+            string filePath = "")
+        {
+            LogInformation(message, source);
+        }
+
+        public void LogWarning(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
+        {
+            LogWarning(message, source);
+        }
+
+        public void LogDebug(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
+        {
+            LogDebug(message, source);
+        }
+
+        public void LogError(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
+        {
+            LogError(message, source);
+        }
+
+        public void LogCritical(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
+        {
+            LogCritical(message, source);
+        }
+
+        public void LogException(string message, Exception ex, string source = "", string memberName = "", int lineNumber = 0,
+            string filePath = "")
+        {
+            LogError(ex.Message, source);
         }
     }
 }

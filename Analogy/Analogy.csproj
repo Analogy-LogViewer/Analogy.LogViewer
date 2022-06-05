@@ -461,7 +461,6 @@
 		<Compile Update="Forms\AnalogyExclude.Designer.cs">
 			<DependentUpon>AnalogyExclude.cs</DependentUpon>
 		</Compile>
-		<Compile Update="Forms\AnalogyAddCommentsToMessage.cs" />
 		<Compile Update="Forms\AnalogyExcludeMessage.cs" />
 		<Compile Update="Forms\AnalogyExcludeMessage.Designer.cs">
 			<DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>

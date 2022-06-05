@@ -4,6 +4,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
@@ -15,6 +16,18 @@ namespace Analogy.CommonControls
 {
     public static class Utils
     {
+        [StructLayout(LayoutKind.Sequential)]
+        private struct LASTINPUTINFO
+        {
+            public static readonly int SizeOf = Marshal.SizeOf(typeof(LASTINPUTINFO));
+
+            [MarshalAs(UnmanagedType.U4)]
+            public UInt32 cbSize;
+            [MarshalAs(UnmanagedType.U4)]
+            public UInt32 dwTime;
+        }
+        [DllImport("user32.dll")]
+        static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
         internal const string DateFilterNone = "All";
         /// <summary>
         /// From Today 
@@ -175,6 +188,60 @@ namespace Analogy.CommonControls
             chkLstLogLevel.CheckStyle = CheckStyles.Standard;
             chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, false)).ToArray());
 
+        }
+
+        static long GetLastInputTime()
+        {
+            uint idleTime = 0;
+            LASTINPUTINFO lastInputInfo = new LASTINPUTINFO();
+            lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
+            lastInputInfo.dwTime = 0;
+
+            uint envTicks = (uint)Environment.TickCount;
+
+            if (GetLastInputInfo(ref lastInputInfo))
+            {
+                uint lastInputTick = lastInputInfo.dwTime;
+
+                idleTime = envTicks - lastInputTick;
+            }
+
+            return ((idleTime > 0) ? (idleTime / 1000) : 0);
+        }
+        public static TimeSpan IdleTime() => TimeSpan.FromSeconds(GetLastInputTime());
+
+        public static string GetOpenFilter(string openFilter,bool addCompressedArchives)
+        {
+            if (!addCompressedArchives)
+            {
+                return openFilter;
+            }
+            //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
+            //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
+            //return openFilter + compressedFilter;
+            if (!openFilter.Contains("*.zip", StringComparison.InvariantCultureIgnoreCase))
+            {
+                string compressedFilter = "|Compressed Zip Archive (*.zip)|*.zip";
+                openFilter = openFilter + compressedFilter;
+            }
+            if (!openFilter.Contains("*.gz", StringComparison.InvariantCultureIgnoreCase))
+            {
+                string compressedFilter = "|Compressed Gzip Archive (*.gz)|*.gz";
+                openFilter = openFilter + compressedFilter;
+            }
+
+            return openFilter;
+        }
+        /// <summary>
+        /// Case insensitive contains(string)
+        /// </summary>
+        /// <param name="source">the original string</param>
+        /// <param name="toCheck">the string</param>
+        /// <param name="comp">string comparison</param>
+        /// <returns></returns>
+        private static bool Contains(this string source, string toCheck, StringComparison comp)
+        {
+            return string.IsNullOrEmpty(toCheck) || (!string.IsNullOrEmpty(source) && source.IndexOf(toCheck, comp) >= 0);
         }
     }
 }

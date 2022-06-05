@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.Managers
@@ -20,7 +21,7 @@ namespace Analogy.CommonControls.Managers
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; set; }
         private List<DataTable> pages;
         private readonly List<AnalogyLogMessage> allMessages;
         private readonly int pageSize;
@@ -44,9 +45,9 @@ namespace Analogy.CommonControls.Managers
 
         public static int TotalMissedMessages => _totalMissedMessages;
 
-        public PagingManager(UserControl owner)
+        public PagingManager(UserControl owner, IUserSettingsManager settings)
         {
-            //CurrentColumns = new List<string>();
+            Settings = settings;
             this.owner = owner;
             pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
@@ -120,7 +121,7 @@ namespace Analogy.CommonControls.Managers
             try
             {
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
+                DataRow dtr = Utils.CreateRow(table, message, dataSource,Settings.TimeOffsetType,Settings.TimeOffset);
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -173,7 +174,7 @@ namespace Analogy.CommonControls.Managers
                 try
                 {
                     lockSlim.EnterWriteLock();
-                    DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
+                    DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.TimeOffsetType, Settings.TimeOffset);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }
@@ -338,7 +339,7 @@ namespace Analogy.CommonControls.Managers
                 {
                     dataTableRow.BeginEdit();
                     AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
-                    dataTableRow["Date"] = Utils.GetOffsetTime(m.Date);
+                    dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                     dataTableRow.EndEdit();
                 }
             }

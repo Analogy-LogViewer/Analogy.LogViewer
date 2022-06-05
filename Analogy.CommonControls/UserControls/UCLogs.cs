@@ -17,7 +17,6 @@ using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Properties;
 using Analogy.CommonControls.Tools;
-using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using DevExpress.Data;
@@ -79,7 +78,7 @@ namespace Analogy.CommonControls.UserControls
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
-
+        private IAnalogyLogger Logger { get; set; }
         private List<XtraFormLogGrid> ExternalWindows
         {
             get
@@ -149,8 +148,9 @@ namespace Analogy.CommonControls.UserControls
         #endregion
         private JsonTreeView JsonTreeView { get; set; }
 
-        public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager)
+        public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IAnalogyLogger logger)
         {
+            Logger = logger;
             Settings = userSettingsManager;
             ExtensionManager = extensionManager;
             InitializeComponent();
@@ -175,7 +175,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            PagingManager = new PagingManager(this);
+            PagingManager = new PagingManager(this, Settings);
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
             var excludedColumns = new List<GridColumn>()
@@ -477,7 +477,7 @@ namespace Analogy.CommonControls.UserControls
             };
             bBtnShare.ItemClick += (s, e) =>
             {
-                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable(),,Settings);
+                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable(), Settings,);
                 share.Show(this);
             };
             bbtnReload.ItemClick += async (s, e) =>
@@ -803,7 +803,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 dataTableRow.BeginEdit();
                 AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
-                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date,Settings.TimeOffsetType,Settings.TimeOffset);
+                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 dataTableRow.EndEdit();
             }
         }
@@ -830,7 +830,7 @@ namespace Analogy.CommonControls.UserControls
             }
             catch (Exception ex)
             {
-                AnalogyLogManager.Instance.LogError(ex.Message, nameof(MainView_Layout));
+                Logger.LogError(ex.Message, nameof(MainView_Layout));
             }
         }
 
@@ -904,8 +904,8 @@ namespace Analogy.CommonControls.UserControls
                 bbiIncludeSource.Caption = $"Include Source: Append '{source}' to filter";
                 bbiExcludeModule.Caption = $"Exclude Process/Module: Append '{module}' to filter";
                 bbiExcludeSource.Caption = $"Exclude Source: Append '{source}' to filter";
-                bbiDatetiemFilterFrom.Caption = $"Show all messages after {Utils.GetOffsetTime(message.Date)}";
-                bbiDatetiemFilterTo.Caption = $"Show all messages Before {Utils.GetOffsetTime(message.Date)}";
+                bbiDatetiemFilterFrom.Caption = $"Show all messages after {Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset)}";
+                bbiDatetiemFilterTo.Caption = $"Show all messages Before {Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset)}";
                 bbiDatetiemFilterFrom.Visibility = BarItemVisibility.Always;
                 bbiDatetiemFilterTo.Visibility = BarItemVisibility.Always;
             }
@@ -1298,7 +1298,7 @@ namespace Analogy.CommonControls.UserControls
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.Text = extension.Title;
                 page.Controls.Add(extension.UserControl);
-                await extension.InitializeUserControl(this, AnalogyLogger.Instance);
+                await extension.InitializeUserControl(this, Logger);
                 page.DockedAsTabbedDocument = true;
             }
         }
@@ -1715,7 +1715,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 if (diffStartTime > DateTime.MinValue)
                 {
-                    dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
+                    dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
                 }
 
                 if (hasAnyInPlaceExtensions)
@@ -2422,11 +2422,10 @@ namespace Analogy.CommonControls.UserControls
             lockSlim.EnterWriteLock();
             string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
             AddExtraColumnsIfNeededToTable(_bookmarkedMessages, gridViewBookmarkedMessages, message);
-            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource,
-                Settings.CheckAdditionalInformation);
+            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource, Settings.TimeOffsetType, Settings.TimeOffset);
             if (diffStartTime > DateTime.MinValue)
             {
-                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
+                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
             }
 
             _bookmarkedMessages.Rows.Add(dtr);
@@ -2566,7 +2565,7 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                diffStartTime = Utils.GetOffsetTime(message.Date);
+                diffStartTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 UpdateTimes();
             }
 
@@ -2656,7 +2655,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog
                 {
-                    Filter = Utils.GetOpenFilter(FileDataProvider.FileOpenDialogFilters),
+                    Filter = Utils.GetOpenFilter(FileDataProvider.FileOpenDialogFilters, Settings.EnableCompressedArchives),
                     Title = @"Import file to current view",
                     Multiselect = false
                 };
@@ -2759,7 +2758,7 @@ namespace Analogy.CommonControls.UserControls
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}", e, "Analogy");
+                Logger.LogException($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -3208,7 +3207,7 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date);
+                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceNewerThanFilter.Checked = true;
             }
         }
@@ -3218,7 +3217,7 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date);
+                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceOlderThanFilter.Checked = true;
             }
         }

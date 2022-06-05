@@ -7,7 +7,7 @@ using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 using MessagePack;
 
-namespace Analogy.Forms
+namespace Analogy.CommonControls.Forms
 {
     public partial class AnalogyOTAForm : XtraForm
     {
