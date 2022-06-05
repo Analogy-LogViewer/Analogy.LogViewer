@@ -29,7 +29,6 @@ namespace Analogy
             ucLogs1.SetBookmarkMode();
             var messages = await BookmarkPersistManager.Instance.GetMessages();
             ucLogs1.AppendMessages(messages, "Analogy bookmarks");
-          ucLogs1.
             BookmarkPersistManager.Instance.MessageReceived += (s, msg) => ucLogs1.AppendMessage(msg.Message, msg.DataSource);
             BookmarkPersistManager.Instance.MessageRemoved += (s, msg) => ucLogs1.RemoveMessage(msg.Message);
         }
