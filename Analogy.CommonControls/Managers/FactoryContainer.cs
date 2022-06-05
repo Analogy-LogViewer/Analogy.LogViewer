@@ -1,15 +1,15 @@
-﻿using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
-using Analogy.Interfaces.Factories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.Factories;
 
-namespace Analogy.Managers
+namespace Analogy.CommonControls.Managers
 {
     public class FactoryContainer : IFactoryContainer
     {

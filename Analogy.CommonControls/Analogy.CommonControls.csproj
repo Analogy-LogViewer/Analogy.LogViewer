@@ -418,6 +418,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="Forms\AnalogyAddCommentsToMessage.cs">
+		  <SubType>Form</SubType>
+		</Compile>
 		<Compile Update="Forms\AnalogyExclude.cs">
 		  <SubType>Form</SubType>
 		</Compile>

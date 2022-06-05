@@ -149,12 +149,13 @@ namespace Analogy.CommonControls.UserControls
         private LogLevelSelectionType LogLevelSelectionType => Settings.LogLevelSelection;
         #endregion
         private JsonTreeView JsonTreeView { get; set; }
-
-        public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IAnalogyLogger logger)
+        private IFactoriesManager FactoriesManager { get; set; }
+        public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
             Logger = logger;
             Settings = userSettingsManager;
             ExtensionManager = extensionManager;
+            FactoriesManager = factoriesManager;
             InitializeComponent();
             JsonTreeView = new JsonTreeView();
             spltcMessages.Panel2.Controls.Add(JsonTreeView);
@@ -2794,7 +2795,11 @@ namespace Analogy.CommonControls.UserControls
 
         public void SetBookmarkMode()
         {
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            if (FactoriesManager == null)
+            {
+                return;
+            }
+            FactoryContainer analogy = FactoriesManager.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             var provider = analogy.DataProvidersFactories[0].DataProviders.First();
             SetFileDataSource(provider, null);
             BookmarkView = true;
