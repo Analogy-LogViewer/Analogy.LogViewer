@@ -13,14 +13,14 @@ namespace Analogy.CommonControls.Forms
         private readonly List<AnalogyLogMessage> _messages;
         private readonly string _dataSource;
         public LogMessagesUC Window => _logMessagesUcLogs1;
-         public XtraFormLogGrid(bool registerToAnalogyLogger)
+        public XtraFormLogGrid(bool registerToAnalogyLogger)
         {
-               InitializeComponent();
-               _dataSource = "Analogy";    
-               _messages = new List<AnalogyLogMessage>();
+            InitializeComponent();
+            _dataSource = "Analogy";
+            _messages = new List<AnalogyLogMessage>();
 
         }
-        public XtraFormLogGrid(IAnalogyOfflineDataProvider? fileDataProvider):this(false)
+        public XtraFormLogGrid(IAnalogyOfflineDataProvider? fileDataProvider) : this(false)
         {
             FileDataProvider = fileDataProvider;
             _logMessagesUcLogs1.SetFileDataSource(FileDataProvider);

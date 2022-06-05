@@ -1,14 +1,13 @@
-﻿using Analogy.Interfaces;
-using DevExpress.XtraEditors;
-using Markdig;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.CommonControls;
 using Analogy.CommonControls.Tools;
+using Analogy.Interfaces;
+using DevExpress.XtraEditors;
+using Markdig;
 
-namespace Analogy
+namespace Analogy.CommonControls.UserControls
 {
     public partial class MessageDetailsUC : XtraUserControl
     {

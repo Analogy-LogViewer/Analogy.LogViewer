@@ -584,10 +584,6 @@
 		<Compile Update="UserControls\UCLogs.Designer.cs">
 			<DependentUpon>UCLogs.cs</DependentUpon>
 		</Compile>
-		<Compile Update="UserControls\MessageDetailsUC.cs" />
-		<Compile Update="UserControls\MessageDetailsUC.Designer.cs">
-			<DependentUpon>MessageDetailsUC.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\UtilityUC.cs" />
 		<Compile Update="UserControls\UtilityUC.Designer.cs">
 			<DependentUpon>UtilityUC.cs</DependentUpon>
@@ -752,9 +748,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\UCLogs.resx">
 			<DependentUpon>UCLogs.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\MessageDetailsUC.resx">
-			<DependentUpon>MessageDetailsUC.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\UtilityUC.resx">
 			<DependentUpon>UtilityUC.cs</DependentUpon>

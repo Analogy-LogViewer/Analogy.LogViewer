@@ -1,4 +1,4 @@
-﻿namespace Analogy
+﻿namespace Analogy.CommonControls.UserControls
 {
     partial class MessageDetailsUC
     {
