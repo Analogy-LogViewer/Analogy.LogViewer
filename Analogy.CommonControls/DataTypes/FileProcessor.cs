@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
@@ -16,24 +17,27 @@ namespace Analogy.CommonControls.DataTypes
     public class FileProcessor
     {
         public event EventHandler<EventArgs> OnFileReadingFinished;
-        public event EventHandler<string> ProcessingMessage;
         public DateTime lastNewestMessage;
+        private IUserSettingsManager Settings { get; }
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
         private ILogMessageCreatedHandler DataWindow { get; }
-        public LogMessagesUC Window { get; }
+        public IAnalogyLogger Logger { get; }
+        public UCLogs LogWindow { get; }
 
-        public FileProcessor(ILogMessageCreatedHandler dataWindow)
+        public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow,IAnalogyLogger logger)
         {
             DataWindow = dataWindow;
-            if (dataWindow is LogMessagesUC logs)
+            Logger = logger;
+            Settings = settingsManager;
+            if (dataWindow is UCLogs logs)
             {
-                Window = logs;
+                LogWindow = logs;
             }
         }
 
         public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider,
-            string filename, CancellationToken token, bool enableFileCaching, bool isReload = false)
+            string filename, CancellationToken token, bool isReload = false)
         {
             //TODO in case of zip recursive call on all extracted files
 
@@ -46,13 +50,13 @@ namespace Analogy.CommonControls.DataTypes
 
             if (!isReload && !DataWindow.ForceNoFileCaching &&
                 FileProcessingManager.Instance.AlreadyProcessed(FileName) &&
-                enableFileCaching) //get it from the cache
+                Settings.EnableFileCaching) //get it from the cache
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
-                if (Window != null)
+                if (LogWindow != null)
                 {
-                    Interlocked.Decrement(ref Window.fileLoadingCount);
+                    Interlocked.Decrement(ref LogWindow.fileLoadingCount);
                 }
 
                 return cachedMessages;
@@ -68,9 +72,9 @@ namespace Analogy.CommonControls.DataTypes
 
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
                 DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
-                if (Window != null)
+                if (LogWindow != null)
                 {
-                    Interlocked.Decrement(ref Window.fileLoadingCount);
+                    Interlocked.Decrement(ref LogWindow.fileLoadingCount);
                 }
 
                 return cachedMessages;
@@ -85,6 +89,11 @@ namespace Analogy.CommonControls.DataTypes
                 {
                     FileProcessingManager.Instance.AddProcessingFile(FileName);
 
+                    if (!DataWindow.DoNotAddToRecentHistory)
+                    {
+                        Settings.AddToRecentFiles(fileDataProvider.Id, FileName);
+                    }
+
                     var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false))
                         .ToList();
                     FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), FileName);
@@ -94,29 +103,30 @@ namespace Analogy.CommonControls.DataTypes
                     }
 
                     OnFileReadingFinished?.Invoke(this, EventArgs.Empty);
-                    if (Window != null)
+                    if (LogWindow != null)
                     {
-                        Interlocked.Decrement(ref Window.fileLoadingCount);
+                        Interlocked.Decrement(ref LogWindow.fileLoadingCount);
                     }
 
                     return messages;
                 }
                 else //cannot open natively. is it compressed file?
                 {
-                    if (Utils.IsCompressedArchive(filename))
+                    if (Settings.EnableCompressedArchives && Utils.IsCompressedArchive(filename))
                     {
                         var compressedMessages = new List<AnalogyLogMessage>();
                         string extractedPath = UnzipFilesIntoTempFolder(filename, fileDataProvider);
                         if (string.IsNullOrEmpty(extractedPath))
                         {
                             string msg = $"File is not supported by {fileDataProvider}. File: {filename}";
-                            ProcessingMessage?.Invoke(this, msg);
+                            Logger.LogCritical("Analogy", msg);
                             AnalogyLogMessage error = new AnalogyErrorMessage(msg, "Analogy");
                             error.Source = nameof(FileProcessor);
                             error.Module = "Analogy";
                             DataWindow.AppendMessage(error, fileDataProvider.GetType().FullName);
                             return new List<AnalogyLogMessage> { error };
                         }
+                        CleanupManager.Instance.AddFolder(extractedPath);
                         var files = Directory.GetFiles(extractedPath);
                         files.ForEach(async file =>
                         {
@@ -129,7 +139,7 @@ namespace Analogy.CommonControls.DataTypes
                     else
                     {
                         string msg = $"File is not supported by {fileDataProvider}. File: {filename}";
-                        ProcessingMessage?.Invoke(this, msg);
+                        Logger.LogCritical("Analogy", msg);
                         AnalogyLogMessage error = new AnalogyErrorMessage(msg, "Analogy");
                         error.Source = nameof(FileProcessor);
                         error.Module = "Analogy";
@@ -140,7 +150,7 @@ namespace Analogy.CommonControls.DataTypes
             }
             catch (Exception e)
             {
-                ProcessingMessage?.Invoke(this, $"Error parsing file: {e}");
+                Logger.LogCritical("Analogy", $"Error parsing file: {e}");
                 var error = new AnalogyErrorMessage($"Error reading file {filename}: Error: {e.Message}", "Analogy");
                 error.Source = nameof(FileProcessor);
                 error.Module = "Analogy";
@@ -164,7 +174,7 @@ namespace Analogy.CommonControls.DataTypes
             }
             else
             {
-                ProcessingMessage?.Invoke(this, $"Unsupported file: {zipPath}.");
+                Logger.LogError(nameof(UnzipFilesIntoTempFolder), $"Unsupported file: {zipPath}.");
                 return string.Empty;
             }
 
@@ -206,11 +216,13 @@ namespace Analogy.CommonControls.DataTypes
 
                     if (!Directory.GetFiles(extractPath).Any())
                     {
-                        ProcessingMessage?.Invoke(this, "Zip file does not contain any supported files");
+                        Logger.LogError(nameof(UnzipFilesIntoTempFolder),
+                            "Zip file does not contain any supported files");
                     }
 
                 }
             }
         }
     }
+
 }

@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using Newtonsoft.Json;
@@ -242,6 +243,17 @@ namespace Analogy.CommonControls
         private static bool Contains(this string source, string toCheck, StringComparison comp)
         {
             return string.IsNullOrEmpty(toCheck) || (!string.IsNullOrEmpty(source) && source.IndexOf(toCheck, comp) >= 0);
+        }
+        public static SuperToolTip GetSuperTip(string title, string content)
+        {
+            SuperToolTip toolTip = new SuperToolTip();
+            // Create an object to initialize the SuperToolTip.
+            SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+            args.Title.Text = title;
+            args.Contents.Text = content;
+            // args.Contents.Image = realTime.ToolTip.Image;
+            toolTip.Setup(args);
+            return toolTip;
         }
     }
 }

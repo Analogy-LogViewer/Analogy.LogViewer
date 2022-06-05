@@ -169,7 +169,7 @@ namespace Analogy.CommonControls.UserControls
 
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
-            FileProcessor = new FileProcessor(this);
+            FileProcessor = new FileProcessor(Settings,this, Logger);
             if (DesignMode)
             {
                 return;
@@ -3341,7 +3341,7 @@ namespace Analogy.CommonControls.UserControls
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError(e.Message, nameof(SaveCurrentWorkspace));
+                Logger.LogError(e.Message, nameof(SaveCurrentWorkspace));
             }
         }
 
@@ -3357,7 +3357,7 @@ namespace Analogy.CommonControls.UserControls
 
             XtraFormLogGrid logGridForm = new XtraFormLogGrid(FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
-            var processor = new FileProcessor(logGridForm.LogWindow);
+            var processor = new FileProcessor(Settings,logGridForm.LogWindow,Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
 
         }
