@@ -23,9 +23,7 @@ namespace Analogy
             {
                 return;
             }
-
-            ucLogs1.btswitchRefreshLog.Visibility = BarItemVisibility.Never;
-            ucLogs1.btsAutoScrollToBottom.Visibility = BarItemVisibility.Never;
+            ucLogs1.HideRefreshAndScrolling();
             ucLogs1.SetBookmarkMode();
             var messages = await BookmarkPersistManager.Instance.GetMessages();
             ucLogs1.AppendMessages(messages, "Analogy bookmarks");

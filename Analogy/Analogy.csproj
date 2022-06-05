@@ -44,6 +44,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Forms\XtraFormLogGrid.resx" />
+		<EmbeddedResource Remove="UserControls\UCLogs.resx" />
 		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 	<ItemGroup>
@@ -578,10 +579,6 @@
 		<Compile Update="UserControls\LogsComparerUC.Designer.cs">
 			<DependentUpon>LogsComparerUC.cs</DependentUpon>
 		</Compile>
-		<Compile Update="UserControls\UCLogs.cs" />
-		<Compile Update="UserControls\UCLogs.Designer.cs">
-			<DependentUpon>UCLogs.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\UtilityUC.cs" />
 		<Compile Update="UserControls\UtilityUC.Designer.cs">
 			<DependentUpon>UtilityUC.cs</DependentUpon>
@@ -736,9 +733,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\LogsComparerUC.resx">
 			<DependentUpon>LogsComparerUC.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\UCLogs.resx">
-			<DependentUpon>UCLogs.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\UtilityUC.resx">
 			<DependentUpon>UtilityUC.cs</DependentUpon>

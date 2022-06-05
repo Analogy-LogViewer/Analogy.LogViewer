@@ -64,8 +64,7 @@ namespace Analogy
             }
 
             folderTreeViewUC1.FolderChanged += FolderTreeViewUC1_FolderChanged;
-            ucLogs1.btswitchRefreshLog.Visibility = BarItemVisibility.Never;
-            ucLogs1.btsAutoScrollToBottom.Visibility = BarItemVisibility.Never;
+            ucLogs1.HideRefreshAndScrolling();
             if (extrenalFiles.Any())
             {
                 if (File.Exists(extrenalFiles.First()))

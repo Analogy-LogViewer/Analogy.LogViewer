@@ -24,14 +24,4 @@ namespace Analogy.DataTypes
 
         }
     }
-
-    public class AnalogyClearedHistoryEventArgs : EventArgs
-    {
-        public List<AnalogyLogMessage> ClearedMessages { get; }
-
-        public AnalogyClearedHistoryEventArgs(List<AnalogyLogMessage> clearedMessages)
-        {
-            ClearedMessages = clearedMessages;
-        }
-    }
 }

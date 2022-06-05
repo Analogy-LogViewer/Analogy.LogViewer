@@ -2794,6 +2794,11 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
+        public void HideRefreshAndScrolling()
+        {
+            btswitchRefreshLog.Visibility = BarItemVisibility.Never;
+            btsAutoScrollToBottom.Visibility = BarItemVisibility.Never;
+        }
         public void SetBookmarkMode()
         {
             if (FactoriesManager == null)
@@ -3229,8 +3234,6 @@ namespace Analogy.CommonControls.UserControls
             this.sbtnMoreHighlight.Click += (s, e) =>
             {
                 OpenSettingForm.Invoke();
-                var user = new ApplicationSettingsForm("Color Highlighting");
-                user.ShowDialog(this);
             };
             this.sbtnMoreHighlight.Visible = true;
         }

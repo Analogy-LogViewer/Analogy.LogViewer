@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Analogy.CommonControls.DataTypes;
 
 namespace Analogy
 {
