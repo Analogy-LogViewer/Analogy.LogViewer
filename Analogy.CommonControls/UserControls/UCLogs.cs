@@ -290,13 +290,14 @@ namespace Analogy.CommonControls.UserControls
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
+      
             if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
             {
                 string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
                 wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
                 wsLogs.ApplyWorkspace(name);
             }
-
+            LoadWorkspace(CurrentLogLayoutFileName);
         }
 
         public void LoadWorkspace(string fileName)
@@ -3224,7 +3225,7 @@ namespace Analogy.CommonControls.UserControls
 
         public void SetHighlightSettings(Action OpenSettingForm)
         {
-         
+
             this.sbtnMoreHighlight.Click += (s, e) =>
             {
                 OpenSettingForm.Invoke();
@@ -3245,7 +3246,7 @@ namespace Analogy.CommonControls.UserControls
 
         private void sbtnMoreHighlight_Click(object sender, EventArgs e)
         {
-         
+
         }
 
         private void sbtnPreDefinedFilters_Click(object sender, EventArgs e)
