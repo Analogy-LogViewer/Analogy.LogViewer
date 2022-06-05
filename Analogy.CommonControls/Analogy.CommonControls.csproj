@@ -411,8 +411,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Forms\AnalogyAddCommentsToMessage.cs">
+		<Compile Update="Forms\AnalogyExclude.cs">
 		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Forms\AnalogyExclude.Designer.cs">
+		  <DependentUpon>AnalogyExclude.cs</DependentUpon>
 		</Compile>
 		<Compile Update="Forms\AnalogyExcludeMessage.cs">
 			<SubType>Form</SubType>
@@ -432,7 +435,9 @@
 		<Compile Update="Forms\FormMessageDetails.Designer.cs">
 			<DependentUpon>FormMessageDetails.cs</DependentUpon>
 		</Compile>
-		<Compile Update="Forms\XtraFormLogGrid.cs" />
+		<Compile Update="Forms\XtraFormLogGrid.cs">
+		  <SubType>Form</SubType>
+		</Compile>
 		<Compile Update="Forms\XtraFormLogGrid.Designer.cs">
 			<DependentUpon>XtraFormLogGrid.cs</DependentUpon>
 		</Compile>
@@ -471,6 +476,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Update="Forms\AnalogyExclude.resx">
+		  <DependentUpon>AnalogyExclude.cs</DependentUpon>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Forms\AnalogyExcludeMessage.resx">
 			<DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
 		</EmbeddedResource>

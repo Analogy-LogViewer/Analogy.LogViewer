@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.Managers
 {

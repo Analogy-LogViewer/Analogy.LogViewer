@@ -1017,7 +1017,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnFullGrid.Caption = "Full";
             this.bBtnFullGrid.Id = 37;
-            this.bBtnFullGrid.ImageOptions.Image = global::Analogy.Properties.Resources.FullscreenBlue16;
+            this.bBtnFullGrid.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullscreenBlue16;
             this.bBtnFullGrid.Name = "bBtnFullGrid";
             this.bBtnFullGrid.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1137,7 +1137,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnShare.Caption = "Share Log";
             this.bBtnShare.Id = 36;
-            this.bBtnShare.ImageOptions.Image = global::Analogy.Properties.Resources.upload16x16;
+            this.bBtnShare.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.upload16x16;
             this.bBtnShare.Name = "bBtnShare";
             this.bBtnShare.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1283,7 +1283,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbtnRawMessageViewer.Caption = "Raw Data Viewer";
             this.bbtnRawMessageViewer.Id = 77;
-            this.bbtnRawMessageViewer.ImageOptions.Image = global::Analogy.Properties.Resources.json16x16;
+            this.bbtnRawMessageViewer.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
             this.bbtnRawMessageViewer.Name = "bbtnRawMessageViewer";
             this.bbtnRawMessageViewer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnRawMessageViewer.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1686,7 +1686,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiJsonViewer.Caption = "Open message in JSON Visualizer";
             this.bbiJsonViewer.Id = 62;
-            this.bbiJsonViewer.ImageOptions.Image = global::Analogy.Properties.Resources.json16x16;
+            this.bbiJsonViewer.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
             this.bbiJsonViewer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiJsonViewer.ImageOptions.LargeImage")));
             this.bbiJsonViewer.Name = "bbiJsonViewer";
             // 
@@ -1958,7 +1958,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnPreDefinedFilters
             // 
-            this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.Properties.Resources.SingleMasterFilter_16x16;
+            this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SingleMasterFilter_16x16;
             this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1454, 7);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
             this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(35, 27);

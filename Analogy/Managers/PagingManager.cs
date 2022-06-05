@@ -118,7 +118,7 @@ namespace Analogy
             try
             {
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
+                DataRow dtr = CommonControls.Utils.CreateRow(table, message, dataSource, Settings.TimeOffsetType,Settings.TimeOffset);
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -171,7 +171,7 @@ namespace Analogy
                 try
                 {
                     lockSlim.EnterWriteLock();
-                    DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
+                    DataRow dtr =CommonControls.Utils.CreateRow(table, message, dataSource, Settings.TimeOffsetType,Settings.TimeOffset);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }

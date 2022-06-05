@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Interfaces;
 using Analogy.DataProviders;
 using Analogy.Forms;
 using Analogy.Interfaces;
@@ -2420,8 +2421,8 @@ namespace Analogy.UserControls
             lockSlim.EnterWriteLock();
             string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
             AddExtraColumnsIfNeededToTable(_bookmarkedMessages, gridViewBookmarkedMessages, message);
-            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource,
-                Settings.CheckAdditionalInformation);
+            DataRow dtr = CommonControls.Utils.CreateRow(_bookmarkedMessages, message, dataSource,
+                Settings.TimeOffsetType,Settings.TimeOffset);
             if (diffStartTime > DateTime.MinValue)
             {
                 dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();

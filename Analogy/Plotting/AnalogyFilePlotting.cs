@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 
 namespace Analogy.Plotting

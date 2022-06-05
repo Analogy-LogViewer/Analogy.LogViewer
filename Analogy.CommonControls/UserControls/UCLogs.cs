@@ -2579,7 +2579,7 @@ namespace Analogy.CommonControls.UserControls
                 foreach (DataRow row in _messageData.Rows)
                 {
                     AnalogyLogMessage message = (AnalogyLogMessage)row["Object"];
-                    row["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
+                    row["TimeDiff"] = Utils.GetOffsetTime(message.Date,Settings.TimeOffsetType,Settings.TimeOffset).Subtract(diffStartTime).ToString();
                 }
 
                 _messageData.EndLoadData();
@@ -2688,7 +2688,7 @@ namespace Analogy.CommonControls.UserControls
             items = Messages.Select(r => r.Text).ToList();
             lockSlim.ExitReadLock();
 
-            AnalogyExclude ef = new AnalogyExclude(items, _excludeMostCommon);
+            AnalogyExclude ef = new AnalogyExclude(items, _excludeMostCommon,Settings.GetIcon());
             if (ef.ShowDialog(this) == DialogResult.OK)
             {
                 _excludeMostCommon = AnalogyExclude.GlobalExclusion;

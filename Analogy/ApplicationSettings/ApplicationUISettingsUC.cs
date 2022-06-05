@@ -4,6 +4,7 @@ using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Windows.Forms;
+using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.ApplicationSettings
 {

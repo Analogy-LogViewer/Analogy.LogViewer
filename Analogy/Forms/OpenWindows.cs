@@ -3,6 +3,7 @@ using DevExpress.XtraEditors.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Analogy.CommonControls.Interfaces;
 
 namespace Analogy.Forms
 {

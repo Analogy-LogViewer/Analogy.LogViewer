@@ -163,7 +163,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            PagingManager = new PagingManager(this);
+            PagingManager = new PagingManager(this,null);
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
             var excludedColumns = new List<GridColumn>()
@@ -621,7 +621,7 @@ namespace Analogy.CommonControls.UserControls
         }
         private void RefreshTimeOffset(TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
-            PagingManager.UpdateOffsets(timeOffsetType, customOffset);
+            PagingManager.UpdateOffsets();
             foreach (DataRow dataTableRow in _bookmarkedMessages.Rows)
             {
                 dataTableRow.BeginEdit();

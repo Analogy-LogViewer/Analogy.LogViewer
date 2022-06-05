@@ -89,7 +89,6 @@ namespace Analogy.CommonControls.Interfaces
         bool UseCustomLogsLayout { get; set; }
         bool ViewDetailedMessageWithHTML { get; set; }
         SettingsMode SettingsMode { get; set; }
-        MainFormType MainFormType { get; set; }
         string DefaultUserLogFolder { get; set; }
         TimeSpan TimeOffset { get; set; }
         TimeOffsetType TimeOffsetType { get; set; }

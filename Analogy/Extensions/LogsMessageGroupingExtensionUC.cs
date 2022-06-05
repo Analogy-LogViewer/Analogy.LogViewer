@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.Extensions
 {
@@ -178,7 +179,7 @@ namespace Analogy.Extensions
             foreach (var message in messages)
             {
                 AddExtraColumnsIfNeededToTable(grouped, gridViewGrouping2, message);
-                DataRow dtr = Utils.CreateRow(grouped, message, "", Settings.CheckAdditionalInformation);
+                DataRow dtr = Utils.CreateRow(grouped, message, "");
                 grouped.Rows.Add(dtr);
 
             }

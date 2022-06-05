@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 
 namespace Analogy.Forms

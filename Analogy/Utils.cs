@@ -257,43 +257,43 @@ namespace Analogy
             return regex;
         }
   
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource)
-        {
-            var dtr = table.NewRow();
-            dtr.BeginEdit();
-            dtr["Date"] = Utils.GetOffsetTime(message.Date);
-            dtr["Text"] = message.Text ?? "";
-            dtr["Source"] = message.Source ?? "";
-            dtr["Level"] = string.Intern(message.Level.ToString());
-            dtr["Class"] = string.Intern(message.Class.ToString());
-            dtr["Category"] = message.Category ?? "";
-            dtr["User"] = message.User ?? "";
-            dtr["Module"] = message.Module ?? "";
-            dtr["Object"] = message;
-            dtr["ProcessID"] = message.ProcessId;
-            dtr["ThreadID"] = message.ThreadId;
-            dtr["DataProvider"] = dataSource ?? string.Empty;
-            dtr["MachineName"] = message.MachineName ?? string.Empty;
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
-            {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
-                {
-                    if (dtr.Table.Columns.Contains(info.Key))
-                    {
-                        dtr[info.Key] = info.Value;
-                    }
-                    else
-                    {
-                        AnalogyLogger.Instance.LogError("",
-                            $"key {info.Key} does not exist in table {table.TableName}");
-                    }
+        //[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        //public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource)
+        //{
+        //    var dtr = table.NewRow();
+        //    dtr.BeginEdit();
+        //    dtr["Date"] = GetOffsetTime(message.Date);
+        //    dtr["Text"] = message.Text ?? "";
+        //    dtr["Source"] = message.Source ?? "";
+        //    dtr["Level"] = string.Intern(message.Level.ToString());
+        //    dtr["Class"] = string.Intern(message.Class.ToString());
+        //    dtr["Category"] = message.Category ?? "";
+        //    dtr["User"] = message.User ?? "";
+        //    dtr["Module"] = message.Module ?? "";
+        //    dtr["Object"] = message;
+        //    dtr["ProcessID"] = message.ProcessId;
+        //    dtr["ThreadID"] = message.ThreadId;
+        //    dtr["DataProvider"] = dataSource ?? string.Empty;
+        //    dtr["MachineName"] = message.MachineName ?? string.Empty;
+        //    if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+        //    {
+        //        foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+        //        {
+        //            if (dtr.Table.Columns.Contains(info.Key))
+        //            {
+        //                dtr[info.Key] = info.Value;
+        //            }
+        //            else
+        //            {
+        //                AnalogyLogger.Instance.LogError("",
+        //                    $"key {info.Key} does not exist in table {table.TableName}");
+        //            }
 
-                }
+        //        }
 
-            }
-            return dtr;
-        }
+        //    }
+        //    return dtr;
+        //}
 
         public static bool IsCompressedArchive(string filename)
         {

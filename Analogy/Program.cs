@@ -12,6 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Analogy.CommonControls.DataTypes;
 
 namespace Analogy
 {

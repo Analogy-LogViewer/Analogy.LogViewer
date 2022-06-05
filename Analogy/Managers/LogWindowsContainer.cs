@@ -1,6 +1,7 @@
 ﻿using Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
+using Analogy.CommonControls.Interfaces;
 
 namespace Analogy.Managers
 {

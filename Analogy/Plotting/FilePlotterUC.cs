@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Plotting;
 using DevExpress.XtraBars.Docking;
-using AnalogyCustomXAxisPlot = Analogy.DataTypes.AnalogyCustomXAxisPlot;
+using AnalogyCustomXAxisPlot = Analogy.CommonControls.DataTypes.AnalogyCustomXAxisPlot;
 
 namespace Analogy.UserControls
 {
