@@ -15,10 +15,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Interfaces;
 
 namespace Analogy
 {
-    public class UserSettingsManager
+  
+
+    public class UserSettingsManager : IUserSettingsManager
     {
         public event EventHandler OnFactoryOrderChanged;
 
@@ -765,196 +769,6 @@ namespace Analogy
             TimeOffsetType = TimeOffsetType.None;
             LoadPerUserSettings();
         }
-    }
-
-    [Serializable]
-    public class ColorSettings
-    {
-        public bool EnableMessagesColors { get; set; }
-        public Dictionary<AnalogyLogLevel, (Color BackgroundColor, Color TextColor)> LogLevelColors { get; set; }
-
-        public (Color BackgroundColor, Color TextColor) HighlightColor { get; set; }
-        public (Color BackgroundColor, Color TextColor) NewMessagesColor { get; set; }
-        public bool EnableNewMessagesColor { get; set; }
-        public bool OverrideLogLevelColor { get; set; }
-
-        public ColorSettings()
-        {
-            EnableMessagesColors = true;
-            HighlightColor = (Color.Aqua, Color.Black);
-            NewMessagesColor = (Color.PaleTurquoise, Color.Black);
-            var logLevelValues = Enum.GetValues(typeof(AnalogyLogLevel));
-            LogLevelColors = new Dictionary<AnalogyLogLevel, (Color BackgroundColor, Color TextColor)>(logLevelValues.Length);
-
-            foreach (AnalogyLogLevel level in logLevelValues)
-
-            {
-                switch (level)
-                {
-                    case AnalogyLogLevel.Unknown:
-                        LogLevelColors.Add(level, (Color.White, Color.Black));
-                        break;
-                    case AnalogyLogLevel.None:
-                        LogLevelColors.Add(level, (Color.LightGray, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Trace:
-                        LogLevelColors.Add(level, (Color.White, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Verbose:
-                        LogLevelColors.Add(level, (Color.White, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Debug:
-                        LogLevelColors.Add(level, (Color.White, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Information:
-                        LogLevelColors.Add(level, (Color.White, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Warning:
-                        LogLevelColors.Add(level, (Color.Yellow, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Error:
-                        LogLevelColors.Add(level, (Color.Pink, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Critical:
-                        LogLevelColors.Add(level, (Color.Red, Color.Black));
-                        break;
-                    case AnalogyLogLevel.Analogy:
-                        LogLevelColors.Add(level, (Color.White, Color.Black));
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public (Color BackgroundColor, Color TextColor) GetColorForLogLevel(AnalogyLogLevel level) => LogLevelColors[level];
-
-        public (Color BackgroundColor, Color TextColor) GetHighlightColor() => HighlightColor;
-        public (Color BackgroundColor, Color TextColor) GetNewMessagesColor() => NewMessagesColor;
-
-        public void SetColorForLogLevel(AnalogyLogLevel level, Color backgroundColor, Color textColor) => LogLevelColors[level] = (backgroundColor, textColor);
-        public void SetHighlightColor(Color backgroundColor, Color textColor) => HighlightColor = (backgroundColor, textColor);
-        public void SetNewMessagesColor(Color backgroundColor, Color textColor) => NewMessagesColor = (backgroundColor, textColor);
-        public string AsJson() => JsonConvert.SerializeObject(this);
-        public static ColorSettings FromJson(string fileName) => JsonConvert.DeserializeObject<ColorSettings>(fileName);
-    }
-
-    [Serializable]
-    public class FactorySettings
-    {
-        public string FactoryName { get; set; }
-        public Guid FactoryId { get; set; }
-        public List<string> UserSettingFileAssociations { get; set; }
-        public DataProviderFactoryStatus Status { get; set; }
-
-        public FactorySettings()
-        {
-            UserSettingFileAssociations = new List<string>();
-        }
-        public override string ToString() => $"{nameof(FactoryName)}: {FactoryName}, {nameof(FactoryId)}: {FactoryId}, {nameof(Status)}: {Status}";
-
-    }
-    [Serializable]
-    public class OnDemandPlottingFactorySettings
-    {
-        public Guid FactoryId { get; set; }
-        public DataProviderFactoryStatus Status { get; set; }
-
-        public OnDemandPlottingFactorySettings()
-        {
-        }
-        public override string ToString() => $"{nameof(FactoryId)}: {FactoryId}, {nameof(Status)}: {Status}";
-
-    }
-    [Serializable]
-    public class PreDefinedQueries
-    {
-        public List<PreDefineHighlight> Highlights { get; set; }
-
-        public List<PreDefineFilter> Filters { get; set; }
-
-        public List<PreDefineAlert> Alerts { get; set; }
-
-        public PreDefinedQueries()
-        {
-            Highlights = new List<PreDefineHighlight>();
-            Filters = new List<PreDefineFilter>();
-            Alerts = new List<PreDefineAlert>();
-        }
-
-        public void AddHighlight(string text, PreDefinedQueryType type, Color color) => Highlights.Add(new PreDefineHighlight(type, text, color));
-        public void AddFilter(string name,string includeText, string excludeText, string sources, string modules) => Filters.Add(new PreDefineFilter(name,includeText, excludeText, sources, modules));
-        public void AddAlert(string includeText, string excludeText, string sources, string modules) => Alerts.Add(new PreDefineAlert(includeText, excludeText, sources, modules));
-
-        public void RemoveHighlight(PreDefineHighlight highlight)
-        {
-            if (Highlights.Contains(highlight))
-            {
-                Highlights.Remove(highlight);
-            }
-        }
-
-        public void RemoveFilter(PreDefineFilter filter)
-        {
-            if (Filters.Contains(filter))
-            {
-                Filters.Remove(filter);
-            }
-        }
-        public void RemoveAlert(PreDefineAlert alert)
-        {
-            if (Alerts.Contains(alert))
-            {
-                Alerts.Remove(alert);
-            }
-        }
-    }
-    [Serializable]
-    public class PreDefineHighlight
-    {
-        public PreDefinedQueryType PreDefinedQueryType { get; set; }
-        public string Text { get; set; }
-        public Color Color { get; set; }
-
-        public PreDefineHighlight(PreDefinedQueryType preDefinedQueryType, string text, Color color)
-        {
-            PreDefinedQueryType = preDefinedQueryType;
-            Text = text ?? string.Empty;
-            Color = color;
-        }
-        public override string ToString()
-        {
-            return $"Highlight: {Text}. Type:{PreDefinedQueryType}. Color:{Color}";
-        }
-    }
-
-    [Serializable]
-    public class PreDefineFilter
-    {
-        public string Name { get; set; }
-        public string IncludeText { get; }
-        public string ExcludeText { get; }
-        public string Sources { get; }
-        public string Modules { get; }
-
-
-        public PreDefineFilter(string name, string includeText, string excludeText, string sources, string modules)
-        {
-            Name = name ?? string.Empty;
-            IncludeText = includeText ?? string.Empty;
-            ExcludeText = excludeText ?? string.Empty;
-            Sources = sources ?? string.Empty;
-            Modules = modules ?? string.Empty;
-        }
-        public override string ToString()
-        {
-            return $"Filter: Message Text:{IncludeText}. Exclude:{ExcludeText}. Sources:{Sources}. Modules:{Modules}";
-        }
-
-        public string NiceText() =>
-            $"Message Text: {IncludeText}{Environment.NewLine}Exclude Text: {ExcludeText}{Environment.NewLine}Sources: {Sources}{Environment.NewLine}Module: {Modules}";
-
     }
 }
 

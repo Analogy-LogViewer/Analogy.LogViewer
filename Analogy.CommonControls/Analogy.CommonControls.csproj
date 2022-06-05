@@ -417,6 +417,12 @@
 		<Compile Update="Forms\AnalogyExcludeMessage.Designer.cs">
 			<DependentUpon>AnalogyExcludeMessage.cs</DependentUpon>
 		</Compile>
+		<Compile Update="Forms\AnalogyOTAForm.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Forms\AnalogyOTAForm.Designer.cs">
+		  <DependentUpon>AnalogyOTAForm.cs</DependentUpon>
+		</Compile>
 		<Compile Update="Forms\FormMessageDetails.cs">
 			<SubType>Form</SubType>
 		</Compile>
@@ -453,6 +459,12 @@
 		<Compile Update="UserControls\LogMessagesUC.Designer.cs">
 			<DependentUpon>LogMessagesUC.cs</DependentUpon>
 		</Compile>
+		<Compile Update="UserControls\UCLogs.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="UserControls\UCLogs.Designer.cs">
+		  <DependentUpon>UCLogs.cs</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -479,6 +491,9 @@
 		<EmbeddedResource Update="UserControls\LogMessagesUC.resx">
 			<SubType>Designer</SubType>
 			<DependentUpon>LogMessagesUC.cs</DependentUpon>
+		</EmbeddedResource>
+		<EmbeddedResource Update="UserControls\UCLogs.resx">
+		  <DependentUpon>UCLogs.cs</DependentUpon>
 		</EmbeddedResource>
 	</ItemGroup>
 

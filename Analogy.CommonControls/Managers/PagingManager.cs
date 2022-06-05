@@ -20,6 +20,7 @@ namespace Analogy.CommonControls.Managers
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<DataTable> pages;
         private readonly List<AnalogyLogMessage> allMessages;
         private readonly int pageSize;
@@ -47,7 +48,7 @@ namespace Analogy.CommonControls.Managers
         {
             //CurrentColumns = new List<string>();
             this.owner = owner;
-            pageSize = int.MaxValue;
+            pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
 
             currentTable = Utils.DataTableConstructor();
@@ -112,14 +113,14 @@ namespace Analogy.CommonControls.Managers
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
 
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
             {
                 AddExtraColumnsIfNeeded(table, message);
             }
             try
             {
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource,TimeOffsetType.None,TimeSpan.Zero);
+                DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -162,7 +163,8 @@ namespace Analogy.CommonControls.Managers
                             pageStartRowIndex)));
                 }
 
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+                    Settings.CheckAdditionalInformation)
                 {
                     AddExtraColumnsIfNeeded(table, message);
                 }
@@ -171,7 +173,7 @@ namespace Analogy.CommonControls.Managers
                 try
                 {
                     lockSlim.EnterWriteLock();
-                    DataRow dtr = Utils.CreateRow(table, message, dataSource, TimeOffsetType.None, TimeSpan.Zero);
+                    DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.CheckAdditionalInformation);
                     table.Rows.Add(dtr);
                     rows.Add((dtr, message));
                 }
@@ -186,7 +188,7 @@ namespace Analogy.CommonControls.Managers
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
                 {
@@ -327,7 +329,7 @@ namespace Analogy.CommonControls.Managers
             Interlocked.Increment(ref _totalMissedMessages);
         }
 
-        public void UpdateOffsets(TimeOffsetType timeOffsetType, TimeSpan customOffset)
+        public void UpdateOffsets()
         {
             lockSlim.EnterWriteLock();
             foreach (DataTable dataTable in pages)
@@ -336,7 +338,7 @@ namespace Analogy.CommonControls.Managers
                 {
                     dataTableRow.BeginEdit();
                     AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
-                    dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, timeOffsetType, customOffset);
+                    dataTableRow["Date"] = Utils.GetOffsetTime(m.Date);
                     dataTableRow.EndEdit();
                 }
             }

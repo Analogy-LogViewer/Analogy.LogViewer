@@ -11,14 +11,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
-using Analogy.DataProviders;
+using Analogy.CommonControls.Forms;
+using Analogy.CommonControls.Interfaces;
+using Analogy.CommonControls.LogLoaders;
+using Analogy.CommonControls.Managers;
+using Analogy.CommonControls.Properties;
+using Analogy.CommonControls.Tools;
 using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
-using Analogy.Managers;
-using Analogy.Properties;
-using Analogy.Tools;
-using Analogy.Tools.JsonViewer;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
 using DevExpress.Data.Mask;
@@ -37,9 +38,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
-using AnalogyClearedHistoryEventArgs = Analogy.DataTypes.AnalogyClearedHistoryEventArgs;
 
-namespace Analogy.UserControls
+namespace Analogy.CommonControls.UserControls
 {
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
@@ -61,8 +61,8 @@ namespace Analogy.UserControls
         public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
-        private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
+        private IUserSettingsManager Settings { get; set; }
+        private IExtensionsManager ExtensionManager { get; set; }
         private IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; set; }
         private IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new List<int>();
@@ -149,8 +149,10 @@ namespace Analogy.UserControls
         #endregion
         private JsonTreeView JsonTreeView { get; set; }
 
-        public UCLogs()
+        public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager)
         {
+            Settings = userSettingsManager;
+            ExtensionManager = extensionManager;
             InitializeComponent();
             JsonTreeView = new JsonTreeView();
             spltcMessages.Panel2.Controls.Add(JsonTreeView);
@@ -475,7 +477,7 @@ namespace Analogy.UserControls
             };
             bBtnShare.ItemClick += (s, e) =>
             {
-                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable());
+                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable(),,Settings);
                 share.Show(this);
             };
             bbtnReload.ItemClick += async (s, e) =>
@@ -801,7 +803,7 @@ namespace Analogy.UserControls
             {
                 dataTableRow.BeginEdit();
                 AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
-                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date);
+                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date,Settings.TimeOffsetType,Settings.TimeOffset);
                 dataTableRow.EndEdit();
             }
         }
@@ -1606,7 +1608,7 @@ namespace Analogy.UserControls
             lockSlim.EnterWriteLock();
             if (diffStartTime > DateTime.MinValue)
             {
-                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date).Subtract(diffStartTime).ToString();
+                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
             }
 
             lockSlim.ExitWriteLock();

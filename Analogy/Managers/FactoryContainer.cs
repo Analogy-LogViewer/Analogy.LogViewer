@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Interfaces;
 
 namespace Analogy.Managers
 {
-    public class FactoryContainer
+    public class FactoryContainer : IFactoryContainer
     {
         public bool AssemblyExist => File.Exists(AssemblyFullPath);
         public string AssemblyFullPath { get; }

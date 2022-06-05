@@ -3,6 +3,7 @@ using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Collections.Generic;
+using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.DataTypes
 {

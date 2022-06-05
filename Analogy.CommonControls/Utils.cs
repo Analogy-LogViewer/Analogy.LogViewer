@@ -83,6 +83,7 @@ namespace Analogy.CommonControls
             return filename.EndsWith(".gz", StringComparison.InvariantCultureIgnoreCase) ||
                    filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
         }
+
         public static DateTime GetOffsetTime(DateTime time, TimeOffsetType timeOffsetType,TimeSpan customOffset)
         {
             return timeOffsetType switch
