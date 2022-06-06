@@ -7,6 +7,16 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Nullable>enable</Nullable>
 		<LangVersion>8.0</LangVersion>
+		<Authors>Lior Banai</Authors>
+		<RepositoryType>git</RepositoryType>
+		<Version>0.9.0</Version>
+		<Copyright>Lior Banai © 2019-2022</Copyright>
+		<Product>Analogy Log Viewer</Product>
+		<AssemblyName>Analogy.Common</AssemblyName>
+		<RootNamespace>Analogy.Common</RootNamespace>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
+
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or '$(TargetFramework)' == 'net471' ">

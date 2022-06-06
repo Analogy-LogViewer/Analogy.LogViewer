@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;

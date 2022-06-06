@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.Extensions

@@ -825,5 +825,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Analogy.CommonControls\Analogy.CommonControls.csproj" />
+	  <ProjectReference Include="..\Analogy.Common\Analogy.Common.csproj" />
 	</ItemGroup>
 </Project>

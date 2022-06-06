@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;

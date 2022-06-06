@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.Managers;

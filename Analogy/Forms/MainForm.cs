@@ -26,6 +26,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.Managers;
@@ -194,8 +195,17 @@ namespace Analogy.Forms
             bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
             bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
             ribbonControlMain.Minimized = settings.StartupRibbonMinimized;
-
-            ribbonControlMain.CommandLayout = settings.RibbonStyle;
+            switch (settings.RibbonStyle)
+            {
+                case AnalogyCommandLayout.Classic:
+                    ribbonControlMain.CommandLayout = CommandLayout.Classic;
+                    break;
+                case AnalogyCommandLayout.Simplified:
+                    ribbonControlMain.CommandLayout = CommandLayout.Simplified;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
             {
@@ -472,7 +482,20 @@ namespace Analogy.Forms
             };
             #endregion
 
-            settings.OnRibbonControlStyleChanged += (s, e) => ribbonControlMain.CommandLayout = e;
+            settings.OnRibbonControlStyleChanged += (s, e) =>
+            {
+                switch (e)
+                {
+                    case AnalogyCommandLayout.Classic:
+                        ribbonControlMain.CommandLayout = CommandLayout.Classic;
+                        break;
+                    case AnalogyCommandLayout.Simplified:
+                        ribbonControlMain.CommandLayout= CommandLayout.Simplified;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(e), e, null);
+                }
+            };
             bbtnReportIssueOrRequest.ItemClick += (_, __) =>
             {
                 Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues");

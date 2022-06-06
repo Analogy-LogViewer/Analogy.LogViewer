@@ -4,14 +4,17 @@ using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Windows.Forms;
+using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
+using Analogy.Interfaces;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class ApplicationUISettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
 
         public ApplicationUISettingsUC()
         {
@@ -53,8 +56,8 @@ namespace Analogy.ApplicationSettings
             tsRibbonCompactStyle.IsOnChanged += (s, e) =>
             {
                 Settings.RibbonStyle = tsRibbonCompactStyle.IsOn
-                    ? CommandLayout.Simplified
-                    : CommandLayout.Classic;
+                    ? AnalogyCommandLayout.Simplified
+                    : AnalogyCommandLayout.Classic;
             };
             tsRememberLastPositionAndState.IsOnChanged += (s, e) =>
                 Settings.AnalogyPosition.RememberLastPosition = tsRememberLastPositionAndState.IsOn;
@@ -109,7 +112,7 @@ namespace Analogy.ApplicationSettings
             lblSvgPalette.Text = "Active Svg Palette: " + Settings.ApplicationSvgPaletteName;
             tsRememberLastPositionAndState.IsOn = Settings.AnalogyPosition.RememberLastPosition;
             tsStartupRibbonMinimized.IsOn = Settings.StartupRibbonMinimized;
-            tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == CommandLayout.Simplified;
+            tsRibbonCompactStyle.IsOn = Settings.RibbonStyle == AnalogyCommandLayout.Simplified;
             switch (Settings.FontSettings.FontSelectionType)
             {
                 case FontSelectionType.Default:

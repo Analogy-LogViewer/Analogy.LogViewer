@@ -15,6 +15,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 
@@ -22,18 +24,18 @@ namespace Analogy
 {
   
 
-    public class UserSettingsManager : IUserSettingsManager
+    public class UserSettingsManager : IAnalogyUserSettings
     {
         public event EventHandler OnFactoryOrderChanged;
 
         private static UserSettingsManager? _userSettings;
 
-        private CommandLayout _ribbonStyle;
+        private AnalogyCommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
         private bool _inlineJsonViewer;
         public event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
         public event EventHandler<bool> OnInlineJsonViewerChanged;
-        public event EventHandler<CommandLayout> OnRibbonControlStyleChanged;
+        public event EventHandler<AnalogyCommandLayout> OnRibbonControlStyleChanged;
         private string LocalSettingFileName { get; } = "AnalogyLocalSettings.json";
         public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
         public Guid InitialSelectedDataProvider { get; set; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
@@ -109,7 +111,7 @@ namespace Analogy
         public bool IsBuiltInSearchPanelVisible { get; set; }
         public BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; }
         public string ApplicationSvgPaletteName { get; set; }
-        public LookAndFeelStyle ApplicationStyle { get; set; } = LookAndFeelStyle.Skin;
+        public AnalogyLookAndFeelStyle ApplicationStyle { get; set; } = AnalogyLookAndFeelStyle.Skin;
         public bool ShowMessageDetails { get; set; }
         public bool SimpleMode { get; set; }
         public bool IsFirstRun { get; set; }
@@ -129,7 +131,7 @@ namespace Analogy
                 }
             }
         }
-        public CommandLayout RibbonStyle
+        public AnalogyCommandLayout RibbonStyle
         {
             get => _ribbonStyle;
             set
@@ -269,7 +271,7 @@ namespace Analogy
                 _ => UpdateMode
             };
 
-            if (Enum.TryParse(Settings.Default.ApplicationStyle, out LookAndFeelStyle style))
+            if (Enum.TryParse(Settings.Default.ApplicationStyle, out AnalogyLookAndFeelStyle style))
             {
                 ApplicationStyle = style;
             }
@@ -292,7 +294,7 @@ namespace Analogy
             ShowMessageDetails = Settings.Default.ShowMessageDetails;
             ShowWhatIsNewAtStartup = upgradeRequired || Settings.Default.ShowWhatIsNewAtStartup;
             FontSettings = ParseSettings<FontSettings>(Settings.Default.FontSettings);
-            RibbonStyle = (CommandLayout)Settings.Default.RibbonStyle;
+            RibbonStyle = (AnalogyCommandLayout)Settings.Default.RibbonStyle;
             EnableFirstChanceException = Settings.Default.EnableFirstChanceException;
             TrackActiveMessage = Settings.Default.TrackActiveMessage;
             RealTimeRefreshInterval = Settings.Default.RealTimeRefreshInterval;

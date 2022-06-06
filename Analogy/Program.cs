@@ -12,6 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 
 namespace Analogy
@@ -79,14 +80,52 @@ namespace Analogy
                     UserLookAndFeel.Default.SetSkinStyle(Settings.ApplicationSkinName);
                 }
 
-                UserLookAndFeel.Default.Style = Settings.ApplicationStyle;
+                switch (Settings.ApplicationStyle)
+                {
+                    case AnalogyLookAndFeelStyle.Flat:
+                        UserLookAndFeel.Default.Style = LookAndFeelStyle.Flat;
+                        break;
+                    case AnalogyLookAndFeelStyle.UltraFlat:
+                        UserLookAndFeel.Default.Style = LookAndFeelStyle.UltraFlat;
+                        break;
+                    case AnalogyLookAndFeelStyle.Style3D:
+                        UserLookAndFeel.Default.Style = LookAndFeelStyle.Style3D;
+                        break;
+                    case AnalogyLookAndFeelStyle.Office2003:
+                        UserLookAndFeel.Default.Style = LookAndFeelStyle.Office2003;
+                        break;
+                    case AnalogyLookAndFeelStyle.Skin:
+                        UserLookAndFeel.Default.Style = LookAndFeelStyle.Skin;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
 
             UserLookAndFeel.Default.StyleChanged += (s, e) =>
             {
                 UserLookAndFeel laf = (UserLookAndFeel)s;
                 Settings.ApplicationSkinName = laf.ActiveSkinName;
-                Settings.ApplicationStyle = laf.Style;
+                switch (laf.Style)
+                {
+                    case LookAndFeelStyle.Flat:
+                        Settings.ApplicationStyle = AnalogyLookAndFeelStyle.Flat;
+                        break;
+                    case LookAndFeelStyle.UltraFlat:
+                        Settings.ApplicationStyle = AnalogyLookAndFeelStyle.UltraFlat;
+                        break;
+                    case LookAndFeelStyle.Style3D:
+                        Settings.ApplicationStyle = AnalogyLookAndFeelStyle.Style3D;
+                        break;
+                    case LookAndFeelStyle.Office2003:
+                        Settings.ApplicationStyle = AnalogyLookAndFeelStyle.Office2003;
+                        break;
+                    case LookAndFeelStyle.Skin:
+                        Settings.ApplicationStyle = AnalogyLookAndFeelStyle.Skin;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 Settings.ApplicationSvgPaletteName = laf.ActiveSvgPaletteName;
 
             };

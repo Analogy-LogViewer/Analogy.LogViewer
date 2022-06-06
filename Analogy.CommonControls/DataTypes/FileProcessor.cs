@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.UserControls;

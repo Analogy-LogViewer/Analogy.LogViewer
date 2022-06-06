@@ -3,6 +3,7 @@ using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Collections.Generic;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.DataTypes
@@ -64,7 +65,7 @@ namespace Analogy.DataTypes
         public bool IsBuiltInSearchPanelVisible { get; set; }
         public BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; }
         public string ApplicationSvgPaletteName { get; set; }
-        public LookAndFeelStyle ApplicationStyle { get; set; } = LookAndFeelStyle.Skin;
+        public AnalogyLookAndFeelStyle ApplicationStyle { get; set; } = AnalogyLookAndFeelStyle.Skin;
         public bool ShowMessageDetails { get; set; }
         public bool SimpleMode { get; set; }
         public bool IsFirstRun { get; set; }
@@ -72,7 +73,7 @@ namespace Analogy.DataTypes
         public bool ShowWhatIsNewAtStartup { get; set; }
         public FontSettings FontSettings { get; set; }
         public bool EnableFirstChanceException { get; set; }
-        public CommandLayout RibbonStyle { get; set; }
+        public AnalogyCommandLayout RibbonStyle { get; set; }
         public bool TrackActiveMessage { get; set; }
         public float RealTimeRefreshInterval { get; set; }
         public FilteringExclusion FilteringExclusion { get; set; }
