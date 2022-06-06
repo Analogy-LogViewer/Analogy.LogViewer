@@ -1,6 +1,8 @@
 ﻿using Analogy.Managers;
 using System;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
@@ -8,7 +10,7 @@ namespace Analogy.Forms
     public partial class UpdateForm : DevExpress.XtraEditors.XtraForm
     {
         private UpdateManager Updater => UpdateManager.Instance;
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
 
         public UpdateForm()
         {

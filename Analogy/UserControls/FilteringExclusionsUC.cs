@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors.Controls;
 
@@ -16,7 +17,7 @@ namespace Analogy.UserControls
     public partial class FilteringExclusionsUC : DevExpress.XtraEditors.XtraUserControl
     {
         public static List<string> LogLevels { get; } = Utils.LogLevels;
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
 
         public FilteringExclusionsUC()
         {

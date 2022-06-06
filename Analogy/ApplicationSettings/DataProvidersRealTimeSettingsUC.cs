@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors.Controls;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersRealTimeSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
 
         public DataProvidersRealTimeSettingsUC()
         {

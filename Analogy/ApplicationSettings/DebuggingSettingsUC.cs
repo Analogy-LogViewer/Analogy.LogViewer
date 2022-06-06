@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
+using Analogy.Interfaces;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class DebuggingSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
 
         public DebuggingSettingsUC()
         {

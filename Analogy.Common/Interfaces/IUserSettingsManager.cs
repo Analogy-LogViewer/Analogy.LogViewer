@@ -55,7 +55,6 @@ namespace Analogy.Common.Interfaces
         void AddToRecentFiles(Guid iD, string file);
         void AddToRecentFolders(Guid iD, string path);
         void ClearStatistics();
-        void UpdateRunningTime();
         bool AddNewSearchesEntryToLists(string text, bool include);
         Icon GetIcon();
         IEnumerable<(Guid ID, string FileName)> GetRecentFiles(Guid offlineAnalogyId);

@@ -3,12 +3,13 @@ using Analogy.Tools.JsonViewer;
 using Newtonsoft.Json;
 using System;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 
 namespace Analogy.Tools
 {
     public partial class JsonViewerForm : DevExpress.XtraEditors.XtraForm
     {
-        private UserSettingsManager settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager settings => UserSettingsManager.UserSettings;
         private JsonTreeView _jsonTreeView;
         private AnalogyLogMessage? Message { get; }
         private string JsonData { get; set; }

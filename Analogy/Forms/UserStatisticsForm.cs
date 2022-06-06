@@ -1,12 +1,14 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
+using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {
     public partial class UserStatisticsForm : XtraForm
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
 
         public UserStatisticsForm()
         {
@@ -16,7 +18,7 @@ namespace Analogy.Forms
         private void UserStatisticsForm_Load(object sender, System.EventArgs e)
         {
             ShowIcon = true;
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = Settings.GetIcon();
             LoadSettings();
 
         }

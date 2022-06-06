@@ -13,7 +13,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy
 {
@@ -24,7 +26,7 @@ namespace Analogy
         [DllImport("user32", EntryPoint = "SendMessageA")]
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
-        private static UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private static IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
         private static string AssemblyLocation;
         /// <summary>
         /// The main entry point for the application.
@@ -134,8 +136,7 @@ namespace Analogy
             //DevExpress.Skins.SkinManager.Default.RegisterAssembly(asm);
             //// Apply the skin. 
             //DevExpress.XtraEditors.WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Winter Joy");
-            if (UserSettingsManager.UserSettings.SingleInstance &&
-                Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+            if (Settings.SingleInstance && Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
 
                 if (Environment.GetCommandLineArgs().Length == 2)

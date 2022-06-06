@@ -16,6 +16,7 @@ namespace Analogy.Interfaces
     {
         event EventHandler OnFactoryOrderChanged;
         event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
+        event EventHandler<AnalogyCommandLayout> OnRibbonControlStyleChanged;
 
         string DisplayRunningTime { get; }
         Guid InitialSelectedDataProvider { get; set; }
@@ -70,6 +71,7 @@ namespace Analogy.Interfaces
         void UpdateOrder(List<Guid> order);
         IEnumerable<FactorySettings> GetFactoriesThatHasFileAssociation(string[] files);
         Image GetImage();
+        void UpdateRunningTime();
 
 
     }

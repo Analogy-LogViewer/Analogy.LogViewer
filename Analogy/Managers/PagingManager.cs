@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 
 namespace Analogy
@@ -19,7 +20,7 @@ namespace Analogy
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<DataTable> pages;
         private readonly List<AnalogyLogMessage> allMessages;
         private readonly int pageSize;

@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class PredefinedFiltersUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
 
         public PredefinedFiltersUC()
         {

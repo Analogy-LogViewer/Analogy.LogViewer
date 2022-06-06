@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using DevExpress.Utils;
@@ -20,7 +21,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class MessagesLayoutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private DataTable messageData;
         public MessagesLayoutSettingsUC()
         {

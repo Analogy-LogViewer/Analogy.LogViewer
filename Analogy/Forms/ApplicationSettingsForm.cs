@@ -4,12 +4,13 @@ using DevExpress.XtraEditors;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 
 namespace Analogy.Forms
 {
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
         private string SelectedSettingName { get; }
         public ApplicationSettingsForm()
         {

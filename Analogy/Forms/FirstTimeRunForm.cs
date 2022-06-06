@@ -6,14 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.Utils;
 
 namespace Analogy.Forms
 {
     public partial class FirstTimeRunForm : DevExpress.XtraEditors.XtraForm
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
 
         public List<FactoryCheckItem> Factories { get; set; } = new List<FactoryCheckItem>();
         public FirstTimeRunForm()

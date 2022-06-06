@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Managers;
 using Analogy.Managers;
 using Analogy.UserControls;
@@ -19,7 +20,7 @@ namespace Analogy
     {
         public event EventHandler<EventArgs> OnFileReadingFinished;
         public DateTime lastNewestMessage;
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
         private ILogMessageCreatedHandler DataWindow { get;  }

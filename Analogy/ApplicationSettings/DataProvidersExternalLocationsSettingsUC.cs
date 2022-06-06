@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersExternalLocationsSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
 
         public DataProvidersExternalLocationsSettingsUC()
         {

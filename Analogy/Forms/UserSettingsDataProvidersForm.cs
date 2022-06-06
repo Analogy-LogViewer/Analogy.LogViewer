@@ -26,7 +26,6 @@ namespace Analogy.Forms
             public override string ToString() => $"{Name} ({ID})";
         }
 
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
         private readonly int _initialSelection = -1;
 
         public UserSettingsDataProvidersForm()

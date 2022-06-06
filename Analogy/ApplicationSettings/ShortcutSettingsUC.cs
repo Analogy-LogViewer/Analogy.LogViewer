@@ -12,7 +12,6 @@ namespace Analogy.ApplicationSettings
 {
     public partial class ShortcutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
 
         public ShortcutSettingsUC()
         {

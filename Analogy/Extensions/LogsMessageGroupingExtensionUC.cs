@@ -12,13 +12,14 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.Extensions
 {
     public partial class LogsMessageGroupingExtensionUC : XtraUserControl
     {
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
         public IAnalogyDataProvider DataProvider { get; set; }
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;

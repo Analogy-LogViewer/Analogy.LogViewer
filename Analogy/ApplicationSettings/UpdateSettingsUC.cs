@@ -16,7 +16,6 @@ namespace Analogy.ApplicationSettings
 {
     public partial class UpdateSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
 
         public UpdateSettingsUC()
         {

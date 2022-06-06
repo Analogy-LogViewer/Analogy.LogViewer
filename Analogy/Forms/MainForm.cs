@@ -27,6 +27,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.Managers;
@@ -57,7 +58,7 @@ namespace Analogy.Forms
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
         private bool preventExit = false;
-        private UserSettingsManager settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings settings => UserSettingsManager.UserSettings;
         private bool Initialized { get; set; }
 
         public MainForm()

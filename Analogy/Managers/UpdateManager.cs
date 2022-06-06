@@ -13,7 +13,9 @@ using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.Managers
 {
@@ -22,7 +24,7 @@ namespace Analogy.Managers
         private static readonly Lazy<UpdateManager>
             _instance = new Lazy<UpdateManager>(() => new UpdateManager());
 
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
         public static UpdateManager Instance => _instance.Value;
         private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;
@@ -156,21 +158,21 @@ namespace Analogy.Managers
 
         public async Task<(bool newData, GithubObjects.GithubReleaseEntry release)> CheckVersion(bool forceUpdate)
         {
-            if (!forceUpdate && NextUpdate > DateTime.Now && UserSettingsManager.UserSettings.LastVersionChecked != null)
+            if (!forceUpdate && NextUpdate > DateTime.Now && Settings.LastVersionChecked != null)
             {
-                return (false, UserSettingsManager.UserSettings.LastVersionChecked);
+                return (false, Settings.LastVersionChecked);
             }
 
-            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(repository + "/releases", "Analogy Log Viewer", UserSettingsManager.UserSettings.GitHubToken, Instance.LastUpdate);
+            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(repository + "/releases", "Analogy Log Viewer", Settings.GitHubToken, Instance.LastUpdate);
             LastUpdate = DateTime.Now;
             CheckedThisTun = true;
             if (!newData)
             {
-                return (false, UserSettingsManager.UserSettings.LastVersionChecked);
+                return (false, Settings.LastVersionChecked);
 
             }
             var release = entries.OrderByDescending(r => r.Published).First();
-            UserSettingsManager.UserSettings.LastVersionChecked = release;
+            Settings.LastVersionChecked = release;
             return (true, release);
         }
 
@@ -211,7 +213,7 @@ namespace Analogy.Managers
         }
         public async Task<(string TagName, GithubObjects.GithubAsset UpdaterAsset)?> GetLatestUpdater()
         {
-            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(updaterRepository + "/releases", "Analogy Log Viewer", UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue);
+            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(updaterRepository + "/releases", "Analogy Log Viewer", Settings.GitHubToken, DateTime.MinValue);
             if (entries == null)
             {
                 return null;

@@ -7,12 +7,13 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Common.Interfaces;
 
 namespace Analogy.Managers
 {
     internal class FilePoolingManager : ILogMessageCreatedHandler
     {
-        private UserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
 
         private string FileName { get; }
         private FileProcessor FileProcessor { get; }
