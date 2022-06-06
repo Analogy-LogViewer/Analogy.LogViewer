@@ -5,12 +5,13 @@ using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Interfaces;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class ApplicationUISettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
 
         public ApplicationUISettingsUC()
         {

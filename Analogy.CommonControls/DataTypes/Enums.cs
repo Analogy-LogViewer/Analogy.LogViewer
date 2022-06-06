@@ -5,36 +5,6 @@ using System.Linq;
 
 namespace Analogy.CommonControls.DataTypes
 {
-    public enum PreDefinedQueryType
-    {
-        Contains,
-        Equals
-    }
-    public enum FontSelectionType
-    {
-        Default,
-        Normal,
-        Large,
-        VeryLarge,
-        Manual
-    }
-    public enum LogLevelSelectionType
-    {
-        Single,
-        Multiple
-    }
-    public enum BuiltInSearchPanelMode
-    {
-        Search,
-        Filter,
-    }
-    public enum UpdateMode
-    {
-        [Display(Name = "Never")] Never,
-        [Display(Name = "Each Startup")] EachStartup,
-        [Display(Name = "Once a Week")] OnceAWeek,
-        [Display(Name = "Once a Month")] OnceAMonth,
-    }
     /// <summary>
     /// Represents custom filter item types.
     /// </summary>
@@ -70,12 +40,6 @@ namespace Analogy.CommonControls.DataTypes
         LastMonth
     }
 
-    public enum SettingsMode
-    {
-        PerUser,
-        ApplicationFolder
-    }
-
     public static class EnumUtils
     {
         public static string GetDisplay(this Enum value)
@@ -109,13 +73,7 @@ namespace Analogy.CommonControls.DataTypes
         }
     }
 
-    public enum TimeOffsetType
-    {
-        None,
-        Predefined,
-        UtcToLocalTime,
-        LocalTimeToUtc
-    }
+
 
     public enum AnalogyCustomXAxisPlot
     {
