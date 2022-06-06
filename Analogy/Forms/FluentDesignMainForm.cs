@@ -33,7 +33,7 @@ namespace Analogy
 {
     public partial class FluentDesignMainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private UserSettingsManager settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings settings => UserSettingsManager.UserSettings;
 
         #region pinvoke
 
@@ -126,7 +126,7 @@ namespace Analogy
 
             var current = (settings.RememberLastOpenedDataProvider && settings.LastOpenedDataProvider != default) ?
                   settings.LastOpenedDataProvider :
-                  UserSettingsManager.UserSettings.InitialSelectedDataProvider;
+                  settings.InitialSelectedDataProvider;
             LoadFactoryInAccordion(current);
 
             if (AnalogyLogManager.Instance.HasErrorMessages)
