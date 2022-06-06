@@ -152,6 +152,11 @@ namespace Analogy.CommonControls.UserControls
         #endregion
         private JsonTreeView JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
+
+        public UCLogs():this(new DefaultUserSettingsManager(),new DefaultExtensionManager(),new DefaultFactoriesManager(),new DefaultAnalogyLogger())
+        {
+            
+        }
         public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
             Logger = logger;
@@ -2808,10 +2813,13 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
             FactoryContainer analogy = FactoriesManager.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            var provider = analogy.DataProvidersFactories[0].DataProviders.First();
-            SetFileDataSource(provider, null);
-            BookmarkView = true;
-            BookmarkModeUI();
+            if (analogy != null)
+            {
+                var provider = analogy.DataProvidersFactories[0]?.DataProviders.First();
+                SetFileDataSource(provider, null);
+                BookmarkView = true;
+                BookmarkModeUI();
+            }
         }
 
         public void RemoveMessage(AnalogyLogMessage msgMessage)
