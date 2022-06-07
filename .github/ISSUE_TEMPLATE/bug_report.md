@@ -13,9 +13,9 @@ A clear and concise description of what the bug is.
 
 ## ℹ Computer information
 
- - OS: [e.g. Windo1 10 Version 1909 64 bit]
- - Analogy Version [e.g. 4.2.3 .NET Core 3.1 or 4.2.3 .NET framework 4.7.2]
-
+ - OS: [e.g. Windows 10 Version 1909 64 bit]
+ - Analogy Version [e.g. 4.6.8 .NET Core 3.1 or 4.6.8 .NET framework 4.7.2]
+ - Data Provider used )if related to log parsing errors [e.g. Serilog, NLog, Windows event logs]
 
 ## 📝 Provide detailed reproduction steps (if any)
 
