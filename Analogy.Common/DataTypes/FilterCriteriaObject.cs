@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
-using Analogy.CommonControls.DataTypes;
-using Analogy.DataTypes;
+using Analogy.CommonUtilities.ExtensionMethods;
 using Analogy.Interfaces;
 
-namespace Analogy
+namespace Analogy.Common.DataTypes
 {
     public class FilterCriteriaObject
     {
@@ -143,42 +143,14 @@ namespace Analogy
                 excludedTexts = split.Select(itm => itm.Trim()).ToList();
             }
 
-            sqlString.Append(UserSettingsManager.UserSettings.SearchAlsoInSourceAndModule ? "((" : "(");
+            sqlString.Append("(");
 
             sqlString.Append(orOperationInInclude
                 ? string.Join(" Or ", includeTexts.Select(t => $" Text like '%{t}%'"))
                 : string.Join(" and ", includeTexts.Select(t => $" Text like '%{t}%'")));
 
             sqlString.Append(")");
-
-            if (UserSettingsManager.UserSettings.SearchAlsoInSourceAndModule)
-            {
-                //also in source
-                sqlString.Append(" or (");
-                if (orOperationInInclude)
-                {
-                    sqlString.Append(string.Join(" Or ", includeTexts.Select(t => $" Source like '%{t}%'")));
-                }
-                else
-                {
-                    sqlString.Append(string.Join(" And ", includeTexts.Select(t => $" Source like '%{t}%'")));
-                }
-
-                sqlString.Append(")");
-                //also in module
-                sqlString.Append(" or (");
-                if (orOperationInInclude)
-                {
-                    sqlString.Append(string.Join(" Or ", includeTexts.Select(t => $" Module like '%{t}%'")));
-                }
-                else
-                {
-                    sqlString.Append(string.Join(" And ", includeTexts.Select(t => $" Module like '%{t}%'")));
-                }
-
-                sqlString.Append("))");
-            }
-
+            
             if (excludedTexts.Any())
             {
                 sqlString.Append(" and (");
@@ -380,5 +352,4 @@ namespace Analogy
         }
 
     }
-
 }

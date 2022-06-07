@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Analogy.CommonControls.DataTypes
+namespace Analogy.Common.DataTypes
 {
     [Serializable]
     public class FilterCriteriaUIOption
