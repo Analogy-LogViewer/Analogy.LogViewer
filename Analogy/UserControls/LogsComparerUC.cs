@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Analogy.Common.DataTypes;
 using Analogy.Interfaces;
 
 namespace Analogy.Tools
@@ -21,16 +22,16 @@ namespace Analogy.Tools
 
         public void LoadFiles(string pathLeft, string pathRight)
         {
-            rtboxLeft.Text="";
+            rtboxLeft.Text = "";
             rtboxRight.Text = "";
             lblFileLeft.Text = string.Empty;
             lblFileRight.Text = string.Empty;
-;
+            ;
             if (File.Exists(pathLeft) && (pathLeft.EndsWith("txt") || pathLeft.EndsWith("cfg") || pathLeft.EndsWith("xml")))
             {
                 lblFileLeft.Text = pathLeft;
                 rtboxLeft.LoadFile(pathLeft);
-         
+
             }
             if (File.Exists(pathRight) && (pathRight.EndsWith("txt") || pathRight.EndsWith("cfg") || pathRight.EndsWith("xml")))
             {
@@ -114,7 +115,7 @@ namespace Analogy.Tools
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 LeftFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(LeftFile);
+                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings, LeftFile, AnalogyLogger.Instance);
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }
@@ -128,7 +129,7 @@ namespace Analogy.Tools
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 RightFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(RightFile);
+                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings, RightFile, AnalogyLogger.Instance);
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }

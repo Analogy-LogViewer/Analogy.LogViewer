@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;

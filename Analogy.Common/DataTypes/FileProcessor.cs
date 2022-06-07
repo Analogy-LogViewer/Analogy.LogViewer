@@ -7,31 +7,28 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Common.Interfaces;
-using Analogy.CommonControls.Interfaces;
-using Analogy.CommonControls.Managers;
-using Analogy.CommonControls.UserControls;
+using Analogy.Common.Managers;
 using Analogy.Interfaces;
-using DevExpress.Mvvm.Native;
 
-namespace Analogy.CommonControls.DataTypes
+namespace Analogy.Common.DataTypes
 {
     public class FileProcessor
     {
-        public event EventHandler<EventArgs> OnFileReadingFinished;
+        public event EventHandler<string> OnFileReadingFinished;
         public DateTime lastNewestMessage;
         private IUserSettingsManager Settings { get; }
         private string FileName { get; set; }
         public Stream DataStream { get; set; }
         private ILogMessageCreatedHandler DataWindow { get; }
         public IAnalogyLogger Logger { get; }
-        public UCLogs LogWindow { get; }
+        public ILogWindow LogWindow { get; }
 
-        public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow,IAnalogyLogger logger)
+        public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow, IAnalogyLogger logger)
         {
             DataWindow = dataWindow;
             Logger = logger;
             Settings = settingsManager;
-            if (dataWindow is UCLogs logs)
+            if (dataWindow is ILogWindow logs)
             {
                 LogWindow = logs;
             }
@@ -54,12 +51,8 @@ namespace Analogy.CommonControls.DataTypes
                 Settings.EnableFileCaching) //get it from the cache
             {
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
-                DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
-                if (LogWindow != null)
-                {
-                    Interlocked.Decrement(ref LogWindow.fileLoadingCount);
-                }
-
+                DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(FileName));
+                OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
 
             }
@@ -72,12 +65,8 @@ namespace Analogy.CommonControls.DataTypes
                 }
 
                 var cachedMessages = FileProcessingManager.Instance.GetMessages(FileName);
-                DataWindow.AppendMessages(cachedMessages, Utils.GetFileNameAsDataSource(FileName));
-                if (LogWindow != null)
-                {
-                    Interlocked.Decrement(ref LogWindow.fileLoadingCount);
-                }
-
+                DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(FileName));
+                OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
 
             }
@@ -103,17 +92,12 @@ namespace Analogy.CommonControls.DataTypes
                         lastNewestMessage = messages.Select(m => m.Date).Max();
                     }
 
-                    OnFileReadingFinished?.Invoke(this, EventArgs.Empty);
-                    if (LogWindow != null)
-                    {
-                        Interlocked.Decrement(ref LogWindow.fileLoadingCount);
-                    }
-
+                    OnFileReadingFinished?.Invoke(this, filename);
                     return messages;
                 }
                 else //cannot open natively. is it compressed file?
                 {
-                    if (Settings.EnableCompressedArchives && Utils.IsCompressedArchive(filename))
+                    if (Settings.EnableCompressedArchives && IsCompressedArchive(filename))
                     {
                         var compressedMessages = new List<AnalogyLogMessage>();
                         string extractedPath = UnzipFilesIntoTempFolder(filename, fileDataProvider);
@@ -129,11 +113,11 @@ namespace Analogy.CommonControls.DataTypes
                         }
                         CleanupManager.Instance.AddFolder(extractedPath);
                         var files = Directory.GetFiles(extractedPath);
-                        files.ForEach(async file =>
+                        foreach (string file in files)
                         {
                             var messages = await Process(fileDataProvider, file, token, isReload);
                             compressedMessages.AddRange(messages);
-                        });
+                        }
                         return compressedMessages;
 
                     }
@@ -224,6 +208,16 @@ namespace Analogy.CommonControls.DataTypes
                 }
             }
         }
-    }
+        private static string GetFileNameAsDataSource(string fileName)
+        {
+            string file = Path.GetFileName(fileName);
+            return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
+        }
+        private static bool IsCompressedArchive(string filename)
+        {
+            return filename.EndsWith(".gz", StringComparison.InvariantCultureIgnoreCase) ||
+                   filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
+        }
 
+    }
 }

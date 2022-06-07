@@ -5,12 +5,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
-using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 
-namespace Analogy.CommonControls.Interfaces
+namespace Analogy.Common.Interfaces
 {
     public interface IFactoryContainer
     {

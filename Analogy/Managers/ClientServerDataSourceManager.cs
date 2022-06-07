@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 

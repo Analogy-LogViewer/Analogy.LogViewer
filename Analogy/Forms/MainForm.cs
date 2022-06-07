@@ -28,8 +28,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Interfaces;
+using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
 

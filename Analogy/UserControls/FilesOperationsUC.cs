@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Common.DataTypes;
 using Analogy.Interfaces.DataTypes;
 
 namespace Analogy
@@ -103,7 +104,7 @@ namespace Analogy
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(this);
+                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));
@@ -140,7 +141,7 @@ namespace Analogy
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(this);
+                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));

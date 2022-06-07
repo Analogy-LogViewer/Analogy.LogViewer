@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Common.DataTypes;
+using Analogy.Common.Managers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Analogy.UnitTests
@@ -13,13 +15,13 @@ namespace Analogy.UnitTests
     {
         private CancellationTokenSource cancellationTokenSource;
         private MessageHandlerForTesting handler = new MessageHandlerForTesting();
-       // [TestMethod]
-        public  void TestWriteAndRead()
+        // [TestMethod]
+        public void TestWriteAndRead()
         {
             string fileName = "example.ajson";
             cancellationTokenSource = new CancellationTokenSource();
-            FileProcessor fp = new FileProcessor(handler);
-            
+            FileProcessor fp = new FileProcessor(new DefaultUserSettingsManager(), handler, new EmptyAnalogyLogger());
+
         }
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.CommonControls.Interfaces;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 
-namespace Analogy.CommonControls.Managers
+namespace Analogy.Common.Managers
 {
     public class DefaultExtensionManager : IExtensionsManager
     {

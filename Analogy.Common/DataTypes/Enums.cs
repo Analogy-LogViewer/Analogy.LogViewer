@@ -70,4 +70,11 @@ namespace Analogy.Common.DataTypes
         UtcToLocalTime,
         LocalTimeToUtc
     }
+    public enum DataSourceType
+    {
+        Client,
+        Server,
+        NetworkPath,
+        LocalPath
+    }
 }

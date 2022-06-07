@@ -4,7 +4,7 @@ using System.IO;
 using Analogy.Interfaces;
 using Exception = System.Exception;
 
-namespace Analogy.CommonControls.Managers
+namespace Analogy.Common.Managers
 {
     public class CleanupManager
     {

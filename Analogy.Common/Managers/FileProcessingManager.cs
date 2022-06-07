@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
 
-namespace Analogy.CommonControls.Managers
+namespace Analogy.Common.Managers
 {
     public class FileProcessingManager
     {

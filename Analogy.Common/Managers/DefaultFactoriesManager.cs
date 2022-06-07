@@ -5,14 +5,15 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.CommonControls.Interfaces;
-using Analogy.CommonControls.Properties;
+using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Properties;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 
-namespace Analogy.CommonControls.Managers
+namespace Analogy.Common.Managers
 {
-    internal class DefaultFactoriesManager : IFactoriesManager
+    public class DefaultFactoriesManager : IFactoriesManager
     {
         public List<string> ProbingPaths { get; set; } = new List<string>(0);
         public List<FactoryContainer> BuiltInFactories { get; } = new List<FactoryContainer>(0);

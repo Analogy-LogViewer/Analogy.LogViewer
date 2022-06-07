@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Tools
 {
 
-    public class FileComparerProcessor : ILogMessageCreatedHandler
+    public class FileComparerProcessor : ILogMessageCreatedHandler,ILogWindow
     {
         public bool DoNotAddToRecentHistory { get; set; } = false;
         public bool ForceNoFileCaching { get; set; } = false;
@@ -55,6 +56,11 @@ namespace Analogy.Tools
         public void ReportFileReadProgress(AnalogyFileReadProgress progress)
         {
             //noop
+        }
+
+        public List<AnalogyLogMessage> GetMessages()
+        {
+            return messages;
         }
     }
 }

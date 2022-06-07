@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
-using Analogy.CommonControls.Properties;
+using Analogy.Common.Properties;
 
-namespace Analogy.CommonControls.Managers
+namespace Analogy.Common.Managers
 {
     public class DefaultUserSettingsManager : IUserSettingsManager
     {

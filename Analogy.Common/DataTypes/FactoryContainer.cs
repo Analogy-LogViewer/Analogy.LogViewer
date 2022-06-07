@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Analogy.Common.DataTypes;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Interfaces;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 
-namespace Analogy.CommonControls.Managers
+namespace Analogy.Common.DataTypes
 {
     public class FactoryContainer : IFactoryContainer
     {

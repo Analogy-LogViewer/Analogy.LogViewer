@@ -5,11 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.CommonControls.Managers;
+using Analogy.Common.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 
-namespace Analogy.CommonControls.Interfaces
+namespace Analogy.Common.Interfaces
 {
     public interface IFactoriesManager
     {

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
@@ -45,6 +46,9 @@ namespace Analogy.CommonControls.UserControls
 
     public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
     {
+        #region Events
+
+        #endregion
         #region properties
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
@@ -153,9 +157,9 @@ namespace Analogy.CommonControls.UserControls
         private JsonTreeView JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
 
-        public UCLogs():this(new DefaultUserSettingsManager(),new DefaultExtensionManager(),new DefaultFactoriesManager(),new DefaultAnalogyLogger())
+        public UCLogs() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
         {
-            
+
         }
         public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
@@ -164,6 +168,12 @@ namespace Analogy.CommonControls.UserControls
             ExtensionManager = extensionManager;
             FactoriesManager = factoriesManager;
             InitializeComponent();
+
+            if (DesignMode)
+            {
+                return;
+            }
+
             JsonTreeView = new JsonTreeView();
             spltcMessages.Panel2.Controls.Add(JsonTreeView);
             JsonTreeView.Dock = DockStyle.Fill;
@@ -180,11 +190,10 @@ namespace Analogy.CommonControls.UserControls
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
             FileProcessor = new FileProcessor(Settings, this, Logger);
-            if (DesignMode)
+            FileProcessor.OnFileReadingFinished += (s, e) =>
             {
-                return;
-            }
-
+                Interlocked.Decrement(ref fileLoadingCount);
+            };
             PagingManager = new PagingManager(this, Settings);
             lockSlim = PagingManager.lockSlim;
             _messageData = PagingManager.CurrentPage();
@@ -297,7 +306,7 @@ namespace Analogy.CommonControls.UserControls
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
-      
+
             if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
             {
                 string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 
 namespace Analogy.Managers
@@ -40,7 +41,7 @@ namespace Analogy.Managers
             OfflineDataProvider = offlineDataProvider;
             _messages = new List<AnalogyLogMessage>();
             FileName = fileName;
-            FileProcessor = new FileProcessor(this);
+            FileProcessor = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
 
         }
 

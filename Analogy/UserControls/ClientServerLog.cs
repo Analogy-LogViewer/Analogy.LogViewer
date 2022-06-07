@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Forms;

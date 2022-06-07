@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Analogy.Interfaces;
 
-namespace Analogy.CommonControls.Interfaces
+namespace Analogy.Common.Interfaces
 {
     public interface IExtensionsManager
     {
