@@ -16,6 +16,7 @@
 		<RootNamespace>Analogy.Common</RootNamespace>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 
 	</PropertyGroup>
 
