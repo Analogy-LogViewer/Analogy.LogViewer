@@ -1,0 +1,26 @@
+name: Microsoft Train IntelliCode Model
+
+on:
+  push:
+    branches:
+      - master # IntelliCode recommends training on master branch to increase your model availability. Switch to another branch if you'd like to reduce update frequency.
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # We need to fetch the entire Git history in order to verify the authenticity.
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x' 
+    - name: Build with dotnet
+      working-directory: ./
+      run: dotnet build # Project needs to build before training a model.
+
+    - name: Train Intellicode Model
+      uses: microsoft/vs-intellicode@v1
