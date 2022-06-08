@@ -3,7 +3,7 @@ name: Microsoft Train IntelliCode Model
 on:
   push:
     branches:
-      - dev # IntelliCode recommends training on master branch to increase your model availability. Switch to another branch if you'd like to reduce update frequency.
+      - master # IntelliCode recommends training on master branch to increase your model availability. Switch to another branch if you'd like to reduce update frequency.
 
 jobs:
   build:
