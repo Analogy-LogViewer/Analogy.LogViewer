@@ -5,12 +5,20 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy", "Analogy\Analogy.csproj", "{F2B3CF44-653A-4FD6-8B79-8D1DEC605B1E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.UnitTests", "Analogy.UnitTests\Analogy.UnitTests.csproj", "{B3AA4AAD-28D8-4A44-AAA9-3D2AC92B1BEF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{42A38B8A-CDCF-477A-8BC6-1A4685CD5255} = {42A38B8A-CDCF-477A-8BC6-1A4685CD5255}
+		{FD91FD34-34E2-475E-A5E6-143669FA2C4A} = {FD91FD34-34E2-475E-A5E6-143669FA2C4A}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.CommonControls", "Analogy.CommonControls\Analogy.CommonControls.csproj", "{FD91FD34-34E2-475E-A5E6-143669FA2C4A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.CommonControls.Example", "Analogy.CommonControls.Example\Analogy.CommonControls.Example.csproj", "{41F03583-1C30-4D03-92A8-2F5D9477BF0F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{42A38B8A-CDCF-477A-8BC6-1A4685CD5255} = {42A38B8A-CDCF-477A-8BC6-1A4685CD5255}
+		{FD91FD34-34E2-475E-A5E6-143669FA2C4A} = {FD91FD34-34E2-475E-A5E6-143669FA2C4A}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analogy.Common", "Analogy.Common\Analogy.Common.csproj", "{42A38B8A-CDCF-477A-8BC6-1A4685CD5255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.Common", "Analogy.Common\Analogy.Common.csproj", "{42A38B8A-CDCF-477A-8BC6-1A4685CD5255}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
