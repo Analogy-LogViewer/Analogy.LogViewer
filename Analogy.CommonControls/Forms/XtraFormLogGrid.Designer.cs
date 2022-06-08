@@ -41,7 +41,6 @@
             this.ucLogs1.DoNotAddToRecentHistory = false;
             this.ucLogs1.FileDataProvider = null;
             this.ucLogs1.ForceNoFileCaching = false;
-            this.ucLogs1.IncludeFilterCriteriaUIOptions = ((System.Collections.Generic.List<Analogy.CommonControls.DataTypes.FilterCriteriaUIOption>)(resources.GetObject("ucLogs1.IncludeFilterCriteriaUIOptions")));
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
