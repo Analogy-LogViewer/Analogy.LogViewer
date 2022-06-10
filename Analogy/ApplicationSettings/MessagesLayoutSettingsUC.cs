@@ -57,8 +57,8 @@ namespace Analogy.ApplicationSettings
             dtr["Date"] = DateTime.Now;
             dtr["Text"] = text;
             dtr["Source"] = "Analogy";
-            dtr["Level"] = AnalogyLogLevel.Information.ToString();
-            dtr["Class"] = AnalogyLogClass.General.ToString();
+            dtr["Level"] = AnalogyLogLevel.Information;
+            dtr["Class"] = AnalogyLogClass.General;
             dtr["Category"] = "None";
             dtr["User"] = "None";
             dtr["Module"] = "Analogy";

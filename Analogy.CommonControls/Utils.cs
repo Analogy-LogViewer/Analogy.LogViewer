@@ -67,11 +67,11 @@ namespace Analogy.CommonControls
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
-            dtr["Date"] = Utils.GetOffsetTime(message.Date,timeOffsetType,customOffset);
+            dtr["Date"] = GetOffsetTime(message.Date,timeOffsetType,customOffset);
             dtr["Text"] = message.Text ?? "";
             dtr["Source"] = message.Source ?? "";
-            dtr["Level"] = string.Intern(message.Level.ToString());
-            dtr["Class"] = string.Intern(message.Class.ToString());
+            dtr["Level"] = message.Level;
+            dtr["Class"] = message.Class;
             dtr["Category"] = message.Category ?? "";
             dtr["User"] = message.User ?? "";
             dtr["Module"] = message.Module ?? "";
