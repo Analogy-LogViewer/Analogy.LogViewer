@@ -31,6 +31,7 @@ using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
+using DevExpress.LookAndFeel;
 
 namespace Analogy.Forms
 {
@@ -267,14 +268,7 @@ namespace Analogy.Forms
                 var (_, release) = await UpdateManager.Instance.CheckVersion(false);
                 if (release?.TagName != null && UpdateManager.Instance.NewestVersion != null)
                 {
-                    bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
-                    if (UpdateManager.Instance.NewVersionExist)
-                    {
-                        bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
-                        bbtnCheckUpdates.Caption =
-                            "New Version Available: " + UpdateManager.Instance.NewestVersion.ToString();
-
-                    }
+                    UpdateUpdateButton();
                 }
             }
             else
@@ -289,6 +283,22 @@ namespace Analogy.Forms
             }
 
         }
+
+        private void UpdateUpdateButton()
+        {
+            bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
+            if (UpdateManager.Instance.NewVersionExist)
+            {
+                bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
+                if (DevExpress.Utils.Frames.FrameHelper.IsDarkSkin(settings.ApplicationSkinName))
+                {
+                    bbtnCheckUpdates.Appearance.ForeColor = Color.DarkBlue;
+                }
+                bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.Instance.NewestVersion.ToString();
+
+            }
+        }
+
         private void RegisterForOnDemandPlots()
         {
             AnalogyOnDemandPlottingManager.Instance.OnShowPlot += (s, e) =>
@@ -355,6 +365,11 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            settings.OnApplicationSkinNameChanged += (s, e) =>
+            {
+                UpdateUpdateButton();
+            };
+
             dockManager1.StartDocking += (s, e) =>
             {
                 if (e.Panel.DockedAsTabbedDocument)
@@ -382,7 +397,7 @@ namespace Analogy.Forms
                 uc.Dock = DockStyle.Fill;
                 page.Text = "File Plotting";
                 dockManager1.ActivePanel = page;
-            }; 
+            };
             bbiKofi.ItemClick += (s, e) =>
             {
                 Utils.OpenLink("https://ko-fi.com/liorbanai");
@@ -490,7 +505,7 @@ namespace Analogy.Forms
                         ribbonControlMain.CommandLayout = CommandLayout.Classic;
                         break;
                     case AnalogyCommandLayout.Simplified:
-                        ribbonControlMain.CommandLayout= CommandLayout.Simplified;
+                        ribbonControlMain.CommandLayout = CommandLayout.Simplified;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(e), e, null);
@@ -1954,7 +1969,7 @@ namespace Analogy.Forms
                 var combined = new FormCombineFiles(offlineAnalogy);
                 combined.Show(this);
             };
-            
+
             BarButtonItem compareFiles = new BarButtonItem();
             compareFiles.Caption = "Compare Files";
             groupOfflineFileTools.ItemLinks.Add(compareFiles);

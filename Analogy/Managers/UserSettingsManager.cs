@@ -22,24 +22,38 @@ using Analogy.CommonControls.Interfaces;
 
 namespace Analogy
 {
-  
+
 
     public class UserSettingsManager : IAnalogyUserSettings
     {
         public event EventHandler OnFactoryOrderChanged;
+        public event EventHandler OnApplicationSkinNameChanged;
 
         private static UserSettingsManager? _userSettings;
 
         private AnalogyCommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
         private bool _inlineJsonViewer;
+        private string _applicationSkinName;
         public event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
         public event EventHandler<bool> OnInlineJsonViewerChanged;
         public event EventHandler<AnalogyCommandLayout> OnRibbonControlStyleChanged;
         private string LocalSettingFileName { get; } = "AnalogyLocalSettings.json";
         public string DisplayRunningTime => $"{AnalogyRunningTime:dd\\.hh\\:mm\\:ss} days";
         public Guid InitialSelectedDataProvider { get; set; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
-        public string ApplicationSkinName { get; set; }
+
+        public string ApplicationSkinName
+        {
+            get => _applicationSkinName;
+            set
+            {
+                if (_applicationSkinName != value)
+                {
+                    _applicationSkinName = value;
+                    OnApplicationSkinNameChanged?.Invoke(this,EventArgs.Empty);
+                }
+            }
+        }
 
         /// <remarks>
         /// Manually implemented lazy pattern to enable setting while keeping the ctor in the getter lazy.

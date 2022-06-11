@@ -17,7 +17,8 @@ namespace Analogy.Interfaces
         event EventHandler OnFactoryOrderChanged;
         event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
         event EventHandler<AnalogyCommandLayout> OnRibbonControlStyleChanged;
-
+        event EventHandler OnApplicationSkinNameChanged;
+        
         string DisplayRunningTime { get; }
         Guid InitialSelectedDataProvider { get; set; }
         string ApplicationSkinName { get; set; }

@@ -140,14 +140,7 @@ namespace Analogy
                 var (_, release) = await UpdateManager.Instance.CheckVersion(false);
                 if (release?.TagName != null && UpdateManager.Instance.NewestVersion != null)
                 {
-                    bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
-                    if (UpdateManager.Instance.NewVersionExist)
-                    {
-                        bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
-                        bbtnCheckUpdates.Caption =
-                            "New Version Available: " + UpdateManager.Instance.NewestVersion;
-
-                    }
+                    UpdateUpdateButton();
                 }
             }
             else
@@ -361,6 +354,11 @@ namespace Analogy
         }
         private void SetupEventHandlers()
         {
+            settings.OnApplicationSkinNameChanged += (s, e) =>
+            {
+                UpdateUpdateButton();
+            };
+
             dockManager1.StartDocking += (s, e) =>
             {
                 if (e.Panel.DockedAsTabbedDocument)
@@ -584,7 +582,20 @@ namespace Analogy
             UpdateForm update = new UpdateForm();
             update.Show(this);
         }
+        private void UpdateUpdateButton()
+        {
+            bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
+            if (UpdateManager.Instance.NewVersionExist)
+            {
+                bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
+                if (DevExpress.Utils.Frames.FrameHelper.IsDarkSkin(settings.ApplicationSkinName))
+                {
+                    bbtnCheckUpdates.Appearance.ForeColor = Color.DarkBlue;
+                }
+                bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.Instance.NewestVersion.ToString();
 
+            }
+        }
         private void PopulateGlobalTools()
         {
             var allFactories = FactoriesManager.Instance.Factories.ToList();
@@ -748,7 +759,7 @@ namespace Analogy
                 settingsBtn.Style = ElementStyle.Item;
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
                 settingsBtn.Text = providerSetting.Title;
-                
+
                 XtraForm form = new DataProviderSettingsForm();
                 form.Text = "Data Provider Settings: " + providerSetting.Title;
                 form.Controls.Add(providerSetting.DataProviderSettings);
@@ -905,7 +916,7 @@ namespace Analogy
                     }
                 };
 
-                
+
                 recentFolders.ImageOptions.Image = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
                 foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
                 {
@@ -957,7 +968,7 @@ namespace Analogy
                             AddRecentFiles(recentfiles, offlineAnalogy, title, openFileDialog1.FileNames.ToList());
                         }
                     };
-                    
+
 
                     //add Open pooling file entry
                     AccordionControlElement filePoolingBtn = new AccordionControlElement();
