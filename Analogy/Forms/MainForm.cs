@@ -365,6 +365,11 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            bbtnItemGithubHistory.ItemClick += (s, e) =>
+            {
+                GitHubHistoryForm g = new GitHubHistoryForm();
+                g.ShowDialog(this);
+            };
             settings.OnApplicationSkinNameChanged += (s, e) =>
             {
                 UpdateUpdateButton();

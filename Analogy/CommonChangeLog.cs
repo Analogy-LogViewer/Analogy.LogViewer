@@ -10,7 +10,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {  
+            {
+                new AnalogyChangeLog("V4.8.7 - Add download statistics #1323",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,06,11)),
                 new AnalogyChangeLog("V4.8.6 - [BUG] pre defined popup menu is opened at incorrect position. #1308",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2022,06,05)),
                 new AnalogyChangeLog("V4.8.6 - Enable autocomplete of last 20 searches by defaults. #1306",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2022,06,05)),
                 new AnalogyChangeLog("V4.8.6 - [Plotting] Add toggle point marker #1267",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,05,09)),

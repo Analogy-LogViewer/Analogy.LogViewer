@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
+using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Web;
+using Analogy.Managers;
+using Analogy.UserControls;
+using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
@@ -115,36 +121,16 @@ namespace Analogy.Forms
         private async void sbtnFetchReleases_Click(object sender, EventArgs e)
         {
             var (_, releases) = await Utils
-                .GetAsync<GithubObjects.GithubReleaseEntry[]>(
-                    $"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer/releases", "", DateTime.MinValue)
-                .ConfigureAwait(false);
+                .GetAsync<GithubObjects.GithubReleaseEntry[]>(AnalogyNonPersistSettings.Instance.AnalogyReleasesUrl, "", DateTime.MinValue)
+                .ConfigureAwait(true);
             if (releases == null)
             {
                 return;
             }
 
-            var net471 = releases.Select(r => r.Assets.Where(a => a.Name.Contains("471", StringComparison.InvariantCultureIgnoreCase)));
-            var net472 = releases.Select(r => r.Assets.Where(a => a.Name.Contains("472", StringComparison.InvariantCultureIgnoreCase)));
-            var net48 = releases.Select(r => r.Assets.Where(a => a.Name.Contains("48", StringComparison.InvariantCultureIgnoreCase)));
-            var net31 = releases.Select(r => r.Assets.Where(a => a.Name.Contains("3.1", StringComparison.InvariantCultureIgnoreCase)));
-            var net5 = releases.Select(r => r.Assets.Where(a => a.Name.Contains("net5.0", StringComparison.InvariantCultureIgnoreCase)));
-            var net6 = releases.Select(r => r.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase)));
-
-            var net471Downloads = net471.Sum(r => r.Sum(a => a.Downloads));
-            var net472Downloads = net472.Sum(r => r.Sum(a => a.Downloads));
-            var net48Downloads = net48.Sum(r => r.Sum(a => a.Downloads));
-            var net31Downloads = net31.Sum(r => r.Sum(a => a.Downloads));
-            var net5Downloads = net5.Sum(r => r.Sum(a => a.Downloads));
-            var net6Downloads = net6.Sum(r => r.Sum(a => a.Downloads));
-
-
-            var net471percentage = (double)net471Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net472percentage = (double)net472Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net48percentage = (double)net48Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net31percentage = (double)net31Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net5percentage = (double)net5Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net6percentage = (double)net6Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-
+            DownloadStatisticsUC uc = new DownloadStatisticsUC(releases);
+           panelChart.Controls.Add(uc);
+           uc.Dock = DockStyle.Fill;
         }
     }
 }

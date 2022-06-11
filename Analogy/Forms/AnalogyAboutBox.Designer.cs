@@ -67,6 +67,7 @@
             this.hyperLinkEdit20 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.hyperLinkEdit21 = new DevExpress.XtraEditors.HyperLinkEdit();
             this.xtraTabPageReleases = new DevExpress.XtraTab.XtraTabPage();
+            this.panelChart = new DevExpress.XtraEditors.PanelControl();
             this.sbtnFetchReleases = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
@@ -104,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit21.Properties)).BeginInit();
             this.xtraTabPageReleases.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelChart)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -546,10 +548,21 @@
             // 
             // xtraTabPageReleases
             // 
+            this.xtraTabPageReleases.Controls.Add(this.panelChart);
             this.xtraTabPageReleases.Controls.Add(this.sbtnFetchReleases);
             this.xtraTabPageReleases.Name = "xtraTabPageReleases";
             this.xtraTabPageReleases.Size = new System.Drawing.Size(1047, 413);
             this.xtraTabPageReleases.Text = "Releases Statistics";
+            // 
+            // panelChart
+            // 
+            this.panelChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelChart.Location = new System.Drawing.Point(3, 43);
+            this.panelChart.Name = "panelChart";
+            this.panelChart.Size = new System.Drawing.Size(1041, 367);
+            this.panelChart.TabIndex = 1;
             // 
             // sbtnFetchReleases
             // 
@@ -614,6 +627,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit21.Properties)).EndInit();
             this.xtraTabPageReleases.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -661,5 +675,6 @@
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageReleases;
         private DevExpress.XtraEditors.SimpleButton sbtnFetchReleases;
+        private DevExpress.XtraEditors.PanelControl panelChart;
     }
 }

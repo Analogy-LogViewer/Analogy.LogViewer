@@ -144,6 +144,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            this.bbtnItemGithubHistory = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -173,7 +174,7 @@
             this.ribbonControlMain.AutoSaveLayoutToXmlPath = "AnalogyRibbonSettings.xml";
             this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiGlobalTools);
             this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
-            this.ribbonControlMain.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(37);
+            this.ribbonControlMain.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(46);
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bsiGlobalTools,
@@ -248,12 +249,13 @@
             this.bbiBinance,
             this.bbiDonation,
             this.bbiPayPal,
-            this.bbiKofi});
+            this.bbiKofi,
+            this.bbtnItemGithubHistory});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.ribbonControlMain.MaxItemId = 119;
+            this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.ribbonControlMain.MaxItemId = 120;
             this.ribbonControlMain.Name = "ribbonControlMain";
-            this.ribbonControlMain.OptionsMenuMinWidth = 412;
+            this.ribbonControlMain.OptionsMenuMinWidth = 515;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bsmInfo);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
@@ -352,6 +354,7 @@
             this.bsmInfo.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnWhatsNew),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnFirstRun),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemGithubHistory),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
@@ -955,7 +958,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 866);
-            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1628, 30);
@@ -1002,6 +1005,13 @@
             // 
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
+            // 
+            // bbtnItemGithubHistory
+            // 
+            this.bbtnItemGithubHistory.Caption = "Version History (Github)";
+            this.bbtnItemGithubHistory.Id = 119;
+            this.bbtnItemGithubHistory.ImageOptions.Image = global::Analogy.Properties.Resources.github16x16;
+            this.bbtnItemGithubHistory.Name = "bbtnItemGithubHistory";
             // 
             // MainForm
             // 
@@ -1119,5 +1129,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiPayPal;
         private DevExpress.XtraBars.BarButtonItem bsiFilePlotting;
         private DevExpress.XtraBars.BarButtonItem bbiKofi;
+        private DevExpress.XtraBars.BarButtonItem bbtnItemGithubHistory;
     }
 }

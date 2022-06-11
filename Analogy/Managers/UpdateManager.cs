@@ -124,7 +124,6 @@ namespace Analogy.Managers
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.VisualStudioLogParser", "Analogy.LogViewer.VisualStudioLogParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.VisualStudioLogParser", Resources.VS32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WhatsApp", "Analogy.LogViewer.WhatsApp.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WhatsApp", Resources.whatsappicon32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.XMLParser", "Analogy.LogViewer.XMLParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.XMLParser", Resources.xml32x32));
-            //SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WCF", "Analogy.LogViewer.WCF.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WCF", Resources.wcf32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Philips.ICAP", "Analogy.LogViewer.Philips.ICAP.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Philips.ICAP", Resources.philips_image_32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Philips.CT", "Analogy.LogViewer.Philips.CT.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Philips.CT", Resources.philips_image_32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.JsonParser", "Analogy.LogViewer.JsonParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.JsonParser", Resources.jsonfile32x32));
@@ -143,9 +142,6 @@ namespace Analogy.Managers
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WindowsEventLogs", "Analogy.LogViewer.WindowsEventLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WindowsEventLogs", Resources.OperatingSystem_32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Example", "Analogy.LogViewer.Example.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Example", Resources.Analogy_image_32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.GitHubActionLogs", "Analogy.LogViewer.GitHubActionLogs.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.GitHubActionLogs", Resources.actions32x32));
-#if !NETCOREAPP3_1 && !NET
-            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.SerialPort", "Analogy.LogViewer.SerialPort.dll", "https://api.github.com/repos/oto313/Analogy.LogViewer.SerialPort", Resources.Analogy_image_32x32));
-#endif
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             CurrentVersionNumber = fvi.FileVersion;

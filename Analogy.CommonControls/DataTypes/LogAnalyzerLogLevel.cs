@@ -53,4 +53,15 @@ namespace Analogy.CommonControls.DataTypes
             Value = value;
         }
     }
+    public class PieChartSingleDataPoint
+    {
+        public string Name { get; set; }
+        public double Value { get; set; }
+
+        public PieChartSingleDataPoint(string name, double value)
+        {
+            Name = name;
+            Value = value;
+        }
+    }
 }

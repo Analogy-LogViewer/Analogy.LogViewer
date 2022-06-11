@@ -28,7 +28,6 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
             pieChart = new ChartControl();
-            pieChart.Titles.Add(new ChartTitle() { Text = statistics.Name });
             pieChart.AllowGesture = true;
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = statistics.Name });
