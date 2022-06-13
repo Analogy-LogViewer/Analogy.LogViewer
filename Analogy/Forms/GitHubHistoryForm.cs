@@ -20,12 +20,12 @@ namespace Analogy.Forms
 {
     public partial class GitHubHistoryForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
         public GitHubHistoryForm()
         {
             InitializeComponent(); 
             EnableAcrylicAccent = false;
-
+            Icon = Settings.GetIcon();
         }
 
         private async void GitHubHistoryForm_Load(object sender, EventArgs e)

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonUtilities.Web;
 using DevExpress.XtraEditors;
+using Markdig;
 
 namespace Analogy.UserControls
 {
@@ -31,7 +32,9 @@ namespace Analogy.UserControls
         {
             using (var client = new WebClient())
             {
-                string html = client.DownloadString(Entry.HtmlUrl);
+                var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
+                    .Build();
+                string html =Markdown.ToHtml(Entry.Content,pipeline);
                 richEditControl1.HtmlText = html;
             }
         }
