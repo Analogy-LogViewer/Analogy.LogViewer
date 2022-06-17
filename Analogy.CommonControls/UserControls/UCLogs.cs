@@ -1874,8 +1874,8 @@ namespace Analogy.CommonControls.UserControls
 
             Settings.AddNewSearchesEntryToLists(include, true);
             Settings.AddNewSearchesEntryToLists(exclude, false);
-            _filterCriteria.NewerThan = ceNewerThanFilter.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
-            _filterCriteria.OlderThan = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
+            _filterCriteria.StartTime = ceNewerThanFilter.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
+            _filterCriteria.EndTime = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
             _filterCriteria.TextInclude = ceIncludeText.Checked ? (txtbInclude.Text == null ? string.Empty : txtbInclude.Text.Trim()) : string.Empty;
             _filterCriteria.TextExclude = ceExcludeText.Checked
                 ? (txtbExclude.Text == null ? string.Empty : txtbExclude.Text.Trim()) + string.Join("|", _excludeMostCommon)

@@ -13,20 +13,20 @@ namespace Analogy.Common.DataTypes
     public class FilterCriteriaObject
     {
         private static FilterCriteriaObject alertFilterCriteria = new FilterCriteriaObject();
-        private readonly AnalogyLogLevel[] _allLevels = Enum.GetValues(typeof(AnalogyLogLevel)) as AnalogyLogLevel[];
         public string[] Sources;
         public string[] ExcludedSources;
         public string[] Modules;
         public string[] ExcludedModules;
 
         public string TextInclude { get; set; }
-        public DateTime NewerThan { get; set; }
-        public DateTime OlderThan { get; set; }
         public string TextExclude { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+
         private AnalogyLogLevel[] _arrLevels;
         public AnalogyLogLevel[] Levels
         {
-            get => _arrLevels ?? _allLevels;
+            get => _arrLevels;
             set => _arrLevels = value;
         }
 
@@ -194,7 +194,7 @@ namespace Analogy.Common.DataTypes
                 sqlString.Append($" {andOr} Level in (" + sTemp + ")");
             }
 
-            string dateFilter = $" AND (Date >= '{NewerThan}' and Date <= '{OlderThan}')";
+            string dateFilter = $" AND (Date >= '{StartTime}' and Date <= '{EndTime}')";
 
             sqlString.Append(dateFilter);
 
