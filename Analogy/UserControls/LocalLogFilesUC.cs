@@ -23,7 +23,6 @@ namespace Analogy
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }
         public ILogMessageCreatedHandler Handler => ucLogs1;
-        //private List<string> TreeListFileNodes { get; set; }
         public LocalLogFilesUC(string? initSelectedPath = null)
         {
             SelectedPath = initSelectedPath ?? string.Empty;

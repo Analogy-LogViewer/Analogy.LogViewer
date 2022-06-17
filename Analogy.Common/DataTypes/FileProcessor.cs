@@ -18,21 +18,15 @@ namespace Analogy.Common.DataTypes
         public DateTime lastNewestMessage;
         private IUserSettingsManager Settings { get; }
         private string FileName { get; set; }
-        public Stream DataStream { get; set; }
         private ILogMessageCreatedHandler DataWindow { get; }
         public IAnalogyLogger Logger { get; }
-        public ILogWindow LogWindow { get; }
 
         public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow, IAnalogyLogger logger)
         {
             DataWindow = dataWindow;
             Logger = logger;
             Settings = settingsManager;
-            if (dataWindow is ILogWindow logs)
-            {
-                LogWindow = logs;
-            }
-        }
+         }
 
         public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider,
             string filename, CancellationToken token, bool isReload = false)
