@@ -21,156 +21,6 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or '$(TargetFramework)' == 'net471' ">
-		<!--<Reference Include="DevExpress.BonusSkins.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.BonusSkins.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Charts.v21.2.Core">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Charts.v21.2.Core.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Data.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Data.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Data.Desktop.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Data.Desktop.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Dialogs.v21.2.Core">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Dialogs.v21.2.Core.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Images.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Images.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Mvvm.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Mvvm.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Mvvm.v21.2.ViewModel">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Mvvm.v21.2.ViewModel.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Office.v21.2.Core">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Office.v21.2.Core.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Pdf.v21.2.Core">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Pdf.v21.2.Core.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Printing.v21.2.Core">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Printing.v21.2.Core.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.RichEdit.v21.2.Core">
-			<HintPath>..\DevExpress\.net framework\DevExpress.RichEdit.v21.2.Core.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Sparkline.v21.2.Core">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Sparkline.v21.2.Core.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Utils.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Utils.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.Utils.v21.2.UI">
-			<HintPath>..\DevExpress\.net framework\DevExpress.Utils.v21.2.UI.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraBars.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraBars.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraCharts.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraCharts.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraCharts.v21.2.Extensions">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraCharts.v21.2.Extensions.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraCharts.v21.2.UI">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraCharts.v21.2.UI.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraCharts.v21.2.Web">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraCharts.v21.2.Web.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraCharts.v21.2.Wizard">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraCharts.v21.2.Wizard.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraDialogs.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraDialogs.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraEditors.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraEditors.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraGrid.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraGrid.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraLayout.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraLayout.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraNavBar.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraNavBar.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraPrinting.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraPrinting.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraRichEdit.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraRichEdit.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraTreeList.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraTreeList.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>
-		<Reference Include="DevExpress.XtraVerticalGrid.v21.2">
-			<HintPath>..\DevExpress\.net framework\DevExpress.XtraVerticalGrid.v21.2.dll</HintPath>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Reference>-->
 		<Reference Include="System.ComponentModel.DataAnnotations" />
 		<Reference Include="System.Configuration" />
 		<Reference Include="System.Data.DataSetExtensions" />
@@ -183,9 +33,9 @@
 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="2.1.0" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.1.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.1.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="2.2.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.2.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.2.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
