@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.8.8 - Warn users that net3.1 end of support will reached on December 8, 2022 #1348",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,06,22)),
+                new AnalogyChangeLog("V4.8.8 - Warn users that net5 end of support has reached #1347",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,06,22)),
                 new AnalogyChangeLog("V4.8.7 - [Version history] Fetch History From Github #1311",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,06,13)),
                 new AnalogyChangeLog("V4.8.7 - Add download statistics #1323",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,06,11)),
                 new AnalogyChangeLog("V4.8.6 - [BUG] pre defined popup menu is opened at incorrect position. #1308",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2022,06,05)),

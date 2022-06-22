@@ -60,6 +60,8 @@ namespace Analogy.Interfaces
         bool EnableFirstChanceException { get; set; }
         AnalogyCommandLayout RibbonStyle { get; set; }
         SettingsMode SettingsMode { get; set; }
+        bool WarnNET5 { get; set; }
+        bool WarnNET3 { get; set; }
         string DefaultUserLogFolder { get; set; }
         /// <summary>
         /// delay in seconds

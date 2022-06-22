@@ -90,7 +90,8 @@ namespace Analogy
             await FactoriesManager.Instance.InitializeBuiltInFactories();
 
             //CreateAnalogyBuiltinDataProviders
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            FactoryContainer analogy =
+                FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             CreateDataSourceMenuItem(analogy);
             await FactoriesManager.Instance.AddExternalDataSources();
             PopulateGlobalTools();
@@ -98,7 +99,7 @@ namespace Analogy
             RegisterForOnDemandPlots();
             //Create all other DataSources
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
-                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory)))
+                         .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory)))
             {
                 CreateDataSourceMenuItem(factory);
             }
@@ -125,9 +126,9 @@ namespace Analogy
                 change.ShowDialog(this);
             }
 
-            var current = (settings.RememberLastOpenedDataProvider && settings.LastOpenedDataProvider != default) ?
-                  settings.LastOpenedDataProvider :
-                  settings.InitialSelectedDataProvider;
+            var current = (settings.RememberLastOpenedDataProvider && settings.LastOpenedDataProvider != default)
+                ? settings.LastOpenedDataProvider
+                : settings.InitialSelectedDataProvider;
             LoadFactoryInAccordion(current);
 
             if (AnalogyLogManager.Instance.HasErrorMessages)
@@ -154,8 +155,8 @@ namespace Analogy
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             }
-
-        }
+            Utils.WarnNETVersionOutOfSupport();
+            }
 
         private void RegisterForNotifications()
         {

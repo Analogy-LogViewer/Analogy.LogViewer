@@ -1004,5 +1004,29 @@ namespace Analogy.Properties {
                 this["ShowProcessedCounter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WarnNET5 {
+            get {
+                return ((bool)(this["WarnNET5"]));
+            }
+            set {
+                this["WarnNET5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WarnNET3 {
+            get {
+                return ((bool)(this["WarnNET3"]));
+            }
+            set {
+                this["WarnNET3"] = value;
+            }
+        }
     }
 }

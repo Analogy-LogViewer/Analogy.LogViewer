@@ -281,7 +281,7 @@ namespace Analogy.Forms
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             }
-
+            Utils.WarnNETVersionOutOfSupport();
         }
 
         private void UpdateUpdateButton()

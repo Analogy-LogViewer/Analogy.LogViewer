@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
+using Analogy.Managers;
 using DevExpress.Utils;
 
 namespace Analogy
@@ -519,6 +520,61 @@ namespace Analogy
             }
         }
 
+        public static void WarnNETVersionOutOfSupport()
+        {
+            if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v5.0" &&
+                            DateTime.Now >= new DateTime(2022, 05, 8))
+            {
+                XtraMessageBoxArgs args = new XtraMessageBoxArgs();
+                args.Load += Args_Load;
+                args.Closed += Args_Closed;
+                args.Caption = ".NET 5 Is Out Of Support";
+                args.Text =
+                    ".NET 5 support has ended on May 8, 2022. Please consider moving to NET6 which is LTS version";
+                args.DoNotShowAgainCheckBoxVisible = true;
+                args.DoNotShowAgainCheckBoxText = "Do not remind me again";
+                XtraMessageBox.Show(args);
+            }
+            else if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v3.1" &&
+                     DateTime.Now >= new DateTime(2022, 12, 8))
+            {
+                XtraMessageBoxArgs args = new XtraMessageBoxArgs();
+                args.Load += Args_Load;
+                args.Closed += Args_Closed;
+                args.Caption = ".NET Core 3.1 Is Out Of Support";
+                args.Text =
+                    ".NET Core 3.1 support has ended on December 3, 2022. Please consider moving to NET6 which is LTS version";
+                args.DoNotShowAgainCheckBoxVisible = true;
+                args.DoNotShowAgainCheckBoxText = "Do not remind me again";
+                XtraMessageBox.Show(args);
+            }
+
+            void Args_Closed(object sender, XtraMessageBoxClosedArgs e)
+            {
+                if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v3.1")
+                {
+                    UserSettingsManager.UserSettings.WarnNET3 = e.Visible;
+                }
+
+                if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v5.0")
+                {
+                    UserSettingsManager.UserSettings.WarnNET5 = e.Visible;
+                }
+
+            }
+
+            void Args_Load(object sender, XtraMessageBoxLoadArgs e)
+            {
+                if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v3.1")
+                {
+                    e.Visible = UserSettingsManager.UserSettings.WarnNET3;
+                }
+                else if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v5.0")
+                {
+                    e.Visible = UserSettingsManager.UserSettings.WarnNET5;
+                }
+            }
+        }
     }
 
 }

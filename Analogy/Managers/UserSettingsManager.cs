@@ -4,8 +4,6 @@ using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
-using DevExpress.LookAndFeel;
-using DevExpress.XtraBars.Ribbon;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,11 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Interfaces;
 
 namespace Analogy
 {
@@ -50,7 +44,7 @@ namespace Analogy
                 if (_applicationSkinName != value)
                 {
                     _applicationSkinName = value;
-                    OnApplicationSkinNameChanged?.Invoke(this,EventArgs.Empty);
+                    OnApplicationSkinNameChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -186,6 +180,8 @@ namespace Analogy
             }
         }
 
+        public bool WarnNET5 { get; set; }
+        public bool WarnNET3 { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -330,6 +326,8 @@ namespace Analogy
             EnableFilePoolingDelay = Settings.Default.FilePoolingDelayEnable;
             InlineJsonViewer = Settings.Default.InlineJsonViewer;
             ShowProcessedCounter = Settings.Default.ShowProcessedCounter;
+            WarnNET3 = Settings.Default.WarnNET3;
+            WarnNET5 = Settings.Default.WarnNET5;
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -413,6 +411,8 @@ namespace Analogy
             EnableFilePoolingDelay = settings.EnableFilePoolingDelay;
             InlineJsonViewer = settings.InlineJsonViewer;
             ShowProcessedCounter = settings.ShowProcessedCounter;
+            WarnNET3 = settings.WarnNET3;
+            WarnNET5 = settings.WarnNET5;
         }
 
         private UserSettings CreateUserSettings()
@@ -495,7 +495,9 @@ namespace Analogy
                 FilePoolingDelayInterval = FilePoolingDelayInterval,
                 EnableFilePoolingDelay = EnableFilePoolingDelay,
                 InlineJsonViewer = InlineJsonViewer,
-                ShowProcessedCounter = ShowProcessedCounter
+                ShowProcessedCounter = ShowProcessedCounter,
+                WarnNET3 = WarnNET3,
+                WarnNET5 = WarnNET5
 
             };
             return userSettings;
@@ -660,6 +662,8 @@ namespace Analogy
             Settings.Default.FilePoolingDelayEnable = EnableFilePoolingDelay;
             Settings.Default.InlineJsonViewer = InlineJsonViewer;
             Settings.Default.ShowProcessedCounter = ShowProcessedCounter;
+            Settings.Default.WarnNET3 = WarnNET3;
+            Settings.Default.WarnNET5 = WarnNET5;
             Settings.Default.Save();
         }
 
