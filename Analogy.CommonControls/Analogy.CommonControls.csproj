@@ -376,14 +376,6 @@
 		<Reference Include="System.Windows.Forms" />
 
 	</ItemGroup>
-	
-	<ItemGroup>
-		<Compile Remove="UserControls\LogMessagesUC.cs" />
-		<Compile Remove="UserControls\LogMessagesUC.Designer.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<EmbeddedResource Remove="UserControls\LogMessagesUC.resx" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\icon.png">
@@ -466,11 +458,11 @@
 		<Compile Update="UserControls\PieChartUC.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="UserControls\UCLogs.cs">
+		<Compile Update="UserControls\LogMessagesUC.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="UserControls\UCLogs.Designer.cs">
-			<DependentUpon>UCLogs.cs</DependentUpon>
+		<Compile Update="UserControls\LogMessagesUC.Designer.cs">
+			<DependentUpon>LogMessagesUC.cs</DependentUpon>
 		</Compile>
 	</ItemGroup>
 
@@ -504,8 +496,8 @@
 		<EmbeddedResource Update="UserControls\MessageDetailsUC.resx">
 			<DependentUpon>MessageDetailsUC.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\UCLogs.resx">
-			<DependentUpon>UCLogs.cs</DependentUpon>
+		<EmbeddedResource Update="UserControls\LogMessagesUC.resx">
+			<DependentUpon>LogMessagesUC.cs</DependentUpon>
 		</EmbeddedResource>
 	</ItemGroup>
 

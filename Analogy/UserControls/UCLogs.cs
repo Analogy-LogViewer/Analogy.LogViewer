@@ -11,7 +11,7 @@ using Analogy.Forms;
 
 namespace Analogy.UserControls
 {
-    public partial class UCLogs : CommonControls.UserControls.UCLogs
+    public partial class UCLogs : CommonControls.UserControls.LogMessagesUC
     {
         public UCLogs() : base(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance)
         {

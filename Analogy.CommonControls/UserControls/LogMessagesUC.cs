@@ -44,7 +44,7 @@ using Markdig;
 namespace Analogy.CommonControls.UserControls
 {
 
-    public partial class UCLogs : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
+    public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
     {
         #region Events
 
@@ -157,11 +157,11 @@ namespace Analogy.CommonControls.UserControls
         private JsonTreeView JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
 
-        public UCLogs() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
+        public LogMessagesUC() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
         {
 
         }
-        public UCLogs(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
+        public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
             Logger = logger;
             Settings = userSettingsManager;

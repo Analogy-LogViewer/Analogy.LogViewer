@@ -66,6 +66,6 @@
 
         #endregion
 
-        private Analogy.CommonControls.UserControls.UCLogs ucLogs1;
+        private Analogy.CommonControls.UserControls.LogMessagesUC ucLogs1;
     }
 }

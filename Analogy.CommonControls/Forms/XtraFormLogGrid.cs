@@ -15,10 +15,10 @@ namespace Analogy.CommonControls.Forms
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private readonly List<AnalogyLogMessage> _messages;
         private readonly string _dataSource;
-        public UCLogs LogWindow => ucLogs1;
+        public LogMessagesUC LogWindow => ucLogs1;
         public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
-            ucLogs1 = new UCLogs(userSettingsManager, extensionManager,factoriesManager, logger);
+            ucLogs1 = new LogMessagesUC(userSettingsManager, extensionManager,factoriesManager, logger);
             InitializeComponent();
             Icon = userSettingsManager.GetIcon();
             _dataSource = "Analogy";
