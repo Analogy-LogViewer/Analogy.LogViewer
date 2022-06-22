@@ -161,6 +161,11 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Reference>
+		<Reference Include="DevExpress.DataVisualization.v21.2.Core">
+			<HintPath>..\DevExpress\.net core\DevExpress.DataVisualization.v21.2.Core.dll</HintPath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Reference>
 		<Reference Include="DevExpress.Images.v21.2">
 			<HintPath>..\DevExpress\.net core\DevExpress.Images.v21.2.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -311,6 +316,11 @@
 		</Reference>
 		<Reference Include="DevExpress.Dialogs.v21.2.Core">
 			<HintPath>..\DevExpress\.net framework\DevExpress.Dialogs.v21.2.Core.dll</HintPath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Reference>
+		<Reference Include="DevExpress.DataVisualization.v21.2.Core">
+			<HintPath>..\DevExpress\.net framework\DevExpress.DataVisualization.v21.2.Core.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Reference>
