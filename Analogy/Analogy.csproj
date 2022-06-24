@@ -50,7 +50,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="2.2.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.2.1" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.2.2" />
 		<PackageReference Include="Grpc.Core" Version="2.46.3" />
 		<PackageReference Include="Markdig" Version="0.30.2" />
 		<PackageReference Include="MessagePack" Version="2.3.112" />
