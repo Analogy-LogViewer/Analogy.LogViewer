@@ -3189,7 +3189,7 @@ namespace Analogy.CommonControls.UserControls
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
-            // UCLogs
+            // LogMessagesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -3200,7 +3200,7 @@ namespace Analogy.CommonControls.UserControls
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "UCLogs";
+            this.Name = "LogMessagesUC";
             this.Size = new System.Drawing.Size(1853, 759);
             this.Load += new System.EventHandler(this.UCLogs_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragDrop);
