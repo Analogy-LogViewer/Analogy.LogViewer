@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
+using Analogy.DataProviders;
 using Analogy.Forms;
 
 namespace Analogy.Managers
@@ -173,7 +174,8 @@ namespace Analogy.Managers
         }
         public void Show(Form mainForm)
         {
-            XtraFormLogGrid msg = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, "Analogy");
+            var builtin = new AnalogyOfflineDataProvider();
+            XtraFormLogGrid msg = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, "Analogy", builtin, builtin);
             msg.Show(mainForm);
         }
 
