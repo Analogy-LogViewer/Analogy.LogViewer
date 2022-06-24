@@ -128,10 +128,9 @@ namespace Analogy.CommonControls.UserControls
         private bool hasAnyUserControlExtensions;
         private DateTime diffStartTime = DateTime.MinValue;
         private bool BookmarkView;
-        private int pageNumber = 1;
         private CancellationTokenSource filterTokenSource;
         private CancellationToken filterToken;
-
+        private int pageNumber => PagingManager.CurrentPageNumber;
         private int TotalPages => PagingManager.TotalPages;
         public IAnalogyDataProvider DataProvider { get; set; }
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
@@ -1816,7 +1815,7 @@ namespace Analogy.CommonControls.UserControls
                 gridControl.DataSource = _messageData.DefaultView;
                 //NewDataExist = true;
                 //FilterHasChanged = true;
-                lblPageNumber.Text = $"Page {pageNumber} / {TotalPages}";
+                lblPageNumber.Text = TotalPages > 1 ? $"Page {pageNumber} / {TotalPages}" : $"Page {pageNumber}";
                 NewDataExist = true;
                 FilterResults();
             }
@@ -2091,7 +2090,6 @@ namespace Analogy.CommonControls.UserControls
             }
 
             PagingManager.ClearLogs();
-            pageNumber = 1;
             UpdatePage(PagingManager.FirstPage());
             AcceptChanges(true);
             recMessageDetails.Text = string.Empty;
@@ -2915,18 +2913,11 @@ namespace Analogy.CommonControls.UserControls
 
         private void sbtnPageFirst_Click(object sender, EventArgs e)
         {
-            pageNumber = 1;
             UpdatePage(PagingManager.FirstPage());
         }
 
         private void sbtnPagePrevious_Click(object sender, EventArgs e)
         {
-            if (pageNumber == 1)
-            {
-                return;
-            }
-
-            pageNumber--;
             UpdatePage(PagingManager.PrevPage().Data);
         }
 
@@ -2937,13 +2928,11 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            pageNumber++;
             UpdatePage(PagingManager.NextPage().Data);
         }
 
         private void sBtnLastPage_Click(object sender, EventArgs e)
         {
-            pageNumber = TotalPages;
             UpdatePage(PagingManager.LastPage());
         }
 

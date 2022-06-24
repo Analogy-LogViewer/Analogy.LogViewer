@@ -27,7 +27,7 @@ namespace Analogy.CommonControls.Managers
         private readonly List<AnalogyLogMessage> allMessages;
         private readonly int pageSize;
         private int currentPageStartRowIndex;
-        private int currentPageNumber;
+        public int CurrentPageNumber { get; set; }
 
         private DataTable currentTable;
         private static int _totalMissedMessages;
@@ -59,7 +59,7 @@ namespace Analogy.CommonControls.Managers
             //    CurrentColumns.Add(column.ColumnName);
             //}
             pages.Add(currentTable);
-            currentPageNumber = 1;
+            CurrentPageNumber = 1;
             allMessages = new List<AnalogyLogMessage>();
         }
 
@@ -81,7 +81,7 @@ namespace Analogy.CommonControls.Managers
             {
                 pages = new List<DataTable>();
                 currentPageStartRowIndex = 0;
-                currentPageNumber = 1;
+                CurrentPageNumber = 1;
                 var first = Utils.DataTableConstructor();
                 currentTable = first;
                 pages.Add(first);
@@ -253,12 +253,12 @@ namespace Analogy.CommonControls.Managers
 
             if (pages.Last() != currentTable)
             {
-                currentPageNumber++;
-                currentTable = pages[currentPageNumber - 1];
+                CurrentPageNumber++;
+                currentTable = pages[CurrentPageNumber - 1];
                 currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
             }
             lockSlim.ExitReadLock();
-            return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+            return new AnalogyPageInformation(currentTable, CurrentPageNumber, currentPageStartRowIndex);
 
         }
 
@@ -267,12 +267,12 @@ namespace Analogy.CommonControls.Managers
             lockSlim.EnterReadLock();
             if (pages.First() != currentTable)
             {
-                currentPageNumber--;
-                currentTable = pages[currentPageNumber - 1];
+                CurrentPageNumber--;
+                currentTable = pages[CurrentPageNumber - 1];
                 currentPageStartRowIndex = pages.IndexOf(currentTable) * pageSize;
             }
             lockSlim.ExitReadLock();
-            return new AnalogyPageInformation(currentTable, currentPageNumber, currentPageStartRowIndex);
+            return new AnalogyPageInformation(currentTable, CurrentPageNumber, currentPageStartRowIndex);
 
         }
 
@@ -280,7 +280,7 @@ namespace Analogy.CommonControls.Managers
         {
             lockSlim.EnterReadLock();
             currentTable = pages.First();
-            currentPageNumber = 1;
+            CurrentPageNumber = 1;
             lockSlim.ExitReadLock();
             return currentTable;
 
@@ -289,7 +289,7 @@ namespace Analogy.CommonControls.Managers
         {
             lockSlim.EnterReadLock();
             currentTable = pages.Last();
-            currentPageNumber = pages.Count;
+            CurrentPageNumber = pages.Count;
             lockSlim.ExitReadLock();
             return currentTable;
 
