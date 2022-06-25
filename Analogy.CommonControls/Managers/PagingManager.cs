@@ -13,7 +13,26 @@ using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.Managers
 {
-    public class PagingManager
+    public interface IPagingManager
+    {
+        event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
+        event EventHandler<AnalogyPagingChanged> OnPageChanged;
+        int TotalPages { get; }
+        void ClearLogs();
+        DataRow AppendMessage(AnalogyLogMessage message, string dataSource);
+        List<(DataRow, AnalogyLogMessage)> AppendMessages(List<AnalogyLogMessage> messages, string dataSource);
+        AnalogyPageInformation NextPage();
+        AnalogyPageInformation PrevPage();
+        DataTable FirstPage();
+        DataTable LastPage();
+        List<AnalogyLogMessage> GetAllMessages();
+        DataTable CurrentPage();
+        bool IsCurrentPageInView(DataTable currentView);
+        void IncrementTotalMissedMessages();
+        void UpdateOffsets();
+    }
+
+    public class PagingManager : IPagingManager
     {
         //public List<string> CurrentColumns { get; set; }
         private static ManualResetEvent columnAdderSync = new ManualResetEvent(false);

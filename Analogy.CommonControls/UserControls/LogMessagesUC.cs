@@ -77,8 +77,7 @@ namespace Analogy.CommonControls.UserControls
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
         private bool _simpleMode;
-        private ReaderWriterLockSlim lockExternalWindowsObject =
-            new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+        private ReaderWriterLockSlim lockExternalWindowsObject = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
 
         private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
@@ -97,9 +96,6 @@ namespace Analogy.CommonControls.UserControls
                 return items;
             }
         }
-
-        private int ExternalWindowsCount;
-
         public List<AnalogyLogMessage> Messages
         {
             get
@@ -108,6 +104,7 @@ namespace Analogy.CommonControls.UserControls
                 return filterDatatable.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList();
             }
         }
+        private int ExternalWindowsCount;
 
         private List<AnalogyLogMessage> BookmarkedMessages
         {
@@ -173,6 +170,33 @@ namespace Analogy.CommonControls.UserControls
             {
                 return;
             }
+            ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
+            {
+                if (value.Processed == value.Total)
+                {
+                    bprogressBar.Visibility = BarItemVisibility.Never;
+                    bprogressBar.Caption = "";
+                    return;
+                }
+                bprogressBar.Caption = $"{value.Processed}/{value.Total}";
+            });
+
+            DataProviderProgressReporter = new Progress<AnalogyFileReadProgress>((value) =>
+            {
+                if (!Settings.ShowProcessedCounter)
+                {
+                    return;
+                }
+                if (value.ProgressType == AnalogyFileReadProgressType.Percentage)
+                {
+                    bsiProgress.Caption = Math.Round((double)value.TotalProcessed / value.TotalProcessed, 2) * 100 + "%";
+                }
+                else
+                {
+                    bsiProgress.Caption = $"{value.TotalProcessed}/{value.TotalEntries}";
+
+                }
+            });
 
             JsonTreeView = new JsonTreeView();
             spltcMessages.Panel2.Controls.Add(JsonTreeView);
@@ -194,9 +218,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 Interlocked.Decrement(ref fileLoadingCount);
             };
-            PagingManager = new PagingManager(this, Settings);
-            lockSlim = PagingManager.lockSlim;
-            _messageData = PagingManager.CurrentPage();
+
             var excludedColumns = new List<GridColumn>()
             {
                 gridColumnDate,
@@ -235,6 +257,19 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
+            //if (DataProvider is IAnalogyProviderSidePagingProvider)
+            //{
+
+            //}
+            //else
+            //{
+            //    PagingManager = new PagingManager(this, Settings);
+            //}
+            PagingManager = new PagingManager(this, Settings);
+
+            lockSlim = PagingManager.lockSlim;
+            _messageData = PagingManager.CurrentPage();
+
             wsLogs.CaptureWorkspace("Default");
 
             LoadUISettings();
@@ -242,33 +277,7 @@ namespace Analogy.CommonControls.UserControls
             BookmarkModeUI();
             await LoadExtensions();
             SetupEventsHandlers();
-            ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
-            {
-                if (value.Processed == value.Total)
-                {
-                    bprogressBar.Visibility = BarItemVisibility.Never;
-                    bprogressBar.Caption = "";
-                    return;
-                }
-                bprogressBar.Caption = $"{value.Processed}/{value.Total}";
-            });
 
-            DataProviderProgressReporter = new Progress<AnalogyFileReadProgress>((value) =>
-            {
-                if (!Settings.ShowProcessedCounter)
-                {
-                    return;
-                }
-                if (value.ProgressType == AnalogyFileReadProgressType.Percentage)
-                {
-                    bsiProgress.Caption = Math.Round((double)value.TotalProcessed / value.TotalProcessed, 2) * 100 + "%";
-                }
-                else
-                {
-                    bsiProgress.Caption = $"{value.TotalProcessed}/{value.TotalEntries}";
-
-                }
-            });
             gridControl.DataSource = _messageData.DefaultView;
             _bookmarkedMessages = Utils.DataTableConstructor();
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
