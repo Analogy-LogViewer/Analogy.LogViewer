@@ -1394,6 +1394,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             filterTokenSource.Cancel();
+            filterTokenSource.Dispose();
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
             await RefreshData(filterToken);
