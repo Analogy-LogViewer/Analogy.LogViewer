@@ -45,6 +45,7 @@ namespace Analogy.ApplicationSettings
             this.lblPaypal.Location = new System.Drawing.Point(0, 0);
             this.lblPaypal.Name = "lblPaypal";
             this.lblPaypal.Padding = new System.Windows.Forms.Padding(5);
+            this.lblPaypal.ShowToolTips = false;
             this.lblPaypal.Size = new System.Drawing.Size(620, 68);
             this.lblPaypal.TabIndex = 13;
             this.lblPaypal.Text = resources.GetString("lblPaypal.Text");
@@ -60,6 +61,7 @@ namespace Analogy.ApplicationSettings
             this.lblBinance.Location = new System.Drawing.Point(0, 137);
             this.lblBinance.Name = "lblBinance";
             this.lblBinance.Padding = new System.Windows.Forms.Padding(5);
+            this.lblBinance.ShowToolTips = false;
             this.lblBinance.Size = new System.Drawing.Size(620, 68);
             this.lblBinance.TabIndex = 14;
             this.lblBinance.Text = "<href=https://www.binance.com/en/register?ref=V8P114PE>Trade CryptoCurrency with " +
@@ -76,6 +78,7 @@ namespace Analogy.ApplicationSettings
             this.hlKofi.Location = new System.Drawing.Point(0, 68);
             this.hlKofi.Name = "hlKofi";
             this.hlKofi.Padding = new System.Windows.Forms.Padding(5);
+            this.hlKofi.ShowToolTips = false;
             this.hlKofi.Size = new System.Drawing.Size(620, 69);
             this.hlKofi.TabIndex = 15;
             this.hlKofi.Text = "<href=https://ko-fi.com/F1F77IVQT>Buy me a Coffee</href>";
