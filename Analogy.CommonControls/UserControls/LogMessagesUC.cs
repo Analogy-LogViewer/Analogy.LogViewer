@@ -127,7 +127,7 @@ namespace Analogy.CommonControls.UserControls
         private bool BookmarkView;
         private CancellationTokenSource filterTokenSource;
         private CancellationToken filterToken;
-        private int pageNumber => PagingManager.CurrentPageNumber;
+        private int PageNumber => PagingManager.CurrentPageNumber;
         private int TotalPages => PagingManager.TotalPages;
         public IAnalogyDataProvider DataProvider { get; set; }
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
@@ -256,14 +256,6 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            //if (DataProvider is IAnalogyProviderSidePagingProvider)
-            //{
-
-            //}
-            //else
-            //{
-            //    PagingManager = new PagingManager(this, Settings);
-            //}
             PagingManager = new PagingManager(this, Settings);
 
             lockSlim = PagingManager.lockSlim;
@@ -756,7 +748,7 @@ namespace Analogy.CommonControls.UserControls
                 }
 
                 BeginInvoke(new MethodInvoker(() =>
-                    lblPageNumber.Text = $"Page {pageNumber} / {arg.AnalogyPage.PageNumber}"));
+                    lblPageNumber.Text = $"Page {PageNumber} / {arg.AnalogyPage.PageNumber}"));
 
             };
 
@@ -1825,7 +1817,7 @@ namespace Analogy.CommonControls.UserControls
                 gridControl.DataSource = _messageData.DefaultView;
                 //NewDataExist = true;
                 //FilterHasChanged = true;
-                lblPageNumber.Text = TotalPages > 1 ? $"Page {pageNumber} / {TotalPages}" : $"Page {pageNumber}";
+                lblPageNumber.Text = TotalPages > 1 ? $"Page {PageNumber} / {TotalPages}" : $"Page {PageNumber}";
                 NewDataExist = true;
                 FilterResults();
             }
@@ -2933,7 +2925,7 @@ namespace Analogy.CommonControls.UserControls
 
         private void sBtnPageNext_Click(object sender, EventArgs e)
         {
-            if (pageNumber == TotalPages)
+            if (PageNumber == TotalPages)
             {
                 return;
             }
