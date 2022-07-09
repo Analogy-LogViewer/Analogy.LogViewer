@@ -431,7 +431,7 @@ namespace Analogy.CommonControls.Plotting
                 xyDiagram1.AxisX.DateTimeScaleOptions.AutoGrid = false;
                 xyDiagram1.AxisX.DateTimeScaleOptions.GridAlignment = DateTimeGridAlignment.Millisecond;
                 xyDiagram1.AxisX.DateTimeScaleOptions.GridSpacing = 200D;
-                xyDiagram1.AxisX.Label.TextPattern = "{A:HH:mm:ff}";
+                xyDiagram1.AxisX.Label.TextPattern = "{A:HH:mm:ss}";
                 xyDiagram1.AxisX.GridLines.LineStyle.Thickness = 3;
                 xyDiagram1.AxisX.GridLines.MinorVisible = true;
                 xyDiagram1.AxisX.GridLines.Visible = true;
