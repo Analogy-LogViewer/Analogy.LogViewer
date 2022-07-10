@@ -2,11 +2,11 @@ name: Analogy .NET Core Desktop
 
 on:
   push:
-    branches: [ master]
+    branches: [ main]
     paths-ignore: 
     - README.md
   pull_request:
-    branches: [ master]
+    branches: [ main]
     paths-ignore: 
     - README.md
 jobs:
