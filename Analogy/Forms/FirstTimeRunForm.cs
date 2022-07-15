@@ -9,6 +9,7 @@ using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
+using DevExpress.LookAndFeel;
 using DevExpress.Utils;
 
 namespace Analogy.Forms
@@ -34,6 +35,14 @@ namespace Analogy.Forms
         public FirstTimeRunForm()
         {
             InitializeComponent();
+            UserLookAndFeel.Default.StyleChanged += (s, e) =>
+            {
+                UserLookAndFeel laf = (UserLookAndFeel)s;
+                lblSkinName.Text = "Skin name: " + laf.ActiveSkinName;
+                lblApplicationStyle.Text = "Application style: " + laf.Style;
+                lblSvgPalette.Text = "Active Svg Palette: " + laf.ActiveSvgPaletteName;
+
+            };
         }
 
         private async void FirstTimeRunForm_Load(object sender, EventArgs e)
@@ -42,7 +51,9 @@ namespace Analogy.Forms
             {
                 return;
             }
-
+            lblSkinName.Text = "Skin name: " + Settings.ApplicationSkinName;
+            lblApplicationStyle.Text = "Application style: " + Settings.ApplicationStyle;
+            lblSvgPalette.Text = "Active Svg Palette: " + Settings.ApplicationSvgPaletteName;
             xtraTabControl1.ShowTabHeader = DefaultBoolean.False;
             Icon = UserSettingsManager.UserSettings.GetIcon();
             await FactoriesManager.Instance.InitializeBuiltInFactories();
