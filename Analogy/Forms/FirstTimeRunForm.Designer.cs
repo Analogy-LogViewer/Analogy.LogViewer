@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRunForm));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase4 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition7 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition8 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement10 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement11 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement12 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition7 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition8 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan4 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan1 = new DevExpress.XtraEditors.TableLayout.TableSpan();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
@@ -46,6 +46,19 @@
             this.tpSettings = new DevExpress.XtraTab.XtraTabPage();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.tpTheme = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControlThemes = new DevExpress.XtraEditors.GroupControl();
+            this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
+            this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
+            this.lblSkinName = new DevExpress.XtraEditors.LabelControl();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tpDataProviders = new DevExpress.XtraTab.XtraTabPage();
             this.chkLstDataProviderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.lblDataProviders = new DevExpress.XtraEditors.LabelControl();
@@ -65,19 +78,6 @@
             this.spbiThemes = new DevExpress.XtraEditors.StepProgressBarItem();
             this.spbiDataProviders = new DevExpress.XtraEditors.StepProgressBarItem();
             this.spbiDone = new DevExpress.XtraEditors.StepProgressBarItem();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.groupControlThemes = new DevExpress.XtraEditors.GroupControl();
-            this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
-            this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
-            this.lblSkinName = new DevExpress.XtraEditors.LabelControl();
-            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.tpWelcome.SuspendLayout();
@@ -86,6 +86,9 @@
             this.tpSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             this.tpTheme.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).BeginInit();
+            this.groupControlThemes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.tpDataProviders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).BeginInit();
             this.tpFinish.SuspendLayout();
@@ -94,9 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom1)).BeginInit();
             this.pnlBottom1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stepProgressBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).BeginInit();
-            this.groupControlThemes.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -119,7 +119,7 @@
             this.tpWelcome.Controls.Add(this.memoEdit1);
             this.tpWelcome.Controls.Add(this.pictureEdit1);
             this.tpWelcome.Name = "tpWelcome";
-            this.tpWelcome.Size = new System.Drawing.Size(1315, 294);
+            this.tpWelcome.Size = new System.Drawing.Size(1315, 339);
             this.tpWelcome.Text = "Welcome";
             // 
             // memoEdit1
@@ -128,7 +128,7 @@
             this.memoEdit1.EditValue = resources.GetString("memoEdit1.EditValue");
             this.memoEdit1.Location = new System.Drawing.Point(336, 0);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(979, 294);
+            this.memoEdit1.Size = new System.Drawing.Size(979, 339);
             this.memoEdit1.TabIndex = 1;
             // 
             // pictureEdit1
@@ -142,14 +142,14 @@
             this.pictureEdit1.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit1.Properties.ShowMenu = false;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(336, 294);
+            this.pictureEdit1.Size = new System.Drawing.Size(336, 339);
             this.pictureEdit1.TabIndex = 0;
             // 
             // tpSettings
             // 
             this.tpSettings.Controls.Add(this.pictureEdit3);
             this.tpSettings.Name = "tpSettings";
-            this.tpSettings.Size = new System.Drawing.Size(1315, 294);
+            this.tpSettings.Size = new System.Drawing.Size(1315, 339);
             this.tpSettings.Text = "Settings";
             // 
             // pictureEdit3
@@ -161,7 +161,7 @@
             this.pictureEdit3.Properties.ReadOnly = true;
             this.pictureEdit3.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit3.Properties.ShowMenu = false;
-            this.pictureEdit3.Size = new System.Drawing.Size(414, 294);
+            this.pictureEdit3.Size = new System.Drawing.Size(414, 339);
             this.pictureEdit3.TabIndex = 5;
             // 
             // tpTheme
@@ -171,12 +171,131 @@
             this.tpTheme.Size = new System.Drawing.Size(1315, 339);
             this.tpTheme.Text = "Themes";
             // 
+            // groupControlThemes
+            // 
+            this.groupControlThemes.Controls.Add(this.lblApplicationStyle);
+            this.groupControlThemes.Controls.Add(this.lblSvgPalette);
+            this.groupControlThemes.Controls.Add(this.lblSkinName);
+            this.groupControlThemes.Controls.Add(this.standaloneBarDockControl1);
+            this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControlThemes.Location = new System.Drawing.Point(0, 0);
+            this.groupControlThemes.Name = "groupControlThemes";
+            this.groupControlThemes.Size = new System.Drawing.Size(1315, 339);
+            this.groupControlThemes.TabIndex = 12;
+            this.groupControlThemes.Text = "Themes and Skins";
+            // 
+            // lblApplicationStyle
+            // 
+            this.lblApplicationStyle.Location = new System.Drawing.Point(13, 110);
+            this.lblApplicationStyle.Name = "lblApplicationStyle";
+            this.lblApplicationStyle.Size = new System.Drawing.Size(99, 16);
+            this.lblApplicationStyle.TabIndex = 5;
+            this.lblApplicationStyle.Text = "Application Style:";
+            // 
+            // lblSvgPalette
+            // 
+            this.lblSvgPalette.Location = new System.Drawing.Point(13, 88);
+            this.lblSvgPalette.Name = "lblSvgPalette";
+            this.lblSvgPalette.Size = new System.Drawing.Size(107, 16);
+            this.lblSvgPalette.TabIndex = 4;
+            this.lblSvgPalette.Text = "Active Svg Palette:";
+            // 
+            // lblSkinName
+            // 
+            this.lblSkinName.Location = new System.Drawing.Point(13, 66);
+            this.lblSkinName.Name = "lblSkinName";
+            this.lblSkinName.Size = new System.Drawing.Size(66, 16);
+            this.lblSkinName.TabIndex = 3;
+            this.lblSkinName.Text = "Skin Name:";
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 28);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1311, 30);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.skinDropDownButtonItem1,
+            this.skinPaletteDropDownButtonItem1});
+            this.barManager1.MaxItemId = 2;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar1.FloatLocation = new System.Drawing.Point(96, 409);
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinDropDownButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1)});
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.bar1.Text = "Tools";
+            // 
+            // skinDropDownButtonItem1
+            // 
+            this.skinDropDownButtonItem1.Id = 0;
+            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            // 
+            // skinPaletteDropDownButtonItem1
+            // 
+            this.skinPaletteDropDownButtonItem1.Id = 1;
+            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1317, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 554);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1317, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 554);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1317, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 554);
+            // 
             // tpDataProviders
             // 
             this.tpDataProviders.Controls.Add(this.chkLstDataProviderStatus);
             this.tpDataProviders.Controls.Add(this.lblDataProviders);
             this.tpDataProviders.Name = "tpDataProviders";
-            this.tpDataProviders.Size = new System.Drawing.Size(1315, 334);
+            this.tpDataProviders.Size = new System.Drawing.Size(1315, 339);
             this.tpDataProviders.Text = "Data Providers";
             // 
             // chkLstDataProviderStatus
@@ -185,43 +304,43 @@
             this.chkLstDataProviderStatus.ItemHeight = 62;
             this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 36);
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1315, 298);
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1315, 303);
             this.chkLstDataProviderStatus.TabIndex = 16;
-            tableColumnDefinition7.Length.Value = 70D;
-            tableColumnDefinition8.Length.Value = 660D;
-            itemTemplateBase4.Columns.Add(tableColumnDefinition7);
-            itemTemplateBase4.Columns.Add(tableColumnDefinition8);
-            templatedItemElement10.FieldName = null;
-            templatedItemElement10.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement10.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement10.Text = "";
-            templatedItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement11.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            templatedItemElement11.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
-            templatedItemElement11.Appearance.Normal.Options.UseFont = true;
-            templatedItemElement11.Appearance.Normal.Options.UseForeColor = true;
-            templatedItemElement11.ColumnIndex = 1;
-            templatedItemElement11.FieldName = null;
-            templatedItemElement11.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement11.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement11.Text = "Name";
-            templatedItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement12.ColumnIndex = 1;
-            templatedItemElement12.FieldName = null;
-            templatedItemElement12.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement12.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement12.RowIndex = 1;
-            templatedItemElement12.Text = "description";
-            templatedItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            itemTemplateBase4.Elements.Add(templatedItemElement10);
-            itemTemplateBase4.Elements.Add(templatedItemElement11);
-            itemTemplateBase4.Elements.Add(templatedItemElement12);
-            itemTemplateBase4.Name = "template1";
-            itemTemplateBase4.Rows.Add(tableRowDefinition7);
-            itemTemplateBase4.Rows.Add(tableRowDefinition8);
-            tableSpan4.RowSpan = 2;
-            itemTemplateBase4.Spans.Add(tableSpan4);
-            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase4);
+            tableColumnDefinition1.Length.Value = 70D;
+            tableColumnDefinition2.Length.Value = 660D;
+            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
+            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
+            templatedItemElement1.FieldName = null;
+            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement1.Text = "";
+            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            templatedItemElement2.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
+            templatedItemElement2.Appearance.Normal.Options.UseFont = true;
+            templatedItemElement2.Appearance.Normal.Options.UseForeColor = true;
+            templatedItemElement2.ColumnIndex = 1;
+            templatedItemElement2.FieldName = null;
+            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement2.Text = "Name";
+            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement3.ColumnIndex = 1;
+            templatedItemElement3.FieldName = null;
+            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement3.RowIndex = 1;
+            templatedItemElement3.Text = "description";
+            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase1.Elements.Add(templatedItemElement1);
+            itemTemplateBase1.Elements.Add(templatedItemElement2);
+            itemTemplateBase1.Elements.Add(templatedItemElement3);
+            itemTemplateBase1.Name = "template1";
+            itemTemplateBase1.Rows.Add(tableRowDefinition1);
+            itemTemplateBase1.Rows.Add(tableRowDefinition2);
+            tableSpan1.RowSpan = 2;
+            itemTemplateBase1.Spans.Add(tableSpan1);
+            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase1);
             // 
             // lblDataProviders
             // 
@@ -247,7 +366,7 @@
             this.tpFinish.Controls.Add(this.labelControl1);
             this.tpFinish.Controls.Add(this.hyperLinkEdit1);
             this.tpFinish.Name = "tpFinish";
-            this.tpFinish.Size = new System.Drawing.Size(1315, 334);
+            this.tpFinish.Size = new System.Drawing.Size(1315, 339);
             this.tpFinish.Text = "Done";
             // 
             // labelControl3
@@ -368,7 +487,6 @@
             this.spbiSettings.ContentBlock2.Caption = "Settings";
             this.spbiSettings.Name = "spbiSettings";
             this.spbiSettings.Options.Indicator.ActiveStateImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("spbiSettings.Options.Indicator.ActiveStateImageOptions.Image")));
-            this.spbiSettings.Options.Indicator.AutoCropImage = DevExpress.Utils.DefaultBoolean.True;
             // 
             // spbiThemes
             // 
@@ -377,6 +495,7 @@
             this.spbiThemes.ContentBlock2.Caption = "Themes";
             this.spbiThemes.ContentBlock2.Description = "Set Initial Theme  and Skin";
             this.spbiThemes.Name = "spbiThemes";
+            this.spbiThemes.Options.Indicator.ActiveStateImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("spbiThemes.Options.Indicator.ActiveStateImageOptions.Image")));
             // 
             // spbiDataProviders
             // 
@@ -393,125 +512,7 @@
             this.spbiDone.ContentBlock1.InactiveStateImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("spbiDone.ContentBlock1.InactiveStateImageOptions.Image")));
             this.spbiDone.ContentBlock2.Caption = "Done";
             this.spbiDone.Name = "spbiDone";
-            // 
-            // barManager1
-            // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.skinDropDownButtonItem1,
-            this.skinPaletteDropDownButtonItem1});
-            this.barManager1.MaxItemId = 2;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1317, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 554);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1317, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 554);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1317, 0);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 554);
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar1.FloatLocation = new System.Drawing.Point(96, 409);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinDropDownButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1)});
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
-            this.bar1.Text = "Tools";
-            // 
-            // groupControlThemes
-            // 
-            this.groupControlThemes.Controls.Add(this.lblApplicationStyle);
-            this.groupControlThemes.Controls.Add(this.lblSvgPalette);
-            this.groupControlThemes.Controls.Add(this.lblSkinName);
-            this.groupControlThemes.Controls.Add(this.standaloneBarDockControl1);
-            this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControlThemes.Location = new System.Drawing.Point(0, 0);
-            this.groupControlThemes.Name = "groupControlThemes";
-            this.groupControlThemes.Size = new System.Drawing.Size(1315, 339);
-            this.groupControlThemes.TabIndex = 12;
-            this.groupControlThemes.Text = "Themes and Skins";
-            // 
-            // lblApplicationStyle
-            // 
-            this.lblApplicationStyle.Location = new System.Drawing.Point(13, 110);
-            this.lblApplicationStyle.Name = "lblApplicationStyle";
-            this.lblApplicationStyle.Size = new System.Drawing.Size(99, 16);
-            this.lblApplicationStyle.TabIndex = 5;
-            this.lblApplicationStyle.Text = "Application Style:";
-            // 
-            // lblSvgPalette
-            // 
-            this.lblSvgPalette.Location = new System.Drawing.Point(13, 88);
-            this.lblSvgPalette.Name = "lblSvgPalette";
-            this.lblSvgPalette.Size = new System.Drawing.Size(107, 16);
-            this.lblSvgPalette.TabIndex = 4;
-            this.lblSvgPalette.Text = "Active Svg Palette:";
-            // 
-            // lblSkinName
-            // 
-            this.lblSkinName.Location = new System.Drawing.Point(13, 66);
-            this.lblSkinName.Name = "lblSkinName";
-            this.lblSkinName.Size = new System.Drawing.Size(66, 16);
-            this.lblSkinName.TabIndex = 3;
-            this.lblSkinName.Text = "Skin Name:";
-            // 
-            // standaloneBarDockControl1
-            // 
-            this.standaloneBarDockControl1.AutoSize = true;
-            this.standaloneBarDockControl1.CausesValidation = false;
-            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 28);
-            this.standaloneBarDockControl1.Manager = this.barManager1;
-            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1311, 30);
-            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // skinDropDownButtonItem1
-            // 
-            this.skinDropDownButtonItem1.Id = 0;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            // 
-            // skinPaletteDropDownButtonItem1
-            // 
-            this.skinPaletteDropDownButtonItem1.Id = 1;
-            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
+            this.spbiDone.Options.Indicator.ActiveStateImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("spbiDone.Options.Indicator.ActiveStateImageOptions.Image")));
             // 
             // FirstTimeRunForm
             // 
@@ -539,6 +540,10 @@
             this.tpSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             this.tpTheme.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).EndInit();
+            this.groupControlThemes.ResumeLayout(false);
+            this.groupControlThemes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.tpDataProviders.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkLstDataProviderStatus)).EndInit();
             this.tpFinish.ResumeLayout(false);
@@ -548,10 +553,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom1)).EndInit();
             this.pnlBottom1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stepProgressBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).EndInit();
-            this.groupControlThemes.ResumeLayout(false);
-            this.groupControlThemes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
