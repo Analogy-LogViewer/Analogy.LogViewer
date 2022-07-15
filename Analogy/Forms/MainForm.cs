@@ -550,8 +550,8 @@ namespace Analogy.Forms
             };
             bbtnFirstRun.ItemClick += (_, __) =>
             {
-                //FirstTimeRunForm f = new FirstTimeRunForm();
-                //f.ShowDialog(this);
+                FirstTimeRunForm f = new FirstTimeRunForm();
+                f.ShowDialog(this);
             };
 
             bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();

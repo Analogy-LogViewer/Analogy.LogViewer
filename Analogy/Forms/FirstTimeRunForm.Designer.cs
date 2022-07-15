@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRunForm));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement5 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement6 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan2 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan1 = new DevExpress.XtraEditors.TableLayout.TableSpan();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
@@ -110,7 +110,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 91);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tpWelcome;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1121, 405);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1121, 366);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tpWelcome,
@@ -125,7 +125,7 @@
             this.tpWelcome.Controls.Add(this.pnlBottom1);
             this.tpWelcome.Controls.Add(this.pictureEdit1);
             this.tpWelcome.Name = "tpWelcome";
-            this.tpWelcome.Size = new System.Drawing.Size(1114, 371);
+            this.tpWelcome.Size = new System.Drawing.Size(1119, 336);
             this.tpWelcome.Text = "Welcome";
             // 
             // memoEdit1
@@ -134,22 +134,22 @@
             this.memoEdit1.EditValue = resources.GetString("memoEdit1.EditValue");
             this.memoEdit1.Location = new System.Drawing.Point(336, 0);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(778, 321);
+            this.memoEdit1.Size = new System.Drawing.Size(783, 286);
             this.memoEdit1.TabIndex = 1;
             // 
             // pnlBottom1
             // 
             this.pnlBottom1.Controls.Add(this.btnNext1);
             this.pnlBottom1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom1.Location = new System.Drawing.Point(336, 321);
+            this.pnlBottom1.Location = new System.Drawing.Point(336, 286);
             this.pnlBottom1.Name = "pnlBottom1";
-            this.pnlBottom1.Size = new System.Drawing.Size(778, 50);
+            this.pnlBottom1.Size = new System.Drawing.Size(783, 50);
             this.pnlBottom1.TabIndex = 3;
             // 
             // btnNext1
             // 
             this.btnNext1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext1.Location = new System.Drawing.Point(658, 10);
+            this.btnNext1.Location = new System.Drawing.Point(663, 10);
             this.btnNext1.Name = "btnNext1";
             this.btnNext1.Size = new System.Drawing.Size(115, 34);
             this.btnNext1.TabIndex = 2;
@@ -168,7 +168,7 @@
             this.pictureEdit1.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit1.Properties.ShowMenu = false;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(336, 371);
+            this.pictureEdit1.Size = new System.Drawing.Size(336, 336);
             this.pictureEdit1.TabIndex = 0;
             // 
             // tpLayout
@@ -176,7 +176,7 @@
             this.tpLayout.Controls.Add(this.pnlFill2);
             this.tpLayout.Controls.Add(this.pnlBottom2);
             this.tpLayout.Name = "tpLayout";
-            this.tpLayout.Size = new System.Drawing.Size(1114, 371);
+            this.tpLayout.Size = new System.Drawing.Size(1119, 375);
             this.tpLayout.Text = "Application Layout";
             // 
             // pnlFill2
@@ -186,7 +186,7 @@
             this.pnlFill2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFill2.Location = new System.Drawing.Point(0, 0);
             this.pnlFill2.Name = "pnlFill2";
-            this.pnlFill2.Size = new System.Drawing.Size(1114, 326);
+            this.pnlFill2.Size = new System.Drawing.Size(1119, 330);
             this.pnlFill2.TabIndex = 6;
             // 
             // memoEdit2
@@ -195,19 +195,19 @@
             this.memoEdit2.EditValue = resources.GetString("memoEdit2.EditValue");
             this.memoEdit2.Location = new System.Drawing.Point(2, 2);
             this.memoEdit2.Name = "memoEdit2";
-            this.memoEdit2.Size = new System.Drawing.Size(1110, 147);
+            this.memoEdit2.Size = new System.Drawing.Size(1115, 151);
             this.memoEdit2.TabIndex = 2;
             // 
             // pictureEdit2
             // 
             this.pictureEdit2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureEdit2.Location = new System.Drawing.Point(2, 149);
+            this.pictureEdit2.Location = new System.Drawing.Point(2, 153);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.ReadOnly = true;
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit2.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit2.Properties.ShowMenu = false;
-            this.pictureEdit2.Size = new System.Drawing.Size(1110, 175);
+            this.pictureEdit2.Size = new System.Drawing.Size(1115, 175);
             this.pictureEdit2.TabIndex = 1;
             // 
             // pnlBottom2
@@ -215,15 +215,15 @@
             this.pnlBottom2.Controls.Add(this.btnBack1);
             this.pnlBottom2.Controls.Add(this.btnNext2);
             this.pnlBottom2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom2.Location = new System.Drawing.Point(0, 326);
+            this.pnlBottom2.Location = new System.Drawing.Point(0, 330);
             this.pnlBottom2.Name = "pnlBottom2";
-            this.pnlBottom2.Size = new System.Drawing.Size(1114, 45);
+            this.pnlBottom2.Size = new System.Drawing.Size(1119, 45);
             this.pnlBottom2.TabIndex = 5;
             // 
             // btnBack1
             // 
             this.btnBack1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack1.Location = new System.Drawing.Point(871, 6);
+            this.btnBack1.Location = new System.Drawing.Point(876, 6);
             this.btnBack1.Name = "btnBack1";
             this.btnBack1.Size = new System.Drawing.Size(115, 34);
             this.btnBack1.TabIndex = 4;
@@ -234,7 +234,7 @@
             // btnNext2
             // 
             this.btnNext2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext2.Location = new System.Drawing.Point(992, 6);
+            this.btnNext2.Location = new System.Drawing.Point(997, 6);
             this.btnNext2.Name = "btnNext2";
             this.btnNext2.Size = new System.Drawing.Size(115, 34);
             this.btnNext2.TabIndex = 3;
@@ -248,7 +248,7 @@
             this.tpSettings.Controls.Add(this.panelControl2);
             this.tpSettings.Controls.Add(this.pictureEdit3);
             this.tpSettings.Name = "tpSettings";
-            this.tpSettings.Size = new System.Drawing.Size(1114, 489);
+            this.tpSettings.Size = new System.Drawing.Size(1119, 375);
             this.tpSettings.Text = "Settings";
             // 
             // memoEdit3
@@ -257,7 +257,7 @@
             this.memoEdit3.EditValue = resources.GetString("memoEdit3.EditValue");
             this.memoEdit3.Location = new System.Drawing.Point(414, 0);
             this.memoEdit3.Name = "memoEdit3";
-            this.memoEdit3.Size = new System.Drawing.Size(700, 442);
+            this.memoEdit3.Size = new System.Drawing.Size(705, 328);
             this.memoEdit3.TabIndex = 6;
             // 
             // panelControl2
@@ -265,15 +265,15 @@
             this.panelControl2.Controls.Add(this.btnNext3);
             this.panelControl2.Controls.Add(this.btnBack2);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(414, 442);
+            this.panelControl2.Location = new System.Drawing.Point(414, 328);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(700, 47);
+            this.panelControl2.Size = new System.Drawing.Size(705, 47);
             this.panelControl2.TabIndex = 9;
             // 
             // btnNext3
             // 
             this.btnNext3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext3.Location = new System.Drawing.Point(580, 7);
+            this.btnNext3.Location = new System.Drawing.Point(585, 7);
             this.btnNext3.Name = "btnNext3";
             this.btnNext3.Size = new System.Drawing.Size(115, 34);
             this.btnNext3.TabIndex = 7;
@@ -284,7 +284,7 @@
             // btnBack2
             // 
             this.btnBack2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack2.Location = new System.Drawing.Point(459, 7);
+            this.btnBack2.Location = new System.Drawing.Point(464, 7);
             this.btnBack2.Name = "btnBack2";
             this.btnBack2.Size = new System.Drawing.Size(115, 34);
             this.btnBack2.TabIndex = 8;
@@ -301,7 +301,7 @@
             this.pictureEdit3.Properties.ReadOnly = true;
             this.pictureEdit3.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
             this.pictureEdit3.Properties.ShowMenu = false;
-            this.pictureEdit3.Size = new System.Drawing.Size(414, 489);
+            this.pictureEdit3.Size = new System.Drawing.Size(414, 375);
             this.pictureEdit3.TabIndex = 5;
             // 
             // tpDataProviders
@@ -310,7 +310,7 @@
             this.tpDataProviders.Controls.Add(this.pnlBottom4);
             this.tpDataProviders.Controls.Add(this.lblDataProviders);
             this.tpDataProviders.Name = "tpDataProviders";
-            this.tpDataProviders.Size = new System.Drawing.Size(1114, 489);
+            this.tpDataProviders.Size = new System.Drawing.Size(1119, 375);
             this.tpDataProviders.Text = "Data Providers";
             // 
             // chkLstDataProviderStatus
@@ -319,58 +319,58 @@
             this.chkLstDataProviderStatus.ItemHeight = 62;
             this.chkLstDataProviderStatus.Location = new System.Drawing.Point(0, 36);
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
-            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1114, 411);
+            this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1119, 297);
             this.chkLstDataProviderStatus.TabIndex = 16;
-            tableColumnDefinition3.Length.Value = 70D;
-            tableColumnDefinition4.Length.Value = 660D;
-            itemTemplateBase2.Columns.Add(tableColumnDefinition3);
-            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
-            templatedItemElement4.FieldName = null;
-            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement4.Text = "";
-            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement5.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            templatedItemElement5.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
-            templatedItemElement5.Appearance.Normal.Options.UseFont = true;
-            templatedItemElement5.Appearance.Normal.Options.UseForeColor = true;
-            templatedItemElement5.ColumnIndex = 1;
-            templatedItemElement5.FieldName = null;
-            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement5.Text = "Name";
-            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement6.ColumnIndex = 1;
-            templatedItemElement6.FieldName = null;
-            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement6.RowIndex = 1;
-            templatedItemElement6.Text = "description";
-            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            itemTemplateBase2.Elements.Add(templatedItemElement4);
-            itemTemplateBase2.Elements.Add(templatedItemElement5);
-            itemTemplateBase2.Elements.Add(templatedItemElement6);
-            itemTemplateBase2.Name = "template1";
-            itemTemplateBase2.Rows.Add(tableRowDefinition3);
-            itemTemplateBase2.Rows.Add(tableRowDefinition4);
-            tableSpan2.RowSpan = 2;
-            itemTemplateBase2.Spans.Add(tableSpan2);
-            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase2);
+            tableColumnDefinition1.Length.Value = 70D;
+            tableColumnDefinition2.Length.Value = 660D;
+            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
+            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
+            templatedItemElement1.FieldName = null;
+            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement1.Text = "";
+            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            templatedItemElement2.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
+            templatedItemElement2.Appearance.Normal.Options.UseFont = true;
+            templatedItemElement2.Appearance.Normal.Options.UseForeColor = true;
+            templatedItemElement2.ColumnIndex = 1;
+            templatedItemElement2.FieldName = null;
+            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement2.Text = "Name";
+            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement3.ColumnIndex = 1;
+            templatedItemElement3.FieldName = null;
+            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement3.RowIndex = 1;
+            templatedItemElement3.Text = "description";
+            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase1.Elements.Add(templatedItemElement1);
+            itemTemplateBase1.Elements.Add(templatedItemElement2);
+            itemTemplateBase1.Elements.Add(templatedItemElement3);
+            itemTemplateBase1.Name = "template1";
+            itemTemplateBase1.Rows.Add(tableRowDefinition1);
+            itemTemplateBase1.Rows.Add(tableRowDefinition2);
+            tableSpan1.RowSpan = 2;
+            itemTemplateBase1.Spans.Add(tableSpan1);
+            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase1);
             // 
             // pnlBottom4
             // 
             this.pnlBottom4.Controls.Add(this.btnBack3);
             this.pnlBottom4.Controls.Add(this.btnNext4);
             this.pnlBottom4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom4.Location = new System.Drawing.Point(0, 447);
+            this.pnlBottom4.Location = new System.Drawing.Point(0, 333);
             this.pnlBottom4.Name = "pnlBottom4";
-            this.pnlBottom4.Size = new System.Drawing.Size(1114, 42);
+            this.pnlBottom4.Size = new System.Drawing.Size(1119, 42);
             this.pnlBottom4.TabIndex = 15;
             // 
             // btnBack3
             // 
             this.btnBack3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack3.Location = new System.Drawing.Point(874, 5);
+            this.btnBack3.Location = new System.Drawing.Point(879, 5);
             this.btnBack3.Name = "btnBack3";
             this.btnBack3.Size = new System.Drawing.Size(115, 34);
             this.btnBack3.TabIndex = 10;
@@ -381,7 +381,7 @@
             // btnNext4
             // 
             this.btnNext4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext4.Location = new System.Drawing.Point(995, 5);
+            this.btnNext4.Location = new System.Drawing.Point(1000, 5);
             this.btnNext4.Name = "btnNext4";
             this.btnNext4.Size = new System.Drawing.Size(115, 34);
             this.btnNext4.TabIndex = 9;
@@ -398,7 +398,7 @@
             this.lblDataProviders.Margin = new System.Windows.Forms.Padding(5);
             this.lblDataProviders.Name = "lblDataProviders";
             this.lblDataProviders.Padding = new System.Windows.Forms.Padding(3, 10, 10, 10);
-            this.lblDataProviders.Size = new System.Drawing.Size(1114, 36);
+            this.lblDataProviders.Size = new System.Drawing.Size(1119, 36);
             this.lblDataProviders.TabIndex = 13;
             this.lblDataProviders.Text = "A default setup of data providers was set.  You can change this setup by enabling" +
     "/disabling any data providers. You can change the selection later on in the sett" +
@@ -413,7 +413,7 @@
             this.tpFinish.Controls.Add(this.labelControl1);
             this.tpFinish.Controls.Add(this.hyperLinkEdit1);
             this.tpFinish.Name = "tpFinish";
-            this.tpFinish.Size = new System.Drawing.Size(1114, 489);
+            this.tpFinish.Size = new System.Drawing.Size(1119, 375);
             this.tpFinish.Text = "Done";
             // 
             // labelControl3
@@ -425,7 +425,7 @@
             this.labelControl3.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Padding = new System.Windows.Forms.Padding(3, 10, 10, 10);
-            this.labelControl3.Size = new System.Drawing.Size(1114, 36);
+            this.labelControl3.Size = new System.Drawing.Size(1119, 36);
             this.labelControl3.TabIndex = 14;
             this.labelControl3.Text = "You can visit the Github repositories for more information:";
             // 
@@ -509,7 +509,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1121, 496);
+            this.ClientSize = new System.Drawing.Size(1121, 457);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.stepProgressBar1);
             this.MaximizeBox = false;

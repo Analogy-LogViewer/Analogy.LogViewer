@@ -75,6 +75,7 @@
             this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
             this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnItemGithubHistory = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
@@ -144,7 +145,6 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbtnItemGithubHistory = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -379,12 +379,18 @@
             // 
             // bbtnFirstRun
             // 
-            this.bbtnFirstRun.Caption = "Show first run window";
+            this.bbtnFirstRun.Caption = "Show First Run Window";
             this.bbtnFirstRun.Id = 99;
             this.bbtnFirstRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.Image")));
             this.bbtnFirstRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.LargeImage")));
             this.bbtnFirstRun.Name = "bbtnFirstRun";
-            this.bbtnFirstRun.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // bbtnItemGithubHistory
+            // 
+            this.bbtnItemGithubHistory.Caption = "Version History (Github)";
+            this.bbtnItemGithubHistory.Id = 119;
+            this.bbtnItemGithubHistory.ImageOptions.Image = global::Analogy.Properties.Resources.github16x16;
+            this.bbtnItemGithubHistory.Name = "bbtnItemGithubHistory";
             // 
             // bbtnItemChangeLog
             // 
@@ -1005,13 +1011,6 @@
             // 
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
-            // 
-            // bbtnItemGithubHistory
-            // 
-            this.bbtnItemGithubHistory.Caption = "Version History (Github)";
-            this.bbtnItemGithubHistory.Id = 119;
-            this.bbtnItemGithubHistory.ImageOptions.Image = global::Analogy.Properties.Resources.github16x16;
-            this.bbtnItemGithubHistory.Name = "bbtnItemGithubHistory";
             // 
             // MainForm
             // 
