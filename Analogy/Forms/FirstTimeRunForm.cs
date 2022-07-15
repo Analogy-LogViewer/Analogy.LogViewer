@@ -2,33 +2,31 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils;
 
 namespace Analogy.Forms
 {
-    public partial class FirstTimeRunForm : DevExpress.XtraEditors.XtraForm
+    public partial class FirstTimeRunForm : XtraForm
     {
-        private readonly IAnalogyUserSettings _settings = UserSettingsManager.UserSettings;
-        private int _selectedStep = 0;
-
-        private IAnalogyUserSettings Settings => _settings;
+        private int _selectedStep;
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
 
         private int SelectedStep
         {
             get => _selectedStep;
             set
             {
-                _selectedStep = value;
-                stepProgressBar1.SelectedItemIndex = value;
-                xtraTabControl1.SelectedTabPageIndex = value;
+                if (value >= 0 && value < xtraTabControl1.TabPages.Count)
+                {
+                    _selectedStep = value;
+                    stepProgressBar1.SelectedItemIndex = value;
+                    xtraTabControl1.SelectedTabPageIndex = value;
+                }
             }
         }
 
@@ -51,6 +49,8 @@ namespace Analogy.Forms
             {
                 return;
             }
+
+            SelectedStep = 0;
             lblSkinName.Text = "Skin name: " + Settings.ApplicationSkinName;
             lblApplicationStyle.Text = "Application style: " + Settings.ApplicationStyle;
             lblSvgPalette.Text = "Active Svg Palette: " + Settings.ApplicationSvgPaletteName;
@@ -114,5 +114,14 @@ namespace Analogy.Forms
             }
         }
 
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            SelectedStep++;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            SelectedStep--;
+        }
     }
 }

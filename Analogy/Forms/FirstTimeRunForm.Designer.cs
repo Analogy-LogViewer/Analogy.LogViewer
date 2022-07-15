@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRunForm));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan1 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase4 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition7 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition8 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement10 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement11 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement12 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition7 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition8 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan4 = new DevExpress.XtraEditors.TableLayout.TableSpan();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
@@ -71,8 +71,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.groupControlThemes = new DevExpress.XtraEditors.GroupControl();
             this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
             this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
@@ -104,10 +102,10 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 160);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 140);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tpWelcome;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1317, 324);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1317, 369);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tpWelcome,
@@ -170,7 +168,7 @@
             // 
             this.tpTheme.Controls.Add(this.groupControlThemes);
             this.tpTheme.Name = "tpTheme";
-            this.tpTheme.Size = new System.Drawing.Size(1315, 294);
+            this.tpTheme.Size = new System.Drawing.Size(1315, 339);
             this.tpTheme.Text = "Themes";
             // 
             // tpDataProviders
@@ -189,41 +187,41 @@
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
             this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1315, 298);
             this.chkLstDataProviderStatus.TabIndex = 16;
-            tableColumnDefinition1.Length.Value = 70D;
-            tableColumnDefinition2.Length.Value = 660D;
-            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
-            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
-            templatedItemElement1.FieldName = null;
-            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement1.Text = "";
-            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            templatedItemElement2.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
-            templatedItemElement2.Appearance.Normal.Options.UseFont = true;
-            templatedItemElement2.Appearance.Normal.Options.UseForeColor = true;
-            templatedItemElement2.ColumnIndex = 1;
-            templatedItemElement2.FieldName = null;
-            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement2.Text = "Name";
-            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement3.ColumnIndex = 1;
-            templatedItemElement3.FieldName = null;
-            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement3.RowIndex = 1;
-            templatedItemElement3.Text = "description";
-            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            itemTemplateBase1.Elements.Add(templatedItemElement1);
-            itemTemplateBase1.Elements.Add(templatedItemElement2);
-            itemTemplateBase1.Elements.Add(templatedItemElement3);
-            itemTemplateBase1.Name = "template1";
-            itemTemplateBase1.Rows.Add(tableRowDefinition1);
-            itemTemplateBase1.Rows.Add(tableRowDefinition2);
-            tableSpan1.RowSpan = 2;
-            itemTemplateBase1.Spans.Add(tableSpan1);
-            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase1);
+            tableColumnDefinition7.Length.Value = 70D;
+            tableColumnDefinition8.Length.Value = 660D;
+            itemTemplateBase4.Columns.Add(tableColumnDefinition7);
+            itemTemplateBase4.Columns.Add(tableColumnDefinition8);
+            templatedItemElement10.FieldName = null;
+            templatedItemElement10.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement10.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement10.Text = "";
+            templatedItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement11.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            templatedItemElement11.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
+            templatedItemElement11.Appearance.Normal.Options.UseFont = true;
+            templatedItemElement11.Appearance.Normal.Options.UseForeColor = true;
+            templatedItemElement11.ColumnIndex = 1;
+            templatedItemElement11.FieldName = null;
+            templatedItemElement11.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement11.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement11.Text = "Name";
+            templatedItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement12.ColumnIndex = 1;
+            templatedItemElement12.FieldName = null;
+            templatedItemElement12.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement12.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement12.RowIndex = 1;
+            templatedItemElement12.Text = "description";
+            templatedItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase4.Elements.Add(templatedItemElement10);
+            itemTemplateBase4.Elements.Add(templatedItemElement11);
+            itemTemplateBase4.Elements.Add(templatedItemElement12);
+            itemTemplateBase4.Name = "template1";
+            itemTemplateBase4.Rows.Add(tableRowDefinition7);
+            itemTemplateBase4.Rows.Add(tableRowDefinition8);
+            tableSpan4.RowSpan = 2;
+            itemTemplateBase4.Spans.Add(tableSpan4);
+            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase4);
             // 
             // lblDataProviders
             // 
@@ -314,9 +312,9 @@
             this.pnlBottom1.Controls.Add(this.btnNext);
             this.pnlBottom1.Controls.Add(this.btnBack);
             this.pnlBottom1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom1.Location = new System.Drawing.Point(0, 484);
+            this.pnlBottom1.Location = new System.Drawing.Point(0, 509);
             this.pnlBottom1.Name = "pnlBottom1";
-            this.pnlBottom1.Size = new System.Drawing.Size(1317, 50);
+            this.pnlBottom1.Size = new System.Drawing.Size(1317, 45);
             this.pnlBottom1.TabIndex = 3;
             // 
             // btnNext
@@ -328,6 +326,7 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Tag = "0";
             this.btnNext.Text = "Next";
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnBack
             // 
@@ -337,6 +336,7 @@
             this.btnBack.TabIndex = 8;
             this.btnBack.Tag = "2";
             this.btnBack.Text = "Back";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // stepProgressBar1
             // 
@@ -347,7 +347,7 @@
             this.stepProgressBar1.Items.Add(this.spbiThemes);
             this.stepProgressBar1.Items.Add(this.spbiDataProviders);
             this.stepProgressBar1.Items.Add(this.spbiDone);
-            this.stepProgressBar1.Location = new System.Drawing.Point(0, 20);
+            this.stepProgressBar1.Location = new System.Drawing.Point(0, 0);
             this.stepProgressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.stepProgressBar1.Name = "stepProgressBar1";
             this.stepProgressBar1.Size = new System.Drawing.Size(1317, 140);
@@ -397,9 +397,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
-            this.bar2,
-            this.bar3});
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -409,9 +407,7 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.skinDropDownButtonItem1,
             this.skinPaletteDropDownButtonItem1});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 2;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // barDockControlTop
             // 
@@ -419,31 +415,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1317, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1317, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 534);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 554);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1317, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1317, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 514);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 554);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1317, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1317, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 514);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 554);
             // 
             // bar1
             // 
@@ -459,27 +455,6 @@
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Tools";
             // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // groupControlThemes
             // 
             this.groupControlThemes.Controls.Add(this.lblApplicationStyle);
@@ -489,7 +464,7 @@
             this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlThemes.Location = new System.Drawing.Point(0, 0);
             this.groupControlThemes.Name = "groupControlThemes";
-            this.groupControlThemes.Size = new System.Drawing.Size(1315, 294);
+            this.groupControlThemes.Size = new System.Drawing.Size(1315, 339);
             this.groupControlThemes.TabIndex = 12;
             this.groupControlThemes.Text = "Themes and Skins";
             // 
@@ -612,8 +587,6 @@
         private DevExpress.XtraEditors.StepProgressBarItem spbiDone;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
