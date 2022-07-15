@@ -30,21 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRunForm));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan1 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement5 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement6 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan2 = new DevExpress.XtraEditors.TableLayout.TableSpan();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tpWelcome = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.tpSettings = new DevExpress.XtraTab.XtraTabPage();
-            this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.tpTheme = new DevExpress.XtraTab.XtraTabPage();
             this.groupControlThemes = new DevExpress.XtraEditors.GroupControl();
             this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
@@ -74,7 +72,6 @@
             this.btnBack = new DevExpress.XtraEditors.SimpleButton();
             this.stepProgressBar1 = new DevExpress.XtraEditors.StepProgressBar();
             this.spbiWelcome = new DevExpress.XtraEditors.StepProgressBarItem();
-            this.spbiSettings = new DevExpress.XtraEditors.StepProgressBarItem();
             this.spbiThemes = new DevExpress.XtraEditors.StepProgressBarItem();
             this.spbiDataProviders = new DevExpress.XtraEditors.StepProgressBarItem();
             this.spbiDone = new DevExpress.XtraEditors.StepProgressBarItem();
@@ -83,8 +80,6 @@
             this.tpWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
-            this.tpSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             this.tpTheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).BeginInit();
             this.groupControlThemes.SuspendLayout();
@@ -109,7 +104,6 @@
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tpWelcome,
-            this.tpSettings,
             this.tpTheme,
             this.tpDataProviders,
             this.tpFinish});
@@ -144,25 +138,6 @@
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit1.Size = new System.Drawing.Size(336, 339);
             this.pictureEdit1.TabIndex = 0;
-            // 
-            // tpSettings
-            // 
-            this.tpSettings.Controls.Add(this.pictureEdit3);
-            this.tpSettings.Name = "tpSettings";
-            this.tpSettings.Size = new System.Drawing.Size(1315, 339);
-            this.tpSettings.Text = "Settings";
-            // 
-            // pictureEdit3
-            // 
-            this.pictureEdit3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureEdit3.EditValue = global::Analogy.Properties.Resources.SettingsMenu;
-            this.pictureEdit3.Location = new System.Drawing.Point(0, 0);
-            this.pictureEdit3.Name = "pictureEdit3";
-            this.pictureEdit3.Properties.ReadOnly = true;
-            this.pictureEdit3.Properties.ShowEditMenuItem = DevExpress.Utils.DefaultBoolean.False;
-            this.pictureEdit3.Properties.ShowMenu = false;
-            this.pictureEdit3.Size = new System.Drawing.Size(414, 339);
-            this.pictureEdit3.TabIndex = 5;
             // 
             // tpTheme
             // 
@@ -306,41 +281,41 @@
             this.chkLstDataProviderStatus.Name = "chkLstDataProviderStatus";
             this.chkLstDataProviderStatus.Size = new System.Drawing.Size(1315, 303);
             this.chkLstDataProviderStatus.TabIndex = 16;
-            tableColumnDefinition1.Length.Value = 70D;
-            tableColumnDefinition2.Length.Value = 660D;
-            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
-            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
-            templatedItemElement1.FieldName = null;
-            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement1.Text = "";
-            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            templatedItemElement2.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
-            templatedItemElement2.Appearance.Normal.Options.UseFont = true;
-            templatedItemElement2.Appearance.Normal.Options.UseForeColor = true;
-            templatedItemElement2.ColumnIndex = 1;
-            templatedItemElement2.FieldName = null;
-            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement2.Text = "Name";
-            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement3.ColumnIndex = 1;
-            templatedItemElement3.FieldName = null;
-            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement3.RowIndex = 1;
-            templatedItemElement3.Text = "description";
-            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            itemTemplateBase1.Elements.Add(templatedItemElement1);
-            itemTemplateBase1.Elements.Add(templatedItemElement2);
-            itemTemplateBase1.Elements.Add(templatedItemElement3);
-            itemTemplateBase1.Name = "template1";
-            itemTemplateBase1.Rows.Add(tableRowDefinition1);
-            itemTemplateBase1.Rows.Add(tableRowDefinition2);
-            tableSpan1.RowSpan = 2;
-            itemTemplateBase1.Spans.Add(tableSpan1);
-            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase1);
+            tableColumnDefinition3.Length.Value = 70D;
+            tableColumnDefinition4.Length.Value = 660D;
+            itemTemplateBase2.Columns.Add(tableColumnDefinition3);
+            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
+            templatedItemElement4.FieldName = null;
+            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement4.Text = "";
+            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.Appearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            templatedItemElement5.Appearance.Normal.ForeColor = System.Drawing.Color.Blue;
+            templatedItemElement5.Appearance.Normal.Options.UseFont = true;
+            templatedItemElement5.Appearance.Normal.Options.UseForeColor = true;
+            templatedItemElement5.ColumnIndex = 1;
+            templatedItemElement5.FieldName = null;
+            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement5.Text = "Name";
+            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement6.ColumnIndex = 1;
+            templatedItemElement6.FieldName = null;
+            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement6.RowIndex = 1;
+            templatedItemElement6.Text = "description";
+            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase2.Elements.Add(templatedItemElement4);
+            itemTemplateBase2.Elements.Add(templatedItemElement5);
+            itemTemplateBase2.Elements.Add(templatedItemElement6);
+            itemTemplateBase2.Name = "template1";
+            itemTemplateBase2.Rows.Add(tableRowDefinition3);
+            itemTemplateBase2.Rows.Add(tableRowDefinition4);
+            tableSpan2.RowSpan = 2;
+            itemTemplateBase2.Spans.Add(tableSpan2);
+            this.chkLstDataProviderStatus.Templates.Add(itemTemplateBase2);
             // 
             // lblDataProviders
             // 
@@ -462,7 +437,6 @@
             this.stepProgressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.stepProgressBar1.IndentBetweenItems = 31;
             this.stepProgressBar1.Items.Add(this.spbiWelcome);
-            this.stepProgressBar1.Items.Add(this.spbiSettings);
             this.stepProgressBar1.Items.Add(this.spbiThemes);
             this.stepProgressBar1.Items.Add(this.spbiDataProviders);
             this.stepProgressBar1.Items.Add(this.spbiDone);
@@ -479,14 +453,6 @@
             this.spbiWelcome.ContentBlock2.Caption = "Welcome";
             this.spbiWelcome.Name = "spbiWelcome";
             this.spbiWelcome.Options.Indicator.ActiveStateImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("spbiWelcome.Options.Indicator.ActiveStateImageOptions.Image")));
-            // 
-            // spbiSettings
-            // 
-            this.spbiSettings.ContentBlock1.ActiveStateImageOptions.Image = global::Analogy.Properties.Resources.Technology_32x32;
-            this.spbiSettings.ContentBlock1.InactiveStateImageOptions.Image = global::Analogy.Properties.Resources.Technology_32x32;
-            this.spbiSettings.ContentBlock2.Caption = "Settings";
-            this.spbiSettings.Name = "spbiSettings";
-            this.spbiSettings.Options.Indicator.ActiveStateImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("spbiSettings.Options.Indicator.ActiveStateImageOptions.Image")));
             // 
             // spbiThemes
             // 
@@ -537,8 +503,6 @@
             this.tpWelcome.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
-            this.tpSettings.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             this.tpTheme.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).EndInit();
             this.groupControlThemes.ResumeLayout(false);
@@ -566,9 +530,7 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.SimpleButton btnNext;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
-        private DevExpress.XtraTab.XtraTabPage tpSettings;
         private DevExpress.XtraEditors.SimpleButton btnBack;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit3;
         private DevExpress.XtraTab.XtraTabPage tpFinish;
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -581,7 +543,6 @@
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstDataProviderStatus;
         private DevExpress.XtraEditors.StepProgressBar stepProgressBar1;
         private DevExpress.XtraEditors.StepProgressBarItem spbiWelcome;
-        private DevExpress.XtraEditors.StepProgressBarItem spbiSettings;
         private DevExpress.XtraEditors.StepProgressBarItem spbiDataProviders;
         private DevExpress.XtraEditors.StepProgressBarItem spbiThemes;
         private DevExpress.XtraTab.XtraTabPage tpTheme;
