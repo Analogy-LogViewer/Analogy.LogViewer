@@ -431,7 +431,9 @@ namespace Analogy.Properties {
             "tingFileAssociations\":[],\"Status\":1},{\"FactoryName\":\"Git History\",\"FactoryId\":\"b" +
             "842cc0f-ad83-48fb-8394-3189f9a75024\",\"UserSettingFileAssociations\":[],\"Status\":2" +
             "},{\"FactoryName\":\"GitHub\",\"FactoryId\":\"8064229a-2605-42fa-9e72-75444e4ab13f\",\"Us" +
-            "erSettingFileAssociations\":[],\"Status\":2}]")]
+            "erSettingFileAssociations\":[],\"Status\":2},{\"FactoryName\":\"PowerToys\",\"FactoryId\"" +
+            ":\"9ba595ac-e1a1-4a97-819a-4f42a9518d78\",\"UserSettingFileAssociations\":[],\"Status" +
+            "\":2}]")]
         public string FactoriesSettings {
             get {
                 return ((string)(this["FactoriesSettings"]));

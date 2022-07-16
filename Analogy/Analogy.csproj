@@ -5,6 +5,7 @@
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetFrameworks>net48;net472;net471;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+		<Version>4.8.7</Version>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -25,7 +26,6 @@
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
 		<PackageTags />
 		<RepositoryType>git</RepositoryType>
-		<Version>4.8.7</Version>
 		<Copyright>Lior Banai © 2019-2022</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<PackageReleaseNotes></PackageReleaseNotes>
