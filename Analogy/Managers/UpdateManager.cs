@@ -205,6 +205,11 @@ namespace Analogy.Managers
                 asset = LastVersionChecked.Assets
                     .FirstOrDefault(a => a.Name.Contains("net6.0") || a.Name.Contains("net6.0-windows"));
             }
+            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("7.0"))
+            {
+                asset = LastVersionChecked.Assets
+                    .FirstOrDefault(a => a.Name.Contains("net7.0") || a.Name.Contains("net7.0-windows"));
+            }
             return asset;
         }
         public async Task<(string TagName, GithubObjects.GithubAsset UpdaterAsset)?> GetLatestUpdater()

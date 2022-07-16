@@ -35,6 +35,8 @@ namespace Analogy.UserControls
             var net31 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("3.1", StringComparison.InvariantCultureIgnoreCase)));
             var net5 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net5.0", StringComparison.InvariantCultureIgnoreCase)));
             var net6 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase)));
+            var net7 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase)));
+
 
             var net471Downloads = net471.Sum(r => r.Sum(a => a.Downloads));
             var net472Downloads = net472.Sum(r => r.Sum(a => a.Downloads));
@@ -42,14 +44,17 @@ namespace Analogy.UserControls
             var net31Downloads = net31.Sum(r => r.Sum(a => a.Downloads));
             var net5Downloads = net5.Sum(r => r.Sum(a => a.Downloads));
             var net6Downloads = net6.Sum(r => r.Sum(a => a.Downloads));
-            var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads;
-            lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. Net 3.1/5/6: {net31Downloads + net5Downloads + net6Downloads}";
-            var net471percentage = (double)net471Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net472percentage = (double)net472Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net48percentage = (double)net48Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net31percentage = (double)net31Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net5percentage = (double)net5Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
-            var net6percentage = (double)net6Downloads / (net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads) * 100.0;
+            var net7Downloads = net6.Sum(r => r.Sum(a => a.Downloads));
+
+            var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads;
+            lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. Net 3.1/5/6/7: {net31Downloads + net5Downloads + net6Downloads + net7Downloads}";
+            var net471percentage = (double)net471Downloads / (total) * 100.0;
+            var net472percentage = (double)net472Downloads / (total) * 100.0;
+            var net48percentage = (double)net48Downloads / (total) * 100.0;
+            var net31percentage = (double)net31Downloads / (total) * 100.0;
+            var net5percentage = (double)net5Downloads / (total) * 100.0;
+            var net6percentage = (double)net6Downloads / (total) * 100.0;
+            var net7percentage = (double)net7Downloads / (total) * 100.0;
 
             List<PieChartSingleDataPoint> data = new List<PieChartSingleDataPoint>()
             {
@@ -59,6 +64,7 @@ namespace Analogy.UserControls
                 new PieChartSingleDataPoint("NETCORE 3.1", net31Downloads),
                 new PieChartSingleDataPoint("NET 5", net5Downloads),
                 new PieChartSingleDataPoint("NET 6", net6Downloads),
+                new PieChartSingleDataPoint("NET 7", net7Downloads),
             };
 
             var pieChart = new ChartControl();
