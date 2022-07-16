@@ -95,6 +95,7 @@ namespace Analogy
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
             this.FactoriesImagesLarge = new DevExpress.Utils.ImageCollection(this.components);
+            this.bbiDownloadStatistics = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -338,9 +339,10 @@ namespace Analogy
             this.bbtnSponsorOpenCollection,
             this.bbiBinance,
             this.bbiPayPal,
-            this.bbiKofi});
+            this.bbiKofi,
+            this.bbiDownloadStatistics});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 30;
+            this.barManager1.MaxItemId = 31;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -391,6 +393,7 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDataProvidersUpdates),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiUserSettingsStatistics),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDownloadStatistics),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bsiHelp.Name = "bsiHelp";
             // 
@@ -664,6 +667,15 @@ namespace Analogy
             this.FactoriesImagesLarge.ImageSize = new System.Drawing.Size(32, 32);
             this.FactoriesImagesLarge.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FactoriesImagesLarge.ImageStream")));
             // 
+            // bbiDownloadStatistics
+            // 
+            this.bbiDownloadStatistics.Caption = "Download Statistics";
+            this.bbiDownloadStatistics.Id = 30;
+            this.bbiDownloadStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.Image")));
+            this.bbiDownloadStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.LargeImage")));
+            this.bbiDownloadStatistics.Name = "bbiDownloadStatistics";
+            this.bbiDownloadStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownloadStatistics_ItemClick);
+            // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
@@ -758,5 +770,6 @@ namespace Analogy
         private DevExpress.Utils.ImageCollection FactoriesImagesSmall;
         private DevExpress.Utils.ImageCollection FactoriesImagesLarge;
         private DevExpress.XtraBars.BarButtonItem bbiKofi;
+        private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
     }
 }

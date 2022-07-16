@@ -145,6 +145,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            this.bbiDownloadStatistics = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -250,10 +251,11 @@
             this.bbiDonation,
             this.bbiPayPal,
             this.bbiKofi,
-            this.bbtnItemGithubHistory});
+            this.bbtnItemGithubHistory,
+            this.bbiDownloadStatistics});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.ribbonControlMain.MaxItemId = 120;
+            this.ribbonControlMain.MaxItemId = 121;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.OptionsMenuMinWidth = 515;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
@@ -360,6 +362,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDataProvidersUpdates),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiUserSettingsStatistics),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDownloadStatistics),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bsmInfo.Name = "bsmInfo";
             toolTipTitleItem2.Text = "Info";
@@ -1012,6 +1015,15 @@
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
             // 
+            // bbiDownloadStatistics
+            // 
+            this.bbiDownloadStatistics.Caption = "Download Statistics";
+            this.bbiDownloadStatistics.Id = 120;
+            this.bbiDownloadStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.Image")));
+            this.bbiDownloadStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.LargeImage")));
+            this.bbiDownloadStatistics.Name = "bbiDownloadStatistics";
+            this.bbiDownloadStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownloadStatistics_ItemClick);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -1129,5 +1141,6 @@
         private DevExpress.XtraBars.BarButtonItem bsiFilePlotting;
         private DevExpress.XtraBars.BarButtonItem bbiKofi;
         private DevExpress.XtraBars.BarButtonItem bbtnItemGithubHistory;
+        private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
     }
 }

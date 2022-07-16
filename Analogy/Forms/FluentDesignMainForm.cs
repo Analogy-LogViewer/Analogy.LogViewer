@@ -1519,5 +1519,11 @@ namespace Analogy
                 BookmarkPersistManager.Instance.SaveFile();
             }
         }
+
+        private void bbiDownloadStatistics_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AnalogyAboutBox ab = new AnalogyAboutBox(2);
+            ab.ShowDialog(this);
+        }
     }
 }

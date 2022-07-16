@@ -15,6 +15,7 @@ namespace Analogy.Forms
 {
     partial class AnalogyAboutBox : XtraForm
     {
+        private int SelectedTab { get; set; }
         public AnalogyAboutBox()
         {
             InitializeComponent();
@@ -27,6 +28,10 @@ namespace Analogy.Forms
                                 $"{Environment.NewLine}Created by Lior Banai (2018){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
         }
 
+        public AnalogyAboutBox(int selectedTab):this()
+        {
+            SelectedTab = selectedTab;
+        }
         #region Assembly Attribute Accessors
 
         public string AssemblyTitle
@@ -131,6 +136,15 @@ namespace Analogy.Forms
             DownloadStatisticsUC uc = new DownloadStatisticsUC(releases);
            panelChart.Controls.Add(uc);
            uc.Dock = DockStyle.Fill;
+        }
+
+        private void AnalogyAboutBox_Load(object sender, EventArgs e)
+        {
+            if (SelectedTab > 0)
+            {
+                xtraTabControl1.SelectedTabPageIndex = SelectedTab;
+                sbtnFetchReleases_Click(sender,e);
+            }
         }
     }
 }
