@@ -44,7 +44,7 @@ namespace Analogy.UserControls
             var net31Downloads = net31.Sum(r => r.Sum(a => a.Downloads));
             var net5Downloads = net5.Sum(r => r.Sum(a => a.Downloads));
             var net6Downloads = net6.Sum(r => r.Sum(a => a.Downloads));
-            var net7Downloads = net6.Sum(r => r.Sum(a => a.Downloads));
+            var net7Downloads = net7.Sum(r => r.Sum(a => a.Downloads));
 
             var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads;
             lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. Net 3.1/5/6/7: {net31Downloads + net5Downloads + net6Downloads + net7Downloads}";
