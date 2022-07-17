@@ -29,16 +29,8 @@ namespace Analogy
 {
     public static class Utils
     {
-        [StructLayout(LayoutKind.Sequential)]
-        private struct LASTINPUTINFO
-        {
-            public static readonly int SizeOf = Marshal.SizeOf(typeof(LASTINPUTINFO));
+        private static IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
 
-            [MarshalAs(UnmanagedType.U4)]
-            public UInt32 cbSize;
-            [MarshalAs(UnmanagedType.U4)]
-            public UInt32 dwTime;
-        }
         [DllImport("user32.dll")]
         static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
         /// <summary>
@@ -163,7 +155,7 @@ namespace Analogy
             }
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
-            dtb.DefaultView.Sort = UserSettingsManager.UserSettings.DefaultDescendOrder ?
+            dtb.DefaultView.Sort = Settings.DefaultDescendOrder ?
                 "Date DESC" : "Date ASC";
 
             return dtb;
@@ -306,7 +298,7 @@ namespace Analogy
         public static void SetLogLevel(CheckedListBoxControl chkLstLogLevel)
         {
             chkLstLogLevel.Items.Clear();
-            switch (UserSettingsManager.UserSettings.LogLevelSelection)
+            switch (Settings.LogLevelSelection)
             {
                 case LogLevelSelectionType.Single:
                     chkLstLogLevel.CheckMode = CheckMode.Single;
@@ -333,7 +325,7 @@ namespace Analogy
         {
             chkLstLogLevel.Items.Clear();
             chkLstLogLevel.CheckStyle = CheckStyles.Standard;
-            chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, UserSettingsManager.UserSettings.FilteringExclusion.IsLogLevelExcluded(l))).ToArray());
+            chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, Settings.FilteringExclusion.IsLogLevelExcluded(l))).ToArray());
 
         }
 
@@ -362,7 +354,7 @@ namespace Analogy
 
         public static string GetOpenFilter(string openFilter)
         {
-            if (!UserSettingsManager.UserSettings.EnableCompressedArchives)
+            if (!Settings.EnableCompressedArchives)
             {
                 return openFilter;
             }
@@ -445,10 +437,10 @@ namespace Analogy
 
         public static DateTime GetOffsetTime(DateTime time)
         {
-            return UserSettingsManager.UserSettings.TimeOffsetType switch
+            return Settings.TimeOffsetType switch
             {
                 TimeOffsetType.None => time,
-                TimeOffsetType.Predefined => time.Add(UserSettingsManager.UserSettings.TimeOffset),
+                TimeOffsetType.Predefined => time.Add(Settings.TimeOffset),
                 TimeOffsetType.UtcToLocalTime => time.ToLocalTime(),
                 TimeOffsetType.LocalTimeToUtc => time.ToUniversalTime(),
                 _ => time
@@ -553,12 +545,12 @@ namespace Analogy
             {
                 if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v3.1")
                 {
-                    UserSettingsManager.UserSettings.WarnNET3 = e.Visible;
+                    Settings.WarnNET3 = e.Visible;
                 }
 
                 if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v5.0")
                 {
-                    UserSettingsManager.UserSettings.WarnNET5 = e.Visible;
+                    Settings.WarnNET5 = e.Visible;
                 }
 
             }
@@ -567,11 +559,11 @@ namespace Analogy
             {
                 if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v3.1")
                 {
-                    e.Visible = UserSettingsManager.UserSettings.WarnNET3;
+                    e.Visible = Settings.WarnNET3;
                 }
                 else if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v5.0")
                 {
-                    e.Visible = UserSettingsManager.UserSettings.WarnNET5;
+                    e.Visible = Settings.WarnNET5;
                 }
             }
         }

@@ -5,12 +5,14 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 
 namespace Analogy.Tools
 {
     public partial class LogsComparerUC : DevExpress.XtraEditors.XtraUserControl
     {
+        private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private FileComparerProcessor? LeftFile { get; set; }
         private FileComparerProcessor? RightFile { get; set; }
@@ -115,7 +117,7 @@ namespace Analogy.Tools
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 LeftFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings, LeftFile, AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(Settings, LeftFile, AnalogyLogger.Instance);
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }
@@ -129,7 +131,7 @@ namespace Analogy.Tools
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 RightFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings, RightFile, AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(Settings, RightFile, AnalogyLogger.Instance);
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }

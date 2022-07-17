@@ -18,7 +18,7 @@ namespace Analogy.Interfaces
         event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
         event EventHandler<AnalogyCommandLayout> OnRibbonControlStyleChanged;
         event EventHandler OnApplicationSkinNameChanged;
-        
+        int AnalogyInternalLogPeriod { get; set; }
         string DisplayRunningTime { get; }
         Guid InitialSelectedDataProvider { get; set; }
         string ApplicationSkinName { get; set; }
@@ -28,13 +28,11 @@ namespace Analogy.Interfaces
         int RecentFilesCount { get; set; }
         int RecentFoldersCount { get; set; }
         bool EnableUserStatistics { get; set; }
-        TimeSpan AnalogyRunningTime { get; set; }
         uint AnalogyLaunches { get; set; }
         uint AnalogyOpenedFiles { get; set; }
         List<Guid> StartupExtensions { get; set; }
         bool StartupRibbonMinimized { get; set; }
         MainFormType MainFormType { get; set; }
-        List<string> EventLogs { get; set; }
         bool ShowChangeLogAtStartUp { get; set; }
         bool SearchAlsoInSourceAndModule { get; set; }
         List<Guid> AutoStartDataProviders { get; set; }
@@ -43,7 +41,6 @@ namespace Analogy.Interfaces
         Guid LastOpenedDataProvider { get; set; }
         bool RememberLastOpenedDataProvider { get; set; }
         int NumberOfLastSearches { get; set; }
-        int AnalogyInternalLogPeriod { get; set; }
         List<string> AdditionalProbingLocations { get; set; }
         bool SingleInstance { get; set; }
         string AnalogyIcon { get; set; }
