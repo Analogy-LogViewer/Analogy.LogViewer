@@ -40,9 +40,9 @@ namespace Analogy.Common.Managers
         public bool ShowMessageDetails { get; set; } = true;
         public bool SimpleMode { get; set; } = true;
         public LogLevelSelectionType LogLevelSelection { get; set; } = LogLevelSelectionType.Single;
-        public FontSettings FontSettings { get; set; }
+        public FontSettings FontSettings { get; set; } = new FontSettings();
         public bool TrackActiveMessage { get; set; }
-        public float RealTimeRefreshInterval { get; set; }
+        public float RealTimeRefreshInterval { get; set; } = 1;
         public FilteringExclusion FilteringExclusion { get; set; } = new FilteringExclusion();
         public string LogsLayoutFileName { get; set; }
         public bool UseCustomLogsLayout { get; set; }

@@ -15,6 +15,8 @@ namespace Analogy.Managers
 {
     public class ExternalDataProviders
     {
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+
         private static readonly AsyncLazy<ExternalDataProviders> _instance =
             new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders());
 
@@ -29,9 +31,9 @@ namespace Analogy.Managers
             #region load assemblies
             var analogyAssemblies = Directory.EnumerateFiles(AppDomain.CurrentDomain.BaseDirectory,
                 @"*Analogy.LogViewer.*.dll", SearchOption.AllDirectories).ToList();
-            if (UserSettingsManager.UserSettings.AdditionalProbingLocations != null)
+            if (Settings.AdditionalProbingLocations != null)
             {
-                foreach (string folder in UserSettingsManager.UserSettings.AdditionalProbingLocations)
+                foreach (string folder in Settings.AdditionalProbingLocations)
                 {
                     try
                     {
@@ -118,7 +120,7 @@ namespace Analogy.Managers
                     try
                     {
                         var factory = (Activator.CreateInstance(f) as IAnalogyFactory)!;
-                        var setting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(factory);
+                        var setting = Settings.GetOrAddFactorySetting(factory);
                         setting.FactoryName = factory.Title;
                         FactoryContainer fc = new FactoryContainer(assembly, fileName, factory, setting);
                         if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))

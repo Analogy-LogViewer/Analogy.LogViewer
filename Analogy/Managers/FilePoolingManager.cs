@@ -41,7 +41,7 @@ namespace Analogy.Managers
             OfflineDataProvider = offlineDataProvider;
             _messages = new List<AnalogyLogMessage>();
             FileName = fileName;
-            FileProcessor = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
+            FileProcessor = new FileProcessor(Settings, this,AnalogyLogger.Instance);
 
         }
 

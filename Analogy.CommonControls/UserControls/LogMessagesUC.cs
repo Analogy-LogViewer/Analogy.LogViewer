@@ -2304,7 +2304,7 @@ namespace Analogy.CommonControls.UserControls
                 }
             }
 
-            if (DataProvider.UseCustomColors)
+            if (DataProvider != null && DataProvider.UseCustomColors)
             {
                 IAnalogyLogMessage m =
                     (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);

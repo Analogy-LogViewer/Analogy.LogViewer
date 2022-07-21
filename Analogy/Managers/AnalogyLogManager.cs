@@ -16,6 +16,8 @@ namespace Analogy.Managers
 {
     public class AnalogyLogManager : IAnalogyLogger
     {
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+
         public event EventHandler<(AnalogyLogMessage msg, string source)> OnNewMessage;
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
         public static AnalogyLogManager Instance => _instance.Value;
@@ -58,7 +60,7 @@ namespace Analogy.Managers
         {
             return messages.Where(m =>
                     DateTime.Now.Subtract(m.Date).TotalDays <=
-                    UserSettingsManager.UserSettings.AnalogyInternalLogPeriod)
+                    Settings.AnalogyInternalLogPeriod)
                 .ToList();
         }
         public void SaveFile()
@@ -175,7 +177,7 @@ namespace Analogy.Managers
         public void Show(Form mainForm)
         {
             var builtin = new AnalogyOfflineDataProvider();
-            XtraFormLogGrid msg = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, "Analogy", builtin, builtin);
+            XtraFormLogGrid msg = new XtraFormLogGrid(Settings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, "Analogy", builtin, builtin);
             msg.Show(mainForm);
         }
 
