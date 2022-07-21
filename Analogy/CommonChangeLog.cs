@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.8.9 - [DevExpress] Upgrade to V21.2.9 #1382",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,07,21)),
                 new AnalogyChangeLog("V4.8.8 - Disable PowerToys data provider default on #1378",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,07,16)),
                 new AnalogyChangeLog("V4.8.8 - [DevExpress] Upgrade to V21.2.8 #1322",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,07,16)),
                 new AnalogyChangeLog("V4.8.8 - Warn users that net3.1 end of support will reached on December 8, 2022 #1348",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,06,22)),
