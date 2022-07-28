@@ -407,6 +407,10 @@ namespace Analogy.Forms
             {
                 Utils.OpenLink("https://ko-fi.com/liorbanai");
             };
+            bbiGitHubSponsor.ItemClick += (s, e) =>
+            {
+                Utils.OpenLink("https://github.com/sponsors/LiorBanai/");
+            };
             bbiPayPal.ItemClick += (s, e) =>
             {
                 Utils.OpenLink("https://www.paypal.com/donate/?business=MCP57TBRAAVXA&no_recurring=0&item_name=Support+Open+source+Projects+%28Analogy+Log+Viewer%2C+HDF5-CSHARP%2C+etc%29&currency_code=USD");

@@ -69,6 +69,7 @@ namespace Analogy
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDataProvidersUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbiUserSettingsStatistics = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDownloadStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtom = new DevExpress.XtraBars.Bar();
             this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
@@ -95,7 +96,7 @@ namespace Analogy
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
             this.FactoriesImagesLarge = new DevExpress.Utils.ImageCollection(this.components);
-            this.bbiDownloadStatistics = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGitHubSponsor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -113,7 +114,7 @@ namespace Analogy
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(307, 64);
             this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(8);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(860, 699);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(984, 699);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl
@@ -155,7 +156,7 @@ namespace Analogy
             this.bbiDonation});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1167, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1291, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.btnSettings);
@@ -340,9 +341,10 @@ namespace Analogy
             this.bbiBinance,
             this.bbiPayPal,
             this.bbiKofi,
-            this.bbiDownloadStatistics});
+            this.bbiDownloadStatistics,
+            this.bbiGitHubSponsor});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 31;
+            this.barManager1.MaxItemId = 32;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -452,6 +454,15 @@ namespace Analogy
             this.bbiUserSettingsStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.LargeImage")));
             this.bbiUserSettingsStatistics.Name = "bbiUserSettingsStatistics";
             // 
+            // bbiDownloadStatistics
+            // 
+            this.bbiDownloadStatistics.Caption = "Download Statistics";
+            this.bbiDownloadStatistics.Id = 30;
+            this.bbiDownloadStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.Image")));
+            this.bbiDownloadStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.LargeImage")));
+            this.bbiDownloadStatistics.Name = "bbiDownloadStatistics";
+            this.bbiDownloadStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownloadStatistics_ItemClick);
+            // 
             // bbtnItemHelp
             // 
             this.bbtnItemHelp.Caption = "About";
@@ -469,6 +480,7 @@ namespace Analogy
             this.barButtom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.barButtom.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSponsorOpenCollection),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiGitHubSponsor),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiKofi),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiPayPal),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiBinance),
@@ -592,7 +604,7 @@ namespace Analogy
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 39);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1167, 25);
+            this.barDockControlTop.Size = new System.Drawing.Size(1291, 25);
             // 
             // barDockControlBottom
             // 
@@ -600,7 +612,7 @@ namespace Analogy
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 763);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1167, 32);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1291, 32);
             // 
             // barDockControlLeft
             // 
@@ -614,7 +626,7 @@ namespace Analogy
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1167, 64);
+            this.barDockControlRight.Location = new System.Drawing.Point(1291, 64);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
             // 
@@ -667,21 +679,18 @@ namespace Analogy
             this.FactoriesImagesLarge.ImageSize = new System.Drawing.Size(32, 32);
             this.FactoriesImagesLarge.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FactoriesImagesLarge.ImageStream")));
             // 
-            // bbiDownloadStatistics
+            // bbiGitHubSponsor
             // 
-            this.bbiDownloadStatistics.Caption = "Download Statistics";
-            this.bbiDownloadStatistics.Id = 30;
-            this.bbiDownloadStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.Image")));
-            this.bbiDownloadStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.LargeImage")));
-            this.bbiDownloadStatistics.Name = "bbiDownloadStatistics";
-            this.bbiDownloadStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownloadStatistics_ItemClick);
+            this.bbiGitHubSponsor.Caption = "💖 GitHub Sponsor";
+            this.bbiGitHubSponsor.Id = 31;
+            this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
             // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 795);
+            this.ClientSize = new System.Drawing.Size(1291, 795);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl);
@@ -771,5 +780,6 @@ namespace Analogy
         private DevExpress.Utils.ImageCollection FactoriesImagesLarge;
         private DevExpress.XtraBars.BarButtonItem bbiKofi;
         private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
+        private DevExpress.XtraBars.BarButtonItem bbiGitHubSponsor;
     }
 }

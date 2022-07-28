@@ -802,6 +802,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hearts_around {
+            get {
+                object obj = ResourceManager.GetObject("hearts_around", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IDE_16x16 {
             get {
                 object obj = ResourceManager.GetObject("IDE_16x16", resourceCulture);

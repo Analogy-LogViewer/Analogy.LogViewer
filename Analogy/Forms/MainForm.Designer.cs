@@ -81,6 +81,7 @@
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDataProvidersUpdates = new DevExpress.XtraBars.BarButtonItem();
             this.bbiUserSettingsStatistics = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDownloadStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemHelp = new DevExpress.XtraBars.BarButtonItem();
             this.btnItemLocalLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bItemProcess = new DevExpress.XtraBars.BarButtonItem();
@@ -145,7 +146,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbiDownloadStatistics = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGitHubSponsor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -252,10 +253,11 @@
             this.bbiPayPal,
             this.bbiKofi,
             this.bbtnItemGithubHistory,
-            this.bbiDownloadStatistics});
+            this.bbiDownloadStatistics,
+            this.bbiGitHubSponsor});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.ribbonControlMain.MaxItemId = 121;
+            this.ribbonControlMain.MaxItemId = 122;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.OptionsMenuMinWidth = 515;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
@@ -437,6 +439,15 @@
             this.bbiUserSettingsStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserSettingsStatistics.ImageOptions.LargeImage")));
             this.bbiUserSettingsStatistics.Name = "bbiUserSettingsStatistics";
             this.bbiUserSettingsStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserStatistics_ItemClick);
+            // 
+            // bbiDownloadStatistics
+            // 
+            this.bbiDownloadStatistics.Caption = "Download Statistics";
+            this.bbiDownloadStatistics.Id = 120;
+            this.bbiDownloadStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.Image")));
+            this.bbiDownloadStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.LargeImage")));
+            this.bbiDownloadStatistics.Name = "bbiDownloadStatistics";
+            this.bbiDownloadStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownloadStatistics_ItemClick);
             // 
             // bbtnItemHelp
             // 
@@ -960,6 +971,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCompactMemory);
             this.ribbonStatusBar.ItemLinks.Add(this.btnErrors);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnSponsorOpenCollection);
+            this.ribbonStatusBar.ItemLinks.Add(this.bbiGitHubSponsor);
             this.ribbonStatusBar.ItemLinks.Add(this.bbiKofi);
             this.ribbonStatusBar.ItemLinks.Add(this.bbiPayPal);
             this.ribbonStatusBar.ItemLinks.Add(this.bbiBinance);
@@ -1015,14 +1027,11 @@
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
             // 
-            // bbiDownloadStatistics
+            // bbiGitHubSponsor
             // 
-            this.bbiDownloadStatistics.Caption = "Download Statistics";
-            this.bbiDownloadStatistics.Id = 120;
-            this.bbiDownloadStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.Image")));
-            this.bbiDownloadStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDownloadStatistics.ImageOptions.LargeImage")));
-            this.bbiDownloadStatistics.Name = "bbiDownloadStatistics";
-            this.bbiDownloadStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownloadStatistics_ItemClick);
+            this.bbiGitHubSponsor.Caption = "💖 GitHub Sponsor";
+            this.bbiGitHubSponsor.Id = 121;
+            this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
             // 
             // MainForm
             // 
@@ -1142,5 +1151,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiKofi;
         private DevExpress.XtraBars.BarButtonItem bbtnItemGithubHistory;
         private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
+        private DevExpress.XtraBars.BarButtonItem bbiGitHubSponsor;
     }
 }
