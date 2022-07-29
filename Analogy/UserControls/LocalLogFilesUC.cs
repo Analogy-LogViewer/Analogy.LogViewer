@@ -27,7 +27,7 @@ namespace Analogy
         {
             InitializeComponent();
         }
-        public LocalLogFilesUC(string? initSelectedPath = null):this()
+        public LocalLogFilesUC(string initSelectedPath) : this()
         {
             SelectedPath = initSelectedPath ?? string.Empty;
             treeList1.Columns["colChanged"].SortOrder = SortOrder.Descending;
@@ -35,7 +35,7 @@ namespace Analogy
             ucLogs1.SetSaveButtonsVisibility(false);
         }
 
-        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string? initialSelectedPath = null) : this(initialSelectedPath)
+        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string? initialSelectedPath = null) : this(initialSelectedPath ?? string.Empty)
         {
 
             DataProvider = dataProvider;
@@ -230,21 +230,22 @@ namespace Analogy
                 ucLogs1.OnFocusedRowChanged += UcLogs1_OnFocusedRowChanged;
             }
 
-            
-                TreeList treeList = sender as TreeList;
-                TreeListHitInfo hitInfo = treeList.CalcHitInfo(e.Point);
 
-                // removing the "Runtime columns customization" item of the column header menu
-                if (hitInfo.HitInfoType == HitInfoType.Cell)
-                {
-                    var file = hitInfo.Node.GetValue(colFullPath).ToString();
+            TreeList treeList = sender as TreeList;
+            TreeListHitInfo hitInfo = treeList.CalcHitInfo(e.Point);
 
-                    DXMenuItem menuItem = new DXMenuItem($"Open file {Path.GetFileName(file)} in separate Window",
-                        (_, __) => { OpenFileInSeparateWindow(file); }) {Tag = hitInfo.Column};
-                   //menuItem.Image =Resources.
-                    e.Menu.Items.Add(menuItem);
-                }
-            
+            // removing the "Runtime columns customization" item of the column header menu
+            if (hitInfo.HitInfoType == HitInfoType.Cell)
+            {
+                var file = hitInfo.Node.GetValue(colFullPath).ToString();
+
+                DXMenuItem menuItem = new DXMenuItem($"Open file {Path.GetFileName(file)} in separate Window",
+                    (_, __) => { OpenFileInSeparateWindow(file); })
+                { Tag = hitInfo.Column };
+                //menuItem.Image =Resources.
+                e.Menu.Items.Add(menuItem);
+            }
+
 
         }
     }
