@@ -9,10 +9,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Properties;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraTreeList;
-using DevExpress.XtraTreeList.Localization;
 
 namespace Analogy
 {
@@ -20,13 +18,17 @@ namespace Analogy
     public partial class LocalLogFilesUC : UserControl
     {
         private List<string> extrenalFiles = new List<string>();
-        public string SelectedPath { get; set; }
+        public string SelectedPath { get; set; } = string.Empty;
         private IAnalogyOfflineDataProvider DataProvider { get; }
         public ILogMessageCreatedHandler Handler => ucLogs1;
-        public LocalLogFilesUC(string? initSelectedPath = null)
+
+        public LocalLogFilesUC()
+        {
+            InitializeComponent();
+        }
+        public LocalLogFilesUC(string? initSelectedPath = null):this()
         {
             SelectedPath = initSelectedPath ?? string.Empty;
-            InitializeComponent();
             treeList1.Columns["colChanged"].SortOrder = SortOrder.Descending;
             treeList1.Appearance.HideSelectionRow.Assign(treeList1.ViewInfo.PaintAppearance.FocusedRow);
             ucLogs1.SetSaveButtonsVisibility(false);
