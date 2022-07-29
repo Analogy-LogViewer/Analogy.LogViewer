@@ -164,7 +164,10 @@ namespace Analogy.CommonControls.UserControls
             ExtensionManager = extensionManager;
             FactoriesManager = factoriesManager;
             InitializeComponent();
+            PagingManager = new PagingManager(this, Settings);
 
+            lockSlim = PagingManager.lockSlim;
+            _messageData = PagingManager.CurrentPage();
             if (DesignMode)
             {
                 return;
@@ -249,18 +252,12 @@ namespace Analogy.CommonControls.UserControls
 
         }
 
-        private async void UCLogs_Load(object sender, EventArgs e)
+        private async void LogMessagesUC_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
                 return;
             }
-
-            PagingManager = new PagingManager(this, Settings);
-
-            lockSlim = PagingManager.lockSlim;
-            _messageData = PagingManager.CurrentPage();
-
             wsLogs.CaptureWorkspace("Default");
 
             LoadUISettings();

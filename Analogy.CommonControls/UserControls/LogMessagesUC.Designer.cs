@@ -3203,7 +3203,7 @@ namespace Analogy.CommonControls.UserControls
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LogMessagesUC";
             this.Size = new System.Drawing.Size(1853, 759);
-            this.Load += new System.EventHandler(this.UCLogs_Load);
+            this.Load += new System.EventHandler(this.LogMessagesUC_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
