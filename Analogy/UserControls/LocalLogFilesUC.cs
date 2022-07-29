@@ -10,12 +10,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Utils.Menu;
+using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 
 namespace Analogy
 {
 
-    public partial class LocalLogFilesUC : UserControl
+    public partial class LocalLogFilesUC : XtraUserControl
     {
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; } = string.Empty;

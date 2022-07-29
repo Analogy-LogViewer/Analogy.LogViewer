@@ -8,7 +8,7 @@ using DevExpress.XtraEditors;
 
 namespace Analogy
 {
-    public partial class FolderTreeViewUC : UserControl
+    public partial class FolderTreeViewUC : XtraUserControl
     {
         public event EventHandler<FolderSelectionEventArgs> FolderChanged;
         private string SelectedPath { get; set; } = string.Empty;

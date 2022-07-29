@@ -6,10 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.DataTypes;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
-    public partial class FileSystemUC : UserControl
+    public partial class FileSystemUC : XtraUserControl
     {
         private IAnalogyOfflineDataProvider _dataProvider;
         public event EventHandler<SelectionEventArgs> SelectionChanged;

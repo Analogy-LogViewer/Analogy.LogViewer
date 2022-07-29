@@ -15,7 +15,7 @@ using Analogy.Forms;
 namespace Analogy
 {
 
-    public partial class ClientServerUCLog : UserControl
+    public partial class ClientServerUCLog : XtraUserControl
     {
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }

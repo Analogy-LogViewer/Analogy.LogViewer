@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {
-    public partial class CompareTextUC : UserControl
+    public partial class CompareTextUC : XtraUserControl
     {
         private string? LeftFile { get; set; }
         private string? RightFile { get; set; }

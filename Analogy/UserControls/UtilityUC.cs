@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
-    public partial class UtilityUC : UserControl
+    public partial class UtilityUC : XtraUserControl
     {
         Action Action { get; }
         public UtilityUC()

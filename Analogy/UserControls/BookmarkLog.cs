@@ -2,11 +2,12 @@
 using System.Windows.Forms;
 using Analogy.CommonControls.Managers;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
 
-    public partial class BookmarkLog : UserControl
+    public partial class BookmarkLog : XtraUserControl
     {
         public BookmarkLog()
         {

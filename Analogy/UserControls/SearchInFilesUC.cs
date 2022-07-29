@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
-    public partial class SearchInFilesUC : UserControl
+    public partial class SearchInFilesUC : XtraUserControl
     {
         private IAnalogyOfflineDataProvider offlineAnalogy;
 

@@ -5,14 +5,13 @@ using System.Threading;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
-using Analogy.DataTypes;
-using Analogy.Forms;
-using Message = System.Windows.Forms.Message;
+using DevExpress.XtraEditors;
+
 
 namespace Analogy
 {
 
-    public partial class RemoteLogsUC : UserControl
+    public partial class RemoteLogsUC : XtraUserControl
     {
         private bool _showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;

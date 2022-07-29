@@ -1,19 +1,16 @@
 ﻿using Analogy.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
-using Analogy.DataTypes;
-using Analogy.Forms;
-using Message = System.Windows.Forms.Message;
+using DevExpress.XtraEditors;
 
 namespace Analogy
 {
 
-    public partial class OnlineUCLogs : UserControl
+    public partial class OnlineUCLogs : XtraUserControl
     {
         private bool _showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;

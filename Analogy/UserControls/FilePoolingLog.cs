@@ -9,12 +9,13 @@ using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using DevExpress.XtraEditors;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy
 {
 
-    public partial class FilePoolingUCLogs : UserControl
+    public partial class FilePoolingUCLogs : XtraUserControl
     {
         private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private static int clearHistoryCounter;
