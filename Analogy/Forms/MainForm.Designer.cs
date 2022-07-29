@@ -139,6 +139,7 @@
             this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPayPal = new DevExpress.XtraBars.BarButtonItem();
             this.bbiKofi = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGitHubSponsor = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
@@ -146,7 +147,6 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbiGitHubSponsor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -687,6 +687,7 @@
             this.bsiIdleMessage.Caption = "N/A";
             this.bsiIdleMessage.Id = 65;
             this.bsiIdleMessage.Name = "bsiIdleMessage";
+            this.bsiIdleMessage.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiFileCaching
             // 
@@ -963,6 +964,12 @@
             superToolTip6.Items.Add(toolTipTitleItem6);
             this.bbiKofi.SuperTip = superToolTip6;
             // 
+            // bbiGitHubSponsor
+            // 
+            this.bbiGitHubSponsor.Caption = "💖 GitHub Sponsor";
+            this.bbiGitHubSponsor.Id = 121;
+            this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bbiFileCaching);
@@ -1026,12 +1033,6 @@
             // 
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
-            // 
-            // bbiGitHubSponsor
-            // 
-            this.bbiGitHubSponsor.Caption = "💖 GitHub Sponsor";
-            this.bbiGitHubSponsor.Id = 121;
-            this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
             // 
             // MainForm
             // 
