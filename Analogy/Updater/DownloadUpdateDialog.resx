@@ -195,9 +195,9 @@
   <data name="&gt;&gt;labelSize.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 16</value>
   </data>
@@ -207,13 +207,7 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Analogy Log Viewer Updater</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>DownloadUpdateDialog</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v21.2, Version=21.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

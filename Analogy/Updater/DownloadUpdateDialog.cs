@@ -34,6 +34,7 @@ namespace Analogy.Updater
             TargetFrameworkAttribute currentFrameworkAttribute, TaskCompletionSource<bool> taskCompletionSource)
         {
             InitializeComponent();
+            Text = "Analogy Log Viewer Updater";
             _downloadURL = downloadURL;
             _targetFolder = targetFolder;
             _currentFrameworkAttribute = currentFrameworkAttribute;
