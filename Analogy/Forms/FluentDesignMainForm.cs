@@ -644,13 +644,6 @@ namespace Analogy
             bci.CheckBoxVisibility = CheckBoxVisibility.BeforeText;
             //bci.Caption = fc.Factory.Title;
             bci.Enabled = fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled;
-            if (fc.Factory.SmallImage != null)
-            {
-                string imageName = fc.Factory.FactoryId + "_small";
-                FactoriesImagesSmall.AddImage(fc.Factory.SmallImage, imageName);
-                bci.Caption = string.Format($"<image={imageName}>{fc.Factory.Title}");
-                bci.AllowHtmlText = DefaultBoolean.True;
-            }
             bci.ItemClick += (s, e) =>
             {
                 bci.Checked = true;

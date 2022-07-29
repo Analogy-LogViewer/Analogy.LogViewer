@@ -915,8 +915,8 @@
             // 
             // bbtnSponsorOpenCollection
             // 
+            this.bbtnSponsorOpenCollection.Caption = "Open collective";
             this.bbtnSponsorOpenCollection.Id = 111;
-            this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
             toolTipTitleItem5.Text = "Sponsor";
             toolTipItem5.LeftIndent = 6;

@@ -1230,12 +1230,12 @@ namespace Analogy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static DevExpress.Utils.Svg.SvgImage paypal16x16 {
+        internal static System.Drawing.Bitmap paypal16 {
             get {
-                object obj = ResourceManager.GetObject("paypal16x16", resourceCulture);
-                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+                object obj = ResourceManager.GetObject("paypal16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

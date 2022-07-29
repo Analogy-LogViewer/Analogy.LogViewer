@@ -95,6 +95,7 @@ namespace Analogy.CommonControls.UserControls
             this.btswitchMessageDetails = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.btsiInlineJsonViewer = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.bbiGoToActiveMessage = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemSaveLog = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemSaveEntireInAnalogy = new DevExpress.XtraBars.BarButtonItem();
@@ -125,7 +126,6 @@ namespace Analogy.CommonControls.UserControls
             this.bciTimeOffsetUTCToLocal = new DevExpress.XtraBars.BarCheckItem();
             this.bciTimeOffsetLocalToUTC = new DevExpress.XtraBars.BarCheckItem();
             this.bBtnDataVisualizer = new DevExpress.XtraBars.BarButtonItem();
-            this.btsiInlineJsonViewer = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.barMessage = new DevExpress.XtraBars.Bar();
             this.bBtnCopyButtom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToMessage = new DevExpress.XtraBars.BarButtonItem();
@@ -903,7 +903,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbtnReload.Caption = "Reload Files";
             this.bbtnReload.Id = 38;
-            this.bbtnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnReload.ImageOptions.SvgImage")));
+            this.bbtnReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnReload.ImageOptions.Image")));
+            this.bbtnReload.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReload.ImageOptions.LargeImage")));
             this.bbtnReload.Name = "bbtnReload";
             this.bbtnReload.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnReload.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -931,6 +932,12 @@ namespace Analogy.CommonControls.UserControls
             this.btsAutoScrollToBottom.Id = 18;
             this.btsAutoScrollToBottom.Name = "btsAutoScrollToBottom";
             this.btsAutoScrollToBottom.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btsAutoScrollToBottom_CheckedChanged);
+            // 
+            // btsiInlineJsonViewer
+            // 
+            this.btsiInlineJsonViewer.Caption = "Inline Json Viewer";
+            this.btsiInlineJsonViewer.Id = 89;
+            this.btsiInlineJsonViewer.Name = "btsiInlineJsonViewer";
             // 
             // bbiGoToActiveMessage
             // 
@@ -1225,12 +1232,6 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
             this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
-            // 
-            // btsiInlineJsonViewer
-            // 
-            this.btsiInlineJsonViewer.Caption = "Inline Json Viewer";
-            this.btsiInlineJsonViewer.Id = 89;
-            this.btsiInlineJsonViewer.Name = "btsiInlineJsonViewer";
             // 
             // barMessage
             // 

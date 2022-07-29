@@ -31,12 +31,12 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -88,7 +88,6 @@ namespace Analogy
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.FactoriesImagesSmall = new DevExpress.Utils.ImageCollection(this.components);
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
@@ -96,15 +95,12 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.FactoriesImagesLarge = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesSmall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesLarge)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
@@ -316,7 +312,6 @@ namespace Analogy
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
-            this.barManager1.HtmlImages = this.FactoriesImagesSmall;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbtnStar,
             this.bbiFileCaching,
@@ -502,14 +497,13 @@ namespace Analogy
             // 
             this.bbtnSponsorOpenCollection.Caption = "Sponsor";
             this.bbtnSponsorOpenCollection.Id = 24;
-            this.bbtnSponsorOpenCollection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnSponsorOpenCollection.ImageOptions.SvgImage")));
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem1.Text = "Sponsor";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Support this project at Open Collective";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
+            toolTipTitleItem5.Text = "Sponsor";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Support this project at Open Collective";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip5;
             this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiGitHubSponsor
@@ -530,14 +524,14 @@ namespace Analogy
             // 
             this.bbiPayPal.Caption = "PayPal";
             this.bbiPayPal.Id = 28;
-            this.bbiPayPal.ImageOptions.SvgImage = global::Analogy.Properties.Resources.paypal16x16;
+            this.bbiPayPal.ImageOptions.Image = global::Analogy.Properties.Resources.paypal16;
             this.bbiPayPal.Name = "bbiPayPal";
             this.bbiPayPal.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem2.Text = "PayPal Donation";
-            toolTipItem2.Text = "Support the project with small PayPal donation";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.bbiPayPal.SuperTip = superToolTip2;
+            toolTipTitleItem6.Text = "PayPal Donation";
+            toolTipItem6.Text = "Support the project with small PayPal donation";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.bbiPayPal.SuperTip = superToolTip6;
             // 
             // bbiBinance
             // 
@@ -637,10 +631,6 @@ namespace Analogy
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
             // 
-            // FactoriesImagesSmall
-            // 
-            this.FactoriesImagesSmall.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FactoriesImagesSmall.ImageStream")));
-            // 
             // documentManager1
             // 
             this.documentManager1.ContainerControl = this;
@@ -681,11 +671,6 @@ namespace Analogy
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             // 
-            // FactoriesImagesLarge
-            // 
-            this.FactoriesImagesLarge.ImageSize = new System.Drawing.Size(32, 32);
-            this.FactoriesImagesLarge.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FactoriesImagesLarge.ImageStream")));
-            // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
@@ -701,7 +686,6 @@ namespace Analogy
             this.Controls.Add(this.barDockControlTop);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
-            this.HtmlImages = this.FactoriesImagesSmall;
             this.MinimumSize = new System.Drawing.Size(10, 796);
             this.Name = "FluentDesignMainForm";
             this.NavigationControl = this.accordionControl;
@@ -712,10 +696,8 @@ namespace Analogy
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesSmall)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FactoriesImagesLarge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -777,8 +759,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem btnSettingsDebugging;
         private DevExpress.XtraBars.BarButtonItem bbiDonation;
         private DevExpress.XtraBars.BarButtonItem bbiPayPal;
-        private DevExpress.Utils.ImageCollection FactoriesImagesSmall;
-        private DevExpress.Utils.ImageCollection FactoriesImagesLarge;
         private DevExpress.XtraBars.BarButtonItem bbiKofi;
         private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
         private DevExpress.XtraBars.BarButtonItem bbiGitHubSponsor;
