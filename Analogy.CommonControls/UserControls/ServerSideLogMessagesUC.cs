@@ -2787,12 +2787,7 @@ namespace Analogy.CommonControls.UserControls
         {
             CreateBookmark(true);
         }
-
-        private void tsmiRemoveBookmark_Click(object sender, EventArgs e)
-        {
-            RemoveBookmark();
-        }
-
+        
         private void bBtnRemoveBoomark_ItemClick(object sender, ItemClickEventArgs e)
         {
             RemoveBookmark();

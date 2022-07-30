@@ -40,7 +40,7 @@ namespace Analogy.CommonControls.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMessagesUC));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerSideLogMessagesUC));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -291,6 +291,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -399,6 +400,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -424,7 +426,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1570, 203);
+            this.gridControl.Size = new System.Drawing.Size(1570, 167);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -746,7 +748,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // chkbHighlight
             // 
-            this.chkbHighlight.Location = new System.Drawing.Point(7, 214);
+            this.chkbHighlight.Location = new System.Drawing.Point(7, 178);
             this.chkbHighlight.MenuManager = this.barManager1;
             this.chkbHighlight.Name = "chkbHighlight";
             this.chkbHighlight.Properties.Caption = "Highlight lines that contains:";
@@ -2251,7 +2253,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlLogs.Name = "layoutControlLogs";
             this.layoutControlLogs.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(520, 50, 812, 500);
             this.layoutControlLogs.Root = this.layoutControlGroup1;
-            this.layoutControlLogs.Size = new System.Drawing.Size(1847, 248);
+            this.layoutControlLogs.Size = new System.Drawing.Size(1847, 212);
             this.layoutControlLogs.TabIndex = 6;
             this.layoutControlLogs.Text = "layoutControl2";
             // 
@@ -2269,13 +2271,13 @@ namespace Analogy.CommonControls.UserControls
             // spltcMessages.Panel2
             // 
             this.spltcMessages.Panel2.Text = "Panel2";
-            this.spltcMessages.Size = new System.Drawing.Size(1833, 203);
+            this.spltcMessages.Size = new System.Drawing.Size(1833, 167);
             this.spltcMessages.SplitterPosition = 251;
             this.spltcMessages.TabIndex = 0;
             // 
             // sbtnPageFirst
             // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(1457, 214);
+            this.sbtnPageFirst.Location = new System.Drawing.Point(1457, 178);
             this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPageFirst.Name = "sbtnPageFirst";
             this.sbtnPageFirst.Size = new System.Drawing.Size(71, 27);
@@ -2286,7 +2288,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnMoreHighlight
             // 
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1371, 214);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1371, 178);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
             this.sbtnMoreHighlight.Size = new System.Drawing.Size(82, 27);
@@ -2297,7 +2299,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnPagePrevious
             // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(1532, 214);
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(1532, 178);
             this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPagePrevious.Name = "sbtnPagePrevious";
             this.sbtnPagePrevious.Size = new System.Drawing.Size(100, 27);
@@ -2309,7 +2311,7 @@ namespace Analogy.CommonControls.UserControls
             // sBtnPageNext
             // 
             this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(1706, 214);
+            this.sBtnPageNext.Location = new System.Drawing.Point(1706, 178);
             this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnPageNext.Name = "sBtnPageNext";
             this.sBtnPageNext.Size = new System.Drawing.Size(66, 27);
@@ -2321,7 +2323,7 @@ namespace Analogy.CommonControls.UserControls
             // sBtnLastPage
             // 
             this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(1776, 214);
+            this.sBtnLastPage.Location = new System.Drawing.Point(1776, 178);
             this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLastPage.Name = "sBtnLastPage";
             this.sBtnLastPage.Size = new System.Drawing.Size(64, 27);
@@ -2332,7 +2334,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // txtbHighlight
             // 
-            this.txtbHighlight.Location = new System.Drawing.Point(200, 214);
+            this.txtbHighlight.Location = new System.Drawing.Point(200, 178);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
             this.txtbHighlight.Size = new System.Drawing.Size(1167, 22);
@@ -2356,13 +2358,13 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem26});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1847, 248);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1847, 212);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem22
             // 
             this.layoutControlItem22.Control = this.txtbHighlight;
-            this.layoutControlItem22.Location = new System.Drawing.Point(193, 207);
+            this.layoutControlItem22.Location = new System.Drawing.Point(193, 171);
             this.layoutControlItem22.Name = "layoutControlItem22";
             this.layoutControlItem22.Size = new System.Drawing.Size(1171, 31);
             this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
@@ -2371,7 +2373,7 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem23
             // 
             this.layoutControlItem23.Control = this.chkbHighlight;
-            this.layoutControlItem23.Location = new System.Drawing.Point(0, 207);
+            this.layoutControlItem23.Location = new System.Drawing.Point(0, 171);
             this.layoutControlItem23.Name = "layoutControlItem23";
             this.layoutControlItem23.Size = new System.Drawing.Size(193, 31);
             this.layoutControlItem23.TextSize = new System.Drawing.Size(0, 0);
@@ -2380,16 +2382,17 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.sBtnLastPage;
-            this.layoutControlItem24.Location = new System.Drawing.Point(1769, 207);
+            this.layoutControlItem24.Location = new System.Drawing.Point(1769, 171);
             this.layoutControlItem24.Name = "layoutControlItem24";
             this.layoutControlItem24.Size = new System.Drawing.Size(68, 31);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
+            this.layoutControlItem24.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem25
             // 
             this.layoutControlItem25.Control = this.sBtnPageNext;
-            this.layoutControlItem25.Location = new System.Drawing.Point(1699, 207);
+            this.layoutControlItem25.Location = new System.Drawing.Point(1699, 171);
             this.layoutControlItem25.Name = "layoutControlItem25";
             this.layoutControlItem25.Size = new System.Drawing.Size(70, 31);
             this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
@@ -2398,7 +2401,7 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem27
             // 
             this.layoutControlItem27.Control = this.sbtnPagePrevious;
-            this.layoutControlItem27.Location = new System.Drawing.Point(1525, 207);
+            this.layoutControlItem27.Location = new System.Drawing.Point(1525, 171);
             this.layoutControlItem27.Name = "layoutControlItem27";
             this.layoutControlItem27.Size = new System.Drawing.Size(104, 31);
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
@@ -2407,7 +2410,7 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.sbtnPageFirst;
-            this.layoutControlItem28.Location = new System.Drawing.Point(1450, 207);
+            this.layoutControlItem28.Location = new System.Drawing.Point(1450, 171);
             this.layoutControlItem28.Name = "layoutControlItem28";
             this.layoutControlItem28.Size = new System.Drawing.Size(75, 31);
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
@@ -2416,7 +2419,7 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.sbtnMoreHighlight;
-            this.layoutControlItem21.Location = new System.Drawing.Point(1364, 207);
+            this.layoutControlItem21.Location = new System.Drawing.Point(1364, 171);
             this.layoutControlItem21.Name = "layoutControlItem21";
             this.layoutControlItem21.Size = new System.Drawing.Size(86, 31);
             this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
@@ -2425,19 +2428,19 @@ namespace Analogy.CommonControls.UserControls
             // lblPageNumber
             // 
             this.lblPageNumber.AllowHotTrack = false;
-            this.lblPageNumber.Location = new System.Drawing.Point(1629, 207);
+            this.lblPageNumber.Location = new System.Drawing.Point(1629, 171);
             this.lblPageNumber.Name = "lblPageNumber";
             this.lblPageNumber.Size = new System.Drawing.Size(70, 31);
-            this.lblPageNumber.Text = "Page 1/1";
+            this.lblPageNumber.Text = "Page X";
             this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
+            this.lblPageNumber.TextSize = new System.Drawing.Size(40, 16);
             // 
             // layoutControlItem26
             // 
             this.layoutControlItem26.Control = this.spltcMessages;
             this.layoutControlItem26.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(1837, 207);
+            this.layoutControlItem26.Size = new System.Drawing.Size(1837, 171);
             this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem26.TextVisible = false;
             // 
@@ -2456,7 +2459,7 @@ namespace Analogy.CommonControls.UserControls
             this.chkLstLogLevel.Location = new System.Drawing.Point(2, 28);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
-            this.chkLstLogLevel.Size = new System.Drawing.Size(137, 142);
+            this.chkLstLogLevel.Size = new System.Drawing.Size(137, 178);
             this.chkLstLogLevel.TabIndex = 22;
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
@@ -2839,7 +2842,7 @@ namespace Analogy.CommonControls.UserControls
             this.pnlExtraFilters.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlExtraFilters.Location = new System.Drawing.Point(1498, 0);
             this.pnlExtraFilters.Name = "pnlExtraFilters";
-            this.pnlExtraFilters.Size = new System.Drawing.Size(206, 172);
+            this.pnlExtraFilters.Size = new System.Drawing.Size(206, 208);
             this.pnlExtraFilters.TabIndex = 30;
             // 
             // xtcFilters
@@ -2848,7 +2851,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtcFilters.Location = new System.Drawing.Point(0, 0);
             this.xtcFilters.Name = "xtcFilters";
             this.xtcFilters.SelectedTabPage = this.xtpFiltersIncludes;
-            this.xtcFilters.Size = new System.Drawing.Size(206, 172);
+            this.xtcFilters.Size = new System.Drawing.Size(206, 208);
             this.xtcFilters.TabIndex = 29;
             this.xtcFilters.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpFiltersIncludes,
@@ -2858,7 +2861,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.xtpFiltersIncludes.Controls.Add(this.clbInclude);
             this.xtpFiltersIncludes.Name = "xtpFiltersIncludes";
-            this.xtpFiltersIncludes.Size = new System.Drawing.Size(204, 142);
+            this.xtpFiltersIncludes.Size = new System.Drawing.Size(204, 178);
             this.xtpFiltersIncludes.Text = "Includes";
             // 
             // clbInclude
@@ -2867,7 +2870,7 @@ namespace Analogy.CommonControls.UserControls
             this.clbInclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbInclude.Location = new System.Drawing.Point(0, 0);
             this.clbInclude.Name = "clbInclude";
-            this.clbInclude.Size = new System.Drawing.Size(204, 142);
+            this.clbInclude.Size = new System.Drawing.Size(204, 178);
             this.clbInclude.TabIndex = 21;
             // 
             // xtpFiltersExclude
@@ -2893,7 +2896,7 @@ namespace Analogy.CommonControls.UserControls
             this.pnlLevel.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlLevel.Location = new System.Drawing.Point(1704, 0);
             this.pnlLevel.Name = "pnlLevel";
-            this.pnlLevel.Size = new System.Drawing.Size(141, 172);
+            this.pnlLevel.Size = new System.Drawing.Size(141, 208);
             this.pnlLevel.TabIndex = 29;
             // 
             // pnlLevelFilteringType
@@ -3032,7 +3035,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 248);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 212);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // panelContainer1
@@ -3142,23 +3145,24 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelFiltering.Name = "dockPanelFiltering";
             this.dockPanelFiltering.Options.AllowDockAsTabbedDocument = false;
             this.dockPanelFiltering.Options.ShowCloseButton = false;
-            this.dockPanelFiltering.OriginalSize = new System.Drawing.Size(200, 210);
-            this.dockPanelFiltering.Size = new System.Drawing.Size(1853, 210);
+            this.dockPanelFiltering.OriginalSize = new System.Drawing.Size(200, 246);
+            this.dockPanelFiltering.Size = new System.Drawing.Size(1853, 246);
             this.dockPanelFiltering.Text = "Filtering";
             // 
             // controlContainer2
             // 
+            this.controlContainer2.Controls.Add(this.panelControl1);
             this.controlContainer2.Controls.Add(this.xtabFilters);
             this.controlContainer2.Controls.Add(this.pnlExtraFilters);
             this.controlContainer2.Controls.Add(this.pnlLevel);
             this.controlContainer2.Location = new System.Drawing.Point(4, 32);
             this.controlContainer2.Name = "controlContainer2";
-            this.controlContainer2.Size = new System.Drawing.Size(1845, 172);
+            this.controlContainer2.Size = new System.Drawing.Size(1845, 208);
             this.controlContainer2.TabIndex = 0;
             // 
             // xtabFilters
             // 
-            this.xtabFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtabFilters.Dock = System.Windows.Forms.DockStyle.Top;
             this.xtabFilters.Location = new System.Drawing.Point(0, 0);
             this.xtabFilters.Name = "xtabFilters";
             this.xtabFilters.SelectedTabPage = this.xtraTabPage1;
@@ -3190,7 +3194,15 @@ namespace Analogy.CommonControls.UserControls
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
-            // LogMessagesUC
+            // panelControl1
+            // 
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 172);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1498, 36);
+            this.panelControl1.TabIndex = 33;
+            // 
+            // ServerSideLogMessagesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -3201,7 +3213,7 @@ namespace Analogy.CommonControls.UserControls
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "LogMessagesUC";
+            this.Name = "ServerSideLogMessagesUC";
             this.Size = new System.Drawing.Size(1853, 759);
             this.Load += new System.EventHandler(this.LogMessagesUC_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.UCLogs_DragDrop);
@@ -3318,6 +3330,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3548,5 +3561,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarToggleSwitchItem btsiInlineJsonViewer;
         private DevExpress.XtraBars.BarStaticItem bsiProgress;
         private DevExpress.XtraBars.PopupMenu filtersPopupMenu;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
     }
 }
