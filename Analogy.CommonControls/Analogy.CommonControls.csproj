@@ -446,6 +446,9 @@
 		<Compile Update="UserControls\DataVisualizerUC.Designer.cs">
 			<DependentUpon>DataVisualizerUC.cs</DependentUpon>
 		</Compile>
+		<Compile Update="UserControls\DateTimeSelectionUC.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
 		<Compile Update="UserControls\LogStatisticsUC.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
