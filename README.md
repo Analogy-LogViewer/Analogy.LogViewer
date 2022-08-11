@@ -52,7 +52,7 @@ Examples:
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems.
 
 Some features of this tool are:
-1.	Standalone Winform User Control to sohw log messages
+1.	Standalone Winform User Control to show log messages
 2.	Aggregation into single view.
 3.	Search in multiple files
 4.	Combine multiple files
@@ -81,7 +81,7 @@ The application supports the followings data providers:
 
 ## Usage
 
-Thre are 3 modes of operations:
+There are 3 modes of operations:
 - real time log server: a gRPC Windows service that can receive messages from any gRPC client and the Log viewer app can connect to it to show real time logs.
 - real time logs: different implementation that can receive logs in real time (e.g: Windows event log data provider that show event logs as they are created)
 - Offline mode: Parse log files. There are many different implemetations.
@@ -91,7 +91,7 @@ For a full list: [see implementations](https://github.com/Analogy-LogViewer/Anal
 If you need you can create your own providers:
 to implement a new data provider do the following:
 
-0. Create new  cs project and make sure your assembly is named Analogy.LogViewer.*.dll.
+0. Create new cs project and make sure your assembly is named Analogy.LogViewer.*.dll.
 1. reference nugets package [Analogy.LogViewer.Interfaces](https://www.nuget.org/packages/Analogy.LogViewer.Interfaces/) and [Analogy.LogViewer.Template](https://www.nuget.org/packages/Analogy.LogViewer.Template/)
 
 2. inherite  ```Analogy.LogViewer.Template.PrimaryFactory``` class  from the template and override some properties:
