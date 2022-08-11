@@ -52,7 +52,7 @@ Examples:
 Analogy Log Viewer is multi purpose Log Viewer for Windows Operating systems.
 
 Some features of this tool are:
-1.	Standalone Winform User Control to sohw log messages
+1.	Standalone Winform User Control to show log messages
 2.	Aggregation into single view.
 3.	Search in multiple files
 4.	Combine multiple files
