@@ -291,6 +291,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtpSQLraw = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -3166,7 +3167,8 @@ namespace Analogy.CommonControls.UserControls
             this.xtabFilters.TabIndex = 32;
             this.xtabFilters.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtpSQLraw});
             // 
             // xtraTabPage1
             // 
@@ -3189,6 +3191,12 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
+            // 
+            // xtpSQLraw
+            // 
+            this.xtpSQLraw.Name = "xtpSQLraw";
+            this.xtpSQLraw.Size = new System.Drawing.Size(1496, 142);
+            this.xtpSQLraw.Text = "Raw SQL Filtering";
             // 
             // LogMessagesUC
             // 
@@ -3548,5 +3556,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarToggleSwitchItem btsiInlineJsonViewer;
         private DevExpress.XtraBars.BarStaticItem bsiProgress;
         private DevExpress.XtraBars.PopupMenu filtersPopupMenu;
+        private DevExpress.XtraTab.XtraTabPage xtpSQLraw;
     }
 }

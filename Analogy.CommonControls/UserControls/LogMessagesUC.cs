@@ -1221,6 +1221,7 @@ namespace Analogy.CommonControls.UserControls
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
             pnlExtraFilters.Visible = Settings.AdvancedMode && Settings.AdvancedModeAdditionalFilteringColumnsEnabled;
+            xtpSQLraw.PageVisible = Settings.AdvancedMode && Settings.AdvancedModeRawSQLFilterEnabled;
             bBtnShare.Enabled = false;
 
             logGrid.OptionsSelection.MultiSelect = true;
