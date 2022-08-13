@@ -38,7 +38,9 @@ namespace Analogy.Common.Managers
         public bool IsBuiltInSearchPanelVisible { get; set; } = true;
         public BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; } = BuiltInSearchPanelMode.Search;
         public bool ShowMessageDetails { get; set; } = true;
-        public bool SimpleMode { get; set; } = true;
+        public bool AdvancedMode { get; set; } = false;
+        public bool AdvancedModeRawSQLFilterEnabled { get; set; } = false;
+        public bool AdvancedModeAdditionalFilteringColumnsEnabled { get; set; } = false;
         public LogLevelSelectionType LogLevelSelection { get; set; } = LogLevelSelectionType.Single;
         public FontSettings FontSettings { get; set; } = new FontSettings();
         public bool TrackActiveMessage { get; set; }

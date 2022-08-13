@@ -121,7 +121,9 @@ namespace Analogy
         public string ApplicationSvgPaletteName { get; set; }
         public AnalogyLookAndFeelStyle ApplicationStyle { get; set; } = AnalogyLookAndFeelStyle.Skin;
         public bool ShowMessageDetails { get; set; }
-        public bool SimpleMode { get; set; }
+        public bool AdvancedMode { get; set; } = false;
+        public bool AdvancedModeRawSQLFilterEnabled { get; set; }
+        public bool AdvancedModeAdditionalFilteringColumnsEnabled { get; set; }
         public bool IsFirstRun { get; set; }
         public LogLevelSelectionType LogLevelSelection { get; set; }
         public bool ShowWhatIsNewAtStartup { get; set; }
@@ -266,7 +268,9 @@ namespace Analogy
             RememberLastSearches = Settings.Default.RememberLastSearches;
             LastSearchesInclude = ParseSettings<List<string>>(Settings.Default.LastSearchesInclude);
             LastSearchesExclude = ParseSettings<List<string>>(Settings.Default.LastSearchesExclude);
-            SimpleMode = Settings.Default.SimpleMode;
+            AdvancedMode = Settings.Default.AdvancedMode;
+            AdvancedModeRawSQLFilterEnabled = Settings.Default.AdvancedModeRawSQLFilterEnabled;
+            AdvancedModeAdditionalFilteringColumnsEnabled = Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled;
             NumberOfLastSearches = Settings.Default.NumberOfLastSearches;
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
             SingleInstance = Settings.Default.SingleInstance;
@@ -389,7 +393,9 @@ namespace Analogy
             ApplicationSvgPaletteName = settings.ApplicationSvgPaletteName;
             ApplicationStyle = settings.ApplicationStyle;
             ShowMessageDetails = settings.ShowMessageDetails;
-            SimpleMode = settings.SimpleMode;
+            AdvancedMode = settings.AdvancedMode;
+            AdvancedModeAdditionalFilteringColumnsEnabled = settings.AdvancedModeAdditionalFilteringColumnsEnabled;
+            AdvancedModeRawSQLFilterEnabled = settings.AdvancedModeRawSQLFilterEnabled;
             IsFirstRun = settings.IsFirstRun;
             LogLevelSelection = settings.LogLevelSelection;
             FontSettings = settings.FontSettings;
@@ -475,7 +481,9 @@ namespace Analogy
                 ApplicationSvgPaletteName = ApplicationSvgPaletteName,
                 ApplicationStyle = ApplicationStyle,
                 ShowMessageDetails = ShowMessageDetails,
-                SimpleMode = SimpleMode,
+                AdvancedMode = AdvancedMode,
+                AdvancedModeAdditionalFilteringColumnsEnabled = AdvancedModeAdditionalFilteringColumnsEnabled,
+                AdvancedModeRawSQLFilterEnabled = AdvancedModeRawSQLFilterEnabled,
                 IsFirstRun = IsFirstRun,
                 LogLevelSelection = LogLevelSelection,
                 ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup,
@@ -642,7 +650,9 @@ namespace Analogy
             Settings.Default.ApplicationStyle = ApplicationStyle.ToString();
             Settings.Default.ApplicationSvgPaletteName = ApplicationSvgPaletteName;
             Settings.Default.ShowMessageDetails = ShowMessageDetails;
-            Settings.Default.SimpleMode = SimpleMode;
+            Settings.Default.AdvancedMode = AdvancedMode;
+            Settings.Default.AdvancedModeRawSQLFilterEnabled=AdvancedModeRawSQLFilterEnabled;
+            Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled=AdvancedModeAdditionalFilteringColumnsEnabled;
             Settings.Default.LogLevelSelection = LogLevelSelection.ToString();
             Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);

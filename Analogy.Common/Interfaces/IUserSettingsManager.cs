@@ -37,7 +37,9 @@ namespace Analogy.Common.Interfaces
         bool IsBuiltInSearchPanelVisible { get; set; }
         BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; }
         bool ShowMessageDetails { get; set; }
-        bool SimpleMode { get; set; }
+        bool AdvancedMode { get; set; }
+        bool AdvancedModeRawSQLFilterEnabled { get; set; }
+        bool AdvancedModeAdditionalFilteringColumnsEnabled { get; set; }
         LogLevelSelectionType LogLevelSelection { get; set; }
         FontSettings FontSettings { get; set; }
         bool TrackActiveMessage { get; set; }

@@ -33,7 +33,6 @@ namespace Analogy.ApplicationSettings
             this.tsTrackActiveMessage = new DevExpress.XtraEditors.ToggleSwitch();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.tsLogLevels = new DevExpress.XtraEditors.ToggleSwitch();
-            this.tsSimpleMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsDataTimeAscendDescend = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsHistory = new DevExpress.XtraEditors.ToggleSwitch();
             this.checkEditSearchAlsoInSourceAndModule = new DevExpress.XtraEditors.CheckEdit();
@@ -54,7 +53,6 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.tsTrackActiveMessage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsLogLevels.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsDataTimeAscendDescend.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).BeginInit();
@@ -79,7 +77,6 @@ namespace Analogy.ApplicationSettings
             this.gcFiltering.Controls.Add(this.tsTrackActiveMessage);
             this.gcFiltering.Controls.Add(this.chkLstLogLevel);
             this.gcFiltering.Controls.Add(this.tsLogLevels);
-            this.gcFiltering.Controls.Add(this.tsSimpleMode);
             this.gcFiltering.Controls.Add(this.tsDataTimeAscendDescend);
             this.gcFiltering.Controls.Add(this.tsHistory);
             this.gcFiltering.Controls.Add(this.checkEditSearchAlsoInSourceAndModule);
@@ -92,7 +89,7 @@ namespace Analogy.ApplicationSettings
             this.gcFiltering.Margin = new System.Windows.Forms.Padding(10);
             this.gcFiltering.Name = "gcFiltering";
             this.gcFiltering.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.gcFiltering.Size = new System.Drawing.Size(840, 449);
+            this.gcFiltering.Size = new System.Drawing.Size(840, 412);
             this.gcFiltering.TabIndex = 4;
             this.gcFiltering.Text = "Filtering and search ";
             // 
@@ -100,7 +97,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.tsTrackActiveMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsTrackActiveMessage.Location = new System.Drawing.Point(7, 186);
+            this.tsTrackActiveMessage.Location = new System.Drawing.Point(7, 159);
             this.tsTrackActiveMessage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsTrackActiveMessage.Name = "tsTrackActiveMessage";
             this.tsTrackActiveMessage.Properties.OffText = "Do not track Active / Selected message in log grid";
@@ -120,7 +117,7 @@ namespace Analogy.ApplicationSettings
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Warning"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Debug"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(null, "Verbose")});
-            this.chkLstLogLevel.Location = new System.Drawing.Point(433, 292);
+            this.chkLstLogLevel.Location = new System.Drawing.Point(433, 265);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
             this.chkLstLogLevel.Size = new System.Drawing.Size(390, 137);
@@ -130,7 +127,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.tsLogLevels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsLogLevels.Location = new System.Drawing.Point(7, 288);
+            this.tsLogLevels.Location = new System.Drawing.Point(7, 261);
             this.tsLogLevels.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsLogLevels.Name = "tsLogLevels";
             this.tsLogLevels.Properties.OffText = "Single Selection";
@@ -138,23 +135,11 @@ namespace Analogy.ApplicationSettings
             this.tsLogLevels.Size = new System.Drawing.Size(387, 24);
             this.tsLogLevels.TabIndex = 33;
             // 
-            // tsSimpleMode
-            // 
-            this.tsSimpleMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsSimpleMode.Location = new System.Drawing.Point(7, 27);
-            this.tsSimpleMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsSimpleMode.Name = "tsSimpleMode";
-            this.tsSimpleMode.Properties.OffText = "Simple mode is off (Additional options in filtering UI)";
-            this.tsSimpleMode.Properties.OnText = "Simple mode is on (Less options in filtering UI)";
-            this.tsSimpleMode.Size = new System.Drawing.Size(817, 24);
-            this.tsSimpleMode.TabIndex = 8;
-            // 
             // tsDataTimeAscendDescend
             // 
             this.tsDataTimeAscendDescend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsDataTimeAscendDescend.Location = new System.Drawing.Point(6, 88);
+            this.tsDataTimeAscendDescend.Location = new System.Drawing.Point(6, 61);
             this.tsDataTimeAscendDescend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsDataTimeAscendDescend.Name = "tsDataTimeAscendDescend";
             this.tsDataTimeAscendDescend.Properties.OffText = "Default sort is by ascending date (new messages are at the bottom)";
@@ -166,7 +151,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.tsHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsHistory.Location = new System.Drawing.Point(5, 149);
+            this.tsHistory.Location = new System.Drawing.Point(5, 122);
             this.tsHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsHistory.Name = "tsHistory";
             this.tsHistory.Properties.OffText = "Don\'t show history of cleared Messages";
@@ -176,7 +161,7 @@ namespace Analogy.ApplicationSettings
             // 
             // checkEditSearchAlsoInSourceAndModule
             // 
-            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 254);
+            this.checkEditSearchAlsoInSourceAndModule.Location = new System.Drawing.Point(6, 227);
             this.checkEditSearchAlsoInSourceAndModule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkEditSearchAlsoInSourceAndModule.Name = "checkEditSearchAlsoInSourceAndModule";
             this.checkEditSearchAlsoInSourceAndModule.Properties.Caption = "Search text also in Source and Module/Process columns";
@@ -185,7 +170,7 @@ namespace Analogy.ApplicationSettings
             // 
             // chkEditPaging
             // 
-            this.chkEditPaging.Location = new System.Drawing.Point(6, 223);
+            this.chkEditPaging.Location = new System.Drawing.Point(6, 196);
             this.chkEditPaging.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkEditPaging.Name = "chkEditPaging";
             this.chkEditPaging.Properties.Caption = "Enable Paging (number of rows per page):";
@@ -195,7 +180,7 @@ namespace Analogy.ApplicationSettings
             // nudPageLength
             // 
             this.nudPageLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudPageLength.Location = new System.Drawing.Point(592, 223);
+            this.nudPageLength.Location = new System.Drawing.Point(592, 196);
             this.nudPageLength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudPageLength.Maximum = new decimal(new int[] {
             1874919424,
@@ -220,7 +205,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.tsErrorLevelAsDefault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 120);
+            this.tsErrorLevelAsDefault.Location = new System.Drawing.Point(5, 93);
             this.tsErrorLevelAsDefault.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsErrorLevelAsDefault.Name = "tsErrorLevelAsDefault";
             this.tsErrorLevelAsDefault.Properties.OffText = "Don\'t filter logs on Load";
@@ -232,7 +217,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.tsFilteringExclude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsFilteringExclude.Location = new System.Drawing.Point(5, 57);
+            this.tsFilteringExclude.Location = new System.Drawing.Point(5, 30);
             this.tsFilteringExclude.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsFilteringExclude.Name = "tsFilteringExclude";
             this.tsFilteringExclude.Properties.OffText = "Don\'t save filtering text upon exit";
@@ -245,7 +230,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl1.Controls.Add(this.labelControl13);
             this.groupControl1.Controls.Add(this.chklExclusionLogLevel);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 449);
+            this.groupControl1.Location = new System.Drawing.Point(0, 412);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(840, 278);
             this.groupControl1.TabIndex = 37;
@@ -277,7 +262,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl2.Controls.Add(this.sePoolingDelay);
             this.groupControl2.Controls.Add(this.ceEnablePoolingDelay);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl2.Location = new System.Drawing.Point(0, 727);
+            this.groupControl2.Location = new System.Drawing.Point(0, 690);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(840, 60);
             this.groupControl2.TabIndex = 38;
@@ -322,7 +307,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.groupControlExperimental.Controls.Add(this.tsShowProgressCounter);
             this.groupControlExperimental.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControlExperimental.Location = new System.Drawing.Point(0, 787);
+            this.groupControlExperimental.Location = new System.Drawing.Point(0, 750);
             this.groupControlExperimental.Name = "groupControlExperimental";
             this.groupControlExperimental.Size = new System.Drawing.Size(840, 60);
             this.groupControlExperimental.TabIndex = 39;
@@ -357,7 +342,6 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.tsTrackActiveMessage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsLogLevels.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsSimpleMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsDataTimeAscendDescend.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsHistory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSearchAlsoInSourceAndModule.Properties)).EndInit();
@@ -386,7 +370,6 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.ToggleSwitch tsTrackActiveMessage;
         private DevExpress.XtraEditors.CheckedListBoxControl chkLstLogLevel;
         private DevExpress.XtraEditors.ToggleSwitch tsLogLevels;
-        private DevExpress.XtraEditors.ToggleSwitch tsSimpleMode;
         private DevExpress.XtraEditors.ToggleSwitch tsDataTimeAscendDescend;
         private DevExpress.XtraEditors.ToggleSwitch tsHistory;
         private DevExpress.XtraEditors.CheckEdit checkEditSearchAlsoInSourceAndModule;

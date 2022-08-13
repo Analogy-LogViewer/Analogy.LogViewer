@@ -35,8 +35,8 @@
     <Setting Name="ApplicationSkinName" Type="System.String" Scope="User">
       <Value Profile="(Default)">DevExpress Style</Value>
     </Setting>
-    <Setting Name="SimpleMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="AdvancedMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="EnableFileCaching" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -247,6 +247,12 @@
     </Setting>
     <Setting Name="WarnNET3" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AdvancedModeRawSQLFilterEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AdvancedModeAdditionalFilteringColumnsEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -76,7 +76,6 @@ namespace Analogy.CommonControls.UserControls
         private List<string> _excludeMostCommon = new List<string>();
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
-        private bool _simpleMode;
         private ReaderWriterLockSlim lockExternalWindowsObject = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
 
         private ReaderWriterLockSlim lockSlim;
@@ -206,7 +205,6 @@ namespace Analogy.CommonControls.UserControls
             spltcMessages.PanelVisibility = SplitPanelVisibility.Panel1;
             WorkspaceManager.SetSerializationEnabled(gridControl, false);
             WorkspaceManager.SetSerializationEnabled(spltcMessages, false);
-            _simpleMode = Settings.SimpleMode;
             counts = new Dictionary<string, int>();
             foreach (string value in Utils.LogLevels)
             {
@@ -1222,9 +1220,8 @@ namespace Analogy.CommonControls.UserControls
             dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
-            pnlExtraFilters.Visible = !_simpleMode;
-            bBtnShare.Enabled = false;// FactoriesManager.Instance.Factories.SelectMany(f => f.ShareableFactories).SelectMany(fc => fc.Shareables).Any();
-
+            pnlExtraFilters.Visible = Settings.AdvancedMode && Settings.AdvancedModeAdditionalFilteringColumnsEnabled;
+            bBtnShare.Enabled = false;
 
             logGrid.OptionsSelection.MultiSelect = true;
             logGrid.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
@@ -2787,7 +2784,7 @@ namespace Analogy.CommonControls.UserControls
         {
             CreateBookmark(true);
         }
-        
+
         private void bBtnRemoveBoomark_ItemClick(object sender, ItemClickEventArgs e)
         {
             RemoveBookmark();

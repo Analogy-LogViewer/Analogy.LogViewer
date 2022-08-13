@@ -59,7 +59,6 @@ namespace Analogy.ApplicationSettings
             };
 
             tsTrackActiveMessage.IsOnChanged += (s, e) => Settings.TrackActiveMessage = tsTrackActiveMessage.IsOn;
-            tsSimpleMode.IsOnChanged += (s, e) => Settings.SimpleMode = tsSimpleMode.IsOn;
             tsLogLevels.IsOnChanged += (s, e) => Settings.LogLevelSelection = tsLogLevels.IsOn ? LogLevelSelectionType.Multiple : LogLevelSelectionType.Single;
             sePoolingDelay.ValueChanged += (s, e) =>
             {
@@ -80,7 +79,6 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
-            tsSimpleMode.IsOn = Settings.SimpleMode;
             tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;

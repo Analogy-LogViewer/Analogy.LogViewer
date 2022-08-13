@@ -67,7 +67,9 @@ namespace Analogy.DataTypes
         public string ApplicationSvgPaletteName { get; set; }
         public AnalogyLookAndFeelStyle ApplicationStyle { get; set; } = AnalogyLookAndFeelStyle.Skin;
         public bool ShowMessageDetails { get; set; }
-        public bool SimpleMode { get; set; }
+        public bool AdvancedMode { get; set; } = false;
+        public bool AdvancedModeRawSQLFilterEnabled { get; set; }
+        public bool AdvancedModeAdditionalFilteringColumnsEnabled { get; set; }
         public bool IsFirstRun { get; set; }
         public LogLevelSelectionType LogLevelSelection { get; set; }
         public bool ShowWhatIsNewAtStartup { get; set; }
