@@ -132,6 +132,7 @@
             this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsDebugging = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDonation = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAdvancedMode = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
@@ -147,7 +148,6 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbiAdvancedMode = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -894,9 +894,16 @@
             // 
             this.bbiDonation.Caption = "Supporting the project";
             this.bbiDonation.Id = 114;
-            this.bbiDonation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.Image")));
-            this.bbiDonation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.LargeImage")));
+            this.bbiDonation.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiDonation.ImageOptions.SvgImage")));
             this.bbiDonation.Name = "bbiDonation";
+            // 
+            // bbiAdvancedMode
+            // 
+            this.bbiAdvancedMode.Caption = "Advanced Mode Features";
+            this.bbiAdvancedMode.Id = 122;
+            this.bbiAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.Image")));
+            this.bbiAdvancedMode.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.LargeImage")));
+            this.bbiAdvancedMode.Name = "bbiAdvancedMode";
             // 
             // barSubItem3
             // 
@@ -969,8 +976,9 @@
             // 
             // bbiGitHubSponsor
             // 
-            this.bbiGitHubSponsor.Caption = "💖 GitHub Sponsor";
+            this.bbiGitHubSponsor.Caption = "GitHub Sponsor";
             this.bbiGitHubSponsor.Id = 121;
+            this.bbiGitHubSponsor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiGitHubSponsor.ImageOptions.SvgImage")));
             this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
             // 
             // ribbonStatusBar
@@ -1036,14 +1044,6 @@
             // 
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
-            // 
-            // bbiAdvancedMode
-            // 
-            this.bbiAdvancedMode.Caption = "Advanced Mode Features";
-            this.bbiAdvancedMode.Id = 122;
-            this.bbiAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.Image")));
-            this.bbiAdvancedMode.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.LargeImage")));
-            this.bbiAdvancedMode.Name = "bbiAdvancedMode";
             // 
             // MainForm
             // 

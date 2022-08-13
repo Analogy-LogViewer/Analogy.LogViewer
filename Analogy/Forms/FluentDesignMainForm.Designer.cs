@@ -31,12 +31,12 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -55,6 +55,7 @@ namespace Analogy
             this.btnSettingsUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnSettingsDebugging = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDonation = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAdvancedMode = new DevExpress.XtraBars.BarButtonItem();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barMain = new DevExpress.XtraBars.Bar();
@@ -95,7 +96,6 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
-            this.bbiAdvancedMode = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -282,9 +282,16 @@ namespace Analogy
             // 
             this.bbiDonation.Caption = "Supporting the project";
             this.bbiDonation.Id = 3;
-            this.bbiDonation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.Image")));
-            this.bbiDonation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDonation.ImageOptions.LargeImage")));
+            this.bbiDonation.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiDonation.ImageOptions.SvgImage")));
             this.bbiDonation.Name = "bbiDonation";
+            // 
+            // bbiAdvancedMode
+            // 
+            this.bbiAdvancedMode.Caption = "Advanced Mode Features";
+            this.bbiAdvancedMode.Id = 0;
+            this.bbiAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.Image")));
+            this.bbiAdvancedMode.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.LargeImage")));
+            this.bbiAdvancedMode.Name = "bbiAdvancedMode";
             // 
             // dockManager1
             // 
@@ -501,19 +508,21 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Caption = "Sponsor";
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem1.Text = "Sponsor";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Support this project at Open Collective";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
+            toolTipTitleItem5.Text = "Sponsor";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Support this project at Open Collective";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip5;
             this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiGitHubSponsor
             // 
-            this.bbiGitHubSponsor.Caption = "💖 GitHub Sponsor";
+            this.bbiGitHubSponsor.Caption = "GitHub Sponsor";
             this.bbiGitHubSponsor.Id = 31;
+            this.bbiGitHubSponsor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiGitHubSponsor.ImageOptions.SvgImage")));
             this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
+            this.bbiGitHubSponsor.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bbiKofi
             // 
@@ -530,11 +539,11 @@ namespace Analogy
             this.bbiPayPal.ImageOptions.Image = global::Analogy.Properties.Resources.paypal16;
             this.bbiPayPal.Name = "bbiPayPal";
             this.bbiPayPal.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem2.Text = "PayPal Donation";
-            toolTipItem2.Text = "Support the project with small PayPal donation";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.bbiPayPal.SuperTip = superToolTip2;
+            toolTipTitleItem6.Text = "PayPal Donation";
+            toolTipItem6.Text = "Support the project with small PayPal donation";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.bbiPayPal.SuperTip = superToolTip6;
             // 
             // bbiBinance
             // 
@@ -673,14 +682,6 @@ namespace Analogy
             // 
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
-            // 
-            // bbiAdvancedMode
-            // 
-            this.bbiAdvancedMode.Caption = "Advanced Mode Features";
-            this.bbiAdvancedMode.Id = 0;
-            this.bbiAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiAdvancedMode.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.bbiAdvancedMode.Name = "bbiAdvancedMode";
             // 
             // FluentDesignMainForm
             // 
