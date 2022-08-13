@@ -459,6 +459,11 @@ namespace Analogy.Forms
                 ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
                 user.ShowDialog(this);
             };
+            bbiAdvancedMode.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm("Advanced Mode");
+                user.ShowDialog(this);
+            };
             btnApplicationSettings.ItemClick += (s, e) =>
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");

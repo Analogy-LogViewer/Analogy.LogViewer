@@ -84,6 +84,8 @@ namespace Analogy.Forms
                     return new DataProvidersExternalLocationsSettingsUC();
                 case "Donations":
                     return new SupportSettingsUC();
+                case "Advanced Mode":
+                    return new AdvancedSettingsUC();
                 default:
                     {
                         AnalogyLogger.Instance.LogError($"User Setting with {name} was not found");
@@ -218,6 +220,9 @@ namespace Analogy.Forms
 
         }
 
-      
+        private void aceAdvancedMode_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl("Advanced Mode");
+        }
     }
 }

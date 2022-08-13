@@ -44,37 +44,37 @@
             this.gcAdvancedSettings.Controls.Add(this.tsAdvancedModeAdditionalColumns);
             this.gcAdvancedSettings.Controls.Add(this.tsAdvancedModeRawSQLFiltering);
             this.gcAdvancedSettings.Controls.Add(this.tsEnabledAdvancedSettings);
-            this.gcAdvancedSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcAdvancedSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcAdvancedSettings.Location = new System.Drawing.Point(0, 0);
             this.gcAdvancedSettings.Margin = new System.Windows.Forms.Padding(10);
             this.gcAdvancedSettings.Name = "gcAdvancedSettings";
             this.gcAdvancedSettings.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.gcAdvancedSettings.Size = new System.Drawing.Size(766, 412);
+            this.gcAdvancedSettings.Size = new System.Drawing.Size(766, 501);
             this.gcAdvancedSettings.TabIndex = 5;
-            this.gcAdvancedSettings.Text = "Filtering and search ";
+            this.gcAdvancedSettings.Text = "Advanced Features/Mode";
             // 
             // tsAdvancedModeAdditionalColumns
             // 
             this.tsAdvancedModeAdditionalColumns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsAdvancedModeAdditionalColumns.Location = new System.Drawing.Point(6, 61);
+            this.tsAdvancedModeAdditionalColumns.Location = new System.Drawing.Point(71, 61);
             this.tsAdvancedModeAdditionalColumns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsAdvancedModeAdditionalColumns.Name = "tsAdvancedModeAdditionalColumns";
             this.tsAdvancedModeAdditionalColumns.Properties.OffText = "Show Additional Columns for filtering messages";
             this.tsAdvancedModeAdditionalColumns.Properties.OnText = "Show Additional Columns for filtering messages";
-            this.tsAdvancedModeAdditionalColumns.Size = new System.Drawing.Size(743, 24);
+            this.tsAdvancedModeAdditionalColumns.Size = new System.Drawing.Size(678, 24);
             this.tsAdvancedModeAdditionalColumns.TabIndex = 7;
             // 
             // tsAdvancedModeRawSQLFiltering
             // 
             this.tsAdvancedModeRawSQLFiltering.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsAdvancedModeRawSQLFiltering.Location = new System.Drawing.Point(5, 93);
+            this.tsAdvancedModeRawSQLFiltering.Location = new System.Drawing.Point(70, 93);
             this.tsAdvancedModeRawSQLFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsAdvancedModeRawSQLFiltering.Name = "tsAdvancedModeRawSQLFiltering";
             this.tsAdvancedModeRawSQLFiltering.Properties.OffText = "Raw SQL filtering Disabled";
             this.tsAdvancedModeRawSQLFiltering.Properties.OnText = "Raw SQL filtering Enabled";
-            this.tsAdvancedModeRawSQLFiltering.Size = new System.Drawing.Size(743, 24);
+            this.tsAdvancedModeRawSQLFiltering.Size = new System.Drawing.Size(678, 24);
             this.tsAdvancedModeRawSQLFiltering.TabIndex = 3;
             // 
             // tsEnabledAdvancedSettings

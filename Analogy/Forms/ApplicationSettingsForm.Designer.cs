@@ -51,6 +51,7 @@ namespace Analogy.Forms
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.bbtnReset = new DevExpress.XtraBars.BarButtonItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
+            this.aceAdvancedMode = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -74,12 +75,13 @@ namespace Analogy.Forms
             this.Extensions,
             this.updates,
             this.debugging,
-            this.Donations});
+            this.Donations,
+            this.aceAdvancedMode});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(4);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(325, 812);
+            this.accordionControl1.Size = new System.Drawing.Size(325, 912);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -149,7 +151,7 @@ namespace Analogy.Forms
             // 
             // realDataProviderElement
             // 
-            this.realDataProviderElement.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement4.ImageOptions.Image")));
+            this.realDataProviderElement.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("realDataProviderElement.ImageOptions.Image")));
             this.realDataProviderElement.Name = "realDataProviderElement";
             this.realDataProviderElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.realDataProviderElement.Text = "Real Time Data Providers";
@@ -157,7 +159,7 @@ namespace Analogy.Forms
             // 
             // FileExtensionsElement
             // 
-            this.FileExtensionsElement.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
+            this.FileExtensionsElement.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FileExtensionsElement.ImageOptions.Image")));
             this.FileExtensionsElement.Name = "FileExtensionsElement";
             this.FileExtensionsElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.FileExtensionsElement.Text = "Default File Associations";
@@ -205,10 +207,11 @@ namespace Analogy.Forms
             // 
             // Donations
             // 
-            this.Donations.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Donations.ImageOptions.Image")));
+            this.Donations.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Donations.ImageOptions.SvgImage")));
+            this.Donations.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.Full;
             this.Donations.Name = "Donations";
             this.Donations.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.Donations.Text = "Donations";
+            this.Donations.Text = "Support";
             this.Donations.Click += new System.EventHandler(this.Donations_Click);
             // 
             // fluentDesignFormControl1
@@ -240,14 +243,22 @@ namespace Analogy.Forms
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(325, 39);
             this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(873, 812);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(873, 912);
             this.fluentDesignFormContainer1.TabIndex = 0;
+            // 
+            // aceAdvancedMode
+            // 
+            this.aceAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceAdvancedMode.ImageOptions.Image")));
+            this.aceAdvancedMode.Name = "aceAdvancedMode";
+            this.aceAdvancedMode.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceAdvancedMode.Text = "Advanced Features";
+            this.aceAdvancedMode.Click += new System.EventHandler(this.aceAdvancedMode_Click);
             // 
             // ApplicationSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1198, 851);
+            this.ClientSize = new System.Drawing.Size(1198, 951);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
@@ -286,5 +297,6 @@ namespace Analogy.Forms
         private DevExpress.XtraBars.Navigation.AccordionControlElement DataProviderExternal;
         private DevExpress.XtraBars.BarButtonItem bbtnReset;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Donations;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceAdvancedMode;
     }
 }

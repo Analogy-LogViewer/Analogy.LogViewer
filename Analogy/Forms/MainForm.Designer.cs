@@ -147,6 +147,7 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            this.bbiAdvancedMode = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -254,10 +255,11 @@
             this.bbiKofi,
             this.bbtnItemGithubHistory,
             this.bbiDownloadStatistics,
-            this.bbiGitHubSponsor});
+            this.bbiGitHubSponsor,
+            this.bbiAdvancedMode});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.ribbonControlMain.MaxItemId = 122;
+            this.ribbonControlMain.MaxItemId = 123;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.OptionsMenuMinWidth = 515;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
@@ -789,7 +791,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSettingsExtensions),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsDebugging),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDonation)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDonation),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAdvancedMode)});
             this.bsiSettings.Name = "bsiSettings";
             // 
             // btnApplicationSettings
@@ -1034,6 +1037,14 @@
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
             // 
+            // bbiAdvancedMode
+            // 
+            this.bbiAdvancedMode.Caption = "Advanced Mode Features";
+            this.bbiAdvancedMode.Id = 122;
+            this.bbiAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.Image")));
+            this.bbiAdvancedMode.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.LargeImage")));
+            this.bbiAdvancedMode.Name = "bbiAdvancedMode";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -1153,5 +1164,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnItemGithubHistory;
         private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
         private DevExpress.XtraBars.BarButtonItem bbiGitHubSponsor;
+        private DevExpress.XtraBars.BarButtonItem bbiAdvancedMode;
     }
 }
