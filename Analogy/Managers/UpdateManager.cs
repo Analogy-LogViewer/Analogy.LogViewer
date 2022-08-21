@@ -185,11 +185,6 @@ namespace Analogy.Managers
                 asset = LastVersionChecked.Assets
                     .FirstOrDefault(a => a.Name.Contains("472") || a.Name.Contains("472"));
             }
-            else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.8.1"))
-            {
-                asset = LastVersionChecked.Assets
-                    .FirstOrDefault(a => a.Name.Contains("481") || a.Name.Contains("481"));
-            }
             else if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.8"))
             {
                 asset = LastVersionChecked.Assets
