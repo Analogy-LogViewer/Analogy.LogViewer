@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Analogy.CommonControls.Properties;
 using Newtonsoft.Json;
@@ -35,10 +36,10 @@ namespace Analogy.CommonControls.Tools
             MouseDown += this_MouseDown;
             expandAllMenuItem.Click += expandAllMenuItem_Click;
 
-            LoadImgaeList();
+            LoadImageList();
         }
 
-        private void LoadImgaeList()
+        private void LoadImageList()
         {
             ImageList treeImages = new ImageList();
             treeImages.ImageSize = new Size(16, 16);
@@ -160,20 +161,68 @@ namespace Analogy.CommonControls.Tools
                 rootNode.ExpandAll();
             }
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static bool TryParse(string strInput, out JToken output)
+        {
+            if (String.IsNullOrWhiteSpace(strInput))
+            {
+                output = null;
+                return false;
+            }
+            strInput = strInput.Trim();
+            if ((strInput.StartsWith("{") && strInput.EndsWith("}")) || //For object
+                (strInput.StartsWith("[") && strInput.EndsWith("]"))) //For array
+            {
+                try
+                {
+                    output = JToken.Parse(strInput);
+                    return true;
+                }
+                catch (JsonReaderException jex)
+                {
+                    //Exception in parsing json
+                    //optional: LogError(jex);
+                    output = null;
+                    return false;
+                }
+                catch (Exception ex) //some other exception
+                {
+                    //optional: LogError(ex);
+                    output = null;
+                    return false;
+                }
+            }
+            else
+            {
+                output = null;
+                return false;
+            }
+        }
         private void AddNode(JsonTreeNode parentNode, string property, JToken item)
         {
             var node = JsonTreeNodeCreator.CreateNode(property, item);
             parentNode.Nodes.Add(node);
-
             if (item.Type == JTokenType.Array)
             {
                 LoadArray(item, node);
             }
 
-            if (item.Type == JTokenType.Object)
+            else if (item.Type == JTokenType.Object)
             {
                 LoadObject(item as JObject, node);
+            }
+            else if (TryParse(item.ToString(), out var token))
+            {
+                node.Text = property;
+                if (token.Type == JTokenType.Array)
+                {
+                    LoadArray(token, node);
+                }
+
+                else if (token.Type == JTokenType.Object)
+                {
+                    LoadObject(token as JObject, node);
+                }
             }
         }
 
