@@ -283,7 +283,7 @@ namespace Analogy
             // 
             this.bbiDonation.Caption = "Supporting the project";
             this.bbiDonation.Id = 3;
-            this.bbiDonation.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiDonation.ImageOptions.SvgImage")));
+            this.bbiDonation.ImageOptions.Image = global::Analogy.Properties.Resources.heart16x16;
             this.bbiDonation.Name = "bbiDonation";
             // 
             // bbiAdvancedMode
@@ -704,7 +704,7 @@ namespace Analogy
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(10, 796);
+            this.MinimumSize = new System.Drawing.Size(10, 654);
             this.Name = "FluentDesignMainForm";
             this.NavigationControl = this.accordionControl;
             this.Text = "Analogy";

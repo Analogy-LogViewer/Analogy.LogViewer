@@ -894,7 +894,7 @@
             // 
             this.bbiDonation.Caption = "Supporting the project";
             this.bbiDonation.Id = 114;
-            this.bbiDonation.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiDonation.ImageOptions.SvgImage")));
+            this.bbiDonation.ImageOptions.Image = global::Analogy.Properties.Resources.heart16x16;
             this.bbiDonation.Name = "bbiDonation";
             // 
             // bbiAdvancedMode
@@ -1056,7 +1056,7 @@
             this.Controls.Add(this.ribbonControlMain);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(10, 800);
+            this.MinimumSize = new System.Drawing.Size(10, 729);
             this.Name = "MainForm";
             this.Ribbon = this.ribbonControlMain;
             this.StatusBar = this.ribbonStatusBar;
