@@ -41,27 +41,28 @@ namespace DevExpress.Sync
             // 
             this.txtbSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbSource.Location = new System.Drawing.Point(91, 18);
+            this.txtbSource.Location = new System.Drawing.Point(80, 14);
+            this.txtbSource.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtbSource.Name = "txtbSource";
-            this.txtbSource.Size = new System.Drawing.Size(697, 27);
+            this.txtbSource.Size = new System.Drawing.Size(610, 23);
             this.txtbSource.TabIndex = 0;
-            this.txtbSource.Text = "c:\\Program Files (x86)\\DevExpress 21.2\\Components\\Bin\\";
+            this.txtbSource.Text = "C:\\Program Files\\DevExpress 22.1\\Components\\Bin\\";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.Location = new System.Drawing.Point(9, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.Size = new System.Drawing.Size(46, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Source:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 55);
+            this.label2.Location = new System.Drawing.Point(9, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 20);
+            this.label2.Size = new System.Drawing.Size(42, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Target:";
             // 
@@ -69,17 +70,19 @@ namespace DevExpress.Sync
             // 
             this.txtbTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbTarget.Location = new System.Drawing.Point(91, 51);
+            this.txtbTarget.Location = new System.Drawing.Point(80, 38);
+            this.txtbTarget.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtbTarget.Name = "txtbTarget";
-            this.txtbTarget.Size = new System.Drawing.Size(697, 27);
+            this.txtbTarget.Size = new System.Drawing.Size(610, 23);
             this.txtbTarget.TabIndex = 2;
             this.txtbTarget.Text = "e:\\files\\Programming\\Analogy.LogViewer\\DevExpress\\";
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(91, 88);
+            this.btnCopy.Location = new System.Drawing.Point(80, 66);
+            this.btnCopy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(130, 51);
+            this.btnCopy.Size = new System.Drawing.Size(114, 38);
             this.btnCopy.TabIndex = 4;
             this.btnCopy.Text = "Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -88,9 +91,10 @@ namespace DevExpress.Sync
             // btnVersionUpgrade
             // 
             this.btnVersionUpgrade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVersionUpgrade.Location = new System.Drawing.Point(658, 88);
+            this.btnVersionUpgrade.Location = new System.Drawing.Point(576, 66);
+            this.btnVersionUpgrade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVersionUpgrade.Name = "btnVersionUpgrade";
-            this.btnVersionUpgrade.Size = new System.Drawing.Size(130, 51);
+            this.btnVersionUpgrade.Size = new System.Drawing.Size(114, 38);
             this.btnVersionUpgrade.TabIndex = 5;
             this.btnVersionUpgrade.Text = "Version Upgrade";
             this.btnVersionUpgrade.UseVisualStyleBackColor = true;
@@ -98,15 +102,16 @@ namespace DevExpress.Sync
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 159);
+            this.ClientSize = new System.Drawing.Size(700, 119);
             this.Controls.Add(this.btnVersionUpgrade);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtbTarget);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbSource);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "DevExpress Syncer";
             this.ResumeLayout(false);
