@@ -31,12 +31,12 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -108,10 +108,10 @@ namespace Analogy
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this.fluentDesignFormContainer1, DevExpress.Utils.DefaultBoolean.Default);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(307, 64);
-            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(8);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(263, 51);
+            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(984, 699);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(844, 576);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl
@@ -119,11 +119,11 @@ namespace Analogy
             this.accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl.Location = new System.Drawing.Point(0, 64);
-            this.accordionControl.Margin = new System.Windows.Forms.Padding(8);
+            this.accordionControl.Location = new System.Drawing.Point(0, 51);
+            this.accordionControl.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(307, 699);
+            this.accordionControl.Size = new System.Drawing.Size(263, 576);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -153,8 +153,9 @@ namespace Analogy
             this.bbiDonation,
             this.bbiAdvancedMode});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1291, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1107, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.btnSettings);
@@ -508,19 +509,19 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Caption = "Sponsor";
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem5.Text = "Sponsor";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Support this project at Open Collective";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip5;
+            toolTipTitleItem1.Text = "Sponsor";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Support this project at Open Collective";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
             this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiGitHubSponsor
             // 
             this.bbiGitHubSponsor.Caption = "GitHub Sponsor";
             this.bbiGitHubSponsor.Id = 31;
-            this.bbiGitHubSponsor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiGitHubSponsor.ImageOptions.SvgImage")));
+            this.bbiGitHubSponsor.ImageOptions.Image = global::Analogy.Properties.Resources.heart16x16;
             this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
             this.bbiGitHubSponsor.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -539,11 +540,11 @@ namespace Analogy
             this.bbiPayPal.ImageOptions.Image = global::Analogy.Properties.Resources.paypal16;
             this.bbiPayPal.Name = "bbiPayPal";
             this.bbiPayPal.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem6.Text = "PayPal Donation";
-            toolTipItem6.Text = "Support the project with small PayPal donation";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.bbiPayPal.SuperTip = superToolTip6;
+            toolTipTitleItem2.Text = "PayPal Donation";
+            toolTipItem2.Text = "Support the project with small PayPal donation";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.bbiPayPal.SuperTip = superToolTip2;
             // 
             // bbiBinance
             // 
@@ -615,33 +616,37 @@ namespace Analogy
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 31);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1291, 25);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(1107, 20);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 763);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 627);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1291, 32);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1107, 26);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 64);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 699);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 576);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1291, 64);
+            this.barDockControlRight.Location = new System.Drawing.Point(1107, 51);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 576);
             // 
             // documentManager1
             // 
@@ -686,9 +691,9 @@ namespace Analogy
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1291, 795);
+            this.ClientSize = new System.Drawing.Size(1107, 653);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl);
@@ -698,6 +703,7 @@ namespace Analogy
             this.Controls.Add(this.barDockControlTop);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(10, 796);
             this.Name = "FluentDesignMainForm";
             this.NavigationControl = this.accordionControl;

@@ -48,10 +48,10 @@ namespace Analogy.Forms
             this.updates = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.debugging = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Donations = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceAdvancedMode = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.bbtnReset = new DevExpress.XtraBars.BarButtonItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.aceAdvancedMode = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -77,11 +77,10 @@ namespace Analogy.Forms
             this.debugging,
             this.Donations,
             this.aceAdvancedMode});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
-            this.accordionControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 31);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(325, 912);
+            this.accordionControl1.Size = new System.Drawing.Size(279, 742);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -207,12 +206,20 @@ namespace Analogy.Forms
             // 
             // Donations
             // 
-            this.Donations.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Donations.ImageOptions.SvgImage")));
+            this.Donations.ImageOptions.Image = global::Analogy.Properties.Resources.heart32x32;
             this.Donations.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.Full;
             this.Donations.Name = "Donations";
             this.Donations.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.Donations.Text = "Support";
             this.Donations.Click += new System.EventHandler(this.Donations_Click);
+            // 
+            // aceAdvancedMode
+            // 
+            this.aceAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceAdvancedMode.ImageOptions.Image")));
+            this.aceAdvancedMode.Name = "aceAdvancedMode";
+            this.aceAdvancedMode.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceAdvancedMode.Text = "Advanced Features";
+            this.aceAdvancedMode.Click += new System.EventHandler(this.aceAdvancedMode_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -220,8 +227,9 @@ namespace Analogy.Forms
             this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbtnReset});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1198, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1027, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtnReset);
@@ -240,30 +248,22 @@ namespace Analogy.Forms
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(325, 39);
-            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(4);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(279, 31);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(873, 912);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(748, 742);
             this.fluentDesignFormContainer1.TabIndex = 0;
-            // 
-            // aceAdvancedMode
-            // 
-            this.aceAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceAdvancedMode.ImageOptions.Image")));
-            this.aceAdvancedMode.Name = "aceAdvancedMode";
-            this.aceAdvancedMode.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceAdvancedMode.Text = "Advanced Features";
-            this.aceAdvancedMode.Click += new System.EventHandler(this.aceAdvancedMode_Click);
             // 
             // ApplicationSettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1198, 951);
+            this.ClientSize = new System.Drawing.Size(1027, 773);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ApplicationSettingsForm";
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

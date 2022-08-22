@@ -177,7 +177,7 @@
             this.ribbonControlMain.AutoSaveLayoutToXmlPath = "AnalogyRibbonSettings.xml";
             this.ribbonControlMain.CaptionBarItemLinks.Add(this.bsiGlobalTools);
             this.ribbonControlMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
-            this.ribbonControlMain.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(46);
+            this.ribbonControlMain.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(39, 37, 39, 37);
             this.ribbonControlMain.ExpandCollapseItem.Id = 0;
             this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bsiGlobalTools,
@@ -258,10 +258,10 @@
             this.bbiGitHubSponsor,
             this.bbiAdvancedMode});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.ribbonControlMain.MaxItemId = 123;
             this.ribbonControlMain.Name = "ribbonControlMain";
-            this.ribbonControlMain.OptionsMenuMinWidth = 515;
+            this.ribbonControlMain.OptionsMenuMinWidth = 441;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bsmInfo);
             this.ribbonControlMain.QuickToolbarItemLinks.Add(this.skinRibbonGallery);
@@ -270,7 +270,7 @@
             this.ribbonControlMain.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControlMain.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControlMain.ShowToolbarCustomizeItem = false;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1628, 71);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1395, 58);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.Toolbar.ShowCustomizeItem = false;
             // 
@@ -978,7 +978,7 @@
             // 
             this.bbiGitHubSponsor.Caption = "GitHub Sponsor";
             this.bbiGitHubSponsor.Id = 121;
-            this.bbiGitHubSponsor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiGitHubSponsor.ImageOptions.SvgImage")));
+            this.bbiGitHubSponsor.ImageOptions.Image = global::Analogy.Properties.Resources.heart16x16;
             this.bbiGitHubSponsor.Name = "bbiGitHubSponsor";
             // 
             // ribbonStatusBar
@@ -996,11 +996,11 @@
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnStar);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnReportIssueOrRequest);
             this.ribbonStatusBar.ItemLinks.Add(this.bbtnCheckUpdates);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 866);
-            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 704);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1628, 30);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1395, 24);
             // 
             // tmrStatusUpdates
             // 
@@ -1049,9 +1049,9 @@
             // 
             this.AllowDrop = true;
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1628, 896);
+            this.ClientSize = new System.Drawing.Size(1395, 728);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
