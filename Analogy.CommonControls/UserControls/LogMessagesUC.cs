@@ -52,6 +52,7 @@ namespace Analogy.CommonControls.UserControls
         #endregion
         #region properties
         private DateTimeSelectionUC DateTimePicker { get; set; }
+        private JsonColumnChooserUC JsonColumnChooser { get; set; }
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
         public bool ForceNoFileCaching { get; set; } = false;
@@ -154,6 +155,7 @@ namespace Analogy.CommonControls.UserControls
 
         #region fields
         private bool useSpecificColumnForJson;
+        private string jsonColumnForInlineJsonViewer;
         #endregion fields
 
         private JsonTreeView JsonTreeView { get; set; }
@@ -171,6 +173,7 @@ namespace Analogy.CommonControls.UserControls
             FactoriesManager = factoriesManager;
             InitializeComponent();
             DateTimePicker = new DateTimeSelectionUC();
+            JsonColumnChooser = new JsonColumnChooserUC();
             PagingManager = new PagingManager(this, Settings);
 
             lockSlim = PagingManager.lockSlim;
@@ -182,10 +185,15 @@ namespace Analogy.CommonControls.UserControls
 
             PopupControlContainer datePopup = new PopupControlContainer();
             datePopup.Manager = this.barManager1;
-            datePopup.Size = new Size(456, 27);
-            
             datePopup.Controls.Add(DateTimePicker);
+            datePopup.Size = DateTimePicker.Size;
             ddbGoTo.DropDownControl = datePopup;
+
+            PopupControlContainer jsonColumnChooserPopup = new PopupControlContainer();
+            jsonColumnChooserPopup.Manager = this.barManager1;
+            jsonColumnChooserPopup.Controls.Add(JsonColumnChooser);
+            jsonColumnChooserPopup.Size = JsonColumnChooser.Size;
+            bbiJsonColumn.DropDownControl = jsonColumnChooserPopup;
 
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
@@ -356,7 +364,7 @@ namespace Analogy.CommonControls.UserControls
             };
             DateTimePicker.SelectionChanged += (s, e) =>
             {
-                var location = LocateDateRowByValue(0,  e);
+                var location = LocateDateRowByValue(0, e);
                 if (location >= 0)
                 {
                     LogGrid.FocusedRowHandle = location;
@@ -366,6 +374,20 @@ namespace Analogy.CommonControls.UserControls
             {
                 spltcMessages.PanelVisibility = showJson ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
             };
+
+
+            bbiJsonColumn.ItemClick += (s, e) =>
+            {
+                var times = logGrid.Columns.Select(c => c.FieldName).ToList();
+                JsonColumnChooser.SetNames(times);
+
+            };
+            JsonColumnChooser.SelectionChanged += (s, e) =>
+            {
+                jsonColumnForInlineJsonViewer = e;
+                useSpecificColumnForJson = !string.IsNullOrEmpty(e);
+            };
+
             dockManager1.StartDocking += (s, e) =>
             {
                 if (e.Panel.DockedAsTabbedDocument)
@@ -517,8 +539,9 @@ namespace Analogy.CommonControls.UserControls
             btsiInlineJsonViewer.CheckedChanged += (s, e) =>
             {
                 Settings.InlineJsonViewer = btsiInlineJsonViewer.Checked;
-
+                bbiJsonColumn.Visibility = Settings.InlineJsonViewer ? BarItemVisibility.Always : BarItemVisibility.Never;
             };
+
             sbtnToggleSearchFilter.Click += (_, __) =>
             {
                 Settings.IsBuiltInSearchPanelVisible = !Settings.IsBuiltInSearchPanelVisible;
@@ -1307,6 +1330,7 @@ namespace Analogy.CommonControls.UserControls
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             btsiInlineJsonViewer.Checked = Settings.InlineJsonViewer;
+            bbiJsonColumn.Visibility = Settings.InlineJsonViewer ? BarItemVisibility.Always : BarItemVisibility.Never;
             spltcMessages.PanelVisibility = Settings.InlineJsonViewer ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
 
         }
@@ -3163,6 +3187,8 @@ namespace Analogy.CommonControls.UserControls
             {
                 if (useSpecificColumnForJson)
                 {
+                    var specific = LogGrid.GetRowCellValue(e.FocusedRowHandle, jsonColumnForInlineJsonViewer).ToString();
+                    JsonTreeView.ShowJson(specific);
 
                 }
                 else if (focusedMassage.RawTextType == AnalogyRowTextType.JSON)

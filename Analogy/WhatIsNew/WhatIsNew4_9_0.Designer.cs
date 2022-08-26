@@ -30,7 +30,7 @@
         {
             this.gcImprovements = new DevExpress.XtraEditors.GroupControl();
             this.Issue1259 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.Issue1388 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.Issue1410 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue903 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1409 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1398 = new DevExpress.XtraEditors.HyperlinkLabelControl();
@@ -48,7 +48,7 @@
             // gcImprovements
             // 
             this.gcImprovements.Controls.Add(this.Issue1259);
-            this.gcImprovements.Controls.Add(this.Issue1388);
+            this.gcImprovements.Controls.Add(this.Issue1410);
             this.gcImprovements.Controls.Add(this.Issue903);
             this.gcImprovements.Controls.Add(this.Issue1409);
             this.gcImprovements.Controls.Add(this.Issue1398);
@@ -74,17 +74,17 @@
             this.Issue1259.Visible = false;
             this.Issue1259.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
-            // Issue1388
+            // Issue1410
             // 
-            this.Issue1388.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue1388.Location = new System.Drawing.Point(2, 184);
-            this.Issue1388.Name = "Issue1388";
-            this.Issue1388.Padding = new System.Windows.Forms.Padding(5);
-            this.Issue1388.Size = new System.Drawing.Size(313, 26);
-            this.Issue1388.TabIndex = 19;
-            this.Issue1388.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1388>Add supp" +
-    "ort for specifying a custom SQL filter #1388</href>";
-            this.Issue1388.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.Issue1410.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Issue1410.Location = new System.Drawing.Point(2, 184);
+            this.Issue1410.Name = "Issue1410";
+            this.Issue1410.Padding = new System.Windows.Forms.Padding(5);
+            this.Issue1410.Size = new System.Drawing.Size(472, 26);
+            this.Issue1410.TabIndex = 19;
+            this.Issue1410.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1410>[json Vi" +
+    "ewer] allow setting which column is used to the inline json viewer #1410</href>";
+            this.Issue1410.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // Issue903
             // 
@@ -205,7 +205,7 @@
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1382;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1396;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1259;
-        private DevExpress.XtraEditors.HyperlinkLabelControl Issue1388;
+        private DevExpress.XtraEditors.HyperlinkLabelControl Issue1410;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue903;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1409;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1398;

@@ -521,7 +521,7 @@ namespace Analogy
             args.Text =
                 $"Version {UpdateManager.Instance.CurrentVersion} added raw SQL filtering. You can enable it from the Application settings under Advanced Features";
                 args.DoNotShowAgainCheckBoxVisible = true;
-            args.DoNotShowAgainCheckBoxText = "Do not remind me again";
+            args.DoNotShowAgainCheckBoxText = "Do not show again";
             XtraMessageBox.Show(args);
 
             void Args_Closed(object sender, XtraMessageBoxClosedArgs e)
