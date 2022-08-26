@@ -30,8 +30,8 @@
         {
             this.gcImprovements = new DevExpress.XtraEditors.GroupControl();
             this.Issue1259 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.Issue1266 = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.Issue1267 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.Issue1388 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.Issue903 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1409 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1398 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1397 = new DevExpress.XtraEditors.HyperlinkLabelControl();
@@ -48,8 +48,8 @@
             // gcImprovements
             // 
             this.gcImprovements.Controls.Add(this.Issue1259);
-            this.gcImprovements.Controls.Add(this.Issue1266);
-            this.gcImprovements.Controls.Add(this.Issue1267);
+            this.gcImprovements.Controls.Add(this.Issue1388);
+            this.gcImprovements.Controls.Add(this.Issue903);
             this.gcImprovements.Controls.Add(this.Issue1409);
             this.gcImprovements.Controls.Add(this.Issue1398);
             this.gcImprovements.Controls.Add(this.Issue1397);
@@ -74,27 +74,29 @@
             this.Issue1259.Visible = false;
             this.Issue1259.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
-            // Issue1266
+            // Issue1388
             // 
-            this.Issue1266.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue1266.Location = new System.Drawing.Point(2, 184);
-            this.Issue1266.Name = "Issue1266";
-            this.Issue1266.Padding = new System.Windows.Forms.Padding(5);
-            this.Issue1266.Size = new System.Drawing.Size(31, 26);
-            this.Issue1266.TabIndex = 19;
-            this.Issue1266.Text = "N/A";
-            this.Issue1266.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.Issue1388.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Issue1388.Location = new System.Drawing.Point(2, 184);
+            this.Issue1388.Name = "Issue1388";
+            this.Issue1388.Padding = new System.Windows.Forms.Padding(5);
+            this.Issue1388.Size = new System.Drawing.Size(313, 26);
+            this.Issue1388.TabIndex = 19;
+            this.Issue1388.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1388>Add supp" +
+    "ort for specifying a custom SQL filter #1388</href>";
+            this.Issue1388.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
-            // Issue1267
+            // Issue903
             // 
-            this.Issue1267.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue1267.Location = new System.Drawing.Point(2, 158);
-            this.Issue1267.Name = "Issue1267";
-            this.Issue1267.Padding = new System.Windows.Forms.Padding(5);
-            this.Issue1267.Size = new System.Drawing.Size(31, 26);
-            this.Issue1267.TabIndex = 18;
-            this.Issue1267.Text = "N/A";
-            this.Issue1267.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.Issue903.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Issue903.Location = new System.Drawing.Point(2, 158);
+            this.Issue903.Name = "Issue903";
+            this.Issue903.Padding = new System.Windows.Forms.Padding(5);
+            this.Issue903.Size = new System.Drawing.Size(276, 26);
+            this.Issue903.TabIndex = 18;
+            this.Issue903.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/903>[UI] Add " +
+    "\'go to\' message to specific time #903</href>";
+            this.Issue903.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // Issue1409
             // 
@@ -203,8 +205,8 @@
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1382;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1396;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1259;
-        private DevExpress.XtraEditors.HyperlinkLabelControl Issue1266;
-        private DevExpress.XtraEditors.HyperlinkLabelControl Issue1267;
+        private DevExpress.XtraEditors.HyperlinkLabelControl Issue1388;
+        private DevExpress.XtraEditors.HyperlinkLabelControl Issue903;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1409;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1398;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1397;
