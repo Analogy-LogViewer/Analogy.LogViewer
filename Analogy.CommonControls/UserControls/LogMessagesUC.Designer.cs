@@ -291,9 +291,9 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtpSQLraw = new DevExpress.XtraTab.XtraTabPage();
-            this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.meRawSQL = new DevExpress.XtraEditors.MemoEdit();
             this.sbtnRawFilter = new DevExpress.XtraEditors.SimpleButton();
+            this.meRawSQL = new DevExpress.XtraEditors.MemoEdit();
+            this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -402,8 +402,8 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtpSQLraw.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -1706,7 +1706,6 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ddbGoTo
             // 
-            this.ddbGoTo.Enabled = false;
             this.ddbGoTo.Location = new System.Drawing.Point(1405, 100);
             this.ddbGoTo.MenuManager = this.barManager1;
             this.ddbGoTo.Name = "ddbGoTo";
@@ -2234,7 +2233,6 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem14.Size = new System.Drawing.Size(88, 39);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
-            this.layoutControlItem14.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // popupMenuGoTo
             // 
@@ -3199,10 +3197,15 @@ namespace Analogy.CommonControls.UserControls
             this.xtpSQLraw.Size = new System.Drawing.Size(1496, 142);
             this.xtpSQLraw.Text = "Raw SQL Filtering";
             // 
-            // filtersPopupMenu
+            // sbtnRawFilter
             // 
-            this.filtersPopupMenu.Manager = this.barManager1;
-            this.filtersPopupMenu.Name = "filtersPopupMenu";
+            this.sbtnRawFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnRawFilter.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
+            this.sbtnRawFilter.Location = new System.Drawing.Point(1371, 12);
+            this.sbtnRawFilter.Name = "sbtnRawFilter";
+            this.sbtnRawFilter.Size = new System.Drawing.Size(110, 34);
+            this.sbtnRawFilter.TabIndex = 1;
+            this.sbtnRawFilter.Text = "Apply";
             // 
             // meRawSQL
             // 
@@ -3215,15 +3218,10 @@ namespace Analogy.CommonControls.UserControls
             this.meRawSQL.Size = new System.Drawing.Size(1362, 118);
             this.meRawSQL.TabIndex = 0;
             // 
-            // sbtnRawFilter
+            // filtersPopupMenu
             // 
-            this.sbtnRawFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbtnRawFilter.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.sbtnRawFilter.Location = new System.Drawing.Point(1371, 12);
-            this.sbtnRawFilter.Name = "sbtnRawFilter";
-            this.sbtnRawFilter.Size = new System.Drawing.Size(110, 34);
-            this.sbtnRawFilter.TabIndex = 1;
-            this.sbtnRawFilter.Text = "Apply";
+            this.filtersPopupMenu.Manager = this.barManager1;
+            this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
             // LogMessagesUC
             // 
@@ -3353,8 +3351,8 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             this.xtpSQLraw.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

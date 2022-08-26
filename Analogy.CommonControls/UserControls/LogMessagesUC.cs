@@ -22,6 +22,7 @@ using Analogy.CommonControls.Properties;
 using Analogy.CommonControls.Tools;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.UserControls;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
 using DevExpress.Data.Mask;
@@ -50,6 +51,7 @@ namespace Analogy.CommonControls.UserControls
 
         #endregion
         #region properties
+        private DateTimeSelectionUC DateTimePicker { get; set; }
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
         public bool ForceNoFileCaching { get; set; } = false;
@@ -149,6 +151,11 @@ namespace Analogy.CommonControls.UserControls
         }
         private LogLevelSelectionType LogLevelSelectionType => Settings.LogLevelSelection;
         #endregion
+
+        #region fields
+        private bool useSpecificColumnForJson;
+        #endregion fields
+
         private JsonTreeView JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
 
@@ -163,6 +170,7 @@ namespace Analogy.CommonControls.UserControls
             ExtensionManager = extensionManager;
             FactoriesManager = factoriesManager;
             InitializeComponent();
+            DateTimePicker = new DateTimeSelectionUC();
             PagingManager = new PagingManager(this, Settings);
 
             lockSlim = PagingManager.lockSlim;
@@ -171,6 +179,14 @@ namespace Analogy.CommonControls.UserControls
             {
                 return;
             }
+
+            PopupControlContainer datePopup = new PopupControlContainer();
+            datePopup.Manager = this.barManager1;
+            datePopup.Size = new Size(456, 27);
+            
+            datePopup.Controls.Add(DateTimePicker);
+            ddbGoTo.DropDownControl = datePopup;
+
             ProgressReporter = new Progress<AnalogyProgressReport>((value) =>
             {
                 if (value.Processed == value.Total)
@@ -328,6 +344,24 @@ namespace Analogy.CommonControls.UserControls
         }
         private void SetupEventsHandlers()
         {
+            ddbGoTo.ArrowButtonClick += (s, e) =>
+            {
+                var times = GetMessages().Select(m => m.Date).Distinct().ToList();
+                DateTimePicker.SetTimes(times);
+            };
+            ddbGoTo.Click += (s, e) =>
+            {
+                var times = GetMessages().Select(m => m.Date).Distinct().ToList();
+                DateTimePicker.SetTimes(times);
+            };
+            DateTimePicker.SelectionChanged += (s, e) =>
+            {
+                var location = LocateDateRowByValue(0,  e);
+                if (location >= 0)
+                {
+                    LogGrid.FocusedRowHandle = location;
+                }
+            };
             Settings.OnInlineJsonViewerChanged += (s, showJson) =>
             {
                 spltcMessages.PanelVisibility = showJson ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
@@ -782,7 +816,7 @@ namespace Analogy.CommonControls.UserControls
             sbtnRawFilter.Click += (s, e) =>
             {
                 sbtnRawFilter.Image = ApplyRawSQLFilter(meRawSQL.Text) ? Resources.Apply_16x16 : Resources.Delete_16x16;
-                
+
             };
             #region Time Offsets
 
@@ -2024,7 +2058,7 @@ namespace Analogy.CommonControls.UserControls
 
         }
 
-        public virtual int LocateByValue(int startRowHandle, GridColumn column, AnalogyLogMessage? val)
+        public int LocateByValue(int startRowHandle, GridColumn column, object? val)
         {
             if (!LogGrid.DataController.IsReady || val == null)
             {
@@ -2065,7 +2099,47 @@ namespace Analogy.CommonControls.UserControls
 
             return int.MinValue;
         }
+        public int LocateDateRowByValue(int startRowHandle, DateTime val)
+        {
+            if (!LogGrid.DataController.IsReady || val == null)
+            {
+                return int.MinValue;
+            }
 
+            startRowHandle = Math.Max(0, startRowHandle);
+            if (LogGrid.IsServerMode)
+            {
+                if (startRowHandle != 0)
+                {
+                    throw new ArgumentException("Argument must be '0' in server mode.", nameof(startRowHandle));
+                }
+            }
+
+            try
+            {
+                if (LogGrid.IsServerMode)
+                {
+                    return LogGrid.DataController.FindRowByValue(gridColumnDate.FieldName, val, null);
+                }
+
+                for (int rowHandle = startRowHandle;
+                     rowHandle < LogGrid.DataController.VisibleListSourceRowCount;
+                     ++rowHandle)
+                {
+                    object rowCellValue = LogGrid.GetRowCellValue(rowHandle, gridColumnDate.Caption);
+                    if (val.Equals(rowCellValue))
+                    {
+                        return rowHandle;
+                    }
+                }
+            }
+            catch
+            {
+                //do nothing
+            }
+
+            return int.MinValue;
+        }
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLogBeforeLoading,
             bool isReloadSoForceNoCaching = false)
         {
@@ -3085,10 +3159,18 @@ namespace Analogy.CommonControls.UserControls
 
             var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
             LoadTextBoxes(focusedMassage);
-            if (Settings.InlineJsonViewer && focusedMassage.RawTextType == AnalogyRowTextType.JSON)
+            if (Settings.InlineJsonViewer)
             {
-                JsonTreeView.ShowJson(focusedMassage.RawText);
+                if (useSpecificColumnForJson)
+                {
+
+                }
+                else if (focusedMassage.RawTextType == AnalogyRowTextType.JSON)
+                {
+                    JsonTreeView.ShowJson(focusedMassage.RawText);
+                }
             }
+
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
             if (!LoadingInProgress)
             {

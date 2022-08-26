@@ -31,13 +31,13 @@ namespace Analogy.UserControls
         {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.sbtnOK = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(4, 5);
+            this.labelControl1.Location = new System.Drawing.Point(4, 7);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(73, 16);
             this.labelControl1.TabIndex = 0;
@@ -45,33 +45,36 @@ namespace Analogy.UserControls
             // 
             // sbtnOK
             // 
-            this.sbtnOK.Location = new System.Drawing.Point(379, 5);
+            this.sbtnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbtnOK.Location = new System.Drawing.Point(404, 4);
             this.sbtnOK.Name = "sbtnOK";
             this.sbtnOK.Size = new System.Drawing.Size(49, 21);
             this.sbtnOK.TabIndex = 2;
             this.sbtnOK.Text = "OK";
+            this.sbtnOK.Click += new System.EventHandler(this.sbtnOK_Click);
             // 
-            // comboBoxEdit1
+            // lookUpEdit1
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(93, 5);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit1.Location = new System.Drawing.Point(115, 4);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(280, 22);
-            this.comboBoxEdit1.TabIndex = 3;
+            this.lookUpEdit1.Properties.DisplayFormat.FormatString = "d";
+            this.lookUpEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.lookUpEdit1.Properties.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.lookUpEdit1_Properties_CustomDisplayText);
+            this.lookUpEdit1.Size = new System.Drawing.Size(283, 22);
+            this.lookUpEdit1.TabIndex = 4;
             // 
             // DateTimeSelectionUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBoxEdit1);
+            this.Controls.Add(this.lookUpEdit1);
             this.Controls.Add(this.sbtnOK);
             this.Controls.Add(this.labelControl1);
             this.Name = "DateTimeSelectionUC";
-            this.Size = new System.Drawing.Size(431, 34);
-            this.Load += new System.EventHandler(this.DateTimeSelectionUC_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            this.Size = new System.Drawing.Size(456, 27);
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,6 +84,6 @@ namespace Analogy.UserControls
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton sbtnOK;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
     }
 }
