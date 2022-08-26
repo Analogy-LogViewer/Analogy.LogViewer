@@ -327,8 +327,11 @@ namespace Analogy.CommonControls.Tools
 
         private void treeContextMenu_Opening(object sender, CancelEventArgs e)
         {
-            expandAllMenuItem.Visible = SelectedNode.IsExpandable;
-            expandAllMenuItem.Enabled = SelectedNode.Nodes.Count > 0;
+            if (SelectedNode != null)
+            {
+                expandAllMenuItem.Visible = SelectedNode.IsExpandable;
+                expandAllMenuItem.Enabled = SelectedNode.Nodes.Count > 0;
+            }
         }
 
         private void expandAllMenuItem_Click(object sender, EventArgs e)
