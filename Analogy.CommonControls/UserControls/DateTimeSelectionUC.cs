@@ -25,20 +25,21 @@ namespace Analogy.UserControls
 
         private void LookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            SelectionChanged?.Invoke(this, (DateTime)lookUpEdit1.EditValue);
+            SelectionChanged?.Invoke(this, (DateTime)comboBoxEdit1.EditValue);
         }
 
         public void SetTimes(List<DateTime> times)
         {
-            lookUpEdit1.EditValueChanged -= LookUpEdit1_EditValueChanged;
+            comboBoxEdit1.EditValueChanged -= LookUpEdit1_EditValueChanged;
 
             Times = times.Distinct().ToList();
-            lookUpEdit1.Properties.DataSource = Times;
+            comboBoxEdit1.Properties.Items.Clear();
+            comboBoxEdit1.Properties.Items.AddRange(times);
             if (times.Any())
             {
-                lookUpEdit1.EditValue = times.First();
+                comboBoxEdit1.EditValue = times.First();
             }
-            lookUpEdit1.EditValueChanged += LookUpEdit1_EditValueChanged;
+            comboBoxEdit1.EditValueChanged += LookUpEdit1_EditValueChanged;
 
         }
 
@@ -48,13 +49,6 @@ namespace Analogy.UserControls
             control?.HidePopup();
         }
 
-        private void lookUpEdit1_Properties_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
-        {
-            e.DisplayText = "";
-            if (e.Value != null)
-            {
-                e.DisplayText = e.Value.ToString();
-            }
-        }
+      
     }
 }
