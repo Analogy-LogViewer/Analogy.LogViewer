@@ -779,6 +779,11 @@ namespace Analogy.CommonControls.UserControls
                 SetupMessageDetailPanel();
             };
 
+            sbtnRawFilter.Click += (s, e) =>
+            {
+                sbtnRawFilter.Image = ApplyRawSQLFilter(meRawSQL.Text) ? Resources.Apply_16x16 : Resources.Delete_16x16;
+                
+            };
             #region Time Offsets
 
             bciTimeOffset.ItemClick += (s, e) =>
@@ -1972,8 +1977,8 @@ namespace Analogy.CommonControls.UserControls
 
             try
             {
+                meRawSQL.Text = filter;
                 _messageData.DefaultView.RowFilter = filter;
-
                 if (!Settings.AutoScrollToLastMessage && Settings.TrackActiveMessage)
                 {
                     var location = LocateByValue(0, gridColumnObject, SelectedMassage);
@@ -1988,8 +1993,34 @@ namespace Analogy.CommonControls.UserControls
             {
                 lockSlim.ExitWriteLock();
             }
+        }
 
+        private bool ApplyRawSQLFilter(string filter)
+        {
+            try
+            {
+                lockSlim.EnterWriteLock();
+                _messageData.DefaultView.RowFilter = filter;
 
+                if (!Settings.AutoScrollToLastMessage && Settings.TrackActiveMessage)
+                {
+                    var location = LocateByValue(0, gridColumnObject, SelectedMassage);
+                    if (location >= 0)
+                    {
+                        LogGrid.FocusedRowHandle = location;
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
+            }
 
         }
 
