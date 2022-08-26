@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.gcImprovements = new DevExpress.XtraEditors.GroupControl();
-            this.Issue1259 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.Issue1388 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1410 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue903 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1409 = new DevExpress.XtraEditors.HyperlinkLabelControl();
@@ -47,7 +47,7 @@
             // 
             // gcImprovements
             // 
-            this.gcImprovements.Controls.Add(this.Issue1259);
+            this.gcImprovements.Controls.Add(this.Issue1388);
             this.gcImprovements.Controls.Add(this.Issue1410);
             this.gcImprovements.Controls.Add(this.Issue903);
             this.gcImprovements.Controls.Add(this.Issue1409);
@@ -62,17 +62,17 @@
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
             // 
-            // Issue1259
+            // Issue1388
             // 
-            this.Issue1259.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue1259.Location = new System.Drawing.Point(2, 210);
-            this.Issue1259.Name = "Issue1259";
-            this.Issue1259.Padding = new System.Windows.Forms.Padding(5);
-            this.Issue1259.Size = new System.Drawing.Size(31, 26);
-            this.Issue1259.TabIndex = 20;
-            this.Issue1259.Text = "N/A";
-            this.Issue1259.Visible = false;
-            this.Issue1259.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            this.Issue1388.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Issue1388.Location = new System.Drawing.Point(2, 210);
+            this.Issue1388.Name = "Issue1388";
+            this.Issue1388.Padding = new System.Windows.Forms.Padding(5);
+            this.Issue1388.Size = new System.Drawing.Size(313, 26);
+            this.Issue1388.TabIndex = 20;
+            this.Issue1388.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1388>Add supp" +
+    "ort for specifying a custom SQL filter #1388</href>";
+            this.Issue1388.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // Issue1410
             // 
@@ -204,7 +204,7 @@
         private DevExpress.XtraEditors.GroupControl gcImprovements;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1382;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1396;
-        private DevExpress.XtraEditors.HyperlinkLabelControl Issue1259;
+        private DevExpress.XtraEditors.HyperlinkLabelControl Issue1388;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1410;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue903;
         private DevExpress.XtraEditors.HyperlinkLabelControl Issue1409;
