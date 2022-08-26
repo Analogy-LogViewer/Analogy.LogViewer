@@ -512,6 +512,31 @@ namespace Analogy
             }
         }
 
+        public static void ShowAdvanceFeatures()
+        {
+            XtraMessageBoxArgs args = new XtraMessageBoxArgs();
+            args.Load += Args_Load;
+            args.Closed += Args_Closed;
+            args.Caption = "Advanced Features";
+            args.Text =
+                $"Version {UpdateManager.Instance.CurrentVersion} added raw SQL filtering. You can enable it from the Application settings under Advanced Features";
+                args.DoNotShowAgainCheckBoxVisible = true;
+            args.DoNotShowAgainCheckBoxText = "Do not remind me again";
+            XtraMessageBox.Show(args);
+
+            void Args_Closed(object sender, XtraMessageBoxClosedArgs e)
+            {
+
+                Settings.ShowAdvancedSettingsRawSQLPopup = e.Visible;
+            }
+
+            void Args_Load(object sender, XtraMessageBoxLoadArgs e)
+            {
+                
+                    e.Visible = Settings.ShowAdvancedSettingsRawSQLPopup;
+             
+            }
+        }
         public static void WarnNETVersionOutOfSupport()
         {
             if (UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName == ".NETCoreApp,Version=v5.0" &&

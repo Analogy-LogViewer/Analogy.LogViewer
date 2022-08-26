@@ -1054,5 +1054,17 @@ namespace Analogy.Properties {
                 this["AdvancedModeAdditionalFilteringColumnsEnabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowAdvancedSettingsRawSQLPopup {
+            get {
+                return ((bool)(this["ShowAdvancedSettingsRawSQLPopup"]));
+            }
+            set {
+                this["ShowAdvancedSettingsRawSQLPopup"] = value;
+            }
+        }
     }
 }

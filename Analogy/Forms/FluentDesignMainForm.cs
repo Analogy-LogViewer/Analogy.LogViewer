@@ -156,7 +156,8 @@ namespace Analogy
                 settings.ShowWhatIsNewAtStartup = false;
             }
             Utils.WarnNETVersionOutOfSupport();
-            }
+            Utils.ShowAdvanceFeatures();
+        }
 
         private void RegisterForNotifications()
         {

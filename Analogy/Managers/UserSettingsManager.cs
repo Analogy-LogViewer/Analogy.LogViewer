@@ -184,6 +184,7 @@ namespace Analogy
 
         public bool WarnNET5 { get; set; }
         public bool WarnNET3 { get; set; }
+        public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -332,6 +333,7 @@ namespace Analogy
             ShowProcessedCounter = Settings.Default.ShowProcessedCounter;
             WarnNET3 = Settings.Default.WarnNET3;
             WarnNET5 = Settings.Default.WarnNET5;
+            ShowAdvancedSettingsRawSQLPopup = Settings.Default.ShowAdvancedSettingsRawSQLPopup;
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -419,6 +421,7 @@ namespace Analogy
             ShowProcessedCounter = settings.ShowProcessedCounter;
             WarnNET3 = settings.WarnNET3;
             WarnNET5 = settings.WarnNET5;
+            ShowAdvancedSettingsRawSQLPopup = settings.ShowAdvancedSettingsRawSQLPopup;
         }
 
         private UserSettings CreateUserSettings()
@@ -505,8 +508,8 @@ namespace Analogy
                 InlineJsonViewer = InlineJsonViewer,
                 ShowProcessedCounter = ShowProcessedCounter,
                 WarnNET3 = WarnNET3,
-                WarnNET5 = WarnNET5
-
+                WarnNET5 = WarnNET5,
+                ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup
             };
             return userSettings;
         }
@@ -651,8 +654,8 @@ namespace Analogy
             Settings.Default.ApplicationSvgPaletteName = ApplicationSvgPaletteName;
             Settings.Default.ShowMessageDetails = ShowMessageDetails;
             Settings.Default.AdvancedMode = AdvancedMode;
-            Settings.Default.AdvancedModeRawSQLFilterEnabled=AdvancedModeRawSQLFilterEnabled;
-            Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled=AdvancedModeAdditionalFilteringColumnsEnabled;
+            Settings.Default.AdvancedModeRawSQLFilterEnabled = AdvancedModeRawSQLFilterEnabled;
+            Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled = AdvancedModeAdditionalFilteringColumnsEnabled;
             Settings.Default.LogLevelSelection = LogLevelSelection.ToString();
             Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
@@ -674,7 +677,9 @@ namespace Analogy
             Settings.Default.ShowProcessedCounter = ShowProcessedCounter;
             Settings.Default.WarnNET3 = WarnNET3;
             Settings.Default.WarnNET5 = WarnNET5;
-            Settings.Default.Save();
+            Settings.Default.ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup;
+
+        Settings.Default.Save();
         }
 
         public void AddToRecentFiles(Guid iD, string file)

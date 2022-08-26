@@ -288,7 +288,7 @@ namespace Analogy
             // 
             // bbiAdvancedMode
             // 
-            this.bbiAdvancedMode.Caption = "Advanced Mode Features";
+            this.bbiAdvancedMode.Caption = "Advanced Features";
             this.bbiAdvancedMode.Id = 0;
             this.bbiAdvancedMode.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.Image")));
             this.bbiAdvancedMode.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdvancedMode.ImageOptions.LargeImage")));

@@ -59,6 +59,7 @@ namespace Analogy.Interfaces
         SettingsMode SettingsMode { get; set; }
         bool WarnNET5 { get; set; }
         bool WarnNET3 { get; set; }
+        bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         string DefaultUserLogFolder { get; set; }
         /// <summary>
         /// delay in seconds

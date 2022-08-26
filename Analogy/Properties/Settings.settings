@@ -254,5 +254,8 @@
     <Setting Name="AdvancedModeAdditionalFilteringColumnsEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ShowAdvancedSettingsRawSQLPopup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

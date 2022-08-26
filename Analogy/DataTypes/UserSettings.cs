@@ -97,5 +97,7 @@ namespace Analogy.DataTypes
         public bool ShowProcessedCounter { get; set; }
         public bool WarnNET5 { get; set; }
         public bool WarnNET3 { get; set; }
+        public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
+
     }
 }
