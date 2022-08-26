@@ -41,6 +41,8 @@ namespace Analogy.CommonControls.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMessagesUC));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -67,8 +69,6 @@ namespace Analogy.CommonControls.UserControls
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentMessages = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -98,6 +98,7 @@ namespace Analogy.CommonControls.UserControls
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsAutoScrollToBottom = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btsiInlineJsonViewer = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.bbiJsonColumn = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGoToActiveMessage = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemSaveLog = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemSaveEntireInAnalogy = new DevExpress.XtraBars.BarButtonItem();
@@ -296,7 +297,6 @@ namespace Analogy.CommonControls.UserControls
             this.sbtnRawFilter = new DevExpress.XtraEditors.SimpleButton();
             this.meRawSQL = new DevExpress.XtraEditors.MemoEdit();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bbiJsonColumn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -948,6 +948,18 @@ namespace Analogy.CommonControls.UserControls
             this.btsiInlineJsonViewer.Caption = "Inline Json Viewer";
             this.btsiInlineJsonViewer.Id = 89;
             this.btsiInlineJsonViewer.Name = "btsiInlineJsonViewer";
+            // 
+            // bbiJsonColumn
+            // 
+            this.bbiJsonColumn.ActAsDropDown = true;
+            this.bbiJsonColumn.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.bbiJsonColumn.Caption = "bbiJsonColumn";
+            this.bbiJsonColumn.Id = 92;
+            this.bbiJsonColumn.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
+            this.bbiJsonColumn.Name = "bbiJsonColumn";
+            toolTipItem1.Text = "Choose which column will be used for the Json inline parsing";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bbiJsonColumn.SuperTip = superToolTip1;
             // 
             // bbiGoToActiveMessage
             // 
@@ -3227,18 +3239,6 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
-            // 
-            // bbiJsonColumn
-            // 
-            this.bbiJsonColumn.ActAsDropDown = true;
-            this.bbiJsonColumn.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.bbiJsonColumn.Caption = "bbiJsonColumn";
-            this.bbiJsonColumn.Id = 92;
-            this.bbiJsonColumn.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
-            this.bbiJsonColumn.Name = "bbiJsonColumn";
-            toolTipItem1.Text = "Choose which column will be used for the Json inlineparsing";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbiJsonColumn.SuperTip = superToolTip1;
             // 
             // LogMessagesUC
             // 
