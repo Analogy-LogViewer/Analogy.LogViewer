@@ -25,6 +25,9 @@ namespace Analogy.UserControls
         public DownloadStatisticsUC(GithubObjects.GithubReleaseEntry[] releases) : this()
         {
             Releases = releases;
+            cbeReleases.Properties.BeginInit();
+            cbeReleases.Properties.Items.AddRange(releases.Select(r => r.Title).ToArray());
+            cbeReleases.Properties.EndInit();
         }
 
         private void DownloadStatisticsUC_Load(object sender, EventArgs e)
@@ -66,6 +69,12 @@ namespace Analogy.UserControls
                 new PieChartSingleDataPoint("NET 6", net6Downloads),
                 new PieChartSingleDataPoint("NET 7", net7Downloads),
             };
+            CreateChart(data);
+        }
+
+        private void CreateChart(List<PieChartSingleDataPoint> data)
+        {
+
 
             var pieChart = new ChartControl();
             pieChart.AllowGesture = true;
@@ -109,7 +118,45 @@ namespace Analogy.UserControls
             pieChart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             // Add the chart to the form. 
             pieChart.Dock = DockStyle.Fill;
+            panelChart.Controls.Clear();
             panelChart.Controls.Add(pieChart);
+        }
+        private void cbeReleases_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbeReleases.SelectedIndex >= 0 && cbeReleases.SelectedIndex <= Releases.Length)
+            {
+                var release = Releases[cbeReleases.SelectedIndex];
+                var net471 = release.Assets.Where(a => a.Name.Contains("471", StringComparison.InvariantCultureIgnoreCase));
+                var net472 = release.Assets.Where(a => a.Name.Contains("472", StringComparison.InvariantCultureIgnoreCase));
+                var net48 = release.Assets.Where(a => a.Name.Contains("48", StringComparison.InvariantCultureIgnoreCase));
+                var net31 = release.Assets.Where(a => a.Name.Contains("3.1", StringComparison.InvariantCultureIgnoreCase));
+                var net5 = release.Assets.Where(a => a.Name.Contains("net5.0", StringComparison.InvariantCultureIgnoreCase));
+                var net6 = release.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase));
+                var net7 = release.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase));
+
+
+                var net471Downloads = net471.Sum(r => r.Downloads);
+                var net472Downloads = net472.Sum(r => r.Downloads);
+                var net48Downloads = net48.Sum(r => r.Downloads);
+                var net31Downloads = net31.Sum(r => r.Downloads);
+                var net5Downloads = net5.Sum(r => r.Downloads);
+                var net6Downloads = net6.Sum(r => r.Downloads);
+                var net7Downloads = net7.Sum(r => r.Downloads);
+
+                var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads;
+
+                List<PieChartSingleDataPoint> data = new List<PieChartSingleDataPoint>()
+            {
+                new PieChartSingleDataPoint("NET Framework 471", net471Downloads),
+                new PieChartSingleDataPoint("NET Framework 472", net472Downloads),
+                new PieChartSingleDataPoint("NET Framework 48", net48Downloads),
+                new PieChartSingleDataPoint("NETCORE 3.1", net31Downloads),
+                new PieChartSingleDataPoint("NET 5", net5Downloads),
+                new PieChartSingleDataPoint("NET 6", net6Downloads),
+                new PieChartSingleDataPoint("NET 7", net7Downloads),
+            };
+                CreateChart(data);
+            }
         }
     }
 }

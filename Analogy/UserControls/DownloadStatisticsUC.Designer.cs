@@ -31,9 +31,11 @@
             this.panelChart = new DevExpress.XtraEditors.PanelControl();
             this.panelTop = new DevExpress.XtraEditors.PanelControl();
             this.lblTotal = new DevExpress.XtraEditors.LabelControl();
+            this.cbeReleases = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).BeginInit();
             this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeReleases.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelChart
@@ -46,6 +48,7 @@
             // 
             // panelTop
             // 
+            this.panelTop.Controls.Add(this.cbeReleases);
             this.panelTop.Controls.Add(this.lblTotal);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
@@ -61,6 +64,17 @@
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "Total Downloads: N/A";
             // 
+            // cbeReleases
+            // 
+            this.cbeReleases.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cbeReleases.Location = new System.Drawing.Point(496, 2);
+            this.cbeReleases.Name = "cbeReleases";
+            this.cbeReleases.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbeReleases.Size = new System.Drawing.Size(268, 22);
+            this.cbeReleases.TabIndex = 1;
+            this.cbeReleases.SelectedIndexChanged += new System.EventHandler(this.cbeReleases_SelectedIndexChanged);
+            // 
             // DownloadStatisticsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -74,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeReleases.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,5 +98,6 @@
         private DevExpress.XtraEditors.PanelControl panelChart;
         private DevExpress.XtraEditors.PanelControl panelTop;
         private DevExpress.XtraEditors.LabelControl lblTotal;
+        private DevExpress.XtraEditors.ComboBoxEdit cbeReleases;
     }
 }
