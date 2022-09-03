@@ -68,7 +68,7 @@ namespace Analogy.CommonControls.UserControls
 
                 foreach (var item in Items)
                 {
-                    if (m.Text.Contains(item))
+                    if (m.Text.IndexOf(item, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         timeDistribution[item].Add(m);
                         if (!frequency[item].ContainsKey(Utils.GetOffsetTime(m.Date, _settings.TimeOffsetType, _settings.TimeOffset).TimeOfDay))
@@ -182,11 +182,14 @@ namespace Analogy.CommonControls.UserControls
         private void sBtnAdd_Click(object sender, EventArgs e)
         {
             string text = !string.IsNullOrEmpty(textEdit1.Text) ? textEdit1.Text : "";
-            Items.Add(text);
-            chklistItems.Items.Add(text, true);
-            ceAutoRefresh.Enabled = true;
-            seRefreshInterval.Enabled = true;
-            Plot();
+            if (!Items.Contains(text, StringComparer.OrdinalIgnoreCase))
+            {
+                Items.Add(text);
+                chklistItems.Items.Add(text, true);
+                ceAutoRefresh.Enabled = true;
+                seRefreshInterval.Enabled = true;
+                Plot();
+            }
 
         }
 

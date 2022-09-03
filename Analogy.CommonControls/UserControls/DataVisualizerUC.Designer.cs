@@ -46,9 +46,13 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMessagesText = new DevExpress.XtraTab.XtraTabPage();
             this.xtpPieChart = new DevExpress.XtraTab.XtraTabPage();
-            this.logStatisticsUC1 = new LogStatisticsUC();
+            this.logStatisticsUC1 = new Analogy.CommonControls.UserControls.LogStatisticsUC();
             this.tmrPlotting = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
+            this.splitContainerControl1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
+            this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seRefreshInterval.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceAutoRefresh.Properties)).BeginInit();
@@ -76,6 +80,9 @@
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
             this.splitContainerControl1.Panel1.Controls.Add(this.seRefreshInterval);
             this.splitContainerControl1.Panel1.Controls.Add(this.ceAutoRefresh);
             this.splitContainerControl1.Panel1.Controls.Add(this.sBtnAdd);
@@ -83,10 +90,13 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.textEdit1);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
             this.splitContainerControl1.Panel2.Controls.Add(this.tabPane1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1008, 537);
-            this.splitContainerControl1.SplitterPosition = 138;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1013, 541);
+            this.splitContainerControl1.SplitterPosition = 140;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -99,7 +109,7 @@
             0,
             0});
             this.seRefreshInterval.Enabled = false;
-            this.seRefreshInterval.Location = new System.Drawing.Point(894, 51);
+            this.seRefreshInterval.Location = new System.Drawing.Point(899, 51);
             this.seRefreshInterval.Name = "seRefreshInterval";
             this.seRefreshInterval.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -113,7 +123,7 @@
             0,
             0,
             0});
-            this.seRefreshInterval.Size = new System.Drawing.Size(110, 22);
+            this.seRefreshInterval.Size = new System.Drawing.Size(110, 24);
             this.seRefreshInterval.TabIndex = 5;
             this.seRefreshInterval.EditValueChanged += new System.EventHandler(this.seRefreshInterval_EditValueChanged);
             // 
@@ -121,17 +131,17 @@
             // 
             this.ceAutoRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ceAutoRefresh.Enabled = false;
-            this.ceAutoRefresh.Location = new System.Drawing.Point(721, 52);
+            this.ceAutoRefresh.Location = new System.Drawing.Point(726, 52);
             this.ceAutoRefresh.Name = "ceAutoRefresh";
             this.ceAutoRefresh.Properties.Caption = "Auto Refresh (seconds):";
-            this.ceAutoRefresh.Size = new System.Drawing.Size(167, 20);
+            this.ceAutoRefresh.Size = new System.Drawing.Size(167, 24);
             this.ceAutoRefresh.TabIndex = 4;
             this.ceAutoRefresh.EditValueChanged += new System.EventHandler(this.ceAutoRefresh_EditValueChanged);
             // 
             // sBtnAdd
             // 
             this.sBtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnAdd.Location = new System.Drawing.Point(919, 6);
+            this.sBtnAdd.Location = new System.Drawing.Point(924, 6);
             this.sBtnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnAdd.Name = "sBtnAdd";
             this.sBtnAdd.Size = new System.Drawing.Size(85, 28);
@@ -144,10 +154,11 @@
             this.chklistItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.chklistItems.CheckOnClick = true;
             this.chklistItems.Location = new System.Drawing.Point(18, 40);
             this.chklistItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chklistItems.Name = "chklistItems";
-            this.chklistItems.Size = new System.Drawing.Size(497, 93);
+            this.chklistItems.Size = new System.Drawing.Size(702, 95);
             this.chklistItems.TabIndex = 2;
             this.chklistItems.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chklistItems_ItemCheck);
             // 
@@ -158,7 +169,7 @@
             this.textEdit1.Location = new System.Drawing.Point(337, 10);
             this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(576, 22);
+            this.textEdit1.Size = new System.Drawing.Size(581, 22);
             this.textEdit1.TabIndex = 1;
             // 
             // labelControl1
@@ -181,9 +192,9 @@
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tnpTimeDistribution,
             this.tabNavigationPage2});
-            this.tabPane1.RegularSize = new System.Drawing.Size(1008, 393);
+            this.tabPane1.RegularSize = new System.Drawing.Size(1013, 389);
             this.tabPane1.SelectedPage = this.tnpTimeDistribution;
-            this.tabPane1.Size = new System.Drawing.Size(1008, 393);
+            this.tabPane1.Size = new System.Drawing.Size(1013, 389);
             this.tabPane1.TabIndex = 1;
             // 
             // tabNavigationPage2
@@ -212,7 +223,7 @@
             this.tnpTimeDistribution.Caption = "Time Distribution";
             this.tnpTimeDistribution.Controls.Add(this.chartTimeDistribution);
             this.tnpTimeDistribution.Name = "tnpTimeDistribution";
-            this.tnpTimeDistribution.Size = new System.Drawing.Size(1008, 360);
+            this.tnpTimeDistribution.Size = new System.Drawing.Size(1013, 348);
             // 
             // chartTimeDistribution
             // 
@@ -224,7 +235,7 @@
             this.chartTimeDistribution.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
             sideBySideBarSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartTimeDistribution.SeriesTemplate.Label = sideBySideBarSeriesLabel2;
-            this.chartTimeDistribution.Size = new System.Drawing.Size(1008, 360);
+            this.chartTimeDistribution.Size = new System.Drawing.Size(1013, 348);
             this.chartTimeDistribution.TabIndex = 3;
             // 
             // xtraTabControl1
@@ -243,14 +254,14 @@
             // 
             this.xtpMessagesText.Controls.Add(this.splitContainerControl1);
             this.xtpMessagesText.Name = "xtpMessagesText";
-            this.xtpMessagesText.Size = new System.Drawing.Size(1008, 537);
+            this.xtpMessagesText.Size = new System.Drawing.Size(1013, 541);
             this.xtpMessagesText.Text = "Messages Text";
             // 
             // xtpPieChart
             // 
             this.xtpPieChart.Controls.Add(this.logStatisticsUC1);
             this.xtpPieChart.Name = "xtpPieChart";
-            this.xtpPieChart.Size = new System.Drawing.Size(1008, 537);
+            this.xtpPieChart.Size = new System.Drawing.Size(1013, 541);
             this.xtpPieChart.Text = "Pies";
             // 
             // logStatisticsUC1
@@ -259,7 +270,7 @@
             this.logStatisticsUC1.FreeTextStatistics = null;
             this.logStatisticsUC1.Location = new System.Drawing.Point(0, 0);
             this.logStatisticsUC1.Name = "logStatisticsUC1";
-            this.logStatisticsUC1.Size = new System.Drawing.Size(1008, 537);
+            this.logStatisticsUC1.Size = new System.Drawing.Size(1013, 541);
             this.logStatisticsUC1.Statistics = null;
             this.logStatisticsUC1.TabIndex = 0;
             // 
@@ -277,6 +288,11 @@
             this.Name = "DataVisualizerUC";
             this.Size = new System.Drawing.Size(1015, 571);
             this.Load += new System.EventHandler(this.DataVisualizerUC_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
+            this.splitContainerControl1.Panel1.ResumeLayout(false);
+            this.splitContainerControl1.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
+            this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.seRefreshInterval.Properties)).EndInit();
