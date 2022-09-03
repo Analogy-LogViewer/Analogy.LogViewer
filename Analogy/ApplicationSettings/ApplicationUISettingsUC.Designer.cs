@@ -40,7 +40,7 @@ namespace Analogy.ApplicationSettings
             this.ceContextMenuFontsLarge = new DevExpress.XtraEditors.CheckEdit();
             this.ceContextMenuFontsNormal = new DevExpress.XtraEditors.CheckEdit();
             this.ceContextMenuFontsDefault = new DevExpress.XtraEditors.CheckEdit();
-            this.gcFonts = new DevExpress.XtraEditors.GroupControl();
+            this.gcFontsSize = new DevExpress.XtraEditors.GroupControl();
             this.ceFontsVeryLarge = new DevExpress.XtraEditors.CheckEdit();
             this.ceFontsLarge = new DevExpress.XtraEditors.CheckEdit();
             this.ceFontsNormal = new DevExpress.XtraEditors.CheckEdit();
@@ -65,6 +65,12 @@ namespace Analogy.ApplicationSettings
             this.gcMainForm = new DevExpress.XtraEditors.GroupControl();
             this.ceFluentForm = new DevExpress.XtraEditors.CheckEdit();
             this.ceRibbonForm = new DevExpress.XtraEditors.CheckEdit();
+            this.gcFonts = new DevExpress.XtraEditors.GroupControl();
+            this.gcFontFamily = new DevExpress.XtraEditors.GroupControl();
+            this.fontEditControl = new DevExpress.XtraEditors.FontEdit();
+            this.fontEditMenus = new DevExpress.XtraEditors.FontEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblFontMenus = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).BeginInit();
             this.gcUISettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -78,8 +84,8 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.ceContextMenuFontsLarge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceContextMenuFontsNormal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceContextMenuFontsDefault.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcFonts)).BeginInit();
-            this.gcFonts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFontsSize)).BeginInit();
+            this.gcFontsSize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ceFontsVeryLarge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFontsLarge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFontsNormal.Properties)).BeginInit();
@@ -94,34 +100,37 @@ namespace Analogy.ApplicationSettings
             this.gcMainForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ceFluentForm.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceRibbonForm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFonts)).BeginInit();
+            this.gcFonts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFontFamily)).BeginInit();
+            this.gcFontFamily.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fontEditControl.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fontEditMenus.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcUISettings
             // 
             this.gcUISettings.Controls.Add(this.groupControl2);
-            this.gcUISettings.Controls.Add(this.groupControl1);
-            this.gcUISettings.Controls.Add(this.gcFonts);
             this.gcUISettings.Controls.Add(this.tsStartupRibbonMinimized);
-            this.gcUISettings.Controls.Add(this.tsRibbonCompactStyle);
             this.gcUISettings.Controls.Add(this.tsRememberLastPositionAndState);
+            this.gcUISettings.Controls.Add(this.tsRibbonCompactStyle);
             this.gcUISettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcUISettings.Location = new System.Drawing.Point(0, 229);
             this.gcUISettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcUISettings.Name = "gcUISettings";
-            this.gcUISettings.Size = new System.Drawing.Size(879, 456);
+            this.gcUISettings.Size = new System.Drawing.Size(879, 227);
             this.gcUISettings.TabIndex = 10;
             this.gcUISettings.Text = "UI Settings";
             // 
             // groupControl2
             // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl2.Controls.Add(this.peAnalogy);
             this.groupControl2.Controls.Add(this.ceIconLight);
             this.groupControl2.Controls.Add(this.ceIconDark);
-            this.groupControl2.Location = new System.Drawing.Point(13, 321);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl2.Location = new System.Drawing.Point(2, 100);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(854, 123);
+            this.groupControl2.Size = new System.Drawing.Size(875, 123);
             this.groupControl2.TabIndex = 22;
             this.groupControl2.Text = "Application Icon";
             // 
@@ -129,7 +138,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.peAnalogy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.peAnalogy.EditValue = global::Analogy.Properties.Resources.AnalogyDark;
-            this.peAnalogy.Location = new System.Drawing.Point(758, 27);
+            this.peAnalogy.Location = new System.Drawing.Point(779, 27);
             this.peAnalogy.Name = "peAnalogy";
             this.peAnalogy.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.peAnalogy.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
@@ -160,15 +169,14 @@ namespace Analogy.ApplicationSettings
             // 
             // groupControl1
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.ceContextMenuFontsVeryLarge);
             this.groupControl1.Controls.Add(this.ceContextMenuFontsLarge);
             this.groupControl1.Controls.Add(this.ceContextMenuFontsNormal);
             this.groupControl1.Controls.Add(this.ceContextMenuFontsDefault);
-            this.groupControl1.Location = new System.Drawing.Point(13, 228);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl1.Location = new System.Drawing.Point(2, 228);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(854, 84);
+            this.groupControl1.Size = new System.Drawing.Size(875, 84);
             this.groupControl1.TabIndex = 21;
             this.groupControl1.Text = "Context Menus Font size:";
             // 
@@ -216,19 +224,18 @@ namespace Analogy.ApplicationSettings
             this.ceContextMenuFontsDefault.TabIndex = 19;
             this.ceContextMenuFontsDefault.TabStop = false;
             // 
-            // gcFonts
+            // gcFontsSize
             // 
-            this.gcFonts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcFonts.Controls.Add(this.ceFontsVeryLarge);
-            this.gcFonts.Controls.Add(this.ceFontsLarge);
-            this.gcFonts.Controls.Add(this.ceFontsNormal);
-            this.gcFonts.Controls.Add(this.ceFontsDefault);
-            this.gcFonts.Location = new System.Drawing.Point(13, 140);
-            this.gcFonts.Name = "gcFonts";
-            this.gcFonts.Size = new System.Drawing.Size(854, 84);
-            this.gcFonts.TabIndex = 20;
-            this.gcFonts.Text = "Fonts Size";
+            this.gcFontsSize.Controls.Add(this.ceFontsVeryLarge);
+            this.gcFontsSize.Controls.Add(this.ceFontsLarge);
+            this.gcFontsSize.Controls.Add(this.ceFontsNormal);
+            this.gcFontsSize.Controls.Add(this.ceFontsDefault);
+            this.gcFontsSize.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcFontsSize.Location = new System.Drawing.Point(2, 144);
+            this.gcFontsSize.Name = "gcFontsSize";
+            this.gcFontsSize.Size = new System.Drawing.Size(875, 84);
+            this.gcFontsSize.TabIndex = 20;
+            this.gcFontsSize.Text = "Fonts Size";
             // 
             // ceFontsVeryLarge
             // 
@@ -276,40 +283,37 @@ namespace Analogy.ApplicationSettings
             // 
             // tsStartupRibbonMinimized
             // 
-            this.tsStartupRibbonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsStartupRibbonMinimized.Dock = System.Windows.Forms.DockStyle.Top;
             this.tsStartupRibbonMinimized.EditValue = true;
-            this.tsStartupRibbonMinimized.Location = new System.Drawing.Point(13, 96);
+            this.tsStartupRibbonMinimized.Location = new System.Drawing.Point(2, 76);
             this.tsStartupRibbonMinimized.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsStartupRibbonMinimized.Name = "tsStartupRibbonMinimized";
             this.tsStartupRibbonMinimized.Properties.OffText = "Show Ribbon";
             this.tsStartupRibbonMinimized.Properties.OnText = "Ribbon is minimized as default";
-            this.tsStartupRibbonMinimized.Size = new System.Drawing.Size(735, 24);
+            this.tsStartupRibbonMinimized.Size = new System.Drawing.Size(875, 24);
             this.tsStartupRibbonMinimized.TabIndex = 18;
             // 
             // tsRibbonCompactStyle
             // 
-            this.tsRibbonCompactStyle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsRibbonCompactStyle.Location = new System.Drawing.Point(13, 32);
+            this.tsRibbonCompactStyle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tsRibbonCompactStyle.Location = new System.Drawing.Point(2, 28);
             this.tsRibbonCompactStyle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsRibbonCompactStyle.Name = "tsRibbonCompactStyle";
             this.tsRibbonCompactStyle.Properties.OffText = "Standard size for ribbon buttons";
             this.tsRibbonCompactStyle.Properties.OnText = "Compact size for ribbon buttons";
-            this.tsRibbonCompactStyle.Size = new System.Drawing.Size(854, 24);
+            this.tsRibbonCompactStyle.Size = new System.Drawing.Size(875, 24);
             this.tsRibbonCompactStyle.TabIndex = 17;
             // 
             // tsRememberLastPositionAndState
             // 
-            this.tsRememberLastPositionAndState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsRememberLastPositionAndState.Location = new System.Drawing.Point(11, 64);
+            this.tsRememberLastPositionAndState.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tsRememberLastPositionAndState.Location = new System.Drawing.Point(2, 52);
             this.tsRememberLastPositionAndState.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsRememberLastPositionAndState.Name = "tsRememberLastPositionAndState";
             this.tsRememberLastPositionAndState.Properties.OffText = "Don\'t remember last position and state of the application";
             this.tsRememberLastPositionAndState.Properties.OnText = "Remember last position and state of the application (size, Location and form\'s st" +
     "ate)";
-            this.tsRememberLastPositionAndState.Size = new System.Drawing.Size(856, 24);
+            this.tsRememberLastPositionAndState.Size = new System.Drawing.Size(875, 24);
             this.tsRememberLastPositionAndState.TabIndex = 5;
             // 
             // groupControlThemes
@@ -388,6 +392,7 @@ namespace Analogy.ApplicationSettings
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
+            this.bar3.Visible = false;
             // 
             // bar1
             // 
@@ -429,7 +434,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 713);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 767);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(879, 20);
             // 
@@ -439,7 +444,7 @@ namespace Analogy.ApplicationSettings
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 713);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 767);
             // 
             // barDockControlRight
             // 
@@ -447,7 +452,7 @@ namespace Analogy.ApplicationSettings
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(879, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 713);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 767);
             // 
             // gcMainForm
             // 
@@ -485,11 +490,77 @@ namespace Analogy.ApplicationSettings
             this.ceRibbonForm.Size = new System.Drawing.Size(875, 26);
             this.ceRibbonForm.TabIndex = 0;
             // 
+            // gcFonts
+            // 
+            this.gcFonts.Controls.Add(this.groupControl1);
+            this.gcFonts.Controls.Add(this.gcFontsSize);
+            this.gcFonts.Controls.Add(this.gcFontFamily);
+            this.gcFonts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcFonts.Location = new System.Drawing.Point(0, 456);
+            this.gcFonts.Name = "gcFonts";
+            this.gcFonts.Size = new System.Drawing.Size(879, 311);
+            this.gcFonts.TabIndex = 23;
+            this.gcFonts.Text = "Fonts";
+            // 
+            // gcFontFamily
+            // 
+            this.gcFontFamily.Controls.Add(this.lblFontMenus);
+            this.gcFontFamily.Controls.Add(this.labelControl1);
+            this.gcFontFamily.Controls.Add(this.fontEditMenus);
+            this.gcFontFamily.Controls.Add(this.fontEditControl);
+            this.gcFontFamily.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcFontFamily.Location = new System.Drawing.Point(2, 28);
+            this.gcFontFamily.Name = "gcFontFamily";
+            this.gcFontFamily.Size = new System.Drawing.Size(875, 116);
+            this.gcFontFamily.TabIndex = 22;
+            this.gcFontFamily.Text = "Font Selection";
+            // 
+            // fontEditControl
+            // 
+            this.fontEditControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fontEditControl.Location = new System.Drawing.Point(402, 37);
+            this.fontEditControl.MenuManager = this.barManager1;
+            this.fontEditControl.Name = "fontEditControl";
+            this.fontEditControl.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.fontEditControl.Size = new System.Drawing.Size(465, 22);
+            this.fontEditControl.TabIndex = 0;
+            // 
+            // fontEditMenus
+            // 
+            this.fontEditMenus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fontEditMenus.Location = new System.Drawing.Point(402, 71);
+            this.fontEditMenus.MenuManager = this.barManager1;
+            this.fontEditMenus.Name = "fontEditMenus";
+            this.fontEditMenus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.fontEditMenus.Size = new System.Drawing.Size(464, 22);
+            this.fontEditMenus.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(11, 40);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(145, 16);
+            this.labelControl1.TabIndex = 4;
+            this.labelControl1.Text = "Font for font for controls:";
+            // 
+            // lblFontMenus
+            // 
+            this.lblFontMenus.Location = new System.Drawing.Point(11, 74);
+            this.lblFontMenus.Name = "lblFontMenus";
+            this.lblFontMenus.Size = new System.Drawing.Size(251, 16);
+            this.lblFontMenus.TabIndex = 4;
+            this.lblFontMenus.Text = "Font of menus, toolbars and popup menus :";
+            // 
             // ApplicationUISettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.gcFonts);
             this.Controls.Add(this.gcUISettings);
             this.Controls.Add(this.groupControlThemes);
             this.Controls.Add(this.gcMainForm);
@@ -498,7 +569,7 @@ namespace Analogy.ApplicationSettings
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ApplicationUISettingsUC";
-            this.Size = new System.Drawing.Size(879, 733);
+            this.Size = new System.Drawing.Size(879, 787);
             this.Load += new System.EventHandler(this.ApplicationUISettingsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).EndInit();
             this.gcUISettings.ResumeLayout(false);
@@ -513,8 +584,8 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.ceContextMenuFontsLarge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceContextMenuFontsNormal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceContextMenuFontsDefault.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcFonts)).EndInit();
-            this.gcFonts.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcFontsSize)).EndInit();
+            this.gcFontsSize.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ceFontsVeryLarge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFontsLarge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFontsNormal.Properties)).EndInit();
@@ -530,6 +601,13 @@ namespace Analogy.ApplicationSettings
             this.gcMainForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ceFluentForm.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceRibbonForm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFonts)).EndInit();
+            this.gcFonts.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcFontFamily)).EndInit();
+            this.gcFontFamily.ResumeLayout(false);
+            this.gcFontFamily.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fontEditControl.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fontEditMenus.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,7 +620,7 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.PictureEdit peAnalogy;
         private DevExpress.XtraEditors.ToggleSwitch tsRememberLastPositionAndState;
         private DevExpress.XtraEditors.ToggleSwitch tsStartupRibbonMinimized;
-        private DevExpress.XtraEditors.GroupControl gcFonts;
+        private DevExpress.XtraEditors.GroupControl gcFontsSize;
         private DevExpress.XtraEditors.CheckEdit ceFontsVeryLarge;
         private DevExpress.XtraEditors.CheckEdit ceFontsLarge;
         private DevExpress.XtraEditors.CheckEdit ceFontsNormal;
@@ -572,5 +650,11 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.GroupControl gcMainForm;
         private DevExpress.XtraEditors.CheckEdit ceFluentForm;
         private DevExpress.XtraEditors.CheckEdit ceRibbonForm;
+        private DevExpress.XtraEditors.GroupControl gcFonts;
+        private DevExpress.XtraEditors.GroupControl gcFontFamily;
+        private DevExpress.XtraEditors.LabelControl lblFontMenus;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.FontEdit fontEditMenus;
+        private DevExpress.XtraEditors.FontEdit fontEditControl;
     }
 }

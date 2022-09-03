@@ -9,6 +9,7 @@ using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 
 namespace Analogy.ApplicationSettings
 {
@@ -19,14 +20,6 @@ namespace Analogy.ApplicationSettings
         public ApplicationUISettingsUC()
         {
             InitializeComponent();
-            ceFontsDefault.Font = Settings.FontSettings.GetFontType(FontSelectionType.Default);
-            ceFontsNormal.Font = Settings.FontSettings.GetFontType(FontSelectionType.Normal);
-            ceFontsLarge.Font = Settings.FontSettings.GetFontType(FontSelectionType.Large);
-            ceFontsVeryLarge.Font = Settings.FontSettings.GetFontType(FontSelectionType.VeryLarge);
-            ceContextMenuFontsDefault.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.Default);
-            ceContextMenuFontsNormal.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.Normal);
-            ceContextMenuFontsLarge.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.Large);
-            ceContextMenuFontsVeryLarge.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.VeryLarge);
         }
 
         private void ApplicationUISettingsUC_Load(object sender, EventArgs e)
@@ -162,7 +155,20 @@ namespace Analogy.ApplicationSettings
                 ceIconDark.Checked = true;
                 peAnalogy.Image = Resources.AnalogyDark;
             }
+            ceFontsDefault.Font = Settings.FontSettings.GetFontType(FontSelectionType.Default);
+            ceFontsNormal.Font = Settings.FontSettings.GetFontType(FontSelectionType.Normal);
+            ceFontsLarge.Font = Settings.FontSettings.GetFontType(FontSelectionType.Large);
+            ceFontsVeryLarge.Font = Settings.FontSettings.GetFontType(FontSelectionType.VeryLarge);
+            ceContextMenuFontsDefault.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.Default);
+            ceContextMenuFontsNormal.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.Normal);
+            ceContextMenuFontsLarge.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.Large);
+            ceContextMenuFontsVeryLarge.Font = Settings.FontSettings.GetMenuFont(FontSelectionType.VeryLarge);
 
+            fontEditControl.Font = WindowsFormsSettings.DefaultFont;
+            fontEditControl.EditValue = WindowsFormsSettings.DefaultFont.Name;
+
+            fontEditMenus.Font = WindowsFormsSettings.DefaultMenuFont;
+            fontEditMenus.EditValue = WindowsFormsSettings.DefaultMenuFont.Name;
         }
 
         private void SetFonts()
