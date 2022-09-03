@@ -250,7 +250,7 @@ namespace Analogy
             Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
             return regex;
         }
-  
+
         //[MethodImpl(MethodImplOptions.AggressiveInlining)]
         //public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource)
         //{
@@ -518,9 +518,8 @@ namespace Analogy
             args.Load += Args_Load;
             args.Closed += Args_Closed;
             args.Caption = "Advanced Features";
-            args.Text =
-                $"Version {UpdateManager.Instance.CurrentVersion} added raw SQL filtering. You can enable it from the Application settings under Advanced Features";
-                args.DoNotShowAgainCheckBoxVisible = true;
+            args.Text = "Version 4.9.0 added raw SQL filtering. You can enable it from the Application settings under Advanced Features";
+            args.DoNotShowAgainCheckBoxVisible = true;
             args.DoNotShowAgainCheckBoxText = "Do not show again";
             XtraMessageBox.Show(args);
 
@@ -532,9 +531,9 @@ namespace Analogy
 
             void Args_Load(object sender, XtraMessageBoxLoadArgs e)
             {
-                
-                    e.Visible = Settings.ShowAdvancedSettingsRawSQLPopup;
-             
+
+                e.Visible = Settings.ShowAdvancedSettingsRawSQLPopup;
+
             }
         }
         public static void WarnNETVersionOutOfSupport()
