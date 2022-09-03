@@ -26,14 +26,14 @@ namespace Analogy.Common.DataTypes
         public FontSettings()
         {
             GridFontSize = 8.5f;
-            SetFontSelectionType(FontSelectionType.Default);
-            SetMenuFontSelectionType(FontSelectionType.Normal);
+            SetFontSelectionType(FontSelectionType.Default, "Tahoma");
+            SetMenuFontSelectionType(FontSelectionType.Normal, "Segoe UI");
         }
 
-        public void SetFontSelectionType(FontSelectionType mode)
+        public void SetFontSelectionType(FontSelectionType mode,string fontName)
         {
             FontSelectionType = mode;
-            FontName = "Tahoma";
+            FontName = fontName;
             switch (mode)
             {
                 case FontSelectionType.Default:
@@ -53,10 +53,9 @@ namespace Analogy.Common.DataTypes
                     break;
             }
         }
-
+    
         public Font GetFontType(FontSelectionType mode)
         {
-            var fontName = "Tahoma";
             float fontSize;
             switch (mode)
             {
@@ -76,13 +75,13 @@ namespace Analogy.Common.DataTypes
                     fontSize = 8.25f;
                     break;
             }
-            return new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Point);
+            return new Font(FontName, fontSize, FontStyle.Regular, GraphicsUnit.Point);
 
         }
-        public void SetMenuFontSelectionType(FontSelectionType mode)
+        public void SetMenuFontSelectionType(FontSelectionType mode,string fontName)
         {
             MenuFontSelectionType = mode;
-            MenuFontName = "Segoe UI";
+            MenuFontName = fontName;
             switch (mode)
             {
                 case FontSelectionType.Default:
@@ -105,7 +104,6 @@ namespace Analogy.Common.DataTypes
 
         public Font GetMenuFont(FontSelectionType mode)
         {
-            var menuFontName = "Segoe UI";
             float menuFontSize;
             switch (mode)
             {
@@ -125,7 +123,7 @@ namespace Analogy.Common.DataTypes
                     menuFontSize = 12f;
                     break;
             }
-            return new Font(menuFontName, menuFontSize, FontStyle.Regular, GraphicsUnit.Point);
+            return new Font(MenuFontName, menuFontSize, FontStyle.Regular, GraphicsUnit.Point);
         }
     }
 }

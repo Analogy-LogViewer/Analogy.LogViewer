@@ -3,6 +3,7 @@ using Analogy.Properties;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
@@ -10,6 +11,7 @@ using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Analogy.ApplicationSettings
 {
@@ -31,6 +33,7 @@ namespace Analogy.ApplicationSettings
             }
 
             LoadSettings();
+            UpdateUI();
             SetupEventsHandlers();
         }
 
@@ -76,18 +79,21 @@ namespace Analogy.ApplicationSettings
             };
             ceFluentForm.CheckStateChanged += (s, e) =>
             {
-                if (ceFluentForm.CheckState==CheckState.Checked)
+                if (ceFluentForm.CheckState == CheckState.Checked)
                 {
                     Settings.MainFormType = MainFormType.FluentForm;
                 }
             };
             ceRibbonForm.CheckStateChanged += (s, e) =>
             {
-                if (ceRibbonForm.CheckState==CheckState.Checked)
+                if (ceRibbonForm.CheckState == CheckState.Checked)
                 {
                     Settings.MainFormType = MainFormType.RibbonForm;
                 }
             };
+            fontEditControl.EditValueChanged += (s, e) => SetFonts();
+            fontEditMenus.EditValueChanged += (s, e) => SetFonts();
+            
         }
 
 
@@ -166,51 +172,71 @@ namespace Analogy.ApplicationSettings
 
             fontEditControl.Font = WindowsFormsSettings.DefaultFont;
             fontEditControl.EditValue = WindowsFormsSettings.DefaultFont.Name;
-
             fontEditMenus.Font = WindowsFormsSettings.DefaultMenuFont;
             fontEditMenus.EditValue = WindowsFormsSettings.DefaultMenuFont.Name;
         }
 
         private void SetFonts()
         {
+            string controlFont = fontEditControl.EditValue as string;
+            string menuFont = fontEditMenus.EditValue as string;
+
+
             if (ceFontsDefault.Checked)
             {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Default);
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Default, controlFont);
             }
             else if (ceFontsNormal.Checked)
             {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Normal);
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Normal, controlFont);
             }
 
             else if (ceFontsLarge.Checked)
             {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Large);
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.Large, controlFont);
             }
 
             else if (ceFontsVeryLarge.Checked)
             {
-                Settings.FontSettings.SetFontSelectionType(FontSelectionType.VeryLarge);
+                Settings.FontSettings.SetFontSelectionType(FontSelectionType.VeryLarge, menuFont);
             }
 
             if (ceContextMenuFontsDefault.Checked)
             {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Default);
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Default, menuFont);
             }
             else if (ceContextMenuFontsNormal.Checked)
             {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Normal);
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Normal, menuFont);
             }
 
             else if (ceContextMenuFontsLarge.Checked)
             {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Large);
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.Large, menuFont);
             }
 
             else if (ceContextMenuFontsVeryLarge.Checked)
             {
-                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge);
+                Settings.FontSettings.SetMenuFontSelectionType(FontSelectionType.VeryLarge, WindowsFormsSettings.DefaultMenuFont.Name);
             }
 
+            WindowsFormsSettings.DefaultFont = new Font(controlFont, Settings.FontSettings.FontSize);
+            WindowsFormsSettings.DefaultMenuFont = new Font(menuFont, Settings.FontSettings.MenuFontSize);
+            UpdateUI();
+
+        }
+
+        private void UpdateUI()
+        {
+            ceFontsDefault.Font = WindowsFormsSettings.DefaultFont;
+            ceFontsNormal.Font = WindowsFormsSettings.DefaultFont;
+            ceFontsLarge.Font = WindowsFormsSettings.DefaultFont;
+            ceFontsVeryLarge.Font = WindowsFormsSettings.DefaultFont;
+
+            ceContextMenuFontsDefault.Font = WindowsFormsSettings.DefaultMenuFont;
+            ceContextMenuFontsDefault.Font = WindowsFormsSettings.DefaultMenuFont;
+            ceContextMenuFontsLarge.Font = WindowsFormsSettings.DefaultMenuFont;
+            ceContextMenuFontsVeryLarge.Font = WindowsFormsSettings.DefaultMenuFont;
         }
     }
 }

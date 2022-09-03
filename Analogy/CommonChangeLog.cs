@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.9.1 - Add download Statistics per Release #1417",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,09,03)),
+                new AnalogyChangeLog("V4.9.1 - [User Settings] Add fonts selection #1118",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,09,02)),
                 new AnalogyChangeLog("V4.9.0 - [json Viewer] allow setting which column is used to the inline json viewer #1410",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,08,26)),
                 new AnalogyChangeLog("V4.9.0 - Add support for specifying a custom SQL filter #1388",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,08,26)),
                 new AnalogyChangeLog("V4.9.0 - [UI] Add 'go to' message to specific time #903",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,08,26)),
