@@ -30,8 +30,9 @@
         {
             this.panelChart = new DevExpress.XtraEditors.PanelControl();
             this.panelTop = new DevExpress.XtraEditors.PanelControl();
-            this.lblTotal = new DevExpress.XtraEditors.LabelControl();
             this.cbeReleases = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.lblTotal = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             // panelTop
             // 
+            this.panelTop.Controls.Add(this.labelControl1);
             this.panelTop.Controls.Add(this.cbeReleases);
             this.panelTop.Controls.Add(this.lblTotal);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -55,6 +57,18 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(766, 41);
             this.panelTop.TabIndex = 4;
+            // 
+            // cbeReleases
+            // 
+            this.cbeReleases.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cbeReleases.Location = new System.Drawing.Point(496, 2);
+            this.cbeReleases.Name = "cbeReleases";
+            this.cbeReleases.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbeReleases.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbeReleases.Size = new System.Drawing.Size(268, 22);
+            this.cbeReleases.TabIndex = 1;
+            this.cbeReleases.SelectedIndexChanged += new System.EventHandler(this.cbeReleases_SelectedIndexChanged);
             // 
             // lblTotal
             // 
@@ -64,16 +78,14 @@
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "Total Downloads: N/A";
             // 
-            // cbeReleases
+            // labelControl1
             // 
-            this.cbeReleases.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cbeReleases.Location = new System.Drawing.Point(496, 2);
-            this.cbeReleases.Name = "cbeReleases";
-            this.cbeReleases.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbeReleases.Size = new System.Drawing.Size(268, 22);
-            this.cbeReleases.TabIndex = 1;
-            this.cbeReleases.SelectedIndexChanged += new System.EventHandler(this.cbeReleases_SelectedIndexChanged);
+            this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl1.Location = new System.Drawing.Point(394, 4);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(96, 16);
+            this.labelControl1.TabIndex = 2;
+            this.labelControl1.Text = "Specific Version:";
             // 
             // DownloadStatisticsUC
             // 
@@ -99,5 +111,6 @@
         private DevExpress.XtraEditors.PanelControl panelTop;
         private DevExpress.XtraEditors.LabelControl lblTotal;
         private DevExpress.XtraEditors.ComboBoxEdit cbeReleases;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

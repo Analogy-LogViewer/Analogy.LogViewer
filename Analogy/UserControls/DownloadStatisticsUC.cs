@@ -17,7 +17,8 @@ namespace Analogy.UserControls
     public partial class DownloadStatisticsUC : XtraUserControl
     {
         private GithubObjects.GithubReleaseEntry[] Releases { get; }
-
+        private int TotalDownloadFramework;
+        private int TotalDownloadNet;
         public DownloadStatisticsUC()
         {
             InitializeComponent();
@@ -48,9 +49,10 @@ namespace Analogy.UserControls
             var net5Downloads = net5.Sum(r => r.Sum(a => a.Downloads));
             var net6Downloads = net6.Sum(r => r.Sum(a => a.Downloads));
             var net7Downloads = net7.Sum(r => r.Sum(a => a.Downloads));
-
-            var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads;
-            lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. Net 3.1/5/6/7: {net31Downloads + net5Downloads + net6Downloads + net7Downloads}";
+            TotalDownloadFramework = net471Downloads + net472Downloads + net48Downloads;
+            TotalDownloadNet = net31Downloads + net5Downloads + net6Downloads + net7Downloads;
+            var total = TotalDownloadFramework + TotalDownloadNet;
+            lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {TotalDownloadFramework}. Net 3.1/5/6/7: {TotalDownloadNet}";
             var net471percentage = (double)net471Downloads / (total) * 100.0;
             var net472percentage = (double)net472Downloads / (total) * 100.0;
             var net48percentage = (double)net48Downloads / (total) * 100.0;
@@ -144,7 +146,7 @@ namespace Analogy.UserControls
                 var net7Downloads = net7.Sum(r => r.Downloads);
 
                 var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads;
-
+                lblTotal.Text = $"Total Downloads ({release.TagName}): {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. Net 3.1/5/6/7: {net31Downloads + net5Downloads + net6Downloads + net7Downloads}";
                 List<PieChartSingleDataPoint> data = new List<PieChartSingleDataPoint>()
             {
                 new PieChartSingleDataPoint("NET Framework 471", net471Downloads),
