@@ -106,12 +106,21 @@ namespace Analogy.Common.DataTypes
                             return new List<AnalogyLogMessage> { error };
                         }
                         CleanupManager.Instance.AddFolder(extractedPath);
-                        var files = Directory.GetFiles(extractedPath);
+                        var files = Directory.GetFiles(extractedPath, "*", SearchOption.AllDirectories);
+#if NET6_0_OR_GREATER
+                       
+                        await Parallel.ForEachAsync(files, token, async (file, token2) => 
+                        {
+                            var messages = await Process(fileDataProvider, file, token2, isReload);
+                            compressedMessages.AddRange(messages);
+                        });
+#else
                         foreach (string file in files)
                         {
                             var messages = await Process(fileDataProvider, file, token, isReload);
                             compressedMessages.AddRange(messages);
                         }
+#endif
                         return compressedMessages;
 
                     }
@@ -190,7 +199,11 @@ namespace Analogy.Common.DataTypes
                     var entries = archive.Entries.Where(entry => !entry.FullName.EndsWith("/") && fileDataProvider.CanOpenFile(entry.FullName));
                     foreach (ZipArchiveEntry entry in entries)
                     {
-                        entry.ExtractToFile(Path.Combine(extractPath, entry.Name));
+                        string fullTempName = Path.Combine(extractPath, entry.FullName);
+                        string directoryName = Path.GetDirectoryName(fullTempName) ?? string.Empty;
+                        if (!Directory.Exists(directoryName))
+                            Directory.CreateDirectory(directoryName);
+                        entry.ExtractToFile(fullTempName);
                     }
 
                     if (!Directory.GetFiles(extractPath).Any())
