@@ -108,11 +108,18 @@ namespace Analogy.Common.DataTypes
                         CleanupManager.Instance.AddFolder(extractedPath);
                         var files = Directory.GetFiles(extractedPath, "*", SearchOption.AllDirectories);
 #if NET6_0_OR_GREATER
-                       
-                        await Parallel.ForEachAsync(files, token, async (file, token2) => 
+                        object addLock = new object();
+                        ParallelOptions parallelOptions = new ParallelOptions()
+                        {
+                            MaxDegreeOfParallelism = 4
+                        };
+                        await Parallel.ForEachAsync(files, parallelOptions,  async (file, token2) => 
                         {
                             var messages = await Process(fileDataProvider, file, token2, isReload);
-                            compressedMessages.AddRange(messages);
+                            lock (addLock)
+                            {
+                                compressedMessages.AddRange(messages); 
+                            }
                         });
 #else
                         foreach (string file in files)
