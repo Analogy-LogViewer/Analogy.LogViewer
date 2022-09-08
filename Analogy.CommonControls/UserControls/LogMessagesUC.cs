@@ -45,10 +45,10 @@ using Markdig;
 namespace Analogy.CommonControls.UserControls
 {
 
-    public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
+    public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace, ILogRawSQL
     {
         #region Events
-
+        public event EventHandler<string>? OnSetRawSQLFilter;
         #endregion
         #region properties
         private DateTimeSelectionUC DateTimePicker { get; set; }
@@ -2048,6 +2048,7 @@ namespace Analogy.CommonControls.UserControls
             try
             {
                 meRawSQL.Text = filter;
+                OnSetRawSQLFilter?.Invoke(this, filter);
                 _messageData.DefaultView.RowFilter = filter;
                 if (!Settings.AutoScrollToLastMessage && Settings.TrackActiveMessage)
                 {
@@ -2065,7 +2066,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        private bool ApplyRawSQLFilter(string filter)
+        public bool ApplyRawSQLFilter(string filter)
         {
             try
             {
@@ -2093,6 +2094,8 @@ namespace Analogy.CommonControls.UserControls
             }
 
         }
+
+       
 
         public int LocateByValue(int startRowHandle, GridColumn column, object? val)
         {
