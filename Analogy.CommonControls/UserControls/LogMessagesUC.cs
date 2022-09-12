@@ -1375,11 +1375,20 @@ namespace Analogy.CommonControls.UserControls
             }
             foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
             {
-                var page = dockManager1.AddPanel(DockingStyle.Float);
+                DockPanel? page = dockManager1.AddPanel(DockingStyle.Float);
                 page.Text = extension.Title;
                 page.Controls.Add(extension.UserControl);
+                page.SizeChanged += ExtensionPanel_SizeChanged;
                 await extension.InitializeUserControl(this, Logger);
                 page.DockedAsTabbedDocument = true;
+            }
+        }
+
+        private void ExtensionPanel_SizeChanged(object sender, EventArgs e)
+        {
+            if (sender is DockPanel pnl && pnl.Controls.Count > 0)
+            {
+                pnl.Controls[0].Controls[0].Size = pnl.Size;
             }
         }
 
