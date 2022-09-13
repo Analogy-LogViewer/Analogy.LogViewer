@@ -285,6 +285,16 @@ namespace Analogy.CommonControls.UserControls
             LoadUISettings();
             LoadReplacementHeaders();
             BookmarkModeUI();
+
+            
+            if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
+            {
+                string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
+                wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
+                wsLogs.ApplyWorkspace(name);
+            }
+            LoadWorkspace(CurrentLogLayoutFileName);
+
             await LoadExtensions();
             SetupEventsHandlers();
 
@@ -326,13 +336,6 @@ namespace Analogy.CommonControls.UserControls
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
 
-            if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
-            {
-                string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
-                wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
-                wsLogs.ApplyWorkspace(name);
-            }
-            LoadWorkspace(CurrentLogLayoutFileName);
         }
 
         public void LoadWorkspace(string fileName)
@@ -1375,12 +1378,17 @@ namespace Analogy.CommonControls.UserControls
             }
             foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
             {
-                DockPanel? page = dockManager1.AddPanel(DockingStyle.Float);
-                page.Text = extension.Title;
-                page.Controls.Add(extension.UserControl);
-                page.SizeChanged += ExtensionPanel_SizeChanged;
+                DockPanel? pnl = dockManager1.Panels.FirstOrDefault(i => i.ID == extension.Id);
+                if (pnl == null)
+                {
+                    pnl = dockManager1.AddPanel(DockingStyle.Float);
+                    pnl.Text = extension.Title;
+                    pnl.ID = extension.Id;
+                    pnl.DockedAsTabbedDocument = true;
+                }
+                pnl.Controls.Add(extension.UserControl);
+                pnl.SizeChanged += ExtensionPanel_SizeChanged;
                 await extension.InitializeUserControl(this, Logger);
-                page.DockedAsTabbedDocument = true;
             }
         }
 
