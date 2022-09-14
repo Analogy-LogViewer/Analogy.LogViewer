@@ -145,8 +145,8 @@ namespace Analogy.Common.DataTypes
             }
             catch (Exception e)
             {
-                Logger.LogCritical("Analogy", $"Error parsing file: {e}");
-                var error = new AnalogyErrorMessage($"Error reading file {filename}: Error: {e.Message}", "Analogy");
+                Logger.LogCritical("Analogy", $"Error parsing file: {e}\n{e.StackTrace}");
+                var error = new AnalogyErrorMessage($"Error reading file {filename}: Error: {e.Message}\n{e.StackTrace}", "Analogy");
                 error.Source = nameof(FileProcessor);
                 error.Module = "Analogy";
                 DataWindow.AppendMessage(error, fileDataProvider.GetType().FullName);
