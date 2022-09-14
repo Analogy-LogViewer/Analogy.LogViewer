@@ -50,7 +50,7 @@ namespace Analogy
             var dataProviders = BuiltInFactories
                 .Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
-            var initTasks = dataProviders.Select(d => d.InitializeDataProviderAsync(AnalogyLogger.Instance))
+            var initTasks = dataProviders.Select(d => d.InitializeDataProvider(AnalogyLogger.Instance))
                 .ToList();
             var completion = Task.WhenAll(initTasks);
             try
@@ -85,7 +85,7 @@ namespace Analogy
             {
                 try
                 {
-                    initTasks.Add(provider.InitializeDataProviderAsync(AnalogyLogger.Instance));
+                    initTasks.Add(provider.InitializeDataProvider(AnalogyLogger.Instance));
                 }
                 catch (Exception e)
                 {

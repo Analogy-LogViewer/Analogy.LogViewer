@@ -47,6 +47,38 @@ namespace Analogy.CommonControls.UserControls
 
     public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace, ILogRawSQL
     {
+        #region ILogRawSQL Interface
+
+        bool ILogRawSQL.ApplyRawSQLFilter(string filter) => ApplyRawSQLFilter(filter);
+
+
+        bool ILogRawSQL.IsRawSQLModeEnabled() => Settings.AdvancedModeRawSQLFilterEnabled;
+
+
+        bool ILogRawSQL.EnabledRawSQLMode()
+        {
+            var visible = ChangeRawSQLMode(true);
+            return visible;
+        }
+
+        bool ILogRawSQL.DisableRawSQLMode()
+        {
+            var visible = ChangeRawSQLMode(false);
+            return !visible;
+        }
+
+        private bool ChangeRawSQLMode(bool enable)
+        {
+            Settings.AdvancedModeRawSQLFilterEnabled = enable;
+            bool visible = Settings.AdvancedMode && Settings.AdvancedModeRawSQLFilterEnabled;
+            this.InvokeIfRequired(_ =>
+            {
+                xtpSQLraw.PageVisible = visible;
+            });
+            return visible;
+        }
+        public event EventHandler<string> OnRawSQLFilterChanged;
+        #endregion
         #region Events
         public event EventHandler<string>? OnSetRawSQLFilter;
         #endregion
@@ -2079,11 +2111,12 @@ namespace Analogy.CommonControls.UserControls
             finally
             {
                 lockSlim.ExitWriteLock();
+                OnRawSQLFilterChanged?.Invoke(this, filter);
             }
 
         }
 
-       
+
 
         public int LocateByValue(int startRowHandle, GridColumn column, object? val)
         {
