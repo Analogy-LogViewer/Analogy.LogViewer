@@ -213,7 +213,7 @@ namespace Analogy.Common.DataTypes
                         entry.ExtractToFile(fullTempName);
                     }
 
-                    if (!Directory.GetFiles(extractPath).Any())
+                    if (!Directory.GetFiles(extractPath, "*", SearchOption.AllDirectories).Any())
                     {
                         Logger.LogError(nameof(UnzipFilesIntoTempFolder),
                             "Zip file does not contain any supported files");
