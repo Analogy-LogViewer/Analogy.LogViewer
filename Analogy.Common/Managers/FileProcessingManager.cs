@@ -23,9 +23,12 @@ namespace Analogy.Common.Managers
 
         public void AddProcessingFile(string filename)
         {
-            if (!Processing.Contains(filename, StringComparer.OrdinalIgnoreCase))
+            lock (_lockObject)
             {
-                Processing.Add(filename);
+                if (!Processing.Contains(filename, StringComparer.OrdinalIgnoreCase))
+                {
+                    Processing.Add(filename);
+                }
             }
         }
 
