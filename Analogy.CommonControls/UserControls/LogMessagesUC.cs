@@ -312,6 +312,17 @@ namespace Analogy.CommonControls.UserControls
             {
                 return;
             }
+
+            foreach (IRawSQLInteractor rawSqlInteractor in FactoriesManager.RawSQLManipulators)
+            {
+                try
+                {
+                    rawSqlInteractor.SetRawSQLHandler(this);
+                }
+                catch (Exception exception)
+                {Logger?.LogException($"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}",exception);
+                }
+            }
             wsLogs.CaptureWorkspace("Default");
 
             LoadUISettings();

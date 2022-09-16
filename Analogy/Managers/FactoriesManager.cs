@@ -28,7 +28,9 @@ namespace Analogy
         public List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; }
 
-        public FactoriesManager()
+        public List<IRawSQLInteractor> RawSQLManipulators => Factories.SelectMany(f => f.UserControlsFactories)
+            .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
+         public FactoriesManager()
         {
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
