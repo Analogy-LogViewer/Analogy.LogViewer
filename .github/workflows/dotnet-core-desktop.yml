@@ -62,6 +62,9 @@ jobs:
       run: |
        rm  ./Installer/Installer_TemporaryKey.pfx
 
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
     # Publish Artifacts 
   # - name: 'Publish Artifacts'
