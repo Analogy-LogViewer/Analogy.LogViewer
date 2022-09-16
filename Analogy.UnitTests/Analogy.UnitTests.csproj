@@ -31,12 +31,18 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <ItemGroup>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.3.0" />
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.2.4" />
+    <PackageReference Include="Analogy.LogViewer.Serilog" Version="2.6.6" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Analogy\Analogy.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="test_recursive.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

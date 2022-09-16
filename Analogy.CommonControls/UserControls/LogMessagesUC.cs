@@ -1718,46 +1718,58 @@ namespace Analogy.CommonControls.UserControls
 
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
-            lockSlim.EnterWriteLock();
-            if (diffStartTime > DateTime.MinValue)
+            try
             {
-                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
+                lockSlim.EnterWriteLock();
+                if (diffStartTime > DateTime.MinValue)
+                {
+                    dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
+                }
+            }
+            finally
+            {
+                lockSlim.ExitWriteLock();
             }
 
-            lockSlim.ExitWriteLock();
             if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
                 Settings.CheckAdditionalInformation)
             {
                 AddExtraColumnsToLogGrid(logGrid, message);
             }
 
-            lockSlim.EnterWriteLock();
-            if (hasAnyInPlaceExtensions)
+            try
             {
-                foreach (IAnalogyExtensionInPlace extension in InPlaceRegisteredExtensions)
+                lockSlim.EnterWriteLock();
+                if (hasAnyInPlaceExtensions)
                 {
-                    var columns = extension.GetColumnsInfo();
-                    foreach (AnalogyColumnInfo column in columns)
+                    foreach (IAnalogyExtensionInPlace extension in InPlaceRegisteredExtensions)
                     {
-                        dtr.BeginEdit();
-                        dtr[column.ColumnName] = extension.GetValueForCellColumn(message, column.ColumnName);
-                        dtr.EndEdit();
+                        var columns = extension.GetColumnsInfo();
+                        foreach (AnalogyColumnInfo column in columns)
+                        {
+                            dtr.BeginEdit();
+                            dtr[column.ColumnName] = extension.GetValueForCellColumn(message, column.ColumnName);
+                            dtr.EndEdit();
+                        }
+                    }
+                }
+
+                if (hasAnyUserControlExtensions)
+                {
+                    foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
+                    {
+                        if (IsHandleCreated)
+                        {
+                            BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
+                        }
                     }
                 }
             }
-
-            if (hasAnyUserControlExtensions)
+            finally
             {
-                foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
-                {
-                    if (IsHandleCreated)
-                    {
-                        BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
-                    }
-                }
+                lockSlim.ExitWriteLock();
             }
 
-            lockSlim.ExitWriteLock();
             if (PagingManager.IsCurrentPageInView(_messageData))
             {
                 NewDataExist = true;
