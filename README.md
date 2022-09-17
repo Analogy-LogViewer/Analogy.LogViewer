@@ -15,7 +15,6 @@
  ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/workflows/.NET%20Core%20Desktop/badge.svg)
 </p>
 
-Share links:
 [![GitHub Repo stars](https://img.shields.io/badge/share%20on-reddit-red?logo=reddit)](https://reddit.com/submit?url=https://github.com/Analogy-LogViewer/Analogy.LogViewer&title=Analogy.LogViewer)
 [![GitHub Repo stars](https://img.shields.io/badge/share%20on-hacker%20news-orange?logo=ycombinator)](https://news.ycombinator.com/submitlink?u=https://github.com/Analogy-LogViewer/Analogy.LogViewer)
 [![GitHub Repo stars](https://img.shields.io/badge/share%20on-twitter-03A9F4?logo=twitter)](https://twitter.com/share?url=https://github.com/Analogy-LogViewer/Analogy.LogViewerF&t=Analogy.LogViewer)
