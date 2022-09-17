@@ -1,4 +1,4 @@
-# Analogy Log Viewer   ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/workflows/.NET%20Core%20Desktop/badge.svg) [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate/?business=MCP57TBRAAVXA&no_recurring=0&item_name=Support+Open+source+Projects+%28Analogy+Log+Viewer%2C+HDF5-CSHARP%2C+etc%29&currency_code=USD) [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F77IVQT)
+# Analogy Log Viewer  [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate/?business=MCP57TBRAAVXA&no_recurring=0&item_name=Support+Open+source+Projects+%28Analogy+Log+Viewer%2C+HDF5-CSHARP%2C+etc%29&currency_code=USD) [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F77IVQT)
   <img src="./Assets/Analogy2.png" align="right" width="155px" height="155px">
 
 <p align="center">
@@ -12,8 +12,15 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"  alt="Latest Release" />
 </a>
+ ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/workflows/.NET%20Core%20Desktop/badge.svg)
 </p>
 
+Share links:
+[![GitHub Repo stars](https://img.shields.io/badge/share%20on-reddit-red?logo=reddit)](https://reddit.com/submit?url=https://github.com/Analogy-LogViewer/Analogy.LogViewer&title=Analogy.LogViewer)
+[![GitHub Repo stars](https://img.shields.io/badge/share%20on-hacker%20news-orange?logo=ycombinator)](https://news.ycombinator.com/submitlink?u=https://github.com/Analogy-LogViewer/Analogy.LogViewer)
+[![GitHub Repo stars](https://img.shields.io/badge/share%20on-twitter-03A9F4?logo=twitter)](https://twitter.com/share?url=https://github.com/Analogy-LogViewer/Analogy.LogViewerF&t=Analogy.LogViewer)
+[![GitHub Repo stars](https://img.shields.io/badge/share%20on-facebook-1976D2?logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/Analogy-LogViewer/Analogy.LogViewer)
+[![GitHub Repo stars](https://img.shields.io/badge/share%20on-linkedin-3949AB?logo=linkedin)](https://www.linkedin.com/shareArticle?url=https://github.com/Analogy-LogViewer/Analogy.LogViewer&title=Analogy.LogViewer)
 A log viewer that can parse log files and stream logs from C#, Python, Java and others.
 You can also implement your own parsers or request to add new parsers for other logs
 
