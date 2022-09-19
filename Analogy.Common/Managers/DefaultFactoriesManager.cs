@@ -18,6 +18,7 @@ namespace Analogy.Common.Managers
         public List<string> ProbingPaths { get; set; } = new List<string>(0);
         public List<FactoryContainer> BuiltInFactories { get; } = new List<FactoryContainer>(0);
         public List<FactoryContainer> Factories { get; } = new List<FactoryContainer>(0);
+        public List<IRawSQLInteractor> RawSQLManipulators { get; } = new List<IRawSQLInteractor>(0);
         public Task InitializeBuiltInFactories() => Task.CompletedTask;
         
         public Task AddExternalDataSources() => Task.CompletedTask;

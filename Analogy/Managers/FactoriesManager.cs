@@ -28,7 +28,9 @@ namespace Analogy
         public List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; }
 
-        public FactoriesManager()
+        public List<IRawSQLInteractor> RawSQLManipulators => Factories.SelectMany(f => f.UserControlsFactories)
+            .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
+         public FactoriesManager()
         {
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
@@ -50,7 +52,7 @@ namespace Analogy
             var dataProviders = BuiltInFactories
                 .Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
-            var initTasks = dataProviders.Select(d => d.InitializeDataProviderAsync(AnalogyLogger.Instance))
+            var initTasks = dataProviders.Select(d => d.InitializeDataProvider(AnalogyLogger.Instance))
                 .ToList();
             var completion = Task.WhenAll(initTasks);
             try
@@ -85,7 +87,7 @@ namespace Analogy
             {
                 try
                 {
-                    initTasks.Add(provider.InitializeDataProviderAsync(AnalogyLogger.Instance));
+                    initTasks.Add(provider.InitializeDataProvider(AnalogyLogger.Instance));
                 }
                 catch (Exception e)
                 {

@@ -45,10 +45,42 @@ using Markdig;
 namespace Analogy.CommonControls.UserControls
 {
 
-    public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace
+    public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace, ILogRawSQL
     {
-        #region Events
+        #region ILogRawSQL Interface
+        public event EventHandler<string> OnRawSQLFilterChanged;
 
+        bool ILogRawSQL.ApplyRawSQLFilter(string filter) => ApplyRawSQLFilter(filter);
+
+
+        bool ILogRawSQL.IsRawSQLModeEnabled => Settings.AdvancedModeRawSQLFilterEnabled;
+
+
+        bool ILogRawSQL.EnableRawSQLMode()
+        {
+            var visible = ChangeRawSQLMode(true);
+            return visible;
+        }
+
+        bool ILogRawSQL.DisableRawSQLMode()
+        {
+            var visible = ChangeRawSQLMode(false);
+            return !visible;
+        }
+
+        private bool ChangeRawSQLMode(bool enable)
+        {
+            Settings.AdvancedModeRawSQLFilterEnabled = enable;
+            bool visible = Settings.AdvancedMode && Settings.AdvancedModeRawSQLFilterEnabled;
+            this.InvokeIfRequired(_ =>
+            {
+                xtpSQLraw.PageVisible = visible;
+            });
+            return visible;
+        }
+        #endregion
+        #region Events
+        public event EventHandler<string>? OnSetRawSQLFilter;
         #endregion
         #region properties
         private DateTimeSelectionUC DateTimePicker { get; set; }
@@ -279,6 +311,17 @@ namespace Analogy.CommonControls.UserControls
             if (DesignMode)
             {
                 return;
+            }
+
+            foreach (IRawSQLInteractor rawSqlInteractor in FactoriesManager.RawSQLManipulators)
+            {
+                try
+                {
+                    rawSqlInteractor.SetRawSQLHandler(this);
+                }
+                catch (Exception exception)
+                {Logger?.LogException($"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}",exception);
+                }
             }
             wsLogs.CaptureWorkspace("Default");
 
@@ -2048,6 +2091,7 @@ namespace Analogy.CommonControls.UserControls
             try
             {
                 meRawSQL.Text = filter;
+                OnSetRawSQLFilter?.Invoke(this, filter);
                 _messageData.DefaultView.RowFilter = filter;
                 if (!Settings.AutoScrollToLastMessage && Settings.TrackActiveMessage)
                 {
@@ -2065,7 +2109,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        private bool ApplyRawSQLFilter(string filter)
+        public bool ApplyRawSQLFilter(string filter)
         {
             try
             {
@@ -2090,9 +2134,12 @@ namespace Analogy.CommonControls.UserControls
             finally
             {
                 lockSlim.ExitWriteLock();
+                OnRawSQLFilterChanged?.Invoke(this, filter);
             }
 
         }
+
+
 
         public int LocateByValue(int startRowHandle, GridColumn column, object? val)
         {

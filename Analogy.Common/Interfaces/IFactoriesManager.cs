@@ -16,6 +16,7 @@ namespace Analogy.Common.Interfaces
         List<string> ProbingPaths { get; set; }
         List<FactoryContainer> BuiltInFactories { get; }
         List<FactoryContainer> Factories { get; }
+        List<IRawSQLInteractor> RawSQLManipulators { get; }
         Task InitializeBuiltInFactories();
         Task AddExternalDataSources();
 
