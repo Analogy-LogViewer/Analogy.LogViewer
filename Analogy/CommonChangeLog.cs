@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.9.1 - [Data provider] Add Words Search data provider #1478",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,09,15)),
+                new AnalogyChangeLog("V4.9.1 - [File Processor] Enable Recursive Zip Processing #1442",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,09,15)),
                 new AnalogyChangeLog("V4.9.1 - Add download Statistics per Release #1417",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,09,03)),
                 new AnalogyChangeLog("V4.9.1 - [User Settings] Add fonts selection #1118",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,09,02)),
                 new AnalogyChangeLog("V4.9.0 - [json Viewer] allow setting which column is used to the inline json viewer #1410",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,08,26)),
