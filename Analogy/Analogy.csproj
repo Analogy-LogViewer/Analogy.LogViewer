@@ -51,9 +51,9 @@
 		<PackageReference Include="Analogy.CommonUtilities" Version="2.3.2" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.3.3" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="3.3.2" />
-		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="0.3.1" />
+		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="0.4.0" />
 		<PackageReference Include="Grpc.Core" Version="2.46.5" />
-		<PackageReference Include="Markdig" Version="0.30.3" />
+		<PackageReference Include="Markdig" Version="0.30.4" />
 		<PackageReference Include="MessagePack" Version="2.4.35" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
