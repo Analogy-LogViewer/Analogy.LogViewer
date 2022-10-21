@@ -69,7 +69,7 @@ namespace Analogy.Plotting
                 yield return (seriesName, AnalogyPlottingSeriesType.Line);
             }
         }
-        public Task InitializePlottingAsync(IAnalogyPlottingInteractor uiInteractor, IAnalogyLogger logger)
+        public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, IAnalogyLogger logger)
         {
             return Task.CompletedTask;
         }

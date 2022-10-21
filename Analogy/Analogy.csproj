@@ -48,11 +48,12 @@
 		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="2.2.3" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.2.5" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.2.4" />
-		<PackageReference Include="Grpc.Core" Version="2.46.3" />
-		<PackageReference Include="Markdig" Version="0.30.3" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="2.3.3" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.3.4" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.3.3" />
+		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="0.4.7" />
+		<PackageReference Include="Grpc.Core" Version="2.46.5" />
+		<PackageReference Include="Markdig" Version="0.30.4" />
 		<PackageReference Include="MessagePack" Version="2.4.35" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
@@ -62,59 +63,59 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="1.3.3">
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="1.3.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="1.2.2">
+		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="1.3.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Example" Version="3.1.4">
+		<PackageReference Include="Analogy.LogViewer.Example" Version="3.2.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="2.2.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="2.2.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="2.2.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="2.2.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="2.2.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="2.2.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="2.6.6">
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="2.7.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="2.2.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.Github" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.Github" Version="2.2.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.gRPC" Version="2.1.3">
+		<PackageReference Include="Analogy.LogViewer.gRPC" Version="2.2.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.5.4">
+		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.6.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
