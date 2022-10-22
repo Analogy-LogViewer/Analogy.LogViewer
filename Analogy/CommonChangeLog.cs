@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                
+                new AnalogyChangeLog("V4.9.2 - Replace Newtonsoft.Json with System.Text.Json #1497",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 10, 22)),
                 new AnalogyChangeLog("V4.9.1 - [Nugets] Bump Markdig from 0.30.3 to 0.30.4 #1479", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 10, 04)),
                 new AnalogyChangeLog("V4.9.1 - [Data provider] Add Words Search data provider #1478",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,10,01)),
                 new AnalogyChangeLog("V4.9.1 - [File Processor] Enable Recursive Zip Processing #1442",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2022,09,15)),
