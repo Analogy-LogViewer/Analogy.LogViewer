@@ -480,6 +480,8 @@ namespace Analogy.CommonControls.UserControls
             this.logGrid.OptionsView.RowAutoHeight = true;
             this.logGrid.OptionsView.ShowAutoFilterRow = true;
             this.logGrid.OptionsView.ShowGroupPanel = false;
+            this.logGrid.OptionsMenu.ShowConditionalFormattingItem = true;
+            this.logGrid.OptionsMenu.EnableColumnMenu = true;
             this.logGrid.ShowFilterPopupListBox += new DevExpress.XtraGrid.Views.Grid.FilterPopupListBoxEventHandler(this.GridViewShowFilterPopupListBox);
             this.logGrid.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.LogGridViewCustomColumnDisplayText);
             this.logGrid.Click += new System.EventHandler(this.logGrid_Click);
