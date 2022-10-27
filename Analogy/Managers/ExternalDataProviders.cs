@@ -125,8 +125,11 @@ namespace Analogy.Managers
                         FactoryContainer fc = new FactoryContainer(assembly, fileName, factory, setting);
                         if (Factories.Exists(fa => fa.Factory.FactoryId == factory.FactoryId))
                         {
-                            Factories.Remove(Factories.FirstOrDefault(fa =>
-                                fa.Factory.FactoryId == factory.FactoryId));
+                            var toRemove = Factories.FirstOrDefault(fa => fa.Factory.FactoryId == factory.FactoryId);
+                            if (toRemove != null)
+                            {
+                                Factories.Remove(toRemove);
+                            }
                         }
 
                         if (factory.AdditionalProbingLocation != null)

@@ -868,6 +868,7 @@ namespace Analogy.Forms
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
+                providerSetting.CreateUserControl(Analogy.AnalogyLogger.Instance);
                 BarButtonItem settingsBtn = new BarButtonItem
                 {
                     Caption = providerSetting.Title,
