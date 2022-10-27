@@ -55,7 +55,6 @@
 		<PackageReference Include="Grpc.Core" Version="2.46.5" />
 		<PackageReference Include="Markdig" Version="0.30.4" />
 		<PackageReference Include="MessagePack" Version="2.4.35" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
@@ -119,6 +118,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="System.Text.Json" Version="6.0.6" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="MainForm.resx">
