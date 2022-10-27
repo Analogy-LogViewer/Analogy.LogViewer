@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.3.4" />
+	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>

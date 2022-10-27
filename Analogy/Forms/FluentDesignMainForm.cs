@@ -758,6 +758,7 @@ namespace Analogy
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
+                providerSetting.CreateUserControl(Analogy.AnalogyLogger.Instance);
                 AccordionControlElement settingsBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(settingsBtn);
                 settingsBtn.Style = ElementStyle.Item;
