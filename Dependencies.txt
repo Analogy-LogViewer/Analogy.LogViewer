@@ -7,10 +7,8 @@ Interface -- CommonUtilities -- Template -- RegexParser
 Interface -- CommonUtilities -- Template -- RegexParser -- PowerToys
 Interface -- CommonUtilities -- Template -- Example
 Interface -- CommonUtilities -- Template -- Plain Text
-Interface -- CommonUtilities -- Template -- Affirmations
 Interface -- CommonUtilities -- Template -- GitHistory
 Interface -- CommonUtilities -- Template -- Github
-Interface -- CommonUtilities -- Template -- GitHubActionLogs
 Interface -- CommonUtilities -- Template -- IISLogsProvider
 Interface -- CommonUtilities -- Template -- JsonParser
 Interface -- CommonUtilities -- Template -- KafkaProvider
@@ -19,9 +17,6 @@ Interface -- CommonUtilities -- Template -- Log4Net
 Interface -- CommonUtilities -- Template -- NLog
 Interface -- CommonUtilities -- Template -- RabbitMq
 Interface -- CommonUtilities -- Template -- Serilog 
-Interface -- CommonUtilities -- Template -- VisualStudioActivityLog
-Interface -- CommonUtilities -- Template -- RSSReader
-Interface -- CommonUtilities -- Template -- WhatsApp
 Interface -- CommonUtilities -- Template -- WindowsEventLogs
 Interface -- CommonUtilities -- Template -- XMLParser
 
@@ -31,6 +26,5 @@ Interface -- CommonUtilities -- Template -- Serilog.Sink
 
 Interface -- LogServer.Client --         - AspNetCore.LogProvider
 
-Interface -- CommonUtilities -- Template -- RegexParser
 Interface -- LogServer.Client --         -- Grpc
-Interface -- CommonUtilities -- Template -- Grpc         -- Kama Research
+Interface -- CommonUtilities -- Template -- Grpc
