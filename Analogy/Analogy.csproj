@@ -69,7 +69,7 @@
 		<PackageReference Include="Grpc.Core" Version="2.46.5" />
 		<PackageReference Include="Markdig" Version="0.30.4" />
 		<PackageReference Include="MessagePack" Version="2.4.35" />
-		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
