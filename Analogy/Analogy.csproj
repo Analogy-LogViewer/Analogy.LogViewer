@@ -58,7 +58,7 @@
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="3.4.0" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.4.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="3.4.0" />
-		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.4.0" />
+		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.5.0" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.4.0" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.4.0" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="3.4.0" />
