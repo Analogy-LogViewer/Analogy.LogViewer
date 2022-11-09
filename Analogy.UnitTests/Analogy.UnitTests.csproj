@@ -31,7 +31,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <ItemGroup>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.4.0" />
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.5.0" />
     <PackageReference Include="Analogy.LogViewer.Serilog" Version="3.4.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
