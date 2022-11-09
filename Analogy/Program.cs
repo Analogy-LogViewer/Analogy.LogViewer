@@ -260,7 +260,7 @@ namespace Analogy
 
 
 
-            var paths = FactoriesManager.Instance.ProbingPaths.Select(Path.GetDirectoryName).Except(new List<string> { AssemblyLocation }).Distinct()
+            var paths = FactoriesManager.Instance.ProbingPaths.Select(Path.GetFullPath).Except(new List<string> { AssemblyLocation }).Distinct()
                 .ToList();
             paths.AddRange(AnalogyNonPersistSettings.Instance.AdditionalAssembliesDependenciesLocations);
             foreach (var path in paths)
