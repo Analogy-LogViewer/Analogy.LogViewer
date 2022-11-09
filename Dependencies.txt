@@ -1,4 +1,7 @@
+<TargetFrameworks>net7.0-windows;net6.0-windows;net48;net471</TargetFrameworks>
 <TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net48;net472;net471</TargetFrameworks>
+
+
 Interface -- LogServer.Client
 Interface -- LogServer.Client -- NLog.Targets
 Interface -- LogServer

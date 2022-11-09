@@ -90,7 +90,10 @@ namespace Analogy
 
                 using (Stream myWriter = File.Open(filename, FileMode.Create, FileAccess.ReadWrite))
                 {
+#pragma warning disable SYSLIB0011
                     formatter.Serialize(myWriter, item);
+#pragma warning restore SYSLIB0011
+
                 }
             }
             catch (SerializationException ex)
@@ -114,7 +117,9 @@ namespace Analogy
                 {
                     using (Stream myReader = File.Open(filename, FileMode.Open, FileAccess.Read))
                     {
+#pragma warning disable SYSLIB0011
                         return (T)formatter.Deserialize(myReader);
+#pragma warning restore SYSLIB0011
                     }
                 }
                 catch (Exception ex)

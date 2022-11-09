@@ -11,6 +11,7 @@ using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
 using Analogy.DataProviders;
 using Analogy.Forms;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {
@@ -224,6 +225,54 @@ namespace Analogy.Managers
             string filePath = "")
         {
             LogError(ex.Message, source);
+        }
+
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+        {
+            try
+            {
+                AnalogyLogLevel level;
+                string text = formatter(state, exception);
+
+                switch (logLevel)
+                {
+                    case LogLevel.Trace:
+                        LogInformation(text);
+                        break;
+                    case LogLevel.Debug:
+                        LogDebug(text);
+                        break;
+                    case LogLevel.Information:
+                        LogInformation(text);
+                        break;
+                    case LogLevel.Warning:
+                        LogWarning(text);
+                        break;
+                    case LogLevel.Error:
+                    case LogLevel.Critical:
+                        LogError(text);
+                        break;
+                    case LogLevel.None:
+                        level = AnalogyLogLevel.None;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel, null);
+                }
+            }
+            catch (Exception e)
+            {
+                LogException($"error: {e.Message}", e);
+            }
+        }
+
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            return true;
+        }
+
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull
+        {
+            return null;
         }
     }
 }

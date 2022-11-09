@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using Analogy.Interfaces;
 using Analogy.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {
@@ -41,6 +42,53 @@ namespace Analogy
         private string GetFormattedString(string message, string memberName, int lineNumber, string filePath) =>
             $"{message}. Member:{memberName}. Line:{lineNumber}. Thread (managedID):{Thread.CurrentThread.ManagedThreadId}. Start Time:{ProcessStartTime}. Time:{DateTimeWithMilliseconds}. File: {filePath}";
 
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+        {
+            try
+            {
+                AnalogyLogLevel level;
+                string text = formatter(state, exception);
+
+                switch (logLevel)
+                {
+                    case LogLevel.Trace:
+                        LogInformation(text);
+                        break;
+                    case LogLevel.Debug:
+                        LogDebug(text);
+                        break;
+                    case LogLevel.Information:
+                        LogInformation(text);
+                        break;
+                    case LogLevel.Warning:
+                        LogWarning(text);
+                        break;
+                    case LogLevel.Error:
+                    case LogLevel.Critical:
+                        LogError(text);
+                        break;
+                    case LogLevel.None:
+                        level = AnalogyLogLevel.None;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel, null);
+                }
+            }
+            catch (Exception e)
+            {
+                LogException($"error: {e.Message}", e);
+            }
+        }
+
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            return true;
+        }
+
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull
+        {
+            return null;
+        }
     }
 
 }
