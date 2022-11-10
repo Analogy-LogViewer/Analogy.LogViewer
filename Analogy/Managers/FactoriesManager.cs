@@ -30,7 +30,7 @@ namespace Analogy
 
         public List<IRawSQLInteractor> RawSQLManipulators => Factories.SelectMany(f => f.UserControlsFactories)
             .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
-         public FactoriesManager()
+        public FactoriesManager()
         {
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
@@ -235,5 +235,27 @@ namespace Analogy
                                                 f.DataProvidersFactories.Any(dpf =>
                                                     dpf.DataProviders.Any(dp => dp.Id == componentId)));
 
+        public void ShutDownAllFactories()
+        {
+            foreach (FactoryContainer factory in Factories)
+            {
+                foreach (var provider in factory.DataProvidersFactories)
+                {
+                    var realTimes = provider.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
+                        .Cast<IAnalogyRealTimeDataProvider>().ToList();
+                    foreach (var realTime in realTimes)
+                    {
+                        try
+                        {
+                            realTime.ShutDown().Wait(5000);
+                        }
+                        catch (Exception e)
+                        {
+                            AnalogyLogger.Instance.LogException($"Error shutdown {realTime.OptionalTitle}", e, provider.Title);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

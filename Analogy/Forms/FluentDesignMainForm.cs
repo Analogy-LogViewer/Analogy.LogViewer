@@ -1521,6 +1521,7 @@ namespace Analogy
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
+                FactoriesManager.Instance.ShutDownAllFactories();
             }
         }
 
