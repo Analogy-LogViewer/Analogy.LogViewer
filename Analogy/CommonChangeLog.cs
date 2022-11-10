@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.9.2 - Add NET7 Target Framework #1551",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 11, 10)),
+                new AnalogyChangeLog("V4.9.2 - [Real Time providers] closing the application does not call StopReceiving unless the tab is closed manually #1537",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2022, 11, 10)),
                 new AnalogyChangeLog("V4.9.2 - [Improvements] lazy init providers #1538",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 11, 10)),
                 new AnalogyChangeLog("V4.9.2 - Revert Replace Newtonsoft.Json with System.Text.Json #1497",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 10, 22)),
                 new AnalogyChangeLog("V4.9.2 - Replace Newtonsoft.Json with System.Text.Json #1497",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 10, 22)),
