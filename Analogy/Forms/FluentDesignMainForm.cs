@@ -61,8 +61,6 @@ namespace Analogy
         private bool PreventExit { get; set; }
         private bool Initialized { get; set; }
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
-        private Dictionary<DockPanel, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
-            new Dictionary<DockPanel, IAnalogyRealTimeDataProvider>();
         public FluentDesignMainForm()
         {
             InitializeComponent();
@@ -1179,6 +1177,7 @@ namespace Analogy
                     bool canStartReceiving = false;
                     try
                     {
+                        await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                         canStartReceiving = await realTime.CanStartReceiving();
                     }
                     catch (Exception e)
@@ -1219,7 +1218,6 @@ namespace Analogy
                         realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                         realTime.OnDisconnected += OnRealTimeDisconnected;
                         await realTime.StartReceiving();
-                        onlineDataSourcesMapping.Add(page, realTime);
 
                         async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                         {

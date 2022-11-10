@@ -50,9 +50,6 @@ namespace Analogy.Forms
         private string onlineTitle = "Online log";
         private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
 
-        private Dictionary<DockPanel, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
-            new Dictionary<DockPanel, IAnalogyRealTimeDataProvider>();
-
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
         private int openedWindows;
         private int filePooling;
@@ -1092,6 +1089,7 @@ namespace Analogy.Forms
                     bool canStartReceiving = false;
                     try
                     {
+                        await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                         canStartReceiving = await realTime.CanStartReceiving();
                     }
                     catch (Exception e)
@@ -1134,7 +1132,6 @@ namespace Analogy.Forms
                         realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                         realTime.OnDisconnected += OnRealTimeDisconnected;
                         await realTime.StartReceiving();
-                        onlineDataSourcesMapping.Add(page, realTime);
 
                         async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                         {
@@ -1234,6 +1231,7 @@ namespace Analogy.Forms
                         bool canStartReceiving = false;
                         try
                         {
+                            await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                             canStartReceiving = await realTime.CanStartReceiving();
                         }
                         catch (Exception e)
@@ -1276,8 +1274,6 @@ namespace Analogy.Forms
                             realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                             realTime.OnDisconnected += OnRealTimeDisconnected;
                             await realTime.StartReceiving();
-                            onlineDataSourcesMapping.Add(page, realTime);
-
                             async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                             {
                                 if (arg.Panel == page)
@@ -2021,6 +2017,7 @@ namespace Analogy.Forms
                 bool canStartReceiving = false;
                 try
                 {
+                    await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                     canStartReceiving = await realTime.CanStartReceiving();
                 }
                 catch (Exception e)
@@ -2062,7 +2059,6 @@ namespace Analogy.Forms
                     realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                     realTime.OnDisconnected += OnRealTimeDisconnected;
                     await realTime.StartReceiving();
-                    onlineDataSourcesMapping.Add(page, realTime);
                     dockManager1.ActivePanel = page;
 
                     async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)

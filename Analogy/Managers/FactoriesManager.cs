@@ -27,11 +27,12 @@ namespace Analogy
         public static FactoriesManager Instance => _instance.Value;
         public List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; }
-
+        private Dictionary<IAnalogyRealTimeDataProvider, bool> Initialized { get; set; }
         public List<IRawSQLInteractor> RawSQLManipulators => Factories.SelectMany(f => f.UserControlsFactories)
             .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
         public FactoriesManager()
         {
+            Initialized = new Dictionary<IAnalogyRealTimeDataProvider, bool>();
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
             var analogyFactory = new AnalogyBuiltInFactory();
@@ -82,36 +83,6 @@ namespace Analogy
             var dataProviders = factoryContainers.Where(f =>
                     f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
-            var initTasks = new List<Task>();
-            foreach (var provider in dataProviders)
-            {
-                try
-                {
-                    initTasks.Add(provider.InitializeDataProvider(AnalogyLogger.Instance));
-                }
-                catch (Exception e)
-                {
-                    AnalogyLogger.Instance.LogException($"Error during Initialization of {provider.OptionalTitle}", e, "AddExternalDataSources");
-
-                }
-            }
-
-            try
-            {
-                await Task.WhenAll(initTasks);
-            }
-            catch (AggregateException ex)
-            {
-                AnalogyLogger.Instance.LogException("Error during Initialization", ex, "AddExternalDataSources");
-            }
-
-            foreach (var t in initTasks)
-            {
-                if (t.Status != TaskStatus.RanToCompletion)
-                {
-                    AnalogyLogger.Instance.LogException("Error during Initialization", t.Exception, "AddExternalDataSources");
-                }
-            }
         }
 
         public IEnumerable<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(
@@ -125,8 +96,7 @@ namespace Analogy
                         i is IAnalogyOfflineDataProvider offline && offline.CanOpenAllFiles(fileNames));
                     foreach (IAnalogyDataProvider dataSource in supported)
                     {
-                        yield return (dataSource as IAnalogyOfflineDataProvider,
-                            dataProvidersFactory.FactoryId);
+                        yield return (dataSource as IAnalogyOfflineDataProvider, dataProvidersFactory.FactoryId);
                     }
                 }
             }
@@ -254,6 +224,22 @@ namespace Analogy
                             AnalogyLogger.Instance.LogException($"Error shutdown {realTime.OptionalTitle}", e, provider.Title);
                         }
                     }
+                }
+            }
+        }
+
+        public async Task InitializeIfNeeded(IAnalogyRealTimeDataProvider realTime)
+        {
+            if (!Initialized.ContainsKey(realTime))
+            {
+                try
+                {
+                    await realTime.InitializeDataProvider(AnalogyLogManager.Instance);
+                    Initialized[realTime] = true;
+                }
+                catch (Exception e)
+                {
+                    AnalogyLogManager.Instance.LogException($"Error Initialize Real time provider: {realTime.OptionalTitle}: {e.Message}", e);
                 }
             }
         }
