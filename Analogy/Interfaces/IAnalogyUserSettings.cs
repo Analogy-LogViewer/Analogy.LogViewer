@@ -41,7 +41,7 @@ namespace Analogy.Interfaces
         Guid LastOpenedDataProvider { get; set; }
         bool RememberLastOpenedDataProvider { get; set; }
         int NumberOfLastSearches { get; set; }
-        List<string> AdditionalProbingLocations { get; set; }
+        List<string>? AdditionalProbingLocations { get; set; }
         bool SingleInstance { get; set; }
         string AnalogyIcon { get; set; }
         UpdateMode UpdateMode { get; set; }
