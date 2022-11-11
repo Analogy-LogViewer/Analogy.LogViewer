@@ -1063,11 +1063,11 @@ namespace Analogy.Forms
 
             foreach (var realTime in realTimes)
             {
-                var imageSmallOffline = realTime.DisconnectedSmallImage;
-                var imageSmallOnline = realTime.ConnectedSmallImage;
                 BarButtonItem realTimeBtn = new BarButtonItem();
                 ribbonPageGroup.ItemLinks.Add(realTimeBtn);
-                realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
+                realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
+
                 realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                 realTimeBtn.Caption = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
@@ -1101,7 +1101,8 @@ namespace Analogy.Forms
                     if (canStartReceiving) //connected
                     {
                         openedWindows++;
-                        realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                        //realTimeBtn.ImageOptions.Image = realTime.DisconnectedSmallImage ?? Resources.Database_off;
+                        //realTimeBtn.ImageOptions.LargeImage = realTime.DisconnectedLargeImage ?? Resources.Database_off;
                         var onlineUC = new OnlineUCLogs(realTime);
 
                         void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1117,7 +1118,8 @@ namespace Analogy.Forms
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                            realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                           // realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
+                           // realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
                         }
 
                         var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1208,18 +1210,18 @@ namespace Analogy.Forms
                 BarSubItem realTimeMenu = new BarSubItem();
                 group.ItemLinks.Add(realTimeMenu);
 
-                realTimeMenu.ImageOptions.Image = Resources.Database_off;
+                realTimeMenu.ImageOptions.Image = Resources.Database_on;
                 realTimeMenu.RibbonStyle = RibbonItemStyles.All;
                 realTimeMenu.Caption = "Real Time Logs";
 
 
                 foreach (var realTime in realTimes)
                 {
-                    var imageSmallOffline = realTime.DisconnectedSmallImage;
-                    var imageSmallOnline = realTime.ConnectedSmallImage;
                     BarButtonItem realTimeBtn = new BarButtonItem();
                     realTimeMenu.ItemLinks.Add(realTimeBtn);
-                    realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                    realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
+
                     realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                     realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle)
                         ? $" - {realTime.OptionalTitle}"
@@ -1243,7 +1245,6 @@ namespace Analogy.Forms
                         if (canStartReceiving) //connected
                         {
                             openedWindows++;
-                            realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                             var onlineUC = new OnlineUCLogs(realTime);
 
                             void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1259,7 +1260,7 @@ namespace Analogy.Forms
                                     AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                     dataSourceFactory.Title, "Analogy");
                                 onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                                realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                                //realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
                             }
 
                             var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -2002,12 +2003,10 @@ namespace Analogy.Forms
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            var disconnectedLargeImage = realTime.DisconnectedLargeImage;
-            var disconnectedSmallImage = realTime.DisconnectedSmallImage;
             var connectedLargeImage = realTime.ConnectedLargeImage;
             var connectedSmallImage = realTime.ConnectedSmallImage;
-            realTimeBtn.ImageOptions.LargeImage = disconnectedLargeImage ?? Resources.Database_off;
-            realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
+            realTimeBtn.ImageOptions.LargeImage = connectedLargeImage ?? Resources.Database_on;
+            realTimeBtn.ImageOptions.Image = connectedLargeImage ?? Resources.Database_on;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ? $" - {realTime.OptionalTitle}" : string.Empty);
 
@@ -2028,8 +2027,6 @@ namespace Analogy.Forms
                 if (canStartReceiving) //connected
                 {
                     openedWindows++;
-                    realTimeBtn.ImageOptions.Image = connectedSmallImage ?? Resources.Database_on;
-                    realTimeBtn.ImageOptions.LargeImage = connectedLargeImage ?? Resources.Database_on;
                     var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -2044,8 +2041,8 @@ namespace Analogy.Forms
                             $"Source {title} Disconnected. Reason: {e.DisconnectedReason}",
                             AnalogyLogLevel.Analogy, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                        realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
-                        realTimeBtn.ImageOptions.Image = disconnectedLargeImage ?? Resources.Database_off;
+                        //realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
+                        //realTimeBtn.ImageOptions.Image = disconnectedLargeImage ?? Resources.Database_off;
                     }
 
                     var page = dockManager1.AddPanel(DockingStyle.Float);

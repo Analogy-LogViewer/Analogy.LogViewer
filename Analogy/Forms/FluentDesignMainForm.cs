@@ -1151,12 +1151,10 @@ namespace Analogy
 
             foreach (var realTime in realTimes)
             {
-                var imageLargeOffline = realTime.DisconnectedLargeImage;
-                var imageLargeOnline = realTime.ConnectedLargeImage;
                 AccordionControlElement realTimeBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(realTimeBtn);
                 realTimeBtn.Style = ElementStyle.Item;
-                realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
+                realTimeBtn.ImageOptions.Image = realTime.ConnectedLargeImage ?? Resources.Database_on;
                 realTimeBtn.Text = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
                     : "real time provider");
@@ -1189,7 +1187,6 @@ namespace Analogy
                     if (canStartReceiving) //connected
                     {
                         openedWindows++;
-                        realTimeBtn.ImageOptions.Image = imageLargeOnline ?? Resources.Database_on;
                         var onlineUC = new OnlineUCLogs(realTime);
 
                         void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1205,7 +1202,7 @@ namespace Analogy
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                            realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
+                            //realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
                         }
 
                         var page = dockManager1.AddPanel(DockingStyle.Float);

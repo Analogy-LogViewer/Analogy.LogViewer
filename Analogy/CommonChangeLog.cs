@@ -10,7 +10,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {
+            { 
+                new AnalogyChangeLog("V4.9.2 - reverse connect/disconnect icons #1552",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 11, 11)),
                 new AnalogyChangeLog("V4.9.2 - Add NET7 Target Framework #1551",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 11, 10)),
                 new AnalogyChangeLog("V4.9.2 - Reduce number of builds due to low usage. #1495", AnalogChangeLogType.Improvement, "Lior Banai",new DateTime(2022, 11, 10)),
                 new AnalogyChangeLog("V4.9.2 - [Real Time providers] closing the application does not call StopReceiving unless the tab is closed manually #1537",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2022, 11, 10)),
