@@ -812,9 +812,10 @@ namespace Analogy
 
                 #region actions
 
-                void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
+                async Task OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
                 {
                     openedWindows++;
+                    await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
                     UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
@@ -887,7 +888,10 @@ namespace Analogy
                     specificLocalFolder.Style = ElementStyle.Item;
                     specificLocalFolder.Text = "Open Pre-defined Folder";
                     specificLocalFolder.ImageOptions.Image = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
-                    specificLocalFolder.Click += (sender, e) => { OpenOffline(title, specificDirectory); };
+                    specificLocalFolder.Click += async (sender, e) =>
+                    {
+                        await OpenOffline(title, specificDirectory);
+                    };
                 }
 
                 AccordionControlElement recentFolders = new AccordionControlElement { Text = "Recent Folders" };
@@ -898,7 +902,7 @@ namespace Analogy
                 localfolder.Style = ElementStyle.Item;
                 localfolder.Text = "Open Folder Selection";
                 localfolder.ImageOptions.Image = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
-                localfolder.Click += (sender, e) =>
+                localfolder.Click += async (sender, e) =>
                 {
                     using (var folderBrowserDialog = new XtraFolderBrowserDialog { ShowNewFolderButton = false })
                     {
@@ -910,7 +914,7 @@ namespace Analogy
                         {
                             if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
                             {
-                                OpenOffline(title, folderBrowserDialog.SelectedPath);
+                                await OpenOffline(title, folderBrowserDialog.SelectedPath);
                                 AddRecentFolder(recentFolders, offlineAnalogy, title, folderBrowserDialog.SelectedPath);
                             }
                         }
@@ -935,9 +939,9 @@ namespace Analogy
                         // args.Contents.Image = realTime.ToolTip.Image;
                         toolTip.Setup(args);
                         btn.SuperTip = toolTip;
-                        btn.Click += (s, be) =>
+                        btn.Click += async (s, be) =>
                         {
-                            OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
+                            await OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
                         };
                     }
                 }
@@ -955,7 +959,7 @@ namespace Analogy
                     acRootGroupHome.Elements.Add(openFiles);
                     openFiles.Style = ElementStyle.Item;
                     openFiles.ImageOptions.Image = offlineAnalogy.LargeImage ?? Resources.Article_32x32;
-                    openFiles.Click += (sender, e) =>
+                    openFiles.Click += async (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
                         {
@@ -965,7 +969,7 @@ namespace Analogy
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            OpenOffline(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileNames);
+                            await OpenOffline(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileNames);
                             AddRecentFiles(recentfiles, offlineAnalogy, title, openFileDialog1.FileNames.ToList());
                         }
                     };
@@ -1308,8 +1312,9 @@ namespace Analogy
                     singleBtn.SuperTip = toolTip;
                 }
                 openedWindows++;
-                singleBtn.Click += (sender, e) =>
+                singleBtn.Click += async (sender, e) =>
                 {
+                    await FactoriesManager.Instance.InitializeIfNeeded(single);
                     CancellationTokenSource cts = new CancellationTokenSource();
                     LocalLogFilesUC offlineUC = new LocalLogFilesUC(single, cts);
                     var page = dockManager1.AddPanel(DockingStyle.Float);

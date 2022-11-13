@@ -27,12 +27,12 @@ namespace Analogy
         public static FactoriesManager Instance => _instance.Value;
         public List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; }
-        private Dictionary<IAnalogyRealTimeDataProvider, bool> Initialized { get; set; }
+        private Dictionary<IAnalogyDataProvider, bool> Initialized { get; set; }
         public List<IRawSQLInteractor> RawSQLManipulators => Factories.SelectMany(f => f.UserControlsFactories)
             .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
         public FactoriesManager()
         {
-            Initialized = new Dictionary<IAnalogyRealTimeDataProvider, bool>();
+            Initialized = new Dictionary<IAnalogyDataProvider, bool>();
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
             var analogyFactory = new AnalogyBuiltInFactory();
@@ -228,18 +228,18 @@ namespace Analogy
             }
         }
 
-        public async Task InitializeIfNeeded(IAnalogyRealTimeDataProvider realTime)
+        public async Task InitializeIfNeeded(IAnalogyDataProvider dataProvider)
         {
-            if (!Initialized.ContainsKey(realTime))
+            if (!Initialized.ContainsKey(dataProvider))
             {
                 try
                 {
-                    await realTime.InitializeDataProvider(AnalogyLogManager.Instance);
-                    Initialized[realTime] = true;
+                    await dataProvider.InitializeDataProvider(AnalogyLogManager.Instance);
+                    Initialized[dataProvider] = true;
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogException($"Error Initialize Real time provider: {realTime.OptionalTitle}: {e.Message}", e);
+                    AnalogyLogManager.Instance.LogException($"Error Initialize Real time provider: {dataProvider.OptionalTitle}: {e.Message}", e);
                 }
             }
         }
