@@ -1562,49 +1562,96 @@ namespace Analogy.Forms
             //add Files open buttons
             if (offlineProviders.Any(i => !string.IsNullOrEmpty(i.FileOpenDialogFilters)))
             {
-                //add Open files entry
-                BarSubItem openFiles = new BarSubItem();
-                openFiles.Caption = "Open Files";
-                group.ItemLinks.Add(openFiles);
-                openFiles.ImageOptions.Image = Resources.Article_16x16;
-                openFiles.ImageOptions.LargeImage = Resources.Article_32x32;
-                openFiles.RibbonStyle = RibbonItemStyles.All;
 
-                foreach (var dataProvider in offlineProviders)
+                if (settings.CombineProviders)
                 {
+                    //add Open files entry
+                    BarSubItem openFiles = new BarSubItem();
+                    openFiles.Caption = "Open Files";
+                    group.ItemLinks.Add(openFiles);
+                    openFiles.ImageOptions.Image = Resources.Article_16x16;
+                    openFiles.ImageOptions.LargeImage = Resources.Article_32x32;
+                    openFiles.RibbonStyle = RibbonItemStyles.All;
 
-                    if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
+                    foreach (var dataProvider in offlineProviders)
                     {
-                        BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
-                        btnOpenFile.ItemClick += async (sender, e) =>
+
+                        if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
                         {
-                            OpenFileDialog openFileDialog1 = new OpenFileDialog
+                            BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
+                            btnOpenFile.ItemClick += async (sender, e) =>
                             {
-                                Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
-                                Title = @"Open Files",
-                                Multiselect = true
+                                OpenFileDialog openFileDialog1 = new OpenFileDialog
+                                {
+                                    Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
+                                    Title = @"Open Files",
+                                    Multiselect = true
+                                };
+                                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                                {
+                                    await OpenOffline(dataProvider.OptionalTitle, dataProvider,
+                                        dataProvider.InitialFolderFullPath, openFileDialog1.FileNames);
+                                    AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
+                                        openFileDialog1.FileNames.ToList());
+                                }
                             };
-                            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                            {
-                                await OpenOffline(dataProvider.OptionalTitle, dataProvider,
-                                    dataProvider.InitialFolderFullPath, openFileDialog1.FileNames);
-                                AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
-                                    openFileDialog1.FileNames.ToList());
-                            }
-                        };
-                        openFiles.AddItem(btnOpenFile);
-                    }
-                    else
-                    {
+                            openFiles.AddItem(btnOpenFile);
+                        }
+                        else
+                        {
 
-                        IAnalogyNotification notification = new AnalogyNotification(factoryId,
-                            "Missing File Open Dialog Filter",
-                            $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
-                            , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
-                        NotificationManager.Instance.RaiseNotification(notification, true);
+                            IAnalogyNotification notification = new AnalogyNotification(factoryId,
+                                "Missing File Open Dialog Filter",
+                                $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
+                                , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
+                            NotificationManager.Instance.RaiseNotification(notification, true);
+                        }
                     }
                 }
+                else
+                {
+                    foreach (var dataProvider in offlineProviders)
+                    {
 
+                        if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
+                        {
+                            //add Open files entry
+                            BarButtonItem btnOpenFile = new BarButtonItem();
+                            btnOpenFile.Caption = !string.IsNullOrEmpty(dataProvider.OptionalTitle) ? $"{dataProvider.OptionalTitle}" : $"{factoryTitle})";
+                            group.ItemLinks.Add(btnOpenFile);
+                            btnOpenFile.ImageOptions.Image = Resources.Article_16x16;
+                            btnOpenFile.ImageOptions.LargeImage = Resources.Article_32x32;
+                            btnOpenFile.RibbonStyle = RibbonItemStyles.All;
+
+                            btnOpenFile.ItemClick += async (sender, e) =>
+                            {
+                                OpenFileDialog openFileDialog1 = new OpenFileDialog
+                                {
+                                    Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
+                                    Title = @"Open Files",
+                                    Multiselect = true
+                                };
+                                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                                {
+                                    await OpenOffline(dataProvider.OptionalTitle, dataProvider,
+                                        dataProvider.InitialFolderFullPath, openFileDialog1.FileNames);
+                                    AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
+                                        openFileDialog1.FileNames.ToList());
+                                }
+                            };
+                        }
+                        else
+                        {
+
+                            IAnalogyNotification notification = new AnalogyNotification(factoryId,
+                                "Missing File Open Dialog Filter",
+                                $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
+                                , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
+                            NotificationManager.Instance.RaiseNotification(notification, true);
+                        }
+                    }
+                }
+                
 
 
                 //add Open Pooled file entry

@@ -66,6 +66,7 @@ namespace Analogy.Interfaces
         /// </summary>
         int FilePoolingDelayInterval { get; set; }
         bool EnableFilePoolingDelay { get; set; }
+        bool CombineProviders { get; set; }
         void IncreaseNumberOfLaunches();
         FactorySettings GetFactorySetting(Guid factoryID);
         FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory);

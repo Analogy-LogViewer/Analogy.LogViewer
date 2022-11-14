@@ -185,6 +185,7 @@ namespace Analogy
         public bool WarnNET5 { get; set; }
         public bool WarnNET3 { get; set; }
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
+        public bool CombineProviders { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
