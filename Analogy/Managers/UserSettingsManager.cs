@@ -335,6 +335,7 @@ namespace Analogy
             WarnNET3 = Settings.Default.WarnNET3;
             WarnNET5 = Settings.Default.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = Settings.Default.ShowAdvancedSettingsRawSQLPopup;
+            CombineProviders = Settings.Default.CombineProviders;
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -423,6 +424,7 @@ namespace Analogy
             WarnNET3 = settings.WarnNET3;
             WarnNET5 = settings.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = settings.ShowAdvancedSettingsRawSQLPopup;
+            CombineProviders = settings.CombineProviders;
         }
 
         private UserSettings CreateUserSettings()
@@ -510,7 +512,8 @@ namespace Analogy
                 ShowProcessedCounter = ShowProcessedCounter,
                 WarnNET3 = WarnNET3,
                 WarnNET5 = WarnNET5,
-                ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup
+                ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup,
+                CombineProviders = CombineProviders
             };
             return userSettings;
         }
@@ -679,6 +682,7 @@ namespace Analogy
             Settings.Default.WarnNET3 = WarnNET3;
             Settings.Default.WarnNET5 = WarnNET5;
             Settings.Default.ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup;
+            Settings.Default.CombineProviders = CombineProviders;
 
         Settings.Default.Save();
         }
