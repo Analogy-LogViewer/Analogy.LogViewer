@@ -216,11 +216,11 @@ namespace Analogy.Forms
             RegisterForOnDemandPlots();
 
             //Create all other DataSources
-            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
+            foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
                 .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
                                   factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
             {
-                CreateDataSource(factory, 3);
+                CreateDataSource(fc, 3);
             }
             //set Default page:
             Guid defaultPage = settings.InitialSelectedDataProvider;
@@ -510,7 +510,7 @@ namespace Analogy.Forms
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings);
                 user.ShowDialog(this);
-            }; 
+            };
             bbiAdditionalLocations.ItemClick += (s, e) =>
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings);
@@ -1126,8 +1126,8 @@ namespace Analogy.Forms
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                           // realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
-                           // realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
+                            // realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
+                            // realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
                         }
 
                         var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1369,9 +1369,10 @@ namespace Analogy.Forms
                     toolTip.Setup(args);
                     singleBtn.SuperTip = toolTip;
                 }
-                OpenedWindows++;
+
                 singleBtn.ItemClick += async (sender, e) =>
                 {
+                    OpenedWindows++;
                     await FactoriesManager.Instance.InitializeIfNeeded(single);
                     CancellationTokenSource cts = new CancellationTokenSource();
                     LocalLogFilesUC offlineUC = new LocalLogFilesUC(single, cts);
@@ -1661,7 +1662,7 @@ namespace Analogy.Forms
                         }
                     }
                 }
-                
+
 
 
                 //add Open Pooled file entry
