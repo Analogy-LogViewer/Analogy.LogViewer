@@ -1069,13 +1069,25 @@ namespace Analogy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CombineProviders {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CombineOnlineProviders {
             get {
-                return ((bool)(this["CombineProviders"]));
+                return ((bool)(this["CombineOnlineProviders"]));
             }
             set {
-                this["CombineProviders"] = value;
+                this["CombineOnlineProviders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CombineOfflineProviders {
+            get {
+                return ((bool)(this["CombineOfflineProviders"]));
+            }
+            set {
+                this["CombineOfflineProviders"] = value;
             }
         }
     }

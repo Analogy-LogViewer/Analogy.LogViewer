@@ -93,10 +93,15 @@ namespace Analogy.ApplicationSettings
             };
             fontEditControl.EditValueChanged += (s, e) => SetFonts();
             fontEditMenus.EditValueChanged += (s, e) => SetFonts();
-            tsCombineProviders.Toggled += (s, e) =>
+            tsCombineOfflineProviders.Toggled += (s, e) =>
             {
-                Settings.CombineProviders = tsCombineProviders.IsOn;
+                Settings.CombineOfflineProviders = tsCombineOfflineProviders.IsOn;
             };
+            tsCombineOnlineProviders.Toggled += (s, e) =>
+            {
+                Settings.CombineOnlineProviders = tsCombineOnlineProviders.IsOn;
+            };
+
         }
 
 
@@ -177,7 +182,8 @@ namespace Analogy.ApplicationSettings
             fontEditControl.EditValue = WindowsFormsSettings.DefaultFont.Name;
             fontEditMenus.Font = WindowsFormsSettings.DefaultMenuFont;
             fontEditMenus.EditValue = WindowsFormsSettings.DefaultMenuFont.Name;
-            tsCombineProviders.IsOn = Settings.CombineProviders;
+            tsCombineOfflineProviders.IsOn = Settings.CombineOfflineProviders;
+            tsCombineOnlineProviders.IsOn = Settings.CombineOnlineProviders;
         }
 
         private void SetFonts()

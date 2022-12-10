@@ -257,7 +257,10 @@
     <Setting Name="ShowAdvancedSettingsRawSQLPopup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="CombineProviders" Type="System.Boolean" Scope="User">
+    <Setting Name="CombineOnlineProviders" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CombineOfflineProviders" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

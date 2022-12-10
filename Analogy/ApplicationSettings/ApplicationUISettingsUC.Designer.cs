@@ -31,6 +31,8 @@ namespace Analogy.ApplicationSettings
         {
             this.components = new System.ComponentModel.Container();
             this.gcUISettings = new DevExpress.XtraEditors.GroupControl();
+            this.tsCombineOnlineProviders = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsCombineOfflineProviders = new DevExpress.XtraEditors.ToggleSwitch();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.peAnalogy = new DevExpress.XtraEditors.PictureEdit();
             this.ceIconLight = new DevExpress.XtraEditors.CheckEdit();
@@ -71,9 +73,10 @@ namespace Analogy.ApplicationSettings
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.fontEditMenus = new DevExpress.XtraEditors.FontEdit();
             this.fontEditControl = new DevExpress.XtraEditors.FontEdit();
-            this.tsCombineProviders = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).BeginInit();
             this.gcUISettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsCombineOnlineProviders.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsCombineOfflineProviders.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peAnalogy.Properties)).BeginInit();
@@ -107,12 +110,12 @@ namespace Analogy.ApplicationSettings
             this.gcFontFamily.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontEditMenus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fontEditControl.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsCombineProviders.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcUISettings
             // 
-            this.gcUISettings.Controls.Add(this.tsCombineProviders);
+            this.gcUISettings.Controls.Add(this.tsCombineOnlineProviders);
+            this.gcUISettings.Controls.Add(this.tsCombineOfflineProviders);
             this.gcUISettings.Controls.Add(this.groupControl2);
             this.gcUISettings.Controls.Add(this.tsStartupRibbonMinimized);
             this.gcUISettings.Controls.Add(this.tsRememberLastPositionAndState);
@@ -121,16 +124,40 @@ namespace Analogy.ApplicationSettings
             this.gcUISettings.Location = new System.Drawing.Point(0, 229);
             this.gcUISettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gcUISettings.Name = "gcUISettings";
-            this.gcUISettings.Size = new System.Drawing.Size(879, 262);
+            this.gcUISettings.Size = new System.Drawing.Size(879, 302);
             this.gcUISettings.TabIndex = 10;
             this.gcUISettings.Text = "UI Settings";
+            // 
+            // tsCombineOnlineProviders
+            // 
+            this.tsCombineOnlineProviders.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tsCombineOnlineProviders.EditValue = true;
+            this.tsCombineOnlineProviders.Location = new System.Drawing.Point(2, 124);
+            this.tsCombineOnlineProviders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsCombineOnlineProviders.Name = "tsCombineOnlineProviders";
+            this.tsCombineOnlineProviders.Properties.OffText = "Use button for each online data provider";
+            this.tsCombineOnlineProviders.Properties.OnText = "Group all online data providers under single button";
+            this.tsCombineOnlineProviders.Size = new System.Drawing.Size(875, 24);
+            this.tsCombineOnlineProviders.TabIndex = 24;
+            // 
+            // tsCombineOfflineProviders
+            // 
+            this.tsCombineOfflineProviders.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tsCombineOfflineProviders.EditValue = true;
+            this.tsCombineOfflineProviders.Location = new System.Drawing.Point(2, 100);
+            this.tsCombineOfflineProviders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsCombineOfflineProviders.Name = "tsCombineOfflineProviders";
+            this.tsCombineOfflineProviders.Properties.OffText = "Use button for each offline data provider";
+            this.tsCombineOfflineProviders.Properties.OnText = "Group all offline data providers under single button";
+            this.tsCombineOfflineProviders.Size = new System.Drawing.Size(875, 24);
+            this.tsCombineOfflineProviders.TabIndex = 23;
             // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.peAnalogy);
             this.groupControl2.Controls.Add(this.ceIconLight);
             this.groupControl2.Controls.Add(this.ceIconDark);
-            this.groupControl2.Location = new System.Drawing.Point(4, 135);
+            this.groupControl2.Location = new System.Drawing.Point(4, 173);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(875, 123);
             this.groupControl2.TabIndex = 22;
@@ -498,9 +525,9 @@ namespace Analogy.ApplicationSettings
             this.gcFonts.Controls.Add(this.gcFontsSize);
             this.gcFonts.Controls.Add(this.gcFontFamily);
             this.gcFonts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcFonts.Location = new System.Drawing.Point(0, 491);
+            this.gcFonts.Location = new System.Drawing.Point(0, 531);
             this.gcFonts.Name = "gcFonts";
-            this.gcFonts.Size = new System.Drawing.Size(879, 353);
+            this.gcFonts.Size = new System.Drawing.Size(879, 313);
             this.gcFonts.TabIndex = 23;
             this.gcFonts.Text = "Fonts";
             // 
@@ -557,18 +584,6 @@ namespace Analogy.ApplicationSettings
             this.fontEditControl.Size = new System.Drawing.Size(465, 22);
             this.fontEditControl.TabIndex = 0;
             // 
-            // tsCombineProviders
-            // 
-            this.tsCombineProviders.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tsCombineProviders.EditValue = true;
-            this.tsCombineProviders.Location = new System.Drawing.Point(2, 100);
-            this.tsCombineProviders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsCombineProviders.Name = "tsCombineProviders";
-            this.tsCombineProviders.Properties.OffText = "Ribbon data providers button are not combined under context menu";
-            this.tsCombineProviders.Properties.OnText = "Ribbon data providers button are combined under context menu";
-            this.tsCombineProviders.Size = new System.Drawing.Size(875, 24);
-            this.tsCombineProviders.TabIndex = 23;
-            // 
             // ApplicationUISettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -587,6 +602,8 @@ namespace Analogy.ApplicationSettings
             this.Load += new System.EventHandler(this.ApplicationUISettingsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcUISettings)).EndInit();
             this.gcUISettings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsCombineOnlineProviders.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsCombineOfflineProviders.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.peAnalogy.Properties)).EndInit();
@@ -622,7 +639,6 @@ namespace Analogy.ApplicationSettings
             this.gcFontFamily.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontEditMenus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fontEditControl.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsCombineProviders.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -671,6 +687,7 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.FontEdit fontEditMenus;
         private DevExpress.XtraEditors.FontEdit fontEditControl;
-        private DevExpress.XtraEditors.ToggleSwitch tsCombineProviders;
+        private DevExpress.XtraEditors.ToggleSwitch tsCombineOfflineProviders;
+        private DevExpress.XtraEditors.ToggleSwitch tsCombineOnlineProviders;
     }
 }

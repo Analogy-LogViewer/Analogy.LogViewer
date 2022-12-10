@@ -185,7 +185,8 @@ namespace Analogy
         public bool WarnNET5 { get; set; }
         public bool WarnNET3 { get; set; }
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
-        public bool CombineProviders { get; set; }
+        public bool CombineOfflineProviders { get; set; }
+        public bool CombineOnlineProviders { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -335,7 +336,8 @@ namespace Analogy
             WarnNET3 = Settings.Default.WarnNET3;
             WarnNET5 = Settings.Default.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = Settings.Default.ShowAdvancedSettingsRawSQLPopup;
-            CombineProviders = Settings.Default.CombineProviders;
+            CombineOfflineProviders = Settings.Default.CombineOfflineProviders;
+            CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -424,7 +426,8 @@ namespace Analogy
             WarnNET3 = settings.WarnNET3;
             WarnNET5 = settings.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = settings.ShowAdvancedSettingsRawSQLPopup;
-            CombineProviders = settings.CombineProviders;
+            CombineOfflineProviders = settings.CombineOfflineProviders;
+            CombineOnlineProviders = settings.CombineOnlineProviders;
         }
 
         private UserSettings CreateUserSettings()
@@ -513,7 +516,8 @@ namespace Analogy
                 WarnNET3 = WarnNET3,
                 WarnNET5 = WarnNET5,
                 ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup,
-                CombineProviders = CombineProviders
+                CombineOfflineProviders = CombineOfflineProviders,
+                CombineOnlineProviders = CombineOnlineProviders
             };
             return userSettings;
         }
@@ -682,9 +686,10 @@ namespace Analogy
             Settings.Default.WarnNET3 = WarnNET3;
             Settings.Default.WarnNET5 = WarnNET5;
             Settings.Default.ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup;
-            Settings.Default.CombineProviders = CombineProviders;
+            Settings.Default.CombineOnlineProviders = CombineOfflineProviders;
+            Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
 
-        Settings.Default.Save();
+            Settings.Default.Save();
         }
 
         public void AddToRecentFiles(Guid iD, string file)
@@ -808,6 +813,17 @@ namespace Analogy
             MainFormType = MainFormType.RibbonForm;
             TimeOffsetType = TimeOffsetType.None;
             LoadPerUserSettings();
+            try
+            {
+                if (File.Exists(LogGridFileName))
+                {
+                    File.Delete(LogGridFileName);
+                }
+            }
+            catch (Exception e)
+            {
+                //ignore
+            }
         }
     }
 }

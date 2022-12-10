@@ -32,6 +32,7 @@ using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
 using DevExpress.LookAndFeel;
+using DevExpress.XtraCharts;
 
 namespace Analogy.Forms
 {
@@ -900,7 +901,14 @@ namespace Analogy.Forms
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Data Provider: {dataSourceFactory.Title}") { AllowTextClipping = false };
             ribbonPage.Groups.Add(ribbonPageGroup);
 
-            AddFlatRealTimeDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
+            if (settings.CombineOnlineProviders)
+            {
+                AddCombinedRealTimeDataSources(ribbonPage, dataSourceFactory);
+            }
+            else
+            {
+                AddFlatRealTimeDataSources(ribbonPage, dataSourceFactory);
+            }
             AddSingleDataSources(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
         }
@@ -1053,7 +1061,7 @@ namespace Analogy.Forms
             }
         }
 
-        private void AddFlatRealTimeDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
+        private void AddFlatRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
@@ -1199,8 +1207,7 @@ namespace Analogy.Forms
             }
         }
 
-        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory,
-            RibbonPageGroup group)
+        private void AddCombinedRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
@@ -1208,7 +1215,12 @@ namespace Analogy.Forms
             {
                 return;
             }
-
+            string title = !string.IsNullOrEmpty(dataSourceFactory.Title)
+                ? dataSourceFactory.Title
+                : "real time Provider";
+            RibbonPageGroup group = new RibbonPageGroup($"Real Time Providers: {title}");
+            group.AllowTextClipping = false;
+            ribbonPage.Groups.Insert(0, group);
             if (realTimes.Count == 1)
             {
                 AddSingleRealTimeDataSource(ribbonPage, realTimes.First(), dataSourceFactory.Title, group);
@@ -1574,7 +1586,7 @@ namespace Analogy.Forms
             if (offlineProviders.Any(i => !string.IsNullOrEmpty(i.FileOpenDialogFilters)))
             {
 
-                if (settings.CombineProviders)
+                if (settings.CombineOfflineProviders)
                 {
                     //add Open files entry
                     BarSubItem openFiles = new BarSubItem();

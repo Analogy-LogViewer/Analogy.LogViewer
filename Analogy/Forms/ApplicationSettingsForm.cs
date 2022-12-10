@@ -184,7 +184,7 @@ namespace Analogy.Forms
 
         private void bbtnReset_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var result = XtraMessageBox.Show("Are you sure you want to reset all settings to their defaults", @"Reset settings", MessageBoxButtons.YesNo,
+            var result = XtraMessageBox.Show("Are you sure you want to reset all settings to their defaults (also columns' layout)?", @"Reset settings", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {

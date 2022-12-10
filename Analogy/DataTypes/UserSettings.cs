@@ -98,7 +98,8 @@ namespace Analogy.DataTypes
         public bool WarnNET5 { get; set; }
         public bool WarnNET3 { get; set; }
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
-        public bool CombineProviders { get; set; }
+        public bool CombineOfflineProviders { get; set; }
+        public bool CombineOnlineProviders { get; set; }
 
     }
 }
