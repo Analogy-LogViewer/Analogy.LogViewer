@@ -5,23 +5,24 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
 
 namespace Analogy.Forms
 {
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
-        private string SelectedSettingName { get; }
+        private ApplicationSettingsSelectionType SelectedSettingType { get; }
         public ApplicationSettingsForm()
         {
             InitializeComponent();
             EnableAcrylicAccent = false;
-            SelectedSettingName = string.Empty;
+            SelectedSettingType = ApplicationSettingsSelectionType.ApplicationGeneralSettings;
         }
 
-        public ApplicationSettingsForm(string selectedSettingName) : this()
+        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType) : this()
         {
-            SelectedSettingName = selectedSettingName;
+            SelectedSettingType = selectedSettingType;
         }
 
         private void ApplicationSettingsForm_Load(object sender, EventArgs e)
@@ -33,73 +34,61 @@ namespace Analogy.Forms
 
             ShowIcon = true;
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            if (string.IsNullOrEmpty(SelectedSettingName))
-            {
-                ApplicationGeneralSettingsUC uc = new ApplicationGeneralSettingsUC { Name = "Application Settings" };
-                fluentDesignFormContainer1.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-                uc.BringToFront();
-                accordionControl1.SelectedElement = accordionControl1.Elements.First();
-            }
-            else
-            {
-
-                AddOrBringToFrontUserControl(SelectedSettingName);
-            }
+            AddOrBringToFrontUserControl(SelectedSettingType);
         }
 
-        private UserControl GetUserControlByName(string name)
+        private UserControl GetUserControlByType(ApplicationSettingsSelectionType settingType)
         {
-            switch (name)
+            switch (settingType)
             {
-                case "Application Settings":
+                case ApplicationSettingsSelectionType.ApplicationGeneralSettings:
                     return new ApplicationGeneralSettingsUC();
-                case "Application UI Settings":
+                case ApplicationSettingsSelectionType.ApplicationUISettings:
                     return new ApplicationUISettingsUC();
-                case "Messages Filtering":
+                case ApplicationSettingsSelectionType.MessagesFilteringSettings:
                     return new FilteringSettingsUC();
-                case "Messages Layout":
+                case ApplicationSettingsSelectionType.MessagesLayoutSettings:
                     return new MessagesLayoutSettingsUC();
-                case "Color Settings":
+                case ApplicationSettingsSelectionType.ColorSettings:
                     return new ColorSettingsUC();
-                case "Color Highlighting":
+                case ApplicationSettingsSelectionType.ColorHighlighting:
                     return new ColorHighlightSettingsUC();
-                case "Predefined queries":
+                case ApplicationSettingsSelectionType.PredefinedQueriesSettings:
                     return new PredefinedFiltersUC();
-                case "Shortcuts":
+                case ApplicationSettingsSelectionType.ShortcutsSettings:
                     return new ShortcutSettingsUC();
-                case "Extensions":
+                case ApplicationSettingsSelectionType.ExtensionsSettings:
                     return new ExtensionSettingsUC();
-                case "Updates":
+                case ApplicationSettingsSelectionType.UpdatesSettings:
                     return new UpdateSettingsUC();
-                case "Debugging":
+                case ApplicationSettingsSelectionType.DebuggingSettings:
                     return new DebuggingSettingsUC();
-                case "Data Provider Settings":
+                case ApplicationSettingsSelectionType.DataProvidersSettings:
                     return new DataProvidersSettingsUC();
-                case "Real Time Data Provider Settings":
+                case ApplicationSettingsSelectionType.RealTimeDataProvidersSettings:
                     return new DataProvidersRealTimeSettingsUC();
-                case "Data Provider File Associations Settings":
+                case ApplicationSettingsSelectionType.FilesAssociationSettings:
                     return new DataProvidersFileAssociationUC();
-                case "Data Provider external locations Settings":
+                case ApplicationSettingsSelectionType.ExternalLocationsSettings:
                     return new DataProvidersExternalLocationsSettingsUC();
-                case "Donations":
+                case ApplicationSettingsSelectionType.DonationsSettings:
                     return new SupportSettingsUC();
-                case "Advanced Mode":
+                case ApplicationSettingsSelectionType.AdvancedModeSettings:
                     return new AdvancedSettingsUC();
                 default:
                     {
-                        AnalogyLogger.Instance.LogError($"User Setting with {name} was not found");
-                        throw new Exception($"User Setting with {name} was not found");
+                        AnalogyLogger.Instance.LogError($"User Setting with {settingType} was not found");
+                        throw new Exception($"User Setting with {settingType} was not found");
                     }
             }
         }
 
-        private void AddOrBringToFrontUserControl(string name)
+        private void AddOrBringToFrontUserControl(ApplicationSettingsSelectionType type)
         {
-
+            string name = type.ToString();
             if (!fluentDesignFormContainer1.Controls.ContainsKey(name))
             {
-                var uc = GetUserControlByName(name);
+                var uc = GetUserControlByType(type);
                 uc.Name = name;
                 fluentDesignFormContainer1.Controls.Add(uc);
                 uc.Dock = DockStyle.Fill;
@@ -120,77 +109,77 @@ namespace Analogy.Forms
 
         private void applicationSettings_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Application Settings");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.ApplicationGeneralSettings);
         }
 
         private void applicationUISettings_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Application UI Settings");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.ApplicationUISettings);
         }
 
         private void messagesFiltering_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Messages Filtering");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.MessagesFilteringSettings);
         }
 
         private void MessagesLayout_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Messages Layout");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.MessagesLayoutSettings);
         }
 
         private void colorSettings_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Color Settings");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.ColorSettings);
         }
 
         private void MessagesColorHighlighting_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Color Highlighting");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.ColorHighlighting);
         }
 
         private void predefinedQueries_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Predefined queries");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.PredefinedQueriesSettings);
         }
 
         private void shortcuts_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Shortcuts");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.ShortcutsSettings);
         }
 
         private void Extensions_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Extensions");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.ExtensionsSettings);
         }
 
         private void updates_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Updates");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.UpdatesSettings);
         }
 
         private void debugging_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Debugging");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.DebuggingSettings);
         }
 
         private void DataProviderList_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Data Provider Settings");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.DataProvidersSettings);
         }
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Real Time Data Provider Settings");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings);
         }
 
         private void accordionControlElement5_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Data Provider File Associations Settings");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.FilesAssociationSettings);
         }
 
         private void DataProviderExternal_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Data Provider external locations Settings");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.ExternalLocationsSettings);
         }
 
         private void bbtnReset_ItemClick(object sender, ItemClickEventArgs e)
@@ -216,13 +205,13 @@ namespace Analogy.Forms
 
         private void Donations_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Donations");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.DonationsSettings);
 
         }
 
         private void aceAdvancedMode_Click(object sender, EventArgs e)
         {
-            AddOrBringToFrontUserControl("Advanced Mode");
+            AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.AdvancedModeSettings);
         }
     }
 }

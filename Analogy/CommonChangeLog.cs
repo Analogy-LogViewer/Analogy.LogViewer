@@ -10,7 +10,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            { 
+            {
+                new AnalogyChangeLog("V4.10.2 - [Setting Menu Items] add missing items #1561",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 12, 10)),
                 new AnalogyChangeLog("V4.10.1 - Non Real time data provider are missing the call of InitializeDataProvider #1556",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2022, 11, 12)),
                 new AnalogyChangeLog("V4.10.0 - reverse connect/disconnect icons #1552",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 11, 11)),
                 new AnalogyChangeLog("V4.10.0 - Add NET7 Target Framework #1551",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 11, 10)),

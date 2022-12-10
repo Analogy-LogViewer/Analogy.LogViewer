@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 using Analogy.Forms;
 
 namespace Analogy.UserControls
@@ -18,7 +19,7 @@ namespace Analogy.UserControls
             InitializeComponent();
             SetHighlightSettings(() =>
             {
-                var user = new ApplicationSettingsForm("Color Highlighting");
+                var user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting);
                 user.ShowDialog(this);
             });
         }

@@ -31,12 +31,12 @@ namespace Analogy
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FluentDesignMainForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -96,6 +96,9 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.bbiRealTimeProviders = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFileAssociations = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAdditionalLocations = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -151,7 +154,10 @@ namespace Analogy
             this.btnSettingsUpdate,
             this.btnSettingsDebugging,
             this.bbiDonation,
-            this.bbiAdvancedMode});
+            this.bbiAdvancedMode,
+            this.bbiRealTimeProviders,
+            this.bbiFileAssociations,
+            this.bbiAdditionalLocations});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
@@ -176,6 +182,9 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.btnColorHighlightSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnPreDefinedQueries),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDataProvidersSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiRealTimeProviders),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFileAssociations),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAdditionalLocations),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSettingsExtensions),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate),
@@ -509,12 +518,12 @@ namespace Analogy
             this.bbtnSponsorOpenCollection.Caption = "Sponsor";
             this.bbtnSponsorOpenCollection.Id = 24;
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem1.Text = "Sponsor";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Support this project at Open Collective";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Sponsor";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Support this project at Open Collective";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip3;
             this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiGitHubSponsor
@@ -540,11 +549,11 @@ namespace Analogy
             this.bbiPayPal.ImageOptions.Image = global::Analogy.Properties.Resources.paypal16;
             this.bbiPayPal.Name = "bbiPayPal";
             this.bbiPayPal.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem2.Text = "PayPal Donation";
-            toolTipItem2.Text = "Support the project with small PayPal donation";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.bbiPayPal.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "PayPal Donation";
+            toolTipItem4.Text = "Support the project with small PayPal donation";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.bbiPayPal.SuperTip = superToolTip4;
             // 
             // bbiBinance
             // 
@@ -688,6 +697,30 @@ namespace Analogy
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
             // 
+            // bbiRealTimeProviders
+            // 
+            this.bbiRealTimeProviders.Caption = "Real Time Data Providers";
+            this.bbiRealTimeProviders.Id = 0;
+            this.bbiRealTimeProviders.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiRealTimeProviders.ImageOptions.Image")));
+            this.bbiRealTimeProviders.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRealTimeProviders.ImageOptions.LargeImage")));
+            this.bbiRealTimeProviders.Name = "bbiRealTimeProviders";
+            // 
+            // bbiFileAssociations
+            // 
+            this.bbiFileAssociations.Caption = "File Associations";
+            this.bbiFileAssociations.Id = 1;
+            this.bbiFileAssociations.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiFileAssociations.ImageOptions.Image")));
+            this.bbiFileAssociations.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiFileAssociations.ImageOptions.LargeImage")));
+            this.bbiFileAssociations.Name = "bbiFileAssociations";
+            // 
+            // bbiAdditionalLocations
+            // 
+            this.bbiAdditionalLocations.Caption = "Additional Locations";
+            this.bbiAdditionalLocations.Id = 2;
+            this.bbiAdditionalLocations.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdditionalLocations.ImageOptions.Image")));
+            this.bbiAdditionalLocations.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdditionalLocations.ImageOptions.LargeImage")));
+            this.bbiAdditionalLocations.Name = "bbiAdditionalLocations";
+            // 
             // FluentDesignMainForm
             // 
             this.defaultToolTipController1.SetAllowHtmlText(this, DevExpress.Utils.DefaultBoolean.Default);
@@ -781,5 +814,8 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
         private DevExpress.XtraBars.BarButtonItem bbiGitHubSponsor;
         private DevExpress.XtraBars.BarButtonItem bbiAdvancedMode;
+        private DevExpress.XtraBars.BarButtonItem bbiRealTimeProviders;
+        private DevExpress.XtraBars.BarButtonItem bbiFileAssociations;
+        private DevExpress.XtraBars.BarButtonItem bbiAdditionalLocations;
     }
 }

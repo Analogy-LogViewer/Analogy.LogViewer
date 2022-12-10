@@ -30,37 +30,37 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem2 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -148,6 +148,9 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
+            this.bbiRealTimeProviders = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFileAssociations = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAdditionalLocations = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -256,10 +259,13 @@
             this.bbtnItemGithubHistory,
             this.bbiDownloadStatistics,
             this.bbiGitHubSponsor,
-            this.bbiAdvancedMode});
+            this.bbiAdvancedMode,
+            this.bbiRealTimeProviders,
+            this.bbiFileAssociations,
+            this.bbiAdditionalLocations});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlMain.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.ribbonControlMain.MaxItemId = 123;
+            this.ribbonControlMain.MaxItemId = 126;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.OptionsMenuMinWidth = 514;
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.bbsItem);
@@ -326,12 +332,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarks),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiFilePlotting)});
             this.bsiGlobalTools.Name = "bsiGlobalTools";
-            toolTipTitleItem1.Text = "Global Tools";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "List of built-in and Extrenal tools";
-            superToolTip2.Items.Add(toolTipTitleItem1);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.bsiGlobalTools.SuperTip = superToolTip2;
+            toolTipTitleItem10.Text = "Global Tools";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "List of built-in and Extrenal tools";
+            superToolTip11.Items.Add(toolTipTitleItem10);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.bsiGlobalTools.SuperTip = superToolTip11;
             // 
             // bbiBookmarks
             // 
@@ -348,9 +354,9 @@
             this.bsiFilePlotting.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiFilePlotting.ImageOptions.Image")));
             this.bsiFilePlotting.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiFilePlotting.ImageOptions.LargeImage")));
             this.bsiFilePlotting.Name = "bsiFilePlotting";
-            toolTipItem1.Text = "Plot a generic tabular data from file";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bsiFilePlotting.SuperTip = superToolTip1;
+            toolTipItem10.Text = "Plot a generic tabular data from file";
+            superToolTip10.Items.Add(toolTipItem10);
+            this.bsiFilePlotting.SuperTip = superToolTip10;
             // 
             // bsmInfo
             // 
@@ -369,12 +375,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDownloadStatistics),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bsmInfo.Name = "bsmInfo";
-            toolTipTitleItem2.Text = "Info";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "General information about the applications";
-            superToolTip3.Items.Add(toolTipTitleItem2);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.bsmInfo.SuperTip = superToolTip3;
+            toolTipTitleItem11.Text = "Info";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "General information about the applications";
+            superToolTip12.Items.Add(toolTipTitleItem11);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.bsmInfo.SuperTip = superToolTip12;
             // 
             // bbtnWhatsNew
             // 
@@ -495,9 +501,9 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "Group2";
+            galleryItemGroup3.Caption = "Group2";
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup3});
             this.ribbonGalleryBarItem1.Id = 8;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
@@ -507,9 +513,9 @@
             // 
             // 
             // 
-            galleryItemGroup2.Caption = "Group3";
+            galleryItemGroup4.Caption = "Group3";
             this.ribbonGalleryBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup4});
             this.ribbonGalleryBarItem2.Id = 9;
             this.ribbonGalleryBarItem2.Name = "ribbonGalleryBarItem2";
             // 
@@ -626,7 +632,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // bBtnBookmarked
             // 
@@ -697,16 +703,16 @@
             this.bbiFileCaching.Caption = "File caching is";
             this.bbiFileCaching.Id = 68;
             this.bbiFileCaching.Name = "bbiFileCaching";
-            toolTipTitleItem3.Text = "File Caching";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "If enabled, a file that was already loaded won\'t be read again when selected and " +
+            toolTipTitleItem12.Text = "File Caching";
+            toolTipItem13.LeftIndent = 6;
+            toolTipItem13.Text = "If enabled, a file that was already loaded won\'t be read again when selected and " +
     "the content will be loaded from cache.";
-            toolTipTitleItem4.LeftIndent = 6;
-            toolTipTitleItem4.Text = "click on the text to toggle file caching";
-            superToolTip4.Items.Add(toolTipTitleItem3);
-            superToolTip4.Items.Add(toolTipItem4);
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.bbiFileCaching.SuperTip = superToolTip4;
+            toolTipTitleItem13.LeftIndent = 6;
+            toolTipTitleItem13.Text = "click on the text to toggle file caching";
+            superToolTip13.Items.Add(toolTipTitleItem12);
+            superToolTip13.Items.Add(toolTipItem13);
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            this.bbiFileCaching.SuperTip = superToolTip13;
             this.bbiFileCaching.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFileCaching_ItemClick);
             // 
             // btnErrors
@@ -758,12 +764,12 @@
             this.skinRibbonGallery.Caption = "Skin";
             this.skinRibbonGallery.Id = 81;
             this.skinRibbonGallery.Name = "skinRibbonGallery";
-            toolTipTitleItem9.Text = "Skins and themes";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "A list of built-in skins and themes";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.skinRibbonGallery.SuperTip = superToolTip9;
+            toolTipTitleItem18.Text = "Skins and themes";
+            toolTipItem18.LeftIndent = 6;
+            toolTipItem18.Text = "A list of built-in skins and themes";
+            superToolTip18.Items.Add(toolTipTitleItem18);
+            superToolTip18.Items.Add(toolTipItem18);
+            this.skinRibbonGallery.SuperTip = superToolTip18;
             // 
             // skinPaletteRibbonGalleryBarItem3
             // 
@@ -787,6 +793,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnColorHighlightSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnPreDefinedQueries),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDataProvidersSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiRealTimeProviders),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFileAssociations),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAdditionalLocations),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnShortcuts),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSettingsExtensions),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSettingsUpdate),
@@ -928,12 +937,12 @@
             this.bbtnSponsorOpenCollection.Caption = "Open collective";
             this.bbtnSponsorOpenCollection.Id = 111;
             this.bbtnSponsorOpenCollection.Name = "bbtnSponsorOpenCollection";
-            toolTipTitleItem5.Text = "Sponsor";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Support this project at Open Collective";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.bbtnSponsorOpenCollection.SuperTip = superToolTip5;
+            toolTipTitleItem14.Text = "Sponsor";
+            toolTipItem14.LeftIndent = 6;
+            toolTipItem14.Text = "Support this project at Open Collective";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem14);
+            this.bbtnSponsorOpenCollection.SuperTip = superToolTip14;
             this.bbtnSponsorOpenCollection.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiBinance
@@ -942,13 +951,13 @@
             this.bbiBinance.Id = 112;
             this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
             this.bbiBinance.Name = "bbiBinance";
-            toolTipItem8.Text = "Support this project by registering to Binance Exchange.\r\nYou will get 5% return " +
+            toolTipItem17.Text = "Support this project by registering to Binance Exchange.\r\nYou will get 5% return " +
     "on your fees";
-            toolTipTitleItem8.Text = "You will get 5% return on fees using this link";
-            superToolTip8.Items.Add(toolTipItem8);
-            superToolTip8.Items.Add(toolTipSeparatorItem1);
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            this.bbiBinance.SuperTip = superToolTip8;
+            toolTipTitleItem17.Text = "You will get 5% return on fees using this link";
+            superToolTip17.Items.Add(toolTipItem17);
+            superToolTip17.Items.Add(toolTipSeparatorItem2);
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            this.bbiBinance.SuperTip = superToolTip17;
             // 
             // bbiPayPal
             // 
@@ -956,11 +965,11 @@
             this.bbiPayPal.Id = 115;
             this.bbiPayPal.ImageOptions.Image = global::Analogy.Properties.Resources.paypal64;
             this.bbiPayPal.Name = "bbiPayPal";
-            toolTipTitleItem7.Text = "PayPal Donation";
-            toolTipItem7.Text = "Support the project with small PayPal donation";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.bbiPayPal.SuperTip = superToolTip7;
+            toolTipTitleItem16.Text = "PayPal Donation";
+            toolTipItem16.Text = "Support the project with small PayPal donation";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            superToolTip16.Items.Add(toolTipItem16);
+            this.bbiPayPal.SuperTip = superToolTip16;
             // 
             // bbiKofi
             // 
@@ -968,11 +977,11 @@
             this.bbiKofi.Id = 118;
             this.bbiKofi.ImageOptions.Image = global::Analogy.Properties.Resources.ko_fi_logo_blue_16x16;
             this.bbiKofi.Name = "bbiKofi";
-            toolTipItem6.Text = "Buy me a Coffee?";
-            toolTipTitleItem6.Text = "Support me on Ko-Fi";
-            superToolTip6.Items.Add(toolTipItem6);
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.bbiKofi.SuperTip = superToolTip6;
+            toolTipItem15.Text = "Buy me a Coffee?";
+            toolTipTitleItem15.Text = "Support me on Ko-Fi";
+            superToolTip15.Items.Add(toolTipItem15);
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            this.bbiKofi.SuperTip = superToolTip15;
             // 
             // bbiGitHubSponsor
             // 
@@ -1044,6 +1053,30 @@
             // 
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
+            // 
+            // bbiRealTimeProviders
+            // 
+            this.bbiRealTimeProviders.Caption = "Real Time Data Providers";
+            this.bbiRealTimeProviders.Id = 123;
+            this.bbiRealTimeProviders.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiRealTimeProviders.ImageOptions.Image")));
+            this.bbiRealTimeProviders.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRealTimeProviders.ImageOptions.LargeImage")));
+            this.bbiRealTimeProviders.Name = "bbiRealTimeProviders";
+            // 
+            // bbiFileAssociations
+            // 
+            this.bbiFileAssociations.Caption = "File Associations";
+            this.bbiFileAssociations.Id = 124;
+            this.bbiFileAssociations.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiFileAssociations.ImageOptions.Image")));
+            this.bbiFileAssociations.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiFileAssociations.ImageOptions.LargeImage")));
+            this.bbiFileAssociations.Name = "bbiFileAssociations";
+            // 
+            // bbiAdditionalLocations
+            // 
+            this.bbiAdditionalLocations.Caption = "Additional Locations";
+            this.bbiAdditionalLocations.Id = 125;
+            this.bbiAdditionalLocations.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdditionalLocations.ImageOptions.Image")));
+            this.bbiAdditionalLocations.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdditionalLocations.ImageOptions.LargeImage")));
+            this.bbiAdditionalLocations.Name = "bbiAdditionalLocations";
             // 
             // MainForm
             // 
@@ -1165,5 +1198,8 @@
         private DevExpress.XtraBars.BarButtonItem bbiDownloadStatistics;
         private DevExpress.XtraBars.BarButtonItem bbiGitHubSponsor;
         private DevExpress.XtraBars.BarButtonItem bbiAdvancedMode;
+        private DevExpress.XtraBars.BarButtonItem bbiRealTimeProviders;
+        private DevExpress.XtraBars.BarButtonItem bbiFileAssociations;
+        private DevExpress.XtraBars.BarButtonItem bbiAdditionalLocations;
     }
 }

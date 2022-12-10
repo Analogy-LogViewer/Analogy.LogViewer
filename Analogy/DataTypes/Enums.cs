@@ -10,4 +10,25 @@ namespace Analogy.DataTypes
         RibbonForm, //classic pre V5
         FluentForm
     }
+
+    public enum ApplicationSettingsSelectionType
+    {
+        ApplicationGeneralSettings,
+        ApplicationUISettings,
+        MessagesFilteringSettings,
+        MessagesLayoutSettings,
+        ColorSettings,
+        ColorHighlighting, 
+        PredefinedQueriesSettings,
+        ShortcutsSettings,
+        ExtensionsSettings,
+        UpdatesSettings,
+        DebuggingSettings,
+        DataProvidersSettings,
+        RealTimeDataProvidersSettings,
+        FilesAssociationSettings,
+        ExternalLocationsSettings, 
+        DonationsSettings,
+        AdvancedModeSettings
+    }
 }
