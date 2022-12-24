@@ -717,7 +717,7 @@ namespace Analogy.Forms
             {
                 foreach (string file in files)
                 {
-                    if (!File.Exists(file))
+                    if (!File.Exists(file) || bar.ItemLinks.Any(br => br.Caption.Equals(file)))
                     {
                         continue;
                     }
@@ -729,6 +729,7 @@ namespace Analogy.Forms
                         OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
                     };
                     bar.AddItem(btn);
+
                 }
             }
         }

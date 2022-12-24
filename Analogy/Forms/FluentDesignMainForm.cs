@@ -1120,7 +1120,7 @@ namespace Analogy
 
                 foreach (string file in recentFiles)
                 {
-                    if (!File.Exists(file))
+                    if (!File.Exists(file) || recentElement.Elements.Any(e=>e.Text.Equals(Path.GetFileName(file))))
                     {
                         continue;
                     }
