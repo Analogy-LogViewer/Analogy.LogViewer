@@ -67,7 +67,7 @@ namespace Analogy
             };
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
-#if NETCOREAPP3_1 || NET
+#if NET
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
 #endif
             Settings.IncreaseNumberOfLaunches();
@@ -210,7 +210,7 @@ namespace Analogy
             return retval;
         }
 
-        private static Process GetAlreadyRunningInstance()
+        private static Process? GetAlreadyRunningInstance()
         {
             var current = Process.GetCurrentProcess();
             return Process.GetProcessesByName(current.ProcessName).FirstOrDefault(p => p.Id != current.Id);

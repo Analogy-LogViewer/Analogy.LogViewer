@@ -10,7 +10,7 @@
 		<Authors>Lior Banai</Authors>
 		<RepositoryType>git</RepositoryType>
 		<Version>0.9.0</Version>
-		<Copyright>Lior Banai © 2019-2022</Copyright>
+		<Copyright>Lior Banai © 2019-2023</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<AssemblyName>Analogy.Common</AssemblyName>
 		<RootNamespace>Analogy.Common</RootNamespace>

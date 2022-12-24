@@ -50,7 +50,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' or '$(TargetFramework)' == 'net6.0-windows'  or '$(TargetFramework)' == 'net7.0-windows' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows'  or '$(TargetFramework)' == 'net7.0-windows' ">
 		<Reference Include="DevExpress.BonusSkins.v21.2">
 			<HintPath>..\DevExpress\.net core\DevExpress.BonusSkins.v21.2.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
