@@ -223,7 +223,9 @@ namespace Analogy.CommonControls.Managers
                                 columnsLockSlim.EnterWriteLock();
                                 if (!table.Columns.Contains(info.Key))
                                 {
-                                    table.Columns.Add(info.Key);
+                                    DataColumn dt = new DataColumn(info.Key);
+                                    dt.ReadOnly = true;
+                                    table.Columns.Add(dt);
                                 }
                             }
                             finally

@@ -203,8 +203,12 @@ namespace Analogy.Extensions
                         {
                             if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
                             {
-                                view.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
-                                table.Columns.Add(info.Key);
+                                var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                grid.OptionsColumn.ReadOnly = true;
+                                view.Columns.Add(grid);
+                                DataColumn dt = new DataColumn(info.Key);
+                                dt.ReadOnly = true;
+                                table.Columns.Add(dt);
                             }
 
                         }
@@ -214,8 +218,9 @@ namespace Analogy.Extensions
                             {
                                 if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
                                 {
-                                    view.Columns.Add(new GridColumn()
-                                    { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                                    var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                    grid.OptionsColumn.ReadOnly = true;
+                                    view.Columns.Add(grid);
                                     table.Columns.Add(info.Key);
                                 }
                                 columnAdderSync.Set();

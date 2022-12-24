@@ -320,7 +320,8 @@ namespace Analogy.CommonControls.UserControls
                     rawSqlInteractor.SetRawSQLHandler(this);
                 }
                 catch (Exception exception)
-                {Logger?.LogException($"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}",exception);
+                {
+                    Logger?.LogException($"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}", exception);
                 }
             }
             wsLogs.CaptureWorkspace("Default");
@@ -1411,6 +1412,7 @@ namespace Analogy.CommonControls.UserControls
                     gridColumn.FieldName = column.ColumnName;
                     gridColumn.OptionsFilter.FilterPopupMode = FilterPopupMode.CheckedList;
                     gridColumn.VisibleIndex = ExtensionManager.GetIndexForExtension(extension);
+                    gridColumn.OptionsColumn.ReadOnly = true;
                     LogGrid.Columns.Add(gridColumn);
                     gridColumn.Visible = true;
                 }
@@ -1802,9 +1804,10 @@ namespace Analogy.CommonControls.UserControls
                             {
                                 if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
                                 {
-                                    gridView.Columns.Add(new GridColumn()
-                                    { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
-                                    CurrentColumnsFields.Add((info.Key, info.Key));
+                                    var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                    grid.OptionsColumn.ReadOnly = true;
+                                    gridView.Columns.Add(grid);
+                                            CurrentColumnsFields.Add((info.Key, info.Key));
                                     IncludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                                     ExcludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                                 }
@@ -1817,7 +1820,9 @@ namespace Analogy.CommonControls.UserControls
                         {
                             if (!gridView.Columns.Select(g => g.FieldName).Contains(info.Key))
                             {
-                                gridView.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                                var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                grid.OptionsColumn.ReadOnly = true;
+                                gridView.Columns.Add(grid);
                                 CurrentColumnsFields.Add((info.Key, info.Key));
                                 IncludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                                 ExcludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
@@ -2662,8 +2667,12 @@ namespace Analogy.CommonControls.UserControls
                         {
                             if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
                             {
-                                view.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
-                                table.Columns.Add(info.Key);
+                                var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                grid.OptionsColumn.ReadOnly = true;
+                                view.Columns.Add(grid);
+                                DataColumn dt = new DataColumn(info.Key);
+                                dt.ReadOnly = true;
+                                table.Columns.Add(dt);
                             }
 
                         }
@@ -2673,8 +2682,9 @@ namespace Analogy.CommonControls.UserControls
                             {
                                 if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
                                 {
-                                    view.Columns.Add(new GridColumn()
-                                    { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                                    var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                    grid.OptionsColumn.ReadOnly = true;
+                                    view.Columns.Add(grid);
                                     table.Columns.Add(info.Key);
                                 }
                                 columnAdderSync.Set();

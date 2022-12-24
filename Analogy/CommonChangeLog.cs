@@ -10,7 +10,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {
+            { 
+                new AnalogyChangeLog("V4.10.3 - [Grid Table] Additional dynamics columns are editable and should be read only #1572",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2022, 12, 24)),
                 new AnalogyChangeLog("V4.10.2 - [Ribbon Form] Enable toggle to combine all providers in the UI #1559",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 12, 10)),
                 new AnalogyChangeLog("V4.10.2 - Reset all settings does not clear the layout settings #1558",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2022, 12, 10)),
                 new AnalogyChangeLog("V4.10.2 - [Setting Menu Items] add missing items #1561",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2022, 12, 10)),
