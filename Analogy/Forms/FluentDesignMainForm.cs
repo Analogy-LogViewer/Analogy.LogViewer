@@ -274,7 +274,7 @@ namespace Analogy
             {
                 var parser = supported.First();
                 LoadFactoryInAccordion(parser.FactoryID);
-                OpenOfflineLogs(files, parser.DataProvider);
+                await OpenOfflineLogs(files, parser.DataProvider);
             }
             else
             {
@@ -299,7 +299,7 @@ namespace Analogy
                 {
                     var parser = supported.First();
                     LoadFactoryInAccordion(parser.FactoryID);
-                    OpenOfflineLogs(files, parser.DataProvider);
+                    await OpenOfflineLogs(files, parser.DataProvider);
                 }
                 else
                 {
@@ -313,7 +313,7 @@ namespace Analogy
                         if (parser.Count == 1)
                         {
                             LoadFactoryInAccordion(factory.FactoryId);
-                            OpenOfflineLogs(files, parser.First());
+                            await OpenOfflineLogs(files, parser.First());
                         }
                         else
                         {
@@ -338,10 +338,11 @@ namespace Analogy
             }
         }
 
-        private void OpenOfflineLogs(string[] fileNames, IAnalogyOfflineDataProvider dataProvider,
+        private async Task OpenOfflineLogs(string[] fileNames, IAnalogyOfflineDataProvider dataProvider,
             string? title = null)
         {
             openedWindows++;
+            await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, fileNames);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
@@ -847,9 +848,10 @@ namespace Analogy
                     dockManager1.ActivePanel = page;
                 }
 
-                void OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
+                async Task OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
                 {
                     openedWindows++;
+                    await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
                     UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
@@ -994,7 +996,7 @@ namespace Analogy
                     filePoolingBtn.SuperTip = Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
                     filePoolingBtn.ImageOptions.Image =
                         images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
-                    filePoolingBtn.Click += (sender, e) =>
+                    filePoolingBtn.Click += async (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
                         {
@@ -1004,7 +1006,7 @@ namespace Analogy
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
+                            await OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
                             AddRecentFiles(recentfiles, offlineAnalogy, title,
                                 new List<string> { openFileDialog1.FileName });
                         }
@@ -1137,9 +1139,9 @@ namespace Analogy
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     btn.SuperTip = toolTip;
-                    btn.Click += (s, be) =>
+                    btn.Click += async (s, be) =>
                     {
-                        OpenOfflineLogs(new[] { file }, offlineAnalogy, title);
+                        await OpenOfflineLogs(new[] { file }, offlineAnalogy, title);
                     };
                 }
             }

@@ -575,11 +575,12 @@ namespace Analogy.Forms
 
         }
 
-        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
+        private async Task OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
             IAnalogyOfflineDataProvider dataProvider,
             string? title = null)
         {
             OpenedWindows++;
+            await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, filenames);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
@@ -614,7 +615,7 @@ namespace Analogy.Forms
             {
                 var parser = supported.First();
                 RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
-                OpenOfflineLogs(page, files, parser.DataProvider);
+                await OpenOfflineLogs(page, files, parser.DataProvider);
             }
             else
             {
@@ -639,7 +640,7 @@ namespace Analogy.Forms
                 {
                     var parser = supported.First();
                     RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
-                    OpenOfflineLogs(page, files, parser.DataProvider);
+                    await OpenOfflineLogs(page, files, parser.DataProvider);
                 }
                 else
                 {
@@ -655,7 +656,7 @@ namespace Analogy.Forms
                             : null;
                         if (parser.Count == 1)
                         {
-                            OpenOfflineLogs(page, files, parser.First());
+                            await OpenOfflineLogs(page, files, parser.First());
                         }
                         else
                         {
@@ -724,9 +725,9 @@ namespace Analogy.Forms
 
                     BarButtonItem btn = new BarButtonItem();
                     btn.Caption = file;
-                    btn.ItemClick += (s, be) =>
+                    btn.ItemClick += async (s, be) =>
                     {
-                        OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
+                        await OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
                     };
                     bar.AddItem(btn);
 
@@ -1486,11 +1487,12 @@ namespace Analogy.Forms
                 dockManager1.ActivePanel = page;
             }
 
-            void OpenFilePooling(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider,
+            async Task OpenFilePooling(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider,
                 string initialFolder, string file)
             {
 
                 OpenedWindows++;
+                await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
                 UserControl filepoolingUC = new FilePoolingUCLogs(dataProvider, file, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1694,7 +1696,7 @@ namespace Analogy.Forms
 
 
                     BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
-                    btnOpenFile.ItemClick += (sender, e) =>
+                    btnOpenFile.ItemClick += async (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
                         {
@@ -1704,7 +1706,7 @@ namespace Analogy.Forms
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            OpenFilePooling(dataProvider.OptionalTitle, dataProvider,
+                            await OpenFilePooling(dataProvider.OptionalTitle, dataProvider,
                                 dataProvider.InitialFolderFullPath, openFileDialog1.FileName);
                             AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
                                 new List<string> { openFileDialog1.FileName });
