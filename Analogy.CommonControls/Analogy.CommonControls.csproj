@@ -38,7 +38,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="3.5.0" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.5.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.6.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="3.5.0" />
 		<PackageReference Include="Markdig" Version="0.30.4" />
 		<PackageReference Include="MessagePack" Version="2.4.59" />
