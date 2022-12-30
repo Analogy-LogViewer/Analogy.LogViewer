@@ -63,7 +63,7 @@
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.5.0" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="3.5.0" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.5.0" />
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.5.0" />
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.6.0" />
 		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.8.0" />
 		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="0.8.0" />
 		<PackageReference Include="Grpc.Core" Version="2.46.5" />
