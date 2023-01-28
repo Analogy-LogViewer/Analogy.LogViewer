@@ -15,7 +15,7 @@ namespace Analogy.CommonControls.UserControls
         private List<AnalogyLogMessage> Messages { get; }
         private string DataSource { get; }
         private MarkdownPipeline? Pipeline { get; set; }
-        private JsonTreeView _jsonTreeView;
+        private JsonTreeUC _jsonTreeView;
 
         public MessageDetailsUC()
         {
@@ -43,9 +43,8 @@ namespace Analogy.CommonControls.UserControls
                 .Build();
             xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageRenderedText;
 
-            _jsonTreeView = new JsonTreeView();
-            _jsonTreeView.OnNodeChanged += (s, e) => meSelected.Text = e;
-            splitContainerControl2.Panel1.Controls.Add(_jsonTreeView);
+            _jsonTreeView = new JsonTreeUC();
+            splitContainerControl1.Panel2.Controls.Add(_jsonTreeView);
             _jsonTreeView.Dock = DockStyle.Fill;
             LoadMessage();
         }

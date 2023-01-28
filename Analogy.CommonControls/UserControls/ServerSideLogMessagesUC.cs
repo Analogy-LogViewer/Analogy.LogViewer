@@ -149,7 +149,7 @@ namespace Analogy.CommonControls.UserControls
         }
         private LogLevelSelectionType LogLevelSelectionType => Settings.LogLevelSelection;
         #endregion
-        private JsonTreeView JsonTreeView { get; set; }
+        private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
 
         public ServerSideLogMessagesUC() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
@@ -199,7 +199,7 @@ namespace Analogy.CommonControls.UserControls
                 }
             });
 
-            JsonTreeView = new JsonTreeView();
+            JsonTreeView = new JsonTreeUC();
             spltcMessages.Panel2.Controls.Add(JsonTreeView);
             JsonTreeView.Dock = DockStyle.Fill;
             spltcMessages.PanelVisibility = SplitPanelVisibility.Panel1;

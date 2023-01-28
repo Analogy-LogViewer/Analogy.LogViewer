@@ -6,7 +6,7 @@ namespace Analogy.CommonControls.Tools
 {
     public partial class JsonViewerForm : DevExpress.XtraEditors.XtraForm
     {
-        private JsonTreeView _jsonTreeView;
+        private JsonTreeUC _jsonTreeView;
         private AnalogyLogMessage? Message { get; }
         private string JsonData { get; set; }
         private readonly bool _useRawField;
@@ -34,9 +34,8 @@ namespace Analogy.CommonControls.Tools
                 return;
             }
 
-            _jsonTreeView = new JsonTreeView(); 
-            _jsonTreeView.OnNodeChanged += (s, e) => meSelected.Text = e;
-            splitContainerControl2.Panel1.Controls.Add(_jsonTreeView);
+            _jsonTreeView = new JsonTreeUC(); 
+            splitContainerControl1.Panel1.Controls.Add(_jsonTreeView);
             _jsonTreeView.Dock = DockStyle.Fill;
             if (string.IsNullOrEmpty(JsonData) && Message != null)
             {

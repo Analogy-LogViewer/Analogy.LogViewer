@@ -190,7 +190,7 @@ namespace Analogy.CommonControls.UserControls
         private string jsonColumnForInlineJsonViewer;
         #endregion fields
 
-        private JsonTreeView JsonTreeView { get; set; }
+        private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
 
         public LogMessagesUC() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
@@ -255,7 +255,7 @@ namespace Analogy.CommonControls.UserControls
                 }
             });
 
-            JsonTreeView = new JsonTreeView();
+            JsonTreeView = new JsonTreeUC();
             spltcMessages.Panel2.Controls.Add(JsonTreeView);
             JsonTreeView.Dock = DockStyle.Fill;
             spltcMessages.PanelVisibility = SplitPanelVisibility.Panel1;
