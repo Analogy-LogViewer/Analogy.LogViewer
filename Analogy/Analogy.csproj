@@ -34,7 +34,7 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<Platforms>AnyCPU;x64</Platforms>
+		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Forms\XtraFormLogGrid.cs" />

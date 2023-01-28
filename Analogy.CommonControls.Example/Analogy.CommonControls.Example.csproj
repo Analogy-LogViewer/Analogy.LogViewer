@@ -6,6 +6,7 @@
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<LangVersion>8.0</LangVersion>
+		<Platforms>AnyCPU;x86;x64</Platforms>
 
 	</PropertyGroup>
 

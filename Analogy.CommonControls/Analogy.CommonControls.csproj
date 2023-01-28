@@ -33,7 +33,7 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>8.0</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<Platforms>AnyCPU;x64</Platforms>
+		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
