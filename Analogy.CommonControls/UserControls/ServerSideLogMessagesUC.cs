@@ -2228,7 +2228,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource);
+            FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
             details.Show(this);
             //CreateBookmark();
 
@@ -2256,7 +2256,7 @@ namespace Analogy.CommonControls.UserControls
                     return;
                 }
 
-                FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource);
+                FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
                 details.Show(this);
             }
         }
@@ -3333,7 +3333,7 @@ namespace Analogy.CommonControls.UserControls
             var msg = GetMessageFromSelectedFocusedRowInGrid();
             if (msg.message != null)
             {
-                var addNoteForm = new AnalogyAddCommentsToMessage(msg.message);
+                var addNoteForm = new AnalogyAddCommentsToMessage(msg.message, Settings);
                 addNoteForm.Show(this);
             }
 

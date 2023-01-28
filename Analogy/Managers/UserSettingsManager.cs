@@ -187,6 +187,7 @@ namespace Analogy
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
+        private Dictionary<Guid , AnalogyPositionState> WindowPositions { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -338,6 +339,15 @@ namespace Analogy
             ShowAdvancedSettingsRawSQLPopup = Settings.Default.ShowAdvancedSettingsRawSQLPopup;
             CombineOfflineProviders = Settings.Default.CombineOfflineProviders;
             CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
+            if (!string.IsNullOrEmpty(Settings.Default.WindowPositions))
+            {
+                WindowPositions = ParseSettings<Dictionary<Guid, AnalogyPositionState>>(Settings.Default.WindowPositions);
+            }
+            else
+            {
+                WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
+            }
+
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -428,6 +438,7 @@ namespace Analogy
             ShowAdvancedSettingsRawSQLPopup = settings.ShowAdvancedSettingsRawSQLPopup;
             CombineOfflineProviders = settings.CombineOfflineProviders;
             CombineOnlineProviders = settings.CombineOnlineProviders;
+            WindowPositions = settings.WindowPositions;
         }
 
         private UserSettings CreateUserSettings()
@@ -517,7 +528,8 @@ namespace Analogy
                 WarnNET5 = WarnNET5,
                 ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup,
                 CombineOfflineProviders = CombineOfflineProviders,
-                CombineOnlineProviders = CombineOnlineProviders
+                CombineOnlineProviders = CombineOnlineProviders,
+                WindowPositions = WindowPositions
             };
             return userSettings;
         }
@@ -688,7 +700,7 @@ namespace Analogy
             Settings.Default.ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup;
             Settings.Default.CombineOnlineProviders = CombineOfflineProviders;
             Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
-
+            Settings.Default.WindowPositions = JsonConvert.SerializeObject(WindowPositions);
             Settings.Default.Save();
         }
 
@@ -824,6 +836,16 @@ namespace Analogy
             {
                 //ignore
             }
+        }
+
+        public bool TryGetWindowPosition(Guid id,out AnalogyPositionState? position)
+        {
+            return WindowPositions.TryGetValue(id, out position);
+        }
+
+        public void SetWindowPosition(Guid id, AnalogyPositionState position)
+        {
+            WindowPositions[id] = position;
         }
     }
 }

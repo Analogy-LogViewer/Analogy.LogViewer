@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.11.0 - Message details window doesn't remember its size #1612",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 01, 28)),
                 new AnalogyChangeLog("V4.11.0 - Add a multiline value preview to the JSON inline viewer #1611",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 01, 28)),
                 new AnalogyChangeLog("V4.11.0 - [DevExpress] Upgrade to V21.2.12 #1613",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 01, 28)),
                 new AnalogyChangeLog("V4.10.2 - [Recent Files] Recent files button does not call InitializeDataProvider(IAnalogyLogger logger) method #1571",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2022, 12, 24)),

@@ -100,6 +100,12 @@ namespace Analogy.DataTypes
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
+        public Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
+
+        public UserSettings()
+        {
+            WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
+        }
 
     }
 }

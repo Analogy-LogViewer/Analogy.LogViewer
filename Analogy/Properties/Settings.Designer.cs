@@ -1090,5 +1090,17 @@ namespace Analogy.Properties {
                 this["CombineOfflineProviders"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WindowPositions {
+            get {
+                return ((string)(this["WindowPositions"]));
+            }
+            set {
+                this["WindowPositions"] = value;
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.Common;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Tools;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
@@ -17,7 +19,7 @@ namespace Analogy.CommonControls.UserControls
         private MarkdownPipeline? Pipeline { get; set; }
         private JsonTreeUC _jsonTreeView;
 
-        public MessageDetailsUC()
+        private MessageDetailsUC()
         {
             InitializeComponent();
             Messages = new List<AnalogyLogMessage>(0);
@@ -28,7 +30,6 @@ namespace Analogy.CommonControls.UserControls
             Message = msg;
             Messages = messages;
             DataSource = dataSource;
-
         }
 
         private void UCMessageDetails_Load(object sender, EventArgs e)
@@ -38,7 +39,6 @@ namespace Analogy.CommonControls.UserControls
                 return;
 
             }
-
             Pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
                 .Build();
             xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageRenderedText;
@@ -145,12 +145,5 @@ namespace Analogy.CommonControls.UserControls
         {
             LoadPreviousMessage();
         }
-
-        private void sBtnCopy_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(memoText.Text);
-        }
-
-
     }
 }

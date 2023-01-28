@@ -89,10 +89,13 @@
 			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
-	<!--<ItemGroup>
-		<PackageReference Include="DevExpress.Win.WinterJoySkin" Version="1.0.1" />
-	</ItemGroup>-->
 
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
+		<PackageReference Include="PolySharp" Version="1.12.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' or '$(TargetFramework)' == 'net7.0-windows'">
 		<Reference Include="DevExpress.BonusSkins.v21.2">
 			<HintPath>..\DevExpress\.net core\DevExpress.BonusSkins.v21.2.dll</HintPath>
@@ -251,7 +254,7 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
 		<Reference Include="DevExpress.BonusSkins.v21.2">
 			<HintPath>..\DevExpress\.net framework\DevExpress.BonusSkins.v21.2.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -485,10 +488,6 @@
 		<Compile Update="Forms\FormCombineFiles.Designer.cs">
 			<DependentUpon>FormCombineFiles.cs</DependentUpon>
 		</Compile>
-		<Compile Update="Forms\FormMessageDetails.cs" />
-		<Compile Update="Forms\FormMessageDetails.Designer.cs">
-			<DependentUpon>FormMessageDetails.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\ClientServerLog.cs" />
 		<Compile Update="UserControls\ClientServerLog.Designer.cs">
 			<DependentUpon>ClientServerLog.cs</DependentUpon>
@@ -642,9 +641,6 @@
 		<None Include="Resources\Properties_32x32.png" />
 		<None Include="Resources\Properties_16x16.png" />
 		<None Include="Resources\Wizard_32x32.png" />
-		<EmbeddedResource Update="Forms\FormMessageDetails.resx">
-			<DependentUpon>FormMessageDetails.cs</DependentUpon>
-		</EmbeddedResource>
 		<None Include="Resources\Bar_32x32.png" />
 		<None Include="Resources\3DColumn_32x32.png" />
 		<None Include="Resources\3DClusteredColumn_32x32.png" />

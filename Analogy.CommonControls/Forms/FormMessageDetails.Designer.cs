@@ -75,6 +75,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Details (press left / right arrows to change messages)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMessageDetails_FormClosing);
             this.Load += new System.EventHandler(this.FormMessageDetails_Load);
             this.spltCMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltCMain)).EndInit();

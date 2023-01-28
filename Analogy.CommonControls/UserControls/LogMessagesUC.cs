@@ -1807,7 +1807,7 @@ namespace Analogy.CommonControls.UserControls
                                     var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
                                     grid.OptionsColumn.ReadOnly = true;
                                     gridView.Columns.Add(grid);
-                                            CurrentColumnsFields.Add((info.Key, info.Key));
+                                    CurrentColumnsFields.Add((info.Key, info.Key));
                                     IncludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                                     ExcludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                                 }
@@ -2417,7 +2417,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource);
+            FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
             details.Show(this);
             //CreateBookmark();
 
@@ -2445,7 +2445,7 @@ namespace Analogy.CommonControls.UserControls
                     return;
                 }
 
-                FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource);
+                FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
                 details.Show(this);
             }
         }
@@ -3537,7 +3537,7 @@ namespace Analogy.CommonControls.UserControls
             var msg = GetMessageFromSelectedFocusedRowInGrid();
             if (msg.message != null)
             {
-                var addNoteForm = new AnalogyAddCommentsToMessage(msg.message);
+                var addNoteForm = new AnalogyAddCommentsToMessage(msg.message, Settings);
                 addNoteForm.Show(this);
             }
 

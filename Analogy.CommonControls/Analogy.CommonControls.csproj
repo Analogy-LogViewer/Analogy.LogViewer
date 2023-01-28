@@ -31,11 +31,17 @@
 		<Company>Analogy.LogViewer</Company>
 		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
 		<Nullable>enable</Nullable>
-		<LangVersion>8.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
-
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
+		<PackageReference Include="PolySharp" Version="1.12.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="3.6.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.6.0" />
