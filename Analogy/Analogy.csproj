@@ -59,7 +59,7 @@
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.6.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="3.6.0" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.6.0" />
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.6.0" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.6.1" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.6.2" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="3.6.0" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.6.0" />
