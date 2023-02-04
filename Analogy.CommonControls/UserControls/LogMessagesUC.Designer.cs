@@ -297,6 +297,9 @@ namespace Analogy.CommonControls.UserControls
             this.sbtnRawFilter = new DevExpress.XtraEditors.SimpleButton();
             this.meRawSQL = new DevExpress.XtraEditors.MemoEdit();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumnRawText = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLineNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnMethodName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -458,7 +461,10 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnObject,
             this.gridColumnProcessID,
             this.gridColumnThread,
-            this.gridColumnMachineName});
+            this.gridColumnMachineName,
+            this.gridColumnRawText,
+            this.gridColumnLineNumber,
+            this.gridColumnMethodName});
             this.logGrid.DetailHeight = 431;
             this.logGrid.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.logGrid.GridControl = this.gridControl;
@@ -3241,6 +3247,37 @@ namespace Analogy.CommonControls.UserControls
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
+            // gridColumnRawText
+            // 
+            this.gridColumnRawText.Caption = "Raw Text";
+            this.gridColumnRawText.FieldName = "RawText";
+            this.gridColumnRawText.MinWidth = 25;
+            this.gridColumnRawText.Name = "gridColumnRawText";
+            this.gridColumnRawText.Visible = true;
+            this.gridColumnRawText.VisibleIndex = 12;
+            this.gridColumnRawText.Width = 94;
+            // 
+            // gridColumnLineNumber
+            // 
+            this.gridColumnLineNumber.Caption = "Line Number";
+            this.gridColumnLineNumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumnLineNumber.FieldName = "LineNumber";
+            this.gridColumnLineNumber.MinWidth = 25;
+            this.gridColumnLineNumber.Name = "gridColumnLineNumber";
+            this.gridColumnLineNumber.Visible = true;
+            this.gridColumnLineNumber.VisibleIndex = 13;
+            this.gridColumnLineNumber.Width = 94;
+            // 
+            // gridColumnMethodName
+            // 
+            this.gridColumnMethodName.Caption = "Method Name";
+            this.gridColumnMethodName.FieldName = "MathodName";
+            this.gridColumnMethodName.MinWidth = 25;
+            this.gridColumnMethodName.Name = "gridColumnMethodName";
+            this.gridColumnMethodName.Visible = true;
+            this.gridColumnMethodName.VisibleIndex = 14;
+            this.gridColumnMethodName.Width = 94;
+            // 
             // LogMessagesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3605,5 +3642,8 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraEditors.SimpleButton sbtnRawFilter;
         private DevExpress.XtraEditors.MemoEdit meRawSQL;
         private DevExpress.XtraBars.BarButtonItem bbiJsonColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnRawText;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnLineNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnMethodName;
     }
 }

@@ -82,6 +82,7 @@ namespace Analogy.CommonControls
             dtr["MachineName"] = message.MachineName ?? string.Empty;
             dtr["RawText"] = message.RawText ?? string.Empty;
             dtr["LineNumber"] = message.LineNumber;
+            dtr["MethodName"] = message.MethodName;
             if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
@@ -133,6 +134,7 @@ namespace Analogy.CommonControls
             dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
             dtb.Columns.Add(new DataColumn("RawText", typeof(string)));
             dtb.Columns.Add(new DataColumn("LineNumber", typeof(int)));
+            dtb.Columns.Add(new DataColumn("MethodName", typeof(string)));
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
             dtb.DefaultView.Sort = "Date DESC";
