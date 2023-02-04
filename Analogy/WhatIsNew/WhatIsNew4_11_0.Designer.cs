@@ -34,8 +34,8 @@
             this.Issue1613 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Issue1611 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.gcBugs = new DevExpress.XtraEditors.GroupControl();
-            this.Bug499 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.Bug1612 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.Bug499 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gcImprovements)).BeginInit();
             this.gcImprovements.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcBugs)).BeginInit();
@@ -114,19 +114,6 @@
             this.gcBugs.Size = new System.Drawing.Size(789, 97);
             this.gcBugs.TabIndex = 6;
             this.gcBugs.Text = "Bug Fixes";
-            this.gcBugs.Visible = false;
-            // 
-            // Bug499
-            // 
-            this.Bug499.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Bug499.Location = new System.Drawing.Point(2, 28);
-            this.Bug499.Name = "Bug499";
-            this.Bug499.Padding = new System.Windows.Forms.Padding(5);
-            this.Bug499.Size = new System.Drawing.Size(430, 26);
-            this.Bug499.TabIndex = 21;
-            this.Bug499.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog/issues/499>[" +
-    "Serilog Provider] Can\'t parse dictionary that contains an empty key #499</href>";
-            this.Bug499.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // Bug1612
             // 
@@ -139,6 +126,18 @@
             this.Bug1612.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/1612>Message " +
     "details window doesn\'t remember its size #1612</href>";
             this.Bug1612.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
+            // 
+            // Bug499
+            // 
+            this.Bug499.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Bug499.Location = new System.Drawing.Point(2, 28);
+            this.Bug499.Name = "Bug499";
+            this.Bug499.Padding = new System.Windows.Forms.Padding(5);
+            this.Bug499.Size = new System.Drawing.Size(430, 26);
+            this.Bug499.TabIndex = 21;
+            this.Bug499.Text = "<href=https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog/issues/499>[" +
+    "Serilog Provider] Can\'t parse dictionary that contains an empty key #499</href>";
+            this.Bug499.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.OpenGithubIssue);
             // 
             // WhatIsNew4_11_0
             // 
