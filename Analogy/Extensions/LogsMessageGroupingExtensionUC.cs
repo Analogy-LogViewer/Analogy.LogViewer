@@ -174,7 +174,7 @@ namespace Analogy.Extensions
                 return;
             }
 
-            var grouped = Utils.DataTableConstructor();
+            var grouped = CommonControls.Utils.DataTableConstructor();
             string key =
                 (string)gridViewGrouping.GetRowCellValue(e.FocusedRowHandle, gridViewGrouping.Columns.First());
             var messages = groupingByChars[key];

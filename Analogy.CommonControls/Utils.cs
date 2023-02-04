@@ -80,6 +80,8 @@ namespace Analogy.CommonControls
             dtr["ThreadID"] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
             dtr["MachineName"] = message.MachineName ?? string.Empty;
+            dtr["RawText"] = message.RawText ?? string.Empty;
+            dtr["LineNumber"] = message.LineNumber;
             if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
@@ -129,7 +131,8 @@ namespace Analogy.CommonControls
             dtb.Columns.Add(new DataColumn("ThreadID", typeof(int)));
             dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
             dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
-
+            dtb.Columns.Add(new DataColumn("RawText", typeof(string)));
+            dtb.Columns.Add(new DataColumn("LineNumber", typeof(int)));
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
             dtb.DefaultView.Sort = "Date DESC";

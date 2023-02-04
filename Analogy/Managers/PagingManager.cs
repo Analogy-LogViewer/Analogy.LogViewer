@@ -51,7 +51,7 @@ namespace Analogy
             pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
 
-            currentTable = Utils.DataTableConstructor();
+            currentTable = Analogy.CommonControls.Utils.DataTableConstructor();
             //foreach (DataColumn column in currentTable.Columns)
             //{
             //    CurrentColumns.Add(column.ColumnName);
@@ -80,7 +80,7 @@ namespace Analogy
                 pages = new List<DataTable>();
                 currentPageStartRowIndex = 0;
                 currentPageNumber = 1;
-                var first = Utils.DataTableConstructor();
+                var first = Analogy.CommonControls.Utils.DataTableConstructor();
                 currentTable = first;
                 pages.Add(first);
             }
@@ -107,7 +107,7 @@ namespace Analogy
             var table = pages.Last();
             if (table.Rows.Count + 1 > pageSize)
             {
-                table = Utils.DataTableConstructor();
+                table = Analogy.CommonControls.Utils.DataTableConstructor();
                 pages.Add(table);
                 var pageStartRowIndex = (pages.Count - 1) * pageSize;
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
@@ -154,7 +154,7 @@ namespace Analogy
                 }
                 if (countInsideTable + 1 > pageSize)
                 {
-                    table = Utils.DataTableConstructor();
+                    table = Analogy.CommonControls.Utils.DataTableConstructor();
                     pages.Add(table);
                     countInsideTable = 0;
                     var pageStartRowIndex = (pages.Count - 1) * pageSize;
