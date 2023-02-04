@@ -60,7 +60,10 @@ namespace Analogy.CommonControls.Tools
                 _jsonTreeView.ShowJson(JsonData);
             }
 
-
+            bbiCopyMessage.ItemClick += (_, _) =>
+            {
+                Clipboard.SetText(_jsonTreeView.Message);
+            };
         }
 
         public void ShowJson(string json)

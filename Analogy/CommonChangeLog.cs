@@ -11,6 +11,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.11.0 - Refactor Json Viewer #1614",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 02, 04)),
                 new AnalogyChangeLog("V4.11.0 - Add RawText, LineNumber and MethodName columns #1616",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 02, 04)),
                 new AnalogyChangeLog("V4.11.0 - Message details window doesn't remember its size #1612",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 01, 28)),
                 new AnalogyChangeLog("V4.11.0 - Add a multiline value preview to the JSON inline viewer #1611",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 01, 28)),

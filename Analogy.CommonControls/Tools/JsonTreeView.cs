@@ -22,6 +22,7 @@ namespace Analogy.CommonControls.Tools
         private StatusStrip statusStrip1;
         private string previouslySelectedNodeText;
         public event EventHandler<string> OnNodeChanged;
+        public string Message { get; set; }
         public JsonTreeView()
         {
             InitializeComponent();
@@ -109,23 +110,6 @@ namespace Analogy.CommonControls.Tools
                 treeImages.Images.Add(type.ToString(), image ?? Resources.Undefined);
             }
             ImageList = treeImages;
-        }
-
-        public void ClearList()
-        {
-            Nodes.Clear();
-        }
-        public void ShowJson(string jsonString)
-        {
-            try
-            {
-                object json = JsonConvert.DeserializeObject(jsonString);
-                LoadTree(json);
-            }
-            catch (Exception e)
-            {
-            }
-
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -296,9 +280,7 @@ namespace Analogy.CommonControls.Tools
             get => base.SelectedNode as JsonTreeNode;
             set => base.SelectedNode = value;
         }
-
-        #region UI events
-
+        
         private void this_AfterSelect(object sender, TreeViewEventArgs e)
         {
             // restore previous seelcted node text and store the next
@@ -344,6 +326,22 @@ namespace Analogy.CommonControls.Tools
             }
         }
 
-        #endregion
+        public void ClearList()
+        {
+            Nodes.Clear();
+        }
+        public void ShowJson(string jsonString)
+        {
+            Message = jsonString;
+            try
+            {
+                object json = JsonConvert.DeserializeObject(jsonString);
+                LoadTree(json);
+            }
+            catch (Exception e)
+            {
+            }
+
+        }
     }
 }
