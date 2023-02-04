@@ -72,6 +72,8 @@
             this.xtraTabPageAdditionalInformation = new DevExpress.XtraTab.XtraTabPage();
             this.memoAdditionalInformation = new DevExpress.XtraEditors.MemoEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.xtraTabPageRawText = new DevExpress.XtraTab.XtraTabPage();
+            this.recMessageDetailsRawText = new DevExpress.XtraRichEdit.RichEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDateValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDataSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSourceValue.Properties)).BeginInit();
@@ -98,6 +100,7 @@
             this.splitContainerControl1.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            this.xtraTabPageRawText.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNext
@@ -433,7 +436,8 @@
             this.xtraTabControlMessageInfo.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageRenderedText,
             this.xtraTabPageText,
-            this.xtraTabPageAdditionalInformation});
+            this.xtraTabPageAdditionalInformation,
+            this.xtraTabPageRawText});
             // 
             // xtraTabPageText
             // 
@@ -524,6 +528,23 @@
             this.splitContainerControl1.SplitterPosition = 386;
             this.splitContainerControl1.TabIndex = 3;
             // 
+            // xtraTabPageRawText
+            // 
+            this.xtraTabPageRawText.Controls.Add(this.recMessageDetailsRawText);
+            this.xtraTabPageRawText.Name = "xtraTabPageRawText";
+            this.xtraTabPageRawText.Size = new System.Drawing.Size(574, 172);
+            this.xtraTabPageRawText.Text = "Raw Text";
+            // 
+            // recMessageDetailsRawText
+            // 
+            this.recMessageDetailsRawText.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.recMessageDetailsRawText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recMessageDetailsRawText.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.recMessageDetailsRawText.Location = new System.Drawing.Point(0, 0);
+            this.recMessageDetailsRawText.Name = "recMessageDetailsRawText";
+            this.recMessageDetailsRawText.Size = new System.Drawing.Size(574, 172);
+            this.recMessageDetailsRawText.TabIndex = 6;
+            // 
             // MessageDetailsUC
             // 
             this.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
@@ -562,6 +583,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            this.xtraTabPageRawText.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -606,5 +628,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageRenderedText;
         private DevExpress.XtraRichEdit.RichEditControl recMessageDetails;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageRawText;
+        private DevExpress.XtraRichEdit.RichEditControl recMessageDetailsRawText;
     }
 }

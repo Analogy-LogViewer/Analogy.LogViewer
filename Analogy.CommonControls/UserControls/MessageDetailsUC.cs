@@ -97,6 +97,7 @@ namespace Analogy.CommonControls.UserControls
             txtbLineNumber.Text = Message.LineNumber.ToString();
             txtbIndex.Text = $@"{Messages.IndexOf(Message) + 1} of {Messages.Count}";
             recMessageDetails.HtmlText = Markdown.ToHtml(Message.Text, Pipeline);
+            recMessageDetailsRawText.Text = Message.RawText;
             var jsonRawData = Message.RawTextType == AnalogyRowTextType.JSON;
             if (jsonRawData)
             {
