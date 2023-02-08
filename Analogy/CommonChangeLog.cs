@@ -11,6 +11,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.11.1 - [Json Viewer] Remember last open position and state of the Json Viewer Form #1621",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 02, 08)),
+                new AnalogyChangeLog("V4.11.1 - 'View in Json Visualizer' no longer displays 'tree view' in latest update 4.11.0 #1620",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 02, 08)),
                 new AnalogyChangeLog("V4.11.0 - Refactor Json Viewer #1614",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 02, 04)),
                 new AnalogyChangeLog("V4.11.0 - Add RawText, LineNumber and MethodName columns #1616",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 02, 04)),
                 new AnalogyChangeLog("V4.11.0 - Message details window doesn't remember its size #1612",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 01, 28)),

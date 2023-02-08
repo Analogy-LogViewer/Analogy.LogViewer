@@ -462,7 +462,7 @@ namespace Analogy.CommonControls.UserControls
                     item.Click += (_, __) =>
                     {
                         var json = meMessageDetails.SelectedText;
-                        JsonViewerForm j = new JsonViewerForm(json);
+                        JsonViewerForm j = new JsonViewerForm(json, Settings);
                         j.Show(this);
                     };
                     e.Menu.Items.Add(item);
@@ -504,7 +504,7 @@ namespace Analogy.CommonControls.UserControls
 
                             break;
                         case AnalogyRowTextType.JSON:
-                            var viewer = new JsonViewerForm(m);
+                            var viewer = new JsonViewerForm(m, Settings);
                             viewer.Show(this);
                             break;
                         default:
@@ -562,7 +562,7 @@ namespace Analogy.CommonControls.UserControls
                 (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
                 if (message != null)
                 {
-                    JsonViewerForm j = new JsonViewerForm(message);
+                    JsonViewerForm j = new JsonViewerForm(message, Settings);
                     j.Show(this);
                 }
             };
