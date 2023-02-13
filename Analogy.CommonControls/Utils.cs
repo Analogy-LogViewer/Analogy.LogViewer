@@ -56,7 +56,6 @@ namespace Analogy.CommonControls
         /// </summary>
         internal const string DateFilterLastMonth = "Last one month";
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
-
         public static string GetFileNameAsDataSource(string fileName)
         {
             string file = Path.GetFileName(fileName);
@@ -75,7 +74,7 @@ namespace Analogy.CommonControls
             dtr["Category"] = message.Category ?? "";
             dtr["User"] = message.User ?? "";
             dtr["Module"] = message.Module ?? "";
-            dtr["Object"] = message;
+            dtr[Common.CommonUtils.AnalogyMessageColumn] = message;
             dtr["ProcessID"] = message.ProcessId;
             dtr["ThreadID"] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
@@ -127,7 +126,7 @@ namespace Analogy.CommonControls
             dtb.Columns.Add(new DataColumn("Category", typeof(string)));
             dtb.Columns.Add(new DataColumn("User", typeof(string)));
             dtb.Columns.Add(new DataColumn("Module", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Object", typeof(object)));
+            dtb.Columns.Add(new DataColumn(Common.CommonUtils.AnalogyMessageColumn, typeof(object)));
             dtb.Columns.Add(new DataColumn("ProcessID", typeof(int)));
             dtb.Columns.Add(new DataColumn("ThreadID", typeof(int)));
             dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));

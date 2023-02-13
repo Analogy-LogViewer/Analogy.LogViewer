@@ -80,7 +80,7 @@ namespace Analogy.Extensions
                 return;
             }
 
-            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns[Common.CommonUtils.AnalogyMessageColumn]);
             if (message == null)
             {
                 return;
@@ -106,7 +106,7 @@ namespace Analogy.Extensions
             if (DataProvider.UseCustomColors)
             {
                 IAnalogyLogMessage m =
-                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns[Common.CommonUtils.AnalogyMessageColumn]);
                 if (m == null)
                 {
                     return;

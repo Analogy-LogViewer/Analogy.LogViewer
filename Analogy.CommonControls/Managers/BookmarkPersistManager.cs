@@ -45,7 +45,7 @@ namespace Analogy.CommonControls.Managers
 
         public void AppendMessage(DataRow dtr, string dataSource)
         {
-            AnalogyLogMessage message = (AnalogyLogMessage)dtr["Object"];
+            AnalogyLogMessage message = (AnalogyLogMessage)dtr[Common.CommonUtils.AnalogyMessageColumn];
             AppendMessage(message, dataSource);
         }
         public void SetLogger(IAnalogyLogger logger) => Logger = logger;

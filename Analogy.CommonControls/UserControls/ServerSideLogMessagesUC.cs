@@ -100,7 +100,7 @@ namespace Analogy.CommonControls.UserControls
             get
             {
                 var filterDatatable = GetFilteredDataTable();
-                return filterDatatable.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList();
+                return filterDatatable.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
             }
         }
         private int ExternalWindowsCount;
@@ -109,7 +109,7 @@ namespace Analogy.CommonControls.UserControls
         {
             get
             {
-                return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r["Object"]).ToList();
+                return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
             }
         }
         private AnalogyLogMessage? SelectedMassage { get; set; }
@@ -669,7 +669,7 @@ namespace Analogy.CommonControls.UserControls
                     {
                         return;
                     }
-                    SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(row, "Object");
+                    SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(row, Common.CommonUtils.AnalogyMessageColumn);
                 }
             };
             LogGridPopupMenu.BeforePopup += (_, __) => UpdatePopupTexts();
@@ -822,7 +822,7 @@ namespace Analogy.CommonControls.UserControls
             foreach (DataRow dataTableRow in _bookmarkedMessages.Rows)
             {
                 dataTableRow.BeginEdit();
-                AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
+                AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow[Common.CommonUtils.AnalogyMessageColumn];
                 dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 dataTableRow.EndEdit();
             }
@@ -875,14 +875,6 @@ namespace Analogy.CommonControls.UserControls
                     bstaticTotalMessages.Caption =
                         $"Total messages:{counts.Values.Sum()}. Errors:{counts["Error"]}. Warnings:{counts["Warning"]}. Critical:{counts["Critical"]}.";
                 }
-                //todo: add alerts
-                //if (Settings.PreDefinedQueries.Alerts.Any())
-                //{
-                //    var messages = rows.Select(r => (AnalogyLogMessage)r["Object"]).ToList();
-                //    alertCount = messages.Count(m =>
-                //        Settings.PreDefinedQueries.Alerts.Any(a => FilterCriteriaObject.MatchAlert(m, a)));
-
-                //}
             }
         }
 
@@ -2177,7 +2169,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             int rownum = selRows.First();
-            SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, "Object");
+            SelectedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(rownum, Common.CommonUtils.AnalogyMessageColumn);
             LoadTextBoxes(SelectedMassage);
             if (hasAnyInPlaceExtensions)
             {
@@ -2222,7 +2214,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
             string dataSource = (string)LogGrid.GetRowCellValue(hi.RowHandle, "DataProvider") ?? string.Empty;
-            AnalogyLogMessage? message = LogGrid.GetRowCellValue(hi.RowHandle, "Object") as AnalogyLogMessage;
+            AnalogyLogMessage? message = LogGrid.GetRowCellValue(hi.RowHandle, Common.CommonUtils.AnalogyMessageColumn) as AnalogyLogMessage;
             if (message == null)
             {
                 return;
@@ -2268,7 +2260,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns[Common.CommonUtils.AnalogyMessageColumn]);
             if (message == null)
             {
                 return;
@@ -2305,7 +2297,7 @@ namespace Analogy.CommonControls.UserControls
             if (DataProvider != null && DataProvider.UseCustomColors)
             {
                 IAnalogyLogMessage m =
-                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns[Common.CommonUtils.AnalogyMessageColumn]);
                 if (m == null)
                 {
                     return;
@@ -2339,7 +2331,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            AnalogyLogMessage msg = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, "Object");
+            AnalogyLogMessage msg = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, Common.CommonUtils.AnalogyMessageColumn);
             if (msg == null)
             {
                 return;
@@ -2520,7 +2512,7 @@ namespace Analogy.CommonControls.UserControls
             }
             int rownum = selRows.First();
             var currentRow = (DataRowView)gridViewBookmarkedMessages.GetRow(rownum);
-            var logMessage = currentRow["Object"] as AnalogyLogMessage;
+            var logMessage = currentRow[Common.CommonUtils.AnalogyMessageColumn] as AnalogyLogMessage;
             if (logMessage == null)
             {
                 return;
@@ -2604,7 +2596,7 @@ namespace Analogy.CommonControls.UserControls
                 _messageData.BeginLoadData();
                 foreach (DataRow row in _messageData.Rows)
                 {
-                    AnalogyLogMessage message = (AnalogyLogMessage)row["Object"];
+                    AnalogyLogMessage message = (AnalogyLogMessage)row[Common.CommonUtils.AnalogyMessageColumn];
                     row["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
                 }
 
@@ -2766,7 +2758,7 @@ namespace Analogy.CommonControls.UserControls
 
             if (selRows != null && selRows.Length == 1)
             {
-                var message = (AnalogyLogMessage)gridViewBookmarkedMessages.GetRowCellValue(selRows.First(), "Object");
+                var message = (AnalogyLogMessage)gridViewBookmarkedMessages.GetRowCellValue(selRows.First(), Common.CommonUtils.AnalogyMessageColumn);
                 Clipboard.SetText(message.Text);
             }
         }
@@ -2831,7 +2823,7 @@ namespace Analogy.CommonControls.UserControls
 
         public void RemoveMessage(AnalogyLogMessage msgMessage)
         {
-            var row = _messageData.AsEnumerable().SingleOrDefault(r => r["Object"] == msgMessage);
+            var row = _messageData.AsEnumerable().SingleOrDefault(r => r[Common.CommonUtils.AnalogyMessageColumn].Equals(msgMessage));
             if (row != null)
             {
                 _messageData.Rows.Remove(row);
@@ -2847,7 +2839,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             string dataSource = (string)LogGrid.GetFocusedRowCellValue("DataProvider");
-            AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetFocusedRowCellValue("Object");
+            AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetFocusedRowCellValue(Common.CommonUtils.AnalogyMessageColumn);
             if (message.Module == null)
             {
                 message.Module = string.Empty;
@@ -2877,7 +2869,7 @@ namespace Analogy.CommonControls.UserControls
                 if (selectedRowHandles[i] >= 0)
                 {
                     dataProvider = (string)LogGrid.GetRowCellValue(selectedRowHandles[i], "DataProvider");
-                    AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetRowCellValue(selectedRowHandles[i], "Object");
+                    AnalogyLogMessage message = (AnalogyLogMessage)LogGrid.GetRowCellValue(selectedRowHandles[i], Common.CommonUtils.AnalogyMessageColumn);
                     messages.Add(message);
                 }
             }
@@ -3056,7 +3048,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
 
-            var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, "Object");
+            var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, Common.CommonUtils.AnalogyMessageColumn);
             LoadTextBoxes(focusedMassage);
             if (Settings.InlineJsonViewer && focusedMassage.RawTextType == AnalogyRowTextType.JSON)
             {
@@ -3108,7 +3100,7 @@ namespace Analogy.CommonControls.UserControls
             lockSlim.EnterWriteLock();
             while (_messageData.Rows.Count > 0)
             {
-                if (!Equals(_messageData.Rows[0]["Object"], current))
+                if (!Equals(_messageData.Rows[0][Common.CommonUtils.AnalogyMessageColumn], current))
                 {
                     _messageData.Rows.RemoveAt(0);
                 }

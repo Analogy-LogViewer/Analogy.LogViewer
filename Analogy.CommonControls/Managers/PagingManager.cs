@@ -360,7 +360,7 @@ namespace Analogy.CommonControls.Managers
                 foreach (DataRow dataTableRow in dataTable.Rows)
                 {
                     dataTableRow.BeginEdit();
-                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
+                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow[Common.CommonUtils.AnalogyMessageColumn];
                     dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                     dataTableRow.EndEdit();
                 }

@@ -550,7 +550,8 @@ namespace Analogy.Extensions
             this.gridColumn23.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn23.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumn23.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumn23.Caption = "Object";
+            this.gridColumn23.Caption = Common.CommonUtils.AnalogyMessageColumn;
+            this.gridColumn23.FieldName = Common.CommonUtils.AnalogyMessageColumn;
             this.gridColumn23.MinWidth = 24;
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.AllowEdit = false;

@@ -387,10 +387,10 @@ namespace Analogy.ApplicationSettings
             this.gridColumnObject.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnObject.Caption = "Object";
-            this.gridColumnObject.FieldName = "Object";
+            this.gridColumnObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
+            this.gridColumnObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
             this.gridColumnObject.MinWidth = 24;
-            this.gridColumnObject.Name = "gridColumnObject";
+            this.gridColumnObject.Name = Common.CommonUtils.AnalogyMessageColumn;
             this.gridColumnObject.OptionsColumn.AllowEdit = false;
             this.gridColumnObject.OptionsColumn.AllowFocus = false;
             this.gridColumnObject.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
