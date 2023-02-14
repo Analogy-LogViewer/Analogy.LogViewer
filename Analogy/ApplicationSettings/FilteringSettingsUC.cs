@@ -45,7 +45,8 @@ namespace Analogy.ApplicationSettings
             nudPageLength.ValueChanged += (s, e) => Settings.PagingSize = (int)nudPageLength.Value;
             checkEditSearchAlsoInSourceAndModule.CheckedChanged += (s, e) =>
               Settings.SearchAlsoInSourceAndModule = checkEditSearchAlsoInSourceAndModule.Checked;
-
+            tsCheckAdditionalInformation.IsOnChanged += (s, e) =>
+                Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
             chklExclusionLogLevel.ItemCheck += (s, e) =>
             {
                 var item = chklExclusionLogLevel.Items[e.Index].Value.ToString();
@@ -79,6 +80,7 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
+            tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
             tsTrackActiveMessage.IsOn = Settings.TrackActiveMessage;
             tsHistory.IsOn = Settings.ShowHistoryOfClearedMessages;
             tsFilteringExclude.IsOn = Settings.SaveSearchFilters;
