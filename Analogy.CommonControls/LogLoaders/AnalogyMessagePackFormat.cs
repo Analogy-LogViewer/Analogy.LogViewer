@@ -12,7 +12,7 @@ namespace Analogy.CommonControls.LogLoaders
     public class AnalogyMessagePackFormat
     {
 
-        public async Task<IEnumerable<AnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messageHandler)
+        public async Task<IEnumerable<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messageHandler)
         {
 
             if (string.IsNullOrEmpty(fileName))
@@ -27,12 +27,12 @@ namespace Analogy.CommonControls.LogLoaders
                 return new List<AnalogyLogMessage>() { empty };
             }
 
-            return await Task<IEnumerable<AnalogyLogMessage>>.Factory.StartNew(() =>
+            return await Task<IEnumerable<IAnalogyLogMessage>>.Factory.StartNew(() =>
             {
                 try
                 {
                     byte[] data = File.ReadAllBytes(fileName);
-                    var messages = MessagePackSerializer.Deserialize < List<AnalogyLogMessage>>(data, MessagePack.Resolvers.ContractlessStandardResolver.Options);
+                    var messages = MessagePackSerializer.Deserialize<List<IAnalogyLogMessage>>(data, MessagePack.Resolvers.ContractlessStandardResolver.Options);
                     messageHandler.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                     return messages;
                 }
@@ -53,10 +53,10 @@ namespace Analogy.CommonControls.LogLoaders
 
         }
 
-        public Task Save(List<AnalogyLogMessage> messages, string fileName)
+        public Task Save(List<IAnalogyLogMessage> messages, string fileName)
             => Task.Factory.StartNew(() =>
             {
-           
+
                 var data = MessagePackSerializer.Serialize(messages, MessagePack.Resolvers.ContractlessStandardResolver.Options);
                 //write string to file
                 File.WriteAllBytes(fileName, data);

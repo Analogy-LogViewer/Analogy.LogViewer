@@ -50,7 +50,7 @@ namespace Analogy.CommonControls.LogLoaders
 
         public override string? OptionalTitle { get; set; } = "Analogy Built-In Offline Readers";
 
-        public override async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
+        public override async Task<IEnumerable<IAnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             if (fileName.EndsWith(".axml", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -87,7 +87,7 @@ namespace Analogy.CommonControls.LogLoaders
             return new List<AnalogyLogMessage>() { m };
         }
 
-        public override Task SaveAsync(List<AnalogyLogMessage> messages, string fileName)
+        public override Task SaveAsync(List<IAnalogyLogMessage> messages, string fileName)
 
             => Task.Factory.StartNew(async () =>
             {

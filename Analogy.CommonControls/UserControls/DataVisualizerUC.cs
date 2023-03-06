@@ -16,7 +16,7 @@ namespace Analogy.CommonControls.UserControls
     {
         private readonly IUserSettingsManager _settings;
 
-        private Func<List<AnalogyLogMessage>> Messages { get; set; }
+        private Func<List<IAnalogyLogMessage>> Messages { get; set; }
 
         private List<string> Items { get; set; }
         private List<string> MessagesText => Messages().Select(r => r.Text).ToList();
@@ -27,13 +27,13 @@ namespace Analogy.CommonControls.UserControls
             InitializeComponent();
         }
 
-        public DataVisualizerUC(IUserSettingsManager settings, Func<List<AnalogyLogMessage>> messagesFunc) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, Func<List<IAnalogyLogMessage>> messagesFunc) : this()
         {
             _settings = settings;
             Messages = messagesFunc;
             logStatisticsUC1.Statistics = new LogStatistics(messagesFunc.Invoke());
         }
-        public DataVisualizerUC(IUserSettingsManager settings, List<AnalogyLogMessage> messages) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, List<IAnalogyLogMessage> messages) : this()
         {
             _settings = settings;
             Messages = () => messages;
@@ -52,14 +52,14 @@ namespace Analogy.CommonControls.UserControls
                 new Dictionary<string, Dictionary<TimeSpan, int>>();
             Dictionary<string, Dictionary<TimeSpan, int>> frequencyCount =
                 new Dictionary<string, Dictionary<TimeSpan, int>>();
-            Dictionary<string, List<AnalogyLogMessage>> timeDistribution =
-                new Dictionary<string, List<AnalogyLogMessage>>();
+            Dictionary<string, List<IAnalogyLogMessage>> timeDistribution =
+                new Dictionary<string, List<IAnalogyLogMessage>>();
 
             foreach (var item in Items)
             {
                 frequency[item] = new Dictionary<TimeSpan, int>();
                 frequencyCount[item] = new Dictionary<TimeSpan, int>();
-                timeDistribution[item] = new List<AnalogyLogMessage>();
+                timeDistribution[item] = new List<IAnalogyLogMessage>();
             }
 
             var msgs = Messages();
@@ -150,7 +150,7 @@ namespace Analogy.CommonControls.UserControls
             return tbl;
         }
 
-        private DataTable CreateTimeDistributionTable(Dictionary<string, List<AnalogyLogMessage>> data)
+        private DataTable CreateTimeDistributionTable(Dictionary<string, List<IAnalogyLogMessage>> data)
         {
             DataTable tbl = new DataTable();
             tbl.Columns.Add("Name", typeof(string));
@@ -158,10 +158,10 @@ namespace Analogy.CommonControls.UserControls
             tbl.Columns.Add("ValueX", typeof(long));
             tbl.Columns.Add("ValueY", typeof(float));
 
-            foreach (KeyValuePair<string, List<AnalogyLogMessage>> td in data)
+            foreach (KeyValuePair<string, List<IAnalogyLogMessage>> td in data)
             {
                 string item = td.Key;
-                foreach (AnalogyLogMessage val in td.Value)
+                foreach (IAnalogyLogMessage val in td.Value)
                 {
                     tbl.Rows.Add(item, Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset), Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Ticks,
                         val.Date.Hour + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Minute / 60 + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Second / 60 / 60);

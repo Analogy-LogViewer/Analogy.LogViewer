@@ -9,6 +9,6 @@ namespace Analogy.Common.Interfaces
 {
     public interface ILogWindow
     {
-        List<AnalogyLogMessage> GetMessages();
+        List<IAnalogyLogMessage> GetMessages();
     }
 }

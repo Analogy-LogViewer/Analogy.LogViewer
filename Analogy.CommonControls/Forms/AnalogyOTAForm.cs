@@ -19,10 +19,10 @@ namespace Analogy.CommonControls.Forms
 
         }
         private IAnalogyShareable Shareable { get; set; }
-        private List<AnalogyLogMessage> messages;
+        private List<IAnalogyLogMessage> messages;
         public AnalogyOTAForm()
         {
-            messages = new List<AnalogyLogMessage>();
+            messages = new List<IAnalogyLogMessage>();
             InitializeComponent();
         }
 

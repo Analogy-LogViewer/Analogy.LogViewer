@@ -18,7 +18,7 @@ namespace Analogy.CommonControls.Forms
             InitializeComponent();
         }
 
-        public FormMessageDetails(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource, IUserSettingsManager settings) : this()
+        public FormMessageDetails(AnalogyLogMessage msg, List<IAnalogyLogMessage> messages, string dataSource, IUserSettingsManager settings) : this()
         {
             Settings = settings;
             MessageDetailsUC uc = new MessageDetailsUC(msg, messages, dataSource);

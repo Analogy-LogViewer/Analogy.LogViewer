@@ -22,7 +22,7 @@ namespace Analogy
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<DataTable> pages;
-        private readonly List<AnalogyLogMessage> allMessages;
+        private readonly List<IAnalogyLogMessage> allMessages;
         private readonly int pageSize;
         private int currentPageStartRowIndex;
         private int currentPageNumber;
@@ -58,7 +58,7 @@ namespace Analogy
             //}
             pages.Add(currentTable);
             currentPageNumber = 1;
-            allMessages = new List<AnalogyLogMessage>();
+            allMessages = new List<IAnalogyLogMessage>();
         }
 
 
@@ -113,7 +113,7 @@ namespace Analogy
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
 
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() && Settings.CheckAdditionalInformation)
             {
                 AddExtraColumnsIfNeeded(table, message);
             }
@@ -163,7 +163,7 @@ namespace Analogy
                             pageStartRowIndex)));
                 }
 
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+                if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                     Settings.CheckAdditionalInformation)
                 {
                     AddExtraColumnsIfNeeded(table, message);
@@ -188,9 +188,9 @@ namespace Analogy
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() && Settings.CheckAdditionalInformation)
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
 
                     if (!table.Columns.Contains(info.Key))
@@ -293,7 +293,7 @@ namespace Analogy
 
         }
 
-        public List<AnalogyLogMessage> GetAllMessages()
+        public List<IAnalogyLogMessage> GetAllMessages()
         {
             try
             {

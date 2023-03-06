@@ -130,21 +130,21 @@ namespace Analogy.CommonControls.UserControls
                 return items;
             }
         }
-        public List<AnalogyLogMessage> Messages
+        public List<IAnalogyLogMessage> Messages
         {
             get
             {
                 var filterDatatable = GetFilteredDataTable();
-                return filterDatatable.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
+                return filterDatatable.Rows.OfType<DataRow>().Select(r => (IAnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
             }
         }
         private int ExternalWindowsCount;
 
-        private List<AnalogyLogMessage> BookmarkedMessages
+        private List<IAnalogyLogMessage> BookmarkedMessages
         {
             get
             {
-                return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (AnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
+                return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (IAnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
             }
         }
         private AnalogyLogMessage? SelectedMassage { get; set; }
@@ -1608,7 +1608,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        public List<AnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
+        public List<IAnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
 
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
@@ -1701,7 +1701,7 @@ namespace Analogy.CommonControls.UserControls
         #endregion
 
 
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
             if (message.Level == AnalogyLogLevel.None)
             {
@@ -1737,7 +1737,7 @@ namespace Analogy.CommonControls.UserControls
                 lockSlim.ExitWriteLock();
             }
 
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                 Settings.CheckAdditionalInformation)
             {
                 AddExtraColumnsToLogGrid(logGrid, message);
@@ -1782,12 +1782,12 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        private void AddExtraColumnsToLogGrid(GridView gridView, AnalogyLogMessage message)
+        private void AddExtraColumnsToLogGrid(GridView gridView, IAnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                 Settings.CheckAdditionalInformation)
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
                     if (!CurrentColumnsFields.Exists(c => c.field == info.Key))
                     {
@@ -1827,7 +1827,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
 
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
@@ -1864,7 +1864,7 @@ namespace Analogy.CommonControls.UserControls
                     }
                 }
 
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+                if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                     Settings.CheckAdditionalInformation)
                 {
                     AddExtraColumnsToLogGrid(logGrid, message);
@@ -2646,12 +2646,12 @@ namespace Analogy.CommonControls.UserControls
             lockSlim.ExitWriteLock();
         }
 
-        private void AddExtraColumnsIfNeededToTable(DataTable table, GridView view, AnalogyLogMessage message)
+        private void AddExtraColumnsIfNeededToTable(DataTable table, GridView view, IAnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                 Settings.CheckAdditionalInformation)
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
                     if (!table.Columns.Contains(info.Key))
                     {
@@ -2817,7 +2817,7 @@ namespace Analogy.CommonControls.UserControls
             SaveMessagesToLog(FileDataProvider, messages);
         }
 
-        private async void SaveMessagesToLog(IAnalogyOfflineDataProvider fileHandler, List<AnalogyLogMessage> messages)
+        private async void SaveMessagesToLog(IAnalogyOfflineDataProvider fileHandler, List<IAnalogyLogMessage> messages)
         {
 
             if (fileHandler != null && fileHandler.CanSaveToLogFile)
@@ -3016,7 +3016,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        public void RemoveMessage(AnalogyLogMessage msgMessage)
+        public void RemoveMessage(IAnalogyLogMessage msgMessage)
         {
             var row = _messageData.AsEnumerable().SingleOrDefault(r => r[Common.CommonUtils.AnalogyMessageColumn].Equals(msgMessage));
             if (row != null)
@@ -3053,11 +3053,11 @@ namespace Analogy.CommonControls.UserControls
             return (message, dataSource);
 
         }
-        private List<AnalogyLogMessage> GetMessagesFromSelectedRowInGrid(out string dataProvider)
+        private List<IAnalogyLogMessage> GetMessagesFromSelectedRowInGrid(out string dataProvider)
         {
             dataProvider = string.Empty;
             var selectedRowHandles = logGrid.GetSelectedRows();
-            List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
+            List<IAnalogyLogMessage> messages = new List<IAnalogyLogMessage>();
             for (int i = 0; i < selectedRowHandles.Length; i++)
             {
 

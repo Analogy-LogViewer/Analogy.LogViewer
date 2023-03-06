@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.CommonUtilities.Github;
 using Analogy.CommonUtilities.Web;
 using Analogy.DataTypes;
 using Analogy.Interfaces.Factories;
@@ -46,7 +47,7 @@ namespace Analogy.Interfaces
         string AnalogyIcon { get; set; }
         UpdateMode UpdateMode { get; set; }
         DateTime LastUpdate { get; set; }
-        GithubObjects.GithubReleaseEntry? LastVersionChecked { get; set; }
+        GithubReleaseEntry? LastVersionChecked { get; set; }
         string GitHubToken { get; }
         bool MinimizedToTrayBar { get; set; }
         AnalogyPositionState AnalogyPosition { get; set; }

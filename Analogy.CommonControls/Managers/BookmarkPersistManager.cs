@@ -22,23 +22,23 @@ namespace Analogy.CommonControls.Managers
         public static BookmarkPersistManager Instance => instance.Value;
         private bool ContentChanged;
         private bool fileLoaded;
-        private List<AnalogyLogMessage> Messages { get; set; }
+        private List<IAnalogyLogMessage> Messages { get; set; }
         private string BookmarkFileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
         public bool ForceNoFileCaching { get; set; } = false;
         public bool DoNotAddToRecentHistory { get; set; } = false;
         private IAnalogyLogger Logger { get; set; }
         public BookmarkPersistManager()
         {
-            Messages = new List<AnalogyLogMessage>();
+            Messages = new List<IAnalogyLogMessage>();
 
         }
 
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
             Messages.Add(message);
         }
 
-        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
             Messages.AddRange(messages);
         }
@@ -49,7 +49,7 @@ namespace Analogy.CommonControls.Managers
             AppendMessage(message, dataSource);
         }
         public void SetLogger(IAnalogyLogger logger) => Logger = logger;
-        public async Task<List<AnalogyLogMessage>> GetMessages()
+        public async Task<List<IAnalogyLogMessage>> GetMessages()
         {
             if (fileLoaded || !File.Exists(BookmarkFileName))
             {

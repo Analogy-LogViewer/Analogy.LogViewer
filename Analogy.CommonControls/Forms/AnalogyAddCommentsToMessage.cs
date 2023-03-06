@@ -19,7 +19,7 @@ namespace Analogy.CommonControls.Forms
 
         public AnalogyAddCommentsToMessage(AnalogyLogMessage m, IUserSettingsManager settings) : this()
         {
-            Message=m;
+            Message = m;
             Settings = settings;
         }
         private void sBtnOk_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Analogy.CommonControls.Forms
 
         private void btnFull_Click(object sender, EventArgs e)
         {
-            var details=new FormMessageDetails(Message, new List<AnalogyLogMessage>() {Message}, "",Settings);
+            var details = new FormMessageDetails(Message, new List<IAnalogyLogMessage>() { Message }, "", Settings);
             details.Show(this);
         }
 
@@ -49,12 +49,8 @@ namespace Analogy.CommonControls.Forms
         {
             if (!string.IsNullOrEmpty(memoNoteKey.Text))
             {
-                if( Message.AdditionalInformation==null)
-                {
-                    Message.AdditionalInformation=new Dictionary<string, string>();
-                }
 
-                Message.AdditionalInformation[memoNoteKey.Text] = memoText.Text;
+                Message.AddOrReplaceAdditionalProperty(memoNoteKey.Text, memoText.Text);
             }
         }
     }

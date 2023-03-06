@@ -62,7 +62,7 @@ namespace Analogy.CommonControls
             return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource, TimeOffsetType timeOffsetType, TimeSpan customOffset)
+        public static DataRow CreateRow(DataTable table, IAnalogyLogMessage message, string dataSource, TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
@@ -71,7 +71,6 @@ namespace Analogy.CommonControls
             dtr["Source"] = message.Source ?? "";
             dtr["Level"] = message.Level;
             dtr["Class"] = message.Class;
-            dtr["Category"] = message.Category ?? "";
             dtr["User"] = message.User ?? "";
             dtr["Module"] = message.Module ?? "";
             dtr[Common.CommonUtils.AnalogyMessageColumn] = message;
@@ -82,9 +81,9 @@ namespace Analogy.CommonControls
             dtr["RawText"] = message.RawText ?? string.Empty;
             dtr["LineNumber"] = message.LineNumber;
             dtr["MethodName"] = message.MethodName;
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any())
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
                     if (dtr.Table.Columns.Contains(info.Key))
                     {

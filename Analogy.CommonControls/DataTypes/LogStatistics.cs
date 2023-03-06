@@ -7,12 +7,12 @@ namespace Analogy.CommonControls.DataTypes
 {
     public class LogStatistics
     {
-        private Func<List<AnalogyLogMessage>> MessagesSource { get; set; }
-        private List<AnalogyLogMessage> Messages => MessagesSource();
+        private Func<List<IAnalogyLogMessage>> MessagesSource { get; set; }
+        private List<IAnalogyLogMessage> Messages => MessagesSource();
         private List<string> Sources => Messages.Select(m => m.Source).Distinct().ToList();
         private List<string> Modules => Messages.Select(m => m.Module).Distinct().ToList();
         public List<string> Texts { get; set; }= new List<string>();
-        public LogStatistics(List<AnalogyLogMessage> messages)
+        public LogStatistics(List<IAnalogyLogMessage> messages)
         {
             MessagesSource = () => messages;
         }
@@ -81,7 +81,7 @@ namespace Analogy.CommonControls.DataTypes
 
         }
 
-        private int CountMessages(List<AnalogyLogMessage> messages, AnalogyLogLevel level) => messages.Count(m => m.Level == level);
+        private int CountMessages(List<IAnalogyLogMessage> messages, AnalogyLogLevel level) => messages.Count(m => m.Level == level);
         private int CountModuleMessages(string module, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && module.Equals(m.Module));
         private int CountSourceMessages(string source, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && source.Equals(m.Source));
         /// <summary>

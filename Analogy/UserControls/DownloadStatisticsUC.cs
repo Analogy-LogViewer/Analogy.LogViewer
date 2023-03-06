@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
-using Analogy.CommonUtilities.Web;
+using Analogy.CommonUtilities.Github;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 
@@ -16,14 +12,14 @@ namespace Analogy.UserControls
 {
     public partial class DownloadStatisticsUC : XtraUserControl
     {
-        private GithubObjects.GithubReleaseEntry[] Releases { get; }
+        private GithubReleaseEntry[] Releases { get; }
         private int TotalDownloadFramework;
         private int TotalDownloadNet;
         public DownloadStatisticsUC()
         {
             InitializeComponent();
         }
-        public DownloadStatisticsUC(GithubObjects.GithubReleaseEntry[] releases) : this()
+        public DownloadStatisticsUC(GithubReleaseEntry[] releases) : this()
         {
             Releases = releases;
             cbeReleases.Properties.BeginInit();

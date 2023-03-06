@@ -26,12 +26,12 @@ namespace Analogy.Managers
         public bool HasErrorMessages => messages.Any(m => m.Level == AnalogyLogLevel.Critical || m.Level == AnalogyLogLevel.Error);
         public bool HasWarningMessages => messages.Any(m => m.Level == AnalogyLogLevel.Warning);
         private bool ContentChanged;
-        private List<AnalogyLogMessage> messages;
+        private List<IAnalogyLogMessage> messages;
         public event EventHandler OnNewError;
         public List<string> ignoredMessages;
         public AnalogyLogManager()
         {
-            messages = new List<AnalogyLogMessage>();
+            messages = new List<IAnalogyLogMessage>();
             ignoredMessages = new List<string>
             {
                 "System.ArgumentException: Duplicate component name '_Container'.  Component names must be unique and case-insensitive",
@@ -57,7 +57,7 @@ namespace Analogy.Managers
             //}
         }
 
-        private List<AnalogyLogMessage> GetFilteredMessages()
+        private List<IAnalogyLogMessage> GetFilteredMessages()
         {
             return messages.Where(m =>
                     DateTime.Now.Subtract(m.Date).TotalDays <=

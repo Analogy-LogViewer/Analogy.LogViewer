@@ -27,7 +27,7 @@ namespace Analogy
         private List<string> FileNames { get; set; }
         private List<string> TextMessages { get; set; }
 
-        private List<Tuple<string, AnalogyLogMessage>> Messages { get; } = new List<Tuple<string, AnalogyLogMessage>>();
+        private List<Tuple<string, IAnalogyLogMessage>> Messages { get; } = new List<Tuple<string, IAnalogyLogMessage>>();
         private object lockObject = new object();
         private bool _aborted;
 
@@ -155,20 +155,20 @@ namespace Analogy
 
         }
 
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
             lock (lockObject)
             {
-                Messages.Add(new Tuple<string, AnalogyLogMessage>(dataSource, message));
+                Messages.Add(new Tuple<string, IAnalogyLogMessage>(dataSource, message));
             }
         }
 
-        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
 
             lock (lockObject)
             {
-                Messages.AddRange(messages.Select(m => new Tuple<string, AnalogyLogMessage>(dataSource, m)));
+                Messages.AddRange(messages.Select(m => new Tuple<string, IAnalogyLogMessage>(dataSource, m)));
                 Manager.DoneProcessingFile(messages, dataSource);
             }
         }
@@ -186,7 +186,7 @@ namespace Analogy
 
         public void SetFilesToProcess(List<string> files) => FileNames = files;
 
-        public List<AnalogyLogMessage> GetMessages() => Messages.Select(m => m.Item2).ToList();
+        public List<IAnalogyLogMessage> GetMessages() => Messages.Select(m => m.Item2).ToList();
 
         private void sBtnAbort_Click(object sender, EventArgs e)
         {

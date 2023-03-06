@@ -50,7 +50,7 @@ namespace Analogy
             listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
         }
 
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
             if (Enable && !IsDisposed)
             {
@@ -59,7 +59,7 @@ namespace Analogy
             }
         }
 
-        public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)
             {

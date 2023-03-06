@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonUtilities.Github;
 using Analogy.CommonUtilities.Web;
 using Analogy.Interfaces;
 using Analogy.Managers;
@@ -37,14 +38,14 @@ namespace Analogy.Forms
         {
             try
             {
-                var (_, releases) = await Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(AnalogyNonPersistSettings.Instance.AnalogyReleasesUrl, UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue).ConfigureAwait(true);
+                var (_, releases) = await Utils.GetAsync<GithubReleaseEntry[]>(AnalogyNonPersistSettings.Instance.AnalogyReleasesUrl, UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue).ConfigureAwait(true);
                 if (releases == null)
                 {
                     return;
                 }
 
                 CreatePieChart(releases);
-                foreach (GithubObjects.GithubReleaseEntry entry in releases)
+                foreach (GithubReleaseEntry entry in releases)
                 {
                     CreateReleaseEntry(entry);
                 }
@@ -58,7 +59,7 @@ namespace Analogy.Forms
 
         }
 
-        private void CreateReleaseEntry(GithubObjects.GithubReleaseEntry entry)
+        private void CreateReleaseEntry(GithubReleaseEntry entry)
         {
 
             var downloads = new AccordionControlElement(ElementStyle.Item);
@@ -80,7 +81,7 @@ namespace Analogy.Forms
             };
         }
 
-        private void CreatePieChart(GithubObjects.GithubReleaseEntry[] releases)
+        private void CreatePieChart(GithubReleaseEntry[] releases)
         {
 
             DownloadStatisticsUC uc = new DownloadStatisticsUC(releases);

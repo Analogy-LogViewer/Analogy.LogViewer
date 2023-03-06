@@ -27,9 +27,9 @@ namespace Analogy.CommonControls.DataTypes
 
     public class AnalogyClearedHistoryEventArgs : EventArgs
     {
-        public List<AnalogyLogMessage> ClearedMessages { get; }
+        public List<IAnalogyLogMessage> ClearedMessages { get; }
 
-        public AnalogyClearedHistoryEventArgs(List<AnalogyLogMessage> clearedMessages)
+        public AnalogyClearedHistoryEventArgs(List<IAnalogyLogMessage> clearedMessages)
         {
             ClearedMessages = clearedMessages;
         }

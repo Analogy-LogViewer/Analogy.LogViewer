@@ -14,7 +14,7 @@ namespace Analogy.LogLoaders
     public class AnalogyJsonLogFile
     {
 
-        public async Task<IEnumerable<AnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messageHandler)
+        public async Task<IEnumerable<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messageHandler)
         {
 
             if (string.IsNullOrEmpty(fileName))
@@ -29,7 +29,7 @@ namespace Analogy.LogLoaders
                 return new List<AnalogyLogMessage>() { empty };
             }
 
-            return await Task<IEnumerable<AnalogyLogMessage>>.Factory.StartNew(() =>
+            return await Task<IEnumerable<IAnalogyLogMessage>>.Factory.StartNew(() =>
             {
                 try
                 {
@@ -39,7 +39,7 @@ namespace Analogy.LogLoaders
                     {
                         data = textReader.ReadToEnd();
                     }
-                    List<AnalogyLogMessage> messages = JsonConvert.DeserializeObject<List<AnalogyLogMessage>>(data);
+                    List<IAnalogyLogMessage> messages = JsonConvert.DeserializeObject<List<IAnalogyLogMessage>>(data);
                     messageHandler?.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                     return messages;
                 }
@@ -61,7 +61,7 @@ namespace Analogy.LogLoaders
 
         }
 
-        public Task Save(List<AnalogyLogMessage> messages, string fileName)
+        public Task Save(List<IAnalogyLogMessage> messages, string fileName)
             => Task.Factory.StartNew(() =>
             {
                 string json = JsonConvert.SerializeObject(messages);

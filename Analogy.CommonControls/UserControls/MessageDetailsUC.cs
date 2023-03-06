@@ -13,8 +13,8 @@ namespace Analogy.CommonControls.UserControls
 {
     public partial class MessageDetailsUC : XtraUserControl
     {
-        private AnalogyLogMessage? Message { get; set; }
-        private List<AnalogyLogMessage> Messages { get; }
+        private IAnalogyLogMessage? Message { get; set; }
+        private List<IAnalogyLogMessage> Messages { get; }
         private string DataSource { get; }
         private MarkdownPipeline? Pipeline { get; set; }
         private JsonTreeUC _jsonTreeView;
@@ -22,10 +22,10 @@ namespace Analogy.CommonControls.UserControls
         private MessageDetailsUC()
         {
             InitializeComponent();
-            Messages = new List<AnalogyLogMessage>(0);
+            Messages = new List<IAnalogyLogMessage>(0);
         }
 
-        public MessageDetailsUC(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
+        public MessageDetailsUC(AnalogyLogMessage msg, List<IAnalogyLogMessage> messages, string dataSource) : this()
         {
             Message = msg;
             Messages = messages;
@@ -74,11 +74,11 @@ namespace Analogy.CommonControls.UserControls
             }
 
             xtraTabPageAdditionalInformation.PageVisible =
-                Message.AdditionalInformation != null && Message.AdditionalInformation.Any();
-            if (Message.AdditionalInformation != null)
+                Message.AdditionalProperties != null && Message.AdditionalProperties.Any();
+            if (Message.AdditionalProperties != null)
             {
                 memoAdditionalInformation.Text = string.Join(Environment.NewLine,
-                    Message.AdditionalInformation.Select(kv => $"{kv.Key}:{kv.Value}"));
+                    Message.AdditionalProperties.Select(kv => $"{kv.Key}:{kv.Value}"));
             }
 
             memoText.Text = Message.Text;

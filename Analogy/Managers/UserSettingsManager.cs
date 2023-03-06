@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Analogy.Common.DataTypes;
+using Analogy.CommonUtilities.Github;
 
 namespace Analogy
 {
@@ -109,7 +110,7 @@ namespace Analogy
         public string DateTimePattern { get; set; }
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
-        public GithubObjects.GithubReleaseEntry? LastVersionChecked { get; set; }
+        public GithubReleaseEntry? LastVersionChecked { get; set; }
         public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token") ?? string.Empty;
         public bool MinimizedToTrayBar { get; set; }
         public bool CheckAdditionalInformation { get; set; }
@@ -279,7 +280,7 @@ namespace Analogy
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
             SingleInstance = Settings.Default.SingleInstance;
             LastUpdate = Settings.Default.LastUpdate;
-            LastVersionChecked = ParseSettings<GithubObjects.GithubReleaseEntry>(Settings.Default.LastVersionChecked);
+            LastVersionChecked = ParseSettings<GithubReleaseEntry>(Settings.Default.LastVersionChecked);
             UpdateMode = Settings.Default.UpdateMode switch
             {
                 0 => UpdateMode.Never,

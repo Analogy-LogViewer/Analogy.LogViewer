@@ -191,10 +191,10 @@ namespace Analogy.Extensions
         }
         private void AddExtraColumnsIfNeededToTable(DataTable table, GridView view, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                 Settings.CheckAdditionalInformation)
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
                     if (!table.Columns.Contains(info.Key))
                     {

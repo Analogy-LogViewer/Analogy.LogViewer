@@ -73,7 +73,7 @@ namespace Analogy
             listBoxClearHistory.SelectedIndex = -1;
             listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
         }
-        private void OnNewMessages(List<AnalogyLogMessage> messages)
+        private void OnNewMessages(List<IAnalogyLogMessage> messages)
         {
             if (IsDisposed || !IsHandleCreated)
             {
@@ -96,7 +96,7 @@ namespace Analogy
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        private void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
             if (Enable && !IsDisposed)
             {

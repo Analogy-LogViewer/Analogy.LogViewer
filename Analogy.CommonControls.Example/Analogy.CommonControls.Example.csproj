@@ -11,7 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.6.0" />
+	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.0" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
 		<PackageReference Include="PolySharp" Version="1.12.1">

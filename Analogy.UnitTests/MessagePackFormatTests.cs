@@ -19,7 +19,7 @@ namespace Analogy.UnitTests
             string fileName = "test.bin";
             cancellationTokenSource =new CancellationTokenSource();
             AnalogyMessagePackFormat msgPack=new AnalogyMessagePackFormat();
-            List<AnalogyLogMessage> originals = new List<AnalogyLogMessage>
+            List<IAnalogyLogMessage> originals = new List<IAnalogyLogMessage>
             {
                 new AnalogyLogMessage("test1", AnalogyLogLevel.Critical, AnalogyLogClass.General, "test"),
                 new AnalogyLogMessage("test2", AnalogyLogLevel.Error, AnalogyLogClass.General, "test")
