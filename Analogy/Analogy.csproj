@@ -51,7 +51,7 @@
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.0" />
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.2.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="3.8.0" />
-		<PackageReference Include="Analogy.CommonUtilities" Version="3.8.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="3.8.1" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="3.8.0" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="3.8.0" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="3.8.0" />
