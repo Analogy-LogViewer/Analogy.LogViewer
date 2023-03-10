@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonUtilities.Github;
 
 namespace Analogy.DataTypes
 {
@@ -57,7 +58,7 @@ namespace Analogy.DataTypes
         public string DateTimePattern { get; set; }
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
-        public GithubObjects.GithubReleaseEntry? LastVersionChecked { get; set; }
+        public GithubReleaseEntry? LastVersionChecked { get; set; }
         public bool MinimizedToTrayBar { get; set; }
         public bool CheckAdditionalInformation { get; set; }
         public AnalogyPositionState AnalogyPosition { get; set; }
@@ -98,6 +99,14 @@ namespace Analogy.DataTypes
         public bool WarnNET5 { get; set; }
         public bool WarnNET3 { get; set; }
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
+        public bool CombineOfflineProviders { get; set; }
+        public bool CombineOnlineProviders { get; set; }
+        public Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
+
+        public UserSettings()
+        {
+            WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
+        }
 
     }
 }

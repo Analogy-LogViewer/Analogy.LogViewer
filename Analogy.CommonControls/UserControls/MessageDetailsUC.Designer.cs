@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageDetailsUC));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.btnNext = new DevExpress.XtraEditors.SimpleButton();
             this.btnPrev = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -72,8 +72,8 @@
             this.xtraTabPageAdditionalInformation = new DevExpress.XtraTab.XtraTabPage();
             this.memoAdditionalInformation = new DevExpress.XtraEditors.MemoEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.meSelected = new DevExpress.XtraEditors.MemoEdit();
+            this.xtraTabPageRawText = new DevExpress.XtraTab.XtraTabPage();
+            this.recMessageDetailsRawText = new DevExpress.XtraRichEdit.RichEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDateValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDataSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSourceValue.Properties)).BeginInit();
@@ -99,14 +99,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
-            this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).BeginInit();
-            this.splitContainerControl2.Panel2.SuspendLayout();
-            this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.meSelected.Properties)).BeginInit();
+            this.xtraTabPageRawText.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNext
@@ -116,9 +110,9 @@
             this.btnNext.Location = new System.Drawing.Point(555, 1);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(24, 26);
-            toolTipItem3.Text = "Press right arrow to load next message";
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnNext.SuperTip = superToolTip3;
+            toolTipItem1.Text = "Press right arrow to load next message";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnNext.SuperTip = superToolTip1;
             this.btnNext.TabIndex = 38;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
@@ -129,9 +123,9 @@
             this.btnPrev.Location = new System.Drawing.Point(525, 1);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(24, 26);
-            toolTipItem4.Text = "Press Left arrow to load previous message";
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnPrev.SuperTip = superToolTip4;
+            toolTipItem2.Text = "Press Left arrow to load previous message";
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnPrev.SuperTip = superToolTip2;
             this.btnPrev.TabIndex = 39;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
@@ -442,7 +436,8 @@
             this.xtraTabControlMessageInfo.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageRenderedText,
             this.xtraTabPageText,
-            this.xtraTabPageAdditionalInformation});
+            this.xtraTabPageAdditionalInformation,
+            this.xtraTabPageRawText});
             // 
             // xtraTabPageText
             // 
@@ -528,39 +523,27 @@
             // splitContainerControl1.Panel2
             // 
             this.splitContainerControl1.Panel2.AutoScroll = true;
-            this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(975, 604);
             this.splitContainerControl1.SplitterPosition = 386;
             this.splitContainerControl1.TabIndex = 3;
             // 
-            // splitContainerControl2
+            // xtraTabPageRawText
             // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
+            this.xtraTabPageRawText.Controls.Add(this.recMessageDetailsRawText);
+            this.xtraTabPageRawText.Name = "xtraTabPageRawText";
+            this.xtraTabPageRawText.Size = new System.Drawing.Size(574, 172);
+            this.xtraTabPageRawText.Text = "Raw Text";
             // 
-            // splitContainerControl2.Panel1
+            // recMessageDetailsRawText
             // 
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            // 
-            // splitContainerControl2.Panel2
-            // 
-            this.splitContainerControl2.Panel2.Controls.Add(this.meSelected);
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(386, 604);
-            this.splitContainerControl2.TabIndex = 0;
-            // 
-            // meSelected
-            // 
-            this.meSelected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.meSelected.EditValue = "You can double click the selected node to copy the text";
-            this.meSelected.Location = new System.Drawing.Point(0, 0);
-            this.meSelected.Name = "meSelected";
-            this.meSelected.Size = new System.Drawing.Size(386, 100);
-            this.meSelected.TabIndex = 2;
+            this.recMessageDetailsRawText.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.recMessageDetailsRawText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recMessageDetailsRawText.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.recMessageDetailsRawText.Location = new System.Drawing.Point(0, 0);
+            this.recMessageDetailsRawText.Name = "recMessageDetailsRawText";
+            this.recMessageDetailsRawText.Size = new System.Drawing.Size(574, 172);
+            this.recMessageDetailsRawText.TabIndex = 6;
             // 
             // MessageDetailsUC
             // 
@@ -598,15 +581,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
-            this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).EndInit();
-            this.splitContainerControl2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.meSelected.Properties)).EndInit();
+            this.xtraTabPageRawText.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -651,7 +628,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageRenderedText;
         private DevExpress.XtraRichEdit.RichEditControl recMessageDetails;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        private DevExpress.XtraEditors.MemoEdit meSelected;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageRawText;
+        private DevExpress.XtraRichEdit.RichEditControl recMessageDetailsRawText;
     }
 }

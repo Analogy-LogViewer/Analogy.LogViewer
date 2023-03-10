@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.CommonUtilities.Github;
 using Analogy.CommonUtilities.Web;
 using Analogy.DataTypes;
 using Analogy.Interfaces.Factories;
@@ -41,12 +42,12 @@ namespace Analogy.Interfaces
         Guid LastOpenedDataProvider { get; set; }
         bool RememberLastOpenedDataProvider { get; set; }
         int NumberOfLastSearches { get; set; }
-        List<string> AdditionalProbingLocations { get; set; }
+        List<string>? AdditionalProbingLocations { get; set; }
         bool SingleInstance { get; set; }
         string AnalogyIcon { get; set; }
         UpdateMode UpdateMode { get; set; }
         DateTime LastUpdate { get; set; }
-        GithubObjects.GithubReleaseEntry? LastVersionChecked { get; set; }
+        GithubReleaseEntry? LastVersionChecked { get; set; }
         string GitHubToken { get; }
         bool MinimizedToTrayBar { get; set; }
         AnalogyPositionState AnalogyPosition { get; set; }
@@ -66,6 +67,8 @@ namespace Analogy.Interfaces
         /// </summary>
         int FilePoolingDelayInterval { get; set; }
         bool EnableFilePoolingDelay { get; set; }
+        bool CombineOfflineProviders { get; set; }
+        bool CombineOnlineProviders { get; set; }
         void IncreaseNumberOfLaunches();
         FactorySettings GetFactorySetting(Guid factoryID);
         FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory);

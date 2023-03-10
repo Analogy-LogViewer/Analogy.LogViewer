@@ -20,8 +20,8 @@ namespace Analogy.Managers
         private FileProcessor FileProcessor { get; }
         private IAnalogyOfflineDataProvider OfflineDataProvider { get; }
         private readonly CancellationTokenSource _cancellationTokenSource;
-        private readonly List<AnalogyLogMessage> _messages;
-        public EventHandler<(List<AnalogyLogMessage> messages, string dataSource)> OnNewMessages;
+        private readonly List<IAnalogyLogMessage> _messages;
+        public EventHandler<(List<IAnalogyLogMessage> messages, string dataSource)> OnNewMessages;
         public bool ForceNoFileCaching { get; set; } = true;
 
         public bool DoNotAddToRecentHistory { get; set; } = true;
@@ -39,7 +39,7 @@ namespace Analogy.Managers
             _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer { CompareId = false };
             _cancellationTokenSource = new CancellationTokenSource();
             OfflineDataProvider = offlineDataProvider;
-            _messages = new List<AnalogyLogMessage>();
+            _messages = new List<IAnalogyLogMessage>();
             FileName = fileName;
             FileProcessor = new FileProcessor(Settings, this,AnalogyLogger.Instance);
 
@@ -63,12 +63,11 @@ namespace Analogy.Managers
                 Text = $"Start monitoring file {FileName}.",
                 FileName = FileName,
                 Level = AnalogyLogLevel.Analogy,
-                Category = "",
                 Source = "Analogy",
                 Class = AnalogyLogClass.General,
                 Date = DateTime.Now
             };
-            OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
+            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
             return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
         }
 
@@ -82,19 +81,19 @@ namespace Analogy.Managers
             _watchFile.Error -= WatchFile_Error;
             _watchFile.Dispose();
         }
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
             lock (_sync)
             {
                 if (!_messages.Contains(message))
                 {
                     _messages.Add(message);
-                    OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { message }, dataSource));
+                    OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { message }, dataSource));
                 }
             }
         }
 
-        public void AppendMessages(List<AnalogyLogMessage> messagesFromFile, string dataSource)
+        public void AppendMessages(List<IAnalogyLogMessage> messagesFromFile, string dataSource)
         {
 
             lock (_sync)
@@ -117,12 +116,11 @@ namespace Analogy.Managers
                 Text = $"Error monitoring file {FileName}. Reason {e.GetException()}",
                 FileName = FileName,
                 Level = AnalogyLogLevel.Critical,
-                Category = "",
                 Source = "Analogy",
                 Class = AnalogyLogClass.General,
                 Date = DateTime.Now
             };
-            OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
+            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         }
 
         private async void WatchFile_Renamed(object sender, RenamedEventArgs e)
@@ -133,13 +131,12 @@ namespace Analogy.Managers
                 Text = $"{FileName} has changed to {e.FullPath} from {e.OldName}. restarting monitoring",
                 FileName = FileName,
                 Level = AnalogyLogLevel.Warning,
-                Category = "",
                 Source = "Analogy",
                 Class = AnalogyLogClass.General,
                 Date = DateTime.Now
             };
             _watchFile.Dispose();
-            OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
+            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
             await Init();
 
         }
@@ -152,12 +149,11 @@ namespace Analogy.Managers
                 Text = $"{FileName} has been deleted. Stopping monitoring",
                 FileName = FileName,
                 Level = AnalogyLogLevel.Warning,
-                Category = "",
                 Class = AnalogyLogClass.General,
                 Date = DateTime.Now
             };
             _watchFile.Dispose();
-            OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
+            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         }
 
         private async void WatchFile_Changed(object sender, FileSystemEventArgs e)
@@ -203,11 +199,10 @@ namespace Analogy.Managers
                     Text = $"Error monitoring file {FileName}. Reason {exception}",
                     FileName = FileName,
                     Level = AnalogyLogLevel.Warning,
-                    Category = "",
                     Class = AnalogyLogClass.General,
                     Date = DateTime.Now
                 };
-                OnNewMessages?.Invoke(this, (new List<AnalogyLogMessage> { m }, FileName));
+                OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
                 AnalogyLogManager.Instance.LogErrorMessage(m);
             }
             finally

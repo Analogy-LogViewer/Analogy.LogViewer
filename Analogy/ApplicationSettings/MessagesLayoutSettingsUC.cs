@@ -26,7 +26,7 @@ namespace Analogy.ApplicationSettings
         public MessagesLayoutSettingsUC()
         {
             InitializeComponent();
-            messageData = Utils.DataTableConstructor();
+            messageData = Analogy.CommonControls.Utils.DataTableConstructor();
         }
 
         private void MessagesLayoutSettingsUC_Load(object sender, EventArgs e)

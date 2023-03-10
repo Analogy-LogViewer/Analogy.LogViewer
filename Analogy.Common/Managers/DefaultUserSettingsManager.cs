@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.Common.Properties;
@@ -91,6 +88,16 @@ namespace Analogy.Common.Managers
         }
 
         public void ResetSettings()
+        {
+        }
+
+        public bool TryGetWindowPosition(Guid id, out AnalogyPositionState? position)
+        {
+            position = null;
+            return false;
+        }
+
+        public void SetWindowPosition(Guid id, AnalogyPositionState position)
         {
         }
     }

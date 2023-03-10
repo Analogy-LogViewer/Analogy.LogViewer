@@ -16,14 +16,14 @@ namespace Analogy.CommonControls.Forms
         {
             InitializeComponent();
         }
-        public DataVisualizerForm(IUserSettingsManager settingsManager, Func<List<AnalogyLogMessage>> messages) : this()
+        public DataVisualizerForm(IUserSettingsManager settingsManager, Func<List<IAnalogyLogMessage>> messages) : this()
         {
             _settingsManager = settingsManager;
             DataVisualizerUC uc = new DataVisualizerUC(_settingsManager, messages);
             this.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
         }
-        public DataVisualizerForm(List<AnalogyLogMessage> messages) : this()
+        public DataVisualizerForm(List<IAnalogyLogMessage> messages) : this()
         {
             DataVisualizerUC uc = new DataVisualizerUC(_settingsManager, messages);
             this.Controls.Add(uc);

@@ -51,16 +51,16 @@ namespace Analogy.LogLoaders
 
                 }
             });
-        internal Task<List<AnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
+        internal Task<List<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             return Task.Factory.StartNew(() =>
             {
-                XmlSerializer ser = new XmlSerializer(typeof(List<AnalogyLogMessage>));
+                XmlSerializer ser = new XmlSerializer(typeof(List<IAnalogyLogMessage>));
                 using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     try
                     {
-                        var messages = (List<AnalogyLogMessage>)ser.Deserialize(fs);
+                        var messages = (List<IAnalogyLogMessage>)ser.Deserialize(fs);
                         messagesHandler.AppendMessages(messages, fileName);
                         return messages;
                     }
@@ -75,7 +75,7 @@ namespace Analogy.LogLoaders
                         };
                         AnalogyLogManager.Instance.LogErrorMessage(errMessage);
                         messagesHandler.AppendMessage(errMessage, fileName);
-                        return new List<AnalogyLogMessage>() { errMessage };
+                        return new List<IAnalogyLogMessage>() { errMessage };
                     }
                 }
             }, token);

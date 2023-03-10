@@ -41,10 +41,10 @@ namespace Analogy.Forms
             this.predefinedQueries = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.DataProviderList = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.realDataProviderElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.FileExtensionsElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.FileAssociationsElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.DataProviderExternal = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.shortcuts = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.Extensions = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.FileExtensionsElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.updates = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.debugging = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Donations = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -69,18 +69,19 @@ namespace Analogy.Forms
             this.predefinedQueries,
             this.DataProviderList,
             this.realDataProviderElement,
-            this.FileExtensionsElement,
+            this.FileAssociationsElement,
             this.DataProviderExternal,
             this.shortcuts,
-            this.Extensions,
+            this.FileExtensionsElement,
             this.updates,
             this.debugging,
             this.Donations,
             this.aceAdvancedMode});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 31);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(279, 742);
+            this.accordionControl1.Size = new System.Drawing.Size(326, 912);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -156,13 +157,13 @@ namespace Analogy.Forms
             this.realDataProviderElement.Text = "Real Time Data Providers";
             this.realDataProviderElement.Click += new System.EventHandler(this.accordionControlElement4_Click);
             // 
-            // FileExtensionsElement
+            // FileAssociationsElement
             // 
-            this.FileExtensionsElement.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FileExtensionsElement.ImageOptions.Image")));
-            this.FileExtensionsElement.Name = "FileExtensionsElement";
-            this.FileExtensionsElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.FileExtensionsElement.Text = "Default File Associations";
-            this.FileExtensionsElement.Click += new System.EventHandler(this.accordionControlElement5_Click);
+            this.FileAssociationsElement.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("FileExtensionsElement.ImageOptions.Image")));
+            this.FileAssociationsElement.Name = "FileAssociationsElement";
+            this.FileAssociationsElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.FileAssociationsElement.Text = "File Associations";
+            this.FileAssociationsElement.Click += new System.EventHandler(this.accordionControlElement5_Click);
             // 
             // DataProviderExternal
             // 
@@ -180,13 +181,13 @@ namespace Analogy.Forms
             this.shortcuts.Text = "Shortcuts";
             this.shortcuts.Click += new System.EventHandler(this.shortcuts_Click);
             // 
-            // Extensions
+            // FileExtensionsElement
             // 
-            this.Extensions.ImageOptions.Image = global::Analogy.Properties.Resources.extension32;
-            this.Extensions.Name = "Extensions";
-            this.Extensions.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.Extensions.Text = "Extensions";
-            this.Extensions.Click += new System.EventHandler(this.Extensions_Click);
+            this.FileExtensionsElement.ImageOptions.Image = global::Analogy.Properties.Resources.extension32;
+            this.FileExtensionsElement.Name = "FileExtensionsElement";
+            this.FileExtensionsElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.FileExtensionsElement.Text = "Extensions";
+            this.FileExtensionsElement.Click += new System.EventHandler(this.Extensions_Click);
             // 
             // updates
             // 
@@ -227,9 +228,9 @@ namespace Analogy.Forms
             this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbtnReset});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
-            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1027, 31);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1198, 39);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtnReset);
@@ -248,22 +249,23 @@ namespace Analogy.Forms
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(279, 31);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(326, 39);
+            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(748, 742);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(872, 912);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // ApplicationSettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 773);
+            this.ClientSize = new System.Drawing.Size(1198, 951);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "ApplicationSettingsForm";
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -280,7 +282,7 @@ namespace Analogy.Forms
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement applicationGeneralSettings;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement Extensions;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement FileExtensionsElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement MessagesLayout;
         private DevExpress.XtraBars.Navigation.AccordionControlElement colorSettings;
         private DevExpress.XtraBars.Navigation.AccordionControlElement shortcuts;
@@ -293,7 +295,7 @@ namespace Analogy.Forms
         private DevExpress.XtraBars.Navigation.AccordionControlElement ApplicationUISettings;
         private DevExpress.XtraBars.Navigation.AccordionControlElement DataProviderList;
         private DevExpress.XtraBars.Navigation.AccordionControlElement realDataProviderElement;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement FileExtensionsElement;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement FileAssociationsElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement DataProviderExternal;
         private DevExpress.XtraBars.BarButtonItem bbtnReset;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Donations;

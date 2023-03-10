@@ -13,12 +13,12 @@ namespace Analogy.Tools
     {
         public bool DoNotAddToRecentHistory { get; set; } = false;
         public bool ForceNoFileCaching { get; set; } = false;
-        private List<AnalogyLogMessage> messages;
+        private List<IAnalogyLogMessage> messages;
         public string FileName { get; }
         public FileComparerProcessor(string filename)
         {
             FileName = filename;
-            messages = new List<AnalogyLogMessage>();
+            messages = new List<IAnalogyLogMessage>();
         }
 
         public bool IsLoaded { get; set; }
@@ -37,12 +37,12 @@ namespace Analogy.Tools
 
         }
 
-        public void AppendMessage(AnalogyLogMessage message, string dataSource)
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
             messages.Add(message);
         }
 
-        public void AppendMessages(List<AnalogyLogMessage> message, string dataSource)
+        public void AppendMessages(List<IAnalogyLogMessage> message, string dataSource)
         {
             messages.AddRange(message);
             IsLoaded = true;
@@ -50,7 +50,7 @@ namespace Analogy.Tools
 
         public void AppendMessage(DataRow dtr, string dataSource)
         {
-            AnalogyLogMessage message = (AnalogyLogMessage)dtr["Object"];
+            AnalogyLogMessage message = (AnalogyLogMessage)dtr[Common.CommonUtils.AnalogyMessageColumn];
             AppendMessage(message, dataSource);
         }
         public void ReportFileReadProgress(AnalogyFileReadProgress progress)
@@ -58,7 +58,7 @@ namespace Analogy.Tools
             //noop
         }
 
-        public List<AnalogyLogMessage> GetMessages()
+        public List<IAnalogyLogMessage> GetMessages()
         {
             return messages;
         }

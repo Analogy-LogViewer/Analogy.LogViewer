@@ -80,7 +80,7 @@ namespace Analogy.Extensions
                 return;
             }
 
-            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+            IAnalogyLogMessage message = (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns[Common.CommonUtils.AnalogyMessageColumn]);
             if (message == null)
             {
                 return;
@@ -106,7 +106,7 @@ namespace Analogy.Extensions
             if (DataProvider.UseCustomColors)
             {
                 IAnalogyLogMessage m =
-                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns["Object"]);
+                    (AnalogyLogMessage)view.GetRowCellValue(e.RowHandle, view.Columns[Common.CommonUtils.AnalogyMessageColumn]);
                 if (m == null)
                 {
                     return;
@@ -174,7 +174,7 @@ namespace Analogy.Extensions
                 return;
             }
 
-            var grouped = Utils.DataTableConstructor();
+            var grouped = CommonControls.Utils.DataTableConstructor();
             string key =
                 (string)gridViewGrouping.GetRowCellValue(e.FocusedRowHandle, gridViewGrouping.Columns.First());
             var messages = groupingByChars[key];
@@ -191,10 +191,10 @@ namespace Analogy.Extensions
         }
         private void AddExtraColumnsIfNeededToTable(DataTable table, GridView view, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                 Settings.CheckAdditionalInformation)
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
                     if (!table.Columns.Contains(info.Key))
                     {
@@ -203,8 +203,12 @@ namespace Analogy.Extensions
                         {
                             if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
                             {
-                                view.Columns.Add(new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
-                                table.Columns.Add(info.Key);
+                                var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                grid.OptionsColumn.ReadOnly = true;
+                                view.Columns.Add(grid);
+                                DataColumn dt = new DataColumn(info.Key);
+                                dt.ReadOnly = true;
+                                table.Columns.Add(dt);
                             }
 
                         }
@@ -214,8 +218,9 @@ namespace Analogy.Extensions
                             {
                                 if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
                                 {
-                                    view.Columns.Add(new GridColumn()
-                                    { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true });
+                                    var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
+                                    grid.OptionsColumn.ReadOnly = true;
+                                    view.Columns.Add(grid);
                                     table.Columns.Add(info.Key);
                                 }
                                 columnAdderSync.Set();

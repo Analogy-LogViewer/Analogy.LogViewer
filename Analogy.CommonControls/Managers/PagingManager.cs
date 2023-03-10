@@ -19,13 +19,13 @@ namespace Analogy.CommonControls.Managers
         event EventHandler<AnalogyPagingChanged> OnPageChanged;
         int TotalPages { get; }
         void ClearLogs();
-        DataRow AppendMessage(AnalogyLogMessage message, string dataSource);
-        List<(DataRow, AnalogyLogMessage)> AppendMessages(List<AnalogyLogMessage> messages, string dataSource);
+        DataRow AppendMessage(IAnalogyLogMessage message, string dataSource);
+        List<(DataRow, IAnalogyLogMessage)> AppendMessages(List<IAnalogyLogMessage> messages, string dataSource);
         AnalogyPageInformation NextPage();
         AnalogyPageInformation PrevPage();
         DataTable FirstPage();
         DataTable LastPage();
-        List<AnalogyLogMessage> GetAllMessages();
+        List<IAnalogyLogMessage> GetAllMessages();
         DataTable CurrentPage();
         bool IsCurrentPageInView(DataTable currentView);
         void IncrementTotalMissedMessages();
@@ -43,7 +43,7 @@ namespace Analogy.CommonControls.Managers
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private IUserSettingsManager Settings { get; set; }
         private List<DataTable> pages;
-        private readonly List<AnalogyLogMessage> allMessages;
+        private readonly List<IAnalogyLogMessage> allMessages;
         private readonly int pageSize;
         private int currentPageStartRowIndex;
         public int CurrentPageNumber { get; set; }
@@ -79,7 +79,7 @@ namespace Analogy.CommonControls.Managers
             //}
             pages.Add(currentTable);
             CurrentPageNumber = 1;
-            allMessages = new List<AnalogyLogMessage>();
+            allMessages = new List<IAnalogyLogMessage>();
         }
 
 
@@ -114,7 +114,7 @@ namespace Analogy.CommonControls.Managers
             OnPageChanged?.Invoke(this, new AnalogyPagingChanged(analogyPage));
         }
 
-        public DataRow AppendMessage(AnalogyLogMessage message, string dataSource)
+        public DataRow AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace Analogy.CommonControls.Managers
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
 
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() && Settings.CheckAdditionalInformation)
             {
                 AddExtraColumnsIfNeeded(table, message);
             }
@@ -152,12 +152,12 @@ namespace Analogy.CommonControls.Managers
             }
         }
 
-        public List<(DataRow, AnalogyLogMessage)> AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
+        public List<(DataRow, IAnalogyLogMessage)> AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
 
             var table = pages.Last();
             var countInsideTable = table.Rows.Count;
-            List<(DataRow row, AnalogyLogMessage message)> rows = new List<(DataRow row, AnalogyLogMessage message)>(messages.Count);
+            List<(DataRow row, IAnalogyLogMessage message)> rows = new List<(DataRow row, IAnalogyLogMessage message)>(messages.Count);
             foreach (var message in messages)
             {
                 if (message.Level == AnalogyLogLevel.None)
@@ -184,7 +184,7 @@ namespace Analogy.CommonControls.Managers
                             pageStartRowIndex)));
                 }
 
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+                if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                     Settings.CheckAdditionalInformation)
                 {
                     AddExtraColumnsIfNeeded(table, message);
@@ -207,11 +207,11 @@ namespace Analogy.CommonControls.Managers
             return rows;
         }
 
-        private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
+        private void AddExtraColumnsIfNeeded(DataTable table, IAnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() && Settings.CheckAdditionalInformation)
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
 
                     if (!table.Columns.Contains(info.Key))
@@ -223,7 +223,9 @@ namespace Analogy.CommonControls.Managers
                                 columnsLockSlim.EnterWriteLock();
                                 if (!table.Columns.Contains(info.Key))
                                 {
-                                    table.Columns.Add(info.Key);
+                                    DataColumn dt = new DataColumn(info.Key);
+                                    dt.ReadOnly = true;
+                                    table.Columns.Add(dt);
                                 }
                             }
                             finally
@@ -314,7 +316,7 @@ namespace Analogy.CommonControls.Managers
 
         }
 
-        public List<AnalogyLogMessage> GetAllMessages()
+        public List<IAnalogyLogMessage> GetAllMessages()
         {
             try
             {
@@ -358,7 +360,7 @@ namespace Analogy.CommonControls.Managers
                 foreach (DataRow dataTableRow in dataTable.Rows)
                 {
                     dataTableRow.BeginEdit();
-                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
+                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow[Common.CommonUtils.AnalogyMessageColumn];
                     dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                     dataTableRow.EndEdit();
                 }

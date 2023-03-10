@@ -56,14 +56,13 @@ namespace Analogy.CommonControls
         /// </summary>
         internal const string DateFilterLastMonth = "Last one month";
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
-
         public static string GetFileNameAsDataSource(string fileName)
         {
             string file = Path.GetFileName(fileName);
             return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource, TimeOffsetType timeOffsetType, TimeSpan customOffset)
+        public static DataRow CreateRow(DataTable table, IAnalogyLogMessage message, string dataSource, TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
@@ -72,17 +71,19 @@ namespace Analogy.CommonControls
             dtr["Source"] = message.Source ?? "";
             dtr["Level"] = message.Level;
             dtr["Class"] = message.Class;
-            dtr["Category"] = message.Category ?? "";
             dtr["User"] = message.User ?? "";
             dtr["Module"] = message.Module ?? "";
-            dtr["Object"] = message;
+            dtr[Common.CommonUtils.AnalogyMessageColumn] = message;
             dtr["ProcessID"] = message.ProcessId;
             dtr["ThreadID"] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
             dtr["MachineName"] = message.MachineName ?? string.Empty;
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
+            dtr["RawText"] = message.RawText ?? string.Empty;
+            dtr["LineNumber"] = message.LineNumber;
+            dtr["MethodName"] = message.MethodName;
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any())
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
                     if (dtr.Table.Columns.Contains(info.Key))
                     {
@@ -124,12 +125,14 @@ namespace Analogy.CommonControls
             dtb.Columns.Add(new DataColumn("Category", typeof(string)));
             dtb.Columns.Add(new DataColumn("User", typeof(string)));
             dtb.Columns.Add(new DataColumn("Module", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Object", typeof(object)));
+            dtb.Columns.Add(new DataColumn(Common.CommonUtils.AnalogyMessageColumn, typeof(object)));
             dtb.Columns.Add(new DataColumn("ProcessID", typeof(int)));
             dtb.Columns.Add(new DataColumn("ThreadID", typeof(int)));
             dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
             dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
-
+            dtb.Columns.Add(new DataColumn("RawText", typeof(string)));
+            dtb.Columns.Add(new DataColumn("LineNumber", typeof(int)));
+            dtb.Columns.Add(new DataColumn("MethodName", typeof(string)));
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
             dtb.DefaultView.Sort = "Date DESC";

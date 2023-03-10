@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonUtilities.Github;
 using Analogy.CommonUtilities.Web;
 using Analogy.Managers;
 using Analogy.UserControls;
@@ -126,7 +127,7 @@ namespace Analogy.Forms
         private async void sbtnFetchReleases_Click(object sender, EventArgs e)
         {
             var (_, releases) = await Utils
-                .GetAsync<GithubObjects.GithubReleaseEntry[]>(AnalogyNonPersistSettings.Instance.AnalogyReleasesUrl, "", DateTime.MinValue)
+                .GetAsync<GithubReleaseEntry[]>(AnalogyNonPersistSettings.Instance.AnalogyReleasesUrl, "", DateTime.MinValue)
                 .ConfigureAwait(true);
             if (releases == null)
             {

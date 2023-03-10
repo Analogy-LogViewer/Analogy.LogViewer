@@ -49,7 +49,7 @@ namespace Analogy.CommonControls.LogLoaders
 
                 }
             });
-        internal Task<List<AnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
+        internal Task<List<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -58,7 +58,7 @@ namespace Analogy.CommonControls.LogLoaders
                 {
                     try
                     {
-                        var messages = (List<AnalogyLogMessage>)ser.Deserialize(fs);
+                        var messages = (List<IAnalogyLogMessage>)ser.Deserialize(fs);
                         messagesHandler.AppendMessages(messages, fileName);
                         return messages;
                     }
@@ -72,7 +72,7 @@ namespace Analogy.CommonControls.LogLoaders
                             Module = Process.GetCurrentProcess().ProcessName
                         };
                         messagesHandler.AppendMessage(errMessage, fileName);
-                        return new List<AnalogyLogMessage>() { errMessage };
+                        return new List<IAnalogyLogMessage>() { errMessage };
                     }
                 }
             }, token);

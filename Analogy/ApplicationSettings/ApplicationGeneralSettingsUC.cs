@@ -54,8 +54,6 @@ namespace Analogy.ApplicationSettings
             tsSingleInstance.IsOnChanged += (s, e) => Settings.SingleInstance = tsSingleInstance.IsOn;
             tsAutoComplete.IsOnChanged += (s, e) => Settings.RememberLastSearches = tsAutoComplete.IsOn;
             tsTraybar.IsOnChanged += (s, e) => Settings.MinimizedToTrayBar = tsTraybar.IsOn;
-            tsCheckAdditionalInformation.IsOnChanged += (s, e) =>
-              Settings.CheckAdditionalInformation = tsCheckAdditionalInformation.IsOn;
             tsFileCaching.IsOnChanged += (s, e) => Settings.EnableFileCaching = tsFileCaching.IsOn;
             tsEnableCompressedArchive.IsOnChanged += (s, e) => Settings.EnableCompressedArchives = tsEnableCompressedArchive.IsOn;
 
@@ -88,7 +86,6 @@ namespace Analogy.ApplicationSettings
             tsSingleInstance.IsOn = Settings.SingleInstance;
             nudAutoCompleteCount.Value = Settings.NumberOfLastSearches;
             tsTraybar.IsOn = Settings.MinimizedToTrayBar;
-            tsCheckAdditionalInformation.IsOn = Settings.CheckAdditionalInformation;
             tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
 
 

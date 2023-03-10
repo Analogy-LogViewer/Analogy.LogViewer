@@ -19,10 +19,10 @@ namespace Analogy.CommonControls.Forms
 
         }
         private IAnalogyShareable Shareable { get; set; }
-        private List<AnalogyLogMessage> messages;
+        private List<IAnalogyLogMessage> messages;
         public AnalogyOTAForm()
         {
-            messages = new List<AnalogyLogMessage>();
+            messages = new List<IAnalogyLogMessage>();
             InitializeComponent();
         }
 
@@ -33,7 +33,7 @@ namespace Analogy.CommonControls.Forms
             List<ComboboxItem> items = new List<ComboboxItem>();
             foreach (DataRow dataRow in data.Rows)
             {
-                messages.Add(dataRow["Object"] as AnalogyLogMessage);
+                messages.Add(dataRow[Common.CommonUtils.AnalogyMessageColumn] as AnalogyLogMessage);
             }
 
             foreach (var fc in factories)

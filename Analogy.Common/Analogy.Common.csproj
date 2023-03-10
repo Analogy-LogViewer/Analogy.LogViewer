@@ -1,26 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net48;net472;net471;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net471;net7.0-windows;net6.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Nullable>enable</Nullable>
-		<LangVersion>8.0</LangVersion>
 		<Authors>Lior Banai</Authors>
 		<RepositoryType>git</RepositoryType>
 		<Version>0.9.0</Version>
-		<Copyright>Lior Banai © 2019-2022</Copyright>
+		<Copyright>Lior Banai © 2019-2023</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<AssemblyName>Analogy.Common</AssemblyName>
 		<RootNamespace>Analogy.Common</RootNamespace>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-
+		<Platforms>AnyCPU;x86;x64</Platforms>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
-
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
+		<PackageReference Include="PolySharp" Version="1.12.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
 		<Reference Include="System.ComponentModel.DataAnnotations" />
 		<Reference Include="System.Configuration" />
 		<Reference Include="System.Data.DataSetExtensions" />
@@ -33,13 +39,13 @@
 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="2.3.3" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.3.4" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.3.3" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="3.8.2" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.8.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
+		<PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

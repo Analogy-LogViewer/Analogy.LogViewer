@@ -62,5 +62,7 @@ namespace Analogy.Common.Interfaces
         IEnumerable<(Guid ID, string FileName)> GetRecentFiles(Guid offlineAnalogyId);
         IEnumerable<(Guid ID, string Path)> GetRecentFolders(Guid offlineAnalogyId);
         void ResetSettings();
+        bool TryGetWindowPosition(Guid id, out AnalogyPositionState? position);
+        void SetWindowPosition(Guid id, AnalogyPositionState position);
     }
 }

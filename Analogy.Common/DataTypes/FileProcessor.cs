@@ -27,7 +27,7 @@ namespace Analogy.Common.DataTypes
             Settings = settingsManager;
         }
 
-        public async Task<IEnumerable<AnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider,
+        public async Task<IEnumerable<IAnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider,
             string filename, CancellationToken token, bool isReload = false)
         {
             if (string.IsNullOrEmpty(filename))
@@ -88,7 +88,7 @@ namespace Analogy.Common.DataTypes
                 {
                     if (Settings.EnableCompressedArchives && IsCompressedArchive(filename))
                     {
-                        var compressedMessages = new List<AnalogyLogMessage>();
+                        var compressedMessages = new List<IAnalogyLogMessage>();
                         string extractedPath = UnzipFilesIntoTempFolder(filename, fileDataProvider);
                         if (string.IsNullOrEmpty(extractedPath))
                         {

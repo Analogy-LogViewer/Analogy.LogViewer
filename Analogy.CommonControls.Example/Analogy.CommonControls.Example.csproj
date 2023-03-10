@@ -2,21 +2,27 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net48;net472;net471;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net471;net7.0-windows;net6.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
-		<LangVersion>8.0</LangVersion>
-
+		<Platforms>AnyCPU;x86;x64</Platforms>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.3.4" />
+	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.0" />
 	</ItemGroup>
-
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
+		<PackageReference Include="PolySharp" Version="1.12.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Analogy.CommonControls\Analogy.CommonControls.csproj" />
 	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net5.0-windows' or '$(TargetFramework)' == 'net6.0-windows' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows'  or '$(TargetFramework)' == 'net7.0-windows' ">
 		<Reference Include="DevExpress.BonusSkins.v21.2">
 			<HintPath>..\DevExpress\.net core\DevExpress.BonusSkins.v21.2.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -22,7 +22,7 @@ namespace Analogy
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
         private List<DataTable> pages;
-        private readonly List<AnalogyLogMessage> allMessages;
+        private readonly List<IAnalogyLogMessage> allMessages;
         private readonly int pageSize;
         private int currentPageStartRowIndex;
         private int currentPageNumber;
@@ -51,14 +51,14 @@ namespace Analogy
             pageSize = Settings.PagingEnabled ? Settings.PagingSize : int.MaxValue;
             pages = new List<DataTable>();
 
-            currentTable = Utils.DataTableConstructor();
+            currentTable = Analogy.CommonControls.Utils.DataTableConstructor();
             //foreach (DataColumn column in currentTable.Columns)
             //{
             //    CurrentColumns.Add(column.ColumnName);
             //}
             pages.Add(currentTable);
             currentPageNumber = 1;
-            allMessages = new List<AnalogyLogMessage>();
+            allMessages = new List<IAnalogyLogMessage>();
         }
 
 
@@ -80,7 +80,7 @@ namespace Analogy
                 pages = new List<DataTable>();
                 currentPageStartRowIndex = 0;
                 currentPageNumber = 1;
-                var first = Utils.DataTableConstructor();
+                var first = Analogy.CommonControls.Utils.DataTableConstructor();
                 currentTable = first;
                 pages.Add(first);
             }
@@ -107,13 +107,13 @@ namespace Analogy
             var table = pages.Last();
             if (table.Rows.Count + 1 > pageSize)
             {
-                table = Utils.DataTableConstructor();
+                table = Analogy.CommonControls.Utils.DataTableConstructor();
                 pages.Add(table);
                 var pageStartRowIndex = (pages.Count - 1) * pageSize;
                 OnPageChanged?.Invoke(this, new AnalogyPagingChanged(new AnalogyPageInformation(table, pages.Count, pageStartRowIndex)));
             }
 
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() && Settings.CheckAdditionalInformation)
             {
                 AddExtraColumnsIfNeeded(table, message);
             }
@@ -154,7 +154,7 @@ namespace Analogy
                 }
                 if (countInsideTable + 1 > pageSize)
                 {
-                    table = Utils.DataTableConstructor();
+                    table = Analogy.CommonControls.Utils.DataTableConstructor();
                     pages.Add(table);
                     countInsideTable = 0;
                     var pageStartRowIndex = (pages.Count - 1) * pageSize;
@@ -163,7 +163,7 @@ namespace Analogy
                             pageStartRowIndex)));
                 }
 
-                if (message.AdditionalInformation != null && message.AdditionalInformation.Any() &&
+                if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                     Settings.CheckAdditionalInformation)
                 {
                     AddExtraColumnsIfNeeded(table, message);
@@ -188,9 +188,9 @@ namespace Analogy
 
         private void AddExtraColumnsIfNeeded(DataTable table, AnalogyLogMessage message)
         {
-            if (message.AdditionalInformation != null && message.AdditionalInformation.Any() && Settings.CheckAdditionalInformation)
+            if (message.AdditionalProperties != null && message.AdditionalProperties.Any() && Settings.CheckAdditionalInformation)
             {
-                foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
+                foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
 
                     if (!table.Columns.Contains(info.Key))
@@ -293,7 +293,7 @@ namespace Analogy
 
         }
 
-        public List<AnalogyLogMessage> GetAllMessages()
+        public List<IAnalogyLogMessage> GetAllMessages()
         {
             try
             {
@@ -337,7 +337,7 @@ namespace Analogy
                 foreach (DataRow dataTableRow in dataTable.Rows)
                 {
                     dataTableRow.BeginEdit();
-                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow["Object"];
+                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow[Common.CommonUtils.AnalogyMessageColumn];
                     dataTableRow["Date"] = Utils.GetOffsetTime(m.Date);
                     dataTableRow.EndEdit();
                 }

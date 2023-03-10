@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Analogy.Common.DataTypes;
+using Analogy.CommonUtilities.Github;
 
 namespace Analogy
 {
@@ -109,7 +110,7 @@ namespace Analogy
         public string DateTimePattern { get; set; }
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
-        public GithubObjects.GithubReleaseEntry? LastVersionChecked { get; set; }
+        public GithubReleaseEntry? LastVersionChecked { get; set; }
         public string GitHubToken { get; } = Environment.GetEnvironmentVariable("AnalogyGitHub_Token") ?? string.Empty;
         public bool MinimizedToTrayBar { get; set; }
         public bool CheckAdditionalInformation { get; set; }
@@ -185,6 +186,9 @@ namespace Analogy
         public bool WarnNET5 { get; set; }
         public bool WarnNET3 { get; set; }
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
+        public bool CombineOfflineProviders { get; set; }
+        public bool CombineOnlineProviders { get; set; }
+        private Dictionary<Guid , AnalogyPositionState> WindowPositions { get; set; }
         public UserSettingsManager()
         {
             if (File.Exists(LocalSettingFileName))
@@ -276,7 +280,7 @@ namespace Analogy
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
             SingleInstance = Settings.Default.SingleInstance;
             LastUpdate = Settings.Default.LastUpdate;
-            LastVersionChecked = ParseSettings<GithubObjects.GithubReleaseEntry>(Settings.Default.LastVersionChecked);
+            LastVersionChecked = ParseSettings<GithubReleaseEntry>(Settings.Default.LastVersionChecked);
             UpdateMode = Settings.Default.UpdateMode switch
             {
                 0 => UpdateMode.Never,
@@ -334,6 +338,17 @@ namespace Analogy
             WarnNET3 = Settings.Default.WarnNET3;
             WarnNET5 = Settings.Default.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = Settings.Default.ShowAdvancedSettingsRawSQLPopup;
+            CombineOfflineProviders = Settings.Default.CombineOfflineProviders;
+            CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
+            if (!string.IsNullOrEmpty(Settings.Default.WindowPositions))
+            {
+                WindowPositions = ParseSettings<Dictionary<Guid, AnalogyPositionState>>(Settings.Default.WindowPositions);
+            }
+            else
+            {
+                WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
+            }
+
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -422,6 +437,9 @@ namespace Analogy
             WarnNET3 = settings.WarnNET3;
             WarnNET5 = settings.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = settings.ShowAdvancedSettingsRawSQLPopup;
+            CombineOfflineProviders = settings.CombineOfflineProviders;
+            CombineOnlineProviders = settings.CombineOnlineProviders;
+            WindowPositions = settings.WindowPositions;
         }
 
         private UserSettings CreateUserSettings()
@@ -509,7 +527,10 @@ namespace Analogy
                 ShowProcessedCounter = ShowProcessedCounter,
                 WarnNET3 = WarnNET3,
                 WarnNET5 = WarnNET5,
-                ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup
+                ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup,
+                CombineOfflineProviders = CombineOfflineProviders,
+                CombineOnlineProviders = CombineOnlineProviders,
+                WindowPositions = WindowPositions
             };
             return userSettings;
         }
@@ -678,8 +699,10 @@ namespace Analogy
             Settings.Default.WarnNET3 = WarnNET3;
             Settings.Default.WarnNET5 = WarnNET5;
             Settings.Default.ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup;
-
-        Settings.Default.Save();
+            Settings.Default.CombineOnlineProviders = CombineOfflineProviders;
+            Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
+            Settings.Default.WindowPositions = JsonConvert.SerializeObject(WindowPositions);
+            Settings.Default.Save();
         }
 
         public void AddToRecentFiles(Guid iD, string file)
@@ -803,6 +826,27 @@ namespace Analogy
             MainFormType = MainFormType.RibbonForm;
             TimeOffsetType = TimeOffsetType.None;
             LoadPerUserSettings();
+            try
+            {
+                if (File.Exists(LogGridFileName))
+                {
+                    File.Delete(LogGridFileName);
+                }
+            }
+            catch (Exception e)
+            {
+                //ignore
+            }
+        }
+
+        public bool TryGetWindowPosition(Guid id,out AnalogyPositionState? position)
+        {
+            return WindowPositions.TryGetValue(id, out position);
+        }
+
+        public void SetWindowPosition(Guid id, AnalogyPositionState position)
+        {
+            WindowPositions[id] = position;
         }
     }
 }

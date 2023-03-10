@@ -14,7 +14,7 @@ namespace Analogy
         private List<string> Processing { get; set; } = new List<string>();
         private readonly object _lockObject = new object();
 
-        private Dictionary<string, List<AnalogyLogMessage>> Messages { get; } = new Dictionary<string, List<AnalogyLogMessage>>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, List<IAnalogyLogMessage>> Messages { get; } = new Dictionary<string, List<IAnalogyLogMessage>>(StringComparer.OrdinalIgnoreCase);
         public bool AlreadyProcessed(string filename) => ProcessedFileNames.Contains(filename, StringComparer.OrdinalIgnoreCase);
 
         public bool IsFileCurrentlyBeingProcessed(string filename) => Processing.Contains(filename, StringComparer.OrdinalIgnoreCase);
@@ -27,7 +27,7 @@ namespace Analogy
             }
         }
 
-        public void DoneProcessingFile(List<AnalogyLogMessage> messages, string filename)
+        public void DoneProcessingFile(List<IAnalogyLogMessage> messages, string filename)
         {
             lock (_lockObject)
             {
@@ -54,7 +54,7 @@ namespace Analogy
 
         public bool StillProcessingFiles() => Processing.Any();
 
-        public List<AnalogyLogMessage> GetMessages(string filename) => Messages[filename];
+        public List<IAnalogyLogMessage> GetMessages(string filename) => Messages[filename];
 
         public void Reset()
         {

@@ -90,7 +90,10 @@ namespace Analogy
 
                 using (Stream myWriter = File.Open(filename, FileMode.Create, FileAccess.ReadWrite))
                 {
+#pragma warning disable SYSLIB0011
                     formatter.Serialize(myWriter, item);
+#pragma warning restore SYSLIB0011
+
                 }
             }
             catch (SerializationException ex)
@@ -114,7 +117,9 @@ namespace Analogy
                 {
                     using (Stream myReader = File.Open(filename, FileMode.Open, FileAccess.Read))
                     {
+#pragma warning disable SYSLIB0011
                         return (T)formatter.Deserialize(myReader);
+#pragma warning restore SYSLIB0011
                     }
                 }
                 catch (Exception ex)
@@ -124,41 +129,6 @@ namespace Analogy
             }
 
             throw new FileNotFoundException("GeneralDataUtils: File does not exist: " + filename, filename);
-        }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DataTable DataTableConstructor()
-        {
-
-            DataTable dtb = new DataTable();
-            dtb.Columns.Add(new DataColumn("Date", typeof(DateTime)));
-            dtb.Columns.Add(new DataColumn("TimeDiff", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Text", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Source", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Level", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Class", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Category", typeof(string)));
-            dtb.Columns.Add(new DataColumn("User", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Module", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Object", typeof(object)));
-            dtb.Columns.Add(new DataColumn("ProcessID", typeof(int)));
-            dtb.Columns.Add(new DataColumn("ThreadID", typeof(int)));
-            dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
-            dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
-            var manager = ExtensionsManager.Instance;
-            foreach (var extension in manager.InPlaceRegisteredExtensions)
-            {
-                var columns = extension.GetColumnsInfo();
-                foreach (AnalogyColumnInfo column in columns)
-                {
-                    dtb.Columns.Add(new DataColumn(column.ColumnName, column.ColumnType));
-                }
-            }
-            dtb.DefaultView.AllowNew = false;
-            dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;
-            dtb.DefaultView.Sort = Settings.DefaultDescendOrder ?
-                "Date DESC" : "Date ASC";
-
-            return dtb;
         }
 
         public static void SetSkin(Control control, string skinName)
@@ -250,44 +220,6 @@ namespace Analogy
             Regex regex = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
             return regex;
         }
-
-        //[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        //public static DataRow CreateRow(DataTable table, AnalogyLogMessage message, string dataSource)
-        //{
-        //    var dtr = table.NewRow();
-        //    dtr.BeginEdit();
-        //    dtr["Date"] = GetOffsetTime(message.Date);
-        //    dtr["Text"] = message.Text ?? "";
-        //    dtr["Source"] = message.Source ?? "";
-        //    dtr["Level"] = string.Intern(message.Level.ToString());
-        //    dtr["Class"] = string.Intern(message.Class.ToString());
-        //    dtr["Category"] = message.Category ?? "";
-        //    dtr["User"] = message.User ?? "";
-        //    dtr["Module"] = message.Module ?? "";
-        //    dtr["Object"] = message;
-        //    dtr["ProcessID"] = message.ProcessId;
-        //    dtr["ThreadID"] = message.ThreadId;
-        //    dtr["DataProvider"] = dataSource ?? string.Empty;
-        //    dtr["MachineName"] = message.MachineName ?? string.Empty;
-        //    if (message.AdditionalInformation != null && message.AdditionalInformation.Any())
-        //    {
-        //        foreach (KeyValuePair<string, string> info in message.AdditionalInformation)
-        //        {
-        //            if (dtr.Table.Columns.Contains(info.Key))
-        //            {
-        //                dtr[info.Key] = info.Value;
-        //            }
-        //            else
-        //            {
-        //                AnalogyLogger.Instance.LogError("",
-        //                    $"key {info.Key} does not exist in table {table.TableName}");
-        //            }
-
-        //        }
-
-        //    }
-        //    return dtr;
-        //}
 
         public static bool IsCompressedArchive(string filename)
         {

@@ -61,8 +61,6 @@ namespace Analogy
         private bool PreventExit { get; set; }
         private bool Initialized { get; set; }
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
-        private Dictionary<DockPanel, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
-            new Dictionary<DockPanel, IAnalogyRealTimeDataProvider>();
         public FluentDesignMainForm()
         {
             InitializeComponent();
@@ -155,8 +153,6 @@ namespace Analogy
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             }
-            Utils.WarnNETVersionOutOfSupport();
-            Utils.ShowAdvanceFeatures();
         }
 
         private void RegisterForNotifications()
@@ -278,7 +274,7 @@ namespace Analogy
             {
                 var parser = supported.First();
                 LoadFactoryInAccordion(parser.FactoryID);
-                OpenOfflineLogs(files, parser.DataProvider);
+                await OpenOfflineLogs(files, parser.DataProvider);
             }
             else
             {
@@ -303,7 +299,7 @@ namespace Analogy
                 {
                     var parser = supported.First();
                     LoadFactoryInAccordion(parser.FactoryID);
-                    OpenOfflineLogs(files, parser.DataProvider);
+                    await OpenOfflineLogs(files, parser.DataProvider);
                 }
                 else
                 {
@@ -317,7 +313,7 @@ namespace Analogy
                         if (parser.Count == 1)
                         {
                             LoadFactoryInAccordion(factory.FactoryId);
-                            OpenOfflineLogs(files, parser.First());
+                            await OpenOfflineLogs(files, parser.First());
                         }
                         else
                         {
@@ -342,10 +338,11 @@ namespace Analogy
             }
         }
 
-        private void OpenOfflineLogs(string[] fileNames, IAnalogyOfflineDataProvider dataProvider,
+        private async Task OpenOfflineLogs(string[] fileNames, IAnalogyOfflineDataProvider dataProvider,
             string? title = null)
         {
             openedWindows++;
+            await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, fileNames);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
@@ -383,82 +380,92 @@ namespace Analogy
 
             btnSettingsUpdate.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Updates");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings);
                 user.ShowDialog(this);
             };
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
 
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Extensions");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings);
                 user.ShowDialog(this);
             };
 
             btnSettingsDebugging.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Debugging");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings);
                 user.ShowDialog(this);
             };
 
             btnShortcuts.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings);
                 user.ShowDialog(this);
             };
 
             bbiDonation.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings);
                 user.ShowDialog(this);
             };
             bbiAdvancedMode.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Advanced Mode");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings);
                 user.ShowDialog(this);
             };
             btnApplicationSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings);
                 user.ShowDialog(this);
             };
             btnApplicationUISettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Application UI Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings);
                 user.ShowDialog(this);
             };
             btnFiltering.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Filtering");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings);
                 user.ShowDialog(this);
             };
             btnMessageColumnsLayoutSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Layout");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings);
                 user.ShowDialog(this);
             };
             btnColorsSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings);
                 user.ShowDialog(this);
             };
             btnColorHighlightSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Highlighting");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting);
                 user.ShowDialog(this);
             };
             btnPreDefinedQueries.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Predefined queries");
-                user.ShowDialog(this);
-            };
-            btnPreDefinedQueries.ItemClick += (s, e) =>
-            {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings);
                 user.ShowDialog(this);
             };
             btnDataProvidersSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Data Provider Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings);
+                user.ShowDialog(this);
+            }; 
+            bbiRealTimeProviders.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings);
+                user.ShowDialog(this);
+            };
+            bbiFileAssociations.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings);
+                user.ShowDialog(this);
+            };
+            bbiAdditionalLocations.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings);
                 user.ShowDialog(this);
             };
             #endregion
@@ -758,6 +765,7 @@ namespace Analogy
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
+                providerSetting.CreateUserControl(Analogy.AnalogyLogger.Instance);
                 AccordionControlElement settingsBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(settingsBtn);
                 settingsBtn.Style = ElementStyle.Item;
@@ -815,9 +823,10 @@ namespace Analogy
 
                 #region actions
 
-                void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
+                async Task OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
                 {
                     openedWindows++;
+                    await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
                     UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
@@ -839,9 +848,10 @@ namespace Analogy
                     dockManager1.ActivePanel = page;
                 }
 
-                void OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
+                async Task OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
                 {
                     openedWindows++;
+                    await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
                     UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
@@ -890,7 +900,10 @@ namespace Analogy
                     specificLocalFolder.Style = ElementStyle.Item;
                     specificLocalFolder.Text = "Open Pre-defined Folder";
                     specificLocalFolder.ImageOptions.Image = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
-                    specificLocalFolder.Click += (sender, e) => { OpenOffline(title, specificDirectory); };
+                    specificLocalFolder.Click += async (sender, e) =>
+                    {
+                        await OpenOffline(title, specificDirectory);
+                    };
                 }
 
                 AccordionControlElement recentFolders = new AccordionControlElement { Text = "Recent Folders" };
@@ -901,7 +914,7 @@ namespace Analogy
                 localfolder.Style = ElementStyle.Item;
                 localfolder.Text = "Open Folder Selection";
                 localfolder.ImageOptions.Image = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
-                localfolder.Click += (sender, e) =>
+                localfolder.Click += async (sender, e) =>
                 {
                     using (var folderBrowserDialog = new XtraFolderBrowserDialog { ShowNewFolderButton = false })
                     {
@@ -913,7 +926,7 @@ namespace Analogy
                         {
                             if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
                             {
-                                OpenOffline(title, folderBrowserDialog.SelectedPath);
+                                await OpenOffline(title, folderBrowserDialog.SelectedPath);
                                 AddRecentFolder(recentFolders, offlineAnalogy, title, folderBrowserDialog.SelectedPath);
                             }
                         }
@@ -938,9 +951,9 @@ namespace Analogy
                         // args.Contents.Image = realTime.ToolTip.Image;
                         toolTip.Setup(args);
                         btn.SuperTip = toolTip;
-                        btn.Click += (s, be) =>
+                        btn.Click += async (s, be) =>
                         {
-                            OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
+                            await OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
                         };
                     }
                 }
@@ -958,7 +971,7 @@ namespace Analogy
                     acRootGroupHome.Elements.Add(openFiles);
                     openFiles.Style = ElementStyle.Item;
                     openFiles.ImageOptions.Image = offlineAnalogy.LargeImage ?? Resources.Article_32x32;
-                    openFiles.Click += (sender, e) =>
+                    openFiles.Click += async (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
                         {
@@ -968,7 +981,7 @@ namespace Analogy
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            OpenOffline(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileNames);
+                            await OpenOffline(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileNames);
                             AddRecentFiles(recentfiles, offlineAnalogy, title, openFileDialog1.FileNames.ToList());
                         }
                     };
@@ -983,7 +996,7 @@ namespace Analogy
                     filePoolingBtn.SuperTip = Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
                     filePoolingBtn.ImageOptions.Image =
                         images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
-                    filePoolingBtn.Click += (sender, e) =>
+                    filePoolingBtn.Click += async (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
                         {
@@ -993,7 +1006,7 @@ namespace Analogy
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
+                            await OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
                             AddRecentFiles(recentfiles, offlineAnalogy, title,
                                 new List<string> { openFileDialog1.FileName });
                         }
@@ -1109,7 +1122,7 @@ namespace Analogy
 
                 foreach (string file in recentFiles)
                 {
-                    if (!File.Exists(file))
+                    if (!File.Exists(file) || recentElement.Elements.Any(e=>e.Text.Equals(Path.GetFileName(file))))
                     {
                         continue;
                     }
@@ -1126,9 +1139,9 @@ namespace Analogy
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     btn.SuperTip = toolTip;
-                    btn.Click += (s, be) =>
+                    btn.Click += async (s, be) =>
                     {
-                        OpenOfflineLogs(new[] { file }, offlineAnalogy, title);
+                        await OpenOfflineLogs(new[] { file }, offlineAnalogy, title);
                     };
                 }
             }
@@ -1152,12 +1165,10 @@ namespace Analogy
 
             foreach (var realTime in realTimes)
             {
-                var imageLargeOffline = realTime.DisconnectedLargeImage;
-                var imageLargeOnline = realTime.ConnectedLargeImage;
                 AccordionControlElement realTimeBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(realTimeBtn);
                 realTimeBtn.Style = ElementStyle.Item;
-                realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
+                realTimeBtn.ImageOptions.Image = realTime.ConnectedLargeImage ?? Resources.Database_on;
                 realTimeBtn.Text = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
                     : "real time provider");
@@ -1178,6 +1189,7 @@ namespace Analogy
                     bool canStartReceiving = false;
                     try
                     {
+                        await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                         canStartReceiving = await realTime.CanStartReceiving();
                     }
                     catch (Exception e)
@@ -1189,7 +1201,6 @@ namespace Analogy
                     if (canStartReceiving) //connected
                     {
                         openedWindows++;
-                        realTimeBtn.ImageOptions.Image = imageLargeOnline ?? Resources.Database_on;
                         var onlineUC = new OnlineUCLogs(realTime);
 
                         void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1205,7 +1216,7 @@ namespace Analogy
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                            realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
+                            //realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
                         }
 
                         var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1218,7 +1229,6 @@ namespace Analogy
                         realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                         realTime.OnDisconnected += OnRealTimeDisconnected;
                         await realTime.StartReceiving();
-                        onlineDataSourcesMapping.Add(page, realTime);
 
                         async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                         {
@@ -1314,8 +1324,9 @@ namespace Analogy
                     singleBtn.SuperTip = toolTip;
                 }
                 openedWindows++;
-                singleBtn.Click += (sender, e) =>
+                singleBtn.Click += async (sender, e) =>
                 {
+                    await FactoriesManager.Instance.InitializeIfNeeded(single);
                     CancellationTokenSource cts = new CancellationTokenSource();
                     LocalLogFilesUC offlineUC = new LocalLogFilesUC(single, cts);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1520,6 +1531,7 @@ namespace Analogy
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
+                FactoriesManager.Instance.ShutDownAllFactories();
             }
         }
 

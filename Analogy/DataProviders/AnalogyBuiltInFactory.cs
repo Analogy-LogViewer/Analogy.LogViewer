@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.CommonControls.Tools;
 using Analogy.UserControls;
 
 namespace Analogy.DataProviders
@@ -54,7 +55,7 @@ namespace Analogy.DataProviders
 
         public override string? OptionalTitle { get; set; } = "Analogy Built-In Offline Readers";
 
-        public override async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
+        public override async Task<IEnumerable<IAnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             if (fileName.EndsWith(".axml", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -91,7 +92,7 @@ namespace Analogy.DataProviders
             return new List<AnalogyLogMessage>() { m };
         }
 
-        public override Task SaveAsync(List<AnalogyLogMessage> messages, string fileName)
+        public override Task SaveAsync(List<IAnalogyLogMessage> messages, string fileName)
 
             => Task.Factory.StartNew(async () =>
             {
@@ -180,7 +181,7 @@ namespace Analogy.DataProviders
 
     public class AnalogyJsonViewerAction : IAnalogyCustomAction
     {
-        public Action Action => () => new JsonViewerForm().Show();
+        public Action Action => () => new JsonViewerForm(UserSettingsManager.UserSettings).Show();
         public Guid Id { get; set; } = new Guid("330b8471-c763-4579-a7e5-9efed71a56a5");
         public Image? SmallImage { get; set; } = Resources.json16x16;
         public Image? LargeImage { get; set; } = Resources.json32x32;

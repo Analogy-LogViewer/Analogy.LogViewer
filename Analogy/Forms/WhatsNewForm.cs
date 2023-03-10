@@ -20,7 +20,7 @@ namespace Analogy.Forms
                 return;
             }
             Icon = UserSettingsManager.UserSettings.GetIcon();
-            WhatIsNew4_9_0 uc = new WhatIsNew4_9_0 { Name = "V4.9.0" };
+            WhatIsNew4_11_0 uc = new WhatIsNew4_11_0 { Name = "V4.11.0" };
             fluentDesignFormContainer1.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
             uc.BringToFront();
@@ -280,6 +280,44 @@ namespace Analogy.Forms
                 uc.BringToFront();
             }
             SetActive("V4.9.0");
+        }
+
+        private void e4100_Click(object sender, EventArgs e)
+        {
+            if (!fluentDesignFormContainer1.Controls.ContainsKey("V4.10.0"))
+            {
+                WhatIsNew4_10_0 uc = new WhatIsNew4_10_0();
+                uc.Name = "V4.10.0";
+                fluentDesignFormContainer1.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                uc.BringToFront();
+            }
+            SetActive("V4.10.0");
+        }
+
+        private void e4102_Click(object sender, EventArgs e)
+        {
+            if (!fluentDesignFormContainer1.Controls.ContainsKey("V4.10.2"))
+            {
+                WhatIsNew4_10_2 uc = new WhatIsNew4_10_2();
+                uc.Name = "V4.10.2";
+                fluentDesignFormContainer1.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                uc.BringToFront();
+            }
+            SetActive("V4.10.2");
+        }
+
+        private void e4110_Click(object sender, EventArgs e)
+        {
+            if (!fluentDesignFormContainer1.Controls.ContainsKey("V4.11.0"))
+            {
+                WhatIsNew4_11_0 uc = new WhatIsNew4_11_0 { Name = "V4.11.0" };
+                fluentDesignFormContainer1.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+                uc.BringToFront();
+            }
+            SetActive("V4.11.0");
         }
     }
 }

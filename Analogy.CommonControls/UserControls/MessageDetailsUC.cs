@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Analogy.Common;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Tools;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
@@ -11,24 +13,23 @@ namespace Analogy.CommonControls.UserControls
 {
     public partial class MessageDetailsUC : XtraUserControl
     {
-        private AnalogyLogMessage? Message { get; set; }
-        private List<AnalogyLogMessage> Messages { get; }
+        private IAnalogyLogMessage? Message { get; set; }
+        private List<IAnalogyLogMessage> Messages { get; }
         private string DataSource { get; }
         private MarkdownPipeline? Pipeline { get; set; }
-        private JsonTreeView _jsonTreeView;
+        private JsonTreeUC _jsonTreeView;
 
-        public MessageDetailsUC()
+        private MessageDetailsUC()
         {
             InitializeComponent();
-            Messages = new List<AnalogyLogMessage>(0);
+            Messages = new List<IAnalogyLogMessage>(0);
         }
 
-        public MessageDetailsUC(AnalogyLogMessage msg, List<AnalogyLogMessage> messages, string dataSource) : this()
+        public MessageDetailsUC(AnalogyLogMessage msg, List<IAnalogyLogMessage> messages, string dataSource) : this()
         {
             Message = msg;
             Messages = messages;
             DataSource = dataSource;
-
         }
 
         private void UCMessageDetails_Load(object sender, EventArgs e)
@@ -38,14 +39,12 @@ namespace Analogy.CommonControls.UserControls
                 return;
 
             }
-
             Pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
                 .Build();
             xtraTabControlMessageInfo.SelectedTabPage = xtraTabPageRenderedText;
 
-            _jsonTreeView = new JsonTreeView();
-            _jsonTreeView.OnNodeChanged += (s, e) => meSelected.Text = e;
-            splitContainerControl2.Panel1.Controls.Add(_jsonTreeView);
+            _jsonTreeView = new JsonTreeUC();
+            splitContainerControl1.Panel2.Controls.Add(_jsonTreeView);
             _jsonTreeView.Dock = DockStyle.Fill;
             LoadMessage();
         }
@@ -75,11 +74,11 @@ namespace Analogy.CommonControls.UserControls
             }
 
             xtraTabPageAdditionalInformation.PageVisible =
-                Message.AdditionalInformation != null && Message.AdditionalInformation.Any();
-            if (Message.AdditionalInformation != null)
+                Message.AdditionalProperties != null && Message.AdditionalProperties.Any();
+            if (Message.AdditionalProperties != null)
             {
                 memoAdditionalInformation.Text = string.Join(Environment.NewLine,
-                    Message.AdditionalInformation.Select(kv => $"{kv.Key}:{kv.Value}"));
+                    Message.AdditionalProperties.Select(kv => $"{kv.Key}:{kv.Value}"));
             }
 
             memoText.Text = Message.Text;
@@ -98,6 +97,7 @@ namespace Analogy.CommonControls.UserControls
             txtbLineNumber.Text = Message.LineNumber.ToString();
             txtbIndex.Text = $@"{Messages.IndexOf(Message) + 1} of {Messages.Count}";
             recMessageDetails.HtmlText = Markdown.ToHtml(Message.Text, Pipeline);
+            recMessageDetailsRawText.Text = Message.RawText;
             var jsonRawData = Message.RawTextType == AnalogyRowTextType.JSON;
             if (jsonRawData)
             {
@@ -146,12 +146,5 @@ namespace Analogy.CommonControls.UserControls
         {
             LoadPreviousMessage();
         }
-
-        private void sBtnCopy_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(memoText.Text);
-        }
-
-
     }
 }

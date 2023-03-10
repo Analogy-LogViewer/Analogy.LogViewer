@@ -1,36 +1,37 @@
+<TargetFrameworks>net7.0-windows;net6.0-windows;net48;net471</TargetFrameworks>
 <TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net48;net472;net471</TargetFrameworks>
-Interface -- LogServer.Client
-Interface -- LogServer.Client -- NLog.Targets
+
 Interface -- LogServer
+Interface -- LogServer.Client
+
+Interface -- LogServer.Client -- NLog.Targets
+Interface -- LogServer.Client -- Serilog.Sink
+Interface -- LogServer.Client -- AspNetCore.LogProvider
+
+Interface -- LogServer.Client --         -- Grpc
+Interface -- CommonUtilities -- Template -- Grpc
 
 Interface -- CommonUtilities -- Template -- RegexParser
 Interface -- CommonUtilities -- Template -- RegexParser -- PowerToys
 Interface -- CommonUtilities -- Template -- Example
 Interface -- CommonUtilities -- Template -- Plain Text
-Interface -- CommonUtilities -- Template -- Affirmations
 Interface -- CommonUtilities -- Template -- GitHistory
 Interface -- CommonUtilities -- Template -- Github
-Interface -- CommonUtilities -- Template -- GitHubActionLogs
 Interface -- CommonUtilities -- Template -- IISLogsProvider
 Interface -- CommonUtilities -- Template -- JsonParser
-Interface -- CommonUtilities -- Template -- KafkaProvider
+Interface -- CommonUtilities -- Template -- Kafka
 Interface -- CommonUtilities -- Template -- Log4jXml
 Interface -- CommonUtilities -- Template -- Log4Net
 Interface -- CommonUtilities -- Template -- NLog
 Interface -- CommonUtilities -- Template -- RabbitMq
 Interface -- CommonUtilities -- Template -- Serilog 
-Interface -- CommonUtilities -- Template -- VisualStudioActivityLog
-Interface -- CommonUtilities -- Template -- RSSReader
-Interface -- CommonUtilities -- Template -- WhatsApp
 Interface -- CommonUtilities -- Template -- WindowsEventLogs
 Interface -- CommonUtilities -- Template -- XMLParser
+Interface -- CommonUtilities -- Template -- WordSearch
+Interface -- CommonUtilities -- Template -- powertoys
+Interface -- CommonUtilities -- Template -- Sqlite
+Interface -- CommonUtilities -- Template -- Elastic.CommonSchema.Serilog
 
-Interface -- LogServer.Client --            Serilog.Sink 
-Interface -- CommonUtilities -- Template -- Serilog.Sink 
 
 
-Interface -- LogServer.Client --         - AspNetCore.LogProvider
 
-Interface -- CommonUtilities -- Template -- RegexParser
-Interface -- LogServer.Client --         -- Grpc
-Interface -- CommonUtilities -- Template -- Grpc         -- Kama Research

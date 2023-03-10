@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
+using Analogy.CommonUtilities.Github;
 using Analogy.Interfaces;
 
 namespace Analogy.Managers
@@ -36,7 +37,7 @@ namespace Analogy.Managers
             get => Settings.UpdateMode;
             set => Settings.UpdateMode = value;
         }
-        public GithubObjects.GithubReleaseEntry LastVersionChecked
+        public GithubReleaseEntry LastVersionChecked
         {
             get => Settings.LastVersionChecked;
             set => Settings.LastVersionChecked = value;
@@ -152,14 +153,14 @@ namespace Analogy.Managers
             return tagName == null ? null : new Version(tagName.Replace("V", "").Replace("v", ""));
         }
 
-        public async Task<(bool newData, GithubObjects.GithubReleaseEntry release)> CheckVersion(bool forceUpdate)
+        public async Task<(bool newData, GithubReleaseEntry release)> CheckVersion(bool forceUpdate)
         {
             if (!forceUpdate && NextUpdate > DateTime.Now && Settings.LastVersionChecked != null)
             {
                 return (false, Settings.LastVersionChecked);
             }
 
-            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(repository + "/releases", "Analogy Log Viewer", Settings.GitHubToken, Instance.LastUpdate);
+            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubReleaseEntry[]>(repository + "/releases", "Analogy Log Viewer", Settings.GitHubToken, Instance.LastUpdate);
             LastUpdate = DateTime.Now;
             CheckedThisTun = true;
             if (!newData)
@@ -172,9 +173,9 @@ namespace Analogy.Managers
             return (true, release);
         }
 
-        public GithubObjects.GithubAsset? GetDownloadAsset()
+        public GithubAsset? GetDownloadAsset()
         {
-            GithubObjects.GithubAsset? asset = null;
+            GithubAsset? asset = null;
             if (CurrentFrameworkAttribute.FrameworkName.EndsWith("4.7.1"))
             {
                 asset = LastVersionChecked.Assets
@@ -212,9 +213,9 @@ namespace Analogy.Managers
             }
             return asset;
         }
-        public async Task<(string TagName, GithubObjects.GithubAsset UpdaterAsset)?> GetLatestUpdater()
+        public async Task<(string TagName, GithubAsset UpdaterAsset)?> GetLatestUpdater()
         {
-            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubObjects.GithubReleaseEntry[]>(updaterRepository + "/releases", "Analogy Log Viewer", Settings.GitHubToken, DateTime.MinValue);
+            var (newData, entries) = await Analogy.CommonUtilities.Web.Utils.GetAsync<GithubReleaseEntry[]>(updaterRepository + "/releases", "Analogy Log Viewer", Settings.GitHubToken, DateTime.MinValue);
             if (entries == null)
             {
                 return null;
@@ -260,7 +261,7 @@ namespace Analogy.Managers
 
         }
 
-        private async Task<bool> DownloadUpdater(GithubObjects.GithubAsset updaterAsset)
+        private async Task<bool> DownloadUpdater(GithubAsset updaterAsset)
         {
             TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
             var downloadDialog = new DownloadUpdateDialog(updaterAsset.BrowserDownloadUrl, Path.GetDirectoryName(UpdaterExecutable), CurrentFrameworkAttribute, tcs);

@@ -32,6 +32,7 @@ using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
 using DevExpress.LookAndFeel;
+using DevExpress.XtraCharts;
 
 namespace Analogy.Forms
 {
@@ -50,11 +51,8 @@ namespace Analogy.Forms
         private string onlineTitle = "Online log";
         private Dictionary<Guid, RibbonPage> Mapping = new Dictionary<Guid, RibbonPage>();
 
-        private Dictionary<DockPanel, IAnalogyRealTimeDataProvider> onlineDataSourcesMapping =
-            new Dictionary<DockPanel, IAnalogyRealTimeDataProvider>();
-
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
-        private int openedWindows;
+        private int OpenedWindows { get; set; }
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
         private bool preventExit = false;
@@ -123,6 +121,7 @@ namespace Analogy.Forms
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
+                FactoriesManager.Instance.ShutDownAllFactories();
             }
         }
 
@@ -218,11 +217,11 @@ namespace Analogy.Forms
             RegisterForOnDemandPlots();
 
             //Create all other DataSources
-            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
+            foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
                 .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
                                   factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
             {
-                CreateDataSource(factory, 3);
+                CreateDataSource(fc, 3);
             }
             //set Default page:
             Guid defaultPage = settings.InitialSelectedDataProvider;
@@ -281,8 +280,6 @@ namespace Analogy.Forms
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             }
-            Utils.WarnNETVersionOutOfSupport();
-            Utils.ShowAdvanceFeatures();
         }
 
         private void UpdateUpdateButton()
@@ -432,82 +429,92 @@ namespace Analogy.Forms
 
             btnSettingsUpdate.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Updates");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings);
                 user.ShowDialog(this);
             };
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
 
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Extensions");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings);
                 user.ShowDialog(this);
             };
 
             btnSettingsDebugging.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Debugging");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings);
                 user.ShowDialog(this);
             };
 
             btnShortcuts.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Shortcuts");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings);
                 user.ShowDialog(this);
             };
 
             bbiDonation.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings);
                 user.ShowDialog(this);
             };
             bbiAdvancedMode.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Advanced Mode");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings);
                 user.ShowDialog(this);
             };
             btnApplicationSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Application Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings);
                 user.ShowDialog(this);
             };
             btnApplicationUISettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Application UI Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings);
                 user.ShowDialog(this);
             };
             btnFiltering.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Filtering");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings);
                 user.ShowDialog(this);
             };
             btnMessageColumnsLayoutSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Messages Layout");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings);
                 user.ShowDialog(this);
             };
             btnColorsSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings);
                 user.ShowDialog(this);
             };
             btnColorHighlightSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Color Highlighting");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting);
                 user.ShowDialog(this);
             };
             btnPreDefinedQueries.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Predefined queries");
-                user.ShowDialog(this);
-            };
-            btnPreDefinedQueries.ItemClick += (s, e) =>
-            {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Donations");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings);
                 user.ShowDialog(this);
             };
             btnDataProvidersSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm("Data Provider Settings");
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings);
+                user.ShowDialog(this);
+            };
+            bbiRealTimeProviders.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings);
+                user.ShowDialog(this);
+            };
+            bbiFileAssociations.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings);
+                user.ShowDialog(this);
+            };
+            bbiAdditionalLocations.ItemClick += (s, e) =>
+            {
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings);
                 user.ShowDialog(this);
             };
             #endregion
@@ -568,18 +575,19 @@ namespace Analogy.Forms
 
         }
 
-        private void OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
+        private async Task OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
             IAnalogyOfflineDataProvider dataProvider,
             string? title = null)
         {
-            openedWindows++;
+            OpenedWindows++;
+            await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, filenames);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
             page.Tag = ribbonPage;
             page.Controls.Add(offlineUC);
             offlineUC.Dock = DockStyle.Fill;
-            page.Text = $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
+            page.Text = $"{offlineTitle} #{OpenedWindows}{(title == null ? "" : $" ({title})")}";
             dockManager1.ActivePanel = page;
         }
         private void LoadStartupExtensions()
@@ -607,7 +615,7 @@ namespace Analogy.Forms
             {
                 var parser = supported.First();
                 RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
-                OpenOfflineLogs(page, files, parser.DataProvider);
+                await OpenOfflineLogs(page, files, parser.DataProvider);
             }
             else
             {
@@ -632,7 +640,7 @@ namespace Analogy.Forms
                 {
                     var parser = supported.First();
                     RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
-                    OpenOfflineLogs(page, files, parser.DataProvider);
+                    await OpenOfflineLogs(page, files, parser.DataProvider);
                 }
                 else
                 {
@@ -648,7 +656,7 @@ namespace Analogy.Forms
                             : null;
                         if (parser.Count == 1)
                         {
-                            OpenOfflineLogs(page, files, parser.First());
+                            await OpenOfflineLogs(page, files, parser.First());
                         }
                         else
                         {
@@ -710,18 +718,19 @@ namespace Analogy.Forms
             {
                 foreach (string file in files)
                 {
-                    if (!File.Exists(file))
+                    if (!File.Exists(file) || bar.ItemLinks.Any(br => br.Caption.Equals(file)))
                     {
                         continue;
                     }
 
                     BarButtonItem btn = new BarButtonItem();
                     btn.Caption = file;
-                    btn.ItemClick += (s, be) =>
+                    btn.ItemClick += async (s, be) =>
                     {
-                        OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
+                        await OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
                     };
                     bar.AddItem(btn);
+
                 }
             }
         }
@@ -766,13 +775,13 @@ namespace Analogy.Forms
 
         private void OpenBookmarkLog()
         {
-            openedWindows++;
+            OpenedWindows++;
             var bookmarkLog = new BookmarkLog();
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
             page.Controls.Add(bookmarkLog);
             bookmarkLog.Dock = DockStyle.Fill;
-            page.Text = $"Analogy Bookmarked logs #{openedWindows}";
+            page.Text = $"Analogy Bookmarked logs #{OpenedWindows}";
             dockManager1.ActivePanel = page;
         }
         private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
@@ -868,6 +877,7 @@ namespace Analogy.Forms
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
+                providerSetting.CreateUserControl(Analogy.AnalogyLogger.Instance);
                 BarButtonItem settingsBtn = new BarButtonItem
                 {
                     Caption = providerSetting.Title,
@@ -893,7 +903,14 @@ namespace Analogy.Forms
             RibbonPageGroup ribbonPageGroup = new RibbonPageGroup($"Data Provider: {dataSourceFactory.Title}") { AllowTextClipping = false };
             ribbonPage.Groups.Add(ribbonPageGroup);
 
-            AddFlatRealTimeDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
+            if (settings.CombineOnlineProviders)
+            {
+                AddCombinedRealTimeDataSources(ribbonPage, dataSourceFactory);
+            }
+            else
+            {
+                AddFlatRealTimeDataSources(ribbonPage, dataSourceFactory);
+            }
             AddSingleDataSources(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
             AddOfflineDataSource(factory, ribbonPage, dataSourceFactory, ribbonPageGroup);
         }
@@ -934,7 +951,7 @@ namespace Analogy.Forms
                     async Task<bool> OpenUserControl()
                     {
                         userControlBtn.Enabled = false;
-                        openedWindows++;
+                        OpenedWindows++;
                         //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                         var page = dockManager1.AddPanel(DockingStyle.Float);
                         await userControl.InitializeUserControl(page, AnalogyLogger.Instance);
@@ -943,7 +960,7 @@ namespace Analogy.Forms
                         page.Controls.Add(userControl.UserControl);
                         ribbonControlMain.SelectedPage = ribbonPage;
                         userControl.UserControl.Dock = DockStyle.Fill;
-                        page.Text = $"{userControl.Title} #{openedWindows}";
+                        page.Text = $"{userControl.Title} #{OpenedWindows}";
                         dockManager1.ActivePanel = page;
                         async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                         {
@@ -997,7 +1014,7 @@ namespace Analogy.Forms
                 async Task<bool> OpenPlotter()
                 {
                     plotterBtn.Enabled = false;
-                    openedWindows++;
+                    OpenedWindows++;
                     var plotInteractor = AnalogyPlottingManager.Instance.GetOrCreateInteractor(plot);
                     await plot.InitializePlotting(plotInteractor, AnalogyLogger.Instance);
                     var plotterUC = new PlottingUC(plot, plotInteractor);
@@ -1007,7 +1024,7 @@ namespace Analogy.Forms
                     page.Controls.Add(plotterUC);
                     ribbonControlMain.SelectedPage = ribbonPage;
                     plotterUC.Dock = DockStyle.Fill;
-                    page.Text = $"{plot.Title} #{openedWindows}";
+                    page.Text = $"{plot.Title} #{OpenedWindows}";
                     dockManager1.ActivePanel = page;
                     plotterUC.Start();
                     await plot.StartPlotting();
@@ -1046,7 +1063,7 @@ namespace Analogy.Forms
             }
         }
 
-        private void AddFlatRealTimeDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
+        private void AddFlatRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
@@ -1064,11 +1081,11 @@ namespace Analogy.Forms
 
             foreach (var realTime in realTimes)
             {
-                var imageSmallOffline = realTime.DisconnectedSmallImage;
-                var imageSmallOnline = realTime.ConnectedSmallImage;
                 BarButtonItem realTimeBtn = new BarButtonItem();
                 ribbonPageGroup.ItemLinks.Add(realTimeBtn);
-                realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
+                realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
+
                 realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                 realTimeBtn.Caption = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
@@ -1090,6 +1107,7 @@ namespace Analogy.Forms
                     bool canStartReceiving = false;
                     try
                     {
+                        await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                         canStartReceiving = await realTime.CanStartReceiving();
                     }
                     catch (Exception e)
@@ -1100,8 +1118,9 @@ namespace Analogy.Forms
 
                     if (canStartReceiving) //connected
                     {
-                        openedWindows++;
-                        realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                        OpenedWindows++;
+                        //realTimeBtn.ImageOptions.Image = realTime.DisconnectedSmallImage ?? Resources.Database_off;
+                        //realTimeBtn.ImageOptions.LargeImage = realTime.DisconnectedLargeImage ?? Resources.Database_off;
                         var onlineUC = new OnlineUCLogs(realTime);
 
                         void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1117,7 +1136,8 @@ namespace Analogy.Forms
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                            realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                            // realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
+                            // realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
                         }
 
                         var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1126,13 +1146,12 @@ namespace Analogy.Forms
                         page.Controls.Add(onlineUC);
                         ribbonControlMain.SelectedPage = ribbonPage;
                         onlineUC.Dock = DockStyle.Fill;
-                        page.Text = $"{onlineTitle} #{openedWindows} ({dataSourceFactory.Title})";
+                        page.Text = $"{onlineTitle} #{OpenedWindows} ({dataSourceFactory.Title})";
                         dockManager1.ActivePanel = page;
                         realTime.OnMessageReady += OnRealTimeOnMessageReady;
                         realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                         realTime.OnDisconnected += OnRealTimeDisconnected;
                         await realTime.StartReceiving();
-                        onlineDataSourcesMapping.Add(page, realTime);
 
                         async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                         {
@@ -1190,8 +1209,7 @@ namespace Analogy.Forms
             }
         }
 
-        private void AddRealTimeDataSource(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory,
-            RibbonPageGroup group)
+        private void AddCombinedRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
@@ -1199,7 +1217,12 @@ namespace Analogy.Forms
             {
                 return;
             }
-
+            string title = !string.IsNullOrEmpty(dataSourceFactory.Title)
+                ? dataSourceFactory.Title
+                : "real time Provider";
+            RibbonPageGroup group = new RibbonPageGroup($"Real Time Providers: {title}");
+            group.AllowTextClipping = false;
+            ribbonPage.Groups.Insert(0, group);
             if (realTimes.Count == 1)
             {
                 AddSingleRealTimeDataSource(ribbonPage, realTimes.First(), dataSourceFactory.Title, group);
@@ -1209,18 +1232,18 @@ namespace Analogy.Forms
                 BarSubItem realTimeMenu = new BarSubItem();
                 group.ItemLinks.Add(realTimeMenu);
 
-                realTimeMenu.ImageOptions.Image = Resources.Database_off;
+                realTimeMenu.ImageOptions.Image = Resources.Database_on;
                 realTimeMenu.RibbonStyle = RibbonItemStyles.All;
                 realTimeMenu.Caption = "Real Time Logs";
 
 
                 foreach (var realTime in realTimes)
                 {
-                    var imageSmallOffline = realTime.DisconnectedSmallImage;
-                    var imageSmallOnline = realTime.ConnectedSmallImage;
                     BarButtonItem realTimeBtn = new BarButtonItem();
                     realTimeMenu.ItemLinks.Add(realTimeBtn);
-                    realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                    realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
+
                     realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                     realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle)
                         ? $" - {realTime.OptionalTitle}"
@@ -1232,6 +1255,7 @@ namespace Analogy.Forms
                         bool canStartReceiving = false;
                         try
                         {
+                            await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                             canStartReceiving = await realTime.CanStartReceiving();
                         }
                         catch (Exception e)
@@ -1242,8 +1266,7 @@ namespace Analogy.Forms
 
                         if (canStartReceiving) //connected
                         {
-                            openedWindows++;
-                            realTimeBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
+                            OpenedWindows++;
                             var onlineUC = new OnlineUCLogs(realTime);
 
                             void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -1259,7 +1282,7 @@ namespace Analogy.Forms
                                     AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                     dataSourceFactory.Title, "Analogy");
                                 onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                                realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
+                                //realTimeBtn.ImageOptions.Image = imageSmallOffline ?? Resources.Database_off;
                             }
 
                             var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1268,14 +1291,12 @@ namespace Analogy.Forms
                             page.Controls.Add(onlineUC);
                             ribbonControlMain.SelectedPage = ribbonPage;
                             onlineUC.Dock = DockStyle.Fill;
-                            page.Text = $"{onlineTitle} #{openedWindows} ({dataSourceFactory.Title})";
+                            page.Text = $"{onlineTitle} #{OpenedWindows} ({dataSourceFactory.Title})";
                             dockManager1.ActivePanel = page;
                             realTime.OnMessageReady += OnRealTimeOnMessageReady;
                             realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                             realTime.OnDisconnected += OnRealTimeDisconnected;
                             await realTime.StartReceiving();
-                            onlineDataSourcesMapping.Add(page, realTime);
-
                             async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
                             {
                                 if (arg.Panel == page)
@@ -1362,9 +1383,11 @@ namespace Analogy.Forms
                     toolTip.Setup(args);
                     singleBtn.SuperTip = toolTip;
                 }
-                openedWindows++;
-                singleBtn.ItemClick += (sender, e) =>
+
+                singleBtn.ItemClick += async (sender, e) =>
                 {
+                    OpenedWindows++;
+                    await FactoriesManager.Instance.InitializeIfNeeded(single);
                     CancellationTokenSource cts = new CancellationTokenSource();
                     LocalLogFilesUC offlineUC = new LocalLogFilesUC(single, cts);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1372,7 +1395,7 @@ namespace Analogy.Forms
                     page.Tag = ribbonPage;
                     page.Controls.Add(offlineUC);
                     offlineUC.Dock = DockStyle.Fill;
-                    page.Text = $"{offlineTitle} #{openedWindows} ({single.OptionalTitle})";
+                    page.Text = $"{offlineTitle} #{OpenedWindows} ({single.OptionalTitle})";
                     dockManager1.ActivePanel = page;
                     if (single is IAnalogySingleFileDataProvider fileProvider)
                     {
@@ -1435,38 +1458,41 @@ namespace Analogy.Forms
 
 
             #region Actions
-            void OpenOffline(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider, string initialFolder,
+            async Task OpenOffline(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider, string initialFolder,
                 string[] files = null)
             {
-                openedWindows++;
+                OpenedWindows++;
+                await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
                 UserControl offlineUC = new LocalLogFilesUC(dataProvider, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(offlineUC);
                 offlineUC.Dock = DockStyle.Fill;
-                page.Text = $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
+                page.Text = $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
             }
 
-            void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
+            async Task OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
-                openedWindows++;
+                OpenedWindows++;
+                await FactoriesManager.Instance.InitializeIfNeeded(analogy);
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(ClientServerUCLog);
                 ClientServerUCLog.Dock = DockStyle.Fill;
-                page.Text = $"Client/Server logs #{openedWindows}. {titleOfDataSource}";
+                page.Text = $"Client/Server logs #{OpenedWindows}. {titleOfDataSource}";
                 dockManager1.ActivePanel = page;
             }
 
-            void OpenFilePooling(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider,
+            async Task OpenFilePooling(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider,
                 string initialFolder, string file)
             {
 
-                openedWindows++;
+                OpenedWindows++;
+                await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
                 UserControl filepoolingUC = new FilePoolingUCLogs(dataProvider, file, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1525,9 +1551,9 @@ namespace Analogy.Forms
                     : Environment.CurrentDirectory;
                 //add local folder button:
                 BarButtonItem btn = new BarButtonItem { Caption = directory };
-                btn.ItemClick += (s, be) =>
+                btn.ItemClick += async (s, be) =>
                 {
-                    OpenOffline(dataProvider.OptionalTitle, dataProvider, directory);
+                    await OpenOffline(dataProvider.OptionalTitle, dataProvider, directory);
                 };
                 folderBar.AddItem(btn);
             }
@@ -1548,9 +1574,9 @@ namespace Analogy.Forms
                     if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
                     {
                         BarButtonItem btn = new BarButtonItem { Caption = path.Path };
-                        btn.ItemClick += (s, be) =>
+                        btn.ItemClick += async (s, be) =>
                         {
-                            OpenOffline(dataProvider.OptionalTitle, dataProvider, path.Path);
+                            await OpenOffline(dataProvider.OptionalTitle, dataProvider, path.Path);
                         };
 
                         btnFolder.AddItem(btn);
@@ -1562,46 +1588,93 @@ namespace Analogy.Forms
             //add Files open buttons
             if (offlineProviders.Any(i => !string.IsNullOrEmpty(i.FileOpenDialogFilters)))
             {
-                //add Open files entry
-                BarSubItem openFiles = new BarSubItem();
-                openFiles.Caption = "Open Files";
-                group.ItemLinks.Add(openFiles);
-                openFiles.ImageOptions.Image = Resources.Article_16x16;
-                openFiles.ImageOptions.LargeImage = Resources.Article_32x32;
-                openFiles.RibbonStyle = RibbonItemStyles.All;
 
-                foreach (var dataProvider in offlineProviders)
+                if (settings.CombineOfflineProviders)
                 {
+                    //add Open files entry
+                    BarSubItem openFiles = new BarSubItem();
+                    openFiles.Caption = "Open Files";
+                    group.ItemLinks.Add(openFiles);
+                    openFiles.ImageOptions.Image = Resources.Article_16x16;
+                    openFiles.ImageOptions.LargeImage = Resources.Article_32x32;
+                    openFiles.RibbonStyle = RibbonItemStyles.All;
 
-                    if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
+                    foreach (var dataProvider in offlineProviders)
                     {
-                        BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
-                        btnOpenFile.ItemClick += (sender, e) =>
+
+                        if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
                         {
-                            OpenFileDialog openFileDialog1 = new OpenFileDialog
+                            BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
+                            btnOpenFile.ItemClick += async (sender, e) =>
                             {
-                                Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
-                                Title = @"Open Files",
-                                Multiselect = true
+                                OpenFileDialog openFileDialog1 = new OpenFileDialog
+                                {
+                                    Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
+                                    Title = @"Open Files",
+                                    Multiselect = true
+                                };
+                                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                                {
+                                    await OpenOffline(dataProvider.OptionalTitle, dataProvider,
+                                        dataProvider.InitialFolderFullPath, openFileDialog1.FileNames);
+                                    AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
+                                        openFileDialog1.FileNames.ToList());
+                                }
                             };
-                            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                            {
-                                OpenOffline(dataProvider.OptionalTitle, dataProvider,
-                                    dataProvider.InitialFolderFullPath, openFileDialog1.FileNames);
-                                AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
-                                    openFileDialog1.FileNames.ToList());
-                            }
-                        };
-                        openFiles.AddItem(btnOpenFile);
+                            openFiles.AddItem(btnOpenFile);
+                        }
+                        else
+                        {
+
+                            IAnalogyNotification notification = new AnalogyNotification(factoryId,
+                                "Missing File Open Dialog Filter",
+                                $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
+                                , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
+                            NotificationManager.Instance.RaiseNotification(notification, true);
+                        }
                     }
-                    else
+                }
+                else
+                {
+                    foreach (var dataProvider in offlineProviders)
                     {
 
-                        IAnalogyNotification notification = new AnalogyNotification(factoryId,
-                            "Missing File Open Dialog Filter",
-                            $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
-                            , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
-                        NotificationManager.Instance.RaiseNotification(notification, true);
+                        if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
+                        {
+                            //add Open files entry
+                            BarButtonItem btnOpenFile = new BarButtonItem();
+                            btnOpenFile.Caption = !string.IsNullOrEmpty(dataProvider.OptionalTitle) ? $"{dataProvider.OptionalTitle}" : $"{factoryTitle})";
+                            group.ItemLinks.Add(btnOpenFile);
+                            btnOpenFile.ImageOptions.Image = Resources.Article_16x16;
+                            btnOpenFile.ImageOptions.LargeImage = Resources.Article_32x32;
+                            btnOpenFile.RibbonStyle = RibbonItemStyles.All;
+
+                            btnOpenFile.ItemClick += async (sender, e) =>
+                            {
+                                OpenFileDialog openFileDialog1 = new OpenFileDialog
+                                {
+                                    Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
+                                    Title = @"Open Files",
+                                    Multiselect = true
+                                };
+                                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                                {
+                                    await OpenOffline(dataProvider.OptionalTitle, dataProvider,
+                                        dataProvider.InitialFolderFullPath, openFileDialog1.FileNames);
+                                    AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
+                                        openFileDialog1.FileNames.ToList());
+                                }
+                            };
+                        }
+                        else
+                        {
+
+                            IAnalogyNotification notification = new AnalogyNotification(factoryId,
+                                "Missing File Open Dialog Filter",
+                                $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
+                                , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
+                            NotificationManager.Instance.RaiseNotification(notification, true);
+                        }
                     }
                 }
 
@@ -1623,7 +1696,7 @@ namespace Analogy.Forms
 
 
                     BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
-                    btnOpenFile.ItemClick += (sender, e) =>
+                    btnOpenFile.ItemClick += async (sender, e) =>
                     {
                         OpenFileDialog openFileDialog1 = new OpenFileDialog
                         {
@@ -1633,7 +1706,7 @@ namespace Analogy.Forms
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            OpenFilePooling(dataProvider.OptionalTitle, dataProvider,
+                            await OpenFilePooling(dataProvider.OptionalTitle, dataProvider,
                                 dataProvider.InitialFolderFullPath, openFileDialog1.FileName);
                             AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
                                 new List<string> { openFileDialog1.FileName });
@@ -1663,9 +1736,9 @@ namespace Analogy.Forms
             foreach (var dataProvider in offlineProviders)
             {
                 BarButtonItem btnOpenLocation = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
-                btnOpenLocation.ItemClick += (sender, e) =>
+                btnOpenLocation.ItemClick += async (sender, e) =>
                 {
-                    OpenExternalDataSource(dataProvider.OptionalTitle, dataProvider);
+                    await OpenExternalDataSource(dataProvider.OptionalTitle, dataProvider);
                 };
                 externalSources.AddItem(btnOpenLocation);
             }
@@ -1747,29 +1820,31 @@ namespace Analogy.Forms
             Guid factoryId = factory.FactoryId;
             string title = factory.Title;
             #region actions
-            void OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
+            async Task OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
-                openedWindows++;
+                OpenedWindows++;
+                await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
                 UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(offlineUC);
                 offlineUC.Dock = DockStyle.Fill;
-                page.Text = $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
+                page.Text = $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
             }
 
-            void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
+            async Task OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
-                openedWindows++;
+                OpenedWindows++;
+                await FactoriesManager.Instance.InitializeIfNeeded(analogy);
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Tag = ribbonPage;
                 page.Controls.Add(ClientServerUCLog);
                 ClientServerUCLog.Dock = DockStyle.Fill;
-                page.Text = $"Client/Server logs #{openedWindows}. {titleOfDataSource}";
+                page.Text = $"Client/Server logs #{OpenedWindows}. {titleOfDataSource}";
                 dockManager1.ActivePanel = page;
 
 
@@ -1778,7 +1853,7 @@ namespace Analogy.Forms
             void OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
             {
 
-                openedWindows++;
+                OpenedWindows++;
                 UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1835,7 +1910,7 @@ namespace Analogy.Forms
             group.ItemLinks.Add(localfolder);
             localfolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.OpenFolder_16x16;
             localfolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
-            localfolder.ItemClick += (sender, e) =>
+            localfolder.ItemClick += async (sender, e) =>
             {
                 using (var folderBrowserDialog = new XtraFolderBrowserDialog { ShowNewFolderButton = false })
                 {
@@ -1845,7 +1920,7 @@ namespace Analogy.Forms
                     {
                         if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
                         {
-                            OpenOffline(title, folderBrowserDialog.SelectedPath);
+                            await OpenOffline(title, folderBrowserDialog.SelectedPath);
                         }
                     }
                 }
@@ -1957,7 +2032,10 @@ namespace Analogy.Forms
             group.ItemLinks.Add(externalSources);
             externalSources.ImageOptions.Image = images?.GetSmallKnownLocationsImage(factoryId) ?? Resources.ServerMode_16x16;
             externalSources.ImageOptions.LargeImage = images?.GetLargeKnownLocationsImage(factoryId) ?? Resources.ServerMode_32x32;
-            externalSources.ItemClick += (sender, e) => { OpenExternalDataSource(title, offlineAnalogy); };
+            externalSources.ItemClick += async (sender, e) =>
+            {
+                await OpenExternalDataSource(title, offlineAnalogy);
+            };
 
 
             //add tools
@@ -2004,12 +2082,10 @@ namespace Analogy.Forms
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            var disconnectedLargeImage = realTime.DisconnectedLargeImage;
-            var disconnectedSmallImage = realTime.DisconnectedSmallImage;
             var connectedLargeImage = realTime.ConnectedLargeImage;
             var connectedSmallImage = realTime.ConnectedSmallImage;
-            realTimeBtn.ImageOptions.LargeImage = disconnectedLargeImage ?? Resources.Database_off;
-            realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
+            realTimeBtn.ImageOptions.LargeImage = connectedLargeImage ?? Resources.Database_on;
+            realTimeBtn.ImageOptions.Image = connectedLargeImage ?? Resources.Database_on;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;
             realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle) ? $" - {realTime.OptionalTitle}" : string.Empty);
 
@@ -2019,6 +2095,7 @@ namespace Analogy.Forms
                 bool canStartReceiving = false;
                 try
                 {
+                    await FactoriesManager.Instance.InitializeIfNeeded(realTime);
                     canStartReceiving = await realTime.CanStartReceiving();
                 }
                 catch (Exception e)
@@ -2028,9 +2105,7 @@ namespace Analogy.Forms
 
                 if (canStartReceiving) //connected
                 {
-                    openedWindows++;
-                    realTimeBtn.ImageOptions.Image = connectedSmallImage ?? Resources.Database_on;
-                    realTimeBtn.ImageOptions.LargeImage = connectedLargeImage ?? Resources.Database_on;
+                    OpenedWindows++;
                     var onlineUC = new OnlineUCLogs(realTime);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
@@ -2045,8 +2120,8 @@ namespace Analogy.Forms
                             $"Source {title} Disconnected. Reason: {e.DisconnectedReason}",
                             AnalogyLogLevel.Analogy, AnalogyLogClass.General, title, "Analogy");
                         onlineUC.AppendMessage(disconnected, Environment.MachineName);
-                        realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
-                        realTimeBtn.ImageOptions.Image = disconnectedLargeImage ?? Resources.Database_off;
+                        //realTimeBtn.ImageOptions.Image = disconnectedSmallImage ?? Resources.Database_off;
+                        //realTimeBtn.ImageOptions.Image = disconnectedLargeImage ?? Resources.Database_off;
                     }
 
                     var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -2055,12 +2130,11 @@ namespace Analogy.Forms
                     page.Controls.Add(onlineUC);
                     ribbonControlMain.SelectedPage = ribbonPage;
                     onlineUC.Dock = DockStyle.Fill;
-                    page.Text = $"{onlineTitle} #{openedWindows} ({title})";
+                    page.Text = $"{onlineTitle} #{OpenedWindows} ({title})";
                     realTime.OnMessageReady += OnRealTimeOnMessageReady;
                     realTime.OnManyMessagesReady += OnRealTimeOnOnManyMessagesReady;
                     realTime.OnDisconnected += OnRealTimeDisconnected;
                     await realTime.StartReceiving();
-                    onlineDataSourcesMapping.Add(page, realTime);
                     dockManager1.ActivePanel = page;
 
                     async void OnXtcLogsOnControlRemoved(object sender, DockPanelEventArgs arg)
