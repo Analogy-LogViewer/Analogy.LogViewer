@@ -37,8 +37,9 @@ namespace Analogy.Forms
 
             foreach (var dp in notInstalled)
             {
-                MissingDownloadInformation missing = new MissingDownloadInformation(dp.FactoryId, dp.Name, dp.RepositoryURL,dp.Image);
+                MissingDownloadInformation missing = new MissingDownloadInformation(dp.FactoryId, dp.Name, dp.RepositoryURL, dp.Image);
                 ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(missing);
+                uc.Enabled = dp.Enabled;
                 xtraTabPage2.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
 

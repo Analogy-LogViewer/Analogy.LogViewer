@@ -126,6 +126,7 @@
             // cePreRelease
             // 
             this.cePreRelease.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cePreRelease.Enabled = false;
             this.cePreRelease.Location = new System.Drawing.Point(689, 64);
             this.cePreRelease.Name = "cePreRelease";
             this.cePreRelease.Properties.Caption = "PreRelease Version";
