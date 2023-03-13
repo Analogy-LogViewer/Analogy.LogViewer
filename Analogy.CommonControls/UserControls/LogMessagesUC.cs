@@ -1434,7 +1434,7 @@ namespace Analogy.CommonControls.UserControls
         {
             if (sender is DockPanel pnl && pnl.Controls.Count > 0)
             {
-                pnl.Controls[0].Controls[0].Size = pnl.Size;
+                pnl.Controls[0].Size = pnl.Size;
             }
         }
 
