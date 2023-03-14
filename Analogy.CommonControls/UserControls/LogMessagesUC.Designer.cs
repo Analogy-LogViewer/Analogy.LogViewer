@@ -2772,7 +2772,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnBookmarkProcessID.Caption = "Process ID";
-            this.gridColumnBookmarkProcessID.FieldName = "ProcessID";
+            this.gridColumnBookmarkProcessID.FieldName = "ProcessId";
             this.gridColumnBookmarkProcessID.MinWidth = 24;
             this.gridColumnBookmarkProcessID.Name = "gridColumnBookmarkProcessID";
             this.gridColumnBookmarkProcessID.OptionsColumn.AllowEdit = false;
@@ -3250,7 +3250,7 @@ namespace Analogy.CommonControls.UserControls
             // gridColumnRawText
             // 
             this.gridColumnRawText.Caption = "Raw Text";
-            this.gridColumnRawText.FieldName = "RawText";
+            this.gridColumnRawText.FieldName = "RawTextType";
             this.gridColumnRawText.MinWidth = 25;
             this.gridColumnRawText.Name = "gridColumnRawText";
             this.gridColumnRawText.Visible = true;
@@ -3271,7 +3271,7 @@ namespace Analogy.CommonControls.UserControls
             // gridColumnMethodName
             // 
             this.gridColumnMethodName.Caption = "Method Name";
-            this.gridColumnMethodName.FieldName = "MathodName";
+            this.gridColumnMethodName.FieldName = "MethodName";
             this.gridColumnMethodName.MinWidth = 25;
             this.gridColumnMethodName.Name = "gridColumnMethodName";
             this.gridColumnMethodName.Visible = true;
