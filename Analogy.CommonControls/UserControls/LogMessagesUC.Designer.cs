@@ -706,8 +706,8 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnProcessID.Caption = "ProcessID";
-            this.gridColumnProcessID.FieldName = "ProcessID";
+            this.gridColumnProcessID.Caption = "ProcessId";
+            this.gridColumnProcessID.FieldName = "ProcessId";
             this.gridColumnProcessID.MinWidth = 24;
             this.gridColumnProcessID.Name = "gridColumnProcessID";
             this.gridColumnProcessID.OptionsColumn.AllowEdit = false;
@@ -724,7 +724,7 @@ namespace Analogy.CommonControls.UserControls
             // gridColumnThread
             // 
             this.gridColumnThread.Caption = "Thread ID";
-            this.gridColumnThread.FieldName = "ThreadID";
+            this.gridColumnThread.FieldName = "ThreadId";
             this.gridColumnThread.MinWidth = 25;
             this.gridColumnThread.Name = "gridColumnThread";
             this.gridColumnThread.OptionsColumn.AllowEdit = false;
@@ -2771,7 +2771,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnBookmarkProcessID.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkProcessID.Caption = "ProcessID";
+            this.gridColumnBookmarkProcessID.Caption = "Process ID";
             this.gridColumnBookmarkProcessID.FieldName = "ProcessID";
             this.gridColumnBookmarkProcessID.MinWidth = 24;
             this.gridColumnBookmarkProcessID.Name = "gridColumnBookmarkProcessID";
