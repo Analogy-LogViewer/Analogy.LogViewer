@@ -32,7 +32,7 @@ namespace Analogy.Managers
         private DateTime lastRead;
         private UCLogs LogUI;
         private readonly AnalogyLogMessageCustomEqualityComparer _customEqualityComparer;
-        public FilePoolingManager(string fileName, UCLogs logUI, IAnalogyOfflineDataProvider offlineDataProvider)
+        public FilePoolingManager(string filter,  string  initialFilename, UCLogs logUI, IAnalogyOfflineDataProvider offlineDataProvider)
         {
             _sync = new object();
             LogUI = logUI;
@@ -40,44 +40,56 @@ namespace Analogy.Managers
             _cancellationTokenSource = new CancellationTokenSource();
             OfflineDataProvider = offlineDataProvider;
             _messages = new List<IAnalogyLogMessage>();
-            FileName = fileName;
+            FileName = initialFilename;
+            FileFilter = filter;
             FileProcessor = new FileProcessor(Settings, this,AnalogyLogger.Instance);
 
         }
 
+        public string FileFilter { get; set; }
 
         public Task Init()
         {
+            HasFiltFilter = !FileFilter.Equals(FileName);
             _watchFile = new FileSystemWatcher
             {
                 Path = Path.GetDirectoryName(FileName),
-                Filter = Path.GetFileName(FileName)
+                Filter = Path.GetFileName(FileFilter)
             };
             _watchFile.Changed += WatchFile_Changed;
-            _watchFile.Deleted += WatchFile_Deleted;
-            _watchFile.Renamed += WatchFile_Renamed;
+            if (HasFiltFilter)
+            {
+                _watchFile.Deleted += WatchFile_Deleted;
+                _watchFile.Renamed += WatchFile_Renamed;
+            }
             _watchFile.Error += WatchFile_Error;
             _watchFile.EnableRaisingEvents = true;
             AnalogyLogMessage m = new AnalogyLogMessage
             {
-                Text = $"Start monitoring file {FileName}.",
-                FileName = FileName,
+                Text = $"Start monitoring file {FileFilter}.",
+                FileName = FileFilter,
                 Level = AnalogyLogLevel.Analogy,
                 Source = "Analogy",
                 Class = AnalogyLogClass.General,
                 Date = DateTime.Now
             };
+            
             OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
             return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
         }
+
+        public bool HasFiltFilter { get; set; }
 
         public void StopMonitoring()
         {
 
             _watchFile.EnableRaisingEvents = false;
             _watchFile.Changed -= WatchFile_Changed;
-            _watchFile.Deleted -= WatchFile_Deleted;
-            _watchFile.Renamed -= WatchFile_Renamed;
+            if (HasFiltFilter)
+            {
+                _watchFile.Deleted -= WatchFile_Deleted;
+                _watchFile.Renamed -= WatchFile_Renamed;
+            }
             _watchFile.Error -= WatchFile_Error;
             _watchFile.Dispose();
         }
@@ -189,20 +201,20 @@ namespace Analogy.Managers
                 if (e.ChangeType == WatcherChangeTypes.Changed)
                 {
                     LogUI.SetReloadColorDate(FileProcessor.lastNewestMessage);
-                    await FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
+                    await FileProcessor.Process(OfflineDataProvider, e.FullPath, _cancellationTokenSource.Token);
                 }
             }
             catch (Exception exception)
             {
                 AnalogyLogMessage m = new AnalogyLogMessage
                 {
-                    Text = $"Error monitoring file {FileName}. Reason {exception}",
+                    Text = $"Error monitoring file {e.FullPath}. Reason {exception}",
                     FileName = FileName,
                     Level = AnalogyLogLevel.Warning,
                     Class = AnalogyLogClass.General,
                     Date = DateTime.Now
                 };
-                OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
+                OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, e.FullPath));
                 AnalogyLogManager.Instance.LogErrorMessage(m);
             }
             finally
