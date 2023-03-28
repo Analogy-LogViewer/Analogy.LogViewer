@@ -159,6 +159,7 @@ namespace Analogy.CommonControls.UserControls
         public ServerSideLogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
             Logger = logger;
+            Id = Guid.NewGuid();
             Settings = userSettingsManager;
             ExtensionManager = extensionManager;
             FactoriesManager = factoriesManager;
@@ -1307,8 +1308,8 @@ namespace Analogy.CommonControls.UserControls
             {
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.Text = extension.Title;
-                page.Controls.Add(extension.UserControl);
-                await extension.InitializeUserControl(this, Logger);
+                page.Controls.Add(extension.CreateUserControl(Id, Logger));
+                await extension.InitializeUserControl(this, Id, Logger);
                 page.DockedAsTabbedDocument = true;
             }
         }
@@ -1501,6 +1502,7 @@ namespace Analogy.CommonControls.UserControls
         }
 
         public List<IAnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
+        public Guid Id { get; }
 
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
@@ -1650,7 +1652,7 @@ namespace Analogy.CommonControls.UserControls
                 {
                     if (IsHandleCreated)
                     {
-                        BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
+                        BeginInvoke(new MethodInvoker(() => extension.NewMessage(message, Id)));
                     }
                 }
             }
@@ -1763,7 +1765,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 foreach (var extension in UserControlRegisteredExtensions)
                 {
-                    BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages)));
+                    BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages, Id)));
                 }
             }
 

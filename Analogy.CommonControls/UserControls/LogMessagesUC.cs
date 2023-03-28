@@ -200,6 +200,7 @@ namespace Analogy.CommonControls.UserControls
         public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
             Logger = logger;
+            Id = Guid.NewGuid();
             Settings = userSettingsManager;
             ExtensionManager = extensionManager;
             FactoriesManager = factoriesManager;
@@ -302,7 +303,6 @@ namespace Analogy.CommonControls.UserControls
             clbExclude.DataSource = ExcludeFilterCriteriaUIOptions;
             _filterCriteria.IncludeFilterCriteriaUIOptions = IncludeFilterCriteriaUIOptions;
             _filterCriteria.ExcludeFilterCriteriaUIOptions = ExcludeFilterCriteriaUIOptions;
-
 
         }
 
@@ -1457,9 +1457,9 @@ namespace Analogy.CommonControls.UserControls
                     pnl.ID = extension.Id;
                     pnl.DockedAsTabbedDocument = true;
                 }
-                pnl.Controls.Add(extension.UserControl);
+                pnl.Controls.Add(extension.CreateUserControl(Id, Logger));
                 pnl.SizeChanged += ExtensionPanel_SizeChanged;
-                await extension.InitializeUserControl(this, Logger);
+                await extension.InitializeUserControl(this, Id, Logger);
             }
         }
 
@@ -1659,6 +1659,7 @@ namespace Analogy.CommonControls.UserControls
         }
 
         public List<IAnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
+        public Guid Id { get; }
 
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
@@ -1816,7 +1817,7 @@ namespace Analogy.CommonControls.UserControls
                     {
                         if (IsHandleCreated)
                         {
-                            BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
+                            BeginInvoke(new MethodInvoker(() => extension.NewMessage(message, Id)));
                         }
                     }
                 }
@@ -1933,7 +1934,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 foreach (var extension in UserControlRegisteredExtensions)
                 {
-                    BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages)));
+                    BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages, Id)));
                 }
             }
 
