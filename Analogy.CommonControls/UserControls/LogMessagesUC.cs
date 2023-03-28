@@ -327,7 +327,25 @@ namespace Analogy.CommonControls.UserControls
             wsLogs.CaptureWorkspace("Default");
 
             LoadUISettings();
+            var defaultsColumns = logGrid.Columns.Select(c => (c.FieldName, c.Caption));
+            if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
+            {
+                string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
+                wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
+                wsLogs.ApplyWorkspace(name);
+            }
+            LoadWorkspace(CurrentLogLayoutFileName);
+            foreach ((string fieldName, string caption) in defaultsColumns)
+            {
+                var column = logGrid.Columns.ColumnByFieldName(fieldName);
+                if (column != null)
+                {
+                    column.Caption = caption;
+                }
+            }
+
             LoadReplacementHeaders();
+            HideColumns();
             BookmarkModeUI();
 
             
@@ -379,7 +397,22 @@ namespace Analogy.CommonControls.UserControls
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
+ 
+        }
 
+        private void HideColumns()
+        {
+            if (DataProvider.HideColumns() != null)
+            {
+                foreach (string columnFieldName in DataProvider.HideColumns())
+                {
+                    var column = logGrid.Columns.ColumnByFieldName(columnFieldName);
+                    if (column != null)
+                    {
+                        column.Visible = false;
+                    }
+                }
+            }
         }
 
         public void LoadWorkspace(string fileName)
