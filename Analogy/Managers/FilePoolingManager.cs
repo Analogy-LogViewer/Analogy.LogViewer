@@ -17,6 +17,8 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     private readonly AnalogyLogMessageCustomEqualityComparer _customEqualityComparer;
     private readonly UCLogs _logUI;
     private readonly List<IAnalogyLogMessage> _messages;
+    //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.
+    static SemaphoreSlim _watcherSemaphore = new SemaphoreSlim(1,1);
 
     private readonly object _sync;
     private DateTime _lastRead;
@@ -127,93 +129,125 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
 
     private void WatchFile_Error(object sender, ErrorEventArgs e)
     {
-        _watchFile.EnableRaisingEvents = false;
-        _watchFile.Dispose();
-        AnalogyLogMessage m = new()
-                              {
-                                  Text = $"Error monitoring file {FileName}. Reason {e.GetException()}",
-                                  FileName = FileName,
-                                  Level = AnalogyLogLevel.Critical,
-                                  Source = "Analogy",
-                                  Class = AnalogyLogClass.General,
-                                  Date = DateTime.Now
-                              };
-        OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
+        _watcherSemaphore.Wait();
+        try
+        {
+            _watchFile.EnableRaisingEvents = false;
+            _watchFile.Dispose();
+            AnalogyLogMessage m = new()
+            {
+                Text = $"Error monitoring file {FileName}. Reason {e.GetException()}",
+                FileName = FileName,
+                Level = AnalogyLogLevel.Critical,
+                Source = "Analogy",
+                Class = AnalogyLogClass.General,
+                Date = DateTime.Now
+            };
+            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
+        }
+        finally
+        {
+            _watcherSemaphore.Release();
+        }
     }
 
     private async void WatchFile_Renamed(object sender, RenamedEventArgs e)
     {
-        _watchFile.EnableRaisingEvents = false;
-        AnalogyLogMessage m = new()
-                              {
-                                  Text = $"{FileName} has changed to {e.FullPath} from {e.OldName}. restarting monitoring",
-                                  FileName = FileName,
-                                  Level = AnalogyLogLevel.Warning,
-                                  Source = "Analogy",
-                                  Class = AnalogyLogClass.General,
-                                  Date = DateTime.Now
-                              };
-        _watchFile.Dispose();
-        OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
-        await Init();
+        await _watcherSemaphore.WaitAsync();
+        try
+        {
+            _watchFile.EnableRaisingEvents = false;
+            AnalogyLogMessage m = new()
+            {
+                Text = $"{FileName} has changed to {e.FullPath} from {e.OldName}. restarting monitoring",
+                FileName = FileName,
+                Level = AnalogyLogLevel.Warning,
+                Source = "Analogy",
+                Class = AnalogyLogClass.General,
+                Date = DateTime.Now
+            };
+            _watchFile.Dispose();
+            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
+            await Init();
+        }
+        finally
+        {
+            _watcherSemaphore.Release();
+        }
     }
 
     private void WatchFile_Deleted(object sender, FileSystemEventArgs e)
     {
-        _watchFile.EnableRaisingEvents = false;
-        AnalogyLogMessage m = new()
-                              {
-                                  Text = $"{FileName} has been deleted. Stopping monitoring",
-                                  FileName = FileName,
-                                  Level = AnalogyLogLevel.Warning,
-                                  Class = AnalogyLogClass.General,
-                                  Date = DateTime.Now
-                              };
-        _watchFile.Dispose();
-        OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
-    }
-
-    private async void WatchFile_Changed(object sender, FileSystemEventArgs e)
-    {
-        if (_readingInprogress)
-            return;
-        FileInfo f = new(e.FullPath);
-        if (_lastWriteTime == f.LastWriteTime)
-            return;
-        lock (_sync)
-        {
-            if (_readingInprogress || (Settings.EnableFilePoolingDelay && DateTime.Now.Subtract(_lastRead).TotalSeconds <= Settings.FilePoolingDelayInterval))
-                return;
-            _lastWriteTime = f.LastWriteTime;
-            _lastRead = DateTime.Now;
-            _watchFile.EnableRaisingEvents = false;
-            _readingInprogress = true;
-        }
+        _watcherSemaphore.Wait();
         try
         {
-            if (e.ChangeType == WatcherChangeTypes.Changed)
-            {
-                _logUI.SetReloadColorDate(FileProcessor.lastNewestMessage);
-                await FileProcessor.Process(OfflineDataProvider, e.FullPath, _cancellationTokenSource.Token);
-            }
-        }
-        catch (Exception exception)
-        {
+            _watchFile.EnableRaisingEvents = false;
             AnalogyLogMessage m = new()
                                   {
-                                      Text = $"Error monitoring file {e.FullPath}. Reason {exception}",
+                                      Text = $"{FileName} has been deleted. Stopping monitoring",
                                       FileName = FileName,
                                       Level = AnalogyLogLevel.Warning,
                                       Class = AnalogyLogClass.General,
                                       Date = DateTime.Now
                                   };
-            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, e.FullPath));
-            AnalogyLogManager.Instance.LogErrorMessage(m);
+            _watchFile.Dispose();
+            OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         }
         finally
         {
-            _readingInprogress = false;
-            _watchFile.EnableRaisingEvents = true;
+            _watcherSemaphore.Release();
+        }
+    }
+
+    private async void WatchFile_Changed(object sender, FileSystemEventArgs e)
+    {
+        await _watcherSemaphore.WaitAsync();
+        try
+        {
+            if (_readingInprogress)
+                return;
+            FileInfo f = new(e.FullPath);
+            if (_lastWriteTime == f.LastWriteTime)
+                return;
+            lock (_sync)
+            {
+                if (_readingInprogress || (Settings.EnableFilePoolingDelay && DateTime.Now.Subtract(_lastRead).TotalSeconds <= Settings.FilePoolingDelayInterval))
+                    return;
+                _lastWriteTime = f.LastWriteTime;
+                _lastRead = DateTime.Now;
+                _watchFile.EnableRaisingEvents = false;
+                _readingInprogress = true;
+            }
+            try
+            {
+                if (e.ChangeType == WatcherChangeTypes.Changed)
+                {
+                    _logUI.SetReloadColorDate(FileProcessor.lastNewestMessage);
+                    await FileProcessor.Process(OfflineDataProvider, e.FullPath, _cancellationTokenSource.Token);
+                }
+            }
+            catch (Exception exception)
+            {
+                AnalogyLogMessage m = new()
+                                      {
+                                          Text = $"Error monitoring file {e.FullPath}. Reason {exception}",
+                                          FileName = FileName,
+                                          Level = AnalogyLogLevel.Warning,
+                                          Class = AnalogyLogClass.General,
+                                          Date = DateTime.Now
+                                      };
+                OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, e.FullPath));
+                AnalogyLogManager.Instance.LogErrorMessage(m);
+            }
+            finally
+            {
+                _readingInprogress = false;
+                _watchFile.EnableRaisingEvents = true;
+            }
+        }
+        finally
+        {
+            _watcherSemaphore.Release();
         }
     }
 }
