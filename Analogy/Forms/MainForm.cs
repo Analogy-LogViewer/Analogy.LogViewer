@@ -417,10 +417,15 @@ namespace Analogy.Forms
             {
                 Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
             };
-            dockManager1.ClosingPanel += (s, e) =>
+            dockManager1.ClosingPanel += (s, e) => 
             {
-                var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
-                workspace?.SaveCurrentWorkspace();
+                 Control control = e.Panel.ActiveControl;
+                 if (control != null)
+                 {
+                     control.Dispose();
+                 }
+                 var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
+                 workspace?.SaveCurrentWorkspace();
             };
             bbtnSponsorOpenCollection.ItemClick +=
                 (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
@@ -572,7 +577,7 @@ namespace Analogy.Forms
             };
 
             bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
-
+            
         }
 
         private async Task OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
