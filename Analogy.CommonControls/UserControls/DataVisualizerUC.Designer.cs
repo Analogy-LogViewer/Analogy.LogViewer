@@ -46,6 +46,8 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtpMessagesText = new DevExpress.XtraTab.XtraTabPage();
             this.xtpPieChart = new DevExpress.XtraTab.XtraTabPage();
+            this.xtpColumnPlotter = new DevExpress.XtraTab.XtraTabPage();
+            
             this.logStatisticsUC1 = new Analogy.CommonControls.UserControls.LogStatisticsUC();
             this.tmrPlotting = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -70,6 +72,7 @@
             this.xtraTabControl1.SuspendLayout();
             this.xtpMessagesText.SuspendLayout();
             this.xtpPieChart.SuspendLayout();
+            this.xtpColumnPlotter.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -248,7 +251,7 @@
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpMessagesText,
-            this.xtpPieChart});
+            this.xtpPieChart, this.xtpColumnPlotter});
             // 
             // xtpMessagesText
             // 
@@ -263,6 +266,13 @@
             this.xtpPieChart.Name = "xtpPieChart";
             this.xtpPieChart.Size = new System.Drawing.Size(1013, 541);
             this.xtpPieChart.Text = "Pies";
+            // 
+            // xtpColumnPlotter
+            // 
+            this.xtpColumnPlotter.Controls.Add(this.logStatisticsUC1);
+            this.xtpColumnPlotter.Name = "xtpColumnPlotter";
+            this.xtpColumnPlotter.Size = new System.Drawing.Size(1013, 541);
+            this.xtpColumnPlotter.Text = "Values";
             // 
             // logStatisticsUC1
             // 
@@ -311,6 +321,7 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.xtpMessagesText.ResumeLayout(false);
             this.xtpPieChart.ResumeLayout(false);
+            this.xtpColumnPlotter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -329,6 +340,7 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtpMessagesText;
         private DevExpress.XtraTab.XtraTabPage xtpPieChart;
+        private DevExpress.XtraTab.XtraTabPage xtpColumnPlotter;
         private LogStatisticsUC logStatisticsUC1;
         private System.Windows.Forms.Timer tmrPlotting;
         private DevExpress.XtraEditors.SpinEdit seRefreshInterval;
