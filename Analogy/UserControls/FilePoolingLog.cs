@@ -22,11 +22,11 @@ namespace Analogy
         private string FileName { get; set; }
         public bool Enable { get; set; } = true;
         private FilePoolingManager PoolingManager { get; }
-        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string filter,  string  initialFilename, string initialFolder)
+        public FilePoolingUCLogs(IAnalogyOfflineDataProvider offlineDataProvider, string fileName, string initialFolder)
         {
             InitializeComponent();
-            FileName = initialFilename;
-            PoolingManager = new FilePoolingManager(filter, initialFilename, ucLogs1, offlineDataProvider);
+            FileName = fileName;
+            PoolingManager = new FilePoolingManager(FileName, ucLogs1, offlineDataProvider);
             ucLogs1.SetFileDataSource(offlineDataProvider, offlineDataProvider);
             ucLogs1.EnableFileReload(FileName);
 

@@ -853,11 +853,11 @@ namespace Analogy
                     dockManager1.ActivePanel = page;
                 }
 
-                async Task OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string  initialFile)
+                async Task OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
                 {
                     openedWindows++;
                     await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
-                    UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFile, initialFolder);
+                    UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
 
@@ -1011,9 +1011,7 @@ namespace Analogy
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            EditFilePooling efp = new EditFilePooling(openFileDialog1.FileName);
-                            efp.ShowDialog();
-                            await OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, efp.Filter, openFileDialog1.FileName);
+                            await OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
                             AddRecentFiles(recentfiles, offlineAnalogy, title,
                                 new List<string> { openFileDialog1.FileName });
                         }
