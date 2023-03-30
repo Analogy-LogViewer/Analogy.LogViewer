@@ -1007,7 +1007,7 @@ namespace Analogy
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             EditFilePooling efp = new EditFilePooling(openFileDialog1.FileName);
-                            efp.ShowDialog();
+                            efp.ShowDialog(this);
                             await OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, efp.Filter, openFileDialog1.FileName);
                             AddRecentFiles(recentfiles, offlineAnalogy, title,
                                 new List<string> { openFileDialog1.FileName });

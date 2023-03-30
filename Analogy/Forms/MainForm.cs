@@ -1707,7 +1707,7 @@ namespace Analogy.Forms
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             EditFilePooling efp = new EditFilePooling(openFileDialog1.FileName);
-                            efp.ShowDialog();
+                            efp.ShowDialog(this);
                             await OpenFilePooling(dataProvider.OptionalTitle, dataProvider,
                                 dataProvider.InitialFolderFullPath, efp.Filter, openFileDialog1.FileName);
                             AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
@@ -2005,7 +2005,7 @@ namespace Analogy.Forms
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
                         EditFilePooling efp = new EditFilePooling(openFileDialog1.FileName);
-                        efp.ShowDialog();
+                        efp.ShowDialog(this);
                         OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, efp.Filter, openFileDialog1.FileName);
                         AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
                             new List<string> { openFileDialog1.FileName });
