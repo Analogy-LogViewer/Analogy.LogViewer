@@ -27,17 +27,19 @@ namespace Analogy.CommonControls.UserControls
             InitializeComponent();
         }
 
-        public DataVisualizerUC(IUserSettingsManager settings, Func<List<IAnalogyLogMessage>> messagesFunc) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, Func<List<IAnalogyLogMessage>> messagesFunc, IAnalogyLogger analogyLogger) : this()
         {
             _settings = settings;
             Messages = messagesFunc;
             logStatisticsUC1.Statistics = new LogStatistics(messagesFunc.Invoke());
+            valuesPlotterUC.Init(messagesFunc, analogyLogger);
         }
-        public DataVisualizerUC(IUserSettingsManager settings, List<IAnalogyLogMessage> messages) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, List<IAnalogyLogMessage> messages, IAnalogyLogger analogyLogger) : this()
         {
             _settings = settings;
             Messages = () => messages;
             logStatisticsUC1.Statistics = new LogStatistics(messages);
+            valuesPlotterUC.Init(Messages, analogyLogger);
         }
 
         private void DataVisualizerUC_Load(object sender, EventArgs e)

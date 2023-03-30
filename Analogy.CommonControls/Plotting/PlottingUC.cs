@@ -17,8 +17,8 @@ namespace Analogy.CommonControls.Plotting
     public partial class PlottingUC : XtraUserControl
     {
         public event EventHandler<(string name, bool isChecked)> LegendItemChecked;
-        public IAnalogyPlotting Plotter { get; }
-        public AnalogyPlottingInteractor Interactor { get; }
+        public IAnalogyPlotting Plotter { get; private set; }
+        public AnalogyPlottingInteractor Interactor { get; private set; }
         private PlottingDataManager Manager { get; set; }
         public PlotState PlotState { get; private set; }
         private Color SingleColor { get; set; }
@@ -35,6 +35,11 @@ namespace Analogy.CommonControls.Plotting
         }
 
         public PlottingUC(IAnalogyPlotting plotter, AnalogyPlottingInteractor interactor) : this()
+        {
+            Init(plotter, interactor);
+        }
+
+        public void Init(IAnalogyPlotting plotter, AnalogyPlottingInteractor interactor)
         {
             Plotter = plotter;
             Interactor = interactor;
