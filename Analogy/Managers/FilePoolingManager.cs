@@ -18,7 +18,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     private readonly UCLogs _logUI;
     private readonly List<IAnalogyLogMessage> _messages;
     //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.
-    static SemaphoreSlim _watcherSemaphore = new SemaphoreSlim(1,1);
+    private readonly SemaphoreSlim _watcherSemaphore = new(1,1);
 
     private readonly object _sync;
     private DateTime _lastRead;
