@@ -1,4 +1,6 @@
-﻿namespace Analogy.CommonControls.UserControls
+﻿using DevExpress.XtraEditors;
+
+namespace Analogy.CommonControls.UserControls
 {
     partial class ValuesPlotterUC
     {
@@ -30,12 +32,12 @@
         {
             this.PnlToolbar = new System.Windows.Forms.Panel();
             this.CmbColumns = new System.Windows.Forms.ComboBox();
-            this.BtnAdd = new System.Windows.Forms.Button();
-            this.BtnRefreshColumns = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.LstPlotted = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.BtnDelete = new System.Windows.Forms.Button();
+            this.BtnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnRefreshColumns = new DevExpress.XtraEditors.SimpleButton();
+            this.LblSelect = new System.Windows.Forms.Label();
+            this.LstPlotted = new ListBoxControl();
+            this.LblPlotted = new System.Windows.Forms.Label();
+            this.BtnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.PnlPlot = new System.Windows.Forms.Panel();
             this.PnlToolbar.SuspendLayout();
             this.SuspendLayout();
@@ -43,9 +45,9 @@
             // PnlToolbar
             // 
             this.PnlToolbar.Controls.Add(this.BtnDelete);
-            this.PnlToolbar.Controls.Add(this.label2);
+            this.PnlToolbar.Controls.Add(this.LblPlotted);
             this.PnlToolbar.Controls.Add(this.LstPlotted);
-            this.PnlToolbar.Controls.Add(this.label1);
+            this.PnlToolbar.Controls.Add(this.LblSelect);
             this.PnlToolbar.Controls.Add(this.BtnRefreshColumns);
             this.PnlToolbar.Controls.Add(this.BtnAdd);
             this.PnlToolbar.Controls.Add(this.CmbColumns);
@@ -70,7 +72,6 @@
             this.BtnAdd.Size = new System.Drawing.Size(75, 23);
             this.BtnAdd.TabIndex = 1;
             this.BtnAdd.Text = "Add";
-            this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnRefreshColumns
@@ -80,34 +81,32 @@
             this.BtnRefreshColumns.Size = new System.Drawing.Size(75, 23);
             this.BtnRefreshColumns.TabIndex = 2;
             this.BtnRefreshColumns.Text = "Refresh list";
-            this.BtnRefreshColumns.UseVisualStyleBackColor = true;
             this.BtnRefreshColumns.Click += new System.EventHandler(this.BtnRefreshColumns_Click);
             // 
-            // label1
+            // LblSelect
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Select column";
+            this.LblSelect.AutoSize = true;
+            this.LblSelect.Location = new System.Drawing.Point(9, 16);
+            this.LblSelect.Name = "LblSelect";
+            this.LblSelect.Size = new System.Drawing.Size(74, 13);
+            this.LblSelect.TabIndex = 3;
+            this.LblSelect.Text = "Select column";
             // 
             // LstPlotted
             // 
-            this.LstPlotted.FormattingEnabled = true;
             this.LstPlotted.Location = new System.Drawing.Point(629, 13);
             this.LstPlotted.Name = "LstPlotted";
             this.LstPlotted.Size = new System.Drawing.Size(363, 69);
             this.LstPlotted.TabIndex = 4;
             // 
-            // label2
+            // LblPlotted
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(583, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Plotted";
+            this.LblPlotted.AutoSize = true;
+            this.LblPlotted.Location = new System.Drawing.Point(583, 16);
+            this.LblPlotted.Name = "LblPlotted";
+            this.LblPlotted.Size = new System.Drawing.Size(40, 13);
+            this.LblPlotted.TabIndex = 5;
+            this.LblPlotted.Text = "Plotted";
             // 
             // BtnDelete
             // 
@@ -116,7 +115,6 @@
             this.BtnDelete.Size = new System.Drawing.Size(75, 23);
             this.BtnDelete.TabIndex = 6;
             this.BtnDelete.Text = "Delete";
-            this.BtnDelete.UseVisualStyleBackColor = true;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // PnlPlot
@@ -145,13 +143,13 @@
         #endregion
 
         private System.Windows.Forms.Panel PnlToolbar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BtnRefreshColumns;
-        private System.Windows.Forms.Button BtnAdd;
-        private System.Windows.Forms.ComboBox CmbColumns;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox LstPlotted;
-        private System.Windows.Forms.Button BtnDelete;
+        private System.Windows.Forms.Label LblSelect;
+        private DevExpress.XtraEditors.SimpleButton BtnRefreshColumns;
+        private DevExpress.XtraEditors.SimpleButton BtnAdd;
+        private System.Windows.Forms.ComboBox  CmbColumns;
+        private System.Windows.Forms.Label LblPlotted;
+        private ListBoxControl LstPlotted;
+        private DevExpress.XtraEditors.SimpleButton BtnDelete;
         private System.Windows.Forms.Panel PnlPlot;
     }
 }
