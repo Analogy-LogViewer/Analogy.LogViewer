@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -63,7 +63,7 @@
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.8.2" />
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.4.0" />
 		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.11.0" />
