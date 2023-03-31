@@ -1460,9 +1460,9 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        private void ExtensionPanel_SizeChanged(object sender, EventArgs e)
+        private void ExtensionPanel_SizeChanged(object? sender, EventArgs e)
         {
-            if (sender is DockPanel pnl && pnl.Controls.Count > 0)
+            if (sender is DockPanel { Controls.Count: > 0 } pnl)
             {
                 pnl.Controls[0].Size = pnl.Size;
             }
