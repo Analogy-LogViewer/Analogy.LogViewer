@@ -48,25 +48,25 @@
 		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.8.2" />
-		<PackageReference Include="Analogy.CommonUtilities" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.Example" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.Github" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.4.0" />
-		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.11.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.8.3" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.Example" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.Github" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.4.1" />
+		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.12.0" />
 		<PackageReference Include="Grpc.Core" Version="2.46.6" />
 		<PackageReference Include="Markdig" Version="0.31.0" />
 		<PackageReference Include="MessagePack" Version="2.5.108" />

@@ -489,6 +489,11 @@ namespace Analogy
 
             dockManager1.ClosingPanel += (s, e) =>
             {
+                Control control = e.Panel.ActiveControl;
+                if (control != null)
+                {
+                    control.Dispose();
+                }
                 var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
                 workspace?.SaveCurrentWorkspace();
             };
