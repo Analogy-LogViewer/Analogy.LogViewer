@@ -8,7 +8,7 @@ Interface -- LogServer.Client -- NLog.Targets
 Interface -- LogServer.Client -- Serilog.Sink
 Interface -- LogServer.Client -- AspNetCore.LogProvider
 
-Interface -- LogServer.Client --         -- Grpc
+Interface -- LogServer.Client --                   -- Grpc
 Interface -- CommonUtilities -- Template -- Grpc
 
 Interface -- CommonUtilities -- Template -- RegexParser
@@ -23,7 +23,6 @@ Interface -- CommonUtilities -- Template -- Kafka
 Interface -- CommonUtilities -- Template -- Log4jXml
 Interface -- CommonUtilities -- Template -- Log4Net
 Interface -- CommonUtilities -- Template -- NLog
-Interface -- CommonUtilities -- Template -- RabbitMq
 Interface -- CommonUtilities -- Template -- Serilog 
 Interface -- CommonUtilities -- Template -- WindowsEventLogs
 Interface -- CommonUtilities -- Template -- XMLParser
