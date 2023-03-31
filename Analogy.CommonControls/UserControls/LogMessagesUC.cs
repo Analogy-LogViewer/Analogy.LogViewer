@@ -348,7 +348,7 @@ namespace Analogy.CommonControls.UserControls
             HideColumns();
             BookmarkModeUI();
 
-            
+
             if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
             {
                 string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
@@ -397,11 +397,17 @@ namespace Analogy.CommonControls.UserControls
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
- 
+
         }
 
         private void HideColumns()
         {
+            //first restore all
+            foreach (GridColumn gridColumn in logGrid.Columns)
+            {
+                gridColumn.Visible = true;
+            }
+
             if (DataProvider.HideAdditionalColumns() != null)
             {
                 foreach (string columnFieldName in DataProvider.HideAdditionalColumns())
@@ -1108,9 +1114,9 @@ namespace Analogy.CommonControls.UserControls
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //ignore replacement
+                Logger.LogError($"Error loading replacement header: {ex.Message}");
             }
         }
 

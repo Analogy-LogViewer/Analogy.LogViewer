@@ -940,6 +940,12 @@ namespace Analogy.CommonControls.UserControls
         }
         private void HideColumns()
         {
+            //first restore all
+            foreach (GridColumn gridColumn in logGrid.Columns)
+            {
+                gridColumn.Visible = true;
+            }
+
             if (DataProvider.HideAdditionalColumns() != null)
             {
                 foreach (string columnFieldName in DataProvider.HideAdditionalColumns())
