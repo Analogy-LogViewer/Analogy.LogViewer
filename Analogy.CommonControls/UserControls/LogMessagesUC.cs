@@ -402,11 +402,22 @@ namespace Analogy.CommonControls.UserControls
 
         private void HideColumns()
         {
-            if (DataProvider.HideColumns() != null)
+            if (DataProvider.HideAdditionalColumns() != null)
             {
-                foreach (string columnFieldName in DataProvider.HideColumns())
+                foreach (string columnFieldName in DataProvider.HideAdditionalColumns())
                 {
                     var column = logGrid.Columns.ColumnByFieldName(columnFieldName);
+                    if (column != null)
+                    {
+                        column.Visible = false;
+                    }
+                }
+            }
+            if (DataProvider.HideExistingColumns() != null)
+            {
+                foreach (AnalogyLogMessagePropertyName columnFieldName in DataProvider.HideExistingColumns())
+                {
+                    var column = logGrid.Columns.ColumnByFieldName(columnFieldName.ToString());
                     if (column != null)
                     {
                         column.Visible = false;
@@ -1081,33 +1092,19 @@ namespace Analogy.CommonControls.UserControls
         }
         private void LoadReplacementHeaders()
         {
-            if (DataProvider == null)
+            if (DataProvider?.GetReplacementHeaders() == null)
             {
                 return;
             }
 
             try
             {
-                if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
-                {
-                    return;
-                }
-
                 foreach ((string fieldName, string replacementHeader) in DataProvider.GetReplacementHeaders())
                 {
                     var column = logGrid.Columns.FirstOrDefault((col) => col.FieldName == fieldName);
                     if (column != null)
                     {
                         column.Caption = replacementHeader;
-                    }
-                }
-
-                foreach (string fieldName in DataProvider.HideColumns())
-                {
-                    var column = logGrid.Columns.FirstOrDefault((col) => col.FieldName == fieldName);
-                    if (column != null)
-                    {
-                        column.Visible = false;
                     }
                 }
             }
