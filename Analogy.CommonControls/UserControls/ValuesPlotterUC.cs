@@ -96,6 +96,7 @@ namespace Analogy.CommonControls.UserControls
         private void RefreshColumnList()
         {
             List<IAnalogyLogMessage> m = _messages.Invoke();
+            ColumnNames.Clear();
             IOrderedEnumerable<string> columns = m.Where(i => i.AdditionalProperties != null).SelectMany(i => i.AdditionalProperties!.Keys).Distinct().OrderBy(i => i);
             foreach (string column in columns)
                 ColumnNames.Add(column);
@@ -138,6 +139,40 @@ namespace Analogy.CommonControls.UserControls
             if (column != null)
             {
                 RemoveSeries(column);
+            }
+        }
+
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
+        {
+            foreach ((string SeriesName, AnalogyPlottingSeriesType SeriesViewType) series in _series)
+            {
+                if (message.AdditionalProperties != null && message.AdditionalProperties.ContainsKey(series.SeriesName))
+                {
+                    if (Double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
+                    {
+                        AnalogyPlottingPointData data = new(series.SeriesName, val, message.Date);
+                        OnNewPointData?.Invoke(this, data);
+                    }
+                }
+            }
+        }
+
+        public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
+        {
+            foreach ((string SeriesName, AnalogyPlottingSeriesType SeriesViewType) series in _series)
+            {
+                List<IAnalogyLogMessage> messagesFiltered = messages.Where(i => i.AdditionalProperties != null && i.AdditionalProperties.ContainsKey(series.SeriesName)).OrderBy(i => i.Date)
+                    .ToList();
+                List<AnalogyPlottingPointData> points = new(messagesFiltered.Count);
+                foreach (IAnalogyLogMessage message in messagesFiltered)
+                {
+                    if (Double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
+                    {
+                        AnalogyPlottingPointData data = new(series.SeriesName, val, message.Date);
+                        points.Add(data);
+                    }
+                }
+                OnNewPointsData?.Invoke(this, points);
             }
         }
     }

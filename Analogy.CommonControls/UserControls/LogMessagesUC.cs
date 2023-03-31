@@ -188,6 +188,8 @@ namespace Analogy.CommonControls.UserControls
         #region fields
         private bool useSpecificColumnForJson;
         private string jsonColumnForInlineJsonViewer;
+        private DataVisualizerForm frmDataVisualizer;
+
         #endregion fields
 
         private JsonTreeUC JsonTreeView { get; set; }
@@ -1740,6 +1742,9 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
+            if (frmDataVisualizer != null)
+                frmDataVisualizer.AppendMessage(message, dataSource);
+
             if (ExternalWindowsCount > 0)
             {
                 foreach (XtraFormLogGrid grid in ExternalWindows)
@@ -1870,6 +1875,9 @@ namespace Analogy.CommonControls.UserControls
                     grid.AppendMessages(messages, dataSource);
                 }
             }
+
+            if (frmDataVisualizer != null)
+                frmDataVisualizer.AppendMessages(messages, dataSource);
 
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
             {
@@ -3347,8 +3355,8 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnDataVisualizer_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DataVisualizerForm sv = new DataVisualizerForm(Settings, () => Messages, Logger);
-            sv.Show(this);
+            frmDataVisualizer = new DataVisualizerForm(Settings, () => Messages, Logger);
+            frmDataVisualizer.Show(this);
         }
 
         private void bbiScreenshot_ItemClick(object sender, ItemClickEventArgs e)

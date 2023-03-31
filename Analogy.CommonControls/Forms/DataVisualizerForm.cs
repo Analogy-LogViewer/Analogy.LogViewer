@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
-using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
 
@@ -11,6 +10,7 @@ namespace Analogy.CommonControls.Forms
     public partial class DataVisualizerForm : DevExpress.XtraEditors.XtraForm
     {
         private readonly IUserSettingsManager _settingsManager;
+        private readonly DataVisualizerUC dataVisualizerUC;
 
         public DataVisualizerForm()
         {
@@ -19,19 +19,24 @@ namespace Analogy.CommonControls.Forms
         public DataVisualizerForm(IUserSettingsManager settingsManager, Func<List<IAnalogyLogMessage>> messages, IAnalogyLogger analogyLogger) : this()
         {
             _settingsManager = settingsManager;
-            DataVisualizerUC uc = new DataVisualizerUC(_settingsManager, messages, analogyLogger);
-            this.Controls.Add(uc);
-            uc.Dock = DockStyle.Fill;
+            dataVisualizerUC = new DataVisualizerUC(_settingsManager, messages, analogyLogger);
+            Controls.Add(dataVisualizerUC);
+            dataVisualizerUC.Dock = DockStyle.Fill;
         }
-        public DataVisualizerForm(List<IAnalogyLogMessage> messages, IAnalogyLogger analogyLogger) : this()
-        {
-            DataVisualizerUC uc = new DataVisualizerUC(_settingsManager, messages, analogyLogger);
-            this.Controls.Add(uc);
-            uc.Dock = DockStyle.Fill;
-        }
+        
         private void DataVisualizerUCForm_Load(object sender, EventArgs e)
         {
             Icon = _settingsManager.GetIcon();
+        }
+
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
+        {
+            dataVisualizerUC?.AppendMessage(message, dataSource);
+        }
+
+        public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
+        {
+            dataVisualizerUC?.AppendMessages(messages, dataSource);
         }
     }
 }
