@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -53,7 +53,7 @@
 		<PackageReference Include="Analogy.CommonUtilities" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="3.8.2" />
+		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.8.2" />
