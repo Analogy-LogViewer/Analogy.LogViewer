@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -59,7 +59,7 @@
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.8.2" />
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.8.2" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="3.8.2" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.8.2" />
