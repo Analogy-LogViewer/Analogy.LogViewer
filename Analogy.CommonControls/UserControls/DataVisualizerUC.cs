@@ -27,17 +27,12 @@ namespace Analogy.CommonControls.UserControls
             InitializeComponent();
         }
 
-        public DataVisualizerUC(IUserSettingsManager settings, Func<List<IAnalogyLogMessage>> messagesFunc) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, Func<List<IAnalogyLogMessage>> messagesFunc, IAnalogyLogger analogyLogger) : this()
         {
             _settings = settings;
             Messages = messagesFunc;
             logStatisticsUC1.Statistics = new LogStatistics(messagesFunc.Invoke());
-        }
-        public DataVisualizerUC(IUserSettingsManager settings, List<IAnalogyLogMessage> messages) : this()
-        {
-            _settings = settings;
-            Messages = () => messages;
-            logStatisticsUC1.Statistics = new LogStatistics(messages);
+            valuesPlotterUC.Init(messagesFunc, analogyLogger);
         }
 
         private void DataVisualizerUC_Load(object sender, EventArgs e)
@@ -218,6 +213,16 @@ namespace Analogy.CommonControls.UserControls
             tmrPlotting.Enabled = false;
             Plot();
             tmrPlotting.Enabled = true;
+        }
+
+        public void AppendMessage(IAnalogyLogMessage message, string dataSource)
+        {
+            valuesPlotterUC?.AppendMessage(message, dataSource);
+        }
+
+        public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
+        {
+            valuesPlotterUC?.AppendMessages(messages, dataSource);
         }
     }
 }

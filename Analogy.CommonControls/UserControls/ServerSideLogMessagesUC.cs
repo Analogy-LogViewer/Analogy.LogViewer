@@ -139,6 +139,8 @@ namespace Analogy.CommonControls.UserControls
         }
 
         private bool _realTimeMode;
+        private DataVisualizerForm frmDataVisualizer;
+
         public bool RealTimeMode
         {
             set
@@ -1628,6 +1630,9 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
+            if (frmDataVisualizer != null)
+                frmDataVisualizer.AppendMessage(message, dataSource);
+
             if (ExternalWindowsCount > 0)
             {
                 foreach (XtraFormLogGrid grid in ExternalWindows)
@@ -1746,6 +1751,8 @@ namespace Analogy.CommonControls.UserControls
                     grid.AppendMessages(messages, dataSource);
                 }
             }
+            if (frmDataVisualizer != null)
+                frmDataVisualizer.AppendMessages(messages, dataSource);
 
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
             {
@@ -3138,8 +3145,8 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnDataVisualizer_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DataVisualizerForm sv = new DataVisualizerForm(Settings, () => Messages);
-            sv.Show(this);
+            frmDataVisualizer = new DataVisualizerForm(Settings, () => Messages, Logger);
+            frmDataVisualizer.Show(this);
         }
 
         private void bbiScreenshot_ItemClick(object sender, ItemClickEventArgs e)

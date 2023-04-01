@@ -27,6 +27,8 @@ namespace Analogy.CommonControls.UserControls
                     components.Dispose();
 
                 }
+                if (frmDataVisualizer != null && !frmDataVisualizer.IsDisposed)
+                    frmDataVisualizer.Dispose();
             }
             base.Dispose(disposing);
         }
