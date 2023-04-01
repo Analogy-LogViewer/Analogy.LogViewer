@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -39,10 +43,6 @@
             this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
             this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
             this.lblSkinName = new DevExpress.XtraEditors.LabelControl();
-            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).BeginInit();
@@ -74,6 +74,42 @@
             this.skinPaletteDropDownButtonItem1});
             this.barManager1.MainMenu = this.bar1;
             this.barManager1.MaxItemId = 3;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 2";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar1.FloatLocation = new System.Drawing.Point(179, 483);
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinDropDownButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1)});
+            this.bar1.OptionsBar.MultiLine = true;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.bar1.Text = "Custom 2";
+            // 
+            // skinDropDownButtonItem1
+            // 
+            this.skinDropDownButtonItem1.Id = 1;
+            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            // 
+            // skinPaletteDropDownButtonItem1
+            // 
+            this.skinPaletteDropDownButtonItem1.Id = 2;
+            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 28);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1311, 30);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
             // 
@@ -113,9 +149,10 @@
             this.groupControlThemes.Controls.Add(this.lblSvgPalette);
             this.groupControlThemes.Controls.Add(this.lblSkinName);
             this.groupControlThemes.Controls.Add(this.standaloneBarDockControl1);
-            this.groupControlThemes.Location = new System.Drawing.Point(150, 382);
+            this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControlThemes.Location = new System.Drawing.Point(0, 341);
             this.groupControlThemes.Name = "groupControlThemes";
-            this.groupControlThemes.Size = new System.Drawing.Size(1315, 339);
+            this.groupControlThemes.Size = new System.Drawing.Size(1315, 275);
             this.groupControlThemes.TabIndex = 18;
             this.groupControlThemes.Text = "Themes and Skins";
             // 
@@ -142,42 +179,6 @@
             this.lblSkinName.Size = new System.Drawing.Size(66, 16);
             this.lblSkinName.TabIndex = 3;
             this.lblSkinName.Text = "Skin Name:";
-            // 
-            // standaloneBarDockControl1
-            // 
-            this.standaloneBarDockControl1.AutoSize = true;
-            this.standaloneBarDockControl1.CausesValidation = false;
-            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 28);
-            this.standaloneBarDockControl1.Manager = this.barManager1;
-            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1311, 30);
-            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Custom 2";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar1.FloatLocation = new System.Drawing.Point(179, 483);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinDropDownButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1)});
-            this.bar1.OptionsBar.MultiLine = true;
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
-            this.bar1.Text = "Custom 2";
-            // 
-            // skinDropDownButtonItem1
-            // 
-            this.skinDropDownButtonItem1.Id = 1;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            // 
-            // skinPaletteDropDownButtonItem1
-            // 
-            this.skinPaletteDropDownButtonItem1.Id = 2;
-            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
             // 
             // WelcomeThemeSelectionUC
             // 
