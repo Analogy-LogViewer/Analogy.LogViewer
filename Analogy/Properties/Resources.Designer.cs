@@ -193,6 +193,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Analogy_theme {
+            get {
+                object obj = ResourceManager.GetObject("Analogy_theme", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Analogy1024x1024 {
             get {
                 object obj = ResourceManager.GetObject("Analogy1024x1024", resourceCulture);
@@ -306,6 +316,16 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap Boolean {
             get {
                 object obj = ResourceManager.GetObject("Boolean", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap changetheme_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("changetheme_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -32,6 +32,7 @@
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.aceGeneral = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceTheme = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -51,7 +52,8 @@
             // 
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceGeneral});
+            this.aceGeneral,
+            this.aceTheme});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
@@ -67,6 +69,14 @@
             this.aceGeneral.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceGeneral.Text = "General";
             this.aceGeneral.Click += new System.EventHandler(this.aceGeneral_Click);
+            // 
+            // aceTheme
+            // 
+            this.aceTheme.ImageOptions.Image = global::Analogy.Properties.Resources.changetheme_32x32;
+            this.aceTheme.Name = "aceTheme";
+            this.aceTheme.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceTheme.Text = "Theme";
+            this.aceTheme.Click += new System.EventHandler(this.aceTheme_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -112,5 +122,6 @@
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager fluentFormDefaultManager1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceGeneral;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceTheme;
     }
 }

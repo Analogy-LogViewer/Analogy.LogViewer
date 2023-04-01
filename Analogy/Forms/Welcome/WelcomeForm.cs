@@ -1,19 +1,13 @@
-﻿using DevExpress.XtraBars;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using Analogy.ApplicationSettings;
-using Analogy.Common.Interfaces;
+﻿using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms.Welcome;
+using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {
     public partial class WelcomeForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
 
         public WelcomeForm()
         {
@@ -21,11 +15,7 @@ namespace Analogy.Forms
             EnableAcrylicAccent = false;
         }
 
-        private void aceGeneral_Click(object sender, EventArgs e)
-        {
-            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);
-        }
-
+  
         private void AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType type)
         {
             string name = type.ToString();
@@ -57,6 +47,8 @@ namespace Analogy.Forms
             {
                 case ApplicationWelcomeSelectionType.General:
                     return new WelcomeGeneralUC();
+                case ApplicationWelcomeSelectionType.Theme:
+                    return new WelcomeThemeSelectionUC();
                 default:
                 {
                     AnalogyLogger.Instance.LogError($"Selection with {selectionType} was not found");
@@ -75,6 +67,16 @@ namespace Analogy.Forms
             ShowIcon = true;
             Icon = UserSettingsManager.UserSettings.GetIcon();
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);
+        }
+      private void aceGeneral_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);
+        }
+
+        private void aceTheme_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.Theme);
+
         }
     }
 }
