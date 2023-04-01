@@ -117,4 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelControl1.Text" xml:space="preserve">
+    <value>Hi there 👋 
+
+Analogy Log viewer is a very versatile tool. It started as standard log viewer for specific log, expanded into multi frameworks log viewer which supports all common frameworks like Serilog, NLog, Log4Net, Windows event logs and more and also support custom needs like git commits query (with timeline support of each commit), Words search for specific words in dictionary, Companies’ specific formats (Philips Healthcare, Intuitive Surgical and more).
+
+It supports real time log streaming Using gRPC (and has Log Server) which enable cross platform logs streaming using other languages and there are examples (in c++, python, Java). Making the application itself agnostic to the data provider allows everyone to implement their own logic for parsing/streaming logs. At the UI level it support many query operations and other tools like Json Viewer, Chart plotting
+</value>
+  </data>
 </root>
