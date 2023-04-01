@@ -1,8 +1,6 @@
 ﻿using Analogy.Interfaces.DataTypes;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Analogy.DataTypes

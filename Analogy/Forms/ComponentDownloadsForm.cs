@@ -2,9 +2,7 @@
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraEditors;
-using System;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.CommonControls.Managers;

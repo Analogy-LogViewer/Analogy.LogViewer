@@ -1,5 +1,4 @@
-﻿using System;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
 {

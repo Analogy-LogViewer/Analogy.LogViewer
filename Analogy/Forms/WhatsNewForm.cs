@@ -1,6 +1,4 @@
 ﻿using Analogy.WhatIsNew;
-using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Analogy.Forms

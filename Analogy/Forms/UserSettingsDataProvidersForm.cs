@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;

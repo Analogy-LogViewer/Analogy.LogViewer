@@ -1,8 +1,6 @@
 ﻿using Analogy.ApplicationSettings;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
-using System;
-using System.Linq;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;

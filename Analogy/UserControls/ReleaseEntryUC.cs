@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Analogy.CommonUtilities.Github;
 using DevExpress.XtraEditors;
 using Markdig;

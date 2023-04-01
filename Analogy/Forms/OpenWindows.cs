@@ -1,8 +1,6 @@
 ﻿using Analogy.Interfaces;
 using DevExpress.XtraEditors.Controls;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;

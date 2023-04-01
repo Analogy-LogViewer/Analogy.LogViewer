@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Analogy.Forms
+namespace Analogy.Forms.Welcome
 {
-    public partial class DataProviderSettingsForm : XtraForm
+    public partial class WelcomeGeneralUC : XtraUserControl
     {
-        public DataProviderSettingsForm()
+        public WelcomeGeneralUC()
         {
             InitializeComponent();
         }

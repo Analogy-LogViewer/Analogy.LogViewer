@@ -1,7 +1,5 @@
 ﻿using Analogy.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;

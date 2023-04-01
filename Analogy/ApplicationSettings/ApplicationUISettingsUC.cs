@@ -2,7 +2,6 @@
 using Analogy.Properties;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;

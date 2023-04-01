@@ -2,9 +2,7 @@
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Analogy.Managers
 {

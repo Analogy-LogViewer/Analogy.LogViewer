@@ -1,5 +1,4 @@
 ﻿using Analogy.LogViewer.Template;
-using System;
 using System.Drawing;
 using System.Reflection;
 using System.Runtime.Versioning;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;

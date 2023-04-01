@@ -1,5 +1,4 @@
 ﻿using Analogy.Interfaces;
-using System;
 
 namespace Analogy.Managers
 {

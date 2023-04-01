@@ -1,15 +1,12 @@
 ﻿using Analogy.Properties;
 using DevExpress.XtraEditors;
-using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Runtime.Versioning;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 

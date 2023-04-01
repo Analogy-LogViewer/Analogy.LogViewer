@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Analogy.CommonControls.Managers;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;

@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraCharts;
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Analogy.DataTypes;
