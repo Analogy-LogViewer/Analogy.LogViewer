@@ -202,6 +202,7 @@ namespace Analogy.CommonControls.UserControls
         public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
         {
             Logger = logger;
+            Id = Guid.NewGuid();
             Settings = userSettingsManager;
             ExtensionManager = extensionManager;
             FactoriesManager = factoriesManager;
@@ -305,7 +306,6 @@ namespace Analogy.CommonControls.UserControls
             _filterCriteria.IncludeFilterCriteriaUIOptions = IncludeFilterCriteriaUIOptions;
             _filterCriteria.ExcludeFilterCriteriaUIOptions = ExcludeFilterCriteriaUIOptions;
 
-
         }
 
         private async void LogMessagesUC_Load(object sender, EventArgs e)
@@ -349,6 +349,16 @@ namespace Analogy.CommonControls.UserControls
             LoadReplacementHeaders();
             HideColumns();
             BookmarkModeUI();
+
+
+            if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
+            {
+                string name = Path.GetFileNameWithoutExtension(Settings.LogsLayoutFileName);
+                wsLogs.LoadWorkspace(name, Settings.LogsLayoutFileName);
+                wsLogs.ApplyWorkspace(name);
+            }
+            LoadWorkspace(CurrentLogLayoutFileName);
+
             await LoadExtensions();
             SetupEventsHandlers();
 
@@ -389,16 +399,33 @@ namespace Analogy.CommonControls.UserControls
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
- 
+
         }
 
         private void HideColumns()
         {
-            if (DataProvider.HideColumns() != null)
+            //first restore all
+            foreach (GridColumn gridColumn in logGrid.Columns)
             {
-                foreach (string columnFieldName in DataProvider.HideColumns())
+                gridColumn.Visible = true;
+            }
+
+            if (DataProvider.HideAdditionalColumns() != null)
+            {
+                foreach (string columnFieldName in DataProvider.HideAdditionalColumns())
                 {
                     var column = logGrid.Columns.ColumnByFieldName(columnFieldName);
+                    if (column != null)
+                    {
+                        column.Visible = false;
+                    }
+                }
+            }
+            if (DataProvider.HideExistingColumns() != null)
+            {
+                foreach (AnalogyLogMessagePropertyName columnFieldName in DataProvider.HideExistingColumns())
+                {
+                    var column = logGrid.Columns.ColumnByFieldName(columnFieldName.ToString());
                     if (column != null)
                     {
                         column.Visible = false;
@@ -1073,18 +1100,13 @@ namespace Analogy.CommonControls.UserControls
         }
         private void LoadReplacementHeaders()
         {
-            if (DataProvider == null)
+            if (DataProvider?.GetReplacementHeaders() == null)
             {
                 return;
             }
 
             try
             {
-                if (DataProvider.GetReplacementHeaders() == null || !DataProvider.GetReplacementHeaders().Any())
-                {
-                    return;
-                }
-
                 foreach ((string fieldName, string replacementHeader) in DataProvider.GetReplacementHeaders())
                 {
                     var column = logGrid.Columns.FirstOrDefault((col) => col.FieldName == fieldName);
@@ -1093,19 +1115,10 @@ namespace Analogy.CommonControls.UserControls
                         column.Caption = replacementHeader;
                     }
                 }
-
-                foreach (string fieldName in DataProvider.HideColumns())
-                {
-                    var column = logGrid.Columns.FirstOrDefault((col) => col.FieldName == fieldName);
-                    if (column != null)
-                    {
-                        column.Visible = false;
-                    }
-                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //ignore replacement
+                Logger.LogError($"Error loading replacement header: {ex.Message}");
             }
         }
 
@@ -1441,11 +1454,25 @@ namespace Analogy.CommonControls.UserControls
             }
             foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
             {
-                var page = dockManager1.AddPanel(DockingStyle.Float);
-                page.Text = extension.Title;
-                page.Controls.Add(extension.UserControl);
-                await extension.InitializeUserControl(this, Logger);
-                page.DockedAsTabbedDocument = true;
+                DockPanel? pnl = dockManager1.Panels.FirstOrDefault(i => i.ID == extension.Id);
+                if (pnl == null)
+                {
+                    pnl = dockManager1.AddPanel(DockingStyle.Float);
+                    pnl.Text = extension.Title;
+                    pnl.ID = extension.Id;
+                    pnl.DockedAsTabbedDocument = true;
+                }
+                pnl.Controls.Add(extension.CreateUserControl(Id, Logger));
+                pnl.SizeChanged += ExtensionPanel_SizeChanged;
+                await extension.InitializeUserControl(this, Id, Logger);
+            }
+        }
+
+        private void ExtensionPanel_SizeChanged(object? sender, EventArgs e)
+        {
+            if (sender is DockPanel { Controls.Count: > 0 } pnl)
+            {
+                pnl.Controls[0].Size = pnl.Size;
             }
         }
 
@@ -1637,6 +1664,7 @@ namespace Analogy.CommonControls.UserControls
         }
 
         public List<IAnalogyLogMessage> GetMessages() => PagingManager.GetAllMessages();
+        public Guid Id { get; }
 
         private string GetFilterDisplayText(DateRangeFilter filterType)
         {
@@ -1797,7 +1825,7 @@ namespace Analogy.CommonControls.UserControls
                     {
                         if (IsHandleCreated)
                         {
-                            BeginInvoke(new MethodInvoker(() => extension.NewMessage(message)));
+                            BeginInvoke(new MethodInvoker(() => extension.NewMessage(message, Id)));
                         }
                     }
                 }
@@ -1917,7 +1945,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 foreach (var extension in UserControlRegisteredExtensions)
                 {
-                    BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages)));
+                    BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages, Id)));
                 }
             }
 

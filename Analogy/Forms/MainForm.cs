@@ -417,10 +417,15 @@ namespace Analogy.Forms
             {
                 Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
             };
-            dockManager1.ClosingPanel += (s, e) =>
+            dockManager1.ClosingPanel += (s, e) => 
             {
-                var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
-                workspace?.SaveCurrentWorkspace();
+                 Control control = e.Panel.ActiveControl;
+                 if (control != null)
+                 {
+                     control.Dispose();
+                 }
+                 var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
+                 workspace?.SaveCurrentWorkspace();
             };
             bbtnSponsorOpenCollection.ItemClick +=
                 (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
@@ -572,7 +577,7 @@ namespace Analogy.Forms
             };
 
             bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
-
+            
         }
 
         private async Task OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
@@ -1488,12 +1493,12 @@ namespace Analogy.Forms
             }
 
             async Task OpenFilePooling(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider,
-                string initialFolder, string file)
+                string initialFolder, string file,  string  initialFile)
             {
 
                 OpenedWindows++;
                 await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
-                UserControl filepoolingUC = new FilePoolingUCLogs(dataProvider, file, initialFolder);
+                UserControl filepoolingUC = new FilePoolingUCLogs(dataProvider, file, initialFile, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
 
@@ -1706,8 +1711,10 @@ namespace Analogy.Forms
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
+                            EditFilePooling efp = new EditFilePooling(openFileDialog1.FileName);
+                            efp.ShowDialog(this);
                             await OpenFilePooling(dataProvider.OptionalTitle, dataProvider,
-                                dataProvider.InitialFolderFullPath, openFileDialog1.FileName);
+                                dataProvider.InitialFolderFullPath, efp.Filter, openFileDialog1.FileName);
                             AddRecentFiles(ribbonPage, recentBar, dataProvider, dataProvider.OptionalTitle,
                                 new List<string> { openFileDialog1.FileName });
                         }
@@ -1850,11 +1857,11 @@ namespace Analogy.Forms
 
             }
 
-            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file)
+            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string  initialFile)
             {
 
                 OpenedWindows++;
-                UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFolder);
+                UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFile, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
 
@@ -2002,7 +2009,9 @@ namespace Analogy.Forms
                     };
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileName);
+                        EditFilePooling efp = new EditFilePooling(openFileDialog1.FileName);
+                        efp.ShowDialog(this);
+                        OpenFilePooling(title, offlineAnalogy.InitialFolderFullPath, efp.Filter, openFileDialog1.FileName);
                         AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
                             new List<string> { openFileDialog1.FileName });
                     }

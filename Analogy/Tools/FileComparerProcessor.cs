@@ -17,6 +17,7 @@ namespace Analogy.Tools
         public string FileName { get; }
         public FileComparerProcessor(string filename)
         {
+            Id = Guid.NewGuid();
             FileName = filename;
             messages = new List<IAnalogyLogMessage>();
         }
@@ -62,5 +63,7 @@ namespace Analogy.Tools
         {
             return messages;
         }
+
+        public Guid Id { get; }
     }
 }
