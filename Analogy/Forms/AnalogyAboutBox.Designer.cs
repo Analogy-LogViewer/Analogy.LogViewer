@@ -83,7 +83,6 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = global::Analogy.Properties.Resources.Analogy1024x1024;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 4);
             this.logoPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.logoPictureBox.Name = "logoPictureBox";
@@ -195,7 +194,7 @@
             // 
             this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memoEdit1.EditValue = "Json Viewer: initial version is based on https://github.com/alex75it/JSON-Tree-Vi" +
-    "ewer";
+    "ewer\r\nSome Icons from https://icons8.com and https://www.flaticon.com/";
             this.memoEdit1.Location = new System.Drawing.Point(0, 0);
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Size = new System.Drawing.Size(1047, 413);

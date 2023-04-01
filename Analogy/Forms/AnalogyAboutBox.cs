@@ -23,8 +23,8 @@ namespace Analogy.Forms
             this.labelVersion.Text = string.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.meAbout.Text = AssemblyDescription +
-                                $"{Environment.NewLine}Created by Lior Banai (2018){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
+            this.meAbout.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2018){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
+
         }
 
         public AnalogyAboutBox(int selectedTab):this()
@@ -139,6 +139,8 @@ namespace Analogy.Forms
 
         private void AnalogyAboutBox_Load(object sender, EventArgs e)
         {
+            this.logoPictureBox.Image = Properties.Resources.Analogy1024x1024;
+
             if (SelectedTab > 0)
             {
                 xtraTabControl1.SelectedTabPageIndex = SelectedTab;
