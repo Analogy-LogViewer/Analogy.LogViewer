@@ -183,39 +183,9 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Analogy_With_kafka {
-            get {
-                object obj = ResourceManager.GetObject("Analogy_With_kafka", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Analogy1024x1024 {
             get {
                 object obj = ResourceManager.GetObject("Analogy1024x1024", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Analogy512x512 {
-            get {
-                object obj = ResourceManager.GetObject("Analogy512x512", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AnalogyBanner512x512 {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyBanner512x512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,79 +223,9 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AnalogyIIS128x128 {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyIIS128x128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap AnalogyLight {
             get {
                 object obj = ResourceManager.GetObject("AnalogyLight", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AnalogyNlog {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyNlog", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AnalogyNlog1 {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyNlog1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AnalogyNlog128x128 {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyNlog128x128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AnalogyPhilips {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyPhilips", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AnalogyRSS {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyRSS", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AnalogyWindows128x128 {
-            get {
-                object obj = ResourceManager.GetObject("AnalogyWindows128x128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

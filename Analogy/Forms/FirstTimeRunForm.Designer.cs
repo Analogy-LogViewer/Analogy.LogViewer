@@ -128,7 +128,7 @@
             // pictureEdit1
             // 
             this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureEdit1.EditValue = global::Analogy.Properties.Resources.Analogy512x512;
+            this.pictureEdit1.EditValue = global::Analogy.Properties.Resources.Analogy1024x1024;
             this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ReadOnly = true;
