@@ -30,4 +30,8 @@ namespace Analogy.DataTypes
         DonationsSettings,
         AdvancedModeSettings
     }
+    public enum ApplicationWelcomeSelectionType
+    {
+        General,
+    }
 }

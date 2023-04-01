@@ -360,6 +360,12 @@ namespace Analogy.Forms
 
         private void SetupEventHandlers()
         {
+            bbiWelcomeForm.ItemClick += (s, e) =>
+            {
+                WelcomeForm wf = new WelcomeForm();
+                wf.ShowDialog(this);
+            };
+
             bbtnItemGithubHistory.ItemClick += (s, e) =>
             {
                 GitHubHistoryForm g = new GitHubHistoryForm();

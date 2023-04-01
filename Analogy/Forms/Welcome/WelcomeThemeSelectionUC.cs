@@ -2,9 +2,9 @@
 
 namespace Analogy.Forms.Welcome
 {
-    public partial class WelcomeGeneralUC : XtraUserControl
+    public partial class WelcomeThemeSelectionUC : XtraUserControl
     {
-        public WelcomeGeneralUC()
+        public WelcomeThemeSelectionUC()
         {
             InitializeComponent();
         }
