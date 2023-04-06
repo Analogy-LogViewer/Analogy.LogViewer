@@ -33,6 +33,9 @@
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.aceGeneral = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceTheme = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceDataProviders = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceExtensions = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceGlobalTools = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -43,9 +46,9 @@
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 39);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(224, 39);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1053, 595);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1089, 595);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl1
@@ -53,12 +56,15 @@
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceGeneral,
-            this.aceTheme});
+            this.aceTheme,
+            this.aceDataProviders,
+            this.aceExtensions,
+            this.aceGlobalTools});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(260, 595);
+            this.accordionControl1.Size = new System.Drawing.Size(224, 595);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -77,6 +83,27 @@
             this.aceTheme.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceTheme.Text = "Theme";
             this.aceTheme.Click += new System.EventHandler(this.aceTheme_Click);
+            // 
+            // aceDataProviders
+            // 
+            this.aceDataProviders.ImageOptions.Image = global::Analogy.Properties.Resources.SelectDataMember_32x32;
+            this.aceDataProviders.Name = "aceDataProviders";
+            this.aceDataProviders.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceDataProviders.Text = "Data Providers";
+            // 
+            // aceExtensions
+            // 
+            this.aceExtensions.ImageOptions.Image = global::Analogy.Properties.Resources.extension32;
+            this.aceExtensions.Name = "aceExtensions";
+            this.aceExtensions.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceExtensions.Text = "Extensions";
+            // 
+            // aceGlobalTools
+            // 
+            this.aceGlobalTools.ImageOptions.Image = global::Analogy.Properties.Resources.IDE_32x32;
+            this.aceGlobalTools.Name = "aceGlobalTools";
+            this.aceGlobalTools.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceGlobalTools.Text = "Global Tools";
             // 
             // fluentDesignFormControl1
             // 
@@ -123,5 +150,8 @@
         private DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager fluentFormDefaultManager1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceGeneral;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceTheme;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceGlobalTools;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDataProviders;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceExtensions;
     }
 }

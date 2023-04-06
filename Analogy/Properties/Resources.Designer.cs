@@ -1412,6 +1412,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SelectDataMember_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("SelectDataMember_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Send_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Send_16x16", resourceCulture);
