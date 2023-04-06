@@ -62,13 +62,14 @@ jobs:
       run: |
        rm  ./Installer/Installer_TemporaryKey.pfx
 
+    # Publish Artifacts 
+    - name: 'Publish Artifacts'
+      uses: actions/upload-artifact@v1.0.0
+      with:
+       name: Analogy_Artifacts_${{ matrix.configuration }}
+       path: ./Analogy/bin/${{ matrix.configuration }}
 concurrency: 
   group: ${{ github.ref }}
   cancel-in-progress: true
 
-    # Publish Artifacts 
-  # - name: 'Publish Artifacts'
-  #   uses: actions/upload-artifact@v1.0.0
-  #   with:
-  #     name: Analogy_Artifacts_${{ matrix.configuration }}
-  #     path: ./Analogy/bin/${{ matrix.configuration }}
+
