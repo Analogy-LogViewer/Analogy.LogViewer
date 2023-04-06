@@ -80,7 +80,7 @@
             this.xtPageHighlight.Controls.Add(this.highlight967);
             this.xtPageHighlight.Controls.Add(this.groupControl1);
             this.xtPageHighlight.Name = "xtPageHighlight";
-            this.xtPageHighlight.Size = new System.Drawing.Size(787, 434);
+            this.xtPageHighlight.Size = new System.Drawing.Size(787, 432);
             this.xtPageHighlight.Text = "V4.7.0 Highlights / Changes";
             // 
             // highlight968
@@ -163,7 +163,7 @@
             this.xtPageIssues.Controls.Add(this.gcBugs);
             this.xtPageIssues.Name = "xtPageIssues";
             this.xtPageIssues.Padding = new System.Windows.Forms.Padding(10);
-            this.xtPageIssues.Size = new System.Drawing.Size(787, 434);
+            this.xtPageIssues.Size = new System.Drawing.Size(787, 432);
             this.xtPageIssues.Text = "Github Issues";
             // 
             // gcImprovements

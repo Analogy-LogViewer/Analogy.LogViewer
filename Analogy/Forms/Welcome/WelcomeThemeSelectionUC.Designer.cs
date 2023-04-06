@@ -56,7 +56,7 @@
             this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(1315, 341);
+            this.pictureEdit1.Size = new System.Drawing.Size(1100, 341);
             this.pictureEdit1.TabIndex = 0;
             // 
             // barManager1
@@ -108,7 +108,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 28);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1311, 30);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1096, 30);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -117,15 +117,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1315, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1100, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 616);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 600);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1315, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1100, 0);
             // 
             // barDockControlLeft
             // 
@@ -133,15 +133,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 616);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 600);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1315, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1100, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 616);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 600);
             // 
             // groupControlThemes
             // 
@@ -152,7 +152,7 @@
             this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlThemes.Location = new System.Drawing.Point(0, 341);
             this.groupControlThemes.Name = "groupControlThemes";
-            this.groupControlThemes.Size = new System.Drawing.Size(1315, 275);
+            this.groupControlThemes.Size = new System.Drawing.Size(1100, 259);
             this.groupControlThemes.TabIndex = 18;
             this.groupControlThemes.Text = "Themes and Skins";
             // 
@@ -191,7 +191,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "WelcomeThemeSelectionUC";
-            this.Size = new System.Drawing.Size(1315, 616);
+            this.Size = new System.Drawing.Size(1100, 600);
             this.Load += new System.EventHandler(this.WelcomeThemeSelectionUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

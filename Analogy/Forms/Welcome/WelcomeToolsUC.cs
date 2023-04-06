@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace Analogy.Forms.Welcome
 {
-    public partial class WelcomeToolsUC : UserControl
+    public partial class WelcomeToolsUC : XtraUserControl
     {
         public WelcomeToolsUC()
         {

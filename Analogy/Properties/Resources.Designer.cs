@@ -1252,6 +1252,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Providers {
+            get {
+                object obj = ResourceManager.GetObject("Providers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rabbitmq32x32 {
             get {
                 object obj = ResourceManager.GetObject("rabbitmq32x32", resourceCulture);

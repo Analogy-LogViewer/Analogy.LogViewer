@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // WelcomeToolsUC
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "WelcomeToolsUC";
+            this.Size = new System.Drawing.Size(1100, 600);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
