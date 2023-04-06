@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace Analogy.Forms.Welcome
         public WelcomeShareAndSupportUC()
         {
             InitializeComponent();
+        }
+
+        private void OpenLink(object sender, DevExpress.Utils.HyperlinkClickEventArgs e)
+        {
+            ((HyperlinkLabelControl)sender).LinkVisited = true;
+            Utils.OpenLink(e.Link);
         }
     }
 }

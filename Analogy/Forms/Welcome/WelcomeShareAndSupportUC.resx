@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblPaypal.Text" xml:space="preserve">
+    <value>&lt;href=https://www.paypal.com/donate/?business=MCP57TBRAAVXA&amp;no_recurring=0&amp;item_name=Support+Open+source+Projects+%28Analogy+Log+Viewer%2C+HDF5-CSHARP%2C+etc%29&amp;currency_code=USD&gt;Support the project with small PayPal donation&lt;/href&gt;</value>
+  </data>
 </root>
