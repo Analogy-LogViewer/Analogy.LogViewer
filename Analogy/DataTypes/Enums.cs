@@ -34,6 +34,11 @@ namespace Analogy.DataTypes
     {
         General,
         Theme,
-        DataProvides
+        DataProvides,
+        Extensions,
+        GlobalTools,
+        WhatIsNew,
+        ShareAndSupport,
+        Feedback
     }
 }

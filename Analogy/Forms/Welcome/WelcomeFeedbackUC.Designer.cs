@@ -1,6 +1,6 @@
 ﻿namespace Analogy.Forms.Welcome
 {
-    partial class WelcomeToolsUC
+    partial class WelcomeFeedbackUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,12 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // WelcomeToolsUC
+            // WelcomeFeedbackUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "WelcomeToolsUC";
+            this.Name = "WelcomeFeedbackUC";
             this.Size = new System.Drawing.Size(1100, 600);
+            this.Load += new System.EventHandler(this.WelcomeFeedbackUC_Load);
             this.ResumeLayout(false);
 
         }

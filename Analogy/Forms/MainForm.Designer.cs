@@ -73,6 +73,7 @@
             this.bbiBookmarks = new DevExpress.XtraBars.BarButtonItem();
             this.bsiFilePlotting = new DevExpress.XtraBars.BarButtonItem();
             this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
+            this.bbiWelcomeForm = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemGithubHistory = new DevExpress.XtraBars.BarButtonItem();
@@ -151,7 +152,6 @@
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
             this.defaultToolTipController1 = new DevExpress.Utils.DefaultToolTipController(this.components);
-            this.bbiWelcomeForm = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -368,7 +368,6 @@
             this.bsmInfo.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiWelcomeForm),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnWhatsNew),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnFirstRun),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemGithubHistory),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
@@ -384,6 +383,13 @@
             superToolTip3.Items.Add(toolTipTitleItem2);
             superToolTip3.Items.Add(toolTipItem3);
             this.bsmInfo.SuperTip = superToolTip3;
+            // 
+            // bbiWelcomeForm
+            // 
+            this.bbiWelcomeForm.Caption = "Welcome To Analogy";
+            this.bbiWelcomeForm.Id = 126;
+            this.bbiWelcomeForm.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
+            this.bbiWelcomeForm.Name = "bbiWelcomeForm";
             // 
             // bbtnWhatsNew
             // 
@@ -1080,13 +1086,6 @@
             // 
             // 
             this.defaultToolTipController1.DefaultController.KeepWhileHovered = true;
-            // 
-            // bbiWelcomeForm
-            // 
-            this.bbiWelcomeForm.Caption = "Welcome To Analogy";
-            this.bbiWelcomeForm.Id = 126;
-            this.bbiWelcomeForm.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
-            this.bbiWelcomeForm.Name = "bbiWelcomeForm";
             // 
             // MainForm
             // 

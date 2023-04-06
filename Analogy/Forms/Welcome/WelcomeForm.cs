@@ -51,6 +51,16 @@ namespace Analogy.Forms
                     return new WelcomeThemeSelectionUC();
                 case ApplicationWelcomeSelectionType.DataProvides:
                     return new WelcomeDataProvidersUC();
+                case ApplicationWelcomeSelectionType.Extensions:
+                    return new WelcomeExtensionsUC();
+                case ApplicationWelcomeSelectionType.GlobalTools:
+                    return new WelcomeGlobalToolsUC();
+                case ApplicationWelcomeSelectionType.WhatIsNew:
+                    return new WelcomeWhatIsNewUC();
+                case ApplicationWelcomeSelectionType.ShareAndSupport:
+                    return new WelcomeShareAndSupportUC();
+                case ApplicationWelcomeSelectionType.Feedback:
+                    return new WelcomeFeedbackUC();
                 default:
                 {
                     AnalogyLogger.Instance.LogError($"Selection with {selectionType} was not found");
@@ -78,12 +88,36 @@ namespace Analogy.Forms
         private void aceTheme_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.Theme);
-
         }
 
         private void aceDataProviders_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.DataProvides);
+        }
+
+        private void aceExtensions_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.Extensions);
+        }
+
+        private void aceGlobalTools_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.GlobalTools);
+        }
+
+        private void aceWhatIsNew_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.WhatIsNew);
+        }
+
+        private void aceShareAndSupport_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.ShareAndSupport);
+        }
+
+        private void aceFeedback_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.Feedback);
 
         }
     }

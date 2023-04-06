@@ -32,15 +32,15 @@
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.aceGeneral = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceTheme = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceDataProviders = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceTheme = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceExtensions = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceGlobalTools = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             this.aceWhatIsNew = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceShareAndSupport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceFeedback = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -82,14 +82,6 @@
             this.aceGeneral.Text = "General";
             this.aceGeneral.Click += new System.EventHandler(this.aceGeneral_Click);
             // 
-            // aceTheme
-            // 
-            this.aceTheme.ImageOptions.Image = global::Analogy.Properties.Resources.changetheme_32x32;
-            this.aceTheme.Name = "aceTheme";
-            this.aceTheme.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceTheme.Text = "Theme";
-            this.aceTheme.Click += new System.EventHandler(this.aceTheme_Click);
-            // 
             // aceDataProviders
             // 
             this.aceDataProviders.ImageOptions.Image = global::Analogy.Properties.Resources.SelectDataMember_32x32;
@@ -98,12 +90,21 @@
             this.aceDataProviders.Text = "Data Providers";
             this.aceDataProviders.Click += new System.EventHandler(this.aceDataProviders_Click);
             // 
+            // aceTheme
+            // 
+            this.aceTheme.ImageOptions.Image = global::Analogy.Properties.Resources.changetheme_32x32;
+            this.aceTheme.Name = "aceTheme";
+            this.aceTheme.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceTheme.Text = "Theme";
+            this.aceTheme.Click += new System.EventHandler(this.aceTheme_Click);
+            // 
             // aceExtensions
             // 
             this.aceExtensions.ImageOptions.Image = global::Analogy.Properties.Resources.extension32;
             this.aceExtensions.Name = "aceExtensions";
             this.aceExtensions.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceExtensions.Text = "Extensions";
+            this.aceExtensions.Click += new System.EventHandler(this.aceExtensions_Click);
             // 
             // aceGlobalTools
             // 
@@ -111,6 +112,31 @@
             this.aceGlobalTools.Name = "aceGlobalTools";
             this.aceGlobalTools.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceGlobalTools.Text = "Global Tools";
+            this.aceGlobalTools.Click += new System.EventHandler(this.aceGlobalTools_Click);
+            // 
+            // aceWhatIsNew
+            // 
+            this.aceWhatIsNew.ImageOptions.Image = global::Analogy.Properties.Resources.newcomment_32x32;
+            this.aceWhatIsNew.Name = "aceWhatIsNew";
+            this.aceWhatIsNew.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceWhatIsNew.Text = "What\'s New";
+            this.aceWhatIsNew.Click += new System.EventHandler(this.aceWhatIsNew_Click);
+            // 
+            // aceShareAndSupport
+            // 
+            this.aceShareAndSupport.ImageOptions.Image = global::Analogy.Properties.Resources.heart32x32;
+            this.aceShareAndSupport.Name = "aceShareAndSupport";
+            this.aceShareAndSupport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceShareAndSupport.Text = "Share and support";
+            this.aceShareAndSupport.Click += new System.EventHandler(this.aceShareAndSupport_Click);
+            // 
+            // aceFeedback
+            // 
+            this.aceFeedback.ImageOptions.Image = global::Analogy.Properties.Resources.comment_32x32;
+            this.aceFeedback.Name = "aceFeedback";
+            this.aceFeedback.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceFeedback.Text = "Gives Feedback";
+            this.aceFeedback.Click += new System.EventHandler(this.aceFeedback_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -125,24 +151,6 @@
             // fluentFormDefaultManager1
             // 
             this.fluentFormDefaultManager1.Form = this;
-            // 
-            // aceWhatIsNew
-            // 
-            this.aceWhatIsNew.Name = "aceWhatIsNew";
-            this.aceWhatIsNew.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceWhatIsNew.Text = "What\'s New";
-            // 
-            // aceShareAndSupport
-            // 
-            this.aceShareAndSupport.Name = "aceShareAndSupport";
-            this.aceShareAndSupport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceShareAndSupport.Text = "Share and support";
-            // 
-            // aceFeedback
-            // 
-            this.aceFeedback.Name = "aceFeedback";
-            this.aceFeedback.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceFeedback.Text = "Gives\'s Feedback";
             // 
             // WelcomeForm
             // 

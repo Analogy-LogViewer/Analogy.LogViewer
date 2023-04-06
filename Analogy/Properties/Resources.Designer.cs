@@ -383,6 +383,16 @@ namespace Analogy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap comment_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("comment_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap copy {
             get {
                 object obj = ResourceManager.GetObject("copy", resourceCulture);
@@ -685,6 +695,16 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap GitHubicon16x16 {
             get {
                 object obj = ResourceManager.GetObject("GitHubicon16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GlobalTools {
+            get {
+                object obj = ResourceManager.GetObject("GlobalTools", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1015,6 +1035,16 @@ namespace Analogy.Properties {
         internal static System.Drawing.Bitmap Media_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Media_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newcomment_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("newcomment_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
