@@ -38,6 +38,9 @@
             this.aceGlobalTools = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
+            this.aceWhatIsNew = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceShareAndSupport = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceFeedback = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -59,7 +62,10 @@
             this.aceDataProviders,
             this.aceTheme,
             this.aceExtensions,
-            this.aceGlobalTools});
+            this.aceGlobalTools,
+            this.aceWhatIsNew,
+            this.aceShareAndSupport,
+            this.aceFeedback});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
@@ -120,6 +126,24 @@
             // 
             this.fluentFormDefaultManager1.Form = this;
             // 
+            // aceWhatIsNew
+            // 
+            this.aceWhatIsNew.Name = "aceWhatIsNew";
+            this.aceWhatIsNew.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceWhatIsNew.Text = "What\'s New";
+            // 
+            // aceShareAndSupport
+            // 
+            this.aceShareAndSupport.Name = "aceShareAndSupport";
+            this.aceShareAndSupport.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceShareAndSupport.Text = "Share and support";
+            // 
+            // aceFeedback
+            // 
+            this.aceFeedback.Name = "aceFeedback";
+            this.aceFeedback.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceFeedback.Text = "Gives\'s Feedback";
+            // 
             // WelcomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -154,5 +178,8 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceGlobalTools;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceDataProviders;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceExtensions;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceWhatIsNew;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceShareAndSupport;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceFeedback;
     }
 }
