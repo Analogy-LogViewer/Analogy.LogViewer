@@ -77,7 +77,7 @@
             this.xtPageHighlight.Controls.Add(this.highlight822);
             this.xtPageHighlight.Controls.Add(this.groupControl1);
             this.xtPageHighlight.Name = "xtPageHighlight";
-            this.xtPageHighlight.Size = new System.Drawing.Size(782, 428);
+            this.xtPageHighlight.Size = new System.Drawing.Size(787, 432);
             this.xtPageHighlight.Text = "V4.5.0 Highlights / Changes";
             // 
             // highlight813
@@ -111,7 +111,7 @@
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(782, 89);
+            this.groupControl1.Size = new System.Drawing.Size(787, 89);
             this.groupControl1.TabIndex = 10;
             this.groupControl1.Text = "Notice";
             // 
@@ -124,9 +124,9 @@
             this.labelControl1.AutoEllipsis = true;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl1.Location = new System.Drawing.Point(2, 25);
+            this.labelControl1.Location = new System.Drawing.Point(2, 28);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(778, 44);
+            this.labelControl1.Size = new System.Drawing.Size(783, 44);
             this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "This version adds portable option (settings are saved in the application folder s" +
     "o you can have the application on USB drive for example) and HTML/Markdown rende" +
@@ -138,7 +138,7 @@
             this.xtPageIssues.Controls.Add(this.gcBugs);
             this.xtPageIssues.Name = "xtPageIssues";
             this.xtPageIssues.Padding = new System.Windows.Forms.Padding(10);
-            this.xtPageIssues.Size = new System.Drawing.Size(782, 428);
+            this.xtPageIssues.Size = new System.Drawing.Size(787, 432);
             this.xtPageIssues.Text = "Github Issues";
             // 
             // gcImprovements
@@ -156,14 +156,14 @@
             this.gcImprovements.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcImprovements.Location = new System.Drawing.Point(10, 103);
             this.gcImprovements.Name = "gcImprovements";
-            this.gcImprovements.Size = new System.Drawing.Size(762, 296);
+            this.gcImprovements.Size = new System.Drawing.Size(767, 296);
             this.gcImprovements.TabIndex = 7;
             this.gcImprovements.Text = "Improvements / Changes";
             // 
             // issue768
             // 
             this.issue768.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue768.Location = new System.Drawing.Point(2, 259);
+            this.issue768.Location = new System.Drawing.Point(2, 262);
             this.issue768.Name = "issue768";
             this.issue768.Padding = new System.Windows.Forms.Padding(5);
             this.issue768.Size = new System.Drawing.Size(38, 26);
@@ -175,7 +175,7 @@
             // issue731
             // 
             this.issue731.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue731.Location = new System.Drawing.Point(2, 233);
+            this.issue731.Location = new System.Drawing.Point(2, 236);
             this.issue731.Name = "issue731";
             this.issue731.Padding = new System.Windows.Forms.Padding(5);
             this.issue731.Size = new System.Drawing.Size(38, 26);
@@ -187,7 +187,7 @@
             // issue732
             // 
             this.issue732.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue732.Location = new System.Drawing.Point(2, 207);
+            this.issue732.Location = new System.Drawing.Point(2, 210);
             this.issue732.Name = "issue732";
             this.issue732.Padding = new System.Windows.Forms.Padding(5);
             this.issue732.Size = new System.Drawing.Size(38, 26);
@@ -199,7 +199,7 @@
             // issue734
             // 
             this.issue734.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue734.Location = new System.Drawing.Point(2, 181);
+            this.issue734.Location = new System.Drawing.Point(2, 184);
             this.issue734.Name = "issue734";
             this.issue734.Padding = new System.Windows.Forms.Padding(5);
             this.issue734.Size = new System.Drawing.Size(38, 26);
@@ -211,7 +211,7 @@
             // issue735
             // 
             this.issue735.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue735.Location = new System.Drawing.Point(2, 155);
+            this.issue735.Location = new System.Drawing.Point(2, 158);
             this.issue735.Name = "issue735";
             this.issue735.Padding = new System.Windows.Forms.Padding(5);
             this.issue735.Size = new System.Drawing.Size(38, 26);
@@ -223,7 +223,7 @@
             // issue736
             // 
             this.issue736.Dock = System.Windows.Forms.DockStyle.Top;
-            this.issue736.Location = new System.Drawing.Point(2, 129);
+            this.issue736.Location = new System.Drawing.Point(2, 132);
             this.issue736.Name = "issue736";
             this.issue736.Padding = new System.Windows.Forms.Padding(5);
             this.issue736.Size = new System.Drawing.Size(38, 26);
@@ -235,7 +235,7 @@
             // Issue689
             // 
             this.Issue689.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue689.Location = new System.Drawing.Point(2, 103);
+            this.Issue689.Location = new System.Drawing.Point(2, 106);
             this.Issue689.Name = "Issue689";
             this.Issue689.Padding = new System.Windows.Forms.Padding(5);
             this.Issue689.Size = new System.Drawing.Size(38, 26);
@@ -247,7 +247,7 @@
             // Issue687
             // 
             this.Issue687.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue687.Location = new System.Drawing.Point(2, 77);
+            this.Issue687.Location = new System.Drawing.Point(2, 80);
             this.Issue687.Name = "Issue687";
             this.Issue687.Padding = new System.Windows.Forms.Padding(5);
             this.Issue687.Size = new System.Drawing.Size(38, 26);
@@ -259,7 +259,7 @@
             // Issue813
             // 
             this.Issue813.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue813.Location = new System.Drawing.Point(2, 51);
+            this.Issue813.Location = new System.Drawing.Point(2, 54);
             this.Issue813.Name = "Issue813";
             this.Issue813.Padding = new System.Windows.Forms.Padding(5);
             this.Issue813.Size = new System.Drawing.Size(433, 26);
@@ -271,7 +271,7 @@
             // Issue822
             // 
             this.Issue822.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Issue822.Location = new System.Drawing.Point(2, 25);
+            this.Issue822.Location = new System.Drawing.Point(2, 28);
             this.Issue822.Name = "Issue822";
             this.Issue822.Padding = new System.Windows.Forms.Padding(5);
             this.Issue822.Size = new System.Drawing.Size(158, 26);
@@ -286,7 +286,7 @@
             this.gcBugs.Location = new System.Drawing.Point(10, 10);
             this.gcBugs.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.gcBugs.Name = "gcBugs";
-            this.gcBugs.Size = new System.Drawing.Size(762, 93);
+            this.gcBugs.Size = new System.Drawing.Size(767, 93);
             this.gcBugs.TabIndex = 6;
             this.gcBugs.Text = "Bug Fixes";
             this.gcBugs.Visible = false;

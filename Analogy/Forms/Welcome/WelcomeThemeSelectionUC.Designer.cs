@@ -34,19 +34,14 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
-            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.groupControlThemes = new DevExpress.XtraEditors.GroupControl();
-            this.lblApplicationStyle = new DevExpress.XtraEditors.LabelControl();
-            this.lblSvgPalette = new DevExpress.XtraEditors.LabelControl();
-            this.lblSkinName = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.sbtnSettingsTheme = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).BeginInit();
-            this.groupControlThemes.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureEdit1
@@ -67,7 +62,6 @@
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.skinDropDownButtonItem1,
@@ -87,7 +81,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.skinPaletteDropDownButtonItem1)});
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 2";
             // 
             // skinDropDownButtonItem1
@@ -99,17 +92,6 @@
             // 
             this.skinPaletteDropDownButtonItem1.Id = 2;
             this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
-            // 
-            // standaloneBarDockControl1
-            // 
-            this.standaloneBarDockControl1.AutoSize = true;
-            this.standaloneBarDockControl1.CausesValidation = false;
-            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(2, 28);
-            this.standaloneBarDockControl1.Manager = this.barManager1;
-            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1096, 30);
-            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
             // 
@@ -143,48 +125,35 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 600);
             // 
-            // groupControlThemes
+            // labelControl1
             // 
-            this.groupControlThemes.Controls.Add(this.lblApplicationStyle);
-            this.groupControlThemes.Controls.Add(this.lblSvgPalette);
-            this.groupControlThemes.Controls.Add(this.lblSkinName);
-            this.groupControlThemes.Controls.Add(this.standaloneBarDockControl1);
-            this.groupControlThemes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControlThemes.Location = new System.Drawing.Point(0, 341);
-            this.groupControlThemes.Name = "groupControlThemes";
-            this.groupControlThemes.Size = new System.Drawing.Size(1100, 259);
-            this.groupControlThemes.TabIndex = 18;
-            this.groupControlThemes.Text = "Themes and Skins";
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl1.Location = new System.Drawing.Point(0, 341);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(1100, 112);
+            this.labelControl1.TabIndex = 23;
+            this.labelControl1.Text = "Themes\r\n\r\nThere are many different themes available for selection.\r\nSome of them " +
+    "are complete skins and some are color palettes.";
             // 
-            // lblApplicationStyle
+            // sbtnSettingsTheme
             // 
-            this.lblApplicationStyle.Location = new System.Drawing.Point(13, 110);
-            this.lblApplicationStyle.Name = "lblApplicationStyle";
-            this.lblApplicationStyle.Size = new System.Drawing.Size(99, 16);
-            this.lblApplicationStyle.TabIndex = 5;
-            this.lblApplicationStyle.Text = "Application Style:";
-            // 
-            // lblSvgPalette
-            // 
-            this.lblSvgPalette.Location = new System.Drawing.Point(13, 88);
-            this.lblSvgPalette.Name = "lblSvgPalette";
-            this.lblSvgPalette.Size = new System.Drawing.Size(107, 16);
-            this.lblSvgPalette.TabIndex = 4;
-            this.lblSvgPalette.Text = "Active Svg Palette:";
-            // 
-            // lblSkinName
-            // 
-            this.lblSkinName.Location = new System.Drawing.Point(13, 66);
-            this.lblSkinName.Name = "lblSkinName";
-            this.lblSkinName.Size = new System.Drawing.Size(66, 16);
-            this.lblSkinName.TabIndex = 3;
-            this.lblSkinName.Text = "Skin Name:";
+            this.sbtnSettingsTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sbtnSettingsTheme.Location = new System.Drawing.Point(10, 560);
+            this.sbtnSettingsTheme.Name = "sbtnSettingsTheme";
+            this.sbtnSettingsTheme.Size = new System.Drawing.Size(118, 33);
+            this.sbtnSettingsTheme.TabIndex = 24;
+            this.sbtnSettingsTheme.Text = "Select Theme";
+            this.sbtnSettingsTheme.Click += new System.EventHandler(this.sbtnSettingsTheme_Click);
             // 
             // WelcomeThemeSelectionUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupControlThemes);
+            this.Controls.Add(this.sbtnSettingsTheme);
+            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -195,9 +164,6 @@
             this.Load += new System.EventHandler(this.WelcomeThemeSelectionUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlThemes)).EndInit();
-            this.groupControlThemes.ResumeLayout(false);
-            this.groupControlThemes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,13 +177,10 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
-        private DevExpress.XtraEditors.GroupControl groupControlThemes;
-        private DevExpress.XtraEditors.LabelControl lblApplicationStyle;
-        private DevExpress.XtraEditors.LabelControl lblSvgPalette;
-        private DevExpress.XtraEditors.LabelControl lblSkinName;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
         private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton sbtnSettingsTheme;
     }
 }

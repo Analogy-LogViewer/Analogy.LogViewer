@@ -80,6 +80,7 @@
             this.hllcDataProviders.TabIndex = 4;
             this.hllcDataProviders.Text = "<href=https://github.com/Analogy-LogViewer/Analogy>List Of Data Providers (Github" +
     ")</href>";
+            this.hllcDataProviders.HyperlinkClick += new DevExpress.Utils.HyperlinkClickEventHandler(this.hllcDataProviders_HyperlinkClick);
             // 
             // WelcomeDataProvidersUC
             // 

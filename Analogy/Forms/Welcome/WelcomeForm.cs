@@ -49,6 +49,8 @@ namespace Analogy.Forms
                     return new WelcomeGeneralUC();
                 case ApplicationWelcomeSelectionType.Theme:
                     return new WelcomeThemeSelectionUC();
+                case ApplicationWelcomeSelectionType.DataProvides:
+                    return new WelcomeDataProvidersUC();
                 default:
                 {
                     AnalogyLogger.Instance.LogError($"Selection with {selectionType} was not found");
@@ -76,6 +78,12 @@ namespace Analogy.Forms
         private void aceTheme_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.Theme);
+
+        }
+
+        private void aceDataProviders_Click(object sender, EventArgs e)
+        {
+            AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.DataProvides);
 
         }
     }

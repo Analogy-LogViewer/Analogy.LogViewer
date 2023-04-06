@@ -33,6 +33,7 @@ namespace Analogy.DataTypes
     public enum ApplicationWelcomeSelectionType
     {
         General,
-        Theme
+        Theme,
+        DataProvides
     }
 }

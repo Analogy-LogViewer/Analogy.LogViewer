@@ -56,8 +56,8 @@
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceGeneral,
-            this.aceTheme,
             this.aceDataProviders,
+            this.aceTheme,
             this.aceExtensions,
             this.aceGlobalTools});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
@@ -90,6 +90,7 @@
             this.aceDataProviders.Name = "aceDataProviders";
             this.aceDataProviders.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDataProviders.Text = "Data Providers";
+            this.aceDataProviders.Click += new System.EventHandler(this.aceDataProviders_Click);
             // 
             // aceExtensions
             // 
