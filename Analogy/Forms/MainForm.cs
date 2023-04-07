@@ -571,11 +571,6 @@ namespace Analogy.Forms
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             };
-            bbtnFirstRun.ItemClick += (_, __) =>
-            {
-                FirstTimeRunForm f = new FirstTimeRunForm();
-                f.ShowDialog(this);
-            };
 
             bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
             

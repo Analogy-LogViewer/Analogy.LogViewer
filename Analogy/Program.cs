@@ -150,7 +150,7 @@ namespace Analogy
             }
             if (Settings.IsFirstRun)
             {
-                FirstTimeRunForm f = new FirstTimeRunForm();
+                WelcomeForm f = new WelcomeForm();
                 f.ShowDialog();
             }
             if (Settings.MainFormType == MainFormType.RibbonForm)

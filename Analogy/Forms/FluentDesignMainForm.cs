@@ -523,11 +523,6 @@ namespace Analogy
                 f.ShowDialog(this);
                 settings.ShowWhatIsNewAtStartup = false;
             };
-            bbtnFirstRun.ItemClick += (_, __) =>
-            {
-                FirstTimeRunForm f = new FirstTimeRunForm();
-                f.ShowDialog(this);
-            };
 
             tmrStatusUpdates.Tick += (s, e) =>
             {
