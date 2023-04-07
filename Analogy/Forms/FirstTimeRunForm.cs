@@ -76,7 +76,7 @@ namespace Analogy.Forms
                 var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
@@ -85,7 +85,7 @@ namespace Analogy.Forms
                 var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }
         }

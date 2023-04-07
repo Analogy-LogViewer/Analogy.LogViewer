@@ -34,9 +34,9 @@ namespace Analogy.Common.Managers
             return new List<IAnalogyOfflineDataProvider>(0);
         }
 
-        public IEnumerable<(string Name, Guid ID, Image Image, string Description)> GetRealTimeDataSourcesNamesAndIds()
+        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
         {
-            return new List<(string Name, Guid ID, Image Image, string Description)>(0);
+            return new List<(string Name, Guid ID, Image Image, string Description, Assembly assembly)>(0);
         }
 
         public Assembly GetAssemblyOfFactory(IAnalogyFactory factory)

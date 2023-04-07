@@ -29,7 +29,7 @@ namespace Analogy.ApplicationSettings
         }
 
         private void LoadSettings()
-        {         
+        {
             tsRememberLastOpenedDataProvider.IsOn = Settings.RememberLastOpenedDataProvider;
             foreach (var setting in Settings.FactoriesOrder)
             {
@@ -42,7 +42,7 @@ namespace Analogy.ApplicationSettings
                 var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Not found";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
@@ -51,7 +51,7 @@ namespace Analogy.ApplicationSettings
                 var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
                 var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
-                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, image);
+                FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }
         }
@@ -63,7 +63,7 @@ namespace Analogy.ApplicationSettings
                 Settings.RememberLastOpenedDataProvider = tsRememberLastOpenedDataProvider.IsOn;
             chkLstDataProviderStatus.CustomizeItem += (s, e) =>
             {
-                FactoryCheckItem bind = (FactoryCheckItem) e.Value;
+                FactoryCheckItem bind = (FactoryCheckItem)e.Value;
                 e.TemplatedItem.Elements[0].ImageOptions.Image = bind.Image;
                 e.TemplatedItem.Elements[1].Text = $"{bind.Name} (id:{bind.ID})";
                 e.TemplatedItem.Elements[2].Text = bind.Description;

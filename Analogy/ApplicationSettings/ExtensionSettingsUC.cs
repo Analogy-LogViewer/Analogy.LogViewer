@@ -29,10 +29,11 @@ namespace Analogy.ApplicationSettings
         private void LoadSettings()
         {
 
-            var extensions = FactoriesManager.Instance.GetAllExtensions();
-            foreach (var ex in extensions)
+            var extensions = FactoriesManager.Instance.GetAllExtensionsWithAssemblies();
+            foreach (var (ex, assembly) in extensions)
             {
-                FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description, null);
+
+                FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description,assembly.GetName(false).Name, null);
                 chkLstItemExtensions.Items.Add(itm, Settings.StartupExtensions.Contains(itm.ID));
             }
         }

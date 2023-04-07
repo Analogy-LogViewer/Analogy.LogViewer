@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿
 using System.Drawing;
-using System.Windows.Forms;
-using Analogy.Interfaces;
 
 namespace Analogy.DataTypes
 {
@@ -11,16 +8,18 @@ namespace Analogy.DataTypes
         public string Name { get; }
         public Guid ID { get; }
         public string Description { get; }
+        private string Assembly { get; }
         public Image? Image { get; }
 
-        public FactoryCheckItem(string name, Guid id, string description, Image? image)
+        public FactoryCheckItem(string name, Guid id, string description,string assembly, Image? image)
         {
             Name = name;
             ID = id;
             Description = description;
+            Assembly = assembly;
             Image = image;
         }
 
-        public override string ToString() => $"{Name} ({ID})";
+        public override string ToString() => $"{Name} (from {Assembly}. With id: {ID}):";
     }
 }

@@ -107,7 +107,7 @@ namespace Analogy
                 .Select(res => res.DataProvider);
         }
 
-        public IEnumerable<(string Name, Guid ID, Image Image, string Description)> GetRealTimeDataSourcesNamesAndIds()
+        public IEnumerable<(string Name, Guid ID, Image Image, string Description,Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
         {
             foreach (var fc in Factories)
             {
@@ -118,7 +118,7 @@ namespace Analogy
                     foreach (var analogyDataSource in supported)
                     {
                         var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
-                        yield return (dpf.Title, dataSource.Id, GetLargeImage(dataSource.Id), dpf.Title);
+                        yield return (dpf.Title, dataSource.Id, GetLargeImage(dataSource.Id), dpf.Title,fc.Assembly);
                     }
                 }
             }
@@ -193,7 +193,24 @@ namespace Analogy
                 }
             }
         }
+        public IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies()
+        {
+            foreach (var factory in Factories)
+            {
+                if (factory.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
+                {
+                    continue;
+                }
 
+                foreach (var extensionFactory in factory.ExtensionsFactories)
+                {
+                    foreach (IAnalogyExtension extension in extensionFactory.Extensions)
+                    {
+                        yield return (extension,factory.Assembly);
+                    }
+                }
+            }
+        }
         public FactoryContainer FactoryContainer(Guid componentId)
             => IsBuiltInFactory(componentId)
                 ? BuiltInFactories.FirstOrDefault(f => f.Factory.FactoryId == componentId ||
