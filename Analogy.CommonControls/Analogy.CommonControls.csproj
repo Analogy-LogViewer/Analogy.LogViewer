@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net48;net471;net7.0-windows;net6.0-windows</TargetFrameworks>
@@ -37,7 +37,7 @@
 		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
-		<PackageReference Include="PolySharp" Version="1.12.1">
+		<PackageReference Include="PolySharp" Version="1.13.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
