@@ -66,7 +66,6 @@ namespace Analogy
             this.bsiDataProviders = new DevExpress.XtraBars.BarSubItem();
             this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
             this.bsiHelp = new DevExpress.XtraBars.BarSubItem();
-            this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
@@ -370,7 +369,6 @@ namespace Analogy
             this.bsiDataProviders,
             this.bsiGlobalTools,
             this.bsiHelp,
-            this.bbtnWhatsNew,
             this.bbtnFirstRun,
             this.bbtnItemChangeLog,
             this.bbtnDebugLog,
@@ -441,14 +439,6 @@ namespace Analogy
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDownloadStatistics),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemHelp)});
             this.bsiHelp.Name = "bsiHelp";
-            // 
-            // bbtnWhatsNew
-            // 
-            this.bbtnWhatsNew.Caption = "What\'s New";
-            this.bbtnWhatsNew.Id = 16;
-            this.bbtnWhatsNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.Image")));
-            this.bbtnWhatsNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.LargeImage")));
-            this.bbtnWhatsNew.Name = "bbtnWhatsNew";
             // 
             // bbtnItemChangeLog
             // 
@@ -802,7 +792,6 @@ namespace Analogy
         private DevExpress.XtraBars.BarSubItem bsiDataProviders;
         private DevExpress.XtraBars.BarSubItem bsiGlobalTools;
         private DevExpress.XtraBars.BarSubItem bsiHelp;
-        private DevExpress.XtraBars.BarButtonItem bbtnWhatsNew;
         private DevExpress.XtraBars.BarButtonItem bbtnFirstRun;
         private DevExpress.XtraBars.BarButtonItem bbtnItemChangeLog;
         private DevExpress.XtraBars.BarButtonItem bbtnDebugLog;

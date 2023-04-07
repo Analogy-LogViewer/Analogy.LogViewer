@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonUtilities.Github;
-using Analogy.CommonUtilities.Web;
 using Analogy.DataTypes;
 using Analogy.Interfaces.Factories;
 
@@ -55,8 +53,6 @@ namespace Analogy.Interfaces
         bool EnableFirstChanceException { get; set; }
         AnalogyCommandLayout RibbonStyle { get; set; }
         SettingsMode SettingsMode { get; set; }
-        bool WarnNET5 { get; set; }
-        bool WarnNET3 { get; set; }
         bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         string DefaultUserLogFolder { get; set; }
         /// <summary>

@@ -145,9 +145,7 @@ namespace Analogy
 
             if (settings.ShowWhatIsNewAtStartup)
             {
-                WhatsNewForm f = new WhatsNewForm();
-                f.ShowDialog(this);
-                settings.ShowWhatIsNewAtStartup = false;
+               //settings.ShowWhatIsNewAtStartup = false;
             }
         }
 
@@ -526,13 +524,7 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             };
-            bbtnWhatsNew.ItemClick += (_, __) =>
-            {
-                WhatsNewForm f = new WhatsNewForm();
-                f.ShowDialog(this);
-                settings.ShowWhatIsNewAtStartup = false;
-            };
-
+ 
             tmrStatusUpdates.Tick += (s, e) =>
             {
                 tmrStatusUpdates.Stop();

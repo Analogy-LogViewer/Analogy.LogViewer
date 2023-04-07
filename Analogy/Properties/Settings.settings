@@ -74,9 +74,6 @@
     <Setting Name="IdleTimeMinutes" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">600</Value>
     </Setting>
-    <Setting Name="WindowsEventLogs" Type="System.String" Scope="User">
-      <Value Profile="(Default)">["Application","System"]</Value>
-    </Setting>
     <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -240,12 +237,6 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ShowProcessedCounter" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="WarnNET5" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="WarnNET3" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AdvancedModeRawSQLFilterEnabled" Type="System.Boolean" Scope="User">

@@ -74,7 +74,6 @@
             this.bsiFilePlotting = new DevExpress.XtraBars.BarButtonItem();
             this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
             this.bbiWelcomeForm = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemGithubHistory = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
@@ -244,7 +243,6 @@
             this.btnDataProvidersSettings,
             this.btnSettingsUpdate,
             this.bbtnFirstRun,
-            this.bbtnWhatsNew,
             this.bbiBookmarks,
             this.btnSettingsDebugging,
             this.bbtnDataProvidersUpdates,
@@ -389,15 +387,6 @@
             this.bbiWelcomeForm.Id = 126;
             this.bbiWelcomeForm.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
             this.bbiWelcomeForm.Name = "bbiWelcomeForm";
-            // 
-            // bbtnWhatsNew
-            // 
-            this.bbtnWhatsNew.Caption = "What\'s New";
-            this.bbtnWhatsNew.Id = 100;
-            this.bbtnWhatsNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.Image")));
-            this.bbtnWhatsNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.LargeImage")));
-            this.bbtnWhatsNew.Name = "bbtnWhatsNew";
-            this.bbtnWhatsNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbtnItemGithubHistory
             // 
@@ -1187,7 +1176,6 @@
         private DevExpress.XtraBars.BarButtonItem btnSettingsUpdate;
         private DevExpress.XtraBars.BarSubItem bsmInfo;
         private DevExpress.XtraBars.BarButtonItem bbtnFirstRun;
-        private DevExpress.XtraBars.BarButtonItem bbtnWhatsNew;
         private DevExpress.XtraBars.BarSubItem bsiGlobalTools;
         private DevExpress.XtraBars.BarButtonItem bbiBookmarks;
         private DevExpress.XtraBars.BarButtonItem btnSettingsDebugging;

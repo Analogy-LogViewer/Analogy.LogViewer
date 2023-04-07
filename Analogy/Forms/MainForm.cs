@@ -271,9 +271,7 @@ namespace Analogy.Forms
             }
             if (settings.ShowWhatIsNewAtStartup)
             {
-                WhatsNewForm f = new WhatsNewForm();
-                f.ShowDialog(this);
-                settings.ShowWhatIsNewAtStartup = false;
+               //settings.ShowWhatIsNewAtStartup = false;
             }
         }
 
@@ -565,13 +563,7 @@ namespace Analogy.Forms
                     Show();
                 }
             };
-            bbtnWhatsNew.ItemClick += (_, __) =>
-            {
-                WhatsNewForm f = new WhatsNewForm();
-                f.ShowDialog(this);
-                settings.ShowWhatIsNewAtStartup = false;
-            };
-
+            
             bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
             
         }

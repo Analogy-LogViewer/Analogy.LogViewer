@@ -36,7 +36,6 @@ namespace Analogy.DataTypes
         public bool SearchAlsoInSourceAndModule { get; set; }
         public bool IdleMode { get; set; }
         public int IdleTimeMinutes { get; set; }
-        public List<string> EventLogs { get; set; }
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
         public bool DefaultDescendOrder { get; set; }
@@ -95,8 +94,6 @@ namespace Analogy.DataTypes
         public bool EnableFilePoolingDelay { get; set; }
         public bool InlineJsonViewer { get;set; }
         public bool ShowProcessedCounter { get; set; }
-        public bool WarnNET5 { get; set; }
-        public bool WarnNET3 { get; set; }
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }

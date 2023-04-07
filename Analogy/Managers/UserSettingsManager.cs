@@ -84,9 +84,6 @@ namespace Analogy
 
         public bool IdleMode { get; set; }
         public int IdleTimeMinutes { get; set; }
-
-        public List<string> EventLogs { get; set; }
-
         public List<Guid> AutoStartDataProviders { get; set; }
         public bool AutoScrollToLastMessage { get; set; }
         public bool DefaultDescendOrder { get; set; }
@@ -181,9 +178,6 @@ namespace Analogy
                 OnInlineJsonViewerChanged?.Invoke(this, value);
             }
         }
-
-        public bool WarnNET5 { get; set; }
-        public bool WarnNET3 { get; set; }
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
@@ -258,7 +252,6 @@ namespace Analogy
             SearchAlsoInSourceAndModule = Settings.Default.SearchAlsoInSourceAndModule;
             IdleMode = Settings.Default.IdleMode;
             IdleTimeMinutes = Settings.Default.IdleTimeMinutes;
-            EventLogs = ParseSettings<List<string>>(Settings.Default.WindowsEventLogs);
             AutoStartDataProviders = ParseSettings<List<Guid>>(Settings.Default.AutoStartDataProviders);
             AutoScrollToLastMessage = Settings.Default.AutoScrollToLastMessage;
             ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
@@ -334,8 +327,6 @@ namespace Analogy
             EnableFilePoolingDelay = Settings.Default.FilePoolingDelayEnable;
             InlineJsonViewer = Settings.Default.InlineJsonViewer;
             ShowProcessedCounter = Settings.Default.ShowProcessedCounter;
-            WarnNET3 = Settings.Default.WarnNET3;
-            WarnNET5 = Settings.Default.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = Settings.Default.ShowAdvancedSettingsRawSQLPopup;
             CombineOfflineProviders = Settings.Default.CombineOfflineProviders;
             CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
@@ -378,7 +369,6 @@ namespace Analogy
             SearchAlsoInSourceAndModule = settings.SearchAlsoInSourceAndModule;
             IdleMode = settings.IdleMode;
             IdleTimeMinutes = settings.IdleTimeMinutes;
-            EventLogs = settings.EventLogs;
             AutoStartDataProviders = settings.AutoStartDataProviders;
             AutoScrollToLastMessage = settings.AutoScrollToLastMessage;
             DefaultDescendOrder = settings.DefaultDescendOrder;
@@ -433,8 +423,6 @@ namespace Analogy
             EnableFilePoolingDelay = settings.EnableFilePoolingDelay;
             InlineJsonViewer = settings.InlineJsonViewer;
             ShowProcessedCounter = settings.ShowProcessedCounter;
-            WarnNET3 = settings.WarnNET3;
-            WarnNET5 = settings.WarnNET5;
             ShowAdvancedSettingsRawSQLPopup = settings.ShowAdvancedSettingsRawSQLPopup;
             CombineOfflineProviders = settings.CombineOfflineProviders;
             CombineOnlineProviders = settings.CombineOnlineProviders;
@@ -470,7 +458,6 @@ namespace Analogy
                 SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule,
                 IdleMode = IdleMode,
                 IdleTimeMinutes = IdleTimeMinutes,
-                EventLogs = EventLogs,
                 AutoStartDataProviders = AutoStartDataProviders,
                 AutoScrollToLastMessage = AutoScrollToLastMessage,
                 DefaultDescendOrder = DefaultDescendOrder,
@@ -524,8 +511,6 @@ namespace Analogy
                 EnableFilePoolingDelay = EnableFilePoolingDelay,
                 InlineJsonViewer = InlineJsonViewer,
                 ShowProcessedCounter = ShowProcessedCounter,
-                WarnNET3 = WarnNET3,
-                WarnNET5 = WarnNET5,
                 ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup,
                 CombineOfflineProviders = CombineOfflineProviders,
                 CombineOnlineProviders = CombineOnlineProviders,
@@ -645,7 +630,6 @@ namespace Analogy
             Settings.Default.SearchAlsoInSourceAndModule = SearchAlsoInSourceAndModule;
             Settings.Default.IdleMode = IdleMode;
             Settings.Default.IdleTimeMinutes = IdleTimeMinutes;
-            Settings.Default.WindowsEventLogs = JsonConvert.SerializeObject(EventLogs);
             Settings.Default.AutoStartDataProviders = JsonConvert.SerializeObject(AutoStartDataProviders);
             Settings.Default.AutoScrollToLastMessage = AutoScrollToLastMessage;
             Settings.Default.ColorSettings = JsonConvert.SerializeObject(ColorSettings);
@@ -695,8 +679,6 @@ namespace Analogy
             Settings.Default.FilePoolingDelayEnable = EnableFilePoolingDelay;
             Settings.Default.InlineJsonViewer = InlineJsonViewer;
             Settings.Default.ShowProcessedCounter = ShowProcessedCounter;
-            Settings.Default.WarnNET3 = WarnNET3;
-            Settings.Default.WarnNET5 = WarnNET5;
             Settings.Default.ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup;
             Settings.Default.CombineOnlineProviders = CombineOfflineProviders;
             Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
