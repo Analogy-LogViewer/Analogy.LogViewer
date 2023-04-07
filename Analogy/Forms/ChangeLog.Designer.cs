@@ -65,7 +65,7 @@
             this.rtxtbChangeLog.Name = "rtxtbChangeLog";
             this.rtxtbChangeLog.Size = new System.Drawing.Size(1056, 388);
             this.rtxtbChangeLog.TabIndex = 0;
-            this.rtxtbChangeLog.Text = resources.GetString("rtxtbChangeLog.Text");
+            this.rtxtbChangeLog.Text = "";
             // 
             // sBtnOk
             // 
@@ -84,7 +84,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 456);
             this.Controls.Add(this.splitContainer1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("ChangeLog.IconOptions.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ChangeLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
