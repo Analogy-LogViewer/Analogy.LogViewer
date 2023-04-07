@@ -92,10 +92,12 @@ namespace Analogy
             LoadStartupExtensions();
             RegisterForOnDemandPlots();
             //Create all other DataSources
-            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories
-                         .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory)))
+            foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
+                         .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
+                                           factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
+                                           && factory.DataProvidersFactories.Any(d => d.DataProviders.Any())))
             {
-                CreateDataSourceMenuItem(factory);
+                CreateDataSourceMenuItem(fc);
             }
 
             if (OnlineSources.Any())

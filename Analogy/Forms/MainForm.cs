@@ -214,7 +214,8 @@ namespace Analogy.Forms
             //Create all other DataSources
             foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
                 .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
-                                  factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
+                                  factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
+                                  && factory.DataProvidersFactories.Any(d=>d.DataProviders.Any())))
             {
                 CreateDataSource(fc, 3);
             }
