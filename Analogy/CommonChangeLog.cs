@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.13.0 - [UI] Do not Create menu for empty Data Providers #1708",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 04, 08)),
                 new AnalogyChangeLog("V4.13.0 - Pooling for rolling files #1680",AnalogChangeLogType.Improvement, "pybride", new DateTime(2023, 04, 08)), 
                 new AnalogyChangeLog("V4.13.0 - Improving handling of custom control linked to log tabs #1681",AnalogChangeLogType.Improvement, "pybride", new DateTime(2023, 04, 08)),
                 new AnalogyChangeLog("V4.13.0 - Adding a new Values tab in Timeline Visualizer #1682",AnalogChangeLogType.Improvement, "pybride", new DateTime(2023, 04, 08)),
