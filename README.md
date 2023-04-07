@@ -248,5 +248,3 @@ The application has some analyzers and visualization.
 
 ### Owner
 - [Lior Banai](mailto:liorbanai@gmail.com)
-
-![](https://estruyf-github.azurewebsites.net/api/VisitorHit?user=Analogy-LogViewer&repo=Analogy.LogViewer&countColorcountColor) Since May 2022
