@@ -67,7 +67,6 @@ namespace Analogy
             this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
             this.bsiHelp = new DevExpress.XtraBars.BarSubItem();
             this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnUpdates = new DevExpress.XtraBars.BarButtonItem();
@@ -92,6 +91,7 @@ namespace Analogy
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.notifyIconAnalogy = new System.Windows.Forms.NotifyIcon(this.components);
@@ -99,6 +99,8 @@ namespace Analogy
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TmrAutoConnect = new System.Windows.Forms.Timer(this.components);
             this.tmrStatusUpdates = new System.Windows.Forms.Timer(this.components);
+            this.bbtnItemGithubHistory = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiWelcomeForm = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -381,9 +383,11 @@ namespace Analogy
             this.bbiPayPal,
             this.bbiKofi,
             this.bbiDownloadStatistics,
-            this.bbiGitHubSponsor});
+            this.bbiGitHubSponsor,
+            this.bbtnItemGithubHistory,
+            this.bbiWelcomeForm});
             this.barManager1.MainMenu = this.barMain;
-            this.barManager1.MaxItemId = 32;
+            this.barManager1.MaxItemId = 34;
             this.barManager1.StatusBar = this.barButtom;
             // 
             // barMain
@@ -427,7 +431,8 @@ namespace Analogy
             this.bsiHelp.Caption = "Help";
             this.bsiHelp.Id = 15;
             this.bsiHelp.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnWhatsNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiWelcomeForm),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemGithubHistory),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnUpdates),
@@ -444,14 +449,6 @@ namespace Analogy
             this.bbtnWhatsNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.Image")));
             this.bbtnWhatsNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.LargeImage")));
             this.bbtnWhatsNew.Name = "bbtnWhatsNew";
-            // 
-            // bbtnFirstRun
-            // 
-            this.bbtnFirstRun.Caption = "Show First Run Window";
-            this.bbtnFirstRun.Id = 17;
-            this.bbtnFirstRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.Image")));
-            this.bbtnFirstRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.LargeImage")));
-            this.bbtnFirstRun.Name = "bbtnFirstRun";
             // 
             // bbtnItemChangeLog
             // 
@@ -680,6 +677,14 @@ namespace Analogy
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 708);
             // 
+            // bbtnFirstRun
+            // 
+            this.bbtnFirstRun.Caption = "Show First Run Window";
+            this.bbtnFirstRun.Id = 17;
+            this.bbtnFirstRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.Image")));
+            this.bbtnFirstRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.LargeImage")));
+            this.bbtnFirstRun.Name = "bbtnFirstRun";
+            // 
             // documentManager1
             // 
             this.documentManager1.ContainerControl = this;
@@ -719,6 +724,20 @@ namespace Analogy
             // 
             this.tmrStatusUpdates.Enabled = true;
             this.tmrStatusUpdates.Interval = 1000;
+            // 
+            // bbtnItemGithubHistory
+            // 
+            this.bbtnItemGithubHistory.Caption = "Version History (Github)";
+            this.bbtnItemGithubHistory.Id = 32;
+            this.bbtnItemGithubHistory.ImageOptions.Image = global::Analogy.Properties.Resources.github16x16;
+            this.bbtnItemGithubHistory.Name = "bbtnItemGithubHistory";
+            // 
+            // bbiWelcomeForm
+            // 
+            this.bbiWelcomeForm.Caption = "Welcom To Analogy";
+            this.bbiWelcomeForm.Id = 33;
+            this.bbiWelcomeForm.ImageOptions.Image = global::Analogy.Properties.Resources.Analogy_image_16x16;
+            this.bbiWelcomeForm.Name = "bbiWelcomeForm";
             // 
             // FluentDesignMainForm
             // 
@@ -816,5 +835,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bbiRealTimeProviders;
         private DevExpress.XtraBars.BarButtonItem bbiFileAssociations;
         private DevExpress.XtraBars.BarButtonItem bbiAdditionalLocations;
+        private DevExpress.XtraBars.BarButtonItem bbtnItemGithubHistory;
+        private DevExpress.XtraBars.BarButtonItem bbiWelcomeForm;
     }
 }

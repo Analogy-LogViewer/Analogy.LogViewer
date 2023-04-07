@@ -75,7 +75,6 @@
             this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
             this.bbiWelcomeForm = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnWhatsNew = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemGithubHistory = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemChangeLog = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDebugLog = new DevExpress.XtraBars.BarButtonItem();
@@ -140,6 +139,7 @@
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.bbtnFirstRun = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSponsorOpenCollection = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBinance = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPayPal = new DevExpress.XtraBars.BarButtonItem();
@@ -367,7 +367,6 @@
             this.bsmInfo.ImageOptions.Image = global::Analogy.Properties.Resources.About_16x16;
             this.bsmInfo.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiWelcomeForm),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnWhatsNew),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemGithubHistory),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnItemChangeLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDebugLog),
@@ -398,14 +397,7 @@
             this.bbtnWhatsNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.Image")));
             this.bbtnWhatsNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnWhatsNew.ImageOptions.LargeImage")));
             this.bbtnWhatsNew.Name = "bbtnWhatsNew";
-            // 
-            // bbtnFirstRun
-            // 
-            this.bbtnFirstRun.Caption = "Show First Run Window";
-            this.bbtnFirstRun.Id = 99;
-            this.bbtnFirstRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.Image")));
-            this.bbtnFirstRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.LargeImage")));
-            this.bbtnFirstRun.Name = "bbtnFirstRun";
+            this.bbtnWhatsNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbtnItemGithubHistory
             // 
@@ -964,6 +956,14 @@
             this.barSubItem4.Caption = "Data Provider Settings";
             this.barSubItem4.Id = 93;
             this.barSubItem4.Name = "barSubItem4";
+            // 
+            // bbtnFirstRun
+            // 
+            this.bbtnFirstRun.Caption = "Show First Run Window";
+            this.bbtnFirstRun.Id = 99;
+            this.bbtnFirstRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.Image")));
+            this.bbtnFirstRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnFirstRun.ImageOptions.LargeImage")));
+            this.bbtnFirstRun.Name = "bbtnFirstRun";
             // 
             // bbtnSponsorOpenCollection
             // 

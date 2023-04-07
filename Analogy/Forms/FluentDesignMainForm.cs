@@ -353,7 +353,16 @@ namespace Analogy
             {
                 UpdateUpdateButton();
             };
-
+            bbiWelcomeForm.ItemClick += (s, e) =>
+            {
+                WelcomeForm wf = new WelcomeForm();
+                wf.ShowDialog(this);
+            };
+            bbtnItemGithubHistory.ItemClick += (s, e) =>
+            {
+                GitHubHistoryForm g = new GitHubHistoryForm();
+                g.ShowDialog(this);
+            };
             dockManager1.StartDocking += (s, e) =>
             {
                 if (e.Panel.DockedAsTabbedDocument)
