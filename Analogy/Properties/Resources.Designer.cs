@@ -1360,27 +1360,6 @@ namespace Analogy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;h1 id=&quot;v4.12.0-sqlite-data-provider-poc&quot;&gt;V4.12.0 - Sqlite  data provider (POC)&lt;/h1&gt;
-        ///&lt;p&gt;This release adds new data provider:&lt;/p&gt;
-        ///&lt;p&gt;Sqlite db browser (POC)&lt;/p&gt;
-        ///&lt;h3 id=&quot;bug-fixes&quot;&gt;Bug fixes:&lt;/h3&gt;
-        ///&lt;ul&gt;
-        ///&lt;li&gt;None&lt;/li&gt;
-        ///&lt;/ul&gt;
-        ///&lt;h3 id=&quot;improvementschanges&quot;&gt;Improvements/Changes:&lt;/h3&gt;
-        ///&lt;ul&gt;
-        ///&lt;li&gt;None&lt;/li&gt;
-        ///&lt;/ul&gt;
-        ///&lt;h3 id=&quot;analogy-log-server-needs-net6net7-version-to-read-messages&quot;&gt;Analogy Log Server (Needs NET6/NET7 version to read messages)&lt;/h3&gt;
-        ///&lt;p&gt;Go to Real Time Log Server release page. &lt;a href=&quot;https://git [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string ReleaseInformation {
-            get {
-                return ResourceManager.GetString("ReleaseInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Ribbon {

@@ -84,6 +84,7 @@
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "GitHubHistoryForm";
             this.NavigationControl = this.accordionControl1;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Github Releases";
             this.Load += new System.EventHandler(this.GitHubHistoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();

@@ -17,7 +17,12 @@ namespace Analogy.Forms.Welcome
                 return;
             }
 
-            richEditControl1.HtmlText = Resources.ReleaseInformation;
+        }
+
+        private void sbtnGithubHistory_Click(object sender, EventArgs e)
+        {
+            GitHubHistoryForm g = new GitHubHistoryForm();
+            g.ShowDialog(this);
         }
     }
 }

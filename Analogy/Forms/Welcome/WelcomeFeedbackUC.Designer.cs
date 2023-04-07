@@ -43,7 +43,7 @@
             this.labelControl1.Size = new System.Drawing.Size(1100, 84);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Feedback.\r\n\r\nUse the below button to open Github issue page for reporting issues/" +
-    "requests or general fedback.";
+    "requests or general feedback.";
             // 
             // sbtnFeedbackGithubLink
             // 
