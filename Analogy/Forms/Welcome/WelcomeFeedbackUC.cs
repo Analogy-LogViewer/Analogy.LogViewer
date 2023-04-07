@@ -13,5 +13,10 @@ namespace Analogy.Forms.Welcome
         {
 
         }
+
+        private void sbtnFeedbackGithubLink_Click(object sender, EventArgs e)
+        {
+            Utils.OpenLink("https://github.com/Analogy-LogViewer/Analogy.LogViewer/issues/new/choose");
+        }
     }
 }

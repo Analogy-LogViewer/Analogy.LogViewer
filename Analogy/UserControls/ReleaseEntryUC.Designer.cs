@@ -33,9 +33,12 @@
             // 
             // richEditControl1
             // 
+            this.richEditControl1.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
             this.richEditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richEditControl1.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
             this.richEditControl1.Location = new System.Drawing.Point(0, 0);
             this.richEditControl1.Name = "richEditControl1";
+            this.richEditControl1.ReadOnly = true;
             this.richEditControl1.Size = new System.Drawing.Size(674, 433);
             this.richEditControl1.TabIndex = 0;
             // 
