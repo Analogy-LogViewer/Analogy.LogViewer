@@ -390,7 +390,7 @@ namespace Analogy
             return toolTip;
         }
 
-        public static async Task<(bool newData, T result)> GetAsync<T>(string uri, string token, DateTime lastModified)
+        public static async Task<(bool newData, T? result)> GetAsync<T>(string uri, string token, DateTime lastModified)
         {
             try
             {

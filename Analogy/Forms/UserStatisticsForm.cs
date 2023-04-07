@@ -1,6 +1,5 @@
 ﻿using DevExpress.XtraEditors;
 using System.Windows.Forms;
-using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 
 namespace Analogy.Forms

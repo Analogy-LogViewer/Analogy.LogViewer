@@ -28,8 +28,6 @@ using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
-using DevExpress.LookAndFeel;
-using DevExpress.XtraCharts;
 
 namespace Analogy.Forms
 {

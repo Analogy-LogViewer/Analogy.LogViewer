@@ -5,7 +5,6 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
-using Analogy.CommonControls.Managers;
 
 namespace Analogy.Forms
 {

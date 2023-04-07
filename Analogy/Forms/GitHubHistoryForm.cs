@@ -1,18 +1,11 @@
-﻿using DevExpress.XtraBars;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
-using Analogy.CommonUtilities.Web;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraCharts;
+using Markdig;
 
 namespace Analogy.Forms
 {
@@ -21,7 +14,7 @@ namespace Analogy.Forms
         private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
         public GitHubHistoryForm()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             EnableAcrylicAccent = false;
             Icon = Settings.GetIcon();
         }
@@ -40,18 +33,17 @@ namespace Analogy.Forms
                 {
                     return;
                 }
-
+                
                 CreatePieChart(releases);
                 foreach (GithubReleaseEntry entry in releases)
                 {
                     CreateReleaseEntry(entry);
                 }
-                int total = releases.SelectMany(e => e.Assets).Sum(a => a.Downloads);
-
+               
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error fetaching history from github: {e.Message}",e);
+                AnalogyLogger.Instance.LogException($"Error fetaching history from github: {e.Message}", e);
             }
 
         }

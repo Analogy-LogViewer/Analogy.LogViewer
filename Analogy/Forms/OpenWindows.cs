@@ -1,9 +1,7 @@
-﻿using Analogy.Interfaces;
-using DevExpress.XtraEditors.Controls;
+﻿using DevExpress.XtraEditors.Controls;
 using System.Collections.Generic;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Forms;
-using Analogy.CommonControls.Interfaces;
 
 namespace Analogy.Forms
 {

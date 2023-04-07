@@ -2,6 +2,7 @@
 using Analogy.CommonUtilities.Github;
 using DevExpress.XtraEditors;
 using Markdig;
+using static Grpc.Core.Metadata;
 
 namespace Analogy.UserControls
 {
@@ -21,13 +22,13 @@ namespace Analogy.UserControls
 
         private void ReleaseEntryUC_Load(object sender, EventArgs e)
         {
-            using (var client = new WebClient())
-            {
-                var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
-                    .Build();
-                string html =Markdown.ToHtml(Entry.Content,pipeline);
-                richEditControl1.HtmlText = html;
-            }
+
+            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
+                .Build();
+            string data = $"# {Entry.Title}{Environment.NewLine}{Environment.NewLine}{Entry.Content}{Environment.NewLine}{Environment.NewLine}Created: {Entry.Created}";
+            string html = Markdown.ToHtml(data , pipeline);
+            richEditControl1.HtmlText = html;
+
         }
     }
 }

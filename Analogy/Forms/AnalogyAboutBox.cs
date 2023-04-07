@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
-using Analogy.CommonUtilities.Web;
 using Analogy.Managers;
 using Analogy.UserControls;
-using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
