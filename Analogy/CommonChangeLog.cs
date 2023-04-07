@@ -9,6 +9,14 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new AnalogyChangeLog("V4.13.0 - Pooling for rolling files #1680",AnalogChangeLogType.Improvement, "pybride", new DateTime(2023, 04, 08)), 
+                new AnalogyChangeLog("V4.13.0 - Improving handling of custom control linked to log tabs #1681",AnalogChangeLogType.Improvement, "pybride", new DateTime(2023, 04, 08)),
+                new AnalogyChangeLog("V4.13.0 - Adding a new Values tab in Timeline Visualizer #1682",AnalogChangeLogType.Improvement, "pybride", new DateTime(2023, 04, 08)),
+                new AnalogyChangeLog("V4.13.0 - [Extensions] add LoggersTree nuget to Analogy #1706",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 04, 08)),
+                new AnalogyChangeLog("V4.13.0 - Refactor welcome window #1671",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 04, 08)),
+                new AnalogyChangeLog("V4.13.0 - [UI] Do not Create menu for empty Data Providers #1708",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 04, 08)),
+                new AnalogyChangeLog("V4.12.0 - Sqlite Data Provider",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 03, 11)),
+                new AnalogyChangeLog("V4.11.2 - Exception when reading Serilog-clef-files with enrichment using Object as the key #1629",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 02, 14)),
                 new AnalogyChangeLog("V4.11.1 - [Json Viewer] Remember last open position and state of the Json Viewer Form #1621",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 02, 08)),
                 new AnalogyChangeLog("V4.11.1 - 'View in Json Visualizer' no longer displays 'tree view' in latest update 4.11.0 #1620",AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 02, 08)),
                 new AnalogyChangeLog("V4.11.0 - Refactor Json Viewer #1614",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 02, 04)),
