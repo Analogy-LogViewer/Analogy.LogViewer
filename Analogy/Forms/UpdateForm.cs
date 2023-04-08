@@ -34,9 +34,9 @@ namespace Analogy.Forms
 
             if (Updater.LastVersionChecked?.TagName != null)
             {
-                richTextBoxRelease.Text = Updater.LastVersionChecked.ToString();
+                richTextBoxRelease.Text = Updater.LastVersionChecked.Body;
                 hyperLinkEditLatest.Text = Updater.LastVersionChecked.HtmlUrl;
-                cePreRelease.Checked = Updater.LastVersionChecked.PreRelease;
+                cePreRelease.Checked = Updater.LastVersionChecked.Prerelease;
                 if (Updater.NewVersionExist)
                 {
                     sbtnUpdateNow.Visible = true;
@@ -48,11 +48,11 @@ namespace Analogy.Forms
         {
             var (_, release) = await Updater.CheckVersion(true);
             Settings.LastVersionChecked = release;
-            string preRelease = release.PreRelease ? " (This is pre-release version)" : string.Empty;
+            string preRelease = release.Prerelease ? " (This is pre-release version)" : string.Empty;
             lblLatestVersion.Text = $"Latest version is: {release.TagName}{preRelease}.";
-            richTextBoxRelease.Text = release.ToString();
+            richTextBoxRelease.Text = release.Body;
             hyperLinkEditLatest.Text = release.HtmlUrl;
-            cePreRelease.Checked = release.PreRelease;
+            cePreRelease.Checked = release.Prerelease;
             if (Updater.NewVersionExist)
             {
                 sbtnUpdateNow.Visible = true;

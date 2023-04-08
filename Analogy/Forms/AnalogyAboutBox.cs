@@ -1,10 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 using Analogy.CommonUtilities.Github;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraEditors;
+using Octokit;
 
 namespace Analogy.Forms
 {
@@ -23,7 +25,7 @@ namespace Analogy.Forms
 
         }
 
-        public AnalogyAboutBox(int selectedTab):this()
+        public AnalogyAboutBox(int selectedTab) : this()
         {
             SelectedTab = selectedTab;
         }
@@ -120,17 +122,15 @@ namespace Analogy.Forms
 
         private async void sbtnFetchReleases_Click(object sender, EventArgs e)
         {
-            var (_, releases) = await Utils
-                .GetAsync<GithubReleaseEntry[]>(AnalogyNonPersistSettings.Instance.AnalogyReleasesUrl, "", DateTime.MinValue)
-                .ConfigureAwait(true);
+            IReadOnlyList<Release>? releases = await Utils.GetReleases();
             if (releases == null)
             {
                 return;
             }
 
             DownloadStatisticsUC uc = new DownloadStatisticsUC(releases);
-           panelChart.Controls.Add(uc);
-           uc.Dock = DockStyle.Fill;
+            panelChart.Controls.Add(uc);
+            uc.Dock = DockStyle.Fill;
         }
 
         private void AnalogyAboutBox_Load(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace Analogy.Forms
             if (SelectedTab > 0)
             {
                 xtraTabControl1.SelectedTabPageIndex = SelectedTab;
-                sbtnFetchReleases_Click(sender,e);
+                sbtnFetchReleases_Click(sender, e);
             }
         }
     }

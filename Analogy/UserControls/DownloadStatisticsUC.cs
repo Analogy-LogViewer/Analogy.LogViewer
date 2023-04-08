@@ -5,23 +5,24 @@ using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
+using Octokit;
 
 namespace Analogy.UserControls
 {
     public partial class DownloadStatisticsUC : XtraUserControl
     {
-        private GithubReleaseEntry[] Releases { get; }
+        private IReadOnlyList<Release> Releases { get; }
         private int TotalDownloadFramework;
         private int TotalDownloadNet;
         public DownloadStatisticsUC()
         {
             InitializeComponent();
         }
-        public DownloadStatisticsUC(GithubReleaseEntry[] releases) : this()
+        public DownloadStatisticsUC(IReadOnlyList<Release> releases) : this()
         {
             Releases = releases;
             cbeReleases.Properties.BeginInit();
-            cbeReleases.Properties.Items.AddRange(releases.Select(r => r.Title).ToArray());
+            cbeReleases.Properties.Items.AddRange(releases.Select(r => r.Name).ToArray());
             cbeReleases.Properties.EndInit();
         }
 
@@ -36,13 +37,13 @@ namespace Analogy.UserControls
             var net7 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase)));
 
 
-            var net471Downloads = net471.Sum(r => r.Sum(a => a.Downloads));
-            var net472Downloads = net472.Sum(r => r.Sum(a => a.Downloads));
-            var net48Downloads = net48.Sum(r => r.Sum(a => a.Downloads));
-            var net31Downloads = net31.Sum(r => r.Sum(a => a.Downloads));
-            var net5Downloads = net5.Sum(r => r.Sum(a => a.Downloads));
-            var net6Downloads = net6.Sum(r => r.Sum(a => a.Downloads));
-            var net7Downloads = net7.Sum(r => r.Sum(a => a.Downloads));
+            var net471Downloads = net471.Sum(r => r.Sum(a => a.DownloadCount));
+            var net472Downloads = net472.Sum(r => r.Sum(a => a.DownloadCount));
+            var net48Downloads = net48.Sum(r => r.Sum(a => a.DownloadCount));
+            var net31Downloads = net31.Sum(r => r.Sum(a => a.DownloadCount));
+            var net5Downloads = net5.Sum(r => r.Sum(a => a.DownloadCount));
+            var net6Downloads = net6.Sum(r => r.Sum(a => a.DownloadCount));
+            var net7Downloads = net7.Sum(r => r.Sum(a => a.DownloadCount));
             TotalDownloadFramework = net471Downloads + net472Downloads + net48Downloads;
             TotalDownloadNet = net31Downloads + net5Downloads + net6Downloads + net7Downloads;
             var total = TotalDownloadFramework + TotalDownloadNet;
@@ -119,7 +120,7 @@ namespace Analogy.UserControls
         }
         private void cbeReleases_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbeReleases.SelectedIndex >= 0 && cbeReleases.SelectedIndex <= Releases.Length)
+            if (cbeReleases.SelectedIndex >= 0 && cbeReleases.SelectedIndex <= Releases.Count)
             {
                 var release = Releases[cbeReleases.SelectedIndex];
                 var net471 = release.Assets.Where(a => a.Name.Contains("471", StringComparison.InvariantCultureIgnoreCase));
@@ -131,13 +132,13 @@ namespace Analogy.UserControls
                 var net7 = release.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase));
 
 
-                var net471Downloads = net471.Sum(r => r.Downloads);
-                var net472Downloads = net472.Sum(r => r.Downloads);
-                var net48Downloads = net48.Sum(r => r.Downloads);
-                var net31Downloads = net31.Sum(r => r.Downloads);
-                var net5Downloads = net5.Sum(r => r.Downloads);
-                var net6Downloads = net6.Sum(r => r.Downloads);
-                var net7Downloads = net7.Sum(r => r.Downloads);
+                var net471Downloads = net471.Sum(r => r.DownloadCount);
+                var net472Downloads = net472.Sum(r => r.DownloadCount);
+                var net48Downloads = net48.Sum(r => r.DownloadCount);
+                var net31Downloads = net31.Sum(r => r.DownloadCount);
+                var net5Downloads = net5.Sum(r => r.DownloadCount);
+                var net6Downloads = net6.Sum(r => r.DownloadCount);
+                var net7Downloads = net7.Sum(r => r.DownloadCount);
 
                 var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads;
                 lblTotal.Text = $"Total Downloads ({release.TagName}): {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. Net 3.1/5/6/7: {net31Downloads + net5Downloads + net6Downloads + net7Downloads}";

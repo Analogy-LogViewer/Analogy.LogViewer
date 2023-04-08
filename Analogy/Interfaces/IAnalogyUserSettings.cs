@@ -5,6 +5,7 @@ using Analogy.Common.Interfaces;
 using Analogy.CommonUtilities.Github;
 using Analogy.DataTypes;
 using Analogy.Interfaces.Factories;
+using Octokit;
 
 namespace Analogy.Interfaces
 {
@@ -42,7 +43,7 @@ namespace Analogy.Interfaces
         string AnalogyIcon { get; set; }
         UpdateMode UpdateMode { get; set; }
         DateTime LastUpdate { get; set; }
-        GithubReleaseEntry? LastVersionChecked { get; set; }
+        Release? LastVersionChecked { get; set; }
         string GitHubToken { get; }
         bool MinimizedToTrayBar { get; set; }
         AnalogyPositionState AnalogyPosition { get; set; }

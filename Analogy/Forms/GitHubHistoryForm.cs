@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonUtilities.Github;
 using Analogy.Interfaces;
@@ -6,6 +7,7 @@ using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraBars.Navigation;
 using Markdig;
+using Octokit;
 
 namespace Analogy.Forms
 {
@@ -28,14 +30,14 @@ namespace Analogy.Forms
         {
             try
             {
-                var (_, releases) = await Utils.GetAsync<GithubReleaseEntry[]>(AnalogyNonPersistSettings.Instance.AnalogyReleasesUrl, UserSettingsManager.UserSettings.GitHubToken, DateTime.MinValue).ConfigureAwait(true);
+                IReadOnlyList<Release>? releases = await Utils.GetReleases();
                 if (releases == null)
                 {
                     return;
                 }
                 
                 CreatePieChart(releases);
-                foreach (GithubReleaseEntry entry in releases)
+                foreach (Release entry in releases)
                 {
                     CreateReleaseEntry(entry);
                 }
@@ -43,16 +45,16 @@ namespace Analogy.Forms
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error fetaching history from github: {e.Message}", e);
+                AnalogyLogger.Instance.LogException($"Error fetching history from github: {e.Message}", e);
             }
 
         }
 
-        private void CreateReleaseEntry(GithubReleaseEntry entry)
+        private void CreateReleaseEntry(Release entry)
         {
 
             var downloads = new AccordionControlElement(ElementStyle.Item);
-            downloads.Text = $"{entry.TagName} ({entry.Created.ToShortDateString()})";
+            downloads.Text = $"{entry.TagName} ({entry.CreatedAt.DateTime})";
             accordionControl1.Elements.Add(downloads);
             downloads.Click += (s, e) =>
             {
@@ -70,7 +72,7 @@ namespace Analogy.Forms
             };
         }
 
-        private void CreatePieChart(GithubReleaseEntry[] releases)
+        private void CreatePieChart(IReadOnlyList<Release> releases)
         {
 
             DownloadStatisticsUC uc = new DownloadStatisticsUC(releases);

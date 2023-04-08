@@ -23,6 +23,8 @@ using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Managers;
 using DevExpress.Utils;
+using Octokit;
+using FileMode = System.IO.FileMode;
 
 namespace Analogy
 {
@@ -390,59 +392,22 @@ namespace Analogy
             return toolTip;
         }
 
-        public static async Task<(bool newData, T? result)> GetAsync<T>(string uri, string token, DateTime lastModified)
+        public static async Task<IReadOnlyList<Release>?> GetReleases()
         {
             try
             {
-                Uri myUri = new Uri(uri);
-                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(myUri);
-                myHttpWebRequest.Accept = "application/json";
-                myHttpWebRequest.UserAgent = "Analogy.LogViewer";
-                if (!string.IsNullOrEmpty(token))
-                {
-                    myHttpWebRequest.Headers.Add(HttpRequestHeader.Authorization, $"Token {token}");
-                }
+                var client = new GitHubClient(new ProductHeaderValue("Analogy.LogViewer.Analogy"));
+                IReadOnlyList<Release>? releases = await client.Repository.Release.GetAll(AnalogyNonPersistSettings.Instance.AnalogyOrganizationName, AnalogyNonPersistSettings.Instance.AnalogyRepositoryName);
+                return releases;
+            }
+            catch (Exception e)
+            {
+               AnalogyLogger.Instance.LogException($"Error getting releases from Github: {e.Message}",e);
+               return new List<Release>();
+            }
 
-                myHttpWebRequest.IfModifiedSince = lastModified;
-
-                HttpWebResponse myHttpWebResponse = (HttpWebResponse)await myHttpWebRequest.GetResponseAsync();
-                if (myHttpWebResponse.StatusCode == HttpStatusCode.NotModified)
-                {
-                    return (false, default);
-                }
-
-                using (var reader = new System.IO.StreamReader(myHttpWebResponse.GetResponseStream()))
-                {
-                    string responseText = await reader.ReadToEndAsync();
-                    return (true, JsonConvert.DeserializeObject<T>(responseText));
-                }
-            }
-            catch (WebException e) when (e.Status == WebExceptionStatus.NameResolutionFailure)
-            {
-                return (false, default);
-            }
-            catch (WebException e) when (e.Status == WebExceptionStatus.UnknownError)
-            {
-                return (false, default);
-            }
-            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.NotModified)
-            {
-                return (false, default);
-            }
-            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.Unauthorized)
-            {
-                return (false, default);
-            }
-            catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.Forbidden)
-            {
-                return (false, default);
-            }
-            catch (Exception)
-            {
-                return (false, default);
-            }
         }
-
+   
     }
 
 }

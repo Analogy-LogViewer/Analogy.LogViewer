@@ -16,8 +16,8 @@ namespace Analogy.Managers
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
         public bool UpdateAreDisabled => DisableUpdateFromRegistry || DisableUpdatesByDataProvidersOverrides;
-        public string AnalogyReleasesUrl => $"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer/releases?per_page=100";
-
+        public string AnalogyOrganizationName => "Analogy-LogViewer";
+        public string AnalogyRepositoryName => "Analogy.LogViewer";
         public AnalogyNonPersistSettings()
         {
             AdditionalAssembliesDependenciesLocations = new List<string>();
