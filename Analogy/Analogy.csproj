@@ -66,7 +66,7 @@
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="3.8.3" />
-		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.4.1" />
+		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.4.2" />
 		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.12.0" />
 		<PackageReference Include="Grpc.Core" Version="2.46.6" />
 		<PackageReference Include="Markdig" Version="0.31.0" />
