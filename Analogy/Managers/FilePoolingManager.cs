@@ -48,7 +48,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
 
     public string FileFilter { get; set; }
 
-    public bool HasFiltFilter { get; set; }
+    public bool HasFileFilter { get; set; }
     public bool ForceNoFileCaching { get; set; } = true;
     public bool DoNotAddToRecentHistory { get; set; } = true;
 
@@ -84,14 +84,14 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
 
     public Task Init()
     {
-        HasFiltFilter = !FileFilter.Equals(FileName);
+        HasFileFilter = !FileFilter.Equals(FileName);
         _watchFile = new FileSystemWatcher
                      {
                          Path = Path.GetDirectoryName(FileName),
                          Filter = Path.GetFileName(FileFilter)
                      };
         _watchFile.Changed += WatchFile_Changed;
-        if (!HasFiltFilter)
+        if (!HasFileFilter)
         {
             _watchFile.Deleted += WatchFile_Deleted;
             _watchFile.Renamed += WatchFile_Renamed;
@@ -108,14 +108,20 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
                                   Date = DateTime.Now
                               };
         OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
-        return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
+        if (!HasFileFilter)
+            return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
+        List<Task> tasks = new();
+        if (_watchFile.Path != null)
+            foreach (string? file in Directory.GetFiles(_watchFile.Path, _watchFile.Filter, SearchOption.TopDirectoryOnly))
+                tasks.Add(FileProcessor.Process(OfflineDataProvider, file, _cancellationTokenSource.Token));
+        return Task.WhenAll(tasks);
     }
 
     public void StopMonitoring()
     {
         _watchFile.EnableRaisingEvents = false;
         _watchFile.Changed -= WatchFile_Changed;
-        if (!HasFiltFilter)
+        if (!HasFileFilter)
         {
             _watchFile.Deleted -= WatchFile_Deleted;
             _watchFile.Renamed -= WatchFile_Renamed;
