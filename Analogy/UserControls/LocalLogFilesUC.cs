@@ -26,15 +26,16 @@ namespace Analogy
         {
             InitializeComponent();
         }
-        public LocalLogFilesUC(string initSelectedPath) : this()
+        public LocalLogFilesUC(string initSelectedPath, string? title = null) : this()
         {
             SelectedPath = initSelectedPath ?? string.Empty;
             treeList1.Columns["colChanged"].SortOrder = SortOrder.Descending;
             treeList1.Appearance.HideSelectionRow.Assign(treeList1.ViewInfo.PaintAppearance.FocusedRow);
+            ucLogs1.Title = title;
             ucLogs1.SetSaveButtonsVisibility(false);
         }
 
-        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string? initialSelectedPath = null) : this(initialSelectedPath ?? string.Empty)
+        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string? initialSelectedPath = null, string? title = null) : this(initialSelectedPath ?? string.Empty, title: title)
         {
 
             DataProvider = dataProvider;

@@ -31,6 +31,7 @@ using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraBars.Docking;
+using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
@@ -183,6 +184,8 @@ namespace Analogy.CommonControls.UserControls
             }
         }
         private LogLevelSelectionType LogLevelSelectionType => Settings.LogLevelSelection;
+        public string? Title { get; set; }
+
         #endregion
 
         #region fields
@@ -1462,7 +1465,8 @@ namespace Analogy.CommonControls.UserControls
                     pnl.Text = extension.Title;
                     pnl.ID = extension.Id;
                 }
-                //pnl.Controls.Add(extension.CreateUserControl(Id, Logger));
+                if (Title != null && pnl.ParentPanel != null)
+                    pnl.ParentPanel.Text = Title;
                 pnl.ControlContainer.Controls.Add(extension.CreateUserControl(Id, Logger));
                 pnl.SizeChanged += ExtensionPanel_SizeChanged;
                 await extension.InitializeUserControl(this, Id, Logger);

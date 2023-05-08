@@ -339,12 +339,13 @@ namespace Analogy
         {
             openedWindows++;
             await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
-            UserControl offlineUC = new LocalLogFilesUC(dataProvider, fileNames);
+            string fullTitle =  $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
+            UserControl offlineUC = new LocalLogFilesUC(dataProvider, fileNames, title: fullTitle);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
             page.Controls.Add(offlineUC);
             offlineUC.Dock = DockStyle.Fill;
-            page.Text = $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
+            page.Text = fullTitle;
             dockManager1.ActivePanel = page;
         }
         private void SetupEventHandlers()
@@ -826,12 +827,13 @@ namespace Analogy
                 {
                     openedWindows++;
                     await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
-                    UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder);
+                    string fullTitle =   $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
+                    UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder, title: fullTitle);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
                     page.Controls.Add(offlineUC);
                     offlineUC.Dock = DockStyle.Fill;
-                    page.Text = $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
+                    page.Text = fullTitle;
                     dockManager1.ActivePanel = page;
                 }
 
@@ -1105,12 +1107,13 @@ namespace Analogy
             btn.Click += (s, be) =>
             {
                 openedWindows++;
-                UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, null, recentPath);
+                string fullTitle =  $"{offlineTitle} #{openedWindows} ({title})";
+                UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, null, recentPath, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
                 page.Controls.Add(offlineUC);
                 offlineUC.Dock = DockStyle.Fill;
-                page.Text = $"{offlineTitle} #{openedWindows} ({title})";
+                page.Text = fullTitle;
                 dockManager1.ActivePanel = page;
             };
 
