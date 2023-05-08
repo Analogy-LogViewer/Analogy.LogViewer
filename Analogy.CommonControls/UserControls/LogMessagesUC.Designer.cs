@@ -282,9 +282,11 @@ namespace Analogy.CommonControls.UserControls
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanelDetails = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.scMessageDetails = new DevExpress.XtraEditors.SplitContainerControl();
             this.meMessageDetails = new DevExpress.XtraEditors.MemoEdit();
             this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
@@ -391,9 +393,11 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanelLogs.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
-            this.panelContainer1.SuspendLayout();
+            this.dockPanelDetails.SuspendLayout();
+            this.dockPanelTree.SuspendLayout();
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
+            this.dockPanelTreeContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).BeginInit();
             this.scMessageDetails.Panel1.SuspendLayout();
@@ -3029,8 +3033,10 @@ namespace Analogy.CommonControls.UserControls
             this.dockManager1.Form = this;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.dockPanelLogs,
-            this.panelContainer1,
-            this.dockPanelFiltering});
+            this.dockPanelDetails,
+            this.dockPanelFiltering,
+            this.dockPanelTree
+        });
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -3064,20 +3070,40 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 248);
             this.dockPanel2_Container.TabIndex = 0;
             // 
-            // panelContainer1
+            // dockPanelDetails
             // 
-            this.panelContainer1.ActiveChild = this.dockPanelMessageInfo;
-            this.panelContainer1.Controls.Add(this.dockPanelMessageInfo);
-            this.panelContainer1.Controls.Add(this.dockPanelBookmarks);
-            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.panelContainer1.FloatSize = new System.Drawing.Size(428, 200);
-            this.panelContainer1.ID = new System.Guid("ac1a6167-81e4-42f6-b999-c394cc58516b");
-            this.panelContainer1.Location = new System.Drawing.Point(0, 523);
-            this.panelContainer1.Name = "panelContainer1";
-            this.panelContainer1.OriginalSize = new System.Drawing.Size(200, 204);
-            this.panelContainer1.Size = new System.Drawing.Size(1853, 204);
-            this.panelContainer1.Tabbed = true;
-            this.panelContainer1.Text = "panelContainer1";
+            this.dockPanelDetails.ActiveChild = this.dockPanelMessageInfo;
+            this.dockPanelDetails.Controls.Add(this.dockPanelMessageInfo);
+            this.dockPanelDetails.Controls.Add(this.dockPanelBookmarks);
+            this.dockPanelDetails.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.dockPanelDetails.FloatSize = new System.Drawing.Size(428, 200);
+            this.dockPanelDetails.ID = new System.Guid("ac1a6167-81e4-42f6-b999-c394cc58516b");
+            this.dockPanelDetails.Location = new System.Drawing.Point(0, 523);
+            this.dockPanelDetails.Name = "dockPanelDetails";
+            this.dockPanelDetails.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelDetails.Size = new System.Drawing.Size(1853, 204);
+            this.dockPanelDetails.Tabbed = true;
+            this.dockPanelDetails.Text = "dockPanelDetails";
+            // 
+            // dockPanelTree
+            // 
+            this.dockPanelTree.Controls.Add(this.dockPanelTreeContainer);
+            this.dockPanelTree.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanelTree.FloatSize = new System.Drawing.Size(500, 800);
+            this.dockPanelTree.ID = new System.Guid("B1CBEA9D-31D1-466D-AC5F-9854CB01FD71");
+            this.dockPanelTree.Location = new System.Drawing.Point(0, 0);
+            this.dockPanelTree.Name = "dockPanelTree";
+            this.dockPanelTree.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelTree.Size = new System.Drawing.Size(400, 800);
+            this.dockPanelTree.Options.ShowCloseButton = true;
+            this.dockPanelTree.Text = "dockPanelTree";
+            // 
+            // controlContainer1
+            // 
+            this.dockPanelTreeContainer.Location = new System.Drawing.Point(0, 0);
+            this.dockPanelTreeContainer.Name = "dockPanelTreeContainer";
+            this.dockPanelTreeContainer.Size = new System.Drawing.Size(400, 800);
+            this.dockPanelTreeContainer.TabIndex = 0;
             // 
             // dockPanelMessageInfo
             // 
@@ -3285,7 +3311,8 @@ namespace Analogy.CommonControls.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dockPanelFiltering);
-            this.Controls.Add(this.panelContainer1);
+            this.Controls.Add(this.dockPanelDetails);
+            this.Controls.Add(this.dockPanelTree);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -3386,10 +3413,13 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
-            this.panelContainer1.ResumeLayout(false);
+            this.dockPanelDetails.ResumeLayout(false);
+            this.dockPanelTree.ResumeLayout(false);
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             this.controlContainer1.PerformLayout();
+            this.dockPanelTreeContainer.ResumeLayout(false);
+            this.dockPanelTreeContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).EndInit();
             this.scMessageDetails.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel2)).EndInit();
@@ -3570,8 +3600,10 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar2;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelMessageInfo;
         private DevExpress.XtraBars.Docking.ControlContainer controlContainer1;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanelTreeContainer;
         private DevExpress.XtraBars.StandaloneBarDockControl sbarMessageInfo;
-        private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanelDetails;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanelTree;
         private DevExpress.XtraBars.StandaloneBarDockControl sbarBookmarks;
         private DevExpress.XtraEditors.PanelControl pnlLevel;
         private DevExpress.XtraEditors.PanelControl pnlLevelFilteringType;

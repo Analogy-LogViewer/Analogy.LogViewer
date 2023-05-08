@@ -1458,12 +1458,12 @@ namespace Analogy.CommonControls.UserControls
                 DockPanel? pnl = dockManager1.Panels.FirstOrDefault(i => i.ID == extension.Id);
                 if (pnl == null)
                 {
-                    pnl = dockManager1.AddPanel(DockingStyle.Float);
+                    pnl = dockPanelTree;
                     pnl.Text = extension.Title;
                     pnl.ID = extension.Id;
-                    pnl.DockedAsTabbedDocument = true;
                 }
-                pnl.Controls.Add(extension.CreateUserControl(Id, Logger));
+                //pnl.Controls.Add(extension.CreateUserControl(Id, Logger));
+                pnl.ControlContainer.Controls.Add(extension.CreateUserControl(Id, Logger));
                 pnl.SizeChanged += ExtensionPanel_SizeChanged;
                 await extension.InitializeUserControl(this, Id, Logger);
             }
