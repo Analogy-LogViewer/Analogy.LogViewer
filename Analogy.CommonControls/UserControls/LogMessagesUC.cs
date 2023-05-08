@@ -399,7 +399,8 @@ namespace Analogy.CommonControls.UserControls
             documentManager1.BeginUpdate();
             documentManager1.View.ActivateDocument(dockPanelLogs);
             documentManager1.EndUpdate();
-
+            LogGrid.ClearSorting();  
+            LogGrid.Columns[DataGridDateColumnName].SortOrder = ColumnSortOrder.Ascending;
         }
 
         private void HideColumns()
