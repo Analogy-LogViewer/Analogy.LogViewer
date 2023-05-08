@@ -1853,7 +1853,8 @@ namespace Analogy.Forms
             {
 
                 OpenedWindows++;
-                UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFile, initialFolder);
+                string fullTitle =  $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
+                UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFile, initialFolder, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
 
@@ -1879,7 +1880,7 @@ namespace Analogy.Forms
                 page.Tag = ribbonPage;
                 page.Controls.Add(filepoolingUC);
                 filepoolingUC.Dock = DockStyle.Fill;
-                page.Text = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
+                page.Text = fullTitle;
                 dockManager1.ActivePanel = page;
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }
