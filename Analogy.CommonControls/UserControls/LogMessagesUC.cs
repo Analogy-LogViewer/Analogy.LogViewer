@@ -3659,6 +3659,24 @@ namespace Analogy.CommonControls.UserControls
         {
             DataProviderProgressReporter.Report(progress);
         }
+
+        
+
+        public void ShowSecondaryWindow()
+        {
+            foreach (DockPanel dockPanel in dockManager1.Panels.Where(i => i.Dock == DockingStyle.Float).ToList())
+            {
+                dockPanel.Visibility = DockVisibility.Visible;
+            }
+        }
+
+        public void HideSecondaryWindow()
+        {
+            foreach (DockPanel dockPanel in dockManager1.Panels.Where(i => i.Dock == DockingStyle.Float).ToList())
+            {
+                dockPanel.Visibility = DockVisibility.Hidden;
+            }
+        }
     }
 }
 

@@ -2344,6 +2344,22 @@ namespace Analogy.Forms
             AnalogyAboutBox ab = new AnalogyAboutBox(2);
             ab.ShowDialog(this);
         }
+
+        private void TabbedView1_DocumentDeactivated(object sender, DevExpress.XtraBars.Docking2010.Views.DocumentEventArgs e)
+        {
+            if (e.Document is { Control: DockPanel { Controls.Count: > 0 } pnl })
+                if (pnl.Controls[0] is ControlContainer { Controls.Count: > 0 } cc)
+                    if (cc.Controls[0] is IUserControlWithUCLogs logUc)
+                        logUc.HideSecondaryWindow();
+        }
+
+        private void TabbedView1_DocumentActivated(object sender, DevExpress.XtraBars.Docking2010.Views.DocumentEventArgs e)
+        {
+            if (e.Document is { Control: DockPanel { Controls.Count: > 0 } pnl })
+                if (pnl.Controls[0] is ControlContainer { Controls.Count: > 0 } cc)
+                    if (cc.Controls[0] is IUserControlWithUCLogs logUc)
+                        logUc.ShowSecondaryWindow();
+        }
     }
 }
 

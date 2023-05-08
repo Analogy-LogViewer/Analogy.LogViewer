@@ -13,7 +13,7 @@ using Analogy.Forms;
 namespace Analogy
 {
 
-    public partial class ClientServerUCLog : XtraUserControl
+    public partial class ClientServerUCLog : XtraUserControl, IUserControlWithUCLogs
     {
         public string SelectedPath { get; set; }
         private IAnalogyOfflineDataProvider DataProvider { get; }
@@ -165,6 +165,17 @@ namespace Analogy
             }
 
             PopulateFiles(SelectedPath);
+        }
+        public void ShowSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.ShowSecondaryWindow();
+        }
+
+        public void HideSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.HideSecondaryWindow();
         }
     }
 

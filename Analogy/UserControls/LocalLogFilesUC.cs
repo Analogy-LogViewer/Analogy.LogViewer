@@ -15,7 +15,7 @@ using DevExpress.XtraTreeList;
 namespace Analogy
 {
 
-    public partial class LocalLogFilesUC : XtraUserControl
+    public partial class LocalLogFilesUC : XtraUserControl, IUserControlWithUCLogs
     {
         private List<string> extrenalFiles = new List<string>();
         public string SelectedPath { get; set; } = string.Empty;
@@ -247,6 +247,18 @@ namespace Analogy
             }
 
 
+        }
+
+        public void ShowSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.ShowSecondaryWindow();
+        }
+
+        public void HideSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.HideSecondaryWindow();
         }
     }
 

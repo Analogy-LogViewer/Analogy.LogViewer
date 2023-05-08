@@ -9,7 +9,7 @@ using DevExpress.XtraEditors;
 namespace Analogy
 {
 
-    public partial class RemoteLogsUC : XtraUserControl
+    public partial class RemoteLogsUC : XtraUserControl, IUserControlWithUCLogs
     {
         private bool _showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;
@@ -92,6 +92,18 @@ namespace Analogy
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
+        }
+
+        public void ShowSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.ShowSecondaryWindow();
+        }
+
+        public void HideSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.HideSecondaryWindow();
         }
     }
 

@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {
-    public partial class DataProviderUC : XtraUserControl
+    public partial class DataProviderUC : XtraUserControl, IUserControlWithUCLogs
     {
         private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
         public DataProviderUC()
@@ -21,6 +21,17 @@ namespace Analogy.UserControls
 
         private void DataProviderUC_Load(object sender, EventArgs e)
         {
+        }
+        public void ShowSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.ShowSecondaryWindow();
+        }
+
+        public void HideSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.HideSecondaryWindow();
         }
     }
 }

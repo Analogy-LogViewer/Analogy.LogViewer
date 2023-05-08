@@ -1062,6 +1062,9 @@
             this.documentManager1.View = this.tabbedView1;
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
+
+            this.tabbedView1.DocumentActivated += TabbedView1_DocumentActivated;
+            this.tabbedView1.DocumentDeactivated += TabbedView1_DocumentDeactivated;
             // 
             // notifyIconAnalogy
             // 
@@ -1107,6 +1110,8 @@
             this.PerformLayout();
 
         }
+
+       
 
         #endregion
         private System.Windows.Forms.ImageList imageList1;

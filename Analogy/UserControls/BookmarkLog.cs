@@ -1,12 +1,13 @@
 ﻿using System.Windows.Forms;
 using Analogy.CommonControls.Managers;
+using Analogy.Interfaces;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
 namespace Analogy
 {
 
-    public partial class BookmarkLog : XtraUserControl
+    public partial class BookmarkLog : XtraUserControl, IUserControlWithUCLogs
     {
         public BookmarkLog()
         {
@@ -29,6 +30,17 @@ namespace Analogy
             ucLogs1.AppendMessages(messages, "Analogy bookmarks");
             BookmarkPersistManager.Instance.MessageReceived += (s, msg) => ucLogs1.AppendMessage(msg.Message, msg.DataSource);
             BookmarkPersistManager.Instance.MessageRemoved += (s, msg) => ucLogs1.RemoveMessage(msg.Message);
+        }
+        public void ShowSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.ShowSecondaryWindow();
+        }
+
+        public void HideSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.HideSecondaryWindow();
         }
     }
 

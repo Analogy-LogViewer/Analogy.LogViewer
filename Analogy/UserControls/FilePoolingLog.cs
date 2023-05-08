@@ -13,7 +13,7 @@ using Message = System.Windows.Forms.Message;
 namespace Analogy
 {
 
-    public partial class FilePoolingUCLogs : XtraUserControl
+    public partial class FilePoolingUCLogs : XtraUserControl, IUserControlWithUCLogs
     {
         private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
         private static int clearHistoryCounter;
@@ -133,6 +133,17 @@ namespace Analogy
                 FactoriesManager.Instance, AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider,
                 ucLogs1.FileDataProvider);
             grid.Show(this);
+        }
+        public void ShowSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.ShowSecondaryWindow();
+        }
+
+        public void HideSecondaryWindow()
+        {
+            if (ucLogs1 != null)
+                ucLogs1.HideSecondaryWindow();
         }
     }
 
