@@ -1,4 +1,5 @@
 ﻿using Analogy.UserControls;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 
 namespace Analogy
@@ -39,7 +40,7 @@ namespace Analogy
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LocalLogFilesUC));
             System.Threading.CancellationTokenSource cancellationTokenSource1 = new System.Threading.CancellationTokenSource();
-            this.spltMain = new System.Windows.Forms.SplitContainer();
+            this.spltMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.splcLeft = new System.Windows.Forms.SplitContainer();
             this.folderTreeViewUC1 = new Analogy.FolderTreeViewUC();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
@@ -97,7 +98,7 @@ namespace Analogy
             // 
             this.spltMain.Panel2.Controls.Add(this.ucLogs1);
             this.spltMain.Size = new System.Drawing.Size(1387, 700);
-            this.spltMain.SplitterDistance = 392;
+            this.spltMain.SplitterPosition = 392;
             this.spltMain.TabIndex = 5;
             // 
             // splcLeft
@@ -466,7 +467,7 @@ namespace Analogy
         }
 
         #endregion
-        private System.Windows.Forms.SplitContainer spltMain;
+        private DevExpress.XtraEditors.SplitContainerControl spltMain;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.ToolStrip tsPrimary;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
