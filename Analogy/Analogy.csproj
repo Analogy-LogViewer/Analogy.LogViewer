@@ -5,7 +5,7 @@
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetFrameworks>net48;net471;net7.0-windows;net6.0-windows</TargetFrameworks>
-		<Version>4.13.0</Version>
+		<Version>4.13.1</Version>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
