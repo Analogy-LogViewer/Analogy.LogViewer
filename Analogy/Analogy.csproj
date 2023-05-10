@@ -62,7 +62,7 @@
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="3.8.3" />
-		<PackageReference Include="Analogy.LogViewer.Github" Version="3.8.3.1" />
+		<PackageReference Include="Analogy.LogViewer.Github" Version="3.8.3.2" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="3.8.3" />
