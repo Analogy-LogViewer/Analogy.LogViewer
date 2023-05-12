@@ -69,7 +69,7 @@ namespace Analogy.Forms
             }
         }
 
-        private void WelcomeForm_Load(object sender, EventArgs e)
+        private async void WelcomeForm_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
@@ -78,6 +78,8 @@ namespace Analogy.Forms
 
             ShowIcon = true;
             Icon = UserSettingsManager.UserSettings.GetIcon();
+            await FactoriesManager.Instance.InitializeBuiltInFactories();
+            await FactoriesManager.Instance.AddExternalDataSources();
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);
         }
       private void aceGeneral_Click(object sender, EventArgs e)
