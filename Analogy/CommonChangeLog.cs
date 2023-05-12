@@ -9,8 +9,9 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V4.13.1 - [Data Provider] Add Elastic Common Schema (ECS) as Data Provider #1729",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 05, 12)),
                 new ("V4.13.1 - Welcome/setup form isn't showing any extension #1724",AnalogChangeLogType.Bug,"Lior Banani",new DateTime(2023, 05, 09)),
-                new ("V4.13.0 Release V4.13.0 #1707 ",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023, 04, 14)),
+                new ("V4.13.0 - Release V4.13.0 #1707",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023, 04, 14)),
                 new ("V4.13.0 - Refactor GitHub client usage (use OctoKit.net Nuget) #1713",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023, 04, 08)),
                 new AnalogyChangeLog("V4.13.0 - [Settings] Add more information for real time data providers #1709",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 04, 07)),
                 new AnalogyChangeLog("V4.13.0 - [UI] Do not Create menu for empty Data Providers #1708",AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 04, 07)),
