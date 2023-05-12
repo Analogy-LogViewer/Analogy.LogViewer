@@ -363,6 +363,7 @@ namespace Analogy.CommonControls.UserControls
             LoadWorkspace(CurrentLogLayoutFileName);
 
             await LoadExtensions();
+            dockPanelTree.Visibility = hasAnyUserControlExtensions ? DockVisibility.Visible : DockVisibility.Hidden;
             SetupEventsHandlers();
 
             gridControl.DataSource = _messageData.DefaultView;
@@ -1432,7 +1433,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        public async Task LoadExtensions()
+        private async Task LoadExtensions()
         {
             var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetComponentId == DataProvider.Id)
                 .ToList();
@@ -1817,9 +1818,12 @@ namespace Analogy.CommonControls.UserControls
                         var columns = extension.GetColumnsInfo();
                         foreach (AnalogyColumnInfo column in columns)
                         {
-                            dtr.BeginEdit();
-                            dtr[column.ColumnName] = extension.GetValueForCellColumn(message, column.ColumnName);
-                            dtr.EndEdit();
+                            if (dtr.Table.Columns.Contains(column.ColumnName))
+                            {
+                                dtr.BeginEdit();
+                                dtr[column.ColumnName] = extension.GetValueForCellColumn(message, column.ColumnName);
+                                dtr.EndEdit();
+                            }
                         }
                     }
                 }
