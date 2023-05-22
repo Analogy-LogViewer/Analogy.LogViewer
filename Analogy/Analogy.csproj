@@ -58,7 +58,7 @@
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="3.8.3" />
-		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.8.3" />
+		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="3.8.3.1" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="3.8.3.1" />
