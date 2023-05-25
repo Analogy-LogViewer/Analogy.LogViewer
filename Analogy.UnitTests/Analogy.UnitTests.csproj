@@ -51,7 +51,7 @@
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.3" />
     <PackageReference Include="Analogy.LogViewer.Serilog" Version="3.8.3.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.0.3" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
   </ItemGroup>
   <ItemGroup>
