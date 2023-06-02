@@ -215,7 +215,8 @@ namespace Analogy.Forms
             foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
                 .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
                                   factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
-                                  && factory.DataProvidersFactories.Any(d=>d.DataProviders.Any())))
+                                  && (factory.DataProvidersFactories.Any(d=>d.DataProviders.Any()
+                                  || factory.UserControlsFactories.Any()))))
             {
                 CreateDataSource(fc, 3);
             }
@@ -330,7 +331,8 @@ namespace Analogy.Forms
             var allFactories = FactoriesManager.Instance.Factories.ToList();
             allFactories.AddRange(FactoriesManager.Instance.BuiltInFactories);
             foreach (FactoryContainer fc in allFactories
-                .Where(factory => factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
+                .Where(factory => factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled 
+                                  && factory.CustomActionsFactories.Any()))
             {
                 var actionFactories = fc.CustomActionsFactories;
                 foreach (var actionFactory in actionFactories)

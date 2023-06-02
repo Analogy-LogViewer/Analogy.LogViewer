@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V4.14.1 - Enable User Control Only Tab #1754",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 06, 02)),
                 new ("V4.14.0 - [Data Provider] Add Elastic Common Schema (ECS) as Data Provider #1729",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 05, 12)),
                 new ("V4.14.0 - Welcome/setup form isn't showing any extension #1724",AnalogChangeLogType.Bug,"Lior Banani",new DateTime(2023, 05, 09)),
                 new ("V4.14.0 - Improving docking UX and other improvements #1723",AnalogChangeLogType.Bug,"pybride",new DateTime(2023, 05, 08)),
