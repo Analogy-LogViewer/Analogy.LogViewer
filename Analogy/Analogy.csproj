@@ -49,6 +49,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="0.2.2" />
+		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="1.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="1.0.3" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="3.8.3" />
