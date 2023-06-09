@@ -23,8 +23,6 @@
 A log viewer that can parse log files and stream logs from C#, Python, Java and others.
 You can also implement your own parsers or request to add new parsers for other logs
 
-New (June 2022):
-
 Standalone User Controls:
 | User Control   |      Description      |  Nuget Version |
 |----------|:---------------:|------|
