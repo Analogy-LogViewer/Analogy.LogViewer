@@ -72,7 +72,7 @@
 		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.12.0" />
 		<PackageReference Include="Grpc.Core" Version="2.46.6" />
 		<PackageReference Include="Markdig" Version="0.31.0" />
-		<PackageReference Include="MessagePack" Version="2.5.108" />
+		<PackageReference Include="MessagePack" Version="2.5.124" />
 		<PackageReference Include="Octokit" Version="6.1.0" />
 		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
