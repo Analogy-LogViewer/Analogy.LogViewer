@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
@@ -38,7 +39,7 @@ namespace Analogy.CommonControls.LogLoaders
                     {
                         data = textReader.ReadToEnd();
                     }
-                    List<IAnalogyLogMessage> messages = JsonConvert.DeserializeObject<List<IAnalogyLogMessage>>(data);
+                    List<IAnalogyLogMessage> messages = JsonConvert.DeserializeObject<List<AnalogyLogMessage>>(data).Cast<IAnalogyLogMessage>().ToList();
                     messageHandler?.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                     return messages;
                 }

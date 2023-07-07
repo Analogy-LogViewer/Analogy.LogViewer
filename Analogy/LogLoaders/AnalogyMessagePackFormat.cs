@@ -31,7 +31,7 @@ namespace Analogy.LogLoaders
                 try
                 {
                     byte[] data = File.ReadAllBytes(fileName);
-                    var messages = MessagePackSerializer.Deserialize<List<IAnalogyLogMessage>>(data, MessagePack.Resolvers.ContractlessStandardResolver.Options);
+                    var messages = MessagePackSerializer.Deserialize<List<AnalogyLogMessage>>(data, MessagePack.Resolvers.ContractlessStandardResolver.Options).Cast<IAnalogyLogMessage>().ToList();
                     messageHandler.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                     return messages;
                 }

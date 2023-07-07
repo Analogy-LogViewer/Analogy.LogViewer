@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
@@ -32,7 +33,7 @@ namespace Analogy.CommonControls.LogLoaders
                 try
                 {
                     byte[] data = File.ReadAllBytes(fileName);
-                    var messages = MessagePackSerializer.Deserialize<List<IAnalogyLogMessage>>(data, MessagePack.Resolvers.ContractlessStandardResolver.Options);
+                    var messages = MessagePackSerializer.Deserialize<List<AnalogyLogMessage>>(data, MessagePack.Resolvers.ContractlessStandardResolver.Options).Cast<IAnalogyLogMessage>().ToList();
                     messageHandler.AppendMessages(messages, Utils.GetFileNameAsDataSource(fileName));
                     return messages;
                 }
