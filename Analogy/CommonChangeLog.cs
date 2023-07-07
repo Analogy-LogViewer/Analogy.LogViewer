@@ -9,7 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new ("V4.14.2 - Fix built-in prasers #1775",AnalogChangeLogType.Bug."Lior Banai",new DateTime(2023,07,07)),
+                new ("V4.14.2 - Fix built-in prasers #1775",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,07,07)),
                 new ("V4.14.1 - Add Analogy.LogViewer.FFmpeg tool #1755",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 06, 03)),
                 new ("V4.14.1 - Enable User Control Only Tab #1754",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 06, 02)),
                 new ("V4.14.0 - [Data Provider] Add Elastic Common Schema (ECS) as Data Provider #1729",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 05, 12)),
