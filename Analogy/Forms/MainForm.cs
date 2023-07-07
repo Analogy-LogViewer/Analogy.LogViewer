@@ -215,7 +215,7 @@ namespace Analogy.Forms
             foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
                 .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
                                   factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
-                                  && (factory.DataProvidersFactories.Any(d=>d.DataProviders.Any()
+                                  && (factory.DataProvidersFactories.Any(d => d.DataProviders.Any()
                                   || factory.UserControlsFactories.Any()))))
             {
                 CreateDataSource(fc, 3);
@@ -273,7 +273,7 @@ namespace Analogy.Forms
             }
             if (settings.ShowWhatIsNewAtStartup)
             {
-               //settings.ShowWhatIsNewAtStartup = false;
+                //settings.ShowWhatIsNewAtStartup = false;
             }
         }
 
@@ -331,7 +331,7 @@ namespace Analogy.Forms
             var allFactories = FactoriesManager.Instance.Factories.ToList();
             allFactories.AddRange(FactoriesManager.Instance.BuiltInFactories);
             foreach (FactoryContainer fc in allFactories
-                .Where(factory => factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled 
+                .Where(factory => factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
                                   && factory.CustomActionsFactories.Any()))
             {
                 var actionFactories = fc.CustomActionsFactories;
@@ -419,15 +419,15 @@ namespace Analogy.Forms
             {
                 Utils.OpenLink("https://www.binance.com/en/register?ref=V8P114PE");
             };
-            dockManager1.ClosingPanel += (s, e) => 
+            dockManager1.ClosingPanel += (s, e) =>
             {
-                 Control control = e.Panel.ActiveControl;
-                 if (control != null)
-                 {
-                     control.Dispose();
-                 }
-                 var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
-                 workspace?.SaveCurrentWorkspace();
+                Control control = e.Panel.ActiveControl;
+                if (control != null)
+                {
+                    control.Dispose();
+                }
+                var workspace = Utils.GetLogWindows<IAnalogyWorkspace>(this);
+                workspace?.SaveCurrentWorkspace();
             };
             bbtnSponsorOpenCollection.ItemClick +=
                 (s, e) => Utils.OpenLink("https://opencollective.com/analogy-log-viewer");
@@ -566,9 +566,9 @@ namespace Analogy.Forms
                     Show();
                 }
             };
-            
+
             bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
-            
+
         }
 
         private async Task OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
@@ -577,7 +577,7 @@ namespace Analogy.Forms
         {
             OpenedWindows++;
             await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
-            string fullTitle =  $"{offlineTitle} #{OpenedWindows}{(title == null ? "" : $" ({title})")}";
+            string fullTitle = $"{offlineTitle} #{OpenedWindows}{(title == null ? "" : $" ({title})")}";
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, filenames, title: fullTitle);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
@@ -1460,7 +1460,7 @@ namespace Analogy.Forms
             {
                 OpenedWindows++;
                 await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
-                string fullTitle =  $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
+                string fullTitle = $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
                 UserControl offlineUC = new LocalLogFilesUC(dataProvider, files, initialFolder, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1486,7 +1486,7 @@ namespace Analogy.Forms
             }
 
             async Task OpenFilePooling(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider,
-                string initialFolder, string file,  string  initialFile)
+                string initialFolder, string file, string initialFile)
             {
 
                 OpenedWindows++;
@@ -1591,8 +1591,8 @@ namespace Analogy.Forms
                 {
                     //add Open files entry
                     BarSubItem openFiles = new BarSubItem();
-                    openFiles.Caption = "Open Files";
-                    group.ItemLinks.Add(openFiles);
+                    openFiles.Caption = "Open File";
+                    group.ItemLinks.Insert(0, openFiles);
                     openFiles.ImageOptions.Image = Resources.Article_16x16;
                     openFiles.ImageOptions.LargeImage = Resources.Article_32x32;
                     openFiles.RibbonStyle = RibbonItemStyles.All;
@@ -1684,7 +1684,7 @@ namespace Analogy.Forms
                 filePoolingBtn.Caption = caption;
                 filePoolingBtn.SuperTip =
                     Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
-                group.ItemLinks.Add(filePoolingBtn);
+                group.ItemLinks.Insert(1, filePoolingBtn);
                 filePoolingBtn.ImageOptions.Image = images?.GetSmallFilePoolingImage(factoryId) ?? Resources.FilePooling_16x16;
                 filePoolingBtn.ImageOptions.LargeImage = images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
                 filePoolingBtn.RibbonStyle = RibbonItemStyles.All;
@@ -1718,7 +1718,7 @@ namespace Analogy.Forms
 
 
             //add recent
-            group.ItemLinks.Add(recentBar);
+            group.ItemLinks.Insert(2, recentBar);
             foreach (var dataProvider in offlineProviders)
             {
                 var recents = settings.GetRecentFiles(dataProvider.Id)
@@ -1824,7 +1824,7 @@ namespace Analogy.Forms
             {
                 OpenedWindows++;
                 await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
-                string fullTitle =  $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
+                string fullTitle = $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
                 UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1851,11 +1851,11 @@ namespace Analogy.Forms
 
             }
 
-            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string  initialFile)
+            void OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string initialFile)
             {
 
                 OpenedWindows++;
-                string fullTitle =  $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
+                string fullTitle = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
                 UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFile, initialFolder, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1963,8 +1963,8 @@ namespace Analogy.Forms
             {
                 //add Open files entry
                 BarButtonItem openFiles = new BarButtonItem();
-                openFiles.Caption = "Open Files";
-                group.ItemLinks.Add(openFiles);
+                openFiles.Caption = "Open File";
+                group.ItemLinks.Insert(0, openFiles);
                 openFiles.ImageOptions.Image = offlineAnalogy.SmallImage ?? Resources.Article_16x16;
                 openFiles.ImageOptions.LargeImage = offlineAnalogy.LargeImage ?? Resources.Article_32x32;
                 openFiles.RibbonStyle = RibbonItemStyles.All;
@@ -1990,7 +1990,7 @@ namespace Analogy.Forms
                 filePoolingBtn.Caption = caption;
                 filePoolingBtn.SuperTip =
                     Utils.GetSuperTip(caption, "Monitor file for changes in real time and reload the file automatically");
-                group.ItemLinks.Add(filePoolingBtn);
+                group.ItemLinks.Insert(1, filePoolingBtn);
                 filePoolingBtn.ImageOptions.Image = images?.GetSmallFilePoolingImage(factoryId) ?? Resources.FilePooling_16x16;
                 filePoolingBtn.ImageOptions.LargeImage = images?.GetLargeFilePoolingImage(factoryId) ?? Resources.FilePooling_32x32;
                 filePoolingBtn.RibbonStyle = RibbonItemStyles.All;
@@ -2024,7 +2024,7 @@ namespace Analogy.Forms
             }
 
             //add recent
-            group.ItemLinks.Add(recentBar);
+            group.ItemLinks.Insert(2, recentBar);
             var recents = settings.GetRecentFiles(offlineAnalogy.Id)
                 .Select(itm => itm.FileName).ToList();
             AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title, recents);

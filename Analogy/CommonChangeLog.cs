@@ -8,7 +8,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {
+            {  
+                new ("V4.14.2 - Move Open File to be the first #1776",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023,07,07)),
                 new ("V4.14.2 - Fix built-in prasers #1775",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,07,07)),
                 new ("V4.14.1 - Add Analogy.LogViewer.FFmpeg tool #1755",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 06, 03)),
                 new ("V4.14.1 - Enable User Control Only Tab #1754",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 06, 02)),
