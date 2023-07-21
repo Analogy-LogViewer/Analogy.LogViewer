@@ -11,7 +11,7 @@ namespace Analogy
             {  
                 new ("V4.14.1 - Analogy hangs on huge exception messages #1781",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,07,21)),
                 new ("V4.14.1 - Move Open File to be the first #1776",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023,07,07)),
-                new ("V4.14.1 - Fix built-in prasers #1775",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,07,07)),
+                new ("V4.14.1 - Fix built-in parsers #1775",AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,07,07)),
                 new ("V4.14.1 - Add Analogy.LogViewer.FFmpeg tool #1755",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 06, 03)),
                 new ("V4.14.1 - Enable User Control Only Tab #1754",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 06, 02)),
                 new ("V4.14.0 - [Data Provider] Add Elastic Common Schema (ECS) as Data Provider #1729",AnalogChangeLogType.Feature,"Lior Banai",new DateTime(2023, 05, 12)),
