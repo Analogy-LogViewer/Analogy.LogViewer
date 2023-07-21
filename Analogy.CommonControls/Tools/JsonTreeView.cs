@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonControls.Properties;
+using DevExpress.Office.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -21,17 +25,19 @@ namespace Analogy.CommonControls.Tools
         private ToolStripMenuItem expandAllMenuItem;
         private StatusStrip statusStrip1;
         private string previouslySelectedNodeText;
+        private CancellationTokenSource cancellationTokenSource;
         public event EventHandler<string> OnNodeChanged;
         public string Message { get; set; }
         public JsonTreeView()
         {
             InitializeComponent();
+            cancellationTokenSource = new CancellationTokenSource();
             AfterSelect += this_AfterSelect;
             DoubleClick += (s, e) =>
             {
                 if (SelectedNode != null)
                 {
-                    Clipboard.SetText(SelectedNode.Text,TextDataFormat.UnicodeText);
+                    Clipboard.SetText(SelectedNode.Text, TextDataFormat.UnicodeText);
                 }
             };
             MouseDown += this_MouseDown;
@@ -113,9 +119,13 @@ namespace Analogy.CommonControls.Tools
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        private void LoadTree(object jsonData)
+        private List<TreeNode> LoadTree(object jsonData, CancellationToken cancellationToken)
         {
-            Nodes.Clear();
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return new();
+            }
+            List<TreeNode> nodes = new();
             if (jsonData is JArray jsonArray)
             {
                 var rootNode = new JsonTreeNode(JsonNodeType.Object, "(root array)");
@@ -123,11 +133,11 @@ namespace Analogy.CommonControls.Tools
                 {
                     var node = new JsonTreeNode(JsonNodeType.Array, jToken.Type.ToString());
                     rootNode.Nodes.Add(node);
-                    LoadObject(jToken as JObject, node);
+                    LoadObject(jToken as JObject, node, cancellationToken);
                 }
                 TreeNode[] rootNodeArray = new TreeNode[rootNode.Nodes.Count];
                 rootNode.Nodes.CopyTo(rootNodeArray, 0);
-                Nodes.Add(rootNode);
+                nodes.Add(rootNode);
                 SelectedNode = rootNodeArray.First() as JsonTreeNode;
                 rootNode.ImageKey = rootNode.NodeType.ToString();
                 rootNode.SelectedImageKey = rootNode.ImageKey;
@@ -137,13 +147,15 @@ namespace Analogy.CommonControls.Tools
             if (jsonData is JObject json)
             {
                 var rootNode = new JsonTreeNode(JsonNodeType.Object, "(root)");
-                Nodes.Add(rootNode);
+                nodes.Add(rootNode);
                 SelectedNode = rootNode;
                 rootNode.ImageKey = rootNode.NodeType.ToString();
                 rootNode.SelectedImageKey = rootNode.ImageKey;
-                LoadObject(json, rootNode);
+                LoadObject(json, rootNode, cancellationToken);
                 rootNode.ExpandAll();
             }
+
+            return nodes;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool TryParse(string strInput, out JToken output)
@@ -182,44 +194,58 @@ namespace Analogy.CommonControls.Tools
                 return false;
             }
         }
-        private void AddNode(JsonTreeNode parentNode, string property, JToken item)
+        private void AddNode(JsonTreeNode parentNode, string property, JToken item, CancellationToken cancellationToken)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+
             var node = JsonTreeNodeCreator.CreateNode(property, item);
             parentNode.Nodes.Add(node);
             if (item.Type == JTokenType.Array)
             {
-                LoadArray(item, node);
+                LoadArray(item, node, cancellationToken);
             }
 
             else if (item.Type == JTokenType.Object)
             {
-                LoadObject(item as JObject, node);
+                LoadObject(item as JObject, node, cancellationToken);
             }
             else if (TryParse(item.ToString(), out var token))
             {
                 node.Text = property;
                 if (token.Type == JTokenType.Array)
                 {
-                    LoadArray(token, node);
+                    LoadArray(token, node, cancellationToken);
                 }
 
                 else if (token.Type == JTokenType.Object)
                 {
-                    LoadObject(token as JObject, node);
+                    LoadObject(token as JObject, node, cancellationToken);
                 }
             }
         }
 
-        private void LoadArray(JToken value, JsonTreeNode node)
+        private void LoadArray(JToken value, JsonTreeNode node, CancellationToken cancellationToken)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
             foreach (var item in value)
             {
-                AddNode(node, null, item);
+                AddNode(node, null, item, cancellationToken);
             }
         }
 
-        private void LoadObject(JObject obj, JsonTreeNode node)
+        private void LoadObject(JObject obj, JsonTreeNode node, CancellationToken cancellationToken)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+
             if (obj is null)
             {
                 return;
@@ -227,7 +253,7 @@ namespace Analogy.CommonControls.Tools
 
             foreach (var item in obj)
             {
-                AddNode(node, item.Key, item.Value);
+                AddNode(node, item.Key, item.Value, cancellationToken);
             }
         }
 
@@ -280,7 +306,7 @@ namespace Analogy.CommonControls.Tools
             get => base.SelectedNode as JsonTreeNode;
             set => base.SelectedNode = value;
         }
-        
+
         private void this_AfterSelect(object sender, TreeViewEventArgs e)
         {
             // restore previous seelcted node text and store the next
@@ -292,9 +318,9 @@ namespace Analogy.CommonControls.Tools
             previouslySelectedNodeText = e.Node.Text;
 
             e.Node.Text = ((JsonTreeNode)e.Node).TextWhenSelected;
-            OnNodeChanged?.Invoke(this,e.Node.Text);
+            OnNodeChanged?.Invoke(this, e.Node.Text);
         }
-        
+
         private void this_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -330,13 +356,23 @@ namespace Analogy.CommonControls.Tools
         {
             Nodes.Clear();
         }
-        public void ShowJson(string jsonString)
+        public async Task ShowJson(string jsonString)
         {
             Message = jsonString;
             try
             {
+                BeginUpdate();
+                Nodes.Clear();
+                cancellationTokenSource?.Cancel();
+                cancellationTokenSource = new CancellationTokenSource();
+                var token = cancellationTokenSource.Token;
                 object json = JsonConvert.DeserializeObject(jsonString);
-                LoadTree(json);
+                var nodes = await Task.Run(() => LoadTree(json, token));
+                if (!token.IsCancellationRequested)
+                {
+                    Nodes.AddRange(nodes.ToArray());
+                }
+                EndUpdate();
             }
             catch (Exception e)
             {

@@ -3304,7 +3304,7 @@ namespace Analogy.CommonControls.UserControls
             SaveMessagesToLog(FileDataProvider, messages);
         }
 
-        private void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        private async void logGrid_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             int row = e.FocusedRowHandle;
 
@@ -3321,12 +3321,12 @@ namespace Analogy.CommonControls.UserControls
                 if (useSpecificColumnForJson)
                 {
                     var specific = LogGrid.GetRowCellValue(e.FocusedRowHandle, jsonColumnForInlineJsonViewer).ToString();
-                    JsonTreeView.ShowJson(specific);
+                   await JsonTreeView.ShowJson(specific);
 
                 }
                 else if (focusedMassage.RawTextType == AnalogyRowTextType.JSON)
                 {
-                    JsonTreeView.ShowJson(focusedMassage.RawText);
+                   await JsonTreeView.ShowJson(focusedMassage.RawText);
                 }
             }
 

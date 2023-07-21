@@ -33,7 +33,7 @@ namespace Analogy.CommonControls.Tools
             JsonData = json;
             _useRawField = false;
         }
-        private void JsonViewerForm_Load(object sender, EventArgs e)
+        private async void JsonViewerForm_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
@@ -52,7 +52,7 @@ namespace Analogy.CommonControls.Tools
             if (!string.IsNullOrEmpty(JsonData))
             {
                 memoEdit1.Text = JsonData;
-                _jsonTreeView.ShowJson(JsonData);
+                await _jsonTreeView.ShowJson(JsonData);
             }
             else if (Message != null)
             {
@@ -60,14 +60,14 @@ namespace Analogy.CommonControls.Tools
                 JsonData = Utils.ExtractJsonObject(_useRawField ? Message.RawText : Message.Text);
                 if (!string.IsNullOrEmpty(JsonData))
                 {
-                    _jsonTreeView.ShowJson(JsonData);
+                    await _jsonTreeView.ShowJson(JsonData);
                 }
             }
         }
 
-        private void sbtnLoad_Click(object sender, EventArgs e)
+        private async void sbtnLoad_Click(object sender, EventArgs e)
         {
-            _jsonTreeView.ShowJson(memoEdit1.Text);
+            await _jsonTreeView.ShowJson(memoEdit1.Text);
         }
     }
 }

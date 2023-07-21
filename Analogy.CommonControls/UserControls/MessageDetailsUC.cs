@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common;
 using Analogy.Common.Interfaces;
@@ -32,7 +33,7 @@ namespace Analogy.CommonControls.UserControls
             DataSource = dataSource;
         }
 
-        private void UCMessageDetails_Load(object sender, EventArgs e)
+        private async void UCMessageDetails_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
@@ -46,7 +47,7 @@ namespace Analogy.CommonControls.UserControls
             _jsonTreeView = new JsonTreeUC();
             splitContainerControl1.Panel2.Controls.Add(_jsonTreeView);
             _jsonTreeView.Dock = DockStyle.Fill;
-            LoadMessage();
+            await LoadMessage();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -66,7 +67,7 @@ namespace Analogy.CommonControls.UserControls
 
         }
 
-        public void LoadMessage()
+        public async Task LoadMessage()
         {
             if (Message == null)
             {
@@ -105,7 +106,7 @@ namespace Analogy.CommonControls.UserControls
                 _jsonTreeView.ClearList();
                 if (!string.IsNullOrEmpty(json))
                 {
-                    _jsonTreeView.ShowJson(json);
+                  await  _jsonTreeView.ShowJson(json);
                 }
 
                 splitContainerControl1.PanelVisibility = SplitPanelVisibility.Both;
@@ -122,7 +123,7 @@ namespace Analogy.CommonControls.UserControls
             LoadNextMessage();
         }
 
-        private void LoadPreviousMessage()
+        private async void LoadPreviousMessage()
         {
             if (Messages.First() == Message)
             {
@@ -130,9 +131,9 @@ namespace Analogy.CommonControls.UserControls
             }
 
             Message = Messages[Messages.IndexOf(Message) - 1];
-            LoadMessage();
+            await LoadMessage();
         }
-        private void LoadNextMessage()
+        private async void LoadNextMessage()
         {
             if (Messages.Last() == Message)
             {
@@ -140,7 +141,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             Message = Messages[Messages.IndexOf(Message) + 1];
-            LoadMessage();
+            await LoadMessage();
         }
         private void btnPrev_Click(object sender, EventArgs e)
         {

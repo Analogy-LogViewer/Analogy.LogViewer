@@ -35,7 +35,7 @@ namespace Analogy.CommonControls.Tools
             JsonData = json;
             _useRawField = false;
         }
-        private void JsonTreeUC_Load(object sender, EventArgs e)
+        private async void JsonTreeUC_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {
@@ -51,13 +51,13 @@ namespace Analogy.CommonControls.Tools
                 JsonData = Utils.ExtractJsonObject(_useRawField ? Message.RawText : Message.Text);
                 if (!string.IsNullOrEmpty(JsonData))
                 {
-                    _jsonTreeView.ShowJson(JsonData);
+                   await _jsonTreeView.ShowJson(JsonData);
                 }
                 return;
             }
             if (!string.IsNullOrEmpty(JsonData))
             {
-                _jsonTreeView.ShowJson(JsonData);
+               await _jsonTreeView.ShowJson(JsonData);
             }
 
             bbiCopyMessage.ItemClick += (_, _) =>
@@ -66,12 +66,12 @@ namespace Analogy.CommonControls.Tools
             };
         }
 
-        public void ShowJson(string json)
+        public async Task ShowJson(string json)
         {
             JsonData = json;
             if (!string.IsNullOrEmpty(JsonData))
             {
-                _jsonTreeView.ShowJson(JsonData);
+              await  _jsonTreeView.ShowJson(JsonData);
             }
         }
 
