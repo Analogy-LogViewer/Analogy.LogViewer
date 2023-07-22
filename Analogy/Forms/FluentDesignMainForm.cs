@@ -95,7 +95,8 @@ namespace Analogy
             foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
                          .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
                                            factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
-                                           && factory.DataProvidersFactories.Any(d => d.DataProviders.Any())))
+                                           //&& factory.DataProvidersFactories.Any(d => d.DataProviders.Any())
+                                            ))
             {
                 CreateDataSourceMenuItem(fc);
             }
@@ -147,7 +148,7 @@ namespace Analogy
 
             if (settings.ShowWhatIsNewAtStartup)
             {
-               //settings.ShowWhatIsNewAtStartup = false;
+                //settings.ShowWhatIsNewAtStartup = false;
             }
         }
 
@@ -339,7 +340,7 @@ namespace Analogy
         {
             openedWindows++;
             await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
-            string fullTitle =  $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
+            string fullTitle = $"{offlineTitle} #{openedWindows}{(title == null ? "" : $" ({title})")}";
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, fileNames, title: fullTitle);
             var page = dockManager1.AddPanel(DockingStyle.Float);
             page.DockedAsTabbedDocument = true;
@@ -458,7 +459,7 @@ namespace Analogy
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings);
                 user.ShowDialog(this);
-            }; 
+            };
             bbiRealTimeProviders.ItemClick += (s, e) =>
             {
                 ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings);
@@ -527,7 +528,7 @@ namespace Analogy
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             };
- 
+
             tmrStatusUpdates.Tick += (s, e) =>
             {
                 tmrStatusUpdates.Stop();
@@ -827,7 +828,7 @@ namespace Analogy
                 {
                     openedWindows++;
                     await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
-                    string fullTitle =   $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
+                    string fullTitle = $"{offlineTitle} #{openedWindows} ({titleOfDataSource})";
                     UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder, title: fullTitle);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
@@ -849,7 +850,7 @@ namespace Analogy
                     dockManager1.ActivePanel = page;
                 }
 
-                async Task OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string  initialFile)
+                async Task OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string initialFile)
                 {
                     openedWindows++;
                     await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
@@ -1107,7 +1108,7 @@ namespace Analogy
             btn.Click += (s, be) =>
             {
                 openedWindows++;
-                string fullTitle =  $"{offlineTitle} #{openedWindows} ({title})";
+                string fullTitle = $"{offlineTitle} #{openedWindows} ({title})";
                 UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, null, recentPath, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1126,7 +1127,7 @@ namespace Analogy
 
                 foreach (string file in recentFiles)
                 {
-                    if (!File.Exists(file) || recentElement.Elements.Any(e=>e.Text.Equals(Path.GetFileName(file))))
+                    if (!File.Exists(file) || recentElement.Elements.Any(e => e.Text.Equals(Path.GetFileName(file))))
                     {
                         continue;
                     }
@@ -1341,12 +1342,12 @@ namespace Analogy
                     dockManager1.ActivePanel = page;
                     if (single is IAnalogySingleFileDataProvider fileProvider)
                     {
-                        fileProvider.Process(cts.Token, offlineUC.Handler);
+                        await fileProvider.Process(cts.Token, offlineUC.Handler);
                     }
 
                     if (single is IAnalogySingleDataProvider singleProvider)
                     {
-                        singleProvider.Execute(cts.Token, offlineUC.Handler);
+                        await singleProvider.Execute(cts.Token, offlineUC.Handler);
                     }
 
                 };

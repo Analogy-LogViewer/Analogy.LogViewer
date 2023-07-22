@@ -215,8 +215,9 @@ namespace Analogy.Forms
             foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
                 .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
                                   factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
-                                  && (factory.DataProvidersFactories.Any(d => d.DataProviders.Any()
-                                  || factory.UserControlsFactories.Any()))))
+                                  //&& (factory.DataProvidersFactories.Any(d => d.DataProviders.Any()
+                                  //|| factory.UserControlsFactories.Any()))
+                                  ))
             {
                 CreateDataSource(fc, 3);
             }
@@ -1396,12 +1397,12 @@ namespace Analogy.Forms
                     dockManager1.ActivePanel = page;
                     if (single is IAnalogySingleFileDataProvider fileProvider)
                     {
-                        fileProvider.Process(cts.Token, offlineUC.Handler);
+                        await fileProvider.Process(cts.Token, offlineUC.Handler);
                     }
 
                     if (single is IAnalogySingleDataProvider singleProvider)
                     {
-                        singleProvider.Execute(cts.Token, offlineUC.Handler);
+                        await singleProvider.Execute(cts.Token, offlineUC.Handler);
                     }
 
                 };
