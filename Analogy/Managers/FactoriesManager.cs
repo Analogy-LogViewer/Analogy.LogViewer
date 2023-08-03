@@ -17,26 +17,20 @@ namespace Analogy
 {
     public class FactoriesManager : IFactoriesManager
     {
-
-        private static readonly Lazy<FactoriesManager>
-            _instance = new Lazy<FactoriesManager>(() => new FactoriesManager());
-
         public List<string> ProbingPaths { get; set; } = new List<string>();
-        public static FactoriesManager Instance => _instance.Value;
         public List<FactoryContainer> BuiltInFactories { get; }
         public List<FactoryContainer> Factories { get; }
         private Dictionary<IAnalogyDataProvider, bool> Initialized { get; set; }
         public List<IRawSQLInteractor> RawSQLManipulators => Factories.SelectMany(f => f.UserControlsFactories)
             .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
-        public FactoriesManager()
+        public FactoriesManager(AnalogyBuiltInFactory analogyFactory)
         {
             Initialized = new Dictionary<IAnalogyDataProvider, bool>();
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
-            var analogyFactory = new AnalogyBuiltInFactory();
             analogyFactory.RegisterNotificationCallback(NotificationManager.Instance);
             var currentAssembly = Assembly.GetExecutingAssembly();
-            var analogyFactorySetting = UserSettingsManager.UserSettings.GetOrAddFactorySetting(analogyFactory);
+            var analogyFactorySetting = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetOrAddFactorySetting(analogyFactory);
             analogyFactorySetting.FactoryName = analogyFactory.Title;
             FactoryContainer fc = new FactoryContainer(currentAssembly, Environment.CurrentDirectory, analogyFactory,
                 analogyFactorySetting);
@@ -51,7 +45,7 @@ namespace Analogy
             var dataProviders = BuiltInFactories
                 .Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
-            var initTasks = dataProviders.Select(d => d.InitializeDataProvider(AnalogyLogger.Instance))
+            var initTasks = dataProviders.Select(d => d.InitializeDataProvider(ServicesProvider.Instance.GetService<ILogger>()))
                 .ToList();
             var completion = Task.WhenAll(initTasks);
             try
@@ -60,14 +54,14 @@ namespace Analogy
             }
             catch (AggregateException ex)
             {
-                AnalogyLogger.Instance.LogException("Error during Initialization", ex, "InitializeBuiltInFactories");
+                ServicesProvider.Instance.GetService<ILogger>().LogError("Error during Initialization", ex, "InitializeBuiltInFactories");
             }
 
             foreach (var t in initTasks)
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    AnalogyLogger.Instance.LogException("Error during Initialization", t.Exception, "AddExternalDataSources");
+                    ServicesProvider.Instance.GetService<ILogger>().LogError("Error during Initialization", t.Exception, "AddExternalDataSources");
                 }
             }
         }
@@ -236,7 +230,7 @@ namespace Analogy
                         }
                         catch (Exception e)
                         {
-                            AnalogyLogger.Instance.LogException($"Error shutdown {realTime.OptionalTitle}", e, provider.Title);
+                            ServicesProvider.Instance.GetService<ILogger>().LogError($"Error shutdown {realTime.OptionalTitle}", e, provider.Title);
                         }
                     }
                 }

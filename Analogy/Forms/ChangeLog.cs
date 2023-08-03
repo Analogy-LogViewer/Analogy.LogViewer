@@ -16,7 +16,7 @@ namespace Analogy.Forms
 
         private void ChangeLog_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             rtxtbChangeLog.Text = CommonChangeLog.GetChangeLogFull;
         }
     }

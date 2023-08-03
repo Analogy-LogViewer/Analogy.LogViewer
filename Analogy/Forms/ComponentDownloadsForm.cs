@@ -17,7 +17,7 @@ namespace Analogy.Forms
 
         private void ComponentDownloadsForm_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             // UserControl first = null;
             foreach (FactoryContainer factory in FactoriesManager.Instance.Factories)
             {

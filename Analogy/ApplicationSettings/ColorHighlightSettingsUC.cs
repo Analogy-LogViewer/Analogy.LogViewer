@@ -9,12 +9,13 @@ using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class ColorHighlightSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public ColorHighlightSettingsUC()
         {

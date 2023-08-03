@@ -9,7 +9,7 @@ namespace Analogy.Tools
 {
     public partial class LogsComparerUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private FileComparerProcessor? LeftFile { get; set; }
         private FileComparerProcessor? RightFile { get; set; }
@@ -114,7 +114,7 @@ namespace Analogy.Tools
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 LeftFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(Settings, LeftFile, AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(Settings, LeftFile, ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }
@@ -128,7 +128,7 @@ namespace Analogy.Tools
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 RightFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(Settings, RightFile, AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(Settings, RightFile, ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }

@@ -24,7 +24,7 @@ namespace Analogy.Managers
         private static readonly Lazy<UpdateManager>
             _instance = new Lazy<UpdateManager>(() => new UpdateManager());
 
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         public static UpdateManager Instance => _instance.Value;
         private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;
@@ -225,7 +225,7 @@ namespace Analogy.Managers
             var update = await GetLatestUpdater();
             if (!update.HasValue)
             {
-                AnalogyLogger.Instance.LogError("Updater was not found");
+                ServicesProvider.Instance.GetService<ILogger>().LogError("Updater was not found");
                 return;
             }
             if (!File.Exists(UpdaterExecutable))
@@ -241,7 +241,7 @@ namespace Analogy.Managers
             }
             else
             {
-                AnalogyLogger.Instance.LogInformation("No need to download Updater");
+                ServicesProvider.Instance.GetService<ILogger>().LogInformation("No need to download Updater");
             }
         }
 

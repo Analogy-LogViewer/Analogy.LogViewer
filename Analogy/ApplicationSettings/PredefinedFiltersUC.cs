@@ -12,7 +12,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class PredefinedFiltersUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public PredefinedFiltersUC()
         {

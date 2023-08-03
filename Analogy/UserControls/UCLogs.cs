@@ -11,7 +11,7 @@ namespace Analogy.UserControls
 {
     public partial class UCLogs : CommonControls.UserControls.LogMessagesUC
     {
-        public UCLogs() : base(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance)
+        public UCLogs() : base(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), ExtensionsManager.Instance, FactoriesManager.Instance, ServicesProvider.Instance.GetService<ILogger>())
         {
             InitializeComponent();
             SetHighlightSettings(() =>

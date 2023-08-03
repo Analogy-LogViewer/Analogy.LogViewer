@@ -12,8 +12,11 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
+using Analogy.DataProviders;
 using Analogy.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using DevExpress.Mvvm.POCO;
 
 namespace Analogy
 {
@@ -24,7 +27,8 @@ namespace Analogy
         [DllImport("user32", EntryPoint = "SendMessageA")]
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
-        private static IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
+        private static ILogger Logger => ServicesProvider.Instance.GetService<ILogger>();
         private static string AssemblyLocation;
         /// <summary>
         /// The main entry point for the application.
@@ -44,6 +48,7 @@ namespace Analogy
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             AssemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+            ConfigureServices();
             WindowsFormsSettings.DefaultFont = Settings.FontSettings.UIFont;
             WindowsFormsSettings.DefaultMenuFont = Settings.FontSettings.MenuFont;
             Application.ThreadException += Application_ThreadException;
@@ -148,6 +153,7 @@ namespace Analogy
 
                 return;
             }
+
             if (Settings.IsFirstRun)
             {
                 WelcomeForm f = new WelcomeForm();
@@ -164,6 +170,16 @@ namespace Analogy
 
         }
 
+        private static void ConfigureServices()
+        {
+            var services = ServicesProvider.Instance.GetServiceCollection();
+            UserSettingsManager settings = new UserSettingsManager();
+            services.AddSingleton<IAnalogyUserSettings>(settings);
+            services.AddSingleton<IUserSettingsManager>(settings);
+            services.AddSingleton<Microsoft.Extensions.Logging.ILogger, AnalogyLogger>();
+            services.AddSingleton<AnalogyBuiltInFactory>();
+            services.AddSingleton<FactoriesManager>();
+        }
         private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
         {
             /*
@@ -212,18 +228,18 @@ namespace Analogy
         private static void CurrentDomain_FirstChanceException(object sender,
             System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogWarning(e.Exception.ToString(), nameof(CurrentDomain_FirstChanceException));
+            Logger.LogWarning(e.Exception.ToString(), nameof(CurrentDomain_FirstChanceException));
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogException("Error: " + e.ExceptionObject, e.ExceptionObject as Exception, nameof(CurrentDomain_UnhandledException));
+            Logger.LogError("Error: " + e.ExceptionObject, e.ExceptionObject as Exception, nameof(CurrentDomain_UnhandledException));
             MessageBox.Show("Error: " + e.ExceptionObject, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            AnalogyLogger.Instance.LogException("Error: " + e.Exception, e.Exception, nameof(Application_ThreadException));
+            Logger.LogError(e.Exception, "Error: " + e.Exception, e.Exception, nameof(Application_ThreadException));
             MessageBox.Show("Error: " + e.Exception, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
@@ -253,7 +269,7 @@ namespace Analogy
 
 
 
-            var paths = FactoriesManager.Instance.ProbingPaths.Select(Path.GetFullPath).Except(new List<string> { AssemblyLocation }).Distinct()
+            var paths = ServicesProvider.Instance.GetService<FactoriesManager>().ProbingPaths.Select(Path.GetFullPath).Except(new List<string> { AssemblyLocation }).Distinct()
                 .ToList();
             paths.AddRange(AnalogyNonPersistSettings.Instance.AdditionalAssembliesDependenciesLocations);
             foreach (var path in paths)

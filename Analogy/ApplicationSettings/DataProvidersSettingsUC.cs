@@ -15,7 +15,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public DataProvidersSettingsUC()
         {

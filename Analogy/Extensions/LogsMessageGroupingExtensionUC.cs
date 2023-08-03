@@ -17,7 +17,7 @@ namespace Analogy.Extensions
 {
     public partial class LogsMessageGroupingExtensionUC : XtraUserControl
     {
-        private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         public IAnalogyDataProvider DataProvider { get; set; }
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;

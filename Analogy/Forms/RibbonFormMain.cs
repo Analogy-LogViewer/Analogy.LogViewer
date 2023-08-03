@@ -9,7 +9,7 @@
 
         private void RibbonFormMain_Load(object sender, System.EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
     }
 }

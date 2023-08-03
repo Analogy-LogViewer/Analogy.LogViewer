@@ -8,7 +8,7 @@ namespace Analogy.Forms
     public partial class UpdateForm : DevExpress.XtraEditors.XtraForm
     {
         private UpdateManager Updater => UpdateManager.Instance;
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public UpdateForm()
         {

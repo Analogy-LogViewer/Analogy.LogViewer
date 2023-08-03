@@ -16,7 +16,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class ColorSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public ColorSettingsUC()
         {

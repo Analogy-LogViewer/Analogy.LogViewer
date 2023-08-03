@@ -14,7 +14,7 @@ namespace Analogy.Managers
 {
     public class AnalogyLogManager : IAnalogyLogger
     {
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public event EventHandler<(AnalogyLogMessage msg, string source)> OnNewMessage;
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
@@ -175,7 +175,7 @@ namespace Analogy.Managers
         public void Show(Form mainForm)
         {
             var builtin = new AnalogyOfflineDataProvider();
-            XtraFormLogGrid msg = new XtraFormLogGrid(Settings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, "Analogy", builtin, builtin);
+            XtraFormLogGrid msg = new XtraFormLogGrid(Settings, ExtensionsManager.Instance, FactoriesManager.Instance, ServicesProvider.Instance.GetService<ILogger>(), messages, "Analogy", builtin, builtin);
             msg.Show(mainForm);
         }
 

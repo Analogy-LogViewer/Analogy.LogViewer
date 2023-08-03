@@ -12,7 +12,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersExternalLocationsSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public DataProvidersExternalLocationsSettingsUC()
         {

@@ -13,7 +13,7 @@ namespace Analogy.Managers
 {
     public class ExternalDataProviders
     {
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         private static readonly AsyncLazy<ExternalDataProviders> _instance =
             new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders());
@@ -43,7 +43,7 @@ namespace Analogy.Managers
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogger.Instance.LogException($"Error probing folder {folder}. Error: {e.Message}", e,
+                        ServicesProvider.Instance.GetService<ILogger>().LogError($"Error probing folder {folder}. Error: {e.Message}", e,
                             nameof(ExternalDataProviders));
                     }
                 }
@@ -271,7 +271,7 @@ namespace Analogy.Managers
                         var policy = (Activator.CreateInstance(policyType) as IAnalogyPolicyEnforcer)!;
                         if (policy.DisableUpdates)
                         {
-                            AnalogyLogger.Instance.LogWarning($"disable Update by: {policyType.FullName}");
+                            ServicesProvider.Instance.GetService<ILogger>().LogWarning($"disable Update by: {policyType.FullName}");
                             AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides = true;
                         }
                     }

@@ -37,7 +37,7 @@ namespace Analogy.Managers
         public void Register(IAnalogyOnDemandPlotting plotter)
         {
             plotter.OnNewPointsData += Plotter_OnNewPointsData;
-            plotter.InitializeOnDemandPlotting(Interactor, AnalogyLogger.Instance);
+            plotter.InitializeOnDemandPlotting(Interactor, ServicesProvider.Instance.GetService<ILogger>());
             Plotters.Add(plotter);
         }
 

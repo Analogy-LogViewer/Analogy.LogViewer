@@ -12,7 +12,7 @@ namespace Analogy.Forms
     public partial class FirstTimeRunForm : XtraForm
     {
         private int _selectedStep;
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         private int SelectedStep
         {
@@ -53,7 +53,7 @@ namespace Analogy.Forms
             lblApplicationStyle.Text = "Application style: " + Settings.ApplicationStyle;
             lblSvgPalette.Text = "Active Svg Palette: " + Settings.ApplicationSvgPaletteName;
             xtraTabControl1.ShowTabHeader = DefaultBoolean.False;
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             await FactoriesManager.Instance.InitializeBuiltInFactories();
             await FactoriesManager.Instance.AddExternalDataSources();
             chkLstDataProviderStatus.CustomizeItem += (s, e) =>

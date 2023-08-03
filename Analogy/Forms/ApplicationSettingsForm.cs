@@ -9,7 +9,7 @@ namespace Analogy.Forms
 {
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private ApplicationSettingsSelectionType SelectedSettingType { get; }
         public ApplicationSettingsForm()
         {
@@ -31,7 +31,7 @@ namespace Analogy.Forms
             }
 
             ShowIcon = true;
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             AddOrBringToFrontUserControl(SelectedSettingType);
         }
 
@@ -75,7 +75,7 @@ namespace Analogy.Forms
                     return new AdvancedSettingsUC();
                 default:
                     {
-                        AnalogyLogger.Instance.LogError($"User Setting with {settingType} was not found");
+                        ServicesProvider.Instance.GetService<ILogger>().LogError($"User Setting with {settingType} was not found");
                         throw new Exception($"User Setting with {settingType} was not found");
                     }
             }

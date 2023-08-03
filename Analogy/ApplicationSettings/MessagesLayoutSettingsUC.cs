@@ -17,7 +17,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class MessagesLayoutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private DataTable messageData;
         public MessagesLayoutSettingsUC()
         {
@@ -125,7 +125,7 @@ namespace Analogy.ApplicationSettings
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}", e, "Analogy");
+                ServicesProvider.Instance.GetService<ILogger>().LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

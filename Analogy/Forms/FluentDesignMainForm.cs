@@ -30,7 +30,7 @@ namespace Analogy
 {
     public partial class FluentDesignMainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IAnalogyUserSettings settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         #region pinvoke
 
@@ -206,7 +206,7 @@ namespace Analogy
                     }
                     else
                     {
-                        AnalogyLogger.Instance.LogError("",
+                        ServicesProvider.Instance.GetService<ILogger>().LogError("",
                             $"Last location {settings.AnalogyPosition.Location} is not inside any screen");
                     }
                 }
@@ -766,7 +766,7 @@ namespace Analogy
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
-                providerSetting.CreateUserControl(Analogy.AnalogyLogger.Instance);
+                providerSetting.CreateUserControl(Analogy.ServicesProvider.Instance.GetService<ILogger>());
                 AccordionControlElement settingsBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(settingsBtn);
                 settingsBtn.Style = ElementStyle.Item;
@@ -1401,7 +1401,7 @@ namespace Analogy
                         openedWindows++;
                         //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                         var page = dockManager1.AddPanel(DockingStyle.Float);
-                        await userControl.InitializeUserControl(page, AnalogyLogger.Instance);
+                        await userControl.InitializeUserControl(page, ServicesProvider.Instance.GetService<ILogger>());
                         page.DockedAsTabbedDocument = true;
                         page.Controls.Add(userControl.UserControl);
                         userControl.UserControl.Dock = DockStyle.Fill;
@@ -1465,7 +1465,7 @@ namespace Analogy
                     plotterBtn.Enabled = false;
                     openedWindows++;
                     var plotInteractor = AnalogyPlottingManager.Instance.GetOrCreateInteractor(plot);
-                    await plot.InitializePlotting(plotInteractor, AnalogyLogger.Instance);
+                    await plot.InitializePlotting(plotInteractor, ServicesProvider.Instance.GetService<ILogger>());
                     var plotterUC = new PlottingUC(plot, plotInteractor);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;

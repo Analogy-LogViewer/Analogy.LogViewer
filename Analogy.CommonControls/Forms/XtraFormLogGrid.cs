@@ -6,6 +6,7 @@ using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.Forms
 {
@@ -38,7 +39,7 @@ namespace Analogy.CommonControls.Forms
         }
 
 
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager, extensionManager,factoriesManager, logger)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager, extensionManager,factoriesManager, logger)
         {
             _messages = messages;
             _dataSource = dataSource;

@@ -12,7 +12,6 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using Analogy.Common.DataTypes;
-using Analogy.CommonUtilities.Github;
 using Octokit;
 
 namespace Analogy
@@ -23,8 +22,6 @@ namespace Analogy
     {
         public event EventHandler OnFactoryOrderChanged;
         public event EventHandler OnApplicationSkinNameChanged;
-
-        private static UserSettingsManager? _userSettings;
 
         private AnalogyCommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
@@ -48,15 +45,6 @@ namespace Analogy
                     OnApplicationSkinNameChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
-        }
-
-        /// <remarks>
-        /// Manually implemented lazy pattern to enable setting while keeping the ctor in the getter lazy.
-        /// </remarks>
-        public static UserSettingsManager UserSettings
-        {
-            get => _userSettings ??= new UserSettingsManager();
-            set => _userSettings = value;
         }
 
         public bool SaveSearchFilters { get; set; }
@@ -577,7 +565,7 @@ namespace Analogy
         //    }
         //    catch (Exception e)
         //    {
-        //        AnalogyLogger.Instance.LogError($"Unable to create registry key: {e.Message}");
+        //        ServicesProvider.Instance.GetService<ILogger>().LogError($"Unable to create registry key: {e.Message}");
         //    }
         //}
 

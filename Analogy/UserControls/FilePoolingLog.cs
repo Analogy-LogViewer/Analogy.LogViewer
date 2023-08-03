@@ -8,6 +8,7 @@ using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy
@@ -15,7 +16,7 @@ namespace Analogy
 
     public partial class FilePoolingUCLogs : XtraUserControl, IUserControlWithUCLogs
     {
-        private bool showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
+        private bool showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
         private static int clearHistoryCounter;
         private string FileName { get; set; }
         public bool Enable { get; set; } = true;
@@ -130,8 +131,8 @@ namespace Analogy
             }
 
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
-            XtraFormLogGrid grid = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance,
-                FactoriesManager.Instance, AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider,
+            XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), ExtensionsManager.Instance,
+                ServicesProvider.Instance.GetService<FactoriesManager>(), ServicesProvider.Instance.GetService<ILogger>(), messages, Environment.MachineName, ucLogs1.DataProvider,
                 ucLogs1.FileDataProvider);
             grid.Show(this);
         }

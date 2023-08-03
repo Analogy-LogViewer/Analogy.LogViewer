@@ -14,7 +14,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class FilteringSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public FilteringSettingsUC()
         {

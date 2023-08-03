@@ -17,7 +17,7 @@ namespace Analogy
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<AnalogyPagingChanged> OnPageChanged;
         public ReaderWriterLockSlim lockSlim = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
-        private IUserSettingsManager Settings => UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private List<DataTable> pages;
         private readonly List<IAnalogyLogMessage> allMessages;
         private readonly int pageSize;

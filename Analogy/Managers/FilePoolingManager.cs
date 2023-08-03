@@ -34,12 +34,12 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         _messages = new List<IAnalogyLogMessage>();
         FileName = initialFilename;
         FileFilter = filter;
-        FileProcessor = new FileProcessor(Settings, this, AnalogyLogger.Instance);
+        FileProcessor = new FileProcessor(Settings, this, ServicesProvider.Instance.GetService<ILogger>());
     }
 
     private IAnalogyUserSettings Settings
     {
-        get { return UserSettingsManager.UserSettings; }
+        get { return ServicesProvider.Instance.GetService<IAnalogyUserSettings>(); }
     }
 
     private string FileName { get; }

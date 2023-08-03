@@ -48,7 +48,7 @@ namespace Analogy.Forms
 
         private void AnalogyOTAForm_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
 
         private async void AnalogyOTAForm_FormClosing(object sender, FormClosingEventArgs e)

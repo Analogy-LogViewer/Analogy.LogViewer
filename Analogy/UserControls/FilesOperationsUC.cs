@@ -101,7 +101,7 @@ namespace Analogy
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),this,ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));
@@ -138,7 +138,7 @@ namespace Analogy
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),this,ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));

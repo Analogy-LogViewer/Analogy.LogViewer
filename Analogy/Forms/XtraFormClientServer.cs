@@ -72,7 +72,7 @@ namespace Analogy.Forms
 
         private void XtraFormClientServer_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
     }
 }

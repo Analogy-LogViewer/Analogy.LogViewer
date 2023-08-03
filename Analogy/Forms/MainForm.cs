@@ -51,7 +51,7 @@ namespace Analogy.Forms
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
         private bool preventExit = false;
-        private IAnalogyUserSettings settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private bool Initialized { get; set; }
 
         public MainForm()
@@ -173,7 +173,7 @@ namespace Analogy.Forms
                     }
                     else
                     {
-                        AnalogyLogger.Instance.LogError("",
+                        ServicesProvider.Instance.GetService<ILogger>().LogError("",
                             $"Last location {settings.AnalogyPosition.Location} is not inside any screen");
                     }
                 }
@@ -875,7 +875,7 @@ namespace Analogy.Forms
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
-                providerSetting.CreateUserControl(Analogy.AnalogyLogger.Instance);
+                providerSetting.CreateUserControl(Analogy.ServicesProvider.Instance.GetService<ILogger>());
                 BarButtonItem settingsBtn = new BarButtonItem
                 {
                     Caption = providerSetting.Title,
@@ -952,7 +952,7 @@ namespace Analogy.Forms
                         OpenedWindows++;
                         //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                         var page = dockManager1.AddPanel(DockingStyle.Float);
-                        await userControl.InitializeUserControl(page, AnalogyLogger.Instance);
+                        await userControl.InitializeUserControl(page, ServicesProvider.Instance.GetService<ILogger>());
                         page.DockedAsTabbedDocument = true;
                         page.Tag = ribbonPage;
                         page.Controls.Add(userControl.UserControl);
@@ -1014,7 +1014,7 @@ namespace Analogy.Forms
                     plotterBtn.Enabled = false;
                     OpenedWindows++;
                     var plotInteractor = AnalogyPlottingManager.Instance.GetOrCreateInteractor(plot);
-                    await plot.InitializePlotting(plotInteractor, AnalogyLogger.Instance);
+                    await plot.InitializePlotting(plotInteractor, ServicesProvider.Instance.GetService<ILogger>());
                     var plotterUC = new PlottingUC(plot, plotInteractor);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
@@ -2285,7 +2285,7 @@ namespace Analogy.Forms
                         string data = File.ReadAllText(openFileDialog1.FileName);
                         UserSettingsManager newSettings = JsonConvert.DeserializeObject<UserSettingsManager>(data);
 
-                        UserSettingsManager.UserSettings = newSettings;
+                        ServicesProvider.Instance.GetService<IAnalogyUserSettings>() = newSettings;
                     }
                 }
 

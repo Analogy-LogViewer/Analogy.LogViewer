@@ -69,7 +69,7 @@ namespace Analogy.Forms
 
         private void UserSettingsForm_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             LoadSettings();
 
             if (_initialSelection >= 0)

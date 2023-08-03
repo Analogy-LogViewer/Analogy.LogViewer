@@ -11,7 +11,7 @@ namespace Analogy
 
     public partial class RemoteLogsUC : XtraUserControl, IUserControlWithUCLogs
     {
-        private bool _showHistory = UserSettingsManager.UserSettings.ShowHistoryOfClearedMessages;
+        private bool _showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
         public RemoteLogsUC(IAnalogyRealTimeDataProvider realTime)
@@ -90,7 +90,7 @@ namespace Analogy
             }
 
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
-            XtraFormLogGrid grid = new XtraFormLogGrid(UserSettingsManager.UserSettings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), ExtensionsManager.Instance, FactoriesManager.Instance, ServicesProvider.Instance.GetService<ILogger>(), messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
         }
 

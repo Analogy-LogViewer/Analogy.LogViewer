@@ -28,7 +28,7 @@ namespace Analogy.Managers
                     object? updateRegistryValue = key?.GetValue("DisableUpdates");
                     if (updateRegistryValue != null && bool.TryParse(updateRegistryValue.ToString(), out var disable))
                     {
-                        AnalogyLogger.Instance.LogInformation($"Disable mode: {disable}");
+                        ServicesProvider.Instance.GetService<ILogger>().LogInformation($"Disable mode: {disable}");
                         DisableUpdateFromRegistry = disable;
                     }
                 }

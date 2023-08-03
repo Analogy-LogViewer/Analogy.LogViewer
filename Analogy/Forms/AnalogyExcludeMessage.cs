@@ -11,7 +11,7 @@ namespace Analogy.Forms
         public AnalogyExcludeMessage()
         {
             InitializeComponent();
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
 
         public AnalogyExcludeMessage(AnalogyLogMessage m) : this()
@@ -33,7 +33,7 @@ namespace Analogy.Forms
 
         private void AnalogyExcludeMessage_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
     }
 }

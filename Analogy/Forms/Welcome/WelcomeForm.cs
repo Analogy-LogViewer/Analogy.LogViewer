@@ -7,7 +7,7 @@ namespace Analogy.Forms
 {
     public partial class WelcomeForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public WelcomeForm()
         {
@@ -63,7 +63,7 @@ namespace Analogy.Forms
                     return new WelcomeFeedbackUC();
                 default:
                 {
-                    AnalogyLogger.Instance.LogError($"Selection with {selectionType} was not found");
+                    ServicesProvider.Instance.GetService<ILogger>().LogError($"Selection with {selectionType} was not found");
                     throw new Exception($"Selection with {selectionType} was not found");
                 }
             }
@@ -77,7 +77,7 @@ namespace Analogy.Forms
             }
 
             ShowIcon = true;
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             await FactoriesManager.Instance.InitializeBuiltInFactories();
             await FactoriesManager.Instance.AddExternalDataSources();
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);

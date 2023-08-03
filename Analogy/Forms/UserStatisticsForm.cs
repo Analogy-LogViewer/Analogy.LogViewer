@@ -6,7 +6,7 @@ namespace Analogy.Forms
 {
     public partial class UserStatisticsForm : XtraForm
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public UserStatisticsForm()
         {
