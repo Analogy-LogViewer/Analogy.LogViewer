@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {
-    public class AnalogyLogger: IAnalogyLogger
+    public class AnalogyLogger: ILogger
     {
         private string DateTimeWithMilliseconds => DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt", DateTimeFormatInfo.InvariantInfo);
         private static readonly Process CurrentProcess = Process.GetCurrentProcess();

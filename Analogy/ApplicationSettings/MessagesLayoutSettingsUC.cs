@@ -7,20 +7,23 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class MessagesLayoutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
+        private IUserSettingsManager Settings { get; } 
         private DataTable messageData;
-        public MessagesLayoutSettingsUC()
+        public MessagesLayoutSettingsUC(IAnalogyUserSettings settings)
         {
+            this.Settings = settings;
             InitializeComponent();
             messageData = Analogy.CommonControls.Utils.DataTableConstructor();
         }

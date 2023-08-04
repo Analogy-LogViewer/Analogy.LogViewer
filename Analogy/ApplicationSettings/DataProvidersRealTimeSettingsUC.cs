@@ -13,10 +13,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersRealTimeSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-
-        public DataProvidersRealTimeSettingsUC()
+        private IAnalogyUserSettings Settings { get; } 
+        public DataProvidersRealTimeSettingsUC(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 

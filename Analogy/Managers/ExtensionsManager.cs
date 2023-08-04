@@ -10,7 +10,7 @@ namespace Analogy
     {
         private static readonly Lazy<ExtensionsManager> instance = new Lazy<ExtensionsManager>(() => new ExtensionsManager());
         public static ExtensionsManager Instance => instance.Value;
-        private IAnalogyLogger Log { get; } = ServicesProvider.Instance.GetService<ILogger>();
+        private ILogger Log { get; } = ServicesProvider.Instance.GetService<ILogger>();
         private List<IAnalogyExtension> LoadedExtensions { get; } = new List<IAnalogyExtension>();
         private readonly List<IAnalogyExtension> registeredExtensions = new List<IAnalogyExtension>();
         public bool HasAny => RegisteredExtensions.Any();

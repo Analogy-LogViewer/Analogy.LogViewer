@@ -16,10 +16,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class ApplicationUISettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-
-        public ApplicationUISettingsUC()
+        private IAnalogyUserSettings Settings { get; } 
+        public ApplicationUISettingsUC(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 

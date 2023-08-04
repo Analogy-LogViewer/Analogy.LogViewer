@@ -5,16 +5,17 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class DebuggingSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-
-        public DebuggingSettingsUC()
+        private IAnalogyUserSettings Settings { get; } 
+        public DebuggingSettingsUC(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 

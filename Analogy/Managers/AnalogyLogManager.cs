@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {
-    public class AnalogyLogManager : IAnalogyLogger
+    public class AnalogyLogManager : ILogger
     {
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 

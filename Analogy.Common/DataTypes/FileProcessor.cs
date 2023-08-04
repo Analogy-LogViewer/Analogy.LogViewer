@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Common.DataTypes
 {
@@ -18,9 +19,9 @@ namespace Analogy.Common.DataTypes
         public DateTime lastNewestMessage;
         private IUserSettingsManager Settings { get; }
         private ILogMessageCreatedHandler DataWindow { get; }
-        public IAnalogyLogger Logger { get; }
+        public ILogger Logger { get; }
 
-        public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow, IAnalogyLogger logger)
+        public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow, ILogger logger)
         {
             DataWindow = dataWindow;
             Logger = logger;

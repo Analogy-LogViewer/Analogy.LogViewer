@@ -13,10 +13,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class PredefinedAlertsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-
-        public PredefinedAlertsUC()
+        private IUserSettingsManager Settings { get; } 
+        public PredefinedAlertsUC(IUserSettingsManager settings)
         {
+            this.Settings = settings;
             InitializeComponent();
         }
 

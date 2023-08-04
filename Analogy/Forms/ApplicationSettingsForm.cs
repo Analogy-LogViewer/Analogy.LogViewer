@@ -4,21 +4,24 @@ using DevExpress.XtraEditors;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Forms
 {
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
+        private IUserSettingsManager Settings { get; }
         private ApplicationSettingsSelectionType SelectedSettingType { get; }
-        public ApplicationSettingsForm()
+        public ApplicationSettingsForm(IUserSettingsManager settings)
         {
             InitializeComponent();
+            Settings = settings;
             EnableAcrylicAccent = false;
             SelectedSettingType = ApplicationSettingsSelectionType.ApplicationGeneralSettings;
         }
 
-        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType) : this()
+        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IUserSettingsManager settings) : this(settings)
         {
             SelectedSettingType = selectedSettingType;
         }
@@ -191,7 +194,7 @@ namespace Analogy.Forms
                 Hide();
                 Close();
                 Settings.ResetSettings();
-                ApplicationSettingsForm us = new ApplicationSettingsForm();
+                ApplicationSettingsForm us = new ApplicationSettingsForm(Settings);
                 us.ShowDialog(owner);
             }
         }

@@ -9,6 +9,7 @@ using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors.Controls;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -27,7 +28,7 @@ namespace Analogy.CommonControls.UserControls
             InitializeComponent();
         }
 
-        public DataVisualizerUC(IUserSettingsManager settings, Func<List<IAnalogyLogMessage>> messagesFunc, IAnalogyLogger analogyLogger) : this()
+        public DataVisualizerUC(IUserSettingsManager settings, Func<List<IAnalogyLogMessage>> messagesFunc, ILogger analogyLogger) : this()
         {
             _settings = settings;
             Messages = messagesFunc;

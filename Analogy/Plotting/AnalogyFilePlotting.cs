@@ -66,7 +66,7 @@ namespace Analogy.Plotting
                 yield return (seriesName, AnalogyPlottingSeriesType.Line);
             }
         }
-        public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, IAnalogyLogger logger)
+        public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, ILogger logger)
         {
             return Task.CompletedTask;
         }

@@ -40,6 +40,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -84,7 +85,7 @@ namespace Analogy.CommonControls.UserControls
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
-        private IAnalogyLogger Logger { get; set; }
+        private ILogger Logger { get; set; }
         private List<XtraFormLogGrid> ExternalWindows
         {
             get
@@ -158,7 +159,7 @@ namespace Analogy.CommonControls.UserControls
         {
 
         }
-        public ServerSideLogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
+        public ServerSideLogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger)
         {
             Logger = logger;
             Id = Guid.NewGuid();
@@ -2612,7 +2613,8 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                diffStartTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
+                //todo: fix this as dateedit
+                diffStartTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
                 UpdateTimes();
             }
 
@@ -2805,7 +2807,7 @@ namespace Analogy.CommonControls.UserControls
             }
             catch (Exception e)
             {
-                Logger.LogException($"Error saving setting: {e.Message}", e, "Analogy");
+                Logger.LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -3251,8 +3253,9 @@ namespace Analogy.CommonControls.UserControls
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
-            {
-                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
+            {                
+                //todo: fix this as dateedit
+                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
                 ceNewerThanFilter.Checked = true;
             }
         }
@@ -3271,7 +3274,8 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
+                //todo: fix this as dateedit
+                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
                 ceOlderThanFilter.Checked = true;
             }
         }

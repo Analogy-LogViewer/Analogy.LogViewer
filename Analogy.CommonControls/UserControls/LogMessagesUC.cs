@@ -42,6 +42,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -120,7 +121,7 @@ namespace Analogy.CommonControls.UserControls
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
-        private IAnalogyLogger Logger { get; set; }
+        private ILogger Logger { get; set; }
         private List<XtraFormLogGrid> ExternalWindows
         {
             get
@@ -158,7 +159,7 @@ namespace Analogy.CommonControls.UserControls
         private DateTime reloadDateTime = DateTime.MaxValue;
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
-        private DateTime diffStartTime = DateTime.MinValue;
+        private DateTimeOffset diffStartTime = DateTimeOffset.MinValue;
         private bool BookmarkView;
         private CancellationTokenSource filterTokenSource;
         private CancellationToken filterToken;
@@ -202,7 +203,7 @@ namespace Analogy.CommonControls.UserControls
         {
 
         }
-        public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
+        public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger)
         {
             Logger = logger;
             Id = Guid.NewGuid();
@@ -326,7 +327,7 @@ namespace Analogy.CommonControls.UserControls
                 }
                 catch (Exception exception)
                 {
-                    Logger?.LogException($"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}", exception);
+                    Logger?.LogError(exception, $"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}", exception);
                 }
             }
             wsLogs.CaptureWorkspace("Default");
@@ -3037,7 +3038,7 @@ namespace Analogy.CommonControls.UserControls
             }
             catch (Exception e)
             {
-                Logger.LogException($"Error saving setting: {e.Message}", e, "Analogy");
+                Logger.LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -3321,12 +3322,12 @@ namespace Analogy.CommonControls.UserControls
                 if (useSpecificColumnForJson)
                 {
                     var specific = LogGrid.GetRowCellValue(e.FocusedRowHandle, jsonColumnForInlineJsonViewer).ToString();
-                   await JsonTreeView.ShowJson(specific);
+                    await JsonTreeView.ShowJson(specific);
 
                 }
                 else if (focusedMassage.RawTextType == AnalogyRowTextType.JSON)
                 {
-                   await JsonTreeView.ShowJson(focusedMassage.RawText);
+                    await JsonTreeView.ShowJson(focusedMassage.RawText);
                 }
             }
 
@@ -3499,7 +3500,8 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
+                //todo: fix this as dateedit
+                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
                 ceNewerThanFilter.Checked = true;
             }
         }

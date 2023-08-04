@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Analogy.Common.Managers
 {
-    public class EmptyAnalogyLogger : IAnalogyLogger
+    public class EmptyAnalogyLogger : ILogger
     {
         public void LogInformation(string message, string source = "", string memberName = "", int lineNumber = 0,
             string filePath = "")

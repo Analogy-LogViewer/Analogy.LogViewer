@@ -13,10 +13,13 @@ namespace Analogy.ApplicationSettings
 {
     public partial class ExtensionSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
+        private IAnalogyUserSettings Settings { get; }
+        private FactoriesManager FactoriesManager { get; }
 
-        public ExtensionSettingsUC()
+        public ExtensionSettingsUC(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
         {
+            this.Settings = settings;
+            FactoriesManager = factoriesManager;
             InitializeComponent();
         }
 
@@ -29,7 +32,7 @@ namespace Analogy.ApplicationSettings
         private void LoadSettings()
         {
 
-            var extensions = FactoriesManager.Instance.GetAllExtensionsWithAssemblies();
+            var extensions = FactoriesManager.GetAllExtensionsWithAssemblies();
             foreach (var (ex, assembly) in extensions)
             {
 

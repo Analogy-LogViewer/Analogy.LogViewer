@@ -16,7 +16,7 @@ namespace Analogy.UserControls
 {
     public partial class DateTimeSelectionUC : XtraUserControl
     {
-        private List<DateTime> Times { get; set; }
+        private List<DateTimeOffset> Times { get; set; }
         public event EventHandler<DateTime> SelectionChanged;
         public DateTimeSelectionUC()
         {
@@ -28,7 +28,7 @@ namespace Analogy.UserControls
             SelectionChanged?.Invoke(this, (DateTime)comboBoxEdit1.EditValue);
         }
 
-        public void SetTimes(List<DateTime> times)
+        public void SetTimes(List<DateTimeOffset> times)
         {
             comboBoxEdit1.EditValueChanged -= LookUpEdit1_EditValueChanged;
 

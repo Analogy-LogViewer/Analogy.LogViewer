@@ -13,10 +13,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersFileAssociationUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-
-        public DataProvidersFileAssociationUC()
+        private IAnalogyUserSettings Settings { get; } 
+        public DataProvidersFileAssociationUC(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 

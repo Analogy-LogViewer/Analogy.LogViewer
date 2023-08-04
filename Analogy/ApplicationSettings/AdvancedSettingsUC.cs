@@ -12,10 +12,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class AdvancedSettingsUC : XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-
-        public AdvancedSettingsUC()
+        private IAnalogyUserSettings Settings { get; }
+        public AdvancedSettingsUC(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 
