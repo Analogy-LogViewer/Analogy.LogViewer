@@ -3338,7 +3338,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
-            if (!LoadingInProgress)
+            if (!LoadingInProgress && !string.IsNullOrEmpty(dataProvider))
             {
                 OnFocusedRowChanged?.Invoke(this, (dataProvider, SelectedMassage));
             }

@@ -87,6 +87,10 @@ namespace Analogy
 
         private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
         {
+            if (data.file is null)
+            {
+                return;
+            }
             var t = treeList1.Nodes.FirstOrDefault(n => data.file.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
             if (t != null && treeList1.FocusedNode != t)
             {
