@@ -3257,7 +3257,7 @@ namespace Analogy.CommonControls.UserControls
             // gridColumnRawText
             // 
             this.gridColumnRawText.Caption = "Raw Text";
-            this.gridColumnRawText.FieldName = "RawTextType";
+            this.gridColumnRawText.FieldName = "RawText";
             this.gridColumnRawText.MinWidth = 25;
             this.gridColumnRawText.Name = "gridColumnRawText";
             this.gridColumnRawText.Visible = true;

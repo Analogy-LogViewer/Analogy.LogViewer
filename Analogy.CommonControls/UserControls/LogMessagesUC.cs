@@ -1341,7 +1341,7 @@ namespace Analogy.CommonControls.UserControls
             gridColumnThread.FieldName = Common.CommonUtils.ColumnThreadId;
             gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
             gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
-
+            gridColumnRawText.FieldName = Common.CommonUtils.ColumnRawText;
             bsiProgress.Caption = string.Empty;
             bsiProgress.Visibility = Settings.ShowProcessedCounter ? BarItemVisibility.Always : BarItemVisibility.Never;
             switch (Settings.TimeOffsetType)

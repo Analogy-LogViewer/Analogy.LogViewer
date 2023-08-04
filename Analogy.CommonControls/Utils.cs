@@ -79,7 +79,7 @@ namespace Analogy.CommonControls
             dtr[Common.CommonUtils.ColumnThreadId] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
             dtr["MachineName"] = message.MachineName ?? string.Empty;
-            dtr["RawText"] = message.RawText ?? string.Empty;
+            dtr[Common.CommonUtils.ColumnRawText] = message.RawText ?? string.Empty;
             dtr["LineNumber"] = message.LineNumber;
             dtr["MethodName"] = message.MethodName;
             if (message.AdditionalProperties != null && message.AdditionalProperties.Any())
@@ -131,7 +131,7 @@ namespace Analogy.CommonControls
             dtb.Columns.Add(new DataColumn(Common.CommonUtils.ColumnThreadId, typeof(int)));
             dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
             dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
-            dtb.Columns.Add(new DataColumn("RawText", typeof(string)));
+            dtb.Columns.Add(new DataColumn(Common.CommonUtils.ColumnRawText, typeof(string)));
             dtb.Columns.Add(new DataColumn("LineNumber", typeof(long)));
             dtb.Columns.Add(new DataColumn("MethodName", typeof(string)));
             dtb.DefaultView.AllowNew = false;
