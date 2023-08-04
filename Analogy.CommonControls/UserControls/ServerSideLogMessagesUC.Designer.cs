@@ -80,7 +80,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnSource = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnLevel = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnClass = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnModule = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnObject = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -448,7 +447,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnSource,
             this.gridColumnLevel,
             this.gridColumnClass,
-            this.gridColumnCategory,
             this.gridColumnUser,
             this.gridColumnModule,
             this.gridColumnObject,
@@ -613,25 +611,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnClass.Visible = true;
             this.gridColumnClass.VisibleIndex = 6;
             this.gridColumnClass.Width = 115;
-            // 
-            // gridColumnCategory
-            // 
-            this.gridColumnCategory.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnCategory.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnCategory.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnCategory.Caption = "Category";
-            this.gridColumnCategory.FieldName = "Category";
-            this.gridColumnCategory.MinWidth = 24;
-            this.gridColumnCategory.Name = "gridColumnCategory";
-            this.gridColumnCategory.OptionsColumn.AllowEdit = false;
-            this.gridColumnCategory.OptionsColumn.AllowFocus = false;
-            this.gridColumnCategory.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnCategory.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnCategory.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnCategory.OptionsColumn.ReadOnly = true;
-            this.gridColumnCategory.Visible = true;
-            this.gridColumnCategory.VisibleIndex = 7;
-            this.gridColumnCategory.Width = 115;
             // 
             // gridColumnUser
             // 
@@ -3347,7 +3326,7 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnLevel;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnClass;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnCategory;
+
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnUser;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnModule;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnObject;

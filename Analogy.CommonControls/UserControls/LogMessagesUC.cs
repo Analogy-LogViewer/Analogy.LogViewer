@@ -1336,6 +1336,10 @@ namespace Analogy.CommonControls.UserControls
         }
         private void LoadUISettings()
         {
+            gridColumnThread.FieldName = Common.CommonUtils.ColumnThreadId;
+            gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
+            gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
+
             bsiProgress.Caption = string.Empty;
             bsiProgress.Visibility = Settings.ShowProcessedCounter ? BarItemVisibility.Always : BarItemVisibility.Never;
             switch (Settings.TimeOffsetType)

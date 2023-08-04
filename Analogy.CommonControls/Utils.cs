@@ -55,6 +55,7 @@ namespace Analogy.CommonControls
         /// From last month
         /// </summary>
         internal const string DateFilterLastMonth = "Last one month";
+
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
         public static string GetFileNameAsDataSource(string fileName)
         {
@@ -72,10 +73,10 @@ namespace Analogy.CommonControls
             dtr["Level"] = message.Level;
             dtr["Class"] = message.Class;
             dtr["User"] = message.User ?? "";
-            dtr["Module"] = message.Module ?? "";
+            dtr[Common.CommonUtils.ColumnModule] = message.Module ?? "";
             dtr[Common.CommonUtils.AnalogyMessageColumn] = message;
-            dtr["ProcessID"] = message.ProcessId;
-            dtr["ThreadID"] = message.ThreadId;
+            dtr[Common.CommonUtils.ColumnProcessId] = message.ProcessId;
+            dtr[Common.CommonUtils.ColumnThreadId] = message.ThreadId;
             dtr["DataProvider"] = dataSource ?? string.Empty;
             dtr["MachineName"] = message.MachineName ?? string.Empty;
             dtr["RawText"] = message.RawText ?? string.Empty;
@@ -124,10 +125,10 @@ namespace Analogy.CommonControls
             dtb.Columns.Add(new DataColumn("Class", typeof(string)));
             dtb.Columns.Add(new DataColumn("Category", typeof(string)));
             dtb.Columns.Add(new DataColumn("User", typeof(string)));
-            dtb.Columns.Add(new DataColumn("Module", typeof(string)));
+            dtb.Columns.Add(new DataColumn(Common.CommonUtils.ColumnModule, typeof(string)));
             dtb.Columns.Add(new DataColumn(Common.CommonUtils.AnalogyMessageColumn, typeof(object)));
-            dtb.Columns.Add(new DataColumn("ProcessID", typeof(int)));
-            dtb.Columns.Add(new DataColumn("ThreadID", typeof(int)));
+            dtb.Columns.Add(new DataColumn(Common.CommonUtils.ColumnProcessId, typeof(int)));
+            dtb.Columns.Add(new DataColumn(Common.CommonUtils.ColumnThreadId, typeof(int)));
             dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
             dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
             dtb.Columns.Add(new DataColumn("RawText", typeof(string)));

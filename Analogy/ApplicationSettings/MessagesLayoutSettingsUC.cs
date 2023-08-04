@@ -44,6 +44,10 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
+            gridColumnThread.FieldName = Common.CommonUtils.ColumnThreadId;
+            gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
+            gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
+
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             teDateTimeFormat.Text = Settings.DateTimePattern;

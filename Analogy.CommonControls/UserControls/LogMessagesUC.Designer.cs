@@ -82,7 +82,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnSource = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnLevel = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnClass = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnModule = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnObject = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -461,7 +460,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnSource,
             this.gridColumnLevel,
             this.gridColumnClass,
-            this.gridColumnCategory,
             this.gridColumnUser,
             this.gridColumnModule,
             this.gridColumnObject,
@@ -631,25 +629,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnClass.VisibleIndex = 6;
             this.gridColumnClass.Width = 115;
             // 
-            // gridColumnCategory
-            // 
-            this.gridColumnCategory.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnCategory.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnCategory.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnCategory.Caption = "Category";
-            this.gridColumnCategory.FieldName = "Category";
-            this.gridColumnCategory.MinWidth = 24;
-            this.gridColumnCategory.Name = "gridColumnCategory";
-            this.gridColumnCategory.OptionsColumn.AllowEdit = false;
-            this.gridColumnCategory.OptionsColumn.AllowFocus = false;
-            this.gridColumnCategory.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnCategory.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnCategory.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnCategory.OptionsColumn.ReadOnly = true;
-            this.gridColumnCategory.Visible = true;
-            this.gridColumnCategory.VisibleIndex = 7;
-            this.gridColumnCategory.Width = 115;
-            // 
             // gridColumnUser
             // 
             this.gridColumnUser.AppearanceCell.Options.UseTextOptions = true;
@@ -712,8 +691,8 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnProcessID.Caption = "ProcessId";
-            this.gridColumnProcessID.FieldName = "ProcessId";
+            this.gridColumnProcessID.Caption = "ColumnProcessId";
+            this.gridColumnProcessID.FieldName = "ColumnProcessId";
             this.gridColumnProcessID.MinWidth = 24;
             this.gridColumnProcessID.Name = "gridColumnProcessID";
             this.gridColumnProcessID.OptionsColumn.AllowEdit = false;
@@ -2778,7 +2757,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnBookmarkProcessID.Caption = "Process ID";
-            this.gridColumnBookmarkProcessID.FieldName = "ProcessId";
+            this.gridColumnBookmarkProcessID.FieldName = "ColumnProcessId";
             this.gridColumnBookmarkProcessID.MinWidth = 24;
             this.gridColumnBookmarkProcessID.Name = "gridColumnBookmarkProcessID";
             this.gridColumnBookmarkProcessID.OptionsColumn.AllowEdit = false;
@@ -3454,7 +3433,7 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnLevel;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnClass;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnCategory;
+
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnUser;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnModule;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnObject;
