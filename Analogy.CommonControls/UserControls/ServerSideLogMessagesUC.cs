@@ -374,6 +374,8 @@ namespace Analogy.CommonControls.UserControls
                 }
             };
             logGrid.ShownEditor += GridView_ShownEditor;
+            logGrid.ShowingEditor += (s, e) => e.Cancel = true;// prevent editing
+
             gridControl.Click += (s, e) =>
             {
                 if (btsAutoScrollToBottom.Checked)
