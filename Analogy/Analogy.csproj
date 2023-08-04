@@ -74,9 +74,9 @@
 		<PackageReference Include="Markdig" Version="0.32.0" />
 		<PackageReference Include="MessagePack" Version="2.6.100-alpha" />
 		<PackageReference Include="Octokit" Version="7.1.0" />
-		<PackageReference Include="System.Drawing.Common" Version="8.0.0-preview.5.23280.5" />
+		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="System.Resources.Extensions" Version="8.0.0-preview.6.23329.7" />
+		<PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
