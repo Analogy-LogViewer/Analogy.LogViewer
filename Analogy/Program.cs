@@ -28,6 +28,9 @@ namespace Analogy
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
+        private static FactoriesManager FactoriesManager => ServicesProvider.Instance.GetService<FactoriesManager>();
+        private static ExtensionsManager ExtensionsManager => ServicesProvider.Instance.GetService<ExtensionsManager>();
+
         private static ILogger Logger => ServicesProvider.Instance.GetService<ILogger>();
         private static string AssemblyLocation;
         /// <summary>
@@ -156,16 +159,16 @@ namespace Analogy
 
             if (Settings.IsFirstRun)
             {
-                WelcomeForm f = new WelcomeForm();
+                WelcomeForm f = new WelcomeForm(Settings, FactoriesManager);
                 f.ShowDialog();
             }
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
-                Application.Run(new MainForm());
+                Application.Run(new MainForm(FactoriesManager, ExtensionsManager));
             }
             else
             {
-                Application.Run(new FluentDesignMainForm());
+                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager));
             }
 
         }
