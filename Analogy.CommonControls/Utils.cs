@@ -100,7 +100,7 @@ namespace Analogy.CommonControls
                    filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public static DateTimeOffset GetOffsetTime(DateTimeOffset time, TimeOffsetType timeOffsetType,TimeSpan customOffset)
+        public static DateTime GetOffsetTime(DateTime time, TimeOffsetType timeOffsetType,TimeSpan customOffset)
         {
             return timeOffsetType switch
             {
@@ -131,7 +131,7 @@ namespace Analogy.CommonControls
             dtb.Columns.Add(new DataColumn("DataProvider", typeof(string)));
             dtb.Columns.Add(new DataColumn("MachineName", typeof(string)));
             dtb.Columns.Add(new DataColumn("RawText", typeof(string)));
-            dtb.Columns.Add(new DataColumn("LineNumber", typeof(int)));
+            dtb.Columns.Add(new DataColumn("LineNumber", typeof(long)));
             dtb.Columns.Add(new DataColumn("MethodName", typeof(string)));
             dtb.DefaultView.AllowNew = false;
             dtb.DefaultView.RowStateFilter = DataViewRowState.Unchanged;

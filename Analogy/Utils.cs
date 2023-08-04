@@ -369,7 +369,7 @@ namespace Analogy
             return string.Empty;
         }
 
-        public static DateTimeOffset GetOffsetTime(DateTimeOffset time)
+        public static DateTime GetOffsetTime(DateTime time)
         {
             return Settings.TimeOffsetType switch
             {

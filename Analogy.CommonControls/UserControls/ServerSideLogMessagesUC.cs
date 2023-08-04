@@ -120,10 +120,10 @@ namespace Analogy.CommonControls.UserControls
 
         private List<string> LoadedFiles { get; set; }
         private bool NewDataExist { get; set; }
-        private DateTimeOffset reloadDateTime = DateTimeOffset.MaxValue;
+        private DateTime reloadDateTime = DateTime.MaxValue;
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
-        private DateTimeOffset diffStartTime = DateTimeOffset.MinValue;
+        private DateTime diffStartTime = DateTime.MinValue;
         private bool BookmarkView;
         private CancellationTokenSource filterTokenSource;
         private CancellationToken filterToken;
@@ -2614,7 +2614,7 @@ namespace Analogy.CommonControls.UserControls
             if (message != null)
             {
                 //todo: fix this as dateedit
-                diffStartTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
+                diffStartTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 UpdateTimes();
             }
 
@@ -3255,7 +3255,7 @@ namespace Analogy.CommonControls.UserControls
             if (message != null)
             {                
                 //todo: fix this as dateedit
-                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
+                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceNewerThanFilter.Checked = true;
             }
         }
@@ -3275,7 +3275,7 @@ namespace Analogy.CommonControls.UserControls
             if (message != null)
             {
                 //todo: fix this as dateedit
-                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
+                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceOlderThanFilter.Checked = true;
             }
         }

@@ -16,7 +16,6 @@ using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using DevExpress.Mvvm.POCO;
 
 namespace Analogy
 {
@@ -176,12 +175,16 @@ namespace Analogy
         private static void ConfigureServices()
         {
             var services = ServicesProvider.Instance.GetServiceCollection();
+            var loggerProvider = new AnalogyLoggerProvider();
             UserSettingsManager settings = new UserSettingsManager();
             services.AddSingleton<IAnalogyUserSettings>(settings);
             services.AddSingleton<IUserSettingsManager>(settings);
-            services.AddSingleton<Microsoft.Extensions.Logging.ILogger, AnalogyLogger>();
+            services.AddSingleton<ILogger>(loggerProvider.CreateLogger("Analogy"));
             services.AddSingleton<AnalogyBuiltInFactory>();
             services.AddSingleton<FactoriesManager>();
+            services.AddSingleton<ExtensionsManager>();
+            ServicesProvider.Instance.AddLoggerProvider(loggerProvider);
+            ServicesProvider.Instance.BuildServiceProvider("Analogy");
         }
         private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
         {

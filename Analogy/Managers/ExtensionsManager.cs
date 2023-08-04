@@ -27,7 +27,7 @@ namespace Analogy
         private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();
 
-        private ExtensionsManager(FactoriesManager factoriesManager, ILogger logger)
+        public ExtensionsManager(FactoriesManager factoriesManager, ILogger logger)
         {
             FactoriesManager = factoriesManager;
             Logger = logger;

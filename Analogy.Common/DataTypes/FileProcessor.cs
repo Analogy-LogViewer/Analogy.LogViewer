@@ -16,7 +16,7 @@ namespace Analogy.Common.DataTypes
     public class FileProcessor
     {
         public event EventHandler<string> OnFileReadingFinished;
-        public DateTimeOffset lastNewestMessage;
+        public DateTime lastNewestMessage;
         private IUserSettingsManager Settings { get; }
         private ILogMessageCreatedHandler DataWindow { get; }
         public ILogger Logger { get; }

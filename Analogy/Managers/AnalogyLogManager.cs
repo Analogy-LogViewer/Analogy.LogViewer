@@ -58,7 +58,7 @@ namespace Analogy.Managers
         private List<IAnalogyLogMessage> GetFilteredMessages()
         {
             return messages.Where(m =>
-                    DateTimeOffset.Now.Subtract(m.Date).TotalDays <=
+                    DateTime.Now.Subtract(m.Date).TotalDays <=
                     Settings.AnalogyInternalLogPeriod)
                 .ToList();
         }

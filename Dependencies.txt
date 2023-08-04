@@ -19,7 +19,6 @@ Interface -- CommonUtilities -- Template -- GitHistory
 Interface -- CommonUtilities -- Template -- Github
 Interface -- CommonUtilities -- Template -- IISLogsProvider
 Interface -- CommonUtilities -- Template -- JsonParser
-Interface -- CommonUtilities -- Template -- Kafka
 Interface -- CommonUtilities -- Template -- Log4jXml
 Interface -- CommonUtilities -- Template -- Log4Net
 Interface -- CommonUtilities -- Template -- NLog
@@ -30,7 +29,7 @@ Interface -- CommonUtilities -- Template -- WordSearch
 Interface -- CommonUtilities -- Template -- powertoys
 Interface -- CommonUtilities -- Template -- Sqlite
 Interface -- CommonUtilities -- Template -- Elastic.CommonSchema.Serilog
-
+Interface -- CommonUtilities -- Template -- Analogy.LogViewer.LoggersTree
 
 
 
