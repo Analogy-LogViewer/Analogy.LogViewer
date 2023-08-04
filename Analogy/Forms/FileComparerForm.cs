@@ -1,4 +1,5 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {

@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {

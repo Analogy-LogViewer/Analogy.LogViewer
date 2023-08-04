@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows.Forms;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
 namespace Analogy.Forms

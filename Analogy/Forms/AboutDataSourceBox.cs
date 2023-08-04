@@ -7,17 +7,19 @@ namespace Analogy.Forms
 {
     partial class AboutDataSourceBox : XtraForm
     {
+        private FactoriesManager FactoriesManager { get; }
         private readonly IAnalogyFactory _factory;
         private readonly Assembly _factoryAssembly;
-        public AboutDataSourceBox()
+        public AboutDataSourceBox(FactoriesManager factoriesManager)
         {
+            FactoriesManager = factoriesManager;
             InitializeComponent();
         }
 
-        public AboutDataSourceBox(IAnalogyFactory factory) : this()
+        public AboutDataSourceBox(IAnalogyFactory factory, FactoriesManager factoriesManager) : this(factoriesManager)
         {
             _factory = factory;
-            _factoryAssembly = FactoriesManager.Instance.GetAssemblyOfFactory(factory);
+            _factoryAssembly = FactoriesManager.GetAssemblyOfFactory(factory);
         }
 
         private string AssemblyTitle
@@ -100,7 +102,7 @@ namespace Analogy.Forms
             labelCompanyName.Text = AssemblyCompany;
             meDescription.Text = $"{AssemblyDescription}{Environment.NewLine}{_factory.About}";
             meChangeLog.Text = string.Join(Environment.NewLine,
-                _factory.ChangeLog.OrderByDescending(c => c.Date).Select(cl => $"{cl.Date.ToShortDateString()}: {cl.ChangeInformation} ({cl.Name})"));
+                _factory.ChangeLog.OrderByDescending(c => c.Date).Select(cl => $"{cl.Date.ToString()}: {cl.ChangeInformation} ({cl.Name})"));
             meContributions.Text = string.Join(Environment.NewLine, _factory.Contributors);
         }
 

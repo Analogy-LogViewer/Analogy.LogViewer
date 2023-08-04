@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
 namespace Analogy.Forms

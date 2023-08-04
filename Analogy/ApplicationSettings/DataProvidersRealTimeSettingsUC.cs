@@ -13,10 +13,13 @@ namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersRealTimeSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } 
-        public DataProvidersRealTimeSettingsUC(IAnalogyUserSettings settings)
+        private IAnalogyUserSettings Settings { get; }
+        private FactoriesManager FactoriesManager { get; }
+
+        public DataProvidersRealTimeSettingsUC(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
         {
             Settings = settings;
+            FactoriesManager = factoriesManager;
             InitializeComponent();
         }
 
@@ -28,7 +31,7 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
-            var loaded = FactoriesManager.Instance.GetRealTimeDataSourcesNamesAndIds();
+            var loaded = FactoriesManager.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
                 FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID, realTime.Description,realTime.assembly.GetName(false).Name, realTime.Image);

@@ -11,6 +11,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using Analogy.CommonControls.Tools;
+using Analogy.DataTypes;
 using Analogy.UserControls;
 
 namespace Analogy.DataProviders

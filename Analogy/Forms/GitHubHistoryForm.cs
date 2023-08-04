@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonUtilities.Github;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraBars.Navigation;
 using Markdig;
+using Microsoft.Extensions.Logging;
 using Octokit;
 
 namespace Analogy.Forms

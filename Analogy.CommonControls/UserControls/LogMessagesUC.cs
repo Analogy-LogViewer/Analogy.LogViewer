@@ -156,7 +156,7 @@ namespace Analogy.CommonControls.UserControls
 
         private List<string> LoadedFiles { get; set; }
         private bool NewDataExist { get; set; }
-        private DateTime reloadDateTime = DateTime.MaxValue;
+        private DateTimeOffset reloadDateTime = DateTime.MaxValue;
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
         private DateTimeOffset diffStartTime = DateTimeOffset.MinValue;
@@ -3519,8 +3519,9 @@ namespace Analogy.CommonControls.UserControls
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
-            {
-                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
+            {                
+                //todo: fix this as dateedit
+                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).DateTime;
                 ceOlderThanFilter.Checked = true;
             }
         }
@@ -3561,7 +3562,7 @@ namespace Analogy.CommonControls.UserControls
             bbtnReload.Visibility = BarItemVisibility.Always;
         }
 
-        public void SetReloadColorDate(DateTime value) => reloadDateTime = value;
+        public void SetReloadColorDate(DateTimeOffset value) => reloadDateTime = value;
 
         private void bBtnSaveCurrentSelectionCustomFormat_ItemClick(object sender, ItemClickEventArgs e)
         {

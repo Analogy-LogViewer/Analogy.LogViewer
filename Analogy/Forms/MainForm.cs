@@ -28,11 +28,14 @@ using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Forms
 {
     public partial class MainForm : RibbonForm
     {
+        private FactoriesManager FactoriesManager { get; }
+        private ExtensionsManager ExtensionsManager { get; }
         const int WM_COPYDATA = 0x004A;
         [DllImport("user32", EntryPoint = "SendMessageA")]
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
@@ -54,8 +57,10 @@ namespace Analogy.Forms
         private IAnalogyUserSettings settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private bool Initialized { get; set; }
 
-        public MainForm()
+        public MainForm(FactoriesManager factoriesManager, ExtensionsManager extensionsManager)
         {
+            FactoriesManager = factoriesManager;
+            ExtensionsManager = extensionsManager;
             InitializeComponent();
             AnalogyLogManager.Instance.OnNewError += (s, e) => btnErrors.Visibility = BarItemVisibility.Always;
             // Handling the QueryControl event that will populate all automatically generated Documents
@@ -116,7 +121,7 @@ namespace Analogy.Forms
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();
-                FactoriesManager.Instance.ShutDownAllFactories();
+                FactoriesManager.ShutDownAllFactories();
             }
         }
 
@@ -183,7 +188,7 @@ namespace Analogy.Forms
             Text = $"Analogy Log Viewer {UpdateManager.Instance.CurrentVersion} ({framework})";
             Icon = settings.GetIcon();
             notifyIconAnalogy.Visible = preventExit = settings.MinimizedToTrayBar;
-            await FactoriesManager.Instance.InitializeBuiltInFactories();
+            await FactoriesManager.InitializeBuiltInFactories();
             string[] arguments = Environment.GetCommandLineArgs();
             disableOnlineDueToFileOpen = arguments.Length == 2;
             SetupEventHandlers();
@@ -201,19 +206,19 @@ namespace Analogy.Forms
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            FactoryContainer analogy = FactoriesManager.Instance.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
+            FactoryContainer analogy = FactoriesManager.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
             if (analogy.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
             {
                 CreateDataSource(analogy, 0);
             }
-            await FactoriesManager.Instance.AddExternalDataSources();
+            await FactoriesManager.AddExternalDataSources();
             PopulateGlobalTools();
             LoadStartupExtensions();
             RegisterForOnDemandPlots();
 
             //Create all other DataSources
-            foreach (FactoryContainer fc in FactoriesManager.Instance.Factories
-                .Where(factory => !FactoriesManager.Instance.IsBuiltInFactory(factory.Factory) &&
+            foreach (FactoryContainer fc in FactoriesManager.Factories
+                .Where(factory => !FactoriesManager.IsBuiltInFactory(factory.Factory) &&
                                   factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
                                   //&& (factory.DataProvidersFactories.Any(d => d.DataProviders.Any()
                                   //|| factory.UserControlsFactories.Any()))
@@ -329,8 +334,8 @@ namespace Analogy.Forms
 
         private void PopulateGlobalTools()
         {
-            var allFactories = FactoriesManager.Instance.Factories.ToList();
-            allFactories.AddRange(FactoriesManager.Instance.BuiltInFactories);
+            var allFactories = FactoriesManager.Factories.ToList();
+            allFactories.AddRange(FactoriesManager.BuiltInFactories);
             foreach (FactoryContainer fc in allFactories
                 .Where(factory => factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
                                   && factory.CustomActionsFactories.Any()))
@@ -437,92 +442,92 @@ namespace Analogy.Forms
 
             btnSettingsUpdate.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
 
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             btnSettingsDebugging.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             btnShortcuts.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             bbiDonation.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiAdvancedMode.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnApplicationSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnApplicationUISettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnFiltering.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnMessageColumnsLayoutSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnColorsSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnColorHighlightSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnPreDefinedQueries.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnDataProvidersSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiRealTimeProviders.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiFileAssociations.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiAdditionalLocations.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings, settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             #endregion
@@ -577,7 +582,7 @@ namespace Analogy.Forms
             string? title = null)
         {
             OpenedWindows++;
-            await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
+            await FactoriesManager.InitializeIfNeeded(dataProvider);
             string fullTitle = $"{offlineTitle} #{OpenedWindows}{(title == null ? "" : $" ({title})")}";
             UserControl offlineUC = new LocalLogFilesUC(dataProvider, filenames, title: fullTitle);
             var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -592,11 +597,10 @@ namespace Analogy.Forms
         {
             if (settings.StartupExtensions.Any())
             {
-                var manager = ExtensionsManager.Instance;
-                var extensions = manager.GetExtensions().ToList();
+                var extensions = ExtensionsManager.GetExtensions().ToList();
                 foreach (Guid guid in settings.StartupExtensions)
                 {
-                    manager.RegisterExtension(extensions.SingleOrDefault(m => m.Id == guid));
+                    ExtensionsManager.RegisterExtension(extensions.SingleOrDefault(m => m.Id == guid));
                 }
 
             }
@@ -608,7 +612,7 @@ namespace Analogy.Forms
                 await Task.Delay(250);
             }
 
-            var supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).ToList();
+            var supported = FactoriesManager.GetSupportedOfflineDataSources(files).ToList();
             if (supported.Count == 1)
             {
                 var parser = supported.First();
@@ -630,8 +634,8 @@ namespace Analogy.Forms
                 }
                 else
                 {
-                    supported = FactoriesManager.Instance.GetSupportedOfflineDataSources(files).Where(itm =>
-                        !FactoriesManager.Instance.IsBuiltInFactory(itm.FactoryID)).ToList();
+                    supported = FactoriesManager.GetSupportedOfflineDataSources(files).Where(itm =>
+                        !FactoriesManager.IsBuiltInFactory(itm.FactoryID)).ToList();
                 }
 
                 if (supported.Count == 1)
@@ -647,8 +651,7 @@ namespace Analogy.Forms
                     if (supportedAssociation.Count == 1)
                     {
                         var factory = supportedAssociation.First();
-                        var parser = FactoriesManager.Instance
-                            .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryId, files).ToList();
+                        var parser = FactoriesManager.GetSupportedOfflineDataSourcesFromFactory(factory.FactoryId, files).ToList();
                         RibbonPage page = (Mapping.ContainsKey(factory.FactoryId))
                             ? Mapping[factory.FactoryId]
                             : null;
@@ -749,7 +752,7 @@ namespace Analogy.Forms
 
         private void bbtnItemSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ApplicationSettingsForm user = new ApplicationSettingsForm();
+            ApplicationSettingsForm user = new ApplicationSettingsForm(settings, FactoriesManager);
             user.ShowDialog(this);
         }
 
@@ -797,7 +800,7 @@ namespace Analogy.Forms
             RibbonPage ribbonPage = new RibbonPage(fc.Factory.Title);
             ribbonControlMain.Pages.Insert(position, ribbonPage);
             Mapping.Add(fc.Factory.FactoryId, ribbonPage);
-            var ribbonPageImage = FactoriesManager.Instance.GetSmallImage(fc.Factory.FactoryId);
+            var ribbonPageImage = FactoriesManager.GetSmallImage(fc.Factory.FactoryId);
             if (ribbonPageImage != null)
             {
                 ribbonPage.ImageOptions.Image = ribbonPageImage;
@@ -885,7 +888,7 @@ namespace Analogy.Forms
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
                 settingsBtn.ImageOptions.LargeImage = providerSetting.LargeImage ?? Resources.Technology_32x32;
                 XtraForm form = new DataProviderSettingsForm();
-                //var imageSmall = FactoriesManager.Instance.GetSmallImage(providerSetting.Id);
+                //var imageSmall = FactoriesManager.GetSmallImage(providerSetting.Id);
                 //if (imageSmall != null)
                 //    form.Icon = imageSmall;
                 form.Text = "Data Provider Settings: " + providerSetting.Title;
@@ -1105,7 +1108,7 @@ namespace Analogy.Forms
                     bool canStartReceiving = false;
                     try
                     {
-                        await FactoriesManager.Instance.InitializeIfNeeded(realTime);
+                        await FactoriesManager.InitializeIfNeeded(realTime);
                         canStartReceiving = await realTime.CanStartReceiving();
                     }
                     catch (Exception e)
@@ -1253,7 +1256,7 @@ namespace Analogy.Forms
                         bool canStartReceiving = false;
                         try
                         {
-                            await FactoriesManager.Instance.InitializeIfNeeded(realTime);
+                            await FactoriesManager.InitializeIfNeeded(realTime);
                             canStartReceiving = await realTime.CanStartReceiving();
                         }
                         catch (Exception e)
@@ -1361,8 +1364,8 @@ namespace Analogy.Forms
             {
                 BarButtonItem singleBtn = new BarButtonItem();
                 group.ItemLinks.Add(singleBtn);
-                var imageLarge = FactoriesManager.Instance.GetLargeImage(single.Id);
-                var imageSmall = FactoriesManager.Instance.GetSmallImage(single.Id);
+                var imageLarge = FactoriesManager.GetLargeImage(single.Id);
+                var imageSmall = FactoriesManager.GetSmallImage(single.Id);
 
                 singleBtn.ImageOptions.LargeImage = imageLarge ?? Resources.Single32x32;
                 singleBtn.ImageOptions.Image = imageSmall ?? Resources.Single16x16;
@@ -1385,7 +1388,7 @@ namespace Analogy.Forms
                 singleBtn.ItemClick += async (sender, e) =>
                 {
                     OpenedWindows++;
-                    await FactoriesManager.Instance.InitializeIfNeeded(single);
+                    await FactoriesManager.InitializeIfNeeded(single);
                     CancellationTokenSource cts = new CancellationTokenSource();
                     LocalLogFilesUC offlineUC = new LocalLogFilesUC(single, cts);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1450,7 +1453,7 @@ namespace Analogy.Forms
 
             Guid factoryId = factory.FactoryId;
             string factoryTitle = factory.Title;
-            FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(factoryId);
+            FactoryContainer container = FactoriesManager.GetFactoryContainer(factoryId);
             IAnalogyImages? images = container?.Images?.FirstOrDefault();
 
 
@@ -1460,7 +1463,7 @@ namespace Analogy.Forms
                 string[] files = null)
             {
                 OpenedWindows++;
-                await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
+                await FactoriesManager.InitializeIfNeeded(dataProvider);
                 string fullTitle = $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
                 UserControl offlineUC = new LocalLogFilesUC(dataProvider, files, initialFolder, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1475,7 +1478,7 @@ namespace Analogy.Forms
             async Task OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
                 OpenedWindows++;
-                await FactoriesManager.Instance.InitializeIfNeeded(analogy);
+                await FactoriesManager.InitializeIfNeeded(analogy);
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1491,7 +1494,7 @@ namespace Analogy.Forms
             {
 
                 OpenedWindows++;
-                await FactoriesManager.Instance.InitializeIfNeeded(dataProvider);
+                await FactoriesManager.InitializeIfNeeded(dataProvider);
                 UserControl filepoolingUC = new FilePoolingUCLogs(dataProvider, file, initialFile, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1824,7 +1827,7 @@ namespace Analogy.Forms
             async Task OpenOffline(string titleOfDataSource, string initialFolder, string[] files = null)
             {
                 OpenedWindows++;
-                await FactoriesManager.Instance.InitializeIfNeeded(offlineAnalogy);
+                await FactoriesManager.InitializeIfNeeded(offlineAnalogy);
                 string fullTitle = $"{offlineTitle} #{OpenedWindows} ({titleOfDataSource})";
                 UserControl offlineUC = new LocalLogFilesUC(offlineAnalogy, files, initialFolder, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
@@ -1839,7 +1842,7 @@ namespace Analogy.Forms
             async Task OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
             {
                 OpenedWindows++;
-                await FactoriesManager.Instance.InitializeIfNeeded(analogy);
+                await FactoriesManager.InitializeIfNeeded(analogy);
                 var ClientServerUCLog = new ClientServerUCLog(analogy);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
@@ -1888,7 +1891,7 @@ namespace Analogy.Forms
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }
             #endregion
-            FactoryContainer container = FactoriesManager.Instance.GetFactoryContainer(offlineAnalogy.Id);
+            FactoryContainer container = FactoriesManager.GetFactoryContainer(offlineAnalogy.Id);
             IAnalogyImages? images = container?.Images?.FirstOrDefault();
 
             var preDefinedFolderExist = !string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
@@ -2100,7 +2103,7 @@ namespace Analogy.Forms
                 bool canStartReceiving = false;
                 try
                 {
-                    await FactoriesManager.Instance.InitializeIfNeeded(realTime);
+                    await FactoriesManager.InitializeIfNeeded(realTime);
                     canStartReceiving = await realTime.CanStartReceiving();
                 }
                 catch (Exception e)

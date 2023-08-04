@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Plotting
 {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
@@ -13,7 +14,7 @@ namespace Analogy.UserControls
 {
     public partial class DataProviderUC : XtraUserControl, IUserControlWithUCLogs
     {
-        private IExtensionsManager ExtensionManager { get; set; } = ExtensionsManager.Instance;
+        private IExtensionsManager ExtensionManager { get; set; } = ServicesProvider.Instance.GetService<ExtensionsManager>();
         public DataProviderUC()
         {
             InitializeComponent();
