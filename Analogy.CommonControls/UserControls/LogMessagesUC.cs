@@ -42,6 +42,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraPrinting;
 using Markdig;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -88,8 +89,8 @@ namespace Analogy.CommonControls.UserControls
         private JsonColumnChooserUC JsonColumnChooser { get; set; }
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
-        public bool ForceNoFileCaching { get; set; } = false;
-        public bool DoNotAddToRecentHistory { get; set; } = false;
+        public bool ForceNoFileCaching { get; set; }
+        public bool DoNotAddToRecentHistory { get; set; }
         private PagingManager PagingManager { get; set; }
         private FileProcessor FileProcessor { get; set; }
         public ManualResetEvent columnAdderSync = new ManualResetEvent(false);
@@ -120,7 +121,7 @@ namespace Analogy.CommonControls.UserControls
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
-        private IAnalogyLogger Logger { get; set; }
+        private ILogger Logger { get; set; }
         private List<XtraFormLogGrid> ExternalWindows
         {
             get
@@ -202,7 +203,7 @@ namespace Analogy.CommonControls.UserControls
         {
 
         }
-        public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, IAnalogyLogger logger)
+        public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger)
         {
             Logger = logger;
             Id = Guid.NewGuid();
@@ -326,7 +327,7 @@ namespace Analogy.CommonControls.UserControls
                 }
                 catch (Exception exception)
                 {
-                    Logger?.LogException($"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}", exception);
+                    Logger?.LogError(exception, $"Error setting raw sql handler for {rawSqlInteractor.GetType()}: {exception.Message}", exception);
                 }
             }
             wsLogs.CaptureWorkspace("Default");
@@ -412,7 +413,7 @@ namespace Analogy.CommonControls.UserControls
             //first restore all
             foreach (GridColumn gridColumn in logGrid.Columns)
             {
-                gridColumn.Visible = true;
+                gridColumn.Visible = !gridColumn.FieldName.Equals(Common.CommonUtils.AnalogyMessageColumn);
             }
 
             if (DataProvider.HideAdditionalColumns() != null)
@@ -529,6 +530,7 @@ namespace Analogy.CommonControls.UserControls
                 }
             };
             logGrid.ShownEditor += GridView_ShownEditor;
+            logGrid.ShowingEditor += (s, e) => e.Cancel = true;// prevent editing
             gridControl.Click += (s, e) =>
             {
                 if (btsAutoScrollToBottom.Checked)
@@ -981,6 +983,7 @@ namespace Analogy.CommonControls.UserControls
                     settings.ValueAfterDelete = NumericMaskManager.ValueAfterDelete.Null;
                 });
             }
+            
         }
         private void RefreshTimeOffset()
         {
@@ -1335,6 +1338,10 @@ namespace Analogy.CommonControls.UserControls
         }
         private void LoadUISettings()
         {
+            gridColumnThread.FieldName = Common.CommonUtils.ColumnThreadId;
+            gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
+            gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
+            gridColumnRawText.FieldName = Common.CommonUtils.ColumnRawText;
             bsiProgress.Caption = string.Empty;
             bsiProgress.Visibility = Settings.ShowProcessedCounter ? BarItemVisibility.Always : BarItemVisibility.Never;
             switch (Settings.TimeOffsetType)
@@ -3037,7 +3044,7 @@ namespace Analogy.CommonControls.UserControls
             }
             catch (Exception e)
             {
-                Logger.LogException($"Error saving setting: {e.Message}", e, "Analogy");
+                Logger.LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -3321,17 +3328,17 @@ namespace Analogy.CommonControls.UserControls
                 if (useSpecificColumnForJson)
                 {
                     var specific = LogGrid.GetRowCellValue(e.FocusedRowHandle, jsonColumnForInlineJsonViewer).ToString();
-                   await JsonTreeView.ShowJson(specific);
+                    await JsonTreeView.ShowJson(specific);
 
                 }
                 else if (focusedMassage.RawTextType == AnalogyRowTextType.JSON)
                 {
-                   await JsonTreeView.ShowJson(focusedMassage.RawText);
+                    await JsonTreeView.ShowJson(focusedMassage.RawText);
                 }
             }
 
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
-            if (!LoadingInProgress)
+            if (!LoadingInProgress && !string.IsNullOrEmpty(dataProvider))
             {
                 OnFocusedRowChanged?.Invoke(this, (dataProvider, SelectedMassage));
             }
@@ -3499,6 +3506,7 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
+                //todo: fix this as dateedit
                 deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceNewerThanFilter.Checked = true;
             }
@@ -3517,7 +3525,8 @@ namespace Analogy.CommonControls.UserControls
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
-            {
+            {                
+                //todo: fix this as dateedit
                 deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceOlderThanFilter.Checked = true;
             }

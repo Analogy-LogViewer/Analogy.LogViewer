@@ -8,10 +8,10 @@ namespace Analogy.Forms
     public partial class UpdateForm : DevExpress.XtraEditors.XtraForm
     {
         private UpdateManager Updater => UpdateManager.Instance;
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
-
-        public UpdateForm()
+        private IAnalogyUserSettings Settings { get; }
+        public UpdateForm(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 
@@ -69,7 +69,7 @@ namespace Analogy.Forms
                 return;
             }
             sbtnUpdateNow.Enabled = false;
-            await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL,true);
+            await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL, true);
             sbtnUpdateNow.Enabled = true;
         }
     }

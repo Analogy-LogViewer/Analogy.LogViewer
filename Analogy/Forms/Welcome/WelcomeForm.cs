@@ -2,15 +2,19 @@
 using Analogy.DataTypes;
 using Analogy.Forms.Welcome;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Forms
 {
     public partial class WelcomeForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; }
+        private FactoriesManager FactoriesManager { get; }
 
-        public WelcomeForm()
+        public WelcomeForm(IAnalogyUserSettings settings,FactoriesManager factoriesManager)
         {
+            Settings = settings;
+            FactoriesManager = factoriesManager;
             InitializeComponent();
             EnableAcrylicAccent = false;
         }
@@ -46,13 +50,13 @@ namespace Analogy.Forms
             switch (selectionType)
             {
                 case ApplicationWelcomeSelectionType.General:
-                    return new WelcomeGeneralUC();
+                    return new WelcomeGeneralUC(Settings, FactoriesManager);
                 case ApplicationWelcomeSelectionType.Theme:
-                    return new WelcomeThemeSelectionUC();
+                    return new WelcomeThemeSelectionUC(Settings, FactoriesManager);
                 case ApplicationWelcomeSelectionType.DataProvides:
-                    return new WelcomeDataProvidersUC();
+                    return new WelcomeDataProvidersUC(Settings, FactoriesManager);
                 case ApplicationWelcomeSelectionType.Extensions:
-                    return new WelcomeExtensionsUC();
+                    return new WelcomeExtensionsUC(Settings, FactoriesManager);
                 case ApplicationWelcomeSelectionType.GlobalTools:
                     return new WelcomeGlobalToolsUC();
                 case ApplicationWelcomeSelectionType.WhatIsNew:
@@ -63,7 +67,7 @@ namespace Analogy.Forms
                     return new WelcomeFeedbackUC();
                 default:
                 {
-                    AnalogyLogger.Instance.LogError($"Selection with {selectionType} was not found");
+                    ServicesProvider.Instance.GetService<ILogger>().LogError($"Selection with {selectionType} was not found");
                     throw new Exception($"Selection with {selectionType} was not found");
                 }
             }
@@ -77,9 +81,9 @@ namespace Analogy.Forms
             }
 
             ShowIcon = true;
-            Icon = UserSettingsManager.UserSettings.GetIcon();
-            await FactoriesManager.Instance.InitializeBuiltInFactories();
-            await FactoriesManager.Instance.AddExternalDataSources();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
+            await FactoriesManager.InitializeBuiltInFactories();
+            await FactoriesManager.AddExternalDataSources();
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);
         }
       private void aceGeneral_Click(object sender, EventArgs e)

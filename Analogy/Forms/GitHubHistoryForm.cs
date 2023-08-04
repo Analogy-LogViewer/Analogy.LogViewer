@@ -2,18 +2,20 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.CommonUtilities.Github;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraBars.Navigation;
 using Markdig;
+using Microsoft.Extensions.Logging;
 using Octokit;
 
 namespace Analogy.Forms
 {
     public partial class GitHubHistoryForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         public GitHubHistoryForm()
         {
             InitializeComponent();
@@ -45,7 +47,7 @@ namespace Analogy.Forms
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error fetching history from github: {e.Message}", e);
+                ServicesProvider.Instance.GetService<ILogger>().LogError($"Error fetching history from github: {e.Message}", e);
             }
 
         }

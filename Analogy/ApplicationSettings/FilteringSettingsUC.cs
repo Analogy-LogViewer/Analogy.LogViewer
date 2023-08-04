@@ -14,10 +14,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class FilteringSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
-
-        public FilteringSettingsUC()
+        private IAnalogyUserSettings Settings { get; } 
+        public FilteringSettingsUC(IAnalogyUserSettings settings)
         {
+            this.Settings = settings;
             InitializeComponent();
         }
 

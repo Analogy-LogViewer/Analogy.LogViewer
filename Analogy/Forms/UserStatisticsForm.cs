@@ -6,10 +6,10 @@ namespace Analogy.Forms
 {
     public partial class UserStatisticsForm : XtraForm
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
-
-        public UserStatisticsForm()
+        private IAnalogyUserSettings Settings { get; }
+        public UserStatisticsForm(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 

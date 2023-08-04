@@ -5,21 +5,25 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {
     public partial class ComponentDownloadsForm : XtraForm
     {
-        public ComponentDownloadsForm()
+        private FactoriesManager FactoriesManager { get; }
+
+        public ComponentDownloadsForm(FactoriesManager factoriesManager)
         {
+            FactoriesManager = factoriesManager;
             InitializeComponent();
         }
 
         private void ComponentDownloadsForm_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             // UserControl first = null;
-            foreach (FactoryContainer factory in FactoriesManager.Instance.Factories)
+            foreach (FactoryContainer factory in FactoriesManager.Factories)
             {
                 ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(factory);
                 xtraTabPage1.Controls.Add(uc);
@@ -28,7 +32,7 @@ namespace Analogy.Forms
 
             }
 
-            var assemblies = FactoriesManager.Instance.Factories.Select(f => Path.GetFileName(f.AssemblyFullPath)).ToList();
+            var assemblies = FactoriesManager.Factories.Select(f => Path.GetFileName(f.AssemblyFullPath)).ToList();
             var supported = UpdateManager.Instance.SupportedDataProviders;
             var notInstalled = supported.Where(s => !assemblies.Contains(s.AssemblyFileName, StringComparison.InvariantCultureIgnoreCase)).ToList();
 

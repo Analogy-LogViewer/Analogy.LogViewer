@@ -23,6 +23,7 @@ using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Managers;
 using DevExpress.Utils;
+using Microsoft.Extensions.Logging;
 using Octokit;
 using FileMode = System.IO.FileMode;
 
@@ -30,7 +31,7 @@ namespace Analogy
 {
     public static class Utils
     {
-        private static IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         [DllImport("user32.dll")]
         static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
@@ -274,7 +275,7 @@ namespace Analogy
             }
             catch (Exception exception)
             {
-                AnalogyLogger.Instance.LogException($"Error: {exception.Message}", exception, "");
+                ServicesProvider.Instance.GetService<ILogger>().LogError($"Error: {exception.Message}", exception, "");
             }
         }
 
@@ -402,7 +403,7 @@ namespace Analogy
             }
             catch (Exception e)
             {
-               AnalogyLogger.Instance.LogException($"Error getting releases from Github: {e.Message}",e);
+               ServicesProvider.Instance.GetService<ILogger>().LogError($"Error getting releases from Github: {e.Message}",e);
                return new List<Release>();
             }
 

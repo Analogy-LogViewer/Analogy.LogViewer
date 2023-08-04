@@ -9,8 +9,8 @@ namespace Analogy.Tools
 
     public class FileComparerProcessor : ILogMessageCreatedHandler,ILogWindow
     {
-        public bool DoNotAddToRecentHistory { get; set; } = false;
-        public bool ForceNoFileCaching { get; set; } = false;
+        public bool DoNotAddToRecentHistory { get; set; }
+        public bool ForceNoFileCaching { get; set; }
         private List<IAnalogyLogMessage> messages;
         public string FileName { get; }
         public FileComparerProcessor(string filename)

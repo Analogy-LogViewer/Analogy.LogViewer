@@ -13,6 +13,10 @@ namespace Analogy.Common
 {
     public static class CommonUtils
     {
+        public static string ColumnThreadId => nameof(AnalogyLogMessage.ThreadId);
+        public static string ColumnProcessId => nameof(AnalogyLogMessage.ProcessId);
+        public static string ColumnModule => nameof(AnalogyLogMessage.Module);
+        public static string ColumnRawText => nameof(AnalogyLogMessage.RawText);
         public static string AnalogyMessageColumn { get; } = Guid.NewGuid().ToString();
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 

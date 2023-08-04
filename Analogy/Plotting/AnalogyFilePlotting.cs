@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Plotting
 {
@@ -66,7 +67,7 @@ namespace Analogy.Plotting
                 yield return (seriesName, AnalogyPlottingSeriesType.Line);
             }
         }
-        public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, IAnalogyLogger logger)
+        public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, ILogger logger)
         {
             return Task.CompletedTask;
         }

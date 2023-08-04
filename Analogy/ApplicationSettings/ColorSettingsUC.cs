@@ -16,10 +16,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class ColorSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
-
-        public ColorSettingsUC()
+        private IUserSettingsManager Settings { get; }
+        public ColorSettingsUC(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 
@@ -35,7 +35,7 @@ namespace Analogy.ApplicationSettings
         private void SetupEventsHandlers()
         {
             tsEnableColors.IsOnChanged += (s, e) => Settings.ColorSettings.EnableMessagesColors = tsEnableColors.IsOn;
-            ceOverrideLogLevelColor.CheckedChanged+=(s,e)=> Settings.ColorSettings.OverrideLogLevelColor = ceOverrideLogLevelColor.Checked;
+            ceOverrideLogLevelColor.CheckedChanged += (s, e) => Settings.ColorSettings.OverrideLogLevelColor = ceOverrideLogLevelColor.Checked;
 
             sBtnExportColors.Click += (s, e) =>
             {
@@ -56,7 +56,7 @@ namespace Analogy.ApplicationSettings
                     }
                     catch (Exception ex)
                     {
-                        AnalogyLogManager.Instance.LogError("Error during save to file: " + e,"");
+                        AnalogyLogManager.Instance.LogError("Error during save to file: " + e, "");
                         XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }

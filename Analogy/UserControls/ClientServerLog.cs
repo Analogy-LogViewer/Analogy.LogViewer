@@ -60,7 +60,7 @@ namespace Analogy
 
             lBoxFiles.SelectedIndexChanged -= lBoxFiles_SelectedIndexChanged;
             bool recursiveLoad = checkEditRecursiveLoad.Checked;
-            UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.Id, folder);
+            ServicesProvider.Instance.GetService<IAnalogyUserSettings>().AddToRecentFolders(DataProvider.Id, folder);
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
             var fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).OrderByDescending(f => f.LastWriteTime);
             lBoxFiles.DisplayMember = recursiveLoad ? "FullName" : "Name";

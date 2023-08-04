@@ -87,6 +87,10 @@ namespace Analogy
 
         private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
         {
+            if (data.file is null)
+            {
+                return;
+            }
             var t = treeList1.Nodes.FirstOrDefault(n => data.file.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
             if (t != null && treeList1.FocusedNode != t)
             {
@@ -133,7 +137,7 @@ namespace Analogy
             bool isRoot = Directory.GetLogicalDrives().Any(d => d.Equals(SelectedPath, StringComparison.OrdinalIgnoreCase));
             bool recursiveLoad = checkEditRecursiveLoad.Checked && !isRoot;
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
-            UserSettingsManager.UserSettings.AddToRecentFolders(DataProvider.Id, folder);
+            ServicesProvider.Instance.GetService<IAnalogyUserSettings>().AddToRecentFolders(DataProvider.Id, folder);
             List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).ToList();
             treeList1.Nodes.Clear();
             // TreeListFileNodes.Clear();

@@ -5,14 +5,16 @@ using System.Data;
 using System.IO;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
+using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {
     public partial class FilesOperationsUC : XtraUserControl, ILogMessageCreatedHandler
     {
-        public bool ForceNoFileCaching { get; set; } = false;
-        public bool DoNotAddToRecentHistory { get; set; } = false;
+        public bool ForceNoFileCaching { get; set; }
+        public bool DoNotAddToRecentHistory { get; set; }
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private int refreshDelay = 100;
         private DateTime LastReportUpdate = DateTime.Now;
@@ -101,7 +103,7 @@ namespace Analogy
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),this,ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));
@@ -138,7 +140,7 @@ namespace Analogy
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(UserSettingsManager.UserSettings,this,AnalogyLogger.Instance);
+                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),this,ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));

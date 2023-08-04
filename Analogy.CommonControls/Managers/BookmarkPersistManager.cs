@@ -10,6 +10,7 @@ using Analogy.CommonControls.LogLoaders;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.Managers
 {
@@ -24,9 +25,9 @@ namespace Analogy.CommonControls.Managers
         private bool fileLoaded;
         private List<IAnalogyLogMessage> Messages { get; set; }
         private string BookmarkFileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
-        public bool ForceNoFileCaching { get; set; } = false;
-        public bool DoNotAddToRecentHistory { get; set; } = false;
-        private IAnalogyLogger Logger { get; set; }
+        public bool ForceNoFileCaching { get; set; }
+        public bool DoNotAddToRecentHistory { get; set; }
+        private ILogger Logger { get; set; }
         public BookmarkPersistManager()
         {
             Messages = new List<IAnalogyLogMessage>();
@@ -48,7 +49,7 @@ namespace Analogy.CommonControls.Managers
             AnalogyLogMessage message = (AnalogyLogMessage)dtr[Common.CommonUtils.AnalogyMessageColumn];
             AppendMessage(message, dataSource);
         }
-        public void SetLogger(IAnalogyLogger logger) => Logger = logger;
+        public void SetLogger(ILogger logger) => Logger = logger;
         public async Task<List<IAnalogyLogMessage>> GetMessages()
         {
             if (fileLoaded || !File.Exists(BookmarkFileName))

@@ -13,7 +13,7 @@ namespace Analogy.DataTypes
         private ReaderWriterLockSlim sync;
         private float RefreshIntervalSeconds { get; set; }
         private Timer RefreshDataTimer;
-        private int lastRawDataIndex = 0;
+        private int lastRawDataIndex;
         public PlottingGraphData(float refreshIntervalSeconds, int dataWindow)
         {
             DataWindow = dataWindow;

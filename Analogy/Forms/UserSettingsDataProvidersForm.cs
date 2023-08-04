@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;
@@ -10,6 +11,7 @@ namespace Analogy.Forms
 
     public partial class UserSettingsDataProvidersForm : XtraForm
     {
+        private FactoriesManager FactoriesManager { get; }
         private struct RealTimeCheckItem
         {
             public string Name;
@@ -26,18 +28,18 @@ namespace Analogy.Forms
 
         private readonly int _initialSelection = -1;
 
-        public UserSettingsDataProvidersForm()
+        public UserSettingsDataProvidersForm(FactoriesManager factoriesManager)
         {
+            FactoriesManager = factoriesManager;
             InitializeComponent();
-
         }
 
-        public UserSettingsDataProvidersForm(int tabIndex) : this()
+        public UserSettingsDataProvidersForm(int tabIndex, FactoriesManager factoriesManager) : this(factoriesManager)
         {
             _initialSelection = tabIndex;
         }
 
-        public UserSettingsDataProvidersForm(string tabName) : this()
+        public UserSettingsDataProvidersForm(string tabName, FactoriesManager factoriesManager) : this(factoriesManager)
         {
             var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
             if (tab != null)
@@ -54,7 +56,7 @@ namespace Analogy.Forms
 
         private void AddExternalUserControlSettings()
         {
-            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.Instance.GetProvidersSettings())
+            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.GetProvidersSettings())
             {
                 XtraTabPage tab = new XtraTabPage();
                 tab.Text = settings.Title;
@@ -69,7 +71,7 @@ namespace Analogy.Forms
 
         private void UserSettingsForm_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             LoadSettings();
 
             if (_initialSelection >= 0)
@@ -85,7 +87,7 @@ namespace Analogy.Forms
 
         public async void SaveSetting()
         {
-            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.Instance.GetProvidersSettings())
+            foreach (IAnalogyDataProviderSettings settings in FactoriesManager.GetProvidersSettings())
             {
                 try
                 {

@@ -1,8 +1,10 @@
-﻿using Analogy.DataTypes;
+﻿#pragma warning disable CA1854
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {
@@ -37,7 +39,7 @@ namespace Analogy.Managers
         public void Register(IAnalogyOnDemandPlotting plotter)
         {
             plotter.OnNewPointsData += Plotter_OnNewPointsData;
-            plotter.InitializeOnDemandPlotting(Interactor, AnalogyLogger.Instance);
+            plotter.InitializeOnDemandPlotting(Interactor, ServicesProvider.Instance.GetService<ILogger>());
             Plotters.Add(plotter);
         }
 
@@ -140,9 +142,9 @@ namespace Analogy.Managers
 
         public List<AnalogyPlottingPointData> GetData(Guid id)
         {
-            if (Data.ContainsKey(id))
+            if (Data.TryGetValue(id, out List<AnalogyPlottingPointData>? data))
             {
-                return Data[id];
+                return data;
             }
 
             return new List<AnalogyPlottingPointData>();
@@ -150,3 +152,4 @@ namespace Analogy.Managers
 
     }
 }
+#pragma warning restore CA1854

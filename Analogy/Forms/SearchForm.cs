@@ -1,4 +1,5 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
@@ -20,7 +21,7 @@ namespace Analogy.Forms
 
         private void SearchForm_Load(object sender, System.EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
     }
 }

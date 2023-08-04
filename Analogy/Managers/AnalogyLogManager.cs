@@ -7,14 +7,15 @@ using System.Windows.Forms;
 using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
 using Analogy.DataProviders;
+using Analogy.DataTypes;
 using Analogy.Forms;
 using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {
-    public class AnalogyLogManager : IAnalogyLogger
+    public class AnalogyLogManager : ILogger
     {
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         public event EventHandler<(AnalogyLogMessage msg, string source)> OnNewMessage;
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
@@ -175,7 +176,8 @@ namespace Analogy.Managers
         public void Show(Form mainForm)
         {
             var builtin = new AnalogyOfflineDataProvider();
-            XtraFormLogGrid msg = new XtraFormLogGrid(Settings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance, messages, "Analogy", builtin, builtin);
+            XtraFormLogGrid msg = new XtraFormLogGrid(Settings, ServicesProvider.Instance.GetService<ExtensionsManager>(),
+                ServicesProvider.Instance.GetService<FactoriesManager>(), ServicesProvider.Instance.GetService<ILogger>(), messages, "Analogy", builtin, builtin);
             msg.Show(mainForm);
         }
 

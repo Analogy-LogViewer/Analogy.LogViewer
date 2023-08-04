@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
+using Analogy.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {
@@ -28,7 +30,7 @@ namespace Analogy.Managers
                     object? updateRegistryValue = key?.GetValue("DisableUpdates");
                     if (updateRegistryValue != null && bool.TryParse(updateRegistryValue.ToString(), out var disable))
                     {
-                        AnalogyLogger.Instance.LogInformation($"Disable mode: {disable}");
+                        ServicesProvider.Instance.GetService<ILogger>().LogInformation($"Disable mode: {disable}");
                         DisableUpdateFromRegistry = disable;
                     }
                 }

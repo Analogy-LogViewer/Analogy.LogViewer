@@ -8,22 +8,25 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
 using Analogy.CommonControls.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {
     public class ExternalDataProviders
     {
-        private IAnalogyUserSettings Settings => UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         private static readonly AsyncLazy<ExternalDataProviders> _instance =
-            new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders());
+            new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders(
+                ServicesProvider.Instance.GetService<FactoriesManager>()));
 
         public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
         public List<FactoryContainer> Factories { get; private set; }
         public List<(Guid id, IAnalogyImages images)> DataProvidersImages { get; set; }
-
-        private ExternalDataProviders()
+        private FactoriesManager FactoriesManager { get; set; }
+        private ExternalDataProviders(FactoriesManager factoriesManager)
         {
+            FactoriesManager = factoriesManager;
             DataProvidersImages = new List<(Guid id, IAnalogyImages images)>();
             Factories = new List<FactoryContainer>();
             #region load assemblies
@@ -43,7 +46,7 @@ namespace Analogy.Managers
                     }
                     catch (Exception e)
                     {
-                        AnalogyLogger.Instance.LogException($"Error probing folder {folder}. Error: {e.Message}", e,
+                        ServicesProvider.Instance.GetService<ILogger>().LogError($"Error probing folder {folder}. Error: {e.Message}", e,
                             nameof(ExternalDataProviders));
                     }
                 }
@@ -63,9 +66,9 @@ namespace Analogy.Managers
                     string fileName = Path.GetFullPath(aFile);
                     string path = Path.GetDirectoryName(aFile);
                     Assembly assembly = Assembly.LoadFrom(fileName);
-                    if (!FactoriesManager.Instance.ProbingPaths.Contains(path))
+                    if (!FactoriesManager.ProbingPaths.Contains(path))
                     {
-                        FactoriesManager.Instance.ProbingPaths.Add(path);
+                        FactoriesManager.ProbingPaths.Add(path);
                     }
 
                     var types = assembly.GetTypes().Where(t => !t.IsAbstract).ToList();
@@ -271,7 +274,7 @@ namespace Analogy.Managers
                         var policy = (Activator.CreateInstance(policyType) as IAnalogyPolicyEnforcer)!;
                         if (policy.DisableUpdates)
                         {
-                            AnalogyLogger.Instance.LogWarning($"disable Update by: {policyType.FullName}");
+                            ServicesProvider.Instance.GetService<ILogger>().LogWarning($"disable Update by: {policyType.FullName}");
                             AnalogyNonPersistSettings.Instance.DisableUpdatesByDataProvidersOverrides = true;
                         }
                     }

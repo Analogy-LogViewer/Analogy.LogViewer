@@ -9,6 +9,9 @@ using System.Net.Cache;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Updater
 {
@@ -37,7 +40,7 @@ namespace Analogy.Updater
             _currentFrameworkAttribute = currentFrameworkAttribute;
             _taskCompletionSource = taskCompletionSource;
             _tempFile = Path.Combine(Path.GetTempPath(), "Analogy.Updater.zip");
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
 
         }
 
@@ -145,7 +148,7 @@ namespace Analogy.Updater
                         }
                         catch (Exception e)
                         {
-                            AnalogyLogger.Instance.LogException($"Error unpacking Updater: {e.Message}", e);
+                            ServicesProvider.Instance.GetService<ILogger>().LogError($"Error unpacking Updater: {e.Message}", e);
                         }
 
                     }

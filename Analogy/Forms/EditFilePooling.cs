@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {
@@ -7,7 +9,7 @@ namespace Analogy.Forms
         public EditFilePooling(string fileName)
         {
             InitializeComponent();
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             Dir = Path.GetDirectoryName(fileName) ?? string.Empty;
             txtFilename.Text = Path.GetFileName(fileName);
         }

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Forms;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Forms
 {
@@ -18,8 +21,10 @@ namespace Analogy.Forms
             }
         }
         private List<(string Text, ILogWindow window)> Logs { get; }
-        private IUserSettingsManager settings => UserSettingsManager.UserSettings;
-        public OpenWindows()
+        private IUserSettingsManager settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
+       private ExtensionsManager ExtensionsManager => ServicesProvider.Instance.GetService<ExtensionsManager>();
+       private FactoriesManager FactoriesManager => ServicesProvider.Instance.GetService<FactoriesManager>();
+       public OpenWindows()
         {
             InitializeComponent();
         }
@@ -37,7 +42,7 @@ namespace Analogy.Forms
 
         private void btnCombineSelected_Click(object sender, EventArgs e)
         {
-            XtraFormLogGrid msg = new XtraFormLogGrid(settings, ExtensionsManager.Instance, FactoriesManager.Instance, AnalogyLogger.Instance);
+            XtraFormLogGrid msg = new XtraFormLogGrid(settings, ExtensionsManager, FactoriesManager, ServicesProvider.Instance.GetService<ILogger>());
 
             foreach (CheckedListBoxItem item in chklistLogs.CheckedItems)
             {

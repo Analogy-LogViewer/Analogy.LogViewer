@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.Forms
 {
@@ -16,7 +17,7 @@ namespace Analogy.CommonControls.Forms
         {
             InitializeComponent();
         }
-        public DataVisualizerForm(IUserSettingsManager settingsManager, Func<List<IAnalogyLogMessage>> messages, IAnalogyLogger analogyLogger) : this()
+        public DataVisualizerForm(IUserSettingsManager settingsManager, Func<List<IAnalogyLogMessage>> messages, ILogger analogyLogger) : this()
         {
             _settingsManager = settingsManager;
             dataVisualizerUC = new DataVisualizerUC(_settingsManager, messages, analogyLogger);

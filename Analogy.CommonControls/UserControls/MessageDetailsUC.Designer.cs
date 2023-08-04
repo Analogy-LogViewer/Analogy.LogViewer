@@ -244,7 +244,7 @@
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(170, 22);
             this.lblLevel.TabIndex = 48;
-            this.lblLevel.Text = "Source:";
+            this.lblLevel.Text = "Log Level:";
             // 
             // lblMethod
             // 

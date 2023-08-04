@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {
     public class ExtensionsManager : IExtensionsManager
     {
-        private static readonly Lazy<ExtensionsManager> instance = new Lazy<ExtensionsManager>(() => new ExtensionsManager());
-        public static ExtensionsManager Instance => instance.Value;
-        private IAnalogyLogger Log { get; } = AnalogyLogger.Instance;
+        private FactoriesManager FactoriesManager { get; }
+        private ILogger Logger { get; }
         private List<IAnalogyExtension> LoadedExtensions { get; } = new List<IAnalogyExtension>();
         private readonly List<IAnalogyExtension> registeredExtensions = new List<IAnalogyExtension>();
         public bool HasAny => RegisteredExtensions.Any();
@@ -27,9 +27,10 @@ namespace Analogy
         private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();
 
-        private ExtensionsManager()
+        public ExtensionsManager(FactoriesManager factoriesManager, ILogger logger)
         {
-
+            FactoriesManager = factoriesManager;
+            Logger = logger;
         }
         public int GetIndexForExtension(IAnalogyExtension extension)
             => extensionsDataColumns.Single(e => e.Item1 == extension).Item3;
@@ -54,7 +55,7 @@ namespace Analogy
             }
         }
 
-        public IEnumerable<IAnalogyExtension> GetExtensions() => FactoriesManager.Instance.GetAllExtensions();
+        public IEnumerable<IAnalogyExtension> GetExtensions() => FactoriesManager.GetAllExtensions();
 
     }
 }

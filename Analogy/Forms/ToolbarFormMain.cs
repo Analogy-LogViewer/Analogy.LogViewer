@@ -1,4 +1,7 @@
-﻿namespace Analogy.Forms
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
+
+namespace Analogy.Forms
 {
     public partial class ToolbarFormMain : DevExpress.XtraEditors.XtraForm
     {
@@ -9,7 +12,7 @@
 
         private void ToolbarFormMain_Load(object sender, System.EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
     }
 }

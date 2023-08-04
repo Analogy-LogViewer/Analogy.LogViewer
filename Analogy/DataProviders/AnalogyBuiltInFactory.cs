@@ -11,6 +11,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using Analogy.CommonControls.Tools;
+using Analogy.DataTypes;
 using Analogy.UserControls;
 
 namespace Analogy.DataProviders
@@ -26,6 +27,10 @@ namespace Analogy.DataProviders
         public override IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
         public override string About { get; set; } = "Analogy Built-in Data Source";
 
+        public AnalogyBuiltInFactory()
+        {
+            
+        }
     }
 
     public sealed class AnalogyOfflineDataProviderFactory : DataProvidersFactory
@@ -178,7 +183,7 @@ namespace Analogy.DataProviders
 
     public class AnalogyJsonViewerAction : IAnalogyCustomAction
     {
-        public Action Action => () => new JsonViewerForm(UserSettingsManager.UserSettings).Show();
+        public Action Action => () => new JsonViewerForm(ServicesProvider.Instance.GetService<IAnalogyUserSettings>()).Show();
         public Guid Id { get; set; } = new Guid("330b8471-c763-4579-a7e5-9efed71a56a5");
         public Image? SmallImage { get; set; } = Resources.json16x16;
         public Image? LargeImage { get; set; } = Resources.json32x32;

@@ -8,6 +8,7 @@ using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Plotting;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -37,7 +38,7 @@ namespace Analogy.CommonControls.UserControls
             return _series;
         }
 
-        public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, IAnalogyLogger logger)
+        public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, ILogger logger)
         {
             return Task.CompletedTask;
             ;
@@ -86,7 +87,7 @@ namespace Analogy.CommonControls.UserControls
         public event EventHandler<AnalogyPlottingPointData>? OnNewPointData;
         public event EventHandler<List<AnalogyPlottingPointData>>? OnNewPointsData;
 
-        public void Init(Func<List<IAnalogyLogMessage>> messagesFunc, IAnalogyLogger analogyLogger)
+        public void Init(Func<List<IAnalogyLogMessage>> messagesFunc, ILogger analogyLogger)
         {
             InitializePlotting(_interactor, analogyLogger);
             _messages = messagesFunc;

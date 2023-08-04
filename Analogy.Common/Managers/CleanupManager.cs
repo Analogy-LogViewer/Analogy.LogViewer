@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 using Exception = System.Exception;
 
 namespace Analogy.Common.Managers
@@ -26,7 +27,7 @@ namespace Analogy.Common.Managers
             }
         }
 
-        public void Clean(IAnalogyLogger logger)
+        public void Clean(ILogger logger)
         {
             foreach (string path in FoldersToClean)
             {
@@ -39,7 +40,7 @@ namespace Analogy.Common.Managers
                     }
                     catch (Exception e)
                     {
-                        logger.LogException($"Error delete folder: {e.Message}",e, "Cleanup");
+                        logger.LogError(e, $"Error delete folder: {e.Message}", e, "Cleanup");
                     }
                 }
             }

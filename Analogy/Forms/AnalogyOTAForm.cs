@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 using MessagePack;
@@ -23,7 +24,7 @@ namespace Analogy.Forms
             InitializeComponent();
         }
 
-        public AnalogyOTAForm(DataTable data) : this()
+        public AnalogyOTAForm(DataTable data, FactoriesManager factoriesManager) : this()
         {
             List<ComboboxItem> items = new List<ComboboxItem>();
             foreach (DataRow dataRow in data.Rows)
@@ -31,7 +32,7 @@ namespace Analogy.Forms
                 messages.Add(dataRow[Common.CommonUtils.AnalogyMessageColumn] as AnalogyLogMessage);
             }
 
-            foreach (var fc in FactoriesManager.Instance.Factories)
+            foreach (var fc in factoriesManager.Factories)
             {
                 foreach (var sf in fc.ShareableFactories)
                 {
@@ -48,7 +49,7 @@ namespace Analogy.Forms
 
         private void AnalogyOTAForm_Load(object sender, EventArgs e)
         {
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
         }
 
         private async void AnalogyOTAForm_FormClosing(object sender, FormClosingEventArgs e)

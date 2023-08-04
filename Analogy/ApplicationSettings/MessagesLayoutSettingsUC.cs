@@ -7,20 +7,23 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class MessagesLayoutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IUserSettingsManager Settings { get; } 
         private DataTable messageData;
-        public MessagesLayoutSettingsUC()
+        public MessagesLayoutSettingsUC(IAnalogyUserSettings settings)
         {
+            this.Settings = settings;
             InitializeComponent();
             messageData = Analogy.CommonControls.Utils.DataTableConstructor();
         }
@@ -41,6 +44,10 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
+            gridColumnThread.FieldName = Common.CommonUtils.ColumnThreadId;
+            gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
+            gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
+
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             teDateTimeFormat.Text = Settings.DateTimePattern;
@@ -125,7 +132,7 @@ namespace Analogy.ApplicationSettings
             }
             catch (Exception e)
             {
-                AnalogyLogger.Instance.LogException($"Error saving setting: {e.Message}", e, "Analogy");
+                ServicesProvider.Instance.GetService<ILogger>().LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

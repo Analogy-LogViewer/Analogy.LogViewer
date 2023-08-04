@@ -15,10 +15,13 @@ namespace Analogy.ApplicationSettings
 {
     public partial class DataProvidersSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; }
+        private FactoriesManager FactoriesManager { get; }
 
-        public DataProvidersSettingsUC()
+        public DataProvidersSettingsUC(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
         {
+            this.Settings = settings;
+            FactoriesManager = factoriesManager;
             InitializeComponent();
         }
 
@@ -39,18 +42,18 @@ namespace Analogy.ApplicationSettings
                     continue;
                 }
 
-                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
+                var factoryContainer = FactoriesManager.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Not found";
-                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                var image = FactoriesManager.GetLargeImage(factory.FactoryId);
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
             foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {
-                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
+                var factoryContainer = FactoriesManager.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
-                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                var image = FactoriesManager.GetLargeImage(factory.FactoryId);
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }

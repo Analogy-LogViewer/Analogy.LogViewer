@@ -2,9 +2,11 @@
 using System.IO;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers;
 
@@ -15,7 +17,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     private readonly UCLogs _logUI;
     private readonly List<IAnalogyLogMessage> _messages;
     //Instantiate a Singleton of the Semaphore with a value of 1. This means that only 1 thread can be granted access at a time.
-    private readonly SemaphoreSlim _watcherSemaphore = new(1,1);
+    private readonly SemaphoreSlim _watcherSemaphore = new(1, 1);
 
     private readonly object _sync;
     private DateTime _lastRead;
@@ -23,10 +25,11 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     private bool _readingInprogress;
     private FileSystemWatcher _watchFile;
     public EventHandler<(List<IAnalogyLogMessage> messages, string dataSource)> OnNewMessages;
-
-    public FilePoolingManager(string filter, string initialFilename, UCLogs logUI, IAnalogyOfflineDataProvider offlineDataProvider)
+    private IAnalogyUserSettings Settings { get; }
+    public FilePoolingManager(IAnalogyUserSettings settings, string filter, string initialFilename, UCLogs logUI, IAnalogyOfflineDataProvider offlineDataProvider)
     {
         _sync = new object();
+        Settings = settings;
         _logUI = logUI;
         _customEqualityComparer = new AnalogyLogMessageCustomEqualityComparer { CompareId = false };
         _cancellationTokenSource = new CancellationTokenSource();
@@ -34,13 +37,9 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         _messages = new List<IAnalogyLogMessage>();
         FileName = initialFilename;
         FileFilter = filter;
-        FileProcessor = new FileProcessor(Settings, this, AnalogyLogger.Instance);
+        FileProcessor = new FileProcessor(Settings, this, ServicesProvider.Instance.GetService<ILogger>());
     }
 
-    private IAnalogyUserSettings Settings
-    {
-        get { return UserSettingsManager.UserSettings; }
-    }
 
     private string FileName { get; }
     private FileProcessor FileProcessor { get; }
@@ -86,10 +85,10 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     {
         HasFileFilter = !FileFilter.Equals(FileName);
         _watchFile = new FileSystemWatcher
-                     {
-                         Path = Path.GetDirectoryName(FileName),
-                         Filter = Path.GetFileName(FileFilter)
-                     };
+        {
+            Path = Path.GetDirectoryName(FileName),
+            Filter = Path.GetFileName(FileFilter)
+        };
         _watchFile.Changed += WatchFile_Changed;
         if (!HasFileFilter)
         {
@@ -99,14 +98,14 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         _watchFile.Error += WatchFile_Error;
         _watchFile.EnableRaisingEvents = true;
         AnalogyLogMessage m = new()
-                              {
-                                  Text = $"Start monitoring file {FileFilter}.",
-                                  FileName = FileFilter,
-                                  Level = AnalogyLogLevel.Analogy,
-                                  Source = "Analogy",
-                                  Class = AnalogyLogClass.General,
-                                  Date = DateTime.Now
-                              };
+        {
+            Text = $"Start monitoring file {FileFilter}.",
+            FileName = FileFilter,
+            Level = AnalogyLogLevel.Analogy,
+            Source = "Analogy",
+            Class = AnalogyLogClass.General,
+            Date = DateTime.Now
+        };
         OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         if (!HasFileFilter)
             return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
@@ -186,13 +185,13 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         {
             _watchFile.EnableRaisingEvents = false;
             AnalogyLogMessage m = new()
-                                  {
-                                      Text = $"{FileName} has been deleted. Stopping monitoring",
-                                      FileName = FileName,
-                                      Level = AnalogyLogLevel.Warning,
-                                      Class = AnalogyLogClass.General,
-                                      Date = DateTime.Now
-                                  };
+            {
+                Text = $"{FileName} has been deleted. Stopping monitoring",
+                FileName = FileName,
+                Level = AnalogyLogLevel.Warning,
+                Class = AnalogyLogClass.General,
+                Date = DateTime.Now
+            };
             _watchFile.Dispose();
             OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         }
@@ -232,13 +231,13 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
             catch (Exception exception)
             {
                 AnalogyLogMessage m = new()
-                                      {
-                                          Text = $"Error monitoring file {e.FullPath}. Reason {exception}",
-                                          FileName = FileName,
-                                          Level = AnalogyLogLevel.Warning,
-                                          Class = AnalogyLogClass.General,
-                                          Date = DateTime.Now
-                                      };
+                {
+                    Text = $"Error monitoring file {e.FullPath}. Reason {exception}",
+                    FileName = FileName,
+                    Level = AnalogyLogLevel.Warning,
+                    Class = AnalogyLogClass.General,
+                    Date = DateTime.Now
+                };
                 OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, e.FullPath));
                 AnalogyLogManager.Instance.LogErrorMessage(m);
             }

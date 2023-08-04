@@ -4,21 +4,26 @@ using DevExpress.XtraEditors;
 using System.Windows.Forms;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Forms
 {
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private IUserSettingsManager Settings { get; } = UserSettingsManager.UserSettings;
+        private IAnalogyUserSettings Settings { get; }
+        private FactoriesManager FactoriesManager { get; }
         private ApplicationSettingsSelectionType SelectedSettingType { get; }
-        public ApplicationSettingsForm()
+        public ApplicationSettingsForm(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
         {
             InitializeComponent();
+            Settings = settings;
+            FactoriesManager = factoriesManager;
             EnableAcrylicAccent = false;
             SelectedSettingType = ApplicationSettingsSelectionType.ApplicationGeneralSettings;
         }
 
-        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType) : this()
+        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IAnalogyUserSettings settings, FactoriesManager factoriesManager) : this(settings, factoriesManager)
         {
             SelectedSettingType = selectedSettingType;
         }
@@ -31,7 +36,7 @@ namespace Analogy.Forms
             }
 
             ShowIcon = true;
-            Icon = UserSettingsManager.UserSettings.GetIcon();
+            Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
             AddOrBringToFrontUserControl(SelectedSettingType);
         }
 
@@ -40,42 +45,42 @@ namespace Analogy.Forms
             switch (settingType)
             {
                 case ApplicationSettingsSelectionType.ApplicationGeneralSettings:
-                    return new ApplicationGeneralSettingsUC();
+                    return new ApplicationGeneralSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.ApplicationUISettings:
-                    return new ApplicationUISettingsUC();
+                    return new ApplicationUISettingsUC(Settings);
                 case ApplicationSettingsSelectionType.MessagesFilteringSettings:
-                    return new FilteringSettingsUC();
+                    return new FilteringSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.MessagesLayoutSettings:
-                    return new MessagesLayoutSettingsUC();
+                    return new MessagesLayoutSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.ColorSettings:
-                    return new ColorSettingsUC();
+                    return new ColorSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.ColorHighlighting:
-                    return new ColorHighlightSettingsUC();
+                    return new ColorHighlightSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.PredefinedQueriesSettings:
-                    return new PredefinedFiltersUC();
+                    return new PredefinedFiltersUC(Settings);
                 case ApplicationSettingsSelectionType.ShortcutsSettings:
                     return new ShortcutSettingsUC();
                 case ApplicationSettingsSelectionType.ExtensionsSettings:
-                    return new ExtensionSettingsUC();
+                    return new ExtensionSettingsUC(Settings, FactoriesManager);
                 case ApplicationSettingsSelectionType.UpdatesSettings:
                     return new UpdateSettingsUC();
                 case ApplicationSettingsSelectionType.DebuggingSettings:
-                    return new DebuggingSettingsUC();
+                    return new DebuggingSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.DataProvidersSettings:
-                    return new DataProvidersSettingsUC();
+                    return new DataProvidersSettingsUC(Settings, FactoriesManager);
                 case ApplicationSettingsSelectionType.RealTimeDataProvidersSettings:
-                    return new DataProvidersRealTimeSettingsUC();
+                    return new DataProvidersRealTimeSettingsUC(Settings, FactoriesManager);
                 case ApplicationSettingsSelectionType.FilesAssociationSettings:
-                    return new DataProvidersFileAssociationUC();
+                    return new DataProvidersFileAssociationUC(Settings);
                 case ApplicationSettingsSelectionType.ExternalLocationsSettings:
-                    return new DataProvidersExternalLocationsSettingsUC();
+                    return new DataProvidersExternalLocationsSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.DonationsSettings:
                     return new SupportSettingsUC();
                 case ApplicationSettingsSelectionType.AdvancedModeSettings:
-                    return new AdvancedSettingsUC();
+                    return new AdvancedSettingsUC(Settings);
                 default:
                     {
-                        AnalogyLogger.Instance.LogError($"User Setting with {settingType} was not found");
+                        ServicesProvider.Instance.GetService<ILogger>().LogError($"User Setting with {settingType} was not found");
                         throw new Exception($"User Setting with {settingType} was not found");
                     }
             }
@@ -191,7 +196,7 @@ namespace Analogy.Forms
                 Hide();
                 Close();
                 Settings.ResetSettings();
-                ApplicationSettingsForm us = new ApplicationSettingsForm();
+                ApplicationSettingsForm us = new ApplicationSettingsForm(Settings, FactoriesManager);
                 us.ShowDialog(owner);
             }
         }

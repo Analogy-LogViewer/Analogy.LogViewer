@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
@@ -11,10 +12,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class AdvancedSettingsUC : XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } = UserSettingsManager.UserSettings;
-
-        public AdvancedSettingsUC()
+        private IAnalogyUserSettings Settings { get; }
+        public AdvancedSettingsUC(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             InitializeComponent();
         }
 
