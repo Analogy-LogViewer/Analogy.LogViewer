@@ -1,4 +1,5 @@
-﻿using Analogy.DataTypes;
+﻿#pragma warning disable CA1854
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
@@ -141,9 +142,9 @@ namespace Analogy.Managers
 
         public List<AnalogyPlottingPointData> GetData(Guid id)
         {
-            if (Data.ContainsKey(id))
+            if (Data.TryGetValue(id, out List<AnalogyPlottingPointData>? data))
             {
-                return Data[id];
+                return data;
             }
 
             return new List<AnalogyPlottingPointData>();
@@ -151,3 +152,4 @@ namespace Analogy.Managers
 
     }
 }
+#pragma warning restore CA1854

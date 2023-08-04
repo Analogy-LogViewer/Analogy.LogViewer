@@ -25,8 +25,8 @@ namespace Analogy.CommonControls.Managers
         private bool fileLoaded;
         private List<IAnalogyLogMessage> Messages { get; set; }
         private string BookmarkFileName { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnalogyBookmarks.log");
-        public bool ForceNoFileCaching { get; set; } = false;
-        public bool DoNotAddToRecentHistory { get; set; } = false;
+        public bool ForceNoFileCaching { get; set; }
+        public bool DoNotAddToRecentHistory { get; set; }
         private ILogger Logger { get; set; }
         public BookmarkPersistManager()
         {

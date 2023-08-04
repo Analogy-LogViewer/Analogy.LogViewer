@@ -13,8 +13,8 @@ namespace Analogy
 {
     public partial class FilesOperationsUC : XtraUserControl, ILogMessageCreatedHandler
     {
-        public bool ForceNoFileCaching { get; set; } = false;
-        public bool DoNotAddToRecentHistory { get; set; } = false;
+        public bool ForceNoFileCaching { get; set; }
+        public bool DoNotAddToRecentHistory { get; set; }
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private int refreshDelay = 100;
         private DateTime LastReportUpdate = DateTime.Now;

@@ -15,10 +15,10 @@ namespace Analogy.Common.Managers
             return new List<IAnalogyExtension>(0);
         }
 
-        public bool HasAny { get; } = false;
+        public bool HasAny { get; }
         public IEnumerable<IAnalogyExtension> RegisteredExtensions { get; } = new List<IAnalogyExtension>(0);
-        public bool HasAnyInPlace { get; } = false;
-        public bool HasAnyUserControl { get; } = false;
+        public bool HasAnyInPlace { get; }
+        public bool HasAnyUserControl { get; }
         public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; }=new List<IAnalogyExtensionInPlace>(0);
         public IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; } = new List<IAnalogyExtensionUserControl>(0);
         public void RegisterExtension(IAnalogyExtension analogyExtension)

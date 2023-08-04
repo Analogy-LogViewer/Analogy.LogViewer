@@ -53,7 +53,7 @@ namespace Analogy.Forms
         private int OpenedWindows { get; set; }
         private int filePooling;
         private bool disableOnlineDueToFileOpen;
-        private bool preventExit = false;
+        private bool preventExit;
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private bool Initialized { get; set; }
 
@@ -228,9 +228,9 @@ namespace Analogy.Forms
             }
             //set Default page:
             Guid defaultPage = Settings.InitialSelectedDataProvider;
-            if (Mapping.ContainsKey(defaultPage))
+            if (Mapping.TryGetValue(defaultPage, out RibbonPage? value1))
             {
-                ribbonControlMain.SelectedPage = Mapping[defaultPage];
+                ribbonControlMain.SelectedPage = value1;
             }
 
             if (OnlineSources.Any())
@@ -255,9 +255,9 @@ namespace Analogy.Forms
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
-            if (Settings.RememberLastOpenedDataProvider && Mapping.ContainsKey(Settings.LastOpenedDataProvider))
+            if (Settings.RememberLastOpenedDataProvider && Mapping.TryGetValue(Settings.LastOpenedDataProvider, out RibbonPage? value))
             {
-                ribbonControlMain.SelectPage(Mapping[Settings.LastOpenedDataProvider]);
+                ribbonControlMain.SelectPage(value);
             }
             ribbonControlMain.SelectedPageChanging += ribbonControlMain_SelectedPageChanging;
             if (AnalogyLogManager.Instance.HasErrorMessages || AnalogyLogManager.Instance.HasWarningMessages)
@@ -616,7 +616,7 @@ namespace Analogy.Forms
             if (supported.Count == 1)
             {
                 var parser = supported.First();
-                RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
+                RibbonPage page = Mapping.TryGetValue(parser.FactoryID, out RibbonPage? value) ? value : null;
                 await OpenOfflineLogs(page, files, parser.DataProvider);
             }
             else
@@ -641,7 +641,7 @@ namespace Analogy.Forms
                 if (supported.Count == 1)
                 {
                     var parser = supported.First();
-                    RibbonPage page = Mapping.ContainsKey(parser.FactoryID) ? Mapping[parser.FactoryID] : null;
+                    RibbonPage page = Mapping.TryGetValue(parser.FactoryID, out RibbonPage? value) ? value : null;
                     await OpenOfflineLogs(page, files, parser.DataProvider);
                 }
                 else
@@ -652,8 +652,8 @@ namespace Analogy.Forms
                     {
                         var factory = supportedAssociation.First();
                         var parser = FactoriesManager.GetSupportedOfflineDataSourcesFromFactory(factory.FactoryId, files).ToList();
-                        RibbonPage page = (Mapping.ContainsKey(factory.FactoryId))
-                            ? Mapping[factory.FactoryId]
+                        RibbonPage page = Mapping.TryGetValue(factory.FactoryId, out RibbonPage? value)
+                            ? value
                             : null;
                         if (parser.Count == 1)
                         {

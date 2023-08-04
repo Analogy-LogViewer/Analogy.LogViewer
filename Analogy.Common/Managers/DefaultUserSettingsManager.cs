@@ -31,13 +31,13 @@ namespace Analogy.Common.Managers
         public string LogGridFileName { get; }
         public string DateTimePattern { get; set; } = "yyyy.MM.dd HH:mm:ss.ff";
         public bool CheckAdditionalInformation { get; set; } = true;
-        public bool EnableCompressedArchives { get; set; } = false;
+        public bool EnableCompressedArchives { get; set; }
         public bool IsBuiltInSearchPanelVisible { get; set; } = true;
         public BuiltInSearchPanelMode BuiltInSearchPanelMode { get; set; } = BuiltInSearchPanelMode.Search;
         public bool ShowMessageDetails { get; set; } = true;
-        public bool AdvancedMode { get; set; } = false;
-        public bool AdvancedModeRawSQLFilterEnabled { get; set; } = false;
-        public bool AdvancedModeAdditionalFilteringColumnsEnabled { get; set; } = false;
+        public bool AdvancedMode { get; set; }
+        public bool AdvancedModeRawSQLFilterEnabled { get; set; }
+        public bool AdvancedModeAdditionalFilteringColumnsEnabled { get; set; }
         public LogLevelSelectionType LogLevelSelection { get; set; } = LogLevelSelectionType.Single;
         public FontSettings FontSettings { get; set; } = new FontSettings();
         public bool TrackActiveMessage { get; set; }

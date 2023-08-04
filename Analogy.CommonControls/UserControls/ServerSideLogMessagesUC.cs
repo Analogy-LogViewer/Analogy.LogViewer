@@ -53,8 +53,8 @@ namespace Analogy.CommonControls.UserControls
         #region properties
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
-        public bool ForceNoFileCaching { get; set; } = false;
-        public bool DoNotAddToRecentHistory { get; set; } = false;
+        public bool ForceNoFileCaching { get; set; }
+        public bool DoNotAddToRecentHistory { get; set; }
         private PagingManager PagingManager { get; set; }
         private FileProcessor FileProcessor { get; set; }
         public ManualResetEvent columnAdderSync = new ManualResetEvent(false);
