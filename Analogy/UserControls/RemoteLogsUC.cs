@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
+using Analogy.DataTypes;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 
 
 namespace Analogy
@@ -90,7 +92,10 @@ namespace Analogy
             }
 
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
-            XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), ExtensionsManager.Instance, FactoriesManager.Instance, ServicesProvider.Instance.GetService<ILogger>(), messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
+                ServicesProvider.Instance.GetService<ExtensionsManager>(),
+                ServicesProvider.Instance.GetService<FactoriesManager>(),
+                ServicesProvider.Instance.GetService<ILogger>(), messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
         }
 

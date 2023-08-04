@@ -14,10 +14,10 @@ namespace Analogy.UserControls
     public partial class FilteringExclusionsUC : XtraUserControl
     {
         public static List<string> LogLevels { get; } = Utils.LogLevels;
-        private IUserSettingsManager Settings { get; } = ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-
-        public FilteringExclusionsUC()
+        private IUserSettingsManager Settings { get; }
+        public FilteringExclusionsUC(IUserSettingsManager settings)
         {
+            Settings = settings;
             InitializeComponent();
 
         }

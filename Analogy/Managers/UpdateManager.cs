@@ -15,6 +15,7 @@ using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 using Octokit;
 
 namespace Analogy.Managers

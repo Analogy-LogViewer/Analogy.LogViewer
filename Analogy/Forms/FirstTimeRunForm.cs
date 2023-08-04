@@ -11,6 +11,7 @@ namespace Analogy.Forms
 {
     public partial class FirstTimeRunForm : XtraForm
     {
+        private FactoriesManager FactoriesManager { get; }
         private int _selectedStep;
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
@@ -28,8 +29,9 @@ namespace Analogy.Forms
             }
         }
 
-        public FirstTimeRunForm()
+        public FirstTimeRunForm(FactoriesManager factoriesManager)
         {
+            FactoriesManager = factoriesManager;
             InitializeComponent();
             UserLookAndFeel.Default.StyleChanged += (s, e) =>
             {
@@ -54,8 +56,8 @@ namespace Analogy.Forms
             lblSvgPalette.Text = "Active Svg Palette: " + Settings.ApplicationSvgPaletteName;
             xtraTabControl1.ShowTabHeader = DefaultBoolean.False;
             Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
-            await FactoriesManager.Instance.InitializeBuiltInFactories();
-            await FactoriesManager.Instance.AddExternalDataSources();
+            await FactoriesManager.InitializeBuiltInFactories();
+            await FactoriesManager.AddExternalDataSources();
             chkLstDataProviderStatus.CustomizeItem += (s, e) =>
             {
                 FactoryCheckItem bind = (FactoryCheckItem)e.Value;
@@ -73,18 +75,18 @@ namespace Analogy.Forms
                     continue;
                 }
 
-                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
+                var factoryContainer = FactoriesManager.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
-                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                var image = FactoriesManager.GetLargeImage(factory.FactoryId);
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
             //add missing:
             foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {
-                var factoryContainer = FactoriesManager.Instance.FactoryContainer(factory.FactoryId);
+                var factoryContainer = FactoriesManager.FactoryContainer(factory.FactoryId);
                 string about = (factoryContainer?.Factory != null) ? factoryContainer.Factory.About : "Disabled";
-                var image = FactoriesManager.Instance.GetLargeImage(factory.FactoryId);
+                var image = FactoriesManager.GetLargeImage(factory.FactoryId);
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status != DataProviderFactoryStatus.Disabled);
             }

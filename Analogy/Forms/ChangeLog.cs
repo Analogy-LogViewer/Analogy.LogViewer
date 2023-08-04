@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
 {

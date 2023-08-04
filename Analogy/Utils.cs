@@ -23,6 +23,7 @@ using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Managers;
 using DevExpress.Utils;
+using Microsoft.Extensions.Logging;
 using Octokit;
 using FileMode = System.IO.FileMode;
 

@@ -33,7 +33,7 @@ namespace Analogy
     {
         private FactoriesManager FactoriesManager { get; }
         private ExtensionsManager ExtensionsManager { get; }
-        private IAnalogyUserSettings settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
+        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         #region pinvoke
 
@@ -79,12 +79,12 @@ namespace Analogy
             SetWindowSizeAndPosition();
             string framework = UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName;
             Text = $"Analogy Log Viewer {UpdateManager.Instance.CurrentVersion} ({framework})";
-            Icon = settings.GetIcon();
-            notifyIconAnalogy.Visible = PreventExit = settings.MinimizedToTrayBar;
+            Icon = Settings.GetIcon();
+            notifyIconAnalogy.Visible = PreventExit = Settings.MinimizedToTrayBar;
             string[] arguments = Environment.GetCommandLineArgs();
             disableOnlineDueToFileOpen = arguments.Length == 2;
-            bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
-            bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
+            bbiFileCaching.Caption = "File caching is " + (Settings.EnableFileCaching ? "on" : "off");
+            bbiFileCaching.Appearance.BackColor = Settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
             SetupEventHandlers();
             await FactoriesManager.InitializeBuiltInFactories();
 
@@ -122,15 +122,15 @@ namespace Analogy
                 TmrAutoConnect.Enabled = true;
             }
 
-            if (settings.ShowChangeLogAtStartUp)
+            if (Settings.ShowChangeLogAtStartUp)
             {
                 var change = new ChangeLog();
                 change.ShowDialog(this);
             }
 
-            var current = (settings.RememberLastOpenedDataProvider && settings.LastOpenedDataProvider != default)
-                ? settings.LastOpenedDataProvider
-                : settings.InitialSelectedDataProvider;
+            var current = (Settings.RememberLastOpenedDataProvider && Settings.LastOpenedDataProvider != default)
+                ? Settings.LastOpenedDataProvider
+                : Settings.InitialSelectedDataProvider;
             LoadFactoryInAccordion(current);
 
             if (AnalogyLogManager.Instance.HasErrorMessages)
@@ -151,7 +151,7 @@ namespace Analogy
                 AnalogyLogManager.Instance.LogWarning("Update is disabled", nameof(MainForm));
             }
 
-            if (settings.ShowWhatIsNewAtStartup)
+            if (Settings.ShowWhatIsNewAtStartup)
             {
                 //settings.ShowWhatIsNewAtStartup = false;
             }
@@ -198,21 +198,21 @@ namespace Analogy
 
         private void SetWindowSizeAndPosition()
         {
-            if (settings.AnalogyPosition.RememberLastPosition ||
-                settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
+            if (Settings.AnalogyPosition.RememberLastPosition ||
+                Settings.AnalogyPosition.WindowState != FormWindowState.Minimized)
             {
-                WindowState = settings.AnalogyPosition.WindowState;
+                WindowState = Settings.AnalogyPosition.WindowState;
                 if (WindowState != FormWindowState.Maximized)
                 {
-                    if (Screen.AllScreens.Any(s => s.WorkingArea.Contains(settings.AnalogyPosition.Location)))
+                    if (Screen.AllScreens.Any(s => s.WorkingArea.Contains(Settings.AnalogyPosition.Location)))
                     {
-                        Location = settings.AnalogyPosition.Location;
-                        Size = settings.AnalogyPosition.Size;
+                        Location = Settings.AnalogyPosition.Location;
+                        Size = Settings.AnalogyPosition.Size;
                     }
                     else
                     {
                         ServicesProvider.Instance.GetService<ILogger>().LogError("",
-                            $"Last location {settings.AnalogyPosition.Location} is not inside any screen");
+                            $"Last location {Settings.AnalogyPosition.Location} is not inside any screen");
                     }
                 }
             }
@@ -252,10 +252,10 @@ namespace Analogy
         }
         private void LoadStartupExtensions()
         {
-            if (settings.StartupExtensions.Any())
+            if (Settings.StartupExtensions.Any())
             {
                 var extensions = ExtensionsManager.GetExtensions().ToList();
-                foreach (Guid guid in settings.StartupExtensions)
+                foreach (Guid guid in Settings.StartupExtensions)
                 {
                     ExtensionsManager.RegisterExtension(extensions.SingleOrDefault(m => m.Id == guid));
                 }
@@ -281,13 +281,13 @@ namespace Analogy
             {
 
                 if (supported.Any(d =>
-                    d.DataProvider.Id == settings.LastOpenedDataProvider ||
-                    d.FactoryID == settings.LastOpenedDataProvider
+                    d.DataProvider.Id == Settings.LastOpenedDataProvider ||
+                    d.FactoryID == Settings.LastOpenedDataProvider
                     && d.DataProvider.CanOpenAllFiles(files)))
                 {
                     supported = supported.Where(d =>
-                        d.DataProvider.Id == settings.LastOpenedDataProvider ||
-                        d.FactoryID == settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
+                        d.DataProvider.Id == Settings.LastOpenedDataProvider ||
+                        d.FactoryID == Settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
 
                 }
                 else
@@ -305,7 +305,7 @@ namespace Analogy
                 else
                 {
                     //try  from file association:
-                    var supportedAssociation = settings.GetFactoriesThatHasFileAssociation(files).ToList();
+                    var supportedAssociation = Settings.GetFactoriesThatHasFileAssociation(files).ToList();
                     if (supportedAssociation.Count == 1)
                     {
                         var factory = supportedAssociation.First();
@@ -355,13 +355,13 @@ namespace Analogy
         }
         private void SetupEventHandlers()
         {
-            settings.OnApplicationSkinNameChanged += (s, e) =>
+            Settings.OnApplicationSkinNameChanged += (s, e) =>
             {
                 UpdateUpdateButton();
             };
             bbiWelcomeForm.ItemClick += (s, e) =>
             {
-                WelcomeForm wf = new WelcomeForm();
+                WelcomeForm wf = new WelcomeForm(Settings, FactoriesManager);
                 wf.ShowDialog(this);
             };
             bbtnItemGithubHistory.ItemClick += (s, e) =>
@@ -391,92 +391,92 @@ namespace Analogy
 
             btnSettingsUpdate.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
 
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             btnSettingsDebugging.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             btnShortcuts.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
 
             bbiDonation.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiAdvancedMode.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnApplicationSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnApplicationUISettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnFiltering.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnMessageColumnsLayoutSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnColorsSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnColorHighlightSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnPreDefinedQueries.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             btnDataProvidersSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiRealTimeProviders.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiFileAssociations.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             bbiAdditionalLocations.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings, settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings, Settings, FactoriesManager);
                 user.ShowDialog(this);
             };
             #endregion
@@ -517,7 +517,7 @@ namespace Analogy
             };
             bbiUserSettingsStatistics.ItemClick += (s, e) =>
             {
-                var user = new UserStatisticsForm();
+                var user = new UserStatisticsForm(Settings);
                 user.ShowDialog(this);
             };
             bbtnUpdates.ItemClick += (s, e) => OpenUpdateWindow();
@@ -537,7 +537,7 @@ namespace Analogy
             {
                 tmrStatusUpdates.Stop();
                 bbtnMemoryUsage.Caption = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024 + " [MB]";
-                bbtnIdleMessage.Caption = settings.IdleMode
+                bbtnIdleMessage.Caption = Settings.IdleMode
                     ? $"Idle mode is on. User idle: {Utils.IdleTime():hh\\:mm\\:ss}. Missed messages: {PagingManager.TotalMissedMessages}"
                     : "Idle mode is off";
                 tmrStatusUpdates.Start();
@@ -593,16 +593,16 @@ namespace Analogy
 
             bbiFileCaching.ItemClick += (s, e) =>
             {
-                settings.EnableFileCaching = !settings.EnableFileCaching;
-                bbiFileCaching.Caption = "File caching is " + (settings.EnableFileCaching ? "on" : "off");
-                bbiFileCaching.Appearance.BackColor = settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
+                Settings.EnableFileCaching = !Settings.EnableFileCaching;
+                bbiFileCaching.Caption = "File caching is " + (Settings.EnableFileCaching ? "on" : "off");
+                bbiFileCaching.Appearance.BackColor = Settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
 
             };
         }
 
         private void OpenUpdateWindow()
         {
-            UpdateForm update = new UpdateForm();
+            UpdateForm update = new UpdateForm(Settings);
             update.Show(this);
         }
         private void UpdateUpdateButton()
@@ -611,7 +611,7 @@ namespace Analogy
             if (UpdateManager.Instance.NewVersionExist)
             {
                 bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
-                if (DevExpress.Utils.Frames.FrameHelper.IsDarkSkin(settings.ApplicationSkinName))
+                if (DevExpress.Utils.Frames.FrameHelper.IsDarkSkin(Settings.ApplicationSkinName))
                 {
                     bbtnCheckUpdates.Appearance.ForeColor = Color.DarkBlue;
                 }
@@ -682,7 +682,7 @@ namespace Analogy
             accordionControl.Clear();
             FactoryContainer fc = FactoriesManager.GetFactoryContainer(factoryId) ?? FactoriesManager.GetBuiltInFactoryContainer(factoryId);
             activeProvider = fc.Factory.FactoryId;
-            settings.LastOpenedDataProvider = activeProvider;
+            Settings.LastOpenedDataProvider = activeProvider;
 
             LoadDataProvidersInAccordion(fc);
             //var ribbonPageImage = FactoriesManager.GetSmallImage(fc.Factory.FactoryId);
@@ -753,7 +753,7 @@ namespace Analogy
             aboutBtn.Style = ElementStyle.Item;
             aboutBtn.ImageOptions.Image = Resources.About_16x16;
             aboutBtn.Text = "About";
-            aboutBtn.Click += (sender, e) => { new AboutDataSourceBox(fc.Factory).ShowDialog(this); };
+            aboutBtn.Click += (sender, e) => { new AboutDataSourceBox(fc.Factory, FactoriesManager).ShowDialog(this); };
         }
         private void AddFactorySettings(FactoryContainer fc)
         {
@@ -770,7 +770,7 @@ namespace Analogy
 
             foreach (var providerSetting in fc.DataProvidersSettings)
             {
-                providerSetting.CreateUserControl(Analogy.ServicesProvider.Instance.GetService<ILogger>());
+                providerSetting.CreateUserControl(ServicesProvider.Instance.GetService<ILogger>());
                 AccordionControlElement settingsBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(settingsBtn);
                 settingsBtn.Style = ElementStyle.Item;
@@ -858,7 +858,7 @@ namespace Analogy
                 {
                     openedWindows++;
                     await FactoriesManager.InitializeIfNeeded(offlineAnalogy);
-                    UserControl filepoolingUC = new FilePoolingUCLogs(offlineAnalogy, file, initialFile, initialFolder);
+                    UserControl filepoolingUC = new FilePoolingUCLogs(Settings, offlineAnalogy, file, initialFile, initialFolder);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
 
@@ -941,7 +941,7 @@ namespace Analogy
 
 
                 recentFolders.ImageOptions.Image = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
-                foreach (var path in settings.GetRecentFolders(offlineAnalogy.Id))
+                foreach (var path in Settings.GetRecentFolders(offlineAnalogy.Id))
                 {
                     //add local folder button:
                     if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
@@ -1030,7 +1030,7 @@ namespace Analogy
                 }
 
                 //add recent
-                var recents = settings.GetRecentFiles(offlineAnalogy.Id)
+                var recents = Settings.GetRecentFiles(offlineAnalogy.Id)
                     .Select(itm => itm.FileName).ToList();
                 AddRecentFiles(recentfiles, offlineAnalogy, title, recents);
 
@@ -1275,7 +1275,7 @@ namespace Analogy
                 }
 
                 realTimeBtn.Click += async (s, be) => await OpenRealTime();
-                if (settings.AutoStartDataProviders.Contains(realTime.Id)
+                if (Settings.AutoStartDataProviders.Contains(realTime.Id)
                     && !disableOnlineDueToFileOpen)
                 {
                     async Task<bool> AutoOpenRealTime()
@@ -1528,15 +1528,15 @@ namespace Analogy
                     Show();
                     Focus();
                 };
-                alertControl.Show(this, titleText, contentText, settings.GetImage());
+                alertControl.Show(this, titleText, contentText, Settings.GetImage());
             }
             else
             {
-                settings.AnalogyPosition.Location = Location;
-                settings.AnalogyPosition.Size = Size;
-                settings.AnalogyPosition.WindowState = WindowState;
-                settings.UpdateRunningTime();
-                settings.Save();
+                Settings.AnalogyPosition.Location = Location;
+                Settings.AnalogyPosition.Size = Size;
+                Settings.AnalogyPosition.WindowState = WindowState;
+                Settings.UpdateRunningTime();
+                Settings.Save();
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.Instance.SaveFile();

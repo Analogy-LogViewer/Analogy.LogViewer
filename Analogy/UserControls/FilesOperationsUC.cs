@@ -5,7 +5,9 @@ using System.Data;
 using System.IO;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
+using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {

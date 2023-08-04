@@ -700,6 +700,12 @@ namespace Analogy
         public void UpdateRunningTime() => AnalogyRunningTime =
             AnalogyRunningTime.Add(DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime));
 
+        public void LoadSettings(IAnalogyUserSettings newSettings)
+        {
+            //todo
+            throw new NotImplementedException();
+        }
+
         public void IncreaseNumberOfLaunches() => AnalogyLaunches++;
 
         public FactorySettings GetFactorySetting(Guid factoryID)

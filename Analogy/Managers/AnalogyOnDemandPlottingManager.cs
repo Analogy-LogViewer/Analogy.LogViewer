@@ -3,6 +3,7 @@ using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {

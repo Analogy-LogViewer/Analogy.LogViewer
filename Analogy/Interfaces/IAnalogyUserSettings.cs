@@ -72,5 +72,6 @@ namespace Analogy.Interfaces
         void UpdateRunningTime();
 
 
+        void LoadSettings(IAnalogyUserSettings newSettings);
     }
 }
