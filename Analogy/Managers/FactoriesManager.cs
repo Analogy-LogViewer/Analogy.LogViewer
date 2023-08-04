@@ -9,9 +9,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Interfaces;
-using Analogy.CommonControls.Managers;
 using Microsoft.Extensions.Logging;
 
 namespace Analogy

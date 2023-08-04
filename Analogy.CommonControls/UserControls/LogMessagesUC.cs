@@ -413,7 +413,7 @@ namespace Analogy.CommonControls.UserControls
             //first restore all
             foreach (GridColumn gridColumn in logGrid.Columns)
             {
-                gridColumn.Visible = true;
+                gridColumn.Visible = !gridColumn.FieldName.Equals(Common.CommonUtils.AnalogyMessageColumn);
             }
 
             if (DataProvider.HideAdditionalColumns() != null)
