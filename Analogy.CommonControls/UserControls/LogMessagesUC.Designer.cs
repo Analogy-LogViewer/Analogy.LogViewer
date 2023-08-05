@@ -985,7 +985,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiGoToActiveMessage.Caption = "Go To Active Message";
             this.bbiGoToActiveMessage.Id = 75;
-            this.bbiGoToActiveMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.Image")));
+            this.bbiGoToActiveMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
             this.bbiGoToActiveMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.LargeImage")));
             this.bbiGoToActiveMessage.Name = "bbiGoToActiveMessage";
             // 

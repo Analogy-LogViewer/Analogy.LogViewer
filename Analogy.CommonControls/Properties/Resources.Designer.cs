@@ -743,6 +743,46 @@ namespace Analogy.CommonControls.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GoToNextHeaderFooter_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("GoToNextHeaderFooter_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GoToNextHeaderFooter_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("GoToNextHeaderFooter_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GoToPreviousHeaderFooter_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("GoToPreviousHeaderFooter_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GoToPreviousHeaderFooter_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("GoToPreviousHeaderFooter_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gRPC32x32 {
             get {
                 object obj = ResourceManager.GetObject("gRPC32x32", resourceCulture);
