@@ -703,4 +703,49 @@
   <data name="TextBox_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TextBox_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ClearFilter_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClearFilter_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportToCSV_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportToCSV_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportToCSV_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportToCSV_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportToHTML_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportToHTML_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportToHTML_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportToHTML_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportToXLS_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportToXLS_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportToXLS_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportToXLS_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Filter_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Filter_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Filter_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Filter_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontSizeDecrease_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontSizeDecrease_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontSizeDecrease_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontSizeDecrease_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontSizeIncrease_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontSizeIncrease_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontSizeIncrease_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontSizeIncrease_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MultipleMasterFilter_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MultipleMasterFilter_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MultipleMasterFilter_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MultipleMasterFilter_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

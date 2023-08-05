@@ -473,6 +473,16 @@ namespace Analogy.CommonControls.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ClearFilter_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("ClearFilter_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Close_16x16", resourceCulture);
@@ -663,6 +673,66 @@ namespace Analogy.CommonControls.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ExportToCSV_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("ExportToCSV_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExportToCSV_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("ExportToCSV_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExportToHTML_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("ExportToHTML_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExportToHTML_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("ExportToHTML_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExportToXLS_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("ExportToXLS_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExportToXLS_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("ExportToXLS_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap extension16 {
             get {
                 object obj = ResourceManager.GetObject("extension16", resourceCulture);
@@ -703,6 +773,26 @@ namespace Analogy.CommonControls.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Filter_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Filter_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Filter_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Filter_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap First_16x16 {
             get {
                 object obj = ResourceManager.GetObject("First_16x16", resourceCulture);
@@ -736,6 +826,46 @@ namespace Analogy.CommonControls.Properties {
         internal static System.Drawing.Bitmap Float {
             get {
                 object obj = ResourceManager.GetObject("Float", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FontSizeDecrease_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("FontSizeDecrease_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FontSizeDecrease_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("FontSizeDecrease_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FontSizeIncrease_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("FontSizeIncrease_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FontSizeIncrease_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("FontSizeIncrease_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1166,6 +1296,26 @@ namespace Analogy.CommonControls.Properties {
         internal static System.Drawing.Bitmap Media_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Media_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MultipleMasterFilter_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("MultipleMasterFilter_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MultipleMasterFilter_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("MultipleMasterFilter_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

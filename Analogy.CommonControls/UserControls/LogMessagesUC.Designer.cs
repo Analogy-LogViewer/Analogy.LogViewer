@@ -43,12 +43,9 @@ namespace Analogy.CommonControls.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMessagesUC));
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
-            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
@@ -70,7 +67,10 @@ namespace Analogy.CommonControls.UserControls
             DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentMessages = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -977,9 +977,9 @@ namespace Analogy.CommonControls.UserControls
             this.bbiJsonColumn.Id = 92;
             this.bbiJsonColumn.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
             this.bbiJsonColumn.Name = "bbiJsonColumn";
-            toolTipItem10.Text = "Choose which column will be used for the Json inline parsing";
-            superToolTip10.Items.Add(toolTipItem10);
-            this.bbiJsonColumn.SuperTip = superToolTip10;
+            toolTipItem1.Text = "Choose which column will be used for the Json inline parsing";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bbiJsonColumn.SuperTip = superToolTip1;
             // 
             // bbiGoToActiveMessage
             // 
@@ -1166,8 +1166,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnExportCSV.Caption = "Export To CSV";
             this.bBtnExportCSV.Id = 22;
-            this.bBtnExportCSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.Image")));
-            this.bBtnExportCSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.LargeImage")));
+            this.bBtnExportCSV.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ExportToCSV_16x16;
+            this.bBtnExportCSV.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ExportToCSV_32x32;
             this.bBtnExportCSV.Name = "bBtnExportCSV";
             this.bBtnExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportCSV_ItemClick);
             // 
@@ -1222,7 +1222,7 @@ namespace Analogy.CommonControls.UserControls
             // wsLogs
             // 
             this.wsLogs.TargetControl = this;
-            this.wsLogs.TransitionType = pushTransition2;
+            this.wsLogs.TransitionType = pushTransition1;
             // 
             // bsiTimeOffset
             // 
@@ -1269,8 +1269,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnDataVisualizer.Caption = "Data Visualizer";
             this.bBtnDataVisualizer.Id = 26;
-            this.bBtnDataVisualizer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.Image")));
-            this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
+            this.bBtnDataVisualizer.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Line_16x16;
+            this.bBtnDataVisualizer.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Line_32x32;
             this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
             this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
@@ -1544,8 +1544,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnExpand.Caption = "Expand";
             this.bBtnExpand.Id = 7;
-            this.bBtnExpand.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExpand.ImageOptions.Image")));
-            this.bBtnExpand.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExpand.ImageOptions.LargeImage")));
+            this.bBtnExpand.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnExpand.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnExpand.Name = "bBtnExpand";
             this.bBtnExpand.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1561,8 +1561,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnButtomExpand.Caption = "Expand";
             this.bBtnButtomExpand.Id = 9;
-            this.bBtnButtomExpand.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnButtomExpand.ImageOptions.Image")));
-            this.bBtnButtomExpand.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnButtomExpand.ImageOptions.LargeImage")));
+            this.bBtnButtomExpand.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnButtomExpand.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnButtomExpand.Name = "bBtnButtomExpand";
             this.bBtnButtomExpand.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnButtomExpand.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnButtomExpand_ItemClick);
@@ -1578,24 +1578,24 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiDiffTime.Caption = "Calculate time difference from this point";
             this.bbiDiffTime.Id = 43;
-            this.bbiDiffTime.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDiffTime.ImageOptions.Image")));
-            this.bbiDiffTime.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDiffTime.ImageOptions.LargeImage")));
+            this.bbiDiffTime.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bbiDiffTime.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bbiDiffTime.Name = "bbiDiffTime";
             // 
             // bbiDatetiemFilterFrom
             // 
             this.bbiDatetiemFilterFrom.Caption = "Date Time Filter: From";
             this.bbiDatetiemFilterFrom.Id = 44;
-            this.bbiDatetiemFilterFrom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterFrom.ImageOptions.Image")));
-            this.bbiDatetiemFilterFrom.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterFrom.ImageOptions.LargeImage")));
+            this.bbiDatetiemFilterFrom.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bbiDatetiemFilterFrom.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bbiDatetiemFilterFrom.Name = "bbiDatetiemFilterFrom";
             // 
             // bbiDatetiemFilterTo
             // 
             this.bbiDatetiemFilterTo.Caption = "Date Time Filter: To";
             this.bbiDatetiemFilterTo.Id = 45;
-            this.bbiDatetiemFilterTo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterTo.ImageOptions.Image")));
-            this.bbiDatetiemFilterTo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterTo.ImageOptions.LargeImage")));
+            this.bbiDatetiemFilterTo.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bbiDatetiemFilterTo.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bbiDatetiemFilterTo.Name = "bbiDatetiemFilterTo";
             // 
             // bbiBookmarkNonPersist
@@ -1639,80 +1639,80 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiIncludeMessage.Caption = "Include Selected message";
             this.bbiIncludeMessage.Id = 51;
-            this.bbiIncludeMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeMessage.ImageOptions.Image")));
-            this.bbiIncludeMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeMessage.ImageOptions.LargeImage")));
+            this.bbiIncludeMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeMessage.Name = "bbiIncludeMessage";
             // 
             // bbiIncludeColumnHeaderFilter
             // 
             this.bbiIncludeColumnHeaderFilter.Caption = "Set X as column header filter for Y";
             this.bbiIncludeColumnHeaderFilter.Id = 52;
-            this.bbiIncludeColumnHeaderFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeColumnHeaderFilter.ImageOptions.Image")));
-            this.bbiIncludeColumnHeaderFilter.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeColumnHeaderFilter.ImageOptions.LargeImage")));
+            this.bbiIncludeColumnHeaderFilter.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeColumnHeaderFilter.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeColumnHeaderFilter.Name = "bbiIncludeColumnHeaderFilter";
             // 
             // bbiExcludeMessage
             // 
             this.bbiExcludeMessage.Caption = "Exclude selected message";
             this.bbiExcludeMessage.Id = 53;
-            this.bbiExcludeMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExcludeMessage.ImageOptions.Image")));
-            this.bbiExcludeMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExcludeMessage.ImageOptions.LargeImage")));
+            this.bbiExcludeMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ClearFilter_16x16;
+            this.bbiExcludeMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ClearFilter_32x32;
             this.bbiExcludeMessage.Name = "bbiExcludeMessage";
             // 
             // bbiExcludeSource
             // 
             this.bbiExcludeSource.Caption = "Exclude source";
             this.bbiExcludeSource.Id = 54;
-            this.bbiExcludeSource.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExcludeSource.ImageOptions.Image")));
-            this.bbiExcludeSource.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExcludeSource.ImageOptions.LargeImage")));
+            this.bbiExcludeSource.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ClearFilter_16x16;
+            this.bbiExcludeSource.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ClearFilter_32x32;
             this.bbiExcludeSource.Name = "bbiExcludeSource";
             // 
             // bbiExcludeModule
             // 
             this.bbiExcludeModule.Caption = "Exclude process/module";
             this.bbiExcludeModule.Id = 55;
-            this.bbiExcludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExcludeModule.ImageOptions.Image")));
-            this.bbiExcludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExcludeModule.ImageOptions.LargeImage")));
+            this.bbiExcludeModule.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ClearFilter_16x16;
+            this.bbiExcludeModule.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ClearFilter_32x32;
             this.bbiExcludeModule.Name = "bbiExcludeModule";
             // 
             // bbiSaveLayout
             // 
             this.bbiSaveLayout.Caption = "Save columns layout";
             this.bbiSaveLayout.Id = 56;
-            this.bbiSaveLayout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveLayout.ImageOptions.Image")));
-            this.bbiSaveLayout.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveLayout.ImageOptions.LargeImage")));
+            this.bbiSaveLayout.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
+            this.bbiSaveLayout.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveDialog_32x32;
             this.bbiSaveLayout.Name = "bbiSaveLayout";
             // 
             // bbiIncreaseFontSize
             // 
             this.bbiIncreaseFontSize.Caption = "Increase font size";
             this.bbiIncreaseFontSize.Id = 57;
-            this.bbiIncreaseFontSize.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncreaseFontSize.ImageOptions.Image")));
-            this.bbiIncreaseFontSize.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncreaseFontSize.ImageOptions.LargeImage")));
+            this.bbiIncreaseFontSize.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FontSizeIncrease_16x16;
+            this.bbiIncreaseFontSize.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FontSizeIncrease_32x32;
             this.bbiIncreaseFontSize.Name = "bbiIncreaseFontSize";
             // 
             // bbiDecreaseFontSize
             // 
             this.bbiDecreaseFontSize.Caption = "Decrease font size";
             this.bbiDecreaseFontSize.Id = 58;
-            this.bbiDecreaseFontSize.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDecreaseFontSize.ImageOptions.Image")));
-            this.bbiDecreaseFontSize.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDecreaseFontSize.ImageOptions.LargeImage")));
+            this.bbiDecreaseFontSize.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FontSizeDecrease_16x16;
+            this.bbiDecreaseFontSize.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FontSizeDecrease_32x32;
             this.bbiDecreaseFontSize.Name = "bbiDecreaseFontSize";
             // 
             // bbiIncludeSource
             // 
             this.bbiIncludeSource.Caption = "Include source";
             this.bbiIncludeSource.Id = 59;
-            this.bbiIncludeSource.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.Image")));
-            this.bbiIncludeSource.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.LargeImage")));
+            this.bbiIncludeSource.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeSource.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeSource.Name = "bbiIncludeSource";
             // 
             // bbiIncludeModule
             // 
             this.bbiIncludeModule.Caption = "Include process/module";
             this.bbiIncludeModule.Id = 60;
-            this.bbiIncludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.Image")));
-            this.bbiIncludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.LargeImage")));
+            this.bbiIncludeModule.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeModule.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeModule.Name = "bbiIncludeModule";
             // 
             // bbiJsonViewer
@@ -1720,7 +1720,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiJsonViewer.Caption = "Open message in JSON Visualizer";
             this.bbiJsonViewer.Id = 62;
             this.bbiJsonViewer.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
-            this.bbiJsonViewer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiJsonViewer.ImageOptions.LargeImage")));
             this.bbiJsonViewer.Name = "bbiJsonViewer";
             // 
             // repositoryItemProgressBar1
@@ -1864,13 +1863,13 @@ namespace Analogy.CommonControls.UserControls
             this.ceModulesProcess.Properties.Caption = "Processes/Modules (Include/Exclude):";
             this.ceModulesProcess.Size = new System.Drawing.Size(245, 24);
             this.ceModulesProcess.StyleController = this.layoutControl1;
-            toolTipTitleItem9.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem11.LeftIndent = 6;
-            toolTipItem11.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip11.Items.Add(toolTipTitleItem9);
-            superToolTip11.Items.Add(toolTipItem11);
-            this.ceModulesProcess.SuperTip = superToolTip11;
+            superToolTip2.Items.Add(toolTipTitleItem1);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceModulesProcess.SuperTip = superToolTip2;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1905,13 +1904,13 @@ namespace Analogy.CommonControls.UserControls
             this.ceSources.Properties.Caption = "Sources (Include/Exclude):";
             this.ceSources.Size = new System.Drawing.Size(182, 24);
             this.ceSources.StyleController = this.layoutControl1;
-            toolTipTitleItem1.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip2.Items.Add(toolTipTitleItem1);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceSources.SuperTip = superToolTip2;
+            superToolTip3.Items.Add(toolTipTitleItem2);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceSources.SuperTip = superToolTip3;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1970,12 +1969,12 @@ namespace Analogy.CommonControls.UserControls
             this.ceExcludeText.Properties.Caption = "Exclude Text:";
             this.ceExcludeText.Size = new System.Drawing.Size(105, 24);
             this.ceExcludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem2.Text = "Text Property Filtering (exclude)";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip3.Items.Add(toolTipTitleItem2);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.ceExcludeText.SuperTip = superToolTip3;
+            toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip4.Items.Add(toolTipTitleItem3);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceExcludeText.SuperTip = superToolTip4;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnPreDefinedFilters
@@ -2021,12 +2020,12 @@ namespace Analogy.CommonControls.UserControls
             this.ceIncludeText.Properties.Caption = "Include Text:";
             this.ceIncludeText.Size = new System.Drawing.Size(103, 24);
             this.ceIncludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem3.Text = "Text Property Filtering";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip4.Items.Add(toolTipTitleItem3);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.ceIncludeText.SuperTip = superToolTip4;
+            toolTipTitleItem4.Text = "Text Property Filtering";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip5.Items.Add(toolTipTitleItem4);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.ceIncludeText.SuperTip = superToolTip5;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
@@ -2809,11 +2808,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceFilterPanelFilter.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelFilter.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelFilter.Size = new System.Drawing.Size(184, 24);
-            toolTipTitleItem4.Text = "AND Log Level Filtering";
-            toolTipItem5.LeftIndent = 6;
-            superToolTip5.Items.Add(toolTipTitleItem4);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceFilterPanelFilter.SuperTip = superToolTip5;
+            toolTipTitleItem6.Text = "AND Log Level Filtering";
+            toolTipItem7.LeftIndent = 6;
+            superToolTip7.Items.Add(toolTipTitleItem6);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.ceFilterPanelFilter.SuperTip = superToolTip7;
             this.ceFilterPanelFilter.TabIndex = 30;
             this.ceFilterPanelFilter.TabStop = false;
             // 
@@ -2827,11 +2826,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceFilterPanelSearch.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelSearch.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelSearch.Size = new System.Drawing.Size(184, 24);
-            toolTipTitleItem6.Text = "AND Log Level Filtering";
-            toolTipItem7.LeftIndent = 6;
-            superToolTip7.Items.Add(toolTipTitleItem6);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.ceFilterPanelSearch.SuperTip = superToolTip7;
+            toolTipTitleItem5.Text = "AND Log Level Filtering";
+            toolTipItem6.LeftIndent = 6;
+            superToolTip6.Items.Add(toolTipTitleItem5);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.ceFilterPanelSearch.SuperTip = superToolTip6;
             this.ceFilterPanelSearch.TabIndex = 29;
             // 
             // labelControl1
@@ -2933,13 +2932,13 @@ namespace Analogy.CommonControls.UserControls
             this.ceLogLevelOr.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelOr.Properties.RadioGroupIndex = 5;
             this.ceLogLevelOr.Size = new System.Drawing.Size(66, 22);
-            toolTipTitleItem5.Text = "Or Log level Filtering";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "The OR type allows to always show some log levels regardless the current filters." +
+            toolTipTitleItem7.Text = "Or Log level Filtering";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "The OR type allows to always show some log levels regardless the current filters." +
     " This is usefull when you want to see some log level alongs with other filters";
-            superToolTip6.Items.Add(toolTipTitleItem5);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.ceLogLevelOr.SuperTip = superToolTip6;
+            superToolTip8.Items.Add(toolTipTitleItem7);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.ceLogLevelOr.SuperTip = superToolTip8;
             this.ceLogLevelOr.TabIndex = 1;
             this.ceLogLevelOr.TabStop = false;
             // 
@@ -2954,11 +2953,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceLogLevelAnd.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelAnd.Properties.RadioGroupIndex = 5;
             this.ceLogLevelAnd.Size = new System.Drawing.Size(61, 22);
-            toolTipTitleItem7.Text = "AND Log Level Filtering";
-            toolTipItem8.LeftIndent = 6;
-            superToolTip8.Items.Add(toolTipTitleItem7);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.ceLogLevelAnd.SuperTip = superToolTip8;
+            toolTipTitleItem8.Text = "AND Log Level Filtering";
+            toolTipItem9.LeftIndent = 6;
+            superToolTip9.Items.Add(toolTipTitleItem8);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.ceLogLevelAnd.SuperTip = superToolTip9;
             this.ceLogLevelAnd.TabIndex = 0;
             // 
             // LogGridPopupMenu
@@ -3006,10 +3005,10 @@ namespace Analogy.CommonControls.UserControls
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.documentMessages});
             this.tabbedView1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            dockingContainer2.Element = this.documentGroup1;
-            dockingContainer2.Length.UnitValue = 1.4189383070301291D;
+            dockingContainer1.Element = this.documentGroup1;
+            dockingContainer1.Length.UnitValue = 1.4189383070301291D;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer2});
+            dockingContainer1});
             this.tabbedView1.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // dockManager1
