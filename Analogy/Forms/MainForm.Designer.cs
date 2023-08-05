@@ -969,6 +969,7 @@
             // 
             // bbiBinance
             // 
+            this.bbiBinance.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bbiBinance.Caption = "Crypto Exchange";
             this.bbiBinance.Id = 112;
             this.bbiBinance.ImageOptions.Image = global::Analogy.Properties.Resources.crypto16x16;
