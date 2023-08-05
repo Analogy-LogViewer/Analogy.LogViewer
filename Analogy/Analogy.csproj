@@ -485,9 +485,9 @@
 		<Compile Update="UserControls\CombineFilesUC.Designer.cs">
 			<DependentUpon>CombineFilesUC.cs</DependentUpon>
 		</Compile>
-		<Compile Update="UserControls\FileSystemUC.cs" />
-		<Compile Update="UserControls\FileSystemUC.Designer.cs">
-			<DependentUpon>FileSystemUC.cs</DependentUpon>
+		<Compile Update="UserControls\FolderAndFileSystemUC.cs" />
+		<Compile Update="UserControls\FolderAndFileSystemUC.Designer.cs">
+			<DependentUpon>FolderAndFileSystemUC.cs</DependentUpon>
 		</Compile>
 		<Compile Update="UserControls\FolderTreeViewUC.cs" />
 		<Compile Update="UserControls\FolderTreeViewUC.Designer.cs">
@@ -567,9 +567,9 @@
 		<Compile Update="UserControls\XtraUCDirectoryListing.Designer.cs">
 			<DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>
 		</Compile>
-		<Compile Update="UserControls\XtraUCFileSystem.cs" />
-		<Compile Update="UserControls\XtraUCFileSystem.Designer.cs">
-			<DependentUpon>XtraUCFileSystem.cs</DependentUpon>
+		<Compile Update="UserControls\FileSystemUC.cs" />
+		<Compile Update="UserControls\FileSystemUC.Designer.cs">
+			<DependentUpon>FileSystemUC.cs</DependentUpon>
 		</Compile>
 		<None Include="..\icon.png">
 			<Pack>True</Pack>
@@ -664,8 +664,8 @@
 		<EmbeddedResource Update="UserControls\CombineFilesUC.resx">
 			<DependentUpon>CombineFilesUC.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\FileSystemUC.resx">
-			<DependentUpon>FileSystemUC.cs</DependentUpon>
+		<EmbeddedResource Update="UserControls\FolderAndFileSystemUC.resx">
+			<DependentUpon>FolderAndFileSystemUC.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\FolderTreeViewUC.resx">
 			<DependentUpon>FolderTreeViewUC.cs</DependentUpon>
@@ -717,8 +717,8 @@
 			<DependentUpon>XtraUCDirectoryListing.cs</DependentUpon>
 			<SubType>Designer</SubType>
 		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\XtraUCFileSystem.resx">
-			<DependentUpon>XtraUCFileSystem.cs</DependentUpon>
+		<EmbeddedResource Update="UserControls\FileSystemUC.resx">
+			<DependentUpon>FileSystemUC.cs</DependentUpon>
 			<SubType>Designer</SubType>
 		</EmbeddedResource>
 		<None Include="Resources\Info_16x16.png" />

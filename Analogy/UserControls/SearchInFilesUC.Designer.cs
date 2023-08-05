@@ -31,7 +31,7 @@
             this.txtbSearch = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.fileSystemUC1 = new Analogy.FileSystemUC();
+            this._folderAndFileSystemUc1 = new Analogy.FolderAndFileSystemUC();
             this.processFilesUC1 = new Analogy.FilesOperationsUC();
             this.sBtnSearch = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -58,7 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.fileSystemUC1);
+            this.splitContainer1.Panel1.Controls.Add(this._folderAndFileSystemUc1);
             // 
             // splitContainer1.Panel2
             // 
@@ -80,13 +80,13 @@
             // 
             // fileSystemUC1
             // 
-            this.fileSystemUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileSystemUC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.fileSystemUC1.Location = new System.Drawing.Point(0, 0);
-            this.fileSystemUC1.Margin = new System.Windows.Forms.Padding(4);
-            this.fileSystemUC1.Name = "fileSystemUC1";
-            this.fileSystemUC1.Size = new System.Drawing.Size(372, 393);
-            this.fileSystemUC1.TabIndex = 0;
+            this._folderAndFileSystemUc1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._folderAndFileSystemUc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this._folderAndFileSystemUc1.Location = new System.Drawing.Point(0, 0);
+            this._folderAndFileSystemUc1.Margin = new System.Windows.Forms.Padding(4);
+            this._folderAndFileSystemUc1.Name = "_folderAndFileSystemUc1";
+            this._folderAndFileSystemUc1.Size = new System.Drawing.Size(372, 393);
+            this._folderAndFileSystemUc1.TabIndex = 0;
             // 
             // processFilesUC1
             // 
@@ -129,7 +129,7 @@
 
         #endregion
 
-        private FileSystemUC fileSystemUC1;
+        private FolderAndFileSystemUC _folderAndFileSystemUc1;
         private FilesOperationsUC processFilesUC1;
         private System.Windows.Forms.TextBox txtbSearch;
         private System.Windows.Forms.SplitContainer splitContainer1;

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fileSystemUC1 = new Analogy.FileSystemUC();
+            this._folderAndFileSystemUc1 = new Analogy.FolderAndFileSystemUC();
             this.processFilesUC1 = new Analogy.FilesOperationsUC();
             this.panel3 = new System.Windows.Forms.Panel();
             this.sBtnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -52,7 +52,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.fileSystemUC1);
+            this.splitContainer1.Panel1.Controls.Add(this._folderAndFileSystemUc1);
             // 
             // splitContainer1.Panel2
             // 
@@ -65,13 +65,13 @@
             // 
             // fileSystemUC1
             // 
-            this.fileSystemUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileSystemUC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.fileSystemUC1.Location = new System.Drawing.Point(0, 0);
-            this.fileSystemUC1.Margin = new System.Windows.Forms.Padding(6);
-            this.fileSystemUC1.Name = "fileSystemUC1";
-            this.fileSystemUC1.Size = new System.Drawing.Size(336, 569);
-            this.fileSystemUC1.TabIndex = 0;
+            this._folderAndFileSystemUc1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._folderAndFileSystemUc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this._folderAndFileSystemUc1.Location = new System.Drawing.Point(0, 0);
+            this._folderAndFileSystemUc1.Margin = new System.Windows.Forms.Padding(6);
+            this._folderAndFileSystemUc1.Name = "_folderAndFileSystemUc1";
+            this._folderAndFileSystemUc1.Size = new System.Drawing.Size(336, 569);
+            this._folderAndFileSystemUc1.TabIndex = 0;
             // 
             // processFilesUC1
             // 
@@ -148,7 +148,7 @@
         }
 
         #endregion
-        private FileSystemUC fileSystemUC1;
+        private FolderAndFileSystemUC _folderAndFileSystemUc1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;

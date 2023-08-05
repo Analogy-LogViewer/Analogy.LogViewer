@@ -17,7 +17,7 @@ namespace Analogy
         private async void sBtnSearch_Click(object sender, EventArgs e)
         {
             sBtnSearch.Enabled = false;
-            var files = fileSystemUC1.GetSelectedFileNames();
+            var files = _folderAndFileSystemUc1.GetSelectedFileNames();
             processFilesUC1.SetFilesToProcess(files);
             await processFilesUC1.ProcessFilesAndSearch(offlineAnalogy, txtbSearch.Text);
             sBtnSearch.Enabled = true;
@@ -27,7 +27,7 @@ namespace Analogy
         {
 
             this.offlineAnalogy = offlineAnalogy;
-            fileSystemUC1.DataProvider = offlineAnalogy;
+            _folderAndFileSystemUc1.DataProvider = offlineAnalogy;
         }
     }
 }

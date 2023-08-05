@@ -16,7 +16,7 @@ namespace Analogy
 
         private async void sBtnCombined_Click(object sender, EventArgs e)
         {
-            var files = fileSystemUC1.GetSelectedFileNames();
+            var files = _folderAndFileSystemUc1.GetSelectedFileNames();
             processFilesUC1.SetFilesToProcess(files);
             await processFilesUC1.ProcessFilesAndCombine(offlineAnalogy);
             sBtnSave.Visible = true;
@@ -41,7 +41,7 @@ namespace Analogy
         public void SetDataSource(IAnalogyOfflineDataProvider analogyOfflineDataProvider)
         {
             offlineAnalogy = analogyOfflineDataProvider;
-            this.fileSystemUC1.DataProvider = offlineAnalogy;
+            this._folderAndFileSystemUc1.DataProvider = offlineAnalogy;
         }
 
 
