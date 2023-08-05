@@ -1368,8 +1368,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiSaveBookmarks.Caption = "Save Bookmarks";
             this.bbiSaveBookmarks.Id = 61;
-            this.bbiSaveBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveBookmarks.ImageOptions.Image")));
-            this.bbiSaveBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveBookmarks.ImageOptions.LargeImage")));
+            this.bbiSaveBookmarks.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
             this.bbiSaveBookmarks.Name = "bbiSaveBookmarks";
             this.bbiSaveBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1377,8 +1376,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnopyBookmarked.Caption = "Copy Selected Message";
             this.bBtnopyBookmarked.Id = 12;
-            this.bBtnopyBookmarked.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnopyBookmarked.ImageOptions.Image")));
-            this.bBtnopyBookmarked.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnopyBookmarked.ImageOptions.LargeImage")));
+            this.bBtnopyBookmarked.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bBtnopyBookmarked.Name = "bBtnopyBookmarked";
             this.bBtnopyBookmarked.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnopyBookmarked.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnopyBookmarked_ItemClick);
@@ -1387,8 +1385,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnCopyAllBookmarks.Caption = "Copy all messages in grid";
             this.bBtnCopyAllBookmarks.Id = 16;
-            this.bBtnCopyAllBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnCopyAllBookmarks.ImageOptions.Image")));
-            this.bBtnCopyAllBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnCopyAllBookmarks.ImageOptions.LargeImage")));
+            this.bBtnCopyAllBookmarks.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bBtnCopyAllBookmarks.Name = "bBtnCopyAllBookmarks";
             this.bBtnCopyAllBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnCopyAllBookmarks.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyAllBookmarks_ItemClick);
@@ -1397,8 +1394,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.barButtonItem4.Caption = "Clear Bookmarks";
             this.barButtonItem4.Id = 13;
-            this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
-            this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.barButtonItem4.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Clear_16x16;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
@@ -1407,8 +1403,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnGoToMessage.Caption = "Go To Message";
             this.bBtnGoToMessage.Id = 14;
-            this.bBtnGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnGoToMessage.ImageOptions.Image")));
-            this.bBtnGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnGoToMessage.ImageOptions.LargeImage")));
+            this.bBtnGoToMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
             this.bBtnGoToMessage.Name = "bBtnGoToMessage";
             this.bBtnGoToMessage.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnGoToMessage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnGoToMessage_ItemClick);
@@ -3064,7 +3059,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // dockPanelDetails
             // 
-            this.dockPanelDetails.ActiveChild = this.dockPanelMessageInfo;
+            this.dockPanelDetails.ActiveChild = this.dockPanelBookmarks;
             this.dockPanelDetails.Controls.Add(this.dockPanelMessageInfo);
             this.dockPanelDetails.Controls.Add(this.dockPanelBookmarks);
             this.dockPanelDetails.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
