@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Common.Interfaces;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -13,16 +14,13 @@ namespace Analogy.UserControls
 {
     public partial class UCLogs : CommonControls.UserControls.LogMessagesUC
     {
-        public UCLogs() : base(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
-            ServicesProvider.Instance.GetService<ExtensionsManager>(),
-            ServicesProvider.Instance.GetService<FactoriesManager>(), 
-            ServicesProvider.Instance.GetService<ILogger>())
+        public UCLogs()
         {
             InitializeComponent();
             SetHighlightSettings(() =>
             {
                 var user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting,
-                    ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), ServicesProvider.Instance.GetService<FactoriesManager>());
+                    ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), ServicesProvider.Instance.GetService<IFactoriesManager>());
                 user.ShowDialog(this);
             });
         }

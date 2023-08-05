@@ -16,11 +16,11 @@ namespace Analogy.ApplicationSettings
     public partial class DataProvidersSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
         private IAnalogyUserSettings Settings { get; }
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
 
-        public DataProvidersSettingsUC(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
+        public DataProvidersSettingsUC(IAnalogyUserSettings settings, IFactoriesManager factoriesManager)
         {
-            this.Settings = settings;
+            Settings = settings;
             FactoriesManager = factoriesManager;
             InitializeComponent();
         }

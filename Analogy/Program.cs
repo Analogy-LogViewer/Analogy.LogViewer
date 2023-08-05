@@ -27,8 +27,8 @@ namespace Analogy
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-        private static FactoriesManager FactoriesManager => ServicesProvider.Instance.GetService<FactoriesManager>();
-        private static ExtensionsManager ExtensionsManager => ServicesProvider.Instance.GetService<ExtensionsManager>();
+        private static IFactoriesManager FactoriesManager => ServicesProvider.Instance.GetService<IFactoriesManager>();
+        private static IExtensionsManager ExtensionsManager => ServicesProvider.Instance.GetService<IExtensionsManager>();
 
         private static ILogger Logger => ServicesProvider.Instance.GetService<ILogger>();
         private static string AssemblyLocation;
@@ -181,8 +181,8 @@ namespace Analogy
             services.AddSingleton<IUserSettingsManager>(settings);
             services.AddSingleton<ILogger>(loggerProvider.CreateLogger("Analogy"));
             services.AddSingleton<AnalogyBuiltInFactory>();
-            services.AddSingleton<FactoriesManager>();
-            services.AddSingleton<ExtensionsManager>();
+            services.AddSingleton<IFactoriesManager, FactoriesManager>();
+            services.AddSingleton<IExtensionsManager,ExtensionsManager>();
             ServicesProvider.Instance.AddLoggerProvider(loggerProvider);
             ServicesProvider.Instance.BuildServiceProvider("Analogy");
         }
@@ -275,7 +275,7 @@ namespace Analogy
 
 
 
-            var paths = ServicesProvider.Instance.GetService<FactoriesManager>().ProbingPaths.Select(Path.GetFullPath).Except(new List<string> { AssemblyLocation }).Distinct()
+            var paths = ServicesProvider.Instance.GetService<IFactoriesManager>().ProbingPaths.Select(Path.GetFullPath).Except(new List<string> { AssemblyLocation }).Distinct()
                 .ToList();
             paths.AddRange(AnalogyNonPersistSettings.Instance.AdditionalAssembliesDependenciesLocations);
             foreach (var path in paths)

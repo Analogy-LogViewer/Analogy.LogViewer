@@ -21,11 +21,11 @@ namespace Analogy
         private string FileName { get; set; }
         public bool Enable { get; set; } = true;
         private FilePoolingManager PoolingManager { get; }
-        public FilePoolingUCLogs(IAnalogyUserSettings settings,IAnalogyOfflineDataProvider offlineDataProvider, string filter,  string  initialFilename, string initialFolder, string? title = null)
+        public FilePoolingUCLogs(IAnalogyUserSettings settings, IAnalogyOfflineDataProvider offlineDataProvider, string filter, string initialFilename, string initialFolder, string? title = null)
         {
             InitializeComponent();
             FileName = initialFilename;
-            PoolingManager = new FilePoolingManager(settings,filter, initialFilename, ucLogs1, offlineDataProvider);
+            PoolingManager = new FilePoolingManager(settings, filter, initialFilename, ucLogs1, offlineDataProvider);
             ucLogs1.Title = title;
             ucLogs1.SetFileDataSource(offlineDataProvider, offlineDataProvider);
             ucLogs1.EnableFileReload(FileName);
@@ -132,8 +132,7 @@ namespace Analogy
 
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
-                ServicesProvider.Instance.GetService<ExtensionsManager>(),
-                ServicesProvider.Instance.GetService<FactoriesManager>(), ServicesProvider.Instance.GetService<ILogger>(), messages, Environment.MachineName, ucLogs1.DataProvider,
+                 messages, Environment.MachineName, ucLogs1.DataProvider,
                 ucLogs1.FileDataProvider);
             grid.Show(this);
         }

@@ -93,5 +93,19 @@ namespace Analogy.Common.Managers
         {
             return null;
         }
+
+        public IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies()
+        {
+            return Enumerable.Empty<(IAnalogyExtension extension, Assembly assembly)>();
+        }
+
+        public void ShutDownAllFactories()
+        {
+        }
+
+        public  Task InitializeIfNeeded(IAnalogyDataProvider dataProvider)
+        {
+            return Task.CompletedTask;
+        }
     }
 }

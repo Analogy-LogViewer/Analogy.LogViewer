@@ -14,7 +14,7 @@ namespace Analogy.UserControls
 {
     public partial class DataProviderUC : XtraUserControl, IUserControlWithUCLogs
     {
-        private IExtensionsManager ExtensionManager { get; set; } = ServicesProvider.Instance.GetService<ExtensionsManager>();
+        private IExtensionsManager ExtensionManager  => ServicesProvider.Instance.GetService<IExtensionsManager>();
         public DataProviderUC()
         {
             InitializeComponent();

@@ -92,9 +92,7 @@ namespace Analogy
 
             var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
-                ServicesProvider.Instance.GetService<ExtensionsManager>(),
-                ServicesProvider.Instance.GetService<FactoriesManager>(), 
-                ServicesProvider.Instance.GetService<ILogger>(), messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
+                messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
         }
         public void ShowSecondaryWindow()

@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils;
@@ -11,7 +12,7 @@ namespace Analogy.Forms
 {
     public partial class FirstTimeRunForm : XtraForm
     {
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
         private int _selectedStep;
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
@@ -29,7 +30,7 @@ namespace Analogy.Forms
             }
         }
 
-        public FirstTimeRunForm(FactoriesManager factoriesManager)
+        public FirstTimeRunForm(IFactoriesManager factoriesManager)
         {
             FactoriesManager = factoriesManager;
             InitializeComponent();

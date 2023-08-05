@@ -20,6 +20,7 @@ using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Properties;
 using Analogy.CommonControls.Tools;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
@@ -199,29 +200,18 @@ namespace Analogy.CommonControls.UserControls
         private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
 
-        public LogMessagesUC() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
+        public LogMessagesUC()
         {
-
-        }
-        public LogMessagesUC(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger)
-        {
-            Logger = logger;
             Id = Guid.NewGuid();
-            Settings = userSettingsManager;
-            ExtensionManager = extensionManager;
-            FactoriesManager = factoriesManager;
             InitializeComponent();
             DateTimePicker = new DateTimeSelectionUC();
             JsonColumnChooser = new JsonColumnChooserUC();
-            PagingManager = new PagingManager(this, Settings);
-
-            lockSlim = PagingManager.lockSlim;
-            _messageData = PagingManager.CurrentPage();
             if (DesignMode)
             {
                 return;
             }
-
+            SetupDependencies();
+         
             PopupControlContainer datePopup = new PopupControlContainer();
             datePopup.Manager = this.barManager1;
             datePopup.Controls.Add(DateTimePicker);
@@ -312,6 +302,16 @@ namespace Analogy.CommonControls.UserControls
 
         }
 
+        private void SetupDependencies()
+        {
+            Settings = ServicesProvider.Instance.GetService<IUserSettingsManager>();
+            ExtensionManager = ServicesProvider.Instance.GetService<IExtensionsManager>();
+            FactoriesManager = ServicesProvider.Instance.GetService<IFactoriesManager>();
+            Logger = ServicesProvider.Instance.CreateLogger(nameof(LogMessagesUC));
+            PagingManager = new PagingManager(this, Settings);
+            lockSlim = PagingManager.lockSlim;
+            _messageData = PagingManager.CurrentPage();
+        }
         private async void LogMessagesUC_Load(object sender, EventArgs e)
         {
             if (DesignMode)
@@ -983,7 +983,7 @@ namespace Analogy.CommonControls.UserControls
                     settings.ValueAfterDelete = NumericMaskManager.ValueAfterDelete.Null;
                 });
             }
-            
+
         }
         private void RefreshTimeOffset()
         {
@@ -3290,7 +3290,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3464,7 +3464,7 @@ namespace Analogy.CommonControls.UserControls
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, msg, source, DataProvider, FileDataProvider, process);
+                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -3525,7 +3525,7 @@ namespace Analogy.CommonControls.UserControls
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
-            {                
+            {
                 //todo: fix this as dateedit
                 deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceOlderThanFilter.Checked = true;
@@ -3590,7 +3590,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3661,7 +3661,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, ExtensionManager, FactoriesManager, Logger, FileDataProvider, AnalogyOfflineDataProvider);
+            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
             var processor = new FileProcessor(Settings, logGridForm.LogWindow, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);

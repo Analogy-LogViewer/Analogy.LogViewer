@@ -1,4 +1,5 @@
-﻿using Analogy.DataTypes;
+﻿using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 
@@ -7,8 +8,8 @@ namespace Analogy.Forms.Welcome
     public partial class WelcomeExtensionsUC : XtraUserControl
     {
         private IAnalogyUserSettings Settings { get; }
-        private FactoriesManager FactoriesManager { get; }
-        public WelcomeExtensionsUC(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
+        private IFactoriesManager FactoriesManager { get; }
+        public WelcomeExtensionsUC(IAnalogyUserSettings settings, IFactoriesManager factoriesManager)
         {
             Settings = settings;
             FactoriesManager = factoriesManager;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Common.Interfaces;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using Analogy.DataTypes;
@@ -24,7 +25,7 @@ namespace Analogy.Forms
             InitializeComponent();
         }
 
-        public AnalogyOTAForm(DataTable data, FactoriesManager factoriesManager) : this()
+        public AnalogyOTAForm(DataTable data, IFactoriesManager factoriesManager) : this()
         {
             List<ComboboxItem> items = new List<ComboboxItem>();
             foreach (DataRow dataRow in data.Rows)

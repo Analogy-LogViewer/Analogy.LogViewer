@@ -34,8 +34,8 @@ namespace Analogy.Forms
 {
     public partial class MainForm : RibbonForm
     {
-        private FactoriesManager FactoriesManager { get; }
-        private ExtensionsManager ExtensionsManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
+        private IExtensionsManager ExtensionsManager { get; }
         const int WM_COPYDATA = 0x004A;
         [DllImport("user32", EntryPoint = "SendMessageA")]
         private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
@@ -57,7 +57,7 @@ namespace Analogy.Forms
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private bool Initialized { get; set; }
 
-        public MainForm(FactoriesManager factoriesManager, ExtensionsManager extensionsManager)
+        public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;

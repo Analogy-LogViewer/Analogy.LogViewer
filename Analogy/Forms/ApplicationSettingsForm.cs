@@ -12,9 +12,9 @@ namespace Analogy.Forms
     public partial class ApplicationSettingsForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private IAnalogyUserSettings Settings { get; }
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
         private ApplicationSettingsSelectionType SelectedSettingType { get; }
-        public ApplicationSettingsForm(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
+        public ApplicationSettingsForm(IAnalogyUserSettings settings, IFactoriesManager factoriesManager)
         {
             InitializeComponent();
             Settings = settings;
@@ -23,7 +23,7 @@ namespace Analogy.Forms
             SelectedSettingType = ApplicationSettingsSelectionType.ApplicationGeneralSettings;
         }
 
-        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IAnalogyUserSettings settings, FactoriesManager factoriesManager) : this(settings, factoriesManager)
+        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IAnalogyUserSettings settings, IFactoriesManager factoriesManager) : this(settings, factoriesManager)
         {
             SelectedSettingType = selectedSettingType;
         }

@@ -21,9 +21,7 @@ namespace Analogy.Forms
             }
         }
         private List<(string Text, ILogWindow window)> Logs { get; }
-        private IUserSettingsManager settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-       private ExtensionsManager ExtensionsManager => ServicesProvider.Instance.GetService<ExtensionsManager>();
-       private FactoriesManager FactoriesManager => ServicesProvider.Instance.GetService<FactoriesManager>();
+        private IUserSettingsManager Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
        public OpenWindows()
         {
             InitializeComponent();
@@ -36,13 +34,13 @@ namespace Analogy.Forms
 
         private void OpenWindows_Load(object sender, EventArgs e)
         {
-            Icon = settings.GetIcon();
+            Icon = Settings.GetIcon();
             chklistLogs.Items.AddRange(Logs.Select(l => new LogItem { Window = l.window, Header = l.Text }).ToArray());
         }
 
         private void btnCombineSelected_Click(object sender, EventArgs e)
         {
-            XtraFormLogGrid msg = new XtraFormLogGrid(settings, ExtensionsManager, FactoriesManager, ServicesProvider.Instance.GetService<ILogger>());
+            XtraFormLogGrid msg = new XtraFormLogGrid(Settings);
 
             foreach (CheckedListBoxItem item in chklistLogs.CheckedItems)
             {

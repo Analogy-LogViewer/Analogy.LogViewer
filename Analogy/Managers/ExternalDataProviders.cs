@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Managers;
 using Microsoft.Extensions.Logging;
 
@@ -18,13 +19,13 @@ namespace Analogy.Managers
 
         private static readonly AsyncLazy<ExternalDataProviders> _instance =
             new AsyncLazy<ExternalDataProviders>(() => new ExternalDataProviders(
-                ServicesProvider.Instance.GetService<FactoriesManager>()));
+                ServicesProvider.Instance.GetService<IFactoriesManager>()));
 
         public static async Task<ExternalDataProviders> GetExternalDataProviders() => await _instance.Start();
         public List<FactoryContainer> Factories { get; private set; }
         public List<(Guid id, IAnalogyImages images)> DataProvidersImages { get; set; }
-        private FactoriesManager FactoriesManager { get; set; }
-        private ExternalDataProviders(FactoriesManager factoriesManager)
+        private IFactoriesManager FactoriesManager { get; set; }
+        private ExternalDataProviders(IFactoriesManager factoriesManager)
         {
             FactoriesManager = factoriesManager;
             DataProvidersImages = new List<(Guid id, IAnalogyImages images)>();

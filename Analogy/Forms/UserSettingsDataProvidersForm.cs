@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Analogy.Common.Interfaces;
+using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
@@ -11,7 +12,7 @@ namespace Analogy.Forms
 
     public partial class UserSettingsDataProvidersForm : XtraForm
     {
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
         private struct RealTimeCheckItem
         {
             public string Name;
@@ -28,18 +29,18 @@ namespace Analogy.Forms
 
         private readonly int _initialSelection = -1;
 
-        public UserSettingsDataProvidersForm(FactoriesManager factoriesManager)
+        public UserSettingsDataProvidersForm(IFactoriesManager factoriesManager)
         {
             FactoriesManager = factoriesManager;
             InitializeComponent();
         }
 
-        public UserSettingsDataProvidersForm(int tabIndex, FactoriesManager factoriesManager) : this(factoriesManager)
+        public UserSettingsDataProvidersForm(int tabIndex, IFactoriesManager factoriesManager) : this(factoriesManager)
         {
             _initialSelection = tabIndex;
         }
 
-        public UserSettingsDataProvidersForm(string tabName, FactoriesManager factoriesManager) : this(factoriesManager)
+        public UserSettingsDataProvidersForm(string tabName, IFactoriesManager factoriesManager) : this(factoriesManager)
         {
             var tab = tabControlMain.TabPages.SingleOrDefault(t => t.Name == tabName);
             if (tab != null)

@@ -14,9 +14,9 @@ namespace Analogy.ApplicationSettings
     public partial class ExtensionSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
         private IAnalogyUserSettings Settings { get; }
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
 
-        public ExtensionSettingsUC(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
+        public ExtensionSettingsUC(IAnalogyUserSettings settings, IFactoriesManager factoriesManager)
         {
             this.Settings = settings;
             FactoriesManager = factoriesManager;

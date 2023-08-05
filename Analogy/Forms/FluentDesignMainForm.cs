@@ -22,6 +22,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
@@ -31,8 +32,8 @@ namespace Analogy
 {
     public partial class FluentDesignMainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        private FactoriesManager FactoriesManager { get; }
-        private ExtensionsManager ExtensionsManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
+        private IExtensionsManager ExtensionsManager { get; }
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         #region pinvoke
@@ -60,7 +61,7 @@ namespace Analogy
         private bool PreventExit { get; set; }
         private bool Initialized { get; set; }
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
-        public FluentDesignMainForm(FactoriesManager factoriesManager, ExtensionsManager extensionsManager)
+        public FluentDesignMainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;

@@ -5,15 +5,16 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {
     public partial class ComponentDownloadsForm : XtraForm
     {
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
 
-        public ComponentDownloadsForm(FactoriesManager factoriesManager)
+        public ComponentDownloadsForm(IFactoriesManager factoriesManager)
         {
             FactoriesManager = factoriesManager;
             InitializeComponent();

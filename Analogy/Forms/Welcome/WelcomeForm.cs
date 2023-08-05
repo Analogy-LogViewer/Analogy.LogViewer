@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Analogy.Common.Interfaces;
+using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms.Welcome;
 using Analogy.Interfaces;
@@ -9,9 +10,9 @@ namespace Analogy.Forms
     public partial class WelcomeForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private IAnalogyUserSettings Settings { get; }
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
 
-        public WelcomeForm(IAnalogyUserSettings settings,FactoriesManager factoriesManager)
+        public WelcomeForm(IAnalogyUserSettings settings,IFactoriesManager factoriesManager)
         {
             Settings = settings;
             FactoriesManager = factoriesManager;

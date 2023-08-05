@@ -17,29 +17,29 @@ namespace Analogy.CommonControls.Forms
         private readonly List<IAnalogyLogMessage> _messages;
         private readonly string _dataSource;
         public LogMessagesUC LogWindow => ucLogs1;
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager)
         {
-            ucLogs1 = new LogMessagesUC(userSettingsManager, extensionManager,factoriesManager, logger);
+            ucLogs1 = new LogMessagesUC();
             InitializeComponent();
             Icon = userSettingsManager.GetIcon();
             _dataSource = "Analogy";
             _messages = new List<IAnalogyLogMessage>();
         }
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager,ILogger logger, IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider) : this(userSettingsManager, extensionManager,factoriesManager, logger)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider) : this(userSettingsManager)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
             ucLogs1.SetFileDataSource(DataProvider, FileDataProvider);
         }
 
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger, List<IAnalogyLogMessage> messages, string dataSource) : this(userSettingsManager, extensionManager, factoriesManager,logger)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource) : this(userSettingsManager)
         {
             _messages = messages;
             _dataSource = dataSource;
         }
 
 
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IExtensionsManager extensionManager, IFactoriesManager factoriesManager, ILogger logger, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager, extensionManager,factoriesManager, logger)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager)
         {
             _messages = messages;
             _dataSource = dataSource;

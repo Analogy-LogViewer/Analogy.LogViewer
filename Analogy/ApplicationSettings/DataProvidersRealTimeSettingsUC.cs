@@ -14,9 +14,9 @@ namespace Analogy.ApplicationSettings
     public partial class DataProvidersRealTimeSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
         private IAnalogyUserSettings Settings { get; }
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
 
-        public DataProvidersRealTimeSettingsUC(IAnalogyUserSettings settings, FactoriesManager factoriesManager)
+        public DataProvidersRealTimeSettingsUC(IAnalogyUserSettings settings, IFactoriesManager factoriesManager)
         {
             Settings = settings;
             FactoriesManager = factoriesManager;

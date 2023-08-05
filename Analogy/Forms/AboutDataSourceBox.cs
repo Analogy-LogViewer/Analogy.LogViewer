@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Analogy.Common.Interfaces;
+using System.Diagnostics;
 using System.Reflection;
 using Analogy.Interfaces.Factories;
 using DevExpress.XtraEditors;
@@ -7,16 +8,16 @@ namespace Analogy.Forms
 {
     partial class AboutDataSourceBox : XtraForm
     {
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
         private readonly IAnalogyFactory _factory;
         private readonly Assembly _factoryAssembly;
-        public AboutDataSourceBox(FactoriesManager factoriesManager)
+        public AboutDataSourceBox(IFactoriesManager factoriesManager)
         {
             FactoriesManager = factoriesManager;
             InitializeComponent();
         }
 
-        public AboutDataSourceBox(IAnalogyFactory factory, FactoriesManager factoriesManager) : this(factoriesManager)
+        public AboutDataSourceBox(IAnalogyFactory factory, IFactoriesManager factoriesManager) : this(factoriesManager)
         {
             _factory = factory;
             _factoryAssembly = FactoriesManager.GetAssemblyOfFactory(factory);

@@ -9,7 +9,7 @@ namespace Analogy
 {
     public class ExtensionsManager : IExtensionsManager
     {
-        private FactoriesManager FactoriesManager { get; }
+        private IFactoriesManager FactoriesManager { get; }
         private ILogger Logger { get; }
         private List<IAnalogyExtension> LoadedExtensions { get; } = new List<IAnalogyExtension>();
         private readonly List<IAnalogyExtension> registeredExtensions = new List<IAnalogyExtension>();
@@ -27,7 +27,7 @@ namespace Analogy
         private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();
 
-        public ExtensionsManager(FactoriesManager factoriesManager, ILogger logger)
+        public ExtensionsManager(IFactoriesManager factoriesManager, ILogger logger)
         {
             FactoriesManager = factoriesManager;
             Logger = logger;
