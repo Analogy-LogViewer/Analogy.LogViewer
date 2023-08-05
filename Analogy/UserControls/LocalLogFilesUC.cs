@@ -57,7 +57,7 @@ namespace Analogy.UserControls
             ucLogs1.ProcessCmdKeyFromParent(keyData);
             return base.ProcessCmdKey(ref msg, keyData);
         }
-        private async void OfflineUCLogs_Load(object sender, EventArgs e)
+        private async void LocalLogFilesUC_Load(object sender, EventArgs e)
         {
             if (DesignMode)
             {

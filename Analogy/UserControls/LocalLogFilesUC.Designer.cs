@@ -439,7 +439,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LocalLogFilesUC";
             this.Size = new System.Drawing.Size(1387, 700);
-            this.Load += new System.EventHandler(this.OfflineUCLogs_Load);
+            this.Load += new System.EventHandler(this.LocalLogFilesUC_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragEnter);
             this.spltMain.Panel1.ResumeLayout(false);
