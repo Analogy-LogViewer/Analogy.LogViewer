@@ -112,7 +112,7 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnSaveLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnSaveCurrentSelectionCustomFormat = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.bsiUndock = new DevExpress.XtraBars.BarSubItem();
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockSelection = new DevExpress.XtraBars.BarButtonItem();
@@ -826,7 +826,7 @@ namespace Analogy.CommonControls.UserControls
             this.bbtnSaveViewAgnostic,
             this.barSubItemSaveLog,
             this.barButtonItemSaveEntireInAnalogy,
-            this.barSubItem1,
+            this.bsiUndock,
             this.bBtnUndockViewPerProcess,
             this.bBtnShare,
             this.bBtnFullGrid,
@@ -899,7 +899,7 @@ namespace Analogy.CommonControls.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiGoToActiveMessage, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiUndock),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -912,8 +912,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnClearLog.Caption = "Clear Log";
             this.bBtnClearLog.Id = 6;
-            this.bBtnClearLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Delete_16x16;
-            this.bBtnClearLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnClearLog.ImageOptions.LargeImage")));
+            this.bBtnClearLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Action_Delete;
+            this.bBtnClearLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Action_Delete_32x32;
             this.bBtnClearLog.Name = "bBtnClearLog";
             this.bBtnClearLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnClearLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnClearLog_ItemClick);
@@ -923,7 +923,7 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnRemoveBoomark.Caption = "Delete message";
             this.bBtnRemoveBoomark.Id = 15;
             this.bBtnRemoveBoomark.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.DeleteDataSource2_16x16;
-            this.bBtnRemoveBoomark.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnRemoveBoomark.ImageOptions.LargeImage")));
+            this.bBtnRemoveBoomark.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Database_off;
             this.bBtnRemoveBoomark.Name = "bBtnRemoveBoomark";
             this.bBtnRemoveBoomark.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnRemoveBoomark.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -934,7 +934,7 @@ namespace Analogy.CommonControls.UserControls
             this.bbtnReload.Caption = "Reload Files";
             this.bbtnReload.Id = 38;
             this.bbtnReload.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Refresh2_16x16;
-            this.bbtnReload.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReload.ImageOptions.LargeImage")));
+            this.bbtnReload.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Refresh2_32x32;
             this.bbtnReload.Name = "bbtnReload";
             this.bbtnReload.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnReload.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -986,15 +986,15 @@ namespace Analogy.CommonControls.UserControls
             this.bbiGoToActiveMessage.Caption = "Go To Active Message";
             this.bbiGoToActiveMessage.Id = 75;
             this.bbiGoToActiveMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
-            this.bbiGoToActiveMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.LargeImage")));
+            this.bbiGoToActiveMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_32x32;
             this.bbiGoToActiveMessage.Name = "bbiGoToActiveMessage";
             // 
             // barSubItemSaveLog
             // 
             this.barSubItemSaveLog.Caption = "Save Log";
             this.barSubItemSaveLog.Id = 31;
-            this.barSubItemSaveLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveLog.ImageOptions.Image")));
-            this.barSubItemSaveLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveLog.ImageOptions.LargeImage")));
+            this.barSubItemSaveLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.barSubItemSaveLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.barSubItemSaveLog.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSaveEntireInAnalogy),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSaveViewAgnostic),
@@ -1070,18 +1070,18 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnFullGrid.Name = "bBtnFullGrid";
             this.bBtnFullGrid.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // barSubItem1
+            // bsiUndock
             // 
-            this.barSubItem1.Caption = "Undock View";
-            this.barSubItem1.Id = 34;
-            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
-            this.barSubItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.bsiUndock.Caption = "Undock View";
+            this.bsiUndock.Id = 34;
+            this.bsiUndock.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bsiUndock.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
+            this.bsiUndock.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockView),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockViewPerProcess),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockSelection)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bsiUndock.Name = "bsiUndock";
+            this.bsiUndock.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bBtnUndockView
             // 
@@ -1116,8 +1116,8 @@ namespace Analogy.CommonControls.UserControls
             this.bsiSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.bsiSettings.Caption = "More";
             this.bsiSettings.Id = 71;
-            this.bsiSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.Image")));
-            this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.LargeImage")));
+            this.bsiSettings.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Properties_16x16;
+            this.bsiSettings.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Properties_32x32;
             this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
             new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
@@ -1302,8 +1302,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnCopyButtom.Caption = "Copy";
             this.bBtnCopyButtom.Id = 10;
-            this.bBtnCopyButtom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnCopyButtom.ImageOptions.Image")));
-            this.bBtnCopyButtom.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnCopyButtom.ImageOptions.LargeImage")));
+            this.bBtnCopyButtom.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bBtnCopyButtom.Name = "bBtnCopyButtom";
             this.bBtnCopyButtom.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnCopyButtom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyButtom_ItemClick);
@@ -1312,8 +1311,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiGoToMessage.Caption = "Go To This Message";
             this.bbiGoToMessage.Id = 74;
-            this.bbiGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.Image")));
-            this.bbiGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.LargeImage")));
+            this.bbiGoToMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
+            this.bbiGoToMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_32x32;
             this.bbiGoToMessage.Name = "bbiGoToMessage";
             // 
             // btsViewAsHTML
@@ -3483,7 +3482,7 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraEditors.TextEdit txtbInclude;
         private DevExpress.XtraEditors.TextEdit txtbExclude;
         private DevExpress.XtraEditors.TextEdit txtbHighlight;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem bsiUndock;
         private DevExpress.XtraBars.BarButtonItem bBtnUndockViewPerProcess;
         private DevExpress.XtraEditors.SimpleButton sbtnTextInclude;
         private DevExpress.XtraEditors.SimpleButton sbtnTextExclude;
