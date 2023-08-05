@@ -88,6 +88,9 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnRawText = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLineNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnMethodName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.chkbHighlight = new DevExpress.XtraEditors.CheckEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -282,10 +285,8 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelDetails = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.scMessageDetails = new DevExpress.XtraEditors.SplitContainerControl();
             this.meMessageDetails = new DevExpress.XtraEditors.MemoEdit();
             this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
@@ -299,10 +300,9 @@ namespace Analogy.CommonControls.UserControls
             this.xtpSQLraw = new DevExpress.XtraTab.XtraTabPage();
             this.sbtnRawFilter = new DevExpress.XtraEditors.SimpleButton();
             this.meRawSQL = new DevExpress.XtraEditors.MemoEdit();
+            this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumnRawText = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLineNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnMethodName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -393,10 +393,8 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
             this.dockPanelDetails.SuspendLayout();
-            this.dockPanelTree.SuspendLayout();
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
-            this.dockPanelTreeContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).BeginInit();
             this.scMessageDetails.Panel1.SuspendLayout();
@@ -414,6 +412,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.SuspendLayout();
             this.xtpSQLraw.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).BeginInit();
+            this.dockPanelTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -440,7 +439,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1570, 203);
+            this.gridControl.Size = new System.Drawing.Size(1370, 203);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -645,7 +644,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnUser.OptionsColumn.ReadOnly = true;
             this.gridColumnUser.Visible = true;
-            this.gridColumnUser.VisibleIndex = 8;
+            this.gridColumnUser.VisibleIndex = 7;
             this.gridColumnUser.Width = 115;
             // 
             // gridColumnModule
@@ -672,10 +671,8 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnObject.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
-            this.gridColumnObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
             this.gridColumnObject.MinWidth = 24;
-            this.gridColumnObject.Name = Common.CommonUtils.AnalogyMessageColumn;
+            this.gridColumnObject.Name = "gridColumnObject";
             this.gridColumnObject.OptionsColumn.AllowEdit = false;
             this.gridColumnObject.OptionsColumn.AllowFocus = false;
             this.gridColumnObject.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -703,7 +700,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID.OptionsColumn.ReadOnly = true;
             this.gridColumnProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.gridColumnProcessID.Visible = true;
-            this.gridColumnProcessID.VisibleIndex = 9;
+            this.gridColumnProcessID.VisibleIndex = 8;
             this.gridColumnProcessID.Width = 115;
             // 
             // gridColumnThread
@@ -714,7 +711,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnThread.Name = "gridColumnThread";
             this.gridColumnThread.OptionsColumn.AllowEdit = false;
             this.gridColumnThread.Visible = true;
-            this.gridColumnThread.VisibleIndex = 10;
+            this.gridColumnThread.VisibleIndex = 9;
             this.gridColumnThread.Width = 109;
             // 
             // gridColumnMachineName
@@ -725,8 +722,39 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnMachineName.Name = "gridColumnMachineName";
             this.gridColumnMachineName.OptionsColumn.AllowEdit = false;
             this.gridColumnMachineName.Visible = true;
-            this.gridColumnMachineName.VisibleIndex = 11;
+            this.gridColumnMachineName.VisibleIndex = 10;
             this.gridColumnMachineName.Width = 94;
+            // 
+            // gridColumnRawText
+            // 
+            this.gridColumnRawText.Caption = "Raw Text";
+            this.gridColumnRawText.FieldName = "RawText";
+            this.gridColumnRawText.MinWidth = 25;
+            this.gridColumnRawText.Name = "gridColumnRawText";
+            this.gridColumnRawText.Visible = true;
+            this.gridColumnRawText.VisibleIndex = 11;
+            this.gridColumnRawText.Width = 94;
+            // 
+            // gridColumnLineNumber
+            // 
+            this.gridColumnLineNumber.Caption = "Line Number";
+            this.gridColumnLineNumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumnLineNumber.FieldName = "LineNumber";
+            this.gridColumnLineNumber.MinWidth = 25;
+            this.gridColumnLineNumber.Name = "gridColumnLineNumber";
+            this.gridColumnLineNumber.Visible = true;
+            this.gridColumnLineNumber.VisibleIndex = 12;
+            this.gridColumnLineNumber.Width = 94;
+            // 
+            // gridColumnMethodName
+            // 
+            this.gridColumnMethodName.Caption = "Method Name";
+            this.gridColumnMethodName.FieldName = "MethodName";
+            this.gridColumnMethodName.MinWidth = 25;
+            this.gridColumnMethodName.Name = "gridColumnMethodName";
+            this.gridColumnMethodName.Visible = true;
+            this.gridColumnMethodName.VisibleIndex = 13;
+            this.gridColumnMethodName.Width = 94;
             // 
             // imageList
             // 
@@ -884,7 +912,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnClearLog.Caption = "Clear Log";
             this.bBtnClearLog.Id = 6;
-            this.bBtnClearLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnClearLog.ImageOptions.Image")));
+            this.bBtnClearLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Delete_16x16;
             this.bBtnClearLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnClearLog.ImageOptions.LargeImage")));
             this.bBtnClearLog.Name = "bBtnClearLog";
             this.bBtnClearLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -894,7 +922,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnRemoveBoomark.Caption = "Delete message";
             this.bBtnRemoveBoomark.Id = 15;
-            this.bBtnRemoveBoomark.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnRemoveBoomark.ImageOptions.Image")));
+            this.bBtnRemoveBoomark.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.DeleteDataSource2_16x16;
             this.bBtnRemoveBoomark.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnRemoveBoomark.ImageOptions.LargeImage")));
             this.bBtnRemoveBoomark.Name = "bBtnRemoveBoomark";
             this.bBtnRemoveBoomark.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -905,7 +933,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbtnReload.Caption = "Reload Files";
             this.bbtnReload.Id = 38;
-            this.bbtnReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnReload.ImageOptions.Image")));
+            this.bbtnReload.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Refresh2_16x16;
             this.bbtnReload.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReload.ImageOptions.LargeImage")));
             this.bbtnReload.Name = "bbtnReload";
             this.bbtnReload.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -1515,7 +1543,7 @@ namespace Analogy.CommonControls.UserControls
             this.bdcTopFiltering.Manager = this.barManager1;
             this.bdcTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcTopFiltering.Name = "bdcTopFiltering";
-            this.bdcTopFiltering.Size = new System.Drawing.Size(1847, 0);
+            this.bdcTopFiltering.Size = new System.Drawing.Size(1647, 0);
             this.bdcTopFiltering.Text = "standaloneBarDockControl1";
             // 
             // bBtnExpand
@@ -2263,7 +2291,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlLogs.Name = "layoutControlLogs";
             this.layoutControlLogs.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(520, 50, 812, 500);
             this.layoutControlLogs.Root = this.layoutControlGroup1;
-            this.layoutControlLogs.Size = new System.Drawing.Size(1847, 248);
+            this.layoutControlLogs.Size = new System.Drawing.Size(1647, 248);
             this.layoutControlLogs.TabIndex = 6;
             this.layoutControlLogs.Text = "layoutControl2";
             // 
@@ -2281,16 +2309,16 @@ namespace Analogy.CommonControls.UserControls
             // spltcMessages.Panel2
             // 
             this.spltcMessages.Panel2.Text = "Panel2";
-            this.spltcMessages.Size = new System.Drawing.Size(1833, 203);
+            this.spltcMessages.Size = new System.Drawing.Size(1633, 203);
             this.spltcMessages.SplitterPosition = 251;
             this.spltcMessages.TabIndex = 0;
             // 
             // sbtnPageFirst
             // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(1457, 214);
+            this.sbtnPageFirst.Location = new System.Drawing.Point(1299, 214);
             this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPageFirst.Name = "sbtnPageFirst";
-            this.sbtnPageFirst.Size = new System.Drawing.Size(71, 27);
+            this.sbtnPageFirst.Size = new System.Drawing.Size(61, 27);
             this.sbtnPageFirst.StyleController = this.layoutControlLogs;
             this.sbtnPageFirst.TabIndex = 5;
             this.sbtnPageFirst.Text = "first Page";
@@ -2298,10 +2326,10 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnMoreHighlight
             // 
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1371, 214);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1229, 214);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
-            this.sbtnMoreHighlight.Size = new System.Drawing.Size(82, 27);
+            this.sbtnMoreHighlight.Size = new System.Drawing.Size(66, 27);
             this.sbtnMoreHighlight.StyleController = this.layoutControlLogs;
             this.sbtnMoreHighlight.TabIndex = 4;
             this.sbtnMoreHighlight.Text = "More ...";
@@ -2309,10 +2337,10 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnPagePrevious
             // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(1532, 214);
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(1364, 214);
             this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPagePrevious.Name = "sbtnPagePrevious";
-            this.sbtnPagePrevious.Size = new System.Drawing.Size(100, 27);
+            this.sbtnPagePrevious.Size = new System.Drawing.Size(87, 27);
             this.sbtnPagePrevious.StyleController = this.layoutControlLogs;
             this.sbtnPagePrevious.TabIndex = 6;
             this.sbtnPagePrevious.Text = "Previous Page";
@@ -2321,10 +2349,10 @@ namespace Analogy.CommonControls.UserControls
             // sBtnPageNext
             // 
             this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(1706, 214);
+            this.sBtnPageNext.Location = new System.Drawing.Point(1510, 214);
             this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnPageNext.Name = "sBtnPageNext";
-            this.sBtnPageNext.Size = new System.Drawing.Size(66, 27);
+            this.sBtnPageNext.Size = new System.Drawing.Size(64, 27);
             this.sBtnPageNext.StyleController = this.layoutControlLogs;
             this.sBtnPageNext.TabIndex = 7;
             this.sBtnPageNext.Text = "Next Page";
@@ -2333,10 +2361,10 @@ namespace Analogy.CommonControls.UserControls
             // sBtnLastPage
             // 
             this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(1776, 214);
+            this.sBtnLastPage.Location = new System.Drawing.Point(1578, 214);
             this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLastPage.Name = "sBtnLastPage";
-            this.sBtnLastPage.Size = new System.Drawing.Size(64, 27);
+            this.sBtnLastPage.Size = new System.Drawing.Size(62, 27);
             this.sBtnLastPage.StyleController = this.layoutControlLogs;
             this.sBtnLastPage.TabIndex = 8;
             this.sBtnLastPage.Text = "Last Page";
@@ -2347,7 +2375,7 @@ namespace Analogy.CommonControls.UserControls
             this.txtbHighlight.Location = new System.Drawing.Point(200, 214);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1167, 22);
+            this.txtbHighlight.Size = new System.Drawing.Size(1025, 22);
             this.txtbHighlight.StyleController = this.layoutControlLogs;
             this.txtbHighlight.TabIndex = 3;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
@@ -2368,7 +2396,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem26});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1847, 248);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1647, 248);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem22
@@ -2376,7 +2404,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem22.Control = this.txtbHighlight;
             this.layoutControlItem22.Location = new System.Drawing.Point(193, 207);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(1171, 31);
+            this.layoutControlItem22.Size = new System.Drawing.Size(1029, 31);
             this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem22.TextVisible = false;
             // 
@@ -2392,54 +2420,54 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.sBtnLastPage;
-            this.layoutControlItem24.Location = new System.Drawing.Point(1769, 207);
+            this.layoutControlItem24.Location = new System.Drawing.Point(1571, 207);
             this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(68, 31);
+            this.layoutControlItem24.Size = new System.Drawing.Size(66, 31);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
             // layoutControlItem25
             // 
             this.layoutControlItem25.Control = this.sBtnPageNext;
-            this.layoutControlItem25.Location = new System.Drawing.Point(1699, 207);
+            this.layoutControlItem25.Location = new System.Drawing.Point(1503, 207);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(70, 31);
+            this.layoutControlItem25.Size = new System.Drawing.Size(68, 31);
             this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem25.TextVisible = false;
             // 
             // layoutControlItem27
             // 
             this.layoutControlItem27.Control = this.sbtnPagePrevious;
-            this.layoutControlItem27.Location = new System.Drawing.Point(1525, 207);
+            this.layoutControlItem27.Location = new System.Drawing.Point(1357, 207);
             this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(104, 31);
+            this.layoutControlItem27.Size = new System.Drawing.Size(91, 31);
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextVisible = false;
             // 
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.sbtnPageFirst;
-            this.layoutControlItem28.Location = new System.Drawing.Point(1450, 207);
+            this.layoutControlItem28.Location = new System.Drawing.Point(1292, 207);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(75, 31);
+            this.layoutControlItem28.Size = new System.Drawing.Size(65, 31);
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem28.TextVisible = false;
             // 
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.sbtnMoreHighlight;
-            this.layoutControlItem21.Location = new System.Drawing.Point(1364, 207);
+            this.layoutControlItem21.Location = new System.Drawing.Point(1222, 207);
             this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(86, 31);
+            this.layoutControlItem21.Size = new System.Drawing.Size(70, 31);
             this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem21.TextVisible = false;
             // 
             // lblPageNumber
             // 
             this.lblPageNumber.AllowHotTrack = false;
-            this.lblPageNumber.Location = new System.Drawing.Point(1629, 207);
+            this.lblPageNumber.Location = new System.Drawing.Point(1448, 207);
             this.lblPageNumber.Name = "lblPageNumber";
-            this.lblPageNumber.Size = new System.Drawing.Size(70, 31);
+            this.lblPageNumber.Size = new System.Drawing.Size(55, 31);
             this.lblPageNumber.Text = "Page 1/1";
             this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
@@ -2449,7 +2477,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem26.Control = this.spltcMessages;
             this.layoutControlItem26.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(1837, 207);
+            this.layoutControlItem26.Size = new System.Drawing.Size(1637, 207);
             this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem26.TextVisible = false;
             // 
@@ -2738,7 +2766,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnBookmarkObject.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnBookmarkObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnBookmarkObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
             this.gridColumnBookmarkObject.MinWidth = 24;
             this.gridColumnBookmarkObject.Name = "gridColumnBookmarkObject";
             this.gridColumnBookmarkObject.OptionsColumn.AllowEdit = false;
@@ -3014,8 +3041,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs,
             this.dockPanelDetails,
             this.dockPanelFiltering,
-            this.dockPanelTree
-        });
+            this.dockPanelTree});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -3046,7 +3072,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 248);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(1647, 248);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // dockPanelDetails
@@ -3063,26 +3089,6 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelDetails.Size = new System.Drawing.Size(1853, 204);
             this.dockPanelDetails.Tabbed = true;
             this.dockPanelDetails.Text = "dockPanelDetails";
-            // 
-            // dockPanelTree
-            // 
-            this.dockPanelTree.Controls.Add(this.dockPanelTreeContainer);
-            this.dockPanelTree.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.dockPanelTree.FloatSize = new System.Drawing.Size(500, 800);
-            this.dockPanelTree.ID = new System.Guid("B1CBEA9D-31D1-466D-AC5F-9854CB01FD71");
-            this.dockPanelTree.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelTree.Name = "dockPanelTree";
-            this.dockPanelTree.OriginalSize = new System.Drawing.Size(200, 204);
-            this.dockPanelTree.Size = new System.Drawing.Size(400, 800);
-            this.dockPanelTree.Options.ShowCloseButton = true;
-            this.dockPanelTree.Text = "dockPanelTree";
-            // 
-            // controlContainer1
-            // 
-            this.dockPanelTreeContainer.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelTreeContainer.Name = "dockPanelTreeContainer";
-            this.dockPanelTreeContainer.Size = new System.Drawing.Size(400, 800);
-            this.dockPanelTreeContainer.TabIndex = 0;
             // 
             // dockPanelMessageInfo
             // 
@@ -3249,49 +3255,37 @@ namespace Analogy.CommonControls.UserControls
             this.meRawSQL.Size = new System.Drawing.Size(1362, 118);
             this.meRawSQL.TabIndex = 0;
             // 
+            // dockPanelTree
+            // 
+            this.dockPanelTree.Controls.Add(this.dockPanelTreeContainer);
+            this.dockPanelTree.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanelTree.FloatSize = new System.Drawing.Size(500, 800);
+            this.dockPanelTree.ID = new System.Guid("b1cbea9d-31d1-466d-ac5f-9854cb01fd71");
+            this.dockPanelTree.Location = new System.Drawing.Point(1653, 240);
+            this.dockPanelTree.Name = "dockPanelTree";
+            this.dockPanelTree.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelTree.Size = new System.Drawing.Size(200, 283);
+            this.dockPanelTree.Text = "dockPanelTree";
+            // 
+            // dockPanelTreeContainer
+            // 
+            this.dockPanelTreeContainer.Location = new System.Drawing.Point(6, 32);
+            this.dockPanelTreeContainer.Name = "dockPanelTreeContainer";
+            this.dockPanelTreeContainer.Size = new System.Drawing.Size(190, 247);
+            this.dockPanelTreeContainer.TabIndex = 0;
+            // 
             // filtersPopupMenu
             // 
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
-            // gridColumnRawText
-            // 
-            this.gridColumnRawText.Caption = "Raw Text";
-            this.gridColumnRawText.FieldName = "RawText";
-            this.gridColumnRawText.MinWidth = 25;
-            this.gridColumnRawText.Name = "gridColumnRawText";
-            this.gridColumnRawText.Visible = true;
-            this.gridColumnRawText.VisibleIndex = 12;
-            this.gridColumnRawText.Width = 94;
-            // 
-            // gridColumnLineNumber
-            // 
-            this.gridColumnLineNumber.Caption = "Line Number";
-            this.gridColumnLineNumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumnLineNumber.FieldName = "LineNumber";
-            this.gridColumnLineNumber.MinWidth = 25;
-            this.gridColumnLineNumber.Name = "gridColumnLineNumber";
-            this.gridColumnLineNumber.Visible = true;
-            this.gridColumnLineNumber.VisibleIndex = 13;
-            this.gridColumnLineNumber.Width = 94;
-            // 
-            // gridColumnMethodName
-            // 
-            this.gridColumnMethodName.Caption = "Method Name";
-            this.gridColumnMethodName.FieldName = "MethodName";
-            this.gridColumnMethodName.MinWidth = 25;
-            this.gridColumnMethodName.Name = "gridColumnMethodName";
-            this.gridColumnMethodName.Visible = true;
-            this.gridColumnMethodName.VisibleIndex = 14;
-            this.gridColumnMethodName.Width = 94;
-            // 
             // LogMessagesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dockPanelTree);
             this.Controls.Add(this.dockPanelFiltering);
             this.Controls.Add(this.dockPanelDetails);
-            this.Controls.Add(this.dockPanelTree);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -3393,12 +3387,9 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
             this.dockPanelDetails.ResumeLayout(false);
-            this.dockPanelTree.ResumeLayout(false);
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             this.controlContainer1.PerformLayout();
-            this.dockPanelTreeContainer.ResumeLayout(false);
-            this.dockPanelTreeContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).EndInit();
             this.scMessageDetails.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel2)).EndInit();
@@ -3418,6 +3409,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.PerformLayout();
             this.xtpSQLraw.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).EndInit();
+            this.dockPanelTree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
