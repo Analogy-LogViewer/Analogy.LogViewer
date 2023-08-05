@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Analogy.DataTypes;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
     public partial class PieChartUC : DevExpress.XtraEditors.XtraUserControl
     {

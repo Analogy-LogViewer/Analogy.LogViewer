@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using Analogy.DataTypes;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
     public partial class XtraUCDirectoryListing : XtraUserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace Analogy
+﻿namespace Analogy.UserControls
 {
     partial class CombineFilesUC
     {
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this._folderAndFileSystemUc1 = new Analogy.FolderAndFileSystemUC();
-            this.processFilesUC1 = new Analogy.FilesOperationsUC();
+            this._folderAndFileSystemUc1 = new Analogy.UserControls.FolderAndFileSystemUC();
+            this.processFilesUC1 = new Analogy.UserControls.FilesOperationsUC();
             this.panel3 = new System.Windows.Forms.Panel();
             this.sBtnSave = new DevExpress.XtraEditors.SimpleButton();
             this.sBtnCombined = new DevExpress.XtraEditors.SimpleButton();

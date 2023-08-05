@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
     public partial class DataVisualizerUC : DevExpress.XtraEditors.XtraUserControl
     {

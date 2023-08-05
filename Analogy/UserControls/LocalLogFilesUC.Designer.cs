@@ -1,8 +1,4 @@
-﻿using Analogy.UserControls;
-using DevExpress.XtraEditors;
-using DevExpress.XtraGrid.Views.Grid;
-
-namespace Analogy
+﻿namespace Analogy.UserControls
 {
     partial class LocalLogFilesUC
     {
@@ -42,7 +38,7 @@ namespace Analogy
             System.Threading.CancellationTokenSource cancellationTokenSource1 = new System.Threading.CancellationTokenSource();
             this.spltMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.splcLeft = new System.Windows.Forms.SplitContainer();
-            this.folderTreeViewUC1 = new Analogy.FolderTreeViewUC();
+            this.folderTreeViewUC1 = new Analogy.UserControls.FolderTreeViewUC();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colChanged = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -61,7 +57,7 @@ namespace Analogy
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.chkbSelectionMode = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditRecursiveLoad = new DevExpress.XtraEditors.CheckEdit();
-            this.ucLogs1 = new UCLogs();
+            this.ucLogs1 = new Analogy.UserControls.UCLogs();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tsPrimary = new System.Windows.Forms.ToolStrip();
@@ -487,7 +483,7 @@ namespace Analogy
         private DevExpress.XtraBars.BarButtonItem bBtnOpenFolder;
         private DevExpress.XtraBars.BarButtonItem bBtnRefresh;
         private DevExpress.XtraBars.BarButtonItem bBtnDelete;
-        private FolderTreeViewUC folderTreeViewUC1;
+        private Analogy.UserControls.FolderTreeViewUC folderTreeViewUC1;
         private DevExpress.XtraBars.BarButtonItem bBtnSelectAll;
         private DevExpress.XtraEditors.CheckEdit checkEditRecursiveLoad;
         private DevExpress.XtraTreeList.TreeList treeList1;

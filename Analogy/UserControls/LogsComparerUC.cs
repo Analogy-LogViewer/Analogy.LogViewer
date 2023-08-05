@@ -5,9 +5,10 @@ using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Tools;
 using Microsoft.Extensions.Logging;
 
-namespace Analogy.Tools
+namespace Analogy.UserControls
 {
     public partial class LogsComparerUC : DevExpress.XtraEditors.XtraUserControl
     {

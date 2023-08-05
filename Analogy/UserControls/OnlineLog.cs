@@ -7,7 +7,7 @@ using Analogy.DataTypes;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
 
     public partial class OnlineUCLogs : XtraUserControl, IUserControlWithUCLogs

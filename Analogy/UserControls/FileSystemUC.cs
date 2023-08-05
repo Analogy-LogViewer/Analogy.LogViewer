@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
     public partial class FileSystemUC : XtraUserControl
     {

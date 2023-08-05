@@ -7,12 +7,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Utils;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
 
     public partial class LocalLogFilesUC : XtraUserControl, IUserControlWithUCLogs

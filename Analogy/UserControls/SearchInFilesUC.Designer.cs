@@ -1,4 +1,4 @@
-﻿namespace Analogy
+﻿namespace Analogy.UserControls
 {
     partial class SearchInFilesUC
     {
@@ -31,8 +31,8 @@
             this.txtbSearch = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this._folderAndFileSystemUc1 = new Analogy.FolderAndFileSystemUC();
-            this.processFilesUC1 = new Analogy.FilesOperationsUC();
+            this._folderAndFileSystemUc1 = new Analogy.UserControls.FolderAndFileSystemUC();
+            this.processFilesUC1 = new Analogy.UserControls.FilesOperationsUC();
             this.sBtnSearch = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -129,8 +129,8 @@
 
         #endregion
 
-        private FolderAndFileSystemUC _folderAndFileSystemUc1;
-        private FilesOperationsUC processFilesUC1;
+        private Analogy.UserControls.FolderAndFileSystemUC _folderAndFileSystemUc1;
+        private Analogy.UserControls.FilesOperationsUC processFilesUC1;
         private System.Windows.Forms.TextBox txtbSearch;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel1;

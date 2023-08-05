@@ -4,7 +4,7 @@ using Analogy.Interfaces;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
 
     public partial class BookmarkLog : XtraUserControl, IUserControlWithUCLogs

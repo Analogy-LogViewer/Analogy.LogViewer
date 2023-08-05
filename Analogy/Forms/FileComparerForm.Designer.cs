@@ -31,7 +31,7 @@ namespace Analogy.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileComparerForm));
-            this.logsComparerUC1 = new Analogy.Tools.LogsComparerUC();
+            this.logsComparerUC1 = new Analogy.UserControls.LogsComparerUC();
             this.SuspendLayout();
             // 
             // logsComparerUC1
@@ -60,6 +60,6 @@ namespace Analogy.Forms
 
         #endregion
 
-        private LogsComparerUC logsComparerUC1;
+        private Analogy.UserControls.LogsComparerUC logsComparerUC1;
     }
 }

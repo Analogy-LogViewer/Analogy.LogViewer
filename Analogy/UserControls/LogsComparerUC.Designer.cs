@@ -1,6 +1,4 @@
-﻿using DevExpress.XtraEditors.Controls;
-
-namespace Analogy.Tools
+﻿namespace Analogy.UserControls
 {
     partial class LogsComparerUC
     {

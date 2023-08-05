@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using DevExpress.XtraEditors;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
     public partial class UtilityUC : XtraUserControl
     {

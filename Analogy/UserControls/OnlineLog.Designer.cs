@@ -1,7 +1,5 @@
-﻿using Analogy.UserControls;
-using DevExpress.XtraGrid.Views.Grid;
-
-namespace Analogy
+﻿
+namespace Analogy.UserControls
 {
     partial class OnlineUCLogs
     {

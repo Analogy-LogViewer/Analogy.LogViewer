@@ -1,4 +1,4 @@
-﻿namespace Analogy
+﻿namespace Analogy.UserControls
 {
     partial class FolderTreeViewUC
     {
@@ -36,7 +36,7 @@
             this.sbtnRecent = new DevExpress.XtraEditors.SimpleButton();
             this.cmsFolders = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this._fileSystemUcFileSystem1 = new Analogy.FileSystemUC();
+            this._fileSystemUcFileSystem1 = new Analogy.UserControls.FileSystemUC();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,7 +135,7 @@
         private System.Windows.Forms.TextBox txtbFolder;
         private System.Windows.Forms.ImageList imageList;
         private DevExpress.XtraEditors.SimpleButton btnOpenFolder;
-        private FileSystemUC _fileSystemUcFileSystem1;
+        private Analogy.UserControls.FileSystemUC _fileSystemUcFileSystem1;
         private DevExpress.XtraEditors.SimpleButton sbtnRecent;
         private System.Windows.Forms.ContextMenuStrip cmsFolders;
     }

@@ -1,4 +1,4 @@
-﻿namespace Analogy
+﻿namespace Analogy.UserControls
 {
     partial class FolderAndFileSystemUC
     {
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FolderAndFileSystemUC));
             this.splcLeft = new System.Windows.Forms.SplitContainer();
-            this.tvFolderUC = new Analogy.FolderTreeViewUC();
+            this.tvFolderUC = new Analogy.UserControls.FolderTreeViewUC();
             this.lBoxFiles = new DevExpress.XtraEditors.ListBoxControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -250,7 +250,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splcLeft;
-        private FolderTreeViewUC tvFolderUC;
+        private Analogy.UserControls.FolderTreeViewUC tvFolderUC;
         private DevExpress.XtraEditors.ListBoxControl lBoxFiles;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.BarManager barManager1;

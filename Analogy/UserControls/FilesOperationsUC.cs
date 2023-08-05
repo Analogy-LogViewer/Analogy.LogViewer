@@ -9,7 +9,7 @@ using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
 using Microsoft.Extensions.Logging;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
     public partial class FilesOperationsUC : XtraUserControl, ILogMessageCreatedHandler
     {

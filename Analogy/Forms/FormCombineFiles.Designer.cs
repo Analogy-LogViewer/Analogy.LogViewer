@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCombineFiles));
-            this.combineFilesUC1 = new Analogy.CombineFilesUC();
+            this.combineFilesUC1 = new Analogy.UserControls.CombineFilesUC();
             this.SuspendLayout();
             // 
             // combineFilesUC1
@@ -62,6 +62,6 @@
 
         #endregion
 
-        private CombineFilesUC combineFilesUC1;
+        private Analogy.UserControls.CombineFilesUC combineFilesUC1;
     }
 }

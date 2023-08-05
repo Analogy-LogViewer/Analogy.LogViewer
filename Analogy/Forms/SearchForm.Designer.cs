@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchForm));
-            this.searchInFilesUC1 = new Analogy.SearchInFilesUC();
+            this.searchInFilesUC1 = new Analogy.UserControls.SearchInFilesUC();
             this.SuspendLayout();
             // 
             // searchInFilesUC1
@@ -63,6 +63,6 @@
 
         #endregion
 
-        private SearchInFilesUC searchInFilesUC1;
+        private Analogy.UserControls.SearchInFilesUC searchInFilesUC1;
     }
 }

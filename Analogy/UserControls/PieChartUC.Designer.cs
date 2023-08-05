@@ -1,4 +1,4 @@
-﻿namespace Analogy
+﻿namespace Analogy.UserControls
 {
     partial class PieChartUC
     {

@@ -1,14 +1,7 @@
 ﻿using Analogy.Common.Interfaces;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.UserControls
 {

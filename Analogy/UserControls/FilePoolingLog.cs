@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
 using Message = System.Windows.Forms.Message;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
 
     public partial class FilePoolingUCLogs : XtraUserControl, IUserControlWithUCLogs

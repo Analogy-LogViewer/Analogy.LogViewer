@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using Analogy.DataTypes;
 using DevExpress.XtraEditors;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
     public partial class FolderAndFileSystemUC : XtraUserControl
     {

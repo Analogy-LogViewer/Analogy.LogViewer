@@ -10,7 +10,7 @@ using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Forms;
 
-namespace Analogy
+namespace Analogy.UserControls
 {
 
     public partial class ClientServerUCLog : XtraUserControl, IUserControlWithUCLogs
