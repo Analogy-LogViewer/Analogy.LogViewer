@@ -43,9 +43,12 @@ namespace Analogy.CommonControls.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMessagesUC));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
@@ -67,10 +70,7 @@ namespace Analogy.CommonControls.UserControls
             DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentMessages = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -977,9 +977,9 @@ namespace Analogy.CommonControls.UserControls
             this.bbiJsonColumn.Id = 92;
             this.bbiJsonColumn.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
             this.bbiJsonColumn.Name = "bbiJsonColumn";
-            toolTipItem1.Text = "Choose which column will be used for the Json inline parsing";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbiJsonColumn.SuperTip = superToolTip1;
+            toolTipItem10.Text = "Choose which column will be used for the Json inline parsing";
+            superToolTip10.Items.Add(toolTipItem10);
+            this.bbiJsonColumn.SuperTip = superToolTip10;
             // 
             // bbiGoToActiveMessage
             // 
@@ -1018,8 +1018,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbtnSaveViewAgnostic.Caption = "Save current view in Analogy Format (agnostic to Specific implementation)";
             this.bbtnSaveViewAgnostic.Id = 30;
-            this.bbtnSaveViewAgnostic.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.Image")));
-            this.bbtnSaveViewAgnostic.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.LargeImage")));
+            this.bbtnSaveViewAgnostic.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bbtnSaveViewAgnostic.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.bbtnSaveViewAgnostic.Name = "bbtnSaveViewAgnostic";
             this.bbtnSaveViewAgnostic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSaveViewAgnostic_ItemClick);
             // 
@@ -1028,8 +1028,8 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnSaveCurrentSelectionAnalogyFormat.Caption = "Save current rows selection in Analogy Format (agnostic to Specific implementatio" +
     "n)";
             this.bBtnSaveCurrentSelectionAnalogyFormat.Id = 40;
-            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image")));
-            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage")));
+            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
+            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveDialog_32x32;
             this.bBtnSaveCurrentSelectionAnalogyFormat.Name = "bBtnSaveCurrentSelectionAnalogyFormat";
             this.bBtnSaveCurrentSelectionAnalogyFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionAnalogyFormat_ItemClick);
             // 
@@ -1037,8 +1037,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnSaveEntireLog.Caption = "Save entire Log (custom Format)";
             this.bBtnSaveEntireLog.Id = 25;
-            this.bBtnSaveEntireLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.Image")));
-            this.bBtnSaveEntireLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.LargeImage")));
+            this.bBtnSaveEntireLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bBtnSaveEntireLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.bBtnSaveEntireLog.Name = "bBtnSaveEntireLog";
             this.bBtnSaveEntireLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnSaveEntireLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveEntireLog_ItemClick);
@@ -1047,8 +1047,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnSaveLog.Caption = "Save current view (custom Format)";
             this.bBtnSaveLog.Id = 4;
-            this.bBtnSaveLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.Image")));
-            this.bBtnSaveLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.LargeImage")));
+            this.bBtnSaveLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bBtnSaveLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveDialog_32x32;
             this.bBtnSaveLog.Name = "bBtnSaveLog";
             this.bBtnSaveLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnSaveLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveLog_ItemClick);
@@ -1057,8 +1057,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnSaveCurrentSelectionCustomFormat.Caption = "save current rows selection (custom Format)";
             this.bBtnSaveCurrentSelectionCustomFormat.Id = 39;
-            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image")));
-            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage")));
+            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.bBtnSaveCurrentSelectionCustomFormat.Name = "bBtnSaveCurrentSelectionCustomFormat";
             this.bBtnSaveCurrentSelectionCustomFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionCustomFormat_ItemClick);
             // 
@@ -1087,8 +1087,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnUndockView.Caption = "Undock View (No Filtering)";
             this.bBtnUndockView.Id = 24;
-            this.bBtnUndockView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.Image")));
-            this.bBtnUndockView.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.LargeImage")));
+            this.bBtnUndockView.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnUndockView.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnUndockView.Name = "bBtnUndockView";
             this.bBtnUndockView.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnUndockView.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockView_ItemClick);
@@ -1097,8 +1097,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnUndockViewPerProcess.Caption = "Undock View per process/Module";
             this.bBtnUndockViewPerProcess.Id = 35;
-            this.bBtnUndockViewPerProcess.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockViewPerProcess.ImageOptions.Image")));
-            this.bBtnUndockViewPerProcess.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockViewPerProcess.ImageOptions.LargeImage")));
+            this.bBtnUndockViewPerProcess.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnUndockViewPerProcess.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnUndockViewPerProcess.Name = "bBtnUndockViewPerProcess";
             this.bBtnUndockViewPerProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockViewPerProcess_ItemClick);
             // 
@@ -1106,8 +1106,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnUndockSelection.Caption = "Undock rows selection";
             this.bBtnUndockSelection.Id = 41;
-            this.bBtnUndockSelection.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockSelection.ImageOptions.Image")));
-            this.bBtnUndockSelection.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockSelection.ImageOptions.LargeImage")));
+            this.bBtnUndockSelection.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnUndockSelection.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnUndockSelection.Name = "bBtnUndockSelection";
             this.bBtnUndockSelection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockSelection_ItemClick);
             // 
@@ -1157,8 +1157,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnExportExcel.Caption = "Export To Excel";
             this.bBtnExportExcel.Id = 21;
-            this.bBtnExportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.Image")));
-            this.bBtnExportExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.LargeImage")));
+            this.bBtnExportExcel.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ExportToXLS_16x16;
+            this.bBtnExportExcel.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ExportToXLS_32x32;
             this.bBtnExportExcel.Name = "bBtnExportExcel";
             this.bBtnExportExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportExcel_ItemClick);
             // 
@@ -1175,8 +1175,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnExportHtml.Caption = "Export To Html";
             this.bBtnExportHtml.Id = 23;
-            this.bBtnExportHtml.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.Image")));
-            this.bBtnExportHtml.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.LargeImage")));
+            this.bBtnExportHtml.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ExportToHTML_16x16;
+            this.bBtnExportHtml.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ExportToHTML_32x32;
             this.bBtnExportHtml.Name = "bBtnExportHtml";
             this.bBtnExportHtml.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnExportHtml.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1222,7 +1222,7 @@ namespace Analogy.CommonControls.UserControls
             // wsLogs
             // 
             this.wsLogs.TargetControl = this;
-            this.wsLogs.TransitionType = pushTransition1;
+            this.wsLogs.TransitionType = pushTransition2;
             // 
             // bsiTimeOffset
             // 
@@ -1863,13 +1863,13 @@ namespace Analogy.CommonControls.UserControls
             this.ceModulesProcess.Properties.Caption = "Processes/Modules (Include/Exclude):";
             this.ceModulesProcess.Size = new System.Drawing.Size(245, 24);
             this.ceModulesProcess.StyleController = this.layoutControl1;
-            toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipTitleItem9.Text = "Process / Module Property Filtering (include and exclude)";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip2.Items.Add(toolTipTitleItem1);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceModulesProcess.SuperTip = superToolTip2;
+            superToolTip11.Items.Add(toolTipTitleItem9);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.ceModulesProcess.SuperTip = superToolTip11;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1904,13 +1904,13 @@ namespace Analogy.CommonControls.UserControls
             this.ceSources.Properties.Caption = "Sources (Include/Exclude):";
             this.ceSources.Size = new System.Drawing.Size(182, 24);
             this.ceSources.StyleController = this.layoutControl1;
-            toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipTitleItem1.Text = "Source Propery Filtering (include and exclude)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip3.Items.Add(toolTipTitleItem2);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.ceSources.SuperTip = superToolTip3;
+            superToolTip2.Items.Add(toolTipTitleItem1);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.ceSources.SuperTip = superToolTip2;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1969,12 +1969,12 @@ namespace Analogy.CommonControls.UserControls
             this.ceExcludeText.Properties.Caption = "Exclude Text:";
             this.ceExcludeText.Size = new System.Drawing.Size(105, 24);
             this.ceExcludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip4.Items.Add(toolTipTitleItem3);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.ceExcludeText.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Text Property Filtering (exclude)";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip3.Items.Add(toolTipTitleItem2);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceExcludeText.SuperTip = superToolTip3;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnPreDefinedFilters
@@ -2020,12 +2020,12 @@ namespace Analogy.CommonControls.UserControls
             this.ceIncludeText.Properties.Caption = "Include Text:";
             this.ceIncludeText.Size = new System.Drawing.Size(103, 24);
             this.ceIncludeText.StyleController = this.layoutControl1;
-            toolTipTitleItem4.Text = "Text Property Filtering";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip5.Items.Add(toolTipTitleItem4);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceIncludeText.SuperTip = superToolTip5;
+            toolTipTitleItem3.Text = "Text Property Filtering";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip4.Items.Add(toolTipTitleItem3);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceIncludeText.SuperTip = superToolTip4;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
@@ -2808,11 +2808,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceFilterPanelFilter.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelFilter.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelFilter.Size = new System.Drawing.Size(184, 24);
-            toolTipTitleItem6.Text = "AND Log Level Filtering";
-            toolTipItem7.LeftIndent = 6;
-            superToolTip7.Items.Add(toolTipTitleItem6);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.ceFilterPanelFilter.SuperTip = superToolTip7;
+            toolTipTitleItem4.Text = "AND Log Level Filtering";
+            toolTipItem5.LeftIndent = 6;
+            superToolTip5.Items.Add(toolTipTitleItem4);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.ceFilterPanelFilter.SuperTip = superToolTip5;
             this.ceFilterPanelFilter.TabIndex = 30;
             this.ceFilterPanelFilter.TabStop = false;
             // 
@@ -2826,11 +2826,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceFilterPanelSearch.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceFilterPanelSearch.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelSearch.Size = new System.Drawing.Size(184, 24);
-            toolTipTitleItem5.Text = "AND Log Level Filtering";
-            toolTipItem6.LeftIndent = 6;
-            superToolTip6.Items.Add(toolTipTitleItem5);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.ceFilterPanelSearch.SuperTip = superToolTip6;
+            toolTipTitleItem6.Text = "AND Log Level Filtering";
+            toolTipItem7.LeftIndent = 6;
+            superToolTip7.Items.Add(toolTipTitleItem6);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.ceFilterPanelSearch.SuperTip = superToolTip7;
             this.ceFilterPanelSearch.TabIndex = 29;
             // 
             // labelControl1
@@ -2932,13 +2932,13 @@ namespace Analogy.CommonControls.UserControls
             this.ceLogLevelOr.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelOr.Properties.RadioGroupIndex = 5;
             this.ceLogLevelOr.Size = new System.Drawing.Size(66, 22);
-            toolTipTitleItem7.Text = "Or Log level Filtering";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "The OR type allows to always show some log levels regardless the current filters." +
+            toolTipTitleItem5.Text = "Or Log level Filtering";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "The OR type allows to always show some log levels regardless the current filters." +
     " This is usefull when you want to see some log level alongs with other filters";
-            superToolTip8.Items.Add(toolTipTitleItem7);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.ceLogLevelOr.SuperTip = superToolTip8;
+            superToolTip6.Items.Add(toolTipTitleItem5);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.ceLogLevelOr.SuperTip = superToolTip6;
             this.ceLogLevelOr.TabIndex = 1;
             this.ceLogLevelOr.TabStop = false;
             // 
@@ -2953,11 +2953,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceLogLevelAnd.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.Radio;
             this.ceLogLevelAnd.Properties.RadioGroupIndex = 5;
             this.ceLogLevelAnd.Size = new System.Drawing.Size(61, 22);
-            toolTipTitleItem8.Text = "AND Log Level Filtering";
-            toolTipItem9.LeftIndent = 6;
-            superToolTip9.Items.Add(toolTipTitleItem8);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.ceLogLevelAnd.SuperTip = superToolTip9;
+            toolTipTitleItem7.Text = "AND Log Level Filtering";
+            toolTipItem8.LeftIndent = 6;
+            superToolTip8.Items.Add(toolTipTitleItem7);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.ceLogLevelAnd.SuperTip = superToolTip8;
             this.ceLogLevelAnd.TabIndex = 0;
             // 
             // LogGridPopupMenu
@@ -3005,10 +3005,10 @@ namespace Analogy.CommonControls.UserControls
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.documentMessages});
             this.tabbedView1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            dockingContainer1.Element = this.documentGroup1;
-            dockingContainer1.Length.UnitValue = 1.4189383070301291D;
+            dockingContainer2.Element = this.documentGroup1;
+            dockingContainer2.Length.UnitValue = 1.4189383070301291D;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer1});
+            dockingContainer2});
             this.tabbedView1.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // dockManager1
