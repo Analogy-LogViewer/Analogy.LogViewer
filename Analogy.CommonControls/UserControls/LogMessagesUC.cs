@@ -202,7 +202,7 @@ namespace Analogy.CommonControls.UserControls
 
         public LogMessagesUC()
         {
-            Id = Guid.NewGuid();
+            
             InitializeComponent();
             DateTimePicker = new DateTimeSelectionUC();
             JsonColumnChooser = new JsonColumnChooserUC();
@@ -210,6 +210,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 return;
             }
+            Id = Guid.NewGuid();
             SetupDependencies();
          
             PopupControlContainer datePopup = new PopupControlContainer();
