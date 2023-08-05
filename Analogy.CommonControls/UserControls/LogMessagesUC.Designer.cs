@@ -1808,7 +1808,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnIncludeModules
             // 
-            this.sbtnIncludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeModules.ImageOptions.Image")));
+            this.sbtnIncludeModules.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnIncludeModules.Location = new System.Drawing.Point(890, 100);
             this.sbtnIncludeModules.Name = "sbtnIncludeModules";
             this.sbtnIncludeModules.Size = new System.Drawing.Size(26, 27);
@@ -1825,8 +1825,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceOlderThanFilter.Properties.Appearance.Options.UseImage = true;
             this.ceOlderThanFilter.Properties.AutoWidth = true;
             this.ceOlderThanFilter.Properties.Caption = "To:";
-            this.ceOlderThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceOlderThanFilter.Properties.ImageOptions.ImageChecked")));
-            this.ceOlderThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceOlderThanFilter.Properties.ImageOptions.ImageUnchecked")));
             this.ceOlderThanFilter.Size = new System.Drawing.Size(48, 24);
             this.ceOlderThanFilter.StyleController = this.layoutControl1;
             this.ceOlderThanFilter.TabIndex = 29;
@@ -1863,8 +1861,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceNewerThanFilter.Properties.Appearance.Options.UseImage = true;
             this.ceNewerThanFilter.Properties.AutoWidth = true;
             this.ceNewerThanFilter.Properties.Caption = "From:";
-            this.ceNewerThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceNewerThanFilter.Properties.ImageOptions.ImageChecked")));
-            this.ceNewerThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceNewerThanFilter.Properties.ImageOptions.ImageUnchecked")));
             this.ceNewerThanFilter.Size = new System.Drawing.Size(63, 24);
             this.ceNewerThanFilter.StyleController = this.layoutControl1;
             this.ceNewerThanFilter.TabIndex = 28;
@@ -1876,8 +1872,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceModulesProcess.Name = "ceModulesProcess";
             this.ceModulesProcess.Properties.AutoWidth = true;
             this.ceModulesProcess.Properties.Caption = "Processes/Modules (Include/Exclude):";
-            this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
-            this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
             this.ceModulesProcess.Size = new System.Drawing.Size(245, 24);
             this.ceModulesProcess.StyleController = this.layoutControl1;
             toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
@@ -1903,7 +1897,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnIncludeSources
             // 
-            this.sbtnIncludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeSources.ImageOptions.Image")));
+            this.sbtnIncludeSources.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnIncludeSources.Location = new System.Drawing.Point(1455, 69);
             this.sbtnIncludeSources.Name = "sbtnIncludeSources";
             this.sbtnIncludeSources.Size = new System.Drawing.Size(34, 27);
@@ -1919,8 +1913,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceSources.Name = "ceSources";
             this.ceSources.Properties.AutoWidth = true;
             this.ceSources.Properties.Caption = "Sources (Include/Exclude):";
-            this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
-            this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
             this.ceSources.Size = new System.Drawing.Size(182, 24);
             this.ceSources.StyleController = this.layoutControl1;
             toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
@@ -1948,7 +1940,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnTextExclude
             // 
-            this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
+            this.sbtnTextExclude.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnTextExclude.Location = new System.Drawing.Point(1357, 38);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
             this.sbtnTextExclude.Size = new System.Drawing.Size(24, 27);
@@ -1986,8 +1978,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceExcludeText.Name = "ceExcludeText";
             this.ceExcludeText.Properties.AutoWidth = true;
             this.ceExcludeText.Properties.Caption = "Exclude Text:";
-            this.ceExcludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageChecked")));
-            this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceExcludeText.Size = new System.Drawing.Size(105, 24);
             this.ceExcludeText.StyleController = this.layoutControl1;
             toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
@@ -2022,7 +2012,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnTextInclude
             // 
-            this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
+            this.sbtnTextInclude.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnTextInclude.Location = new System.Drawing.Point(1426, 7);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(24, 27);
@@ -2039,8 +2029,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceIncludeText.Properties.Appearance.Options.UseImage = true;
             this.ceIncludeText.Properties.AutoWidth = true;
             this.ceIncludeText.Properties.Caption = "Include Text:";
-            this.ceIncludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageChecked")));
-            this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceIncludeText.Size = new System.Drawing.Size(103, 24);
             this.ceIncludeText.StyleController = this.layoutControl1;
             toolTipTitleItem4.Text = "Text Property Filtering";

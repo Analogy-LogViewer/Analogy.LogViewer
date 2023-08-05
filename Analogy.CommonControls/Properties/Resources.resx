@@ -277,9 +277,6 @@
   <data name="OperatingSystem_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OperatingSystem_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ServerON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ServerON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="First_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\First_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -493,9 +490,6 @@
   <data name="PieLabelsDataLabels_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PieLabelsDataLabels_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="serverOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\serverOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="log4net32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\log4net32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -600,6 +594,12 @@
   </data>
   <data name="Cancel_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancel_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Close_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Close_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Database_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Database_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

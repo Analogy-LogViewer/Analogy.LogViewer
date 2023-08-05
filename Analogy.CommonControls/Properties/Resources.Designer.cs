@@ -403,6 +403,26 @@ namespace Analogy.CommonControls.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Close_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Close_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Close_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap copy {
             get {
                 object obj = ResourceManager.GetObject("copy", resourceCulture);
@@ -1436,26 +1456,6 @@ namespace Analogy.CommonControls.Properties {
         internal static System.Drawing.Bitmap ServerMode_32x32 {
             get {
                 object obj = ResourceManager.GetObject("ServerMode_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap serverOff {
-            get {
-                object obj = ResourceManager.GetObject("serverOff", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ServerON {
-            get {
-                object obj = ResourceManager.GetObject("ServerON", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
