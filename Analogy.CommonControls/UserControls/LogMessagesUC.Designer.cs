@@ -1205,8 +1205,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bsiLayouts.Caption = "Windows Layouts";
             this.bsiLayouts.Id = 73;
-            this.bsiLayouts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiLayouts.ImageOptions.Image")));
-            this.bsiLayouts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiLayouts.ImageOptions.LargeImage")));
+            this.bsiLayouts.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.TableLayout_16x16;
+            this.bsiLayouts.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.TableLayout_32x32;
             this.bsiLayouts.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bwmiLayout)});
             this.bsiLayouts.Name = "bsiLayouts";
@@ -1228,8 +1228,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bsiTimeOffset.Caption = "Change Time offset";
             this.bsiTimeOffset.Id = 83;
-            this.bsiTimeOffset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.Image")));
-            this.bsiTimeOffset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.LargeImage")));
+            this.bsiTimeOffset.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bsiTimeOffset.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bsiTimeOffset.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffset),
             new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffsetPredefined),
