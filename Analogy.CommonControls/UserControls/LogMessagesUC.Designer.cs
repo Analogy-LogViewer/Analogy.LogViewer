@@ -1133,8 +1133,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnImport.Caption = "Import Log";
             this.bBtnImport.Id = 5;
-            this.bBtnImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnImport.ImageOptions.Image")));
-            this.bBtnImport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnImport.ImageOptions.LargeImage")));
+            this.bBtnImport.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Insert_16x16;
+            this.bBtnImport.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Insert_32x32;
             this.bBtnImport.Name = "bBtnImport";
             this.bBtnImport.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnImport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1144,8 +1144,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bSMExports.Caption = "Export Log";
             this.bSMExports.Id = 20;
-            this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
-            this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
+            this.bSMExports.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Export_16x16;
+            this.bSMExports.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Export_32x32;
             this.bSMExports.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportCSV),
@@ -1195,8 +1195,8 @@ namespace Analogy.CommonControls.UserControls
             this.bbiScreenshot.Caption = "Take screenshot";
             this.bbiScreenshot.Hint = "Take screenshot of the messages control";
             this.bbiScreenshot.Id = 27;
-            this.bbiScreenshot.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.Image")));
-            this.bbiScreenshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.LargeImage")));
+            this.bbiScreenshot.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Image_16x16;
+            this.bbiScreenshot.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ImportImage_32x32;
             this.bbiScreenshot.Name = "bbiScreenshot";
             this.bbiScreenshot.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbiScreenshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiScreenshot_ItemClick);
@@ -1467,8 +1467,8 @@ namespace Analogy.CommonControls.UserControls
             this.bbtnCancel.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.bbtnCancel.Caption = "Cancel Processing";
             this.bbtnCancel.Id = 66;
-            this.bbtnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnCancel.ImageOptions.Image")));
-            this.bbtnCancel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCancel.ImageOptions.LargeImage")));
+            this.bbtnCancel.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
+            this.bbtnCancel.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Close_32x32;
             this.bbtnCancel.Name = "bbtnCancel";
             this.bbtnCancel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnCancel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1553,8 +1553,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.barButtonItem3.Caption = "Copy";
             this.barButtonItem3.Id = 8;
-            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.barButtonItem3.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -3059,7 +3058,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // dockPanelDetails
             // 
-            this.dockPanelDetails.ActiveChild = this.dockPanelBookmarks;
+            this.dockPanelDetails.ActiveChild = this.dockPanelMessageInfo;
             this.dockPanelDetails.Controls.Add(this.dockPanelMessageInfo);
             this.dockPanelDetails.Controls.Add(this.dockPanelBookmarks);
             this.dockPanelDetails.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
