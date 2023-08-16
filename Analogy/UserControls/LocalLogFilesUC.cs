@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraEditors.Controls;
 
 namespace Analogy.UserControls
 {
@@ -63,7 +64,7 @@ namespace Analogy.UserControls
             {
                 return;
             }
-
+            SetupEventHandlers();
             folderTreeViewUC1.FolderChanged += FolderTreeViewUC1_FolderChanged;
             ucLogs1.HideRefreshAndScrolling();
             if (extrenalFiles.Any())
@@ -83,7 +84,14 @@ namespace Analogy.UserControls
             }
             ucLogs1.OnFocusedRowChanged += UcLogs1_OnFocusedRowChanged;
         }
-
+        private void SetupEventHandlers()
+        {
+            sbtnLoadCheckedFiles.Click += async (s, e) =>
+            {
+                var nodes = treeList1.GetAllCheckedNodes().Select(node => (string)node.GetValue(colFullPath)).ToList();
+                await LoadFilesAsync(nodes, chkbSelectionMode.Checked);
+            };
+        }
         private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
         {
             if (data.file is null)

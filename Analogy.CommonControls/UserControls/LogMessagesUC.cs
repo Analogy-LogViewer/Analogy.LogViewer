@@ -102,8 +102,8 @@ namespace Analogy.CommonControls.UserControls
         private string OldTextInclude = string.Empty;
         private string OldTextExclude = string.Empty;
         public int fileLoadingCount;
-        public List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
-        public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
+        private List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
+        private List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
         private IUserSettingsManager Settings { get; set; }
@@ -1343,6 +1343,10 @@ namespace Analogy.CommonControls.UserControls
             gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
             gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
             gridColumnRawText.FieldName = Common.CommonUtils.ColumnRawText;
+            gridColumnBookmarkObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
+            gridColumnObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
+            gridColumnObject.Name = Common.CommonUtils.AnalogyMessageColumn;
+            gridColumnObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
             bsiProgress.Caption = string.Empty;
             bsiProgress.Visibility = Settings.ShowProcessedCounter ? BarItemVisibility.Always : BarItemVisibility.Never;
             switch (Settings.TimeOffsetType)

@@ -88,6 +88,9 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnThread = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnRawText = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnLineNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnMethodName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.chkbHighlight = new DevExpress.XtraEditors.CheckEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -109,7 +112,7 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnSaveLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnSaveCurrentSelectionCustomFormat = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnFullGrid = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.bsiUndock = new DevExpress.XtraBars.BarSubItem();
             this.bBtnUndockView = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockViewPerProcess = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnUndockSelection = new DevExpress.XtraBars.BarButtonItem();
@@ -282,10 +285,8 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelDetails = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.scMessageDetails = new DevExpress.XtraEditors.SplitContainerControl();
             this.meMessageDetails = new DevExpress.XtraEditors.MemoEdit();
             this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
@@ -299,10 +300,9 @@ namespace Analogy.CommonControls.UserControls
             this.xtpSQLraw = new DevExpress.XtraTab.XtraTabPage();
             this.sbtnRawFilter = new DevExpress.XtraEditors.SimpleButton();
             this.meRawSQL = new DevExpress.XtraEditors.MemoEdit();
+            this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumnRawText = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnLineNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnMethodName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -393,10 +393,8 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
             this.dockPanelDetails.SuspendLayout();
-            this.dockPanelTree.SuspendLayout();
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
-            this.dockPanelTreeContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).BeginInit();
             this.scMessageDetails.Panel1.SuspendLayout();
@@ -414,6 +412,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.SuspendLayout();
             this.xtpSQLraw.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).BeginInit();
+            this.dockPanelTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -440,7 +439,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1570, 203);
+            this.gridControl.Size = new System.Drawing.Size(1370, 203);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -645,7 +644,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnUser.OptionsColumn.ReadOnly = true;
             this.gridColumnUser.Visible = true;
-            this.gridColumnUser.VisibleIndex = 8;
+            this.gridColumnUser.VisibleIndex = 7;
             this.gridColumnUser.Width = 115;
             // 
             // gridColumnModule
@@ -672,10 +671,8 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnObject.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
-            this.gridColumnObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
             this.gridColumnObject.MinWidth = 24;
-            this.gridColumnObject.Name = Common.CommonUtils.AnalogyMessageColumn;
+            this.gridColumnObject.Name = "gridColumnObject";
             this.gridColumnObject.OptionsColumn.AllowEdit = false;
             this.gridColumnObject.OptionsColumn.AllowFocus = false;
             this.gridColumnObject.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -703,7 +700,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID.OptionsColumn.ReadOnly = true;
             this.gridColumnProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.gridColumnProcessID.Visible = true;
-            this.gridColumnProcessID.VisibleIndex = 9;
+            this.gridColumnProcessID.VisibleIndex = 8;
             this.gridColumnProcessID.Width = 115;
             // 
             // gridColumnThread
@@ -714,7 +711,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnThread.Name = "gridColumnThread";
             this.gridColumnThread.OptionsColumn.AllowEdit = false;
             this.gridColumnThread.Visible = true;
-            this.gridColumnThread.VisibleIndex = 10;
+            this.gridColumnThread.VisibleIndex = 9;
             this.gridColumnThread.Width = 109;
             // 
             // gridColumnMachineName
@@ -725,8 +722,39 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnMachineName.Name = "gridColumnMachineName";
             this.gridColumnMachineName.OptionsColumn.AllowEdit = false;
             this.gridColumnMachineName.Visible = true;
-            this.gridColumnMachineName.VisibleIndex = 11;
+            this.gridColumnMachineName.VisibleIndex = 10;
             this.gridColumnMachineName.Width = 94;
+            // 
+            // gridColumnRawText
+            // 
+            this.gridColumnRawText.Caption = "Raw Text";
+            this.gridColumnRawText.FieldName = "RawText";
+            this.gridColumnRawText.MinWidth = 25;
+            this.gridColumnRawText.Name = "gridColumnRawText";
+            this.gridColumnRawText.Visible = true;
+            this.gridColumnRawText.VisibleIndex = 11;
+            this.gridColumnRawText.Width = 94;
+            // 
+            // gridColumnLineNumber
+            // 
+            this.gridColumnLineNumber.Caption = "Line Number";
+            this.gridColumnLineNumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumnLineNumber.FieldName = "LineNumber";
+            this.gridColumnLineNumber.MinWidth = 25;
+            this.gridColumnLineNumber.Name = "gridColumnLineNumber";
+            this.gridColumnLineNumber.Visible = true;
+            this.gridColumnLineNumber.VisibleIndex = 12;
+            this.gridColumnLineNumber.Width = 94;
+            // 
+            // gridColumnMethodName
+            // 
+            this.gridColumnMethodName.Caption = "Method Name";
+            this.gridColumnMethodName.FieldName = "MethodName";
+            this.gridColumnMethodName.MinWidth = 25;
+            this.gridColumnMethodName.Name = "gridColumnMethodName";
+            this.gridColumnMethodName.Visible = true;
+            this.gridColumnMethodName.VisibleIndex = 13;
+            this.gridColumnMethodName.Width = 94;
             // 
             // imageList
             // 
@@ -798,7 +826,7 @@ namespace Analogy.CommonControls.UserControls
             this.bbtnSaveViewAgnostic,
             this.barSubItemSaveLog,
             this.barButtonItemSaveEntireInAnalogy,
-            this.barSubItem1,
+            this.bsiUndock,
             this.bBtnUndockViewPerProcess,
             this.bBtnShare,
             this.bBtnFullGrid,
@@ -871,7 +899,7 @@ namespace Analogy.CommonControls.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiGoToActiveMessage, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemSaveLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnFullGrid),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bsiUndock),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiSettings)});
             this.barTopFiltering.OptionsBar.AllowQuickCustomization = false;
             this.barTopFiltering.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
@@ -884,8 +912,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnClearLog.Caption = "Clear Log";
             this.bBtnClearLog.Id = 6;
-            this.bBtnClearLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnClearLog.ImageOptions.Image")));
-            this.bBtnClearLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnClearLog.ImageOptions.LargeImage")));
+            this.bBtnClearLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Action_Delete;
+            this.bBtnClearLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Action_Delete_32x32;
             this.bBtnClearLog.Name = "bBtnClearLog";
             this.bBtnClearLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnClearLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnClearLog_ItemClick);
@@ -894,8 +922,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnRemoveBoomark.Caption = "Delete message";
             this.bBtnRemoveBoomark.Id = 15;
-            this.bBtnRemoveBoomark.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnRemoveBoomark.ImageOptions.Image")));
-            this.bBtnRemoveBoomark.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnRemoveBoomark.ImageOptions.LargeImage")));
+            this.bBtnRemoveBoomark.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.DeleteDataSource2_16x16;
+            this.bBtnRemoveBoomark.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Database_off;
             this.bBtnRemoveBoomark.Name = "bBtnRemoveBoomark";
             this.bBtnRemoveBoomark.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnRemoveBoomark.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -905,8 +933,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbtnReload.Caption = "Reload Files";
             this.bbtnReload.Id = 38;
-            this.bbtnReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnReload.ImageOptions.Image")));
-            this.bbtnReload.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnReload.ImageOptions.LargeImage")));
+            this.bbtnReload.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Refresh2_16x16;
+            this.bbtnReload.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Refresh2_32x32;
             this.bbtnReload.Name = "bbtnReload";
             this.bbtnReload.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnReload.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -957,16 +985,16 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiGoToActiveMessage.Caption = "Go To Active Message";
             this.bbiGoToActiveMessage.Id = 75;
-            this.bbiGoToActiveMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.Image")));
-            this.bbiGoToActiveMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToActiveMessage.ImageOptions.LargeImage")));
+            this.bbiGoToActiveMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
+            this.bbiGoToActiveMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_32x32;
             this.bbiGoToActiveMessage.Name = "bbiGoToActiveMessage";
             // 
             // barSubItemSaveLog
             // 
             this.barSubItemSaveLog.Caption = "Save Log";
             this.barSubItemSaveLog.Id = 31;
-            this.barSubItemSaveLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveLog.ImageOptions.Image")));
-            this.barSubItemSaveLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItemSaveLog.ImageOptions.LargeImage")));
+            this.barSubItemSaveLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.barSubItemSaveLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.barSubItemSaveLog.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSaveEntireInAnalogy),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSaveViewAgnostic),
@@ -981,8 +1009,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.barButtonItemSaveEntireInAnalogy.Caption = "Save entire log in Analogy Format (agnostic to specific implementation)";
             this.barButtonItemSaveEntireInAnalogy.Id = 32;
-            this.barButtonItemSaveEntireInAnalogy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.Image")));
-            this.barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage")));
+            this.barButtonItemSaveEntireInAnalogy.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
+            this.barButtonItemSaveEntireInAnalogy.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveDialog_32x32;
             this.barButtonItemSaveEntireInAnalogy.Name = "barButtonItemSaveEntireInAnalogy";
             this.barButtonItemSaveEntireInAnalogy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItemSaveEntireInAnalogy_ItemClick);
             // 
@@ -990,8 +1018,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbtnSaveViewAgnostic.Caption = "Save current view in Analogy Format (agnostic to Specific implementation)";
             this.bbtnSaveViewAgnostic.Id = 30;
-            this.bbtnSaveViewAgnostic.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.Image")));
-            this.bbtnSaveViewAgnostic.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSaveViewAgnostic.ImageOptions.LargeImage")));
+            this.bbtnSaveViewAgnostic.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bbtnSaveViewAgnostic.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.bbtnSaveViewAgnostic.Name = "bbtnSaveViewAgnostic";
             this.bbtnSaveViewAgnostic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbtnSaveViewAgnostic_ItemClick);
             // 
@@ -1000,8 +1028,8 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnSaveCurrentSelectionAnalogyFormat.Caption = "Save current rows selection in Analogy Format (agnostic to Specific implementatio" +
     "n)";
             this.bBtnSaveCurrentSelectionAnalogyFormat.Id = 40;
-            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image")));
-            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage")));
+            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
+            this.bBtnSaveCurrentSelectionAnalogyFormat.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveDialog_32x32;
             this.bBtnSaveCurrentSelectionAnalogyFormat.Name = "bBtnSaveCurrentSelectionAnalogyFormat";
             this.bBtnSaveCurrentSelectionAnalogyFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionAnalogyFormat_ItemClick);
             // 
@@ -1009,8 +1037,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnSaveEntireLog.Caption = "Save entire Log (custom Format)";
             this.bBtnSaveEntireLog.Id = 25;
-            this.bBtnSaveEntireLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.Image")));
-            this.bBtnSaveEntireLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveEntireLog.ImageOptions.LargeImage")));
+            this.bBtnSaveEntireLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bBtnSaveEntireLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.bBtnSaveEntireLog.Name = "bBtnSaveEntireLog";
             this.bBtnSaveEntireLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnSaveEntireLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveEntireLog_ItemClick);
@@ -1019,8 +1047,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnSaveLog.Caption = "Save current view (custom Format)";
             this.bBtnSaveLog.Id = 4;
-            this.bBtnSaveLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.Image")));
-            this.bBtnSaveLog.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveLog.ImageOptions.LargeImage")));
+            this.bBtnSaveLog.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bBtnSaveLog.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveDialog_32x32;
             this.bBtnSaveLog.Name = "bBtnSaveLog";
             this.bBtnSaveLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnSaveLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveLog_ItemClick);
@@ -1029,8 +1057,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnSaveCurrentSelectionCustomFormat.Caption = "save current rows selection (custom Format)";
             this.bBtnSaveCurrentSelectionCustomFormat.Id = 39;
-            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image")));
-            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage")));
+            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SaveTo_16x16;
+            this.bBtnSaveCurrentSelectionCustomFormat.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveTo_32x32;
             this.bBtnSaveCurrentSelectionCustomFormat.Name = "bBtnSaveCurrentSelectionCustomFormat";
             this.bBtnSaveCurrentSelectionCustomFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnSaveCurrentSelectionCustomFormat_ItemClick);
             // 
@@ -1042,25 +1070,25 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnFullGrid.Name = "bBtnFullGrid";
             this.bBtnFullGrid.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // barSubItem1
+            // bsiUndock
             // 
-            this.barSubItem1.Caption = "Undock View";
-            this.barSubItem1.Id = 34;
-            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
-            this.barSubItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.bsiUndock.Caption = "Undock View";
+            this.bsiUndock.Id = 34;
+            this.bsiUndock.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bsiUndock.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
+            this.bsiUndock.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockView),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockViewPerProcess),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnUndockSelection)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bsiUndock.Name = "bsiUndock";
+            this.bsiUndock.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bBtnUndockView
             // 
             this.bBtnUndockView.Caption = "Undock View (No Filtering)";
             this.bBtnUndockView.Id = 24;
-            this.bBtnUndockView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.Image")));
-            this.bBtnUndockView.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockView.ImageOptions.LargeImage")));
+            this.bBtnUndockView.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnUndockView.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnUndockView.Name = "bBtnUndockView";
             this.bBtnUndockView.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnUndockView.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockView_ItemClick);
@@ -1069,8 +1097,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnUndockViewPerProcess.Caption = "Undock View per process/Module";
             this.bBtnUndockViewPerProcess.Id = 35;
-            this.bBtnUndockViewPerProcess.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockViewPerProcess.ImageOptions.Image")));
-            this.bBtnUndockViewPerProcess.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockViewPerProcess.ImageOptions.LargeImage")));
+            this.bBtnUndockViewPerProcess.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnUndockViewPerProcess.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnUndockViewPerProcess.Name = "bBtnUndockViewPerProcess";
             this.bBtnUndockViewPerProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockViewPerProcess_ItemClick);
             // 
@@ -1078,8 +1106,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnUndockSelection.Caption = "Undock rows selection";
             this.bBtnUndockSelection.Id = 41;
-            this.bBtnUndockSelection.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnUndockSelection.ImageOptions.Image")));
-            this.bBtnUndockSelection.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnUndockSelection.ImageOptions.LargeImage")));
+            this.bBtnUndockSelection.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnUndockSelection.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnUndockSelection.Name = "bBtnUndockSelection";
             this.bBtnUndockSelection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnUndockSelection_ItemClick);
             // 
@@ -1088,8 +1116,8 @@ namespace Analogy.CommonControls.UserControls
             this.bsiSettings.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.bsiSettings.Caption = "More";
             this.bsiSettings.Id = 71;
-            this.bsiSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.Image")));
-            this.bsiSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiSettings.ImageOptions.LargeImage")));
+            this.bsiSettings.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Properties_16x16;
+            this.bsiSettings.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Properties_32x32;
             this.bsiSettings.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnImport),
             new DevExpress.XtraBars.LinkPersistInfo(this.bSMExports),
@@ -1105,8 +1133,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnImport.Caption = "Import Log";
             this.bBtnImport.Id = 5;
-            this.bBtnImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnImport.ImageOptions.Image")));
-            this.bBtnImport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnImport.ImageOptions.LargeImage")));
+            this.bBtnImport.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Insert_16x16;
+            this.bBtnImport.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Insert_32x32;
             this.bBtnImport.Name = "bBtnImport";
             this.bBtnImport.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnImport.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1116,8 +1144,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bSMExports.Caption = "Export Log";
             this.bSMExports.Id = 20;
-            this.bSMExports.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.Image")));
-            this.bSMExports.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bSMExports.ImageOptions.LargeImage")));
+            this.bSMExports.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Export_16x16;
+            this.bSMExports.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Export_32x32;
             this.bSMExports.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportCSV),
@@ -1129,8 +1157,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnExportExcel.Caption = "Export To Excel";
             this.bBtnExportExcel.Id = 21;
-            this.bBtnExportExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.Image")));
-            this.bBtnExportExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportExcel.ImageOptions.LargeImage")));
+            this.bBtnExportExcel.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ExportToXLS_16x16;
+            this.bBtnExportExcel.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ExportToXLS_32x32;
             this.bBtnExportExcel.Name = "bBtnExportExcel";
             this.bBtnExportExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportExcel_ItemClick);
             // 
@@ -1138,8 +1166,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnExportCSV.Caption = "Export To CSV";
             this.bBtnExportCSV.Id = 22;
-            this.bBtnExportCSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.Image")));
-            this.bBtnExportCSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportCSV.ImageOptions.LargeImage")));
+            this.bBtnExportCSV.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ExportToCSV_16x16;
+            this.bBtnExportCSV.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ExportToCSV_32x32;
             this.bBtnExportCSV.Name = "bBtnExportCSV";
             this.bBtnExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnExportCSV_ItemClick);
             // 
@@ -1147,8 +1175,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnExportHtml.Caption = "Export To Html";
             this.bBtnExportHtml.Id = 23;
-            this.bBtnExportHtml.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.Image")));
-            this.bBtnExportHtml.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExportHtml.ImageOptions.LargeImage")));
+            this.bBtnExportHtml.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ExportToHTML_16x16;
+            this.bBtnExportHtml.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ExportToHTML_32x32;
             this.bBtnExportHtml.Name = "bBtnExportHtml";
             this.bBtnExportHtml.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnExportHtml.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1167,8 +1195,8 @@ namespace Analogy.CommonControls.UserControls
             this.bbiScreenshot.Caption = "Take screenshot";
             this.bbiScreenshot.Hint = "Take screenshot of the messages control";
             this.bbiScreenshot.Id = 27;
-            this.bbiScreenshot.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.Image")));
-            this.bbiScreenshot.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiScreenshot.ImageOptions.LargeImage")));
+            this.bbiScreenshot.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Image_16x16;
+            this.bbiScreenshot.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ImportImage_32x32;
             this.bbiScreenshot.Name = "bbiScreenshot";
             this.bbiScreenshot.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbiScreenshot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiScreenshot_ItemClick);
@@ -1177,8 +1205,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bsiLayouts.Caption = "Windows Layouts";
             this.bsiLayouts.Id = 73;
-            this.bsiLayouts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiLayouts.ImageOptions.Image")));
-            this.bsiLayouts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiLayouts.ImageOptions.LargeImage")));
+            this.bsiLayouts.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.TableLayout_16x16;
+            this.bsiLayouts.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.TableLayout_32x32;
             this.bsiLayouts.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bwmiLayout)});
             this.bsiLayouts.Name = "bsiLayouts";
@@ -1200,8 +1228,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bsiTimeOffset.Caption = "Change Time offset";
             this.bsiTimeOffset.Id = 83;
-            this.bsiTimeOffset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.Image")));
-            this.bsiTimeOffset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiTimeOffset.ImageOptions.LargeImage")));
+            this.bsiTimeOffset.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bsiTimeOffset.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bsiTimeOffset.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffset),
             new DevExpress.XtraBars.LinkPersistInfo(this.bciTimeOffsetPredefined),
@@ -1241,8 +1269,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnDataVisualizer.Caption = "Data Visualizer";
             this.bBtnDataVisualizer.Id = 26;
-            this.bBtnDataVisualizer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.Image")));
-            this.bBtnDataVisualizer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnDataVisualizer.ImageOptions.LargeImage")));
+            this.bBtnDataVisualizer.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Line_16x16;
+            this.bBtnDataVisualizer.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Line_32x32;
             this.bBtnDataVisualizer.Name = "bBtnDataVisualizer";
             this.bBtnDataVisualizer.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnDataVisualizer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnDataVisualizer_ItemClick);
@@ -1274,8 +1302,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnCopyButtom.Caption = "Copy";
             this.bBtnCopyButtom.Id = 10;
-            this.bBtnCopyButtom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnCopyButtom.ImageOptions.Image")));
-            this.bBtnCopyButtom.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnCopyButtom.ImageOptions.LargeImage")));
+            this.bBtnCopyButtom.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bBtnCopyButtom.Name = "bBtnCopyButtom";
             this.bBtnCopyButtom.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnCopyButtom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyButtom_ItemClick);
@@ -1284,8 +1311,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiGoToMessage.Caption = "Go To This Message";
             this.bbiGoToMessage.Id = 74;
-            this.bbiGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.Image")));
-            this.bbiGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGoToMessage.ImageOptions.LargeImage")));
+            this.bbiGoToMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
+            this.bbiGoToMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_32x32;
             this.bbiGoToMessage.Name = "bbiGoToMessage";
             // 
             // btsViewAsHTML
@@ -1341,8 +1368,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiSaveBookmarks.Caption = "Save Bookmarks";
             this.bbiSaveBookmarks.Id = 61;
-            this.bbiSaveBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveBookmarks.ImageOptions.Image")));
-            this.bbiSaveBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveBookmarks.ImageOptions.LargeImage")));
+            this.bbiSaveBookmarks.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
             this.bbiSaveBookmarks.Name = "bbiSaveBookmarks";
             this.bbiSaveBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1350,8 +1376,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnopyBookmarked.Caption = "Copy Selected Message";
             this.bBtnopyBookmarked.Id = 12;
-            this.bBtnopyBookmarked.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnopyBookmarked.ImageOptions.Image")));
-            this.bBtnopyBookmarked.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnopyBookmarked.ImageOptions.LargeImage")));
+            this.bBtnopyBookmarked.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bBtnopyBookmarked.Name = "bBtnopyBookmarked";
             this.bBtnopyBookmarked.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnopyBookmarked.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnopyBookmarked_ItemClick);
@@ -1360,8 +1385,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnCopyAllBookmarks.Caption = "Copy all messages in grid";
             this.bBtnCopyAllBookmarks.Id = 16;
-            this.bBtnCopyAllBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnCopyAllBookmarks.ImageOptions.Image")));
-            this.bBtnCopyAllBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnCopyAllBookmarks.ImageOptions.LargeImage")));
+            this.bBtnCopyAllBookmarks.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bBtnCopyAllBookmarks.Name = "bBtnCopyAllBookmarks";
             this.bBtnCopyAllBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnCopyAllBookmarks.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyAllBookmarks_ItemClick);
@@ -1370,8 +1394,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.barButtonItem4.Caption = "Clear Bookmarks";
             this.barButtonItem4.Id = 13;
-            this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
-            this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.barButtonItem4.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Clear_16x16;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
@@ -1380,8 +1403,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnGoToMessage.Caption = "Go To Message";
             this.bBtnGoToMessage.Id = 14;
-            this.bBtnGoToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnGoToMessage.ImageOptions.Image")));
-            this.bBtnGoToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnGoToMessage.ImageOptions.LargeImage")));
+            this.bBtnGoToMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
             this.bBtnGoToMessage.Name = "bBtnGoToMessage";
             this.bBtnGoToMessage.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnGoToMessage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnGoToMessage_ItemClick);
@@ -1445,8 +1467,8 @@ namespace Analogy.CommonControls.UserControls
             this.bbtnCancel.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.bbtnCancel.Caption = "Cancel Processing";
             this.bbtnCancel.Id = 66;
-            this.bbtnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnCancel.ImageOptions.Image")));
-            this.bbtnCancel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnCancel.ImageOptions.LargeImage")));
+            this.bbtnCancel.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
+            this.bbtnCancel.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Close_32x32;
             this.bbtnCancel.Name = "bbtnCancel";
             this.bbtnCancel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbtnCancel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1515,15 +1537,15 @@ namespace Analogy.CommonControls.UserControls
             this.bdcTopFiltering.Manager = this.barManager1;
             this.bdcTopFiltering.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bdcTopFiltering.Name = "bdcTopFiltering";
-            this.bdcTopFiltering.Size = new System.Drawing.Size(1847, 0);
+            this.bdcTopFiltering.Size = new System.Drawing.Size(1647, 0);
             this.bdcTopFiltering.Text = "standaloneBarDockControl1";
             // 
             // bBtnExpand
             // 
             this.bBtnExpand.Caption = "Expand";
             this.bBtnExpand.Id = 7;
-            this.bBtnExpand.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnExpand.ImageOptions.Image")));
-            this.bBtnExpand.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnExpand.ImageOptions.LargeImage")));
+            this.bBtnExpand.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnExpand.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnExpand.Name = "bBtnExpand";
             this.bBtnExpand.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1531,8 +1553,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.barButtonItem3.Caption = "Copy";
             this.barButtonItem3.Id = 8;
-            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.barButtonItem3.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1540,8 +1561,8 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bBtnButtomExpand.Caption = "Expand";
             this.bBtnButtomExpand.Id = 9;
-            this.bBtnButtomExpand.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnButtomExpand.ImageOptions.Image")));
-            this.bBtnButtomExpand.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnButtomExpand.ImageOptions.LargeImage")));
+            this.bBtnButtomExpand.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FullExtent_16x16;
+            this.bBtnButtomExpand.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FullExtent_32x32;
             this.bBtnButtomExpand.Name = "bBtnButtomExpand";
             this.bBtnButtomExpand.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnButtomExpand.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnButtomExpand_ItemClick);
@@ -1557,144 +1578,141 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.bbiDiffTime.Caption = "Calculate time difference from this point";
             this.bbiDiffTime.Id = 43;
-            this.bbiDiffTime.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDiffTime.ImageOptions.Image")));
-            this.bbiDiffTime.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDiffTime.ImageOptions.LargeImage")));
+            this.bbiDiffTime.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bbiDiffTime.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bbiDiffTime.Name = "bbiDiffTime";
             // 
             // bbiDatetiemFilterFrom
             // 
             this.bbiDatetiemFilterFrom.Caption = "Date Time Filter: From";
             this.bbiDatetiemFilterFrom.Id = 44;
-            this.bbiDatetiemFilterFrom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterFrom.ImageOptions.Image")));
-            this.bbiDatetiemFilterFrom.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterFrom.ImageOptions.LargeImage")));
+            this.bbiDatetiemFilterFrom.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bbiDatetiemFilterFrom.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bbiDatetiemFilterFrom.Name = "bbiDatetiemFilterFrom";
             // 
             // bbiDatetiemFilterTo
             // 
             this.bbiDatetiemFilterTo.Caption = "Date Time Filter: To";
             this.bbiDatetiemFilterTo.Id = 45;
-            this.bbiDatetiemFilterTo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterTo.ImageOptions.Image")));
-            this.bbiDatetiemFilterTo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDatetiemFilterTo.ImageOptions.LargeImage")));
+            this.bbiDatetiemFilterTo.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
+            this.bbiDatetiemFilterTo.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bbiDatetiemFilterTo.Name = "bbiDatetiemFilterTo";
             // 
             // bbiBookmarkNonPersist
             // 
             this.bbiBookmarkNonPersist.Caption = "Bookmark this message (Non persist)";
             this.bbiBookmarkNonPersist.Id = 46;
-            this.bbiBookmarkNonPersist.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiBookmarkNonPersist.ImageOptions.Image")));
-            this.bbiBookmarkNonPersist.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiBookmarkNonPersist.ImageOptions.LargeImage")));
+            this.bbiBookmarkNonPersist.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_16x16;
+            this.bbiBookmarkNonPersist.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_32x32;
             this.bbiBookmarkNonPersist.Name = "bbiBookmarkNonPersist";
             // 
             // bbiBookmarkPersist
             // 
             this.bbiBookmarkPersist.Caption = "Bookmark this message for later user (Persist)";
             this.bbiBookmarkPersist.Id = 47;
-            this.bbiBookmarkPersist.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiBookmarkPersist.ImageOptions.Image")));
-            this.bbiBookmarkPersist.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiBookmarkPersist.ImageOptions.LargeImage")));
+            this.bbiBookmarkPersist.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_16x16;
+            this.bbiBookmarkPersist.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_32x32;
             this.bbiBookmarkPersist.Name = "bbiBookmarkPersist";
             // 
             // bbiCopyMessage
             // 
             this.bbiCopyMessage.Caption = "Copy selected message to clipboard";
             this.bbiCopyMessage.Id = 48;
-            this.bbiCopyMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCopyMessage.ImageOptions.Image")));
-            this.bbiCopyMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCopyMessage.ImageOptions.LargeImage")));
+            this.bbiCopyMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bbiCopyMessage.Name = "bbiCopyMessage";
             // 
             // bbiCopyAllMessages
             // 
             this.bbiCopyAllMessages.Caption = "Copy all messages in view to clipboard";
             this.bbiCopyAllMessages.Id = 49;
-            this.bbiCopyAllMessages.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCopyAllMessages.ImageOptions.Image")));
-            this.bbiCopyAllMessages.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCopyAllMessages.ImageOptions.LargeImage")));
+            this.bbiCopyAllMessages.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
             this.bbiCopyAllMessages.Name = "bbiCopyAllMessages";
             // 
             // bbiAddNoteToMessage
             // 
             this.bbiAddNoteToMessage.Caption = "Add Note/Comment to this message (not auto saved)";
             this.bbiAddNoteToMessage.Id = 50;
-            this.bbiAddNoteToMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAddNoteToMessage.ImageOptions.Image")));
-            this.bbiAddNoteToMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAddNoteToMessage.ImageOptions.LargeImage")));
+            this.bbiAddNoteToMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.EditComment_16x16;
             this.bbiAddNoteToMessage.Name = "bbiAddNoteToMessage";
             // 
             // bbiIncludeMessage
             // 
             this.bbiIncludeMessage.Caption = "Include Selected message";
             this.bbiIncludeMessage.Id = 51;
-            this.bbiIncludeMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeMessage.ImageOptions.Image")));
-            this.bbiIncludeMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeMessage.ImageOptions.LargeImage")));
+            this.bbiIncludeMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeMessage.Name = "bbiIncludeMessage";
             // 
             // bbiIncludeColumnHeaderFilter
             // 
             this.bbiIncludeColumnHeaderFilter.Caption = "Set X as column header filter for Y";
             this.bbiIncludeColumnHeaderFilter.Id = 52;
-            this.bbiIncludeColumnHeaderFilter.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeColumnHeaderFilter.ImageOptions.Image")));
-            this.bbiIncludeColumnHeaderFilter.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeColumnHeaderFilter.ImageOptions.LargeImage")));
+            this.bbiIncludeColumnHeaderFilter.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeColumnHeaderFilter.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeColumnHeaderFilter.Name = "bbiIncludeColumnHeaderFilter";
             // 
             // bbiExcludeMessage
             // 
             this.bbiExcludeMessage.Caption = "Exclude selected message";
             this.bbiExcludeMessage.Id = 53;
-            this.bbiExcludeMessage.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExcludeMessage.ImageOptions.Image")));
-            this.bbiExcludeMessage.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExcludeMessage.ImageOptions.LargeImage")));
+            this.bbiExcludeMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ClearFilter_16x16;
+            this.bbiExcludeMessage.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ClearFilter_32x32;
             this.bbiExcludeMessage.Name = "bbiExcludeMessage";
             // 
             // bbiExcludeSource
             // 
             this.bbiExcludeSource.Caption = "Exclude source";
             this.bbiExcludeSource.Id = 54;
-            this.bbiExcludeSource.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExcludeSource.ImageOptions.Image")));
-            this.bbiExcludeSource.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExcludeSource.ImageOptions.LargeImage")));
+            this.bbiExcludeSource.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ClearFilter_16x16;
+            this.bbiExcludeSource.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ClearFilter_32x32;
             this.bbiExcludeSource.Name = "bbiExcludeSource";
             // 
             // bbiExcludeModule
             // 
             this.bbiExcludeModule.Caption = "Exclude process/module";
             this.bbiExcludeModule.Id = 55;
-            this.bbiExcludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiExcludeModule.ImageOptions.Image")));
-            this.bbiExcludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiExcludeModule.ImageOptions.LargeImage")));
+            this.bbiExcludeModule.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.ClearFilter_16x16;
+            this.bbiExcludeModule.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.ClearFilter_32x32;
             this.bbiExcludeModule.Name = "bbiExcludeModule";
             // 
             // bbiSaveLayout
             // 
             this.bbiSaveLayout.Caption = "Save columns layout";
             this.bbiSaveLayout.Id = 56;
-            this.bbiSaveLayout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveLayout.ImageOptions.Image")));
-            this.bbiSaveLayout.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveLayout.ImageOptions.LargeImage")));
+            this.bbiSaveLayout.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
+            this.bbiSaveLayout.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.SaveDialog_32x32;
             this.bbiSaveLayout.Name = "bbiSaveLayout";
             // 
             // bbiIncreaseFontSize
             // 
             this.bbiIncreaseFontSize.Caption = "Increase font size";
             this.bbiIncreaseFontSize.Id = 57;
-            this.bbiIncreaseFontSize.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncreaseFontSize.ImageOptions.Image")));
-            this.bbiIncreaseFontSize.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncreaseFontSize.ImageOptions.LargeImage")));
+            this.bbiIncreaseFontSize.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FontSizeIncrease_16x16;
+            this.bbiIncreaseFontSize.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FontSizeIncrease_32x32;
             this.bbiIncreaseFontSize.Name = "bbiIncreaseFontSize";
             // 
             // bbiDecreaseFontSize
             // 
             this.bbiDecreaseFontSize.Caption = "Decrease font size";
             this.bbiDecreaseFontSize.Id = 58;
-            this.bbiDecreaseFontSize.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDecreaseFontSize.ImageOptions.Image")));
-            this.bbiDecreaseFontSize.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDecreaseFontSize.ImageOptions.LargeImage")));
+            this.bbiDecreaseFontSize.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.FontSizeDecrease_16x16;
+            this.bbiDecreaseFontSize.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.FontSizeDecrease_32x32;
             this.bbiDecreaseFontSize.Name = "bbiDecreaseFontSize";
             // 
             // bbiIncludeSource
             // 
             this.bbiIncludeSource.Caption = "Include source";
             this.bbiIncludeSource.Id = 59;
-            this.bbiIncludeSource.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.Image")));
-            this.bbiIncludeSource.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeSource.ImageOptions.LargeImage")));
+            this.bbiIncludeSource.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeSource.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeSource.Name = "bbiIncludeSource";
             // 
             // bbiIncludeModule
             // 
             this.bbiIncludeModule.Caption = "Include process/module";
             this.bbiIncludeModule.Id = 60;
-            this.bbiIncludeModule.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.Image")));
-            this.bbiIncludeModule.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiIncludeModule.ImageOptions.LargeImage")));
+            this.bbiIncludeModule.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_16x16;
+            this.bbiIncludeModule.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.MultipleMasterFilter_32x32;
             this.bbiIncludeModule.Name = "bbiIncludeModule";
             // 
             // bbiJsonViewer
@@ -1702,7 +1720,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiJsonViewer.Caption = "Open message in JSON Visualizer";
             this.bbiJsonViewer.Id = 62;
             this.bbiJsonViewer.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
-            this.bbiJsonViewer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiJsonViewer.ImageOptions.LargeImage")));
             this.bbiJsonViewer.Name = "bbiJsonViewer";
             // 
             // repositoryItemProgressBar1
@@ -1780,7 +1797,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnIncludeModules
             // 
-            this.sbtnIncludeModules.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeModules.ImageOptions.Image")));
+            this.sbtnIncludeModules.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnIncludeModules.Location = new System.Drawing.Point(890, 100);
             this.sbtnIncludeModules.Name = "sbtnIncludeModules";
             this.sbtnIncludeModules.Size = new System.Drawing.Size(26, 27);
@@ -1797,8 +1814,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceOlderThanFilter.Properties.Appearance.Options.UseImage = true;
             this.ceOlderThanFilter.Properties.AutoWidth = true;
             this.ceOlderThanFilter.Properties.Caption = "To:";
-            this.ceOlderThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceOlderThanFilter.Properties.ImageOptions.ImageChecked")));
-            this.ceOlderThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceOlderThanFilter.Properties.ImageOptions.ImageUnchecked")));
             this.ceOlderThanFilter.Size = new System.Drawing.Size(48, 24);
             this.ceOlderThanFilter.StyleController = this.layoutControl1;
             this.ceOlderThanFilter.TabIndex = 29;
@@ -1835,8 +1850,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceNewerThanFilter.Properties.Appearance.Options.UseImage = true;
             this.ceNewerThanFilter.Properties.AutoWidth = true;
             this.ceNewerThanFilter.Properties.Caption = "From:";
-            this.ceNewerThanFilter.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceNewerThanFilter.Properties.ImageOptions.ImageChecked")));
-            this.ceNewerThanFilter.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceNewerThanFilter.Properties.ImageOptions.ImageUnchecked")));
             this.ceNewerThanFilter.Size = new System.Drawing.Size(63, 24);
             this.ceNewerThanFilter.StyleController = this.layoutControl1;
             this.ceNewerThanFilter.TabIndex = 28;
@@ -1848,8 +1861,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceModulesProcess.Name = "ceModulesProcess";
             this.ceModulesProcess.Properties.AutoWidth = true;
             this.ceModulesProcess.Properties.Caption = "Processes/Modules (Include/Exclude):";
-            this.ceModulesProcess.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageChecked")));
-            this.ceModulesProcess.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceModulesProcess.Properties.ImageOptions.ImageUnchecked")));
             this.ceModulesProcess.Size = new System.Drawing.Size(245, 24);
             this.ceModulesProcess.StyleController = this.layoutControl1;
             toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
@@ -1875,7 +1886,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnIncludeSources
             // 
-            this.sbtnIncludeSources.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnIncludeSources.ImageOptions.Image")));
+            this.sbtnIncludeSources.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnIncludeSources.Location = new System.Drawing.Point(1455, 69);
             this.sbtnIncludeSources.Name = "sbtnIncludeSources";
             this.sbtnIncludeSources.Size = new System.Drawing.Size(34, 27);
@@ -1891,8 +1902,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceSources.Name = "ceSources";
             this.ceSources.Properties.AutoWidth = true;
             this.ceSources.Properties.Caption = "Sources (Include/Exclude):";
-            this.ceSources.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageChecked")));
-            this.ceSources.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceSources.Properties.ImageOptions.ImageUnchecked")));
             this.ceSources.Size = new System.Drawing.Size(182, 24);
             this.ceSources.StyleController = this.layoutControl1;
             toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
@@ -1920,7 +1929,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnTextExclude
             // 
-            this.sbtnTextExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextExclude.ImageOptions.Image")));
+            this.sbtnTextExclude.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnTextExclude.Location = new System.Drawing.Point(1357, 38);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
             this.sbtnTextExclude.Size = new System.Drawing.Size(24, 27);
@@ -1958,8 +1967,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceExcludeText.Name = "ceExcludeText";
             this.ceExcludeText.Properties.AutoWidth = true;
             this.ceExcludeText.Properties.Caption = "Exclude Text:";
-            this.ceExcludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageChecked")));
-            this.ceExcludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceExcludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceExcludeText.Size = new System.Drawing.Size(105, 24);
             this.ceExcludeText.StyleController = this.layoutControl1;
             toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
@@ -1994,7 +2001,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnTextInclude
             // 
-            this.sbtnTextInclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbtnTextInclude.ImageOptions.Image")));
+            this.sbtnTextInclude.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
             this.sbtnTextInclude.Location = new System.Drawing.Point(1426, 7);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(24, 27);
@@ -2011,8 +2018,6 @@ namespace Analogy.CommonControls.UserControls
             this.ceIncludeText.Properties.Appearance.Options.UseImage = true;
             this.ceIncludeText.Properties.AutoWidth = true;
             this.ceIncludeText.Properties.Caption = "Include Text:";
-            this.ceIncludeText.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageChecked")));
-            this.ceIncludeText.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("ceIncludeText.Properties.ImageOptions.ImageUnchecked")));
             this.ceIncludeText.Size = new System.Drawing.Size(103, 24);
             this.ceIncludeText.StyleController = this.layoutControl1;
             toolTipTitleItem4.Text = "Text Property Filtering";
@@ -2263,7 +2268,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlLogs.Name = "layoutControlLogs";
             this.layoutControlLogs.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(520, 50, 812, 500);
             this.layoutControlLogs.Root = this.layoutControlGroup1;
-            this.layoutControlLogs.Size = new System.Drawing.Size(1847, 248);
+            this.layoutControlLogs.Size = new System.Drawing.Size(1647, 248);
             this.layoutControlLogs.TabIndex = 6;
             this.layoutControlLogs.Text = "layoutControl2";
             // 
@@ -2281,16 +2286,16 @@ namespace Analogy.CommonControls.UserControls
             // spltcMessages.Panel2
             // 
             this.spltcMessages.Panel2.Text = "Panel2";
-            this.spltcMessages.Size = new System.Drawing.Size(1833, 203);
+            this.spltcMessages.Size = new System.Drawing.Size(1633, 203);
             this.spltcMessages.SplitterPosition = 251;
             this.spltcMessages.TabIndex = 0;
             // 
             // sbtnPageFirst
             // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(1457, 214);
+            this.sbtnPageFirst.Location = new System.Drawing.Point(1299, 214);
             this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPageFirst.Name = "sbtnPageFirst";
-            this.sbtnPageFirst.Size = new System.Drawing.Size(71, 27);
+            this.sbtnPageFirst.Size = new System.Drawing.Size(61, 27);
             this.sbtnPageFirst.StyleController = this.layoutControlLogs;
             this.sbtnPageFirst.TabIndex = 5;
             this.sbtnPageFirst.Text = "first Page";
@@ -2298,10 +2303,10 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnMoreHighlight
             // 
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1371, 214);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1229, 214);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
-            this.sbtnMoreHighlight.Size = new System.Drawing.Size(82, 27);
+            this.sbtnMoreHighlight.Size = new System.Drawing.Size(66, 27);
             this.sbtnMoreHighlight.StyleController = this.layoutControlLogs;
             this.sbtnMoreHighlight.TabIndex = 4;
             this.sbtnMoreHighlight.Text = "More ...";
@@ -2309,10 +2314,10 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnPagePrevious
             // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(1532, 214);
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(1364, 214);
             this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPagePrevious.Name = "sbtnPagePrevious";
-            this.sbtnPagePrevious.Size = new System.Drawing.Size(100, 27);
+            this.sbtnPagePrevious.Size = new System.Drawing.Size(87, 27);
             this.sbtnPagePrevious.StyleController = this.layoutControlLogs;
             this.sbtnPagePrevious.TabIndex = 6;
             this.sbtnPagePrevious.Text = "Previous Page";
@@ -2321,10 +2326,10 @@ namespace Analogy.CommonControls.UserControls
             // sBtnPageNext
             // 
             this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(1706, 214);
+            this.sBtnPageNext.Location = new System.Drawing.Point(1510, 214);
             this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnPageNext.Name = "sBtnPageNext";
-            this.sBtnPageNext.Size = new System.Drawing.Size(66, 27);
+            this.sBtnPageNext.Size = new System.Drawing.Size(64, 27);
             this.sBtnPageNext.StyleController = this.layoutControlLogs;
             this.sBtnPageNext.TabIndex = 7;
             this.sBtnPageNext.Text = "Next Page";
@@ -2333,10 +2338,10 @@ namespace Analogy.CommonControls.UserControls
             // sBtnLastPage
             // 
             this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(1776, 214);
+            this.sBtnLastPage.Location = new System.Drawing.Point(1578, 214);
             this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLastPage.Name = "sBtnLastPage";
-            this.sBtnLastPage.Size = new System.Drawing.Size(64, 27);
+            this.sBtnLastPage.Size = new System.Drawing.Size(62, 27);
             this.sBtnLastPage.StyleController = this.layoutControlLogs;
             this.sBtnLastPage.TabIndex = 8;
             this.sBtnLastPage.Text = "Last Page";
@@ -2347,7 +2352,7 @@ namespace Analogy.CommonControls.UserControls
             this.txtbHighlight.Location = new System.Drawing.Point(200, 214);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1167, 22);
+            this.txtbHighlight.Size = new System.Drawing.Size(1025, 22);
             this.txtbHighlight.StyleController = this.layoutControlLogs;
             this.txtbHighlight.TabIndex = 3;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
@@ -2368,7 +2373,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem26});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1847, 248);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1647, 248);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem22
@@ -2376,7 +2381,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem22.Control = this.txtbHighlight;
             this.layoutControlItem22.Location = new System.Drawing.Point(193, 207);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(1171, 31);
+            this.layoutControlItem22.Size = new System.Drawing.Size(1029, 31);
             this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem22.TextVisible = false;
             // 
@@ -2392,54 +2397,54 @@ namespace Analogy.CommonControls.UserControls
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.sBtnLastPage;
-            this.layoutControlItem24.Location = new System.Drawing.Point(1769, 207);
+            this.layoutControlItem24.Location = new System.Drawing.Point(1571, 207);
             this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(68, 31);
+            this.layoutControlItem24.Size = new System.Drawing.Size(66, 31);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
             // layoutControlItem25
             // 
             this.layoutControlItem25.Control = this.sBtnPageNext;
-            this.layoutControlItem25.Location = new System.Drawing.Point(1699, 207);
+            this.layoutControlItem25.Location = new System.Drawing.Point(1503, 207);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(70, 31);
+            this.layoutControlItem25.Size = new System.Drawing.Size(68, 31);
             this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem25.TextVisible = false;
             // 
             // layoutControlItem27
             // 
             this.layoutControlItem27.Control = this.sbtnPagePrevious;
-            this.layoutControlItem27.Location = new System.Drawing.Point(1525, 207);
+            this.layoutControlItem27.Location = new System.Drawing.Point(1357, 207);
             this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(104, 31);
+            this.layoutControlItem27.Size = new System.Drawing.Size(91, 31);
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextVisible = false;
             // 
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.sbtnPageFirst;
-            this.layoutControlItem28.Location = new System.Drawing.Point(1450, 207);
+            this.layoutControlItem28.Location = new System.Drawing.Point(1292, 207);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(75, 31);
+            this.layoutControlItem28.Size = new System.Drawing.Size(65, 31);
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem28.TextVisible = false;
             // 
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.sbtnMoreHighlight;
-            this.layoutControlItem21.Location = new System.Drawing.Point(1364, 207);
+            this.layoutControlItem21.Location = new System.Drawing.Point(1222, 207);
             this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(86, 31);
+            this.layoutControlItem21.Size = new System.Drawing.Size(70, 31);
             this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem21.TextVisible = false;
             // 
             // lblPageNumber
             // 
             this.lblPageNumber.AllowHotTrack = false;
-            this.lblPageNumber.Location = new System.Drawing.Point(1629, 207);
+            this.lblPageNumber.Location = new System.Drawing.Point(1448, 207);
             this.lblPageNumber.Name = "lblPageNumber";
-            this.lblPageNumber.Size = new System.Drawing.Size(70, 31);
+            this.lblPageNumber.Size = new System.Drawing.Size(55, 31);
             this.lblPageNumber.Text = "Page 1/1";
             this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
@@ -2449,7 +2454,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem26.Control = this.spltcMessages;
             this.layoutControlItem26.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(1837, 207);
+            this.layoutControlItem26.Size = new System.Drawing.Size(1637, 207);
             this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem26.TextVisible = false;
             // 
@@ -2738,7 +2743,6 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnBookmarkObject.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnBookmarkObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnBookmarkObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
             this.gridColumnBookmarkObject.MinWidth = 24;
             this.gridColumnBookmarkObject.Name = "gridColumnBookmarkObject";
             this.gridColumnBookmarkObject.OptionsColumn.AllowEdit = false;
@@ -3014,8 +3018,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs,
             this.dockPanelDetails,
             this.dockPanelFiltering,
-            this.dockPanelTree
-        });
+            this.dockPanelTree});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -3046,7 +3049,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanel2_Container.Controls.Add(this.bdcTopFiltering);
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(1847, 248);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(1647, 248);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // dockPanelDetails
@@ -3063,26 +3066,6 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelDetails.Size = new System.Drawing.Size(1853, 204);
             this.dockPanelDetails.Tabbed = true;
             this.dockPanelDetails.Text = "dockPanelDetails";
-            // 
-            // dockPanelTree
-            // 
-            this.dockPanelTree.Controls.Add(this.dockPanelTreeContainer);
-            this.dockPanelTree.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.dockPanelTree.FloatSize = new System.Drawing.Size(500, 800);
-            this.dockPanelTree.ID = new System.Guid("B1CBEA9D-31D1-466D-AC5F-9854CB01FD71");
-            this.dockPanelTree.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelTree.Name = "dockPanelTree";
-            this.dockPanelTree.OriginalSize = new System.Drawing.Size(200, 204);
-            this.dockPanelTree.Size = new System.Drawing.Size(400, 800);
-            this.dockPanelTree.Options.ShowCloseButton = true;
-            this.dockPanelTree.Text = "dockPanelTree";
-            // 
-            // controlContainer1
-            // 
-            this.dockPanelTreeContainer.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelTreeContainer.Name = "dockPanelTreeContainer";
-            this.dockPanelTreeContainer.Size = new System.Drawing.Size(400, 800);
-            this.dockPanelTreeContainer.TabIndex = 0;
             // 
             // dockPanelMessageInfo
             // 
@@ -3249,49 +3232,37 @@ namespace Analogy.CommonControls.UserControls
             this.meRawSQL.Size = new System.Drawing.Size(1362, 118);
             this.meRawSQL.TabIndex = 0;
             // 
+            // dockPanelTree
+            // 
+            this.dockPanelTree.Controls.Add(this.dockPanelTreeContainer);
+            this.dockPanelTree.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanelTree.FloatSize = new System.Drawing.Size(500, 800);
+            this.dockPanelTree.ID = new System.Guid("b1cbea9d-31d1-466d-ac5f-9854cb01fd71");
+            this.dockPanelTree.Location = new System.Drawing.Point(1653, 240);
+            this.dockPanelTree.Name = "dockPanelTree";
+            this.dockPanelTree.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelTree.Size = new System.Drawing.Size(200, 283);
+            this.dockPanelTree.Text = "dockPanelTree";
+            // 
+            // dockPanelTreeContainer
+            // 
+            this.dockPanelTreeContainer.Location = new System.Drawing.Point(6, 32);
+            this.dockPanelTreeContainer.Name = "dockPanelTreeContainer";
+            this.dockPanelTreeContainer.Size = new System.Drawing.Size(190, 247);
+            this.dockPanelTreeContainer.TabIndex = 0;
+            // 
             // filtersPopupMenu
             // 
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
-            // gridColumnRawText
-            // 
-            this.gridColumnRawText.Caption = "Raw Text";
-            this.gridColumnRawText.FieldName = "RawText";
-            this.gridColumnRawText.MinWidth = 25;
-            this.gridColumnRawText.Name = "gridColumnRawText";
-            this.gridColumnRawText.Visible = true;
-            this.gridColumnRawText.VisibleIndex = 12;
-            this.gridColumnRawText.Width = 94;
-            // 
-            // gridColumnLineNumber
-            // 
-            this.gridColumnLineNumber.Caption = "Line Number";
-            this.gridColumnLineNumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumnLineNumber.FieldName = "LineNumber";
-            this.gridColumnLineNumber.MinWidth = 25;
-            this.gridColumnLineNumber.Name = "gridColumnLineNumber";
-            this.gridColumnLineNumber.Visible = true;
-            this.gridColumnLineNumber.VisibleIndex = 13;
-            this.gridColumnLineNumber.Width = 94;
-            // 
-            // gridColumnMethodName
-            // 
-            this.gridColumnMethodName.Caption = "Method Name";
-            this.gridColumnMethodName.FieldName = "MethodName";
-            this.gridColumnMethodName.MinWidth = 25;
-            this.gridColumnMethodName.Name = "gridColumnMethodName";
-            this.gridColumnMethodName.Visible = true;
-            this.gridColumnMethodName.VisibleIndex = 14;
-            this.gridColumnMethodName.Width = 94;
-            // 
             // LogMessagesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dockPanelTree);
             this.Controls.Add(this.dockPanelFiltering);
             this.Controls.Add(this.dockPanelDetails);
-            this.Controls.Add(this.dockPanelTree);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -3393,12 +3364,9 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
             this.dockPanelDetails.ResumeLayout(false);
-            this.dockPanelTree.ResumeLayout(false);
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             this.controlContainer1.PerformLayout();
-            this.dockPanelTreeContainer.ResumeLayout(false);
-            this.dockPanelTreeContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel1)).EndInit();
             this.scMessageDetails.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails.Panel2)).EndInit();
@@ -3418,6 +3386,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.PerformLayout();
             this.xtpSQLraw.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).EndInit();
+            this.dockPanelTree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -3503,7 +3472,7 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraEditors.TextEdit txtbInclude;
         private DevExpress.XtraEditors.TextEdit txtbExclude;
         private DevExpress.XtraEditors.TextEdit txtbHighlight;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem bsiUndock;
         private DevExpress.XtraBars.BarButtonItem bBtnUndockViewPerProcess;
         private DevExpress.XtraEditors.SimpleButton sbtnTextInclude;
         private DevExpress.XtraEditors.SimpleButton sbtnTextExclude;
