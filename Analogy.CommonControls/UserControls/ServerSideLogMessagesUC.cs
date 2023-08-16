@@ -1211,6 +1211,10 @@ namespace Analogy.CommonControls.UserControls
             gridColumnThread.FieldName = Common.CommonUtils.ColumnThreadId;
             gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
             gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
+            gridColumnBookmarkObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
+            gridColumnObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
+            gridColumnObject.Name = Common.CommonUtils.AnalogyMessageColumn;
+            gridColumnObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
 
             bsiProgress.Caption = string.Empty;
             bsiProgress.Visibility = Settings.ShowProcessedCounter ? BarItemVisibility.Always : BarItemVisibility.Never;
