@@ -102,8 +102,8 @@ namespace Analogy.CommonControls.UserControls
         private string OldTextInclude = string.Empty;
         private string OldTextExclude = string.Empty;
         public int fileLoadingCount;
-        public List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
-        public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
+        private List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
+        private List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
         private IUserSettingsManager Settings { get; set; }

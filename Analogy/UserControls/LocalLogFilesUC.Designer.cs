@@ -64,8 +64,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bBtnOpenFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.sbtnLoadCheckedFiles = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.spltMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain.Panel1)).BeginInit();
             this.spltMain.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain.Panel2)).BeginInit();
             this.spltMain.Panel2.SuspendLayout();
             this.spltMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splcLeft)).BeginInit();
@@ -77,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkbSelectionMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRecursiveLoad.Properties)).BeginInit();
             this.tsPrimary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // spltMain
@@ -93,8 +99,8 @@
             // spltMain.Panel2
             // 
             this.spltMain.Panel2.Controls.Add(this.ucLogs1);
-            this.spltMain.Size = new System.Drawing.Size(1387, 700);
-            this.spltMain.SplitterPosition = 392;
+            this.spltMain.Size = new System.Drawing.Size(1214, 700);
+            this.spltMain.SplitterPosition = 411;
             this.spltMain.TabIndex = 5;
             // 
             // splcLeft
@@ -112,21 +118,23 @@
             // splcLeft.Panel2
             // 
             this.splcLeft.Panel2.Controls.Add(this.treeList1);
+            this.splcLeft.Panel2.Controls.Add(this.panelControl1);
             this.splcLeft.Panel2.Controls.Add(this.standaloneBarDockControl1);
             this.splcLeft.Panel2.Controls.Add(this.chkbSelectionMode);
             this.splcLeft.Panel2.Controls.Add(this.checkEditRecursiveLoad);
-            this.splcLeft.Size = new System.Drawing.Size(392, 700);
+            this.splcLeft.Size = new System.Drawing.Size(411, 700);
             this.splcLeft.SplitterDistance = 225;
             this.splcLeft.TabIndex = 4;
             // 
             // folderTreeViewUC1
             // 
+            this.folderTreeViewUC1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.folderTreeViewUC1.Appearance.Options.UseFont = true;
             this.folderTreeViewUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.folderTreeViewUC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.folderTreeViewUC1.Location = new System.Drawing.Point(0, 0);
             this.folderTreeViewUC1.Margin = new System.Windows.Forms.Padding(4);
             this.folderTreeViewUC1.Name = "folderTreeViewUC1";
-            this.folderTreeViewUC1.Size = new System.Drawing.Size(392, 225);
+            this.folderTreeViewUC1.Size = new System.Drawing.Size(411, 225);
             this.folderTreeViewUC1.TabIndex = 0;
             // 
             // treeList1
@@ -143,24 +151,25 @@
             this.treeList1.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.FixedLineWidth = 3;
-            this.treeList1.Location = new System.Drawing.Point(0, 77);
+            this.treeList1.Location = new System.Drawing.Point(0, 78);
             this.treeList1.Margin = new System.Windows.Forms.Padding(4);
-            this.treeList1.MinWidth = 27;
+            this.treeList1.MinWidth = 24;
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.Editable = false;
             this.treeList1.OptionsFind.AlwaysVisible = true;
             this.treeList1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.treeList1.OptionsSelection.MultiSelect = true;
             this.treeList1.OptionsSelection.UseIndicatorForSelection = true;
             this.treeList1.OptionsView.AutoWidth = false;
             this.treeList1.OptionsView.BestFitMode = DevExpress.XtraTreeList.TreeListBestFitMode.Fast;
             this.treeList1.OptionsView.BestFitNodes = DevExpress.XtraTreeList.TreeListBestFitNodes.All;
+            this.treeList1.OptionsView.CheckBoxStyle = DevExpress.XtraTreeList.DefaultNodeCheckBoxStyle.Check;
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus;
+            this.treeList1.OptionsView.RootCheckBoxStyle = DevExpress.XtraTreeList.NodeCheckBoxStyle.Check;
             this.treeList1.OptionsView.ShowIndicator = false;
-            this.treeList1.Size = new System.Drawing.Size(392, 394);
+            this.treeList1.Size = new System.Drawing.Size(411, 362);
             this.treeList1.TabIndex = 8;
-            this.treeList1.TreeLevelWidth = 24;
+            this.treeList1.TreeLevelWidth = 21;
             this.treeList1.SelectionChanged += new System.EventHandler(this.TreeList1_SelectionChanged);
             this.treeList1.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             // 
@@ -168,53 +177,53 @@
             // 
             this.colName.Caption = "Name";
             this.colName.FieldName = "Name";
-            this.colName.MinWidth = 44;
+            this.colName.MinWidth = 38;
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
-            this.colName.Width = 140;
+            this.colName.Width = 122;
             // 
             // colChanged
             // 
             this.colChanged.Caption = "Last changed";
             this.colChanged.FieldName = "colChanged";
-            this.colChanged.MinWidth = 140;
+            this.colChanged.MinWidth = 122;
             this.colChanged.Name = "colChanged";
             this.colChanged.OptionsColumn.AllowEdit = false;
             this.colChanged.Visible = true;
             this.colChanged.VisibleIndex = 1;
-            this.colChanged.Width = 141;
+            this.colChanged.Width = 123;
             // 
             // colSize
             // 
             this.colSize.Caption = "Size(Bytes)";
             this.colSize.FieldName = "Size";
-            this.colSize.MinWidth = 27;
+            this.colSize.MinWidth = 24;
             this.colSize.Name = "colSize";
             this.colSize.Visible = true;
             this.colSize.VisibleIndex = 2;
-            this.colSize.Width = 117;
+            this.colSize.Width = 102;
             // 
             // colFullPath
             // 
             this.colFullPath.Caption = "Path";
             this.colFullPath.FieldName = "Path";
-            this.colFullPath.MinWidth = 27;
+            this.colFullPath.MinWidth = 24;
             this.colFullPath.Name = "colFullPath";
             this.colFullPath.Visible = true;
             this.colFullPath.VisibleIndex = 3;
-            this.colFullPath.Width = 116;
+            this.colFullPath.Width = 101;
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 40);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 48);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(392, 37);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(411, 30);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barManager1
@@ -299,7 +308,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1387, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1214, 0);
             // 
             // barDockControlBottom
             // 
@@ -308,7 +317,7 @@
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 700);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1387, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1214, 0);
             // 
             // barDockControlLeft
             // 
@@ -323,7 +332,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1387, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1214, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 700);
@@ -332,13 +341,13 @@
             // 
             this.chkbSelectionMode.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkbSelectionMode.EditValue = true;
-            this.chkbSelectionMode.Location = new System.Drawing.Point(0, 20);
+            this.chkbSelectionMode.Location = new System.Drawing.Point(0, 24);
             this.chkbSelectionMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkbSelectionMode.Name = "chkbSelectionMode";
             this.chkbSelectionMode.Properties.Caption = "Clear log between selection";
             this.chkbSelectionMode.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("chkbSelectionMode.Properties.ImageOptions.ImageChecked")));
             this.chkbSelectionMode.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("chkbSelectionMode.Properties.ImageOptions.ImageUnchecked")));
-            this.chkbSelectionMode.Size = new System.Drawing.Size(392, 20);
+            this.chkbSelectionMode.Size = new System.Drawing.Size(411, 24);
             this.chkbSelectionMode.TabIndex = 6;
             // 
             // checkEditRecursiveLoad
@@ -351,7 +360,7 @@
             this.checkEditRecursiveLoad.Properties.Caption = "Load Recursive Files";
             this.checkEditRecursiveLoad.Properties.ImageOptions.ImageChecked = ((System.Drawing.Image)(resources.GetObject("checkEditRecursiveLoad.Properties.ImageOptions.ImageChecked")));
             this.checkEditRecursiveLoad.Properties.ImageOptions.ImageUnchecked = ((System.Drawing.Image)(resources.GetObject("checkEditRecursiveLoad.Properties.ImageOptions.ImageUnchecked")));
-            this.checkEditRecursiveLoad.Size = new System.Drawing.Size(392, 20);
+            this.checkEditRecursiveLoad.Size = new System.Drawing.Size(411, 24);
             this.checkEditRecursiveLoad.TabIndex = 7;
             // 
             // ucLogs1
@@ -366,9 +375,9 @@
             this.ucLogs1.Location = new System.Drawing.Point(0, 0);
             this.ucLogs1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucLogs1.Name = "ucLogs1";
-            this.ucLogs1.RealTimeMode = true;
-            this.ucLogs1.Size = new System.Drawing.Size(991, 700);
+            this.ucLogs1.Size = new System.Drawing.Size(791, 700);
             this.ucLogs1.TabIndex = 0;
+            this.ucLogs1.Title = null;
             // 
             // imageList
             // 
@@ -397,7 +406,7 @@
             this.toolStripSeparator1});
             this.tsPrimary.Location = new System.Drawing.Point(0, 0);
             this.tsPrimary.Name = "tsPrimary";
-            this.tsPrimary.Size = new System.Drawing.Size(1387, 46);
+            this.tsPrimary.Size = new System.Drawing.Size(1214, 46);
             this.tsPrimary.TabIndex = 6;
             this.tsPrimary.Visible = false;
             // 
@@ -426,9 +435,28 @@
             this.bBtnOpenFolder.Name = "bBtnOpenFolder";
             this.bBtnOpenFolder.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.sbtnLoadCheckedFiles);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 440);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(411, 31);
+            this.panelControl1.TabIndex = 10;
+            // 
+            // sbtnLoadCheckedFiles
+            // 
+            this.sbtnLoadCheckedFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sbtnLoadCheckedFiles.Location = new System.Drawing.Point(2, 2);
+            this.sbtnLoadCheckedFiles.Margin = new System.Windows.Forms.Padding(4);
+            this.sbtnLoadCheckedFiles.Name = "sbtnLoadCheckedFiles";
+            this.sbtnLoadCheckedFiles.Size = new System.Drawing.Size(407, 27);
+            this.sbtnLoadCheckedFiles.TabIndex = 14;
+            this.sbtnLoadCheckedFiles.Text = "Load Checked Files";
+            // 
             // LocalLogFilesUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.spltMain);
             this.Controls.Add(this.tsPrimary);
@@ -438,11 +466,13 @@
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LocalLogFilesUC";
-            this.Size = new System.Drawing.Size(1387, 700);
+            this.Size = new System.Drawing.Size(1214, 700);
             this.Load += new System.EventHandler(this.LocalLogFilesUC_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.AnalogyUCLogs_DragEnter);
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain.Panel1)).EndInit();
             this.spltMain.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spltMain.Panel2)).EndInit();
             this.spltMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spltMain)).EndInit();
             this.spltMain.ResumeLayout(false);
@@ -457,6 +487,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRecursiveLoad.Properties)).EndInit();
             this.tsPrimary.ResumeLayout(false);
             this.tsPrimary.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,5 +523,7 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn colChanged;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colSize;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colFullPath;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton sbtnLoadCheckedFiles;
     }
 }
