@@ -48,7 +48,7 @@
 		<EmbeddedResource Remove="UserControls\UCLogsNonFloatable.resx" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="1.0.0" />
+		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="1.1.0" />
 		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="2.0.0" />
