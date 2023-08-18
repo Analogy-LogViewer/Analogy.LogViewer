@@ -13,6 +13,7 @@ using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Analogy.CommonControls
 {
@@ -67,7 +68,7 @@ namespace Analogy.CommonControls
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
-            dtr["Date"] = GetOffsetTime(message.Date,timeOffsetType,customOffset);
+            dtr["Date"] = GetOffsetTime(message.Date, timeOffsetType, customOffset);
             dtr["Text"] = message.Text ?? "";
             dtr["Source"] = message.Source ?? "";
             dtr["Level"] = message.Level;
@@ -101,7 +102,7 @@ namespace Analogy.CommonControls
                    filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public static DateTime GetOffsetTime(DateTime time, TimeOffsetType timeOffsetType,TimeSpan customOffset)
+        public static DateTime GetOffsetTime(DateTime time, TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
             return timeOffsetType switch
             {
@@ -216,7 +217,7 @@ namespace Analogy.CommonControls
         }
         public static TimeSpan IdleTime() => TimeSpan.FromSeconds(GetLastInputTime());
 
-        public static string GetOpenFilter(string openFilter,bool addCompressedArchives)
+        public static string GetOpenFilter(string openFilter, bool addCompressedArchives)
         {
             if (!addCompressedArchives)
             {
@@ -259,6 +260,28 @@ namespace Analogy.CommonControls
             // args.Contents.Image = realTime.ToolTip.Image;
             toolTip.Setup(args);
             return toolTip;
+        }
+
+        public static string ProcessLinuxMessage(string? msg)
+        {
+            if (msg == null)
+            {
+                return string.Empty;
+            }
+            StringBuilder sb = new();
+            foreach (var line in msg.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (!line.Contains("\n"))
+                {
+                    sb.AppendLine(line);
+                    continue;
+                }
+                foreach (var innerLines in line.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    sb.AppendFormat("{0}{1}", innerLines.Replace("\n",""), Environment.NewLine);
+                }
+            }
+            return sb.ToString();
         }
     }
 }

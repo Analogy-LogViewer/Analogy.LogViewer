@@ -82,7 +82,7 @@ namespace Analogy.CommonControls.UserControls
                     Message.AdditionalProperties.Select(kv => $"{kv.Key}:{kv.Value}"));
             }
 
-            memoText.Text = Message.Text;
+            memoText.Text =Utils.ProcessLinuxMessage(Message.Text);
             txtbMachineName.Text = Message.MachineName;
             txtID.Text = Message.Id.ToString();
             txtbDataSource.Text = DataSource;
