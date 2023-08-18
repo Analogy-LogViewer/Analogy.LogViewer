@@ -458,6 +458,10 @@ namespace Analogy.CommonControls.UserControls
         }
         private void SetupEventsHandlers()
         {
+            LogGrid.ColumnFilterChanged += (s, e) =>
+            {
+               FilterResults(); 
+            };
             ceSearchEverywhere.CheckedChanged += async (s, e) =>
             {
                 _filterCriteria.SearchEveryWhere = ceSearchEverywhere.Checked;
