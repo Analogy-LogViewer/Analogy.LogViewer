@@ -18,7 +18,7 @@ namespace Analogy.Common.DataTypes
         public string[] Modules;
         public string[] ExcludedModules;
         public bool SearchEveryWhere { get; set; }
-        public List<string> Columns { get; set; }
+        public List<(string Field, bool Numerical)> Columns { get; set; }
         public string TextInclude { get; set; }
         public string TextExclude { get; set; }
         public DateTime StartTime { get; set; }
@@ -229,11 +229,21 @@ namespace Analogy.Common.DataTypes
 
         private string GetIncludeTextFilter(List<string> includeTexts, bool orOperationInInclude)
         {
-            IEnumerable<string> GenerateSingleCombinationPerColumn(string field)
+            IEnumerable<string> GenerateSingleCombinationPerColumn(string field, bool numerical)
             {
                 foreach (string text in includeTexts)
                 {
-                    yield return $" {field} like '%{text}%'";
+                    if (numerical)
+                    {
+                        if (!string.IsNullOrEmpty(text) && int.TryParse(text, out var number))
+                        {
+                            yield return $" {field} = {number}";
+                        }
+                    }
+                    else
+                    {
+                        yield return $" {field} like '%{text}%'";
+                    }
                 }
             }
 
@@ -241,15 +251,15 @@ namespace Analogy.Common.DataTypes
             {
                 var entries = Columns.Select(c =>
                     string.Join(orOperationInInclude ? " Or " : " and ",
-                        GenerateSingleCombinationPerColumn(c)));
+                        GenerateSingleCombinationPerColumn(c.Field, c.Numerical)));
                 var combined = string.Join(" Or ", entries);
                 return combined;
             }
             else
             {
                 var includeTextFinal = orOperationInInclude
-                    ? string.Join(" Or ", GenerateSingleCombinationPerColumn("Text"))
-                    : string.Join(" and ", GenerateSingleCombinationPerColumn("Text"));
+                    ? string.Join(" Or ", GenerateSingleCombinationPerColumn("Text", false))
+                    : string.Join(" and ", GenerateSingleCombinationPerColumn("Text", false));
                 return includeTextFinal;
             }
         }

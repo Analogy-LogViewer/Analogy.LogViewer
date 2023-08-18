@@ -985,20 +985,18 @@ namespace Analogy.CommonControls.UserControls
             UpdateSearchColumn();
         }
 
-        public void UpdateSearchColumn()
+        private void UpdateSearchColumn()
         {
+            bool GetNumericalValue(GridColumn column) => column == gridColumnLineNumber || column == gridColumnProcessID || column == gridColumnThread;
             _filterCriteria.Columns = logGrid.Columns.Where(c => c.Visible)
                 .Except(new List<GridColumn>()
                 {
                     gridColumnDate,
                     gridColumnTimeDiff,
                     gridColumnObject,
-                    gridColumnLineNumber,
-                    gridColumnProcessID,
-                    gridColumnThread,
                     gridColumnRawText,
                 })
-                .Select(c => c.FieldName).ToList();
+                .Select(c => (c.FieldName, GetNumericalValue(c))).ToList();
         }
         private void GridView_ShownEditor(object sender, System.EventArgs e)
         {
