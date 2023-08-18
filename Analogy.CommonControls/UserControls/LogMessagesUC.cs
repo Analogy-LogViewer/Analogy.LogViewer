@@ -151,7 +151,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
         private AnalogyLogMessage? SelectedMassage { get; set; }
-        private FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
+        private readonly FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
         private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
 
@@ -202,7 +202,7 @@ namespace Analogy.CommonControls.UserControls
 
         public LogMessagesUC()
         {
-            
+
             InitializeComponent();
             DateTimePicker = new DateTimeSelectionUC();
             JsonColumnChooser = new JsonColumnChooserUC();
@@ -212,7 +212,7 @@ namespace Analogy.CommonControls.UserControls
             }
             Id = Guid.NewGuid();
             SetupDependencies();
-         
+
             PopupControlContainer datePopup = new PopupControlContainer();
             datePopup.Manager = this.barManager1;
             datePopup.Controls.Add(DateTimePicker);
@@ -458,6 +458,11 @@ namespace Analogy.CommonControls.UserControls
         }
         private void SetupEventsHandlers()
         {
+            ceSearchEverywhere.CheckedChanged += async (s, e) =>
+            {
+                _filterCriteria.SearchEveryWhere = ceSearchEverywhere.Checked;
+                await FilterHasChanged();
+            };
             ddbGoTo.ArrowButtonClick += (s, e) =>
             {
                 var times = GetMessages().Select(m => m.Date).Distinct().ToList();
@@ -841,6 +846,7 @@ namespace Analogy.CommonControls.UserControls
             logGrid.CustomDrawRowIndicator += LogGrid_CustomDrawRowIndicator;
             logGrid.SelectionChanged += LogGridView_SelectionChanged;
             logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
+            logGrid.ColumnPositionChanged += LogGrid_ColumnPositionChanged;
             gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
             #endregion
             ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
@@ -972,6 +978,27 @@ namespace Analogy.CommonControls.UserControls
             };
 
             #endregion
+        }
+
+        private void LogGrid_ColumnPositionChanged(object? sender, EventArgs e)
+        {
+            UpdateSearchColumn();
+        }
+
+        public void UpdateSearchColumn()
+        {
+            _filterCriteria.Columns = logGrid.Columns.Where(c => c.Visible)
+                .Except(new List<GridColumn>()
+                {
+                    gridColumnDate,
+                    gridColumnTimeDiff,
+                    gridColumnObject,
+                    gridColumnLineNumber,
+                    gridColumnProcessID,
+                    gridColumnThread,
+                    gridColumnRawText,
+                })
+                .Select(c => c.FieldName).ToList();
         }
         private void GridView_ShownEditor(object sender, System.EventArgs e)
         {
@@ -1427,7 +1454,7 @@ namespace Analogy.CommonControls.UserControls
             btsiInlineJsonViewer.Checked = Settings.InlineJsonViewer;
             bbiJsonColumn.Visibility = Settings.InlineJsonViewer ? BarItemVisibility.Always : BarItemVisibility.Never;
             spltcMessages.PanelVisibility = Settings.InlineJsonViewer ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
-
+            UpdateSearchColumn();
         }
 
         private void SetupMessageDetailPanel()

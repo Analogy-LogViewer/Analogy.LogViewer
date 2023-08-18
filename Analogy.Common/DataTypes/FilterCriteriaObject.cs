@@ -17,7 +17,8 @@ namespace Analogy.Common.DataTypes
         public string[] ExcludedSources;
         public string[] Modules;
         public string[] ExcludedModules;
-
+        public bool SearchEveryWhere { get; set; }
+        public List<string> Columns { get; set; }
         public string TextInclude { get; set; }
         public string TextExclude { get; set; }
         public DateTime StartTime { get; set; }
@@ -29,7 +30,6 @@ namespace Analogy.Common.DataTypes
             get => _arrLevels;
             set => _arrLevels = value;
         }
-
         public List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
         public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -106,11 +106,11 @@ namespace Analogy.Common.DataTypes
         public string GetSqlExpression(bool orLogLevel)
         {
 
-            StringBuilder sqlString = new StringBuilder();
-            List<string> includeTexts = new List<string> { EscapeLikeValue(TextInclude.Trim()) };
+            StringBuilder sqlString = new();
+            List<string> includeTexts = new() { EscapeLikeValue(TextInclude.Trim()) };
 
             bool orOperationInInclude = false;
-            bool orOperationInexclude = false;
+            bool orOperationInExclude = false;
             var text = EscapeLikeValue(TextInclude.Trim());
             if (text.Contains('|'))
             {
@@ -124,7 +124,7 @@ namespace Analogy.Common.DataTypes
                 var split = text.Split(new[] { '&', '+' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 includeTexts = split.Select(itm => itm.Trim()).ToList();
             }
-            List<string> excludedTexts = new List<string>(0);
+            List<string> excludedTexts = new();
             if (!string.IsNullOrEmpty(TextExclude))
             {
                 excludedTexts.Add(EscapeLikeValue(TextExclude.Trim()));
@@ -133,7 +133,7 @@ namespace Analogy.Common.DataTypes
             text = EscapeLikeValue(TextExclude.Trim());
             if (text.Contains("|"))
             {
-                orOperationInexclude = true;
+                orOperationInExclude = true;
                 var split = text.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 excludedTexts = split.Select(itm => itm.Trim()).Where(w => !string.IsNullOrEmpty(w)).ToList();
             }
@@ -145,16 +145,14 @@ namespace Analogy.Common.DataTypes
 
             sqlString.Append("(");
 
-            sqlString.Append(orOperationInInclude
-                ? string.Join(" Or ", includeTexts.Select(t => $" Text like '%{t}%'"))
-                : string.Join(" and ", includeTexts.Select(t => $" Text like '%{t}%'")));
+            sqlString.Append(GetIncludeTextFilter(includeTexts, orOperationInInclude));
 
             sqlString.Append(")");
-            
+
             if (excludedTexts.Any())
             {
                 sqlString.Append(" and (");
-                sqlString.Append(orOperationInexclude
+                sqlString.Append(orOperationInExclude
                     ? string.Join(" and ", excludedTexts.Select(t => $" NOT Text like '%{t}%'"))
                     : string.Join(" Or ", excludedTexts.Select(t => $" NOT Text like '%{t}%'")));
 
@@ -198,7 +196,7 @@ namespace Analogy.Common.DataTypes
 
             sqlString.Append(dateFilter);
 
-            if (includeTexts.Any())
+            if (includeTexts.Any() && !SearchEveryWhere)
             {
                 var includeColumns = IncludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
                 foreach (FilterCriteriaUIOption include in includeColumns)
@@ -218,7 +216,7 @@ namespace Analogy.Common.DataTypes
                 foreach (FilterCriteriaUIOption exclude in excludeColumns)
                 {
                     sqlString.Append(" and (");
-                    string op = (orOperationInexclude) ? "and" : "or";
+                    string op = (orOperationInExclude) ? "and" : "or";
                     sqlString.Append(string.Join($" {op} ",
                         excludedTexts.Select(l =>
                             $" NOT [{EscapeLikeValue(exclude.ValueMember)}] like '%{EscapeLikeValue(l)}%'")));
@@ -227,6 +225,33 @@ namespace Analogy.Common.DataTypes
             }
 
             return sqlString.ToString();
+        }
+
+        private string GetIncludeTextFilter(List<string> includeTexts, bool orOperationInInclude)
+        {
+            IEnumerable<string> GenerateSingleCombinationPerColumn(string field)
+            {
+                foreach (string text in includeTexts)
+                {
+                    yield return $" {field} like '%{text}%'";
+                }
+            }
+
+            if (SearchEveryWhere)
+            {
+                var entries = Columns.Select(c =>
+                    string.Join(orOperationInInclude ? " Or " : " and ",
+                        GenerateSingleCombinationPerColumn(c)));
+                var combined = string.Join(" Or ", entries);
+                return combined;
+            }
+            else
+            {
+                var includeTextFinal = orOperationInInclude
+                    ? string.Join(" Or ", GenerateSingleCombinationPerColumn("Text"))
+                    : string.Join(" and ", GenerateSingleCombinationPerColumn("Text"));
+                return includeTextFinal;
+            }
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Match(string rowLine, string criteria, PreDefinedQueryType type)

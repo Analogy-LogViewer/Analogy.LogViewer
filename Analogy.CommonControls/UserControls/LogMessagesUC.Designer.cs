@@ -303,6 +303,8 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ceSearchEverywhere = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -414,6 +416,8 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).BeginInit();
             this.dockPanelTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSearchEverywhere.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -1762,6 +1766,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControl1.Controls.Add(this.txtbInclude);
             this.layoutControl1.Controls.Add(this.sbtnTextInclude);
             this.layoutControl1.Controls.Add(this.ceIncludeText);
+            this.layoutControl1.Controls.Add(this.ceSearchEverywhere);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -1980,9 +1985,9 @@ namespace Analogy.CommonControls.UserControls
             // sbtnPreDefinedFilters
             // 
             this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SingleMasterFilter_16x16;
-            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1454, 7);
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1467, 7);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
-            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(35, 27);
+            this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(22, 27);
             this.sbtnPreDefinedFilters.StyleController = this.layoutControl1;
             this.sbtnPreDefinedFilters.TabIndex = 21;
             this.sbtnPreDefinedFilters.ToolTip = "Pre-defined filters";
@@ -1994,7 +1999,7 @@ namespace Analogy.CommonControls.UserControls
             this.txtbInclude.MenuManager = this.barManager1;
             this.txtbInclude.Name = "txtbInclude";
             this.txtbInclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbInclude.Size = new System.Drawing.Size(1285, 22);
+            this.txtbInclude.Size = new System.Drawing.Size(1157, 22);
             this.txtbInclude.StyleController = this.layoutControl1;
             this.txtbInclude.TabIndex = 19;
             this.txtbInclude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbInclude_KeyPress);
@@ -2002,9 +2007,9 @@ namespace Analogy.CommonControls.UserControls
             // sbtnTextInclude
             // 
             this.sbtnTextInclude.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1426, 7);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1441, 7);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
-            this.sbtnTextInclude.Size = new System.Drawing.Size(24, 27);
+            this.sbtnTextInclude.Size = new System.Drawing.Size(22, 27);
             this.sbtnTextInclude.StyleController = this.layoutControl1;
             this.sbtnTextInclude.TabIndex = 20;
             this.sbtnTextInclude.ToolTip = "Clear the text";
@@ -2057,7 +2062,8 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem17,
             this.layoutControlItem18,
             this.layoutControlItem19,
-            this.layoutControlItem14});
+            this.layoutControlItem14,
+            this.layoutControlItem20});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             this.Root.Size = new System.Drawing.Size(1496, 142);
@@ -2082,25 +2088,25 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem1.Control = this.txtbInclude;
             this.layoutControlItem1.Location = new System.Drawing.Point(130, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1289, 31);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1161, 31);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.sbtnTextInclude;
-            this.layoutControlItem3.Location = new System.Drawing.Point(1419, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(1434, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(28, 31);
+            this.layoutControlItem3.Size = new System.Drawing.Size(26, 31);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.sbtnPreDefinedFilters;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1447, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1460, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(39, 31);
+            this.layoutControlItem4.Size = new System.Drawing.Size(26, 31);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -3256,6 +3262,26 @@ namespace Analogy.CommonControls.UserControls
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
+            // ceSearchEverywhere
+            // 
+            this.ceSearchEverywhere.Location = new System.Drawing.Point(1298, 7);
+            this.ceSearchEverywhere.MenuManager = this.barManager1;
+            this.ceSearchEverywhere.Name = "ceSearchEverywhere";
+            this.ceSearchEverywhere.Properties.Caption = "Search Everywhere";
+            this.ceSearchEverywhere.Size = new System.Drawing.Size(139, 24);
+            this.ceSearchEverywhere.StyleController = this.layoutControl1;
+            this.ceSearchEverywhere.TabIndex = 31;
+            this.ceSearchEverywhere.ToolTip = "Search in all columns";
+            // 
+            // layoutControlItem20
+            // 
+            this.layoutControlItem20.Control = this.ceSearchEverywhere;
+            this.layoutControlItem20.Location = new System.Drawing.Point(1291, 0);
+            this.layoutControlItem20.Name = "layoutControlItem20";
+            this.layoutControlItem20.Size = new System.Drawing.Size(143, 31);
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem20.TextVisible = false;
+            // 
             // LogMessagesUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -3388,6 +3414,8 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).EndInit();
             this.dockPanelTree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSearchEverywhere.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3627,5 +3655,7 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnRawText;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnLineNumber;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMethodName;
+        private DevExpress.XtraEditors.CheckEdit ceSearchEverywhere;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
     }
 }
