@@ -8,7 +8,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            { 
+            {
+                new ("V5.0.0 - Add Search everywhere checkbox #1812",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,07,18), "5.0.0.0"),
                 new ("V5.0.0 - Add NET8 initial Support #1814",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,07,18), "5.0.0.0"),
                 new ("V5.0.0 - Apply Correct filtering when changing header column filtering #1813",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,07,18), "5.0.0.0"),
                 new ("V5.0.0 - V5 - Framework refactoring and UI changes #1807",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,08,16), "5.0.0.0"),
