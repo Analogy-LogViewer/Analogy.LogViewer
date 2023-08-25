@@ -205,6 +205,7 @@ namespace Analogy.CommonControls.UserControls
             this.sbtnTextInclude = new DevExpress.XtraEditors.SimpleButton();
             this.ceIncludeText = new DevExpress.XtraEditors.CheckEdit();
             this.defaultToolTipController = new DevExpress.Utils.ToolTipController(this.components);
+            this.ceSearchEverywhere = new DevExpress.XtraEditors.CheckEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -225,6 +226,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.popupMenuGoTo = new DevExpress.XtraBars.PopupMenu(this.components);
             this.layoutControlLogs = new DevExpress.XtraLayout.LayoutControl();
             this.spltcMessages = new DevExpress.XtraEditors.SplitContainerControl();
@@ -303,8 +305,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ceSearchEverywhere = new DevExpress.XtraEditors.CheckEdit();
-            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bbiExportToSimpleList = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -330,6 +331,7 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.ceExcludeText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceIncludeText.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSearchEverywhere.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -350,6 +352,7 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuGoTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlLogs)).BeginInit();
             this.layoutControlLogs.SuspendLayout();
@@ -416,8 +419,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).BeginInit();
             this.dockPanelTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceSearchEverywhere.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -876,8 +877,9 @@ namespace Analogy.CommonControls.UserControls
             this.bciTimeOffsetLocalToUTC,
             this.btsiInlineJsonViewer,
             this.bsiProgress,
-            this.bbiJsonColumn});
-            this.barManager1.MaxItemId = 93;
+            this.bbiJsonColumn,
+            this.bbiExportToSimpleList});
+            this.barManager1.MaxItemId = 94;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -1153,7 +1155,8 @@ namespace Analogy.CommonControls.UserControls
             this.bSMExports.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportCSV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportHtml)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnExportHtml),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiExportToSimpleList)});
             this.bSMExports.Name = "bSMExports";
             this.bSMExports.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -2039,6 +2042,17 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.defaultToolTipController.Appearance.Options.UseBorderColor = true;
             // 
+            // ceSearchEverywhere
+            // 
+            this.ceSearchEverywhere.Location = new System.Drawing.Point(1298, 7);
+            this.ceSearchEverywhere.MenuManager = this.barManager1;
+            this.ceSearchEverywhere.Name = "ceSearchEverywhere";
+            this.ceSearchEverywhere.Properties.Caption = "Search Everywhere";
+            this.ceSearchEverywhere.Size = new System.Drawing.Size(139, 24);
+            this.ceSearchEverywhere.StyleController = this.layoutControl1;
+            this.ceSearchEverywhere.TabIndex = 31;
+            this.ceSearchEverywhere.ToolTip = "Search in all columns";
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -2253,6 +2267,15 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem14.Size = new System.Drawing.Size(88, 39);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
+            // 
+            // layoutControlItem20
+            // 
+            this.layoutControlItem20.Control = this.ceSearchEverywhere;
+            this.layoutControlItem20.Location = new System.Drawing.Point(1291, 0);
+            this.layoutControlItem20.Name = "layoutControlItem20";
+            this.layoutControlItem20.Size = new System.Drawing.Size(143, 31);
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem20.TextVisible = false;
             // 
             // popupMenuGoTo
             // 
@@ -3262,25 +3285,12 @@ namespace Analogy.CommonControls.UserControls
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
             // 
-            // ceSearchEverywhere
+            // bbiExportToSimpleList
             // 
-            this.ceSearchEverywhere.Location = new System.Drawing.Point(1298, 7);
-            this.ceSearchEverywhere.MenuManager = this.barManager1;
-            this.ceSearchEverywhere.Name = "ceSearchEverywhere";
-            this.ceSearchEverywhere.Properties.Caption = "Search Everywhere";
-            this.ceSearchEverywhere.Size = new System.Drawing.Size(139, 24);
-            this.ceSearchEverywhere.StyleController = this.layoutControl1;
-            this.ceSearchEverywhere.TabIndex = 31;
-            this.ceSearchEverywhere.ToolTip = "Search in all columns";
-            // 
-            // layoutControlItem20
-            // 
-            this.layoutControlItem20.Control = this.ceSearchEverywhere;
-            this.layoutControlItem20.Location = new System.Drawing.Point(1291, 0);
-            this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(143, 31);
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem20.TextVisible = false;
+            this.bbiExportToSimpleList.Caption = "Export to simple list";
+            this.bbiExportToSimpleList.Id = 93;
+            this.bbiExportToSimpleList.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Watermark_16x16;
+            this.bbiExportToSimpleList.Name = "bbiExportToSimpleList";
             // 
             // LogMessagesUC
             // 
@@ -3324,6 +3334,7 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.ceExcludeText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbInclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceIncludeText.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceSearchEverywhere.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -3344,6 +3355,7 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuGoTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlLogs)).EndInit();
             this.layoutControlLogs.ResumeLayout(false);
@@ -3414,8 +3426,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).EndInit();
             this.dockPanelTree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceSearchEverywhere.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3657,5 +3667,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMethodName;
         private DevExpress.XtraEditors.CheckEdit ceSearchEverywhere;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
+        private DevExpress.XtraBars.BarButtonItem bbiExportToSimpleList;
     }
 }

@@ -474,6 +474,28 @@ namespace Analogy.CommonControls.UserControls
         }
         private void SetupEventsHandlers()
         {
+            bbiExportToSimpleList.ItemClick += (s, e) =>
+            {
+                var messages = GetMessages();
+                var text = string.Join(Environment.NewLine,
+                    messages.Select(m => $"Date:{m.Date} ---- Level:{m.Level} ---- {m.Text}"));
+                using SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    try
+                    {
+                        File.WriteAllText(saveFileDialog.FileName, text);
+                        XtraMessageBox.Show($"Log saved to: {saveFileDialog.FileName}");
+
+                    }
+                    catch (Exception exception)
+                    {
+                        XtraMessageBox.Show($"Error: {exception.Message}");
+                    }
+                }
+            };
             LogGrid.ColumnFilterChanged += (s, e) =>
             {
                 FilterResults();
