@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
@@ -113,6 +114,20 @@ namespace Analogy.CommonControls
                 TimeOffsetType.LocalTimeToUtc => time.ToUniversalTime(),
                 _ => time
             };
+        }
+
+        public static void ChangeOffset(DataTable dataTable, IUserSettingsManager settings)
+        {
+            dataTable.BeginLoadData();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                row.BeginEdit();
+                AnalogyLogMessage m = (AnalogyLogMessage)row[Common.CommonUtils.AnalogyMessageColumn];
+                row["Date"] = Utils.GetOffsetTime(m.Date, settings.TimeOffsetType, settings.TimeOffset);
+                row.EndEdit();
+                row.AcceptChanges();
+            }
+            dataTable.EndLoadData();
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataTable DataTableConstructor()

@@ -8,7 +8,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {
+            {    
+                new ("V5.0.0 - Change Time Offset is very slow #1769", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,08,25),"5.0.0.0"),
                 new ("V5.0.0 - Message viewer doesn't understand Linux-style new lines #1770", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,08,25),"5.0.0.0"),
                 new ("V5.0.0 - Add Search everywhere checkbox #1812",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,07,18), "5.0.0.0"),
                 new ("V5.0.0 - Add NET8 initial Support #1814",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,07,18), "5.0.0.0"),

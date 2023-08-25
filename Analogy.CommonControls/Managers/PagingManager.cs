@@ -141,7 +141,7 @@ namespace Analogy.CommonControls.Managers
             try
             {
                 lockSlim.EnterWriteLock();
-                DataRow dtr = Utils.CreateRow(table, message, dataSource,Settings.TimeOffsetType,Settings.TimeOffset);
+                DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.TimeOffsetType, Settings.TimeOffset);
                 table.Rows.Add(dtr);
                 return dtr;
 
@@ -357,15 +357,7 @@ namespace Analogy.CommonControls.Managers
             lockSlim.EnterWriteLock();
             foreach (DataTable dataTable in pages)
             {
-                dataTable.BeginLoadData();
-                foreach (DataRow dataTableRow in dataTable.Rows)
-                {
-                    dataTableRow.BeginEdit();
-                    AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow[Common.CommonUtils.AnalogyMessageColumn];
-                    dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
-                    dataTableRow.EndEdit();
-                }
-                dataTable.EndLoadData();
+                Utils.ChangeOffset(dataTable, Settings);
             }
             lockSlim.ExitWriteLock();
         }

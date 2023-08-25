@@ -826,13 +826,7 @@ namespace Analogy.CommonControls.UserControls
         private void RefreshTimeOffset()
         {
             PagingManager.UpdateOffsets();
-            foreach (DataRow dataTableRow in _bookmarkedMessages.Rows)
-            {
-                dataTableRow.BeginEdit();
-                AnalogyLogMessage m = (AnalogyLogMessage)dataTableRow[Common.CommonUtils.AnalogyMessageColumn];
-                dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
-                dataTableRow.EndEdit();
-            }
+            Utils.ChangeOffset(_bookmarkedMessages, Settings);
         }
 
 
