@@ -373,6 +373,22 @@ namespace Analogy.CommonControls.UserControls
             gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
             if (Settings.SaveSearchFilters)
             {
+                if (Settings.IncludeText == txtbInclude.Properties.NullText)
+                {
+                    Settings.IncludeText = string.Empty;
+                }
+                if (Settings.ExcludeText == txtbExclude.Properties.NullText)
+                {
+                    Settings.ExcludeText = string.Empty;
+                }
+                if (Settings.SourceText == txtbSource.Properties.NullText)
+                {
+                    Settings.SourceText = string.Empty;
+                }
+                if (Settings.ModuleText == txtbModule.Properties.NullText)
+                {
+                    Settings.ModuleText = string.Empty;
+                }
                 string? includeText = string.IsNullOrEmpty(Settings.IncludeText) || Settings.IncludeText == txtbInclude.Properties.NullText ? null : Settings.IncludeText;
                 txtbInclude.Text = includeText;
                 string? excludeText = string.IsNullOrEmpty(Settings.ExcludeText) || Settings.ExcludeText == txtbExclude.Properties.NullText ? null : Settings.ExcludeText;
@@ -460,7 +476,7 @@ namespace Analogy.CommonControls.UserControls
         {
             LogGrid.ColumnFilterChanged += (s, e) =>
             {
-               FilterResults(); 
+                FilterResults();
             };
             ceSearchEverywhere.CheckedChanged += async (s, e) =>
             {
@@ -2083,8 +2099,8 @@ namespace Analogy.CommonControls.UserControls
                 txtbModule.Text = null;
             }
 
-            string include = txtbInclude.Text == null ? string.Empty : txtbInclude.Text.Trim();
-            string exclude = txtbExclude.Text == null ? string.Empty : txtbExclude.Text.Trim();
+            string include = txtbInclude.EditValue == null ? string.Empty : txtbInclude.EditValue.ToString().Trim();
+            string exclude = txtbExclude.EditValue == null ? string.Empty : txtbExclude.EditValue.ToString().Trim();
             if (!autoCompleteInclude.Contains(include))
             {
                 autoCompleteInclude.Add(include);
@@ -2099,13 +2115,13 @@ namespace Analogy.CommonControls.UserControls
             Settings.AddNewSearchesEntryToLists(exclude, false);
             _filterCriteria.StartTime = ceNewerThanFilter.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteria.EndTime = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
-            _filterCriteria.TextInclude = ceIncludeText.Checked ? (txtbInclude.Text == null ? string.Empty : txtbInclude.Text.Trim()) : string.Empty;
+            _filterCriteria.TextInclude = ceIncludeText.Checked ? (txtbInclude.EditValue == null ? string.Empty : txtbInclude.EditValue.ToString().Trim()) : string.Empty;
             _filterCriteria.TextExclude = ceExcludeText.Checked
-                ? (txtbExclude.Text == null ? string.Empty : txtbExclude.Text.Trim()) + string.Join("|", _excludeMostCommon)
+                ? (txtbExclude.EditValue == null ? string.Empty : txtbExclude.EditValue.ToString().Trim()) + string.Join("|", _excludeMostCommon)
                 : string.Empty;
 
-            Settings.IncludeText = Settings.SaveSearchFilters && txtbInclude.Text != null ? txtbInclude.Text : string.Empty;
-            Settings.ExcludeText = Settings.SaveSearchFilters && txtbExclude.Text != null ? txtbExclude.Text : string.Empty;
+            Settings.IncludeText = Settings.SaveSearchFilters && txtbInclude.EditValue != null ? txtbInclude.EditValue.ToString() : string.Empty;
+            Settings.ExcludeText = Settings.SaveSearchFilters && txtbExclude.EditValue != null ? txtbExclude.EditValue.ToString() : string.Empty;
 
             _filterCriteria.Levels = null;
             switch (LogLevelSelectionType)
@@ -2151,9 +2167,9 @@ namespace Analogy.CommonControls.UserControls
             }
 
 
-            if (ceSources.Checked && !string.IsNullOrEmpty(txtbSource.Text))
+            if (ceSources.Checked && txtbSource.EditValue != null)
             {
-                var items = txtbSource.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                var items = txtbSource.EditValue.ToString().Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(v => v.Trim()).ToList();
                 var includeItems = items.Where(i => !i.StartsWith("-"));
                 var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
@@ -2168,12 +2184,12 @@ namespace Analogy.CommonControls.UserControls
                 _filterCriteria.ExcludedSources = null;
             }
 
-            Settings.SourceText = Settings.SaveSearchFilters && txtbSource.Text != null ? txtbSource.Text : string.Empty;
+            Settings.SourceText = Settings.SaveSearchFilters && txtbSource.EditValue != null ? txtbSource.EditValue.ToString() : string.Empty;
 
-            if (ceModulesProcess.Checked && !string.IsNullOrEmpty(txtbModule.Text))
+            if (ceModulesProcess.Checked && txtbModule.EditValue != null)
             {
 
-                var items = txtbModule.Text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                var items = txtbModule.EditValue.ToString().Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(v => v.Trim()).ToList();
                 var includeItems = items.Where(i => !i.StartsWith("-"));
                 var excludeItems = items.Where(i => i.StartsWith("-") && i.Length > 1)
@@ -2188,7 +2204,7 @@ namespace Analogy.CommonControls.UserControls
                 _filterCriteria.ExcludedModules = null;
             }
 
-            Settings.ModuleText = Settings.SaveSearchFilters && txtbModule.Text != null ? txtbModule.Text : string.Empty;
+            Settings.ModuleText = Settings.SaveSearchFilters && txtbModule.EditValue != null ? txtbModule.EditValue.ToString().Trim() : string.Empty;
             string filter = _filterCriteria.GetSqlExpression(ceLogLevelOr.Checked);
             lockSlim.EnterWriteLock();
             if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))

@@ -357,6 +357,7 @@ namespace Analogy.CommonControls.Managers
             lockSlim.EnterWriteLock();
             foreach (DataTable dataTable in pages)
             {
+                dataTable.BeginLoadData();
                 foreach (DataRow dataTableRow in dataTable.Rows)
                 {
                     dataTableRow.BeginEdit();
@@ -364,6 +365,7 @@ namespace Analogy.CommonControls.Managers
                     dataTableRow["Date"] = Utils.GetOffsetTime(m.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                     dataTableRow.EndEdit();
                 }
+                dataTable.EndLoadData();
             }
             lockSlim.ExitWriteLock();
         }
