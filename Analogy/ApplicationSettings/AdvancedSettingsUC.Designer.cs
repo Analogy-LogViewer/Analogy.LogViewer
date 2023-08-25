@@ -32,15 +32,18 @@
             this.tsAdvancedModeAdditionalColumns = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsAdvancedModeRawSQLFiltering = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsEnabledAdvancedSettings = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsLinux = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.gcAdvancedSettings)).BeginInit();
             this.gcAdvancedSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsAdvancedModeAdditionalColumns.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAdvancedModeRawSQLFiltering.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsEnabledAdvancedSettings.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsLinux.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcAdvancedSettings
             // 
+            this.gcAdvancedSettings.Controls.Add(this.tsLinux);
             this.gcAdvancedSettings.Controls.Add(this.tsAdvancedModeAdditionalColumns);
             this.gcAdvancedSettings.Controls.Add(this.tsAdvancedModeRawSQLFiltering);
             this.gcAdvancedSettings.Controls.Add(this.tsEnabledAdvancedSettings);
@@ -89,6 +92,18 @@
             this.tsEnabledAdvancedSettings.Size = new System.Drawing.Size(743, 24);
             this.tsEnabledAdvancedSettings.TabIndex = 1;
             // 
+            // tsLinux
+            // 
+            this.tsLinux.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsLinux.Location = new System.Drawing.Point(5, 137);
+            this.tsLinux.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsLinux.Name = "tsLinux";
+            this.tsLinux.Properties.OffText = "Don\'t Process Linux Style Text Formatting";
+            this.tsLinux.Properties.OnText = "Process Linux Style Text Formating";
+            this.tsLinux.Size = new System.Drawing.Size(743, 24);
+            this.tsLinux.TabIndex = 8;
+            // 
             // AdvancedSettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -102,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tsAdvancedModeAdditionalColumns.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAdvancedModeRawSQLFiltering.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsEnabledAdvancedSettings.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsLinux.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -112,5 +128,6 @@
         private DevExpress.XtraEditors.ToggleSwitch tsAdvancedModeAdditionalColumns;
         private DevExpress.XtraEditors.ToggleSwitch tsAdvancedModeRawSQLFiltering;
         private DevExpress.XtraEditors.ToggleSwitch tsEnabledAdvancedSettings;
+        private DevExpress.XtraEditors.ToggleSwitch tsLinux;
     }
 }

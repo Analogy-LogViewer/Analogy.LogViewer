@@ -21,7 +21,7 @@ namespace Analogy.CommonControls.Forms
         public FormMessageDetails(AnalogyLogMessage msg, List<IAnalogyLogMessage> messages, string dataSource, IUserSettingsManager settings) : this()
         {
             Settings = settings;
-            MessageDetailsUC uc = new MessageDetailsUC(msg, messages, dataSource);
+            MessageDetailsUC uc = new MessageDetailsUC(msg, messages, dataSource, settings);
             spltCMain.Panel1.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
         }

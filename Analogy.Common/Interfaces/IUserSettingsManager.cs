@@ -53,6 +53,7 @@ namespace Analogy.Common.Interfaces
 
         bool ShowProcessedCounter { get; set; }
         bool InlineJsonViewer { get; set; }
+        bool SupportLinuxFormatting { get; set; }
         void Save();
         void AddToRecentFiles(Guid iD, string file);
         void AddToRecentFolders(Guid iD, string path);

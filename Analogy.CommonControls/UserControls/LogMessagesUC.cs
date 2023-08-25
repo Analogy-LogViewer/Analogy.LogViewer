@@ -2428,9 +2428,9 @@ namespace Analogy.CommonControls.UserControls
                 {
                     bbtnRawMessageViewer.Tag = m;
                     recMessageDetails.Tag = m;
-                    recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text);
+                    recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting);
                     meMessageDetails.Tag = m;
-                    meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text); ;
+                    meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
                     recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
                 }));
             }
@@ -2438,9 +2438,9 @@ namespace Analogy.CommonControls.UserControls
             {
                 bbtnRawMessageViewer.Tag = m;
                 recMessageDetails.Tag = m;
-                recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text); ;
+                recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
                 meMessageDetails.Tag = m;
-                meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text); ;
+                meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
                 recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
             }
 

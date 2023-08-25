@@ -63,6 +63,7 @@ namespace Analogy.CommonControls
             string file = Path.GetFileName(fileName);
             return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataRow CreateRow(DataTable table, IAnalogyLogMessage message, string dataSource, TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
@@ -262,8 +263,12 @@ namespace Analogy.CommonControls
             return toolTip;
         }
 
-        public static string ProcessLinuxMessage(string? msg)
+        public static string ProcessLinuxMessage(string? msg, bool supportLinuxFormatting)
         {
+            if (!supportLinuxFormatting)
+            {
+                return msg ?? string.Empty;
+            }
             if (msg == null)
             {
                 return string.Empty;

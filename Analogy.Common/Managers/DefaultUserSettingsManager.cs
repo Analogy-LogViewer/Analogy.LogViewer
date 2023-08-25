@@ -51,6 +51,8 @@ namespace Analogy.Common.Managers
         public bool ShowProcessedCounter { get; set; }
         public bool InlineJsonViewer { get; set; }
 
+        public bool SupportLinuxFormatting { get; set; }
+
         public void Save()
         {
         }

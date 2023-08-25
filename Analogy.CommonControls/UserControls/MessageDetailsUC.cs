@@ -19,18 +19,19 @@ namespace Analogy.CommonControls.UserControls
         private string DataSource { get; }
         private MarkdownPipeline? Pipeline { get; set; }
         private JsonTreeUC _jsonTreeView;
-
+        private IUserSettingsManager Settings { get; }
         private MessageDetailsUC()
         {
             InitializeComponent();
             Messages = new List<IAnalogyLogMessage>(0);
         }
 
-        public MessageDetailsUC(AnalogyLogMessage msg, List<IAnalogyLogMessage> messages, string dataSource) : this()
+        public MessageDetailsUC(AnalogyLogMessage msg, List<IAnalogyLogMessage> messages, string dataSource, IUserSettingsManager settings) : this()
         {
             Message = msg;
             Messages = messages;
             DataSource = dataSource;
+            Settings = settings;
         }
 
         private async void UCMessageDetails_Load(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace Analogy.CommonControls.UserControls
                     Message.AdditionalProperties.Select(kv => $"{kv.Key}:{kv.Value}"));
             }
 
-            memoText.Text =Utils.ProcessLinuxMessage(Message.Text);
+            memoText.Text =Utils.ProcessLinuxMessage(Message.Text, Settings.SupportLinuxFormatting);
             txtbMachineName.Text = Message.MachineName;
             txtID.Text = Message.Id.ToString();
             txtbDataSource.Text = DataSource;

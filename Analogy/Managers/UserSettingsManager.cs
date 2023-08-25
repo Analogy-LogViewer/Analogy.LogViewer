@@ -170,6 +170,8 @@ namespace Analogy
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
+        public bool SupportLinuxFormatting { get; set; }
+
         private Dictionary<Guid , AnalogyPositionState> WindowPositions { get; set; }
         public UserSettingsManager()
         {
@@ -256,7 +258,8 @@ namespace Analogy
             LastSearchesExclude = ParseSettings<List<string>>(Settings.Default.LastSearchesExclude);
             AdvancedMode = Settings.Default.AdvancedMode;
             AdvancedModeRawSQLFilterEnabled = Settings.Default.AdvancedModeRawSQLFilterEnabled;
-            AdvancedModeAdditionalFilteringColumnsEnabled = Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled;
+            AdvancedModeAdditionalFilteringColumnsEnabled =
+                Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled;
             NumberOfLastSearches = Settings.Default.NumberOfLastSearches;
             AdditionalProbingLocations = ParseSettings<List<string>>(Settings.Default.AdditionalProbingLocations);
             SingleInstance = Settings.Default.SingleInstance;
@@ -275,10 +278,12 @@ namespace Analogy
             {
                 ApplicationStyle = style;
             }
+
             if (Enum.TryParse(Settings.Default.LogLevelSelection, out LogLevelSelectionType type))
             {
                 LogLevelSelection = type;
             }
+
             ApplicationSvgPaletteName = Settings.Default.ApplicationSvgPaletteName;
             MinimizedToTrayBar = Settings.Default.MinimizedToTrayBar;
             CheckAdditionalInformation = Settings.Default.CheckAdditionalInformation;
@@ -310,6 +315,7 @@ namespace Analogy
             {
                 TimeOffsetType = timeOffsetTypeValue;
             }
+
             DefaultUserLogFolder = Settings.Default.DefaultUserLogFolder;
             TimeOffset = TimeSpan.FromMilliseconds(Settings.Default.TimeOffset);
             FilePoolingDelayInterval = Settings.Default.FilePoolingDelayInterval;
@@ -319,15 +325,10 @@ namespace Analogy
             ShowAdvancedSettingsRawSQLPopup = Settings.Default.ShowAdvancedSettingsRawSQLPopup;
             CombineOfflineProviders = Settings.Default.CombineOfflineProviders;
             CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
-            if (!string.IsNullOrEmpty(Settings.Default.WindowPositions))
-            {
-                WindowPositions = ParseSettings<Dictionary<Guid, AnalogyPositionState>>(Settings.Default.WindowPositions);
-            }
-            else
-            {
-                WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
-            }
-
+            SupportLinuxFormatting = Settings.Default.SupportLinuxFormatting;
+            WindowPositions = !string.IsNullOrEmpty(Settings.Default.WindowPositions)
+                ? ParseSettings<Dictionary<Guid, AnalogyPositionState>>(Settings.Default.WindowPositions)
+                : new Dictionary<Guid, AnalogyPositionState>();
         }
 
         private void ApplyLocalSettings(UserSettings settings)
@@ -416,6 +417,7 @@ namespace Analogy
             CombineOfflineProviders = settings.CombineOfflineProviders;
             CombineOnlineProviders = settings.CombineOnlineProviders;
             WindowPositions = settings.WindowPositions;
+            SupportLinuxFormatting = settings.SupportLinuxFormatting;
         }
 
         private UserSettings CreateUserSettings()
@@ -503,7 +505,8 @@ namespace Analogy
                 ShowAdvancedSettingsRawSQLPopup = ShowAdvancedSettingsRawSQLPopup,
                 CombineOfflineProviders = CombineOfflineProviders,
                 CombineOnlineProviders = CombineOnlineProviders,
-                WindowPositions = WindowPositions
+                WindowPositions = WindowPositions,
+                SupportLinuxFormatting = SupportLinuxFormatting
             };
             return userSettings;
         }
@@ -672,6 +675,7 @@ namespace Analogy
             Settings.Default.CombineOnlineProviders = CombineOfflineProviders;
             Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
             Settings.Default.WindowPositions = JsonConvert.SerializeObject(WindowPositions);
+            Settings.Default.SupportLinuxFormatting = SupportLinuxFormatting;
             Settings.Default.Save();
         }
 
