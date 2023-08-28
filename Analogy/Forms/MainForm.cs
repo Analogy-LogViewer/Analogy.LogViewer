@@ -1068,7 +1068,9 @@ namespace Analogy.Forms
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
-            if (realTimes.Count == 0)
+            var serverSide = dataSourceFactory.DataProviders.Where(f => f is IAnalogyProviderSidePagingProvider)
+                .Cast<IAnalogyProviderSidePagingProvider>().ToList();
+            if (realTimes.Count == 0 && serverSide.Count == 0)
             {
                 return;
             }
@@ -1206,15 +1208,18 @@ namespace Analogy.Forms
                     OnlineSources.Add(AutoOpenRealTime());
 
                 }
-
             }
+            AddServerSideDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
+
         }
 
         private void AddCombinedRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
                 .Cast<IAnalogyRealTimeDataProvider>().ToList();
-            if (realTimes.Count == 0)
+            var serverSide = dataSourceFactory.DataProviders.Where(f => f is IAnalogyProviderSidePagingProvider)
+                .Cast<IAnalogyProviderSidePagingProvider>().ToList();
+            if (realTimes.Count == 0 && serverSide.Count == 0)
             {
                 return;
             }
@@ -1353,6 +1358,7 @@ namespace Analogy.Forms
 
                 }
             }
+            AddServerSideDataSources(ribbonPage, dataSourceFactory, group);
         }
 
         private void AddSingleDataSources(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
@@ -1412,7 +1418,6 @@ namespace Analogy.Forms
             }
         }
 
-
         private void AddOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
 
@@ -1446,7 +1451,6 @@ namespace Analogy.Forms
             }
 
         }
-
         private void AddMultiplesOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage,
             List<IAnalogyOfflineDataProvider> offlineProviders, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
@@ -1816,7 +1820,6 @@ namespace Analogy.Forms
                 compareFiles.AddItem(btnCombine);
             }
         }
-
 
         private void AddSingleOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyOfflineDataProvider offlineAnalogy,
             IAnalogyDataProvidersFactory factory, RibbonPageGroup group, BarSubItem groupOfflineFileTools)
@@ -2196,6 +2199,51 @@ namespace Analogy.Forms
 
             }
 
+        }
+        private void AddServerSideDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
+        {
+            var serverSides = dataSourceFactory.DataProviders.Where(f => f is IAnalogySingleDataProvider ||
+                                                                      f is IAnalogyProviderSidePagingProvider).ToList();
+
+            foreach (var single in serverSides)
+            {
+                BarButtonItem singleBtn = new BarButtonItem();
+                group.ItemLinks.Add(singleBtn);
+                var imageLarge = FactoriesManager.GetLargeImage(single.Id);
+                var imageSmall = FactoriesManager.GetSmallImage(single.Id);
+
+                singleBtn.ImageOptions.LargeImage = imageLarge ?? Resources.ServerMode_32x32;
+                singleBtn.ImageOptions.Image = imageSmall ?? Resources.ServerMode_16x16;
+                singleBtn.RibbonStyle = RibbonItemStyles.All;
+                singleBtn.Caption = !string.IsNullOrEmpty(single.OptionalTitle)
+                    ? $"{single.OptionalTitle}"
+                    : "Server Side Data Provider";
+                if (single.ToolTip != null)
+                {
+                    SuperToolTip toolTip = new SuperToolTip();
+                    // Create an object to initialize the SuperToolTip.
+                    SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+                    args.Title.Text = single.ToolTip.Title;
+                    args.Contents.Text = single.ToolTip.Content;
+                    // args.Contents.Image = realTime.ToolTip.Image;
+                    toolTip.Setup(args);
+                    singleBtn.SuperTip = toolTip;
+                }
+
+                singleBtn.ItemClick += async (sender, e) =>
+                {
+                    OpenedWindows++;
+                    await FactoriesManager.InitializeIfNeeded(single);
+                    ServerSideLogs serverSideUC = new ServerSideLogs(single);
+                    var page = dockManager1.AddPanel(DockingStyle.Float);
+                    page.DockedAsTabbedDocument = true;
+                    page.Tag = ribbonPage;
+                    page.Controls.Add(serverSideUC);
+                    serverSideUC.Dock = DockStyle.Fill;
+                    page.Text = $"{offlineTitle} #{OpenedWindows} ({single.OptionalTitle})";
+                    dockManager1.ActivePanel = page;
+                };
+            }
         }
         private void xtcLogs_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
         {
