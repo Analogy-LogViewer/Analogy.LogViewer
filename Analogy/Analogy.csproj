@@ -44,7 +44,7 @@
 		<PackageReference Include="Analogy.LogViewer.Template" Version="5.0.0" />
 		<PackageReference Include="Analogy.CommonUtilities" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="5.0.0" />
-		<PackageReference Include="Analogy.LogViewer.Example" Version="5.0.0" />
+		<PackageReference Include="Analogy.LogViewer.Example" Version="5.0.2" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="5.0.0" />
