@@ -41,7 +41,7 @@
 		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="2.0.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="5.0.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="5.0.2" />
 		<PackageReference Include="Analogy.CommonUtilities" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="5.0.0" />
