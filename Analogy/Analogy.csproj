@@ -54,7 +54,7 @@
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="5.0.0" />
-		<PackageReference Include="Analogy.LogViewer.gRPC" Version="5.0.0" />
+		<PackageReference Include="Analogy.LogViewer.gRPC" Version="5.0.1" />
 		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.5.0" />
