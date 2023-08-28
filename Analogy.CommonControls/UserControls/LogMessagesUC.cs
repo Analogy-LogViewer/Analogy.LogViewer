@@ -481,8 +481,35 @@ namespace Analogy.CommonControls.UserControls
                 ? FindPanelBehavior.Search
                 : FindPanelBehavior.Filter;
         }
+        private async Task PopulateDataFromServer()
+        {
+            string text = (string)txtbInclude.EditValue ?? "";
+            List<string> includeTexts = new List<string>() { text };
+
+            if (text.Contains('|'))
+            {
+                var split = text.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).ToList(); includeTexts = split.Select(itm => itm.Trim()).ToList();
+            }
+
+            if (text.Contains("&") || text.Contains('+'))
+            {
+                var split = text.Split(new[] { '&', '+' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                includeTexts = split.Select(itm => itm.Trim()).ToList();
+            }
+
+            FilterCriteria filter = new FilterCriteria(includeTexts);
+            ClearLogs(true);
+            await (DataProvider as IAnalogyProviderSidePagingProvider).FetchMessages(0, 10, filter, CancellationToken.None, this);
+        }
+
         private void SetupEventsHandlers()
         {
+            sbtnServerSide.Click += async (s, e) =>
+            {
+                sbtnServerSide.Enabled = false;
+                await PopulateDataFromServer();
+                sbtnServerSide.Enabled = true;
+            };
             bbiExportToSimpleList.ItemClick += (s, e) =>
             {
                 var messages = GetMessages();
@@ -1448,8 +1475,8 @@ namespace Analogy.CommonControls.UserControls
             dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
-            pnlExtraFilters.Visible = Settings.AdvancedMode && Settings.AdvancedModeAdditionalFilteringColumnsEnabled;
-            xtpSQLraw.PageVisible = Settings.AdvancedMode && Settings.AdvancedModeRawSQLFilterEnabled;
+            pnlExtraFilters.Visible =  _serverSideMode;
+            xtpSQLraw.PageVisible = Settings is { AdvancedMode: true, AdvancedModeRawSQLFilterEnabled: true };
             bBtnShare.Enabled = false;
 
             logGrid.OptionsSelection.MultiSelect = true;
