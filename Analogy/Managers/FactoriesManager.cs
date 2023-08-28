@@ -99,7 +99,7 @@ namespace Analogy
                 .Select(res => res.DataProvider);
         }
 
-        public IEnumerable<(string Name, Guid ID, Image Image, string Description,Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
+        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
         {
             foreach (var fc in Factories)
             {
@@ -110,7 +110,7 @@ namespace Analogy
                     foreach (var analogyDataSource in supported)
                     {
                         var dataSource = (IAnalogyRealTimeDataProvider)analogyDataSource;
-                        yield return (dpf.Title, dataSource.Id, GetLargeImage(dataSource.Id), dpf.Title,fc.Assembly);
+                        yield return (dpf.Title, dataSource.Id, GetLargeImage(dataSource.Id), dpf.Title, fc.Assembly);
                     }
                 }
             }
@@ -135,19 +135,34 @@ namespace Analogy
             .SelectMany(f => f.DataProvidersSettings)
             .ToList();
 
-        public Image GetLargeImage(Guid componentId)
+        public Image? GetLargeImage(Guid componentId)
         {
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
             {
-                if (factoryContainer.Factory.LargeImage != null)
+                if (factoryContainer.Factory.FactoryId == componentId)
                 {
-                    return factoryContainer.Factory.LargeImage;
+                    return factoryContainer.Factory.SmallImage;
+                }
+                foreach (var df in factoryContainer.DataProvidersFactories)
+                {
+                    foreach (var dp in df.DataProviders)
+                    {
+                        switch (dp)
+                        {
+                            case IAnalogyOfflineDataProvider d when d.Id == componentId:
+                                return d.LargeImage;
+                            case IAnalogyProviderSidePagingProvider s when s.Id == componentId:
+                                return s.LargeImage;
+                            case IAnalogySingleDataProvider s when s.Id == componentId:
+                                return s.LargeImage;
+                            case IAnalogySingleFileDataProvider s when s.Id == componentId:
+                                return s.LargeImage;
+                        }
+                    }
                 }
             }
-
             return null;
         }
-
         public FactoryContainer GetFactoryContainer(Guid componentId)
             => Factories.SingleOrDefault(f => f.ContainsDataProviderOrDataFactory(componentId));
 
@@ -155,12 +170,28 @@ namespace Analogy
         {
             foreach (var factoryContainer in Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)))
             {
-                if (factoryContainer.Factory.SmallImage != null)
+                if (factoryContainer.Factory.FactoryId == componentId)
                 {
                     return factoryContainer.Factory.SmallImage;
                 }
+                foreach (var df in factoryContainer.DataProvidersFactories)
+                {
+                    foreach (var dp in df.DataProviders)
+                    {
+                        switch (dp)
+                        {
+                            case IAnalogyOfflineDataProvider d when d.Id == componentId:
+                                return d.SmallImage;
+                            case IAnalogyProviderSidePagingProvider s when s.Id == componentId:
+                                return s.SmallImage;
+                            case IAnalogySingleDataProvider s when s.Id == componentId:
+                                return s.SmallImage;
+                            case IAnalogySingleFileDataProvider s when s.Id == componentId:
+                                return s.SmallImage;
+                        }
+                    }
+                }
             }
-
             return null;
         }
 
@@ -198,7 +229,7 @@ namespace Analogy
                 {
                     foreach (IAnalogyExtension extension in extensionFactory.Extensions)
                     {
-                        yield return (extension,factory.Assembly);
+                        yield return (extension, factory.Assembly);
                     }
                 }
             }
