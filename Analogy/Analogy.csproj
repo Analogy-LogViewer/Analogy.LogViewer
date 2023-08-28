@@ -50,7 +50,7 @@
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="5.0.0" />
-		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="5.0.0" />
+		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="5.0.1" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="5.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="5.0.0" />
