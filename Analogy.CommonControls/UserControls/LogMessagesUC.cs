@@ -185,6 +185,15 @@ namespace Analogy.CommonControls.UserControls
                 btsAutoScrollToBottom.Checked = _realtimeUpdate;
             }
         }
+        private bool _serverSideMode;
+        public bool ServerSideModeEnabled
+        {
+            set
+            {
+                _serverSideMode = value;
+                xtpServerSide.PageVisible = _serverSideMode;
+            }
+        }
         private LogLevelSelectionType LogLevelSelectionType => Settings.LogLevelSelection;
         public string? Title { get; set; }
 
@@ -1207,6 +1216,7 @@ namespace Analogy.CommonControls.UserControls
                 RealTimeMode = false;
                 bsiProgress.Visibility = BarItemVisibility.Always;
             }
+            ServerSideModeEnabled = (dataProvider is IAnalogyProviderSidePagingProvider);
             bBtnImport.Visibility = BarItemVisibility.Always;
             bBtnImport.Enabled = FileDataProvider != null;
         }
