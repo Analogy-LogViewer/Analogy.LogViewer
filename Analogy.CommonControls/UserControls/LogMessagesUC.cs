@@ -1475,7 +1475,9 @@ namespace Analogy.CommonControls.UserControls
             dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
-            pnlExtraFilters.Visible =  _serverSideMode;
+            //todo: restore
+            //pnlExtraFilters.Visible =  _serverSideMode;
+            pnlExtraFilters.Visible = Settings is { AdvancedMode: true, AdvancedModeAdditionalFilteringColumnsEnabled: true };
             xtpSQLraw.PageVisible = Settings is { AdvancedMode: true, AdvancedModeRawSQLFilterEnabled: true };
             bBtnShare.Enabled = false;
 
