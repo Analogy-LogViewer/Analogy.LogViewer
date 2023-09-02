@@ -65,9 +65,11 @@ namespace Analogy
         private FileProcessingManager FileProcessingManager { get; }
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
         private NotificationManager NotificationManager { get; }
+        private AnalogyOnDemandPlottingManager PlottingManager { get; }
+
         public FluentDesignMainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
             BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager, FileProcessingManager fileProcessingManager,
-            NotificationManager notificationManager)
+            NotificationManager notificationManager, AnalogyOnDemandPlottingManager plottingManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
@@ -77,6 +79,7 @@ namespace Analogy
             NotificationManager = notificationManager;
             InitializeComponent();
             EnableAcrylicAccent = false;
+            PlottingManager = plottingManager;
         }
 
         private async void FluentDesignMainForm_Load(object sender, EventArgs e)
@@ -230,7 +233,7 @@ namespace Analogy
         }
         private void RegisterForOnDemandPlots()
         {
-            AnalogyOnDemandPlottingManager.Instance.OnShowPlot += (s, e) =>
+            PlottingManager.OnShowPlot += (s, e) =>
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
@@ -245,7 +248,7 @@ namespace Analogy
                         dockManager1.ActivePanel = page;
                         page.ClosingPanel += (_, __) =>
                         {
-                            AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+                            PlottingManager.OnHidePlot += Instance_OnHidePlot;
                         };
                         void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
                         {
@@ -255,7 +258,7 @@ namespace Analogy
                                 uc.Hide();
                             }
                         }
-                        AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+                        PlottingManager.OnHidePlot += Instance_OnHidePlot;
 
                     }
                 }));

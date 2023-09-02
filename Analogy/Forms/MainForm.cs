@@ -62,10 +62,12 @@ namespace Analogy.Forms
         private UpdateManager UpdateManager { get; }
         private FileProcessingManager FileProcessingManager { get; }
         private NotificationManager NotificationManager { get; }
+        private AnalogyOnDemandPlottingManager PlottingManager { get; }
 
         public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
             BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager,
-            FileProcessingManager fileProcessingManager, NotificationManager notificationManager)
+            FileProcessingManager fileProcessingManager, NotificationManager notificationManager,
+            AnalogyOnDemandPlottingManager plottingManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
@@ -73,6 +75,8 @@ namespace Analogy.Forms
             UpdateManager = updateManager;
             FileProcessingManager = fileProcessingManager;
             NotificationManager = notificationManager;
+            PlottingManager = plottingManager;
+
             InitializeComponent();
             AnalogyLogManager.Instance.OnNewError += (s, e) => btnErrors.Visibility = BarItemVisibility.Always;
             // Handling the QueryControl event that will populate all automatically generated Documents
@@ -312,7 +316,7 @@ namespace Analogy.Forms
 
         private void RegisterForOnDemandPlots()
         {
-            AnalogyOnDemandPlottingManager.Instance.OnShowPlot += (s, e) =>
+            PlottingManager.OnShowPlot += (s, e) =>
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
@@ -327,7 +331,7 @@ namespace Analogy.Forms
                         dockManager1.ActivePanel = page;
                         page.ClosingPanel += (_, __) =>
                         {
-                            AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+                            PlottingManager.OnHidePlot += Instance_OnHidePlot;
                         };
                         void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
                         {
@@ -337,7 +341,7 @@ namespace Analogy.Forms
                                 uc.Hide();
                             }
                         }
-                        AnalogyOnDemandPlottingManager.Instance.OnHidePlot += Instance_OnHidePlot;
+                        PlottingManager.OnHidePlot += Instance_OnHidePlot;
 
                     }
                 }));

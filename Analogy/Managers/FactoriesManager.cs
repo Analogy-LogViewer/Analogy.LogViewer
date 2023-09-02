@@ -24,6 +24,7 @@ namespace Analogy
         private IAnalogyUserSettings Settings { get; }
         private IAnalogyFoldersAccess FoldersAccess { get; }
         private NotificationManager NotificationManager { get; }
+        private AnalogyOnDemandPlottingManager PlottingManager { get; }
         private bool ExternalAdded { get; set; }
         private ILogger Logger { get; }
         private Dictionary<IAnalogyDataProvider, bool> Initialized { get; set; }
@@ -31,7 +32,8 @@ namespace Analogy
             .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
 
         public FactoriesManager(AnalogyBuiltInFactory analogyFactory, IAnalogyUserSettings settings,
-            IAnalogyFoldersAccess foldersAccess, NotificationManager notificationManager, ILogger logger)
+            IAnalogyFoldersAccess foldersAccess, NotificationManager notificationManager,
+            AnalogyOnDemandPlottingManager plottingManager, ILogger logger)
         {
             Initialized = new Dictionary<IAnalogyDataProvider, bool>();
             Factories = new List<FactoryContainer>();
@@ -39,6 +41,7 @@ namespace Analogy
             Settings = settings;
             FoldersAccess = foldersAccess;
             NotificationManager = notificationManager;
+            PlottingManager = plottingManager;
             Logger = logger;
             analogyFactory.RegisterNotificationCallback(notificationManager);
             var currentAssembly = Assembly.GetExecutingAssembly();
@@ -357,17 +360,17 @@ namespace Analogy
                         {
                             foreach (var plotting in factory.OnDemandPlottingGenerators)
                             {
-                                AnalogyOnDemandPlottingManager.Instance.Register(plotting);
+                                PlottingManager.Register(plotting);
                             }
                         }
 
                         factory.OnAddedOnDemandPlottingGenerator += (s, e) =>
                         {
-                            AnalogyOnDemandPlottingManager.Instance.Register(e);
+                            PlottingManager.Register(e);
                         };
                         factory.OnRemovedOnDemandPlottingGenerator += (s, e) =>
                         {
-                            AnalogyOnDemandPlottingManager.Instance.UnRegister(e);
+                            PlottingManager.UnRegister(e);
                         };
 
                     }
