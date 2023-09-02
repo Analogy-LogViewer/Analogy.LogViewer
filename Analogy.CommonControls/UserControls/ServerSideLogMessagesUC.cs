@@ -156,7 +156,7 @@ namespace Analogy.CommonControls.UserControls
         private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
         private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
-
+        private FileProcessingManager FileProcessingManager { get; } = ServicesProvider.Instance.GetService<FileProcessingManager>();
         public ServerSideLogMessagesUC() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
         {
 
@@ -219,7 +219,7 @@ namespace Analogy.CommonControls.UserControls
 
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
-            FileProcessor = new FileProcessor(Settings, this, Logger);
+            FileProcessor = new FileProcessor(Settings, this, FileProcessingManager, Logger);
             FileProcessor.OnFileReadingFinished += (s, e) =>
             {
                 Interlocked.Decrement(ref fileLoadingCount);
@@ -3089,7 +3089,7 @@ namespace Analogy.CommonControls.UserControls
             LoadTextBoxes(focusedMassage);
             if (Settings.InlineJsonViewer && focusedMassage.RawTextType == AnalogyRowTextType.JSON)
             {
-               await JsonTreeView.ShowJson(focusedMassage.RawText);
+                await JsonTreeView.ShowJson(focusedMassage.RawText);
             }
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
             if (!LoadingInProgress)
@@ -3259,7 +3259,7 @@ namespace Analogy.CommonControls.UserControls
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
-            {                
+            {
                 //todo: fix this as dateedit
                 deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceNewerThanFilter.Checked = true;
@@ -3417,7 +3417,7 @@ namespace Analogy.CommonControls.UserControls
 
             XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
-            var processor = new FileProcessor(Settings, logGridForm.LogWindow, Logger);
+            var processor = new FileProcessor(Settings, logGridForm.LogWindow, FileProcessingManager, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
 
         }

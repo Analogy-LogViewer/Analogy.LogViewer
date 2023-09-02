@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
@@ -26,7 +27,9 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     private FileSystemWatcher _watchFile;
     public EventHandler<(List<IAnalogyLogMessage> messages, string dataSource)> OnNewMessages;
     private IAnalogyUserSettings Settings { get; }
-    public FilePoolingManager(IAnalogyUserSettings settings, string filter, string initialFilename, UCLogs logUI, IAnalogyOfflineDataProvider offlineDataProvider)
+
+    public FilePoolingManager(IAnalogyUserSettings settings, string filter, string initialFilename, UCLogs logUI,
+        IAnalogyOfflineDataProvider offlineDataProvider)
     {
         _sync = new object();
         Settings = settings;
@@ -37,7 +40,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         _messages = new List<IAnalogyLogMessage>();
         FileName = initialFilename;
         FileFilter = filter;
-        FileProcessor = new FileProcessor(Settings, this, ServicesProvider.Instance.GetService<ILogger>());
+        FileProcessor = new FileProcessor(Settings, this, ServicesProvider.Instance.GetService<FileProcessingManager>(),ServicesProvider.Instance.GetService<ILogger>());
     }
 
 

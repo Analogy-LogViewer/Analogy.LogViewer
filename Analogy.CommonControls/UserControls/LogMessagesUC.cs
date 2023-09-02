@@ -209,6 +209,7 @@ namespace Analogy.CommonControls.UserControls
         private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
         private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
+        private FileProcessingManager FileProcessingManager { get; } = ServicesProvider.Instance.GetService<FileProcessingManager>();
         public LogMessagesUC()
         {
 
@@ -276,7 +277,7 @@ namespace Analogy.CommonControls.UserControls
 
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
-            FileProcessor = new FileProcessor(Settings, this, Logger);
+            FileProcessor = new FileProcessor(Settings, this, FileProcessingManager, Logger);
             FileProcessor.OnFileReadingFinished += (s, e) =>
             {
                 Interlocked.Decrement(ref fileLoadingCount);
@@ -3768,7 +3769,7 @@ namespace Analogy.CommonControls.UserControls
 
             XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
-            var processor = new FileProcessor(Settings, logGridForm.LogWindow, Logger);
+            var processor = new FileProcessor(Settings, logGridForm.LogWindow, FileProcessingManager, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
 
         }

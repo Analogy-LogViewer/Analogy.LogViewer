@@ -62,15 +62,17 @@ namespace Analogy
         private bool Initialized { get; set; }
         private BookmarkPersistManager BookmarkPersistManager { get; }
         private UpdateManager UpdateManager { get; }
+        private FileProcessingManager FileProcessingManager { get; }
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
 
         public FluentDesignMainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
-            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager)
+            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager, FileProcessingManager fileProcessingManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
             BookmarkPersistManager = bookmarkPersistManager;
             UpdateManager = updateManager;
+            FileProcessingManager = fileProcessingManager;
             InitializeComponent();
             EnableAcrylicAccent = false;
         }
@@ -865,7 +867,7 @@ namespace Analogy
                 {
                     openedWindows++;
                     await FactoriesManager.InitializeIfNeeded(offlineAnalogy);
-                    UserControl filepoolingUC = new FilePoolingUCLogs(Settings, offlineAnalogy, file, initialFile, initialFolder);
+                    UserControl filepoolingUC = new FilePoolingUCLogs(Settings, FileProcessingManager, offlineAnalogy, file, initialFile, initialFolder);
                     var page = dockManager1.AddPanel(DockingStyle.Float);
                     page.DockedAsTabbedDocument = true;
 
@@ -1217,7 +1219,7 @@ namespace Analogy
                     if (canStartReceiving) //connected
                     {
                         openedWindows++;
-                        var onlineUC = new OnlineUCLogs(realTime);
+                        var onlineUC = new OnlineUCLogs(realTime, FileProcessingManager);
 
                         void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
                             onlineUC.AppendMessage(e.Message, Environment.MachineName);

@@ -19,11 +19,13 @@ namespace Analogy.Common.DataTypes
         public DateTime lastNewestMessage;
         private IUserSettingsManager Settings { get; }
         private ILogMessageCreatedHandler DataWindow { get; }
+        private FileProcessingManager FileProcessingManager { get; }
         public ILogger Logger { get; }
 
-        public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow, ILogger logger)
+        public FileProcessor(IUserSettingsManager settingsManager, ILogMessageCreatedHandler dataWindow, FileProcessingManager fileProcessingManager, ILogger logger)
         {
             DataWindow = dataWindow;
+            FileProcessingManager = fileProcessingManager;
             Logger = logger;
             Settings = settingsManager;
         }
@@ -37,24 +39,24 @@ namespace Analogy.Common.DataTypes
             }
 
             if (!isReload && !DataWindow.ForceNoFileCaching &&
-                FileProcessingManager.Instance.AlreadyProcessed(filename) &&
+                FileProcessingManager.AlreadyProcessed(filename) &&
                 Settings.EnableFileCaching) //get it from the cache
             {
-                var cachedMessages = FileProcessingManager.Instance.GetMessages(filename);
+                var cachedMessages = FileProcessingManager.GetMessages(filename);
                 DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(filename));
                 OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
 
             }
 
-            if (FileProcessingManager.Instance.IsFileCurrentlyBeingProcessed(filename))
+            if (FileProcessingManager.IsFileCurrentlyBeingProcessed(filename))
             {
-                while (FileProcessingManager.Instance.IsFileCurrentlyBeingProcessed(filename))
+                while (FileProcessingManager.IsFileCurrentlyBeingProcessed(filename))
                 {
                     await Task.Delay(1000);
                 }
 
-                var cachedMessages = FileProcessingManager.Instance.GetMessages(filename);
+                var cachedMessages = FileProcessingManager.GetMessages(filename);
                 DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(filename));
                 OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
@@ -67,7 +69,7 @@ namespace Analogy.Common.DataTypes
 
                 if (fileDataProvider.CanOpenFile(filename)) //if can open natively: add to processing and process
                 {
-                    FileProcessingManager.Instance.AddProcessingFile(filename);
+                    FileProcessingManager.AddProcessingFile(filename);
 
                     if (!DataWindow.DoNotAddToRecentHistory)
                     {
@@ -76,7 +78,7 @@ namespace Analogy.Common.DataTypes
 
                     var messages = (await fileDataProvider.Process(filename, token, DataWindow).ConfigureAwait(false))
                         .ToList();
-                    FileProcessingManager.Instance.DoneProcessingFile(messages.ToList(), filename);
+                    FileProcessingManager.DoneProcessingFile(messages.ToList(), filename);
                     if (messages.Any())
                     {
                         lastNewestMessage = messages.Select(m => m.Date).Max();

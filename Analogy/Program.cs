@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.DataProviders;
 using Analogy.Interfaces;
@@ -165,13 +166,14 @@ namespace Analogy
             }
 
             var bm = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
+            var fileProcessingManager = ServicesProvider.Instance.GetService<FileProcessingManager>();
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
-                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, bm, up));
+                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, bm, up, fileProcessingManager));
             }
             else
             {
-                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm, up));
+                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm, up, fileProcessingManager));
             }
 
         }
@@ -190,6 +192,7 @@ namespace Analogy
             services.AddSingleton<IExtensionsManager, ExtensionsManager>();
             services.AddSingleton<BookmarkPersistManager>();
             services.AddSingleton<UpdateManager>();
+            services.AddSingleton<FileProcessingManager>();
             ServicesProvider.Instance.AddLoggerProvider(loggerProvider);
             ServicesProvider.Instance.BuildServiceProvider("Analogy");
         }

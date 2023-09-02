@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Tools;
@@ -117,7 +118,7 @@ namespace Analogy.UserControls
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 LeftFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(Settings, LeftFile, ServicesProvider.Instance.GetService<ILogger>());
+                FileProcessor fp = new FileProcessor(Settings, LeftFile, ServicesProvider.Instance.GetService<FileProcessingManager>(), ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }
@@ -131,7 +132,7 @@ namespace Analogy.UserControls
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 RightFile = new FileComparerProcessor(openFileDialog1.FileName);
-                FileProcessor fp = new FileProcessor(Settings, RightFile, ServicesProvider.Instance.GetService<ILogger>());
+                FileProcessor fp = new FileProcessor(Settings, RightFile, ServicesProvider.Instance.GetService<FileProcessingManager>(), ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(OfflineAnalogy, openFileDialog1.FileName, cancellationTokenSource.Token);
                 CompareIfBothSideAreLoaded();
             }

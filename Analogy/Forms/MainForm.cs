@@ -58,14 +58,16 @@ namespace Analogy.Forms
         private bool Initialized { get; set; }
         private BookmarkPersistManager BookmarkPersistManager { get; }
         private UpdateManager UpdateManager { get; }
+        private FileProcessingManager FileProcessingManager { get; }
 
         public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
-            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager)
+            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager, FileProcessingManager fileProcessingManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
             BookmarkPersistManager = bookmarkPersistManager;
             UpdateManager = updateManager;
+            FileProcessingManager = fileProcessingManager;
 
             InitializeComponent();
             AnalogyLogManager.Instance.OnNewError += (s, e) => btnErrors.Visibility = BarItemVisibility.Always;
@@ -565,7 +567,7 @@ namespace Analogy.Forms
                 openLogs.Show(this);
             };
             bbtnCheckUpdates.ItemClick += (s, e) => OpenUpdateWindow();
-            bbtnCompactMemory.ItemClick += (_, __) => FileProcessingManager.Instance.Reset();
+            bbtnCompactMemory.ItemClick += (_, __) => FileProcessingManager.Reset();
             bbtnCompactMemory.Visibility = BarItemVisibility.Never;
             notifyIconAnalogy.DoubleClick += (_, __) =>
             {
@@ -1130,7 +1132,7 @@ namespace Analogy.Forms
                         OpenedWindows++;
                         //realTimeBtn.ImageOptions.Image = realTime.DisconnectedSmallImage ?? Resources.Database_off;
                         //realTimeBtn.ImageOptions.LargeImage = realTime.DisconnectedLargeImage ?? Resources.Database_off;
-                        var onlineUC = new OnlineUCLogs(realTime);
+                        var onlineUC = new OnlineUCLogs(realTime, FileProcessingManager);
 
                         void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
                             onlineUC.AppendMessage(e.Message, Environment.MachineName);
@@ -1279,7 +1281,7 @@ namespace Analogy.Forms
                         if (canStartReceiving) //connected
                         {
                             OpenedWindows++;
-                            var onlineUC = new OnlineUCLogs(realTime);
+                            var onlineUC = new OnlineUCLogs(realTime, FileProcessingManager);
 
                             void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
                                 onlineUC.AppendMessage(e.Message, Environment.MachineName);
@@ -1505,7 +1507,7 @@ namespace Analogy.Forms
 
                 OpenedWindows++;
                 await FactoriesManager.InitializeIfNeeded(dataProvider);
-                UserControl filepoolingUC = new FilePoolingUCLogs(Settings, dataProvider, file, initialFile, initialFolder);
+                UserControl filepoolingUC = new FilePoolingUCLogs(Settings, FileProcessingManager, dataProvider, file, initialFile, initialFolder);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
 
@@ -1869,7 +1871,7 @@ namespace Analogy.Forms
 
                 OpenedWindows++;
                 string fullTitle = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
-                UserControl filepoolingUC = new FilePoolingUCLogs(Settings, offlineAnalogy, file, initialFile, initialFolder, title: fullTitle);
+                UserControl filepoolingUC = new FilePoolingUCLogs(Settings, FileProcessingManager, offlineAnalogy, file, initialFile, initialFolder, title: fullTitle);
                 var page = dockManager1.AddPanel(DockingStyle.Float);
                 page.DockedAsTabbedDocument = true;
 
@@ -2123,7 +2125,7 @@ namespace Analogy.Forms
                 if (canStartReceiving) //connected
                 {
                     OpenedWindows++;
-                    var onlineUC = new OnlineUCLogs(realTime);
+                    var onlineUC = new OnlineUCLogs(realTime, FileProcessingManager);
 
                     void OnRealTimeOnMessageReady(object sender, AnalogyLogMessageArgs e) =>
                         onlineUC.AppendMessage(e.Message, Environment.MachineName);
