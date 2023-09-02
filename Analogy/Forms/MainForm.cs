@@ -56,11 +56,13 @@ namespace Analogy.Forms
         private bool preventExit;
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private bool Initialized { get; set; }
-
-        public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager)
+        private BookmarkPersistManager BookmarkPersistManager { get; }
+        public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager, BookmarkPersistManager bookmarkPersistManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
+            BookmarkPersistManager = bookmarkPersistManager;
+
             InitializeComponent();
             AnalogyLogManager.Instance.OnNewError += (s, e) => btnErrors.Visibility = BarItemVisibility.Always;
             // Handling the QueryControl event that will populate all automatically generated Documents
@@ -120,7 +122,7 @@ namespace Analogy.Forms
                 Settings.Save();
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
-                BookmarkPersistManager.Instance.SaveFile();
+                BookmarkPersistManager.SaveFile();
                 FactoriesManager.ShutDownAllFactories();
             }
         }

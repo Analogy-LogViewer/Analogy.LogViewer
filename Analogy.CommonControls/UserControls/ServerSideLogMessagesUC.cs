@@ -20,6 +20,7 @@ using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Properties;
 using Analogy.CommonControls.Tools;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using DevExpress.Data;
@@ -154,6 +155,7 @@ namespace Analogy.CommonControls.UserControls
         #endregion
         private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
+        private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
 
         public ServerSideLogMessagesUC() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
         {
@@ -2123,7 +2125,7 @@ namespace Analogy.CommonControls.UserControls
             meMessageDetails.Text = string.Empty;
             if (BookmarkView)
             {
-                BookmarkPersistManager.Instance.ClearBookmarks();
+                BookmarkPersistManager.ClearBookmarks();
             }
 
             lockSlim.ExitWriteLock();
@@ -2484,7 +2486,7 @@ namespace Analogy.CommonControls.UserControls
             tabbedView1.ActivateDocument(dockPanelBookmarks);
             if (persists)
             {
-                BookmarkPersistManager.Instance.AddBookmarkedMessage(message, dataSource);
+                BookmarkPersistManager.AddBookmarkedMessage(message, dataSource);
             }
 
             lockSlim.ExitWriteLock();
@@ -2831,7 +2833,7 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                BookmarkPersistManager.Instance.RemoveBookmark(message);
+                BookmarkPersistManager.RemoveBookmark(message);
             }
         }
 

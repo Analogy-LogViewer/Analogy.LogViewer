@@ -60,11 +60,13 @@ namespace Analogy
         private bool disableOnlineDueToFileOpen;
         private bool PreventExit { get; set; }
         private bool Initialized { get; set; }
+        private BookmarkPersistManager BookmarkPersistManager { get; } 
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
-        public FluentDesignMainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager)
+        public FluentDesignMainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager, BookmarkPersistManager bookmarkPersistManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
+            BookmarkPersistManager = bookmarkPersistManager;
             InitializeComponent();
             EnableAcrylicAccent = false;
         }
@@ -1540,7 +1542,7 @@ namespace Analogy
                 Settings.Save();
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
-                BookmarkPersistManager.Instance.SaveFile();
+                BookmarkPersistManager.SaveFile();
                 FactoriesManager.ShutDownAllFactories();
             }
         }

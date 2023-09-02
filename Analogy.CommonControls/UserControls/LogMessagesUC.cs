@@ -208,7 +208,7 @@ namespace Analogy.CommonControls.UserControls
 
         private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
-
+        private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
         public LogMessagesUC()
         {
 
@@ -2462,7 +2462,7 @@ namespace Analogy.CommonControls.UserControls
             meMessageDetails.Text = string.Empty;
             if (BookmarkView)
             {
-                BookmarkPersistManager.Instance.ClearBookmarks();
+                BookmarkPersistManager.ClearBookmarks();
             }
 
             lockSlim.ExitWriteLock();
@@ -2823,7 +2823,7 @@ namespace Analogy.CommonControls.UserControls
             tabbedView1.ActivateDocument(dockPanelBookmarks);
             if (persists)
             {
-                BookmarkPersistManager.Instance.AddBookmarkedMessage(message, dataSource);
+                BookmarkPersistManager.AddBookmarkedMessage(message, dataSource);
             }
 
             lockSlim.ExitWriteLock();
@@ -3174,7 +3174,7 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                BookmarkPersistManager.Instance.RemoveBookmark(message);
+                BookmarkPersistManager.RemoveBookmark(message);
             }
         }
 

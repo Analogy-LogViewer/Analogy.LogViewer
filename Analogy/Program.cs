@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.CommonControls.Managers;
 using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -161,13 +162,15 @@ namespace Analogy
                 WelcomeForm f = new WelcomeForm(Settings, FactoriesManager);
                 f.ShowDialog();
             }
+
+            var bm = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
-                Application.Run(new MainForm(FactoriesManager, ExtensionsManager));
+                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, bm));
             }
             else
             {
-                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager));
+                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm));
             }
 
         }
@@ -183,7 +186,8 @@ namespace Analogy
             services.AddSingleton<ILogger>(loggerProvider.CreateLogger("Analogy"));
             services.AddSingleton<AnalogyBuiltInFactory>();
             services.AddSingleton<IFactoriesManager, FactoriesManager>();
-            services.AddSingleton<IExtensionsManager,ExtensionsManager>();
+            services.AddSingleton<IExtensionsManager, ExtensionsManager>();
+            services.AddSingleton<BookmarkPersistManager>();
             ServicesProvider.Instance.AddLoggerProvider(loggerProvider);
             ServicesProvider.Instance.BuildServiceProvider("Analogy");
         }
