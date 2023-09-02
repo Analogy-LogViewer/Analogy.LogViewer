@@ -179,6 +179,7 @@ namespace Analogy
             UserSettingsManager settings = new UserSettingsManager();
             services.AddSingleton<IAnalogyUserSettings>(settings);
             services.AddSingleton<IUserSettingsManager>(settings);
+            services.AddSingleton<IAnalogyFoldersAccess, FolderAccessManager>();
             services.AddSingleton<ILogger>(loggerProvider.CreateLogger("Analogy"));
             services.AddSingleton<AnalogyBuiltInFactory>();
             services.AddSingleton<IFactoriesManager, FactoriesManager>();

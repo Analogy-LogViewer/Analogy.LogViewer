@@ -22,7 +22,7 @@ namespace Analogy
     {
         public event EventHandler OnFactoryOrderChanged;
         public event EventHandler OnApplicationSkinNameChanged;
-
+        public event EventHandler<SettingsMode>? SettingsModeChanged;
         private AnalogyCommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
         private bool _inlineJsonViewer;
@@ -147,7 +147,20 @@ namespace Analogy
         public bool UseCustomLogsLayout { get; set; }
         public bool ViewDetailedMessageWithHTML { get; set; }
 
-        public SettingsMode SettingsMode { get; set; }
+        private SettingsMode settingsMode;
+
+        public SettingsMode SettingsMode
+        {
+            get => settingsMode;
+            set
+            {
+                if (settingsMode != value)
+                {
+                    settingsMode = value;
+                    SettingsModeChanged?.Invoke(this, value);
+                }
+            }
+        }
         public MainFormType MainFormType { get; set; }
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }

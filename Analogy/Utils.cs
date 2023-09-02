@@ -408,7 +408,15 @@ namespace Analogy
             }
 
         }
-   
+        public static bool IsRunningFromProgramFileFolder()
+        {
+            var nominalValue =
+                AppDomain.CurrentDomain.BaseDirectory.StartsWith(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles))
+                || AppDomain.CurrentDomain.BaseDirectory.StartsWith(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86));
+            return nominalValue;
+        }
+        public static string ApplicationBaseDirectory => AppDomain.CurrentDomain.BaseDirectory;
+
     }
 
 }
