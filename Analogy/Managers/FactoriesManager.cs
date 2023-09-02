@@ -23,22 +23,27 @@ namespace Analogy
         public List<FactoryContainer> Factories { get; }
         private IAnalogyUserSettings Settings { get; }
         private IAnalogyFoldersAccess FoldersAccess { get; }
+        private NotificationManager NotificationManager { get; }
         private bool ExternalAdded { get; set; }
         private ILogger Logger { get; }
         private Dictionary<IAnalogyDataProvider, bool> Initialized { get; set; }
         public List<IRawSQLInteractor> RawSQLManipulators => Factories.SelectMany(f => f.UserControlsFactories)
             .SelectMany(u => u.UserControls).Where(u => u is IRawSQLInteractor).Cast<IRawSQLInteractor>().ToList();
-        public FactoriesManager(AnalogyBuiltInFactory analogyFactory, IAnalogyUserSettings settings, IAnalogyFoldersAccess foldersAccess, ILogger logger)
+
+        public FactoriesManager(AnalogyBuiltInFactory analogyFactory, IAnalogyUserSettings settings,
+            IAnalogyFoldersAccess foldersAccess, NotificationManager notificationManager, ILogger logger)
         {
             Initialized = new Dictionary<IAnalogyDataProvider, bool>();
             Factories = new List<FactoryContainer>();
             BuiltInFactories = new List<FactoryContainer>();
             Settings = settings;
             FoldersAccess = foldersAccess;
+            NotificationManager = notificationManager;
             Logger = logger;
-            analogyFactory.RegisterNotificationCallback(NotificationManager.Instance);
+            analogyFactory.RegisterNotificationCallback(notificationManager);
             var currentAssembly = Assembly.GetExecutingAssembly();
-            var analogyFactorySetting = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetOrAddFactorySetting(analogyFactory);
+            var analogyFactorySetting = ServicesProvider.Instance.GetService<IAnalogyUserSettings>()
+                .GetOrAddFactorySetting(analogyFactory);
             analogyFactorySetting.FactoryName = analogyFactory.Title;
             FactoryContainer fc = new FactoryContainer(currentAssembly, Environment.CurrentDirectory, analogyFactory,
                 analogyFactorySetting);
@@ -401,7 +406,7 @@ namespace Analogy
                                 AnalogyNonPersistSettings.Instance.AddDependencyLocation(path);
                             }
                         }
-                        factory.RegisterNotificationCallback(NotificationManager.Instance);
+                        factory.RegisterNotificationCallback(NotificationManager);
                         Factories.Add(fc);
                     }
                     catch (Exception e)

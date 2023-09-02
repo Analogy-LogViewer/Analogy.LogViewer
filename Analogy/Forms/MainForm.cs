@@ -29,6 +29,8 @@ using Analogy.Common.Managers;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Plotting;
 using Microsoft.Extensions.Logging;
+using Analogy.LogViewer.Template.Managers;
+using NotificationManager = Analogy.Managers.NotificationManager;
 
 namespace Analogy.Forms
 {
@@ -59,16 +61,18 @@ namespace Analogy.Forms
         private BookmarkPersistManager BookmarkPersistManager { get; }
         private UpdateManager UpdateManager { get; }
         private FileProcessingManager FileProcessingManager { get; }
+        private NotificationManager NotificationManager { get; }
 
         public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
-            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager, FileProcessingManager fileProcessingManager)
+            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager,
+            FileProcessingManager fileProcessingManager, NotificationManager notificationManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
             BookmarkPersistManager = bookmarkPersistManager;
             UpdateManager = updateManager;
             FileProcessingManager = fileProcessingManager;
-
+            NotificationManager = notificationManager;
             InitializeComponent();
             AnalogyLogManager.Instance.OnNewError += (s, e) => btnErrors.Visibility = BarItemVisibility.Always;
             // Handling the QueryControl event that will populate all automatically generated Documents
@@ -139,7 +143,7 @@ namespace Analogy.Forms
             {
                 return;
             }
-            NotificationManager.Instance.OnNewNotification += (s, notification) =>
+            NotificationManager.OnNewNotification += (s, notification) =>
              {
                  AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                  AlertControl ac = new AlertControl(this.components)
@@ -1644,7 +1648,7 @@ namespace Analogy.Forms
                                 "Missing File Open Dialog Filter",
                                 $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
                                 , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
-                            NotificationManager.Instance.RaiseNotification(notification, true);
+                            NotificationManager.RaiseNotification(notification, true);
                         }
                     }
                 }
@@ -1687,7 +1691,7 @@ namespace Analogy.Forms
                                 "Missing File Open Dialog Filter",
                                 $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
                                 , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
-                            NotificationManager.Instance.RaiseNotification(notification, true);
+                            NotificationManager.RaiseNotification(notification, true);
                         }
                     }
                 }
@@ -2035,7 +2039,7 @@ namespace Analogy.Forms
                     "Missing File Open Dialog Filter",
                     $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
                     , AnalogyLogLevel.Error, primaryFactory.LargeImage, 5, null);
-                NotificationManager.Instance.RaiseNotification(notification, true);
+                NotificationManager.RaiseNotification(notification, true);
             }
 
             //add recent

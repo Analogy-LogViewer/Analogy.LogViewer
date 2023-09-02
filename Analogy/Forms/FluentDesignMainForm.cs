@@ -64,15 +64,17 @@ namespace Analogy
         private UpdateManager UpdateManager { get; }
         private FileProcessingManager FileProcessingManager { get; }
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
-
+        private NotificationManager NotificationManager { get; }
         public FluentDesignMainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
-            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager, FileProcessingManager fileProcessingManager)
+            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager, FileProcessingManager fileProcessingManager,
+            NotificationManager notificationManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
             BookmarkPersistManager = bookmarkPersistManager;
             UpdateManager = updateManager;
             FileProcessingManager = fileProcessingManager;
+            NotificationManager = notificationManager;
             InitializeComponent();
             EnableAcrylicAccent = false;
         }
@@ -168,7 +170,7 @@ namespace Analogy
 
         private void RegisterForNotifications()
         {
-            NotificationManager.Instance.OnNewNotification += (s, notification) =>
+            NotificationManager.OnNewNotification += (s, notification) =>
             {
                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                 AlertControl ac = new AlertControl(this.components)
@@ -553,7 +555,7 @@ namespace Analogy
             };
             AnalogyLogManager.Instance.OnNewError += (s, e) => bbtnErrors.Visibility = BarItemVisibility.Always;
 
-            NotificationManager.Instance.OnNewNotification += (s, notification) =>
+            NotificationManager.OnNewNotification += (s, notification) =>
             {
                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                 AlertControl ac = new AlertControl(this.components)
@@ -1035,7 +1037,7 @@ namespace Analogy
                         "Missing File Open Dialog Filter",
                         $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
                         , AnalogyLogLevel.Error, offlineAnalogy.LargeImage, 5, null);
-                    NotificationManager.Instance.RaiseNotification(notification, true);
+                    NotificationManager.RaiseNotification(notification, true);
                 }
 
                 //add recent
