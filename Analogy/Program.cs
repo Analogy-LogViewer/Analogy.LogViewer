@@ -157,20 +157,21 @@ namespace Analogy
                 return;
             }
 
+            UpdateManager up = ServicesProvider.Instance.GetService<UpdateManager>();
             if (Settings.IsFirstRun)
             {
-                WelcomeForm f = new WelcomeForm(Settings, FactoriesManager);
+                WelcomeForm f = new WelcomeForm(Settings, FactoriesManager, up);
                 f.ShowDialog();
             }
 
             var bm = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
-                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, bm));
+                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, bm, up));
             }
             else
             {
-                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm));
+                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm, up));
             }
 
         }
@@ -188,6 +189,7 @@ namespace Analogy
             services.AddSingleton<IFactoriesManager, FactoriesManager>();
             services.AddSingleton<IExtensionsManager, ExtensionsManager>();
             services.AddSingleton<BookmarkPersistManager>();
+            services.AddSingleton<UpdateManager>();
             ServicesProvider.Instance.AddLoggerProvider(loggerProvider);
             ServicesProvider.Instance.BuildServiceProvider("Analogy");
         }

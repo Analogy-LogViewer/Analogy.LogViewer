@@ -13,9 +13,10 @@ namespace Analogy.ApplicationSettings
 {
     public partial class UpdateSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-
-        public UpdateSettingsUC()
+        private UpdateManager UpdateManager { get; } 
+        public UpdateSettingsUC(UpdateManager manager)
         {
+            UpdateManager = manager;
             InitializeComponent();
 
         }
@@ -31,7 +32,7 @@ namespace Analogy.ApplicationSettings
             cbUpdates.SelectedIndexChanged += (s, e) =>
             {
                 var options = typeof(UpdateMode).GetDisplayValues();
-                UpdateManager.Instance.UpdateMode = (UpdateMode) Enum.Parse(typeof(UpdateMode),
+                UpdateManager.UpdateMode = (UpdateMode) Enum.Parse(typeof(UpdateMode),
                     options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
             };
         }
@@ -39,7 +40,7 @@ namespace Analogy.ApplicationSettings
         private void LoadSettings()
         {
             cbUpdates.Properties.Items.AddRange(typeof(UpdateMode).GetDisplayValues().Values);
-            cbUpdates.SelectedItem = UpdateManager.Instance.UpdateMode.GetDisplay();
+            cbUpdates.SelectedItem = UpdateManager.UpdateMode.GetDisplay();
             if (AnalogyNonPersistSettings.Instance.UpdateAreDisabled)
             {
                 lblDisableUpdates.Visible = true;

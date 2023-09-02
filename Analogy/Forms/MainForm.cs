@@ -57,11 +57,15 @@ namespace Analogy.Forms
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private bool Initialized { get; set; }
         private BookmarkPersistManager BookmarkPersistManager { get; }
-        public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager, BookmarkPersistManager bookmarkPersistManager)
+        private UpdateManager UpdateManager { get; }
+
+        public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
+            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
             BookmarkPersistManager = bookmarkPersistManager;
+            UpdateManager = updateManager;
 
             InitializeComponent();
             AnalogyLogManager.Instance.OnNewError += (s, e) => btnErrors.Visibility = BarItemVisibility.Always;
@@ -119,7 +123,7 @@ namespace Analogy.Forms
                 Settings.AnalogyPosition.Size = Size;
                 Settings.AnalogyPosition.WindowState = WindowState;
                 Settings.UpdateRunningTime();
-                Settings.Save();
+                Settings.Save(UpdateManager.CurrentVersion.ToString(4));
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
                 BookmarkPersistManager.SaveFile();
@@ -186,8 +190,8 @@ namespace Analogy.Forms
                 }
             }
 
-            string framework = UpdateManager.Instance.CurrentFrameworkAttribute.FrameworkName;
-            Text = $"Analogy Log Viewer {UpdateManager.Instance.CurrentVersion} ({framework})";
+            string framework = UpdateManager.CurrentFrameworkAttribute.FrameworkName;
+            Text = $"Analogy Log Viewer {UpdateManager.CurrentVersion} ({framework})";
             Icon = Settings.GetIcon();
             notifyIconAnalogy.Visible = preventExit = Settings.MinimizedToTrayBar;
             await FactoriesManager.InitializeBuiltInFactories();
@@ -269,8 +273,8 @@ namespace Analogy.Forms
 
             if (!AnalogyNonPersistSettings.Instance.UpdateAreDisabled)
             {
-                var (_, release) = await UpdateManager.Instance.CheckVersion(false);
-                if (release?.TagName != null && UpdateManager.Instance.NewestVersion != null)
+                var (_, release) = await UpdateManager.CheckVersion(false);
+                if (release?.TagName != null && UpdateManager.NewestVersion != null)
                 {
                     UpdateUpdateButton();
                 }
@@ -287,15 +291,15 @@ namespace Analogy.Forms
 
         private void UpdateUpdateButton()
         {
-            bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.Instance.NewestVersion.ToString();
-            if (UpdateManager.Instance.NewVersionExist)
+            bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.NewestVersion.ToString();
+            if (UpdateManager.NewVersionExist)
             {
                 bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;
                 if (DevExpress.Utils.Frames.FrameHelper.IsDarkSkin(Settings.ApplicationSkinName))
                 {
                     bbtnCheckUpdates.Appearance.ForeColor = Color.DarkBlue;
                 }
-                bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.Instance.NewestVersion.ToString();
+                bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.NewestVersion.ToString();
 
             }
         }
@@ -369,7 +373,7 @@ namespace Analogy.Forms
         {
             bbiWelcomeForm.ItemClick += (s, e) =>
             {
-                WelcomeForm wf = new WelcomeForm(Settings, FactoriesManager);
+                WelcomeForm wf = new WelcomeForm(Settings, FactoriesManager, UpdateManager);
                 wf.ShowDialog(this);
             };
 
@@ -444,92 +448,92 @@ namespace Analogy.Forms
 
             btnSettingsUpdate.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.UpdatesSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
 
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
 
             btnSettingsDebugging.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DebuggingSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
 
             btnShortcuts.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ShortcutsSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
 
             bbiDonation.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DonationsSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             bbiAdvancedMode.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.AdvancedModeSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnApplicationSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationGeneralSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnApplicationUISettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ApplicationUISettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnFiltering.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesFilteringSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnMessageColumnsLayoutSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.MessagesLayoutSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnColorsSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnColorHighlightSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnPreDefinedQueries.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.PredefinedQueriesSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             btnDataProvidersSettings.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.DataProvidersSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             bbiRealTimeProviders.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.RealTimeDataProvidersSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             bbiFileAssociations.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.FilesAssociationSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             bbiAdditionalLocations.ItemClick += (s, e) =>
             {
-                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings, Settings, FactoriesManager);
+                ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExternalLocationsSettings, Settings, FactoriesManager, UpdateManager);
                 user.ShowDialog(this);
             };
             #endregion
@@ -754,7 +758,7 @@ namespace Analogy.Forms
 
         private void bbtnItemSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ApplicationSettingsForm user = new ApplicationSettingsForm(Settings, FactoriesManager);
+            ApplicationSettingsForm user = new ApplicationSettingsForm(Settings, FactoriesManager, UpdateManager);
             user.ShowDialog(this);
         }
 
@@ -2376,7 +2380,7 @@ namespace Analogy.Forms
 
         private void OpenUpdateWindow()
         {
-            UpdateForm update = new UpdateForm(Settings);
+            UpdateForm update = new UpdateForm(Settings, UpdateManager);
             update.Show(this);
         }
 
@@ -2392,7 +2396,7 @@ namespace Analogy.Forms
         }
         private void OpenDataProvidersUpdateWindow()
         {
-            var update = new ComponentDownloadsForm(FactoriesManager);
+            var update = new ComponentDownloadsForm(FactoriesManager, UpdateManager);
             update.Show(this);
         }
 

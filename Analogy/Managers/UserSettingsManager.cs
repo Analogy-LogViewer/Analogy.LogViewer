@@ -416,8 +416,7 @@ namespace Analogy
             LogsLayoutFileName = settings.LogsLayoutFileName;
             UseCustomLogsLayout = settings.UseCustomLogsLayout;
             ViewDetailedMessageWithHTML = settings.ViewDetailedMessageWithHTML;
-            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup ||
-                                     UpdateManager.Instance.CurrentVersion.ToString(4) != settings.Version;
+            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup;
             MainFormType = settings.MainFormType;
             TimeOffsetType = settings.TimeOffsetType;
             DefaultUserLogFolder = settings.DefaultUserLogFolder;
@@ -540,7 +539,7 @@ namespace Analogy
 
 
         }
-        public void Save()
+        public void Save(string version)
         {
             switch (SettingsMode)
             {
@@ -549,7 +548,7 @@ namespace Analogy
                     DeletePortableSettings();
                     break;
                 case SettingsMode.ApplicationFolder:
-                    SavePortableSettings();
+                    SavePortableSettings(version);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -585,12 +584,12 @@ namespace Analogy
         //    }
         //}
 
-        private void SavePortableSettings()
+        private void SavePortableSettings(string version)
         {
             try
             {
                 UserSettings settings = CreateUserSettings();
-                settings.Version = UpdateManager.Instance.CurrentVersion.ToString(4);
+                settings.Version = version;
                 string data = JsonConvert.SerializeObject(settings);
                 File.WriteAllText(LocalSettingFileName, data);
             }

@@ -13,10 +13,12 @@ namespace Analogy.Forms
     public partial class ComponentDownloadsForm : XtraForm
     {
         private IFactoriesManager FactoriesManager { get; }
+        private UpdateManager UpdateManager { get; }
 
-        public ComponentDownloadsForm(IFactoriesManager factoriesManager)
+        public ComponentDownloadsForm(IFactoriesManager factoriesManager, UpdateManager updateManager)
         {
             FactoriesManager = factoriesManager;
+            UpdateManager = updateManager;
             InitializeComponent();
         }
 
@@ -26,7 +28,7 @@ namespace Analogy.Forms
             // UserControl first = null;
             foreach (FactoryContainer factory in FactoriesManager.Factories)
             {
-                ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(factory);
+                ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(factory, UpdateManager);
                 xtraTabPage1.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
                 //  first ??= uc;
@@ -34,13 +36,13 @@ namespace Analogy.Forms
             }
 
             var assemblies = FactoriesManager.Factories.Select(f => Path.GetFileName(f.AssemblyFullPath)).ToList();
-            var supported = UpdateManager.Instance.SupportedDataProviders;
+            var supported = UpdateManager.SupportedDataProviders;
             var notInstalled = supported.Where(s => !assemblies.Contains(s.AssemblyFileName, StringComparison.InvariantCultureIgnoreCase)).ToList();
 
             foreach (var dp in notInstalled)
             {
                 MissingDownloadInformation missing = new MissingDownloadInformation(dp.FactoryId, dp.Name, dp.RepositoryURL, dp.Image);
-                ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(missing);
+                ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(missing, UpdateManager);
                 uc.Enabled = dp.Enabled;
                 xtraTabPage2.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;

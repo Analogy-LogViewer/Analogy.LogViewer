@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms.Welcome;
 using Analogy.Interfaces;
+using Analogy.Managers;
 using Microsoft.Extensions.Logging;
 
 namespace Analogy.Forms
@@ -11,11 +12,13 @@ namespace Analogy.Forms
     {
         private IAnalogyUserSettings Settings { get; }
         private IFactoriesManager FactoriesManager { get; }
+        private UpdateManager UpdateManager { get; }
 
-        public WelcomeForm(IAnalogyUserSettings settings,IFactoriesManager factoriesManager)
+        public WelcomeForm(IAnalogyUserSettings settings,IFactoriesManager factoriesManager, UpdateManager updateManager)
         {
             Settings = settings;
             FactoriesManager = factoriesManager;
+            UpdateManager = updateManager;
             InitializeComponent();
             EnableAcrylicAccent = false;
         }
@@ -51,13 +54,13 @@ namespace Analogy.Forms
             switch (selectionType)
             {
                 case ApplicationWelcomeSelectionType.General:
-                    return new WelcomeGeneralUC(Settings, FactoriesManager);
+                    return new WelcomeGeneralUC(Settings, FactoriesManager, UpdateManager);
                 case ApplicationWelcomeSelectionType.Theme:
-                    return new WelcomeThemeSelectionUC(Settings, FactoriesManager);
+                    return new WelcomeThemeSelectionUC(Settings, FactoriesManager, UpdateManager);
                 case ApplicationWelcomeSelectionType.DataProvides:
-                    return new WelcomeDataProvidersUC(Settings, FactoriesManager);
+                    return new WelcomeDataProvidersUC(Settings, FactoriesManager, UpdateManager);
                 case ApplicationWelcomeSelectionType.Extensions:
-                    return new WelcomeExtensionsUC(Settings, FactoriesManager);
+                    return new WelcomeExtensionsUC(Settings, FactoriesManager, UpdateManager);
                 case ApplicationWelcomeSelectionType.GlobalTools:
                     return new WelcomeGlobalToolsUC();
                 case ApplicationWelcomeSelectionType.WhatIsNew:
