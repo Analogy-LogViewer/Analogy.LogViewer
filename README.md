@@ -17,7 +17,7 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer/releases">
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer"  alt="Latest Release" />
 </a>
- ![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/workflows/.NET%20Core%20Desktop/badge.svg)
+[![Analogy .NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer/actions/workflows/dotnet-core-desktop.yml/badge.svg)](https://github.com/Analogy-LogViewer/Analogy.LogViewer/actions/workflows/dotnet-core-desktop.yml)
 </p>
 
 A log viewer that can parse log files and stream logs from C#, Python, Java and others.
