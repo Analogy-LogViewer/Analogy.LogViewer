@@ -29,12 +29,12 @@ namespace Analogy.ApplicationSettings
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.gcCompressedArchives = new DevExpress.XtraEditors.GroupControl();
             this.tsEnableCompressedArchive = new DevExpress.XtraEditors.ToggleSwitch();
             this.gcGeneral = new DevExpress.XtraEditors.GroupControl();
@@ -277,13 +277,13 @@ namespace Analogy.ApplicationSettings
             this.tsFileCaching.Properties.OffText = "Don\'t use caching of loaded logs";
             this.tsFileCaching.Properties.OnText = "Use caching of loaded logs";
             this.tsFileCaching.Size = new System.Drawing.Size(763, 24);
-            toolTipTitleItem3.Text = "Caching";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "When enable files that were loaded won\'t be loaded again and the messages will be" +
+            toolTipTitleItem1.Text = "Caching";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "When enable files that were loaded won\'t be loaded again and the messages will be" +
     " loaded from in-memory cache.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.tsFileCaching.SuperTip = superToolTip3;
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.tsFileCaching.SuperTip = superToolTip1;
             this.tsFileCaching.TabIndex = 1;
             // 
             // tsSingleInstance
@@ -297,13 +297,13 @@ namespace Analogy.ApplicationSettings
             this.tsSingleInstance.Properties.OffText = "Multi Instance Mode";
             this.tsSingleInstance.Properties.OnText = "Single Instance Mode";
             this.tsSingleInstance.Size = new System.Drawing.Size(763, 24);
-            toolTipTitleItem1.Text = "Single Instance mode";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "When enabled only one instance will run and other instances will exit immediately" +
+            toolTipTitleItem2.Text = "Single Instance mode";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "When enabled only one instance will run and other instances will exit immediately" +
     "";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.tsSingleInstance.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.tsSingleInstance.SuperTip = superToolTip2;
             this.tsSingleInstance.TabIndex = 2;
             // 
             // gcSettingsLocation
@@ -323,7 +323,7 @@ namespace Analogy.ApplicationSettings
             this.ceSettingsLocationApplicationFolder.Dock = System.Windows.Forms.DockStyle.Top;
             this.ceSettingsLocationApplicationFolder.Location = new System.Drawing.Point(2, 54);
             this.ceSettingsLocationApplicationFolder.Name = "ceSettingsLocationApplicationFolder";
-            this.ceSettingsLocationApplicationFolder.Properties.Caption = "Portable: Store settings in the Application Folder (May need folder permissions)";
+            this.ceSettingsLocationApplicationFolder.Properties.Caption = "Portable: Store settings in the Application Folder";
             this.ceSettingsLocationApplicationFolder.Properties.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgRadio2;
             this.ceSettingsLocationApplicationFolder.Properties.RadioGroupIndex = 0;
             this.ceSettingsLocationApplicationFolder.Size = new System.Drawing.Size(782, 26);

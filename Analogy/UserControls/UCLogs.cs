@@ -16,7 +16,8 @@ namespace Analogy.UserControls
                 var user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting,
                     ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
                     ServicesProvider.Instance.GetService<IFactoriesManager>(),
-                    ServicesProvider.Instance.GetService<UpdateManager>());
+                    ServicesProvider.Instance.GetService<IAnalogyFoldersAccess>(),
+            ServicesProvider.Instance.GetService<UpdateManager>());
                 user.ShowDialog(this);
             });
         }

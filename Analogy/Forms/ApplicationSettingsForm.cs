@@ -14,19 +14,21 @@ namespace Analogy.Forms
     {
         private IAnalogyUserSettings Settings { get; }
         private IFactoriesManager FactoriesManager { get; }
+        private IAnalogyFoldersAccess FoldersAccess { get; }
         private UpdateManager UpdateManager { get; }
         private ApplicationSettingsSelectionType SelectedSettingType { get; }
-        public ApplicationSettingsForm(IAnalogyUserSettings settings, IFactoriesManager factoriesManager, UpdateManager updateManager)
+        public ApplicationSettingsForm(IAnalogyUserSettings settings, IFactoriesManager factoriesManager, IAnalogyFoldersAccess foldersAccess, UpdateManager updateManager)
         {
             InitializeComponent();
             Settings = settings;
             FactoriesManager = factoriesManager;
+            FoldersAccess = foldersAccess;
             UpdateManager = updateManager;
             EnableAcrylicAccent = false;
             SelectedSettingType = ApplicationSettingsSelectionType.ApplicationGeneralSettings;
         }
 
-        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IAnalogyUserSettings settings, IFactoriesManager factoriesManager, UpdateManager updateManager) : this(settings, factoriesManager, updateManager)
+        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IAnalogyUserSettings settings, IFactoriesManager factoriesManager, IAnalogyFoldersAccess foldersAccess, UpdateManager updateManager) : this(settings, factoriesManager, foldersAccess, updateManager)
         {
             SelectedSettingType = selectedSettingType;
         }
@@ -48,7 +50,7 @@ namespace Analogy.Forms
             switch (settingType)
             {
                 case ApplicationSettingsSelectionType.ApplicationGeneralSettings:
-                    return new ApplicationGeneralSettingsUC(Settings);
+                    return new ApplicationGeneralSettingsUC(Settings, FoldersAccess);
                 case ApplicationSettingsSelectionType.ApplicationUISettings:
                     return new ApplicationUISettingsUC(Settings);
                 case ApplicationSettingsSelectionType.MessagesFilteringSettings:
@@ -199,7 +201,7 @@ namespace Analogy.Forms
                 Hide();
                 Close();
                 Settings.ResetSettings();
-                ApplicationSettingsForm us = new ApplicationSettingsForm(Settings, FactoriesManager, UpdateManager);
+                ApplicationSettingsForm us = new ApplicationSettingsForm(Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 us.ShowDialog(owner);
             }
         }

@@ -761,7 +761,7 @@ namespace Analogy.CommonControls.UserControls
 
             wsLogs.WorkspaceSaved += (s, e) =>
             {
-                Settings.LogsLayoutFileName = e.Workspace.Path;
+                Settings.SetLogsLayoutFileName(e.Workspace.Path);
                 // Settings.UseCustomLogsLayout = true;
             };
             wsLogs.AfterApplyWorkspace += (s, e) =>
@@ -775,7 +775,7 @@ namespace Analogy.CommonControls.UserControls
                     else if (File.Exists(ws.Workspace.Path))
                     {
                         // Settings.UseCustomLogsLayout = true;
-                        Settings.LogsLayoutFileName = ws.Workspace.Path;
+                        Settings.SetLogsLayoutFileName(ws.Workspace.Path);
                     }
 
                 }

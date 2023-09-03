@@ -60,6 +60,7 @@ namespace Analogy.Common.DataTypes
 
     public enum SettingsMode
     {
+        None = -1,
         PerUser,
         ApplicationFolder,
         ProgramData,

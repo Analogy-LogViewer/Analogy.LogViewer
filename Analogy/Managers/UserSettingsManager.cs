@@ -20,6 +20,7 @@ namespace Analogy
 
     public class UserSettingsManager : IAnalogyUserSettings
     {
+        private FolderAccessManager FolderAccessManager { get; }
         public event EventHandler OnFactoryOrderChanged;
         public event EventHandler OnApplicationSkinNameChanged;
         public event EventHandler<SettingsMode>? SettingsModeChanged;
@@ -91,7 +92,7 @@ namespace Analogy
         public List<string> AdditionalProbingLocations { get; set; }
         public bool SingleInstance { get; set; }
         public string AnalogyIcon { get; set; }
-        public string LogGridFileName => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "AnalogyGridlayout.xml");
+        public string LogGridFileName => FolderAccessManager.GetConfigurationFilePath("AnalogyGridlayout.xml");
         public string DateTimePattern { get; set; }
         public UpdateMode UpdateMode { get; set; }
         public DateTime LastUpdate { get; set; }
@@ -143,7 +144,7 @@ namespace Analogy
         public bool TrackActiveMessage { get; set; }
         public float RealTimeRefreshInterval { get; set; }
         public FilteringExclusion FilteringExclusion { get; set; }
-        public string LogsLayoutFileName { get; set; }
+        public string LogsLayoutFileName { get; private set; }
         public bool UseCustomLogsLayout { get; set; }
         public bool ViewDetailedMessageWithHTML { get; set; }
 
@@ -158,6 +159,7 @@ namespace Analogy
                 {
                     settingsMode = value;
                     SettingsModeChanged?.Invoke(this, value);
+                    FolderAccessManager.SetWorkingMode(value);
                 }
             }
         }
@@ -185,26 +187,28 @@ namespace Analogy
         public bool CombineOnlineProviders { get; set; }
         public bool SupportLinuxFormatting { get; set; }
 
-        private Dictionary<Guid , AnalogyPositionState> WindowPositions { get; set; }
-        public UserSettingsManager()
+        private Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
+        public UserSettingsManager(FolderAccessManager folderAccessManager)
         {
-            if (File.Exists(LocalSettingFileName))
+            FolderAccessManager = folderAccessManager;
+            folderAccessManager.SetWorkingMode(SettingsMode.PerUser);
+            if (FolderAccessManager.TryGetConfigurationFilePathFromAnyValidLocation(LocalSettingFileName, out var configFile))
             {
                 try
                 {
-                    string data = File.ReadAllText(LocalSettingFileName);
+                    string data = File.ReadAllText(configFile);
                     var settings = JsonConvert.DeserializeObject<UserSettings>(data);
                     ApplyLocalSettings(settings);
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogInformation($"Unable to read settings from {LocalSettingFileName}. Error: {e.Message}. Loading per user settings", nameof(UserSettingsManager));
+                    AnalogyLogManager.Instance.LogInformation($"Unable to read settings from {configFile}. Error: {e.Message}. Loading per user settings", nameof(UserSettingsManager));
                     LoadPerUserSettings();
                 }
             }
             else
             {
-                AnalogyLogManager.Instance.LogInformation($"File {LocalSettingFileName} does not exist. Loading per user settings", nameof(UserSettingsManager));
+                AnalogyLogManager.Instance.LogInformation($"File {configFile} does not exist. Loading per user settings", nameof(UserSettingsManager));
                 LoadPerUserSettings();
             }
         }
@@ -213,7 +217,6 @@ namespace Analogy
         private void LoadPerUserSettings()
         {
             SettingsMode = SettingsMode.PerUser;
-            FilteringExclusion = ParseSettings<FilteringExclusion>(Settings.Default.FilteringExclusion);
             EnableCompressedArchives = true;
             AnalogyInternalLogPeriod = 5;
             bool upgradeRequired = false;
@@ -224,7 +227,7 @@ namespace Analogy
                 Settings.Default.UpgradeRequired = false;
                 Settings.Default.Save();
             }
-
+            FilteringExclusion = ParseSettings<FilteringExclusion>(Settings.Default.FilteringExclusion);
             DateTimePattern = !string.IsNullOrEmpty(Settings.Default.DateTimePattern)
                 ? Settings.Default.DateTimePattern
                 : "yyyy.MM.dd HH:mm:ss.ff";
@@ -317,7 +320,7 @@ namespace Analogy
             TrackActiveMessage = Settings.Default.TrackActiveMessage;
             RealTimeRefreshInterval = Settings.Default.RealTimeRefreshInterval;
             UseCustomLogsLayout = Settings.Default.UseCustomLogsLayout;
-            LogsLayoutFileName = Settings.Default.LogsLayoutFileName;
+            SetLogsLayoutFileName(Settings.Default.LogsLayoutFileName);
             ViewDetailedMessageWithHTML = Settings.Default.ViewDetailedMessageWithHTML;
             if (Enum.TryParse<MainFormType>(Settings.Default.MainFormType, out var layoutVersion))
             {
@@ -413,7 +416,7 @@ namespace Analogy
             TrackActiveMessage = settings.TrackActiveMessage;
             RealTimeRefreshInterval = settings.RealTimeRefreshInterval;
             FilteringExclusion = settings.FilteringExclusion;
-            LogsLayoutFileName = settings.LogsLayoutFileName;
+            SetLogsLayoutFileName(settings.LogsLayoutFileName);
             UseCustomLogsLayout = settings.UseCustomLogsLayout;
             ViewDetailedMessageWithHTML = settings.ViewDetailedMessageWithHTML;
             ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup;
@@ -558,11 +561,13 @@ namespace Analogy
 
         private void DeletePortableSettings()
         {
-            if (File.Exists(LocalSettingFileName))
+            var configFile = FolderAccessManager.GetConfigurationFilePath(LocalSettingFileName);
+
+            if (File.Exists(configFile))
             {
                 try
                 {
-                    File.Delete(LocalSettingFileName);
+                    File.Delete(configFile);
                 }
                 catch (Exception e)
                 {
@@ -586,16 +591,17 @@ namespace Analogy
 
         private void SavePortableSettings(string version)
         {
+            var configFile = FolderAccessManager.GetConfigurationFilePath(LocalSettingFileName);
             try
             {
                 UserSettings settings = CreateUserSettings();
                 settings.Version = version;
                 string data = JsonConvert.SerializeObject(settings);
-                File.WriteAllText(LocalSettingFileName, data);
+                File.WriteAllText(configFile, data);
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError($"Unable to save setting to {LocalSettingFileName}. Error: {e.Message}. Saving Per user", nameof(UserSettingsManager));
+                AnalogyLogManager.Instance.LogError($"Unable to save setting to {configFile}. Error: {e.Message}. Saving Per user", nameof(UserSettingsManager));
                 SettingsMode = SettingsMode.PerUser;
                 SavePerUserSettings();
             }
@@ -808,6 +814,12 @@ namespace Analogy
         public IEnumerable<(Guid ID, string Path)> GetRecentFolders(Guid offlineAnalogyId) =>
             RecentFolders.Where(itm => itm.ID == offlineAnalogyId);
 
+        public void SetLogsLayoutFileName(string filename)
+        {
+            LogsLayoutFileName = Path.IsPathRooted(filename)
+                ? filename
+                : FolderAccessManager.GetConfigurationFilePath(filename);
+        }
         public void ResetSettings()
         {
             Settings.Default.Reset();
@@ -831,7 +843,7 @@ namespace Analogy
             }
         }
 
-        public bool TryGetWindowPosition(Guid id,out AnalogyPositionState? position)
+        public bool TryGetWindowPosition(Guid id, out AnalogyPositionState? position)
         {
             return WindowPositions.TryGetValue(id, out position);
         }

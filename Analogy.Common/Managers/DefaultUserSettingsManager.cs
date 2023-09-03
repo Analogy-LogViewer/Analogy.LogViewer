@@ -43,7 +43,7 @@ namespace Analogy.Common.Managers
         public bool TrackActiveMessage { get; set; }
         public float RealTimeRefreshInterval { get; set; } = 1;
         public FilteringExclusion FilteringExclusion { get; set; } = new FilteringExclusion();
-        public string LogsLayoutFileName { get; set; }
+        public string LogsLayoutFileName { get; }
         public bool UseCustomLogsLayout { get; set; }
         public bool ViewDetailedMessageWithHTML { get; set; }
         public TimeSpan TimeOffset { get; set; } = TimeSpan.Zero;
@@ -101,6 +101,11 @@ namespace Analogy.Common.Managers
 
         public void SetWindowPosition(Guid id, AnalogyPositionState position)
         {
+        }
+
+        public void SetLogsLayoutFileName(string filename)
+        {
+
         }
     }
 }

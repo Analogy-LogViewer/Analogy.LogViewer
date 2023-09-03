@@ -45,7 +45,7 @@ namespace Analogy.Common.Interfaces
         bool TrackActiveMessage { get; set; }
         float RealTimeRefreshInterval { get; set; }
         FilteringExclusion FilteringExclusion { get; set; }
-        string LogsLayoutFileName { get; set; }
+        string LogsLayoutFileName { get; }
         bool UseCustomLogsLayout { get; set; }
         bool ViewDetailedMessageWithHTML { get; set; }
         TimeSpan TimeOffset { get; set; }
@@ -65,5 +65,6 @@ namespace Analogy.Common.Interfaces
         void ResetSettings();
         bool TryGetWindowPosition(Guid id, out AnalogyPositionState? position);
         void SetWindowPosition(Guid id, AnalogyPositionState position);
+        void SetLogsLayoutFileName(string filename);
     }
 }

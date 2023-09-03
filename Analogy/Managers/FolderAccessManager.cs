@@ -10,26 +10,27 @@ using System.Threading.Tasks;
 
 namespace Analogy.Managers
 {
-    internal class FolderAccessManager : IAnalogyFoldersAccess
+    public class FolderAccessManager : IAnalogyFoldersAccess
     {
         public event EventHandler? RootFolderChanged;
-        public string WriteableRootFolder { get; }
-        public string ConfigurationsFolder { get; }
-        private bool IsRunningFromProgramFileFolder { get; }
-        public FolderAccessManager(IAnalogyUserSettings settings)
+        public string WriteableRootFolder { get; private set; }
+        public string ConfigurationsFolder { get; private set; }
+        private bool IsRunningFromProgramFileFolder { get; } = Utils.IsRunningFromProgramFileFolder();
+        private string ApplicationDataFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Analogy Log Viewer");
+      private string CommonApplicationData => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Analogy Log Viewer");
+        public void SetWorkingMode(SettingsMode settingsMode)
         {
-            IsRunningFromProgramFileFolder = Utils.IsRunningFromProgramFileFolder();
-            switch (settings.SettingsMode)
+            switch (settingsMode)
             {
                 case SettingsMode.PerUser:
-                    WriteableRootFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Analogy Log Viewer");
+                    WriteableRootFolder = ApplicationDataFolder;
                     ConfigurationsFolder = Path.Combine(WriteableRootFolder, "Configuration Files");
                     Directory.CreateDirectory(ConfigurationsFolder);
                     break;
                 case SettingsMode.ApplicationFolder:
                     if (IsRunningFromProgramFileFolder)
                     {
-                        WriteableRootFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Analogy Log Viewer");
+                        WriteableRootFolder = CommonApplicationData;
                         ConfigurationsFolder = Path.Combine(WriteableRootFolder, "Configuration Files");
                         Directory.CreateDirectory(ConfigurationsFolder);
                     }
@@ -40,15 +41,15 @@ namespace Analogy.Managers
                     }
                     break;
                 case SettingsMode.ProgramData:
-                    WriteableRootFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Analogy Log Viewer");
+                    WriteableRootFolder = CommonApplicationData;
                     ConfigurationsFolder = Path.Combine(WriteableRootFolder, "Configuration Files");
                     Directory.CreateDirectory(ConfigurationsFolder);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            RootFolderChanged?.Invoke(this, EventArgs.Empty);
         }
-
         private string GetConfigurationFilePath(string folder, string configFile)
         {
             if (Path.IsPathRooted(configFile) && !Path.GetPathRoot(configFile)
@@ -68,21 +69,23 @@ namespace Analogy.Managers
 
         public bool TryGetConfigurationFilePathFromAnyValidLocation(string configFile, out string finalLocation)
         {
-            var file = GetConfigurationFilePath(ConfigurationsFolder, configFile);
+            var file = GetConfigurationFilePath(Utils.ApplicationBaseDirectory, configFile);
             if (File.Exists(file))
             {
                 finalLocation = file;
                 return true;
             }
-
-            if (IsRunningFromProgramFileFolder) //check also app root folder
+            file = GetConfigurationFilePath(CommonApplicationData, configFile);
+            if (File.Exists(file))
             {
-                file = GetConfigurationFilePath(Utils.ApplicationBaseDirectory, configFile);
-                if (File.Exists(file))
-                {
-                    finalLocation = file;
-                    return true;
-                }
+                finalLocation = file;
+                return true;
+            }
+            file = GetConfigurationFilePath(ApplicationDataFolder, configFile);
+            if (File.Exists(file))
+            {
+                finalLocation = file;
+                return true;
             }
 
             finalLocation = "";

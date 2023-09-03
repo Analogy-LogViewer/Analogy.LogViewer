@@ -2,7 +2,6 @@
 using System.Drawing;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
-using Analogy.CommonUtilities.Github;
 using Analogy.DataTypes;
 using Analogy.Interfaces.Factories;
 using Octokit;

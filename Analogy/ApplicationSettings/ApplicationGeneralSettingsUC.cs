@@ -17,9 +17,12 @@ namespace Analogy.ApplicationSettings
     public partial class ApplicationGeneralSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
         private IAnalogyUserSettings Settings { get; }
-        public ApplicationGeneralSettingsUC(IAnalogyUserSettings settings)
+        private IAnalogyFoldersAccess FoldersAccess { get; }
+
+        public ApplicationGeneralSettingsUC(IAnalogyUserSettings settings,IAnalogyFoldersAccess foldersAccess)
         {
             Settings = settings;
+            FoldersAccess = foldersAccess;
             InitializeComponent();
         }
 
@@ -71,6 +74,7 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
+            ceSettingsLocationApplicationFolder.Text = $"Portable: Store settings in the Application Folder ({FoldersAccess.ConfigurationsFolder})";
             toggleSwitchIdleMode.IsOn = Settings.IdleMode;
             nudIdleTime.Value = Settings.IdleTimeMinutes;
             nudRecentFiles.Value = Settings.RecentFilesCount;

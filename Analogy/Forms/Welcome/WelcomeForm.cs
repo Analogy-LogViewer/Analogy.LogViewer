@@ -12,18 +12,20 @@ namespace Analogy.Forms
     {
         private IAnalogyUserSettings Settings { get; }
         private IFactoriesManager FactoriesManager { get; }
+        private IAnalogyFoldersAccess FoldersAccess { get; }
         private UpdateManager UpdateManager { get; }
 
-        public WelcomeForm(IAnalogyUserSettings settings,IFactoriesManager factoriesManager, UpdateManager updateManager)
+        public WelcomeForm(IAnalogyUserSettings settings, IFactoriesManager factoriesManager, IAnalogyFoldersAccess foldersAccess, UpdateManager updateManager)
         {
             Settings = settings;
             FactoriesManager = factoriesManager;
+            FoldersAccess = foldersAccess;
             UpdateManager = updateManager;
             InitializeComponent();
             EnableAcrylicAccent = false;
         }
 
-  
+
         private void AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType type)
         {
             string name = type.ToString();
@@ -54,13 +56,13 @@ namespace Analogy.Forms
             switch (selectionType)
             {
                 case ApplicationWelcomeSelectionType.General:
-                    return new WelcomeGeneralUC(Settings, FactoriesManager, UpdateManager);
+                    return new WelcomeGeneralUC(Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 case ApplicationWelcomeSelectionType.Theme:
-                    return new WelcomeThemeSelectionUC(Settings, FactoriesManager, UpdateManager);
+                    return new WelcomeThemeSelectionUC(Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 case ApplicationWelcomeSelectionType.DataProvides:
-                    return new WelcomeDataProvidersUC(Settings, FactoriesManager, UpdateManager);
+                    return new WelcomeDataProvidersUC(Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 case ApplicationWelcomeSelectionType.Extensions:
-                    return new WelcomeExtensionsUC(Settings, FactoriesManager, UpdateManager);
+                    return new WelcomeExtensionsUC(Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 case ApplicationWelcomeSelectionType.GlobalTools:
                     return new WelcomeGlobalToolsUC();
                 case ApplicationWelcomeSelectionType.WhatIsNew:
@@ -70,10 +72,10 @@ namespace Analogy.Forms
                 case ApplicationWelcomeSelectionType.Feedback:
                     return new WelcomeFeedbackUC();
                 default:
-                {
-                    ServicesProvider.Instance.GetService<ILogger>().LogError($"Selection with {selectionType} was not found");
-                    throw new Exception($"Selection with {selectionType} was not found");
-                }
+                    {
+                        ServicesProvider.Instance.GetService<ILogger>().LogError($"Selection with {selectionType} was not found");
+                        throw new Exception($"Selection with {selectionType} was not found");
+                    }
             }
         }
 
@@ -90,7 +92,7 @@ namespace Analogy.Forms
             await FactoriesManager.AddExternalDataSources();
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);
         }
-      private void aceGeneral_Click(object sender, EventArgs e)
+        private void aceGeneral_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.General);
         }
