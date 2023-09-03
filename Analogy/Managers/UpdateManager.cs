@@ -22,11 +22,8 @@ namespace Analogy.Managers
 {
     public class UpdateManager
     {
-        private static readonly Lazy<UpdateManager>
-            _instance = new Lazy<UpdateManager>(() => new UpdateManager());
 
-        private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-        public static UpdateManager Instance => _instance.Value;
+        private IAnalogyUserSettings Settings { get; }
         private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;
         private string updaterRepository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.Updater";
@@ -116,8 +113,9 @@ namespace Analogy.Managers
             }
         }
 
-        public UpdateManager()
+        public UpdateManager(IAnalogyUserSettings settings)
         {
+            Settings = settings;
             SupportedDataProviders = new List<DataProviderInformation>();
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Serilog", "Analogy.LogViewer.Serilog.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Serilog", Resources.serilog32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WordsSearch", "Analogy.LogViewer.WordsSearch.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WordsSearch", Resources.Analogy_image_32x32));

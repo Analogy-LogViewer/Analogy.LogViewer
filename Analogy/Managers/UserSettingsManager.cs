@@ -22,7 +22,7 @@ namespace Analogy
     {
         public event EventHandler OnFactoryOrderChanged;
         public event EventHandler OnApplicationSkinNameChanged;
-
+        public event EventHandler<SettingsMode>? SettingsModeChanged;
         private AnalogyCommandLayout _ribbonStyle;
         private bool _enableFirstChanceException;
         private bool _inlineJsonViewer;
@@ -147,7 +147,20 @@ namespace Analogy
         public bool UseCustomLogsLayout { get; set; }
         public bool ViewDetailedMessageWithHTML { get; set; }
 
-        public SettingsMode SettingsMode { get; set; }
+        private SettingsMode settingsMode;
+
+        public SettingsMode SettingsMode
+        {
+            get => settingsMode;
+            set
+            {
+                if (settingsMode != value)
+                {
+                    settingsMode = value;
+                    SettingsModeChanged?.Invoke(this, value);
+                }
+            }
+        }
         public MainFormType MainFormType { get; set; }
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }
@@ -403,8 +416,7 @@ namespace Analogy
             LogsLayoutFileName = settings.LogsLayoutFileName;
             UseCustomLogsLayout = settings.UseCustomLogsLayout;
             ViewDetailedMessageWithHTML = settings.ViewDetailedMessageWithHTML;
-            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup ||
-                                     UpdateManager.Instance.CurrentVersion.ToString(4) != settings.Version;
+            ShowWhatIsNewAtStartup = settings.ShowWhatIsNewAtStartup;
             MainFormType = settings.MainFormType;
             TimeOffsetType = settings.TimeOffsetType;
             DefaultUserLogFolder = settings.DefaultUserLogFolder;
@@ -527,7 +539,7 @@ namespace Analogy
 
 
         }
-        public void Save()
+        public void Save(string version)
         {
             switch (SettingsMode)
             {
@@ -536,7 +548,7 @@ namespace Analogy
                     DeletePortableSettings();
                     break;
                 case SettingsMode.ApplicationFolder:
-                    SavePortableSettings();
+                    SavePortableSettings(version);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -572,12 +584,12 @@ namespace Analogy
         //    }
         //}
 
-        private void SavePortableSettings()
+        private void SavePortableSettings(string version)
         {
             try
             {
                 UserSettings settings = CreateUserSettings();
-                settings.Version = UpdateManager.Instance.CurrentVersion.ToString(4);
+                settings.Version = version;
                 string data = JsonConvert.SerializeObject(settings);
                 File.WriteAllText(LocalSettingFileName, data);
             }

@@ -6,17 +6,20 @@ using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
+using Analogy.Common.Managers;
 
 namespace Analogy.UserControls
 {
 
     public partial class OnlineUCLogs : XtraUserControl, IUserControlWithUCLogs
     {
+        private FileProcessingManager FileProcessingManager { get; }
         private bool _showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
-        public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime)
+        public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime, FileProcessingManager fileProcessingManager)
         {
+            FileProcessingManager = fileProcessingManager;
             InitializeComponent();
             ucLogs1.SetFileDataSource(realTime, realTime.FileOperationsHandler);
         }
@@ -42,7 +45,7 @@ namespace Analogy.UserControls
             listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
             spltMain.Panel1Collapsed = !_showHistory;
             string entry = $"History #{_clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
-            FileProcessingManager.Instance.DoneProcessingFile(e.ClearedMessages, entry);
+            FileProcessingManager.DoneProcessingFile(e.ClearedMessages, entry);
             listBoxClearHistory.Items.Add(entry);
             listBoxClearHistory.SelectedItem = null;
             listBoxClearHistory.SelectedIndex = -1;
@@ -90,7 +93,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
+            var messages = FileProcessingManager.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
                 messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);

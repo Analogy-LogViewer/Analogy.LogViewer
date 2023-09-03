@@ -14,12 +14,14 @@ namespace Analogy.UserControls
         public string Title { get; }
         public AnalogyOnDemandPlottingInteractor Interactor { get; }
         private PlottingDataManager Manager { get; set; }
+        private AnalogyOnDemandPlottingManager PlottingManager { get; }
         private Guid Id { get; }
-        public OnDemandPlottingUC(Guid id, string plotTitle)
+        public OnDemandPlottingUC(Guid id, AnalogyOnDemandPlottingManager manager, string plotTitle)
         {
             Id = id;
             Title = plotTitle;
             Manager = new PlottingDataManager();
+            PlottingManager = manager;
             InitializeComponent();
         }
 
@@ -33,7 +35,7 @@ namespace Analogy.UserControls
             chartControl1.Titles.Add(new ChartTitle { Text = Title });
             chartControl1.Legend.UseCheckBoxes = true;
 
-            foreach (var seriesName in AnalogyOnDemandPlottingManager.Instance.GetSeriesNames(Id))
+            foreach (var seriesName in PlottingManager.GetSeriesNames(Id))
             {
                 AddSeries(seriesName);
             }
@@ -43,12 +45,12 @@ namespace Analogy.UserControls
             PopulateData();
             HandleDestroyed += (sender, e) =>
             {
-                AnalogyOnDemandPlottingManager.Instance.OnNewPointsData -= OnNewPointData;
-                AnalogyOnDemandPlottingManager.Instance.OnNewSeries -= Instance_OnNewSeries;
+                PlottingManager.OnNewPointsData -= OnNewPointData;
+                PlottingManager.OnNewSeries -= Instance_OnNewSeries;
 
             };
-            AnalogyOnDemandPlottingManager.Instance.OnNewPointsData += OnNewPointData;
-            AnalogyOnDemandPlottingManager.Instance.OnNewSeries += Instance_OnNewSeries;
+            PlottingManager.OnNewPointsData += OnNewPointData;
+            PlottingManager.OnNewSeries += Instance_OnNewSeries;
 
 
         }
@@ -133,7 +135,7 @@ namespace Analogy.UserControls
 
         private void PopulateData()
         {
-            var pts = AnalogyOnDemandPlottingManager.Instance.GetData(Id);
+            var pts = PlottingManager.GetData(Id);
             Manager.AddPoints(pts);
         }
 

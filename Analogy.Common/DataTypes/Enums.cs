@@ -61,7 +61,8 @@ namespace Analogy.Common.DataTypes
     public enum SettingsMode
     {
         PerUser,
-        ApplicationFolder
+        ApplicationFolder,
+        ProgramData,
     }
     public enum TimeOffsetType
     {

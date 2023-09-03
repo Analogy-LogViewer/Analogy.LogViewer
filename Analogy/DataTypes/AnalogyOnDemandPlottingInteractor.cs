@@ -5,41 +5,46 @@ using Analogy.Managers;
 
 namespace Analogy.DataTypes
 {
-    public class AnalogyOnDemandPlottingInteractor: IAnalogyOnDemandPlottingInteractor
+    public class AnalogyOnDemandPlottingInteractor : IAnalogyOnDemandPlottingInteractor
     {
-        
+        private AnalogyOnDemandPlottingManager PlottingManager { get; }
+
+        public AnalogyOnDemandPlottingInteractor(AnalogyOnDemandPlottingManager plottingManager)
+        {
+            PlottingManager = plottingManager;
+        }
         public void ShowPlot(Guid id, string plotTitle, AnalogyOnDemandPlottingStartupType startupType)
         {
-            AnalogyOnDemandPlottingManager.Instance.ShowPlot(id, plotTitle, startupType);
+            PlottingManager.ShowPlot(id, plotTitle, startupType);
         }
 
         public void ClosePlot(Guid id)
         {
-            AnalogyOnDemandPlottingManager.Instance.ClosePlot(id);
+            PlottingManager.ClosePlot(id);
         }
 
         public void AddSeriesToPlot(Guid id, string seriesName)
         {
-            AnalogyOnDemandPlottingManager.Instance.AddSeriesToPlot(id,seriesName);
+            PlottingManager.AddSeriesToPlot(id, seriesName);
         }
 
         public void RemoveSeriesFromPlot(Guid id, string seriesName)
         {
-            AnalogyOnDemandPlottingManager.Instance.RemoveSeriesFromPlot(id,seriesName);
+            PlottingManager.RemoveSeriesFromPlot(id, seriesName);
         }
 
         public void ClearSeriesData(Guid id, string seriesNameToClear)
         {
-            AnalogyOnDemandPlottingManager.Instance.ClearSeriesData(id, seriesNameToClear);
+            PlottingManager.ClearSeriesData(id, seriesNameToClear);
         }
 
         public void ClearAllData(Guid id)
         {
-            AnalogyOnDemandPlottingManager.Instance.ClearAllData(id);
-           
+            PlottingManager.ClearAllData(id);
+
         }
 
-        public void SetDefaultWindow(Guid id,int numberOfPointsInWindow)
+        public void SetDefaultWindow(Guid id, int numberOfPointsInWindow)
         {
             throw new NotImplementedException();
         }

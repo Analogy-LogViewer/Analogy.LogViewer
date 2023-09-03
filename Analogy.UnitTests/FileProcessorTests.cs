@@ -24,7 +24,7 @@ namespace Analogy.UnitTests
             {
                 EnableCompressedArchives = true
             };
-            FileProcessor fp = new FileProcessor(settings, handler, new EmptyAnalogyLogger());
+            FileProcessor fp = new FileProcessor(settings, handler, new FileProcessingManager(), new EmptyAnalogyLogger());
             OfflineDataProviderForTesting offlineDataProvider = new OfflineDataProviderForTesting();
             var result = await fp.Process(offlineDataProvider, fileName, cancellationTokenSource.Token, false);
             Assert.IsTrue(result.Count() == 40);

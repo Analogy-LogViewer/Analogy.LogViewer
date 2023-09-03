@@ -20,7 +20,7 @@ namespace Analogy.UnitTests
         {
             string fileName = "example.ajson";
             cancellationTokenSource = new CancellationTokenSource();
-            FileProcessor fp = new FileProcessor(new DefaultUserSettingsManager(), handler, new EmptyAnalogyLogger());
+            FileProcessor fp = new FileProcessor(new DefaultUserSettingsManager(), handler, new FileProcessingManager(), new EmptyAnalogyLogger());
 
         }
     }

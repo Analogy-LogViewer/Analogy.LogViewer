@@ -16,19 +16,14 @@ namespace Analogy.Managers
         public event EventHandler<OnDemandPlottingUC> OnHidePlot;
         public event EventHandler<(Guid Id, IEnumerable<AnalogyPlottingPointData> PointsData)> OnNewPointsData;
         public event EventHandler<(Guid Id, string seriesName)> OnNewSeries;
-        private static readonly Lazy<AnalogyOnDemandPlottingManager> _instance =
-            new Lazy<AnalogyOnDemandPlottingManager>(() => new AnalogyOnDemandPlottingManager());
-
-        public static AnalogyOnDemandPlottingManager Instance => _instance.Value;
-
         private IAnalogyOnDemandPlottingInteractor Interactor { get; }
         private Dictionary<Guid, OnDemandPlottingUC> Plots { get; }
         private List<IAnalogyOnDemandPlotting> Plotters { get; }
         private Dictionary<Guid, List<AnalogyPlottingPointData>> Data { get; }
         private Dictionary<Guid, List<string>> SeriesNames { get; }
-        private AnalogyOnDemandPlottingManager()
+        public AnalogyOnDemandPlottingManager()
         {
-            Interactor = new AnalogyOnDemandPlottingInteractor();
+            Interactor = new AnalogyOnDemandPlottingInteractor(this);
             Plots = new Dictionary<Guid, OnDemandPlottingUC>();
             Plotters = new List<IAnalogyOnDemandPlotting>();
             Data = new Dictionary<Guid, List<AnalogyPlottingPointData>>();
@@ -71,7 +66,7 @@ namespace Analogy.Managers
         {
             if (!Plots.ContainsKey(id) || (Plots.ContainsKey(id) && Plots[id].IsDisposed))
             {
-                var uc = new OnDemandPlottingUC(id, plotTitle);
+                var uc = new OnDemandPlottingUC(id, this, plotTitle);
                 uc.Hide();
                 Plots[id] = uc;
             }

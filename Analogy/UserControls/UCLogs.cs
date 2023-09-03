@@ -2,6 +2,7 @@
 using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
+using Analogy.Managers;
 
 namespace Analogy.UserControls
 {
@@ -13,7 +14,9 @@ namespace Analogy.UserControls
             SetHighlightSettings(() =>
             {
                 var user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ColorHighlighting,
-                    ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), ServicesProvider.Instance.GetService<IFactoriesManager>());
+                    ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
+                    ServicesProvider.Instance.GetService<IFactoriesManager>(),
+                    ServicesProvider.Instance.GetService<UpdateManager>());
                 user.ShowDialog(this);
             });
         }

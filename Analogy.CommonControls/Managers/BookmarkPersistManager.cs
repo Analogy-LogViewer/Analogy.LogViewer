@@ -16,11 +16,8 @@ namespace Analogy.CommonControls.Managers
 {
     public class BookmarkPersistManager : ILogMessageCreatedHandler
     {
-        private static readonly Lazy<BookmarkPersistManager> instance =
-            new Lazy<BookmarkPersistManager>(() => new BookmarkPersistManager());
         public EventHandler<LogMessageArgs> MessageReceived;
         public EventHandler<LogMessageArgs> MessageRemoved;
-        public static BookmarkPersistManager Instance => instance.Value;
         private bool ContentChanged;
         private bool fileLoaded;
         private List<IAnalogyLogMessage> Messages { get; set; }

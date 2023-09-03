@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Managers;
 using Microsoft.Extensions.Logging;
 
 namespace Analogy.Forms
@@ -13,17 +14,19 @@ namespace Analogy.Forms
     {
         private IAnalogyUserSettings Settings { get; }
         private IFactoriesManager FactoriesManager { get; }
+        private UpdateManager UpdateManager { get; }
         private ApplicationSettingsSelectionType SelectedSettingType { get; }
-        public ApplicationSettingsForm(IAnalogyUserSettings settings, IFactoriesManager factoriesManager)
+        public ApplicationSettingsForm(IAnalogyUserSettings settings, IFactoriesManager factoriesManager, UpdateManager updateManager)
         {
             InitializeComponent();
             Settings = settings;
             FactoriesManager = factoriesManager;
+            UpdateManager = updateManager;
             EnableAcrylicAccent = false;
             SelectedSettingType = ApplicationSettingsSelectionType.ApplicationGeneralSettings;
         }
 
-        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IAnalogyUserSettings settings, IFactoriesManager factoriesManager) : this(settings, factoriesManager)
+        public ApplicationSettingsForm(ApplicationSettingsSelectionType selectedSettingType, IAnalogyUserSettings settings, IFactoriesManager factoriesManager, UpdateManager updateManager) : this(settings, factoriesManager, updateManager)
         {
             SelectedSettingType = selectedSettingType;
         }
@@ -63,7 +66,7 @@ namespace Analogy.Forms
                 case ApplicationSettingsSelectionType.ExtensionsSettings:
                     return new ExtensionSettingsUC(Settings, FactoriesManager);
                 case ApplicationSettingsSelectionType.UpdatesSettings:
-                    return new UpdateSettingsUC();
+                    return new UpdateSettingsUC(UpdateManager);
                 case ApplicationSettingsSelectionType.DebuggingSettings:
                     return new DebuggingSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.DataProvidersSettings:
@@ -196,14 +199,14 @@ namespace Analogy.Forms
                 Hide();
                 Close();
                 Settings.ResetSettings();
-                ApplicationSettingsForm us = new ApplicationSettingsForm(Settings, FactoriesManager);
+                ApplicationSettingsForm us = new ApplicationSettingsForm(Settings, FactoriesManager, UpdateManager);
                 us.ShowDialog(owner);
             }
         }
 
         private void ApplicationSettingsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Settings.Save();
+            Settings.Save(UpdateManager.CurrentVersion.ToString(4));
         }
 
         private void Donations_Click(object sender, EventArgs e)

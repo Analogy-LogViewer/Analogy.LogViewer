@@ -12,6 +12,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.CommonControls.Managers;
 using Analogy.DataProviders;
 using Analogy.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -156,18 +158,24 @@ namespace Analogy
                 return;
             }
 
+            UpdateManager up = ServicesProvider.Instance.GetService<UpdateManager>();
             if (Settings.IsFirstRun)
             {
-                WelcomeForm f = new WelcomeForm(Settings, FactoriesManager);
+                WelcomeForm f = new WelcomeForm(Settings, FactoriesManager, up);
                 f.ShowDialog();
             }
+
+            var bm = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
+            var fpm = ServicesProvider.Instance.GetService<FileProcessingManager>();
+            NotificationManager nm = ServicesProvider.Instance.GetService<NotificationManager>();
+            AnalogyOnDemandPlottingManager pm = ServicesProvider.Instance.GetService<AnalogyOnDemandPlottingManager>();
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
-                Application.Run(new MainForm(FactoriesManager, ExtensionsManager));
+                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, bm, up, fpm, nm, pm));
             }
             else
             {
-                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager));
+                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm, up, fpm, nm, pm));
             }
 
         }
@@ -179,10 +187,16 @@ namespace Analogy
             UserSettingsManager settings = new UserSettingsManager();
             services.AddSingleton<IAnalogyUserSettings>(settings);
             services.AddSingleton<IUserSettingsManager>(settings);
+            services.AddSingleton<IAnalogyFoldersAccess, FolderAccessManager>();
             services.AddSingleton<ILogger>(loggerProvider.CreateLogger("Analogy"));
             services.AddSingleton<AnalogyBuiltInFactory>();
             services.AddSingleton<IFactoriesManager, FactoriesManager>();
-            services.AddSingleton<IExtensionsManager,ExtensionsManager>();
+            services.AddSingleton<IExtensionsManager, ExtensionsManager>();
+            services.AddSingleton<BookmarkPersistManager>();
+            services.AddSingleton<UpdateManager>();
+            services.AddSingleton<FileProcessingManager>();
+            services.AddSingleton<NotificationManager>();
+            services.AddSingleton<AnalogyOnDemandPlottingManager>();
             ServicesProvider.Instance.AddLoggerProvider(loggerProvider);
             ServicesProvider.Instance.BuildServiceProvider("Analogy");
         }

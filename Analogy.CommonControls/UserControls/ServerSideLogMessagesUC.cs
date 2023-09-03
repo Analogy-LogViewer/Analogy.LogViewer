@@ -20,6 +20,7 @@ using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.Managers;
 using Analogy.CommonControls.Properties;
 using Analogy.CommonControls.Tools;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using DevExpress.Data;
@@ -154,7 +155,8 @@ namespace Analogy.CommonControls.UserControls
         #endregion
         private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
-
+        private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
+        private FileProcessingManager FileProcessingManager { get; } = ServicesProvider.Instance.GetService<FileProcessingManager>();
         public ServerSideLogMessagesUC() : this(new DefaultUserSettingsManager(), new DefaultExtensionManager(), new DefaultFactoriesManager(), new EmptyAnalogyLogger())
         {
 
@@ -217,7 +219,7 @@ namespace Analogy.CommonControls.UserControls
 
             filterTokenSource = new CancellationTokenSource();
             filterToken = filterTokenSource.Token;
-            FileProcessor = new FileProcessor(Settings, this, Logger);
+            FileProcessor = new FileProcessor(Settings, this, FileProcessingManager, Logger);
             FileProcessor.OnFileReadingFinished += (s, e) =>
             {
                 Interlocked.Decrement(ref fileLoadingCount);
@@ -2123,7 +2125,7 @@ namespace Analogy.CommonControls.UserControls
             meMessageDetails.Text = string.Empty;
             if (BookmarkView)
             {
-                BookmarkPersistManager.Instance.ClearBookmarks();
+                BookmarkPersistManager.ClearBookmarks();
             }
 
             lockSlim.ExitWriteLock();
@@ -2484,7 +2486,7 @@ namespace Analogy.CommonControls.UserControls
             tabbedView1.ActivateDocument(dockPanelBookmarks);
             if (persists)
             {
-                BookmarkPersistManager.Instance.AddBookmarkedMessage(message, dataSource);
+                BookmarkPersistManager.AddBookmarkedMessage(message, dataSource);
             }
 
             lockSlim.ExitWriteLock();
@@ -2831,7 +2833,7 @@ namespace Analogy.CommonControls.UserControls
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
             {
-                BookmarkPersistManager.Instance.RemoveBookmark(message);
+                BookmarkPersistManager.RemoveBookmark(message);
             }
         }
 
@@ -3087,7 +3089,7 @@ namespace Analogy.CommonControls.UserControls
             LoadTextBoxes(focusedMassage);
             if (Settings.InlineJsonViewer && focusedMassage.RawTextType == AnalogyRowTextType.JSON)
             {
-               await JsonTreeView.ShowJson(focusedMassage.RawText);
+                await JsonTreeView.ShowJson(focusedMassage.RawText);
             }
             string dataProvider = (string)LogGrid.GetRowCellValue(e.FocusedRowHandle, "DataProvider");
             if (!LoadingInProgress)
@@ -3257,7 +3259,7 @@ namespace Analogy.CommonControls.UserControls
         {
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message != null)
-            {                
+            {
                 //todo: fix this as dateedit
                 deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
                 ceNewerThanFilter.Checked = true;
@@ -3415,7 +3417,7 @@ namespace Analogy.CommonControls.UserControls
 
             XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
-            var processor = new FileProcessor(Settings, logGridForm.LogWindow, Logger);
+            var processor = new FileProcessor(Settings, logGridForm.LogWindow, FileProcessingManager, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
 
         }

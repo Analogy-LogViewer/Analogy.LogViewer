@@ -1,4 +1,5 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.Common.Managers;
+using Analogy.Interfaces;
 using Analogy.Managers;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -18,12 +19,16 @@ namespace Analogy.UserControls
     {
         private bool showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
         private static int clearHistoryCounter;
+        private FileProcessingManager FileProcessingManager { get; }
         private string FileName { get; set; }
         public bool Enable { get; set; } = true;
         private FilePoolingManager PoolingManager { get; }
-        public FilePoolingUCLogs(IAnalogyUserSettings settings, IAnalogyOfflineDataProvider offlineDataProvider, string filter, string initialFilename, string initialFolder, string? title = null)
+
+        public FilePoolingUCLogs(IAnalogyUserSettings settings, FileProcessingManager fileProcessingManager, IAnalogyOfflineDataProvider offlineDataProvider,
+            string filter, string initialFilename, string initialFolder, string? title = null)
         {
             InitializeComponent();
+            FileProcessingManager = fileProcessingManager;
             FileName = initialFilename;
             PoolingManager = new FilePoolingManager(settings, filter, initialFilename, ucLogs1, offlineDataProvider);
             ucLogs1.Title = title;
@@ -36,7 +41,6 @@ namespace Analogy.UserControls
                 OnNewMessages(data.messages);
             };
             this.Disposed += FilePoolingUCLogs_Disposed;
-
         }
 
         private void FilePoolingUCLogs_Disposed(object sender, EventArgs e)
@@ -67,7 +71,7 @@ namespace Analogy.UserControls
             listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
             spltMain.Panel1Collapsed = !showHistory;
             string entry = $"cleared #{clearHistoryCounter} ({e.ClearedMessages.Count} messages)";
-            FileProcessingManager.Instance.DoneProcessingFile(e.ClearedMessages, entry);
+            FileProcessingManager.DoneProcessingFile(e.ClearedMessages, entry);
             listBoxClearHistory.Items.Add(entry);
             listBoxClearHistory.SelectedItem = null;
             listBoxClearHistory.SelectedIndex = -1;
@@ -86,7 +90,7 @@ namespace Analogy.UserControls
                 listBoxClearHistory.SelectedIndexChanged -= ListBoxClearHistoryIndexChanged;
                 spltMain.Panel1Collapsed = !showHistory;
                 string entry = $"New #{clearHistoryCounter} ({messages.Count} messages)";
-                FileProcessingManager.Instance.DoneProcessingFile(messages, entry);
+                FileProcessingManager.DoneProcessingFile(messages, entry);
                 listBoxClearHistory.Items.Add(entry);
                 listBoxClearHistory.SelectedItem = null;
                 listBoxClearHistory.SelectedIndex = -1;
@@ -130,7 +134,7 @@ namespace Analogy.UserControls
                 return;
             }
 
-            var messages = FileProcessingManager.Instance.GetMessages((string)listBoxClearHistory.SelectedItem);
+            var messages = FileProcessingManager.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
                  messages, Environment.MachineName, ucLogs1.DataProvider,
                 ucLogs1.FileDataProvider);

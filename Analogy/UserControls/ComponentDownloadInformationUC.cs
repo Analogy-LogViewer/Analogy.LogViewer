@@ -11,11 +11,13 @@ namespace Analogy.UserControls
 {
     public partial class ComponentDownloadInformationUC : XtraUserControl
     {
+        private UpdateManager UpdateManager { get; }
         private FactoryContainer? Factory { get; }
         private IAnalogyDownloadInformation? DownloadInfo { get; }
 
-        public ComponentDownloadInformationUC()
+        public ComponentDownloadInformationUC(UpdateManager updateManager)
         {
+            UpdateManager = updateManager;
             InitializeComponent();
             btnCheckNow.Click += async (s, e) =>
             {
@@ -32,7 +34,7 @@ namespace Analogy.UserControls
                 if (DownloadInfo != null && DownloadInfo.IsUpdateAvailable && DownloadInfo.DownloadURL != null)
                 {
                     btnDownload.Enabled = false;
-                    await UpdateManager.Instance.InitiateUpdate(DownloadInfo.Name, DownloadInfo.DownloadURL,false);
+                    await UpdateManager.InitiateUpdate(DownloadInfo.Name, DownloadInfo.DownloadURL, false);
                     btnDownload.Enabled = true;
                 }
                 else
@@ -43,13 +45,13 @@ namespace Analogy.UserControls
         }
 
 
-        public ComponentDownloadInformationUC(FactoryContainer factory) : this()
+        public ComponentDownloadInformationUC(FactoryContainer factory, UpdateManager updateManager) : this(updateManager)
         {
             Factory = factory;
             DownloadInfo = Factory.DownloadInformation!;
         }
 
-        public ComponentDownloadInformationUC(IAnalogyDownloadInformation downloadInfo):this()
+        public ComponentDownloadInformationUC(IAnalogyDownloadInformation downloadInfo, UpdateManager updateManager) : this(updateManager)
         {
             DownloadInfo = downloadInfo;
         }

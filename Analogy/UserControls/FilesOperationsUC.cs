@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Threading.Tasks;
 using Analogy.Common.DataTypes;
+using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces.DataTypes;
 using Microsoft.Extensions.Logging;
@@ -103,7 +104,9 @@ namespace Analogy.UserControls
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),this,ServicesProvider.Instance.GetService<ILogger>());
+                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), this,
+                    ServicesProvider.Instance.GetService<FileProcessingManager>(),
+                    ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));
@@ -136,17 +139,21 @@ namespace Analogy.UserControls
                 if (Manager.AlreadyProcessed(Path.GetFileName(filename)))
                 {
 
-                    richTextBox1.Text += Environment.NewLine + $"File {filename} was already processed. getting data from cache";
+                    richTextBox1.Text += Environment.NewLine +
+                                         $"File {filename} was already processed. getting data from cache";
                     continue;
                 }
 
-                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),this,ServicesProvider.Instance.GetService<ILogger>());
+                FileProcessor fp = new FileProcessor(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(), this,
+                    ServicesProvider.Instance.GetService<FileProcessingManager>(),
+                    ServicesProvider.Instance.GetService<ILogger>());
                 await fp.Process(DataProvider, filename, cancellationTokenSource.Token);
                 processed += 1;
                 ProgressReporter.Report(new AnalogyProgressReport("Processed", processed, FileNames.Count, filename));
                 if (Aborted)
                 {
-                    ProgressReporter.Report(new AnalogyProgressReport("Aborted", FileNames.Count, FileNames.Count, filename));
+                    ProgressReporter.Report(new AnalogyProgressReport("Aborted", FileNames.Count, FileNames.Count,
+                        filename));
                     break;
                 }
             }
