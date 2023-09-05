@@ -366,8 +366,11 @@ namespace Analogy.CommonControls.Tools
                 cancellationTokenSource?.Cancel();
                 cancellationTokenSource = new CancellationTokenSource();
                 var token = cancellationTokenSource.Token;
-                object json = JsonConvert.DeserializeObject(jsonString);
-                var nodes = await Task.Run(() => LoadTree(json, token));
+                var nodes = await Task.Run(() =>
+                {
+                    object json = JsonConvert.DeserializeObject(jsonString);
+                    return LoadTree(json, token);
+                });
                 if (nodes.valid)
                 {
                     Nodes.AddRange(nodes.result.ToArray());
