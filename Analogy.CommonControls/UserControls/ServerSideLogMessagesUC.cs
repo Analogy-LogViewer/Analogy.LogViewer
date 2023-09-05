@@ -870,7 +870,10 @@ namespace Analogy.CommonControls.UserControls
                 }
                 else if (e.SummaryProcess == CustomSummaryProcess.Calculate)
                 {
-                    counts[(string)e.FieldValue] = counts[(string)e.FieldValue] + 1;
+                    if (e.FieldValue is not null)
+                    {
+                        counts[(string)e.FieldValue] += 1;
+                    }
                 }
 
                 else if (e.SummaryProcess == CustomSummaryProcess.Finalize)

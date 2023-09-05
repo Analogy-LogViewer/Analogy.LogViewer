@@ -8,7 +8,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {  
+            {
+                new ("V5.0.0 - Exception in LogMessagesUC's LogGrid_CustomSummaryCalculate during/after Time Difference calculation #1839", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),
                 new ("V5.0.0 - Multiple LoadJson calls #1831", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),
                 new ("V5.0.0 - Disable Updates If Running from Program Data Folder #1841", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),
                 new ("V5.0.0 - Support running from MSI Installer #1838", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,03),"5.0.0.0"),

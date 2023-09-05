@@ -1135,7 +1135,10 @@ namespace Analogy.CommonControls.UserControls
                 }
                 else if (e.SummaryProcess == CustomSummaryProcess.Calculate)
                 {
-                    counts[(string)e.FieldValue] = counts[(string)e.FieldValue] + 1;
+                    if (e.FieldValue is not null)
+                    {
+                        counts[(string)e.FieldValue] += 1;
+                    }
                 }
 
                 else if (e.SummaryProcess == CustomSummaryProcess.Finalize)
@@ -2970,8 +2973,10 @@ namespace Analogy.CommonControls.UserControls
                 _messageData.BeginLoadData();
                 foreach (DataRow row in _messageData.Rows)
                 {
+                    row.BeginEdit();
                     AnalogyLogMessage message = (AnalogyLogMessage)row[Common.CommonUtils.AnalogyMessageColumn];
                     row["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
+                    row.EndEdit();
                 }
 
                 _messageData.EndLoadData();
