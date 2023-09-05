@@ -11,6 +11,7 @@ namespace Analogy
             {
                 new ("V5.0.0 - Disable Updates If Running from Program Data Folder #1841", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),
                 new ("V5.0.0 - Support running from MSI Installer #1838", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,03),"5.0.0.0"),
+                new ("V5.0.0 - DevExpress 23.1 #1837", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,03),"5.0.0.0"),
                 new ("V5.0.0 - Add Export to Simple File #1815", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,08,25),"5.0.0.0"),
                 new ("V5.0.0 - Change Time Offset is very slow #1769", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,08,25),"5.0.0.0"),
                 new ("V5.0.0 - Message viewer doesn't understand Linux-style new lines #1770", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,08,25),"5.0.0.0"),
