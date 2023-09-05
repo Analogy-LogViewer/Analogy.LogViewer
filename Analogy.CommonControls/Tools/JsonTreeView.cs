@@ -119,11 +119,11 @@ namespace Analogy.CommonControls.Tools
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        private List<TreeNode> LoadTree(object jsonData, CancellationToken cancellationToken)
+        private (bool valid, List<TreeNode> result) LoadTree(object jsonData, CancellationToken cancellationToken)
         {
             if (cancellationToken.IsCancellationRequested)
             {
-                return new();
+                return (false, new());
             }
             List<TreeNode> nodes = new();
             if (jsonData is JArray jsonArray)
@@ -155,7 +155,7 @@ namespace Analogy.CommonControls.Tools
                 rootNode.ExpandAll();
             }
 
-            return nodes;
+            return (!cancellationToken.IsCancellationRequested, nodes);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool TryParse(string strInput, out JToken output)
@@ -368,9 +368,9 @@ namespace Analogy.CommonControls.Tools
                 var token = cancellationTokenSource.Token;
                 object json = JsonConvert.DeserializeObject(jsonString);
                 var nodes = await Task.Run(() => LoadTree(json, token));
-                if (!token.IsCancellationRequested)
+                if (nodes.valid)
                 {
-                    Nodes.AddRange(nodes.ToArray());
+                    Nodes.AddRange(nodes.result.ToArray());
                 }
                 EndUpdate();
             }
