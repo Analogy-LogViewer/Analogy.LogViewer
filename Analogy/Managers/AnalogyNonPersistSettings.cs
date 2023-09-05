@@ -17,7 +17,7 @@ namespace Analogy.Managers
         public bool DisableUpdateFromRegistry { get; set; }
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
-        public bool UpdateAreDisabled => DisableUpdateFromRegistry || DisableUpdatesByDataProvidersOverrides;
+        public bool UpdateAreDisabled => DisableUpdateFromRegistry || DisableUpdatesByDataProvidersOverrides || Utils.IsRunningFromProgramFileFolder();
         public string AnalogyOrganizationName => "Analogy-LogViewer";
         public string AnalogyRepositoryName => "Analogy.LogViewer";
         public AnalogyNonPersistSettings()
