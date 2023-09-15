@@ -321,7 +321,8 @@ namespace Analogy
                 else
                 {
                     //try  from file association:
-                    if (Settings.TryGetDataProvidesForFilesAssociations(files, out var associations))
+                    var associations = Settings.GetDataProvidesForFilesAssociations(files);
+                    if (associations.Any())
                     {
                         var parser = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
                         if (parser.Count == 1)

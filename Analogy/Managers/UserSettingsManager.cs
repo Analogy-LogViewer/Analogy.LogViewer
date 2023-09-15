@@ -904,11 +904,21 @@ namespace Analogy
             FileAssociations.Add(new FileAssociations(offlineProviderId, associations));
         }
 
-        public bool TryGetDataProvidesForFilesAssociations(string[] files, out IEnumerable<Guid> dataProviders)
+        public List<Guid> GetDataProvidesForFilesAssociations(string[] files)
         {
-            //associations=FileAssociations.Where(f=> Utils.MatchedAll(f.))
-            dataProviders = Enumerable.Empty<Guid>();
-            return false;
+            List<Guid> matches = new List<Guid>();
+
+            foreach (FileAssociations fa in FileAssociations)
+            {
+                foreach (string association in fa.Associations)
+                {
+                    if (Utils.MatchedAll(association, files))
+                    {
+                        matches.Add(fa.OfflineDataProviderId);
+                    }
+                }
+            }
+            return matches;
         }
     }
 }

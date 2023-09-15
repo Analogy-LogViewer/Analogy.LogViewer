@@ -74,6 +74,6 @@ namespace Analogy.Interfaces
         void LoadSettings(IAnalogyUserSettings newSettings);
         bool TryGetFileAssociations(Guid offlineProviderId, out IEnumerable<string> associations);
         void UpdateFileAssociations(Guid offlineProviderId, List<string> associations);
-        bool TryGetDataProvidesForFilesAssociations(string[] files, out IEnumerable<Guid> dataProviders);
+        List<Guid> GetDataProvidesForFilesAssociations(string[] files);
     }
 }
