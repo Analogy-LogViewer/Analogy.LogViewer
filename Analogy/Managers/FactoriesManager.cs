@@ -186,8 +186,8 @@ namespace Analogy
             }
             return null;
         }
-        public FactoryContainer GetFactoryContainer(Guid componentId)
-            => Factories.SingleOrDefault(f => f.ContainsDataProviderOrDataFactory(componentId));
+        public List<FactoryContainer> GetFactoryContainer(Guid componentId)
+            => Factories.Where(f => f.ContainsDataProviderOrDataFactory(componentId)).ToList();
 
         public Image? GetSmallImage(Guid componentId)
         {
@@ -590,6 +590,10 @@ namespace Analogy
         {
             foreach (var fc in Factories)
             {
+                if (fc.FactorySetting.Status == DataProviderFactoryStatus.Disabled)
+                {
+                    continue;
+                }
                 foreach (var dpf in fc.DataProvidersFactories)
                 {
                     IEnumerable<IAnalogyOfflineDataProvider> supported =

@@ -324,11 +324,11 @@ namespace Analogy
                     var associations = Settings.GetDataProvidesForFilesAssociations(files);
                     if (associations.Any())
                     {
-                        var parser = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
-                        if (parser.Count == 1)
+                        var parsers = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
+                        if (parsers.Count == 1 || parsers.Select(p => p.Id).Distinct().Count() == 1)
                         {
-                            LoadFactoryInAccordion(parser.First().Id);
-                            await OpenOfflineLogs(files, parser.First());
+                            LoadFactoryInAccordion(parsers.First().Id);
+                            await OpenOfflineLogs(files, parsers.First());
                         }
                         else
                         {
@@ -691,7 +691,8 @@ namespace Analogy
             }
             accordionControl.BeginUpdate();
             accordionControl.Clear();
-            FactoryContainer fc = FactoriesManager.GetFactoryContainer(factoryId) ?? FactoriesManager.GetBuiltInFactoryContainer(factoryId);
+            var containers = FactoriesManager.GetFactoryContainer(factoryId);
+            var fc = containers.Count == 1 ? containers.First() : FactoriesManager.GetBuiltInFactoryContainer(factoryId);
             activeProvider = fc.Factory.FactoryId;
             Settings.LastOpenedDataProvider = activeProvider;
 
@@ -902,8 +903,8 @@ namespace Analogy
 
                 #endregion
 
-                FactoryContainer container = FactoriesManager.GetFactoryContainer(offlineAnalogy.Id);
-                IAnalogyImages? images = container?.Images?.FirstOrDefault();
+                var containers = FactoriesManager.GetFactoryContainer(offlineAnalogy.Id);
+                IAnalogyImages? images = containers.Count == 1 ? containers.First()?.Images?.FirstOrDefault() : null;
 
                 var preDefinedFolderExist = !string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
                                             Directory.Exists(offlineAnalogy.InitialFolderFullPath);

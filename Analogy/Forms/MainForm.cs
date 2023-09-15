@@ -664,26 +664,31 @@ namespace Analogy.Forms
                 }
                 else
                 {
-                    //try  from file association:
+                    //try from file association:
                     var associations = Settings.GetDataProvidesForFilesAssociations(files);
                     if (associations.Any())
                     {
                         var parsers = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
-                        if (parsers.Count == 1)
+                        if (parsers.Count == 1 || parsers.Select(p => p.Id).Distinct().Count() == 1)
                         {
                             var parser = parsers.First();
                             var fc = FactoriesManager.GetFactoryContainer(parser.Id);
-                            RibbonPage? page = Mapping.TryGetValue(fc.Factory.FactoryId, out RibbonPage? value)
-                                ? value
-                                : null;
-                            if (page is not null)
+                            RibbonPage? page = null;
+                            if (fc.Any())
                             {
-                                ribbonControlMain.SelectPage(page);
+                                page = Mapping.TryGetValue(fc.First().Factory.FactoryId, out RibbonPage? value)
+                                    ? value
+                                    : null;
+                                if (page is not null)
+                                {
+                                    ribbonControlMain.SelectPage(page);
+                                }
                             }
                             await OpenOfflineLogs(page, files, parser);
                         }
                         else
                         {
+
                             XtraMessageBox.Show($@"More than one data provider detected for this file.{Environment.NewLine}Please open it directly from the data provider menu", "Unable to open file",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
@@ -1477,10 +1482,8 @@ namespace Analogy.Forms
 
             Guid factoryId = factory.FactoryId;
             string factoryTitle = factory.Title;
-            FactoryContainer container = FactoriesManager.GetFactoryContainer(factoryId);
-            IAnalogyImages? images = container?.Images?.FirstOrDefault();
-
-
+            var containers = FactoriesManager.GetFactoryContainer(factoryId);
+            IAnalogyImages? images = containers.Count == 1 ? containers.First().Images?.FirstOrDefault() : null;
 
             #region Actions
             async Task OpenOffline(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider, string initialFolder,
@@ -1914,8 +1917,8 @@ namespace Analogy.Forms
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }
             #endregion
-            FactoryContainer container = FactoriesManager.GetFactoryContainer(offlineAnalogy.Id);
-            IAnalogyImages? images = container?.Images?.FirstOrDefault();
+            var containers = FactoriesManager.GetFactoryContainer(offlineAnalogy.Id);
+            IAnalogyImages? images = containers.Count == 1 ? containers.First().Images?.FirstOrDefault() : null;
 
             var preDefinedFolderExist = !string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
                                         Directory.Exists(offlineAnalogy.InitialFolderFullPath);

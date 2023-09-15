@@ -35,7 +35,7 @@ namespace Analogy.Common.Interfaces
         bool IsBuiltInFactory(Guid factoryId);
         List<IAnalogyDataProviderSettings> GetProvidersSettings();
         Image GetLargeImage(Guid componentId);
-        FactoryContainer GetFactoryContainer(Guid componentId);
+        List<FactoryContainer> GetFactoryContainer(Guid componentId);
         Image? GetSmallImage(Guid componentId);
         IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider);
         IEnumerable<IAnalogyExtension> GetAllExtensions();

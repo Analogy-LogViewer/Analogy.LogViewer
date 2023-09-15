@@ -74,9 +74,9 @@ namespace Analogy.Common.Managers
             return Resources.Analogy_image_32x32;
         }
 
-        public FactoryContainer GetFactoryContainer(Guid componentId)
+        public List<FactoryContainer> GetFactoryContainer(Guid componentId)
         {
-            return null;
+            return new List<FactoryContainer>();
         }
 
         public Image? GetSmallImage(Guid componentId)
