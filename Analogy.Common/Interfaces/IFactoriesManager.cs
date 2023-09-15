@@ -26,6 +26,8 @@ namespace Analogy.Common.Interfaces
         IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId,
             string[] fileNames);
 
+        IEnumerable<IAnalogyOfflineDataProvider> GetOfflineDataSources(Guid factoryId);
+
         IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds();
         Assembly GetAssemblyOfFactory(IAnalogyFactory factory);
         FactoryContainer GetBuiltInFactoryContainer(Guid id);
@@ -41,5 +43,6 @@ namespace Analogy.Common.Interfaces
         IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies();
         void ShutDownAllFactories();
         Task InitializeIfNeeded(IAnalogyDataProvider dataProvider);
+        IEnumerable<IAnalogyOfflineDataProvider> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders);
     }
 }

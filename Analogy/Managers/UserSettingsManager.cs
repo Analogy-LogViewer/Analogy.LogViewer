@@ -80,6 +80,7 @@ namespace Analogy
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
+        public List<FileAssociations> FileAssociations { get; set; }
 
         public Guid LastOpenedDataProvider { get; set; }
         public bool RememberLastOpenedDataProvider { get; set; }
@@ -128,6 +129,7 @@ namespace Analogy
                 }
             }
         }
+
         public AnalogyCommandLayout RibbonStyle
         {
             get => _ribbonStyle;
@@ -141,6 +143,7 @@ namespace Analogy
                 }
             }
         }
+
         public bool TrackActiveMessage { get; set; }
         public float RealTimeRefreshInterval { get; set; }
         public FilteringExclusion FilteringExclusion { get; set; }
@@ -163,16 +166,20 @@ namespace Analogy
                 }
             }
         }
+
         public MainFormType MainFormType { get; set; }
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }
         public TimeOffsetType TimeOffsetType { get; set; }
+
         /// <summary>
         /// delay in seconds
         /// </summary>
         public int FilePoolingDelayInterval { get; set; }
+
         public bool EnableFilePoolingDelay { get; set; }
         public bool ShowProcessedCounter { get; set; }
+
         public bool InlineJsonViewer
         {
             get => _inlineJsonViewer;
@@ -182,17 +189,20 @@ namespace Analogy
                 OnInlineJsonViewerChanged?.Invoke(this, value);
             }
         }
+
         public bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
         public bool SupportLinuxFormatting { get; set; }
 
         private Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
+
         public UserSettingsManager(FolderAccessManager folderAccessManager)
         {
             FolderAccessManager = folderAccessManager;
             folderAccessManager.SetWorkingMode(SettingsMode.PerUser);
-            if (FolderAccessManager.TryGetConfigurationFilePathFromAnyValidLocation(LocalSettingFileName, out var configFile))
+            if (FolderAccessManager.TryGetConfigurationFilePathFromAnyValidLocation(LocalSettingFileName,
+                    out var configFile))
             {
                 try
                 {
@@ -202,13 +212,16 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogInformation($"Unable to read settings from {configFile}. Error: {e.Message}. Loading per user settings", nameof(UserSettingsManager));
+                    AnalogyLogManager.Instance.LogInformation(
+                        $"Unable to read settings from {configFile}. Error: {e.Message}. Loading per user settings",
+                        nameof(UserSettingsManager));
                     LoadPerUserSettings();
                 }
             }
             else
             {
-                AnalogyLogManager.Instance.LogInformation($"File {configFile} does not exist. Loading per user settings", nameof(UserSettingsManager));
+                AnalogyLogManager.Instance.LogInformation(
+                    $"File {configFile} does not exist. Loading per user settings", nameof(UserSettingsManager));
                 LoadPerUserSettings();
             }
         }
@@ -227,6 +240,7 @@ namespace Analogy
                 Settings.Default.UpgradeRequired = false;
                 Settings.Default.Save();
             }
+
             FilteringExclusion = ParseSettings<FilteringExclusion>(Settings.Default.FilteringExclusion);
             DateTimePattern = !string.IsNullOrEmpty(Settings.Default.DateTimePattern)
                 ? Settings.Default.DateTimePattern
@@ -264,8 +278,8 @@ namespace Analogy
             ColorSettings = ParseSettings<ColorSettings>(Settings.Default.ColorSettings);
             DefaultDescendOrder = Settings.Default.DefaultDescendOrder;
             FactoriesOrder = ParseSettings<List<Guid>>(Settings.Default.FactoriesOrder);
-            FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings)
-                .Where(f => f.FactoryId != Guid.Empty).ToList();
+            FactoriesSettings = ParseSettings<List<FactorySettings>>(Settings.Default.FactoriesSettings);
+            FileAssociations = ParseSettings<List<FileAssociations>>(Settings.Default.FileAssociations);
             LastOpenedDataProvider = Settings.Default.LastOpenedDataProvider;
             PreDefinedQueries = ParseSettings<PreDefinedQueries>(Settings.Default.PreDefinedQueries);
             RememberLastOpenedDataProvider = Settings.Default.RememberLastOpenedDataProvider;
@@ -381,6 +395,7 @@ namespace Analogy
             ColorSettings = settings.ColorSettings;
             FactoriesOrder = settings.FactoriesOrder;
             FactoriesSettings = settings.FactoriesSettings;
+            FileAssociations = settings.FileAssociations;
             LastOpenedDataProvider = settings.LastOpenedDataProvider;
             RememberLastOpenedDataProvider = settings.RememberLastOpenedDataProvider;
             RememberLastSearches = settings.RememberLastSearches;
@@ -470,6 +485,7 @@ namespace Analogy
                 ColorSettings = ColorSettings,
                 FactoriesOrder = FactoriesOrder,
                 FactoriesSettings = FactoriesSettings,
+                FileAssociations = FileAssociations,
                 LastOpenedDataProvider = LastOpenedDataProvider,
                 RememberLastOpenedDataProvider = RememberLastOpenedDataProvider,
                 RememberLastSearches = RememberLastSearches,
@@ -530,9 +546,7 @@ namespace Analogy
         {
             try
             {
-                return string.IsNullOrEmpty(data) ?
-                    new T() :
-                    JsonConvert.DeserializeObject<T>(data);
+                return string.IsNullOrEmpty(data) ? new T() : JsonConvert.DeserializeObject<T>(data);
             }
             catch (Exception e)
             {
@@ -542,6 +556,7 @@ namespace Analogy
 
 
         }
+
         public void Save(string version)
         {
             switch (SettingsMode)
@@ -571,7 +586,8 @@ namespace Analogy
                 }
                 catch (Exception e)
                 {
-                    AnalogyLogManager.Instance.LogError($"Unable to remove local settings. Error: {e.Message}.", nameof(UserSettingsManager));
+                    AnalogyLogManager.Instance.LogError($"Unable to remove local settings. Error: {e.Message}.",
+                        nameof(UserSettingsManager));
                 }
             }
         }
@@ -601,7 +617,9 @@ namespace Analogy
             }
             catch (Exception e)
             {
-                AnalogyLogManager.Instance.LogError($"Unable to save setting to {configFile}. Error: {e.Message}. Saving Per user", nameof(UserSettingsManager));
+                AnalogyLogManager.Instance.LogError(
+                    $"Unable to save setting to {configFile}. Error: {e.Message}. Saving Per user",
+                    nameof(UserSettingsManager));
                 SettingsMode = SettingsMode.PerUser;
                 SavePerUserSettings();
             }
@@ -628,7 +646,8 @@ namespace Analogy
             Settings.Default.RecentFilesCount = RecentFilesCount;
             Settings.Default.RecentFiles = JsonConvert.SerializeObject(RecentFiles.Take(RecentFilesCount).ToList());
             Settings.Default.RecentFoldersCount = RecentFoldersCount;
-            Settings.Default.RecentFolders = JsonConvert.SerializeObject(RecentFolders.Take(RecentFoldersCount).ToList());
+            Settings.Default.RecentFolders =
+                JsonConvert.SerializeObject(RecentFolders.Take(RecentFoldersCount).ToList());
             Settings.Default.EnableFileCaching = EnableFileCaching;
             Settings.Default.StartupExtensions = JsonConvert.SerializeObject(StartupExtensions);
             Settings.Default.StartupRibbonMinimized = StartupRibbonMinimized;
@@ -646,13 +665,16 @@ namespace Analogy
             Settings.Default.DefaultDescendOrder = DefaultDescendOrder;
             Settings.Default.FactoriesOrder = JsonConvert.SerializeObject(FactoriesOrder);
             Settings.Default.FactoriesSettings = JsonConvert.SerializeObject(FactoriesSettings);
+            Settings.Default.FileAssociations = JsonConvert.SerializeObject(FileAssociations);
             Settings.Default.LastOpenedDataProvider = LastOpenedDataProvider;
             Settings.Default.RememberLastOpenedDataProvider = RememberLastOpenedDataProvider;
             Settings.Default.PreDefinedQueries = JsonConvert.SerializeObject(PreDefinedQueries);
             Settings.Default.RememberLastSearches = RememberLastSearches;
             Settings.Default.NumberOfLastSearches = NumberOfLastSearches;
-            Settings.Default.LastSearchesInclude = JsonConvert.SerializeObject(LastSearchesInclude.Take(NumberOfLastSearches).ToList());
-            Settings.Default.LastSearchesExclude = JsonConvert.SerializeObject(LastSearchesExclude.Take(NumberOfLastSearches).ToList());
+            Settings.Default.LastSearchesInclude =
+                JsonConvert.SerializeObject(LastSearchesInclude.Take(NumberOfLastSearches).ToList());
+            Settings.Default.LastSearchesExclude =
+                JsonConvert.SerializeObject(LastSearchesExclude.Take(NumberOfLastSearches).ToList());
             Settings.Default.AdditionalProbingLocations = JsonConvert.SerializeObject(AdditionalProbingLocations);
             Settings.Default.SingleInstance = SingleInstance;
             Settings.Default.LastUpdate = LastUpdate;
@@ -669,7 +691,8 @@ namespace Analogy
             Settings.Default.ShowMessageDetails = ShowMessageDetails;
             Settings.Default.AdvancedMode = AdvancedMode;
             Settings.Default.AdvancedModeRawSQLFilterEnabled = AdvancedModeRawSQLFilterEnabled;
-            Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled = AdvancedModeAdditionalFilteringColumnsEnabled;
+            Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled =
+                AdvancedModeAdditionalFilteringColumnsEnabled;
             Settings.Default.LogLevelSelection = LogLevelSelection.ToString();
             Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
@@ -705,6 +728,7 @@ namespace Analogy
                 RecentFiles.Insert(0, (iD, file));
             }
         }
+
         public void AddToRecentFolders(Guid iD, string path)
         {
             if (!RecentFolders.Contains((iD, path)))
@@ -712,6 +736,7 @@ namespace Analogy
                 RecentFolders.Insert(0, (iD, path));
             }
         }
+
         public void ClearStatistics()
         {
             AnalogyRunningTime = TimeSpan.FromSeconds(0);
@@ -740,6 +765,7 @@ namespace Analogy
 
             return null;
         }
+
         public FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory)
         {
             bool Exists(Guid guid) => guid == factory.FactoryId;
@@ -748,12 +774,7 @@ namespace Analogy
                 return FactoriesSettings.Single(f => Exists(f.FactoryId));
             }
 
-            var createNew = new FactorySettings
-            {
-                FactoryId = factory.FactoryId,
-                Status = DataProviderFactoryStatus.NotSet,
-                UserSettingFileAssociations = new List<string>()
-            };
+            var createNew = new FactorySettings(factory.Title, factory.FactoryId, DataProviderFactoryStatus.NotSet);
             FactoriesSettings.Add(createNew);
             return createNew;
 
@@ -770,11 +791,10 @@ namespace Analogy
             OnFactoryOrderChanged?.Invoke(this, new EventArgs());
         }
 
-        public IEnumerable<FactorySettings> GetFactoriesThatHasFileAssociation(string[] files) =>
-            FactoriesSettings.Where(factory => factory.Status != DataProviderFactoryStatus.Disabled &&
-                                               factory.UserSettingFileAssociations != null &&
-                                               factory.UserSettingFileAssociations.Any(i =>
-                                                   Utils.MatchedAll(i, files)));
+        //public IEnumerable<FactorySettings> GetFactoriesThatHasFileAssociation(string[] files) =>
+        //    FactoriesSettings.Where(factory => factory.Status != DataProviderFactoryStatus.Disabled &&
+        //                                       factory.UserSettingFileAssociations.Any(i =>
+        //                                           Utils.MatchedAll(i.FileAssociations, files)));
         public bool AddNewSearchesEntryToLists(string text, bool include)
         {
             if (include)
@@ -803,6 +823,7 @@ namespace Analogy
         {
             return AnalogyIcon == "Dark" ? Resources.AnalogyIconDark : Resources.AnalogyIconLight;
         }
+
         public Image GetImage()
         {
             return AnalogyIcon == "Dark" ? Resources.AnalogyDark : Resources.AnalogyLight;
@@ -820,6 +841,7 @@ namespace Analogy
                 ? filename
                 : FolderAccessManager.GetConfigurationFilePath(filename);
         }
+
         public void ResetSettings()
         {
             Settings.Default.Reset();
@@ -851,6 +873,42 @@ namespace Analogy
         public void SetWindowPosition(Guid id, AnalogyPositionState position)
         {
             WindowPositions[id] = position;
+        }
+
+        public bool TryGetFileAssociations(Guid offlineProviderId, out IEnumerable<string> associations)
+        {
+            foreach (FileAssociations fa in FileAssociations)
+            {
+                if (fa.OfflineDataProviderId == offlineProviderId)
+                {
+                    associations = fa.Associations;
+                    return true;
+                }
+            }
+
+            associations = Enumerable.Empty<string>();
+            return false;
+        }
+
+        public void UpdateFileAssociations(Guid offlineProviderId, List<string> associations)
+        {
+            foreach (FileAssociations fa in FileAssociations)
+            {
+                if (fa.OfflineDataProviderId == offlineProviderId)
+                {
+                    fa.Associations = associations;
+                    return;
+                }
+            }
+            //does not exists. create it:
+            FileAssociations.Add(new FileAssociations(offlineProviderId, associations));
+        }
+
+        public bool TryGetDataProvidesForFilesAssociations(string[] files, out IEnumerable<Guid> dataProviders)
+        {
+            //associations=FileAssociations.Where(f=> Utils.MatchedAll(f.))
+            dataProviders = Enumerable.Empty<Guid>();
+            return false;
         }
     }
 }

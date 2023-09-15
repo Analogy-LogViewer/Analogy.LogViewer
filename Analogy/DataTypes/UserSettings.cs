@@ -43,6 +43,7 @@ namespace Analogy.DataTypes
         public ColorSettings ColorSettings { get; set; }
         public List<Guid> FactoriesOrder { get; set; }
         public List<FactorySettings> FactoriesSettings { get; set; }
+        public List<FileAssociations> FileAssociations { get; set; }
         public Guid LastOpenedDataProvider { get; set; }
         public bool RememberLastOpenedDataProvider { get; set; }
         public bool RememberLastSearches { get; set; }
@@ -103,6 +104,7 @@ namespace Analogy.DataTypes
 
         public UserSettings()
         {
+            FileAssociations = new List<FileAssociations>();
             WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
         }
 

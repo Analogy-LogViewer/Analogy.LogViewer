@@ -76,7 +76,7 @@ namespace Analogy.Forms
                 case ApplicationSettingsSelectionType.RealTimeDataProvidersSettings:
                     return new DataProvidersRealTimeSettingsUC(Settings, FactoriesManager);
                 case ApplicationSettingsSelectionType.FilesAssociationSettings:
-                    return new DataProvidersFileAssociationUC(Settings);
+                    return new DataProvidersFileAssociationUC(Settings, FactoriesManager);
                 case ApplicationSettingsSelectionType.ExternalLocationsSettings:
                     return new DataProvidersExternalLocationsSettingsUC(Settings);
                 case ApplicationSettingsSelectionType.DonationsSettings:

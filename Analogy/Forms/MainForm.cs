@@ -595,7 +595,7 @@ namespace Analogy.Forms
 
         }
 
-        private async Task OpenOfflineLogs(RibbonPage ribbonPage, string[] filenames,
+        private async Task OpenOfflineLogs(RibbonPage? ribbonPage, string[] filenames,
             IAnalogyOfflineDataProvider dataProvider,
             string? title = null)
         {
@@ -665,24 +665,19 @@ namespace Analogy.Forms
                 else
                 {
                     //try  from file association:
-                    var supportedAssociation = Settings.GetFactoriesThatHasFileAssociation(files).ToList();
-                    if (supportedAssociation.Count == 1)
+                    if (Settings.TryGetDataProvidesForFilesAssociations(files,out var associations))
                     {
-                        var factory = supportedAssociation.First();
-                        var parser = FactoriesManager.GetSupportedOfflineDataSourcesFromFactory(factory.FactoryId, files).ToList();
-                        RibbonPage page = Mapping.TryGetValue(factory.FactoryId, out RibbonPage? value)
-                            ? value
-                            : null;
+                        var parser = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
                         if (parser.Count == 1)
                         {
+                            RibbonPage? page = Mapping.TryGetValue(parser.First().Id, out RibbonPage? value)
+                                ? value
+                                : null;
                             await OpenOfflineLogs(page, files, parser.First());
                         }
                         else
                         {
-                            XtraMessageBox.Show(
-                                $@"More than one data provider detected for this file for {factory.FactoryName}." +
-                                Environment.NewLine +
-                                "Please open it directly from the data provider menu", "Unable to open file",
+                            XtraMessageBox.Show($@"More than one data provider detected for this file.{Environment.NewLine}Please open it directly from the data provider menu", "Unable to open file",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                         }

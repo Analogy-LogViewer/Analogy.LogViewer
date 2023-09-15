@@ -98,7 +98,23 @@ namespace Analogy
                 }
             }
         }
-
+        public IEnumerable<IAnalogyOfflineDataProvider> GetOfflineDataSources(Guid factoryId)
+        {
+            var all = BuiltInFactories.ToList();
+            all.AddRange(Factories.ToList());
+            foreach (var factory in all.Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
+            {
+                foreach (var dataProvidersFactory in factory.DataProvidersFactories)
+                {
+                    var supported = dataProvidersFactory.DataProviders.Where(i =>
+                        dataProvidersFactory.FactoryId == factoryId && i is IAnalogyOfflineDataProvider).Cast<IAnalogyOfflineDataProvider>();
+                    foreach (IAnalogyOfflineDataProvider dataSource in supported)
+                    {
+                        yield return dataSource;
+                    }
+                }
+            }
+        }
         public IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId,
             string[] fileNames)
         {
@@ -569,6 +585,24 @@ namespace Analogy
 
             }
             //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
+        }
+        public IEnumerable<IAnalogyOfflineDataProvider> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
+        {
+            foreach (var fc in Factories)
+            {
+                foreach (var dpf in fc.DataProvidersFactories)
+                {
+                    IEnumerable<IAnalogyOfflineDataProvider> supported =
+                        dpf.DataProviders.Where(d => d is IAnalogyOfflineDataProvider).Cast<IAnalogyOfflineDataProvider>();
+                    foreach (var analogyDataSource in supported)
+                    {
+                        if (dataProviders.Any(dp => dp == analogyDataSource.Id))
+                        {
+                            yield return analogyDataSource;
+                        }
+                    }
+                }
+            }
         }
     }
 }

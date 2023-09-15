@@ -321,23 +321,17 @@ namespace Analogy
                 else
                 {
                     //try  from file association:
-                    var supportedAssociation = Settings.GetFactoriesThatHasFileAssociation(files).ToList();
-                    if (supportedAssociation.Count == 1)
+                    if (Settings.TryGetDataProvidesForFilesAssociations(files, out var associations))
                     {
-                        var factory = supportedAssociation.First();
-                        var parser = FactoriesManager
-                            .GetSupportedOfflineDataSourcesFromFactory(factory.FactoryId, files).ToList();
+                        var parser = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
                         if (parser.Count == 1)
                         {
-                            LoadFactoryInAccordion(factory.FactoryId);
+                            LoadFactoryInAccordion(parser.First().Id);
                             await OpenOfflineLogs(files, parser.First());
                         }
                         else
                         {
-                            XtraMessageBox.Show(
-                                $@"More than one data provider detected for this file for {factory.FactoryName}." +
-                                Environment.NewLine +
-                                "Please open it directly from the data provider menu", "Unable to open file",
+                            XtraMessageBox.Show($@"More than one data provider detected for this file{Environment.NewLine}Please open it directly from the data provider menu", "Unable to open file",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                         }

@@ -66,7 +66,7 @@ namespace Analogy
 
         private static Regex HasQuestionMarkRegEx = new Regex(@"\?", RegexOptions.Compiled);
         private static Regex IllegalCharactersRegex = new Regex("[" + @"\/:<>|" + "\"]", RegexOptions.Compiled);
-        private static Regex CatchExtentionRegex = new Regex(@"^\s*.+\.([^\.]+)\s*$", RegexOptions.Compiled);
+        private static Regex CatchExtensionRegex = new Regex(@"^\s*.+\.([^\.]+)\s*$", RegexOptions.Compiled);
         private static string NonDotCharacters = @"[^.]*";
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
@@ -186,7 +186,8 @@ namespace Analogy
             Regex reg = Convert(pattern);
             return files.All(f => reg.IsMatch(f));
         }
-        public static Regex Convert(string pattern)
+
+        private static Regex Convert(string pattern)
         {
             if (pattern == null)
             {
@@ -201,7 +202,7 @@ namespace Analogy
             {
                 throw new ArgumentException("Pattern contains illegal characters.");
             }
-            bool hasExtension = CatchExtentionRegex.IsMatch(pattern);
+            bool hasExtension = CatchExtensionRegex.IsMatch(pattern);
             bool matchExact = false;
             if (HasQuestionMarkRegEx.IsMatch(pattern))
             {
@@ -209,7 +210,7 @@ namespace Analogy
             }
             else if (hasExtension)
             {
-                matchExact = CatchExtentionRegex.Match(pattern).Groups[1].Length != 3;
+                matchExact = CatchExtensionRegex.Match(pattern).Groups[1].Length != 3;
             }
             string regexString = Regex.Escape(pattern);
             regexString = "^" + Regex.Replace(regexString, @"\\\*", ".*");

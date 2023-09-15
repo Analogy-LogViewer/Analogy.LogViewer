@@ -1078,5 +1078,17 @@ namespace Analogy.Properties {
                 this["SupportLinuxFormatting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FileAssociations {
+            get {
+                return ((string)(this["FileAssociations"]));
+            }
+            set {
+                this["FileAssociations"] = value;
+            }
+        }
     }
 }

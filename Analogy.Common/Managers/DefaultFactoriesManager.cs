@@ -34,6 +34,11 @@ namespace Analogy.Common.Managers
             return new List<IAnalogyOfflineDataProvider>(0);
         }
 
+        public IEnumerable<IAnalogyOfflineDataProvider> GetOfflineDataSources(Guid factoryId)
+        {
+            return new List<IAnalogyOfflineDataProvider>(0);
+        }
+
         public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
         {
             return new List<(string Name, Guid ID, Image Image, string Description, Assembly assembly)>(0);
@@ -106,6 +111,11 @@ namespace Analogy.Common.Managers
         public  Task InitializeIfNeeded(IAnalogyDataProvider dataProvider)
         {
             return Task.CompletedTask;
+        }
+
+        public IEnumerable<IAnalogyOfflineDataProvider> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
+        {
+            return Enumerable.Empty<IAnalogyOfflineDataProvider>();
         }
     }
 }

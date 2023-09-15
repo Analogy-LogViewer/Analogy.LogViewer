@@ -34,6 +34,7 @@ namespace Analogy.Interfaces
         List<Guid> AutoStartDataProviders { get; set; }
         List<Guid> FactoriesOrder { get; set; }
         List<FactorySettings> FactoriesSettings { get; set; }
+        List<FileAssociations> FileAssociations { get; set; }
         Guid LastOpenedDataProvider { get; set; }
         bool RememberLastOpenedDataProvider { get; set; }
         int NumberOfLastSearches { get; set; }
@@ -66,11 +67,13 @@ namespace Analogy.Interfaces
         FactorySettings GetFactorySetting(Guid factoryID);
         FactorySettings GetOrAddFactorySetting(IAnalogyFactory factory);
         void UpdateOrder(List<Guid> order);
-        IEnumerable<FactorySettings> GetFactoriesThatHasFileAssociation(string[] files);
         Image GetImage();
         void UpdateRunningTime();
 
 
         void LoadSettings(IAnalogyUserSettings newSettings);
+        bool TryGetFileAssociations(Guid offlineProviderId, out IEnumerable<string> associations);
+        void UpdateFileAssociations(Guid offlineProviderId, List<string> associations);
+        bool TryGetDataProvidesForFilesAssociations(string[] files, out IEnumerable<Guid> dataProviders);
     }
 }
