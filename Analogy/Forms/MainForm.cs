@@ -668,13 +668,19 @@ namespace Analogy.Forms
                     var associations = Settings.GetDataProvidesForFilesAssociations(files);
                     if (associations.Any())
                     {
-                        var parser = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
-                        if (parser.Count == 1)
+                        var parsers = FactoriesManager.GetAllOfflineDataSources(associations).ToList();
+                        if (parsers.Count == 1)
                         {
-                            RibbonPage? page = Mapping.TryGetValue(parser.First().Id, out RibbonPage? value)
+                            var parser = parsers.First();
+                            var fc = FactoriesManager.GetFactoryContainer(parser.Id);
+                            RibbonPage? page = Mapping.TryGetValue(fc.Factory.FactoryId, out RibbonPage? value)
                                 ? value
                                 : null;
-                            await OpenOfflineLogs(page, files, parser.First());
+                            if (page is not null)
+                            {
+                                ribbonControlMain.SelectPage(page);
+                            }
+                            await OpenOfflineLogs(page, files, parser);
                         }
                         else
                         {
