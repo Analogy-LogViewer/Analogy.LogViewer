@@ -676,6 +676,7 @@ namespace Analogy.Forms
                             RibbonPage? page = null;
                             if (fc.Any())
                             {
+                                Settings.LastOpenedDataProvider = fc.First().Factory.FactoryId;
                                 page = Mapping.TryGetValue(fc.First().Factory.FactoryId, out RibbonPage? value)
                                     ? value
                                     : null;
