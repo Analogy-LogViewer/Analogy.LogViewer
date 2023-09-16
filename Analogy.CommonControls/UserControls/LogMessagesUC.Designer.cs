@@ -697,7 +697,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnProcessID.Caption = "Process ID";
-            this.gridColumnProcessID.FieldName = "ColumnProcessId";
+            this.gridColumnProcessID.FieldName = "ProcessId";
             this.gridColumnProcessID.MinWidth = 24;
             this.gridColumnProcessID.Name = "gridColumnProcessID";
             this.gridColumnProcessID.OptionsColumn.AllowEdit = false;
@@ -2800,7 +2800,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnBookmarkProcessID.Caption = "Process ID";
-            this.gridColumnBookmarkProcessID.FieldName = "ColumnProcessId";
+            this.gridColumnBookmarkProcessID.FieldName = "ProcessId";
             this.gridColumnBookmarkProcessID.MinWidth = 24;
             this.gridColumnBookmarkProcessID.Name = "gridColumnBookmarkProcessID";
             this.gridColumnBookmarkProcessID.OptionsColumn.AllowEdit = false;
