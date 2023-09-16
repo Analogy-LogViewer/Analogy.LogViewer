@@ -696,7 +696,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnProcessID.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnProcessID.Caption = "ColumnProcessId";
+            this.gridColumnProcessID.Caption = "Process ID";
             this.gridColumnProcessID.FieldName = "ColumnProcessId";
             this.gridColumnProcessID.MinWidth = 24;
             this.gridColumnProcessID.Name = "gridColumnProcessID";
