@@ -943,8 +943,8 @@ namespace Analogy.CommonControls.UserControls
             #endregion
             ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
-            clbInclude.ItemCheck += async (_, __) => await FilterHasChanged();
-            clbExclude.ItemCheck += async (_, __) => await FilterHasChanged();
+            clbInclude.ItemCheck += async (_, _) => await FilterHasChanged();
+            clbExclude.ItemCheck += async (_, _) => await FilterHasChanged();
             deNewerThanFilter.EditValueChanged += async (s, e) =>
             {
                 ceNewerThanFilter.Checked = true;
@@ -974,9 +974,9 @@ namespace Analogy.CommonControls.UserControls
             ceSources.Click += async (s, e) => await FilterHasChanged();
             ceIncludeText.CheckedChanged += async (s, e) =>
             {
+                Settings.IncludeText = ceIncludeText.Checked ? txtbInclude.Text : "";
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
-                    // LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
                 }
 
@@ -984,9 +984,10 @@ namespace Analogy.CommonControls.UserControls
             };
             ceExcludeText.CheckedChanged += async (s, e) =>
             {
+                Settings.ExcludeText = ceExcludeText.Checked ? txtbExclude.Text : "";
+
                 if (!ceIncludeText.Checked && !ceExcludeText.Checked)
                 {
-                    //LogGrid.ClearColumnsFilter();
                     gridColumnText.FilterInfo = null;
                 }
 
