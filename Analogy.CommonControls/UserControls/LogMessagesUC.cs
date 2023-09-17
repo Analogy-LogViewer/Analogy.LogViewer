@@ -400,13 +400,13 @@ namespace Analogy.CommonControls.UserControls
                     Settings.ModuleText = string.Empty;
                 }
                 string? includeText = string.IsNullOrEmpty(Settings.IncludeText) || Settings.IncludeText == txtbInclude.Properties.NullText ? null : Settings.IncludeText;
-                txtbInclude.Text = includeText;
+                SetTextIfDifferent(txtbInclude, includeText);
                 string? excludeText = string.IsNullOrEmpty(Settings.ExcludeText) || Settings.ExcludeText == txtbExclude.Properties.NullText ? null : Settings.ExcludeText;
-                txtbExclude.Text = excludeText;
+                SetTextIfDifferent(txtbExclude, excludeText);
                 string? source = string.IsNullOrEmpty(Settings.SourceText) || Settings.SourceText == txtbSource.Properties.NullText ? null : Settings.SourceText;
-                txtbSource.Text = source;
+                SetTextIfDifferent(txtbSource, source);
                 string? module = string.IsNullOrEmpty(Settings.ModuleText) || Settings.ModuleText == txtbModule.Properties.NullText ? null : Settings.ModuleText;
-                txtbModule.Text = module;
+                SetTextIfDifferent(txtbModule, module);
 
                 if (!string.IsNullOrEmpty(includeText) || !string.IsNullOrEmpty(excludeText) ||
                     !string.IsNullOrEmpty(source) || !string.IsNullOrEmpty(module))
@@ -419,7 +419,11 @@ namespace Analogy.CommonControls.UserControls
                     {
                         if (arg.ButtonName == btn1.Name)
                         {
-                            txtbInclude.Text = txtbExclude.Text = txtbSource.Text = txtbModule.Text = null;
+                            string? text = null;
+                            SetTextIfDifferent(txtbInclude, text);
+                            SetTextIfDifferent(txtbExclude, text);
+                            SetTextIfDifferent(txtbSource, text);
+                            SetTextIfDifferent(txtbModule, text);
                             ceIncludeText.Checked = ceExcludeText.Checked =
                                 ceModulesProcess.Checked = ceSources.Checked = false;
                         }
@@ -435,6 +439,13 @@ namespace Analogy.CommonControls.UserControls
             LogGrid.Columns[DataGridDateColumnName].SortOrder = Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
         }
 
+        private void SetTextIfDifferent(TextEdit control, string? text)
+        {
+            if (!control.Text.Equals(text))
+            {
+                control.Text = text;
+            }
+        }
         private void HideColumns()
         {
             //first restore all
@@ -781,9 +792,11 @@ namespace Analogy.CommonControls.UserControls
                 {
                     return;
                 }
+                Settings.IncludeText = txtbInclude.Text;
+                //Settings.IncludeText = Settings.SaveSearchFilters && txtbInclude.EditValue != null ? txtbInclude.EditValue.ToString() : string.Empty;
+                //Settings.ExcludeText = Settings.SaveSearchFilters && txtbExclude.EditValue != null ? txtbExclude.EditValue.ToString() : string.Empty;
 
                 OldTextInclude = txtbInclude.Text;
-                // txtbHighlight.Text = txtbInclude.Text;
                 if (string.IsNullOrEmpty(txtbInclude.Text))
                 {
                     ceIncludeText.Checked = false;
@@ -1698,7 +1711,8 @@ namespace Analogy.CommonControls.UserControls
             {
                 string include = ef.MessageText;
 
-                txtbInclude.Text = txtbInclude.Text == txtbInclude.Properties.NullText ? include : txtbInclude.Text + "|" + include;
+                var text = txtbInclude.Text == txtbInclude.Properties.NullText ? include : txtbInclude.Text + "|" + include;
+                SetTextIfDifferent(txtbInclude, text);
                 ceIncludeText.Checked = true;
                 await FilterHasChanged();
             }
@@ -2140,22 +2154,22 @@ namespace Analogy.CommonControls.UserControls
         {
             if (txtbInclude.Text == txtbInclude.Properties.NullText)
             {
-                txtbInclude.Text = null;
+                SetTextIfDifferent(txtbInclude, null);
             }
 
             if (txtbExclude.Text == txtbExclude.Properties.NullText)
             {
-                txtbExclude.Text = null;
+                SetTextIfDifferent(txtbExclude, null);
             }
 
             if (txtbSource.Text == txtbSource.Properties.NullText)
             {
-                txtbSource.Text = null;
+                SetTextIfDifferent(txtbSource, null);
             }
 
             if (txtbModule.Text == txtbModule.Properties.NullText)
             {
-                txtbModule.Text = null;
+                SetTextIfDifferent(txtbModule, null);
             }
 
             string include = txtbInclude.EditValue == null ? string.Empty : txtbInclude.EditValue.ToString().Trim();
@@ -2178,9 +2192,6 @@ namespace Analogy.CommonControls.UserControls
             _filterCriteria.TextExclude = ceExcludeText.Checked
                 ? (txtbExclude.EditValue == null ? string.Empty : txtbExclude.EditValue.ToString().Trim()) + string.Join("|", _excludeMostCommon)
                 : string.Empty;
-
-            Settings.IncludeText = Settings.SaveSearchFilters && txtbInclude.EditValue != null ? txtbInclude.EditValue.ToString() : string.Empty;
-            Settings.ExcludeText = Settings.SaveSearchFilters && txtbExclude.EditValue != null ? txtbExclude.EditValue.ToString() : string.Empty;
 
             _filterCriteria.Levels = null;
             switch (LogLevelSelectionType)
@@ -3593,23 +3604,24 @@ namespace Analogy.CommonControls.UserControls
 
         private void sbtnTextInclude_Click(object sender, EventArgs e)
         {
-            txtbInclude.Text = "";
+            SetTextIfDifferent(txtbInclude, "");
         }
 
         private void sbtnTextExclude_Click(object sender, EventArgs e)
         {
-            txtbExclude.Text = "";
+            SetTextIfDifferent(txtbExclude, "");
+
         }
 
         private void sbtnIncludeSources_Click(object sender, EventArgs e)
         {
-            txtbSource.Text = "";
+            SetTextIfDifferent(txtbSource, "");
         }
 
 
         private void sbtnIncludeModules_Click(object sender, EventArgs e)
         {
-            txtbModule.Text = "";
+            SetTextIfDifferent(txtbModule, "");
         }
 
         private void tsmiDateFilterNewer_Click(object sender, EventArgs e)
@@ -3662,10 +3674,10 @@ namespace Analogy.CommonControls.UserControls
                 BarButtonItem item = new BarButtonItem(barManager1, filter.ToString());
                 item.ItemClick += (s, arg) =>
                 {
-                    txtbInclude.Text = filter.IncludeText;
-                    txtbExclude.Text = filter.ExcludeText;
-                    txtbSource.Text = filter.Sources;
-                    txtbModule.Text = filter.Modules;
+                    SetTextIfDifferent(txtbInclude, filter.IncludeText);
+                    SetTextIfDifferent(txtbExclude, filter.ExcludeText);
+                    SetTextIfDifferent(txtbSource, filter.Sources);
+                    SetTextIfDifferent(txtbModule, filter.Modules);
                 };
                 item.SuperTip = Utils.GetSuperTip(filter.Name, filter.NiceText());
                 filtersPopupMenu.ItemLinks.Add(item);
