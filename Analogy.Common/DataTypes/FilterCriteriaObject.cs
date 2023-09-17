@@ -25,7 +25,7 @@ namespace Analogy.Common.DataTypes
         public DateTime EndTime { get; set; }
 
         private AnalogyLogLevel[] _arrLevels;
-        public AnalogyLogLevel[] Levels
+        public AnalogyLogLevel[]? Levels
         {
             get => _arrLevels;
             set => _arrLevels = value;
@@ -249,9 +249,10 @@ namespace Analogy.Common.DataTypes
 
             if (SearchEveryWhere)
             {
-                var entries = Columns.Select(c =>
-                    string.Join(orOperationInInclude ? " Or " : " and ",
-                        GenerateSingleCombinationPerColumn(c.Field, c.Numerical)));
+                var allValidCombinations =
+                    Columns.Select(c => GenerateSingleCombinationPerColumn(c.Field, c.Numerical).ToList());
+                var entries = allValidCombinations.Where(c=>c.Any()).Select(c =>
+                    string.Join(orOperationInInclude ? " Or " : " and ", c));
                 var combined = string.Join(" Or ", entries);
                 return combined;
             }

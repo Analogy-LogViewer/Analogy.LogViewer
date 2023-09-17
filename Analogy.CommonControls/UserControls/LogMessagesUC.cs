@@ -2153,26 +2153,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void FilterResults()
         {
-            if (txtbInclude.Text == txtbInclude.Properties.NullText)
-            {
-                SetTextIfDifferent(txtbInclude, null);
-            }
-
-            if (txtbExclude.Text == txtbExclude.Properties.NullText)
-            {
-                SetTextIfDifferent(txtbExclude, null);
-            }
-
-            if (txtbSource.Text == txtbSource.Properties.NullText)
-            {
-                SetTextIfDifferent(txtbSource, null);
-            }
-
-            if (txtbModule.Text == txtbModule.Properties.NullText)
-            {
-                SetTextIfDifferent(txtbModule, null);
-            }
-
             string include = txtbInclude.EditValue == null ? string.Empty : txtbInclude.EditValue.ToString().Trim();
             string exclude = txtbExclude.EditValue == null ? string.Empty : txtbExclude.EditValue.ToString().Trim();
             if (!autoCompleteInclude.Contains(include))
@@ -2189,10 +2169,8 @@ namespace Analogy.CommonControls.UserControls
             Settings.AddNewSearchesEntryToLists(exclude, false);
             _filterCriteria.StartTime = ceNewerThanFilter.Checked ? deNewerThanFilter.DateTime : DateTime.MinValue;
             _filterCriteria.EndTime = ceOlderThanFilter.Checked ? deOlderThanFilter.DateTime : DateTime.MaxValue;
-            _filterCriteria.TextInclude = ceIncludeText.Checked ? (txtbInclude.EditValue == null ? string.Empty : txtbInclude.EditValue.ToString().Trim()) : string.Empty;
-            _filterCriteria.TextExclude = ceExcludeText.Checked
-                ? (txtbExclude.EditValue == null ? string.Empty : txtbExclude.EditValue.ToString().Trim()) + string.Join("|", _excludeMostCommon)
-                : string.Empty;
+            _filterCriteria.TextInclude = ceIncludeText.Checked ? include : string.Empty;
+            _filterCriteria.TextExclude = ceExcludeText.Checked ? exclude + string.Join("|", _excludeMostCommon) : string.Empty;
 
             _filterCriteria.Levels = null;
             switch (LogLevelSelectionType)
