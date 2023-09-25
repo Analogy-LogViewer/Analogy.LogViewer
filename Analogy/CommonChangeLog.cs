@@ -8,9 +8,10 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {
-                new ("V5.1.0.- Add collapsible folder section #1850",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,25),"5.1.0.0"),
-                new ("V5.1.0.- Refactor file association to use data provider and not data factory #1843",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,15),"5.1.0.0"),
+            {                
+                new ("V5.1.0 - Add View Raw data to the message information panel #1849",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,25),"5.1.0.0"),
+                new ("V5.1.0 - Add collapsible folder section #1850",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,25),"5.1.0.0"),
+                new ("V5.1.0 - Refactor file association to use data provider and not data factory #1843",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,15),"5.1.0.0"),
                 new ("V5.0.0 - Exception in LogMessagesUC's LogGrid_CustomSummaryCalculate during/after Time Difference calculation #1839", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),
                 new ("V5.0.0 - Multiple LoadJson calls #1831", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),
                 new ("V5.0.0 - Disable Updates If Running from Program Data Folder #1841", AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),

@@ -666,7 +666,8 @@ namespace Analogy.CommonControls.UserControls
                         case AnalogyRowTextType.XML:
                         case AnalogyRowTextType.HTML:
                         case AnalogyRowTextType.Markdown:
-
+                            FormMessageDetails details = new(m, Messages, "", Settings);
+                            details.Show(this);
                             break;
                         case AnalogyRowTextType.JSON:
                             var viewer = new JsonViewerForm(m, Settings);
@@ -2482,7 +2483,8 @@ namespace Analogy.CommonControls.UserControls
                 case AnalogyRowTextType.XML:
                 case AnalogyRowTextType.HTML:
                 case AnalogyRowTextType.Markdown:
-                    bbtnRawMessageViewer.Visibility = BarItemVisibility.Never;
+                    bbtnRawMessageViewer.Visibility = string.IsNullOrEmpty(m.RawText) ? BarItemVisibility.Never : BarItemVisibility.Always;
+                    bbtnRawMessageViewer.Caption = "View Raw Data";
                     break;
                 case AnalogyRowTextType.JSON:
                     bbtnRawMessageViewer.Visibility = BarItemVisibility.Always;
