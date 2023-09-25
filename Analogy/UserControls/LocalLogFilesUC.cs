@@ -94,6 +94,7 @@ namespace Analogy.UserControls
             ucLogs1.CollapseFileAndFolderPanel += (s, collapsed) =>
             {
                 spltMain.CollapsePanel = collapsed ? SplitCollapsePanel.Panel1 : SplitCollapsePanel.None;
+                spltMain.PanelVisibility = collapsed ? SplitPanelVisibility.Panel2 : SplitPanelVisibility.Both;
             };
         }
         private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)

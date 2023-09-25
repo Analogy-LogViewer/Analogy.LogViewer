@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V5.1.0.- Add collapsible folder section #1850",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,25),"5.1.0.0"),
                 new ("V5.1.0.- Refactor file association to use data provider and not data factory #1843",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,15),"5.1.0.0"),
                 new ("V5.0.0 - Exception in LogMessagesUC's LogGrid_CustomSummaryCalculate during/after Time Difference calculation #1839", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),
                 new ("V5.0.0 - Multiple LoadJson calls #1831", AnalogChangeLogType.Bug,"Lior Banai",new DateTime(2023,09,05),"5.0.0.0"),

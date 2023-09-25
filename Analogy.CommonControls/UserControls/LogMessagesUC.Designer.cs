@@ -45,31 +45,33 @@ namespace Analogy.CommonControls.UserControls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMessagesUC));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentMessages = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
@@ -95,6 +97,7 @@ namespace Analogy.CommonControls.UserControls
             this.chkbHighlight = new DevExpress.XtraEditors.CheckEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barTopFiltering = new DevExpress.XtraBars.Bar();
+            this.bbiCollapseFolderPanel = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnClearLog = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnRemoveBoomark = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnReload = new DevExpress.XtraBars.BarButtonItem();
@@ -275,6 +278,8 @@ namespace Analogy.CommonControls.UserControls
             this.clbInclude = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.xtpFiltersExclude = new DevExpress.XtraTab.XtraTabPage();
             this.clbExclude = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.xtpServerSide = new DevExpress.XtraTab.XtraTabPage();
+            this.sbtnServerSide = new DevExpress.XtraEditors.SimpleButton();
             this.pnlLevel = new DevExpress.XtraEditors.PanelControl();
             this.pnlLevelFilteringType = new DevExpress.XtraEditors.PanelControl();
             this.ceLogLevelOr = new DevExpress.XtraEditors.CheckEdit();
@@ -306,8 +311,6 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.xtpServerSide = new DevExpress.XtraTab.XtraTabPage();
-            this.sbtnServerSide = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -319,11 +322,11 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deOlderThanFilter.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceOlderThanFilter.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deNewerThanFilter.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNewerThanFilter.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deNewerThanFilter.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceNewerThanFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceModulesProcess.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbModule.Properties)).BeginInit();
@@ -386,6 +389,7 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).BeginInit();
             this.xtpFiltersExclude.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).BeginInit();
+            this.xtpServerSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlLevel)).BeginInit();
             this.pnlLevel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlLevelFilteringType)).BeginInit();
@@ -421,7 +425,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).BeginInit();
             this.dockPanelTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).BeginInit();
-            this.xtpServerSide.SuspendLayout();
             this.SuspendLayout();
             // 
             // documentGroup1
@@ -881,8 +884,9 @@ namespace Analogy.CommonControls.UserControls
             this.btsiInlineJsonViewer,
             this.bsiProgress,
             this.bbiJsonColumn,
-            this.bbiExportToSimpleList});
-            this.barManager1.MaxItemId = 94;
+            this.bbiExportToSimpleList,
+            this.bbiCollapseFolderPanel});
+            this.barManager1.MaxItemId = 95;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -897,6 +901,7 @@ namespace Analogy.CommonControls.UserControls
             this.barTopFiltering.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.barTopFiltering.FloatLocation = new System.Drawing.Point(104, 140);
             this.barTopFiltering.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiCollapseFolderPanel),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemoveBoomark),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnReload),
@@ -916,6 +921,16 @@ namespace Analogy.CommonControls.UserControls
             this.barTopFiltering.OptionsBar.DisableCustomization = true;
             this.barTopFiltering.OptionsBar.UseWholeRow = true;
             this.barTopFiltering.Text = "Operations";
+            // 
+            // bbiCollapseFolderPanel
+            // 
+            this.bbiCollapseFolderPanel.Id = 94;
+            this.bbiCollapseFolderPanel.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Stretch_16x16;
+            this.bbiCollapseFolderPanel.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Stretch_32x32;
+            this.bbiCollapseFolderPanel.Name = "bbiCollapseFolderPanel";
+            toolTipItem1.Text = "Toggle collapse of Folder and files panel";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.bbiCollapseFolderPanel.SuperTip = superToolTip1;
             // 
             // bBtnClearLog
             // 
@@ -986,9 +1001,9 @@ namespace Analogy.CommonControls.UserControls
             this.bbiJsonColumn.Id = 92;
             this.bbiJsonColumn.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.json16x16;
             this.bbiJsonColumn.Name = "bbiJsonColumn";
-            toolTipItem1.Text = "Choose which column will be used for the Json inline parsing";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.bbiJsonColumn.SuperTip = superToolTip1;
+            toolTipItem2.Text = "Choose which column will be used for the Json inline parsing";
+            superToolTip2.Items.Add(toolTipItem2);
+            this.bbiJsonColumn.SuperTip = superToolTip2;
             // 
             // bbiGoToActiveMessage
             // 
@@ -1882,12 +1897,12 @@ namespace Analogy.CommonControls.UserControls
             this.ceModulesProcess.Size = new System.Drawing.Size(245, 24);
             this.ceModulesProcess.StyleController = this.layoutControl1;
             toolTipTitleItem1.Text = "Process / Module Property Filtering (include and exclude)";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            superToolTip2.Items.Add(toolTipTitleItem1);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.ceModulesProcess.SuperTip = superToolTip2;
+            superToolTip3.Items.Add(toolTipTitleItem1);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.ceModulesProcess.SuperTip = superToolTip3;
             this.ceModulesProcess.TabIndex = 27;
             this.ceModulesProcess.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1923,12 +1938,12 @@ namespace Analogy.CommonControls.UserControls
             this.ceSources.Size = new System.Drawing.Size(182, 24);
             this.ceSources.StyleController = this.layoutControl1;
             toolTipTitleItem2.Text = "Source Propery Filtering (include and exclude)";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Use , to separate values. to exclude source prefix it with -. e.g: includeA, incl" +
     "udeB, -ExcludeC, -ExcludeD";
-            superToolTip3.Items.Add(toolTipTitleItem2);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.ceSources.SuperTip = superToolTip3;
+            superToolTip4.Items.Add(toolTipTitleItem2);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.ceSources.SuperTip = superToolTip4;
             this.ceSources.TabIndex = 26;
             this.ceSources.ToolTip = "Use , to separate values. to exclude source or module prefix it with -";
             // 
@@ -1988,11 +2003,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceExcludeText.Size = new System.Drawing.Size(105, 24);
             this.ceExcludeText.StyleController = this.layoutControl1;
             toolTipTitleItem3.Text = "Text Property Filtering (exclude)";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip4.Items.Add(toolTipTitleItem3);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.ceExcludeText.SuperTip = superToolTip4;
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip5.Items.Add(toolTipTitleItem3);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.ceExcludeText.SuperTip = superToolTip5;
             this.ceExcludeText.TabIndex = 23;
             // 
             // sbtnPreDefinedFilters
@@ -2039,11 +2054,11 @@ namespace Analogy.CommonControls.UserControls
             this.ceIncludeText.Size = new System.Drawing.Size(103, 24);
             this.ceIncludeText.StyleController = this.layoutControl1;
             toolTipTitleItem4.Text = "Text Property Filtering";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Use (&& or +) for AND operations. Use | for OR operations";
-            superToolTip5.Items.Add(toolTipTitleItem4);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.ceIncludeText.SuperTip = superToolTip5;
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "Use (&& or +) for AND operations. Use | for OR operations";
+            superToolTip6.Items.Add(toolTipTitleItem4);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.ceIncludeText.SuperTip = superToolTip6;
             this.ceIncludeText.TabIndex = 22;
             this.ceIncludeText.ToolTip = "Use & or + for AND operations. Use | for OR operations";
             this.ceIncludeText.ToolTipController = this.defaultToolTipController;
@@ -2848,10 +2863,10 @@ namespace Analogy.CommonControls.UserControls
             this.ceFilterPanelFilter.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelFilter.Size = new System.Drawing.Size(184, 24);
             toolTipTitleItem6.Text = "AND Log Level Filtering";
-            toolTipItem7.LeftIndent = 6;
-            superToolTip7.Items.Add(toolTipTitleItem6);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.ceFilterPanelFilter.SuperTip = superToolTip7;
+            toolTipItem8.LeftIndent = 6;
+            superToolTip8.Items.Add(toolTipTitleItem6);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.ceFilterPanelFilter.SuperTip = superToolTip8;
             this.ceFilterPanelFilter.TabIndex = 30;
             this.ceFilterPanelFilter.TabStop = false;
             // 
@@ -2866,10 +2881,10 @@ namespace Analogy.CommonControls.UserControls
             this.ceFilterPanelSearch.Properties.RadioGroupIndex = 1;
             this.ceFilterPanelSearch.Size = new System.Drawing.Size(184, 24);
             toolTipTitleItem5.Text = "AND Log Level Filtering";
-            toolTipItem6.LeftIndent = 6;
-            superToolTip6.Items.Add(toolTipTitleItem5);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.ceFilterPanelSearch.SuperTip = superToolTip6;
+            toolTipItem7.LeftIndent = 6;
+            superToolTip7.Items.Add(toolTipTitleItem5);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.ceFilterPanelSearch.SuperTip = superToolTip7;
             this.ceFilterPanelSearch.TabIndex = 29;
             // 
             // labelControl1
@@ -2930,7 +2945,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.xtpFiltersExclude.Controls.Add(this.clbExclude);
             this.xtpFiltersExclude.Name = "xtpFiltersExclude";
-            this.xtpFiltersExclude.Size = new System.Drawing.Size(204, 142);
+            this.xtpFiltersExclude.Size = new System.Drawing.Size(272, 142);
             this.xtpFiltersExclude.Text = "Excludes";
             // 
             // clbExclude
@@ -2939,8 +2954,23 @@ namespace Analogy.CommonControls.UserControls
             this.clbExclude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbExclude.Location = new System.Drawing.Point(0, 0);
             this.clbExclude.Name = "clbExclude";
-            this.clbExclude.Size = new System.Drawing.Size(204, 142);
+            this.clbExclude.Size = new System.Drawing.Size(272, 142);
             this.clbExclude.TabIndex = 22;
+            // 
+            // xtpServerSide
+            // 
+            this.xtpServerSide.Controls.Add(this.sbtnServerSide);
+            this.xtpServerSide.Name = "xtpServerSide";
+            this.xtpServerSide.Size = new System.Drawing.Size(272, 142);
+            this.xtpServerSide.Text = "Server Side Data";
+            // 
+            // sbtnServerSide
+            // 
+            this.sbtnServerSide.Location = new System.Drawing.Point(27, 10);
+            this.sbtnServerSide.Name = "sbtnServerSide";
+            this.sbtnServerSide.Size = new System.Drawing.Size(218, 34);
+            this.sbtnServerSide.TabIndex = 1;
+            this.sbtnServerSide.Text = "Fetch Data From Server";
             // 
             // pnlLevel
             // 
@@ -2973,12 +3003,12 @@ namespace Analogy.CommonControls.UserControls
             this.ceLogLevelOr.Properties.RadioGroupIndex = 5;
             this.ceLogLevelOr.Size = new System.Drawing.Size(66, 22);
             toolTipTitleItem7.Text = "Or Log level Filtering";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "The OR type allows to always show some log levels regardless the current filters." +
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "The OR type allows to always show some log levels regardless the current filters." +
     " This is usefull when you want to see some log level alongs with other filters";
-            superToolTip8.Items.Add(toolTipTitleItem7);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.ceLogLevelOr.SuperTip = superToolTip8;
+            superToolTip9.Items.Add(toolTipTitleItem7);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.ceLogLevelOr.SuperTip = superToolTip9;
             this.ceLogLevelOr.TabIndex = 1;
             this.ceLogLevelOr.TabStop = false;
             // 
@@ -2994,10 +3024,10 @@ namespace Analogy.CommonControls.UserControls
             this.ceLogLevelAnd.Properties.RadioGroupIndex = 5;
             this.ceLogLevelAnd.Size = new System.Drawing.Size(61, 22);
             toolTipTitleItem8.Text = "AND Log Level Filtering";
-            toolTipItem9.LeftIndent = 6;
-            superToolTip9.Items.Add(toolTipTitleItem8);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.ceLogLevelAnd.SuperTip = superToolTip9;
+            toolTipItem10.LeftIndent = 6;
+            superToolTip10.Items.Add(toolTipTitleItem8);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.ceLogLevelAnd.SuperTip = superToolTip10;
             this.ceLogLevelAnd.TabIndex = 0;
             // 
             // LogGridPopupMenu
@@ -3240,7 +3270,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtraTabPage2.Controls.Add(this.ceFilterPanelSearch);
             this.xtraTabPage2.Controls.Add(this.ceFilterPanelFilter);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1496, 142);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1428, 142);
             this.xtraTabPage2.Text = "Grid Pane";
             // 
             // xtpSQLraw
@@ -3248,7 +3278,7 @@ namespace Analogy.CommonControls.UserControls
             this.xtpSQLraw.Controls.Add(this.sbtnRawFilter);
             this.xtpSQLraw.Controls.Add(this.meRawSQL);
             this.xtpSQLraw.Name = "xtpSQLraw";
-            this.xtpSQLraw.Size = new System.Drawing.Size(1496, 142);
+            this.xtpSQLraw.Size = new System.Drawing.Size(1428, 142);
             this.xtpSQLraw.Text = "Raw SQL Filtering";
             // 
             // sbtnRawFilter
@@ -3295,21 +3325,6 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
-            // 
-            // xtpServerSide
-            // 
-            this.xtpServerSide.Controls.Add(this.sbtnServerSide);
-            this.xtpServerSide.Name = "xtpServerSide";
-            this.xtpServerSide.Size = new System.Drawing.Size(272, 142);
-            this.xtpServerSide.Text = "Server Side Data";
-            // 
-            // sbtnServerSide
-            // 
-            this.sbtnServerSide.Location = new System.Drawing.Point(27, 10);
-            this.sbtnServerSide.Name = "sbtnServerSide";
-            this.sbtnServerSide.Size = new System.Drawing.Size(218, 34);
-            this.sbtnServerSide.TabIndex = 1;
-            this.sbtnServerSide.Text = "Fetch Data From Server";
             // 
             // LogMessagesUC
             // 
@@ -3406,6 +3421,7 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.clbInclude)).EndInit();
             this.xtpFiltersExclude.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.clbExclude)).EndInit();
+            this.xtpServerSide.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlLevel)).EndInit();
             this.pnlLevel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlLevelFilteringType)).EndInit();
@@ -3445,7 +3461,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.meRawSQL.Properties)).EndInit();
             this.dockPanelTree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.filtersPopupMenu)).EndInit();
-            this.xtpServerSide.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3690,5 +3705,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarButtonItem bbiExportToSimpleList;
         private DevExpress.XtraTab.XtraTabPage xtpServerSide;
         private DevExpress.XtraEditors.SimpleButton sbtnServerSide;
+        private DevExpress.XtraBars.BarButtonItem bbiCollapseFolderPanel;
     }
 }

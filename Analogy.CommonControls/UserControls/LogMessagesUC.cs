@@ -106,6 +106,7 @@ namespace Analogy.CommonControls.UserControls
         private List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
         private List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
+        private bool CollapseFolderAndFilesPanel { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
         private IUserSettingsManager Settings { get; set; }
         private IExtensionsManager ExtensionManager { get; set; }
@@ -517,6 +518,11 @@ namespace Analogy.CommonControls.UserControls
 
         private void SetupEventsHandlers()
         {
+            bbiCollapseFolderPanel.ItemClick += (sBtnLastPage, e) =>
+            {
+                CollapseFolderAndFilesPanel = !CollapseFolderAndFilesPanel;
+                CollapseFileAndFolderPanel?.Invoke(this, CollapseFolderAndFilesPanel);
+            };
             sbtnServerSide.Click += async (s, e) =>
             {
                 sbtnServerSide.Enabled = false;
