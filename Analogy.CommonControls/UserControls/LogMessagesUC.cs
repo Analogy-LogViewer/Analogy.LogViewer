@@ -32,7 +32,6 @@ using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraBars.Docking;
-using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
@@ -205,7 +204,7 @@ namespace Analogy.CommonControls.UserControls
         private bool useSpecificColumnForJson;
         private string jsonColumnForInlineJsonViewer;
         private DataVisualizerForm frmDataVisualizer;
-
+        private MarkdownPipeline pipeline;
         #endregion fields
 
         private JsonTreeUC JsonTreeView { get; set; }
@@ -222,6 +221,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 return;
             }
+            pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
             Id = Guid.NewGuid();
             SetupDependencies();
 
@@ -2474,50 +2474,39 @@ namespace Analogy.CommonControls.UserControls
 
         private void LoadTextBoxes(AnalogyLogMessage m)
         {
-            switch (m.RawTextType)
+            meMessageDetails.InvokeIfRequired((_) =>
             {
-                case AnalogyRowTextType.None:
-                case AnalogyRowTextType.Unknown:
-                case AnalogyRowTextType.PlainText:
-                case AnalogyRowTextType.RichText:
-                case AnalogyRowTextType.XML:
-                case AnalogyRowTextType.HTML:
-                case AnalogyRowTextType.Markdown:
-                    bbtnRawMessageViewer.Visibility = string.IsNullOrEmpty(m.RawText) ? BarItemVisibility.Never : BarItemVisibility.Always;
-                    bbtnRawMessageViewer.Caption = "View Raw Data";
-                    break;
-                case AnalogyRowTextType.JSON:
-                    bbtnRawMessageViewer.Visibility = BarItemVisibility.Always;
-                    bbtnRawMessageViewer.Caption = "View in Json Visualizer";
-                    bbtnRawMessageViewer.ImageOptions.Image = Resources.json16x16;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
-                .Build();
-            if (InvokeRequired)
-            {
-                BeginInvoke(new MethodInvoker(() =>
+                if (!meMessageDetails.Visible)
                 {
-                    bbtnRawMessageViewer.Tag = m;
-                    recMessageDetails.Tag = m;
-                    recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting);
-                    meMessageDetails.Tag = m;
-                    meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
-                    recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
-                }));
-            }
-            else
-            {
+                    return;
+                }
+                switch (m.RawTextType)
+                {
+                    case AnalogyRowTextType.None:
+                    case AnalogyRowTextType.Unknown:
+                    case AnalogyRowTextType.PlainText:
+                    case AnalogyRowTextType.RichText:
+                    case AnalogyRowTextType.XML:
+                    case AnalogyRowTextType.HTML:
+                    case AnalogyRowTextType.Markdown:
+                        bbtnRawMessageViewer.Visibility = string.IsNullOrEmpty(m.RawText) ? BarItemVisibility.Never : BarItemVisibility.Always;
+                        bbtnRawMessageViewer.Caption = "View Raw Data";
+                        break;
+                    case AnalogyRowTextType.JSON:
+                        bbtnRawMessageViewer.Visibility = BarItemVisibility.Always;
+                        bbtnRawMessageViewer.Caption = "View in Json Visualizer";
+                        bbtnRawMessageViewer.ImageOptions.Image = Resources.json16x16;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 bbtnRawMessageViewer.Tag = m;
                 recMessageDetails.Tag = m;
                 recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
                 meMessageDetails.Tag = m;
                 meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
                 recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
-            }
-
+            });
         }
 
         #region Log grid Event Handlers
