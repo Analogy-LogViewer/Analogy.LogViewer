@@ -91,6 +91,10 @@ namespace Analogy.UserControls
                 var nodes = treeList1.GetAllCheckedNodes().Select(node => (string)node.GetValue(colFullPath)).ToList();
                 await LoadFilesAsync(nodes, chkbSelectionMode.Checked);
             };
+            ucLogs1.CollapseFileAndFolderPanel += (s, collapsed) =>
+            {
+                spltMain.CollapsePanel = collapsed ? SplitCollapsePanel.Panel1 : SplitCollapsePanel.None;
+            };
         }
         private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
         {

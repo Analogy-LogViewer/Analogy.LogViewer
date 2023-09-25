@@ -84,6 +84,7 @@ namespace Analogy.CommonControls.UserControls
         #endregion
         #region Events
         public event EventHandler<string>? OnSetRawSQLFilter;
+        public event EventHandler<bool> CollapseFileAndFolderPanel;
         #endregion
         #region properties
         private DateTimeSelectionUC DateTimePicker { get; set; }
