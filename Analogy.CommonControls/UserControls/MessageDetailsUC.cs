@@ -64,6 +64,11 @@ namespace Analogy.CommonControls.UserControls
                 return true;
             }
 
+            if (keyData == Keys.Escape)
+            {
+                ParentForm?.Close();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
 
         }

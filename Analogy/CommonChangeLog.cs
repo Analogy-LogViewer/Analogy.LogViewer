@@ -8,7 +8,8 @@ namespace Analogy
         public static IEnumerable<AnalogyChangeLog> GetChangeLog()
         {
             return new List<AnalogyChangeLog>
-            {                
+            {
+                new ("V5.1.1 - Add escape key to close detailed Message with Esc key #1865",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,10,20),"5.1.1.0"),
                 new ("V5.1.0 - Add View Raw data to the message information panel #1849",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,25),"5.1.0.0"),
                 new ("V5.1.0 - Add collapsible folder section #1850",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,25),"5.1.0.0"),
                 new ("V5.1.0 - Refactor file association to use data provider and not data factory #1843",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2023,09,15),"5.1.0.0"),
