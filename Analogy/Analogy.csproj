@@ -47,7 +47,7 @@
 		<PackageReference Include="Analogy.LogViewer.Example" Version="5.0.3" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="5.0.3" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="5.0.3" />
-		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="5.0.3.1" />
+		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="5.0.3.2" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="5.0.3" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="5.0.3" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="5.0.3" />
