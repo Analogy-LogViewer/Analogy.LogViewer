@@ -1159,7 +1159,19 @@ namespace Analogy.CommonControls.UserControls
                 {
                     if (e.FieldValue is not null)
                     {
-                        counts[(string)e.FieldValue] += 1;
+                        var key = (string)e.FieldValue;
+                        if (counts.ContainsKey(key))
+                        {
+                            counts[(string)e.FieldValue] += 1;
+                        }
+                        else
+                        {
+                            var level = AnalogyLogMessage.ParseLogLevelFromString(key).ToString();
+                            if (counts.ContainsKey(level))
+                            {
+                                counts[level] += 1;
+                            }
+                        }
                     }
                 }
 
