@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Analogy.Common.DataTypes;
+using Analogy.CommonControls.DataTypes;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.CommonControls.DataTypes;
-using DevExpress.XtraEditors;
 
 namespace Analogy.CommonControls.Forms
 {

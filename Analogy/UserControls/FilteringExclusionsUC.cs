@@ -1,13 +1,13 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.Common.Interfaces;
+using Analogy.Interfaces;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.Interfaces;
-using Analogy.Interfaces;
-using DevExpress.XtraEditors.Controls;
 
 namespace Analogy.UserControls
 {

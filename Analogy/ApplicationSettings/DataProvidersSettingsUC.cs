@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors.Controls;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {

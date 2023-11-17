@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using Analogy.Common;
+﻿using Analogy.Common;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Analogy.CommonControls.Forms
 {

@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Common;
+﻿using Analogy.Common;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Tools;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 using Markdig;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.CommonControls.UserControls
 {

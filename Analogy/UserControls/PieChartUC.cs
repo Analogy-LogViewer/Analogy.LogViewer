@@ -1,7 +1,7 @@
-﻿using DevExpress.XtraCharts;
+﻿using Analogy.DataTypes;
+using DevExpress.XtraCharts;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Analogy.DataTypes;
 
 namespace Analogy.UserControls
 {

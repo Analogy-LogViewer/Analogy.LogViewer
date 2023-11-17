@@ -1,11 +1,11 @@
-﻿using Analogy.Interfaces.DataTypes;
+﻿using Analogy.Common.DataTypes;
+using Analogy.CommonControls.Managers;
+using Analogy.DataTypes;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using DevExpress.XtraEditors;
 using System.Drawing;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.CommonControls.Managers;
-using Analogy.DataTypes;
 
 namespace Analogy.UserControls
 {

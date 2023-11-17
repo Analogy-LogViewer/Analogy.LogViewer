@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Interfaces;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -6,10 +10,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Interfaces;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.Managers
 {

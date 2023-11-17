@@ -1,11 +1,17 @@
+using Analogy.Common.DataTypes;
+using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Managers;
 using DevExpress.LookAndFeel;
+using DevExpress.Utils;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,12 +25,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.CommonControls.DataTypes;
-using Analogy.Managers;
-using DevExpress.Utils;
-using Microsoft.Extensions.Logging;
-using Octokit;
 using FileMode = System.IO.FileMode;
 
 namespace Analogy

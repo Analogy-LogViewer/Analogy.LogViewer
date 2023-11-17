@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using DevExpress.Utils;
+using DevExpress.XtraCharts;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
-using DevExpress.Utils;
-using DevExpress.XtraCharts;
-using DevExpress.XtraEditors;
-using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.CommonControls.Plotting
 {

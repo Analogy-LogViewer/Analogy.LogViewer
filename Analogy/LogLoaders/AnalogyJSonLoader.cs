@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Interfaces;
+using Analogy.Managers;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
-using Analogy.Managers;
-using Newtonsoft.Json;
 
 namespace Analogy.LogLoaders
 {

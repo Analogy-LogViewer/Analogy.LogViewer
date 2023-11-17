@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Managers;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Analogy.DataTypes
 {

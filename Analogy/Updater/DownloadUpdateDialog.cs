@@ -1,5 +1,8 @@
-﻿using Analogy.Properties;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Properties;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -9,9 +12,6 @@ using System.Net.Cache;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataTypes;
-using Analogy.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.Updater
 {

@@ -1,9 +1,9 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.DataTypes;
-using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {

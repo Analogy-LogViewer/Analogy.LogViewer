@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.Globalization;
 
 namespace Analogy.Forms
 {

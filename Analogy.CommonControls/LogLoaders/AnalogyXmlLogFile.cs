@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.LogLoaders
 {

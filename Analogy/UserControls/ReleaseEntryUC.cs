@@ -1,8 +1,8 @@
-﻿using System.Net;
-using Analogy.CommonUtilities.Github;
+﻿using Analogy.CommonUtilities.Github;
 using DevExpress.XtraEditors;
 using Markdig;
 using Octokit;
+using System.Net;
 using static Grpc.Core.Metadata;
 
 namespace Analogy.UserControls

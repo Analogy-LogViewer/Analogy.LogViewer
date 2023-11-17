@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Controls;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Utils;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Controls;
-using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {

@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Plotting;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Plotting;
-using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.UserControls
 {

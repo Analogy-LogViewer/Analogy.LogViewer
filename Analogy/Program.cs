@@ -1,23 +1,23 @@
+using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.CommonControls.Managers;
+using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Interfaces;
 using Analogy.Managers;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Managers;
-using Analogy.CommonControls.Managers;
-using Analogy.DataProviders;
-using Analogy.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {

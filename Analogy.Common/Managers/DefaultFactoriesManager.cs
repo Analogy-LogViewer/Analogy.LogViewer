@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Properties;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Properties;
-using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
 
 namespace Analogy.Common.Managers
 {

@@ -1,4 +1,9 @@
-﻿using Analogy.DataProviders;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.CommonControls.Managers;
+using Analogy.CommonControls.Plotting;
+using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
@@ -14,6 +19,7 @@ using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -21,12 +27,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Managers;
-using Analogy.CommonControls.Managers;
-using Analogy.CommonControls.Plotting;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {

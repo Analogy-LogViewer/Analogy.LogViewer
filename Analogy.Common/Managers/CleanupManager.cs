@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Analogy.Interfaces;
-using Microsoft.Extensions.Logging;
 using Exception = System.Exception;
 
 namespace Analogy.Common.Managers

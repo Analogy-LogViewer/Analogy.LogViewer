@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Analogy.Managers;
 

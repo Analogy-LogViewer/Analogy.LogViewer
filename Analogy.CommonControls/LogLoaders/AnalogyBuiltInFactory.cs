@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Analogy.CommonControls.Properties;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Analogy.LogViewer.Template;
+using Analogy.LogViewer.Template.IAnalogy;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.CommonControls.Properties;
-using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
-using Analogy.LogViewer.Template;
-using Analogy.LogViewer.Template.IAnalogy;
 
 namespace Analogy.CommonControls.LogLoaders
 {

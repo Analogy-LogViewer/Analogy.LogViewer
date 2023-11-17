@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Analogy.CommonControls.DataTypes;
+using DevExpress.XtraCharts;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
-using DevExpress.XtraCharts;
 
 namespace Analogy.CommonControls.UserControls
 {

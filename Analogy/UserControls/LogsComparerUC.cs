@@ -1,13 +1,13 @@
-﻿using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Tools;
 using Microsoft.Extensions.Logging;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {

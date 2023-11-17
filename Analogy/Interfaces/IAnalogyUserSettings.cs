@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces.Factories;
 using Octokit;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace Analogy.Interfaces
 {

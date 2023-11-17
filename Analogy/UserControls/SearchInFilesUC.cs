@@ -1,6 +1,6 @@
-﻿using System.Windows.Forms;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {

@@ -1,10 +1,10 @@
-﻿using DevExpress.XtraEditors.Controls;
-using System.Collections.Generic;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using DevExpress.XtraEditors.Controls;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Analogy.Forms
 {

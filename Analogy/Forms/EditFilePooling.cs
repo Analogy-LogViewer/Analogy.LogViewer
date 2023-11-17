@@ -1,6 +1,6 @@
-﻿using System.IO;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.IO;
 
 namespace Analogy.Forms
 {

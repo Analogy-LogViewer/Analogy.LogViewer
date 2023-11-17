@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Analogy.CommonControls.Forms
 {

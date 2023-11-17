@@ -1,11 +1,11 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.CommonControls.DataTypes;
+using Analogy.Plotting;
+using DevExpress.XtraBars.Docking;
+using DevExpress.XtraEditors;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
-using Analogy.Plotting;
-using DevExpress.XtraBars.Docking;
 using AnalogyCustomXAxisPlot = Analogy.CommonControls.DataTypes.AnalogyCustomXAxisPlot;
 
 namespace Analogy.UserControls

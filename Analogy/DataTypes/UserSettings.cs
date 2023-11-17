@@ -1,11 +1,11 @@
-﻿using Analogy.CommonUtilities.Web;
-using DevExpress.LookAndFeel;
-using DevExpress.XtraBars.Ribbon;
-using System.Collections.Generic;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
+using Analogy.CommonUtilities.Web;
+using DevExpress.LookAndFeel;
+using DevExpress.XtraBars.Ribbon;
 using Octokit;
+using System.Collections.Generic;
 
 namespace Analogy.DataTypes
 {

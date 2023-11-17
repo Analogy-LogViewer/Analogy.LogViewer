@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Analogy.CommonControls.UserControls;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +10,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.UserControls;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.Example
 {

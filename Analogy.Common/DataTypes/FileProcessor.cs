@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -6,10 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Managers;
-using Analogy.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.Common.DataTypes
 {

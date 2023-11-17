@@ -1,11 +1,11 @@
 ﻿using Analogy.Common.Interfaces;
-using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {

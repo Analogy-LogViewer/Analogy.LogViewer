@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Windows.Forms;
-using Analogy.CommonUtilities.Github;
+﻿using Analogy.CommonUtilities.Github;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraEditors;
 using Octokit;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {

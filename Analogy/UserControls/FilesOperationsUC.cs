@@ -1,14 +1,14 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Managers;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Managers;
-using Analogy.DataTypes;
-using Analogy.Interfaces.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.UserControls
 {

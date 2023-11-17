@@ -1,12 +1,12 @@
-﻿using Analogy.DataTypes;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {

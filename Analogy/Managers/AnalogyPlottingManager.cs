@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Analogy.CommonControls.DataTypes;
+﻿using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Analogy.Managers
 {

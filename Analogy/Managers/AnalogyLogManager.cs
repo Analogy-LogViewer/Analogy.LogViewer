@@ -1,15 +1,15 @@
-﻿using Analogy.Interfaces;
-using Analogy.LogLoaders;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.CommonControls.Forms;
+﻿using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
 using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Interfaces;
+using Analogy.LogLoaders;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.Managers
 {

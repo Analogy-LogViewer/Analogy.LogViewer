@@ -1,7 +1,7 @@
-﻿using System.IO;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.IO;
 
 namespace Analogy.Forms
 {

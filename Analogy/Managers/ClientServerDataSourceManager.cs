@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Analogy
 {

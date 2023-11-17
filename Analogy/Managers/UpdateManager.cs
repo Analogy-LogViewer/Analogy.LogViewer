@@ -1,8 +1,15 @@
-﻿using Analogy.CommonUtilities.Web;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.CommonUtilities.Github;
+using Analogy.CommonUtilities.Web;
 using Analogy.DataTypes;
+using Analogy.Interfaces;
 using Analogy.Properties;
 using Analogy.Updater;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
+using Octokit;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -10,13 +17,6 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonUtilities.Github;
-using Analogy.Interfaces;
-using Microsoft.Extensions.Logging;
-using Octokit;
 
 namespace Analogy.Managers
 {

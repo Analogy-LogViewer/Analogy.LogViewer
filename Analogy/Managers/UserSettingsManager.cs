@@ -1,18 +1,18 @@
-﻿using Analogy.CommonUtilities.Web;
+﻿using Analogy.Common.DataTypes;
+using Analogy.CommonUtilities.Web;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
 using Newtonsoft.Json;
+using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
-using Analogy.Common.DataTypes;
-using Octokit;
 
 namespace Analogy
 {

@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Managers;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Analogy
 {

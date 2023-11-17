@@ -1,4 +1,7 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
@@ -9,9 +12,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.Extensions
 {

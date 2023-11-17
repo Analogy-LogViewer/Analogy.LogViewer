@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using DevExpress.XtraEditors;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {

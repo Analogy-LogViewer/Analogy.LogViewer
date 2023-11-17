@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Analogy.CommonControls.Properties;
+using DevExpress.Office.Utils;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,10 +11,6 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.Properties;
-using DevExpress.Office.Utils;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Analogy.CommonControls.Tools
 {

@@ -1,9 +1,15 @@
 ﻿
+using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.CommonControls.Managers;
+using Analogy.CommonControls.Plotting;
 using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
+using Analogy.LogViewer.Template.Managers;
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.UserControls;
@@ -15,6 +21,7 @@ using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,13 +30,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Managers;
-using Analogy.CommonControls.Managers;
-using Analogy.CommonControls.Plotting;
-using Microsoft.Extensions.Logging;
-using Analogy.LogViewer.Template.Managers;
 using NotificationManager = Analogy.Managers.NotificationManager;
 
 namespace Analogy.Forms

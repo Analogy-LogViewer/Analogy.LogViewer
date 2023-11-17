@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using System.Collections.Generic;
 
 namespace Analogy.UnitTests
 {

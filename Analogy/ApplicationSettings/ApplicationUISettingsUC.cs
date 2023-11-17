@@ -1,15 +1,15 @@
-﻿using Analogy.DataTypes;
-using Analogy.Properties;
-using DevExpress.LookAndFeel;
-using DevExpress.XtraBars.Ribbon;
-using System.Drawing;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Properties;
+using DevExpress.LookAndFeel;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using System.Drawing;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Analogy.ApplicationSettings

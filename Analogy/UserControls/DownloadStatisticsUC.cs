@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
+﻿using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using Octokit;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {

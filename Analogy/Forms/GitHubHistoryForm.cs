@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.CommonUtilities.Github;
+﻿using Analogy.CommonUtilities.Github;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
@@ -10,6 +7,9 @@ using DevExpress.XtraBars.Navigation;
 using Markdig;
 using Microsoft.Extensions.Logging;
 using Octokit;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {

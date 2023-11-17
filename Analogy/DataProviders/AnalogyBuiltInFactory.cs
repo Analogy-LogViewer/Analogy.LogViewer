@@ -1,4 +1,6 @@
-﻿using Analogy.Forms;
+﻿using Analogy.CommonControls.Tools;
+using Analogy.DataTypes;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.LogLoaders;
@@ -6,13 +8,11 @@ using Analogy.LogViewer.Template;
 using Analogy.LogViewer.Template.IAnalogy;
 using Analogy.Properties;
 using Analogy.Tools;
+using Analogy.UserControls;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
-using Analogy.CommonControls.Tools;
-using Analogy.DataTypes;
-using Analogy.UserControls;
 
 namespace Analogy.DataProviders
 {

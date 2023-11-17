@@ -1,12 +1,12 @@
 ﻿using Analogy.ApplicationSettings;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using System.Windows.Forms;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {

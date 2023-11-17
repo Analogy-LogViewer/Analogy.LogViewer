@@ -1,18 +1,18 @@
-﻿using Analogy.DataProviders;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
+using Microsoft.Extensions.Logging;
+using Serilog.Core;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Microsoft.Extensions.Logging;
-using Analogy.Interfaces.DataTypes;
-using Serilog.Core;
-using System.IO;
 
 namespace Analogy
 {

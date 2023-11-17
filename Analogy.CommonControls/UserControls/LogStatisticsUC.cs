@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
+﻿using Analogy.CommonControls.DataTypes;
 using DevExpress.XtraEditors.Controls;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Analogy.CommonControls.UserControls
 {

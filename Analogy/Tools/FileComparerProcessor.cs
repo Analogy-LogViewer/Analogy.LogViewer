@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Analogy.Tools
 {

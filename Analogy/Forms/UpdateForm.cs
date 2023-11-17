@@ -1,7 +1,7 @@
-﻿using Analogy.Managers;
-using System.Windows.Forms;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
+using Analogy.Managers;
 using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {

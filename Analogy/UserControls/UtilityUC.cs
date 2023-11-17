@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
+using System.Drawing;
 
 namespace Analogy.UserControls
 {

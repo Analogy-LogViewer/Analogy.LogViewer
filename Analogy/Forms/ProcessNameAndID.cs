@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {

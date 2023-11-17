@@ -1,15 +1,15 @@
 ﻿using Analogy.Common.Managers;
-using Analogy.Interfaces;
-using Analogy.Managers;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Interfaces;
+using Analogy.Managers;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy.UserControls

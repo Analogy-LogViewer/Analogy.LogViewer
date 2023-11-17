@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.DataTypes
 {
