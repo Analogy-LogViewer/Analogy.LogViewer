@@ -13,7 +13,7 @@ namespace Analogy.CommonControls
         {
             return new List<AnalogyChangeLog>
             {
-                new AnalogyChangeLog("V1.0.0 - Initial Version",AnalogChangeLogType.Improvement,"Lior Banai",new DateTime(2021,12,01), ""),
+                new AnalogyChangeLog("V1.0.0 - Initial Version", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2021, 12, 01), ""),
             };
         }
 

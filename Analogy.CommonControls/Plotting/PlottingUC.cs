@@ -16,7 +16,7 @@ namespace Analogy.CommonControls.Plotting
 {
     public partial class PlottingUC : XtraUserControl
     {
-        public event EventHandler<(string name, bool isChecked)> LegendItemChecked;
+        public event EventHandler<(string Name, bool IsChecked)> LegendItemChecked;
         public IAnalogyPlotting Plotter { get; }
         public AnalogyPlottingInteractor Interactor { get; }
         private PlottingDataManager Manager { get; set; }
@@ -92,6 +92,7 @@ namespace Analogy.CommonControls.Plotting
 
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowRotate = false;
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowStagger = false;
+
             // diagram.AxisX.VisualRange.EndSideMargin = 200;
             diagram.DependentAxesYRange = DefaultBoolean.True;
             diagram.AxisY.WholeRange.AlwaysShowZeroLevel = false;
@@ -145,6 +146,7 @@ namespace Analogy.CommonControls.Plotting
             {
                 diagram.PaneLayout.Direction = PaneLayoutDirection.Vertical;
                 diagram.PaneLayout.AutoLayoutMode = PaneAutoLayoutMode.Linear;
+
                 //for (var i = 0; i < chartControl1.Series.Count; i++)
                 //{
                 //    Series s = chartControl1.Series[i];
@@ -224,7 +226,7 @@ namespace Analogy.CommonControls.Plotting
             }
         }
 
-        void OnLegendItemChecked(object sender, LegendItemCheckedEventArgs e)
+        private void OnLegendItemChecked(object sender, LegendItemCheckedEventArgs e)
         {
             if (e.CheckedElement is ConstantLine cl)
             {
@@ -232,7 +234,7 @@ namespace Analogy.CommonControls.Plotting
             }
         }
 
-        private void SaveChartImageToFile(ChartControl chart, ImageFormat format, String fileName)
+        private void SaveChartImageToFile(ChartControl chart, ImageFormat format, string fileName)
         {
             // Create an image in the specified format from the chart 
             // and save it to the specified path. 

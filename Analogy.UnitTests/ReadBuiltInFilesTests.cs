@@ -15,6 +15,7 @@ namespace Analogy.UnitTests
     {
         private CancellationTokenSource cancellationTokenSource;
         private MessageHandlerForTesting handler = new MessageHandlerForTesting();
+
         // [TestMethod]
         public void TestWriteAndRead()
         {

@@ -92,7 +92,7 @@ namespace Analogy.CommonControls.UserControls
         private PagingManager PagingManager { get; set; }
         private FileProcessor FileProcessor { get; set; }
         public ManualResetEvent columnAdderSync = new ManualResetEvent(false);
-        public List<(string field, string caption)> CurrentColumnsFields { get; set; }
+        public List<(string Field, string Caption)> CurrentColumnsFields { get; set; }
         public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
@@ -295,8 +295,8 @@ namespace Analogy.CommonControls.UserControls
 
             deNewerThanFilter.DateTime = DateTime.Now;
             deOlderThanFilter.DateTime = DateTime.Now;
-            IncludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.caption, c.field, false)).ToList();
-            ExcludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.caption, c.field, false)).ToList();
+            IncludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.Caption, c.Field, false)).ToList();
+            ExcludeFilterCriteriaUIOptions = CurrentColumnsFields.Select(c => new FilterCriteriaUIOption(c.Caption, c.Field, false)).ToList();
             clbInclude.DisplayMember = nameof(FilterCriteriaUIOption.DisplayMember);
             clbInclude.ValueMember = nameof(FilterCriteriaUIOption.ValueMember);
             clbInclude.CheckMember = nameof(FilterCriteriaUIOption.CheckMember);
@@ -594,6 +594,7 @@ namespace Analogy.CommonControls.UserControls
                     BeginInvoke(new Action(() =>
                     {
                         e.Panel.FloatSize = sz;
+
                         //adjust the new panel size taking the header height into account:
                         e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
                     }));
@@ -603,6 +604,7 @@ namespace Analogy.CommonControls.UserControls
                     e.Panel.FloatSize = e.Panel.Size;
                 }
             };
+
             //sbtnUndockPerProcess.Click += (s, e) =>
             //{
             //    UndockViewPerProcess();
@@ -787,6 +789,7 @@ namespace Analogy.CommonControls.UserControls
                     return;
                 }
                 Settings.IncludeText = txtbInclude.Text;
+
                 //Settings.IncludeText = Settings.SaveSearchFilters && txtbInclude.EditValue != null ? txtbInclude.EditValue.ToString() : string.Empty;
                 //Settings.ExcludeText = Settings.SaveSearchFilters && txtbExclude.EditValue != null ? txtbExclude.EditValue.ToString() : string.Empty;
 
@@ -1008,6 +1011,7 @@ namespace Analogy.CommonControls.UserControls
             wsLogs.WorkspaceSaved += (s, e) =>
             {
                 Settings.SetLogsLayoutFileName(e.Workspace.Path);
+
                 // Settings.UseCustomLogsLayout = true;
             };
             wsLogs.AfterApplyWorkspace += (s, e) =>
@@ -1082,7 +1086,7 @@ namespace Analogy.CommonControls.UserControls
         private void GridView_ShownEditor(object sender, System.EventArgs e)
         {
             var view = sender as GridView;
-            if (view.IsFilterRow(view.FocusedRowHandle) && view.FocusedColumn.FieldName == gridColumnProcessID.FieldName || view.FocusedColumn.FieldName == gridColumnThread.FieldName)
+            if ((view.IsFilterRow(view.FocusedRowHandle) && view.FocusedColumn.FieldName == gridColumnProcessID.FieldName) || view.FocusedColumn.FieldName == gridColumnThread.FieldName)
             {
                 ((TextEdit)view.ActiveEditor).Properties.MaskSettings.Configure<MaskSettings.Numeric>(settings =>
                 {
@@ -1311,7 +1315,7 @@ namespace Analogy.CommonControls.UserControls
                 ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             }
 
-            if (e.Alt && e.KeyCode == Keys.E || e.Alt && e.KeyCode == Keys.W)
+            if ((e.Alt && e.KeyCode == Keys.E) || (e.Alt && e.KeyCode == Keys.W))
             {
                 if (e.KeyCode == Keys.W)
                 {
@@ -1379,7 +1383,7 @@ namespace Analogy.CommonControls.UserControls
                 return true;
             }
 
-            if (e.Alt && e.KeyCode == Keys.E || e.Alt && e.KeyCode == Keys.W)
+            if ((e.Alt && e.KeyCode == Keys.E) || (e.Alt && e.KeyCode == Keys.W))
             {
                 if (e.KeyCode == Keys.W)
                 {
@@ -1483,6 +1487,7 @@ namespace Analogy.CommonControls.UserControls
             dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
+
             //todo: restore
             //pnlExtraFilters.Visible =  _serverSideMode;
             pnlExtraFilters.Visible = Settings is { AdvancedMode: true, AdvancedModeAdditionalFilteringColumnsEnabled: true };
@@ -1737,18 +1742,22 @@ namespace Analogy.CommonControls.UserControls
             fInfo = new ColumnFilterInfo(GetFilterString(DataGridDateColumnName, DateRangeFilter.Last2Days),
                 GetFilterDisplayText(DateRangeFilter.Last2Days));
             e.ComboBox.Items.Insert(index++, new FilterItem(Utils.DateFilterLast2Days, fInfo));
+
             // Last 3 days
             fInfo = new ColumnFilterInfo(GetFilterString(DataGridDateColumnName, DateRangeFilter.Last3Days),
                 GetFilterDisplayText(DateRangeFilter.Last3Days));
             e.ComboBox.Items.Insert(index++, new FilterItem(Utils.DateFilterLast3Days, fInfo));
+
             // Last week
             fInfo = new ColumnFilterInfo(GetFilterString(DataGridDateColumnName, DateRangeFilter.LastWeek),
                 GetFilterDisplayText(DateRangeFilter.LastWeek));
             e.ComboBox.Items.Insert(index++, new FilterItem(Utils.DateFilterLastWeek, fInfo));
+
             // Last 2 weeks
             fInfo = new ColumnFilterInfo(GetFilterString(DataGridDateColumnName, DateRangeFilter.Last2Weeks),
                 GetFilterDisplayText(DateRangeFilter.Last2Weeks));
             e.ComboBox.Items.Insert(index++, new FilterItem(Utils.DateFilterLast2Weeks, fInfo));
+
             // Last month.
             fInfo = new ColumnFilterInfo(GetFilterString(DataGridDateColumnName, DateRangeFilter.LastMonth),
                 GetFilterDisplayText(DateRangeFilter.LastMonth));
@@ -1970,7 +1979,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
-                    if (!CurrentColumnsFields.Exists(c => c.field == info.Key))
+                    if (!CurrentColumnsFields.Exists(c => c.Field == info.Key))
                     {
                         if (InvokeRequired)
                         {
@@ -2089,6 +2098,7 @@ namespace Analogy.CommonControls.UserControls
                     {
                         //LogGrid.BeginDataUpdate();
                         _messageData.AcceptChanges();
+
                         //LogGrid.EndDataUpdate();
                     }
                     finally
@@ -2106,6 +2116,7 @@ namespace Analogy.CommonControls.UserControls
             try
             {
                 gridControl.DataSource = _messageData.DefaultView;
+
                 //NewDataExist = true;
                 //FilterHasChanged = true;
                 lblPageNumber.Text = TotalPages > 1 ? $"Page {PageNumber} / {TotalPages}" : $"Page {PageNumber}";
@@ -2157,7 +2168,10 @@ namespace Analogy.CommonControls.UserControls
                     if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
                     {
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Trace,  AnalogyLogLevel.Unknown};
+                            {
+                                AnalogyLogLevel.Trace,
+                                AnalogyLogLevel.Unknown,
+                            };
                     }
 
                     if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
@@ -2170,17 +2184,23 @@ namespace Analogy.CommonControls.UserControls
                     else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
                     {
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Warning,  AnalogyLogLevel.Unknown};
+                            {
+                                AnalogyLogLevel.Warning,  AnalogyLogLevel.Unknown,
+                            };
                     }
                     else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
                     {
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Debug,  AnalogyLogLevel.Unknown};
+                            {
+                                AnalogyLogLevel.Debug,  AnalogyLogLevel.Unknown,
+                            };
                     }
                     else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
                     {
                         _filterCriteria.Levels = new[]
-                            {AnalogyLogLevel.Verbose,  AnalogyLogLevel.Unknown};
+                            {
+                                AnalogyLogLevel.Verbose,  AnalogyLogLevel.Unknown,
+                            };
                     }
 
                     break;
@@ -2463,9 +2483,9 @@ namespace Analogy.CommonControls.UserControls
                 }
                 bbtnRawMessageViewer.Tag = m;
                 recMessageDetails.Tag = m;
-                recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
+                recMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting);
                 meMessageDetails.Tag = m;
-                meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting); ;
+                meMessageDetails.Text = Utils.ProcessLinuxMessage(m.Text, Settings.SupportLinuxFormatting);
                 recMessageDetails.HtmlText = Markdown.ToHtml(m.Text, pipeline);
             });
         }
@@ -2543,6 +2563,7 @@ namespace Analogy.CommonControls.UserControls
 
             FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
             details.Show(this);
+
             //CreateBookmark();
         }
 
@@ -2922,6 +2943,7 @@ namespace Analogy.CommonControls.UserControls
         {
             _realtimeUpdate = btswitchRefreshLog.Checked;
             AcceptChanges(false);
+
             //btswitchRefreshLog.Caption = _realtimeUpdate ? "Refresh log:" : "Paused:";
         }
 
@@ -3131,7 +3153,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        private (AnalogyLogMessage? message, string dataProvider) GetMessageFromSelectedFocusedRowInGrid()
+        private (AnalogyLogMessage? Message, string DataProvider) GetMessageFromSelectedFocusedRowInGrid()
         {
             var row = LogGrid.GetFocusedRow();
             if (row == null)
@@ -3413,6 +3435,7 @@ namespace Analogy.CommonControls.UserControls
                 }
             }
             lockSlim.ExitWriteLock();
+
             //RefreshUIMessagesCount();
         }
 
@@ -3529,11 +3552,11 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        public void SetHighlightSettings(Action OpenSettingForm)
+        public void SetHighlightSettings(Action openSettingForm)
         {
             this.sbtnMoreHighlight.Click += (s, e) =>
             {
-                OpenSettingForm.Invoke();
+                openSettingForm.Invoke();
             };
             this.sbtnMoreHighlight.Visible = true;
         }
@@ -3620,9 +3643,9 @@ namespace Analogy.CommonControls.UserControls
         private void tsmiAddCommentToMessage_Click(object sender, EventArgs e)
         {
             var msg = GetMessageFromSelectedFocusedRowInGrid();
-            if (msg.message != null)
+            if (msg.Message != null)
             {
-                var addNoteForm = new AnalogyAddCommentsToMessage(msg.message, Settings);
+                var addNoteForm = new AnalogyAddCommentsToMessage(msg.Message, Settings);
                 addNoteForm.Show(this);
             }
         }

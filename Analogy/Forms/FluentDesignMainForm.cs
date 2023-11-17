@@ -112,10 +112,12 @@ namespace Analogy
             PopulateGlobalTools();
             LoadStartupExtensions();
             RegisterForOnDemandPlots();
+
             //Create all other DataSources
             foreach (FactoryContainer fc in FactoriesManager.Factories
                          .Where(factory => !FactoriesManager.IsBuiltInFactory(factory.Factory) &&
                                            factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
+
                                             //&& factory.DataProvidersFactories.Any(d => d.DataProviders.Any())
                                             ))
             {
@@ -292,12 +294,12 @@ namespace Analogy
             {
                 if (supported.Any(d =>
                     d.DataProvider.Id == Settings.LastOpenedDataProvider ||
-                    d.FactoryID == Settings.LastOpenedDataProvider
-                    && d.DataProvider.CanOpenAllFiles(files)))
+                    (d.FactoryID == Settings.LastOpenedDataProvider
+                    && d.DataProvider.CanOpenAllFiles(files))))
                 {
                     supported = supported.Where(d =>
                         d.DataProvider.Id == Settings.LastOpenedDataProvider ||
-                        d.FactoryID == Settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
+                        (d.FactoryID == Settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files))).ToList();
                 }
                 else
                 {
@@ -379,6 +381,7 @@ namespace Analogy
                     BeginInvoke(new Action(() =>
                     {
                         e.Panel.FloatSize = sz;
+
                         //adjust the new panel size taking the header height into account:
                         e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
                     }));
@@ -655,6 +658,7 @@ namespace Analogy
             bci.CheckStyle = BarCheckStyles.Radio;
             bci.GroupIndex = 1;
             bci.CheckBoxVisibility = CheckBoxVisibility.BeforeText;
+
             //bci.Caption = fc.Factory.Title;
             bci.Enabled = fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled;
             bci.ItemClick += (s, e) =>
@@ -679,6 +683,7 @@ namespace Analogy
             Settings.LastOpenedDataProvider = activeProvider;
 
             LoadDataProvidersInAccordion(fc);
+
             //var ribbonPageImage = FactoriesManager.GetSmallImage(fc.Factory.FactoryId);
             //if (ribbonPageImage != null)
             //{
@@ -888,6 +893,7 @@ namespace Analogy
 
                 var preDefinedFolderExist = !string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
                                             Directory.Exists(offlineAnalogy.InitialFolderFullPath);
+
                 //add specific folder button:
                 if (preDefinedFolderExist)
                 {
@@ -945,6 +951,7 @@ namespace Analogy
                         SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                         args.Title.Text = Path.GetFileName(path.Path);
                         args.Contents.Text = path.Path;
+
                         // args.Contents.Image = realTime.ToolTip.Image;
                         toolTip.Setup(args);
                         btn.SuperTip = toolTip;
@@ -959,6 +966,7 @@ namespace Analogy
                 AccordionControlElement recentfiles = new AccordionControlElement();
                 recentfiles.Text = "Recent Files";
                 recentfiles.ImageOptions.Image = images?.GetLargeRecentFilesImage(factoryId) ?? Resources.RecentlyUse_32x32;
+
                 //add Files open buttons
 
                 if (!string.IsNullOrEmpty(offlineAnalogy.FileOpenDialogFilters))
@@ -1013,8 +1021,8 @@ namespace Analogy
                 {
                     IAnalogyNotification notification = new AnalogyNotification(factoryId,
                         "Missing File Open Dialog Filter",
-                        $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
-                        , AnalogyLogLevel.Error, offlineAnalogy.LargeImage, 5, null);
+                        $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'",
+                        AnalogyLogLevel.Error, offlineAnalogy.LargeImage, 5, null);
                     NotificationManager.RaiseNotification(notification, true);
                 }
 
@@ -1089,10 +1097,12 @@ namespace Analogy
             btn.Text = Path.GetFileName(recentPath);
 
             SuperToolTip toolTip = new SuperToolTip();
+
             // Create an object to initialize the SuperToolTip.
             SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
             args.Title.Text = Path.GetFileName(recentPath);
             args.Contents.Text = recentPath;
+
             // args.Contents.Image = realTime.ToolTip.Image;
             toolTip.Setup(args);
             btn.SuperTip = toolTip;
@@ -1129,6 +1139,7 @@ namespace Analogy
                     SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                     args.Title.Text = Path.GetFileName(file);
                     args.Contents.Text = file;
+
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     btn.SuperTip = toolTip;
@@ -1168,10 +1179,12 @@ namespace Analogy
                 if (realTime.ToolTip != null)
                 {
                     SuperToolTip toolTip = new SuperToolTip();
+
                     // Create an object to initialize the SuperToolTip.
                     SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                     args.Title.Text = realTime.ToolTip.Title;
                     args.Contents.Text = realTime.ToolTip.Content;
+
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     realTimeBtn.SuperTip = toolTip;
@@ -1209,6 +1222,7 @@ namespace Analogy
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
+
                             //realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
                         }
 
@@ -1234,6 +1248,7 @@ namespace Analogy
                                     realTime.OnMessageReady -= OnRealTimeOnMessageReady;
                                     realTime.OnManyMessagesReady -= OnRealTimeOnOnManyMessagesReady;
                                     realTime.OnDisconnected -= OnRealTimeDisconnected;
+
                                     //page.Controls.Remove(onlineUC);
                                 }
                                 catch (Exception e)
@@ -1306,10 +1321,12 @@ namespace Analogy
                 if (single.ToolTip != null)
                 {
                     SuperToolTip toolTip = new SuperToolTip();
+
                     // Create an object to initialize the SuperToolTip.
                     SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                     args.Title.Text = single.ToolTip.Title;
                     args.Contents.Text = single.ToolTip.Content;
+
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     singleBtn.SuperTip = toolTip;
@@ -1371,6 +1388,7 @@ namespace Analogy
                     if (userControl.ToolTip != null)
                     {
                         SuperToolTip toolTip = new SuperToolTip();
+
                         // Create an object to initialize the SuperToolTip.
                         SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                         args.Title.Text = userControl.ToolTip.Title;
@@ -1383,6 +1401,7 @@ namespace Analogy
                     {
                         userControlBtn.Enabled = false;
                         openedWindows++;
+
                         //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                         var page = dockManager1.AddPanel(DockingStyle.Float);
                         await userControl.InitializeUserControl(page, ServicesProvider.Instance.GetService<ILogger>());

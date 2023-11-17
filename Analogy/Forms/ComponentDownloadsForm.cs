@@ -25,12 +25,14 @@ namespace Analogy.Forms
         private void ComponentDownloadsForm_Load(object sender, EventArgs e)
         {
             Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
+
             // UserControl first = null;
             foreach (FactoryContainer factory in FactoriesManager.Factories)
             {
                 ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(factory, UpdateManager);
                 xtraTabPage1.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
+
                 //  first ??= uc;
             }
 

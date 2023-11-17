@@ -274,6 +274,7 @@ namespace Analogy.Managers
                 if (File.Exists(UpdaterExecutable))
                 {
                     var processStartInfo = new ProcessStartInfo();
+
                     //string data = $"\"Title={title}\" DownloadURL:{downloadURL} \"TargetFolder:{Utils.CurrentDirectory()}\" OverrideFiles={forceOverride}";
                     string data = $"\"{title}\" {downloadURL} \"{Utils.CurrentDirectory()}\" {forceOverride}";
                     processStartInfo.Arguments = data;

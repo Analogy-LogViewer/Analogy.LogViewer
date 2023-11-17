@@ -80,6 +80,7 @@ namespace Analogy.CommonControls.UserControls
 
             //            dgvSource.SelectionChanged -= dgvSource_SelectionChanged;
             GridControlSource.DataSource = sources;
+
             //  dgvSource.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             //dgvSource.SelectionChanged += dgvSource_SelectionChanged;
         }

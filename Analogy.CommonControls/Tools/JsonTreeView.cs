@@ -160,7 +160,7 @@ namespace Analogy.CommonControls.Tools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool TryParse(string strInput, out JToken output)
         {
-            if (String.IsNullOrWhiteSpace(strInput))
+            if (string.IsNullOrWhiteSpace(strInput))
             {
                 output = null;
                 return false;
@@ -265,15 +265,19 @@ namespace Analogy.CommonControls.Tools
             statusStrip1 = new StatusStrip();
             treeContextMenu.SuspendLayout();
             SuspendLayout();
+
             // 
             // treeContextMenu
             // 
             treeContextMenu.ImageScalingSize = new Size(20, 20);
-            treeContextMenu.Items.AddRange(new ToolStripItem[] {
-            expandAllMenuItem,});
+            treeContextMenu.Items.AddRange(new ToolStripItem[]
+            {
+            expandAllMenuItem,
+            });
             treeContextMenu.Name = "treeContextMenu";
             treeContextMenu.Size = new Size(147, 30);
             treeContextMenu.Opening += new CancelEventHandler(treeContextMenu_Opening);
+
             // 
             // expandAllMenuItem
             // 
@@ -282,6 +286,7 @@ namespace Analogy.CommonControls.Tools
             expandAllMenuItem.ShowShortcutKeys = false;
             expandAllMenuItem.Size = new Size(146, 26);
             expandAllMenuItem.Text = "&Expand All";
+
             // 
             // statusStrip1
             // 
@@ -291,6 +296,7 @@ namespace Analogy.CommonControls.Tools
             statusStrip1.Size = new Size(200, 22);
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
+
             // 
             // JsonTreeView
             // 

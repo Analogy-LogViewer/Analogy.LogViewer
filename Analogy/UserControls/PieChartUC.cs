@@ -31,8 +31,10 @@ namespace Analogy.UserControls
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = statistics.Name });
             pieChart.Series.Clear();
+
             // Create a pie series. 
             Series series1 = new Series(statistics.Name, ViewType.Pie3D);
+
             // Bind the series to data. 
             series1.DataSource = statistics.AsListWithoutTotal();
             series1.ArgumentDataMember = nameof(LogAnalyzerSingleDataPoint.Name);
@@ -55,6 +57,7 @@ namespace Analogy.UserControls
 
             // Access the view-type-specific options of the series. 
             Pie3DSeriesView myView = (Pie3DSeriesView)series1.View;
+
             // Specify a data filter to explode points. 
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Value_1,
             //    DataFilterCondition.GreaterThanOrEqual, 9));
@@ -66,6 +69,7 @@ namespace Analogy.UserControls
 
             // Customize the legend. 
             pieChart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+
             // Add the chart to the form. 
             pieChart.Dock = DockStyle.Fill;
             this.Controls.Add(pieChart);
@@ -81,6 +85,7 @@ namespace Analogy.UserControls
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = name });
             pieChart.Series.Clear();
+
             // Create a pie series. 
             Series series1 = new Series(name, ViewType.Pie3D);
 
@@ -106,6 +111,7 @@ namespace Analogy.UserControls
 
             // Access the view-type-specific options of the series. 
             Pie3DSeriesView myView = (Pie3DSeriesView)series1.View;
+
             // Specify a data filter to explode points. 
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Value_1,
             //    DataFilterCondition.GreaterThanOrEqual, 9));
@@ -117,6 +123,7 @@ namespace Analogy.UserControls
 
             // Customize the legend. 
             pieChart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+
             // Add the chart to the form. 
             pieChart.Dock = DockStyle.Fill;
             this.Controls.Add(pieChart);

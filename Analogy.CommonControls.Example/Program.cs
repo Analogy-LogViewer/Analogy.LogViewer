@@ -12,7 +12,7 @@ namespace Analogy.CommonControls.Example
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
 #if NET
             Application.SetHighDpiMode(HighDpiMode.SystemAware);

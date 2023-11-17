@@ -16,10 +16,7 @@ namespace Analogy.CommonControls.DataTypes
         {
             MessagesSource = () => messages;
         }
-        //public LogStatistics(Func<List<AnalogyLogMessage>> messagesFunc)
-        //{
-        //    MessagesSource = messagesFunc;
-        //}
+
         public LogAnalyzerLogLevel CalculateGlobalStatistics()
         {
             return new LogAnalyzerLogLevel("Global", Messages.Count, CountMessages(Messages, AnalogyLogLevel.Error),
@@ -32,7 +29,6 @@ namespace Analogy.CommonControls.DataTypes
         {
             var total = Messages.Count;
             List<LogAnalyzerSingleDataPoint> items = new List<LogAnalyzerSingleDataPoint>();
-            //items.Add(new Statistics("Total messages", total));
             foreach (string text in Texts)
             {
                 items.Add(new LogAnalyzerSingleDataPoint(text, Messages.Count(m => Contains(m.Text, text, StringComparison.InvariantCultureIgnoreCase))));
@@ -80,6 +76,7 @@ namespace Analogy.CommonControls.DataTypes
         private int CountMessages(List<IAnalogyLogMessage> messages, AnalogyLogLevel level) => messages.Count(m => m.Level == level);
         private int CountModuleMessages(string module, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && module.Equals(m.Module));
         private int CountSourceMessages(string source, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && source.Equals(m.Source));
+
         /// <summary>
         /// Case insensitive contains(string)
         /// </summary>

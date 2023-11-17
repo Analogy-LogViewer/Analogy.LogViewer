@@ -82,6 +82,7 @@ namespace Analogy.UserControls
                 richTextBox1.Text += text + Environment.NewLine;
                 richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 richTextBox1.ScrollToCaret();
+
                 //}
             });
         }

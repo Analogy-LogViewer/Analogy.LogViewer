@@ -150,13 +150,16 @@ namespace Analogy.UserControls
             ServicesProvider.Instance.GetService<IAnalogyUserSettings>().AddToRecentFolders(DataProvider.Id, folder);
             List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).ToList();
             treeList1.Nodes.Clear();
+
             // TreeListFileNodes.Clear();
             foreach (FileInfo fi in fileInfos)
             {
                 treeList1.Nodes.Add(fi.Name, fi.LastWriteTime, fi.Length, fi.FullName);
+
                 // TreeListFileNodes.Add(fi.FullName);
             }
             treeList1.ClearSelection();
+
             //treeList1.TopVisibleNodeIndex = 0;
             treeList1.BestFitColumns();
             if (treeList1.Nodes.Any())
@@ -252,6 +255,7 @@ namespace Analogy.UserControls
                 DXMenuItem menuItem = new DXMenuItem($"Open file {Path.GetFileName(file)} in separate Window",
                     (_, __) => { OpenFileInSeparateWindow(file); })
                 { Tag = hitInfo.Column };
+
                 //menuItem.Image =Resources.
                 e.Menu.Items.Add(menuItem);
             }

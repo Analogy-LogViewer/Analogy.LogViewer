@@ -74,6 +74,7 @@ namespace Analogy.ApplicationSettings
             var valids = Settings.FactoriesSettings
                 .Where(f => FactoriesManager.GetOfflineDataSources(f.FactoryId).Any()).ToList();
             FactorySettings defaultSelection = valids.First();
+
             //file associations:
             cbDataProviderFactoryAssociation.Properties.DataSource = valids;
             cbDataProviderFactoryAssociation.Properties.DisplayMember = nameof(FactorySettings.FactoryName);

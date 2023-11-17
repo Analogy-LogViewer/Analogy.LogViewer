@@ -72,6 +72,7 @@ namespace Analogy.CommonControls.Managers
             pages = new List<DataTable>();
 
             currentTable = Utils.DataTableConstructor();
+
             //foreach (DataColumn column in currentTable.Columns)
             //{
             //    CurrentColumns.Add(column.ColumnName);

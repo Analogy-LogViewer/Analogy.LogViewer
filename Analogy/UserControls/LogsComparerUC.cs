@@ -29,7 +29,6 @@ namespace Analogy.UserControls
             rtboxRight.Text = "";
             lblFileLeft.Text = string.Empty;
             lblFileRight.Text = string.Empty;
-            ;
             if (File.Exists(pathLeft) && (pathLeft.EndsWith("txt") || pathLeft.EndsWith("cfg") || pathLeft.EndsWith("xml")))
             {
                 lblFileLeft.Text = pathLeft;

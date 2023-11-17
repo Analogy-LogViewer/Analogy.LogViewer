@@ -14,26 +14,32 @@ namespace Analogy.CommonControls.DataTypes
         /// No filter
         /// </summary>
         None,
+
         /// <summary>
         /// Current date
         /// </summary>
         Today,
+
         /// <summary>
         /// Current date and yesterday
         /// </summary>
         Last2Days,
+
         /// <summary>
         /// Today, yesterday and the day before yesterday
         /// </summary>
         Last3Days,
+
         /// <summary>
         /// Last 7 days
         /// </summary>
         LastWeek,
+
         /// <summary>
         /// Last 2 weeks
         /// </summary>
         Last2Weeks,
+
         /// <summary>
         /// Last one month
         /// </summary>

@@ -40,7 +40,7 @@ namespace Analogy.UserControls
                 {
                     e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
                     e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
-                    Int64 size = Convert.ToInt64(e.Node.GetValue("Size"));
+                    long size = Convert.ToInt64(e.Node.GetValue("Size"));
                     e.CellText = size >= 1024 ? $"{size / 1024:### ### ###} KB" : $"{size} Bytes";
                 }
                 else

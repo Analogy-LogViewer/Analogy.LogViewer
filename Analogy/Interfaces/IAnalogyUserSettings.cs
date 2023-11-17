@@ -56,6 +56,7 @@ namespace Analogy.Interfaces
         SettingsMode SettingsMode { get; set; }
         bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         string DefaultUserLogFolder { get; set; }
+
         /// <summary>
         /// delay in seconds
         /// </summary>

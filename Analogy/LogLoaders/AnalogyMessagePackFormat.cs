@@ -53,6 +53,7 @@ namespace Analogy.LogLoaders
             => Task.Factory.StartNew(() =>
             {
                 var data = MessagePackSerializer.Serialize(messages, MessagePack.Resolvers.ContractlessStandardResolver.Options);
+
                 //write string to file
                 File.WriteAllBytes(fileName, data);
             });

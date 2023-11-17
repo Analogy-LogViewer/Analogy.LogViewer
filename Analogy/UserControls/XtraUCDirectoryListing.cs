@@ -35,7 +35,7 @@ namespace Analogy.UserControls
                 {
                     e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
                     e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
-                    Int64 size = Convert.ToInt64(e.Node.GetValue("Size"));
+                    long size = Convert.ToInt64(e.Node.GetValue("Size"));
                     if (size >= 1024)
                     {
                         e.CellText = string.Format("{0:### ### ###} KB", size / 1024);
@@ -47,7 +47,7 @@ namespace Analogy.UserControls
                 }
                 else
                 {
-                    e.CellText = String.Format("<{0}>", e.Node.GetDisplayText("Type"));
+                    e.CellText = string.Format("<{0}>", e.Node.GetDisplayText("Type"));
                 }
             }
 

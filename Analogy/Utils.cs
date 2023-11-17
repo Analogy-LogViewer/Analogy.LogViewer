@@ -35,30 +35,37 @@ namespace Analogy
 
         [DllImport("user32.dll")]
         static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
         /// <summary>
         /// No filter. All allowed
         /// </summary>
         internal const string DateFilterNone = "All";
+
         /// <summary>
         /// From Today 
         /// </summary>
         internal const string DateFilterToday = "Today";
+
         /// <summary>
         /// From last 2 days 
         /// </summary>
         internal const string DateFilterLast2Days = "Last 2 days";
+
         /// <summary>
         /// From last 3 days
         /// </summary>
         internal const string DateFilterLast3Days = "Last 3 days";
+
         /// <summary>
         /// From last week
         /// </summary>
         internal const string DateFilterLastWeek = "Last one week";
+
         /// <summary>
         /// From last 2 weeks
         /// </summary>
         internal const string DateFilterLast2Weeks = "Last 2 weeks";
+
         /// <summary>
         /// From last month
         /// </summary>
@@ -71,6 +78,7 @@ namespace Analogy
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
         //
+
         /// <summary>
         /// 
         /// </summary>
@@ -236,7 +244,8 @@ namespace Analogy
                 case LogLevelSelectionType.Single:
                     chkLstLogLevel.CheckMode = CheckMode.Single;
                     chkLstLogLevel.CheckStyle = CheckStyles.Radio;
-                    CheckedListBoxItem[] radioLevels = {
+                    CheckedListBoxItem[] radioLevels =
+                    {
                         new CheckedListBoxItem("Trace"),
                         new CheckedListBoxItem("Error + Critical"),
                         new CheckedListBoxItem("Warning"),
@@ -290,6 +299,7 @@ namespace Analogy
             {
                 return openFilter;
             }
+
             //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
             //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
             //return openFilter + compressedFilter;
@@ -382,10 +392,12 @@ namespace Analogy
         public static SuperToolTip GetSuperTip(string title, string content)
         {
             SuperToolTip toolTip = new SuperToolTip();
+
             // Create an object to initialize the SuperToolTip.
             SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
             args.Title.Text = title;
             args.Contents.Text = content;
+
             // args.Contents.Image = realTime.ToolTip.Image;
             toolTip.Setup(args);
             return toolTip;

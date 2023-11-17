@@ -62,6 +62,7 @@ namespace Analogy.Forms
                 UserControl uc = settings.DataProviderSettings;
                 tab.Controls.Add(uc);
                 tab.Image = settings.LargeImage ?? Resources.Technology_32x32;
+
                 //ab.
                 uc.Dock = DockStyle.Fill;
                 tabControlMain.TabPages.Add(tab);

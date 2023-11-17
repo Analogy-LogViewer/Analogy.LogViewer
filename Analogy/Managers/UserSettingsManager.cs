@@ -565,6 +565,7 @@ namespace Analogy
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             //SaveSettingModeToRegistry();
         }
 
@@ -893,6 +894,7 @@ namespace Analogy
                     return;
                 }
             }
+
             //does not exists. create it:
             FileAssociations.Add(new FileAssociations(offlineProviderId, associations));
         }

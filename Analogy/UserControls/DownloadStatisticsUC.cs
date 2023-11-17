@@ -79,8 +79,10 @@ namespace Analogy.UserControls
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = "Download Statistics" });
             pieChart.Series.Clear();
+
             // Create a pie series. 
             Series series1 = new("Download Statistics", ViewType.Pie3D);
+
             // Bind the series to data. 
             series1.DataSource = data;
             series1.ArgumentDataMember = nameof(PieChartSingleDataPoint.Name);
@@ -103,6 +105,7 @@ namespace Analogy.UserControls
 
             // Access the view-type-specific options of the series. 
             Pie3DSeriesView myView = (Pie3DSeriesView)series1.View;
+
             // Specify a data filter to explode points. 
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Value_1,
             //    DataFilterCondition.GreaterThanOrEqual, 9));
@@ -114,6 +117,7 @@ namespace Analogy.UserControls
 
             // Customize the legend. 
             pieChart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+
             // Add the chart to the form. 
             pieChart.Dock = DockStyle.Fill;
             panelChart.Controls.Clear();

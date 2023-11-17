@@ -155,6 +155,7 @@ namespace Analogy.UserControls
             diagram.AxisX.DateTimeScaleOptions.ScaleMode = ScaleMode.Continuous;
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowRotate = false;
             diagram.AxisX.Label.ResolveOverlappingOptions.AllowStagger = false;
+
             // diagram.AxisX.VisualRange.EndSideMargin = 200;
             diagram.DependentAxesYRange = DefaultBoolean.True;
             diagram.AxisY.WholeRange.AlwaysShowZeroLevel = false;

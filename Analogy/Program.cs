@@ -34,6 +34,7 @@ namespace Analogy
 
         private static ILogger Logger => ServicesProvider.Instance.GetService<ILogger>();
         private static string AssemblyLocation;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
