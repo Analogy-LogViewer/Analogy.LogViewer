@@ -4,35 +4,22 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<TargetFrameworks>net48;net471;net7.0-windows;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net471;net8.0-windows;net7.0-windows;net6.0-windows</TargetFrameworks>
 		<Version>5.1.1.0</Version>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<UseWindowsForms>true</UseWindowsForms>
 		<AssemblyName>Analogy</AssemblyName>
 		<RootNamespace>Analogy</RootNamespace>
 		<ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 		<PackageId>Analogy.LogViewer</PackageId>
 		<Authors>Lior Banai</Authors>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
-		<PackageIcon>icon.png</PackageIcon>
-		<PackageIconUrl />
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
-		<PackageTags />
-		<RepositoryType>git</RepositoryType>
-		<Copyright>Lior Banai © 2019-2023</Copyright>
+		<PackageIcon>icon.png</PackageIcon>
+		<Copyright>Lior Banai © 2019-2024</Copyright>
 		<Product>Analogy Log Viewer</Product>
-		<PackageReleaseNotes></PackageReleaseNotes>
 		<Company>Analogy.LogViewer</Company>
 		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
-		<Nullable>enable</Nullable>
-		<LangVersion>latest</LangVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
@@ -70,10 +57,6 @@
 		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="MainForm.resx">
@@ -88,13 +71,7 @@
 		</None>
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
-		<PackageReference Include="PolySharp" Version="1.13.2">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' or '$(TargetFramework)' == 'net7.0-windows'">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' or '$(TargetFramework)' == 'net7.0-windows' or '$(TargetFramework)' == 'net8.0-windows'">
 		<Reference Include="DevExpress.BonusSkins.v23.1">
 			<HintPath>..\DevExpress\.net core\DevExpress.BonusSkins.v23.1.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -431,7 +408,7 @@
 
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net472' or  '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
 		<Compile Update="Forms\AboutDataSourceBox.cs" />
 		<Compile Update="Forms\AboutDataSourceBox.Designer.cs">
 			<DependentUpon>AboutDataSourceBox.cs</DependentUpon>

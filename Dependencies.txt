@@ -30,6 +30,5 @@ Interface -- CommonUtilities -- Template -- powertoys
 Interface -- CommonUtilities -- Template -- Sqlite
 Interface -- CommonUtilities -- Template -- Elastic.CommonSchema.Serilog
 Interface -- CommonUtilities -- Template -- Analogy.LogViewer.LoggersTree
-
-
+Interface -- CommonUtilities -- Template -- Analogy.LogViewer.FFmpeg
 

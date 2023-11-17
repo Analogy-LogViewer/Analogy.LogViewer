@@ -23,6 +23,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5E34202-7C91-45AB-94DA-A8934FE3D3B6}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
 		.github\workflows\dotnet-core-desktop.yml = .github\workflows\dotnet-core-desktop.yml
 		nuget.config = nuget.config
 	EndProjectSection
