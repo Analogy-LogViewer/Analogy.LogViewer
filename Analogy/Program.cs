@@ -21,12 +21,12 @@ using System.Windows.Forms;
 
 namespace Analogy
 {
-    static class Program
+    public static class Program
     {
-        public const int WM_COPYDATA = 0x004A;
+        public const int WMCOPYDATA = 0x004A;
 
         [DllImport("user32", EntryPoint = "SendMessageA")]
-        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        private static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private static IFactoriesManager FactoriesManager => ServicesProvider.Instance.GetService<IFactoriesManager>();
@@ -39,7 +39,7 @@ namespace Analogy
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
             DevExpress.UserSkins.BonusSkins.Register();
@@ -224,7 +224,7 @@ namespace Analogy
             IntPtr _copyDataBuff = IntPtrAlloc(_copyData);
 
             //Send message to the other process
-            SendMessage(targetProcess.MainWindowHandle, WM_COPYDATA, IntPtr.Zero, _copyDataBuff);
+            SendMessage(targetProcess.MainWindowHandle, WMCOPYDATA, IntPtr.Zero, _copyDataBuff);
 
             Marshal.FreeHGlobal(_copyDataBuff);
             Marshal.FreeHGlobal(_stringMessageBuffer);

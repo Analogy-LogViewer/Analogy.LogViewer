@@ -108,14 +108,14 @@ namespace Analogy.Extensions
                 }
 
                 var colors = DataProvider.GetColorForMessage(m);
-                if (colors.backgroundColor != Color.Empty)
+                if (colors.BackgroundColor != Color.Empty)
                 {
-                    e.Appearance.BackColor = colors.backgroundColor;
+                    e.Appearance.BackColor = colors.BackgroundColor;
                 }
 
-                if (colors.foregroundColor != Color.Empty)
+                if (colors.ForegroundColor != Color.Empty)
                 {
-                    e.Appearance.ForeColor = colors.foregroundColor;
+                    e.Appearance.ForeColor = colors.ForegroundColor;
                 }
             }
         }

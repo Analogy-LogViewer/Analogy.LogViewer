@@ -153,7 +153,7 @@ namespace Analogy.CommonControls.Managers
         {
             var table = pages.Last();
             var countInsideTable = table.Rows.Count;
-            List<(DataRow row, IAnalogyLogMessage message)> rows = new List<(DataRow row, IAnalogyLogMessage message)>(messages.Count);
+            List<(DataRow Row, IAnalogyLogMessage Message)> rows = new List<(DataRow Row, IAnalogyLogMessage Message)>(messages.Count);
             foreach (var message in messages)
             {
                 if (message.Level == AnalogyLogLevel.None)

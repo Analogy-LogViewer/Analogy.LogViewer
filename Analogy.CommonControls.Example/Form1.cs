@@ -26,7 +26,7 @@ namespace Analogy.CommonControls.Example
             this.Controls.Add(log);
             log.Dock = DockStyle.Fill;
 
-            Task.Factory.StartNew(() =>
+            _ = Task.Factory.StartNew(() =>
             {
                 for (int i = 0; i < 1000; i++)
                 {

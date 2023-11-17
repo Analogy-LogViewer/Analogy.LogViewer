@@ -36,8 +36,8 @@ namespace Analogy.UserControls
 
             PoolingManager.OnNewMessages += (s, data) =>
             {
-                AppendMessages(data.messages, data.dataSource);
-                OnNewMessages(data.messages);
+                AppendMessages(data.Messages, data.DataSource);
+                OnNewMessages(data.Messages);
             };
             this.Disposed += FilePoolingUCLogs_Disposed;
         }

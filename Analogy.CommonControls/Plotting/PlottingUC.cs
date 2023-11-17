@@ -236,8 +236,8 @@ namespace Analogy.CommonControls.Plotting
 
         private void SaveChartImageToFile(ChartControl chart, ImageFormat format, string fileName)
         {
-            // Create an image in the specified format from the chart 
-            // and save it to the specified path. 
+            // Create an image in the specified format from the chart
+            // and save it to the specified path.
             chart.ExportToImage(fileName, format);
         }
 
@@ -249,17 +249,17 @@ namespace Analogy.CommonControls.Plotting
         }
         private Image GetChartImage(ChartControl chart, ImageFormat format)
         {
-            // Create an image. 
+            // Create an image.
             Image image = null;
 
-            // Create an image of the chart. 
+            // Create an image of the chart.
             using (MemoryStream s = new MemoryStream())
             {
                 chart.ExportToImage(s, format);
                 image = Image.FromStream(s);
             }
 
-            // Return the image. 
+            // Return the image.
             return image;
         }
 

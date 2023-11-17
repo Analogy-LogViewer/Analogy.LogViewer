@@ -5,7 +5,7 @@ namespace Analogy.UserControls
 {
     public partial class UtilityUC : XtraUserControl
     {
-        Action Action { get; }
+        private Action Action { get; }
         public UtilityUC()
         {
             InitializeComponent();

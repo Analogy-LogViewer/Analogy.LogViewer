@@ -38,9 +38,9 @@ namespace Analogy.Forms
     {
         private IFactoriesManager FactoriesManager { get; }
         private IExtensionsManager ExtensionsManager { get; }
-        const int WM_COPYDATA = 0x004A;
+        private const int WMCOPYDATA = 0x004A;
         [DllImport("user32", EntryPoint = "SendMessageA")]
-        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        private static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")]
         internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
 
@@ -87,7 +87,7 @@ namespace Analogy.Forms
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == WM_COPYDATA)
+            if (m.Msg == WMCOPYDATA)
             {
                 //Reconstruct copy data structure
                 NativeMethods.COPYDATASTRUCT _dataStruct = Marshal.PtrToStructure<NativeMethods.COPYDATASTRUCT>(m.LParam);
@@ -322,14 +322,14 @@ namespace Analogy.Forms
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    if (!e.userControl.Visible)
+                    if (!e.UserControl.Visible)
                     {
                         var page = dockManager1.AddPanel(DockingStyle.Float);
-                        page.DockedAsTabbedDocument = e.startupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
-                        page.Controls.Add(e.userControl);
-                        e.userControl.Show();
-                        e.userControl.Dock = DockStyle.Fill;
-                        page.Text = $"Plot: {e.userControl.Title}";
+                        page.DockedAsTabbedDocument = e.StartupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
+                        page.Controls.Add(e.UserControl);
+                        e.UserControl.Show();
+                        e.UserControl.Dock = DockStyle.Fill;
+                        page.Text = $"Plot: {e.UserControl.Title}";
                         dockManager1.ActivePanel = page;
                         page.ClosingPanel += (_, __) =>
                         {
@@ -337,7 +337,7 @@ namespace Analogy.Forms
                         };
                         void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
                         {
-                            if (uc == e.userControl)
+                            if (uc == e.UserControl)
                             {
                                 dockManager1.RemovePanel(page);
                                 uc.Hide();
@@ -704,7 +704,7 @@ namespace Analogy.Forms
             // Handle FileDrop data.
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                // Assign the file names to a string array, in 
+                // Assign the file names to a string array, in
                 // case the user has selected multiple files.
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 await OpenOfflineFileWithSpecificDataProvider(files);
@@ -1896,7 +1896,10 @@ namespace Analogy.Forms
                 group.ItemLinks.Add(specificLocalFolder);
                 specificLocalFolder.ImageOptions.Image = images?.GetSmallOpenFolderImage(factoryId) ?? Resources.OpenFolder_16x16;
                 specificLocalFolder.ImageOptions.LargeImage = images?.GetLargeOpenFolderImage(factoryId) ?? Resources.OpenFolder_32x32;
-                specificLocalFolder.ItemClick += (sender, e) => { OpenOffline(title, specificDirectory); };
+                specificLocalFolder.ItemClick += async (sender, e) =>
+                {
+                    await OpenOffline(title, specificDirectory);
+                };
             }
 
             //add local folder button:
@@ -1934,9 +1937,9 @@ namespace Analogy.Forms
                 if (!string.IsNullOrEmpty(path.Path) && Directory.Exists(path.Path))
                 {
                     BarButtonItem btn = new BarButtonItem { Caption = path.Path };
-                    btn.ItemClick += (s, be) =>
+                    btn.ItemClick += async (s, be) =>
                     {
-                        OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
+                        await OpenOffline(offlineAnalogy.OptionalTitle, path.Path);
                     };
 
                     recentFolders.AddItem(btn);
@@ -1961,7 +1964,7 @@ namespace Analogy.Forms
                 openFiles.ImageOptions.Image = offlineAnalogy.SmallImage ?? Resources.Article_16x16;
                 openFiles.ImageOptions.LargeImage = offlineAnalogy.LargeImage ?? Resources.Article_32x32;
                 openFiles.RibbonStyle = RibbonItemStyles.All;
-                openFiles.ItemClick += (sender, e) =>
+                openFiles.ItemClick += async (sender, e) =>
                 {
                     OpenFileDialog openFileDialog1 = new OpenFileDialog
                     {
@@ -1971,7 +1974,7 @@ namespace Analogy.Forms
                     };
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        OpenOffline(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileNames);
+                        await OpenOffline(title, offlineAnalogy.InitialFolderFullPath, openFileDialog1.FileNames);
                         AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
                             openFileDialog1.FileNames.ToList());
                     }

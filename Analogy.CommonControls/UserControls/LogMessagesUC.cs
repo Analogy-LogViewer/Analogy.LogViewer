@@ -1779,7 +1779,7 @@ namespace Analogy.CommonControls.UserControls
                 string filter = _messageData.DefaultView.RowFilter;
                 if (LogGrid.ActiveFilterEnabled && !string.IsNullOrEmpty(LogGrid.ActiveFilterString))
                 {
-                    CriteriaOperator op = LogGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria  
+                    CriteriaOperator op = LogGrid.ActiveFilterCriteria; //filterControl1.FilterCriteria
                     string filterString = CriteriaToWhereClauseHelper.GetDataSetWhere(op);
                     filter = string.IsNullOrEmpty(filter) ? filterString : $"{filter} and {filterString}";
                 }
@@ -2644,14 +2644,14 @@ namespace Analogy.CommonControls.UserControls
                 }
 
                 var colors = DataProvider.GetColorForMessage(m);
-                if (colors.backgroundColor != Color.Empty)
+                if (colors.BackgroundColor != Color.Empty)
                 {
-                    e.Appearance.BackColor = colors.backgroundColor;
+                    e.Appearance.BackColor = colors.BackgroundColor;
                 }
 
-                if (colors.foregroundColor != Color.Empty)
+                if (colors.ForegroundColor != Color.Empty)
                 {
-                    e.Appearance.ForeColor = colors.foregroundColor;
+                    e.Appearance.ForeColor = colors.ForegroundColor;
                 }
             }
 

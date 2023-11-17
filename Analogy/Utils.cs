@@ -34,7 +34,7 @@ namespace Analogy
         private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         [DllImport("user32.dll")]
-        static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
 
         /// <summary>
         /// No filter. All allowed
@@ -42,12 +42,12 @@ namespace Analogy
         internal const string DateFilterNone = "All";
 
         /// <summary>
-        /// From Today 
+        /// From Today
         /// </summary>
         internal const string DateFilterToday = "Today";
 
         /// <summary>
-        /// From last 2 days 
+        /// From last 2 days
         /// </summary>
         internal const string DateFilterLast2Days = "Last 2 days";
 
@@ -80,13 +80,14 @@ namespace Analogy
         //
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="item"></param>
         /// <param name="filename"></param>
         public static void SerializeToBinaryFile<T>(T item, string filename)
         {
+#pragma warning disable SYSLIB0011
             var formatter = new BinaryFormatter();
             var directoryName = Path.GetDirectoryName(filename);
             try
@@ -98,26 +99,25 @@ namespace Analogy
 
                 using (Stream myWriter = File.Open(filename, FileMode.Create, FileAccess.ReadWrite))
                 {
-#pragma warning disable SYSLIB0011
                     formatter.Serialize(myWriter, item);
-#pragma warning restore SYSLIB0011
-
                 }
             }
             catch (SerializationException ex)
             {
                 throw new Exception("GeneralDataUtils: Error in SerializeToBinaryFile", ex);
             }
+#pragma warning restore SYSLIB0011
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="filename"></param>
         /// <returns></returns>
         public static T DeSerializeBinaryFile<T>(string filename) where T : class, new()
         {
+#pragma warning disable SYSLIB0011
             var formatter = new BinaryFormatter();
             if (File.Exists(filename))
             {
@@ -125,9 +125,7 @@ namespace Analogy
                 {
                     using (Stream myReader = File.Open(filename, FileMode.Open, FileAccess.Read))
                     {
-#pragma warning disable SYSLIB0011
                         return (T)formatter.Deserialize(myReader);
-#pragma warning restore SYSLIB0011
                     }
                 }
                 catch (Exception ex)
@@ -135,8 +133,8 @@ namespace Analogy
                     throw new Exception("GeneralDataUtils: Error in DeSerializeBinaryFile", ex);
                 }
             }
-
             throw new FileNotFoundException("GeneralDataUtils: File does not exist: " + filename, filename);
+#pragma warning restore SYSLIB0011
         }
 
         public static void SetSkin(Control control, string skinName)
@@ -167,7 +165,7 @@ namespace Analogy
             return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
 
-        static long GetLastInputTime()
+        private static long GetLastInputTime()
         {
             uint idleTime = 0;
             LASTINPUTINFO lastInputInfo = new LASTINPUTINFO();

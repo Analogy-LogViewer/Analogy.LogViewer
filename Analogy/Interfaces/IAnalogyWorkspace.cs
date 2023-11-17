@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.Interfaces
 {
-    interface IAnalogyWorkspace
+    public interface IAnalogyWorkspace
     {
         void SaveCurrentWorkspace();
     }

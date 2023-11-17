@@ -119,7 +119,7 @@ namespace Analogy.CommonControls.Tools
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        private (bool valid, List<TreeNode> result) LoadTree(object jsonData, CancellationToken cancellationToken)
+        private (bool Valid, List<TreeNode> Result) LoadTree(object jsonData, CancellationToken cancellationToken)
         {
             if (cancellationToken.IsCancellationRequested)
             {
@@ -266,9 +266,9 @@ namespace Analogy.CommonControls.Tools
             treeContextMenu.SuspendLayout();
             SuspendLayout();
 
-            // 
+            //
             // treeContextMenu
-            // 
+            //
             treeContextMenu.ImageScalingSize = new Size(20, 20);
             treeContextMenu.Items.AddRange(new ToolStripItem[]
             {
@@ -278,18 +278,18 @@ namespace Analogy.CommonControls.Tools
             treeContextMenu.Size = new Size(147, 30);
             treeContextMenu.Opening += new CancelEventHandler(treeContextMenu_Opening);
 
-            // 
+            //
             // expandAllMenuItem
-            // 
+            //
             expandAllMenuItem.Name = "expandAllMenuItem";
             expandAllMenuItem.ShortcutKeys = ((Keys)((Keys.Control | Keys.E)));
             expandAllMenuItem.ShowShortcutKeys = false;
             expandAllMenuItem.Size = new Size(146, 26);
             expandAllMenuItem.Text = "&Expand All";
 
-            // 
+            //
             // statusStrip1
-            // 
+            //
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Location = new Point(0, 0);
             statusStrip1.Name = "statusStrip1";
@@ -297,9 +297,9 @@ namespace Analogy.CommonControls.Tools
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
 
-            // 
+            //
             // JsonTreeView
-            // 
+            //
             ContextMenuStrip = treeContextMenu;
             FullRowSelect = true;
             treeContextMenu.ResumeLayout(false);
@@ -376,9 +376,9 @@ namespace Analogy.CommonControls.Tools
                     object json = JsonConvert.DeserializeObject(jsonString);
                     return LoadTree(json, token);
                 });
-                if (nodes.valid)
+                if (nodes.Valid)
                 {
-                    Nodes.AddRange(nodes.result.ToArray());
+                    Nodes.AddRange(nodes.Result.ToArray());
                 }
                 EndUpdate();
             }

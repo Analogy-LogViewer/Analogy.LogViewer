@@ -35,12 +35,12 @@ namespace Analogy.CommonControls
         internal const string DateFilterNone = "All";
 
         /// <summary>
-        /// From Today 
+        /// From Today
         /// </summary>
         internal const string DateFilterToday = "Today";
 
         /// <summary>
-        /// From last 2 days 
+        /// From last 2 days
         /// </summary>
         internal const string DateFilterLast2Days = "Last 2 days";
 

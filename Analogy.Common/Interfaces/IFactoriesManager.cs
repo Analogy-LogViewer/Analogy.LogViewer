@@ -28,7 +28,7 @@ namespace Analogy.Common.Interfaces
 
         IEnumerable<IAnalogyOfflineDataProvider> GetOfflineDataSources(Guid factoryId);
 
-        IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds();
+        IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)> GetRealTimeDataSourcesNamesAndIds();
         Assembly GetAssemblyOfFactory(IAnalogyFactory factory);
         FactoryContainer GetBuiltInFactoryContainer(Guid id);
         bool IsBuiltInFactory(IAnalogyFactory factory);

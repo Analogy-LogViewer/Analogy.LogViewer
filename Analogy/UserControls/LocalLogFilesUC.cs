@@ -95,13 +95,13 @@ namespace Analogy.UserControls
                 spltMain.PanelVisibility = collapsed ? SplitPanelVisibility.Panel2 : SplitPanelVisibility.Both;
             };
         }
-        private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
+        private void UcLogs1_OnFocusedRowChanged(object sender, (string File, AnalogyLogMessage Arg) data)
         {
-            if (data.file is null)
+            if (data.File is null)
             {
                 return;
             }
-            var t = treeList1.Nodes.FirstOrDefault(n => data.file.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
+            var t = treeList1.Nodes.FirstOrDefault(n => data.File.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
             if (t != null && treeList1.FocusedNode != t)
             {
                 treeList1.SelectionChanged -= TreeList1_SelectionChanged;

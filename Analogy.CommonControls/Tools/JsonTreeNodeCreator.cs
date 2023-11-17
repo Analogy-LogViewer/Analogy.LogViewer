@@ -2,7 +2,7 @@
 
 namespace Analogy.CommonControls.Tools
 {
-    class JsonTreeNodeCreator
+    public class JsonTreeNodeCreator
     {
         internal static JsonTreeNode CreateNode(string property, JToken item)
         {

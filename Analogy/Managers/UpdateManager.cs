@@ -91,7 +91,7 @@ namespace Analogy.Managers
             }
         }
 
-        public (string title, string DownloadURL) DownloadInformation
+        public (string Title, string DownloadURL) DownloadInformation
         {
             get
             {
@@ -149,7 +149,7 @@ namespace Analogy.Managers
             return tagName == null ? null : new Version(tagName.Replace("V", "").Replace("v", ""));
         }
 
-        public async Task<(bool newData, Release release)> CheckVersion(bool forceUpdate)
+        public async Task<(bool NewData, Release Release)> CheckVersion(bool forceUpdate)
         {
             if (!forceUpdate && NextUpdate > DateTime.Now && Settings.LastVersionChecked != null)
             {

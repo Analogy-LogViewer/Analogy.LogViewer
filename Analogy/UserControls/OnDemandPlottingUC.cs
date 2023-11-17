@@ -52,11 +52,11 @@ namespace Analogy.UserControls
             PlottingManager.OnNewSeries += Instance_OnNewSeries;
         }
 
-        private void Instance_OnNewSeries(object sender, (Guid Id, string seriesName) e)
+        private void Instance_OnNewSeries(object sender, (Guid Id, string SeriesName) e)
         {
             if (Id == e.Id)
             {
-                AddSeries(e.seriesName);
+                AddSeries(e.SeriesName);
             }
         }
 

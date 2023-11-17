@@ -38,10 +38,10 @@ namespace Analogy
 
         #region pinvoke
 
-        const int WM_COPYDATA = 0x004A;
+        private const int WMCOPYDATA = 0x004A;
 
         [DllImport("user32", EntryPoint = "SendMessageA")]
-        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        private static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll")]
         internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
@@ -238,14 +238,14 @@ namespace Analogy
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    if (!e.userControl.Visible)
+                    if (!e.UserControl.Visible)
                     {
                         var page = dockManager1.AddPanel(DockingStyle.Float);
-                        page.DockedAsTabbedDocument = e.startupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
-                        page.Controls.Add(e.userControl);
-                        e.userControl.Show();
-                        e.userControl.Dock = DockStyle.Fill;
-                        page.Text = $"Plot: {e.userControl.Title}";
+                        page.DockedAsTabbedDocument = e.StartupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
+                        page.Controls.Add(e.UserControl);
+                        e.UserControl.Show();
+                        e.UserControl.Dock = DockStyle.Fill;
+                        page.Text = $"Plot: {e.UserControl.Title}";
                         dockManager1.ActivePanel = page;
                         page.ClosingPanel += (_, __) =>
                         {
@@ -253,7 +253,7 @@ namespace Analogy
                         };
                         void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
                         {
-                            if (uc == e.userControl)
+                            if (uc == e.UserControl)
                             {
                                 dockManager1.RemovePanel(page);
                                 uc.Hide();

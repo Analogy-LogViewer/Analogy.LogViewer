@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V6.0.0 - Add NET8 support. #1875", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 11, 17), "6.0.0"),
                 new ("V5.1.1 - millisecond time is not showing parsed json record. #1866", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 10, 27), "5.1.1.0"),
                 new ("V5.1.1 - Fix NLog Parser #1862", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 10, 26), "5.1.1.0"),
                 new ("V5.1.1 - Add escape key to close detailed Message with Esc key #1865", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 10, 20), "5.1.1.0"),
@@ -264,10 +265,10 @@ namespace Analogy
                 new AnalogyChangeLog("Add providers icon to the ribbon page. #219", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 07, 09), ""),
                 new AnalogyChangeLog("Main log viewer window always starts up full screen. #213", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 07, 05), ""),
                 new AnalogyChangeLog("Cleanup Filtering UI Elements. #212", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 07, 04), ""),
-                new AnalogyChangeLog( "Add option to select rows and perform operation on the selection (save to file, open in new window, etc). #201", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 07, 03), ""),
-                new AnalogyChangeLog( "Add dynamic columns at run time based on AdditionalInformation Property of AnalogyLogMessage. #206", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 07, 02), ""),
-                new AnalogyChangeLog( "Add multi select of rows. #204", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 06, 28), ""), new AnalogyChangeLog( "Enable version check on startup. #200", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 06, 26), ""),
-                new AnalogyChangeLog( "Ribbon Icons are not correct for real time data sources. #199", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 06, 26), ""),
+                new AnalogyChangeLog("Add option to select rows and perform operation on the selection (save to file, open in new window, etc). #201", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 07, 03), ""),
+                new AnalogyChangeLog("Add dynamic columns at run time based on AdditionalInformation Property of AnalogyLogMessage. #206", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 07, 02), ""),
+                new AnalogyChangeLog("Add multi select of rows. #204", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 06, 28), ""), new AnalogyChangeLog("Enable version check on startup. #200", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 06, 26), ""),
+                new AnalogyChangeLog("Ribbon Icons are not correct for real time data sources. #199", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 06, 26), ""),
                 new AnalogyChangeLog("[Windows Events log Parser] Unable to load system log files (*.evtx). #197", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2020, 06, 21), ""),
                 new AnalogyChangeLog("Add MachineName to UI columns. #196", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2020, 06, 20), ""),
                 new AnalogyChangeLog("Add Recent Folder to The Ribbon UI. #193", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2020, 06, 19), ""),

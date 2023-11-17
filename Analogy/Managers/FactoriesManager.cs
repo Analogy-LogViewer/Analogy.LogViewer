@@ -121,7 +121,7 @@ namespace Analogy
                 .Select(res => res.DataProvider);
         }
 
-        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
+        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)> GetRealTimeDataSourcesNamesAndIds()
         {
             foreach (var fc in Factories)
             {
@@ -335,7 +335,7 @@ namespace Analogy
             }
             #endregion
             #region load types
-            var typesToLoad = new List<(Assembly assembly, string fileName, List<Type> types)>();
+            var typesToLoad = new List<(Assembly Assembly, string FileName, List<Type> Types)>();
             foreach (string aFile in analogyAssemblies)
             {
                 if (aFile.Contains("Analogy.LogViewer.Template"))

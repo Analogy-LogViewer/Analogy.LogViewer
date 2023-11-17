@@ -26,7 +26,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     private DateTime _lastWriteTime = DateTime.MinValue;
     private bool _readingInprogress;
     private FileSystemWatcher _watchFile;
-    public EventHandler<(List<IAnalogyLogMessage> messages, string dataSource)> OnNewMessages;
+    public EventHandler<(List<IAnalogyLogMessage> Messages, string DataSource)> OnNewMessages;
     private IAnalogyUserSettings Settings { get; }
 
     public FilePoolingManager(IAnalogyUserSettings settings, string filter, string initialFilename, UCLogs logUI,

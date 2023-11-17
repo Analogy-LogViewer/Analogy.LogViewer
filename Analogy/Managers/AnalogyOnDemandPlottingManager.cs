@@ -3,19 +3,18 @@ using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.UserControls;
-using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Analogy.Managers
 {
     public class AnalogyOnDemandPlottingManager
     {
-        public event EventHandler<(OnDemandPlottingUC userControl, AnalogyOnDemandPlottingStartupType startupType)>
-            OnShowPlot;
+        public event EventHandler<(OnDemandPlottingUC UserControl, AnalogyOnDemandPlottingStartupType StartupType)> OnShowPlot;
 
         public event EventHandler<OnDemandPlottingUC> OnHidePlot;
         public event EventHandler<(Guid Id, IEnumerable<AnalogyPlottingPointData> PointsData)> OnNewPointsData;
-        public event EventHandler<(Guid Id, string seriesName)> OnNewSeries;
+        public event EventHandler<(Guid Id, string SeriesName)> OnNewSeries;
         private IAnalogyOnDemandPlottingInteractor Interactor { get; }
         private Dictionary<Guid, OnDemandPlottingUC> Plots { get; }
         private List<IAnalogyOnDemandPlotting> Plotters { get; }
@@ -33,7 +32,7 @@ namespace Analogy.Managers
         public void Register(IAnalogyOnDemandPlotting plotter)
         {
             plotter.OnNewPointsData += Plotter_OnNewPointsData;
-            plotter.InitializeOnDemandPlotting(Interactor, ServicesProvider.Instance.GetService<ILogger>());
+            _ = plotter.InitializeOnDemandPlotting(Interactor, ServicesProvider.Instance.GetService<ILogger>());
             Plotters.Add(plotter);
         }
 

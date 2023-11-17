@@ -51,11 +51,11 @@ namespace Analogy.CommonControls.DataTypes
                 data.Start();
             }
         }
-        public void Start(string SeriesName)
+        public void Start(string seriesName)
         {
             foreach ((string name, PlottingGraphData data) in GraphsData)
             {
-                if (name == SeriesName)
+                if (name == seriesName)
                 {
                     data.Start();
                 }

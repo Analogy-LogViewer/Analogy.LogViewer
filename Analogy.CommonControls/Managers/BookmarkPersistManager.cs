@@ -115,7 +115,7 @@ namespace Analogy.CommonControls.Managers
                 try
                 {
                     AnalogyJsonLogFile save = new AnalogyJsonLogFile();
-                    save.Save(Messages, BookmarkFileName);
+                    _ = save.Save(Messages, BookmarkFileName);
                 }
                 catch (Exception e)
                 {

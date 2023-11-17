@@ -125,7 +125,7 @@ namespace Analogy.UserControls
             }
         }
 
-        bool IsFile(DirectoryInfo info)
+        private bool IsFile(DirectoryInfo info)
         {
             try
             {
@@ -136,7 +136,7 @@ namespace Analogy.UserControls
                 return false;
             }
         }
-        bool IsDrive(string val)
+        private bool IsDrive(string val)
         {
             string[] drives = Directory.GetLogicalDrives();
             foreach (string drive in drives)

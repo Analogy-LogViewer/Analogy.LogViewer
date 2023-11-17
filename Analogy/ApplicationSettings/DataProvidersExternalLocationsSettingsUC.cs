@@ -34,7 +34,7 @@ namespace Analogy.ApplicationSettings
                     ShowNewFolderButton = false,
                 };
 
-                // Show the FolderBrowserDialog.  
+                // Show the FolderBrowserDialog.
                 DialogResult result = folderDlg.ShowDialog();
                 if (result == DialogResult.OK)
                 {

@@ -17,7 +17,7 @@ namespace Analogy.Managers
     {
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
-        public event EventHandler<(AnalogyLogMessage msg, string source)> OnNewMessage;
+        public event EventHandler<(AnalogyLogMessage Message, string Source)> OnNewMessage;
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
         public static AnalogyLogManager Instance => _instance.Value;
 
