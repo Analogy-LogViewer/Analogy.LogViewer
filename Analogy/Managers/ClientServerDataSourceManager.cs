@@ -25,17 +25,13 @@ namespace Analogy
                 {
                     //do nothing. log later
                 }
-
             }
         }
-
-
 
         public void Remove(DataSource data)
         {
             DataSources.Remove(data);
             Save();
-
         }
 
         private void Save()

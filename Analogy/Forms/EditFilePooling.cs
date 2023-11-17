@@ -13,7 +13,6 @@ namespace Analogy.Forms
             Dir = Path.GetDirectoryName(fileName) ?? string.Empty;
             txtFilename.Text = Path.GetFileName(fileName);
         }
-        
 
         public string Dir { get; set; }
 

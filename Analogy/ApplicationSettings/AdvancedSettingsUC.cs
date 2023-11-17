@@ -30,7 +30,6 @@ namespace Analogy.ApplicationSettings
             tsAdvancedModeAdditionalColumns.IsOnChanged += (s, e) => Settings.AdvancedModeAdditionalFilteringColumnsEnabled = tsAdvancedModeAdditionalColumns.IsOn;
             tsAdvancedModeRawSQLFiltering.IsOnChanged += (s, e) => Settings.AdvancedModeRawSQLFilterEnabled = tsAdvancedModeRawSQLFiltering.IsOn;
             tsLinux.IsOnChanged += (s, e) => Settings.SupportLinuxFormatting = tsLinux.IsOn;
-
         }
     }
 }

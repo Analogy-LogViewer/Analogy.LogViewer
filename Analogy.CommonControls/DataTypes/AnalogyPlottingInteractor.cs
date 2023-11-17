@@ -25,9 +25,6 @@ namespace Analogy.CommonControls.DataTypes
         {
             XAxisDataType = xAxisDataType;
             WindowSize = windowSize;
-
-
-
         }
         public void SetDefaultWindow(int numberOfPointsInWindow)
         {

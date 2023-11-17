@@ -15,7 +15,6 @@ namespace Analogy.Common.DataTypes
         public string Sources { get; }
         public string Modules { get; }
 
-
         public PreDefineFilter(string name, string includeText, string excludeText, string sources, string modules)
         {
             Name = name ?? string.Empty;
@@ -31,6 +30,5 @@ namespace Analogy.Common.DataTypes
 
         public string NiceText() =>
             $"Message Text: {IncludeText}{Environment.NewLine}Exclude Text: {ExcludeText}{Environment.NewLine}Sources: {Sources}{Environment.NewLine}Module: {Modules}";
-
     }
 }

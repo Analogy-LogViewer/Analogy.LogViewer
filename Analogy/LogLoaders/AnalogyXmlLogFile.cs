@@ -12,7 +12,6 @@ namespace Analogy.LogLoaders
     {
         public AnalogyXmlLogFile()
         {
-            
         }
         public Task Save(List<AnalogyLogMessage> messages, string filename)
             => Task.Factory.StartNew(() =>
@@ -28,7 +27,7 @@ namespace Analogy.LogLoaders
             Task.Factory.StartNew(() =>
             {
                 XmlSerializer ser = new XmlSerializer(typeof(List<AnalogyLogMessage>));
-                using (FileStream fs = new FileStream(@filename, FileMode.Open,FileAccess.ReadWrite))
+                using (FileStream fs = new FileStream(@filename, FileMode.Open, FileAccess.ReadWrite))
                 {
                     try
                     {
@@ -41,12 +40,11 @@ namespace Analogy.LogLoaders
                             AnalogyLogClass.General, "Analogy", "None")
                         {
                             Source = "Analogy",
-                            Module = Process.GetCurrentProcess().ProcessName
+                            Module = Process.GetCurrentProcess().ProcessName,
                         };
                         AnalogyLogManager.Instance.LogErrorMessage(errMessage);
                         return new List<AnalogyLogMessage>() { errMessage };
                     }
-
                 }
             });
         internal Task<List<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
@@ -69,7 +67,7 @@ namespace Analogy.LogLoaders
                             AnalogyLogClass.General, "Analogy", "None")
                         {
                             Source = "Analogy",
-                            Module = Process.GetCurrentProcess().ProcessName
+                            Module = Process.GetCurrentProcess().ProcessName,
                         };
                         AnalogyLogManager.Instance.LogErrorMessage(errMessage);
                         messagesHandler.AppendMessage(errMessage, fileName);

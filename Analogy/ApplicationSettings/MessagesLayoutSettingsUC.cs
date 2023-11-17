@@ -19,7 +19,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class MessagesLayoutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } 
+        private IUserSettingsManager Settings { get; }
         private DataTable messageData;
         public MessagesLayoutSettingsUC(IAnalogyUserSettings settings)
         {
@@ -88,7 +88,6 @@ namespace Analogy.ApplicationSettings
                     teHeader.Tag = info.Column;
                     teHeader.Text = info.Column.Caption;
                 }
-
             };
             gridControl.MainView.Layout += (s, e) =>
             {
@@ -113,7 +112,6 @@ namespace Analogy.ApplicationSettings
                     column.Caption = teHeader.Text;
                     SaveGridLayout();
                 }
-
             };
 
             sbtnDateTimeFormat.Click += (s, e) =>
@@ -134,9 +132,7 @@ namespace Analogy.ApplicationSettings
             {
                 ServicesProvider.Instance.GetService<ILogger>().LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
-
     }
 }

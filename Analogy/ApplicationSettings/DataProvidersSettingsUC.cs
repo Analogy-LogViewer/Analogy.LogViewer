@@ -91,7 +91,6 @@ namespace Analogy.ApplicationSettings
             }
 
             Settings.UpdateOrder(order);
-
         }
     }
 }

@@ -40,9 +40,8 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         _messages = new List<IAnalogyLogMessage>();
         FileName = initialFilename;
         FileFilter = filter;
-        FileProcessor = new FileProcessor(Settings, this, ServicesProvider.Instance.GetService<FileProcessingManager>(),ServicesProvider.Instance.GetService<ILogger>());
+        FileProcessor = new FileProcessor(Settings, this, ServicesProvider.Instance.GetService<FileProcessingManager>(), ServicesProvider.Instance.GetService<ILogger>());
     }
-
 
     private string FileName { get; }
     private FileProcessor FileProcessor { get; }
@@ -90,7 +89,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         _watchFile = new FileSystemWatcher
         {
             Path = Path.GetDirectoryName(FileName),
-            Filter = Path.GetFileName(FileFilter)
+            Filter = Path.GetFileName(FileFilter),
         };
         _watchFile.Changed += WatchFile_Changed;
         if (!HasFileFilter)
@@ -107,7 +106,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
             Level = AnalogyLogLevel.Analogy,
             Source = "Analogy",
             Class = AnalogyLogClass.General,
-            Date = DateTime.Now
+            Date = DateTime.Now,
         };
         OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         if (!HasFileFilter)
@@ -146,7 +145,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
                 Level = AnalogyLogLevel.Critical,
                 Source = "Analogy",
                 Class = AnalogyLogClass.General,
-                Date = DateTime.Now
+                Date = DateTime.Now,
             };
             OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         }
@@ -169,7 +168,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
                 Level = AnalogyLogLevel.Warning,
                 Source = "Analogy",
                 Class = AnalogyLogClass.General,
-                Date = DateTime.Now
+                Date = DateTime.Now,
             };
             _watchFile.Dispose();
             OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
@@ -193,7 +192,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
                 FileName = FileName,
                 Level = AnalogyLogLevel.Warning,
                 Class = AnalogyLogClass.General,
-                Date = DateTime.Now
+                Date = DateTime.Now,
             };
             _watchFile.Dispose();
             OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
@@ -239,7 +238,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
                     FileName = FileName,
                     Level = AnalogyLogLevel.Warning,
                     Class = AnalogyLogClass.General,
-                    Date = DateTime.Now
+                    Date = DateTime.Now,
                 };
                 OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, e.FullPath));
                 AnalogyLogManager.Instance.LogErrorMessage(m);

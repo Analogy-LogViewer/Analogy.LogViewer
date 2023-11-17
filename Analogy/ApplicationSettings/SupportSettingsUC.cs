@@ -11,7 +11,6 @@ namespace Analogy.ApplicationSettings
 
         private void SupportSettings_Load(object sender, EventArgs e)
         {
-
         }
 
         private void OpenLink(object sender, DevExpress.Utils.HyperlinkClickEventArgs e)

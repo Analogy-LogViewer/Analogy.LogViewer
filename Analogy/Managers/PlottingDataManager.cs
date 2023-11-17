@@ -40,7 +40,6 @@ namespace Analogy.Managers
                     }
                 }
             }
-
         }
         public void Start()
         {

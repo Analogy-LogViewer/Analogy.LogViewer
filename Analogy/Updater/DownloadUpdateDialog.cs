@@ -41,14 +41,13 @@ namespace Analogy.Updater
             _taskCompletionSource = taskCompletionSource;
             _tempFile = Path.Combine(Path.GetTempPath(), "Analogy.Updater.zip");
             Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
-
         }
 
         private void DownloadUpdateDialogLoad(object sender, EventArgs e)
         {
             _webClient = new MyWebClient
             {
-                CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore)
+                CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore),
             };
 
             if (Proxy != null)
@@ -57,7 +56,6 @@ namespace Analogy.Updater
             }
 
             var uri = new Uri(_downloadURL);
-
 
             if (BasicAuthDownload != null)
             {
@@ -84,15 +82,12 @@ namespace Analogy.Updater
                     XtraMessageBox.Show(asyncCompletedEventArgs.Error.Message,
                         asyncCompletedEventArgs.Error.GetType().ToString(), MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-
                 }
                 _webClient?.Dispose();
                 DialogResult = DialogResult.OK;
                 _taskCompletionSource.SetResult(true);
                 Close();
             }
-
-
         }
 
         private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath)
@@ -154,12 +149,10 @@ namespace Analogy.Updater
                         {
                             ServicesProvider.Instance.GetService<ILogger>().LogError($"Error unpacking Updater: {e.Message}", e);
                         }
-
                     }
                 }
             }
         }
-
 
         private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {

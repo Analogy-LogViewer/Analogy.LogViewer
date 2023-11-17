@@ -25,7 +25,6 @@ namespace Analogy
                 switch (c)
                 {
 
-
                     case ']':
                     case '[':
                     case '%':
@@ -47,7 +46,7 @@ namespace Analogy
         }
         public enum SearchType
         {
-            And, Or
+            And, Or,
         }
 
         public SearchType Type;
@@ -77,13 +76,12 @@ namespace Analogy
                         throw new ArgumentOutOfRangeException();
                 }
             }
-
         }
     }
 
     public enum SearchType
     {
-        Expression, And, Or, Lparentheses, Rparentheses
+        Expression, And, Or, Lparentheses, Rparentheses,
     }
     public class Token
     {
@@ -101,7 +99,6 @@ namespace Analogy
             return $"{nameof(Text)}: {Text}";
         }
     }
-
 
     public class InterpreterParser
     {
@@ -209,5 +206,4 @@ namespace Analogy
             return result;
         }
     }
-
 }

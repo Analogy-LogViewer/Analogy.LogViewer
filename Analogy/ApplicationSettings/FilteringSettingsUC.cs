@@ -14,7 +14,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class FilteringSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } 
+        private IAnalogyUserSettings Settings { get; }
         public FilteringSettingsUC(IAnalogyUserSettings settings)
         {
             this.Settings = settings;
@@ -71,8 +71,6 @@ namespace Analogy.ApplicationSettings
             {
                 Settings.ShowProcessedCounter = tsShowProgressCounter.IsOn;
             };
-
-
         }
 
         private void LoadSettings()

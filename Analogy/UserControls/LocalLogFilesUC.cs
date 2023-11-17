@@ -173,7 +173,6 @@ namespace Analogy.UserControls
             ucLogs1.OnFocusedRowChanged -= UcLogs1_OnFocusedRowChanged;
             await ucLogs1.LoadFilesAsync(fileNames, clearLog);
             ucLogs1.OnFocusedRowChanged += UcLogs1_OnFocusedRowChanged;
-
         }
 
         private void bBtnOpen_ItemClick(object sender, ItemClickEventArgs e)
@@ -217,7 +216,6 @@ namespace Analogy.UserControls
                     }
                 }
             }
-
         }
 
         private void bBtnRefresh_ItemClick(object sender, ItemClickEventArgs e)
@@ -236,7 +234,6 @@ namespace Analogy.UserControls
             await LoadFilesAsync(files, chkbSelectionMode.Checked);
         }
 
-
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
         {
             async void OpenFileInSeparateWindow(string filename)
@@ -245,7 +242,6 @@ namespace Analogy.UserControls
                 await ucLogs1.LoadFileInSeparateWindow(filename);
                 ucLogs1.OnFocusedRowChanged += UcLogs1_OnFocusedRowChanged;
             }
-
 
             TreeList treeList = sender as TreeList;
             TreeListHitInfo hitInfo = treeList.CalcHitInfo(e.Point);
@@ -261,8 +257,6 @@ namespace Analogy.UserControls
                 //menuItem.Image =Resources.
                 e.Menu.Items.Add(menuItem);
             }
-
-
         }
 
         public void ShowSecondaryWindow()
@@ -277,5 +271,4 @@ namespace Analogy.UserControls
                 ucLogs1.HideSecondaryWindow();
         }
     }
-
 }

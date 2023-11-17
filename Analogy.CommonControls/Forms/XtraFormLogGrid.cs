@@ -38,7 +38,6 @@ namespace Analogy.CommonControls.Forms
             _dataSource = dataSource;
         }
 
-
         public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager)
         {
             _messages = messages;
@@ -49,8 +48,6 @@ namespace Analogy.CommonControls.Forms
             }
 
             ucLogs1.SetFileDataSource(dataProvider, fileProvider);
-
-
         }
 
         private void Instance_OnNewMessage(object sender, (AnalogyLogMessage msg, string source) e)

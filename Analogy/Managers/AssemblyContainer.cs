@@ -52,7 +52,6 @@ namespace Analogy.Managers
     //            shareableFactory));
     //    }
 
-
     //    public bool FactoryDisabled(IAnalogyFactory factory) =>
     //        FactorySettings.Exists(item => item.FactoryId == factory.FactoryId) &&
     //        FactorySettings.Single(item => item.FactoryId == factory.FactoryId).Status ==

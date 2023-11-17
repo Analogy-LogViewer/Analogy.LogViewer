@@ -96,7 +96,6 @@ namespace Analogy.UserControls
                 listBoxClearHistory.SelectedIndex = -1;
                 listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
             }));
-
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -107,7 +106,6 @@ namespace Analogy.UserControls
 
                 string interned = string.Intern(dataSource);
                 ucLogs1.AppendMessages(messages, interned);
-
             }
         }
 
@@ -152,5 +150,4 @@ namespace Analogy.UserControls
                 ucLogs1.HideSecondaryWindow();
         }
     }
-
 }

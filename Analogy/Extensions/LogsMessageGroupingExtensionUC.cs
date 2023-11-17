@@ -64,13 +64,11 @@ namespace Analogy.Extensions
                 }
             };
             gridViewGrouping2.RowStyle += LogGridView_RowStyle;
-
         }
         private void LoadUISettings()
         {
             gridViewGrouping2.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             gridViewGrouping2.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
-
         }
         private void LogGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
@@ -85,12 +83,9 @@ namespace Analogy.Extensions
                 return;
             }
 
-
-
             var (backgroundColorLevel, textColorLevel) = Settings.ColorSettings.GetColorForLogLevel(message.Level);
             e.Appearance.BackColor = backgroundColorLevel;
             e.Appearance.ForeColor = textColorLevel;
-
 
             string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
             foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
@@ -122,7 +117,6 @@ namespace Analogy.Extensions
                     e.Appearance.ForeColor = colors.foregroundColor;
                 }
             }
-
         }
         private void txtbGroupByChars_EditValueChanged(object sender, EventArgs e)
         {
@@ -182,7 +176,6 @@ namespace Analogy.Extensions
                 AddExtraColumnsIfNeededToTable(grouped, gridViewGrouping2, message);
                 DataRow dtr = CommonControls.Utils.CreateRow(grouped, message, "", Settings.TimeOffsetType, Settings.TimeOffset);
                 grouped.Rows.Add(dtr);
-
             }
 
             grouped.AcceptChanges();
@@ -209,7 +202,6 @@ namespace Analogy.Extensions
                                 dt.ReadOnly = true;
                                 table.Columns.Add(dt);
                             }
-
                         }
                         else
                         {
@@ -226,15 +218,10 @@ namespace Analogy.Extensions
                             }));
                             columnAdderSync.WaitOne();
                             columnAdderSync.Reset();
-
                         }
                     }
                 }
             }
-
-
         }
-
-
     }
 }

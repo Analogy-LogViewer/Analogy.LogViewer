@@ -13,7 +13,6 @@ namespace Analogy.UserControls
             InitializeComponent();
         }
 
-
         private async void sBtnSearch_Click(object sender, EventArgs e)
         {
             sBtnSearch.Enabled = false;

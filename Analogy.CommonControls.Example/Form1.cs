@@ -31,10 +31,9 @@ namespace Analogy.CommonControls.Example
                 for (int i = 0; i < 1000; i++)
                 {
                     var m = new AnalogyLogMessage($"Test: {i}", AnalogyLogLevel.Information, AnalogyLogClass.General, "");
-                    log.AppendMessage(m,"Example");
+                    log.AppendMessage(m, "Example");
                     Thread.Sleep(1000);
                 }
-
             });
         }
     }

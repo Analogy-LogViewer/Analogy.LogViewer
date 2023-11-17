@@ -46,7 +46,6 @@ namespace Analogy.ApplicationSettings
                     lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
                     lboxHighlightItems.Refresh();
                 }
-
             };
 
             sbtnDeleteHighlight.Click += (s, e) =>

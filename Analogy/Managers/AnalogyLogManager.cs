@@ -33,9 +33,8 @@ namespace Analogy.Managers
             ignoredMessages = new List<string>
             {
                 "System.ArgumentException: Duplicate component name '_Container'.  Component names must be unique and case-insensitive",
-                "System.IO.FileNotFoundException: Could not load file or assembly 'mscorlib.XmlSerializers"
+                "System.IO.FileNotFoundException: Could not load file or assembly 'mscorlib.XmlSerializers",
             };
-
         }
 
         public async Task Init()

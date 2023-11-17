@@ -20,9 +20,8 @@ namespace Analogy.Common.Managers
         public List<FactoryContainer> Factories { get; } = new List<FactoryContainer>(0);
         public List<IRawSQLInteractor> RawSQLManipulators { get; } = new List<IRawSQLInteractor>(0);
         public Task InitializeBuiltInFactories() => Task.CompletedTask;
-        
-        public Task AddExternalDataSources() => Task.CompletedTask;
 
+        public Task AddExternalDataSources() => Task.CompletedTask;
 
         public IEnumerable<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
         {
@@ -108,7 +107,7 @@ namespace Analogy.Common.Managers
         {
         }
 
-        public  Task InitializeIfNeeded(IAnalogyDataProvider dataProvider)
+        public Task InitializeIfNeeded(IAnalogyDataProvider dataProvider)
         {
             return Task.CompletedTask;
         }

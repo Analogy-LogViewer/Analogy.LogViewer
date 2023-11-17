@@ -59,7 +59,6 @@ namespace Analogy.CommonControls.Managers
                 var count = pages.Count;
                 lockSlim.ExitReadLock();
                 return count;
-
             }
         }
 
@@ -82,7 +81,6 @@ namespace Analogy.CommonControls.Managers
             allMessages = new List<IAnalogyLogMessage>();
         }
 
-
         public IEnumerable<List<T>> SplitList<T>(List<T> locations)
         {
             for (int i = 0; i < locations.Count; i += pageSize)
@@ -90,7 +88,6 @@ namespace Analogy.CommonControls.Managers
                 yield return locations.GetRange(i, Math.Min(pageSize, locations.Count - i));
             }
         }
-
 
         public void ClearLogs()
         {
@@ -144,7 +141,6 @@ namespace Analogy.CommonControls.Managers
                 DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.TimeOffsetType, Settings.TimeOffset);
                 table.Rows.Add(dtr);
                 return dtr;
-
             }
             finally
             {
@@ -202,7 +198,6 @@ namespace Analogy.CommonControls.Managers
                 {
                     lockSlim.ExitWriteLock();
                 }
-
             }
             return rows;
         }
@@ -232,9 +227,6 @@ namespace Analogy.CommonControls.Managers
                             {
                                 columnsLockSlim.ExitWriteLock();
                             }
-
-
-
                         }
                         else
                         {
@@ -252,7 +244,6 @@ namespace Analogy.CommonControls.Managers
                                             table.Columns.Add(info.Key);
                                             columnAdderSync.Set();
                                         }
-
                                     }
                                 }
                                 finally
@@ -280,7 +271,6 @@ namespace Analogy.CommonControls.Managers
             }
             lockSlim.ExitReadLock();
             return new AnalogyPageInformation(currentTable, CurrentPageNumber, currentPageStartRowIndex);
-
         }
 
         public AnalogyPageInformation PrevPage()
@@ -294,7 +284,6 @@ namespace Analogy.CommonControls.Managers
             }
             lockSlim.ExitReadLock();
             return new AnalogyPageInformation(currentTable, CurrentPageNumber, currentPageStartRowIndex);
-
         }
 
         public DataTable FirstPage()
@@ -304,7 +293,6 @@ namespace Analogy.CommonControls.Managers
             CurrentPageNumber = 1;
             lockSlim.ExitReadLock();
             return currentTable;
-
         }
         public DataTable LastPage()
         {
@@ -313,7 +301,6 @@ namespace Analogy.CommonControls.Managers
             CurrentPageNumber = pages.Count;
             lockSlim.ExitReadLock();
             return currentTable;
-
         }
 
         public List<IAnalogyLogMessage> GetAllMessages()
@@ -344,7 +331,6 @@ namespace Analogy.CommonControls.Managers
             var current = currentTable == currentView;
             lockSlim.ExitReadLock();
             return current;
-
         }
 
         public void IncrementTotalMissedMessages()

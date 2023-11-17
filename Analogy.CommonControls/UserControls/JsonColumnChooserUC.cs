@@ -22,7 +22,6 @@ namespace Analogy.CommonControls.UserControls
             InitializeComponent();
         }
 
-
         private void LookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
             selection = (string)comboBoxEdit1.EditValue;
@@ -39,7 +38,6 @@ namespace Analogy.CommonControls.UserControls
                 comboBoxEdit1.EditValue = names.First();
             }
             comboBoxEdit1.EditValueChanged += LookUpEdit1_EditValueChanged;
-
         }
 
         private void sbtnOK_Click(object sender, EventArgs e)

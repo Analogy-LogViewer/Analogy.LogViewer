@@ -19,16 +19,14 @@ namespace Analogy.UserControls
         {
             Settings = settings;
             InitializeComponent();
-
         }
-
 
         public void SetLogLevel(CheckedListBoxControl chkLstLogLevel)
         {
             chkLstLogLevel.Items.Clear();
             chkLstLogLevel.CheckMode = CheckMode.Multiple;
             chkLstLogLevel.CheckStyle = CheckStyles.Standard;
-            chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, 
+            chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l,
                 Settings.FilteringExclusion.IsLogLevelExcluded(l))).ToArray());
         }
 

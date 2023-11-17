@@ -21,7 +21,6 @@ namespace Analogy.CommonControls.DataTypes
         public SelectionEventArgs(List<string> files)
         {
             SelectedFileNames = files;
-
         }
     }
 

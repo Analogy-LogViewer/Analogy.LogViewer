@@ -19,7 +19,6 @@ namespace Analogy.CommonControls.UserControls
         {
         }
 
-
         public void SetDataSources(LogAnalyzerLogLevel statistics)
         {
             if (pieChart != null)

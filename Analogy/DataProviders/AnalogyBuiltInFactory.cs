@@ -29,7 +29,6 @@ namespace Analogy.DataProviders
 
         public AnalogyBuiltInFactory()
         {
-            
         }
     }
 
@@ -88,7 +87,7 @@ namespace Analogy.DataProviders
                 MachineName = Environment.MachineName,
                 Class = AnalogyLogClass.General,
                 User = Environment.UserName,
-                Date = DateTime.Now
+                Date = DateTime.Now,
             };
             messagesHandler.AppendMessage(m, Environment.MachineName);
             return new List<AnalogyLogMessage>() { m };
@@ -116,7 +115,6 @@ namespace Analogy.DataProviders
                 fileName.EndsWith(".ajson", StringComparison.InvariantCultureIgnoreCase) ||
                 fileName.EndsWith(".abin", StringComparison.InvariantCultureIgnoreCase);
 
-
         protected override List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
             List<FileInfo> files = dirInfo.GetFiles("*.axml")
@@ -142,8 +140,6 @@ namespace Analogy.DataProviders
 
             return files;
         }
-
-
     }
 
     public class AnalogyCustomActionFactory : CustomActionsFactory

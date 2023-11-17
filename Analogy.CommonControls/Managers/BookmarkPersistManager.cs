@@ -28,7 +28,6 @@ namespace Analogy.CommonControls.Managers
         public BookmarkPersistManager()
         {
             Messages = new List<IAnalogyLogMessage>();
-
         }
 
         public void AppendMessage(IAnalogyLogMessage message, string dataSource)

@@ -440,12 +440,10 @@ namespace Analogy
             new AnalogyChangeLog("Added: Preserve selection in grid when filtering.", AnalogChangeLogType.None, "Lior Banai", new DateTime(2018, 11, 30), ""),
             new AnalogyChangeLog("Improving load time of logs files.", AnalogChangeLogType.None, "Lior Banai", new DateTime(2018, 11, 29), ""),
             new AnalogyChangeLog("Initial Commit.", AnalogChangeLogType.None, "Lior Banai", new DateTime(2018, 11, 27), ""),
-
             };
         }
 
         public static string GetChangeLogFull => string.Join(Environment.NewLine,
             GetChangeLog().OrderByDescending(c => c.Date).Select(cl => $"{cl.Date.ToString()}: {cl.ChangeInformation} ({cl.Name})"));
-
     }
 }

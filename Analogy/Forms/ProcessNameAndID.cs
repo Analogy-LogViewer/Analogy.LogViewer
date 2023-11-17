@@ -12,7 +12,6 @@ namespace Analogy.Forms
         public ProcessNameAndID()
         {
             InitializeComponent();
-
         }
 
         private void ProcessNameAndID_Load(object sender, EventArgs e)
@@ -45,6 +44,4 @@ namespace Analogy.Forms
             }
         }
     }
-
-
 }

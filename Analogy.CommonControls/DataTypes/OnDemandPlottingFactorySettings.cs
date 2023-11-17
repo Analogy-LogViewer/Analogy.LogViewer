@@ -22,6 +22,5 @@ namespace Analogy.CommonControls.DataTypes
         {
         }
         public override string ToString() => $"{nameof(FactoryId)}: {FactoryId}, {nameof(Status)}: {Status}";
-
     }
 }

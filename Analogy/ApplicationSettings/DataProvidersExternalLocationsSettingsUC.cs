@@ -31,7 +31,7 @@ namespace Analogy.ApplicationSettings
             {
                 using XtraFolderBrowserDialog folderDlg = new XtraFolderBrowserDialog
                 {
-                    ShowNewFolderButton = false
+                    ShowNewFolderButton = false,
                 };
                 // Show the FolderBrowserDialog.  
                 DialogResult result = folderDlg.ShowDialog();

@@ -12,7 +12,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class DebuggingSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } 
+        private IAnalogyUserSettings Settings { get; }
         public DebuggingSettingsUC(IAnalogyUserSettings settings)
         {
             Settings = settings;

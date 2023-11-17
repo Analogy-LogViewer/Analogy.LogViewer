@@ -14,7 +14,6 @@ namespace Analogy.UserControls
 
         public XtraUCDirectoryListing() : this(true)
         {
-
         }
         public XtraUCDirectoryListing(bool localDriveOnly)
         {
@@ -26,9 +25,7 @@ namespace Analogy.UserControls
             }
 
             treeList1.DataSource = new object();
-
         }
-
 
         private void treeList1_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
         {
@@ -191,12 +188,10 @@ namespace Analogy.UserControls
                 catch { e.Children = new object[] { }; }
             }
             Cursor.Current = current;
-
         }
 
         private void treeList1_SelectionChanged(object sender, EventArgs e)
         {
-
         }
 
         public void SetPath(string path)

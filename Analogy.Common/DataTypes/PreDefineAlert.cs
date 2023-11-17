@@ -14,7 +14,6 @@ namespace Analogy.Common.DataTypes
         public string Sources { get; }
         public string Modules { get; }
 
-
         public PreDefineAlert(string includeText, string excludeText, string sources, string modules)
         {
             IncludeText = includeText ?? string.Empty;

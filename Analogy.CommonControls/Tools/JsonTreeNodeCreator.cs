@@ -29,7 +29,7 @@ namespace Analogy.CommonControls.Tools
                 item.Type == JTokenType.Array ? JsonNodeType.Array :
                 JsonNodeType.Value;
 
-            var node = new JsonTreeNode(type, text, textWhenSelected) {ImageKey = item.Type.ToString()};
+            var node = new JsonTreeNode(type, text, textWhenSelected) { ImageKey = item.Type.ToString() };
             node.SelectedImageKey = node.ImageKey;
 
             return node;

@@ -35,8 +35,7 @@ namespace Analogy.UserControls
             var net5 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net5.0", StringComparison.InvariantCultureIgnoreCase)));
             var net6 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase)));
             var net7 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase)));
-            var net8= Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net8.0", StringComparison.InvariantCultureIgnoreCase)));
-
+            var net8 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net8.0", StringComparison.InvariantCultureIgnoreCase)));
 
             var net471Downloads = net471.Sum(r => r.Sum(a => a.DownloadCount));
             var net472Downloads = net472.Sum(r => r.Sum(a => a.DownloadCount));
@@ -75,7 +74,6 @@ namespace Analogy.UserControls
 
         private void CreateChart(List<PieChartSingleDataPoint> data)
         {
-
 
             var pieChart = new ChartControl();
             pieChart.AllowGesture = true;
@@ -134,7 +132,6 @@ namespace Analogy.UserControls
                 var net5 = release.Assets.Where(a => a.Name.Contains("net5.0", StringComparison.InvariantCultureIgnoreCase));
                 var net6 = release.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase));
                 var net7 = release.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase));
-
 
                 var net471Downloads = net471.Sum(r => r.DownloadCount);
                 var net472Downloads = net472.Sum(r => r.DownloadCount);

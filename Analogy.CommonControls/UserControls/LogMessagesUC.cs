@@ -54,9 +54,7 @@ namespace Analogy.CommonControls.UserControls
 
         bool ILogRawSQL.ApplyRawSQLFilter(string filter) => ApplyRawSQLFilter(filter);
 
-
         bool ILogRawSQL.IsRawSQLModeEnabled => Settings.AdvancedModeRawSQLFilterEnabled;
-
 
         bool ILogRawSQL.EnableRawSQLMode()
         {
@@ -261,7 +259,6 @@ namespace Analogy.CommonControls.UserControls
                 else
                 {
                     bsiProgress.Caption = $"{value.TotalProcessed}/{value.TotalEntries}";
-
                 }
             });
 
@@ -312,7 +309,6 @@ namespace Analogy.CommonControls.UserControls
             clbExclude.DataSource = ExcludeFilterCriteriaUIOptions;
             _filterCriteria.IncludeFilterCriteriaUIOptions = IncludeFilterCriteriaUIOptions;
             _filterCriteria.ExcludeFilterCriteriaUIOptions = ExcludeFilterCriteriaUIOptions;
-
         }
 
         private void SetupDependencies()
@@ -366,7 +362,6 @@ namespace Analogy.CommonControls.UserControls
             LoadReplacementHeaders();
             HideColumns();
             BookmarkModeUI();
-
 
             if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
             {
@@ -543,7 +538,6 @@ namespace Analogy.CommonControls.UserControls
                     {
                         File.WriteAllText(saveFileDialog.FileName, text);
                         XtraMessageBox.Show($"Log saved to: {saveFileDialog.FileName}");
-
                     }
                     catch (Exception exception)
                     {
@@ -583,12 +577,10 @@ namespace Analogy.CommonControls.UserControls
                 spltcMessages.PanelVisibility = showJson ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
             };
 
-
             bbiJsonColumn.ItemClick += (s, e) =>
             {
                 var times = logGrid.Columns.Select(c => c.FieldName).ToList();
                 JsonColumnChooser.SetNames(times);
-
             };
             JsonColumnChooser.SelectionChanged += (s, e) =>
             {
@@ -683,7 +675,6 @@ namespace Analogy.CommonControls.UserControls
                 if (SelectedMassage != null)
                 {
                     GoToPrimaryGridMessage(SelectedMassage);
-
                 }
             };
             bbiGoToMessage.ItemClick += (s, e) =>
@@ -695,9 +686,7 @@ namespace Analogy.CommonControls.UserControls
                 else if (meMessageDetails.Tag is AnalogyLogMessage m2)
                 {
                     GoToPrimaryGridMessage(m2);
-
                 }
-
             };
             bbiIncludeColumnHeaderFilter.ItemClick += (s, e) =>
            {
@@ -786,7 +775,6 @@ namespace Analogy.CommonControls.UserControls
                     {
                         autoCompleteInclude.Add(txtbInclude.Text);
                     }
-
                 }
             };
             txtbInclude.EditValueChanged += EditValueChanged;
@@ -905,7 +893,6 @@ namespace Analogy.CommonControls.UserControls
                             LogGrid.MakeRowVisible(LogGrid.FocusedRowHandle);
                         }
                     }));
-
                 }
             };
             gridControl.KeyUp += (s, e) =>
@@ -1015,7 +1002,6 @@ namespace Analogy.CommonControls.UserControls
 
                 BeginInvoke(new MethodInvoker(() =>
                     lblPageNumber.Text = $"Page {PageNumber} / {arg.AnalogyPage.PageNumber}"));
-
             };
 
             ceLogLevelAnd.CheckedChanged += async (s, e) => await FilterHasChanged();
@@ -1039,10 +1025,7 @@ namespace Analogy.CommonControls.UserControls
                         // Settings.UseCustomLogsLayout = true;
                         Settings.SetLogsLayoutFileName(ws.Workspace.Path);
                     }
-
                 }
-
-
             };
             btsViewAsHTML.CheckedChanged += (s, e) =>
             {
@@ -1053,7 +1036,6 @@ namespace Analogy.CommonControls.UserControls
             sbtnRawFilter.Click += (s, e) =>
             {
                 sbtnRawFilter.Image = ApplyRawSQLFilter(meRawSQL.Text) ? Resources.Apply_16x16 : Resources.Delete_16x16;
-
             };
             #region Time Offsets
 
@@ -1110,14 +1092,12 @@ namespace Analogy.CommonControls.UserControls
                     settings.ValueAfterDelete = NumericMaskManager.ValueAfterDelete.Null;
                 });
             }
-
         }
         private void RefreshTimeOffset()
         {
             PagingManager.UpdateOffsets();
             Utils.ChangeOffset(_bookmarkedMessages, Settings);
         }
-
 
         private void EditValueChanged(object sender, EventArgs e)
         {
@@ -1127,7 +1107,6 @@ namespace Analogy.CommonControls.UserControls
             //    edit.EditValue = null;
             //}
         }
-
 
         private void MainView_Layout(object sender, EventArgs e)
         {
@@ -1180,7 +1159,6 @@ namespace Analogy.CommonControls.UserControls
                     bstaticTotalMessages.Caption =
                         $"Total messages:{counts.Values.Sum()}. Errors:{counts["Error"]}. Warnings:{counts["Warning"]}. Critical:{counts["Critical"]}.";
                 }
-
             }
         }
 
@@ -1286,7 +1264,6 @@ namespace Analogy.CommonControls.UserControls
             bBtnImport.Enabled = FileDataProvider != null;
         }
 
-
         public void SetSaveButtonsVisibility(bool on)
         {
             if (on)
@@ -1337,7 +1314,6 @@ namespace Analogy.CommonControls.UserControls
                 ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             }
 
-
             if (e.Alt && e.KeyCode == Keys.E || e.Alt && e.KeyCode == Keys.W)
             {
                 if (e.KeyCode == Keys.W)
@@ -1368,8 +1344,6 @@ namespace Analogy.CommonControls.UserControls
                     }
                 }
             }
-
-
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -1442,7 +1416,6 @@ namespace Analogy.CommonControls.UserControls
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
-
         }
 
         private void ToggleSearch()
@@ -1605,7 +1578,6 @@ namespace Analogy.CommonControls.UserControls
                     LogGrid.Columns.Add(gridColumn);
                     gridColumn.Visible = true;
                 }
-
             }
             foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
             {
@@ -1639,11 +1611,9 @@ namespace Analogy.CommonControls.UserControls
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             await LoadFilesAsync(files.ToList(), false);
-
         }
 
         #region UI events
-
 
         private void tsmiCopy_Click(object sender, EventArgs e)
         {
@@ -1674,7 +1644,6 @@ namespace Analogy.CommonControls.UserControls
             }
 
             Clipboard.SetText(message.Text);
-
         }
 
         private async Task FilterHasChanged()
@@ -1688,7 +1657,6 @@ namespace Analogy.CommonControls.UserControls
                 }
 
                 FilterResults();
-
             }
 
             filterTokenSource.Cancel();
@@ -1738,7 +1706,6 @@ namespace Analogy.CommonControls.UserControls
                 await FilterHasChanged();
             }
         }
-
 
         /// <summary>
         /// Called when column filter button is clicked
@@ -1794,8 +1761,6 @@ namespace Analogy.CommonControls.UserControls
         #endregion
 
         #region Messages logic
-
-
 
         internal DataTable GetFilteredDataTable()
         {
@@ -1910,9 +1875,7 @@ namespace Analogy.CommonControls.UserControls
             return filter;
         }
 
-
         #endregion
-
 
         public void AppendMessage(IAnalogyLogMessage message, string dataSource)
         {
@@ -1937,7 +1900,6 @@ namespace Analogy.CommonControls.UserControls
                     grid.AppendMessage(message, dataSource);
                 }
             }
-
 
             DataRow dtr = PagingManager.AppendMessage(message, dataSource);
             try
@@ -2040,7 +2002,6 @@ namespace Analogy.CommonControls.UserControls
                                 ExcludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                             }
                         }
-
                     }
                 }
             }
@@ -2108,7 +2069,6 @@ namespace Analogy.CommonControls.UserControls
                     BeginInvoke(new MethodInvoker(() => extension.NewMessages(messages, Id)));
                 }
             }
-
         }
 
         private void AcceptChanges(bool forceRefresh)
@@ -2134,7 +2094,6 @@ namespace Analogy.CommonControls.UserControls
                     {
                         lockSlim.ExitWriteLock();
                     }
-
                 }));
             }
         }
@@ -2169,7 +2128,6 @@ namespace Analogy.CommonControls.UserControls
             txtbModule.Text = module;
             FilterResults();
         }
-
 
         private void FilterResults()
         {
@@ -2206,7 +2164,7 @@ namespace Analogy.CommonControls.UserControls
                     {
                         _filterCriteria.Levels = new[]
                         {
-                            AnalogyLogLevel.Error, AnalogyLogLevel.Critical,  AnalogyLogLevel.Unknown
+                            AnalogyLogLevel.Error, AnalogyLogLevel.Critical,  AnalogyLogLevel.Unknown,
                         };
                     }
                     else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
@@ -2234,7 +2192,6 @@ namespace Analogy.CommonControls.UserControls
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
 
             if (ceSources.Checked && txtbSource.EditValue != null)
             {
@@ -2296,7 +2253,6 @@ namespace Analogy.CommonControls.UserControls
                         LogGrid.FocusedRowHandle = location;
                     }
                 }
-
             }
             finally
             {
@@ -2331,10 +2287,7 @@ namespace Analogy.CommonControls.UserControls
                 lockSlim.ExitWriteLock();
                 OnRawSQLFilterChanged?.Invoke(this, filter);
             }
-
         }
-
-
 
         public int LocateByValue(int startRowHandle, GridColumn column, object? val)
         {
@@ -2480,9 +2433,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             lockSlim.ExitWriteLock();
-
         }
-
 
         private void LoadTextBoxes(AnalogyLogMessage m)
         {
@@ -2522,7 +2473,6 @@ namespace Analogy.CommonControls.UserControls
         }
 
         #region Log grid Event Handlers
-
 
         private void logGrid_Click(object sender, EventArgs e)
         {
@@ -2570,13 +2520,9 @@ namespace Analogy.CommonControls.UserControls
                                 new AnalogyCellClickedEventArgs(exColumn.ColumnName, cellValue, SelectedMassage);
                             extension.CellClicked(sender, argsForEx);
                         }
-
                     }
                 }
-
-
             }
-
         }
         private void LogGrid_DoubleClick(object sender, EventArgs e)
         {
@@ -2600,7 +2546,6 @@ namespace Analogy.CommonControls.UserControls
             FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
             details.Show(this);
             //CreateBookmark();
-
         }
 
         private void LogGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2612,7 +2557,6 @@ namespace Analogy.CommonControls.UserControls
             }
 
             LoadTextBoxes(message);
-
         }
 
         private void LogGrid_KeyPress(object sender, KeyPressEventArgs e)
@@ -2753,7 +2697,6 @@ namespace Analogy.CommonControls.UserControls
             e.Handled = true;
         }
 
-
         /// <summary>
         /// Set custom column display text
         /// </summary>
@@ -2770,8 +2713,6 @@ namespace Analogy.CommonControls.UserControls
 
         #endregion
 
-
-
         private void tmrNewData_Tick(object sender, EventArgs e)
         {
             if (NewDataExist)
@@ -2779,7 +2720,6 @@ namespace Analogy.CommonControls.UserControls
                 NewDataExist = false;
                 AcceptChanges(false);
             }
-
         }
 
         private void gridControlBookmarkedMessages_DoubleClick(object sender, EventArgs e)
@@ -2790,9 +2730,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             GoToBookmarkedMessage();
-
         }
-
 
         private void tsmiBookmark_Click(object sender, EventArgs e)
         {
@@ -2854,7 +2792,6 @@ namespace Analogy.CommonControls.UserControls
                                 dt.ReadOnly = true;
                                 table.Columns.Add(dt);
                             }
-
                         }
                         else
                         {
@@ -2871,13 +2808,10 @@ namespace Analogy.CommonControls.UserControls
                             }));
                             columnAdderSync.WaitOne();
                             columnAdderSync.Reset();
-
                         }
                     }
                 }
             }
-
-
         }
 
         private void GoToBookmarkedMessage()
@@ -2901,7 +2835,6 @@ namespace Analogy.CommonControls.UserControls
         {
             btsAutoScrollToBottom.Checked = false;
             GoToMessage(m);
-
         }
 
         private void GoToMessage(AnalogyLogMessage logMessage)
@@ -2928,7 +2861,6 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-
         private async void txtbHighlight_KeyUp(object sender, KeyEventArgs e)
         {
             chkbHighlight.Checked = !string.IsNullOrEmpty(txtbHighlight.Text);
@@ -2953,7 +2885,6 @@ namespace Analogy.CommonControls.UserControls
                 txtbModule.Text = txtbModule.Text == txtbModule.Properties.NullText ? "-" + message.Module : txtbModule.Text + ",-" + message.Module;
             }
         }
-
 
         private void tsmiTimeDiff_Click(object sender, EventArgs e)
         {
@@ -2985,7 +2916,6 @@ namespace Analogy.CommonControls.UserControls
                 lockSlim.ExitWriteLock();
             }
         }
-
 
         private void btswitchExpand_CheckedChanged(object sender, ItemClickEventArgs e)
         {
@@ -3025,7 +2955,6 @@ namespace Analogy.CommonControls.UserControls
                         XtraMessageBox.Show(e.Message, @"Error Saving file", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
-
                 }
             }
             else
@@ -3043,7 +2972,6 @@ namespace Analogy.CommonControls.UserControls
                         MessageBoxIcon.Information);
                 }
             }
-
         }
 
         private async void bBtnImport_ItemClick(object sender, ItemClickEventArgs e)
@@ -3054,7 +2982,7 @@ namespace Analogy.CommonControls.UserControls
                 {
                     Filter = Utils.GetOpenFilter(FileDataProvider.FileOpenDialogFilters, Settings.EnableCompressedArchives),
                     Title = @"Import file to current view",
-                    Multiselect = false
+                    Multiselect = false,
                 };
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -3067,7 +2995,6 @@ namespace Analogy.CommonControls.UserControls
                         XtraMessageBox.Show(exception.Message, @"Error Opening file", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
-
                 }
             }
         }
@@ -3099,7 +3026,6 @@ namespace Analogy.CommonControls.UserControls
             await FilterHasChanged();
         }
 
-
         private async void chkLstLogLevel_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
             await FilterHasChanged();
@@ -3118,7 +3044,6 @@ namespace Analogy.CommonControls.UserControls
         {
 
             dockPanelFiltering.Visible = !btSwitchExpandButtomMessage.Checked;
-
         }
 
         private void bBtnGoToMessage_ItemClick(object sender, ItemClickEventArgs e)
@@ -3157,7 +3082,6 @@ namespace Analogy.CommonControls.UserControls
             {
                 Logger.LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
         private void tsmiBookmarkPersist_Click(object sender, EventArgs e)
@@ -3240,7 +3164,6 @@ namespace Analogy.CommonControls.UserControls
             }
 
             return (message, dataSource);
-
         }
         private List<IAnalogyLogMessage> GetMessagesFromSelectedRowInGrid(out string dataProvider)
         {
@@ -3259,9 +3182,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             return messages;
-
         }
-
 
         private void tsmiCopyMessages_Click(object sender, EventArgs e)
         {
@@ -3314,7 +3235,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnExportExcel_ItemClick(object sender, ItemClickEventArgs e)
         {
-
 
             var count = LogGrid.RowCount;
 
@@ -3431,7 +3351,6 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-
             var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, Common.CommonUtils.AnalogyMessageColumn);
             LoadTextBoxes(focusedMassage);
             if (Settings.InlineJsonViewer)
@@ -3440,7 +3359,6 @@ namespace Analogy.CommonControls.UserControls
                 {
                     var specific = LogGrid.GetRowCellValue(e.FocusedRowHandle, jsonColumnForInlineJsonViewer).ToString();
                     await JsonTreeView.ShowJson(specific);
-
                 }
                 else if (focusedMassage.RawTextType == AnalogyRowTextType.JSON)
                 {
@@ -3505,7 +3423,6 @@ namespace Analogy.CommonControls.UserControls
             }
             lockSlim.ExitWriteLock();
             //RefreshUIMessagesCount();
-
         }
 
         private void bBtnDataVisualizer_ItemClick(object sender, ItemClickEventArgs e)
@@ -3519,7 +3436,6 @@ namespace Analogy.CommonControls.UserControls
             Bitmap image = takeComponentScreenShot(gridControl);
             Clipboard.SetImage(image);
             MessageBox.Show("Screenshot of messages was copied to clipboard.", "Image was taken", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
         private static Bitmap takeComponentScreenShot(Control control)
         {
@@ -3599,14 +3515,12 @@ namespace Analogy.CommonControls.UserControls
         private void sbtnTextExclude_Click(object sender, EventArgs e)
         {
             SetTextIfDifferent(txtbExclude, "");
-
         }
 
         private void sbtnIncludeSources_Click(object sender, EventArgs e)
         {
             SetTextIfDifferent(txtbSource, "");
         }
-
 
         private void sbtnIncludeModules_Click(object sender, EventArgs e)
         {
@@ -3646,7 +3560,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void sbtnMoreHighlight_Click(object sender, EventArgs e)
         {
-
         }
 
         private void sbtnPreDefinedFilters_Click(object sender, EventArgs e)
@@ -3691,7 +3604,6 @@ namespace Analogy.CommonControls.UserControls
         private void bBtnSaveCurrentSelectionAnalogyFormat_ItemClick(object sender, ItemClickEventArgs e)
         {
             SaveMessagesToLog(AnalogyOfflineDataProvider, GetMessagesFromSelectedRowInGrid(out _));
-
         }
 
         private void bBtnUndockSelection_ItemClick(object sender, ItemClickEventArgs e)
@@ -3725,7 +3637,6 @@ namespace Analogy.CommonControls.UserControls
                 var addNoteForm = new AnalogyAddCommentsToMessage(msg.message, Settings);
                 addNoteForm.Show(this);
             }
-
         }
 
         private void txtbInclude_KeyPress(object sender, KeyPressEventArgs e)
@@ -3747,8 +3658,6 @@ namespace Analogy.CommonControls.UserControls
 
             xtcFilters.SelectedTabPage = xtpFiltersExclude;
         }
-
-
 
         public void SaveCurrentWorkspace()
         {
@@ -3777,15 +3686,12 @@ namespace Analogy.CommonControls.UserControls
             logGridForm.Show(this);
             var processor = new FileProcessor(Settings, logGridForm.LogWindow, FileProcessingManager, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
-
         }
 
         public void ReportFileReadProgress(AnalogyFileReadProgress progress)
         {
             DataProviderProgressReporter.Report(progress);
         }
-
-
 
         public void ShowSecondaryWindow()
         {

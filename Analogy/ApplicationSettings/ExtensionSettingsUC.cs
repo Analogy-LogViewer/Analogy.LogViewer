@@ -36,7 +36,7 @@ namespace Analogy.ApplicationSettings
             foreach (var (ex, assembly) in extensions)
             {
 
-                FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description,assembly.GetName(false).Name, null);
+                FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description, assembly.GetName(false).Name, null);
                 chkLstItemExtensions.Items.Add(itm, Settings.StartupExtensions.Contains(itm.ID));
             }
         }

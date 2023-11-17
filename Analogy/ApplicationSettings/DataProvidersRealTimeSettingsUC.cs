@@ -34,7 +34,7 @@ namespace Analogy.ApplicationSettings
             var loaded = FactoriesManager.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
-                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID, realTime.Description,realTime.assembly.GetName(false).Name, realTime.Image);
+                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID, realTime.Description, realTime.assembly.GetName(false).Name, realTime.Image);
                 chkLstItemRealTimeDataSources.Items.Add(itm, Settings.AutoStartDataProviders.Contains(itm.ID));
             }
         }

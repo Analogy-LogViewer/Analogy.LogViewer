@@ -50,7 +50,6 @@ namespace Analogy.Common.Managers
                 }
 
                 Messages.Add(filename, messages);
-
             }
         }
 
@@ -64,7 +63,6 @@ namespace Analogy.Common.Managers
             Messages.Clear();
             GC.Collect();
             GC.WaitForPendingFinalizers();
-
         }
     }
 }

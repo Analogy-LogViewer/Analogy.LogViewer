@@ -214,7 +214,6 @@ namespace Analogy.Forms
         private void Donations_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl(ApplicationSettingsSelectionType.DonationsSettings);
-
         }
 
         private void aceAdvancedMode_Click(object sender, EventArgs e)

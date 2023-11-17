@@ -70,8 +70,6 @@ namespace Analogy
         private static string NonDotCharacters = @"[^.]*";
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
-
-
         //
         /// <summary>
         /// 
@@ -243,7 +241,7 @@ namespace Analogy
                         new CheckedListBoxItem("Error + Critical"),
                         new CheckedListBoxItem("Warning"),
                         new CheckedListBoxItem("Debug"),
-                        new CheckedListBoxItem("Verbose")
+                        new CheckedListBoxItem("Verbose"),
                     };
                     chkLstLogLevel.Items.AddRange(radioLevels);
                     break;
@@ -261,7 +259,6 @@ namespace Analogy
             chkLstLogLevel.Items.Clear();
             chkLstLogLevel.CheckStyle = CheckStyles.Standard;
             chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, Settings.FilteringExclusion.IsLogLevelExcluded(l))).ToArray());
-
         }
 
         public static void OpenLink(string url)
@@ -271,7 +268,7 @@ namespace Analogy
                 Process.Start(new ProcessStartInfo(url)
                 {
                     UseShellExecute = true,
-                    Verb = "open"
+                    Verb = "open",
                 });
             }
             catch (Exception exception)
@@ -378,7 +375,7 @@ namespace Analogy
                 TimeOffsetType.Predefined => time.Add(Settings.TimeOffset),
                 TimeOffsetType.UtcToLocalTime => time.ToLocalTime(),
                 TimeOffsetType.LocalTimeToUtc => time.ToUniversalTime(),
-                _ => time
+                _ => time,
             };
         }
 
@@ -404,10 +401,9 @@ namespace Analogy
             }
             catch (Exception e)
             {
-               ServicesProvider.Instance.GetService<ILogger>().LogError($"Error getting releases from Github: {e.Message}",e);
-               return new List<Release>();
+                ServicesProvider.Instance.GetService<ILogger>().LogError($"Error getting releases from Github: {e.Message}", e);
+                return new List<Release>();
             }
-
         }
         public static bool IsRunningFromProgramFileFolder()
         {
@@ -417,7 +413,5 @@ namespace Analogy
             return nominalValue;
         }
         public static string ApplicationBaseDirectory => AppDomain.CurrentDomain.BaseDirectory;
-
     }
-
 }

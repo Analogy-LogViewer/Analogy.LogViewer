@@ -22,7 +22,7 @@ namespace Analogy.CommonControls.LogLoaders
                     AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None")
                 {
                     Source = "Analogy",
-                    Module = Process.GetCurrentProcess().ProcessName
+                    Module = Process.GetCurrentProcess().ProcessName,
                 };
                 messageHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                 return new List<AnalogyLogMessage>() { empty };
@@ -45,13 +45,12 @@ namespace Analogy.CommonControls.LogLoaders
                             AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None")
                         {
                             Source = "Analogy",
-                            Module = Process.GetCurrentProcess().ProcessName
+                            Module = Process.GetCurrentProcess().ProcessName,
                         };
                     messageHandler.AppendMessage(empty, Utils.GetFileNameAsDataSource(fileName));
                     return new List<AnalogyLogMessage>() { empty };
                 }
             }, token);
-
         }
 
         public Task Save(List<IAnalogyLogMessage> messages, string fileName)

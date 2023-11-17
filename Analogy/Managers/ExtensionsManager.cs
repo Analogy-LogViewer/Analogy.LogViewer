@@ -56,6 +56,5 @@ namespace Analogy
         }
 
         public IEnumerable<IAnalogyExtension> GetExtensions() => FactoriesManager.GetAllExtensions();
-
     }
 }

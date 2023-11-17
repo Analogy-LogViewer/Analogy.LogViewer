@@ -17,7 +17,6 @@ using System.Reflection;
 namespace Analogy
 {
 
-
     public class UserSettingsManager : IAnalogyUserSettings
     {
         private FolderAccessManager FolderAccessManager { get; }
@@ -139,7 +138,6 @@ namespace Analogy
                 {
                     _ribbonStyle = value;
                     OnRibbonControlStyleChanged?.Invoke(this, value);
-
                 }
             }
         }
@@ -226,7 +224,6 @@ namespace Analogy
             }
         }
 
-
         private void LoadPerUserSettings()
         {
             SettingsMode = SettingsMode.PerUser;
@@ -301,7 +298,7 @@ namespace Analogy
                 1 => UpdateMode.EachStartup,
                 2 => UpdateMode.OnceAWeek,
                 3 => UpdateMode.OnceAMonth,
-                _ => UpdateMode
+                _ => UpdateMode,
             };
 
             if (Enum.TryParse(Settings.Default.ApplicationStyle, out AnalogyLookAndFeelStyle style))
@@ -537,7 +534,7 @@ namespace Analogy
                 CombineOfflineProviders = CombineOfflineProviders,
                 CombineOnlineProviders = CombineOnlineProviders,
                 WindowPositions = WindowPositions,
-                SupportLinuxFormatting = SupportLinuxFormatting
+                SupportLinuxFormatting = SupportLinuxFormatting,
             };
             return userSettings;
         }
@@ -553,8 +550,6 @@ namespace Analogy
                 AnalogyLogManager.Instance.LogError("Error during parsing: " + e, nameof(UserSettingsManager));
                 return new T();
             }
-
-
         }
 
         public void Save(string version)
@@ -777,7 +772,6 @@ namespace Analogy
             var createNew = new FactorySettings(factory.Title, factory.FactoryId, DataProviderFactoryStatus.NotSet);
             FactoriesSettings.Add(createNew);
             return createNew;
-
         }
 
         public void UpdateOrder(List<Guid> order)

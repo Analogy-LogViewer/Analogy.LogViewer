@@ -41,7 +41,6 @@ namespace Analogy.DataTypes
         public void ClearAllData(Guid id)
         {
             PlottingManager.ClearAllData(id);
-
         }
 
         public void SetDefaultWindow(Guid id, int numberOfPointsInWindow)

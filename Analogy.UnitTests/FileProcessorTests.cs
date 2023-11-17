@@ -22,7 +22,7 @@ namespace Analogy.UnitTests
             cancellationTokenSource = new CancellationTokenSource();
             var settings = new DefaultUserSettingsManager
             {
-                EnableCompressedArchives = true
+                EnableCompressedArchives = true,
             };
             FileProcessor fp = new FileProcessor(settings, handler, new FileProcessingManager(), new EmptyAnalogyLogger());
             OfflineDataProviderForTesting offlineDataProvider = new OfflineDataProviderForTesting();

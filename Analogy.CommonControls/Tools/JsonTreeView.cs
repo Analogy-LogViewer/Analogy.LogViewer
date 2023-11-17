@@ -270,7 +270,7 @@ namespace Analogy.CommonControls.Tools
             // 
             treeContextMenu.ImageScalingSize = new Size(20, 20);
             treeContextMenu.Items.AddRange(new ToolStripItem[] {
-            expandAllMenuItem});
+            expandAllMenuItem,});
             treeContextMenu.Name = "treeContextMenu";
             treeContextMenu.Size = new Size(147, 30);
             treeContextMenu.Opening += new CancelEventHandler(treeContextMenu_Opening);
@@ -298,7 +298,6 @@ namespace Analogy.CommonControls.Tools
             FullRowSelect = true;
             treeContextMenu.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         private new JsonTreeNode? SelectedNode
@@ -380,7 +379,6 @@ namespace Analogy.CommonControls.Tools
             catch (Exception e)
             {
             }
-
         }
     }
 }

@@ -37,19 +37,17 @@ namespace Analogy.Forms
                 {
                     return;
                 }
-                
+
                 CreatePieChart(releases);
                 foreach (Release entry in releases)
                 {
                     CreateReleaseEntry(entry);
                 }
-               
             }
             catch (Exception e)
             {
                 ServicesProvider.Instance.GetService<ILogger>().LogError($"Error fetching history from github: {e.Message}", e);
             }
-
         }
 
         private void CreateReleaseEntry(Release entry)
@@ -106,7 +104,6 @@ namespace Analogy.Forms
             }
 
             fluentDesignFormContainer1.Controls[control].BringToFront();
-
         }
     }
 }

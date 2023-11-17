@@ -28,6 +28,5 @@ namespace Analogy.Managers
             }
             return Interactors[plotter];
         }
-
     }
 }

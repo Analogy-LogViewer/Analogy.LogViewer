@@ -15,7 +15,6 @@ namespace Analogy.Common.DataTypes
         public List<string> ExcludeModules { get; set; }
         public Dictionary<string, bool> ExcludeLogLevels { get; set; }
 
-
         public FilteringExclusion()
         {
             ExcludeTexts = new List<string>();

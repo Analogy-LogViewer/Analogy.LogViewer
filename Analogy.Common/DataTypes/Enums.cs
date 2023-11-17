@@ -12,12 +12,12 @@ namespace Analogy.Common.DataTypes
     {
         NotSet,
         Enabled,
-        Disabled
+        Disabled,
     }
     public enum PreDefinedQueryType
     {
         Contains,
-        Equals
+        Equals,
     }
     public enum UpdateMode
     {
@@ -29,7 +29,7 @@ namespace Analogy.Common.DataTypes
     public enum LogLevelSelectionType
     {
         Single,
-        Multiple
+        Multiple,
     }
     public enum BuiltInSearchPanelMode
     {
@@ -55,7 +55,7 @@ namespace Analogy.Common.DataTypes
         Normal,
         Large,
         VeryLarge,
-        Manual
+        Manual,
     }
 
     public enum SettingsMode
@@ -70,13 +70,13 @@ namespace Analogy.Common.DataTypes
         None,
         Predefined,
         UtcToLocalTime,
-        LocalTimeToUtc
+        LocalTimeToUtc,
     }
     public enum DataSourceType
     {
         Client,
         Server,
         NetworkPath,
-        LocalPath
+        LocalPath,
     }
 }

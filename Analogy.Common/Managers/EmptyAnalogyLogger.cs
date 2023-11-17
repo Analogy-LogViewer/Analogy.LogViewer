@@ -77,7 +77,7 @@ namespace Analogy.Common.Managers
             }
             catch (Exception e)
             {
-                LogException($"error: {e.Message}",e);
+                LogException($"error: {e.Message}", e);
             }
         }
 

@@ -32,7 +32,6 @@ namespace Analogy.Forms
                 xtraTabPage1.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
                 //  first ??= uc;
-
             }
 
             var assemblies = FactoriesManager.Factories.Select(f => Path.GetFileName(f.AssemblyFullPath)).ToList();
@@ -46,7 +45,6 @@ namespace Analogy.Forms
                 uc.Enabled = dp.Enabled;
                 xtraTabPage2.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
-
             }
         }
     }

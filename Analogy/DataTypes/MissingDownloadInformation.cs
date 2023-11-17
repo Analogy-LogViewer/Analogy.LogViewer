@@ -15,15 +15,14 @@ namespace Analogy.DataTypes
         protected override string RepositoryURL { get; set; }
         public override string InstalledVersionNumber { get; }
         public Image Image { get; set; }
-        public MissingDownloadInformation(Guid factoryId, string name,string repoURL,Image image)
+        public MissingDownloadInformation(Guid factoryId, string name, string repoURL, Image image)
         {
             FactoryId = factoryId;
             Name = name;
-            InstalledVersion = new Version(0,0,0);
+            InstalledVersion = new Version(0, 0, 0);
             InstalledVersionNumber = "0.0.0";
             RepositoryURL = repoURL;
             Image = image;
         }
-
     }
 }

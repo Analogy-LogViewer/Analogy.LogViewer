@@ -18,7 +18,6 @@ namespace Analogy.UserControls
 
         public FileSystemUC() : this(false, false)
         {
-
         }
         public FileSystemUC(bool listFoldersToLoad, bool listFilesToLoad)
         {
@@ -31,9 +30,7 @@ namespace Analogy.UserControls
             }
 
             treeList1.DataSource = new object();
-
         }
-
 
         private void treeList1_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
@@ -202,7 +199,6 @@ namespace Analogy.UserControls
                 catch { e.Children = new object[] { }; }
             }
             Cursor.Current = current;
-
         }
 
         public void SetPath(string path, IAnalogyOfflineDataProvider dataProvider)

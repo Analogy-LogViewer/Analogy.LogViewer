@@ -16,7 +16,6 @@ namespace Analogy.CommonControls.Forms
         {
             public string Name { get; set; }
             public IAnalogyShareable Shareable { get; set; }
-
         }
         private IAnalogyShareable Shareable { get; set; }
         private List<IAnalogyLogMessage> messages;
@@ -26,7 +25,7 @@ namespace Analogy.CommonControls.Forms
             InitializeComponent();
         }
 
-        public AnalogyOTAForm(DataTable data,List<IFactoryContainer> factories,IUserSettingsManager userSettingsManager) : this()
+        public AnalogyOTAForm(DataTable data, List<IFactoryContainer> factories, IUserSettingsManager userSettingsManager) : this()
         {
             Icon = userSettingsManager.GetIcon();
 
@@ -62,7 +61,6 @@ namespace Analogy.CommonControls.Forms
                 await Shareable.CleanupSender();
             }
         }
-
 
         private async void sbtnInit_Click(object sender, EventArgs e)
         {

@@ -107,6 +107,5 @@ namespace Analogy.DataTypes
             FileAssociations = new List<FileAssociations>();
             WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
         }
-
     }
 }

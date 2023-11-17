@@ -25,7 +25,6 @@ namespace Analogy.Forms
             EnableAcrylicAccent = false;
         }
 
-
         private void AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType type)
         {
             string name = type.ToString();
@@ -130,7 +129,6 @@ namespace Analogy.Forms
         private void aceFeedback_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.Feedback);
-
         }
     }
 }

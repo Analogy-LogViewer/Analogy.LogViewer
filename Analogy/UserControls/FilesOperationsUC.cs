@@ -127,7 +127,6 @@ namespace Analogy.UserControls
             }
         }
 
-
         public async Task ProcessFilesAndCombine(IAnalogyOfflineDataProvider dataProvider)
         {
             DataProvider = dataProvider;
@@ -157,8 +156,6 @@ namespace Analogy.UserControls
                     break;
                 }
             }
-
-
         }
 
         public void AppendMessage(IAnalogyLogMessage message, string dataSource)

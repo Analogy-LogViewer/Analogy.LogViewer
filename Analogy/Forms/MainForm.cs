@@ -154,7 +154,7 @@ namespace Analogy.Forms
                  AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                  AlertControl ac = new AlertControl(this.components)
                  {
-                     AutoFormDelay = notification.DurationSeconds * 1000
+                     AutoFormDelay = notification.DurationSeconds * 1000,
                  };
                  ac.AutoHeight = true;
                  if (notification.ActionOnClick != null)
@@ -171,13 +171,11 @@ namespace Analogy.Forms
                              try
                              {
                                  notification.ActionOnClick?.Invoke();
-
                              }
                              catch (Exception exception)
                              {
                                  XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
                                      MessageBoxButtons.OK);
-
                              }
                          }
                      };
@@ -312,7 +310,6 @@ namespace Analogy.Forms
                     bbtnCheckUpdates.Appearance.ForeColor = Color.DarkBlue;
                 }
                 bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.NewestVersion.ToString();
-
             }
         }
 
@@ -344,7 +341,6 @@ namespace Analogy.Forms
                             }
                         }
                         PlottingManager.OnHidePlot += Instance_OnHidePlot;
-
                     }
                 }));
             };
@@ -375,7 +371,6 @@ namespace Analogy.Forms
                         actionBtn.RibbonStyle = RibbonItemStyles.All;
                         actionBtn.Caption = string.IsNullOrEmpty(action.Title) ? "Tool" : action.Title;
                         actionBtn.ItemClick += (sender, e) => { action.Action(); };
-
                     }
                 }
             }
@@ -592,7 +587,6 @@ namespace Analogy.Forms
             };
 
             bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
-
         }
 
         private async Task OpenOfflineLogs(RibbonPage? ribbonPage, string[] filenames,
@@ -620,7 +614,6 @@ namespace Analogy.Forms
                 {
                     ExtensionsManager.RegisterExtension(extensions.SingleOrDefault(m => m.Id == guid));
                 }
-
             }
         }
         private async Task OpenOfflineFileWithSpecificDataProvider(string[] files)
@@ -648,7 +641,6 @@ namespace Analogy.Forms
                     supported = supported.Where(d =>
                         d.DataProvider.Id == Settings.LastOpenedDataProvider ||
                         d.FactoryID == Settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
-
                 }
                 else
                 {
@@ -694,7 +686,6 @@ namespace Analogy.Forms
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                         }
-
                     }
                     else
                     {
@@ -704,7 +695,6 @@ namespace Analogy.Forms
                         XtraMessageBox.Show(msg, "Unable to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
         }
 
@@ -723,7 +713,6 @@ namespace Analogy.Forms
         private void AnalogyMainForm_DragEnter(object sender, DragEventArgs e) =>
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
 
-
         private void OpenProcessForm()
         {
             var p = new ProcessNameAndID();
@@ -734,8 +723,6 @@ namespace Analogy.Forms
         {
             OpenProcessForm();
         }
-
-
 
         private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataProvider offlineAnalogy,
             string title, List<string> files)
@@ -757,12 +744,9 @@ namespace Analogy.Forms
                         await OpenOfflineLogs(ribbonPage, new[] { be.Item.Caption }, offlineAnalogy, title);
                     };
                     bar.AddItem(btn);
-
                 }
             }
         }
-
-
 
         private void bbtnItemChangeLog_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -791,9 +775,7 @@ namespace Analogy.Forms
 
         private void bBtnClientServer_ItemClick(object sender, ItemClickEventArgs e)
         {
-
         }
-
 
         private void bBtnBookmarked_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -814,7 +796,6 @@ namespace Analogy.Forms
         private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
         }
-
 
         private void CreateDataSource(FactoryContainer fc, int position)
         {
@@ -865,7 +846,7 @@ namespace Analogy.Forms
                     BarButtonItem actionBtn = new BarButtonItem
                     {
                         Caption = action.Title,
-                        RibbonStyle = RibbonItemStyles.All
+                        RibbonStyle = RibbonItemStyles.All,
                     };
                     groupActionSource.ItemLinks.Add(actionBtn);
                     actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.PageSetup_32x32;
@@ -908,7 +889,7 @@ namespace Analogy.Forms
                 BarButtonItem settingsBtn = new BarButtonItem
                 {
                     Caption = providerSetting.Title,
-                    RibbonStyle = RibbonItemStyles.All
+                    RibbonStyle = RibbonItemStyles.All,
                 };
                 groupSettings.ItemLinks.Add(settingsBtn);
                 settingsBtn.ImageOptions.Image = providerSetting.SmallImage ?? Resources.Technology_16x16;
@@ -949,7 +930,6 @@ namespace Analogy.Forms
             {
                 return;
             }
-
 
             foreach (var userControlFactory in userControls)
             {
@@ -1086,7 +1066,6 @@ namespace Analogy.Forms
                 }
 
                 plotterBtn.ItemClick += async (s, be) => await OpenPlotter();
-
             }
         }
 
@@ -1232,11 +1211,9 @@ namespace Analogy.Forms
                     }
 
                     OnlineSources.Add(AutoOpenRealTime());
-
                 }
             }
             AddServerSideDataSources(ribbonPage, dataSourceFactory, ribbonPageGroup);
-
         }
 
         private void AddCombinedRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory)
@@ -1267,7 +1244,6 @@ namespace Analogy.Forms
                 realTimeMenu.ImageOptions.Image = Resources.Database_on;
                 realTimeMenu.RibbonStyle = RibbonItemStyles.All;
                 realTimeMenu.Caption = "Real Time Logs";
-
 
                 foreach (var realTime in realTimes)
                 {
@@ -1379,9 +1355,7 @@ namespace Analogy.Forms
                         }
 
                         OnlineSources.Add(AutoOpenRealTime());
-
                     }
-
                 }
             }
             AddServerSideDataSources(ribbonPage, dataSourceFactory, group);
@@ -1439,7 +1413,6 @@ namespace Analogy.Forms
                     {
                         await singleProvider.Execute(cts.Token, offlineUC.Handler);
                     }
-
                 };
             }
         }
@@ -1475,7 +1448,6 @@ namespace Analogy.Forms
             {
                 AddMultiplesOfflineDataSource(primaryFactory, ribbonPage, offlineProviders, factory, group);
             }
-
         }
         private void AddMultiplesOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage,
             List<IAnalogyOfflineDataProvider> offlineProviders, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
@@ -1552,7 +1524,6 @@ namespace Analogy.Forms
                 page.Text = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
                 dockManager1.ActivePanel = page;
 
-
                 dockManager1.ClosedPanel += OnXtcLogsOnControlRemoved;
             }
 
@@ -1563,7 +1534,6 @@ namespace Analogy.Forms
             recentBar.ImageOptions.Image = images?.GetSmallRecentFilesImage(factoryId) ?? Resources.RecentlyUse_16x16;
             recentBar.ImageOptions.LargeImage = images?.GetLargeRecentFilesImage(factoryId) ?? Resources.RecentlyUse_32x32;
             recentBar.RibbonStyle = RibbonItemStyles.All;
-
 
             //local folder
             BarSubItem folderBar = new BarSubItem();
@@ -1614,7 +1584,6 @@ namespace Analogy.Forms
                 }
             }
 
-
             //add Files open buttons
             if (offlineProviders.Any(i => !string.IsNullOrEmpty(i.FileOpenDialogFilters)))
             {
@@ -1641,7 +1610,7 @@ namespace Analogy.Forms
                                 {
                                     Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
                                     Title = @"Open Files",
-                                    Multiselect = true
+                                    Multiselect = true,
                                 };
                                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                                 {
@@ -1685,7 +1654,7 @@ namespace Analogy.Forms
                                 {
                                     Filter = Utils.GetOpenFilter(dataProvider.FileOpenDialogFilters),
                                     Title = @"Open Files",
-                                    Multiselect = true
+                                    Multiselect = true,
                                 };
                                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                                 {
@@ -1708,8 +1677,6 @@ namespace Analogy.Forms
                     }
                 }
 
-
-
                 //add Open Pooled file entry
                 BarSubItem filePoolingBtn = new BarSubItem();
                 string caption = "File Pooling (Monitoring)";
@@ -1724,7 +1691,6 @@ namespace Analogy.Forms
                 foreach (var dataProvider in offlineProviders)
                 {
 
-
                     BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
                     btnOpenFile.ItemClick += async (sender, e) =>
                     {
@@ -1732,7 +1698,7 @@ namespace Analogy.Forms
                         {
                             Filter = dataProvider.FileOpenDialogFilters,
                             Title = @"Open File for pooling",
-                            Multiselect = false
+                            Multiselect = false,
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
@@ -1747,7 +1713,6 @@ namespace Analogy.Forms
                     filePoolingBtn.AddItem(btnOpenFile);
                 }
             }
-
 
             //add recent
             group.ItemLinks.Insert(2, recentBar);
@@ -1805,7 +1770,6 @@ namespace Analogy.Forms
                 searchFiles.AddItem(btnSearchin);
             }
 
-
             BarSubItem combineFiles = new BarSubItem();
             combineFiles.Caption = "Combine Files";
             tools.ItemLinks.Add(combineFiles);
@@ -1823,8 +1787,6 @@ namespace Analogy.Forms
                 };
                 combineFiles.AddItem(btnCombine);
             }
-
-
 
             BarSubItem compareFiles = new BarSubItem();
             compareFiles.Caption = "Compare Files";
@@ -1878,8 +1840,6 @@ namespace Analogy.Forms
                 ClientServerUCLog.Dock = DockStyle.Fill;
                 page.Text = $"Client/Server logs #{OpenedWindows}. {titleOfDataSource}";
                 dockManager1.ActivePanel = page;
-
-
             }
 
             void OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string initialFile)
@@ -1980,8 +1940,6 @@ namespace Analogy.Forms
                 }
             }
 
-
-
             //recent bar
             BarSubItem recentBar = new BarSubItem();
             recentBar.Caption = "Recent Files";
@@ -2005,7 +1963,7 @@ namespace Analogy.Forms
                     {
                         Filter = Utils.GetOpenFilter(offlineAnalogy.FileOpenDialogFilters),
                         Title = @"Open Files",
-                        Multiselect = true
+                        Multiselect = true,
                     };
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
@@ -2031,7 +1989,7 @@ namespace Analogy.Forms
                     {
                         Filter = offlineAnalogy.FileOpenDialogFilters,
                         Title = @"Open File for pooling",
-                        Multiselect = false
+                        Multiselect = false,
                     };
                     if (openFileDialog1.ShowDialog() == DialogResult.OK)
                     {
@@ -2041,7 +1999,6 @@ namespace Analogy.Forms
                         AddRecentFiles(ribbonPage, recentBar, offlineAnalogy, title,
                             new List<string> { openFileDialog1.FileName });
                     }
-
                 };
             }
             else
@@ -2071,7 +2028,6 @@ namespace Analogy.Forms
             {
                 await OpenExternalDataSource(title, offlineAnalogy);
             };
-
 
             //add tools
             BarButtonItem searchFiles = new BarButtonItem();
@@ -2110,7 +2066,6 @@ namespace Analogy.Forms
                 compare.ShowDialog(this);
             };
         }
-
 
         private void AddSingleRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataProvider realTime, string title,
          RibbonPageGroup group)
@@ -2220,9 +2175,7 @@ namespace Analogy.Forms
                 }
 
                 OnlineSources.Add(AutoOpenRealTime());
-
             }
-
         }
         private void AddServerSideDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactory dataSourceFactory, RibbonPageGroup group)
         {
@@ -2299,7 +2252,6 @@ namespace Analogy.Forms
             TmrAutoConnect.Enabled = true;
         }
 
-
         private void TmrStatusUpdates_Tick(object sender, EventArgs e)
         {
             tmrStatusUpdates.Stop();
@@ -2309,15 +2261,12 @@ namespace Analogy.Forms
             tmrStatusUpdates.Start();
         }
 
-
         private void bbiFileCaching_ItemClick(object sender, ItemClickEventArgs e)
         {
             Settings.EnableFileCaching = !Settings.EnableFileCaching;
             bbiFileCaching.Caption = "File caching is " + (Settings.EnableFileCaching ? "on" : "off");
             bbiFileCaching.Appearance.BackColor = Settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
         }
-
-
 
         private void bBtnItemExportSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -2340,7 +2289,6 @@ namespace Analogy.Forms
                         XtraMessageBox.Show("Error exporting settings: " + exception.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
             }
         }
@@ -2363,7 +2311,6 @@ namespace Analogy.Forms
                         ServicesProvider.Instance.GetService<IAnalogyUserSettings>().LoadSettings(newSettings);
                     }
                 }
-
             }
         }
 

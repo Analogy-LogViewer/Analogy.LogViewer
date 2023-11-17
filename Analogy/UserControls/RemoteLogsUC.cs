@@ -111,5 +111,4 @@ namespace Analogy.UserControls
                 ucLogs1.HideSecondaryWindow();
         }
     }
-
 }

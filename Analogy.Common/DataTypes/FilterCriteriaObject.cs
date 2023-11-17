@@ -41,7 +41,6 @@ namespace Analogy.Common.DataTypes
                 switch (c)
                 {
 
-
                     case ']':
                     case '[':
                     case '%':
@@ -80,7 +79,6 @@ namespace Analogy.Common.DataTypes
                 Modules = includeItems.Select(val => val.Trim()).ToArray();
                 ExcludedModules = excludeItems.Select(val => val.Trim()).ToArray();
             }
-
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void SetSources(string sources)
@@ -251,7 +249,7 @@ namespace Analogy.Common.DataTypes
             {
                 var allValidCombinations =
                     Columns.Select(c => GenerateSingleCombinationPerColumn(c.Field, c.Numerical).ToList());
-                var entries = allValidCombinations.Where(c=>c.Any()).Select(c =>
+                var entries = allValidCombinations.Where(c => c.Any()).Select(c =>
                     string.Join(orOperationInInclude ? " Or " : " and ", c));
                 var combined = string.Join(" Or ", entries);
                 return combined;
@@ -324,7 +322,6 @@ namespace Analogy.Common.DataTypes
             alertFilterCriteria.TextInclude = preDefineAlert.IncludeText ?? string.Empty;
             alertFilterCriteria.TextExclude = preDefineAlert.ExcludeText ?? string.Empty;
             return alertFilterCriteria.MatchAlert(analogyLogMessage);
-
         }
 
         private bool MatchAlert(AnalogyLogMessage message)
@@ -386,6 +383,5 @@ namespace Analogy.Common.DataTypes
 
             return match;
         }
-
     }
 }

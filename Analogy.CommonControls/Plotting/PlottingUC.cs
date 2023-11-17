@@ -23,7 +23,7 @@ namespace Analogy.CommonControls.Plotting
         public PlotState PlotState { get; private set; }
         private Color SingleColor { get; set; }
         private bool UseSingleColor { get; set; }
-        
+
         public PlottingUC()
         {
             PlotState = new PlotState() { ChartType = 0, ShowAll = true, ShowLegend = true, ShowChartControl = false };
@@ -66,7 +66,7 @@ namespace Analogy.CommonControls.Plotting
                     CheckedInLegend = true,
                     DataSource = data.ViewportData,
                     DataSourceSorted = true,
-                    ArgumentDataMember = type == AnalogyPlottingPointXAxisDataType.DateTime ? nameof(AnalogyPlottingPointData.DateTime) : nameof(AnalogyPlottingPointData.XAxisValue)
+                    ArgumentDataMember = type == AnalogyPlottingPointXAxisDataType.DateTime ? nameof(AnalogyPlottingPointData.DateTime) : nameof(AnalogyPlottingPointData.XAxisValue),
                 };
                 series.ValueDataMembers.AddRange(nameof(AnalogyPlottingPointData.Value));
                 ((LineSeriesView)series.View).MarkerVisibility = DefaultBoolean.False;
@@ -109,7 +109,6 @@ namespace Analogy.CommonControls.Plotting
             diagram.ScrollingOptions.UseTouchDevice = true;
 
             SetChartType();
-
         }
 
         private void SetChartType()
@@ -126,7 +125,6 @@ namespace Analogy.CommonControls.Plotting
                     view.Pane = diagram.DefaultPane;
                     chartControl1.Series[i].CheckedInLegend = true;
                     chartControl1.Series[i].CheckableInLegend = true;
-
                 }
             }
             if (rbChartType.SelectedIndex > 0 && chartControl1.Series.Count > 0)
@@ -142,7 +140,6 @@ namespace Analogy.CommonControls.Plotting
                     view.Pane = pane;
                     chartControl1.Series[i].CheckedInLegend = true;
                     chartControl1.Series[i].CheckableInLegend = true;
-
                 }
             }
 
@@ -167,7 +164,6 @@ namespace Analogy.CommonControls.Plotting
             {
                 diagram.PaneLayout.AutoLayoutMode = PaneAutoLayoutMode.Grid;
             }
-
         }
         public void Start()
         {
@@ -179,7 +175,7 @@ namespace Analogy.CommonControls.Plotting
         private void Plotter_OnNewPointsData(object sender, List<AnalogyPlottingPointData> pts)
         {
             Manager.AddPoints(pts);
-     }
+        }
 
         private void Plotter_OnNewPointData(object sender, AnalogyPlottingPointData e)
         {
@@ -201,13 +197,11 @@ namespace Analogy.CommonControls.Plotting
         private void nudWindow_EditValueChanged(object sender, System.EventArgs e)
         {
             Manager.SetDataWindow((int)nudWindow.Value);
-
         }
 
         private void nudRefreshInterval_EditValueChanged(object sender, System.EventArgs e)
         {
             Manager.SetRefreshInterval((float)nudRefreshInterval.Value);
-
         }
 
         private void sbtnSaveChart_Click(object sender, System.EventArgs e)
@@ -239,7 +233,6 @@ namespace Analogy.CommonControls.Plotting
             {
                 LegendItemChecked?.Invoke(this, (cl.Name, cl.CheckedInLegend));
             }
-
         }
 
         private void SaveChartImageToFile(ChartControl chart, ImageFormat format, String fileName)
@@ -275,7 +268,6 @@ namespace Analogy.CommonControls.Plotting
         {
             PlotState.ShowLegend = ceShowLegend.Checked;
             chartControl1.Legend.Visibility = ceShowLegend.Checked ? DefaultBoolean.True : DefaultBoolean.False;
-
         }
 
         private void ceShowHideAll_CheckedChanged(object sender, EventArgs e)
@@ -289,7 +281,6 @@ namespace Analogy.CommonControls.Plotting
             if (diagram == null)
             {
                 return;
-
             }
 
             foreach (ConstantLine line in diagram.AxisX.ConstantLines)
@@ -363,8 +354,6 @@ namespace Analogy.CommonControls.Plotting
             {
                 //    s.Points.Clear();
             }
-
-
         }
         public void AddConstantVerticalLine(string name, long timestamp, Color color, DashStyle dashLine, bool isChecked)
         {
@@ -423,7 +412,6 @@ namespace Analogy.CommonControls.Plotting
                 xyDiagram1.AxisX.WholeRange.AutoSideMargins = false;
                 xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
                 xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
-
             }
             else if (Interactor.XAxisDataType == AnalogyPlottingPointXAxisDataType.DateTime)
             {
@@ -456,8 +444,6 @@ namespace Analogy.CommonControls.Plotting
             xyDiagram1.AxisY.WholeRange.AutoSideMargins = false;
             xyDiagram1.AxisY.WholeRange.EndSideMargin = 0D;
             xyDiagram1.AxisY.WholeRange.StartSideMargin = 0D;
-
-
         }
 
         public void SetDarkTheme(bool enable)
@@ -478,6 +464,5 @@ namespace Analogy.CommonControls.Plotting
                 }
             }
         }
-
     }
 }

@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Analogy.Interfaces
 {
-    public interface IAnalogyUserSettings: IUserSettingsManager
+    public interface IAnalogyUserSettings : IUserSettingsManager
     {
         event EventHandler OnFactoryOrderChanged;
         event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
@@ -69,7 +69,6 @@ namespace Analogy.Interfaces
         void UpdateOrder(List<Guid> order);
         Image GetImage();
         void UpdateRunningTime();
-
 
         void LoadSettings(IAnalogyUserSettings newSettings);
         bool TryGetFileAssociations(Guid offlineProviderId, out IEnumerable<string> associations);

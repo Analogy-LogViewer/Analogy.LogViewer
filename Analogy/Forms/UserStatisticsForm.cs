@@ -18,7 +18,6 @@ namespace Analogy.Forms
             ShowIcon = true;
             Icon = Settings.GetIcon();
             LoadSettings();
-
         }
 
         private void LoadSettings()
@@ -30,7 +29,6 @@ namespace Analogy.Forms
         {
             EnableDisableUserStatistics(tsUserStatistics.IsOn);
             Settings.EnableUserStatistics = tsUserStatistics.IsOn;
-
         }
 
         private void EnableDisableUserStatistics(bool isOn)
@@ -60,7 +58,6 @@ namespace Analogy.Forms
                 lblRunningTime.Text = $"Running Time: 0";
                 lblOpenedFiles.Text = $"Number Of Opened Files: N/A";
             }
-
         }
     }
 }

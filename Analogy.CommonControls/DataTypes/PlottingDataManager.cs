@@ -43,7 +43,6 @@ namespace Analogy.CommonControls.DataTypes
                     }
                 }
             }
-
         }
         public void Start()
         {

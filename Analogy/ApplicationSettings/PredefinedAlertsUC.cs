@@ -13,7 +13,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class PredefinedAlertsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } 
+        private IUserSettingsManager Settings { get; }
         public PredefinedAlertsUC(IUserSettingsManager settings)
         {
             this.Settings = settings;
@@ -50,7 +50,6 @@ namespace Analogy.ApplicationSettings
         private void LoadSettings()
         {
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
-
         }
     }
 }

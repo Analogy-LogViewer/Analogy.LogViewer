@@ -39,7 +39,6 @@ namespace Analogy.CommonControls.UserControls
             if (DesignMode)
             {
                 return;
-
             }
             Pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
                 .Build();
@@ -70,7 +69,6 @@ namespace Analogy.CommonControls.UserControls
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
-
         }
 
         public async Task LoadMessage()
@@ -88,7 +86,7 @@ namespace Analogy.CommonControls.UserControls
                     Message.AdditionalProperties.Select(kv => $"{kv.Key}:{kv.Value}"));
             }
 
-            memoText.Text =Utils.ProcessLinuxMessage(Message.Text, Settings.SupportLinuxFormatting);
+            memoText.Text = Utils.ProcessLinuxMessage(Message.Text, Settings.SupportLinuxFormatting);
             txtbMachineName.Text = Message.MachineName;
             txtID.Text = Message.Id.ToString();
             txtbDataSource.Text = DataSource;
@@ -112,7 +110,7 @@ namespace Analogy.CommonControls.UserControls
                 _jsonTreeView.ClearList();
                 if (!string.IsNullOrEmpty(json))
                 {
-                  await  _jsonTreeView.ShowJson(json);
+                    await _jsonTreeView.ShowJson(json);
                 }
 
                 splitContainerControl1.PanelVisibility = SplitPanelVisibility.Both;
@@ -122,7 +120,6 @@ namespace Analogy.CommonControls.UserControls
                 splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel1;
             }
         }
-
 
         private void btnNext_Click(object sender, EventArgs e)
         {

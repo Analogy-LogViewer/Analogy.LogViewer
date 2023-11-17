@@ -105,7 +105,6 @@ namespace Analogy.Common.Managers
 
         public void SetLogsLayoutFileName(string filename)
         {
-
         }
     }
 }

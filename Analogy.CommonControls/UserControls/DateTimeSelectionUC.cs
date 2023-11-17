@@ -40,7 +40,6 @@ namespace Analogy.UserControls
                 comboBoxEdit1.EditValue = times.First();
             }
             comboBoxEdit1.EditValueChanged += LookUpEdit1_EditValueChanged;
-
         }
 
         private void sbtnOK_Click(object sender, EventArgs e)
@@ -48,7 +47,5 @@ namespace Analogy.UserControls
             PopupControlContainer control = this.Parent as PopupControlContainer;
             control?.HidePopup();
         }
-
-      
     }
 }

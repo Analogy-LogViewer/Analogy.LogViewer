@@ -20,7 +20,6 @@ namespace Analogy.DataTypes
         public SelectionEventArgs(List<string> files)
         {
             SelectedFileNames = files;
-
         }
     }
 }

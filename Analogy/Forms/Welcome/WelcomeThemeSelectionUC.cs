@@ -24,8 +24,6 @@ namespace Analogy.Forms.Welcome
 
         private void WelcomeThemeSelectionUC_Load(object sender, EventArgs e)
         {
-
-
         }
 
         private void sbtnSettingsTheme_Click(object sender, EventArgs e)

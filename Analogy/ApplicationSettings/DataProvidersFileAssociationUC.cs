@@ -87,7 +87,6 @@ namespace Analogy.ApplicationSettings
             cbFileProviderAssociation.Properties.DataSource = providers;
             cbFileProviderAssociation.Properties.DisplayMember = nameof(ProviderEntry.OptionalTitle);
             cbFileProviderAssociation.EditValue = providers.FirstOrDefault();
-
         }
 
         private record ProviderEntry(string? OptionalTitle, Guid Id);

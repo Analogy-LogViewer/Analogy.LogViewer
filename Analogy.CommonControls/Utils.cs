@@ -94,7 +94,6 @@ namespace Analogy.CommonControls
                         dtr[info.Key] = info.Value;
                     }
                 }
-
             }
             return dtr;
         }
@@ -112,7 +111,7 @@ namespace Analogy.CommonControls
                 TimeOffsetType.Predefined => time.Add(customOffset),
                 TimeOffsetType.UtcToLocalTime => time.ToLocalTime(),
                 TimeOffsetType.LocalTimeToUtc => time.ToUniversalTime(),
-                _ => time
+                _ => time,
             };
         }
 
@@ -192,7 +191,7 @@ namespace Analogy.CommonControls
                         new CheckedListBoxItem("Error + Critical"),
                         new CheckedListBoxItem("Warning"),
                         new CheckedListBoxItem("Debug"),
-                        new CheckedListBoxItem("Verbose")
+                        new CheckedListBoxItem("Verbose"),
                     };
                     chkLstLogLevel.Items.AddRange(radioLevels);
                     break;
@@ -210,7 +209,6 @@ namespace Analogy.CommonControls
             chkLstLogLevel.Items.Clear();
             chkLstLogLevel.CheckStyle = CheckStyles.Standard;
             chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, false)).ToArray());
-
         }
 
         static long GetLastInputTime()
@@ -298,7 +296,7 @@ namespace Analogy.CommonControls
                 }
                 foreach (var innerLines in line.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    sb.AppendFormat("{0}{1}", innerLines.Replace("\n",""), Environment.NewLine);
+                    sb.AppendFormat("{0}{1}", innerLines.Replace("\n", ""), Environment.NewLine);
                 }
             }
             return sb.ToString();

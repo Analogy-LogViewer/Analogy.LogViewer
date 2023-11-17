@@ -42,7 +42,6 @@ namespace Analogy.Common.DataTypes
             Images = new List<IAnalogyImages>();
         }
 
-
         public void AddDataProviderFactory(IAnalogyDataProvidersFactory dataProvidersFactory) =>
             DataProvidersFactories.Add(dataProvidersFactory);
 

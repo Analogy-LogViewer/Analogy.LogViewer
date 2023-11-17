@@ -47,12 +47,9 @@ namespace Analogy.UserControls
             {
                 PlottingManager.OnNewPointsData -= OnNewPointData;
                 PlottingManager.OnNewSeries -= Instance_OnNewSeries;
-
             };
             PlottingManager.OnNewPointsData += OnNewPointData;
             PlottingManager.OnNewSeries += Instance_OnNewSeries;
-
-
         }
 
         private void Instance_OnNewSeries(object sender, (Guid Id, string seriesName) e)
@@ -61,7 +58,6 @@ namespace Analogy.UserControls
             {
                 AddSeries(e.seriesName);
             }
-
         }
 
         private void AddSeries(string seriesName)
@@ -75,7 +71,7 @@ namespace Analogy.UserControls
                 CheckedInLegend = true,
                 DataSource = data.ViewportData,
                 DataSourceSorted = true,
-                ArgumentDataMember = nameof(AnalogyPlottingPointData.DateTime)
+                ArgumentDataMember = nameof(AnalogyPlottingPointData.DateTime),
             };
             series.ValueDataMembers.AddRange(nameof(AnalogyPlottingPointData.Value));
             chartControl1.Series.Add(series);
@@ -95,7 +91,6 @@ namespace Analogy.UserControls
                     view.Pane = diagram.DefaultPane;
                     chartControl1.Series[i].CheckedInLegend = true;
                     chartControl1.Series[i].CheckableInLegend = true;
-
                 }
             }
 
@@ -112,7 +107,6 @@ namespace Analogy.UserControls
                     view.Pane = pane;
                     chartControl1.Series[i].CheckedInLegend = true;
                     chartControl1.Series[i].CheckableInLegend = true;
-
                 }
             }
 
@@ -130,7 +124,6 @@ namespace Analogy.UserControls
             {
                 diagram.PaneLayout.AutoLayoutMode = PaneAutoLayoutMode.Grid;
             }
-
         }
 
         private void PopulateData()
@@ -197,7 +190,6 @@ namespace Analogy.UserControls
             SetChartType();
         }
 
-
         public void RemoveSeriesFromPlot(string seriesName)
         {
             if (!IsDisposed)
@@ -218,15 +210,12 @@ namespace Analogy.UserControls
                             nameof(OnDemandPlottingUC));
                     }
                 }));
-
-
             }
         }
 
         public void ClearSeriesData(string seriesNameToClear)
         {
             Manager.ClearSeriesData(seriesNameToClear);
-
         }
 
         public void ClearAllData()

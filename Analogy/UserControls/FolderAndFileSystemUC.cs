@@ -43,7 +43,6 @@ namespace Analogy.UserControls
             lBoxFiles.DataSource = fileInfos;
             lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;
             SelectionChangedNotify();
-
         }
         private void lBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -72,5 +71,4 @@ namespace Analogy.UserControls
             }
         }
     }
-
 }

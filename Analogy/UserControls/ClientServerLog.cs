@@ -49,7 +49,6 @@ namespace Analogy.UserControls
         private async void lBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
             await LoadFilesAsync(lBoxFiles.SelectedItems.Cast<FileInfo>().Select(f => f.FullName).ToList(), chkbSelectionMode.Checked);
-
         }
         private void PopulateFiles(string folder)
         {
@@ -66,14 +65,11 @@ namespace Analogy.UserControls
             lBoxFiles.DisplayMember = recursiveLoad ? "FullName" : "Name";
             lBoxFiles.DataSource = fileInfos;
             lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;
-
         }
-
 
         public async Task LoadFilesAsync(List<string> fileNames, bool clearLog)
         {
             await ucLogs1.LoadFilesAsync(fileNames, clearLog);
-
         }
 
         private void lBoxSources_SelectedValueChanged(object sender, EventArgs e)
@@ -84,7 +80,6 @@ namespace Analogy.UserControls
                 PopulateFiles(data.Path);
             }
         }
-
 
         private void bBtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -101,7 +96,6 @@ namespace Analogy.UserControls
                 {
                     ClientServerDataSourceManager.Instance.Remove(data);
                     lBoxSources.Items.Remove(data);
-
                 }
             }
         }
@@ -124,7 +118,6 @@ namespace Analogy.UserControls
                 {
                     MessageBox.Show(exception.Message, @"Error Opening file location", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 
@@ -178,5 +171,4 @@ namespace Analogy.UserControls
                 ucLogs1.HideSecondaryWindow();
         }
     }
-
 }

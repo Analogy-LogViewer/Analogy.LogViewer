@@ -22,7 +22,7 @@ namespace Analogy.Forms
         }
         private List<(string Text, ILogWindow window)> Logs { get; }
         private IUserSettingsManager Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-       public OpenWindows()
+        public OpenWindows()
         {
             InitializeComponent();
         }

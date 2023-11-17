@@ -12,8 +12,6 @@ namespace Analogy.UserControls
             InitializeComponent();
         }
 
-
-
         private async void sBtnCombined_Click(object sender, EventArgs e)
         {
             var files = _folderAndFileSystemUc1.GetSelectedFileNames();
@@ -37,13 +35,10 @@ namespace Analogy.UserControls
             }
         }
 
-
         public void SetDataSource(IAnalogyOfflineDataProvider analogyOfflineDataProvider)
         {
             offlineAnalogy = analogyOfflineDataProvider;
             this._folderAndFileSystemUc1.DataProvider = offlineAnalogy;
         }
-
-
     }
 }

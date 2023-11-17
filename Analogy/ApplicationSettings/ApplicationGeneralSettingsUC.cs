@@ -19,7 +19,7 @@ namespace Analogy.ApplicationSettings
         private IAnalogyUserSettings Settings { get; }
         private IAnalogyFoldersAccess FoldersAccess { get; }
 
-        public ApplicationGeneralSettingsUC(IAnalogyUserSettings settings,IAnalogyFoldersAccess foldersAccess)
+        public ApplicationGeneralSettingsUC(IAnalogyUserSettings settings, IAnalogyFoldersAccess foldersAccess)
         {
             Settings = settings;
             FoldersAccess = foldersAccess;
@@ -88,9 +88,6 @@ namespace Analogy.ApplicationSettings
             nudAutoCompleteCount.Value = Settings.NumberOfLastSearches;
             tsTraybar.IsOn = Settings.MinimizedToTrayBar;
             tsEnableCompressedArchive.IsOn = Settings.EnableCompressedArchives;
-
-
         }
-
     }
 }

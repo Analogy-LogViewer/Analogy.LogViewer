@@ -144,7 +144,6 @@ namespace Analogy
                 ? BuiltInFactories.First(f => f.Factory == factory).Assembly
                 : Factories.Single(f => f.Factory == factory).Assembly;
 
-
         public FactoryContainer GetBuiltInFactoryContainer(Guid id) =>
             BuiltInFactories.Single(f => f.Factory.FactoryId == id);
 
@@ -388,7 +387,6 @@ namespace Analogy
                         {
                             PlottingManager.UnRegister(e);
                         };
-
                     }
                     catch (Exception e)
                     {
@@ -444,7 +442,6 @@ namespace Analogy
                         var images = (Activator.CreateInstance(img) as IAnalogyImages)!;
                         var factory = Factories.FirstOrDefault(f => f.Assembly == assembly);
                         factory?.AddImages(images);
-
                     }
                     catch (Exception e)
                     {
@@ -582,7 +579,6 @@ namespace Analogy
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during adding user control factory: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
-
             }
             //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
         }

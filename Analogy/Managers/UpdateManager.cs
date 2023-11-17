@@ -63,7 +63,6 @@ namespace Analogy.Managers
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
             }
         }
 
@@ -79,7 +78,6 @@ namespace Analogy.Managers
                 return targetFileName;
             }
         }
-
 
         public bool NewVersionExist
         {
@@ -107,7 +105,6 @@ namespace Analogy.Managers
                     {
                         downloadTag = downloadAsset.BrowserDownloadUrl;
                     }
-
                 }
                 return ("Analogy Log viewer", downloadTag);
             }
@@ -120,12 +117,12 @@ namespace Analogy.Managers
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Serilog", "Analogy.LogViewer.Serilog.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Serilog", Resources.serilog32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WordsSearch", "Analogy.LogViewer.WordsSearch.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WordsSearch", Resources.Analogy_image_32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Sqlite", "Analogy.LogViewer.Sqlite.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Sqlite", Resources.Analogy_image_32x32));
-            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.RabbitMq", "Analogy.LogViewer.RabbitMq.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RabbitMq", Resources.rabbitmq32x32,false));
-            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.RSSReader", "Analogy.LogViewer.RSSReader.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RSSReader", Resources.rss,false));
-            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.VisualStudioLogParser", "Analogy.LogViewer.VisualStudioLogParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.VisualStudioLogParser", Resources.VS32x32,false));
-            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WhatsApp", "Analogy.LogViewer.WhatsApp.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WhatsApp", Resources.whatsappicon32x32,false));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.RabbitMq", "Analogy.LogViewer.RabbitMq.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RabbitMq", Resources.rabbitmq32x32, false));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.RSSReader", "Analogy.LogViewer.RSSReader.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RSSReader", Resources.rss, false));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.VisualStudioLogParser", "Analogy.LogViewer.VisualStudioLogParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.VisualStudioLogParser", Resources.VS32x32, false));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.WhatsApp", "Analogy.LogViewer.WhatsApp.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.WhatsApp", Resources.whatsappicon32x32, false));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.XMLParser", "Analogy.LogViewer.XMLParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.XMLParser", Resources.xml32x32));
-            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Philips.ICAP", "Analogy.LogViewer.Philips.ICAP.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Philips.ICAP", Resources.philips_image_32x32,false));
+            SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Philips.ICAP", "Analogy.LogViewer.Philips.ICAP.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Philips.ICAP", Resources.philips_image_32x32, false));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Philips.CT", "Analogy.LogViewer.Philips.CT.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Philips.CT", Resources.philips_image_32x32, false));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.JsonParser", "Analogy.LogViewer.JsonParser.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.JsonParser", Resources.jsonfile32x32));
             SupportedDataProviders.Add(new DataProviderInformation("Analogy.LogViewer.Log4jXml", "Analogy.LogViewer.Log4jXml.dll", "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Log4jXml", Resources.Log4jXml32x32));
@@ -236,7 +233,6 @@ namespace Analogy.Managers
             {
                 XtraMessageBox.Show("Updater Manager was not found." + Environment.NewLine + "It will be downloaded right now", @"Update Confirmation", MessageBoxButtons.OK);
                 await DownloadUpdater(update.Value.UpdaterAsset);
-
             }
             else if (GetVersionFromTagName(update.Value.TagName) > UpdaterVersion())
             {
@@ -253,8 +249,6 @@ namespace Analogy.Managers
         {
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(UpdaterExecutable);
             return new Version(fvi.FileVersion);
-
-
         }
 
         private async Task<bool> DownloadUpdater(ReleaseAsset updaterAsset)
@@ -263,7 +257,6 @@ namespace Analogy.Managers
             var downloadDialog = new DownloadUpdateDialog(updaterAsset.BrowserDownloadUrl, Path.GetDirectoryName(UpdaterExecutable), CurrentFrameworkAttribute, tcs);
             downloadDialog.ShowDialog();
             return await tcs.Task;
-
         }
 
         public async Task InitiateUpdate(string title, string downloadURL, bool forceOverride)
@@ -290,7 +283,7 @@ namespace Analogy.Managers
                     try
                     {
                         Process.Start(processStartInfo);
-                       System.Windows.Forms.Application.Exit();
+                        System.Windows.Forms.Application.Exit();
                     }
                     catch (Exception ex)
                     {
@@ -304,7 +297,6 @@ namespace Analogy.Managers
                         Environment.NewLine +
                         $"Current Directory: {Environment.CurrentDirectory}", @"Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-
                 }
             }
         }

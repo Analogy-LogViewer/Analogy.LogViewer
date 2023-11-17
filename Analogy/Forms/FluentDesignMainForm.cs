@@ -180,7 +180,7 @@ namespace Analogy
                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                 AlertControl ac = new AlertControl(this.components)
                 {
-                    AutoFormDelay = notification.DurationSeconds * 1000
+                    AutoFormDelay = notification.DurationSeconds * 1000,
                 };
                 ac.AutoHeight = true;
                 if (notification.ActionOnClick != null)
@@ -197,13 +197,11 @@ namespace Analogy
                             try
                             {
                                 notification.ActionOnClick?.Invoke();
-
                             }
                             catch (Exception exception)
                             {
                                 XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
                                     MessageBoxButtons.OK);
-
                             }
                         }
                     };
@@ -261,7 +259,6 @@ namespace Analogy
                             }
                         }
                         PlottingManager.OnHidePlot += Instance_OnHidePlot;
-
                     }
                 }));
             };
@@ -275,7 +272,6 @@ namespace Analogy
                 {
                     ExtensionsManager.RegisterExtension(extensions.SingleOrDefault(m => m.Id == guid));
                 }
-
             }
         }
 
@@ -304,7 +300,6 @@ namespace Analogy
                     supported = supported.Where(d =>
                         d.DataProvider.Id == Settings.LastOpenedDataProvider ||
                         d.FactoryID == Settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
-
                 }
                 else
                 {
@@ -336,7 +331,6 @@ namespace Analogy
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                         }
-
                     }
                     else
                     {
@@ -346,7 +340,6 @@ namespace Analogy
                         XtraMessageBox.Show(msg, "Unable to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
         }
 
@@ -560,7 +553,7 @@ namespace Analogy
                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                 AlertControl ac = new AlertControl(this.components)
                 {
-                    AutoFormDelay = notification.DurationSeconds * 1000
+                    AutoFormDelay = notification.DurationSeconds * 1000,
                 };
                 ac.AutoHeight = true;
                 if (notification.ActionOnClick != null)
@@ -577,13 +570,11 @@ namespace Analogy
                             try
                             {
                                 notification.ActionOnClick?.Invoke();
-
                             }
                             catch (Exception exception)
                             {
                                 XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
                                     MessageBoxButtons.OK);
-
                             }
                         }
                     };
@@ -607,7 +598,6 @@ namespace Analogy
                 Settings.EnableFileCaching = !Settings.EnableFileCaching;
                 bbiFileCaching.Caption = "File caching is " + (Settings.EnableFileCaching ? "on" : "off");
                 bbiFileCaching.Appearance.BackColor = Settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
-
             };
         }
 
@@ -627,7 +617,6 @@ namespace Analogy
                     bbtnCheckUpdates.Appearance.ForeColor = Color.DarkBlue;
                 }
                 bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.NewestVersion.ToString();
-
             }
         }
         private void PopulateGlobalTools()
@@ -654,7 +643,6 @@ namespace Analogy
                         actionBtn.RibbonStyle = RibbonItemStyles.All;
                         actionBtn.Caption = string.IsNullOrEmpty(action.Title) ? "Tool" : action.Title;
                         actionBtn.ItemClick += (sender, e) => { action.Action(); };
-
                     }
                 }
             }
@@ -679,7 +667,6 @@ namespace Analogy
                 LoadFactoryInAccordion(fc.Factory.FactoryId);
             };
             bsiDataProviders.AddItem(bci);
-
         }
 
         private void LoadFactoryInAccordion(Guid factoryId)
@@ -749,7 +736,6 @@ namespace Analogy
             AddFactorySettings(fc);
             AddAbout(fc);
             accordionControl.EndUpdate();
-
         }
         private void AddAbout(FactoryContainer fc)
         {
@@ -758,7 +744,6 @@ namespace Analogy
             acRootGroupHome.Expanded = true;
             acRootGroupHome.ImageOptions.Image = Resources.About_16x16;
             acRootGroupHome.Text = "Data Source Information";
-
 
             AccordionControlElement aboutBtn = new AccordionControlElement();
             acRootGroupHome.Elements.Add(aboutBtn);
@@ -951,7 +936,6 @@ namespace Analogy
                     }
                 };
 
-
                 recentFolders.ImageOptions.Image = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
                 foreach (var path in Settings.GetRecentFolders(offlineAnalogy.Id))
                 {
@@ -976,7 +960,6 @@ namespace Analogy
                     }
                 }
 
-
                 //recent bar
                 AccordionControlElement recentfiles = new AccordionControlElement();
                 recentfiles.Text = "Recent Files";
@@ -995,7 +978,7 @@ namespace Analogy
                         {
                             Filter = Utils.GetOpenFilter(offlineAnalogy.FileOpenDialogFilters),
                             Title = @"Open Files",
-                            Multiselect = true
+                            Multiselect = true,
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
@@ -1003,7 +986,6 @@ namespace Analogy
                             AddRecentFiles(recentfiles, offlineAnalogy, title, openFileDialog1.FileNames.ToList());
                         }
                     };
-
 
                     //add Open pooling file entry
                     AccordionControlElement filePoolingBtn = new AccordionControlElement();
@@ -1020,7 +1002,7 @@ namespace Analogy
                         {
                             Filter = offlineAnalogy.FileOpenDialogFilters,
                             Title = @"Open File for pooling",
-                            Multiselect = false
+                            Multiselect = false,
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
@@ -1057,14 +1039,12 @@ namespace Analogy
                 externalSources.ImageOptions.Image = images?.GetLargeKnownLocationsImage(factoryId) ?? Resources.ServerMode_32x32;
                 externalSources.Click += (sender, e) => { OpenExternalDataSource(title, offlineAnalogy); };
 
-
                 //add tools
                 AccordionControlElement acRootGroupTool = new AccordionControlElement();
                 accordionControl.Elements.Add(acRootGroupTool);
                 acRootGroupTool.Expanded = true;
                 acRootGroupTool.ImageOptions.ImageUri.Uri = "Home;Office2013";
                 acRootGroupTool.Text = $"Tools: {factory.Title}";
-
 
                 AccordionControlElement searchFiles = new AccordionControlElement();
                 acRootGroupTool.Elements.Add(searchFiles);
@@ -1133,8 +1113,6 @@ namespace Analogy
                 page.Text = fullTitle;
                 dockManager1.ActivePanel = page;
             };
-
-
         }
         private void AddRecentFiles(AccordionControlElement recentElement, IAnalogyOfflineDataProvider offlineAnalogy, string title, List<string> recentFiles)
         {
@@ -1301,9 +1279,7 @@ namespace Analogy
                     }
 
                     OnlineSources.Add(AutoOpenRealTime());
-
                 }
-
             }
         }
 
@@ -1365,7 +1341,6 @@ namespace Analogy
                     {
                         await singleProvider.Execute(cts.Token, offlineUC.Handler);
                     }
-
                 };
             }
         }
@@ -1467,7 +1442,6 @@ namespace Analogy
             acRootGroupHome.ImageOptions.Image = Resources.Line_32x32;
             acRootGroupHome.Text = $"Graph Plotter: {title}";
 
-
             foreach (var plot in graphPlotters)
             {
                 AccordionControlElement plotterBtn = new AccordionControlElement();
@@ -1522,7 +1496,6 @@ namespace Analogy
                 }
 
                 plotterBtn.Click += async (s, be) => await OpenPlotter();
-
             }
         }
         private void FluentDesignMainForm_FormClosing(object sender, FormClosingEventArgs e)

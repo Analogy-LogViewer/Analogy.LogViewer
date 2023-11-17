@@ -17,7 +17,6 @@ namespace Analogy.ApplicationSettings
 
         private void ShortcutSettingsUC_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -40,7 +40,6 @@ namespace Analogy.Forms
                 lblSkinName.Text = "Skin name: " + laf.ActiveSkinName;
                 lblApplicationStyle.Text = "Application style: " + laf.Style;
                 lblSvgPalette.Text = "Active Svg Palette: " + laf.ActiveSvgPaletteName;
-
             };
         }
 

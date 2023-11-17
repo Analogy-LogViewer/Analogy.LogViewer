@@ -11,7 +11,6 @@ namespace Analogy.Forms.Welcome
 
         private void WelcomeFeedbackUC_Load(object sender, EventArgs e)
         {
-
         }
 
         private void sbtnFeedbackGithubLink_Click(object sender, EventArgs e)

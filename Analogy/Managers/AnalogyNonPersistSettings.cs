@@ -39,7 +39,6 @@ namespace Analogy.Managers
             {
                 AnalogyLogManager.Instance.LogError($"Error reading registry: {e}", nameof(AnalogyNonPersistSettings));
             }
-
         }
 
         public void AddDependencyLocation(string path)

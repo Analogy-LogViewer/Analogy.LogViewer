@@ -52,7 +52,6 @@ namespace Analogy.ApplicationSettings
                         File.WriteAllText(saveFileDialog.FileName, Settings.ColorSettings.AsJson());
                         XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-
                     }
                     catch (Exception ex)
                     {
@@ -60,7 +59,6 @@ namespace Analogy.ApplicationSettings
                         XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
-
                 }
             };
 
@@ -81,7 +79,6 @@ namespace Analogy.ApplicationSettings
                         XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-
                     }
                     catch (Exception ex)
                     {
@@ -121,7 +118,6 @@ namespace Analogy.ApplicationSettings
             cpeHighlightColorText.ColorChanged += (s, e) => UpdateColors();
             cpeNewMessagesColor.ColorChanged += (s, e) => UpdateColors();
             cpeNewMessagesColorText.ColorChanged += (s, e) => UpdateColors();
-
         }
 
         private void UpdateColors()
@@ -196,8 +192,6 @@ namespace Analogy.ApplicationSettings
             lblLogLevelAnalogyInformation.ForeColor = cpeLogLevelAnalogyInformationText.Color;
             lblHighlightColor.ForeColor = cpeHighlightColorText.Color;
             ceNewMessagesColor.ForeColor = cpeNewMessagesColorText.Color;
-
         }
-
     }
 }

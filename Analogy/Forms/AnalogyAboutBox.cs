@@ -22,7 +22,6 @@ namespace Analogy.Forms
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.meAbout.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2018){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
-
         }
 
         public AnalogyAboutBox(int selectedTab) : this()

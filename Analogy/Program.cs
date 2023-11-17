@@ -136,7 +136,6 @@ namespace Analogy
                         throw new ArgumentOutOfRangeException();
                 }
                 Settings.ApplicationSvgPaletteName = laf.ActiveSvgPaletteName;
-
             };
 
             if (Settings.SingleInstance && Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
@@ -177,7 +176,6 @@ namespace Analogy
             {
                 Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm, up, fpm, nm, fa, pm));
             }
-
         }
 
         private static void ConfigureServices()
@@ -262,9 +260,7 @@ namespace Analogy
         {
             Logger.LogError(e.Exception, "Error: " + e.Exception, e.Exception, nameof(Application_ThreadException));
             MessageBox.Show("Error: " + e.Exception, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
         }
-
 
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
@@ -287,8 +283,6 @@ namespace Analogy
             // NOTE: this doesn't account for special search paths but then that never
             //           worked before either.
             string filename = args.Name.Split(',')[0] + ".dll".ToLower();
-
-
 
             var paths = ServicesProvider.Instance.GetService<IFactoriesManager>().ProbingPaths.Select(Path.GetFullPath).Except(new List<string> { AssemblyLocation }).Distinct()
                 .ToList();
@@ -347,7 +341,5 @@ namespace Analogy
 
             return null;
         }
-
-
     }
 }

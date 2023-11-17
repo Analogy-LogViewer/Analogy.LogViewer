@@ -30,7 +30,7 @@ namespace Analogy.Common.DataTypes
             SetMenuFontSelectionType(FontSelectionType.Normal, "Segoe UI");
         }
 
-        public void SetFontSelectionType(FontSelectionType mode,string fontName)
+        public void SetFontSelectionType(FontSelectionType mode, string fontName)
         {
             FontSelectionType = mode;
             FontName = fontName;
@@ -53,7 +53,7 @@ namespace Analogy.Common.DataTypes
                     break;
             }
         }
-    
+
         public Font GetFontType(FontSelectionType mode)
         {
             float fontSize;
@@ -76,9 +76,8 @@ namespace Analogy.Common.DataTypes
                     break;
             }
             return new Font(FontName, fontSize, FontStyle.Regular, GraphicsUnit.Point);
-
         }
-        public void SetMenuFontSelectionType(FontSelectionType mode,string fontName)
+        public void SetMenuFontSelectionType(FontSelectionType mode, string fontName)
         {
             MenuFontSelectionType = mode;
             MenuFontName = fontName;

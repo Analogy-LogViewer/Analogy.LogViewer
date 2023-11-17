@@ -24,7 +24,7 @@ namespace Analogy.CommonControls.Forms
             Controls.Add(dataVisualizerUC);
             dataVisualizerUC.Dock = DockStyle.Fill;
         }
-        
+
         private void DataVisualizerUCForm_Load(object sender, EventArgs e)
         {
             Icon = _settingsManager.GetIcon();

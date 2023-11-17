@@ -15,7 +15,6 @@ namespace Analogy.Forms
         {
             public string Name { get; set; }
             public IAnalogyShareable Shareable { get; set; }
-
         }
         private IAnalogyShareable Shareable { get; set; }
         private List<IAnalogyLogMessage> messages;
@@ -60,7 +59,6 @@ namespace Analogy.Forms
                 await Shareable.CleanupSender();
             }
         }
-
 
         private async void sbtnInit_Click(object sender, EventArgs e)
         {

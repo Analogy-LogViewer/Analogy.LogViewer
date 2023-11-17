@@ -46,7 +46,6 @@ namespace Analogy.Common.DataTypes
                 DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(filename));
                 OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
-
             }
 
             if (FileProcessingManager.IsFileCurrentlyBeingProcessed(filename))
@@ -60,7 +59,6 @@ namespace Analogy.Common.DataTypes
                 DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(filename));
                 OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
-
             }
 
             //otherwise read file:
@@ -129,7 +127,6 @@ namespace Analogy.Common.DataTypes
                         }
 
                         return compressedMessages.OrderBy(m => m.Date);
-
                     }
                     else
                     {
@@ -153,7 +150,6 @@ namespace Analogy.Common.DataTypes
                 return new List<AnalogyLogMessage> { error };
             }
         }
-
 
         private string UnzipFilesIntoTempFolder(string zipPath, IAnalogyOfflineDataProvider fileDataProvider)
         {
@@ -218,7 +214,6 @@ namespace Analogy.Common.DataTypes
                         Logger.LogError(nameof(UnzipFilesIntoTempFolder),
                             "Zip file does not contain any supported files");
                     }
-
                 }
             }
         }
@@ -232,6 +227,5 @@ namespace Analogy.Common.DataTypes
             return filename.EndsWith(".gz", StringComparison.InvariantCultureIgnoreCase) ||
                    filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
         }
-
     }
 }

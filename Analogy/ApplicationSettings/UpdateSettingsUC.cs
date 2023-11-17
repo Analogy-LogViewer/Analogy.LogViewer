@@ -13,12 +13,11 @@ namespace Analogy.ApplicationSettings
 {
     public partial class UpdateSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private UpdateManager UpdateManager { get; } 
+        private UpdateManager UpdateManager { get; }
         public UpdateSettingsUC(UpdateManager manager)
         {
             UpdateManager = manager;
             InitializeComponent();
-
         }
 
         private void UpdateSettingsUC_Load(object sender, EventArgs e)
@@ -32,7 +31,7 @@ namespace Analogy.ApplicationSettings
             cbUpdates.SelectedIndexChanged += (s, e) =>
             {
                 var options = typeof(UpdateMode).GetDisplayValues();
-                UpdateManager.UpdateMode = (UpdateMode) Enum.Parse(typeof(UpdateMode),
+                UpdateManager.UpdateMode = (UpdateMode)Enum.Parse(typeof(UpdateMode),
                     options.Single(k => k.Value == cbUpdates.SelectedItem.ToString()).Key, true);
             };
         }

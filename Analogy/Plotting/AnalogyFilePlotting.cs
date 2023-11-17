@@ -56,7 +56,6 @@ namespace Analogy.Plotting
                         int nowOfRows = items.Length;
                         headers = Enumerable.Range(0, nowOfRows).Select(i => $"Series {i}").ToList();
                     }
-
                 }
             }
         }
@@ -158,13 +157,11 @@ namespace Analogy.Plotting
             {
                 AnalogyLogManager.Instance.LogError(e.ToString(), nameof(AnalogyFilePlotting));
             }
-
         }
 
         public Task StopPlotting()
         {
             return Task.CompletedTask;
         }
-
     }
 }

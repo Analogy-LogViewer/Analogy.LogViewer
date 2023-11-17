@@ -37,7 +37,6 @@ namespace Analogy.Forms
 
         private bool TestConnection() => CheckPath(txtbPath.Text);
 
-
         private bool CheckPath(string path)
         {
             try
@@ -68,7 +67,6 @@ namespace Analogy.Forms
                 }
 
                 Close();
-
             }
         }
 

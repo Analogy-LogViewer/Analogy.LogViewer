@@ -50,7 +50,7 @@ namespace Analogy.UserControls
                 using OpenFileDialog openFileDialog1 = new OpenFileDialog
                 {
                     Title = @"Open Files",
-                    Multiselect = false
+                    Multiselect = false,
                 };
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -64,7 +64,6 @@ namespace Analogy.UserControls
                 {
                     sbtnLoad.Text = "load";
                     InFileProcess = false;
-
                 }
                 if (!string.IsNullOrEmpty(teFile.Text) && File.Exists(teFile.Text))
                 {
@@ -111,12 +110,8 @@ namespace Analogy.UserControls
                     dockManager1.ActivePanel = page;
                     uc.Start();
                     processTask = afp.StartPlotting();
-
                 }
             };
         }
-
-
-
     }
 }

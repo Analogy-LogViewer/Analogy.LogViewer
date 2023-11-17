@@ -30,7 +30,6 @@ namespace Analogy.Managers
             SeriesNames = new Dictionary<Guid, List<string>>();
         }
 
-
         public void Register(IAnalogyOnDemandPlotting plotter)
         {
             plotter.OnNewPointsData += Plotter_OnNewPointsData;
@@ -106,7 +105,6 @@ namespace Analogy.Managers
         }
         public void AddSeriesToPlot(Guid id, string seriesName)
         {
-
         }
 
         public void ClearAllData(Guid id)
@@ -144,7 +142,6 @@ namespace Analogy.Managers
 
             return new List<AnalogyPlottingPointData>();
         }
-
     }
 }
 #pragma warning restore CA1854

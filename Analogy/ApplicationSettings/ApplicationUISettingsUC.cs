@@ -16,7 +16,7 @@ namespace Analogy.ApplicationSettings
 {
     public partial class ApplicationUISettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } 
+        private IAnalogyUserSettings Settings { get; }
         public ApplicationUISettingsUC(IAnalogyUserSettings settings)
         {
             Settings = settings;
@@ -28,7 +28,6 @@ namespace Analogy.ApplicationSettings
             if (DesignMode)
             {
                 return;
-
             }
 
             LoadSettings();
@@ -44,7 +43,6 @@ namespace Analogy.ApplicationSettings
                 lblSkinName.Text = "Skin name: " + laf.ActiveSkinName;
                 lblApplicationStyle.Text = "Application style: " + laf.Style;
                 lblSvgPalette.Text = "Active Svg Palette: " + laf.ActiveSvgPaletteName;
-
             };
             tsStartupRibbonMinimized.Toggled +=
                 (s, e) => Settings.StartupRibbonMinimized = tsStartupRibbonMinimized.IsOn;
@@ -69,7 +67,6 @@ namespace Analogy.ApplicationSettings
             {
                 Settings.AnalogyIcon = ceIconLight.Checked ? "Light" : "Dark";
                 peAnalogy.Image = ceIconLight.Checked ? Resources.AnalogyLight : Resources.AnalogyDark;
-
             };
             ceIconLight.CheckedChanged += (s, e) =>
             {
@@ -100,10 +97,7 @@ namespace Analogy.ApplicationSettings
             {
                 Settings.CombineOnlineProviders = tsCombineOnlineProviders.IsOn;
             };
-
         }
-
-
 
         private void LoadSettings()
         {
@@ -156,7 +150,6 @@ namespace Analogy.ApplicationSettings
                 default:
                     ceContextMenuFontsDefault.Checked = true;
                     break;
-
             }
             if (Settings.AnalogyIcon == "Light")
             {
@@ -189,7 +182,6 @@ namespace Analogy.ApplicationSettings
         {
             string controlFont = fontEditControl.EditValue as string;
             string menuFont = fontEditMenus.EditValue as string;
-
 
             if (ceFontsDefault.Checked)
             {
@@ -232,7 +224,6 @@ namespace Analogy.ApplicationSettings
             WindowsFormsSettings.DefaultFont = new Font(controlFont, Settings.FontSettings.FontSize);
             WindowsFormsSettings.DefaultMenuFont = new Font(menuFont, Settings.FontSettings.MenuFontSize);
             UpdateUI();
-
         }
 
         private void UpdateUI()

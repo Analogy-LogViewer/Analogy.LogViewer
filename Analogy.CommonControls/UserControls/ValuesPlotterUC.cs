@@ -101,7 +101,6 @@ namespace Analogy.CommonControls.UserControls
             IOrderedEnumerable<string> columns = m.Where(i => i.AdditionalProperties != null).SelectMany(i => i.AdditionalProperties!.Keys).Distinct().OrderBy(i => i);
             foreach (string column in columns)
                 ColumnNames.Add(column);
-            
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)

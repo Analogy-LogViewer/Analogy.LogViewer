@@ -38,7 +38,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void DataVisualizerUC_Load(object sender, EventArgs e)
         {
-
         }
 
         private void Plot()
@@ -96,7 +95,6 @@ namespace Analogy.CommonControls.UserControls
                 }
             }
 
-
             chartControlFrequency.Series.Clear();
             chartControlFrequency.DataSource = CreateTable(frequencyCount);
             chartControlFrequency.SeriesDataMember = "Name";
@@ -122,7 +120,6 @@ namespace Analogy.CommonControls.UserControls
             diagram3.AxisX.Label.TextPattern = "{A:l}";
             diagram3.AxisY.VisualRange.MinValue = 0;
             diagram3.AxisY.VisualRange.MaxValue = 24;
-
         }
 
         private DataTable CreateTable(Dictionary<string, Dictionary<TimeSpan, int>> data)
@@ -140,7 +137,6 @@ namespace Analogy.CommonControls.UserControls
                 {
                     tbl.Rows.Add(item, new DateTime(val.Key.Ticks), val.Value, val.Value);
                 }
-
             }
 
             return tbl;
@@ -162,7 +158,6 @@ namespace Analogy.CommonControls.UserControls
                     tbl.Rows.Add(item, Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset), Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Ticks,
                         val.Date.Hour + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Minute / 60 + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Second / 60 / 60);
                 }
-
             }
 
             return tbl;
@@ -172,7 +167,6 @@ namespace Analogy.CommonControls.UserControls
         {
             Items = chklistItems.CheckedItems.Cast<CheckedListBoxItem>().Select(i => i.Value.ToString()).ToList();
             Plot();
-
         }
 
         private void sBtnAdd_Click(object sender, EventArgs e)
@@ -186,7 +180,6 @@ namespace Analogy.CommonControls.UserControls
                 seRefreshInterval.Enabled = true;
                 Plot();
             }
-
         }
 
         private void seRefreshInterval_EditValueChanged(object sender, EventArgs e)
@@ -206,7 +199,6 @@ namespace Analogy.CommonControls.UserControls
             {
                 tmrPlotting.Enabled = false;
             }
-
         }
 
         private void tmrPlotting_Tick(object sender, EventArgs e)
