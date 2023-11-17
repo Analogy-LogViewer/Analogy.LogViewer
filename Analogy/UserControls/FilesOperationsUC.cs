@@ -210,7 +210,3 @@ namespace Analogy.UserControls
         }
     }
 }
-
-
-
-

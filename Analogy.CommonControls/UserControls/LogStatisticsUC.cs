@@ -176,4 +176,3 @@ namespace Analogy.CommonControls.UserControls
         }
     }
 }
-

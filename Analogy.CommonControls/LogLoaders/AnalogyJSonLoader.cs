@@ -73,4 +73,3 @@ namespace Analogy.CommonControls.LogLoaders
 
     }
 }
-

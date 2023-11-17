@@ -154,5 +154,3 @@ namespace Analogy.UserControls
     }
 
 }
-
-

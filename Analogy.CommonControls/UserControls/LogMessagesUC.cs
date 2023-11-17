@@ -3804,6 +3804,3 @@ namespace Analogy.CommonControls.UserControls
         }
     }
 }
-
-
-
