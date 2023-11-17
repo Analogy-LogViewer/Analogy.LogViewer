@@ -49,7 +49,6 @@ namespace Analogy.CommonControls.Forms
         {
             if (!string.IsNullOrEmpty(memoNoteKey.Text))
             {
-
                 Message.AddOrReplaceAdditionalProperty(memoNoteKey.Text, memoText.Text);
             }
         }

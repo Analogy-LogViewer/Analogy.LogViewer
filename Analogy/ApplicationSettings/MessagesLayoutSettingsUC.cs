@@ -91,7 +91,6 @@ namespace Analogy.ApplicationSettings
             };
             gridControl.MainView.Layout += (s, e) =>
             {
-
                 try
                 {
                     if (!string.IsNullOrEmpty(Settings.LogGridFileName))

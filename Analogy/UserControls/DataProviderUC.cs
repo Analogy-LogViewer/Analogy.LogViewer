@@ -26,13 +26,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
 }

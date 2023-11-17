@@ -100,16 +100,23 @@ namespace Analogy.CommonControls.UserControls
             ColumnNames.Clear();
             IOrderedEnumerable<string> columns = m.Where(i => i.AdditionalProperties != null).SelectMany(i => i.AdditionalProperties!.Keys).Distinct().OrderBy(i => i);
             foreach (string column in columns)
+            {
                 ColumnNames.Add(column);
+            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             string column = CmbColumns.SelectedItem as string;
             if (column == null)
+            {
                 return;
+            }
+
             if (!ActiveColumns.Contains(column))
+            {
                 AddSeries(column);
+            }
         }
 
         private void AddSeries(string column)

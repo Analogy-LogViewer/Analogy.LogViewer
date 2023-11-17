@@ -40,7 +40,6 @@ namespace Analogy.Common.DataTypes
             {
                 switch (c)
                 {
-
                     case ']':
                     case '[':
                     case '%':
@@ -103,7 +102,6 @@ namespace Analogy.Common.DataTypes
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string GetSqlExpression(bool orLogLevel)
         {
-
             StringBuilder sqlString = new();
             List<string> includeTexts = new() { EscapeLikeValue(TextInclude.Trim()) };
 

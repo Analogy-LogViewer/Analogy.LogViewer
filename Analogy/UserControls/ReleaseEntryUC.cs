@@ -23,7 +23,6 @@ namespace Analogy.UserControls
 
         private void ReleaseEntryUC_Load(object sender, EventArgs e)
         {
-
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
                 .Build();
             string data = $"# {Entry.Name}{Environment.NewLine}{Environment.NewLine}{Entry.Body}{Environment.NewLine}{Environment.NewLine}Created: {Entry.CreatedAt.DateTime}";

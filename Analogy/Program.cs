@@ -140,7 +140,6 @@ namespace Analogy
 
             if (Settings.SingleInstance && Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
-
                 if (Environment.GetCommandLineArgs().Length == 2)
                 {
                     var otherAnalogy = GetAlreadyRunningInstance();
@@ -320,7 +319,6 @@ namespace Analogy
         /// <returns>Fully qualified path of the file found or NULL</returns>
         private static string FindFileInPath(string filename, string path)
         {
-
             foreach (var fullFile in Directory.GetFiles(path))
             {
                 var file = Path.GetFileName(fullFile);

@@ -98,7 +98,7 @@ namespace Analogy.Common.Managers
             return null;
         }
 
-        public IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies()
+        public IEnumerable<(IAnalogyExtension Extension, Assembly Assembly)> GetAllExtensionsWithAssemblies()
         {
             return Enumerable.Empty<(IAnalogyExtension extension, Assembly assembly)>();
         }

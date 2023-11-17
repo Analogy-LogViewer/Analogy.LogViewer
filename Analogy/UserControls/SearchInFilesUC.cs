@@ -24,7 +24,6 @@ namespace Analogy.UserControls
 
         public void SetDataSource(IAnalogyOfflineDataProvider offlineAnalogy)
         {
-
             this.offlineAnalogy = offlineAnalogy;
             _folderAndFileSystemUc1.DataProvider = offlineAnalogy;
         }

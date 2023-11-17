@@ -22,7 +22,6 @@ namespace Analogy.UserControls
 
         private async void sBtnSave_Click(object sender, EventArgs e)
         {
-
             if (offlineAnalogy.CanSaveToLogFile)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();

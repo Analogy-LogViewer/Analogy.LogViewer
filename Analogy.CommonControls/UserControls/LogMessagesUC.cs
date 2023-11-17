@@ -46,7 +46,6 @@ using System.Windows.Forms;
 
 namespace Analogy.CommonControls.UserControls
 {
-
     public partial class LogMessagesUC : XtraUserControl, ILogMessageCreatedHandler, ILogWindow, IAnalogyWorkspace, ILogRawSQL
     {
         #region ILogRawSQL Interface
@@ -211,7 +210,6 @@ namespace Analogy.CommonControls.UserControls
         private FileProcessingManager FileProcessingManager { get; } = ServicesProvider.Instance.GetService<FileProcessingManager>();
         public LogMessagesUC()
         {
-
             InitializeComponent();
             DateTimePicker = new DateTimeSelectionUC();
             JsonColumnChooser = new JsonColumnChooserUC();
@@ -1101,7 +1099,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void EditValueChanged(object sender, EventArgs e)
         {
-
             //if (sender is BaseEdit edit && e is ChangingEventArgs change && change.NewValue == string.Empty)
             //{
             //    edit.EditValue = null;
@@ -1589,7 +1586,10 @@ namespace Analogy.CommonControls.UserControls
                     pnl.ID = extension.Id;
                 }
                 if (Title != null && pnl.ParentPanel != null)
+                {
                     pnl.ParentPanel.Text = Title;
+                }
+
                 pnl.ControlContainer.Controls.Add(extension.CreateUserControl(Id, Logger));
                 pnl.SizeChanged += ExtensionPanel_SizeChanged;
                 await extension.InitializeUserControl(this, Id, Logger);
@@ -1626,7 +1626,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void tsmiEmail_Click(object sender, EventArgs e)
         {
-
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             if (message == null)
             {
@@ -1764,7 +1763,6 @@ namespace Analogy.CommonControls.UserControls
 
         internal DataTable GetFilteredDataTable()
         {
-
             // Create a data view by applying the grid view row filter
             try
             {
@@ -1891,7 +1889,9 @@ namespace Analogy.CommonControls.UserControls
             }
 
             if (frmDataVisualizer != null)
+            {
                 frmDataVisualizer.AppendMessage(message, dataSource);
+            }
 
             if (ExternalWindowsCount > 0)
             {
@@ -2009,7 +2009,6 @@ namespace Analogy.CommonControls.UserControls
 
         public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
-
             if (Settings.IdleMode && Utils.IdleTime().TotalMinutes > Settings.IdleTimeMinutes)
             {
                 PagingManager.IncrementTotalMissedMessages();
@@ -2026,7 +2025,9 @@ namespace Analogy.CommonControls.UserControls
             }
 
             if (frmDataVisualizer != null)
+            {
                 frmDataVisualizer.AppendMessages(messages, dataSource);
+            }
 
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
             {
@@ -2100,7 +2101,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void UpdatePage(DataTable page)
         {
-
             _messageData = page;
             lockSlim.EnterWriteLock();
             try
@@ -2214,7 +2214,6 @@ namespace Analogy.CommonControls.UserControls
 
             if (ceModulesProcess.Checked && txtbModule.EditValue != null)
             {
-
                 var items = txtbModule.EditValue.ToString().Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(v => v.Trim()).ToList();
                 var includeItems = items.Where(i => !i.StartsWith("-"));
@@ -2413,7 +2412,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void ClearLogs(bool raiseEvent)
         {
-
             lockSlim.EnterWriteLock();
 
             if (raiseEvent)
@@ -2739,7 +2737,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void CreateBookmark(bool persists)
         {
-
             (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
             int[] selRows = LogGrid.GetSelectedRows();
             if (message == null)
@@ -2780,7 +2777,6 @@ namespace Analogy.CommonControls.UserControls
                 {
                     if (!table.Columns.Contains(info.Key))
                     {
-
                         if (!InvokeRequired)
                         {
                             if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
@@ -2855,7 +2851,6 @@ namespace Analogy.CommonControls.UserControls
             }
             catch (Exception)
             {
-
                 XtraMessageBox.Show("Cannot go to message", "Message not found", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
@@ -2938,7 +2933,6 @@ namespace Analogy.CommonControls.UserControls
 
         private async void SaveMessagesToLog(IAnalogyOfflineDataProvider fileHandler, List<IAnalogyLogMessage> messages)
         {
-
             if (fileHandler != null && fileHandler.CanSaveToLogFile)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -3042,7 +3036,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void barToggleSwitchItem1_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-
             dockPanelFiltering.Visible = !btSwitchExpandButtomMessage.Checked;
         }
 
@@ -3172,7 +3165,6 @@ namespace Analogy.CommonControls.UserControls
             List<IAnalogyLogMessage> messages = new List<IAnalogyLogMessage>();
             for (int i = 0; i < selectedRowHandles.Length; i++)
             {
-
                 if (selectedRowHandles[i] >= 0)
                 {
                     dataProvider = (string)LogGrid.GetRowCellValue(selectedRowHandles[i], "DataProvider");
@@ -3235,7 +3227,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnExportExcel_ItemClick(object sender, ItemClickEventArgs e)
         {
-
             var count = LogGrid.RowCount;
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -3540,7 +3531,6 @@ namespace Analogy.CommonControls.UserControls
 
         public void SetHighlightSettings(Action OpenSettingForm)
         {
-
             this.sbtnMoreHighlight.Click += (s, e) =>
             {
                 OpenSettingForm.Invoke();
@@ -3572,7 +3562,6 @@ namespace Analogy.CommonControls.UserControls
             filtersPopupMenu.ItemLinks.Clear();
             foreach (PreDefineFilter filter in Settings.PreDefinedQueries.Filters)
             {
-
                 BarButtonItem item = new BarButtonItem(barManager1, filter.ToString());
                 item.ItemClick += (s, arg) =>
                 {
@@ -3597,7 +3586,6 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnSaveCurrentSelectionCustomFormat_ItemClick(object sender, ItemClickEventArgs e)
         {
-
             SaveMessagesToLog(FileDataProvider, GetMessagesFromSelectedRowInGrid(out _));
         }
 

@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogLoaders
 {
-
     public class AnalogyJsonLogFile
     {
-
         public async Task<IEnumerable<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messageHandler)
         {
-
             if (string.IsNullOrEmpty(fileName))
             {
                 AnalogyLogMessage empty = new AnalogyLogMessage($"File is null or empty. Aborting.",
@@ -43,7 +40,6 @@ namespace Analogy.LogLoaders
                 }
                 catch (Exception ex)
                 {
-
                     AnalogyLogMessage empty =
                         new AnalogyLogMessage($"File {fileName} is empty or corrupted. Error: {ex.Message}",
                             AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None")

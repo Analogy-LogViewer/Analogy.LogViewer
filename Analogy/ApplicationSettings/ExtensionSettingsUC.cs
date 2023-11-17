@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -31,11 +32,9 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
-
             var extensions = FactoriesManager.GetAllExtensionsWithAssemblies();
             foreach (var (ex, assembly) in extensions)
             {
-
                 FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description, assembly.GetName(false).Name, null);
                 chkLstItemExtensions.Items.Add(itm, Settings.StartupExtensions.Contains(itm.ID));
             }

@@ -32,7 +32,6 @@ namespace Analogy.ApplicationSettings
         {
             sbtnAddHighlight.Click += (s, e) =>
             {
-
                 if (ceHighlightContains.Checked)
                 {
                     Settings.PreDefinedQueries.AddHighlight(teHighlightContains.Text, PreDefinedQueryType.Contains, cpeHighlightPreDefined.Color);

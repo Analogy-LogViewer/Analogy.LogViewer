@@ -24,7 +24,6 @@ namespace Analogy
             {
                 switch (c)
                 {
-
                     case ']':
                     case '[':
                     case '%':

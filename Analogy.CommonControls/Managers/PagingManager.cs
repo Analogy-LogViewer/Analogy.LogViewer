@@ -150,7 +150,6 @@ namespace Analogy.CommonControls.Managers
 
         public List<(DataRow, IAnalogyLogMessage)> AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
-
             var table = pages.Last();
             var countInsideTable = table.Rows.Count;
             List<(DataRow row, IAnalogyLogMessage message)> rows = new List<(DataRow row, IAnalogyLogMessage message)>(messages.Count);
@@ -208,7 +207,6 @@ namespace Analogy.CommonControls.Managers
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
-
                     if (!table.Columns.Contains(info.Key))
                     {
                         if (!owner.InvokeRequired)
@@ -234,7 +232,6 @@ namespace Analogy.CommonControls.Managers
                             {
                                 try
                                 {
-
                                     columnsLockSlim.EnterWriteLock();
                                     if (!table.Columns.Contains(info.Key))
                                     {

@@ -86,7 +86,6 @@ namespace Analogy.UserControls
                 diagram.Panes.Clear();
                 for (int i = 1; i < chartControl1.Series.Count; i++)
                 {
-
                     XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase)chartControl1.Series[i].View;
                     view.Pane = diagram.DefaultPane;
                     chartControl1.Series[i].CheckedInLegend = true;
@@ -96,7 +95,6 @@ namespace Analogy.UserControls
 
             if (rbChartType.SelectedIndex > 0 && chartControl1.Series.Count > 0)
             {
-
                 diagram.Panes.Clear();
                 for (int i = 1; i < chartControl1.Series.Count; i++)
                 {

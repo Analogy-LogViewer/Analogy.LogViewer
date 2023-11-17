@@ -74,7 +74,6 @@ namespace Analogy.UserControls
 
         private void CreateChart(List<PieChartSingleDataPoint> data)
         {
-
             var pieChart = new ChartControl();
             pieChart.AllowGesture = true;
             pieChart.Titles.Clear();

@@ -11,7 +11,6 @@ namespace Analogy.UserControls
 {
     public partial class DataVisualizerUC : DevExpress.XtraEditors.XtraUserControl
     {
-
         private Func<List<IAnalogyLogMessage>> Messages { get; set; }
 
         private List<string> Items { get; set; }
@@ -58,7 +57,6 @@ namespace Analogy.UserControls
             var msgs = Messages();
             foreach (var m in msgs)
             {
-
                 foreach (var item in Items)
                 {
                     if (m.Text.Contains(item))

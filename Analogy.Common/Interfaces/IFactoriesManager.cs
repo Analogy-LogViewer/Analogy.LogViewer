@@ -40,7 +40,7 @@ namespace Analogy.Common.Interfaces
         IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider);
         IEnumerable<IAnalogyExtension> GetAllExtensions();
         FactoryContainer FactoryContainer(Guid componentId);
-        IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies();
+        IEnumerable<(IAnalogyExtension Extension, Assembly Assembly)> GetAllExtensionsWithAssemblies();
         void ShutDownAllFactories();
         Task InitializeIfNeeded(IAnalogyDataProvider dataProvider);
         IEnumerable<IAnalogyOfflineDataProvider> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders);

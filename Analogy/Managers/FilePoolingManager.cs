@@ -110,11 +110,17 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         };
         OnNewMessages?.Invoke(this, (new List<IAnalogyLogMessage> { m }, FileName));
         if (!HasFileFilter)
+        {
             return FileProcessor.Process(OfflineDataProvider, FileName, _cancellationTokenSource.Token);
+        }
+
         List<Task> tasks = new();
         if (_watchFile.Path != null)
             foreach (string? file in Directory.GetFiles(_watchFile.Path, _watchFile.Filter, SearchOption.TopDirectoryOnly))
+            {
                 tasks.Add(FileProcessor.Process(OfflineDataProvider, file, _cancellationTokenSource.Token));
+            }
+
         return Task.WhenAll(tasks);
     }
 
@@ -209,14 +215,23 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
         try
         {
             if (_readingInprogress)
+            {
                 return;
+            }
+
             FileInfo f = new(e.FullPath);
             if (_lastWriteTime == f.LastWriteTime)
+            {
                 return;
+            }
+
             lock (_sync)
             {
                 if (_readingInprogress || (Settings.EnableFilePoolingDelay && DateTime.Now.Subtract(_lastRead).TotalSeconds <= Settings.FilePoolingDelayInterval))
+                {
                     return;
+                }
+
                 _lastWriteTime = f.LastWriteTime;
                 _lastRead = DateTime.Now;
                 _watchFile.EnableRaisingEvents = false;

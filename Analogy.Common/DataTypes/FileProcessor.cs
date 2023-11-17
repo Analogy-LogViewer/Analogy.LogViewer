@@ -64,7 +64,6 @@ namespace Analogy.Common.DataTypes
             //otherwise read file:
             try
             {
-
                 if (fileDataProvider.CanOpenFile(filename)) //if can open natively: add to processing and process
                 {
                     FileProcessingManager.AddProcessingFile(filename);
@@ -192,12 +191,10 @@ namespace Analogy.Common.DataTypes
 
         private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath, IAnalogyOfflineDataProvider fileDataProvider)
         {
-
             using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
                 {
-
                     //build a list of files to be extracted
                     var entries = archive.Entries.Where(entry => !entry.FullName.EndsWith("/") && (fileDataProvider.CanOpenFile(entry.FullName) || IsCompressedArchive(entry.FullName)));
                     foreach (ZipArchiveEntry entry in entries)
@@ -205,7 +202,10 @@ namespace Analogy.Common.DataTypes
                         string fullTempName = Path.Combine(extractPath, entry.FullName);
                         string directoryName = Path.GetDirectoryName(fullTempName) ?? string.Empty;
                         if (!Directory.Exists(directoryName))
+                        {
                             Directory.CreateDirectory(directoryName);
+                        }
+
                         entry.ExtractToFile(fullTempName);
                     }
 

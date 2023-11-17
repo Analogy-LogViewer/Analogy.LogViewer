@@ -120,7 +120,6 @@ namespace Analogy.CommonControls.Plotting
                 diagram.Panes.Clear();
                 for (int i = 1; i < chartControl1.Series.Count; i++)
                 {
-
                     XYDiagramSeriesViewBase view = (XYDiagramSeriesViewBase)chartControl1.Series[i].View;
                     view.Pane = diagram.DefaultPane;
                     chartControl1.Series[i].CheckedInLegend = true;
@@ -129,7 +128,6 @@ namespace Analogy.CommonControls.Plotting
             }
             if (rbChartType.SelectedIndex > 0 && chartControl1.Series.Count > 0)
             {
-
                 diagram.Panes.Clear();
                 for (int i = 1; i < chartControl1.Series.Count; i++)
                 {
@@ -208,7 +206,6 @@ namespace Analogy.CommonControls.Plotting
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "png file|*.png|jpeg file|*.jpeg" })
             {
-
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     ImageFormat imgFormat = ImageFormat.Bmp;
@@ -329,7 +326,6 @@ namespace Analogy.CommonControls.Plotting
         }
         public void ResetData()
         {
-
             Manager.ClearAllData();
             XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
             if (diagram?.AxisX?.ConstantLines != null)

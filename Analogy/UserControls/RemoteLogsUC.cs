@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
-
     public partial class RemoteLogsUC : XtraUserControl, IUserControlWithUCLogs
     {
         private FileProcessingManager FileProcessingManager { get; }
@@ -102,13 +101,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
 }

@@ -46,7 +46,6 @@ namespace Analogy.ApplicationSettings
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-
                     try
                     {
                         File.WriteAllText(saveFileDialog.FileName, Settings.ColorSettings.AsJson());

@@ -185,7 +185,6 @@ namespace Analogy
                 ac.AutoHeight = true;
                 if (notification.ActionOnClick != null)
                 {
-
                     AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
                     btn1.Hint = "OK";
                     btn1.Name = "NotificationActionButton";
@@ -291,7 +290,6 @@ namespace Analogy
             }
             else
             {
-
                 if (supported.Any(d =>
                     d.DataProvider.Id == Settings.LastOpenedDataProvider ||
                     d.FactoryID == Settings.LastOpenedDataProvider
@@ -401,7 +399,6 @@ namespace Analogy
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
-
                 ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 user.ShowDialog(this);
             };
@@ -558,7 +555,6 @@ namespace Analogy
                 ac.AutoHeight = true;
                 if (notification.ActionOnClick != null)
                 {
-
                     AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
                     btn1.Hint = "OK";
                     btn1.Name = "NotificationActionButton";
@@ -671,7 +667,6 @@ namespace Analogy
 
         private void LoadFactoryInAccordion(Guid factoryId)
         {
-
             if (activeProvider == factoryId)
             {
                 return;
@@ -1118,7 +1113,6 @@ namespace Analogy
         {
             if (recentFiles.Any())
             {
-
                 foreach (string file in recentFiles)
                 {
                     if (!File.Exists(file) || recentElement.Elements.Any(e => e.Text.Equals(Path.GetFileName(file))))
@@ -1347,7 +1341,6 @@ namespace Analogy
 
         private void AddUserControls(FactoryContainer fc, List<IAnalogyCustomUserControlsFactory> userControls)
         {
-
             if (userControls.Count == 0)
             {
                 return;
@@ -1429,7 +1422,6 @@ namespace Analogy
         }
         private void AddGraphPlotter(FactoryContainer fc, List<IAnalogyPlotting> graphPlotters)
         {
-
             if (graphPlotters == null || graphPlotters.Count == 0)
             {
                 return;

@@ -14,7 +14,6 @@ using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
-
     public partial class LocalLogFilesUC : XtraUserControl, IUserControlWithUCLogs
     {
         private List<string> extrenalFiles = new List<string>();
@@ -37,7 +36,6 @@ namespace Analogy.UserControls
 
         public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string? initialSelectedPath = null, string? title = null) : this(initialSelectedPath ?? string.Empty, title: title)
         {
-
             DataProvider = dataProvider;
             if (fileNames != null)
             {
@@ -262,13 +260,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
 }

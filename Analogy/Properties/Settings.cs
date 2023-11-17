@@ -7,7 +7,6 @@
     //  The SettingsSaving event is raised before the setting values are saved.
     internal sealed partial class Settings
     {
-
         public Settings()
         {
             // // To add event handlers for saving and changing settings, uncomment the lines below:

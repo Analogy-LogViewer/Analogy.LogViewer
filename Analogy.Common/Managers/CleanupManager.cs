@@ -31,7 +31,6 @@ namespace Analogy.Common.Managers
         {
             foreach (string path in FoldersToClean)
             {
-
                 if (Directory.Exists(path))
                 {
                     try

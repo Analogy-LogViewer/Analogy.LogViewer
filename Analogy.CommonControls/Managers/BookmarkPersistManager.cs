@@ -112,7 +112,6 @@ namespace Analogy.CommonControls.Managers
             }
             else
             {
-
                 try
                 {
                     AnalogyJsonLogFile save = new AnalogyJsonLogFile();

@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
-
     public partial class AnalogyExclude : XtraForm
     {
         private class AnalogyCheckListItem
@@ -38,7 +37,6 @@ namespace Analogy.Forms
             var group = items.GroupBy(i => i).OrderByDescending(i => i.Count());
             foreach (IGrouping<string, string> grouping in group)
             {
-
                 bool checkedItem = excludeMostCommon.Contains(grouping.Key);
                 checkedListBoxControl1.Items.Add(new AnalogyCheckListItem(grouping.Key, grouping.Count()), checkedItem);
             }

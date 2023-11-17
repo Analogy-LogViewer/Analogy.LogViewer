@@ -22,7 +22,6 @@ namespace Analogy.Managers
 {
     public class UpdateManager
     {
-
         private IAnalogyUserSettings Settings { get; }
         private string repository = @"https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer";
         public bool EnableUpdate => UpdateMode != UpdateMode.Never;

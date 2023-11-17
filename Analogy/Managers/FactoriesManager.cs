@@ -57,7 +57,6 @@ namespace Analogy
 
         public async Task InitializeBuiltInFactories()
         {
-
             var dataProviders = BuiltInFactories
                 .Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
@@ -238,7 +237,7 @@ namespace Analogy
                 }
             }
         }
-        public IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies()
+        public IEnumerable<(IAnalogyExtension Extension, Assembly Assembly)> GetAllExtensionsWithAssemblies()
         {
             foreach (var factory in Factories)
             {

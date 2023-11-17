@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
-
     public partial class UserSettingsDataProvidersForm : XtraForm
     {
         private IFactoriesManager FactoriesManager { get; }
@@ -51,7 +50,6 @@ namespace Analogy.Forms
 
         private void LoadSettings()
         {
-
             AddExternalUserControlSettings();
         }
 

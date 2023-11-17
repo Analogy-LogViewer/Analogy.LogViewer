@@ -14,7 +14,6 @@ using Message = System.Windows.Forms.Message;
 
 namespace Analogy.UserControls
 {
-
     public partial class FilePoolingUCLogs : XtraUserControl, IUserControlWithUCLogs
     {
         private bool showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
@@ -103,7 +102,6 @@ namespace Analogy.UserControls
         {
             if (Enable && !IsDisposed)
             {
-
                 string interned = string.Intern(dataSource);
                 ucLogs1.AppendMessages(messages, interned);
             }
@@ -141,13 +139,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
 }

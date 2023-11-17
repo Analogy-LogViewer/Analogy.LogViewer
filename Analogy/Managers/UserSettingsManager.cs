@@ -16,7 +16,6 @@ using System.Reflection;
 
 namespace Analogy
 {
-
     public class UserSettingsManager : IAnalogyUserSettings
     {
         private FolderAccessManager FolderAccessManager { get; }

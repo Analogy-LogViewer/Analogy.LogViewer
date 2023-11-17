@@ -52,13 +52,11 @@ namespace Analogy.Forms
 
         private void CreateReleaseEntry(Release entry)
         {
-
             var downloads = new AccordionControlElement(ElementStyle.Item);
             downloads.Text = $"{entry.TagName} ({entry.CreatedAt.DateTime})";
             accordionControl1.Elements.Add(downloads);
             downloads.Click += (s, e) =>
             {
-
                 if (!fluentDesignFormContainer1.Controls.ContainsKey(entry.TagName))
                 {
                     ReleaseEntryUC uc = new ReleaseEntryUC(entry);
@@ -74,7 +72,6 @@ namespace Analogy.Forms
 
         private void CreatePieChart(IReadOnlyList<Release> releases)
         {
-
             DownloadStatisticsUC uc = new DownloadStatisticsUC(releases);
             uc.Name = "Download Statistics";
 

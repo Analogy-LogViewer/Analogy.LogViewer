@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
-
     public partial class BookmarkLog : XtraUserControl, IUserControlWithUCLogs
     {
         private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
@@ -37,13 +36,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
 }

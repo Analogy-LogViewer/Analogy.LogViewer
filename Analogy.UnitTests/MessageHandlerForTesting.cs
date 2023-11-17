@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Analogy.UnitTests
 {
-    class MessageHandlerForTesting : ILogMessageCreatedHandler
+    public class MessageHandlerForTesting : ILogMessageCreatedHandler
     {
         private List<IAnalogyLogMessage> messages;
         public bool ForceNoFileCaching { get; set; }

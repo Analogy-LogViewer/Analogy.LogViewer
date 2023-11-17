@@ -131,7 +131,6 @@ namespace Analogy.CommonControls
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataTable DataTableConstructor()
         {
-
             DataTable dtb = new DataTable();
             dtb.Columns.Add(new DataColumn("Date", typeof(DateTime)));
             dtb.Columns.Add(new DataColumn("TimeDiff", typeof(string)));

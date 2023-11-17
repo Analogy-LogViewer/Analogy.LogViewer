@@ -6,11 +6,11 @@ namespace Analogy.Managers
 {
     public class PlottingDataManager
     {
-        private List<(string seriesName, PlottingGraphData data)> GraphsData { get; set; }
+        private List<(string SeriesName, PlottingGraphData Data)> GraphsData { get; set; }
 
         public PlottingDataManager()
         {
-            GraphsData = new List<(string seriesName, PlottingGraphData data)>();
+            GraphsData = new List<(string SeriesName, PlottingGraphData Data)>();
         }
 
         public void AddGraphData(string seriesName, PlottingGraphData data) => GraphsData.Add((seriesName, data));
@@ -48,11 +48,11 @@ namespace Analogy.Managers
                 data.Start();
             }
         }
-        public void Start(string SeriesName)
+        public void Start(string seriesName)
         {
             foreach ((string name, PlottingGraphData data) in GraphsData)
             {
-                if (name == SeriesName)
+                if (name == seriesName)
                 {
                     data.Start();
                 }
@@ -60,35 +60,35 @@ namespace Analogy.Managers
         }
         public void SetRefreshInterval(float seconds)
         {
-            GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>
+            GraphsData.ForEach(((string SeriesName, PlottingGraphData Data) entry) =>
             {
-                entry.data.SetIntervalValue(seconds);
+                entry.Data.SetIntervalValue(seconds);
             });
         }
 
         public void SetDataWindow(int windowValue)
         {
-            GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>
+            GraphsData.ForEach(((string SeriesName, PlottingGraphData Data) entry) =>
             {
-                entry.data.SetWindowValue(windowValue);
+                entry.Data.SetWindowValue(windowValue);
             });
         }
 
         public void ClearSeriesData(string seriesNameToClear)
         {
-            var exist = GraphsData.Exists(s => s.seriesName.Equals(seriesNameToClear));
+            var exist = GraphsData.Exists(s => s.SeriesName.Equals(seriesNameToClear));
             if (exist)
             {
-                var series = GraphsData.First(s => s.seriesName.Equals(seriesNameToClear));
-                series.data.Clear();
+                var series = GraphsData.First(s => s.SeriesName.Equals(seriesNameToClear));
+                series.Data.Clear();
             }
         }
 
         public void ClearAllData()
         {
-            GraphsData.ForEach(((string series, PlottingGraphData data) entry) =>
+            GraphsData.ForEach(((string SeriesName, PlottingGraphData Data) entry) =>
             {
-                entry.data.Clear();
+                entry.Data.Clear();
             });
         }
     }

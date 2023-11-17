@@ -60,7 +60,6 @@ namespace Analogy.CommonControls.UserControls
             var msgs = Messages();
             foreach (var m in msgs)
             {
-
                 foreach (var item in Items)
                 {
                     if (m.Text.IndexOf(item, StringComparison.OrdinalIgnoreCase) >= 0)

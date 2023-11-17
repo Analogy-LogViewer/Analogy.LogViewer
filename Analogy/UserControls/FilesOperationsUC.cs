@@ -137,7 +137,6 @@ namespace Analogy.UserControls
             {
                 if (Manager.AlreadyProcessed(Path.GetFileName(filename)))
                 {
-
                     richTextBox1.Text += Environment.NewLine +
                                          $"File {filename} was already processed. getting data from cache";
                     continue;
@@ -168,7 +167,6 @@ namespace Analogy.UserControls
 
         public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
-
             lock (lockObject)
             {
                 Messages.AddRange(messages.Select(m => new Tuple<string, IAnalogyLogMessage>(dataSource, m)));

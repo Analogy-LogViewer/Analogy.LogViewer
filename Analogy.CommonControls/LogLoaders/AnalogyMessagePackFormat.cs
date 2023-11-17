@@ -12,10 +12,8 @@ namespace Analogy.CommonControls.LogLoaders
 {
     public class AnalogyMessagePackFormat
     {
-
         public async Task<IEnumerable<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messageHandler)
         {
-
             if (string.IsNullOrEmpty(fileName))
             {
                 AnalogyLogMessage empty = new AnalogyLogMessage($"File is null or empty. Aborting.",
@@ -39,7 +37,6 @@ namespace Analogy.CommonControls.LogLoaders
                 }
                 catch (Exception ex)
                 {
-
                     AnalogyLogMessage empty =
                         new AnalogyLogMessage($"File {fileName} is empty or corrupted. Error: {ex.Message}",
                             AnalogyLogLevel.Error, AnalogyLogClass.General, "Analogy", "None")
@@ -56,7 +53,6 @@ namespace Analogy.CommonControls.LogLoaders
         public Task Save(List<IAnalogyLogMessage> messages, string fileName)
             => Task.Factory.StartNew(() =>
             {
-
                 var data = MessagePackSerializer.Serialize(messages, MessagePack.Resolvers.ContractlessStandardResolver.Options);
                 //write string to file
                 File.WriteAllBytes(fileName, data);

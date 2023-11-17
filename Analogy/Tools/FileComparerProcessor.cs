@@ -6,7 +6,6 @@ using System.Data;
 
 namespace Analogy.Tools
 {
-
     public class FileComparerProcessor : ILogMessageCreatedHandler, ILogWindow
     {
         public bool DoNotAddToRecentHistory { get; set; }

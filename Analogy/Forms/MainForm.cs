@@ -159,7 +159,6 @@ namespace Analogy.Forms
                  ac.AutoHeight = true;
                  if (notification.ActionOnClick != null)
                  {
-
                      AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
                      btn1.Hint = "OK";
                      btn1.Name = "NotificationActionButton";
@@ -461,7 +460,6 @@ namespace Analogy.Forms
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
-
                 ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 user.ShowDialog(this);
             };
@@ -632,7 +630,6 @@ namespace Analogy.Forms
             }
             else
             {
-
                 if (supported.Any(d =>
                     d.DataProvider.Id == Settings.LastOpenedDataProvider ||
                     d.FactoryID == Settings.LastOpenedDataProvider
@@ -681,7 +678,6 @@ namespace Analogy.Forms
                         }
                         else
                         {
-
                             XtraMessageBox.Show($@"More than one data provider detected for this file.{Environment.NewLine}Please open it directly from the data provider menu", "Unable to open file",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
@@ -727,7 +723,6 @@ namespace Analogy.Forms
         private void AddRecentFiles(RibbonPage ribbonPage, BarSubItem bar, IAnalogyOfflineDataProvider offlineAnalogy,
             string title, List<string> files)
         {
-
             if (files.Any())
             {
                 foreach (string file in files)
@@ -827,7 +822,6 @@ namespace Analogy.Forms
             foreach (var actionFactory in actionFactories.Where(af
                 => af.Actions.Any(a => a.Type == AnalogyCustomActionType.BelongsToProvider)))
             {
-
                 if (string.IsNullOrEmpty(actionFactory.Title))
                 {
                     continue;
@@ -925,7 +919,6 @@ namespace Analogy.Forms
 
         private void AddUserControls(RibbonPage ribbonPage, List<IAnalogyCustomUserControlsFactory> userControls)
         {
-
             if (userControls.Count == 0)
             {
                 return;
@@ -1001,7 +994,6 @@ namespace Analogy.Forms
 
         private void AddGraphPlotter(RibbonPage ribbonPage, List<IAnalogyPlotting> graphPlotters)
         {
-
             if (graphPlotters.Count == 0)
             {
                 return;
@@ -1419,7 +1411,6 @@ namespace Analogy.Forms
 
         private void AddOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
-
             var offlineProviders = factory.DataProviders.Where(f => f is IAnalogyOfflineDataProvider)
                 .Cast<IAnalogyOfflineDataProvider>().ToList();
 
@@ -1452,7 +1443,6 @@ namespace Analogy.Forms
         private void AddMultiplesOfflineDataSource(IAnalogyFactory primaryFactory, RibbonPage ribbonPage,
             List<IAnalogyOfflineDataProvider> offlineProviders, IAnalogyDataProvidersFactory factory, RibbonPageGroup group)
         {
-
             Guid factoryId = factory.FactoryId;
             string factoryTitle = factory.Title;
             var containers = FactoriesManager.GetFactoryContainer(factoryId);
@@ -1492,7 +1482,6 @@ namespace Analogy.Forms
             async Task OpenFilePooling(string titleOfDataSource, IAnalogyOfflineDataProvider dataProvider,
                 string initialFolder, string file, string initialFile)
             {
-
                 OpenedWindows++;
                 await FactoriesManager.InitializeIfNeeded(dataProvider);
                 UserControl filepoolingUC = new FilePoolingUCLogs(Settings, FileProcessingManager, dataProvider, file, initialFile, initialFolder);
@@ -1587,7 +1576,6 @@ namespace Analogy.Forms
             //add Files open buttons
             if (offlineProviders.Any(i => !string.IsNullOrEmpty(i.FileOpenDialogFilters)))
             {
-
                 if (Settings.CombineOfflineProviders)
                 {
                     //add Open files entry
@@ -1600,7 +1588,6 @@ namespace Analogy.Forms
 
                     foreach (var dataProvider in offlineProviders)
                     {
-
                         if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
                         {
                             BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
@@ -1624,7 +1611,6 @@ namespace Analogy.Forms
                         }
                         else
                         {
-
                             IAnalogyNotification notification = new AnalogyNotification(factoryId,
                                 "Missing File Open Dialog Filter",
                                 $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
@@ -1637,7 +1623,6 @@ namespace Analogy.Forms
                 {
                     foreach (var dataProvider in offlineProviders)
                     {
-
                         if (!string.IsNullOrEmpty(dataProvider.FileOpenDialogFilters))
                         {
                             //add Open files entry
@@ -1667,7 +1652,6 @@ namespace Analogy.Forms
                         }
                         else
                         {
-
                             IAnalogyNotification notification = new AnalogyNotification(factoryId,
                                 "Missing File Open Dialog Filter",
                                 $"{factoryTitle} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
@@ -1690,7 +1674,6 @@ namespace Analogy.Forms
 
                 foreach (var dataProvider in offlineProviders)
                 {
-
                     BarButtonItem btnOpenFile = new BarButtonItem { Caption = $"{factoryTitle} ({dataProvider.OptionalTitle})" };
                     btnOpenFile.ItemClick += async (sender, e) =>
                     {
@@ -1844,7 +1827,6 @@ namespace Analogy.Forms
 
             void OpenFilePooling(string titleOfDataSource, string initialFolder, string file, string initialFile)
             {
-
                 OpenedWindows++;
                 string fullTitle = $"{filePoolingTitle} #{filePooling++} ({titleOfDataSource})";
                 UserControl filepoolingUC = new FilePoolingUCLogs(Settings, FileProcessingManager, offlineAnalogy, file, initialFile, initialFolder, title: fullTitle);
@@ -2003,7 +1985,6 @@ namespace Analogy.Forms
             }
             else
             {
-
                 IAnalogyNotification notification = new AnalogyNotification(factoryId,
                     "Missing File Open Dialog Filter",
                     $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
@@ -2376,7 +2357,9 @@ namespace Analogy.Forms
             if (e.Document is { Control: DockPanel { Controls.Count: > 0 } pnl })
                 if (pnl.Controls[0] is ControlContainer { Controls.Count: > 0 } cc)
                     if (cc.Controls[0] is IUserControlWithUCLogs logUc)
+                    {
                         logUc.HideSecondaryWindow();
+                    }
         }
 
         private void TabbedView1_DocumentActivated(object sender, DevExpress.XtraBars.Docking2010.Views.DocumentEventArgs e)
@@ -2384,7 +2367,9 @@ namespace Analogy.Forms
             if (e.Document is { Control: DockPanel { Controls.Count: > 0 } pnl })
                 if (pnl.Controls[0] is ControlContainer { Controls.Count: > 0 } cc)
                     if (cc.Controls[0] is IUserControlWithUCLogs logUc)
+                    {
                         logUc.ShowSecondaryWindow();
+                    }
         }
     }
 }

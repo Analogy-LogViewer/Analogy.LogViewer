@@ -190,7 +190,6 @@ namespace Analogy.Extensions
                 {
                     if (!table.Columns.Contains(info.Key))
                     {
-
                         if (!InvokeRequired)
                         {
                             if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
