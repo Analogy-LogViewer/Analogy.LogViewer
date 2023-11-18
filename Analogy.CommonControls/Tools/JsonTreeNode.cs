@@ -2,7 +2,7 @@
 
 namespace Analogy.CommonControls.Tools
 {
-    class JsonTreeNode : TreeNode
+    public class JsonTreeNode : TreeNode
     {
         public JsonNodeType NodeType { get; }
 

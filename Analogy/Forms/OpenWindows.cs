@@ -1,10 +1,10 @@
-﻿using DevExpress.XtraEditors.Controls;
-using System.Collections.Generic;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using DevExpress.XtraEditors.Controls;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Analogy.Forms
 {
@@ -20,14 +20,14 @@ namespace Analogy.Forms
                 return $"{nameof(Header)}: {Header}";
             }
         }
-        private List<(string Text, ILogWindow window)> Logs { get; }
+        private List<(string Text, ILogWindow Window)> Logs { get; }
         private IUserSettingsManager Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
-       public OpenWindows()
+        public OpenWindows()
         {
             InitializeComponent();
         }
 
-        public OpenWindows(List<(string Text, ILogWindow window)> items) : this()
+        public OpenWindows(List<(string Text, ILogWindow Window)> items) : this()
         {
             Logs = items;
         }
@@ -35,7 +35,7 @@ namespace Analogy.Forms
         private void OpenWindows_Load(object sender, EventArgs e)
         {
             Icon = Settings.GetIcon();
-            chklistLogs.Items.AddRange(Logs.Select(l => new LogItem { Window = l.window, Header = l.Text }).ToArray());
+            chklistLogs.Items.AddRange(Logs.Select(l => new LogItem { Window = l.Window, Header = l.Text }).ToArray());
         }
 
         private void btnCombineSelected_Click(object sender, EventArgs e)

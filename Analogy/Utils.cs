@@ -1,11 +1,17 @@
+using Analogy.Common.DataTypes;
+using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Managers;
 using DevExpress.LookAndFeel;
+using DevExpress.Utils;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,12 +25,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.CommonControls.DataTypes;
-using Analogy.Managers;
-using DevExpress.Utils;
-using Microsoft.Extensions.Logging;
-using Octokit;
 using FileMode = System.IO.FileMode;
 
 namespace Analogy
@@ -34,31 +34,38 @@ namespace Analogy
         private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
         [DllImport("user32.dll")]
-        static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
         /// <summary>
         /// No filter. All allowed
         /// </summary>
         internal const string DateFilterNone = "All";
+
         /// <summary>
-        /// From Today 
+        /// From Today
         /// </summary>
         internal const string DateFilterToday = "Today";
+
         /// <summary>
-        /// From last 2 days 
+        /// From last 2 days
         /// </summary>
         internal const string DateFilterLast2Days = "Last 2 days";
+
         /// <summary>
         /// From last 3 days
         /// </summary>
         internal const string DateFilterLast3Days = "Last 3 days";
+
         /// <summary>
         /// From last week
         /// </summary>
         internal const string DateFilterLastWeek = "Last one week";
+
         /// <summary>
         /// From last 2 weeks
         /// </summary>
         internal const string DateFilterLast2Weeks = "Last 2 weeks";
+
         /// <summary>
         /// From last month
         /// </summary>
@@ -70,17 +77,17 @@ namespace Analogy
         private static string NonDotCharacters = @"[^.]*";
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
-
-
         //
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="item"></param>
         /// <param name="filename"></param>
         public static void SerializeToBinaryFile<T>(T item, string filename)
         {
+#pragma warning disable SYSLIB0011
             var formatter = new BinaryFormatter();
             var directoryName = Path.GetDirectoryName(filename);
             try
@@ -92,26 +99,25 @@ namespace Analogy
 
                 using (Stream myWriter = File.Open(filename, FileMode.Create, FileAccess.ReadWrite))
                 {
-#pragma warning disable SYSLIB0011
                     formatter.Serialize(myWriter, item);
-#pragma warning restore SYSLIB0011
-
                 }
             }
             catch (SerializationException ex)
             {
                 throw new Exception("GeneralDataUtils: Error in SerializeToBinaryFile", ex);
             }
+#pragma warning restore SYSLIB0011
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="filename"></param>
         /// <returns></returns>
         public static T DeSerializeBinaryFile<T>(string filename) where T : class, new()
         {
+#pragma warning disable SYSLIB0011
             var formatter = new BinaryFormatter();
             if (File.Exists(filename))
             {
@@ -119,9 +125,7 @@ namespace Analogy
                 {
                     using (Stream myReader = File.Open(filename, FileMode.Open, FileAccess.Read))
                     {
-#pragma warning disable SYSLIB0011
                         return (T)formatter.Deserialize(myReader);
-#pragma warning restore SYSLIB0011
                     }
                 }
                 catch (Exception ex)
@@ -129,8 +133,8 @@ namespace Analogy
                     throw new Exception("GeneralDataUtils: Error in DeSerializeBinaryFile", ex);
                 }
             }
-
             throw new FileNotFoundException("GeneralDataUtils: File does not exist: " + filename, filename);
+#pragma warning restore SYSLIB0011
         }
 
         public static void SetSkin(Control control, string skinName)
@@ -161,7 +165,7 @@ namespace Analogy
             return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
 
-        static long GetLastInputTime()
+        private static long GetLastInputTime()
         {
             uint idleTime = 0;
             LASTINPUTINFO lastInputInfo = new LASTINPUTINFO();
@@ -238,12 +242,13 @@ namespace Analogy
                 case LogLevelSelectionType.Single:
                     chkLstLogLevel.CheckMode = CheckMode.Single;
                     chkLstLogLevel.CheckStyle = CheckStyles.Radio;
-                    CheckedListBoxItem[] radioLevels = {
+                    CheckedListBoxItem[] radioLevels =
+                    {
                         new CheckedListBoxItem("Trace"),
                         new CheckedListBoxItem("Error + Critical"),
                         new CheckedListBoxItem("Warning"),
                         new CheckedListBoxItem("Debug"),
-                        new CheckedListBoxItem("Verbose")
+                        new CheckedListBoxItem("Verbose"),
                     };
                     chkLstLogLevel.Items.AddRange(radioLevels);
                     break;
@@ -261,7 +266,6 @@ namespace Analogy
             chkLstLogLevel.Items.Clear();
             chkLstLogLevel.CheckStyle = CheckStyles.Standard;
             chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, Settings.FilteringExclusion.IsLogLevelExcluded(l))).ToArray());
-
         }
 
         public static void OpenLink(string url)
@@ -271,7 +275,7 @@ namespace Analogy
                 Process.Start(new ProcessStartInfo(url)
                 {
                     UseShellExecute = true,
-                    Verb = "open"
+                    Verb = "open",
                 });
             }
             catch (Exception exception)
@@ -293,6 +297,7 @@ namespace Analogy
             {
                 return openFilter;
             }
+
             //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
             //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
             //return openFilter + compressedFilter;
@@ -378,17 +383,19 @@ namespace Analogy
                 TimeOffsetType.Predefined => time.Add(Settings.TimeOffset),
                 TimeOffsetType.UtcToLocalTime => time.ToLocalTime(),
                 TimeOffsetType.LocalTimeToUtc => time.ToUniversalTime(),
-                _ => time
+                _ => time,
             };
         }
 
         public static SuperToolTip GetSuperTip(string title, string content)
         {
             SuperToolTip toolTip = new SuperToolTip();
+
             // Create an object to initialize the SuperToolTip.
             SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
             args.Title.Text = title;
             args.Contents.Text = content;
+
             // args.Contents.Image = realTime.ToolTip.Image;
             toolTip.Setup(args);
             return toolTip;
@@ -404,10 +411,9 @@ namespace Analogy
             }
             catch (Exception e)
             {
-               ServicesProvider.Instance.GetService<ILogger>().LogError($"Error getting releases from Github: {e.Message}",e);
-               return new List<Release>();
+                ServicesProvider.Instance.GetService<ILogger>().LogError($"Error getting releases from Github: {e.Message}", e);
+                return new List<Release>();
             }
-
         }
         public static bool IsRunningFromProgramFileFolder()
         {
@@ -417,7 +423,5 @@ namespace Analogy
             return nominalValue;
         }
         public static string ApplicationBaseDirectory => AppDomain.CurrentDomain.BaseDirectory;
-
     }
-
 }

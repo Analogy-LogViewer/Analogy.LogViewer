@@ -1,12 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
@@ -14,12 +6,20 @@ using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class MessagesLayoutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } 
+        private IUserSettingsManager Settings { get; }
         private DataTable messageData;
         public MessagesLayoutSettingsUC(IAnalogyUserSettings settings)
         {
@@ -88,11 +88,9 @@ namespace Analogy.ApplicationSettings
                     teHeader.Tag = info.Column;
                     teHeader.Text = info.Column.Caption;
                 }
-
             };
             gridControl.MainView.Layout += (s, e) =>
             {
-
                 try
                 {
                     if (!string.IsNullOrEmpty(Settings.LogGridFileName))
@@ -113,7 +111,6 @@ namespace Analogy.ApplicationSettings
                     column.Caption = teHeader.Text;
                     SaveGridLayout();
                 }
-
             };
 
             sbtnDateTimeFormat.Click += (s, e) =>
@@ -134,9 +131,7 @@ namespace Analogy.ApplicationSettings
             {
                 ServicesProvider.Instance.GetService<ILogger>().LogError($"Error saving setting: {e.Message}", e, "Analogy");
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
-
     }
 }

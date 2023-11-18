@@ -1,15 +1,15 @@
-﻿using Analogy.Interfaces;
-using Analogy.LogLoaders;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.CommonControls.Forms;
+﻿using Analogy.CommonControls.Forms;
 using Analogy.CommonControls.Interfaces;
 using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Interfaces;
+using Analogy.LogLoaders;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.Managers
 {
@@ -17,7 +17,7 @@ namespace Analogy.Managers
     {
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
 
-        public event EventHandler<(AnalogyLogMessage msg, string source)> OnNewMessage;
+        public event EventHandler<(AnalogyLogMessage Message, string Source)> OnNewMessage;
         private static Lazy<AnalogyLogManager> _instance = new Lazy<AnalogyLogManager>();
         public static AnalogyLogManager Instance => _instance.Value;
 
@@ -33,9 +33,8 @@ namespace Analogy.Managers
             ignoredMessages = new List<string>
             {
                 "System.ArgumentException: Duplicate component name '_Container'.  Component names must be unique and case-insensitive",
-                "System.IO.FileNotFoundException: Could not load file or assembly 'mscorlib.XmlSerializers"
+                "System.IO.FileNotFoundException: Could not load file or assembly 'mscorlib.XmlSerializers",
             };
-
         }
 
         public async Task Init()

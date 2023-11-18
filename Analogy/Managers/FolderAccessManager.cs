@@ -17,7 +17,7 @@ namespace Analogy.Managers
         public string ConfigurationsFolder { get; private set; }
         private bool IsRunningFromProgramFileFolder { get; } = Utils.IsRunningFromProgramFileFolder();
         private string ApplicationDataFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Analogy Log Viewer");
-      private string CommonApplicationData => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Analogy Log Viewer");
+        private string CommonApplicationData => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Analogy Log Viewer");
         public void SetWorkingMode(SettingsMode settingsMode)
         {
             switch (settingsMode)

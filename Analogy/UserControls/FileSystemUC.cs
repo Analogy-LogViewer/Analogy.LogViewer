@@ -18,7 +18,6 @@ namespace Analogy.UserControls
 
         public FileSystemUC() : this(false, false)
         {
-
         }
         public FileSystemUC(bool listFoldersToLoad, bool listFilesToLoad)
         {
@@ -31,9 +30,7 @@ namespace Analogy.UserControls
             }
 
             treeList1.DataSource = new object();
-
         }
-
 
         private void treeList1_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
@@ -43,7 +40,7 @@ namespace Analogy.UserControls
                 {
                     e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
                     e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
-                    Int64 size = Convert.ToInt64(e.Node.GetValue("Size"));
+                    long size = Convert.ToInt64(e.Node.GetValue("Size"));
                     e.CellText = size >= 1024 ? $"{size / 1024:### ### ###} KB" : $"{size} Bytes";
                 }
                 else
@@ -128,7 +125,7 @@ namespace Analogy.UserControls
             }
         }
 
-        bool IsFile(DirectoryInfo info)
+        private bool IsFile(DirectoryInfo info)
         {
             try
             {
@@ -139,7 +136,7 @@ namespace Analogy.UserControls
                 return false;
             }
         }
-        bool IsDrive(string val)
+        private bool IsDrive(string val)
         {
             string[] drives = Directory.GetLogicalDrives();
             foreach (string drive in drives)
@@ -202,7 +199,6 @@ namespace Analogy.UserControls
                 catch { e.Children = new object[] { }; }
             }
             Cursor.Current = current;
-
         }
 
         public void SetPath(string path, IAnalogyOfflineDataProvider dataProvider)

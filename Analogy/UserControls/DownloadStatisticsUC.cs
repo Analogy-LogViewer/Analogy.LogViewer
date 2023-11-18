@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
+﻿using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using Octokit;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
@@ -35,8 +35,7 @@ namespace Analogy.UserControls
             var net5 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net5.0", StringComparison.InvariantCultureIgnoreCase)));
             var net6 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase)));
             var net7 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase)));
-            var net8= Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net8.0", StringComparison.InvariantCultureIgnoreCase)));
-
+            var net8 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net8.0", StringComparison.InvariantCultureIgnoreCase)));
 
             var net471Downloads = net471.Sum(r => r.Sum(a => a.DownloadCount));
             var net472Downloads = net472.Sum(r => r.Sum(a => a.DownloadCount));
@@ -75,38 +74,39 @@ namespace Analogy.UserControls
 
         private void CreateChart(List<PieChartSingleDataPoint> data)
         {
-
-
             var pieChart = new ChartControl();
             pieChart.AllowGesture = true;
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = "Download Statistics" });
             pieChart.Series.Clear();
-            // Create a pie series. 
+
+            // Create a pie series.
             Series series1 = new("Download Statistics", ViewType.Pie3D);
-            // Bind the series to data. 
+
+            // Bind the series to data.
             series1.DataSource = data;
             series1.ArgumentDataMember = nameof(PieChartSingleDataPoint.Name);
             series1.ValueDataMembers.AddRange(nameof(PieChartSingleDataPoint.Value));
 
-            // Add the series to the chart. 
+            // Add the series to the chart.
             pieChart.Series.Add(series1);
 
-            // Format the the series labels. 
+            // Format the the series labels.
             series1.Label.TextPattern = "{A}: {VP:p0} ({V})";
 
-            // Format the series legend items. 
+            // Format the series legend items.
             series1.LegendTextPattern = "{A}";
 
-            // Adjust the position of series labels.  
+            // Adjust the position of series labels.
             ((PieSeriesLabel)series1.Label).Position = PieSeriesLabelPosition.TwoColumns;
 
-            // Detect overlapping of series labels. 
+            // Detect overlapping of series labels.
             ((PieSeriesLabel)series1.Label).ResolveOverlappingMode = ResolveOverlappingMode.Default;
 
-            // Access the view-type-specific options of the series. 
+            // Access the view-type-specific options of the series.
             Pie3DSeriesView myView = (Pie3DSeriesView)series1.View;
-            // Specify a data filter to explode points. 
+
+            // Specify a data filter to explode points.
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Value_1,
             //    DataFilterCondition.GreaterThanOrEqual, 9));
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Argument,
@@ -115,9 +115,10 @@ namespace Analogy.UserControls
             myView.ExplodedDistancePercentage = 30;
             myView.ExplodeMode = PieExplodeMode.All;
 
-            // Customize the legend. 
+            // Customize the legend.
             pieChart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            // Add the chart to the form. 
+
+            // Add the chart to the form.
             pieChart.Dock = DockStyle.Fill;
             panelChart.Controls.Clear();
             panelChart.Controls.Add(pieChart);
@@ -134,7 +135,6 @@ namespace Analogy.UserControls
                 var net5 = release.Assets.Where(a => a.Name.Contains("net5.0", StringComparison.InvariantCultureIgnoreCase));
                 var net6 = release.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase));
                 var net7 = release.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase));
-
 
                 var net471Downloads = net471.Sum(r => r.DownloadCount);
                 var net472Downloads = net472.Sum(r => r.DownloadCount);

@@ -1,20 +1,19 @@
 ﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraTreeList;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Utils.Menu;
-using DevExpress.XtraEditors;
-using DevExpress.XtraTreeList;
-using DevExpress.XtraEditors.Controls;
 
 namespace Analogy.UserControls
 {
-
     public partial class LocalLogFilesUC : XtraUserControl, IUserControlWithUCLogs
     {
         private List<string> extrenalFiles = new List<string>();
@@ -37,7 +36,6 @@ namespace Analogy.UserControls
 
         public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string? initialSelectedPath = null, string? title = null) : this(initialSelectedPath ?? string.Empty, title: title)
         {
-
             DataProvider = dataProvider;
             if (fileNames != null)
             {
@@ -97,13 +95,13 @@ namespace Analogy.UserControls
                 spltMain.PanelVisibility = collapsed ? SplitPanelVisibility.Panel2 : SplitPanelVisibility.Both;
             };
         }
-        private void UcLogs1_OnFocusedRowChanged(object sender, (string file, AnalogyLogMessage e) data)
+        private void UcLogs1_OnFocusedRowChanged(object sender, (string File, AnalogyLogMessage Arg) data)
         {
-            if (data.file is null)
+            if (data.File is null)
             {
                 return;
             }
-            var t = treeList1.Nodes.FirstOrDefault(n => data.file.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
+            var t = treeList1.Nodes.FirstOrDefault(n => data.File.Contains(n["Path"].ToString(), StringComparison.InvariantCultureIgnoreCase));
             if (t != null && treeList1.FocusedNode != t)
             {
                 treeList1.SelectionChanged -= TreeList1_SelectionChanged;
@@ -152,13 +150,16 @@ namespace Analogy.UserControls
             ServicesProvider.Instance.GetService<IAnalogyUserSettings>().AddToRecentFolders(DataProvider.Id, folder);
             List<FileInfo> fileInfos = DataProvider.GetSupportedFiles(dirInfo, recursiveLoad).Distinct(new FileInfoComparer()).ToList();
             treeList1.Nodes.Clear();
+
             // TreeListFileNodes.Clear();
             foreach (FileInfo fi in fileInfos)
             {
                 treeList1.Nodes.Add(fi.Name, fi.LastWriteTime, fi.Length, fi.FullName);
+
                 // TreeListFileNodes.Add(fi.FullName);
             }
             treeList1.ClearSelection();
+
             //treeList1.TopVisibleNodeIndex = 0;
             treeList1.BestFitColumns();
             if (treeList1.Nodes.Any())
@@ -173,7 +174,6 @@ namespace Analogy.UserControls
             ucLogs1.OnFocusedRowChanged -= UcLogs1_OnFocusedRowChanged;
             await ucLogs1.LoadFilesAsync(fileNames, clearLog);
             ucLogs1.OnFocusedRowChanged += UcLogs1_OnFocusedRowChanged;
-
         }
 
         private void bBtnOpen_ItemClick(object sender, ItemClickEventArgs e)
@@ -217,7 +217,6 @@ namespace Analogy.UserControls
                     }
                 }
             }
-
         }
 
         private void bBtnRefresh_ItemClick(object sender, ItemClickEventArgs e)
@@ -236,7 +235,6 @@ namespace Analogy.UserControls
             await LoadFilesAsync(files, chkbSelectionMode.Checked);
         }
 
-
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
         {
             async void OpenFileInSeparateWindow(string filename)
@@ -245,7 +243,6 @@ namespace Analogy.UserControls
                 await ucLogs1.LoadFileInSeparateWindow(filename);
                 ucLogs1.OnFocusedRowChanged += UcLogs1_OnFocusedRowChanged;
             }
-
 
             TreeList treeList = sender as TreeList;
             TreeListHitInfo hitInfo = treeList.CalcHitInfo(e.Point);
@@ -258,26 +255,26 @@ namespace Analogy.UserControls
                 DXMenuItem menuItem = new DXMenuItem($"Open file {Path.GetFileName(file)} in separate Window",
                     (_, __) => { OpenFileInSeparateWindow(file); })
                 { Tag = hitInfo.Column };
+
                 //menuItem.Image =Resources.
                 e.Menu.Items.Add(menuItem);
             }
-
-
         }
 
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
-
 }
-
-

@@ -12,7 +12,5 @@ namespace Analogy.UnitTests
 {
     public class OfflineDataProviderForTesting : Analogy.LogViewer.Serilog.IAnalogy.OfflineDataProvider
     {
-       
-
     }
 }

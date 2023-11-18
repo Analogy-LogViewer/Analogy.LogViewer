@@ -1,20 +1,19 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.DataTypes;
+using DevExpress.XtraEditors;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Analogy.DataTypes;
 
 namespace Analogy.UserControls
 {
     public partial class XtraUCDirectoryListing : XtraUserControl
     {
         public event EventHandler<FolderSelectionEventArgs> FolderChanged;
-        bool loadDrives = true;
+        private bool loadDrives = true;
         private string startupDrive;
 
         public XtraUCDirectoryListing() : this(true)
         {
-
         }
         public XtraUCDirectoryListing(bool localDriveOnly)
         {
@@ -26,9 +25,7 @@ namespace Analogy.UserControls
             }
 
             treeList1.DataSource = new object();
-
         }
-
 
         private void treeList1_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
         {
@@ -38,7 +35,7 @@ namespace Analogy.UserControls
                 {
                     e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
                     e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
-                    Int64 size = Convert.ToInt64(e.Node.GetValue("Size"));
+                    long size = Convert.ToInt64(e.Node.GetValue("Size"));
                     if (size >= 1024)
                     {
                         e.CellText = string.Format("{0:### ### ###} KB", size / 1024);
@@ -50,7 +47,7 @@ namespace Analogy.UserControls
                 }
                 else
                 {
-                    e.CellText = String.Format("<{0}>", e.Node.GetDisplayText("Type"));
+                    e.CellText = string.Format("<{0}>", e.Node.GetDisplayText("Type"));
                 }
             }
 
@@ -130,7 +127,7 @@ namespace Analogy.UserControls
             }
         }
 
-        bool IsFile(DirectoryInfo info)
+        private bool IsFile(DirectoryInfo info)
         {
             try
             {
@@ -141,7 +138,7 @@ namespace Analogy.UserControls
                 return false;
             }
         }
-        bool IsDrive(string val)
+        private bool IsDrive(string val)
         {
             string[] drives = Directory.GetLogicalDrives();
             foreach (string drive in drives)
@@ -191,12 +188,10 @@ namespace Analogy.UserControls
                 catch { e.Children = new object[] { }; }
             }
             Cursor.Current = current;
-
         }
 
         private void treeList1_SelectionChanged(object sender, EventArgs e)
         {
-
         }
 
         public void SetPath(string path)

@@ -14,30 +14,36 @@ namespace Analogy.CommonControls.DataTypes
         /// No filter
         /// </summary>
         None,
+
         /// <summary>
         /// Current date
         /// </summary>
         Today,
+
         /// <summary>
         /// Current date and yesterday
         /// </summary>
         Last2Days,
+
         /// <summary>
         /// Today, yesterday and the day before yesterday
         /// </summary>
         Last3Days,
+
         /// <summary>
         /// Last 7 days
         /// </summary>
         LastWeek,
+
         /// <summary>
         /// Last 2 weeks
         /// </summary>
         Last2Weeks,
+
         /// <summary>
         /// Last one month
         /// </summary>
-        LastMonth
+        LastMonth,
     }
 
     public static class EnumUtils
@@ -58,7 +64,6 @@ namespace Analogy.CommonControls.DataTypes
             }
 
             return attributes[0].Name;
-
         }
 
         public static Dictionary<string, string> GetDisplayValues(this Type enumType)
@@ -73,13 +78,10 @@ namespace Analogy.CommonControls.DataTypes
         }
     }
 
-
-
     public enum AnalogyCustomXAxisPlot
     {
         Numerical,
         DateTimeUnixMillisecond,
-        DateTimeUnixSecond
+        DateTimeUnixSecond,
     }
-    
 }

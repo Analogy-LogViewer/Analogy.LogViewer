@@ -1,12 +1,12 @@
-﻿using Analogy.DataTypes;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -40,7 +40,6 @@ namespace Analogy.Forms
                 lblSkinName.Text = "Skin name: " + laf.ActiveSkinName;
                 lblApplicationStyle.Text = "Application style: " + laf.Style;
                 lblSvgPalette.Text = "Active Svg Palette: " + laf.ActiveSvgPaletteName;
-
             };
         }
 
@@ -82,6 +81,7 @@ namespace Analogy.Forms
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
+
             //add missing:
             foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {

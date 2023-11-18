@@ -1,11 +1,11 @@
-﻿using Analogy.Interfaces.DataTypes;
+﻿using Analogy.Common.DataTypes;
+using Analogy.CommonControls.Managers;
+using Analogy.DataTypes;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using DevExpress.XtraEditors;
 using System.Drawing;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.CommonControls.Managers;
-using Analogy.DataTypes;
 
 namespace Analogy.UserControls
 {
@@ -26,8 +26,6 @@ namespace Analogy.UserControls
                     await DownloadInfo.CheckVersion();
                 }
                 UpdateLatestVersionText();
-
-
             };
             btnDownload.Click += async (s, e) =>
             {
@@ -43,7 +41,6 @@ namespace Analogy.UserControls
                 }
             };
         }
-
 
         public ComponentDownloadInformationUC(FactoryContainer factory, UpdateManager updateManager) : this(updateManager)
         {
@@ -91,10 +88,7 @@ namespace Analogy.UserControls
                     lblLatestVersion.Appearance.BackColor = Color.GreenYellow;
                     btnDownload.Visible = true;
                 }
-
             }
         }
-
-
     }
 }

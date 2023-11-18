@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Analogy.Common.DataTypes
 {
-
     [Serializable]
     public class PreDefineHighlight
     {

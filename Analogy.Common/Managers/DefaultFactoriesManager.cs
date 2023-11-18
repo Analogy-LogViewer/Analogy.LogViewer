@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Properties;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Properties;
-using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
 
 namespace Analogy.Common.Managers
 {
@@ -20,9 +20,8 @@ namespace Analogy.Common.Managers
         public List<FactoryContainer> Factories { get; } = new List<FactoryContainer>(0);
         public List<IRawSQLInteractor> RawSQLManipulators { get; } = new List<IRawSQLInteractor>(0);
         public Task InitializeBuiltInFactories() => Task.CompletedTask;
-        
-        public Task AddExternalDataSources() => Task.CompletedTask;
 
+        public Task AddExternalDataSources() => Task.CompletedTask;
 
         public IEnumerable<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
         {
@@ -39,9 +38,9 @@ namespace Analogy.Common.Managers
             return new List<IAnalogyOfflineDataProvider>(0);
         }
 
-        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
+        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)> GetRealTimeDataSourcesNamesAndIds()
         {
-            return new List<(string Name, Guid ID, Image Image, string Description, Assembly assembly)>(0);
+            return new List<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)>(0);
         }
 
         public Assembly GetAssemblyOfFactory(IAnalogyFactory factory)
@@ -99,16 +98,16 @@ namespace Analogy.Common.Managers
             return null;
         }
 
-        public IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies()
+        public IEnumerable<(IAnalogyExtension Extension, Assembly Assembly)> GetAllExtensionsWithAssemblies()
         {
-            return Enumerable.Empty<(IAnalogyExtension extension, Assembly assembly)>();
+            return Enumerable.Empty<(IAnalogyExtension Extension, Assembly Assembly)>();
         }
 
         public void ShutDownAllFactories()
         {
         }
 
-        public  Task InitializeIfNeeded(IAnalogyDataProvider dataProvider)
+        public Task InitializeIfNeeded(IAnalogyDataProvider dataProvider)
         {
             return Task.CompletedTask;
         }

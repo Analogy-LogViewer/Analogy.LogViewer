@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces.DataTypes;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Analogy.CommonControls.DataTypes
@@ -45,14 +45,11 @@ namespace Analogy.CommonControls.DataTypes
                 {
                     ViewportData.RemoveAt(0);
                 }
-
             }
             finally
             {
                 sync.ExitReadLock();
-
             }
-
         }
 
         public void AddDataPoint(AnalogyPlottingPointData data)
@@ -65,7 +62,6 @@ namespace Analogy.CommonControls.DataTypes
             finally
             {
                 sync.ExitWriteLock();
-
             }
         }
         public void AddDataPoints(List<AnalogyPlottingPointData> data)
@@ -78,7 +74,6 @@ namespace Analogy.CommonControls.DataTypes
             finally
             {
                 sync.ExitWriteLock();
-
             }
         }
         public void SetIntervalValue(float seconds) => RefreshDataTimer.Interval = (int)(seconds * 1000);
@@ -94,7 +89,6 @@ namespace Analogy.CommonControls.DataTypes
             finally
             {
                 sync.ExitWriteLock();
-
             }
         }
 

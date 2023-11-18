@@ -1,7 +1,7 @@
-﻿using Analogy.Managers;
-using System.Windows.Forms;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
+using Analogy.Managers;
 using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -70,7 +70,7 @@ namespace Analogy.Forms
                 return;
             }
             sbtnUpdateNow.Enabled = false;
-            await Updater.InitiateUpdate(downloadInfo.title, downloadInfo.DownloadURL, true);
+            await Updater.InitiateUpdate(downloadInfo.Title, downloadInfo.DownloadURL, true);
             sbtnUpdateNow.Enabled = true;
         }
     }

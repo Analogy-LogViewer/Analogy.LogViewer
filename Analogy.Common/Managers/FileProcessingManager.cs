@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
 
 namespace Analogy.Common.Managers
 {
@@ -50,7 +50,6 @@ namespace Analogy.Common.Managers
                 }
 
                 Messages.Add(filename, messages);
-
             }
         }
 
@@ -64,7 +63,6 @@ namespace Analogy.Common.Managers
             Messages.Clear();
             GC.Collect();
             GC.WaitForPendingFinalizers();
-
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Analogy.CommonControls.Properties;
+using DevExpress.Office.Utils;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,10 +11,6 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.Properties;
-using DevExpress.Office.Utils;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Analogy.CommonControls.Tools
 {
@@ -119,7 +119,7 @@ namespace Analogy.CommonControls.Tools
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        private (bool valid, List<TreeNode> result) LoadTree(object jsonData, CancellationToken cancellationToken)
+        private (bool Valid, List<TreeNode> Result) LoadTree(object jsonData, CancellationToken cancellationToken)
         {
             if (cancellationToken.IsCancellationRequested)
             {
@@ -160,7 +160,7 @@ namespace Analogy.CommonControls.Tools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool TryParse(string strInput, out JToken output)
         {
-            if (String.IsNullOrWhiteSpace(strInput))
+            if (string.IsNullOrWhiteSpace(strInput))
             {
                 output = null;
                 return false;
@@ -265,40 +265,45 @@ namespace Analogy.CommonControls.Tools
             statusStrip1 = new StatusStrip();
             treeContextMenu.SuspendLayout();
             SuspendLayout();
-            // 
+
+            //
             // treeContextMenu
-            // 
+            //
             treeContextMenu.ImageScalingSize = new Size(20, 20);
-            treeContextMenu.Items.AddRange(new ToolStripItem[] {
-            expandAllMenuItem});
+            treeContextMenu.Items.AddRange(new ToolStripItem[]
+            {
+            expandAllMenuItem,
+            });
             treeContextMenu.Name = "treeContextMenu";
             treeContextMenu.Size = new Size(147, 30);
             treeContextMenu.Opening += new CancelEventHandler(treeContextMenu_Opening);
-            // 
+
+            //
             // expandAllMenuItem
-            // 
+            //
             expandAllMenuItem.Name = "expandAllMenuItem";
             expandAllMenuItem.ShortcutKeys = ((Keys)((Keys.Control | Keys.E)));
             expandAllMenuItem.ShowShortcutKeys = false;
             expandAllMenuItem.Size = new Size(146, 26);
             expandAllMenuItem.Text = "&Expand All";
-            // 
+
+            //
             // statusStrip1
-            // 
+            //
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Location = new Point(0, 0);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(200, 22);
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
-            // 
+
+            //
             // JsonTreeView
-            // 
+            //
             ContextMenuStrip = treeContextMenu;
             FullRowSelect = true;
             treeContextMenu.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         private new JsonTreeNode? SelectedNode
@@ -371,16 +376,15 @@ namespace Analogy.CommonControls.Tools
                     object json = JsonConvert.DeserializeObject(jsonString);
                     return LoadTree(json, token);
                 });
-                if (nodes.valid)
+                if (nodes.Valid)
                 {
-                    Nodes.AddRange(nodes.result.ToArray());
+                    Nodes.AddRange(nodes.Result.ToArray());
                 }
                 EndUpdate();
             }
             catch (Exception e)
             {
             }
-
         }
     }
 }

@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
+using DevExpress.XtraRichEdit.Model;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.Interfaces;
-using DevExpress.XtraRichEdit.Model;
 
 namespace Analogy.ApplicationSettings
 {
@@ -74,6 +74,7 @@ namespace Analogy.ApplicationSettings
             var valids = Settings.FactoriesSettings
                 .Where(f => FactoriesManager.GetOfflineDataSources(f.FactoryId).Any()).ToList();
             FactorySettings defaultSelection = valids.First();
+
             //file associations:
             cbDataProviderFactoryAssociation.Properties.DataSource = valids;
             cbDataProviderFactoryAssociation.Properties.DisplayMember = nameof(FactorySettings.FactoryName);
@@ -87,7 +88,6 @@ namespace Analogy.ApplicationSettings
             cbFileProviderAssociation.Properties.DataSource = providers;
             cbFileProviderAssociation.Properties.DisplayMember = nameof(ProviderEntry.OptionalTitle);
             cbFileProviderAssociation.EditValue = providers.FirstOrDefault();
-
         }
 
         private record ProviderEntry(string? OptionalTitle, Guid Id);

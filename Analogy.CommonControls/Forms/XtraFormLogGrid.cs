@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Analogy.CommonControls.Forms
 {
@@ -38,7 +38,6 @@ namespace Analogy.CommonControls.Forms
             _dataSource = dataSource;
         }
 
-
         public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager)
         {
             _messages = messages;
@@ -49,13 +48,11 @@ namespace Analogy.CommonControls.Forms
             }
 
             ucLogs1.SetFileDataSource(dataProvider, fileProvider);
-
-
         }
 
-        private void Instance_OnNewMessage(object sender, (AnalogyLogMessage msg, string source) e)
+        private void Instance_OnNewMessage(object sender, (AnalogyLogMessage Message, string Source) e)
         {
-            ucLogs1.AppendMessage(e.msg, e.source);
+            ucLogs1.AppendMessage(e.Message, e.Source);
         }
         private void XtraFormLogGrid_Load(object sender, System.EventArgs e)
         {

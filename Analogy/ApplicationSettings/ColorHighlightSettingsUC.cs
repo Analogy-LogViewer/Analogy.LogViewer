@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {
@@ -32,7 +32,6 @@ namespace Analogy.ApplicationSettings
         {
             sbtnAddHighlight.Click += (s, e) =>
             {
-
                 if (ceHighlightContains.Checked)
                 {
                     Settings.PreDefinedQueries.AddHighlight(teHighlightContains.Text, PreDefinedQueryType.Contains, cpeHighlightPreDefined.Color);
@@ -46,7 +45,6 @@ namespace Analogy.ApplicationSettings
                     lboxHighlightItems.DataSource = Settings.PreDefinedQueries.Highlights;
                     lboxHighlightItems.Refresh();
                 }
-
             };
 
             sbtnDeleteHighlight.Click += (s, e) =>

@@ -1,8 +1,8 @@
 ﻿using Analogy.Common.Interfaces;
-using System.Diagnostics;
-using System.Reflection;
 using Analogy.Interfaces.Factories;
 using DevExpress.XtraEditors;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Analogy.Forms
 {

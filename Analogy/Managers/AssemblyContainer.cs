@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Interfaces.Factories;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using Analogy.Interfaces.Factories;
 
 namespace Analogy.Managers
 {
@@ -51,7 +51,6 @@ namespace Analogy.Managers
     //            GetFactoryById(shareableFactory.FactoryId), GetFactorySettingsById(shareableFactory.FactoryId),
     //            shareableFactory));
     //    }
-
 
     //    public bool FactoryDisabled(IAnalogyFactory factory) =>
     //        FactorySettings.Exists(item => item.FactoryId == factory.FactoryId) &&

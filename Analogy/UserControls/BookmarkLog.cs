@@ -1,13 +1,12 @@
-﻿using System.Windows.Forms;
-using Analogy.CommonControls.Managers;
+﻿using Analogy.CommonControls.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
-
     public partial class BookmarkLog : XtraUserControl, IUserControlWithUCLogs
     {
         private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
@@ -37,16 +36,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
-
 }
-
-

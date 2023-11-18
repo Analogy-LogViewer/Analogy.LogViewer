@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors.Controls;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {
@@ -34,7 +35,7 @@ namespace Analogy.ApplicationSettings
             var loaded = FactoriesManager.GetRealTimeDataSourcesNamesAndIds();
             foreach (var realTime in loaded)
             {
-                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID, realTime.Description,realTime.assembly.GetName(false).Name, realTime.Image);
+                FactoryCheckItem itm = new FactoryCheckItem(realTime.Name, realTime.ID, realTime.Description, realTime.Assembly.GetName(false).Name, realTime.Image);
                 chkLstItemRealTimeDataSources.Items.Add(itm, Settings.AutoStartDataProviders.Contains(itm.ID));
             }
         }

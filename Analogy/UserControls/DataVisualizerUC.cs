@@ -1,17 +1,16 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.CommonControls.DataTypes;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors.Controls;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
-using Analogy.DataTypes;
 
 namespace Analogy.UserControls
 {
     public partial class DataVisualizerUC : DevExpress.XtraEditors.XtraUserControl
     {
-
         private Func<List<IAnalogyLogMessage>> Messages { get; set; }
 
         private List<string> Items { get; set; }
@@ -36,7 +35,6 @@ namespace Analogy.UserControls
 
         private void DataVisualizerUC_Load(object sender, EventArgs e)
         {
-
         }
 
         private void Plot()
@@ -59,7 +57,6 @@ namespace Analogy.UserControls
             var msgs = Messages();
             foreach (var m in msgs)
             {
-
                 foreach (var item in Items)
                 {
                     if (m.Text.Contains(item))
@@ -94,7 +91,6 @@ namespace Analogy.UserControls
                 }
             }
 
-
             chartControlFrequency.Series.Clear();
             chartControlFrequency.DataSource = CreateTable(frequencyCount);
             chartControlFrequency.SeriesDataMember = "Name";
@@ -120,7 +116,6 @@ namespace Analogy.UserControls
             diagram3.AxisX.Label.TextPattern = "{A:l}";
             diagram3.AxisY.VisualRange.MinValue = 0;
             diagram3.AxisY.VisualRange.MaxValue = 24;
-
         }
 
         private DataTable CreateTable(Dictionary<string, Dictionary<TimeSpan, int>> data)
@@ -138,7 +133,6 @@ namespace Analogy.UserControls
                 {
                     tbl.Rows.Add(item, new DateTime(val.Key.Ticks), val.Value, val.Value);
                 }
-
             }
 
             return tbl;
@@ -160,7 +154,6 @@ namespace Analogy.UserControls
                     tbl.Rows.Add(item, Utils.GetOffsetTime(val.Date), Utils.GetOffsetTime(val.Date).Ticks,
                         val.Date.Hour + (float)Utils.GetOffsetTime(val.Date).Minute / 60 + (float)Utils.GetOffsetTime(val.Date).Second / 60 / 60);
                 }
-
             }
 
             return tbl;
@@ -170,7 +163,6 @@ namespace Analogy.UserControls
         {
             Items = chklistItems.CheckedItems.Cast<CheckedListBoxItem>().Select(i => i.Value.ToString()).ToList();
             Plot();
-
         }
 
         private void sBtnAdd_Click(object sender, EventArgs e)
@@ -181,7 +173,6 @@ namespace Analogy.UserControls
             ceAutoRefresh.Enabled = true;
             seRefreshInterval.Enabled = true;
             Plot();
-
         }
 
         private void seRefreshInterval_EditValueChanged(object sender, EventArgs e)
@@ -201,7 +192,6 @@ namespace Analogy.UserControls
             {
                 tmrPlotting.Enabled = false;
             }
-
         }
 
         private void tmrPlotting_Tick(object sender, EventArgs e)

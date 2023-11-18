@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Analogy.Common.Interfaces;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.Common.Interfaces;
-using Analogy.Interfaces;
 
 namespace Analogy.Common.Managers
 {
@@ -19,7 +19,7 @@ namespace Analogy.Common.Managers
         public IEnumerable<IAnalogyExtension> RegisteredExtensions { get; } = new List<IAnalogyExtension>(0);
         public bool HasAnyInPlace { get; }
         public bool HasAnyUserControl { get; }
-        public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; }=new List<IAnalogyExtensionInPlace>(0);
+        public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; } = new List<IAnalogyExtensionInPlace>(0);
         public IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; } = new List<IAnalogyExtensionUserControl>(0);
         public void RegisterExtension(IAnalogyExtension analogyExtension)
         {

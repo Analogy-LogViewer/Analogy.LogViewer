@@ -1,16 +1,15 @@
 ﻿using Analogy.Common.Managers;
-using Analogy.Interfaces;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
-
     public partial class ServerSideLogs : XtraUserControl, IUserControlWithUCLogs
     {
         private FileProcessingManager FileProcessingManager { get; }
@@ -101,16 +100,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
-
 }
-
-

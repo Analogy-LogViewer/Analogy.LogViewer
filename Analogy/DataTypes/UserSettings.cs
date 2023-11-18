@@ -1,11 +1,11 @@
-﻿using Analogy.CommonUtilities.Web;
-using DevExpress.LookAndFeel;
-using DevExpress.XtraBars.Ribbon;
-using System.Collections.Generic;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonUtilities.Github;
+using Analogy.CommonUtilities.Web;
+using DevExpress.LookAndFeel;
+using DevExpress.XtraBars.Ribbon;
 using Octokit;
+using System.Collections.Generic;
 
 namespace Analogy.DataTypes
 {
@@ -89,6 +89,7 @@ namespace Analogy.DataTypes
         public string DefaultUserLogFolder { get; set; }
         public TimeSpan TimeOffset { get; set; }
         public TimeOffsetType TimeOffsetType { get; set; }
+
         /// <summary>
         /// delay in seconds
         /// </summary>
@@ -107,6 +108,5 @@ namespace Analogy.DataTypes
             FileAssociations = new List<FileAssociations>();
             WindowPositions = new Dictionary<Guid, AnalogyPositionState>();
         }
-
     }
 }

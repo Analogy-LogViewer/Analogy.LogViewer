@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors.Controls;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {
@@ -31,12 +32,10 @@ namespace Analogy.ApplicationSettings
 
         private void LoadSettings()
         {
-
             var extensions = FactoriesManager.GetAllExtensionsWithAssemblies();
             foreach (var (ex, assembly) in extensions)
             {
-
-                FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description,assembly.GetName(false).Name, null);
+                FactoryCheckItem itm = new FactoryCheckItem(ex.Title, ex.Id, ex.Description, assembly.GetName(false).Name, null);
                 chkLstItemExtensions.Items.Add(itm, Settings.StartupExtensions.Contains(itm.ID));
             }
         }

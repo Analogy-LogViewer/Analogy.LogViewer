@@ -1,14 +1,14 @@
-﻿using Analogy.DataProviders;
+﻿using Analogy.CommonControls.DataTypes;
+using Analogy.DataProviders;
+using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Analogy.CommonControls.DataTypes;
-using Analogy.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.Plotting
 {
@@ -56,7 +56,6 @@ namespace Analogy.Plotting
                         int nowOfRows = items.Length;
                         headers = Enumerable.Range(0, nowOfRows).Select(i => $"Series {i}").ToList();
                     }
-
                 }
             }
         }
@@ -158,13 +157,11 @@ namespace Analogy.Plotting
             {
                 AnalogyLogManager.Instance.LogError(e.ToString(), nameof(AnalogyFilePlotting));
             }
-
         }
 
         public Task StopPlotting()
         {
             return Task.CompletedTask;
         }
-
     }
 }

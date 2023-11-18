@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.LogLoaders
 {
@@ -13,7 +13,6 @@ namespace Analogy.CommonControls.LogLoaders
     {
         public AnalogyXmlLogFile()
         {
-            
         }
         public Task Save(List<AnalogyLogMessage> messages, string filename)
             => Task.Factory.StartNew(() =>
@@ -29,7 +28,7 @@ namespace Analogy.CommonControls.LogLoaders
             Task.Factory.StartNew(() =>
             {
                 XmlSerializer ser = new XmlSerializer(typeof(List<AnalogyLogMessage>));
-                using (FileStream fs = new FileStream(@filename, FileMode.Open,FileAccess.ReadWrite))
+                using (FileStream fs = new FileStream(@filename, FileMode.Open, FileAccess.ReadWrite))
                 {
                     try
                     {
@@ -42,11 +41,10 @@ namespace Analogy.CommonControls.LogLoaders
                             AnalogyLogClass.General, "Analogy", "None")
                         {
                             Source = "Analogy",
-                            Module = Process.GetCurrentProcess().ProcessName
+                            Module = Process.GetCurrentProcess().ProcessName,
                         };
                         return new List<AnalogyLogMessage>() { errMessage };
                     }
-
                 }
             });
         internal Task<List<IAnalogyLogMessage>> ReadFromFile(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
@@ -69,7 +67,7 @@ namespace Analogy.CommonControls.LogLoaders
                             AnalogyLogClass.General, "Analogy", "None")
                         {
                             Source = "Analogy",
-                            Module = Process.GetCurrentProcess().ProcessName
+                            Module = Process.GetCurrentProcess().ProcessName,
                         };
                         messagesHandler.AppendMessage(errMessage, fileName);
                         return new List<IAnalogyLogMessage>() { errMessage };

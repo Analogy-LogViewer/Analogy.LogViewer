@@ -1,18 +1,18 @@
-﻿using Analogy.DataProviders;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
+using Microsoft.Extensions.Logging;
+using Serilog.Core;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Microsoft.Extensions.Logging;
-using Analogy.Interfaces.DataTypes;
-using Serilog.Core;
-using System.IO;
 
 namespace Analogy
 {
@@ -57,7 +57,6 @@ namespace Analogy
 
         public async Task InitializeBuiltInFactories()
         {
-
             var dataProviders = BuiltInFactories
                 .Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
                 .SelectMany(fc => fc.DataProvidersFactories.SelectMany(d => d.DataProviders)).ToList();
@@ -122,7 +121,7 @@ namespace Analogy
                 .Select(res => res.DataProvider);
         }
 
-        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds()
+        public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)> GetRealTimeDataSourcesNamesAndIds()
         {
             foreach (var fc in Factories)
             {
@@ -143,7 +142,6 @@ namespace Analogy
             => BuiltInFactories.Exists(f => f.Factory == factory)
                 ? BuiltInFactories.First(f => f.Factory == factory).Assembly
                 : Factories.Single(f => f.Factory == factory).Assembly;
-
 
         public FactoryContainer GetBuiltInFactoryContainer(Guid id) =>
             BuiltInFactories.Single(f => f.Factory.FactoryId == id);
@@ -239,7 +237,7 @@ namespace Analogy
                 }
             }
         }
-        public IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies()
+        public IEnumerable<(IAnalogyExtension Extension, Assembly Assembly)> GetAllExtensionsWithAssemblies()
         {
             foreach (var factory in Factories)
             {
@@ -337,7 +335,7 @@ namespace Analogy
             }
             #endregion
             #region load types
-            var typesToLoad = new List<(Assembly assembly, string fileName, List<Type> types)>();
+            var typesToLoad = new List<(Assembly Assembly, string FileName, List<Type> Types)>();
             foreach (string aFile in analogyAssemblies)
             {
                 if (aFile.Contains("Analogy.LogViewer.Template"))
@@ -388,7 +386,6 @@ namespace Analogy
                         {
                             PlottingManager.UnRegister(e);
                         };
-
                     }
                     catch (Exception e)
                     {
@@ -444,7 +441,6 @@ namespace Analogy
                         var images = (Activator.CreateInstance(img) as IAnalogyImages)!;
                         var factory = Factories.FirstOrDefault(f => f.Assembly == assembly);
                         factory?.AddImages(images);
-
                     }
                     catch (Exception e)
                     {
@@ -582,8 +578,8 @@ namespace Analogy
                         AnalogyLogManager.Instance.LogError($"{fileName}: Error during adding user control factory: {e} ({e.InnerException}. {fileName})", nameof(FactoriesManager));
                     }
                 }
-
             }
+
             //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
         }
         public IEnumerable<IAnalogyOfflineDataProvider> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)

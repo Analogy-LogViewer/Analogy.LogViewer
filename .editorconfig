@@ -273,6 +273,8 @@ dotnet_diagnostic.SA1122.severity = suggestion
 dotnet_diagnostic.SA1108.severity = silent
 dotnet_diagnostic.SA1012.severity = error
 dotnet_diagnostic.SA1500.severity = error
+dotnet_diagnostic.SA1316.severity = error
+dotnet_diagnostic.SA1512.severity = warning
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
@@ -291,7 +293,7 @@ dotnet_style_qualification_for_method = false:silent
 dotnet_style_qualification_for_event = false:silent
 dotnet_diagnostic.CA1854.severity = warning
 dotnet_diagnostic.CA1707.severity = error
-dotnet_diagnostic.CA2208.severity = warning
+dotnet_diagnostic.CA2208.severity = none
 dotnet_style_predefined_type_for_locals_parameters_members = true:silent
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:silent
 dotnet_code_quality_unused_parameters = all:suggestion

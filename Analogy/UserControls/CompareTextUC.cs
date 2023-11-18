@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using DevExpress.XtraEditors;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {
@@ -26,7 +26,7 @@ namespace Analogy.UserControls
             openFileDialog1.Multiselect = false;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                LeftFile =openFileDialog1.FileName;
+                LeftFile = openFileDialog1.FileName;
                 CompareIfBothSideAreLoaded();
             }
         }
@@ -51,7 +51,6 @@ namespace Analogy.UserControls
                 return;
             }
             Compare();
-            
         }
 
         public void Compare()
@@ -64,10 +63,8 @@ namespace Analogy.UserControls
             lblFileLeft.Text = LeftFile;
             rtboxLeft.Text = File.ReadAllText(LeftFile!);
 
-
             lblFileRight.Text = RightFile;
-            rtboxRight.Text = File.ReadAllText(RightFile!); 
-
+            rtboxRight.Text = File.ReadAllText(RightFile!);
 
             int leftCount = rtboxLeft.Lines.Length;
             int rightCount = rtboxRight.Lines.Length;

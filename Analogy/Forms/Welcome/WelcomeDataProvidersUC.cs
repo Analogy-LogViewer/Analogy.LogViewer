@@ -14,7 +14,7 @@ namespace Analogy.Forms.Welcome
         private IAnalogyFoldersAccess FoldersAccess { get; }
         private UpdateManager UpdateManager { get; }
 
-        public WelcomeDataProvidersUC(IAnalogyUserSettings settings, IFactoriesManager factoriesManager,IAnalogyFoldersAccess foldersAccess, UpdateManager updateManager)
+        public WelcomeDataProvidersUC(IAnalogyUserSettings settings, IFactoriesManager factoriesManager, IAnalogyFoldersAccess foldersAccess, UpdateManager updateManager)
         {
             Settings = settings;
             FactoriesManager = factoriesManager;

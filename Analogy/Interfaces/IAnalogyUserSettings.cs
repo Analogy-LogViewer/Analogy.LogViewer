@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces.Factories;
 using Octokit;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace Analogy.Interfaces
 {
-    public interface IAnalogyUserSettings: IUserSettingsManager
+    public interface IAnalogyUserSettings : IUserSettingsManager
     {
         event EventHandler OnFactoryOrderChanged;
         event EventHandler<bool> OnEnableFirstChanceExceptionChanged;
@@ -56,6 +56,7 @@ namespace Analogy.Interfaces
         SettingsMode SettingsMode { get; set; }
         bool ShowAdvancedSettingsRawSQLPopup { get; set; }
         string DefaultUserLogFolder { get; set; }
+
         /// <summary>
         /// delay in seconds
         /// </summary>
@@ -69,7 +70,6 @@ namespace Analogy.Interfaces
         void UpdateOrder(List<Guid> order);
         Image GetImage();
         void UpdateRunningTime();
-
 
         void LoadSettings(IAnalogyUserSettings newSettings);
         bool TryGetFileAssociations(Guid offlineProviderId, out IEnumerable<string> associations);

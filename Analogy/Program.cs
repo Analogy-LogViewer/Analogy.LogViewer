@@ -1,32 +1,32 @@
+using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.CommonControls.Managers;
+using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Interfaces;
 using Analogy.Managers;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils.Drawing.Helpers;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Managers;
-using Analogy.CommonControls.Managers;
-using Analogy.DataProviders;
-using Analogy.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {
-    static class Program
+    public static class Program
     {
-        public const int WM_COPYDATA = 0x004A;
+        public const int WMCOPYDATA = 0x004A;
 
         [DllImport("user32", EntryPoint = "SendMessageA")]
-        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        private static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         private static IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private static IFactoriesManager FactoriesManager => ServicesProvider.Instance.GetService<IFactoriesManager>();
@@ -34,11 +34,12 @@ namespace Analogy
 
         private static ILogger Logger => ServicesProvider.Instance.GetService<ILogger>();
         private static string AssemblyLocation;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
             DevExpress.UserSkins.BonusSkins.Register();
@@ -136,12 +137,10 @@ namespace Analogy
                         throw new ArgumentOutOfRangeException();
                 }
                 Settings.ApplicationSvgPaletteName = laf.ActiveSvgPaletteName;
-
             };
 
             if (Settings.SingleInstance && Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
-
                 if (Environment.GetCommandLineArgs().Length == 2)
                 {
                     var otherAnalogy = GetAlreadyRunningInstance();
@@ -177,7 +176,6 @@ namespace Analogy
             {
                 Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm, up, fpm, nm, fa, pm));
             }
-
         }
 
         private static void ConfigureServices()
@@ -226,7 +224,7 @@ namespace Analogy
             IntPtr _copyDataBuff = IntPtrAlloc(_copyData);
 
             //Send message to the other process
-            SendMessage(targetProcess.MainWindowHandle, WM_COPYDATA, IntPtr.Zero, _copyDataBuff);
+            SendMessage(targetProcess.MainWindowHandle, WMCOPYDATA, IntPtr.Zero, _copyDataBuff);
 
             Marshal.FreeHGlobal(_copyDataBuff);
             Marshal.FreeHGlobal(_stringMessageBuffer);
@@ -262,9 +260,7 @@ namespace Analogy
         {
             Logger.LogError(e.Exception, "Error: " + e.Exception, e.Exception, nameof(Application_ThreadException));
             MessageBox.Show("Error: " + e.Exception, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
         }
-
 
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
@@ -287,8 +283,6 @@ namespace Analogy
             // NOTE: this doesn't account for special search paths but then that never
             //           worked before either.
             string filename = args.Name.Split(',')[0] + ".dll".ToLower();
-
-
 
             var paths = ServicesProvider.Instance.GetService<IFactoriesManager>().ProbingPaths.Select(Path.GetFullPath).Except(new List<string> { AssemblyLocation }).Distinct()
                 .ToList();
@@ -326,7 +320,6 @@ namespace Analogy
         /// <returns>Fully qualified path of the file found or NULL</returns>
         private static string FindFileInPath(string filename, string path)
         {
-
             foreach (var fullFile in Directory.GetFiles(path))
             {
                 var file = Path.GetFileName(fullFile);
@@ -347,7 +340,5 @@ namespace Analogy
 
             return null;
         }
-
-
     }
 }

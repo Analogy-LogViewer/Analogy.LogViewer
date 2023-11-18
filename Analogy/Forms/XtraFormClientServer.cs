@@ -1,7 +1,7 @@
-﻿using System.IO;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.IO;
 
 namespace Analogy.Forms
 {
@@ -37,7 +37,6 @@ namespace Analogy.Forms
 
         private bool TestConnection() => CheckPath(txtbPath.Text);
 
-
         private bool CheckPath(string path)
         {
             try
@@ -68,7 +67,6 @@ namespace Analogy.Forms
                 }
 
                 Close();
-
             }
         }
 

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using DevExpress.Data.ExpressionEditor;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Interfaces;
-using DevExpress.Data.ExpressionEditor;
-using DevExpress.XtraEditors;
 
 namespace Analogy.CommonControls.Tools
 {
@@ -24,13 +24,13 @@ namespace Analogy.CommonControls.Tools
             InitializeComponent();
         }
 
-        public JsonTreeUC(AnalogyLogMessage message):this()
+        public JsonTreeUC(AnalogyLogMessage message) : this()
         {
             Message = message;
             _useRawField = message.RawTextType == AnalogyRowTextType.JSON;
         }
 
-        public JsonTreeUC(string json):this()
+        public JsonTreeUC(string json) : this()
         {
             JsonData = json;
             _useRawField = false;
@@ -51,13 +51,13 @@ namespace Analogy.CommonControls.Tools
                 JsonData = Utils.ExtractJsonObject(_useRawField ? Message.RawText : Message.Text);
                 if (!string.IsNullOrEmpty(JsonData))
                 {
-                   await _jsonTreeView.ShowJson(JsonData);
+                    await _jsonTreeView.ShowJson(JsonData);
                 }
                 return;
             }
             if (!string.IsNullOrEmpty(JsonData))
             {
-               await _jsonTreeView.ShowJson(JsonData);
+                await _jsonTreeView.ShowJson(JsonData);
             }
 
             bbiCopyMessage.ItemClick += (_, _) =>
@@ -71,7 +71,7 @@ namespace Analogy.CommonControls.Tools
             JsonData = json;
             if (!string.IsNullOrEmpty(JsonData))
             {
-              await  _jsonTreeView.ShowJson(JsonData);
+                await _jsonTreeView.ShowJson(JsonData);
             }
         }
 

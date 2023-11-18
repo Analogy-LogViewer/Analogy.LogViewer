@@ -1,20 +1,19 @@
 ﻿using Analogy.Common.Managers;
-using Analogy.Interfaces;
-using Analogy.Managers;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
+using Analogy.Interfaces;
+using Analogy.Managers;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 using Message = System.Windows.Forms.Message;
 
 namespace Analogy.UserControls
 {
-
     public partial class FilePoolingUCLogs : XtraUserControl, IUserControlWithUCLogs
     {
         private bool showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
@@ -37,8 +36,8 @@ namespace Analogy.UserControls
 
             PoolingManager.OnNewMessages += (s, data) =>
             {
-                AppendMessages(data.messages, data.dataSource);
-                OnNewMessages(data.messages);
+                AppendMessages(data.Messages, data.DataSource);
+                OnNewMessages(data.Messages);
             };
             this.Disposed += FilePoolingUCLogs_Disposed;
         }
@@ -96,7 +95,6 @@ namespace Analogy.UserControls
                 listBoxClearHistory.SelectedIndex = -1;
                 listBoxClearHistory.SelectedIndexChanged += ListBoxClearHistoryIndexChanged;
             }));
-
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -104,10 +102,8 @@ namespace Analogy.UserControls
         {
             if (Enable && !IsDisposed)
             {
-
                 string interned = string.Intern(dataSource);
                 ucLogs1.AppendMessages(messages, interned);
-
             }
         }
 
@@ -143,16 +139,17 @@ namespace Analogy.UserControls
         public void ShowSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.ShowSecondaryWindow();
+            }
         }
 
         public void HideSecondaryWindow()
         {
             if (ucLogs1 != null)
+            {
                 ucLogs1.HideSecondaryWindow();
+            }
         }
     }
-
 }
-
-

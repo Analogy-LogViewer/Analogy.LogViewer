@@ -1,4 +1,7 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
@@ -9,9 +12,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.Extensions
 {
@@ -54,6 +54,7 @@ namespace Analogy.Extensions
                     BeginInvoke(new Action(() =>
                     {
                         e.Panel.FloatSize = sz;
+
                         //adjust the new panel size taking the header height into account:
                         e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
                     }));
@@ -64,13 +65,11 @@ namespace Analogy.Extensions
                 }
             };
             gridViewGrouping2.RowStyle += LogGridView_RowStyle;
-
         }
         private void LoadUISettings()
         {
             gridViewGrouping2.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             gridViewGrouping2.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
-
         }
         private void LogGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
@@ -85,12 +84,9 @@ namespace Analogy.Extensions
                 return;
             }
 
-
-
             var (backgroundColorLevel, textColorLevel) = Settings.ColorSettings.GetColorForLogLevel(message.Level);
             e.Appearance.BackColor = backgroundColorLevel;
             e.Appearance.ForeColor = textColorLevel;
-
 
             string text = view.GetRowCellDisplayText(e.RowHandle, view.Columns["Text"]);
             foreach (PreDefineHighlight preDefineHighlight in Settings.PreDefinedQueries.Highlights)
@@ -112,17 +108,16 @@ namespace Analogy.Extensions
                 }
 
                 var colors = DataProvider.GetColorForMessage(m);
-                if (colors.backgroundColor != Color.Empty)
+                if (colors.BackgroundColor != Color.Empty)
                 {
-                    e.Appearance.BackColor = colors.backgroundColor;
+                    e.Appearance.BackColor = colors.BackgroundColor;
                 }
 
-                if (colors.foregroundColor != Color.Empty)
+                if (colors.ForegroundColor != Color.Empty)
                 {
-                    e.Appearance.ForeColor = colors.foregroundColor;
+                    e.Appearance.ForeColor = colors.ForegroundColor;
                 }
             }
-
         }
         private void txtbGroupByChars_EditValueChanged(object sender, EventArgs e)
         {
@@ -182,7 +177,6 @@ namespace Analogy.Extensions
                 AddExtraColumnsIfNeededToTable(grouped, gridViewGrouping2, message);
                 DataRow dtr = CommonControls.Utils.CreateRow(grouped, message, "", Settings.TimeOffsetType, Settings.TimeOffset);
                 grouped.Rows.Add(dtr);
-
             }
 
             grouped.AcceptChanges();
@@ -197,7 +191,6 @@ namespace Analogy.Extensions
                 {
                     if (!table.Columns.Contains(info.Key))
                     {
-
                         if (!InvokeRequired)
                         {
                             if (!view.Columns.Select(g => g.FieldName).Contains(info.Key))
@@ -209,7 +202,6 @@ namespace Analogy.Extensions
                                 dt.ReadOnly = true;
                                 table.Columns.Add(dt);
                             }
-
                         }
                         else
                         {
@@ -226,15 +218,10 @@ namespace Analogy.Extensions
                             }));
                             columnAdderSync.WaitOne();
                             columnAdderSync.Reset();
-
                         }
                     }
                 }
             }
-
-
         }
-
-
     }
 }

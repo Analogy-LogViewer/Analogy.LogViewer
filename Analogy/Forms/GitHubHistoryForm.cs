@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.CommonUtilities.Github;
+﻿using Analogy.CommonUtilities.Github;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
@@ -10,6 +7,9 @@ using DevExpress.XtraBars.Navigation;
 using Markdig;
 using Microsoft.Extensions.Logging;
 using Octokit;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -37,30 +37,26 @@ namespace Analogy.Forms
                 {
                     return;
                 }
-                
+
                 CreatePieChart(releases);
                 foreach (Release entry in releases)
                 {
                     CreateReleaseEntry(entry);
                 }
-               
             }
             catch (Exception e)
             {
                 ServicesProvider.Instance.GetService<ILogger>().LogError($"Error fetching history from github: {e.Message}", e);
             }
-
         }
 
         private void CreateReleaseEntry(Release entry)
         {
-
             var downloads = new AccordionControlElement(ElementStyle.Item);
             downloads.Text = $"{entry.TagName} ({entry.CreatedAt.DateTime})";
             accordionControl1.Elements.Add(downloads);
             downloads.Click += (s, e) =>
             {
-
                 if (!fluentDesignFormContainer1.Controls.ContainsKey(entry.TagName))
                 {
                     ReleaseEntryUC uc = new ReleaseEntryUC(entry);
@@ -76,7 +72,6 @@ namespace Analogy.Forms
 
         private void CreatePieChart(IReadOnlyList<Release> releases)
         {
-
             DownloadStatisticsUC uc = new DownloadStatisticsUC(releases);
             uc.Name = "Download Statistics";
 
@@ -106,7 +101,6 @@ namespace Analogy.Forms
             }
 
             fluentDesignFormContainer1.Controls[control].BringToFront();
-
         }
     }
 }

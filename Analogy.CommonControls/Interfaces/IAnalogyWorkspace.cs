@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.CommonControls.Interfaces
 {
-    interface IAnalogyWorkspace
+    public interface IAnalogyWorkspace
     {
         void SaveCurrentWorkspace();
     }

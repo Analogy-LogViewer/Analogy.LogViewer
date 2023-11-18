@@ -1,10 +1,10 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.DataTypes;
+using Analogy.Interfaces;
+using DevExpress.XtraEditors;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using Analogy.DataTypes;
-using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {
@@ -43,7 +43,6 @@ namespace Analogy.UserControls
             lBoxFiles.DataSource = fileInfos;
             lBoxFiles.SelectedIndexChanged += lBoxFiles_SelectedIndexChanged;
             SelectionChangedNotify();
-
         }
         private void lBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -72,5 +71,4 @@ namespace Analogy.UserControls
             }
         }
     }
-
 }

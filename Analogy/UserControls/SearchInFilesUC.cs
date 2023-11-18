@@ -1,6 +1,6 @@
-﻿using System.Windows.Forms;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
@@ -13,7 +13,6 @@ namespace Analogy.UserControls
             InitializeComponent();
         }
 
-
         private async void sBtnSearch_Click(object sender, EventArgs e)
         {
             sBtnSearch.Enabled = false;
@@ -25,7 +24,6 @@ namespace Analogy.UserControls
 
         public void SetDataSource(IAnalogyOfflineDataProvider offlineAnalogy)
         {
-
             this.offlineAnalogy = offlineAnalogy;
             _folderAndFileSystemUc1.DataProvider = offlineAnalogy;
         }

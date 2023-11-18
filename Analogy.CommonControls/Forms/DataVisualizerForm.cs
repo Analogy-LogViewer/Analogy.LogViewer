@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Analogy.CommonControls.Forms
 {
@@ -24,7 +24,7 @@ namespace Analogy.CommonControls.Forms
             Controls.Add(dataVisualizerUC);
             dataVisualizerUC.Dock = DockStyle.Fill;
         }
-        
+
         private void DataVisualizerUCForm_Load(object sender, EventArgs e)
         {
             Icon = _settingsManager.GetIcon();

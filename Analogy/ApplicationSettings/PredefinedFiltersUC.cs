@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class PredefinedFiltersUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } 
+        private IUserSettingsManager Settings { get; }
         public PredefinedFiltersUC(IUserSettingsManager settings)
         {
             this.Settings = settings;
@@ -29,7 +29,7 @@ namespace Analogy.ApplicationSettings
         {
             sbtnAddFilter.Click += (s, e) =>
             {
-                Settings.PreDefinedQueries.AddFilter(teName.Text,txtbIncludeTextFilter.Text, txtbExcludeFilter.Text,
+                Settings.PreDefinedQueries.AddFilter(teName.Text, txtbIncludeTextFilter.Text, txtbExcludeFilter.Text,
                     txtbSourcesFilter.Text, txtbModulesFilter.Text);
                 lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
                 lboxFilters.Refresh();
@@ -50,7 +50,5 @@ namespace Analogy.ApplicationSettings
         {
             lboxFilters.DataSource = Settings.PreDefinedQueries.Filters;
         }
-
-        
     }
 }

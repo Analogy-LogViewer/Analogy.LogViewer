@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors.Controls;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.ApplicationSettings
 {
@@ -48,6 +48,7 @@ namespace Analogy.ApplicationSettings
                 FactoryCheckItem itm = new FactoryCheckItem(factory.FactoryName, factory.FactoryId, about, "", image);
                 chkLstDataProviderStatus.Items.Add(itm, factory.Status == DataProviderFactoryStatus.Enabled);
             }
+
             //add missing:
             foreach (var factory in Settings.FactoriesSettings.Where(itm => !Settings.FactoriesOrder.Contains(itm.FactoryId)))
             {
@@ -91,7 +92,6 @@ namespace Analogy.ApplicationSettings
             }
 
             Settings.UpdateOrder(order);
-
         }
     }
 }

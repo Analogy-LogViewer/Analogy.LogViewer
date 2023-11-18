@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using System.Collections.Generic;
+using System.Data;
 
 namespace Analogy.Tools
 {
-
-    public class FileComparerProcessor : ILogMessageCreatedHandler,ILogWindow
+    public class FileComparerProcessor : ILogMessageCreatedHandler, ILogWindow
     {
         public bool DoNotAddToRecentHistory { get; set; }
         public bool ForceNoFileCaching { get; set; }
@@ -28,12 +27,10 @@ namespace Analogy.Tools
 
         public void SetAuditColumnVisibility(bool value)
         {
-
         }
 
         public void SetCategoryColumnVisibility(bool value)
         {
-
         }
 
         public void AppendMessage(IAnalogyLogMessage message, string dataSource)

@@ -14,9 +14,9 @@ namespace Analogy.CommonControls.DataTypes
         public int Verbose { get; private set; }
         public int Trace { get; private set; }
 
-        public LogAnalyzerLogLevel(string name, int total, int errors, int warnings, int critical, int events, int debug, int verbose,int trace)
-            => (Name, Messages, Error, Warning, Critical, Information, Debug, Verbose,Trace) =
-                (name, total, errors, warnings, critical, events, debug, verbose,trace);
+        public LogAnalyzerLogLevel(string name, int total, int errors, int warnings, int critical, int events, int debug, int verbose, int trace)
+            => (Name, Messages, Error, Warning, Critical, Information, Debug, Verbose, Trace) =
+                (name, total, errors, warnings, critical, events, debug, verbose, trace);
 
         public IEnumerable<LogAnalyzerSingleDataPoint> AsList()
         {
@@ -39,7 +39,6 @@ namespace Analogy.CommonControls.DataTypes
             yield return new LogAnalyzerSingleDataPoint(nameof(Information), Information);
             yield return new LogAnalyzerSingleDataPoint(nameof(Trace), Trace);
         }
-        
     }
 
     public class LogAnalyzerSingleDataPoint

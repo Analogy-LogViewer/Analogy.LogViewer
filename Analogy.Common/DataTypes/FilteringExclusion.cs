@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
 
 namespace Analogy.Common.DataTypes
 {
@@ -14,7 +14,6 @@ namespace Analogy.Common.DataTypes
         public List<string> ExcludeSources { get; set; }
         public List<string> ExcludeModules { get; set; }
         public Dictionary<string, bool> ExcludeLogLevels { get; set; }
-
 
         public FilteringExclusion()
         {

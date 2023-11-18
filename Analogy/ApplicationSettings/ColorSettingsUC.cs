@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Managers;
+using DevExpress.XtraEditors;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.Interfaces;
-using Analogy.Managers;
-using DevExpress.XtraEditors;
 
 namespace Analogy.ApplicationSettings
 {
@@ -46,13 +46,11 @@ namespace Analogy.ApplicationSettings
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-
                     try
                     {
                         File.WriteAllText(saveFileDialog.FileName, Settings.ColorSettings.AsJson());
                         XtraMessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-
                     }
                     catch (Exception ex)
                     {
@@ -60,7 +58,6 @@ namespace Analogy.ApplicationSettings
                         XtraMessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
-
                 }
             };
 
@@ -81,7 +78,6 @@ namespace Analogy.ApplicationSettings
                         XtraMessageBox.Show("File Imported. Save settings if desired", @"Import settings",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-
                     }
                     catch (Exception ex)
                     {
@@ -121,7 +117,6 @@ namespace Analogy.ApplicationSettings
             cpeHighlightColorText.ColorChanged += (s, e) => UpdateColors();
             cpeNewMessagesColor.ColorChanged += (s, e) => UpdateColors();
             cpeNewMessagesColorText.ColorChanged += (s, e) => UpdateColors();
-
         }
 
         private void UpdateColors()
@@ -196,8 +191,6 @@ namespace Analogy.ApplicationSettings
             lblLogLevelAnalogyInformation.ForeColor = cpeLogLevelAnalogyInformationText.Color;
             lblHighlightColor.ForeColor = cpeHighlightColorText.Color;
             ceNewMessagesColor.ForeColor = cpeNewMessagesColorText.Color;
-
         }
-
     }
 }

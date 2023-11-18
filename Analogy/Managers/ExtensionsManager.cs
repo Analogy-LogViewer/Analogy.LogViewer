@@ -1,9 +1,9 @@
-﻿using Analogy.Interfaces;
-using System.Collections.Generic;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Interfaces;
+using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Analogy
 {
@@ -56,6 +56,5 @@ namespace Analogy
         }
 
         public IEnumerable<IAnalogyExtension> GetExtensions() => FactoriesManager.GetAllExtensions();
-
     }
 }

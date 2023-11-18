@@ -1,23 +1,21 @@
-﻿using Analogy.CommonUtilities.Web;
+﻿using Analogy.Common.DataTypes;
+using Analogy.CommonUtilities.Web;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
 using Newtonsoft.Json;
+using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
-using Analogy.Common.DataTypes;
-using Octokit;
 
 namespace Analogy
 {
-
-
     public class UserSettingsManager : IAnalogyUserSettings
     {
         private FolderAccessManager FolderAccessManager { get; }
@@ -139,7 +137,6 @@ namespace Analogy
                 {
                     _ribbonStyle = value;
                     OnRibbonControlStyleChanged?.Invoke(this, value);
-
                 }
             }
         }
@@ -226,7 +223,6 @@ namespace Analogy
             }
         }
 
-
         private void LoadPerUserSettings()
         {
             SettingsMode = SettingsMode.PerUser;
@@ -301,7 +297,7 @@ namespace Analogy
                 1 => UpdateMode.EachStartup,
                 2 => UpdateMode.OnceAWeek,
                 3 => UpdateMode.OnceAMonth,
-                _ => UpdateMode
+                _ => UpdateMode,
             };
 
             if (Enum.TryParse(Settings.Default.ApplicationStyle, out AnalogyLookAndFeelStyle style))
@@ -537,7 +533,7 @@ namespace Analogy
                 CombineOfflineProviders = CombineOfflineProviders,
                 CombineOnlineProviders = CombineOnlineProviders,
                 WindowPositions = WindowPositions,
-                SupportLinuxFormatting = SupportLinuxFormatting
+                SupportLinuxFormatting = SupportLinuxFormatting,
             };
             return userSettings;
         }
@@ -553,8 +549,6 @@ namespace Analogy
                 AnalogyLogManager.Instance.LogError("Error during parsing: " + e, nameof(UserSettingsManager));
                 return new T();
             }
-
-
         }
 
         public void Save(string version)
@@ -571,6 +565,7 @@ namespace Analogy
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             //SaveSettingModeToRegistry();
         }
 
@@ -777,7 +772,6 @@ namespace Analogy
             var createNew = new FactorySettings(factory.Title, factory.FactoryId, DataProviderFactoryStatus.NotSet);
             FactoriesSettings.Add(createNew);
             return createNew;
-
         }
 
         public void UpdateOrder(List<Guid> order)
@@ -900,6 +894,7 @@ namespace Analogy
                     return;
                 }
             }
+
             //does not exists. create it:
             FileAssociations.Add(new FileAssociations(offlineProviderId, associations));
         }
@@ -922,4 +917,3 @@ namespace Analogy
         }
     }
 }
-

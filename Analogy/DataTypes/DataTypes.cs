@@ -11,7 +11,7 @@ namespace Analogy.DataTypes
         private string Assembly { get; }
         public Image? Image { get; }
 
-        public FactoryCheckItem(string name, Guid id, string description,string assembly, Image? image)
+        public FactoryCheckItem(string name, Guid id, string description, string assembly, Image? image)
         {
             Name = name;
             ID = id;

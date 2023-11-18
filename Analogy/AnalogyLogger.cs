@@ -1,20 +1,19 @@
-﻿using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Managers;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Analogy
 {
-    public class AnalogyLogger: ILogger
+    public class AnalogyLogger : ILogger
     {
         private string DateTimeWithMilliseconds => DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt", DateTimeFormatInfo.InvariantInfo);
         private static readonly Process CurrentProcess = Process.GetCurrentProcess();
         private DateTime ProcessStartTime => CurrentProcess.StartTime;
         public AnalogyLogger()
         {
-            
         }
 
         public void LogInformation(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
@@ -32,7 +31,7 @@ namespace Analogy
         public void LogCritical(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
        => AnalogyLogManager.Instance.LogCritical(GetFormattedString(message, memberName, lineNumber, filePath), source);
         public void LogException(string message, Exception ex, string source = "", string memberName = "", int lineNumber = 0, string filePath = "")
-       => LogError($"Error: {GetFormattedString(message,memberName,lineNumber,filePath)}. Exception: {ex}", source);
+       => LogError($"Error: {GetFormattedString(message, memberName, lineNumber, filePath)}. Exception: {ex}", source);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private string GetFormattedString(string message, string memberName, int lineNumber, string filePath) =>
@@ -86,6 +85,4 @@ namespace Analogy
             return null;
         }
     }
-
 }
-

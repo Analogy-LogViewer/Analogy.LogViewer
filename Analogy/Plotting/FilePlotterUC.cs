@@ -1,11 +1,11 @@
-﻿using DevExpress.XtraEditors;
+﻿using Analogy.CommonControls.DataTypes;
+using Analogy.Plotting;
+using DevExpress.XtraBars.Docking;
+using DevExpress.XtraEditors;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
-using Analogy.Plotting;
-using DevExpress.XtraBars.Docking;
 using AnalogyCustomXAxisPlot = Analogy.CommonControls.DataTypes.AnalogyCustomXAxisPlot;
 
 namespace Analogy.UserControls
@@ -36,6 +36,7 @@ namespace Analogy.UserControls
                     BeginInvoke(new Action(() =>
                     {
                         e.Panel.FloatSize = sz;
+
                         //adjust the new panel size taking the header height into account:
                         e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
                     }));
@@ -50,7 +51,7 @@ namespace Analogy.UserControls
                 using OpenFileDialog openFileDialog1 = new OpenFileDialog
                 {
                     Title = @"Open Files",
-                    Multiselect = false
+                    Multiselect = false,
                 };
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -64,7 +65,6 @@ namespace Analogy.UserControls
                 {
                     sbtnLoad.Text = "load";
                     InFileProcess = false;
-
                 }
                 if (!string.IsNullOrEmpty(teFile.Text) && File.Exists(teFile.Text))
                 {
@@ -111,12 +111,8 @@ namespace Analogy.UserControls
                     dockManager1.ActivePanel = page;
                     uc.Start();
                     processTask = afp.StartPlotting();
-
                 }
             };
         }
-
-
-
     }
 }

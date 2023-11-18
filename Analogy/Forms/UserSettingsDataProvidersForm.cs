@@ -1,15 +1,14 @@
 ﻿using Analogy.Common.Interfaces;
-using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.Properties;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
-
     public partial class UserSettingsDataProvidersForm : XtraForm
     {
         private IFactoriesManager FactoriesManager { get; }
@@ -51,7 +50,6 @@ namespace Analogy.Forms
 
         private void LoadSettings()
         {
-
             AddExternalUserControlSettings();
         }
 
@@ -64,6 +62,7 @@ namespace Analogy.Forms
                 UserControl uc = settings.DataProviderSettings;
                 tab.Controls.Add(uc);
                 tab.Image = settings.LargeImage ?? Resources.Technology_32x32;
+
                 //ab.
                 uc.Dock = DockStyle.Fill;
                 tabControlMain.TabPages.Add(tab);
@@ -98,7 +97,6 @@ namespace Analogy.Forms
                 {
                     AnalogyLogManager.Instance.LogError("Error during call for SaveSetting for data provider: " + e, nameof(SaveSetting));
                 }
-
             }
         }
     }

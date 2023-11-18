@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Analogy.CommonControls.UserControls;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +10,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.UserControls;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.Example
 {
@@ -26,15 +26,14 @@ namespace Analogy.CommonControls.Example
             this.Controls.Add(log);
             log.Dock = DockStyle.Fill;
 
-            Task.Factory.StartNew(() =>
+            _ = Task.Factory.StartNew(() =>
             {
                 for (int i = 0; i < 1000; i++)
                 {
                     var m = new AnalogyLogMessage($"Test: {i}", AnalogyLogLevel.Information, AnalogyLogClass.General, "");
-                    log.AppendMessage(m,"Example");
+                    log.AppendMessage(m, "Example");
                     Thread.Sleep(1000);
                 }
-
             });
         }
     }

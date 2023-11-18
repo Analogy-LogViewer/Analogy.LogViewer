@@ -16,7 +16,6 @@ namespace Analogy.Forms.Welcome
             {
                 return;
             }
-
         }
 
         private void sbtnGithubHistory_Click(object sender, EventArgs e)

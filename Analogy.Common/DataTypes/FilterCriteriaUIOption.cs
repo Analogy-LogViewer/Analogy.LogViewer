@@ -13,7 +13,6 @@ namespace Analogy.Common.DataTypes
         public string ValueMember { get; set; }
         public bool CheckMember { get; set; }
 
-
         public FilterCriteriaUIOption(string displayMember, string valueMember, bool checkMember)
         {
             DisplayMember = displayMember;

@@ -1,8 +1,8 @@
-﻿using Microsoft.Win32;
+﻿using Analogy.DataTypes;
+using Microsoft.Extensions.Logging;
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
-using Analogy.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.Managers
 {
@@ -39,7 +39,6 @@ namespace Analogy.Managers
             {
                 AnalogyLogManager.Instance.LogError($"Error reading registry: {e}", nameof(AnalogyNonPersistSettings));
             }
-
         }
 
         public void AddDependencyLocation(string path)

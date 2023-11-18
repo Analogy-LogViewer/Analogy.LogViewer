@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Plotting;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Plotting;
-using Analogy.Interfaces;
-using Analogy.Interfaces.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -41,7 +41,6 @@ namespace Analogy.CommonControls.UserControls
         public Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, ILogger logger)
         {
             return Task.CompletedTask;
-            ;
         }
 
         public Task StartPlotting()
@@ -57,7 +56,7 @@ namespace Analogy.CommonControls.UserControls
                 List<AnalogyPlottingPointData> points = new(messages.Count);
                 foreach (IAnalogyLogMessage message in messages)
                 {
-                    if (Double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
+                    if (double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
                     {
                         AnalogyPlottingPointData data = new(series.SeriesName, val, message.Date);
                         points.Add(data);
@@ -66,7 +65,6 @@ namespace Analogy.CommonControls.UserControls
                 OnNewPointsData?.Invoke(this, points);
             }
             return Task.CompletedTask;
-            ;
         }
 
         public Task StopPlotting()
@@ -78,7 +76,6 @@ namespace Analogy.CommonControls.UserControls
                 _plottingUC.Dispose();
             }
             return Task.CompletedTask;
-            ;
         }
 
         public Guid Id { get; set; }
@@ -89,7 +86,7 @@ namespace Analogy.CommonControls.UserControls
 
         public void Init(Func<List<IAnalogyLogMessage>> messagesFunc, ILogger analogyLogger)
         {
-            InitializePlotting(_interactor, analogyLogger);
+            _ = InitializePlotting(_interactor, analogyLogger);
             _messages = messagesFunc;
             RefreshColumnList();
         }
@@ -100,33 +97,39 @@ namespace Analogy.CommonControls.UserControls
             ColumnNames.Clear();
             IOrderedEnumerable<string> columns = m.Where(i => i.AdditionalProperties != null).SelectMany(i => i.AdditionalProperties!.Keys).Distinct().OrderBy(i => i);
             foreach (string column in columns)
+            {
                 ColumnNames.Add(column);
-            
+            }
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
+        private async void BtnAdd_Click(object sender, EventArgs e)
         {
             string column = CmbColumns.SelectedItem as string;
             if (column == null)
+            {
                 return;
+            }
+
             if (!ActiveColumns.Contains(column))
+            {
                 AddSeries(column);
+            }
         }
 
-        private void AddSeries(string column)
+        private async Task AddSeries(string column)
         {
             ActiveColumns.Add(column);
-            StopPlotting();
+            await StopPlotting();
             _series.Add((column, AnalogyPlottingSeriesType.Line));
-            StartPlotting();
+            await StartPlotting();
         }
 
-        private void RemoveSeries(string column)
+        private async Task RemoveSeries(string column)
         {
             ActiveColumns.Remove(column);
-            StopPlotting();
+            await StopPlotting();
             _series.Remove((column, AnalogyPlottingSeriesType.Line));
-            StartPlotting();
+            await StartPlotting();
         }
 
         private void BtnRefreshColumns_Click(object sender, EventArgs e)
@@ -134,12 +137,12 @@ namespace Analogy.CommonControls.UserControls
             RefreshColumnList();
         }
 
-        private void BtnDelete_Click(object sender, EventArgs e)
+        private async void BtnDelete_Click(object sender, EventArgs e)
         {
             string? column = LstPlotted.SelectedItem as string;
             if (column != null)
             {
-                RemoveSeries(column);
+                await RemoveSeries(column);
             }
         }
 
@@ -149,7 +152,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 if (message.AdditionalProperties != null && message.AdditionalProperties.ContainsKey(series.SeriesName))
                 {
-                    if (Double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
+                    if (double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
                     {
                         AnalogyPlottingPointData data = new(series.SeriesName, val, message.Date);
                         OnNewPointData?.Invoke(this, data);
@@ -167,7 +170,7 @@ namespace Analogy.CommonControls.UserControls
                 List<AnalogyPlottingPointData> points = new(messagesFiltered.Count);
                 foreach (IAnalogyLogMessage message in messagesFiltered)
                 {
-                    if (Double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
+                    if (double.TryParse(message.AdditionalProperties![series.SeriesName], out double val))
                     {
                         AnalogyPlottingPointData data = new(series.SeriesName, val, message.Date);
                         points.Add(data);

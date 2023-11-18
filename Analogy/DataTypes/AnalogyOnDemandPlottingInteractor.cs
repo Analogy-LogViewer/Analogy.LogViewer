@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Managers;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Analogy.DataTypes
 {
@@ -41,7 +41,6 @@ namespace Analogy.DataTypes
         public void ClearAllData(Guid id)
         {
             PlottingManager.ClearAllData(id);
-
         }
 
         public void SetDefaultWindow(Guid id, int numberOfPointsInWindow)

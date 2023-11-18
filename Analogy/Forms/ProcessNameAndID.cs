@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -12,7 +12,6 @@ namespace Analogy.Forms
         public ProcessNameAndID()
         {
             InitializeComponent();
-
         }
 
         private void ProcessNameAndID_Load(object sender, EventArgs e)
@@ -45,6 +44,4 @@ namespace Analogy.Forms
             }
         }
     }
-
-
 }

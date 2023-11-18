@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Managers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Managers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Analogy.UnitTests
 {
@@ -22,7 +22,7 @@ namespace Analogy.UnitTests
             cancellationTokenSource = new CancellationTokenSource();
             var settings = new DefaultUserSettingsManager
             {
-                EnableCompressedArchives = true
+                EnableCompressedArchives = true,
             };
             FileProcessor fp = new FileProcessor(settings, handler, new FileProcessingManager(), new EmptyAnalogyLogger());
             OfflineDataProviderForTesting offlineDataProvider = new OfflineDataProviderForTesting();

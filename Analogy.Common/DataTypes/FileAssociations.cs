@@ -18,7 +18,6 @@ namespace Analogy.Common.DataTypes
             Associations = fileAssociations;
         }
 
-
         public void Update(List<string> fileAssociations)
         {
             Associations = fileAssociations;

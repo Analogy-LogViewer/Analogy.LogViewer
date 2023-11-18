@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Windows.Forms;
-using Analogy.CommonUtilities.Github;
+﻿using Analogy.CommonUtilities.Github;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraEditors;
 using Octokit;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -22,7 +22,6 @@ namespace Analogy.Forms
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.meAbout.Text = AssemblyDescription + $"{Environment.NewLine}Created by Lior Banai (2018){Environment.NewLine}Contact info:{Environment.NewLine}mail: Liorbanai@gmail.com";
-
         }
 
         public AnalogyAboutBox(int selectedTab) : this()

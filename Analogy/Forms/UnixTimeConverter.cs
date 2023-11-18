@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.Globalization;
 
 namespace Analogy.Forms
 {
@@ -24,16 +24,14 @@ namespace Analogy.Forms
         private void sbtnToUnix_Click(object sender, EventArgs e)
         {
             textEdit1.Text = new DateTimeOffset(dateEdit1.DateTime).ToUnixTimeMilliseconds().ToString();
-
         }
 
         private void sbtnFromUnix_Click(object sender, EventArgs e)
         {
-            if (long.TryParse(textEdit1.Text,NumberStyles.AllowThousands| NumberStyles.AllowDecimalPoint, NumberFormatInfo.InvariantInfo, out var val))
+            if (long.TryParse(textEdit1.Text, NumberStyles.AllowThousands | NumberStyles.AllowDecimalPoint, NumberFormatInfo.InvariantInfo, out var val))
             {
                 dateEdit1.DateTime = DateTimeOffset.FromUnixTimeMilliseconds(val).DateTime;
             }
-
         }
     }
 }

@@ -1,4 +1,9 @@
-﻿using Analogy.DataProviders;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.CommonControls.Managers;
+using Analogy.CommonControls.Plotting;
+using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
@@ -14,6 +19,7 @@ using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -21,12 +27,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Managers;
-using Analogy.CommonControls.Managers;
-using Analogy.CommonControls.Plotting;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy
 {
@@ -38,10 +38,10 @@ namespace Analogy
 
         #region pinvoke
 
-        const int WM_COPYDATA = 0x004A;
+        private const int WMCOPYDATA = 0x004A;
 
         [DllImport("user32", EntryPoint = "SendMessageA")]
-        private static extern int SendMessage(IntPtr Hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        private static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll")]
         internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
@@ -112,10 +112,12 @@ namespace Analogy
             PopulateGlobalTools();
             LoadStartupExtensions();
             RegisterForOnDemandPlots();
+
             //Create all other DataSources
             foreach (FactoryContainer fc in FactoriesManager.Factories
                          .Where(factory => !FactoriesManager.IsBuiltInFactory(factory.Factory) &&
                                            factory.FactorySetting.Status != DataProviderFactoryStatus.Disabled
+
                                             //&& factory.DataProvidersFactories.Any(d => d.DataProviders.Any())
                                             ))
             {
@@ -180,12 +182,11 @@ namespace Analogy
                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                 AlertControl ac = new AlertControl(this.components)
                 {
-                    AutoFormDelay = notification.DurationSeconds * 1000
+                    AutoFormDelay = notification.DurationSeconds * 1000,
                 };
                 ac.AutoHeight = true;
                 if (notification.ActionOnClick != null)
                 {
-
                     AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
                     btn1.Hint = "OK";
                     btn1.Name = "NotificationActionButton";
@@ -197,13 +198,11 @@ namespace Analogy
                             try
                             {
                                 notification.ActionOnClick?.Invoke();
-
                             }
                             catch (Exception exception)
                             {
                                 XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
                                     MessageBoxButtons.OK);
-
                             }
                         }
                     };
@@ -239,14 +238,14 @@ namespace Analogy
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
-                    if (!e.userControl.Visible)
+                    if (!e.UserControl.Visible)
                     {
                         var page = dockManager1.AddPanel(DockingStyle.Float);
-                        page.DockedAsTabbedDocument = e.startupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
-                        page.Controls.Add(e.userControl);
-                        e.userControl.Show();
-                        e.userControl.Dock = DockStyle.Fill;
-                        page.Text = $"Plot: {e.userControl.Title}";
+                        page.DockedAsTabbedDocument = e.StartupType == AnalogyOnDemandPlottingStartupType.TabbedWindow;
+                        page.Controls.Add(e.UserControl);
+                        e.UserControl.Show();
+                        e.UserControl.Dock = DockStyle.Fill;
+                        page.Text = $"Plot: {e.UserControl.Title}";
                         dockManager1.ActivePanel = page;
                         page.ClosingPanel += (_, __) =>
                         {
@@ -254,14 +253,13 @@ namespace Analogy
                         };
                         void Instance_OnHidePlot(object sender, OnDemandPlottingUC uc)
                         {
-                            if (uc == e.userControl)
+                            if (uc == e.UserControl)
                             {
                                 dockManager1.RemovePanel(page);
                                 uc.Hide();
                             }
                         }
                         PlottingManager.OnHidePlot += Instance_OnHidePlot;
-
                     }
                 }));
             };
@@ -275,7 +273,6 @@ namespace Analogy
                 {
                     ExtensionsManager.RegisterExtension(extensions.SingleOrDefault(m => m.Id == guid));
                 }
-
             }
         }
 
@@ -295,16 +292,14 @@ namespace Analogy
             }
             else
             {
-
                 if (supported.Any(d =>
                     d.DataProvider.Id == Settings.LastOpenedDataProvider ||
-                    d.FactoryID == Settings.LastOpenedDataProvider
-                    && d.DataProvider.CanOpenAllFiles(files)))
+                    (d.FactoryID == Settings.LastOpenedDataProvider
+                    && d.DataProvider.CanOpenAllFiles(files))))
                 {
                     supported = supported.Where(d =>
                         d.DataProvider.Id == Settings.LastOpenedDataProvider ||
-                        d.FactoryID == Settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files)).ToList();
-
+                        (d.FactoryID == Settings.LastOpenedDataProvider && d.DataProvider.CanOpenAllFiles(files))).ToList();
                 }
                 else
                 {
@@ -336,7 +331,6 @@ namespace Analogy
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                         }
-
                     }
                     else
                     {
@@ -346,7 +340,6 @@ namespace Analogy
                         XtraMessageBox.Show(msg, "Unable to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
         }
 
@@ -388,6 +381,7 @@ namespace Analogy
                     BeginInvoke(new Action(() =>
                     {
                         e.Panel.FloatSize = sz;
+
                         //adjust the new panel size taking the header height into account:
                         e.Panel.FloatSize = new Size(e.Panel.FloatSize.Width, 2 * e.Panel.FloatSize.Height - e.Panel.ControlContainer.Height);
                     }));
@@ -408,7 +402,6 @@ namespace Analogy
 
             bbiSettingsExtensions.ItemClick += (s, e) =>
             {
-
                 ApplicationSettingsForm user = new ApplicationSettingsForm(ApplicationSettingsSelectionType.ExtensionsSettings, Settings, FactoriesManager, FoldersAccess, UpdateManager);
                 user.ShowDialog(this);
             };
@@ -560,12 +553,11 @@ namespace Analogy
                 AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
                 AlertControl ac = new AlertControl(this.components)
                 {
-                    AutoFormDelay = notification.DurationSeconds * 1000
+                    AutoFormDelay = notification.DurationSeconds * 1000,
                 };
                 ac.AutoHeight = true;
                 if (notification.ActionOnClick != null)
                 {
-
                     AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
                     btn1.Hint = "OK";
                     btn1.Name = "NotificationActionButton";
@@ -577,13 +569,11 @@ namespace Analogy
                             try
                             {
                                 notification.ActionOnClick?.Invoke();
-
                             }
                             catch (Exception exception)
                             {
                                 XtraMessageBox.Show($"Error during notification action: {exception}", "Error",
                                     MessageBoxButtons.OK);
-
                             }
                         }
                     };
@@ -607,7 +597,6 @@ namespace Analogy
                 Settings.EnableFileCaching = !Settings.EnableFileCaching;
                 bbiFileCaching.Caption = "File caching is " + (Settings.EnableFileCaching ? "on" : "off");
                 bbiFileCaching.Appearance.BackColor = Settings.EnableFileCaching ? Color.LightGreen : Color.Empty;
-
             };
         }
 
@@ -627,7 +616,6 @@ namespace Analogy
                     bbtnCheckUpdates.Appearance.ForeColor = Color.DarkBlue;
                 }
                 bbtnCheckUpdates.Caption = "New Version Available: " + UpdateManager.NewestVersion.ToString();
-
             }
         }
         private void PopulateGlobalTools()
@@ -654,7 +642,6 @@ namespace Analogy
                         actionBtn.RibbonStyle = RibbonItemStyles.All;
                         actionBtn.Caption = string.IsNullOrEmpty(action.Title) ? "Tool" : action.Title;
                         actionBtn.ItemClick += (sender, e) => { action.Action(); };
-
                     }
                 }
             }
@@ -671,6 +658,7 @@ namespace Analogy
             bci.CheckStyle = BarCheckStyles.Radio;
             bci.GroupIndex = 1;
             bci.CheckBoxVisibility = CheckBoxVisibility.BeforeText;
+
             //bci.Caption = fc.Factory.Title;
             bci.Enabled = fc.FactorySetting.Status != DataProviderFactoryStatus.Disabled;
             bci.ItemClick += (s, e) =>
@@ -679,12 +667,10 @@ namespace Analogy
                 LoadFactoryInAccordion(fc.Factory.FactoryId);
             };
             bsiDataProviders.AddItem(bci);
-
         }
 
         private void LoadFactoryInAccordion(Guid factoryId)
         {
-
             if (activeProvider == factoryId)
             {
                 return;
@@ -697,6 +683,7 @@ namespace Analogy
             Settings.LastOpenedDataProvider = activeProvider;
 
             LoadDataProvidersInAccordion(fc);
+
             //var ribbonPageImage = FactoriesManager.GetSmallImage(fc.Factory.FactoryId);
             //if (ribbonPageImage != null)
             //{
@@ -749,7 +736,6 @@ namespace Analogy
             AddFactorySettings(fc);
             AddAbout(fc);
             accordionControl.EndUpdate();
-
         }
         private void AddAbout(FactoryContainer fc)
         {
@@ -758,7 +744,6 @@ namespace Analogy
             acRootGroupHome.Expanded = true;
             acRootGroupHome.ImageOptions.Image = Resources.About_16x16;
             acRootGroupHome.Text = "Data Source Information";
-
 
             AccordionControlElement aboutBtn = new AccordionControlElement();
             acRootGroupHome.Elements.Add(aboutBtn);
@@ -908,6 +893,7 @@ namespace Analogy
 
                 var preDefinedFolderExist = !string.IsNullOrEmpty(offlineAnalogy.InitialFolderFullPath) &&
                                             Directory.Exists(offlineAnalogy.InitialFolderFullPath);
+
                 //add specific folder button:
                 if (preDefinedFolderExist)
                 {
@@ -951,7 +937,6 @@ namespace Analogy
                     }
                 };
 
-
                 recentFolders.ImageOptions.Image = images?.GetLargeRecentFoldersImage(factoryId) ?? Resources.LoadFrom_32x32;
                 foreach (var path in Settings.GetRecentFolders(offlineAnalogy.Id))
                 {
@@ -966,6 +951,7 @@ namespace Analogy
                         SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                         args.Title.Text = Path.GetFileName(path.Path);
                         args.Contents.Text = path.Path;
+
                         // args.Contents.Image = realTime.ToolTip.Image;
                         toolTip.Setup(args);
                         btn.SuperTip = toolTip;
@@ -976,11 +962,11 @@ namespace Analogy
                     }
                 }
 
-
                 //recent bar
                 AccordionControlElement recentfiles = new AccordionControlElement();
                 recentfiles.Text = "Recent Files";
                 recentfiles.ImageOptions.Image = images?.GetLargeRecentFilesImage(factoryId) ?? Resources.RecentlyUse_32x32;
+
                 //add Files open buttons
 
                 if (!string.IsNullOrEmpty(offlineAnalogy.FileOpenDialogFilters))
@@ -995,7 +981,7 @@ namespace Analogy
                         {
                             Filter = Utils.GetOpenFilter(offlineAnalogy.FileOpenDialogFilters),
                             Title = @"Open Files",
-                            Multiselect = true
+                            Multiselect = true,
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
@@ -1003,7 +989,6 @@ namespace Analogy
                             AddRecentFiles(recentfiles, offlineAnalogy, title, openFileDialog1.FileNames.ToList());
                         }
                     };
-
 
                     //add Open pooling file entry
                     AccordionControlElement filePoolingBtn = new AccordionControlElement();
@@ -1020,7 +1005,7 @@ namespace Analogy
                         {
                             Filter = offlineAnalogy.FileOpenDialogFilters,
                             Title = @"Open File for pooling",
-                            Multiselect = false
+                            Multiselect = false,
                         };
                         if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         {
@@ -1036,8 +1021,8 @@ namespace Analogy
                 {
                     IAnalogyNotification notification = new AnalogyNotification(factoryId,
                         "Missing File Open Dialog Filter",
-                        $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'"
-                        , AnalogyLogLevel.Error, offlineAnalogy.LargeImage, 5, null);
+                        $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'",
+                        AnalogyLogLevel.Error, offlineAnalogy.LargeImage, 5, null);
                     NotificationManager.RaiseNotification(notification, true);
                 }
 
@@ -1057,14 +1042,12 @@ namespace Analogy
                 externalSources.ImageOptions.Image = images?.GetLargeKnownLocationsImage(factoryId) ?? Resources.ServerMode_32x32;
                 externalSources.Click += (sender, e) => { OpenExternalDataSource(title, offlineAnalogy); };
 
-
                 //add tools
                 AccordionControlElement acRootGroupTool = new AccordionControlElement();
                 accordionControl.Elements.Add(acRootGroupTool);
                 acRootGroupTool.Expanded = true;
                 acRootGroupTool.ImageOptions.ImageUri.Uri = "Home;Office2013";
                 acRootGroupTool.Text = $"Tools: {factory.Title}";
-
 
                 AccordionControlElement searchFiles = new AccordionControlElement();
                 acRootGroupTool.Elements.Add(searchFiles);
@@ -1114,10 +1097,12 @@ namespace Analogy
             btn.Text = Path.GetFileName(recentPath);
 
             SuperToolTip toolTip = new SuperToolTip();
+
             // Create an object to initialize the SuperToolTip.
             SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
             args.Title.Text = Path.GetFileName(recentPath);
             args.Contents.Text = recentPath;
+
             // args.Contents.Image = realTime.ToolTip.Image;
             toolTip.Setup(args);
             btn.SuperTip = toolTip;
@@ -1133,14 +1118,11 @@ namespace Analogy
                 page.Text = fullTitle;
                 dockManager1.ActivePanel = page;
             };
-
-
         }
         private void AddRecentFiles(AccordionControlElement recentElement, IAnalogyOfflineDataProvider offlineAnalogy, string title, List<string> recentFiles)
         {
             if (recentFiles.Any())
             {
-
                 foreach (string file in recentFiles)
                 {
                     if (!File.Exists(file) || recentElement.Elements.Any(e => e.Text.Equals(Path.GetFileName(file))))
@@ -1157,6 +1139,7 @@ namespace Analogy
                     SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                     args.Title.Text = Path.GetFileName(file);
                     args.Contents.Text = file;
+
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     btn.SuperTip = toolTip;
@@ -1196,10 +1179,12 @@ namespace Analogy
                 if (realTime.ToolTip != null)
                 {
                     SuperToolTip toolTip = new SuperToolTip();
+
                     // Create an object to initialize the SuperToolTip.
                     SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                     args.Title.Text = realTime.ToolTip.Title;
                     args.Contents.Text = realTime.ToolTip.Content;
+
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     realTimeBtn.SuperTip = toolTip;
@@ -1237,6 +1222,7 @@ namespace Analogy
                                 AnalogyLogLevel.Analogy, AnalogyLogClass.General,
                                 dataSourceFactory.Title, "Analogy");
                             onlineUC.AppendMessage(disconnected, Environment.MachineName);
+
                             //realTimeBtn.ImageOptions.Image = imageLargeOffline ?? Resources.Database_off;
                         }
 
@@ -1262,6 +1248,7 @@ namespace Analogy
                                     realTime.OnMessageReady -= OnRealTimeOnMessageReady;
                                     realTime.OnManyMessagesReady -= OnRealTimeOnOnManyMessagesReady;
                                     realTime.OnDisconnected -= OnRealTimeDisconnected;
+
                                     //page.Controls.Remove(onlineUC);
                                 }
                                 catch (Exception e)
@@ -1301,9 +1288,7 @@ namespace Analogy
                     }
 
                     OnlineSources.Add(AutoOpenRealTime());
-
                 }
-
             }
         }
 
@@ -1336,10 +1321,12 @@ namespace Analogy
                 if (single.ToolTip != null)
                 {
                     SuperToolTip toolTip = new SuperToolTip();
+
                     // Create an object to initialize the SuperToolTip.
                     SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                     args.Title.Text = single.ToolTip.Title;
                     args.Contents.Text = single.ToolTip.Content;
+
                     // args.Contents.Image = realTime.ToolTip.Image;
                     toolTip.Setup(args);
                     singleBtn.SuperTip = toolTip;
@@ -1365,14 +1352,12 @@ namespace Analogy
                     {
                         await singleProvider.Execute(cts.Token, offlineUC.Handler);
                     }
-
                 };
             }
         }
 
         private void AddUserControls(FactoryContainer fc, List<IAnalogyCustomUserControlsFactory> userControls)
         {
-
             if (userControls.Count == 0)
             {
                 return;
@@ -1403,6 +1388,7 @@ namespace Analogy
                     if (userControl.ToolTip != null)
                     {
                         SuperToolTip toolTip = new SuperToolTip();
+
                         // Create an object to initialize the SuperToolTip.
                         SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
                         args.Title.Text = userControl.ToolTip.Title;
@@ -1415,6 +1401,7 @@ namespace Analogy
                     {
                         userControlBtn.Enabled = false;
                         openedWindows++;
+
                         //plotterBtn.ImageOptions.Image = imageSmallOnline ?? Resources.Database_on;
                         var page = dockManager1.AddPanel(DockingStyle.Float);
                         await userControl.InitializeUserControl(page, ServicesProvider.Instance.GetService<ILogger>());
@@ -1454,7 +1441,6 @@ namespace Analogy
         }
         private void AddGraphPlotter(FactoryContainer fc, List<IAnalogyPlotting> graphPlotters)
         {
-
             if (graphPlotters == null || graphPlotters.Count == 0)
             {
                 return;
@@ -1466,7 +1452,6 @@ namespace Analogy
             acRootGroupHome.Expanded = true;
             acRootGroupHome.ImageOptions.Image = Resources.Line_32x32;
             acRootGroupHome.Text = $"Graph Plotter: {title}";
-
 
             foreach (var plot in graphPlotters)
             {
@@ -1522,7 +1507,6 @@ namespace Analogy
                 }
 
                 plotterBtn.Click += async (s, be) => await OpenPlotter();
-
             }
         }
         private void FluentDesignMainForm_FormClosing(object sender, FormClosingEventArgs e)

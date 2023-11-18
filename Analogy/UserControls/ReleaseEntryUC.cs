@@ -1,8 +1,8 @@
-﻿using System.Net;
-using Analogy.CommonUtilities.Github;
+﻿using Analogy.CommonUtilities.Github;
 using DevExpress.XtraEditors;
 using Markdig;
 using Octokit;
+using System.Net;
 using static Grpc.Core.Metadata;
 
 namespace Analogy.UserControls
@@ -23,13 +23,11 @@ namespace Analogy.UserControls
 
         private void ReleaseEntryUC_Load(object sender, EventArgs e)
         {
-
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions()
                 .Build();
             string data = $"# {Entry.Name}{Environment.NewLine}{Environment.NewLine}{Entry.Body}{Environment.NewLine}{Environment.NewLine}Created: {Entry.CreatedAt.DateTime}";
-            string html = Markdown.ToHtml(data , pipeline);
+            string html = Markdown.ToHtml(data, pipeline);
             richEditControl1.HtmlText = html;
-
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using Analogy.Common.Interfaces;
+﻿using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Analogy.CommonControls.Forms
 {
@@ -49,7 +49,6 @@ namespace Analogy.CommonControls.Forms
         {
             if (!string.IsNullOrEmpty(memoNoteKey.Text))
             {
-
                 Message.AddOrReplaceAdditionalProperty(memoNoteKey.Text, memoText.Text);
             }
         }

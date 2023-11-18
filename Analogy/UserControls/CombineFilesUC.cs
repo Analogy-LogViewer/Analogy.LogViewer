@@ -1,6 +1,6 @@
-﻿using System.Windows.Forms;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
@@ -12,8 +12,6 @@ namespace Analogy.UserControls
             InitializeComponent();
         }
 
-
-
         private async void sBtnCombined_Click(object sender, EventArgs e)
         {
             var files = _folderAndFileSystemUc1.GetSelectedFileNames();
@@ -24,7 +22,6 @@ namespace Analogy.UserControls
 
         private async void sBtnSave_Click(object sender, EventArgs e)
         {
-
             if (offlineAnalogy.CanSaveToLogFile)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -37,13 +34,10 @@ namespace Analogy.UserControls
             }
         }
 
-
         public void SetDataSource(IAnalogyOfflineDataProvider analogyOfflineDataProvider)
         {
             offlineAnalogy = analogyOfflineDataProvider;
             this._folderAndFileSystemUc1.DataProvider = offlineAnalogy;
         }
-
-
     }
 }

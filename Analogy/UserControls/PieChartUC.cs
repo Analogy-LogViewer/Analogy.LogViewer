@@ -1,7 +1,7 @@
-﻿using DevExpress.XtraCharts;
+﻿using Analogy.DataTypes;
+using DevExpress.XtraCharts;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Analogy.DataTypes;
 
 namespace Analogy.UserControls
 {
@@ -18,7 +18,6 @@ namespace Analogy.UserControls
         {
         }
 
-
         public void SetDataSources(LogAnalyzerLogLevel statistics)
         {
             if (pieChart != null)
@@ -32,31 +31,34 @@ namespace Analogy.UserControls
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = statistics.Name });
             pieChart.Series.Clear();
-            // Create a pie series. 
+
+            // Create a pie series.
             Series series1 = new Series(statistics.Name, ViewType.Pie3D);
-            // Bind the series to data. 
+
+            // Bind the series to data.
             series1.DataSource = statistics.AsListWithoutTotal();
             series1.ArgumentDataMember = nameof(LogAnalyzerSingleDataPoint.Name);
             series1.ValueDataMembers.AddRange(nameof(LogAnalyzerSingleDataPoint.Value));
 
-            // Add the series to the chart. 
+            // Add the series to the chart.
             pieChart.Series.Add(series1);
 
-            // Format the the series labels. 
+            // Format the the series labels.
             series1.Label.TextPattern = "{A}: {VP:p0} ({V})";
 
-            // Format the series legend items. 
+            // Format the series legend items.
             series1.LegendTextPattern = "{A}";
 
-            // Adjust the position of series labels.  
+            // Adjust the position of series labels.
             ((PieSeriesLabel)series1.Label).Position = PieSeriesLabelPosition.TwoColumns;
 
-            // Detect overlapping of series labels. 
+            // Detect overlapping of series labels.
             ((PieSeriesLabel)series1.Label).ResolveOverlappingMode = ResolveOverlappingMode.Default;
 
-            // Access the view-type-specific options of the series. 
+            // Access the view-type-specific options of the series.
             Pie3DSeriesView myView = (Pie3DSeriesView)series1.View;
-            // Specify a data filter to explode points. 
+
+            // Specify a data filter to explode points.
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Value_1,
             //    DataFilterCondition.GreaterThanOrEqual, 9));
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Argument,
@@ -65,9 +67,10 @@ namespace Analogy.UserControls
             myView.ExplodedDistancePercentage = 30;
             myView.ExplodeMode = PieExplodeMode.All;
 
-            // Customize the legend. 
+            // Customize the legend.
             pieChart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            // Add the chart to the form. 
+
+            // Add the chart to the form.
             pieChart.Dock = DockStyle.Fill;
             this.Controls.Add(pieChart);
         }
@@ -82,32 +85,34 @@ namespace Analogy.UserControls
             pieChart.Titles.Clear();
             pieChart.Titles.Add(new ChartTitle() { Text = name });
             pieChart.Series.Clear();
-            // Create a pie series. 
+
+            // Create a pie series.
             Series series1 = new Series(name, ViewType.Pie3D);
 
-            // Bind the series to data. 
+            // Bind the series to data.
             series1.DataSource = statistics;
             series1.ArgumentDataMember = nameof(LogAnalyzerSingleDataPoint.Name);
             series1.ValueDataMembers.AddRange(nameof(LogAnalyzerSingleDataPoint.Value));
 
-            // Add the series to the chart. 
+            // Add the series to the chart.
             pieChart.Series.Add(series1);
 
-            // Format the the series labels. 
+            // Format the the series labels.
             series1.Label.TextPattern = "{A}: {VP:p0} ({V})";
 
-            // Format the series legend items. 
+            // Format the series legend items.
             series1.LegendTextPattern = "{A}";
 
-            // Adjust the position of series labels.  
+            // Adjust the position of series labels.
             ((PieSeriesLabel)series1.Label).Position = PieSeriesLabelPosition.TwoColumns;
 
-            // Detect overlapping of series labels. 
+            // Detect overlapping of series labels.
             ((PieSeriesLabel)series1.Label).ResolveOverlappingMode = ResolveOverlappingMode.Default;
 
-            // Access the view-type-specific options of the series. 
+            // Access the view-type-specific options of the series.
             Pie3DSeriesView myView = (Pie3DSeriesView)series1.View;
-            // Specify a data filter to explode points. 
+
+            // Specify a data filter to explode points.
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Value_1,
             //    DataFilterCondition.GreaterThanOrEqual, 9));
             //myView.ExplodedPointsFilters.Add(new SeriesPointFilter(SeriesPointKey.Argument,
@@ -116,13 +121,12 @@ namespace Analogy.UserControls
             myView.ExplodedDistancePercentage = 30;
             myView.ExplodeMode = PieExplodeMode.All;
 
-            // Customize the legend. 
+            // Customize the legend.
             pieChart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            // Add the chart to the form. 
+
+            // Add the chart to the form.
             pieChart.Dock = DockStyle.Fill;
             this.Controls.Add(pieChart);
         }
     }
 }
-
-

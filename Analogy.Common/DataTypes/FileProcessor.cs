@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Analogy.Common.Interfaces;
+using Analogy.Common.Managers;
+using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -6,10 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Common.Interfaces;
-using Analogy.Common.Managers;
-using Analogy.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.Common.DataTypes
 {
@@ -46,7 +46,6 @@ namespace Analogy.Common.DataTypes
                 DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(filename));
                 OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
-
             }
 
             if (FileProcessingManager.IsFileCurrentlyBeingProcessed(filename))
@@ -60,13 +59,11 @@ namespace Analogy.Common.DataTypes
                 DataWindow.AppendMessages(cachedMessages, GetFileNameAsDataSource(filename));
                 OnFileReadingFinished?.Invoke(this, filename);
                 return cachedMessages;
-
             }
 
             //otherwise read file:
             try
             {
-
                 if (fileDataProvider.CanOpenFile(filename)) //if can open natively: add to processing and process
                 {
                     FileProcessingManager.AddProcessingFile(filename);
@@ -129,7 +126,6 @@ namespace Analogy.Common.DataTypes
                         }
 
                         return compressedMessages.OrderBy(m => m.Date);
-
                     }
                     else
                     {
@@ -153,7 +149,6 @@ namespace Analogy.Common.DataTypes
                 return new List<AnalogyLogMessage> { error };
             }
         }
-
 
         private string UnzipFilesIntoTempFolder(string zipPath, IAnalogyOfflineDataProvider fileDataProvider)
         {
@@ -196,12 +191,10 @@ namespace Analogy.Common.DataTypes
 
         private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath, IAnalogyOfflineDataProvider fileDataProvider)
         {
-
             using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
                 {
-
                     //build a list of files to be extracted
                     var entries = archive.Entries.Where(entry => !entry.FullName.EndsWith("/") && (fileDataProvider.CanOpenFile(entry.FullName) || IsCompressedArchive(entry.FullName)));
                     foreach (ZipArchiveEntry entry in entries)
@@ -209,7 +202,10 @@ namespace Analogy.Common.DataTypes
                         string fullTempName = Path.Combine(extractPath, entry.FullName);
                         string directoryName = Path.GetDirectoryName(fullTempName) ?? string.Empty;
                         if (!Directory.Exists(directoryName))
+                        {
                             Directory.CreateDirectory(directoryName);
+                        }
+
                         entry.ExtractToFile(fullTempName);
                     }
 
@@ -218,7 +214,6 @@ namespace Analogy.Common.DataTypes
                         Logger.LogError(nameof(UnzipFilesIntoTempFolder),
                             "Zip file does not contain any supported files");
                     }
-
                 }
             }
         }
@@ -232,6 +227,5 @@ namespace Analogy.Common.DataTypes
             return filename.EndsWith(".gz", StringComparison.InvariantCultureIgnoreCase) ||
                    filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
         }
-
     }
 }

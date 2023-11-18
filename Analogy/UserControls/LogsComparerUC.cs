@@ -1,13 +1,13 @@
-﻿using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Tools;
 using Microsoft.Extensions.Logging;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Analogy.UserControls
 {
@@ -29,12 +29,10 @@ namespace Analogy.UserControls
             rtboxRight.Text = "";
             lblFileLeft.Text = string.Empty;
             lblFileRight.Text = string.Empty;
-            ;
             if (File.Exists(pathLeft) && (pathLeft.EndsWith("txt") || pathLeft.EndsWith("cfg") || pathLeft.EndsWith("xml")))
             {
                 lblFileLeft.Text = pathLeft;
                 rtboxLeft.LoadFile(pathLeft);
-
             }
             if (File.Exists(pathRight) && (pathRight.EndsWith("txt") || pathRight.EndsWith("cfg") || pathRight.EndsWith("xml")))
             {
@@ -78,10 +76,8 @@ namespace Analogy.UserControls
             lblFileLeft.Text = LeftFile.FileName;
             rtboxLeft.Text = LeftFile.ToText;
 
-
             lblFileRight.Text = RightFile.FileName;
             rtboxRight.Text = RightFile.ToText;
-
 
             int leftCount = rtboxLeft.Lines.Count();
             int rightCount = rtboxRight.Lines.Count();

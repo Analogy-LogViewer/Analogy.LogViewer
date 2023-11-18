@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.DataTypes
 {
@@ -11,15 +11,12 @@ namespace Analogy.CommonControls.DataTypes
         private List<IAnalogyLogMessage> Messages => MessagesSource();
         private List<string> Sources => Messages.Select(m => m.Source).Distinct().ToList();
         private List<string> Modules => Messages.Select(m => m.Module).Distinct().ToList();
-        public List<string> Texts { get; set; }= new List<string>();
+        public List<string> Texts { get; set; } = new List<string>();
         public LogStatistics(List<IAnalogyLogMessage> messages)
         {
             MessagesSource = () => messages;
         }
-        //public LogStatistics(Func<List<AnalogyLogMessage>> messagesFunc)
-        //{
-        //    MessagesSource = messagesFunc;
-        //}
+
         public LogAnalyzerLogLevel CalculateGlobalStatistics()
         {
             return new LogAnalyzerLogLevel("Global", Messages.Count, CountMessages(Messages, AnalogyLogLevel.Error),
@@ -32,10 +29,9 @@ namespace Analogy.CommonControls.DataTypes
         {
             var total = Messages.Count;
             List<LogAnalyzerSingleDataPoint> items = new List<LogAnalyzerSingleDataPoint>();
-            //items.Add(new Statistics("Total messages", total));
             foreach (string text in Texts)
             {
-                items.Add(new LogAnalyzerSingleDataPoint(text, Messages.Count(m => Contains(m.Text,text, StringComparison.InvariantCultureIgnoreCase))));
+                items.Add(new LogAnalyzerSingleDataPoint(text, Messages.Count(m => Contains(m.Text, text, StringComparison.InvariantCultureIgnoreCase))));
             }
 
             return items;
@@ -48,9 +44,7 @@ namespace Analogy.CommonControls.DataTypes
             foreach (var module in Modules.Where(m => m != null))
             {
                 yield return CalculateSingleStatistics(module);
-
             }
-
         }
 
         public LogAnalyzerLogLevel CalculateSingleStatistics(string module)
@@ -62,7 +56,6 @@ namespace Analogy.CommonControls.DataTypes
                 CountModuleMessages(module, AnalogyLogLevel.Information),
                 CountModuleMessages(module, AnalogyLogLevel.Debug),
                 CountModuleMessages(module, AnalogyLogLevel.Verbose), CountMessages(Messages, AnalogyLogLevel.Trace));
-
         }
 
         public IEnumerable<LogAnalyzerLogLevel> CalculateSourcesStatistics()
@@ -78,12 +71,12 @@ namespace Analogy.CommonControls.DataTypes
                     CountSourceMessages(source, AnalogyLogLevel.Verbose),
                     CountMessages(Messages, AnalogyLogLevel.Trace));
             }
-
         }
 
         private int CountMessages(List<IAnalogyLogMessage> messages, AnalogyLogLevel level) => messages.Count(m => m.Level == level);
         private int CountModuleMessages(string module, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && module.Equals(m.Module));
         private int CountSourceMessages(string source, AnalogyLogLevel level) => Messages.Count(m => m.Level == level && source.Equals(m.Source));
+
         /// <summary>
         /// Case insensitive contains(string)
         /// </summary>

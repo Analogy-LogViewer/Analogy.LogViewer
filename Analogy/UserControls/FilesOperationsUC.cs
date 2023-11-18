@@ -1,14 +1,14 @@
-﻿using Analogy.Interfaces;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Managers;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Managers;
-using Analogy.DataTypes;
-using Analogy.Interfaces.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.UserControls
 {
@@ -82,6 +82,7 @@ namespace Analogy.UserControls
                 richTextBox1.Text += text + Environment.NewLine;
                 richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 richTextBox1.ScrollToCaret();
+
                 //}
             });
         }
@@ -127,7 +128,6 @@ namespace Analogy.UserControls
             }
         }
 
-
         public async Task ProcessFilesAndCombine(IAnalogyOfflineDataProvider dataProvider)
         {
             DataProvider = dataProvider;
@@ -138,7 +138,6 @@ namespace Analogy.UserControls
             {
                 if (Manager.AlreadyProcessed(Path.GetFileName(filename)))
                 {
-
                     richTextBox1.Text += Environment.NewLine +
                                          $"File {filename} was already processed. getting data from cache";
                     continue;
@@ -157,8 +156,6 @@ namespace Analogy.UserControls
                     break;
                 }
             }
-
-
         }
 
         public void AppendMessage(IAnalogyLogMessage message, string dataSource)
@@ -171,7 +168,6 @@ namespace Analogy.UserControls
 
         public void AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
-
             lock (lockObject)
             {
                 Messages.AddRange(messages.Select(m => new Tuple<string, IAnalogyLogMessage>(dataSource, m)));
@@ -210,7 +206,3 @@ namespace Analogy.UserControls
         }
     }
 }
-
-
-
-

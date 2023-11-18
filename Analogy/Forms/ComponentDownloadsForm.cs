@@ -1,12 +1,12 @@
-﻿using Analogy.DataTypes;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
 using Analogy.Managers;
 using Analogy.UserControls;
 using DevExpress.XtraEditors;
 using System.IO;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Interfaces;
 
 namespace Analogy.Forms
 {
@@ -25,14 +25,15 @@ namespace Analogy.Forms
         private void ComponentDownloadsForm_Load(object sender, EventArgs e)
         {
             Icon = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().GetIcon();
+
             // UserControl first = null;
             foreach (FactoryContainer factory in FactoriesManager.Factories)
             {
                 ComponentDownloadInformationUC uc = new ComponentDownloadInformationUC(factory, UpdateManager);
                 xtraTabPage1.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
-                //  first ??= uc;
 
+                //  first ??= uc;
             }
 
             var assemblies = FactoriesManager.Factories.Select(f => Path.GetFileName(f.AssemblyFullPath)).ToList();
@@ -46,7 +47,6 @@ namespace Analogy.Forms
                 uc.Enabled = dp.Enabled;
                 xtraTabPage2.Controls.Add(uc);
                 uc.Dock = DockStyle.Top;
-
             }
         }
     }

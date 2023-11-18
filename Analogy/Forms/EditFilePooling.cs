@@ -1,6 +1,6 @@
-﻿using System.IO;
-using Analogy.DataTypes;
+﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using System.IO;
 
 namespace Analogy.Forms
 {
@@ -13,7 +13,6 @@ namespace Analogy.Forms
             Dir = Path.GetDirectoryName(fileName) ?? string.Empty;
             txtFilename.Text = Path.GetFileName(fileName);
         }
-        
 
         public string Dir { get; set; }
 

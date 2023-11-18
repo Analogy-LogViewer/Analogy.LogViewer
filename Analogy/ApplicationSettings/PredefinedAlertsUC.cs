@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.DataTypes;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.DataTypes;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class PredefinedAlertsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IUserSettingsManager Settings { get; } 
+        private IUserSettingsManager Settings { get; }
         public PredefinedAlertsUC(IUserSettingsManager settings)
         {
             this.Settings = settings;
@@ -50,7 +50,6 @@ namespace Analogy.ApplicationSettings
         private void LoadSettings()
         {
             lboxAlerts.DataSource = Settings.PreDefinedQueries.Alerts;
-
         }
     }
 }

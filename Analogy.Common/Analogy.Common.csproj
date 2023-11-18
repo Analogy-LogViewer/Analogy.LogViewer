@@ -1,36 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net48;net471;net7.0-windows;net6.0-windows</TargetFrameworks>
-		<Nullable>enable</Nullable>
-		<UseWindowsForms>true</UseWindowsForms>
+		<TargetFrameworks>net48;net471;net8.0-windows;net7.0-windows;net6.0-windows</TargetFrameworks>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<Nullable>enable</Nullable>
 		<Authors>Lior Banai</Authors>
-		<RepositoryType>git</RepositoryType>
 		<Version>1.0.0.0</Version>
-		<Copyright>Lior Banai © 2019-2023</Copyright>
+		<Copyright>Lior Banai © 2019-2024</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<AssemblyName>Analogy.Common</AssemblyName>
 		<RootNamespace>Analogy.Common</RootNamespace>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 		<Platforms>AnyCPU;x86;x64</Platforms>
-		<Nullable>enable</Nullable>
-		<LangVersion>latest</LangVersion>
+		<GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
-		<PackageReference Include="PolySharp" Version="1.13.2">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
 		<Reference Include="System.ComponentModel.DataAnnotations" />
@@ -45,17 +32,13 @@
 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="5.0.3" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="5.0.3" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="5.0.3" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="6.0.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="6.0.0.1" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Controls;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Utils;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Controls;
-using DevExpress.XtraEditors;
 
 namespace Analogy.UserControls
 {
@@ -40,7 +40,6 @@ namespace Analogy.UserControls
                 comboBoxEdit1.EditValue = times.First();
             }
             comboBoxEdit1.EditValueChanged += LookUpEdit1_EditValueChanged;
-
         }
 
         private void sbtnOK_Click(object sender, EventArgs e)
@@ -48,7 +47,5 @@ namespace Analogy.UserControls
             PopupControlContainer control = this.Parent as PopupControlContainer;
             control?.HidePopup();
         }
-
-      
     }
 }

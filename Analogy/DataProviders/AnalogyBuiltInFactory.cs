@@ -1,4 +1,6 @@
-﻿using Analogy.Forms;
+﻿using Analogy.CommonControls.Tools;
+using Analogy.DataTypes;
+using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.LogLoaders;
@@ -6,13 +8,11 @@ using Analogy.LogViewer.Template;
 using Analogy.LogViewer.Template.IAnalogy;
 using Analogy.Properties;
 using Analogy.Tools;
+using Analogy.UserControls;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
-using Analogy.CommonControls.Tools;
-using Analogy.DataTypes;
-using Analogy.UserControls;
 
 namespace Analogy.DataProviders
 {
@@ -29,7 +29,6 @@ namespace Analogy.DataProviders
 
         public AnalogyBuiltInFactory()
         {
-            
         }
     }
 
@@ -88,7 +87,7 @@ namespace Analogy.DataProviders
                 MachineName = Environment.MachineName,
                 Class = AnalogyLogClass.General,
                 User = Environment.UserName,
-                Date = DateTime.Now
+                Date = DateTime.Now,
             };
             messagesHandler.AppendMessage(m, Environment.MachineName);
             return new List<AnalogyLogMessage>() { m };
@@ -116,7 +115,6 @@ namespace Analogy.DataProviders
                 fileName.EndsWith(".ajson", StringComparison.InvariantCultureIgnoreCase) ||
                 fileName.EndsWith(".abin", StringComparison.InvariantCultureIgnoreCase);
 
-
         protected override List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
             List<FileInfo> files = dirInfo.GetFiles("*.axml")
@@ -142,8 +140,6 @@ namespace Analogy.DataProviders
 
             return files;
         }
-
-
     }
 
     public class AnalogyCustomActionFactory : CustomActionsFactory
@@ -208,4 +204,3 @@ namespace Analogy.DataProviders
     {
     }
 }
-

@@ -1,10 +1,10 @@
 ﻿using Analogy.Common.Interfaces;
-using System.Windows.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms.Welcome;
 using Analogy.Interfaces;
 using Analogy.Managers;
 using Microsoft.Extensions.Logging;
+using System.Windows.Forms;
 
 namespace Analogy.Forms
 {
@@ -24,7 +24,6 @@ namespace Analogy.Forms
             InitializeComponent();
             EnableAcrylicAccent = false;
         }
-
 
         private void AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType type)
         {
@@ -130,7 +129,6 @@ namespace Analogy.Forms
         private void aceFeedback_Click(object sender, EventArgs e)
         {
             AddOrBringToFrontUserControl(ApplicationWelcomeSelectionType.Feedback);
-
         }
     }
 }

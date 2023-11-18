@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using System.Windows.Forms;
-using Analogy.CommonControls.DataTypes;
+﻿using Analogy.CommonControls.DataTypes;
 using DevExpress.XtraEditors.Controls;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -31,8 +31,6 @@ namespace Analogy.CommonControls.UserControls
             FreeTextPie.Dock = DockStyle.Fill;
         }
 
-
-
         private void LogStatisticsUC_Load(object sender, System.EventArgs e)
         {
             LoadStatistics();
@@ -60,7 +58,6 @@ namespace Analogy.CommonControls.UserControls
             }
             var modules = Statistics.CalculateModulesStatistics().OrderByDescending(s => s.Messages).ToList();
 
-
             ModulePie.SetDataSources(modules.First());
 
             //dgvModules.SelectionChanged -= dgvModules_SelectionChanged;
@@ -75,7 +72,6 @@ namespace Analogy.CommonControls.UserControls
             }
             var sources = Statistics.CalculateSourcesStatistics().OrderByDescending(s => s.Messages).ToList();
 
-
             if (!sources.Any())
             {
                 return;
@@ -84,9 +80,9 @@ namespace Analogy.CommonControls.UserControls
 
             //            dgvSource.SelectionChanged -= dgvSource_SelectionChanged;
             GridControlSource.DataSource = sources;
+
             //  dgvSource.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             //dgvSource.SelectionChanged += dgvSource_SelectionChanged;
-
         }
 
         public void RefreshStatistics(LogStatistics statistics)
@@ -107,8 +103,6 @@ namespace Analogy.CommonControls.UserControls
             }
             var items = Statistics.CalculateGlobalStatistics().AsList();
             gridControlGlobal.DataSource = items;
-
-
         }
 
         private void sBtnAdd_Click(object sender, System.EventArgs e)
@@ -121,7 +115,6 @@ namespace Analogy.CommonControls.UserControls
             {
                 Statistics.AddText(textEdit1.Text);
                 chklistItems.Items.Add(textEdit1.Text, true);
-
             }
 
             PopulateFreeText();
@@ -167,13 +160,10 @@ namespace Analogy.CommonControls.UserControls
 
         private void gridViewGlobal_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-
         }
 
         private void gridViewFreeText_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-
         }
     }
 }
-

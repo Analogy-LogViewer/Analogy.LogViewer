@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.Interfaces;
 
 namespace Analogy.Common
 {
@@ -20,10 +20,9 @@ namespace Analogy.Common
         public static string AnalogyMessageColumn { get; } = Guid.NewGuid().ToString();
         public static List<string> LogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>().Select(e => e.ToString()).ToList();
 
-
         public static void RepositionIfNeeded(Form form, Guid id, IUserSettingsManager settings)
         {
-            if (settings.TryGetWindowPosition(id,out var position))
+            if (settings.TryGetWindowPosition(id, out var position))
             {
                 if (position!.RememberLastPosition || position.WindowState != FormWindowState.Minimized)
                 {

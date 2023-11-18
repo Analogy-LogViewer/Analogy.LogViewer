@@ -1,20 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.DataTypes;
+using Analogy.Interfaces;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.DataTypes;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.DataTypes;
-using Analogy.Interfaces;
 
 namespace Analogy.ApplicationSettings
 {
     public partial class FilteringSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-        private IAnalogyUserSettings Settings { get; } 
+        private IAnalogyUserSettings Settings { get; }
         public FilteringSettingsUC(IAnalogyUserSettings settings)
         {
             this.Settings = settings;
@@ -71,8 +71,6 @@ namespace Analogy.ApplicationSettings
             {
                 Settings.ShowProcessedCounter = tsShowProgressCounter.IsOn;
             };
-
-
         }
 
         private void LoadSettings()

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
 
 namespace Analogy.Common.Interfaces
 {
@@ -28,7 +28,7 @@ namespace Analogy.Common.Interfaces
 
         IEnumerable<IAnalogyOfflineDataProvider> GetOfflineDataSources(Guid factoryId);
 
-        IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly assembly)> GetRealTimeDataSourcesNamesAndIds();
+        IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)> GetRealTimeDataSourcesNamesAndIds();
         Assembly GetAssemblyOfFactory(IAnalogyFactory factory);
         FactoryContainer GetBuiltInFactoryContainer(Guid id);
         bool IsBuiltInFactory(IAnalogyFactory factory);
@@ -40,7 +40,7 @@ namespace Analogy.Common.Interfaces
         IEnumerable<IAnalogyExtension> GetExtensions(IAnalogyDataProvider dataProvider);
         IEnumerable<IAnalogyExtension> GetAllExtensions();
         FactoryContainer FactoryContainer(Guid componentId);
-        IEnumerable<(IAnalogyExtension extension, Assembly assembly)> GetAllExtensionsWithAssemblies();
+        IEnumerable<(IAnalogyExtension Extension, Assembly Assembly)> GetAllExtensionsWithAssemblies();
         void ShutDownAllFactories();
         Task InitializeIfNeeded(IAnalogyDataProvider dataProvider);
         IEnumerable<IAnalogyOfflineDataProvider> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders);

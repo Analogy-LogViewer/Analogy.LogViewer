@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Analogy.Common.DataTypes;
+using Analogy.CommonUtilities.ExtensionMethods;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Analogy.Common.DataTypes;
-using Analogy.CommonUtilities.ExtensionMethods;
-using Analogy.Interfaces;
 
 namespace Analogy.Common.DataTypes
 {
@@ -40,8 +40,6 @@ namespace Analogy.Common.DataTypes
             {
                 switch (c)
                 {
-
-
                     case ']':
                     case '[':
                     case '%':
@@ -80,7 +78,6 @@ namespace Analogy.Common.DataTypes
                 Modules = includeItems.Select(val => val.Trim()).ToArray();
                 ExcludedModules = excludeItems.Select(val => val.Trim()).ToArray();
             }
-
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void SetSources(string sources)
@@ -105,7 +102,6 @@ namespace Analogy.Common.DataTypes
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string GetSqlExpression(bool orLogLevel)
         {
-
             StringBuilder sqlString = new();
             List<string> includeTexts = new() { EscapeLikeValue(TextInclude.Trim()) };
 
@@ -251,7 +247,7 @@ namespace Analogy.Common.DataTypes
             {
                 var allValidCombinations =
                     Columns.Select(c => GenerateSingleCombinationPerColumn(c.Field, c.Numerical).ToList());
-                var entries = allValidCombinations.Where(c=>c.Any()).Select(c =>
+                var entries = allValidCombinations.Where(c => c.Any()).Select(c =>
                     string.Join(orOperationInInclude ? " Or " : " and ", c));
                 var combined = string.Join(" Or ", entries);
                 return combined;
@@ -324,7 +320,6 @@ namespace Analogy.Common.DataTypes
             alertFilterCriteria.TextInclude = preDefineAlert.IncludeText ?? string.Empty;
             alertFilterCriteria.TextExclude = preDefineAlert.ExcludeText ?? string.Empty;
             return alertFilterCriteria.MatchAlert(analogyLogMessage);
-
         }
 
         private bool MatchAlert(AnalogyLogMessage message)
@@ -386,6 +381,5 @@ namespace Analogy.Common.DataTypes
 
             return match;
         }
-
     }
 }

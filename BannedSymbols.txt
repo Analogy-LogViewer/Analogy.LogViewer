@@ -1,0 +1,9 @@
+﻿#https://github.com/dotnet/csharplang/blob/main/spec/documentation-comments.md#id-string-format
+
+M:System.String.ToLower;Use ToLowerInvariant instead
+M:System.String.ToUpper;Use ToUpperInvariant instead
+
+F:System.StringComparison.CurrentCulture;Consider using Ordinal
+F:System.StringComparison.CurrentCultureIgnoreCase;Consider using OrdinalIgnoreCase
+F:System.StringComparison.InvariantCurrent;Consider using Ordinal
+F:System.StringComparison.InvariantCurrentIgnoreCase;Consider using OrdinalIgnoreCase

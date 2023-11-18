@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DevExpress.Pdf.Native.BouncyCastle.Utilities;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Pdf.Native.BouncyCastle.Utilities;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
 
 namespace Analogy.CommonControls.UserControls
 {
@@ -21,7 +21,6 @@ namespace Analogy.CommonControls.UserControls
         {
             InitializeComponent();
         }
-
 
         private void LookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
@@ -39,7 +38,6 @@ namespace Analogy.CommonControls.UserControls
                 comboBoxEdit1.EditValue = names.First();
             }
             comboBoxEdit1.EditValueChanged += LookUpEdit1_EditValueChanged;
-
         }
 
         private void sbtnOK_Click(object sender, EventArgs e)

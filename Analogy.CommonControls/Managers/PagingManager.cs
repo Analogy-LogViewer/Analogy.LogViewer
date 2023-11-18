@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
+using Analogy.CommonControls.Interfaces;
+using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -6,10 +10,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
-using Analogy.CommonControls.Interfaces;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.Managers
 {
@@ -59,7 +59,6 @@ namespace Analogy.CommonControls.Managers
                 var count = pages.Count;
                 lockSlim.ExitReadLock();
                 return count;
-
             }
         }
 
@@ -73,6 +72,7 @@ namespace Analogy.CommonControls.Managers
             pages = new List<DataTable>();
 
             currentTable = Utils.DataTableConstructor();
+
             //foreach (DataColumn column in currentTable.Columns)
             //{
             //    CurrentColumns.Add(column.ColumnName);
@@ -82,7 +82,6 @@ namespace Analogy.CommonControls.Managers
             allMessages = new List<IAnalogyLogMessage>();
         }
 
-
         public IEnumerable<List<T>> SplitList<T>(List<T> locations)
         {
             for (int i = 0; i < locations.Count; i += pageSize)
@@ -90,7 +89,6 @@ namespace Analogy.CommonControls.Managers
                 yield return locations.GetRange(i, Math.Min(pageSize, locations.Count - i));
             }
         }
-
 
         public void ClearLogs()
         {
@@ -144,7 +142,6 @@ namespace Analogy.CommonControls.Managers
                 DataRow dtr = Utils.CreateRow(table, message, dataSource, Settings.TimeOffsetType, Settings.TimeOffset);
                 table.Rows.Add(dtr);
                 return dtr;
-
             }
             finally
             {
@@ -154,10 +151,9 @@ namespace Analogy.CommonControls.Managers
 
         public List<(DataRow, IAnalogyLogMessage)> AppendMessages(List<IAnalogyLogMessage> messages, string dataSource)
         {
-
             var table = pages.Last();
             var countInsideTable = table.Rows.Count;
-            List<(DataRow row, IAnalogyLogMessage message)> rows = new List<(DataRow row, IAnalogyLogMessage message)>(messages.Count);
+            List<(DataRow Row, IAnalogyLogMessage Message)> rows = new List<(DataRow Row, IAnalogyLogMessage Message)>(messages.Count);
             foreach (var message in messages)
             {
                 if (message.Level == AnalogyLogLevel.None)
@@ -202,7 +198,6 @@ namespace Analogy.CommonControls.Managers
                 {
                     lockSlim.ExitWriteLock();
                 }
-
             }
             return rows;
         }
@@ -213,7 +208,6 @@ namespace Analogy.CommonControls.Managers
             {
                 foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
-
                     if (!table.Columns.Contains(info.Key))
                     {
                         if (!owner.InvokeRequired)
@@ -232,9 +226,6 @@ namespace Analogy.CommonControls.Managers
                             {
                                 columnsLockSlim.ExitWriteLock();
                             }
-
-
-
                         }
                         else
                         {
@@ -242,7 +233,6 @@ namespace Analogy.CommonControls.Managers
                             {
                                 try
                                 {
-
                                     columnsLockSlim.EnterWriteLock();
                                     if (!table.Columns.Contains(info.Key))
                                     {
@@ -252,7 +242,6 @@ namespace Analogy.CommonControls.Managers
                                             table.Columns.Add(info.Key);
                                             columnAdderSync.Set();
                                         }
-
                                     }
                                 }
                                 finally
@@ -280,7 +269,6 @@ namespace Analogy.CommonControls.Managers
             }
             lockSlim.ExitReadLock();
             return new AnalogyPageInformation(currentTable, CurrentPageNumber, currentPageStartRowIndex);
-
         }
 
         public AnalogyPageInformation PrevPage()
@@ -294,7 +282,6 @@ namespace Analogy.CommonControls.Managers
             }
             lockSlim.ExitReadLock();
             return new AnalogyPageInformation(currentTable, CurrentPageNumber, currentPageStartRowIndex);
-
         }
 
         public DataTable FirstPage()
@@ -304,7 +291,6 @@ namespace Analogy.CommonControls.Managers
             CurrentPageNumber = 1;
             lockSlim.ExitReadLock();
             return currentTable;
-
         }
         public DataTable LastPage()
         {
@@ -313,7 +299,6 @@ namespace Analogy.CommonControls.Managers
             CurrentPageNumber = pages.Count;
             lockSlim.ExitReadLock();
             return currentTable;
-
         }
 
         public List<IAnalogyLogMessage> GetAllMessages()
@@ -344,7 +329,6 @@ namespace Analogy.CommonControls.Managers
             var current = currentTable == currentView;
             lockSlim.ExitReadLock();
             return current;
-
         }
 
         public void IncrementTotalMissedMessages()

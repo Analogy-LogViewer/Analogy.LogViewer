@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Analogy.Interfaces;
+using System;
 using System.Collections.Generic;
-using Analogy.Interfaces;
 
 namespace Analogy.CommonControls.DataTypes
 {
@@ -21,7 +21,6 @@ namespace Analogy.CommonControls.DataTypes
         public SelectionEventArgs(List<string> files)
         {
             SelectedFileNames = files;
-
         }
     }
 

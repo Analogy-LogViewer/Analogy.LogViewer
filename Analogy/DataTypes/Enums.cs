@@ -7,7 +7,7 @@ namespace Analogy.DataTypes
     public enum MainFormType
     {
         RibbonForm, //classic pre V5
-        FluentForm
+        FluentForm,
     }
 
     public enum ApplicationSettingsSelectionType
@@ -17,7 +17,7 @@ namespace Analogy.DataTypes
         MessagesFilteringSettings,
         MessagesLayoutSettings,
         ColorSettings,
-        ColorHighlighting, 
+        ColorHighlighting,
         PredefinedQueriesSettings,
         ShortcutsSettings,
         ExtensionsSettings,
@@ -26,9 +26,9 @@ namespace Analogy.DataTypes
         DataProvidersSettings,
         RealTimeDataProvidersSettings,
         FilesAssociationSettings,
-        ExternalLocationsSettings, 
+        ExternalLocationsSettings,
         DonationsSettings,
-        AdvancedModeSettings
+        AdvancedModeSettings,
     }
     public enum ApplicationWelcomeSelectionType
     {
@@ -39,6 +39,6 @@ namespace Analogy.DataTypes
         GlobalTools,
         WhatIsNew,
         ShareAndSupport,
-        Feedback
+        Feedback,
     }
 }

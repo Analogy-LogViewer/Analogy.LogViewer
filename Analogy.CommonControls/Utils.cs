@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Analogy.Common.DataTypes;
+﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
@@ -14,6 +7,13 @@ using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Analogy.CommonControls
@@ -26,33 +26,39 @@ namespace Analogy.CommonControls
             public static readonly int SizeOf = Marshal.SizeOf(typeof(LASTINPUTINFO));
 
             [MarshalAs(UnmanagedType.U4)]
-            public UInt32 cbSize;
+            public uint cbSize;
             [MarshalAs(UnmanagedType.U4)]
-            public UInt32 dwTime;
+            public uint dwTime;
         }
         [DllImport("user32.dll")]
-        static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
         internal const string DateFilterNone = "All";
+
         /// <summary>
-        /// From Today 
+        /// From Today
         /// </summary>
         internal const string DateFilterToday = "Today";
+
         /// <summary>
-        /// From last 2 days 
+        /// From last 2 days
         /// </summary>
         internal const string DateFilterLast2Days = "Last 2 days";
+
         /// <summary>
         /// From last 3 days
         /// </summary>
         internal const string DateFilterLast3Days = "Last 3 days";
+
         /// <summary>
         /// From last week
         /// </summary>
         internal const string DateFilterLastWeek = "Last one week";
+
         /// <summary>
         /// From last 2 weeks
         /// </summary>
         internal const string DateFilterLast2Weeks = "Last 2 weeks";
+
         /// <summary>
         /// From last month
         /// </summary>
@@ -94,7 +100,6 @@ namespace Analogy.CommonControls
                         dtr[info.Key] = info.Value;
                     }
                 }
-
             }
             return dtr;
         }
@@ -112,7 +117,7 @@ namespace Analogy.CommonControls
                 TimeOffsetType.Predefined => time.Add(customOffset),
                 TimeOffsetType.UtcToLocalTime => time.ToLocalTime(),
                 TimeOffsetType.LocalTimeToUtc => time.ToUniversalTime(),
-                _ => time
+                _ => time,
             };
         }
 
@@ -132,7 +137,6 @@ namespace Analogy.CommonControls
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DataTable DataTableConstructor()
         {
-
             DataTable dtb = new DataTable();
             dtb.Columns.Add(new DataColumn("Date", typeof(DateTime)));
             dtb.Columns.Add(new DataColumn("TimeDiff", typeof(string)));
@@ -187,12 +191,13 @@ namespace Analogy.CommonControls
                 case LogLevelSelectionType.Single:
                     chkLstLogLevel.CheckMode = CheckMode.Single;
                     chkLstLogLevel.CheckStyle = CheckStyles.Radio;
-                    CheckedListBoxItem[] radioLevels = {
+                    CheckedListBoxItem[] radioLevels =
+                    {
                         new CheckedListBoxItem("Trace"),
                         new CheckedListBoxItem("Error + Critical"),
                         new CheckedListBoxItem("Warning"),
                         new CheckedListBoxItem("Debug"),
-                        new CheckedListBoxItem("Verbose")
+                        new CheckedListBoxItem("Verbose"),
                     };
                     chkLstLogLevel.Items.AddRange(radioLevels);
                     break;
@@ -210,10 +215,9 @@ namespace Analogy.CommonControls
             chkLstLogLevel.Items.Clear();
             chkLstLogLevel.CheckStyle = CheckStyles.Standard;
             chkLstLogLevel.Items.AddRange(LogLevels.Select(l => new CheckedListBoxItem(l, false)).ToArray());
-
         }
 
-        static long GetLastInputTime()
+        private static long GetLastInputTime()
         {
             uint idleTime = 0;
             LASTINPUTINFO lastInputInfo = new LASTINPUTINFO();
@@ -239,6 +243,7 @@ namespace Analogy.CommonControls
             {
                 return openFilter;
             }
+
             //if (openFilter.Contains("*.gz") || openFilter.Contains("*.zip")) return openFilter;
             //string compressedFilter = "|Compressed archives (*.gz, *.zip)|*.gz;*.zip";
             //return openFilter + compressedFilter;
@@ -255,6 +260,7 @@ namespace Analogy.CommonControls
 
             return openFilter;
         }
+
         /// <summary>
         /// Case insensitive contains(string)
         /// </summary>
@@ -269,10 +275,12 @@ namespace Analogy.CommonControls
         public static SuperToolTip GetSuperTip(string title, string content)
         {
             SuperToolTip toolTip = new SuperToolTip();
+
             // Create an object to initialize the SuperToolTip.
             SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
             args.Title.Text = title;
             args.Contents.Text = content;
+
             // args.Contents.Image = realTime.ToolTip.Image;
             toolTip.Setup(args);
             return toolTip;
@@ -298,7 +306,7 @@ namespace Analogy.CommonControls
                 }
                 foreach (var innerLines in line.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    sb.AppendFormat("{0}{1}", innerLines.Replace("\n",""), Environment.NewLine);
+                    sb.AppendFormat("{0}{1}", innerLines.Replace("\n", ""), Environment.NewLine);
                 }
             }
             return sb.ToString();

@@ -9,7 +9,6 @@ namespace Analogy.ApplicationSettings
 {
     public partial class ShortcutSettingsUC : DevExpress.XtraEditors.XtraUserControl
     {
-
         public ShortcutSettingsUC()
         {
             InitializeComponent();
@@ -17,7 +16,6 @@ namespace Analogy.ApplicationSettings
 
         private void ShortcutSettingsUC_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

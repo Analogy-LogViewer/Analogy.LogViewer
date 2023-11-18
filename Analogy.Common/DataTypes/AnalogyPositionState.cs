@@ -28,6 +28,5 @@ namespace Analogy.Common.DataTypes
             Location = location;
             Size = size;
         }
-
     }
 }
