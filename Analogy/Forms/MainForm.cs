@@ -304,7 +304,7 @@ namespace Analogy.Forms
 
         private void UpdateUpdateButton()
         {
-            bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager.NewestVersion.ToString();
+            bbtnCheckUpdates.Caption = "Latest Version: " + UpdateManager?.NewestVersion?.ToString();
             if (UpdateManager.NewVersionExist)
             {
                 bbtnCheckUpdates.Appearance.BackColor = Color.GreenYellow;

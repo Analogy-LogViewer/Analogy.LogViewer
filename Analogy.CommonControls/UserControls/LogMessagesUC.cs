@@ -1504,21 +1504,26 @@ namespace Analogy.CommonControls.UserControls
             logGrid.OptionsFind.Behavior = Settings.BuiltInSearchPanelMode == BuiltInSearchPanelMode.Search
                 ? FindPanelBehavior.Search
                 : FindPanelBehavior.Filter;
-            gridColumnDate.SortOrder =
-                Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
-            txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbInclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            gridColumnDate.SortOrder = Settings.DefaultDescendOrder ? ColumnSortOrder.Descending : ColumnSortOrder.Ascending;
+            if (txtbInclude.MaskBox is not null)
+            {
+                txtbInclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtbInclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtbInclude.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
+            }
+
             if (Settings.RememberLastSearches)
             {
                 autoCompleteInclude.AddRange(Settings.LastSearchesInclude.ToArray());
                 autoCompleteExclude.AddRange(Settings.LastSearchesExclude.ToArray());
             }
 
-            txtbInclude.MaskBox.AutoCompleteCustomSource = autoCompleteInclude;
-
-            txtbExclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtbExclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtbExclude.MaskBox.AutoCompleteCustomSource = autoCompleteExclude;
+            if (txtbExclude.MaskBox is not null)
+            {
+                txtbExclude.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtbExclude.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtbExclude.MaskBox.AutoCompleteCustomSource = autoCompleteExclude;
+            }
 
             btswitchRefreshLog.Checked = true;
             LogGrid.BestFitColumns();

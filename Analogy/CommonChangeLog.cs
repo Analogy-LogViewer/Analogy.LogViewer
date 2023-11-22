@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V6.0.0 - NRE under certain themes. Fix #1899", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 11, 22), "6.0.0"),
                 new ("V6.0.0 - Add NET8 support. #1875", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 11, 17), "6.0.0"),
                 new ("V5.1.1 - millisecond time is not showing parsed json record. #1866", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 10, 27), "5.1.1.0"),
                 new ("V5.1.1 - Fix NLog Parser #1862", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 10, 26), "5.1.1.0"),
