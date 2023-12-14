@@ -48,7 +48,7 @@
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="0.7.0" />
 		<PackageReference Include="Analogy.LogViewer.PowerToys" Version="0.17.0" />
 		<PackageReference Include="Grpc.Core" Version="2.46.6" />
-		<PackageReference Include="Markdig" Version="0.33.0" />
+		<PackageReference Include="Markdig" Version="0.34.0" />
 		<PackageReference Include="MessagePack" Version="2.6.100-alpha" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
