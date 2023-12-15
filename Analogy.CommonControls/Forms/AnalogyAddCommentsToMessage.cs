@@ -42,7 +42,7 @@ namespace Analogy.CommonControls.Forms
         private void btnFull_Click(object sender, EventArgs e)
         {
             var details = new FormMessageDetails(Message, new List<IAnalogyLogMessage>() { Message }, "", Settings);
-            details.Show(this);
+            details.Show();
         }
 
         private void btnAddNote_Click(object sender, EventArgs e)

@@ -659,11 +659,11 @@ namespace Analogy.CommonControls.UserControls
                         case AnalogyRowTextType.HTML:
                         case AnalogyRowTextType.Markdown:
                             FormMessageDetails details = new(m, Messages, "", Settings);
-                            details.Show(this);
+                            details.Show();
                             break;
                         case AnalogyRowTextType.JSON:
                             var viewer = new JsonViewerForm(m, Settings);
-                            viewer.Show(this);
+                            viewer.Show();
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
@@ -2567,7 +2567,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
-            details.Show(this);
+            details.Show();
 
             //CreateBookmark();
         }
@@ -2594,7 +2594,7 @@ namespace Analogy.CommonControls.UserControls
                 }
 
                 FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
-                details.Show(this);
+                details.Show();
             }
         }
 
