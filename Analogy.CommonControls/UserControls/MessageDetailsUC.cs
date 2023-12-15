@@ -90,7 +90,7 @@ namespace Analogy.CommonControls.UserControls
             txtbMachineName.Text = Message.MachineName;
             txtID.Text = Message.Id.ToString();
             txtbDataSource.Text = DataSource;
-            txtbDateValue.Text = (Message.Date).ToString();
+            txtbDateValue.Text = Message.Date.ToString(Settings.DateTimePattern);
             txtbLevelValue.Text = Message.Level.ToString();
             txtbProcessModuleName.Text = Message.Module;
             txtbProcessId.Text = Message.ProcessId.ToString();

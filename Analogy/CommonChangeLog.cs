@@ -9,6 +9,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V6.0.0 - [Detailed Message] Time format is not the same as main window #1901", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 12, 15), "6.0.0"),
+                new ("V6.0.0 - DevExpress NET8 support - V23.1.7", AnalogChangeLogType.None, "Lior Banai", new DateTime(2023, 12, 15), "6.0.0"),
                 new ("V6.0.0 - NRE under certain themes. Fix #1899", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 11, 22), "6.0.0"),
                 new ("V6.0.0 - Add NET8 support. #1875", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 11, 17), "6.0.0"),
                 new ("V5.1.1 - millisecond time is not showing parsed json record. #1866", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2023, 10, 27), "5.1.1.0"),
