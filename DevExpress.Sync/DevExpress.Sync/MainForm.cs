@@ -17,9 +17,6 @@ namespace DevExpress.Sync
         {
             InitializeComponent();
         }
-
-
-
         private void btnCopy_Click(object sender, EventArgs e)
         {
             var targetFolder = txtbTarget.Text;
@@ -27,7 +24,6 @@ namespace DevExpress.Sync
             CopyFiles(Path.Combine(targetFolder, ".net core"), sourceFolder, true);
             CopyFiles(Path.Combine(targetFolder, ".net framework"), sourceFolder, false);
             MessageBox.Show("Done", "Done");
-
         }
 
         private void CopyFiles(string targetFolder, string sourceFolder, bool isNet)
@@ -93,8 +89,8 @@ namespace DevExpress.Sync
             foreach (string fullPath in files)
             {
                 var file = Path.GetFileName(fullPath);
-                file = file.Replace("v21.2", "v22.1");
-                var targetFullPath = fullPath.Replace("v21.2", "v22.1");
+                file = file.Replace("v23.1", "v23.2");
+                var targetFullPath = fullPath.Replace("v23.1", "v23.2");
 
                 if (isNet)
                 {

@@ -29,94 +29,86 @@ namespace DevExpress.Sync
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtbSource = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtbTarget = new System.Windows.Forms.TextBox();
-            this.btnCopy = new System.Windows.Forms.Button();
-            this.btnVersionUpgrade = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            txtbSource = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            txtbTarget = new System.Windows.Forms.TextBox();
+            btnCopy = new System.Windows.Forms.Button();
+            btnVersionUpgrade = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // txtbSource
             // 
-            this.txtbSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbSource.Location = new System.Drawing.Point(80, 14);
-            this.txtbSource.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtbSource.Name = "txtbSource";
-            this.txtbSource.Size = new System.Drawing.Size(610, 23);
-            this.txtbSource.TabIndex = 0;
-            this.txtbSource.Text = "C:\\Program Files\\DevExpress 22.1\\Components\\Bin\\";
+            txtbSource.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtbSource.Location = new System.Drawing.Point(91, 19);
+            txtbSource.Name = "txtbSource";
+            txtbSource.Size = new System.Drawing.Size(697, 27);
+            txtbSource.TabIndex = 0;
+            txtbSource.Text = "C:\\Program Files\\DevExpress 23.2\\Components\\Bin\\";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Source:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(10, 21);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(57, 20);
+            label1.TabIndex = 1;
+            label1.Text = "Source:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Target:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(10, 55);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(53, 20);
+            label2.TabIndex = 3;
+            label2.Text = "Target:";
             // 
             // txtbTarget
             // 
-            this.txtbTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbTarget.Location = new System.Drawing.Point(80, 38);
-            this.txtbTarget.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtbTarget.Name = "txtbTarget";
-            this.txtbTarget.Size = new System.Drawing.Size(610, 23);
-            this.txtbTarget.TabIndex = 2;
-            this.txtbTarget.Text = "e:\\files\\Programming\\Analogy.LogViewer\\DevExpress\\";
+            txtbTarget.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtbTarget.Location = new System.Drawing.Point(91, 51);
+            txtbTarget.Name = "txtbTarget";
+            txtbTarget.Size = new System.Drawing.Size(697, 27);
+            txtbTarget.TabIndex = 2;
+            txtbTarget.Text = "e:\\files\\Programming\\Analogy.LogViewer\\DevExpress\\";
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(80, 66);
-            this.btnCopy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(114, 38);
-            this.btnCopy.TabIndex = 4;
-            this.btnCopy.Text = "Copy";
-            this.btnCopy.UseVisualStyleBackColor = true;
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            btnCopy.Location = new System.Drawing.Point(91, 88);
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new System.Drawing.Size(130, 51);
+            btnCopy.TabIndex = 4;
+            btnCopy.Text = "Copy";
+            btnCopy.UseVisualStyleBackColor = true;
+            btnCopy.Click += btnCopy_Click;
             // 
             // btnVersionUpgrade
             // 
-            this.btnVersionUpgrade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVersionUpgrade.Location = new System.Drawing.Point(576, 66);
-            this.btnVersionUpgrade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnVersionUpgrade.Name = "btnVersionUpgrade";
-            this.btnVersionUpgrade.Size = new System.Drawing.Size(114, 38);
-            this.btnVersionUpgrade.TabIndex = 5;
-            this.btnVersionUpgrade.Text = "Version Upgrade";
-            this.btnVersionUpgrade.UseVisualStyleBackColor = true;
-            this.btnVersionUpgrade.Click += new System.EventHandler(this.btnVersionUpgrade_Click);
+            btnVersionUpgrade.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnVersionUpgrade.Location = new System.Drawing.Point(658, 88);
+            btnVersionUpgrade.Name = "btnVersionUpgrade";
+            btnVersionUpgrade.Size = new System.Drawing.Size(130, 51);
+            btnVersionUpgrade.TabIndex = 5;
+            btnVersionUpgrade.Text = "Version Upgrade";
+            btnVersionUpgrade.UseVisualStyleBackColor = true;
+            btnVersionUpgrade.Click += btnVersionUpgrade_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 119);
-            this.Controls.Add(this.btnVersionUpgrade);
-            this.Controls.Add(this.btnCopy);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtbTarget);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtbSource);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "MainForm";
-            this.Text = "DevExpress Syncer";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(800, 159);
+            Controls.Add(btnVersionUpgrade);
+            Controls.Add(btnCopy);
+            Controls.Add(label2);
+            Controls.Add(txtbTarget);
+            Controls.Add(label1);
+            Controls.Add(txtbSource);
+            Name = "MainForm";
+            Text = "DevExpress Syncer";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
