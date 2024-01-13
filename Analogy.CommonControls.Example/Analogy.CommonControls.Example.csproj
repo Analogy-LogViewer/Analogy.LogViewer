@@ -6,6 +6,8 @@
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Platforms>AnyCPU;x86;x64</Platforms>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageId>Analogy.CommonControls.Example</PackageId>
 		<GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
 	</PropertyGroup>
 

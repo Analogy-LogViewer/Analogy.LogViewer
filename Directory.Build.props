@@ -1,5 +1,7 @@
 <Project>
 	<PropertyGroup>
+		<VersionPrefix>6.0.0.0</VersionPrefix>
+		<VersionSuffix>0</VersionSuffix>
 		<UseWindowsForms>true</UseWindowsForms>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
@@ -35,7 +37,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Meziantou.Analyzer" Version="2.0.135">
+		<PackageReference Include="Meziantou.Analyzer" Version="2.0.136">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
