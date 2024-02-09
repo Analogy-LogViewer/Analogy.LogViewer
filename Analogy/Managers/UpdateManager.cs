@@ -149,19 +149,26 @@ namespace Analogy.Managers
             return tagName == null ? null : new Version(tagName.Replace("V", "").Replace("v", ""));
         }
 
-        public async Task<(bool NewData, Release Release)> CheckVersion(bool forceUpdate)
+        public async Task<(bool NewData, Release? Release)> CheckVersion(bool forceUpdate)
         {
             if (!forceUpdate && NextUpdate > DateTime.Now && Settings.LastVersionChecked != null)
             {
                 return (false, Settings.LastVersionChecked);
             }
 
-            IReadOnlyList<Release>? releases = await Utils.GetReleases();
+            IReadOnlyList<Release>? releases = (await Utils.GetReleases()).ToList();
             LastUpdate = DateTime.Now;
             CheckedThisTun = true;
-            var release = releases.OrderByDescending(r => r.PublishedAt).First();
-            Settings.LastVersionChecked = release;
-            return (true, release);
+            if (releases.Any())
+            {
+                var release = releases.OrderByDescending(r => r.PublishedAt).First();
+                Settings.LastVersionChecked = release;
+                return (true, release);
+            }
+            else
+            {
+                return (false, Settings.LastVersionChecked);
+            }
         }
 
         public ReleaseAsset? GetDownloadAsset()
