@@ -32,7 +32,7 @@
 		<PackageReference Include="Analogy.CommonUtilities" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="6.0.0" />
-		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="6.0.0" />
+		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="6.0.2" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="6.0.0" />
