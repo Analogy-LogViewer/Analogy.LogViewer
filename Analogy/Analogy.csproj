@@ -24,7 +24,7 @@
 		<GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="6.0.1" />
+		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="6.0.2" />
 		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="6.0.0.1" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="3.0.1" />
