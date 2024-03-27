@@ -399,28 +399,29 @@ namespace Analogy.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("[{\"FactoryName\":\"Analogy Logs Formats\",\"FactoryId\":\"d3047f5d-cfeb-4a69-8f10-ae5f4" +
             "d3f2d04\",\"Status\":1},{\"FactoryName\":\"Analogy Examples\",\"FactoryId\":\"4b1ebc0f-64d" +
-            "d-44a1-bc27-79dbfc6384cc\",\"Status\":1},{\"FactoryName\":\"gRPC Receiver\",\"FactoryId\"" +
+            "d-44a1-bc27-79dbfc6384cc\",\"Status\":2},{\"FactoryName\":\"gRPC Receiver\",\"FactoryId\"" +
             ":\"9bd37cc2-daa7-4d17-974c-01ef3f3c79ba\",\"Status\":1},{\"FactoryName\":\"IIS Parser\"," +
-            "\"FactoryId\":\"ad7187b1-bd09-4bfe-a28b-3fd3de879009\",\"Status\":2},{\"FactoryName\":\"J" +
+            "\"FactoryId\":\"ad7187b1-bd09-4bfe-a28b-3fd3de879009\",\"Status\":1},{\"FactoryName\":\"J" +
             "son Log Parser\",\"FactoryId\":\"d7146342-aeb2-4bd5-8710-7d1bf06ea5cf\",\"Status\":2},{" +
             "\"FactoryName\":\"Log4Net Parser\",\"FactoryId\":\"dbc17c75-5212-46e3-b98a-539e779000e3" +
-            "\",\"Status\":2},{\"FactoryName\":\"NLogs Parser\",\"FactoryId\":\"33cbfa00-da3e-4f9f-b5a1" +
-            "-be978fd09d57\",\"Status\":2},{\"FactoryName\":\"Plain Text Parser\",\"FactoryId\":\"11cbf" +
+            "\",\"Status\":1},{\"FactoryName\":\"NLogs Parser\",\"FactoryId\":\"33cbfa00-da3e-4f9f-b5a1" +
+            "-be978fd09d57\",\"Status\":1},{\"FactoryName\":\"Plain Text Parser\",\"FactoryId\":\"11cbf" +
             "a00-da2e-2f9f-b5a1-be978fd09d57\",\"Status\":2},{\"FactoryName\":\"Regular Expression " +
             "Parser\",\"FactoryId\":\"7da2570c-92aa-423f-bcd8-43bb877463f6\",\"Status\":2},{\"Factory" +
             "Name\":\"Serilog Parser\",\"FactoryId\":\"513a4393-425e-4054-92d4-6a816983e51f\",\"Statu" +
             "s\":1},{\"FactoryName\":\"Windows Event logs\",\"FactoryId\":\"3999db4c-0e22-4795-92c1-6" +
             "1b05edb3f6c\",\"Status\":1},{\"FactoryName\":\"XML Text Parser\",\"FactoryId\":\"9652600e-" +
-            "1b14-4812-bcec-9a6194db9aea\",\"Status\":1},{\"FactoryName\":\"Git History\",\"FactoryId" +
+            "1b14-4812-bcec-9a6194db9aea\",\"Status\":2},{\"FactoryName\":\"Git History\",\"FactoryId" +
             "\":\"b842cc0f-ad83-48fb-8394-3189f9a75024\",\"Status\":2},{\"FactoryName\":\"GitHub\",\"Fa" +
             "ctoryId\":\"8064229a-2605-42fa-9e72-75444e4ab13f\",\"Status\":2},{\"FactoryName\":\"Powe" +
             "rToys\",\"FactoryId\":\"9ba595ac-e1a1-4a97-819a-4f42a9518d78\",\"Status\":2},{\"FactoryN" +
             "ame\":\"Elastic Common Schema\",\"FactoryId\":\"0423c76e-7753-43f4-94c5-2608c40dcf77\"," +
             "\"Status\":1},{\"FactoryName\":\"FFmpeg\",\"FactoryId\":\"5d82cf23-bc2b-4ca7-a18c-19cd9b2" +
-            "7dd30\",\"Status\":1},{\"FactoryName\":\"Loggers tree\",\"FactoryId\":\"d33ba8d1-c22e-48b0" +
+            "7dd30\",\"Status\":2},{\"FactoryName\":\"Loggers tree\",\"FactoryId\":\"d33ba8d1-c22e-48b0" +
             "-bca5-4efa125a52b4\",\"Status\":1},{\"FactoryName\":\"Analogy Sqlite\",\"FactoryId\":\"092" +
-            "e0375-a44a-4067-9a50-b2cbbeaf9ce8\",\"Status\":1},{\"FactoryName\":\"Words Search\",\"Fa" +
-            "ctoryId\":\"34557671-1d6a-4bc3-b2ba-314df574b3aa\",\"Status\":1}]")]
+            "e0375-a44a-4067-9a50-b2cbbeaf9ce8\",\"Status\":2},{\"FactoryName\":\"Words Search\",\"Fa" +
+            "ctoryId\":\"34557671-1d6a-4bc3-b2ba-314df574b3aa\",\"Status\":2},{\"FactoryName\":\"Anal" +
+            "ogy LiteDB\",\"FactoryId\":\"46147e9b-0f3d-410a-948e-f165af903f6a\",\"Status\":1}]")]
         public string FactoriesSettings {
             get {
                 return ((string)(this["FactoriesSettings"]));
