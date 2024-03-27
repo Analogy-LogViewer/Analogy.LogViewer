@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V6.0.2 - Add LiteDB provider #1988", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 03, 27), "6.0.2"),
                 new ("V6.0.2 - On startup, Analogy displays a message box with an error #1942", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2024, 02, 09), "6.0.2"),
                 new ("V6.0.1 - DevExpress V23.2 #1922", AnalogChangeLogType.None, "Lior Banai", new DateTime(2023, 12, 22), "6.0.1"),
                 new ("V6.0.1 - [Detailed Message] is always in front of main window #1911", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2023, 12, 15), "6.0.1"),
