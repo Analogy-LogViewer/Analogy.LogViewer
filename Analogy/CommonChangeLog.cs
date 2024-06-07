@@ -9,6 +9,8 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V6.0.2 - Remove Net Framework 4.7.1 due to low usage #2040", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 06, 07), "6.0.2"),
+                new ("V6.0.2 - Remove NET7 as it reached End Of Life #2039", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 06, 07), "6.0.2"),
                 new ("V6.0.2 - Change defaults Data Providers #1989", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 03, 27), "6.0.2"),
                 new ("V6.0.2 - Add LiteDB provider #1988", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 03, 27), "6.0.2"),
                 new ("V6.0.2 - On startup, Analogy displays a message box with an error #1942", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2024, 02, 09), "6.0.2"),

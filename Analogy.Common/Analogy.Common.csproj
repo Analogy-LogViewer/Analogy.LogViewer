@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net48;net471;net8.0-windows;net7.0-windows;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net8.0-windows;net6.0-windows</TargetFrameworks>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Authors>Lior Banai</Authors>
 		<Copyright>Lior Banai © 2019-2024</Copyright>

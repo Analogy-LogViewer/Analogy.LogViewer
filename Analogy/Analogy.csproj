@@ -4,7 +4,7 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<TargetFrameworks>net48;net471;net8.0-windows;net7.0-windows;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net8.0-windows;net6.0-windows</TargetFrameworks>
 		<AssemblyName>Analogy</AssemblyName>
 		<RootNamespace>Analogy</RootNamespace>
 		<ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
