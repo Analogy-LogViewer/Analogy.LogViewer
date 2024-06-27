@@ -89,8 +89,8 @@ namespace DevExpress.Sync
             foreach (string fullPath in files)
             {
                 var file = Path.GetFileName(fullPath);
-                file = file.Replace("v23.1", "v23.2");
-                var targetFullPath = fullPath.Replace("v23.1", "v23.2");
+                file = file.Replace("v23.2", "v24.1");
+                var targetFullPath = fullPath.Replace("v23.2", "v24.1");
 
                 if (isNet)
                 {
