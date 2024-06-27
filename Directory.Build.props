@@ -1,6 +1,6 @@
 <Project>
 	<PropertyGroup>
-		<VersionPrefix>6.0.1.0</VersionPrefix>
+		<VersionPrefix>6.0.2.0</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<UseWindowsForms>true</UseWindowsForms>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -33,11 +33,11 @@
 	</ItemGroup>
 	<!-- Analyzers (Roslyn, Meziantou, StyleCop, ...) -->
 	<ItemGroup>
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="4.9.2">
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="4.10.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Meziantou.Analyzer" Version="2.0.155">
+		<PackageReference Include="Meziantou.Analyzer" Version="2.0.159">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

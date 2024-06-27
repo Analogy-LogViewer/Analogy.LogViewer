@@ -39,7 +39,7 @@
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="6.0.0" />
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="6.0.1" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="6.0.2" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="6.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="6.0.1" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="6.0.0" />
@@ -54,7 +54,7 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-		<PackageReference Include="Octokit" Version="11.0.1" />
+		<PackageReference Include="Octokit" Version="13.0.0" />
 		<PackageReference Include="System.Drawing.Common" Version="8.0.6" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
