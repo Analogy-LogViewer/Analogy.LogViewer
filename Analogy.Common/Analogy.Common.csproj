@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net48;net8.0-windows;net6.0-windows</TargetFrameworks>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Authors>Lior Banai</Authors>
 		<Copyright>Lior Banai © 2019-2024</Copyright>

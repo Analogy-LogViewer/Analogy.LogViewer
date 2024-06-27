@@ -5,6 +5,7 @@
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetFrameworks>net48;net8.0-windows;net6.0-windows</TargetFrameworks>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<AssemblyName>Analogy</AssemblyName>
 		<RootNamespace>Analogy</RootNamespace>
 		<ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>
