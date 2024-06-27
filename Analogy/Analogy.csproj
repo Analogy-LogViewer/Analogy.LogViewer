@@ -16,7 +16,7 @@
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer</RepositoryUrl>
 		<PackageIcon>icon.png</PackageIcon>
-		<Copyright>Lior Banai © 2019-2024</Copyright>
+		<Copyright>Lior Banai 2019-2024</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<Company>Analogy.LogViewer</Company>
 		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>

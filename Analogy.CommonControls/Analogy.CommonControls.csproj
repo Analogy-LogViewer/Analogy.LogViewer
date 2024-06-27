@@ -23,7 +23,7 @@
 		<PackageIconUrl />
 		<PackageTags />
 		<RepositoryType>git</RepositoryType>
-		<Copyright>Lior Banai © 2019-2024</Copyright>
+		<Copyright>Lior Banai 2019-2024</Copyright>
 		<Product>Analogy Log Viewer</Product>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
