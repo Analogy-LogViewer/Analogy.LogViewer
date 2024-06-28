@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V6.0.2 - DevExpress 24.1 #2055", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 06, 28), "6.0.2"),
                 new ("V6.0.2 - Remove Net Framework 4.7.1 due to low usage #2040", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 06, 07), "6.0.2"),
                 new ("V6.0.2 - Remove NET7 as it reached End Of Life #2039", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 06, 07), "6.0.2"),
                 new ("V6.0.2 - Change defaults Data Providers #1989", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 03, 27), "6.0.2"),
