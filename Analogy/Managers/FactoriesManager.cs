@@ -76,7 +76,7 @@ namespace Analogy
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    ServicesProvider.Instance.GetService<ILogger>().LogError(t.Exception,"Error during Initialization");
+                    ServicesProvider.Instance.GetService<ILogger>().LogError(t.Exception, "Error during Initialization");
                 }
             }
         }
