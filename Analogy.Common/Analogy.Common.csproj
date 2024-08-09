@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net48;net8.0-windows;net6.0-windows</TargetFrameworks>
@@ -43,7 +43,7 @@
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="6.0.0.1" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="System.Drawing.Common" Version="8.0.6" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.7" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
 	</ItemGroup>
