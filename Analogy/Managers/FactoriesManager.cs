@@ -69,14 +69,14 @@ namespace Analogy
             }
             catch (AggregateException ex)
             {
-                ServicesProvider.Instance.GetService<ILogger>().LogError("Error during Initialization", ex, "InitializeBuiltInFactories");
+                ServicesProvider.Instance.GetService<ILogger>().LogError(ex, "Error during Initialization");
             }
 
             foreach (var t in initTasks)
             {
                 if (t.Status != TaskStatus.RanToCompletion)
                 {
-                    ServicesProvider.Instance.GetService<ILogger>().LogError("Error during Initialization", t.Exception, "AddExternalDataSources");
+                    ServicesProvider.Instance.GetService<ILogger>().LogError(t.Exception,"Error during Initialization");
                 }
             }
         }

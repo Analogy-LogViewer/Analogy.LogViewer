@@ -226,8 +226,7 @@ namespace Analogy
                     }
                     else
                     {
-                        ServicesProvider.Instance.GetService<ILogger>().LogError("",
-                            $"Last location {Settings.AnalogyPosition.Location} is not inside any screen");
+                        ServicesProvider.Instance.GetService<ILogger>().LogError($"Last location {Settings.AnalogyPosition.Location} is not inside any screen");
                     }
                 }
             }
