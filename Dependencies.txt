@@ -8,11 +8,11 @@ Interface -- LogServer.Client -- NLog.Targets
 Interface -- LogServer.Client -- Serilog.Sink
 Interface -- LogServer.Client -- AspNetCore.LogProvider
 
-Interface -- LogServer.Client --                   -- Grpc
+Interface -- LogServer.Client --         -- Grpc
 Interface -- CommonUtilities -- Template -- Grpc
 
 Interface -- CommonUtilities -- Template -- RegexParser
-Interface -- CommonUtilities -- Template -- RegexParser -- PowerToys
+Interface -- CommonUtilities -- Template -- RegexParser
 Interface -- CommonUtilities -- Template -- Example
 Interface -- CommonUtilities -- Template -- Plain Text
 Interface -- CommonUtilities -- Template -- GitHistory
@@ -26,7 +26,6 @@ Interface -- CommonUtilities -- Template -- Serilog
 Interface -- CommonUtilities -- Template -- WindowsEventLogs
 Interface -- CommonUtilities -- Template -- XMLParser
 Interface -- CommonUtilities -- Template -- WordSearch
-Interface -- CommonUtilities -- Template -- powertoys
 Interface -- CommonUtilities -- Template -- Sqlite
 Interface -- CommonUtilities -- Template -- Elastic.CommonSchema.Serilog
 Interface -- CommonUtilities -- Template -- Analogy.LogViewer.LoggersTree
