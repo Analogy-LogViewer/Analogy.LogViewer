@@ -50,7 +50,7 @@
 		<PackageReference Include="Grpc.Core" Version="2.46.6" />
 		<PackageReference Include="LiteDB" Version="5.0.21" />
 		<PackageReference Include="Markdig" Version="0.37.0" />
-		<PackageReference Include="MessagePack" Version="2.6.100-alpha" />
+		<PackageReference Include="MessagePack" Version="2.5.187" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
