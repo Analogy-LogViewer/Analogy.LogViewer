@@ -27,17 +27,17 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="7.0.4" />
 		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="7.0.0" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.0.0.1" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.LiteDB" Version="0.4.0" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="4.0.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="7.0.0" />
-		<PackageReference Include="Analogy.CommonUtilities" Version="7.0.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="7.1.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="7.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="7.0.0" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="7.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="7.0.0" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="7.0.0" />
-		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="7.0.0" />
+		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="7.0.0" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="7.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="7.0.0" />
@@ -52,13 +52,13 @@
 		<PackageReference Include="Markdig" Version="0.38.0" />
 		<PackageReference Include="MessagePack" Version="2.5.187" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
 		<PackageReference Include="Octokit" Version="13.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="8.0.10" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="MainForm.resx">
