@@ -4,7 +4,7 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<OutputType>WinExe</OutputType>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<AssemblyName>Analogy</AssemblyName>
 		<RootNamespace>Analogy</RootNamespace>
@@ -73,7 +73,7 @@
 		</None>
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' or '$(TargetFramework)' == 'net7.0-windows' or '$(TargetFramework)' == 'net8.0-windows'">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0-windows'  or '$(TargetFramework)' == 'net9.0-windows'">
 		<Reference Include="DevExpress.BonusSkins.v24.1">
 			<HintPath>..\DevExpress\.net core\DevExpress.BonusSkins.v24.1.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -236,7 +236,7 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
 		<Reference Include="DevExpress.BonusSkins.v24.1">
 			<HintPath>..\DevExpress\.net framework\DevExpress.BonusSkins.v24.1.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -410,7 +410,7 @@
 
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'net471' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
 		<Compile Update="Forms\AboutDataSourceBox.cs" />
 		<Compile Update="Forms\AboutDataSourceBox.Designer.cs">
 			<DependentUpon>AboutDataSourceBox.cs</DependentUpon>
