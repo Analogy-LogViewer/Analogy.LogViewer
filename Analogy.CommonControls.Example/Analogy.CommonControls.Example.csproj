@@ -9,16 +9,17 @@
 		<Platforms>AnyCPU;x86;x64</Platforms>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageId>Analogy.CommonControls.Example</PackageId>
+		<NoWarn>$(NoWarn);WFO1000</NoWarn>
 		<GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.1.0" />
-	  <PackageReference Include="System.Private.Uri" Version="4.3.2" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.1.0" />
+		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Analogy.CommonControls\Analogy.CommonControls.csproj" />
+		<ProjectReference Include="..\Analogy.CommonControls\Analogy.CommonControls.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0-windows'  or '$(TargetFramework)' == 'net9.0-windows'">
 		<Reference Include="DevExpress.BonusSkins.v24.1">

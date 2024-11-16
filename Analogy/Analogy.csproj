@@ -6,6 +6,7 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<NoWarn>$(NoWarn);WFO1000</NoWarn>
 		<AssemblyName>Analogy</AssemblyName>
 		<RootNamespace>Analogy</RootNamespace>
 		<ApplicationIcon>Icons\Analogy_icon1.ico</ApplicationIcon>

@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<NoWarn>$(NoWarn);WFO1000</NoWarn>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Authors>Lior Banai</Authors>
 		<Copyright>Lior Banai 2019-2024</Copyright>

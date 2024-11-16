@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
+		<NoWarn>$(NoWarn);WFO1000</NoWarn>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
