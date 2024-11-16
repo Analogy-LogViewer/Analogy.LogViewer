@@ -13,7 +13,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.0.0.1" />
+	  <PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.1.0" />
+	  <PackageReference Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
