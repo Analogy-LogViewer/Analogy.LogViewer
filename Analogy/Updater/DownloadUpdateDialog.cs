@@ -125,6 +125,10 @@ namespace Analogy.Updater
             {
                 version = "net8.0-windows";
             }
+            else if (_currentFrameworkAttribute.FrameworkName.EndsWith("9.0"))
+            {
+                version = "net9.0-windows";
+            }
             using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))

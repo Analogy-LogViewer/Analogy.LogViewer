@@ -36,6 +36,7 @@ namespace Analogy.UserControls
             var net6 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase)));
             var net7 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase)));
             var net8 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net8.0", StringComparison.InvariantCultureIgnoreCase)));
+            var net9 = Releases.Select(r => r.Assets.Where(a => a.Name.Contains("net9.0", StringComparison.InvariantCultureIgnoreCase)));
 
             var net471Downloads = net471.Sum(r => r.Sum(a => a.DownloadCount));
             var net472Downloads = net472.Sum(r => r.Sum(a => a.DownloadCount));
@@ -45,9 +46,10 @@ namespace Analogy.UserControls
             var net6Downloads = net6.Sum(r => r.Sum(a => a.DownloadCount));
             var net7Downloads = net7.Sum(r => r.Sum(a => a.DownloadCount));
             var net8Downloads = net8.Sum(r => r.Sum(a => a.DownloadCount));
+            var ne9Downloads = net9.Sum(r => r.Sum(a => a.DownloadCount));
 
             TotalDownloadFramework = net471Downloads + net472Downloads + net48Downloads;
-            TotalDownloadNet = net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads;
+            TotalDownloadNet = net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads + ne9Downloads;
             var total = TotalDownloadFramework + TotalDownloadNet;
             lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {TotalDownloadFramework}. NET: {TotalDownloadNet}";
             var net471percentage = (double)net471Downloads / (total) * 100.0;
@@ -136,6 +138,7 @@ namespace Analogy.UserControls
                 var net6 = release.Assets.Where(a => a.Name.Contains("net6.0", StringComparison.InvariantCultureIgnoreCase));
                 var net7 = release.Assets.Where(a => a.Name.Contains("net7.0", StringComparison.InvariantCultureIgnoreCase));
                 var net8 = release.Assets.Where(a => a.Name.Contains("net8.0", StringComparison.InvariantCultureIgnoreCase));
+                var net9 = release.Assets.Where(a => a.Name.Contains("net9.0", StringComparison.InvariantCultureIgnoreCase));
                 var net471Downloads = net471.Sum(r => r.DownloadCount);
                 var net472Downloads = net472.Sum(r => r.DownloadCount);
                 var net48Downloads = net48.Sum(r => r.DownloadCount);
@@ -144,9 +147,10 @@ namespace Analogy.UserControls
                 var net6Downloads = net6.Sum(r => r.DownloadCount);
                 var net7Downloads = net7.Sum(r => r.DownloadCount);
                 var net8Downloads = net8.Sum(r => r.DownloadCount);
+                var net9Downloads = net9.Sum(r => r.DownloadCount);
 
-                var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads;
-                lblTotal.Text = $"Total Downloads ({release.TagName}): {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. NET: {net31Downloads + net5Downloads + net6Downloads + net7Downloads}";
+                var total = net471Downloads + net472Downloads + net48Downloads + net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads + net9Downloads;
+                lblTotal.Text = $"Total Downloads ({release.TagName}): {total}. Net Frameworks: {net471Downloads + net472Downloads + net48Downloads}. NET: {net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads + net9Downloads}";
                 List<PieChartSingleDataPoint> data = new()
             {
                 new PieChartSingleDataPoint("NET Framework 471", net471Downloads),
