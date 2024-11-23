@@ -46,10 +46,10 @@ namespace Analogy.UserControls
             var net6Downloads = net6.Sum(r => r.Sum(a => a.DownloadCount));
             var net7Downloads = net7.Sum(r => r.Sum(a => a.DownloadCount));
             var net8Downloads = net8.Sum(r => r.Sum(a => a.DownloadCount));
-            var ne9Downloads = net9.Sum(r => r.Sum(a => a.DownloadCount));
+            var net9Downloads = net9.Sum(r => r.Sum(a => a.DownloadCount));
 
             TotalDownloadFramework = net471Downloads + net472Downloads + net48Downloads;
-            TotalDownloadNet = net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads + ne9Downloads;
+            TotalDownloadNet = net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads + net9Downloads;
             var total = TotalDownloadFramework + TotalDownloadNet;
             lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {TotalDownloadFramework}. NET: {TotalDownloadNet}";
             var net471percentage = (double)net471Downloads / (total) * 100.0;
@@ -60,6 +60,7 @@ namespace Analogy.UserControls
             var net6percentage = (double)net6Downloads / (total) * 100.0;
             var net7percentage = (double)net7Downloads / (total) * 100.0;
             var net8percentage = (double)net8Downloads / (total) * 100.0;
+            var net9percentage = (double)net9Downloads / (total) * 100.0;
             List<PieChartSingleDataPoint> data = new()
             {
                 new PieChartSingleDataPoint("NET Framework 471", net471Downloads),
@@ -70,6 +71,7 @@ namespace Analogy.UserControls
                 new PieChartSingleDataPoint("NET 6", net6Downloads),
                 new PieChartSingleDataPoint("NET 7", net7Downloads),
                 new PieChartSingleDataPoint("NET 8", net8Downloads),
+                new PieChartSingleDataPoint("NET 9", net9Downloads),
             };
             CreateChart(data);
         }
@@ -161,6 +163,7 @@ namespace Analogy.UserControls
                 new PieChartSingleDataPoint("NET 6", net6Downloads),
                 new PieChartSingleDataPoint("NET 7", net7Downloads),
                 new PieChartSingleDataPoint("NET 8", net8Downloads),
+                new PieChartSingleDataPoint("NET 9", net9Downloads),
             };
                 CreateChart(data);
             }
