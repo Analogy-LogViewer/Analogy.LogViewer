@@ -17,7 +17,7 @@ namespace Analogy.Common.DataTypes
         public string[] ExcludedSources;
         public string[] Modules;
         public string[] ExcludedModules;
-        public bool SearchEveryWhere { get; set; }
+        public bool SearchEverywhere { get; set; }
         public List<(string Field, bool Numerical)> Columns { get; set; }
         public string TextInclude { get; set; }
         public string TextExclude { get; set; }
@@ -192,7 +192,7 @@ namespace Analogy.Common.DataTypes
 
             sqlString.Append(dateFilter);
 
-            if (includeTexts.Any() && !SearchEveryWhere)
+            if (includeTexts.Any() && !SearchEverywhere)
             {
                 var includeColumns = IncludeFilterCriteriaUIOptions.Where(f => f.CheckMember);
                 foreach (FilterCriteriaUIOption include in includeColumns)
@@ -233,32 +233,30 @@ namespace Analogy.Common.DataTypes
                     {
                         if (!string.IsNullOrEmpty(text) && int.TryParse(text, out var number))
                         {
-                            yield return $" {field} = {number}";
+                            yield return $" [{field}] = {number}";
                         }
                     }
                     else
                     {
-                        yield return $" {field} like '%{text}%'";
+                        yield return $" [{field}] like '%{text}%'";
                     }
                 }
             }
 
-            if (SearchEveryWhere)
+            if (SearchEverywhere)
             {
                 var allValidCombinations =
                     Columns.Select(c => GenerateSingleCombinationPerColumn(c.Field, c.Numerical).ToList());
-                var entries = allValidCombinations.Where(c => c.Any()).Select(c =>
+                var entries = allValidCombinations.Where(c => c.Count > 0 && c.TrueForAll(item => !string.IsNullOrEmpty(item))).Select(c =>
                     string.Join(orOperationInInclude ? " Or " : " and ", c));
                 var combined = string.Join(" Or ", entries);
                 return combined;
             }
-            else
-            {
-                var includeTextFinal = orOperationInInclude
-                    ? string.Join(" Or ", GenerateSingleCombinationPerColumn("Text", false))
-                    : string.Join(" and ", GenerateSingleCombinationPerColumn("Text", false));
-                return includeTextFinal;
-            }
+
+            var includeTextFinal = orOperationInInclude
+                ? string.Join(" Or ", GenerateSingleCombinationPerColumn("Text", false))
+                : string.Join(" and ", GenerateSingleCombinationPerColumn("Text", false));
+            return includeTextFinal;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Match(string rowLine, string criteria, PreDefinedQueryType type)
