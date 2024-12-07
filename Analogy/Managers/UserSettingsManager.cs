@@ -191,6 +191,7 @@ namespace Analogy
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
         public bool SupportLinuxFormatting { get; set; }
+        public bool HideUnknownLogLevel { get; set; }
 
         private Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
 
@@ -352,6 +353,7 @@ namespace Analogy
             CombineOfflineProviders = Settings.Default.CombineOfflineProviders;
             CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
             SupportLinuxFormatting = Settings.Default.SupportLinuxFormatting;
+            HideUnknownLogLevel = Settings.Default.HideUnknownLogLevel;
             WindowPositions = !string.IsNullOrEmpty(Settings.Default.WindowPositions)
                 ? ParseSettings<Dictionary<Guid, AnalogyPositionState>>(Settings.Default.WindowPositions)
                 : new Dictionary<Guid, AnalogyPositionState>();
@@ -444,8 +446,8 @@ namespace Analogy
             CombineOnlineProviders = settings.CombineOnlineProviders;
             WindowPositions = settings.WindowPositions;
             SupportLinuxFormatting = settings.SupportLinuxFormatting;
+            HideUnknownLogLevel = settings.HideUnknownLogLevel;
         }
-
         private UserSettings CreateUserSettings()
         {
             var userSettings = new UserSettings()

@@ -24,12 +24,7 @@ namespace Analogy.Common.DataTypes
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
-        private AnalogyLogLevel[] _arrLevels;
-        public AnalogyLogLevel[]? Levels
-        {
-            get => _arrLevels;
-            set => _arrLevels = value;
-        }
+        public AnalogyLogLevel[]? Levels { get; set; }
         public List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
         public List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

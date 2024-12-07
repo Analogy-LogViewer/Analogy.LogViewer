@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V7.1.1 - Add option to filter out Unknown log level #2118", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 12, 07), "7.1.1"),
                 new ("V7.1.0 - Remove NET6 as it is near end of life #2095", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 09, 27), "7.1.0"),
                 new ("V7.0.0 - Split Interface nuget to Non Windows Types #2094", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 09, 07), "7.0.0"),
                 new ("V6.0.2 - DevExpress 24.1 #2055", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 06, 28), "6.0.2"),

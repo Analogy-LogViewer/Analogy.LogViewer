@@ -71,6 +71,10 @@ namespace Analogy.ApplicationSettings
             {
                 Settings.ShowProcessedCounter = tsShowProgressCounter.IsOn;
             };
+            ceHideUnknown.CheckStateChanged += (s, e) =>
+            {
+                Settings.HideUnknownLogLevel = ceHideUnknown.Checked;
+            };
         }
 
         private void LoadSettings()
@@ -101,6 +105,7 @@ namespace Analogy.ApplicationSettings
             sePoolingDelay.Value = Settings.FilePoolingDelayInterval;
             ceEnablePoolingDelay.Checked = Settings.EnableFilePoolingDelay;
             tsShowProgressCounter.IsOn = Settings.ShowProcessedCounter;
+            ceHideUnknown.Checked = Settings.HideUnknownLogLevel;
         }
     }
 }

@@ -2172,40 +2172,94 @@ namespace Analogy.CommonControls.UserControls
                 case LogLevelSelectionType.Single:
                     if (chkLstLogLevel.Items[0].CheckState == CheckState.Checked)
                     {
-                        _filterCriteria.Levels = new[]
-                            {
+                        if (Settings.HideUnknownLogLevel)
+                        {
+                            _filterCriteria.Levels =
+                            [
                                 AnalogyLogLevel.Trace,
-                                AnalogyLogLevel.Unknown,
-                            };
+                            ];
+                        }
+                        else
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Trace,
+                                AnalogyLogLevel.Unknown
+                            ];
+                        }
                     }
 
                     if (chkLstLogLevel.Items[1].CheckState == CheckState.Checked)
                     {
-                        _filterCriteria.Levels = new[]
+                        if (Settings.HideUnknownLogLevel)
                         {
-                            AnalogyLogLevel.Error, AnalogyLogLevel.Critical,  AnalogyLogLevel.Unknown,
-                        };
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Error, AnalogyLogLevel.Critical,
+                            ];
+                        }
+                        else
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Error, AnalogyLogLevel.Critical,
+                                AnalogyLogLevel.Unknown
+                            ];
+                        }
                     }
                     else if (chkLstLogLevel.Items[2].CheckState == CheckState.Checked)
                     {
-                        _filterCriteria.Levels = new[]
-                            {
-                                AnalogyLogLevel.Warning,  AnalogyLogLevel.Unknown,
-                            };
+                        if (Settings.HideUnknownLogLevel)
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Warning,
+                            ];
+                        }
+                        else
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Warning,
+                                AnalogyLogLevel.Unknown
+                            ];
+                        }
                     }
                     else if (chkLstLogLevel.Items[3].CheckState == CheckState.Checked)
                     {
-                        _filterCriteria.Levels = new[]
-                            {
-                                AnalogyLogLevel.Debug,  AnalogyLogLevel.Unknown,
-                            };
+                        if (Settings.HideUnknownLogLevel)
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Debug,
+                            ];
+                        }
+                        else
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Debug,
+                                AnalogyLogLevel.Unknown
+                            ];
+                        }
                     }
                     else if (chkLstLogLevel.Items[4].CheckState == CheckState.Checked)
                     {
-                        _filterCriteria.Levels = new[]
-                            {
-                                AnalogyLogLevel.Verbose,  AnalogyLogLevel.Unknown,
-                            };
+                        if (Settings.HideUnknownLogLevel)
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Verbose,
+                            ];
+                        }
+                        else
+                        {
+                            _filterCriteria.Levels =
+                            [
+                                AnalogyLogLevel.Verbose,
+                                AnalogyLogLevel.Unknown
+                            ];
+                        }
                     }
 
                     break;
