@@ -1094,6 +1094,18 @@ namespace Analogy.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideUnknownLogLevel {
+            get {
+                return ((bool)(this["HideUnknownLogLevel"]));
+            }
+            set {
+                this["HideUnknownLogLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool CollapseFolderAndFilesPanel {
             get {
                 return ((bool)(this["CollapseFolderAndFilesPanel"]));

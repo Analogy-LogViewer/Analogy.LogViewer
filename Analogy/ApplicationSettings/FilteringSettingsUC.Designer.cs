@@ -30,6 +30,7 @@ namespace Analogy.ApplicationSettings
         private void InitializeComponent()
         {
             this.gcFiltering = new DevExpress.XtraEditors.GroupControl();
+            this.tsCheckAdditionalInformation = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsTrackActiveMessage = new DevExpress.XtraEditors.ToggleSwitch();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.tsLogLevels = new DevExpress.XtraEditors.ToggleSwitch();
@@ -48,9 +49,10 @@ namespace Analogy.ApplicationSettings
             this.ceEnablePoolingDelay = new DevExpress.XtraEditors.CheckEdit();
             this.groupControlExperimental = new DevExpress.XtraEditors.GroupControl();
             this.tsShowProgressCounter = new DevExpress.XtraEditors.ToggleSwitch();
-            this.tsCheckAdditionalInformation = new DevExpress.XtraEditors.ToggleSwitch();
+            this.ceHideUnknown = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).BeginInit();
             this.gcFiltering.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsTrackActiveMessage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsLogLevels.Properties)).BeginInit();
@@ -71,11 +73,12 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.groupControlExperimental)).BeginInit();
             this.groupControlExperimental.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsShowProgressCounter.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceHideUnknown.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gcFiltering
             // 
+            this.gcFiltering.Controls.Add(this.ceHideUnknown);
             this.gcFiltering.Controls.Add(this.tsCheckAdditionalInformation);
             this.gcFiltering.Controls.Add(this.tsTrackActiveMessage);
             this.gcFiltering.Controls.Add(this.chkLstLogLevel);
@@ -92,9 +95,21 @@ namespace Analogy.ApplicationSettings
             this.gcFiltering.Margin = new System.Windows.Forms.Padding(10);
             this.gcFiltering.Name = "gcFiltering";
             this.gcFiltering.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.gcFiltering.Size = new System.Drawing.Size(840, 457);
+            this.gcFiltering.Size = new System.Drawing.Size(840, 472);
             this.gcFiltering.TabIndex = 4;
             this.gcFiltering.Text = "Filtering and search ";
+            // 
+            // tsCheckAdditionalInformation
+            // 
+            this.tsCheckAdditionalInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsCheckAdditionalInformation.Location = new System.Drawing.Point(5, 189);
+            this.tsCheckAdditionalInformation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tsCheckAdditionalInformation.Name = "tsCheckAdditionalInformation";
+            this.tsCheckAdditionalInformation.Properties.OffText = "Don\'t Show Additional Properties Of The Log Message";
+            this.tsCheckAdditionalInformation.Properties.OnText = "Show Additional Properties Of The Log Message";
+            this.tsCheckAdditionalInformation.Size = new System.Drawing.Size(818, 24);
+            this.tsCheckAdditionalInformation.TabIndex = 36;
             // 
             // tsTrackActiveMessage
             // 
@@ -114,7 +129,7 @@ namespace Analogy.ApplicationSettings
             this.chkLstLogLevel.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
             this.chkLstLogLevel.CheckOnClick = true;
             this.chkLstLogLevel.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.chkLstLogLevel.Location = new System.Drawing.Point(433, 306);
+            this.chkLstLogLevel.Location = new System.Drawing.Point(433, 327);
             this.chkLstLogLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkLstLogLevel.Name = "chkLstLogLevel";
             this.chkLstLogLevel.Size = new System.Drawing.Size(390, 137);
@@ -124,7 +139,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.tsLogLevels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsLogLevels.Location = new System.Drawing.Point(7, 302);
+            this.tsLogLevels.Location = new System.Drawing.Point(7, 327);
             this.tsLogLevels.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tsLogLevels.Name = "tsLogLevels";
             this.tsLogLevels.Properties.OffText = "Single Selection";
@@ -227,7 +242,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl1.Controls.Add(this.labelControl13);
             this.groupControl1.Controls.Add(this.chklExclusionLogLevel);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 457);
+            this.groupControl1.Location = new System.Drawing.Point(0, 472);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(840, 278);
             this.groupControl1.TabIndex = 37;
@@ -259,7 +274,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl2.Controls.Add(this.sePoolingDelay);
             this.groupControl2.Controls.Add(this.ceEnablePoolingDelay);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl2.Location = new System.Drawing.Point(0, 735);
+            this.groupControl2.Location = new System.Drawing.Point(0, 750);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(840, 60);
             this.groupControl2.TabIndex = 38;
@@ -304,7 +319,7 @@ namespace Analogy.ApplicationSettings
             // 
             this.groupControlExperimental.Controls.Add(this.tsShowProgressCounter);
             this.groupControlExperimental.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControlExperimental.Location = new System.Drawing.Point(0, 795);
+            this.groupControlExperimental.Location = new System.Drawing.Point(0, 810);
             this.groupControlExperimental.Name = "groupControlExperimental";
             this.groupControlExperimental.Size = new System.Drawing.Size(840, 60);
             this.groupControlExperimental.TabIndex = 39;
@@ -322,17 +337,14 @@ namespace Analogy.ApplicationSettings
             this.tsShowProgressCounter.Size = new System.Drawing.Size(817, 24);
             this.tsShowProgressCounter.TabIndex = 9;
             // 
-            // tsCheckAdditionalInformation
+            // ceHideUnknown
             // 
-            this.tsCheckAdditionalInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsCheckAdditionalInformation.Location = new System.Drawing.Point(5, 189);
-            this.tsCheckAdditionalInformation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tsCheckAdditionalInformation.Name = "tsCheckAdditionalInformation";
-            this.tsCheckAdditionalInformation.Properties.OffText = "Don\'t Show Additional Properties Of The Log Message";
-            this.tsCheckAdditionalInformation.Properties.OnText = "Show Additional Properties Of The Log Message";
-            this.tsCheckAdditionalInformation.Size = new System.Drawing.Size(818, 24);
-            this.tsCheckAdditionalInformation.TabIndex = 36;
+            this.ceHideUnknown.Location = new System.Drawing.Point(7, 294);
+            this.ceHideUnknown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ceHideUnknown.Name = "ceHideUnknown";
+            this.ceHideUnknown.Properties.Caption = "Hide the Unknown Log Level";
+            this.ceHideUnknown.Size = new System.Drawing.Size(363, 24);
+            this.ceHideUnknown.TabIndex = 37;
             // 
             // FilteringSettingsUC
             // 
@@ -348,6 +360,7 @@ namespace Analogy.ApplicationSettings
             this.Load += new System.EventHandler(this.FilteringSettingsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcFiltering)).EndInit();
             this.gcFiltering.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsTrackActiveMessage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsLogLevels.Properties)).EndInit();
@@ -369,7 +382,7 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.groupControlExperimental)).EndInit();
             this.groupControlExperimental.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tsShowProgressCounter.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsCheckAdditionalInformation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ceHideUnknown.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,5 +409,6 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.GroupControl groupControlExperimental;
         private DevExpress.XtraEditors.ToggleSwitch tsShowProgressCounter;
         private DevExpress.XtraEditors.ToggleSwitch tsCheckAdditionalInformation;
+        private DevExpress.XtraEditors.CheckEdit ceHideUnknown;
     }
 }
