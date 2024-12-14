@@ -9,9 +9,9 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
-                new ("V7.1.1 - Exception parsing value #2189", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 14), "7.1.1"),
+                new ("V7.1.1 - Exception parsing value #2141", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 14), "7.1.1"),
                 new ("V7.1.1 - Upgrade DevExpress to 24.2.3 #2188", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 14), "7.1.1"),
-                new ("V7.1.1 - Remember CollapseFolderAndFilesPanel Settings #2198", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 14), "7.1.1"),
+                new ("V7.1.1 - Remember CollapseFolderAndFilesPanel Settings #2189", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 14), "7.1.1"),
                 new ("V7.1.1 - Add option to filter out Unknown log level #2118", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 07), "7.1.1"),
                 new ("V7.1.0 - Add NET9 #2163", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 03), "7.1.0"),
                 new ("V7.1.0 - Remove NET6 as it is near end of life #2095", AnalogChangeLogType.Feature, "Lior Banai", new DateTime(2024, 09, 27), "7.1.0"),
