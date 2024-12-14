@@ -1171,28 +1171,35 @@ namespace Analogy.CommonControls.UserControls
 
         private void LogGrid_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && sender is GridView view)
+            try
             {
-                GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
-                if (hitInfo.InRow && hitInfo.RowHandle >= 0 && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
+                if (e.Button == MouseButtons.Right && sender is GridView view)
                 {
-                    UpdatePopupTexts();
-                    var value = view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
-                    if (value != null)
+                    GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
+                    if (hitInfo.InRow && hitInfo.RowHandle >= 0 && !(hitInfo.Column == view.FocusedColumn && hitInfo.RowHandle == view.FocusedRowHandle))
                     {
-                        ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
-                            new ColumnFilterInfo($"[{hitInfo.Column.FieldName}] = '{value}'", ""));
-                        string val = new string(value.ToString().Take(100).ToArray());
-                        bbiIncludeColumnHeaderFilter.Caption = $"Set '{val}' as column header filter for column '{hitInfo.Column.Caption}'";
-                        bbiIncludeColumnHeaderFilter.Tag = viewFilterInfo;
-                        bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Always;
-                    }
-                    else
-                    {
-                        bbiIncludeColumnHeaderFilter.Tag = null;
-                        bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Never;
+                        UpdatePopupTexts();
+                        var value = view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
+                        if (value != null)
+                        {
+                            ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
+                                new ColumnFilterInfo($"[{hitInfo.Column.FieldName}] = '{value}'", ""));
+                            string val = new string(value.ToString().Take(100).ToArray());
+                            bbiIncludeColumnHeaderFilter.Caption = $"Set '{val}' as column header filter for column '{hitInfo.Column.Caption}'";
+                            bbiIncludeColumnHeaderFilter.Tag = viewFilterInfo;
+                            bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Always;
+                        }
+                        else
+                        {
+                            bbiIncludeColumnHeaderFilter.Tag = null;
+                            bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Never;
+                        }
                     }
                 }
+            }
+            catch
+            {
+                //to nothing for now.
             }
         }
 
