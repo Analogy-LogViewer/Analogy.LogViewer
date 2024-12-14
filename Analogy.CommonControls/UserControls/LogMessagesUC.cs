@@ -3791,11 +3791,9 @@ namespace Analogy.CommonControls.UserControls
                 dockPanel.Visibility = DockVisibility.Hidden;
             }
         }
-
         public void ApplyCollapseFileAndFolderSettings()
         {
             CollapseFileAndFolderPanel?.Invoke(this, Settings.CollapseFolderAndFilesPanel);
         }
-
     }
 }
