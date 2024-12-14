@@ -103,6 +103,7 @@ namespace Analogy.DataTypes
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
         public Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
+        public bool CollapseFolderAndFilesPanel { get; set; }
 
         public UserSettings()
         {

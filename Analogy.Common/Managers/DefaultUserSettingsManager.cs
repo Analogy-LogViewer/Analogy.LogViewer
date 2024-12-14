@@ -54,6 +54,7 @@ namespace Analogy.Common.Managers
         public bool SupportLinuxFormatting { get; set; }
         public bool HideUnknownLogLevel { get; set; }
 
+        public bool CollapseFolderAndFilesPanel { get; set; }
         public void Save(string version)
         {
         }

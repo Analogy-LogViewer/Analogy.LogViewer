@@ -102,7 +102,6 @@ namespace Analogy.CommonControls.UserControls
         private List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
         private List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
-        private bool CollapseFolderAndFilesPanel { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
         private IUserSettingsManager Settings { get; set; }
         private IExtensionsManager ExtensionManager { get; set; }
@@ -513,8 +512,8 @@ namespace Analogy.CommonControls.UserControls
         {
             bbiCollapseFolderPanel.ItemClick += (sBtnLastPage, e) =>
             {
-                CollapseFolderAndFilesPanel = !CollapseFolderAndFilesPanel;
-                CollapseFileAndFolderPanel?.Invoke(this, CollapseFolderAndFilesPanel);
+                Settings.CollapseFolderAndFilesPanel = !Settings.CollapseFolderAndFilesPanel;
+                CollapseFileAndFolderPanel?.Invoke(this, Settings.CollapseFolderAndFilesPanel);
             };
             sbtnServerSide.Click += async (s, e) =>
             {
@@ -549,7 +548,7 @@ namespace Analogy.CommonControls.UserControls
             };
             ceSearchEverywhere.CheckedChanged += async (s, e) =>
             {
-                _filterCriteria.SearchEveryWhere = ceSearchEverywhere.Checked;
+                _filterCriteria.SearchEverywhere = ceSearchEverywhere.Checked;
                 await FilterHasChanged();
             };
             ddbGoTo.ArrowButtonClick += (s, e) =>
@@ -1072,16 +1071,23 @@ namespace Analogy.CommonControls.UserControls
 
         private void UpdateSearchColumn()
         {
-            bool GetNumericalValue(GridColumn column) => column == gridColumnLineNumber || column == gridColumnProcessID || column == gridColumnThread;
+            bool GetNumericalValue(GridColumn column)
+            {
+                return Type.GetTypeCode(column.ColumnType) switch
+                {
+                    TypeCode.Byte or TypeCode.SByte or TypeCode.UInt16 or TypeCode.UInt32 or TypeCode.UInt64
+                        or TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64 or TypeCode.Decimal or TypeCode.Double
+                        or TypeCode.Single => true,
+                    _ => false,
+                };
+            }
             _filterCriteria.Columns = logGrid.Columns.Where(c => c.Visible)
                 .Except(new List<GridColumn>()
                 {
-                    gridColumnDate,
-                    gridColumnTimeDiff,
-                    gridColumnObject,
-                    gridColumnRawText,
+                    gridColumnDate, gridColumnTimeDiff, gridColumnObject, gridColumnRawText,
                 })
-                .Select(c => (c.FieldName, GetNumericalValue(c))).ToList();
+                .Select(c => (c.FieldName, GetNumericalValue(c)))
+                .ToList();
         }
         private void GridView_ShownEditor(object sender, System.EventArgs e)
         {
@@ -1982,10 +1988,12 @@ namespace Analogy.CommonControls.UserControls
             if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
                 Settings.CheckAdditionalInformation)
             {
+                var newFieldCreated = false;
                 foreach (KeyValuePair<string, string> info in message.AdditionalProperties)
                 {
                     if (!CurrentColumnsFields.Exists(c => c.Field == info.Key))
                     {
+                        newFieldCreated = true;
                         if (InvokeRequired)
                         {
                             BeginInvoke(new MethodInvoker(() =>
@@ -2016,6 +2024,11 @@ namespace Analogy.CommonControls.UserControls
                                 ExcludeFilterCriteriaUIOptions.Add(new FilterCriteriaUIOption(info.Key, info.Key, false));
                             }
                         }
+                    }
+
+                    if (newFieldCreated)
+                    {
+                        UpdateSearchColumn();
                     }
                 }
             }
@@ -2323,7 +2336,7 @@ namespace Analogy.CommonControls.UserControls
                 meRawSQL.Text = filter;
                 OnSetRawSQLFilter?.Invoke(this, filter);
                 _messageData.DefaultView.RowFilter = filter;
-                if (!Settings.AutoScrollToLastMessage && Settings.TrackActiveMessage)
+                if (Settings is { AutoScrollToLastMessage: false, TrackActiveMessage: true })
                 {
                     var location = LocateByValue(0, gridColumnObject, SelectedMassage);
                     if (location >= 0)
@@ -3777,6 +3790,10 @@ namespace Analogy.CommonControls.UserControls
             {
                 dockPanel.Visibility = DockVisibility.Hidden;
             }
+        }
+        public void ApplyCollapseFileAndFolderSettings()
+        {
+            CollapseFileAndFolderPanel?.Invoke(this, Settings.CollapseFolderAndFilesPanel);
         }
     }
 }

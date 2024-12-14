@@ -193,6 +193,7 @@ namespace Analogy
         public bool SupportLinuxFormatting { get; set; }
         public bool HideUnknownLogLevel { get; set; }
 
+        public bool CollapseFolderAndFilesPanel { get; set; }
         private Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
 
         public UserSettingsManager(FolderAccessManager folderAccessManager)
@@ -354,6 +355,7 @@ namespace Analogy
             CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
             SupportLinuxFormatting = Settings.Default.SupportLinuxFormatting;
             HideUnknownLogLevel = Settings.Default.HideUnknownLogLevel;
+            CollapseFolderAndFilesPanel = Settings.Default.CollapseFolderAndFilesPanel;
             WindowPositions = !string.IsNullOrEmpty(Settings.Default.WindowPositions)
                 ? ParseSettings<Dictionary<Guid, AnalogyPositionState>>(Settings.Default.WindowPositions)
                 : new Dictionary<Guid, AnalogyPositionState>();
@@ -447,6 +449,7 @@ namespace Analogy
             WindowPositions = settings.WindowPositions;
             SupportLinuxFormatting = settings.SupportLinuxFormatting;
             HideUnknownLogLevel = settings.HideUnknownLogLevel;
+            CollapseFolderAndFilesPanel = settings.CollapseFolderAndFilesPanel;
         }
         private UserSettings CreateUserSettings()
         {
@@ -536,6 +539,7 @@ namespace Analogy
                 CombineOnlineProviders = CombineOnlineProviders,
                 WindowPositions = WindowPositions,
                 SupportLinuxFormatting = SupportLinuxFormatting,
+                CollapseFolderAndFilesPanel = CollapseFolderAndFilesPanel,
             };
             return userSettings;
         }
@@ -714,6 +718,7 @@ namespace Analogy
             Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
             Settings.Default.WindowPositions = JsonConvert.SerializeObject(WindowPositions);
             Settings.Default.SupportLinuxFormatting = SupportLinuxFormatting;
+            Settings.Default.CollapseFolderAndFilesPanel = CollapseFolderAndFilesPanel;
             Settings.Default.Save();
         }
 

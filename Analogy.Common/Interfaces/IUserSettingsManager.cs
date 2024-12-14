@@ -48,6 +48,7 @@ namespace Analogy.Common.Interfaces
         string LogsLayoutFileName { get; }
         bool UseCustomLogsLayout { get; set; }
         bool ViewDetailedMessageWithHTML { get; set; }
+        bool CollapseFolderAndFilesPanel { get; set; }
         TimeSpan TimeOffset { get; set; }
         TimeOffsetType TimeOffsetType { get; set; }
 
