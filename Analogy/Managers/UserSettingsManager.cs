@@ -191,7 +191,7 @@ namespace Analogy
         public bool CombineOfflineProviders { get; set; }
         public bool CombineOnlineProviders { get; set; }
         public bool SupportLinuxFormatting { get; set; }
-
+        public bool CollapseFolderAndFilesPanel { get; set; }
         private Dictionary<Guid, AnalogyPositionState> WindowPositions { get; set; }
 
         public UserSettingsManager(FolderAccessManager folderAccessManager)
@@ -352,6 +352,7 @@ namespace Analogy
             CombineOfflineProviders = Settings.Default.CombineOfflineProviders;
             CombineOnlineProviders = Settings.Default.CombineOnlineProviders;
             SupportLinuxFormatting = Settings.Default.SupportLinuxFormatting;
+            CollapseFolderAndFilesPanel = Settings.Default.CollapseFolderAndFilesPanel;
             WindowPositions = !string.IsNullOrEmpty(Settings.Default.WindowPositions)
                 ? ParseSettings<Dictionary<Guid, AnalogyPositionState>>(Settings.Default.WindowPositions)
                 : new Dictionary<Guid, AnalogyPositionState>();
@@ -444,6 +445,7 @@ namespace Analogy
             CombineOnlineProviders = settings.CombineOnlineProviders;
             WindowPositions = settings.WindowPositions;
             SupportLinuxFormatting = settings.SupportLinuxFormatting;
+            CollapseFolderAndFilesPanel = settings.CollapseFolderAndFilesPanel;
         }
 
         private UserSettings CreateUserSettings()
@@ -534,6 +536,7 @@ namespace Analogy
                 CombineOnlineProviders = CombineOnlineProviders,
                 WindowPositions = WindowPositions,
                 SupportLinuxFormatting = SupportLinuxFormatting,
+                CollapseFolderAndFilesPanel = CollapseFolderAndFilesPanel,
             };
             return userSettings;
         }
@@ -712,6 +715,7 @@ namespace Analogy
             Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
             Settings.Default.WindowPositions = JsonConvert.SerializeObject(WindowPositions);
             Settings.Default.SupportLinuxFormatting = SupportLinuxFormatting;
+            Settings.Default.CollapseFolderAndFilesPanel = CollapseFolderAndFilesPanel;
             Settings.Default.Save();
         }
 

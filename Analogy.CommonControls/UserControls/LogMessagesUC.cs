@@ -102,7 +102,6 @@ namespace Analogy.CommonControls.UserControls
         private List<FilterCriteriaUIOption> IncludeFilterCriteriaUIOptions { get; set; }
         private List<FilterCriteriaUIOption> ExcludeFilterCriteriaUIOptions { get; set; }
         private bool FullModeEnabled { get; set; }
-        private bool CollapseFolderAndFilesPanel { get; set; }
         private bool LoadingInProgress => fileLoadingCount > 0;
         private IUserSettingsManager Settings { get; set; }
         private IExtensionsManager ExtensionManager { get; set; }
@@ -513,8 +512,8 @@ namespace Analogy.CommonControls.UserControls
         {
             bbiCollapseFolderPanel.ItemClick += (sBtnLastPage, e) =>
             {
-                CollapseFolderAndFilesPanel = !CollapseFolderAndFilesPanel;
-                CollapseFileAndFolderPanel?.Invoke(this, CollapseFolderAndFilesPanel);
+                Settings.CollapseFolderAndFilesPanel = !Settings.CollapseFolderAndFilesPanel;
+                CollapseFileAndFolderPanel?.Invoke(this, Settings.CollapseFolderAndFilesPanel);
             };
             sbtnServerSide.Click += async (s, e) =>
             {
@@ -3738,5 +3737,11 @@ namespace Analogy.CommonControls.UserControls
                 dockPanel.Visibility = DockVisibility.Hidden;
             }
         }
+
+        public void ApplyCollapseFileAndFolderSettings()
+        {
+            CollapseFileAndFolderPanel?.Invoke(this, Settings.CollapseFolderAndFilesPanel);
+        }
+
     }
 }
