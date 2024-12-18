@@ -28,17 +28,17 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="7.1.1" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.1.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.LiteDB" Version="0.5.0" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="4.1.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="7.1.0" />
-		<PackageReference Include="Analogy.CommonUtilities" Version="7.1.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="7.2.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="7.1.1" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="7.1.1" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="7.1.0" />
-		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="7.1.0" />
+		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="7.1.0" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="7.1.0" />
