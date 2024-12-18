@@ -27,6 +27,7 @@ Interface -- CommonUtilities -- Template -- WindowsEventLogs
 Interface -- CommonUtilities -- Template -- XMLParser
 Interface -- CommonUtilities -- Template -- WordSearch
 Interface -- CommonUtilities -- Template -- Sqlite
+Interface -- CommonUtilities -- Template -- liteDB
 Interface -- CommonUtilities -- Template -- Elastic.CommonSchema.Serilog
 Interface -- CommonUtilities -- Template -- Analogy.LogViewer.LoggersTree
 Interface -- CommonUtilities -- Template -- Analogy.LogViewer.FFmpeg
