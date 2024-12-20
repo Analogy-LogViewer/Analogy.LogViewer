@@ -13,7 +13,7 @@ namespace Analogy.CommonControls.Forms
     {
         private IUserSettingsManager Settings { get; }
         private static Guid WindowID { get; } = new Guid("12DB3C13-5BB8-4724-ADBA-A83F98539278");
-        public FormMessageDetails()
+        private FormMessageDetails()
         {
             InitializeComponent();
         }

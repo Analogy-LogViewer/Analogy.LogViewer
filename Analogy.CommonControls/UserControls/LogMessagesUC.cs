@@ -91,9 +91,9 @@ namespace Analogy.CommonControls.UserControls
         public bool DoNotAddToRecentHistory { get; set; }
         private PagingManager PagingManager { get; set; }
         private FileProcessor FileProcessor { get; set; }
-        public ManualResetEvent columnAdderSync = new ManualResetEvent(false);
+        public ManualResetEvent columnAdderSync = new(false);
         public List<(string Field, string Caption)> CurrentColumnsFields { get; set; }
-        public CancellationTokenSource CancellationTokenSource { get; set; } = new CancellationTokenSource();
+        public CancellationTokenSource CancellationTokenSource { get; set; } = new();
         public event EventHandler<AnalogyClearedHistoryEventArgs> OnHistoryCleared;
         public event EventHandler<(string, AnalogyLogMessage)> OnFocusedRowChanged;
         private string OldTextInclude = string.Empty;
@@ -107,18 +107,18 @@ namespace Analogy.CommonControls.UserControls
         private IExtensionsManager ExtensionManager { get; set; }
         private IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; set; }
         private IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; set; }
-        private List<int> HighlightRows { get; set; } = new List<int>();
-        private List<string> _excludeMostCommon = new List<string>();
+        private List<int> HighlightRows { get; set; } = new();
+        private List<string> _excludeMostCommon = new();
         public const string DataGridDateColumnName = "Date";
         private bool _realtimeUpdate = true;
-        private ReaderWriterLockSlim lockExternalWindowsObject = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+        private ReaderWriterLockSlim lockExternalWindowsObject = new(LockRecursionPolicy.NoRecursion);
 
         private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
         private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
-        private readonly List<XtraFormLogGrid> _externalWindows = new List<XtraFormLogGrid>();
+        private readonly List<XtraFormLogGrid> _externalWindows = new();
         private ILogger Logger { get; set; }
         private List<XtraFormLogGrid> ExternalWindows
         {
@@ -148,9 +148,9 @@ namespace Analogy.CommonControls.UserControls
             }
         }
         private AnalogyLogMessage? SelectedMassage { get; set; }
-        private readonly FilterCriteriaObject _filterCriteria = new FilterCriteriaObject();
-        private AutoCompleteStringCollection autoCompleteInclude = new AutoCompleteStringCollection();
-        private AutoCompleteStringCollection autoCompleteExclude = new AutoCompleteStringCollection();
+        private readonly FilterCriteriaObject _filterCriteria = new();
+        private AutoCompleteStringCollection autoCompleteInclude = new();
+        private AutoCompleteStringCollection autoCompleteExclude = new();
 
         private List<string> LoadedFiles { get; set; }
         private bool NewDataExist { get; set; }
@@ -220,13 +220,13 @@ namespace Analogy.CommonControls.UserControls
             Id = Guid.NewGuid();
             SetupDependencies();
 
-            PopupControlContainer datePopup = new PopupControlContainer();
+            PopupControlContainer datePopup = new();
             datePopup.Manager = this.barManager1;
             datePopup.Controls.Add(DateTimePicker);
             datePopup.Size = DateTimePicker.Size;
             ddbGoTo.DropDownControl = datePopup;
 
-            PopupControlContainer jsonColumnChooserPopup = new PopupControlContainer();
+            PopupControlContainer jsonColumnChooserPopup = new();
             jsonColumnChooserPopup.Manager = this.barManager1;
             jsonColumnChooserPopup.Controls.Add(JsonColumnChooser);
             jsonColumnChooserPopup.Size = JsonColumnChooser.Size;
@@ -405,7 +405,7 @@ namespace Analogy.CommonControls.UserControls
                 if (!string.IsNullOrEmpty(includeText) || !string.IsNullOrEmpty(excludeText) ||
                     !string.IsNullOrEmpty(source) || !string.IsNullOrEmpty(module))
                 {
-                    AlertButton btn1 = new AlertButton(Resources.Delete_16x16);
+                    AlertButton btn1 = new(Resources.Delete_16x16);
                     btn1.Hint = "Clear Filtering";
                     btn1.Name = "buttonClearFiltering";
                     alertControl1.Buttons.Add(btn1);
@@ -422,7 +422,7 @@ namespace Analogy.CommonControls.UserControls
                                 ceModulesProcess.Checked = ceSources.Checked = false;
                         }
                     };
-                    AlertInfo info = new AlertInfo("Filtering", "old search filters are used. You can clear those with the x button");
+                    AlertInfo info = new("Filtering", "old search filters are used. You can clear those with the x button");
                     alertControl1.Show(this.ParentForm, info);
                 }
             }
@@ -490,7 +490,7 @@ namespace Analogy.CommonControls.UserControls
         private async Task PopulateDataFromServer()
         {
             string text = (string)txtbInclude.EditValue ?? "";
-            List<string> includeTexts = new List<string>() { text };
+            List<string> includeTexts = new() { text };
 
             if (text.Contains('|'))
             {
@@ -503,7 +503,7 @@ namespace Analogy.CommonControls.UserControls
                 includeTexts = split.Select(itm => itm.Trim()).ToList();
             }
 
-            FilterCriteria filter = new FilterCriteria(includeTexts);
+            FilterCriteria filter = new(includeTexts);
             ClearLogs(true);
             await (DataProvider as IAnalogyProviderSidePagingProvider).FetchMessages(0, 10, filter, CancellationToken.None, this);
         }
@@ -526,7 +526,7 @@ namespace Analogy.CommonControls.UserControls
                 var messages = GetMessages();
                 var text = string.Join(Environment.NewLine,
                     messages.Select(m => $"Date:{m.Date} ---- Level:{m.Level} ---- {m.Text}"));
-                using SaveFileDialog saveFileDialog = new SaveFileDialog();
+                using SaveFileDialog saveFileDialog = new();
                 saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -613,11 +613,11 @@ namespace Analogy.CommonControls.UserControls
                 string caption = "Show Selection In Json Viewer";
                 if (!e.Menu.Items.ToList().Exists(i => i.Caption.Equals(caption)))
                 {
-                    DXMenuItem item = new DXMenuItem(caption);
+                    DXMenuItem item = new(caption);
                     item.Click += (_, __) =>
                     {
                         var json = meMessageDetails.SelectedText;
-                        JsonViewerForm j = new JsonViewerForm(json, Settings);
+                        JsonViewerForm j = new(json, Settings);
                         j.Show(this);
                     };
                     e.Menu.Items.Add(item);
@@ -716,7 +716,7 @@ namespace Analogy.CommonControls.UserControls
                 (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
                 if (message != null)
                 {
-                    JsonViewerForm j = new JsonViewerForm(message, Settings);
+                    JsonViewerForm j = new(message, Settings);
                     j.Show(this);
                 }
             };
@@ -752,7 +752,7 @@ namespace Analogy.CommonControls.UserControls
             };
             bBtnShare.ItemClick += (s, e) =>
             {
-                AnalogyOTAForm share = new AnalogyOTAForm(GetFilteredDataTable(), new List<IFactoryContainer>(0), Settings);
+                AnalogyOTAForm share = new(GetFilteredDataTable(), new List<IFactoryContainer>(0), Settings);
                 share.Show(this);
             };
             bbtnReload.ItemClick += async (s, e) =>
@@ -1182,9 +1182,9 @@ namespace Analogy.CommonControls.UserControls
                         var value = view.GetRowCellValue(hitInfo.RowHandle, hitInfo.Column.FieldName);
                         if (value != null)
                         {
-                            ViewColumnFilterInfo viewFilterInfo = new ViewColumnFilterInfo(view.Columns[hitInfo.Column.FieldName],
+                            ViewColumnFilterInfo viewFilterInfo = new(view.Columns[hitInfo.Column.FieldName],
                                 new ColumnFilterInfo($"[{hitInfo.Column.FieldName}] = '{value}'", ""));
-                            string val = new string(value.ToString().Take(100).ToArray());
+                            string val = new(value.ToString().Take(100).ToArray());
                             bbiIncludeColumnHeaderFilter.Caption = $"Set '{val}' as column header filter for column '{hitInfo.Column.Caption}'";
                             bbiIncludeColumnHeaderFilter.Tag = viewFilterInfo;
                             bbiIncludeColumnHeaderFilter.Visibility = BarItemVisibility.Always;
@@ -1297,7 +1297,7 @@ namespace Analogy.CommonControls.UserControls
 
         public void ProcessCmdKeyFromParent(Keys keyData)
         {
-            KeyEventArgs e = new KeyEventArgs(keyData);
+            KeyEventArgs e = new(keyData);
             if (e.Control && e.KeyCode == Keys.D)
             {
                 btswitchMessageDetails.Checked = !btswitchMessageDetails.Checked;
@@ -1362,7 +1362,7 @@ namespace Analogy.CommonControls.UserControls
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            KeyEventArgs e = new KeyEventArgs(keyData);
+            KeyEventArgs e = new(keyData);
             if (e.Control && e.KeyCode == Keys.D)
             {
                 btswitchMessageDetails.Checked = !btswitchMessageDetails.Checked;
@@ -1748,7 +1748,7 @@ namespace Analogy.CommonControls.UserControls
             #region Create and add custom filter criteria to select the records which refer to the current date.
 
             // ALL
-            ColumnFilterInfo fInfo = new ColumnFilterInfo();
+            ColumnFilterInfo fInfo = new();
             e.ComboBox.Items.Insert(index++, new FilterItem(Utils.DateFilterNone, fInfo));
 
             // Today
@@ -2489,7 +2489,7 @@ namespace Analogy.CommonControls.UserControls
             {
                 if (!File.Exists(filename))
                 {
-                    AnalogyLogMessage m = new AnalogyLogMessage($"File {filename} does not exist",
+                    AnalogyLogMessage m = new($"File {filename} does not exist",
                         AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None");
                     AppendMessage(m, "Analogy");
                     continue;
@@ -2613,8 +2613,7 @@ namespace Analogy.CommonControls.UserControls
                             column.Caption.Equals(exColumn.ColumnCaption))
                         {
                             var cellValue = LogGrid.GetRowCellValue(rowHandle, exColumn.ColumnName);
-                            AnalogyCellClickedEventArgs argsForEx =
-                                new AnalogyCellClickedEventArgs(exColumn.ColumnName, cellValue, SelectedMassage);
+                            AnalogyCellClickedEventArgs argsForEx = new(exColumn.ColumnName, cellValue, SelectedMassage);
                             extension.CellClicked(sender, argsForEx);
                         }
                     }
@@ -2640,7 +2639,8 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
+            FormMessageDetails details = new(message, Messages, dataSource, Settings);
+            DataProvider.MessageOpened(message);
             details.Show();
 
             //CreateBookmark();
@@ -2667,7 +2667,8 @@ namespace Analogy.CommonControls.UserControls
                     return;
                 }
 
-                FormMessageDetails details = new FormMessageDetails(message, Messages, dataSource, Settings);
+                FormMessageDetails details = new(message, Messages, dataSource, Settings);
+                DataProvider.MessageOpened(message);
                 details.Show();
             }
         }
@@ -2884,7 +2885,7 @@ namespace Analogy.CommonControls.UserControls
                                 var grid = new GridColumn() { Caption = info.Key, FieldName = info.Key, Name = info.Key, Visible = true };
                                 grid.OptionsColumn.ReadOnly = true;
                                 view.Columns.Add(grid);
-                                DataColumn dt = new DataColumn(info.Key);
+                                DataColumn dt = new(info.Key);
                                 dt.ReadOnly = true;
                                 table.Columns.Add(dt);
                             }
@@ -3036,7 +3037,7 @@ namespace Analogy.CommonControls.UserControls
         {
             if (fileHandler != null && fileHandler.CanSaveToLogFile)
             {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                SaveFileDialog saveFileDialog = new();
                 saveFileDialog.Filter = fileHandler.FileSaveDialogFilters;
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -3073,7 +3074,7 @@ namespace Analogy.CommonControls.UserControls
         {
             if (FileDataProvider != null)
             {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog
+                OpenFileDialog openFileDialog1 = new()
                 {
                     Filter = Utils.GetOpenFilter(FileDataProvider.FileOpenDialogFilters, Settings.EnableCompressedArchives),
                     Title = @"Import file to current view",
@@ -3107,7 +3108,7 @@ namespace Analogy.CommonControls.UserControls
             items = Messages.Select(r => r.Text).ToList();
             lockSlim.ExitReadLock();
 
-            AnalogyExclude ef = new AnalogyExclude(items, _excludeMostCommon, Settings.GetIcon());
+            AnalogyExclude ef = new(items, _excludeMostCommon, Settings.GetIcon());
             if (ef.ShowDialog(this) == DialogResult.OK)
             {
                 _excludeMostCommon = AnalogyExclude.GlobalExclusion;
@@ -3263,7 +3264,7 @@ namespace Analogy.CommonControls.UserControls
         {
             dataProvider = string.Empty;
             var selectedRowHandles = logGrid.GetSelectedRows();
-            List<IAnalogyLogMessage> messages = new List<IAnalogyLogMessage>();
+            List<IAnalogyLogMessage> messages = new();
             for (int i = 0; i < selectedRowHandles.Length; i++)
             {
                 if (selectedRowHandles[i] >= 0)
@@ -3330,7 +3331,7 @@ namespace Analogy.CommonControls.UserControls
         {
             var count = LogGrid.RowCount;
 
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            SaveFileDialog saveFileDialog = new();
             saveFileDialog.Filter = "Excel file XLSX (*.xlsx)|*.xlsx|Excel file XLS (*.XLS)|*.xls";
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -3364,7 +3365,7 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnExportCSV_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            SaveFileDialog saveFileDialog = new();
             saveFileDialog.Filter = "Comma Separated File (*.csv)|*.csv";
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -3376,12 +3377,12 @@ namespace Analogy.CommonControls.UserControls
 
         private void bBtnExportHtml_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            SaveFileDialog saveFileDialog = new();
             saveFileDialog.Filter = "HTML File (*.html)|*.html";
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                HtmlExportOptions op = new HtmlExportOptions();
+                HtmlExportOptions op = new();
                 op.ExportMode = HtmlExportMode.SingleFile;
                 LogGrid.ExportToHtml(saveFileDialog.FileName, op);
                 OpenFolder(saveFileDialog.FileName);
@@ -3413,7 +3414,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new(Settings, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3535,7 +3536,7 @@ namespace Analogy.CommonControls.UserControls
         {
             // find absolute position of the control in the screen.
             Control ctrl = control;
-            Rectangle rect = new Rectangle(Point.Empty, ctrl.Size);
+            Rectangle rect = new(Point.Empty, ctrl.Size);
             do
             {
                 rect.Offset(ctrl.Location);
@@ -3543,7 +3544,7 @@ namespace Analogy.CommonControls.UserControls
             }
             while (ctrl != null);
 
-            Bitmap bmp = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
+            Bitmap bmp = new(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             Graphics g = Graphics.FromImage(bmp);
 
             g.CopyFromScreen(rect.Left, rect.Top, 0, 0, bmp.Size, CopyPixelOperation.SourceCopy);
@@ -3585,7 +3586,7 @@ namespace Analogy.CommonControls.UserControls
             var processes = msg.Select(m => m.Module).Distinct().ToList();
             foreach (string process in processes)
             {
-                XtraFormLogGrid grid = new XtraFormLogGrid(Settings, msg, source, DataProvider, FileDataProvider, process);
+                XtraFormLogGrid grid = new(Settings, msg, source, DataProvider, FileDataProvider, process);
                 lockExternalWindowsObject.EnterWriteLock();
                 _externalWindows.Add(grid);
                 Interlocked.Increment(ref ExternalWindowsCount);
@@ -3665,7 +3666,7 @@ namespace Analogy.CommonControls.UserControls
             filtersPopupMenu.ItemLinks.Clear();
             foreach (PreDefineFilter filter in Settings.PreDefinedQueries.Filters)
             {
-                BarButtonItem item = new BarButtonItem(barManager1, filter.ToString());
+                BarButtonItem item = new(barManager1, filter.ToString());
                 item.ItemClick += (s, arg) =>
                 {
                     SetTextIfDifferent(txtbInclude, filter.IncludeText);
@@ -3705,7 +3706,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            XtraFormLogGrid grid = new XtraFormLogGrid(Settings, msg, source, DataProvider, FileDataProvider);
+            XtraFormLogGrid grid = new(Settings, msg, source, DataProvider, FileDataProvider);
             lockExternalWindowsObject.EnterWriteLock();
             _externalWindows.Add(grid);
             Interlocked.Increment(ref ExternalWindowsCount);
@@ -3767,13 +3768,13 @@ namespace Analogy.CommonControls.UserControls
         {
             if (!File.Exists(filename))
             {
-                AnalogyLogMessage m = new AnalogyLogMessage($"File {filename} does not exist",
+                AnalogyLogMessage m = new($"File {filename} does not exist",
                     AnalogyLogLevel.Critical, AnalogyLogClass.General, "Analogy", "None");
                 AppendMessage(m, "Analogy");
                 return;
             }
 
-            XtraFormLogGrid logGridForm = new XtraFormLogGrid(Settings, FileDataProvider, AnalogyOfflineDataProvider);
+            XtraFormLogGrid logGridForm = new(Settings, FileDataProvider, AnalogyOfflineDataProvider);
             logGridForm.Show(this);
             var processor = new FileProcessor(Settings, logGridForm.LogWindow, FileProcessingManager, Logger);
             await processor.Process(FileDataProvider, filename, new CancellationToken(), true);
