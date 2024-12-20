@@ -3443,7 +3443,8 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, Common.CommonUtils.AnalogyMessageColumn);
+            var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, Common.CommonUtils.AnalogyMessageColumn); 
+            DataProvider.MessageSelected(focusedMassage);
             LoadTextBoxes(focusedMassage);
             if (Settings.InlineJsonViewer)
             {
