@@ -22,7 +22,8 @@
 		<Company>Analogy.LogViewer</Company>
 		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<Platforms>AnyCPU;x64;x86</Platforms>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<Platforms>AnyCPU;x64</Platforms>
 		<GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
 	</PropertyGroup>
 	<ItemGroup>
