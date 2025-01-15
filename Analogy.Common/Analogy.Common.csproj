@@ -47,7 +47,7 @@
 		<PackageReference Include="System.Drawing.Common" Version="9.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
