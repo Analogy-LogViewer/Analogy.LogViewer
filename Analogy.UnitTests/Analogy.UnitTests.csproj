@@ -53,7 +53,7 @@
 		<PackageReference Include="MSTest.TestAdapter" Version="3.7.1" />
 		<PackageReference Include="MSTest.TestFramework" Version="3.7.1" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+		<PackageReference Include="System.Text.Json" Version="9.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Analogy\Analogy.csproj" />
