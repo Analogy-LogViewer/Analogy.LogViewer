@@ -44,7 +44,7 @@
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="7.2.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.1" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 		<PackageReference Include="System.Resources.Extensions" Version="9.0.1" />
