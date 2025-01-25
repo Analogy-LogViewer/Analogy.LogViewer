@@ -30,14 +30,14 @@
 		<PackageReference Include="Analogy.CommonUtilities" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="8.0.0-a2" />
-		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Github" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="8.0.0" />
+		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="8.0.0" />
+		<PackageReference Include="Analogy.LogViewer.Github" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="8.0.0" />
-		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="8.0.0" />
-		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.LiteDB" Version="1.0.0" />
+		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="8.0.0" />
+		<PackageReference Include="Analogy.LogViewer.LiteDB" Version="2.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="4.2.0" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="7.2.0" />
@@ -47,7 +47,6 @@
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="1.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="7.2.0" />
 		<PackageReference Include="LiteDB" Version="5.0.21" />
 		<PackageReference Include="Markdig" Version="0.40.0" />
