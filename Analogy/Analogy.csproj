@@ -28,7 +28,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="8.0.0" />
-		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Example" Version="8.0.0-a2" />
 		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="7.2.0" />
