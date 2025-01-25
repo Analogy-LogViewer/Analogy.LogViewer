@@ -1,4 +1,5 @@
-﻿//using System;
+﻿#pragma warning disable MA0048
+#pragma warning disable SA1602
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 

@@ -121,6 +121,7 @@ namespace Analogy.CommonControls
             };
         }
 
+        public static DateTime GetDateTime(DateTimeOffset dto) => dto.DateTime;
         public static void ChangeOffset(DataTable dataTable, IUserSettingsManager settings)
         {
             dataTable.BeginLoadData();

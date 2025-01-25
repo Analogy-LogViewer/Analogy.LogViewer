@@ -1932,7 +1932,7 @@ namespace Analogy.CommonControls.UserControls
             try
             {
                 lockSlim.EnterWriteLock();
-                if (diffStartTime > DateTime.MinValue)
+                if (diffStartTime > DateTimeOffset.MinValue)
                 {
                     dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
                 }
@@ -2065,7 +2065,7 @@ namespace Analogy.CommonControls.UserControls
 
             foreach (var (dtr, message) in PagingManager.AppendMessages(messages, dataSource))
             {
-                if (diffStartTime > DateTime.MinValue)
+                if (diffStartTime > DateTimeOffset.MinValue)
                 {
                     dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
                 }
@@ -2849,7 +2849,7 @@ namespace Analogy.CommonControls.UserControls
             string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
             AddExtraColumnsIfNeededToTable(_bookmarkedMessages, gridViewBookmarkedMessages, message);
             DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource, Settings.TimeOffsetType, Settings.TimeOffset);
-            if (diffStartTime > DateTime.MinValue)
+            if (diffStartTime > DateTimeOffset.MinValue)
             {
                 dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
             }
@@ -3444,7 +3444,7 @@ namespace Analogy.CommonControls.UserControls
                 return;
             }
 
-            var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, Common.CommonUtils.AnalogyMessageColumn); 
+            var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, Common.CommonUtils.AnalogyMessageColumn);
             DataProvider.MessageSelected(focusedMassage);
             LoadTextBoxes(focusedMassage);
             if (Settings.InlineJsonViewer)
@@ -3628,7 +3628,7 @@ namespace Analogy.CommonControls.UserControls
             if (message != null)
             {
                 //todo: fix this as dateedit
-                deNewerThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
+                deNewerThanFilter.DateTime = Utils.GetDateTime(Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset));
                 ceNewerThanFilter.Checked = true;
             }
         }
@@ -3647,7 +3647,7 @@ namespace Analogy.CommonControls.UserControls
             if (message != null)
             {
                 //todo: fix this as dateedit
-                deOlderThanFilter.DateTime = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset);
+                deOlderThanFilter.DateTime = Utils.GetDateTime(Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset));
                 ceOlderThanFilter.Checked = true;
             }
         }

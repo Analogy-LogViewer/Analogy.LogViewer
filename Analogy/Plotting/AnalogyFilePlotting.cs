@@ -115,7 +115,7 @@ namespace Analogy.Plotting
                             }
                             break;
                         case AnalogyCustomXAxisPlot.DateTimeUnixMillisecond:
-                            DateTime timeMili = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(items[0])).DateTime;
+                            DateTimeOffset timeMili = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(items[0]));
                             for (int i = 1; i < items.Length; i++)
                             {
                                 var str = items[i];
@@ -126,7 +126,7 @@ namespace Analogy.Plotting
                             }
                             break;
                         case AnalogyCustomXAxisPlot.DateTimeUnixSecond:
-                            DateTime timeSecond = DateTimeOffset.FromUnixTimeSeconds(long.Parse(items[0])).DateTime;
+                            DateTimeOffset timeSecond = DateTimeOffset.FromUnixTimeSeconds(long.Parse(items[0]));
                             for (int i = 1; i < items.Length; i++)
                             {
                                 var str = items[i];
