@@ -29,23 +29,23 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.ElasticCommonSchema" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.FFmpeg" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.LiteDB" Version="1.0.0" />
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="4.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="7.2.0" />
-		<PackageReference Include="Analogy.CommonUtilities" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="8.0.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Example" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.Example" Version="8.0.0-a2" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="8.0.0-a1" />
 		<PackageReference Include="Analogy.LogViewer.GitHistory" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.Github" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.gRPC" Version="7.2.0" />
+		<PackageReference Include="Analogy.LogViewer.gRPC" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.WordsSearch" Version="7.2.0" />
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="1.0.0" />
@@ -55,8 +55,8 @@
 		<PackageReference Include="MessagePack" Version="3.1.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1" />
 		<PackageReference Include="Octokit" Version="14.0.0" />
 		<PackageReference Include="System.Drawing.Common" Version="9.0.1" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />

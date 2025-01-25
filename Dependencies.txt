@@ -12,7 +12,6 @@ Interface -- LogServer.Client --         -- Grpc
 Interface -- CommonUtilities -- Template -- Grpc
 
 Interface -- CommonUtilities -- Template -- RegexParser
-Interface -- CommonUtilities -- Template -- RegexParser
 Interface -- CommonUtilities -- Template -- Example
 Interface -- CommonUtilities -- Template -- Plain Text
 Interface -- CommonUtilities -- Template -- GitHistory

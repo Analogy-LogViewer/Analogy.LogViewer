@@ -91,12 +91,12 @@ csharp_style_expression_bodied_operators = false:silent
 csharp_style_expression_bodied_properties = true:silent
 
 # Pattern matching preferences
-csharp_style_pattern_matching_over_as_with_null_check = true
-csharp_style_pattern_matching_over_is_with_cast_check = true
-csharp_style_prefer_extended_property_pattern = true
-csharp_style_prefer_not_pattern = true
-csharp_style_prefer_pattern_matching = true
-csharp_style_prefer_switch_expression = true
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+csharp_style_prefer_extended_property_pattern = true:suggestion
+csharp_style_prefer_not_pattern = true:suggestion
+csharp_style_prefer_pattern_matching = true:silent
+csharp_style_prefer_switch_expression = true:suggestion
 
 # Null-checking preferences
 csharp_style_conditional_delegate_call = true
@@ -275,6 +275,8 @@ dotnet_diagnostic.SA1012.severity = error
 dotnet_diagnostic.SA1500.severity = error
 dotnet_diagnostic.SA1316.severity = error
 dotnet_diagnostic.SA1512.severity = warning
+csharp_prefer_system_threading_lock = true:suggestion
+dotnet_diagnostic.MA0132.severity = error
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
@@ -299,3 +301,4 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:silent
 dotnet_code_quality_unused_parameters = all:suggestion
 dotnet_diagnostic.CA2200.severity = error
 dotnet_diagnostic.CA1012.severity = error
+dotnet_style_namespace_match_folder = true:suggestion

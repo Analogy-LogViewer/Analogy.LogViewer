@@ -43,8 +43,8 @@
 		<Company>Analogy.LogViewer</Company>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="7.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="7.2.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="8.0.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="8.0.0" />
 		<PackageReference Include="Markdig" Version="0.40.0" />
 		<PackageReference Include="MessagePack" Version="3.1.1" />
 		<PackageReference Include="System.Drawing.Common" Version="9.0.1" />
