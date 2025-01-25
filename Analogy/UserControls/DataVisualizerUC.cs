@@ -1,6 +1,7 @@
 ﻿using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors.Controls;
 using System.Collections.Generic;

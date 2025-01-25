@@ -3,6 +3,7 @@ using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;

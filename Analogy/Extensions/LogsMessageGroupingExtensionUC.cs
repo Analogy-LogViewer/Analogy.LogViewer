@@ -2,6 +2,7 @@
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;

@@ -4,6 +4,7 @@ using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;

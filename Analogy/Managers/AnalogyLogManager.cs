@@ -4,6 +4,7 @@ using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.LogLoaders;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace Analogy.Managers
         private List<IAnalogyLogMessage> GetFilteredMessages()
         {
             return messages.Where(m =>
-                    DateTime.Now.Subtract(m.Date).TotalDays <=
+                    DateTimeOffset.Now.Subtract(m.Date).TotalDays <=
                     Settings.AnalogyInternalLogPeriod)
                 .ToList();
         }

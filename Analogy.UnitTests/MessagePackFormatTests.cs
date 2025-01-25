@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.LogLoaders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;

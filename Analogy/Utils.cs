@@ -375,7 +375,7 @@ namespace Analogy
             return string.Empty;
         }
 
-        public static DateTime GetOffsetTime(DateTime time)
+        public static DateTimeOffset GetOffsetTime(DateTimeOffset time)
         {
             return Settings.TimeOffsetType switch
             {

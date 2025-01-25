@@ -154,10 +154,10 @@ namespace Analogy.CommonControls.UserControls
 
         private List<string> LoadedFiles { get; set; }
         private bool NewDataExist { get; set; }
-        private DateTime reloadDateTime = DateTime.MaxValue;
+        private DateTimeOffset reloadDateTime = DateTimeOffset.MaxValue;
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
-        private DateTime diffStartTime = DateTime.MinValue;
+        private DateTimeOffset diffStartTime = DateTimeOffset.MinValue;
         private bool BookmarkView;
         private CancellationTokenSource filterTokenSource;
         private CancellationToken filterToken;
@@ -3686,7 +3686,7 @@ namespace Analogy.CommonControls.UserControls
             bbtnReload.Visibility = BarItemVisibility.Always;
         }
 
-        public void SetReloadColorDate(DateTime value) => reloadDateTime = value;
+        public void SetReloadColorDate(DateTimeOffset value) => reloadDateTime = value;
 
         private void bBtnSaveCurrentSelectionCustomFormat_ItemClick(object sender, ItemClickEventArgs e)
         {
