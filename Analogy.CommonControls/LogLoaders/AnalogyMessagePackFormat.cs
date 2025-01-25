@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using MessagePack;
 using System;
 using System.Collections.Generic;

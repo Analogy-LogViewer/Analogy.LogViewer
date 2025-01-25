@@ -1,6 +1,7 @@
 ﻿using Analogy.Common.Interfaces;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

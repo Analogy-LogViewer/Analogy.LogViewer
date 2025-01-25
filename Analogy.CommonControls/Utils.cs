@@ -109,7 +109,7 @@ namespace Analogy.CommonControls
                    filename.EndsWith(".zip", StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public static DateTime GetOffsetTime(DateTime time, TimeOffsetType timeOffsetType, TimeSpan customOffset)
+        public static DateTimeOffset GetOffsetTime(DateTimeOffset time, TimeOffsetType timeOffsetType, TimeSpan customOffset)
         {
             return timeOffsetType switch
             {

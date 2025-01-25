@@ -1,5 +1,6 @@
 ﻿using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;

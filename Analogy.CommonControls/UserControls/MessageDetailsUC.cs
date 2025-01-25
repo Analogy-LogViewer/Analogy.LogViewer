@@ -2,6 +2,7 @@
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.Tools;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
 using Markdig;
 using System;

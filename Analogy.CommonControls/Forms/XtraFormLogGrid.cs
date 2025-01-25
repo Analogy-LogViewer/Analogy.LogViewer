@@ -3,6 +3,7 @@ using Analogy.CommonControls.Interfaces;
 using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;

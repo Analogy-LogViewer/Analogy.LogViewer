@@ -2,6 +2,7 @@
 using Analogy.Common.Interfaces;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;

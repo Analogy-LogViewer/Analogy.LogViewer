@@ -1,6 +1,7 @@
 ﻿using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Analogy.Common.DataTypes
     public class FileProcessor
     {
         public event EventHandler<string> OnFileReadingFinished;
-        public DateTime lastNewestMessage;
+        public DateTimeOffset lastNewestMessage;
         private IUserSettingsManager Settings { get; }
         private ILogMessageCreatedHandler DataWindow { get; }
         private FileProcessingManager FileProcessingManager { get; }

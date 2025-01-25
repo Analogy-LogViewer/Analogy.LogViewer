@@ -2,6 +2,7 @@
 using Analogy.CommonControls.DataTypes;
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors.Controls;
 using Microsoft.Extensions.Logging;
