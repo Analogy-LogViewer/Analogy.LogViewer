@@ -76,7 +76,7 @@ namespace Analogy.CommonControls
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
-            dtr["Date"] = GetOffsetTime(message.Date, timeOffsetType, customOffset);
+            dtr["Date"] = GetOffsetTime(message.Date, timeOffsetType, customOffset).DateTime;
             dtr["Text"] = message.Text ?? "";
             dtr["Source"] = message.Source ?? "";
             dtr["Level"] = message.Level;
