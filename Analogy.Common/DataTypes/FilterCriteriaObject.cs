@@ -183,8 +183,7 @@ namespace Analogy.Common.DataTypes
                 sqlString.Append($" {andOr} Level in (" + sTemp + ")");
             }
 
-            string dateFilter = $" AND (Date >= '{StartTime}' and Date <= '{EndTime}')";
-
+            string dateFilter = $" AND (DateTimestamp >= '{StartTime.Ticks}' and DateTimestamp <= '{EndTime.Ticks}')";
             sqlString.Append(dateFilter);
 
             if (includeTexts.Any() && !SearchEverywhere)

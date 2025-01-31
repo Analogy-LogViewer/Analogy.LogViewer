@@ -76,7 +76,9 @@ namespace Analogy.CommonControls
         {
             var dtr = table.NewRow();
             dtr.BeginEdit();
-            dtr["Date"] = GetOffsetTime(message.Date, timeOffsetType, customOffset).DateTime;
+            var dto = GetOffsetTime(message.Date, timeOffsetType, customOffset);
+            dtr["Date"] = dto;
+            dtr["DateTimestamp"] = dto.Ticks;
             dtr["Text"] = message.Text ?? "";
             dtr["Source"] = message.Source ?? "";
             dtr["Level"] = message.Level;
@@ -139,7 +141,8 @@ namespace Analogy.CommonControls
         public static DataTable DataTableConstructor()
         {
             DataTable dtb = new DataTable();
-            dtb.Columns.Add(new DataColumn("Date", typeof(DateTime)));
+            dtb.Columns.Add(new DataColumn("Date", typeof(DateTimeOffset)));
+            dtb.Columns.Add(new DataColumn("DateTimestamp", typeof(long)));
             dtb.Columns.Add(new DataColumn("TimeDiff", typeof(string)));
             dtb.Columns.Add(new DataColumn("Text", typeof(string)));
             dtb.Columns.Add(new DataColumn("Source", typeof(string)));
