@@ -170,7 +170,7 @@ namespace Analogy
         public TimeOffsetType TimeOffsetType { get; set; }
 
         /// <summary>
-        /// delay in seconds
+        /// delay in seconds.
         /// </summary>
         public int FilePoolingDelayInterval { get; set; }
 

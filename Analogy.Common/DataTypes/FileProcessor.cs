@@ -221,7 +221,7 @@ namespace Analogy.Common.DataTypes
         private static string GetFileNameAsDataSource(string fileName)
         {
             string file = Path.GetFileName(fileName);
-            return fileName != null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
+            return fileName is not null && fileName.Equals(file) ? fileName : $"{file} ({fileName})";
         }
         private static bool IsCompressedArchive(string filename)
         {

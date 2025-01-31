@@ -104,15 +104,14 @@ namespace Analogy.CommonControls.UserControls
 
         private async void BtnAdd_Click(object sender, EventArgs e)
         {
-            string column = CmbColumns.SelectedItem as string;
-            if (column == null)
+            if (CmbColumns.SelectedItem is not string column)
             {
                 return;
             }
 
-            if (!ActiveColumns.Contains(column))
+            if (!ActiveColumns.Contains(column, StringComparer.InvariantCultureIgnoreCase))
             {
-                AddSeries(column);
+                await AddSeries(column);
             }
         }
 
