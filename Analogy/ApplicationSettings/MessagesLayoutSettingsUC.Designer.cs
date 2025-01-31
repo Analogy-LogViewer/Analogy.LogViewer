@@ -53,6 +53,8 @@ namespace Analogy.ApplicationSettings
             this.lblHeader = new DevExpress.XtraEditors.LabelControl();
             this.sbtnHeaderSet = new DevExpress.XtraEditors.SimpleButton();
             this.teHeader = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cbOffsetType = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timeSpanEditOffset.Properties)).BeginInit();
@@ -62,10 +64,13 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teHeader.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOffsetType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl5
             // 
+            this.groupControl5.Controls.Add(this.cbOffsetType);
+            this.groupControl5.Controls.Add(this.labelControl2);
             this.groupControl5.Controls.Add(this.timeSpanEditOffset);
             this.groupControl5.Controls.Add(this.labelControl1);
             this.groupControl5.Controls.Add(this.sbtnDateTimeFormat);
@@ -79,7 +84,7 @@ namespace Analogy.ApplicationSettings
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Margin = new System.Windows.Forms.Padding(10);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(1120, 359);
+            this.groupControl5.Size = new System.Drawing.Size(1120, 389);
             this.groupControl5.TabIndex = 11;
             this.groupControl5.Text = "Messages Layout";
             // 
@@ -88,12 +93,12 @@ namespace Analogy.ApplicationSettings
             this.timeSpanEditOffset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timeSpanEditOffset.EditValue = System.TimeSpan.Parse("00:00:00");
-            this.timeSpanEditOffset.Location = new System.Drawing.Point(118, 325);
+            this.timeSpanEditOffset.Location = new System.Drawing.Point(145, 325);
             this.timeSpanEditOffset.Name = "timeSpanEditOffset";
             this.timeSpanEditOffset.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.timeSpanEditOffset.Properties.MaskSettings.Set("allowNegativeValues", true);
-            this.timeSpanEditOffset.Size = new System.Drawing.Size(997, 22);
+            this.timeSpanEditOffset.Size = new System.Drawing.Size(970, 22);
             this.timeSpanEditOffset.TabIndex = 18;
             // 
             // labelControl1
@@ -117,9 +122,9 @@ namespace Analogy.ApplicationSettings
             // 
             this.teDateTimeFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.teDateTimeFormat.Location = new System.Drawing.Point(118, 295);
+            this.teDateTimeFormat.Location = new System.Drawing.Point(145, 295);
             this.teDateTimeFormat.Name = "teDateTimeFormat";
-            this.teDateTimeFormat.Size = new System.Drawing.Size(882, 22);
+            this.teDateTimeFormat.Size = new System.Drawing.Size(855, 22);
             this.teDateTimeFormat.TabIndex = 13;
             // 
             // labelControl11
@@ -339,7 +344,7 @@ namespace Analogy.ApplicationSettings
             this.gridColumnUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumnUser.OptionsColumn.ReadOnly = true;
             this.gridColumnUser.Visible = true;
-            this.gridColumnUser.VisibleIndex = 8;
+            this.gridColumnUser.VisibleIndex = 7;
             this.gridColumnUser.Width = 115;
             // 
             // gridColumnModule
@@ -366,10 +371,10 @@ namespace Analogy.ApplicationSettings
             this.gridColumnObject.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumnObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
-            this.gridColumnObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
+            this.gridColumnObject.Caption = "4b7128b6-1021-4081-aaf9-f7b583bbd80e";
+            this.gridColumnObject.FieldName = "4b7128b6-1021-4081-aaf9-f7b583bbd80e";
             this.gridColumnObject.MinWidth = 24;
-            this.gridColumnObject.Name = Common.CommonUtils.AnalogyMessageColumn;
+            this.gridColumnObject.Name = "gridColumnObject";
             this.gridColumnObject.OptionsColumn.AllowEdit = false;
             this.gridColumnObject.OptionsColumn.AllowFocus = false;
             this.gridColumnObject.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -397,7 +402,7 @@ namespace Analogy.ApplicationSettings
             this.gridColumnProcessID.OptionsColumn.ReadOnly = true;
             this.gridColumnProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.gridColumnProcessID.Visible = true;
-            this.gridColumnProcessID.VisibleIndex = 9;
+            this.gridColumnProcessID.VisibleIndex = 8;
             this.gridColumnProcessID.Width = 115;
             // 
             // gridColumnThread
@@ -407,7 +412,7 @@ namespace Analogy.ApplicationSettings
             this.gridColumnThread.MinWidth = 25;
             this.gridColumnThread.Name = "gridColumnThread";
             this.gridColumnThread.Visible = true;
-            this.gridColumnThread.VisibleIndex = 10;
+            this.gridColumnThread.VisibleIndex = 9;
             this.gridColumnThread.Width = 109;
             // 
             // lblHeader
@@ -436,6 +441,24 @@ namespace Analogy.ApplicationSettings
             this.teHeader.Size = new System.Drawing.Size(994, 22);
             this.teHeader.TabIndex = 9;
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(7, 355);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(113, 16);
+            this.labelControl2.TabIndex = 19;
+            this.labelControl2.Text = "Default offset Type:";
+            // 
+            // cbOffsetType
+            // 
+            this.cbOffsetType.Location = new System.Drawing.Point(145, 353);
+            this.cbOffsetType.Name = "cbOffsetType";
+            this.cbOffsetType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbOffsetType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbOffsetType.Size = new System.Drawing.Size(198, 22);
+            this.cbOffsetType.TabIndex = 20;
+            // 
             // MessagesLayoutSettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -454,6 +477,7 @@ namespace Analogy.ApplicationSettings
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teHeader.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbOffsetType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -484,5 +508,7 @@ namespace Analogy.ApplicationSettings
         private DevExpress.XtraEditors.TextEdit teHeader;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TimeSpanEdit timeSpanEditOffset;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.ComboBoxEdit cbOffsetType;
     }
 }

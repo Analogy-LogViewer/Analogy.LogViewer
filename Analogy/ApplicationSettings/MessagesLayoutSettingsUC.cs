@@ -1,4 +1,6 @@
-﻿using Analogy.Common.Interfaces;
+﻿using Analogy.Common.DataTypes;
+using Analogy.Common.Interfaces;
+using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
@@ -14,6 +16,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Analogy.ApplicationSettings
 {
@@ -30,6 +33,12 @@ namespace Analogy.ApplicationSettings
 
         private void MessagesLayoutSettingsUC_Load(object sender, EventArgs e)
         {
+            cbOffsetType.Properties.Items.AddRange(Enum.GetValues(typeof(TimeOffsetType)));
+            cbOffsetType.SelectedItem = Settings.TimeOffsetType;
+            cbOffsetType.SelectedIndexChanged += (s, e) =>
+            {
+                Settings.TimeOffsetType = (TimeOffsetType)cbOffsetType.SelectedItem;
+            };
             LoadSettings();
             SetupEventsHandlers();
             if (File.Exists(Settings.LogGridFileName))

@@ -706,7 +706,7 @@ namespace Analogy
             Settings.Default.LogsLayoutFileName = LogsLayoutFileName;
             Settings.Default.ViewDetailedMessageWithHTML = ViewDetailedMessageWithHTML;
             Settings.Default.MainFormType = MainFormType.ToString();
-            Settings.Default.TimeOffsetType = TimeOffsetType.None.ToString();
+            Settings.Default.TimeOffsetType = TimeOffsetType.ToString();
             Settings.Default.DefaultUserLogFolder = DefaultUserLogFolder;
             Settings.Default.TimeOffset = TimeOffset.TotalMilliseconds;
             Settings.Default.FilePoolingDelayInterval = FilePoolingDelayInterval;
