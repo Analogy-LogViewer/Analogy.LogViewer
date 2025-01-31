@@ -43,7 +43,7 @@
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="8.0.0" />
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="8.0.0-a1" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="2.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="8.0.0" />
