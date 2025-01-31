@@ -57,7 +57,9 @@ namespace Analogy.ApplicationSettings
         {
             DataRow dtr = messageData.NewRow();
             dtr.BeginEdit();
-            dtr["Date"] = DateTime.Now;
+            var date = DateTimeOffset.Now;
+            dtr["Date"] = date;
+            dtr["DateTimestamp"] = date.Ticks;
             dtr["Text"] = text;
             dtr["Source"] = "Analogy";
             dtr["Level"] = AnalogyLogLevel.Information;
@@ -115,9 +117,16 @@ namespace Analogy.ApplicationSettings
 
             sbtnDateTimeFormat.Click += (s, e) =>
             {
-                logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
-                logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
-                Settings.DateTimePattern = teDateTimeFormat.Text;
+                try
+                {
+                    logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+                    logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
+                    Settings.DateTimePattern = teDateTimeFormat.Text;
+                }
+                catch (Exception exception)
+                {
+                    XtraMessageBox.Show("Invalid format", "Invalid format");
+                }
             };
         }
 
