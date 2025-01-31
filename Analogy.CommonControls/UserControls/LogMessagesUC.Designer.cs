@@ -436,6 +436,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.documentMessages.Caption = "Logs";
             this.documentMessages.ControlName = "dockPanelLogs";
+            this.documentMessages.ControlTypeName = null;
             this.documentMessages.FloatLocation = new System.Drawing.Point(0, 0);
             this.documentMessages.FloatSize = new System.Drawing.Size(200, 200);
             this.documentMessages.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
@@ -532,7 +533,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridColumnDate.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
             this.gridColumnDate.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.gridColumnDate.Caption = "Date";
-            this.gridColumnDate.DisplayFormat.FormatString = "yyyy.MM.dd HH:mm:ss.ff";
+            this.gridColumnDate.DisplayFormat.FormatString = "yyyy.MM.dd HH:mm:ss.fffffff";
             this.gridColumnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumnDate.FieldName = "Date";
             this.gridColumnDate.MinWidth = 24;
@@ -2495,13 +2496,11 @@ namespace Analogy.CommonControls.UserControls
             // 
             // lblPageNumber
             // 
-            this.lblPageNumber.AllowHotTrack = false;
             this.lblPageNumber.Location = new System.Drawing.Point(1448, 207);
             this.lblPageNumber.Name = "lblPageNumber";
             this.lblPageNumber.Size = new System.Drawing.Size(55, 31);
             this.lblPageNumber.Text = "Page 1/1";
             this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
             // 
             // layoutControlItem26
             // 
