@@ -540,6 +540,7 @@ namespace Analogy
                 WindowPositions = WindowPositions,
                 SupportLinuxFormatting = SupportLinuxFormatting,
                 CollapseFolderAndFilesPanel = CollapseFolderAndFilesPanel,
+                HideUnknownLogLevel = HideUnknownLogLevel,
             };
             return userSettings;
         }
@@ -692,8 +693,7 @@ namespace Analogy
             Settings.Default.ShowMessageDetails = ShowMessageDetails;
             Settings.Default.AdvancedMode = AdvancedMode;
             Settings.Default.AdvancedModeRawSQLFilterEnabled = AdvancedModeRawSQLFilterEnabled;
-            Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled =
-                AdvancedModeAdditionalFilteringColumnsEnabled;
+            Settings.Default.AdvancedModeAdditionalFilteringColumnsEnabled = AdvancedModeAdditionalFilteringColumnsEnabled;
             Settings.Default.LogLevelSelection = LogLevelSelection.ToString();
             Settings.Default.ShowWhatIsNewAtStartup = ShowWhatIsNewAtStartup;
             Settings.Default.FontSettings = JsonConvert.SerializeObject(FontSettings);
@@ -718,6 +718,7 @@ namespace Analogy
             Settings.Default.CombineOnlineProviders = CombineOnlineProviders;
             Settings.Default.WindowPositions = JsonConvert.SerializeObject(WindowPositions);
             Settings.Default.SupportLinuxFormatting = SupportLinuxFormatting;
+            Settings.Default.HideUnknownLogLevel = HideUnknownLogLevel;
             Settings.Default.CollapseFolderAndFilesPanel = CollapseFolderAndFilesPanel;
             Settings.Default.Save();
         }
