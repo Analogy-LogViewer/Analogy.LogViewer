@@ -99,7 +99,6 @@ namespace Analogy.CommonControls.UserControls
             this.barTopFiltering = new DevExpress.XtraBars.Bar();
             this.bbiCollapseFolderPanel = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnClearLog = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnRemoveBoomark = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btswitchMessageDetails = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.btswitchRefreshLog = new DevExpress.XtraBars.BarToggleSwitchItem();
@@ -143,13 +142,6 @@ namespace Analogy.CommonControls.UserControls
             this.btsViewAsHTML = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.bbtnRawMessageViewer = new DevExpress.XtraBars.BarButtonItem();
             this.sbarMessageInfo = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.barBookmark = new DevExpress.XtraBars.Bar();
-            this.bbiSaveBookmarks = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnopyBookmarked = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnCopyAllBookmarks = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.bBtnGoToMessage = new DevExpress.XtraBars.BarButtonItem();
-            this.sbarBookmarks = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barGroup = new DevExpress.XtraBars.Bar();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bstaticTotalMessages = new DevExpress.XtraBars.BarStaticItem();
@@ -170,8 +162,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiDiffTime = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDatetiemFilterFrom = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDatetiemFilterTo = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiBookmarkNonPersist = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiBookmarkPersist = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCopyMessage = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCopyAllMessages = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddNoteToMessage = new DevExpress.XtraBars.BarButtonItem();
@@ -251,21 +241,6 @@ namespace Analogy.CommonControls.UserControls
             this.lblPageNumber = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             this.chkLstLogLevel = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.gridControlBookmarkedMessages = new DevExpress.XtraGrid.GridControl();
-            this.gridViewBookmarkedMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumnBookmarkDataSource = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkText = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkSource = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkLevel = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkClass = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkCategory = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkUser = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkModule = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkAudit = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkObject = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnBookmarkMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.imageListBottom = new System.Windows.Forms.ImageList(this.components);
             this.tmrNewData = new System.Windows.Forms.Timer(this.components);
             this.ceFilterPanelFilter = new DevExpress.XtraEditors.CheckEdit();
@@ -292,14 +267,11 @@ namespace Analogy.CommonControls.UserControls
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelLogs = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanelDetails = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelMessageInfo = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.scMessageDetails = new DevExpress.XtraEditors.SplitContainerControl();
             this.meMessageDetails = new DevExpress.XtraEditors.MemoEdit();
             this.recMessageDetails = new DevExpress.XtraRichEdit.RichEditControl();
-            this.dockPanelBookmarks = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelFiltering = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer2 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.xtabFilters = new DevExpress.XtraTab.XtraTabControl();
@@ -378,8 +350,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.lblPageNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelSearch.Properties)).BeginInit();
             this.pnlExtraFilters.SuspendLayout();
@@ -403,7 +373,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanelLogs.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
-            this.dockPanelDetails.SuspendLayout();
             this.dockPanelMessageInfo.SuspendLayout();
             this.controlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).BeginInit();
@@ -413,8 +382,6 @@ namespace Analogy.CommonControls.UserControls
             this.scMessageDetails.Panel2.SuspendLayout();
             this.scMessageDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meMessageDetails.Properties)).BeginInit();
-            this.dockPanelBookmarks.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
             this.dockPanelFiltering.SuspendLayout();
             this.controlContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtabFilters)).BeginInit();
@@ -799,7 +766,6 @@ namespace Analogy.CommonControls.UserControls
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.barTopFiltering,
             this.barMessage,
-            this.barBookmark,
             this.barGroup,
             this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -808,7 +774,6 @@ namespace Analogy.CommonControls.UserControls
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockControls.Add(this.bdcTopFiltering);
             this.barManager1.DockControls.Add(this.sbarMessageInfo);
-            this.barManager1.DockControls.Add(this.sbarBookmarks);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btswitchMessageDetails,
@@ -821,11 +786,6 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnButtomExpand,
             this.bBtnCopyButtom,
             this.btSwitchExpandButtomMessage,
-            this.bBtnopyBookmarked,
-            this.barButtonItem4,
-            this.bBtnGoToMessage,
-            this.bBtnRemoveBoomark,
-            this.bBtnCopyAllBookmarks,
             this.btsAutoScrollToBottom,
             this.bSMExports,
             this.bBtnExportExcel,
@@ -849,8 +809,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiDiffTime,
             this.bbiDatetiemFilterFrom,
             this.bbiDatetiemFilterTo,
-            this.bbiBookmarkNonPersist,
-            this.bbiBookmarkPersist,
             this.bbiCopyMessage,
             this.bbiCopyAllMessages,
             this.bbiAddNoteToMessage,
@@ -864,7 +822,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiDecreaseFontSize,
             this.bbiIncludeSource,
             this.bbiIncludeModule,
-            this.bbiSaveBookmarks,
             this.bbiJsonViewer,
             this.bbtnCancel,
             this.bstaticTotalMessages,
@@ -904,7 +861,6 @@ namespace Analogy.CommonControls.UserControls
             this.barTopFiltering.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCollapseFolderPanel),
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnRemoveBoomark),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnReload),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchMessageDetails),
             new DevExpress.XtraBars.LinkPersistInfo(this.btswitchRefreshLog),
@@ -942,17 +898,6 @@ namespace Analogy.CommonControls.UserControls
             this.bBtnClearLog.Name = "bBtnClearLog";
             this.bBtnClearLog.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bBtnClearLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnClearLog_ItemClick);
-            // 
-            // bBtnRemoveBoomark
-            // 
-            this.bBtnRemoveBoomark.Caption = "Delete message";
-            this.bBtnRemoveBoomark.Id = 15;
-            this.bBtnRemoveBoomark.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.DeleteDataSource2_16x16;
-            this.bBtnRemoveBoomark.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Database_off;
-            this.bBtnRemoveBoomark.Name = "bBtnRemoveBoomark";
-            this.bBtnRemoveBoomark.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnRemoveBoomark.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bBtnRemoveBoomark.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnRemoveBoomark_ItemClick);
             // 
             // bbtnReload
             // 
@@ -1374,84 +1319,6 @@ namespace Analogy.CommonControls.UserControls
             this.sbarMessageInfo.Size = new System.Drawing.Size(1845, 30);
             this.sbarMessageInfo.Text = "standaloneBarDockControl1";
             // 
-            // barBookmark
-            // 
-            this.barBookmark.BarName = "Boommarks";
-            this.barBookmark.DockCol = 0;
-            this.barBookmark.DockRow = 0;
-            this.barBookmark.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.barBookmark.FloatLocation = new System.Drawing.Point(166, 593);
-            this.barBookmark.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSaveBookmarks),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnopyBookmarked),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnCopyAllBookmarks),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bBtnGoToMessage)});
-            this.barBookmark.OptionsBar.AllowCollapse = true;
-            this.barBookmark.OptionsBar.AllowDelete = true;
-            this.barBookmark.OptionsBar.AllowQuickCustomization = false;
-            this.barBookmark.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
-            this.barBookmark.OptionsBar.DisableClose = true;
-            this.barBookmark.OptionsBar.DisableCustomization = true;
-            this.barBookmark.OptionsBar.UseWholeRow = true;
-            this.barBookmark.StandaloneBarDockControl = this.sbarBookmarks;
-            this.barBookmark.Text = "Custom 5";
-            // 
-            // bbiSaveBookmarks
-            // 
-            this.bbiSaveBookmarks.Caption = "Save Bookmarks";
-            this.bbiSaveBookmarks.Id = 61;
-            this.bbiSaveBookmarks.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Save_16x16;
-            this.bbiSaveBookmarks.Name = "bbiSaveBookmarks";
-            this.bbiSaveBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // bBtnopyBookmarked
-            // 
-            this.bBtnopyBookmarked.Caption = "Copy Selected Message";
-            this.bBtnopyBookmarked.Id = 12;
-            this.bBtnopyBookmarked.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
-            this.bBtnopyBookmarked.Name = "bBtnopyBookmarked";
-            this.bBtnopyBookmarked.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnopyBookmarked.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnopyBookmarked_ItemClick);
-            // 
-            // bBtnCopyAllBookmarks
-            // 
-            this.bBtnCopyAllBookmarks.Caption = "Copy all messages in grid";
-            this.bBtnCopyAllBookmarks.Id = 16;
-            this.bBtnCopyAllBookmarks.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Copy_16x16;
-            this.bBtnCopyAllBookmarks.Name = "bBtnCopyAllBookmarks";
-            this.bBtnCopyAllBookmarks.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnCopyAllBookmarks.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnCopyAllBookmarks_ItemClick);
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Clear Bookmarks";
-            this.barButtonItem4.Id = 13;
-            this.barButtonItem4.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Clear_16x16;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
-            // 
-            // bBtnGoToMessage
-            // 
-            this.bBtnGoToMessage.Caption = "Go To Message";
-            this.bBtnGoToMessage.Id = 14;
-            this.bBtnGoToMessage.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.GoToPreviousHeaderFooter_16x16;
-            this.bBtnGoToMessage.Name = "bBtnGoToMessage";
-            this.bBtnGoToMessage.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bBtnGoToMessage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnGoToMessage_ItemClick);
-            // 
-            // sbarBookmarks
-            // 
-            this.sbarBookmarks.AutoSize = true;
-            this.sbarBookmarks.CausesValidation = false;
-            this.sbarBookmarks.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sbarBookmarks.Location = new System.Drawing.Point(0, 0);
-            this.sbarBookmarks.Manager = this.barManager1;
-            this.sbarBookmarks.Name = "sbarBookmarks";
-            this.sbarBookmarks.Size = new System.Drawing.Size(1845, 30);
-            this.sbarBookmarks.Text = "standaloneBarDockControl1";
-            // 
             // barGroup
             // 
             this.barGroup.BarName = "Counts";
@@ -1630,22 +1497,6 @@ namespace Analogy.CommonControls.UserControls
             this.bbiDatetiemFilterTo.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Time2_16x16;
             this.bbiDatetiemFilterTo.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.Time2_32x32;
             this.bbiDatetiemFilterTo.Name = "bbiDatetiemFilterTo";
-            // 
-            // bbiBookmarkNonPersist
-            // 
-            this.bbiBookmarkNonPersist.Caption = "Bookmark this message (Non persist)";
-            this.bbiBookmarkNonPersist.Id = 46;
-            this.bbiBookmarkNonPersist.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_16x16;
-            this.bbiBookmarkNonPersist.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_32x32;
-            this.bbiBookmarkNonPersist.Name = "bbiBookmarkNonPersist";
-            // 
-            // bbiBookmarkPersist
-            // 
-            this.bbiBookmarkPersist.Caption = "Bookmark this message for later user (Persist)";
-            this.bbiBookmarkPersist.Id = 47;
-            this.bbiBookmarkPersist.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_16x16;
-            this.bbiBookmarkPersist.ImageOptions.LargeImage = global::Analogy.CommonControls.Properties.Resources.RichEditBookmark_32x32;
-            this.bbiBookmarkPersist.Name = "bbiBookmarkPersist";
             // 
             // bbiCopyMessage
             // 
@@ -2531,313 +2382,6 @@ namespace Analogy.CommonControls.UserControls
             this.chkLstLogLevel.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chkLstLogLevel_ItemCheck);
             this.chkLstLogLevel.SelectedIndexChanged += new System.EventHandler(this.chkLstLogLevel_SelectedIndexChanged);
             // 
-            // gridControlBookmarkedMessages
-            // 
-            this.gridControlBookmarkedMessages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlBookmarkedMessages.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControlBookmarkedMessages.Location = new System.Drawing.Point(0, 30);
-            this.gridControlBookmarkedMessages.MainView = this.gridViewBookmarkedMessages;
-            this.gridControlBookmarkedMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControlBookmarkedMessages.Name = "gridControlBookmarkedMessages";
-            this.gridControlBookmarkedMessages.Size = new System.Drawing.Size(1845, 106);
-            this.gridControlBookmarkedMessages.TabIndex = 3;
-            this.gridControlBookmarkedMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewBookmarkedMessages});
-            this.gridControlBookmarkedMessages.DoubleClick += new System.EventHandler(this.gridControlBookmarkedMessages_DoubleClick);
-            // 
-            // gridViewBookmarkedMessages
-            // 
-            this.gridViewBookmarkedMessages.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridViewBookmarkedMessages.Appearance.OddRow.Options.UseBackColor = true;
-            this.gridViewBookmarkedMessages.Appearance.Row.Options.UseTextOptions = true;
-            this.gridViewBookmarkedMessages.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridViewBookmarkedMessages.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridViewBookmarkedMessages.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.gridViewBookmarkedMessages.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumnBookmarkDataSource,
-            this.gridColumnBookmarkDate,
-            this.gridColumnBookmarkText,
-            this.gridColumnBookmarkSource,
-            this.gridColumnBookmarkLevel,
-            this.gridColumnBookmarkClass,
-            this.gridColumnBookmarkCategory,
-            this.gridColumnBookmarkUser,
-            this.gridColumnBookmarkModule,
-            this.gridColumnBookmarkAudit,
-            this.gridColumnBookmarkObject,
-            this.gridColumnBookmarkProcessID,
-            this.gridColumnBookmarkMachineName});
-            this.gridViewBookmarkedMessages.DetailHeight = 431;
-            this.gridViewBookmarkedMessages.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridViewBookmarkedMessages.GridControl = this.gridControlBookmarkedMessages;
-            this.gridViewBookmarkedMessages.Images = this.imageList;
-            this.gridViewBookmarkedMessages.IndicatorWidth = 24;
-            this.gridViewBookmarkedMessages.Name = "gridViewBookmarkedMessages";
-            this.gridViewBookmarkedMessages.OptionsBehavior.Editable = false;
-            this.gridViewBookmarkedMessages.OptionsCustomization.AllowGroup = false;
-            this.gridViewBookmarkedMessages.OptionsFilter.AllowColumnMRUFilterList = false;
-            this.gridViewBookmarkedMessages.OptionsFilter.AllowMRUFilterList = false;
-            this.gridViewBookmarkedMessages.OptionsLayout.Columns.StoreAllOptions = true;
-            this.gridViewBookmarkedMessages.OptionsLayout.Columns.StoreAppearance = true;
-            this.gridViewBookmarkedMessages.OptionsLayout.StoreAllOptions = true;
-            this.gridViewBookmarkedMessages.OptionsLayout.StoreAppearance = true;
-            this.gridViewBookmarkedMessages.OptionsLayout.StoreFormatRules = true;
-            this.gridViewBookmarkedMessages.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridViewBookmarkedMessages.OptionsView.AutoCalcPreviewLineCount = true;
-            this.gridViewBookmarkedMessages.OptionsView.ColumnAutoWidth = false;
-            this.gridViewBookmarkedMessages.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridViewBookmarkedMessages.OptionsView.EnableAppearanceOddRow = true;
-            this.gridViewBookmarkedMessages.OptionsView.RowAutoHeight = true;
-            this.gridViewBookmarkedMessages.OptionsView.ShowAutoFilterRow = true;
-            this.gridViewBookmarkedMessages.OptionsView.ShowGroupPanel = false;
-            this.gridViewBookmarkedMessages.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.LogGrid_CustomDrawRowIndicator);
-            // 
-            // gridColumnBookmarkDataSource
-            // 
-            this.gridColumnBookmarkDataSource.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkDataSource.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkDataSource.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkDataSource.Caption = "Data Source";
-            this.gridColumnBookmarkDataSource.FieldName = "DataProvider";
-            this.gridColumnBookmarkDataSource.MinWidth = 24;
-            this.gridColumnBookmarkDataSource.Name = "gridColumnBookmarkDataSource";
-            this.gridColumnBookmarkDataSource.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkDataSource.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkDataSource.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkDataSource.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkDataSource.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkDataSource.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkDataSource.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnBookmarkDataSource.Visible = true;
-            this.gridColumnBookmarkDataSource.VisibleIndex = 0;
-            this.gridColumnBookmarkDataSource.Width = 175;
-            // 
-            // gridColumnBookmarkDate
-            // 
-            this.gridColumnBookmarkDate.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkDate.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkDate.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkDate.Caption = "Date";
-            this.gridColumnBookmarkDate.DisplayFormat.FormatString = "yyyy.MM.dd HH:mm:ss.ff";
-            this.gridColumnBookmarkDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumnBookmarkDate.FieldName = "Date";
-            this.gridColumnBookmarkDate.MinWidth = 24;
-            this.gridColumnBookmarkDate.Name = "gridColumnBookmarkDate";
-            this.gridColumnBookmarkDate.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkDate.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkDate.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkDate.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkDate.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkDate.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkDate.OptionsFilter.AllowAutoFilter = false;
-            this.gridColumnBookmarkDate.Visible = true;
-            this.gridColumnBookmarkDate.VisibleIndex = 1;
-            this.gridColumnBookmarkDate.Width = 164;
-            // 
-            // gridColumnBookmarkText
-            // 
-            this.gridColumnBookmarkText.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkText.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkText.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkText.Caption = "Text";
-            this.gridColumnBookmarkText.FieldName = "Text";
-            this.gridColumnBookmarkText.MinWidth = 24;
-            this.gridColumnBookmarkText.Name = "gridColumnBookmarkText";
-            this.gridColumnBookmarkText.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkText.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkText.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkText.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkText.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkText.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkText.OptionsFilter.AllowFilter = false;
-            this.gridColumnBookmarkText.Visible = true;
-            this.gridColumnBookmarkText.VisibleIndex = 2;
-            this.gridColumnBookmarkText.Width = 290;
-            // 
-            // gridColumnBookmarkSource
-            // 
-            this.gridColumnBookmarkSource.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkSource.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkSource.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkSource.Caption = "Source";
-            this.gridColumnBookmarkSource.FieldName = "Source";
-            this.gridColumnBookmarkSource.MinWidth = 24;
-            this.gridColumnBookmarkSource.Name = "gridColumnBookmarkSource";
-            this.gridColumnBookmarkSource.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkSource.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkSource.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkSource.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkSource.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkSource.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkSource.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnBookmarkSource.Visible = true;
-            this.gridColumnBookmarkSource.VisibleIndex = 5;
-            this.gridColumnBookmarkSource.Width = 234;
-            // 
-            // gridColumnBookmarkLevel
-            // 
-            this.gridColumnBookmarkLevel.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkLevel.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkLevel.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkLevel.Caption = "Level";
-            this.gridColumnBookmarkLevel.FieldName = "Level";
-            this.gridColumnBookmarkLevel.MinWidth = 24;
-            this.gridColumnBookmarkLevel.Name = "gridColumnBookmarkLevel";
-            this.gridColumnBookmarkLevel.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkLevel.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkLevel.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkLevel.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkLevel.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkLevel.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkLevel.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnBookmarkLevel.Visible = true;
-            this.gridColumnBookmarkLevel.VisibleIndex = 6;
-            this.gridColumnBookmarkLevel.Width = 115;
-            // 
-            // gridColumnBookmarkClass
-            // 
-            this.gridColumnBookmarkClass.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkClass.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkClass.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkClass.Caption = "Class";
-            this.gridColumnBookmarkClass.FieldName = "Class";
-            this.gridColumnBookmarkClass.MinWidth = 24;
-            this.gridColumnBookmarkClass.Name = "gridColumnBookmarkClass";
-            this.gridColumnBookmarkClass.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkClass.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkClass.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkClass.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkClass.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkClass.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkClass.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnBookmarkClass.Visible = true;
-            this.gridColumnBookmarkClass.VisibleIndex = 7;
-            this.gridColumnBookmarkClass.Width = 115;
-            // 
-            // gridColumnBookmarkCategory
-            // 
-            this.gridColumnBookmarkCategory.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkCategory.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkCategory.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkCategory.Caption = "Category";
-            this.gridColumnBookmarkCategory.FieldName = "Category";
-            this.gridColumnBookmarkCategory.MinWidth = 24;
-            this.gridColumnBookmarkCategory.Name = "gridColumnBookmarkCategory";
-            this.gridColumnBookmarkCategory.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkCategory.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkCategory.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkCategory.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkCategory.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkCategory.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkCategory.Visible = true;
-            this.gridColumnBookmarkCategory.VisibleIndex = 8;
-            this.gridColumnBookmarkCategory.Width = 115;
-            // 
-            // gridColumnBookmarkUser
-            // 
-            this.gridColumnBookmarkUser.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkUser.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkUser.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkUser.Caption = "User";
-            this.gridColumnBookmarkUser.FieldName = "User";
-            this.gridColumnBookmarkUser.MinWidth = 24;
-            this.gridColumnBookmarkUser.Name = "gridColumnBookmarkUser";
-            this.gridColumnBookmarkUser.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkUser.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkUser.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkUser.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkUser.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkUser.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkUser.Visible = true;
-            this.gridColumnBookmarkUser.VisibleIndex = 9;
-            this.gridColumnBookmarkUser.Width = 115;
-            // 
-            // gridColumnBookmarkModule
-            // 
-            this.gridColumnBookmarkModule.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkModule.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkModule.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkModule.Caption = "Module";
-            this.gridColumnBookmarkModule.FieldName = "Module";
-            this.gridColumnBookmarkModule.MinWidth = 24;
-            this.gridColumnBookmarkModule.Name = "gridColumnBookmarkModule";
-            this.gridColumnBookmarkModule.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkModule.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkModule.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkModule.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkModule.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkModule.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkModule.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnBookmarkModule.Visible = true;
-            this.gridColumnBookmarkModule.VisibleIndex = 10;
-            this.gridColumnBookmarkModule.Width = 115;
-            // 
-            // gridColumnBookmarkAudit
-            // 
-            this.gridColumnBookmarkAudit.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkAudit.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkAudit.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkAudit.Caption = "Audit";
-            this.gridColumnBookmarkAudit.FieldName = "Audit";
-            this.gridColumnBookmarkAudit.MinWidth = 24;
-            this.gridColumnBookmarkAudit.Name = "gridColumnBookmarkAudit";
-            this.gridColumnBookmarkAudit.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkAudit.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkAudit.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkAudit.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkAudit.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkAudit.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkAudit.Visible = true;
-            this.gridColumnBookmarkAudit.VisibleIndex = 3;
-            this.gridColumnBookmarkAudit.Width = 115;
-            // 
-            // gridColumnBookmarkObject
-            // 
-            this.gridColumnBookmarkObject.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkObject.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkObject.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkObject.MinWidth = 24;
-            this.gridColumnBookmarkObject.Name = "gridColumnBookmarkObject";
-            this.gridColumnBookmarkObject.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkObject.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkObject.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkObject.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkObject.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkObject.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkObject.OptionsColumn.ShowCaption = false;
-            this.gridColumnBookmarkObject.OptionsColumn.ShowInCustomizationForm = false;
-            this.gridColumnBookmarkObject.Width = 87;
-            // 
-            // gridColumnBookmarkProcessID
-            // 
-            this.gridColumnBookmarkProcessID.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            this.gridColumnBookmarkProcessID.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            this.gridColumnBookmarkProcessID.Caption = "Process ID";
-            this.gridColumnBookmarkProcessID.FieldName = "ProcessId";
-            this.gridColumnBookmarkProcessID.MinWidth = 24;
-            this.gridColumnBookmarkProcessID.Name = "gridColumnBookmarkProcessID";
-            this.gridColumnBookmarkProcessID.OptionsColumn.AllowEdit = false;
-            this.gridColumnBookmarkProcessID.OptionsColumn.AllowFocus = false;
-            this.gridColumnBookmarkProcessID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkProcessID.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumnBookmarkProcessID.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumnBookmarkProcessID.OptionsColumn.ReadOnly = true;
-            this.gridColumnBookmarkProcessID.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
-            this.gridColumnBookmarkProcessID.Visible = true;
-            this.gridColumnBookmarkProcessID.VisibleIndex = 4;
-            this.gridColumnBookmarkProcessID.Width = 115;
-            // 
-            // gridColumnBookmarkMachineName
-            // 
-            this.gridColumnBookmarkMachineName.Caption = "Machine Name";
-            this.gridColumnBookmarkMachineName.FieldName = "MachineName";
-            this.gridColumnBookmarkMachineName.MinWidth = 25;
-            this.gridColumnBookmarkMachineName.Name = "gridColumnBookmarkMachineName";
-            this.gridColumnBookmarkMachineName.Visible = true;
-            this.gridColumnBookmarkMachineName.VisibleIndex = 11;
-            this.gridColumnBookmarkMachineName.Width = 94;
-            // 
             // imageListBottom
             // 
             this.imageListBottom.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListBottom.ImageStream")));
@@ -3036,8 +2580,6 @@ namespace Analogy.CommonControls.UserControls
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDiffTime),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterFrom),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterTo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarkNonPersist),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarkPersist),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiJsonViewer),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCopyMessage),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCopyAllMessages),
@@ -3085,7 +2627,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockManager1.Form = this;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.dockPanelLogs,
-            this.dockPanelDetails,
+            this.dockPanelMessageInfo,
             this.dockPanelFiltering,
             this.dockPanelTree});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
@@ -3121,41 +2663,28 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanel2_Container.Size = new System.Drawing.Size(1647, 248);
             this.dockPanel2_Container.TabIndex = 0;
             // 
-            // dockPanelDetails
-            // 
-            this.dockPanelDetails.ActiveChild = this.dockPanelMessageInfo;
-            this.dockPanelDetails.Controls.Add(this.dockPanelMessageInfo);
-            this.dockPanelDetails.Controls.Add(this.dockPanelBookmarks);
-            this.dockPanelDetails.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.dockPanelDetails.FloatSize = new System.Drawing.Size(428, 200);
-            this.dockPanelDetails.ID = new System.Guid("ac1a6167-81e4-42f6-b999-c394cc58516b");
-            this.dockPanelDetails.Location = new System.Drawing.Point(0, 523);
-            this.dockPanelDetails.Name = "dockPanelDetails";
-            this.dockPanelDetails.OriginalSize = new System.Drawing.Size(200, 204);
-            this.dockPanelDetails.Size = new System.Drawing.Size(1853, 204);
-            this.dockPanelDetails.Tabbed = true;
-            this.dockPanelDetails.Text = "dockPanelDetails";
-            // 
             // dockPanelMessageInfo
             // 
             this.dockPanelMessageInfo.Controls.Add(this.controlContainer1);
-            this.dockPanelMessageInfo.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.dockPanelMessageInfo.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
             this.dockPanelMessageInfo.FloatSize = new System.Drawing.Size(428, 200);
             this.dockPanelMessageInfo.ID = new System.Guid("476f3ac6-a99d-4213-81ee-71700997df5e");
-            this.dockPanelMessageInfo.Location = new System.Drawing.Point(4, 34);
+            this.dockPanelMessageInfo.Location = new System.Drawing.Point(0, 523);
             this.dockPanelMessageInfo.Name = "dockPanelMessageInfo";
             this.dockPanelMessageInfo.Options.ShowCloseButton = false;
-            this.dockPanelMessageInfo.OriginalSize = new System.Drawing.Size(1843, 141);
-            this.dockPanelMessageInfo.Size = new System.Drawing.Size(1845, 136);
+            this.dockPanelMessageInfo.OriginalSize = new System.Drawing.Size(200, 204);
+            this.dockPanelMessageInfo.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.dockPanelMessageInfo.SavedIndex = 1;
+            this.dockPanelMessageInfo.Size = new System.Drawing.Size(1853, 204);
             this.dockPanelMessageInfo.Text = "Message Info";
             // 
             // controlContainer1
             // 
             this.controlContainer1.Controls.Add(this.scMessageDetails);
             this.controlContainer1.Controls.Add(this.sbarMessageInfo);
-            this.controlContainer1.Location = new System.Drawing.Point(0, 0);
+            this.controlContainer1.Location = new System.Drawing.Point(4, 34);
             this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(1845, 136);
+            this.controlContainer1.Size = new System.Drawing.Size(1845, 166);
             this.controlContainer1.TabIndex = 0;
             // 
             // scMessageDetails
@@ -3174,7 +2703,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.scMessageDetails.Panel2.Controls.Add(this.recMessageDetails);
             this.scMessageDetails.Panel2.Text = "Panel2";
-            this.scMessageDetails.Size = new System.Drawing.Size(1845, 106);
+            this.scMessageDetails.Size = new System.Drawing.Size(1845, 136);
             this.scMessageDetails.SplitterPosition = 783;
             this.scMessageDetails.TabIndex = 6;
             // 
@@ -3184,7 +2713,7 @@ namespace Analogy.CommonControls.UserControls
             this.meMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.meMessageDetails.MenuManager = this.barManager1;
             this.meMessageDetails.Name = "meMessageDetails";
-            this.meMessageDetails.Size = new System.Drawing.Size(783, 106);
+            this.meMessageDetails.Size = new System.Drawing.Size(783, 136);
             this.meMessageDetails.TabIndex = 0;
             // 
             // recMessageDetails
@@ -3195,29 +2724,8 @@ namespace Analogy.CommonControls.UserControls
             this.recMessageDetails.Location = new System.Drawing.Point(0, 0);
             this.recMessageDetails.MenuManager = this.barManager1;
             this.recMessageDetails.Name = "recMessageDetails";
-            this.recMessageDetails.Size = new System.Drawing.Size(1050, 106);
+            this.recMessageDetails.Size = new System.Drawing.Size(1050, 136);
             this.recMessageDetails.TabIndex = 4;
-            // 
-            // dockPanelBookmarks
-            // 
-            this.dockPanelBookmarks.Controls.Add(this.dockPanel1_Container);
-            this.dockPanelBookmarks.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.dockPanelBookmarks.FloatSize = new System.Drawing.Size(699, 204);
-            this.dockPanelBookmarks.ID = new System.Guid("4840b804-35ee-475a-bd26-b12c47dc3c17");
-            this.dockPanelBookmarks.Location = new System.Drawing.Point(4, 34);
-            this.dockPanelBookmarks.Name = "dockPanelBookmarks";
-            this.dockPanelBookmarks.OriginalSize = new System.Drawing.Size(1843, 141);
-            this.dockPanelBookmarks.Size = new System.Drawing.Size(1845, 136);
-            this.dockPanelBookmarks.Text = "Bookmarks";
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Controls.Add(this.gridControlBookmarkedMessages);
-            this.dockPanel1_Container.Controls.Add(this.sbarBookmarks);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(1845, 136);
-            this.dockPanel1_Container.TabIndex = 0;
             // 
             // dockPanelFiltering
             // 
@@ -3331,7 +2839,7 @@ namespace Analogy.CommonControls.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dockPanelTree);
             this.Controls.Add(this.dockPanelFiltering);
-            this.Controls.Add(this.dockPanelDetails);
+            this.Controls.Add(this.dockPanelMessageInfo);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -3409,8 +2917,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.lblPageNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLstLogLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlBookmarkedMessages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewBookmarkedMessages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceFilterPanelSearch.Properties)).EndInit();
             this.pnlExtraFilters.ResumeLayout(false);
@@ -3435,7 +2941,6 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelLogs.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
-            this.dockPanelDetails.ResumeLayout(false);
             this.dockPanelMessageInfo.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             this.controlContainer1.PerformLayout();
@@ -3446,9 +2951,6 @@ namespace Analogy.CommonControls.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.scMessageDetails)).EndInit();
             this.scMessageDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.meMessageDetails.Properties)).EndInit();
-            this.dockPanelBookmarks.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
-            this.dockPanel1_Container.PerformLayout();
             this.dockPanelFiltering.ResumeLayout(false);
             this.controlContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtabFilters)).EndInit();
@@ -3481,20 +2983,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnProcessID;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Timer tmrNewData;
-        private DevExpress.XtraGrid.GridControl gridControlBookmarkedMessages;
-        private GridView gridViewBookmarkedMessages;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkDataSource;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkDate;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkText;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkSource;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkLevel;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkClass;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkCategory;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkUser;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkModule;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkAudit;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkObject;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkProcessID;
         private System.Windows.Forms.ImageList imageListBottom;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTimeDiff;
         private DevExpress.XtraBars.StandaloneBarDockControl bdcTopFiltering;
@@ -3518,12 +3006,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarButtonItem bBtnButtomExpand;
         private DevExpress.XtraBars.BarButtonItem bBtnCopyButtom;
         private DevExpress.XtraBars.BarToggleSwitchItem btSwitchExpandButtomMessage;
-        private DevExpress.XtraBars.Bar barBookmark;
-        private DevExpress.XtraBars.BarButtonItem bBtnopyBookmarked;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem bBtnGoToMessage;
-        private DevExpress.XtraBars.BarButtonItem bBtnRemoveBoomark;
-        private DevExpress.XtraBars.BarButtonItem bBtnCopyAllBookmarks;
         private DevExpress.XtraEditors.SimpleButton sbtnPageFirst;
         private DevExpress.XtraEditors.SimpleButton sBtnPageNext;
         private DevExpress.XtraEditors.SimpleButton sBtnLastPage;
@@ -3561,7 +3043,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarButtonItem bBtnFullGrid;
         private DevExpress.XtraBars.BarButtonItem bbtnReload;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMachineName;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumnBookmarkMachineName;
         private DevExpress.XtraBars.BarButtonItem bBtnSaveCurrentSelectionCustomFormat;
         private DevExpress.XtraBars.BarButtonItem bBtnSaveCurrentSelectionAnalogyFormat;
         private DevExpress.XtraBars.BarButtonItem bBtnUndockSelection;
@@ -3582,8 +3063,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarButtonItem bbiDiffTime;
         private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterFrom;
         private DevExpress.XtraBars.BarButtonItem bbiDatetiemFilterTo;
-        private DevExpress.XtraBars.BarButtonItem bbiBookmarkNonPersist;
-        private DevExpress.XtraBars.BarButtonItem bbiBookmarkPersist;
         private DevExpress.XtraBars.BarButtonItem bbiCopyMessage;
         private DevExpress.XtraBars.BarButtonItem bbiCopyAllMessages;
         private DevExpress.XtraBars.BarButtonItem bbiAddNoteToMessage;
@@ -3597,7 +3076,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.BarButtonItem bbiDecreaseFontSize;
         private DevExpress.XtraBars.BarButtonItem bbiIncludeSource;
         private DevExpress.XtraBars.BarButtonItem bbiIncludeModule;
-        private DevExpress.XtraBars.BarButtonItem bbiSaveBookmarks;
         private DevExpress.XtraBars.BarButtonItem bbiJsonViewer;
         private DevExpress.Utils.ToolTipController defaultToolTipController;
         private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
@@ -3608,8 +3086,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document documentMessages;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelLogs;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanelBookmarks;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
         private DevExpress.XtraBars.BarButtonItem bbtnCancel;
@@ -3622,9 +3098,7 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraBars.Docking.ControlContainer controlContainer1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanelTreeContainer;
         private DevExpress.XtraBars.StandaloneBarDockControl sbarMessageInfo;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanelDetails;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelTree;
-        private DevExpress.XtraBars.StandaloneBarDockControl sbarBookmarks;
         private DevExpress.XtraEditors.PanelControl pnlLevel;
         private DevExpress.XtraEditors.PanelControl pnlLevelFilteringType;
         private DevExpress.XtraEditors.CheckEdit ceLogLevelOr;
