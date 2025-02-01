@@ -164,17 +164,16 @@ namespace Analogy
                 f.ShowDialog();
             }
 
-            var bm = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
             var fpm = ServicesProvider.Instance.GetService<FileProcessingManager>();
             NotificationManager nm = ServicesProvider.Instance.GetService<NotificationManager>();
             AnalogyOnDemandPlottingManager pm = ServicesProvider.Instance.GetService<AnalogyOnDemandPlottingManager>();
             if (Settings.MainFormType == MainFormType.RibbonForm)
             {
-                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, bm, up, fpm, nm, fa, pm));
+                Application.Run(new MainForm(FactoriesManager, ExtensionsManager, up, fpm, nm, fa, pm));
             }
             else
             {
-                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, bm, up, fpm, nm, fa, pm));
+                Application.Run(new FluentDesignMainForm(FactoriesManager, ExtensionsManager, up, fpm, nm, fa, pm));
             }
         }
 
@@ -191,7 +190,6 @@ namespace Analogy
             services.AddSingleton<AnalogyBuiltInFactory>();
             services.AddSingleton<IFactoriesManager, FactoriesManager>();
             services.AddSingleton<IExtensionsManager, ExtensionsManager>();
-            services.AddSingleton<BookmarkPersistManager>();
             services.AddSingleton<UpdateManager>();
             services.AddSingleton<FileProcessingManager>();
             services.AddSingleton<NotificationManager>();

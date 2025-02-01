@@ -58,7 +58,6 @@ namespace Analogy.Forms
         private bool preventExit;
         private IAnalogyUserSettings Settings => ServicesProvider.Instance.GetService<IAnalogyUserSettings>();
         private bool Initialized { get; set; }
-        private BookmarkPersistManager BookmarkPersistManager { get; }
         private UpdateManager UpdateManager { get; }
         private FileProcessingManager FileProcessingManager { get; }
         private NotificationManager NotificationManager { get; }
@@ -66,13 +65,11 @@ namespace Analogy.Forms
         private AnalogyOnDemandPlottingManager PlottingManager { get; }
 
         public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
-            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager,
-            FileProcessingManager fileProcessingManager, NotificationManager notificationManager,
-            IAnalogyFoldersAccess foldersAccess, AnalogyOnDemandPlottingManager plottingManager)
+            UpdateManager updateManager, FileProcessingManager fileProcessingManager,
+            NotificationManager notificationManager, IAnalogyFoldersAccess foldersAccess, AnalogyOnDemandPlottingManager plottingManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
-            BookmarkPersistManager = bookmarkPersistManager;
             UpdateManager = updateManager;
             FileProcessingManager = fileProcessingManager;
             NotificationManager = notificationManager;
@@ -139,7 +136,6 @@ namespace Analogy.Forms
                 Settings.Save(UpdateManager.CurrentVersion.ToString(4));
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
-                BookmarkPersistManager.SaveFile();
                 FactoriesManager.ShutDownAllFactories();
             }
         }
@@ -587,8 +583,6 @@ namespace Analogy.Forms
                     Show();
                 }
             };
-
-            bbiBookmarks.ItemClick += (s, e) => OpenBookmarkLog();
         }
 
         private async Task OpenOfflineLogs(RibbonPage? ribbonPage, string[] filenames,
@@ -775,30 +769,13 @@ namespace Analogy.Forms
         private void bBtnClientServer_ItemClick(object sender, ItemClickEventArgs e)
         {
         }
-
-        private void bBtnBookmarked_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenBookmarkLog();
-        }
-
-        private void OpenBookmarkLog()
-        {
-            OpenedWindows++;
-            var bookmarkLog = new BookmarkLog();
-            var page = dockManager1.AddPanel(DockingStyle.Float);
-            page.DockedAsTabbedDocument = true;
-            page.Controls.Add(bookmarkLog);
-            bookmarkLog.Dock = DockStyle.Fill;
-            page.Text = $"Analogy Bookmarked logs #{OpenedWindows}";
-            dockManager1.ActivePanel = page;
-        }
         private void bBtnCompareLogs_ItemClick(object sender, ItemClickEventArgs e)
         {
         }
 
         private void CreateDataSource(FactoryContainer fc, int position)
         {
-            if (fc.Factory.Title == null)
+            if (fc.Factory.Title is null)
             {
                 return;
             }

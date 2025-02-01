@@ -115,7 +115,6 @@ namespace Analogy.CommonControls.UserControls
 
         private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
-        private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new();
@@ -139,14 +138,6 @@ namespace Analogy.CommonControls.UserControls
             }
         }
         private int ExternalWindowsCount;
-
-        private List<IAnalogyLogMessage> BookmarkedMessages
-        {
-            get
-            {
-                return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (IAnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
-            }
-        }
         private AnalogyLogMessage? SelectedMassage { get; set; }
         private readonly FilterCriteriaObject _filterCriteria = new();
         private AutoCompleteStringCollection autoCompleteInclude = new();
@@ -158,7 +149,6 @@ namespace Analogy.CommonControls.UserControls
         private bool hasAnyInPlaceExtensions;
         private bool hasAnyUserControlExtensions;
         private DateTimeOffset diffStartTime = DateTimeOffset.MinValue;
-        private bool BookmarkView;
         private CancellationTokenSource filterTokenSource;
         private CancellationToken filterToken;
         private int PageNumber => PagingManager.CurrentPageNumber;
@@ -205,7 +195,6 @@ namespace Analogy.CommonControls.UserControls
 
         private JsonTreeUC JsonTreeView { get; set; }
         private IFactoriesManager FactoriesManager { get; set; }
-        private BookmarkPersistManager BookmarkPersistManager { get; } = ServicesProvider.Instance.GetService<BookmarkPersistManager>();
         private FileProcessingManager FileProcessingManager { get; } = ServicesProvider.Instance.GetService<FileProcessingManager>();
         public LogMessagesUC()
         {
@@ -358,7 +347,6 @@ namespace Analogy.CommonControls.UserControls
 
             LoadReplacementHeaders();
             HideColumns();
-            BookmarkModeUI();
 
             if (!string.IsNullOrEmpty(Settings.LogsLayoutFileName) && File.Exists(Settings.LogsLayoutFileName))
             {
@@ -373,8 +361,6 @@ namespace Analogy.CommonControls.UserControls
             SetupEventsHandlers();
 
             gridControl.DataSource = _messageData.DefaultView;
-            _bookmarkedMessages = Utils.DataTableConstructor();
-            gridControlBookmarkedMessages.DataSource = _bookmarkedMessages;
             if (Settings.SaveSearchFilters)
             {
                 if (Settings.IncludeText == txtbInclude.Properties.NullText)
@@ -730,8 +716,6 @@ namespace Analogy.CommonControls.UserControls
             bbiAddNoteToMessage.ItemClick += tsmiAddCommentToMessage_Click;
             bbiCopyAllMessages.ItemClick += tsmiCopyMessages_Click;
             bbiCopyMessage.ItemClick += tsmiCopy_Click;
-            bbiBookmarkPersist.ItemClick += tsmiBookmarkPersist_Click;
-            bbiBookmarkNonPersist.ItemClick += tsmiBookmark_Click;
             bbiDatetiemFilterTo.ItemClick += tsmiDateFilterOlder_Click;
             bbiDatetiemFilterFrom.ItemClick += tsmiDateFilterNewer_Click;
             btsiInlineJsonViewer.CheckedChanged += (s, e) =>
@@ -760,7 +744,6 @@ namespace Analogy.CommonControls.UserControls
                 reloadDateTime = FileProcessor.lastNewestMessage;
                 await LoadFilesAsync(LoadedFiles, true, true);
             };
-            bbiSaveBookmarks.ItemClick += (_, __) => SaveMessagesToLog(FileDataProvider, BookmarkedMessages);
 
             #endregion
             #region textboxes
@@ -934,7 +917,6 @@ namespace Analogy.CommonControls.UserControls
             logGrid.SelectionChanged += LogGridView_SelectionChanged;
             logGrid.FocusedRowChanged += logGrid_FocusedRowChanged;
             logGrid.ColumnPositionChanged += LogGrid_ColumnPositionChanged;
-            gridViewBookmarkedMessages.RowStyle += LogGridView_RowStyle;
             #endregion
             ceFilterPanelFilter.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
             ceFilterPanelSearch.CheckStateChanged += rgSearchMode_SelectedIndexChanged;
@@ -1104,7 +1086,6 @@ namespace Analogy.CommonControls.UserControls
         private void RefreshTimeOffset()
         {
             PagingManager.UpdateOffsets();
-            Utils.ChangeOffset(_bookmarkedMessages, Settings);
         }
 
         private void EditValueChanged(object sender, EventArgs e)
@@ -1466,7 +1447,6 @@ namespace Analogy.CommonControls.UserControls
             gridColumnProcessID.FieldName = Common.CommonUtils.ColumnProcessId;
             gridColumnModule.FieldName = Common.CommonUtils.ColumnModule;
             gridColumnRawText.FieldName = Common.CommonUtils.ColumnRawText;
-            gridColumnBookmarkObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
             gridColumnObject.Caption = Common.CommonUtils.AnalogyMessageColumn;
             gridColumnObject.Name = Common.CommonUtils.AnalogyMessageColumn;
             gridColumnObject.FieldName = Common.CommonUtils.AnalogyMessageColumn;
@@ -1495,9 +1475,7 @@ namespace Analogy.CommonControls.UserControls
             if (File.Exists(Settings.LogGridFileName))
             {
                 gridControl.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
-                gridControlBookmarkedMessages.MainView.RestoreLayoutFromXml(Settings.LogGridFileName);
             }
-            dockPanelBookmarks.Visibility = DockVisibility.Hidden;
             Utils.SetLogLevel(chkLstLogLevel);
             tmrNewData.Interval = (int)(Settings.RealTimeRefreshInterval * 1000);
 
@@ -1553,8 +1531,6 @@ namespace Analogy.CommonControls.UserControls
             logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
             logGrid.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
 
-            gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
-            gridViewBookmarkedMessages.Columns["Date"].DisplayFormat.FormatString = Settings.DateTimePattern;
             btsiInlineJsonViewer.Checked = Settings.InlineJsonViewer;
             bbiJsonColumn.Visibility = Settings.InlineJsonViewer ? BarItemVisibility.Always : BarItemVisibility.Never;
             spltcMessages.PanelVisibility = Settings.InlineJsonViewer ? SplitPanelVisibility.Both : SplitPanelVisibility.Panel1;
@@ -1567,15 +1543,6 @@ namespace Analogy.CommonControls.UserControls
                 ? SplitPanelVisibility.Panel1
                 : SplitPanelVisibility.Panel2;
         }
-        private void BookmarkModeUI()
-        {
-            if (BookmarkView)
-            {
-                bBtnRemoveBoomark.Visibility = BarItemVisibility.Always;
-                bBtnImport.Visibility = BarItemVisibility.Never;
-            }
-        }
-
         private async Task LoadExtensions()
         {
             var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetComponentId == DataProvider.Id)
@@ -2524,11 +2491,6 @@ namespace Analogy.CommonControls.UserControls
             recMessageDetails.Text = string.Empty;
             recMessageDetails.HtmlText = string.Empty;
             meMessageDetails.Text = string.Empty;
-            if (BookmarkView)
-            {
-                BookmarkPersistManager.ClearBookmarks();
-            }
-
             lockSlim.ExitWriteLock();
         }
 
@@ -2820,55 +2782,6 @@ namespace Analogy.CommonControls.UserControls
                 AcceptChanges(false);
             }
         }
-
-        private void gridControlBookmarkedMessages_DoubleClick(object sender, EventArgs e)
-        {
-            if (!(e is DXMouseEventArgs args))
-            {
-                return;
-            }
-
-            GoToBookmarkedMessage();
-        }
-
-        private void tsmiBookmark_Click(object sender, EventArgs e)
-        {
-            CreateBookmark(false);
-        }
-
-        private void CreateBookmark(bool persists)
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            int[] selRows = LogGrid.GetSelectedRows();
-            if (message == null)
-            {
-                return;
-            }
-
-            lockSlim.EnterWriteLock();
-            string dataSource = (string)LogGrid.GetRowCellValue(selRows.First(), "DataProvider") ?? string.Empty;
-            AddExtraColumnsIfNeededToTable(_bookmarkedMessages, gridViewBookmarkedMessages, message);
-            DataRow dtr = Utils.CreateRow(_bookmarkedMessages, message, dataSource, Settings.TimeOffsetType, Settings.TimeOffset);
-            if (diffStartTime > DateTimeOffset.MinValue)
-            {
-                dtr["TimeDiff"] = Utils.GetOffsetTime(message.Date, Settings.TimeOffsetType, Settings.TimeOffset).Subtract(diffStartTime).ToString();
-            }
-
-            _bookmarkedMessages.Rows.Add(dtr);
-            _bookmarkedMessages.AcceptChanges();
-            btswitchMessageDetails.Checked = true;
-            Settings.ShowMessageDetails = btswitchMessageDetails.Checked;
-            dockPanelBookmarks.Visibility = DockVisibility.Visible;
-            documentManager1.View.ActivateDocument(dockPanelBookmarks);
-            tabbedView1.ActivateDocument(dockPanelBookmarks);
-            if (persists)
-            {
-                BookmarkPersistManager.AddBookmarkedMessage(message, dataSource);
-            }
-
-            lockSlim.ExitWriteLock();
-        }
-
         private void AddExtraColumnsIfNeededToTable(DataTable table, GridView view, IAnalogyLogMessage message)
         {
             if (message.AdditionalProperties != null && message.AdditionalProperties.Any() &&
@@ -2910,24 +2823,6 @@ namespace Analogy.CommonControls.UserControls
                 }
             }
         }
-
-        private void GoToBookmarkedMessage()
-        {
-            int[] selRows = gridViewBookmarkedMessages.GetSelectedRows();
-            if (selRows == null || selRows.Length != 1)
-            {
-                return;
-            }
-            int rownum = selRows.First();
-            var currentRow = (DataRowView)gridViewBookmarkedMessages.GetRow(rownum);
-            var logMessage = currentRow[Common.CommonUtils.AnalogyMessageColumn] as AnalogyLogMessage;
-            if (logMessage == null)
-            {
-                return;
-            }
-            GoToMessage(logMessage);
-        }
-
         private void GoToPrimaryGridMessage(AnalogyLogMessage m)
         {
             btsAutoScrollToBottom.Checked = false;
@@ -3135,31 +3030,9 @@ namespace Analogy.CommonControls.UserControls
         private void bBtnButtomExpand_ItemClick(object sender, ItemClickEventArgs e)
         {
         }
-
         private void barToggleSwitchItem1_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             dockPanelFiltering.Visible = !btSwitchExpandButtomMessage.Checked;
-        }
-
-        private void bBtnGoToMessage_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            GoToBookmarkedMessage();
-        }
-
-        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            _bookmarkedMessages.Clear();
-        }
-
-        private void bBtnopyBookmarked_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            int[] selRows = gridViewBookmarkedMessages.GetSelectedRows();
-
-            if (selRows != null && selRows.Length == 1)
-            {
-                var message = (AnalogyLogMessage)gridViewBookmarkedMessages.GetRowCellValue(selRows.First(), Common.CommonUtils.AnalogyMessageColumn);
-                Clipboard.SetText(message.Text);
-            }
         }
 
         private void tsmiSaveLayout_Click(object sender, EventArgs e)
@@ -3179,49 +3052,10 @@ namespace Analogy.CommonControls.UserControls
                 XtraMessageBox.Show(e.Message, $"Error Saving layout file: {e.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void tsmiBookmarkPersist_Click(object sender, EventArgs e)
-        {
-            CreateBookmark(true);
-        }
-
-        private void tsmiRemoveBookmark_Click(object sender, EventArgs e)
-        {
-            RemoveBookmark();
-        }
-
-        private void bBtnRemoveBoomark_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            RemoveBookmark();
-        }
-
-        private void RemoveBookmark()
-        {
-            (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
-            if (message != null)
-            {
-                BookmarkPersistManager.RemoveBookmark(message);
-            }
-        }
-
         public void HideRefreshAndScrolling()
         {
             btswitchRefreshLog.Visibility = BarItemVisibility.Never;
             btsAutoScrollToBottom.Visibility = BarItemVisibility.Never;
-        }
-        public void SetBookmarkMode()
-        {
-            if (FactoriesManager == null)
-            {
-                return;
-            }
-            FactoryContainer analogy = FactoriesManager.GetBuiltInFactoryContainer(AnalogyBuiltInFactory.AnalogyGuid);
-            if (analogy != null)
-            {
-                var provider = analogy.DataProvidersFactories[0]?.DataProviders.First();
-                SetFileDataSource(provider, null);
-                BookmarkView = true;
-                BookmarkModeUI();
-            }
         }
 
         public void RemoveMessage(IAnalogyLogMessage msgMessage)
@@ -3284,19 +3118,6 @@ namespace Analogy.CommonControls.UserControls
             string all = string.Join(Environment.NewLine, messages.Select(m => $"{m.Date.ToString()}: {m.Text}"));
             Clipboard.SetText(all);
         }
-
-        private void bBtnCopyAllBookmarks_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var messages = BookmarkedMessages;
-            if (!messages.Any())
-            {
-                return;
-            }
-
-            string all = string.Join(Environment.NewLine, messages.Select(m => $"{m.Date.ToString()}: {m.Text}"));
-            Clipboard.SetText(all);
-        }
-
         private void btsAutoScrollToBottom_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
@@ -3471,7 +3292,6 @@ namespace Analogy.CommonControls.UserControls
         {
             var fontSize = Settings.FontSettings.GridFontSize = LogGrid.Appearance.Row.Font.Size + 2;
             LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
-            gridViewBookmarkedMessages.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
             SaveGridLayout();
         }
 
@@ -3485,39 +3305,8 @@ namespace Analogy.CommonControls.UserControls
             {
                 var fontSize = Settings.FontSettings.GridFontSize = LogGrid.Appearance.Row.Font.Size - 2;
                 LogGrid.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
-                gridViewBookmarkedMessages.Appearance.Row.Font = new Font(LogGrid.Appearance.Row.Font.Name, fontSize);
                 SaveGridLayout();
             }
-        }
-
-        private void tsmiClearLog_Click(object sender, EventArgs e)
-        {
-            ClearLogs(true);
-        }
-
-        private void tsmiREmoveAllPreviousMessages_Click(object sender, EventArgs e)
-        {
-            (AnalogyLogMessage current, _) = GetMessageFromSelectedFocusedRowInGrid();
-            if (current == null)
-            {
-                return;
-            }
-
-            lockSlim.EnterWriteLock();
-            while (_messageData.Rows.Count > 0)
-            {
-                if (!Equals(_messageData.Rows[0][Common.CommonUtils.AnalogyMessageColumn], current))
-                {
-                    _messageData.Rows.RemoveAt(0);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            lockSlim.ExitWriteLock();
-
-            //RefreshUIMessagesCount();
         }
 
         private void bBtnDataVisualizer_ItemClick(object sender, ItemClickEventArgs e)

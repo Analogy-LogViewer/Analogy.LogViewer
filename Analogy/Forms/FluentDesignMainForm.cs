@@ -60,7 +60,6 @@ namespace Analogy
         private bool disableOnlineDueToFileOpen;
         private bool PreventExit { get; set; }
         private bool Initialized { get; set; }
-        private BookmarkPersistManager BookmarkPersistManager { get; }
         private UpdateManager UpdateManager { get; }
         private FileProcessingManager FileProcessingManager { get; }
         private List<Task<bool>> OnlineSources { get; } = new List<Task<bool>>();
@@ -69,12 +68,11 @@ namespace Analogy
         private AnalogyOnDemandPlottingManager PlottingManager { get; }
 
         public FluentDesignMainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
-            BookmarkPersistManager bookmarkPersistManager, UpdateManager updateManager, FileProcessingManager fileProcessingManager,
+            UpdateManager updateManager, FileProcessingManager fileProcessingManager,
             NotificationManager notificationManager, IAnalogyFoldersAccess foldersAccess, AnalogyOnDemandPlottingManager plottingManager)
         {
             FactoriesManager = factoriesManager;
             ExtensionsManager = extensionsManager;
-            BookmarkPersistManager = bookmarkPersistManager;
             UpdateManager = updateManager;
             FileProcessingManager = fileProcessingManager;
             NotificationManager = notificationManager;
@@ -1534,7 +1532,6 @@ namespace Analogy
                 Settings.Save(UpdateManager.CurrentVersion.ToString(4));
                 CleanupManager.Instance.Clean(AnalogyLogManager.Instance);
                 AnalogyLogManager.Instance.SaveFile();
-                BookmarkPersistManager.SaveFile();
                 FactoriesManager.ShutDownAllFactories();
             }
         }

@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V8.0.0 - Remove Bookmarks feature #2254", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2025, 02, 01), "8.0.0"),
                 new ("V7.2.0 - Implement MessageOpened method #2205", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 20), "7.2.0"),
                 new ("V7.2.0 - Add void MessageSelected(IAnalogyLogMessage message) API #2194", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 20), "7.2.0"),
                 new ("V7.1.1 - Exception parsing value #2141", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2024, 12, 14), "7.1.1"),

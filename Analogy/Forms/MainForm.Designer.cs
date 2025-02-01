@@ -70,7 +70,6 @@
             this.bBtnItemImportSettings = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnItemExit = new DevExpress.XtraBars.BarButtonItem();
             this.bsiGlobalTools = new DevExpress.XtraBars.BarSubItem();
-            this.bbiBookmarks = new DevExpress.XtraBars.BarButtonItem();
             this.bsiFilePlotting = new DevExpress.XtraBars.BarButtonItem();
             this.bsmInfo = new DevExpress.XtraBars.BarSubItem();
             this.bbiWelcomeForm = new DevExpress.XtraBars.BarButtonItem();
@@ -102,7 +101,6 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
-            this.bBtnBookmarked = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnClientServer = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnCompareLogs = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExtensions = new DevExpress.XtraBars.BarButtonItem();
@@ -210,7 +208,6 @@
             this.bbtnItemSettings,
             this.bbtnItemExit,
             this.barWorkspaceMenuItem1,
-            this.bBtnBookmarked,
             this.bBtnClientServer,
             this.bBtnCompareLogs,
             this.bbiExtensions,
@@ -243,7 +240,6 @@
             this.btnDataProvidersSettings,
             this.btnSettingsUpdate,
             this.bbtnFirstRun,
-            this.bbiBookmarks,
             this.btnSettingsDebugging,
             this.bbtnDataProvidersUpdates,
             this.bbiSettingsExtensions,
@@ -329,7 +325,6 @@
             this.bsiGlobalTools.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.Image")));
             this.bsiGlobalTools.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiGlobalTools.ImageOptions.LargeImage")));
             this.bsiGlobalTools.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmarks),
             new DevExpress.XtraBars.LinkPersistInfo(this.bsiFilePlotting)});
             this.bsiGlobalTools.Name = "bsiGlobalTools";
             toolTipTitleItem1.Text = "Global Tools";
@@ -338,14 +333,6 @@
             superToolTip2.Items.Add(toolTipTitleItem1);
             superToolTip2.Items.Add(toolTipItem2);
             this.bsiGlobalTools.SuperTip = superToolTip2;
-            // 
-            // bbiBookmarks
-            // 
-            this.bbiBookmarks.Caption = "Bookmarked Messages";
-            this.bbiBookmarks.Id = 103;
-            this.bbiBookmarks.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiBookmarks.ImageOptions.Image")));
-            this.bbiBookmarks.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiBookmarks.ImageOptions.LargeImage")));
-            this.bbiBookmarks.Name = "bbiBookmarks";
             // 
             // bsiFilePlotting
             // 
@@ -623,17 +610,6 @@
             // 
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
-            // 
-            // bBtnBookmarked
-            // 
-            this.bBtnBookmarked.Caption = "Bookmarked";
-            this.bBtnBookmarked.Id = 34;
-            this.bBtnBookmarked.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bBtnBookmarked.ImageOptions.Image")));
-            this.bBtnBookmarked.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bBtnBookmarked.ImageOptions.LargeImage")));
-            this.bBtnBookmarked.Name = "bBtnBookmarked";
-            this.bBtnBookmarked.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.bBtnBookmarked.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bBtnBookmarked_ItemClick);
             // 
             // bBtnClientServer
             // 
@@ -1142,7 +1118,6 @@
         private DevExpress.XtraBars.BarButtonItem bbtnItemExit;
         private DevExpress.XtraBars.BarWorkspaceMenuItem barWorkspaceMenuItem1;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
-        private DevExpress.XtraBars.BarButtonItem bBtnBookmarked;
         private DevExpress.XtraBars.BarButtonItem bBtnClientServer;
         private DevExpress.XtraBars.BarButtonItem bBtnCompareLogs;
         private DevExpress.XtraBars.BarButtonItem bbiExtensions;
@@ -1183,7 +1158,6 @@
         private DevExpress.XtraBars.BarSubItem bsmInfo;
         private DevExpress.XtraBars.BarButtonItem bbtnFirstRun;
         private DevExpress.XtraBars.BarSubItem bsiGlobalTools;
-        private DevExpress.XtraBars.BarButtonItem bbiBookmarks;
         private DevExpress.XtraBars.BarButtonItem btnSettingsDebugging;
         private DevExpress.XtraBars.BarButtonItem bbtnDataProvidersUpdates;
         private DevExpress.Utils.DefaultToolTipController defaultToolTipController1;

@@ -484,10 +484,6 @@
 		<Compile Update="UserControls\ClientServerLog.Designer.cs">
 			<DependentUpon>ClientServerLog.cs</DependentUpon>
 		</Compile>
-		<Compile Update="UserControls\BookmarkLog.cs" />
-		<Compile Update="UserControls\BookmarkLog.Designer.cs">
-			<DependentUpon>BookmarkLog.cs</DependentUpon>
-		</Compile>
 		<Compile Update="UserControls\LocalLogFilesUC.cs" />
 		<Compile Update="UserControls\LocalLogFilesUC.Designer.cs">
 			<DependentUpon>LocalLogFilesUC.cs</DependentUpon>
@@ -658,9 +654,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\ClientServerLog.resx">
 			<DependentUpon>ClientServerLog.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="UserControls\BookmarkLog.resx">
-			<DependentUpon>BookmarkLog.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Update="UserControls\LocalLogFilesUC.resx">
 			<DependentUpon>LocalLogFilesUC.cs</DependentUpon>
