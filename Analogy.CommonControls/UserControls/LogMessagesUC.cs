@@ -115,7 +115,6 @@ namespace Analogy.CommonControls.UserControls
 
         private ReaderWriterLockSlim lockSlim;
         private DataTable _messageData;
-        private DataTable _bookmarkedMessages;
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
         private IProgress<AnalogyFileReadProgress> DataProviderProgressReporter { get; set; }
         private readonly List<XtraFormLogGrid> _externalWindows = new();
@@ -139,14 +138,6 @@ namespace Analogy.CommonControls.UserControls
             }
         }
         private int ExternalWindowsCount;
-
-        private List<IAnalogyLogMessage> BookmarkedMessages
-        {
-            get
-            {
-                return _bookmarkedMessages.Rows.OfType<DataRow>().Select(r => (IAnalogyLogMessage)r[Common.CommonUtils.AnalogyMessageColumn]).ToList();
-            }
-        }
         private AnalogyLogMessage? SelectedMassage { get; set; }
         private readonly FilterCriteriaObject _filterCriteria = new();
         private AutoCompleteStringCollection autoCompleteInclude = new();
@@ -370,7 +361,6 @@ namespace Analogy.CommonControls.UserControls
             SetupEventsHandlers();
 
             gridControl.DataSource = _messageData.DefaultView;
-            _bookmarkedMessages = Utils.DataTableConstructor();
             if (Settings.SaveSearchFilters)
             {
                 if (Settings.IncludeText == txtbInclude.Properties.NullText)
@@ -1096,7 +1086,6 @@ namespace Analogy.CommonControls.UserControls
         private void RefreshTimeOffset()
         {
             PagingManager.UpdateOffsets();
-            Utils.ChangeOffset(_bookmarkedMessages, Settings);
         }
 
         private void EditValueChanged(object sender, EventArgs e)
@@ -3129,19 +3118,6 @@ namespace Analogy.CommonControls.UserControls
             string all = string.Join(Environment.NewLine, messages.Select(m => $"{m.Date.ToString()}: {m.Text}"));
             Clipboard.SetText(all);
         }
-
-        private void bBtnCopyAllBookmarks_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var messages = BookmarkedMessages;
-            if (!messages.Any())
-            {
-                return;
-            }
-
-            string all = string.Join(Environment.NewLine, messages.Select(m => $"{m.Date.ToString()}: {m.Text}"));
-            Clipboard.SetText(all);
-        }
-
         private void btsAutoScrollToBottom_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             Settings.AutoScrollToLastMessage = btsAutoScrollToBottom.Checked;
