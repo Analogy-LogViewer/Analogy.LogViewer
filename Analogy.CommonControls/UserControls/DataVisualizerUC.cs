@@ -155,7 +155,7 @@ namespace Analogy.CommonControls.UserControls
                 string item = td.Key;
                 foreach (IAnalogyLogMessage val in td.Value)
                 {
-                    tbl.Rows.Add(item, Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset), Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Ticks,
+                    tbl.Rows.Add(item, Utils.GetDateTime(val.Date), Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Ticks,
                         val.Date.Hour + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Minute / 60 + (float)Utils.GetOffsetTime(val.Date, _settings.TimeOffsetType, _settings.TimeOffset).Second / 60 / 60);
                 }
             }
