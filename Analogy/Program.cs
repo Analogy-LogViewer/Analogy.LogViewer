@@ -52,7 +52,9 @@ namespace Analogy
             }
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             AssemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
             //AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
             ConfigureServices();
             WindowsFormsSettings.DefaultFont = Settings.FontSettings.UIFont;
             WindowsFormsSettings.DefaultMenuFont = Settings.FontSettings.MenuFont;
