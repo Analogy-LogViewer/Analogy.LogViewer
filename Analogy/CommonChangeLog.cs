@@ -9,6 +9,7 @@ namespace Analogy
         {
             return new List<AnalogyChangeLog>
             {
+                new ("V8.0.0 - Offsets from logs not working #2243", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2025, 02, 01), "8.0.0"),
                 new ("V8.0.0 - HideUnknownLogLevel is not saved between runs fix #2256", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2025, 02, 01), "8.0.0"),
                 new ("V8.0.0 - Remove Bookmarks feature #2254", AnalogChangeLogType.Improvement, "Lior Banai", new DateTime(2025, 02, 01), "8.0.0"),
                 new ("V8.0.0 - TimeOffsetType can not be configured #2242", AnalogChangeLogType.Bug, "Lior Banai", new DateTime(2025, 02, 01), "8.0.0"),
