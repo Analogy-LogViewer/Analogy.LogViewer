@@ -6,7 +6,7 @@
 		<TestProjectType>UnitTest</TestProjectType>
 		<AssemblyTitle>Analogy.UnitTests</AssemblyTitle>
 		<Product>Analogy.UnitTests</Product>
-		<Copyright>Copyright © 2019 -2024</Copyright>
+		<Copyright>Copyright © 2019 -2025</Copyright>
 		<Platforms>AnyCPU;x86;x64</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

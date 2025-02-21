@@ -1,6 +1,5 @@
 ﻿using Analogy.Common.DataTypes;
 using Analogy.Common.Interfaces;
-using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Managers;
@@ -8,15 +7,10 @@ using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace Analogy.ApplicationSettings
 {
@@ -128,8 +122,8 @@ namespace Analogy.ApplicationSettings
             {
                 try
                 {
-                    logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
-                    logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
+                    //logGrid.Columns["Date"].DisplayFormat.FormatType = FormatType.DateTime;
+                    //logGrid.Columns["Date"].DisplayFormat.FormatString = teDateTimeFormat.Text;
                     Settings.DateTimePattern = teDateTimeFormat.Text;
                 }
                 catch (Exception exception)
