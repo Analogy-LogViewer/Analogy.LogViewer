@@ -42,16 +42,16 @@ jobs:
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.3.1
-   
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+
+    # Publish the application NET8
+    - name: Publish the application NET8
+      run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net8.0-windows --runtime win-x64
       env:
         Configuration: ${{ matrix.configuration }}
-    
-    # Buid the application 
-    - name: Build the application
-      run: msbuild $env:Solution_Name /t:Rebuild /p:Configuration=$env:Configuration
+ 
+    # Publish the application NET9
+    - name: Publish the application NET9
+      run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net9.0-windows --runtime win-x64
       env:
         Configuration: ${{ matrix.configuration }}
     # Execute all unit tests in the solution
@@ -63,11 +63,17 @@ jobs:
        rm  ./Installer/Installer_TemporaryKey.pfx
 
     # Publish Artifacts 
-    - name: 'Publish Artifacts'
+    - name: 'Publish Artifacts NET8'
       uses: actions/upload-artifact@v4.4.3
       with:
-       name: Analogy_Artifacts_${{ matrix.configuration }}
-       path: ./Analogy/bin/${{ matrix.configuration }}
+       name: net9.0-windows_${{ matrix.configuration }}
+       path: ./Analogy/bin/x64/Release/net8.0-windows/win-x64/publish
+    # Publish Artifacts 
+    - name: 'Publish Artifacts NET9'
+      uses: actions/upload-artifact@v4.4.3
+      with:
+       name: net9.0-windows_${{ matrix.configuration }}
+       path: ./Analogy/bin/x64/Release/net9.0-windows/win-x64/publish
 concurrency: 
   group: ${{ github.ref }}
   cancel-in-progress: true
