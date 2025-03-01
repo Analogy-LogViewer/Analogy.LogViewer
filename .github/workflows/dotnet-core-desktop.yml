@@ -29,10 +29,6 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Write key file
-      run: |
-           echo "${{ secrets.AUTH }}" | base64 -di > ./Installer/Installer_TemporaryKey.pfx
-
     # Install the .NET Core workload
     - name: Install .NET Core
       uses: actions/setup-dotnet@v4.2.0
@@ -42,7 +38,11 @@ jobs:
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.3.1
-
+    # Publish the application NET48
+    - name: Publish the application NET8
+      run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net48 --runtime win-x64
+      env:
+        Configuration: ${{ matrix.configuration }}
     # Publish the application NET8
     - name: Publish the application NET8
       run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net8.0-windows --runtime win-x64
@@ -58,15 +58,17 @@ jobs:
     #- name: Execute unit tests
     # run: dotnet test
 
-    - name: Delete key file
-      run: |
-       rm  ./Installer/Installer_TemporaryKey.pfx
-
+    # Publish Artifacts 
+    - name: 'Publish Artifacts NET48'
+      uses: actions/upload-artifact@v4.4.3
+      with:
+       name: net48_${{ matrix.configuration }}
+       path: ./Analogy/bin/x64/Release/net48/win-x64/publish
     # Publish Artifacts 
     - name: 'Publish Artifacts NET8'
       uses: actions/upload-artifact@v4.4.3
       with:
-       name: net9.0-windows_${{ matrix.configuration }}
+       name: net8.0-windows_${{ matrix.configuration }}
        path: ./Analogy/bin/x64/Release/net8.0-windows/win-x64/publish
     # Publish Artifacts 
     - name: 'Publish Artifacts NET9'
