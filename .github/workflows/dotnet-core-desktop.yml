@@ -39,7 +39,7 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.3.1
     # Publish the application NET48
-    - name: Publish the application NET8
+    - name: Publish the application NET48
       run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net48 --runtime win-x64
       env:
         Configuration: ${{ matrix.configuration }}
