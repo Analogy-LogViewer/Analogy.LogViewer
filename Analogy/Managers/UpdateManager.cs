@@ -146,7 +146,7 @@ namespace Analogy.Managers
 
         private Version? GetVersionFromTagName(string? tagName)
         {
-            return tagName == null ? null : new Version(tagName.Replace("V", "").Replace("v", ""));
+            return tagName == null ? null : new Version(tagName.Replace("V", "").Replace("v", "").Replace("-", ""));
         }
 
         public async Task<(bool NewData, Release? Release)> CheckVersion(bool forceUpdate)
