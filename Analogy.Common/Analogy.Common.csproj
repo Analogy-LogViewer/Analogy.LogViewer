@@ -22,10 +22,10 @@
 		<Company>Analogy.LogViewer</Company>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
 		<Reference Include="System.ComponentModel.DataAnnotations" />
@@ -44,10 +44,10 @@
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="8.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="System.Drawing.Common" Version="9.0.1" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.3" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="System.Resources.Extensions" Version="9.0.1" />
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.3" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
@@ -61,5 +61,10 @@
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="Meziantou.Analyzer" Version="2.0.189" />
+	  <PackageReference Update="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="4.13.0" />
+	  <PackageReference Update="Roslynator.Analyzers" Version="4.13.1" />
 	</ItemGroup>
 </Project>
