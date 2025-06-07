@@ -150,7 +150,14 @@ namespace Analogy.DataProviders
 
         public AnalogyCustomActionFactory()
         {
-            Actions = new List<IAnalogyCustomAction> { new AnalogyCustomAction(), new AnalogyUnixTimeAction(), new AnalogyJsonViewerAction(), new AnalogyCompareTextAction() };
+            Actions = new List<IAnalogyCustomAction>
+            {
+                new AnalogyCustomAction(),
+                new AnalogyUnixTimeAction(),
+                new AnalogyJsonViewerAction(),
+                new AnalogyCompareTextAction(),
+                new AnalogyGeoLocationAction(),
+            };
         }
     }
 
@@ -202,5 +209,17 @@ namespace Analogy.DataProviders
     }
     public class AnalogyBuiltInImages : AnalogyImages
     {
+    }
+
+    public class AnalogyGeoLocationAction : IAnalogyCustomAction
+    {
+        public Action Action => () => new GeoLocationForm().Show();
+        public Guid Id { get; set; } = new Guid("10a0d408-d520-4471-8851-75e3bd0a8cc6");
+        public Image? SmallImage { get; set; } = Resources.Watermark_16x16;
+        public Image? LargeImage { get; set; } = Resources.Watermark_32x32;
+
+        public string Title { get; set; } = "Geo Location Lookup";
+        public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
+        public AnalogyToolTip? ToolTip { get; set; }
     }
 }
