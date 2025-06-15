@@ -21,7 +21,7 @@ namespace Analogy.Extensions
     public partial class GeolocationServiceUC : XtraUserControl
     {
         public HttpClient Client { get; set; }
-        private Dictionary<string, Geolocation> Results = new(StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<string, GeoLocation> Results = new(StringComparer.InvariantCultureIgnoreCase);
         public GeolocationServiceUC()
         {
             InitializeComponent();
@@ -40,14 +40,14 @@ namespace Analogy.Extensions
                 if (result.IsSuccessStatusCode)
                 {
                     var json = await result.Content.ReadAsStringAsync();
-                    Geolocation loc = System.Text.Json.JsonSerializer.Deserialize<Geolocation>(json);
+                    GeoLocation loc = System.Text.Json.JsonSerializer.Deserialize<GeoLocation>(json);
                     Results.Add(textEdit1.Text, loc);
                     LoadLocation(loc);
                 }
             }
         }
 
-        private void LoadLocation(Geolocation location)
+        private void LoadLocation(GeoLocation location)
         {
             teQuery.Text = location.Query;
             teStatus.Text = location.Status;
@@ -71,7 +71,7 @@ namespace Analogy.Extensions
         }
     }
 
-    public class Geolocation
+    public class GeoLocation
     {
         [JsonPropertyName("query")] public string Query { get; set; }
         [JsonPropertyName("status")] public string Status { get; set; }
