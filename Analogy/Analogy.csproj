@@ -49,17 +49,17 @@
 		<PackageReference Include="Analogy.LogViewer.WindowsEventLogs" Version="8.1.0" />
 		<PackageReference Include="Analogy.LogViewer.XMLParser" Version="8.1.0" />
 		<PackageReference Include="LiteDB" Version="5.0.21" />
-		<PackageReference Include="Markdig" Version="0.41.3" />
+		<PackageReference Include="Markdig" Version="0.43.0" />
 		<PackageReference Include="MessagePack" Version="3.1.4" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.7" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.10" />
 		<PackageReference Include="Octokit" Version="14.0.0" />
-		<PackageReference Include="System.Drawing.Common" Version="9.0.7" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.10" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="System.Resources.Extensions" Version="9.0.7" />
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.10" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Analogy.CommonControls\Analogy.CommonControls.csproj" />
