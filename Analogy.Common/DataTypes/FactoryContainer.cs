@@ -2,6 +2,7 @@
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
+using Analogy.Interfaces.Winforms;
 using Analogy.Interfaces.Winforms.Factories;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,9 @@ namespace Analogy.Common.DataTypes
         public IAnalogyFactoryWinforms Factory { get; }
         public FactorySettings FactorySetting { get; }
         public IAnalogyDownloadInformation? DownloadInformation { get; set; }
-        public List<IAnalogyCustomActionsFactory> CustomActionsFactories { get; }
-        public List<IAnalogyDataProvidersFactory> DataProvidersFactories { get; }
-        public List<IAnalogyDataProviderSettings> DataProvidersSettings { get; }
+        public List<IAnalogyCustomActionsFactoryWinforms> CustomActionsFactories { get; }
+        public List<IAnalogyDataProvidersFactoryWinforms> DataProvidersFactories { get; }
+        public List<IAnalogyDataProviderSettingsWinforms> DataProvidersSettings { get; }
         public List<IAnalogyShareableFactory> ShareableFactories { get; }
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         public List<IAnalogyPlotting> GraphPlotter { get; }
@@ -33,9 +34,9 @@ namespace Analogy.Common.DataTypes
             AssemblyFullPath = assemblyFullPath;
             Factory = factory;
             FactorySetting = factorySetting;
-            CustomActionsFactories = new List<IAnalogyCustomActionsFactory>();
-            DataProvidersFactories = new List<IAnalogyDataProvidersFactory>();
-            DataProvidersSettings = new List<IAnalogyDataProviderSettings>();
+            CustomActionsFactories = [];
+            DataProvidersFactories = [];
+            DataProvidersSettings = [];
             ShareableFactories = new List<IAnalogyShareableFactory>();
             ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
             GraphPlotter = new List<IAnalogyPlotting>();
@@ -43,13 +44,13 @@ namespace Analogy.Common.DataTypes
             Images = new List<IAnalogyImages>();
         }
 
-        public void AddDataProviderFactory(IAnalogyDataProvidersFactory dataProvidersFactory) =>
+        public void AddDataProviderFactory(IAnalogyDataProvidersFactoryWinforms dataProvidersFactory) =>
             DataProvidersFactories.Add(dataProvidersFactory);
 
-        public void AddDataProvidersSettings(IAnalogyDataProviderSettings settings) =>
+        public void AddDataProvidersSettings(IAnalogyDataProviderSettingsWinforms settings) =>
             DataProvidersSettings.Add(settings);
 
-        public void AddCustomActionFactory(IAnalogyCustomActionsFactory action) => CustomActionsFactories.Add(action);
+        public void AddCustomActionFactory(IAnalogyCustomActionsFactoryWinforms action) => CustomActionsFactories.Add(action);
 
         public void AddShareableFactory(IAnalogyShareableFactory shareableFactory) =>
             ShareableFactories.Add(shareableFactory);

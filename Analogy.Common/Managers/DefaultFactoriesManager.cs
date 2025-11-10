@@ -3,6 +3,7 @@ using Analogy.Common.Interfaces;
 using Analogy.Common.Properties;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.Interfaces.Winforms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -23,19 +24,19 @@ namespace Analogy.Common.Managers
 
         public Task AddExternalDataSources() => Task.CompletedTask;
 
-        public IEnumerable<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
+        public IEnumerable<(IAnalogyOfflineDataProviderWinforms DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
         {
-            return new List<(IAnalogyOfflineDataProvider DataProvider, Guid FactoryID)>(0);
+            return new List<(IAnalogyOfflineDataProviderWinforms DataProvider, Guid FactoryID)>(0);
         }
 
-        public IEnumerable<IAnalogyOfflineDataProvider> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId, string[] fileNames)
+        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId, string[] fileNames)
         {
-            return new List<IAnalogyOfflineDataProvider>(0);
+            return new List<IAnalogyOfflineDataProviderWinforms>(0);
         }
 
-        public IEnumerable<IAnalogyOfflineDataProvider> GetOfflineDataSources(Guid factoryId)
+        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetOfflineDataSources(Guid factoryId)
         {
-            return new List<IAnalogyOfflineDataProvider>(0);
+            return new List<IAnalogyOfflineDataProviderWinforms>(0);
         }
 
         public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)> GetRealTimeDataSourcesNamesAndIds()
@@ -63,9 +64,9 @@ namespace Analogy.Common.Managers
             return false;
         }
 
-        public List<IAnalogyDataProviderSettings> GetProvidersSettings()
+        public List<IAnalogyDataProviderSettingsWinforms> GetProvidersSettings()
         {
-            return new List<IAnalogyDataProviderSettings>(0);
+            return [];
         }
 
         public Image GetLargeImage(Guid componentId)
@@ -112,9 +113,9 @@ namespace Analogy.Common.Managers
             return Task.CompletedTask;
         }
 
-        public IEnumerable<IAnalogyOfflineDataProvider> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
+        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
         {
-            return Enumerable.Empty<IAnalogyOfflineDataProvider>();
+            return [];
         }
     }
 }

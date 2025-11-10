@@ -3,6 +3,7 @@ using Analogy.CommonControls.DataTypes;
 using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
+using Analogy.Interfaces.Winforms;
 using DevExpress.XtraEditors;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,13 +16,13 @@ namespace Analogy.UserControls
     public partial class ClientServerUCLog : XtraUserControl, IUserControlWithUCLogs
     {
         public string SelectedPath { get; set; }
-        private IAnalogyOfflineDataProvider DataProvider { get; }
+        private IAnalogyOfflineDataProviderWinforms DataProvider { get; }
         public ClientServerUCLog()
         {
             InitializeComponent();
         }
 
-        public ClientServerUCLog(IAnalogyOfflineDataProvider dataProvider) : this()
+        public ClientServerUCLog(IAnalogyOfflineDataProviderWinforms dataProvider) : this()
         {
             DataProvider = dataProvider;
             ucLogs1.SetFileDataSource(dataProvider, DataProvider);

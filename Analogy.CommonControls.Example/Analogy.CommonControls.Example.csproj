@@ -15,7 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.0-rc1" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.0-rc3" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.0-rc4" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
 

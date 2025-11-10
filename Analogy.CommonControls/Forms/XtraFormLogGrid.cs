@@ -4,6 +4,7 @@ using Analogy.CommonControls.LogLoaders;
 using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.Winforms;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ namespace Analogy.CommonControls.Forms
 {
     public partial class XtraFormLogGrid : XtraForm
     {
-        public IAnalogyDataProvider? DataProvider { get; set; }
-        public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
+        public IAnalogyDataProviderWinforms? DataProvider { get; set; }
+        public IAnalogyOfflineDataProviderWinforms? FileDataProvider { get; set; }
         private readonly List<IAnalogyLogMessage> _messages;
         private readonly string _dataSource;
         public LogMessagesUC LogWindow => ucLogs1;
@@ -26,7 +27,7 @@ namespace Analogy.CommonControls.Forms
             _dataSource = "Analogy";
             _messages = new List<IAnalogyLogMessage>();
         }
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider) : this(userSettingsManager)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IAnalogyDataProviderWinforms? dataProvider, IAnalogyOfflineDataProviderWinforms? fileDataProvider) : this(userSettingsManager)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
@@ -39,7 +40,7 @@ namespace Analogy.CommonControls.Forms
             _dataSource = dataSource;
         }
 
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProviderWinforms dataProvider, IAnalogyOfflineDataProviderWinforms? fileProvider = null, string? processOrModule = null) : this(userSettingsManager)
         {
             _messages = messages;
             _dataSource = dataSource;

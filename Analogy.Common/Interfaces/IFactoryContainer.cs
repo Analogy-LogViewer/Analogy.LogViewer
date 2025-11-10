@@ -2,6 +2,7 @@
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
+using Analogy.Interfaces.Winforms;
 using Analogy.Interfaces.Winforms.Factories;
 using System;
 using System.Collections.Generic;
@@ -20,17 +21,17 @@ namespace Analogy.Common.Interfaces
         IAnalogyFactoryWinforms Factory { get; }
         FactorySettings FactorySetting { get; }
         IAnalogyDownloadInformation? DownloadInformation { get; set; }
-        List<IAnalogyCustomActionsFactory> CustomActionsFactories { get; }
-        List<IAnalogyDataProvidersFactory> DataProvidersFactories { get; }
-        List<IAnalogyDataProviderSettings> DataProvidersSettings { get; }
+        List<IAnalogyCustomActionsFactoryWinforms> CustomActionsFactories { get; }
+        List<IAnalogyDataProvidersFactoryWinforms> DataProvidersFactories { get; }
+        List<IAnalogyDataProviderSettingsWinforms> DataProvidersSettings { get; }
         List<IAnalogyShareableFactory> ShareableFactories { get; }
         List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         List<IAnalogyPlotting> GraphPlotter { get; }
         List<IAnalogyCustomUserControlsFactoryWinforms> UserControlsFactories { get; }
         List<IAnalogyImages> Images { get; }
-        void AddDataProviderFactory(IAnalogyDataProvidersFactory dataProvidersFactory);
-        void AddDataProvidersSettings(IAnalogyDataProviderSettings settings);
-        void AddCustomActionFactory(IAnalogyCustomActionsFactory action);
+        void AddDataProviderFactory(IAnalogyDataProvidersFactoryWinforms dataProvidersFactory);
+        void AddDataProvidersSettings(IAnalogyDataProviderSettingsWinforms settings);
+        void AddCustomActionFactory(IAnalogyCustomActionsFactoryWinforms action);
         void AddShareableFactory(IAnalogyShareableFactory shareableFactory);
         void AddExtensionFactory(IAnalogyExtensionsFactory extensionFactory);
         void AddImages(IAnalogyImages images);

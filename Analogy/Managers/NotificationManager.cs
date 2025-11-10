@@ -10,5 +10,9 @@ namespace Analogy.Managers
         {
             OnNewNotification?.Invoke(this, notification);
         }
+
+        public void RaiseNotification(IAnalogyNotification notification, bool showAsPopup)
+        {
+        }
     }
 }

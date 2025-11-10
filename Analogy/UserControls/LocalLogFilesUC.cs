@@ -1,5 +1,6 @@
 ﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.Winforms;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
@@ -34,7 +35,7 @@ namespace Analogy.UserControls
             ucLogs1.SetSaveButtonsVisibility(false);
         }
 
-        public LocalLogFilesUC(IAnalogyOfflineDataProvider dataProvider, string[]? fileNames = null, string? initialSelectedPath = null, string? title = null) : this(initialSelectedPath ?? string.Empty, title: title)
+        public LocalLogFilesUC(IAnalogyOfflineDataProviderWinforms dataProvider, string[]? fileNames = null, string? initialSelectedPath = null, string? title = null) : this(initialSelectedPath ?? string.Empty, title: title)
         {
             DataProvider = dataProvider;
             if (fileNames != null)
@@ -45,7 +46,7 @@ namespace Analogy.UserControls
             ucLogs1.SetFileDataSource(dataProvider, dataProvider);
         }
 
-        public LocalLogFilesUC(IAnalogyDataProvider dataProvider, CancellationTokenSource cts) : this()
+        public LocalLogFilesUC(IAnalogyDataProviderWinforms dataProvider, CancellationTokenSource cts) : this()
         {
             ucLogs1.SetFileDataSource(dataProvider, null);
             ucLogs1.CancellationTokenSource = cts;

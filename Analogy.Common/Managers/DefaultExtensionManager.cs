@@ -1,5 +1,6 @@
 ﻿using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
+using Analogy.Interfaces.Winforms;
 using System;
 using System.Collections.Generic;
 using System.Linq;

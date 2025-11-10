@@ -5,6 +5,7 @@ using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.Winforms;
 using Analogy.Managers;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
@@ -24,7 +25,7 @@ namespace Analogy.UserControls
         public bool Enable { get; set; } = true;
         private FilePoolingManager PoolingManager { get; }
 
-        public FilePoolingUCLogs(IAnalogyUserSettings settings, FileProcessingManager fileProcessingManager, IAnalogyOfflineDataProvider offlineDataProvider,
+        public FilePoolingUCLogs(IAnalogyUserSettings settings, FileProcessingManager fileProcessingManager, IAnalogyOfflineDataProviderWinforms offlineDataProvider,
             string filter, string initialFilename, string initialFolder, string? title = null)
         {
             InitializeComponent();

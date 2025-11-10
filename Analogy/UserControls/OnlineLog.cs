@@ -4,6 +4,7 @@ using Analogy.CommonControls.Forms;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.Winforms;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Analogy.UserControls
         private bool _showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
-        public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime, FileProcessingManager fileProcessingManager)
+        public OnlineUCLogs(IAnalogyRealTimeDataProviderWinforms realTime, FileProcessingManager fileProcessingManager)
         {
             FileProcessingManager = fileProcessingManager;
             InitializeComponent();

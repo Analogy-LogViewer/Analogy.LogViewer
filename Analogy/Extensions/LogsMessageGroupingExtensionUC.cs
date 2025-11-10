@@ -21,7 +21,7 @@ namespace Analogy.Extensions
     {
         private IUserSettingsManager Settings { get; }
         public IAnalogyDataProviderWinforms DataProvider { get; set; }
-        public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
+        public IAnalogyOfflineDataProviderWinforms? FileDataProvider { get; set; }
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         public ManualResetEvent columnAdderSync = new ManualResetEvent(false);
 

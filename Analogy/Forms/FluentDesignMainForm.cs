@@ -9,6 +9,9 @@ using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
+using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.Winforms.DataTypes;
+using Analogy.Interfaces.Winforms.Factories;
 using Analogy.Managers;
 using Analogy.Properties;
 using Analogy.UserControls;
@@ -340,7 +343,7 @@ namespace Analogy
             }
         }
 
-        private async Task OpenOfflineLogs(string[] fileNames, IAnalogyOfflineDataProvider dataProvider,
+        private async Task OpenOfflineLogs(string[] fileNames, IAnalogyOfflineDataProviderWinforms dataProvider,
             string? title = null)
         {
             openedWindows++;
@@ -625,7 +628,7 @@ namespace Analogy
                 var actionFactories = fc.CustomActionsFactories;
                 foreach (var actionFactory in actionFactories)
                 {
-                    foreach (IAnalogyCustomAction action in actionFactory.Actions)
+                    foreach (var action in actionFactory.Actions)
                     {
                         if (action.Type != AnalogyCustomActionType.Global)
                         {
@@ -794,10 +797,10 @@ namespace Analogy
                 }
             }
         }
-        private void AddOfflineDataSource(FactoryContainer fc, IAnalogyDataProvidersFactory factory)
+        private void AddOfflineDataSource(FactoryContainer fc, IAnalogyDataProvidersFactoryWinforms factory)
         {
             var offlineProviders = factory.DataProviders.Where(f => f is IAnalogyOfflineDataProvider)
-                .Cast<IAnalogyOfflineDataProvider>().ToList();
+                .Cast<IAnalogyOfflineDataProviderWinforms>().ToList();
 
             if (!offlineProviders.Any())
             {
@@ -836,7 +839,7 @@ namespace Analogy
                     dockManager1.ActivePanel = page;
                 }
 
-                void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProvider analogy)
+                void OpenExternalDataSource(string titleOfDataSource, IAnalogyOfflineDataProviderWinforms analogy)
                 {
                     openedWindows++;
                     var ClientServerUCLog = new ClientServerUCLog(analogy);
@@ -1016,7 +1019,7 @@ namespace Analogy
                 }
                 else
                 {
-                    IAnalogyNotification notification = new AnalogyNotification(factoryId,
+                    IAnalogyNotificationWinforms notification = new AnalogyNotificationWinforms(factoryId,
                         "Missing File Open Dialog Filter",
                         $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'",
                         AnalogyLogLevel.Error, offlineAnalogy.LargeImage, 5, null);
@@ -1086,7 +1089,7 @@ namespace Analogy
             }
         }
 
-        private void AddRecentFolder(AccordionControlElement recentElement, IAnalogyOfflineDataProvider offlineAnalogy, string title, string recentPath)
+        private void AddRecentFolder(AccordionControlElement recentElement, IAnalogyOfflineDataProviderWinforms offlineAnalogy, string title, string recentPath)
         {
             AccordionControlElement btn = new AccordionControlElement();
             recentElement.Elements.Add(btn);
@@ -1116,7 +1119,7 @@ namespace Analogy
                 dockManager1.ActivePanel = page;
             };
         }
-        private void AddRecentFiles(AccordionControlElement recentElement, IAnalogyOfflineDataProvider offlineAnalogy, string title, List<string> recentFiles)
+        private void AddRecentFiles(AccordionControlElement recentElement, IAnalogyOfflineDataProviderWinforms offlineAnalogy, string title, List<string> recentFiles)
         {
             if (recentFiles.Any())
             {
@@ -1148,10 +1151,10 @@ namespace Analogy
             }
         }
 
-        private void AddFlatRealTimeDataSource(FactoryContainer fc, IAnalogyDataProvidersFactory dataSourceFactory)
+        private void AddFlatRealTimeDataSource(FactoryContainer fc, IAnalogyDataProvidersFactoryWinforms dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
-                .Cast<IAnalogyRealTimeDataProvider>().ToList();
+                .Cast<IAnalogyRealTimeDataProviderWinforms>().ToList();
             if (realTimes.Count == 0)
             {
                 return;
@@ -1289,10 +1292,10 @@ namespace Analogy
             }
         }
 
-        private void AddSingleDataSources(FactoryContainer fc, IAnalogyDataProvidersFactory dataSourceFactory)
+        private void AddSingleDataSources(FactoryContainer fc, IAnalogyDataProvidersFactoryWinforms dataSourceFactory)
         {
-            var singles = dataSourceFactory.DataProviders.Where(f => f is IAnalogySingleDataProvider ||
-                                                                      f is IAnalogySingleFileDataProvider).ToList();
+            var singles = dataSourceFactory.DataProviders.Where(f => f is IAnalogySingleDataProviderWinforms ||
+                                                                      f is IAnalogySingleFileDataProviderWinforms).ToList();
             if (singles.Count == 0)
             {
                 return;
@@ -1353,7 +1356,7 @@ namespace Analogy
             }
         }
 
-        private void AddUserControls(FactoryContainer fc, List<IAnalogyCustomUserControlsFactory> userControls)
+        private void AddUserControls(FactoryContainer fc, List<IAnalogyCustomUserControlsFactoryWinforms> userControls)
         {
             if (userControls.Count == 0)
             {
