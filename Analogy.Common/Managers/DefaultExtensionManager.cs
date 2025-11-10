@@ -20,7 +20,7 @@ namespace Analogy.Common.Managers
         public bool HasAnyInPlace { get; }
         public bool HasAnyUserControl { get; }
         public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; } = new List<IAnalogyExtensionInPlace>(0);
-        public IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; } = new List<IAnalogyExtensionUserControl>(0);
+        public IEnumerable<IAnalogyExtensionUserControlWinforms> UserControlRegisteredExtensions { get; } = new List<IAnalogyExtensionUserControlWinforms>(0);
         public void RegisterExtension(IAnalogyExtension analogyExtension)
         {
         }

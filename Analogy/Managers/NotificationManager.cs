@@ -1,11 +1,12 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.Winforms;
 
 namespace Analogy.Managers
 {
-    public class NotificationManager : INotificationReporter
+    public class NotificationManager : INotificationReporterWinforms
     {
-        public event EventHandler<IAnalogyNotification> OnNewNotification;
-        public void RaiseNotification(IAnalogyNotification notification, bool showAsPopup)
+        public event EventHandler<IAnalogyNotificationWinforms> OnNewNotification;
+        public void RaiseNotification(IAnalogyNotificationWinforms notification, bool showAsPopup)
         {
             OnNewNotification?.Invoke(this, notification);
         }

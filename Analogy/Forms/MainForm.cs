@@ -9,6 +9,8 @@ using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
+using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.Winforms.Factories;
 using Analogy.LogViewer.Template.Managers;
 using Analogy.Managers;
 using Analogy.Properties;
@@ -64,7 +66,7 @@ namespace Analogy.Forms
         private IAnalogyFoldersAccess FoldersAccess { get; }
         private AnalogyOnDemandPlottingManager PlottingManager { get; }
 
-        public MainForm(IFactoriesManager factoriesManager, IExtensionsManager extensionsManager,
+        public MainForm(IAnalogyFactoryWinforms factoriesManager, IExtensionsManager extensionsManager,
             UpdateManager updateManager, FileProcessingManager fileProcessingManager,
             NotificationManager notificationManager, IAnalogyFoldersAccess foldersAccess, AnalogyOnDemandPlottingManager plottingManager)
         {
@@ -355,7 +357,7 @@ namespace Analogy.Forms
                 var actionFactories = fc.CustomActionsFactories;
                 foreach (var actionFactory in actionFactories)
                 {
-                    foreach (IAnalogyCustomAction action in actionFactory.Actions)
+                    foreach (IAnalogyCustomActionWinforms action in actionFactory.Actions)
                     {
                         if (action.Type != AnalogyCustomActionType.Global)
                         {

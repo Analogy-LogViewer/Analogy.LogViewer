@@ -22,6 +22,7 @@
 		<Company>Analogy.LogViewer</Company>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.0-rc3" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.10" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.10" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
@@ -41,7 +42,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Analogy.CommonUtilities" Version="8.1.0" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="8.1.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.0-rc1" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="8.1.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="System.Drawing.Common" Version="9.0.10" />

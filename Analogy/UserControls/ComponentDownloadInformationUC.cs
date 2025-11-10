@@ -1,7 +1,6 @@
 ﻿using Analogy.Common.DataTypes;
-using Analogy.CommonControls.Managers;
 using Analogy.DataTypes;
-using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces;
 using Analogy.Managers;
 using DevExpress.XtraEditors;
 using System.Drawing;

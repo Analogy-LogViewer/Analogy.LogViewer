@@ -35,7 +35,8 @@
 		<PackageReference Include="Analogy.LogViewer.Github" Version="8.1.0" />
 		<PackageReference Include="Analogy.LogViewer.gRPC" Version="8.1.0" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="8.2.0" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="8.1.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.0-rc1" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.0-rc3" />
 		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="8.1.0" />
 		<PackageReference Include="Analogy.LogViewer.LiteDB" Version="2.1.0" />
 		<PackageReference Include="Analogy.LogViewer.Log4Net" Version="8.1.0" />

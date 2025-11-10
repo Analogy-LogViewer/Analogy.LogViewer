@@ -3,6 +3,7 @@ using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.Winforms;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
@@ -19,7 +20,7 @@ namespace Analogy.Extensions
     public partial class LogsMessageGroupingExtensionUC : XtraUserControl
     {
         private IUserSettingsManager Settings { get; }
-        public IAnalogyDataProvider DataProvider { get; set; }
+        public IAnalogyDataProviderWinforms DataProvider { get; set; }
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         public ManualResetEvent columnAdderSync = new ManualResetEvent(false);

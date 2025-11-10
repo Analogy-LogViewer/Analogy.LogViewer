@@ -21,8 +21,8 @@ namespace Analogy
         public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions =>
             registeredExtensions.Where(e => e is IAnalogyExtensionInPlace).Cast<IAnalogyExtensionInPlace>();
 
-        public IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions =>
-            registeredExtensions.Where(e => e is IAnalogyExtensionUserControl).Cast<IAnalogyExtensionUserControl>();
+        public IEnumerable<IAnalogyExtensionUserControlWinforms> UserControlRegisteredExtensions =>
+            registeredExtensions.Where(e => e is IAnalogyExtensionUserControlWinforms).Cast<IAnalogyExtensionUserControlWinforms>();
         private int ColumnIndexes { get; set; } = 12;
         private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();

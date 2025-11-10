@@ -2,6 +2,7 @@
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
+using Analogy.Interfaces.Winforms.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Analogy.Common.Interfaces
         bool AssemblyExist { get; }
         string AssemblyFullPath { get; }
         Assembly Assembly { get; }
-        IAnalogyFactory Factory { get; }
+        IAnalogyFactoryWinforms Factory { get; }
         FactorySettings FactorySetting { get; }
         IAnalogyDownloadInformation? DownloadInformation { get; set; }
         List<IAnalogyCustomActionsFactory> CustomActionsFactories { get; }
@@ -25,7 +26,7 @@ namespace Analogy.Common.Interfaces
         List<IAnalogyShareableFactory> ShareableFactories { get; }
         List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         List<IAnalogyPlotting> GraphPlotter { get; }
-        List<IAnalogyCustomUserControlsFactory> UserControlsFactories { get; }
+        List<IAnalogyCustomUserControlsFactoryWinforms> UserControlsFactories { get; }
         List<IAnalogyImages> Images { get; }
         void AddDataProviderFactory(IAnalogyDataProvidersFactory dataProvidersFactory);
         void AddDataProvidersSettings(IAnalogyDataProviderSettings settings);
@@ -34,7 +35,7 @@ namespace Analogy.Common.Interfaces
         void AddExtensionFactory(IAnalogyExtensionsFactory extensionFactory);
         void AddImages(IAnalogyImages images);
         void AddGraphPlotter(IAnalogyPlotting plotter);
-        void AddCustomUserControlFactory(IAnalogyCustomUserControlsFactory uc);
+        void AddCustomUserControlFactory(IAnalogyCustomUserControlsFactoryWinforms uc);
         void AddDownloadInformation(IAnalogyDownloadInformation downloadInformation);
         string ToString();
         bool ContainsDataProviderOrDataFactory(Guid componentId);
