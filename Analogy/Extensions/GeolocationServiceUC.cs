@@ -1,6 +1,5 @@
 ﻿#pragma warning disable SA1402
 using DevExpress.XtraEditors;
-using Elastic.CommonSchema;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
