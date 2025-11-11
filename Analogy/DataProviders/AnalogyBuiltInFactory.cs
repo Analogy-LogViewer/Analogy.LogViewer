@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.DataProviders
 {
-    public class AnalogyBuiltInFactory : PrimaryFactoryWinForms
+    public class AnalogyBuiltInFactory : PrimaryFactoryWinforms
     {
         public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
         public override Guid FactoryId { get; set; } = AnalogyGuid;
