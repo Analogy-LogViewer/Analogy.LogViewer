@@ -1,7 +1,7 @@
 ﻿using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
-using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.WinForms;
 using Analogy.Managers;
 using Analogy.Properties;
 using DevExpress.XtraEditors;
@@ -56,7 +56,7 @@ namespace Analogy.Forms
 
         private void AddExternalUserControlSettings()
         {
-            foreach (IAnalogyDataProviderSettingsWinforms settings in FactoriesManager.GetProvidersSettings())
+            foreach (IAnalogyDataProviderSettingsWinForms settings in FactoriesManager.GetProvidersSettings())
             {
                 XtraTabPage tab = new XtraTabPage();
                 tab.Text = settings.Title;

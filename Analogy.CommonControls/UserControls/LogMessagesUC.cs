@@ -11,7 +11,7 @@ using Analogy.CommonControls.Tools;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
-using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.WinForms;
 using Analogy.UserControls;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
@@ -107,7 +107,7 @@ namespace Analogy.CommonControls.UserControls
         private IUserSettingsManager Settings { get; set; }
         private IExtensionsManager ExtensionManager { get; set; }
         private IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; set; }
-        private IEnumerable<IAnalogyExtensionUserControlWinforms> UserControlRegisteredExtensions { get; set; }
+        private IEnumerable<IAnalogyExtensionUserControlWinForms> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new();
         private List<string> _excludeMostCommon = new();
         public const string DataGridDateColumnName = "Date";
@@ -154,9 +154,9 @@ namespace Analogy.CommonControls.UserControls
         private CancellationToken filterToken;
         private int PageNumber => PagingManager.CurrentPageNumber;
         private int TotalPages => PagingManager.TotalPages;
-        public IAnalogyDataProviderWinforms DataProvider { get; set; }
-        public IAnalogyOfflineDataProviderWinforms? FileDataProvider { get; set; }
-        private IAnalogyOfflineDataProviderWinforms AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
+        public IAnalogyDataProviderWinForms DataProvider { get; set; }
+        public IAnalogyOfflineDataProviderWinForms? FileDataProvider { get; set; }
+        private IAnalogyOfflineDataProviderWinForms AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         private Dictionary<string, int> counts;
         public GridView LogGrid
         {
@@ -1240,7 +1240,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        public void SetFileDataSource(IAnalogyDataProviderWinforms? dataProvider, IAnalogyOfflineDataProviderWinforms? fileDataProvider)
+        public void SetFileDataSource(IAnalogyDataProviderWinForms? dataProvider, IAnalogyOfflineDataProviderWinForms? fileDataProvider)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
@@ -1549,9 +1549,9 @@ namespace Analogy.CommonControls.UserControls
             var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetComponentId == DataProvider.Id)
                 .ToList();
             hasAnyInPlaceExtensions = extensions.Any(e => e is IAnalogyExtensionInPlace);
-            hasAnyUserControlExtensions = extensions.Any(e => e is IAnalogyExtensionUserControlWinforms);
+            hasAnyUserControlExtensions = extensions.Any(e => e is IAnalogyExtensionUserControlWinForms);
             InPlaceRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionInPlace).Cast<IAnalogyExtensionInPlace>();
-            UserControlRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionUserControlWinforms).Cast<IAnalogyExtensionUserControlWinforms>();
+            UserControlRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionUserControlWinForms).Cast<IAnalogyExtensionUserControlWinForms>();
             foreach (IAnalogyExtensionInPlace extension in InPlaceRegisteredExtensions)
             {
                 var columns = extension.GetColumnsInfo();
@@ -1567,7 +1567,7 @@ namespace Analogy.CommonControls.UserControls
                     gridColumn.Visible = true;
                 }
             }
-            foreach (IAnalogyExtensionUserControlWinforms extension in UserControlRegisteredExtensions)
+            foreach (IAnalogyExtensionUserControlWinForms extension in UserControlRegisteredExtensions)
             {
                 DockPanel? pnl = dockManager1.Panels.FirstOrDefault(i => i.ID == extension.Id);
                 if (pnl == null)
@@ -1938,7 +1938,7 @@ namespace Analogy.CommonControls.UserControls
 
                 if (hasAnyUserControlExtensions)
                 {
-                    foreach (IAnalogyExtensionUserControlWinforms extension in UserControlRegisteredExtensions)
+                    foreach (IAnalogyExtensionUserControlWinForms extension in UserControlRegisteredExtensions)
                     {
                         if (IsHandleCreated)
                         {

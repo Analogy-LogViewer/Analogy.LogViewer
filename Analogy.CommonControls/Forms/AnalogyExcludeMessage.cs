@@ -1,6 +1,7 @@
 ﻿using Analogy.Common.DataTypes;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;

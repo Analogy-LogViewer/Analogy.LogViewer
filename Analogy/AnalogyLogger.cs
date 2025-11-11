@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy
 {

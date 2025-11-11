@@ -4,8 +4,8 @@ using Analogy.DataProviders;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
-using Analogy.Interfaces.Winforms;
-using Analogy.Interfaces.Winforms.Factories;
+using Analogy.Interfaces.WinForms;
+using Analogy.Interfaces.WinForms.Factories;
 using Analogy.Managers;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace Analogy
             }
         }
 
-        public IEnumerable<(IAnalogyOfflineDataProviderWinforms DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(
+        public IEnumerable<(IAnalogyOfflineDataProviderWinForms DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(
             string[] fileNames)
         {
             foreach (var factory in Factories.Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled))
@@ -89,15 +89,15 @@ namespace Analogy
                 foreach (var dataProvidersFactory in factory.DataProvidersFactories)
                 {
                     var supported = dataProvidersFactory.DataProviders.Where(i =>
-                        i is IAnalogyOfflineDataProviderWinforms offline && offline.CanOpenAllFiles(fileNames));
-                    foreach (IAnalogyDataProviderWinforms dataSource in supported)
+                        i is IAnalogyOfflineDataProviderWinForms offline && offline.CanOpenAllFiles(fileNames));
+                    foreach (IAnalogyDataProviderWinForms dataSource in supported)
                     {
-                        yield return (dataSource as IAnalogyOfflineDataProviderWinforms, dataProvidersFactory.FactoryId);
+                        yield return (dataSource as IAnalogyOfflineDataProviderWinForms, dataProvidersFactory.FactoryId);
                     }
                 }
             }
         }
-        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetOfflineDataSources(Guid factoryId)
+        public IEnumerable<IAnalogyOfflineDataProviderWinForms> GetOfflineDataSources(Guid factoryId)
         {
             var all = BuiltInFactories.ToList();
             all.AddRange(Factories.ToList());
@@ -106,7 +106,7 @@ namespace Analogy
                 foreach (var dataProvidersFactory in factory.DataProvidersFactories)
                 {
                     var supported = dataProvidersFactory.DataProviders.Where(i =>
-                        dataProvidersFactory.FactoryId == factoryId && i is IAnalogyOfflineDataProviderWinforms).Cast<IAnalogyOfflineDataProviderWinforms>();
+                        dataProvidersFactory.FactoryId == factoryId && i is IAnalogyOfflineDataProviderWinForms).Cast<IAnalogyOfflineDataProviderWinForms>();
                     foreach (var dataSource in supported)
                     {
                         yield return dataSource;
@@ -114,7 +114,7 @@ namespace Analogy
                 }
             }
         }
-        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId,
+        public IEnumerable<IAnalogyOfflineDataProviderWinForms> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId,
             string[] fileNames)
         {
             return GetSupportedOfflineDataSources(fileNames).Where(res => res.FactoryID == factoryId)
@@ -151,7 +151,7 @@ namespace Analogy
         public bool IsBuiltInFactory(Guid factoryId) =>
             BuiltInFactories.Exists(fc => fc.Factory.FactoryId == factoryId);
 
-        public List<IAnalogyDataProviderSettingsWinforms> GetProvidersSettings() => Factories
+        public List<IAnalogyDataProviderSettingsWinForms> GetProvidersSettings() => Factories
             .Where(f => f.FactorySetting.Status != DataProviderFactoryStatus.Disabled)
             .SelectMany(f => f.DataProvidersSettings)
             .ToList();
@@ -170,13 +170,13 @@ namespace Analogy
                     {
                         switch (dp)
                         {
-                            case IAnalogyOfflineDataProviderWinforms d when d.Id == componentId:
+                            case IAnalogyOfflineDataProviderWinForms d when d.Id == componentId:
                                 return d.LargeImage;
-                            case IAnalogyProviderSidePagingProviderWinforms s when s.Id == componentId:
+                            case IAnalogyProviderSidePagingProviderWinForms s when s.Id == componentId:
                                 return s.LargeImage;
-                            case IAnalogySingleDataProviderWinforms s when s.Id == componentId:
+                            case IAnalogySingleDataProviderWinForms s when s.Id == componentId:
                                 return s.LargeImage;
-                            case IAnalogySingleFileDataProviderWinforms s when s.Id == componentId:
+                            case IAnalogySingleFileDataProviderWinForms s when s.Id == componentId:
                                 return s.LargeImage;
                         }
                     }
@@ -201,13 +201,13 @@ namespace Analogy
                     {
                         switch (dp)
                         {
-                            case IAnalogyOfflineDataProviderWinforms d when d.Id == componentId:
+                            case IAnalogyOfflineDataProviderWinForms d when d.Id == componentId:
                                 return d.SmallImage;
-                            case IAnalogyProviderSidePagingProviderWinforms s when s.Id == componentId:
+                            case IAnalogyProviderSidePagingProviderWinForms s when s.Id == componentId:
                                 return s.SmallImage;
-                            case IAnalogySingleDataProviderWinforms s when s.Id == componentId:
+                            case IAnalogySingleDataProviderWinForms s when s.Id == componentId:
                                 return s.SmallImage;
-                            case IAnalogySingleFileDataProviderWinforms s when s.Id == componentId:
+                            case IAnalogySingleFileDataProviderWinForms s when s.Id == componentId:
                                 return s.SmallImage;
                         }
                     }
@@ -401,7 +401,7 @@ namespace Analogy
                 {
                     try
                     {
-                        var factory = (Activator.CreateInstance(f) as IAnalogyFactoryWinforms)!;
+                        var factory = (Activator.CreateInstance(f) as IAnalogyFactoryWinForms)!;
                         await factory.InitializeFactory(FoldersAccess, Logger);
                         var setting = Settings.GetOrAddFactorySetting(factory);
                         setting.FactoryName = factory.Title;
@@ -452,7 +452,7 @@ namespace Analogy
                 {
                     try
                     {
-                        var dataProviderFactory = (Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactoryWinforms)!;
+                        var dataProviderFactory = (Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactoryWinForms)!;
                         var factory = Factories.First(f => f.Factory.FactoryId == dataProviderFactory?.FactoryId);
                         factory.AddDataProviderFactory(dataProviderFactory);
                     }
@@ -468,7 +468,7 @@ namespace Analogy
                 {
                     try
                     {
-                        var settings = (Activator.CreateInstance(isettings) as IAnalogyDataProviderSettingsWinforms)!;
+                        var settings = (Activator.CreateInstance(isettings) as IAnalogyDataProviderSettingsWinForms)!;
                         var factory = Factories.First(f => f.Factory.FactoryId == settings?.FactoryId);
                         factory.AddDataProvidersSettings(settings);
                     }
@@ -482,7 +482,7 @@ namespace Analogy
                 {
                     try
                     {
-                        var custom = (Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactoryWinforms)!;
+                        var custom = (Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactoryWinForms)!;
                         var factory = Factories.First(f => f.Factory.FactoryId == custom?.FactoryId);
                         factory.AddCustomActionFactory(custom);
                     }
@@ -565,11 +565,11 @@ namespace Analogy
                     }
                 }
 
-                foreach (Type uc in types.Where(aType => aType.GetInterface(nameof(IAnalogyCustomUserControlsFactoryWinforms)) != null))
+                foreach (Type uc in types.Where(aType => aType.GetInterface(nameof(IAnalogyCustomUserControlsFactoryWinForms)) != null))
                 {
                     try
                     {
-                        var auf = (Activator.CreateInstance(uc) as IAnalogyCustomUserControlsFactoryWinforms)!;
+                        var auf = (Activator.CreateInstance(uc) as IAnalogyCustomUserControlsFactoryWinForms)!;
                         var factory = Factories.First(f => f.Factory.FactoryId == auf?.FactoryId);
                         factory.AddCustomUserControlFactory(auf);
                     }
@@ -582,7 +582,7 @@ namespace Analogy
 
             //Factories.RemoveAll(f => f.FactorySetting.Status == DataProviderFactoryStatus.Disabled);
         }
-        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
+        public IEnumerable<IAnalogyOfflineDataProviderWinForms> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
         {
             foreach (var fc in Factories)
             {
@@ -592,8 +592,8 @@ namespace Analogy
                 }
                 foreach (var dpf in fc.DataProvidersFactories)
                 {
-                    IEnumerable<IAnalogyOfflineDataProviderWinforms> supported =
-                        dpf.DataProviders.Where(d => d is IAnalogyOfflineDataProviderWinforms).Cast<IAnalogyOfflineDataProviderWinforms>();
+                    IEnumerable<IAnalogyOfflineDataProviderWinForms> supported =
+                        dpf.DataProviders.Where(d => d is IAnalogyOfflineDataProviderWinForms).Cast<IAnalogyOfflineDataProviderWinForms>();
                     foreach (var analogyDataSource in supported)
                     {
                         if (dataProviders.Any(dp => dp == analogyDataSource.Id))

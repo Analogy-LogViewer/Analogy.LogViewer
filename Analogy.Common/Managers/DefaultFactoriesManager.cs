@@ -3,7 +3,7 @@ using Analogy.Common.Interfaces;
 using Analogy.Common.Properties;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
-using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,19 +24,19 @@ namespace Analogy.Common.Managers
 
         public Task AddExternalDataSources() => Task.CompletedTask;
 
-        public IEnumerable<(IAnalogyOfflineDataProviderWinforms DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
+        public IEnumerable<(IAnalogyOfflineDataProviderWinForms DataProvider, Guid FactoryID)> GetSupportedOfflineDataSources(string[] fileNames)
         {
-            return new List<(IAnalogyOfflineDataProviderWinforms DataProvider, Guid FactoryID)>(0);
+            return new List<(IAnalogyOfflineDataProviderWinForms DataProvider, Guid FactoryID)>(0);
         }
 
-        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId, string[] fileNames)
+        public IEnumerable<IAnalogyOfflineDataProviderWinForms> GetSupportedOfflineDataSourcesFromFactory(Guid factoryId, string[] fileNames)
         {
-            return new List<IAnalogyOfflineDataProviderWinforms>(0);
+            return new List<IAnalogyOfflineDataProviderWinForms>(0);
         }
 
-        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetOfflineDataSources(Guid factoryId)
+        public IEnumerable<IAnalogyOfflineDataProviderWinForms> GetOfflineDataSources(Guid factoryId)
         {
-            return new List<IAnalogyOfflineDataProviderWinforms>(0);
+            return new List<IAnalogyOfflineDataProviderWinForms>(0);
         }
 
         public IEnumerable<(string Name, Guid ID, Image Image, string Description, Assembly Assembly)> GetRealTimeDataSourcesNamesAndIds()
@@ -64,7 +64,7 @@ namespace Analogy.Common.Managers
             return false;
         }
 
-        public List<IAnalogyDataProviderSettingsWinforms> GetProvidersSettings()
+        public List<IAnalogyDataProviderSettingsWinForms> GetProvidersSettings()
         {
             return [];
         }
@@ -113,7 +113,7 @@ namespace Analogy.Common.Managers
             return Task.CompletedTask;
         }
 
-        public IEnumerable<IAnalogyOfflineDataProviderWinforms> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
+        public IEnumerable<IAnalogyOfflineDataProviderWinForms> GetAllOfflineDataSources(IEnumerable<Guid> dataProviders)
         {
             return [];
         }

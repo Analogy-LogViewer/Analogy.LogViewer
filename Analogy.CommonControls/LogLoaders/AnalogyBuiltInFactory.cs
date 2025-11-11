@@ -38,7 +38,7 @@ namespace Analogy.CommonControls.LogLoaders
         }
     }
 
-    public class AnalogyOfflineDataProvider : OfflineDataProviderWinforms
+    public class AnalogyOfflineDataProvider : OfflineDataProviderWinForms
     {
         public override Guid Id { get; set; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
         public override bool CanSaveToLogFile { get; set; } = true;

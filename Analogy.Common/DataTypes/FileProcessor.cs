@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Interfaces.WinForms;
 
 namespace Analogy.Common.DataTypes
 {
@@ -31,7 +32,7 @@ namespace Analogy.Common.DataTypes
             Settings = settingsManager;
         }
 
-        public async Task<IEnumerable<IAnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider,
+        public async Task<IEnumerable<IAnalogyLogMessage>> Process(IAnalogyOfflineDataProviderWinForms fileDataProvider,
             string filename, CancellationToken token, bool isReload = false)
         {
             if (string.IsNullOrEmpty(filename))

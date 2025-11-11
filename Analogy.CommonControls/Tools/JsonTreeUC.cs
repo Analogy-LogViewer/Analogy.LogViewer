@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using DevExpress.Data.ExpressionEditor;
 using DevExpress.XtraEditors;
 using System;

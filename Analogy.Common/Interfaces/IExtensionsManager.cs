@@ -1,5 +1,5 @@
 ﻿using Analogy.Interfaces;
-using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.WinForms;
 using System.Collections.Generic;
 
 namespace Analogy.Common.Interfaces
@@ -12,7 +12,7 @@ namespace Analogy.Common.Interfaces
         bool HasAnyInPlace { get; }
         bool HasAnyUserControl { get; }
         IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; }
-        IEnumerable<IAnalogyExtensionUserControlWinforms> UserControlRegisteredExtensions { get; }
+        IEnumerable<IAnalogyExtensionUserControlWinForms> UserControlRegisteredExtensions { get; }
 
         void RegisterExtension(IAnalogyExtension analogyExtension);
         int GetIndexForExtension(IAnalogyExtension extension);

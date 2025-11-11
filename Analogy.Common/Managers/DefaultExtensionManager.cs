@@ -1,6 +1,6 @@
 ﻿using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
-using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Analogy.Common.Managers
         public bool HasAnyInPlace { get; }
         public bool HasAnyUserControl { get; }
         public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; } = new List<IAnalogyExtensionInPlace>(0);
-        public IEnumerable<IAnalogyExtensionUserControlWinforms> UserControlRegisteredExtensions { get; } = new List<IAnalogyExtensionUserControlWinforms>(0);
+        public IEnumerable<IAnalogyExtensionUserControlWinForms> UserControlRegisteredExtensions { get; } = new List<IAnalogyExtensionUserControlWinForms>(0);
         public void RegisterExtension(IAnalogyExtension analogyExtension)
         {
         }

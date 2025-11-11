@@ -2,8 +2,8 @@
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
-using Analogy.Interfaces.Winforms;
-using Analogy.Interfaces.Winforms.Factories;
+using Analogy.Interfaces.WinForms;
+using Analogy.Interfaces.WinForms.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,25 +18,25 @@ namespace Analogy.Common.Interfaces
         bool AssemblyExist { get; }
         string AssemblyFullPath { get; }
         Assembly Assembly { get; }
-        IAnalogyFactoryWinforms Factory { get; }
+        IAnalogyFactoryWinForms Factory { get; }
         FactorySettings FactorySetting { get; }
         IAnalogyDownloadInformation? DownloadInformation { get; set; }
-        List<IAnalogyCustomActionsFactoryWinforms> CustomActionsFactories { get; }
-        List<IAnalogyDataProvidersFactoryWinforms> DataProvidersFactories { get; }
-        List<IAnalogyDataProviderSettingsWinforms> DataProvidersSettings { get; }
+        List<IAnalogyCustomActionsFactoryWinForms> CustomActionsFactories { get; }
+        List<IAnalogyDataProvidersFactoryWinForms> DataProvidersFactories { get; }
+        List<IAnalogyDataProviderSettingsWinForms> DataProvidersSettings { get; }
         List<IAnalogyShareableFactory> ShareableFactories { get; }
         List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         List<IAnalogyPlotting> GraphPlotter { get; }
-        List<IAnalogyCustomUserControlsFactoryWinforms> UserControlsFactories { get; }
+        List<IAnalogyCustomUserControlsFactoryWinForms> UserControlsFactories { get; }
         List<IAnalogyImages> Images { get; }
-        void AddDataProviderFactory(IAnalogyDataProvidersFactoryWinforms dataProvidersFactory);
-        void AddDataProvidersSettings(IAnalogyDataProviderSettingsWinforms settings);
-        void AddCustomActionFactory(IAnalogyCustomActionsFactoryWinforms action);
+        void AddDataProviderFactory(IAnalogyDataProvidersFactoryWinForms dataProvidersFactory);
+        void AddDataProvidersSettings(IAnalogyDataProviderSettingsWinForms settings);
+        void AddCustomActionFactory(IAnalogyCustomActionsFactoryWinForms action);
         void AddShareableFactory(IAnalogyShareableFactory shareableFactory);
         void AddExtensionFactory(IAnalogyExtensionsFactory extensionFactory);
         void AddImages(IAnalogyImages images);
         void AddGraphPlotter(IAnalogyPlotting plotter);
-        void AddCustomUserControlFactory(IAnalogyCustomUserControlsFactoryWinforms uc);
+        void AddCustomUserControlFactory(IAnalogyCustomUserControlsFactoryWinForms uc);
         void AddDownloadInformation(IAnalogyDownloadInformation downloadInformation);
         string ToString();
         bool ContainsDataProviderOrDataFactory(Guid componentId);

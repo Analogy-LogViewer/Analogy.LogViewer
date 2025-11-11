@@ -2,8 +2,8 @@
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.Factories;
-using Analogy.Interfaces.Winforms;
-using Analogy.Interfaces.Winforms.Factories;
+using Analogy.Interfaces.WinForms;
+using Analogy.Interfaces.WinForms.Factories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,18 +17,18 @@ namespace Analogy.Common.DataTypes
         public bool AssemblyExist => File.Exists(AssemblyFullPath);
         public string AssemblyFullPath { get; }
         public Assembly Assembly { get; }
-        public IAnalogyFactoryWinforms Factory { get; }
+        public IAnalogyFactoryWinForms Factory { get; }
         public FactorySettings FactorySetting { get; }
         public IAnalogyDownloadInformation? DownloadInformation { get; set; }
-        public List<IAnalogyCustomActionsFactoryWinforms> CustomActionsFactories { get; }
-        public List<IAnalogyDataProvidersFactoryWinforms> DataProvidersFactories { get; }
-        public List<IAnalogyDataProviderSettingsWinforms> DataProvidersSettings { get; }
+        public List<IAnalogyCustomActionsFactoryWinForms> CustomActionsFactories { get; }
+        public List<IAnalogyDataProvidersFactoryWinForms> DataProvidersFactories { get; }
+        public List<IAnalogyDataProviderSettingsWinForms> DataProvidersSettings { get; }
         public List<IAnalogyShareableFactory> ShareableFactories { get; }
         public List<IAnalogyExtensionsFactory> ExtensionsFactories { get; }
         public List<IAnalogyPlotting> GraphPlotter { get; }
-        public List<IAnalogyCustomUserControlsFactoryWinforms> UserControlsFactories { get; }
+        public List<IAnalogyCustomUserControlsFactoryWinForms> UserControlsFactories { get; }
         public List<IAnalogyImages> Images { get; private set; }
-        public FactoryContainer(Assembly assembly, string assemblyFullPath, IAnalogyFactoryWinforms factory, FactorySettings factorySetting)
+        public FactoryContainer(Assembly assembly, string assemblyFullPath, IAnalogyFactoryWinForms factory, FactorySettings factorySetting)
         {
             Assembly = assembly;
             AssemblyFullPath = assemblyFullPath;
@@ -40,17 +40,17 @@ namespace Analogy.Common.DataTypes
             ShareableFactories = new List<IAnalogyShareableFactory>();
             ExtensionsFactories = new List<IAnalogyExtensionsFactory>();
             GraphPlotter = new List<IAnalogyPlotting>();
-            UserControlsFactories = new List<IAnalogyCustomUserControlsFactoryWinforms>();
+            UserControlsFactories = new List<IAnalogyCustomUserControlsFactoryWinForms>();
             Images = new List<IAnalogyImages>();
         }
 
-        public void AddDataProviderFactory(IAnalogyDataProvidersFactoryWinforms dataProvidersFactory) =>
+        public void AddDataProviderFactory(IAnalogyDataProvidersFactoryWinForms dataProvidersFactory) =>
             DataProvidersFactories.Add(dataProvidersFactory);
 
-        public void AddDataProvidersSettings(IAnalogyDataProviderSettingsWinforms settings) =>
+        public void AddDataProvidersSettings(IAnalogyDataProviderSettingsWinForms settings) =>
             DataProvidersSettings.Add(settings);
 
-        public void AddCustomActionFactory(IAnalogyCustomActionsFactoryWinforms action) => CustomActionsFactories.Add(action);
+        public void AddCustomActionFactory(IAnalogyCustomActionsFactoryWinForms action) => CustomActionsFactories.Add(action);
 
         public void AddShareableFactory(IAnalogyShareableFactory shareableFactory) =>
             ShareableFactories.Add(shareableFactory);
@@ -59,7 +59,7 @@ namespace Analogy.Common.DataTypes
             ExtensionsFactories.Add(extensionFactory);
         public void AddImages(IAnalogyImages images) => Images.Add(images);
         public void AddGraphPlotter(IAnalogyPlotting plotter) => GraphPlotter.Add(plotter);
-        public void AddCustomUserControlFactory(IAnalogyCustomUserControlsFactoryWinforms uc) => UserControlsFactories.Add(uc);
+        public void AddCustomUserControlFactory(IAnalogyCustomUserControlsFactoryWinForms uc) => UserControlsFactories.Add(uc);
         public void AddDownloadInformation(IAnalogyDownloadInformation downloadInformation)
             => DownloadInformation = downloadInformation;
         public override string ToString() => $"{nameof(Factory)}: {Factory}, {nameof(Assembly)}: {Assembly}";

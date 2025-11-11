@@ -1,6 +1,7 @@
 ﻿using Analogy.Common;
 using Analogy.Common.Interfaces;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using System;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;

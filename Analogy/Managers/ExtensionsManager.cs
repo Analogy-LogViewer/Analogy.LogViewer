@@ -2,7 +2,7 @@
 using Analogy.CommonControls.Interfaces;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
-using Analogy.Interfaces.Winforms;
+using Analogy.Interfaces.WinForms;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
@@ -22,8 +22,8 @@ namespace Analogy
         public IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions =>
             registeredExtensions.Where(e => e is IAnalogyExtensionInPlace).Cast<IAnalogyExtensionInPlace>();
 
-        public IEnumerable<IAnalogyExtensionUserControlWinforms> UserControlRegisteredExtensions =>
-            registeredExtensions.Where(e => e is IAnalogyExtensionUserControlWinforms).Cast<IAnalogyExtensionUserControlWinforms>();
+        public IEnumerable<IAnalogyExtensionUserControlWinForms> UserControlRegisteredExtensions =>
+            registeredExtensions.Where(e => e is IAnalogyExtensionUserControlWinForms).Cast<IAnalogyExtensionUserControlWinForms>();
         private int ColumnIndexes { get; set; } = 12;
         private readonly List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>> extensionsDataColumns =
             new List<Tuple<IAnalogyExtension, AnalogyColumnInfo, int>>();
