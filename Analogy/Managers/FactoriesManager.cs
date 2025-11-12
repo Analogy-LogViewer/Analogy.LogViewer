@@ -397,7 +397,7 @@ namespace Analogy
             #region Load Factories
             foreach ((Assembly assembly, string fileName, List<Type> types) in typesToLoad)
             {
-                foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactory)) != null))
+                foreach (var f in types.Where(aType => aType.GetInterface(nameof(IAnalogyFactoryWinForms)) != null))
                 {
                     try
                     {
