@@ -78,7 +78,7 @@ namespace Analogy
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
 #if NET
-            //Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
 #endif
             Settings.IncreaseNumberOfLaunches();
             if (!string.IsNullOrEmpty(Settings.ApplicationSkinName))
