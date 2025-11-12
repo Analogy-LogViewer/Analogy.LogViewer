@@ -3,6 +3,7 @@ using Analogy.Common.Interfaces;
 using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.WinForms;
 using Analogy.Tools;
 using Microsoft.Extensions.Logging;
 using System.Drawing;
@@ -17,7 +18,7 @@ namespace Analogy.UserControls
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private FileComparerProcessor? LeftFile { get; set; }
         private FileComparerProcessor? RightFile { get; set; }
-        private IAnalogyOfflineDataProvider OfflineAnalogy { get; set; }
+        private IAnalogyOfflineDataProviderWinForms OfflineAnalogy { get; set; }
         public LogsComparerUC()
         {
             InitializeComponent();
@@ -147,7 +148,7 @@ namespace Analogy.UserControls
             }
         }
 
-        public void SetDataSource(IAnalogyOfflineDataProvider offlineAnalogy)
+        public void SetDataSource(IAnalogyOfflineDataProviderWinForms offlineAnalogy)
         {
             OfflineAnalogy = offlineAnalogy;
         }

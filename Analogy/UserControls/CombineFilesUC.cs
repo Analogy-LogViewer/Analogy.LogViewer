@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.WinForms;
 using DevExpress.XtraEditors;
 using System.Windows.Forms;
 
@@ -6,7 +7,7 @@ namespace Analogy.UserControls
 {
     public partial class CombineFilesUC : XtraUserControl
     {
-        private IAnalogyOfflineDataProvider offlineAnalogy;
+        private IAnalogyOfflineDataProviderWinForms offlineAnalogy;
         public CombineFilesUC()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace Analogy.UserControls
             }
         }
 
-        public void SetDataSource(IAnalogyOfflineDataProvider analogyOfflineDataProvider)
+        public void SetDataSource(IAnalogyOfflineDataProviderWinForms analogyOfflineDataProvider)
         {
             offlineAnalogy = analogyOfflineDataProvider;
             this._folderAndFileSystemUc1.DataProvider = offlineAnalogy;

@@ -1,5 +1,6 @@
 ﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.WinForms;
 
 namespace Analogy.Forms
 {
@@ -12,7 +13,7 @@ namespace Analogy.Forms
             InitializeComponent();
         }
 
-        public FileComparerForm(IAnalogyOfflineDataProvider offlineAnalogy) : this()
+        public FileComparerForm(IAnalogyOfflineDataProviderWinForms offlineAnalogy) : this()
         {
             this.offlineAnalogy = offlineAnalogy;
             logsComparerUC1.SetDataSource(offlineAnalogy);
