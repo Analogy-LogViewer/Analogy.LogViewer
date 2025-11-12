@@ -6,11 +6,8 @@ using Analogy.Interfaces.DataTypes;
 using Analogy.Interfaces.WinForms;
 using Analogy.Interfaces.WinForms.DataTypes;
 using Analogy.LogLoaders;
-using Analogy.LogViewer.Template;
-using Analogy.LogViewer.Template.IAnalogy;
+using Analogy.LogViewer.Template.WinForms;
 using Analogy.Properties;
-using Analogy.Tools;
-using Analogy.UserControls;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -38,7 +35,7 @@ namespace Analogy.DataProviders
     {
         public override Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
         public override string Title { get; set; } = "Analogy Built-In Data Provider";
-        public override IEnumerable<IAnalogyDataProviderWinForms> DataProviders { get; set; }
+        public override IEnumerable<IAnalogyDataProviderWinForms> DataProviders { get; }
 
         public AnalogyOfflineDataProviderFactory()
         {
