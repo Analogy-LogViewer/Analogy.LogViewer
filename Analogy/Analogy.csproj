@@ -43,7 +43,7 @@
 		<PackageReference Include="Analogy.LogViewer.LoggersTree" Version="9.0.0-rc1" />
 		<PackageReference Include="Analogy.LogViewer.NLogProvider" Version="9.0.0-rc1" />
 		<PackageReference Include="Analogy.LogViewer.PlainTextParser" Version="9.0.0-rc1" />
-		<!--<PackageReference Include="Analogy.LogViewer.RegexParser" Version="9.0.0-rc1" />-->
+		<PackageReference Include="Analogy.LogViewer.RegexParser" Version="9.0.0-rc3" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="9.0.0-rc1" />
 		<PackageReference Include="Analogy.LogViewer.Sqlite" Version="9.0.0-rc1" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.0" />
