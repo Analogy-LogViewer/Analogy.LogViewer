@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
@@ -22,7 +22,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Analogy.CommonControls\Analogy.CommonControls.csproj" />
 	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0-windows'  or '$(TargetFramework)' == 'net9.0-windows'">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0-windows' or '$(TargetFramework)' == 'net9.0-windows' or '$(TargetFramework)' == 'net10.0-windows'">
 		<Reference Include="DevExpress.BonusSkins.v25.1">
 			<HintPath>..\DevExpress\.net core\DevExpress.BonusSkins.v25.1.dll</HintPath>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
