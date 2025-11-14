@@ -11,7 +11,7 @@
 	</PropertyGroup>
 	<Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.1" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.1" />
 		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="9.0.0-rc2" />
