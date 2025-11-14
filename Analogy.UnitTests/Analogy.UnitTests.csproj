@@ -14,7 +14,7 @@
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.1" />
 		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.0" />
-		<PackageReference Include="Analogy.LogViewer.Serilog" Version="9.0.0-rc1" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="9.0.0-rc2" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
 		<PackageReference Include="MSTest.TestAdapter" Version="4.0.2" />
 		<PackageReference Include="MSTest.TestFramework" Version="4.0.2" />

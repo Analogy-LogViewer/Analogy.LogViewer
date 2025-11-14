@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.LogViewer.Serilog.IAnalogy;
 using Analogy.LogViewer.Template;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.UnitTests
 {
-    public class OfflineDataProviderForTesting : Analogy.LogViewer.Serilog.IAnalogy.OfflineDataProvider
+    public class OfflineDataProviderForTesting : SerilogOfflineDataProvider
     {
     }
 }
