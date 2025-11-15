@@ -778,7 +778,7 @@ namespace Analogy
                 form.Text = "Data Provider Settings: " + providerSetting.Title;
                 form.Controls.Add(providerSetting.DataProviderSettings);
                 providerSetting.DataProviderSettings.Dock = DockStyle.Fill;
-                form.Closing += async (s, e) => { await providerSetting.SaveSettingsAsync(); };
+                form.FormClosing += async (s, e) => { await providerSetting.SaveSettingsAsync(); };
                 settingsBtn.Click += (sender, e) => { form.ShowDialog(this); };
             }
         }
