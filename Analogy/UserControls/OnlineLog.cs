@@ -18,7 +18,7 @@ namespace Analogy.UserControls
         private bool _showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
-        public OnlineUCLogs(IAnalogyRealTimeDataProviderWinForms realTime, FileProcessingManager fileProcessingManager)
+        public OnlineUCLogs(IAnalogyRealTimeDataProvider realTime, FileProcessingManager fileProcessingManager)
         {
             FileProcessingManager = fileProcessingManager;
             InitializeComponent();

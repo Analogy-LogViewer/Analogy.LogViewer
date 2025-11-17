@@ -1051,9 +1051,9 @@ namespace Analogy.Forms
         private void AddFlatRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactoryWinForms dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
-                .Cast<IAnalogyRealTimeDataProviderWinForms>().ToList();
+                .Cast<IAnalogyRealTimeDataProvider>().ToList();
             var serverSide = dataSourceFactory.DataProviders.Where(f => f is IAnalogyProviderSidePagingProvider)
-                .Cast<IAnalogyProviderSidePagingProviderWinForms>().ToList();
+                .Cast<IAnalogyProviderSidePagingProvider>().ToList();
             if (realTimes.Count == 0 && serverSide.Count == 0)
             {
                 return;
@@ -1068,10 +1068,16 @@ namespace Analogy.Forms
 
             foreach (var realTime in realTimes)
             {
+                var smallImage = realTime is IAnalogyRealTimeDataProviderWinForms win1
+                    ? win1.ConnectedSmallImage
+                    : Resources.Database_on;
+                var largeImage = realTime is IAnalogyRealTimeDataProviderWinForms win2
+                    ? win2.ConnectedLargeImage
+                    : Resources.Database_on;
                 BarButtonItem realTimeBtn = new BarButtonItem();
                 ribbonPageGroup.ItemLinks.Add(realTimeBtn);
-                realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
-                realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
+                realTimeBtn.ImageOptions.Image = smallImage;
+                realTimeBtn.ImageOptions.LargeImage = largeImage;
 
                 realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                 realTimeBtn.Caption = (!string.IsNullOrEmpty(realTime.OptionalTitle)
@@ -1203,9 +1209,9 @@ namespace Analogy.Forms
         private void AddCombinedRealTimeDataSources(RibbonPage ribbonPage, IAnalogyDataProvidersFactoryWinForms dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
-                .Cast<IAnalogyRealTimeDataProviderWinForms>().ToList();
+                .Cast<IAnalogyRealTimeDataProvider>().ToList();
             var serverSide = dataSourceFactory.DataProviders.Where(f => f is IAnalogyProviderSidePagingProvider)
-                .Cast<IAnalogyProviderSidePagingProviderWinForms>().ToList();
+                .Cast<IAnalogyProviderSidePagingProvider>().ToList();
             if (realTimes.Count == 0 && serverSide.Count == 0)
             {
                 return;
@@ -1231,10 +1237,16 @@ namespace Analogy.Forms
 
                 foreach (var realTime in realTimes)
                 {
+                    var smallImage = realTime is IAnalogyRealTimeDataProviderWinForms win1
+                        ? win1.ConnectedSmallImage
+                        : Resources.Database_on;
+                    var largeImage = realTime is IAnalogyRealTimeDataProviderWinForms win2
+                        ? win2.ConnectedLargeImage
+                        : Resources.Database_on;
                     BarButtonItem realTimeBtn = new BarButtonItem();
                     realTimeMenu.ItemLinks.Add(realTimeBtn);
-                    realTimeBtn.ImageOptions.Image = realTime.ConnectedSmallImage ?? Resources.Database_on;
-                    realTimeBtn.ImageOptions.LargeImage = realTime.ConnectedLargeImage ?? Resources.Database_on;
+                    realTimeBtn.ImageOptions.Image = smallImage;
+                    realTimeBtn.ImageOptions.LargeImage = largeImage;
 
                     realTimeBtn.RibbonStyle = RibbonItemStyles.All;
                     realTimeBtn.Caption = "Real Time Logs" + (!string.IsNullOrEmpty(realTime.OptionalTitle)
@@ -2052,13 +2064,13 @@ namespace Analogy.Forms
             };
         }
 
-        private void AddSingleRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataProviderWinForms realTime, string title,
+        private void AddSingleRealTimeDataSource(RibbonPage ribbonPage, IAnalogyRealTimeDataProvider realTime, string title,
          RibbonPageGroup group)
         {
             BarButtonItem realTimeBtn = new BarButtonItem();
             group.ItemLinks.Add(realTimeBtn);
-            var connectedLargeImage = realTime.ConnectedLargeImage;
-            var connectedSmallImage = realTime.ConnectedSmallImage;
+            var connectedLargeImage = realTime is IAnalogyRealTimeDataProviderWinForms win1 ? win1.ConnectedLargeImage : Resources.Database_on;
+            var connectedSmallImage = realTime is IAnalogyRealTimeDataProviderWinForms win2 ? win2.ConnectedSmallImage : Resources.Database_on;
             realTimeBtn.ImageOptions.LargeImage = connectedLargeImage ?? Resources.Database_on;
             realTimeBtn.ImageOptions.Image = connectedLargeImage ?? Resources.Database_on;
             realTimeBtn.RibbonStyle = RibbonItemStyles.All;

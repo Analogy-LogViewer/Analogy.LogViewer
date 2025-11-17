@@ -1154,7 +1154,7 @@ namespace Analogy
         private void AddFlatRealTimeDataSource(FactoryContainer fc, IAnalogyDataProvidersFactoryWinForms dataSourceFactory)
         {
             var realTimes = dataSourceFactory.DataProviders.Where(f => f is IAnalogyRealTimeDataProvider)
-                .Cast<IAnalogyRealTimeDataProviderWinForms>().ToList();
+                .Cast<IAnalogyRealTimeDataProvider>().ToList();
             if (realTimes.Count == 0)
             {
                 return;
@@ -1169,10 +1169,13 @@ namespace Analogy
 
             foreach (var realTime in realTimes)
             {
+                var image = realTime is IAnalogyRealTimeDataProviderWinForms win
+                    ? win.ConnectedLargeImage
+                    : Resources.Database_on;
                 AccordionControlElement realTimeBtn = new AccordionControlElement();
                 acRootGroupHome.Elements.Add(realTimeBtn);
                 realTimeBtn.Style = ElementStyle.Item;
-                realTimeBtn.ImageOptions.Image = realTime.ConnectedLargeImage ?? Resources.Database_on;
+                realTimeBtn.ImageOptions.Image = image;
                 realTimeBtn.Text = (!string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
                     : "real time provider");
