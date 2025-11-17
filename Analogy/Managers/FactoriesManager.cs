@@ -452,7 +452,11 @@ namespace Analogy
                 {
                     try
                     {
-                        var dataProviderFactory = (Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactoryWinForms)!;
+                        var dataProviderFactory = (Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactoryWinForms);
+                        if (dataProviderFactory is null)
+                        {
+                            continue;
+                        }
                         var factory = Factories.First(f => f.Factory.FactoryId == dataProviderFactory?.FactoryId);
                         factory.AddDataProviderFactory(dataProviderFactory);
                     }
@@ -468,7 +472,11 @@ namespace Analogy
                 {
                     try
                     {
-                        var settings = (Activator.CreateInstance(isettings) as IAnalogyDataProviderSettingsWinForms)!;
+                        var settings = (Activator.CreateInstance(isettings) as IAnalogyDataProviderSettingsWinForms);
+                        if (settings is null)
+                        {
+                            continue;
+                        }
                         var factory = Factories.First(f => f.Factory.FactoryId == settings?.FactoryId);
                         factory.AddDataProvidersSettings(settings);
                     }
@@ -482,7 +490,11 @@ namespace Analogy
                 {
                     try
                     {
-                        var custom = (Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactoryWinForms)!;
+                        var custom = (Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactoryWinForms);
+                        if (custom is null)
+                        {
+                            continue;
+                        }
                         var factory = Factories.First(f => f.Factory.FactoryId == custom?.FactoryId);
                         factory.AddCustomActionFactory(custom);
                     }
