@@ -3,31 +3,29 @@
 
 Interface -- LogServer
 Interface -- LogServer.Client
-
 Interface -- LogServer.Client -- NLog.Targets
 Interface -- LogServer.Client -- Serilog.Sink
-Interface -- LogServer.Client -- AspNetCore.LogProvider
-
-Interface -- LogServer.Client --         -- Grpc
-Interface -- CommonUtilities -- Template -- Grpc
-
-Interface -- CommonUtilities -- Template -- RegexParser
+Interface -- LogServer.Client -- AspNetCore.LogProvider 
+Interface -- LogServer.Client --         -- Grpc 
+Interface -- CommonUtilities -- Template -- Grpc 
+Interface -- CommonUtilities -- Template -- RegexParser  
 Interface -- CommonUtilities -- Template -- Example
-Interface -- CommonUtilities -- Template -- Plain Text
+Interface -- CommonUtilities -- Template -- Serilog
+Interface -- CommonUtilities -- Template -- Analogy.LogViewer.ElasticCommonSchema
+Interface -- CommonUtilities -- Template -- IISLogsProvider
+Interface -- CommonUtilities -- Template -- Analogy.LogViewer.FFmpeg
+Interface -- CommonUtilities -- Template -- LoggersTree
 Interface -- CommonUtilities -- Template -- GitHistory
 Interface -- CommonUtilities -- Template -- Github
-Interface -- CommonUtilities -- Template -- IISLogsProvider
 Interface -- CommonUtilities -- Template -- JsonParser
+Interface -- CommonUtilities -- Template -- liteDB
 Interface -- CommonUtilities -- Template -- Log4jXml
 Interface -- CommonUtilities -- Template -- Log4Net
 Interface -- CommonUtilities -- Template -- NLog
-Interface -- CommonUtilities -- Template -- Serilog 
-Interface -- CommonUtilities -- Template -- WindowsEventLogs
-Interface -- CommonUtilities -- Template -- XMLParser
-Interface -- CommonUtilities -- Template -- WordSearch
+Interface -- CommonUtilities -- Template -- Plain Text
 Interface -- CommonUtilities -- Template -- Sqlite
-Interface -- CommonUtilities -- Template -- liteDB
-Interface -- CommonUtilities -- Template -- Elastic.CommonSchema.Serilog
-Interface -- CommonUtilities -- Template -- Analogy.LogViewer.LoggersTree
-Interface -- CommonUtilities -- Template -- Analogy.LogViewer.FFmpeg
+Interface -- CommonUtilities -- Template -- WindowsEventLogs
+Interface -- CommonUtilities -- Template -- WordSearch
+Interface -- CommonUtilities -- Template -- XMLParser
+
 

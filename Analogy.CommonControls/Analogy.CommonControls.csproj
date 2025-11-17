@@ -43,10 +43,10 @@
 		<Company>Analogy.LogViewer</Company>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="9.0.2" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.1" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.1" />
-		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.0" />
+		<PackageReference Include="Analogy.CommonUtilities" Version="9.0.3" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.4" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.3" />
+		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.4" />
 		<PackageReference Include="Markdig" Version="0.43.0" />
 		<PackageReference Include="MessagePack" Version="3.1.4" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
