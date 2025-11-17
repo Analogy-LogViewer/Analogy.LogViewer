@@ -5,6 +5,7 @@ using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.WinForms;
 using Analogy.Managers;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
@@ -24,7 +25,7 @@ namespace Analogy.UserControls
         public bool Enable { get; set; } = true;
         private FilePoolingManager PoolingManager { get; }
 
-        public FilePoolingUCLogs(IAnalogyUserSettings settings, FileProcessingManager fileProcessingManager, IAnalogyOfflineDataProvider offlineDataProvider,
+        public FilePoolingUCLogs(IAnalogyUserSettings settings, FileProcessingManager fileProcessingManager, IAnalogyOfflineDataProviderWinForms offlineDataProvider,
             string filter, string initialFilename, string initialFolder, string? title = null)
         {
             InitializeComponent();
@@ -133,8 +134,7 @@ namespace Analogy.UserControls
 
             var messages = FileProcessingManager.GetMessages((string)listBoxClearHistory.SelectedItem);
             XtraFormLogGrid grid = new XtraFormLogGrid(ServicesProvider.Instance.GetService<IAnalogyUserSettings>(),
-                 messages, Environment.MachineName, ucLogs1.DataProvider,
-                ucLogs1.FileDataProvider);
+                 messages, Environment.MachineName, ucLogs1.DataProvider, ucLogs1.FileDataProvider);
             grid.Show(this);
         }
         public void ShowSecondaryWindow()

@@ -3,6 +3,7 @@ using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.WinForms;
 using Analogy.UserControls;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
     private IAnalogyUserSettings Settings { get; }
 
     public FilePoolingManager(IAnalogyUserSettings settings, string filter, string initialFilename, UCLogs logUI,
-        IAnalogyOfflineDataProvider offlineDataProvider)
+        IAnalogyOfflineDataProviderWinForms offlineDataProvider)
     {
         _sync = new object();
         Settings = settings;
@@ -46,7 +47,7 @@ internal class FilePoolingManager : ILogMessageCreatedHandler
 
     private string FileName { get; }
     private FileProcessor FileProcessor { get; }
-    private IAnalogyOfflineDataProvider OfflineDataProvider { get; }
+    private IAnalogyOfflineDataProviderWinForms OfflineDataProvider { get; }
 
     public string FileFilter { get; set; }
 

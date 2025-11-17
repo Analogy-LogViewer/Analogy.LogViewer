@@ -2,6 +2,7 @@
 using Analogy.Common.Managers;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.WinForms;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

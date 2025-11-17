@@ -3,6 +3,7 @@ using Analogy.Common.Interfaces;
 using Analogy.CommonControls.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.WinForms;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
@@ -20,7 +21,7 @@ namespace Analogy.Extensions
     {
         private IUserSettingsManager Settings { get; }
         public IAnalogyDataProvider DataProvider { get; set; }
-        public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
+        public IAnalogyOfflineDataProviderWinForms? FileDataProvider { get; set; }
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         public ManualResetEvent columnAdderSync = new ManualResetEvent(false);
 

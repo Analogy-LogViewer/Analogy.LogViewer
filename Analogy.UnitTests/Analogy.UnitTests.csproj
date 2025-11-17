@@ -9,50 +9,17 @@
 		<Copyright>Copyright © 2019 -2025</Copyright>
 		<Platforms>AnyCPU;x86;x64</Platforms>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<DebugType>full</DebugType>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-		<DebugType>full</DebugType>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-		<DebugType>full</DebugType>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>pdbonly</DebugType>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-		<DebugType>pdbonly</DebugType>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-		<DebugType>pdbonly</DebugType>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-		<DebugType>full</DebugType>
-		<LangVersion>7.3</LangVersion>
-		<CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-		<DebugType>pdbonly</DebugType>
-		<LangVersion>7.3</LangVersion>
-		<CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-	</PropertyGroup>
 	<Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="8.1.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-		<PackageReference Include="MSTest.TestAdapter" Version="3.9.3" />
-		<PackageReference Include="MSTest.TestFramework" Version="3.9.3" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.2" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.3" />
+		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.4" />
+		<PackageReference Include="Analogy.LogViewer.Serilog" Version="9.0.3" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+		<PackageReference Include="MSTest.TestAdapter" Version="4.0.2" />
+		<PackageReference Include="MSTest.TestFramework" Version="4.0.2" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="System.Text.Json" Version="9.0.7" />
+		<PackageReference Include="System.Text.Json" Version="10.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Analogy\Analogy.csproj" />

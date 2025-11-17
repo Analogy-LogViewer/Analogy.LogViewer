@@ -3,6 +3,7 @@ using Analogy.Common.Managers;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.WinForms;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Analogy.UserControls
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private int refreshDelay = 100;
         private DateTime LastReportUpdate = DateTime.Now;
-        public IAnalogyOfflineDataProvider DataProvider { get; set; }
+        public IAnalogyOfflineDataProviderWinForms DataProvider { get; set; }
 
         private FileProcessingManager Manager { get; } = new FileProcessingManager();
         private IProgress<AnalogyProgressReport> ProgressReporter { get; set; }
@@ -92,7 +93,7 @@ namespace Analogy.UserControls
             FileNames = filenames;
         }
 
-        public async Task ProcessFilesAndSearch(IAnalogyOfflineDataProvider dataProvider, string txtToSearch)
+        public async Task ProcessFilesAndSearch(IAnalogyOfflineDataProviderWinForms dataProvider, string txtToSearch)
         {
             DataProvider = dataProvider;
             Aborted = false;
@@ -128,7 +129,7 @@ namespace Analogy.UserControls
             }
         }
 
-        public async Task ProcessFilesAndCombine(IAnalogyOfflineDataProvider dataProvider)
+        public async Task ProcessFilesAndCombine(IAnalogyOfflineDataProviderWinForms dataProvider)
         {
             DataProvider = dataProvider;
             Aborted = false;

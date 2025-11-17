@@ -33,7 +33,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v5.0.0
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.x
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Add msbuild to PATH
@@ -52,6 +52,12 @@ jobs:
     # Publish the application NET9
     - name: Publish the application NET9
       run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net9.0-windows --runtime win-x64
+      env:
+        Configuration: ${{ matrix.configuration }}
+
+    # Publish the application NET10
+    - name: Publish the application NET10
+      run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net10.0-windows --runtime win-x64
       env:
         Configuration: ${{ matrix.configuration }}
     # Execute all unit tests in the solution
@@ -76,6 +82,12 @@ jobs:
       with:
        name: net9.0-windows_${{ matrix.configuration }}
        path: ./Analogy/bin/x64/Release/net9.0-windows/win-x64/publish
+    # Publish Artifacts 
+    - name: 'Publish Artifacts NET10'
+      uses: actions/upload-artifact@v4.4.3
+      with:
+       name: net10.0-windows_${{ matrix.configuration }}
+       path: ./Analogy/bin/x64/Release/net10.0-windows/win-x64/publish
 concurrency: 
   group: ${{ github.ref }}
   cancel-in-progress: true

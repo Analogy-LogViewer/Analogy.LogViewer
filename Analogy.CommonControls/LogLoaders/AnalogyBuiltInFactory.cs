@@ -2,7 +2,7 @@
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
 using Analogy.LogViewer.Template;
-using Analogy.LogViewer.Template.IAnalogy;
+using Analogy.LogViewer.Template.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.CommonControls.LogLoaders
 {
-    public class AnalogyBuiltInFactory : PrimaryFactory
+    public class AnalogyBuiltInFactory : PrimaryFactoryWinForms
     {
         public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
         public override Guid FactoryId { get; set; } = AnalogyGuid;
@@ -38,7 +38,7 @@ namespace Analogy.CommonControls.LogLoaders
         }
     }
 
-    public class AnalogyOfflineDataProvider : OfflineDataProvider
+    public class AnalogyOfflineDataProvider : OfflineDataProviderWinForms
     {
         public override Guid Id { get; set; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
         public override bool CanSaveToLogFile { get; set; } = true;

@@ -2,8 +2,6 @@
 using DevExpress.XtraEditors;
 using Markdig;
 using Octokit;
-using System.Net;
-using static Grpc.Core.Metadata;
 
 namespace Analogy.UserControls
 {

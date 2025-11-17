@@ -1,5 +1,6 @@
 ﻿using Analogy.CommonControls.UserControls;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

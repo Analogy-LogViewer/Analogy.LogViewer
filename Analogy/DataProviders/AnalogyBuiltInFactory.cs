@@ -3,12 +3,11 @@ using Analogy.DataTypes;
 using Analogy.Forms;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.WinForms;
+using Analogy.Interfaces.WinForms.DataTypes;
 using Analogy.LogLoaders;
-using Analogy.LogViewer.Template;
-using Analogy.LogViewer.Template.IAnalogy;
+using Analogy.LogViewer.Template.WinForms;
 using Analogy.Properties;
-using Analogy.Tools;
-using Analogy.UserControls;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -16,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.DataProviders
 {
-    public class AnalogyBuiltInFactory : PrimaryFactory
+    public class AnalogyBuiltInFactory : PrimaryFactoryWinForms
     {
         public static Guid AnalogyGuid { get; } = new Guid("D3047F5D-CFEB-4A69-8F10-AE5F4D3F2D04");
         public override Guid FactoryId { get; set; } = AnalogyGuid;
@@ -32,7 +31,7 @@ namespace Analogy.DataProviders
         }
     }
 
-    public sealed class AnalogyOfflineDataProviderFactory : DataProvidersFactory
+    public sealed class AnalogyOfflineDataProviderFactory : DataProvidersFactoryWinForms
     {
         public override Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
         public override string Title { get; set; } = "Analogy Built-In Data Provider";
@@ -45,7 +44,7 @@ namespace Analogy.DataProviders
         }
     }
 
-    public class AnalogyOfflineDataProvider : OfflineDataProvider
+    public class AnalogyOfflineDataProvider : OfflineDataProviderWinForms
     {
         public override Guid Id { get; set; } = new Guid("A475EB76-2524-49D0-B931-E800CB358106");
         public override bool CanSaveToLogFile { get; set; } = true;
@@ -142,7 +141,7 @@ namespace Analogy.DataProviders
         }
     }
 
-    public class AnalogyCustomActionFactory : CustomActionsFactory
+    public class AnalogyCustomActionFactory : CustomActionsFactoryWinForms
     {
         public override Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
         public override string Title { get; set; } = "Analogy Built-In tools";
@@ -150,7 +149,7 @@ namespace Analogy.DataProviders
 
         public AnalogyCustomActionFactory()
         {
-            Actions = new List<IAnalogyCustomAction>
+            Actions = new List<IAnalogyCustomActionWinForms>
             {
                 new AnalogyCustomAction(),
                 new AnalogyUnixTimeAction(),
@@ -161,7 +160,7 @@ namespace Analogy.DataProviders
         }
     }
 
-    public class AnalogyCustomAction : IAnalogyCustomAction
+    public class AnalogyCustomAction : IAnalogyCustomActionWinForms
     {
         public Action Action => () => new ProcessNameAndID().Show();
 
@@ -171,8 +170,14 @@ namespace Analogy.DataProviders
         public string Title { get; set; } = "Process Identifier";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
         public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
-    public class AnalogyUnixTimeAction : IAnalogyCustomAction
+    public class AnalogyUnixTimeAction : IAnalogyCustomActionWinForms
     {
         public Action Action => () => new UnixTimeConverter().Show();
         public Guid Id { get; set; } = new Guid("89173452-9C8E-4946-8C39-CAF2C8B6522D");
@@ -181,10 +186,15 @@ namespace Analogy.DataProviders
 
         public string Title { get; set; } = "Unix Time Converter";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
+
         public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
 
-    public class AnalogyJsonViewerAction : IAnalogyCustomAction
+    public class AnalogyJsonViewerAction : IAnalogyCustomActionWinForms
     {
         public Action Action => () => new JsonViewerForm(ServicesProvider.Instance.GetService<IAnalogyUserSettings>()).Show();
         public Guid Id { get; set; } = new Guid("330b8471-c763-4579-a7e5-9efed71a56a5");
@@ -194,9 +204,13 @@ namespace Analogy.DataProviders
         public string Title { get; set; } = "Json object Visualizer";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
         public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
 
-    public class AnalogyCompareTextAction : IAnalogyCustomAction
+    public class AnalogyCompareTextAction : IAnalogyCustomActionWinForms
     {
         public Action Action => () => new CompareTextForm().Show();
         public Guid Id { get; set; } = new Guid("110b8471-c763-4579-a7e5-9efed71a56a5");
@@ -206,12 +220,16 @@ namespace Analogy.DataProviders
         public string Title { get; set; } = "Text Comparer";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
         public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
     public class AnalogyBuiltInImages : AnalogyImages
     {
     }
 
-    public class AnalogyGeoLocationAction : IAnalogyCustomAction
+    public class AnalogyGeoLocationAction : IAnalogyCustomActionWinForms
     {
         public Action Action => () => new GeoLocationForm().Show();
         public Guid Id { get; set; } = new Guid("10a0d408-d520-4471-8851-75e3bd0a8cc6");
@@ -221,5 +239,9 @@ namespace Analogy.DataProviders
         public string Title { get; set; } = "Geo Location Lookup";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
         public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
 }

@@ -2,6 +2,7 @@
 using Analogy.Common.Interfaces;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Analogy.Managers;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;

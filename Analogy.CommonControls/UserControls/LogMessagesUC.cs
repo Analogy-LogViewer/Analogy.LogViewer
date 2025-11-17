@@ -11,6 +11,7 @@ using Analogy.CommonControls.Tools;
 using Analogy.DataTypes;
 using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.WinForms;
 using Analogy.UserControls;
 using DevExpress.Data;
 using DevExpress.Data.Filtering;
@@ -106,7 +107,7 @@ namespace Analogy.CommonControls.UserControls
         private IUserSettingsManager Settings { get; set; }
         private IExtensionsManager ExtensionManager { get; set; }
         private IEnumerable<IAnalogyExtensionInPlace> InPlaceRegisteredExtensions { get; set; }
-        private IEnumerable<IAnalogyExtensionUserControl> UserControlRegisteredExtensions { get; set; }
+        private IEnumerable<IAnalogyExtensionUserControlWinForms> UserControlRegisteredExtensions { get; set; }
         private List<int> HighlightRows { get; set; } = new();
         private List<string> _excludeMostCommon = new();
         public const string DataGridDateColumnName = "Date";
@@ -1548,9 +1549,9 @@ namespace Analogy.CommonControls.UserControls
             var extensions = ExtensionManager.RegisteredExtensions.Where(e => e.TargetComponentId == DataProvider.Id)
                 .ToList();
             hasAnyInPlaceExtensions = extensions.Any(e => e is IAnalogyExtensionInPlace);
-            hasAnyUserControlExtensions = extensions.Any(e => e is IAnalogyExtensionUserControl);
+            hasAnyUserControlExtensions = extensions.Any(e => e is IAnalogyExtensionUserControlWinForms);
             InPlaceRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionInPlace).Cast<IAnalogyExtensionInPlace>();
-            UserControlRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionUserControl).Cast<IAnalogyExtensionUserControl>();
+            UserControlRegisteredExtensions = extensions.Where(e => e is IAnalogyExtensionUserControlWinForms).Cast<IAnalogyExtensionUserControlWinForms>();
             foreach (IAnalogyExtensionInPlace extension in InPlaceRegisteredExtensions)
             {
                 var columns = extension.GetColumnsInfo();
@@ -1566,7 +1567,7 @@ namespace Analogy.CommonControls.UserControls
                     gridColumn.Visible = true;
                 }
             }
-            foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
+            foreach (IAnalogyExtensionUserControlWinForms extension in UserControlRegisteredExtensions)
             {
                 DockPanel? pnl = dockManager1.Panels.FirstOrDefault(i => i.ID == extension.Id);
                 if (pnl == null)
@@ -1937,7 +1938,7 @@ namespace Analogy.CommonControls.UserControls
 
                 if (hasAnyUserControlExtensions)
                 {
-                    foreach (IAnalogyExtensionUserControl extension in UserControlRegisteredExtensions)
+                    foreach (IAnalogyExtensionUserControlWinForms extension in UserControlRegisteredExtensions)
                     {
                         if (IsHandleCreated)
                         {

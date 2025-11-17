@@ -1,5 +1,6 @@
 ﻿using Analogy.DataTypes;
 using Analogy.Interfaces;
+using Analogy.Interfaces.WinForms;
 using DevExpress.XtraEditors;
 
 namespace Analogy.Forms
@@ -13,7 +14,7 @@ namespace Analogy.Forms
             InitializeComponent();
         }
 
-        public SearchForm(IAnalogyOfflineDataProvider offlineAnalogy) : this()
+        public SearchForm(IAnalogyOfflineDataProviderWinForms offlineAnalogy) : this()
         {
             this.offlineAnalogy = offlineAnalogy;
             searchInFilesUC1.SetDataSource(offlineAnalogy);

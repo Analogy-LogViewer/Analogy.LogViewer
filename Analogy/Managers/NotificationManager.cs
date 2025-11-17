@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.WinForms;
 
 namespace Analogy.Managers
 {
