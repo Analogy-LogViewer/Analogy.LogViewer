@@ -35,12 +35,12 @@ namespace Analogy.DataProviders
     {
         public override Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
         public override string Title { get; set; } = "Analogy Built-In Data Provider";
-        public override IEnumerable<IAnalogyDataProviderWinForms> DataProviders { get; }
+        public override IEnumerable<IAnalogyDataProvider> DataProviders { get; set; }
 
         public AnalogyOfflineDataProviderFactory()
         {
             var adp = new AnalogyOfflineDataProvider();
-            DataProviders = new List<IAnalogyDataProviderWinForms> { adp };
+            DataProviders = new List<IAnalogyDataProvider> { adp };
         }
     }
 
@@ -145,7 +145,7 @@ namespace Analogy.DataProviders
     {
         public override Guid FactoryId { get; set; } = AnalogyBuiltInFactory.AnalogyGuid;
         public override string Title { get; set; } = "Analogy Built-In tools";
-        public override IEnumerable<IAnalogyCustomActionWinForms> Actions { get; }
+        public override IEnumerable<IAnalogyCustomAction> Actions { get; }
 
         public AnalogyCustomActionFactory()
         {
@@ -169,17 +169,16 @@ namespace Analogy.DataProviders
         public Image? LargeImage { get; set; } = Resources.ChartsShowLegend_32x32;
         public string Title { get; set; } = "Process Identifier";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
-        AnalogyToolTip? IAnalogyCustomAction.ToolTip
-        {
-            get => ToolTip;
-            set => ToolTip = value is AnalogyToolTipWinForms att ? att : null;
-        }
+        public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
 
-        public AnalogyToolTipWinForms? ToolTip { get; set; }
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
     public class AnalogyUnixTimeAction : IAnalogyCustomActionWinForms
     {
-        private AnalogyToolTipWinForms? _toolTip;
         public Action Action => () => new UnixTimeConverter().Show();
         public Guid Id { get; set; } = new Guid("89173452-9C8E-4946-8C39-CAF2C8B6522D");
         public Image? SmallImage { get; set; } = Resources.ChartsShowLegend_16x16;
@@ -188,13 +187,11 @@ namespace Analogy.DataProviders
         public string Title { get; set; } = "Unix Time Converter";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
 
-        AnalogyToolTip? IAnalogyCustomAction.ToolTip
-        {
-            get => _toolTip;
-            set => ToolTip = value is AnalogyToolTipWinForms att ? att : null;
-        }
-
-        public AnalogyToolTipWinForms? ToolTip { get; set; }
+        public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
 
     public class AnalogyJsonViewerAction : IAnalogyCustomActionWinForms
@@ -206,12 +203,11 @@ namespace Analogy.DataProviders
 
         public string Title { get; set; } = "Json object Visualizer";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
-        AnalogyToolTip? IAnalogyCustomAction.ToolTip
-        {
-            get => ToolTip;
-            set => ToolTip = value is AnalogyToolTipWinForms att ? att : null;
-        }
-        public AnalogyToolTipWinForms? ToolTip { get; set; }
+        public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
 
     public class AnalogyCompareTextAction : IAnalogyCustomActionWinForms
@@ -223,12 +219,11 @@ namespace Analogy.DataProviders
 
         public string Title { get; set; } = "Text Comparer";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
-        AnalogyToolTip? IAnalogyCustomAction.ToolTip
-        {
-            get => ToolTip;
-            set => ToolTip = value is AnalogyToolTipWinForms att ? att : null;
-        }
-        public AnalogyToolTipWinForms? ToolTip { get; set; }
+        public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
     public class AnalogyBuiltInImages : AnalogyImages
     {
@@ -243,12 +238,10 @@ namespace Analogy.DataProviders
 
         public string Title { get; set; } = "Geo Location Lookup";
         public AnalogyCustomActionType Type { get; } = AnalogyCustomActionType.Global;
-        AnalogyToolTip? IAnalogyCustomAction.ToolTip
-        {
-            get => ToolTip;
-            set => ToolTip = value is AnalogyToolTipWinForms att ? att : null;
-        }
-
-        public AnalogyToolTipWinForms? ToolTip { get; set; }
+        public AnalogyToolTip? ToolTip { get; set; }
+        public Image? GetCustomActionSmallImage() => SmallImage;
+        public Image? GetCustomActionLargeImage() => LargeImage;
+        public Image? GetCustomActionToolTipSmallImage() => SmallImage;
+        public Image? GetCustomActionToolTipLargeImage() => LargeImage;
     }
 }

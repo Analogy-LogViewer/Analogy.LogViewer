@@ -20,7 +20,7 @@ namespace Analogy.Extensions
     public partial class LogsMessageGroupingExtensionUC : XtraUserControl
     {
         private IUserSettingsManager Settings { get; }
-        public IAnalogyDataProviderWinForms DataProvider { get; set; }
+        public IAnalogyDataProvider DataProvider { get; set; }
         public IAnalogyOfflineDataProviderWinForms? FileDataProvider { get; set; }
         private Dictionary<string, List<AnalogyLogMessage>> groupingByChars;
         public ManualResetEvent columnAdderSync = new ManualResetEvent(false);

@@ -32,7 +32,7 @@ namespace Analogy.Common.DataTypes
             Settings = settingsManager;
         }
 
-        public async Task<IEnumerable<IAnalogyLogMessage>> Process(IAnalogyOfflineDataProviderWinForms fileDataProvider,
+        public async Task<IEnumerable<IAnalogyLogMessage>> Process(IAnalogyOfflineDataProvider fileDataProvider,
             string filename, CancellationToken token, bool isReload = false)
         {
             if (string.IsNullOrEmpty(filename))

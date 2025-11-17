@@ -180,7 +180,7 @@ namespace Analogy
         {
             NotificationManager.OnNewNotification += (s, notification) =>
             {
-                AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
+                AlertInfo info = new AlertInfo(notification.Title, notification.Message);
                 AlertControl ac = new AlertControl(this.components)
                 {
                     AutoFormDelay = notification.DurationSeconds * 1000,
@@ -550,7 +550,7 @@ namespace Analogy
 
             NotificationManager.OnNewNotification += (s, notification) =>
             {
-                AlertInfo info = new AlertInfo(notification.Title, notification.Message, notification.SmallImage);
+                AlertInfo info = new AlertInfo(notification.Title, notification.Message);
                 AlertControl ac = new AlertControl(this.components)
                 {
                     AutoFormDelay = notification.DurationSeconds * 1000,
@@ -637,8 +637,8 @@ namespace Analogy
 
                         BarButtonItem actionBtn = new BarButtonItem();
                         bsiGlobalTools.ItemLinks.Add(actionBtn);
-                        actionBtn.ImageOptions.Image = action.SmallImage ?? Resources.globalTools16x16;
-                        actionBtn.ImageOptions.LargeImage = action.LargeImage ?? Resources.globalTools32x32;
+                        actionBtn.ImageOptions.Image = Resources.globalTools16x16;
+                        actionBtn.ImageOptions.LargeImage = Resources.globalTools32x32;
                         actionBtn.RibbonStyle = RibbonItemStyles.All;
                         actionBtn.Caption = string.IsNullOrEmpty(action.Title) ? "Tool" : action.Title;
                         actionBtn.ItemClick += (sender, e) => { action.Action(); };
@@ -1019,10 +1019,10 @@ namespace Analogy
                 }
                 else
                 {
-                    IAnalogyNotificationWinForms notification = new AnalogyNotificationWinForms(factoryId,
+                    var notification = new AnalogyNotification(factoryId,
                         "Missing File Open Dialog Filter",
                         $"{title} has offline data provider without File Open Dialog Filter.{Environment.NewLine}You can set a filter in the data provider settings or report this to the developer.{Environment.NewLine}Filter format example: 'log files (*.log)|*.log|clef files (*.clef)|*.clef'",
-                        AnalogyLogLevel.Error, offlineAnalogy.LargeImage, 5, null);
+                        AnalogyLogLevel.Error, 5, null);
                     NotificationManager.RaiseNotification(notification, true);
                 }
 

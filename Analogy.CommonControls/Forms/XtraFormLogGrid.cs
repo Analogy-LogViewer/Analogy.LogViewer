@@ -15,8 +15,8 @@ namespace Analogy.CommonControls.Forms
 {
     public partial class XtraFormLogGrid : XtraForm
     {
-        public IAnalogyDataProviderWinForms? DataProvider { get; set; }
-        public IAnalogyOfflineDataProviderWinForms? FileDataProvider { get; set; }
+        public IAnalogyDataProvider? DataProvider { get; set; }
+        public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private readonly List<IAnalogyLogMessage> _messages;
         private readonly string _dataSource;
         public LogMessagesUC LogWindow => ucLogs1;
@@ -28,7 +28,7 @@ namespace Analogy.CommonControls.Forms
             _dataSource = "Analogy";
             _messages = new List<IAnalogyLogMessage>();
         }
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IAnalogyDataProviderWinForms? dataProvider, IAnalogyOfflineDataProviderWinForms? fileDataProvider) : this(userSettingsManager)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider) : this(userSettingsManager)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;
@@ -41,7 +41,7 @@ namespace Analogy.CommonControls.Forms
             _dataSource = dataSource;
         }
 
-        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProviderWinForms dataProvider, IAnalogyOfflineDataProviderWinForms? fileProvider = null, string? processOrModule = null) : this(userSettingsManager)
+        public XtraFormLogGrid(IUserSettingsManager userSettingsManager, List<IAnalogyLogMessage> messages, string dataSource, IAnalogyDataProvider dataProvider, IAnalogyOfflineDataProvider? fileProvider = null, string? processOrModule = null) : this(userSettingsManager)
         {
             _messages = messages;
             _dataSource = dataSource;

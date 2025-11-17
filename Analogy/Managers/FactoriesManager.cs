@@ -90,7 +90,7 @@ namespace Analogy
                 {
                     var supported = dataProvidersFactory.DataProviders.Where(i =>
                         i is IAnalogyOfflineDataProviderWinForms offline && offline.CanOpenAllFiles(fileNames));
-                    foreach (IAnalogyDataProviderWinForms dataSource in supported)
+                    foreach (IAnalogyDataProvider dataSource in supported)
                     {
                         yield return (dataSource as IAnalogyOfflineDataProviderWinForms, dataProvidersFactory.FactoryId);
                     }

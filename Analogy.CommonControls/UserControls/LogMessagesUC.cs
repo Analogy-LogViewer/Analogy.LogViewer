@@ -154,9 +154,9 @@ namespace Analogy.CommonControls.UserControls
         private CancellationToken filterToken;
         private int PageNumber => PagingManager.CurrentPageNumber;
         private int TotalPages => PagingManager.TotalPages;
-        public IAnalogyDataProviderWinForms DataProvider { get; set; }
-        public IAnalogyOfflineDataProviderWinForms? FileDataProvider { get; set; }
-        private IAnalogyOfflineDataProviderWinForms AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
+        public IAnalogyDataProvider DataProvider { get; set; }
+        public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
+        private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         private Dictionary<string, int> counts;
         public GridView LogGrid
         {
@@ -1240,7 +1240,7 @@ namespace Analogy.CommonControls.UserControls
             }
         }
 
-        public void SetFileDataSource(IAnalogyDataProviderWinForms? dataProvider, IAnalogyOfflineDataProviderWinForms? fileDataProvider)
+        public void SetFileDataSource(IAnalogyDataProvider? dataProvider, IAnalogyOfflineDataProvider? fileDataProvider)
         {
             DataProvider = dataProvider;
             FileDataProvider = fileDataProvider;

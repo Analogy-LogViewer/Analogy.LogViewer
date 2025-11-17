@@ -18,7 +18,7 @@ namespace Analogy.UserControls
         private bool _showHistory = ServicesProvider.Instance.GetService<IAnalogyUserSettings>().ShowHistoryOfClearedMessages;
         private static int _clearHistoryCounter;
         public bool Enable { get; set; } = true;
-        public ServerSideLogs(IAnalogyDataProviderWinForms serverSide, FileProcessingManager fileProcessingManager)
+        public ServerSideLogs(IAnalogyDataProvider serverSide, FileProcessingManager fileProcessingManager)
         {
             FileProcessingManager = fileProcessingManager;
             InitializeComponent();
