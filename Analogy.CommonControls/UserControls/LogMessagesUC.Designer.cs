@@ -756,7 +756,7 @@ namespace Analogy.CommonControls.UserControls
             this.chkbHighlight.Location = new System.Drawing.Point(7, 214);
             this.chkbHighlight.MenuManager = this.barManager1;
             this.chkbHighlight.Name = "chkbHighlight";
-            this.chkbHighlight.Properties.Caption = "Highlight lines that contains:";
+            this.chkbHighlight.Properties.Caption = "Highlight lines which contain:";
             this.chkbHighlight.Size = new System.Drawing.Size(189, 24);
             this.chkbHighlight.StyleController = this.layoutControlLogs;
             this.chkbHighlight.TabIndex = 2;
