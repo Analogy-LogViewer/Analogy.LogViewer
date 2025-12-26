@@ -44,7 +44,7 @@ namespace DevExpress.Sync
             txtbSource.Name = "txtbSource";
             txtbSource.Size = new System.Drawing.Size(697, 27);
             txtbSource.TabIndex = 0;
-            txtbSource.Text = "C:\\Program Files\\DevExpress 24.2\\Components\\Bin\\";
+            txtbSource.Text = "C:\\Program Files\\DevExpress 25.2\\Components\\Bin\\";
             // 
             // label1
             // 
