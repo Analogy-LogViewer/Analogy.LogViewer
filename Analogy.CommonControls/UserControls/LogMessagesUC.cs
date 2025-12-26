@@ -85,6 +85,7 @@ namespace Analogy.CommonControls.UserControls
         #endregion
         #region properties
         private DateTimeSelectionUC DateTimePicker { get; set; }
+        private XtraFormLogGrid? Bookmarks { get; set; }
         private JsonColumnChooserUC JsonColumnChooser { get; set; }
         public string CurrentLogLayoutFileName { get; } = "AnalogyLogsCurrentLayout.xml";
         public string CurrentLogLayoutName { get; } = "Active Layout";
@@ -705,6 +706,33 @@ namespace Analogy.CommonControls.UserControls
                 {
                     JsonViewerForm j = new(message, Settings);
                     j.Show(this);
+                }
+            };
+            bbiBookmark.ItemClick += (s, e) =>
+            {
+                (AnalogyLogMessage message, _) = GetMessageFromSelectedFocusedRowInGrid();
+                if (message is null)
+                {
+                    return;
+                }
+
+                var source = GetFilteredDataTable().Rows[0]?["DataProvider"]?.ToString();
+                if (source == null)
+                {
+                    return;
+                }
+                if (Bookmarks is null || Bookmarks.IsDisposed)
+                {
+                    Bookmarks = new(Settings, [message], source, DataProvider, FileDataProvider);
+                }
+                else
+                {
+                    Bookmarks.AppendMessage(message, source);
+                }
+
+                if (!Bookmarks.Visible)
+                {
+                    Bookmarks.Show();
                 }
             };
             bbiDiffTime.ItemClick += tsmiTimeDiff_Click;

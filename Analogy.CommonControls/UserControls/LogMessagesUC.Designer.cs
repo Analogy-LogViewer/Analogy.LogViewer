@@ -283,6 +283,7 @@ namespace Analogy.CommonControls.UserControls
             this.dockPanelTree = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelTreeContainer = new DevExpress.XtraBars.Docking.ControlContainer();
             this.filtersPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiBookmark = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -418,7 +419,7 @@ namespace Analogy.CommonControls.UserControls
             this.gridControl.MainView = this.logGrid;
             this.gridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1370, 203);
+            this.gridControl.Size = new System.Drawing.Size(1368, 201);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.logGrid});
@@ -753,11 +754,11 @@ namespace Analogy.CommonControls.UserControls
             // 
             // chkbHighlight
             // 
-            this.chkbHighlight.Location = new System.Drawing.Point(7, 214);
+            this.chkbHighlight.Location = new System.Drawing.Point(8, 213);
             this.chkbHighlight.MenuManager = this.barManager1;
             this.chkbHighlight.Name = "chkbHighlight";
             this.chkbHighlight.Properties.Caption = "Highlight lines which contain:";
-            this.chkbHighlight.Size = new System.Drawing.Size(189, 24);
+            this.chkbHighlight.Size = new System.Drawing.Size(194, 24);
             this.chkbHighlight.StyleController = this.layoutControlLogs;
             this.chkbHighlight.TabIndex = 2;
             // 
@@ -843,8 +844,9 @@ namespace Analogy.CommonControls.UserControls
             this.bsiProgress,
             this.bbiJsonColumn,
             this.bbiExportToSimpleList,
-            this.bbiCollapseFolderPanel});
-            this.barManager1.MaxItemId = 95;
+            this.bbiCollapseFolderPanel,
+            this.bbiBookmark});
+            this.barManager1.MaxItemId = 96;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemProgressBar2,
@@ -1616,11 +1618,11 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ddbGoTo
             // 
-            this.ddbGoTo.Location = new System.Drawing.Point(1360, 100);
+            this.ddbGoTo.Location = new System.Drawing.Point(1360, 101);
             this.ddbGoTo.MenuManager = this.barManager1;
             this.ddbGoTo.Name = "ddbGoTo";
             this.barManager1.SetPopupContextMenu(this.ddbGoTo, this.popupMenuGoTo);
-            this.ddbGoTo.Size = new System.Drawing.Size(61, 27);
+            this.ddbGoTo.Size = new System.Drawing.Size(60, 27);
             this.ddbGoTo.StyleController = this.layoutControl1;
             this.ddbGoTo.TabIndex = 30;
             this.ddbGoTo.Text = "Go To";
@@ -1659,7 +1661,7 @@ namespace Analogy.CommonControls.UserControls
             // deOlderThanFilter
             // 
             this.deOlderThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deOlderThanFilter.Location = new System.Drawing.Point(1181, 100);
+            this.deOlderThanFilter.Location = new System.Drawing.Point(1181, 101);
             this.deOlderThanFilter.MenuManager = this.barManager1;
             this.deOlderThanFilter.MinimumSize = new System.Drawing.Size(175, 0);
             this.deOlderThanFilter.Name = "deOlderThanFilter";
@@ -1683,9 +1685,9 @@ namespace Analogy.CommonControls.UserControls
             // sbtnIncludeModules
             // 
             this.sbtnIncludeModules.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
-            this.sbtnIncludeModules.Location = new System.Drawing.Point(855, 100);
+            this.sbtnIncludeModules.Location = new System.Drawing.Point(857, 101);
             this.sbtnIncludeModules.Name = "sbtnIncludeModules";
-            this.sbtnIncludeModules.Size = new System.Drawing.Size(24, 27);
+            this.sbtnIncludeModules.Size = new System.Drawing.Size(22, 27);
             this.sbtnIncludeModules.StyleController = this.layoutControl1;
             this.sbtnIncludeModules.TabIndex = 24;
             this.sbtnIncludeModules.ToolTip = "Clear the text";
@@ -1693,7 +1695,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ceOlderThanFilter
             // 
-            this.ceOlderThanFilter.Location = new System.Drawing.Point(1129, 100);
+            this.ceOlderThanFilter.Location = new System.Drawing.Point(1129, 101);
             this.ceOlderThanFilter.MenuManager = this.barManager1;
             this.ceOlderThanFilter.Name = "ceOlderThanFilter";
             this.ceOlderThanFilter.Properties.Appearance.Options.UseImage = true;
@@ -1706,7 +1708,7 @@ namespace Analogy.CommonControls.UserControls
             // deNewerThanFilter
             // 
             this.deNewerThanFilter.EditValue = new System.DateTime(2019, 11, 29, 10, 2, 22, 242);
-            this.deNewerThanFilter.Location = new System.Drawing.Point(950, 100);
+            this.deNewerThanFilter.Location = new System.Drawing.Point(950, 101);
             this.deNewerThanFilter.MenuManager = this.barManager1;
             this.deNewerThanFilter.MinimumSize = new System.Drawing.Size(175, 0);
             this.deNewerThanFilter.Name = "deNewerThanFilter";
@@ -1729,7 +1731,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ceNewerThanFilter
             // 
-            this.ceNewerThanFilter.Location = new System.Drawing.Point(883, 100);
+            this.ceNewerThanFilter.Location = new System.Drawing.Point(883, 101);
             this.ceNewerThanFilter.MenuManager = this.barManager1;
             this.ceNewerThanFilter.Name = "ceNewerThanFilter";
             this.ceNewerThanFilter.Properties.Appearance.Options.UseImage = true;
@@ -1741,7 +1743,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ceModulesProcess
             // 
-            this.ceModulesProcess.Location = new System.Drawing.Point(7, 100);
+            this.ceModulesProcess.Location = new System.Drawing.Point(8, 101);
             this.ceModulesProcess.MenuManager = this.barManager1;
             this.ceModulesProcess.Name = "ceModulesProcess";
             this.ceModulesProcess.Properties.AutoWidth = true;
@@ -1760,21 +1762,21 @@ namespace Analogy.CommonControls.UserControls
             // 
             // txtbModule
             // 
-            this.txtbModule.Location = new System.Drawing.Point(268, 100);
+            this.txtbModule.Location = new System.Drawing.Point(334, 101);
             this.txtbModule.MenuManager = this.barManager1;
             this.txtbModule.Name = "txtbModule";
             this.txtbModule.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, -ExcludeB";
-            this.txtbModule.Size = new System.Drawing.Size(583, 22);
+            this.txtbModule.Size = new System.Drawing.Size(519, 22);
             this.txtbModule.StyleController = this.layoutControl1;
             this.txtbModule.TabIndex = 26;
             // 
             // sbtnIncludeSources
             // 
             this.sbtnIncludeSources.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
-            this.sbtnIncludeSources.Location = new System.Drawing.Point(1389, 69);
+            this.sbtnIncludeSources.Location = new System.Drawing.Point(1389, 70);
             this.sbtnIncludeSources.Name = "sbtnIncludeSources";
-            this.sbtnIncludeSources.Size = new System.Drawing.Size(32, 27);
+            this.sbtnIncludeSources.Size = new System.Drawing.Size(31, 27);
             this.sbtnIncludeSources.StyleController = this.layoutControl1;
             this.sbtnIncludeSources.TabIndex = 24;
             this.sbtnIncludeSources.ToolTip = "Clear the text";
@@ -1782,7 +1784,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ceSources
             // 
-            this.ceSources.Location = new System.Drawing.Point(7, 69);
+            this.ceSources.Location = new System.Drawing.Point(8, 70);
             this.ceSources.MenuManager = this.barManager1;
             this.ceSources.Name = "ceSources";
             this.ceSources.Properties.AutoWidth = true;
@@ -1803,21 +1805,21 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.txtbSource.EditValue = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, includeB, -ExcludeC, -ExcludeD";
-            this.txtbSource.Location = new System.Drawing.Point(202, 69);
+            this.txtbSource.Location = new System.Drawing.Point(252, 70);
             this.txtbSource.MenuManager = this.barManager1;
             this.txtbSource.Name = "txtbSource";
             this.txtbSource.Properties.NullText = "Use , to separate values. to exclude source or module prefix it with -. e.g: incl" +
     "udeA, includeB, -ExcludeC, -ExcludeD";
-            this.txtbSource.Size = new System.Drawing.Size(1183, 22);
+            this.txtbSource.Size = new System.Drawing.Size(1133, 22);
             this.txtbSource.StyleController = this.layoutControl1;
             this.txtbSource.TabIndex = 25;
             // 
             // sbtnTextExclude
             // 
             this.sbtnTextExclude.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
-            this.sbtnTextExclude.Location = new System.Drawing.Point(1296, 38);
+            this.sbtnTextExclude.Location = new System.Drawing.Point(1298, 39);
             this.sbtnTextExclude.Name = "sbtnTextExclude";
-            this.sbtnTextExclude.Size = new System.Drawing.Size(23, 27);
+            this.sbtnTextExclude.Size = new System.Drawing.Size(22, 27);
             this.sbtnTextExclude.StyleController = this.layoutControl1;
             this.sbtnTextExclude.TabIndex = 20;
             this.sbtnTextExclude.ToolTip = "Clear the text";
@@ -1825,21 +1827,21 @@ namespace Analogy.CommonControls.UserControls
             // 
             // txtbExclude
             // 
-            this.txtbExclude.Location = new System.Drawing.Point(137, 38);
+            this.txtbExclude.Location = new System.Drawing.Point(170, 39);
             this.txtbExclude.MenuManager = this.barManager1;
             this.txtbExclude.Name = "txtbExclude";
             this.txtbExclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbExclude.Size = new System.Drawing.Size(1155, 22);
+            this.txtbExclude.Size = new System.Drawing.Size(1124, 22);
             this.txtbExclude.StyleController = this.layoutControl1;
             this.txtbExclude.TabIndex = 20;
             this.txtbExclude.EditValueChanged += new System.EventHandler(this.txtbExclude_EditValueChanged);
             // 
             // sBtnMostCommon
             // 
-            this.sBtnMostCommon.Location = new System.Drawing.Point(1323, 38);
+            this.sBtnMostCommon.Location = new System.Drawing.Point(1324, 39);
             this.sBtnMostCommon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sBtnMostCommon.Name = "sBtnMostCommon";
-            this.sBtnMostCommon.Size = new System.Drawing.Size(98, 27);
+            this.sBtnMostCommon.Size = new System.Drawing.Size(96, 27);
             this.sBtnMostCommon.StyleController = this.layoutControl1;
             this.sBtnMostCommon.TabIndex = 8;
             this.sBtnMostCommon.Text = "Most Common";
@@ -1847,7 +1849,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ceExcludeText
             // 
-            this.ceExcludeText.Location = new System.Drawing.Point(7, 38);
+            this.ceExcludeText.Location = new System.Drawing.Point(8, 39);
             this.ceExcludeText.MenuManager = this.barManager1;
             this.ceExcludeText.Name = "ceExcludeText";
             this.ceExcludeText.Properties.AutoWidth = true;
@@ -1865,7 +1867,7 @@ namespace Analogy.CommonControls.UserControls
             // sbtnPreDefinedFilters
             // 
             this.sbtnPreDefinedFilters.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.SingleMasterFilter_16x16;
-            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1399, 7);
+            this.sbtnPreDefinedFilters.Location = new System.Drawing.Point(1398, 8);
             this.sbtnPreDefinedFilters.Name = "sbtnPreDefinedFilters";
             this.sbtnPreDefinedFilters.Size = new System.Drawing.Size(22, 27);
             this.sbtnPreDefinedFilters.StyleController = this.layoutControl1;
@@ -1875,11 +1877,11 @@ namespace Analogy.CommonControls.UserControls
             // 
             // txtbInclude
             // 
-            this.txtbInclude.Location = new System.Drawing.Point(137, 7);
+            this.txtbInclude.Location = new System.Drawing.Point(170, 8);
             this.txtbInclude.MenuManager = this.barManager1;
             this.txtbInclude.Name = "txtbInclude";
             this.txtbInclude.Properties.NullText = "Use & or + for AND operations. Use | for OR operations";
-            this.txtbInclude.Size = new System.Drawing.Size(1089, 22);
+            this.txtbInclude.Size = new System.Drawing.Size(1055, 22);
             this.txtbInclude.StyleController = this.layoutControl1;
             this.txtbInclude.TabIndex = 19;
             this.txtbInclude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbInclude_KeyPress);
@@ -1887,7 +1889,7 @@ namespace Analogy.CommonControls.UserControls
             // sbtnTextInclude
             // 
             this.sbtnTextInclude.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Close_16x16;
-            this.sbtnTextInclude.Location = new System.Drawing.Point(1373, 7);
+            this.sbtnTextInclude.Location = new System.Drawing.Point(1372, 8);
             this.sbtnTextInclude.Name = "sbtnTextInclude";
             this.sbtnTextInclude.Size = new System.Drawing.Size(22, 27);
             this.sbtnTextInclude.StyleController = this.layoutControl1;
@@ -1897,7 +1899,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ceIncludeText
             // 
-            this.ceIncludeText.Location = new System.Drawing.Point(7, 7);
+            this.ceIncludeText.Location = new System.Drawing.Point(8, 8);
             this.ceIncludeText.MenuManager = this.barManager1;
             this.ceIncludeText.Name = "ceIncludeText";
             this.ceIncludeText.Properties.Appearance.Options.UseImage = true;
@@ -1921,7 +1923,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // ceSearchEverywhere
             // 
-            this.ceSearchEverywhere.Location = new System.Drawing.Point(1230, 7);
+            this.ceSearchEverywhere.Location = new System.Drawing.Point(1229, 8);
             this.ceSearchEverywhere.MenuManager = this.barManager1;
             this.ceSearchEverywhere.Name = "ceSearchEverywhere";
             this.ceSearchEverywhere.Properties.Caption = "Search Everywhere";
@@ -1956,7 +1958,7 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem14,
             this.layoutControlItem20});
             this.Root.Name = "Root";
-            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
+            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(6, 6, 6, 6);
             this.Root.Size = new System.Drawing.Size(1428, 142);
             this.Root.TextVisible = false;
             // 
@@ -1965,61 +1967,55 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem2.Control = this.ceIncludeText;
             this.layoutControlItem2.CustomizationFormText = "includeTextcheckbox";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem2.MaxSize = new System.Drawing.Size(130, 24);
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(130, 24);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(162, 30);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(162, 30);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(130, 31);
+            this.layoutControlItem2.Size = new System.Drawing.Size(162, 31);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "includeText";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.txtbInclude;
-            this.layoutControlItem1.Location = new System.Drawing.Point(130, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(162, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1093, 31);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1059, 31);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.sbtnTextInclude;
-            this.layoutControlItem3.Location = new System.Drawing.Point(1366, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(1364, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(26, 31);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.sbtnPreDefinedFilters;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1392, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1390, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(26, 31);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtbExclude;
-            this.layoutControlItem5.Location = new System.Drawing.Point(130, 31);
+            this.layoutControlItem5.Location = new System.Drawing.Point(162, 31);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1159, 31);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1128, 31);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.ceExcludeText;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 31);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(130, 24);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(130, 24);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(162, 30);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(162, 30);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(130, 31);
+            this.layoutControlItem6.Size = new System.Drawing.Size(162, 31);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
             // layoutControlItem7
@@ -2027,131 +2023,117 @@ namespace Analogy.CommonControls.UserControls
             this.layoutControlItem7.Control = this.sBtnMostCommon;
             this.layoutControlItem7.Location = new System.Drawing.Point(1316, 31);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(102, 31);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.Size = new System.Drawing.Size(100, 31);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.sbtnTextExclude;
-            this.layoutControlItem8.Location = new System.Drawing.Point(1289, 31);
+            this.layoutControlItem8.Location = new System.Drawing.Point(1290, 31);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(27, 31);
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.Size = new System.Drawing.Size(26, 31);
             this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.txtbSource;
-            this.layoutControlItem9.Location = new System.Drawing.Point(195, 62);
+            this.layoutControlItem9.Location = new System.Drawing.Point(244, 62);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(1187, 31);
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.Size = new System.Drawing.Size(1137, 31);
             this.layoutControlItem9.TextVisible = false;
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.ceSources;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 62);
-            this.layoutControlItem10.MaxSize = new System.Drawing.Size(195, 24);
-            this.layoutControlItem10.MinSize = new System.Drawing.Size(195, 24);
+            this.layoutControlItem10.MaxSize = new System.Drawing.Size(244, 30);
+            this.layoutControlItem10.MinSize = new System.Drawing.Size(244, 30);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(195, 31);
+            this.layoutControlItem10.Size = new System.Drawing.Size(244, 31);
             this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.sbtnIncludeSources;
-            this.layoutControlItem11.Location = new System.Drawing.Point(1382, 62);
+            this.layoutControlItem11.Location = new System.Drawing.Point(1381, 62);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(36, 31);
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.Size = new System.Drawing.Size(35, 31);
             this.layoutControlItem11.TextVisible = false;
             // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.txtbModule;
-            this.layoutControlItem12.Location = new System.Drawing.Point(261, 93);
+            this.layoutControlItem12.Location = new System.Drawing.Point(326, 93);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(587, 39);
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem12.Size = new System.Drawing.Size(523, 37);
             this.layoutControlItem12.TextVisible = false;
             // 
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.ceModulesProcess;
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 93);
-            this.layoutControlItem13.MaxSize = new System.Drawing.Size(261, 24);
-            this.layoutControlItem13.MinSize = new System.Drawing.Size(261, 24);
+            this.layoutControlItem13.MaxSize = new System.Drawing.Size(326, 30);
+            this.layoutControlItem13.MinSize = new System.Drawing.Size(326, 30);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(261, 39);
+            this.layoutControlItem13.Size = new System.Drawing.Size(326, 37);
             this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem13.TextVisible = false;
             // 
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.sbtnIncludeModules;
-            this.layoutControlItem15.Location = new System.Drawing.Point(848, 93);
+            this.layoutControlItem15.Location = new System.Drawing.Point(849, 93);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(28, 39);
-            this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem15.Size = new System.Drawing.Size(26, 37);
             this.layoutControlItem15.TextVisible = false;
             // 
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.ceNewerThanFilter;
-            this.layoutControlItem16.Location = new System.Drawing.Point(876, 93);
+            this.layoutControlItem16.Location = new System.Drawing.Point(875, 93);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(67, 39);
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.Size = new System.Drawing.Size(67, 37);
             this.layoutControlItem16.TextVisible = false;
             // 
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.deNewerThanFilter;
-            this.layoutControlItem17.Location = new System.Drawing.Point(943, 93);
+            this.layoutControlItem17.Location = new System.Drawing.Point(942, 93);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(179, 39);
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem17.Size = new System.Drawing.Size(179, 37);
             this.layoutControlItem17.TextVisible = false;
             // 
             // layoutControlItem18
             // 
             this.layoutControlItem18.Control = this.ceOlderThanFilter;
-            this.layoutControlItem18.Location = new System.Drawing.Point(1122, 93);
+            this.layoutControlItem18.Location = new System.Drawing.Point(1121, 93);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(52, 39);
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem18.Size = new System.Drawing.Size(52, 37);
             this.layoutControlItem18.TextVisible = false;
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.deOlderThanFilter;
-            this.layoutControlItem19.Location = new System.Drawing.Point(1174, 93);
+            this.layoutControlItem19.Location = new System.Drawing.Point(1173, 93);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(179, 39);
-            this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem19.Size = new System.Drawing.Size(179, 37);
             this.layoutControlItem19.TextVisible = false;
             // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.ddbGoTo;
-            this.layoutControlItem14.Location = new System.Drawing.Point(1353, 93);
+            this.layoutControlItem14.Location = new System.Drawing.Point(1352, 93);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(65, 39);
-            this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem14.Size = new System.Drawing.Size(64, 37);
             this.layoutControlItem14.TextVisible = false;
             // 
             // layoutControlItem20
             // 
             this.layoutControlItem20.Control = this.ceSearchEverywhere;
-            this.layoutControlItem20.Location = new System.Drawing.Point(1223, 0);
+            this.layoutControlItem20.Location = new System.Drawing.Point(1221, 0);
             this.layoutControlItem20.Name = "layoutControlItem20";
             this.layoutControlItem20.Size = new System.Drawing.Size(143, 31);
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem20.TextVisible = false;
             // 
             // popupMenuGoTo
@@ -2181,7 +2163,7 @@ namespace Analogy.CommonControls.UserControls
             // spltcMessages
             // 
             this.spltcMessages.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            this.spltcMessages.Location = new System.Drawing.Point(7, 7);
+            this.spltcMessages.Location = new System.Drawing.Point(8, 8);
             this.spltcMessages.Name = "spltcMessages";
             // 
             // spltcMessages.Panel1
@@ -2192,13 +2174,13 @@ namespace Analogy.CommonControls.UserControls
             // spltcMessages.Panel2
             // 
             this.spltcMessages.Panel2.Text = "Panel2";
-            this.spltcMessages.Size = new System.Drawing.Size(1633, 203);
+            this.spltcMessages.Size = new System.Drawing.Size(1631, 201);
             this.spltcMessages.SplitterPosition = 251;
             this.spltcMessages.TabIndex = 0;
             // 
             // sbtnPageFirst
             // 
-            this.sbtnPageFirst.Location = new System.Drawing.Point(1299, 214);
+            this.sbtnPageFirst.Location = new System.Drawing.Point(1298, 213);
             this.sbtnPageFirst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPageFirst.Name = "sbtnPageFirst";
             this.sbtnPageFirst.Size = new System.Drawing.Size(61, 27);
@@ -2209,10 +2191,10 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnMoreHighlight
             // 
-            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1229, 214);
+            this.sbtnMoreHighlight.Location = new System.Drawing.Point(1230, 213);
             this.sbtnMoreHighlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnMoreHighlight.Name = "sbtnMoreHighlight";
-            this.sbtnMoreHighlight.Size = new System.Drawing.Size(66, 27);
+            this.sbtnMoreHighlight.Size = new System.Drawing.Size(64, 27);
             this.sbtnMoreHighlight.StyleController = this.layoutControlLogs;
             this.sbtnMoreHighlight.TabIndex = 4;
             this.sbtnMoreHighlight.Text = "More ...";
@@ -2220,7 +2202,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             // sbtnPagePrevious
             // 
-            this.sbtnPagePrevious.Location = new System.Drawing.Point(1364, 214);
+            this.sbtnPagePrevious.Location = new System.Drawing.Point(1363, 213);
             this.sbtnPagePrevious.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtnPagePrevious.Name = "sbtnPagePrevious";
             this.sbtnPagePrevious.Size = new System.Drawing.Size(87, 27);
@@ -2232,7 +2214,7 @@ namespace Analogy.CommonControls.UserControls
             // sBtnPageNext
             // 
             this.sBtnPageNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnPageNext.Location = new System.Drawing.Point(1510, 214);
+            this.sBtnPageNext.Location = new System.Drawing.Point(1509, 213);
             this.sBtnPageNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnPageNext.Name = "sBtnPageNext";
             this.sBtnPageNext.Size = new System.Drawing.Size(64, 27);
@@ -2244,7 +2226,7 @@ namespace Analogy.CommonControls.UserControls
             // sBtnLastPage
             // 
             this.sBtnLastPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sBtnLastPage.Location = new System.Drawing.Point(1578, 214);
+            this.sBtnLastPage.Location = new System.Drawing.Point(1577, 213);
             this.sBtnLastPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sBtnLastPage.Name = "sBtnLastPage";
             this.sBtnLastPage.Size = new System.Drawing.Size(62, 27);
@@ -2255,10 +2237,10 @@ namespace Analogy.CommonControls.UserControls
             // 
             // txtbHighlight
             // 
-            this.txtbHighlight.Location = new System.Drawing.Point(200, 214);
+            this.txtbHighlight.Location = new System.Drawing.Point(206, 213);
             this.txtbHighlight.MenuManager = this.barManager1;
             this.txtbHighlight.Name = "txtbHighlight";
-            this.txtbHighlight.Size = new System.Drawing.Size(1025, 22);
+            this.txtbHighlight.Size = new System.Drawing.Size(1020, 22);
             this.txtbHighlight.StyleController = this.layoutControlLogs;
             this.txtbHighlight.TabIndex = 3;
             this.txtbHighlight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbHighlight_KeyUp);
@@ -2278,88 +2260,81 @@ namespace Analogy.CommonControls.UserControls
             this.lblPageNumber,
             this.layoutControlItem26});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(6, 6, 6, 6);
             this.layoutControlGroup1.Size = new System.Drawing.Size(1647, 248);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem22
             // 
             this.layoutControlItem22.Control = this.txtbHighlight;
-            this.layoutControlItem22.Location = new System.Drawing.Point(193, 207);
+            this.layoutControlItem22.Location = new System.Drawing.Point(198, 205);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(1029, 31);
-            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem22.Size = new System.Drawing.Size(1024, 31);
             this.layoutControlItem22.TextVisible = false;
             // 
             // layoutControlItem23
             // 
             this.layoutControlItem23.Control = this.chkbHighlight;
-            this.layoutControlItem23.Location = new System.Drawing.Point(0, 207);
+            this.layoutControlItem23.Location = new System.Drawing.Point(0, 205);
             this.layoutControlItem23.Name = "layoutControlItem23";
-            this.layoutControlItem23.Size = new System.Drawing.Size(193, 31);
-            this.layoutControlItem23.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem23.Size = new System.Drawing.Size(198, 31);
             this.layoutControlItem23.TextVisible = false;
             // 
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.sBtnLastPage;
-            this.layoutControlItem24.Location = new System.Drawing.Point(1571, 207);
+            this.layoutControlItem24.Location = new System.Drawing.Point(1569, 205);
             this.layoutControlItem24.Name = "layoutControlItem24";
             this.layoutControlItem24.Size = new System.Drawing.Size(66, 31);
-            this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
             // layoutControlItem25
             // 
             this.layoutControlItem25.Control = this.sBtnPageNext;
-            this.layoutControlItem25.Location = new System.Drawing.Point(1503, 207);
+            this.layoutControlItem25.Location = new System.Drawing.Point(1501, 205);
             this.layoutControlItem25.Name = "layoutControlItem25";
             this.layoutControlItem25.Size = new System.Drawing.Size(68, 31);
-            this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem25.TextVisible = false;
             // 
             // layoutControlItem27
             // 
             this.layoutControlItem27.Control = this.sbtnPagePrevious;
-            this.layoutControlItem27.Location = new System.Drawing.Point(1357, 207);
+            this.layoutControlItem27.Location = new System.Drawing.Point(1355, 205);
             this.layoutControlItem27.Name = "layoutControlItem27";
             this.layoutControlItem27.Size = new System.Drawing.Size(91, 31);
-            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextVisible = false;
             // 
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.sbtnPageFirst;
-            this.layoutControlItem28.Location = new System.Drawing.Point(1292, 207);
+            this.layoutControlItem28.Location = new System.Drawing.Point(1290, 205);
             this.layoutControlItem28.Name = "layoutControlItem28";
             this.layoutControlItem28.Size = new System.Drawing.Size(65, 31);
-            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem28.TextVisible = false;
             // 
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.sbtnMoreHighlight;
-            this.layoutControlItem21.Location = new System.Drawing.Point(1222, 207);
+            this.layoutControlItem21.Location = new System.Drawing.Point(1222, 205);
             this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(70, 31);
-            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem21.Size = new System.Drawing.Size(68, 31);
             this.layoutControlItem21.TextVisible = false;
             // 
             // lblPageNumber
             // 
-            this.lblPageNumber.Location = new System.Drawing.Point(1448, 207);
+            this.lblPageNumber.Location = new System.Drawing.Point(1446, 205);
             this.lblPageNumber.Name = "lblPageNumber";
             this.lblPageNumber.Size = new System.Drawing.Size(55, 31);
             this.lblPageNumber.Text = "Page 1/1";
             this.lblPageNumber.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.lblPageNumber.TextSize = new System.Drawing.Size(51, 16);
             // 
             // layoutControlItem26
             // 
             this.layoutControlItem26.Control = this.spltcMessages;
             this.layoutControlItem26.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(1637, 207);
-            this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem26.Size = new System.Drawing.Size(1635, 205);
             this.layoutControlItem26.TextVisible = false;
             // 
             // chkLstLogLevel
@@ -2577,6 +2552,7 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.LogGridPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bBtnClearLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiBookmark),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDiffTime),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterFrom),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDatetiemFilterTo),
@@ -2832,6 +2808,13 @@ namespace Analogy.CommonControls.UserControls
             // 
             this.filtersPopupMenu.Manager = this.barManager1;
             this.filtersPopupMenu.Name = "filtersPopupMenu";
+            // 
+            // bbiBookmark
+            // 
+            this.bbiBookmark.Caption = "Bookmark Message";
+            this.bbiBookmark.Id = 95;
+            this.bbiBookmark.ImageOptions.Image = global::Analogy.CommonControls.Properties.Resources.Bookmark_16x16;
+            this.bbiBookmark.Name = "bbiBookmark";
             // 
             // LogMessagesUC
             // 
@@ -3179,5 +3162,6 @@ namespace Analogy.CommonControls.UserControls
         private DevExpress.XtraTab.XtraTabPage xtpServerSide;
         private DevExpress.XtraEditors.SimpleButton sbtnServerSide;
         private DevExpress.XtraBars.BarButtonItem bbiCollapseFolderPanel;
+        private DevExpress.XtraBars.BarButtonItem bbiBookmark;
     }
 }
