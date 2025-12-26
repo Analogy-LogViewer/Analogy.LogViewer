@@ -154,7 +154,7 @@ namespace Analogy.CommonControls.UserControls
         private CancellationToken filterToken;
         private int PageNumber => PagingManager.CurrentPageNumber;
         private int TotalPages => PagingManager.TotalPages;
-        public IAnalogyDataProvider DataProvider { get; set; }
+        public IAnalogyDataProvider DataProvider { get; set; } = new AnalogyOfflineDataProvider();
         public IAnalogyOfflineDataProvider? FileDataProvider { get; set; }
         private IAnalogyOfflineDataProvider AnalogyOfflineDataProvider { get; } = new AnalogyOfflineDataProvider();
         private Dictionary<string, int> counts;
@@ -435,7 +435,7 @@ namespace Analogy.CommonControls.UserControls
                 gridColumn.Visible = !gridColumn.FieldName.Equals(Common.CommonUtils.AnalogyMessageColumn);
             }
 
-            if (DataProvider.HideAdditionalColumns() != null)
+            if (DataProvider?.HideAdditionalColumns() != null)
             {
                 foreach (string columnFieldName in DataProvider.HideAdditionalColumns())
                 {
@@ -446,7 +446,7 @@ namespace Analogy.CommonControls.UserControls
                     }
                 }
             }
-            if (DataProvider.HideExistingColumns() != null)
+            if (DataProvider?.HideExistingColumns() != null)
             {
                 foreach (AnalogyLogMessagePropertyName columnFieldName in DataProvider.HideExistingColumns())
                 {
@@ -2603,7 +2603,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             FormMessageDetails details = new(message, Messages, dataSource, Settings);
-            DataProvider.MessageOpened(message);
+            DataProvider?.MessageOpened(message);
             details.Show();
 
             //CreateBookmark();
@@ -3267,7 +3267,7 @@ namespace Analogy.CommonControls.UserControls
             }
 
             var focusedMassage = (AnalogyLogMessage)LogGrid.GetRowCellValue(e.FocusedRowHandle, Common.CommonUtils.AnalogyMessageColumn);
-            DataProvider.MessageSelected(focusedMassage);
+            DataProvider?.MessageSelected(focusedMassage);
             LoadTextBoxes(focusedMassage);
             if (Settings.InlineJsonViewer)
             {
