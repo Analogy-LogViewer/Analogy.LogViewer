@@ -26,14 +26,18 @@
 	<PropertyGroup Condition="$(Configuration.StartsWith('Release'))">
 		<Optimize>true</Optimize>
 	</PropertyGroup>
-
+	<PropertyGroup>
+		<MSBuildWarningsAsMessages>
+			$(MSBuildWarningsAsMessages);MSB3277
+		</MSBuildWarningsAsMessages>
+	</PropertyGroup>
 	<ItemGroup>
 		<!--<SourceRoot Include="$(MSBuildThisFileDirectory)/" />-->
 		<AdditionalFiles Include="$(MSBuildThisFileDirectory)/BannedSymbols.txt" Link="Properties/BannedSymbols.txt" />
 	</ItemGroup>
 	<!-- Analyzers (Roslyn, Meziantou, StyleCop, ...) -->
 	<ItemGroup>
-		<PackageReference Include="Meziantou.Analyzer" Version="2.0.264">
+		<PackageReference Include="Meziantou.Analyzer" Version="2.0.298">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
