@@ -37,7 +37,7 @@
 	</ItemGroup>
 	<!-- Analyzers (Roslyn, Meziantou, StyleCop, ...) -->
 	<ItemGroup>
-		<PackageReference Include="Meziantou.Analyzer" Version="2.0.264">
+		<PackageReference Include="Meziantou.Analyzer" Version="2.0.298">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
