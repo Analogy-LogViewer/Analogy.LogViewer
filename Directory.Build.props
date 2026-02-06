@@ -26,7 +26,11 @@
 	<PropertyGroup Condition="$(Configuration.StartsWith('Release'))">
 		<Optimize>true</Optimize>
 	</PropertyGroup>
-
+	<PropertyGroup>
+		<MSBuildWarningsAsMessages>
+			$(MSBuildWarningsAsMessages);MSB3277
+		</MSBuildWarningsAsMessages>
+	</PropertyGroup>
 	<ItemGroup>
 		<!--<SourceRoot Include="$(MSBuildThisFileDirectory)/" />-->
 		<AdditionalFiles Include="$(MSBuildThisFileDirectory)/BannedSymbols.txt" Link="Properties/BannedSymbols.txt" />

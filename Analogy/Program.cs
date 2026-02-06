@@ -247,18 +247,18 @@ namespace Analogy
         private static void CurrentDomain_FirstChanceException(object sender,
             System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            Logger.LogWarning(e.Exception.ToString(), nameof(CurrentDomain_FirstChanceException));
+            Logger.LogWarning(e.Exception, "Source: {Source}", nameof(CurrentDomain_FirstChanceException));
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Logger.LogError("Error: " + e.ExceptionObject, e.ExceptionObject as Exception, nameof(CurrentDomain_UnhandledException));
+            Logger.LogError(e.ExceptionObject as Exception, "Error: {Error}. Source: {Source}", (e.ExceptionObject as Exception)?.Message, nameof(CurrentDomain_UnhandledException));
             MessageBox.Show("Error: " + e.ExceptionObject, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            Logger.LogError(e.Exception, "Error: " + e.Exception, e.Exception, nameof(Application_ThreadException));
+            Logger.LogError(e.Exception, "Error: {Error}. Source: {Source}", e.Exception.Message, nameof(Application_ThreadException));
             MessageBox.Show("Error: " + e.Exception, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
