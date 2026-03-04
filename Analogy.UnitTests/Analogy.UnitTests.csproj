@@ -15,11 +15,11 @@
 		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.3" />
 		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.4" />
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="9.0.3" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-		<PackageReference Include="MSTest.TestAdapter" Version="4.0.2" />
-		<PackageReference Include="MSTest.TestFramework" Version="4.0.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="4.1.0" />
+		<PackageReference Include="MSTest.TestFramework" Version="4.1.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="System.Text.Json" Version="10.0.1" />
+		<PackageReference Include="System.Text.Json" Version="10.0.3" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Analogy\Analogy.csproj" />
@@ -28,5 +28,8 @@
 		<None Update="test_recursive.zip">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.103" />
 	</ItemGroup>
 </Project>
