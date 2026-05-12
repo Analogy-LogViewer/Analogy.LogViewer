@@ -789,7 +789,7 @@
 		<Folder Include="Updater\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.203" />
+	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.300" />
 	  <PackageReference Include="System.Text.Json" Version="10.0.7" />
 	</ItemGroup>
 </Project>
