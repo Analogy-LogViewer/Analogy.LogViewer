@@ -34,7 +34,7 @@
 		<PackageReference Include="Analogy.LogViewer.Github" Version="9.0.4" />
 		<PackageReference Include="Analogy.LogViewer.gRPC.WinForms" Version="9.0.5" />
 		<PackageReference Include="Analogy.LogViewer.IISLogsProvider" Version="9.0.5" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.2" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.3" />
 		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.4" />
 		<PackageReference Include="Analogy.LogViewer.JsonParser" Version="9.0.4" />
 		<PackageReference Include="Analogy.LogViewer.LiteDB" Version="9.0.4" />
@@ -54,9 +54,9 @@
 		<PackageReference Include="Markdig" Version="1.1.3" />
 		<PackageReference Include="MessagePack" Version="3.1.4" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.7" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.7" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
 		<PackageReference Include="Octokit" Version="14.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
