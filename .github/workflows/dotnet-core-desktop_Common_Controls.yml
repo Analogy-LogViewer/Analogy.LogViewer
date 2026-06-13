@@ -22,7 +22,7 @@ jobs:
       Test_Project_Path: Analogy.UnitTests\Analogy.UnitTests.csproj
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
