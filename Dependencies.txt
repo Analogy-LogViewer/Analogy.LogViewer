@@ -11,6 +11,8 @@ Interface -- CommonUtilities -- Template -- Grpc
 Interface -- CommonUtilities -- Template -- RegexParser  
 Interface -- CommonUtilities -- Template -- Example
 Interface -- CommonUtilities -- Template -- Serilog
+Interface -- CommonUtilities -- Template -- Intuitive
+Interface -- CommonUtilities -- Template -- OpenTelemetry
 Interface -- CommonUtilities -- Template -- Analogy.LogViewer.ElasticCommonSchema
 Interface -- CommonUtilities -- Template -- IISLogsProvider
 Interface -- CommonUtilities -- Template -- Analogy.LogViewer.FFmpeg
