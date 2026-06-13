@@ -66,25 +66,25 @@ jobs:
 
     # Publish Artifacts 
     - name: 'Publish Artifacts NET48'
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v7.0.1
       with:
        name: net48_${{ matrix.configuration }}
        path: ./Analogy/bin/x64/Release/net48/win-x64/publish
     # Publish Artifacts 
     - name: 'Publish Artifacts NET8'
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v7.0.1
       with:
        name: net8.0-windows_${{ matrix.configuration }}
        path: ./Analogy/bin/x64/Release/net8.0-windows/win-x64/publish
     # Publish Artifacts 
     - name: 'Publish Artifacts NET9'
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v7.0.1
       with:
        name: net9.0-windows_${{ matrix.configuration }}
        path: ./Analogy/bin/x64/Release/net9.0-windows/win-x64/publish
     # Publish Artifacts 
     - name: 'Publish Artifacts NET10'
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v7.0.1
       with:
        name: net10.0-windows_${{ matrix.configuration }}
        path: ./Analogy/bin/x64/Release/net10.0-windows/win-x64/publish
