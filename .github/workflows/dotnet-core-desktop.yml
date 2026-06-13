@@ -37,7 +37,7 @@ jobs:
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.3.1
+      uses: microsoft/setup-msbuild@v3.0.0
     # Publish the application NET48
     - name: Publish the application NET48
       run: dotnet publish ./Analogy/Analogy.csproj -c=Release /p:Platform=x64 --framework net48 --runtime win-x64
