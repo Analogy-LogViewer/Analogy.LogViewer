@@ -83,7 +83,7 @@ jobs:
         shell: pwsh
 
       - name: Setup NuGet.exe for use with actions
-        uses: NuGet/setup-nuget@v1.0.5
+        uses: NuGet/setup-nuget@v3.1.0
 
       - name: Add private GitHub registry to NuGet
         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/Analogy-LogViewer/index.json -Username Analogy-LogViewer -Password ${{ secrets.GITHUB_TOKEN }}
