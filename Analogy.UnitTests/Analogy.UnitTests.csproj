@@ -17,7 +17,7 @@
 		<PackageReference Include="Analogy.LogViewer.Serilog" Version="9.0.5" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
 		<PackageReference Include="MSTest.TestAdapter" Version="4.2.3" />
-		<PackageReference Include="MSTest.TestFramework" Version="4.2.3" />
+		<PackageReference Include="MSTest.TestFramework" Version="4.3.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 		<PackageReference Include="System.Text.Json" Version="10.0.9" />
 	</ItemGroup>
