@@ -65,6 +65,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.300" />
-	  <PackageReference Include="System.Text.Json" Version="10.0.9" />
+	  <PackageReference Include="System.Text.Json" Version="10.0.10" />
 	</ItemGroup>
 </Project>
