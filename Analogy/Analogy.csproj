@@ -60,7 +60,7 @@
 		<PackageReference Include="Octokit" Version="14.0.0" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
-		<PackageReference Include="System.Resources.Extensions" Version="10.0.9" />
+		<PackageReference Include="System.Resources.Extensions" Version="10.0.10" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.203" PrivateAssets="All" />
 
 	</ItemGroup>
