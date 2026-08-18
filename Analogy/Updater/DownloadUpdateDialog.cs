@@ -133,31 +133,31 @@ namespace Analogy.Updater
             {
                 version = "net10.0-windows";
             }
-            using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
+            else if (_currentFrameworkAttribute.FrameworkName.EndsWith("11.0"))
             {
-                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
-                {
-                    //build a list of files to be extracted
-                    var entries = archive.Entries.Where(entry =>
-                        !entry.FullName.EndsWith("/") && entry.FullName.Contains(version));
-                    foreach (ZipArchiveEntry entry in entries)
-                    {
-                        string target = Path.Combine(extractPath, entry.Name);
-                        string directory = Path.GetDirectoryName(target);
-                        if (!Directory.Exists(directory))
-                        {
-                            Directory.CreateDirectory(directory);
-                        }
+                version = "net11.0-windows";
+            }
 
-                        try
-                        {
-                            entry.ExtractToFile(target, true);
-                        }
-                        catch (Exception e)
-                        {
-                            ServicesProvider.Instance.GetService<ILogger>().LogError($"Error unpacking Updater: {e.Message}", e);
-                        }
-                    }
+            using FileStream zipToOpen = new FileStream(zipPath, FileMode.Open);
+            using ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read);
+            var entries = archive.Entries.Where(entry =>
+                !entry.FullName.EndsWith("/") && entry.FullName.Contains(version));
+            foreach (ZipArchiveEntry entry in entries)
+            {
+                string target = Path.Combine(extractPath, entry.Name);
+                string directory = Path.GetDirectoryName(target);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                try
+                {
+                    entry.ExtractToFile(target, true);
+                }
+                catch (Exception e)
+                {
+                    ServicesProvider.Instance.GetService<ILogger>().LogError($"Error unpacking Updater: {e.Message}", e);
                 }
             }
         }

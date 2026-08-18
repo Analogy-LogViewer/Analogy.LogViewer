@@ -37,15 +37,15 @@
 	</ItemGroup>
 	<!-- Analyzers (Roslyn, Meziantou, StyleCop, ...) -->
 	<ItemGroup>
-		<PackageReference Include="Meziantou.Analyzer" Version="3.0.139">
+		<PackageReference Include="Meziantou.Analyzer" Version="3.0.163">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="5.6.0">
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="5.9.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+		<PackageReference Include="Roslynator.Analyzers" Version="4.16.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
