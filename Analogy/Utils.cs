@@ -92,7 +92,7 @@ namespace Analogy
             var directoryName = Path.GetDirectoryName(filename);
             try
             {
-                if (!string.IsNullOrEmpty(directoryName) && !(Directory.Exists(directoryName)))
+                if (!string.IsNullOrEmpty(directoryName) && !Directory.Exists(directoryName))
                 {
                     Directory.CreateDirectory(directoryName);
                 }
@@ -181,7 +181,7 @@ namespace Analogy
                 idleTime = envTicks - lastInputTick;
             }
 
-            return ((idleTime > 0) ? (idleTime / 1000) : 0);
+            return (idleTime > 0) ? (idleTime / 1000) : 0;
         }
         public static TimeSpan IdleTime() => TimeSpan.FromSeconds(GetLastInputTime());
 

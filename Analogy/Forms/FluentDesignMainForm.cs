@@ -1176,9 +1176,9 @@ namespace Analogy
                 acRootGroupHome.Elements.Add(realTimeBtn);
                 realTimeBtn.Style = ElementStyle.Item;
                 realTimeBtn.ImageOptions.Image = image;
-                realTimeBtn.Text = (!string.IsNullOrEmpty(realTime.OptionalTitle)
+                realTimeBtn.Text = !string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
-                    : "real time provider");
+                    : "real time provider";
                 if (realTime.ToolTip != null)
                 {
                     SuperToolTip toolTip = new SuperToolTip();

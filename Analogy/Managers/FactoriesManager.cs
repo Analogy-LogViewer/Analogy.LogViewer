@@ -452,7 +452,7 @@ namespace Analogy
                 {
                     try
                     {
-                        var dataProviderFactory = (Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactoryWinForms);
+                        var dataProviderFactory = Activator.CreateInstance(dpf) as IAnalogyDataProvidersFactoryWinForms;
                         if (dataProviderFactory is null)
                         {
                             continue;
@@ -472,7 +472,7 @@ namespace Analogy
                 {
                     try
                     {
-                        var settings = (Activator.CreateInstance(isettings) as IAnalogyDataProviderSettingsWinForms);
+                        var settings = Activator.CreateInstance(isettings) as IAnalogyDataProviderSettingsWinForms;
                         if (settings is null)
                         {
                             continue;
@@ -490,7 +490,7 @@ namespace Analogy
                 {
                     try
                     {
-                        var custom = (Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactoryWinForms);
+                        var custom = Activator.CreateInstance(iaction) as IAnalogyCustomActionsFactoryWinForms;
                         if (custom is null)
                         {
                             continue;

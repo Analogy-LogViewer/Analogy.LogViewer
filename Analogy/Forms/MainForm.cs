@@ -1080,9 +1080,9 @@ namespace Analogy.Forms
                 realTimeBtn.ImageOptions.LargeImage = largeImage;
 
                 realTimeBtn.RibbonStyle = RibbonItemStyles.All;
-                realTimeBtn.Caption = (!string.IsNullOrEmpty(realTime.OptionalTitle)
+                realTimeBtn.Caption = !string.IsNullOrEmpty(realTime.OptionalTitle)
                     ? $"{realTime.OptionalTitle}"
-                    : "real time provider");
+                    : "real time provider";
                 if (realTime.ToolTip != null)
                 {
                     SuperToolTip toolTip = new SuperToolTip();

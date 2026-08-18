@@ -54,16 +54,16 @@ namespace Analogy.UserControls
             TotalDownloadNet = net31Downloads + net5Downloads + net6Downloads + net7Downloads + net8Downloads + net9Downloads + net10Downloads + net11Downloads;
             var total = TotalDownloadFramework + TotalDownloadNet;
             lblTotal.Text = $"Total Downloads: {total}. Net Frameworks: {TotalDownloadFramework}. NET: {TotalDownloadNet}";
-            var net471percentage = (double)net471Downloads / (total) * 100.0;
-            var net472percentage = (double)net472Downloads / (total) * 100.0;
-            var net48percentage = (double)net48Downloads / (total) * 100.0;
-            var net31percentage = (double)net31Downloads / (total) * 100.0;
-            var net5percentage = (double)net5Downloads / (total) * 100.0;
-            var net6percentage = (double)net6Downloads / (total) * 100.0;
-            var net7percentage = (double)net7Downloads / (total) * 100.0;
-            var net8percentage = (double)net8Downloads / (total) * 100.0;
-            var net9percentage = (double)net9Downloads / (total) * 100.0;
-            var net10percentage = (double)net10Downloads / (total) * 100.0;
+            var net471percentage = (double)net471Downloads / total * 100.0;
+            var net472percentage = (double)net472Downloads / total * 100.0;
+            var net48percentage = (double)net48Downloads / total * 100.0;
+            var net31percentage = (double)net31Downloads / total * 100.0;
+            var net5percentage = (double)net5Downloads / total * 100.0;
+            var net6percentage = (double)net6Downloads / total * 100.0;
+            var net7percentage = (double)net7Downloads / total * 100.0;
+            var net8percentage = (double)net8Downloads / total * 100.0;
+            var net9percentage = (double)net9Downloads / total * 100.0;
+            var net10percentage = (double)net10Downloads / total * 100.0;
             List<PieChartSingleDataPoint> data = new()
             {
                 new PieChartSingleDataPoint("NET Framework 471", net471Downloads),

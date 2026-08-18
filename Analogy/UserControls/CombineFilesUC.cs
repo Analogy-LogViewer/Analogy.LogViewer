@@ -29,7 +29,7 @@ namespace Analogy.UserControls
                 saveFileDialog.Filter = offlineAnalogy.FileOpenDialogFilters;
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    var messages = (processFilesUC1.GetMessages());
+                    var messages = processFilesUC1.GetMessages();
                     await offlineAnalogy.SaveAsync(messages, saveFileDialog.FileName);
                 }
             }
