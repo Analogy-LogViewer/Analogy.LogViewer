@@ -1,0 +1,116 @@
+name: Dependabot PR Package Table
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  package-table:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and post package version table
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const pull_number = context.payload.pull_request.number;
+            const marker = "<!-- dependabot-package-table -->";
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner,
+              repo,
+              pull_number,
+              per_page: 100
+            });
+
+            const oldVersions = new Map();
+            const newVersions = new Map();
+
+            const readMatches = (line, sign) => {
+              const xmlPackageVersion = new RegExp(
+                `^\\${sign}\\s*<PackageVersion\\s+Include="([^"]+)"\\s+Version="([^"]+)"`
+              );
+              const xmlPackageReference = new RegExp(
+                `^\\${sign}\\s*<PackageReference\\s+Include="([^"]+)"\\s+Version="([^"]+)"`
+              );
+              const match = line.match(xmlPackageVersion) || line.match(xmlPackageReference);
+              if (!match) {
+                return null;
+              }
+
+              return { name: match[1], version: match[2] };
+            };
+
+            for (const file of files) {
+              if (!file.patch) {
+                continue;
+              }
+
+              for (const line of file.patch.split("\n")) {
+                const oldMatch = readMatches(line, "-");
+                if (oldMatch) {
+                  oldVersions.set(oldMatch.name, oldMatch.version);
+                }
+
+                const newMatch = readMatches(line, "+");
+                if (newMatch) {
+                  newVersions.set(newMatch.name, newMatch.version);
+                }
+              }
+            }
+
+            const allNames = new Set([
+              ...oldVersions.keys(),
+              ...newVersions.keys()
+            ]);
+
+            const rows = [...allNames]
+              .map((name) => ({
+                name,
+                from: oldVersions.get(name) ?? "-",
+                to: newVersions.get(name) ?? "-"
+              }))
+              .filter((row) => row.from !== row.to)
+              .sort((a, b) => a.name.localeCompare(b.name));
+
+            let body = `${marker}\n## Dependency Version Changes\n\n`;
+            if (rows.length === 0) {
+              body += "No package version line changes were detected in this PR.";
+            } else {
+              body += "| Package | From | To |\n|---|---|---|\n";
+              for (const row of rows) {
+                body += `| \`${row.name}\` | \`${row.from}\` | \`${row.to}\` |\n`;
+              }
+            }
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner,
+              repo,
+              issue_number: pull_number,
+              per_page: 100
+            });
+
+            const existing = comments.find((comment) => comment.body?.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: pull_number,
+                body
+              });
+            }
