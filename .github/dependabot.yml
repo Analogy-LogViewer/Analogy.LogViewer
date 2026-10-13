@@ -3,7 +3,10 @@ updates:
   - package-ecosystem: nuget
     directory: "/"
     schedule:
-      interval: daily
+      interval: "weekly"
+      day: "friday"
+      time: "09:00"
+      timezone: "Asia/Jerusalem"
     open-pull-requests-limit: 10
     groups:
       nuget-all:
@@ -13,7 +16,10 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: daily
+      interval: "weekly"
+      day: "friday"
+      time: "09:00"
+      timezone: "Asia/Jerusalem"
     open-pull-requests-limit: 10
     groups:
       github-actions-all:
