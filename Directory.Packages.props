@@ -31,18 +31,18 @@
 		<PackageVersion Include="Analogy.LogViewer.WindowsEventLogs" Version="9.0.6" />
 		<PackageVersion Include="Analogy.LogViewer.XMLParser" Version="9.0.6" />
 		<PackageVersion Include="LiteDB" Version="5.0.21" />
-		<PackageVersion Include="Markdig" Version="1.4.0" />
+		<PackageVersion Include="Markdig" Version="1.4.1" />
 		<PackageVersion Include="MessagePack" Version="3.1.12" />
-		<PackageVersion Include="Meziantou.Analyzer" Version="3.0.302" />
-		<PackageVersion Include="Meziantou.Polyfill" Version="1.0.165" />
+		<PackageVersion Include="Meziantou.Analyzer" Version="3.0.303" />
+		<PackageVersion Include="Meziantou.Polyfill" Version="1.0.166" />
 		<PackageVersion Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
 		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="5.9.0" />
-		<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
-		<PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
-		<PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.12" />
-		<PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
-		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
-		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.401" />
+		<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.13" />
+		<PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.13" />
+		<PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.13" />
+		<PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.13" />
+		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.11.0" />
+		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.402" />
 		<PackageVersion Include="MSTest.TestAdapter" Version="4.5.1" />
 		<PackageVersion Include="MSTest.TestFramework" Version="4.5.1" />
 		<PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
@@ -51,7 +51,7 @@
 		<PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
 		<PackageVersion Include="System.IO.Compression" Version="4.3.0" />
 		<PackageVersion Include="System.Private.Uri" Version="4.3.2" />
-		<PackageVersion Include="System.Resources.Extensions" Version="10.0.12" />
-		<PackageVersion Include="System.Text.Json" Version="10.0.12" />
+		<PackageVersion Include="System.Resources.Extensions" Version="10.0.13" />
+		<PackageVersion Include="System.Text.Json" Version="10.0.13" />
 	</ItemGroup>
 </Project>
